@@ -1,0 +1,35 @@
+name: Validar sitio Vitruvio
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar sintaxis de JavaScript
+        run: |
+          node --check assets/app.js
+          node --check assets/search-worker.js
+      - name: Comprobar catálogo y archivos publicados
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          root=pathlib.Path(".")
+          cat=json.loads((root/"data/catalog.json").read_text(encoding="utf-8"))
+          historical=json.loads((root/"data/historical.json").read_text(encoding="utf-8"))
+          inventory=json.loads((root/"data/corpus-expansion-inventory.json").read_text(encoding="utf-8"))
+          assert len(cat["editions"])>=3
+          assert len(historical)>=20
+          assert len(inventory["records"])>=74
+          assert len({r["id"] for r in cat["editions"]})==len(cat["editions"])
+          for e in cat["editions"]:
+            if e.get("available"):
+              assert e.get("pdf") and (root/e["pdf"]).is_file(),f"Missing PDF: {e['id']}"
+            if e.get("searchable"):
+              assert e.get("text_index") and (root/e["text_index"]).is_file(),f"Missing index: {e['id']}"
+              data=json.loads((root/e["text_index"]).read_text(encoding="utf-8"))
+              assert isinstance(data,list) and len(data)==e["pages"],f"Page count mismatch: {e['id']}"
+          print("JS y catálogo válidos. Índices publicados:",sum(bool(e.get("searchable")) for e in cat["editions"]))
+          PY
