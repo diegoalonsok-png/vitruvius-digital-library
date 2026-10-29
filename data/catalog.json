@@ -98,10 +98,30 @@
       "description": "Édition antérieure à la Nouvelle recensio. PDF en cours d'incorporation.",
       "searchable": false,
       "available": false
+    },
+    {
+      "id": "krohn-1912",
+      "title": "Vitruvii De architectura libri decem",
+      "subtitle": "Fritz Krohn, Teubner 1912 — edición latina histórica",
+      "languages": [
+        "la"
+      ],
+      "version": "Krohn 1912",
+      "year": "1912",
+      "category": "historical",
+      "author": "Fritz Krohn (editor)",
+      "publisher": "B. G. Teubner",
+      "pages": 314,
+      "description": "Edición crítica del texto latino, Leipzig 1912. Facsímil de Internet Archive.",
+      "pdf": "documents/krohn-1912.pdf",
+      "text_index": "data/text/krohn-1912.json",
+      "searchable": true,
+      "available": true,
+      "source_url": "https://archive.org/details/vitruviidearchit00vitr"
     }
   ],
-  "total_pages": 0,
-  "searchable_pages": 0,
+  "total_pages": 314,
+  "searchable_pages": 314,
   "base_edition": "recensio-es",
   "semantic": {
     "status": "pending"
