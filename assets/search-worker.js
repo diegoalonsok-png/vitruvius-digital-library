@@ -5,11 +5,11 @@ const phrase=s=>words(s).join(' ');
 function chooseEditions(editions,scope){return editions.filter(e=>scope==='all'||(scope==='principal'?['recensio-es','recensio-fr','theory-en'].includes(e.id):e.id===scope));}
 function progress(requestId,message){self.postMessage({type:'progress',requestId,message});}
 async function readJSON(path){const r=await fetch(path);if(!r.ok)throw Error('No se pudo cargar un índice del corpus.');return r.json();}
-async function pagesFor(e,baseURL){if(!pageCache.has(e.id))pageCache.set(e.id,readJSON(new URL(e.text_index,baseURL)).then(p=>p.map(x=>({...x,normalized:phrase(x.text)}))).catch(err=>{pageCache.delete(e.id);throw err;}));return pageCache.get(e.id);}
+async function pagesFor(e,baseURL){if(!e.text_index)throw Error('La edición '+e.id+' no dispone de índice textual.');if(!pageCache.has(e.id))pageCache.set(e.id,readJSON(new URL(e.text_index,baseURL)).then(p=>{if(!Array.isArray(p)||!p.every(x=>Number.isInteger(x.page)&&typeof x.text==='string'))throw Error('Índice inválido para '+e.id+'.');return p.map(x=>({...x,normalized:phrase(x.text)}));}).catch(err=>{pageCache.delete(e.id);throw err;}));return pageCache.get(e.id);}
 function excerpt(text,terms){let offset=-1;const n=norm(text);for(const t of terms){const pos=n.indexOf(t);if(pos>=0&&(offset<0||pos<offset))offset=pos;}const start=offset>100?offset-90:0,end=Math.min(text.length,start+460);return(start?'…':'')+text.slice(start,end).trim()+(end<text.length?'…':'');}
 
 async function textualSearch(m){
-  const selected=chooseEditions(m.editions,m.scope),terms=words(m.query),needle=terms.join(' ');if(!terms.length)return[];
+  const selected=chooseEditions(m.editions,m.scope),terms=words(m.query),needle=terms.join(' ');if(!terms.length)return[];if(!selected.length)throw Error('Todavía no hay textos indexados para esta selección. Elegí otra edición o consultá las fuentes externas.');
   progress(m.requestId,`Consultando ${selected.length} ediciones…`);
   const all=await Promise.all(selected.map(async e=>({edition:e,pages:await pagesFor(e,m.baseURL)})));
   const results=[];
@@ -25,7 +25,7 @@ async function textualSearch(m){
 
 async function countTerms(m){
   const selected=chooseEditions(m.editions,m.scope),terms=words(m.query);
-  if(!terms.length)throw Error('Escribí una palabra o frase para contar.');
+  if(!terms.length)throw Error('Escribí una palabra o frase para contar.');if(!selected.length)throw Error('No hay textos indexados disponibles para el recuento en esta selección.');
   if(m.countMode==='prefix'&&terms.length!==1)throw Error('Para contar por raíz, escribí un solo comienzo de palabra, por ejemplo symmetr.');
   progress(m.requestId,`Contando las apariciones en ${selected.length} ediciones…`);
   const results=[],forms=new Map(),editionCounts=[];let pageCount=0;
