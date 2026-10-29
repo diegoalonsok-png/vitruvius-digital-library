@@ -78,7 +78,7 @@ async function getPages(e){
   return pageCache.get(e.id);
 }
 
-async function openReader(id,page=1){
+async async function openReader(id,page=1){
   const e=edition(id);if(!e)return;
   if(!e.external&&!e.pdf&&!e.pdf_chunks?.length){window.alert('Esta edición todavía no tiene un documento incorporado al sitio.');return;}
   if(e.external){window.open(e.read_url||e.source_url,'_blank','noopener');return;}
