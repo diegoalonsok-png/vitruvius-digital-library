@@ -78,7 +78,7 @@ async function getPages(e){
   return pageCache.get(e.id);
 }
 
-async async function openReader(id,page=1){
+async function openReader(id,page=1){
   const e=edition(id);if(!e)return;
   if(!e.external&&!e.pdf&&!e.pdf_chunks?.length){window.alert('Esta edición todavía no tiene un documento incorporado al sitio.');return;}
   if(e.external){window.open(e.read_url||e.source_url,'_blank','noopener');return;}
@@ -126,7 +126,7 @@ function openComparison(id='recensio-es',page=1){
   $('#comparison-dialog').showModal();
 }
 
-async async function renderComparePane(pane){
+async function renderComparePane(pane){
   const e=edition($('select',pane).value),body=$('.compare-body',pane);body.replaceChildren();
   const external=$('.compare-external',pane),pageInput=$('.compare-page',pane),modeButton=$('.compare-mode',pane);
   const page=Math.max(1,Math.min(e.pages||1,Math.round(Number(pageInput.value)||1)));pageInput.value=page;pageInput.max=e.pages||1;
