@@ -126,7 +126,7 @@ function openComparison(id='recensio-es',page=1){
   $('#comparison-dialog').showModal();
 }
 
-async function renderComparePane(pane){
+async async function renderComparePane(pane){
   const e=edition($('select',pane).value),body=$('.compare-body',pane);body.replaceChildren();
   const external=$('.compare-external',pane),pageInput=$('.compare-page',pane),modeButton=$('.compare-mode',pane);
   const page=Math.max(1,Math.min(e.pages||1,Math.round(Number(pageInput.value)||1)));pageInput.value=page;pageInput.max=e.pages||1;
@@ -218,12 +218,12 @@ function emailResults(){
   rows.slice(0,limit).forEach((r,i)=>{
     const e=edition(r.edition);
     lines.push((i+1)+'. '+e.title+' ('+e.version+'), p. PDF '+r.page);
-    lines.push(r.snippet.replace(/\\s+/g,' ').slice(0,170));
+    lines.push(r.snippet.replace(/\s+/g,' ').slice(0,170));
     lines.push(sourceURL(e,r.page));
     lines.push('');
   });
   lines.push('Para enviar el PDF completo con todos los contextos: primero elegí «Imprimir / guardar PDF» en el sitio, guardá el archivo y adjuntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
-  window.location.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\\n'));
+  window.location.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\n'));
 }
 
 function addSearchControls(){
