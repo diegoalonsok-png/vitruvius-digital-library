@@ -1,0 +1,109 @@
+{
+  "title": "Vitruvius Digital Library",
+  "curator": "Diego Kurilo",
+  "updated": "2026-10-29",
+  "languages": [
+    "la",
+    "es",
+    "fr",
+    "en"
+  ],
+  "editions": [
+    {
+      "id": "recensio-es",
+      "title": "Vitruvio. De architectura",
+      "subtitle": "Nueva recensio académica bilingüe",
+      "languages": [
+        "la",
+        "es"
+      ],
+      "version": "V514",
+      "year": "2026",
+      "category": "recensio",
+      "author": "Diego Kurilo",
+      "publisher": "Editorial Sophia Lux",
+      "pages": 1157,
+      "description": "Texto latino y traducción española enfrentados, con aparato crítico y comentario. Archivo PDF en incorporación.",
+      "searchable": false,
+      "available": false
+    },
+    {
+      "id": "recensio-fr",
+      "title": "Vitruve. De architectura",
+      "subtitle": "Nouvelle recensio académique bilingue",
+      "languages": [
+        "la",
+        "fr"
+      ],
+      "version": "V554",
+      "year": "2026",
+      "category": "recensio",
+      "author": "Diego Kurilo",
+      "publisher": "Éditions Sophia Lux",
+      "pages": 1166,
+      "description": "Texte latin et traduction française en regard. PDF en cours d'incorporation.",
+      "searchable": false,
+      "available": false
+    },
+    {
+      "id": "theory-en",
+      "title": "The Architect of Theory",
+      "subtitle": "Vitruvius and the Intellectual World of Roman Antiquity",
+      "languages": [
+        "la",
+        "en"
+      ],
+      "version": "V297",
+      "year": "2026",
+      "category": "editions",
+      "author": "Diego Kurilo",
+      "publisher": "Sophia Lux",
+      "pages": 1056,
+      "description": "Latin–English reading edition and architectural commentary. PDF pending publication.",
+      "searchable": false,
+      "available": false
+    },
+    {
+      "id": "theory-es",
+      "title": "El arquitecto de la teoría",
+      "subtitle": "Vitruvio y el mundo intelectual de la Antigüedad romana",
+      "languages": [
+        "la",
+        "es"
+      ],
+      "version": "V424",
+      "year": "2026",
+      "category": "editions",
+      "author": "Diego Kurilo",
+      "publisher": "Editorial Sophia Lux",
+      "pages": 1045,
+      "description": "Versión anterior a la Nueva recensio. PDF pendiente de publicación.",
+      "searchable": false,
+      "available": false
+    },
+    {
+      "id": "theory-fr",
+      "title": "L’architecte de la théorie",
+      "subtitle": "Vitruve et le monde intellectuel de l’Antiquité romaine",
+      "languages": [
+        "la",
+        "fr"
+      ],
+      "version": "V464",
+      "year": "2026",
+      "category": "editions",
+      "author": "Diego Kurilo",
+      "publisher": "Éditions Sophia Lux",
+      "pages": 1045,
+      "description": "Édition antérieure à la Nouvelle recensio. PDF en cours d'incorporation.",
+      "searchable": false,
+      "available": false
+    }
+  ],
+  "total_pages": 0,
+  "searchable_pages": 0,
+  "base_edition": "recensio-es",
+  "semantic": {
+    "status": "pending"
+  }
+}
