@@ -106,12 +106,14 @@ function closeReader(){ readerRevision++;$('#reader-dialog').close();$('#reader-
 
 function openComparison(id='recensio-es',page=1){
   if($('#reader-dialog').open)closeReader();
-  const first=edition(id)||edition('recensio-es');
-  const second=edition(first.id==='recensio-fr'?'recensio-es':'recensio-fr');
+  const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length);
+  if(!available.length){window.alert('La consulta comparada estará disponible cuando las ediciones estén incorporadas.');return;}
+  const first=available.find(e=>e.id===id)||available[0];
+  const second=available.find(e=>e.id!==first.id)||first;
   const paneContainer=$('#comparison-panes');paneContainer.replaceChildren();
   [first,second].forEach((e,i)=>{
     const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=e.searchable?'text':'pdf';
-    const optionList=records.filter(x=>x.pdf||x.external).map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
+    const optionList=available.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
     pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
     $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode=selected.searchable?'text':'pdf';renderComparePane(pane);});
     $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
@@ -251,7 +253,7 @@ async function initialize(){
   $('#supplement-list').innerHTML=supplements.map(e=>`<article class="supplement"><time datetime="${e.date}">${escapeHTML(e.dateLabel)}</time><div><h3>${escapeHTML(e.title)}</h3><p>${escapeHTML(e.description)}</p></div><a class="text-link" href="${e.file}" download>Descargar ${escapeHTML(e.format)} ↓</a></article>`).join('');
   if(!supplements.length)$('#investigacion').hidden=true;
   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
-  $$('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);startSearch();}));
+  $('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);$('#search-status').textContent='Se abrió la consulta en el buscador externo.';}));
   $$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;startSearch();}));
   $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
   $('.catalog-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=$$('.catalog-tabs button');let i=tabs.indexOf(document.activeElement);i=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();});
