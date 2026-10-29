@@ -193,6 +193,31 @@ function downloadCSV(){
   const blob=new Blob(['\ufeff'+values.map(row=>row.map(csvValue).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='Vitruvius_Resultados.csv';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
 }
 
+function emailResults(){
+  const rows=resultExportRows();
+  if(!rows.length)return;
+  const subject='Vitruvius Digital Library — consulta: '+lastQuery.slice(0,100);
+  const limit=Math.min(rows.length,8);
+  const lines=[
+    'VITRUVIUS DIGITAL LIBRARY — RESULTADOS DE INVESTIGACIÓN',
+    'Consulta: '+lastQuery,
+    'Tipo: '+(searchKind==='semantic'?'Búsqueda por significado':searchKind==='count'?'Recuento de términos':'Búsqueda textual'),
+    'Resultados de la selección: '+rows.length+' (total: '+results.length+')',
+    countSummary?'Total de apariciones: '+countSummary.total+' en '+countSummary.pages+' páginas':'',
+    '',
+    'REFERENCIAS Y PASAJES'
+  ];
+  rows.slice(0,limit).forEach((r,i)=>{
+    const e=edition(r.edition);
+    lines.push((i+1)+'. '+e.title+' ('+e.version+'), p. PDF '+r.page);
+    lines.push(r.snippet.replace(/\\s+/g,' ').slice(0,170));
+    lines.push(sourceURL(e,r.page));
+    lines.push('');
+  });
+  lines.push('Para enviar el PDF completo con todos los contextos: primero elegí «Imprimir / guardar PDF» en el sitio, guardá el archivo y adjuntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
+  window.location.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\\n'));
+}
+
 function addSearchControls(){
   const options=$('.search-options');
   const label=document.createElement('label');label.innerHTML='Búsqueda<select id="search-kind"><option value="semantic">Por significado · IA local</option><option value="words">Por palabras</option><option value="count">Contar término y ver contextos</option></select>';options.prepend(label);
@@ -202,8 +227,8 @@ function addSearchControls(){
   const note=document.createElement('p');note.id='semantic-note';note.className='search-note';note.textContent='La primera búsqueda por significado descarga un modelo gratuito (aprox. 150 MB). La consulta se procesa en este dispositivo; los resultados son pasajes del corpus, con su página de origen.';$('.search-note').before(note);
   $('#search-mode').parentElement.hidden=true;
   $('#search-kind').addEventListener('change',()=>{const kind=$('#search-kind').value;$('#semantic-note').hidden=kind!=='semantic';$('#search-mode').parentElement.hidden=kind!=='words';$('#count-mode-label').hidden=kind!=='count';$('#count-note').hidden=kind!=='count';});
-  const tools=document.createElement('div');tools.id='export-tools';tools.className='export-tools';tools.hidden=true;tools.innerHTML='<label>Resultados del listado <select id="export-limit"><option value="20">Primeros 20</option><option value="50" selected>Primeros 50</option><option value="100">Primeros 100</option><option value="all">Todos</option></select></label><button type="button" class="button outline" id="print-results">Imprimir / guardar PDF</button><button type="button" class="text-link" id="csv-results">Descargar listado CSV ↓</button>';
-  $('#search-status').after(tools);$('#print-results').addEventListener('click',printResults);$('#csv-results').addEventListener('click',downloadCSV);
+  const tools=document.createElement('div');tools.id='export-tools';tools.className='export-tools';tools.hidden=true;tools.innerHTML='<label>Resultados del listado <select id="export-limit"><option value="20">Primeros 20</option><option value="50" selected>Primeros 50</option><option value="100">Primeros 100</option><option value="all">Todos</option></select></label><button type="button" class="button outline" id="print-results">Imprimir / guardar PDF</button><button type="button" class="text-link" id="csv-results">Descargar listado CSV ↓</button><button type="button" class="text-link" id="email-results">Preparar correo ↗</button>';
+  $('#search-status').after(tools);$('#print-results').addEventListener('click',printResults);$('#csv-results').addEventListener('click',downloadCSV);$('#email-results').addEventListener('click',emailResults);
 }
 
 async function initialize(){
