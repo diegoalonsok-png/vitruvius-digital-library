@@ -1,0 +1,72 @@
+name: Incorporar Krohn 1912
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-krohn.yml'
+permissions:
+  contents: write
+jobs:
+  import-krohn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Obtener edición histórica de Krohn
+        run: |
+          python -m pip install --disable-pip-version-check pymupdf requests
+          python - <<'PY'
+          import requests, pathlib
+          url='https://archive.org/download/vitruviidearchit00vitr/vitruviidearchit00vitr.pdf'
+          p=pathlib.Path('documents/krohn-1912.pdf')
+          p.parent.mkdir(parents=True, exist_ok=True)
+          with requests.get(url,timeout=90,stream=True,headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (academic archive)'}) as response:
+              response.raise_for_status()
+              with p.open('wb') as f:
+                  for chunk in response.iter_content(1024*1024):
+                      if chunk:f.write(chunk)
+          assert p.stat().st_size>100_000,'The downloaded PDF is empty or incomplete'
+          import fitz
+          pdf=fitz.open(p)
+          assert len(pdf)>200,'Unexpected page count'
+          print('Valid PDF',len(pdf),'pages;',p.stat().st_size,'bytes')
+          PY
+      - name: Construir índice por página y actualizar catálogo
+        run: |
+          python - <<'PY'
+          import fitz,json,pathlib
+          pdf=fitz.open('documents/krohn-1912.pdf')
+          pages=[{'page':i+1,'text':p.get_text('text',sort=True)} for i,p in enumerate(pdf)]
+          assert sum(bool(p['text'].strip()) for p in pages)>150,'Insufficient searchable pages'
+          out=pathlib.Path('data/text/krohn-1912.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(pages,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+          path=pathlib.Path('data/catalog.json')
+          cat=json.loads(path.read_text(encoding='utf-8'))
+          rec={'id':'krohn-1912','title':'Vitruvii De architectura libri decem',
+          'subtitle':'Fritz Krohn, Teubner 1912 — edición latina histórica',
+          'languages':['la'],'version':'Krohn 1912','year':'1912',
+          'category':'historical','author':'Fritz Krohn (editor)',
+          'publisher':'B. G. Teubner','pages':len(pages),
+          'description':'Edición crítica del texto latino, Leipzig 1912. Facsímil de Internet Archive.',
+          'pdf':'documents/krohn-1912.pdf','text_index':'data/text/krohn-1912.json',
+          'searchable':True,'available':True,
+          'source_url':'https://archive.org/details/vitruviidearchit00vitr'}
+          cat['editions']=[e for e in cat['editions'] if e['id']!='krohn-1912']+[rec]
+          cat['total_pages']=sum(e['pages'] for e in cat['editions'] if e.get('available'))
+          cat['searchable_pages']=sum(e['pages'] for e in cat['editions'] if e.get('searchable'))
+          path.write_text(json.dumps(cat,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('Published corpus:',len(pages),'Krohn PDF pages')
+          PY
+      - name: Registrar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/krohn-1912.pdf data/text/krohn-1912.json data/catalog.json
+          if ! git diff --staged --quiet; then
+            git commit -m "Publish verified Krohn 1912 PDF and searchable index"
+            git push
+          fi
