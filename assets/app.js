@@ -166,6 +166,10 @@ function ensureWorker(){
 function startSearch(){
   const query=$('#query').value.trim();if(!query)return;
   if($('#search-kind').value==='internet'){ searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return; }
+  if(!records.some(e=>e.searchable&&e.text_index)){
+    $('#search-status').textContent='Todavía no hay PDF con índice textual publicado. Usá las opciones Google o Google Académico; las ediciones están en incorporación.';
+    return;
+  }
   lastQuery=query;searchKind=$('#search-kind').value;results=[];countSummary=null;renderCountSummary(null);shown=0;requestId++;
   $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();
   $('#search-status').textContent=searchKind==='semantic'?'Preparando la búsqueda por significado…':searchKind==='count'?'Preparando el recuento del término…':'Preparando la búsqueda en las ediciones seleccionadas…';
@@ -248,6 +252,22 @@ async function initialize(){
   $('#stat-records').textContent=records.length;$('#stat-pages').textContent=catalog.total_pages.toLocaleString('es-AR');
   $('#historic-count').textContent=records.filter(e=>e.category==='historical').length;$('#manuscript-count').textContent=records.filter(e=>e.category==='manuscripts').length;
   renderCatalog();
+  // Verify the actual repository inventory before exposing publication links.
+  const primaryIds=['recensio-es','recensio-fr','theory-en'];
+  for(const id of primaryIds){
+    const e=edition(id);
+    const control=document.querySelector('.principal-edition [data-read="'+id+'"]');
+    const link=document.querySelector('.principal-edition a[href="documents/'+id+'.pdf"]');
+    if(!e?.available||!e?.pdf){
+      if(control){control.disabled=true;control.title='PDF en incorporación';control.setAttribute('aria-label','PDF en incorporación');}
+      if(link){link.removeAttribute('href');link.removeAttribute('download');link.setAttribute('aria-disabled','true');link.title='PDF en incorporación';link.style.cursor='not-allowed';}
+    }else if(link){link.href=e.pdf;}
+  }
+  if(!records.some(e=>e.searchable&&e.text_index)){
+    const input=document.querySelector('#query');
+    if(input)input.placeholder='Corpus textual en incorporación; podés buscar en Google y Google Académico';
+    $('#search-status').textContent='Los índices textuales todavía no están publicados. La búsqueda dentro de los libros estará disponible cuando se incorporen. Mientras tanto, podés consultar las fuentes externas.';
+  }
   if(loads[1].status==='rejected')$('#catalog-status').textContent+=' · El catálogo externo no se pudo cargar.';
   const supplements=loads[2].status==='fulfilled'?loads[2].value:[];
   $('#supplement-list').innerHTML=supplements.map(e=>`<article class="supplement"><time datetime="${e.date}">${escapeHTML(e.dateLabel)}</time><div><h3>${escapeHTML(e.title)}</h3><p>${escapeHTML(e.description)}</p></div><a class="text-link" href="${e.file}" download>Descargar ${escapeHTML(e.format)} ↓</a></article>`).join('');
