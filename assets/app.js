@@ -62,7 +62,7 @@ function renderCatalog(){
     const external=Boolean(e.external);
     const cover=external?`<div class="edition-date">${escapeHTML(e.dateShort||e.year)}</div>`:`<button type="button" class="cover-link" data-read="${e.id}" aria-label="Leer ${escapeHTML(e.title)}"><img src="${escapeHTML(e.cover)}" alt="Portada de ${escapeHTML(e.title)}" loading="lazy" width="123" height="188"></button>`;
     const label=e.category==='recensio'?'Edición principal':e.category==='manuscripts'?'Testimonio manuscrito':e.category==='studies'?'Estudio':e.languages.length===1&&e.languages[0]==='la'?'Edición del texto latino':e.languages.includes('la')?'Edición bilingüe':'Traducción histórica';
-    let actions=external?`<a class="button outline" href="${escapeHTML(e.read_url||e.source_url)}" target="_blank" rel="noopener">${e.access==='catalog'?'Ficha institucional':'Leer en la institución'} ↗</a>`:`<button type="button" class="button primary" data-read="${e.id}">Leer en línea →</button><a href="${downloadLink(e,'pdf')}" data-download="${e.id}" data-format="pdf" download>PDF ↓</a>${e.docx?`<a href="${downloadLink(e,'docx')}" data-download="${e.id}" data-format="docx" download>DOCX ↓</a>`:''}<button type="button" data-compare="${e.id}">Comparar</button>`;
+    let actions=external?`<a class="button outline" href="${escapeHTML(e.read_url||e.source_url)}" target="_blank" rel="noopener">${e.access==='catalog'?'Ficha institucional':'Leer en la institución'} ↗</a>`:e.pdf||e.pdf_chunks?.length?`<button type="button" class="button primary" data-read="${e.id}">Leer en línea →</button><a href="${downloadLink(e,'pdf')}" data-download="${e.id}" data-format="pdf" download>PDF ↓</a>${e.docx?`<a href="${downloadLink(e,'docx')}" data-download="${e.id}" data-format="docx" download>DOCX ↓</a>`:''}<button type="button" data-compare="${e.id}">Comparar</button>`:`<span class="pending-source" aria-label="Documento pendiente de incorporación">Documento en incorporación</span>`;
     if(external&&e.pdf_url)actions+=`<a href="${escapeHTML(e.pdf_url)}" target="_blank" rel="noopener">PDF${e.pdf_size_mb?` (${Math.round(e.pdf_size_mb)} MB)`:''} ↗</a>`;
     if(external&&e.read_url&&e.source_url!==e.read_url)actions+=`<a href="${escapeHTML(e.source_url)}" target="_blank" rel="noopener">Ficha ↗</a>`;
     if(!external&&e.source_url)actions+=`<a href="${escapeHTML(e.source_url)}" target="_blank" rel="noopener">Fuente ↗</a>`;
@@ -80,6 +80,7 @@ async function getPages(e){
 
 async function openReader(id,page=1){
   const e=edition(id);if(!e)return;
+  if(!e.external&&!e.pdf&&!e.pdf_chunks?.length){window.alert('Esta edición todavía no tiene un documento incorporado al sitio.');return;}
   if(e.external){window.open(e.read_url||e.source_url,'_blank','noopener');return;}
   currentReader=e;$('#reader-title').textContent=e.title;$('#reader-edition').textContent=`${e.version} · ${languageLabel(e)}`;
   $('#reader-download').href=downloadLink(e,'pdf');$('#reader-download').download=`${e.id}.pdf`;$('#reader-download').dataset.download=e.id;$('#reader-download').dataset.format='pdf';
