@@ -7,7 +7,7 @@ const pageCache = new Map();
 const documentCache = new Map();
 let readerRevision=0;
 let catalog, records=[], category='recensio', worker, requestId=0, results=[], shown=0, lastQuery='', currentReader=null, currentPage=1;
-let searchKind='semantic',countSummary=null;
+let searchKind='words',countSummary=null;
 
 async function fetchJSON(path){ const r=await fetch(path); if(!r.ok)throw new Error(`No se pudo abrir ${path}`);return r.json(); }
 function edition(id){return records.find(e=>e.id===id);}
@@ -162,6 +162,7 @@ function ensureWorker(){
 
 function startSearch(){
   const query=$('#query').value.trim();if(!query)return;
+  if($('#search-kind').value==='internet'){ searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return; }
   lastQuery=query;searchKind=$('#search-kind').value;results=[];countSummary=null;renderCountSummary(null);shown=0;requestId++;
   $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();
   $('#search-status').textContent=searchKind==='semantic'?'Preparando la búsqueda por significado…':searchKind==='count'?'Preparando el recuento del término…':'Preparando la búsqueda en las ediciones seleccionadas…';
@@ -220,13 +221,13 @@ function emailResults(){
 
 function addSearchControls(){
   const options=$('.search-options');
-  const label=document.createElement('label');label.innerHTML='Búsqueda<select id="search-kind"><option value="semantic">Por significado · IA local</option><option value="words">Por palabras</option><option value="count">Contar término y ver contextos</option></select>';options.prepend(label);
+  const label=document.createElement('label');label.innerHTML='Búsqueda<select id="search-kind"><option value="words" selected>Buscar palabras y frases en los libros</option><option value="count">Contar término y ver contextos</option><option value="semantic">Por significado · IA local</option><option value="internet">Buscar en internet</option></select>';const provider=document.createElement('label');provider.id='internet-provider-main-label';provider.hidden=true;provider.innerHTML='Buscador<select id="internet-provider-main"><option value="web">Google</option><option value="scholar">Google Académico</option></select>';options.append(provider);options.prepend(label);
   const countLabel=document.createElement('label');countLabel.id='count-mode-label';countLabel.hidden=true;countLabel.innerHTML='Recuento<select id="count-mode"><option value="exact">Palabra o frase exacta</option><option value="prefix">Raíz · empieza por</option></select>';options.append(countLabel);
   const countNote=document.createElement('p');countNote.id='count-note';countNote.className='search-note';countNote.hidden=true;countNote.textContent='Ejemplo latino: symmetria para la palabra completa; symmetr en modo raíz para incluir sus terminaciones. El recuento muestra cada aparición y su contexto, con la página de origen.';$('.search-note').before(countNote);
   const summary=document.createElement('div');summary.id='term-count-summary';summary.className='term-count-summary';summary.hidden=true;$('#search-status').after(summary);
   const note=document.createElement('p');note.id='semantic-note';note.className='search-note';note.textContent='La primera búsqueda por significado descarga un modelo gratuito (aprox. 150 MB). La consulta se procesa en este dispositivo; los resultados son pasajes del corpus, con su página de origen.';$('.search-note').before(note);
-  $('#search-mode').parentElement.hidden=true;
-  $('#search-kind').addEventListener('change',()=>{const kind=$('#search-kind').value;$('#semantic-note').hidden=kind!=='semantic';$('#search-mode').parentElement.hidden=kind!=='words';$('#count-mode-label').hidden=kind!=='count';$('#count-note').hidden=kind!=='count';});
+  $('#search-mode').parentElement.hidden=false;$('#semantic-note').hidden=true;
+  $('#search-kind').addEventListener('change',()=>{const kind=$('#search-kind').value;$('#semantic-note').hidden=kind!=='semantic';$('#search-mode').parentElement.hidden=kind!=='words';$('#count-mode-label').hidden=kind!=='count';$('#count-note').hidden=kind!=='count';$('#internet-provider-main-label').hidden=kind!=='internet';$('#scope').parentElement.hidden=kind==='internet';});
   const tools=document.createElement('div');tools.id='export-tools';tools.className='export-tools';tools.hidden=true;tools.innerHTML='<label>Resultados del listado <select id="export-limit"><option value="20">Primeros 20</option><option value="50" selected>Primeros 50</option><option value="100">Primeros 100</option><option value="all">Todos</option></select></label><button type="button" class="button outline" id="print-results">Imprimir / guardar PDF</button><button type="button" class="text-link" id="csv-results">Descargar listado CSV ↓</button><button type="button" class="text-link" id="email-results">Preparar correo ↗</button>';
   $('#search-status').after(tools);$('#print-results').addEventListener('click',printResults);$('#csv-results').addEventListener('click',downloadCSV);$('#email-results').addEventListener('click',emailResults);
 }
