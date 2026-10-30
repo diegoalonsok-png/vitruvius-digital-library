@@ -41,7 +41,31 @@ self.onmessage=async({data:m})=>{
     warnings.push('Correspondencia griego–latín: '+requested+' → '+equivalent+'. Se buscan las formas latinas, no apariciones literales del griego.');
    }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
   }
-  const output=searchCorpus(datasets,effective);
+  let output=searchCorpus(datasets,effective);
+  // For a single technical term, also locate documented Latin inflections
+  // and translate an exact Spanish/French/English dictionary equivalent.
+  if(!direct&&!heading&&requested.split(/\s+/).length===1&&m.kind==='words'){
+   try{
+    const response=await fetch(new URL('data/latin-lexicon.json',m.baseURL));
+    if(response.ok){
+     const entries=(await response.json()).entries||[];
+     const norm=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+     const token=norm(requested);
+     const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.es,e.en,e.fr].filter(Boolean).some(x=>norm(x)===token));
+     if(entry){
+      const forms=[...new Set([requested,entry.lemma,...(entry.forms||[])])];
+      const seen=new Set(output.results.map(x=>x.edition+'|'+x.locus+'|'+x.language));
+      for(const form of forms){
+       if(norm(form)===token)continue;
+       const extra=searchCorpus(datasets,{...effective,query:form,kind:'words'});
+       for(const hit of extra.results){const key=hit.edition+'|'+hit.locus+'|'+hit.language;if(!seen.has(key)){seen.add(key);output.results.push(hit);}}
+      }
+      output.results.sort((a,b)=>a.book-b.book||Number(a.chapter||0)-Number(b.chapter||0)||a.section-b.section);
+      warnings.push('Lema '+entry.lemma+': se incluyeron las formas registradas del léxico; el recuento mostrado es de pasajes distintos.');
+     }
+    }
+   }catch{warnings.push('No se pudo cargar el léxico de formas; se muestran coincidencias literales.');}
+  }
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
 };
