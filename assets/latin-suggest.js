@@ -1,78 +1,36 @@
 (async()=>{
- const input=document.getElementById('query');if(!input)return;
- const host=document.createElement('div');host.id='latin-suggest';host.hidden=true;
- host.setAttribute('role','listbox');host.setAttribute('aria-label','Sugerencias léxicas latinas');
- host.style.cssText='position:relative;z-index:5;border:1px solid #c4c1b8;background:#faf8f4;padding:12px 16px;max-height:245px;overflow:auto;font-size:14px;line-height:1.6';
- const form=document.getElementById('search-form');form?.append(host);
- const gloss=document.createElement('div');gloss.id='latin-gloss';gloss.hidden=true;
- gloss.setAttribute('aria-live','polite');
- gloss.style.cssText='font-size:13px;line-height:1.65;padding:10px 16px;border:1px solid #d4d0c7;border-top:0;background:transparent;color:#34475a';
- form?.after(gloss);
-
- let entries=[{lemma:'dispositio',forms:['dispositionis','dispositionem','dispositione'],es:'disposición, ordenación'},{lemma:'symmetria',forms:['symmetriae','symmetriam'],es:'proporción'},{lemma:'architectura',forms:['architecturae','architecturam'],es:'arquitectura'},{lemma:'verbum',forms:['verba','verbi','verbis','verborum'],es:'palabra'}];
- try{const res=await fetch('data/latin-lexicon.json',{cache:'no-store'});if(res.ok){const loaded=(await res.json()).entries;if(Array.isArray(loaded)&&loaded.length)entries=loaded;}}catch{ /* Leave the useful embedded fallback active. */ }
- const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
- const displayGloss=()=>{
-  const token=norm(input.value.trim().split(/\s+/).slice(-1)[0]||'');
-  const entry=entries.find(e=>[e.lemma,...e.forms].some(w=>norm(w)===token));
-  if(!entry){gloss.hidden=true;gloss.replaceChildren();return;}
-  gloss.replaceChildren();
-  const line=(label,value)=>{
-    if(!value)return;
-    const p=document.createElement('p');p.style.cssText='margin:4px 0';
-    const strong=document.createElement('strong');strong.textContent=label+' ';
-    p.append(strong,document.createTextNode(value));gloss.append(p);
-  };
-  const title=document.createElement('div');title.style.cssText='font-family:Georgia,serif;font-size:21px;color:#122a42;margin-bottom:6px';title.textContent=entry.headword||entry.lemma;gloss.append(title);
-  line('Gramática:',entry.pos);
-  line('Castellano:',entry.es);
-  line('English:',entry.en);
-  line('Français:',entry.fr);
-  line('Griego relacionado:',entry.greek);
-  if(entry.senses?.length)line('Acepciones:',entry.senses.join(' · '));
-  if(entry.vitruvian)line('Uso vitruviano (nota editorial):',entry.vitruvian);
-  if(entry.references?.length)line('Testimonios citados:',entry.references.join('; '));
-  line('Formas para buscar:',[entry.lemma,...entry.forms].filter((v,i,a)=>a.indexOf(v)===i).slice(0,12).join(' · '));
-  const source=document.createElement('p');source.style.cssText='margin:7px 0';
-  const a=document.createElement('a');a.href=entry.source_url||'https://logeion.uchicago.edu/'+encodeURIComponent(entry.lemma);
-  a.target='_blank';a.rel='noopener noreferrer';a.textContent=entry.source?'Fuente: '+entry.source+' ↗':'Contrastar la entrada en Logeion (Universidad de Chicago) ↗';
-  source.append(a);gloss.append(source);
-  const note=document.createElement('small');note.style.cssText='display:block;color:#68716d';
-  note.textContent=entry.verified?'Datos lexicográficos cotejados; las notas técnicas son interpretación editorial.':'Glosas y notas orientativas; falta cotejar esta entrada con una edición lexicográfica concreta.';
-  gloss.append(note);gloss.hidden=false;
- };
- const hide=()=>{host.hidden=true;host.replaceChildren();input.setAttribute('aria-expanded','false');};
- const update=()=>{
-  const q=norm(input.value.trim().split(/\s+/).slice(-1)[0]||'');
-  displayGloss();
-  if(q.length<3){hide();return;}
-  const results=[];
-  for(const entry of entries){
-   const matched=[entry.lemma,...entry.forms].filter(v=>norm(v).startsWith(q));
-   if(!matched.length)continue;
-   for(const form of [...new Set(matched)])results.push({form,lemma:entry.lemma,meaning:entry.es});
+ const input=document.getElementById('query')||document.getElementById('term');if(!input)return;
+ const form=input.form;if(!form)return;
+ const host=document.createElement('div');host.id='latin-suggest';host.hidden=true;host.className='dictionary-entry';host.setAttribute('aria-label','Sugerencias léxicas latinas');form.append(host);
+ const gloss=document.createElement('section');gloss.id='latin-gloss';gloss.className='dictionary-entry';gloss.hidden=true;gloss.setAttribute('aria-live','polite');form.after(gloss);
+ let entries=[];
+ try{const response=await fetch('data/latin-lexicon.json?v=20261030-docx-1');if(!response.ok)throw Error();entries=(await response.json()).entries;}catch{gloss.hidden=false;gloss.textContent='El diccionario local no pudo cargarse. Volvé a intentarlo al recargar.';return;}
+ const norm=s=>String(s).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+ function textLine(parent,label,value){if(!value)return;const p=document.createElement('p'),b=document.createElement('strong');b.textContent=label+' ';p.append(b,document.createTextNode(value));parent.append(p);}
+ function displayGloss(){
+  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return;
+  const entry=entries.find(e=>[e.lemma,...e.forms||[]].some(w=>norm(w)===token));
+  if(!entry){
+   if(value.split(/\s+/).length!==1)return;
+   const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Diccionario latino: «'+value+'»';details.append(summary);textLine(details,'','Esta forma no tiene una entrada incorporada en el léxico local.');const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener';a.textContent='Consultar esta forma en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
   }
-  results.sort((a,b)=>(a.form===q?-1:b.form===q?1:0)||a.form.length-b.form.length||a.form.localeCompare(b.form));
-  host.replaceChildren();
-  if(!results.length){hide();return;}
-  const label=document.createElement('div');label.textContent='Sugerencias de formas latinas · selección para buscar';label.style.cssText='color:#67716a;font-size:12px;margin-bottom:7px';host.append(label);
-  for(const item of results.slice(0,15)){
-   const button=document.createElement('button');button.type='button';button.setAttribute('role','option');
-   button.style.cssText='display:block;width:100%;text-align:left;background:transparent;border:0;border-top:1px solid #e2dfd8;padding:6px 3px;cursor:pointer;color:#122a42;font:inherit';
-   button.textContent=item.form+' · '+item.lemma+' ('+item.meaning+')';
-   button.addEventListener('click',()=>{const pieces=input.value.trim().split(/\s+/);pieces[pieces.length-1]=item.form;input.value=pieces.join(' ');hide();displayGloss();input.focus();});
-   host.append(button);
-  }
-  const note=document.createElement('small');note.textContent='Lista orientativa, no diccionario morfológico completo. Las apariciones se verifican al buscar en cada edición.';note.style.cssText='display:block;color:#68716d;margin-top:6px';host.append(note);
-  host.hidden=false;input.setAttribute('aria-expanded','true');
- };
- input.setAttribute('aria-autocomplete','list');
- input.setAttribute('aria-controls','latin-suggest');
- input.addEventListener('input',update);
- input.addEventListener('change',displayGloss);
- input.addEventListener('focus',update);
- input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();});
- document.addEventListener('click',e=>{if(e.target!==input&&!host.contains(e.target))hide();});
- form?.addEventListener('submit',()=>{hide();displayGloss();});
- displayGloss();
+  const details=document.createElement('details');details.open=true;const summary=document.createElement('summary');summary.textContent='Diccionario latino · '+(entry.headword||entry.lemma);details.append(summary);
+  const h=document.createElement('h3');h.textContent=entry.headword||entry.lemma;details.append(h);
+  textLine(details,'Forma buscada:',value);textLine(details,'Análisis:',entry.morphology?.[Object.keys(entry.morphology||{}).find(k=>norm(k)===token)]);textLine(details,'Gramática:',entry.pos);
+  textLine(details,'Castellano:',entry.es);textLine(details,'English:',entry.en);textLine(details,'Français:',entry.fr);
+  if(entry.senses?.length){const list=document.createElement('ol');for(const sense of entry.senses){const li=document.createElement('li');li.textContent=sense;list.append(li);}details.append(list);}
+  textLine(details,'Nota de uso vitruviano:',entry.vitruvian);
+  textLine(details,'Testimonios:',entry.references?.join('; '));
+  const forms=document.createElement('details'),formsSummary=document.createElement('summary');formsSummary.textContent='Formas de esta entrada para buscar en el tratado';forms.append(formsSummary);
+  for(const value of [...new Set([entry.lemma,...entry.forms||[]])]){const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent=value;b.addEventListener('click',()=>{input.value=value;host.hidden=true;displayGloss();form.requestSubmit();});forms.append(b);}details.append(forms);
+  const p=document.createElement('p');p.className='source';const a=document.createElement('a');a.href=entry.source_url||'https://logeion.uchicago.edu/'+encodeURIComponent(entry.lemma);a.target='_blank';a.rel='noopener noreferrer';a.textContent=entry.source?'Fuente: '+entry.source+' ↗':'Consultar la entrada en Logeion · Universidad de Chicago ↗';p.append(a);details.append(p);
+  textLine(details,'',entry.verified?'Síntesis castellana de la entrada citada; las notas de uso son editoriales.':'Glosa orientativa del léxico local. La entrada lexicográfica completa se consulta en la fuente enlazada.');gloss.append(details);gloss.hidden=false;
+ }
+ function hide(){host.hidden=true;host.replaceChildren();input.setAttribute('aria-expanded','false');}
+ function update(){
+  displayGloss();const q=norm(input.value.trim().split(/\s+/).at(-1)||'');hide();if(q.length<3)return;
+  const matches=entries.flatMap(e=>[...new Set([e.lemma,...e.forms||[]])].filter(v=>norm(v).startsWith(q)&&norm(v)!==q).map(form=>({entry:e,form}))).slice(0,8);if(!matches.length)return;
+  for(const{entry,form:word}of matches){const b=document.createElement('button');b.type='button';b.className='dictionary-suggestion';b.textContent=word+' · '+entry.lemma+' — '+entry.es;b.addEventListener('click',()=>{input.value=word;hide();displayGloss();input.focus();});host.append(b);}host.hidden=false;input.setAttribute('aria-expanded','true');
+ }
+ input.setAttribute('aria-controls','latin-suggest');input.setAttribute('aria-autocomplete','list');input.addEventListener('input',update);input.addEventListener('change',displayGloss);input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();if(e.key==='ArrowDown'&&!host.hidden){e.preventDefault();host.querySelector('button')?.focus();}});form.addEventListener('submit',()=>{hide();displayGloss();});document.addEventListener('click',e=>{if(e.target!==input&&!host.contains(e.target))hide();});displayGloss();
 })();

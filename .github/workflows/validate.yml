@@ -12,6 +12,10 @@ jobs:
         run: |
           node --check assets/app.js
           node --check assets/search-worker.js
+          node --check assets/bilingual.js
+          node --check assets/latin-suggest.js
+          node --check assets/theme.js
+          node scripts/test-search.mjs
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'
@@ -36,3 +40,4 @@ jobs:
 
       - name: Auditoría reproducible de vínculos, buscador e índices
         run: python scripts/audit_site.py
+

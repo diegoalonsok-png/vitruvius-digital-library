@@ -1,99 +1,70 @@
-const $=id=>document.getElementById(id);
-const meta={es:['Traducción castellana','Diego Kurilo · V514 · 2026'],fr:['Traduction française','Diego Kurilo · V554 · 2026'],en:['English translation','Diego Kurilo · V297 · 2026']};
-let passages=[];
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function highlight(value,term){if(!term)return esc(value);const normalized=value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),needle=term.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();let from=0,at,html='';while(needle&&(at=normalized.indexOf(needle,from))>=0){html+=esc(value.slice(from,at))+'<mark>'+esc(value.slice(at,at+needle.length))+'</mark>';from=at+needle.length}return html+esc(value.slice(from))}
-function options(select,values){const old=select.value;select.replaceChildren(...values.map(v=>{const o=document.createElement('option');o.value=String(v);o.textContent=String(v);return o}));if(values.map(String).includes(old))select.value=old}
-function refreshFilters(){
-  // Navigation must not disappear merely because a book is not yet transcribed.
-  options($('book'),Array.from({length:10},(_,i)=>i+1));
-  const chapterNumbers=[...new Set(passages.filter(p=>String(p.book)===$('book').value).map(p=>p.chapter))];
-  options($('chapter'),[...new Set([...Array.from({length:20},(_,i)=>i+1),...chapterNumbers])].sort((a,b)=>a-b));
-  const sectionNumbers=[...new Set(passages.filter(p=>String(p.book)===$('book').value&&String(p.chapter)===$('chapter').value).map(p=>p.section))];
-  options($('section'),[...new Set([...Array.from({length:40},(_,i)=>i+1),...sectionNumbers])].sort((a,b)=>a-b));
+import {citation,roman,parseLocus,searchCorpus,tokens} from './search-core.mjs?v=20261030-docx-1';
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const editionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'},names={es:'Castellano',fr:'Français',en:'English'};
+const datasets={},records={};
+const atLocus=(p,locus)=>p.locus===locus||Boolean(p.section_end&&(()=>{const r=parseLocus(locus);return r&&p.book===r.book&&p.chapter===r.chapter&&r.section>=p.section&&r.section<=p.section_end;})());let all=[],current=null,query='',pendingLocus=null;
+const params=new URLSearchParams(location.search);
+if(params.has('edition'))$('lang').value=Object.keys(editionIds).find(k=>editionIds[k]===params.get('edition'))||'es';
+query=params.get('q')||'';$('term').value=query;
+function options(id,values,selected){$(id).replaceChildren(...values.map(([value,label])=>{const o=document.createElement('option');o.value=String(value);o.textContent=label;return o;}));if(values.some(([v])=>String(v)===String(selected)))$(id).value=String(selected);}
+function refresh(book,chapter,section){
+ options('book',Array.from({length:10},(_,i)=>[i+1,'Libro '+roman(i+1)]),book);
+ const rows=all.filter(p=>p.book===Number($('book').value));const chapters=[...new Set(rows.map(p=>p.chapter))].sort((a,b)=>(a==='praef'?-1:Number(a))-(b==='praef'?-1:Number(b)));
+ options('chapter',chapters.map(c=>[c,c==='praef'?'Prólogo':'Capítulo '+c]),chapter);
+ const sections=[...new Set(rows.filter(p=>String(p.chapter)===$('chapter').value).map(p=>p.section))].sort((a,b)=>a-b);
+ options('section',sections.map(n=>[n,'Sección '+n]),section);
 }
-function render(){const lang=$('lang').value,term=$('term').value.trim(),locus=[$('book').value,$('chapter').value,$('section').value].join('.');const p=passages.find(p=>p.locus===locus);$('translation-title').textContent=meta[lang][0];$('translation-source').textContent=meta[lang][1];$('latin-ref').textContent=$('translation-ref').textContent=p?'Vitr., De arch. '+locus:'';$('latin-text').innerHTML=p?highlight(p.latin,term):'';$('translation-text').innerHTML=p?highlight(p.translations[lang],term):'';$('status').textContent=p?'Pasaje '+locus+' · texto latino y traducción alineados.':'Referencia '+locus+' no disponible en el corpus bilingüe. Solo I.1.1 está cotejado por ahora.';$('unaligned-help').hidden=Boolean(p)}
-$('form').addEventListener('submit',event=>{event.preventDefault();render()});
-$('open-full-edition').addEventListener('click',()=>{
- const lang=$('lang').value;
- $('full-edition').value=lang==='es'?'recensio-es':lang==='fr'?'recensio-fr':'theory-en';
- const locus=[$('book').value,$('chapter').value,$('section').value].join('.');
- $('full-locus').value=locus;
- const p=checkedLoci[locus]?.[$('full-edition').value];
- $('full-page').value=p||1;
- lastFullSearch='';
- showFullPage();
- $('full-book').scrollIntoView({behavior:'smooth',block:'start'});
-});
-
-const selectPassage=()=>{refreshFilters();render();if(!$('unaligned-help').hidden){const key=[$('book').value,$('chapter').value,$('section').value].join('.');const id=$('lang').value==='es'?'recensio-es':$('lang').value==='fr'?'recensio-fr':'theory-en';const page=checkedLoci[key]?.[id];$('status').textContent=page?'El pasaje '+key+' no está alineado todavía. Su comienzo está localizado en la página '+page+' de la edición '+id+'. Abrí la edición completa debajo.':'El pasaje '+key+' todavía no está alineado ni tiene página cotejada; no se puede mostrar una traducción fiable.';}};
-$('lang').addEventListener('change',selectPassage);$('book').addEventListener('change',selectPassage);$('chapter').addEventListener('change',selectPassage);$('section').addEventListener('change',selectPassage);
-try{const response=await fetch('data/bilingual-passages.json');if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();passages=data.passages||[];refreshFilters();render()}catch(error){$('status').textContent='No se pudo cargar el corpus bilingüe: '+error.message}
-
-
-// Full-edition reader: all indexed pages, independent of the locus-aligned scholarly edition.
-const fullIndexes={};
-let lastFullSearch='';
-const normalizeFull=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase();
-const fullNames={'recensio-es':'V514 · Diego Kurilo · latín-castellano','recensio-fr':'V554 · Diego Kurilo · latín-francés','theory-en':'V297 · Diego Kurilo · latín-inglés'};
-let fullSerial=0;
-async function showFullPage(){
- const serial=++fullSerial,id=$('full-edition').value;
- $('full-status').textContent='Cargando texto indexado de '+fullNames[id]+'…';
- try{
-   if(!fullIndexes[id]){
-     const response=await fetch('data/text/'+id+'.json');
-     if(!response.ok)throw Error('HTTP '+response.status);
-     fullIndexes[id]=await response.json();
-   }
-   if(serial!==fullSerial)return;
-   const pages=fullIndexes[id],page=Math.min(pages.length,Math.max(1,Number($('full-page').value)||1));
-   $('full-page').value=page;$('full-page').max=pages.length;
-   const raw=String(pages[page-1]?.text||'');
-   // Join only explicit PDF end-of-line hyphenation; retain true compound words until source review.
-   const reflow=raw.replace(/\bpú[-‐]\s+blicos\b/gi,'públicos')
-     .replace(/([A-Za-zÀ-ÿ])[-‐¬]\s*\n\s*([a-zà-ÿ])/g,'$1$2')
-     .replace(/([^\n])\n(?!\n)/g,'$1 ')
-     .replace(/\n{3,}/g,'\n\n');
-   $('full-text').innerHTML=reflow?highlight(reflow,lastFullSearch):'No hay texto extraíble en esta página.';
-   $('full-prev').disabled=page<=1;$('full-next').disabled=page>=pages.length;
-   $('full-ref').textContent=fullNames[id]+' · página indexada '+page+'/'+pages.length+' · locus aún no cotejado';
-   $('full-status').textContent='Índice completo disponible: '+pages.length+' páginas. Usá las flechas para avanzar. Los saltos de página no son límites de pasaje.';
- }catch(error){if(serial===fullSerial)$('full-status').textContent='No se pudo cargar la edición: '+error.message;}
+function highlight(text){
+ const wanted=new Set(tokens(query).map(t=>t.value));if(!wanted.size)return esc(text);
+ let html='',at=0;for(const t of tokens(text)){if(!wanted.has(t.value))continue;html+=esc(text.slice(at,t.start))+'<mark>'+esc(text.slice(t.start,t.end))+'</mark>';at=t.end;}return html+esc(text.slice(at));
 }
-// Navigate only known, checked edition-to-locus offsets; never infer a passage from PDF numbering.
-const checkedLoci={
- '1.1.1':{'recensio-es':205,'recensio-fr':205,'theory-en':226},
- '1.2.1':{'recensio-es':227,'recensio-fr':229},
- '8.1.1':{'recensio-es':749,'recensio-fr':753,'theory-en':740}
-};
-$('full-go-locus').addEventListener('click',async()=>{
- const raw=$('full-locus').value.trim().toUpperCase();
- const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
- const m=raw.match(/^([IVX]+|10|[1-9])\.(\d{1,2})\.(\d{1,3})$/);
- if(!m){$('full-status').textContent='Ingresá libro.capítulo.sección, por ejemplo VIII.1.1';return;}
- const locus=(roman[m[1]]||Number(m[1]))+'.'+Number(m[2])+'.'+Number(m[3]);
- const id=$('full-edition').value,p=checkedLoci[locus]?.[id];
- if(!p){$('full-status').textContent='El locus '+locus+' todavía no está cotejado en esta edición. No voy a mostrar una página equivocada.';return;}
- lastFullSearch='';$('full-page').value=p;await showFullPage();
- $('full-status').textContent='Vitr., De arch. '+locus+' · inicio identificado en página indexada '+p+'. El capítulo puede continuar en las páginas siguientes.';
+function clearReading(message){
+ for(const id of ['latin-text','translation-text','latin-title','latin-source','translation-source','passage-ref','pdf-links','provenance-text'])$(id).replaceChildren();$('other-translations').replaceChildren();$('status').textContent=message;current=null;$('prev').disabled=$('next').disabled=true;
+}
+function render(){
+ const locus=[$('book').value,$('chapter').value,$('section').value].join('.'),lang=$('lang').value,data=datasets[editionIds[lang]],p=data?.passages.find(p=>atLocus(p,locus));
+ const base=all.find(p=>atLocus(p,locus));current=base||null;
+ if(!base){clearReading('Referencia no encontrada: '+locus+'. Revisá el libro, capítulo y sección.');return;}
+ $('locus').value=roman(base.book)+'.'+base.chapter+'.'+base.section;$('passage-ref').textContent=citation(base);
+ $('translation-title').textContent=names[lang];$('translation-source').textContent='Diego Kurilo · '+(data?.version||lang);
+ $('latin-title').textContent=citation(p||base);$('latin-source').textContent='Texto latino de la edición '+(p?data.version:'V514')+' · Diego Kurilo';
+ $('latin-text').innerHTML=highlight(p?.latin||base.latin);$('translation-text').lang=lang;
+ $('translation-text').innerHTML=p?highlight(p.translation):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Podés consultar el castellano y el francés en el selector de traducción.</p>';
+ $('status').textContent=p?citation(p)+' · latín y traducción vinculados por la estructura del DOCX.'+(p.scope_note?' '+p.scope_note:''):citation(base)+' · traducción seleccionada sin correspondencia disponible.';
+ const index=all.findIndex(x=>x.locus===locus);$('prev').disabled=index<=0;$('next').disabled=index<0||index>=all.length-1;
+ const others=$('other-translations');others.replaceChildren();others.hidden=!$('compare-all').checked;
+ if($('compare-all').checked)for(const other of ['es','fr','en'].filter(x=>x!==lang)){
+  const d=datasets[editionIds[other]],u=d?.passages.find(x=>atLocus(x,locus)),section=document.createElement('section');section.className='scholarly-panel';section.lang=other;
+  section.innerHTML='<p class="eyebrow">TRADUCCIÓN</p><h2>'+names[other]+'</h2><p class="source">Diego Kurilo · '+(d?.version||other)+'</p><div class="scholarly-text">'+(u?(u.scope_note?'<p class="source">'+esc(citation(u)+' · '+u.scope_note)+'</p>':'')+highlight(u.translation):'Traducción sin correspondencia disponible para este locus.')+'</div>';others.append(section);
+ }
+ const ed=records[editionIds[lang]];const source=ed?.read_url||ed?.source_url;
+ $('pdf-links').innerHTML=source?'<a href="'+esc(source)+'" target="_blank" rel="noopener">Abrir PDF original de '+esc(ed.version)+' ↗</a>'+(p?.pdf_pages?.latin?' · latín: p. '+p.pdf_pages.latin:'')+(p?.pdf_pages?.translation?' · traducción: p. '+p.pdf_pages.translation:''):'';
+ $('provenance-text').textContent=p?'Fuente: '+data.source.filename+'; párrafos '+p.source_paragraphs.map(n=>n+1).join(' y ')+'. Referencia: '+citation(p)+'.':'La referencia latina procede de V514; no se atribuye una traducción inglesa al pasaje.';
+ const url=new URL(location.href);url.searchParams.set('edition',editionIds[lang]);url.searchParams.set('locus',locus);if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');history.replaceState(null,'',url);
+}
+function openLocus(value){
+ const ref=parseLocus(value);if(!ref){clearReading('Formato de referencia no reconocido. Usá III.1.2, VIII.1 o I.praef.1.');return;}
+ const choices=all.filter(p=>p.book===ref.book&&(ref.chapter==null||p.chapter===ref.chapter)&&(ref.section==null||p.section===ref.section));
+ if(!choices.length){clearReading('Locus no encontrado: '+value+'. No se muestra un pasaje distinto.');return;}
+ const p=choices[0];refresh(p.book,p.chapter,p.section);render();
+}
+$('form').addEventListener('submit',e=>{e.preventDefault();openLocus($('locus').value);});
+for(const id of ['book','chapter','section'])$(id).addEventListener('change',()=>{refresh($('book').value,id==='book'?null:$('chapter').value,id==='section'?$('section').value:null);render();});
+$('lang').addEventListener('change',render);$('compare-all').addEventListener('change',render);
+for(const [id,delta]of [['prev',-1],['next',1]])$(id).addEventListener('click',()=>{if(!current)return;const p=all[all.findIndex(x=>x.locus===current.locus)+delta];if(p){refresh(p.book,p.chapter,p.section);render();}});
+$('print-passage').addEventListener('click',()=>window.print());
+$('find-form').addEventListener('submit',e=>{
+ e.preventDefault();query=$('term').value.trim();const data=datasets[editionIds[$('lang').value]];if(!data){$('find-status').textContent='La edición no está disponible.';return;}
+ const output=searchCorpus([data],{query,kind:'words',mode:$('find-mode').value,book:$('find-scope').value==='book'?$('book').value:'',language:'all'});$('find-results').replaceChildren();
+ $('find-status').textContent=output.results.length?output.results.length+' coincidencias con referencia.':'Palabra o frase no encontrada en la selección.';
+ for(const r of output.results){const b=document.createElement('button');b.type='button';b.className='reader-hit';b.textContent=citation(r)+' · '+(r.language==='la'?'Latín':names[r.language])+' — '+r.snippet;b.addEventListener('click',()=>{openLocus(r.locus);$('passage-ref').scrollIntoView({block:'start',behavior:'smooth'});});$('find-results').append(b);}
+ render();
 });
-$('full-locus').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();$('full-go-locus').click()}});
-$('full-edition').addEventListener('change',()=>{lastFullSearch='';$('full-page').value=1;showFullPage()});
-$('full-page').addEventListener('change',showFullPage);
-$('full-prev').addEventListener('click',()=>{$('full-page').value=Math.max(1,Number($('full-page').value)-1);showFullPage()});
-$('full-next').addEventListener('click',()=>{$('full-page').value=Number($('full-page').value)+1;showFullPage()});
-$('full-find').addEventListener('click',async()=>{
- const id=$('full-edition').value,q=$('full-query').value.trim().toLocaleLowerCase();
- if(!q){$('full-status').textContent='Escribí la palabra que querés buscar.';return;}
- if(!fullIndexes[id])await showFullPage();
- const pages=fullIndexes[id]||[],start=Math.max(0,Number($('full-page').value)-1);
- const term=normalizeFull(q);
- let found=-1;
- for(let n=0;n<pages.length;n++){const i=(start+n)%pages.length;if(normalizeFull(pages[i].text||'').includes(term)){found=i;break;}}
- if(found<0){$('full-status').textContent='No se encontró «'+q+'» en esta edición.';return;}
- lastFullSearch=q;$('full-page').value=found+1;await showFullPage();
- $('full-status').textContent='«'+q+'» localizada en página '+(found+1)+' de '+fullNames[id]+' (coincidencia resaltada).';
- $('full-text').querySelector('mark')?.scrollIntoView({block:'center'});
-});
-showFullPage();
+try{
+ const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/catalog.json').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
+ if(!datasets['recensio-es'])throw Error('No se pudo cargar el corpus castellano. Recargá para volver a intentarlo.');
+ all=datasets['recensio-es'].passages;for(const id of ['book','chapter','section'])$(id).disabled=false;
+ $('coverage').textContent=Object.values(datasets).map(d=>d.version+': '+d.passages.length+' bloques de lectura').join(' · ')+'. Los 731 loci están localizados en cada idioma; V297 conserva VII.7.1–3 y VII.7.4–5 como bloques conjuntos.';
+ const requested=params.get('locus')||'1.1.1';openLocus(requested);
+ if(responses.some(x=>x.status==='rejected'))$('status').textContent+=' Una de las ediciones no pudo cargarse.';
+}catch(error){clearReading(error.message);}

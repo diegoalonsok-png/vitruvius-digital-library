@@ -1,3 +1,4 @@
+import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
 const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -8,6 +9,8 @@ const documentCache = new Map();
 let readerRevision=0;
 let catalog, records=[], category='recensio', worker, requestId=0, results=[], shown=0, lastQuery='', currentReader=null, currentPage=1;
 let searchKind='words',countSummary=null;
+const authorIds=['recensio-es','recensio-fr','theory-en'];
+function readerURL(id,locus='1.1.1'){const url=new URL('lector-bilingue.html',location.href);url.searchParams.set('edition',id);url.searchParams.set('locus',locus);if(lastQuery&&!parseLocus(lastQuery))url.searchParams.set('q',lastQuery);return url.href;}
 
 async function fetchJSON(path){ const r=await fetch(path); if(!r.ok)throw new Error(`No se pudo abrir ${path}`);return r.json(); }
 function edition(id){return records.find(e=>e.id===id);}
@@ -47,22 +50,11 @@ function resultSnippet(r){
   return html+escapeHTML(snippet.slice(cursor));
 }
 function renderCountSummary(summary){
-  const box=$('#term-count-summary');box.hidden=!summary;box.replaceChildren();if(!summary)return;
-  const rows=summary.editions.map(row=>{const e=edition(row.edition);return `<tr><th scope="row">${escapeHTML(e.title)} <span>${escapeHTML(e.version)}</span></th><td>${row.total.toLocaleString('es-AR')}</td><td>${row.pages.toLocaleString('es-AR')}</td></tr>`;}).join('');
-  const grouped=new Map();
-  for(const r of results){
-    const e=edition(r.edition);
-    const book=r.book??r.liber,chapter=r.chapter??r.caput,section=r.section??r.paragraph;
-    const valid=book!=null&&chapter!=null&&section!=null;
-    const locus=valid?'Vitr., De arch. '+book+'.'+chapter+'.'+section:'Locus pendiente de cotejo';
-    const key=r.edition+'|'+locus+'|'+r.page;
-    if(!grouped.has(key))grouped.set(key,{edition:e,locus,page:r.page,count:0});
-    grouped.get(key).count++;
-  }
-  const concordance=[...grouped.values()].sort((a,b)=>String(a.edition?.version).localeCompare(String(b.edition?.version))||a.page-b.page);
-  const locusRows=concordance.map(x=>'<tr><td>'+escapeHTML(x.edition?.version||x.edition?.year||'Edición')+'</td><td>'+escapeHTML(x.locus)+'</td><td>'+x.page+'</td><td>'+x.count+'</td></tr>').join('');
-  box.innerHTML=`<table><caption>Recuento en el texto de las ediciones seleccionadas</caption><thead><tr><th scope="col">Edición</th><th scope="col">Apariciones</th><th scope="col">Páginas</th></tr></thead><tbody>${rows}</tbody></table><p>Se cuenta todo el texto extraído del PDF, incluidas notas y comentarios. Se ignoran mayúsculas y acentos; ${summary.mode==='prefix'?'se incluyen las palabras que empiezan por la raíz escrita':'se buscan palabras completas o la secuencia de palabras escrita'}. Comprobá cada contexto en el documento.</p>${summary.forms.length?`<details><summary>Formas encontradas (${summary.forms.length})</summary><ul>${summary.forms.map(item=>`<li><em>${escapeHTML(item.form)}</em> <strong>${item.count.toLocaleString('es-AR')}</strong></li>`).join('')}</ul></details>`:''}<details open><summary>Concordancia por edición, locus y página (${concordance.length} registros)</summary><table><thead><tr><th>Edición</th><th>Locus verificado</th><th>Página PDF</th><th>Apariciones</th></tr></thead><tbody>${locusRows}</tbody></table><p>El total es del texto indexado, no necesariamente solo del tratado: puede incluir notas, índice y aparato editorial. Los loci sin correspondencia documentada se mantienen pendientes.</p></details>`;
+ const box=$('#term-count-summary');box.hidden=!summary;box.replaceChildren();if(!summary)return;
+ box.innerHTML='<table><caption>Apariciones en el tratado, por edición</caption><thead><tr><th>Edición</th><th>Apariciones</th><th>Pasajes</th></tr></thead><tbody>'+summary.editions.map(row=>'<tr><th>'+escapeHTML(edition(row.edition)?.version)+'</th><td>'+row.total+'</td><td>'+row.passages+'</td></tr>').join('')+'</tbody></table><p>Recuento del texto latino y/o la traducción según el filtro de idioma. Cada edición se cuenta por separado. Se excluyen el estudio preliminar, las notas y los índices. Se normalizan acentos, u/v e i/j.</p>';
+ if(summary.forms.length)box.innerHTML+='<details><summary>Formas encontradas</summary><p>'+summary.forms.map(x=>escapeHTML(x.form)+' ('+x.count+')').join(' · ')+'</p></details>';
 }
+
 function sourceURL(e,page=1){
   if(e.external){const raw=e.read_url||e.source_url;if(!raw)return '#';return /archive\.org\/details\//.test(raw)?raw.replace(/\/$/,'')+'/page/n'+Math.max(0,Math.floor(Number(page)||1)-1):raw;}
   if(!e.pdf_chunks?.length)return new URL(`${e.pdf}#page=${page}`,location.href).href;
@@ -104,6 +96,7 @@ function renderCatalog(){
     const cover=external?`<div class="edition-date">${escapeHTML(e.dateShort||e.year)}</div>`:e.cover?`<button type="button" class="cover-link" data-read="${e.id}" aria-label="Leer ${escapeHTML(e.title)}"><img src="${escapeHTML(e.cover)}" alt="Portada de ${escapeHTML(e.title)}" loading="lazy" width="123" height="188"></button>`:`<div class="edition-date" aria-label="Portada original pendiente de incorporación">${escapeHTML(e.version||e.year)}</div>`;
     const label=e.category==='recensio'?'Edición principal':e.category==='manuscripts'?'Testimonio manuscrito':e.category==='studies'?'Estudio':e.languages.length===1&&e.languages[0]==='la'?'Edición del texto latino':e.languages.includes('la')?'Edición bilingüe':'Traducción histórica';
     let actions=external?`<a class="button outline" href="${escapeHTML(e.read_url||e.source_url)}" target="_blank" rel="noopener">${e.access==='catalog'?'Ficha institucional':e.access==='public_pdf'?'Leer PDF completo':'Leer en la institución'} ↗</a>`:e.pdf||e.pdf_chunks?.length?`<button type="button" class="button primary" data-read="${e.id}">Leer en línea →</button><a href="${downloadLink(e,'pdf')}" data-download="${e.id}" data-format="pdf" download>PDF ↓</a>${e.docx?`<a href="${downloadLink(e,'docx')}" data-download="${e.id}" data-format="docx" download>DOCX ↓</a>`:''}<button type="button" data-compare="${e.id}">Comparar</button>`:`<span class="pending-source" aria-label="Documento pendiente de incorporación">Documento en incorporación</span>`;
+    if(authorIds.includes(e.id))actions='<a class="button outline" href="'+readerURL(e.id)+'">Leer y comparar →</a>'+actions;
     if(external&&e.pdf_url&&e.access!=='public_pdf')actions+=`<a href="${escapeHTML(e.pdf_url)}" target="_blank" rel="noopener">PDF${e.pdf_size_mb?` (${Math.round(e.pdf_size_mb)} MB)`:''} ↗</a>`;
     if(external&&e.read_url&&e.source_url!==e.read_url)actions+=`<a href="${escapeHTML(e.source_url)}" target="_blank" rel="noopener">Ficha ↗</a>`;
     if(!external&&e.source_url)actions+=`<a href="${escapeHTML(e.source_url)}" target="_blank" rel="noopener">Fuente ↗</a>`;
@@ -120,6 +113,7 @@ async function getPages(e){
 }
 
 async function openReader(id,page=1){
+  if(authorIds.includes(id)){location.href=readerURL(id);return;}
   const e=edition(id);if(!e)return;
   if(!e.external&&!e.pdf&&!e.pdf_chunks?.length){window.alert('Esta edición todavía no tiene un documento incorporado al sitio.');return;}
   // Las ediciones externas también se leen en el visor propio: OCR + facsímil enlazado.
@@ -188,182 +182,7 @@ async function setReaderPage(page){
 
 function closeReader(){ readerRevision++;$('#reader-dialog').close();$('#reader-frame').removeAttribute('src'); }
 
-function openComparison(id='recensio-es',page=1){
-  if($('#reader-dialog').open)closeReader();
-  const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length).filter((e,i,a)=>a.findIndex(x=>x.id===e.id)===i);
-  if(!available.length){window.alert('La consulta comparada estará disponible cuando las ediciones estén incorporadas.');return;}
-  const authorIds=['recensio-es','recensio-fr','theory-en'];
-  const first=available.find(e=>e.id===id&&authorIds.includes(e.id))||available.find(e=>authorIds.includes(e.id))||available[0];
-  const second=available.find(e=>e.id!==first.id&&!authorIds.includes(e.id))||available.find(e=>e.id!==first.id)||first;
-  const paneContainer=$('#comparison-panes');paneContainer.replaceChildren();
-  [first,second].forEach((e,i)=>{
-    const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(e.id)?'text':'pdf';
-    const paneOptions=i===0?available.filter(x=>authorIds.includes(x.id)):available.filter(x=>!authorIds.includes(x.id));
-    const optionList=paneOptions.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.id==='krohn-1912'?'Vitruvio · Fritz Krohn (editor)':x.id==='ortiz-1787'?'Vitruvio · Joseph Ortiz y Sanz (traductor)':x.id==='cesariano-1521'?'Vitruvio · Cesare Cesariano (traductor)':['recensio-es','recensio-fr','theory-en','theory-es','theory-fr'].includes(x.id)?'Diego Kurilo · '+x.title:x.author?x.author+' · '+x.title:x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
-    pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
-    $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(selected.id)?'text':'pdf';renderComparePane(pane);});
-    $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
-    $('.compare-page',pane).addEventListener('blur',()=>renderComparePane(pane));
-    $('.compare-page',pane).addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();renderComparePane(pane);}});
-    $('.compare-prev',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)-1);renderComparePane(pane);});
-    $('.compare-next',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Number($('.compare-page',pane).value)+1;renderComparePane(pane);});
-    $('.compare-mode',pane).addEventListener('click',()=>{const ed=edition($('select',pane).value);if(ed?.read_url)window.open(ed.read_url,'_blank','noopener');});
-    // Natural wheel navigation: scroll within a page; at its end (or start),
-    // another wheel movement opens the next (or previous) indexed page.
-    const readArea=$('.compare-body',pane);
-    let lastWheelPageTurn=0;
-    readArea.tabIndex=0;
-    readArea.setAttribute('aria-label',i===0?'Texto indexado. Desplazate con la rueda; al final avanzás de página.':'Facsímil de consulta');
-    const turnPage=direction=>{
-      const input=$('.compare-page',pane),ed=edition($('select',pane).value);
-      const current=Number(input.value)||1,following=Math.min(ed.pages||1,Math.max(1,current+direction));
-      if(following===current)return false;
-      input.value=following;
-      renderComparePane(pane);
-      return true;
-    };
-    if(i===0){
-      readArea.addEventListener('wheel',event=>{
-        if(event.ctrlKey||event.metaKey||Math.abs(event.deltaY)<5)return;
-        const atEnd=readArea.scrollTop+readArea.clientHeight>=readArea.scrollHeight-5;
-        const atStart=readArea.scrollTop<=5;
-        const direction=event.deltaY>0?1:-1;
-        if(!(direction>0?atEnd:atStart))return;
-        const now=Date.now();
-        if(now-lastWheelPageTurn<650){event.preventDefault();return;}
-        if(turnPage(direction)){event.preventDefault();lastWheelPageTurn=now;}
-      },{passive:false});
-      readArea.addEventListener('keydown',event=>{
-        if(event.key!=='PageDown'&&event.key!=='PageUp')return;
-        const direction=event.key==='PageDown'?1:-1;
-        const atEdge=direction>0?readArea.scrollTop+readArea.clientHeight>=readArea.scrollHeight-5:readArea.scrollTop<=5;
-        if(atEdge&&turnPage(direction))event.preventDefault();
-      });
-    }
-
-    paneContainer.append(pane);renderComparePane(pane);
-  });
-  const note=$('.comparison-note');
-  let locusForm=$('#comparison-locus-form');
-  if(!locusForm){
-    locusForm=document.createElement('form');locusForm.id='comparison-locus-form';
-    locusForm.className='compare-controls';
-    locusForm.innerHTML='<label>Libro <select id="comparison-book"><option value="">Elegir libro</option>'+Array.from({length:10},(_,i)=>'<option value="'+(i+1)+'">Libro '+(i+1)+'</option>').join('')+'</select></label><label>Locus latino (libro.capítulo.sección) <input id="comparison-locus" type="text" placeholder="I.1.1" aria-label="Locus latino"></label><button type="button" id="comparison-book-submit">Comparar libro →</button><button type="submit">Comparar locus →</button><span id="comparison-locus-status" role="status"></span>';
-    note.after(locusForm);
-    const selectors=document.createElement('span');selectors.className='compare-locus-selectors';
-    selectors.innerHTML='<label>Capítulo <select id="comparison-chapter"><option value="">Elegir</option>'+Array.from({length:20},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label> <label>Sección <select id="comparison-section"><option value="">Elegir</option>'+Array.from({length:40},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label>';
-    $('#comparison-locus').closest('label').before(selectors);
-    const syncLocus=()=>{const b=$('#comparison-book').value,c=$('#comparison-chapter').value,p=$('#comparison-section').value;$('#comparison-locus').value=b?(b+'.'+(c||'1')+'.'+(p||'1')):'';$('#comparison-locus-status').textContent='Referencia seleccionada: '+($('#comparison-locus').value||'elegí un libro')+'. Presioná «Comparar locus» para consultar las correspondencias.';};
-    const syncAndCompare=()=>{syncLocus();locusForm.requestSubmit();};
-    $('#comparison-chapter').addEventListener('change',syncAndCompare);
-    $('#comparison-section').addEventListener('change',syncAndCompare);
-
-    $('#comparison-book').addEventListener('change',syncAndCompare);
-    $('#comparison-book-submit').addEventListener('click',()=>{const book=Number($('#comparison-book').value);const status=$('#comparison-locus-status');if(!book){status.textContent='Elegí uno de los diez libros.';return;}$('#comparison-locus').value=book+'.1.1';locusForm.requestSubmit();});
-    locusForm.addEventListener('submit',async event=>{
-      event.preventDefault();
-      const val=($('#comparison-locus').value.trim()||($('#comparison-book').value?$('#comparison-book').value+'.1':'')).toUpperCase();
-      const match=val.match(/^([IVX]+|10|[1-9])\s*[.·,]\s*(praef|praefatio|\d{1,2})(?:\s*[.·,]\s*(\d{1,3}))?$/i);
-      const status=$('#comparison-locus-status');
-      if(!match){status.textContent='Usá una referencia como I.1.1 o III.1.2.';return;}
-      const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
-      const book=romans[match[1]]||Number(match[1]),isPreface=/^praef/i.test(match[2]),chapter=isPreface?null:Number(match[2]),section=match[3]==null?null:Number(match[3]);
-      $('#comparison-book').value=String(book);
-      if(!isPreface){$('#comparison-chapter').value=String(chapter);$('#comparison-section').value=String(section||'');}
-      if(book<1||book>10||(!isPreface&&chapter<1)){status.textContent='Referencia fuera de los diez libros.';return;}
-      const locus=(isPreface?book+'.praef'+(section==null?'':'.'+section):book+'.'+chapter+(section==null?'':'.'+section));
-      const searchSerial=String(Number(locusForm.dataset.searchSerial||0)+1);
-      locusForm.dataset.searchSerial=searchSerial;
-      // Clear old reading before a new locus lookup, to avoid falsely showing an earlier passage.
-      for(const pane of $$('.compare-pane',$('#comparison-panes'))){
-        if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){
-          pane.dataset.requestedLocus=locus;
-          pane.dataset.resolvedLocus='';
-          pane.dataset.renderRevision=String(Number(pane.dataset.renderRevision||0)+1);
-          $('.compare-body',pane).textContent='Localizando Vitr., De arch. '+locus+'…';
-          const note=$('.compare-citation',pane);if(note)note.textContent='Locus solicitado: '+locus+' · comprobación pendiente';
-        }
-      }
-      status.textContent='Consultando concordancias de '+locus+'…';
-      let map;
-      try{
-        const response=await fetch('data/loci-map.json',{cache:'no-store'});
-        if(!response.ok)throw Error('No se pudo leer la concordancia');
-        map=await response.json();
-        if(locusForm.dataset.searchSerial!==searchSerial)return;
-      }catch(error){
-        map={loci:[]};
-        status.textContent='No se pudo cargar el índice externo; comprobando las referencias verificadas integradas…';
-      }
-      // Verified anchors also ship in the reader: an outdated CDN JSON must
-      // not make a known book opening disappear.
-      const verifiedFallback={
-        '1.1.1':{'recensio-es':205,'recensio-fr':205,'theory-en':226},
-        '1.2.1':{'recensio-es':227,'recensio-fr':229},
-        '8.1.1':{'recensio-es':749,'recensio-fr':753,'theory-en':740}
-      };
-      const matches=(map.loci||[]).filter(item=>item.locus===locus);
-      if(verifiedFallback[locus]&&!matches.length)matches.push({locus,pages:verifiedFallback[locus]});
-      let mapped=0;
-      for(const pane of $$('.compare-pane',$('#comparison-panes'))){
-        const ed=edition($('select',pane).value);
-        const target=verifiedFallback[locus]?.[ed?.id]||matches.find(item=>Number.isInteger(item.pages?.[ed?.id]))?.pages?.[ed?.id];
-        if(!target)continue;
-        $('.compare-page',pane).value=target;
-        pane.dataset.resolvedLocus=locus;
-        try{await renderComparePane(pane);mapped++;}catch(error){console.error('Error showing mapped locus',error);}
-      }
-      if(!mapped){
-        try{
-          const response=await fetch('data/loci-candidates.json',{cache:'no-store'});
-          if(response.ok){
-            const candidateMap=await response.json();
-            if(locusForm.dataset.searchSerial!==searchSerial)return;
-            const alternatives=[];
-            for(const pane of $$('.compare-pane',$('#comparison-panes'))){
-              const ed=edition($('select',pane).value);
-              const candidates=candidateMap.editions?.[ed?.id]?.[locus]||[];
-              if(!candidates.length)continue;
-              alternatives.push({pane,ed,candidates});
-            }
-            if(alternatives.length){
-              // Update the left indexed reader on EVERY search, even when the
-              // reference is only mentioned in a note. Never call this verified.
-              for(const item of alternatives){
-                const firstPage=item.candidates[0];
-                if(!Number.isInteger(firstPage)||firstPage<1)continue;
-                $('.compare-page',item.pane).value=firstPage;
-                item.pane.dataset.resolvedLocus='';
-                await renderComparePane(item.pane);
-                if(locusForm.dataset.searchSerial!==searchSerial)return;
-                const cite=$('.compare-citation',item.pane);
-                if(cite)cite.textContent=item.ed.version+' · Referencia '+locus+' mencionada en página '+firstPage+' (no corresponde necesariamente al comienzo del pasaje)';
-              }
-              status.replaceChildren();
-              const intro=document.createElement('span');
-              intro.textContent='Referencia '+locus+': el lector izquierdo se actualizó a una página donde se menciona el locus. No es una concordancia verificada; elegí otras páginas candidatas si es necesario. ';
-              status.append(intro);
-              for(const item of alternatives){
-                const label=document.createElement('label');label.style.cssText='display:block;font-size:13px;margin:9px 0';label.textContent='Páginas con menciones de '+locus+' en '+item.ed.version+' (no equivalen necesariamente al pasaje): ';
-                const select=document.createElement('select');select.setAttribute('aria-label','Páginas candidatas de '+item.ed.version);select.style.cssText='width:auto;max-width:230px;margin:0 12px';
-                for(const page of item.candidates){const o=document.createElement('option');o.value=page;o.textContent='PDF '+page;select.append(o);}
-                const go=document.createElement('button');go.type='button';go.textContent='Ver texto de esa página →';
-                go.addEventListener('click',()=>{if(locusForm.dataset.searchSerial!==searchSerial)return;$('.compare-page',item.pane).value=select.value;item.pane.dataset.resolvedLocus='';renderComparePane(item.pane);});
-                label.append(select,go);status.append(label);
-              }
-              return;
-            }
-          }
-        }catch(error){console.warn('Candidate index not available:',error);}
-      }
-      if(locusForm.dataset.searchSerial!==searchSerial)return;
-      if(!mapped){for(const pane of $$('.compare-pane',$('#comparison-panes'))){if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){$('.compare-body',pane).textContent='No existe aún un pasaje identificado para Vitr., De arch. '+locus+' en esta edición. El texto anterior se ha retirado para evitar una comparación incorrecta. Podés navegar por página manualmente.';}}}
-      status.textContent=mapped?('Vitr., De arch. '+locus+': localizada la página en '+mapped+' edición(es). Las demás ediciones no tienen cotejo registrado.'):
-        ('Vitr., De arch. '+locus+': no se encontró todavía una página cotejada ni una mención explícita indexada para esas ediciones. Podés navegar manualmente por los PDF.');
-    });
-  }
-  $('#comparison-dialog').showModal();
-}
+function openComparison(id='recensio-es',page=1){location.href=readerURL(authorIds.includes(id)?id:'recensio-es');}
 
 async function renderComparePane(pane){
   const e=edition($('select',pane).value),body=$('.compare-body',pane);body.replaceChildren();
@@ -424,36 +243,30 @@ async function renderComparePane(pane){
 }
 
 function ensureWorker(){
-  if(worker)return worker;
-  worker=new Worker(new URL('./search-worker.js?v=20261030-loci-03',import.meta.url),{type:'module'});
-  worker.onmessage=event=>{
-    const data=event.data;if(data.requestId!==requestId)return;
-    if(data.type==='progress'){$('#search-status').textContent=data.message;return;}
-    $('#search-button').disabled=false;$('#search-button').textContent='Buscar →';
-    if(data.type==='error'){$('#search-status').textContent=data.message;return;}
-    if(data.type==='results'){
-      results=data.results;countSummary=data.countSummary||null;shown=0;$('#search-results').replaceChildren();renderCountSummary(countSummary);
-      const label=searchKind==='semantic'?'pasajes por afinidad de significado':'páginas con coincidencias';
-      $('#search-status').textContent=countSummary?`${countSummary.total.toLocaleString('es-AR')} ${countSummary.total===1?'aparición':'apariciones'} de «${lastQuery}» en ${countSummary.pages.toLocaleString('es-AR')} ${countSummary.pages===1?'página':'páginas'}.`:results.length?`${results.length.toLocaleString('es-AR')} ${label} para «${lastQuery}».`:`Palabra o frase no encontrada: «${lastQuery}» en la selección actual. Probá otra grafía, una palabra aislada o elegí «Todos los textos incorporados».`;
-      renderMore();$('#export-tools').hidden=results.length===0;
-    }
-  };
-  worker.onerror=()=>{$('#search-status').textContent='La búsqueda no pudo iniciarse. Recargá la página e intentá de nuevo.';$('#search-button').disabled=false;};
-  return worker;
-}
-
-function startSearch(){
-  const query=$('#query').value.trim();if(!query)return;
-  if($('#search-kind').value==='internet'){ searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return; }
-  if(!records.some(e=>e.searchable&&e.text_index)){
-    $('#search-status').textContent='Todavía no hay PDF con índice textual publicado. Usá las opciones Google o Google Académico; las ediciones están en incorporación.';
-    return;
+ if(worker)return worker;
+ worker=new Worker(new URL('./search-worker.js?v=20261030-docx-1',import.meta.url),{type:'module'});
+ worker.onmessage=event=>{
+  const data=event.data;if(data.requestId!==requestId)return;
+  if(data.type==='progress'){$('#search-status').textContent=data.message;return;}
+  $('#search-button').disabled=false;$('#search-button').textContent='Buscar →';
+  if(data.type==='error'){$('#search-status').textContent=data.message;return;}
+  if(data.type==='results'){
+   results=data.results;countSummary=data.countSummary||null;shown=0;$('#search-results').replaceChildren();renderCountSummary(countSummary);
+   $('#search-status').textContent=(countSummary?countSummary.total.toLocaleString('es-AR')+' apariciones en '+countSummary.passages+' pasajes de las ediciones seleccionadas.':results.length?results.length.toLocaleString('es-AR')+(results.length===1?' coincidencia':' coincidencias')+' con libro, capítulo y sección para «'+lastQuery+'».':'Palabra, frase o locus no encontrado: «'+lastQuery+'» en esta selección. Revisá los filtros o la grafía. Algunas secciones inglesas se conservan agrupadas como en el original.')+(data.warnings?.length?' '+data.warnings.join('. '):'');
+   renderMore();$('#export-tools').hidden=!results.length;
   }
-  lastQuery=query;searchKind=$('#search-kind').value;results=[];countSummary=null;renderCountSummary(null);shown=0;requestId++;
-  $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();
-  $('#search-status').textContent=searchKind==='semantic'?'Preparando la búsqueda por significado…':searchKind==='count'?'Preparando el recuento del término…':'Preparando la búsqueda en las ediciones seleccionadas…';
-  $('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
-  ensureWorker().postMessage({type:'search',requestId,query,kind:searchKind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>['recensio-es','recensio-fr','theory-en'].includes(e.id)&&e.searchable&&e.text_index),semantic:catalog.semantic});
+ };
+ worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador. Volvé a buscar para reintentarlo.';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;};
+ return worker;
+}
+function startSearch(){
+ $('#query').dispatchEvent(new Event('change'));
+ const query=$('#query').value.trim(),kind=$('#search-kind').value;
+ if(!query&&kind!=='locus'){$('#search-status').textContent='Escribí una palabra o frase.';$('#query').focus();return;}
+ if(kind==='internet'){searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return;}
+ lastQuery=query||(roman(Number($('#filter-book').value))+( $('#filter-chapter').value?'.'+$('#filter-chapter').value:''));searchKind=kind;results=[];countSummary=null;renderCountSummary(null);shown=0;requestId++;
+ $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();$('#search-status').textContent='Consultando el índice de los DOCX…';$('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
+ try{ensureWorker().postMessage({type:'search',requestId,query:query||lastQuery,kind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,book:$('#filter-book').value,chapter:$('#filter-chapter').value,language:$('#text-language').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>authorIds.includes(e.id)&&e.searchable)});}catch(error){$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';$('#search-status').textContent=error.message;}
 }
 
 function locusLabel(r){
@@ -477,7 +290,7 @@ function knownLocus(e,page){
   return 'Libro, capítulo y sección: pendientes de cotejo';
 }
 function citationLine(e,page){return (e?.version||e?.year||'Edición')+' · '+knownLocus(e,page)+' · p. PDF '+page;}
-function locusReference(r){return locusLabel(r)+' · página PDF '+r.page;}
+function locusReference(r){return citation(r)+(r.page?' · página PDF '+r.page:' · texto del DOCX');}
 function scholarlyExcerpt(r,e){
   // Faithful correction checked against V514 DOCX, paragraph I.2.3.
   if(e.id==='recensio-es'&&r.page===235&&/symmetria|adecuaci[oó]n|eurythmia/i.test(lastQuery||$('#query').value)){
@@ -491,12 +304,14 @@ function scholarlyExcerpt(r,e){
   return resultSnippet(r);
 }
 function renderMore(){
-  const next=results.slice(shown,shown+16);const container=$('#search-results');
-  for(const r of next){const e=edition(r.edition);const article=document.createElement('article');article.className='result';const ordinal=shown+next.indexOf(r)+1;const isOcr=Boolean(e.searchable&&(e.id==='krohn-1912'||e.id==='ortiz-1787'||e.id==='cesariano-1521'));
-    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.bibliographic_title||[e.title,e.subtitle].filter(Boolean).join(": "))}</h3><p class="result-biblio"><strong>${escapeHTML(e.editorial_role||e.author||"")}</strong> · ${escapeHTML(e.publisher||"Editorial no consignada")} · ${escapeHTML(e.publication_place||"")} · ${escapeHTML(e.year||"")}</p><p class="result-locus"><strong>${passageReference(r,e)}</strong> · ${escapeHTML(e.version||e.year||'Edición')} · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${e.id==='krohn-1912'?`Coincidencia de <mark>${escapeHTML($('#query').value.trim())}</mark> localizada en el índice OCR. Abrí el facsímil para verificar la palabra en su página original.`:scholarlyExcerpt(r,e)}</p>${isOcr?'<p class="book-source">OCR histórico sin revisión filológica: verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
-  }
-  shown+=next.length;$('#more-results').hidden=shown>=results.length;
-  if(shown<results.length)$('#more-results').textContent=`Mostrar más resultados (${shown} de ${results.length})`;
+ const next=results.slice(shown,shown+16),container=$('#search-results');
+ for(const r of next){const e=edition(r.edition),article=document.createElement('article');article.className='result';
+  const url=readerURL(e.id,r.locus);
+  article.innerHTML='<div class="result-meta">'+escapeHTML(e.version)+' · '+escapeHTML(languages[r.language]||r.language)+' · TEXTO DEL DOCX</div><h3>'+escapeHTML(citation(r))+'</h3><p class="result-biblio">'+escapeHTML(e.title)+' · Edición y traducción de Diego Kurilo</p><p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+r.chapter)+' · Sección '+r.section+(r.page?' · PDF p. '+r.page:'')+'</p><p lang="'+r.language+'">'+resultSnippet(r)+'</p><details class="result-translation"><summary>Desplegar texto latino y traducción</summary><p lang="la"><strong>Latín</strong><br>'+escapeHTML(r.latin)+'</p><p lang="'+e.languages.find(l=>l!=='la')+'"><strong>'+escapeHTML(languageLabel(e))+'</strong><br>'+escapeHTML(r.translation)+'</p></details><div class="result-actions"><a href="'+escapeHTML(url)+'">Leer el pasaje →</a><a href="'+escapeHTML(url)+'">Comparar traducciones →</a><a href="'+escapeHTML(sourceURL(e,r.page||1))+'" target="_blank" rel="noopener">PDF original ↗</a></div>';
+  container.append(article);
+ }
+ shown+=next.length;$('#more-results').hidden=shown>=results.length;
+ if(shown<results.length)$('#more-results').textContent='Mostrar más resultados ('+shown+' de '+results.length+')';
 }
 
 function resultExportRows(){if($('#export-limit').value==='all')return results;const limit=Number($('#export-limit').value)||50;return results.slice(0,limit);}
@@ -505,12 +320,12 @@ function printResults(){
   const popup=window.open('','_blank');if(!popup){$('#search-status').textContent='Permití abrir la vista de impresión en tu navegador para guardar los resultados como PDF.';return;}
   const date=new Intl.DateTimeFormat('es-AR',{dateStyle:'long'}).format(new Date());
   const content=rows.map((r,i)=>{const e=edition(r.edition);const link=sourceURL(e,r.page);return `<article><div class="n">${i+1} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}</div><h2>${escapeHTML(e.title)}</h2><p class="ref">${escapeHTML(e.author)}. ${escapeHTML(e.subtitle)}. ${escapeHTML(e.publisher)}, ${escapeHTML(e.year)}. ${escapeHTML(locusReference(r))}.</p><blockquote>${resultSnippet(r)}</blockquote><p class="url">Fuente: ${escapeHTML(link)}</p></article>`;}).join('');
-  popup.document.open();popup.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius — Resultados de ${escapeHTML(lastQuery)}</title><style>body{max-width:760px;margin:40px auto;color:#172b3c;font-family:Georgia,serif;line-height:1.65;padding:0 25px}h1{font-size:31px;font-weight:400;margin-bottom:6px}h2{font-size:20px;margin:5px 0;font-weight:400}.sub,.ref,.n,.url{font-family:Arial,sans-serif;font-size:10px;color:#626969}.n{font-size:9px;letter-spacing:.6px}article{border-top:1px solid #bbb;padding:20px 0;break-inside:avoid}blockquote{font-size:16px;margin:12px 0}.url{overflow-wrap:anywhere;font-size:8px}.tools{font-family:Arial,sans-serif;margin:25px 0;padding:15px;background:#eeece5}.tools button{background:#122a42;color:#fff;border:0;padding:12px;cursor:pointer}.tools p{font-size:11px}@page{size:A4;margin:20mm 18mm}@media print{body{margin:0;max-width:none;padding:0}.tools{display:none}h1{font-size:26px}}</style></head><body><h1>Vitruvius Digital Library</h1><p class="sub">LISTADO DE RESULTADOS · ${escapeHTML(date)}</p><p>Consulta: <strong>${escapeHTML(lastQuery)}</strong><br>Modo: ${searchKind==='semantic'?'Afinidad semántica':searchKind==='count'?'Recuento literal':'Búsqueda textual'}. ${rows.length} resultados incluidos de ${results.length}.${countSummary?`<br>Recuento: ${countSummary.total} apariciones en ${countSummary.pages} páginas. ${countSummary.mode==='prefix'?'Palabras que empiezan por la raíz escrita.':'Palabra o secuencia exacta.'} Incluye notas y comentarios; se ignoran mayúsculas y acentos.`:''}</p><div class="tools"><button id="print">Imprimir / guardar como PDF</button><p>En el cuadro de impresión del navegador, elegí «Guardar como PDF». Las páginas indicadas corresponden al archivo PDF consultado.</p></div>${content}<p class="sub">Proyecto y edición de Diego Kurilo. Verificá las citas en los documentos de referencia.</p></body></html>`);popup.document.close();popup.document.getElementById('print').addEventListener('click',()=>popup.print());
+  popup.document.open();popup.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius — Resultados de ${escapeHTML(lastQuery)}</title><style>body{max-width:760px;margin:40px auto;color:#172b3c;font-family:Georgia,serif;line-height:1.65;padding:0 25px}h1{font-size:31px;font-weight:400;margin-bottom:6px}h2{font-size:20px;margin:5px 0;font-weight:400}.sub,.ref,.n,.url{font-family:Arial,sans-serif;font-size:10px;color:#626969}.n{font-size:9px;letter-spacing:.6px}article{border-top:1px solid #bbb;padding:20px 0;break-inside:avoid}blockquote{font-size:16px;margin:12px 0}.url{overflow-wrap:anywhere;font-size:8px}.tools{font-family:Arial,sans-serif;margin:25px 0;padding:15px;background:#eeece5}.tools button{background:#122a42;color:#fff;border:0;padding:12px;cursor:pointer}.tools p{font-size:11px}@page{size:A4;margin:20mm 18mm}@media print{body{margin:0;max-width:none;padding:0}.tools{display:none}h1{font-size:26px}}</style></head><body><h1>Vitruvius Digital Library</h1><p class="sub">LISTADO DE RESULTADOS · ${escapeHTML(date)}</p><p>Consulta: <strong>${escapeHTML(lastQuery)}</strong><br>Modo: ${searchKind==='semantic'?'Afinidad semántica':searchKind==='count'?'Recuento literal':'Búsqueda textual'}. ${rows.length} resultados incluidos de ${results.length}.${countSummary?`<br>Recuento: ${countSummary.total} apariciones en ${countSummary.passages} pasajes. ${countSummary.mode==='prefix'?'Palabras que empiezan por la raíz escrita.':'Palabra o secuencia exacta.'} Excluye notas y comentarios; se normalizan mayúsculas, acentos, u/v e i/j.`:''}</p><div class="tools"><button id="print">Imprimir / guardar como PDF</button><p>En el cuadro de impresión del navegador, elegí «Guardar como PDF». Las páginas indicadas corresponden al archivo PDF consultado.</p></div>${content}<p class="sub">Proyecto y edición de Diego Kurilo. Verificá las citas en los documentos de referencia.</p></body></html>`);popup.document.close();popup.document.getElementById('print').addEventListener('click',()=>popup.print());
 }
 
 function downloadCSV(){
   const rows=resultExportRows();const csvValue=s=>{s=String(s??'');if(/^[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
-  const values=[['Consulta','Tipo de búsqueda','Título','Edición','Idioma','Autor','Página PDF','Pasaje','Forma encontrada','Aparición en la edición','Enlace'],...rows.map(r=>{const e=edition(r.edition);return[lastQuery,searchKind==='semantic'?'Semántica':searchKind==='count'?'Recuento literal':'Textual',e.title,e.version,languageLabel(e),e.author,r.page,r.snippet,r.form||'',r.occurrence||'',sourceURL(e,r.page)];})];
+  const values=[['Consulta','Tipo de búsqueda','Título','Edición','Idioma','Autor','Página PDF','Locus','Pasaje','Forma encontrada','Aparición en la edición','Enlace'],...rows.map(r=>{const e=edition(r.edition);return[lastQuery,searchKind==='semantic'?'Semántica':searchKind==='count'?'Recuento literal':'Textual',e.title,e.version,languageLabel(e),e.author,r.page||'',citation(r),r.snippet,r.form||'',r.occurrence||'',sourceURL(e,r.page)];})];
   const blob=new Blob(['\ufeff'+values.map(row=>row.map(csvValue).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='Vitruvius_Resultados.csv';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
 }
 
@@ -524,7 +339,7 @@ function emailResults(){
     'Consulta: '+lastQuery,
     'Tipo: '+(searchKind==='semantic'?'Búsqueda por significado':searchKind==='count'?'Recuento de términos':'Búsqueda textual'),
     'Resultados de la selección: '+rows.length+' (total: '+results.length+')',
-    countSummary?'Total de apariciones: '+countSummary.total+' en '+countSummary.pages+' páginas':'',
+    countSummary?'Total de apariciones: '+countSummary.total+' en '+countSummary.passages+' pasajes':'',
     '',
     'REFERENCIAS Y PASAJES'
   ];
@@ -540,16 +355,17 @@ function emailResults(){
 }
 
 function addSearchControls(){
-  const options=$('.search-options');
-  const label=document.createElement('label');label.innerHTML='Búsqueda<select id="search-kind"><option value="words" selected>Buscar palabras y frases en los libros</option><option value="count">Contar término y ver contextos</option><option value="semantic">Por significado · IA local</option><option value="internet">Buscar en internet</option></select>';const provider=document.createElement('label');provider.id='internet-provider-main-label';provider.hidden=true;provider.innerHTML='Buscador<select id="internet-provider-main"><option value="web">Google</option><option value="scholar">Google Académico</option></select>';options.append(provider);options.prepend(label);
-  const countLabel=document.createElement('label');countLabel.id='count-mode-label';countLabel.hidden=true;countLabel.innerHTML='Recuento<select id="count-mode"><option value="exact">Palabra o frase exacta</option><option value="prefix">Raíz · empieza por</option></select>';options.append(countLabel);
-  const countNote=document.createElement('p');countNote.id='count-note';countNote.className='search-note';countNote.hidden=true;countNote.textContent='Ejemplo latino: symmetria para la palabra completa; symmetr en modo raíz para incluir sus terminaciones. El recuento muestra cada aparición y su contexto, con la página de origen.';$('.search-note').before(countNote);
-  const summary=document.createElement('div');summary.id='term-count-summary';summary.className='term-count-summary';summary.hidden=true;$('#search-status').after(summary);
-  const note=document.createElement('p');note.id='semantic-note';note.className='search-note';note.textContent='La primera búsqueda por significado descarga un modelo gratuito (aprox. 150 MB). La consulta se procesa en este dispositivo; los resultados son pasajes del corpus, con su página de origen.';$('.search-note').before(note);
-  $('#search-mode').parentElement.hidden=false;$('#semantic-note').hidden=true;
-  $('#search-kind').addEventListener('change',()=>{const kind=$('#search-kind').value;$('#semantic-note').hidden=kind!=='semantic';$('#search-mode').parentElement.hidden=kind!=='words';$('#count-mode-label').hidden=kind!=='count';$('#count-note').hidden=kind!=='count';$('#internet-provider-main-label').hidden=kind!=='internet';$('#scope').parentElement.hidden=kind==='internet';});
-  const tools=document.createElement('div');tools.id='export-tools';tools.className='export-tools';tools.hidden=true;tools.innerHTML='<label>Resultados del listado <select id="export-limit"><option value="20">Primeros 20</option><option value="50" selected>Primeros 50</option><option value="100">Primeros 100</option><option value="all">Todos</option></select></label><button type="button" class="button outline" id="print-results">Imprimir / guardar PDF</button><button type="button" class="text-link" id="csv-results">Descargar listado CSV ↓</button><button type="button" class="text-link" id="email-results">Preparar correo ↗</button>';
-  $('#search-status').after(tools);$('#print-results').addEventListener('click',printResults);$('#csv-results').addEventListener('click',downloadCSV);$('#email-results').addEventListener('click',emailResults);
+ const options=$('.search-options');
+ const label=document.createElement('label');label.innerHTML='Búsqueda<select id="search-kind"><option value="words">Palabras y frases</option><option value="locus">Libro, capítulo o locus</option><option value="count">Contar término y contextos</option><option value="internet">Buscar en internet</option><option value="semantic" disabled>IA semántica · en preparación</option></select>';options.prepend(label);
+ const provider=document.createElement('label');provider.id='internet-provider-main-label';provider.hidden=true;provider.innerHTML='Buscador<select id="internet-provider-main"><option value="web">Google</option><option value="scholar">Google Académico</option></select>';options.append(provider);
+ const count=document.createElement('label');count.id='count-mode-label';count.hidden=true;count.innerHTML='Recuento<select id="count-mode"><option value="exact">Palabra o frase exacta</option><option value="prefix">Raíz · empieza por</option></select>';options.append(count);
+ const filters=document.createElement('div');filters.id='scholarly-filters';filters.className='search-options';filters.innerHTML='<label>Libro de Vitruvio<select id="filter-book"><option value="">Los diez libros</option>'+Array.from({length:10},(_,i)=>'<option value="'+(i+1)+'">Libro '+roman(i+1)+'</option>').join('')+'</select></label><label>Capítulo<select id="filter-chapter"><option value="">Todos los capítulos</option><option value="praef">Prólogo</option></select></label><label>Texto<select id="text-language"><option value="all">Latín y traducciones</option><option value="la">Solo latín</option><option value="es">Solo castellano</option><option value="fr">Solo francés</option><option value="en">Solo inglés</option></select></label>';$('#search-form').append(filters);
+ $('#filter-book').addEventListener('change',()=>{const n=[0,7,10,5,9,12,8,14,6,8,16][Number($('#filter-book').value)]||16;$('#filter-chapter').innerHTML='<option value="">Todos los capítulos</option><option value="praef">Prólogo</option>'+Array.from({length:n},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('');});
+ const summary=document.createElement('div');summary.id='term-count-summary';summary.className='term-count-summary';summary.hidden=true;$('#search-status').after(summary);
+ $('#query').required=false;
+ $('#search-kind').addEventListener('change',()=>{const kind=$('#search-kind').value;$('#search-mode').parentElement.hidden=kind!=='words';$('#count-mode-label').hidden=kind!=='count';$('#internet-provider-main-label').hidden=kind!=='internet';$('#scope').parentElement.hidden=kind==='internet';filters.hidden=kind==='internet';$('#query').placeholder=kind==='locus'?'III.1.2 · VIII.1 · I.praef.1':'symmetria · architecti est scientia · proporción…';});
+ const tools=document.createElement('div');tools.id='export-tools';tools.className='export-tools';tools.hidden=true;tools.innerHTML='<label>Resultados del listado <select id="export-limit"><option value="20">Primeros 20</option><option value="50" selected>Primeros 50</option><option value="100">Primeros 100</option><option value="all">Todos</option></select></label><button type="button" class="button outline" id="print-results">Imprimir / guardar PDF</button><button type="button" class="text-link" id="csv-results">Descargar listado CSV ↓</button><button type="button" class="text-link" id="email-results">Preparar correo ↗</button>';
+ $('#search-status').after(tools);$('#print-results').addEventListener('click',printResults);$('#csv-results').addEventListener('click',downloadCSV);$('#email-results').addEventListener('click',emailResults);
 }
 
 async function initialize(){
@@ -592,17 +408,6 @@ async function initialize(){
     }
     if(scopeControl.selectedOptions[0]?.disabled)scopeControl.value='all';
   }
-  // Verify the actual repository inventory before exposing publication links.
-  const primaryIds=['recensio-es','recensio-fr','theory-en'];
-  for(const id of primaryIds){
-    const e=edition(id);
-    const control=document.querySelector('.principal-edition [data-read="'+id+'"]');
-    const link=document.querySelector('.principal-edition a[href="documents/'+id+'.pdf"]');
-    if(!e?.available||!e?.pdf){
-      if(control){control.disabled=true;control.title='PDF en incorporación';control.setAttribute('aria-label','PDF en incorporación');}
-      if(link){link.removeAttribute('href');link.removeAttribute('download');link.setAttribute('aria-disabled','true');link.title='PDF en incorporación';link.style.cursor='not-allowed';}
-    }else if(link){link.href=e.pdf;}
-  }
   if(!records.some(e=>e.searchable&&e.text_index)){
     const input=document.querySelector('#query');
     if(input)input.placeholder='Corpus textual en incorporación; podés buscar en Google y Google Académico';
@@ -615,7 +420,7 @@ async function initialize(){
   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
   $$('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);$('#search-status').textContent='Se abrió la consulta en el buscador externo.';}));
   $$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;$('#search-kind').value='words';$('#search-kind').dispatchEvent(new Event('change'));$('#search-mode').value='words';const target=b.dataset.scope;if(target&&[...$('#scope').options].some(o=>o.value===target&&!o.disabled))$('#scope').value=target;else $('#scope').value='all';startSearch();document.getElementById('search-status').scrollIntoView({block:'nearest',behavior:'smooth'});}));
-  $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$('#catalog-filter').value='';$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
+  $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$('#catalog-filter').value='';$$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
   $('.catalog-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=$$('.catalog-tabs button');let i=tabs.indexOf(document.activeElement);i=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();});
   $('#catalog-filter').addEventListener('input',renderCatalog);
   $$('[data-catalog-focus]').forEach(link=>link.addEventListener('click',()=>{const e=edition(link.dataset.catalogFocus);if(!e)return;const tab=$(`.catalog-tabs button[data-category="${e.category}"]`);if(tab)tab.click();$('#catalog-filter').value=e.title;renderCatalog();}));
@@ -629,3 +434,4 @@ async function initialize(){
   const params=new URLSearchParams(location.search);if(params.has('edition'))openReader(params.get('edition'),Number(params.get('page'))||1);
 }
 initialize().catch(()=>showError($('#catalog-status'),'No se pudo iniciar el catálogo. Recargá la página.'));
+

@@ -39,7 +39,7 @@ check('$$$(' not in js,'Invalid selector helper $$$ detected')
 check(not re.search(r"(?<!\$)\$\('[^']+'\)\.forEach",js),'querySelector used as an iterable')
 for required in ['[data-query]','[data-read],[data-compare]','function openReader','function openComparison','function renderComparePane']:
     check(required in js,'UI handler missing: '+required)
-check('Palabra o frase no encontrada' in js,'Missing explicit empty-result notification')
+check('Palabra, frase o locus no encontrado' in js,'Missing explicit empty-result notification')
 check('Locus' in js or 'locus' in js,'Locus reference interface absent')
 pages=0
 for e in cat['editions']:
@@ -53,7 +53,13 @@ for e in cat['editions']:
         check(isinstance(data,list) and len(data)==e['pages'],'Index page count mismatch: '+e['id'])
         check(all(x.get('page')==i+1 and isinstance(x.get('text'),str) for i,x in enumerate(data)),'Index page order or text invalid: '+e['id'])
         pages+=len(data)
-        warn(any(x.get('book') is not None and x.get('chapter') is not None for x in data),'No verified book/chapter loci in '+e['id'])
+        structured_path=e.get('structured_index')
+        check(bool(structured_path) and (root/structured_path).is_file(),'Missing DOCX locus index: '+e['id'])
+        if structured_path and (root/structured_path).is_file():
+            structured=json.loads((root/structured_path).read_text())
+            units=structured['passages']; covered={(p['book'],p['chapter'],n) for p in units for n in range(p['section'],p.get('section_end',p['section'])+1)}
+            check(len(covered)==731,'Incomplete canonical locus coverage: '+e['id'])
+            check(all(p.get('latin') and p.get('translation') and p.get('source_paragraphs') for p in units),'Missing cited source text: '+e['id'])
     if e['id'] in ('recensio-es','recensio-fr','theory-en'):
         warn(e.get('available') and e.get('searchable'),'Author edition not published/searchable: '+e['id'])
 warn(pages==cat.get('searchable_pages'),'searchable_pages metadata mismatch')
@@ -61,3 +67,4 @@ print('Indexed pages:',pages,'; issues:',len(issues),'; academic/integration war
 for w in warnings:print('WARNING:',w)
 for e in issues:print('ERROR:',e,file=sys.stderr)
 sys.exit(bool(issues))
+

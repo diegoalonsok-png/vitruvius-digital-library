@@ -277,12 +277,41 @@
     {
       "lemma": "locus",
       "forms": [
+        "locus",
         "loci",
+        "loco",
         "locum",
+        "loce",
+        "locorum",
         "locis",
-        "locorum"
+        "locos",
+        "loca"
       ],
-      "es": "lugar"
+      "es": "lugar, sitio; posición; pasaje de un texto; asunto o punto de discusión",
+      "headword": "lŏcus, -ī",
+      "pos": "Sustantivo masculino · segunda declinación",
+      "en": "place, position; passage in a text; topic",
+      "fr": "lieu, emplacement; passage d’un texte; sujet",
+      "senses": [
+        "Lugar físico, sitio o región.",
+        "Posición, puesto, rango o situación.",
+        "Tema o punto de una discusión; pasaje de una obra.",
+        "Ocasión, oportunidad o momento apropiado."
+      ],
+      "morphology": {
+        "loci": "Genitivo singular: «del lugar»; nominativo o vocativo plural: «lugares». El contexto determina el análisis.",
+        "locus": "Nominativo singular: «lugar».",
+        "locum": "Acusativo singular.",
+        "loco": "Dativo o ablativo singular.",
+        "locis": "Dativo o ablativo plural.",
+        "locorum": "Genitivo plural.",
+        "locos": "Acusativo plural.",
+        "loca": "Plural neutro alternativo, usado para lugares o regiones."
+      },
+      "vitruvian": "En el texto puede designar un emplazamiento o espacio. En la referencia académica, locus identifica un pasaje mediante libro, capítulo y sección; esta convención no es una traducción automática de cada aparición de locus.",
+      "source": "Lewis & Short, A Latin Dictionary (1879), s. v. locus · Perseus, Tufts University",
+      "source_url": "https://atlas.perseus.tufts.edu/dictionaries/entry/urn%3Acite2%3Ascaife-viewer%3Adictionary-entries.atlas_v1%3Alat.ls.perseus-eng2-n26903/",
+      "verified": true
     },
     {
       "lemma": "liber",

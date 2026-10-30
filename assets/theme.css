@@ -23,3 +23,11 @@ html[data-theme="dark"] .compare-pane iframe,html[data-theme="dark"] .reader-bod
 html[data-theme="dark"] .theme-switch{border-color:#889198;color:#e9e3d8}
 .theme-switch{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:600;white-space:nowrap;border:1px solid var(--line);padding:6px 10px;margin-left:10px;background:transparent;color:var(--ink);border-radius:2px}
 .theme-switch:hover{border-color:var(--gold)}
+
+/* Theme control always remains in the header, including narrow layouts. */
+.header-inner{flex-wrap:wrap;gap:16px}.header-inner nav{min-width:0;flex:1 1 440px;flex-wrap:wrap}.header-inner .theme-switch{display:inline-flex!important;visibility:visible!important;flex:0 0 auto;position:relative;min-width:90px;min-height:38px;justify-content:center;margin-left:auto;cursor:pointer;color:var(--ink);font:600 13px Arial,sans-serif}.header-inner .header-languages{flex:0 1 auto}html[data-theme="dark"] :is(.scholarly-text,.scholarly-panel,.dictionary-entry,.dictionary-entry h3,.passage-toolbar strong,.reader-hit,.reader-intro){color:var(--ink)}html[data-theme="dark"] :is(.dictionary-entry,.scholarly-panel){background:var(--paper)}html[data-theme="dark"] :is(.dictionary-entry .source,.scholarly-panel .source,.source-links,.provenance){color:var(--muted)}.theme-switch:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:760px){.header-inner nav{flex-basis:100%;order:3}.header-inner .wordmark{max-width:65%}.header-inner .theme-switch{order:2}.header-inner .header-languages{margin-left:auto}.header-inner{padding-top:18px;padding-bottom:18px}}
+
+html[data-theme="dark"] :is(a,.examples button,.search-destinations button,.text-link,.site-header nav button){color:var(--ink)}
+html[data-theme="dark"] :is(.result-meta,.book-source,.export-tools label){color:var(--muted)}
+html[data-theme="dark"] .button.primary{color:white}
