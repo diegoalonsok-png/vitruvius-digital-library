@@ -12,8 +12,20 @@ function refreshFilters(){
   const sectionNumbers=[...new Set(passages.filter(p=>String(p.book)===$('book').value&&String(p.chapter)===$('chapter').value).map(p=>p.section))];
   options($('section'),[...new Set([...Array.from({length:40},(_,i)=>i+1),...sectionNumbers])].sort((a,b)=>a-b));
 }
-function render(){const lang=$('lang').value,term=$('term').value.trim(),locus=[$('book').value,$('chapter').value,$('section').value].join('.');const p=passages.find(p=>p.locus===locus);$('translation-title').textContent=meta[lang][0];$('translation-source').textContent=meta[lang][1];$('latin-ref').textContent=$('translation-ref').textContent=p?'Vitr., De arch. '+locus:'';$('latin-text').innerHTML=p?highlight(p.latin,term):'';$('translation-text').innerHTML=p?highlight(p.translations[lang],term):'';$('status').textContent=p?'Pasaje '+locus+' · texto latino y traducción alineados; fuente: DOCX originales.':'Referencia '+locus+' seleccionada. Esta sección todavía no está incorporada al corpus bilingüe cotejado; por eso no se muestra una traducción supuesta.'}
+function render(){const lang=$('lang').value,term=$('term').value.trim(),locus=[$('book').value,$('chapter').value,$('section').value].join('.');const p=passages.find(p=>p.locus===locus);$('translation-title').textContent=meta[lang][0];$('translation-source').textContent=meta[lang][1];$('latin-ref').textContent=$('translation-ref').textContent=p?'Vitr., De arch. '+locus:'';$('latin-text').innerHTML=p?highlight(p.latin,term):'';$('translation-text').innerHTML=p?highlight(p.translations[lang],term):'';$('status').textContent=p?'Pasaje '+locus+' · texto latino y traducción alineados.':'Referencia '+locus+' no disponible en el corpus bilingüe. Solo I.1.1 está cotejado por ahora.';$('unaligned-help').hidden=Boolean(p)}
 $('form').addEventListener('submit',event=>{event.preventDefault();render()});
+$('open-full-edition').addEventListener('click',()=>{
+ const lang=$('lang').value;
+ $('full-edition').value=lang==='es'?'recensio-es':lang==='fr'?'recensio-fr':'theory-en';
+ const locus=[$('book').value,$('chapter').value,$('section').value].join('.');
+ $('full-locus').value=locus;
+ const p=checkedLoci[locus]?.[$('full-edition').value];
+ $('full-page').value=p||1;
+ lastFullSearch='';
+ showFullPage();
+ $('full-book').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
 $('lang').addEventListener('change',render);$('book').addEventListener('change',()=>{refreshFilters();render()});$('chapter').addEventListener('change',()=>{refreshFilters();render()});$('section').addEventListener('change',render);
 try{const response=await fetch('data/bilingual-passages.json');if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();passages=data.passages||[];refreshFilters();render()}catch(error){$('status').textContent='No se pudo cargar el corpus bilingüe: '+error.message}
 
