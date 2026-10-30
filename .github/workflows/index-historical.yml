@@ -1,0 +1,64 @@
+name: Indexar traducciones históricas (OCR externo)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/index-historical.yml'
+permissions:
+  contents: write
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Descargar texto OCR por página desde Internet Archive
+        run: |
+          python -m pip install --disable-pip-version-check requests
+          python - <<'PY'
+          import requests,xml.etree.ElementTree as ET,json,pathlib,re,time
+          editions=[
+            {'id':'ortiz-1787','archive':'A065112','title':'Los diez libros de architectura de M. Vitruvio Polión','subtitle':'Traducción y comentarios de Joseph Ortiz y Sanz','author':'Vitruvio; Joseph Ortiz y Sanz (traductor)','publisher':'Imprenta Real, Madrid','year':'1787','languages':['es']},
+            {'id':'cesariano-1521','archive':'gri_33125008262210','title':'Di Lucio Vitruvio Pollione de architectura libri dece','subtitle':'Traducción y comentario de Cesare Cesariano','author':'Vitruvio; Cesare Cesariano (traductor)','publisher':'Gottardo da Ponte, Como','year':'1521','languages':['it']}
+          ]
+          root=pathlib.Path('.')
+          catalog_path=root/'data/catalog.json'
+          catalog=json.loads(catalog_path.read_text(encoding='utf-8'))
+          session=requests.Session()
+          for e in editions:
+            archive=e.pop('archive')
+            url='https://archive.org/download/'+archive+'/'+archive+'_djvu.xml'
+            try:
+              resp=session.get(url,timeout=100)
+              resp.raise_for_status()
+              if len(resp.content)>40_000_000:raise ValueError('OCR demasiado grande')
+              xml=ET.fromstring(resp.content)
+              pages=[]
+              for el in xml.iter('OBJECT'):
+                words=[''.join(w.itertext()).strip() for w in el.iter('WORD')]
+                if words:pages.append({'page':len(pages)+1,'text':' '.join(words)})
+              if len(pages)<200 or sum(bool(p['text']) for p in pages)<150:
+                raise ValueError('OCR insuficiente: '+str(len(pages)))
+              path=root/('data/text/'+e['id']+'.json')
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_text(json.dumps(pages,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+              rec={**e,'version':e['year'],'category':'historical','pages':len(pages),'text_index':str(path),'searchable':True,'available':False,'external':True,'read_url':'https://archive.org/details/'+archive,'source_url':'https://archive.org/details/'+archive,'access':'facsimile','description':'Facsímil externo en Internet Archive. Índice OCR automático sujeto a errores; consultar imágenes para citas.'}
+              catalog['editions']=[x for x in catalog['editions'] if x['id']!=rec['id']]+[rec]
+              print('Índice OCR generado:',rec['id'],len(pages),'páginas')
+            except Exception as exc:
+              print('No se incorpora',e['id'],':',exc)
+          catalog['searchable_pages']=sum(x.get('pages',0) for x in catalog['editions'] if x.get('searchable'))
+          catalog_path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Publicar índices verificados
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/catalog.json data/text/
+          if ! git diff --cached --quiet; then
+            git commit -m "Index historical Ortiz y Sanz and Cesariano facsimiles via OCR"
+            git push
+          fi
