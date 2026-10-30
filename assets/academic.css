@@ -19,3 +19,15 @@ html[data-theme="dark"] :where(.history-grid p,.method-items p,.supplement p,.bo
 @media(max-width:600px){.wrap{width:calc(100% - 36px)}.audit{padding-top:35px}.audit th,.audit td{padding:12px 8px}.header-inner nav{gap:8px 16px}.header-inner nav a{font-size:13px}.hero-academic h1{font-size:clamp(39px,10.5vw,60px)}.principal-edition{flex-wrap:wrap}.catalog-card{min-width:0}.catalog-card h3{overflow-wrap:break-word}.export-tools label{font-size:13px}.export-tools .text-link{font-size:13px}.book-description{font-size:14px}.history-grid p{font-size:14px}}
 @media print{.site-header,.institution-bar,.theme-switch,.editorial-footer nav{display:none}.audit{max-width:none;padding:0}body{background:white;color:black}.audit tr{break-inside:avoid}}
 .studies #study-filter{display:block;width:min(100%,660px);min-height:46px;margin-top:9px;padding:10px 13px;font:inherit;border:1px solid var(--line);background:var(--white);color:var(--ink)}
+/* Match the original component specificity, including its mobile rules. */
+.hero-academic .principal-editions>.eyebrow{font-size:12px;line-height:1.6}
+.hero-academic .principal-edition p{font-size:14px;line-height:1.65}
+.hero-academic .principal-edition .edition-language{font-size:12px;letter-spacing:.6px}
+.hero-academic .principal-actions button,.hero-academic .principal-actions a{font-size:13px;min-height:44px}
+.hero-academic .principal-catalog-link{font-size:13px;line-height:1.6}
+.hero-academic .hero-description{font-size:16px;line-height:1.75}
+.hero-academic .hero-links>span{font-size:13px}
+.catalog-card .book-description,.history-grid article p,.method-items article p,.supplement p{font-size:14px;line-height:1.75}
+.catalog-card .book-meta,.catalog-card .book-source{font-size:12px}
+html[data-theme="dark"] .hero-academic h1>span{color:#c5c8c5}
+html[data-theme="dark"] .hero-academic :is(.principal-edition p,.principal-edition .edition-language,.hero-links>span){color:#c5c8c5}
