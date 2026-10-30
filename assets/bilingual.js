@@ -54,7 +54,10 @@ function render(){
  const ed=records[editionIds[lang]];const source=ed?.read_url||ed?.source_url;
  $('edition-citation').innerHTML=bibliographyHTML(ed);
  $('edition-metadata').textContent=ed?[ed.editorial_role,ed.publication_place,ed.version,ed.isbn_note].filter(Boolean).join(' · '):'';
- $('pdf-links').innerHTML=source?'<a href="'+esc(source)+'" target="_blank" rel="noopener">Consultar PDF: <em>'+esc(bookTitle(ed))+'</em> ↗</a>'+(p?.pdf_pages?.latin?' · latín: p. '+p.pdf_pages.latin:'')+(p?.pdf_pages?.translation?' · traducción: p. '+p.pdf_pages.translation:''):'';
+ const pdfPage=p?.pdf_pages?.translation||p?.pdf_pages?.latin||null;
+ const pdfLink=source?(pdfPage?source.split('#')[0]+'#page='+encodeURIComponent(pdfPage):source):'';
+ $('pdf-links').innerHTML=source?'<a href="'+esc(pdfLink)+'" target="_blank" rel="noopener">Consultar PDF: <em>'+esc(bookTitle(ed))+'</em> ↗</a>'+(p?.pdf_pages?.latin?' · latín: p. '+p.pdf_pages.latin:'')+(p?.pdf_pages?.translation?' · traducción: p. '+p.pdf_pages.translation:'')+(pdfPage?' · <button type="button" id="copy-pdf-page">Copiar página '+pdfPage+'</button>':'')+'<small class="source-note"> El buscador por locus funciona en este lector; el visor externo de Google Drive puede ignorar el salto automático a la página.</small>':''; 
+ $('copy-pdf-page')?.addEventListener('click',()=>navigator.clipboard?.writeText(String(pdfPage)));
  passageCitation=ed?bibliographyText(ed)+' '+citation(p||base)+'. '+(p?.pdf_pages?.translation?'Página PDF de la traducción: '+p.pdf_pages.translation+'. ':'')+new URL('lector-bilingue.html?edition='+ed.id+'&locus='+locus,location.href).href:'';
  $('citation-status').textContent='';
  $('provenance-text').textContent=p?'Fuente: edición '+(data?.version||lang)+', '+citation(p)+'. La correspondencia digital se estableció a partir del texto autorizado de la edición; los identificadores internos de preparación editorial se mantienen fuera de la cita pública.':'La referencia latina procede de V514; no se atribuye una traducción inglesa al pasaje.';
