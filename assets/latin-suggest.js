@@ -7,10 +7,10 @@
  const gloss=document.createElement('div');gloss.id='latin-gloss';gloss.hidden=true;
  gloss.setAttribute('aria-live','polite');
  gloss.style.cssText='font-size:13px;line-height:1.65;padding:10px 16px;border:1px solid #d4d0c7;border-top:0;background:transparent;color:#34475a';
- form?.append(gloss);
+ form?.after(gloss);
 
- let entries=[];
- try{const res=await fetch('data/latin-lexicon.json');if(!res.ok)throw Error();entries=(await res.json()).entries||[];}catch{return;}
+ let entries=[{lemma:'dispositio',forms:['dispositionis','dispositionem','dispositione'],es:'disposición, ordenación'},{lemma:'symmetria',forms:['symmetriae','symmetriam'],es:'proporción'},{lemma:'architectura',forms:['architecturae','architecturam'],es:'arquitectura'},{lemma:'verbum',forms:['verba','verbi','verbis','verborum'],es:'palabra'}];
+ try{const res=await fetch('data/latin-lexicon.json',{cache:'no-store'});if(res.ok){const loaded=(await res.json()).entries;if(Array.isArray(loaded)&&loaded.length)entries=loaded;}}catch{ /* Leave the useful embedded fallback active. */ }
  const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const displayGloss=()=>{
   const token=(input.value.trim().split(/\s+/).slice(-1)[0]||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -53,6 +53,7 @@
  input.setAttribute('aria-autocomplete','list');
  input.setAttribute('aria-controls','latin-suggest');
  input.addEventListener('input',update);
+ input.addEventListener('change',displayGloss);
  input.addEventListener('focus',update);
  input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();});
  document.addEventListener('click',e=>{if(e.target!==input&&!host.contains(e.target))hide();});
