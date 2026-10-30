@@ -18,7 +18,7 @@ async function textualSearch(m){
     if(!match)continue;
     const exact=padded.includes(' '+needle+' ')?1:0;
     const score=exact*4+terms.reduce((sum,t)=>sum+Math.min(8,padded.split(' '+t+' ').length-1),0)+(e.category==='recensio'?.2:0);
-    results.push({edition:e.id,page:p.page,snippet:excerpt(p.text,terms),score});
+    results.push({edition:e.id,page:p.page,book:p.book,chapter:p.chapter,section:p.section,snippet:excerpt(p.text,terms),score});
   }}
   return results.sort((a,b)=>b.score-a.score||a.edition.localeCompare(b.edition)||a.page-b.page);
 }
@@ -41,7 +41,7 @@ async function countTerms(m){
         const key=tokens.slice(i,i+terms.length).map(t=>t.value).join(' '),form=tokens.slice(i,i+terms.length).map(t=>t.raw).join(' ');
         const previous=forms.get(key);forms.set(key,{form:previous?.form||form,count:(previous?.count||0)+1});
         total++;pageMatches++;
-        results.push({edition:e.id,page:page.page,snippet:prefix+page.text.slice(start,end)+(end<page.text.length?'…':''),context_start:prefix.length+first.start-start,context_length:last.end-first.start,form,occurrence:total});
+        results.push({edition:e.id,page:page.page,book:page.book,chapter:page.chapter,section:page.section,snippet:prefix+page.text.slice(start,end)+(end<page.text.length?'…':''),context_start:prefix.length+first.start-start,context_length:last.end-first.start,form,occurrence:total});
       }
       if(pageMatches)matchedPages++;
     }
