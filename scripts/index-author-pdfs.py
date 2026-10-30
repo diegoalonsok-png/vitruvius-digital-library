@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build page-level searchable indexes from the author's publicly shared PDFs."""
-import json, pathlib, sys
+import json, pathlib, sys, shutil
 import fitz
 import gdown
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -14,6 +14,11 @@ for record in catalog['editions']:
     output='/tmp/'+ident+'.pdf'
     got=gdown.download(id=SOURCES[ident],output=output,quiet=False)
     if not got: raise RuntimeError('Cannot download '+ident)
+    local_pdf=ROOT/'documents'/f'{ident}.pdf'
+    local_pdf.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(output,local_pdf)
+    record['pdf']='documents/'+ident+'.pdf'
+    record['external']=False
     doc=fitz.open(output)
     pages=[]
     for i,page in enumerate(doc):
