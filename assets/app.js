@@ -28,13 +28,13 @@ function resultSnippet(r){
  const query=String(lastQuery||document.querySelector('#query')?.value||'').trim();
  // A multiword quotation must be highlighted as one contiguous match,
  // never as arbitrary substrings of later words.
- const fold=x=>String(x).normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+ const fold=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  const ranges=[];
- const multi=/[\\p{L}\\p{M}]+(?:[^\\p{L}\\p{M}]+[\\p{L}\\p{M}]+){1,}/u.test(query);
+ const multi=/[\p{L}\p{M}]+(?:[^\p{L}\p{M}]+[\p{L}\p{M}]+){1,}/u.test(query);
  const addExact=(term)=>{
-  const words=[...String(term).matchAll(/[\\p{L}\\p{M}\\p{N}]+/gu)].map(m=>fold(m[0])).filter(Boolean);
+  const words=[...String(term).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>fold(m[0])).filter(Boolean);
   if(!words.length)return;
-  const tokens=[...snippet.matchAll(/[\\p{L}\\p{M}\\p{N}]+/gu)];
+  const tokens=[...snippet.matchAll(/[\p{L}\p{M}\p{N}]+/gu)];
   for(let i=0;i<=tokens.length-words.length;i++){
    if(words.every((w,j)=>fold(tokens[i+j][0])===w))
     ranges.push([tokens[i].index,tokens[i+words.length-1].index+tokens[i+words.length-1][0].length]);
@@ -42,9 +42,9 @@ function resultSnippet(r){
  };
  if(multi){
   addExact(query);
-  if(!ranges.length && r.form && String(r.form).trim().split(/\\s+/).length>1)addExact(r.form);
+  if(!ranges.length && r.form && String(r.form).trim().split(/\s+/).length>1)addExact(r.form);
  }else{
-  const terms=[query,String(r.form||''),...String(r.semantic_term||'').split(/\\s*·\\s*/)].filter(Boolean);
+  const terms=[query,String(r.form||''),...String(r.semantic_term||'').split(/\s*·\s*/)].filter(x=>x.trim().length>=2);
   for(const term of terms)addExact(term);
  }
  // The worker offset identifies one source span when the excerpt contains it.
