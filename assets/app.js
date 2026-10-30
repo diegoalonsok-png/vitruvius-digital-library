@@ -302,7 +302,7 @@ async function renderComparePane(pane){
   external.href=sourceURL(e,page);
   if(e.id==='krohn-1912')pane.dataset.mode='pdf';
   modeButton.hidden=!(e.external&&e.access==='public_pdf'&&e.searchable);
-  modeButton.textContent=pane.dataset.mode==='pdf'?'Ver PDF original ↗':'Leer texto indexado';
+  modeButton.textContent='Abrir PDF original ↗';
   if(e.external&&e.access==='public_pdf'&&e.searchable&&pane.dataset.mode==='text'){
     // Stable page-precise text for born-digital editions; historical facsimiles remain separate.
     // Display the exact page from the born-digital text index instead.
@@ -327,7 +327,7 @@ async function renderComparePane(pane){
       body.textContent='El visor externo no admite navegar automáticamente a esta página. Para lectura navegable elegí «Leer texto indexado». El PDF original se abre desde «Abrir fuente». ';
       return;
     }
-    if(false && pane.dataset.mode==='text'&&e.searchable&&e.access!=='public_pdf'){
+    if(false){
       body.textContent='OCR AUTOMÁTICO NO REVISADO — puede presentar caracteres corruptos y no debe citarse sin cotejar el facsímil.\n\nCargando transcripción…';
       try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent='OCR AUTOMÁTICO NO REVISADO — no citar sin cotejar el facsímil.\n\n'+(pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.');}
       catch{body.textContent='OCR no disponible. Consultá el facsímil original.';}
