@@ -22,7 +22,19 @@ function resultSnippet(r){if(!Number.isInteger(r.context_start))return escapeHTM
 function renderCountSummary(summary){
   const box=$('#term-count-summary');box.hidden=!summary;box.replaceChildren();if(!summary)return;
   const rows=summary.editions.map(row=>{const e=edition(row.edition);return `<tr><th scope="row">${escapeHTML(e.title)} <span>${escapeHTML(e.version)}</span></th><td>${row.total.toLocaleString('es-AR')}</td><td>${row.pages.toLocaleString('es-AR')}</td></tr>`;}).join('');
-  box.innerHTML=`<table><caption>Recuento en el texto de las ediciones seleccionadas</caption><thead><tr><th scope="col">Edición</th><th scope="col">Apariciones</th><th scope="col">Páginas</th></tr></thead><tbody>${rows}</tbody></table><p>Se cuenta todo el texto extraído del PDF, incluidas notas y comentarios. Se ignoran mayúsculas y acentos; ${summary.mode==='prefix'?'se incluyen las palabras que empiezan por la raíz escrita':'se buscan palabras completas o la secuencia de palabras escrita'}. Comprobá cada contexto en el documento.</p>${summary.forms.length?`<details><summary>Formas encontradas (${summary.forms.length})</summary><ul>${summary.forms.map(item=>`<li><em>${escapeHTML(item.form)}</em> <strong>${item.count.toLocaleString('es-AR')}</strong></li>`).join('')}</ul></details>`:''}`;
+  const grouped=new Map();
+  for(const r of results){
+    const e=edition(r.edition);
+    const book=r.book??r.liber,chapter=r.chapter??r.caput,section=r.section??r.paragraph;
+    const valid=book!=null&&chapter!=null&&section!=null;
+    const locus=valid?'Vitr., De arch. '+book+'.'+chapter+'.'+section:'Locus pendiente de cotejo';
+    const key=r.edition+'|'+locus+'|'+r.page;
+    if(!grouped.has(key))grouped.set(key,{edition:e,locus,page:r.page,count:0});
+    grouped.get(key).count++;
+  }
+  const concordance=[...grouped.values()].sort((a,b)=>String(a.edition?.version).localeCompare(String(b.edition?.version))||a.page-b.page);
+  const locusRows=concordance.map(x=>'<tr><td>'+escapeHTML(x.edition?.version||x.edition?.year||'Edición')+'</td><td>'+escapeHTML(x.locus)+'</td><td>'+x.page+'</td><td>'+x.count+'</td></tr>').join('');
+  box.innerHTML=`<table><caption>Recuento en el texto de las ediciones seleccionadas</caption><thead><tr><th scope="col">Edición</th><th scope="col">Apariciones</th><th scope="col">Páginas</th></tr></thead><tbody>${rows}</tbody></table><p>Se cuenta todo el texto extraído del PDF, incluidas notas y comentarios. Se ignoran mayúsculas y acentos; ${summary.mode==='prefix'?'se incluyen las palabras que empiezan por la raíz escrita':'se buscan palabras completas o la secuencia de palabras escrita'}. Comprobá cada contexto en el documento.</p>${summary.forms.length?`<details><summary>Formas encontradas (${summary.forms.length})</summary><ul>${summary.forms.map(item=>`<li><em>${escapeHTML(item.form)}</em> <strong>${item.count.toLocaleString('es-AR')}</strong></li>`).join('')}</ul></details>`:''}<details open><summary>Concordancia por edición, locus y página (${concordance.length} registros)</summary><table><thead><tr><th>Edición</th><th>Locus verificado</th><th>Página PDF</th><th>Apariciones</th></tr></thead><tbody>${locusRows}</tbody></table><p>El total es del texto indexado, no necesariamente solo del tratado: puede incluir notas, índice y aparato editorial. Los loci sin correspondencia documentada se mantienen pendientes.</p></details>`;
 }
 function sourceURL(e,page=1){
   if(e.external){const raw=e.read_url||e.source_url;if(!raw)return '#';return /archive\.org\/details\//.test(raw)?raw.replace(/\/$/,'')+'/page/n'+Math.max(0,Math.floor(Number(page)||1)-1):raw;}
