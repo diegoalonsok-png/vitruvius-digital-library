@@ -96,8 +96,8 @@ async function downloadDocument(control,e,format){
 function renderCatalog(){
   const term=normalize($('#catalog-filter').value.trim());
   const aliases=term==='gudiano'?['gudian','gudiano']:term==='harlesiano'?['harleian','harlesiano']:[term];
-  const list=records.filter(e=>(term?aliases.some(t=>normalize([e.title,e.subtitle,e.author,e.publisher,e.year,languageLabel(e)].join(' ')).includes(t)):(category==='all'||e.category===category)));
-  if(category==='historical')list.sort((a,b)=>Number((a.year.match(/\d{4}/)||['9999'])[0])-Number((b.year.match(/\d{4}/)||['9999'])[0]));
+  const list=records.filter(e=>(category==='all'||e.category===category)&&(!term||aliases.some(t=>normalize([e.title,e.subtitle,e.author,e.publisher,e.year,languageLabel(e)].join(' ')).includes(t))));
+  if(category==='historical')list.sort((a,b)=>Number((String(a.year).match(/\d{4}/)||['9999'])[0])-Number((String(b.year).match(/\d{4}/)||['9999'])[0]));
   const container=$('#catalog-list');container.className=`catalog-list ${category}`;
   container.innerHTML=list.map(e=>{
     const external=Boolean(e.external);
@@ -495,7 +495,7 @@ async function initialize(){
   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
   $$('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);$('#search-status').textContent='Se abrió la consulta en el buscador externo.';}));
   $$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;$('#search-kind').value='words';$('#search-kind').dispatchEvent(new Event('change'));$('#search-mode').value='words';const target=b.dataset.scope;if(target&&[...$('#scope').options].some(o=>o.value===target&&!o.disabled))$('#scope').value=target;else $('#scope').value='all';startSearch();document.getElementById('search-status').scrollIntoView({block:'nearest',behavior:'smooth'});}));
-  $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
+  $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$('#catalog-filter').value='';$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
   $('.catalog-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=$$('.catalog-tabs button');let i=tabs.indexOf(document.activeElement);i=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();});
   $('#catalog-filter').addEventListener('input',renderCatalog);
   $$('[data-catalog-focus]').forEach(link=>link.addEventListener('click',()=>{const e=edition(link.dataset.catalogFocus);if(!e)return;const tab=$(`.catalog-tabs button[data-category="${e.category}"]`);if(tab)tab.click();$('#catalog-filter').value=e.title;renderCatalog();}));
