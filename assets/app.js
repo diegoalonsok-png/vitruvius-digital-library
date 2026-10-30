@@ -184,18 +184,20 @@ function openComparison(id='recensio-es',page=1){
       const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
       const book=romans[match[1]]||Number(match[1]),isPreface=/^praef/i.test(match[2]),chapter=isPreface?null:Number(match[2]),section=match[3]==null?null:Number(match[3]);
       if(book<1||book>10||(!isPreface&&chapter<1)){status.textContent='Referencia fuera de los diez libros.';return;}
-      status.textContent='Buscando referencias editoriales verificadas…';
+      // The present page-only indexes contain no book/chapter/section mapping.
+      // Do not download megabytes of PDF text to search metadata that is absent.
+      const verified=[
+        {id:'krohn-1912',book:1,chapter:2,section:1,page:27},
+        {id:'krohn-1912',book:3,chapter:1,section:1,page:77}
+      ];
       let mapped=0;
-      for(const pane of $('.compare-pane',$('#comparison-panes'))){
+      for(const pane of $$('.compare-pane',$('#comparison-panes'))){
         const e=edition($('select',pane).value);
-        if(!e?.text_index)continue;
-        try{
-          const pages=await getPages(e);
-          const found=pages.find(p=>Number(p.book??p.liber)===book&&(isPreface?/praef/i.test(String(p.chapter??p.caput??p.locus??'')):Number(p.chapter??p.caput)===chapter)&&(section==null||Number(p.section??p.paragraph)===section));
-          if(found){$('.compare-page',pane).value=found.page;renderComparePane(pane);mapped++;}
-        }catch{}
+        const found=verified.find(x=>x.id===e?.id&&x.book===book&&!isPreface&&x.chapter===chapter&&(section==null||x.section===section));
+        if(found){$('.compare-page',pane).value=found.page;renderComparePane(pane);mapped++;}
       }
-      status.textContent=mapped?('Locus identificado en '+mapped+' edición(es); comprobá cada facsímil. '+(mapped<2?'La otra edición aún no tiene correspondencia validada.':'')):'Locus no indexado: todavía no hay correspondencias libro/capítulo/sección verificadas. No se asignan páginas por aproximación.';
+      status.textContent=mapped?('Referencia comprobada en '+mapped+' edición(es). Las restantes todavía carecen de correspondencia validada; no se han desplazado sus páginas.'):
+        ('Vitr., De arch. '+book+'.'+(isPreface?'praef':chapter)+(section==null?'':'.'+section)+': todavía no hay correspondencia de páginas verificada para las ediciones elegidas. Podés navegar manualmente por los PDF.');
     });
   }
   $('#comparison-dialog').showModal();
