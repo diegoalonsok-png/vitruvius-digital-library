@@ -262,8 +262,8 @@ function startSearch(){
 function locusLabel(r){
   // Libro/capítulo/sección solo cuando constan explícitamente en el índice verificado.
   const book=r.book??r.liber, chapter=r.chapter??r.caput, section=r.section??r.paragraph;
-  if(book==null||chapter==null)return 'Locus vitruviano: pendiente de identificación';
-  return 'Vitruvio, De architectura '+book+'.'+chapter+(section==null?'':'.'+section);
+  if(book==null||chapter==null)return 'Referencia: página de la edición; locus canónico aún no verificado';
+  return 'Vitr., De arch. '+book+'.'+chapter+(section==null?'':'.'+section);
 }
 function knownLocus(e,page){
   // Only individually cross-checked Krohn locations are displayed as verified.
@@ -275,8 +275,8 @@ function citationLine(e,page){return (e?.version||e?.year||'Edición')+' · '+kn
 function locusReference(r){return locusLabel(r)+' · página PDF '+r.page;}
 function renderMore(){
   const next=results.slice(shown,shown+16);const container=$('#search-results');
-  for(const r of next){const e=edition(r.edition);const article=document.createElement('article');article.className='result';const ordinal=shown+next.indexOf(r)+1;const isOcr=Boolean(e.searchable&&(e.external||e.id==='krohn-1912'));
-    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${escapeHTML(locusLabel(r))}</strong> · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${e.id==='krohn-1912'?`Coincidencia de <mark>${escapeHTML($('#query').value.trim())}</mark> localizada en el índice OCR. Abrí el facsímil para verificar la palabra en su página original.`:resultSnippet(r)}</p>${isOcr?'<p class="book-source">Transcripción automática sin revisión filológica: puede contener letras griegas mal reconocidas, números de línea y palabras partidas. Verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
+  for(const r of next){const e=edition(r.edition);const article=document.createElement('article');article.className='result';const ordinal=shown+next.indexOf(r)+1;const isOcr=Boolean(e.searchable&&(e.id==='krohn-1912'||e.id==='ortiz-1787'||e.id==='cesariano-1521'));
+    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${escapeHTML(locusLabel(r))}</strong> · ${escapeHTML(e.version||e.year||'Edición')} · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${e.id==='krohn-1912'?`Coincidencia de <mark>${escapeHTML($('#query').value.trim())}</mark> localizada en el índice OCR. Abrí el facsímil para verificar la palabra en su página original.`:resultSnippet(r)}</p>${isOcr?'<p class="book-source">OCR histórico sin revisión filológica: verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
   }
   shown+=next.length;$('#more-results').hidden=shown>=results.length;
   if(shown<results.length)$('#more-results').textContent=`Mostrar más resultados (${shown} de ${results.length})`;
