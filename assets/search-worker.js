@@ -23,7 +23,7 @@ self.onmessage=async({data:m})=>{
   const warnings=loaded.flatMap((x,i)=>x.status==='rejected'?['No se pudo consultar '+selected[i].version]:[]);
   let requested=String(m.query||'').trim().replace(/^(?:\d{1,3}[.)]\s+)(?=[\p{L}])/u,'').replace(/[<>†‡]/g,' ').replace(/\s+/g,' ').trim();
   const direct=parseLocus(requested);
-  const heading=requested.match(/\b(?:liber|libro|book)\s+(10|IX|VIII|VII|VI|IV|V|III|II|I|X|[1-9])(?:\s+(?:caput|capítulo|capitulo|chapter)\s+(\d+))?/i);
+  const heading=requested.match(/\b(?:liber|liver|livre|libro|lib\.?|book)\s+(10|VIII|VII|VI|IV|IX|III|II|I|V|X|[1-9])(?:\s+(?:caput|capítulo|capitulo|chapter|chapitre)\s+(\d+))?/i);
   let effective={...m,query:requested};
   if(direct && (m.kind==='words'||m.kind==='locus'))effective.kind='locus';
   else if(heading){
