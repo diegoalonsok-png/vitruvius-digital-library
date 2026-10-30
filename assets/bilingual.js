@@ -33,6 +33,17 @@ function render(){
  $('latin-title').textContent=citation(p||base);$('latin-source').textContent='Texto latino de la edición '+(p?data.version:'V514')+' · Diego Kurilo';
  $('latin-text').innerHTML=highlight(p?.latin||base.latin);$('translation-text').lang=lang;
  $('translation-text').innerHTML=p?highlight(p.translation):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Podés consultar el castellano y el francés en el selector de traducción.</p>';
+ if(lang==='es'&&p?.locus==='1.1.1'){
+  $('translation-text').innerHTML=$('translation-text').innerHTML.replace(/\b(fabrica|ratiocinatio)\b/g,'<em>$1</em>');
+ }
+ let critical=document.getElementById('critical-note');
+ if(!critical){critical=document.createElement('details');critical.id='critical-note';critical.className='provenance';document.getElementById('edition-reference').before(critical);}
+ critical.replaceChildren();critical.hidden=true;
+ if(base?.locus==='1.1.1'&&/perficit\[ur\]|opus \[est\]/.test(p?.latin||base.latin)){
+  critical.hidden=false;
+  const summary=document.createElement('summary');summary.textContent='Nota textual · I.1.1';critical.append(summary);
+  const note=document.createElement('p');note.textContent='Esta transcripción presenta perficit[ur] y opus [est]. Los corchetes se conservan como signos del texto fuente: no se les atribuye aquí una operación crítica determinada sin cotejar las convenciones editoriales de la edición. Las lecturas perficitur y opus est se encuentran en ediciones impresas de referencia. Falta incorporar una justificación de la intervención y un aparato con testimonios verificados; esta nota no sustituye una colación manuscrita.';critical.append(note);
+ }
  $('status').textContent=p?citation(p)+' · texto latino y traducción.'+(p.scope_note?' '+p.scope_note:''):citation(base)+' · traducción seleccionada sin correspondencia disponible.';
  const index=all.findIndex(x=>x.locus===locus);$('prev').disabled=index<=0;$('next').disabled=index<0||index>=all.length-1;
  const others=$('other-translations');others.replaceChildren();others.hidden=!$('compare-all').checked;
