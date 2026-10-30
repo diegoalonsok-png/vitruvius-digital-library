@@ -13,7 +13,7 @@ async function corpus(edition,baseURL){
 self.onmessage=async({data:m})=>{
  if(m.type!=='search')return;
  try{
-  if(m.kind==='semantic')throw Error('La búsqueda por IA todavía no tiene un índice publicado. Usá palabras, frases o loci.');
+  
   const selected=m.editions.filter(e=>m.scope==='all'||m.scope==='principal'||e.id===m.scope);
   if(!selected.length)throw Error('Elegí una edición con índice DOCX.');
   self.postMessage({type:'progress',requestId:m.requestId,message:'Consultando pasajes por libro, capítulo y sección…'});
@@ -40,6 +40,41 @@ self.onmessage=async({data:m})=>{
     effective={...effective,query:equivalent,kind:'words'};
     warnings.push('Correspondencia griego–latín: '+requested+' → '+equivalent+'. Se buscan las formas latinas, no apariciones literales del griego.');
    }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
+  }
+  if(m.kind==='semantic'){
+    // Local lexical-semantic retrieval. Grounded only in corpus passages and
+    // curated Latin terms, without remote AI services or invented quotations.
+    const response=await fetch(new URL('data/latin-lexicon.json',m.baseURL));
+    if(!response.ok)throw Error('No se pudo cargar el vocabulario semántico.');
+    const dictionary=(await response.json()).entries||[];
+    const norm=x=>String(x||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+    const words=x=>String(x||'').split(/[;,/·()\\s]+/).filter(x=>x.length>=3);
+    const queryWords=words(requested).map(norm);
+    const related=dictionary.filter(e=>{
+      const candidates=[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr,e.greek];
+      return candidates.some(v=>v&&(queryWords.includes(norm(v))||words(v).some(t=>queryWords.includes(norm(t)))));
+    });
+    const searchTerms=[requested];
+    for(const entry of related){
+      searchTerms.push(entry.lemma,...(entry.forms||[]),...(entry.aliases||[]));
+      for(const value of [entry.es,entry.en,entry.fr])if(value)searchTerms.push(...words(value).filter(x=>x.length>=4));
+    }
+    const unique=[...new Map(searchTerms.filter(x=>x&&x.length>=3).map(x=>[norm(x),x])).values()].slice(0,55);
+    const merged=new Map();
+    for(let i=0;i<unique.length;i++){
+      const term=unique[i];
+      const found=searchCorpus(datasets,{...effective,kind:'words',mode:'words',query:term});
+      for(const hit of found.results){
+        const key=hit.edition+'|'+hit.locus+'|'+hit.language;
+        const score=i===0?100:related.some(e=>norm(e.lemma)===norm(term))?75:related.some(e=>(e.forms||[]).some(f=>norm(f)===norm(term)))?65:35;
+        const prior=merged.get(key);
+        if(!prior||score>prior.score)merged.set(key,{...hit,score,semantic_term:term});
+      }
+    }
+    const ranked=[...merged.values()].sort((a,b)=>b.score-a.score||a.book-b.book||Number(a.chapter||0)-Number(b.chapter||0)||a.section-b.section).slice(0,600);
+    warnings.push('Búsqueda conceptual local: '+(related.length?related.map(x=>x.lemma).join(', '):'sin equivalencias del léxico; se muestran coincidencias textuales')+'. Las equivalencias son orientativas, no verificaciones filológicas automáticas.');
+    self.postMessage({type:'results',requestId:m.requestId,results:ranked,countSummary:null,warnings,semanticTerms:unique});
+    return;
   }
   let output=searchCorpus(datasets,effective);
   if(!output.results.length && !direct && !heading && m.kind==='words' && /^[\p{L}\p{M}]{3,}$/u.test(requested)){
