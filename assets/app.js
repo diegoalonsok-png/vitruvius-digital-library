@@ -219,10 +219,11 @@ function openComparison(id='recensio-es',page=1){
     selectors.innerHTML='<label>Capítulo <select id="comparison-chapter"><option value="">Elegir</option>'+Array.from({length:20},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label> <label>Sección <select id="comparison-section"><option value="">Elegir</option>'+Array.from({length:40},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label>';
     $('#comparison-locus').closest('label').before(selectors);
     const syncLocus=()=>{const b=$('#comparison-book').value,c=$('#comparison-chapter').value,p=$('#comparison-section').value;$('#comparison-locus').value=b?(b+'.'+(c||'1')+'.'+(p||'1')):'';$('#comparison-locus-status').textContent='Referencia seleccionada: '+($('#comparison-locus').value||'elegí un libro')+'. Presioná «Comparar locus» para consultar las correspondencias.';};
-    $('#comparison-chapter').addEventListener('change',syncLocus);
-    $('#comparison-section').addEventListener('change',syncLocus);
+    const syncAndCompare=()=>{syncLocus();locusForm.requestSubmit();};
+    $('#comparison-chapter').addEventListener('change',syncAndCompare);
+    $('#comparison-section').addEventListener('change',syncAndCompare);
 
-    $('#comparison-book').addEventListener('change',()=>{syncLocus();});
+    $('#comparison-book').addEventListener('change',syncAndCompare);
     $('#comparison-book-submit').addEventListener('click',()=>{const book=Number($('#comparison-book').value);const status=$('#comparison-locus-status');if(!book){status.textContent='Elegí uno de los diez libros.';return;}$('#comparison-locus').value=book+'.1.1';locusForm.requestSubmit();});
     locusForm.addEventListener('submit',async event=>{
       event.preventDefault();
