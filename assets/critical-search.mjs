@@ -29,7 +29,7 @@ function render(){
 async function compareLocus(locus){
  const panel=$('#critical-comparison');if(!panel)return;
  panel.hidden=false;panel.replaceChildren();const title=document.createElement('h2');title.textContent='Cotejo paralelo · '+locus;panel.append(title);
- const notes=await getNotes();const noteEntries=(notes.entries||[]).filter(n=>n.locus===locus);
+ const notes=await getNotes();const noteEntries=(notes.entries||[]).filter(n=>(n.locus||n.candidate_locus)===locus);
  const datasets=await Promise.allSettled(editions.map(getCorpus));
  const grid=document.createElement('div');grid.className='critical-parallel';
  datasets.forEach((res,i)=>{
@@ -42,7 +42,7 @@ async function compareLocus(locus){
   }else{const p=document.createElement('p');p.textContent='No fue posible cargar esta edición.';card.append(p);}
   const ownNotes=noteEntries.filter(n=>n.edition===editions[i].id);
   const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico';card.append(subtitle);
-  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');p.textContent=n.text;card.append(p);}
+  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');p.textContent=(n.locus?'Locus explícito':'Locus propuesto, pendiente de cotejo')+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
   else{const p=document.createElement('p');p.textContent='Notas no extraídas aún del original; consultar PDF de esta edición.';card.append(p);}
   grid.append(card);
  });panel.append(grid);
@@ -53,3 +53,5 @@ async function search(){const q=$('#critical-query').value.trim(),selection=$('#
 const failures=found.filter(v=>v.status==='rejected').length;$('#critical-status').textContent=results.length+' pasajes encontrados en los índices disponibles.'+(failures?' No fue posible consultar '+failures+' edición(es).':'')+(results.length?' Los resultados no equivalen a variantes manuscritas.':'');render();}catch(error){$('#critical-status').textContent='Error de consulta: '+error.message;}finally{if(id===revision)$('#critical-submit').disabled=false;}}
 $('#critical-form').addEventListener('submit',e=>{e.preventDefault();search()});$('#critical-more').addEventListener('click',render);document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click',()=>{$('#critical-query').value=b.dataset.example;search()}));
 document.querySelector('#critical-results').addEventListener('click',e=>{const b=e.target.closest('[data-critical-compare]');if(b)compareLocus(b.dataset.criticalCompare);});
+
+$('#critical-notes-file')?.addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const parsed=JSON.parse(await f.text());if(!Array.isArray(parsed.entries))throw Error('Falta la lista de notas');notesCache=Promise.resolve(parsed);$('#critical-notes-status').textContent='Índice cargado: '+parsed.entries.length+' notas originales. Consultá un locus para cotejar las notas disponibles.';}catch(err){$('#critical-notes-status').textContent='No se pudo leer el índice: '+err.message;}});
