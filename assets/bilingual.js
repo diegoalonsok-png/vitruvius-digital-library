@@ -48,6 +48,24 @@ async function showFullPage(){
    $('full-status').textContent='Índice completo disponible: '+pages.length+' páginas. Usá las flechas para avanzar. Los saltos de página no son límites de pasaje.';
  }catch(error){if(serial===fullSerial)$('full-status').textContent='No se pudo cargar la edición: '+error.message;}
 }
+// Navigate only known, checked edition-to-locus offsets; never infer a passage from PDF numbering.
+const checkedLoci={
+ '1.1.1':{'recensio-es':205,'recensio-fr':205,'theory-en':226},
+ '1.2.1':{'recensio-es':227,'recensio-fr':229},
+ '8.1.1':{'recensio-es':749,'recensio-fr':753,'theory-en':740}
+};
+$('full-go-locus').addEventListener('click',async()=>{
+ const raw=$('full-locus').value.trim().toUpperCase();
+ const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+ const m=raw.match(/^([IVX]+|10|[1-9])\.(\d{1,2})\.(\d{1,3})$/);
+ if(!m){$('full-status').textContent='Ingresá libro.capítulo.sección, por ejemplo VIII.1.1';return;}
+ const locus=(roman[m[1]]||Number(m[1]))+'.'+Number(m[2])+'.'+Number(m[3]);
+ const id=$('full-edition').value,p=checkedLoci[locus]?.[id];
+ if(!p){$('full-status').textContent='El locus '+locus+' todavía no está cotejado en esta edición. No voy a mostrar una página equivocada.';return;}
+ lastFullSearch='';$('full-page').value=p;await showFullPage();
+ $('full-status').textContent='Vitr., De arch. '+locus+' · inicio identificado en página indexada '+p+'. El capítulo puede continuar en las páginas siguientes.';
+});
+$('full-locus').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();$('full-go-locus').click()}});
 $('full-edition').addEventListener('change',()=>{lastFullSearch='';$('full-page').value=1;showFullPage()});
 $('full-page').addEventListener('change',showFullPage);
 $('full-prev').addEventListener('click',()=>{$('full-page').value=Math.max(1,Number($('full-page').value)-1);showFullPage()});
