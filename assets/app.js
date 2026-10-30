@@ -117,8 +117,8 @@ async function setReaderPage(page){
   }
   $('#reader-external').textContent='Abrir PDF en otra pestaña ↗';
   documentURL(e).then(url=>{if(revision!==readerRevision||currentReader?.id!==e.id||!$('#reader-dialog').open)return;const pdfURL=`${url}#page=${requestedPage}&view=FitH`;$('#reader-frame').src=pdfURL;$('#reader-external').href=pdfURL;}).catch(error=>{if(revision===readerRevision)$('#reader-text').textContent=`${error.message} Volvé a abrir la edición para intentarlo de nuevo.`;});
-  $('#reader-text').textContent=e.searchable?'Cargando el texto de esta página…':'Facsímil en imagen. Consultá el PDF para ver el testimonio manuscrito.';
-  if(!e.searchable)return;
+  $('#reader-text').textContent=e.id==='krohn-1912'?'Edición Krohn (1912): consultá el facsímil visible. El OCR original contiene errores de caracteres griegos y signos críticos; se utiliza solo para localizar páginas.':e.searchable?'Cargando el texto de esta página…':'Facsímil en imagen. Consultá el PDF para ver el testimonio manuscrito.';
+  if(!e.searchable||e.id==='krohn-1912')return;
   try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'Esta página no contiene texto extraíble. Consultá el PDF.';}catch{if(revision===readerRevision)$('#reader-text').textContent='El texto de consulta no se pudo cargar. Podés abrir el PDF de esta página.';}
 }
 
@@ -183,7 +183,8 @@ async function renderComparePane(pane){
   $('.compare-total',pane).textContent=e.pages?`/ ${e.pages}`:'';
   for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=false;
   external.href=sourceURL(e,page);
-  modeButton.hidden=!e.searchable;
+  if(e.id==='krohn-1912')pane.dataset.mode='pdf';
+  modeButton.hidden=!e.searchable||e.id==='krohn-1912';
   modeButton.textContent=pane.dataset.mode==='text'?'Ver facsímil':'Ver OCR sin revisar';
   if(e.external){
     if(pane.dataset.mode==='text'&&e.searchable){
@@ -247,7 +248,7 @@ function locusReference(r){return locusLabel(r)+' · página PDF '+r.page;}
 function renderMore(){
   const next=results.slice(shown,shown+16);const container=$('#search-results');
   for(const r of next){const e=edition(r.edition);const article=document.createElement('article');article.className='result';const ordinal=shown+next.indexOf(r)+1;const isOcr=Boolean(e.searchable&&(e.external||e.id==='krohn-1912'));
-    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${escapeHTML(locusLabel(r))}</strong> · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${resultSnippet(r)}</p>${isOcr?'<p class="book-source">Transcripción automática sin revisión filológica: puede contener letras griegas mal reconocidas, números de línea y palabras partidas. Verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
+    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${escapeHTML(locusLabel(r))}</strong> · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${e.id==='krohn-1912'?'Coincidencia localizada en el índice OCR. Leé el texto latino correcto en la imagen de la página original.':resultSnippet(r)}</p>${isOcr?'<p class="book-source">Transcripción automática sin revisión filológica: puede contener letras griegas mal reconocidas, números de línea y palabras partidas. Verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
   }
   shown+=next.length;$('#more-results').hidden=shown>=results.length;
   if(shown<results.length)$('#more-results').textContent=`Mostrar más resultados (${shown} de ${results.length})`;
