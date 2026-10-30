@@ -1,0 +1,33 @@
+name: Audit site buttons and links
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'data/**'
+      - '*.html'
+      - 'scripts/audit-buttons.mjs'
+      - '.github/workflows/audit-buttons.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  browser-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Start local GitHub Pages equivalent
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/vitruvius-http.log 2>&1 &
+          echo $! > /tmp/vitruvius-http.pid
+      - name: Audit actual UI buttons, links, search and reader
+        run: SITE_URL=http://127.0.0.1:8765/ node scripts/audit-buttons.mjs
