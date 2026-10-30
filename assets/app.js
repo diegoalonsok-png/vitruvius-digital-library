@@ -212,11 +212,11 @@ function openComparison(id='recensio-es',page=1){
     const selectors=document.createElement('span');selectors.className='compare-locus-selectors';
     selectors.innerHTML='<label>Capítulo <select id="comparison-chapter"><option value="">Elegir</option>'+Array.from({length:20},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label> <label>Sección <select id="comparison-section"><option value="">Elegir</option>'+Array.from({length:40},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label>';
     $('#comparison-locus').closest('label').before(selectors);
-    const syncLocus=()=>{const b=$('#comparison-book').value,c=$('#comparison-chapter').value,p=$('#comparison-section').value;if(b&&c&&p)$('#comparison-locus').value=b+'.'+c+'.'+p;};
+    const syncLocus=()=>{const b=$('#comparison-book').value,c=$('#comparison-chapter').value,p=$('#comparison-section').value;$('#comparison-locus').value=b?(b+'.'+(c||'1')+'.'+(p||'1')):'';$('#comparison-locus-status').textContent='Referencia seleccionada: '+($('#comparison-locus').value||'elegí un libro')+'. Presioná «Comparar locus» para consultar las correspondencias.';};
     $('#comparison-chapter').addEventListener('change',syncLocus);
     $('#comparison-section').addEventListener('change',syncLocus);
 
-    $('#comparison-book').addEventListener('change',()=>{$('#comparison-locus').value=$('#comparison-book').value?$('#comparison-book').value+'.1.1':'';});
+    $('#comparison-book').addEventListener('change',()=>{syncLocus();});
     $('#comparison-book-submit').addEventListener('click',()=>{const book=Number($('#comparison-book').value);const status=$('#comparison-locus-status');if(!book){status.textContent='Elegí uno de los diez libros.';return;}$('#comparison-locus').value=book+'.1.1';locusForm.requestSubmit();});
     locusForm.addEventListener('submit',async event=>{
       event.preventDefault();
@@ -226,6 +226,8 @@ function openComparison(id='recensio-es',page=1){
       if(!match){status.textContent='Usá una referencia como I.1.1 o III.1.2.';return;}
       const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
       const book=romans[match[1]]||Number(match[1]),isPreface=/^praef/i.test(match[2]),chapter=isPreface?null:Number(match[2]),section=match[3]==null?null:Number(match[3]);
+      $('#comparison-book').value=String(book);
+      if(!isPreface){$('#comparison-chapter').value=String(chapter);$('#comparison-section').value=String(section||'');}
       if(book<1||book>10||(!isPreface&&chapter<1)){status.textContent='Referencia fuera de los diez libros.';return;}
       // The present page-only indexes contain no book/chapter/section mapping.
       // Do not download megabytes of PDF text to search metadata that is absent.
