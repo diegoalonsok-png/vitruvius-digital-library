@@ -1,0 +1,30 @@
+name: Incorporar indices de las obras originales
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar extractor PDF
+        run: python -m pip install --disable-pip-version-check PyMuPDF gdown
+      - name: Extraer textos completos por pagina
+        run: python scripts/index-author-pdfs.py
+      - name: Verificar sintaxis e integridad
+        run: |
+          python -m json.tool data/catalog.json > /dev/null
+          python -m json.tool data/text/recensio-es.json > /dev/null
+          python -m json.tool data/text/recensio-fr.json > /dev/null
+          python -m json.tool data/text/theory-en.json > /dev/null
+      - name: Publicar indices validados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/catalog.json data/text/recensio-es.json data/text/recensio-fr.json data/text/theory-en.json
+          git diff --cached --quiet || (git commit -m "Publish searchable page indexes for author editions" && git push)
