@@ -191,19 +191,19 @@ function openComparison(id='recensio-es',page=1){
   const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length).filter((e,i,a)=>a.findIndex(x=>x.id===e.id)===i);
   if(!available.length){window.alert('La consulta comparada estará disponible cuando las ediciones estén incorporadas.');return;}
   const first=available.find(e=>e.id===id)||available[0];
-  const second=available.find(e=>e.id!==first.id)||first;
+  const second=available.find(e=>e.id!==first.id&&['recensio-es','recensio-fr','theory-en'].includes(e.id))||available.find(e=>e.id!==first.id)||first;
   const paneContainer=$('#comparison-panes');paneContainer.replaceChildren();
   [first,second].forEach((e,i)=>{
-    const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode='pdf';
+    const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(e.id)?'text':'pdf';
     const optionList=available.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.id==='krohn-1912'?'Vitruvio · Fritz Krohn (editor)':x.id==='ortiz-1787'?'Vitruvio · Joseph Ortiz y Sanz (traductor)':x.id==='cesariano-1521'?'Vitruvio · Cesare Cesariano (traductor)':['recensio-es','recensio-fr','theory-en','theory-es','theory-fr'].includes(x.id)?'Diego Kurilo · '+x.title:x.author?x.author+' · '+x.title:x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
     pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
-    $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode='pdf';renderComparePane(pane);});
+    $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(selected.id)?'text':'pdf';renderComparePane(pane);});
     $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
     $('.compare-page',pane).addEventListener('blur',()=>renderComparePane(pane));
     $('.compare-page',pane).addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();renderComparePane(pane);}});
     $('.compare-prev',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)-1);renderComparePane(pane);});
     $('.compare-next',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Number($('.compare-page',pane).value)+1;renderComparePane(pane);});
-    $('.compare-mode',pane).addEventListener('click',()=>{pane.dataset.mode=pane.dataset.mode==='text'?'pdf':'text';renderComparePane(pane);});
+    $('.compare-mode',pane).addEventListener('click',()=>{const ed=edition($('select',pane).value);if(ed?.read_url)window.open(ed.read_url,'_blank','noopener');});
     paneContainer.append(pane);renderComparePane(pane);
   });
   const note=$('.comparison-note');
@@ -301,10 +301,10 @@ async function renderComparePane(pane){
   for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=false;
   external.href=sourceURL(e,page);
   if(e.id==='krohn-1912')pane.dataset.mode='pdf';
-  modeButton.hidden=!e.searchable||e.id==='krohn-1912';
-  modeButton.textContent=pane.dataset.mode==='text'?'Ver facsímil':'Ver OCR sin revisar';
-  if(e.external&&e.access==='public_pdf'&&e.searchable){
-    // Google Drive preview ignores externally supplied page numbers.
+  modeButton.hidden=!(e.external&&e.access==='public_pdf'&&e.searchable);
+  modeButton.textContent=pane.dataset.mode==='pdf'?'Ver PDF original ↗':'Leer texto indexado';
+  if(e.external&&e.access==='public_pdf'&&e.searchable&&pane.dataset.mode==='text'){
+    // Stable page-precise text for born-digital editions; historical facsimiles remain separate.
     // Display the exact page from the born-digital text index instead.
     body.textContent='Cargando página PDF '+page+' del texto digital…';
     const request=(pane.dataset.renderRevision=String(Number(pane.dataset.renderRevision||0)+1));
@@ -323,7 +323,11 @@ async function renderComparePane(pane){
     return;
   }
   if(e.external){
-    if(pane.dataset.mode==='text'&&e.searchable){
+    if(e.access==='public_pdf'&&e.searchable){
+      body.textContent='El visor externo no admite navegar automáticamente a esta página. Para lectura navegable elegí «Leer texto indexado». El PDF original se abre desde «Abrir fuente». ';
+      return;
+    }
+    if(false && pane.dataset.mode==='text'&&e.searchable&&e.access!=='public_pdf'){
       body.textContent='OCR AUTOMÁTICO NO REVISADO — puede presentar caracteres corruptos y no debe citarse sin cotejar el facsímil.\n\nCargando transcripción…';
       try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent='OCR AUTOMÁTICO NO REVISADO — no citar sin cotejar el facsímil.\n\n'+(pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.');}
       catch{body.textContent='OCR no disponible. Consultá el facsímil original.';}
