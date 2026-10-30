@@ -190,12 +190,14 @@ function openComparison(id='recensio-es',page=1){
   if($('#reader-dialog').open)closeReader();
   const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length).filter((e,i,a)=>a.findIndex(x=>x.id===e.id)===i);
   if(!available.length){window.alert('La consulta comparada estará disponible cuando las ediciones estén incorporadas.');return;}
-  const first=available.find(e=>e.id===id)||available[0];
-  const second=available.find(e=>e.id!==first.id&&['recensio-es','recensio-fr','theory-en'].includes(e.id))||available.find(e=>e.id!==first.id)||first;
+  const authorIds=['recensio-es','recensio-fr','theory-en'];
+  const first=available.find(e=>e.id===id&&authorIds.includes(e.id))||available.find(e=>authorIds.includes(e.id))||available[0];
+  const second=available.find(e=>e.id!==first.id&&!authorIds.includes(e.id))||available.find(e=>e.id!==first.id)||first;
   const paneContainer=$('#comparison-panes');paneContainer.replaceChildren();
   [first,second].forEach((e,i)=>{
     const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(e.id)?'text':'pdf';
-    const optionList=available.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.id==='krohn-1912'?'Vitruvio · Fritz Krohn (editor)':x.id==='ortiz-1787'?'Vitruvio · Joseph Ortiz y Sanz (traductor)':x.id==='cesariano-1521'?'Vitruvio · Cesare Cesariano (traductor)':['recensio-es','recensio-fr','theory-en','theory-es','theory-fr'].includes(x.id)?'Diego Kurilo · '+x.title:x.author?x.author+' · '+x.title:x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
+    const paneOptions=i===0?available.filter(x=>authorIds.includes(x.id)):available;
+    const optionList=paneOptions.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.id==='krohn-1912'?'Vitruvio · Fritz Krohn (editor)':x.id==='ortiz-1787'?'Vitruvio · Joseph Ortiz y Sanz (traductor)':x.id==='cesariano-1521'?'Vitruvio · Cesare Cesariano (traductor)':['recensio-es','recensio-fr','theory-en','theory-es','theory-fr'].includes(x.id)?'Diego Kurilo · '+x.title:x.author?x.author+' · '+x.title:x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
     pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
     $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(selected.id)?'text':'pdf';renderComparePane(pane);});
     $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
@@ -271,10 +273,10 @@ function openComparison(id='recensio-es',page=1){
               intro.textContent='Referencia '+locus+': se encontraron menciones en PDFs digitales (pueden ser notas o índices, no pasajes validados). ';
               status.append(intro);
               for(const item of alternatives){
-                const label=document.createElement('label');label.textContent=item.ed.version+' · página candidata: ';
-                const select=document.createElement('select');
+                const label=document.createElement('label');label.style.cssText='display:block;font-size:13px;margin:9px 0';label.textContent='Páginas con menciones de '+locus+' en '+item.ed.version+' (no equivalen necesariamente al pasaje): ';
+                const select=document.createElement('select');select.setAttribute('aria-label','Páginas candidatas de '+item.ed.version);select.style.cssText='width:auto;max-width:230px;margin:0 12px';
                 for(const page of item.candidates){const o=document.createElement('option');o.value=page;o.textContent='PDF '+page;select.append(o);}
-                const go=document.createElement('button');go.type='button';go.textContent='Abrir candidata →';
+                const go=document.createElement('button');go.type='button';go.textContent='Ver texto de esa página →';
                 go.addEventListener('click',()=>{$('.compare-page',item.pane).value=select.value;renderComparePane(item.pane);});
                 label.append(select,go);status.append(label);
               }
