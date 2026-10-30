@@ -25,6 +25,7 @@ function renderCountSummary(summary){
   box.innerHTML=`<table><caption>Recuento en el texto de las ediciones seleccionadas</caption><thead><tr><th scope="col">Edición</th><th scope="col">Apariciones</th><th scope="col">Páginas</th></tr></thead><tbody>${rows}</tbody></table><p>Se cuenta todo el texto extraído del PDF, incluidas notas y comentarios. Se ignoran mayúsculas y acentos; ${summary.mode==='prefix'?'se incluyen las palabras que empiezan por la raíz escrita':'se buscan palabras completas o la secuencia de palabras escrita'}. Comprobá cada contexto en el documento.</p>${summary.forms.length?`<details><summary>Formas encontradas (${summary.forms.length})</summary><ul>${summary.forms.map(item=>`<li><em>${escapeHTML(item.form)}</em> <strong>${item.count.toLocaleString('es-AR')}</strong></li>`).join('')}</ul></details>`:''}`;
 }
 function sourceURL(e,page=1){
+  if(e.external){const raw=e.read_url||e.source_url;if(!raw)return '#';return /archive\.org\/details\//.test(raw)?raw.replace(/\/$/,'')+'/page/n'+Math.max(0,Math.floor(Number(page)||1)-1):raw;}
   if(!e.pdf_chunks?.length)return new URL(`${e.pdf}#page=${page}`,location.href).href;
   const url=new URL('./',location.href);url.searchParams.set('edition',e.id);url.searchParams.set('page',page);return url.href;
 }
@@ -249,9 +250,20 @@ async function initialize(){
   if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recargá la página para intentarlo de nuevo.');return;}
   catalog=loads[0].value;records=[...catalog.editions,...(loads[1].status==='fulfilled'?loads[1].value:[])];
   for(const e of records)if(e.id.startsWith('gudianus'))e.category='manuscripts';
-  $('#stat-records').textContent=records.length;$('#stat-pages').textContent=catalog.total_pages.toLocaleString('es-AR');
+  $('#stat-records').textContent=records.length;$('#stat-pages').textContent=catalog.searchable_pages.toLocaleString('es-AR');
   $('#historic-count').textContent=records.filter(e=>e.category==='historical').length;$('#manuscript-count').textContent=records.filter(e=>e.category==='manuscripts').length;
   renderCatalog();
+  // Select a real searchable edition by default, without changing the visual layout.
+  const scopeControl=$('#scope');
+  if(scopeControl){
+    const indexed=records.filter(e=>e.searchable&&e.text_index);
+    for(const option of scopeControl.options){
+      if(option.value!=='all'&&option.value!=='principal')option.disabled=!indexed.some(e=>e.id===option.value);
+      if(option.value==='principal')option.disabled=!indexed.some(e=>['recensio-es','recensio-fr','theory-en'].includes(e.id));
+    }
+    for(const e of indexed){if(![...scopeControl.options].some(option=>option.value===e.id)){const option=new Option(`${e.version||e.year} · ${languageLabel(e)}`,e.id);scopeControl.add(option);}}
+    if(scopeControl.selectedOptions[0]?.disabled)scopeControl.value='all';
+  }
   // Verify the actual repository inventory before exposing publication links.
   const primaryIds=['recensio-es','recensio-fr','theory-en'];
   for(const id of primaryIds){
