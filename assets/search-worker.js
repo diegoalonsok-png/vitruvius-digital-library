@@ -51,7 +51,7 @@ self.onmessage=async({data:m})=>{
      const entries=(await response.json()).entries||[];
      const norm=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
      const token=norm(requested);
-     const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.es,e.en,e.fr].filter(Boolean).some(x=>norm(x)===token));
+     const entry=entries.find(e=>[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr].filter(Boolean).some(x=>norm(x)===token));
      if(entry){
       const forms=[...new Set([requested,entry.lemma,...(entry.forms||[])])];
       const seen=new Set(output.results.map(x=>x.edition+'|'+x.locus+'|'+x.language));
