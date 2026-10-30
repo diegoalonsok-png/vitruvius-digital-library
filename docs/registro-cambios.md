@@ -13,3 +13,8 @@
 - Contadores iniciales derivados de los datos reales de catálogo; principios editoriales resumidos desde el DOCX V297 con procedencia identificada.
 
 Este registro documenta cambios del sitio. No atribuye nuevas fechas de composición ni cambios al contenido de los libros V297, V514 o V554.
+
+## 30 de octubre de 2026 (revisión académica, tarde)
+
+- «La vida de un texto» amplía la tradición manuscrita con las siglas H, G y E, y suma dos etapas: la circulación medieval ininterrumpida (Krinsky 1967; corrección del mito del «redescubrimiento» de 1416) y la filología crítica de Galiani a la Collection des Universités de France. Se añaden Alberti (c. 1450) y Fra Giocondo (1511).
+- Estudios académicos: ocho fichas nuevas en estado «cotejo pendiente» (Fensterbusch 1964; Gros, Corso y Romano 1997; Rowland y Howe 1999; Rose y Müller-Strübing 1867; Krinsky 1967; Baldwin 1990; Wallace-Hadrill 2008; Wittkower 1949).
