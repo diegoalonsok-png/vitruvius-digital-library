@@ -30,11 +30,11 @@ function render(){
 // The Krohn source is raw page OCR, not a critical transcription. Match word sequences
 // conservatively and never label an OCR hit as a verified manuscript variant.
 function krohnCandidates(pages,latin){
- const words=String(latin||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().match(/[a-z]{4,}/g)||[];
+ const words=String(latin||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().match(/[a-z]{4,}/g)||[];
  const starts=[];for(let i=0;i<Math.min(words.length-3,95);i+=3){const part=words.slice(i,i+4);if(part.length===4)starts.push(part.join(' '));}
  if(!starts.length)return [];
  return pages.map(p=>{
-  const raw=String(p.text||'');const normalized=raw.normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/[^a-z]+/g,' ');
+  const raw=String(p.text||'');const normalized=raw.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z]+/g,' ');
   const hits=starts.filter(x=>normalized.includes(x)).length;
   return {page:p.page,text:raw,hits};
  }).filter(p=>p.hits>=2).sort((a,b)=>b.hits-a.hits).slice(0,3);
