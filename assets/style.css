@@ -36,3 +36,8 @@ dialog{padding:0;background:var(--white);color:var(--ink);border:1px solid #949b
 .reader-content.text-primary .reader-transcript{height:100%;overflow:auto;max-width:1080px;margin:auto;padding:32px clamp(24px,5vw,80px);border-left:0}
 .reader-content.text-primary #reader-text{max-width:900px;font-size:20px;line-height:1.85}
 .reader-content.text-primary mark{background:#f6dc5b;color:#172b3c}
+
+/* Bibliographic identification in lexical concordance cards. */
+.result .result-biblio{font-family:var(--sans);font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 10px}
+.result .result-biblio strong{font-weight:600;color:var(--ink)}
+html[data-theme="dark"] .result .result-biblio{color:#c5c8c5}
