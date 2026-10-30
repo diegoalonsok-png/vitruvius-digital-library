@@ -196,7 +196,7 @@ function openComparison(id='recensio-es',page=1){
   const paneContainer=$('#comparison-panes');paneContainer.replaceChildren();
   [first,second].forEach((e,i)=>{
     const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(e.id)?'text':'pdf';
-    const paneOptions=i===0?available.filter(x=>authorIds.includes(x.id)):available;
+    const paneOptions=i===0?available.filter(x=>authorIds.includes(x.id)):available.filter(x=>!authorIds.includes(x.id));
     const optionList=paneOptions.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.id==='krohn-1912'?'Vitruvio · Fritz Krohn (editor)':x.id==='ortiz-1787'?'Vitruvio · Joseph Ortiz y Sanz (traductor)':x.id==='cesariano-1521'?'Vitruvio · Cesare Cesariano (traductor)':['recensio-es','recensio-fr','theory-en','theory-es','theory-fr'].includes(x.id)?'Diego Kurilo · '+x.title:x.author?x.author+' · '+x.title:x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
     pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
     $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode=['recensio-es','recensio-fr','theory-en'].includes(selected.id)?'text':'pdf';renderComparePane(pane);});
@@ -283,9 +283,21 @@ function openComparison(id='recensio-es',page=1){
               alternatives.push({pane,ed,candidates});
             }
             if(alternatives.length){
+              // Update the left indexed reader on EVERY search, even when the
+              // reference is only mentioned in a note. Never call this verified.
+              for(const item of alternatives){
+                const firstPage=item.candidates[0];
+                if(!Number.isInteger(firstPage)||firstPage<1)continue;
+                $('.compare-page',item.pane).value=firstPage;
+                item.pane.dataset.resolvedLocus='';
+                await renderComparePane(item.pane);
+                if(locusForm.dataset.searchSerial!==searchSerial)return;
+                const cite=$('.compare-citation',item.pane);
+                if(cite)cite.textContent=item.ed.version+' · Referencia '+locus+' mencionada en página '+firstPage+' (no corresponde necesariamente al comienzo del pasaje)';
+              }
               status.replaceChildren();
               const intro=document.createElement('span');
-              intro.textContent='Referencia '+locus+': se encontraron menciones en PDFs digitales (pueden ser notas o índices, no pasajes validados). ';
+              intro.textContent='Referencia '+locus+': el lector izquierdo se actualizó a una página donde se menciona el locus. No es una concordancia verificada; elegí otras páginas candidatas si es necesario. ';
               status.append(intro);
               for(const item of alternatives){
                 const label=document.createElement('label');label.style.cssText='display:block;font-size:13px;margin:9px 0';label.textContent='Páginas con menciones de '+locus+' en '+item.ed.version+' (no equivalen necesariamente al pasaje): ';
