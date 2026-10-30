@@ -1,4 +1,4 @@
-import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-locus-formats2';
+import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-prefix-roots';
 const cache=new Map();
 async function corpus(edition,baseURL){
  if(!cache.has(edition.id))cache.set(edition.id,(async()=>{
@@ -42,6 +42,10 @@ self.onmessage=async({data:m})=>{
    }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
   }
   let output=searchCorpus(datasets,effective);
+  if(!output.results.length && !direct && !heading && m.kind==='words' && /^[\p{L}\p{M}]{3,}$/u.test(requested)){
+   output=searchCorpus(datasets,{...effective,prefixFallback:true});
+   if(output.results.length)warnings.push('Búsqueda ampliada por raíz: se incluyen palabras que comienzan por «'+requested+'».');
+  }
   // For a single technical term, also locate documented Latin inflections
   // and translate an exact Spanish/French/English dictionary equivalent.
   if(!direct&&!heading&&requested.split(/\s+/).length===1&&m.kind==='words'){
