@@ -166,6 +166,13 @@ function openComparison(id='recensio-es',page=1){
     locusForm.className='compare-controls';
     locusForm.innerHTML='<label>Libro <select id="comparison-book"><option value="">Elegir libro</option>'+Array.from({length:10},(_,i)=>'<option value="'+(i+1)+'">Libro '+(i+1)+'</option>').join('')+'</select></label><label>Locus latino (libro.capítulo.sección) <input id="comparison-locus" type="text" placeholder="I.1.1" aria-label="Locus latino"></label><button type="button" id="comparison-book-submit">Comparar libro →</button><button type="submit">Comparar locus →</button><span id="comparison-locus-status" role="status"></span>';
     note.after(locusForm);
+    const selectors=document.createElement('span');selectors.className='compare-locus-selectors';
+    selectors.innerHTML='<label>Capítulo <select id="comparison-chapter"><option value="">Elegir</option>'+Array.from({length:20},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label> <label>Sección <select id="comparison-section"><option value="">Elegir</option>'+Array.from({length:40},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('')+'</select></label>';
+    $('#comparison-locus').closest('label').before(selectors);
+    const syncLocus=()=>{const b=$('#comparison-book').value,c=$('#comparison-chapter').value,p=$('#comparison-section').value;if(b&&c&&p)$('#comparison-locus').value=b+'.'+c+'.'+p;};
+    $('#comparison-chapter').addEventListener('change',syncLocus);
+    $('#comparison-section').addEventListener('change',syncLocus);
+
     $('#comparison-book').addEventListener('change',()=>{$('#comparison-locus').value=$('#comparison-book').value?$('#comparison-book').value+'.1.1':'';});
     $('#comparison-book-submit').addEventListener('click',()=>{const book=Number($('#comparison-book').value);const status=$('#comparison-locus-status');if(!book){status.textContent='Elegí uno de los diez libros.';return;}$('#comparison-locus').value=book+'.1.1';locusForm.requestSubmit();});
     locusForm.addEventListener('submit',async event=>{
