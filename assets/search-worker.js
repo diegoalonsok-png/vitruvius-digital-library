@@ -147,6 +147,26 @@ self.onmessage=async({data:m})=>{
    output.results=matches.slice(0,30);
    if(matches.length)warnings.push('Cita aproximada de otra edición: resultados ordenados por vocabulario compartido; verificá el locus y el texto original antes de citar.');
   }
+  if(!output.results.length&&m.kind!=='count'&&m.kind!=='locus'&&!direct&&!heading){
+   // Graceful lexical fallback for phrases: return real source passages only.
+   const meaningful=[...new Set((requested.match(/[\\p{L}]{4,}/gu)||[]).map(x=>x.toLowerCase()))].filter(t=>!['para','sobre','entre','como','desde','with','from','that','this','quae','quod','sunt','delle','dans','avec','pour','libro','livre','book','liber','liver'].includes(t)).slice(0,8);
+   const candidates=new Map();
+   for(const term of meaningful){
+    const found=searchCorpus(datasets,{...effective,kind:'words',mode:'words',query:term});
+    for(const hit of found.results){
+     const key=hit.edition+'|'+hit.locus+'|'+hit.language;
+     const item=candidates.get(key)||{hit,terms:new Set()};
+     item.terms.add(term);candidates.set(key,item);
+    }
+   }
+   const minHits=meaningful.length>=3?2:1;
+   const approximate=[...candidates.values()].filter(x=>x.terms.size>=minHits).sort((a,b)=>b.terms.size-a.terms.size).slice(0,50);
+   if(approximate.length){
+    output.results=approximate.map(x=>({...x.hit,score:Math.round(100*x.terms.size/Math.max(1,meaningful.length)),partial_match:true,match_type:'partial_terms'}));
+    warnings.push('No se encontró la frase literal. Se muestran pasajes reales que comparten varios términos de la consulta; estas no son coincidencias textuales exactas.');
+   }
+  }
+  if(!output.results.length)warnings.push('Sin coincidencias en los documentos indexados con esta consulta. Probá otra forma, un lema más breve o un locus como IV.1.');
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
 };
