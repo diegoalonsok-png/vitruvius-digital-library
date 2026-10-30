@@ -240,7 +240,7 @@ function openComparison(id='recensio-es',page=1){
       const searchSerial=String(Number(locusForm.dataset.searchSerial||0)+1);
       locusForm.dataset.searchSerial=searchSerial;
       // Clear old reading before a new locus lookup, to avoid falsely showing an earlier passage.
-      for(const pane of $('.compare-pane',$('#comparison-panes'))){
+      for(const pane of $$('.compare-pane',$('#comparison-panes'))){
         if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){
           pane.dataset.requestedLocus=locus;
           pane.dataset.resolvedLocus='';
@@ -314,7 +314,7 @@ function openComparison(id='recensio-es',page=1){
         }catch(error){console.warn('Candidate index not available:',error);}
       }
       if(locusForm.dataset.searchSerial!==searchSerial)return;
-      if(!mapped){for(const pane of $('.compare-pane',$('#comparison-panes'))){if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){$('.compare-body',pane).textContent='No existe aún un pasaje identificado para Vitr., De arch. '+locus+' en esta edición. El texto anterior se ha retirado para evitar una comparación incorrecta. Podés navegar por página manualmente.';}}}
+      if(!mapped){for(const pane of $$('.compare-pane',$('#comparison-panes'))){if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){$('.compare-body',pane).textContent='No existe aún un pasaje identificado para Vitr., De arch. '+locus+' en esta edición. El texto anterior se ha retirado para evitar una comparación incorrecta. Podés navegar por página manualmente.';}}}
       status.textContent=mapped?('Vitr., De arch. '+locus+': localizada la página en '+mapped+' edición(es). Las demás ediciones no tienen cotejo registrado.'):
         ('Vitr., De arch. '+locus+': no se encontró todavía una página cotejada ni una mención explícita indexada para esas ediciones. Podés navegar manualmente por los PDF.');
     });
