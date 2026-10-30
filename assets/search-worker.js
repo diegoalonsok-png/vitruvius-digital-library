@@ -1,4 +1,4 @@
-import {searchCorpus} from './search-core.mjs?v=20261030-docx-1';
+import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-liber-iv';
 const cache=new Map();
 async function corpus(edition,baseURL){
  if(!cache.has(edition.id))cache.set(edition.id,(async()=>{
@@ -20,7 +20,8 @@ self.onmessage=async({data:m})=>{
   const loaded=await Promise.allSettled(selected.map(e=>corpus(e,m.baseURL)));
   const datasets=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value);
   if(!datasets.length)throw loaded[0].reason;
-  const output=searchCorpus(datasets,m),warnings=loaded.flatMap((x,i)=>x.status==='rejected'?['No se pudo consultar '+selected[i].version]:[]);
+  const resolved=parseLocus(m.query);const effective=resolved&&m.kind==='words'?{...m,kind:'locus'}:m;
+  const output=searchCorpus(datasets,effective),warnings=loaded.flatMap((x,i)=>x.status==='rejected'?['No se pudo consultar '+selected[i].version]:[]);
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
 };
