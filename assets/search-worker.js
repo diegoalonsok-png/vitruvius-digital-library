@@ -25,7 +25,7 @@ self.onmessage=async({data:m})=>{
   const direct=parseLocus(requested);
   const heading=requested.match(/\b(?:liber|liver|livre|libro|lib\.?|book)\s+(10|VIII|VII|VI|IV|IX|III|II|I|V|X|[1-9])(?:\s+(?:caput|capítulo|capitulo|chapter|chapitre)\s+(\d+))?/i);
   let effective={...m,query:requested};
-  if(direct && (m.kind==='words'||m.kind==='locus'))effective.kind='locus';
+  if(direct && (m.kind==='words'||m.kind==='locus'||m.kind==='semantic'))effective.kind='locus';
   else if(heading){
    effective={...m,kind:'locus',query:heading[1]+(heading[2]?'.'+heading[2]:'')};
    if(requested.length>heading[0].length+15)warnings.push('Consulta interpretada como referencia al libro o capítulo. Las notas editoriales y los argumenta no están indexados como texto de Vitruvio.');
@@ -41,7 +41,7 @@ self.onmessage=async({data:m})=>{
     warnings.push('Correspondencia griego–latín: '+requested+' → '+equivalent+'. Se buscan las formas latinas, no apariciones literales del griego.');
    }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
   }
-  if(m.kind==='semantic'){
+  if(m.kind==='semantic'&&!direct&&!heading){
     // Local lexical-semantic retrieval. Grounded only in corpus passages and
     // curated Latin terms, without remote AI services or invented quotations.
     const response=await fetch(new URL('data/latin-lexicon.json',m.baseURL));
