@@ -81,7 +81,7 @@ async function getPages(e){
 async function openReader(id,page=1){
   const e=edition(id);if(!e)return;
   if(!e.external&&!e.pdf&&!e.pdf_chunks?.length){window.alert('Esta edición todavía no tiene un documento incorporado al sitio.');return;}
-  if(e.external){window.open(e.read_url||e.source_url,'_blank','noopener');return;}
+  if(e.external){let url=e.read_url||e.source_url;if(/archive\.org\/details\//.test(url)){url=url.replace(/\/$/,'')+'/page/n'+Math.max(0,Math.floor(Number(page)||1)-1);}window.open(url,'_blank','noopener');return;}
   currentReader=e;$('#reader-title').textContent=e.title;$('#reader-edition').textContent=`${e.version} · ${languageLabel(e)}`;
   $('#reader-download').href=downloadLink(e,'pdf');$('#reader-download').download=`${e.id}.pdf`;$('#reader-download').dataset.download=e.id;$('#reader-download').dataset.format='pdf';
   if(!$('#reader-dialog').open)$('#reader-dialog').showModal();
@@ -174,7 +174,7 @@ function startSearch(){
   $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();
   $('#search-status').textContent=searchKind==='semantic'?'Preparando la búsqueda por significado…':searchKind==='count'?'Preparando el recuento del término…':'Preparando la búsqueda en las ediciones seleccionadas…';
   $('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
-  ensureWorker().postMessage({type:'search',requestId,query,kind:searchKind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>e.searchable&&!e.external),semantic:catalog.semantic});
+  ensureWorker().postMessage({type:'search',requestId,query,kind:searchKind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>e.searchable&&e.text_index),semantic:catalog.semantic});
 }
 
 function renderMore(){
