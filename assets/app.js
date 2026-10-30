@@ -236,12 +236,25 @@ function openComparison(id='recensio-es',page=1){
       if(!isPreface){$('#comparison-chapter').value=String(chapter);$('#comparison-section').value=String(section||'');}
       if(book<1||book>10||(!isPreface&&chapter<1)){status.textContent='Referencia fuera de los diez libros.';return;}
       const locus=(isPreface?book+'.praef'+(section==null?'':'.'+section):book+'.'+chapter+(section==null?'':'.'+section));
+      const searchSerial=String(Number(locusForm.dataset.searchSerial||0)+1);
+      locusForm.dataset.searchSerial=searchSerial;
+      // Clear old reading before a new locus lookup, to avoid falsely showing an earlier passage.
+      for(const pane of $('.compare-pane',$('#comparison-panes'))){
+        if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){
+          pane.dataset.requestedLocus=locus;
+          pane.dataset.resolvedLocus='';
+          pane.dataset.renderRevision=String(Number(pane.dataset.renderRevision||0)+1);
+          $('.compare-body',pane).textContent='Localizando Vitr., De arch. '+locus+'…';
+          const note=$('.compare-citation',pane);if(note)note.textContent='Locus solicitado: '+locus+' · comprobación pendiente';
+        }
+      }
       status.textContent='Consultando concordancias de '+locus+'…';
       let map;
       try{
         const response=await fetch('data/loci-map.json',{cache:'no-store'});
         if(!response.ok)throw Error('No se pudo leer la concordancia');
         map=await response.json();
+        if(locusForm.dataset.searchSerial!==searchSerial)return;
       }catch(error){
         status.textContent='Error al cargar la concordancia: '+error.message+'. La navegación manual sigue disponible.';
         return;
@@ -253,6 +266,7 @@ function openComparison(id='recensio-es',page=1){
         const target=matches.find(item=>Number.isInteger(item.pages?.[ed?.id]))?.pages?.[ed?.id];
         if(!target)continue;
         $('.compare-page',pane).value=target;
+        pane.dataset.resolvedLocus=locus;
         try{await renderComparePane(pane);mapped++;}catch(error){console.error('Error showing mapped locus',error);}
       }
       if(!mapped){
@@ -260,6 +274,7 @@ function openComparison(id='recensio-es',page=1){
           const response=await fetch('data/loci-candidates.json',{cache:'no-store'});
           if(response.ok){
             const candidateMap=await response.json();
+            if(locusForm.dataset.searchSerial!==searchSerial)return;
             const alternatives=[];
             for(const pane of $$('.compare-pane',$('#comparison-panes'))){
               const ed=edition($('select',pane).value);
@@ -277,7 +292,7 @@ function openComparison(id='recensio-es',page=1){
                 const select=document.createElement('select');select.setAttribute('aria-label','Páginas candidatas de '+item.ed.version);select.style.cssText='width:auto;max-width:230px;margin:0 12px';
                 for(const page of item.candidates){const o=document.createElement('option');o.value=page;o.textContent='PDF '+page;select.append(o);}
                 const go=document.createElement('button');go.type='button';go.textContent='Ver texto de esa página →';
-                go.addEventListener('click',()=>{$('.compare-page',item.pane).value=select.value;renderComparePane(item.pane);});
+                go.addEventListener('click',()=>{if(locusForm.dataset.searchSerial!==searchSerial)return;$('.compare-page',item.pane).value=select.value;item.pane.dataset.resolvedLocus='';renderComparePane(item.pane);});
                 label.append(select,go);status.append(label);
               }
               return;
@@ -285,6 +300,8 @@ function openComparison(id='recensio-es',page=1){
           }
         }catch(error){console.warn('Candidate index not available:',error);}
       }
+      if(locusForm.dataset.searchSerial!==searchSerial)return;
+      if(!mapped){for(const pane of $('.compare-pane',$('#comparison-panes'))){if(['recensio-es','recensio-fr','theory-en'].includes($('select',pane).value)){$('.compare-body',pane).textContent='No existe aún un pasaje identificado para Vitr., De arch. '+locus+' en esta edición. El texto anterior se ha retirado para evitar una comparación incorrecta. Podés navegar por página manualmente.';}}}
       status.textContent=mapped?('Vitr., De arch. '+locus+': localizada la página en '+mapped+' edición(es). Las demás ediciones no tienen cotejo registrado.'):
         ('Vitr., De arch. '+locus+': no se encontró todavía una página cotejada ni una mención explícita indexada para esas ediciones. Podés navegar manualmente por los PDF.');
     });
