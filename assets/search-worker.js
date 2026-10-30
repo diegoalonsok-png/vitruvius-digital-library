@@ -127,7 +127,7 @@ self.onmessage=async({data:m})=>{
   }
   // Long quotations pasted from other editions: rank real passages by
   // significant-word overlap, not invented exact textual correspondence.
-  const quoteTokens=String(requested).normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\\p{L}]{3,}/gu)||[];
+  const quoteTokens=String(requested).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\p{L}]{3,}/gu)||[];
   if(!output.results.length&&quoteTokens.length>=7&&m.kind!=='count'&&m.kind!=='locus'){
    const stop=new Set(['que','los','las','con','por','para','del','una','uno','the','and','with','from','this','that','est','cum','qui','quae','quod','autem','sunt','non','sur','dans','des','les','une','mais']);
    const querySet=new Set(quoteTokens.filter(t=>!stop.has(t)));
@@ -137,7 +137,7 @@ self.onmessage=async({data:m})=>{
     for(const [language,textValue] of [['la',p.latin],[data.language,p.translation]]){
      if(m.language&&m.language!=='all'&&m.language!==language)continue;
      const source=String(textValue||'');
-     const indexed=new Set((source.normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\\p{L}]{3,}/gu)||[]).filter(t=>!stop.has(t)));
+     const indexed=new Set((source.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\p{L}]{3,}/gu)||[]).filter(t=>!stop.has(t)));
      let shared=0;for(const word of querySet)if(indexed.has(word))shared++;
      const ratio=shared/Math.max(1,querySet.size);
      if(shared>=4&&ratio>=0.35)matches.push({edition:data.edition,locus:p.locus,book:p.book,chapter:p.chapter,section:p.section,section_end:p.section_end,language,latin:p.latin,translation:p.translation,text:source,snippet:source.slice(0,650),context_start:0,context_length:0,partial_match:true,form:'',page:p.pdf_pages?.[language==='la'?'latin':'translation']||null,score:Math.round(ratio*100),match_type:'approximate_quote'});
@@ -149,7 +149,7 @@ self.onmessage=async({data:m})=>{
   }
   if(!output.results.length&&m.kind!=='count'&&m.kind!=='locus'&&!direct&&!heading){
    // Graceful lexical fallback for phrases: return real source passages only.
-   const meaningful=[...new Set((requested.match(/[\\p{L}]{4,}/gu)||[]).map(x=>x.toLowerCase()))].filter(t=>!['para','sobre','entre','como','desde','with','from','that','this','quae','quod','sunt','delle','dans','avec','pour','libro','livre','book','liber','liver'].includes(t)).slice(0,8);
+   const meaningful=[...new Set((requested.match(/[\p{L}]{4,}/gu)||[]).map(x=>x.toLowerCase()))].filter(t=>!['para','sobre','entre','como','desde','with','from','that','this','quae','quod','sunt','delle','dans','avec','pour','libro','livre','book','liber','liver'].includes(t)).slice(0,8);
    const candidates=new Map();
    for(const term of meaningful){
     const found=searchCorpus(datasets,{...effective,kind:'words',mode:'words',query:term});
