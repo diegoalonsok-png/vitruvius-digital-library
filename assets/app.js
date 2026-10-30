@@ -178,10 +178,17 @@ function startSearch(){
   ensureWorker().postMessage({type:'search',requestId,query,kind:searchKind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>e.searchable&&e.text_index),semantic:catalog.semantic});
 }
 
+function locusLabel(r){
+  // Libro/capítulo/sección solo cuando constan explícitamente en el índice verificado.
+  const book=r.book??r.liber, chapter=r.chapter??r.caput, section=r.section??r.paragraph;
+  if(book==null||chapter==null)return 'Locus vitruviano: pendiente de identificación';
+  return 'Vitruvio, De architectura '+book+'.'+chapter+(section==null?'':'.'+section);
+}
+function locusReference(r){return locusLabel(r)+' · página PDF '+r.page;}
 function renderMore(){
   const next=results.slice(shown,shown+16);const container=$('#search-results');
   for(const r of next){const e=edition(r.edition);const article=document.createElement('article');article.className='result';
-    article.innerHTML=`<div class="result-meta">${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p>${resultSnippet(r)}</p><div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
+    article.innerHTML=`<div class="result-meta">${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${escapeHTML(locusLabel(r))}</strong> · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${resultSnippet(r)}</p><div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
   }
   shown+=next.length;$('#more-results').hidden=shown>=results.length;
   if(shown<results.length)$('#more-results').textContent=`Mostrar más resultados (${shown} de ${results.length})`;
@@ -192,7 +199,7 @@ function printResults(){
   const rows=resultExportRows();if(!rows.length)return;
   const popup=window.open('','_blank');if(!popup){$('#search-status').textContent='Permití abrir la vista de impresión en tu navegador para guardar los resultados como PDF.';return;}
   const date=new Intl.DateTimeFormat('es-AR',{dateStyle:'long'}).format(new Date());
-  const content=rows.map((r,i)=>{const e=edition(r.edition);const link=sourceURL(e,r.page);return `<article><div class="n">${i+1} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}</div><h2>${escapeHTML(e.title)}</h2><p class="ref">${escapeHTML(e.author)}. ${escapeHTML(e.subtitle)}. ${escapeHTML(e.publisher)}, ${escapeHTML(e.year)}. Página física del PDF: ${r.page}.</p><blockquote>${resultSnippet(r)}</blockquote><p class="url">Fuente: ${escapeHTML(link)}</p></article>`;}).join('');
+  const content=rows.map((r,i)=>{const e=edition(r.edition);const link=sourceURL(e,r.page);return `<article><div class="n">${i+1} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}</div><h2>${escapeHTML(e.title)}</h2><p class="ref">${escapeHTML(e.author)}. ${escapeHTML(e.subtitle)}. ${escapeHTML(e.publisher)}, ${escapeHTML(e.year)}. ${escapeHTML(locusReference(r))}.</p><blockquote>${resultSnippet(r)}</blockquote><p class="url">Fuente: ${escapeHTML(link)}</p></article>`;}).join('');
   popup.document.open();popup.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius — Resultados de ${escapeHTML(lastQuery)}</title><style>body{max-width:760px;margin:40px auto;color:#172b3c;font-family:Georgia,serif;line-height:1.65;padding:0 25px}h1{font-size:31px;font-weight:400;margin-bottom:6px}h2{font-size:20px;margin:5px 0;font-weight:400}.sub,.ref,.n,.url{font-family:Arial,sans-serif;font-size:10px;color:#626969}.n{font-size:9px;letter-spacing:.6px}article{border-top:1px solid #bbb;padding:20px 0;break-inside:avoid}blockquote{font-size:16px;margin:12px 0}.url{overflow-wrap:anywhere;font-size:8px}.tools{font-family:Arial,sans-serif;margin:25px 0;padding:15px;background:#eeece5}.tools button{background:#122a42;color:#fff;border:0;padding:12px;cursor:pointer}.tools p{font-size:11px}@page{size:A4;margin:20mm 18mm}@media print{body{margin:0;max-width:none;padding:0}.tools{display:none}h1{font-size:26px}}</style></head><body><h1>Vitruvius Digital Library</h1><p class="sub">LISTADO DE RESULTADOS · ${escapeHTML(date)}</p><p>Consulta: <strong>${escapeHTML(lastQuery)}</strong><br>Modo: ${searchKind==='semantic'?'Afinidad semántica':searchKind==='count'?'Recuento literal':'Búsqueda textual'}. ${rows.length} resultados incluidos de ${results.length}.${countSummary?`<br>Recuento: ${countSummary.total} apariciones en ${countSummary.pages} páginas. ${countSummary.mode==='prefix'?'Palabras que empiezan por la raíz escrita.':'Palabra o secuencia exacta.'} Incluye notas y comentarios; se ignoran mayúsculas y acentos.`:''}</p><div class="tools"><button id="print">Imprimir / guardar como PDF</button><p>En el cuadro de impresión del navegador, elegí «Guardar como PDF». Las páginas indicadas corresponden al archivo PDF consultado.</p></div>${content}<p class="sub">Proyecto y edición de Diego Kurilo. Verificá las citas en los documentos de referencia.</p></body></html>`);popup.document.close();popup.document.getElementById('print').addEventListener('click',()=>popup.print());
 }
 
@@ -218,7 +225,7 @@ function emailResults(){
   ];
   rows.slice(0,limit).forEach((r,i)=>{
     const e=edition(r.edition);
-    lines.push((i+1)+'. '+e.title+' ('+e.version+'), p. PDF '+r.page);
+    lines.push((i+1)+'. '+e.title+' ('+e.version+'), '+locusReference(r));
     lines.push(r.snippet.replace(/\s+/g,' ').slice(0,170));
     lines.push(sourceURL(e,r.page));
     lines.push('');
