@@ -1,5 +1,5 @@
 {
-  "title": "Vitruvian historical corpus expansion — working inventory",
+  "title": "Codices et editiones — catálogo histórico vitruviano",
   "prepared": "2026-10-29",
   "source": "Bibliography furnished by Diego Kurilo; individual cataloguing requires verification",
   "policy": "Bibliographic leads only: not live library cards and not counted as searchable pages until a legally usable source and indexed text are linked.",
@@ -8,7 +8,7 @@
       "group": "manuscripts",
       "title": "Harley 2767",
       "place": "British Library",
-      "date": "IX",
+      "date": "800–824",
       "languages": [
         "la"
       ],
@@ -20,7 +20,50 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Harley 2767. British Library. IX. Signatura y folios por verificar."
+      "bibliographic_note": "Harley 2767. British Library. IX. Signatura y folios por verificar.",
+      "id": "hist-001",
+      "original_inventory": {
+        "title": "Harley 2767",
+        "place": "British Library",
+        "date": "IX"
+      },
+      "display_title": "Codex Harleianus 2767",
+      "aliases": [
+        "Harley",
+        "Harleianus",
+        "Harlesianus",
+        "Harlesinus",
+        "Harleian",
+        "Harley 2767",
+        "Codex Harleianus 2767"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "British Library · Harley MS 2767",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048598"
+        }
+      ],
+      "history_note": "El catálogo de la British Library lo describe como el testimonio conservado más antiguo de la obra. Dos hojas separadas se conservan en Oxford, Bodleian Library, Rawlinson MS D. 893, ff. 135–136. El lugar de copia se propone con interrogación y se distingue de su conservación actual en Londres.",
+      "kind": "manuscript",
+      "shelfmark": "Harley MS 2767",
+      "institution": "British Library",
+      "conservation_place": "Londres",
+      "origin_place": "Colonia o Aquisgrán, atribución interrogativa del catálogo",
+      "siglum": "H",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "De architectura en los folios indicados",
+      "date_display": "800–824 · primer cuarto del s. IX",
+      "date_start": 800,
+      "date_end": 824,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "material": "Pergamino; minúscula carolina",
+      "folios": "ff. 1r–162v",
+      "citation_text": "Londres, British Library, Harley MS 2767. De architectura. 800–824 · primer cuarto del s. IX."
     },
     {
       "group": "manuscripts",
@@ -36,13 +79,57 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Sélestat MS 17 (olim 1153b). Bibliothèque Humaniste de Sélestat. X. Signatura y folios por verificar."
+      "bibliographic_note": "Sélestat MS 17 (olim 1153b). Bibliothèque Humaniste de Sélestat. X. Signatura y folios por verificar.",
+      "id": "hist-002",
+      "original_inventory": {
+        "title": "Sélestat MS 17 (olim 1153b)",
+        "place": "Bibliothèque Humaniste de Sélestat",
+        "date": "X"
+      },
+      "display_title": "Codex Sélestatensis 17",
+      "aliases": [
+        "Sélestat",
+        "Selestatensis",
+        "Scletstatensis",
+        "Schlettstadt",
+        "1153b",
+        "1153bis",
+        "1153 bis",
+        "Codex Sélestatensis 17"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "IRHT–CNRS · ARCA, Sélestat 17",
+          "url": "https://arca.irht.cnrs.fr/ark%3A/63955/md41mg74rm3w"
+        }
+      ],
+      "history_note": "El catálogo del IRHT registra una recopilación latina que reúne recetas técnicas, el Liber artis architectonicae de Cetius Faventinus y De architectura. La signatura antigua es 1153 bis; la actual es 17. La extensión de 215 folios corresponde al volumen completo, no únicamente a Vitruvio.",
+      "kind": "manuscript",
+      "shelfmark": "MS 17 (olim 1153 bis)",
+      "institution": "Bibliothèque Humaniste",
+      "conservation_place": "Sélestat",
+      "origin_place": null,
+      "siglum": "S",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Recopilación: recetas, Faventino y De architectura",
+      "date_display": "s. X",
+      "date_start": 901,
+      "date_end": 1000,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "material": "Pergamino; 215 folios; 191 × 148 mm",
+      "view_url": "https://arca.irht.cnrs.fr/ark%3A/63955/md41mg74rm3w",
+      "citation_text": "Sélestat, Bibliothèque Humaniste, MS 17 (olim 1153 bis). De architectura. s. X."
     },
     {
       "group": "manuscripts",
       "title": "Gudianus 132 (E)",
       "place": "Herzog August Bibliothek",
-      "date": "X (por verificar)",
+      "date": "s. IX, mediados",
       "languages": [
         "la"
       ],
@@ -50,11 +137,56 @@
       "searchable": false,
       "document_url": null,
       "verification": "catalog_link_existing",
-      "view_url": "https://diglib.hab.de/",
+      "view_url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=132-gud-lat&lang=en&list=ms",
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Gudianus 132 (E). Herzog August Bibliothek. X (por verificar). Signatura y folios por verificar."
+      "bibliographic_note": "Gudianus 132 (E). Herzog August Bibliothek. X (por verificar). Signatura y folios por verificar.",
+      "id": "hist-003",
+      "original_inventory": {
+        "title": "Gudianus 132 (E)",
+        "place": "Herzog August Bibliothek",
+        "date": "X (por verificar)"
+      },
+      "display_title": "Codex Gudianus 132",
+      "aliases": [
+        "Gudianus 132",
+        "Gudianus epitomatus",
+        "Guelferbytanus 132",
+        "Gudiano 132",
+        "Guelf 132",
+        "Codex Gudianus 132"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "HAB · Cod. Guelf. 132 Gud. lat.",
+          "url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=132-gud-lat&lang=en&list=ms"
+        },
+        {
+          "label": "HAB · selección por autor y datación",
+          "url": "https://diglib.hab.de/?db=mss&id=vitruvius&lang=en&list=author"
+        }
+      ],
+      "history_note": "La base de manuscritos de la HAB sitúa el códice en Corbie, a mediados del siglo IX. El catálogo describe en la primera unidad una compilación de Faventino con pasajes de Vitruvio intercalados. Su naturaleza epitomada exige distinguirlo de un testimonio continuo del tratado.",
+      "kind": "manuscript",
+      "shelfmark": "Cod. Guelf. 132 Gud. lat.",
+      "institution": "Herzog August Bibliothek",
+      "conservation_place": "Wolfenbüttel",
+      "origin_place": "Corbie, monasterio benedictino (según HAB)",
+      "siglum": "E",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Compilación; no equivale a un ejemplar íntegro de los diez libros",
+      "date_display": "mediados del s. IX",
+      "date_start": 825,
+      "date_end": 875,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "folios": "ff. 1–48v: compilación de Faventino y pasajes vitruvianos",
+      "citation_text": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. De architectura. mediados del s. IX."
     },
     {
       "group": "manuscripts",
@@ -68,11 +200,52 @@
       "searchable": false,
       "document_url": null,
       "verification": "catalog_link_existing",
-      "view_url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=69-gud-lat&list=ms",
+      "view_url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=69-gud-lat&list=ms&mode=print",
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Gudianus 69 (G). Herzog August Bibliothek. XI. Signatura y folios por verificar."
+      "bibliographic_note": "Gudianus 69 (G). Herzog August Bibliothek. XI. Signatura y folios por verificar.",
+      "id": "hist-004",
+      "original_inventory": {
+        "title": "Gudianus 69 (G)",
+        "place": "Herzog August Bibliothek",
+        "date": "XI"
+      },
+      "display_title": "Codex Gudianus 69",
+      "aliases": [
+        "Gudianus 69",
+        "Guelferbytanus 69",
+        "Gudiano 69",
+        "Guelf 69",
+        "Codex Gudianus 69"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "HAB · descripción de Milchsack, pp. 121–122",
+          "url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=69-gud-lat&list=ms&mode=print"
+        }
+      ],
+      "history_note": "El catálogo de Milchsack distingue tres manos: siglo XI para los ff. 1–85, XII para los ff. 86–114 y XV para el último folio. La ficha resumida de la base HAB fecha el conjunto en el siglo XII; se conserva aquí esa diferencia y se precisa la datación de la unidad vitruviana. El texto presenta correcciones y glosas marginales.",
+      "kind": "manuscript",
+      "shelfmark": "Cod. Guelf. 69 Gud. lat.",
+      "institution": "Herzog August Bibliothek",
+      "conservation_place": "Wolfenbüttel",
+      "origin_place": null,
+      "siglum": "G",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Diez libros de Vitruvio; el volumen incluye también a Teófilo",
+      "date_display": "s. XI: Vitruvio; adiciones de los ss. XII y XV",
+      "date_start": 1001,
+      "date_end": 1100,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "material": "Pergamino; 115 folios; 29 × 21 cm",
+      "folios": "ff. 1–85v: De architectura",
+      "citation_text": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat. De architectura. s. XI: Vitruvio; adiciones de los ss. XII y XV."
     },
     {
       "group": "manuscripts",
@@ -88,7 +261,40 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Vaticanus Reginensis 1328 (V). Biblioteca Apostolica Vaticana. XV. Signatura y folios por verificar."
+      "bibliographic_note": "Vaticanus Reginensis 1328 (V). Biblioteca Apostolica Vaticana. XV. Signatura y folios por verificar.",
+      "id": "hist-005",
+      "original_inventory": {
+        "title": "Vaticanus Reginensis 1328 (V)",
+        "place": "Biblioteca Apostolica Vaticana",
+        "date": "XV"
+      },
+      "display_title": "Codex Vaticanus Reginensis 1328",
+      "aliases": [
+        "Vaticanus Reginus 1328",
+        "Reginensis 1328",
+        "Reg 1328",
+        "Codex Vaticanus Reginensis 1328"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Reg. lat. 1328",
+      "institution": "Biblioteca Apostolica Vaticana",
+      "conservation_place": "Ciudad del Vaticano",
+      "origin_place": null,
+      "siglum": "V",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. XV · datación por cotejar",
+      "date_start": 1401,
+      "date_end": 1500,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana, Reg. lat. 1328. De architectura. s. XV · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -104,7 +310,40 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Vaticanus Reginensis 2079 (W). Biblioteca Apostolica Vaticana. XIII. Signatura y folios por verificar."
+      "bibliographic_note": "Vaticanus Reginensis 2079 (W). Biblioteca Apostolica Vaticana. XIII. Signatura y folios por verificar.",
+      "id": "hist-006",
+      "original_inventory": {
+        "title": "Vaticanus Reginensis 2079 (W)",
+        "place": "Biblioteca Apostolica Vaticana",
+        "date": "XIII"
+      },
+      "display_title": "Codex Vaticanus Reginensis 2079",
+      "aliases": [
+        "Vaticanus Reginus 2079",
+        "Reginensis 2079",
+        "Reg 2079",
+        "Codex Vaticanus Reginensis 2079"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Reg. lat. 2079",
+      "institution": "Biblioteca Apostolica Vaticana",
+      "conservation_place": "Ciudad del Vaticano",
+      "origin_place": null,
+      "siglum": "W",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. XIII · datación por cotejar",
+      "date_start": 1201,
+      "date_end": 1300,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana, Reg. lat. 2079. De architectura. s. XIII · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -120,7 +359,39 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Vossianus 88 (L). Leiden. X. Signatura y folios por verificar."
+      "bibliographic_note": "Vossianus 88 (L). Leiden. X. Signatura y folios por verificar.",
+      "id": "hist-007",
+      "original_inventory": {
+        "title": "Vossianus 88 (L)",
+        "place": "Leiden",
+        "date": "X"
+      },
+      "display_title": "Codex Vossianus 88",
+      "aliases": [
+        "Vossianus 88",
+        "Voss 88",
+        "Codex Vossianus 88"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Vossianus 88 (serie por verificar)",
+      "institution": "Universiteitsbibliotheek Leiden",
+      "conservation_place": "Leiden",
+      "origin_place": null,
+      "siglum": "L",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. X · datación por cotejar",
+      "date_start": 901,
+      "date_end": 1000,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Leiden, Universiteitsbibliotheek Leiden, Vossianus 88 (serie por verificar). De architectura. s. X · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -136,7 +407,41 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Escorialensis III f.19 (e). El Escorial. XI. Signatura y folios por verificar."
+      "bibliographic_note": "Escorialensis III f.19 (e). El Escorial. XI. Signatura y folios por verificar.",
+      "id": "hist-008",
+      "original_inventory": {
+        "title": "Escorialensis III f.19 (e)",
+        "place": "El Escorial",
+        "date": "XI"
+      },
+      "display_title": "Codex Escorialensis III.f.19",
+      "aliases": [
+        "Escorialensis",
+        "Escurialensis",
+        "Escorial",
+        "III f 19",
+        "Codex Escorialensis III.f.19"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "III.f.19 (por verificar)",
+      "institution": "Real Biblioteca del Monasterio de San Lorenzo de El Escorial",
+      "conservation_place": "San Lorenzo de El Escorial",
+      "origin_place": null,
+      "siglum": "e",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. XI · datación por cotejar",
+      "date_start": 1001,
+      "date_end": 1100,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "San Lorenzo de El Escorial, Real Biblioteca del Monasterio de San Lorenzo de El Escorial, III.f.19 (por verificar). De architectura. s. XI · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -152,7 +457,41 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Franekeranus B.A. fr.51 (f). Leeuwarden. X. Signatura y folios por verificar."
+      "bibliographic_note": "Franekeranus B.A. fr.51 (f). Leeuwarden. X. Signatura y folios por verificar.",
+      "id": "hist-009",
+      "original_inventory": {
+        "title": "Franekeranus B.A. fr.51 (f)",
+        "place": "Leeuwarden",
+        "date": "X"
+      },
+      "display_title": "Codex Franekeranus 51",
+      "aliases": [
+        "Franekeranus",
+        "Franeker",
+        "fr 51",
+        "BA fr 51",
+        "Codex Franekeranus 51"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "B.A. fr.51 (por verificar)",
+      "institution": "Institución actual por verificar",
+      "conservation_place": "Leeuwarden (según inventario)",
+      "origin_place": null,
+      "siglum": "f",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. X · datación por cotejar",
+      "date_start": 901,
+      "date_end": 1000,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Leeuwarden (según inventario), Institución actual por verificar, B.A. fr.51 (por verificar). De architectura. s. X · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -168,7 +507,40 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Parisinus 7227 (p). BnF. XI–XII. Signatura y folios por verificar."
+      "bibliographic_note": "Parisinus 7227 (p). BnF. XI–XII. Signatura y folios por verificar.",
+      "id": "hist-010",
+      "original_inventory": {
+        "title": "Parisinus 7227 (p)",
+        "place": "BnF",
+        "date": "XI–XII"
+      },
+      "display_title": "Codex Parisinus 7227",
+      "aliases": [
+        "Parisinus 7227",
+        "Parisin 7227",
+        "Lat 7227",
+        "Codex Parisinus 7227"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Latin 7227 (por verificar)",
+      "institution": "Bibliothèque nationale de France",
+      "conservation_place": "París",
+      "origin_place": null,
+      "siglum": "p",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. XI–XII · datación por cotejar",
+      "date_start": 1001,
+      "date_end": 1200,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "París, Bibliothèque nationale de France, Latin 7227 (por verificar). De architectura. s. XI–XII · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -184,7 +556,40 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Parisinus 10277 (P). BnF. X. Signatura y folios por verificar."
+      "bibliographic_note": "Parisinus 10277 (P). BnF. X. Signatura y folios por verificar.",
+      "id": "hist-011",
+      "original_inventory": {
+        "title": "Parisinus 10277 (P)",
+        "place": "BnF",
+        "date": "X"
+      },
+      "display_title": "Codex Parisinus 10277",
+      "aliases": [
+        "Parisinus 10277",
+        "Pithoeanus",
+        "Lat 10277",
+        "Codex Parisinus 10277"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Latin 10277 (por verificar)",
+      "institution": "Bibliothèque nationale de France",
+      "conservation_place": "París",
+      "origin_place": null,
+      "siglum": "P",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. X · datación por cotejar",
+      "date_start": 901,
+      "date_end": 1000,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "París, Bibliothèque nationale de France, Latin 10277 (por verificar). De architectura. s. X · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -200,7 +605,40 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Vaticanus Reginensis 1504 (v). BAV. X. Signatura y folios por verificar."
+      "bibliographic_note": "Vaticanus Reginensis 1504 (v). BAV. X. Signatura y folios por verificar.",
+      "id": "hist-012",
+      "original_inventory": {
+        "title": "Vaticanus Reginensis 1504 (v)",
+        "place": "BAV",
+        "date": "X"
+      },
+      "display_title": "Codex Vaticanus Reginensis 1504",
+      "aliases": [
+        "Vaticanus Reginus 1504",
+        "Reginensis 1504",
+        "Reg 1504",
+        "Codex Vaticanus Reginensis 1504"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Reg. lat. 1504 (por verificar)",
+      "institution": "Biblioteca Apostolica Vaticana",
+      "conservation_place": "Ciudad del Vaticano",
+      "origin_place": null,
+      "siglum": "v",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. X · datación por cotejar",
+      "date_start": 901,
+      "date_end": 1000,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana, Reg. lat. 1504 (por verificar). De architectura. s. X · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -216,7 +654,39 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Vossianus 107 (l). Leiden. XI. Signatura y folios por verificar."
+      "bibliographic_note": "Vossianus 107 (l). Leiden. XI. Signatura y folios por verificar.",
+      "id": "hist-013",
+      "original_inventory": {
+        "title": "Vossianus 107 (l)",
+        "place": "Leiden",
+        "date": "XI"
+      },
+      "display_title": "Codex Vossianus 107",
+      "aliases": [
+        "Vossianus 107",
+        "Voss 107",
+        "Codex Vossianus 107"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "Vossianus 107 (serie por verificar)",
+      "institution": "Universiteitsbibliotheek Leiden",
+      "conservation_place": "Leiden",
+      "origin_place": null,
+      "siglum": "l",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. XI · datación por cotejar",
+      "date_start": 1001,
+      "date_end": 1100,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Leiden, Universiteitsbibliotheek Leiden, Vossianus 107 (serie por verificar). De architectura. s. XI · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -232,7 +702,41 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Bruxellensis 5253 (b). Brussels. IX–XI. Signatura y folios por verificar."
+      "bibliographic_note": "Bruxellensis 5253 (b). Brussels. IX–XI. Signatura y folios por verificar.",
+      "id": "hist-014",
+      "original_inventory": {
+        "title": "Bruxellensis 5253 (b)",
+        "place": "Brussels",
+        "date": "IX–XI"
+      },
+      "display_title": "Codex Bruxellensis 5253",
+      "aliases": [
+        "Bruxellensis",
+        "Brussels",
+        "Bruxelles",
+        "5253",
+        "Codex Bruxellensis 5253"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
+      "kind": "manuscript",
+      "shelfmark": "5253 (por verificar)",
+      "institution": "KBR · Bibliothèque royale de Belgique",
+      "conservation_place": "Bruselas",
+      "origin_place": null,
+      "siglum": "b",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Contenido y extensión por cotejar",
+      "date_display": "s. IX–XI · datación por cotejar",
+      "date_start": 801,
+      "date_end": 1100,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "citation_text": "Bruselas, KBR · Bibliothèque royale de Belgique, 5253 (por verificar). De architectura. s. IX–XI · datación por cotejar. Ficha provisional: datos por cotejar."
     },
     {
       "group": "manuscripts",
@@ -248,13 +752,54 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Cottonianus Cleopatra D.I (c). British Library. XI. Signatura y folios por verificar."
+      "bibliographic_note": "Cottonianus Cleopatra D.I (c). British Library. XI. Signatura y folios por verificar.",
+      "id": "hist-015",
+      "original_inventory": {
+        "title": "Cottonianus Cleopatra D.I (c)",
+        "place": "British Library",
+        "date": "XI"
+      },
+      "display_title": "Codex Cottonianus Cleopatra D I",
+      "aliases": [
+        "Cottonianus",
+        "Cotton Cleopatra D I",
+        "Cleopatra D.1",
+        "Cleopatra D 1",
+        "Codex Cottonianus Cleopatra D I"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "University of Oxford · CLASP, manuscritos 325 y 325.1",
+          "url": "https://clasp.ell.ox.ac.uk/db-latest/apmo/"
+        }
+      ],
+      "history_note": "El repertorio de Oxford distingue la unidad de los ff. 1–82 de la de los ff. 83–128 y fecha ambas en la primera parte del siglo XI. Se debe citar la unidad concreta: el códice compuesto incluye también otros autores. La correspondencia folio a folio requiere consulta del testimonio.",
+      "kind": "manuscript",
+      "shelfmark": "Cotton MS Cleopatra D I",
+      "institution": "British Library",
+      "conservation_place": "Londres",
+      "origin_place": null,
+      "siglum": "c",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Unidad vitruviana de un códice compuesto",
+      "date_display": "primera parte del s. XI · unidad vitruviana",
+      "date_start": 1001,
+      "date_end": 1050,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "folios": "ff. 1–82: unidad de Vitruvio; folios de texto por cotejar",
+      "view_url": "https://clasp.ell.ox.ac.uk/db-latest/apmo/",
+      "citation_text": "Londres, British Library, Cotton MS Cleopatra D I. De architectura. primera parte del s. XI · unidad vitruviana."
     },
     {
       "group": "manuscripts",
       "title": "Harleianus 3859 (h)",
       "place": "British Library",
-      "date": "XI–XII",
+      "date": "1100–1140",
       "languages": [
         "la"
       ],
@@ -264,7 +809,50 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Harleianus 3859 (h). British Library. XI–XII. Signatura y folios por verificar."
+      "bibliographic_note": "Harleianus 3859 (h). British Library. XI–XII. Signatura y folios por verificar.",
+      "id": "hist-016",
+      "original_inventory": {
+        "title": "Harleianus 3859 (h)",
+        "place": "British Library",
+        "date": "XI–XII"
+      },
+      "display_title": "Codex Harleianus 3859",
+      "aliases": [
+        "Harley",
+        "Harleianus",
+        "Harlesianus",
+        "Harlesinus",
+        "Harley 3859",
+        "Codex Harleianus 3859"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "British Library · Harley MS 3859",
+          "url": "https://searcharchives.bl.uk/catalog/040-002049695"
+        }
+      ],
+      "history_note": "La British Library fecha el volumen a comienzos del siglo XII y sitúa su origen en Inglaterra. De architectura ocupa la última unidad, después de textos de Vegecio, Macrobio, Solino y otros autores. El catálogo documenta su presencia en Italia desde finales del siglo XIV; esa procedencia posterior no es su lugar de copia.",
+      "kind": "manuscript",
+      "shelfmark": "Harley MS 3859",
+      "institution": "British Library",
+      "conservation_place": "Londres",
+      "origin_place": "Inglaterra",
+      "siglum": "h",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Vitruvio dentro de un volumen misceláneo",
+      "date_display": "1100–1140 · comienzos del s. XII",
+      "date_start": 1100,
+      "date_end": 1140,
+      "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
+      "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
+      "material": "Pergamino; escritura protogótica",
+      "folios": "ff. 286v–365v: De architectura",
+      "view_url": "https://searcharchives.bl.uk/catalog/040-002049695",
+      "citation_text": "Londres, British Library, Harley MS 3859. De architectura. 1100–1140 · comienzos del s. XII."
     },
     {
       "group": "latin",
@@ -282,7 +870,43 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Sulpizio da Veroli (editio princeps). 1486–1487. Roma. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Sulpizio da Veroli (editio princeps). 1486–1487. Roma. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-017",
+      "original_inventory": {
+        "title": "Sulpizio da Veroli (editio princeps)",
+        "place": "Roma",
+        "date": "1486–1487"
+      },
+      "display_title": "De architectura · editio princeps",
+      "aliases": [
+        "Sulpizio da Veroli (editio princeps)",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "De architectura · editio princeps"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "Université de Tours · Architectura, notice de Pierre Gros",
+          "url": "https://architectura.univ-tours.fr/en/livres-notice/vitruvesulpizioc490/"
+        }
+      ],
+      "history_note": "La edición carece de portada y de datos explícitos de impresión. La noticia de Architectura propone Roma, ca. 1486–1487, a partir de indicios de la dedicatoria; el impresor sigue siendo hipotético. La publicación hizo circular el texto completo y abrió una nueva etapa de corrección y comentario.",
+      "kind": "edition",
+      "publication_place": "Roma · atribución bibliográfica",
+      "date_display": "ca. 1486–1487 · datación atribuida",
+      "date_start": 1486,
+      "date_end": 1487,
+      "responsibility": "Giovanni Sulpizio da Veroli, editor",
+      "scope": "Primera edición impresa del tratado",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "imprint": "Sin indicación de impresor; atribución discutida",
+      "citation_text": "Vitruvio. De architectura. Giovanni Sulpizio da Veroli, editor. Roma · atribución bibliográfica: Sin indicación de impresor; atribución discutida, ca. 1486–1487 · datación atribuida."
     },
     {
       "group": "latin",
@@ -298,7 +922,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Florence Latin edition. 1496. Firenze. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Florence Latin edition. 1496. Firenze. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-018",
+      "original_inventory": {
+        "title": "Florence Latin edition",
+        "place": "Firenze",
+        "date": "1496"
+      },
+      "display_title": "Edición latina de Florencia",
+      "aliases": [
+        "Florence Latin edition",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Edición latina de Florencia"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Firenze",
+      "date_display": "1496",
+      "date_start": 1496,
+      "date_end": 1496,
+      "responsibility": "Responsable por identificar",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Edición latina de Florencia. Florence Latin edition. Firenze: imprenta por cotejar, 1496. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -314,7 +966,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Simone Bevilacqua. 1497. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Simone Bevilacqua. 1497. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-019",
+      "original_inventory": {
+        "title": "Simone Bevilacqua",
+        "place": "Venezia",
+        "date": "1497"
+      },
+      "display_title": "Simone Bevilacqua",
+      "aliases": [
+        "Simone Bevilacqua",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Simone Bevilacqua"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Venezia",
+      "date_display": "1497",
+      "date_start": 1497,
+      "date_end": 1497,
+      "responsibility": "Simone Bevilacqua",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Simone Bevilacqua. Simone Bevilacqua. Venezia: imprenta por cotejar, 1497. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -328,11 +1008,51 @@
       "searchable": false,
       "document_url": null,
       "verification": "catalog_link_existing",
-      "view_url": "https://doi.org/10.3931/e-rara-10519",
+      "view_url": "https://www.e-rara.ch/oec/content/titleinfo/6105669",
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Fra Giovanni Giocondo. 1511. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Fra Giovanni Giocondo. 1511. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-020",
+      "original_inventory": {
+        "title": "Fra Giovanni Giocondo",
+        "place": "Venezia",
+        "date": "1511"
+      },
+      "display_title": "M. Vitruvius per Iocundum solito castigatior factus",
+      "aliases": [
+        "Fra Giovanni Giocondo",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "M. Vitruvius per Iocundum solito castigatior factus"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "e-rara · Stiftung Bibliothek Werner Oechslin, A04d; app. 917",
+          "url": "https://www.e-rara.ch/oec/content/titleinfo/6105669"
+        }
+      ],
+      "history_note": "La portada presenta el texto como corregido por Giocondo e incorpora figuras y una tabla para facilitar la lectura. El registro conserva la fórmula de impresión veneciana y la fecha del 22 de mayo de 1511. La ficha identifica un ejemplar concreto, distinto de otros ejemplares de la misma edición.",
+      "kind": "edition",
+      "publication_place": "Venetiis [Venecia]",
+      "date_display": "1511",
+      "date_start": 1511,
+      "date_end": 1511,
+      "responsibility": "Fra Giovanni Giocondo, editor",
+      "scope": "Edición latina ilustrada",
+      "work_title": "M. Vitruvius per Iocundum solito castigatior factus cum figuris et tabula ut iam legi et intelligi possit",
+      "title_language": "la",
+      "imprint": "Ioannes de Tridino, alias Tacuino",
+      "conservation_place": "Einsiedeln",
+      "institution": "Stiftung Bibliothek Werner Oechslin",
+      "shelfmark": "A04d; app. 917",
+      "doi": "10.3931/e-rara-19439",
+      "citation_text": "Vitruvio. M. Vitruvius per Iocundum solito castigatior factus cum figuris et tabula ut iam legi et intelligi possit. Fra Giovanni Giocondo, editor. Venetiis [Venecia]: Ioannes de Tridino, alias Tacuino, 1511."
     },
     {
       "group": "latin",
@@ -348,7 +1068,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Giocondo/Frontino. 1513. Firenze. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Giocondo/Frontino. 1513. Firenze. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-021",
+      "original_inventory": {
+        "title": "Giocondo/Frontino",
+        "place": "Firenze",
+        "date": "1513"
+      },
+      "display_title": "Giocondo/Frontino",
+      "aliases": [
+        "Giocondo/Frontino",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Giocondo/Frontino"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Firenze",
+      "date_display": "1513",
+      "date_start": 1513,
+      "date_end": 1513,
+      "responsibility": "Giocondo/Frontino",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Giocondo/Frontino. Giocondo/Frontino. Firenze: imprenta por cotejar, 1513. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -364,7 +1112,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Lyon edition. 1522–1523. Lyon. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Lyon edition. 1522–1523. Lyon. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-022",
+      "original_inventory": {
+        "title": "Lyon edition",
+        "place": "Lyon",
+        "date": "1522–1523"
+      },
+      "display_title": "Ediciones de Lyon",
+      "aliases": [
+        "Lyon edition",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Ediciones de Lyon"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Lyon",
+      "date_display": "1522–1523",
+      "date_start": 1522,
+      "date_end": 1523,
+      "responsibility": "Responsable por identificar",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Ediciones de Lyon. Lyon edition. Lyon: imprenta por cotejar, 1522–1523. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -380,7 +1156,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Strasbourg edition. 1543. Strasbourg. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Strasbourg edition. 1543. Strasbourg. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-023",
+      "original_inventory": {
+        "title": "Strasbourg edition",
+        "place": "Strasbourg",
+        "date": "1543"
+      },
+      "display_title": "Edición de Estrasburgo",
+      "aliases": [
+        "Strasbourg edition",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Edición de Estrasburgo"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Strasbourg",
+      "date_display": "1543",
+      "date_start": 1543,
+      "date_end": 1543,
+      "responsibility": "Responsable por identificar",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Edición de Estrasburgo. Strasbourg edition. Strasbourg: imprenta por cotejar, 1543. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -396,7 +1200,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Guillaume Philandrier. 1552. Lyon. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Guillaume Philandrier. 1552. Lyon. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-024",
+      "original_inventory": {
+        "title": "Guillaume Philandrier",
+        "place": "Lyon",
+        "date": "1552"
+      },
+      "display_title": "Guillaume Philandrier",
+      "aliases": [
+        "Guillaume Philandrier",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Guillaume Philandrier"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Lyon",
+      "date_display": "1552",
+      "date_start": 1552,
+      "date_end": 1552,
+      "responsibility": "Guillaume Philandrier",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Guillaume Philandrier. Guillaume Philandrier. Lyon: imprenta por cotejar, 1552. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -412,7 +1244,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Johannes de Laet. 1649. Amsterdam. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Johannes de Laet. 1649. Amsterdam. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-025",
+      "original_inventory": {
+        "title": "Johannes de Laet",
+        "place": "Amsterdam",
+        "date": "1649"
+      },
+      "display_title": "Johannes de Laet",
+      "aliases": [
+        "Johannes de Laet",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Johannes de Laet"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Amsterdam",
+      "date_display": "1649",
+      "date_start": 1649,
+      "date_end": 1649,
+      "responsibility": "Johannes de Laet",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Johannes de Laet. Johannes de Laet. Amsterdam: imprenta por cotejar, 1649. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -428,7 +1288,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Giovanni Poleni, Exercitationes. 1739–1741. Padova. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Giovanni Poleni, Exercitationes. 1739–1741. Padova. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-026",
+      "original_inventory": {
+        "title": "Giovanni Poleni, Exercitationes",
+        "place": "Padova",
+        "date": "1739–1741"
+      },
+      "display_title": "Giovanni Poleni, Exercitationes",
+      "aliases": [
+        "Giovanni Poleni, Exercitationes",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Giovanni Poleni, Exercitationes"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Padova",
+      "date_display": "1739–1741",
+      "date_start": 1739,
+      "date_end": 1741,
+      "responsibility": "Giovanni Poleni, Exercitationes",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Giovanni Poleni, Exercitationes. Giovanni Poleni, Exercitationes. Padova: imprenta por cotejar, 1739–1741. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -444,7 +1332,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "J. G. Schneider. 1807–1808. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "J. G. Schneider. 1807–1808. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-027",
+      "original_inventory": {
+        "title": "J. G. Schneider",
+        "place": "Leipzig",
+        "date": "1807–1808"
+      },
+      "display_title": "J. G. Schneider",
+      "aliases": [
+        "J. G. Schneider",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "J. G. Schneider"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Leipzig",
+      "date_display": "1807–1808",
+      "date_start": 1807,
+      "date_end": 1808,
+      "responsibility": "J. G. Schneider",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. J. G. Schneider. J. G. Schneider. Leipzig: imprenta por cotejar, 1807–1808. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -460,7 +1376,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Poleni–Stratico. 1825–1830. Udine. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Poleni–Stratico. 1825–1830. Udine. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-028",
+      "original_inventory": {
+        "title": "Poleni–Stratico",
+        "place": "Udine",
+        "date": "1825–1830"
+      },
+      "display_title": "Poleni–Stratico",
+      "aliases": [
+        "Poleni–Stratico",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Poleni–Stratico"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Udine",
+      "date_display": "1825–1830",
+      "date_start": 1825,
+      "date_end": 1830,
+      "responsibility": "Poleni–Stratico",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Poleni–Stratico. Poleni–Stratico. Udine: imprenta por cotejar, 1825–1830. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -476,7 +1420,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Luigi Marini. 1836. Roma. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Luigi Marini. 1836. Roma. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-029",
+      "original_inventory": {
+        "title": "Luigi Marini",
+        "place": "Roma",
+        "date": "1836"
+      },
+      "display_title": "Luigi Marini",
+      "aliases": [
+        "Luigi Marini",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Luigi Marini"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Roma",
+      "date_display": "1836",
+      "date_start": 1836,
+      "date_end": 1836,
+      "responsibility": "Luigi Marini",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Luigi Marini. Luigi Marini. Roma: imprenta por cotejar, 1836. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -492,7 +1464,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Tardieu–Coussin. 1837. Paris. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Tardieu–Coussin. 1837. Paris. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-030",
+      "original_inventory": {
+        "title": "Tardieu–Coussin",
+        "place": "Paris",
+        "date": "1837"
+      },
+      "display_title": "Tardieu–Coussin",
+      "aliases": [
+        "Tardieu–Coussin",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Tardieu–Coussin"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Paris",
+      "date_display": "1837",
+      "date_start": 1837,
+      "date_end": 1837,
+      "responsibility": "Tardieu–Coussin",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Tardieu–Coussin. Tardieu–Coussin. Paris: imprenta por cotejar, 1837. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -508,7 +1508,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Valentin Rose/Müller-Strübing. 1867. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Valentin Rose/Müller-Strübing. 1867. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-031",
+      "original_inventory": {
+        "title": "Valentin Rose/Müller-Strübing",
+        "place": "Leipzig",
+        "date": "1867"
+      },
+      "display_title": "Valentin Rose/Müller-Strübing",
+      "aliases": [
+        "Valentin Rose/Müller-Strübing",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Valentin Rose/Müller-Strübing"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Leipzig",
+      "date_display": "1867",
+      "date_start": 1867,
+      "date_end": 1867,
+      "responsibility": "Valentin Rose/Müller-Strübing",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Valentin Rose/Müller-Strübing. Valentin Rose/Müller-Strübing. Leipzig: imprenta por cotejar, 1867. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -527,7 +1555,35 @@
       "pdf_url": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Valentin Rose 2nd edition. 1899. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Valentin Rose 2nd edition. 1899. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-032",
+      "original_inventory": {
+        "title": "Valentin Rose 2nd edition",
+        "place": "Leipzig",
+        "date": "1899"
+      },
+      "display_title": "Valentin Rose · segunda edición",
+      "aliases": [
+        "Valentin Rose 2nd edition",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Valentin Rose · segunda edición"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Leipzig",
+      "date_display": "1899",
+      "date_start": 1899,
+      "date_end": 1899,
+      "responsibility": "Valentin Rose · segunda edición",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Valentin Rose · segunda edición. Valentin Rose 2nd edition. Leipzig: imprenta por cotejar, 1899. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -545,10 +1601,38 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Fritz Krohn, Teubner. 1912. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Fritz Krohn, Teubner. 1912. Leipzig. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-033",
+      "original_inventory": {
+        "title": "Fritz Krohn, Teubner",
+        "place": "Leipzig",
+        "date": "1912"
+      },
+      "display_title": "Fritz Krohn, Teubner",
+      "aliases": [
+        "Fritz Krohn, Teubner",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Fritz Krohn, Teubner"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Leipzig",
+      "date_display": "1912",
+      "date_start": 1912,
+      "date_end": 1912,
+      "responsibility": "Fritz Krohn, Teubner",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Fritz Krohn, Teubner. Fritz Krohn, Teubner. Leipzig: imprenta por cotejar, 1912. Ficha provisional: datos por cotejar."
     },
     {
-      "group": "latin",
+      "group": "other",
       "title": "Auguste Choisy",
       "place": "Paris",
       "date": "1909",
@@ -561,7 +1645,32 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Auguste Choisy. 1909. Paris. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Auguste Choisy. 1909. Paris. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-034",
+      "original_inventory": {
+        "title": "Auguste Choisy",
+        "place": "Paris",
+        "date": "1909"
+      },
+      "display_title": "Auguste Choisy",
+      "aliases": [
+        "Auguste Choisy",
+        "Choisy Vitruve",
+        "Auguste Choisy"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Paris",
+      "date_display": "1909",
+      "date_start": 1909,
+      "date_end": 1909,
+      "responsibility": "Auguste Choisy",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Auguste Choisy. Auguste Choisy. Paris: imprenta por cotejar, 1909. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -580,7 +1689,36 @@
       "citation_status": "provisional",
       "bibliographic_note": "Vitruvius, On Architecture. Trad. Frank Granger. Loeb Classical Library. Harvard University Press, 1931–1934. Comprobar ficha y volúmenes específicos antes de generar cita definitiva.",
       "view_url": "https://www.loebclassics.com/",
-      "link_type": "catálogo editorial Loeb / acceso sujeto a licencia"
+      "link_type": "catálogo editorial Loeb / acceso sujeto a licencia",
+      "id": "hist-035",
+      "original_inventory": {
+        "title": "Frank Granger — Loeb Classical Library (edición bilingüe)",
+        "place": "Cambridge",
+        "date": "1931–1934"
+      },
+      "display_title": "Frank Granger — Loeb Classical Library (edición bilingüe)",
+      "aliases": [
+        "Frank Granger — Loeb Classical Library (edición bilingüe)",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Frank Granger — Loeb Classical Library (edición bilingüe)"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Cambridge",
+      "date_display": "1931–1934",
+      "date_start": 1931,
+      "date_end": 1934,
+      "responsibility": "Frank Granger — Loeb Classical Library (edición bilingüe)",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "same_edition_as": "hist-066",
+      "citation_text": "Vitruvio. Frank Granger — Loeb Classical Library (edición bilingüe). Frank Granger — Loeb Classical Library (edición bilingüe). Cambridge: imprenta por cotejar, 1931–1934. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -597,7 +1735,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Silvio Ferri. 1960. Roma. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Silvio Ferri. 1960. Roma. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-036",
+      "original_inventory": {
+        "title": "Silvio Ferri",
+        "place": "Roma",
+        "date": "1960"
+      },
+      "display_title": "Silvio Ferri",
+      "aliases": [
+        "Silvio Ferri",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Silvio Ferri"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Roma",
+      "date_display": "1960",
+      "date_start": 1960,
+      "date_end": 1960,
+      "responsibility": "Silvio Ferri",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "citation_text": "Vitruvio. Silvio Ferri. Silvio Ferri. Roma: imprenta por cotejar, 1960. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -614,7 +1780,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Curt Fensterbusch. 1964. Darmstadt. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Curt Fensterbusch. 1964. Darmstadt. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-037",
+      "original_inventory": {
+        "title": "Curt Fensterbusch",
+        "place": "Darmstadt",
+        "date": "1964"
+      },
+      "display_title": "Curt Fensterbusch",
+      "aliases": [
+        "Curt Fensterbusch",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Curt Fensterbusch"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Darmstadt",
+      "date_display": "1964",
+      "date_start": 1964,
+      "date_end": 1964,
+      "responsibility": "Curt Fensterbusch",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "citation_text": "Vitruvio. Curt Fensterbusch. Curt Fensterbusch. Darmstadt: imprenta por cotejar, 1964. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -633,7 +1827,35 @@
       "citation_status": "verified_one_volume",
       "bibliographic_note": "Vitruve. De l'architecture, livre I. Texte établi et traduit par Philippe Fleury. Paris: Les Belles Lettres, Collection des universités de France, série latine, 1990. Ejemplo de un volumen de la colección; no representa toda la serie.",
       "view_url": "https://www.lesbelleslettres.com/livre/9782251013497/de-l-architecture-livre-i",
-      "link_type": "ficha editorial oficial — libro I"
+      "link_type": "ficha editorial oficial — libro I",
+      "id": "hist-038",
+      "original_inventory": {
+        "title": "Collection Budé",
+        "place": "Paris",
+        "date": "1969–2009"
+      },
+      "display_title": "Collection Budé",
+      "aliases": [
+        "Collection Budé",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Collection Budé"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "sequence",
+      "publication_place": "Paris",
+      "date_display": "1969–2009",
+      "date_start": 1969,
+      "date_end": 2009,
+      "responsibility": "Collection Budé",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "citation_text": "Vitruvio. Collection Budé. Collection Budé. Paris: imprenta por cotejar, 1969–2009. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -650,7 +1872,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Gros/Corso/Romano, Einaudi. 1997. Torino. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Gros/Corso/Romano, Einaudi. 1997. Torino. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-039",
+      "original_inventory": {
+        "title": "Gros/Corso/Romano, Einaudi",
+        "place": "Torino",
+        "date": "1997"
+      },
+      "display_title": "Gros/Corso/Romano, Einaudi",
+      "aliases": [
+        "Gros/Corso/Romano, Einaudi",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Gros/Corso/Romano, Einaudi"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Torino",
+      "date_display": "1997",
+      "date_start": 1997,
+      "date_end": 1997,
+      "responsibility": "Gros/Corso/Romano, Einaudi",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "citation_text": "Vitruvio. Gros/Corso/Romano, Einaudi. Gros/Corso/Romano, Einaudi. Torino: imprenta por cotejar, 1997. Ficha provisional: datos por cotejar."
     },
     {
       "group": "latin",
@@ -666,7 +1916,35 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Pierre Gros, Budé minor. 2015. Paris. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Pierre Gros, Budé minor. 2015. Paris. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-040",
+      "original_inventory": {
+        "title": "Pierre Gros, Budé minor",
+        "place": "Paris",
+        "date": "2015"
+      },
+      "display_title": "Pierre Gros, Budé minor",
+      "aliases": [
+        "Pierre Gros, Budé minor",
+        "De architectura",
+        "Vitruvius",
+        "Vitruvio",
+        "edición latina",
+        "Pierre Gros, Budé minor"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Paris",
+      "date_display": "2015",
+      "date_start": 2015,
+      "date_end": 2015,
+      "responsibility": "Pierre Gros, Budé minor",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Pierre Gros, Budé minor. Pierre Gros, Budé minor. Paris: imprenta por cotejar, 2015. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -682,7 +1960,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Francesco di Giorgio Martini (partial). late XV. Italy. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Francesco di Giorgio Martini (partial). late XV. Italy. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-041",
+      "original_inventory": {
+        "title": "Francesco di Giorgio Martini (partial)",
+        "place": "Italy",
+        "date": "late XV"
+      },
+      "display_title": "Francesco di Giorgio Martini · versión parcial",
+      "aliases": [
+        "Francesco di Giorgio Martini (partial)",
+        "Francesco di Giorgio Martini · versión parcial"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Versión manuscrita consignada en el inventario de la recepción italiana. La localización citada no se presenta como lugar de impresión. Faltan cotejo del manuscrito, signatura e identificación precisa del alcance.",
+      "kind": "partial",
+      "publication_place": "Italy",
+      "date_display": "fines del s. XV",
+      "date_start": 1451,
+      "date_end": 1500,
+      "responsibility": "Francesco di Giorgio Martini · versión parcial",
+      "scope": "Versión parcial según el inventario; no se atribuye traducción de los diez libros.",
+      "citation_text": "Francesco di Giorgio Martini · versión parcial. fines del s. XV. Versión parcial según el inventario; no se atribuye traducción de los diez libros. Ficha provisional: identificación documental pendiente."
     },
     {
       "group": "italian",
@@ -698,7 +2000,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Fabio Calvo (manuscript). 1514–1516. München. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Fabio Calvo (manuscript). 1514–1516. München. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-042",
+      "original_inventory": {
+        "title": "Fabio Calvo (manuscript)",
+        "place": "München",
+        "date": "1514–1516"
+      },
+      "display_title": "Fabio Calvo · traducción manuscrita",
+      "aliases": [
+        "Fabio Calvo (manuscript)",
+        "Fabio Calvo · traducción manuscrita"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Versión manuscrita consignada en el inventario de la recepción italiana. La localización citada no se presenta como lugar de impresión. Faltan cotejo del manuscrito, signatura e identificación precisa del alcance.",
+      "kind": "manuscript_translation",
+      "publication_place": "München",
+      "date_display": "1514–1516",
+      "date_start": 1514,
+      "date_end": 1516,
+      "responsibility": "Fabio Calvo · traducción manuscrita",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Fabio Calvo · traducción manuscrita. 1514–1516. Edición o traducción; alcance por cotejar Ficha provisional: identificación documental pendiente."
     },
     {
       "group": "italian",
@@ -712,11 +2038,43 @@
       "searchable": false,
       "document_url": null,
       "verification": "institutional_facsimile_metadata_verified",
-      "view_url": "https://archive.org/details/gri_33125008262210",
+      "view_url": "https://architectura.univ-tours.fr/en/livres-notice/bpnme276c490/",
       "link_type": "facsímil digital",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "verified_core_metadata",
-      "bibliographic_note": "Vitruvio. Di Lucio Vitruvio Pollione de architectura libri dece. Traducido, ilustrado y comentado por Cesare Cesariano; texto completado y corregido por Mauro Bono y Benedetto Giovio. Como: Gottardo da Ponte, 1521. Ejemplar del Getty Research Institute. https://archive.org/details/gri_33125008262210."
+      "bibliographic_note": "Vitruvio. Di Lucio Vitruvio Pollione de architectura libri dece. Traducido, ilustrado y comentado por Cesare Cesariano; texto completado y corregido por Mauro Bono y Benedetto Giovio. Como: Gottardo da Ponte, 1521. Ejemplar del Getty Research Institute. https://archive.org/details/gri_33125008262210.",
+      "id": "hist-043",
+      "original_inventory": {
+        "title": "Cesare Cesariano — Di Lucio Vitruvio Pollione de architectura libri dece",
+        "place": "Como",
+        "date": "1521"
+      },
+      "display_title": "Di Lucio Vitruvio Pollione de architectura libri dece",
+      "aliases": [
+        "Cesare Cesariano — Di Lucio Vitruvio Pollione de architectura libri dece",
+        "Di Lucio Vitruvio Pollione de architectura libri dece"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "Université de Tours · Architectura, Cesariano 1521",
+          "url": "https://architectura.univ-tours.fr/en/livres-notice/bpnme276c490/"
+        }
+      ],
+      "history_note": "Publicada en Como en 1521, fue la primera traducción impresa del tratado a una lengua vernácula. El proyecto combina texto, comentario e imágenes y señala una etapa decisiva de la recepción renacentista. La noticia de Architectura distingue la portada de la identificación de Cesariano en el primer folio numerado.",
+      "kind": "edition",
+      "publication_place": "Como",
+      "date_display": "1521",
+      "date_start": 1521,
+      "date_end": 1521,
+      "responsibility": "Cesare Cesariano, traducción, figuras y comentario",
+      "scope": "Traducción italiana impresa con comentario e ilustraciones",
+      "work_title": "Di Lucio Vitruvio Pollione de architectura libri dece",
+      "title_language": "it",
+      "imprint": "Gottardo da Ponte",
+      "citation_text": "Vitruvio. Di Lucio Vitruvio Pollione de architectura libri dece. Cesare Cesariano, traducción, figuras y comentario. Como: Gottardo da Ponte, 1521."
     },
     {
       "group": "italian",
@@ -732,7 +2090,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Francesco Lucio Durantino. 1524. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Francesco Lucio Durantino. 1524. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-044",
+      "original_inventory": {
+        "title": "Francesco Lucio Durantino",
+        "place": "Venezia",
+        "date": "1524"
+      },
+      "display_title": "Francesco Lucio Durantino",
+      "aliases": [
+        "Francesco Lucio Durantino",
+        "Francesco Lucio Durantino"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Venezia",
+      "date_display": "1524",
+      "date_start": 1524,
+      "date_end": 1524,
+      "responsibility": "Francesco Lucio Durantino",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Francesco Lucio Durantino. Francesco Lucio Durantino. Venezia: imprenta por cotejar, 1524. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -748,7 +2130,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Giovan Battista Caporali (I–V). 1536. Perugia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Giovan Battista Caporali (I–V). 1536. Perugia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-045",
+      "original_inventory": {
+        "title": "Giovan Battista Caporali (I–V)",
+        "place": "Perugia",
+        "date": "1536"
+      },
+      "display_title": "Giovan Battista Caporali (I–V)",
+      "aliases": [
+        "Giovan Battista Caporali (I–V)",
+        "Giovan Battista Caporali (I–V)"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "partial",
+      "publication_place": "Perugia",
+      "date_display": "1536",
+      "date_start": 1536,
+      "date_end": 1536,
+      "responsibility": "Giovan Battista Caporali (I–V)",
+      "scope": "Versión parcial según el inventario; no se atribuye traducción de los diez libros.",
+      "citation_text": "Vitruvio. Giovan Battista Caporali (I–V). Giovan Battista Caporali (I–V). Perugia: imprenta por cotejar, 1536. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -762,11 +2168,47 @@
       "searchable": false,
       "document_url": null,
       "verification": "catalog_link_existing",
-      "view_url": "https://doi.org/10.3931/e-rara-7582",
+      "view_url": "https://www.e-rara.ch/zut/content/titleinfo/1980172",
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Daniele Barbaro. 1556. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Daniele Barbaro. 1556. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-046",
+      "original_inventory": {
+        "title": "Daniele Barbaro",
+        "place": "Venezia",
+        "date": "1556"
+      },
+      "display_title": "I dieci libri dell’architettura di M. Vitruvio",
+      "aliases": [
+        "Daniele Barbaro",
+        "I dieci libri dell’architettura di M. Vitruvio"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "e-rara · ETH-Bibliothek Zürich, Rar 9902",
+          "url": "https://www.e-rara.ch/zut/content/titleinfo/1980172"
+        }
+      ],
+      "history_note": "La edición de 1556 presenta la traducción y los comentarios de Daniele Barbaro. El catálogo e-rara documenta la impresión de Francesco Marcolini y el ejemplar de la ETH. Debe distinguirse de las versiones latina e italiana publicadas en 1567.",
+      "kind": "edition",
+      "publication_place": "In Vinegia [Venecia]",
+      "date_display": "1556",
+      "date_start": 1556,
+      "date_end": 1556,
+      "responsibility": "Daniele Barbaro, traducción y comentario",
+      "scope": "Traducción italiana comentada",
+      "work_title": "I dieci libri dell'architettura di M. Vitruvio tradutti et commentati da Monsignor Barbaro eletto patriarca d'Aquileggia",
+      "title_language": "it",
+      "imprint": "Francesco Marcolini",
+      "institution": "ETH-Bibliothek Zürich",
+      "conservation_place": "Zúrich",
+      "shelfmark": "Rar 9902",
+      "doi": "10.3931/e-rara-7582",
+      "citation_text": "Vitruvio. I dieci libri dell'architettura di M. Vitruvio tradutti et commentati da Monsignor Barbaro eletto patriarca d'Aquileggia. Daniele Barbaro, traducción y comentario. In Vinegia [Venecia]: Francesco Marcolini, 1556."
     },
     {
       "group": "italian",
@@ -782,7 +2224,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Daniele Barbaro revised. 1567. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Daniele Barbaro revised. 1567. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-047",
+      "original_inventory": {
+        "title": "Daniele Barbaro revised",
+        "place": "Venezia",
+        "date": "1567"
+      },
+      "display_title": "Daniele Barbaro · edición revisada",
+      "aliases": [
+        "Daniele Barbaro revised",
+        "Daniele Barbaro · edición revisada"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Venezia",
+      "date_display": "1567",
+      "date_start": 1567,
+      "date_end": 1567,
+      "responsibility": "Daniele Barbaro · edición revisada",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Daniele Barbaro · edición revisada. Daniele Barbaro revised. Venezia: imprenta por cotejar, 1567. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -798,7 +2264,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Daniele Barbaro later impressions. 1584 / 1629. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Daniele Barbaro later impressions. 1584 / 1629. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-048",
+      "original_inventory": {
+        "title": "Daniele Barbaro later impressions",
+        "place": "Venezia",
+        "date": "1584 / 1629"
+      },
+      "display_title": "Daniele Barbaro · impresiones posteriores",
+      "aliases": [
+        "Daniele Barbaro later impressions",
+        "Daniele Barbaro · impresiones posteriores"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "sequence",
+      "publication_place": "Venezia",
+      "date_display": "1584 / 1629",
+      "date_start": 1584,
+      "date_end": 1629,
+      "responsibility": "Daniele Barbaro · impresiones posteriores",
+      "scope": "Referencia a una serie o varias impresiones; no corresponde a un único ejemplar.",
+      "citation_text": "Vitruvio. Daniele Barbaro · impresiones posteriores. Daniele Barbaro later impressions. Venezia: imprenta por cotejar, 1584 / 1629. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -814,7 +2304,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Giovanni Antonio Rusconi. 1590. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Giovanni Antonio Rusconi. 1590. Venezia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-049",
+      "original_inventory": {
+        "title": "Giovanni Antonio Rusconi",
+        "place": "Venezia",
+        "date": "1590"
+      },
+      "display_title": "Giovanni Antonio Rusconi",
+      "aliases": [
+        "Giovanni Antonio Rusconi",
+        "Giovanni Antonio Rusconi"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Venezia",
+      "date_display": "1590",
+      "date_start": 1590,
+      "date_end": 1590,
+      "responsibility": "Giovanni Antonio Rusconi",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Giovanni Antonio Rusconi. Giovanni Antonio Rusconi. Venezia: imprenta por cotejar, 1590. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -833,7 +2347,31 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Berardo Galiani — edición bilingüe latín–italiano (1758). 1758. Napoli. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Berardo Galiani — edición bilingüe latín–italiano (1758). 1758. Napoli. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-050",
+      "original_inventory": {
+        "title": "Berardo Galiani — edición bilingüe latín–italiano (1758)",
+        "place": "Napoli",
+        "date": "1758"
+      },
+      "display_title": "Berardo Galiani — edición bilingüe latín–italiano (1758)",
+      "aliases": [
+        "Berardo Galiani — edición bilingüe latín–italiano (1758)",
+        "Berardo Galiani — edición bilingüe latín–italiano (1758)"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Napoli",
+      "date_display": "1758",
+      "date_start": 1758,
+      "date_end": 1758,
+      "responsibility": "Berardo Galiani — edición bilingüe latín–italiano (1758)",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "citation_text": "Vitruvio. Berardo Galiani — edición bilingüe latín–italiano (1758). Berardo Galiani — edición bilingüe latín–italiano (1758). Napoli: imprenta por cotejar, 1758. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -849,7 +2387,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Galiani 2nd. 1790. Siena/Napoli. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Galiani 2nd. 1790. Siena/Napoli. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-051",
+      "original_inventory": {
+        "title": "Galiani 2nd",
+        "place": "Siena/Napoli",
+        "date": "1790"
+      },
+      "display_title": "Galiani · segunda edición",
+      "aliases": [
+        "Galiani 2nd",
+        "Galiani · segunda edición"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Siena/Napoli",
+      "date_display": "1790",
+      "date_start": 1790,
+      "date_end": 1790,
+      "responsibility": "Galiani · segunda edición",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Galiani · segunda edición. Galiani 2nd. Siena/Napoli: imprenta por cotejar, 1790. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -865,7 +2427,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Baldassare Orsini. 1802. Perugia. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Baldassare Orsini. 1802. Perugia. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-052",
+      "original_inventory": {
+        "title": "Baldassare Orsini",
+        "place": "Perugia",
+        "date": "1802"
+      },
+      "display_title": "Baldassare Orsini",
+      "aliases": [
+        "Baldassare Orsini",
+        "Baldassare Orsini"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Perugia",
+      "date_display": "1802",
+      "date_start": 1802,
+      "date_end": 1802,
+      "responsibility": "Baldassare Orsini",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Baldassare Orsini. Baldassare Orsini. Perugia: imprenta por cotejar, 1802. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -881,7 +2467,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Carlo Amati. 1829–1830. Milano. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Carlo Amati. 1829–1830. Milano. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-053",
+      "original_inventory": {
+        "title": "Carlo Amati",
+        "place": "Milano",
+        "date": "1829–1830"
+      },
+      "display_title": "Carlo Amati",
+      "aliases": [
+        "Carlo Amati",
+        "Carlo Amati"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Milano",
+      "date_display": "1829–1830",
+      "date_start": 1829,
+      "date_end": 1830,
+      "responsibility": "Carlo Amati",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Carlo Amati. Carlo Amati. Milano: imprenta por cotejar, 1829–1830. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -897,7 +2507,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Quirico Viviani. 1830–1832. Udine. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Quirico Viviani. 1830–1832. Udine. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-054",
+      "original_inventory": {
+        "title": "Quirico Viviani",
+        "place": "Udine",
+        "date": "1830–1832"
+      },
+      "display_title": "Quirico Viviani",
+      "aliases": [
+        "Quirico Viviani",
+        "Quirico Viviani"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Udine",
+      "date_display": "1830–1832",
+      "date_start": 1830,
+      "date_end": 1832,
+      "responsibility": "Quirico Viviani",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Quirico Viviani. Quirico Viviani. Udine: imprenta por cotejar, 1830–1832. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -913,7 +2547,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Luigi Marini translation. 1836–1837. Roma. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Luigi Marini translation. 1836–1837. Roma. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-055",
+      "original_inventory": {
+        "title": "Luigi Marini translation",
+        "place": "Roma",
+        "date": "1836–1837"
+      },
+      "display_title": "Luigi Marini · traducción italiana",
+      "aliases": [
+        "Luigi Marini translation",
+        "Luigi Marini · traducción italiana"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Roma",
+      "date_display": "1836–1837",
+      "date_start": 1836,
+      "date_end": 1837,
+      "responsibility": "Luigi Marini · traducción italiana",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Luigi Marini · traducción italiana. Luigi Marini translation. Roma: imprenta por cotejar, 1836–1837. Ficha provisional: datos por cotejar."
     },
     {
       "group": "italian",
@@ -929,7 +2587,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Ugo Fleres. 1933. Milano. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Ugo Fleres. 1933. Milano. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-056",
+      "original_inventory": {
+        "title": "Ugo Fleres",
+        "place": "Milano",
+        "date": "1933"
+      },
+      "display_title": "Ugo Fleres",
+      "aliases": [
+        "Ugo Fleres",
+        "Ugo Fleres"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Milano",
+      "date_display": "1933",
+      "date_start": 1933,
+      "date_end": 1933,
+      "responsibility": "Ugo Fleres",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Ugo Fleres. Ugo Fleres. Milano: imprenta por cotejar, 1933. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -945,7 +2627,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "John Shute (adaptation). 1563. England. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "John Shute (adaptation). 1563. England. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-057",
+      "original_inventory": {
+        "title": "John Shute (adaptation)",
+        "place": "England",
+        "date": "1563"
+      },
+      "display_title": "John Shute · adaptación",
+      "aliases": [
+        "John Shute (adaptation)",
+        "John Shute · adaptación"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "adaptation",
+      "publication_place": "England",
+      "date_display": "1563",
+      "date_start": 1563,
+      "date_end": 1563,
+      "responsibility": "John Shute · adaptación",
+      "scope": "Adaptación o tratado de recepción; no es una traducción íntegra de Vitruvio.",
+      "citation_text": "Vitruvio. John Shute · adaptación. John Shute (adaptation). England: imprenta por cotejar, 1563. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -964,7 +2670,31 @@
       "link_type": "PDF histórico (adaptación, no traducción integral)",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral). 1624. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral). 1624. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-058",
+      "original_inventory": {
+        "title": "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral)",
+        "place": "London",
+        "date": "1624"
+      },
+      "display_title": "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral)",
+      "aliases": [
+        "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral)",
+        "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral)"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "adaptation",
+      "publication_place": "London",
+      "date_display": "1624",
+      "date_start": 1624,
+      "date_end": 1624,
+      "responsibility": "Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral)",
+      "scope": "Adaptación o tratado de recepción; no es una traducción íntegra de Vitruvio.",
+      "citation_text": "Vitruvio. Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral). Henry Wotton — The Elements of Architecture (tratado inspirado en Vitruvio, no traducción integral). London: imprenta por cotejar, 1624. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -980,7 +2710,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Perrault compendium (anonymous). 1692. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Perrault compendium (anonymous). 1692. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-059",
+      "original_inventory": {
+        "title": "Perrault compendium (anonymous)",
+        "place": "London",
+        "date": "1692"
+      },
+      "display_title": "Compendio de Perrault · versión inglesa anónima",
+      "aliases": [
+        "Perrault compendium (anonymous)",
+        "Compendio de Perrault · versión inglesa anónima"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "London",
+      "date_display": "1692",
+      "date_start": 1692,
+      "date_end": 1692,
+      "responsibility": "Compendio de Perrault · versión inglesa anónima",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Compendio de Perrault · versión inglesa anónima. Perrault compendium (anonymous). London: imprenta por cotejar, 1692. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -996,7 +2750,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Robert Castell — proyecto de traducción nunca publicado. 1730 (planned). London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Robert Castell — proyecto de traducción nunca publicado. 1730 (planned). London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-060",
+      "original_inventory": {
+        "title": "Robert Castell — proyecto de traducción nunca publicado",
+        "place": "London",
+        "date": "1730 (planned)"
+      },
+      "display_title": "Robert Castell — proyecto de traducción nunca publicado",
+      "aliases": [
+        "Robert Castell — proyecto de traducción nunca publicado",
+        "Robert Castell — proyecto de traducción nunca publicado"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Proyecto de traducción no publicado, según el inventario de partida. Se conserva como referencia de la recepción inglesa; la fecha y el alcance deben contrastarse con documentación específica.",
+      "kind": "project",
+      "publication_place": "London",
+      "date_display": "1730 · proyecto",
+      "date_start": 1730,
+      "date_end": 1730,
+      "responsibility": "Robert Castell — proyecto de traducción nunca publicado",
+      "scope": "Proyecto de traducción no publicado según el inventario; no se atribuye un ejemplar impreso.",
+      "citation_text": "Robert Castell — proyecto de traducción nunca publicado. 1730 · proyecto. Proyecto de traducción no publicado según el inventario; no se atribuye un ejemplar impreso. Ficha provisional: identificación documental pendiente."
     },
     {
       "group": "english",
@@ -1012,7 +2790,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "William Newton (books I–V). 1771. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "William Newton (books I–V). 1771. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-061",
+      "original_inventory": {
+        "title": "William Newton (books I–V)",
+        "place": "London",
+        "date": "1771"
+      },
+      "display_title": "William Newton · libros I–V",
+      "aliases": [
+        "William Newton (books I–V)",
+        "William Newton · libros I–V"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "partial",
+      "publication_place": "London",
+      "date_display": "1771",
+      "date_start": 1771,
+      "date_end": 1771,
+      "responsibility": "William Newton · libros I–V",
+      "scope": "Versión parcial según el inventario; no se atribuye traducción de los diez libros.",
+      "citation_text": "Vitruvio. William Newton · libros I–V. William Newton (books I–V). London: imprenta por cotejar, 1771. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1028,7 +2830,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "William Newton (complete). 1791. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "William Newton (complete). 1791. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-062",
+      "original_inventory": {
+        "title": "William Newton (complete)",
+        "place": "London",
+        "date": "1791"
+      },
+      "display_title": "William Newton · versión completa",
+      "aliases": [
+        "William Newton (complete)",
+        "William Newton · versión completa"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "London",
+      "date_display": "1791",
+      "date_start": 1791,
+      "date_end": 1791,
+      "responsibility": "William Newton · versión completa",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. William Newton · versión completa. William Newton (complete). London: imprenta por cotejar, 1791. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1044,7 +2870,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "William Wilkins (partial). 1812. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "William Wilkins (partial). 1812. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-063",
+      "original_inventory": {
+        "title": "William Wilkins (partial)",
+        "place": "London",
+        "date": "1812"
+      },
+      "display_title": "William Wilkins · versión parcial",
+      "aliases": [
+        "William Wilkins (partial)",
+        "William Wilkins · versión parcial"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "partial",
+      "publication_place": "London",
+      "date_display": "1812",
+      "date_start": 1812,
+      "date_end": 1812,
+      "responsibility": "William Wilkins · versión parcial",
+      "scope": "Versión parcial según el inventario; no se atribuye traducción de los diez libros.",
+      "citation_text": "Vitruvio. William Wilkins · versión parcial. William Wilkins (partial). London: imprenta por cotejar, 1812. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1062,7 +2912,31 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Joseph Gwilt. 1826. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Joseph Gwilt. 1826. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-064",
+      "original_inventory": {
+        "title": "Joseph Gwilt",
+        "place": "London",
+        "date": "1826"
+      },
+      "display_title": "Joseph Gwilt",
+      "aliases": [
+        "Joseph Gwilt",
+        "Joseph Gwilt"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "London",
+      "date_display": "1826",
+      "date_start": 1826,
+      "date_end": 1826,
+      "responsibility": "Joseph Gwilt",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Joseph Gwilt. Joseph Gwilt. London: imprenta por cotejar, 1826. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1077,11 +2951,37 @@
       "document_url": null,
       "verification": "catalog_link_existing",
       "view_url": "https://www.gutenberg.org/ebooks/20239",
-      "link_type": "PDF externo",
-      "pdf_url": "https://www.gutenberg.org/cache/epub/20239/pg20239.txt",
+      "link_type": "Texto digital externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Morris Hicky Morgan. 1914. Cambridge MA. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Morris Hicky Morgan. 1914. Cambridge MA. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-065",
+      "original_inventory": {
+        "title": "Morris Hicky Morgan",
+        "place": "Cambridge MA",
+        "date": "1914"
+      },
+      "display_title": "The Ten Books on Architecture",
+      "aliases": [
+        "Morris Hicky Morgan",
+        "The Ten Books on Architecture"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Traducción inglesa de 1914. Project Gutenberg ofrece una transcripción digital en inglés y otros formatos de lectura; el archivo de texto enlazado no es un PDF ni un facsímil de la edición.",
+      "kind": "edition",
+      "publication_place": "Cambridge MA",
+      "date_display": "1914",
+      "date_start": 1914,
+      "date_end": 1914,
+      "responsibility": "Morris Hicky Morgan, traducción",
+      "scope": "Traducción inglesa; transcripción digital externa",
+      "work_title": "The Ten Books on Architecture",
+      "title_language": "en",
+      "text_url": "https://www.gutenberg.org/cache/epub/20239/pg20239.txt",
+      "citation_text": "Vitruvio. The Ten Books on Architecture. Morris Hicky Morgan, traducción. Cambridge MA: imprenta por cotejar, 1914. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1100,7 +3000,32 @@
       "citation_status": "provisional",
       "bibliographic_note": "Vitruvius, On Architecture. Trad. Frank Granger. Loeb Classical Library. Harvard University Press, 1931–1934. Comprobar ficha y volúmenes específicos antes de generar cita definitiva.",
       "view_url": "https://www.loebclassics.com/",
-      "link_type": "catálogo editorial Loeb / acceso sujeto a licencia"
+      "link_type": "catálogo editorial Loeb / acceso sujeto a licencia",
+      "id": "hist-066",
+      "original_inventory": {
+        "title": "Frank Granger, Loeb",
+        "place": "Cambridge MA",
+        "date": "1931–1934"
+      },
+      "display_title": "Frank Granger, Loeb",
+      "aliases": [
+        "Frank Granger, Loeb",
+        "Frank Granger, Loeb"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Cambridge MA",
+      "date_display": "1931–1934",
+      "date_start": 1931,
+      "date_end": 1934,
+      "responsibility": "Frank Granger, Loeb",
+      "scope": "Edición bilingüe según el inventario; cotejo de volúmenes pendiente.",
+      "same_edition_as": "hist-035",
+      "citation_text": "Vitruvio. Frank Granger, Loeb. Frank Granger, Loeb. Cambridge MA: imprenta por cotejar, 1931–1934. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1116,7 +3041,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Rowland/Howe. 1999. Cambridge. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Rowland/Howe. 1999. Cambridge. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-067",
+      "original_inventory": {
+        "title": "Rowland/Howe",
+        "place": "Cambridge",
+        "date": "1999"
+      },
+      "display_title": "Ingrid D. Rowland y Thomas Noble Howe",
+      "aliases": [
+        "Rowland/Howe",
+        "Ingrid D. Rowland y Thomas Noble Howe"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Cambridge",
+      "date_display": "1999",
+      "date_start": 1999,
+      "date_end": 1999,
+      "responsibility": "Ingrid D. Rowland y Thomas Noble Howe",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Ingrid D. Rowland y Thomas Noble Howe. Rowland/Howe. Cambridge: imprenta por cotejar, 1999. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1132,7 +3081,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Thomas Gordon Smith. 2003. New York. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Thomas Gordon Smith. 2003. New York. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-068",
+      "original_inventory": {
+        "title": "Thomas Gordon Smith",
+        "place": "New York",
+        "date": "2003"
+      },
+      "display_title": "Thomas Gordon Smith",
+      "aliases": [
+        "Thomas Gordon Smith",
+        "Thomas Gordon Smith"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "New York",
+      "date_display": "2003",
+      "date_start": 2003,
+      "date_end": 2003,
+      "responsibility": "Thomas Gordon Smith",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Thomas Gordon Smith. Thomas Gordon Smith. New York: imprenta por cotejar, 2003. Ficha provisional: datos por cotejar."
     },
     {
       "group": "english",
@@ -1148,7 +3121,31 @@
       "verification": "pending",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Richard Schofield. 2009. London. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Richard Schofield. 2009. London. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-069",
+      "original_inventory": {
+        "title": "Richard Schofield",
+        "place": "London",
+        "date": "2009"
+      },
+      "display_title": "Richard Schofield",
+      "aliases": [
+        "Richard Schofield",
+        "Richard Schofield"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "London",
+      "date_display": "2009",
+      "date_start": 2009,
+      "date_end": 2009,
+      "responsibility": "Richard Schofield",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Richard Schofield. Richard Schofield. London: imprenta por cotejar, 2009. Ficha provisional: datos por cotejar."
     },
     {
       "group": "other",
@@ -1166,7 +3163,31 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Jean Martin. 1547. Paris. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Jean Martin. 1547. Paris. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-070",
+      "original_inventory": {
+        "title": "Jean Martin",
+        "place": "Paris",
+        "date": "1547"
+      },
+      "display_title": "Jean Martin",
+      "aliases": [
+        "Jean Martin",
+        "Jean Martin"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Paris",
+      "date_display": "1547",
+      "date_start": 1547,
+      "date_end": 1547,
+      "responsibility": "Jean Martin",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Jean Martin. Jean Martin. Paris: imprenta por cotejar, 1547. Ficha provisional: datos por cotejar."
     },
     {
       "group": "other",
@@ -1180,11 +3201,47 @@
       "searchable": false,
       "document_url": null,
       "verification": "catalog_link_existing",
-      "view_url": "https://doi.org/10.3931/e-rara-61952",
+      "view_url": "https://www.e-rara.ch/oec/content/titleinfo/6152828",
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Claude Perrault. 1673. Paris. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Claude Perrault. 1673. Paris. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-071",
+      "original_inventory": {
+        "title": "Claude Perrault",
+        "place": "Paris",
+        "date": "1673"
+      },
+      "display_title": "Les dix livres d’architecture de Vitruve",
+      "aliases": [
+        "Claude Perrault",
+        "Les dix livres d’architecture de Vitruve"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Metadatos y nota de contexto contrastados con la fuente identificada; consulta del 30 de octubre de 2026. No implica cotejo filológico del texto.",
+      "sources": [
+        {
+          "label": "e-rara · Stiftung Bibliothek Werner Oechslin, A05c; app. 47",
+          "url": "https://www.e-rara.ch/oec/content/titleinfo/6152828"
+        }
+      ],
+      "history_note": "Esta edición de 1673 combina traducción francesa, notas y figuras. La ficha identifica la impresión parisina de Jean Baptiste Coignard y el ejemplar de Einsiedeln. El año y la signatura corresponden a este ejemplar; no deben trasladarse a la segunda edición de 1684.",
+      "kind": "edition",
+      "publication_place": "Paris",
+      "date_display": "1673",
+      "date_start": 1673,
+      "date_end": 1673,
+      "responsibility": "Claude Perrault, traducción, notas y figuras",
+      "scope": "Traducción francesa anotada",
+      "work_title": "Les dix livres d'architecture de Vitruve : corrigez et traduits nouvellement en françois, avec des notes & des figures",
+      "title_language": "fr",
+      "imprint": "Jean Baptiste Coignard",
+      "institution": "Stiftung Bibliothek Werner Oechslin",
+      "conservation_place": "Einsiedeln",
+      "shelfmark": "A05c; app. 47",
+      "doi": "10.3931/e-rara-19627",
+      "citation_text": "Vitruvio. Les dix livres d'architecture de Vitruve : corrigez et traduits nouvellement en françois, avec des notes & des figures. Claude Perrault, traducción, notas y figuras. Paris: Jean Baptiste Coignard, 1673."
     },
     {
       "group": "other",
@@ -1202,7 +3259,31 @@
       "link_type": "ficha o visor externo",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Walther Ryff. 1548. Nürnberg. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Walther Ryff. 1548. Nürnberg. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-072",
+      "original_inventory": {
+        "title": "Walther Ryff",
+        "place": "Nürnberg",
+        "date": "1548"
+      },
+      "display_title": "Walther Ryff",
+      "aliases": [
+        "Walther Ryff",
+        "Walther Ryff"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Nürnberg",
+      "date_display": "1548",
+      "date_start": 1548,
+      "date_end": 1548,
+      "responsibility": "Walther Ryff",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Walther Ryff. Walther Ryff. Nürnberg: imprenta por cotejar, 1548. Ficha provisional: datos por cotejar."
     },
     {
       "group": "other",
@@ -1221,7 +3302,31 @@
       "pdf_url": "https://archive.org/download/HArteR13T27/HArteR13T27.pdf",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Miguel de Urrea. 1582. Alcalá. Datos de portada, editor, imprenta y ejemplar por verificar."
+      "bibliographic_note": "Miguel de Urrea. 1582. Alcalá. Datos de portada, editor, imprenta y ejemplar por verificar.",
+      "id": "hist-073",
+      "original_inventory": {
+        "title": "Miguel de Urrea",
+        "place": "Alcalá",
+        "date": "1582"
+      },
+      "display_title": "Miguel de Urrea",
+      "aliases": [
+        "Miguel de Urrea",
+        "Miguel de Urrea"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "provisional",
+      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
+      "sources": [],
+      "history_note": "Referencia conservada para documentar la difusión editorial del tratado. Título de portada, responsables, imprenta y alcance todavía pendientes de cotejo.",
+      "kind": "edition",
+      "publication_place": "Alcalá",
+      "date_display": "1582",
+      "date_start": 1582,
+      "date_end": 1582,
+      "responsibility": "Miguel de Urrea",
+      "scope": "Edición o traducción; alcance por cotejar",
+      "citation_text": "Vitruvio. Miguel de Urrea. Miguel de Urrea. Alcalá: imprenta por cotejar, 1582. Ficha provisional: datos por cotejar."
     },
     {
       "group": "other",
@@ -1240,12 +3345,47 @@
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "verified_core_metadata",
       "bibliographic_note": "Vitruvio. Los diez libros de architectura de M. Vitruvio Polión. Traducidos del latín y comentados por Joseph Ortiz y Sanz. Madrid: Imprenta Real, 1787. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 065/112. https://archive.org/details/A065112.",
-      "pdf_url": "https://archive.org/download/A065112/A065112.pdf"
+      "pdf_url": "https://archive.org/download/A065112/A065112.pdf",
+      "id": "hist-074",
+      "original_inventory": {
+        "title": "Joseph Ortiz y Sanz — Los diez libros de architectura de M. Vitruvio Polión",
+        "place": "Madrid",
+        "date": "1787"
+      },
+      "display_title": "Los diez libros de architectura de M. Vitruvio Polión",
+      "aliases": [
+        "Joseph Ortiz y Sanz — Los diez libros de architectura de M. Vitruvio Polión",
+        "Los diez libros de architectura de M. Vitruvio Polión"
+      ],
+      "reviewed_at": "2026-10-30",
+      "metadata_status": "documented",
+      "source_note": "Datos de portada y ejemplar institucional verificados en la revisión anterior del proyecto; se conserva su procedencia.",
+      "sources": [
+        {
+          "label": "Universidad de Sevilla / Internet Archive · A 065/112",
+          "url": "https://archive.org/details/A065112"
+        }
+      ],
+      "history_note": "Edición castellana impresa en Madrid en 1787. El ejemplar digitalizado procede de la Biblioteca de la Universidad de Sevilla. Su valor histórico se distingue del de una edición crítica contemporánea; las lecturas deben contrastarse con el facsímil.",
+      "kind": "edition",
+      "publication_place": "Madrid",
+      "date_display": "1787",
+      "date_start": 1787,
+      "date_end": 1787,
+      "responsibility": "Joseph Ortiz y Sanz, traducción y comentarios",
+      "scope": "Traducción castellana comentada",
+      "work_title": "Los diez libros de architectura de M. Vitruvio Polión",
+      "title_language": "es",
+      "imprint": "Imprenta Real",
+      "institution": "Biblioteca de la Universidad de Sevilla",
+      "conservation_place": "Sevilla",
+      "shelfmark": "A 065/112",
+      "citation_text": "Vitruvio. Los diez libros de architectura de M. Vitruvio Polión. Joseph Ortiz y Sanz, traducción y comentarios. Madrid: Imprenta Real, 1787."
     }
   ],
   "editorial_policy": {
     "style": "Chicago Manual of Style, 18th edition (2024), Notes and Bibliography",
-    "status": "Inventario de investigación, aún no bibliografía crítica completamente verificada",
+    "status": "Catálogo razonado en desarrollo: metadatos documentados distinguidos de referencias provisionales",
     "required_metadata": [
       "Nombre original y título tal como figuran en portada",
       "Papel del editor o traductor",
@@ -1258,6 +3398,8 @@
       "Distinguir traducción completa, parcial, adaptación y proyecto no publicado",
       "No confundir PDF vinculado con corpus indexado",
       "Para Chicago 18, lugar de publicación no obligatorio en referencias de libros"
-    ]
-  }
+    ],
+    "sigla": "Sigla dependientes de la edición crítica; no son identificadores universales."
+  },
+  "updated": "2026-10-30"
 }

@@ -37,7 +37,25 @@
       "editorial_role": "Edición y traducción de Diego Kurilo",
       "publication_place": "Buenos Aires",
       "structured_index": "data/structured/recensio-es.json",
-      "indexed_passages": 731
+      "indexed_passages": 731,
+      "bibliographic_author": "Kurilo, Diego",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN transcrito del paratexto de esta entrega digital.",
+      "edition_statement": "Recensio académica provisional, edición digital V514",
+      "metadata_source": {
+        "type": "author_docx_front_matter",
+        "filename": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+        "paragraphs": [
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          15,
+          17
+        ]
+      }
     },
     {
       "id": "recensio-fr",
@@ -67,7 +85,25 @@
       "editorial_role": "Édition et traduction de Diego Kurilo",
       "publication_place": "Buenos Aires",
       "structured_index": "data/structured/recensio-fr.json",
-      "indexed_passages": 731
+      "indexed_passages": 731,
+      "bibliographic_author": "Kurilo, Diego",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN transcrito del paratexto de esta entrega digital.",
+      "edition_statement": "Recensio académica provisional, edición digital V554",
+      "metadata_source": {
+        "type": "author_docx_front_matter",
+        "filename": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
+        "paragraphs": [
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          15,
+          17
+        ]
+      }
     },
     {
       "id": "theory-en",
@@ -97,7 +133,23 @@
       "editorial_role": "Edición, traducción y comentario de Diego Kurilo",
       "publication_place": "Buenos Aires",
       "structured_index": "data/structured/theory-en.json",
-      "indexed_passages": 728
+      "indexed_passages": 728,
+      "bibliographic_author": "Kurilo, Diego",
+      "isbn": null,
+      "isbn_note": "El DOCX V297 consultado no consigna un ISBN propio en su paratexto.",
+      "edition_statement": "Primera edición inglesa, revisión editorial V297",
+      "metadata_source": {
+        "type": "author_docx_front_matter",
+        "filename": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+        "paragraphs": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          8
+        ]
+      }
     },
     {
       "id": "theory-es",

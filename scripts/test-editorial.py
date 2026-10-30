@@ -14,7 +14,7 @@ class Page(HTMLParser):
         if tag=='footer': self.footer=True
         if tag=='link' and 'assets/academic.css' in a.get('href',''): self.css=True
         if a.get('id'): assert a['id'] not in self.ids, f"Duplicate ID {a['id']}"; self.ids.add(a['id'])
-for name in ['index','metodologia','estudios','bibliografia','lector-bilingue','basilica-fano','auditoria']:
+for name in ['index','metodologia','estudios','bibliografia','lector-bilingue','basilica-fano','auditoria','principios']:
     p=Page();p.feed((root/(name+'.html')).read_text())
     assert p.h1==1 and p.description and p.skip and p.footer and p.css, (name,vars(p))
 records=json.loads((root/'data/academic-studies.json').read_text())['records']
@@ -27,4 +27,4 @@ for r in records:
 assert len(records)==53 and sum(r['verification_status']=='checked' for r in records)==8
 lex=json.loads((root/'data/latin-lexicon.json').read_text())['entries']
 assert len(lex)==38 and sum(bool(r.get('verified')) for r in lex)==2
-print('Editorial checks passed: seven pages, bibliography provenance and audit counts.')
+print('Editorial checks passed: eight pages, bibliography provenance and audit counts.')
