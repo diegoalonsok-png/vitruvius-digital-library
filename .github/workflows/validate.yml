@@ -15,6 +15,7 @@ jobs:
           node --check assets/bilingual.js
           node --check assets/latin-suggest.js
           node --check assets/theme.js
+          node --check assets/studies.js
           node scripts/test-search.mjs
       - name: Comprobar catálogo y archivos publicados
         run: |

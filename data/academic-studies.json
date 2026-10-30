@@ -1,6 +1,6 @@
 {
   "standard": "Chicago Manual of Style 18th edition (2024), notes and bibliography",
-  "status": "Records sourced from author's V514 bibliography and separately checked publisher/catalogue records; pending fields explicit",
+  "status": "Referencias de los DOCX del autor; contraste institucional identificado por ficha. No se atribuye acceso libre a obras protegidas.",
   "records": [
     {
       "author": "McEwen, Indra Kagis",
@@ -12,7 +12,9 @@
       "pages": "508",
       "theme": "Historia intelectual y contexto augusteo",
       "url": "https://mitpress.mit.edu/9780262134156/vitruvius/",
-      "type": "Monografía crítica"
+      "type": "Monografía crítica",
+      "id": "study-001",
+      "verification": "Ficha editorial contrastada"
     },
     {
       "author": "McEwen, Indra Kagis",
@@ -24,7 +26,8 @@
       "pages": "384",
       "theme": "Recepción humanista y teoría política del Renacimiento",
       "url": "https://mitpress.mit.edu/9780262047616/all-the-kings-horses/",
-      "type": "Monografía de recepción"
+      "type": "Monografía de recepción",
+      "id": "study-002"
     },
     {
       "author": "Plommer, Hugh",
@@ -36,7 +39,8 @@
       "pages": "117 (paginación principal)",
       "theme": "Faventino y manuales romanos tardíos",
       "url": "https://iucat.iu.edu/iub/6623459",
-      "type": "Estudio, edición y traducción de Faventino"
+      "type": "Estudio, edición y traducción de Faventino",
+      "id": "study-003"
     },
     {
       "author": "Nichols, Marden Fitzpatrick",
@@ -47,8 +51,9 @@
       "isbn": "9781107003125",
       "pages": "266",
       "theme": "Lectura literaria, cultura romana y audiencia del tratado",
-      "url": "https://www.cambridge.org/core/books/author-and-audience-in-vitruvius-de-architectura/03381010E4870DF34846F5BD9D9",
-      "type": "Monografía de filología clásica"
+      "url": "https://www.cambridge.org/core/books/author-and-audience-in-vitruvius-de-architectura/bibliography/C8A6B94430F832AC0508497EBAA85E67",
+      "type": "Monografía de filología clásica",
+      "id": "study-004"
     },
     {
       "author": "Smith, Thomas Gordon",
@@ -60,19 +65,21 @@
       "pages": null,
       "theme": "Interpretación de la teoría arquitectónica vitruviana",
       "url": "https://architecture.edwardworthlibrary.ie/people/vitruvius/",
-      "type": "Estudio de teoría arquitectónica"
+      "type": "Estudio de teoría arquitectónica",
+      "id": "study-005"
     },
     {
       "author": "Knell, Heiner",
       "title": "Vitruvs Architekturtheorie: Versuch einer Interpretation",
-      "publisher": null,
+      "publisher": "Wissenschaftliche Buchgesellschaft",
       "year": "1985",
       "country": "Alemania",
       "isbn": null,
       "pages": null,
       "theme": "Interpretación de los principios de la arquitectura en Vitruvio",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Monografía especializada"
+      "type": "Monografía especializada",
+      "id": "study-006"
     },
     {
       "author": "Fleury, Philippe",
@@ -84,19 +91,21 @@
       "pages": null,
       "theme": "Ingeniería y mecánica antigua en De architectura",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Estudio de historia de la técnica"
+      "type": "Estudio de historia de la técnica",
+      "id": "study-007"
     },
     {
       "author": "Gros, Pierre (ed.)",
       "title": "Vitruve et la tradition des traités d’architecture: fabrica et ratiocinatio",
-      "publisher": null,
+      "publisher": "École française de Rome",
       "year": "2006",
       "country": "Italia",
       "isbn": null,
       "pages": null,
       "theme": "Tradición y recepción de tratados arquitectónicos",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Volumen colectivo de investigación"
+      "type": "Volumen colectivo de investigación",
+      "id": "study-008"
     },
     {
       "author": "Geertman, Herman, y J. J. de Jong (eds.)",
@@ -108,7 +117,8 @@
       "pages": null,
       "theme": "Estudios arqueológicos y arquitectónicos de tradición helenística y republicana",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Actas de congreso"
+      "type": "Actas de congreso",
+      "id": "study-009"
     },
     {
       "author": "Germann, Georg",
@@ -120,7 +130,8 @@
       "pages": null,
       "theme": "Recepción histórica del vitruvianismo",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Monografía histórica"
+      "type": "Monografía histórica",
+      "id": "study-010"
     },
     {
       "author": "Sanvito, Paolo (ed.)",
@@ -132,7 +143,8 @@
       "pages": null,
       "theme": "Formación y transformaciones del vitruvianismo",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Volumen colectivo"
+      "type": "Volumen colectivo",
+      "id": "study-011"
     },
     {
       "author": "Courrént, Mireille",
@@ -144,7 +156,8 @@
       "pages": null,
       "theme": "Naturaleza, ciencia y teoría del arte",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Estudio de historia intelectual"
+      "type": "Estudio de historia intelectual",
+      "id": "study-012"
     },
     {
       "author": "D’Evelyn, Margaret Muther",
@@ -156,7 +169,8 @@
       "pages": null,
       "theme": "Recepción veneciana y arquitectura renacentista",
       "url": "https://architecture.edwardworthlibrary.ie/people/vitruvius/",
-      "type": "Monografía de recepción"
+      "type": "Monografía de recepción",
+      "id": "study-013"
     },
     {
       "author": "Kruft, Hanno-Walter",
@@ -168,7 +182,8 @@
       "pages": null,
       "theme": "Historia general de teoría arquitectónica desde Vitruvio",
       "url": "https://architecture.edwardworthlibrary.ie/people/vitruvius/",
-      "type": "Historia de la teoría arquitectónica"
+      "type": "Historia de la teoría arquitectónica",
+      "id": "study-014"
     },
     {
       "author": "Ebhardt, Bodo",
@@ -180,7 +195,8 @@
       "pages": null,
       "theme": "Bibliografía histórica de las ediciones de Vitruvio",
       "url": "https://mvdpoel.ruhosting.nl/Documents/vitruvius.htm",
-      "type": "Estudio bibliográfico"
+      "type": "Estudio bibliográfico",
+      "id": "study-015"
     },
     {
       "author": "Cuomo, Serafina",
@@ -194,7 +210,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1056",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-016"
     },
     {
       "author": "Lancaster, Lynne C.",
@@ -208,7 +225,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1056",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-017"
     },
     {
       "author": "Oksanish, John",
@@ -222,7 +240,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-018"
     },
     {
       "author": "Rihll, Tracey",
@@ -236,7 +255,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-019"
     },
     {
       "author": "Rowland, Ingrid D., y Sinclair W. Bell (eds.)",
@@ -250,7 +270,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-020"
     },
     {
       "author": "Schuler, Stefan",
@@ -264,7 +285,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-021"
     },
     {
       "author": "Senseney, John R.",
@@ -278,7 +300,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-022"
     },
     {
       "author": "Taylor, Rabun",
@@ -292,7 +315,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-023"
     },
     {
       "author": "Wilson Jones, Mark",
@@ -306,7 +330,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1057",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-024"
     },
     {
       "author": "Callebat, Louis, y Philippe Fleury",
@@ -320,7 +345,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1056",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-025"
     },
     {
       "author": "Romano, Elisa",
@@ -334,7 +360,8 @@
       "type": "Monografía o estudio especializado",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1005",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-026"
     },
     {
       "author": "Formisano, Marco",
@@ -348,7 +375,8 @@
       "type": "Artículo académico",
       "url": null,
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1004",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes",
+      "id": "study-027"
     },
     {
       "author": "Bianco, Lino",
@@ -360,9 +388,432 @@
       "pages": null,
       "theme": "Artículo de investigación contemporánea",
       "type": "Artículo académico",
-      "url": null,
+      "url": "https://www.mdpi.com/2071-1050/15/5/4150",
       "source": "Diego Kurilo, Nueva recensio V514, bibliografía, PDF p. 1004",
-      "verification": "Extraído de bibliografía del autor; cotejo editorial e ISBN pendientes"
+      "verification": "Artículo contrastado con la revista",
+      "id": "study-028",
+      "doi": "10.3390/su15054150"
+    },
+    {
+      "author": "Vitruve; Philippe Fleury (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre I",
+      "publisher": "Les Belles Lettres",
+      "year": "1990",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro I",
+      "book": 1,
+      "url": "https://www.lesbelleslettres.com/livre/9782251013497/de-l-architecture-livre-i",
+      "source_paragraph": 4291,
+      "verification": "Ficha editorial contrastada",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4292",
+      "source_reference": "Vitruvio. De l’architecture. Livre I. Texto establecido, traducido y comentado por Philippe Fleury. Collection des Universités de France. Les Belles Lettres, 1990.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-029"
+    },
+    {
+      "author": "Vitruve; Louis Callebat; Pierre Gros; Catherine Jacquemard (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre II",
+      "publisher": "Les Belles Lettres",
+      "year": "1999",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro II",
+      "book": 2,
+      "url": "https://www.lesbelleslettres.com/livre/9782251014159/de-l-architecture-livre-ii",
+      "source_paragraph": 4292,
+      "verification": "Ficha editorial contrastada",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4293",
+      "source_reference": "Vitruvio. De l’architecture. Livre II. Texto establecido y traducido por Louis Callebat; introducción y comentario de Pierre Gros; investigación de manuscritos y aparato crítico de Catherine Jacquemard. Collection des Universités de France. Les Belles Lettres, 1999.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-030"
+    },
+    {
+      "author": "Vitruve; Pierre Gros (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre III",
+      "publisher": "Les Belles Lettres",
+      "year": "1990",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro III",
+      "book": 3,
+      "url": null,
+      "source_paragraph": 4293,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4294",
+      "source_reference": "Vitruvio. De l’architecture. Livre III. Texto establecido, traducido y comentado por Pierre Gros. Collection des Universités de France. Les Belles Lettres, 1990.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-031"
+    },
+    {
+      "author": "Vitruve; Pierre Gros (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre IV",
+      "publisher": "Les Belles Lettres",
+      "year": "1992",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro IV",
+      "book": 4,
+      "url": null,
+      "source_paragraph": 4294,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4295",
+      "source_reference": "Vitruvio. De l’architecture. Livre IV. Texto establecido, traducido y comentado por Pierre Gros. Collection des Universités de France. Les Belles Lettres, 1992.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-032"
+    },
+    {
+      "author": "Vitruve; Catherine Saliou (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre V",
+      "publisher": "Les Belles Lettres",
+      "year": "2009",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro V",
+      "book": 5,
+      "url": null,
+      "source_paragraph": 4295,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4296",
+      "source_reference": "Vitruvio. De l’architecture. Livre V. Texto establecido y traducido por Catherine Saliou. Collection des Universités de France. Les Belles Lettres, 2009.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-033"
+    },
+    {
+      "author": "Vitruve; Louis Callebat (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre VI",
+      "publisher": "Les Belles Lettres",
+      "year": "2004",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro VI",
+      "book": 6,
+      "url": null,
+      "source_paragraph": 4296,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4297",
+      "source_reference": "Vitruvio. De l’architecture. Livre VI. Texto establecido, traducido y comentado por Louis Callebat. Collection des Universités de France. Les Belles Lettres, 2004.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-034"
+    },
+    {
+      "author": "Vitruve; Bernard Liou; Michel Zuinghedau; Marie-Thérèse Cam (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre VII",
+      "publisher": "Les Belles Lettres",
+      "year": "1995",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro VII",
+      "book": 7,
+      "url": "https://www.lesbelleslettres.com/livre/9782251013879/de-l-architecture-livre-vii",
+      "source_paragraph": 4297,
+      "verification": "Ficha editorial contrastada",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4298",
+      "source_reference": "Vitruvio. De l’architecture. Livre VII. Texto establecido y traducido por Bernard Liou y Michel Zuinghedau; comentario de Marie-Thérèse Cam. Collection des Universités de France. Les Belles Lettres, 1995.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-035"
+    },
+    {
+      "author": "Vitruve; Louis Callebat (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre VIII",
+      "publisher": "Les Belles Lettres",
+      "year": "1973",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro VIII",
+      "book": 8,
+      "url": null,
+      "source_paragraph": 4298,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4299",
+      "source_reference": "Vitruvio. De l’architecture. Livre VIII. Texto establecido y traducido por Louis Callebat. Collection des Universités de France. Les Belles Lettres, 1973.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-036"
+    },
+    {
+      "author": "Vitruve; Jean Soubiran (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre IX",
+      "publisher": "Les Belles Lettres",
+      "year": "1969",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro IX",
+      "book": 9,
+      "url": null,
+      "source_paragraph": 4299,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4300",
+      "source_reference": "Vitruvio. De l’architecture. Livre IX. Texto establecido y traducido por Jean Soubiran. Collection des Universités de France. Les Belles Lettres, 1969.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-037"
+    },
+    {
+      "author": "Vitruve; Louis Callebat; Philippe Fleury (edición, traducción y comentario)",
+      "title": "De l’architecture. Livre X",
+      "publisher": "Les Belles Lettres",
+      "year": "1986",
+      "country": "Francia",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino, traducción francesa y comentario del Libro X",
+      "book": 10,
+      "url": null,
+      "source_paragraph": 4300,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4301",
+      "source_reference": "Vitruvio. De l’architecture. Livre X. Texto establecido y traducido por Louis Callebat; comentario con Philippe Fleury. Collection des Universités de France. Les Belles Lettres, 1986.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-038"
+    },
+    {
+      "author": "Vitruve; Pierre Gros (dir.)",
+      "title": "De l’architecture: De architectura",
+      "publisher": "Les Belles Lettres",
+      "year": "2015",
+      "type": "Edición crítica y traducción",
+      "theme": "Síntesis bilingüe de la edición Budé",
+      "url": "https://www.lesbelleslettres.com/livre/9782251445076/de-l-architecture",
+      "source_paragraph": 4301,
+      "verification": "Fuente institucional contrastada",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4302",
+      "source_reference": "Vitruvio. De l’architecture: De architectura. Texto establecido por Pierre Gros. Editio Minor. Les Belles Lettres, 2015.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-039"
+    },
+    {
+      "author": "Vitruvius; Frank Granger (trad.)",
+      "title": "On Architecture. 2 vols.",
+      "publisher": "Harvard University Press",
+      "year": "1931–1934",
+      "type": "Edición crítica y traducción",
+      "theme": "Texto latino y traducción inglesa",
+      "url": null,
+      "source_paragraph": 4302,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4303",
+      "source_reference": "Granger, Frank, trad. Vitruvius: On Architecture. 2 vols. Loeb Classical Library. Harvard University Press, 1931–34.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-040"
+    },
+    {
+      "author": "Vitruvius; Fritz Krohn (ed.)",
+      "title": "Vitruvii de architectura libri decem",
+      "publisher": "B. G. Teubner",
+      "year": "1912",
+      "type": "Edición crítica latina",
+      "theme": "Texto latino de referencia",
+      "url": "https://archive.org/details/vitruviidearchit00vitr",
+      "source_paragraph": 4303,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4304",
+      "source_reference": "Krohn, Fritz, ed. Vitruvii de architectura libri decem. B. G. Teubner, 1912.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-041"
+    },
+    {
+      "author": "Vitruvius; Valentin Rose (ed.)",
+      "title": "Vitruvii de architectura libri decem",
+      "publisher": "B. G. Teubner",
+      "year": "1899",
+      "type": "Edición crítica latina",
+      "theme": "Constitución del texto latino",
+      "url": null,
+      "source_paragraph": 4305,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4306",
+      "source_reference": "Rose, Valentin, ed. Vitruvii de architectura libri decem. B. G. Teubner, 1899.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-042"
+    },
+    {
+      "author": "Choisy, Auguste",
+      "title": "Vitruve",
+      "publisher": "Lahure",
+      "year": "1909",
+      "type": "Edición y estudio histórico",
+      "theme": "Interpretación arquitectónica del tratado",
+      "url": null,
+      "source_paragraph": 4311,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4312",
+      "source_reference": "Choisy, Auguste. Vitruve. Lahure, 1909.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-043"
+    },
+    {
+      "author": "Haselberger, Lothar, et al.",
+      "title": "Mapping Augustan Rome",
+      "publisher": "Journal of Roman Archaeology",
+      "year": "2002",
+      "type": "Estudio arqueológico",
+      "theme": "Topografía y contexto augusteo",
+      "url": null,
+      "source_paragraph": 4315,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4316",
+      "source_reference": "Haselberger, Lothar, et al. Mapping Augustan Rome. Journal of Roman Archaeology Supplementary Series 50. Journal of Roman Archaeology, 2002.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-044"
+    },
+    {
+      "author": "Pellati, Francesco; José A. Merediz (trad.)",
+      "title": "Vitrubio: el gran arquitecto de la antigüedad greco-romana",
+      "publisher": "Ediciones Clot",
+      "year": "1944",
+      "type": "Estudio histórico",
+      "theme": "Historia de Vitruvio y recepción argentina",
+      "url": null,
+      "source_paragraph": 4318,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4319",
+      "source_reference": "Pellati, Francesco. Vitrubio: el gran arquitecto de la antigüedad greco-romana. Traducido por José A. Merediz. Buenos Aires: Ediciones Clot, 1944.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-045"
+    },
+    {
+      "author": "Gros, Pierre (ed.)",
+      "title": "Le projet de Vitruve: Objet, destinataires et réception du De architectura",
+      "publisher": "École française de Rome",
+      "year": "1994",
+      "type": "Actas de congreso",
+      "theme": "Proyecto autorial y recepción",
+      "url": "https://www.persee.fr/issue/efr_0000-0000_1994_act_192_1",
+      "source_paragraph": 4319,
+      "verification": "Fuente institucional contrastada",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4320",
+      "source_reference": "Le projet de Vitruve: Objet, destinataires et réception du De architectura. Actes du colloque international de Rome (26–27 mars 1993). Collection de l’École française de Rome 192. École française de Rome, 1994.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-046"
+    },
+    {
+      "author": "Reinhold, Meyer",
+      "title": "Marcus Agrippa: A Biography",
+      "publisher": "W. F. Humphrey Press",
+      "year": "1933",
+      "type": "Estudio histórico",
+      "theme": "Contexto político y construcción pública",
+      "url": null,
+      "source_paragraph": 4320,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4321",
+      "source_reference": "Reinhold, Meyer. Marcus Agrippa: A Biography. Geneva (NY): W. F. Humphrey Press, 1933.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-047"
+    },
+    {
+      "author": "Reynolds, L. D. (ed.)",
+      "title": "Texts and Transmission: A Survey of the Latin Classics",
+      "publisher": "Clarendon Press",
+      "year": "1983",
+      "type": "Historia de la transmisión textual",
+      "theme": "Tradición manuscrita de los clásicos latinos",
+      "url": null,
+      "source_paragraph": 4321,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4322",
+      "source_reference": "Reynolds, L. D., ed. Texts and Transmission: A Survey of the Latin Classics. Clarendon Press, 1983.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-048"
+    },
+    {
+      "author": "Scholfield, P. H.",
+      "title": "The Theory of Proportion in Architecture",
+      "publisher": "Cambridge University Press",
+      "year": "1958",
+      "type": "Teoría arquitectónica",
+      "theme": "Proporción y modulación",
+      "url": null,
+      "source_paragraph": 4323,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4324",
+      "source_reference": "Scholfield, P. H. The Theory of Proportion in Architecture. Cambridge: Cambridge University Press, 1958.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-049"
+    },
+    {
+      "author": "Tatarkiewicz, Władysław",
+      "title": "Historia de la estética. Vol. I: La estética antigua",
+      "publisher": "Akal",
+      "year": "2000",
+      "type": "Historia de la estética",
+      "theme": "Contexto estético antiguo",
+      "url": null,
+      "source_paragraph": 4324,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4325",
+      "source_reference": "Tatarkiewicz, Władysław. Historia de la estética. Vol. I: La estética antigua. Akal, 2000.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-050"
+    },
+    {
+      "author": "Zanker, Paul",
+      "title": "The Power of Images in the Age of Augustus",
+      "publisher": "University of Michigan Press",
+      "year": "1988",
+      "type": "Estudio histórico",
+      "theme": "Cultura visual augustea",
+      "url": null,
+      "source_paragraph": 4325,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4326",
+      "source_reference": "Zanker, Paul. The Power of Images in the Age of Augustus. University of Michigan Press, 1988.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-051"
+    },
+    {
+      "author": "Vitruvius; Richard Schofield (trad.); Robert Tavernor (introd.)",
+      "title": "On Architecture",
+      "publisher": "Penguin",
+      "year": "2009",
+      "type": "Traducción moderna",
+      "theme": "Traducción inglesa y contexto",
+      "url": null,
+      "source_paragraph": 4892,
+      "verification": "Referencia del autor; datos de la edición por cotejar",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4893",
+      "source_reference": "Schofield, Richard, trad. Vitruvius: On Architecture. Introducción de Robert Tavernor. Londres: Penguin, 2009. — Traducción inglesa moderna de amplia difusión.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-052"
+    },
+    {
+      "author": "Selim, Haitham Sadek; Mohammed Salah Mayhoub; Abdullah Abuzaid",
+      "title": "Reinterpreting the Vitruvian Model in Contemporary Architectural Education: Integrating Empirical Insights from Five Schools of Architecture",
+      "publisher": "Frontiers in Education",
+      "year": "2025",
+      "type": "Artículo académico",
+      "theme": "Educación arquitectónica y recepción contemporánea",
+      "url": "https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1528083/full",
+      "source_paragraph": 4309,
+      "verification": "Fuente institucional contrastada",
+      "source": "Diego Kurilo, V514, DOCX, párrafo 4310",
+      "source_reference": "Selim, Haitham Sadek, Mohammed Salah Mayhoub y Abdullah Abuzaid. «Reinterpreting the Vitruvian Model in Contemporary Architectural Education: Integrating Empirical Insights from Five Schools of Architecture». Frontiers in Education 10 (2025): 1528083. https://doi.org/10.3389/feduc.2025.1528083.",
+      "isbn": null,
+      "pages": null,
+      "id": "study-053"
     }
-  ]
+  ],
+  "updated": "2026-10-30"
 }

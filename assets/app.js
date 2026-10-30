@@ -87,8 +87,8 @@ async function downloadDocument(control,e,format){
 
 function renderCatalog(){
   const term=normalize($('#catalog-filter').value.trim());
-  const aliases=term==='gudiano'?['gudian','gudiano']:term==='harlesiano'?['harleian','harlesiano']:[term];
-  const list=records.filter(e=>(category==='all'||e.category===category)&&(!term||aliases.some(t=>normalize([e.title,e.subtitle,e.author,e.publisher,e.year,languageLabel(e)].join(' ')).includes(t))));
+  const aliases=term==='harleianus'?['harley','harleian']:term==='gudiano'?['gudian','gudiano']:term==='harlesiano'?['harleian','harlesiano']:[term];
+  const list=records.filter(e=>(category==='all'||e.category===category)&&(!term||aliases.some(t=>normalize([e.id,e.title,e.subtitle,e.author,e.description,e.publisher,e.year,languageLabel(e)].join(' ')).includes(t))));
   if(category==='historical')list.sort((a,b)=>Number((String(a.year).match(/\d{4}/)||['9999'])[0])-Number((String(b.year).match(/\d{4}/)||['9999'])[0]));
   const container=$('#catalog-list');container.className=`catalog-list ${category}`;
   container.innerHTML=list.map(e=>{
@@ -182,7 +182,21 @@ async function setReaderPage(page){
 
 function closeReader(){ readerRevision++;$('#reader-dialog').close();$('#reader-frame').removeAttribute('src'); }
 
-function openComparison(id='recensio-es',page=1){location.href=readerURL(authorIds.includes(id)?id:'recensio-es');}
+function openComparison(id='recensio-es',page=1){
+ if(authorIds.includes(id)){location.href=readerURL(id);return;}
+ if($('#reader-dialog').open)closeReader();
+ const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length),container=$('#comparison-panes');container.replaceChildren();
+ for(const [i,selected]of [edition('recensio-es'),edition(id)].entries()){
+  if(!selected)continue;const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=authorIds.includes(selected.id)?'text':'pdf';
+  pane.innerHTML='<div class="compare-controls"><label>Edición<select>'+available.map(e=>'<option value="'+e.id+'"'+(e.id===selected.id?' selected':'')+'>'+escapeHTML(e.title)+' · '+escapeHTML(e.version||e.year)+'</option>').join('')+'</select></label><button type="button" class="compare-prev">←</button><label>Página PDF<input class="compare-page" type="number" min="1" value="'+(i?page:205)+'"></label><span class="compare-total"></span><button type="button" class="compare-next">→</button><button type="button" class="compare-mode">PDF original</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>';
+  $('select',pane).addEventListener('change',()=>{pane.dataset.mode=authorIds.includes($('select',pane).value)?'text':'pdf';$('.compare-page',pane).value=1;renderComparePane(pane);});
+  $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
+  for(const[selector,delta]of [['.compare-prev',-1],['.compare-next',1]])$(selector,pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)+delta);renderComparePane(pane);});
+  $('.compare-mode',pane).addEventListener('click',()=>{const e=edition($('select',pane).value);window.open(e.read_url||e.pdf||e.source_url,'_blank','noopener');});container.append(pane);renderComparePane(pane);
+ }
+ $('.comparison-note').textContent='Consulta del facsímil histórico y una edición de Kurilo. Cada página se selecciona por separado: no se presupone equivalencia entre las paginaciones. Para traducciones sincronizadas por locus, usá el lector bilingüe.';
+ $('#comparison-dialog').showModal();
+}
 
 async function renderComparePane(pane){
   const e=edition($('select',pane).value),body=$('.compare-body',pane);body.replaceChildren();
@@ -326,7 +340,7 @@ function printResults(){
 function downloadCSV(){
   const rows=resultExportRows();const csvValue=s=>{s=String(s??'');if(/^[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
   const values=[['Consulta','Tipo de búsqueda','Título','Edición','Idioma','Autor','Página PDF','Locus','Pasaje','Forma encontrada','Aparición en la edición','Enlace'],...rows.map(r=>{const e=edition(r.edition);return[lastQuery,searchKind==='semantic'?'Semántica':searchKind==='count'?'Recuento literal':'Textual',e.title,e.version,languageLabel(e),e.author,r.page||'',citation(r),r.snippet,r.form||'',r.occurrence||'',sourceURL(e,r.page)];})];
-  const blob=new Blob(['\ufeff'+values.map(row=>row.map(csvValue).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='Vitruvius_Resultados.csv';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+  const blob=new Blob(['\ufeff'+values.map(row=>row.map(csvValue).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='Vitruvius_Resultados.csv';document.body.append(link);link.click();link.remove();$('#search-status').textContent='CSV preparado con '+rows.length+' resultados y sus loci.';setTimeout(()=>URL.revokeObjectURL(link.href),30000);
 }
 
 function emailResults(){
@@ -351,7 +365,7 @@ function emailResults(){
     lines.push('');
   });
   lines.push('Para enviar el PDF completo con todos los contextos: primero elegí «Imprimir / guardar PDF» en el sitio, guardá el archivo y adjuntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
-  window.location.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\n'));
+  let dialog=$('#email-dialog');if(!dialog){dialog=document.createElement('dialog');dialog.id='email-dialog';dialog.className='reader-dialog';document.body.append(dialog);}dialog.replaceChildren();const title=document.createElement('h2');title.textContent='Correo preparado';const close=document.createElement('button');close.type='button';close.textContent='Cerrar';close.addEventListener('click',()=>dialog.close());const text=document.createElement('textarea');text.readOnly=true;text.style.cssText='width:100%;min-height:320px;padding:20px';text.value=subject+'\n\n'+lines.filter(Boolean).join('\n');const open=document.createElement('a');open.textContent='Abrir mi aplicación de correo ↗';open.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\n'));dialog.append(title,close,text,open);dialog.showModal();
 }
 
 function addSearchControls(){
