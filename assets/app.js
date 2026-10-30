@@ -25,27 +25,27 @@ function searchInternet(query,provider='web',includeVitruvio=true){
 function resultSnippet(r){
   const snippet=String(r.snippet||'');
   if(!snippet)return '';
-  if(Number.isInteger(r.context_start)){
-    const start=r.context_start,end=start+r.context_length;
-    return escapeHTML(snippet.slice(0,start))+'<mark>'+escapeHTML(snippet.slice(start,end))+'</mark>'+escapeHTML(snippet.slice(end));
-  }
-  // Highlight the user's exact word(s) in the visible context, not just the PDF page.
-  const tokens=(r.form||lastQuery||$('#query').value||'').trim().split(/\s+/).filter(Boolean);
-  if(!tokens.length)return escapeHTML(snippet);
-  const fold=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-  const normalized=fold(snippet),ranges=[];
-  for(const term of tokens){
-    const needle=fold(term);if(!needle)continue;
+  // Highlight every occurrence of the original query AND attested inflected forms.
+  const query=String(lastQuery||document.querySelector('#query')?.value||'').trim();
+  const terms=[...query.split(/\s+/),String(r.form||'')].map(x=>x.trim()).filter(Boolean);
+  const fold=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase();
+  const folded=fold(snippet),ranges=[];
+  for(const term of terms){
+    const needle=fold(term);
+    if(!needle)continue;
     let at=0;
-    while((at=normalized.indexOf(needle,at))!==-1){
+    while((at=folded.indexOf(needle,at))!==-1){
       ranges.push([at,at+needle.length]);at+=Math.max(1,needle.length);
     }
   }
+  // For indexed variants not repeated in the text, honor the worker match offset.
+  if(Number.isInteger(r.context_start)&&Number.isInteger(r.context_length)&&r.context_length>0)
+    ranges.push([r.context_start,r.context_start+r.context_length]);
   ranges.sort((a,b)=>a[0]-b[0]||b[1]-a[1]);
   let html='',cursor=0;
   for(const [a,b] of ranges){
-    if(a<cursor)continue;
-    html+=escapeHTML(snippet.slice(cursor,a))+'<mark>'+escapeHTML(snippet.slice(a,b))+'</mark>';
+    if(a<cursor||a<0||b>snippet.length)continue;
+    html+=escapeHTML(snippet.slice(cursor,a))+'<mark class="search-hit">'+escapeHTML(snippet.slice(a,b))+'</mark>';
     cursor=b;
   }
   return html+escapeHTML(snippet.slice(cursor));
@@ -324,7 +324,7 @@ function renderMore(){
  const next=results.slice(shown,shown+16),container=$('#search-results');
  for(const r of next){const e=edition(r.edition),article=document.createElement('article');article.className='result';
   const url=readerURL(e.id,r.locus);
-  article.innerHTML='<div class="result-meta">'+(r.partial_match?'Coincidencia parcial de la cita · verificar variante textual · ':'')+escapeHTML(e.version)+' · '+escapeHTML(languages[r.language]||r.language)+'</div><h3>'+escapeHTML(citation(r))+'</h3><p class="result-biblio">'+bibliographyHTML(e)+'</p><p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+r.chapter)+' · Sección '+r.section+(r.page?' · PDF p. '+r.page:'')+'</p><p lang="'+r.language+'">'+resultSnippet({...r,snippet:r.text||r.snippet,context_start:null})+'</p><details class="result-translation"><summary>Desplegar texto latino y traducción</summary><p lang="la"><strong>Latín</strong><br>'+escapeHTML(r.latin)+'</p><p lang="'+e.languages.find(l=>l!=='la')+'"><strong>'+escapeHTML(languageLabel(e))+'</strong><br>'+escapeHTML(r.translation)+'</p></details><div class="result-actions"><a href="'+escapeHTML(url)+'">Leer el pasaje →</a><a href="'+escapeHTML(url)+'">Comparar traducciones →</a><a href="'+escapeHTML(sourceURL(e,r.page||1))+'" target="_blank" rel="noopener">PDF original ↗</a></div>';
+  article.innerHTML='<div class="result-meta">'+(r.partial_match?'Coincidencia parcial de la cita · verificar variante textual · ':'')+escapeHTML(e.version)+' · '+escapeHTML(languages[r.language]||r.language)+'</div><h3>'+escapeHTML(citation(r))+'</h3><p class="result-biblio">'+bibliographyHTML(e)+'</p><p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+r.chapter)+' · Sección '+r.section+(r.page?' · PDF p. '+r.page:'')+'</p><p lang="'+r.language+'">'+resultSnippet({...r,snippet:r.text||r.snippet})+'</p><details class="result-translation"><summary>Desplegar texto latino y traducción</summary><p lang="la"><strong>Latín</strong><br>'+escapeHTML(r.latin)+'</p><p lang="'+e.languages.find(l=>l!=='la')+'"><strong>'+escapeHTML(languageLabel(e))+'</strong><br>'+escapeHTML(r.translation)+'</p></details><div class="result-actions"><a href="'+escapeHTML(url)+'">Leer el pasaje →</a><a href="'+escapeHTML(url)+'">Comparar traducciones →</a><a href="'+escapeHTML(sourceURL(e,r.page||1))+'" target="_blank" rel="noopener">PDF original ↗</a></div>';
   container.append(article);
  }
  shown+=next.length;$('#more-results').hidden=shown>=results.length;
