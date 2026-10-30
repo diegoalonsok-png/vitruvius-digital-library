@@ -463,6 +463,7 @@ function knownLocus(e,page){
   // Only individually cross-checked Krohn locations are displayed as verified.
   if(e?.id==='krohn-1912'&&Number(page)===27)return 'Vitr., De arch. I.2.1';
   if(e?.id==='krohn-1912'&&Number(page)===77)return 'Vitr., De arch. III.1.1';
+  if(e?.id==='recensio-es'&&Number(page)===978)return 'Libro X (identificación preliminar) · capítulo y sección por cotejar';
   return 'Libro, capítulo y sección: pendientes de cotejo';
 }
 function citationLine(e,page){return (e?.version||e?.year||'Edición')+' · '+knownLocus(e,page)+' · p. PDF '+page;}
