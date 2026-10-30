@@ -23,32 +23,40 @@ function searchInternet(query,provider='web',includeVitruvio=true){
   const url=new URL(provider==='scholar'?'https://scholar.google.com/scholar':'https://www.google.com/search');url.searchParams.set('q',query);window.open(url.href,'_blank','noopener,noreferrer');
 }
 function resultSnippet(r){
-  const snippet=String(r.snippet||'');
-  if(!snippet)return '';
-  // Highlight every occurrence of the original query AND attested inflected forms.
-  const query=String(lastQuery||document.querySelector('#query')?.value||'').trim();
-  const terms=[...query.split(/\s+/),String(r.form||'')].map(x=>x.trim()).filter(Boolean);
-  const fold=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase();
-  const folded=fold(snippet),ranges=[];
-  for(const term of terms){
-    const needle=fold(term);
-    if(!needle)continue;
-    let at=0;
-    while((at=folded.indexOf(needle,at))!==-1){
-      ranges.push([at,at+needle.length]);at+=Math.max(1,needle.length);
-    }
+ const snippet=String(r.snippet||'');
+ if(!snippet)return '';
+ const query=String(lastQuery||document.querySelector('#query')?.value||'').trim();
+ // A multiword quotation must be highlighted as one contiguous match,
+ // never as arbitrary substrings of later words.
+ const fold=x=>String(x).normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+ const ranges=[];
+ const multi=/[\\p{L}\\p{M}]+(?:[^\\p{L}\\p{M}]+[\\p{L}\\p{M}]+){1,}/u.test(query);
+ const addExact=(term)=>{
+  const words=[...String(term).matchAll(/[\\p{L}\\p{M}\\p{N}]+/gu)].map(m=>fold(m[0])).filter(Boolean);
+  if(!words.length)return;
+  const tokens=[...snippet.matchAll(/[\\p{L}\\p{M}\\p{N}]+/gu)];
+  for(let i=0;i<=tokens.length-words.length;i++){
+   if(words.every((w,j)=>fold(tokens[i+j][0])===w))
+    ranges.push([tokens[i].index,tokens[i+words.length-1].index+tokens[i+words.length-1][0].length]);
   }
-  // For indexed variants not repeated in the text, honor the worker match offset.
-  if(Number.isInteger(r.context_start)&&Number.isInteger(r.context_length)&&r.context_length>0)
-    ranges.push([r.context_start,r.context_start+r.context_length]);
-  ranges.sort((a,b)=>a[0]-b[0]||b[1]-a[1]);
-  let html='',cursor=0;
-  for(const [a,b] of ranges){
-    if(a<cursor||a<0||b>snippet.length)continue;
-    html+=escapeHTML(snippet.slice(cursor,a))+'<mark class="search-hit">'+escapeHTML(snippet.slice(a,b))+'</mark>';
-    cursor=b;
-  }
-  return html+escapeHTML(snippet.slice(cursor));
+ };
+ if(multi){
+  addExact(query);
+  if(!ranges.length && r.form && String(r.form).trim().split(/\\s+/).length>1)addExact(r.form);
+ }else{
+  const terms=[query,String(r.form||''),...String(r.semantic_term||'').split(/\\s*·\\s*/)].filter(Boolean);
+  for(const term of terms)addExact(term);
+ }
+ // The worker offset identifies one source span when the excerpt contains it.
+ // Only use it when the excerpt is the original snippet (not a full passage).
+ if(!ranges.length&&Number.isInteger(r.context_start)&&Number.isInteger(r.context_length)&&r.context_length>0&&!r.partial_match&&!r.match_type){
+  const at=r.context_start,end=at+r.context_length;
+  if(at>=0&&end<=snippet.length)ranges.push([at,end]);
+ }
+ ranges.sort((x,y)=>x[0]-y[0]||y[1]-x[1]);
+ let out='',cursor=0;
+ for(const [start,end] of ranges){if(start<cursor||end>snippet.length)continue;out+=escapeHTML(snippet.slice(cursor,start))+'<mark class="search-hit">'+escapeHTML(snippet.slice(start,end))+'</mark>';cursor=end;}
+ return out+escapeHTML(snippet.slice(cursor));
 }
 function renderCountSummary(summary){
  const box=$('#term-count-summary');box.hidden=!summary;box.replaceChildren();if(!summary)return;
