@@ -347,8 +347,10 @@ async function renderComparePane(pane){
       const heading=document.createElement('p');heading.className='compare-source-note';
       heading.textContent=e.version+' · Página PDF '+page+' · transcripción extraída del PDF original';
       const passage=document.createElement('div');passage.className='compare-transcription';
-      passage.style.cssText='white-space:pre-wrap;line-height:1.7;padding:18px 25px;font-family:Georgia,serif;font-size:16px';
-      passage.textContent=text||'Esta página no contiene texto extraíble. Abrí el documento original para consultar la imagen.';
+      passage.style.cssText='';
+      // Preserve paragraph breaks but reflow PDF line wrapping for readable text.
+      const readable=text.replace(/([^\n])\n(?!\n)/g,'$1 ').replace(/\n{3,}/g,'\n\n');
+      passage.textContent=readable||'Esta página no contiene texto extraíble. Abrí el documento original para consultar la imagen.';
       body.replaceChildren(heading,passage);
       citation.textContent=e.version+' · Página PDF '+page+' · texto digital (no imagen del PDF)';
     }catch(error){body.textContent='No se pudo consultar el texto de esta página: '+error.message+'. Usá «Abrir fuente» para leer el PDF original.';}
