@@ -229,20 +229,28 @@ function openComparison(id='recensio-es',page=1){
       $('#comparison-book').value=String(book);
       if(!isPreface){$('#comparison-chapter').value=String(chapter);$('#comparison-section').value=String(section||'');}
       if(book<1||book>10||(!isPreface&&chapter<1)){status.textContent='Referencia fuera de los diez libros.';return;}
-      // The present page-only indexes contain no book/chapter/section mapping.
-      // Do not download megabytes of PDF text to search metadata that is absent.
-      const verified=[
-        {id:'krohn-1912',book:1,chapter:2,section:1,page:27},
-        {id:'krohn-1912',book:3,chapter:1,section:1,page:77}
-      ];
+      const locus=(isPreface?book+'.praef'+(section==null?'':'.'+section):book+'.'+chapter+(section==null?'':'.'+section));
+      status.textContent='Consultando concordancias de '+locus+'…';
+      let map;
+      try{
+        const response=await fetch('data/loci-map.json',{cache:'no-store'});
+        if(!response.ok)throw Error('No se pudo leer la concordancia');
+        map=await response.json();
+      }catch(error){
+        status.textContent='Error al cargar la concordancia: '+error.message+'. La navegación manual sigue disponible.';
+        return;
+      }
+      const matches=(map.loci||[]).filter(item=>item.locus===locus);
       let mapped=0;
       for(const pane of $$('.compare-pane',$('#comparison-panes'))){
-        const e=edition($('select',pane).value);
-        const found=verified.find(x=>x.id===e?.id&&x.book===book&&!isPreface&&x.chapter===chapter&&(section==null||x.section===section));
-        if(found){$('.compare-page',pane).value=found.page;renderComparePane(pane);mapped++;}
+        const ed=edition($('select',pane).value);
+        const target=matches.find(item=>Number.isInteger(item.pages?.[ed?.id]))?.pages?.[ed?.id];
+        if(!target)continue;
+        $('.compare-page',pane).value=target;
+        try{await renderComparePane(pane);mapped++;}catch(error){console.error('Error showing mapped locus',error);}
       }
-      status.textContent=mapped?('Referencia comprobada en '+mapped+' edición(es). Las restantes todavía carecen de correspondencia validada; no se han desplazado sus páginas.'):
-        ('Vitr., De arch. '+book+'.'+(isPreface?'praef':chapter)+(section==null?'':'.'+section)+': todavía no hay correspondencia de páginas verificada para las ediciones elegidas. Podés navegar manualmente por los PDF.');
+      status.textContent=mapped?('Vitr., De arch. '+locus+': localizada la página en '+mapped+' edición(es). Las demás ediciones no tienen cotejo registrado.'):
+        ('Vitr., De arch. '+locus+': todavía no se registró una correspondencia de páginas verificada para estas ediciones. Elegí I.2.1 o III.1.1 con Krohn para probar las disponibles.');
     });
   }
   $('#comparison-dialog').showModal();
