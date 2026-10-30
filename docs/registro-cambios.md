@@ -18,3 +18,5 @@ Este registro documenta cambios del sitio. No atribuye nuevas fechas de composic
 
 - «La vida de un texto» amplía la tradición manuscrita con las siglas H, G y E, y suma dos etapas: la circulación medieval ininterrumpida (Krinsky 1967; corrección del mito del «redescubrimiento» de 1416) y la filología crítica de Galiani a la Collection des Universités de France. Se añaden Alberti (c. 1450) y Fra Giocondo (1511).
 - Estudios académicos: ocho fichas nuevas en estado «cotejo pendiente» (Fensterbusch 1964; Gros, Corso y Romano 1997; Rowland y Howe 1999; Rose y Müller-Strübing 1867; Krinsky 1967; Baldwin 1990; Wallace-Hadrill 2008; Wittkower 1949).
+
+- Lector bilingüe: aparato crítico por locus. Se extraen de la V514 las notas de nivel [F] (Aparato crítico comparativo, Nota ecdótica, Nota crítica): 68 notas sobre 218 loci, con la página del PDF. Script: scripts/extract-apparatus.py.

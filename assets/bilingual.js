@@ -24,6 +24,7 @@ function highlight(text){
 function clearReading(message){
  for(const id of ['latin-text','translation-text','latin-title','latin-source','translation-source','passage-ref','pdf-links','provenance-text','edition-citation','edition-metadata','citation-status'])$(id).replaceChildren();$('other-translations').replaceChildren();$('status').textContent=message;current=null;passageCitation='';$('prev').disabled=$('next').disabled=true;
 }
+let apparatus=null;
 function render(){
  const locus=[$('book').value,$('chapter').value,$('section').value].join('.'),lang=$('lang').value,data=datasets[editionIds[lang]],p=data?.passages.find(p=>atLocus(p,locus));
  const base=all.find(p=>atLocus(p,locus));current=base||null;
@@ -43,6 +44,13 @@ function render(){
   critical.hidden=false;
   const summary=document.createElement('summary');summary.textContent='Nota textual · I.1.1';critical.append(summary);
   const note=document.createElement('p');note.textContent='Esta transcripción presenta perficit[ur] y opus [est]. Los corchetes se conservan como signos del texto fuente: no se les atribuye aquí una operación crítica determinada sin cotejar las convenciones editoriales de la edición. Las lecturas perficitur y opus est se encuentran en ediciones impresas de referencia. Falta incorporar una justificación de la intervención y un aparato con testimonios verificados; esta nota no sustituye una colación manuscrita.';critical.append(note);
+ }
+ const appNotes=(apparatus?.notes||[]).filter(n=>n.loci.includes(base.locus));
+ if(appNotes.length){
+  critical.replaceChildren();critical.hidden=false;critical.open=true;
+  const summary=document.createElement('summary');summary.textContent='Aparato crítico · '+citation(base)+' · '+appNotes.length+(appNotes.length===1?' nota':' notas');critical.append(summary);
+  for(const n of appNotes){const note=document.createElement('p');note.textContent=n.text;const src=document.createElement('p');src.className='source';src.textContent='Diego Kurilo, V514, nota de nivel [F] · p. '+n.pdf_page+' del PDF';critical.append(note,src);}
+  const k=document.createElement('p');k.className='source';k.textContent='Selección de las notas rotuladas «Aparato crítico comparativo», «Nota ecdótica» y «Nota crítica» de la edición V514. Las notas que abarcan varios loci se muestran en cada uno de ellos.';critical.append(k);
  }
  $('status').textContent=p?citation(p)+' · texto latino y traducción.'+(p.scope_note?' '+p.scope_note:''):citation(base)+' · traducción seleccionada sin correspondencia disponible.';
  const index=all.findIndex(x=>x.locus===locus);$('prev').disabled=index<=0;$('next').disabled=index<0||index>=all.length-1;
@@ -85,6 +93,7 @@ $('find-form').addEventListener('submit',e=>{
  render();
 });
 try{
+ try{const r=await fetch('data/apparatus-es.json');if(r.ok)apparatus=await r.json();}catch{}
  const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/latin-lexicon.json').then(r=>r.json()).then(d=>{lexicon=d.entries;}),fetch('data/catalog.json?v=20261030-citations').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
  if(!datasets['recensio-es'])throw Error('No se pudo cargar el corpus castellano. Recargá para volver a intentarlo.');
  all=datasets['recensio-es'].passages;for(const id of ['book','chapter','section'])$(id).disabled=false;
