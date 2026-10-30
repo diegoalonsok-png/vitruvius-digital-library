@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "description": "Validated passage-to-PDF-page concordance; missing entries must not be guessed.",
+  "loci": [
+    {
+      "locus": "I.2.1",
+      "pages": {
+        "krohn-1912": 27
+      },
+      "status": "manual_review"
+    },
+    {
+      "locus": "III.1.1",
+      "pages": {
+        "krohn-1912": 77
+      },
+      "status": "manual_review"
+    }
+  ]
+}
