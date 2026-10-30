@@ -292,8 +292,8 @@ function openComparison(id='recensio-es',page=1){
         map=await response.json();
         if(locusForm.dataset.searchSerial!==searchSerial)return;
       }catch(error){
-        status.textContent='Error al cargar la concordancia: '+error.message+'. La navegación manual sigue disponible.';
-        return;
+        map={loci:[]};
+        status.textContent='No se pudo cargar el índice externo; comprobando las referencias verificadas integradas…';
       }
       // Verified anchors also ship in the reader: an outdated CDN JSON must
       // not make a known book opening disappear.
