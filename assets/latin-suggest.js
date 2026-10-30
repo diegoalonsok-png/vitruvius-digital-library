@@ -18,7 +18,7 @@
   const match=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
   const reversed=entries.find(e=>['es','en','fr'].some(lang=>String(e[lang]||'').split(/[;,]/).some(v=>normalizeWord(v.trim())===token)));
   const entry=match||reversed, greek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(searched);
-  const forms=new Set((entry?[entry.lemma,...(entry.forms||[])]:greek?[]:[searched]).map(normalizeWord));
+  const forms=new Set((entry?[entry.lemma,...(entry.forms||[]),...(entry.greek?[entry.greek]:[])]:[searched]).map(normalizeWord));
   const heading=document.createElement('h3');heading.textContent='Pasajes del tratado · '+searched;occurrences.append(heading);occurrences.hidden=false;
   if(!forms.size){const p=document.createElement('p');p.textContent='Todavía no hay una correspondencia latina verificada para consultar este término griego en el corpus.';occurrences.append(p);return;}
   const status=document.createElement('p');status.textContent='Consultando las referencias del texto latino…';occurrences.append(status);
@@ -30,7 +30,7 @@
    status.textContent=count+' ocurrencias en '+loci.length+' pasajes del texto latino V514'+(entry?' · lema: '+entry.lemma:'')+'.';
    if(!count){const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el texto latino indexado. Esto no demuestra que el concepto esté ausente de Vitruvio.';occurrences.append(p);return;}
    const list=document.createElement('ol');
-   for(const p of loci.slice(0,15)){const li=document.createElement('li'),a=document.createElement('a');const ref=String(p.book)+'.'+p.chapter+'.'+p.section;a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(ref);a.textContent='Vitr., De arch. '+['','I','II','III','IV','V','VI','VII','VIII','IX','X'][p.book]+'.'+p.chapter+'.'+p.section;
+   for(const p of loci.slice(0,15)){const li=document.createElement('li'),a=document.createElement('a');const ref=String(p.book)+'.'+p.chapter+'.'+p.section;a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(ref)+'&q='+encodeURIComponent(searched);a.textContent='Vitr., De arch. '+['','I','II','III','IV','V','VI','VII','VIII','IX','X'][p.book]+'.'+p.chapter+'.'+p.section;
     li.append(a,document.createTextNode(' — '+String(p.latin||'').slice(0,190)+(String(p.latin||'').length>190?'…':'')));list.append(li);}
    occurrences.append(list);
    if(loci.length>15){const p=document.createElement('p');p.textContent='Se muestran los primeros 15 loci; el buscador principal permite consultar más resultados.';occurrences.append(p);}
@@ -53,6 +53,9 @@
    const note=document.createElement('p');note.className='source';note.textContent='Correspondencia terminológica orientativa; no implica que la grafía griega aparezca literalmente en el tratado. La búsqueda del equivalente latino permite comprobar sus pasajes.';details.append(note);gloss.append(details);gloss.hidden=false;return;
   }
   if(/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)){
+   const documentedGreek={'φθογγοι':{lemma:'φθόγγος',meaning:'sonido, tono musical, nota',en:'sound, musical tone',fr:'son, ton musical',locus:'V.4.5',note:'En V.4.5 Vitruvio explica que los sonitus se llaman φθόγγοι en griego; este significado se apoya en el texto y la traducción de la edición V514, no en una identificación automática.'}};
+   const documented=documentedGreek[token];
+   if(documented){const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Diccionario griego vitruviano · '+value;details.append(summary);textLine(details,'Lema:',documented.lemma);textLine(details,'Castellano:',documented.meaning);textLine(details,'English:',documented.en);textLine(details,'Français:',documented.fr);textLine(details,'Referencia:',documented.locus);textLine(details,'Uso documentado:',documented.note);const a=document.createElement('a');a.href='lector-bilingue.html?edition=recensio-es&locus=5.4.5&q='+encodeURIComponent(value);a.textContent='Leer el pasaje con la palabra resaltada →';details.append(a);gloss.append(details);gloss.hidden=false;return;}
    const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Consulta griega · '+value;details.append(summary);
    textLine(details,'','No hay equivalencia documentada en el léxico griego local para esta forma. La búsqueda textual puede seguir comprobando coincidencias literales.');
    const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener noreferrer';a.textContent='Consultar diccionarios griegos en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
