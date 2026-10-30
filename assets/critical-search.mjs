@@ -21,11 +21,35 @@ function render(){
   article.innerHTML='<div class="meta">'+escape(e.name)+'</div><h2>'+escape(title)+'</h2><p lang="la"><strong>'+(r.ocr?'OCR no revisado':'Latín')+'.</strong> '+highlight(p.latin,lastQuery)+'</p>'+
    (r.ocr?'':'<p><strong>Traducción.</strong> '+highlight(p.translation,lastQuery)+'</p>')+
    '<p class="source-note">'+(r.ocr?'OCR histórico sin locus verificado':'Referencia canónica: '+escape(p.locus))+(page?' · Página PDF: '+page:'')+'</p><div class="actions">'+
-   (r.ocr?'':'<a href="'+escape(link)+'">Leer pasaje →</a><button type="button" data-critical-compare="'+escape(p.locus)+'">Comparar tres ediciones</button>')+
+   (r.ocr?'':'<a href="'+escape(link)+'">Leer pasaje →</a><button type="button" data-critical-compare="'+escape(p.locus)+'">Comparar con ediciones y Krohn</button>')+
    '<a href="'+escape(source)+'" target="_blank" rel="noopener">Consultar edición fuente (PDF) ↗</a></div>';
   target.append(article);
  }
  shown+=batch.length;$('#critical-more').hidden=shown>=results.length;$('#critical-more').textContent='Mostrar más ('+shown+' de '+results.length+')';
+}
+// The Krohn source is raw page OCR, not a critical transcription. Match word sequences
+// conservatively and never label an OCR hit as a verified manuscript variant.
+function krohnCandidates(pages,latin){
+ const words=String(latin||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().match(/[a-z]{4,}/g)||[];
+ const starts=[];for(let i=0;i<Math.min(words.length-3,95);i+=3){const part=words.slice(i,i+4);if(part.length===4)starts.push(part.join(' '));}
+ if(!starts.length)return [];
+ return pages.map(p=>{
+  const raw=String(p.text||'');const normalized=raw.normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/[^a-z]+/g,' ');
+  const hits=starts.filter(x=>normalized.includes(x)).length;
+  return {page:p.page,text:raw,hits};
+ }).filter(p=>p.hits>=2).sort((a,b)=>b.hits-a.hits).slice(0,3);
+}
+async function appendKrohnComparison(sources,latin){
+ const section=document.createElement('section');section.className='critical-parallel-edition';
+ const heading=document.createElement('h3');heading.textContent='Krohn 1912 · búsqueda de paralelos en OCR';section.append(heading);
+ const status=document.createElement('p');status.textContent='Buscando secuencias latinas dentro del OCR histórico…';section.append(status);sources.append(section);
+ try{
+  const pages=await getKrohn();const found=krohnCandidates(pages,latin);
+  status.textContent=found.length?'Candidatos localizados por coincidencias de al menos dos secuencias latinas; cotejo visual pendiente. No son variantes certificadas.':'No se pudo alinear automáticamente este locus con suficiente confianza en el OCR. Consultá el facsímil original.';
+  for(const p of found){const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Página OCR '+p.page+' · '+p.hits+' secuencias coincidentes';details.append(summary);
+   const excerpt=document.createElement('p');excerpt.textContent=p.text.slice(0,1700);details.append(excerpt);
+   const link=document.createElement('a');link.href='https://archive.org/details/vitruviidearchit00vitr/page/n'+Math.max(0,p.page-1)+'/mode/1up';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Abrir esta página del facsímil de Krohn';details.append(link);section.append(details);}
+ }catch(error){status.textContent='No se pudo consultar el OCR de Krohn: '+error.message;}
 }
 async function compareLocus(locus){
  const panel=$('#critical-comparison');if(!panel)return;
@@ -33,12 +57,13 @@ async function compareLocus(locus){
  const notes=await getNotes();const locusRef=parseLocus(locus);const noteEntries=(notes.entries||[]).filter(n=>locusRef&&sameReference(n.locus||n.candidate_locus,locusRef));
  const datasets=await Promise.allSettled(editions.map(getCorpus));
  const grid=document.createElement('div');grid.className='critical-parallel';
+ let referenceLatin='';
  datasets.forEach((res,i)=>{
   const card=document.createElement('article');card.className='critical-parallel-edition';
   const heading=document.createElement('h3');heading.textContent=editions[i].name;card.append(heading);
   if(res.status==='fulfilled'){
    const ref=parseLocus(locus);const p=res.value.passages.find(p=>p.locus===locus||(ref&&p.book===ref.book&&String(p.chapter)===String(ref.chapter)&&ref.section>=p.section&&ref.section<=(p.section_end||p.section)));
-   if(p){for(const [label,value] of [['Texto latino',p.latin],['Traducción',p.translation]]){const strong=document.createElement('strong');strong.textContent=label;const paragraph=document.createElement('p');paragraph.textContent=value;card.append(strong,paragraph);}}
+   if(p){if(!referenceLatin&&p.latin)referenceLatin=p.latin;for(const [label,value] of [['Texto latino',p.latin],['Traducción',p.translation]]){const strong=document.createElement('strong');strong.textContent=label;const paragraph=document.createElement('p');paragraph.textContent=value;card.append(strong,paragraph);}}
    else{const p=document.createElement('p');p.textContent='Locus no individualizado en esta edición.';card.append(p);}
   }else{const p=document.createElement('p');p.textContent='No fue posible cargar esta edición.';card.append(p);}
   const ownNotes=noteEntries.filter(n=>n.edition===editions[i].id);
