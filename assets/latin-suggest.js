@@ -74,10 +74,10 @@
     const headings=[...documentHTML.querySelectorAll('h2')];
     const heading=headings.find(h=>[h.id,h.querySelector('[id]')?.id,h.textContent.trim()].some(v=>v&&v.toLowerCase().replace(/[_ ]/g,'')===language.toLowerCase().replace(/ /g,'')));
     if(!heading)return {definitions:[],status:'La página existe, pero no contiene una sección de '+language+'.'};
-    let node=heading.nextElementSibling,definitions=[],grammar=[];
-    while(node&&node.tagName!=='H2'){
-     if(node.matches?.('h3,h4'))grammar.push(node.textContent.trim());
-     if(node.matches?.('ol'))for(const li of [...node.children].filter(x=>x.tagName==='LI')){
+    let node=(heading.closest('.mw-heading')||heading).nextElementSibling,definitions=[],grammar=[];
+    while(node&&node.tagName!=='H2'&&!node.matches?.('.mw-heading2')){
+     if(node.matches?.('h3,h4,.mw-heading3,.mw-heading4'))grammar.push(node.textContent.trim());
+     for(const list of (node.matches?.('ol')?[node]:[...node.querySelectorAll('ol')].filter(x=>!x.closest('li'))))for(const li of [...list.children].filter(x=>x.tagName==='LI')){
       const clone=li.cloneNode(true);clone.querySelectorAll('ul,ol,.reference,.mw-cite-backlink,.nyms-toggle').forEach(n=>n.remove());
       const value=clone.textContent.replace(/\\s+/g,' ').trim();
       if(value.length>2&&!definitions.includes(value))definitions.push(value.slice(0,330));
