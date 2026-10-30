@@ -104,6 +104,7 @@ async function setReaderPage(page){
   const requestedPage=Math.min(e.pages,Math.max(1,Math.round(Number(page)||1)));currentPage=requestedPage;
   $('#reader-page').value=currentPage;$('#reader-page').max=e.pages;
   $('#reader-page-total').textContent=`de ${e.pages.toLocaleString('es-AR')}`;
+  $('#reader-edition').textContent=citationLine(e,requestedPage);
   $('#reader-prev').disabled=currentPage<=1;$('#reader-next').disabled=currentPage>=e.pages;
   $('#reader-frame').removeAttribute('src');$('#reader-external').href=sourceURL(e,requestedPage);
   if(e.external){
@@ -181,6 +182,9 @@ async function renderComparePane(pane){
   const external=$('.compare-external',pane),pageInput=$('.compare-page',pane),modeButton=$('.compare-mode',pane);
   const page=Math.max(1,Math.min(e.pages||1,Math.round(Number(pageInput.value)||1)));pageInput.value=page;pageInput.max=e.pages||1;
   $('.compare-total',pane).textContent=e.pages?`/ ${e.pages}`:'';
+  let citation=$('.compare-citation',pane);
+  if(!citation){citation=document.createElement('p');citation.className='compare-source-note compare-citation';$('.compare-controls',pane).after(citation);}
+  citation.textContent=citationLine(e,page);
   for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=false;
   external.href=sourceURL(e,page);
   if(e.id==='krohn-1912')pane.dataset.mode='pdf';
@@ -244,6 +248,13 @@ function locusLabel(r){
   if(book==null||chapter==null)return 'Locus vitruviano: pendiente de identificación';
   return 'Vitruvio, De architectura '+book+'.'+chapter+(section==null?'':'.'+section);
 }
+function knownLocus(e,page){
+  // Only individually cross-checked Krohn locations are displayed as verified.
+  if(e?.id==='krohn-1912'&&Number(page)===27)return 'Vitr., De arch. I.2.1';
+  if(e?.id==='krohn-1912'&&Number(page)===77)return 'Vitr., De arch. III.1.1';
+  return 'Libro, capítulo y sección: pendientes de cotejo';
+}
+function citationLine(e,page){return (e?.version||e?.year||'Edición')+' · '+knownLocus(e,page)+' · p. PDF '+page;}
 function locusReference(r){return locusLabel(r)+' · página PDF '+r.page;}
 function renderMore(){
   const next=results.slice(shown,shown+16);const container=$('#search-results');
