@@ -21,7 +21,7 @@ self.onmessage=async({data:m})=>{
   const datasets=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value);
   if(!datasets.length)throw loaded[0].reason;
   const warnings=loaded.flatMap((x,i)=>x.status==='rejected'?['No se pudo consultar '+selected[i].version]:[]);
-  let requested=String(m.query||'').trim();
+  let requested=String(m.query||'').trim().replace(/^(?:\d{1,3}[.)]\s+)(?=[\p{L}])/u,'').replace(/[<>†‡]/g,' ').replace(/\s+/g,' ').trim();
   const direct=parseLocus(requested);
   const heading=requested.match(/\b(?:liber|libro|book)\s+(10|IX|VIII|VII|VI|IV|V|III|II|I|X|[1-9])(?:\s+(?:caput|capítulo|capitulo|chapter)\s+(\d+))?/i);
   let effective={...m,query:requested};
