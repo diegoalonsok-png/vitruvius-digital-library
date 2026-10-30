@@ -41,3 +41,9 @@ dialog{padding:0;background:var(--white);color:var(--ink);border:1px solid #949b
 .result .result-biblio{font-family:var(--sans);font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 10px}
 .result .result-biblio strong{font-weight:600;color:var(--ink)}
 html[data-theme="dark"] .result .result-biblio{color:#c5c8c5}
+
+/* Readable indexed Latin / translation text, without artificial side bands. */
+.compare-pane:first-child .compare-body{padding:18px 22px 28px;overflow-x:hidden}
+.compare-pane:first-child .compare-transcription{display:block;max-width:none;width:100%;margin:0;padding:0;white-space:pre-line;overflow-wrap:break-word;word-break:normal;hyphens:none;font-family:var(--serif);font-size:19px;line-height:1.75;letter-spacing:0;text-align:left;text-indent:0;columns:auto}
+.compare-pane:first-child .compare-body .compare-source-note{margin:0 0 14px}
+@media(max-width:900px){.compare-pane:first-child .compare-transcription{font-size:17px;line-height:1.65}}
