@@ -38,7 +38,8 @@ async function showFullPage(){
    $('full-page').value=page;$('full-page').max=pages.length;
    const raw=String(pages[page-1]?.text||'');
    // Join only explicit PDF end-of-line hyphenation; retain true compound words until source review.
-   const reflow=raw.replace(/([A-Za-zÀ-ÿ])[-‐¬]\s*\n\s*([a-zà-ÿ])/g,'$1$2')
+   const reflow=raw.replace(/\bpú[-‐]\s+blicos\b/gi,'públicos')
+     .replace(/([A-Za-zÀ-ÿ])[-‐¬]\s*\n\s*([a-zà-ÿ])/g,'$1$2')
      .replace(/([^\n])\n(?!\n)/g,'$1 ')
      .replace(/\n{3,}/g,'\n\n');
    $('full-text').innerHTML=reflow?highlight(reflow,lastFullSearch):'No hay texto extraíble en esta página.';
