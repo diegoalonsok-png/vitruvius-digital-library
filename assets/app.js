@@ -256,7 +256,7 @@ function openComparison(id='recensio-es',page=1){
           if(response.ok){
             const candidateMap=await response.json();
             const alternatives=[];
-            for(const pane of $('.compare-pane',$('#comparison-panes'))){
+            for(const pane of $$('.compare-pane',$('#comparison-panes'))){
               const ed=edition($('select',pane).value);
               const candidates=candidateMap.editions?.[ed?.id]?.[locus]||[];
               if(!candidates.length)continue;
