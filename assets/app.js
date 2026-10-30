@@ -196,6 +196,7 @@ function openComparison(id='recensio-es',page=1){
     pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
     $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode='pdf';renderComparePane(pane);});
     $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
+    $('.compare-page',pane).addEventListener('blur',()=>renderComparePane(pane));
     $('.compare-page',pane).addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();renderComparePane(pane);}});
     $('.compare-prev',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)-1);renderComparePane(pane);});
     $('.compare-next',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Number($('.compare-page',pane).value)+1;renderComparePane(pane);});
