@@ -52,7 +52,7 @@ export function searchCorpus(datasets,m){
       if(filter.section&&(filter.section<p.section||filter.section>(p.section_end||p.section)))continue;
       const fields=reference||m.kind==='locus'?[['la',p.latin]]:[['la',p.latin],[data.language,p.translation]].filter(([lang])=>!m.language||m.language==='all'||lang===m.language);
       for(const[language,text]of fields){
-        let matches=reference||m.kind==='locus'?[{start:0,end:0,form:''}]:findMatches(text,m.query,{prefix:m.kind==='count'&&m.countMode==='prefix',phrase:m.mode==='phrase'||m.kind==='count'});
+        let matches=reference||m.kind==='locus'?[{start:0,end:0,form:''}]:findMatches(text,m.query,{prefix:Boolean(m.prefixFallback)||(m.kind==='count'&&m.countMode==='prefix'),phrase:m.mode==='phrase'||m.kind==='count'});
         if(!matches.length)continue;if(m.kind!=='count')matches=matches.slice(0,1);
         for(const match of matches){const start=Math.max(0,match.start-100),end=Math.min(text.length,Math.max(start+440,match.end+100));editionCount++;total++;loci.add(p.locus);
           if(match.form)forms.set(match.form,(forms.get(match.form)||0)+1);
