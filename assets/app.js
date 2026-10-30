@@ -320,6 +320,13 @@ function locusLabel(r){
   if(book==null||chapter==null)return 'Libro y locus: pendientes de cotejo';
   return 'Vitr., De arch. '+book+'.'+chapter+(section==null?'':'.'+section);
 }
+function passageReference(r,e){
+  const b=r.book??r.liber,c=r.chapter??r.caput,p=r.section??r.paragraph;
+  if(b!=null&&c!=null&&p!=null)return 'Libro '+escapeHTML(String(b))+' · Capítulo '+escapeHTML(String(c))+' · Sección '+escapeHTML(String(p))+' · Vitr., De arch. '+escapeHTML(String(b))+'.'+escapeHTML(String(c))+'.'+escapeHTML(String(p));
+  const verified=(e.id==='krohn-1912'&&r.page===27)?[1,2,1]:(e.id==='krohn-1912'&&r.page===77)?[3,1,1]:null;
+  if(verified)return 'Libro '+verified[0]+' · Capítulo '+verified[1]+' · Sección '+verified[2]+' · Vitr., De arch. '+verified.join('.');
+  return 'Libro: por identificar · Capítulo: por identificar · Sección (locus): por cotejar';
+}
 function knownLocus(e,page){
   // Only individually cross-checked Krohn locations are displayed as verified.
   if(e?.id==='krohn-1912'&&Number(page)===27)return 'Vitr., De arch. I.2.1';
@@ -331,7 +338,7 @@ function locusReference(r){return locusLabel(r)+' · página PDF '+r.page;}
 function renderMore(){
   const next=results.slice(shown,shown+16);const container=$('#search-results');
   for(const r of next){const e=edition(r.edition);const article=document.createElement('article');article.className='result';const ordinal=shown+next.indexOf(r)+1;const isOcr=Boolean(e.searchable&&(e.id==='krohn-1912'||e.id==='ortiz-1787'||e.id==='cesariano-1521'));
-    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${escapeHTML(locusLabel(r))}</strong> · ${escapeHTML(e.version||e.year||'Edición')} · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${e.id==='krohn-1912'?`Coincidencia de <mark>${escapeHTML($('#query').value.trim())}</mark> localizada en el índice OCR. Abrí el facsímil para verificar la palabra en su página original.`:resultSnippet(r)}</p>${isOcr?'<p class="book-source">OCR histórico sin revisión filológica: verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
+    article.innerHTML=`<div class="result-meta">N.º ${ordinal} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}${isOcr?' · TRANSCRIPCIÓN OCR':''}${searchKind==='semantic'?' · AFINIDAD SEMÁNTICA':searchKind==='count'?` · APARICIÓN ${r.occurrence}`:''}</div><h3>${escapeHTML(e.title)}</h3><p class="result-locus"><strong>${passageReference(r,e)}</strong> · ${escapeHTML(e.version||e.year||'Edición')} · p. PDF ${r.page}</p><p lang="${e.languages?.includes('la')?'la':''}">${e.id==='krohn-1912'?`Coincidencia de <mark>${escapeHTML($('#query').value.trim())}</mark> localizada en el índice OCR. Abrí el facsímil para verificar la palabra en su página original.`:resultSnippet(r)}</p>${isOcr?'<p class="book-source">OCR histórico sin revisión filológica: verificá la lectura en el facsímil.</p>':''}<div class="result-actions"><button type="button" data-read="${e.id}" data-page="${r.page}">Leer el pasaje →</button><button type="button" data-compare="${e.id}" data-page="${r.page}">Comparar</button><a href="${escapeHTML(sourceURL(e,r.page))}" target="_blank" rel="noopener">Ver facsímil ↗</a><span class="result-page">Página PDF ${r.page}</span></div>`;container.append(article);
   }
   shown+=next.length;$('#more-results').hidden=shown>=results.length;
   if(shown<results.length)$('#more-results').textContent=`Mostrar más resultados (${shown} de ${results.length})`;
