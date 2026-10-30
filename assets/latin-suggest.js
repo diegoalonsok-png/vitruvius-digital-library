@@ -53,8 +53,50 @@
   }
   return section;
  }
+
+ // Wide-coverage dictionary: on-demand Wiktionary lookup, not a 42-word whitelist.
+ // Only textContent from the remote document is shown; no remote HTML is inserted.
+ const liveCache=new Map();let liveTicket=0;
+ function externalDictionary(term,isGreek){
+  const ticket=++liveTicket, language=isGreek?'Ancient Greek':'Latin';
+  const details=document.createElement('details');details.open=true;details.className='dictionary-live';
+  const sum=document.createElement('summary');sum.textContent='Diccionario amplio · '+language+' · '+term;details.append(sum);
+  const message=document.createElement('p');message.textContent='Consultando el diccionario…';details.append(message);
+  gloss.append(details);gloss.hidden=false;
+  const key=language+':'+term.toLowerCase();
+  if(!liveCache.has(key)){
+   const url=new URL('https://en.wiktionary.org/w/api.php');
+   url.searchParams.set('action','parse');url.searchParams.set('page',term);
+   url.searchParams.set('prop','text');url.searchParams.set('format','json');url.searchParams.set('formatversion','2');url.searchParams.set('origin','*');
+   liveCache.set(key,fetch(url.toString()).then(r=>{if(!r.ok)throw Error('Fuente no disponible');return r.json()}).then(data=>{
+    if(data.error||!data.parse?.text)throw Error('No se encontró una entrada para esta grafía');
+    const documentHTML=new DOMParser().parseFromString(data.parse.text,'text/html');
+    const headings=[...documentHTML.querySelectorAll('h2')];
+    const heading=headings.find(h=>[h.id,h.querySelector('[id]')?.id,h.textContent.trim()].some(v=>v&&v.toLowerCase().replace(/[_ ]/g,'')===language.toLowerCase().replace(/ /g,'')));
+    if(!heading)return {definitions:[],status:'La página existe, pero no contiene una sección de '+language+'.'};
+    let node=heading.nextElementSibling,definitions=[],grammar=[];
+    while(node&&node.tagName!=='H2'){
+     if(node.matches?.('h3,h4'))grammar.push(node.textContent.trim());
+     if(node.matches?.('ol'))for(const li of [...node.children].filter(x=>x.tagName==='LI')){
+      const clone=li.cloneNode(true);clone.querySelectorAll('ul,ol,.reference,.mw-cite-backlink,.nyms-toggle').forEach(n=>n.remove());
+      const value=clone.textContent.replace(/\\s+/g,' ').trim();
+      if(value.length>2&&!definitions.includes(value))definitions.push(value.slice(0,330));
+     }
+     node=node.nextElementSibling;
+    }
+    return {definitions:definitions.slice(0,12),grammar:grammar.slice(0,6)};
+   }).catch(error=>({definitions:[],status:error.message||'Consulta no disponible'})));
+  }
+  liveCache.get(key).then(result=>{
+   if(ticket!==liveTicket||!details.isConnected)return;
+   message.textContent=result.definitions.length?'Acepciones de Wikcionario (en inglés), presentadas dentro de la biblioteca:':result.status||'Sin acepciones extraíbles para esta forma.';
+   if(result.grammar?.length){const p=document.createElement('p');p.textContent='Clasificación: '+result.grammar.join(' · ');details.append(p);}
+   if(result.definitions.length){const ol=document.createElement('ol');for(const d of result.definitions){const li=document.createElement('li');li.textContent=d;ol.append(li);}details.append(ol);}
+   const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wikcionario en inglés (Wikimedia, CC BY-SA). La forma consultada puede requerir buscar su lema; verificá las acepciones según el contexto vitruviano.';details.append(foot);
+  });
+ }
  function displayGloss(){
-  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return;
+  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return; if(value.split(/\s+/).length===1)externalDictionary(value,/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value));
   const entry=entries.find(e=>[e.lemma,...e.forms||[]].some(w=>norm(w)===token));
   const greekMatches=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)?entries.filter(e=>e.greek&&norm(e.greek)===token):[];
   if(greekMatches.length){
