@@ -70,7 +70,7 @@ function renderCatalog(){
     return `<article class="catalog-card${external?' external':''}">${cover}<div><div class="record-label"><span class="primary-label">${label}</span><span>${escapeHTML(e.version||e.year)}</span></div><h3>${escapeHTML(e.title)}</h3><p class="subtitle">${escapeHTML(e.subtitle)}</p><p class="book-meta">${escapeHTML(e.author)}<br>${escapeHTML(languageLabel(e))}${e.pages?` · ${e.pages.toLocaleString('es-AR')} páginas`:''} · ${escapeHTML(e.year)}<br>${escapeHTML(e.publisher)}</p><p class="book-description">${escapeHTML(e.description)}</p><div class="catalog-actions">${actions}</div>${e.attribution?`<p class="book-source">${escapeHTML(e.attribution)}</p>`:''}</div></article>`;
   }).join('');
   $('#catalog-empty').hidden=list.length!==0;
-  $('#catalog-status').textContent=`${list.length} ${list.length===1?'ficha':'fichas'} en esta selección · ${records.filter(e=>!e.external).length} PDF incorporados · ${records.filter(e=>e.external).length} fuentes enlazadas`;
+  $('#catalog-status').textContent=`${list.length} ${list.length===1?'ficha':'fichas'} en esta selección · ${records.filter(e=>!e.external&&(e.pdf||e.pdf_chunks?.length)).length} PDF incorporados · ${records.filter(e=>e.external).length} fuentes enlazadas`;
 }
 
 async function getPages(e){
@@ -133,10 +133,10 @@ async function renderComparePane(pane){
   const page=Math.max(1,Math.min(e.pages||1,Math.round(Number(pageInput.value)||1)));pageInput.value=page;pageInput.max=e.pages||1;
   $('.compare-total',pane).textContent=e.pages?`/ ${e.pages}`:'';
   for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=Boolean(e.external);
-  external.href=e.external?(e.read_url||e.source_url):sourceURL(e,page);
+  external.href=sourceURL(e,page);
   modeButton.hidden=e.external||!e.searchable;
   modeButton.textContent=pane.dataset.mode==='text'?'Ver PDF':'Ver texto';
-  if(e.external){body.innerHTML=`<p>${escapeHTML(e.title)}</p><p class="compare-source-note">Esta edición se conserva en ${escapeHTML(e.publisher)}. Abrí el visor de la institución para consultar su reproducción.</p><a class="button primary" href="${escapeHTML(e.read_url||e.source_url)}" target="_blank" rel="noopener">Abrir fuente institucional ↗</a>`;return;}
+  if(e.external){body.innerHTML=`<p>${escapeHTML(e.title)}</p><p class="compare-source-note">Esta edición se conserva en ${escapeHTML(e.publisher)}. Abrí el visor de la institución para consultar su reproducción.</p><a class="button primary" href="${escapeHTML(sourceURL(e,page))}" target="_blank" rel="noopener">Abrir fuente institucional ↗</a>`;return;}
   if(pane.dataset.mode==='pdf'||!e.searchable){
     const loading=document.createElement('p');loading.className='compare-source-note';loading.textContent='Preparando el facsímil…';body.append(loading);
     try{const url=await documentURL(e);if($('select',pane).value!==e.id||Number(pageInput.value)!==page||(pane.dataset.mode!=='pdf'&&e.searchable))return;const frame=document.createElement('iframe');frame.title=`${e.title}, página PDF ${page}`;frame.src=`${url}#page=${page}&view=FitH`;external.href=frame.src;body.replaceChildren(frame);}catch(error){loading.textContent=`${error.message} Volvé a seleccionar la edición para intentarlo de nuevo.`;}return;
