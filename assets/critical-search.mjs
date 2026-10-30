@@ -37,13 +37,13 @@ async function compareLocus(locus){
   const card=document.createElement('article');card.className='critical-parallel-edition';
   const heading=document.createElement('h3');heading.textContent=editions[i].name;card.append(heading);
   if(res.status==='fulfilled'){
-   const p=res.value.passages.find(p=>p.locus===locus);
+   const ref=parseLocus(locus);const p=res.value.passages.find(p=>p.locus===locus||(ref&&p.book===ref.book&&String(p.chapter)===String(ref.chapter)&&ref.section>=p.section&&ref.section<=(p.section_end||p.section)));
    if(p){for(const [label,value] of [['Texto latino',p.latin],['Traducción',p.translation]]){const strong=document.createElement('strong');strong.textContent=label;const paragraph=document.createElement('p');paragraph.textContent=value;card.append(strong,paragraph);}}
    else{const p=document.createElement('p');p.textContent='Locus no individualizado en esta edición.';card.append(p);}
   }else{const p=document.createElement('p');p.textContent='No fue posible cargar esta edición.';card.append(p);}
   const ownNotes=noteEntries.filter(n=>n.edition===editions[i].id);
   const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico';card.append(subtitle);
-  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');const passage=res.status==='fulfilled'?res.value.passages.find(item=>item.locus===locus):null;const evidence=anchorEvidence(n,passage);const status=n.locus?'Locus citado expresamente en nota':evidence.status==='strong_unreviewed'?'Locus probable: anclaje textual fuerte (sin cotejo editorial)':'Locus propuesto, requiere cotejo';p.textContent=status+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
+  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');const passage=res.status==='fulfilled'?res.value.passages.find(item=>item.locus===locus||(locusRef&&item.book===locusRef.book&&String(item.chapter)===String(locusRef.chapter)&&locusRef.section>=item.section&&locusRef.section<=(item.section_end||item.section))):null;const evidence=anchorEvidence(n,passage);const status=n.locus?'Locus citado expresamente en nota':evidence.status==='strong_unreviewed'?'Locus probable: anclaje textual fuerte (sin cotejo editorial)':'Locus propuesto, requiere cotejo';p.textContent=status+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
   else{const p=document.createElement('p');p.textContent='No hay notas vinculadas a este locus en el índice actual de esta edición. Otras notas pueden estar pendientes de asignación.';card.append(p);}
   grid.append(card);
  });panel.append(grid);
