@@ -122,7 +122,10 @@ async function setReaderPage(page){
   if(e.external){
     const archive=(e.read_url||e.source_url||'').match(/archive\.org\/details\/([^/?#]+)/);
     if(archive)$('#reader-frame').src='https://archive.org/embed/'+encodeURIComponent(archive[1])+'/page/n'+Math.max(0,requestedPage-1);
+    const drive=(e.read_url||e.source_url||'').match(/drive\.google\.com\/file\/d\/([^/?#]+)/);
+    if(drive)$('#reader-frame').src='https://drive.google.com/file/d/'+encodeURIComponent(drive[1])+'/preview';
     $('#reader-external').textContent='Abrir facsímil original ↗';
+    if(e.access==='public_pdf'){$('#reader-text').textContent='Edición íntegra disponible en el visor. Para navegar por loci necesitamos finalizar la indexación de los libros y las correspondencias entre versiones.';return;}
     $('#reader-text').textContent='Cargando la transcripción histórica de esta página…';
     try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'No hay texto OCR en esta página. Abrí el facsímil original.';}
     catch{if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el OCR. Abrí la fuente original.';}
@@ -209,8 +212,9 @@ async function renderComparePane(pane){
       try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent='OCR AUTOMÁTICO NO REVISADO — no citar sin cotejar el facsímil.\n\n'+(pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.');}
       catch{body.textContent='OCR no disponible. Consultá el facsímil original.';}
     }else{
-      const url=e.read_url||e.source_url,archive=(url||'').match(/archive\.org\/details\/([^/?#]+)/);
+      const url=e.read_url||e.source_url,archive=(url||'').match(/archive\.org\/details\/([^/?#]+)/),drive=(url||'').match(/drive\.google\.com\/file\/d\/([^/?#]+)/);
       if(archive){const frame=document.createElement('iframe');frame.title=e.title+' · página '+page;frame.src='https://archive.org/embed/'+encodeURIComponent(archive[1])+'/page/n'+Math.max(0,page-1);body.replaceChildren(frame);}
+      else if(drive){const frame=document.createElement('iframe');frame.title=e.title+' · libro completo';frame.src='https://drive.google.com/file/d/'+encodeURIComponent(drive[1])+'/preview';body.replaceChildren(frame);}
       else body.textContent='Consultá el facsímil en la institución mediante «Abrir fuente».';
     }return;
   }
