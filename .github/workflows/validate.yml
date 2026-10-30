@@ -26,7 +26,7 @@ jobs:
           assert len({r["id"] for r in cat["editions"]})==len(cat["editions"])
           for e in cat["editions"]:
             if e.get("available"):
-              assert e.get("pdf") and (root/e["pdf"]).is_file(),f"Missing PDF: {e['id']}"
+              assert (e.get("external") and e.get("read_url", "").startswith("https://")) or (e.get("pdf") and (root/e["pdf"]).is_file()),f"Missing PDF: {e['id']}"
             if e.get("searchable"):
               assert e.get("text_index") and (root/e["text_index"]).is_file(),f"Missing index: {e['id']}"
               data=json.loads((root/e["text_index"]).read_text(encoding="utf-8"))
