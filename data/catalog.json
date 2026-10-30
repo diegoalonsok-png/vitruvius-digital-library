@@ -24,13 +24,15 @@
       "publisher": "Editorial Sophia Lux",
       "pages": 1157,
       "description": "Texto latino y traducción española enfrentados, con aparato crítico y comentario. PDF completo disponible para lectura pública en Google Drive; índice de búsqueda interna todavía en preparación.",
-      "searchable": false,
+      "searchable": true,
       "available": true,
       "external": true,
       "access": "public_pdf",
       "source_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
       "read_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
-      "pdf_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk"
+      "pdf_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
+      "text_index": "data/text/recensio-es.json",
+      "searchable_pages": 1157
     },
     {
       "id": "recensio-fr",
@@ -47,13 +49,15 @@
       "publisher": "Éditions Sophia Lux",
       "pages": 1166,
       "description": "Texte latin et traduction française en regard. PDF completo disponible para lectura pública en Google Drive; índice de búsqueda interna todavía en preparación.",
-      "searchable": false,
+      "searchable": true,
       "available": true,
       "external": true,
       "access": "public_pdf",
       "source_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
       "read_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
-      "pdf_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk"
+      "pdf_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
+      "text_index": "data/text/recensio-fr.json",
+      "searchable_pages": 1166
     },
     {
       "id": "theory-en",
@@ -70,13 +74,15 @@
       "publisher": "Sophia Lux",
       "pages": 1056,
       "description": "Latin–English reading edition and architectural commentary. PDF completo disponible para lectura pública en Google Drive; índice de búsqueda interna todavía en preparación.",
-      "searchable": false,
+      "searchable": true,
       "available": true,
       "external": true,
       "access": "public_pdf",
       "source_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
       "read_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
-      "pdf_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk"
+      "pdf_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
+      "text_index": "data/text/theory-en.json",
+      "searchable_pages": 1054
     },
     {
       "id": "theory-es",
