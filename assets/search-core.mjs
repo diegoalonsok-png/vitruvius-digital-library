@@ -31,7 +31,7 @@ export function searchCorpus(datasets,m){
       const fields=reference||m.kind==='locus'?[['la',p.latin]]:[['la',p.latin],[data.language,p.translation]].filter(([lang])=>!m.language||m.language==='all'||lang===m.language);
       for(const[language,text]of fields){
         let matches=reference||m.kind==='locus'?[{start:0,end:0,form:''}]:findMatches(text,m.query,{prefix:m.kind==='count'&&m.countMode==='prefix',phrase:m.mode==='phrase'||m.kind==='count'});
-        if(!matches.length)continue;if(m.kind!=='count' && m.kind!=='words')matches=matches.slice(0,1);
+        if(!matches.length)continue;if(m.kind!=='count')matches=matches.slice(0,1);
         for(const match of matches){const start=Math.max(0,match.start-100),end=Math.min(text.length,Math.max(start+440,match.end+100));editionCount++;total++;loci.add(p.locus);
           if(match.form)forms.set(match.form,(forms.get(match.form)||0)+1);
           results.push({edition:data.edition,locus:p.locus,book:p.book,chapter:p.chapter,section:p.section,section_end:p.section_end,language,latin:p.latin,translation:p.translation,text,snippet:(start?'…':'')+text.slice(start,end)+(end<text.length?'…':''),context_start:match.start-start+(start?1:0),context_length:match.end-match.start,form:match.form,page:p.pdf_pages?.[language==='la'?'latin':'translation']||null,occurrence:editionCount,source_paragraphs:p.source_paragraphs,score:0});
@@ -41,5 +41,5 @@ export function searchCorpus(datasets,m){
     counts.push({edition:data.edition,total:editionCount,passages:loci.size});
   }
   results.sort((a,b)=>a.book-b.book||(a.chapter==='praef'?-1:Number(a.chapter))-(b.chapter==='praef'?-1:Number(b.chapter))||a.section-b.section||a.edition.localeCompare(b.edition)||a.language.localeCompare(b.language));
-  return{results,countSummary:(m.kind==='count'||m.kind==='words')?{total,passages:counts.reduce((s,x)=>s+x.passages,0),pages:counts.reduce((s,x)=>s+x.passages,0),editions:counts.map(x=>({...x,pages:x.passages})),forms:[...forms].map(([form,count])=>({form,count})),mode:m.countMode||'exact'}:null,reference:Boolean(reference||m.kind==='locus')};
+  return{results,countSummary:m.kind==='count'?{total,passages:counts.reduce((s,x)=>s+x.passages,0),pages:counts.reduce((s,x)=>s+x.passages,0),editions:counts.map(x=>({...x,pages:x.passages})),forms:[...forms].map(([form,count])=>({form,count})),mode:m.countMode||'exact'}:null,reference:Boolean(reference||m.kind==='locus')};
 }
