@@ -23,7 +23,7 @@ self.onmessage=async({data:m})=>{
   const warnings=loaded.flatMap((x,i)=>x.status==='rejected'?['No se pudo consultar '+selected[i].version]:[]);
   let requested=String(m.query||'').trim();
   const direct=parseLocus(requested);
-  const heading=requested.match(/\\b(?:liber|libro|book)\\s+(10|IX|VIII|VII|VI|IV|V|III|II|I|X|[1-9])(?:\\s+(?:caput|capítulo|capitulo|chapter)\\s+(\\d+))?/i);
+  const heading=requested.match(/\b(?:liber|libro|book)\s+(10|IX|VIII|VII|VI|IV|V|III|II|I|X|[1-9])(?:\s+(?:caput|capítulo|capitulo|chapter)\s+(\d+))?/i);
   let effective={...m,query:requested};
   if(direct && (m.kind==='words'||m.kind==='locus'))effective.kind='locus';
   else if(heading){
@@ -33,8 +33,8 @@ self.onmessage=async({data:m})=>{
   const greekLexicon={
    'συμμετρια':'symmetria','ευρυθμια':'eurythmia','μηχανη':'machina','αρχιτεκτονια':'architectura'
   };
-  const normalizeGreek=value=>String(value).normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
-  if(!direct&&!heading&&/[\\u0370-\\u03ff\\u1f00-\\u1fff]/u.test(requested)){
+  const normalizeGreek=value=>String(value).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
+  if(!direct&&!heading&&/[\u0370-\u03ff\u1f00-\u1fff]/u.test(requested)){
    const equivalent=greekLexicon[normalizeGreek(requested)];
    if(equivalent){
     effective={...effective,query:equivalent,kind:'words'};
