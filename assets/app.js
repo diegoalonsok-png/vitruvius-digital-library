@@ -206,6 +206,39 @@ function openComparison(id='recensio-es',page=1){
     $('.compare-prev',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)-1);renderComparePane(pane);});
     $('.compare-next',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Number($('.compare-page',pane).value)+1;renderComparePane(pane);});
     $('.compare-mode',pane).addEventListener('click',()=>{const ed=edition($('select',pane).value);if(ed?.read_url)window.open(ed.read_url,'_blank','noopener');});
+    // Natural wheel navigation: scroll within a page; at its end (or start),
+    // another wheel movement opens the next (or previous) indexed page.
+    const readArea=$('.compare-body',pane);
+    let lastWheelPageTurn=0;
+    readArea.tabIndex=0;
+    readArea.setAttribute('aria-label',i===0?'Texto indexado. Desplazate con la rueda; al final avanzás de página.':'Facsímil de consulta');
+    const turnPage=direction=>{
+      const input=$('.compare-page',pane),ed=edition($('select',pane).value);
+      const current=Number(input.value)||1,following=Math.min(ed.pages||1,Math.max(1,current+direction));
+      if(following===current)return false;
+      input.value=following;
+      renderComparePane(pane);
+      return true;
+    };
+    if(i===0){
+      readArea.addEventListener('wheel',event=>{
+        if(event.ctrlKey||event.metaKey||Math.abs(event.deltaY)<5)return;
+        const atEnd=readArea.scrollTop+readArea.clientHeight>=readArea.scrollHeight-5;
+        const atStart=readArea.scrollTop<=5;
+        const direction=event.deltaY>0?1:-1;
+        if(!(direction>0?atEnd:atStart))return;
+        const now=Date.now();
+        if(now-lastWheelPageTurn<650){event.preventDefault();return;}
+        if(turnPage(direction)){event.preventDefault();lastWheelPageTurn=now;}
+      },{passive:false});
+      readArea.addEventListener('keydown',event=>{
+        if(event.key!=='PageDown'&&event.key!=='PageUp')return;
+        const direction=event.key==='PageDown'?1:-1;
+        const atEdge=direction>0?readArea.scrollTop+readArea.clientHeight>=readArea.scrollHeight-5:readArea.scrollTop<=5;
+        if(atEdge&&turnPage(direction))event.preventDefault();
+      });
+    }
+
     paneContainer.append(pane);renderComparePane(pane);
   });
   const note=$('.comparison-note');
@@ -345,7 +378,7 @@ async function renderComparePane(pane){
       if(pane.dataset.renderRevision!==request||$('select',pane).value!==e.id||Number(pageInput.value)!==page)return;
       const text=pages?.[page-1]?.text||'';
       const heading=document.createElement('p');heading.className='compare-source-note';
-      heading.textContent=e.version+' · Página PDF '+page+' · transcripción extraída del PDF original';
+      heading.textContent=e.version+' · Página '+page+' · texto extraído (latín, traducción y notas pueden coexistir)';
       const passage=document.createElement('div');passage.className='compare-transcription';
       passage.style.cssText='';
       // Preserve paragraph breaks but reflow PDF line wrapping for readable text.
