@@ -15,6 +15,7 @@ function refresh(book,chapter,section){
  options('section',sections.map(n=>[n,'Sección '+n]),section);
 }
 function highlight(text){
+ text=String(text).replace(/\u00ad/g,'');
  const wanted=new Set(tokens(query).map(t=>t.value));if(!wanted.size)return esc(text);
  let html='',at=0;for(const t of tokens(text)){if(!wanted.has(t.value))continue;html+=esc(text.slice(at,t.start))+'<mark>'+esc(text.slice(t.start,t.end))+'</mark>';at=t.end;}return html+esc(text.slice(at));
 }
@@ -30,7 +31,7 @@ function render(){
  $('latin-title').textContent=citation(p||base);$('latin-source').textContent='Texto latino de la edición '+(p?data.version:'V514')+' · Diego Kurilo';
  $('latin-text').innerHTML=highlight(p?.latin||base.latin);$('translation-text').lang=lang;
  $('translation-text').innerHTML=p?highlight(p.translation):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Podés consultar el castellano y el francés en el selector de traducción.</p>';
- $('status').textContent=p?citation(p)+' · latín y traducción vinculados por la estructura del DOCX.'+(p.scope_note?' '+p.scope_note:''):citation(base)+' · traducción seleccionada sin correspondencia disponible.';
+ $('status').textContent=p?citation(p)+' · texto latino y traducción.'+(p.scope_note?' '+p.scope_note:''):citation(base)+' · traducción seleccionada sin correspondencia disponible.';
  const index=all.findIndex(x=>x.locus===locus);$('prev').disabled=index<=0;$('next').disabled=index<0||index>=all.length-1;
  const others=$('other-translations');others.replaceChildren();others.hidden=!$('compare-all').checked;
  if($('compare-all').checked)for(const other of ['es','fr','en'].filter(x=>x!==lang)){
