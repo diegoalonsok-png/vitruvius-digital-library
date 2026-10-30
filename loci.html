@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Index locorum - Vitruvius Digital Library</title>
+<style>
+body{font-family:EB Garamond,serif;max-width:1000px;margin:auto;padding:20px;background:#f9f6f0;color:#0A1931}
+h1{color:#0A1931;border-bottom:3px solid #C9A86A}
+.libro{margin:20px 0;padding:15px;background:white;border-left:4px solid #C9A86A;box-shadow:0 2px 5px rgba(0,0,0,.1)}
+.libro h2{margin:0 0 10px;color:#0A1931}
+.loci{display:flex;flex-wrap:wrap;gap:6px}
+.loci a{display:inline-block;padding:4px 8px;background:#0A1931;color:#C9A86A;text-decoration:none;font-size:13px;border-radius:3px}
+.loci a:hover{background:#C9A86A;color:#0A1931}
+.search{position:sticky;top:0;background:#f9f6f0;padding:10px;z-index:10}
+.search input{width:100%;padding:10px;font-size:16px;border:2px solid #C9A86A}
+</style>
+</head>
+<body>
+<h1>Index locorum - De architectura libri decem</h1>
+<div class="search"><input id="filter" placeholder="Filtrar locus ej: III.1.2 o symmetria" onkeyup="filtrar()"></div>
+<p>Click en locus → busca en índice textual V297 + facsímil Harley 2767. Basado en Krohn 1912 y ed. Kurilo V297 1042 págs.</p>
+
+<div class="libro" data-libro="I">
+<h2>Liber I - Architectura et architecti institutio</h2>
+<div class="loci">
+<a href="/indice-textual.html?locus=I.Praef.1">I.Praef.1</a><a href="/indice-textual.html?locus=I.1.1">I.1.1</a><a href="/indice-textual.html?locus=I.1.3">I.1.3</a><a href="/indice-textual.html?locus=I.2.1">I.2.1 ordinatio</a><a href="/indice-textual.html?locus=I.2.4">I.2.4 symmetria</a><a href="/indice-textual.html?locus=I.2.5">I.2.5 eurythmia</a><a href="/indice-textual.html?locus=I.3.1">I.3.1</a><a href="/indice-textual.html?locus=I.4.1">I.4.1</a><a href="/indice-textual.html?locus=I.5.1">I.5.1</a><a href="/indice-textual.html?locus=I.6.1">I.6.1</a><a href="/indice-textual.html?locus=I.7.1">I.7.1</a>
+</div></div>
+
+<div class="libro" data-libro="II">
+<h2>Liber II - De materiis</h2>
+<div class="loci">
+<a href="/indice-textual.html?locus=II.Praef.1">II.Praef.1</a><a href="/indice-textual.html?locus=II.1.1">II.1.1</a><a href="/indice-textual.html?locus=II.8.11">II.8.11 Halicarnassus Mausoleo</a><a href="/indice-textual.html?locus=II.8.12">II.8.12</a><a href="/indice-textual.html?locus=II.9.1">II.9.1</a><a href="/indice-textual.html?locus=II.10.1">II.10.1</a>
+</div></div>
+
+<div class="libro" data-libro="III">
+<h2>Liber III - De aedibus sacris et symmetria</h2>
+<div class="loci">
+<a href="/indice-textual.html?locus=III.Praef.1">III.Praef.1</a><a href="/indice-textual.html?locus=III.1.1">III.1.1 homo bene figuratus</a><a href="/indice-textual.html?locus=III.1.2">III.1.2 modulus 6 palmi</a><a href="/indice-textual.html?locus=III.1.3">III.1.3 ad quadratum ad circulum</a><a href="/indice-textual.html?locus=III.1.4">III.1.4</a><a href="/indice-textual.html?locus=III.2.1">III.2.1</a><a href="/indice-textual.html?locus=III.3.1">III.3.1</a><a href="/indice-textual.html?locus=III.4.1">III.4.1</a><a href="/indice-textual.html?locus=III.5.1">III.5.1 voluta ionica</a>
+</div></div>
+
+<div class="libro" data-libro="IV"><h2>Liber IV - De columnis</h2><div class="loci">
+<a href="/indice-textual.html?locus=IV.1.6">IV.1.6 modulus</a><a href="/indice-textual.html?locus=IV.1.7">IV.1.7</a><a href="/indice-textual.html?locus=IV.3.1">IV.3.1 Doric 1:8</a><a href="/indice-textual.html?locus=IV.4.1">IV.4.1</a>
+</div></div>
+
+<div class="libro" data-libro="V"><h2>Liber V - De foro, basilica, theatro</h2><div class="loci">
+<a href="/indice-textual.html?locus=V.1.1">V.1.1 basilica</a><a href="/indice-textual.html?locus=V.6.1">V.6.1 theatrum</a><a href="/indice-textual.html?locus=V.9.1">V.9.1 porticus Pompei</a><a href="/indice-textual.html?locus=V.10.1">V.10.1</a>
+</div></div>
+
+<div class="libro" data-libro="VI"><h2>Liber VI - De privatis aedificiis</h2><div class="loci"><a href="/indice-textual.html?locus=VI.1.1">VI.1.1</a><a href="/indice-textual.html?locus=VI.8.1">VI.8.1 symmetria</a></div></div>
+<div class="libro" data-libro="VII"><h2>Liber VII - De pavimentis et parietibus</h2><div class="loci"><a href="/indice-textual.html?locus=VII.Praef.1">VII.Praef.1</a><a href="/indice-textual.html?locus=VII.1.1">VII.1.1</a></div></div>
+<div class="libro" data-libro="VIII"><h2>Liber VIII - De aqua</h2><div class="loci"><a href="/indice-textual.html?locus=VIII.1">VIII.1</a><a href="/indice-textual.html?locus=VIII.3.20">VIII.3.20 fontes Colchis</a></div></div>
+<div class="libro" data-libro="IX"><h2>Liber IX - De gnomonicis</h2><div class="loci"><a href="/indice-textual.html?locus=IX.Praef.1">IX.Praef.1</a><a href="/indice-textual.html?locus=IX.1.1">IX.1.1 zodiacus</a></div></div>
+<div class="libro" data-libro="X"><h2>Liber X - De machinis</h2><div class="loci"><a href="/indice-textual.html?locus=X.1.1">X.1.1 machina</a><a href="/indice-textual.html?locus=X.2.1">X.2.1 groma chorobates</a><a href="/indice-textual.html?locus=X.16.12">X.16.12</a></div></div>
+
+<footer style="margin-top:40px;padding:20px;background:#0A1931;color:#C9A86A;text-align:center">
+<a href="/index.html" style="color:#C9A86A">← Biblioteca</a> | <a href="/principios-editoriales.html" style="color:#C9A86A">Principios</a> | <a href="/codex-harleianus.html" style="color:#C9A86A">Facsímil H 800-824</a>
+</footer>
+
+<script>
+function filtrar(){
+let q=document.getElementById('filter').value.toLowerCase();
+document.querySelectorAll('.libro').forEach(lib=>{
+let txt=lib.textContent.toLowerCase();
+lib.style.display=txt.includes(q)?'block':'none';
+});
+}
+</script>
+</body></html>
