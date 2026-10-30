@@ -47,3 +47,8 @@ html[data-theme="dark"] .result .result-biblio{color:#c5c8c5}
 .compare-pane:first-child .compare-transcription{display:block;max-width:none;width:100%;margin:0;padding:0;white-space:pre-line;overflow-wrap:break-word;word-break:normal;hyphens:none;font-family:var(--serif);font-size:19px;line-height:1.75;letter-spacing:0;text-align:left;text-indent:0;columns:auto}
 .compare-pane:first-child .compare-body .compare-source-note{margin:0 0 14px}
 @media(max-width:900px){.compare-pane:first-child .compare-transcription{font-size:17px;line-height:1.65}}
+
+/* Full-width academic reading, avoiding empty lateral bands */
+.reader-content.text-primary .reader-transcript{width:100%;max-width:none;margin:0;padding:22px clamp(18px,3vw,48px);box-sizing:border-box}
+.reader-content.text-primary #reader-text{display:block;width:100%;max-width:none;margin:0;text-align:left;overflow-wrap:break-word;word-break:normal;hyphens:none;white-space:pre-wrap}
+.reader-content.text-primary{width:100%;max-width:none}
