@@ -55,3 +55,18 @@ html[data-theme="dark"] .result .result-biblio{color:#c5c8c5}
 
 /* Search matches: high-contrast yellow, including expanded translations. */
 .search-results mark.search-hit,.search-results .result mark{background:#ffe15a!important;color:#182a3a!important;border-radius:2px;padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* Academic text composition — main search results */
+.search-results .result p:not(.result-meta):not(.result-page),
+.search-results .result-translation p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+.search-results .result-meta,
+.search-results .result-page {text-align:left;hyphens:none;}
+@media (max-width: 520px) {
+  .search-results .result p:not(.result-meta):not(.result-page),
+  .search-results .result-translation p {text-align:left;}
+}
