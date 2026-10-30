@@ -259,7 +259,7 @@ async function renderComparePane(pane){
 
 function ensureWorker(){
  if(worker)return worker;
- worker=new Worker(new URL('./search-worker.js?v=20261030-regression1',import.meta.url),{type:'module'});
+ worker=new Worker(new URL('./search-worker.js?v=20261030-regression2',import.meta.url),{type:'module'});
  worker.onmessage=event=>{
   const data=event.data;if(data.requestId!==requestId)return;
   if(data.type==='progress'){$('#search-status').textContent=data.message;return;}
