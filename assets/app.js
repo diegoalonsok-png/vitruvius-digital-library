@@ -300,6 +300,25 @@ async function renderComparePane(pane){
   if(e.id==='krohn-1912')pane.dataset.mode='pdf';
   modeButton.hidden=!e.searchable||e.id==='krohn-1912';
   modeButton.textContent=pane.dataset.mode==='text'?'Ver facsímil':'Ver OCR sin revisar';
+  if(e.external&&e.access==='public_pdf'&&e.searchable){
+    // Google Drive preview ignores externally supplied page numbers.
+    // Display the exact page from the born-digital text index instead.
+    body.textContent='Cargando página PDF '+page+' del texto digital…';
+    const request=(pane.dataset.renderRevision=String(Number(pane.dataset.renderRevision||0)+1));
+    try{
+      const pages=await getPages(e);
+      if(pane.dataset.renderRevision!==request||$('select',pane).value!==e.id||Number(pageInput.value)!==page)return;
+      const text=pages?.[page-1]?.text||'';
+      const heading=document.createElement('p');heading.className='compare-source-note';
+      heading.textContent=e.version+' · Página PDF '+page+' · transcripción extraída del PDF original';
+      const passage=document.createElement('div');passage.className='compare-transcription';
+      passage.style.cssText='white-space:pre-wrap;line-height:1.7;padding:18px 25px;font-family:Georgia,serif;font-size:16px';
+      passage.textContent=text||'Esta página no contiene texto extraíble. Abrí el documento original para consultar la imagen.';
+      body.replaceChildren(heading,passage);
+      citation.textContent=e.version+' · Página PDF '+page+' · texto digital (no imagen del PDF)';
+    }catch(error){body.textContent='No se pudo consultar el texto de esta página: '+error.message+'. Usá «Abrir fuente» para leer el PDF original.';}
+    return;
+  }
   if(e.external){
     if(pane.dataset.mode==='text'&&e.searchable){
       body.textContent='OCR AUTOMÁTICO NO REVISADO — puede presentar caracteres corruptos y no debe citarse sin cotejar el facsímil.\n\nCargando transcripción…';
