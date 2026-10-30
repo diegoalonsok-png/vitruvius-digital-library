@@ -152,7 +152,23 @@ async function setReaderPage(page){
     const drive=(e.read_url||e.source_url||'').match(/drive\.google\.com\/file\/d\/([^/?#]+)/);
     if(drive)$('#reader-frame').src='https://drive.google.com/file/d/'+encodeURIComponent(drive[1])+'/preview';
     $('#reader-external').textContent='Abrir facsímil original ↗';
-    if(e.access==='public_pdf'){$('#reader-text').textContent='Edición íntegra disponible en el visor. Para navegar por loci necesitamos finalizar la indexación de los libros y las correspondencias entre versiones.';return;}
+    if(e.access==='public_pdf'){
+      $('#reader-text').textContent='Localizando la palabra en el texto indexado de esta página…';
+      try{
+        const pages=await getPages(e);
+        if(revision!==readerRevision||currentReader?.id!==e.id)return;
+        const text=pages?.[requestedPage-1]?.text||'';
+        const query=(lastQuery||$('#query').value||'').trim();
+        const pos=query?normalize(text).indexOf(normalize(query)):-1;
+        const start=pos>=0?Math.max(0,pos-200):0;
+        const excerpt=(start?'…':'')+text.slice(start,Math.min(text.length,start+900))+(start+900<text.length?'…':'');
+        $('#reader-text').innerHTML=resultSnippet({snippet:excerpt});
+        if(!text)$('#reader-text').textContent='No hay texto extraíble en esta página. Consultá el PDF.';
+      }catch{
+        if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el fragmento textual. El PDF original sigue disponible.';
+      }
+      return;
+    }
     $('#reader-text').textContent='Cargando la transcripción histórica de esta página…';
     try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'No hay texto OCR en esta página. Abrí el facsímil original.';}
     catch{if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el OCR. Abrí la fuente original.';}
