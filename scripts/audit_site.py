@@ -44,7 +44,7 @@ check('Locus' in js or 'locus' in js,'Locus reference interface absent')
 pages=0
 for e in cat['editions']:
     p=e.get('pdf')
-    if e.get('available'): check(bool(p) and (root/p).is_file(),'Published PDF missing: '+e['id'])
+    if e.get('available'): check((e.get('external') and str(e.get('read_url','')).startswith('https://')) or (bool(p) and (root/p).is_file()),'Published PDF missing: '+e['id'])
     if e.get('searchable'):
         path=e.get('text_index')
         if not path or not (root/path).is_file():
