@@ -14,6 +14,21 @@ export function citation(p){return 'Vitr., De arch. '+roman(p.book)+'.'+(p.chapt
 export function findMatches(text,query,{prefix=false,phrase=false}={}){
   const ts=tokens(text),qs=tokens(query).map(t=>t.value);if(!qs.length)return[];const found=[];
   for(let i=0;i<=ts.length-qs.length;i++)if(prefix?ts[i].value.startsWith(qs[0]):qs.every((q,j)=>ts[i+j].value===q))found.push({start:ts[i].start,end:ts[i+qs.length-1].end,form:text.slice(ts[i].start,ts[i+qs.length-1].end)});
+  // A pasted quotation may come from a different historical recension.
+  // If no exact quotation exists, identify a substantial contiguous span,
+  // without presenting the result as a verbatim match.
+  if(!found.length && !prefix && qs.length>=6){
+    const threshold=Math.max(5,Math.min(12,Math.ceil(qs.length*0.35)));
+    let best=null;
+    for(let i=0;i<ts.length;i++){
+      for(let j=0;j<qs.length;j++){
+        if(ts[i].value!==qs[j])continue;
+        let n=0;while(i+n<ts.length && j+n<qs.length && ts[i+n].value===qs[j+n])n++;
+        if(n>=threshold && (!best||n>best.n))best={start:ts[i].start,end:ts[i+n-1].end,form:text.slice(ts[i].start,ts[i+n-1].end),partial:true,n};
+      }
+    }
+    if(best)return [best];
+  }
   if(phrase||prefix||qs.length===1)return found;
   return qs.every(q=>ts.some(t=>t.value===q))?ts.filter(t=>qs.includes(t.value)).map(t=>({start:t.start,end:t.end,form:t.raw})):[];
 }
@@ -34,7 +49,7 @@ export function searchCorpus(datasets,m){
         if(!matches.length)continue;if(m.kind!=='count')matches=matches.slice(0,1);
         for(const match of matches){const start=Math.max(0,match.start-100),end=Math.min(text.length,Math.max(start+440,match.end+100));editionCount++;total++;loci.add(p.locus);
           if(match.form)forms.set(match.form,(forms.get(match.form)||0)+1);
-          results.push({edition:data.edition,locus:p.locus,book:p.book,chapter:p.chapter,section:p.section,section_end:p.section_end,language,latin:p.latin,translation:p.translation,text,snippet:(start?'…':'')+text.slice(start,end)+(end<text.length?'…':''),context_start:match.start-start+(start?1:0),context_length:match.end-match.start,form:match.form,page:p.pdf_pages?.[language==='la'?'latin':'translation']||null,occurrence:editionCount,source_paragraphs:p.source_paragraphs,score:0});
+          results.push({edition:data.edition,locus:p.locus,book:p.book,chapter:p.chapter,section:p.section,section_end:p.section_end,language,latin:p.latin,translation:p.translation,text,snippet:(start?'…':'')+text.slice(start,end)+(end<text.length?'…':''),context_start:match.start-start+(start?1:0),context_length:match.end-match.start,partial_match:Boolean(match.partial),form:match.form,page:p.pdf_pages?.[language==='la'?'latin':'translation']||null,occurrence:editionCount,source_paragraphs:p.source_paragraphs,score:0});
         }
       }
     }
