@@ -28,17 +28,17 @@ await check('Ejemplos latinos rellenan campo',async()=>{
 });
 await check('Búsqueda literal symmetria devuelve loci',async()=>{
  await visit('index.html');await page.locator('#query').fill('symmetria');await page.locator('#search-form #search-button').click();
- await page.waitForFunction(()=>document.querySelectorAll('#search-results .result').length>0,{timeout:25000});
- assert.ok((await page.locator('#search-results .result').count())>0);
+ await page.waitForFunction(()=>document.querySelectorAll('#search-results article.result').length>0,{timeout:25000});
+ assert.ok((await page.locator('#search-results article.result').count())>0);
 });
 await check('Búsqueda por libro LIBER IV',async()=>{
  await visit('index.html');await page.locator('#query').fill('LIBER IV');await page.locator('#search-button').click();
- await page.waitForFunction(()=>document.querySelectorAll('#search-results .result').length>0,{timeout:25000});
- assert.ok((await page.locator('#search-results .result').count())>0);
+ await page.waitForFunction(()=>document.querySelectorAll('#search-results article.result').length>0,{timeout:25000});
+ assert.ok((await page.locator('#search-results article.result').count())>0);
 });
 await check('Frase de VII.3.3 encuentra pasaje',async()=>{
  await visit('index.html');await page.locator('#query').fill('Cameris dispositis et intextis, imum caelum earum trullissetur');
- await page.locator('#search-button').click();await page.waitForFunction(()=>document.querySelectorAll('#search-results .result').length>0,{timeout:25000});
+ await page.locator('#search-button').click();await page.waitForFunction(()=>document.querySelectorAll('#search-results article.result').length>0,{timeout:25000});
  assert.ok((await page.locator('#search-results').innerText()).includes('VII.3.3'));
 });
 await check('Botones abrir consulta comparada',async()=>{
@@ -48,7 +48,7 @@ await check('Botones abrir consulta comparada',async()=>{
 });
 await check('Lector bilingüe navega por locus',async()=>{
  await visit('lector-bilingue.html?edition=recensio-es&locus=4.1.6');
- await page.waitForFunction(()=>document.querySelector('#latin-text')?.textContent?.includes('In ea aede'),{timeout:25000});
+ await page.waitForFunction(()=>document.querySelector('#latin-text')?.textContent?.includes('In ea aede'),null,{timeout:25000});
  assert.ok((await page.locator('#translation-text').innerText()).length>30);
  await page.locator('#next').click();
 });
