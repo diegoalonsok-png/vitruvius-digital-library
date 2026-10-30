@@ -295,11 +295,19 @@ function openComparison(id='recensio-es',page=1){
         status.textContent='Error al cargar la concordancia: '+error.message+'. La navegación manual sigue disponible.';
         return;
       }
+      // Verified anchors also ship in the reader: an outdated CDN JSON must
+      // not make a known book opening disappear.
+      const verifiedFallback={
+        '1.1.1':{'recensio-es':205,'recensio-fr':205,'theory-en':226},
+        '1.2.1':{'recensio-es':227,'recensio-fr':229},
+        '8.1.1':{'recensio-es':749,'recensio-fr':753,'theory-en':740}
+      };
       const matches=(map.loci||[]).filter(item=>item.locus===locus);
+      if(verifiedFallback[locus]&&!matches.length)matches.push({locus,pages:verifiedFallback[locus]});
       let mapped=0;
       for(const pane of $$('.compare-pane',$('#comparison-panes'))){
         const ed=edition($('select',pane).value);
-        const target=matches.find(item=>Number.isInteger(item.pages?.[ed?.id]))?.pages?.[ed?.id];
+        const target=verifiedFallback[locus]?.[ed?.id]||matches.find(item=>Number.isInteger(item.pages?.[ed?.id]))?.pages?.[ed?.id];
         if(!target)continue;
         $('.compare-page',pane).value=target;
         pane.dataset.resolvedLocus=locus;
