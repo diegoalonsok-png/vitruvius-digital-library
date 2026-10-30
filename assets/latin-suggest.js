@@ -13,8 +13,8 @@
  try{const res=await fetch('data/latin-lexicon.json');if(!res.ok)throw Error();entries=(await res.json()).entries||[];}catch{return;}
  const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const displayGloss=()=>{
-  const token=(input.value.trim().split(/\\s+/).slice(-1)[0]||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
-  const entry=entries.find(e=>[e.lemma,...e.forms].some(w=>w.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase()===token));
+  const token=(input.value.trim().split(/\s+/).slice(-1)[0]||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const entry=entries.find(e=>[e.lemma,...e.forms].some(w=>w.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()===token));
   if(!entry){gloss.hidden=true;gloss.replaceChildren();return;}
   gloss.replaceChildren();
   const label=document.createElement('strong');label.textContent=entry.lemma+' · ';
