@@ -11,31 +11,76 @@
   const tokens=String(text||'').match(/[\p{L}\p{M}]+/gu)||[];
   return tokens.reduce((n,t)=>n+(words.has(normalizeWord(t))?1:0),0);
  }
+ const corpora=[
+  {id:'recensio-es',label:'V514 · latín/castellano'},
+  {id:'recensio-fr',label:'V554 · latín/francés'},
+  {id:'theory-en',label:'V297 · latín/inglés'}
+ ];
+ let corpusPromise=null;
+ const loadCorpora=()=>corpusPromise||(corpusPromise=Promise.allSettled(corpora.map(async e=>{
+  const response=await fetch('data/structured/'+e.id+'.json');
+  if(!response.ok)throw Error(e.id);
+  return {...e,passages:(await response.json()).passages||[]};
+ })));
+ function matchingTokens(text,forms){
+  const found=[];
+  for(const match of String(text||'').matchAll(/[\\p{L}\\p{M}]+/gu)){
+   const token=normalizeWord(match[0]);
+   if(forms.has(token))found.push(match[0]);
+  }
+  return found;
+ }
  async function showOccurrences(){
   const searched=input.value.trim(),token=normalizeWord(searched);
   occurrences.replaceChildren();occurrences.hidden=true;
-  if(!searched||searched.includes(' ')||searched.length>90)return;
-  const match=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
-  const reversed=entries.find(e=>['es','en','fr'].some(lang=>String(e[lang]||'').split(/[;,]/).some(v=>normalizeWord(v.trim())===token)));
-  const entry=match||reversed, greek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(searched);
-  const forms=new Set((entry?[entry.lemma,...(entry.forms||[]),...(entry.greek?[entry.greek]:[])]:[searched]).map(normalizeWord));
-  const heading=document.createElement('h3');heading.textContent='Pasajes del tratado · '+searched;occurrences.append(heading);occurrences.hidden=false;
-  if(!forms.size){const p=document.createElement('p');p.textContent='Todavía no hay una correspondencia latina verificada para consultar este término griego en el corpus.';occurrences.append(p);return;}
-  const status=document.createElement('p');status.textContent='Consultando las referencias del texto latino…';occurrences.append(status);
+  if(!searched||searched.length>90||!/[\\p{L}]/u.test(searched))return;
+  const queryWords=[...searched.matchAll(/[\\p{L}\\p{M}]+/gu)].map(x=>normalizeWord(x[0]));
+  if(queryWords.length!==1)return;
+  const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
+  const forms=new Set([searched,...(entry?[entry.lemma,...(entry.forms||[]),entry.transliteration,entry.greek]:[])].filter(Boolean).map(normalizeWord));
+  const title=document.createElement('h3');title.textContent='Concordancia de las ediciones · '+searched;occurrences.append(title);occurrences.hidden=false;
+  const status=document.createElement('p');status.textContent='Consultando latín y traducciones en las tres ediciones…';occurrences.append(status);
   try{
-   if(!passageData){const response=await fetch('data/structured/recensio-es.json');if(!response.ok)throw Error('Índice no disponible');passageData=(await response.json()).passages;}
-   if(input.value.trim()!==searched)return;
-   let loci=[],count=0;
-   for(const p of passageData){const n=wordMatches(p.latin,forms);if(n){count+=n;loci.push(p);}}
-   status.textContent=count+' ocurrencias en '+loci.length+' pasajes del texto latino V514'+(entry?' · lema: '+entry.lemma:'')+'.';
-   if(!count){const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el texto latino indexado. Esto no demuestra que el concepto esté ausente de Vitruvio.';occurrences.append(p);return;}
-   const list=document.createElement('ol');
-   for(const p of loci.slice(0,15)){const li=document.createElement('li'),a=document.createElement('a');const ref=String(p.book)+'.'+p.chapter+'.'+p.section;a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(ref)+'&q='+encodeURIComponent(searched);a.textContent='Vitr., De arch. '+['','I','II','III','IV','V','VI','VII','VIII','IX','X'][p.book]+'.'+p.chapter+'.'+p.section;
-    li.append(a,document.createTextNode(' — '+String(p.latin||'').slice(0,190)+(String(p.latin||'').length>190?'…':'')));list.append(li);}
-   occurrences.append(list);
-   if(loci.length>15){const p=document.createElement('p');p.textContent='Se muestran los primeros 15 loci; el buscador principal permite consultar más resultados.';occurrences.append(p);}
-  }catch{status.textContent='No se pudo cargar el índice de pasajes. Probá nuevamente con Buscar.';}
+   const loaded=await loadCorpora();if(input.value.trim()!==searched)return;
+   let total=0,passages=0,sections=[],failures=0;
+   for(const outcome of loaded){
+    if(outcome.status!=='fulfilled'){failures++;continue;}
+    const edition=outcome.value;let editionCount=0,editionPassages=0;
+    const hits=[];
+    for(const p of edition.passages){
+     const latin=matchingTokens(p.latin,forms),translation=matchingTokens(p.translation,forms);
+     if(latin.length||translation.length){
+      editionCount+=latin.length+translation.length;editionPassages++;
+      hits.push({p,latin,translation});
+     }
+    }
+    total+=editionCount;passages+=editionPassages;
+    if(hits.length){
+     const group=document.createElement('details');group.open=true;
+     const summary=document.createElement('summary');summary.textContent=edition.label+' · '+editionCount+' apariciones · '+editionPassages+' pasajes';group.append(summary);
+     const list=document.createElement('ol');
+     for(const hit of hits.slice(0,20)){
+      const li=document.createElement('li'),a=document.createElement('a'),p=hit.p;
+      a.href='lector-bilingue.html?edition='+encodeURIComponent(edition.id)+'&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(searched);
+      a.textContent='Vitr., De arch. '+p.locus;li.append(a);
+      const details=['latín: '+hit.latin.length,'traducción: '+hit.translation.length].join(' · ');
+      const source=hit.translation.length&&!hit.latin.length?p.translation:p.latin;
+      const tokenMatch=[...String(source||'').matchAll(/[\\p{L}\\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
+      const at=tokenMatch?.index||0;
+      li.append(document.createTextNode(' ('+details+') — '+String(source||'').slice(Math.max(0,at-55),at+125)));
+      list.append(li);
+     }
+     group.append(list);
+     if(hits.length>20){const p=document.createElement('p');p.textContent='Primeros 20 resultados de esta edición.';group.append(p);}
+     sections.push(group);
+    }
+   }
+   status.textContent=total+' apariciones en '+passages+' pasajes indexados (latín y traducciones, por edición).'+(entry?' Equivalencias del léxico local incluidas.':'')+(failures?' No se pudieron cargar '+failures+' edición(es).':'');
+   for(const section of sections)occurrences.append(section);
+   if(!total){const p=document.createElement('p');p.textContent='No hubo coincidencias literales en las ediciones indexadas. Puede tratarse de una forma morfológica distinta o de un texto no incorporado; cero no significa ausencia en el tratado.';occurrences.append(p);}
+  }catch(error){status.textContent='No se pudo consultar el corpus: '+error.message;}
  }
+
  try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Volvé a intentarlo al recargar.';return;}
  const norm=s=>String(s).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function textLine(parent,label,value){if(!value)return;const p=document.createElement('p'),b=document.createElement('strong');b.textContent=label+' ';p.append(b,document.createTextNode(value));parent.append(p);}
@@ -124,7 +169,7 @@
     for(const e of reverse){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=e.headword||e.lemma;p.append(b,document.createTextNode(' — '+[e.es,e.en,e.fr].filter(Boolean).join(' · ')));details.append(p);const btn=document.createElement('button');btn.type='button';btn.className='dictionary-form';btn.textContent='Buscar «'+e.lemma+'» en el tratado';btn.addEventListener('click',()=>{input.value=e.lemma;hide();displayGloss();form.requestSubmit();});details.append(btn);}
     const note=document.createElement('p');note.className='source';note.textContent='Equivalencias del léxico local; la presencia en el texto se comprueba al buscar.';details.append(note);gloss.append(details);gloss.hidden=false;return;
    }
-   const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Léxico latino selectivo: «'+value+'»';details.append(summary);textLine(details,'','Esta forma no tiene una definición revisada en el léxico local. Se ofrece su concordancia textual sin atribuirle un significado no documentado.');details.append(corpusContext(value));for(const word of lexicalSuggestions(value,entries)){const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+word+'»';b.addEventListener('click',()=>{input.value=word;hide();displayGloss();form.requestSubmit();});details.append(b);}const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener';a.textContent='Consultar esta forma en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
+   const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Léxico latino selectivo: «'+value+'»';details.append(summary);textLine(details,'','Esta forma no tiene una definición revisada en el léxico local. Se ofrece su concordancia textual sin atribuirle un significado no documentado.');for(const word of lexicalSuggestions(value,entries)){const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+word+'»';b.addEventListener('click',()=>{input.value=word;hide();displayGloss();form.requestSubmit();});details.append(b);}const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener';a.textContent='Consultar esta forma en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
   }
   const details=document.createElement('details');details.open=true;const summary=document.createElement('summary');summary.textContent='Léxico latino selectivo · '+(entry.headword||entry.lemma);details.append(summary);
   const h=document.createElement('h3');h.textContent=entry.headword||entry.lemma;details.append(h);
