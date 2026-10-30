@@ -33,3 +33,6 @@ jobs:
               assert isinstance(data,list) and len(data)==e["pages"],f"Page count mismatch: {e['id']}"
           print("JS y catálogo válidos. Índices publicados:",sum(bool(e.get("searchable")) for e in cat["editions"]))
           PY
+
+      - name: Auditoría reproducible de vínculos, buscador e índices
+        run: python scripts/audit_site.py
