@@ -3,7 +3,39 @@
  const form=input.form;if(!form)return;
  const host=document.createElement('div');host.id='latin-suggest';host.hidden=true;host.className='dictionary-entry';host.setAttribute('aria-label','Sugerencias léxicas latinas');form.append(host);
  const gloss=document.createElement('section');gloss.id='latin-gloss';gloss.className='dictionary-entry';gloss.hidden=true;gloss.setAttribute('aria-live','polite');form.after(gloss);
- let entries=[];const {lexicalSuggestions}=await import('./lexical-suggestions.mjs?v=20261030-history');
+ let entries=[],passageData=null;
+ const occurrences=document.createElement('section');occurrences.id='lexical-occurrences';occurrences.className='dictionary-entry';occurrences.hidden=true;occurrences.setAttribute('aria-live','polite');gloss.after(occurrences);
+ const {lexicalSuggestions}=await import('./lexical-suggestions.mjs?v=20261030-history');
+ const normalizeWord=v=>String(v).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+ function wordMatches(text,words){
+  const tokens=String(text||'').match(/[\p{L}\p{M}]+/gu)||[];
+  return tokens.reduce((n,t)=>n+(words.has(normalizeWord(t))?1:0),0);
+ }
+ async function showOccurrences(){
+  const searched=input.value.trim(),token=normalizeWord(searched);
+  occurrences.replaceChildren();occurrences.hidden=true;
+  if(!searched||searched.includes(' ')||searched.length>90)return;
+  const match=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
+  const reversed=entries.find(e=>['es','en','fr'].some(lang=>String(e[lang]||'').split(/[;,]/).some(v=>normalizeWord(v.trim())===token)));
+  const entry=match||reversed, greek=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(searched);
+  const forms=new Set((entry?[entry.lemma,...(entry.forms||[])]:greek?[]:[searched]).map(normalizeWord));
+  const heading=document.createElement('h3');heading.textContent='Pasajes del tratado · '+searched;occurrences.append(heading);occurrences.hidden=false;
+  if(!forms.size){const p=document.createElement('p');p.textContent='Todavía no hay una correspondencia latina verificada para consultar este término griego en el corpus.';occurrences.append(p);return;}
+  const status=document.createElement('p');status.textContent='Consultando las referencias del texto latino…';occurrences.append(status);
+  try{
+   if(!passageData){const response=await fetch('data/structured/recensio-es.json');if(!response.ok)throw Error('Índice no disponible');passageData=(await response.json()).passages;}
+   if(input.value.trim()!==searched)return;
+   let loci=[],count=0;
+   for(const p of passageData){const n=wordMatches(p.latin,forms);if(n){count+=n;loci.push(p);}}
+   status.textContent=count+' ocurrencias en '+loci.length+' pasajes del texto latino V514'+(entry?' · lema: '+entry.lemma:'')+'.';
+   if(!count){const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el texto latino indexado. Esto no demuestra que el concepto esté ausente de Vitruvio.';occurrences.append(p);return;}
+   const list=document.createElement('ol');
+   for(const p of loci.slice(0,15)){const li=document.createElement('li'),a=document.createElement('a');const ref=String(p.book)+'.'+p.chapter+'.'+p.section;a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(ref);a.textContent='Vitr., De arch. '+['','I','II','III','IV','V','VI','VII','VIII','IX','X'][p.book]+'.'+p.chapter+'.'+p.section;
+    li.append(a,document.createTextNode(' — '+String(p.latin||'').slice(0,190)+(String(p.latin||'').length>190?'…':'')));list.append(li);}
+   occurrences.append(list);
+   if(loci.length>15){const p=document.createElement('p');p.textContent='Se muestran los primeros 15 loci; el buscador principal permite consultar más resultados.';occurrences.append(p);}
+  }catch{status.textContent='No se pudo cargar el índice de pasajes. Probá nuevamente con Buscar.';}
+ }
  try{const response=await fetch('data/latin-lexicon.json?v=20261030-docx-1');if(!response.ok)throw Error();entries=(await response.json()).entries;}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Volvé a intentarlo al recargar.';return;}
  const norm=s=>String(s).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function textLine(parent,label,value){if(!value)return;const p=document.createElement('p'),b=document.createElement('strong');b.textContent=label+' ';p.append(b,document.createTextNode(value));parent.append(p);}
@@ -53,5 +85,5 @@
   const matches=entries.flatMap(e=>[...new Set([e.lemma,...e.forms||[]])].filter(v=>norm(v).startsWith(q)&&norm(v)!==q).map(form=>({entry:e,form}))).slice(0,8);if(!matches.length)return;
   for(const{entry,form:word}of matches){const b=document.createElement('button');b.type='button';b.className='dictionary-suggestion';b.textContent=word+' · '+entry.lemma+' — '+entry.es;b.addEventListener('click',()=>{input.value=word;hide();displayGloss();input.focus();});host.append(b);}host.hidden=false;input.setAttribute('aria-expanded','true');
  }
- input.setAttribute('aria-controls','latin-suggest');input.setAttribute('aria-autocomplete','list');input.addEventListener('input',update);input.addEventListener('change',displayGloss);input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();if(e.key==='ArrowDown'&&!host.hidden){e.preventDefault();host.querySelector('button')?.focus();}});form.addEventListener('submit',()=>{hide();displayGloss();});document.addEventListener('click',e=>{if(e.target!==input&&!host.contains(e.target))hide();});displayGloss();
+ input.setAttribute('aria-controls','latin-suggest');input.setAttribute('aria-autocomplete','list');input.addEventListener('input',update);input.addEventListener('change',displayGloss);input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();if(e.key==='ArrowDown'&&!host.hidden){e.preventDefault();host.querySelector('button')?.focus();}});form.addEventListener('submit',()=>{hide();displayGloss();showOccurrences();});document.addEventListener('click',e=>{if(e.target!==input&&!host.contains(e.target))hide();});displayGloss();
 })();
