@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/index-author-pdfs.yml'
+      - 'scripts/index-author-pdfs.py'
 permissions:
   contents: write
 jobs:
