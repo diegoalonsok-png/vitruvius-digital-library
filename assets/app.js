@@ -126,16 +126,16 @@ function closeReader(){ readerRevision++;$('#reader-dialog').close();$('#reader-
 
 function openComparison(id='recensio-es',page=1){
   if($('#reader-dialog').open)closeReader();
-  const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length);
+  const available=records.filter(e=>e.external||e.pdf||e.pdf_chunks?.length).filter((e,i,a)=>a.findIndex(x=>x.id===e.id)===i);
   if(!available.length){window.alert('La consulta comparada estará disponible cuando las ediciones estén incorporadas.');return;}
   const first=available.find(e=>e.id===id)||available[0];
   const second=available.find(e=>e.id!==first.id)||first;
   const paneContainer=$('#comparison-panes');paneContainer.replaceChildren();
   [first,second].forEach((e,i)=>{
-    const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode=e.searchable?'text':'pdf';
+    const pane=document.createElement('section');pane.className='compare-pane';pane.dataset.mode='pdf';
     const optionList=available.map(x=>`<option value="${x.id}" ${x.id===e.id?'selected':''}>${escapeHTML(x.title)} · ${escapeHTML(x.version||x.year)} · ${escapeHTML(languageLabel(x))}${x.external?' [fuente externa]':''}</option>`).join('');
     pane.innerHTML=`<div class="compare-controls"><label class="sr-only" for="compare-edition-${i}">Edición ${i+1}</label><select id="compare-edition-${i}">${optionList}</select><button type="button" class="compare-prev" aria-label="Página anterior">←</button><label>Página PDF <input type="number" class="compare-page" value="${i===0?page:1}" min="1"></label><span class="compare-total"></span><button type="button" class="compare-next" aria-label="Página siguiente">→</button><button type="button" class="compare-mode">Ver PDF</button><a class="compare-external" target="_blank" rel="noopener">Abrir fuente ↗</a></div><div class="compare-body"></div>`;
-    $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode=selected.searchable?'text':'pdf';renderComparePane(pane);});
+    $('select',pane).addEventListener('change',()=>{const selected=edition($('select',pane).value);$('.compare-page',pane).value=1;pane.dataset.mode='pdf';renderComparePane(pane);});
     $('.compare-page',pane).addEventListener('change',()=>renderComparePane(pane));
     $('.compare-page',pane).addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();renderComparePane(pane);}});
     $('.compare-prev',pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)-1);renderComparePane(pane);});
@@ -154,11 +154,11 @@ async function renderComparePane(pane){
   for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=false;
   external.href=sourceURL(e,page);
   modeButton.hidden=!e.searchable;
-  modeButton.textContent=pane.dataset.mode==='text'?'Ver PDF':'Ver texto';
+  modeButton.textContent=pane.dataset.mode==='text'?'Ver facsímil':'Ver OCR sin revisar';
   if(e.external){
     if(pane.dataset.mode==='text'&&e.searchable){
-      body.textContent='Cargando transcripción OCR…';
-      try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent=pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.';}
+      body.textContent='OCR AUTOMÁTICO NO REVISADO — puede presentar caracteres corruptos y no debe citarse sin cotejar el facsímil.\n\nCargando transcripción…';
+      try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent='OCR AUTOMÁTICO NO REVISADO — no citar sin cotejar el facsímil.\n\n'+(pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.');}
       catch{body.textContent='OCR no disponible. Consultá el facsímil original.';}
     }else{
       const url=e.read_url||e.source_url,archive=(url||'').match(/archive\.org\/details\/([^/?#]+)/);
@@ -171,7 +171,7 @@ async function renderComparePane(pane){
     try{const url=await documentURL(e);if($('select',pane).value!==e.id||Number(pageInput.value)!==page||(pane.dataset.mode!=='pdf'&&e.searchable))return;const frame=document.createElement('iframe');frame.title=`${e.title}, página PDF ${page}`;frame.src=`${url}#page=${page}&view=FitH`;external.href=frame.src;body.replaceChildren(frame);}catch(error){loading.textContent=`${error.message} Volvé a seleccionar la edición para intentarlo de nuevo.`;}return;
   }
   const p=document.createElement('p');p.textContent='Cargando la página…';body.append(p);
-  try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)p.textContent=pages?.[page-1]?.text||'Sin texto extraíble en esta página. Usá «Ver PDF».';}catch{p.textContent='No se pudo cargar el texto. Usá «Ver PDF» para consultar el documento.';}
+  try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)p.textContent=(e.id==='krohn-1912'?'OCR AUTOMÁTICO SIN REVISAR — cotejar facsímil antes de citar.\n\n':'')+(pages?.[page-1]?.text||'Sin texto extraíble en esta página. Usá «Ver PDF».');}catch{p.textContent='No se pudo cargar el texto. Usá «Ver PDF» para consultar el documento.';}
 }
 
 function ensureWorker(){
