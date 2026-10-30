@@ -12,7 +12,7 @@ for record in catalog['editions']:
     if ident not in SOURCES: continue
     print('Downloading',ident,flush=True)
     output='/tmp/'+ident+'.pdf'
-    got=gdown.download(id=SOURCES[ident],output=output,quiet=False,fuzzy=True)
+    got=gdown.download(id=SOURCES[ident],output=output,quiet=False)
     if not got: raise RuntimeError('Cannot download '+ident)
     doc=fitz.open(output)
     pages=[]
