@@ -40,5 +40,7 @@ jobs:
           PY
 
       - name: Auditoría reproducible de vínculos, buscador e índices
-        run: python scripts/audit_site.py
+        run: |
+          python scripts/audit_site.py
+          python scripts/test-editorial.py
 

@@ -83,7 +83,7 @@ function translateRoot(root=document){
   if(!key)continue;
   const original=originalNodes.get(node)||key;
   if(!originalNodes.has(node))originalNodes.set(node,original);
-  if(i18n[original])node.nodeValue=currentLanguage==='es'?original:i18n[original][currentLanguage==='en'?0:1];
+  if(i18n[original]){node.nodeValue=currentLanguage==='es'?original:i18n[original][currentLanguage==='en'?0:1];if(parent.childNodes.length===1)parent.lang=currentLanguage;}
  }
  for(const el of root.querySelectorAll?.('[placeholder]')||[]){
   const original=el.dataset.originalPlaceholder||el.getAttribute('placeholder');
@@ -91,13 +91,13 @@ function translateRoot(root=document){
   const value=i18n[original];
   if(value)el.setAttribute('placeholder',currentLanguage==='es'?original:value[currentLanguage==='en'?0:1]);
  }
- document.documentElement.lang=currentLanguage;
+ document.documentElement.lang='es'; // Content remains predominantly Spanish; navigation translation is partial.
 }
 function setupLanguage(){
  for(const host of document.querySelectorAll('.header-languages')){
   host.textContent='';
-  const label=document.createElement('label');label.className='sr-only';label.textContent='Interface language / Idioma / Langue';
-  const select=document.createElement('select');select.setAttribute('aria-label','Interface language / Idioma / Langue');select.style.cssText='font:inherit;background:transparent;color:inherit;border:1px solid currentColor;border-radius:2px;padding:3px 5px;max-width:110px';
+  const label=document.createElement('label');label.className='sr-only';label.textContent='Idioma de navegación (traducción parcial) / Navigation language (partial)';
+  const select=document.createElement('select');select.setAttribute('aria-label','Idioma de navegación (traducción parcial) / Navigation language (partial)');select.style.cssText='font:inherit;background:transparent;color:inherit;border:1px solid currentColor;border-radius:2px;padding:3px 5px;max-width:110px';
   for(const [value,name] of [['es','ES'],['en','EN'],['fr','FR']]){const option=document.createElement('option');option.value=value;option.textContent=name;select.append(option);}
   select.value=currentLanguage;
   select.addEventListener('change',()=>{currentLanguage=select.value;try{localStorage.setItem(LANGUAGE_KEY,currentLanguage)}catch{};document.querySelectorAll('.header-languages select').forEach(other=>other.value=currentLanguage);translateRoot()});
@@ -106,3 +106,4 @@ function setupLanguage(){
  translateRoot();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setupLanguage);else setupLanguage();
+

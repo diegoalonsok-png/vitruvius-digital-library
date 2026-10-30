@@ -1,0 +1,21 @@
+/* Shared editorial refinements, reviewed 30 October 2026. */
+body{font-size:16px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+:where(.policy,.studies,.bibliography,.fano,.audit) p{font-size:17px;line-height:1.75}
+:where(.policy,.fano,.audit) p{max-width:75ch}
+:where(.policy,.studies,.bibliography,.fano,.audit) p a{text-decoration:underline;text-underline-offset:3px}
+:where(.study,.audit,.policy,.fano) h2{line-height:1.3}
+.header-inner nav a{font-size:13px;line-height:1.5;padding-block:10px}
+:where(.catalog-actions,.export-tools,.principal-actions,.scholarly-controls) :is(button,a,select),.theme-switch{min-height:44px}
+:where(.book-description,.history-grid p,.method-items p,.supplement p,.search-note,.principal-edition p,.provenance,.internet-search>p){font-size:14px;line-height:1.75}
+:where(.book-meta,.book-source,.catalog-filter,.export-tools label,.export-tools .text-link,.search-destinations,.search-destinations button,.principal-edition .edition-language,.footer-bottom){font-size:12px}
+:where(.policy,.studies,.bibliography,.fano,.audit) details{margin-block:18px}
+:where(.policy,.studies,.bibliography,.fano,.audit) summary{cursor:pointer;min-height:44px;padding-block:10px}
+.editorial-footer{border-top:1px solid var(--line);padding:30px 0 36px;margin-top:35px;color:var(--muted);font-size:14px;line-height:1.7}
+.editorial-footer nav{display:flex;gap:12px 24px;flex-wrap:wrap;margin-block:15px}.editorial-footer a{text-decoration:underline;text-underline-offset:4px}
+.verification-label{font-size:14px;border-left:3px solid var(--gold);padding:9px 13px;background:var(--paper);color:var(--ink)}
+.audit{padding-block:54px 70px;max-width:1000px}.audit h1{font:400 clamp(2.3rem,5vw,4rem)/1.1 Georgia,serif;max-width:22ch}.audit h2{font:400 1.8rem/1.3 Georgia,serif;margin-top:40px}.audit table{border-collapse:collapse;width:100%;font-size:15px}.audit th,.audit td{border-bottom:1px solid var(--line);padding:15px 12px;text-align:left;vertical-align:top}.table-scroll{overflow-x:auto}.audit caption{text-align:left;font-weight:600;padding:14px 0}.audit li{line-height:1.75;margin-block:9px}.audit .review-date{color:var(--muted);font-size:14px}
+html[data-theme="dark"] :where(.history-grid p,.method-items p,.supplement p,.book-description,.book-meta,.book-source,.provenance,.principal-edition p,.principal-edition .edition-language,.footer-bottom,.internet-search>p){color:var(--muted)}
+@media(max-width:600px){.wrap{width:calc(100% - 36px)}.audit{padding-top:35px}.audit th,.audit td{padding:12px 8px}.header-inner nav{gap:8px 16px}.header-inner nav a{font-size:13px}.hero-academic h1{font-size:clamp(39px,10.5vw,60px)}.principal-edition{flex-wrap:wrap}.catalog-card{min-width:0}.catalog-card h3{overflow-wrap:break-word}.export-tools label{font-size:13px}.export-tools .text-link{font-size:13px}.book-description{font-size:14px}.history-grid p{font-size:14px}}
+@media print{.site-header,.institution-bar,.theme-switch,.editorial-footer nav{display:none}.audit{max-width:none;padding:0}body{background:white;color:black}.audit tr{break-inside:avoid}}
+.studies #study-filter{display:block;width:min(100%,660px);min-height:46px;margin-top:9px;padding:10px 13px;font:inherit;border:1px solid var(--line);background:var(--white);color:var(--ink)}
