@@ -18,7 +18,34 @@ function searchInternet(query,provider='web',includeVitruvio=true){
   if(includeVitruvio&&!/vitruv/i.test(query))query=`Vitruvio ${query}`;
   const url=new URL(provider==='scholar'?'https://scholar.google.com/scholar':'https://www.google.com/search');url.searchParams.set('q',query);window.open(url.href,'_blank','noopener,noreferrer');
 }
-function resultSnippet(r){if(!Number.isInteger(r.context_start))return escapeHTML(r.snippet);const start=r.context_start,end=start+r.context_length;return escapeHTML(r.snippet.slice(0,start))+'<mark>'+escapeHTML(r.snippet.slice(start,end))+'</mark>'+escapeHTML(r.snippet.slice(end));}
+function resultSnippet(r){
+  const snippet=String(r.snippet||'');
+  if(!snippet)return '';
+  if(Number.isInteger(r.context_start)){
+    const start=r.context_start,end=start+r.context_length;
+    return escapeHTML(snippet.slice(0,start))+'<mark>'+escapeHTML(snippet.slice(start,end))+'</mark>'+escapeHTML(snippet.slice(end));
+  }
+  // Highlight the user's exact word(s) in the visible context, not just the PDF page.
+  const tokens=(lastQuery||$('#query').value||'').trim().split(/\s+/).filter(Boolean);
+  if(!tokens.length)return escapeHTML(snippet);
+  const fold=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const normalized=fold(snippet),ranges=[];
+  for(const term of tokens){
+    const needle=fold(term);if(!needle)continue;
+    let at=0;
+    while((at=normalized.indexOf(needle,at))!==-1){
+      ranges.push([at,at+needle.length]);at+=Math.max(1,needle.length);
+    }
+  }
+  ranges.sort((a,b)=>a[0]-b[0]||b[1]-a[1]);
+  let html='',cursor=0;
+  for(const [a,b] of ranges){
+    if(a<cursor)continue;
+    html+=escapeHTML(snippet.slice(cursor,a))+'<mark>'+escapeHTML(snippet.slice(a,b))+'</mark>';
+    cursor=b;
+  }
+  return html+escapeHTML(snippet.slice(cursor));
+}
 function renderCountSummary(summary){
   const box=$('#term-count-summary');box.hidden=!summary;box.replaceChildren();if(!summary)return;
   const rows=summary.editions.map(row=>{const e=edition(row.edition);return `<tr><th scope="row">${escapeHTML(e.title)} <span>${escapeHTML(e.version)}</span></th><td>${row.total.toLocaleString('es-AR')}</td><td>${row.pages.toLocaleString('es-AR')}</td></tr>`;}).join('');
@@ -272,7 +299,7 @@ function startSearch(){
 function locusLabel(r){
   // Libro/capítulo/sección solo cuando constan explícitamente en el índice verificado.
   const book=r.book??r.liber, chapter=r.chapter??r.caput, section=r.section??r.paragraph;
-  if(book==null||chapter==null)return 'Referencia: página de la edición; locus canónico aún no verificado';
+  if(book==null||chapter==null)return 'Libro y locus: pendientes de cotejo';
   return 'Vitr., De arch. '+book+'.'+chapter+(section==null?'':'.'+section);
 }
 function knownLocus(e,page){
