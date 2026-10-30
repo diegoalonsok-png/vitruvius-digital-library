@@ -1,0 +1,25 @@
+name: Auditar capitulos y loci en PDF digitales
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/audit-structural-headings.py'
+      - '.github/workflows/audit-structural-headings.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/audit-structural-headings.py
+      - run: python -m json.tool data/vitruvian-structural-audit.json > /dev/null
+      - name: Registrar candidatos estructurales
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/vitruvian-structural-audit.json
+          git diff --cached --quiet || (git commit -m "Audit explicit Vitruvian book and chapter headings" && git push)
