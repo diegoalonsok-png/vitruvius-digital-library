@@ -1,0 +1,38 @@
+name: Build semantic embeddings (manual)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/semantic-search-e5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch
+          python -m pip install sentence-transformers numpy
+      - name: Generate matrix from real loci
+        run: python scripts/build-embeddings.py
+      - name: Validate coverage and dimensions
+        run: python scripts/test-semantic-index.py
+      - name: Report generated files
+        run: |
+          ls -lh data/embeddings-e5-small-*
+          git status --short
+      - name: Commit artifacts to feature branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/embeddings-e5-small-int8.bin data/embeddings-e5-small-index.json
+          git diff --cached --quiet || (git commit -m "Generate validated E5 semantic corpus matrix" && git push origin HEAD:feature/semantic-search-e5)

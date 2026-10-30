@@ -387,6 +387,7 @@ function addSearchControls(){
 
 async function initialize(){
   addSearchControls();
+  import('./semantic-search.mjs').then(({installSemanticSearch})=>installSemanticSearch($('#search-form'),$('#query'))).catch(error=>console.warn('Búsqueda semántica opcional no disponible:',error));
   $('#internet-form').addEventListener('submit',event=>{
     event.preventDefault();
     searchInternet($('#internet-query').value,$('#internet-provider').value,$('#internet-vitruvio').checked);
