@@ -3,7 +3,7 @@ export const roman=n=>['','I','II','III','IV','V','VI','VII','VIII','IX','X'][n]
 export const normalize=value=>String(value??'').normalize('NFD').replace(/\p{M}/gu,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 export function tokens(text){return [...String(text).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({value:normalize(m[0]),raw:m[0],start:m.index,end:m.index+m[0].length}));}
 export function parseLocus(value){
-  const raw=String(value).trim().replace(/^(?:Vitr\.?\s*[,;]?\s*)?(?:De\s+arch(?:itectura)?\.?\s*)?/i,'').replace(/\s*[,·:]\s*/g,'.');
+  const raw=String(value).trim().replace(/^(?:liber|libro|book)\s+/i,'').replace(/\s+(?:caput|capítulo|capitulo|chapter)\s+/i,'.').replace(/^(?:Vitr\.?\s*[,;]?\s*)?(?:De\s+arch(?:itectura)?\.?\s*)?/i,'').replace(/\s*[,·:]\s*/g,'.');
   const m=raw.match(/^(10|[1-9]|VIII|VII|III|II|IV|VI|IX|I|V|X)(?:\s*\.\s*(praef(?:atio)?\.?|\d{1,2})(?:\s*\.\s*(\d{1,3}))?)?\.?$/i);
   if(!m)return null;
   const book=/^\d+$/.test(m[1])?Number(m[1]):['','I','II','III','IV','V','VI','VII','VIII','IX','X'].indexOf(m[1].toUpperCase());
