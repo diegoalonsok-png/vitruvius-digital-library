@@ -71,6 +71,26 @@ self.onmessage=async({data:m})=>{
         if(!prior||score>prior.score)merged.set(key,{...hit,score,semantic_term:term});
       }
     }
+    // For multiword queries, search individual words across every indexed
+    // passage; return grounded excerpts and rank by phrase-word coverage.
+    if(queryWords.length>1){
+      const stop=new Set(['para','como','sobre','entre','desde','hasta','donde','which','with','from','about','that','this','the','and','del','las','los','una','uno','por','que','con','de','la','el','en','un','y','et','cum','in','ad','est']);
+      const meaningful=[...new Set(words(requested).filter(t=>!stop.has(norm(t))))].slice(0,12);
+      const coverage=new Map();
+      for(const term of meaningful){
+        const found=searchCorpus(datasets,{...effective,kind:'words',mode:'words',query:term});
+        for(const hit of found.results){
+          const key=hit.edition+'|'+hit.locus+'|'+hit.language;
+          const previous=coverage.get(key)||{hit,terms:new Set()};
+          previous.terms.add(norm(term));coverage.set(key,previous);
+        }
+      }
+      for(const [key,item] of coverage){
+        const score=Math.round(20+65*item.terms.size/Math.max(1,meaningful.length));
+        const prior=merged.get(key);
+        if(!prior||score>prior.score)merged.set(key,{...item.hit,score,semantic_term:[...item.terms].join(' · ')});
+      }
+    }
     const ranked=[...merged.values()].sort((a,b)=>b.score-a.score||a.book-b.book||Number(a.chapter||0)-Number(b.chapter||0)||a.section-b.section).slice(0,600);
     warnings.push('Búsqueda conceptual local: '+(related.length?related.map(x=>x.lemma).join(', '):'sin equivalencias del léxico; se muestran coincidencias textuales')+'. Las equivalencias son orientativas, no verificaciones filológicas automáticas.');
     self.postMessage({type:'results',requestId:m.requestId,results:ranked,countSummary:null,warnings,semanticTerms:unique});
