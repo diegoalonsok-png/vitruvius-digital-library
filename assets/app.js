@@ -143,6 +143,36 @@ function openComparison(id='recensio-es',page=1){
     $('.compare-mode',pane).addEventListener('click',()=>{pane.dataset.mode=pane.dataset.mode==='text'?'pdf':'text';renderComparePane(pane);});
     paneContainer.append(pane);renderComparePane(pane);
   });
+  const note=$('.comparison-note');
+  let locusForm=$('#comparison-locus-form');
+  if(!locusForm){
+    locusForm=document.createElement('form');locusForm.id='comparison-locus-form';
+    locusForm.className='compare-controls';
+    locusForm.innerHTML='<label>Locus latino (libro.capítulo.sección) <input id="comparison-locus" type="text" placeholder="I.1.1" aria-label="Locus latino"></label><button type="submit">Localizar locus →</button><span id="comparison-locus-status" role="status"></span>';
+    note.after(locusForm);
+    locusForm.addEventListener('submit',async event=>{
+      event.preventDefault();
+      const val=$('#comparison-locus').value.trim().toUpperCase();
+      const match=val.match(/^([IVX]+|10|[1-9])\\s*[.·,]\\s*(\\d{1,2})(?:\\s*[.·,]\\s*(\\d{1,3}))?$/);
+      const status=$('#comparison-locus-status');
+      if(!match){status.textContent='Usá una referencia como I.1.1 o III.1.2.';return;}
+      const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+      const book=romans[match[1]]||Number(match[1]),chapter=Number(match[2]),section=match[3]==null?null:Number(match[3]);
+      if(book<1||book>10||chapter<1){status.textContent='Referencia fuera de los diez libros.';return;}
+      status.textContent='Buscando referencias editoriales verificadas…';
+      let mapped=0;
+      for(const pane of $('.compare-pane',$('#comparison-panes'))){
+        const e=edition($('select',pane).value);
+        if(!e?.text_index)continue;
+        try{
+          const pages=await getPages(e);
+          const found=pages.find(p=>Number(p.book??p.liber)===book&&Number(p.chapter??p.caput)===chapter&&(section==null||Number(p.section??p.paragraph)===section));
+          if(found){$('.compare-page',pane).value=found.page;renderComparePane(pane);mapped++;}
+        }catch{}
+      }
+      status.textContent=mapped?('Locus identificado en '+mapped+' edición(es); comprobá cada facsímil. '+(mapped<2?'La otra edición aún no tiene correspondencia validada.':'')):'Locus no indexado: todavía no hay correspondencias libro/capítulo/sección verificadas. No se asignan páginas por aproximación.';
+    });
+  }
   $('#comparison-dialog').showModal();
 }
 
