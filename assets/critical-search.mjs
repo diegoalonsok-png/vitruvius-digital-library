@@ -44,7 +44,7 @@ async function compareLocus(locus){
   const ownNotes=noteEntries.filter(n=>n.edition===editions[i].id);
   const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico';card.append(subtitle);
   if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');p.textContent=(n.locus?'Locus explícito':'Locus propuesto, pendiente de cotejo')+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
-  else{const p=document.createElement('p');p.textContent='Notas no extraídas aún del original; consultar PDF de esta edición.';card.append(p);}
+  else{const p=document.createElement('p');p.textContent='No hay notas vinculadas a este locus en el índice actual de esta edición. Otras notas pueden estar pendientes de asignación.';card.append(p);}
   grid.append(card);
  });panel.append(grid);
  const sources=document.createElement('section');sources.className='critical-parallel-edition';
@@ -73,7 +73,7 @@ function renderNotes(notes,q,ref){
   return queryWords.every(word=>words.has(word)||[...words].some(token=>token.startsWith(word)&&word.length>=4));
 
  });
- const count=$('#critical-note-status');if(count)count.textContent=filtered.length+' notas críticas encontradas en el corpus de 811 notas. '+(ref?'Solo se listan loci explícitos o propuestos en el índice; las demás notas permanecen accesibles mediante búsqueda por término.':'');
+ const count=$('#critical-note-status');if(count)count.textContent=filtered.length+' notas críticas encontradas en el corpus de 811 notas. '+(ref?'Se indican los loci explícitos o candidatos, sin tratarlos como variantes verificadas.':'');
  for(const n of filtered.slice(0,70)){
   const card=document.createElement('article');card.className='critical-result';
   const locus=n.locus||n.candidate_locus;const status=n.locus?'Locus explícito en la fuente':n.candidate_locus?'Locus sugerido, pendiente de cotejo':'Sin locus verificado';
@@ -94,3 +94,6 @@ document.querySelector('#critical-note-results')?.addEventListener('click',e=>{c
 document.querySelector('#critical-results').addEventListener('click',e=>{const b=e.target.closest('[data-critical-compare]');if(b)compareLocus(b.dataset.criticalCompare);});
 
 $('#critical-notes-file')?.addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const parsed=JSON.parse(await f.text());if(!Array.isArray(parsed.entries))throw Error('Falta la lista de notas');notesCache=Promise.resolve(parsed);$('#critical-notes-status').textContent='Índice cargado: '+parsed.entries.length+' notas originales. Consultá un locus para cotejar las notas disponibles.';}catch(err){$('#critical-notes-status').textContent='No se pudo leer el índice: '+err.message;}});
+
+// Deep links permit citation-to-apparatus navigation from the main search and reader.
+const initial=new URLSearchParams(location.search);const initialLocus=initial.get('locus')||initial.get('q');if(initialLocus){$('#critical-query').value=initialLocus;search();}
