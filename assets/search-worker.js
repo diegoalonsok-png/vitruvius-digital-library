@@ -1,4 +1,4 @@
-import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-quote-fix';
+import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-locus-formats2';
 const cache=new Map();
 async function corpus(edition,baseURL){
  if(!cache.has(edition.id))cache.set(edition.id,(async()=>{
