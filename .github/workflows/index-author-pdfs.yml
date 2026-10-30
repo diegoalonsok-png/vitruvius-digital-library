@@ -1,6 +1,9 @@
 name: Incorporar indices de las obras originales
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/index-author-pdfs.yml'
 permissions:
   contents: write
 jobs:
