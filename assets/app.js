@@ -30,7 +30,7 @@ function resultSnippet(r){
     return escapeHTML(snippet.slice(0,start))+'<mark>'+escapeHTML(snippet.slice(start,end))+'</mark>'+escapeHTML(snippet.slice(end));
   }
   // Highlight the user's exact word(s) in the visible context, not just the PDF page.
-  const tokens=(lastQuery||$('#query').value||'').trim().split(/\s+/).filter(Boolean);
+  const tokens=(r.form||lastQuery||$('#query').value||'').trim().split(/\s+/).filter(Boolean);
   if(!tokens.length)return escapeHTML(snippet);
   const fold=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const normalized=fold(snippet),ranges=[];
