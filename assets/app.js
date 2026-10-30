@@ -145,12 +145,14 @@ async function setReaderPage(page){
   $('#reader-page-total').textContent=`de ${e.pages.toLocaleString('es-AR')}`;
   $('#reader-edition').textContent=citationLine(e,requestedPage);
   $('#reader-prev').disabled=currentPage<=1;$('#reader-next').disabled=currentPage>=e.pages;
+  const textPrimary=e.access==='public_pdf'&&e.searchable;
+  $('.reader-content').classList.toggle('text-primary',textPrimary);
   $('#reader-frame').removeAttribute('src');$('#reader-external').href=sourceURL(e,requestedPage);
   if(e.external){
     const archive=(e.read_url||e.source_url||'').match(/archive\.org\/details\/([^/?#]+)/);
     if(archive)$('#reader-frame').src='https://archive.org/embed/'+encodeURIComponent(archive[1])+'/page/n'+Math.max(0,requestedPage-1);
     const drive=(e.read_url||e.source_url||'').match(/drive\.google\.com\/file\/d\/([^/?#]+)/);
-    if(drive)$('#reader-frame').src='https://drive.google.com/file/d/'+encodeURIComponent(drive[1])+'/preview';
+    if(drive&&!textPrimary)$('#reader-frame').src='https://drive.google.com/file/d/'+encodeURIComponent(drive[1])+'/preview';
     $('#reader-external').textContent='Abrir facsímil original ↗';
     if(e.access==='public_pdf'){
       $('#reader-text').textContent='Localizando la palabra en el texto indexado de esta página…';
@@ -161,8 +163,9 @@ async function setReaderPage(page){
         const query=(lastQuery||$('#query').value||'').trim();
         const pos=query?normalize(text).indexOf(normalize(query)):-1;
         const start=pos>=0?Math.max(0,pos-200):0;
-        const excerpt=(start?'…':'')+text.slice(start,Math.min(text.length,start+900))+(start+900<text.length?'…':'');
+        const excerpt=text;
         $('#reader-text').innerHTML=resultSnippet({snippet:excerpt});
+        const mark=$('#reader-text').querySelector('mark');if(mark)mark.scrollIntoView({block:'center'});
         if(!text)$('#reader-text').textContent='No hay texto extraíble en esta página. Consultá el PDF.';
       }catch{
         if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el fragmento textual. El PDF original sigue disponible.';
