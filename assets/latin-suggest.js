@@ -10,6 +10,21 @@
  function displayGloss(){
   const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return;
   const entry=entries.find(e=>[e.lemma,...e.forms||[]].some(w=>norm(w)===token));
+  const greekMatches=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)?entries.filter(e=>e.greek&&norm(e.greek)===token):[];
+  if(greekMatches.length){
+   const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Griego y léxico vitruviano · '+value;details.append(summary);
+   for(const e of greekMatches){
+    textLine(details,'Término griego:',e.greek);textLine(details,'Equivalente latino:',e.lemma);
+    textLine(details,'Castellano:',e.es);textLine(details,'English:',e.en);textLine(details,'Français:',e.fr);
+    const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+e.lemma+'» en Vitruvio';b.addEventListener('click',()=>{input.value=e.lemma;hide();displayGloss();form.requestSubmit();});details.append(b);
+   }
+   const note=document.createElement('p');note.className='source';note.textContent='Correspondencia terminológica orientativa; no implica que la grafía griega aparezca literalmente en el tratado. La búsqueda del equivalente latino permite comprobar sus pasajes.';details.append(note);gloss.append(details);gloss.hidden=false;return;
+  }
+  if(/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)){
+   const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Consulta griega · '+value;details.append(summary);
+   textLine(details,'','No hay equivalencia documentada en el léxico griego local para esta forma. La búsqueda textual puede seguir comprobando coincidencias literales.');
+   const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener noreferrer';a.textContent='Consultar diccionarios griegos en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
+  }
   if(!entry){
    if(value.split(/\s+/).length!==1)return;
    const reverse=entries.filter(e=>['es','en','fr'].some(lang=>String(e[lang]||'').split(/[;,]/).some(part=>norm(part.trim())===token)));
