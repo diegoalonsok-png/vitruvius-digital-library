@@ -47,8 +47,8 @@ self.onmessage=async({data:m})=>{
     const response=await fetch(new URL('data/latin-lexicon.json',m.baseURL));
     if(!response.ok)throw Error('No se pudo cargar el vocabulario semántico.');
     const dictionary=(await response.json()).entries||[];
-    const norm=x=>String(x||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
-    const words=x=>String(x||'').split(/[;,/·()\\s]+/).filter(x=>x.length>=3);
+    const norm=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+    const words=x=>String(x||'').split(/[;,/·()\s]+/).filter(x=>x.length>=3);
     const queryWords=words(requested).map(norm);
     const related=dictionary.filter(e=>{
       const candidates=[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr,e.greek];
