@@ -1,0 +1,25 @@
+/* Optional reading palette. Original light design is unchanged. */
+html[data-theme="dark"]{color-scheme:dark;--navy:#213b52;--navy2:#30536b;--ink:#e8e4dc;--muted:#b9bebc;--paper:#151e27;--white:#202b36;--line:#3d4750;--gold:#c6aa73}
+html[data-theme="dark"] body{background:var(--paper);color:var(--ink)}
+html[data-theme="dark"] .site-header,html[data-theme="dark"] .catalog-card,html[data-theme="dark"] .result{border-color:var(--line)}
+html[data-theme="dark"] :is(.stats-band,.search-options,.comparison-note,.compare-note,.catalog-controls,.reader-toolbar,.compare-controls,.institution-bar){background:#202b35;color:#e8e4dc}
+html[data-theme="dark"] :is(.search-box,.search-input-row,.catalog-list,.compare-pane,.compare-body,.reader-body,.dialog-content,.modal-content,dialog,.study,.citation,.biblio-table,.policy,.studies){background:var(--white);color:var(--ink)}
+html[data-theme="dark"] :is(.result p,.hero-description,.section-heading>p,.stats-inner span,.eyebrow,.small-caps,.book-description,.subtitle,.book-source,.book-meta,.result-locus,.search-note,.catalog-filter,.compare-source-note,.header-languages,.study dt,.study dd,.policy p,.biblio-intro,.search-options label,.search-language-note,.examples,.search-destinations,.search-status){color:#c5c8c5}
+html[data-theme="dark"] :is(.hero h1,h1,h2,h3,.wordmark-name,.study h2,.studies h1,.policy h1,.policy h2,.bibliography h1,.result h3){color:#f1ede4}
+html[data-theme="dark"] :is(input,select,textarea){background:#26333e;color:#f1ede4;border-color:#53606b}
+html[data-theme="dark"] :is(input,textarea)::placeholder{color:#aeb7ba}
+html[data-theme="dark"] :is(.button.primary,.primary){background:#395b75;color:#fff}
+html[data-theme="dark"] :is(.outline,.button.outline){color:#ebe4d8;border-color:#889198}
+html[data-theme="dark"] :is(.search-input-row input){background:transparent}
+html[data-theme="dark"] .search-options{border-color:#53606b}
+html[data-theme="dark"] .result mark,html[data-theme="dark"] mark{background:#806626;color:#fff9de}
+html[data-theme="dark"] :is(#latin-gloss,#latin-suggest){background:#202b35!important;color:#eee9df!important;border-color:#64717b!important}
+html[data-theme="dark"] #latin-gloss a{color:#d8bd86}
+html[data-theme="dark"] #latin-suggest button{color:#eee9df!important;border-color:#4c5762!important}
+html[data-theme="dark"] .hero-book-pair:after{background:linear-gradient(#25303a,#151e27)}
+html[data-theme="dark"] .hero-book-pair{border-color:#65717b}
+html[data-theme="dark"] .edition-date{background:#293640;color:#e9e2d6}
+html[data-theme="dark"] .compare-pane iframe,html[data-theme="dark"] .reader-body iframe{color-scheme:light}
+html[data-theme="dark"] .theme-switch{border-color:#889198;color:#e9e3d8}
+.theme-switch{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:600;white-space:nowrap;border:1px solid var(--line);padding:6px 10px;margin-left:10px;background:transparent;color:var(--ink);border-radius:2px}
+.theme-switch:hover{border-color:var(--gold)}
