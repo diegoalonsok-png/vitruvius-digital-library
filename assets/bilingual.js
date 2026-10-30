@@ -46,7 +46,7 @@ function render(){
  $('pdf-links').innerHTML=source?'<a href="'+esc(source)+'" target="_blank" rel="noopener">Consultar PDF: <em>'+esc(bookTitle(ed))+'</em> ↗</a>'+(p?.pdf_pages?.latin?' · latín: p. '+p.pdf_pages.latin:'')+(p?.pdf_pages?.translation?' · traducción: p. '+p.pdf_pages.translation:''):'';
  passageCitation=ed?bibliographyText(ed)+' '+citation(p||base)+'. '+(p?.pdf_pages?.translation?'Página PDF de la traducción: '+p.pdf_pages.translation+'. ':'')+new URL('lector-bilingue.html?edition='+ed.id+'&locus='+locus,location.href).href:'';
  $('citation-status').textContent='';
- $('provenance-text').textContent=p?'Fuente: '+data.source.filename+'; párrafos '+p.source_paragraphs.map(n=>n+1).join(' y ')+'. Referencia: '+citation(p)+'.':'La referencia latina procede de V514; no se atribuye una traducción inglesa al pasaje.';
+ $('provenance-text').textContent=p?'Fuente: edición '+(data?.version||lang)+', '+citation(p)+'. La correspondencia digital se estableció a partir del texto autorizado de la edición; los identificadores internos de preparación editorial se mantienen fuera de la cita pública.':'La referencia latina procede de V514; no se atribuye una traducción inglesa al pasaje.';
  const url=new URL(location.href);url.searchParams.set('edition',editionIds[lang]);url.searchParams.set('locus',locus);if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');history.replaceState(null,'',url);
 }
 function openLocus(value){
