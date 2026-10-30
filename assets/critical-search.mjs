@@ -43,7 +43,7 @@ async function compareLocus(locus){
   }else{const p=document.createElement('p');p.textContent='No fue posible cargar esta edición.';card.append(p);}
   const ownNotes=noteEntries.filter(n=>n.edition===editions[i].id);
   const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico';card.append(subtitle);
-  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');p.textContent=(n.locus?'Locus explícito':'Locus propuesto, pendiente de cotejo')+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
+  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');const passage=res.status==='fulfilled'?res.value.passages.find(item=>item.locus===locus):null;const evidence=anchorEvidence(n,passage);const status=n.locus?'Locus citado expresamente en nota':evidence.status==='strong_unreviewed'?'Locus probable: anclaje textual fuerte (sin cotejo editorial)':'Locus propuesto, requiere cotejo';p.textContent=status+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
   else{const p=document.createElement('p');p.textContent='No hay notas vinculadas a este locus en el índice actual de esta edición. Otras notas pueden estar pendientes de asignación.';card.append(p);}
   grid.append(card);
  });panel.append(grid);
@@ -55,6 +55,14 @@ async function compareLocus(locus){
  const bude=document.createElement('a');bude.href='bibliografia.html#chicago-18';bude.textContent='Ver referencias bibliográficas y Budé →';sources.append(bude);panel.append(sources);
  const source=document.createElement('p');source.className='source-note';source.textContent='Comparación de textos indexados, no colación independiente de manuscritos. Krohn y Budé deben citarse por la lección comprobada, no inferirse automáticamente.';panel.append(source);
  panel.scrollIntoView({block:'start',behavior:'smooth'});
+}
+function anchorEvidence(note,passage){
+ if(!passage)return {status:'unmatched',score:0};
+ const fold=t=>String(t||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/[^\\p{L}\\p{N}]+/gu,' ');
+ const input=fold(note.anchor).split(/\\s+/).filter(w=>w.length>=4).slice(0,35);
+ const text=new Set(fold(passage.translation).split(/\\s+/));
+ const common=input.filter(w=>text.has(w)).length;
+ return {status:input.length>=8&&common>=7&&common/input.length>=0.7?'strong_unreviewed':'unconfirmed',score:Math.round(100*common/Math.max(1,input.length))};
 }
 function sameReference(noteLocus,ref){
  const parsed=parseLocus(noteLocus);
