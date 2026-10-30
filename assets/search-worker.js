@@ -125,6 +125,28 @@ self.onmessage=async({data:m})=>{
     }
    }catch{warnings.push('No se pudo cargar el léxico de formas; se muestran coincidencias literales.');}
   }
+  // Long quotations pasted from other editions: rank real passages by
+  // significant-word overlap, not invented exact textual correspondence.
+  const quoteTokens=String(requested).normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\\p{L}]{3,}/gu)||[];
+  if(!output.results.length&&quoteTokens.length>=7&&m.kind!=='count'&&m.kind!=='locus'){
+   const stop=new Set(['que','los','las','con','por','para','del','una','uno','the','and','with','from','this','that','est','cum','qui','quae','quod','autem','sunt','non','sur','dans','des','les','une','mais']);
+   const querySet=new Set(quoteTokens.filter(t=>!stop.has(t)));
+   const matches=[];
+   for(const data of datasets)for(const p of data.passages){
+    if(m.book&&Number(m.book)!==p.book)continue;
+    for(const [language,textValue] of [['la',p.latin],[data.language,p.translation]]){
+     if(m.language&&m.language!=='all'&&m.language!==language)continue;
+     const source=String(textValue||'');
+     const indexed=new Set((source.normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\\p{L}]{3,}/gu)||[]).filter(t=>!stop.has(t)));
+     let shared=0;for(const word of querySet)if(indexed.has(word))shared++;
+     const ratio=shared/Math.max(1,querySet.size);
+     if(shared>=4&&ratio>=0.35)matches.push({edition:data.edition,locus:p.locus,book:p.book,chapter:p.chapter,section:p.section,section_end:p.section_end,language,latin:p.latin,translation:p.translation,text:source,snippet:source.slice(0,650),context_start:0,context_length:0,partial_match:true,form:'',page:p.pdf_pages?.[language==='la'?'latin':'translation']||null,score:Math.round(ratio*100),match_type:'approximate_quote'});
+    }
+   }
+   matches.sort((a,b)=>b.score-a.score||a.book-b.book||a.section-b.section);
+   output.results=matches.slice(0,30);
+   if(matches.length)warnings.push('Cita aproximada de otra edición: resultados ordenados por vocabulario compartido; verificá el locus y el texto original antes de citar.');
+  }
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
 };
