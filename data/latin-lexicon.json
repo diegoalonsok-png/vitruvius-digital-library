@@ -1,5 +1,5 @@
 {
-  "note": "Orientative technical Latin index; variants are suggestions, not a certified morphological analysis.",
+  "note": "Only explicitly source-checked entries are marked verified. Other Spanish/English/French glosses are provisional editorial guidance; consult primary dictionaries.",
   "entries": [
     {
       "lemma": "verbum",
@@ -11,7 +11,15 @@
         "verbum",
         "verbis"
       ],
-      "es": "palabra"
+      "es": "palabra",
+      "headword": "verbum, -ī",
+      "pos": "Sustantivo neutro · 2.ª declinación",
+      "en": "word; expression",
+      "fr": "mot; parole",
+      "senses": [
+        "Palabra, expresión lingüística."
+      ],
+      "verified": false
     },
     {
       "lemma": "architectura",
@@ -21,7 +29,25 @@
         "architecturarum",
         "architectura"
       ],
-      "es": "arquitectura"
+      "es": "arquitectura",
+      "headword": "archĭtectūra, -ae",
+      "pos": "Sustantivo femenino · 1.ª declinación",
+      "en": "architecture; the art of building",
+      "fr": "architecture; art de bâtir",
+      "greek": "ἀρχιτεκτονία",
+      "senses": [
+        "Arte de construir; arquitectura (sentido literal).",
+        "Uso figurado atestiguado en Plinio."
+      ],
+      "vitruvian": "Vitruvio trata la arquitectura como disciplina que integra práctica constructiva y razonamiento teórico; conviene leer De arch. I.1–3.",
+      "references": [
+        "Cic., Off. I.42.151",
+        "Vitr., De arch. I.1; I.3",
+        "Plin., Nat. XI.24.82"
+      ],
+      "source": "Lewis & Short, A Latin Dictionary (1879), voz architectura",
+      "source_url": "https://cld.bbaw.de/lemma/lat/architectura",
+      "verified": true
     },
     {
       "lemma": "symmetria",
@@ -30,7 +56,17 @@
         "symmetriam",
         "symmetriarum"
       ],
-      "es": "proporción"
+      "es": "proporción",
+      "headword": "symmetria, -ae",
+      "pos": "Sustantivo femenino · 1.ª declinación",
+      "en": "symmetry; proportional correspondence",
+      "fr": "symétrie; proportion",
+      "greek": "συμμετρία",
+      "senses": [
+        "Proporcionalidad y correspondencia entre partes."
+      ],
+      "vitruvian": "Concepto técnico de conmensurabilidad, no idéntico al uso moderno de simetría axial.",
+      "verified": false
     },
     {
       "lemma": "machina",
@@ -40,7 +76,17 @@
         "machinis",
         "machinarum"
       ],
-      "es": "máquina"
+      "es": "máquina",
+      "headword": "machina, -ae",
+      "pos": "Sustantivo femenino · 1.ª declinación",
+      "en": "machine; apparatus",
+      "fr": "machine; dispositif",
+      "greek": "μηχανή",
+      "senses": [
+        "Máquina, artefacto o mecanismo."
+      ],
+      "vitruvian": "Distinguir de organum en los pasajes técnicos, sin imponer equivalencia moderna rígida.",
+      "verified": false
     },
     {
       "lemma": "organum",
@@ -60,7 +106,15 @@
         "ordinatione",
         "ordinationes"
       ],
-      "es": "ordenación"
+      "es": "ordenación",
+      "headword": "ordinatio, -ōnis",
+      "pos": "Sustantivo femenino · 3.ª declinación",
+      "en": "ordering; arrangement",
+      "fr": "ordonnancement; disposition",
+      "senses": [
+        "Ordenación y organización."
+      ],
+      "verified": false
     },
     {
       "lemma": "dispositio",
@@ -70,7 +124,16 @@
         "dispositione",
         "dispositiones"
       ],
-      "es": "disposición"
+      "es": "disposición",
+      "headword": "dispositio, -ōnis",
+      "pos": "Sustantivo femenino · 3.ª declinación",
+      "en": "arrangement; disposition",
+      "fr": "disposition; arrangement",
+      "senses": [
+        "Disposición u organización de elementos."
+      ],
+      "vitruvian": "Término técnico relacionado con la organización del proyecto arquitectónico; el significado exacto debe verificarse en el contexto.",
+      "verified": false
     },
     {
       "lemma": "eurythmia",
@@ -78,7 +141,16 @@
         "eurythmiae",
         "eurythmiam"
       ],
-      "es": "euritmia"
+      "es": "euritmia",
+      "headword": "eurythmia, -ae",
+      "pos": "Sustantivo femenino · 1.ª declinación",
+      "en": "eurythmy; harmonious arrangement",
+      "fr": "eurythmie",
+      "greek": "εὐρυθμία",
+      "senses": [
+        "Armonía perceptible de la composición."
+      ],
+      "verified": false
     },
     {
       "lemma": "decor",
@@ -105,7 +177,15 @@
         "proportionem",
         "proportione"
       ],
-      "es": "proporción"
+      "es": "proporción",
+      "headword": "proportio, -ōnis",
+      "pos": "Sustantivo femenino · 3.ª declinación",
+      "en": "proportion; relation",
+      "fr": "proportion; rapport",
+      "senses": [
+        "Relación proporcional entre magnitudes."
+      ],
+      "verified": false
     },
     {
       "lemma": "ratio",
