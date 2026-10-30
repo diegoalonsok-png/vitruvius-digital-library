@@ -13,18 +13,34 @@
  try{const res=await fetch('data/latin-lexicon.json',{cache:'no-store'});if(res.ok){const loaded=(await res.json()).entries;if(Array.isArray(loaded)&&loaded.length)entries=loaded;}}catch{ /* Leave the useful embedded fallback active. */ }
  const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const displayGloss=()=>{
-  const token=(input.value.trim().split(/\s+/).slice(-1)[0]||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-  const entry=entries.find(e=>[e.lemma,...e.forms].some(w=>w.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()===token));
+  const token=norm(input.value.trim().split(/\s+/).slice(-1)[0]||'');
+  const entry=entries.find(e=>[e.lemma,...e.forms].some(w=>norm(w)===token));
   if(!entry){gloss.hidden=true;gloss.replaceChildren();return;}
   gloss.replaceChildren();
-  const label=document.createElement('strong');label.textContent=entry.lemma+' · ';
-  const meaning=document.createTextNode('traducción orientativa: '+entry.es+'. ');
-  const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(entry.lemma);a.target='_blank';a.rel='noopener noreferrer';a.textContent='Consultar Lewis & Short en Logeion (Universidad de Chicago) ↗';
-  gloss.append(label,meaning,a);
-  const note=document.createElement('small');note.style.cssText='display:block;color:#68716d';note.textContent='La equivalencia en castellano es una glosa orientativa del sitio, no una traducción certificada del diccionario. Consultá la entrada original para comprobar la acepción.';gloss.append(note);
-  gloss.hidden=false;
+  const line=(label,value)=>{
+    if(!value)return;
+    const p=document.createElement('p');p.style.cssText='margin:4px 0';
+    const strong=document.createElement('strong');strong.textContent=label+' ';
+    p.append(strong,document.createTextNode(value));gloss.append(p);
+  };
+  const title=document.createElement('div');title.style.cssText='font-family:Georgia,serif;font-size:21px;color:#122a42;margin-bottom:6px';title.textContent=entry.headword||entry.lemma;gloss.append(title);
+  line('Gramática:',entry.pos);
+  line('Castellano:',entry.es);
+  line('English:',entry.en);
+  line('Français:',entry.fr);
+  line('Griego relacionado:',entry.greek);
+  if(entry.senses?.length)line('Acepciones:',entry.senses.join(' · '));
+  if(entry.vitruvian)line('Uso vitruviano (nota editorial):',entry.vitruvian);
+  if(entry.references?.length)line('Testimonios citados:',entry.references.join('; '));
+  line('Formas para buscar:',[entry.lemma,...entry.forms].filter((v,i,a)=>a.indexOf(v)===i).slice(0,12).join(' · '));
+  const source=document.createElement('p');source.style.cssText='margin:7px 0';
+  const a=document.createElement('a');a.href=entry.source_url||'https://logeion.uchicago.edu/'+encodeURIComponent(entry.lemma);
+  a.target='_blank';a.rel='noopener noreferrer';a.textContent=entry.source?'Fuente: '+entry.source+' ↗':'Contrastar la entrada en Logeion (Universidad de Chicago) ↗';
+  source.append(a);gloss.append(source);
+  const note=document.createElement('small');note.style.cssText='display:block;color:#68716d';
+  note.textContent=entry.verified?'Datos lexicográficos cotejados; las notas técnicas son interpretación editorial.':'Glosas y notas orientativas; falta cotejar esta entrada con una edición lexicográfica concreta.';
+  gloss.append(note);gloss.hidden=false;
  };
-
  const hide=()=>{host.hidden=true;host.replaceChildren();input.setAttribute('aria-expanded','false');};
  const update=()=>{
   const q=norm(input.value.trim().split(/\s+/).slice(-1)[0]||'');
