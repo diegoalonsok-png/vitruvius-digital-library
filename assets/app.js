@@ -156,7 +156,7 @@ function ensureWorker(){
     if(data.type==='results'){
       results=data.results;countSummary=data.countSummary||null;shown=0;$('#search-results').replaceChildren();renderCountSummary(countSummary);
       const label=searchKind==='semantic'?'pasajes por afinidad de significado':'páginas con coincidencias';
-      $('#search-status').textContent=countSummary?`${countSummary.total.toLocaleString('es-AR')} ${countSummary.total===1?'aparición':'apariciones'} de «${lastQuery}» en ${countSummary.pages.toLocaleString('es-AR')} ${countSummary.pages===1?'página':'páginas'}.`:results.length?`${results.length.toLocaleString('es-AR')} ${label} para «${lastQuery}».`:`No se encontraron coincidencias para «${lastQuery}». Probá otro término o ampliá la selección de ediciones.`;
+      $('#search-status').textContent=countSummary?`${countSummary.total.toLocaleString('es-AR')} ${countSummary.total===1?'aparición':'apariciones'} de «${lastQuery}» en ${countSummary.pages.toLocaleString('es-AR')} ${countSummary.pages===1?'página':'páginas'}.`:results.length?`${results.length.toLocaleString('es-AR')} ${label} para «${lastQuery}».`:`Palabra o frase no encontrada: «${lastQuery}» en la selección actual. Probá otra grafía, una palabra aislada o elegí «Todos los textos incorporados».`;
       renderMore();$('#export-tools').hidden=results.length===0;
     }
   };
@@ -293,7 +293,7 @@ async function initialize(){
   if(!supplements.length)$('#investigacion').hidden=true;
   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
   $('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);$('#search-status').textContent='Se abrió la consulta en el buscador externo.';}));
-  $$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;startSearch();}));
+  $('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;$('#search-kind').value='words';$('#search-kind').dispatchEvent(new Event('change'));$('#search-mode').value='words';const target=b.dataset.scope;if(target&&[...$('#scope').options].some(o=>o.value===target&&!o.disabled))$('#scope').value=target;else $('#scope').value='all';startSearch();document.getElementById('search-status').scrollIntoView({block:'nearest',behavior:'smooth'});}));
   $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
   $('.catalog-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=$$('.catalog-tabs button');let i=tabs.indexOf(document.activeElement);i=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();});
   $('#catalog-filter').addEventListener('input',renderCatalog);
