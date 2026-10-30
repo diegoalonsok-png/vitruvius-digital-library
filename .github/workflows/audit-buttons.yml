@@ -25,6 +25,10 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Test every indexed Vitruvian passage without a manual word list
+        run: node scripts/test-full-corpus.mjs
+      - name: Test reference navigation and quotations
+        run: node scripts/test-search-regression.mjs
       - name: Start local GitHub Pages equivalent
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/vitruvius-http.log 2>&1 &
