@@ -30,7 +30,7 @@ function render(){
 async function compareLocus(locus){
  const panel=$('#critical-comparison');if(!panel)return;
  panel.hidden=false;panel.replaceChildren();const title=document.createElement('h2');title.textContent='Cotejo paralelo · '+locus;panel.append(title);
- const notes=await getNotes();const noteEntries=(notes.entries||[]).filter(n=>(n.locus||n.candidate_locus)===locus);
+ const notes=await getNotes();const locusRef=parseLocus(locus);const noteEntries=(notes.entries||[]).filter(n=>locusRef&&sameReference(n.locus||n.candidate_locus,locusRef));
  const datasets=await Promise.allSettled(editions.map(getCorpus));
  const grid=document.createElement('div');grid.className='critical-parallel';
  datasets.forEach((res,i)=>{
@@ -56,12 +56,16 @@ async function compareLocus(locus){
  const source=document.createElement('p');source.className='source-note';source.textContent='Comparación de textos indexados, no colación independiente de manuscritos. Krohn y Budé deben citarse por la lección comprobada, no inferirse automáticamente.';panel.append(source);
  panel.scrollIntoView({block:'start',behavior:'smooth'});
 }
+function sameReference(noteLocus,ref){
+ const parsed=parseLocus(noteLocus);
+ return !!parsed&&parsed.book===ref.book&&(ref.chapter==null||String(parsed.chapter)===String(ref.chapter))&&(ref.section==null||parsed.section===ref.section);
+}
 function renderNotes(notes,q,ref){
  const container=$('#critical-note-results');if(!container)return;
  container.replaceChildren();
  const filtered=notes.filter(n=>{
   const locus=n.locus||n.candidate_locus||'';
-  if(ref){const key=[ref.book,ref.chapter,ref.section].filter(v=>v!==null&&v!==undefined).join('.');return locus===key||locus.startsWith(key+'.');}
+  if(ref)return sameReference(locus,ref);
   const hay=[n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(' ');
   return norm(hay).includes(norm(q));
  });
