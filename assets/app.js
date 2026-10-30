@@ -164,7 +164,9 @@ async function setReaderPage(page){
         const pos=query?normalize(text).indexOf(normalize(query)):-1;
         const start=pos>=0?Math.max(0,pos-200):0;
         const excerpt=text;
-        $('#reader-text').innerHTML=resultSnippet({snippet:excerpt});
+        // PDF extraction contains visual line breaks. Reflow single lines, retain paragraph breaks.
+        const reflowed=excerpt.replace(/([^\n])\n(?!\n)/g,'$1 ').replace(/\n{3,}/g,'\n\n');
+        $('#reader-text').innerHTML=resultSnippet({snippet:reflowed});
         const mark=$('#reader-text').querySelector('mark');if(mark)mark.scrollIntoView({block:'center'});
         if(!text)$('#reader-text').textContent='No hay texto extraíble en esta página. Consultá el PDF.';
       }catch{
