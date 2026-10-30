@@ -67,7 +67,11 @@ function renderNotes(notes,q,ref){
   const locus=n.locus||n.candidate_locus||'';
   if(ref)return sameReference(locus,ref);
   const hay=[n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(' ');
-  return norm(hay).includes(norm(q));
+  const queryWords=[...new Set(norm(q).match(/[a-z0-9]{3,}/g)||[])];
+  if(!queryWords.length)return norm(hay).includes(norm(q));
+  const words=new Set(norm(hay).match(/[a-z0-9]{3,}/g)||[]);
+  return queryWords.every(word=>words.has(word)||[...words].some(token=>token.startsWith(word)&&word.length>=4));
+
  });
  const count=$('#critical-note-status');if(count)count.textContent=filtered.length+' notas críticas encontradas en el corpus de 811 notas. '+(ref?'Solo se listan loci explícitos o propuestos en el índice; las demás notas permanecen accesibles mediante búsqueda por término.':'');
  for(const n of filtered.slice(0,70)){
