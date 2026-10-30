@@ -164,9 +164,10 @@ function openComparison(id='recensio-es',page=1){
   if(!locusForm){
     locusForm=document.createElement('form');locusForm.id='comparison-locus-form';
     locusForm.className='compare-controls';
-    locusForm.innerHTML='<label>Libro <select id="comparison-book"><option value="">Elegir libro</option>'+Array.from({length:10},(_,i)=>'<option value="'+(i+1)+'">Libro '+(i+1)+'</option>').join('')+'</select></label><label>Locus latino (libro.capítulo.sección) <input id="comparison-locus" type="text" placeholder="I.1.1" aria-label="Locus latino"></label><button type="submit">Localizar locus →</button><span id="comparison-locus-status" role="status"></span>';
+    locusForm.innerHTML='<label>Libro <select id="comparison-book"><option value="">Elegir libro</option>'+Array.from({length:10},(_,i)=>'<option value="'+(i+1)+'">Libro '+(i+1)+'</option>').join('')+'</select></label><label>Locus latino (libro.capítulo.sección) <input id="comparison-locus" type="text" placeholder="I.1.1" aria-label="Locus latino"></label><button type="button" id="comparison-book-submit">Comparar libro →</button><button type="submit">Comparar locus →</button><span id="comparison-locus-status" role="status"></span>';
     note.after(locusForm);
     $('#comparison-book').addEventListener('change',()=>{$('#comparison-locus').value=$('#comparison-book').value?$('#comparison-book').value+'.1.1':'';});
+    $('#comparison-book-submit').addEventListener('click',()=>{const book=Number($('#comparison-book').value);const status=$('#comparison-locus-status');if(!book){status.textContent='Elegí uno de los diez libros.';return;}$('#comparison-locus').value=book+'.1.1';locusForm.requestSubmit();});
     locusForm.addEventListener('submit',async event=>{
       event.preventDefault();
       const val=($('#comparison-locus').value.trim()||($('#comparison-book').value?$('#comparison-book').value+'.1':'')).toUpperCase();
