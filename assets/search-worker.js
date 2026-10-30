@@ -2,7 +2,7 @@ const pageCache=new Map();let extractorPromise,vectorPromise,passagePromise;
 const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase();
 const words=s=>(norm(s).match(/[\p{L}\p{N}]+/gu)||[]);
 const phrase=s=>words(s).join(' ');
-function chooseEditions(editions,scope){return editions.filter(e=>scope==='all'||(scope==='principal'?['recensio-es','recensio-fr','theory-en'].includes(e.id):e.id===scope));}
+function chooseEditions(editions,scope){const allowed=new Set(['recensio-es','recensio-fr','theory-en']);return editions.filter(e=>allowed.has(e.id)&&(scope==='all'||scope==='principal'||e.id===scope));}
 function progress(requestId,message){self.postMessage({type:'progress',requestId,message});}
 async function readJSON(path){const r=await fetch(path);if(!r.ok)throw Error('No se pudo cargar un índice del corpus.');return r.json();}
 async function pagesFor(e,baseURL){if(!e.text_index)throw Error('La edición '+e.id+' no dispone de índice textual.');if(!pageCache.has(e.id))pageCache.set(e.id,readJSON(new URL(e.text_index,baseURL)).then(p=>{if(!Array.isArray(p)||!p.every(x=>Number.isInteger(x.page)&&typeof x.text==='string'))throw Error('Índice inválido para '+e.id+'.');return p.map(x=>({...x,normalized:phrase(x.text)}));}).catch(err=>{pageCache.delete(e.id);throw err;}));return pageCache.get(e.id);}
