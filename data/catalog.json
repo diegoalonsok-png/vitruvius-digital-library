@@ -118,10 +118,54 @@
       "searchable": true,
       "available": true,
       "source_url": "https://archive.org/details/vitruviidearchit00vitr"
+    },
+    {
+      "id": "ortiz-1787",
+      "title": "Los diez libros de architectura de M. Vitruvio Polión",
+      "subtitle": "Traducción y comentarios de Joseph Ortiz y Sanz",
+      "author": "Vitruvio; Joseph Ortiz y Sanz (traductor)",
+      "publisher": "Imprenta Real, Madrid",
+      "year": "1787",
+      "languages": [
+        "es"
+      ],
+      "version": "1787",
+      "category": "historical",
+      "pages": 370,
+      "text_index": "data/text/ortiz-1787.json",
+      "searchable": true,
+      "available": false,
+      "external": true,
+      "read_url": "https://archive.org/details/A065112",
+      "source_url": "https://archive.org/details/A065112",
+      "access": "facsimile",
+      "description": "Facsímil externo en Internet Archive. Índice OCR automático sujeto a errores; consultar imágenes para citas."
+    },
+    {
+      "id": "cesariano-1521",
+      "title": "Di Lucio Vitruvio Pollione de architectura libri dece",
+      "subtitle": "Traducción y comentario de Cesare Cesariano",
+      "author": "Vitruvio; Cesare Cesariano (traductor)",
+      "publisher": "Gottardo da Ponte, Como",
+      "year": "1521",
+      "languages": [
+        "it"
+      ],
+      "version": "1521",
+      "category": "historical",
+      "pages": 378,
+      "text_index": "data/text/cesariano-1521.json",
+      "searchable": true,
+      "available": false,
+      "external": true,
+      "read_url": "https://archive.org/details/gri_33125008262210",
+      "source_url": "https://archive.org/details/gri_33125008262210",
+      "access": "facsimile",
+      "description": "Facsímil externo en Internet Archive. Índice OCR automático sujeto a errores; consultar imágenes para citas."
     }
   ],
   "total_pages": 314,
-  "searchable_pages": 314,
+  "searchable_pages": 1062,
   "base_edition": "recensio-es",
   "semantic": {
     "status": "pending"
