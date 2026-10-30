@@ -37,7 +37,10 @@ async function showFullPage(){
    const pages=fullIndexes[id],page=Math.min(pages.length,Math.max(1,Number($('full-page').value)||1));
    $('full-page').value=page;$('full-page').max=pages.length;
    const raw=String(pages[page-1]?.text||'');
-   const reflow=raw.replace(/([^\n])\n(?!\n)/g,'$1 ').replace(/\n{3,}/g,'\n\n');
+   // Join only explicit PDF end-of-line hyphenation; retain true compound words until source review.
+   const reflow=raw.replace(/([A-Za-zÀ-ÿ])[-‐¬]\s*\n\s*([a-zà-ÿ])/g,'$1$2')
+     .replace(/([^\n])\n(?!\n)/g,'$1 ')
+     .replace(/\n{3,}/g,'\n\n');
    $('full-text').innerHTML=reflow?highlight(reflow,lastFullSearch):'No hay texto extraíble en esta página.';
    $('full-prev').disabled=page<=1;$('full-next').disabled=page>=pages.length;
    $('full-ref').textContent=fullNames[id]+' · página indexada '+page+'/'+pages.length+' · locus aún no cotejado';
