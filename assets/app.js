@@ -369,7 +369,7 @@ function startSearch(){
   $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();
   $('#search-status').textContent=searchKind==='semantic'?'Preparando la búsqueda por significado…':searchKind==='count'?'Preparando el recuento del término…':'Preparando la búsqueda en las ediciones seleccionadas…';
   $('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
-  ensureWorker().postMessage({type:'search',requestId,query,kind:searchKind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>e.searchable&&e.text_index),semantic:catalog.semantic});
+  ensureWorker().postMessage({type:'search',requestId,query,kind:searchKind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>['recensio-es','recensio-fr','theory-en'].includes(e.id)&&e.searchable&&e.text_index),semantic:catalog.semantic});
 }
 
 function locusLabel(r){
@@ -471,7 +471,11 @@ async function initialize(){
   // Select a real searchable edition by default, without changing the visual layout.
   const scopeControl=$('#scope');
   if(scopeControl){
-    const indexed=records.filter(e=>e.searchable&&e.text_index);
+    const authorCorpus=new Set(['recensio-es','recensio-fr','theory-en']);
+    const indexed=records.filter(e=>authorCorpus.has(e.id)&&e.searchable&&e.text_index);
+    for(const option of [...scopeControl.options]){
+      if(option.value!=='all'&&option.value!=='principal'&&!authorCorpus.has(option.value))option.remove();
+    }
     for(const option of scopeControl.options){
       if(option.value!=='all'&&option.value!=='principal')option.disabled=!indexed.some(e=>e.id===option.value);
       if(option.value==='principal')option.disabled=!indexed.some(e=>['recensio-es','recensio-fr','theory-en'].includes(e.id));
