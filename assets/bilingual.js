@@ -20,6 +20,8 @@ try{const response=await fetch('data/bilingual-passages.json');if(!response.ok)t
 
 // Full-edition reader: all indexed pages, independent of the locus-aligned scholarly edition.
 const fullIndexes={};
+let lastFullSearch='';
+const normalizeFull=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase();
 const fullNames={'recensio-es':'V514 · Diego Kurilo · latín-castellano','recensio-fr':'V554 · Diego Kurilo · latín-francés','theory-en':'V297 · Diego Kurilo · latín-inglés'};
 let fullSerial=0;
 async function showFullPage(){
@@ -36,12 +38,13 @@ async function showFullPage(){
    $('full-page').value=page;$('full-page').max=pages.length;
    const raw=String(pages[page-1]?.text||'');
    const reflow=raw.replace(/([^\n])\n(?!\n)/g,'$1 ').replace(/\n{3,}/g,'\n\n');
-   $('full-text').textContent=reflow||'No hay texto extraíble en esta página.';
+   $('full-text').innerHTML=reflow?highlight(reflow,lastFullSearch):'No hay texto extraíble en esta página.';
+   $('full-prev').disabled=page<=1;$('full-next').disabled=page>=pages.length;
    $('full-ref').textContent=fullNames[id]+' · página indexada '+page+'/'+pages.length+' · locus aún no cotejado';
    $('full-status').textContent='Índice completo disponible: '+pages.length+' páginas. Usá las flechas para avanzar. Los saltos de página no son límites de pasaje.';
  }catch(error){if(serial===fullSerial)$('full-status').textContent='No se pudo cargar la edición: '+error.message;}
 }
-$('full-edition').addEventListener('change',()=>{$('full-page').value=1;showFullPage()});
+$('full-edition').addEventListener('change',()=>{lastFullSearch='';$('full-page').value=1;showFullPage()});
 $('full-page').addEventListener('change',showFullPage);
 $('full-prev').addEventListener('click',()=>{$('full-page').value=Math.max(1,Number($('full-page').value)-1);showFullPage()});
 $('full-next').addEventListener('click',()=>{$('full-page').value=Number($('full-page').value)+1;showFullPage()});
@@ -50,12 +53,12 @@ $('full-find').addEventListener('click',async()=>{
  if(!q){$('full-status').textContent='Escribí la palabra que querés buscar.';return;}
  if(!fullIndexes[id])await showFullPage();
  const pages=fullIndexes[id]||[],start=Math.max(0,Number($('full-page').value)-1);
- const normalizeWord=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase();
- const term=normalizeWord(q);
+ const term=normalizeFull(q);
  let found=-1;
- for(let n=0;n<pages.length;n++){const i=(start+n)%pages.length;if(normalizeWord(pages[i].text||'').includes(term)){found=i;break;}}
+ for(let n=0;n<pages.length;n++){const i=(start+n)%pages.length;if(normalizeFull(pages[i].text||'').includes(term)){found=i;break;}}
  if(found<0){$('full-status').textContent='No se encontró «'+q+'» en esta edición.';return;}
- $('full-page').value=found+1;await showFullPage();
- $('full-status').textContent='«'+q+'» localizada en página '+(found+1)+' de '+fullNames[id]+'.';
+ lastFullSearch=q;$('full-page').value=found+1;await showFullPage();
+ $('full-status').textContent='«'+q+'» localizada en página '+(found+1)+' de '+fullNames[id]+' (coincidencia resaltada).';
+ $('full-text').querySelector('mark')?.scrollIntoView({block:'center'});
 });
 showFullPage();
