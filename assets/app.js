@@ -426,7 +426,19 @@ async function initialize(){
       if(option.value!=='all'&&option.value!=='principal')option.disabled=!indexed.some(e=>e.id===option.value);
       if(option.value==='principal')option.disabled=!indexed.some(e=>['recensio-es','recensio-fr','theory-en'].includes(e.id));
     }
-    for(const e of indexed){if(![...scopeControl.options].some(option=>option.value===e.id)){const option=new Option(`${e.version||e.year} · ${languageLabel(e)}`,e.id);scopeControl.add(option);}}
+    const editionLabel=e=>{
+      const year=e.year||'',lang=languageLabel(e);
+      if(e.id==='krohn-1912')return 'Vitruvio · Fritz Krohn (editor, 1912) · Latín';
+      if(e.id==='ortiz-1787')return 'Vitruvio · Joseph Ortiz y Sanz (traductor, 1787) · Castellano';
+      if(e.id==='cesariano-1521')return 'Vitruvio · Cesare Cesariano (traductor, 1521) · Italiano';
+      if(['recensio-es','recensio-fr','theory-en'].includes(e.id))return 'Diego Kurilo · '+e.version+' ('+year+') · '+lang;
+      return (e.author||'Responsable por verificar')+' · '+(e.version||year)+' · '+lang;
+    };
+    for(const e of indexed){
+      let option=[...scopeControl.options].find(o=>o.value===e.id);
+      if(!option){option=new Option('',e.id);scopeControl.add(option);}
+      option.textContent=editionLabel(e);
+    }
     if(scopeControl.selectedOptions[0]?.disabled)scopeControl.value='all';
   }
   // Verify the actual repository inventory before exposing publication links.
