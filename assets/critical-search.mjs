@@ -58,9 +58,9 @@ async function compareLocus(locus){
 }
 function anchorEvidence(note,passage){
  if(!passage)return {status:'unmatched',score:0};
- const fold=t=>String(t||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/[^\\p{L}\\p{N}]+/gu,' ');
- const input=fold(note.anchor).split(/\\s+/).filter(w=>w.length>=4).slice(0,35);
- const text=new Set(fold(passage.translation).split(/\\s+/));
+ const fold=t=>String(t||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ');
+ const input=fold(note.anchor).split(/\s+/).filter(w=>w.length>=4).slice(0,35);
+ const text=new Set(fold(passage.translation).split(/\s+/));
  const common=input.filter(w=>text.has(w)).length;
  return {status:input.length>=8&&common>=7&&common/input.length>=0.7?'strong_unreviewed':'unconfirmed',score:Math.round(100*common/Math.max(1,input.length))};
 }
@@ -75,9 +75,9 @@ function renderNotes(notes,q,ref){
   const locus=n.locus||n.candidate_locus||'';
   if(ref)return sameReference(locus,ref);
   const hay=[n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(' ');
-  const queryWords=[...new Set(norm(q).match(/[a-z0-9]{3,}/g)||[])];
+  const queryWords=[...new Set(norm(q).match(/[\p{L}\p{N}]{3,}/gu)||[])];
   if(!queryWords.length)return norm(hay).includes(norm(q));
-  const words=new Set(norm(hay).match(/[a-z0-9]{3,}/g)||[]);
+  const words=new Set(norm(hay).match(/[\p{L}\p{N}]{3,}/gu)||[]);
   return queryWords.every(word=>words.has(word)||[...words].some(token=>token.startsWith(word)&&word.length>=4));
 
  });
