@@ -249,8 +249,38 @@ function openComparison(id='recensio-es',page=1){
         $('.compare-page',pane).value=target;
         try{await renderComparePane(pane);mapped++;}catch(error){console.error('Error showing mapped locus',error);}
       }
+      if(!mapped){
+        try{
+          const response=await fetch('data/loci-candidates.json',{cache:'no-store'});
+          if(response.ok){
+            const candidateMap=await response.json();
+            const alternatives=[];
+            for(const pane of $('.compare-pane',$('#comparison-panes'))){
+              const ed=edition($('select',pane).value);
+              const candidates=candidateMap.editions?.[ed?.id]?.[locus]||[];
+              if(!candidates.length)continue;
+              alternatives.push({pane,ed,candidates});
+            }
+            if(alternatives.length){
+              status.replaceChildren();
+              const intro=document.createElement('span');
+              intro.textContent='Referencia '+locus+': se encontraron menciones en PDFs digitales (pueden ser notas o índices, no pasajes validados). ';
+              status.append(intro);
+              for(const item of alternatives){
+                const label=document.createElement('label');label.textContent=item.ed.version+' · página candidata: ';
+                const select=document.createElement('select');
+                for(const page of item.candidates){const o=document.createElement('option');o.value=page;o.textContent='PDF '+page;select.append(o);}
+                const go=document.createElement('button');go.type='button';go.textContent='Abrir candidata →';
+                go.addEventListener('click',()=>{$('.compare-page',item.pane).value=select.value;renderComparePane(item.pane);});
+                label.append(select,go);status.append(label);
+              }
+              return;
+            }
+          }
+        }catch(error){console.warn('Candidate index not available:',error);}
+      }
       status.textContent=mapped?('Vitr., De arch. '+locus+': localizada la página en '+mapped+' edición(es). Las demás ediciones no tienen cotejo registrado.'):
-        ('Vitr., De arch. '+locus+': todavía no se registró una correspondencia de páginas verificada para estas ediciones. Elegí I.2.1 o III.1.1 con Krohn para probar las disponibles.');
+        ('Vitr., De arch. '+locus+': no se encontró todavía una página cotejada ni una mención explícita indexada para esas ediciones. Podés navegar manualmente por los PDF.');
     });
   }
   $('#comparison-dialog').showModal();
