@@ -82,7 +82,15 @@ async function getPages(e){
 async function openReader(id,page=1){
   const e=edition(id);if(!e)return;
   if(!e.external&&!e.pdf&&!e.pdf_chunks?.length){window.alert('Esta edición todavía no tiene un documento incorporado al sitio.');return;}
-  if(e.external){let url=e.read_url||e.source_url;if(/archive\.org\/details\//.test(url)){url=url.replace(/\/$/,'')+'/page/n'+Math.max(0,Math.floor(Number(page)||1)-1);}window.open(url,'_blank','noopener');return;}
+  // Las ediciones externas también se leen en el visor propio: OCR + facsímil enlazado.
+  if(e.external){
+    currentReader=e;$('#reader-title').textContent=e.title;
+    $('#reader-edition').textContent=`${e.version||e.year} · ${languageLabel(e)} · OCR histórico`;
+    $('#reader-download').hidden=true;$('#reader-download').removeAttribute('data-download');
+    if(!$('#reader-dialog').open)$('#reader-dialog').showModal();
+    await setReaderPage(page);return;
+  }
+  $('#reader-download').hidden=false;
   currentReader=e;$('#reader-title').textContent=e.title;$('#reader-edition').textContent=`${e.version} · ${languageLabel(e)}`;
   $('#reader-download').href=downloadLink(e,'pdf');$('#reader-download').download=`${e.id}.pdf`;$('#reader-download').dataset.download=e.id;$('#reader-download').dataset.format='pdf';
   if(!$('#reader-dialog').open)$('#reader-dialog').showModal();
@@ -97,6 +105,16 @@ async function setReaderPage(page){
   $('#reader-page-total').textContent=`de ${e.pages.toLocaleString('es-AR')}`;
   $('#reader-prev').disabled=currentPage<=1;$('#reader-next').disabled=currentPage>=e.pages;
   $('#reader-frame').removeAttribute('src');$('#reader-external').href=sourceURL(e,requestedPage);
+  if(e.external){
+    const archive=(e.read_url||e.source_url||'').match(/archive\.org\/details\/([^/?#]+)/);
+    if(archive)$('#reader-frame').src='https://archive.org/embed/'+encodeURIComponent(archive[1])+'/page/n'+Math.max(0,requestedPage-1);
+    $('#reader-external').textContent='Abrir facsímil original ↗';
+    $('#reader-text').textContent='Cargando la transcripción histórica de esta página…';
+    try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'No hay texto OCR en esta página. Abrí el facsímil original.';}
+    catch{if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el OCR. Abrí la fuente original.';}
+    return;
+  }
+  $('#reader-external').textContent='Abrir PDF en otra pestaña ↗';
   documentURL(e).then(url=>{if(revision!==readerRevision||currentReader?.id!==e.id||!$('#reader-dialog').open)return;const pdfURL=`${url}#page=${requestedPage}&view=FitH`;$('#reader-frame').src=pdfURL;$('#reader-external').href=pdfURL;}).catch(error=>{if(revision===readerRevision)$('#reader-text').textContent=`${error.message} Volvé a abrir la edición para intentarlo de nuevo.`;});
   $('#reader-text').textContent=e.searchable?'Cargando el texto de esta página…':'Facsímil en imagen. Consultá el PDF para ver el testimonio manuscrito.';
   if(!e.searchable)return;
@@ -132,11 +150,21 @@ async function renderComparePane(pane){
   const external=$('.compare-external',pane),pageInput=$('.compare-page',pane),modeButton=$('.compare-mode',pane);
   const page=Math.max(1,Math.min(e.pages||1,Math.round(Number(pageInput.value)||1)));pageInput.value=page;pageInput.max=e.pages||1;
   $('.compare-total',pane).textContent=e.pages?`/ ${e.pages}`:'';
-  for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=Boolean(e.external);
+  for(const c of [pageInput,$('.compare-prev',pane),$('.compare-next',pane)])c.disabled=false;
   external.href=sourceURL(e,page);
-  modeButton.hidden=e.external||!e.searchable;
+  modeButton.hidden=!e.searchable;
   modeButton.textContent=pane.dataset.mode==='text'?'Ver PDF':'Ver texto';
-  if(e.external){body.innerHTML=`<p>${escapeHTML(e.title)}</p><p class="compare-source-note">Esta edición se conserva en ${escapeHTML(e.publisher)}. Abrí el visor de la institución para consultar su reproducción.</p><a class="button primary" href="${escapeHTML(sourceURL(e,page))}" target="_blank" rel="noopener">Abrir fuente institucional ↗</a>`;return;}
+  if(e.external){
+    if(pane.dataset.mode==='text'&&e.searchable){
+      body.textContent='Cargando transcripción OCR…';
+      try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent=pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.';}
+      catch{body.textContent='OCR no disponible. Consultá el facsímil original.';}
+    }else{
+      const url=e.read_url||e.source_url,archive=(url||'').match(/archive\.org\/details\/([^/?#]+)/);
+      if(archive){const frame=document.createElement('iframe');frame.title=e.title+' · página '+page;frame.src='https://archive.org/embed/'+encodeURIComponent(archive[1])+'/page/n'+Math.max(0,page-1);body.replaceChildren(frame);}
+      else body.textContent='Consultá el facsímil en la institución mediante «Abrir fuente».';
+    }return;
+  }
   if(pane.dataset.mode==='pdf'||!e.searchable){
     const loading=document.createElement('p');loading.className='compare-source-note';loading.textContent='Preparando el facsímil…';body.append(loading);
     try{const url=await documentURL(e);if($('select',pane).value!==e.id||Number(pageInput.value)!==page||(pane.dataset.mode!=='pdf'&&e.searchable))return;const frame=document.createElement('iframe');frame.title=`${e.title}, página PDF ${page}`;frame.src=`${url}#page=${page}&view=FitH`;external.href=frame.src;body.replaceChildren(frame);}catch(error){loading.textContent=`${error.message} Volvé a seleccionar la edición para intentarlo de nuevo.`;}return;
