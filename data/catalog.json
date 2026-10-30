@@ -32,7 +32,10 @@
       "read_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
       "pdf_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
       "text_index": "data/text/recensio-es.json",
-      "searchable_pages": 1157
+      "searchable_pages": 1157,
+      "bibliographic_title": "Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",
+      "editorial_role": "Edición y traducción de Diego Kurilo",
+      "publication_place": "Buenos Aires"
     },
     {
       "id": "recensio-fr",
@@ -57,7 +60,10 @@
       "read_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
       "pdf_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
       "text_index": "data/text/recensio-fr.json",
-      "searchable_pages": 1166
+      "searchable_pages": 1166,
+      "bibliographic_title": "Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",
+      "editorial_role": "Édition et traduction de Diego Kurilo",
+      "publication_place": "Buenos Aires"
     },
     {
       "id": "theory-en",
@@ -71,7 +77,7 @@
       "year": "2026",
       "category": "editions",
       "author": "Diego Kurilo",
-      "publisher": "Sophia Lux",
+      "publisher": "Sophia Lux Publishing House",
       "pages": 1056,
       "description": "Latin–English reading edition and architectural commentary. PDF completo disponible para lectura pública en Google Drive; índice de búsqueda interna todavía en preparación.",
       "searchable": true,
@@ -82,7 +88,10 @@
       "read_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
       "pdf_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
       "text_index": "data/text/theory-en.json",
-      "searchable_pages": 1054
+      "searchable_pages": 1054,
+      "bibliographic_title": "The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",
+      "editorial_role": "Edición, traducción y comentario de Diego Kurilo",
+      "publication_place": "Buenos Aires"
     },
     {
       "id": "theory-es",
