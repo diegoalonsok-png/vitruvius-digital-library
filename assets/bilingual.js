@@ -26,7 +26,8 @@ $('open-full-edition').addEventListener('click',()=>{
  $('full-book').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
-$('lang').addEventListener('change',render);$('book').addEventListener('change',()=>{refreshFilters();render()});$('chapter').addEventListener('change',()=>{refreshFilters();render()});$('section').addEventListener('change',render);
+const selectPassage=()=>{refreshFilters();render();if(!$('unaligned-help').hidden){const key=[$('book').value,$('chapter').value,$('section').value].join('.');const id=$('lang').value==='es'?'recensio-es':$('lang').value==='fr'?'recensio-fr':'theory-en';const page=checkedLoci[key]?.[id];$('status').textContent=page?'El pasaje '+key+' no está alineado todavía. Su comienzo está localizado en la página '+page+' de la edición '+id+'. Abrí la edición completa debajo.':'El pasaje '+key+' todavía no está alineado ni tiene página cotejada; no se puede mostrar una traducción fiable.';}};
+$('lang').addEventListener('change',selectPassage);$('book').addEventListener('change',selectPassage);$('chapter').addEventListener('change',selectPassage);$('section').addEventListener('change',selectPassage);
 try{const response=await fetch('data/bilingual-passages.json');if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();passages=data.passages||[];refreshFilters();render()}catch(error){$('status').textContent='No se pudo cargar el corpus bilingüe: '+error.message}
 
 
