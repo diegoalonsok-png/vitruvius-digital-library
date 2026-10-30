@@ -20,19 +20,28 @@ self.onmessage=async({data:m})=>{
   const loaded=await Promise.allSettled(selected.map(e=>corpus(e,m.baseURL)));
   const datasets=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value);
   if(!datasets.length)throw loaded[0].reason;
-  const resolved=parseLocus(m.query);const effective=resolved&&m.kind==='words'?{...m,kind:'locus'}:m;
-  let output=searchCorpus(datasets,effective);
   const warnings=loaded.flatMap((x,i)=>x.status==='rejected'?['No se pudo consultar '+selected[i].version]:[]);
-  // Editorial headers and book summaries are not among the numbered Latin loci.
-  // Offer book-level navigation, explicitly distinguishing it from a textual match.
-  if(!output.results.length && m.kind==='words' && /\\b(?:LIBER|LIBRO|BOOK)\\s+(?:X|IX|VIII|VII|VI|IV|V|III|II|I|10|[1-9])\\b/i.test(m.query)){
-   const found=m.query.match(/\\b(?:LIBER|LIBRO|BOOK)\\s+(X|IX|VIII|VII|VI|IV|V|III|II|I|10|[1-9])\\b/i);
-   const locus=parseLocus(found[1]);
-   if(locus){
-    output=searchCorpus(datasets,{...m,kind:'locus',query:found[1]});
-    warnings.push('La frase completa no aparece en los párrafos numerados del índice. Se muestran los pasajes del Libro '+found[1]+' como navegación, no como coincidencias de la cita. Los encabezados, argumenta y notas editoriales requieren un índice independiente.');
-   }
+  let requested=String(m.query||'').trim();
+  const direct=parseLocus(requested);
+  const heading=requested.match(/\\b(?:liber|libro|book)\\s+(10|IX|VIII|VII|VI|IV|V|III|II|I|X|[1-9])(?:\\s+(?:caput|capítulo|capitulo|chapter)\\s+(\\d+))?/i);
+  let effective={...m,query:requested};
+  if(direct && (m.kind==='words'||m.kind==='locus'))effective.kind='locus';
+  else if(heading){
+   effective={...m,kind:'locus',query:heading[1]+(heading[2]?'.'+heading[2]:'')};
+   if(requested.length>heading[0].length+15)warnings.push('Consulta interpretada como referencia al libro o capítulo. Las notas editoriales y los argumenta no están indexados como texto de Vitruvio.');
   }
+  const greekLexicon={
+   'συμμετρια':'symmetria','ευρυθμια':'eurythmia','μηχανη':'machina','αρχιτεκτονια':'architectura'
+  };
+  const normalizeGreek=value=>String(value).normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
+  if(!direct&&!heading&&/[\\u0370-\\u03ff\\u1f00-\\u1fff]/u.test(requested)){
+   const equivalent=greekLexicon[normalizeGreek(requested)];
+   if(equivalent){
+    effective={...effective,query:equivalent,kind:'words'};
+    warnings.push('Correspondencia griego–latín: '+requested+' → '+equivalent+'. Se buscan las formas latinas, no apariciones literales del griego.');
+   }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
+  }
+  const output=searchCorpus(datasets,effective);
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
 };
