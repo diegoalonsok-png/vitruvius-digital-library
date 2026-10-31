@@ -9,7 +9,7 @@ for(const edition of ['krohn-1912','rose-1899','perrault-1673']){
 assert(ui.includes('requestSerial'),'Asynchronous edition search has no stale result guard');
 assert(ui.includes('selectHistoricalEdition'),'Edition-specific facsimile selection missing');
 assert(!ui.includes("card.querySelector('a')?.addEventListener"),'Duplicate result click handlers can produce stale or inconsistent pages');
-assert(ui.includes('Página '+"'"+' )===false?true:true);
+assert(ui.includes('sin transcripción OCR'),'PDF pages without OCR must remain navigable');
 const records=[
   ['krohn-1912',200,314],
   ['perrault-1673',300,371],
