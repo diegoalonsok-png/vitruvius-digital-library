@@ -24,7 +24,7 @@
  })));
  function matchingTokens(text,forms){
   const found=[];
-  for(const match of String(text||'').matchAll(/[\\p{L}\\p{M}]+/gu)){
+  for(const match of String(text||'').matchAll(/[\p{L}\p{M}]+/gu)){
    const token=normalizeWord(match[0]);
    if(forms.has(token))found.push(match[0]);
   }
@@ -33,8 +33,8 @@
  async function showOccurrences(){
   const searched=input.value.trim(),token=normalizeWord(searched);
   occurrences.replaceChildren();occurrences.hidden=true;
-  if(!searched||searched.length>90||!/[\\p{L}]/u.test(searched))return;
-  const queryWords=[...searched.matchAll(/[\\p{L}\\p{M}]+/gu)].map(x=>normalizeWord(x[0]));
+  if(!searched||searched.length>90||!/[\p{L}]/u.test(searched))return;
+  const queryWords=[...searched.matchAll(/[\p{L}\p{M}]+/gu)].map(x=>normalizeWord(x[0]));
   if(queryWords.length!==1)return;
   const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
   const forms=new Set([searched,...(entry?[entry.lemma,...(entry.forms||[]),entry.transliteration,entry.greek]:[])].filter(Boolean).map(normalizeWord));
@@ -65,7 +65,7 @@
       a.textContent='Vitr., De arch. '+p.locus;li.append(a);
       const details=['latín: '+hit.latin.length,'traducción: '+hit.translation.length].join(' · ');
       const source=hit.translation.length&&!hit.latin.length?p.translation:p.latin;
-      const tokenMatch=[...String(source||'').matchAll(/[\\p{L}\\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
+      const tokenMatch=[...String(source||'').matchAll(/[\p{L}\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
       const at=tokenMatch?.index||0;
       li.append(document.createTextNode(' ('+details+') — '+String(source||'').slice(Math.max(0,at-55),at+125)));
       list.append(li);
@@ -92,7 +92,7 @@
   function fill(){
    if(input.value.trim()!==value)return;
    const q=norm(value),hits=[];
-   for(const p of passageData){const ts=String(p.latin||'').matchAll(/[\\p{L}\\p{M}]+/gu);for(const m of ts)if(norm(m[0])===q){hits.push({p,index:m.index,term:m[0]});break;}}
+   for(const p of passageData){const ts=String(p.latin||'').matchAll(/[\p{L}\p{M}]+/gu);for(const m of ts)if(norm(m[0])===q){hits.push({p,index:m.index,term:m[0]});break;}}
    status.textContent=hits.length+' pasajes del texto latino V514 con esta grafía.';
    for(const {p,index,term} of hits.slice(0,12)){const para=document.createElement('p'),a=document.createElement('a');a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(value);a.textContent='Vitr., De arch. '+p.locus+' →';const snippet=String(p.latin||'').slice(Math.max(0,index-55),index+term.length+95);para.append(a,document.createTextNode(' · '+snippet));section.append(para);}
   }
