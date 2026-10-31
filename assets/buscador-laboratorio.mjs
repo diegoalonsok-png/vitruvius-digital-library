@@ -22,6 +22,42 @@ if(similar){best={score:48,kind:'Grafía aproximada',matched:similar};break;}}
 if(qwords.length>1&&qwords.filter(w=>words.has(w)).length>=Math.max(2,Math.ceil(qwords.length*.8)))best={score:42,kind:'Coincidencia parcial de términos'};}
 return best;}
 function excerpt(value,q){const text=String(value||'');if(!text)return '';const normalized=plain(text),target=plain(q);let index=normalized.indexOf(target);if(index<0)index=0;const start=Math.max(0,index-110);return (start?'…':'')+text.slice(start,start+520)+(start+520<text.length?'…':'');}
-function render(){const root=$('#lab-results');for(const r of results.slice(shown,shown+20)){const p=r.p,article=document.createElement('article');const heading=document.createElement('h2');heading.textContent='Vitr., De arch. '+roman(p.book)+'.'+p.chapter+'.'+p.section;article.append(heading);const meta=document.createElement('p');meta.className='meta';meta.textContent=names[r.id]+' · '+r.kind+(r.matched?' ('+r.matched+')':'');article.append(meta);for(const [label,text,lang] of [['Latín',p.latin,'la'],['Traducción',p.translation,'']]){if(!text)continue;const par=document.createElement('p');if(lang)par.lang=lang;const bold=document.createElement('strong');bold.textContent=label+'. ';par.append(bold,document.createTextNode(excerpt(text,$('#lab-query').value)));article.append(par);}const actions=document.createElement('div');actions.className='actions';const a=document.createElement('a');a.href='lector-bilingue.html?edition='+encodeURIComponent(r.id)+'&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent($('#lab-query').value);a.textContent='Leer pasaje →';actions.append(a);const cmp=document.createElement('a');cmp.href='comparador-loci.html?locus='+encodeURIComponent(p.locus);cmp.textContent='Comparar traducciones →';actions.append(cmp);article.append(actions);root.append(article);}shown=Math.min(results.length,shown+20);$('#lab-more').hidden=shown>=results.length;$('#lab-more').textContent='Mostrar más ('+shown+' de '+results.length+')';}
-async function run(){const id=++revision,q=$('#lab-query').value.trim(),scope=$('#lab-scope').value,mode=$('#lab-mode').value,lang=$('#lab-lang').value;if(!q)return;$('#lab-results').replaceChildren();$('#lab-more').hidden=true;$('#lab-status').textContent='Consultando los corpus…';try{const selected=scope==='all'?ids:[scope];const data=await Promise.all(selected.map(async eid=>({eid,data:await corpus(eid)})));if(id!==revision)return;const locus=parseLocus(q);const found=[];for(const {eid,data:d} of data){for(const p of d.passages||[]){const match=find(p,q,mode,lang,locus);if(match)found.push({id:eid,p,...match});}}found.sort((a,b)=>b.score-a.score||a.p.book-b.p.book||a.p.section-b.p.section);results=found;shown=0;$('#lab-load').textContent='Corpus consultados: '+data.map(x=>names[x.eid]).join(' · ');$('#lab-status').textContent=found.length+' pasajes candidatos encontrados. '+(found.length?'Los resultados aproximados requieren revisión.':'Probá otra grafía o el buscador principal.');render();}catch(e){if(id!==revision)return;$('#lab-status').textContent='Error de carga: '+e.message;}}
-$('#lab-form').addEventListener('submit',e=>{e.preventDefault();run();});$('#lab-more').addEventListener('click',render);document.querySelectorAll('[data-test]').forEach(b=>b.addEventListener('click',()=>{$('#lab-query').value=b.dataset.test;run();}));
+function render(){
+ const root=$('#lab-results'),reading=$('#lab-scope').value;
+ for(const r of results.slice(shown,shown+20)){
+  const p=r.p,article=document.createElement('article');
+  const title=document.createElement('h2');title.textContent='Vitr., De arch. '+roman(p.book)+'.'+p.chapter+'.'+p.section;article.append(title);
+  const meta=document.createElement('p');meta.className='meta';meta.textContent='Coincidencia en '+r.sources.join(', ')+' · '+r.kind+(r.matched?' ('+r.matched+')':'');article.append(meta);
+  const grid=document.createElement('div');grid.className='lab-parallel';
+  const edition=r.editions[reading],latin=r.editions['recensio-es']?.latin||edition?.latin||p.latin;
+  for(const [heading,value,lang] of [['Texto latino',latin,'la'],[names[reading],edition?.translation,reading==='recensio-es'?'es':reading==='recensio-fr'?'fr':'en']]){
+   const panel=document.createElement('section'),h=document.createElement('h3'),para=document.createElement('p');h.textContent=heading;para.lang=lang;
+   para.textContent=value||'No hay traducción alineada para este locus en esta edición.';if(!value)para.className='missing';
+   panel.append(h,para);grid.append(panel);
+  }
+  article.append(grid);
+  const actions=document.createElement('div');actions.className='actions';
+  const a=document.createElement('a');a.href='lector-bilingue.html?edition='+encodeURIComponent(reading)+'&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent($('#lab-query').value);a.textContent='Leer en visor →';actions.append(a);
+  const cmp=document.createElement('a');cmp.href='comparador-loci.html?locus='+encodeURIComponent(p.locus);cmp.textContent='Comparar traducciones →';actions.append(cmp);article.append(actions);root.append(article);
+ }
+ shown=Math.min(results.length,shown+20);$('#lab-more').hidden=shown>=results.length;$('#lab-more').textContent='Mostrar más ('+shown+' de '+results.length+')';
+}
+async function run(){
+ const id=++revision,q=$('#lab-query').value.trim(),mode=$('#lab-mode').value,book=$('#lab-book').value,reading=$('#lab-scope').value;
+ if(!q)return;$('#lab-results').replaceChildren();$('#lab-more').hidden=true;$('#lab-status').textContent='Buscando en latín, castellano, francés e inglés…';
+ try{
+  const data=await Promise.all(ids.map(async eid=>({eid,data:await corpus(eid)})));if(id!==revision)return;
+  const byLocus=new Map(),locus=parseLocus(q);
+  for(const {eid,data:d} of data)for(const p of d.passages||[]){
+   if(book&&Number(p.book)!==Number(book))continue;
+   const match=find(p,q,mode,'both',locus),key=p.locus;
+   if(!byLocus.has(key))byLocus.set(key,{p,editions:{},sources:[],score:0,kind:'',matched:''});
+   const record=byLocus.get(key);record.editions[eid]=p;
+   if(match){record.sources.push(names[eid]);if(match.score>record.score){record.score=match.score;record.kind=match.kind;record.matched=match.matched||'';}}
+  }
+  results=[...byLocus.values()].filter(r=>r.score>0).sort((a,b)=>b.score-a.score||a.p.book-b.p.book||String(a.p.chapter).localeCompare(String(b.p.chapter),undefined,{numeric:true})||a.p.section-b.p.section);
+  shown=0;$('#lab-load').textContent='Consulta cruzada entre V514, V554 y V297. Idioma de lectura: '+names[reading];
+  $('#lab-status').textContent=results.length+' loci encontrados en el corpus multilingüe. Las coincidencias aproximadas requieren comprobación.';render();
+ }catch(e){if(id!==revision)return;$('#lab-status').textContent='Error de carga: '+e.message;}
+}
+$('#lab-form').addEventListener('submit',e=>{e.preventDefault();run();});$('#lab-more').addEventListener('click',render);$('#lab-scope').addEventListener('change',()=>{if(results.length){shown=0;$('#lab-results').replaceChildren();render();}});document.querySelectorAll('[data-test]').forEach(b=>b.addEventListener('click',()=>{$('#lab-query').value=b.dataset.test;run();}));
