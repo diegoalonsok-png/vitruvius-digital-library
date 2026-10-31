@@ -202,6 +202,33 @@ self.onmessage=async({data:m})=>{
     warnings.push('No se encontró la frase literal. Se muestran pasajes reales que comparten varios términos de la consulta; estas no son coincidencias textuales exactas.');
    }
   }
+  // Suggestions from attested corpus words. These are NOT automatic substitutions
+  // or evidence that the student's intended word occurs in the text.
+  if(!output.results.length&&!direct&&!heading&&m.kind==='words'&&/^[\\p{L}\\p{M}]{5,}$/u.test(requested)){
+    const norm=x=>String(x).normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+    const needle=norm(requested);
+    const vocab=new Map();
+    for(const data of datasets)for(const passage of data.passages)
+      for(const field of [passage.latin,passage.translation]){
+        for(const token of String(field||'').match(/[\\p{L}\\p{M}]{4,}/gu)||[]){
+          const key=norm(token);
+          if(Math.abs(key.length-needle.length)<=2&&key.length<=45)vocab.set(key,(vocab.get(key)||0)+1);
+        }
+      }
+    const distance=(a,b)=>{
+      let prev=Array.from({length:b.length+1},(_,i)=>i);
+      for(let i=1;i<=a.length;i++){
+        const next=[i];for(let j=1;j<=b.length;j++)
+          next[j]=Math.min(next[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+        prev=next;
+      }return prev[b.length];
+    };
+    const threshold=needle.length>=9?2:1;
+    const candidates=[...vocab].map(([word,count])=>({word,count,d:distance(needle,word)}))
+      .filter(x=>x.d>0&&x.d<=threshold)
+      .sort((a,b)=>a.d-b.d||b.count-a.count||a.word.localeCompare(b.word)).slice(0,5);
+    if(candidates.length)warnings.push('Posibles grafías documentadas en el corpus (sugerencias, no citas): '+candidates.map(x=>x.word).join(' · ')+'. Volvé a buscar la forma deseada.');
+  }
   if(!output.results.length)warnings.push('Sin coincidencias en los documentos indexados con esta consulta. Probá otra forma, un lema más breve o un locus como IV.1.');
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
