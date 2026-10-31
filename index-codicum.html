@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Index codicum · Stemmata codicum — Vitruvius Digital Library</title><meta name="description" content="Índice codicológico de los manuscritos vitruvianos y modelos historiográficos de su transmisión."><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css"></head>
+<body><main class="wrap" style="max-width:1000px;padding:48px 16px 80px">
+<p><a href="index.html">← Biblioteca</a> · <a href="bibliografia.html">Catálogo codicológico general</a> · <a href="facsimiles.html">Facsímiles</a></p>
+<p class="eyebrow">TESTIMONIA · TRADITIO TEXTVS</p><h1>Index codicum et stemmata</h1>
+<p>Índice de testigos manuscritos de <em>De architectura</em> y esquemas filológicos comparados. Las <strong>siglas</strong> dependen de la edición crítica que las emplea: no son sustitutos de las signaturas de biblioteca. El árbol no constituye una prueba automática de parentesco textual.</p>
+<h2>Index codicum</h2><p>Consultá el <a href="bibliografia.html?group=manuscripts">catálogo de manuscritos</a> para conocer las signaturas, dataciones, lugares de conservación y fuentes. Los enlaces individuales conducen a registros y reproducciones institucionales.</p>
+<div id="codices" aria-live="polite"><p>Abriendo índice de manuscritos…</p></div>
+<h2>Stemma codicum · modelos historiográficos</h2>
+<p>Los esquemas siguientes proceden de la discusión de la tradición textual recogida en las ediciones de Diego Kurilo, apartado «Stemma codicum». Se ofrecen como <strong>representaciones simplificadas de interpretaciones historiográficas</strong> y no como filiaciones demostradas mediante variantes compartidas.</p>
+<h3>Modelo A · tradición centrada en H (esquemático)</h3>
+<pre style="white-space:pre;overflow:auto;border:1px solid #b8b3a9;background:#fffdf8;padding:16px;line-height:1.8">Ω  arquetipo perdido (hipótesis)
+│
+H  Harleianus 2767
+│
+├── G  Gudianus (testigo comparado)
+├── L  Leidensis / Vossianus (identificación por cotejar)
+├── p  tradición parisina (sigla editorial)
+└── recentiores
+</pre>
+<p>Este diagrama resume un modelo simplificado presente en la edición del autor; <strong>las líneas no deben interpretarse como relaciones de copia directa probadas</strong>. El papel de H y las relaciones entre testigos se discuten en la bibliografía crítica.</p>
+<h3>Modelo B · hipótesis de dos ramas α y β</h3>
+<pre style="white-space:pre;overflow:auto;border:1px solid #b8b3a9;background:#fffdf8;padding:16px;line-height:1.8">              Ω
+              │
+      ┌───────┴───────┐
+      α               β
+   H · E*          G · afines
+</pre>
+<p>*La letra E se utiliza de manera distinta según el sistema de siglas; <strong>no se equipara sin cotejo</strong> el Escorialensis con el Gudianus 132 (E) del inventario. Las ramas y la asignación de testigos se presentan aquí como hipótesis de la tradición crítica, sujetas a revisión por locus.</p>
+<h2>Fuentes y alcance</h2><p>Diego Kurilo, <em>De architectura</em>, ediciones españolas V213, V255 y V402, apartado «Stemma codicum» y discusión de las familias α/β. Véase también M. D. Reeve, «Vitruvius», en <em>Texts and Transmission: A Survey of the Latin Classics</em>, ed. L. D. Reynolds (Oxford: Clarendon Press, 1983), 440–45. Para valorar una filiación concreta debe consultarse el aparato crítico de cada locus.</p>
+<p><a href="aparato-critico.html">Consultar aparato crítico</a> · <a href="ediciones-historicas.html">Ediciones y testigos digitalizados</a></p>
+</main><script type="module">
+const out=document.getElementById('codices');const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;':'&quot;'}[c]));
+try{const r=await fetch('data/corpus-expansion-inventory.json');if(!r.ok)throw Error('Catálogo no disponible');const records=(await r.json()).records.filter(x=>x.group==='manuscripts');out.innerHTML='<p>'+records.length+' fichas manuscritas del inventario general; algunas signaturas y dataciones permanecen provisionales.</p>'+records.map(x=>'<article style="border-bottom:1px solid #c9c3b8;padding:12px 0"><strong>'+esc(x.display_title)+'</strong> · '+esc(x.date_display||x.date)+'<p>Signatura: '+esc(x.shelfmark||'Por cotejar')+' · Sigla editorial: '+esc(x.siglum||'no asignada')+' · '+esc(x.institution||x.place||'')+'</p>'+(x.view_url?'<p><a target="_blank" rel="noopener" href="'+esc(x.view_url)+'">Ficha o facsímil institucional ↗</a></p>':'')+'</article>').join('');}catch(err){out.textContent='No se pudo cargar el índice. Consultá la bibliografía general.'}
+</script></body></html>
