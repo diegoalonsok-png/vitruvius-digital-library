@@ -142,12 +142,32 @@ document.querySelector('#ed')?.addEventListener('change',()=>{
  document.querySelector('#page-results')?.replaceChildren();
  status.textContent='Edición cambiada. La búsqueda OCR depende del índice disponible para esta edición.';
 });
+function getBook(q){
+ const m=q.trim().match(/^(?:(?:libro|liber|book)\s+)?(X|IX|VIII|VII|VI|IV|V|III|II|I|10|[1-9])$/i);
+ if(!m)return null;return ({I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10})[m[1].toUpperCase()]||Number(m[1]);
+}
+async function showBook(book,serial){
+ const res=await fetch('data/structured/recensio-es.json');
+ if(!res.ok)throw Error('Índice de libros no disponible');
+ const data=await res.json();if(serial!==requestSerial)return;
+ out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();
+ const hits=(data.passages||[]).filter(p=>p.book===book);
+ status.textContent='Libro '+book+': '+hits.length+' pasajes de la edición V514. La correspondencia con páginas de '+source.label+' aún no está certificada.';
+ for(const p of hits.slice(0,80)){
+  const article=document.createElement('article'),a=document.createElement('a');
+  a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus);
+  a.textContent='Libro '+book+' · '+p.locus;
+  const line=document.createElement('p');line.textContent=String(p.latin||'').slice(0,240);
+  article.append(a,line);out.append(article);
+ }
+}
 form.addEventListener('submit',async e=>{
  e.preventDefault();const myRequest=++requestSerial;
  const edition=document.querySelector('#ed')?.value||'krohn-1912';selectHistoricalEdition();
  source=sources[edition];cache=null;
  document.querySelector('.historical-viewer h2').textContent='Facsímil original · '+source.label;
  const q=query.value.trim();if(!q)return;
+ const book=getBook(q);if(book){try{await showBook(book,myRequest);}catch(error){status.textContent=error.message;}return;}
  out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();status.textContent='Cargando índice histórico…';
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
