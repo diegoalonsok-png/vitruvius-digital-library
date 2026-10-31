@@ -33,5 +33,19 @@ assert(!lexicalSource.includes('\\\\p{'), 'Duplicated Unicode escape in lexical 
 const lexicalTokens='proslambanómenos symmetria ἀρχιτεκτονική'.match(/[\p{L}\p{M}]+/gu);
 assert.deepEqual(lexicalTokens,['proslambanómenos','symmetria','ἀρχιτεκτονική']);
 
+// Scientific reproducibility: exact quotations must never silently become approximate hits.
+assert.equal(findMatches('alpha beta gamma delta epsilon zeta eta theta','alpha beta gamma delta epsilon zeta omega theta',{phrase:true}).length,0);
+assert.equal(findMatches('alpha beta gamma delta epsilon zeta eta theta','alpha beta gamma delta epsilon zeta',{phrase:true}).length,1);
+assert.equal(findMatches('De aquaeductu urbis Romae','De aquæductu urbis Romæ',{phrase:true}).length,1);
+assert.equal(findMatches('architectura architectus architecti','architectura',{phrase:true}).length,1);
+assert.equal(search('De aquæductu urbis Romæ',{mode:'phrase'}).results.length,0);
+for(const [query,locus] of [
+ ['Cum divina tua mens et numen, imperator Caesar','1.praef.1'],
+ ['Decor autem est emendatus operis aspectus probatis rebus compositi cum auctoritate','1.2.5'],
+ ['Eius autem capituli symmetria sic est facienda','4.1.11'],
+ ['Namque temperatissimae ad utramque partem et corporum membris','6.1.11'],
+ ['Itaque qui putant se altitudine, qua sunt grumi','8.3.3'],
+ ['Deinde ansae rudentum induntur per foramina capitulorum','10.12.2']
+]){const hits=search(query,{mode:'phrase'}).results;assert.equal(hits.length,3,query);assert(hits.every(x=>x.locus===locus&&!x.partial_match),query);}
 console.log('Search checks passed: loci, chapter filters, phrases, prefix and exact counts, language filters, missing references, source integrity.');
 console.log(JSON.stringify({es:es.passages.length,fr:fr.passages.length,en:en.passages.length,locusOccurrences:expected}));
