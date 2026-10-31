@@ -53,8 +53,8 @@ function editionVariants(term,edition){
    columna:['colonne'],columnas:['colonnes'],templo:['temple'],templos:['temples'],
    muro:['mur'],muros:['murs'],puerta:['porte'],puertas:['portes'],
    ventana:['fenetre'],ventanas:['fenetres'],agua:['eau'],
-   simetria:['symetrie'],proporcion:['proportion'],
-   symmetria:['symetrie'],architectura:['architecture'],architectus:['architecte'],
+   simetria:['symetrie','symmetrie','simetrie','simmetrie'],symmetry:['symetrie','symmetrie','simetrie','simmetrie'],symetrie:['symmetrie','simetrie'],symmetrie:['symetrie','simmetrie'],proporcion:['proportion'],
+   symmetria:['symetrie','symmetrie','simetrie'],symmetriae:['symetrie','symmetrie'],architectura:['architecture'],architectus:['architecte'],
    columnae:['colonnes'],templum:['temple'],machina:['machine'],
    μηχανη:['machine']
   };
