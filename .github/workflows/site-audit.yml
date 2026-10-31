@@ -1,0 +1,33 @@
+name: Auditoría automatizada de la biblioteca
+on:
+  push:
+    paths:
+      - 'assets/historical-search.mjs'
+      - 'assets/search-core.mjs'
+      - 'concordancia-historica.html'
+      - 'data/text/**'
+      - 'data/structured/**'
+      - 'scripts/test-search.mjs'
+      - 'scripts/test-historical.mjs'
+      - '.github/workflows/site-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validación de sintaxis
+        run: |
+          node --check assets/historical-search.mjs
+          node --check assets/critical-search.mjs
+          node --check assets/historical-pdf-overlay.mjs
+      - name: Integridad de buscador Vitruvio
+        run: node scripts/test-search.mjs
+      - name: Ediciones históricas y OCR
+        run: node scripts/test-historical.mjs
