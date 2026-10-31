@@ -208,10 +208,11 @@
   });
  }
  let fullDictionaryPromise=null;
- const loadFullDictionary=()=>fullDictionaryPromise||(fullDictionaryPromise=fetch('data/classical-dictionary.json').then(r=>r.ok?r.json():null).catch(()=>null));
+ const loadFullDictionary=()=>fullDictionaryPromise||(fullDictionaryPromise=fetch('data/classical-dictionary.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null));
  async function showLocalDictionary(term,isGreek){
    const full=await loadFullDictionary();
-   if(!full||input.value.trim()!==term)return;
+   if(input.value.trim()!==term)return;
+   if(!full){const info=document.createElement('p');info.className='source';info.textContent='Diccionario local amplio todavía no publicado; se consulta Wikcionario en línea como fuente de respaldo.';gloss.prepend(info);gloss.hidden=false;return;}
    const matches=(isGreek?full.greek:full.latin)?.[norm(term)]||[];
    if(!matches.length)return;
    const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
