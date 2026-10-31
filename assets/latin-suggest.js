@@ -193,7 +193,7 @@
          while(node&&node.tagName!=='H2'&&!node.matches?.('.mw-heading2')){
            for(const li of node.querySelectorAll('ol > li')){
              const clone=li.cloneNode(true);clone.querySelectorAll('ol,ul,.reference').forEach(x=>x.remove());
-             const definition=clone.textContent.replace(/\\s+/g,' ').trim();
+             const definition=clone.textContent.replace(/\s+/g,' ').trim();
              if(definition.length>2&&!definitions.includes(definition))definitions.push(definition.slice(0,260));
            }
            node=node.nextElementSibling;
