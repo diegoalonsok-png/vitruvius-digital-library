@@ -41,6 +41,34 @@ self.onmessage=async({data:m})=>{
     warnings.push('Correspondencia griego–latín: '+requested+' → '+equivalent+'. Se buscan las formas latinas, no apariciones literales del griego.');
    }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
   }
+  // A Greek dictionary equivalence is a multilingual corpus query, not a literal Greek hit.
+  // Run each target-language equivalent separately so a Greek lookup can find the Latin
+  // originals and their actual ES/FR/EN translations without inventing Greek quotations.
+  if(!direct&&!heading&&m.kind==='words'&&/[Ͱ-Ͽἀ-῿]/u.test(requested)){
+    const greekConcepts={
+      'αρχιτεκτονικη':{la:['architectura','architectus','architecti'],es:['arquitectura','arquitecto'],fr:['architecture','architecte'],en:['architecture','architect']},
+      'αρχιτεκτων':{la:['architectus','architecti','architectura'],es:['arquitecto','arquitectura'],fr:['architecte','architecture'],en:['architect','architecture']},
+      'αρχιτεκτονια':{la:['architectura','architectus'],es:['arquitectura'],fr:['architecture'],en:['architecture']}
+    };
+    const concept=greekConcepts[normalizeGreek(requested)];
+    if(concept){
+      const found=new Map();
+      for(const [language,terms] of Object.entries(concept)){
+        if(m.language&&m.language!=='all'&&m.language!==language)continue;
+        for(const term of terms){
+          const matches=searchCorpus(datasets,{...effective,kind:'words',query:term,language,mode:'words'});
+          for(const hit of matches.results){
+            const key=hit.edition+'|'+hit.locus+'|'+hit.language;
+            if(!found.has(key))found.set(key,{...hit,semantic_term:term,match_type:'greek_equivalent'});
+          }
+        }
+      }
+      const results=[...found.values()].sort((a,b)=>a.book-b.book||Number(a.chapter||0)-Number(b.chapter||0)||a.section-b.section);
+      warnings.push('Equivalencias documentales de «'+requested+'» en latín y traducciones. Los resultados son pasajes que contienen esas palabras; no se afirma que la grafía griega figure literalmente en ellos.');
+      self.postMessage({type:'results',requestId:m.requestId,results,countSummary:null,warnings,semanticTerms:Object.values(concept).flat()});
+      return;
+    }
+  }
   if(m.kind==='semantic'&&!direct&&!heading){
     // Local lexical-semantic retrieval. Grounded only in corpus passages and
     // curated Latin terms, without remote AI services or invented quotations.
