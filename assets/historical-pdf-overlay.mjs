@@ -1,19 +1,20 @@
 // PDF text-layer highlighting. The original PDF stays unchanged.
-const pdfURL='documents/krohn-1912.pdf';
+const pdfURLs={'krohn-1912':'documents/krohn-1912.pdf','rose-1899':'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf'};
 const viewer=document.querySelector('#pdfjs-viewer');
 const canvas=document.querySelector('#pdfjs-canvas');
 const layer=document.querySelector('#pdfjs-highlights');
 const fallback=document.querySelector('#historical-pdf');
 const status=document.querySelector('#pdfjs-status');
-let pdf=null, pdfjs=null, serial=0;
+let pdf=null, loadedEdition='',pdfjs=null, serial=0;
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
-async function init(){
- if(pdf)return pdf;
+async function init(edition){
+ if(pdf&&loadedEdition===edition)return pdf;
  if(!pdfjs){
    pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs');
    pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs';
  }
- pdf=await pdfjs.getDocument(new URL(pdfURL,location.href).href).promise;
+ pdf=await pdfjs.getDocument(new URL(pdfURLs[edition],location.href).href).promise;
+ loadedEdition=edition;
  return pdf;
 }
 function rectangles(text,term,prefix){
@@ -27,14 +28,15 @@ function rectangles(text,term,prefix){
  }return hits;
 }
 async function draw(pageNumber,terms,prefix=false){
- if(document.querySelector('#ed')?.value!=='krohn-1912'){
+ const edition=document.querySelector('#ed')?.value;
+ if(!pdfURLs[edition]){
    viewer.hidden=true;fallback.hidden=false;
    status.textContent='En esta edición se usa el PDF original externo. El resaltado se muestra en la transcripción OCR; el PDF externo puede impedir la superposición de marcas por restricciones de su servidor.';
    return;
  }
  const mine=++serial;
  try{
-   const documentPDF=await init();if(mine!==serial)return;
+   const documentPDF=await init(edition);if(mine!==serial)return;
    const page=await documentPDF.getPage(Number(pageNumber));
    const width=viewer.parentElement.clientWidth||550;
    const base=page.getViewport({scale:1});
@@ -64,7 +66,7 @@ async function draw(pageNumber,terms,prefix=false){
    }
    viewer.hidden=false;fallback.hidden=true;
    viewer.scrollTop=0;
-   viewer.setAttribute('aria-label','Folio '+pageNumber+' de Krohn 1912, visible en el lector de páginas');
+   viewer.setAttribute('aria-label','Folio '+pageNumber+' de '+(edition==='rose-1899'?'Rose 1899':'Krohn 1912')+', visible en el lector de páginas');
    status.textContent=found?'PDF original: '+found+' resaltado(s) amarillos sobre texto detectable en esta página.':'PDF original abierto. No hay coincidencias localizables en su capa de texto para esta página; consultá el OCR resaltado debajo.';
  }catch(err){
    if(mine!==serial)return;
