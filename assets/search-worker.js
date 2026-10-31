@@ -47,7 +47,7 @@ self.onmessage=async({data:m})=>{
    if(equivalent){
     effective={...effective,query:equivalent,kind:'words'};
     warnings.push('Correspondencia griego–latín: '+requested+' → '+equivalent+'. Se buscan las formas latinas, no apariciones literales del griego.');
-   }else warnings.push('El término griego no tiene aún una correspondencia verificada en el índice selectivo.');
+   }
   }
   // A Greek dictionary equivalence is a multilingual corpus query, not a literal Greek hit.
   // Run each target-language equivalent separately so a Greek lookup can find the Latin
@@ -58,7 +58,18 @@ self.onmessage=async({data:m})=>{
       'αρχιτεκτων':{la:['architectus','architecti','architectura'],es:['arquitecto','arquitectura'],fr:['architecte','architecture'],en:['architect','architecture']},
       'αρχιτεκτονια':{la:['architectura','architectus'],es:['arquitectura'],fr:['architecture'],en:['architecture']}
     };
-    const concept=greekConcepts[normalizeGreek(requested)];
+    // Extensible Greek-to-Latin lookup from a published JSON index.
+    // A lexicon match is not evidence that Greek occurs in the Latin corpus.
+    let indexedTerms=[];
+    try{
+      const response=await fetch(new URL('data/dictionaries/greek.json',m.baseURL));
+      if(response.ok){
+        const dictionary=await response.json();
+        const entries=dictionary.entries?.[normalizeGreek(requested)]||[];
+        indexedTerms=[...new Set(entries.flatMap(e=>e.latin_equivalents||[]))].slice(0,20);
+      }
+    }catch{ /* Greek lexicon is optional; exact search remains available */ }
+    const concept=greekConcepts[normalizeGreek(requested)]||(indexedTerms.length?{la:indexedTerms}:null);
     if(concept){
       const found=new Map();
       for(const [language,terms] of Object.entries(concept)){
