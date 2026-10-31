@@ -207,8 +207,26 @@
    const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wikcionario en inglés (Wikimedia, CC BY-SA). La forma consultada puede requerir buscar su lema; verificá las acepciones según el contexto vitruviano.';details.append(foot);
   });
  }
+ let fullDictionaryPromise=null;
+ const loadFullDictionary=()=>fullDictionaryPromise||(fullDictionaryPromise=fetch('data/classical-dictionary.json').then(r=>r.ok?r.json():null).catch(()=>null));
+ async function showLocalDictionary(term,isGreek){
+   const full=await loadFullDictionary();
+   if(!full||input.value.trim()!==term)return;
+   const matches=(isGreek?full.greek:full.latin)?.[norm(term)]||[];
+   if(!matches.length)return;
+   const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
+   const title=document.createElement('summary');title.textContent='Diccionario clásico indexado · '+term;pane.append(title);
+   for(const entry of matches.slice(0,6)){
+     const p=document.createElement('p');
+     const strong=document.createElement('strong');strong.textContent=entry.lemma+' · '+(entry.pos||'sin clasificación');
+     p.append(strong,document.createTextNode(' — '+(entry.glosses||[]).slice(0,3).join('; ')));
+     pane.append(p);
+   }
+   const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wiktionary / Wiktextract; entrada léxica, no aparición textual. Acepciones originales en inglés.';pane.append(foot);
+   gloss.prepend(pane);gloss.hidden=false;
+ }
  function displayGloss(){
-  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return; if(value.split(/\s+/).length===1)externalDictionary(value,/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value));
+  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return; if(value.split(/\s+/).length===1){showLocalDictionary(value,/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value));externalDictionary(value,/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value));}
   const entry=entries.find(e=>[e.lemma,...e.forms||[]].some(w=>norm(w)===token));
   const greekMatches=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)?entries.filter(e=>e.greek&&norm(e.greek)===token):[];
   if(greekMatches.length){
