@@ -53,12 +53,14 @@ def main():
     forms=corpus_forms()
     la=build(args.latin,'Latin',forms)
     gr=build(args.greek,'Ancient Greek',forms)
-    result={'schema':1,'source':'Kaikki.org / Wiktextract from English Wiktionary',
-            'license':'Wiktionary CC BY-SA / GFDL; consult source terms',
-            'scope':'forms attested in three aligned Vitruvian corpora',
-            'latin':la,'greek':gr,'counts':{'latin':len(la),'greek':len(gr)}}
-    out=ROOT/args.out
-    out.parent.mkdir(parents=True,exist_ok=True)
-    out.write_text(json.dumps(result,ensure_ascii=False,separators=(',',':')),encoding='utf8')
-    print(f'Wrote {out} — Latin forms {len(la)}, Greek forms {len(gr)}')
+    outdir=ROOT/'data'/'dictionaries'
+    outdir.mkdir(parents=True,exist_ok=True)
+    for language,entries in [('latin',la),('greek',gr)]:
+        payload={'schema':1,'language':language,'entries':entries,
+                 'source':'Kaikki.org / Wiktextract (Wiktionary)',
+                 'license':'CC BY-SA / GFDL; consult source terms'}
+        target=outdir/f'{language}.json'
+        target.write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':')),encoding='utf8')
+        print(f'Wrote {target}: {len(entries)} attested forms')
+
 if __name__=='__main__':main()
