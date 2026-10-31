@@ -7,8 +7,9 @@ const driveReader=$('drive-reader'),driveFrame=$('drive-frame');
 const ownLabels={'own:recensio-es':'V514 · Latín–Castellano','own:recensio-fr':'V554 · Latín–Francés','own:theory-en':'V297 · Latín–Inglés'};
 const pdfSources={'pdf:krohn':'documents/krohn-1912.pdf','pdf:rose':'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',...ownPDFs};
 const institution=$('library-link');
-async function loadCatalog(){try{const res=await fetch('data/historical.json');if(!res.ok)throw Error();historical=await res.json();const group=document.createElement('optgroup');group.label='Catálogo histórico · enlaces institucionales';historical.forEach((row,i)=>{const option=document.createElement('option');option.value='catalog:'+i;option.textContent=(row.year||'')+' · '+row.title+' · institución';group.append(option)});$('source').append(group)}catch{institution.textContent='El catálogo histórico no pudo cargarse; siguen disponibles los lectores locales.'}}
-loadCatalog();
+// El Scriptorium muestra solo fuentes cuya lectura está integrada.
+ // Los testimonios no integrados permanecen en la bibliografía y en el índice de códices.
+
 function showNative(){driveReader.hidden=true;driveFrame.removeAttribute('src');stage.hidden=false;}
 function showPdfFallback(selection){stage.hidden=true;driveReader.hidden=false;driveFrame.src=new URL(pdfSources[selection]+'#page='+String(Number($('page').value)||1),location.href).href;status.textContent='Visor PDF del navegador: usá sus controles para navegar por las páginas. La lupa personalizada requiere PDF.js.';}
 function filters(){return 'brightness('+$('brightness').value+'%) contrast('+$('contrast').value+'%) grayscale('+$('grayscale').value+'%) sepia('+$('sepia').value+'%)';}
