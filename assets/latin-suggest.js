@@ -169,6 +169,19 @@
     for(const e of reverse){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=e.headword||e.lemma;p.append(b,document.createTextNode(' — '+[e.es,e.en,e.fr].filter(Boolean).join(' · ')));details.append(p);const btn=document.createElement('button');btn.type='button';btn.className='dictionary-form';btn.textContent='Buscar «'+e.lemma+'» en el tratado';btn.addEventListener('click',()=>{input.value=e.lemma;hide();displayGloss();form.requestSubmit();});details.append(btn);}
     const note=document.createElement('p');note.className='source';note.textContent='Equivalencias del léxico local; la presencia en el texto se comprueba al buscar.';details.append(note);gloss.append(details);gloss.hidden=false;return;
    }
+   if(/^levissim(?:us|a|um|i|o|am|os|as|orum|arum|is)$/i.test(value)){
+     const details=document.createElement('details');details.open=true;
+     const summary=document.createElement('summary');summary.textContent='Análisis morfológico latino · '+value;details.append(summary);
+     textLine(details,'Lema:','levis, leve (adjetivo de tercera declinación)');
+     textLine(details,'Grado:','superlativo: levissimus, -a, -um');
+     textLine(details,'Forma:','levissimum: acusativo singular masculino o nominativo/acusativo singular neutro');
+     textLine(details,'Castellano:','muy ligero, ligerísimo; muy liviano (según el sustantivo al que califique)');
+     textLine(details,'English:','very light; lightest');
+     textLine(details,'Français:','très léger; le plus léger');
+     textLine(details,'Nota:','El significado preciso debe cotejarse con el pasaje; la forma no es un verbo.');
+     const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+value+'» y ver sus pasajes';b.addEventListener('click',()=>form.requestSubmit());details.append(b);
+     gloss.append(details);gloss.hidden=false;return;
+   }
    // Derive the dictionary headword from common fourth-declension forms.
    // Keep this as a morphological suggestion, not a claimed corpus attestation.
    if(/^aqua?educt(?:u|ui|um|uum|ibus|us)$/i.test(value)){
