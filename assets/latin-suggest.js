@@ -235,7 +235,7 @@
      p.append(strong,document.createTextNode(' — '+(entry.glosses||[]).slice(0,3).join('; ')));
      pane.append(p);
    }
-   const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wiktionary / Wiktextract; entrada léxica, no aparición textual. Acepciones originales en inglés.';pane.append(foot);
+   const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: índice léxico editorial local, de cobertura selectiva; una definición no acredita una aparición textual en los manuscritos.';pane.append(foot);
    gloss.prepend(pane);gloss.hidden=false;
  }
  const greekScript=/[\u0370-\u03ff\u1f00-\u1fff]/u;
