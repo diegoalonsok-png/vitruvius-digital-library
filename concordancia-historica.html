@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concordancia histórica — Vitruvius Digital Library</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>main{max-width:1050px;margin:2rem auto;padding:0 1.3rem}form{display:flex;flex-wrap:wrap;gap:1rem;padding:1.5rem;border:1px solid #8b8274}input,select,button{padding:.7rem;font:inherit}input{flex:2;min-width:220px}label{display:grid;gap:.35rem}article{padding:1.2rem 0;border-bottom:1px solid #a9a092;line-height:1.65}mark{background:#f7dc79;color:#162332}#results{margin-top:2rem}p.note{font-size:.95rem;opacity:.85}</style>
+</head><body><main>
+<p><a href="index.html">← Vitruvius Digital Library</a></p>
+<p>LECTURA E INVESTIGACIÓN</p><h1>Concordancia de ediciones históricas</h1>
+<p>Consulta léxica por página del texto OCR disponible. Los aciertos automáticos requieren cotejo con el facsímil antes de citar.</p>
+<form id="search"><label>Palabra o frase<input id="q" required placeholder="architectura · symmetria · fabrica"></label><label>Edición<select id="ed"><option value="krohn-1912">Krohn 1912 — OCR, 314 páginas</option></select></label><label>Coincidencia<select id="mode"><option value="phrase">Palabra/frase completa</option><option value="prefix">Raíz de palabra</option></select></label><button type="submit">Buscar →</button></form>
+<p id="status" role="status"></p><section id="results" aria-live="polite"></section>
+<p class="note">Ortiz y Sanz (1787) y Cesariano (1521): facsímiles catalogados, pero sin índice OCR útil publicado todavía. No se incluyen en el recuento para evitar falsos resultados.</p>
+</main><script type="module" src="assets/historical-search.mjs"></script></body></html>
