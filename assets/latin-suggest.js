@@ -169,6 +169,18 @@
     for(const e of reverse){const p=document.createElement('p'),b=document.createElement('strong');b.textContent=e.headword||e.lemma;p.append(b,document.createTextNode(' — '+[e.es,e.en,e.fr].filter(Boolean).join(' · ')));details.append(p);const btn=document.createElement('button');btn.type='button';btn.className='dictionary-form';btn.textContent='Buscar «'+e.lemma+'» en el tratado';btn.addEventListener('click',()=>{input.value=e.lemma;hide();displayGloss();form.requestSubmit();});details.append(btn);}
     const note=document.createElement('p');note.className='source';note.textContent='Equivalencias del léxico local; la presencia en el texto se comprueba al buscar.';details.append(note);gloss.append(details);gloss.hidden=false;return;
    }
+   // Derive the dictionary headword from common fourth-declension forms.
+   // Keep this as a morphological suggestion, not a claimed corpus attestation.
+   if(/^aqua?educt(?:u|ui|um|uum|ibus|us)$/i.test(value)){
+     const details=document.createElement('details');details.open=true;
+     const summary=document.createElement('summary');summary.textContent='Análisis morfológico latino · '+value;details.append(summary);
+     textLine(details,'Lema probable:','aquaeductus, -ūs (sustantivo masculino, cuarta declinación)');
+     textLine(details,'Sentido:','acueducto; conducción o canalización de agua');
+     textLine(details,'Forma consultada:','aquaeductu: ablativo singular de aquaeductus');
+     textLine(details,'Criterio filológico:','La identificación morfológica no acredita que esta forma aparezca literalmente en De architectura.');
+     const btn=document.createElement('button');btn.type='button';btn.className='dictionary-form';btn.textContent='Buscar pasajes relacionados en Vitruvio';btn.addEventListener('click',()=>{form.requestSubmit();});details.append(btn);
+     gloss.append(details);gloss.hidden=false;return;
+   }
    const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Léxico latino selectivo: «'+value+'»';details.append(summary);textLine(details,'','Esta forma no tiene una definición revisada en el léxico local. Se ofrece su concordancia textual sin atribuirle un significado no documentado.');for(const word of lexicalSuggestions(value,entries)){const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+word+'»';b.addEventListener('click',()=>{input.value=word;hide();displayGloss();form.requestSubmit();});details.append(b);}const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener';a.textContent='Consultar esta forma en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
   }
   const details=document.createElement('details');details.open=true;const summary=document.createElement('summary');summary.textContent='Léxico latino selectivo · '+(entry.headword||entry.lemma);details.append(summary);
