@@ -27,6 +27,11 @@ function rectangles(text,term,prefix){
  }return hits;
 }
 async function draw(pageNumber,terms,prefix=false){
+ if(document.querySelector('#ed')?.value!=='krohn-1912'){
+   viewer.hidden=true;fallback.hidden=false;
+   status.textContent='En esta edición se usa el PDF original externo. El resaltado se muestra en la transcripción OCR; el PDF externo puede impedir la superposición de marcas por restricciones de su servidor.';
+   return;
+ }
  const mine=++serial;
  try{
    const documentPDF=await init();if(mine!==serial)return;
