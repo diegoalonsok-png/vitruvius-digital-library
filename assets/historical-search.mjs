@@ -46,7 +46,7 @@ function result(page,text,m,number){const el=document.createElement('article'),h
 function showPage(page,text,hits){
  const field=document.querySelector('#pdf-page-number');if(field)field.value=String(page);const note=document.querySelector('#page-hit-status');if(note)note.textContent=hits.length+' coincidencia(s) en esta página';
  const pdf=source.pdf+'#page='+page,frame=document.querySelector('#historical-pdf'),link=document.querySelector('#historical-pdf-link'),ocr=document.querySelector('#ocr-page');
- if(frame)frame.src=pdf;if(link)link.href=pdf;const current=document.querySelector('#q')?.value.trim()||'';const concept=source.id==='krohn-1912'?conceptFor(current):null;document.dispatchEvent(new CustomEvent('historical-pdf-page',{detail:{page,query:current,roots:concept?.roots||[],prefix:document.querySelector('#mode')?.value==='prefix'}}));if(!ocr)return;
+ if(frame&&frame.src!==new URL(pdf,location.href).href)frame.src=pdf;if(link)link.href=pdf;const current=document.querySelector('#q')?.value.trim()||'';const concept=source.id==='krohn-1912'?conceptFor(current):null;document.dispatchEvent(new CustomEvent('historical-pdf-page',{detail:{page,query:current,roots:concept?.roots||[],prefix:document.querySelector('#mode')?.value==='prefix'}}));if(!ocr)return;
  ocr.replaceChildren();let offset=0;
  for(const hit of hits){if(hit.start<offset)continue;ocr.append(document.createTextNode(text.slice(offset,hit.start)));const mark=document.createElement('mark');mark.textContent=text.slice(hit.start,hit.end);ocr.append(mark);offset=hit.end;}
  ocr.append(document.createTextNode(text.slice(offset)));
@@ -102,7 +102,7 @@ form.addEventListener('submit',async e=>{
     const seen=new Set();hits=hits.filter(m=>{if(seen.has(m.start))return false;seen.add(m.start);return true;}).sort((a,b)=>a.start-b.start);
    }
    if(!hits.length)continue;total+=hits.length;pages++;pageHits.push({page:record.page,text:record.text,hits});
-   for(const hit of hits)if(shown<100){const card=result(record.page,record.text,hit,shown);card.querySelector('a')?.addEventListener('click',()=>showPage(record.page,record.text,hits));out.append(card);shown++;}
+   for(const hit of hits)if(shown<100){const card=result(record.page,record.text,hit,shown);out.append(card);shown++;}
   }
   const nav=document.querySelector('#page-results');
   if(nav){for(const item of pageHits){const b=document.createElement('button');b.type='button';b.textContent='p. '+item.page+' ('+item.hits.length+')';b.addEventListener('click',()=>showPage(item.page,item.text,item.hits));nav.append(b);}}
@@ -113,11 +113,13 @@ form.addEventListener('submit',async e=>{
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  e.preventDefault();const n=Number(document.querySelector('#pdf-page-number').value),note=document.querySelector('#page-hit-status');
- const max=source.id==='perrault-1673'?371:cache?.length||314;
+ const max=source.id==='perrault-1673'?371:Math.max(314,...(cache||[]).map(row=>row.page));
  if(!Number.isInteger(n)||n<1||n>max){if(note)note.textContent='Ingresá una página entre 1 y '+max+'.';return;}
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
-  const record=cache.find(x=>x.page===n);if(!record)throw Error('Página no indexada');
+  const record=cache.find(x=>x.page===n);
+  if(!record){if(note)note.textContent='Página '+n+' sin transcripción OCR: el facsímil puede consultarse igualmente.';
+   showPage(n,'',[]);return;}
   if(source.id==='krohn-1912')await loadDictionary();
   const concept=source.id==='krohn-1912'?conceptFor(activeQuery):null;
   let hits=activeQuery?matches(record.text,activeQuery,activePrefix):[];
