@@ -30,6 +30,14 @@ self.onmessage=async({data:m})=>{
    effective={...m,kind:'locus',query:heading[1]+(heading[2]?'.'+heading[2]:'')};
    if(requested.length>heading[0].length+15)warnings.push('Consulta interpretada como referencia al libro o capítulo. Las notas editoriales y los argumenta no están indexados como texto de Vitruvio.');
   }
+  // Identify a well-known work outside the indexed Vitruvian corpus, rather than
+  // fabricating an exact match or silently returning zero.
+  const identifyOtherWork=v=>/\\bde\\s+aqu(?:ae|e)ductu\\s+urbis\\s+rom(?:ae|e)\\b/i.test(v.replace(/æ/g,'ae').replace(/Æ/g,'Ae'))||/\\bde\\s+aquis\\s+urbis\\s+rom(?:ae|e)\\b/i.test(v.replace(/æ/g,'ae'));
+  if(identifyOtherWork(requested)){
+    warnings.push('Esta expresión es el título de una obra de Sexto Julio Frontino (De aquaeductu urbis Romae), no una cita literal de De architectura. Para consultar el tema en Vitruvio, buscá aqua, aquaeductus o el Libro VIII.');
+    self.postMessage({type:'results',requestId:m.requestId,results:[],countSummary:null,warnings,semanticTerms:[]});
+    return;
+  }
   const greekLexicon={
    'συμμετρια':'symmetria','ευρυθμια':'eurythmia','μηχανη':'machina','αρχιτεκτονια':'architectura','αρχιτεκτονικη':'architectura','αρχιτεκτων':'architectus'
   };
