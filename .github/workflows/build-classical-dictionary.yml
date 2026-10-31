@@ -4,11 +4,15 @@ on:
   push:
     paths:
       - '.github/workflows/build-classical-dictionary.yml'
+      - 'scripts/build-classical-dictionary.py'
 permissions:
   contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency:
+      group: build-classical-dictionary
+      cancel-in-progress: false
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
@@ -42,5 +46,5 @@ jobs:
           git add data/classical-dictionary.json
           if ! git diff --cached --quiet; then
             git commit -m "Publicar diccionario latino-griego derivado del corpus"
-            git push
+            git push origin HEAD:main
           fi
