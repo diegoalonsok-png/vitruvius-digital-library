@@ -33,7 +33,7 @@ const conceptFor=q=>{
 };
 async function loadDictionary(){
  try{const response=await fetch('data/latin-lexicon.json');if(!response.ok)return;const data=await response.json();dictionaryConcepts=(data.entries||[]).map(e=>{
- const fragments=[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr].filter(Boolean).flatMap(v=>String(v).split(/[;,/]/)).map(fold).filter(v=>v.length>=4&&v.length<=45);
+ const fragments=[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr,e.greek].filter(Boolean).flatMap(v=>String(v).split(/[;,/]/)).map(fold).filter(v=>v.length>=4&&v.length<=45);
  const lemma=fold(e.lemma||'');const root=lemma.replace(/(?:arum|orum|ibus|um|us|ae|is|a|i)$/,'');
  return {label:e.lemma,aliases:[...new Set(fragments)],roots:[root.length>=4?root:lemma].filter(Boolean),french:[e.fr,...(e.fr||'').split(/[;,/]/)].filter(Boolean).flatMap(x=>x.split(/[;,/]/)).map(fold).filter(x=>x.length>=3)};
  }).filter(e=>e.aliases.length&&e.roots.length);}catch{}
@@ -41,10 +41,21 @@ async function loadDictionary(){
 // Cross-language retrieval is explicitly labelled as exploratory; never counted as a literal Latin hit.
 // Derive French equivalents systematically from the corpus lexicon, not individual word exceptions.
 function editionVariants(term,edition){
- if(edition!=='perrault-1673')return [];
- const key=fold(term);
+ // A literal phrase is searched verbatim. We do not invent a word-by-word
+ // translation of historical prose, whose syntax and vocabulary may differ.
+ const words=word(term);
+ if(words.length!==1)return [];
+ const key=words[0].form;
  const candidates=dictionaryConcepts.filter(e=>e.aliases.includes(key));
- return [...new Set(candidates.flatMap(e=>e.french))].filter(x=>x!==key && x.length>=5 && !['lieu','sujet','place','chose','partie','rapport'].includes(x));
+ if(edition==='perrault-1673'){
+  return [...new Set(candidates.flatMap(e=>e.french))]
+   .filter(x=>x!==key&&x.length>=5&&!['lieu','sujet','place','chose','partie','rapport'].includes(x));
+ }
+ if(edition==='rose-1899'||edition==='krohn-1912'){
+  return [...new Set(candidates.map(e=>fold(e.label)))]
+   .filter(x=>x!==key&&x.length>=4);
+ }
+ return [];
 }
 function typoSuggestions(q,edition){
  if(edition!=='perrault-1673'||q.trim().split(/\s+/).length!==1)return [];
@@ -141,7 +152,7 @@ form.addEventListener('submit',async e=>{
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
   if(myRequest!==requestSerial)return;
-  if(edition==='krohn-1912'||edition==='perrault-1673')await loadDictionary();
+  await loadDictionary();
   if(myRequest!==requestSerial)return;
   const concept=edition==='krohn-1912'?conceptFor(q):null,prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
   const variants=editionVariants(q,edition);
@@ -150,7 +161,7 @@ form.addEventListener('submit',async e=>{
    if(typeof record.text!=='string')continue;
    let hits=matches(record.text,q,prefix);
    literal+=hits.length;
-   if(variants.length&&q.trim().split(/\s+/).length===1)for(const variant of variants)hits.push(...matches(record.text,variant,false));
+   if(variants.length&&word(q).length===1)for(const variant of variants)hits.push(...matches(record.text,variant,false));
    if(concept){
     for(const root of concept.roots)hits.push(...matches(record.text,root,true));
     const seen=new Set();hits=hits.filter(m=>{if(seen.has(m.start))return false;seen.add(m.start);return true;}).sort((a,b)=>a.start-b.start);
@@ -162,7 +173,7 @@ form.addEventListener('submit',async e=>{
   const nav=document.querySelector('#page-results');
   if(nav){for(const item of pageHits){const b=document.createElement('button');b.type='button';b.textContent='p. '+item.page+' ('+item.hits.length+')';b.addEventListener('click',()=>showPage(item.page,item.text,item.hits));nav.append(b);}}
   if(pageHits.length)showPage(pageHits[0].page,pageHits[0].text,pageHits[0].hits);
-  status.textContent=(edition==='perrault-1673'&&variants.length?'Consulta francesa orientativa: '+literal+' coincidencias literales; equivalencias exploradas: '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
+  status.textContent=(variants.length?'Consulta multilingüe: '+literal+' coincidencias literales; equivalencias lexicográficas exploradas ('+source.label+'): '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
   if(!total){showTypoSuggestions(q,edition);showOcrAlternatives(cache,q);const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
  }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprobá que su índice OCR esté publicado.';}
 });
