@@ -1,6 +1,7 @@
 import {lexicalSuggestions,lexicalForms} from './lexical-suggestions.mjs?v=20261030-history';
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
-import {citation,roman,parseLocus,searchCorpus,tokens} from './search-core.mjs?v=20261030-docx-1';
+import {citation,roman,parseLocus,searchCorpus,tokens,highlightHTML} from './search-core.mjs';
+import {citationControls,handleCitationAction} from './citation-tools.mjs';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const editionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'},names={es:'Castellano',fr:'Français',en:'English'};
 const datasets={},records={};let lexicon=[];
@@ -8,6 +9,7 @@ const atLocus=(p,locus)=>p.locus===locus||Boolean(p.section_end&&(()=>{const r=p
 const params=new URLSearchParams(location.search);
 if(params.has('edition'))$('lang').value=Object.keys(editionIds).find(k=>editionIds[k]===params.get('edition'))||'es';
 query=params.get('q')||'';$('term').value=query;
+$('compare-all').checked=params.get('compare')==='all';
 function options(id,values,selected){$(id).replaceChildren(...values.map(([value,label])=>{const o=document.createElement('option');o.value=String(value);o.textContent=label;return o;}));if(values.some(([v])=>String(v)===String(selected)))$(id).value=String(selected);}
 function refresh(book,chapter,section){
  options('book',Array.from({length:10},(_,i)=>[i+1,'Libro '+roman(i+1)]),book);
@@ -17,9 +19,7 @@ function refresh(book,chapter,section){
  options('section',sections.map(n=>[n,'Sección '+n]),section);
 }
 function highlight(text){
- text=String(text).replace(/\u00ad/g,'');
- const wanted=new Set(($('find-mode').value==='forms'?lexicalForms(query,lexicon):[query]).flatMap(x=>tokens(x).map(t=>t.value)));if(!wanted.size)return esc(text);
- let html='',at=0;for(const t of tokens(text)){if(!wanted.has(t.value))continue;html+=esc(text.slice(at,t.start))+'<mark>'+esc(text.slice(t.start,t.end))+'</mark>';at=t.end;}return html+esc(text.slice(at));
+ const forms=$('find-mode').value==='phrase'?[query]:[query,...lexicalForms(query,lexicon)];return highlightHTML(String(text),forms.filter(Boolean),{phrase:$('find-mode').value==='phrase'});
 }
 function clearReading(message){
  for(const id of ['latin-text','translation-text','latin-title','latin-source','translation-source','passage-ref','pdf-links','provenance-text','edition-citation','edition-metadata','citation-status'])$(id).replaceChildren();$('other-translations').replaceChildren();$('status').textContent=message;current=null;passageCitation='';$('prev').disabled=$('next').disabled=true;
@@ -56,7 +56,9 @@ function render(){
  $('edition-metadata').textContent=ed?[ed.editorial_role,ed.publication_place,ed.version,ed.isbn_note].filter(Boolean).join(' · '):'';
  const pdfPage=p?.pdf_pages?.translation||p?.pdf_pages?.latin||null;
  const pdfLink=source?(pdfPage?source.split('#')[0]+'#page='+encodeURIComponent(pdfPage):source):'';
- $('pdf-links').innerHTML=source?'<a href="'+esc(pdfLink)+'" target="_blank" rel="noopener">Consultar PDF: <em>'+esc(bookTitle(ed))+'</em> ↗</a>'+(p?.pdf_pages?.latin?' · latín: p. '+p.pdf_pages.latin:'')+(p?.pdf_pages?.translation?' · traducción: p. '+p.pdf_pages.translation:'')+(pdfPage?' · <button type="button" id="copy-pdf-page">Copiar página '+pdfPage+'</button>':'')+'<small class="source-note"> El buscador por locus funciona en este lector; el visor externo de Google Drive puede ignorar el salto automático a la página.</small>':''; 
+ const localPDF='pdf.html?edition='+encodeURIComponent(ed.id)+(pdfPage?'&page='+pdfPage:'')+'&q='+encodeURIComponent(query);
+ $('pdf-links').innerHTML=ed.pdf?'<a href="'+esc(localPDF)+'">Abrir PDF con buscador'+(pdfPage?' · página '+pdfPage:'')+' →</a>'+(p?.pdf_pages?.latin?' · <a href="pdf.html?edition='+ed.id+'&page='+p.pdf_pages.latin+'&q='+encodeURIComponent(query)+'">Latín: p. '+p.pdf_pages.latin+'</a>':'')+(p?.pdf_pages?.translation?' · Traducción: p. '+p.pdf_pages.translation:'')+'<small class="source-note">Correspondencia textual automatizada con el PDF original de esta versión.</small>':source?'<a href="'+esc(pdfLink)+'" target="_blank" rel="noopener">Consultar PDF original ↗</a>':'';
+ let citationTools=document.getElementById('edition-citation-tools');if(!citationTools){citationTools=document.createElement('div');citationTools.id='edition-citation-tools';$('edition-reference').append(citationTools);}citationTools.innerHTML=citationControls(ed.id);
  $('copy-pdf-page')?.addEventListener('click',()=>navigator.clipboard?.writeText(String(pdfPage)));
  passageCitation=ed?bibliographyText(ed)+' '+citation(p||base)+'. '+(p?.pdf_pages?.translation?'Página PDF de la traducción: '+p.pdf_pages.translation+'. ':'')+new URL('lector-bilingue.html?edition='+ed.id+'&locus='+locus,location.href).href:'';
  $('citation-status').textContent='';
@@ -72,6 +74,7 @@ function openLocus(value){
 $('form').addEventListener('submit',e=>{e.preventDefault();openLocus($('locus').value);});
 for(const id of ['book','chapter','section'])$(id).addEventListener('change',()=>{refresh($('book').value,id==='book'?null:$('chapter').value,id==='section'?$('section').value:null);render();});
 $('lang').addEventListener('change',render);$('compare-all').addEventListener('change',render);
+document.addEventListener('click',e=>handleCitationAction(e,Object.values(records)));
 for(const [id,delta]of [['prev',-1],['next',1]])$(id).addEventListener('click',()=>{if(!current)return;const p=all[all.findIndex(x=>x.locus===current.locus)+delta];if(p){refresh(p.book,p.chapter,p.section);render();}});
 $('copy-passage-citation').addEventListener('click',async()=>{if(!passageCitation){$('citation-status').textContent='Abrí un locus válido para generar su cita.';return;}try{await navigator.clipboard.writeText(passageCitation);$('citation-status').textContent='Cita del pasaje copiada con edición y versión.';}catch{$('citation-status').textContent=passageCitation;}});
 $('print-passage').addEventListener('click',()=>window.print());

@@ -1,0 +1,234 @@
+{
+  "version": "2026-10-30.2",
+  "date": "2026-10-30",
+  "title": "Vitruvius Digital Library · corpus completo y búsqueda verificable",
+  "sources": [
+    {
+      "id": "recensio-es",
+      "version": "V514",
+      "units": 6292,
+      "kinds": {
+        "commentary": 3956,
+        "table": 550,
+        "treatise": 1462,
+        "note": 324
+      },
+      "with_pdf_page": 4317,
+      "source": {
+        "filename": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+        "sha256": "a41458f70810d323f1cc9cb1b47cdc8c47988961a798b18dbfb97316d1669b87",
+        "method": "complete_docx_body_tables_and_original_footnotes"
+      },
+      "pdf_sha256": "0c762b6e6684eeeff53ff4a5b9605261cfd37ccb216561924eb506c0c26c01d2",
+      "pdf_pages": 1157,
+      "canonical_passages": 731,
+      "canonical_pdf_links": 727
+    },
+    {
+      "id": "recensio-fr",
+      "version": "V554",
+      "units": 6298,
+      "kinds": {
+        "commentary": 3969,
+        "table": 550,
+        "treatise": 1462,
+        "note": 317
+      },
+      "with_pdf_page": 4322,
+      "source": {
+        "filename": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
+        "sha256": "6713489fe15991b1b438591f9045b241929fa1007529ea0fc13869f49cddc27b",
+        "method": "complete_docx_body_tables_and_original_footnotes"
+      },
+      "pdf_sha256": "70d6fc3d214c60ef69634ec66c7e579cf20cf9377506f3f923042e8dead7e5f5",
+      "pdf_pages": 1166,
+      "canonical_passages": 731,
+      "canonical_pdf_links": 724
+    },
+    {
+      "id": "theory-en",
+      "version": "V297",
+      "units": 6804,
+      "kinds": {
+        "commentary": 4791,
+        "table": 387,
+        "treatise": 1456,
+        "note": 170
+      },
+      "with_pdf_page": 4864,
+      "source": {
+        "filename": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+        "sha256": "5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99",
+        "method": "complete_docx_body_tables_and_original_footnotes"
+      },
+      "pdf_sha256": "3fabca1a2c628646361ee322569665d284eaafbccfb921e294184aa5ccb1d9af",
+      "pdf_pages": 1056,
+      "canonical_passages": 728,
+      "canonical_pdf_links": 726
+    }
+  ],
+  "files": {
+    "data/academic-studies.json": {
+      "bytes": 45010,
+      "sha256": "05c7466a0ab4c1ebd3ca97fdecf2f643dc538147400a657dd0651fcffadbf1b6"
+    },
+    "data/bilingual-passages.json": {
+      "bytes": 2722,
+      "sha256": "71cedab37dccfdc0d714ff2ccd25529783750cd9b70a04486c6e9bec1a786d10"
+    },
+    "data/catalog-completo.json": {
+      "bytes": 28403,
+      "sha256": "a2ee553207059e576212f2fa5bbff438fc9f9e8777e96911119ea360fb7aaed6"
+    },
+    "data/catalog.json": {
+      "bytes": 12128,
+      "sha256": "36a7af38ecb9171d897def676461201430ae1d099a81d8ffeae6c4edb3adf664"
+    },
+    "data/chicago18-referencias.json": {
+      "bytes": 4777,
+      "sha256": "e026354221107833852031c6587840e3de2be08feda1a3967f32829b7ba827ad"
+    },
+    "data/corpus-expansion-inventory.json": {
+      "bytes": 152236,
+      "sha256": "3fe40ae99b34966d2a7119171f99d2b0212b4e71eed2f079c51676f9872a880a"
+    },
+    "data/coverage.json": {
+      "bytes": 2844,
+      "sha256": "e5423dec312a8c4e646c5f631c0f194203089bff6caa8d9cc8ad1888665fa6c1"
+    },
+    "data/critical-notes.json": {
+      "bytes": 1013315,
+      "sha256": "c13acd551f074e72ac93a0eaa0b6c7f9a2e6070279a55ac44b499347105b7702"
+    },
+    "data/editorial-principles-source.json": {
+      "bytes": 3661,
+      "sha256": "265ea83c01e975faafbb6cb3bfcbc2ac360dded6f0f55b30ba5ea1580063fffb"
+    },
+    "data/fulltext/manifest.json": {
+      "bytes": 2092,
+      "sha256": "82e17f9b1d2775bd20f9b298b553baf1e2981a16f65c80b8bedd5fd73bea9351"
+    },
+    "data/fulltext/recensio-es.json": {
+      "bytes": 2772914,
+      "sha256": "c4840fcf5be257b9a921f3652542e29b0ce2871ae9570d338cf9d871ae71e508"
+    },
+    "data/fulltext/recensio-fr.json": {
+      "bytes": 2867610,
+      "sha256": "f82138c9533f550de17e5d42a31b1ea179a4b4ca69752ce56ef4336966bc1f80"
+    },
+    "data/fulltext/theory-en.json": {
+      "bytes": 2889776,
+      "sha256": "0963fb6cb8ec0e80f58f7799d43c8aa7e04f52de48c32ae72ab0e586023081dd"
+    },
+    "data/historical.json": {
+      "bytes": 17340,
+      "sha256": "0792951e1a938fee0118eb3140463f0f0a96d3cc954429216dfad14d75297816"
+    },
+    "data/krohn-1912-pages.json": {
+      "bytes": 629591,
+      "sha256": "4e3204a171ca0eadbf778f3b2aae3407366d2dd929e251613c57021ca7a183cd"
+    },
+    "data/latin-lexicon.json": {
+      "bytes": 14957,
+      "sha256": "761bd78caab9fbfe88d7ee5fab2d73ad2c3bbac74cc4db24b287103a2dc1be00"
+    },
+    "data/loci-candidates.json": {
+      "bytes": 26858,
+      "sha256": "3cb7d5b345aeb5b60065b7a54a47237fca5d84ac530d24451c251cab4d6c1c1a"
+    },
+    "data/loci-map.json": {
+      "bytes": 1061,
+      "sha256": "7a82d75484936326f6884aa0963d177b87ea0584b53bd5e1015f3a519b32f52b"
+    },
+    "data/pdf-pages/recensio-es.json": {
+      "bytes": 2212273,
+      "sha256": "6b4c43ee03928e2324977efb47682bd8c707df5b06411bab3a1a60a225a0060d"
+    },
+    "data/pdf-pages/recensio-fr.json": {
+      "bytes": 2301068,
+      "sha256": "b86b7061bde402f400c682f87d0a1ed558ea413b898296813740602bd699a6b6"
+    },
+    "data/pdf-pages/theory-en.json": {
+      "bytes": 2341567,
+      "sha256": "9694028a9d7842d91c6877fe0d2bf541e3fec24d0235c90db31872ae5a944228"
+    },
+    "data/recensio-es-pages.json": {
+      "bytes": 2165121,
+      "sha256": "207eee560d7ab7ded751cc6059c8fe6318abaec641e290bfa12f9516dffb992b"
+    },
+    "data/recensio-fr-pages.json": {
+      "bytes": 2248762,
+      "sha256": "178105e39fac2d73d3ce4660e72cd4d9cec76f783875e58682a81d3aacab50d5"
+    },
+    "data/structured/index-report.json": {
+      "bytes": 2568,
+      "sha256": "ecab0a45c317619c9f5fd3dcf4da3b370e924a0638ff587630a1e39301482b49"
+    },
+    "data/structured/manifest.json": {
+      "bytes": 5897,
+      "sha256": "3e4c2911cd886184253f3719dd7fbdaf17f3454d19c8e5d6169e5a9955123b3d"
+    },
+    "data/structured/recensio-es.json": {
+      "bytes": 1049999,
+      "sha256": "62ffe084d6bf3c6b8f8e818de5a3b5903a8d894948f663b0f4de3daa7e9e9e1c"
+    },
+    "data/structured/recensio-fr.json": {
+      "bytes": 1091254,
+      "sha256": "7ac3879158902484ca9a81455e9cacf99ff4e7ec2278d0a888199c1d2abed8e7"
+    },
+    "data/structured/theory-en.json": {
+      "bytes": 972507,
+      "sha256": "7cc134fe01dd57a2bfe69c1a6fd65929811c0c3a4f90690022d256ed59bd138a"
+    },
+    "data/supplements.json": {
+      "bytes": 332,
+      "sha256": "c5a868010139a295273923a3c9b24f444491889ec96b5c37021a89107e354187"
+    },
+    "data/text/cesariano-1521.json": {
+      "bytes": 2472891,
+      "sha256": "565afcc89865f4583fa6d065d8474fe4d305840ac4c67beb6ce9b964d5bbd62b"
+    },
+    "data/text/krohn-1912.json": {
+      "bytes": 766214,
+      "sha256": "ca786032f3907ae187b61c7d6196d17775ac0098fa857d0b30e61e1614e812f8"
+    },
+    "data/text/ortiz-1787.json": {
+      "bytes": 1183198,
+      "sha256": "52ba55df75259949edb31ef1e7351e1d06cdd6a83d524fa01a5e8af85a853d68"
+    },
+    "data/text/recensio-es.json": {
+      "bytes": 2343798,
+      "sha256": "ddab0851d3e7e238d6cf808c1962c930fcd706aba4cac051964be25cc755ebf3"
+    },
+    "data/text/recensio-fr.json": {
+      "bytes": 2429052,
+      "sha256": "52b7d2ff0802cbbe08b54bc281131af78a491e5ee3665e8c135311d1894cba47"
+    },
+    "data/text/theory-en.json": {
+      "bytes": 2398087,
+      "sha256": "e93918677c6a8d5a35b7b01d603716fef56f00288f9e34e7c8b4eb1c54255f57"
+    },
+    "data/theory-en-pages.json": {
+      "bytes": 2256020,
+      "sha256": "d815bbe0b49fa4fd5de622965819292b7de2e60e37dd440da3a117e41ffab44a"
+    },
+    "data/theory-es-pages.json": {
+      "bytes": 1969888,
+      "sha256": "6756302b296687e1d624abd0fb75282c981f7b2992ce11afa1bd00b05eb03f01"
+    },
+    "data/theory-fr-pages.json": {
+      "bytes": 2038161,
+      "sha256": "21c42d288818ece073bb6cab140919753551616c63075ad98fd7b97598393d7b"
+    },
+    "data/vitruvian-structural-audit.json": {
+      "bytes": 411826,
+      "sha256": "285278341aaa86e09b7765146a23fe38229ce4787ac029f5166f3ba5a3f832f1"
+    }
+  },
+  "identifiers": {
+    "doi": null,
+    "orcid": null,
+    "version_manifest": "https://diegoalonsok-png.github.io/vitruvius-digital-library/data/releases/2026-10-30.2.json"
+  },
+  "notes": "No se asignan DOI, ORCID ni ISBN inexistentes. Los hashes identifican los archivos publicados."
+}

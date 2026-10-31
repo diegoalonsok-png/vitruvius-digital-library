@@ -6,6 +6,7 @@
  let entries=[],passageData=null;
  const occurrences=document.createElement('section');occurrences.id='lexical-occurrences';occurrences.className='dictionary-entry';occurrences.hidden=true;occurrences.setAttribute('aria-live','polite');gloss.after(occurrences);
  const {lexicalSuggestions}=await import('./lexical-suggestions.mjs?v=20261030-history');
+ const {normalize,tokens,matchingForms}=await import('./search-core.mjs');
  const normalizeWord=v=>String(v).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function wordMatches(text,words){
   const tokens=String(text||'').match(/[\p{L}\p{M}]+/gu)||[];
@@ -23,21 +24,20 @@
   return {...e,passages:(await response.json()).passages||[]};
  })));
  function matchingTokens(text,forms){
-  const found=[];
-  for(const match of String(text||'').matchAll(/[\\p{L}\\p{M}]+/gu)){
-   const token=normalizeWord(match[0]);
-   if(forms.has(token))found.push(match[0]);
-  }
-  return found;
+  return matchingForms(String(text||''),[...forms]).map(m=>m.form);
  }
  async function showOccurrences(){
   const searched=input.value.trim(),token=normalizeWord(searched);
   occurrences.replaceChildren();occurrences.hidden=true;
-  if(!searched||searched.length>90||!/[\\p{L}]/u.test(searched))return;
-  const queryWords=[...searched.matchAll(/[\\p{L}\\p{M}]+/gu)].map(x=>normalizeWord(x[0]));
+  // The main search owns the count, selection and content scope. Avoid a
+  // second competing counter above those results. The reader keeps its
+  // explicitly labelled concordance of the canonical treaty text.
+  if(document.getElementById('search-kind'))return;
+  if(!searched||searched.length>90||!/\p{L}/u.test(searched))return;
+  const queryWords=tokens(searched).map(x=>x.value);
   if(queryWords.length!==1)return;
   const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
-  const forms=new Set([searched,...(entry?[entry.lemma,...(entry.forms||[]),entry.transliteration,entry.greek]:[])].filter(Boolean).map(normalizeWord));
+  const forms=new Set([searched,...(entry?[entry.lemma,...(entry.forms||[]),entry.transliteration,entry.greek]:[])].filter(Boolean));
   const title=document.createElement('h3');title.textContent='Concordancia de las ediciones · '+searched;occurrences.append(title);occurrences.hidden=false;
   const status=document.createElement('p');status.textContent='Consultando latín y traducciones en las tres ediciones…';occurrences.append(status);
   try{
@@ -65,7 +65,7 @@
       a.textContent='Vitr., De arch. '+p.locus;li.append(a);
       const details=['latín: '+hit.latin.length,'traducción: '+hit.translation.length].join(' · ');
       const source=hit.translation.length&&!hit.latin.length?p.translation:p.latin;
-      const tokenMatch=[...String(source||'').matchAll(/[\\p{L}\\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
+      const tokenMatch=[...String(source||'').matchAll(/[\p{L}\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
       const at=tokenMatch?.index||0;
       li.append(document.createTextNode(' ('+details+') — '+String(source||'').slice(Math.max(0,at-55),at+125)));
       list.append(li);
@@ -92,7 +92,7 @@
   function fill(){
    if(input.value.trim()!==value)return;
    const q=norm(value),hits=[];
-   for(const p of passageData){const ts=String(p.latin||'').matchAll(/[\\p{L}\\p{M}]+/gu);for(const m of ts)if(norm(m[0])===q){hits.push({p,index:m.index,term:m[0]});break;}}
+   for(const p of passageData){const ts=String(p.latin||'').matchAll(/[\p{L}\p{M}]+/gu);for(const m of ts)if(norm(m[0])===q){hits.push({p,index:m.index,term:m[0]});break;}}
    status.textContent=hits.length+' pasajes del texto latino V514 con esta grafía.';
    for(const {p,index,term} of hits.slice(0,12)){const para=document.createElement('p'),a=document.createElement('a');a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(value);a.textContent='Vitr., De arch. '+p.locus+' →';const snippet=String(p.latin||'').slice(Math.max(0,index-55),index+term.length+95);para.append(a,document.createTextNode(' · '+snippet));section.append(para);}
   }

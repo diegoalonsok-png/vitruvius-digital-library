@@ -55,6 +55,17 @@
           15,
           17
         ]
+      },
+      "pdf": "documents/recensio-es.pdf",
+      "pdf_sha256": "0c762b6e6684eeeff53ff4a5b9605261cfd37ccb216561924eb506c0c26c01d2",
+      "fulltext_index": "data/fulltext/recensio-es.json",
+      "fulltext_units": 6292,
+      "pdf_pages_index": "data/pdf-pages/recensio-es.json",
+      "coverage": {
+        "docx": "complete_body_tables_footnotes",
+        "canonical": "731 loci; grouped blocks retained where indicated",
+        "pdf_page_mapping": "automated_textual_matches",
+        "fulltext_units": 6292
       }
     },
     {
@@ -103,6 +114,17 @@
           15,
           17
         ]
+      },
+      "pdf": "documents/recensio-fr.pdf",
+      "pdf_sha256": "70d6fc3d214c60ef69634ec66c7e579cf20cf9377506f3f923042e8dead7e5f5",
+      "fulltext_index": "data/fulltext/recensio-fr.json",
+      "fulltext_units": 6298,
+      "pdf_pages_index": "data/pdf-pages/recensio-fr.json",
+      "coverage": {
+        "docx": "complete_body_tables_footnotes",
+        "canonical": "731 loci; grouped blocks retained where indicated",
+        "pdf_page_mapping": "automated_textual_matches",
+        "fulltext_units": 6298
       }
     },
     {
@@ -149,6 +171,17 @@
           6,
           8
         ]
+      },
+      "pdf": "documents/theory-en.pdf",
+      "pdf_sha256": "3fabca1a2c628646361ee322569665d284eaafbccfb921e294184aa5ccb1d9af",
+      "fulltext_index": "data/fulltext/theory-en.json",
+      "fulltext_units": 6804,
+      "pdf_pages_index": "data/pdf-pages/theory-en.json",
+      "coverage": {
+        "docx": "complete_body_tables_footnotes",
+        "canonical": "731 loci; grouped blocks retained where indicated",
+        "pdf_page_mapping": "automated_textual_matches",
+        "fulltext_units": 6804
       }
     },
     {
@@ -259,6 +292,10 @@
   "searchable_pages": 3379,
   "base_edition": "recensio-es",
   "semantic": {
-    "status": "pending"
-  }
+    "status": "building",
+    "model": "intfloat/multilingual-e5-small",
+    "scope": "complete_author_corpus",
+    "first_query": "downloads browser model; no API key or account required"
+  },
+  "corpus_version": "2026-10-30.2"
 }

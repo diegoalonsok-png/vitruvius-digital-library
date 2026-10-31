@@ -26,5 +26,5 @@ for r in records:
     if r['verification_status']=='checked': assert r.get('url'),r['id']
 assert len(records)==61 and sum(r['verification_status']=='checked' for r in records)==8
 lex=json.loads((root/'data/latin-lexicon.json').read_text())['entries']
-assert len(lex)==38 and sum(bool(r.get('verified')) for r in lex)==2
+assert len(lex)==43 and sum(bool(r.get('verified')) for r in lex)==3
 print('Editorial checks passed: eight pages, bibliography provenance and audit counts.')

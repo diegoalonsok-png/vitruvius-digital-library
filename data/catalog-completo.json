@@ -13,9 +13,50 @@
     "author": "Diego Kurilo",
     "publisher": "Sophia Lux Ediciones Académicas",
     "pages": 1157,
-    "description": "Texto latino y traducción española enfrentados, con aparato crítico y comentario. Archivo PDF en incorporación.",
-    "searchable": false,
-    "available": false
+    "description": "Texto latino y traducción española enfrentados, con aparato crítico y comentario. PDF completo disponible para lectura pública en Google Drive; lectura del DOCX e índice por libro, capítulo y sección disponibles.",
+    "searchable": true,
+    "available": true,
+    "external": true,
+    "access": "public_pdf",
+    "source_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
+    "read_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
+    "pdf_url": "https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view?usp=drivesdk",
+    "text_index": "data/text/recensio-es.json",
+    "searchable_pages": 1157,
+    "bibliographic_title": "Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",
+    "editorial_role": "Edición y traducción de Diego Kurilo",
+    "publication_place": "Buenos Aires",
+    "structured_index": "data/structured/recensio-es.json",
+    "indexed_passages": 731,
+    "bibliographic_author": "Kurilo, Diego",
+    "isbn": "978-631-01-6651-3",
+    "isbn_note": "ISBN transcrito del paratexto de esta entrega digital.",
+    "edition_statement": "Recensio académica provisional, edición digital V514",
+    "metadata_source": {
+      "type": "author_docx_front_matter",
+      "filename": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+      "paragraphs": [
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        15,
+        17
+      ]
+    },
+    "pdf": "documents/recensio-es.pdf",
+    "pdf_sha256": "0c762b6e6684eeeff53ff4a5b9605261cfd37ccb216561924eb506c0c26c01d2",
+    "fulltext_index": "data/fulltext/recensio-es.json",
+    "fulltext_units": 6292,
+    "pdf_pages_index": "data/pdf-pages/recensio-es.json",
+    "coverage": {
+      "docx": "complete_body_tables_footnotes",
+      "canonical": "731 loci; grouped blocks retained where indicated",
+      "pdf_page_mapping": "automated_textual_matches",
+      "fulltext_units": 6292
+    }
   },
   {
     "id": "recensio-fr",
@@ -31,9 +72,50 @@
     "author": "Diego Kurilo",
     "publisher": "Sophia Lux Ediciones Académicas",
     "pages": 1166,
-    "description": "Texte latin et traduction française en regard. PDF en cours d'incorporation.",
-    "searchable": false,
-    "available": false
+    "description": "Texte latin et traduction française en regard. PDF completo disponible para lectura pública en Google Drive; lectura del DOCX e índice por libro, capítulo y sección disponibles.",
+    "searchable": true,
+    "available": true,
+    "external": true,
+    "access": "public_pdf",
+    "source_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
+    "read_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
+    "pdf_url": "https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view?usp=drivesdk",
+    "text_index": "data/text/recensio-fr.json",
+    "searchable_pages": 1166,
+    "bibliographic_title": "Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",
+    "editorial_role": "Édition et traduction de Diego Kurilo",
+    "publication_place": "Buenos Aires",
+    "structured_index": "data/structured/recensio-fr.json",
+    "indexed_passages": 731,
+    "bibliographic_author": "Kurilo, Diego",
+    "isbn": "978-631-01-6651-3",
+    "isbn_note": "ISBN transcrito del paratexto de esta entrega digital.",
+    "edition_statement": "Recensio académica provisional, edición digital V554",
+    "metadata_source": {
+      "type": "author_docx_front_matter",
+      "filename": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
+      "paragraphs": [
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        15,
+        17
+      ]
+    },
+    "pdf": "documents/recensio-fr.pdf",
+    "pdf_sha256": "70d6fc3d214c60ef69634ec66c7e579cf20cf9377506f3f923042e8dead7e5f5",
+    "fulltext_index": "data/fulltext/recensio-fr.json",
+    "fulltext_units": 6298,
+    "pdf_pages_index": "data/pdf-pages/recensio-fr.json",
+    "coverage": {
+      "docx": "complete_body_tables_footnotes",
+      "canonical": "731 loci; grouped blocks retained where indicated",
+      "pdf_page_mapping": "automated_textual_matches",
+      "fulltext_units": 6298
+    }
   },
   {
     "id": "theory-en",
@@ -47,11 +129,50 @@
     "year": "2026",
     "category": "editions",
     "author": "Diego Kurilo",
-    "publisher": "Sophia Lux",
+    "publisher": "Sophia Lux Ediciones Académicas",
     "pages": 1056,
-    "description": "Latin–English reading edition and architectural commentary. PDF pending publication.",
-    "searchable": false,
-    "available": false
+    "description": "Latin–English reading edition and architectural commentary. PDF completo disponible para lectura pública en Google Drive; lectura del DOCX e índice por libro, capítulo y sección disponibles.",
+    "searchable": true,
+    "available": true,
+    "external": true,
+    "access": "public_pdf",
+    "source_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
+    "read_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
+    "pdf_url": "https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view?usp=drivesdk",
+    "text_index": "data/text/theory-en.json",
+    "searchable_pages": 1056,
+    "bibliographic_title": "The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",
+    "editorial_role": "Edición, traducción y comentario de Diego Kurilo",
+    "publication_place": "Buenos Aires",
+    "structured_index": "data/structured/theory-en.json",
+    "indexed_passages": 728,
+    "bibliographic_author": "Kurilo, Diego",
+    "isbn": null,
+    "isbn_note": "El DOCX V297 consultado no consigna un ISBN propio en su paratexto.",
+    "edition_statement": "Primera edición inglesa, revisión editorial V297",
+    "metadata_source": {
+      "type": "author_docx_front_matter",
+      "filename": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "paragraphs": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8
+      ]
+    },
+    "pdf": "documents/theory-en.pdf",
+    "pdf_sha256": "3fabca1a2c628646361ee322569665d284eaafbccfb921e294184aa5ccb1d9af",
+    "fulltext_index": "data/fulltext/theory-en.json",
+    "fulltext_units": 6804,
+    "pdf_pages_index": "data/pdf-pages/theory-en.json",
+    "coverage": {
+      "docx": "complete_body_tables_footnotes",
+      "canonical": "731 loci; grouped blocks retained where indicated",
+      "pdf_page_mapping": "automated_textual_matches",
+      "fulltext_units": 6804
+    }
   },
   {
     "id": "theory-es",
@@ -90,11 +211,78 @@
     "available": false
   },
   {
+    "id": "krohn-1912",
+    "title": "Vitruvii De architectura libri decem",
+    "subtitle": "Fritz Krohn, Teubner 1912 — edición latina histórica",
+    "languages": [
+      "la"
+    ],
+    "version": "Krohn 1912",
+    "year": "1912",
+    "category": "historical",
+    "author": "Fritz Krohn (editor)",
+    "publisher": "B. G. Teubner",
+    "pages": 314,
+    "description": "Edición crítica del texto latino, Leipzig 1912. Facsímil de Internet Archive.",
+    "pdf": "documents/krohn-1912.pdf",
+    "text_index": "data/text/krohn-1912.json",
+    "searchable": false,
+    "available": true,
+    "source_url": "https://archive.org/details/vitruviidearchit00vitr",
+    "indexing_note": "Facsímil histórico: excluido del buscador textual principal; el índice OCR previo no es una transcripción filológica validada."
+  },
+  {
+    "id": "ortiz-1787",
+    "title": "Los diez libros de architectura de M. Vitruvio Polión",
+    "subtitle": "Ortiz y Sanz (1787) · testimonio de la recepción histórica española",
+    "author": "Vitruvio; Joseph Ortiz y Sanz (traductor)",
+    "publisher": "Imprenta Real, Madrid",
+    "year": "1787",
+    "languages": [
+      "es"
+    ],
+    "version": "1787",
+    "category": "historical",
+    "pages": 370,
+    "text_index": "data/text/ortiz-1787.json",
+    "searchable": false,
+    "available": false,
+    "external": true,
+    "read_url": "https://archive.org/details/A065112",
+    "source_url": "https://archive.org/details/A065112",
+    "access": "facsimile",
+    "description": "Traducción castellana histórica de 1787, de interés para estudiar la recepción de Vitruvio y su vocabulario en el siglo XVIII. No es edición crítica latina de referencia. OCR sin revisión filológica; contrastar siempre con el facsímil.",
+    "indexing_note": "Facsímil histórico: excluido del buscador textual principal; el índice OCR previo no es una transcripción filológica validada."
+  },
+  {
+    "id": "cesariano-1521",
+    "title": "Di Lucio Vitruvio Pollione de architectura libri dece",
+    "subtitle": "Traducción y comentario de Cesare Cesariano",
+    "author": "Vitruvio; Cesare Cesariano (traductor)",
+    "publisher": "Gottardo da Ponte, Como",
+    "year": "1521",
+    "languages": [
+      "it"
+    ],
+    "version": "1521",
+    "category": "historical",
+    "pages": 378,
+    "text_index": "data/text/cesariano-1521.json",
+    "searchable": false,
+    "available": false,
+    "external": true,
+    "read_url": "https://archive.org/details/gri_33125008262210",
+    "source_url": "https://archive.org/details/gri_33125008262210",
+    "access": "facsimile",
+    "description": "Facsímil externo en Internet Archive. Índice OCR automático sujeto a errores; consultar imágenes para citas.",
+    "indexing_note": "Facsímil histórico: excluido del buscador textual principal; el índice OCR previo no es una transcripción filológica validada."
+  },
+  {
     "id": "history-0",
     "title": "Harley MS 2767 — De architectura",
     "subtitle": "Testimonio conservado más antiguo (c. 800–824 d. C.)",
     "author": "Copista carolingio",
-    "year": "812",
+    "year": "c. 800–824",
     "languages": [
       "la"
     ],
@@ -106,14 +294,14 @@
     "read_url": "https://searcharchives.bl.uk/catalog/040-002048598",
     "description": "London, British Library, Harley MS 2767, De architectura, 800–824.",
     "attribution": "Enlazado sin redistribuir imágenes; consultar las condiciones de la British Library.",
-    "dateShort": "812"
+    "dateShort": "c. 800–824"
   },
   {
     "id": "history-1",
     "title": "Codex Gudianus 132 Gud. lat. (E)",
-    "subtitle": "Testimonio medieval; recopilación de extractos vitruvianos",
+    "subtitle": "Compilación carolingia: Faventino y pasajes de Vitruvio",
     "author": "Copistas medievales",
-    "year": "875",
+    "year": "s. IX, mediados",
     "languages": [
       "la"
     ],
@@ -121,18 +309,18 @@
     "category": "manuscripts",
     "external": true,
     "access": "catalog",
-    "source_url": "https://diglib.hab.de/",
-    "read_url": "https://diglib.hab.de/",
-    "description": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. Digitalización HAB.",
+    "source_url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=132-gud-lat&lang=en&list=ms",
+    "read_url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=132-gud-lat&lang=en&list=ms",
+    "description": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. Corbie, mediados del siglo IX, según HAB. Compilación de Faventino con pasajes de Vitruvio, no texto continuo de los diez libros.",
     "attribution": "HAB: digitalizaciones bajo CC BY-SA 3.0 DE salvo indicación contraria. Atribución y condiciones de reutilización en las primeras páginas del PDF.",
-    "dateShort": "875"
+    "dateShort": "s. IX"
   },
   {
     "id": "history-2",
     "title": "Codex Gudianus 69 Gud. lat. (G)",
     "subtitle": "Tradición medieval de De architectura · siglo XI (núcleo principal)",
     "author": "Copistas medievales",
-    "year": "1050",
+    "year": "s. XI (unidad vitruviana)",
     "languages": [
       "la"
     ],
@@ -144,7 +332,7 @@
     "read_url": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=69-gud-lat&list=ms",
     "description": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat. Digitalización HAB.",
     "attribution": "HAB: digitalizaciones bajo CC BY-SA 3.0 DE salvo indicación contraria; conservar créditos y condiciones incorporadas en PDF.",
-    "dateShort": "1050"
+    "dateShort": "s. XI"
   },
   {
     "id": "history-3",
@@ -197,10 +385,10 @@
     "category": "historical",
     "external": true,
     "access": "catalog",
-    "source_url": "https://doi.org/10.3931/e-rara-19393",
-    "read_url": "https://doi.org/10.3931/e-rara-19393",
-    "description": "Vitruvius. Di Lucio Vitruvio Pollione de architectura libri dece. Cesare Cesariano. Como: Gottardo da Ponte, 1521. Stiftung Bibliothek Werner Oechslin. DOI: 10.3931/e-rara-19393.",
-    "attribution": "Dominio público según el registro patrimonial; citar institución y DOI.",
+    "source_url": "https://archive.org/details/gri_33125008262210",
+    "read_url": "https://archive.org/details/gri_33125008262210",
+    "description": "Primera traducción italiana de Vitruvio, con comentario e ilustraciones de Cesare Cesariano. Como, 1521. Ejemplar del Getty Research Institute; texto completado y corregido por Mauro Bono y Benedetto Giovio. Digitalización de 390 páginas catalogadas en Internet Archive; el OCR debe verificarse contra el facsímil.",
+    "attribution": "Getty Research Institute / Internet Archive, identificador gri_33125008262210. Obra histórica señalada como NOT_IN_COPYRIGHT por el archivo.",
     "dateShort": "1521"
   },
   {
@@ -385,16 +573,16 @@
     "languages": [
       "es"
     ],
-    "publisher": "Madrid: Imprenta Real · Biblioteca SEDHC / Cervantes Virtual",
+    "publisher": "Madrid: Imprenta Real · ejemplar Biblioteca de la Universidad de Sevilla",
     "category": "historical",
     "external": true,
     "access": "facsimile",
-    "source_url": "https://cervantesvirtual.com/obra/los-diez-libros-de-archtectura--1/",
-    "read_url": "https://cervantesvirtual.com/obra/los-diez-libros-de-archtectura--1/",
-    "pdf_url": "https://www.sedhc.es/bibliotecaD/1787_J_Ortiz_Sanz_Los_diez_libros_de_M_Vitruvio_Polion.pdf",
-    "description": "Vitruvius. Los diez libros de architectura. Trad. y notas de José Ortiz y Sanz. Madrid: Imprenta Real, 1787.",
-    "attribution": "Texto histórico en dominio público; citar fuente y verificar condiciones del repositorio de imágenes.",
-    "dateShort": "1787"
+    "source_url": "https://archive.org/details/A065112",
+    "read_url": "https://archive.org/details/A065112",
+    "description": "Edición castellana de 1787, traducción y comentarios de Joseph Ortiz y Sanz. Ejemplar Biblioteca de la Universidad de Sevilla, signatura A 065/112; digitalización de Internet Archive.",
+    "attribution": "Edición histórica señalada como dominio público por Internet Archive. Reproducción digital: Biblioteca de la Universidad de Sevilla, signatura A 065/112.",
+    "dateShort": "1787",
+    "pdf_url": "https://archive.org/download/A065112/A065112.pdf"
   },
   {
     "id": "history-16",
@@ -431,8 +619,8 @@
     "source_url": "https://archive.org/details/vitruviidearchit00vitr_0",
     "read_url": "https://archive.org/details/vitruviidearchit00vitr_0",
     "pdf_url": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf",
-    "description": "Vitruvius. Vitruvii De architectura libri decem. Ed. Valentin Rose. Leipzig: B. G. Teubner, 1899.",
-    "attribution": "Fascímil histórico digitalizado por Getty Research Institute / Internet Archive; conservar procedencia.",
+    "description": "Edición crítica latina de Valentin Rose (Leipzig: B. G. Teubner, 1899). Referencia para cotejo con Krohn (1912) y las recensiones contemporáneas. Facsímil histórico enlazado; índice léxico propio todavía pendiente de publicación.",
+    "attribution": "Getty Research Institute / Internet Archive. Testimonio editorial crítico histórico; el OCR sin revisión no debe utilizarse como lectura autorizada.",
     "dateShort": "1899"
   },
   {
@@ -469,8 +657,7 @@
     "access": "facsimile",
     "source_url": "https://www.gutenberg.org/ebooks/20239",
     "read_url": "https://www.gutenberg.org/ebooks/20239",
-    "pdf_url": "https://www.gutenberg.org/cache/epub/20239/pg20239.txt",
-    "description": "Vitruvius. The Ten Books on Architecture. Trad. Morris Hicky Morgan. Cambridge: Harvard University Press, 1914. Project Gutenberg eBook 20239.",
+    "description": "Vitruvius. The Ten Books on Architecture. Trad. Morris Hicky Morgan. Cambridge: Harvard University Press, 1914. Project Gutenberg eBook 20239. Texto digital íntegro disponible para consulta en Project Gutenberg (no se presenta como PDF).",
     "attribution": "Dominio público en EE. UU.; consultar legislación local y las condiciones del repositorio.",
     "dateShort": "1914"
   }

@@ -69,6 +69,15 @@ const i18n={
 'Comparación entre ediciones':['Comparison across editions','Comparaison des éditions'],
 'Bibliografía y derechos':['Bibliography and rights','Bibliographie et droits']
 };
+Object.assign(i18n,{
+'Inicio':['Home','Accueil'],'Buscador':['Search','Recherche'],'Catálogo':['Catalogue','Catalogue'],'Índice de loci':['Locus index','Index des loci'],'Lector bilingüe':['Bilingual reader','Lecteur bilingue'],'Lector bilingüe LA / ES / FR / EN':['Bilingual reader LA / ES / FR / EN','Lecteur bilingue LA / ES / FR / EN'],'Principios editoriales':['Editorial principles','Principes éditoriaux'],'Índice textual y notas':['Text index and notes','Index textuel et notes'],'Índices locorum':['Locus indexes','Indices locorum'],'Facsímiles manuscritos':['Manuscript facsimiles','Fac-similés des manuscrits'],'Basílica de Fano':['Basilica at Fano','Basilique de Fano'],
+'Búsqueda':['Search mode','Mode de recherche'],'Palabras y frases':['Words and phrases','Mots et expressions'],'Libro, capítulo o locus':['Book, chapter or locus','Livre, chapitre ou locus'],'Contar término y contextos':['Count occurrences and contexts','Compter les occurrences et contextes'],'IA semántica E5 · por significado':['E5 semantic AI · by meaning','IA sémantique E5 · par sens'],'Buscar en internet':['Search the web','Rechercher sur Internet'],'Contenido':['Content','Contenu'],'Libros completos · texto, estudios y notas':['Complete books · text, studies and notes','Livres complets · texte, études et notes'],'Solo el tratado · por locus':['Treatise only · by locus','Traité seul · par locus'],'Estudios, comentarios y tablas':['Studies, commentary and tables','Études, commentaires et tableaux'],'Notas del autor':['Author’s notes','Notes de l’auteur'],'Ediciones históricas · OCR sin revisar':['Historical editions · unreviewed OCR','Éditions historiques · OCR non révisé'],'Recuento':['Count mode','Mode de comptage'],'Palabra o frase exacta':['Exact word or phrase','Mot ou expression exacte'],'Raíz · empieza por':['Prefix · starts with','Préfixe · commence par'],
+'Libro de Vitruvio':['Book of Vitruvius','Livre de Vitruve'],'Los diez libros':['All ten books','Les dix livres'],'Todos los capítulos':['All chapters','Tous les chapitres'],'Prólogo':['Preface','Préface'],'Texto':['Text','Texte'],'Latín y traducciones':['Latin and translations','Latin et traductions'],'Solo latín':['Latin only','Latin seul'],'Solo castellano':['Spanish only','Espagnol seul'],'Solo francés':['French only','Français seul'],'Solo inglés':['English only','Anglais seul'],'Rango de loci':['Locus range','Plage de loci'],'El rango limita la consulta a unidades con locus explícito.':['The range includes only units with an explicit locus.','La plage inclut uniquement les unités avec locus explicite.'],
+'Cancelar búsqueda':['Cancel search','Annuler la recherche'],'Buscar →':['Search →','Rechercher →'],'Buscando…':['Searching…','Recherche…'],'Imprimir / guardar PDF':['Print / save PDF','Imprimer / enregistrer PDF'],'Descargar listado CSV ↓':['Download CSV results ↓','Télécharger les résultats CSV ↓'],'Preparar correo ↗':['Prepare email ↗','Préparer un courriel ↗'],'Resultados del listado':['Results to export','Résultats à exporter'],'Primeros 20':['First 20','20 premiers'],'Primeros 50':['First 50','50 premiers'],'Primeros 100':['First 100','100 premiers'],'Todos':['All','Tous'],
+'Palabra o frase':['Word or phrase','Mot ou expression'],'Ámbito':['Scope','Périmètre'],'Este libro de Vitruvio':['Current book of Vitruvius','Ce livre de Vitruve'],'Abrir locus →':['Open locus →','Ouvrir le locus →'],'Referencia directa':['Direct reference','Référence directe'],'Traducción':['Translation','Traduction'],'← Pasaje anterior':['← Previous passage','← Passage précédent'],'Pasaje siguiente →':['Next passage →','Passage suivant →'],'Mostrar las tres traducciones · sincronizadas por locus':['Show all three translations · synchronized by locus','Afficher les trois traductions · synchronisées par locus'],'Edición consultada':['Edition consulted','Édition consultée'],'Procedencia y referencia del texto':['Text provenance and reference','Provenance et référence du texte'],'Cobertura del índice':['Index coverage','Couverture de l’index'],
+'Edición':['Edition','Édition'],'Abrir edición':['Open edition','Ouvrir l’édition'],'Descargar PDF':['Download PDF','Télécharger le PDF'],'Leer texto bilingüe':['Read bilingual text','Lire le texte bilingue'],'Ampliación':['Zoom','Zoom'],'Ajustar al ancho':['Fit width','Ajuster à la largeur'],'Abrir locus en el PDF':['Open locus in PDF','Ouvrir le locus dans le PDF'],'Buscar palabra o frase en todo el PDF':['Search word or phrase throughout PDF','Rechercher un mot ou une expression dans tout le PDF'],'Buscar en el PDF':['Search PDF','Rechercher dans le PDF'],'Buscar por significado con IA':['Search by meaning with AI','Rechercher par sens avec IA'],'Texto accesible de esta página':['Accessible text of this page','Texte accessible de cette page'],'Ir a página':['Go to page','Aller à la page'],
+'Copiar / exportar cita':['Copy / export citation','Copier / exporter la référence'],'Copiar cita y enlace':['Copy citation and link','Copier la référence et le lien'],'Copiar cita Chicago 18 del pasaje':['Copy passage citation · Chicago 18','Copier la référence du passage · Chicago 18'],'Consultar Crossref':['Search Crossref','Consulter Crossref'],'Referencias académicas relacionadas · Crossref':['Related scholarly references · Crossref','Références universitaires connexes · Crossref'],'Mostrar más':['Show more','Afficher plus'],'Mostrar más resultados':['Show more results','Afficher plus de résultats']
+});
 let currentLanguage='es';
 try{currentLanguage=localStorage.getItem(LANGUAGE_KEY)||'es'}catch{}
 if(!['es','en','fr'].includes(currentLanguage))currentLanguage='es';
@@ -78,7 +87,7 @@ function translateRoot(root=document){
  let node;
  while((node=walker.nextNode())){
   const parent=node.parentElement;
-  if(!parent||parent.closest('script,style,textarea,option,.catalog-list,.search-results,.compare-body,.reader-transcript,.study,.biblio-table'))continue;
+  if(!parent||parent.closest('script,style,textarea,.catalog-list,.search-results,.compare-body,.reader-transcript,.study,.biblio-table,.scholarly-text,.reading-text,.pdf-text-accessible,.textLayer,.edition-citation'))continue;
   const key=node.nodeValue.trim();
   if(!key)continue;
   const original=originalNodes.get(node)||key;
@@ -94,6 +103,7 @@ function translateRoot(root=document){
  document.documentElement.lang='es'; // Content remains predominantly Spanish; navigation translation is partial.
 }
 function setupLanguage(){
+ const header=document.querySelector('.header-inner');if(header&&!document.querySelector('.header-languages')){const host=document.createElement('div');host.className='header-languages';header.append(host);}
  for(const host of document.querySelectorAll('.header-languages')){
   host.textContent='';
   const label=document.createElement('label');label.className='sr-only';label.textContent='Idioma de navegación (traducción parcial) / Navigation language (partial)';
@@ -104,6 +114,7 @@ function setupLanguage(){
   host.append(label,select);
  }
  translateRoot();
+ const observer=new MutationObserver(records=>{const roots=new Set();for(const record of records){if(record.type==='childList')for(const n of record.addedNodes)if(n.nodeType===1)roots.add(n);else if(n.parentElement)roots.add(n.parentElement);}for(const root of roots)translateRoot(root);});observer.observe(document.body,{childList:true,subtree:true});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setupLanguage);else setupLanguage();
 

@@ -1,0 +1,1 @@
+import{citationControls,handleCitationAction}from'./citation-tools.mjs';const records=await fetch('data/catalog-completo.json').then(r=>r.json());for(const host of document.querySelectorAll('[data-static-citations]'))host.innerHTML=citationControls(host.dataset.staticCitations);document.addEventListener('click',e=>handleCitationAction(e,records));

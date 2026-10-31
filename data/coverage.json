@@ -1,0 +1,95 @@
+{
+  "version": "2026-10-30.2",
+  "editions": [
+    {
+      "id": "recensio-es",
+      "version": "V514",
+      "units": 6292,
+      "kinds": {
+        "commentary": 3956,
+        "table": 550,
+        "treatise": 1462,
+        "note": 324
+      },
+      "with_pdf_page": 4317,
+      "source": {
+        "filename": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+        "sha256": "a41458f70810d323f1cc9cb1b47cdc8c47988961a798b18dbfb97316d1669b87",
+        "method": "complete_docx_body_tables_and_original_footnotes"
+      },
+      "pdf_sha256": "0c762b6e6684eeeff53ff4a5b9605261cfd37ccb216561924eb506c0c26c01d2",
+      "pdf_pages": 1157,
+      "canonical_passages": 731,
+      "canonical_pdf_links": 727
+    },
+    {
+      "id": "recensio-fr",
+      "version": "V554",
+      "units": 6298,
+      "kinds": {
+        "commentary": 3969,
+        "table": 550,
+        "treatise": 1462,
+        "note": 317
+      },
+      "with_pdf_page": 4322,
+      "source": {
+        "filename": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
+        "sha256": "6713489fe15991b1b438591f9045b241929fa1007529ea0fc13869f49cddc27b",
+        "method": "complete_docx_body_tables_and_original_footnotes"
+      },
+      "pdf_sha256": "70d6fc3d214c60ef69634ec66c7e579cf20cf9377506f3f923042e8dead7e5f5",
+      "pdf_pages": 1166,
+      "canonical_passages": 731,
+      "canonical_pdf_links": 724
+    },
+    {
+      "id": "theory-en",
+      "version": "V297",
+      "units": 6804,
+      "kinds": {
+        "commentary": 4791,
+        "table": 387,
+        "treatise": 1456,
+        "note": 170
+      },
+      "with_pdf_page": 4864,
+      "source": {
+        "filename": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+        "sha256": "5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99",
+        "method": "complete_docx_body_tables_and_original_footnotes"
+      },
+      "pdf_sha256": "3fabca1a2c628646361ee322569665d284eaafbccfb921e294184aa5ccb1d9af",
+      "pdf_pages": 1056,
+      "canonical_passages": 728,
+      "canonical_pdf_links": 726
+    }
+  ],
+  "fulltext_units": 19394,
+  "catalog_records": 28,
+  "historical_inventory_records": 74,
+  "studies": {
+    "total": 61,
+    "checked": 8
+  },
+  "lexicon": {
+    "total": 43,
+    "locally_marked_verified": 3
+  },
+  "notes": {
+    "total": 811,
+    "explicit_locus": 41,
+    "requires_locus_review": 770
+  },
+  "semantic": {
+    "status": "building",
+    "model": "intfloat/multilingual-e5-small",
+    "scope": "complete_author_corpus",
+    "first_query": "downloads browser model; no API key or account required"
+  },
+  "limitations": [
+    "Automated mapping is not independent philological collation.",
+    "An explicit note anchor is not a certified manuscript variant.",
+    "No DOI or ORCID is invented; ISBN is retained only when present in the source."
+  ]
+}
