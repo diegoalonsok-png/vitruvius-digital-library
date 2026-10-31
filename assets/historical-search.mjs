@@ -1,5 +1,6 @@
 const form=document.querySelector('#search'),query=document.querySelector('#q'),status=document.querySelector('#status'),out=document.querySelector('#results');
-const source={id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'};
+const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'}};
+let source=sources['krohn-1912'];
 let cache=null;let activeQuery="",activePrefix=false;
 const greekConcepts={
  'αρχιτεκτονικη':{label:'arquitectura',roots:['architect']},
@@ -51,7 +52,7 @@ function showPage(page,text,hits){
 }
 form.addEventListener('submit',async e=>{
  e.preventDefault();const edition=document.querySelector('#ed')?.value||'krohn-1912';
- if(edition!=='krohn-1912'){
+ if(edition==='perrault-1673'){
    const info={ 'perrault-1673':['Perrault (1673)','https://doi.org/10.3931/e-rara-61952'], 'rose-1899':['Rose (1899)','https://archive.org/details/vitruviidearchit00vitr_0']}[edition];
    out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();
    status.textContent='La edición '+info[0]+' todavía no dispone de OCR indexado. No se presentan coincidencias ficticias.';
@@ -59,6 +60,8 @@ form.addEventListener('submit',async e=>{
    const link=document.createElement('a');link.href=info[1];link.target='_blank';link.rel='noopener';link.textContent='Abrir facsímil institucional de '+info[0]+' ↗';out.append(link);
    return;
  }
+ source=sources[edition];cache=null;
+ document.querySelector('.historical-viewer h2').textContent='Facsímil original · '+source.label;
  const q=query.value.trim();if(!q)return;
  out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();status.textContent='Cargando índice histórico…';
  try{
@@ -85,7 +88,7 @@ form.addEventListener('submit',async e=>{
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  e.preventDefault();const n=Number(document.querySelector('#pdf-page-number').value),note=document.querySelector('#page-hit-status');
- if(!Number.isInteger(n)||n<1||n>314){if(note)note.textContent='Ingresá una página entre 1 y 314.';return;}
+ if(!Number.isInteger(n)||n<1||n>(cache?.length||314)){if(note)note.textContent='Ingresá una página entre 1 y 314.';return;}
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
   const record=cache.find(x=>x.page===n);if(!record)throw Error('Página no indexada');
