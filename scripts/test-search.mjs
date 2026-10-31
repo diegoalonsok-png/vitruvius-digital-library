@@ -33,6 +33,11 @@ assert(!lexicalSource.includes('\\\\p{'), 'Duplicated Unicode escape in lexical 
 const lexicalTokens='proslambanómenos symmetria ἀρχιτεκτονική'.match(/[\p{L}\p{M}]+/gu);
 assert.deepEqual(lexicalTokens,['proslambanómenos','symmetria','ἀρχιτεκτονική']);
 
+// Root search is only a prefix operation for a single word; never accept
+// arbitrary second words in a multiword query.
+assert.equal(findMatches('aqua ductus et aqua fontis','aqua duct',{prefix:true,phrase:true}).length,0);
+assert.equal(findMatches('aqua ductus et aqua fontis','aqua ductus',{prefix:true,phrase:true}).length,1);
+assert.equal(findMatches('architectura architecti architectus','architect',{prefix:true}).length,3);
 // Scientific reproducibility: exact quotations must never silently become approximate hits.
 assert.equal(findMatches('alpha beta gamma delta epsilon zeta eta theta','alpha beta gamma delta epsilon zeta omega theta',{phrase:true}).length,0);
 assert.equal(findMatches('alpha beta gamma delta epsilon zeta eta theta','alpha beta gamma delta epsilon zeta',{phrase:true}).length,1);
