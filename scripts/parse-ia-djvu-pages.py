@@ -5,7 +5,7 @@ from pathlib import Path
 xml=ET.parse(sys.argv[1]).getroot()
 pages=[]
 for i,obj in enumerate(xml.iter()):
-    if obj.tag.lower().endswith('object') and 'page' in str(obj.attrib).lower():
+    if obj.tag.lower().endswith('object') and any(x.tag.lower().endswith('param') and x.attrib.get('name','').upper()=='PAGE' for x in obj):
         text=' '.join(t.text or '' for t in obj.iter() if t.tag.lower().endswith('word'))
         pages.append({'page':len(pages)+1,'text':text})
 if len(pages)<100:
