@@ -214,13 +214,13 @@ self.onmessage=async({data:m})=>{
   }
   // Suggestions from attested corpus words. These are NOT automatic substitutions
   // or evidence that the student's intended word occurs in the text.
-  if(!output.results.length&&!direct&&!heading&&m.kind==='words'&&/^[\\p{L}\\p{M}]{5,}$/u.test(requested)){
-    const norm=x=>String(x).normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+  if(!output.results.length&&!direct&&!heading&&m.kind==='words'&&/^[\p{L}\p{M}]{5,}$/u.test(requested)){
+    const norm=x=>String(x).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
     const needle=norm(requested);
     const vocab=new Map();
     for(const data of datasets)for(const passage of data.passages)
       for(const field of [passage.latin,passage.translation]){
-        for(const token of String(field||'').match(/[\\p{L}\\p{M}]{4,}/gu)||[]){
+        for(const token of String(field||'').match(/[\p{L}\p{M}]{4,}/gu)||[]){
           const key=norm(token);
           if(Math.abs(key.length-needle.length)<=2&&key.length<=45)vocab.set(key,(vocab.get(key)||0)+1);
         }
@@ -242,7 +242,7 @@ self.onmessage=async({data:m})=>{
   // Automatic cross-language concordance by canonical locus. No fixed term list:
   // every indexed word can bring up its aligned Latin/ES/FR/EN passage.
   // An aligned passage is contextual evidence, NOT a word-level translation.
-  if(output.results.length && !direct && !heading && m.kind==='words' && requested.split(/\\s+/).length===1){
+  if(output.results.length && !direct && !heading && m.kind==='words' && requested.split(/\s+/).length===1){
     const exactHits=output.results.filter(hit=>!hit.partial_match);
     const aligned=new Map();
     const byLocus=new Map();
