@@ -20,7 +20,7 @@ export function parseLocus(value){
 export function citation(p){return 'Vitr., De arch. '+roman(p.book)+'.'+(p.chapter==='praef'?'praef.':p.chapter)+(p.section==null?'':(p.chapter==='praef'?'':'.')+p.section+(p.section_end?'–'+p.section_end:''));}
 export function findMatches(text,query,{prefix=false,phrase=false}={}){
   const ts=tokens(text),qs=tokens(query).map(t=>t.value);if(!qs.length)return[];const found=[];
-  for(let i=0;i<=ts.length-qs.length;i++)if(prefix?ts[i].value.startsWith(qs[0]):qs.every((q,j)=>ts[i+j].value===q))found.push({start:ts[i].start,end:ts[i+qs.length-1].end,form:text.slice(ts[i].start,ts[i+qs.length-1].end)});
+  for(let i=0;i<=ts.length-qs.length;i++)if(qs.every((q,j)=>prefix&&qs.length===1?ts[i+j].value.startsWith(q):ts[i+j].value===q))found.push({start:ts[i].start,end:ts[i+qs.length-1].end,form:text.slice(ts[i].start,ts[i+qs.length-1].end)});
   // A pasted quotation may come from a different historical recension.
   // If no exact quotation exists, identify a substantial contiguous span,
   // without presenting the result as a verbatim match.
