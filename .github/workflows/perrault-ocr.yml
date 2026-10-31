@@ -1,0 +1,42 @@
+name: Publicar OCR Perrault 1673
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/perrault-ocr.yml'
+      - 'scripts/parse-erara-alto.py'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar texto ALTO de e-rara
+        run: |
+          curl --fail --location --retry 4 --connect-timeout 30 --max-time 1500 \
+            'https://www.e-rara.ch/download/ftpack/alto/61952' -o /tmp/perrault-alto.xml
+          test -s /tmp/perrault-alto.xml
+      - name: Extraer concordancia por pagina PDF
+        run: |
+          python scripts/parse-erara-alto.py /tmp/perrault-alto.xml data/text/perrault-1673.json --offset 1
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/text/perrault-1673.json')
+          d=json.loads(p.read_text())
+          assert len(d)>=360, 'ALTO incompleto'
+          assert d[0]['page']==2 and d[-1]['page']>=370
+          assert sum(len(x['text']) for x in d)>100000
+          print('OCR PDF',len(d),'pages',round(p.stat().st_size/1e6,2),'MB')
+          PY
+      - name: Publicar indice
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/text/perrault-1673.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar OCR Perrault 1673 por pagina PDF"
+            git push origin HEAD:main
+          fi
