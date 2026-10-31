@@ -229,6 +229,33 @@ self.onmessage=async({data:m})=>{
       .sort((a,b)=>a.d-b.d||b.count-a.count||a.word.localeCompare(b.word)).slice(0,5);
     if(candidates.length)warnings.push('Posibles grafías documentadas en el corpus (sugerencias, no citas): '+candidates.map(x=>x.word).join(' · ')+'. Volvé a buscar la forma deseada.');
   }
+  // Automatic cross-language concordance by canonical locus. No fixed term list:
+  // every indexed word can bring up its aligned Latin/ES/FR/EN passage.
+  // An aligned passage is contextual evidence, NOT a word-level translation.
+  if(output.results.length && !direct && !heading && m.kind==='words' && requested.split(/\\s+/).length===1){
+    const exactHits=output.results.filter(hit=>!hit.partial_match);
+    const aligned=new Map();
+    const byLocus=new Map();
+    for(const data of datasets)for(const passage of data.passages){
+      if(!byLocus.has(passage.locus))byLocus.set(passage.locus,[]);
+      byLocus.get(passage.locus).push({data,passage});
+    }
+    for(const hit of exactHits){
+      for(const {data,passage} of byLocus.get(hit.locus)||[]){
+        for(const [language,field] of [['la',passage.latin],[data.language,passage.translation]]){
+          if(m.language&&m.language!=='all'&&m.language!==language)continue;
+          const key=data.edition+'|'+passage.locus+'|'+language;
+          if(output.results.some(r=>r.edition+'|'+r.locus+'|'+r.language===key))continue;
+          if(aligned.has(key))continue;
+          aligned.set(key,{edition:data.edition,locus:passage.locus,book:passage.book,chapter:passage.chapter,section:passage.section,section_end:passage.section_end,language,latin:passage.latin,translation:passage.translation,text:field,snippet:field.slice(0,650),context_start:0,context_length:0,partial_match:true,match_type:'aligned_locus',form:'',page:passage.pdf_pages?.[language==='la'?'latin':'translation']||null,score:0});
+        }
+      }
+    }
+    if(aligned.size){
+      output.results.push(...aligned.values());
+      warnings.push('Se incluyen '+aligned.size+' textos paralelos recuperados automáticamente por locus. Los pasajes alineados no prueban la equivalencia palabra por palabra; verificá las traducciones.');
+    }
+  }
   if(!output.results.length)warnings.push('Sin coincidencias en los documentos indexados con esta consulta. Probá otra forma, un lema más breve o un locus como IV.1.');
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
