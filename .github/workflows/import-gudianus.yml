@@ -1,0 +1,59 @@
+name: Importar facsimiles Gudianus
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar PDF institucionales, si están disponibles
+        shell: bash
+        run: |
+          python - <<'PY'
+          import urllib.request, pathlib, os
+          cases=[
+            ('gudianus-69.pdf','69-gud-lat','00001-00242'),
+            ('gudianus-132.pdf','132-gud-lat','00001-00224'),
+          ]
+          base='https://diglib.hab.de'
+          pathlib.Path('documents').mkdir(exist_ok=True)
+          failed=[]
+          for name,code,pages in cases:
+            paths=[
+              f'/mss/{code}/pdf/mss_{code}_{pages}.pdf',
+              f'/mss/{code}/mss_{code}_{pages}.pdf',
+              f'/mss/{code}/pdf/{code}.pdf',
+            ]
+            success=False
+            for path in paths:
+              try:
+                req=urllib.request.Request(base+path,headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (scholarly access)'})
+                with urllib.request.urlopen(req,timeout=40) as res:
+                  with open('documents/'+name+'.tmp','wb') as out:
+                    while True:
+                      chunk=res.read(1048576)
+                      if not chunk:break
+                      out.write(chunk)
+                file=pathlib.Path('documents/'+name+'.tmp')
+                if file.stat().st_size<1000000 or file.open('rb').read(5)!=b'%PDF-':raise ValueError('Respuesta no es PDF')
+                file.rename('documents/'+name)
+                print('OK',name,file.stat().st_size,base+path)
+                success=True
+                break
+              except Exception as e:
+                pathlib.Path('documents/'+name+'.tmp').unlink(missing_ok=True)
+                print('No disponible',base+path,str(e)[:120])
+            if not success:failed.append(name)
+          if failed:raise SystemExit('PDF institucionales no descargables en rutas verificadas: '+', '.join(failed))
+          PY
+      - name: Publicar facsimiles, sin modificar el visor
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/gudianus-69.pdf documents/gudianus-132.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Almacenar facsimiles institucionales Gudianus 69 y 132"
+            git push
+          fi
