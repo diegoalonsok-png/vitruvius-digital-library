@@ -16,7 +16,7 @@ jobs:
       - name: Descargar texto ALTO de e-rara
         run: |
           curl --fail --location --retry 4 --connect-timeout 30 --max-time 1500 \
-            'https://www.e-rara.ch/download/ftpack/alto/6152828' -o /tmp/perrault-alto.xml
+            'https://www.e-rara.ch/download/ftpack/alto/16797458' -o /tmp/perrault-alto.xml
           test -s /tmp/perrault-alto.xml
           head -c 100 /tmp/perrault-alto.xml | grep -q -i '<?xml'
       - name: Extraer concordancia por pagina PDF
