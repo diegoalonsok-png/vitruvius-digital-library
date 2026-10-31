@@ -1,5 +1,5 @@
 const form=document.querySelector('#search'),query=document.querySelector('#q'),status=document.querySelector('#status'),out=document.querySelector('#results');
-const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'}};
+const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/61952.pdf',label:'Perrault (1673)'}};
 let source=sources['krohn-1912'];
 let cache=null;let activeQuery="",activePrefix=false;
 const greekConcepts={
@@ -59,7 +59,7 @@ function selectHistoricalEdition(){
  const editionInfo={
    'krohn-1912':{label:'Krohn 1912',url:'documents/krohn-1912.pdf#page=1',ocr:true},
    'rose-1899':{label:'Rose 1899',url:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=1',ocr:true},
-   'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/zut/content/titleinfo/776185',ocr:false}
+   'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/download/pdf/61952.pdf#page=1',ocr:true}
  };
  const info=editionInfo[id];if(!info)return;
  if(heading)heading.textContent='Facsímil original · '+info.label;
@@ -79,14 +79,6 @@ document.querySelector('#ed')?.addEventListener('change',()=>{
 });
 form.addEventListener('submit',async e=>{
  e.preventDefault();const edition=document.querySelector('#ed')?.value||'krohn-1912';selectHistoricalEdition();
- if(edition==='perrault-1673'){
-   const info={ 'perrault-1673':['Perrault (1673)','https://doi.org/10.3931/e-rara-61952'], 'rose-1899':['Rose (1899)','https://archive.org/details/vitruviidearchit00vitr_0']}[edition];
-   out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();
-   status.textContent='La edición '+info[0]+' todavía no dispone de OCR indexado. No se presentan coincidencias ficticias.';
-   const p=document.createElement('p');p.textContent='El facsímil está disponible en la biblioteca de origen. Para búsqueda por palabra y salto automático a páginas primero hay que extraer y verificar su OCR.';out.append(p);
-   const link=document.createElement('a');link.href=info[1];link.target='_blank';link.rel='noopener';link.textContent='Abrir facsímil institucional de '+info[0]+' ↗';out.append(link);
-   return;
- }
  source=sources[edition];cache=null;
  document.querySelector('.historical-viewer h2').textContent='Facsímil original · '+source.label;
  const q=query.value.trim();if(!q)return;
@@ -115,7 +107,7 @@ form.addEventListener('submit',async e=>{
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  e.preventDefault();const n=Number(document.querySelector('#pdf-page-number').value),note=document.querySelector('#page-hit-status');
- if(!Number.isInteger(n)||n<1||n>(cache?.length||314)){if(note)note.textContent='Ingresá una página entre 1 y 314.';return;}
+ if(!Number.isInteger(n)||n<1||n>(source.id==='perrault-1673'?371:cache?.length||314)){if(note)note.textContent='Ingresá una página entre 1 y 314.';return;}
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
   const record=cache.find(x=>x.page===n);if(!record)throw Error('Página no indexada');
