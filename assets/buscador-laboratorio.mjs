@@ -3,8 +3,8 @@ const $=q=>document.querySelector(q);
 const ids=['recensio-es','recensio-fr','theory-en'];
 const names={'recensio-es':'V514 · Latín / Castellano','recensio-fr':'V554 · Latín / Francés','theory-en':'V297 · Latín / Inglés'};
 const cache=new Map();let results=[],shown=0,revision=0;
-const norm=x=>normalize(x).replace(/[^\\p{L}\\p{N}]+/gu,' ').trim();
-const plain=x=>String(x||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase();
+const norm=x=>normalize(x).replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+const plain=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
 function escape(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 async function corpus(id){if(!cache.has(id))cache.set(id,fetch('data/structured/'+id+'.json').then(r=>{if(!r.ok)throw Error('No se pudo cargar '+id);return r.json()}).catch(e=>{cache.delete(id);throw e}));return cache.get(id);}
 function distance(a,b,limit=2){if(Math.abs(a.length-b.length)>limit)return limit+1;let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=next;if(Math.min(...prev)>limit)return limit+1;}return prev[b.length];}
