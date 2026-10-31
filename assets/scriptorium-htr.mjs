@@ -45,3 +45,22 @@ $('#compare').addEventListener('click',()=>{
  const missing=[...counts.entries()].flatMap(([w,n])=>Array(n).fill(w)).slice(0,30);
  const q=document.createElement('p');q.textContent='Formas de V514 no emparejadas (máx. 30): '+(missing.join(' · ')||'Ninguna');out.append(q);
 });
+
+$('#htr-recognize').addEventListener('click',async()=>{
+ const endpoint=$('#htr-endpoint').value.trim().replace(/\/$/,'');
+ if(!chosenImage){ocrStatus.textContent='Para HTR seleccioná primero una imagen local del folio (PNG/JPG).';return;}
+ if(!endpoint){ocrStatus.textContent='Falta configurar un servidor Kraken HTR. GitHub Pages no ejecuta este modelo por sí solo; consultá la guía de instalación.';return;}
+ if(!/^https:\/\//.test(endpoint)&&!/^http:\/\/localhost(?::\d+)?$/.test(endpoint)&&!/^http:\/\/127\.0\.0\.1(?::\d+)?$/.test(endpoint)){
+ ocrStatus.textContent='Usá HTTPS o una dirección localhost explícita.';return;}
+ const btn=$('#htr-recognize');btn.disabled=true;ocrStatus.textContent='Enviando folio a Kraken HTR…';
+ try{
+  const form=new FormData();form.append('image',chosenImage,chosenImage.name);
+  const response=await fetch(endpoint+'/recognize',{method:'POST',body:form});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw Error(data.detail||'HTTP '+response.status);
+  if(data.engine!=='Kraken'||typeof data.text!=='string')throw Error('Respuesta no reconocida del servicio HTR');
+  $('#transcription').value=data.text;
+  ocrStatus.textContent=data.text.trim()?'HTR Kraken finalizado. Transcripción automática SIN REVISAR, comparala con la imagen.':'Kraken respondió sin texto reconocido; probá otra imagen o modelo.';
+ }catch(e){ocrStatus.textContent='HTR no disponible: '+e.message+'. Comprobá conexión, CORS, HTTPS y que el modelo esté configurado.';}
+ finally{btn.disabled=false;}
+});
