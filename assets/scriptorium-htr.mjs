@@ -91,3 +91,25 @@ $('#copy-latin').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText($('#transcription').value);$('#ai-status').textContent='Latín editable copiado.';}
  catch(e){$('#ai-status').textContent='El portapapeles está bloqueado; seleccioná el texto de la columna II.';}
 });
+
+$('#gemini-extract').addEventListener('click',async()=>{
+ const endpoint=$('#gemini-endpoint').value.trim().replace(/\/$/,'');
+ const token=$('#gemini-token').value;
+ const file=$('#gemini-image').files?.[0]||chosenImage;
+ const status=$('#gemini-status'),btn=$('#gemini-extract');
+ if(!file){status.textContent='Seleccioná una imagen JPG/PNG/WebP de un folio en alta resolución.';return;}
+ if(!endpoint||!token){status.textContent='El servicio Gemini todavía no está configurado. Se necesitan URL HTTPS del Worker y token de acceso; consultá la guía gratuita.';return;}
+ if(!/^https:\/\/[a-z0-9.-]+(?::443)?$/i.test(endpoint)){status.textContent='Usá una URL base HTTPS válida, sin rutas ni credenciales.';return;}
+ btn.disabled=true;status.textContent='Gemini está leyendo el folio…';
+ try{
+  const body=new FormData();body.append('image',file);
+  const response=await fetch(endpoint,{method:'POST',headers:{'X-Scriptorium-Token':token},body});
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok)throw Error(result.error||'HTTP '+response.status);
+  if(result.engine!=='Gemini'||typeof result.text!=='string')throw Error('La respuesta no tiene el formato esperado.');
+  if(!result.text.trim())throw Error('Gemini no devolvió texto latino.');
+  $('#transcription').value=result.text;$('#ai-result').value=result.text;
+  status.textContent='Transcripción automática Gemini recibida: '+result.text.length+' caracteres. SIN REVISAR; compará con la imagen.';
+ }catch(err){status.textContent='Gemini no disponible: '+err.message+'. La transcripción manual con Google AI continúa disponible.';}
+ finally{btn.disabled=false;}
+});
