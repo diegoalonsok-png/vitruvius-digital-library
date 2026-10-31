@@ -181,6 +181,26 @@
        const note=document.createElement('p');note.textContent='Identificado a partir de la entrada lexicográfica. No implica presencia literal del lema en Vitruvio.';panel.append(note);
        const link=document.createElement('a');link.href='https://en.wiktionary.org/wiki/'+encodeURIComponent(lemma)+'#Ancient_Greek';link.target='_blank';link.rel='noopener';link.textContent='Ver acepciones del lema griego ↗';panel.append(link);
        const button=document.createElement('button');button.type='button';button.className='dictionary-form';button.textContent='Consultar lema dentro de la biblioteca';button.addEventListener('click',()=>{input.value=lemma;displayGloss();form.requestSubmit();});panel.append(button);
+       const loading=document.createElement('p');loading.textContent='Consultando las acepciones del lema griego…';panel.append(loading);
+       const url=new URL('https://en.wiktionary.org/w/api.php');
+       for(const [k,v] of Object.entries({action:'parse',page:lemma,prop:'text',format:'json',formatversion:'2',origin:'*'}))url.searchParams.set(k,v);
+       fetch(url).then(x=>x.ok?x.json():Promise.reject(Error('Fuente no disponible'))).then(data=>{
+         if(ticket!==liveTicket||!panel.isConnected)return;
+         if(!data.parse?.text)throw Error('No hay entrada del lema');
+         const doc=new DOMParser().parseFromString(data.parse.text,'text/html');
+         const heading=[...doc.querySelectorAll('h2')].find(h=>h.textContent.toLowerCase().includes('ancient greek'));
+         let node=(heading?.closest('.mw-heading')||heading)?.nextElementSibling,definitions=[];
+         while(node&&node.tagName!=='H2'&&!node.matches?.('.mw-heading2')){
+           for(const li of node.querySelectorAll('ol > li')){
+             const clone=li.cloneNode(true);clone.querySelectorAll('ol,ul,.reference').forEach(x=>x.remove());
+             const definition=clone.textContent.replace(/\\s+/g,' ').trim();
+             if(definition.length>2&&!definitions.includes(definition))definitions.push(definition.slice(0,260));
+           }
+           node=node.nextElementSibling;
+         }
+         loading.textContent=definitions.length?'Acepciones del lema en inglés (Wikcionario):':'No fue posible extraer las acepciones del lema.';
+         if(definitions.length){const list=document.createElement('ol');for(const definition of definitions.slice(0,8)){const item=document.createElement('li');item.textContent=definition;list.append(item);}panel.append(list);}
+       }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar el lema. Utilizá el enlace a la fuente.';});
        details.append(panel);
      }
    }
