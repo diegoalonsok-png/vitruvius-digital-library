@@ -133,7 +133,7 @@
    }).catch(error=>({definitions:[],status:error.message||'Consulta no disponible'})));
   }
   liveCache.get(key).then(result=>{
-   if(ticket!==liveTicket||!details.isConnected)return;
+   if(!details.isConnected||!dictionaryTerms(input.value.trim()).some(w=>norm(w)===norm(term)))return;
    message.textContent=result.definitions.length?'Acepciones de Wikcionario (en inglés), presentadas dentro de la biblioteca:':result.status||'Sin acepciones extraíbles para esta forma.';
    if(result.grammar?.length){const p=document.createElement('p');p.textContent='Clasificación: '+result.grammar.join(' · ');details.append(p);}
    if(result.definitions.length){const ol=document.createElement('ol');for(const d of result.definitions){const li=document.createElement('li');li.textContent=d;ol.append(li);}details.append(ol);}
@@ -185,7 +185,7 @@
        const url=new URL('https://en.wiktionary.org/w/api.php');
        for(const [k,v] of Object.entries({action:'parse',page:lemma,prop:'text',format:'json',formatversion:'2',origin:'*'}))url.searchParams.set(k,v);
        fetch(url).then(x=>x.ok?x.json():Promise.reject(Error('Fuente no disponible'))).then(data=>{
-         if(ticket!==liveTicket||!panel.isConnected)return;
+         if(!panel.isConnected||!dictionaryTerms(input.value.trim()).some(w=>norm(w)===norm(term)))return;
          if(!data.parse?.text)throw Error('No hay entrada del lema');
          const doc=new DOMParser().parseFromString(data.parse.text,'text/html');
          const heading=[...doc.querySelectorAll('h2')].find(h=>h.textContent.toLowerCase().includes('ancient greek'));
