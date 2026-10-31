@@ -1,0 +1,45 @@
+name: Incorporar PDF propios al Scriptorium
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-author-pdfs.yml'
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar descargador de Drive público
+        run: python -m pip install --disable-pip-version-check gdown
+      - name: Obtener los PDF públicos del autor
+        run: |
+          mkdir -p documents
+          python -m gdown '19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ' -O documents/kurilo-recensio-es.pdf
+          python -m gdown '12P4-4hADEpR67DfeqOfN9DVntgnOx0DE' -O documents/kurilo-recensio-fr.pdf
+          python -m gdown '1b5sSpZuxpp3QUyradY_l-OJaY09rbir1' -O documents/kurilo-theory-en.pdf
+      - name: Comprobar integridad básica
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ['kurilo-recensio-es.pdf','kurilo-recensio-fr.pdf','kurilo-theory-en.pdf']:
+              p=Path('documents')/name
+              assert p.stat().st_size>1_000_000,(name,'demasiado pequeño')
+              assert p.open('rb').read(5)==b'%PDF-', (name,'no es PDF')
+              print(name,p.stat().st_size)
+          PY
+      - name: Publicar PDF en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/kurilo-recensio-es.pdf documents/kurilo-recensio-fr.pdf documents/kurilo-theory-en.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Incorporar PDF del autor para lectura local en Scriptorium"
+            git push
+          fi
