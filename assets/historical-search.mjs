@@ -143,7 +143,7 @@ document.querySelector('#ed')?.addEventListener('change',()=>{
  status.textContent='Edición cambiada. La búsqueda OCR depende del índice disponible para esta edición.';
 });
 function getBook(q){
- const m=q.trim().match(/^(?:(?:libro|liber|book)\s+)?(X|IX|VIII|VII|VI|IV|V|III|II|I|10|[1-9])$/i);
+ const m=q.trim().match(/^(?:(?:libro|liber|book)\s+)?(X|IX|VIII|VII|VI|IV|V|III|II|I|10|[1-9])(?:\.(?:praef|\d+)(?:\.\d+)?)?$/i);
  if(!m)return null;return ({I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10})[m[1].toUpperCase()]||Number(m[1]);
 }
 async function showBook(book,serial){
@@ -151,7 +151,9 @@ async function showBook(book,serial){
  if(!res.ok)throw Error('Índice de libros no disponible');
  const data=await res.json();if(serial!==requestSerial)return;
  out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();
- const hits=(data.passages||[]).filter(p=>p.book===book);
+ const locusQuery=query.value.trim().replace(/^(?:libro|liber|book)\s+/i,'');
+ const parts=locusQuery.split('.');const chapter=parts[1]||null,section=parts[2]?Number(parts[2]):null;
+ const hits=(data.passages||[]).filter(p=>p.book===book&&(!chapter||String(p.chapter).toLowerCase()===chapter.toLowerCase())&&(!section||(p.section<=section&&(p.section_end||p.section)>=section)));
  status.textContent='Libro '+book+': '+hits.length+' pasajes de la edición V514. La correspondencia con páginas de '+source.label+' aún no está certificada.';
  for(const p of hits.slice(0,80)){
   const article=document.createElement('article'),a=document.createElement('a');
