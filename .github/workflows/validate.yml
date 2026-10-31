@@ -12,6 +12,8 @@ jobs:
         run: |
           node --check assets/app.js
           node --check assets/search-worker.js
+          node --check assets/historical-search.mjs
+          node --check assets/indices-locorum.mjs
           node --check assets/bilingual.js
           node --check assets/latin-suggest.js
           node --check assets/theme.js
@@ -46,5 +48,8 @@ jobs:
       - name: Auditoría reproducible de vínculos, buscador e índices
         run: |
           python scripts/audit_site.py
+          test -s concordancia-historica.html
+          test -s assets/historical-search.mjs
+          test -s data/text/krohn-1912.json
           python scripts/test-editorial.py
 
