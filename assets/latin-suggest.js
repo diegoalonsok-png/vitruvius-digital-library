@@ -223,7 +223,7 @@
  async function showLocalDictionary(term,isGreek){
    const language=isGreek?'greek':'latin';
    const full=await loadFullDictionary(language);
-   if(input.value.trim()!==term)return;
+   if(!dictionaryTerms(input.value.trim()).some(w=>norm(w)===norm(term)))return;
    if(full.error){const info=document.createElement('p');info.className='source';info.textContent='Diccionario local: '+full.error+'. Consulta externa de respaldo disponible; los loci no se ven afectados.';gloss.prepend(info);gloss.hidden=false;return;}
    const matches=full[norm(term)]||[];
    if(!matches.length){const info=document.createElement('p');info.className='source';info.textContent='No hay entrada lexicográfica para esta grafía en el índice local; consultando diccionario externo.';gloss.prepend(info);gloss.hidden=false;return;}
@@ -238,8 +238,42 @@
    const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wiktionary / Wiktextract; entrada léxica, no aparición textual. Acepciones originales en inglés.';pane.append(foot);
    gloss.prepend(pane);gloss.hidden=false;
  }
- function displayGloss(){
-  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');gloss.replaceChildren();gloss.hidden=true;if(!token||/^[IVX\d.,]+$/i.test(value))return; if(value.split(/\s+/).length===1){showLocalDictionary(value,/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value));externalDictionary(value,/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value));}
+ const greekScript=/[\u0370-\u03ff\u1f00-\u1fff]/u;
+ function dictionaryTerms(value){
+   const words=value.match(/[\p{L}\p{M}]+/gu)||[];
+   return [...new Map(words.filter(w=>w.length>1).map(w=>[norm(w),w])).values()].slice(0,8);
+ }
+ function dictionaryLinks(words,isGreek){
+   const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
+   const summary=document.createElement('summary');summary.textContent='Diccionarios clásicos · consultas por lema';pane.append(summary);
+   const intro=document.createElement('p');intro.textContent='Consultá cada término en fuentes lexicográficas externas. El enlace no representa una definición verificada en esta biblioteca.';pane.append(intro);
+   for(const word of words){
+     const line=document.createElement('p');const strong=document.createElement('strong');strong.textContent=word+' · ';line.append(strong);
+     for(const [label,link] of [
+       ['Logeion','https://logeion.uchicago.edu/'+encodeURIComponent(word)],
+       ['Wikcionario','https://en.wiktionary.org/wiki/'+encodeURIComponent(word)+(isGreek?'#Ancient_Greek':'#Latin')]
+     ]){const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label+' ↗';a.style.marginRight='14px';line.append(a);}
+     pane.append(line);
+   }
+   gloss.append(pane);gloss.hidden=false;
+ }
+function displayGloss(){
+  const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');
+  gloss.replaceChildren();gloss.hidden=true;
+  if(!token||/^[IVX\d.,]+$/i.test(value))return;
+  const words=dictionaryTerms(value);
+  const greek=greekScript.test(value);
+  if(words.length){
+    dictionaryLinks(words,greek);
+    // Each part of a multiword expression is looked up independently.
+    // A missing local dictionary must never hide the remote lookup.
+    for(const word of words.slice(0,4)){
+      if(word.length>=2){
+        showLocalDictionary(word,greekScript.test(word));
+        externalDictionary(word,greekScript.test(word));
+      }
+    }
+  }
   const entry=entries.find(e=>[e.lemma,...e.forms||[]].some(w=>norm(w)===token));
   const greekMatches=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)?entries.filter(e=>e.greek&&norm(e.greek)===token):[];
   if(greekMatches.length){
