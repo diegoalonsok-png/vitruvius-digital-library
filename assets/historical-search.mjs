@@ -69,6 +69,28 @@ const greekFold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerC
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const word=s=>[...String(s).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({start:m.index,end:m.index+m[0].length,form:fold(m[0])}));
 function matches(text,q,prefix){const t=word(text),wanted=word(q).map(x=>x.form);if(!wanted.length)return[];const found=[];for(let i=0;i<=t.length-wanted.length;i++){if(wanted.every((v,j)=>prefix&&wanted.length===1?t[i+j].form.startsWith(v):t[i+j].form===v))found.push({start:t[i].start,end:t[i+wanted.length-1].end});}return found;}
+function ocrAlternatives(rows,queryText){
+ const q=fold(queryText.trim());if(!/^[a-z]{5,20}$/.test(q))return [];
+ const counts=new Map();
+ for(const row of rows)for(const term of word(row.text||'')){
+  const x=term.form;
+  if(Math.abs(x.length-q.length)>2||x.length<4)continue;
+  counts.set(x,(counts.get(x)||0)+1);
+ }
+ return [...counts].map(([term,count])=>({term,count,d:distance(q,term)}))
+  .filter(x=>x.d>0&&x.d<=(q.length>=8?2:1)&&x.count>=2)
+  .sort((a,b)=>a.d-b.d||b.count-a.count).slice(0,5);
+}
+function showOcrAlternatives(rows,q){
+ const options=ocrAlternatives(rows,q);if(!options.length)return;
+ const div=document.createElement('section'),p=document.createElement('p');
+ p.textContent='Grafías parecidas en el OCR de esta edición (sugerencias, no traducciones):';div.append(p);
+ for(const option of options){
+  const b=document.createElement('button');b.type='button';b.textContent=option.term+' ('+option.count+' apariciones OCR)';
+  b.addEventListener('click',()=>{query.value=option.term;form.requestSubmit();});div.append(b);
+ }
+ out.prepend(div);
+}
 function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.id==='perrault-1673'?'#perrault-page-viewer':source.pdf+'#page='+page;a.target=source.id==='perrault-1673'?'_self':'_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{ev.preventDefault();const record=cache?.find(x=>x.page===page);if(!record)return;const hits=matches(record.text,activeQuery,activePrefix);for(const alt of editionVariants(activeQuery,source.id))hits.push(...matches(record.text,alt,false));showPage(page,record.text,hits.sort((a,b)=>a.start-b.start));document.querySelector('.historical-viewer')?.scrollIntoView({behavior:'smooth',block:'start'});});el.append(h,p,a);return el;}
 function showPage(page,text,hits){
  const field=document.querySelector('#pdf-page-number');if(field)field.value=String(page);const note=document.querySelector('#page-hit-status');if(note)note.textContent=hits.length+' coincidencia(s) en esta página';
@@ -141,7 +163,7 @@ form.addEventListener('submit',async e=>{
   if(nav){for(const item of pageHits){const b=document.createElement('button');b.type='button';b.textContent='p. '+item.page+' ('+item.hits.length+')';b.addEventListener('click',()=>showPage(item.page,item.text,item.hits));nav.append(b);}}
   if(pageHits.length)showPage(pageHits[0].page,pageHits[0].text,pageHits[0].hits);
   status.textContent=(edition==='perrault-1673'&&variants.length?'Consulta francesa orientativa: '+literal+' coincidencias literales; equivalencias exploradas: '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
-  if(!total){showTypoSuggestions(q,edition);const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
+  if(!total){showTypoSuggestions(q,edition);showOcrAlternatives(cache,q);const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
  }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprobá que su índice OCR esté publicado.';}
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
