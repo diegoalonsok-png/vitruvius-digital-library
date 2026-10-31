@@ -27,11 +27,13 @@ $('#recognize').addEventListener('click',async()=>{
   ocrStatus.textContent='Cargando motor y modelo latino. Puede tardar en el primer uso…';
   const t=await ensureOCR();
   worker=await t.createWorker('lat',1,{logger:m=>{if(m.status)ocrStatus.textContent='OCR: '+m.status+(Number.isFinite(m.progress)?' '+Math.round(m.progress*100)+' %':'');}});
+  const dim=await new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve({w:img.naturalWidth,h:img.naturalHeight});img.onerror=()=>reject(Error('No se pudo leer la imagen'));img.src=chosenImage?URL.createObjectURL(chosenImage):src;});
+  if(Math.min(dim.w,dim.h)<900){ocrStatus.textContent='ADVERTENCIA: imagen de '+dim.w+' × '+dim.h+' px. Resolución insuficiente para OCR fiable de minúscula carolina. Utilizá un folio IIIF en alta resolución o un modelo HTR especializado.';if(!confirm('Esta imagen es pequeña para lectura paleográfica y probablemente producirá texto incorrecto. ¿Ejecutar igualmente el OCR experimental?'))return;}
   const result=await worker.recognize(src);
   const value=String(result?.data?.text||'').trim();
   if(!value)throw Error('El motor no identificó texto en la imagen.');
   $('#transcription').value=value;
-  ocrStatus.textContent='OCR experimental terminado ('+value.length+' caracteres). Revisá el latín: la minúscula carolina y sus abreviaturas pueden producir errores.';
+  ocrStatus.textContent='OCR experimental terminado ('+value.length+' caracteres). SALIDA NO VALIDADA: no es transcripción paleográfica. Las grafías carolinas requieren HTR especializado y revisión.';
  }catch(e){ocrStatus.textContent='No se pudo reconocer la imagen: '+e.message+'. Si es una URL IIIF, descargá el folio y cargalo como archivo local.';}
  finally{if(worker)await worker.terminate().catch(()=>{});button.disabled=false;}
 });
