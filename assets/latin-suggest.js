@@ -208,13 +208,18 @@
   });
  }
  let fullDictionaryPromise=null;
- const loadFullDictionary=()=>fullDictionaryPromise||(fullDictionaryPromise=fetch('data/classical-dictionary.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null));
+ const loadFullDictionary=()=>fullDictionaryPromise||(fullDictionaryPromise=fetch('data/classical-dictionary.json',{cache:'force-cache'}).then(async r=>{
+   if(!r.ok)throw Error('Índice no publicado (HTTP '+r.status+')');
+   const data=await r.json();
+   if(data?.schema!==1||!data.latin||!data.greek||!data.counts)throw Error('Índice lexicográfico incompleto');
+   return data;
+ }).catch(error=>({error:error.message||'Índice no disponible'})));
  async function showLocalDictionary(term,isGreek){
    const full=await loadFullDictionary();
    if(input.value.trim()!==term)return;
-   if(!full){const info=document.createElement('p');info.className='source';info.textContent='Diccionario local amplio todavía no publicado; se consulta Wikcionario en línea como fuente de respaldo.';gloss.prepend(info);gloss.hidden=false;return;}
+   if(full.error){const info=document.createElement('p');info.className='source';info.textContent='Diccionario local: '+full.error+'. Consulta externa de respaldo disponible; los loci no se ven afectados.';gloss.prepend(info);gloss.hidden=false;return;}
    const matches=(isGreek?full.greek:full.latin)?.[norm(term)]||[];
-   if(!matches.length)return;
+   if(!matches.length){const info=document.createElement('p');info.className='source';info.textContent='No hay entrada lexicográfica para esta grafía en el índice local; consultando diccionario externo.';gloss.prepend(info);gloss.hidden=false;return;}
    const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
    const title=document.createElement('summary');title.textContent='Diccionario clásico indexado · '+term;pane.append(title);
    for(const entry of matches.slice(0,6)){
