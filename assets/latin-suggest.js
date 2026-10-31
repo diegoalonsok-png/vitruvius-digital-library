@@ -257,6 +257,49 @@
    }
    gloss.append(pane);gloss.hidden=false;
  }
+function inlineLexicalTranslations(words){
+  const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
+  const summary=document.createElement('summary');summary.textContent='Traducción y significado de los términos';pane.append(summary);
+  let found=0;
+  for(const word of words){
+    const candidates=entries.filter(e=>[e.lemma,...(e.forms||[]),e.greek].filter(Boolean).some(v=>norm(v)===norm(word)));
+    for(const e of candidates.slice(0,2)){
+      found++;
+      const p=document.createElement('p'),b=document.createElement('strong');
+      b.textContent=word+' → '+(e.headword||e.lemma)+' · ';p.append(b);
+      p.append(document.createTextNode('Español: '+(e.es||'sin traducción')+' · Inglés: '+(e.en||'sin traducción')+' · Francés: '+(e.fr||'sin traducción')));
+      pane.append(p);
+    }
+  }
+  if(!found){const p=document.createElement('p');p.textContent='No hay traducción local verificada para esta grafía. Consultá las acepciones de las entradas externas que se muestran debajo; pueden estar en inglés.';pane.append(p);}
+  gloss.prepend(pane);gloss.hidden=false;
+}
+async function showExpressionContexts(value){
+  const words=dictionaryTerms(value).map(norm);
+  if(words.length<2)return;
+  const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
+  const title=document.createElement('summary');title.textContent='Pasajes de Vitruvio con traducción · '+value;pane.append(title);
+  const info=document.createElement('p');info.textContent='Buscando la expresión en los textos y traducciones…';pane.append(info);
+  gloss.append(pane);gloss.hidden=false;
+  try{
+    const loaded=await loadCorpora();if(input.value.trim()!==value||!pane.isConnected)return;
+    const needle=words.join(' ');let count=0;
+    for(const result of loaded){
+      if(result.status!=='fulfilled')continue;
+      for(const p of result.value.passages){
+        if(!norm(p.latin||'').includes(needle)&&!norm(p.translation||'').includes(needle))continue;
+        count++;if(count>15)continue;
+        const article=document.createElement('article'),link=document.createElement('a');
+        link.href='lector-bilingue.html?edition='+encodeURIComponent(result.value.id)+'&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(value);
+        link.textContent=result.value.label+' · '+p.locus;article.append(link);
+        const latin=document.createElement('p');latin.textContent='Latín: '+String(p.latin||'').slice(0,650);
+        const translation=document.createElement('p');translation.textContent='Traducción: '+String(p.translation||'').slice(0,650);
+        article.append(latin,translation);pane.append(article);
+      }
+    }
+    info.textContent=count?count+' pasajes con la expresión (se muestran hasta 15).':'No hay coincidencia exacta de la expresión completa; las palabras pueden consultarse por separado.';
+  }catch(error){info.textContent='No fue posible cargar las traducciones: '+error.message;}
+}
 function displayGloss(){
   const value=input.value.trim(),token=norm(value.split(/\s+/).at(-1)||'');
   gloss.replaceChildren();gloss.hidden=true;
@@ -265,6 +308,8 @@ function displayGloss(){
   const greek=greekScript.test(value);
   if(words.length){
     dictionaryLinks(words,greek);
+    inlineLexicalTranslations(words);
+    if(words.length>1)showExpressionContexts(value);
     // Each part of a multiword expression is looked up independently.
     // A missing local dictionary must never hide the remote lookup.
     for(const word of words.slice(0,4)){
