@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="utf-8"><title>Index locorum - Vitruvius Digital Library</title>
+<head><meta charset="utf-8"><title>Index locorum selectus - Vitruvius Digital Library</title>
 <style>
 body{font-family:EB Garamond,serif;max-width:1000px;margin:auto;padding:20px;background:#f9f6f0;color:#0A1931}
 h1{color:#0A1931;border-bottom:3px solid #C9A86A}
@@ -8,15 +8,15 @@ h1{color:#0A1931;border-bottom:3px solid #C9A86A}
 .libro h2{margin:0 0 10px;color:#0A1931}
 .loci{display:flex;flex-wrap:wrap;gap:6px}
 .loci a{display:inline-block;padding:4px 8px;background:#0A1931;color:#C9A86A;text-decoration:none;font-size:13px;border-radius:3px}
-.loci a:hover{background:#C9A86A;color:#0A1931}
+.loci a[hidden],.libro[hidden]{display:none!important}\n.loci a:hover{background:#C9A86A;color:#0A1931}
 .search{position:sticky;top:0;background:#f9f6f0;padding:10px;z-index:10}
 .search input{width:100%;padding:10px;font-size:16px;border:2px solid #C9A86A}
 </style>
 </head>
 <body>
-<h1>Index locorum - De architectura libri decem</h1>
-<div class="search"><input id="filter" placeholder="Filtrar locus ej: III.1.2 o symmetria" onkeyup="filtrar()"></div>
-<p>Click en locus → busca en índice textual V297 + facsímil Harley 2767. Basado en Krohn 1912 y ed. Kurilo V297 1042 págs.</p>
+<h1>Index locorum selectus - De architectura libri decem</h1>
+<div class="search"><input id="filter" placeholder="Filtrar locus o término: III.1.2 · symmetria" oninput="filtrar()" aria-label="Filtrar loci seleccionados"></div>
+<p>Selección orientativa de pasajes de los diez libros, no un índice exhaustivo. Cada enlace abre la consulta del locus en el índice textual; la correspondencia con folios manuscritos debe verificarse por separado.</p><p>Para buscar cualquier pasaje, incluso si no figura en esta selección, consultá el <a href="aparato-critico.html">índice textual completo</a>, los <a href="indices-locorum.html">índices latino, griego y matemático</a> o el <a href="lector-bilingue.html">lector bilingüe</a>.</p><p id="filter-status" role="status" aria-live="polite"></p>
 
 <div class="libro" data-libro="I">
 <h2>Liber I - Architectura et architecti institutio</h2>
@@ -56,11 +56,21 @@ h1{color:#0A1931;border-bottom:3px solid #C9A86A}
 
 <script>
 function filtrar(){
-let q=document.getElementById('filter').value.toLowerCase();
-document.querySelectorAll('.libro').forEach(lib=>{
-let txt=lib.textContent.toLowerCase();
-lib.style.display=txt.includes(q)?'block':'none';
-});
+  const q=document.getElementById('filter').value.trim().toLocaleLowerCase();
+  let total=0;
+  document.querySelectorAll('.libro').forEach(lib=>{
+    const heading=lib.querySelector('h2').textContent.toLocaleLowerCase();
+    const matchHeading=q!=='' && (heading.includes(q)||lib.dataset.libro.toLocaleLowerCase()===q);
+    let visible=0;
+    lib.querySelectorAll('.loci a').forEach(link=>{
+      const show=!q||matchHeading||link.textContent.toLocaleLowerCase().includes(q);
+      link.hidden=!show;
+      if(show) visible++;
+    });
+    lib.hidden=visible===0;
+    total+=visible;
+  });
+  document.getElementById('filter-status').textContent=q ? total+' loci seleccionados coincidentes. Si no figura aquí, buscá en el índice textual completo.' : '';
 }
 </script>
 </body></html>
