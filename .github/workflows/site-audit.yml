@@ -2,7 +2,9 @@ name: Auditoría automatizada de la biblioteca
 on:
   push:
     paths:
-      - 'assets/historical-search.mjs'
+      - 'assets/**'
+      - '**/*.html'
+      - 'scripts/audit-site-links.mjs'
       - 'assets/search-core.mjs'
       - 'concordancia-historica.html'
       - 'data/text/**'
@@ -27,6 +29,10 @@ jobs:
           node --check assets/historical-search.mjs
           node --check assets/critical-search.mjs
           node --check assets/historical-pdf-overlay.mjs
+          node --check assets/latin-suggest.js
+          node --check assets/perrault-iiif.mjs
+      - name: Auditoría de enlaces internos y controles HTML
+        run: node scripts/audit-site-links.mjs
       - name: Integridad de buscador Vitruvio
         run: node scripts/test-search.mjs
       - name: Ediciones históricas y OCR
