@@ -24,7 +24,7 @@ export function findMatches(text,query,{prefix=false,phrase=false}={}){
   // A pasted quotation may come from a different historical recension.
   // If no exact quotation exists, identify a substantial contiguous span,
   // without presenting the result as a verbatim match.
-  if(!found.length && !prefix && qs.length>=6){
+  if(!found.length && !prefix && !phrase && qs.length>=6){
     const threshold=Math.max(5,Math.min(12,Math.ceil(qs.length*0.35)));
     let best=null;
     for(let i=0;i<ts.length;i++){
