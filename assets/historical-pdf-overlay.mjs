@@ -56,7 +56,7 @@ async function draw(pageNumber,terms,prefix=false){
        layer.append(highlight);found++;
      }
    }
-   viewer.hidden=false;fallback.hidden=true;
+   viewer.hidden=false;fallback.hidden=false;
    status.textContent=found?'PDF original: '+found+' resaltado(s) amarillos sobre texto detectable en esta página.':'PDF original abierto. No hay coincidencias localizables en su capa de texto para esta página; consultá el OCR resaltado debajo.';
  }catch(err){
    if(mine!==serial)return;
