@@ -152,7 +152,7 @@
        const api=new URL('https://en.wiktionary.org/w/api.php');
        for(const [k,v] of Object.entries({action:'parse',page:lemma,prop:'text',format:'json',formatversion:'2',origin:'*'}))api.searchParams.set(k,v);
        fetch(api).then(x=>x.ok?x.json():Promise.reject(Error('Lema no disponible'))).then(data=>{
-         if(ticket!==liveTicket||!lemmaPanel.isConnected)return;
+         if(!lemmaPanel.isConnected||!dictionaryTerms(input.value.trim()).some(w=>norm(w)===norm(term)))return;
          if(!data.parse?.text)throw Error('No hay acepciones disponibles');
          const doc=new DOMParser().parseFromString(data.parse.text,'text/html');
          const h=[...doc.querySelectorAll('h2')].find(x=>x.textContent.toLowerCase().includes('latin'));
