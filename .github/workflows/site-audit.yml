@@ -12,6 +12,7 @@ on:
       - 'scripts/test-search.mjs'
       - 'scripts/test-historical.mjs'
       - '.github/workflows/site-audit.yml'
+      - 'scripts/browser-smoke-audit.mjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -31,9 +32,21 @@ jobs:
           node --check assets/historical-pdf-overlay.mjs
           node --check assets/latin-suggest.js
           node --check assets/perrault-iiif.mjs
+          node --check assets/scriptorium.mjs
+          node --check assets/harley-reader.mjs
+          node --check assets/app.js
+          node --check assets/bibliography.js
+          node --check assets/studies.js
+          node --check scripts/browser-smoke-audit.mjs
       - name: Auditoría de enlaces internos y controles HTML
         run: node scripts/audit-site-links.mjs
       - name: Integridad de buscador Vitruvio
         run: node scripts/test-search.mjs
       - name: Ediciones históricas y OCR
         run: node scripts/test-historical.mjs
+      - name: Preparar navegador de prueba
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Auditoría real de interfaz, botones y PDF locales
+        run: node scripts/browser-smoke-audit.mjs
