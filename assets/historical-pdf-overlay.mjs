@@ -76,6 +76,8 @@ async function draw(pageNumber,terms,prefix=false){
 }
 document.addEventListener('historical-pdf-page',ev=>{
  const {page,query,roots,prefix}=ev.detail;
- const terms=roots?.length?roots:[query];
+ const terms=[...new Set([query,...(roots||[])].filter(Boolean))];
+ // Keep the exact queried form even when a lexicon entry supplies roots.
+ // Root expansions use prefix matching; literal full words remain detectable.
  draw(page,terms,Boolean(prefix||roots?.length));
 });
