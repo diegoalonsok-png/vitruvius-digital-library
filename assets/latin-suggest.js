@@ -141,8 +141,8 @@
    // for any form whose dictionary entry explicitly identifies a lemma,
    // rather than requiring one handwritten definition per Latin word.
    if(language==='Latin'&&result.definitions.length){
-     const first=result.definitions.find(d=>/\\b(?:of|from)\\s+[\\p{L}\\p{M}]{3,}/iu.test(d));
-     const lemma=first?.match(/\\b(?:of|from)\\s+([\\p{L}\\p{M}]{3,})/iu)?.[1];
+     const first=result.definitions.find(d=>/\b(?:of|from)\s+[\p{L}\p{M}]{3,}/iu.test(d));
+     const lemma=first?.match(/\b(?:of|from)\s+([\p{L}\p{M}]{3,})/iu)?.[1];
      if(lemma&&lemma.toLocaleLowerCase()!==term.toLocaleLowerCase()){
        const lemmaPanel=document.createElement('section');lemmaPanel.className='dictionary-lemma';
        const head=document.createElement('h4');head.textContent='Lema latino detectado automáticamente: '+lemma;lemmaPanel.append(head);
@@ -160,7 +160,7 @@
          while(node&&node.tagName!=='H2'&&!node.matches?.('.mw-heading2')){
            for(const li of node.querySelectorAll('ol > li')){
              const copy=li.cloneNode(true);copy.querySelectorAll('ol,ul,.reference').forEach(x=>x.remove());
-             const meaning=copy.textContent.replace(/\\s+/g,' ').trim();
+             const meaning=copy.textContent.replace(/\s+/g,' ').trim();
              if(meaning.length>2&&!found.includes(meaning))found.push(meaning.slice(0,250));
            }
            node=node.nextElementSibling;
