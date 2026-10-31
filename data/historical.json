@@ -16,7 +16,11 @@
     "read_url": "https://searcharchives.bl.uk/catalog/040-002048598",
     "description": "London, British Library, Harley MS 2767, De architectura, 800–824.",
     "attribution": "Enlazado sin redistribuir imágenes; consultar las condiciones de la British Library.",
-    "dateShort": "c. 800–824"
+    "dateShort": "c. 800–824",
+    "witness_type": "manuscript",
+    "shelfmark": "London, British Library, Harley MS 2767",
+    "critical_siglum": "H",
+    "scholarly_identifier": "London, British Library, Harley MS 2767 (H)"
   },
   {
     "id": "history-1",
@@ -35,7 +39,12 @@
     "read_url": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
     "description": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. Corbie, mediados del siglo IX, según HAB. Compilación de Faventino con pasajes de Vitruvio, no texto continuo de los diez libros.",
     "attribution": "HAB: digitalizaciones bajo CC BY-SA 3.0 DE salvo indicación contraria. Atribución y condiciones de reutilización en las primeras páginas del PDF.",
-    "dateShort": "s. IX"
+    "dateShort": "s. IX",
+    "witness_type": "manuscript",
+    "shelfmark": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat.",
+    "critical_siglum": "E",
+    "scholarly_identifier": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. (E)",
+    "identification_note": "Compilación de Faventino con fragmentos de Vitruvio; no equiparable al testimonio G"
   },
   {
     "id": "history-2",
@@ -54,7 +63,11 @@
     "read_url": "https://diglib.hab.de/?db=mss&id=69-gud-lat&lang=en&list=ms",
     "description": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat. Digitalización HAB.",
     "attribution": "HAB: digitalizaciones bajo CC BY-SA 3.0 DE salvo indicación contraria; conservar créditos y condiciones incorporadas en PDF.",
-    "dateShort": "s. XI"
+    "dateShort": "s. XI",
+    "witness_type": "manuscript",
+    "shelfmark": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat.",
+    "critical_siglum": "G",
+    "scholarly_identifier": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat. (G)"
   },
   {
     "id": "history-3",
@@ -73,7 +86,10 @@
     "read_url": "https://architectura.univ-tours.fr/en/livres-notice/vitruvesulpizioc490/",
     "description": "Vitruvius. De architectura. Ed. Giovanni Sulpizio da Veroli. Roma, ca. 1486–1487.",
     "attribution": "Consultar condiciones de reproducción del facsímil en Architectura.",
-    "dateShort": "1486"
+    "dateShort": "1486",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "De architectura — Editio princeps (1486) — Architectura, Université de Tours / MPIWG Berlin",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-4",
@@ -92,7 +108,10 @@
     "read_url": "https://doi.org/10.3931/e-rara-10519",
     "description": "Vitruvius. M. Vitruvius per Iocundum solito castigatior factus. Venezia: Giovanni Tacuino, 1511. ETH-Bibliothek Zürich, Rar 6790. DOI: 10.3931/e-rara-10519.",
     "attribution": "Public Domain Mark · consultar condiciones y atribución de ETH Zürich.",
-    "dateShort": "1511"
+    "dateShort": "1511",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "M. Vitruvius per Iocundum solito castigatior factus (1511) — ETH-Bibliothek Zürich · Rar 6790",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-5",
@@ -111,7 +130,10 @@
     "read_url": "https://archive.org/details/gri_33125008262210",
     "description": "Primera traducción italiana de Vitruvio, con comentario e ilustraciones de Cesare Cesariano. Como, 1521. Ejemplar del Getty Research Institute; texto completado y corregido por Mauro Bono y Benedetto Giovio. Digitalización de 390 páginas catalogadas en Internet Archive; el OCR debe verificarse contra el facsímil.",
     "attribution": "Getty Research Institute / Internet Archive, identificador gri_33125008262210. Obra histórica señalada como NOT_IN_COPYRIGHT por el archivo.",
-    "dateShort": "1521"
+    "dateShort": "1521",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Di Lucio Vitruvio Pollione de architectura libri dece (1521) — Stiftung Bibliothek Werner Oechslin · Einsiedeln",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-6",
@@ -130,7 +152,10 @@
     "read_url": "https://gallica.bnf.fr/ark:/12148/bpt6k105095j",
     "description": "Vitruve. Architecture ou Art de bien bastir. Trad. Jean Martin. Paris: Veuve et héritiers de Jean Barbé et Jacques Gazeau, 1547.",
     "attribution": "Consultar condiciones de reutilización de Gallica / BnF.",
-    "dateShort": "1547"
+    "dateShort": "1547",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Architecture ou Art de bien bastir (1547) — Bibliothèque nationale de France · Gallica",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-7",
@@ -149,7 +174,10 @@
     "read_url": "https://fachtexte.kallimachos.de/Vitruv_Vitruvius_Teutsch_%281548%29",
     "description": "Vitruvius. Vitruvius Teutsch. Trad. Walther Hermann Ryff. Nürnberg: Johannes Petreius, 1548.",
     "attribution": "Digitalización externa; consultar licencias del repositorio.",
-    "dateShort": "1548"
+    "dateShort": "1548",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Vitruvius Teutsch (1548) — Universitätsbibliothek Heidelberg / Fachtexte",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-8",
@@ -168,7 +196,10 @@
     "read_url": "https://doi.org/10.3931/e-rara-7582",
     "description": "Vitruvius. I dieci libri dell’architettura. Trad. y comentarios Daniele Barbaro. Venezia: Francesco Marcolini, 1556. ETH-Bibliothek Zürich, Rar 9902. DOI: 10.3931/e-rara-7582.",
     "attribution": "Public Domain Mark; citar institución y DOI.",
-    "dateShort": "1556"
+    "dateShort": "1556",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "I dieci libri dell’architettura (1556) — ETH-Bibliothek Zürich · Rar 9902",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-9",
@@ -187,7 +218,10 @@
     "read_url": "https://doi.org/10.3931/e-rara-19438",
     "description": "Vitruvius. M. Vitruvii Pollionis De architectura libri decem. Comentarios de Daniele Barbaro. Venetiis, 1567. Stiftung Bibliothek Werner Oechslin, A04d. DOI: 10.3931/e-rara-19438.",
     "attribution": "Public Domain Mark; citar institución y DOI.",
-    "dateShort": "1567"
+    "dateShort": "1567",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "M. Vitruvii Pollionis De architectura libri decem (1567) — Stiftung Bibliothek Werner Oechslin · A04d",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-10",
@@ -206,7 +240,10 @@
     "read_url": "https://doi.org/10.3931/e-rara-19468",
     "description": "Vitruvius. I dieci libri dell’architettura. Trad. y comentarios Daniele Barbaro. Venezia: Francesco de’ Franceschi / Giovanni Chrieger, 1567. Stiftung Bibliothek Werner Oechslin, A04b. DOI: 10.3931/e-rara-19468.",
     "attribution": "Public Domain Mark; citar institución y DOI.",
-    "dateShort": "1567"
+    "dateShort": "1567",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "I dieci libri dell’architettura di M. Vitruvio (1567) — Stiftung Bibliothek Werner Oechslin · A04b",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-11",
@@ -226,7 +263,10 @@
     "pdf_url": "https://archive.org/download/HArteR13T27/HArteR13T27.pdf",
     "description": "Vitruvius. M. Vitruuio Pollion de Architectura. Traducción de Miguel de Urrea. Alcalá de Henares: Juan Gracián, 1582. Ejemplar digitalizado: Universidad de Sevilla.",
     "attribution": "Consultar condiciones del repositorio; catalogación BVPB CC BY.",
-    "dateShort": "1582"
+    "dateShort": "1582",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "M. Vitruuio Pollion de Architectura, dividido en diez libros (1582) — Universidad de Sevilla · Fondo Antiguo",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-12",
@@ -247,7 +287,10 @@
     "attribution": "Public Domain Mark; citar institución y DOI.",
     "dateShort": "1673",
     "pdf_landing_url": "https://doi.org/10.3931/e-rara-61952",
-    "ocr_status": "not_indexed"
+    "ocr_status": "not_indexed",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Les dix livres d’architecture de Vitruve (1673) — ETH-Bibliothek Zürich · Rar 264",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-13",
@@ -266,7 +309,10 @@
     "read_url": "https://doi.org/10.3931/e-rara-54059",
     "description": "Vitruvius. Les dix livres d’architecture de Vitruve. Trad. Claude Perrault. 2ª ed. Paris: Jean Baptiste Coignard, 1684. ETH-Bibliothek Zürich, Rar 9852. DOI: 10.3931/e-rara-54059.",
     "attribution": "Public Domain Mark; citar institución y DOI.",
-    "dateShort": "1684"
+    "dateShort": "1684",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Les dix livres d’architecture de Vitruve · IIe édition (1684) — ETH-Bibliothek Zürich · Rar 9852",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-14",
@@ -286,7 +332,10 @@
     "read_url": "https://www.e-rara.ch/oec/content/titleinfo/6126535",
     "description": "Vitruvius. L’architettura di M. Vitruvio Pollione. Trad. y comentario de Berardo Galiani. Napoli: Stamperia Simoniana, 1758.",
     "attribution": "Consultar la indicación de derechos y reutilización de e-rara.",
-    "dateShort": "1758"
+    "dateShort": "1758",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "L’architettura di M. Vitruvio Pollione (1758) — Stiftung Bibliothek Werner Oechslin / e-rara",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-15",
@@ -306,7 +355,10 @@
     "description": "Edición castellana de 1787, traducción y comentarios de Joseph Ortiz y Sanz. Ejemplar Biblioteca de la Universidad de Sevilla, signatura A 065/112; digitalización de Internet Archive.",
     "attribution": "Edición histórica señalada como dominio público por Internet Archive. Reproducción digital: Biblioteca de la Universidad de Sevilla, signatura A 065/112.",
     "dateShort": "1787",
-    "pdf_url": "https://archive.org/download/A065112/A065112.pdf"
+    "pdf_url": "https://archive.org/download/A065112/A065112.pdf",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Los diez libros de architectura de M. Vitruvio Polión (1787) — Madrid: Imprenta Real · ejemplar Biblioteca de la Universidad de Sevilla",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-16",
@@ -325,7 +377,10 @@
     "read_url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/home.html",
     "description": "Vitruvius. The Architecture of Marcus Vitruvius Pollio, in Ten Books. Trad. Joseph Gwilt. London: Priestley and Weale, 1826.",
     "attribution": "Recurso de texto externo, consultar condiciones del sitio.",
-    "dateShort": "1826"
+    "dateShort": "1826",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "The Architecture of Marcus Vitruvius Pollio (1826) — Sir John Soane’s Museum / LacusCurtius",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-17",
@@ -346,7 +401,10 @@
     "description": "Edición crítica latina de Valentin Rose (Leipzig: B. G. Teubner, 1899). Referencia para cotejo con Krohn (1912) y las recensiones contemporáneas. Facsímil histórico enlazado; índice léxico propio todavía pendiente de publicación.",
     "attribution": "Getty Research Institute / Internet Archive. Testimonio editorial crítico histórico; el OCR sin revisión no debe utilizarse como lectura autorizada.",
     "dateShort": "1899",
-    "ocr_status": "not_indexed"
+    "ocr_status": "not_indexed",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Vitruvii De architectura libri decem (1899) — Internet Archive / Getty Research Institute",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-18",
@@ -366,7 +424,10 @@
     "description": "Vitruvius. De architectura libri decem. Ed. Fritz Krohn. Leipzig: B. G. Teubner, 1912.",
     "attribution": "Obra histórica de 1912; copia digitalizada por University of Toronto / Internet Archive. Conservar procedencia.",
     "dateShort": "1912",
-    "ocr_status": "indexed_by_page"
+    "ocr_status": "indexed_by_page",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "Vitruvii De architectura libri decem (1912) — B. G. Teubner · Digitalización: University of Toronto / Internet Archive",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   },
   {
     "id": "history-19",
@@ -385,6 +446,9 @@
     "read_url": "https://www.gutenberg.org/ebooks/20239",
     "description": "Vitruvius. The Ten Books on Architecture. Trad. Morris Hicky Morgan. Cambridge: Harvard University Press, 1914. Project Gutenberg eBook 20239. Texto digital íntegro disponible para consulta en Project Gutenberg (no se presenta como PDF).",
     "attribution": "Dominio público en EE. UU.; consultar legislación local y las condiciones del repositorio.",
-    "dateShort": "1914"
+    "dateShort": "1914",
+    "witness_type": "historical_print",
+    "scholarly_identifier": "The Ten Books on Architecture (1914) — Project Gutenberg · eBook 20239",
+    "identification_note": "Edición impresa histórica; la signatura del ejemplar se registra solamente cuando consta en la ficha institucional."
   }
 ]
