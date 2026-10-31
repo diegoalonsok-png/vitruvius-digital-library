@@ -26,5 +26,12 @@ assert.equal(search('VII.7.2').results.length,3);
 assert.equal(search('VII.7.5').results.length,3);
 assert.equal(citation({book:8,chapter:'praef',section:1}),'Vitr., De arch. VIII.praef.1');
 for(const lang of ['es','fr','en'])assert(search(lang==='es'?'arquitectura':lang==='fr'?'architecture':'water',{language:lang}).results.every(r=>r.language===lang));
+
+// Regression: lexical concordance must tokenize complete Unicode words, not the letter "p".
+const lexicalSource=readFileSync(new URL('../assets/latin-suggest.js',import.meta.url),'utf8');
+assert(!lexicalSource.includes('\\\\p{'), 'Duplicated Unicode escape in lexical concordance');
+const lexicalTokens='proslambanómenos symmetria ἀρχιτεκτονική'.match(/[\p{L}\p{M}]+/gu);
+assert.deepEqual(lexicalTokens,['proslambanómenos','symmetria','ἀρχιτεκτονική']);
+
 console.log('Search checks passed: loci, chapter filters, phrases, prefix and exact counts, language filters, missing references, source integrity.');
 console.log(JSON.stringify({es:es.passages.length,fr:fr.passages.length,en:en.passages.length,locusOccurrences:expected}));
