@@ -42,7 +42,8 @@ async function draw(pageNumber,terms,prefix=false){
    const ratio=Math.min(window.devicePixelRatio||1,2);
    canvas.width=Math.ceil(viewport.width*ratio);canvas.height=Math.ceil(viewport.height*ratio);
    canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';
-   viewer.style.height='min(78vh, '+Math.ceil(viewport.height)+'px)';
+   viewer.style.height=Math.ceil(viewport.height)+'px';
+   viewer.style.maxHeight='none';viewer.style.overflow='visible';
    layer.style.width=viewport.width+'px';layer.style.height=viewport.height+'px';
    const ctx=canvas.getContext('2d');await page.render({canvasContext:ctx,viewport,transform:[ratio,0,0,ratio,0,0]}).promise;
    const content=await page.getTextContent();if(mine!==serial)return;
