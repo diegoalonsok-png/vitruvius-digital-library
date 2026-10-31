@@ -32,18 +32,19 @@ jobs:
             --greek /tmp/classical/AncientGreek.jsonl
           python - <<'PY'
           import json, pathlib
-          p=pathlib.Path('data/classical-dictionary.json')
-          d=json.loads(p.read_text())
-          print('Tamaño:', round(p.stat().st_size/1024/1024,2), 'MB')
-          print('Entradas:', d['counts'])
-          assert d['counts']['latin']>1000, 'Cobertura latina inesperadamente baja'
-          assert p.stat().st_size<80*1024*1024, 'Índice demasiado grande para el sitio'
+          for lang in ('latin','greek'):
+              p=pathlib.Path(f'data/dictionaries/{lang}.json')
+              d=json.loads(p.read_text())
+              print(lang, 'entradas:', len(d['entries']), 'MB:', round(p.stat().st_size/1024/1024,2))
+              assert d['schema']==1 and d['language']==lang
+              assert p.stat().st_size<80*1024*1024, 'Índice demasiado grande'
+              if lang=='latin': assert len(d['entries'])>1000, 'Cobertura latina insuficiente'
           PY
       - name: Publicar índice generado
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/classical-dictionary.json
+          git add data/dictionaries/latin.json data/dictionaries/greek.json
           if ! git diff --cached --quiet; then
             git commit -m "Publicar diccionario latino-griego derivado del corpus"
             git push origin HEAD:main
