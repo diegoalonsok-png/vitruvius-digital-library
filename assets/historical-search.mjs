@@ -1,6 +1,7 @@
 const form=document.querySelector('#search'),query=document.querySelector('#q'),status=document.querySelector('#status'),out=document.querySelector('#results');
 const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/16797458.pdf',label:'Perrault (1673)'}};
 let source=sources['krohn-1912'];
+let requestSerial=0;
 let cache=null;let activeQuery="",activePrefix=false;
 const greekConcepts={
  'αρχιτεκτονικη':{label:'arquitectura',roots:['architect']},
@@ -73,19 +74,23 @@ function selectHistoricalEdition(){
  return info;
 }
 document.querySelector('#ed')?.addEventListener('change',()=>{
+ ++requestSerial;cache=null;activeQuery='';source=sources[document.querySelector('#ed').value];
  selectHistoricalEdition();out.replaceChildren();
  document.querySelector('#page-results')?.replaceChildren();
  status.textContent='Edición cambiada. La búsqueda OCR depende del índice disponible para esta edición.';
 });
 form.addEventListener('submit',async e=>{
- e.preventDefault();const edition=document.querySelector('#ed')?.value||'krohn-1912';selectHistoricalEdition();
+ e.preventDefault();const myRequest=++requestSerial;
+ const edition=document.querySelector('#ed')?.value||'krohn-1912';selectHistoricalEdition();
  source=sources[edition];cache=null;
  document.querySelector('.historical-viewer h2').textContent='Facsímil original · '+source.label;
  const q=query.value.trim();if(!q)return;
  out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();status.textContent='Cargando índice histórico…';
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
-  await loadDictionary();const concept=conceptFor(q),prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
+  if(myRequest!==requestSerial)return;
+  await loadDictionary();if(myRequest!==requestSerial)return;
+  const concept=conceptFor(q),prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
   let total=0,pages=0,shown=0,literal=0;const pageHits=[];
   for(const record of cache){
    if(typeof record.text!=='string')continue;
@@ -103,11 +108,12 @@ form.addEventListener('submit',async e=>{
   if(pageHits.length)showPage(pageHits[0].page,pageHits[0].text,pageHits[0].hits);
   status.textContent=(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
   if(!total){const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
- }catch(err){status.textContent='No se pudo consultar esta edición: '+err.message;}
+ }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprobá que su índice OCR esté publicado.';}
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  e.preventDefault();const n=Number(document.querySelector('#pdf-page-number').value),note=document.querySelector('#page-hit-status');
- if(!Number.isInteger(n)||n<1||n>(source.id==='perrault-1673'?371:cache?.length||314)){if(note)note.textContent='Ingresá una página entre 1 y 314.';return;}
+ const max=source.id==='perrault-1673'?371:cache?.length||314;
+ if(!Number.isInteger(n)||n<1||n>max){if(note)note.textContent='Ingresá una página entre 1 y '+max+'.';return;}
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
   const record=cache.find(x=>x.page===n);if(!record)throw Error('Página no indexada');
