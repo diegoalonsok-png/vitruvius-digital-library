@@ -181,18 +181,18 @@ form.addEventListener('submit',async e=>{
    if(typeof record.text!=='string')continue;
    let hits=matches(record.text,q,prefix);
    literal+=hits.length;
-   if(variants.length&&word(q).length===1){const primary=variants.filter(v=>distance(fold(q),v)<=3);for(const variant of primary.length?primary:variants)hits.push(...matches(record.text,variant,false));}
+   if(variants.length&&word(q).length===1){const primary=variants.filter(v=>distance(fold(q),v)<=3);const preferred=primary.length?primary:variants;for(const variant of preferred)hits.push(...matches(record.text,variant,false));}
    if(concept){
     for(const root of concept.roots)hits.push(...matches(record.text,root,true));
     const seen=new Set();hits=hits.filter(m=>{if(seen.has(m.start))return false;seen.add(m.start);return true;}).sort((a,b)=>a.start-b.start);
    }
    if(variants.length){const seen=new Set();hits=hits.filter(x=>{const key=x.start+':'+x.end;if(seen.has(key))return false;seen.add(key);return true;}).sort((a,b)=>a.start-b.start);}
-   if(!hits.length)continue;total+=hits.length;pages++;pageHits.push({page:record.page,text:record.text,hits});
+   if(!hits.length)continue;hits.sort((a,b)=>a.start-b.start);total+=hits.length;pages++;pageHits.push({page:record.page,text:record.text,hits});
    for(const hit of hits)if(shown<100){const card=result(record.page,record.text,hit,shown);out.append(card);shown++;}
   }
   const nav=document.querySelector('#page-results');
   if(nav){for(const item of pageHits){const b=document.createElement('button');b.type='button';b.textContent='p. '+item.page+' ('+item.hits.length+')';b.addEventListener('click',()=>showPage(item.page,item.text,item.hits));nav.append(b);}}
-  if(pageHits.length)showPage(pageHits[0].page,pageHits[0].text,pageHits[0].hits);
+  if(pageHits.length){const firstLiteral=pageHits.find(p=>matches(p.text,q,prefix).length>0);const selected=firstLiteral||pageHits[0];showPage(selected.page,selected.text,selected.hits);}
   status.textContent=(variants.length?'Consulta multilingüe: '+literal+' coincidencias literales; equivalencias lexicográficas exploradas ('+source.label+'): '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
   if(!total){showTypoSuggestions(q,edition);showOcrAlternatives(cache,q);const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
  }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprobá que su índice OCR esté publicado.';}
