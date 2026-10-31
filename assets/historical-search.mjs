@@ -16,7 +16,7 @@ const multilingualConcepts={
  'architect':{label:'architect',roots:['architect']},
  'architectonic':{label:'arquitectónico',roots:['architect']}
 };
-const conceptFor=q=>greekConcepts[greekFold(q)]||multilingualConcepts[fold(q)]||null;
+const conceptFor=q=>{const k=fold(q);return greekConcepts[greekFold(q)]||multilingualConcepts[k]||(/^(?:architectur|arquitectur|architecte|arquitecto)/.test(k)?{label:'arquitectura y arquitectura histórica',roots:['architect']}:null);};
 const greekFold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const word=s=>[...String(s).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({start:m.index,end:m.index+m[0].length,form:fold(m[0])}));
