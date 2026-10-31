@@ -161,6 +161,16 @@ self.onmessage=async({data:m})=>{
     }
    }catch{warnings.push('No se pudo cargar el léxico de formas; se muestran coincidencias literales.');}
   }
+  // Corpus-grounded fallback for an attested Latin compound missing in
+  // this recension: refer to relevant water-conveyance passages, never call
+  // them literal occurrences of the requested inflected form.
+  if(!output.results.length&&!direct&&!heading&&/^aqua?educt(?:us|u|um|ui|ibus|uum)?$/i.test(requested)&&m.kind==='words'){
+    const related=searchCorpus(datasets,{...effective,kind:'words',query:'aquae duct',mode:'phrase',language:'la'});
+    if(related.results.length){
+      output.results=related.results.map(hit=>({...hit,partial_match:true,match_type:'related_concept',semantic_term:'aquae duct— conducción de agua',score:55}));
+      warnings.push('«'+requested+'» es una forma de aquaeductus (acueducto). No se encontró esa grafía literalmente en las ediciones indexadas; se muestran pasajes reales sobre conducción de aguas, no coincidencias de la palabra.');
+    }
+  }
   // Long quotations pasted from other editions: rank real passages by
   // significant-word overlap, not invented exact textual correspondence.
   const quoteTokens=String(requested).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').match(/[\p{L}]{3,}/gu)||[];
