@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "coverage": "selectiva",
+  "description": "Equivalencias editoriales orientativas. No constituye OCR de los códices ni un diccionario clásico exhaustivo.",
+  "entries": {
+    "τεχνη": [
+      {
+        "lemma": "τέχνη",
+        "pos": "sustantivo femenino",
+        "glosses": [
+          "arte",
+          "técnica",
+          "habilidad u oficio"
+        ],
+        "latin_equivalents": [
+          "ars",
+          "artis",
+          "artem"
+        ],
+        "note": "Equivalencia conceptual, no prueba de presencia literal en el texto latino o en el facsímil."
+      }
+    ]
+  }
+}
