@@ -50,7 +50,16 @@ function showPage(page,text,hits){
  ocr.append(document.createTextNode(text.slice(offset)));
 }
 form.addEventListener('submit',async e=>{
- e.preventDefault();const q=query.value.trim();if(!q)return;
+ e.preventDefault();const edition=document.querySelector('#ed')?.value||'krohn-1912';
+ if(edition!=='krohn-1912'){
+   const info={ 'perrault-1673':['Perrault (1673)','https://doi.org/10.3931/e-rara-61952'], 'rose-1899':['Rose (1899)','https://archive.org/details/vitruviidearchit00vitr_0']}[edition];
+   out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();
+   status.textContent='La edición '+info[0]+' todavía no dispone de OCR indexado. No se presentan coincidencias ficticias.';
+   const p=document.createElement('p');p.textContent='El facsímil está disponible en la biblioteca de origen. Para búsqueda por palabra y salto automático a páginas primero hay que extraer y verificar su OCR.';out.append(p);
+   const link=document.createElement('a');link.href=info[1];link.target='_blank';link.rel='noopener';link.textContent='Abrir facsímil institucional de '+info[0]+' ↗';out.append(link);
+   return;
+ }
+ const q=query.value.trim();if(!q)return;
  out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();status.textContent='Cargando índice histórico…';
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
