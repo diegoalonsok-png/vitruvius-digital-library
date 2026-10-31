@@ -16,7 +16,25 @@ const multilingualConcepts={
  'architect':{label:'architect',roots:['architect']},
  'architectonic':{label:'arquitectónico',roots:['architect']}
 };
-const conceptFor=q=>{const k=fold(q);return greekConcepts[greekFold(q)]||multilingualConcepts[k]||(/^(?:architectur|arquitectur|architecte|arquitecto)/.test(k)?{label:'arquitectura y arquitectura histórica',roots:['architect']}:null);};
+let dictionaryConcepts=[];
+const distance=(a,b)=>{if(Math.abs(a.length-b.length)>2)return 3;let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=next;}return prev[b.length];};
+const conceptFor=q=>{
+ const key=fold(q);
+ const known=greekConcepts[greekFold(q)]||multilingualConcepts[key];
+ if(known)return known;
+ if(/^(?:architectur|arquitectur|architecte|arquitecto)/.test(key))return {label:'arquitectura',roots:['architect']};
+ const exact=dictionaryConcepts.find(e=>e.aliases.includes(key));
+ if(exact)return {label:exact.label,roots:exact.roots};
+ if(key.length>=5){const candidate=dictionaryConcepts.map(e=>({e,d:Math.min(...e.aliases.map(a=>distance(key,a)))})).sort((a,b)=>a.d-b.d)[0];if(candidate&&candidate.d<=(key.length>=9?2:1))return {label:candidate.e.label+' (corrección aproximada)',roots:candidate.e.roots,correction:true};}
+ return null;
+};
+async function loadDictionary(){
+ try{const response=await fetch('data/latin-lexicon.json');if(!response.ok)return;const data=await response.json();dictionaryConcepts=(data.entries||[]).map(e=>{
+ const fragments=[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr].filter(Boolean).flatMap(v=>String(v).split(/[;,/]/)).map(fold).filter(v=>v.length>=4&&v.length<=45);
+ const lemma=fold(e.lemma||'');const root=lemma.replace(/(?:arum|orum|ibus|um|us|ae|is|a|i)$/,'');
+ return {label:e.lemma,aliases:[...new Set(fragments)],roots:[root.length>=4?root:lemma].filter(Boolean)};
+ }).filter(e=>e.aliases.length&&e.roots.length);}catch{}
+}
 const greekFold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const word=s=>[...String(s).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({start:m.index,end:m.index+m[0].length,form:fold(m[0])}));
@@ -35,7 +53,7 @@ form.addEventListener('submit',async e=>{
  out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();status.textContent='Cargando índice histórico…';
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
-  const concept=conceptFor(q),prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
+  await loadDictionary();const concept=conceptFor(q),prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
   let total=0,pages=0,shown=0,literal=0;const pageHits=[];
   for(const record of cache){
    if(typeof record.text!=='string')continue;
@@ -61,7 +79,7 @@ document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
   const record=cache.find(x=>x.page===n);if(!record)throw Error('Página no indexada');
-  const concept=conceptFor(activeQuery);
+  await loadDictionary();const concept=conceptFor(activeQuery);
   let hits=activeQuery?matches(record.text,activeQuery,activePrefix):[];
   if(concept){for(const root of concept.roots)hits.push(...matches(record.text,root,true));const seen=new Set();hits=hits.filter(x=>{if(seen.has(x.start))return false;seen.add(x.start);return true;}).sort((a,b)=>a.start-b.start);}
   showPage(n,record.text,hits);
