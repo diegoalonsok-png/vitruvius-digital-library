@@ -3381,6 +3381,101 @@
       "conservation_place": "Sevilla",
       "shelfmark": "A 065/112",
       "citation_text": "Vitruvio. Los diez libros de architectura de M. Vitruvio Polión. Joseph Ortiz y Sanz, traducción y comentarios. Madrid: Imprenta Real, 1787."
+    },
+    {
+      "group": "manuscripts",
+      "title": "Urbinas lat. 293",
+      "place": "Biblioteca Apostolica Vaticana",
+      "date": "saec. XII",
+      "languages": [
+        "la"
+      ],
+      "status": "bibliographic_lead",
+      "searchable": false,
+      "document_url": null,
+      "verification": "institutional_catalog",
+      "view_url": "https://digi.vatlib.it/view/MSS_Urb.lat.293",
+      "link_type": "visor institucional",
+      "citation_standard": "Chicago 18 (2024), notes-bibliography",
+      "citation_status": "documented",
+      "id": "hist-075",
+      "display_title": "Codex Vaticanus Urbinas latinus 293",
+      "aliases": [
+        "Vaticanus Urbinas lat. 293",
+        "Urb. lat. 293",
+        "Urbinas 293"
+      ],
+      "reviewed_at": "2026-10-31",
+      "metadata_status": "documented",
+      "source_note": "Catálogo temático de la Biblioteca Apostólica Vaticana: parte vitruviana del siglo XII; fragmento médico del siglo VIII.",
+      "sources": [
+        {
+          "label": "Biblioteca Apostolica Vaticana, Urb. lat. 293",
+          "url": "https://spotlight.vatlib.it/selected-manuscripts-from-the-polonsky-foundation-digitization-project/catalog/Urb_lat_293"
+        }
+      ],
+      "history_note": "No asignar automáticamente la sigla U a una tradición editorial concreta. El fragmento médico de ff. 95r–96v es anterior y no debe utilizarse para fechar De architectura.",
+      "kind": "manuscript",
+      "shelfmark": "Urb. lat. 293",
+      "institution": "Biblioteca Apostolica Vaticana",
+      "conservation_place": "Città del Vaticano",
+      "siglum": "",
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Vitruvius, De architectura, ff. 2r–94v",
+      "date_display": "saec. XII (parte vitruviana)",
+      "date_start": 1101,
+      "date_end": 1200,
+      "material": "Pergamino",
+      "folios": "ff. 2r–94v",
+      "citation_text": "Città del Vaticano, Biblioteca Apostolica Vaticana, Urb. lat. 293, ff. 2r–94v. Vitruvius, De architectura. Saec. XII."
+    },
+    {
+      "group": "other",
+      "title": "Lázaro de Velasco",
+      "place": "Cáceres",
+      "date": "ca. 1564",
+      "languages": [
+        "es"
+      ],
+      "status": "bibliographic_lead",
+      "searchable": false,
+      "document_url": null,
+      "verification": "institutional_catalog",
+      "view_url": "https://biblioteca.aq.upm.es/biblioteca_digital/vitruvio.html",
+      "link_type": "catálogo universitario",
+      "citation_standard": "Chicago 18 (2024), notes-bibliography",
+      "citation_status": "documented",
+      "id": "hist-076",
+      "display_title": "Lázaro de Velasco · traducción castellana manuscrita",
+      "aliases": [
+        "Lázaro de Velasco",
+        "Lazaro de Velasco",
+        "Códice de Cáceres",
+        "Mss-2"
+      ],
+      "reviewed_at": "2026-10-31",
+      "metadata_status": "documented",
+      "source_note": "Universidad Politécnica de Madrid y catálogo patrimonial extremeño consignan Mss-2, traducción manuscrita no impresa en el siglo XVI.",
+      "sources": [
+        {
+          "label": "UPM: ediciones españolas de Vitruvio",
+          "url": "https://biblioteca.aq.upm.es/biblioteca_digital/vitruvio.html"
+        }
+      ],
+      "history_note": "Traducción al castellano anterior a Urrea 1582. No confundir primera traducción manuscrita con primera traducción impresa. No hay PDF del manuscrito verificado en este registro.",
+      "kind": "manuscript_translation",
+      "shelfmark": "Mss-2",
+      "institution": "Biblioteca Pública de Cáceres «A. Rodríguez-Moñino / M. Brey»",
+      "conservation_place": "Cáceres",
+      "work_title": "Los diez libros de arquitectura de Marco Vitruvio Polión",
+      "title_language": "es",
+      "scope": "Traducción manuscrita al castellano",
+      "date_display": "ca. 1564",
+      "date_start": 1554,
+      "date_end": 1564,
+      "responsibility": "Lázaro de Velasco, traductor",
+      "citation_text": "Lázaro de Velasco. Los diez libros de arquitectura de Marco Vitruvio Polión. Manuscrito, ca. 1564. Cáceres, Biblioteca Pública, Mss-2."
     }
   ],
   "editorial_policy": {
