@@ -25,6 +25,7 @@ const conceptFor=q=>{
  if(/^(?:architectur|arquitectur|architecte|arquitecto)/.test(key))return {label:'arquitectura',roots:['architect']};
  const exact=dictionaryConcepts.find(e=>e.aliases.includes(key));
  if(exact)return {label:exact.label,roots:exact.roots};
+ if(key.length>=5){const near=Object.keys(multilingualConcepts).map(k=>({k,d:distance(key,k)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<=(key.length>=9?2:1))return {...multilingualConcepts[near.k],label:multilingualConcepts[near.k].label+' (corrección sugerida: '+near.k+')',correction:true};}
  if(key.length>=5){const candidate=dictionaryConcepts.map(e=>({e,d:Math.min(...e.aliases.map(a=>distance(key,a)))})).sort((a,b)=>a.d-b.d)[0];if(candidate&&candidate.d<=(key.length>=9?2:1))return {label:candidate.e.label+' (corrección aproximada)',roots:candidate.e.roots,correction:true};}
  return null;
 };
