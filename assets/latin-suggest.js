@@ -137,6 +137,39 @@
    message.textContent=result.definitions.length?'Acepciones de Wikcionario (en inglés), presentadas dentro de la biblioteca:':result.status||'Sin acepciones extraíbles para esta forma.';
    if(result.grammar?.length){const p=document.createElement('p');p.textContent='Clasificación: '+result.grammar.join(' · ');details.append(p);}
    if(result.definitions.length){const ol=document.createElement('ol');for(const d of result.definitions){const li=document.createElement('li');li.textContent=d;ol.append(li);}details.append(ol);}
+   // Automatically follow the lemma of inflected Latin forms. This works
+   // for any form whose dictionary entry explicitly identifies a lemma,
+   // rather than requiring one handwritten definition per Latin word.
+   if(language==='Latin'&&result.definitions.length){
+     const first=result.definitions.find(d=>/\\b(?:of|from)\\s+[\\p{L}\\p{M}]{3,}/iu.test(d));
+     const lemma=first?.match(/\\b(?:of|from)\\s+([\\p{L}\\p{M}]{3,})/iu)?.[1];
+     if(lemma&&lemma.toLocaleLowerCase()!==term.toLocaleLowerCase()){
+       const lemmaPanel=document.createElement('section');lemmaPanel.className='dictionary-lemma';
+       const head=document.createElement('h4');head.textContent='Lema latino detectado automáticamente: '+lemma;lemmaPanel.append(head);
+       const loading=document.createElement('p');loading.textContent='Consultando las acepciones del lema…';lemmaPanel.append(loading);
+       details.append(lemmaPanel);
+       const lemmaLink=document.createElement('a');lemmaLink.href='https://es.wiktionary.org/wiki/'+encodeURIComponent(lemma);lemmaLink.target='_blank';lemmaLink.rel='noopener';lemmaLink.textContent='Consultar el lema en Wikcionario en castellano ↗';lemmaPanel.append(lemmaLink);
+       const api=new URL('https://en.wiktionary.org/w/api.php');
+       for(const [k,v] of Object.entries({action:'parse',page:lemma,prop:'text',format:'json',formatversion:'2',origin:'*'}))api.searchParams.set(k,v);
+       fetch(api).then(x=>x.ok?x.json():Promise.reject(Error('Lema no disponible'))).then(data=>{
+         if(ticket!==liveTicket||!lemmaPanel.isConnected)return;
+         if(!data.parse?.text)throw Error('No hay acepciones disponibles');
+         const doc=new DOMParser().parseFromString(data.parse.text,'text/html');
+         const h=[...doc.querySelectorAll('h2')].find(x=>x.textContent.toLowerCase().includes('latin'));
+         let node=(h?.closest('.mw-heading')||h)?.nextElementSibling,found=[];
+         while(node&&node.tagName!=='H2'&&!node.matches?.('.mw-heading2')){
+           for(const li of node.querySelectorAll('ol > li')){
+             const copy=li.cloneNode(true);copy.querySelectorAll('ol,ul,.reference').forEach(x=>x.remove());
+             const meaning=copy.textContent.replace(/\\s+/g,' ').trim();
+             if(meaning.length>2&&!found.includes(meaning))found.push(meaning.slice(0,250));
+           }
+           node=node.nextElementSibling;
+         }
+         loading.textContent=found.length?'Acepciones del lema (fuente lexicográfica, inglés):':'No fue posible extraer las acepciones del lema.';
+         if(found.length){const list=document.createElement('ol');for(const meaning of found.slice(0,8)){const li=document.createElement('li');li.textContent=meaning;list.append(li);}lemmaPanel.append(list);}
+       }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar automáticamente el lema. Utilizá el enlace al diccionario.';});
+     }
+   }
    const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wikcionario en inglés (Wikimedia, CC BY-SA). La forma consultada puede requerir buscar su lema; verificá las acepciones según el contexto vitruviano.';details.append(foot);
   });
  }
