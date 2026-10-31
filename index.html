@@ -9,16 +9,35 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css?v=20261030-yellow-highlights-2">
   <script src="assets/app.js?v=20261030-search-precision-22" type="module"></script>
-<script src="assets/i18n.js?v=20261030-01" defer></script><script src="assets/latin-suggest.js?v=20261030-split-dict-32" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261030-docx-1"><script src="assets/theme.js?v=20261030-docx-1" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261030-editions"></head>
+<script src="assets/i18n.js?v=20261030-01" defer></script><script src="assets/latin-suggest.js?v=20261030-split-dict-32" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261030-docx-1"><script src="assets/theme.js?v=20261030-docx-1" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261030-editions"><style>
+/* Two clear navigation levels: principal sections and scholarly instruments. */
+.site-header .header-inner > nav[aria-label="Navegación principal"]{row-gap:8px}
+.research-nav{border-top:1px solid var(--line);background:transparent}
+.research-nav-inner{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;column-gap:24px;row-gap:5px;padding-top:11px;padding-bottom:12px}
+.research-nav a{font-size:12px;line-height:1.45;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;padding:3px 0}
+.research-nav a:hover,.research-nav a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:700px){.research-nav-inner{gap:4px 16px}.research-nav a{font-size:11px;white-space:normal}}
+</style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="institution-bar"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Una biblioteca de acceso abierto</span></div></div>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="wordmark" href="index.html" aria-label="Vitruvius Digital Library, inicio"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a>
-      <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a><a href="principios.html">Principios editoriales</a><a href="comparador-loci.html" title="Confrontar latín y traducciones">Comparador de loci</a> · <a href="aparato-critico.html">Índice textual y notas</a><a href="indices-locorum.html">Índices locorum</a><a href="ediciones-historicas.html">Ediciones libres</a> · <a href="facsimiles.html">Facsímiles manuscritos</a><a href="basilica-fano.html">Basílica de Fano</a></nav>
+      <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a></nav>
       <span class="header-languages" aria-label="Latín, castellano, francés e inglés">LA / ES / FR / EN</span>
     </div>
+    <nav class="research-nav" aria-label="Herramientas de investigación">
+      <div class="wrap research-nav-inner">
+        <a href="principios.html">Principios editoriales</a>
+        <a href="comparador-loci.html">Comparador de loci</a>
+        <a href="aparato-critico.html">Índice textual y notas</a>
+        <a href="indices-locorum.html">Índices locorum</a>
+        <a href="ediciones-historicas.html">Ediciones libres</a>
+        <a href="facsimiles.html">Facsímiles manuscritos</a>
+        <a href="basilica-fano.html">Basílica de Fano</a>
+      </div>
+    </nav>
   </header>
   <main id="contenido">
     <section class="hero hero-academic wrap" id="inicio">
