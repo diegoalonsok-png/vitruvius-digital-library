@@ -112,7 +112,7 @@ function renderNotes(notes,q,ref){
  filtered.sort((a,b)=>{
   const score=n=>{
     const body=norm(n.text||''),anchor=norm(n.anchor||'');
-    const terms=[...new Set(norm(q).match(/[\\p{L}\\p{N}]{3,}/gu)||[])];
+    const terms=[...new Set(norm(q).match(/[\p{L}\p{N}]{3,}/gu)||[])];
     const exact=norm(q);
     return (n.locus?12:n.candidate_locus?6:0)
       +(body.includes(exact)?30:0)+(anchor.includes(exact)?18:0)
