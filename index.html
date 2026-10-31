@@ -13,9 +13,12 @@
 /* Two clear navigation levels: principal sections and scholarly instruments. */
 .site-header .header-inner > nav[aria-label="Navegación principal"]{row-gap:8px}
 .research-nav{border-top:1px solid var(--line);background:transparent}
-.research-nav-inner{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;column-gap:24px;row-gap:5px;padding-top:11px;padding-bottom:12px}
-.research-nav a{font-size:12px;line-height:1.45;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;padding:3px 0}
+.research-nav-inner{display:flex;align-items:center;justify-content:flex-start;flex-wrap:nowrap;column-gap:clamp(10px,1.15vw,24px);row-gap:5px;padding-top:11px;padding-bottom:12px}
+.research-nav a{font-size:clamp(10px,.7vw,12px);line-height:1.45;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;padding:3px 0}
 .research-nav a:hover,.research-nav a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.research-nav-inner .theme-switch{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;margin-left:auto;padding:7px 12px;white-space:nowrap}
+.header-inner nav .nav-fano{white-space:nowrap}
+@media(max-width:1150px){.research-nav-inner{flex-wrap:wrap;gap:6px 16px}}
 @media(max-width:700px){.research-nav-inner{gap:4px 16px}.research-nav a{font-size:11px;white-space:normal}}
 </style></head>
 <body>
@@ -24,7 +27,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="wordmark" href="index.html" aria-label="Vitruvius Digital Library, inicio"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a>
-      <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a></nav>
+      <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a><a class="nav-fano" href="basilica-fano.html">Basílica de Fano</a></nav>
       <span class="header-languages" aria-label="Latín, castellano, francés e inglés">LA / ES / FR / EN</span>
     </div>
     <nav class="research-nav" aria-label="Herramientas de investigación">
@@ -35,7 +38,6 @@
         <a href="indices-locorum.html">Índices locorum</a>
         <a href="ediciones-historicas.html">Ediciones libres</a>
         <a href="facsimiles.html">Facsímiles manuscritos</a>
-        <a href="basilica-fano.html">Basílica de Fano</a>
       </div>
     </nav>
   </header>
