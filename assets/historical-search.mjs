@@ -38,6 +38,28 @@ async function loadDictionary(){
  return {label:e.lemma,aliases:[...new Set(fragments)],roots:[root.length>=4?root:lemma].filter(Boolean)};
  }).filter(e=>e.aliases.length&&e.roots.length);}catch{}
 }
+// Cross-language retrieval is explicitly labelled as exploratory; never counted as a literal Latin hit.
+const frenchConcepts={
+ 'proportione':['proportion','proportions','rapport','rapports'],
+ 'proportio':['proportion','proportions','rapport','rapports'],
+ 'symmetria':['symmetrie','symetrie','proportion'],
+ 'architectura':['architecture'],
+ 'columna':['colonne','colonnes'],
+ 'templum':['temple','temples'],
+ 'aqua':['eau','eaux'],
+ 'machina':['machine','machines']
+};
+function editionVariants(term,edition){
+ if(edition!=='perrault-1673')return [];
+ const key=fold(term);
+ const entry=dictionaryConcepts.find(e=>e.aliases.includes(key));
+ const stems=[...(frenchConcepts[key]||[])];
+ if(entry){
+  const raw=entry.aliases.filter(x=>x.length>3&&x.length<36);
+  stems.push(...raw.filter(x=>/^[a-z]+$/i.test(x)));
+ }
+ return [...new Set(stems.map(fold))].filter(x=>x!==key);
+}
 const greekFold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const word=s=>[...String(s).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({start:m.index,end:m.index+m[0].length,form:fold(m[0])}));
@@ -89,25 +111,28 @@ form.addEventListener('submit',async e=>{
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
   if(myRequest!==requestSerial)return;
-  if(edition==='krohn-1912')await loadDictionary();
+  if(edition==='krohn-1912'||edition==='perrault-1673')await loadDictionary();
   if(myRequest!==requestSerial)return;
   const concept=edition==='krohn-1912'?conceptFor(q):null,prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
+  const variants=editionVariants(q,edition);
   let total=0,pages=0,shown=0,literal=0;const pageHits=[];
   for(const record of cache){
    if(typeof record.text!=='string')continue;
    let hits=matches(record.text,q,prefix);
    literal+=hits.length;
+   if(variants.length&&q.trim().split(/\s+/).length===1)for(const variant of variants)hits.push(...matches(record.text,variant,false));
    if(concept){
     for(const root of concept.roots)hits.push(...matches(record.text,root,true));
     const seen=new Set();hits=hits.filter(m=>{if(seen.has(m.start))return false;seen.add(m.start);return true;}).sort((a,b)=>a.start-b.start);
    }
+   if(variants.length){const seen=new Set();hits=hits.filter(x=>{const key=x.start+':'+x.end;if(seen.has(key))return false;seen.add(key);return true;}).sort((a,b)=>a.start-b.start);}
    if(!hits.length)continue;total+=hits.length;pages++;pageHits.push({page:record.page,text:record.text,hits});
    for(const hit of hits)if(shown<100){const card=result(record.page,record.text,hit,shown);out.append(card);shown++;}
   }
   const nav=document.querySelector('#page-results');
   if(nav){for(const item of pageHits){const b=document.createElement('button');b.type='button';b.textContent='p. '+item.page+' ('+item.hits.length+')';b.addEventListener('click',()=>showPage(item.page,item.text,item.hits));nav.append(b);}}
   if(pageHits.length)showPage(pageHits[0].page,pageHits[0].text,pageHits[0].hits);
-  status.textContent=(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
+  status.textContent=(edition==='perrault-1673'&&variants.length?'Consulta francesa orientativa: '+literal+' coincidencias literales; equivalencias exploradas: '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
   if(!total){const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
  }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprobá que su índice OCR esté publicado.';}
 });
