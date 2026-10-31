@@ -42,11 +42,11 @@ const greekFold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerC
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const word=s=>[...String(s).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({start:m.index,end:m.index+m[0].length,form:fold(m[0])}));
 function matches(text,q,prefix){const t=word(text),wanted=word(q).map(x=>x.form);if(!wanted.length)return[];const found=[];for(let i=0;i<=t.length-wanted.length;i++){if(wanted.every((v,j)=>prefix&&wanted.length===1?t[i+j].form.startsWith(v):t[i+j].form===v))found.push({start:t[i].start,end:t[i+wanted.length-1].end});}return found;}
-function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.pdf+'#page='+page;a.target='_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{const frame=document.querySelector('#historical-pdf'),open=document.querySelector('#historical-pdf-link');if(!frame)return;ev.preventDefault();frame.src=a.href;if(open)open.href=a.href;frame.scrollIntoView({behavior:'smooth',block:'nearest'});});el.append(h,p,a);return el;}
+function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.pdf+'#page='+page;a.target='_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{ev.preventDefault();const record=cache?.find(x=>x.page===page);if(!record)return;const hits=matches(record.text,activeQuery,activePrefix);showPage(page,record.text,hits);document.querySelector('.historical-viewer')?.scrollIntoView({behavior:'smooth',block:'start'});});el.append(h,p,a);return el;}
 function showPage(page,text,hits){
  const field=document.querySelector('#pdf-page-number');if(field)field.value=String(page);const note=document.querySelector('#page-hit-status');if(note)note.textContent=hits.length+' coincidencia(s) en esta página';
  const pdf=source.pdf+'#page='+page,frame=document.querySelector('#historical-pdf'),link=document.querySelector('#historical-pdf-link'),ocr=document.querySelector('#ocr-page');
- if(frame)frame.src=pdf;if(link)link.href=pdf;const current=document.querySelector('#q')?.value.trim()||'';const concept=conceptFor(current);document.dispatchEvent(new CustomEvent('historical-pdf-page',{detail:{page,query:current,roots:concept?.roots||[],prefix:document.querySelector('#mode')?.value==='prefix'}}));if(!ocr)return;
+ if(frame)frame.src=pdf;if(link)link.href=pdf;const current=document.querySelector('#q')?.value.trim()||'';const concept=source.id==='krohn-1912'?conceptFor(current):null;document.dispatchEvent(new CustomEvent('historical-pdf-page',{detail:{page,query:current,roots:concept?.roots||[],prefix:document.querySelector('#mode')?.value==='prefix'}}));if(!ocr)return;
  ocr.replaceChildren();let offset=0;
  for(const hit of hits){if(hit.start<offset)continue;ocr.append(document.createTextNode(text.slice(offset,hit.start)));const mark=document.createElement('mark');mark.textContent=text.slice(hit.start,hit.end);ocr.append(mark);offset=hit.end;}
  ocr.append(document.createTextNode(text.slice(offset)));
@@ -89,8 +89,9 @@ form.addEventListener('submit',async e=>{
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();if(!Array.isArray(cache)||!cache.length)throw Error('Índice vacío');}
   if(myRequest!==requestSerial)return;
-  await loadDictionary();if(myRequest!==requestSerial)return;
-  const concept=conceptFor(q),prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
+  if(edition==='krohn-1912')await loadDictionary();
+  if(myRequest!==requestSerial)return;
+  const concept=edition==='krohn-1912'?conceptFor(q):null,prefix=document.querySelector('#mode').value==='prefix';activeQuery=q;activePrefix=prefix;
   let total=0,pages=0,shown=0,literal=0;const pageHits=[];
   for(const record of cache){
    if(typeof record.text!=='string')continue;
@@ -117,7 +118,8 @@ document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
   const record=cache.find(x=>x.page===n);if(!record)throw Error('Página no indexada');
-  await loadDictionary();const concept=conceptFor(activeQuery);
+  if(source.id==='krohn-1912')await loadDictionary();
+  const concept=source.id==='krohn-1912'?conceptFor(activeQuery):null;
   let hits=activeQuery?matches(record.text,activeQuery,activePrefix):[];
   if(concept){for(const root of concept.roots)hits.push(...matches(record.text,root,true));const seen=new Set();hits=hits.filter(x=>{if(seen.has(x.start))return false;seen.add(x.start);return true;}).sort((a,b)=>a.start-b.start);}
   showPage(n,record.text,hits);
