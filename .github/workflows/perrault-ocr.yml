@@ -18,7 +18,20 @@ jobs:
           curl --fail --location --retry 4 --connect-timeout 30 --max-time 1500 \
             'https://www.e-rara.ch/download/ftpack/alto/16797458' -o /tmp/perrault-alto.xml
           test -s /tmp/perrault-alto.xml
-          head -c 100 /tmp/perrault-alto.xml | grep -q -i '<?xml'
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          path=Path('/tmp/perrault-alto.xml')
+          if zipfile.is_zipfile(path):
+              with zipfile.ZipFile(path) as z:
+                  files=[n for n in z.namelist() if n.lower().endswith('.xml')]
+                  if len(files)!=1: raise SystemExit('ZIP ALTO contiene '+str(len(files))+' XML: revisar estructura')
+                  path.write_bytes(z.read(files[0]))
+          content=path.read_bytes()[:300].lstrip()
+          if not content.startswith(b'<?xml') and not content.startswith(b'<alto'):
+              raise SystemExit('La descarga no es XML ALTO: revisar URL y respuesta')
+          print('ALTO recibido:', path.stat().st_size, 'bytes')
+          PY
       - name: Extraer concordancia por pagina PDF
         run: |
           python scripts/parse-erara-alto.py /tmp/perrault-alto.xml data/text/perrault-1673.json --offset 1
