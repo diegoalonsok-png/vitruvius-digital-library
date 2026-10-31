@@ -44,6 +44,28 @@ try{
   }
   await page.close();
  });
+ await test('Portada: búsqueda, ejemplos, catálogo y comparación',async()=>{
+  const page=await pageFor('index.html');
+  await page.locator('[data-query="symmetria"]').click();
+  assert.match(await page.locator('#query').inputValue(),/symmetria/i,'Ejemplo de búsqueda sin efecto');
+  await page.locator('#query').fill('architectura');
+  await page.locator('#search-button').click();
+  await page.waitForTimeout(1200);
+  assert((await page.locator('body').innerText()).length>500,'La portada perdió contenido');
+  await page.locator('[data-category="historical"]').click();
+  assert.equal(await page.locator('[data-category="historical"]').getAttribute('aria-selected'),'true','Pestaña histórica no selecciona');
+  await page.locator('#open-comparison').click();
+  await page.waitForTimeout(250);
+  await page.close();
+ });
+ await test('Bibliografía: botones de ejemplo y restablecer filtros',async()=>{
+  const page=await pageFor('bibliografia.html');
+  await page.locator('[data-example="Gudianus"]').click();
+  assert.match(await page.locator('#filter').inputValue(),/Gudianus/,'Ejemplo Gudianus no funciona');
+  await page.locator('#clear-filters').click();
+  assert.equal(await page.locator('#filter').inputValue(),'','No se restablece el filtro');
+  await page.close();
+ });
  await test('Enlaces de Scriptorium desde portada y catálogos',async()=>{
   for(const path of ['index.html','facsimiles.html','bibliografia.html','ediciones-historicas.html','concordancia-historica.html']){
    const page=await pageFor(path);
