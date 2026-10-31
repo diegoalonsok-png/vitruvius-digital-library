@@ -41,19 +41,14 @@ async function loadDictionary(){
 // Cross-language retrieval is explicitly labelled as exploratory; never counted as a literal Latin hit.
 // Derive French equivalents systematically from the corpus lexicon, not individual word exceptions.
 function editionVariants(term,edition){
- const words=word(term);if(words.length!==1)return [];
- const key=words[0].form;
- const candidates=dictionaryConcepts.filter(e=>e.aliases.includes(key));
- if(edition==='perrault-1673'){
-  const variants=[...new Set(candidates.flatMap(e=>e.french))]
-   .filter(x=>x!==key&&x.length>=5&&!['lieu','sujet','place','chose','partie','rapport'].includes(x));
-  // Historical French equivalent nearest to the original technical term first.
-  variants.sort((a,b)=>distance(key,a)-distance(key,b));
-  return variants;
- }
- if(edition==='rose-1899'||edition==='krohn-1912')
-  return [...new Set(candidates.map(e=>fold(e.label)))].filter(x=>x!==key&&x.length>=4);
- return [];
+ // Historic OCR concordance is literal by default. Semantic equivalents
+ // require a distinct verified translation index; otherwise unrelated words
+ // in a French preface produce misleading results.
+ if(edition==='perrault-1673')return [];
+ const tokens=word(term);if(tokens.length!==1)return [];
+ const key=tokens[0].form;
+ return [...new Set(dictionaryConcepts.filter(e=>e.aliases.includes(key)).map(e=>fold(e.label)))]
+  .filter(x=>x!==key&&x.length>=4);
 }
 function typoSuggestions(q,edition){
  if(edition!=='perrault-1673'||q.trim().split(/\s+/).length!==1)return [];
