@@ -66,3 +66,28 @@ $('#htr-recognize').addEventListener('click',async()=>{
  }catch(e){ocrStatus.textContent='HTR no disponible: '+e.message+'. Comprobá conexión, CORS, HTTPS y que el modelo esté configurado.';}
  finally{btn.disabled=false;}
 });
+
+const diplomaticPrompt=[
+'Actuá como paleógrafo especializado en latín carolingio del siglo IX.',
+'Transcribí ÚNICAMENTE las letras que puedas leer en la imagen adjunta del manuscrito, respetando los saltos de línea, grafías medievales, puntuación y signos de abreviación visibles.',
+'Para letras dudosas usá [?] y para ilegibles [ilegible]; no inventes ni completes con el texto impreso de Krohn u otras ediciones.',
+'Indicá expansiones de abreviaturas entre corchetes y diferenciá lecturas seguras de conjeturas.',
+'NO traduzcas, NO resumas, NO modernices automáticamente, NO reconstruyas frases usando conocimiento previo de Vitruvio.',
+'Primero devolvé SOLO la transcripción diplomática línea por línea. Después separá un breve apartado de dudas paleográficas.'
+].join(' ');
+$('#copy-ai-prompt').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText(diplomaticPrompt);$('#ai-status').textContent='Instrucciones copiadas. Adjuntá la imagen de 4000 px en Google AI y pegá el resultado aquí.';}
+ catch(e){$('#ai-status').textContent='El navegador bloqueó el portapapeles. Seleccioná y copiá estas instrucciones: '+diplomaticPrompt;}
+});
+$('#apply-ai').addEventListener('click',()=>{
+ const value=$('#ai-result').value.trim();
+ if(!value){$('#ai-status').textContent='Primero pegá la transcripción obtenida de Google AI.';return;}
+ $('#transcription').value=value;
+ $('#transcription').focus();
+ $('#ai-status').textContent='Transcripción incorporada al campo editable. Sigue sin revisar: cotejá cada línea con el folio original.';
+});
+$('#copy-latin').addEventListener('click',async()=>{
+ if(!$('#transcription').value.trim()){$('#ai-status').textContent='No hay texto latino editable para copiar.';return;}
+ try{await navigator.clipboard.writeText($('#transcription').value);$('#ai-status').textContent='Latín editable copiado.';}
+ catch(e){$('#ai-status').textContent='El portapapeles está bloqueado; seleccioná el texto de la columna II.';}
+});
