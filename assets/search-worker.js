@@ -31,7 +31,7 @@ self.onmessage=async({data:m})=>{
    if(requested.length>heading[0].length+15)warnings.push('Consulta interpretada como referencia al libro o capítulo. Las notas editoriales y los argumenta no están indexados como texto de Vitruvio.');
   }
   const greekLexicon={
-   'συμμετρια':'symmetria','ευρυθμια':'eurythmia','μηχανη':'machina','αρχιτεκτονια':'architectura'
+   'συμμετρια':'symmetria','ευρυθμια':'eurythmia','μηχανη':'machina','αρχιτεκτονια':'architectura','αρχιτεκτονικη':'architectura','αρχιτεκτων':'architectus'
   };
   const normalizeGreek=value=>String(value).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
   if(!direct&&!heading&&/[\u0370-\u03ff\u1f00-\u1fff]/u.test(requested)){
