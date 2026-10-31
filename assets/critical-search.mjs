@@ -96,7 +96,9 @@ function sameReference(noteLocus,ref){
 function renderNotes(notes,q,ref){
  const container=$('#critical-note-results');if(!container)return;
  container.replaceChildren();
+ const selected=$('#critical-edition')?.value||'all';
  const filtered=notes.filter(n=>{
+  if(selected!=='all'&&selected!==n.edition)return false;
   const locus=n.locus||n.candidate_locus||'';
   if(ref)return sameReference(locus,ref);
   const hay=[n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(' ');
@@ -106,6 +108,18 @@ function renderNotes(notes,q,ref){
   return queryWords.every(word=>words.has(word)||[...words].some(token=>token.startsWith(word)&&word.length>=4));
 
  });
+ // Rank commentary and editorial analysis ahead of raw passage references.
+ filtered.sort((a,b)=>{
+  const score=n=>{
+    const body=norm(n.text||''),anchor=norm(n.anchor||'');
+    const terms=[...new Set(norm(q).match(/[\\p{L}\\p{N}]{3,}/gu)||[])];
+    const exact=norm(q);
+    return (n.locus?12:n.candidate_locus?6:0)
+      +(body.includes(exact)?30:0)+(anchor.includes(exact)?18:0)
+      +terms.reduce((sum,t)=>sum+(body.includes(t)?4:0)+(anchor.includes(t)?2:0),0);
+  };
+  return score(b)-score(a);
+ });
  const count=$('#critical-note-status');if(count)count.textContent=filtered.length+' notas críticas encontradas en el corpus de 811 notas. '+(ref?'Se indican los loci explícitos o candidatos, sin tratarlos como variantes verificadas.':'');
  for(const n of filtered.slice(0,70)){
   const card=document.createElement('article');card.className='critical-result';
@@ -113,7 +127,8 @@ function renderNotes(notes,q,ref){
   const ed=editions.find(e=>e.id===n.edition);const textNote=String(n.text||'');
   card.innerHTML='<p class="meta">'+escape(ed?.name||n.edition)+' · Nota '+escape(n.footnote_id)+' · '+escape(status)+'</p>'+
    '<h3>'+escape(locus?'Vitr., De arch. '+locus:'Nota crítica sin locus asignado')+'</h3>'+
-   '<p>'+highlight(textNote,ref?'':q)+'</p>'+
+   (n.anchor?'<p><strong>Argumento o contexto de la edición.</strong> '+highlight(String(n.anchor),ref?'':q)+'</p>':'')+
+   '<p><strong>Nota del autor.</strong> '+highlight(textNote,ref?'':q)+'</p>'+
    '<p class="source-note">Fuente: '+escape(n.source_file)+' · Párrafo DOCX '+escape(n.source_paragraph)+'</p>'+
    (locus?'<button type="button" data-critical-compare="'+escape(locus)+'">Comparar este locus y sus ediciones →</button>':'');
   container.append(card);
