@@ -1,8 +1,5 @@
-name: Site integrity checks
+name: Site integrity checks (manual)
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 jobs:
   audit:
