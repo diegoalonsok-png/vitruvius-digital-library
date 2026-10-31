@@ -41,20 +41,18 @@ async function loadDictionary(){
 // Cross-language retrieval is explicitly labelled as exploratory; never counted as a literal Latin hit.
 // Derive French equivalents systematically from the corpus lexicon, not individual word exceptions.
 function editionVariants(term,edition){
- // A literal phrase is searched verbatim. We do not invent a word-by-word
- // translation of historical prose, whose syntax and vocabulary may differ.
- const words=word(term);
- if(words.length!==1)return [];
+ const words=word(term);if(words.length!==1)return [];
  const key=words[0].form;
  const candidates=dictionaryConcepts.filter(e=>e.aliases.includes(key));
  if(edition==='perrault-1673'){
-  return [...new Set(candidates.flatMap(e=>e.french))]
+  const variants=[...new Set(candidates.flatMap(e=>e.french))]
    .filter(x=>x!==key&&x.length>=5&&!['lieu','sujet','place','chose','partie','rapport'].includes(x));
+  // Historical French equivalent nearest to the original technical term first.
+  variants.sort((a,b)=>distance(key,a)-distance(key,b));
+  return variants;
  }
- if(edition==='rose-1899'||edition==='krohn-1912'){
-  return [...new Set(candidates.map(e=>fold(e.label)))]
-   .filter(x=>x!==key&&x.length>=4);
- }
+ if(edition==='rose-1899'||edition==='krohn-1912')
+  return [...new Set(candidates.map(e=>fold(e.label)))].filter(x=>x!==key&&x.length>=4);
  return [];
 }
 function typoSuggestions(q,edition){
@@ -183,7 +181,7 @@ form.addEventListener('submit',async e=>{
    if(typeof record.text!=='string')continue;
    let hits=matches(record.text,q,prefix);
    literal+=hits.length;
-   if(variants.length&&word(q).length===1)for(const variant of variants)hits.push(...matches(record.text,variant,false));
+   if(variants.length&&word(q).length===1){const primary=variants.filter(v=>distance(fold(q),v)<=3);for(const variant of primary.length?primary:variants)hits.push(...matches(record.text,variant,false));}
    if(concept){
     for(const root of concept.roots)hits.push(...matches(record.text,root,true));
     const seen=new Set();hits=hits.filter(m=>{if(seen.has(m.start))return false;seen.add(m.start);return true;}).sort((a,b)=>a.start-b.start);
