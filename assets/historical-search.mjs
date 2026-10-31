@@ -35,30 +35,16 @@ async function loadDictionary(){
  try{const response=await fetch('data/latin-lexicon.json');if(!response.ok)return;const data=await response.json();dictionaryConcepts=(data.entries||[]).map(e=>{
  const fragments=[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr].filter(Boolean).flatMap(v=>String(v).split(/[;,/]/)).map(fold).filter(v=>v.length>=4&&v.length<=45);
  const lemma=fold(e.lemma||'');const root=lemma.replace(/(?:arum|orum|ibus|um|us|ae|is|a|i)$/,'');
- return {label:e.lemma,aliases:[...new Set(fragments)],roots:[root.length>=4?root:lemma].filter(Boolean)};
+ return {label:e.lemma,aliases:[...new Set(fragments)],roots:[root.length>=4?root:lemma].filter(Boolean),french:[e.fr,...(e.fr||'').split(/[;,/]/)].filter(Boolean).flatMap(x=>x.split(/[;,/]/)).map(fold).filter(x=>x.length>=3)};
  }).filter(e=>e.aliases.length&&e.roots.length);}catch{}
 }
 // Cross-language retrieval is explicitly labelled as exploratory; never counted as a literal Latin hit.
-const frenchConcepts={
- 'proportione':['proportion','proportions','rapport','rapports'],
- 'proportio':['proportion','proportions','rapport','rapports'],
- 'symmetria':['symmetrie','symetrie','proportion'],
- 'architectura':['architecture'],
- 'columna':['colonne','colonnes'],
- 'templum':['temple','temples'],
- 'aqua':['eau','eaux'],
- 'machina':['machine','machines']
-};
+// Derive French equivalents systematically from the corpus lexicon, not individual word exceptions.
 function editionVariants(term,edition){
  if(edition!=='perrault-1673')return [];
  const key=fold(term);
- const entry=dictionaryConcepts.find(e=>e.aliases.includes(key));
- const stems=[...(frenchConcepts[key]||[])];
- if(entry){
-  const raw=entry.aliases.filter(x=>x.length>3&&x.length<36);
-  stems.push(...raw.filter(x=>/^[a-z]+$/i.test(x)));
- }
- return [...new Set(stems.map(fold))].filter(x=>x!==key);
+ const candidates=dictionaryConcepts.filter(e=>e.aliases.includes(key));
+ return [...new Set(candidates.flatMap(e=>e.french))].filter(x=>x!==key);
 }
 const greekFold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ');
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
