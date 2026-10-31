@@ -1,6 +1,6 @@
 const $=id=>document.getElementById(id);
 const manifest='https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001';
-const alternative='https://iiif.biblissima.fr/collections/manifest/42a59095238dde332ca5f18a21aa5a7598829539';
+const alternative='https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100056038850.0x000001/manifest.json';
 let canvases=[],serial=0;
 const status=$('status'),img=$('folio'),loupe=$('loupe'),mag=$('magnified');
 function setFilters(){img.style.width=(Number($('zoom').value)/100*900)+'px';img.style.filter='contrast('+$('contrast').value+'%)';mag.style.filter=img.style.filter;$('zval').textContent=$('zoom').value+'%';$('cval').textContent=$('contrast').value+'%';}
