@@ -15,14 +15,22 @@ jobs:
       - uses: actions/checkout@v4
       - name: Descargar OCR de páginas de Rose desde Internet Archive
         run: |
-          curl --fail --location --retry 4 --connect-timeout 25 'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0_djvu.xml' -o /tmp/rose.xml
+          curl --fail --location --retry 4 --retry-all-errors --connect-timeout 25 --max-time 1200 'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0_djvu.xml' -o /tmp/rose.xml
+          test -s /tmp/rose.xml
+          python - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+          file=Path('/tmp/rose.xml')
+          ElementTree.parse(file)
+          print('Rose DjVu XML downloaded:',file.stat().st_size)
+          PY
           python scripts/parse-ia-djvu-pages.py /tmp/rose.xml data/text/rose-1899.json
       - name: Publicar índice y verificar cobertura
         run: |
           python - <<'PY'
           import json
           d=json.load(open('data/text/rose-1899.json'))
-          assert len(d)>250
+          assert 300<=len(d)<=358
           assert sum(len(p['text']) for p in d)>100000
           print('Rose OCR',len(d),'pages')
           PY
