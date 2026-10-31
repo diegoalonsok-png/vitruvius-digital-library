@@ -44,7 +44,25 @@ function editionVariants(term,edition){
  // Historic OCR concordance is literal by default. Semantic equivalents
  // require a distinct verified translation index; otherwise unrelated words
  // in a French preface produce misleading results.
- if(edition==='perrault-1673')return [];
+ if(edition==='perrault-1673'){
+  const tokens=word(term);if(tokens.length!==1)return [];
+  const key=tokens[0].form;
+  const equivalents={
+   arquitectura:['architecture'],arquitecto:['architecte'],arquitectos:['architectes'],
+   arquitectonico:['architectural'],edificio:['batiment','edifice'],edificios:['batiments','edifices'],
+   columna:['colonne'],columnas:['colonnes'],templo:['temple'],templos:['temples'],
+   muro:['mur'],muros:['murs'],puerta:['porte'],puertas:['portes'],
+   ventana:['fenetre'],ventanas:['fenetres'],agua:['eau'],
+   simetria:['symetrie'],proporcion:['proportion'],
+   symmetria:['symetrie'],architectura:['architecture'],architectus:['architecte'],
+   columnae:['colonnes'],templum:['temple'],machina:['machine'],
+   μηχανη:['machine']
+  };
+  const mapped=equivalents[key]||[];
+  // Only transparent, curated equivalents: never use every associated
+  // dictionary gloss as an exact translation (e.g. locus -> sujet).
+  return [...new Set(mapped)].filter(v=>v!==key);
+ }
  const tokens=word(term);if(tokens.length!==1)return [];
  const key=tokens[0].form;
  return [...new Set(dictionaryConcepts.filter(e=>e.aliases.includes(key)).map(e=>fold(e.label)))]
@@ -110,7 +128,7 @@ function showOcrAlternatives(rows,q){
  }
  out.prepend(div);
 }
-function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.id==='perrault-1673'?'#perrault-page-viewer':source.pdf+'#page='+page;a.target=source.id==='perrault-1673'?'_self':'_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{ev.preventDefault();const record=cache?.find(x=>x.page===page);if(!record)return;const hits=historicMatches(record.text,activeQuery,activePrefix,source.id);{const options=editionVariants(activeQuery,source.id);const near=options.filter(v=>distance(fold(activeQuery),v)<=3);for(const alt of near.length?near:options)hits.push(...matches(record.text,alt,false));}showPage(page,record.text,hits.sort((a,b)=>a.start-b.start));document.querySelector(source.id==='perrault-1673'?'#perrault-page-viewer':source.id==='krohn-1912'?'#pdfjs-viewer':'.historical-viewer')?.scrollIntoView({behavior:'smooth',block:'nearest'});});el.append(h,p,a);return el;}
+function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.id==='perrault-1673'?'#perrault-page-viewer':source.pdf+'#page='+page;a.target=source.id==='perrault-1673'?'_self':'_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{ev.preventDefault();const record=cache?.find(x=>x.page===page);if(!record)return;const hits=historicMatches(record.text,activeQuery,activePrefix,source.id);{const options=editionVariants(activeQuery,source.id);const near=options.filter(v=>distance(fold(activeQuery),v)<=3);for(const alt of source.id==='perrault-1673'?options:(near.length?near:options))hits.push(...matches(record.text,alt,false));}showPage(page,record.text,hits.sort((a,b)=>a.start-b.start));document.querySelector(source.id==='perrault-1673'?'#perrault-page-viewer':source.id==='krohn-1912'?'#pdfjs-viewer':'.historical-viewer')?.scrollIntoView({behavior:'smooth',block:'nearest'});});el.append(h,p,a);return el;}
 function showPage(page,text,hits){
  const field=document.querySelector('#pdf-page-number');if(field)field.value=String(page);const note=document.querySelector('#page-hit-status');if(note)note.textContent=hits.length+' coincidencia(s) en esta página';
  const pdf=source.pdf+'#page='+page,frame=document.querySelector('#historical-pdf'),link=document.querySelector('#historical-pdf-link'),ocr=document.querySelector('#ocr-page');
@@ -191,7 +209,7 @@ form.addEventListener('submit',async e=>{
    if(typeof record.text!=='string')continue;
    let hits=historicMatches(record.text,q,prefix,edition);
    literal+=hits.length;
-   if(variants.length&&word(q).length===1){const primary=variants.filter(v=>distance(fold(q),v)<=3);const preferred=primary.length?primary:variants;for(const variant of preferred)hits.push(...matches(record.text,variant,false));}
+   if(variants.length&&word(q).length===1){const primary=variants.filter(v=>distance(fold(q),v)<=3);const preferred=edition==='perrault-1673'?variants:(primary.length?primary:variants);for(const variant of preferred)hits.push(...matches(record.text,variant,false));}
    if(concept){
     for(const root of concept.roots)hits.push(...matches(record.text,root,true));
     const seen=new Set();hits=hits.filter(m=>{if(seen.has(m.start))return false;seen.add(m.start);return true;}).sort((a,b)=>a.start-b.start);
@@ -219,7 +237,7 @@ document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
   if(source.id==='krohn-1912')await loadDictionary();
   const concept=source.id==='krohn-1912'?conceptFor(activeQuery):null;
   let hits=activeQuery?historicMatches(record.text,activeQuery,activePrefix,source.id):[];
-  if(activeQuery){const options=editionVariants(activeQuery,source.id);const near=options.filter(v=>distance(fold(activeQuery),v)<=3);for(const alt of near.length?near:options)hits.push(...matches(record.text,alt,false));}
+  if(activeQuery){const options=editionVariants(activeQuery,source.id);const near=options.filter(v=>distance(fold(activeQuery),v)<=3);for(const alt of source.id==='perrault-1673'?options:(near.length?near:options))hits.push(...matches(record.text,alt,false));}
   hits.sort((a,b)=>a.start-b.start);
   if(concept){for(const root of concept.roots)hits.push(...matches(record.text,root,true));const seen=new Set();hits=hits.filter(x=>{if(seen.has(x.start))return false;seen.add(x.start);return true;}).sort((a,b)=>a.start-b.start);}
   showPage(n,record.text,hits);
