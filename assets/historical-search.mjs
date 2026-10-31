@@ -1,5 +1,5 @@
 const form=document.querySelector('#search'),query=document.querySelector('#q'),status=document.querySelector('#status'),out=document.querySelector('#results');
-const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/61952.pdf',label:'Perrault (1673)'}};
+const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/16797458.pdf',label:'Perrault (1673)'}};
 let source=sources['krohn-1912'];
 let cache=null;let activeQuery="",activePrefix=false;
 const greekConcepts={
@@ -59,7 +59,7 @@ function selectHistoricalEdition(){
  const editionInfo={
    'krohn-1912':{label:'Krohn 1912',url:'documents/krohn-1912.pdf#page=1',ocr:true},
    'rose-1899':{label:'Rose 1899',url:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=1',ocr:true},
-   'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/download/pdf/61952.pdf#page=1',ocr:true}
+   'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/download/pdf/16797458.pdf#page=1',ocr:true}
  };
  const info=editionInfo[id];if(!info)return;
  if(heading)heading.textContent='Facsímil original · '+info.label;
