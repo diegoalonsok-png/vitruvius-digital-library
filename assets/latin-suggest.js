@@ -170,6 +170,20 @@
        }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar automáticamente el lema. Utilizá el enlace al diccionario.';});
      }
    }
+   // Greek inflected forms: follow attested lemma links from the dictionary,
+   // not a hand-maintained list. Never treat the lemma as a textual attestation.
+   if(language==='Ancient Greek'&&result.definitions.length){
+     const first=result.definitions.find(d=>/(?:inflection of|form of|of)\s+[\p{Script=Greek}\p{M}]{2,}/iu.test(d));
+     const lemma=first?.match(/(?:inflection of|form of|of)\s+([\p{Script=Greek}\p{M}]{2,})/iu)?.[1];
+     if(lemma&&lemma!==term){
+       const panel=document.createElement('section');panel.className='dictionary-lemma';
+       const heading=document.createElement('h4');heading.textContent='Lema griego probable: '+lemma;panel.append(heading);
+       const note=document.createElement('p');note.textContent='Identificado a partir de la entrada lexicográfica. No implica presencia literal del lema en Vitruvio.';panel.append(note);
+       const link=document.createElement('a');link.href='https://en.wiktionary.org/wiki/'+encodeURIComponent(lemma)+'#Ancient_Greek';link.target='_blank';link.rel='noopener';link.textContent='Ver acepciones del lema griego ↗';panel.append(link);
+       const button=document.createElement('button');button.type='button';button.className='dictionary-form';button.textContent='Consultar lema dentro de la biblioteca';button.addEventListener('click',()=>{input.value=lemma;displayGloss();form.requestSubmit();});panel.append(button);
+       details.append(panel);
+     }
+   }
    const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wikcionario en inglés (Wikimedia, CC BY-SA). La forma consultada puede requerir buscar su lema; verificá las acepciones según el contexto vitruviano.';details.append(foot);
   });
  }
