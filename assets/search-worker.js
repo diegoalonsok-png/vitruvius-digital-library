@@ -1,4 +1,4 @@
-import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-prefix-roots';
+import {searchCorpus,parseLocus} from './search-core.mjs?v=20261030-exact-phrase-16';
 const cache=new Map();
 async function corpus(edition,baseURL){
  if(!cache.has(edition.id))cache.set(edition.id,(async()=>{
