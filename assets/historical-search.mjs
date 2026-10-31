@@ -50,8 +50,35 @@ function showPage(page,text,hits){
  for(const hit of hits){if(hit.start<offset)continue;ocr.append(document.createTextNode(text.slice(offset,hit.start)));const mark=document.createElement('mark');mark.textContent=text.slice(hit.start,hit.end);ocr.append(mark);offset=hit.end;}
  ocr.append(document.createTextNode(text.slice(offset)));
 }
+function selectHistoricalEdition(){
+ const id=document.querySelector('#ed')?.value||'krohn-1912';
+ const viewer=document.querySelector('.historical-viewer'),heading=viewer?.querySelector('h2');
+ const frame=document.querySelector('#historical-pdf'),link=document.querySelector('#historical-pdf-link');
+ const pageLabel=document.querySelector('#pdf-page-number'),ocr=document.querySelector('#ocr-page');
+ const pdfjs=document.querySelector('#pdfjs-viewer');
+ const editionInfo={
+   'krohn-1912':{label:'Krohn 1912',url:'documents/krohn-1912.pdf#page=1',ocr:true},
+   'rose-1899':{label:'Rose 1899',url:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=1',ocr:true},
+   'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/zut/content/titleinfo/776185',ocr:false}
+ };
+ const info=editionInfo[id];if(!info)return;
+ if(heading)heading.textContent='Facsímil original · '+info.label;
+ if(frame){frame.title='Facsímil '+info.label;frame.src=info.ocr?info.url:'about:blank';frame.hidden=!info.ocr;}
+ if(link){link.href=info.url;link.textContent='Abrir facsímil '+info.label+' en la biblioteca de origen ↗';}
+ if(pdfjs)pdfjs.hidden=true;
+ if(ocr)ocr.replaceChildren();
+ if(pageLabel){pageLabel.value=1;pageLabel.disabled=!info.ocr;}
+ const go=document.querySelector('#goto-page button');if(go)go.disabled=!info.ocr;
+ const note=document.querySelector('#page-hit-status');if(note)note.textContent=info.ocr?'':'Sin índice OCR ni paginación sincronizada';
+ return info;
+}
+document.querySelector('#ed')?.addEventListener('change',()=>{
+ selectHistoricalEdition();out.replaceChildren();
+ document.querySelector('#page-results')?.replaceChildren();
+ status.textContent='Edición cambiada. La búsqueda OCR depende del índice disponible para esta edición.';
+});
 form.addEventListener('submit',async e=>{
- e.preventDefault();const edition=document.querySelector('#ed')?.value||'krohn-1912';
+ e.preventDefault();const edition=document.querySelector('#ed')?.value||'krohn-1912';selectHistoricalEdition();
  if(edition==='perrault-1673'){
    const info={ 'perrault-1673':['Perrault (1673)','https://doi.org/10.3931/e-rara-61952'], 'rose-1899':['Rose (1899)','https://archive.org/details/vitruviidearchit00vitr_0']}[edition];
    out.replaceChildren();document.querySelector('#page-results')?.replaceChildren();
