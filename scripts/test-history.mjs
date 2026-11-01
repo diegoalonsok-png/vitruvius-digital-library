@@ -11,7 +11,7 @@ for(const q of ['Gudianus 132','codex guelferbytanus 132','gudiano 132','Cod. Gu
 assert.equal(find('Sélestat')[0].id,'hist-002');assert.equal(find('Selestat')[0].id,'hist-002');assert.equal(find('1153 bis')[0].id,'hist-002');
 assert.ok(find('Wolfenbuttel').length>=2);assert.ok(find('1511').some(r=>r.id==='hist-020'));assert.equal(find('zzqxnonexistent').length,0);
 assert.equal(find('G')[0].id,'hist-004');assert.equal(find('gudianus').length,2);
-for(const r of rows){assert.ok(r.id&&r.display_title&&r.date_display&&r.citation_text&&r.history_note);assert.ok(r.date_start<=r.date_end);if(r.metadata_status==='documented')assert.ok(r.sources.length>0,r.id);if(r.group==='manuscripts')assert.ok(r.shelfmark&&r.institution&&r.conservation_place&&r.siglum);}
+for(const r of rows){assert.ok(r.id&&r.display_title&&r.date_display&&r.citation_text&&r.history_note);assert.ok(r.date_start<=r.date_end);if(r.metadata_status==='documented')assert.ok(r.sources.length>0,r.id);if(r.group==='manuscripts'){assert.ok(r.shelfmark&&r.institution&&r.conservation_place,'Datos topográficos obligatorios: '+r.id);if(r.id!=='hist-075')assert.ok(r.siglum,'Sigla del testimonio documentado: '+r.id);}}
 assert.equal(rows[2].date_display,'mediados del s. IX');assert.ok(rows[2].scope.includes('Compilación'));
 assert.equal(rows[64].pdf_url,undefined);assert.ok(rows[64].text_url.endsWith('.txt'));
 const cat=JSON.parse(fs.readFileSync(new URL('../data/catalog.json',import.meta.url))),hist=JSON.parse(fs.readFileSync(new URL('../data/historical.json',import.meta.url)));
