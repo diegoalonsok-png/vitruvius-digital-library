@@ -1,0 +1,58 @@
+name: Preparar copia de estudio del Codex H
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/preparar-codex-h-estudio.yml'
+permissions:
+  contents: read
+jobs:
+  estudio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - name: Descargar imágenes y crear índice de lectura para cotejo
+        run: |
+          python - <<'PY'
+          import csv,json,pathlib,time,urllib.request,urllib.error,hashlib
+          source='https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001'
+          headers={'User-Agent':'Vitruvius-Digital-Library-Research/1.0','Accept':'application/json'}
+          def get(url,attempts=4):
+            for i in range(attempts):
+              try:
+                with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=45) as r:return r.read()
+              except Exception as e:
+                if i==attempts-1:raise
+                time.sleep(2*(i+1))
+          data=json.loads(get(source));canvases=data.get('items') or data.get('sequences',[{}])[0].get('canvases',[])
+          root=pathlib.Path('codex-h-estudio');imgs=root/'imagenes';imgs.mkdir(parents=True,exist_ok=True)
+          rows=[];failed=[]
+          for number,c in enumerate(canvases,1):
+            label=c.get('label','');label=' '.join(str(t) for v in label.values() for t in v) if isinstance(label,dict) else str(label)
+            body=(c.get('items') or [{}])[0].get('items',[{}])[0].get('body',{})
+            if not body:body=(c.get('images') or [{}])[0].get('resource',{})
+            srv=body.get('service') or [];srv=[srv] if isinstance(srv,dict) else srv
+            service=next((x.get('id') or x.get('@id') for x in srv if isinstance(x,dict) and (x.get('id') or x.get('@id'))),'')
+            dest=imgs/f'H_{number:03d}.jpg';state='pendiente';sha=''
+            try:
+              if not service:raise RuntimeError('Imagen sin servicio IIIF')
+              raw=get(service.rstrip('/')+'/full/800,/0/default.jpg')
+              if len(raw)<1500 or not raw.startswith(b'\xff\xd8'):raise ValueError('Respuesta no es un JPG válido')
+              dest.write_bytes(raw);sha=hashlib.sha256(raw).hexdigest();state='descargado'
+            except Exception as e:
+              state='error: '+str(e)[:160];failed.append(number)
+            rows.append([number,label,c.get('id') or c.get('@id') or '',dest.name if state=='descargado' else '',state,sha])
+            if number%25==0:print('Procesadas:',number,'de',len(canvases),flush=True)
+            time.sleep(.15)
+          with (root/'indice-folios.csv').open('w',encoding='utf-8',newline='') as f:
+            w=csv.writer(f);w.writerow(['imagen_oficial','etiqueta_iiif','canvas_id','archivo_local','estado','sha256']);w.writerows(rows)
+          (root/'LEEME.txt').write_text('Codex H - copia de estudio sin publicación web. Fuente: British Library, Harley MS 2767.\n'+f'Imágenes del manifiesto: {len(canvases)}. Descargadas: {len(canvases)-len(failed)}. Fallidas: {failed}.\nLa correspondencia locus-folio requiere cotejo. Revisar permisos de reutilización antes de publicar.\n',encoding='utf-8')
+          print('TOTAL:',len(canvases),'DESCARGADAS:',len(canvases)-len(failed),'FALLIDAS:',failed,flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: codex-h-estudio-iiif
+          path: codex-h-estudio/
+          retention-days: 7
+          if-no-files-found: warn
