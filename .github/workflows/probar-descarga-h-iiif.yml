@@ -1,0 +1,49 @@
+name: Probar descarga IIIF del Codex H
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/probar-descarga-h-iiif.yml'
+permissions:
+  contents: read
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Comprobar manifiesto y descargar una imagen de muestra
+        run: |
+          python - <<'PY'
+          import json,urllib.request,pathlib,csv
+          base="https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001"
+          req=urllib.request.Request(base,headers={"User-Agent":"Vitruvius-H-IIIF-academic-test/1.0","Accept":"application/json"})
+          with urllib.request.urlopen(req,timeout=30) as r: data=json.load(r)
+          pages=data.get("items") or data.get("sequences",[{}])[0].get("canvases",[])
+          print("Imágenes en manifiesto:",len(pages))
+          target=pathlib.Path("informe-h");target.mkdir(exist_ok=True)
+          with (target/"indice.csv").open("w",newline="",encoding="utf-8") as f:
+            w=csv.writer(f);w.writerow(["imagen","etiqueta","canvas","image_service"])
+            for i,c in enumerate(pages,1):
+              label=c.get("label","")
+              if isinstance(label,dict):label="; ".join(str(x) for v in label.values() for x in v)
+              body=(c.get("items") or [{}])[0].get("items",[{}])[0].get("body",{})
+              if not body:body=(c.get("images") or [{}])[0].get("resource",{})
+              services=body.get("service") or []
+              if isinstance(services,dict):services=[services]
+              service=next((x.get("id") or x.get("@id") for x in services if x.get("id") or x.get("@id")),"")
+              w.writerow([i,label,c.get("id") or c.get("@id"),service])
+              if i==9 and service:
+                url=service.rstrip("/")+"/full/800,/0/default.jpg"
+                with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"Vitruvius-H-IIIF-academic-test/1.0"}),timeout=40) as response:
+                  content=response.read()
+                (target/"muestra-imagen-9.jpg").write_bytes(content)
+                print("Imagen 9 descargada:",len(content),"bytes")
+          (target/"estado.txt").write_text(f"Manifiesto: {base}\nImágenes: {len(pages)}\nPrueba de una imagen, sin publicar colección.\n",encoding="utf-8")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prueba-codex-h
+          path: informe-h/
+          if-no-files-found: warn
+          retention-days: 7
