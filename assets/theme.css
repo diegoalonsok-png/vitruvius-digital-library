@@ -57,3 +57,13 @@ html[data-theme="dark"] #image-mode button[aria-pressed="true"] {
   background:#20354b!important;color:#fff!important;
 }
 html[data-theme="dark"] #h-display-controls input[type="range"]{accent-color:#557aa6}
+
+/* Pale cards retain ink-dark text in dark theme. */
+html[data-theme="dark"] .h-cotejo-link,
+html[data-theme="dark"] .h-cotejo-link :is(a,strong,small,span){
+ color:#172b3c!important;
+}
+html[data-theme="dark"] .h-cotejo-link a:hover,
+html[data-theme="dark"] .h-cotejo-link a:focus-visible{
+ color:#365b79!important;text-decoration:underline;
+}
