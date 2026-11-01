@@ -39,7 +39,7 @@ try{
   await page.locator('#load').click();
   await page.waitForTimeout(450);
   const src=await page.locator('#drive-frame').getAttribute('src');
-  assert.match(src||'',/kurilo-recensio-fr\\.pdf#page=345(?:&|$)/,'El PDF de V554 no abrió en página 345');
+  assert((src||'').includes('kurilo-recensio-fr.pdf#page=345'), 'El PDF de V554 no abrió en página 345; URL: '+src);
   assert.match(await page.locator('#state').innerText(),/página 345/i,'El estado no muestra la página solicitada');
   await page.close();
  });
