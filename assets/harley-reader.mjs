@@ -3,7 +3,10 @@ const manifest='https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001
 const alternative='https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100056038850.0x000001/manifest.json';
 let canvases=[],serial=0;
 const status=$('status'),img=$('folio'),loupe=$('loupe'),mag=$('magnified');
-function setFilters(){img.style.width=(Number($('zoom').value)/100*900)+'px';img.style.filter='contrast('+$('contrast').value+'%)';mag.style.filter=img.style.filter;$('zval').textContent=$('zoom').value+'%';$('cval').textContent=$('contrast').value+'%';}
+let displayMode='original';
+function imageFilter(){const contrast='contrast('+$('contrast').value+'%)';return displayMode==='bw'?'grayscale(1) '+contrast+' brightness(1.15)':displayMode==='negative'?'grayscale(1) invert(1) '+contrast:contrast;}
+document.querySelectorAll('[data-image-mode]').forEach(button=>button.addEventListener('click',()=>{displayMode=button.dataset.imageMode;document.querySelectorAll('[data-image-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));setFilters();}));
+function setFilters(){img.style.width=(Number($('zoom').value)/100*900)+'px';img.style.filter=imageFilter();mag.style.filter=imageFilter();$('zval').textContent=$('zoom').value+'%';$('cval').textContent=$('contrast').value+'%';}
 for(const id of ['zoom','contrast'])$(id).addEventListener('input',setFilters);
 function imageUrl(canvas){
  const resource=canvas.images?.[0]?.resource||canvas.items?.[0]?.items?.[0]?.body;
