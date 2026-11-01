@@ -21,6 +21,10 @@
 @media(max-width:1150px){.research-nav-inner{flex-wrap:wrap;gap:6px 16px}}
 @media(max-width:700px){.research-nav-inner{gap:4px 16px}.research-nav a{font-size:11px;white-space:normal}}
 
+/* H must remain visible even if the secondary navigation wraps or overflows. */
+.site-header .header-inner>a.header-h-direct{display:inline-flex!important;visibility:visible!important;opacity:1!important;flex:0 0 auto;align-items:center;justify-content:center;min-width:49px;min-height:45px;padding:4px 14px;background:#c6a675!important;color:#142638!important;border:2px solid #c6a675;border-radius:5px;font:700 25px Georgia,serif!important;text-decoration:none!important;line-height:1;position:relative;z-index:5}
+.site-header .header-inner>a.header-h-direct:hover,.site-header .header-inner>a.header-h-direct:focus-visible{background:#eed9b2!important;outline-offset:3px}
+.research-nav-inner{flex-wrap:wrap!important}
 /* Direct medium-size entry to the full Harley manuscript viewer. */
 .research-nav a.nav-h-direct{display:inline-flex;align-items:center;justify-content:center;min-width:46px;min-height:39px;padding:7px 14px;border:2px solid #bfa277;border-radius:5px;background:#bfa277;color:#152738!important;font:700 22px Georgia,serif;text-decoration:none;line-height:1}
 .research-nav a.nav-h-direct:hover,.research-nav a.nav-h-direct:focus-visible{background:#e7d1a9;border-color:#e7d1a9;color:#152738!important;outline-offset:2px}
@@ -36,6 +40,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="wordmark" href="index.html" aria-label="Vitruvius Digital Library, inicio"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a>
+      <a class="header-h-direct" href="harleianus.html" title="Abrir visor grande del Harleianus 2767" aria-label="H: visor de folios del Codex Harleianus 2767">H</a>
       <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a><a class="nav-fano" href="basilica-fano.html">Basílica de Fano</a></nav>
       <span class="header-languages" aria-label="Latín, castellano, francés e inglés">LA / ES / FR / EN</span>
     </div>
