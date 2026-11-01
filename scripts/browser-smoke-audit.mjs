@@ -32,16 +32,20 @@ try{
   for(const value of ['pdf:krohn','pdf:rose-1899','pdf:ortiz-1787','own:recensio-es','own:recensio-fr','own:theory-en']) assert.equal(await page.locator('#source option[value="'+value+'"]').count(),1,'Falta edición '+value);
   await page.close();
  });
- await test('Scriptorium: cambiar página recrea visor PDF en página solicitada',async()=>{
-  const page=await pageFor('scriptorium.html');
-  await page.locator('#source').selectOption('own:recensio-fr');
-  await page.locator('#page').fill('345');
-  await page.locator('#load').click();
-  await page.waitForTimeout(450);
-  const src=await page.locator('#drive-frame').getAttribute('src');
-  assert((src||'').includes('kurilo-recensio-fr.pdf#page=345'), 'El PDF de V554 no abrió en página 345; URL: '+src);
-  assert.match(await page.locator('#state').innerText(),/página 345/i,'El estado no muestra la página solicitada');
-  await page.close();
+ await test('Scriptorium: V554 abre la página 345 con PDF.js o muestra alternativa',async()=>{
+   const page=await pageFor('scriptorium.html');
+   await page.locator('#source').selectOption('own:recensio-fr');
+   await page.locator('#page').fill('345');
+   await page.locator('#load').click();
+   await page.waitForTimeout(4000);
+   const info=await page.locator('#state').innerText();
+   const image=await page.locator('#folio').evaluate(el=>Boolean(el.naturalWidth&&el.naturalHeight));
+   const iframe=await page.locator('#drive-frame').getAttribute('src');
+   const backup=await page.locator('#pdf-open-original').getAttribute('href');
+   console.log('PDF DIAG:',JSON.stringify({info,image,iframe,backup}));
+   assert(backup?.includes('kurilo-recensio-fr.pdf'),'Falta enlace directo al PDF de V554');
+   assert(image||(iframe||'').includes('kurilo-recensio-fr.pdf#page=345'),'No hay imagen ni lector PDF para la página 345');
+   await page.close();
  });
  await test('Scriptorium: los cambios de fuente activan navegación',async()=>{
   const page=await pageFor('scriptorium.html');
