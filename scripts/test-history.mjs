@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import {selectRecords} from '../assets/history-core.mjs';
 const rows=JSON.parse(fs.readFileSync(new URL('../data/corpus-expansion-inventory.json',import.meta.url))).records;
 const find=(query,group='all')=>selectRecords(rows,{query,group});
-assert.equal(rows.length,74);assert.equal(new Set(rows.map(r=>r.id)).size,74);
+assert.ok(rows.length>=74,'El inventario histórico no debe perder registros existentes');assert.equal(new Set(rows.map(r=>r.id)).size,rows.length,'Los identificadores del inventario deben ser únicos');
 for(const q of ['Harleianus','harlesianus','HARLESINUS','Codex Harley','harley'])assert.deepEqual(find(q).map(r=>r.id).sort(),['hist-001','hist-016']);
 assert.equal(find('harlesianus','other').length,0);assert.equal(find('harlesianus').length,2); // UI must disclose matches hidden by a filter.
 assert.equal(find('H')[0].id,'hist-001');assert.equal(find('h')[0].id,'hist-016');assert.equal(find('H').length,1);
