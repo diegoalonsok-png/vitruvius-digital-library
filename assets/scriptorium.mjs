@@ -1,6 +1,7 @@
 const $=id=>document.getElementById(id);
 const stage=$('stage'),img=$('folio'),lens=$('lens'),lensImg=$('lens-image'),status=$('state');
 const controls=['zoom','brightness','contrast','grayscale','sepia'];
+let pdfNegative=false;
 let pages=null,request=0,pdfjs=null,pdfCache=new Map(),localObjectUrl=null,localImageUrl=null;
 const manuscripts={"ms:h":["https://iiif.bl.uk/uv/#?manifest=https%3A%2F%2Fbl.digirati.io%2Fiiif%2Fark%3A%2F81055%2Fvdc_100056038850.0x000001","Harley MS 2767"],"ms:g":["https://diglib.hab.de/?db=mss&id=69-gud-lat&lang=en&list=ms","Gudianus 69"],"ms:e":["https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms","Gudianus 132"],"ms:s":["https://bhnumerique.ville-selestat.fr/client/fr_FR/bh/search/results?qf=LANGUAGE%09Langue%09LAT%09latin&qu=ms.+17","Sélestat MS 17"],"ms:p":["https://gallica.bnf.fr/ark:/12148/btv1b9066098j","Parisinus lat. 10277"],"ms:cotton":["https://searcharchives.bl.uk/","Cotton Cleopatra D I"]};
 const remoteReader=$('remote-reader'),remoteOpen=$('remote-open'),remoteTitle=$('remote-title');
@@ -19,11 +20,12 @@ $('local-file').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)
 function showPdfFallback(selection){remoteReader.hidden=true;stage.hidden=true;driveReader.hidden=false;const file=selection==='local'?localObjectUrl:pdfSources[selection];if(!file){status.textContent='Seleccioná un PDF disponible.';return;}const num=Math.max(1,Number($('page').value)||1);const link=new URL(file,location.href).href+'#page='+num+'&zoom=page-width';
 // Chrome's embedded PDF viewer may ignore same-document fragment updates.
 // Replace the iframe element to guarantee a fresh PDF navigation for every page jump.
-const prior=$('drive-frame');const fresh=prior.cloneNode(false);fresh.removeAttribute('src');prior.replaceWith(fresh);fresh.src=link;
+const prior=$('drive-frame');const fresh=prior.cloneNode(false);fresh.removeAttribute('src');prior.replaceWith(fresh);fresh.src=link;fresh.style.filter=pdfNegative?'invert(1) hue-rotate(180deg)':'none';
 status.textContent='Abriendo la página '+num+' del PDF. Si el visor del navegador no respeta la página, activá «Renderizar PDF con lupa» para navegación por página controlada por el sitio.';}
-function filters(){return 'brightness('+$('brightness').value+'%) contrast('+$('contrast').value+'%) grayscale('+$('grayscale').value+'%) sepia('+$('sepia').value+'%)';}
+function filters(){return 'brightness('+$('brightness').value+'%) contrast('+$('contrast').value+'%) grayscale('+$('grayscale').value+'%) sepia('+$('sepia').value+'%)'+(pdfNegative?' invert(1) hue-rotate(180deg)':'');}
 function refresh(){for(const id of controls)$(id+'-value').textContent=$(id).value+'%';const f=filters();img.style.filter=f;lensImg.style.filter=f;img.style.width=($('zoom').value/100*900)+'px';}
 for(const id of controls)$(id).addEventListener('input',refresh);
+$('pdf-invert')?.addEventListener('change',e=>{pdfNegative=e.target.checked;const frame=$('drive-frame');if(frame)frame.style.filter=pdfNegative?'invert(1) hue-rotate(180deg)':'none';refresh()});
 $('loupe').addEventListener('change',()=>{stage.classList.toggle('loupe-on',$('loupe').checked);if(!$('loupe').checked)lens.style.display='none'});
 $('source').addEventListener('change',()=>{const v=$('source').value;if(manuscripts[v]){showManuscript(v);return;}if(v==='local'&&!localObjectUrl){$('local-file').click();return;}$('image-url').disabled=v!=='custom';$('page').disabled=false;institution.replaceChildren();if(pdfSources[v]){const a=document.createElement('a');a.href=pdfSources[v];a.target='_blank';a.rel='noopener';a.textContent='Abrir PDF original ↗';institution.append('Si la lectura integrada está bloqueada por el proveedor, ',a);}if(ownLabels[v]){const a=document.createElement('a');a.href='index.html#buscar';a.textContent='Buscar palabras y loci de las tres ediciones ↗';institution.append('PDF del autor alojado en GitHub. ',a);}if(v==='perrault'){$('page').min='2';$('page').max='371';$('page').value='16';}else if(pdfSources[v]){$('page').min='1';$('page').max=v==='pdf:krohn'?'314':'9999';$('page').value='1';}load();});
 $('pdf-loupe').addEventListener('change',load);
