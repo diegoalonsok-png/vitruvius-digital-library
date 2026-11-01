@@ -11,6 +11,12 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 #loupe{position:fixed;display:none;width:180px;height:180px;overflow:hidden;pointer-events:none;border:3px solid #bc9a65;border-radius:50%;background:#eee;z-index:10;box-shadow:0 6px 18px #0006}
 #loupe img{position:absolute;max-width:none}
 #status{min-height:2.5em}
+#image-mode{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border:1px solid #ad9368!important;padding:12px!important;background:#efe8db!important}
+#image-mode legend{padding:0 8px;font-weight:700}
+#image-mode button{appearance:none;background:#fffdf8!important;color:#172b3c!important;border:2px solid #aa8d5c!important;border-radius:5px;padding:10px 16px!important;font-weight:650;cursor:pointer}
+#image-mode button[aria-pressed="true"]{background:#20354b!important;color:white!important;border-color:#20354b!important}
+#folio-identification{position:relative;font-variant-numeric:tabular-nums}
+#folio-identification strong{color:#172b3c}
 </style></head><body><main>
 <p><a href="scriptorium.html">← Scriptorium digital</a> · <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">British Library, ficha oficial</a></p>
 <p class="eyebrow">LECTIO · IMAGO · CODEX H</p><h1>Harleianus 2767 (H)</h1>
@@ -24,4 +30,4 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio leído: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Etiqueta IIIF: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">El folio se identifica mediante las etiquetas del manifiesto institucional.</p><p id="status" role="status">Consultando el manifiesto IIIF…</p>
 <div id="stage"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img id="magnified" alt=""></div>
 <p>Procedencia: British Library, <em>Harley MS 2767</em>. <a id="source" href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">Ver original en el visor institucional</a>. Las condiciones de reutilización corresponden al proveedor institucional. Esta página no almacena ni redistribuye imágenes del códice.</p>
-</main><script type="module" src="assets/harley-reader.mjs?v=folio-panel-1"></script></body></html>
+</main><script type="module" src="assets/harley-reader.mjs?v=folio-panel-20261101-3"></script></body></html>
