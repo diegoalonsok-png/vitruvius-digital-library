@@ -1,6 +1,6 @@
 (()=>{
  const base=(document.currentScript?.src||new URL('assets/theme.js',location.href).href).replace(/theme\.js(?:\?.*)?$/,'');
- if(!document.querySelector('link[href*="assets/theme.css"]')){const css=document.createElement('link');css.rel='stylesheet';css.href=base+'theme.css?v=20261101';document.head.append(css)}
+ if(!document.querySelector('link[href*="assets/theme.css"]')){const css=document.createElement('link');css.rel='stylesheet';css.href=base+'theme.css?v=20261101-contrast-h-2';document.head.append(css)}
  if(!document.querySelector('script[data-pdf-assist]')){const pdf=document.createElement('script');pdf.src=base+'pdf-assist.js?v=20261101';pdf.defer=true;pdf.dataset.pdfAssist='1';document.head.append(pdf)}
  const key='vitruvius-color-theme';let choice='light';
  try{choice=localStorage.getItem(key)==='dark'?'dark':'light';}catch{}
