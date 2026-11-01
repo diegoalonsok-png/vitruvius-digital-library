@@ -31,3 +31,29 @@ html[data-theme="dark"] .theme-switch{border-color:#889198;color:#e9e3d8}
 html[data-theme="dark"] :is(a,.examples button,.search-destinations button,.text-link,.site-header nav button){color:var(--ink)}
 html[data-theme="dark"] :is(.result-meta,.book-source,.export-tools label){color:var(--muted)}
 html[data-theme="dark"] .button.primary{color:white}
+
+/* Scriptorium H: readable light surfaces when global dark theme is active. */
+html[data-theme="dark"] .notice,
+html[data-theme="dark"] #h-display-controls,
+html[data-theme="dark"] #folio-identification,
+html[data-theme="dark"] #image-mode {
+  background:#efe8db!important;
+  color:#192b3c!important;
+  border-color:#b69a69!important;
+}
+html[data-theme="dark"] .notice *,
+html[data-theme="dark"] #h-display-controls *,
+html[data-theme="dark"] #folio-identification *,
+html[data-theme="dark"] #image-mode :is(legend,label,span,strong,output) {
+  color:#192b3c!important;
+}
+html[data-theme="dark"] #h-display-controls button,
+html[data-theme="dark"] #image-mode button {
+  background:#fffdf8!important;
+  color:#192b3c!important;
+  border:1px solid #a78b5d!important;
+}
+html[data-theme="dark"] #image-mode button[aria-pressed="true"] {
+  background:#20354b!important;color:#fff!important;
+}
+html[data-theme="dark"] #h-display-controls input[type="range"]{accent-color:#557aa6}
