@@ -319,7 +319,23 @@ function displayGloss(){
       }
     }
   }
-  const entry=entries.find(e=>[e.lemma,...e.forms||[]].some(w=>norm(w)===token));
+  // Vincular las variantes españolas e inglesas y los errores leves al mismo lema.
+  const candidates=entries.flatMap(e=>[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.es,e.en,e.fr,e.greek].filter(Boolean).map(w=>({e,w,n: norm(w)})));
+  const exactEntry=candidates.find(c=>c.n===token);
+  let guessed=null;
+  if(!exactEntry&&token.length>=4){
+   const max=token.length>=9?2:1;
+   const nearby=candidates.map(c=>({...c,d:editDistance(token,c.n,max)})).filter(c=>c.d<=max).sort((a,b)=>a.d-b.d||a.n.length-b.n.length);
+   if(nearby.length&&(!nearby[1]||nearby[0].d<nearby[1].d||nearby[0].e===nearby[1].e))guessed=nearby[0];
+  }
+  if(guessed){
+   const box=document.createElement('p'),button=document.createElement('button');button.type='button';button.className='dictionary-suggestion';
+   button.textContent='¿Quisiste decir «'+guessed.w+'»? · '+guessed.e.lemma+' — '+(guessed.e.es||'');
+   button.addEventListener('click',()=>{input.value=guessed.w;hide();displayGloss();form.requestSubmit();});
+   box.append('Sugerencia ortográfica (no coincidencia literal): ',button);
+   gloss.prepend(box);gloss.hidden=false;
+  }
+  const entry=exactEntry?.e||null;
   const greekMatches=/[\u0370-\u03ff\u1f00-\u1fff]/u.test(value)?entries.filter(e=>e.greek&&norm(e.greek)===token):[];
   if(greekMatches.length){
    const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Griego y léxico vitruviano · '+value;details.append(summary);
