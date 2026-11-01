@@ -9,7 +9,7 @@ for(const file of pages){
  const base=source.match(/<base\b[^>]*\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
  const docBase=base&&!/^(?:https?:|\/\/)/i.test(base)?resolve(dirname(file),base):dirname(file);
  const ids=new Set([...source.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi)].map(m=>m[1]));
- const refs=[...source.matchAll(/\b(href|src)\s*=\s*["']([^"']+)["']/gi)];
+ const refs=[...source.replace(/<base\b[^>]*>/gi,'').matchAll(/\b(href|src)\s*=\s*["']([^"']+)["']/gi)];
  for(const [,attr,raw] of refs){
   links++;const value=raw.trim();
   if(!value||/^(?:https?:|mailto:|tel:|data:|javascript:|blob:|about:|\/\/)/i.test(value))continue;
