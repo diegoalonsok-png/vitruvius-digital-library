@@ -22,11 +22,16 @@ async function init(){
  }
  status.textContent='No se pudo recuperar el manifiesto IIIF desde este navegador ('+failures.join('; ')+'). Consultá el visor de la British Library mediante el enlace inferior.';
 }
+function canvasLabel(c){const v=c?.label;if(typeof v==='string')return v;if(v&&typeof v==='object')return Object.values(v).flat().join(' · ');return '';}
+function canonicalFolio(s){const text=String(s||'').toLowerCase().replace(/folio|fol\.|fol\s*|f\./g,'').replace(/[^0-9rv]/g,'');const m=text.match(/^(\d{1,3})([rv])$/);return m?Number(m[1])+m[2]:null;}
+function openFolio(){if(!canvases.length){status.textContent='El índice de folios todavía no está disponible.';return}const target=canonicalFolio($('folio-ref').value);if(!target){status.textContent='Escribí un folio con recto o verso; por ejemplo, f.1r o 16v.';return}const matches=[];for(let i=0;i<canvases.length;i++){const label=canvasLabel(canvases[i]);const m=label.match(/(?:^|[^a-z\d])(?:f(?:ol(?:io)?)?\.?\s*)?(\d{1,3})\s*([rv])(?:$|[^a-z\d])/i);if(m&&Number(m[1])+m[2].toLowerCase()===target)matches.push(i+1)}if(matches.length!==1){status.textContent=matches.length?'Folio '+target+' tiene varias imágenes posibles ('+matches.join(', ')+'); es necesario cotejarlas.':'El folio '+target+' no aparece identificado en las etiquetas IIIF.';return}$('page').value=String(matches[0]);openPage();}
+$('go-folio')?.addEventListener('click',openFolio);
+$('folio-ref')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();openFolio()}});
 function openPage(){
  if(!canvases.length){status.textContent='El manifiesto IIIF aún no está disponible.';return}
  const p=Number($('page').value),id=++serial;
  if(!Number.isInteger(p)||p<1||p>canvases.length){status.textContent='Imagen fuera del rango 1–'+canvases.length;return}
- const url=imageUrl(canvases[p-1]);
+ const label=canvasLabel(canvases[p-1]);$('folio-info').textContent='Imagen digital '+p+' · Etiqueta del manifiesto: '+(label||'sin etiqueta histórica')+'.';const url=imageUrl(canvases[p-1]);
  if(!url){status.textContent='Sin dirección de imagen para la página '+p;return}
  status.textContent='Abriendo imagen '+p+' de '+canvases.length+'…';
  img.onload=()=>{if(id!==serial)return;mag.src=url;setFilters();status.textContent='Imagen '+p+' de '+canvases.length+' cargada.'};
