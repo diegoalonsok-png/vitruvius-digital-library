@@ -7,7 +7,7 @@ const remoteReader=$('remote-reader'),remoteOpen=$('remote-open'),remoteTitle=$(
 const ownPDFs={'own:recensio-es':'documents/kurilo-recensio-es.pdf','own:recensio-fr':'documents/kurilo-recensio-fr.pdf','own:theory-en':'documents/kurilo-theory-en.pdf'};
 const driveReader=$('drive-reader'),driveFrame=$('drive-frame');
 const ownLabels={'own:recensio-es':'V514 · Latín–Castellano','own:recensio-fr':'V554 · Latín–Francés','own:theory-en':'V297 · Latín–Inglés'};
-const pdfSources={'pdf:krohn':'documents/krohn-1912.pdf',...ownPDFs};
+const pdfSources={'pdf:krohn':'documents/krohn-1912.pdf','pdf:ortiz-1787':'https://archive.org/download/A065112/A065112.pdf',...ownPDFs};
 const institution=$('library-link');
 // El Scriptorium muestra solo fuentes cuya lectura está integrada.
  // Los testimonios no integrados permanecen en la bibliografía y en el índice de códices.
