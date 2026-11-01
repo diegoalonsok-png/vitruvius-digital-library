@@ -21,15 +21,11 @@
 @media(max-width:1150px){.research-nav-inner{flex-wrap:wrap;gap:6px 16px}}
 @media(max-width:700px){.research-nav-inner{gap:4px 16px}.research-nav a{font-size:11px;white-space:normal}}
 
-/* Compact permanent H access beside language options; no center-of-nav badge. */
-.site-header .header-inner>a.header-h-direct{display:inline-flex!important;visibility:visible!important;opacity:1!important;flex:0 0 auto;align-items:center;justify-content:center;width:34px;height:34px;padding:0!important;background:#ba9d73!important;color:#142638!important;border:1px solid #ba9d73;border-radius:4px;font:700 19px Georgia,serif!important;text-decoration:none!important;line-height:1}
-.site-header .header-inner>a.header-h-direct:hover,.site-header .header-inner>a.header-h-direct:focus-visible{background:#e8d1a9!important;outline-offset:2px}
-.research-nav-inner{flex-wrap:wrap!important}
 .hero-h-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;padding:11px 18px;min-height:52px;border:1.5px solid var(--gold,#b59a68);border-radius:5px;background:transparent;color:var(--ink);text-decoration:none;font-weight:650;max-width:100%}
 .hero-h-link:hover,.hero-h-link:focus-visible{background:var(--gold,#b59a68);color:#15293b}
 .hero-h-monogram{font-family:Georgia,serif;font-size:29px;font-weight:700;line-height:1}
 .hero-h-explain{font-size:13px;font-weight:450}
-</style></head>
+.research-nav-inner>a.last-h-button{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto;min-width:35px;min-height:34px;padding:5px 11px!important;background:#22374b!important;color:#f6f2e9!important;border:1px solid #516c87;border-radius:4px;font:700 19px Georgia,serif!important;text-decoration:none!important;line-height:1}.research-nav-inner>a.last-h-button:hover,.research-nav-inner>a.last-h-button:focus-visible{background:#304d68!important;color:#fff!important;outline-offset:2px}</style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="institution-bar"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Una biblioteca de acceso abierto</span></div></div>
@@ -37,7 +33,6 @@
     <div class="wrap header-inner">
       <a class="wordmark" href="index.html" aria-label="Vitruvius Digital Library, inicio"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a>
       <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a><a class="nav-fano" href="basilica-fano.html">Basílica de Fano</a></nav>
-      <a class="header-h-direct" href="harleianus.html" title="Abrir visor grande del Harleianus 2767" aria-label="H: visor de folios del Codex Harleianus 2767">H</a>
       <span class="header-languages" aria-label="Latín, castellano, francés e inglés">LA / ES / FR / EN</span>
     </div>
     <nav class="research-nav" aria-label="Herramientas de investigación">
@@ -47,7 +42,7 @@
         <a href="aparato-critico.html">Índice textual y notas</a>
         <a href="indices-locorum.html">Índices locorum</a>
         <a href="ediciones-historicas.html">Ediciones libres</a>
-        <a href="facsimiles.html">Facsímiles manuscritos</a><a href="escritorio-h/index.html">Scriptorium H</a><a href="geographia-codicum.html">Geographia codicum</a><a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a><a href="scriptorium-htr.html">Scriptorium HTR</a>
+        <a href="facsimiles.html">Facsímiles manuscritos</a><a href="escritorio-h/index.html">Scriptorium H</a><a href="geographia-codicum.html">Geographia codicum</a><a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a><a href="scriptorium-htr.html">Scriptorium HTR</a><a class="last-h-button" href="harleianus.html" aria-label="H: visor grande de Harleianus 2767" title="Visor grande del Codex H">H</a>
       </div>
     </nav>
   </header>
