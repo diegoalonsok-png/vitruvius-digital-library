@@ -21,7 +21,7 @@ try{
   for(const path of sources){
    const response=await page.request.get(base+path,{timeout:30000});
    assert.equal(response.status(),200,path);
-   assert.match(response.headers()['content-type']||'','pdf',path+' content-type');
+   assert.match(response.headers()['content-type']||'',/pdf/i,path+' content-type');
    assert((await response.body()).subarray(0,5).toString()==='%PDF-',path+' signature');
   }
   await page.close();
