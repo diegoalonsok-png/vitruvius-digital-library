@@ -34,7 +34,7 @@ function openPage(){
  if(!canvases.length){status.textContent='El manifiesto IIIF aún no está disponible.';return}
  const p=Number($('page').value),id=++serial;
  if(!Number.isInteger(p)||p<1||p>canvases.length){status.textContent='Imagen fuera del rango 1–'+canvases.length;return}
- const label=canvasLabel(canvases[p-1]);$('folio-info').textContent='Imagen digital '+p+' · Etiqueta del manifiesto: '+(label||'sin etiqueta histórica')+'.';const url=imageUrl(canvases[p-1]);
+ const label=canvasLabel(canvases[p-1]);const matched=label.match(/^f\.?\s*(\d{1,3})\s*([rv])$/i);const folio=matched?'f.'+Number(matched[1])+matched[2].toLowerCase():'Sin folio identificado';$('current-folio').textContent=folio;$('current-image').textContent=p+' / '+canvases.length;$('current-label').textContent=label||'sin etiqueta';$('folio-info').textContent='Referencia de foliación obtenida directamente del manifiesto IIIF.';const url=imageUrl(canvases[p-1]);
  if(!url){status.textContent='Sin dirección de imagen para la página '+p;return}
  status.textContent='Abriendo imagen '+p+' de '+canvases.length+'…';
  img.onload=()=>{if(id!==serial)return;mag.src=url;setFilters();status.textContent='Imagen '+p+' de '+canvases.length+' cargada.'};
