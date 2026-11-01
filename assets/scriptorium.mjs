@@ -5,18 +5,22 @@ let pages=null,request=0,pdfjs=null,pdfCache=new Map(),localObjectUrl=null,local
 const manuscripts={"ms:h":["https://iiif.bl.uk/uv/#?manifest=https%3A%2F%2Fbl.digirati.io%2Fiiif%2Fark%3A%2F81055%2Fvdc_100056038850.0x000001","Harley MS 2767"],"ms:g":["https://diglib.hab.de/?db=mss&id=69-gud-lat&lang=en&list=ms","Gudianus 69"],"ms:e":["https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms","Gudianus 132"],"ms:s":["https://bhnumerique.ville-selestat.fr/client/fr_FR/bh/search/results?qf=LANGUAGE%09Langue%09LAT%09latin&qu=ms.+17","Sélestat MS 17"],"ms:p":["https://gallica.bnf.fr/ark:/12148/btv1b9066098j","Parisinus lat. 10277"],"ms:cotton":["https://searcharchives.bl.uk/","Cotton Cleopatra D I"]};
 const remoteReader=$('remote-reader'),remoteOpen=$('remote-open'),remoteTitle=$('remote-title');
 const ownPDFs={'own:recensio-es':'documents/kurilo-recensio-es.pdf','own:recensio-fr':'documents/kurilo-recensio-fr.pdf','own:theory-en':'documents/kurilo-theory-en.pdf'};
-const driveReader=$('drive-reader'),driveFrame=$('drive-frame');
+const driveReader=$('drive-reader');
 const ownLabels={'own:recensio-es':'V514 · Latín–Castellano','own:recensio-fr':'V554 · Latín–Francés','own:theory-en':'V297 · Latín–Inglés'};
 const pdfSources={'pdf:rose-1899':'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf','pdf:krohn':'documents/krohn-1912.pdf','pdf:ortiz-1787':'https://archive.org/download/A065112/A065112.pdf',...ownPDFs};
 const institution=$('library-link');
 // El Scriptorium muestra solo fuentes cuya lectura está integrada.
  // Los testimonios no integrados permanecen en la bibliografía y en el índice de códices.
 
-function showNative(){remoteReader.hidden=true;driveReader.hidden=true;driveFrame.removeAttribute('src');stage.hidden=false;}
+function showNative(){remoteReader.hidden=true;driveReader.hidden=true;$('drive-frame').removeAttribute('src');stage.hidden=false;}
 function showManuscript(v){const m=manuscripts[v];if(!m)return;stage.hidden=true;driveReader.hidden=true;driveFrame.removeAttribute('src');remoteReader.hidden=false;remoteTitle.textContent=m[1]+' · consulta del manuscrito';remoteOpen.href=m[0];$('page').disabled=true;institution.replaceChildren();const a=document.createElement('a');a.href=m[0];a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir '+m[1]+' en el repositorio institucional ↗';institution.append(a);status.textContent='Manuscrito seleccionado. Abrí el facsímil institucional o importá un folio para utilizar la lupa.';}
 $('remote-zoom').disabled=true;$('remote-reset').disabled=true;$('remote-zoom-value').textContent='No aplicable a portales externos';
 $('local-file').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;if(localObjectUrl)URL.revokeObjectURL(localObjectUrl);pdfCache.delete('local');localObjectUrl=URL.createObjectURL(f);localImageUrl=f.type.startsWith('image/')?localObjectUrl:null;$('source').value='local';$('page').value='1';$('page').min='1';$('page').max=localImageUrl?'1':'99999';$('page').disabled=!!localImageUrl;institution.textContent='Archivo local: '+f.name;load();});
-function showPdfFallback(selection){remoteReader.hidden=true;stage.hidden=true;driveReader.hidden=false;const file=selection==='local'?localObjectUrl:pdfSources[selection];if(!file){status.textContent='Seleccioná un PDF disponible.';return;}const link=new URL(file,location.href).href+'#page='+String(Number($('page').value)||1);driveFrame.src=link;status.textContent='PDF abierto en el lector del navegador. Para la lupa circular, activá «Renderizar PDF con lupa».';}
+function showPdfFallback(selection){remoteReader.hidden=true;stage.hidden=true;driveReader.hidden=false;const file=selection==='local'?localObjectUrl:pdfSources[selection];if(!file){status.textContent='Seleccioná un PDF disponible.';return;}const num=Math.max(1,Number($('page').value)||1);const link=new URL(file,location.href).href+'#page='+num+'&zoom=page-width';
+// Chrome's embedded PDF viewer may ignore same-document fragment updates.
+// Replace the iframe element to guarantee a fresh PDF navigation for every page jump.
+const prior=$('drive-frame');const fresh=prior.cloneNode(false);fresh.removeAttribute('src');prior.replaceWith(fresh);fresh.src=link;
+status.textContent='Abriendo la página '+num+' del PDF. Si el visor del navegador no respeta la página, activá «Renderizar PDF con lupa» para navegación por página controlada por el sitio.';}
 function filters(){return 'brightness('+$('brightness').value+'%) contrast('+$('contrast').value+'%) grayscale('+$('grayscale').value+'%) sepia('+$('sepia').value+'%)';}
 function refresh(){for(const id of controls)$(id+'-value').textContent=$(id).value+'%';const f=filters();img.style.filter=f;lensImg.style.filter=f;img.style.width=($('zoom').value/100*900)+'px';}
 for(const id of controls)$(id).addEventListener('input',refresh);
