@@ -9,6 +9,7 @@ async function getCorpus(e){if(!cache.has(e.id))cache.set(e.id,fetch('data/struc
 function highlight(text,q){const matches=findMatches(text,q,{phrase:false});if(!matches.length)return escape(text);const spans=matches.slice(0,120).sort((a,b)=>a.start-b.start);let at=0,s='';for(const m of spans){if(m.start<at)continue;s+=escape(text.slice(at,m.start))+'<mark>'+escape(text.slice(m.start,m.end))+'</mark>';at=m.end;}return s+escape(text.slice(at));}
 function norm(s){return String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();}
 function label(p){return roman(p.book)+'.'+(p.chapter==='praef'?'praef':p.chapter)+'.'+p.section+(p.section_end?'–'+p.section_end:'');}
+function ocrExcerpt(text,q){const t=String(text||'').replace(/\s+/g,' ').trim(),n=String(q||'').trim(),i=t.toLowerCase().indexOf(n.toLowerCase()),p=Math.max(0,i-150),e=Math.min(t.length,Math.max(0,i)+n.length+220);return (p?'… ':'')+t.slice(p,e)+(e<t.length?' …':'');}
 function render(){
  const target=$('#critical-results'),batch=results.slice(shown,shown+15);
  for(const r of batch){
@@ -18,7 +19,7 @@ function render(){
   const page=p.pdf_pages?.translation||p.pdf_pages?.latin;
   const title=r.ocr?'Krohn 1912 · página OCR '+p.section:'Vitr., De arch. '+label(p);
   const source=r.ocr?e.pdf+'/page/n'+Math.max(0,p.section-1):e.pdf;
-  article.innerHTML='<div class="meta">'+escape(e.name)+'</div><h2>'+escape(title)+'</h2><p lang="la"><strong>'+(r.ocr?'OCR no revisado':'Latín')+'.</strong> '+highlight(p.latin,lastQuery)+'</p>'+
+  article.innerHTML='<div class="meta">'+escape(e.name)+'</div><h2>'+escape(title)+'</h2>'+(r.ocr?'<p class="source-note"><strong>OCR no revisado:</strong> reconocimiento defectuoso, verificar el facsímil.</p><p lang="la">'+highlight(ocrExcerpt(p.latin,lastQuery),lastQuery)+'</p><details><summary>Ver OCR completo (texto defectuoso)</summary><p lang="la">'+highlight(p.latin,lastQuery)+'</p></details>':'<p lang="la"><strong>Latín.</strong> '+highlight(p.latin,lastQuery)+'</p>')+
    (r.ocr?'':'<p><strong>Traducción.</strong> '+highlight(p.translation,lastQuery)+'</p>')+
    '<p class="source-note">'+(r.ocr?'OCR histórico sin locus verificado':'Referencia canónica: '+escape(p.locus))+(page?' · Página PDF: '+page:'')+'</p><div class="actions">'+
    (r.ocr?'':'<a href="'+escape(link)+'">Leer pasaje →</a><button type="button" data-critical-compare="'+escape(p.locus)+'">Comparar con ediciones y Krohn</button>')+
