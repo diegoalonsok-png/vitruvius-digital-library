@@ -386,10 +386,18 @@ function displayGloss(){
   textLine(details,'',entry.verified?'Síntesis castellana de la entrada citada; las notas de uso son editoriales.':'Glosa orientativa del léxico local. La entrada lexicográfica completa se consulta en la fuente enlazada.');gloss.append(details);gloss.hidden=false;
  }
  function hide(){host.hidden=true;host.replaceChildren();input.setAttribute('aria-expanded','false');}
+ function editDistance(a,b,max=3){if(Math.abs(a.length-b.length)>max)return max+1;let previous=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let current=[i],minimum=i;for(let j=1;j<=b.length;j++){const substitution=previous[j-1]+(a[i-1]===b[j-1]?0:1);current[j]=Math.min(previous[j]+1,current[j-1]+1,substitution);minimum=Math.min(minimum,current[j]);}if(minimum>max)return max+1;previous=current;}return previous[b.length];}
+ const aliasMap=new Map();
+ function indexAliases(){for(const entry of entries){const candidates=[[entry.lemma,'Latín'],...(entry.forms||[]).map(v=>[v,'Latín']),[entry.es,'Castellano'],[entry.en,'Inglés'],[entry.fr,'Francés'],[entry.greek,'Griego'],[entry.transliteration,'Transliteración'],...(entry.aliases||[]).map(v=>[v,'Variante'])];for(const [raw,language] of candidates){if(!raw)continue;const alias=norm(raw);if(alias.length<3)continue;if(!aliasMap.has(alias))aliasMap.set(alias,[]);aliasMap.get(alias).push({entry,raw,language});}}}
+ indexAliases();
  function update(){
-  displayGloss();const q=norm(input.value.trim().split(/\s+/).at(-1)||'');hide();if(q.length<3)return;
-  const matches=entries.flatMap(e=>[...new Set([e.lemma,...e.forms||[]])].filter(v=>norm(v).startsWith(q)&&norm(v)!==q).map(form=>({entry:e,form}))).slice(0,8);if(!matches.length)return;
-  for(const{entry,form:word}of matches){const b=document.createElement('button');b.type='button';b.className='dictionary-suggestion';b.textContent=word+' · '+entry.lemma+' — '+entry.es;b.addEventListener('click',()=>{input.value=word;hide();displayGloss();input.focus();});host.append(b);}host.hidden=false;input.setAttribute('aria-expanded','true');
+  const raw=input.value.trim(),tokens=raw.split(/\s+/),q=norm(tokens.at(-1)||'');hide();if(q.length<3||tokens.length>1)return;
+  const results=[];for(const [alias,candidates] of aliasMap){let score=alias.startsWith(q)?0:alias.includes(q)?1:99;if(score===99&&q.length>=4){const d=editDistance(q,alias,q.length<7?1:2);if(d<=(q.length<7?1:2))score=2+d;}if(score===99)continue;for(const candidate of candidates){const key=candidate.entry.lemma+'|'+candidate.raw;if(results.some(x=>x.key===key))continue;results.push({...candidate,score,key});}}
+  results.sort((a,b)=>a.score-b.score||a.raw.length-b.raw.length||a.raw.localeCompare(b.raw));
+  const shown=results.slice(0,10);if(!shown.length)return;
+  for(const item of shown){const b=document.createElement('button');b.type='button';b.className='dictionary-suggestion';b.textContent=item.raw+' · '+item.language+' — '+(item.entry.lemma||'')+(item.entry.es?' · '+item.entry.es:'');b.addEventListener('click',()=>{input.value=item.raw;hide();displayGloss();form.requestSubmit();});host.append(b);}
+  host.hidden=false;input.setAttribute('aria-expanded','true');
  }
+
  input.setAttribute('aria-controls','latin-suggest');input.setAttribute('aria-autocomplete','list');input.addEventListener('input',update);input.addEventListener('change',displayGloss);input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();if(e.key==='ArrowDown'&&!host.hidden){e.preventDefault();host.querySelector('button')?.focus();}});form.addEventListener('submit',()=>{hide();displayGloss();showOccurrences();});document.addEventListener('click',e=>{if(e.target!==input&&!host.contains(e.target))hide();});displayGloss();
 })();
