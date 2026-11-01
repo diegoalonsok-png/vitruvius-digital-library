@@ -6,6 +6,8 @@ visit(root);
 const problems=[],warnings=[];let targets=0,links=0;
 for(const file of pages){
  const source=readFileSync(file,'utf8');
+ const base=source.match(/<base\b[^>]*\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
+ const docBase=base&&!/^(?:https?:|\/\/)/i.test(base)?resolve(dirname(file),base):dirname(file);
  const ids=new Set([...source.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi)].map(m=>m[1]));
  const refs=[...source.matchAll(/\b(href|src)\s*=\s*["']([^"']+)["']/gi)];
  for(const [,attr,raw] of refs){
@@ -13,8 +15,8 @@ for(const file of pages){
   if(!value||/^(?:https?:|mailto:|tel:|data:|javascript:|blob:|about:|\/\/)/i.test(value))continue;
   if(value.startsWith('#')){const id=decodeURIComponent(value.slice(1));if(id&&!ids.has(id))warnings.push(relative(root,file)+': anchor #'+id+' absent (may be dynamic)');continue;}
   const path=value.split(/[?#]/)[0];if(!path)continue;
-  const target=path.startsWith('/')?resolve(root,path.slice(1)):resolve(dirname(file),path);
-  if(!target.startsWith(root+'/')){problems.push(relative(root,file)+': outside project '+value);continue;}
+  const target=path.startsWith('/')?resolve(root,path.slice(1)):resolve(docBase,path);
+  if(target!==root&&!target.startsWith(root+'/')){problems.push(relative(root,file)+': outside project '+value);continue;}
   targets++;
   if(!existsSync(target)&&!existsSync(target+'/index.html'))problems.push(relative(root,file)+': '+attr+'='+value+' missing');
  }
