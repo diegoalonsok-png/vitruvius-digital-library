@@ -29,7 +29,7 @@ try{
  await test('Scriptorium: botones y campo de página presentes',async()=>{
   const page=await pageFor('scriptorium.html');
   for(const id of ['source','page','prev-page','next-page','load','zoom','brightness','contrast','grayscale','sepia','loupe','reset']) assert.equal(await page.locator('#'+id).count(),1,'Falta #'+id);
-  assert.equal(await page.locator('#source option').count(),5,'Selector debe mostrar solamente cinco lectores');
+  for(const value of ['pdf:krohn','pdf:rose-1899','pdf:ortiz-1787','own:recensio-es','own:recensio-fr','own:theory-en']) assert.equal(await page.locator('#source option[value="'+value+'"]').count(),1,'Falta edición '+value);
   await page.close();
  });
  await test('Scriptorium: los cambios de fuente activan navegación',async()=>{
