@@ -143,7 +143,34 @@ self.onmessage=async({data:m})=>{
     self.postMessage({type:'results',requestId:m.requestId,results:ranked,countSummary:null,warnings,semanticTerms:unique});
     return;
   }
+  // Equivalencias multilingües: sumar pasajes reales de las traducciones y el latín,
+  // sin afirmar que una forma española figure literalmente en el texto latino.
+  const normalizeConcept=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+  const conceptTerms={
+    simetria:{la:['symmetria','symmetriae','symmetriam','symmetriarum'],es:['simetría','simetria','proporción'],fr:['symétrie','proportion'],en:['symmetry','proportion']},
+    symmetry:{la:['symmetria','symmetriae','symmetriam'],es:['simetría'],fr:['symétrie'],en:['symmetry']},
+    symmetria:{la:['symmetria','symmetriae','symmetriam'],es:['simetría'],fr:['symétrie'],en:['symmetry']},
+    geometria:{la:['geometria','geometriae','geometriam','geometricis'],es:['geometría'],fr:['géométrie'],en:['geometry']},
+    geometry:{la:['geometria','geometriae'],es:['geometría'],fr:['géométrie'],en:['geometry']}
+  };
+  const concept=(!direct&&!heading&&m.kind==='words')?conceptTerms[normalizeConcept(requested)]:null;
+  let conceptResults=null;
+  if(concept){
+    const matched=new Map();
+    for(const [language,terms] of Object.entries(concept)){
+      if(m.language&&m.language!=='all'&&m.language!==language)continue;
+      for(const term of terms){
+        const found=searchCorpus(datasets,{...effective,query:term,kind:'words',language,mode:'words'});
+        for(const hit of found.results){
+          const k=hit.edition+'|'+hit.locus+'|'+hit.language;
+          if(!matched.has(k))matched.set(k,{...hit,semantic_term:term,match_type:normalizeConcept(term)===normalizeConcept(requested)?'literal':'concept_equivalence'});
+        }
+      }
+    }
+    conceptResults=[...matched.values()];
+  }
   let output=searchCorpus(datasets,effective);
+  if(conceptResults?.length){const seen=new Set(output.results.map(x=>x.edition+'|'+x.locus+'|'+x.language));for(const hit of conceptResults){const k=hit.edition+'|'+hit.locus+'|'+hit.language;if(!seen.has(k)){seen.add(k);output.results.push(hit);}}warnings.push('Consulta multilingüe: se incluyen pasajes que contienen equivalencias latinas y traducciones documentadas; las equivalencias no cuentan como coincidencias literales de la palabra solicitada.');}
   if(!output.results.length && !direct && !heading && m.kind==='words' && /^[\p{L}\p{M}]{3,}$/u.test(requested)){
    output=searchCorpus(datasets,{...effective,prefixFallback:true});
    if(output.results.length)warnings.push('Búsqueda ampliada por raíz: se incluyen palabras que comienzan por «'+requested+'».');
