@@ -20,3 +20,16 @@ document.getElementById('codex-book-go').addEventListener('click',()=>{
  if(entry){go(entry.position);document.getElementById('folio-number').value=entry.position;bookStatus.textContent='Libro I · imagen 9 · f.1r: incipit documentado.'}
  else{bookStatus.textContent='Libro '+b+': inicio pendiente de identificación paleográfica. La secuencia oficial puede recorrerse con el índice de imágenes; no se inventa una ubicación.'}
 });
+
+function openCodexPreface(book){
+ const n=Number(book),entry=confirmed[n],status=document.getElementById('codex-preface-status');
+ if(!entry){status.textContent='Libro '+n+': ubicación del prefacio todavía sin cotejar en H. No se muestra un folio ficticio.';return}
+ const select=document.getElementById('codex-preface');if(select)select.value=String(n);
+ const index=document.getElementById('folio-index-table');if(index?.options.length>1)index.value=String(entry.position);
+ const number=document.getElementById('folio-number');if(number)number.value=String(entry.position);
+ go(entry.position);
+ status.textContent='Libro '+n+': inicio indicado en '+entry.folio+', imagen '+entry.position+'. Comprobar el incipit en el facsímil.';
+}
+document.getElementById('codex-preface-open')?.addEventListener('click',()=>openCodexPreface(document.getElementById('codex-preface').value));
+document.getElementById('codex-preface')?.addEventListener('change',e=>openCodexPreface(e.target.value));
+document.addEventListener('escritorio-h-preface',e=>openCodexPreface(e.detail.book));
