@@ -113,7 +113,7 @@ function matchEdition(src,data,query,parsed,terms){
    if(!term){term=firstHit(p.translation||'',terms);if(term)field='translation';}
    if(!term)continue;
   }
-  const page=Number(p.pdf_pages?.[field||'latin']||0)||null;
+  const page=Number(p.pdf_pages?.[field||'latin']||(isLocus?p.pdf_pages?.translation:0)||0)||null;
   found.push({kind:'edition',id:src.id,source:src,p,field,term,page,
    snippet:field==='latin'?p.latin:p.translation||p.latin,
    label:'De architectura '+p.locus});
