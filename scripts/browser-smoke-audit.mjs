@@ -74,13 +74,23 @@ try{
    const page=await pageFor('index.html');
    await page.setViewportSize({width:1850,height:830});
    const bar=page.locator('.historic-top-access');
-   assert(await bar.isVisible(),'La franja de scriptoria no aparece');
+   assert(await bar.isVisible(),'La franja de facsimiles no aparece');
    const pos=await bar.boundingBox();
-   assert(pos&&pos.y>=0&&pos.y+pos.height<=830,'La franja quedó fuera de la pantalla inicial: '+JSON.stringify(pos));
-   for(const name of ['H','S','G','C','B']){
-     const link=bar.locator('a').filter({has:page.locator('b').getByText(name,{exact:true})});
-     // Verificar el nombre del monograma por su contenido textual exacto.
-     assert.equal(await bar.locator('nav a b').filter({hasText:new RegExp('^'+name+'
+   assert(pos&&pos.y>=0&&pos.y+pos.height<=830,'La franja quedo fuera de primera pantalla');
+   for(const [name,href] of [['H','harleianus.html'],['S','sulpizio-1486.html'],['G','giocondo-1511.html'],['C','cesariano-1521.html'],['B','barbaro-1567.html']]){
+     const link=bar.locator('a[href="'+href+'"]');
+     assert.equal(await link.count(),1,'Falta boton '+name);
+     assert(await link.isVisible(),'Boton oculto '+name);
+     assert.equal((await link.locator('b').innerText()).trim(),name);
+     const box=await link.boundingBox();
+     assert(box&&box.x>=0&&box.x+box.width<=1850,'Boton se sale de pantalla '+name);
+   }
+   await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+   const color=await bar.locator('a').first().evaluate(el=>({color:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
+   assert.notEqual(color.color,color.bg,'Texto ilegible en modo oscuro');
+   await page.close();
+ });
+ await test('Portada: accesos S G C B visibles y legibles en ambos temas',async()=>{
    const page=await pageFor('index.html');
    const links=['sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html'];
    for(const href of links){
@@ -91,13 +101,6 @@ try{
      assert.equal(await header.count(),1,'Falta botón superior de portada: '+href);
      assert(await header.isVisible(),'Botón superior oculto: '+href);
    }
-   await page.evaluate(()=>document.documentElement.dataset.theme='dark');
-   const result=await page.locator('.hero-scriptoria-grid a').first().evaluate(el=>({
-     fg:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor,
-     title:getComputedStyle(el.querySelector('strong')).color
-   }));
-   assert.notEqual(result.fg,result.bg,'Botón oscuro de portada ilegible');
-   assert.notEqual(result.title,result.bg,'Nombre Sulpizio de portada ilegible');
    await page.close();
  });
  await test('Scriptorium B y G: galería, navegación y modo oscuro',async()=>{
