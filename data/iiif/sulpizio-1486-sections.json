@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "source": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00061745/manifest",
+  "classification": "La BSB identifica recto y verso; no se atribuyen límites precisos de los 10 libros sin cotejo",
+  "sections": [
+    {
+      "id": "all",
+      "label": "Todas las imágenes",
+      "start": 1,
+      "end": 205
+    },
+    {
+      "id": "covers",
+      "label": "Cubierta y guardas iniciales",
+      "start": 1,
+      "end": 4
+    },
+    {
+      "id": "text",
+      "label": "Folios de texto (1r–98v)",
+      "start": 5,
+      "end": 200
+    },
+    {
+      "id": "end",
+      "label": "Guardas y cubierta final",
+      "start": 201,
+      "end": 205
+    }
+  ]
+}
