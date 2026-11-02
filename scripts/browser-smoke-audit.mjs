@@ -77,6 +77,9 @@ try{
      const item=page.locator('.hero-scriptoria-grid a[href="'+href+'"]');
      assert.equal(await item.count(),1,'Falta acceso de portada: '+href);
      assert(await item.isVisible(),'Acceso no visible en portada: '+href);
+     const header=page.locator('.research-prints a[href="'+href+'"]');
+     assert.equal(await header.count(),1,'Falta botón superior de portada: '+href);
+     assert(await header.isVisible(),'Botón superior oculto: '+href);
    }
    await page.evaluate(()=>document.documentElement.dataset.theme='dark');
    const result=await page.locator('.hero-scriptoria-grid a').first().evaluate(el=>({
