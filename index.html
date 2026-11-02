@@ -35,7 +35,24 @@
 .hero-h-link:hover,.hero-h-link:focus-visible{background:var(--gold,#b59a68);color:#15293b}
 .hero-h-monogram{font-family:Georgia,serif;font-size:29px;font-weight:700;line-height:1}
 .hero-h-explain{font-size:13px;font-weight:450}
-.research-nav-inner>a.last-h-button{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto;min-width:35px;min-height:34px;padding:5px 11px!important;background:#22374b!important;color:#f6f2e9!important;border:1px solid #516c87;border-radius:4px;font:700 19px Georgia,serif!important;text-decoration:none!important;line-height:1}.research-nav-inner>a.last-h-button:hover,.research-nav-inner>a.last-h-button:focus-visible{background:#304d68!important;color:#fff!important;outline-offset:2px}</style></head>
+.research-nav-inner>a.last-h-button{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto;min-width:35px;min-height:34px;padding:5px 11px!important;background:#22374b!important;color:#f6f2e9!important;border:1px solid #516c87;border-radius:4px;font:700 19px Georgia,serif!important;text-decoration:none!important;line-height:1}.research-nav-inner>a.last-h-button:hover,.research-nav-inner>a.last-h-button:focus-visible{background:#304d68!important;color:#fff!important;outline-offset:2px}
+/* Accesos a facsímiles desde la portada: separadas del lector H y del buscador. */
+.hero-scriptoria{margin:16px 0 2px;max-width:620px}
+.hero-scriptoria-title{font:700 10px/1.5 Arial,sans-serif;letter-spacing:1.2px;margin:0 0 12px;color:var(--muted)}
+.hero-scriptoria-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hero-scriptorium-link{display:flex;align-items:center;gap:12px;border:1px solid var(--gold);background:var(--white);color:var(--ink);padding:11px 12px;min-height:66px;text-decoration:none;border-radius:4px}
+.hero-scriptorium-letter{display:flex;align-items:center;justify-content:center;flex:0 0 35px;height:40px;border:1px solid var(--gold);font:700 23px Georgia,serif;background:var(--paper);color:var(--ink)}
+.hero-scriptorium-link strong{display:block;color:inherit;font-size:13px;line-height:1.35}
+.hero-scriptorium-link small{display:block;color:inherit;opacity:.85;font-size:11px;line-height:1.35}
+.hero-scriptorium-link:hover,.hero-scriptorium-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px;background:#f3e9d4;color:#172b3c}
+.hero-scriptoria-foot{margin:10px 0;color:var(--muted);font-size:11px;line-height:1.6}
+html[data-theme="dark"] .hero-scriptoria-title,html[data-theme="dark"] .hero-scriptoria-foot{color:#ced1ca!important}
+html[data-theme="dark"] .hero-scriptorium-link{background:#263746!important;color:#f7efe2!important;border-color:#8f9a9e!important}
+html[data-theme="dark"] .hero-scriptorium-letter{background:#192938!important;color:#fff1dc!important;border-color:#a38c65!important}
+html[data-theme="dark"] .hero-scriptorium-link :is(strong,small){color:#f7efe2!important}
+html[data-theme="dark"] .hero-scriptorium-link:hover,html[data-theme="dark"] .hero-scriptorium-link:focus-visible{background:#36526a!important;color:#fff!important;outline-color:#d7bb82!important}
+@media(max-width:500px){.hero-scriptoria-grid{grid-template-columns:1fr}}
+</style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="institution-bar"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Una biblioteca de acceso abierto</span></div></div>
@@ -64,6 +81,16 @@
         <p class="hero-subtitle">Texto latino, traducciones<br> y tradición manuscrita.</p>
         <p class="hero-description">Manuscritos, ediciones históricas, traducciones y estudios para leer, investigar y comparar los diez libros de Vitruvio.</p>
         <div class="hero-links"><a class="text-link" href="#buscar">Consultar los textos <span aria-hidden="true">↓</span></a><span>Edición y estudios de Diego Kurilo</span></div><a class="hero-h-link" href="harleianus.html" aria-label="H: abrir visor grande del Codex Harleianus 2767"><span class="hero-h-monogram">H</span><span class="hero-h-explain">Visor grande del Codex H</span></a>
+<div class="hero-scriptoria" aria-label="Acceso directo a los facsímiles históricos">
+<p class="hero-scriptoria-title">FACSIMILES Y EDICIONES HISTÓRICAS · ACCESO DIRECTO</p>
+<nav class="hero-scriptoria-grid" aria-label="Abrir lectores históricos">
+<a href="sulpizio-1486.html" class="hero-scriptorium-link" aria-label="Scriptorium S: primera edición impresa de Sulpizio, hacia 1486–1487"><span class="hero-scriptorium-letter">S</span><span><strong>Sulpizio</strong><small>c. 1486 · Edición príncipe</small></span></a>
+<a href="giocondo-1511.html" class="hero-scriptorium-link" aria-label="Scriptorium G: Fra Giocondo de 1511, 254 imágenes"><span class="hero-scriptorium-letter">G</span><span><strong>Fra Giocondo</strong><small>1511 · 254 imágenes</small></span></a>
+<a href="cesariano-1521.html" class="hero-scriptorium-link" aria-label="Scriptorium C: Cesare Cesariano de 1521, 390 imágenes"><span class="hero-scriptorium-letter">C</span><span><strong>Cesariano</strong><small>1521 · 390 imágenes</small></span></a>
+<a href="barbaro-1567.html" class="hero-scriptorium-link" aria-label="Scriptorium B: Daniele Barbaro de 1567, 522 imágenes"><span class="hero-scriptorium-letter">B</span><span><strong>Daniele Barbaro</strong><small>1567 · 522 imágenes</small></span></a>
+</nav>
+<p class="hero-scriptoria-foot">Los lectores S, G, C y B identifican ediciones impresas y no siglas de manuscritos. Giocondo y Barbaro usan imágenes IIIF institucionales sin copiarlas a GitHub.</p>
+</div>
       </div>
       <aside class="principal-editions" aria-labelledby="principal-title">
         <p class="eyebrow">EDICIÓN Y ESTUDIOS · DIEGO KURILO</p>
