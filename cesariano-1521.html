@@ -22,6 +22,29 @@ main.cesariano{max-width:1380px;padding:27px 18px 70px}
 .ces-utility{display:flex;flex-wrap:wrap;gap:15px}
 .ces-utility a{overflow-wrap:anywhere}
 @media(max-width:600px){#ces-stage{height:65vh}#ces-loupe{width:145px;height:145px}.ces-toolbar{gap:12px}}
+
+/* Módulo visual aislado del lector Cesariano existente. */
+.ces-image-browser{border:1px solid #a99776;margin:24px 0;padding:16px 18px;background:var(--surface,#f7f4ee)}
+.ces-image-browser h2{font:normal 26px Georgia,serif;margin:0 0 6px}
+.ces-image-browser form{display:flex;gap:12px;align-items:end;flex-wrap:wrap;padding:13px 0}
+.ces-image-browser label{display:grid;gap:6px;font:13px system-ui,sans-serif;flex:1 1 210px}
+.ces-image-browser select,.ces-image-browser input{padding:10px;border:1px solid #aba18f;background:var(--white,#fffdf8);color:var(--ink,#1b3141);width:100%}
+.ces-image-browser button{cursor:pointer}
+.ces-image-browser form button,.ces-gallery-more{padding:10px 15px;border:1px solid #ae9067;background:#fffaf0;color:#173047}
+.ces-gallery-scroll{overflow-y:auto;max-height:500px;padding:10px 5px;border-top:1px solid #c7b9a2;border-bottom:1px solid #c7b9a2}
+.ces-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:12px}
+.ces-image-card{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;padding:8px;background:var(--white,#fffdf8);color:var(--ink,#183044);border:1px solid #a6a49f;text-align:center}
+.ces-image-card img{width:100%;height:175px;object-fit:contain;background:#e4ddd2}
+.ces-image-card .ces-image-number{font-weight:700;font-size:13px}
+.ces-image-card small{font-size:11px;line-height:1.35;max-width:100%;overflow:hidden}
+.ces-image-card:hover,.ces-image-card:focus-visible,.ces-image-card.is-current{outline:3px solid #bb9251;outline-offset:1px}
+.ces-gallery-more{margin:10px 0}
+.ces-image-browser mark,.ces-image-browser .ces-hit{background:#ffe45a!important;color:#101d2b!important;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px}
+.ces-ocr-hit{padding:15px 0;border-top:1px solid #b9ad94}
+.ces-ocr-hit h4{margin:0;font-size:16px}.ces-ocr-hit p{line-height:1.7;overflow-wrap:anywhere}
+.ces-cross-ref{display:block;grid-column:1/-1;margin:12px 0;font-size:14px;text-decoration:underline}
+.ces-caution{font-size:13px;line-height:1.6;opacity:.86}
+@media(max-width:640px){.ces-image-browser{padding:12px}.ces-images{grid-template-columns:repeat(2,minmax(0,1fr))}.ces-image-card img{height:160px}}
 </style>
 </head>
 <body><main class="wrap cesariano">
@@ -43,6 +66,33 @@ main.cesariano{max-width:1380px;padding:27px 18px 70px}
 <label><input id="ces-negative" type="checkbox"> Negativo</label>
 <label><input id="ces-magnify" type="checkbox" checked> Lupa ×3</label>
 </div>
+
+<section class="ces-image-browser" id="ces-gallery" aria-labelledby="ces-gallery-title">
+<h2 id="ces-gallery-title">Buscar por imagen · Galería visual de 390 páginas</h2>
+<p>Miniaturas en el <strong>orden IIIF original</strong> de Cesariano (1521). Filtrá por libro, escribí <strong>imagen 150</strong> o buscá un tema arquitectónico. Al pulsar una miniatura, se abre en el lector con lupa.</p>
+<p id="ces-gallery-start" role="status">Preparando el índice de las 390 imágenes…</p>
+<div id="ces-gallery-panel" hidden>
+<form id="ces-gallery-form" role="search">
+<label>Libro o sección<select id="ces-gallery-section" aria-label="Filtrar por libro"><option value="">Todas las imágenes</option></select></label>
+<label>Número de imagen, libro/capítulo, tema o etiqueta IIIF<input type="search" id="ces-gallery-query" placeholder="imagen 150 · IV.2 · columna · máquina" autocomplete="off"></label>
+<button type="submit">Buscar imágenes</button><button type="button" id="ces-gallery-clear">Limpiar</button>
+</form>
+<p id="ces-gallery-count" role="status" aria-live="polite"></p>
+<div class="ces-gallery-scroll"><div id="ces-gallery-results" class="ces-images"></div></div>
+<button type="button" class="ces-gallery-more" id="ces-gallery-more" hidden>Mostrar más imágenes</button>
+<p class="ces-caution">Las miniaturas permiten inspección visual y consulta por número de imagen. Los temas remiten a los libros y no constituyen reconocimiento automático de ilustraciones. La tabla de contenidos IIIF identifica los diez libros, pero no cada capítulo.</p>
+</div>
+<details id="ces-ocr-details"><summary><strong>Buscar palabras y conceptos en el OCR del ejemplar Getty</strong></summary>
+<p>Consulta complementaria de <strong>otro ejemplar</strong> de Cesariano, digitalizado por el Getty Research Institute. Su paginación no está alineada con el ejemplar e-rara. El OCR puede contener errores; los términos encontrados aparecen <mark class="ces-hit">subrayados en amarillo</mark> en los fragmentos, sin simular marcas sobre la imagen.</p>
+<form id="ces-ocr-form" role="search">
+<label>Palabra o frase<input id="ces-ocr-query" type="search" placeholder="symmetria · architectura · theatro · machine" required minlength="2"></label>
+<label>Búsqueda<select id="ces-ocr-mode"><option value="literal">Texto literal OCR</option><option value="concept">Conceptos y términos relacionados</option></select></label>
+<button type="submit">Buscar en OCR</button>
+</form>
+<p id="ces-ocr-status" role="status" aria-live="polite"></p><div id="ces-ocr-results"></div>
+<button type="button" id="ces-ocr-more" class="ces-gallery-more" hidden>Ver más coincidencias</button>
+</details>
+</section>
 <p class="ces-label"><strong>Imagen:</strong> <span id="ces-counter">—</span> · <strong>Etiqueta original IIIF:</strong> <span id="ces-label">—</span></p>
 <p id="ces-status" role="status" aria-live="polite">Preparando el índice de páginas…</p>
 <div id="ces-stage"><img id="ces-image" alt="Página digitalizada de la edición vitruviana comentada por Cesare Cesariano, 1521"></div>
@@ -55,6 +105,6 @@ main.cesariano{max-width:1380px;padding:27px 18px 70px}
 </div>
 <p style="font-size:13px;margin-top:20px">Crédito: Vitruvius, <em>Di Lucio Vitruvio Pollione de architectura libri dece</em>, Como: Gottardo da Ponte, 1521. Ejemplar: Stiftung Bibliothek Werner Oechslin, A05c; app. 2917. Digitalización: e-rara, DOI <a href="https://doi.org/10.3931/e-rara-19393">10.3931/e-rara-19393</a>. Public Domain Mark; se mantiene el crédito institucional y la procedencia del registro.</p>
 </main>
-<script type="module" src="assets/cesariano-reader.mjs?v=20261102-1"></script>
+<script type="module" src="assets/cesariano-reader.mjs?v=20261102-1"></script><script type="module" src="assets/cesariano-visual-search.mjs?v=20261102-1"></script>
 <script src="assets/theme.js?v=20261101-everywhere" defer></script>
 </body></html>
