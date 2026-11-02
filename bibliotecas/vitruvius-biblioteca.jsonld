@@ -1,0 +1,148 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "DataCatalog",
+      "@id": "https://diegoalonsok-png.github.io/vitruvius-digital-library/index.html",
+      "name": "Vitruvius Digital Library — De architectura",
+      "url": "https://diegoalonsok-png.github.io/vitruvius-digital-library/index.html",
+      "datePublished": "2026",
+      "identifier": "https://doi.org/10.5281/zenodo.23868911",
+      "inLanguage": [
+        "Latin",
+        "Spanish",
+        "French",
+        "English"
+      ],
+      "creator": {
+        "@type": "Person",
+        "name": "Kurilo, Diego A."
+      },
+      "isAccessibleForFree": true,
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Vitruvius"
+        },
+        {
+          "@type": "Thing",
+          "name": "Roman architectural theory"
+        }
+      ],
+      "description": "Independent research digital library; not an institutionally certified critical edition"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/edicion-v514.html",
+      "name": "Vitruvio. De architectura. Nueva recensio académica bilingüe",
+      "url": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/edicion-v514.html",
+      "datePublished": "2026",
+      "identifier": "https://doi.org/10.5281/zenodo.23884757",
+      "inLanguage": [
+        "Latin",
+        "Spanish"
+      ],
+      "creator": {
+        "@type": "Person",
+        "name": "Vitruvius"
+      },
+      "editor": {
+        "@type": "Person",
+        "name": "Diego A. Kurilo"
+      },
+      "isAccessibleForFree": true,
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Vitruvius"
+        },
+        {
+          "@type": "Thing",
+          "name": "Roman architectural theory"
+        }
+      ],
+      "encoding": [
+        {
+          "@type": "MediaObject",
+          "encodingFormat": "application/pdf",
+          "contentUrl": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/kurilo-recensio-es.pdf"
+        }
+      ],
+      "description": "V514; provisional reading recension; editor and Spanish translator Diego A. Kurilo"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/edicion-v554.html",
+      "name": "Vitruve. De architectura. Nouvelle recensio académique bilingue",
+      "url": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/edicion-v554.html",
+      "datePublished": "2026",
+      "identifier": "https://doi.org/10.5281/zenodo.23885110",
+      "inLanguage": [
+        "Latin",
+        "French"
+      ],
+      "creator": {
+        "@type": "Person",
+        "name": "Vitruvius"
+      },
+      "editor": {
+        "@type": "Person",
+        "name": "Diego A. Kurilo"
+      },
+      "isAccessibleForFree": true,
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Vitruvius"
+        },
+        {
+          "@type": "Thing",
+          "name": "Roman architectural theory"
+        }
+      ],
+      "encoding": [
+        {
+          "@type": "MediaObject",
+          "encodingFormat": "application/pdf",
+          "contentUrl": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/kurilo-recensio-fr.pdf"
+        }
+      ],
+      "description": "V554; provisional reading recension; editor and French translator Diego A. Kurilo"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/edicion-v297.html",
+      "name": "The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",
+      "url": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/edicion-v297.html",
+      "datePublished": "2026",
+      "identifier": "https://doi.org/10.5281/zenodo.23885404",
+      "inLanguage": [
+        "Latin",
+        "English"
+      ],
+      "creator": {
+        "@type": "Person",
+        "name": "Kurilo, Diego A."
+      },
+      "isAccessibleForFree": true,
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Vitruvius"
+        },
+        {
+          "@type": "Thing",
+          "name": "Roman architectural theory"
+        }
+      ],
+      "encoding": [
+        {
+          "@type": "MediaObject",
+          "encodingFormat": "application/pdf",
+          "contentUrl": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/kurilo-theory-en.pdf"
+        }
+      ],
+      "description": "V297; research study and English-language Latin reading edition; distinct from manuscript recension"
+    }
+  ]
+}
