@@ -1,5 +1,14 @@
 # Vitruvius Digital Library — registro de cambios
 
+## 2 de noviembre de 2026 — ampliación bibliográfica y búsqueda por PDF seleccionado (segunda actualización)
+
+- Scriptorium: búsqueda por la edición o el PDF seleccionado (V514, V554, V297, Krohn 1912 y Rose 1899), conservando la consulta conjunta de todas las ediciones.
+- Se habilita búsqueda documental por conceptos técnicos relacionados en latín, griego, castellano, francés e inglés, con equivalencias controladas; no se presenta como un modelo neuronal ni como colación manuscrita.
+- Se mantiene el resaltado amarillo del OCR y se indica cuándo el PDF no tiene capa de texto para localizar la palabra sobre el facsímil.
+- Estudios académicos: 69 referencias, 30 con metadatos o ISBN/DOI parcialmente verificados en fuentes institucionales, 39 pendientes; ISBN de los diez volúmenes Budé documentados y 3 monografías universitarias agregadas.
+- Se incorporan ISBN e identificadores en el buscador bibliográfico y en las exportaciones BibTeX y RIS.
+- No se modifica portada, estética general, buscador principal ni índices latinos de los libros.
+
 ## 2 de noviembre de 2026 — transparencia académica y citación
 
 - Se incorpora una página `status-textus.html` diferenciando la recensio provisional y el aparato comparativo de V514/V554 de la edición de lectura V297 con notas y comentario.
