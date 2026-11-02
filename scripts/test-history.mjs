@@ -15,5 +15,15 @@ for(const r of rows){assert.ok(r.id&&r.display_title&&r.date_display&&r.citation
 assert.equal(rows[2].date_display,'mediados del s. IX');assert.ok(rows[2].scope.includes('Compilación'));
 assert.equal(rows[64].pdf_url,undefined);assert.ok(rows[64].text_url.endsWith('.txt'));
 const cat=JSON.parse(fs.readFileSync(new URL('../data/catalog.json',import.meta.url))),hist=JSON.parse(fs.readFileSync(new URL('../data/historical.json',import.meta.url)));
-const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');assert.ok(html.includes('id="stat-records">'+(cat.editions.length+hist.length)));assert.ok(html.includes('id="stat-pages">'+cat.searchable_pages.toLocaleString('es-AR')));
-console.log('Historical catalogue checks passed: aliases, sigla case, hidden matches, dates, provenance and initial counters.');
+const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const metrics=JSON.parse(fs.readFileSync(new URL('../data/site-metrics.json',import.meta.url),'utf8'));
+const onomasticon=JSON.parse(fs.readFileSync(new URL('../data/onomasticon-vitruvianum.json',import.meta.url),'utf8'));
+assert.equal(metrics.primary_catalog.records,cat.editions.length+hist.length,'El catálogo primario debe conservar sus 28 registros');
+assert.equal(metrics.total_records_across_repertories,metrics.primary_catalog.records+metrics.expanded_historical_inventory.records+metrics.academic_studies.records);
+assert.ok(html.includes('id="stat-records">'+metrics.total_records_across_repertories),'La portada debe contar los tres repertorios');
+assert.ok(html.includes('id="stat-pages">'+metrics.indexed_editions.sum_declared_pages.toLocaleString('es-AR')),'La extensión editorial declarada debe estar actualizada');
+assert.ok(html.includes('páginas declaradas en esas tres ediciones'),'Las páginas declaradas no deben presentarse como páginas individualmente indexadas');
+assert.ok(onomasticon.totals.latinWords>50000&&onomasticon.totals.greekWords>0,'El nuevo índice debe contener estadísticas latinas y griegas');
+assert.ok(onomasticon.entities.some(x=>x.id==='archimedes'&&x.loci.includes('9.praef.9')),'Arquímedes debe tener una mención real identificada por locus');
+assert.ok(onomasticon.entities.some(x=>x.kind==='place'&&x.loci.length>0),'Los lugares deben tener loci documentales');
+console.log('Historical catalogue and Onomasticon checks passed: aliases, provenance, repertory statistics and locus concordances.');
