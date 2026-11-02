@@ -262,6 +262,8 @@ try{
    const page=await pageFor('bibliotecas-universitarias.html');
    assert.match(await page.locator('h1').innerText(),/Vitruvius Digital Library/);
    assert.match(await page.locator('body').innerText(),/independiente/i,'Falta transparencia editorial');
+   assert.equal(await page.locator('a[href="https://libguides.cam.ac.uk/c.php?g=363717&p=4973030"]').count(),1,'La referencia de Cambridge no aparece en el dossier');
+   assert.match(await page.locator('#referencia-universitaria').innerText(),/No supone afiliación/,'Debe explicitar falta de aval institucional');
    assert(await page.locator('a[href="documents/edicion-v514.html"]').count()>0,'Falta V514');
    assert(await page.locator('a[href="documents/edicion-v554.html"]').count()>0,'Falta V554');
    assert(await page.locator('a[href="documents/edicion-v297.html"]').count()>0,'Falta V297');
