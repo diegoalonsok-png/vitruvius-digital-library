@@ -18,14 +18,14 @@ main.cesariano{max-width:1380px;padding:27px 18px 70px}
 #ces-image{display:block;max-width:none;margin:0 auto}
 #ces-loupe{display:none;position:fixed;width:200px;height:200px;border:3px solid #c6a36c;border-radius:50%;overflow:hidden;pointer-events:none;z-index:15;background:#eee;box-shadow:0 8px 22px #0006}
 #ces-loupe img{position:absolute;max-width:none}
-.ces-label{background:var(--surface,#eee9e0);padding:13px 17px;margin:12px 0;border-left:3px solid #bc9c67;line-height:1.6}
+.ces-label{background:var(--white,#fffdf8);color:var(--ink,#172b3c);padding:13px 17px;margin:12px 0;border-left:3px solid #bc9c67;line-height:1.6}
 .ces-utility{display:flex;flex-wrap:wrap;gap:15px}
 .ces-utility a{overflow-wrap:anywhere}
 @media(max-width:600px){#ces-stage{height:65vh}#ces-loupe{width:145px;height:145px}.ces-toolbar{gap:12px}}
 
 /* Módulo visual aislado del lector Cesariano existente. */
-.ces-image-browser{border:1px solid #a99776;margin:24px 0;padding:16px 18px;background:var(--surface,#f7f4ee)}
-.ces-image-browser h2{font:normal 26px Georgia,serif;margin:0 0 6px}
+.ces-image-browser{border:1px solid #a99776;margin:24px 0;padding:16px 18px;background:var(--paper,#f7f4ee);color:var(--ink,#172b3c)}
+.ces-image-browser h2{font:normal 26px Georgia,serif;margin:0 0 6px;color:inherit}
 .ces-image-browser form{display:flex;gap:12px;align-items:end;flex-wrap:wrap;padding:13px 0}
 .ces-image-browser label{display:grid;gap:6px;font:13px system-ui,sans-serif;flex:1 1 210px}
 .ces-image-browser select,.ces-image-browser input{padding:10px;border:1px solid #aba18f;background:var(--white,#fffdf8);color:var(--ink,#1b3141);width:100%}
@@ -43,7 +43,7 @@ main.cesariano{max-width:1380px;padding:27px 18px 70px}
 .ces-ocr-hit{padding:15px 0;border-top:1px solid #b9ad94}
 .ces-ocr-hit h4{margin:0;font-size:16px}.ces-ocr-hit p{line-height:1.7;overflow-wrap:anywhere}
 .ces-cross-ref{display:block;grid-column:1/-1;margin:12px 0;font-size:14px;text-decoration:underline}
-.ces-caution{font-size:13px;line-height:1.6;opacity:.86}
+.ces-caution{font-size:13px;line-height:1.6;color:inherit;opacity:1}
 @media(max-width:640px){.ces-image-browser{padding:12px}.ces-images{grid-template-columns:repeat(2,minmax(0,1fr))}.ces-image-card img{height:160px}}
 
 /* Cesariano: contraste consistente en modo oscuro. Solo afecta a este visor.
@@ -100,6 +100,24 @@ html[data-theme="dark"] main.cesariano .ces-image-browser :is(mark,.ces-hit){
 }
 html[data-theme="dark"] main.cesariano .ces-image-card:is(:hover,:focus-visible,.is-current){
  outline-color:#f0c16a!important;
+}
+
+/* Colores heredados del panel: nunca texto claro sobre fondo claro. */
+main.cesariano .ces-image-browser :is(p,label,summary,small,h2,h3,h4,strong),
+main.cesariano .ces-label :is(span,strong) { color:inherit; }
+html[data-theme="dark"] main.cesariano #ces-gallery,
+html[data-theme="dark"] main.cesariano :is(#ces-gallery-panel,#ces-ocr-details) {
+ background-color:#202c38!important;
+ color:#f2ecdf!important;
+}
+html[data-theme="dark"] main.cesariano #ces-gallery :is(h2,p,label,summary,strong,small) {
+ color:#f2ecdf!important;
+}
+html[data-theme="dark"] main.cesariano #ces-gallery :is(#ces-gallery-query,#ces-ocr-query,#ces-gallery-section,#ces-ocr-mode) {
+ background:#273b4d!important;color:#fff6e8!important;
+}
+html[data-theme="dark"] main.cesariano #ces-gallery :is(#ces-gallery-query,#ces-ocr-query)::placeholder {
+ color:#bfcbd3!important;
 }
 </style>
 </head>
