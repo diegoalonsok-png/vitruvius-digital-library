@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "audited_at": "2026-11-02",
+  "scope": "Tres repertorios separados del sitio. Son fichas/registros, no obras o documentos únicos; hay solapamientos.",
+  "primary_catalog": {
+    "source": [
+      "data/catalog.json",
+      "data/historical.json"
+    ],
+    "editions": 8,
+    "historical": 20,
+    "records": 28
+  },
+  "expanded_historical_inventory": {
+    "source": "data/corpus-expansion-inventory.json",
+    "records": 78,
+    "notes": "Parte de las referencias está pendiente de verificación; el repertorio incluye manuscritos y ediciones."
+  },
+  "academic_studies": {
+    "source": "data/academic-studies.json",
+    "records": 69
+  },
+  "total_records_across_repertories": 175,
+  "indexed_editions": {
+    "count": 3,
+    "language_codes": [
+      "es",
+      "fr",
+      "en"
+    ],
+    "pages_by_edition": {
+      "recensio-es": 1157,
+      "recensio-fr": 1166,
+      "theory-en": 1056
+    },
+    "sum_declared_pages": 3379,
+    "passages_by_edition": {
+      "recensio-es": 731,
+      "recensio-fr": 731,
+      "theory-en": 728
+    },
+    "sum_structured_passages": 2190,
+    "caution": "3379 es suma de páginas declaradas en las fichas de los tres libros, no el número de páginas con índice independiente. La búsqueda textual funciona mediante pasajes/loci."
+  },
+  "catalog_pagecounts_all_eight": 6531,
+  "catalog_pagecounts_note": "Sumatoria de páginas declaradas de 8 fichas del catálogo base; no se debe presentar como páginas indexadas ni como total de documentos únicos."
+}
