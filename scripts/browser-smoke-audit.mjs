@@ -258,6 +258,20 @@ try{
    assert(await first.locator('.parallel-translation').isVisible(),'Columna derecha no visible');
    await page.close();
  });
+ await test('Docencia Roma antigua: siete seminarios, traducciones y notas',async()=>{
+   const page=await pageFor('docencia-roma-antigua.html');
+   assert.match(await page.locator('h1').innerText(),/Roma antigua/);
+   const modules=page.locator('.module');
+   assert.equal(await modules.count(),7,'Deben existir siete unidades');
+   assert.equal(await modules.locator('a[href*="lector-bilingue.html"]').count(),21,'Se esperan tres idiomas por unidad');
+   assert.equal(await modules.locator('a[href*="aparato-critico.html?locus="]').count(),7,'Notas académicas ausentes');
+   await modules.first().locator('a[href*="edition=recensio-es"]').first().click();
+   await page.waitForURL(/lector-bilingue\.html\?edition=recensio-es.*locus=1\.1\.1/,{timeout:15000});
+   await page.close();
+   const home=await pageFor('index.html');
+   assert(await home.locator('a[href="docencia-roma-antigua.html"]').count()>0,'No hay acceso a la guía en portada');
+   await home.close();
+ });
  await test('Dossier académico: página visible, ficha de bibliotecas y registros bibliográficos',async()=>{
    const page=await pageFor('bibliotecas-universitarias.html');
    assert.match(await page.locator('h1').innerText(),/Vitruvius Digital Library/);
