@@ -128,10 +128,26 @@ try{
     await page.close();
   }
  });
- await test('Scriptorium S: ficha y enlaces de facsímil',async()=>{
+ await test('Scriptorium S: 205 imágenes locales, galería y búsqueda 27v',async()=>{
    const page=await pageFor('sulpizio-1486.html');
    assert.match(await page.locator('h1').innerText(),/Sulpizio/);
-   assert(await page.locator('a[href*="architectura.univ-tours.fr"]').count()>0,'Falta ficha Architectura');
+   await page.locator('#su-grid button[data-page]').first().waitFor({state:'visible',timeout:20000});
+   assert.equal(await page.locator('#su-grid button[data-page]').count(),24,'La galería S no presenta 24 miniaturas iniciales');
+   const jpeg=await page.request.get(base+'images/sulpizio-1486/0058.jpg',{timeout:15000});
+   assert.equal(jpeg.status(),200,'El folio 27v local no se sirve');
+   assert.deepEqual([...((await jpeg.body()).subarray(0,3))],[255,216,255],'El folio 27v no es JPEG');
+   await page.locator('#su-folio').fill('27v');
+   await page.locator('#su-find').click();
+   assert.equal(await page.locator('#su-page').inputValue(),'58','27v debe ser imagen 58');
+   await page.locator('#su-query').fill('imagen 59');
+   await page.locator('#su-search').click();
+   assert.equal(await page.locator('#su-grid button[data-page]').count(),1,'Búsqueda imagen 59 debe devolver un resultado');
+   await page.locator('#su-grid button[data-page="59"]').click();
+   assert.equal(await page.locator('#su-page').inputValue(),'59','La miniatura 59 no abre su folio');
+   await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+   const colors=await page.locator('#su-gallery').evaluate(el=>({foreground:getComputedStyle(el).color,background:getComputedStyle(el).backgroundColor}));
+   assert.notEqual(colors.foreground,colors.background,'El buscador S es ilegible en modo oscuro');
+   assert(await page.locator('a[href*="digitale-sammlungen.de"]').count()>0,'Falta atribución BSB');
    await page.close();
  });
  await test('Scriptorium: selector abre Barbaro, Giocondo y Sulpizio',async()=>{

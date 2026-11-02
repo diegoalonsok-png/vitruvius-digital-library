@@ -5,6 +5,30 @@ Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Air
 
 **Website:** https://diegoalonsok-png.github.io/vitruvius-digital-library/index.html
 
+## Citable editions (2026) · DOI & full text
+
+Each of Diego A. Kurilo's three editorial works has a distinct, crawlable bibliographic landing page, persistent Zenodo DOI and open-access PDF. These records describe the works; inclusion in search engines or Google Scholar is determined by their external crawlers and is **not guaranteed**.
+
+| Edition | Academic record with PDF | Persistent identifier |
+| --- | --- | --- |
+| V514 · Latin–Spanish provisional recension | [Bibliographic record](documents/edicion-v514.html) | [DOI 10.5281/zenodo.23884757](https://doi.org/10.5281/zenodo.23884757) |
+| V554 · Latin–French provisional recension | [Notice bibliographique](documents/edicion-v554.html) | [DOI 10.5281/zenodo.23885110](https://doi.org/10.5281/zenodo.23885110) |
+| V297 · English-language reading and research edition | [Bibliographic record](documents/edicion-v297.html) | [DOI 10.5281/zenodo.23885404](https://doi.org/10.5281/zenodo.23885404) |
+
+**Project DOI:** [10.5281/zenodo.23868911](https://doi.org/10.5281/zenodo.23868911).
+
+### Historical facsimile reading rooms
+
+- [Harleianus 2767 — H](harleianus.html): manuscript witness.
+- [Editio princeps Sulpizio da Veroli c.1486–1487 — S](sulpizio-1486.html): 205 folio images; Bayerische Staatsbibliothek, Munich.
+- [Fra Giocondo 1511 — G](giocondo-1511.html): 254 IIIF images from e-rara.
+- [Cesare Cesariano 1521 — C](cesariano-1521.html): 390 IIIF images copied for study with institutional attribution.
+- [Daniele Barbaro 1567 — B](barbaro-1567.html): 522 IIIF images served by e-rara.
+
+S, G, C and B are navigation labels for **printed editions**, not critical sigla for manuscript witnesses. Sulpizio and Cesariano images use local copies with source attribution and provenance, while the Giocondo and Barbaro viewers access the original services remotely.
+
+**Discovery:** the site includes [sitemap.xml](sitemap.xml) and [robots.txt](robots.txt), with individual bibliographic records and scholarly search metadata.
+
 ## English — About the project
 
 The Vitruvius Digital Library brings together a catalogue of manuscript witnesses, historical printed editions, translations, and resources for reading and searching *De architectura*. Its research tools support passage references (*loci*), terminology searches and comparison across the indexed editions.
