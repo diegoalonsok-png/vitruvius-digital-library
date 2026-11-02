@@ -29,6 +29,14 @@ S, G, C and B are navigation labels for **printed editions**, not critical sigla
 
 **Discovery:** the site includes [sitemap.xml](sitemap.xml) and [robots.txt](robots.txt), with individual bibliographic records and scholarly search metadata.
 
+## University libraries and subject librarians
+
+**[Academic library dossier / ficha para bibliotecas universitarias](bibliotecas-universitarias.html)**
+
+The site offers open-access, directly citable editorial versions and manuscript / early-print facsimile access. Its cataloguing dossier provides an independent project's scope, editorial limitations, provenance and preservation links, version-specific DOI references, plus [RIS](bibliotecas/vitruvius-biblioteca.ris), [BibTeX](bibliotecas/vitruvius-biblioteca.bib), and [JSON-LD](bibliotecas/vitruvius-biblioteca.jsonld) exports.
+
+A library's independent evaluation, subject-guide inclusion, acquisition or cataloguing decision cannot be inferred from a DOI or a project link.
+
 ## English — About the project
 
 The Vitruvius Digital Library brings together a catalogue of manuscript witnesses, historical printed editions, translations, and resources for reading and searching *De architectura*. Its research tools support passage references (*loci*), terminology searches and comparison across the indexed editions.
