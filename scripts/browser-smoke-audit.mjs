@@ -70,6 +70,47 @@ try{
   }
   await page.close();
  });
+ await test('Scriptorium B y G: galería, navegación y modo oscuro',async()=>{
+  for(const record of [
+    {letter:'B',path:'barbaro-1567.html',total:522,prefix:'bar',first:173,last:214},
+    {letter:'G',path:'giocondo-1511.html',total:254,prefix:'gio',first:73,last:97}
+  ]){
+    const page=await pageFor(record.path);
+    await page.locator('#'+record.prefix+'-gallery-panel').waitFor({state:'visible',timeout:16000});
+    const buttons=page.locator('#'+record.prefix+'-gallery-results button[data-'+record.prefix+'-image]');
+    assert.equal(await buttons.count(),24,'Faltan miniaturas en galería '+record.letter);
+    await page.locator('#'+record.prefix+'-gallery-section').selectOption('4');
+    assert.equal(Number(await buttons.first().getAttribute('data-'+record.prefix+'-image')),record.first,'Libro IV inicia mal en '+record.letter);
+    assert(Number(await buttons.last().getAttribute('data-'+record.prefix+'-image'))<=record.last,'Libro IV fuera de intervalo en '+record.letter);
+    await page.locator('#'+record.prefix+'-gallery-clear').click();
+    await page.locator('#'+record.prefix+'-gallery-query').fill('imagen 100');
+    await page.locator('#'+record.prefix+'-gallery-form button[type=submit]').click();
+    assert.equal(await buttons.count(),1,'Búsqueda imagen 100 no devuelve exactamente una en '+record.letter);
+    await buttons.first().click();
+    assert.equal(await page.locator('#'+record.prefix+'-page').inputValue(),'100','Miniatura no abre página 100 en '+record.letter);
+    assert.match(await page.locator('#'+record.prefix+'-counter').innerText(),new RegExp('100\\s*/\\s*'+record.total),'Contador incorrecto '+record.letter);
+    await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+    const colors=await page.locator('#'+record.prefix+'-gallery').evaluate(el=>({fg:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
+    assert.notEqual(colors.fg,colors.bg,'Colores indistinguibles '+record.letter);
+    await page.close();
+  }
+ });
+ await test('Scriptorium S: ficha y enlaces de facsímil',async()=>{
+   const page=await pageFor('sulpizio-1486.html');
+   assert.match(await page.locator('h1').innerText(),/Sulpizio/);
+   assert(await page.locator('a[href*="architectura.univ-tours.fr"]').count()>0,'Falta ficha Architectura');
+   await page.close();
+ });
+ await test('Scriptorium: selector abre Barbaro, Giocondo y Sulpizio',async()=>{
+   const list=[['print:barbaro-1567','barbaro-1567.html'],['print:giocondo-1511','giocondo-1511.html'],['print:sulpizio-1486','sulpizio-1486.html']];
+   for(const [source,path] of list){
+     const page=await pageFor('scriptorium.html');
+     assert.equal(await page.locator('#source option[value="'+source+'"]').count(),1,'Falta opción '+source);
+     await page.locator('#source').selectOption(source);
+     await page.waitForURL(new RegExp(path.replace('.','\\.')), {timeout:12000});
+     await page.close();
+   }
+ });
  await test('Scriptorium C: botón directo y selector abren Cesariano',async()=>{
   const page=await pageFor('scriptorium.html');
   assert.equal(await page.locator('a[href="cesariano-1521.html"]').count()>0,true,'No aparece botón C');
