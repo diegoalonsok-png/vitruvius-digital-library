@@ -1,0 +1,56 @@
+name: Importar Cesariano 1521 IIIF a GitHub
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-cesariano-iiif.yml'
+permissions:
+  contents: write
+concurrency:
+  group: cesariano-iiif-import
+  cancel-in-progress: false
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 48
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Descargar los 390 folios IIIF de e-rara con Python
+        env:
+          CESARIANO_IMAGE_WIDTH: "1400"
+          CESARIANO_WORKERS: "2"
+        run: python3 scripts/import-cesariano-iiif.py
+      - name: Comprobar cabeceras JPEG e integridad del índice
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          ix=json.load(open('data/iiif/cesariano-1521.json',encoding='utf-8'))
+          rep=json.load(open('data/iiif/cesariano-1521-import-report.json',encoding='utf-8'))
+          assert ix['total']==390 and len(ix['canvases'])==390
+          assert all(r['page']==i for i,r in enumerate(ix['canvases'],1))
+          assert rep['successful']+len(rep['failed'])==390
+          for p in rep['images']:
+              raw=(pathlib.Path('images/cesariano-1521')/f"{p['page']:04d}.jpg").read_bytes()
+              assert raw[:3]==b'\xff\xd8\xff' and raw[-2:]==b'\xff\xd9'
+          print(f"Índice verificado: {rep['successful']}/390 imágenes; {len(rep['failed'])} pendientes")
+          PY
+      - name: Publicar solamente los folios Cesariano y sus metadatos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/cesariano-1521/ data/iiif/cesariano-1521.json data/iiif/cesariano-1521-import-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar copia de estudio IIIF Cesariano 1521, imágenes y trazabilidad"
+            git push
+          fi
+      - name: Confirmar importación completa
+        run: |
+          python3 - <<'PY'
+          import json
+          report=json.load(open('data/iiif/cesariano-1521-import-report.json'))
+          if report['successful']!=390 or report['failed']:
+              raise SystemExit(f"Importación parcial: {report['successful']}/390; revisar reporte y reejecutar.")
+          print('390/390 imágenes publicadas correctamente.')
+          PY
