@@ -142,9 +142,10 @@ async function load(){
   const labels=[['','Todas las imágenes'],...sections.map(s=>[s.id,s.label+' · '+s.start+'–'+s.end])];
   chooser.replaceChildren(...labels.map(([v,title])=>{const opt=document.createElement('option');opt.value=v;opt.textContent=title;return opt;}));
   sourceReady=true;
+  // Crear las miniaturas antes de mostrar el panel evita un estado visible vacío.
+  updateGallery();
   $('ces-gallery-start').hidden=true;
   $('ces-gallery-panel').hidden=false;
-  updateGallery();
  }catch(err){
   $('ces-gallery-start').textContent='No se pudo cargar la galería: '+err.message;
  }
