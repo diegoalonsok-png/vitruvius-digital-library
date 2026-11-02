@@ -229,6 +229,35 @@ try{
   await page.waitForTimeout(250);
   await page.close();
  });
+ await test('Buscador principal: latín fijo y traducciones ES FR EN del mismo locus',async()=>{
+   const page=await pageFor('index.html');
+   await page.locator('#query').fill('II.7.2');
+   await page.locator('#search-button').click();
+   const first=page.locator('#search-results .result-parallel').first();
+   await first.waitFor({state:'visible',timeout:25000});
+   assert.equal(await page.locator('#search-results .parallel-columns').count(),1,'Un locus repetido debe aparecer una vez como pareja');
+   assert.match(await first.locator('.parallel-latin').innerText(),/Sed haec|haec omnia/i,'No aparece el latín de II.7.2');
+   const latinBefore=await first.locator('.parallel-latin .parallel-passage').innerText();
+   const translated=first.locator('.parallel-translation-text');
+   await page.waitForFunction(()=>{
+     const t=document.querySelector('.parallel-translation-text')?.textContent||'';
+     return t.length>80&&!/Cargando traducción|No se pudo cargar/.test(t);
+   },null,{timeout:25000});
+   const spanish=await translated.innerText();
+   assert.match(await first.locator('.parallel-translation-source').innerText(),/V514/,'Falta atribución V514');
+   await first.locator('.parallel-language').selectOption('fr');
+   await page.waitForFunction(()=>document.querySelector('.parallel-translation-source')?.textContent?.includes('V554'),null,{timeout:25000});
+   const french=await translated.innerText();
+   assert(french.length>80&&french!==spanish,'El cambio a francés no actualiza la traducción');
+   assert.equal(await first.locator('.parallel-latin .parallel-passage').innerText(),latinBefore,'El texto latino cambió de forma indebida');
+   await first.locator('.parallel-language').selectOption('en');
+   await page.waitForFunction(()=>document.querySelector('.parallel-translation-source')?.textContent?.includes('V297'),null,{timeout:25000});
+   const english=await translated.innerText();
+   assert(english.length>80&&english!==french,'El cambio a inglés no actualiza la traducción');
+   assert.equal(await first.locator('.parallel-latin .parallel-passage').innerText(),latinBefore,'El latín cambió al seleccionar inglés');
+   assert(await first.locator('.parallel-translation').isVisible(),'Columna derecha no visible');
+   await page.close();
+ });
  await test('Bibliografía: botones de ejemplo y restablecer filtros',async()=>{
   const page=await pageFor('bibliografia.html');
   await page.locator('[data-example="Gudianus"]').click();
