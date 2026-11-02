@@ -1,0 +1,58 @@
+name: Importar Sulpizio 1486 IIIF BSB a GitHub
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-sulpizio-iiif.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sulpizio-bsb-import
+  cancel-in-progress: false
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 48
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Descargar 205 imágenes de BSB en su orden institucional
+        env:
+          SULPIZIO_WIDTH: "1000"
+          SULPIZIO_WORKERS: "2"
+        run: python3 scripts/import-sulpizio-iiif.py
+      - name: Validar índice, folios y bytes JPEG
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          ix=json.load(open('data/iiif/sulpizio-1486.json',encoding='utf-8'))
+          rep=json.load(open('data/iiif/sulpizio-1486-import-report.json',encoding='utf-8'))
+          assert ix['total']==205 and len(ix['canvases'])==205
+          assert ix['canvases'][4]['iiif_label'].startswith('1r')
+          assert ix['canvases'][5]['iiif_label'].startswith('1v')
+          assert ix['canvases'][199]['iiif_label'].startswith('98v')
+          assert rep['successful']+len(rep['failed'])==205
+          for p in rep['images']:
+              raw=(pathlib.Path('images/sulpizio-1486')/f"{p['page']:04d}.jpg").read_bytes()
+              assert raw[:3]==b'\xff\xd8\xff' and raw[-2:]==b'\xff\xd9'
+          print(f"BSB: {rep['successful']}/205 folios íntegros")
+          PY
+      - name: Publicar SOLO Sulpizio, sin modificar H C G B
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/sulpizio-1486/ data/iiif/sulpizio-1486.json data/iiif/sulpizio-1486-import-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar copia de estudio de Sulpizio 1486 BSB · folios IIIF"
+            git push
+          fi
+      - name: Confirmar finalización total
+        run: |
+          python3 - <<'PY'
+          import json
+          r=json.load(open('data/iiif/sulpizio-1486-import-report.json'))
+          if r['successful']!=205 or r['failed']:
+              raise SystemExit(f"Importación parcial {r['successful']}/205; reejecutar para completar")
+          print('205/205 folios Sulpizio completos')
+          PY
