@@ -35,6 +35,41 @@ try{
   assert.match(await page.locator('#ces-counter').innerText(),/150\s*\/\s*390/,'Contador de lectura incorrecto');
   await page.close();
  });
+ await test('Scriptorium C: contraste legible de cuadros y botones en claro y oscuro',async()=>{
+  const page=await pageFor('cesariano-1521.html');
+  await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:15000});
+  for(const mode of ['light','dark']){
+   const observations=await page.evaluate(mode=>{
+    document.documentElement.dataset.theme=mode;
+    const rgb=s=>String(s).match(/[\d.]+/g)?.slice(0,3).map(Number)||[0,0,0];
+    const lum=arr=>{
+     const v=arr.map(c=>{const a=c/255;return a<=0.04045?a/12.92:((a+0.055)/1.055)**2.4;});
+     return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];
+    };
+    const contrast=(a,b)=>{const x=lum(rgb(a)),y=lum(rgb(b));return ((Math.max(x,y)+0.05)/(Math.min(x,y)+0.05));};
+    const pairs=[
+      ['#ces-gallery','#ces-gallery h2'],
+      ['#ces-gallery','#ces-gallery p'],
+      ['#ces-gallery','#ces-gallery form label'],
+      ['#ces-gallery','#ces-ocr-details summary'],
+      ['#ces-gallery-section','#ces-gallery-section'],
+      ['#ces-gallery-query','#ces-gallery-query'],
+      ['#ces-gallery #ces-gallery-form button[type="submit"]','#ces-gallery #ces-gallery-form button[type="submit"]'],
+      ['#ces-gallery .ces-image-card','#ces-gallery .ces-image-card .ces-image-number'],
+      ['.ces-label','.ces-label strong']
+    ];
+    return pairs.map(([surface,foreground])=>{
+      const bg=getComputedStyle(document.querySelector(surface)).backgroundColor;
+      const fg=getComputedStyle(document.querySelector(foreground)).color;
+      return {surface,foreground,bg,fg,ratio:contrast(bg,fg)};
+    });
+   },mode);
+   console.log('CESARIANO CONTRASTE '+mode.toUpperCase()+': '+JSON.stringify(observations));
+   for(const x of observations)assert(x.ratio>=4.5,
+    'Contraste '+mode+' insuficiente en '+x.foreground+': '+x.ratio.toFixed(2)+' ('+x.fg+' sobre '+x.bg+')');
+  }
+  await page.close();
+ });
  await test('Scriptorium C: botón directo y selector abren Cesariano',async()=>{
   const page=await pageFor('scriptorium.html');
   assert.equal(await page.locator('a[href="cesariano-1521.html"]').count()>0,true,'No aparece botón C');
