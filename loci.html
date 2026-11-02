@@ -11,6 +11,12 @@ h1{color:#0A1931;border-bottom:3px solid #C9A86A}
 .loci a[hidden],.libro[hidden]{display:none!important}\n.loci a:hover{background:#C9A86A;color:#0A1931}
 .search{position:sticky;top:0;background:#f9f6f0;padding:10px;z-index:10}
 .search input{width:100%;padding:10px;font-size:16px;border:2px solid #C9A86A}
+/* Contraste de los encabezados de libros en modo oscuro: sin alterar el modo claro. */
+html[data-theme="dark"] .libro{background:#233441;color:#e9e5dc;border-left-color:#d1b678}
+html[data-theme="dark"] .libro h2{color:#e5c789;border-bottom:1px solid #637382;padding-bottom:7px}
+html[data-theme="dark"] .search{background:#151e27;color:#e9e5dc}
+html[data-theme="dark"] .search input{background:#26333e;color:#f1ede4;border-color:#d1b678}
+
 </style>
 </head>
 <body>
