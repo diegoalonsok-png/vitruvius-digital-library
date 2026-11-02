@@ -94,14 +94,42 @@ function sameReference(noteLocus,ref){
  const parsed=parseLocus(noteLocus);
  return !!parsed&&parsed.book===ref.book&&(ref.chapter==null||String(parsed.chapter)===String(ref.chapter))&&(ref.section==null||parsed.section===ref.section);
 }
-function renderNotes(notes,q,ref){
+// Conservative textual linking: exact runs of seven or more substantial words.
+function anchorLocusEvidence(note,passages){
+ const normalize=text=>String(text||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ const anchor=normalize(note.anchor);
+ if(anchor.length<60)return null;
+ let best=null;
+ for(const passage of passages||[]){
+  for(const field of ['translation','latin']){
+   const tokens=normalize(passage[field]).split(' ').filter(Boolean);
+   for(let i=0;i+7<=tokens.length;i++){
+    const run=tokens.slice(i,i+7);
+    if(run.filter(w=>w.length>=4).length<4)continue;
+    const phrase=run.join(' ');
+    if(anchor.includes(phrase)&&(best===null||phrase.length>best.length))best={locus:passage.locus,length:phrase.length,field};
+   }
+  }
+ }
+ return best;
+}
+function renderNotes(notes,q,ref,passagesByEdition={}){
  const container=$('#critical-note-results');if(!container)return;
  container.replaceChildren();
  const selected=$('#critical-edition')?.value||'all';
+ const inferred=new Map();
  const filtered=notes.filter(n=>{
   if(selected!=='all'&&selected!==n.edition)return false;
   const locus=n.locus||n.candidate_locus||'';
-  if(ref)return sameReference(locus,ref);
+  if(ref){
+   if(sameReference(locus,ref))return true;
+   // Never override an explicit contradictory locus with a machine inference.
+   if(n.locus)return false;
+   const passageList=passagesByEdition[n.edition]||[];
+   const evidence=anchorLocusEvidence(n,passageList);
+   if(evidence){inferred.set(n,evidence);return true;}
+   return false;
+  }
   const hay=[n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(' ');
   const queryWords=[...new Set(norm(q).match(/[\p{L}\p{N}]{3,}/gu)||[])];
   if(!queryWords.length)return norm(hay).includes(norm(q));
@@ -124,7 +152,9 @@ function renderNotes(notes,q,ref){
  const count=$('#critical-note-status');if(count)count.textContent=filtered.length+' notas críticas encontradas en el corpus de 811 notas. '+(ref?'Se indican los loci explícitos o candidatos, sin tratarlos como variantes verificadas.':'');
  for(const n of filtered.slice(0,70)){
   const card=document.createElement('article');card.className='critical-result';
-  const locus=n.locus||n.candidate_locus;const status=n.locus?'Locus explícito en la fuente':n.candidate_locus?'Locus sugerido, pendiente de cotejo':'Sin locus verificado';
+  const inference=inferred.get(n);
+  const locus=n.locus||n.candidate_locus||inference?.locus;
+  const status=n.locus?'Locus explícito en la fuente':inference?'Anclaje textual exacto de 7 palabras, pendiente de cotejo':n.candidate_locus?'Locus sugerido, pendiente de cotejo':'Sin locus verificado';
   const ed=editions.find(e=>e.id===n.edition);const textNote=String(n.text||'');
   card.innerHTML='<p class="meta">'+escape(ed?.name||n.edition)+' · Nota '+escape(n.footnote_id)+' · '+escape(status)+'</p>'+
    '<h3>'+escape(locus?'Vitr., De arch. '+locus:'Nota crítica sin locus asignado')+'</h3>'+
