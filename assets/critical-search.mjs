@@ -96,7 +96,7 @@ function sameReference(noteLocus,ref){
 }
 // Conservative textual linking: exact runs of seven or more substantial words.
 function anchorLocusEvidence(note,passages){
- const normalize=text=>String(text||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ const normalize=text=>String(text||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
  const anchor=normalize(note.anchor);
  if(anchor.length<60)return null;
  let best=null;
@@ -122,7 +122,7 @@ function renderNotes(notes,q,ref,passagesByEdition={}){
   if(selected!=='all'&&selected!==n.edition)return false;
   const locus=n.locus||n.candidate_locus||'';
   if(ref){
-   if(sameReference(locus,ref))return true;
+   if(sameReference(n.locus,ref)||sameReference(n.candidate_locus,ref))return true;
    // Never override an explicit contradictory locus with a machine inference.
    if(n.locus)return false;
    const passageList=passagesByEdition[n.edition]||[];
@@ -153,8 +153,10 @@ function renderNotes(notes,q,ref,passagesByEdition={}){
  for(const n of filtered.slice(0,70)){
   const card=document.createElement('article');card.className='critical-result';
   const inference=inferred.get(n);
-  const locus=n.locus||n.candidate_locus||inference?.locus;
-  const status=n.locus?'Locus explícito en la fuente':inference?'Anclaje textual exacto de 7 palabras, pendiente de cotejo':n.candidate_locus?'Locus sugerido, pendiente de cotejo':'Sin locus verificado';
+  const exactMatch=ref&&sameReference(n.locus,ref);
+  const candidateMatch=ref&&sameReference(n.candidate_locus,ref);
+  const locus=exactMatch?n.locus:candidateMatch?n.candidate_locus:inference?.locus||n.locus||n.candidate_locus;
+  const status=exactMatch||(!ref&&n.locus)?'Locus explícito en la fuente':candidateMatch?'Locus candidato, pendiente de cotejo':inference?'Anclaje textual exacto de 7 palabras, pendiente de cotejo':n.candidate_locus?'Locus sugerido, pendiente de cotejo':'Sin locus verificado';
   const ed=editions.find(e=>e.id===n.edition);const textNote=String(n.text||'');
   card.innerHTML='<p class="meta">'+escape(ed?.name||n.edition)+' · Nota '+escape(n.footnote_id)+' · '+escape(status)+'</p>'+
    '<h3>'+escape(locus?'Vitr., De arch. '+locus:'Nota crítica sin locus asignado')+'</h3>'+
