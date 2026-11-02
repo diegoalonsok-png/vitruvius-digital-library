@@ -45,6 +45,62 @@ main.cesariano{max-width:1380px;padding:27px 18px 70px}
 .ces-cross-ref{display:block;grid-column:1/-1;margin:12px 0;font-size:14px;text-decoration:underline}
 .ces-caution{font-size:13px;line-height:1.6;opacity:.86}
 @media(max-width:640px){.ces-image-browser{padding:12px}.ces-images{grid-template-columns:repeat(2,minmax(0,1fr))}.ces-image-card img{height:160px}}
+
+/* Cesariano: contraste consistente en modo oscuro. Solo afecta a este visor.
+   Mantener intacto el tema claro y todos los lectores compartidos. */
+html[data-theme="dark"] main.cesariano :is(.ces-image-browser,.ces-toolbar,.ces-label){
+ background:#202c38!important;color:#f2ecdf!important;border-color:#71808b!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-browser :is(h2,h3,h4,p,label,summary,small,strong),
+html[data-theme="dark"] main.cesariano .ces-toolbar :is(label,output),
+html[data-theme="dark"] main.cesariano .ces-label :is(strong,span){
+ color:#f2ecdf!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-browser :is(input,select),
+html[data-theme="dark"] main.cesariano .ces-toolbar :is(input[type="number"],input[type="search"]){
+ background:#273b4d!important;color:#fff6e8!important;
+ border:1px solid #91a3b1!important;color-scheme:dark;
+}
+html[data-theme="dark"] main.cesariano .ces-image-browser :is(input,select)::placeholder,
+html[data-theme="dark"] main.cesariano .ces-toolbar input::placeholder{
+ color:#bdcbd5!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-browser select :is(option,optgroup){
+ background:#273b4d!important;color:#fff6e8!important;
+}
+html[data-theme="dark"] main.cesariano :is(.ces-image-browser button,.ces-toolbar button,.ces-gallery-more){
+ background:#30485d!important;color:#fff1dc!important;
+ border:1px solid #8c9eae!important;
+}
+html[data-theme="dark"] main.cesariano :is(.ces-image-browser button,.ces-toolbar button,.ces-gallery-more):hover{
+ background:#3e5a70!important;color:#fff!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-card{
+ background:#283b4b!important;color:#f3eadd!important;
+ border-color:#8b9ba9!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-card :is(span,small){
+ color:#f2ecdf!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-card img{
+ background:#ddd5c7; /* El papel del facsímil mantiene su apariencia original. */
+}
+html[data-theme="dark"] main.cesariano .ces-gallery-scroll{
+ background:#17232f!important;color:#f2ecdf!important;
+ border-color:#73818b!important;
+}
+html[data-theme="dark"] main.cesariano :is(.ces-ocr-hit,.ces-image-browser details){
+ border-color:#71808b!important;color:#f2ecdf!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-browser :is(a,a:visited){
+ color:#d6c28e!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-browser :is(mark,.ces-hit){
+ background:#ffe45a!important;color:#182633!important;
+}
+html[data-theme="dark"] main.cesariano .ces-image-card:is(:hover,:focus-visible,.is-current){
+ outline-color:#f0c16a!important;
+}
 </style>
 </head>
 <body><main class="wrap cesariano">
