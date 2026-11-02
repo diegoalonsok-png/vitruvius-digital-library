@@ -1,16 +1,45 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Index codicum · Stemmata codicum — Vitruvius Digital Library</title><meta name="description" content="Índice codicológico de los manuscritos vitruvianos y modelos historiográficos de su transmisión."><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css"></head>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Index codicum · Stemmata codicum — Vitruvius Digital Library</title><meta name="description" content="Índice codicológico de los manuscritos vitruvianos y modelos historiográficos de su transmisión."><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css"><style>
+/* Stemmata / árboles codicum: contraste legible en temas claro y oscuro. */
+.codicum-stemma{
+ display:block;box-sizing:border-box;max-width:100%;overflow-x:auto;
+ margin:16px 0 22px;padding:22px 26px;
+ background:#fffdf6!important;color:#152b3c!important;
+ border:2px solid #8b7450!important;border-left:7px solid #8b7450!important;
+ border-radius:8px;font:600 clamp(16px,1.5vw,19px)/2.0 ui-monospace,Menlo,Consolas,"DejaVu Sans Mono",monospace!important;
+ white-space:pre;letter-spacing:.01em;
+ box-shadow:0 3px 16px rgba(15,30,45,.09);
+}
+html[data-theme="dark"] .codicum-stemma{
+ background:#172938!important;color:#fff6e7!important;
+ border-color:#caa96c!important;
+ box-shadow:0 2px 16px rgba(0,0,0,.2);
+}
+@media(max-width:720px){.codicum-stemma{padding:15px 16px;font-size:16px!important;line-height:1.9!important}}
+</style></head>
 <body><main class="wrap" style="max-width:1000px;padding:48px 16px 80px">
 <p><a href="index.html">← Biblioteca</a> · <a href="bibliografia.html">Catálogo codicológico general</a> · <a href="facsimiles.html">Facsímiles</a></p>
 <p class="eyebrow">TESTIMONIA · TRADITIO TEXTVS</p><h1>Index codicum et stemmata</h1>
 <p>Índice de testigos manuscritos de <em>De architectura</em> y esquemas filológicos comparados. Las <strong>siglas</strong> dependen de la edición crítica que las emplea: no son sustitutos de las signaturas de biblioteca. El árbol no constituye una prueba automática de parentesco textual.</p>
-<h2>Index codicum</h2><p><strong>Nuevo catálogo especial:</strong> <a href="codices-vaticanos.html">cinco testimonios vitruvianos de la Biblioteca Apostólica Vaticana</a>, con signaturas, fuentes y enlaces oficiales o de repertorio. Las imágenes permanecen en el sistema de la Biblioteca Vaticana y no se republican sin permiso.</p><p>Consultá el <a href="bibliografia.html?group=manuscripts">catálogo de manuscritos</a> para conocer las signaturas, dataciones, lugares de conservación y fuentes. Los enlaces individuales conducen a registros y reproducciones institucionales.</p>
+<h2>Index codicum</h2>
+<section aria-label="Accesos externos sin crear visores" style="padding:16px 20px;margin:15px 0 22px;border:1px solid var(--line);background:var(--white);color:var(--ink)">
+<h2 style="font-size:23px;margin:2px 0 8px">Manuscritos internacionales · solo catálogo y enlace institucional</h2>
+<p>Para preservar espacio en GitHub, los siguientes códices se incorporan como <strong>fichas documentales con acceso al catálogo o facsímil de su biblioteca</strong>. No descargamos folios, no duplicamos fotografías y no creamos nuevos visores. El <a href="harleianus.html">visor H</a> existente se conserva sin cambios.</p>
+<ul>
+<li><strong>Inglaterra · British Library:</strong> <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">Harley MS 2767 (H)</a> y <a href="https://catalogue.etoncollege.com/B50099" target="_blank" rel="noopener">Eton College Library MS 137</a>.</li>
+<li><strong>Francia · BnF:</strong> <a href="https://gallica.bnf.fr/ark:/12148/btv1b9066098j" target="_blank" rel="noopener">Parisinus lat. 10277 (Pithoeanus)</a>; <strong>Sélestat:</strong> <a href="https://arca.irht.cnrs.fr/ark%3A/63955/md41mg74rm3w" target="_blank" rel="noopener">MS 17</a>.</li>
+<li><strong>Italia · Florencia:</strong> <a href="https://iiif.biblissima.fr/collections/manifest/31fffbc12aa4358a793393a55a30643bc94b4a62" target="_blank" rel="noopener">Biblioteca Medicea Laurenziana, Plut. 30.13</a>.</li>
+<li><strong>Vaticano:</strong> <a href="codices-vaticanos.html">catálogo de cinco referencias de la Biblioteca Apostólica Vaticana</a>, sin republicación de imágenes.</li>
+</ul>
+<p style="font-size:12px">Las signaturas y fuentes se registran en el inventario general. La inclusión de un enlace no implica autorización de reproducción ni colaboración institucional. Los impresos renacentistas conservan sus lectores ya existentes.</p>
+</section>
+<p><strong>Nuevo catálogo especial:</strong> <a href="codices-vaticanos.html">cinco testimonios vitruvianos de la Biblioteca Apostólica Vaticana</a>, con signaturas, fuentes y enlaces oficiales o de repertorio. Las imágenes permanecen en el sistema de la Biblioteca Vaticana y no se republican sin permiso.</p><p>Consultá el <a href="bibliografia.html?group=manuscripts">catálogo de manuscritos</a> para conocer las signaturas, dataciones, lugares de conservación y fuentes. Los enlaces individuales conducen a registros y reproducciones institucionales.</p>
 <div id="codices" aria-live="polite"><p>Abriendo índice de manuscritos…</p></div>
 <h2>Stemmata codicum · comparación crítica</h2>
 <p>Las figuras son modelos historiográficos <strong>no intercambiables</strong>. Una línea de dependencia solo debe considerarse establecida cuando esté respaldada por errores conjuntivos y separativos en los loci pertinentes. Las ediciones de Diego Kurilo presentan esquemas de H y una hipótesis α/β con advertencias sobre su simplificación; se contrastan aquí con estudios textuales externos.</p>
 <h3>Rose · segunda edición crítica, 1899</h3>
 <p>Rose organiza una tradición asociada a <strong>H</strong> (Harleianus 2767), donde sitúa testigos como L, e y P (Parisinus lat. 10277, Pithoeanus), y distingue <strong>G</strong> (Gudianus 69) y <strong>E</strong> (Gudianus 132, epitome). El <strong>S</strong> (Scletstatensis 17, olim 1153 bis) muestra correcciones y contaminación entre tradiciones: no debe asignarse sin reservas a una rama pura.</p>
-<pre style="white-space:pre;overflow:auto;border:1px solid #b8b3a9;background:#fffdf8;padding:16px;line-height:1.8">Testigos de Rose (esquema orientativo, NO árbol exhaustivo)
+<pre class="codicum-stemma" role="figure" aria-label="Esquema textual de transmisión manuscrita">Testigos de Rose (esquema orientativo, NO árbol exhaustivo)
   H ── L · e · P → otros descendientes
   S ── tradición de H con contaminación textual
   G ── Gudianus 69
@@ -19,7 +48,7 @@
 <p>Fuente: Valentin Rose, ed., <em>Vitruvii de architectura libri decem</em>, 2.ª ed. (Leipzig: Teubner, 1899), prefacio y «Vitruvii codices antiqui». <a href="https://www.gutenberg.org/files/51812/51812-h/51812-h.htm" target="_blank" rel="noopener noreferrer">Consultar texto de Rose ↗</a></p>
 <h3>Ruffel y Soubiran · 1960</h3>
 <p>La descripción filológica de esta propuesta distingue seis testimonios principales, <strong>E, G, H, S, V y W</strong>, y sitúa otros manuscritos en la descendencia de H. Los seis testigos no equivalen a seis ramas de la misma extensión documental.</p>
-<pre style="white-space:pre;overflow:auto;border:1px solid #b8b3a9;background:#fffdf8;padding:16px;line-height:1.8">Principales testigos considerados:
+<pre class="codicum-stemma" role="figure" aria-label="Esquema textual de transmisión manuscrita">Principales testigos considerados:
 E   G   H   S   V   W
 
 H → L, e, P, v, f, p, b, l, c, h
@@ -27,7 +56,7 @@ H → L, e, P, v, f, p, b, l, c, h
 </pre>
 <p>Fuente: Pierre Ruffel y Jean Soubiran, estudio de la tradición manuscrita de Vitruvio, <em>Pallas</em> 9, fasc. 2 (1960): 3–154. Se ofrece una enumeración sintética de testigos, no una reconstrucción gráfica íntegra.</p>
 <h3>Chausserie-Laprée · 1969: texto largo y texto corto</h3>
-<pre style="white-space:pre;overflow:auto;border:1px solid #b8b3a9;background:#fffdf8;padding:16px;line-height:1.8">Hipótesis de agrupamiento textual
+<pre class="codicum-stemma" role="figure" aria-label="Esquema textual de transmisión manuscrita">Hipótesis de agrupamiento textual
   Texto largo:   E · G
   Texto corto:   H · W · V · S
 </pre>

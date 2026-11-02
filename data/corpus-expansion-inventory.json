@@ -553,10 +553,10 @@
       "status": "bibliographic_lead",
       "searchable": false,
       "document_url": null,
-      "verification": "pending",
+      "verification": "catalog_link_existing",
       "citation_standard": "Chicago 18 (2024), notes-bibliography",
       "citation_status": "provisional",
-      "bibliographic_note": "Parisinus 10277 (P). BnF. X. Signatura y folios por verificar.",
+      "bibliographic_note": "Parisinus lat. 10277 (P). BnF, s. X; facsímil digital disponible en Gallica. Folios por cotejar.",
       "id": "hist-011",
       "original_inventory": {
         "title": "Parisinus 10277 (P)",
@@ -571,12 +571,17 @@
         "Codex Parisinus 10277"
       ],
       "reviewed_at": "2026-10-30",
-      "metadata_status": "provisional",
-      "source_note": "Inventario de investigación facilitado por Diego Kurilo; identificación de la edición y cotejo de ejemplar pendientes.",
-      "sources": [],
+      "metadata_status": "documented",
+      "source_note": "La signatura y la digitalización se documentan en el repertorio de manuscritos digitalizados de la BnF. El cotejo folio-a-folio con la recensión crítica sigue pendiente.",
+      "sources": [
+        {
+          "label": "BnF · Gallica, Latin 10277",
+          "url": "https://gallica.bnf.fr/ark:/12148/btv1b9066098j"
+        }
+      ],
       "history_note": "Testimonio consignado en el inventario de la tradición manuscrita. Su datación, procedencia y contenido requieren cotejo del catálogo y del códice antes de establecer relaciones de filiación.",
       "kind": "manuscript",
-      "shelfmark": "Latin 10277 (por verificar)",
+      "shelfmark": "Latin 10277",
       "institution": "Bibliothèque nationale de France",
       "conservation_place": "París",
       "origin_place": null,
@@ -589,7 +594,8 @@
       "date_end": 1000,
       "siglum_source": "https://www.centrostudivitruviani.org/wp-content/uploads/2022/10/Quel_s_Vitruve_Le_De_architectura_au_deb.pdf",
       "siglum_note": "Sigla de la tradición crítica recogidas en F. P. Di Teodoro, «Quel(s) Vitruve?». Su valor depende de la edición; mayúsculas y minúsculas se distinguen.",
-      "citation_text": "París, Bibliothèque nationale de France, Latin 10277 (por verificar). De architectura. s. X · datación por cotejar. Ficha provisional: datos por cotejar."
+      "citation_text": "Paris, Bibliothèque nationale de France, Latin 10277, De architectura, s. X (datación a cotejar).",
+      "view_url": "https://gallica.bnf.fr/ark:/12148/btv1b9066098j"
     },
     {
       "group": "manuscripts",
@@ -3476,6 +3482,116 @@
       "date_end": 1564,
       "responsibility": "Lázaro de Velasco, traductor",
       "citation_text": "Lázaro de Velasco. Los diez libros de arquitectura de Marco Vitruvio Polión. Manuscrito, ca. 1564. Cáceres, Biblioteca Pública, Mss-2."
+    },
+    {
+      "group": "manuscripts",
+      "title": "Eton College Library MS 137",
+      "place": "Eton College Library",
+      "date": "1300–1500",
+      "languages": [
+        "la"
+      ],
+      "status": "bibliographic_lead",
+      "searchable": false,
+      "document_url": null,
+      "verification": "catalog_link_existing",
+      "view_url": "https://catalogue.etoncollege.com/B50099",
+      "link_type": "ficha institucional externa, sin visor local",
+      "citation_standard": "Chicago 18 (2024), notes-bibliography",
+      "citation_status": "provisional",
+      "bibliographic_note": "Eton College Library MS 137. Italia, s. XIV–XV. Vitruvii De architectura libri X. Reproducción disponible solo bajo las condiciones de Eton College.",
+      "id": "hist-077",
+      "display_title": "Eton College Library MS 137 · Vitruvio",
+      "aliases": [
+        "Eton MS 137",
+        "Eton College Library MS 137",
+        "MS 137",
+        "Eton Vitruvius"
+      ],
+      "reviewed_at": "2026-11-02",
+      "metadata_status": "documented",
+      "source_note": "La ficha oficial de Eton describe manuscrito latino de Vitruvio, origen italiano y datación 1300–1500. No se descarga ni republica material digital de la institución.",
+      "sources": [
+        {
+          "label": "Eton College Collections, MS 137",
+          "url": "https://catalogue.etoncollege.com/B50099"
+        }
+      ],
+      "history_note": "Ejemplar documentado en la colección de Eton; la ficha indica materiales y trayectoria de Bernardo Bembo y Sir Henry Wotton. No se debe confundir con el manuscrito Harley MS 2767.",
+      "kind": "manuscript",
+      "shelfmark": "MS 137",
+      "institution": "Eton College Library",
+      "conservation_place": "Eton, Inglaterra",
+      "origin_place": "Italia",
+      "siglum": null,
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "Vitruvii De architectura libri X",
+      "date_display": "s. XIV–XV",
+      "date_start": 1300,
+      "date_end": 1500,
+      "siglum_source": null,
+      "siglum_note": "No se atribuye sigla editorial sin comprobar la tradición crítica.",
+      "material": "Pergamino; 64 folios, según catálogo",
+      "folios": "f. 1–62, foliación medieval según ficha (cotejo de pasajes pendiente)",
+      "citation_text": "Eton College Library, MS 137. Vitruvius, De architectura. Italia, s. XIV–XV."
+    },
+    {
+      "group": "manuscripts",
+      "title": "Laurenziana Plut. 30.13",
+      "place": "Biblioteca Medicea Laurenziana",
+      "date": "1201–1300",
+      "languages": [
+        "la"
+      ],
+      "status": "bibliographic_lead",
+      "searchable": false,
+      "document_url": null,
+      "verification": "catalog_link_existing",
+      "view_url": "https://iiif.biblissima.fr/collections/manifest/31fffbc12aa4358a793393a55a30643bc94b4a62",
+      "link_type": "ficha institucional externa y manifiesto remoto, sin visor local",
+      "citation_standard": "Chicago 18 (2024), notes-bibliography",
+      "citation_status": "provisional",
+      "bibliographic_note": "Firenze, Biblioteca Medicea Laurenziana, Plut. 30.13, s. XIII. Vitruvius, De architectura libri X. Catálogo Biblissima con fuente Teca digitale BML.",
+      "id": "hist-078",
+      "display_title": "Codex Laurentianus Plut. 30.13",
+      "aliases": [
+        "Laurenziana Plut.30.13",
+        "Plut. 30.13",
+        "Laurentianus 30.13",
+        "Vitruvius Laurentianus"
+      ],
+      "reviewed_at": "2026-11-02",
+      "metadata_status": "documented",
+      "source_note": "Biblissima identifica signatura, obra, datación 1201–1300 y origen de las imágenes digitales en la Teca Digitale de la Biblioteca Medicea Laurenziana. En la biblioteca digital del proyecto solo se usa la referencia externa.",
+      "sources": [
+        {
+          "label": "Biblissima / Biblioteca Medicea Laurenziana, Plut.30.13",
+          "url": "https://iiif.biblissima.fr/collections/manifest/31fffbc12aa4358a793393a55a30643bc94b4a62"
+        },
+        {
+          "label": "Teca digitale BML, ejemplar Plut.30.13",
+          "url": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/575927"
+        }
+      ],
+      "history_note": "Testimonio latino conservado en Florencia; 53 folios según ficha Biblissima. No se asignan correspondencias libro-capítulo-folio sin cotejo.",
+      "kind": "manuscript",
+      "shelfmark": "Plut. 30.13",
+      "institution": "Biblioteca Medicea Laurenziana",
+      "conservation_place": "Florencia, Italia",
+      "origin_place": null,
+      "siglum": null,
+      "work_title": "De architectura",
+      "title_language": "la",
+      "scope": "De architectura libri X, según catálogo",
+      "date_display": "s. XIII",
+      "date_start": 1201,
+      "date_end": 1300,
+      "siglum_source": null,
+      "siglum_note": "No se adjudica sigla textual sin comprobación editorial.",
+      "material": "Pergamino; 53 folios (catálogo Biblissima)",
+      "folios": "53 folios en total; desglose textual por cotejar",
+      "citation_text": "Firenze, Biblioteca Medicea Laurenziana, Plut. 30.13. Vitruvius, De architectura. s. XIII."
     }
   ],
   "editorial_policy": {
@@ -3494,7 +3610,8 @@
       "No confundir PDF vinculado con corpus indexado",
       "Para Chicago 18, lugar de publicación no obligatorio en referencias de libros"
     ],
-    "sigla": "Sigla dependientes de la edición crítica; no son identificadores universales."
+    "sigla": "Sigla dependientes de la edición crítica; no son identificadores universales.",
+    "global_external_links": "Nuevas fichas de manuscritos solo con enlaces institucionales; prohibida la descarga o republicación de fotografías en los nuevos registros sin permiso explícito."
   },
-  "updated": "2026-10-30"
+  "updated": "2026-11-02"
 }

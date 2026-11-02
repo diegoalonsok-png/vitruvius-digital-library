@@ -258,6 +258,23 @@ try{
    assert(await first.locator('.parallel-translation').isVisible(),'Columna derecha no visible');
    await page.close();
  });
+ await test('Index codicum internacional: 78 registros y sin nuevos visores',async()=>{
+   const page=await pageFor('index-codicum.html');
+   assert(await page.locator('a[href="https://catalogue.etoncollege.com/B50099"]').count()>0,'Falta Eton MS 137');
+   assert(await page.locator('a[href="https://gallica.bnf.fr/ark:/12148/btv1b9066098j"]').count()>0,'Falta Parisinus lat. 10277');
+   assert(await page.locator('a[href*="31fffbc12aa4358a793393a55a30643bc94b4a62"]').count()>0,'Falta Laurenziana Plut.30.13');
+   const data=await page.request.get(base+'data/corpus-expansion-inventory.json');
+   assert.equal(data.status(),200);
+   const inventory=await data.json();
+   assert(inventory.records.length>=78,'Se perdieron registros del inventario');
+   for(const label of ['hist-077','hist-078']){
+     const item=inventory.records.find(x=>x.id===label);
+     assert(item,'Falta registro '+label);
+     assert(item.view_url&&item.searchable===false&&item.document_url===null,'El registro debe ofrecer solo enlace externo '+label);
+   }
+   assert.equal(await page.locator('iframe[src*="Eton"], iframe[src*="gallica"], img[src*="Eton"]').count(),0,'No se admiten copias o visores añadidos');
+   await page.close();
+ });
  await test('Catálogo de cinco códices Vaticanos sin reproducción de imágenes',async()=>{
    const page=await pageFor('codices-vaticanos.html');
    assert.equal(await page.locator('article.ms').count(),5,'Se esperan cinco signaturas de testimonios');
