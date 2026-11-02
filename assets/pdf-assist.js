@@ -3,16 +3,23 @@
  const isPdf=el=>{const u=(el.getAttribute('src')||el.getAttribute('data')||'').toLowerCase();return /\.pdf(?:[?#]|$)|drive\.google\.com\/(?:file|preview)|docs\.google\.com\/gview|archive\.org\/embed/.test(u)||el.id==='drive-frame'||el.id==='historical-pdf'};
  /* Only act on PDF viewers actually visible in this page. Hidden dialog frames and
    empty/unloaded placeholders previously made the controls appear ineffective. */
- const frames=()=>[...document.querySelectorAll('iframe,embed,object')].filter(node=>{
-  if(!isPdf(node))return false;
-  const url=(node.getAttribute('src')||node.getAttribute('data')||'').trim();
-  if(!url)return false;
-  const rect=node.getBoundingClientRect();
-  return rect.width>0&&rect.height>0&&node.getClientRects().length>0;
- });
+ /* Historical Krohn/Rose reader switches from iframe to a PDF.js canvas
+    (#pdfjs-viewer). Filter the rendered canvas AND highlights as one unit.
+    Never count the hidden fallback iframe or unopened PDF dialogs. */
+ const frames=()=>{
+  const embedded=[...document.querySelectorAll('iframe,embed,object')].filter(isPdf);
+  const pdfjs=document.querySelector('#pdfjs-viewer');
+  if(pdfjs&&pdfjs.querySelector('#pdfjs-canvas'))embedded.push(pdfjs);
+  return embedded.filter(node=>{
+   if(node.id!=='pdfjs-viewer' && !(node.getAttribute('src')||node.getAttribute('data')||'').trim())return false;
+   if(node.closest('[hidden]'))return false;
+   const rect=node.getBoundingClientRect();
+   return rect.width>0 && rect.height>0 && node.getClientRects().length>0;
+  });
+ };
  let selected=null;
  const state={contrast:100,brightness:100,mono:false,invert:false,zoom:100};
- function sync(){const all=frames();if(!all.length){panel.hidden=true;return;}panel.hidden=false;if(!selected||!all.includes(selected))selected=all[0];let f='contrast('+state.contrast+'%) brightness('+state.brightness+'%)'+(state.mono?' grayscale(1)':'')+(state.invert?' invert(1) hue-rotate(180deg)':'');for(const node of all){node.style.filter=f;node.style.transform=state.zoom===100?'':'scale('+(state.zoom/100)+')';node.style.transformOrigin='top left';if(state.zoom>100&&node.parentElement)node.parentElement.style.overflow='auto';}const info=document.getElementById('pdf-assist-info');const message='Visores PDF en esta página: '+all.length+'. Ampliación visual '+state.zoom+'%';if(info.textContent!==message)info.textContent=message;}
+ function sync(){const all=frames();if(!all.length){panel.hidden=true;return;}panel.hidden=false;if(!selected||!all.includes(selected))selected=all[0];let f='contrast('+state.contrast+'%) brightness('+state.brightness+'%)'+(state.mono?' grayscale(1)':'')+(state.invert?' invert(1) hue-rotate(180deg)':'');for(const node of all){node.style.filter=f;node.style.transform=state.zoom===100?'':'scale('+(state.zoom/100)+')';node.style.transformOrigin='top left';if(state.zoom>100&&node.parentElement)node.parentElement.style.overflow='auto';}const info=document.getElementById('pdf-assist-info');const message='Visores PDF activos: '+all.length+(all.some(node=>node.id==='pdfjs-viewer')?' · página procesada con PDF.js':'')+'. Ampliación visual '+state.zoom+'%';if(info.textContent!==message)info.textContent=message;}
  const panel=document.createElement('section');panel.id='pdf-assist-panel';panel.hidden=true;panel.setAttribute('aria-label','Herramientas de lectura PDF');panel.style.cssText='position:fixed;bottom:16px;right:16px;z-index:9998;width:min(94vw,410px);padding:11px 14px;background:#203346;color:#fff;border:1px solid #9baebe;border-radius:7px;box-shadow:0 4px 18px #0004;font:13px system-ui,sans-serif';
  panel.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><strong>Ayudas de lectura PDF</strong><button type="button" id="pdf-assist-collapse" aria-expanded="false">Mostrar controles</button></div><div id="pdf-assist-controls" hidden style="margin-top:10px;display:grid;gap:8px"><div style="display:flex;gap:7px;flex-wrap:wrap"><button type="button" id="pdf-assist-invert">Invertir colores</button><button type="button" id="pdf-assist-mono">Grises</button><button type="button" id="pdf-assist-reset">Original</button></div><label>Contraste <input id="pdf-assist-contrast" type="range" min="60" max="250" value="100"> <output id="pdf-assist-contrast-out">100%</output></label><label>Brillo <input id="pdf-assist-brightness" type="range" min="50" max="180" value="100"> <output id="pdf-assist-brightness-out">100%</output></label><label>Ampliación visual <input id="pdf-assist-zoom" type="range" min="100" max="180" step="10" value="100"> <output id="pdf-assist-zoom-out">100%</output></label><small id="pdf-assist-info"></small><small>Los controles solo modifican visores PDF visibles dentro de esta página, no archivos abiertos en otra pestaña (por ejemplo, Google Drive).</small></div>';
  const style=document.createElement('style');style.textContent='#pdf-assist-panel button{padding:5px 9px;border:1px solid #8da0b3;border-radius:4px;background:#304d65;color:#fff;cursor:pointer}#pdf-assist-panel button[aria-pressed=true]{background:#d6bf8c;color:#1c2d3e}#pdf-assist-panel label{display:flex;align-items:center;justify-content:space-between;gap:8px}#pdf-assist-panel input{max-width:155px}';document.head.append(style);document.body.append(panel);
