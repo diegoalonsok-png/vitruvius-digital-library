@@ -258,6 +258,17 @@ try{
    assert(await first.locator('.parallel-translation').isVisible(),'Columna derecha no visible');
    await page.close();
  });
+ await test('Catálogo de cinco códices Vaticanos sin reproducción de imágenes',async()=>{
+   const page=await pageFor('codices-vaticanos.html');
+   assert.equal(await page.locator('article.ms').count(),5,'Se esperan cinco signaturas de testimonios');
+   assert(await page.locator('a[href="https://digi.vatlib.it/view/MSS_Urb.lat.293/0196"]').count()>0,'Falta facsímil institucional Urb. lat. 293');
+   assert.match(await page.locator('.rights').innerText(),/autoriza|permiso|autorización/i,'Advertencia sobre reutilización obligatoria');
+   assert.equal(await page.locator('img').count(),0,'No deben cargarse imágenes protegidas del Vaticano');
+   await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+   const colors=await page.locator('.ms').first().evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
+   assert.notEqual(colors.text,colors.bg,'El catálogo vaticano es ilegible en oscuro');
+   await page.close();
+ });
  await test('Docencia Roma antigua: siete seminarios, traducciones y notas',async()=>{
    const page=await pageFor('docencia-roma-antigua.html');
    assert.match(await page.locator('h1').innerText(),/Roma antigua/);
