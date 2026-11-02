@@ -1,6 +1,6 @@
 const $=id=>document.getElementById(id);
 const REMOTE='https://www.e-rara.ch/i3f/v20/6105669/manifest';
-const LOCAL='data/iiif/giocondo-1567.json';
+const LOCAL='data/iiif/giocondo-1511.json';
 const status=$('gio-status'),view=$('gio-image'),mag=$('gio-magnified'),bubble=$('gio-loupe');
 let pages=[],currentSerial=0;
 const text=s=>String(s??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
