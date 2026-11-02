@@ -8,10 +8,10 @@
 }
 #carolina-output,#paleo{
   font-family:"CarolingiaHCompact","Palatino Linotype",Georgia,serif!important;
-  font-size:var(--h-font-size,19px)!important;
+  font-size:var(--h-font-size,18px)!important;
   font-weight:400!important;
-  letter-spacing:-0.035em!important;
-  line-height:1.29!important;
+  letter-spacing:-0.045em!important;
+  line-height:1.34!important;
   font-variant-ligatures:common-ligatures historical-ligatures!important;
   font-synthesis:none!important;
   color:#790d1c!important;
@@ -42,4 +42,15 @@ html[data-theme="dark"] #carolina-output,html[data-theme="dark"] #paleo{
  color:#790d1c!important;background:#f1e7d1!important;
 }
 @media(max-width:1000px){#carolina-output,#paleo{
- font-size:var(--h-font-size,19px)!important;line-height:1.29!important;}}
+ font-size:var(--h-font-size,18px)!important;line-height:1.34!important;}}
+
+/* El rubricador usa versales rojas; la mano ordinaria es carolingia minuscula. */
+#carolina-output .h-title,
+#carolina-output .h-rubric{
+  font-family:"CarolingiaHCompact","Palatino Linotype",serif!important;
+  color:#9b2330!important;font-size:17px!important;
+  font-weight:400!important;letter-spacing:0!important;
+}
+#carolina-output .h-title{display:inline;font-size:15px!important;}
+#carolina-output .h-minuscule{color:#790d1c!important;font-size:18px!important;letter-spacing:-0.045em!important;}
+#carolina-output .h-title mark,#carolina-output .h-rubric mark{background:#ffea4a!important;color:#8d1726!important;}
