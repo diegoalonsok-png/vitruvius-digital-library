@@ -2,6 +2,51 @@ const $=id=>document.getElementById(id);
 const stage=$('stage'),img=$('folio'),lens=$('lens'),lensImg=$('lens-image'),status=$('state');
 const controls=['zoom','brightness','contrast','grayscale','sepia'];
 let pdfNegative=false;
+let searchTarget=null,activeMarks=[],activeViewport=null;
+const markerLayer=document.createElement('div');
+markerLayer.id='pdf-word-highlights';
+markerLayer.setAttribute('aria-hidden','true');
+stage.append(markerLayer);
+function textFold(str){return String(str||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').replace(/ς/g,'σ');}
+function collectMarks(items,viewport,term){
+ const wanted=textFold(term).trim();
+ if(!wanted||wanted.length<2)return [];
+ const found=[],phrase=wanted.includes(' ');
+ const joined=textFold(items.map(it=>it.str||'').join(' '));
+ if(phrase&&!joined.includes(wanted))return [];
+ const needles=phrase?wanted.split(/\s+/).filter(v=>v.length>=3):[wanted];
+ for(const item of items){
+  if(!item.str||!item.transform||!item.width)continue;
+  const value=textFold(item.str);
+  const matrix=pdfjs.Util.transform(viewport.transform,item.transform);
+  const h=Math.max(5,Math.abs((item.height||0)*viewport.scale)||Math.hypot(matrix[2],matrix[3]));
+  const fullWidth=Math.max(1,item.width*viewport.scale);
+  for(const needle of needles){
+   let at=0,foundOnItem=0;
+   while((at=value.indexOf(needle,at))!==-1&&found.length<24&&foundOnItem<6){
+    if(!phrase&&(/[\p{L}\p{N}]/u.test(value[at-1]||'')||/[\p{L}\p{N}]/u.test(value[at+needle.length]||''))){at++;continue;}
+    const left=matrix[4]+fullWidth*at/Math.max(1,value.length);
+    found.push({left,top:matrix[5]-h,width:Math.max(4,fullWidth*needle.length/Math.max(1,value.length)),height:h});
+    at+=needle.length;foundOnItem++;
+   }
+  }
+ }
+ return found;
+}
+function drawMarks(){
+ markerLayer.replaceChildren();
+ if(!activeMarks.length||!activeViewport||!img.naturalWidth)return;
+ const scaleX=img.clientWidth/activeViewport.width,scaleY=img.clientHeight/activeViewport.height;
+ for(const m of activeMarks){
+  const el=document.createElement('span');
+  el.className='pdf-word-mark';
+  el.style.left=(img.offsetLeft+m.left*scaleX)+'px';
+  el.style.top=(img.offsetTop+m.top*scaleY)+'px';
+  el.style.width=(m.width*scaleX)+'px';
+  el.style.height=(m.height*scaleY)+'px';
+  markerLayer.append(el);
+ }
+}
 let pages=null,request=0,pdfjs=null,pdfCache=new Map(),localObjectUrl=null,localImageUrl=null;
 const manuscripts={"ms:h":["https://iiif.bl.uk/uv/#?manifest=https%3A%2F%2Fbl.digirati.io%2Fiiif%2Fark%3A%2F81055%2Fvdc_100056038850.0x000001","Harley MS 2767"],"ms:g":["https://diglib.hab.de/?db=mss&id=69-gud-lat&lang=en&list=ms","Gudianus 69"],"ms:e":["https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms","Gudianus 132"],"ms:s":["https://bhnumerique.ville-selestat.fr/client/fr_FR/bh/search/results?qf=LANGUAGE%09Langue%09LAT%09latin&qu=ms.+17","Sélestat MS 17"],"ms:p":["https://gallica.bnf.fr/ark:/12148/btv1b9066098j","Parisinus lat. 10277"],"ms:cotton":["https://searcharchives.bl.uk/","Cotton Cleopatra D I"]};
 const remoteReader=$('remote-reader'),remoteOpen=$('remote-open'),remoteTitle=$('remote-title');
@@ -23,7 +68,7 @@ function showPdfFallback(selection){remoteReader.hidden=true;stage.hidden=true;d
 const prior=$('drive-frame');const fresh=prior.cloneNode(false);fresh.removeAttribute('src');prior.replaceWith(fresh);fresh.src=link;fresh.style.filter=pdfNegative?'invert(1) hue-rotate(180deg)':'none';
 status.textContent='Abriendo la página '+num+' del PDF. Si el visor del navegador no respeta la página, activá «Renderizar PDF con lupa» para navegación por página controlada por el sitio.';}
 function filters(){return 'brightness('+$('brightness').value+'%) contrast('+$('contrast').value+'%) grayscale('+$('grayscale').value+'%) sepia('+$('sepia').value+'%)'+(pdfNegative?' invert(1) hue-rotate(180deg)':'');}
-function refresh(){for(const id of controls)$(id+'-value').textContent=$(id).value+'%';const f=filters();img.style.filter=f;lensImg.style.filter=f;img.style.width=($('zoom').value/100*900)+'px';}
+function refresh(){for(const id of controls)$(id+'-value').textContent=$(id).value+'%';const f=filters();img.style.filter=f;lensImg.style.filter=f;img.style.width=($('zoom').value/100*900)+'px';drawMarks();}
 for(const id of controls)$(id).addEventListener('input',refresh);
 $('pdf-invert')?.addEventListener('change',e=>{pdfNegative=e.target.checked;const frame=$('drive-frame');if(frame)frame.style.filter=pdfNegative?'invert(1) hue-rotate(180deg)':'none';refresh()});
 $('loupe').addEventListener('change',()=>{stage.classList.toggle('loupe-on',$('loupe').checked);if(!$('loupe').checked)lens.style.display='none'});
@@ -31,7 +76,25 @@ $('source').addEventListener('change',()=>{const v=$('source').value;if(v==='ms:
 $('pdf-loupe').addEventListener('change',load);
 $('reset').addEventListener('click',()=>{for(const id of controls)$(id).value=id==='grayscale'||id==='sepia'?'0':'100';refresh()});
 async function manifestPages(){if(pages)return pages;const url='https://www.e-rara.ch/i3f/v20/16797458/manifest';const response=await fetch(url);if(!response.ok)throw Error('No se pudo consultar el manifiesto IIIF');const data=await response.json();pages=data.sequences?.[0]?.canvases;if(!Array.isArray(pages)||!pages.length)throw Error('El manifiesto no incluye folios');$('page').max=String(pages.length+1);return pages;}
-async function load(){const n=++request;if(manuscripts[$('source').value]){showManuscript($('source').value);return;}if($('source').value==='local'&&!localObjectUrl)return;status.textContent='Abriendo el folio digital…';const helper=$('pdf-stage-message');if(helper){helper.hidden=false;helper.innerHTML='<strong>Preparando el PDF…</strong> La carga puede depender del documento y del navegador. Podés abrir el PDF completo desde el enlace situado arriba.';}lens.style.display='none';img.onload=null;img.onerror=null;img.removeAttribute('src');lensImg.removeAttribute('src');try{let url;const selection=$('source').value;const original=pdfSources[selection]||(selection==='local'?localObjectUrl:null);const direct=$('pdf-open-original');if(direct&&original){direct.href=new URL(original,location.href).href;direct.parentElement.hidden=false;}else if(direct){direct.parentElement.hidden=true;}showNative();if(pdfSources[selection]||(selection==='local'&&!localImageUrl)){if(!$('pdf-loupe').checked){showPdfFallback(selection);return;}if(!pdfjs){status.textContent='Preparando lector PDF con navegación exacta por página…';pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs');pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs';}let pdf=pdfCache.get(selection);if(!pdf){const path=selection==='local'?localObjectUrl:new URL(pdfSources[selection],location.href).href;pdf=await pdfjs.getDocument(path).promise;pdfCache.set(selection,pdf);}if(n!==request)return;const p=Number($('page').value);$('page').max=String(pdf.numPages);if(!Number.isInteger(p)||p<1||p>pdf.numPages)throw Error('Página PDF fuera de rango (1–'+pdf.numPages+').');const page=await pdf.getPage(p);const viewport=page.getViewport({scale:2});const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;if(n!==request)return;url=canvas.toDataURL('image/png');}else if(selection==='local'){url=localImageUrl;}else{const canvases=await manifestPages();const p=Number($('page').value);if(!Number.isInteger(p)||p<2||p>canvases.length+1)throw Error('Página fuera del rango digital disponible');const canvas=canvases[p-2],resource=canvas?.images?.[0]?.resource,service=resource?.service;const base=typeof service==='string'?service:(service?.['@id']||service?.id);url=base?base.replace(/\/$/,'')+'/full/1600,/0/default.jpg':(resource?.['@id']||resource?.id);if(!url)throw Error('El folio no dispone de URL de imagen');}if(n!==request)return;img.onload=()=>{if(n!==request)return;if($('pdf-stage-message'))$('pdf-stage-message').hidden=true;lensImg.src=img.src;refresh();status.textContent='Folio cargado. Podés ampliar y usar la lupa.'};img.onerror=()=>{if(n===request)status.textContent='El proveedor no permite cargar esta imagen aquí. Abrí el visor institucional.'};img.src=url;}catch(err){if(n===request){if(pdfSources[$('source').value]||($('source').value==='local'&&!localImageUrl)){showPdfFallback($('source').value);status.textContent='No se pudo renderizar este PDF dentro de la página. Usá «Abrir PDF completo en otra pestaña» o desactivá «Renderizar PDF con lupa» para intentar el lector del navegador.';}else{img.onload=null;img.removeAttribute('src');lensImg.removeAttribute('src');status.textContent='No se pudo cargar el folio desde el proveedor. Podés consultar el facsímil en la biblioteca de origen mediante el enlace inferior.';if($('source').value==='perrault'){institution.replaceChildren();const a=document.createElement('a');a.href='https://doi.org/10.3931/e-rara-61952';a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir Perrault 1673 en e-rara ↗';institution.append(a);}}}}}
+async function load(){const n=++request;activeMarks=[];activeViewport=null;markerLayer.replaceChildren();if(manuscripts[$('source').value]){showManuscript($('source').value);return;}if($('source').value==='local'&&!localObjectUrl)return;status.textContent='Abriendo el folio digital…';const helper=$('pdf-stage-message');if(helper){helper.hidden=false;helper.innerHTML='<strong>Preparando el PDF…</strong> La carga puede depender del documento y del navegador. Podés abrir el PDF completo desde el enlace situado arriba.';}lens.style.display='none';img.onload=null;img.onerror=null;img.removeAttribute('src');lensImg.removeAttribute('src');try{let url;const selection=$('source').value;const original=pdfSources[selection]||(selection==='local'?localObjectUrl:null);const direct=$('pdf-open-original');if(direct&&original){direct.href=new URL(original,location.href).href;direct.parentElement.hidden=false;}else if(direct){direct.parentElement.hidden=true;}showNative();if(pdfSources[selection]||(selection==='local'&&!localImageUrl)){if(!$('pdf-loupe').checked){showPdfFallback(selection);return;}if(!pdfjs){status.textContent='Preparando lector PDF con navegación exacta por página…';pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs');pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs';}let pdf=pdfCache.get(selection);if(!pdf){const path=selection==='local'?localObjectUrl:new URL(pdfSources[selection],location.href).href;pdf=await pdfjs.getDocument(path).promise;pdfCache.set(selection,pdf);}if(n!==request)return;const p=Number($('page').value);$('page').max=String(pdf.numPages);if(!Number.isInteger(p)||p<1||p>pdf.numPages)throw Error('Página PDF fuera de rango (1–'+pdf.numPages+').');const page=await pdf.getPage(p);const viewport=page.getViewport({scale:2});const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;if(n!==request)return;
+ if(searchTarget&&searchTarget.source===selection&&searchTarget.page===p&&searchTarget.term){
+  try{const content=await page.getTextContent();if(n!==request)return;activeMarks=collectMarks(content.items,viewport,searchTarget.term);activeViewport=viewport;}catch{activeMarks=[];activeViewport=null;}
+ }
+ url=canvas.toDataURL('image/png');}else if(selection==='local'){url=localImageUrl;}else{const canvases=await manifestPages();const p=Number($('page').value);if(!Number.isInteger(p)||p<2||p>canvases.length+1)throw Error('Página fuera del rango digital disponible');const canvas=canvases[p-2],resource=canvas?.images?.[0]?.resource,service=resource?.service;const base=typeof service==='string'?service:(service?.['@id']||service?.id);url=base?base.replace(/\/$/,'')+'/full/1600,/0/default.jpg':(resource?.['@id']||resource?.id);if(!url)throw Error('El folio no dispone de URL de imagen');}if(n!==request)return;img.onload=()=>{if(n!==request)return;if($('pdf-stage-message'))$('pdf-stage-message').hidden=true;lensImg.src=img.src;refresh();status.textContent=searchTarget&&searchTarget.page===Number($('page').value)&&searchTarget.source===$('source').value?(activeMarks.length?'PDF abierto: '+activeMarks.length+' marca(s) amarilla(s) visibles. Contrastá la lectura con el PDF.':'PDF abierto en la página indexada. El término está resaltado en el resultado de búsqueda; la capa de texto de esta página no permitió marcarlo sobre la imagen.'):'Folio cargado. Podés ampliar y usar la lupa.'};img.onerror=()=>{if(n===request)status.textContent='El proveedor no permite cargar esta imagen aquí. Abrí el visor institucional.'};img.src=url;}catch(err){if(n===request){if(pdfSources[$('source').value]||($('source').value==='local'&&!localImageUrl)){showPdfFallback($('source').value);status.textContent='No se pudo renderizar este PDF dentro de la página. Usá «Abrir PDF completo en otra pestaña» o desactivá «Renderizar PDF con lupa» para intentar el lector del navegador.';}else{img.onload=null;img.removeAttribute('src');lensImg.removeAttribute('src');status.textContent='No se pudo cargar el folio desde el proveedor. Podés consultar el facsímil en la biblioteca de origen mediante el enlace inferior.';if($('source').value==='perrault'){institution.replaceChildren();const a=document.createElement('a');a.href='https://doi.org/10.3931/e-rara-61952';a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir Perrault 1673 en e-rara ↗';institution.append(a);}}}}}
+document.addEventListener('scriptorium:open-search-result',ev=>{
+ const detail=ev.detail||{},source=detail.source,page=Number(detail.page);
+ if(!pdfSources[source]||!Number.isInteger(page)||page<1)return;
+ searchTarget={source,page,term:String(detail.term||'').trim()};
+ $('source').value=source;
+ $('page').disabled=false;
+ $('page').min='1';
+ $('page').max=source==='pdf:krohn'?'314':'99999';
+ $('page').value=String(page);
+ $('pdf-loupe').checked=true;
+ institution.replaceChildren();
+ const a=document.createElement('a');a.href=pdfSources[source];a.target='_blank';a.rel='noopener noreferrer';a.textContent='Consultar el PDF original ↗';institution.append(a);
+ load();
+});
 $('load').addEventListener('click',load);
 function stepPage(delta){if($('page').disabled)return;const field=$('page');const min=Number(field.min)||1,max=Number(field.max)||371;field.value=String(Math.min(max,Math.max(min,(Number(field.value)||min)+delta)));load();}
 $('prev-page').addEventListener('click',()=>stepPage(-1));
