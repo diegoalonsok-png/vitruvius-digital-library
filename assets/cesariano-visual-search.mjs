@@ -120,7 +120,7 @@ function updateGallery(){
  $('ces-gallery-results').replaceChildren();
  const title=filtered.length+' imágenes en orden original IIIF.';
  let note='';
- if(locus?.chapter!==null)note=' El capítulo '+roman[locus.book]+'.'+locus.chapter+' no está identificado por página en el manifiesto; se muestran las imágenes del libro completo para cotejo.';
+ if(locus && locus.chapter !== null)note=' El capítulo '+roman[locus.book]+'.'+locus.chapter+' no está identificado por página en el manifiesto; se muestran las imágenes del libro completo para cotejo.';
  else if(conceptual)note=' Selección temática orientativa por libro, no identificación visual automática ni transcripción verificada.';
  else if(raw&&!number&&!matchedByLabel.length)note=' Los temas remiten a intervalos de libros, no a páginas donde se haya certificado una palabra.';
  $('ces-gallery-count').textContent=title+note;
