@@ -528,11 +528,32 @@ async function initialize(){
     event.preventDefault();
     searchInternet($('#internet-query').value,$('#internet-provider').value,$('#internet-vitruvio').checked);
   });
-  const loads=await Promise.allSettled([fetchJSON('data/catalog.json?v=20261030-citations'),fetchJSON('data/historical.json'),fetchJSON('data/supplements.json')]);
+  const loads=await Promise.allSettled([fetchJSON('data/catalog.json?v=20261030-citations'),fetchJSON('data/historical.json'),fetchJSON('data/supplements.json'),fetchJSON('data/site-metrics.json?v=20261102-audit')]);
   if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recargá la página para intentarlo de nuevo.');return;}
   catalog=loads[0].value;records=[...catalog.editions,...(loads[1].status==='fulfilled'?loads[1].value:[])];
   for(const e of records)if(e.id.startsWith('gudianus'))e.category='manuscripts';
-  $('#stat-records').textContent=records.length;$('#stat-pages').textContent=catalog.searchable_pages.toLocaleString('es-AR');
+  // Audited statistics distinguish repertory records from distinct works
+  // and declared book extents from passage-based text search coverage.
+  const metrics=loads[3].status==='fulfilled'?loads[3].value:null;
+  const primaryCount=records.length;
+  const inventoryCount=Number(metrics?.expanded_historical_inventory?.records??$('#stat-inventory-records')?.textContent??0);
+  const studiesCount=Number(metrics?.academic_studies?.records??$('#stat-studies-records')?.textContent??0);
+  const indexedEditions=catalog.editions.filter(e=>e.searchable&&e.text_index);
+  const declaredPages=indexedEditions.reduce((sum,e)=>sum+(Number(e.pages)||0),0);
+  $('#stat-main-records').textContent=primaryCount.toLocaleString('es-AR');
+  $('#stat-inventory-records').textContent=inventoryCount.toLocaleString('es-AR');
+  $('#stat-studies-records').textContent=studiesCount.toLocaleString('es-AR');
+  $('#stat-records').textContent=(primaryCount+inventoryCount+studiesCount).toLocaleString('es-AR');
+  $('#stat-indexed-editions').textContent=indexedEditions.length.toLocaleString('es-AR');
+  $('#stat-pages').textContent=declaredPages.toLocaleString('es-AR');
+  $('#stat-languages').textContent=(catalog.languages||[]).length.toLocaleString('es-AR');
+  if(metrics?.indexed_editions?.sum_structured_passages){
+    $('#stat-passages').textContent=Number(metrics.indexed_editions.sum_structured_passages).toLocaleString('es-AR');
+  }
+  if(metrics?.audited_at){
+    const [year,month,day]=metrics.audited_at.split('-');
+    $('#stat-audit-date').textContent=day+' de '+({1:'enero',2:'febrero',3:'marzo',4:'abril',5:'mayo',6:'junio',7:'julio',8:'agosto',9:'septiembre',10:'octubre',11:'noviembre',12:'diciembre'}[Number(month)]||month)+' de '+year;
+  }
   $('#historic-count').textContent=records.filter(e=>e.category==='historical').length;$('#manuscript-count').textContent=records.filter(e=>e.category==='manuscripts').length;
   renderCatalog();
   // Select a real searchable edition by default, without changing the visual layout.
