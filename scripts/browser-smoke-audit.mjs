@@ -15,6 +15,26 @@ try{
  for(const path of ['index.html','scriptorium.html','facsimiles.html','bibliografia.html','ediciones-historicas.html','concordancia-historica.html','estudios.html','harleianus.html']){
   await test('Carga '+path,async()=>{const page=await pageFor(path);await page.waitForTimeout(1500);await page.close()});
  }
+ await test('Cesariano 1521: galería visual, libro IV y búsqueda por imagen exacta',async()=>{
+  const page=await pageFor('cesariano-1521.html');
+  await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:15000});
+  assert.equal(await page.locator('#ces-gallery-results button[data-ces-image]').count(),24,'No aparecen las primeras 24 miniaturas');
+  const jpeg=await page.request.get(base+'images/cesariano-1521/0150.jpg',{timeout:30000});
+  assert.equal(jpeg.status(),200,'La imagen local 0150.jpg no se sirve');
+  assert.deepEqual([...((await jpeg.body()).subarray(0,3))],[255,216,255],'Imagen 150 no es JPEG válido');
+  await page.locator('#ces-gallery-section').selectOption('4');
+  assert.equal(await page.locator('#ces-gallery-results button[data-ces-image]').count(),22,'Libro IV debe conservar las 22 imágenes del manifiesto');
+  assert.equal(await page.locator('#ces-gallery-results button[data-ces-image]').first().getAttribute('data-ces-image'),'128');
+  assert.equal(await page.locator('#ces-gallery-results button[data-ces-image]').last().getAttribute('data-ces-image'),'149');
+  await page.locator('#ces-gallery-clear').click();
+  await page.locator('#ces-gallery-query').fill('imagen 150');
+  await page.locator('#ces-gallery-form button[type=submit]').click();
+  assert.equal(await page.locator('#ces-gallery-results button[data-ces-image]').count(),1,'Búsqueda por imagen no localiza exactamente la página 150');
+  await page.locator('#ces-gallery-results button[data-ces-image="150"]').click();
+  assert.equal(await page.locator('#ces-page').inputValue(),'150','La miniatura no abre la imagen 150');
+  assert.match(await page.locator('#ces-counter').innerText(),/150\s*\/\s*390/,'Contador de lectura incorrecto');
+  await page.close();
+ });
  await test('Scriptorium: todos los PDF locales sirven archivos PDF',async()=>{
   const page=await pageFor('scriptorium.html');
   const sources=['documents/krohn-1912.pdf','documents/kurilo-recensio-es.pdf','documents/kurilo-recensio-fr.pdf','documents/kurilo-theory-en.pdf'];
