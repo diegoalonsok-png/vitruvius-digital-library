@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tratados de arquitectura y técnicas de la Antigüedad · Vitruvius Digital Library</title>
+<meta name="description" content="Catálogo académico de los tratados de arquitectura y mecánica citados por Vitruvio y de las fuentes grecorromanas posteriores; obras perdidas y conservadas, textos y PDF históricos.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/tratados-antiguos.html">
+<link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css"><link rel="stylesheet" href="assets/theme.css">
+<style>
+.ancient-catalog{max-width:1140px;margin:auto;padding:45px 20px 90px;line-height:1.7}
+.ancient-catalog h1{font:normal clamp(36px,5vw,58px)/1.2 Georgia,serif;margin:15px 0}
+.ancient-catalog h2{font:normal 29px Georgia,serif;margin:30px 0 12px}
+.ancient-controls{display:flex;flex-wrap:wrap;gap:13px;align-items:end;padding:17px;border:1px solid var(--line);margin:24px 0}
+.ancient-controls label{display:grid;gap:5px;font-size:14px;flex:1 1 175px}
+.ancient-controls label:first-child{flex:2 1 320px}
+.ancient-controls :is(input,select){width:100%;min-height:43px;padding:8px 11px;color:var(--ink);background:var(--white);border:1px solid var(--line);font-size:15px}
+.ancient-entry{padding:22px 0;border-bottom:1px solid var(--line)}
+.ancient-entry h3{font:normal 27px Georgia,serif;margin:5px 0}
+.ancient-entry p{margin:7px 0}
+.ancient-meta{font-size:13px;color:var(--muted)}
+.ancient-state{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.ancient-actions{display:flex;flex-wrap:wrap;gap:13px;margin:12px 0;align-items:center}
+.ancient-actions a,.ancient-actions button{border:1px solid var(--gold);border-radius:3px;padding:9px 13px;min-height:42px;text-decoration:none;color:var(--ink);background:transparent;font-size:13px;cursor:pointer}
+.ancient-actions a:hover,.ancient-actions button:hover{background:var(--navy);color:#fff}
+.ancient-iframe{display:block;width:100%;height:min(78vh,720px);min-height:340px;border:1px solid var(--line);margin-top:14px;background:#fff}
+.ancient-note{border-left:3px solid var(--gold);padding:9px 16px;background:color-mix(in srgb,var(--white) 90%,var(--gold) 10%)}
+html[data-theme="dark"] .ancient-meta{color:#c3cbd1}
+html[data-theme="dark"] .ancient-controls select option{background:#26333e;color:#f7f1e7}
+</style>
+</head>
+<body><a class="skip" href="#contenido">Saltar al contenido</a>
+<main class="ancient-catalog" id="contenido">
+<p><a href="bibliografia.html">← Bibliografía histórica</a> · <a href="index.html">Biblioteca principal</a> · <a href="scriptorium.html">Scriptorium</a></p>
+<p class="eyebrow">TRADICIÓN DE ARCHITECTURA · FUENTES ANTIGUAS</p>
+<h1>Tratados de arquitectura y técnicas en torno a Vitruvio</h1>
+<p>Catálogo selectivo de las obras y autoridades que Vitruvio cita en <em>De architectura</em> VII, prefacio, 11–14, y de tratados técnicos romanos de la primera época imperial y la Antigüedad tardía. Se distinguen los <strong>textos perdidos</strong>, los <strong>testimonios parciales</strong> y las <strong>obras conservadas</strong>. Las denominaciones descriptivas de escritos perdidos no se presentan como títulos originales documentados.</p>
+<p class="ancient-note"><strong>Corrección filológica:</strong> en la enumeración de VII.praef.12, Vitruvio cita a <strong>Ictino y Carpión</strong> para el templo de Atenea en la Acrópolis, no a Ictino y Calícrates. Hermógenes se vincula a Artemisa en <strong>Magnesia del Meandro</strong> y Dioniso en Teos. Los escritos originales perdidos no disponen de un PDF recuperable: solo se puede consultar el testimonio que los menciona.</p>
+<p>Como referencia primaria, consultar el <a href="https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/7%2A.html" target="_blank" rel="noopener noreferrer"><em>De architectura</em> VII, praefatio (texto latino)</a>; las ediciones propias V514, V554 y V297 pueden consultarse desde la <a href="lector-bilingue.html?locus=VII.praef.12">biblioteca</a>. Los PDF conservados se enlazan desde sus instituciones o repositorios originales, sin redistribuir archivos de terceros.</p>
+<form id="ancient-search" class="ancient-controls" role="search">
+<label>Buscar autor, obra, materia o referencia<input id="ancient-q" type="search" placeholder="Ictino · Hermógenes · hydraulica · Faventino · VII.praef.12" autocomplete="off"></label>
+<label>Tradición<select id="ancient-group"><option value="">Todas las tradiciones</option><option value="griego">Griega / helenística</option><option value="romano">Roma republicana</option><option value="tecnico">Mecánica griega</option><option value="posterior">Imperio romano</option><option value="tardoantiguo">Antigüedad tardía</option></select></label>
+<label>Estado de conservación<select id="ancient-state"><option value="">Todas las obras</option><option value="perdido">Perdidas</option><option value="parcial">Testimonios parciales</option><option value="conservado">Conservadas</option></select></label>
+<label>Orden<select id="ancient-sort"><option value="period">Cronológico aproximado</option><option value="author">Autor</option></select></label>
+</form>
+<p id="ancient-count" role="status" aria-live="polite">Cargando catálogo…</p>
+<div id="ancient-results"></div>
+<section aria-labelledby="ancient-method"><h2 id="ancient-method">Criterios documentales</h2>
+<p>Los textos perdidos solo pueden documentarse mediante citas de autores posteriores, catálogos bibliográficos o fragmentos atribuibles. Las fechas son aproximadas y no deben confundirse con fechas de edición moderna. Las obras de agronomía, ingeniería y mecánica se incluyen por su relación técnica con Vitruvio; <strong>no se presentan como tratados generales de arquitectura</strong>.</p>
+<p>Los PDF enlazados corresponden a <strong>ediciones históricas</strong>, no a manuscritos originales de la Antigüedad. Las reproducciones y traducciones modernas pueden tener derechos distintos del texto antiguo. Cuando una ficha indica «PDF en repositorio», el enlace conduce a la página de descarga del proveedor; el lector integrado se ofrece solo cuando es compatible.</p>
+<p>Referencias de control: <a href="https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/7%2A.html" target="_blank" rel="noopener">Vitruvio, VII.praef.11–14</a> · <a href="https://catalog.digitallatin.org/dll-author/a5119" target="_blank" rel="noopener">Digital Latin Library: Faventinus</a> · <a href="https://catalog.digitallatin.org/dll-work/w4907" target="_blank" rel="noopener">Digital Latin Library: Palladius</a> · <a href="https://www.e-rara.ch/zut/content/titleinfo/209842" target="_blank" rel="noopener">ETH Zürich: Frontino (ed. 1722)</a>.</p></section>
+</main>
+<script type="module" src="assets/tratados-antiguos.mjs?v=20261102-1"></script><script src="assets/theme.js?v=20261102-dark" defer></script>
+</body></html>
