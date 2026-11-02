@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Visor de la edición ilustrada y comentada de Cesare Cesariano, Como 1521, basada en el ejemplar IIIF de la Stiftung Bibliothek Werner Oechslin en e-rara.">
+<title>Cesare Cesariano 1521 · Visor IIIF · Vitruvius Digital Library</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+main.cesariano{max-width:1380px;padding:27px 18px 70px}
+.ces-heading{font:normal clamp(36px,5vw,56px) Georgia,serif;margin:8px 0}
+.ces-toolbar{display:flex;gap:12px 18px;flex-wrap:wrap;align-items:end;padding:17px;border:1px solid #ae9879;margin:23px 0}
+.ces-toolbar label{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.ces-toolbar button,.ces-toolbar input{padding:8px}
+.ces-toolbar button{cursor:pointer}
+#ces-page{width:105px}
+#ces-folio-search{width:175px}
+#ces-stage{position:relative;overflow:auto;height:72vh;min-height:440px;background:#d3cec3;border:1px solid #aa997e}
+#ces-image{display:block;max-width:none;margin:0 auto}
+#ces-loupe{display:none;position:fixed;width:200px;height:200px;border:3px solid #c6a36c;border-radius:50%;overflow:hidden;pointer-events:none;z-index:15;background:#eee;box-shadow:0 8px 22px #0006}
+#ces-loupe img{position:absolute;max-width:none}
+.ces-label{background:var(--surface,#eee9e0);padding:13px 17px;margin:12px 0;border-left:3px solid #bc9c67;line-height:1.6}
+.ces-utility{display:flex;flex-wrap:wrap;gap:15px}
+.ces-utility a{overflow-wrap:anywhere}
+@media(max-width:600px){#ces-stage{height:65vh}#ces-loupe{width:145px;height:145px}.ces-toolbar{gap:12px}}
+</style>
+</head>
+<body><main class="wrap cesariano">
+<p><a href="scriptorium.html">← Scriptorium digital</a> · <a href="ediciones-historicas.html">Ediciones históricas</a> · <a href="aparato-critico.html">Aparato crítico</a></p>
+<p class="eyebrow">VITRVVIVS · EDITIONES IMPRESSAE · IIIF</p>
+<h1 class="ces-heading">Cesare Cesariano · Como, 1521</h1>
+<p><em>Di Lucio Vitruvio Pollione de architectura libri dece</em>. Primera traducción impresa italiana con extenso comentario e ilustraciones. <strong>Es una edición impresa renacentista, no un códice manuscrito.</strong></p>
+<div class="ces-toolbar" role="group" aria-label="Navegación de las páginas digitalizadas">
+<label>Imagen digital <input id="ces-page" type="number" min="1" value="1"></label>
+<button id="ces-prev" type="button">← Anterior</button>
+<button id="ces-open" type="button">Abrir imagen</button>
+<button id="ces-next" type="button">Siguiente →</button>
+<label>Buscar etiqueta del IIIF <input id="ces-folio-search" type="search" placeholder="fol. CXXVv"></label>
+<button id="ces-find" type="button">Buscar etiqueta</button>
+<label>Ampliación <input id="ces-zoom" type="range" min="50" max="300" value="100"><output id="ces-zoom-out">100%</output></label>
+<label>Contraste <input id="ces-contrast" type="range" min="60" max="220" value="100"><output id="ces-contrast-out">100%</output></label>
+<label>Brillo <input id="ces-brightness" type="range" min="50" max="180" value="100"><output id="ces-brightness-out">100%</output></label>
+<label><input id="ces-gray" type="checkbox"> Blanco y negro</label>
+<label><input id="ces-negative" type="checkbox"> Negativo</label>
+<label><input id="ces-magnify" type="checkbox" checked> Lupa ×3</label>
+</div>
+<p class="ces-label"><strong>Imagen:</strong> <span id="ces-counter">—</span> · <strong>Etiqueta original IIIF:</strong> <span id="ces-label">—</span></p>
+<p id="ces-status" role="status" aria-live="polite">Preparando el índice de páginas…</p>
+<div id="ces-stage"><img id="ces-image" alt="Página digitalizada de la edición vitruviana comentada por Cesare Cesariano, 1521"></div>
+<div id="ces-loupe" aria-hidden="true"><img id="ces-magnified" alt=""></div>
+<p class="ces-label">Se conserva la secuencia del ejemplar digitalizado. El número digital puede diferir de la foliación impresa; las etiquetas se reproducen del manifiesto institucional. La presencia de una imagen en el visor no constituye una colación crítica de sus lecturas.</p>
+<div class="ces-utility">
+<a href="https://doi.org/10.3931/e-rara-19393" target="_blank" rel="noopener noreferrer">Ficha, DOI y derechos (e-rara) ↗</a>
+<a href="https://www.e-rara.ch/i3f/v20/6094045/manifest" target="_blank" rel="noopener noreferrer">Manifiesto IIIF original ↗</a>
+<a href="https://www.e-rara.ch/oec/content/titleinfo/6094045" target="_blank" rel="noopener noreferrer">Ejemplar digitalizado ↗</a>
+</div>
+<p style="font-size:13px;margin-top:20px">Crédito: Vitruvius, <em>Di Lucio Vitruvio Pollione de architectura libri dece</em>, Como: Gottardo da Ponte, 1521. Ejemplar: Stiftung Bibliothek Werner Oechslin, A05c; app. 2917. Digitalización: e-rara, DOI <a href="https://doi.org/10.3931/e-rara-19393">10.3931/e-rara-19393</a>. Public Domain Mark; se mantiene el crédito institucional y la procedencia del registro.</p>
+</main>
+<script type="module" src="assets/cesariano-reader.mjs?v=20261102-1"></script>
+<script src="assets/theme.js?v=20261101-everywhere" defer></script>
+</body></html>
