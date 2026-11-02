@@ -79,6 +79,13 @@ html[data-theme="dark"] .historic-top-links a{background:#1a2b38!important;color
 html[data-theme="dark"] .historic-top-heading span{color:#d0c7b9!important}
 html[data-theme="dark"] .historic-top-links a:hover,html[data-theme="dark"] .historic-top-links a:focus-visible{background:#38556a!important;color:#fff!important}
 @media(max-width:850px){.historic-top-inner{flex-direction:column;align-items:stretch;gap:10px;padding:12px 0}.historic-top-heading{flex-basis:auto}.historic-top-links a{flex:1 1 136px}}
+.stat-audit-detail{padding:0 0 16px;font-size:12px;line-height:1.65;color:var(--muted,#505850)}
+.stat-audit-detail p{margin:0 0 5px}
+.stat-audit-detail a{text-decoration:underline;text-underline-offset:2px;font-weight:600;color:var(--ink)}
+.stat-audit-detail .stat-audit-caveat{font-size:11px;opacity:.85}
+html[data-theme="dark"] .stat-audit-detail{color:#ded7c8}
+html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
+@media(max-width:700px){.stat-audit-detail{padding-bottom:12px;font-size:11px}.stat-audit-detail .stat-audit-caveat{font-size:10px}}
 </style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -141,7 +148,10 @@ html[data-theme="dark"] .historic-top-links a:hover,html[data-theme="dark"] .his
         <a class="principal-catalog-link" href="#coleccion">Todas las versiones y traducciones <span aria-hidden="true">→</span></a>
       </aside>
     </section>
-    <section class="stats-band" aria-label="La colección en cifras"><div class="wrap stats-inner"><p><strong id="stat-records">28</strong><span>documentos en el catálogo</span></p><p><strong>3</strong><span>ediciones de Diego Kurilo con índice textual</span></p><p><strong id="stat-pages">3.379</strong><span>páginas con índice de búsqueda</span></p><p><strong>4</strong><span>idiomas de las ediciones catalogadas</span></p></div></section>
+    <section class="stats-band" aria-label="La colección en cifras"><div class="wrap stats-inner"><p><strong id="stat-records">175</strong><span>fichas en tres repertorios documentales</span></p><p><strong id="stat-indexed-editions">3</strong><span>ediciones de Diego Kurilo con índice textual</span></p><p><strong id="stat-pages">3.379</strong><span>páginas declaradas en esas tres ediciones</span></p><p><strong id="stat-languages">4</strong><span>idiomas en las ediciones catalogadas</span></p></div>
+<div class="wrap stat-audit-detail">
+<p><strong>Desglose verificable:</strong> <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>. <strong id="stat-passages">2.190</strong> pasajes textuales indexados por locus.</p>
+<p class="stat-audit-caveat">Cifras auditadas el <span id="stat-audit-date">2 de noviembre de 2026</span>. Las fichas pueden repetirse entre repertorios: 175 no significa 175 obras únicas. Las 3.379 páginas son la suma de extensiones editoriales declaradas, no páginas indexadas individualmente.</p></div></section>
     <section class="search-section wrap" id="buscar" aria-labelledby="search-title">
       <div class="section-heading"><div><p class="eyebrow">LECTURA E INVESTIGACIÓN</p><h2 id="search-title">Buscar en los textos</h2></div><p>Buscá una palabra, frase o locus.<br>Leé el latín y su traducción.</p></div>
       <form id="search-form" class="search-box">
