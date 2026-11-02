@@ -413,7 +413,7 @@ async function renderRightTranslation(article,group){
 }
 function refreshRightTranslations(){
  translationRevision++;
- for(const article of $('.result-parallel',$('#search-results'))){
+ for(const article of document.querySelectorAll('#search-results .result-parallel')){
   // Results are independent of how many editions contained the original phrase.
   const group=alignedGroups[Number(article.dataset.groupIndex)];
   if(group)renderRightTranslation(article,group);
