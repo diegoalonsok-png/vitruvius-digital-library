@@ -70,6 +70,23 @@ try{
   }
   await page.close();
  });
+ await test('Portada: accesos S G C B visibles y legibles en ambos temas',async()=>{
+   const page=await pageFor('index.html');
+   const links=['sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html'];
+   for(const href of links){
+     const item=page.locator('.hero-scriptoria-grid a[href="'+href+'"]');
+     assert.equal(await item.count(),1,'Falta acceso de portada: '+href);
+     assert(await item.isVisible(),'Acceso no visible en portada: '+href);
+   }
+   await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+   const result=await page.locator('.hero-scriptoria-grid a').first().evaluate(el=>({
+     fg:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor,
+     title:getComputedStyle(el.querySelector('strong')).color
+   }));
+   assert.notEqual(result.fg,result.bg,'Botón oscuro de portada ilegible');
+   assert.notEqual(result.title,result.bg,'Nombre Sulpizio de portada ilegible');
+   await page.close();
+ });
  await test('Scriptorium B y G: galería, navegación y modo oscuro',async()=>{
   for(const record of [
     {letter:'B',path:'barbaro-1567.html',total:522,prefix:'bar',first:173,last:214},
