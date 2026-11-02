@@ -97,10 +97,11 @@ try{
      const item=page.locator('.hero-scriptoria-grid a[href="'+href+'"]');
      assert.equal(await item.count(),1,'Falta acceso de portada: '+href);
      assert(await item.isVisible(),'Acceso no visible en portada: '+href);
-     const header=page.locator('.research-prints a[href="'+href+'"]');
-     assert.equal(await header.count(),1,'Falta botón superior de portada: '+href);
-     assert(await header.isVisible(),'Botón superior oculto: '+href);
+     const header=page.locator('.historic-top-links a[href="'+href+'"]');
+     assert.equal(await header.count(),1,'Falta botón grande de portada: '+href);
+     assert(await header.isVisible(),'Botón grande oculto: '+href);
    }
+   assert.equal(await page.locator('.research-prints a').count(),0,'Aún figuran botones pequeños duplicados');
    await page.close();
  });
  await test('Scriptorium B y G: galería, navegación y modo oscuro',async()=>{
