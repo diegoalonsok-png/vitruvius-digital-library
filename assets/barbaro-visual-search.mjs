@@ -44,7 +44,7 @@ function openPage(number){
  const entry=$('bar-page');entry.value=String(number);
  entry.dispatchEvent(new Event('change',{bubbles:true}));
  document.querySelectorAll('[data-bar-image]').forEach(b=>{
-  const active=Number(b.dataset.cesImage)===number;
+  const active=Number(b.dataset.barImage)===number;
   b.classList.toggle('is-current',active);
   if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
  });
@@ -60,7 +60,7 @@ function thumbnailURL(p){
 function galleryCard(p){
  const entry=document.createElement('button');
  entry.type='button';entry.className='bar-image-card';
- entry.dataset.cesImage=String(p.page);
+ entry.dataset.barImage=String(p.page);
  entry.setAttribute('aria-label','Abrir imagen digital '+p.page+', '+(sectionForPage(p.page)?.label||'Barbaro 1567'));
  const img=document.createElement('img');
  img.loading='lazy';img.decoding='async';
