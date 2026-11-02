@@ -35,6 +35,17 @@ try{
   assert.match(await page.locator('#ces-counter').innerText(),/150\s*\/\s*390/,'Contador de lectura incorrecto');
   await page.close();
  });
+ await test('Scriptorium C: botón directo y selector abren Cesariano',async()=>{
+  const page=await pageFor('scriptorium.html');
+  assert.equal(await page.locator('a[href="cesariano-1521.html"]').count()>0,true,'No aparece botón C');
+  assert.equal(await page.locator('#source option[value="print:cesariano-1521"]').count(),1,'No aparece Cesariano en el selector');
+  await page.locator('#source').selectOption('print:cesariano-1521');
+  await page.waitForURL(/cesariano-1521\.html/, {timeout:12000});
+  assert.match(await page.locator('h1').innerText(),/Scriptorium C/,'No aparece el título de Scriptorium C');
+  await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:18000});
+  assert.equal(await page.locator('#ces-gallery-results [data-ces-image]').count(),24,'La galería C no muestra las primeras 24 imágenes');
+  await page.close();
+ });
  await test('Scriptorium: todos los PDF locales sirven archivos PDF',async()=>{
   const page=await pageFor('scriptorium.html');
   const sources=['documents/krohn-1912.pdf','documents/kurilo-recensio-es.pdf','documents/kurilo-recensio-fr.pdf','documents/kurilo-theory-en.pdf'];
