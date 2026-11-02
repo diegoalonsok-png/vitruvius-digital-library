@@ -37,6 +37,10 @@ The site offers open-access, directly citable editorial versions and manuscript 
 
 A library's independent evaluation, subject-guide inclusion, acquisition or cataloguing decision cannot be inferred from a DOI or a project link.
 
+### Verified university subject-guide listing (2 November 2026)
+
+The **University of Cambridge, Faculty of Classics Library** [lists Vitruvius Digital Library in its *Classics: Latin Lang & Lit* LibGuide under open-access databases](https://libguides.cam.ac.uk/c.php?g=363717&p=4973030). The listing was verified publicly on 2 November 2026. This is an external subject-guide reference, **not** a Cambridge endorsement, affiliation or peer review of the editorial texts.
+
 ## English — About the project
 
 The Vitruvius Digital Library brings together a catalogue of manuscript witnesses, historical printed editions, translations, and resources for reading and searching *De architectura*. Its research tools support passage references (*loci*), terminology searches and comparison across the indexed editions.
