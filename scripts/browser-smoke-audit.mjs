@@ -258,6 +258,33 @@ try{
    assert(await first.locator('.parallel-translation').isVisible(),'Columna derecha no visible');
    await page.close();
  });
+ await test('Dossier académico: página visible, ficha de bibliotecas y registros bibliográficos',async()=>{
+   const page=await pageFor('bibliotecas-universitarias.html');
+   assert.match(await page.locator('h1').innerText(),/Vitruvius Digital Library/);
+   assert.match(await page.locator('body').innerText(),/independiente/i,'Falta transparencia editorial');
+   assert(await page.locator('a[href="documents/edicion-v514.html"]').count()>0,'Falta V514');
+   assert(await page.locator('a[href="documents/edicion-v554.html"]').count()>0,'Falta V554');
+   assert(await page.locator('a[href="documents/edicion-v297.html"]').count()>0,'Falta V297');
+   for(const [path,token] of [
+     ['bibliotecas/vitruvius-biblioteca.ris','10.5281/zenodo.23868911'],
+     ['bibliotecas/vitruvius-biblioteca.bib','Kurilo2026VitruviusDigitalLibrary'],
+     ['bibliotecas/vitruvius-biblioteca.jsonld','https://schema.org']
+   ]){
+     const resp=await page.request.get(base+path);
+     assert.equal(resp.status(),200,'Archivo de metadatos inaccesible: '+path);
+     assert((await resp.text()).includes(token),'Archivo de metadatos incompleto: '+path);
+   }
+   await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+   const colors=await page.locator('.library-panel').first().evaluate(el=>({
+      fg:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor
+   }));
+   assert.notEqual(colors.fg,colors.bg,'Panel bibliotecario ilegible en oscuro');
+   await page.close();
+   const home=await pageFor('index.html');
+   assert.equal(await home.locator('a[href="bibliotecas-universitarias.html"]').count()>0,true,
+     'Falta enlace desde la portada al dossier universitario');
+   await home.close();
+ });
  await test('Bibliografía: botones de ejemplo y restablecer filtros',async()=>{
   const page=await pageFor('bibliografia.html');
   await page.locator('[data-example="Gudianus"]').click();
