@@ -67,3 +67,34 @@ html[data-theme="dark"] .h-cotejo-link a:hover,
 html[data-theme="dark"] .h-cotejo-link a:focus-visible{
  color:#365b79!important;text-decoration:underline;
 }
+
+
+/* Contraste accesible para listas de libros y capítulos en modo oscuro.
+   Corrige menús nativos con texto claro sobre fondo blanco, y paneles
+   de consulta con fondo blanco heredado. Modo claro intacto. */
+html[data-theme="dark"] :is(
+  #book,#chapter,#section,#index-book,#codex-book,
+  #find-scope,#critical-edition,#critical-mode,
+  .scholarly-controls select,.critical-form select
+){
+  background-color:#243746!important;
+  color:#fff3dc!important;
+  border:1px solid #a6b6c4!important;
+  color-scheme:dark;
+}
+html[data-theme="dark"] select :is(option,optgroup){
+  background-color:#243746!important;
+  color:#fff3dc!important;
+}
+html[data-theme="dark"] select option:disabled{
+  background-color:#243746!important;
+  color:#b4c0c9!important;
+}
+html[data-theme="dark"] :is(.critical-form,.critical-parallel-edition){
+  background-color:#263845!important;
+  color:#f1ede4!important;
+  border-color:#65717b!important;
+}
+html[data-theme="dark"] :is(.critical-form,.critical-parallel-edition) :is(h2,h3,h4,label,p,strong){
+  color:#f1ede4;
+}
