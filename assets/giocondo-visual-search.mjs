@@ -44,7 +44,7 @@ function openPage(number){
  const entry=$('gio-page');entry.value=String(number);
  entry.dispatchEvent(new Event('change',{bubbles:true}));
  document.querySelectorAll('[data-gio-image]').forEach(b=>{
-  const active=Number(b.dataset.cesImage)===number;
+  const active=Number(b.dataset.gioImage)===number;
   b.classList.toggle('is-current',active);
   if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
  });
@@ -60,7 +60,7 @@ function thumbnailURL(p){
 function galleryCard(p){
  const entry=document.createElement('button');
  entry.type='button';entry.className='gio-image-card';
- entry.dataset.cesImage=String(p.page);
+ entry.dataset.gioImage=String(p.page);
  entry.setAttribute('aria-label','Abrir imagen digital '+p.page+', '+(sectionForPage(p.page)?.label||'Giocondo 1511'));
  const img=document.createElement('img');
  img.loading='lazy';img.decoding='async';
