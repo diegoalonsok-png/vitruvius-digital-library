@@ -274,9 +274,9 @@ function ensureWorker(){
   $('#search-button').disabled=false;$('#search-button').textContent='Buscar →';
   if(data.type==='error'){$('#search-status').textContent=data.message;return;}
   if(data.type==='results'){
-   results=data.results;countSummary=data.countSummary||null;shown=0;$('#search-results').replaceChildren();renderCountSummary(countSummary);
+   results=data.results;alignedGroups=groupMatchesByLocus(results);countSummary=data.countSummary||null;shown=0;translationRevision++;$('#search-results').replaceChildren();renderCountSummary(countSummary);
    $('#search-status').textContent=(countSummary?countSummary.total.toLocaleString('es-AR')+' apariciones en '+countSummary.passages+' pasajes de las ediciones seleccionadas.':results.length?results.length.toLocaleString('es-AR')+(results.length===1?' coincidencia':' coincidencias')+' con libro, capítulo y sección para «'+lastQuery+'».':'Palabra, frase o locus no encontrado: «'+lastQuery+'» en esta selección. Revisá los filtros o la grafía. Algunas secciones inglesas se conservan agrupadas como en el original.')+(data.warnings?.length?' '+data.warnings.join('. '):'');
-   renderMore();$('#export-tools').hidden=!results.length;
+   if(results.length&&alignedGroups.length!==results.length)$('#search-status').textContent+=' Vista comparada: '+alignedGroups.length+' loci distintos (las coincidencias por edición se conservan en CSV y PDF).';renderMore();$('#export-tools').hidden=!results.length;
   }
  };
  worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador. Volvé a buscar para reintentarlo.';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;};
@@ -287,7 +287,7 @@ function startSearch(){
  const query=$('#query').value.trim(),kind=$('#search-kind').value;
  if(!query&&kind!=='locus'){$('#search-status').textContent='Escribí una palabra o frase.';$('#query').focus();return;}
  if(kind==='internet'){searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return;}
- lastQuery=query||(roman(Number($('#filter-book').value))+( $('#filter-chapter').value?'.'+$('#filter-chapter').value:''));searchKind=kind;results=[];countSummary=null;renderCountSummary(null);shown=0;requestId++;
+ lastQuery=query||(roman(Number($('#filter-book').value))+( $('#filter-chapter').value?'.'+$('#filter-chapter').value:''));searchKind=kind;results=[];alignedGroups=[];translationRevision++;countSummary=null;renderCountSummary(null);shown=0;requestId++;
  $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();$('#search-status').textContent='Consultando el índice de los DOCX…';$('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
  const parsedReference=parseLocus(query);
  const canonicalQuery=parsedReference?roman(parsedReference.book)+(parsedReference.chapter!=null?'.'+parsedReference.chapter+(parsedReference.section!=null?'.'+parsedReference.section:''):''):query||lastQuery;
@@ -328,15 +328,144 @@ function scholarlyExcerpt(r,e){
   }
   return resultSnippet(r);
 }
-function renderMore(){
- const next=results.slice(shown,shown+16),container=$('#search-results');
- for(const r of next){const e=edition(r.edition),article=document.createElement('article');article.className='result';
-  const url=readerURL(e.id,r.locus);
-  article.innerHTML='<div class="result-meta">'+(r.match_type==='aligned_locus'?'Texto paralelo por locus · no implica equivalencia literal · ':(r.partial_match?'Coincidencia parcial de la cita · verificar variante textual · ':''))+escapeHTML(e.version)+' · '+escapeHTML(languages[r.language]||r.language)+'</div><h3>'+escapeHTML(citation(r))+'</h3><p class="result-biblio">'+bibliographyHTML(e)+'</p><p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+r.chapter)+' · Sección '+r.section+(r.page?' · PDF p. '+r.page:'')+'</p>'+(r.semantic_term?'<p class="semantic-term">Término relacionado: <strong>'+escapeHTML(r.semantic_term)+'</strong></p>':'')+'<p lang="'+r.language+'">'+resultSnippet({...r,snippet:r.text||r.snippet,form:r.semantic_term||r.form,context_start:null,context_length:null})+'</p><details class="result-translation"><summary>Desplegar texto latino y traducción</summary><p lang="la"><strong>Latín</strong><br>'+escapeHTML(r.latin)+'</p><p lang="'+e.languages.find(l=>l!=='la')+'"><strong>'+escapeHTML(languageLabel(e))+'</strong><br>'+escapeHTML(r.translation)+'</p></details><div class="result-actions"><a href="'+escapeHTML(url)+'">Leer el pasaje →</a><a href="'+escapeHTML(url)+'">Comparar traducciones →</a><a href="aparato-critico.html?locus='+encodeURIComponent(r.locus)+'">Aparato crítico →</a><a href="'+escapeHTML(sourceURL(e,r.page||1))+'" target="_blank" rel="noopener">PDF original ↗</a></div>';
-  container.append(article);
+// A search can find the same passage in different editions. Present one pair
+// per canonical locus while preserving all raw hits for counts, CSV and print.
+const translationEditionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'};
+const translationNames={es:'Castellano · V514',fr:'Français · V554',en:'English · V297'};
+const parallelIndexCache=new Map();
+let alignedGroups=[],selectedTranslationLanguage='es',translationRevision=0;
+function groupMatchesByLocus(hits){
+ const groups=new Map();
+ for(const hit of hits){
+  const key=[hit.book,hit.chapter,hit.section].every(v=>v!==undefined&&v!==null)
+   ?[hit.book,hit.chapter,hit.section].join('.'):String(hit.locus||'');
+  if(!groups.has(key))groups.set(key,{key,locus:hit.locus,book:hit.book,chapter:hit.chapter,section:hit.section,hits:[]});
+  groups.get(key).hits.push(hit);
  }
- shown+=next.length;$('#more-results').hidden=shown>=results.length;
- if(shown<results.length)$('#more-results').textContent='Mostrar más resultados ('+shown+' de '+results.length+')';
+ return [...groups.values()];
+}
+function preferredLatinHit(group){
+ const order={'recensio-es':0,'recensio-fr':1,'theory-en':2};
+ return [...group.hits].filter(hit=>hit.latin).sort((a,b)=>
+  (a.language==='la'?0:1)-(b.language==='la'?0:1)||
+  (order[a.edition]??9)-(order[b.edition]??9))[0]||group.hits[0];
+}
+async function parallelEditionData(lang){
+ const id=translationEditionIds[lang];
+ if(!id)throw Error('Idioma de traducción no reconocido');
+ if(!parallelIndexCache.has(id))parallelIndexCache.set(id,
+  fetchJSON('data/structured/'+id+'.json').then(data=>{
+   if(data.edition!==id||!Array.isArray(data.passages))throw Error('El índice '+id+' es inválido');
+   return {passages:data.passages,byLocus:new Map(data.passages.map(p=>[p.locus,p]))};
+  }).catch(err=>{parallelIndexCache.delete(id);throw err;}));
+ return parallelIndexCache.get(id);
+}
+function alignedPassage(index,group){
+ const exact=index.byLocus.get(group.locus);
+ if(exact)return exact;
+ // The English V297 edition groups a few consecutive sections together.
+ // Only apply an explicit section range in the same book and chapter.
+ return index.passages.find(p=>
+  Number(p.book)===Number(group.book)&&String(p.chapter)===String(group.chapter)&&
+  Number(p.section)<=Number(group.section)&&Number(p.section_end)>=Number(group.section));
+}
+function searchExcerpt(text,max=1700){
+ text=String(text||'');
+ if(text.length<=max)return text;
+ const query=String(lastQuery||'').trim();
+ if(!query)return text.slice(0,max)+'…';
+ const wordFold=s=>normalize(s).replace(/v/g,'u').replace(/j/g,'i');
+ const at=wordFold(text).indexOf(wordFold(query));
+ if(at<0)return text.slice(0,max)+'…';
+ const begin=Math.max(0,at-240),end=Math.min(text.length,begin+max);
+ return (begin?'… ':'')+text.slice(begin,end)+(end<text.length?' …':'');
+}
+async function renderRightTranslation(article,group){
+ const lang=selectedTranslationLanguage,revision=translationRevision;
+ const holder=$('.parallel-translation-text',article),
+ source=$('.parallel-translation-source',article);
+ const ed=edition(translationEditionIds[lang]);
+ if(!holder||!source||!ed)return;
+ article.querySelector('.parallel-language').value=lang;
+ holder.lang=lang;
+ holder.textContent='Cargando traducción '+(languages[lang]||lang)+'…';
+ source.textContent='';
+ try{
+  const indexed=await parallelEditionData(lang);
+  if(revision!==translationRevision||!article.isConnected)return;
+  const p=alignedPassage(indexed,group);
+  if(!p?.translation){
+   holder.textContent='Esta edición no ofrece una traducción alineada y comprobable para este locus.';
+   source.innerHTML='<a href="'+escapeHTML(readerURL(ed.id,group.locus))+'">Comprobar el locus en el lector bilingüe →</a>';
+   return;
+  }
+  holder.innerHTML=resultSnippet({snippet:searchExcerpt(p.translation),form:'',context_start:null,context_length:null});
+  const page=p.pdf_pages?.translation;
+  const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
+  source.innerHTML='<span class="parallel-source-label">'+escapeHTML(ed.version)+' · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):'')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
+  const link=$('.parallel-open-translation',article);
+  if(link)link.href=readerURL(ed.id,group.locus);
+ }catch(e){
+  if(revision!==translationRevision||!article.isConnected)return;
+  holder.textContent='No se pudo cargar la traducción '+languages[lang]+': '+e.message+'. Probá otro idioma o abrí el lector bilingüe.';
+  source.textContent='';
+ }
+}
+function refreshRightTranslations(){
+ translationRevision++;
+ for(const article of $('.result-parallel',$('#search-results'))){
+  // Results are independent of how many editions contained the original phrase.
+  const group=alignedGroups[Number(article.dataset.groupIndex)];
+  if(group)renderRightTranslation(article,group);
+ }
+}
+function renderMore(){
+ const container=$('#search-results');
+ container.classList.add('parallel-results');
+ const next=alignedGroups.slice(shown,shown+16);
+ for(let i=0;i<next.length;i++){
+  const group=next[i],r=preferredLatinHit(group),e=edition(r.edition);
+  if(!e)continue;
+  const article=document.createElement('article');
+  article.className='result result-parallel';
+  article.dataset.groupIndex=String(shown+i);
+  const word=group.hits.length===1?'coincidencia documentada':'coincidencias documentadas';
+  const pdfpage=group.hits.find(x=>x.edition===r.edition&&x.language==='la')?.page;
+  const latinParagraph=searchExcerpt(r.latin);
+  article.innerHTML=
+   '<div class="result-meta">VITRUVIO · '+escapeHTML(group.hits.length)+' '+word+' en '+escapeHTML([...new Set(group.hits.map(h=>edition(h.edition)?.version||h.edition))].join(' · '))+'</div>'+
+   '<h3>'+escapeHTML(citation(r))+'</h3>'+
+   '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
+   '<div class="parallel-columns">'+
+     '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
+       '<div class="parallel-heading"><span>LATÍN · TEXTO DE CONSULTA</span><strong>'+escapeHTML(e.version)+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):'')+'</strong></div>'+
+       '<p class="parallel-passage">'+resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null})+'</p>'+
+       '<p class="parallel-small">Edición latina: '+escapeHTML(e.version)+'. Verificá las variantes en el aparato crítico.</p>'+
+     '</section>'+
+     '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
+       '<div class="parallel-heading"><label>TRADUCCIÓN · IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
+         '<option value="es">Castellano · V514</option><option value="fr">Français · V554</option><option value="en">English · V297</option>'+
+       '</select></label></div>'+
+       '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
+       '<div class="parallel-translation-source"></div>'+
+       '<p class="parallel-small">Alineación por libro, capítulo y sección; el término latino no necesariamente aparece literalmente en la traducción.</p>'+
+     '</section></div>'+
+   '<div class="result-actions"><a href="'+escapeHTML(readerURL(e.id,group.locus))+'">Leer el latín →</a>'+
+     '<a class="parallel-open-translation" href="'+escapeHTML(readerURL(translationEditionIds[selectedTranslationLanguage],group.locus))+'">Leer traducción en contexto →</a>'+
+     '<a href="aparato-critico.html?locus='+encodeURIComponent(group.locus)+'">Aparato crítico →</a>'+
+   '</div>';
+  const selector=$('.parallel-language',article);
+  selector.value=selectedTranslationLanguage;
+  selector.addEventListener('change',event=>{
+   selectedTranslationLanguage=event.target.value;
+   refreshRightTranslations();
+  });
+  container.append(article);
+  renderRightTranslation(article,group);
+ }
+ shown+=next.length;
+ $('#more-results').hidden=shown>=alignedGroups.length;
+ if(shown<alignedGroups.length)$('#more-results').textContent='Mostrar más pasajes ('+shown+' de '+alignedGroups.length+')';
 }
 
 function resultExportRows(){if($('#export-limit').value==='all')return results;const limit=Number($('#export-limit').value)||50;return results.slice(0,limit);}
