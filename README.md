@@ -29,6 +29,10 @@ S, G, C and B are navigation labels for **printed editions**, not critical sigla
 
 **Discovery:** the site includes [sitemap.xml](sitemap.xml) and [robots.txt](robots.txt), with individual bibliographic records and scholarly search metadata.
 
+## Teaching resources for ancient Roman history and architecture
+
+The [Roman architecture and Vitruvius teaching guide](docencia-roma-antigua.html) offers seven seminar themes with book/chapter anchors, aligned Latin–Spanish/French/English reading links and links to notes. It is a non-accredited independent educational resource, not a certified syllabus.
+
 ## University libraries and subject librarians
 
 **[Academic library dossier / ficha para bibliotecas universitarias](bibliotecas-universitarias.html)**
