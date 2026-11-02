@@ -52,6 +52,14 @@ html[data-theme="dark"] .hero-scriptorium-letter{background:#192938!important;co
 html[data-theme="dark"] .hero-scriptorium-link :is(strong,small){color:#f7efe2!important}
 html[data-theme="dark"] .hero-scriptorium-link:hover,html[data-theme="dark"] .hero-scriptorium-link:focus-visible{background:#36526a!important;color:#fff!important;outline-color:#d7bb82!important}
 @media(max-width:500px){.hero-scriptoria-grid{grid-template-columns:1fr}}
+
+/* Letras S/G/C/B a la vista en la navegación principal; H queda intacto. */
+.research-prints{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;margin-left:0}
+.research-nav-inner .research-prints>a{display:inline-flex!important;justify-content:center;align-items:center;width:34px;height:34px;min-height:34px;min-width:34px;border:1px solid var(--gold);border-radius:4px;background:var(--white);color:var(--ink);font:700 17px Georgia,serif;text-decoration:none!important;padding:0!important}
+.research-nav-inner .research-prints>a:hover,.research-nav-inner .research-prints>a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;background:#eadcc4;color:#13283d}
+html[data-theme=dark] .research-nav-inner .research-prints>a{background:#2d4659!important;color:#f5eee3!important;border-color:#a89777!important}
+html[data-theme=dark] .research-nav-inner .research-prints>a:hover{background:#39566e!important;color:#fff!important}
+@media(max-width:1720px){.research-nav-inner{flex-wrap:wrap}.research-prints{margin-left:0}}
 </style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -69,7 +77,12 @@ html[data-theme="dark"] .hero-scriptorium-link:hover,html[data-theme="dark"] .he
         <a href="aparato-critico.html">Índice textual y notas</a>
         <a href="indices-locorum.html">Índices locorum</a>
         <a href="ediciones-historicas.html">Ediciones libres</a>
-        <a href="facsimiles.html">Facsímiles manuscritos</a><a href="escritorio-h/index.html">Scriptorium H</a><a href="geographia-codicum.html">Geographia codicum</a><a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a><a href="scriptorium-htr.html">Scriptorium HTR</a><a class="last-h-button" href="harleianus.html" aria-label="H: visor grande de Harleianus 2767" title="Visor grande del Codex H">H</a>
+        <a href="facsimiles.html">Facsímiles manuscritos</a><a href="escritorio-h/index.html">Scriptorium H</a><a href="geographia-codicum.html">Geographia codicum</a><a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a><a href="scriptorium-htr.html">Scriptorium HTR</a><a class="last-h-button" href="harleianus.html" aria-label="H: visor grande de Harleianus 2767" title="Visor grande del Codex H">H</a><div class="research-prints" role="group" aria-label="Scriptoria de ediciones impresas históricas">
+<a href="sulpizio-1486.html" title="Sulpizio · edición príncipe, c.1486–1487" aria-label="S: Sulpizio c.1486–1487">S</a>
+<a href="giocondo-1511.html" title="Fra Giocondo · 1511" aria-label="G: Fra Giocondo 1511">G</a>
+<a href="cesariano-1521.html" title="Cesare Cesariano · 1521" aria-label="C: Cesariano 1521">C</a>
+<a href="barbaro-1567.html" title="Daniele Barbaro · 1567" aria-label="B: Barbaro 1567">B</a>
+</div>
       </div>
     </nav>
   </header>
