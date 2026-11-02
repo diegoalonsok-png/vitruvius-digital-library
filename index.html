@@ -60,6 +60,24 @@ html[data-theme="dark"] .hero-scriptorium-link:hover,html[data-theme="dark"] .he
 html[data-theme=dark] .research-nav-inner .research-prints>a{background:#2d4659!important;color:#f5eee3!important;border-color:#a89777!important}
 html[data-theme=dark] .research-nav-inner .research-prints>a:hover{background:#39566e!important;color:#fff!important}
 @media(max-width:1720px){.research-nav-inner{flex-wrap:wrap}.research-prints{margin-left:0}}
+
+/* Franja independiente, siempre visible al ingresar; no depende del espacio
+   disponible en la barra superior ni del scroll hacia las tarjetas del hero. */
+.historic-top-access{background:var(--white);color:var(--ink);border-block:1px solid var(--gold)}
+.historic-top-inner{width:min(1600px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;gap:24px;padding:12px 0}
+.historic-top-heading{display:flex;flex-direction:column;gap:2px;flex:0 0 195px;font:12px Arial,sans-serif;line-height:1.45}
+.historic-top-heading strong{font-size:12px;letter-spacing:1.1px;color:inherit}
+.historic-top-heading span{color:var(--muted);font-size:11px}
+.historic-top-links{display:flex;gap:9px;align-items:center;flex-wrap:wrap;flex:1}
+.historic-top-links a{display:inline-flex;align-items:center;justify-content:flex-start;gap:9px;border:1px solid var(--gold);border-radius:4px;padding:7px 12px;min-height:48px;background:var(--paper);color:var(--ink);text-decoration:none;font:600 13px Arial,sans-serif;flex:1 1 128px;white-space:nowrap}
+.historic-top-links a b{font:700 23px Georgia,serif;border-right:1px solid var(--gold);padding-right:9px;line-height:1.2}
+.historic-top-links a small{font-size:11px;font-weight:400;color:inherit}
+.historic-top-links a:hover,.historic-top-links a:focus-visible{background:#e8d8b8;color:#192d3d;outline:2px solid var(--gold);outline-offset:2px}
+html[data-theme="dark"] .historic-top-access{background:#263746!important;color:#f7eee3!important;border-color:#9e8966!important}
+html[data-theme="dark"] .historic-top-links a{background:#1a2b38!important;color:#f7eee3!important;border-color:#a69370!important}
+html[data-theme="dark"] .historic-top-heading span{color:#d0c7b9!important}
+html[data-theme="dark"] .historic-top-links a:hover,html[data-theme="dark"] .historic-top-links a:focus-visible{background:#38556a!important;color:#fff!important}
+@media(max-width:850px){.historic-top-inner{flex-direction:column;align-items:stretch;gap:10px;padding:12px 0}.historic-top-heading{flex-basis:auto}.historic-top-links a{flex:1 1 136px}}
 </style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -86,6 +104,19 @@ html[data-theme=dark] .research-nav-inner .research-prints>a:hover{background:#3
       </div>
     </nav>
   </header>
+
+  <section class="historic-top-access" aria-labelledby="historic-top-heading">
+    <div class="historic-top-inner">
+      <div class="historic-top-heading" id="historic-top-heading"><strong>ABRIR FACSÍMILES</strong><span>Códices y ediciones históricas</span></div>
+      <nav class="historic-top-links" aria-label="Acceso inmediato a los cinco visores de Vitruvio">
+        <a href="harleianus.html" title="Manuscrito Harleianus 2767"><b>H</b><span>Codex H</span></a>
+        <a href="sulpizio-1486.html" title="Sulpizio da Veroli, edición príncipe c. 1486–1487"><b>S</b><span>Sulpizio <small>1486</small></span></a>
+        <a href="giocondo-1511.html" title="Fra Giocondo, edición ilustrada de 1511"><b>G</b><span>Giocondo <small>1511</small></span></a>
+        <a href="cesariano-1521.html" title="Cesare Cesariano, edición ilustrada de 1521"><b>C</b><span>Cesariano <small>1521</small></span></a>
+        <a href="barbaro-1567.html" title="Daniele Barbaro, edición ilustrada de 1567"><b>B</b><span>Barbaro <small>1567</small></span></a>
+      </nav>
+    </div>
+  </section>
   <main id="contenido">
     <section class="hero hero-academic wrap" id="inicio">
       <div class="hero-copy">
