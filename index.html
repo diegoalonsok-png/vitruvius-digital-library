@@ -205,7 +205,8 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
   <section class="historic-top-access" aria-labelledby="historic-top-heading">
     <div class="historic-top-inner">
       <div class="historic-top-heading" id="historic-top-heading"><strong>ABRIR FACSÍMILES</strong><span>Códices y ediciones históricas</span></div>
-      <nav class="historic-top-links" aria-label="Acceso inmediato a los cinco visores de Vitruvio">
+      <nav class="historic-top-links" aria-label="Accesos a la búsqueda cultural y los visores de Vitruvio">
+        <a href="vitruvia.html" title="Vitruvia · búsqueda universal, enciclopedias, biblioteca e investigación cultural" aria-label="Abrir Vitruvia, buscador universal"><b>V</b><span>Vitruvia <small id="vitruvia-menu-label">Buscar todo</small></span></a>
         <a href="harleianus.html" title="Manuscrito Harleianus 2767"><b>H</b><span>Codex H</span></a>
         <a href="codex-h-doble-folio.html" title="Leer el Codex H en doble hoja con los folios identificados y lupa independiente"><b>H²</b><span>Codex H <small id="codex-double-menu-label">Doble hoja</small></span></a>
         <a href="sulpizio-1486.html" title="Sulpizio da Veroli, edición príncipe c. 1486–1487"><b>S</b><span>Sulpizio <small>1486</small></span></a>
@@ -297,6 +298,8 @@ document.getElementById('print-home')?.addEventListener('click',()=>window.print
     if(!label||!link)return;
     label.textContent=item.text;
     link.setAttribute("aria-label",item.aria);
+    const vitruviaLabel=document.getElementById("vitruvia-menu-label");
+    if(vitruviaLabel)vitruviaLabel.textContent=({es:"Buscar todo",en:"Search everything",fr:"Tout rechercher",it:"Ricerca globale",de:"Alles suchen",pt:"Pesquisar tudo"}[lang]||"Buscar todo");
     const doubleLabel=document.getElementById("codex-double-menu-label");
     if(doubleLabel)doubleLabel.textContent=({es:"Doble hoja",en:"Double page",fr:"Double page",it:"Doppia pagina",de:"Doppelseite",pt:"Página dupla"}[lang]||"Doble hoja");
   }
