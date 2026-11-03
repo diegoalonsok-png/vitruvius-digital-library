@@ -1,5 +1,14 @@
 # Vitruvius Digital Library — registro de cambios
 
+## 3 de noviembre de 2026 — Atlas Geographicus: regiones, ríos, cartografía histórica y fuentes textuales
+
+- Se mantiene el mapa moderno OSM y se incorpora selector hacia el mapa base de la Antigüedad del **Consortium of Ancient World Mappers** (CAWM / University of Iowa, CC BY 4.0). Periodización general: **no es una restitución del mundo romano en un año exacto**.
+- Se incluyen geometrías **esquemáticas**, seleccionables y con ficha: áreas para Campania, Sicilia, Italia y Aegyptus; recorridos aproximados para Nilus, Tiberis, Euphrates, Tigris y Ganges. «Asia» no obtiene polígonos sin precisar antes qué acepción geográfica usa el tratado. Los datos están en `data/atlas-geographicus-geometrias.json` y declaran incertidumbre.
+- El atlas hace visibles los pasajes vinculados con cada lugar en **latín y castellano** de V514; `data/atlas-geographicus-pasajes.json` incorpora **111 loci únicos** referenciados por las 28 fichas de lugares existentes. El visitante puede elegir locus, leer las dos versiones, ver un resaltado amarillo únicamente cuando una forma latina del índice tiene coincidencia literal, y abrir el lector bilingüe. No se afirma lectura diplomática de H.
+- Fano/Fanum Fortunae incluye el pasaje V.1.6 en el que Vitruvio describe la basílica y sus dimensiones. Campania incluye II.6.6, sobre materiales de origen volcánico.
+- Se conserva la ventana científica con encabezados latinos, formas griegas convencionales, nombres modernos, incertidumbre geográfica y fuentes institucionales. Los mapas, los pasajes y las geometrías se almacenan por separado para trazabilidad.
+
+
 ## 3 de noviembre de 2026 — hoja de ruta: biblioteca contextual de la Antigüedad
 
 **Estado: propuesta registrada; no implementada todavía.** Crear una biblioteca general de obras antiguas próxima a la época de Vitruvio, independiente de la bibliografía vitruviana existente. Núcleo temporal orientativo **125 a. C.–75 d. C.**, con expansión claramente separada para siglos II–IV d. C. y otras obras posteriores relevantes.
