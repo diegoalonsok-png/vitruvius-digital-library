@@ -1,0 +1,90 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Codex H · Galería visual de folios · Vitruvius Digital Library</title>
+<meta name="description" content="Harley MS 2767 · De architectura. Archivo y lector local de folios con índice codicológico.">
+<style>
+:root{--navy:#1b354c;--gold:#c19e69;--paper:#f7f3ec;--ink:#213b51}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,sans-serif}
+main{max-width:1500px;margin:auto;padding:20px clamp(12px,3vw,42px) 60px}
+a{color:inherit}nav{display:flex;flex-wrap:wrap;gap:18px;padding:0 0 20px}
+header{background:var(--navy);color:#f8f0e3;padding:28px clamp(16px,3vw,38px);border-top:5px solid var(--gold)}
+header small{letter-spacing:.16em}h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(36px,4vw,62px);margin:10px 0}
+.note,#state{background:#eee3d0;border-left:4px solid #b69361;padding:12px 16px;margin:16px 0}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;background:white;border:1px solid #c7b69e;padding:12px}
+button,input{font:inherit}button{min-height:42px;cursor:pointer;background:var(--navy);border:1px solid #c1a06d;color:#fff;padding:9px 14px}
+button:disabled{opacity:.5;cursor:not-allowed}input[type=number]{width:80px;padding:8px}input[type=range]{width:155px}
+#label{font-size:18px;font-family:Georgia,serif;font-weight:600;flex:1 1 170px}
+#stage{height:77vh;min-height:460px;background:#d9d0c1;overflow:auto;text-align:center;border:1px solid #b1a188;scrollbar-gutter:stable}
+#image{display:block;max-width:none;height:auto;margin:0 auto;cursor:zoom-in}#image[hidden]{display:none}
+#message{padding:25px}
+.gallery{background:var(--navy);color:#f8f0e3;padding:20px;margin:24px 0}
+.gallery h2{margin:0 0 5px}.filter{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.filter input{flex:1 1 270px;min-height:44px;padding:8px 12px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:9px;padding:9px;max-height:600px;overflow:auto;border:1px solid #70899a}
+.card{display:flex;flex-direction:column;text-align:left;gap:4px;background:#2b4b62;padding:7px;color:white;min-width:0;border:2px solid #7b95a7}
+.card[aria-current=true]{border-color:#f3c278;box-shadow:0 0 0 2px #e4b25e}
+.card img{width:100%;height:152px;object-fit:contain;background:#e9e2d4}
+.card strong,.card span{font-size:12px;overflow-wrap:anywhere}
+#more{background:#f8e8cc;color:var(--ink);margin:14px auto 0;display:block}#more[hidden]{display:none}
+footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(max-width:650px){#grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card img{height:108px}.card{padding:4px}#stage{min-height:360px;height:65vh}}
+@media print{.toolbar,.gallery,nav{display:none}#stage{height:auto;overflow:visible}}
+</style></head><body><main>
+<nav><a href="index.html">← Biblioteca principal</a><a href="scriptorium.html">Scriptorium histórico</a><a href="harleianus.html">Visor IIIF existente</a></nav>
+<header><small>LECTIO · IMAGO · HARLEIANUS 2767 · TESTIMONIVM CAROLINGIVM</small><h1>Codex H · Folios</h1>
+<p>Vitruvio, <em>De architectura</em>. The British Library, Harley MS 2767, primer cuarto del siglo IX. Galería local ordenada según la secuencia y las etiquetas originales de su digitalización.</p></header>
+<p class="note"><strong>Identificación académica:</strong> el número de imagen digital no equivale necesariamente al número de folio. Las cubiertas y guardas conservan su posición original; <em>f.1r</em> corresponde a la imagen digital 9 del manifiesto.</p>
+<p id="state" role="status">Comprobando que la colección de fotografías esté publicada en GitHub…</p>
+<section aria-label="Lector de folios"><h2>Leer el códice en grande</h2>
+<div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span>
+<button id="minus" disabled>−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" disabled></label><output id="percent">100%</output><button id="plus" disabled>+ Ampliar</button><button id="fit" disabled>Ajustar</button></div>
+<div id="stage" tabindex="0" aria-label="Folio ampliable, clic para aumentar"><p id="message">La galería se abrirá cuando se verifique el archivo maestro.</p><img id="image" hidden alt="Folio manuscrito del Codex H"></div>
+<p>Hacé clic en la imagen para ampliar la zona señalada. Desplazate por el visor con las barras horizontal y vertical.</p></section>
+<section class="gallery" id="h-folios" aria-label="Galería de miniaturas">
+<h2>Buscar por imagen · Galería visual del Codex H</h2><p>Todos los folios en orden digital y con sus etiquetas IIIF originales. Seleccioná una miniatura para leerla arriba.</p>
+<div class="filter"><input id="search" type="search" placeholder="f.1r · f.16v · imagen 150" aria-label="Buscar folio o número"><button id="reset">Mostrar todas</button></div>
+<p id="gallery-status" role="status">Comprobando índice…</p><div id="grid"></div><button id="more" hidden>Mostrar más folios</button></section>
+<footer><p><strong>Créditos institucionales:</strong> The British Library, London, Harley MS 2767, Vitruvius, <em>De architectura</em>. Digitalización y etiquetas de folio procedentes del <a href="https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">manifiesto IIIF institucional</a>. Condiciones citadas por el proveedor: «Public Domain in most countries, other than the UK»; deben respetarse las condiciones aplicables.</p>
+<p>El repositorio conserva los nombres originales, la correspondencia de imagen y la huella SHA-256. No se presenta una equivalencia entre folios y loci sin cotejo.</p></footer>
+</main><script>
+(()=>{"use strict";const $=id=>document.getElementById(id);
+const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
+let folios=[],filtered=[],count=0,position=8,zoom=100,seq=0;const stage=$("stage"),img=$("image");
+function file(f){return base+encodeURIComponent(f.archivo)}
+function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"")}
+function setZoom(z,cx,cy){
+ const old=img.getBoundingClientRect(),box=stage.getBoundingClientRect(),fx=cx==null?.5:(stage.scrollLeft+cx-box.left)/Math.max(1,old.width),fy=cy==null?.5:(stage.scrollTop+cy-box.top)/Math.max(1,old.height);
+ zoom=Math.max(50,Math.min(500,Math.round(z/25)*25));img.style.width=Math.round(Math.max(220,stage.clientWidth-24)*zoom/100)+"px";
+ $("zoom").value=String(zoom);$("percent").textContent=zoom+"%";
+ const now=img.getBoundingClientRect();
+ stage.scrollLeft=Math.max(0,now.width*fx-(cx==null?stage.clientWidth/2:cx-box.left));stage.scrollTop=Math.max(0,now.height*fy-(cy==null?stage.clientHeight/2:cy-box.top));
+}
+function open(index,scroll=false){
+ if(index<0||index>=folios.length)return;
+ position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("label").textContent="Folio: "+f.etiquetaOriginal;
+ $("prev").disabled=index===0;$("next").disabled=index===folios.length-1;
+ $("message").textContent="Cargando "+f.etiquetaOriginal+"…";$("message").hidden=false;img.hidden=true;
+ img.onload=()=>{if(ticket!==seq)return;img.hidden=false;$("message").hidden=true;setZoom(100);stage.scrollTo({left:0,top:0});$("state").textContent="Imagen digital "+(index+1)+"/"+folios.length+" · "+f.etiquetaOriginal+" · "+img.naturalWidth+" × "+img.naturalHeight+" px"};
+ img.onerror=()=>{if(ticket!==seq)return;$("message").textContent="No se pudo abrir esta fotografía local; el índice conserva la referencia.";};
+ img.alt="Harley MS 2767 · "+f.etiquetaOriginal+" · imagen digital "+(index+1);img.src=file(f);
+ $("grid").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));
+ if(scroll)document.querySelector("section[aria-label='Lector de folios']").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function append(){const last=Math.min(filtered.length,count+48),frag=document.createDocumentFragment();for(const i of filtered.slice(count,last)){
+ const f=folios[i],b=document.createElement("button");b.className="card";b.type="button";b.dataset.i=i;b.setAttribute("aria-current",String(i===position));
+ const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+f.etiquetaOriginal;image.src=file(f);
+ const n=document.createElement("strong");n.textContent="Imagen "+(i+1),label=document.createElement("span");label.textContent=f.etiquetaOriginal;
+ b.append(image,n,label);b.addEventListener("click",()=>open(i,true));frag.append(b)}
+ $("grid").append(frag);count=last;$("more").hidden=count>=filtered.length;$("gallery-status").textContent=filtered.length+" imágenes coincidentes · "+count+" miniaturas visibles"}
+function filter(){const raw=$("search").value.replace(/^imagen\s*/i,""),q=norm(raw);filtered=folios.map((_,i)=>i).filter(i=>!q||String(i+1)===q||norm(folios[i].etiquetaOriginal).includes(q));count=0;$("grid").replaceChildren();if(filtered.length)append();else{$("gallery-status").textContent="Sin coincidencias";$("more").hidden=true}}
+$("prev").addEventListener("click",()=>open(position-1));$("next").addEventListener("click",()=>open(position+1));$("number").addEventListener("change",()=>open(+$("number").value-1));
+$("minus").addEventListener("click",()=>setZoom(zoom-25));$("plus").addEventListener("click",()=>setZoom(zoom+25));$("fit").addEventListener("click",()=>{setZoom(100);stage.scrollTo({top:0,left:0})});
+$("zoom").addEventListener("input",()=>setZoom(+$("zoom").value));img.addEventListener("click",e=>setZoom(zoom+50,e.clientX,e.clientY));
+$("search").addEventListener("input",filter);$("reset").addEventListener("click",()=>{$("search").value="";filter()});$("more").addEventListener("click",append);
+fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ if(d.totalImagenes!==341||!Array.isArray(d.imagenes)||d.imagenes.length!==341||d.imagenes.some((x,i)=>x.numeroImagen!==i+1||!/^H_\d{3}_[a-z0-9-]+\.jpg$/.test(x.archivo)))throw Error("Índice inválido o incompleto");
+ folios=d.imagenes;$("total").textContent="/ 341";$("number").max=341;
+ for(const id of ["prev","next","number","minus","plus","fit","zoom"])$(id).disabled=false;
+ filter();open(8);
+}).catch(err=>{$("state").textContent="Las fotografías locales aún no están publicadas o el índice no es válido ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
+})();
+</script></body></html>
