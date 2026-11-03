@@ -85,6 +85,11 @@ function bind(){
  $("atlas-zoom-in").addEventListener("click",()=>changeZoom(1.4));
  $("atlas-zoom-out").addEventListener("click",()=>changeZoom(1/1.4));
  $("atlas-zoom-reset").addEventListener("click",resetTransform);
+ $("atlas-cite").addEventListener("click",async()=>{
+  const r=filtered[activeIndex];
+  const citation=r.imageChicago||r.chicago||("Vitruvius Digital Library. "+r.title+". "+(r.institution||"")+"; "+(r.record||r.viewer||location.href));
+  try{await navigator.clipboard.writeText(citation);$("atlas-view-status").textContent="Cita Chicago copiada"}catch{$("atlas-view-status").textContent=citation}
+ });
  $("atlas-print").addEventListener("click",()=>window.print());
  $("atlas-copy").addEventListener("click",async()=>{const r=filtered[activeIndex];const url=new URL(location.href);url.searchParams.set("folio",r.id);try{await navigator.clipboard.writeText(url.href);$("atlas-view-status").textContent="Enlace al folio copiado"}catch{$("atlas-view-status").textContent=url.href}});
  $("atlas-dialog").addEventListener("cancel",e=>{e.preventDefault();close()});
