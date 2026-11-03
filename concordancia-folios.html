@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concordancia de folios y loci · Vitruvius Digital Library</title>
+<meta name="description" content="Concordancia crítica entre folios del Harley MS 2767, loci editoriales de Vitruvio y traducciones, con niveles de evidencia y localización reproducible.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/concordancia-folios.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js" defer></script>
+<style>
+*{box-sizing:border-box}
+.folio-main{max-width:1700px;margin:auto;padding:23px 18px 70px;color:var(--ink)}
+.folio-nav{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;margin-bottom:19px}
+.folio-nav a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.folio-main h1{font:400 clamp(30px,3.3vw,49px)/1.2 Georgia,serif;margin:15px 0}
+.folio-main h2{font:400 25px Georgia,serif;margin:0 0 12px}
+.folio-main p{line-height:1.63}
+.folio-intro{max-width:1050px;font-size:15px}
+.folio-key{background:#f4eee2;border-left:4px solid #a98754;padding:15px 20px;color:#403d39;font-size:13px;margin:18px 0}
+.folio-workspace{display:grid;grid-template-columns:1.05fr .98fr 1fr;gap:13px;align-items:stretch;margin-top:19px}
+.folio-panel{background:#fcf8ef;border:1px solid #baa789;min-width:0;overflow:hidden;color:#23394a}
+.folio-panel h2{background:#1d3348;color:#f7f0e3;font:400 23px Georgia,serif;margin:0;padding:14px}
+.folio-panel .folio-meta{padding:12px 15px;background:#eee4d0;font-size:12px;line-height:1.5;color:#4f4a41}
+.folio-panel select{padding:8px;background:white;color:#142e42;border:1px solid #a99473;max-width:100%}
+.folio-image{min-height:470px;height:650px;overflow:auto;background:#cfc5b6}
+.folio-image img{display:block;width:100%;height:auto}
+.folio-image .folio-no-image{padding:20px;margin:0;font-size:13px;color:#293d50;background:#ebe4d5}
+.folio-paragraphs{padding:17px;min-height:650px;font:16px/1.66 Georgia,serif}
+.folio-paragraphs h3{font:600 13px system-ui,sans-serif;margin:13px 0 7px;color:#775838}
+.folio-paragraphs p{margin:0 0 18px;white-space:pre-wrap;overflow-wrap:anywhere}
+.folio-paragraphs .latin{color:#6d2835}
+.folio-paragraphs .message{font:14px/1.7 system-ui,sans-serif;color:#635845}
+.folio-panel a{color:#234a65}
+.folio-tools{padding:12px 16px;display:flex;gap:9px;flex-wrap:wrap;background:#f0e6d7;border-top:1px solid #c8b89d}
+.folio-tools a,.folio-tools button{font:600 12px system-ui,sans-serif;padding:8px 11px;background:#193448;color:#fffaf1;border:1px solid #af966a;border-radius:3px;text-decoration:none;cursor:pointer}
+.folio-tools a:hover,.folio-tools button:hover{background:#35516c;color:#fff}
+.folio-search{background:#fffaf1;border:1px solid #b8a580;margin-top:22px;padding:19px}
+.folio-search form{display:flex;align-items:end;flex-wrap:wrap;gap:12px}
+.folio-search label{display:grid;gap:6px;flex:1 1 340px;font-size:13px;font-weight:600}
+.folio-search input{width:100%;border:1px solid #a9a18b;padding:12px;background:white;color:#152f41}
+.folio-result{display:flex;gap:14px;justify-content:space-between;align-items:center;padding:12px 10px;border-bottom:1px solid #ded3c0}
+.folio-result:hover{background:#f4ead7}
+.folio-result strong{font:600 14px Georgia,serif}
+.folio-result small{display:block;font-size:12px;line-height:1.55;color:#5f554b}
+.folio-result button{cursor:pointer;border:1px solid #baa17a;padding:7px 10px;white-space:nowrap;background:white;color:#1f4056}
+.folio-badge{font-size:10px;display:inline-block;border:1px solid #bbad93;background:#f6efdf;padding:3px 7px;margin:0 0 6px}
+.folio-notes{padding:18px;border-top:1px solid #c1b59d;font-size:13px;margin-top:26px;line-height:1.75}
+.folio-main mark{background:#ffe16e;color:#241a10}
+html[data-theme=dark] .folio-key,
+html[data-theme=dark] .folio-panel,
+html[data-theme=dark] .folio-search,
+html[data-theme=dark] .folio-paragraphs,
+html[data-theme=dark] .folio-notes{background:#263848;color:#eee5d9;border-color:#657485}
+html[data-theme=dark] .folio-meta,
+html[data-theme=dark] .folio-tools{background:#32485b;color:#e8ded2;border-color:#677b8b}
+html[data-theme=dark] .folio-panel h2{color:#fff}
+html[data-theme=dark] .folio-panel .message,
+html[data-theme=dark] .folio-paragraphs h3,
+html[data-theme=dark] .folio-result small{color:#ddd0bb}
+html[data-theme=dark] .folio-paragraphs .latin{color:#f1c2bd}
+html[data-theme=dark] .folio-result{border-color:#607485}
+html[data-theme=dark] .folio-result:hover{background:#385065}
+html[data-theme=dark] .folio-result button,
+html[data-theme=dark] .folio-search input,
+html[data-theme=dark] .folio-panel select{background:#1b3143;color:#fff4e5;border-color:#8194a3}
+html[data-theme=dark] .folio-badge{background:#385065;color:#f4eadb;border-color:#8da0b0}
+html[data-theme=dark] .folio-no-image{background:#263847;color:#e9e0d1}
+@media(max-width:1130px){.folio-workspace{grid-template-columns:1fr}.folio-image{height:510px;min-height:300px}.folio-paragraphs{min-height:220px}}
+</style></head>
+<body><main class="folio-main" id="contenido">
+<nav class="folio-nav"><a href="index.html">← Biblioteca principal</a><a href="harleianus.html">Visor H</a><a href="laboratorio-h.html">Laboratorio H</a><a href="metodologia-filologica.html">Método filológico</a><a href="aparato-critico.html">Notas y aparato</a><a href="auditoria.html">Estado de auditoría</a></nav>
+<p style="font:700 11px system-ui;letter-spacing:.13em;color:#957340">BIBLIOTECA DIGITAL · CRÍTICA TEXTUAL</p>
+<h1>Concordancia entre folios y loci</h1>
+<p class="folio-intro">Un registro de la correspondencia entre <i>De architectura</i> y el códice <b>H · Harley MS 2767</b>. Se distinguen la <b>imagen digital</b> conservada, la <b>transcripción paleográfica</b> todavía provisional y el <b>locus editorial</b> de V514, V554 y V297.</p>
+<div class="folio-key" role="note"><b>Rigor de atribución.</b> La localización de los 731 loci en una edición no demuestra en qué folio aparecen en H. Solo los folios con relación documentada figuran como asociados; las relaciones provisionales no se presentan como comprobaciones diplomáticas. No se extrapolan páginas ni se inventan variantes.</div>
+<div class="folio-workspace" role="region" aria-label="Comparación crítica entre imagen y textos">
+<section class="folio-panel" aria-labelledby="f-image-title">
+ <h2 id="f-image-title">I · Folio del manuscrito</h2>
+ <div class="folio-meta"><label for="f-folio"><b>Folio:</b></label> <select id="f-folio"><option value="1r">1r · estudio provisional</option><option value="1v">1v · locus pendiente</option><option value="">Sin folio asignado al locus</option></select>
+ <p id="f-evidence" role="status">Leyendo evidencia codicológica...</p></div>
+ <div class="folio-image" id="f-image-box"><img id="f-image" alt="Imagen del manuscrito Harley MS 2767" loading="eager"></div>
+ <div class="folio-tools"><a id="f-open" href="harleianus.html?image=9">Abrir imagen en H</a><a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">Ficha British Library</a></div>
+</section>
+<section class="folio-panel" aria-labelledby="f-latin-title">
+ <h2 id="f-latin-title">II · Texto latino y locus</h2>
+ <div class="folio-meta" id="f-latin-status" role="status">Localizando pasajes editoriales...</div>
+ <div class="folio-paragraphs" id="f-latin"></div>
+ <div class="folio-tools"><a id="f-reader" href="lector-bilingue.html?edition=recensio-es&locus=1.praef.1">Abrir locus</a><button type="button" id="f-copy">Copiar referencia</button></div>
+</section>
+<section class="folio-panel" aria-labelledby="f-trans-title">
+ <h2 id="f-trans-title">III · Traducción alineada</h2>
+ <div class="folio-meta"><label for="f-lang">Traducción:</label> <select id="f-lang"><option value="es">Castellano · V514</option><option value="en">English · V297</option><option value="fr">Français · V554</option></select>
+ <p id="f-translation-status" role="status">Comprobando alineación...</p></div>
+ <div class="folio-paragraphs" id="f-translation"></div>
+ <div class="folio-tools"><a id="f-parallel" href="lector-bilingue.html">Abrir comparación editorial</a></div>
+</section>
+</div>
+<section class="folio-search" aria-labelledby="f-search-heading">
+<h2 id="f-search-heading">Buscar cualquier locus del tratado</h2>
+<p>Esta consulta recorre los 731 pasajes latinos indexados, pero <b>no les atribuye un folio sin evidencia</b>. Probá <i>1.praef.1</i>, <i>symmetria</i>, <i>Archimedes</i> o <i>9.praef.10</i>.</p>
+<form role="search" id="f-search-form"><label for="f-search">Locus, palabra o frase en latín o castellano<input id="f-search" type="search" placeholder="architectura · 1.2.1 · Archimedes" autocomplete="off"></label><button type="submit" style="padding:11px 15px;border:1px solid #9a7a47;background:#1d3b53;color:#fff;cursor:pointer">Buscar</button></form>
+<p id="f-search-count" role="status" style="font-size:12px"></p><div id="f-search-results" aria-live="polite"></div>
+</section>
+<section class="folio-notes"><h2>Procedencia y criterios</h2>
+<p>Manuscrito: <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">British Library, Harley MS 2767</a>. Las imágenes son servidas desde la infraestructura institucional IIIF. Textos editoriales: ediciones de Diego Kurilo <b>V514</b> (castellano), <b>V297</b> (inglés) y <b>V554</b> (francés). El registro preliminar del folio 1r se publica con indicación expresa de su nivel de certeza. La página no constituye una nueva colación de todos los códices.</p>
+<p><a href="data/codex-h/folio-locus-map.json">Descargar tabla de correspondencias (JSON)</a> · <a href="data/codex-h/aligned-1r.json">Consultar propuesta de 1r</a> · <a href="metodologia-filologica.html">Protocolo filológico aplicado</a></p></section></main>
+<script type="module" src="assets/concordancia-folios.js?v=20261102-first-evidence"></script>
+</body></html>
