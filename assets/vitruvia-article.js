@@ -145,8 +145,50 @@ function highlightArticle(query){
  for(const [start,stop] of hits){if(start<end)continue;if(start>end)f.append(document.createTextNode(original.slice(end,start)));const mark=make("mark",original.slice(start,stop),"query-hit");f.append(mark);end=stop}
  if(end<original.length)f.append(document.createTextNode(original.slice(end)));n.replaceWith(f)}
 }
+function reportEvidence(rows,q){
+ const box=$("article-evidence");if(!box)return;box.replaceChildren();
+ const relevant=rows.filter(x=>x.type==="passage"&&(x.latin||x.translation)).slice(0,18);
+ const others=rows.filter(x=>x.link&&["article","wikipedia","wikidata","book","section","manuscript","museum"].includes(x.type)).slice(0,24);
+ if(!relevant.length&&!others.length)return;
+ box.append(make("h3",phrase("Anexo documental: Vitruvio y fuentes consultadas","Documentary appendix: Vitruvius and retrieved sources","Annexe documentaire : Vitruve et sources consultées")));
+ box.append(make("p",phrase("Resultados recuperados de las ediciones estructuradas y de las fuentes públicas consultadas. No constituyen una revisión exhaustiva de Internet.","Results retrieved from indexed editions and queried public sources; not an exhaustive review of the web.","Résultats des éditions indexées et des sources consultées ; recherche non exhaustive."),"article-note"));
+ if(relevant.length){
+  box.append(make("h4",phrase("Pasajes de De architectura: latín y traducción","De architectura: Latin and translation","De architectura : latin et traduction")));
+  for(const p of relevant){
+   const item=make("section",undefined,"evidence-entry");
+   item.append(make("h5",p.title||p.locus));
+   if(p.latin){item.append(make("div","LATINE","evidence-label"),make("p",p.latin.slice(0,1600)))}
+   if(p.translation){item.append(make("div",phrase("TRADUCCIÓN","TRANSLATION","TRADUCTION"),"evidence-label"),make("p",p.translation.slice(0,1600)))}
+   if(p.link){const link=href(p.link,phrase("Consultar edición y página original","Consult edition and original page","Consulter l'édition originale"));if(link)item.append(link)}
+   box.append(item);
+  }
+ }
+ if(others.length){
+  box.append(make("h4",phrase("Fuentes externas y bibliografía localizada","Retrieved external sources and bibliography","Sources externes et bibliographie repérée")));
+  const ol=make("ol",undefined,"evidence-bibliography"),seen=new Set();
+  for(const p of others){if(seen.has(p.link))continue;seen.add(p.link);
+   const li=make("li"),link=href(p.link,p.title);if(link)li.append(link);
+   if(p.author)li.append(document.createTextNode(" · "+p.author));
+   if(p.excerpt)li.append(make("p",p.excerpt));
+   ol.append(li);
+  }
+  box.append(ol);
+ }
+ const words=[...new Set(String(q||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3))].slice(0,10);
+ if(words.length){
+  const walker=document.createTreeWalker(box,NodeFilter.SHOW_TEXT),nodes=[];
+  while(walker.nextNode()){const n=walker.currentNode;if(!n.parentElement.closest("a,mark"))nodes.push(n)}
+  for(const n of nodes){const original=n.textContent,flat=original.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),hits=[];
+   for(const w of words){let pos=0,at;while((at=flat.indexOf(w,pos))>=0){hits.push([at,at+w.length]);pos=at+w.length;if(hits.length>80)break}}
+   hits.sort((x,y)=>x[0]-y[0]);let last=0;const fragment=document.createDocumentFragment();
+   for(const [start,end] of hits){if(start<last)continue;fragment.append(document.createTextNode(original.slice(last,start)),make("mark",original.slice(start,end),"query-hit"));last=end}
+   if(last){fragment.append(document.createTextNode(original.slice(last)));n.replaceWith(fragment)}
+  }
+ }
+}
 function render(rows,q){const token=++active;
 if(!q||!rows?.length){root.hidden=true;return}
+reportEvidence(rows,q);
 const top=choose(rows,q);if(!top){root.hidden=true;return}
 if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
 if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
