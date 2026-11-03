@@ -267,13 +267,19 @@ async function start(){
  byId("dossier-close").addEventListener("click",()=>dialog.close());
  dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
  byId("place-expand").addEventListener("click",()=>{if(selected)openScientificDossier(selected.id);});
+ byId("place-passage-select").addEventListener("change",()=>selectPassageFrom("place-passage"));
+ byId("dossier-passage-select").addEventListener("change",()=>selectPassageFrom("dossier-passage"));
+ byId("map-modern").addEventListener("click",()=>switchMapBase("moderno"));
+ byId("map-historic").addEventListener("click",()=>switchMapBase("historico"));
  document.addEventListener("click",event=>{const link=event.target?.closest?.("a[data-popup-place]");if(!link)return;event.preventDefault();event.stopPropagation();openScientificDossier(link.dataset.popupPlace);},true);
  byId("place-query").addEventListener("input",filter);
  for(const id of ["place-book","place-type"])byId(id).addEventListener("change",filter);
  byId("place-list").addEventListener("click",e=>{const b=e.target.closest("[data-place-id]");if(b)selectPlace(b.dataset.placeId,true,true);});
- const [rx,rg]=await Promise.all([fetch("data/onomasticon-vitruvianum.json"),fetch("data/atlas-geographicus-vitruvianus.json")]);
+ const [rx,rg,rGeometry,rPassages]=await Promise.all([fetch("data/onomasticon-vitruvianum.json"),fetch("data/atlas-geographicus-vitruvianus.json"),fetch("data/atlas-geographicus-geometrias.json"),fetch("data/atlas-geographicus-pasajes.json")]);
  if(!rx.ok||!rg.ok)throw Error("No fue posible leer los registros geográficos y filológicos.");
  const [source,geo]=await Promise.all([rx.json(),rg.json()]);
+ if(rGeometry.ok){const data=await rGeometry.json();geometryById=new Map([...data.regions,...data.rivers].map(g=>[g.id,g]));}
+ if(rPassages.ok){const data=await rPassages.json();passagesByLocus=new Map(data.passages.map(p=>[p.locus,p]));}
  const byGeo=new Map(geo.geo.map(x=>[x.id,x]));
  all=source.entities.filter(e=>e.kind==="place").map(r=>({...r,...(byGeo.get(r.id)||{}),latinCanonical:latinCanonical[r.id]||r.aliases?.[0]||r.name}))
  .concat(geo.extra.map(e=>({...e,lat:e.coordinates.lat,lon:e.coordinates.lon,latinCanonical:latinCanonical[e.id]||e.name})));
@@ -284,6 +290,6 @@ async function start(){
  filter();
  selectPlace(selected?.id||all[0].id,false,false);
  if(new URLSearchParams(location.search).get("ficha")==="1")openScientificDossier(selected.id);
- byId("place-loading").textContent=all.length+" fichas catalogadas. Nombres latinos normalizados, formas del texto, equivalentes griegos y denominaciones modernas indicados por separado.";
+ byId("place-loading").textContent=all.length+" fichas de lugares · "+passagesByLocus.size+" pasajes latinos y castellanos de V514 · "+geometryById.size+" áreas y ríos esquemáticos. Los nombres griegos no son lecturas de Codex H.";
 }
 start().catch(err=>{byId("place-loading").textContent="No se pudo cargar el catálogo: "+err.message;console.error(err);});
