@@ -492,5 +492,27 @@ try{
    }
    await page.close();
  });
+
+ await test('Atlas iconográfico: planta, alzado y dos cortes del Panteón con fuentes y autorías verificadas',async()=>{
+   const page=await pageFor('iconografia-vitruviana.html');
+   await page.waitForFunction(()=>document.querySelector('#atlas-count')?.textContent.includes('fichas encontradas'),{timeout:16000});
+   await page.locator('#atlas-search').fill('Panteón');
+   assert.equal(await page.locator('#atlas-grid .atlas-card').count(),4,'Deben existir planta, alzado y dos cortes documentados');
+   const cards=await page.locator('#atlas-grid .atlas-card').allInnerTexts();
+   assert(cards.some(c=>/Palladio.*81/.test(c)),'No se agregó el corte original de Palladio de 1570');
+   assert(cards.some(c=>/Desgodetz/.test(c)&&/Profil sur la longueur/.test(c)),'Falta la sección longitudinal de Desgodetz');
+   assert(cards.some(c=>/Élévation de la face/.test(c)),'Falta el alzado de la fachada');
+   await page.locator('#atlas-search').fill('corte');
+   assert.equal(await page.locator('#atlas-grid .atlas-card').count(),2,'El filtro corte debe recuperar las dos láminas históricas');
+   await page.locator('#atlas-grid .atlas-card').filter({hasText:'Profil sur la longueur'}).locator('button[data-open]').last().click();
+   assert.equal(await page.locator('#atlas-dialog').evaluate(x=>x.open),true,'No abre el visor científico del corte');
+   const dossier=await page.locator('#atlas-view-details').innerText();
+   assert.match(dossier,/Sébastien Le Clerc/,'Grabador de la sección longitudinal incorrecto');
+   assert.match(dossier,/Lámina XV/,'Falta la planche XV verificada en Kassel');
+   assert.match(dossier,/1568120/,'Falta el ID de la imagen de NYPL');
+   assert((await page.locator('#atlas-view-record').getAttribute('href')).includes('057d-a3d9'),'Registro científico incorrecto para el corte');
+   await page.locator('#atlas-view-close').click();
+   await page.close();
+ });
 }finally{await browser?.close();server.kill()}
 if(failures.length){console.error('\nAUDITORIA CON FALLOS\n'+failures.join('\n'));process.exitCode=1}else console.log('\nAuditoría básica de navegador completada sin fallos.');
