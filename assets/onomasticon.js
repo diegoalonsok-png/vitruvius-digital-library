@@ -56,28 +56,52 @@ function statNumbers(){
  $("ov-count-loci").textContent=fmt(data.totals.passages);
  $("ov-stat-scope").textContent=T("scope").replace("{words}",fmt(data.totals.allWords)).replace("{units}",fmt(data.totals.chapters));
 }
+// Una consulta española, latina o griega se resuelve primero como nombre
+// de autoridad; las variantes latinas se recuperan desde los loci V514.
+function nameRank(e,term){
+ const q=fold(term).trim();if(!q)return 5;
+ const forms=[e.name,...(e.aliases||[]),...(e.latin_forms||[]),e.greek_name||""].filter(Boolean).map(fold);
+ if(forms.some(x=>x===q))return 0;
+ if(forms.some(x=>x.startsWith(q)))return 1;
+ if(forms.some(x=>x.includes(q)))return 2;
+ return 9;
+}
 function entitiesFiltered(){
- return data.entities.filter(e=>(type==="all"||e.kind===type)
+ const items=data.entities.filter(e=>(type==="all"||e.kind===type)
  &&(book==="all"||e.loci.some(l=>locusBook(l)===Number(book)))
- &&(!query||fold([e.name,e.period,e.summary,...e.aliases,...(e.latin_forms||[]),e.greek_name||""].join(" ")).includes(fold(query))
+ &&(!query||nameRank(e,query)<9
+ ||fold([e.period,e.summary].join(" ")).includes(fold(query))
  ||e.loci.some(l=>{const p=byLocus.get(l);return p&&fold(p.latin).includes(fold(query))})));
+ return items.sort((a,b)=>(query?nameRank(a,query)-nameRank(b,query):0)||a.name.localeCompare(b.name,"es"));
+}
+function chooseResult(items,{preserve=false}={}){
+ // Al cambiar el término, nunca mantener una ficha no relacionada.
+ if(query){
+  if(preserve&&items.some(e=>e.id===selectedId))return;
+  selectedId=items.find(e=>nameRank(e,query)<9)?.id||null;
+ }else if(!items.some(e=>e.id===selectedId)){
+  selectedId=items[0]?.id||null;
+ }
+}
+function selectedButtons(){
+ document.querySelectorAll("#ov-list .ov-entry").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.entryId===selectedId)));
 }
 function entityButton(e){
  const button=document.createElement("button");button.type="button";button.className="ov-entry";
- button.setAttribute("aria-pressed",String(e.id===selectedId));
+ button.setAttribute("aria-pressed",String(e.id===selectedId));button.dataset.entryId=e.id;
  const forms=e.latin_forms||[],greek=e.greek_name;
  button.innerHTML="<strong>"+html(e.name)+"</strong>"
  +"<span class='ov-entry-form' lang='la'><b>"+html(T("latinAttested"))+":</b> "+html(forms.slice(0,3).join(" · ")||"—")+(forms.length>3?"…":"")+"</span>"
  +"<span class='ov-entry-form ov-entry-greek' lang='grc'><b>"+html(T("greekReference"))+":</b> "+html(greek||T("notVerified"))+"</span>"
  +"<small>"+(e.kind==="person"?T("entityPerson"):T("entityPlace"))+" · "+fmt(e.mentions)+" locus"+(e.mentions===1?"":" citados")+"</small>";
- button.onclick=()=>{selectedId=e.id;limit=20;renderEntity();renderList();};
+ button.onclick=()=>{selectedId=e.id;limit=20;renderEntity();selectedButtons();updateActions();};
  return button;
 }
 function renderList(){
- const items=entitiesFiltered(),root=$("ov-list");root.replaceChildren();
+ const items=entitiesFiltered(),root=$("ov-list"),previousScroll=root.scrollTop;root.replaceChildren();
  $("ov-index-count").textContent=fmt(items.length)+" "+T("indexed");
  if(!items.length){root.innerHTML='<p class="ov-empty">No hay ficha biográfica o geográfica registrada con este filtro. El buscador de texto inferior permite encontrar cualquier nombre o variante que aparezca en el corpus y consultar su locus, aunque su identificación aún no esté verificada.</p>';return;}
- items.forEach(e=>root.append(entityButton(e)));
+ items.forEach(e=>root.append(entityButton(e)));root.scrollTop=previousScroll;
 }
 function referenceCard(p,term=""){
  const box=document.createElement("article");box.className="ov-locus";
@@ -95,7 +119,7 @@ function referenceCard(p,term=""){
 function renderEntity(){
  const e=data.entities.find(x=>x.id===selectedId);
  const root=$("ov-detail");root.replaceChildren();
- if(!e){root.innerHTML='<div class="ov-content"><h2>Personajes y lugares en Vitruvio</h2><p>Seleccioná una ficha del índice para consultar los pasajes, o escribí cualquier nombre en el buscador.</p></div>';return;}
+ if(!e){root.innerHTML='<div class="ov-content"><h2>'+html(query?'Resultados de «'+query+'»':'Personajes y lugares en Vitruvio')+'</h2><p>'+html(query?'No se ha identificado una ficha onomástica directa para este término. Consultá las coincidencias textuales en la sección inferior; no se atribuye automáticamente el término a una persona o lugar.':'Seleccioná una ficha del índice para consultar los pasajes, o escribí cualquier nombre en el buscador.')+'</p></div>';updateActions();return;}
  const content=document.createElement("div");content.className="ov-content";
  const bio="<p class='ov-eyebrow'>"+(e.kind==="person"?T("historicalPerson"):T("historicalPlace"))+"</p>"
  +"<h2>"+html(e.name)+"</h2>"
@@ -113,42 +137,97 @@ function renderEntity(){
  const loci=e.loci.slice(0,limit);
  for(const l of loci){const p=byLocus.get(l);if(p)content.append(referenceCard(p));}
  if(e.loci.length>limit){const b=document.createElement("button");b.className="ov-button";b.type="button";b.textContent="Ver "+fmt(e.loci.length-limit)+" menciones restantes";b.onclick=()=>{limit=1e6;renderEntity();};content.append(b);}
- root.append(content);
+ root.append(content);updateActions();
 }
 function renderTextSearch(){
- const result=$("ov-text-results");const term=query.trim();result.replaceChildren();
- if(!term){$("ov-text-section").classList.add("ov-hidden");return;}
+ const result=$("ov-text-results"),term=query.trim();result.replaceChildren();
+ if(!term){$("ov-text-section").classList.add("ov-hidden");updateActions();return;}
  $("ov-text-section").classList.remove("ov-hidden");
  const termFold=fold(term);
- // Una equivalencia onomástica griega lleva a los loci latinos del personaje/lugar.
- // NO se computa falsamente como aparición literal del nombre griego en Vitruvio.
- const greekEntities=data.entities.filter(e=>e.greek_name&&fold(e.greek_name).includes(termFold));
- const aliases=new Map();
- for(const e of greekEntities)for(const locus of e.loci){
-   if(!aliases.has(locus))aliases.set(locus,[]);
-   aliases.get(locus).push(e);
+ // Las equivalencias de autoridad remiten a un locus latino aunque el usuario
+ // escriba Roma, Romae o Ῥώμη; nunca son supuestas lecturas griegas del códice.
+ const names=data.entities.filter(e=>nameRank(e,term)<9&&(type==="all"||e.kind===type));
+ const associations=new Map();
+ for(const e of names)for(const locus of e.loci){
+  if(!associations.has(locus))associations.set(locus,[]);
+  associations.get(locus).push(e);
  }
  const literal=passages.filter(p=>(book==="all"||p.book===Number(book))&&fold(p.latin+" "+p.translation).includes(termFold));
  const matched=new Set(literal.map(p=>p.locus));
- for(const [locus] of aliases)if(book==="all"||locusBook(locus)===Number(book))matched.add(locus);
+ for(const locus of associations.keys())if(book==="all"||locusBook(locus)===Number(book))matched.add(locus);
  const filtered=passages.filter(p=>matched.has(p.locus));
- $("ov-text-count").textContent=fmt(filtered.length)+(greekEntities.length?" loci relacionados con el nombre griego '"+term+"' (equivalencia, no mención griega literal)":" loci que contienen '"+term+"'");
- if(!filtered.length){result.innerHTML='<p class="ov-empty">No se encontraron coincidencias literales ni equivalencias onomásticas verificadas. Probá una variante latina, griega o castellana.</p>';return;}
- if(greekEntities.length){
-   const note=document.createElement("p");note.className="ov-source";
-   note.textContent=T("greekSearchNote");result.append(note);
+ $("ov-text-count").textContent=fmt(filtered.length)+" loci relacionados con «"+term+"»";
+ if(!filtered.length){result.innerHTML='<p class="ov-empty">No se encontraron coincidencias en el corpus ni equivalencias de nombres. Probá otra variante o consultá el índice.</p>';updateActions();return;}
+ if(names.length){
+  const note=document.createElement("p");note.className="ov-source";
+  note.textContent="Concordancia por nombre o variante: "+names.map(e=>e.name).join(", ")+". Las grafías griegas de referencia no son automáticamente lecturas griegas atestiguadas en V514 ni en el Codex H.";
+  result.append(note);
  }
  for(const p of filtered.slice(0,50)){
-   const greekForm=aliases.get(p.locus)?.find(e=>e.latin_forms?.some(f=>fold(p.latin).includes(fold(f))));
-   const latinForm=greekForm?.latin_forms?.find(f=>fold(p.latin).includes(fold(f)))||"";
-   result.append(referenceCard(p,fold(p.latin+" "+p.translation).includes(termFold)?term:latinForm));
+  const linked=associations.get(p.locus)||[];
+  const latinForm=linked.flatMap(e=>e.latin_forms||[]).find(f=>fold(p.latin).includes(fold(f)))||"";
+  const matchedDirect=fold(p.latin+" "+p.translation).includes(termFold);
+  result.append(referenceCard(p,matchedDirect?term:latinForm));
  }
- if(filtered.length>50){const warning=document.createElement("p");warning.className="ov-note";warning.textContent="Se muestran los 50 primeros loci. Acotá la búsqueda por libro o nombre para ver el resto.";result.append(warning);}
- if(!data.entities.some(e=>fold(e.name)===fold(term)||e.aliases.some(a=>fold(a)===fold(term))||e.greek_name&&fold(e.greek_name)===fold(term)||e.latin_forms?.some(a=>fold(a)===fold(term)))){
-   const n=document.createElement("p");n.className="ov-source";
-   n.innerHTML="Una coincidencia de texto no identifica por sí sola una persona o un lugar. Si este nombre aún no tiene ficha, consultá sus pasajes y contrastá su identidad con <a href='https://scholar.google.com/scholar?q="+encodeURIComponent(term+" Vitruvius")+" ' target='_blank' rel='noopener'>bibliografía académica</a>.";
-   result.prepend(n);
+ if(filtered.length>50){const warning=document.createElement("p");warning.className="ov-note";warning.textContent="Se muestran los primeros 50 loci de "+fmt(filtered.length)+". Acotá la búsqueda para revisar más.";result.append(warning);}
+ updateActions();
+}
+function currentEntity(){return data?.entities.find(e=>e.id===selectedId)||null;}
+function currentShareUrl(){
+ const u=new URL(location.href);u.hash="";
+ ["q","id","type","book","view"].forEach(k=>u.searchParams.delete(k));
+ if(query.trim())u.searchParams.set("q",query.trim());
+ if(currentEntity())u.searchParams.set("id",selectedId);
+ if(type!=="all")u.searchParams.set("type",type);
+ if(book!=="all")u.searchParams.set("book",book);
+ if(tab==="stats")u.searchParams.set("view","stats");
+ return u.toString();
+}
+function exportTitle(){
+ if(tab==="stats")return "Estadísticas de los diez libros de Vitruvio";
+ const e=currentEntity();return e?e.name:(query?"Búsqueda: "+query:"Onomasticon Vitruvianum");
+}
+function exportSummary(){
+ const e=currentEntity(),lines=["Vitruvius Digital Library · Onomasticon Vitruvianum",exportTitle()];
+ if(tab==="stats")lines.push("Estadísticas del texto editorial latino V514 (no del Codex H).");
+ else if(e){
+  if(query)lines.push("Consulta: "+query);
+  lines.push("Formas latinas documentadas en V514: "+((e.latin_forms||[]).join(", ")||"sin formas registradas"));
+  if(e.greek_name)lines.push("Equivalencia griega histórica (no atestación en el códice): "+e.greek_name);
+  lines.push("Loci editoriales: "+e.loci.join(", "));
+ }else if(query)lines.push("Búsqueda de texto: "+query);
+ lines.push(currentShareUrl());return lines.join("\n");
+}
+function updateActions(){
+ const el=$("ov-current-result");if(!el)return;
+ el.textContent=tab==="stats"?"Estadísticas V514":currentEntity()?"Ficha seleccionada: "+currentEntity().name:(query?"Búsqueda textual: "+query:"Seleccioná un resultado");
+ for(const id of ["ov-print-result","ov-email-result","ov-whatsapp-result"]){
+  const button=$(id);if(button)button.disabled=tab!=="stats"&&!currentEntity()&&!query.trim();
  }
+}
+function refreshSearch({preserve=false}={}){
+ const items=entitiesFiltered();chooseResult(items,{preserve});limit=20;
+ renderList();renderEntity();renderTextSearch();updateActions();
+}
+let printPreviousLimit=null;
+function prepareResultPrint(){
+ const e=currentEntity();
+ if(tab==="entities"&&e&&e.loci.length>limit){printPreviousLimit=limit;limit=e.loci.length;renderEntity();}
+}
+function restoreResultPrint(){
+ if(printPreviousLimit!==null){limit=printPreviousLimit;printPreviousLimit=null;renderEntity();}
+}
+window.addEventListener("beforeprint",prepareResultPrint);
+window.addEventListener("afterprint",restoreResultPrint);
+function bindActions(){
+ $("ov-print-result").addEventListener("click",()=>window.print());
+ $("ov-email-result").addEventListener("click",()=>{
+  const subject="Vitruvio · "+exportTitle();
+  location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(exportSummary());
+ });
+ $("ov-whatsapp-result").addEventListener("click",()=>{
+  window.open("https://wa.me/?text="+encodeURIComponent(exportSummary()),"_blank","noopener,noreferrer");
+ });
 }
 function statsTable(records,cols){
  const table=document.createElement("table");table.className="ov-table";
@@ -192,7 +271,7 @@ function switchTab(value){
  $("ov-statistics").classList.toggle("ov-hidden",tab!=="stats");
  $("ov-show-entities").setAttribute("aria-pressed",String(tab==="entities"));
  $("ov-show-stats").setAttribute("aria-pressed",String(tab==="stats"));
- if(tab==="stats")renderStats();
+ if(tab==="stats")renderStats();updateActions();
 }
 async function start(){
  const [a,b]=await Promise.all([
@@ -204,16 +283,21 @@ async function start(){
  if(!passages.length||!data.entities?.length)throw Error("No se recibieron pasajes o fichas.");
  byLocus=new Map(passages.map(p=>[p.locus,p]));
  await getTranslation(getLanguage());
- statNumbers();renderList();renderEntity();$("ov-loading").textContent="Índice cargado. "+fmt(data.totals.curatedEntries)+" fichas localizadas en "+fmt(passages.length)+" loci.";
- $("ov-search").addEventListener("input",event=>{query=event.target.value.trim();renderList();renderTextSearch();});
- $("ov-type").addEventListener("change",event=>{type=event.target.value;renderList();});
- $("ov-book").addEventListener("change",event=>{book=event.target.value;renderList();renderTextSearch();});
- $("ov-clear").addEventListener("click",()=>{query="";type="all";book="all";$("ov-search").value="";$("ov-type").value="all";$("ov-book").value="all";renderList();renderTextSearch();});
+ const params=new URLSearchParams(location.search),q=params.get("q"),target=params.get("id"),view=params.get("view");
+ const suppliedType=params.get("type"),suppliedBook=params.get("book");
+ if(["all","person","place"].includes(suppliedType)){type=suppliedType;$("ov-type").value=type;}
+ if(suppliedBook==="all"||/^(?:[1-9]|10)$/.test(suppliedBook||"")){book=suppliedBook;$("ov-book").value=book;}
+ if(q){query=q;$("ov-search").value=q;}
+ if(target&&data.entities.some(e=>e.id===target))selectedId=target;
+ chooseResult(entitiesFiltered(),{preserve:!!target});
+ statNumbers();renderList();renderEntity();renderTextSearch();
+ $("ov-loading").textContent="Índice cargado. "+fmt(data.totals.curatedEntries)+" fichas localizadas en "+fmt(passages.length)+" loci.";
+ $("ov-search").addEventListener("input",event=>{query=event.target.value.trim();refreshSearch();});
+ $("ov-type").addEventListener("change",event=>{type=event.target.value;refreshSearch();});
+ $("ov-book").addEventListener("change",event=>{book=event.target.value;refreshSearch();});
+ $("ov-clear").addEventListener("click",()=>{query="";type="all";book="all";$("ov-search").value="";$("ov-type").value="all";$("ov-book").value="all";refreshSearch({preserve:true});});
  $("ov-show-entities").onclick=()=>switchTab("entities");$("ov-show-stats").onclick=()=>switchTab("stats");
  $("ov-stat-book").addEventListener("change",event=>{statsBook=event.target.value;renderStats();});
- const params=new URLSearchParams(location.search);const q=params.get("q"),target=params.get("id"),view=params.get("view");
- if(target&&data.entities.some(e=>e.id===target)){selectedId=target;renderList();renderEntity();}
- if(q){query=q;$("ov-search").value=q;renderList();renderTextSearch();}
- if(view==="stats")switchTab("stats");
+ bindActions();if(view==="stats")switchTab("stats");updateActions();
 }
 start().catch(error=>{$("ov-loading").textContent="Error al cargar el repertorio: "+error.message;$("ov-detail").innerHTML="<div class='ov-content'><h2>No se pudo cargar el índice</h2><p>Comprobá los archivos de datos de GitHub Pages y recargá la página. La biblioteca principal sigue disponible.</p></div>";});
