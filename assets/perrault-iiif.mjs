@@ -52,19 +52,23 @@ if(host){
  function loadWidth(width){
   if((!service&&!fallback)||loadedWidth>=width)return;
   const my=++imageSerial;
-  const candidates=service?[width,1600,1200,900]:[0];
+  const candidates=service?[...new Set([width,1600,1200,900])].map(w=>({url:service+"/full/"+w+",/0/default.jpg",pixels:w})):[];
+  // Guaranteed institutional thumbnail fallback when the IIIF resizing endpoint fails.
+  if(fallback)candidates.push({url:fallback,pixels:1000,fallback:true});
   function next(i){
    if(my!==imageSerial)return;
-   if(i>=candidates.length){if(!loadedWidth){img.hidden=true;status.textContent="No fue posible cargar la imagen IIIF; abrí el original en e-rara."}return;}
-   const w=candidates[i],candidate=url(w);if(!candidate){next(i+1);return;}
-   const loader=new Image();loader.decoding="async";
+   if(i>=candidates.length){
+    if(!loadedWidth){img.hidden=true;status.textContent="No fue posible cargar la imagen institucional. Abrí el original en e-rara."}
+    return;
+   }
+   const choice=candidates[i],loader=new Image();loader.decoding="async";
    loader.onload=()=>{
     if(my!==imageSerial)return;
-    img.src=candidate;img.hidden=false;loadedWidth=w||900;
-    status.textContent="Perrault 1673 · página PDF "+pageNumber+" · imagen institucional ampliable. Correspondencia del folio con PDF provisional.";
+    img.src=choice.url;img.hidden=false;loadedWidth=choice.pixels;
+    status.textContent="Perrault 1673 · página PDF "+pageNumber+" · "+(choice.fallback?"imagen institucional de consulta (1000 px)":"imagen IIIF ampliable")+". Correspondencia del folio con PDF provisional.";
    };
    loader.onerror=()=>next(i+1);
-   loader.src=candidate;
+   loader.src=choice.url;
   }
   next(0);
  }
