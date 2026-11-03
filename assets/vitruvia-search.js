@@ -61,7 +61,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
  }).filter(x=>x.rating>2)}
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
-async function load(){try{const [books,pages]=await Promise.all(["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json"].map(fetchJSON));
+async function load(){try{const [books,pages]=await Promise.all(["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json"].map(url=>fetchJSON(url)));
  S.works=books.works||[];S.pages=pages.pages||[];S.ready=true;
  $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;
  $("metric-read").textContent=S.works.filter(verified).length;
@@ -80,7 +80,7 @@ function livePassages(ps,q,concept){
  rows.push({type:"passage",title:"Vitruvio · De architectura · "+p.locus,author:p.lang.toUpperCase()+" · "+p.edition,excerpt:brief(text,335),meta:"Locus "+p.locus+" · latín + versión "+p.lang.toUpperCase(),rating,link:"lector-bilingue.html?edition="+encodeURIComponent(p.edition)+"&locus="+encodeURIComponent(p.locus)});
  }return rows.sort((a,b)=>b.rating-a.rating).slice(0,18)
 }
-const htmlText=s=>{const div=document.createElement("div");div.innerHTML=String(s||"");return div.textContent||""};
+const htmlText=s=>new DOMParser().parseFromString(String(s||""),"text/html").body.textContent||"";
 function culturalWeight(title,description){const s=norm(title+" "+description);const all=["architecture","arquitectura","architect","history","historia","histoire","arte","artist","artistic","roman","romano","ancient","antiguo","greek","griego","archaeology","arqueologia","patrimonio","heritage","cultural","medieval","renaissance","renacimiento","manuscript","manuscrito","architecture"];return all.some(x=>s.includes(x))?7:0}
 async function wiki(q,language){
  const lang=["es","en","fr"].includes(language)?language:"es";
