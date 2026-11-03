@@ -40,7 +40,13 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 .h-folio-card strong,.h-folio-card span{color:#fff!important}
 .h-folio-card[aria-pressed="true"]{border:3px solid #e7b452!important;box-shadow:0 0 0 2px #f1d18b}
 .h-folio-card img{height:175px}
-#stage{height:85vh;min-height:540px}
+#stage{height:85vh;min-height:540px;overscroll-behavior:contain;scrollbar-gutter:stable;cursor:zoom-in}
+#stage img#folio{max-width:none!important;height:auto}
+.h-zoom-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.h-zoom-controls label{display:flex;align-items:center;gap:8px}
+.h-zoom-controls input{width:170px}
+.h-zoom-controls button{background:#f9f3e8;border:1px solid #a8906d;color:#152b3f;padding:8px 13px;font-weight:650;min-height:42px;border-radius:3px}
+.h-zoom-controls output{display:inline-block;min-width:46px;font-variant-numeric:tabular-nums}
 </style></head><body><main>
 
 <p><a href="scriptorium.html">← Scriptorium digital</a> · <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">British Library, ficha oficial</a></p>
@@ -49,7 +55,7 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div class="controls">
 <label><strong>Buscar folio (recto / verso)</strong> <input id="folio-ref" type="text" placeholder="Ej.: 1r, 1v, 16v" style="width:115px" aria-label="Buscar folio histórico"></label><button type="button" id="go-folio">Ir al folio</button><label style="font-size:12px;opacity:.75">N.º de imagen digital (referencia técnica) <input id="page" type="number" value="1" min="1"></label>
 <button type="button" id="prev">← Anterior</button><button type="button" id="next">Siguiente →</button><button type="button" id="open">Abrir imagen</button>
-<label>Zoom <input id="zoom" type="range" min="50" max="250" value="100"> <output id="zval">100%</output></label>
+<div class="h-zoom-controls" role="group" aria-label="Ampliación del folio"><button type="button" id="zoom-out" title="Reducir imagen">−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" aria-label="Zoom del folio, de 50 a 500 por ciento"> <output id="zval">100%</output></label><button type="button" id="zoom-in" title="Ampliar imagen">+ Ampliar</button><button type="button" id="zoom-fit" title="Ajustar folio al ancho del visor">Ajustar</button></div>
 <label>Contraste <input id="contrast" type="range" min="70" max="220" value="100"> <output id="cval">100%</output></label>
 <div id="image-mode" role="group" aria-label="Visualización del manuscrito"><strong class="image-mode-heading">Visualización</strong><button type="button" data-image-mode="original" aria-pressed="true">Original</button><button type="button" data-image-mode="bw" aria-pressed="false">Blanco y negro</button><button type="button" data-image-mode="negative" aria-pressed="false">Negativo · letras blancas</button></div></div>
 <div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio leído: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Etiqueta IIIF: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">El folio se identifica mediante las etiquetas del manifiesto institucional.</p><p id="status" role="status">Consultando el manifiesto IIIF…</p>
@@ -64,7 +70,8 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div id="h-folio-grid" aria-label="Seleccionar folio para leer en el visor inferior"></div>
 <button id="h-gallery-more" type="button" hidden>Mostrar más folios</button>
 </section>
-<div id="stage"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img id="magnified" alt=""></div>
+<p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usá <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplazate dentro del visor para examinar la escritura.</p>
+<div id="stage" tabindex="0" aria-label="Visor ampliable del Codex H: teclas más, menos y cero para zoom"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img id="magnified" alt=""></div>
 
 <p>Procedencia: British Library, <em>Harley MS 2767</em>. <a href="concordancia-folios.html" style="font-weight:650">Concordancia entre folios y loci</a> · <a id="source" href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">Ver original en el visor institucional</a>. Las condiciones de reutilización corresponden al proveedor institucional. Esta página no almacena ni redistribuye imágenes del códice.</p>
-</main><script type="module" src="assets/harley-reader.mjs?v=folio-panel-20261101-3"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script src="assets/theme.js?v=20261101-contrast-h-2" defer></script></body></html>
+</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261103-zoom-500"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script src="assets/theme.js?v=20261101-contrast-h-2" defer></script></body></html>
