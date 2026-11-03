@@ -123,10 +123,17 @@ function renderDetails(){
 }
 function selectPlace(id,zoom=true,scroll=false){
  const r=all.find(x=>x.id===id);if(!r)return;
+ const changed=selected?.id!==r.id;
+ if(changed)activePassageLocus=null;
  selected=r;
  renderDetails();
  document.querySelectorAll("[data-place-id]").forEach(x=>x.setAttribute("aria-current",String(x.dataset.placeId===id)));
- if(map&&hasPoint(r)&&zoom){map.setView([r.lat,r.lon],Math.max(map.getZoom(),6),{animate:false});markerById.get(r.id)?.openPopup();}
+ if(map&&zoom){
+  const layer=markerById.get(r.id);
+  if(hasPoint(r))map.setView([r.lat,r.lon],Math.max(map.getZoom(),6),{animate:false});
+  else if(layer?.getBounds)map.fitBounds(layer.getBounds().pad(.20),{maxZoom:6,animate:false});
+  if(layer?.openPopup)layer.openPopup();
+ }
  if(scroll)byId("place-detail").scrollIntoView({behavior:"smooth",block:"start"});
  const url=new URL(location.href);url.searchParams.set("lugar",r.id);history.replaceState(null,"",url);
 }
@@ -190,35 +197,69 @@ function filter(){
  .filter(r=>!q||searchText(r).includes(q));
  renderList();
  renderMapMarkers();
- byId("place-count").textContent=results.length+" lugares · "+results.filter(hasPoint).length+" con ubicación orientativa";
- if(!results.includes(selected))selected=results.find(x=>x.id==="fanum-fortunae")||results[0]||null;
+ byId("place-count").textContent=results.length+" lugares · "+results.filter(hasPoint).length+" puntos · "+results.filter(x=>featureFor(x)?.geometry==="polygon").length+" áreas · "+results.filter(x=>featureFor(x)?.geometry==="polyline").length+" ríos";
+ if(!results.includes(selected)){selected=results.find(x=>x.id==="fanum-fortunae")||results[0]||null;activePassageLocus=null;}
  if(selected)renderDetails();
  if(!results.length)byId("place-list").innerHTML='<li class="no-results">Ningún lugar coincide con los filtros.</li>';
 }
 function renderList(){
- byId("place-list").innerHTML=results.map(r=>'<li><button type="button" data-place-id="'+html(r.id)+'" aria-current="'+(selected?.id===r.id)+'">'+namesMarkup(r,"span")+'<small>'+html(labelType(r))+' · '+html(String((r.loci||[]).length))+' loci '+(hasPoint(r)?"· ⌖":"· sin pin")+'</small></button></li>').join("");
+ byId("place-list").innerHTML=results.map(r=>'<li><button type="button" data-place-id="'+html(r.id)+'" aria-current="'+(selected?.id===r.id)+'">'+namesMarkup(r,"span")+'<small>'+html(labelType(r))+' · '+html(String((r.loci||[]).length))+' loci '+(hasPoint(r)?"· ⌖":featureFor(r)?.geometry==="polygon"?"· área":featureFor(r)?.geometry==="polyline"?"· río":"· sin geometría")+'</small></button></li>').join("");
 }
 function renderMapMarkers(){
- if(!map)return;
+ if(!map||!pins)return;
  pins.clearLayers();markerById.clear();
  for(const r of results){
- if(!hasPoint(r))continue;
- const color=r.id==="fanum-fortunae"?"#a06a29":"#244f65";
- const circle=L.circleMarker([r.lat,r.lon],{radius:r.id==="fanum-fortunae"?9:6,weight:2,color:"#fff9ed",fillColor:color,fillOpacity:.88});
- const name=html(r.latinCanonical)+" · "+html(r.name);
- const directLink=new URL(location.href);directLink.searchParams.set("lugar",r.id);directLink.searchParams.set("ficha","1");
- circle.bindPopup('<strong>'+name+'</strong><p>Coordenadas aproximadas de ciudad o isla, no monumento.</p><a class="map-popup-select" href="'+html(directLink.href)+'" data-popup-place="'+html(r.id)+'">Abrir ficha científica ↗</a>');
- circle.on("click",()=>selectPlace(r.id,false,false));
- circle.addTo(pins);
- markerById.set(r.id,circle);
+  const geo=featureFor(r);
+  if(!hasPoint(r)&&!geo)continue;
+  let shape;
+  if(hasPoint(r)){
+   const color=r.id==="fanum-fortunae"?"#a06a29":"#244f65";
+   shape=L.circleMarker([r.lat,r.lon],{radius:r.id==="fanum-fortunae"?9:6,weight:2,color:"#fff9ed",fillColor:color,fillOpacity:.88});
+  }else if(geo.geometry==="polygon"){
+   shape=L.polygon(geo.coordinates,{color:"#926835",weight:2,opacity:.98,fillColor:"#d5af63",fillOpacity:.22,dashArray:"5,4"});
+  }else if(geo.geometry==="polyline"){
+   shape=L.polyline(geo.coordinates,{color:"#197db7",weight:4,opacity:.9,dashArray:"8,5"});
+  }else continue;
+  const name=html(r.latinCanonical)+" · "+html(r.name);
+  const directLink=new URL(location.href);directLink.searchParams.set("lugar",r.id);directLink.searchParams.set("ficha","1");
+  const hint=hasPoint(r)?"Ubicación aproximada de ciudad, no de edificio.":geo.geometry==="polygon"?"Área de referencia esquemática; NO delimita fronteras antiguas.":"Curso esquemático; NO muestra el cauce antiguo exacto.";
+  shape.bindPopup('<strong>'+name+'</strong><p>'+hint+'</p><a class="map-popup-select" href="'+html(directLink.href)+'" data-popup-place="'+html(r.id)+'">Abrir ficha científica ↗</a>');
+  shape.on("click",()=>selectPlace(r.id,false,false));
+  shape.addTo(pins);
+  markerById.set(r.id,shape);
  }
 }
+function layerStatus(mode,message){
+ const el=byId("map-layer-status");if(el)el.textContent=message;
+ for(const id of ["map-modern","map-historic"]){
+  const btn=byId(id);if(btn)btn.setAttribute("aria-pressed",String(id==="map-"+mode));
+ }
+}
+function switchMapBase(mode){
+ if(!map||!modernLayer||!historicalLayer)return;
+ if(activeBase===mode)return;
+ map.removeLayer(activeBase==="moderno"?modernLayer:historicalLayer);
+ activeBase=mode;
+ (mode==="moderno"?modernLayer:historicalLayer).addTo(map);
+ if(mode==="historico")layerStatus("historic","Base histórica CAWM (Universidad de Iowa, CC BY 4.0). Antigüedad general, NO mapa exacto del siglo I a. C. Regiones y ríos esquemáticos.");
+ else layerStatus("modern","Mapa actual OpenStreetMap. Las áreas y los cursos fluviales superpuestos son esquemáticos.");
+}
 function initializeMap(){
- if(typeof L==="undefined"){byId("map-alert").hidden=false;byId("map-alert").textContent="El mapa gráfico no se pudo cargar. El catálogo de lugares, nombres y loci funciona sin conexión cartográfica.";return;}
+ if(typeof L==="undefined"){byId("map-alert").hidden=false;byId("map-alert").textContent="El mapa gráfico no se pudo cargar. Los nombres históricos y los pasajes funcionan sin conexión cartográfica.";return;}
  map=L.map("vitruvian-map",{minZoom:2,maxZoom:17,scrollWheelZoom:false}).setView([39.4,20.7],4);
- L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+ modernLayer=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
+ historicalLayer=L.tileLayer("https://cawm.lib.uiowa.edu/tiles/{z}/{x}/{y}.png",{maxZoom:17,maxNativeZoom:11,attribution:'© <a href="https://cawm.lib.uiowa.edu/" target="_blank" rel="noopener">CAWM / University of Iowa</a> (CC BY 4.0)'});
+ historicalLayer.on("tileload",()=>{ancientLoads++;});
+ historicalLayer.on("tileerror",()=>{
+  ancientErrors++;
+  if(activeBase==="historico"&&ancientErrors>=5&&ancientLoads===0){
+   switchMapBase("moderno");
+   byId("map-layer-status").textContent="No se pudo cargar el fondo histórico CAWM. Se restituyó el mapa moderno; las áreas, ríos y fichas continúan disponibles.";
+  }
+ });
+ modernLayer.addTo(map);
  pins=L.layerGroup().addTo(map);
- // The popup is a real deep link; a capturing click handler below offers instant modal opening.
+ layerStatus("modern","Mapa moderno OpenStreetMap. Áreas y ríos esquemáticos.");
  renderMapMarkers();
 }
 async function start(){
