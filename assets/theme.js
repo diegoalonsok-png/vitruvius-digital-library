@@ -1,6 +1,10 @@
 (()=>{
  const base=(document.currentScript?.src||new URL('assets/theme.js',location.href).href).replace(/theme\.js(?:\?.*)?$/,'');
  if(!document.querySelector('link[href*="assets/theme.css"]')){const css=document.createElement('link');css.rel='stylesheet';css.href=base+'theme.css?v=20261101-contrast-h-2';document.head.append(css)}
+ const viewerNames=new Set(['harleianus.html','sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html','laboratorio-h.html']);
+ if(viewerNames.has(location.pathname.split('/').pop())&&!document.querySelector('script[data-viewer-actions]')){
+  const share=document.createElement('script');share.src=base+'viewer-actions.js?v=20261103-live-image';share.defer=true;share.dataset.viewerActions='1';document.head.append(share);
+ }
  if(!document.querySelector('script[data-pdf-assist]')){const pdf=document.createElement('script');pdf.src=base+'pdf-assist.js?v=20261102-visible';pdf.defer=true;pdf.dataset.pdfAssist='1';document.head.append(pdf)}
  const key='vitruvius-color-theme';let choice='light';
  try{choice=localStorage.getItem(key)==='dark'?'dark':'light';}catch{}
