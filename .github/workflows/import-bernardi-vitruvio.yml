@@ -22,22 +22,22 @@ jobs:
           dest=pathlib.Path('images/grabados/vitruvio-pollione-bernardi-raggio.jpg')
           headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (academic project; Wikimedia Commons public-domain print)','Accept':'image/jpeg'}
           data=None
-          # Wikimedia often returns HTTP 429 to CI networks. Public-domain image
-          # delivery proxies preserve the original source and use conditions.
-          from urllib.parse import quote
+          # Same Munich inventory image gs95013d may be available through the institutional portrait index.
+          download_source=None
           sources=[
               url,
-              'https://images.weserv.nl/?url='+quote(url,safe=''),
-              'https://wsrv.nl/?url='+quote(url,safe=''),
+              'https://www.portraitindex.de/pool/large/gs95013d',
+              'https://www.portraitindex.de/pool/medium/gs95013d',
           ]
           for candidate in sources:
               try:
                   with urllib.request.urlopen(urllib.request.Request(candidate,headers=headers),timeout=50) as response:
                       content_type=response.headers.get('Content-Type','')
                       raw=response.read(9_000_000)
-                  if not content_type.startswith('image/') or not raw.startswith(bytes.fromhex('ffd8ff')) or len(raw)<250_000:
+                  if not content_type.startswith('image/') or not raw.startswith(bytes.fromhex('ffd8ff')) or len(raw)<35_000:
                       raise ValueError('Respuesta no es JPEG completo: '+content_type+', bytes '+str(len(raw)))
                   data=raw
+                  download_source=candidate
                   print('Fuente de descarga validada:',candidate,flush=True)
                   break
               except Exception as err:
@@ -53,9 +53,11 @@ jobs:
           rec=next(x for x in catalog['primaryRecords'] if x['id']=='bernardi-raggio-vitruvio-pollione')
           assert rec['sourceImage']==url
           rec['image']=str(dest)
+          rec['fullResolutionImage']=url
           rec['imageVerifiedLocally']=True
           rec['imageSHA256']=sha
-          rec['imagePixelSize']='2446 × 3668 px (original Commons, sin recorte)'
+          rec['imagePixelSize']='2446 × 3668 px (archivo completo en Commons)' if download_source==url else 'Resolución de copia institucional pendiente de verificación; archivo completo de Commons enlazado como fuente' 
+          rec['imageDownloadSource']=download_source
           path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
       - name: Publicar original completo y actualizar atlas
