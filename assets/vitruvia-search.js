@@ -46,7 +46,7 @@ function score(s,q,expand=false){const txt=norm(s),n=norm(q);if(!n||!txt)return 
  if(expand){for(const w of related(q))if(txt.includes(w)&&!words(q).includes(w))r+=1.75}return r}
 const verified=w=>w.publicStatus==="lectura-local-completa";
 const bookLinks={
- vitruvius:"bibliotheca-graeca-latina.html?work=vitruvius",
+ vitruvius:"lector-bilingue.html?edition=recensio-es",
  "cicero-officiis":"bibliotheca-graeca-latina.html?work=cicero-officiis",
  lucretius:"bibliotheca-graeca-latina.html?work=lucretius",
  "vitruvio-v514-pdf":"documents/edicion-v514.html",
