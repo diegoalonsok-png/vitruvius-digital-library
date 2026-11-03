@@ -9,6 +9,10 @@ function label(c){
  return typeof value==='string'?value:Object.values(value||{}).flat().join(' · ');
 }
 function getPageImage(c){
+ // Prefer facsimiles archived in GitHub Pages. If the local image is not yet
+ // present, the IIIF source remains a documented fallback (not an empty card).
+ if(c.local_url&&c.image_url)return [c.local_url,c.image_url];
+ if(c.local_url)return [c.local_url,null];
  if(c.image_url)return [c.image_url,null];
  const body=c.images?.[0]?.resource||c.items?.[0]?.items?.[0]?.body;
  const service=body?.service||body?.services;
@@ -31,7 +35,7 @@ async function start(){
   try{
    pages=await readIndex(url);
    $('bar-page').max=String(pages.length);
-   status.textContent=pages.length+' imágenes indexadas. Fuente de lectura: imágenes oficiales IIIF suministradas por e-rara, sin descarga al repositorio.';
+   status.textContent=pages.length+' imágenes indexadas. Fuente de lectura: copia del repositorio cuando está disponible; si falta, facsímil IIIF de e-rara.';
    const requested=Number(new URLSearchParams(location.search).get('image'));
    if(Number.isInteger(requested)&&requested>=1&&requested<=pages.length)$('bar-page').value=String(requested);
    openPage();
