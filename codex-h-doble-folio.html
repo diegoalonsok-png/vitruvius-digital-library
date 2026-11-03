@@ -122,18 +122,32 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 #reader-language{max-width:145px}
 .leaf-tools{gap:6px}
 @media(max-width:700px){.extra-toolbar{justify-content:flex-start}.quick-image-tools{margin-left:0}.quick-image-tools label{flex:1 1 120px}}
+
+/* Barra superior con el mismo lenguaje visual que el resto de la biblioteca. */
+.banner{position:relative;padding-top:105px}
+.reader-header-tools{position:absolute;top:14px;right:clamp(12px,2.5vw,38px);display:flex;justify-content:flex-end;align-items:center;gap:16px;flex-wrap:wrap;z-index:4}
+.reader-lang-select{display:flex;align-items:center;gap:12px;border:1px solid #a5b1ba;border-radius:9px;padding:6px 8px 6px 12px;background:#29445a;color:#f7eee1}
+.reader-globe{font-size:18px;line-height:1}
+.reader-lang-select select{min-height:47px;border:1px solid #8fa0ac;border-radius:7px;padding:8px 36px 8px 14px;background:#29445a;color:#fff;font:650 16px system-ui,sans-serif;min-width:180px;cursor:pointer}
+.reader-header-color{min-height:60px;display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:12px 22px;border:1px solid #a5b1ba;border-radius:9px;background:#29445a;color:#fff;font:650 16px system-ui,sans-serif;white-space:nowrap}
+.reader-header-color .reader-theme-symbol{font-size:20px}
+.reader-header-color:hover,.reader-lang-select select:hover{background:#355b76}
+.reader-control-sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.extra-toolbar{justify-content:flex-end}
+@media(max-width:760px){.banner{padding-top:130px}.reader-header-tools{left:12px;right:12px;gap:9px;justify-content:flex-start}.reader-lang-select select{min-width:140px;font-size:14px}.reader-header-color{padding:9px 13px;min-height:54px;font-size:14px}}
 </style></head><body><main>
 <nav><a href="index.html">← Biblioteca principal</a><a href="codex-h-folios-local.html">Lector de folio único</a><a href="harleianus.html">Visor H original</a></nav>
 <div class="extra-toolbar" role="group" aria-label="Herramientas de lectura">
-<label for="reader-language"><span data-tr="language">Idioma</span><select id="reader-language" aria-label="Idioma de interfaz">
-<option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label>
-<button type="button" id="reader-theme" aria-pressed="false">☾ <span data-tr="dark">Modo oscuro</span></button>
 <button type="button" id="loupe-toggle" aria-pressed="true">◉ <span data-tr="loupeOn">Desactivar lupa</span></button>
 <button type="button" id="print-spread">⎙ <span data-tr="print">Imprimir apertura</span></button>
 <button type="button" id="email-spread">✉ <span data-tr="email">Enviar por correo</span></button>
 <button type="button" id="whatsapp-spread">✆ <span data-tr="whatsapp">Compartir por WhatsApp</span></button>
 </div>
-<header class="banner"><small>BIBLIOTHECA VITRUVII · CODEX HARLEIANUS 2767</small>
+<header class="banner"><div class="reader-header-tools" role="group" aria-label="Idioma y apariencia de la biblioteca">
+<label for="reader-language" class="reader-lang-select"><span class="reader-globe" aria-hidden="true">🌐</span><span class="reader-control-sr" data-tr="language">Idioma</span><select id="reader-language" aria-label="Idioma de la interfaz">
+<option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label>
+<button type="button" id="reader-theme" class="reader-header-color" aria-pressed="false"><span class="reader-theme-symbol" aria-hidden="true">☾</span> <span data-tr="dark">Oscuro</span></button>
+</div><small>BIBLIOTHECA VITRUVII · CODEX HARLEIANUS 2767</small>
 <h1>Codex H · Doble hoja</h1>
 <p>Vitruvio, <em>De architectura</em>. British Library, Harley MS 2767, primer cuarto del siglo IX. Lectura del manuscrito en dos páginas enfrentadas, sin traducciones; ampliación y lupa independientes.</p></header>
 <p class="notice"><strong>Criterio codicológico:</strong> en un códice abierto se enfrenta normalmente un <em>verso</em> a la izquierda con el <em>recto</em> siguiente a la derecha (por ejemplo, f.1v y f.2r). El f.1r es una apertura inicial independiente. Cubiertas y guardas se mantienen identificadas en el índice original, pero no se emparejan arbitrariamente como folios de texto.</p>
@@ -236,7 +250,8 @@ function paintUI(){
  $("reader-language").value=currentLanguage;
  document.documentElement.dataset.readerTheme=readerTheme;
  $("reader-theme").setAttribute("aria-pressed",String(readerTheme==="dark"));
- $("reader-theme").querySelector("span").textContent=readerTheme==="dark"?t.light:t.dark;
+ $("reader-theme").querySelector("[data-tr]").textContent=readerTheme==="dark"?(({es:"Claro",en:"Light",fr:"Clair",it:"Chiaro",de:"Hell",pt:"Claro"}[currentLanguage])||"Claro"):(({es:"Oscuro",en:"Dark",fr:"Sombre",it:"Scuro",de:"Dunkel",pt:"Escuro"}[currentLanguage])||"Oscuro");
+ $("reader-theme").querySelector(".reader-theme-symbol").textContent=readerTheme==="dark"?"☀":"☾";
  $("loupe-toggle").setAttribute("aria-pressed",String(loupeEnabled));
  $("loupe-toggle").querySelector("span").textContent=(loupeEnabled?"● ":"○ ")+(loupeEnabled?t.loupeOn:t.loupeOff);
 }
