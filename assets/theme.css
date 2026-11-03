@@ -131,3 +131,29 @@ html[data-theme="dark"] .theme-switch{background:#1b2833!important;border-color:
 html[data-theme="dark"] .theme-switch:hover{background:#344553!important}
 .theme-switch:focus-visible{outline:2px solid #b49a65!important;outline-offset:3px}
 @media(max-width:760px){.theme-switch,.header-inner .theme-switch{width:42px!important;min-width:42px!important;flex-basis:42px!important}}
+
+
+/* Shared accessibility and responsive polish — November 2026. */
+.library-skip-link{position:fixed;z-index:100000;left:12px;top:12px;transform:translateY(-180%);
+ background:var(--paper,#fff);color:var(--ink,#172b3c);border:2px solid var(--gold,#ad925c);
+ border-radius:7px;padding:12px 16px;font:600 14px/1.4 Arial,sans-serif;
+ text-decoration:none;box-shadow:0 8px 24px #0004}
+.library-skip-link:focus{transform:translateY(0)}
+main:focus{outline:none}
+:where(main,article,.reader-body,.compare-body,.bibliography,.studies) :is(p,li,blockquote){
+ overflow-wrap:break-word;word-break:normal;hyphens:auto}
+:where(main,article,.reader-body) :is(img,video,canvas,iframe){max-width:100%}
+:where(main,article,.reader-body) img{height:auto}
+:where(main,article,.reader-body) :is(pre,table){max-width:100%}
+:where(main,article,.reader-body) pre{overflow-x:auto}
+:where(main,article,.reader-body) table{display:block;overflow-x:auto}
+:where(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--gold,#b99d68);outline-offset:3px}
+@media(max-width:760px){
+ :where(main,article,.reader-body) :is(h1,h2,h3){overflow-wrap:break-word}
+ :where(main,article,.reader-body) :is(input,textarea,select){max-width:100%}
+ .theme-switch.theme-floating{right:12px!important;top:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;
+ animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
