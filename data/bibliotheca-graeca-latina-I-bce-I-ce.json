@@ -55,9 +55,17 @@
         "status": "Texto completo en latín e inglés alojado en GitHub y legible en visor interno; edición y traducción de Walter Miller (1913)."
       },
       "manuscript": {
-        "manifest": null,
-        "record": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Officiis/Introduction%2A.html",
-        "status": "Entre los testigos medievales tempranos figura un codex Harleianus del siglo IX; falta identificar la signatura precisa y un facsímil individual con folios verificados."
+        "manifest": "https://e-codices.unifr.ch/metadata/iiif/bge-lat0088/manifest.json",
+        "record": "https://e-codices.ch/en/list/one/bge/lat0088",
+        "institution": "Bibliothèque de Genève",
+        "shelfmark": "Ms. lat. 88",
+        "dating": "siglo XV (datación precisa por confirmar con el catálogo)",
+        "status": "Testimonio digitalizado de De officiis; no es el más antiguo conservado. Se documentan 288 imágenes IIIF. La concordancia entre folios y pasajes sigue pendiente.",
+        "license": "CC BY-NC 4.0; imágenes servidas desde e-codices",
+        "index": "data/manuscripts/cicero-de-officiis-geneve-lat88.json",
+        "oldest": {
+          "status": "pendiente de identificar y conectar un testigo temprano del siglo VIII o IX con digitalización verificable"
+        }
       },
       "pdf": {
         "url": null,
@@ -84,6 +92,30 @@
         "license": "Dominio público en Estados Unidos; autores fallecidos en 44 a.C. y 1949, respectivamente; reproducción con atribución.",
         "format": "HTML completo en GitHub",
         "completeness": "Tres libros del tratado en latín e inglés; no edición diplomática"
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "label": "Latín · Walter Miller 1913",
+          "path": "corpus/cicero-de-officiis-la.html",
+          "kind": "edition"
+        },
+        {
+          "language": "en",
+          "label": "English · Walter Miller 1913",
+          "path": "corpus/cicero-de-officiis-en.html",
+          "kind": "translation"
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "The Chicago Manual of Style, 18th ed. (2024)",
+        "uniformTitle": "De officiis",
+        "originalAuthor": "Marcus Tullius Cicero",
+        "workDate": "44 a. C.",
+        "originalLanguage": "latín",
+        "editionCitation": "Cicero, Marcus Tullius. De officiis. With an English translation by Walter Miller. London: William Heinemann; New York: Macmillan, 1913. Digital text, Project Gutenberg, eBook 47001, updated October 24, 2024.",
+        "manuscriptCitation": "Genève, Bibliothèque de Genève, Ms. lat. 88, De officiis, siglo XV (datación exacta por comprobar), facsímil digital, e-codices, https://e-codices.ch/en/list/one/bge/lat0088.",
+        "method": "Edición impresa de 1913, facsímil de un testigo tardío y traducción moderna diferenciados; no son la misma fuente material."
       }
     },
     {
