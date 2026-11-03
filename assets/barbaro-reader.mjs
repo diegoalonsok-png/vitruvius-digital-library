@@ -32,6 +32,8 @@ async function start(){
    pages=await readIndex(url);
    $('bar-page').max=String(pages.length);
    status.textContent=pages.length+' imágenes indexadas. Fuente de lectura: imágenes oficiales IIIF suministradas por e-rara, sin descarga al repositorio.';
+   const requested=Number(new URLSearchParams(location.search).get('image'));
+   if(Number.isInteger(requested)&&requested>=1&&requested<=pages.length)$('bar-page').value=String(requested);
    openPage();
    return;
   }catch(e){reasons.push(e.message);}
