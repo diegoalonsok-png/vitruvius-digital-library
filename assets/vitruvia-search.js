@@ -229,8 +229,14 @@ function bindAcademia(){
  }
 }
 function makeLink(label,url){const a=anchor(label,url);return a}
+function matchVariants(q){
+ const terms=String(q||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3);
+ const expanded=new Set(terms);
+ if(terms.some(w=>/^pitagor|^pythagor/.test(w))){for(const w of ["pitagor","pythagor"])expanded.add(w)}
+ return [...expanded].slice(0,12)
+}
 function markTerms(root,query){
- const words=[...new Set(String(query||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(x=>x.length>=3))].slice(0,8);
+ const words=matchVariants(query);
  if(!words.length)return;
  const normText=x=>String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
