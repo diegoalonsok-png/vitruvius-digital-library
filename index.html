@@ -189,6 +189,14 @@ html[data-theme=dark] .vitruvia-top-initial{color:#e5e3dc}
 
 @media(max-width:850px){.research-nav-controls .vitruvia-top-link{flex-basis:100%;justify-content:center;border-left:0;border-top:1px solid rgba(164,154,141,.34);padding:7px 2px}.research-nav-controls{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.research-nav-controls .vitruvia-top-initial{transition:none!important}}
+
+/* Monograma Vitruvia: ala derecha extendida, sin rótulo ni marco. */
+.research-nav-controls a.vitruvia-top-link{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:45px;min-height:45px;width:45px;padding:0 3px;border:0;background:transparent;text-decoration:none;color:inherit}
+.research-nav-controls .vitruvia-wing-v{display:block;width:32px;height:39px;color:var(--ink,#e9e7df);transition:transform .25s ease}
+.research-nav-controls a.vitruvia-top-link:hover .vitruvia-wing-v,.research-nav-controls a.vitruvia-top-link:focus-visible .vitruvia-wing-v{transform:scale(1.09) rotate(-5deg)}
+html[data-theme=dark] .research-nav-controls .vitruvia-wing-v{color:#e9e5db}
+@media(max-width:850px){.research-nav-controls a.vitruvia-top-link{flex:0 0 auto;border:0;min-width:45px}}
+@media(prefers-reduced-motion:reduce){.research-nav-controls .vitruvia-wing-v{transition:none}}
 </style><style>.hero-folios-action{border-color:#c8a86e!important;font-weight:750!important;letter-spacing:.025em;background:rgba(202,169,102,.08)}.hero-folios-action:focus-visible{outline:3px solid #c8a86e;outline-offset:3px}</style>
 <link rel="stylesheet" href="assets/editorial-reading.css?v=20261103-1">
 </head>
@@ -224,7 +232,7 @@ html[data-theme=dark] .vitruvia-top-initial{color:#e5e3dc}
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
           <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir esta página" title="Abrir vista de impresión de la biblioteca">⎙ Imprimir</button>
-          <a class="vitruvia-top-link" href="vitruvia.html" title="Vitruvia · buscador universal de ciencias y humanidades" aria-label="Abrir Vitruvia, buscador de ciencias y humanidades"><span class="vitruvia-top-initial" aria-hidden="true">V</span><span class="vitruvia-top-copy"><strong>VITRUVIA</strong></span></a>
+          <a class="vitruvia-top-link" href="vitruvia.html" aria-label="Abrir buscador Vitruvia"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></a>
         </div>
       </div>
     </nav>
