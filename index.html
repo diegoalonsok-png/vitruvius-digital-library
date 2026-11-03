@@ -207,6 +207,7 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
       <div class="historic-top-heading" id="historic-top-heading"><strong>ABRIR FACSÍMILES</strong><span>Códices y ediciones históricas</span></div>
       <nav class="historic-top-links" aria-label="Acceso inmediato a los cinco visores de Vitruvio">
         <a href="harleianus.html" title="Manuscrito Harleianus 2767"><b>H</b><span>Codex H</span></a>
+        <a href="codex-h-doble-folio.html" title="Leer el Codex H en doble hoja con los folios identificados y lupa independiente"><b>H²</b><span>Codex H <small id="codex-double-menu-label">Doble hoja</small></span></a>
         <a href="sulpizio-1486.html" title="Sulpizio da Veroli, edición príncipe c. 1486–1487"><b>S</b><span>Sulpizio <small>1486</small></span></a>
         <a href="giocondo-1511.html" title="Fra Giocondo, edición ilustrada de 1511"><b>G</b><span>Giocondo <small>1511</small></span></a>
         <a href="cesariano-1521.html" title="Cesare Cesariano, edición ilustrada de 1521"><b>C</b><span>Cesariano <small>1521</small></span></a>
@@ -296,6 +297,8 @@ document.getElementById('print-home')?.addEventListener('click',()=>window.print
     if(!label||!link)return;
     label.textContent=item.text;
     link.setAttribute("aria-label",item.aria);
+    const doubleLabel=document.getElementById("codex-double-menu-label");
+    if(doubleLabel)doubleLabel.textContent=({es:"Doble hoja",en:"Double page",fr:"Double page",it:"Doppia pagina",de:"Doppelseite",pt:"Página dupla"}[lang]||"Doble hoja");
   }
   function current(){
     const select=document.querySelector(".header-languages select, .site-global-language select");
