@@ -123,6 +123,7 @@ function renderEntity(){
  const content=document.createElement("div");content.className="ov-content";
  const bio="<p class='ov-eyebrow'>"+(e.kind==="person"?T("historicalPerson"):T("historicalPlace"))+"</p>"
  +"<h2>"+html(e.name)+"</h2>"
+ +(e.portrait?("<figure class='ov-historical-portrait'><a href='"+html(e.portrait.source)+"' target='_blank' rel='noopener noreferrer' title='Ficha del museo'><img loading='lazy' decoding='async' src='"+html(e.portrait.localImage||e.portrait.image)+"' data-remote='"+html(e.portrait.image)+"' alt='"+html(e.portrait.title+". "+e.portrait.description)+"'></a><figcaption><strong>"+html(e.portrait.title)+"</strong><br>"+html(e.portrait.museum+" · inv. "+e.portrait.inventory)+"<br>"+html(e.portrait.date)+"<br>"+html(e.portrait.description)+"<br><a href='"+html(e.portrait.imageSource)+"' target='_blank' rel='noopener noreferrer'>"+html(e.portrait.credit)+"</a><details><summary>Cita Chicago 18 y datos materiales</summary><p>"+html(e.portrait.chicago)+"</p><p>"+html(e.portrait.material+" · "+e.portrait.dimensions)+"</p></details></figcaption></figure>"):"")
  +"<div class='ov-onomastic' aria-label='"+html(T("linguisticIdentity"))+"'>"
  +"<div><span class='ov-onomastic-label'>"+html(T("latinAttested"))+" · V514</span><p lang='la'>"+html((e.latin_forms||[]).join(" · ")||"—")+"</p></div>"
  +"<div><span class='ov-onomastic-label'>"+html(T("greekReference"))+"</span><p lang='grc'>"+html(e.greek_name||T("notVerified"))+"</p></div>"
@@ -134,6 +135,7 @@ function renderEntity(){
  +"</div><h3 class='ov-mini-title'>"+html(T("where"))+" <i>De architectura</i></h3>"
  +"<p class='ov-note'>Coincidencias del texto latino V514. Los nombres y sus formas pueden declinarse; la localización es editorial, no cotejo con las grafías de un códice concreto.</p>";
  content.innerHTML=bio;
+ content.querySelectorAll(".ov-historical-portrait img[data-remote]").forEach(img=>{img.addEventListener("error",()=>{if(img.dataset.remote){img.src=img.dataset.remote;img.dataset.remote="";}else{img.hidden=true;img.closest("figure")?.classList.add("ov-photo-unavailable");}});});
  const loci=e.loci.slice(0,limit);
  for(const l of loci){const p=byLocus.get(l);if(p)content.append(referenceCard(p));}
  if(e.loci.length>limit){const b=document.createElement("button");b.className="ov-button";b.type="button";b.textContent="Ver "+fmt(e.loci.length-limit)+" menciones restantes";b.onclick=()=>{limit=1e6;renderEntity();};content.append(b);}
