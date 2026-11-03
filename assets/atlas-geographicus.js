@@ -56,6 +56,50 @@ function selectPlace(id,zoom=true,scroll=false){
  if(scroll)byId("place-detail").scrollIntoView({behavior:"smooth",block:"start"});
  const url=new URL(location.href);url.searchParams.set("lugar",r.id);history.replaceState(null,"",url);
 }
+function dossierLine(label,value){
+ return '<div class="dossier-field"><dt>'+html(label)+'</dt><dd>'+html(value||"No documentado")+'</dd></div>';
+}
+function openScientificDossier(id){
+ const r=all.find(x=>x.id===id);
+ if(!r)return;
+ selectPlace(id,false,false);
+ const d=byId("place-dossier");
+ if(!d||typeof d.showModal!=="function"){
+  byId("place-detail").scrollIntoView({behavior:"smooth",block:"center"});
+  byId("place-detail").focus({preventScroll:true});
+  return;
+ }
+ byId("dossier-title").textContent=r.latinCanonical+" — "+r.name;
+ byId("dossier-greek").textContent=r.greek_name||"Nombre griego no acreditado";
+ byId("dossier-modern").textContent=r.modern||r.period||"Identificación moderna pendiente";
+ byId("dossier-summary").textContent=r.summary||"Descripción histórica pendiente de cotejo";
+ const coords=hasPoint(r)?r.lat.toFixed(4)+"°, "+r.lon.toFixed(4)+"° — ubicación orientativa de ciudad/área, no del edificio":"Sin coordenada puntual atribuida";
+ byId("dossier-fields").innerHTML=[
+  dossierLine("Tipo de lugar",r.geotype),
+  dossierLine("Nombre latino normalizado",r.latinCanonical),
+  dossierLine("Formas latinas de V514",(r.latin_forms||[]).join(" · ")||"No identificadas"),
+  dossierLine("Nombre griego de referencia",r.greek_name||"No documentado"),
+  dossierLine("Nombre moderno",r.name),
+  dossierLine("Identificación actual",r.modern),
+  dossierLine("Marco histórico",r.period),
+  dossierLine("Referencias editoriales",String(r.loci?.length||0)+" loci"),
+  dossierLine("Estado de las lecturas",r.sourceStatus||"Revisión pendiente"),
+  dossierLine("Situación cartográfica",coords),
+  dossierLine("Nivel de certeza",r.confidence||"No documentado"),
+  dossierLine("Nota de investigación",r.note||"Las equivalencias griegas son referencias eruditas y no lecturas de un testimonio griego del Codex H.")
+ ].join("");
+ const loci=byId("dossier-loci");
+ loci.innerHTML=(r.loci||[]).map(l=>'<a href="'+html(locusUrl(l))+'" target="_blank" rel="noopener noreferrer" title="Leer locus '+html(l)+' en la biblioteca">'+html(l)+'</a>').join("")||"<span>Sin locus verificado</span>";
+ const on=byId("dossier-onomasticon");
+ on.href=r.internal||entryUrl(r);
+ on.textContent=r.internal?"Estudio específico de la basílica de Fano ↗":"Abrir en Onomasticon ↗";
+ const source=byId("dossier-source");
+ source.hidden=!(r.id==="fanum-fortunae"&&r.source);
+ if(!source.hidden)source.href=r.source;
+ const u=new URL(location.href);u.searchParams.set("lugar",r.id);
+ byId("dossier-deeplink").href=u.href;
+ if(!d.open)d.showModal();
+}
 function typeGroup(r){
  if(/ciudad/i.test(r.geotype))return "ciudad";
  if(/río/i.test(r.geotype))return "rio";
@@ -98,10 +142,14 @@ function initializeMap(){
  map=L.map("vitruvian-map",{minZoom:2,maxZoom:17,scrollWheelZoom:false}).setView([39.4,20.7],4);
  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
  pins=L.layerGroup().addTo(map);
- map.on("popupopen",e=>{const button=e.popup.getElement()?.querySelector("[data-popup-place]");if(button)button.addEventListener("click",()=>selectPlace(button.dataset.popupPlace,false,true));});
+ map.on("popupopen",e=>{const button=e.popup.getElement()?.querySelector("[data-popup-place]");if(button)button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();openScientificDossier(button.dataset.popupPlace);});});
  renderMapMarkers();
 }
 async function start(){
+ const dialog=byId("place-dossier");
+ byId("dossier-close").addEventListener("click",()=>dialog.close());
+ dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
+ byId("place-expand").addEventListener("click",()=>{if(selected)openScientificDossier(selected.id);});
  byId("place-query").addEventListener("input",filter);
  for(const id of ["place-book","place-type"])byId(id).addEventListener("change",filter);
  byId("place-list").addEventListener("click",e=>{const b=e.target.closest("[data-place-id]");if(b)selectPlace(b.dataset.placeId,true,true);});
