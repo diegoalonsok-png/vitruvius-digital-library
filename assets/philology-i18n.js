@@ -45,7 +45,7 @@ const localized=[
 [".ph-card:nth-child(6) > p:nth-of-type(3)","<a href=\"lector-bilingue.html?edition=recensio-es&amp;locus=1.2.1\">Read I.2.1</a> · <a href=\"estudios.html\">Scholarly bibliography</a>","<a href=\"lector-bilingue.html?edition=recensio-es&amp;locus=1.2.1\">Lire I.2.1</a> · <a href=\"estudios.html\">Bibliographie scientifique</a>"],
 ["#ph-app","Passages for applied analysis","Passages d’analyse appliquée"],
 ["section[aria-labelledby='ph-app'] > p","Choose a locus to compare the Latin text, the translation in the selected edition, syntactic observations, interpretation and an editorial caveat. You can open the same loci in the parallel reader.","Choisissez un locus pour confronter le texte latin, la traduction de l’édition choisie, l’analyse syntaxique, l’interprétation et une réserve éditoriale. Les mêmes loci sont accessibles dans le lecteur parallèle."],
-[".ph-form label","Passage under study","Passage étudié"],
+[".ph-form .ph-locus-label","Passage under study","Passage étudié"],
 ["#ph-locus option[value='1.1.1']","I.1.1 · Fabrica and ratiocinatio","I.1.1 · Fabrica et ratiocinatio"],
 ["#ph-locus option[value='1.1.2']","I.1.2 · Practice and theory","I.1.2 · Pratique et théorie"],
 ["#ph-locus option[value='1.2.1']","I.2.1 · Greek concepts","I.2.1 · Concepts grecs"],
