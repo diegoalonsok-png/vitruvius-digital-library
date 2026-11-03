@@ -11,7 +11,7 @@ header small{letter-spacing:.16em}h1,h2{font-family:Georgia,serif;font-weight:40
 .note,#state{background:#eee3d0;border-left:4px solid #b69361;padding:12px 16px;margin:16px 0}
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;background:white;border:1px solid #c7b69e;padding:12px}
 button,input{font:inherit}button{min-height:42px;cursor:pointer;background:var(--navy);border:1px solid #c1a06d;color:#fff;padding:9px 14px}
-button:disabled{opacity:.5;cursor:not-allowed}input[type=number]{width:80px;padding:8px}input[type=range]{width:155px}
+button:disabled{opacity:.5;cursor:not-allowed}input[type=number]{width:80px;padding:8px}input[type=range]{width:155px}#folio-select{font:inherit;background:#fff;color:#213b51;border:1px solid #a89b86;padding:8px;min-height:42px;max-width:260px;width:min(100%,230px)}#folio-quick{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}#folio-quick button{background:#fff9ee;color:#213b51;border:1px solid #aa9473;border-radius:4px;min-height:37px;padding:6px 10px}#folio-quick button:hover,#folio-quick button[aria-current=true]{background:#23435b;color:#fff}
 #label{font-size:18px;font-family:Georgia,serif;font-weight:600;flex:1 1 170px}
 #stage{height:77vh;min-height:460px;background:#d9d0c1;overflow:auto;text-align:center;border:1px solid #b1a188;scrollbar-gutter:stable}
 #image{display:block;max-width:none;height:auto;margin:0 auto;cursor:zoom-in}#image[hidden]{display:none}
@@ -35,10 +35,10 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <p class="note"><strong>Identificación académica:</strong> el número de imagen digital no equivale necesariamente al número de folio. Las cubiertas y guardas conservan su posición original; <em>f.1r</em> corresponde a la imagen digital 9 del manifiesto.</p>
 <p id="state" role="status">Comprobando que la colección de fotografías esté publicada en GitHub…</p>
 <section aria-label="Lector de folios"><h2>Leer el códice en grande</h2>
-<div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span>
+<div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span><label>Elegir folio <select id="folio-select" aria-label="Elegir por folio o número de imagen" disabled><option value="">Cargando los folios…</option></select></label>
 <button id="minus" disabled>−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" disabled></label><output id="percent">100%</output><button id="plus" disabled>+ Ampliar</button><button id="fit" disabled>Ajustar</button></div>
 <div id="stage" tabindex="0" aria-label="Folio ampliable, clic para aumentar"><p id="message">La galería se abrirá cuando se verifique el archivo maestro.</p><img id="image" hidden alt="Folio manuscrito del Codex H"></div>
-<p>Hacé clic en la imagen para ampliar la zona señalada. Desplazate por el visor con las barras horizontal y vertical.</p></section>
+<p>Hacé clic en la imagen para ampliar la zona señalada. Desplazate por el visor con las barras horizontal y vertical.</p><div id="folio-quick" aria-label="Accesos rápidos a los primeros folios"></div></section>
 <section class="gallery" id="h-folios" aria-label="Galería de miniaturas">
 <h2>Buscar por imagen · Galería visual del Codex H</h2><p>Todos los folios en orden digital y con sus etiquetas IIIF originales. Seleccioná una miniatura para leerla arriba.</p>
 <div class="filter"><input id="search" type="search" placeholder="f.1r · f.16v · imagen 150" aria-label="Buscar folio o número"><button id="reset">Mostrar todas</button></div>
@@ -60,13 +60,13 @@ function setZoom(z,cx,cy){
 }
 function open(index,scroll=false){
  if(index<0||index>=folios.length)return;
- position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("label").textContent="Folio: "+f.etiquetaOriginal;
+ position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("folio-select").value=String(index);$("label").textContent="Folio: "+f.etiquetaOriginal;
  $("prev").disabled=index===0;$("next").disabled=index===folios.length-1;
  $("message").textContent="Cargando "+f.etiquetaOriginal+"…";$("message").hidden=false;img.hidden=true;
  img.onload=()=>{if(ticket!==seq)return;img.hidden=false;$("message").hidden=true;setZoom(100);stage.scrollTo({left:0,top:0});$("state").textContent="Imagen digital "+(index+1)+"/"+folios.length+" · "+f.etiquetaOriginal+" · "+img.naturalWidth+" × "+img.naturalHeight+" px"};
  img.onerror=()=>{if(ticket!==seq)return;$("message").textContent="No se pudo abrir esta fotografía local; el índice conserva la referencia.";};
  img.alt="Harley MS 2767 · "+f.etiquetaOriginal+" · imagen digital "+(index+1);img.src=file(f);
- $("grid").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));
+ $("grid").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));$("folio-quick").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));
  if(scroll)document.querySelector("section[aria-label='Lector de folios']").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function append(){const last=Math.min(filtered.length,count+48),frag=document.createDocumentFragment();for(const i of filtered.slice(count,last)){
@@ -76,13 +76,18 @@ function append(){const last=Math.min(filtered.length,count+48),frag=document.cr
  b.append(image,n,label);b.addEventListener("click",()=>open(i,true));frag.append(b)}
  $("grid").append(frag);count=last;$("more").hidden=count>=filtered.length;$("gallery-status").textContent=filtered.length+" imágenes coincidentes · "+count+" miniaturas visibles"}
 function filter(){const raw=$("search").value.replace(/^imagen\s*/i,""),q=norm(raw);filtered=folios.map((_,i)=>i).filter(i=>!q||String(i+1)===q||norm(folios[i].etiquetaOriginal).includes(q));count=0;$("grid").replaceChildren();if(filtered.length)append();else{$("gallery-status").textContent="Sin coincidencias";$("more").hidden=true}}
-$("prev").addEventListener("click",()=>open(position-1));$("next").addEventListener("click",()=>open(position+1));$("number").addEventListener("change",()=>open(+$("number").value-1));
+$("prev").addEventListener("click",()=>open(position-1));$("next").addEventListener("click",()=>open(position+1));$("number").addEventListener("change",()=>open(+$("number").value-1));$("folio-select").addEventListener("change",()=>open(Number($("folio-select").value),true));
 $("minus").addEventListener("click",()=>setZoom(zoom-25));$("plus").addEventListener("click",()=>setZoom(zoom+25));$("fit").addEventListener("click",()=>{setZoom(100);stage.scrollTo({top:0,left:0})});
 $("zoom").addEventListener("input",()=>setZoom(+$("zoom").value));img.addEventListener("click",e=>setZoom(zoom+50,e.clientX,e.clientY));
 $("search").addEventListener("input",filter);$("reset").addEventListener("click",()=>{$("search").value="";filter()});$("more").addEventListener("click",append);
 fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
  if(d.totalImagenes!==341||!Array.isArray(d.imagenes)||d.imagenes.length!==341||d.imagenes.some((x,i)=>x.numeroImagen!==i+1||!/^H_\d{3}_[a-z0-9-]+\.jpg$/.test(x.archivo)))throw Error("Índice inválido o incompleto");
  folios=d.imagenes;$("total").textContent="/ 341";$("number").max=341;
+ const picker=$("folio-select"),fragment=document.createDocumentFragment();
+ for(let i=0;i<folios.length;i++){const option=document.createElement("option");option.value=String(i);option.textContent=folios[i].etiquetaOriginal+" · imagen "+(i+1);fragment.append(option)}
+ picker.replaceChildren(fragment);picker.disabled=false;
+ const quick=$("folio-quick");quick.replaceChildren();
+ for(let i=8;i<Math.min(20,folios.length);i++){const button=document.createElement("button");button.type="button";button.dataset.i=String(i);button.textContent=folios[i].etiquetaOriginal;button.addEventListener("click",()=>open(i,true));quick.append(button)}
  for(const id of ["prev","next","number","minus","plus","fit","zoom"])$(id).disabled=false;
  filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));const initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);open(initial>=0?initial:8);
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
