@@ -88,3 +88,20 @@ html[data-theme="dark"] .segment-actions{border-color:#627286}
 html[data-theme="dark"] .empty{color:#d9cdbd}
 html[data-theme="dark"] footer{border-color:#53677a;color:#d0d4d0}
 @media print{html[data-theme="dark"] body,html[data-theme="dark"] .pane,html[data-theme="dark"] .unit,html[data-theme="dark"] .unit.right{background:white!important;color:black!important}}
+
+/* Traducción automática y exportación de un nuevo libro en PDF. */
+#translate-progress{height:10px;width:100%;accent-color:#9b7d4b;margin:13px 0 5px}
+#gemini-key{font:15px ui-monospace,SFMono-Regular,Consolas,monospace}
+#export-docx,#export-pdf{border-color:#997d50}
+#print-document{display:none}
+@media print{
+ body.print-translated > :not(main){display:none!important}
+ body.print-translated main > :not(#print-document){display:none!important}
+ body.print-translated #print-document{display:block!important;margin:0!important;padding:0!important;color:#171717!important;background:white!important;font-family:Georgia,"Times New Roman",serif}
+ body.print-translated #print-document h1{font-size:23pt;color:#171717;margin:0 0 8mm}
+ body.print-translated #print-document h3{font:600 10pt system-ui,sans-serif;color:#3f3a34;margin:6mm 0 2mm;border-top:1px solid #ddd;padding-top:3mm;break-after:avoid}
+ body.print-translated #print-document p{font:12pt/1.6 Georgia,"Times New Roman",serif;white-space:pre-wrap;overflow-wrap:break-word;color:#171717;margin:0 0 5mm}
+ body.print-translated #print-document .print-original{color:#5f2d37}
+ body.print-translated #print-document .print-note{font:italic 10pt/1.5 Georgia,serif;color:#555}
+ body.print-translated #print-document h3,body.print-translated #print-document p{page-break-inside:avoid}
+}
