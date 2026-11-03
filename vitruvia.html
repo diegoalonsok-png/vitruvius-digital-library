@@ -88,6 +88,29 @@ html[data-theme=light] .featured h2{color:#133c2b}html[data-theme=light] .featur
 html[data-theme=light] .footer{color:#475e4e;border-color:#cbd8c8}
 @media(max-width:1020px){.hero{grid-template-columns:1fr;padding:70px 0 40px}.featured{min-height:auto;max-width:700px}.results-grid{grid-template-columns:1fr}.sidebar{border-left:0;border-top:1px solid #39493e;padding:20px 0}.bookcover{height:245px}.bookcover img{height:150px}}
 @media(max-width:600px){.site-shell{padding:0 16px}.nav{gap:12px}.navlinks{order:3;width:100%;gap:13px}.hero h1{font-size:66px}.hero{padding:52px 0 30px}.searchform{padding:4px 4px 4px 14px;min-height:61px}.searchform input{font-size:15px}.searchform button{padding:10px 12px;min-height:48px}.featured{grid-template-columns:1fr 130px;gap:12px;padding:10px}.featured h2{font-size:27px}.bookcover{height:220px;padding:10px}.bookcover img{height:145px}.bookcover strong{font-size:16px}.result-head{display:block}.results{padding-top:30px}}
+
+/* Instituciones discretas; fotografía documental dinámica sin perder el contraste editorial. */
+.academic-pills{border-top:1px solid #2d3531;margin-top:22px;padding-top:14px}
+.academic-pill-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.academic-caption{color:#8d9a90;letter-spacing:.12em;font:700 10px/1.3 system-ui,sans-serif;min-width:110px;margin-right:9px}
+.academic-pill{color:#b8c6b9;background:#151b19;border:1px solid #36443b;border-radius:22px;padding:6px 13px;min-height:31px;font:500 12px system-ui,sans-serif}
+.academic-pill:hover,.academic-pill:focus-visible{border-color:#a5c8ae;background:#233c30;color:white}
+.academic-hint{margin:9px 0 0;color:#8e9b91;font-size:11px;line-height:1.5}
+.featured-credit{font-size:11px!important;line-height:1.5;color:#b1b7ac;margin-top:15px;max-width:290px}
+.featured-credit a{font-size:11px;margin:0;color:#d5c38d}
+.featured .bookcover{transition:background .25s,border-color .25s;min-width:0}
+.featured .bookcover.is-portrait{background:linear-gradient(150deg,#163b36,#0a1e1d);border-color:#5b8173}
+.featured .bookcover.is-portrait img{height:245px;object-fit:cover;object-position:center top;filter:contrast(1.06) saturate(.92)}
+.featured .bookcover.is-portrait strong{font-size:19px}
+.featured .bookcover img{background:#0a201a;transition:opacity .2s}
+.featured .bookcover img[aria-busy=true]{opacity:.7}
+@media(max-width:600px){.academic-caption{flex-basis:100%;margin:6px 0 1px}.academic-pill-row{gap:6px}.academic-pill{font-size:11px;padding:6px 10px}.featured .bookcover.is-portrait img{height:160px}}
+html[data-theme=light] .academic-pills{border-color:#cad4c9}
+html[data-theme=light] .academic-caption,html[data-theme=light] .academic-hint{color:#526b59}
+html[data-theme=light] .academic-pill{color:#2b5136;background:#e5eee5;border-color:#b6cbb8}
+html[data-theme=light] .academic-pill:hover{background:#d1e7d6}
+html[data-theme=light] .featured-credit{color:#4b6551}
+html[data-theme=light] .featured-credit a{color:#346747}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="index.html">V<strong>∎</strong></a>
@@ -110,10 +133,41 @@ html[data-theme=light] .footer{color:#475e4e;border-color:#cbd8c8}
 </div>
 <p class="explain" id="mode-note">Busca cualquier tema en Wikipedia, Wikidata y catálogos abiertos; prioriza arte, historia y arquitectura y también consulta esta biblioteca.</p>
 <div class="suggestions"><span>Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
+<div class="academic-pills" aria-label="Buscar en universidades y repositorios">
+  <div class="academic-pill-row"><span class="academic-caption">UNIVERSIDADES</span>
+    <button type="button" class="academic-pill" data-domain="ox.ac.uk" title="Buscar en la Universidad de Oxford">Oxford</button>
+    <button type="button" class="academic-pill" data-domain="cam.ac.uk" title="Buscar en la Universidad de Cambridge">Cambridge</button>
+    <button type="button" class="academic-pill" data-domain="harvard.edu" title="Buscar en Harvard">Harvard</button>
+    <button type="button" class="academic-pill" data-domain="stanford.edu" title="Buscar en Stanford">Stanford</button>
+    <button type="button" class="academic-pill" data-domain="mit.edu" title="Buscar en el MIT">MIT</button>
+    <button type="button" class="academic-pill" data-domain="sorbonne-universite.fr" title="Buscar en Sorbonne Université">Sorbona</button>
+    <button type="button" class="academic-pill" data-domain="unibo.it" title="Buscar en la Universidad de Bolonia">Bolonia</button>
+    <button type="button" class="academic-pill" data-domain="uba.ar" title="Buscar en la Universidad de Buenos Aires">UBA</button>
+  </div>
+  <div class="academic-pill-row"><span class="academic-caption">INVESTIGACIÓN</span>
+    <button type="button" class="academic-pill" data-domain="arxiv.org">arXiv</button>
+    <button type="button" class="academic-pill" data-domain="europepmc.org">Europe PMC</button>
+    <button type="button" class="academic-pill" data-domain="doaj.org">DOAJ</button>
+    <button type="button" class="academic-pill" data-domain="philpapers.org">PhilPapers</button>
+    <button type="button" class="academic-pill" data-domain="gallica.bnf.fr">Gallica</button>
+    <button type="button" class="academic-pill" data-domain="europeana.eu">Europeana</button>
+  </div>
+  <p class="academic-hint" id="academic-hint">Cada botón busca el término escrito arriba dentro del dominio académico seleccionado.</p>
 </div>
-<aside class="featured" aria-label="Manuscrito destacado">
-<div><div class="meta">ARCHIVO DESTACADO · SIGLO IX</div><h2>Harley<br>MS 2767</h2><p>Un testimonio carolingio del <em>De architectura</em>, con 341 imágenes alojadas en la biblioteca.</p><a href="codex-h-doble-folio.html">Abrir el códice ↗</a></div>
-<a class="bookcover" href="codex-h-doble-folio.html" aria-label="Abrir el Codex H"><small>CODEX HARLEIANUS</small><img src="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg" alt="Folio 1r del manuscrito Harley MS 2767" loading="lazy"><strong>De architectura</strong></a>
+</div>
+<aside class="featured" aria-label="Ilustración documental relacionada con la búsqueda" id="featured">
+<div>
+  <div class="meta" id="featured-label">ARCHIVO DESTACADO · SIGLO IX</div>
+  <h2 id="featured-title">Harley MS 2767</h2>
+  <p id="featured-description">Un testimonio carolingio del <em>De architectura</em>, con 341 imágenes alojadas en la biblioteca.</p>
+  <a id="featured-link" href="codex-h-doble-folio.html">Abrir el códice ↗</a>
+  <div class="featured-credit" id="featured-credit">Imagen de consulta: British Library, Harley MS 2767.</div>
+</div>
+<a class="bookcover" id="featured-cover" href="codex-h-doble-folio.html" aria-label="Abrir la fuente de la ilustración">
+  <small id="featured-cover-label">CODEX HARLEIANUS</small>
+  <img id="featured-image" src="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg" alt="Folio 1r del manuscrito Harley MS 2767" loading="lazy">
+  <strong id="featured-cover-title">De architectura</strong>
+</a>
 </aside>
 </section>
 <div class="metrics" id="metrics"><span><b id="metric-works">—</b> fichas de obras</span><span><b id="metric-pages">—</b> secciones documentadas</span><span><b>341</b> imágenes del Codex H</span><span><b id="metric-read">—</b> lecturas disponibles</span></div>
