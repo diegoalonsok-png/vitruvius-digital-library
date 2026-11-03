@@ -52,7 +52,7 @@
       "dating": "44 a. C.",
       "reading": {
         "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "status": "Texto completo en latín e inglés alojado en GitHub y legible en visor interno; edición y traducción de Walter Miller (1913)."
       },
       "manuscript": {
         "manifest": null,
@@ -63,7 +63,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Walter Miller, traducción inglesa, 1913, junto al texto latino, disponible en el visor del sitio."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -71,8 +71,19 @@
         "archive": "https://archive.org/search?query=De%20officiis%20Cicer%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20officiis"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "publicStatus": "lectura-local-completa",
+      "localReader": null,
+      "localHtml": "corpus/cicero-de-officiis-la-en.html",
+      "localEdition": {
+        "editor": "Walter Miller",
+        "year": "1913",
+        "original": "Latín",
+        "translation": "Inglés",
+        "source": "Project Gutenberg eBook #47001, actualización digital 2024",
+        "license": "Dominio público en Estados Unidos; autores fallecidos en 44 a.C. y 1949, respectivamente; reproducción con atribución.",
+        "format": "HTML completo en GitHub",
+        "completeness": "Tres libros del tratado en latín e inglés; no edición diplomática"
+      }
     },
     {
       "id": "cicero-oratore",
