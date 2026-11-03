@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script defer src="assets/theme.js"></script>
-<script defer src="assets/atlas-geographicus.js?v=20261103-1"></script>
+<script defer src="assets/atlas-geographicus.js?v=20261103-2"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Atlas Geographicus Vitruvianus","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html","creator":{"@type":"Person","name":"Diego A. Kurilo"},"isAccessibleForFree":true,"inLanguage":"es","about":{"@type":"CreativeWork","name":"De architectura","author":{"@type":"Person","name":"Vitruvius"}}}</script>
 <style>
 .geography{max-width:1510px;margin:0 auto;padding:26px clamp(16px,3vw,44px) 70px;color:var(--ink,#223646);line-height:1.65}
@@ -81,6 +81,41 @@ html[data-theme=dark] .geography .geo-filters :is(input,select){background:#324a
 @media(max-width:1260px){.geo-layout{grid-template-columns:280px 1fr}.geo-detail{grid-column:1/-1;max-height:none}.geo-list-wrap{max-height:580px}#vitruvian-map{height:580px}}
 @media(max-width:780px){.geo-layout,.geo-filters{grid-template-columns:1fr}.geo-list-wrap{max-height:340px}#vitruvian-map{height:430px}}
 @media print{.geo-map-wrap{display:none}.geo-layout{display:block}.geo-list-wrap{max-height:none}.geo-detail{max-height:none}#place-list{overflow:visible}}
+
+/* Ficha científica ampliada: visible modal, no un desplazamiento lateral silencioso */
+.geo-detail .open-dossier{padding:12px 15px;background:#26485f;color:#fff;border:1px solid #9b825c;border-radius:3px;cursor:pointer;font:700 13px system-ui,sans-serif}
+.geo-detail .open-dossier:hover{background:#385c73}
+.place-dossier{box-sizing:border-box;width:min(900px,94vw);max-width:94vw;max-height:92vh;border:1px solid #b5a07d;padding:0;background:#f8f5ee;color:#193244;box-shadow:0 20px 80px #0008;overflow-y:auto}
+.place-dossier::backdrop{background:rgba(13,22,31,.78)}
+.place-dossier .dossier-topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:14px 24px;background:#233f53;color:#fff;position:sticky;top:0;z-index:4;font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.08em}
+.place-dossier button{cursor:pointer}
+.place-dossier #dossier-close{background:#f5eee2;color:#1e3344;border:1px solid #e9dcc8;padding:8px 12px;font:700 12px system-ui,sans-serif}
+.place-dossier #dossier-close:hover{background:#fff}
+.place-dossier .dossier-content{padding:25px clamp(18px,4vw,46px) 40px;line-height:1.7}
+.place-dossier .dossier-kicker{font:700 11px system-ui,sans-serif;letter-spacing:.12em;color:#8a6c43}
+.place-dossier h2{font:400 clamp(2rem,4vw,3rem)/1.14 Georgia,serif;margin:5px 0 10px}
+.place-dossier h3{font:400 1.45rem/1.3 Georgia,serif;margin:25px 0 13px}
+.place-dossier .dossier-greek{font-size:1.55rem;margin:0}
+.place-dossier .dossier-modern{font-weight:700}
+.place-dossier .dossier-description{font-size:1.1rem}
+.place-dossier .dossier-evidence{background:#eee6d7;border-left:4px solid #ae8d50;padding:13px 17px;margin:20px 0}
+.place-dossier .dossier-evidence p{font-size:13px;margin:5px 0 0}
+.place-dossier #dossier-fields{display:grid;grid-template-columns:minmax(175px,35%) 1fr;gap:0 20px;margin:0}
+.place-dossier .dossier-field{display:contents}
+.place-dossier .dossier-field dt,.place-dossier .dossier-field dd{margin:0;padding:10px 2px;border-bottom:1px solid #d6c8b3;overflow-wrap:anywhere;font:400 14px/1.5 system-ui,sans-serif}
+.place-dossier .dossier-field dt{font-weight:700}
+.place-dossier #dossier-loci{display:flex;flex-wrap:wrap;gap:9px}
+.place-dossier #dossier-loci a,.place-dossier .dossier-links a{display:inline-block;border:1px solid #ab9167;padding:8px 12px;color:inherit;font:700 13px/1.35 system-ui,sans-serif;text-decoration:none}
+.place-dossier #dossier-loci a:hover,.place-dossier .dossier-links a:hover{text-decoration:underline;background:#ede1cc}
+.place-dossier .dossier-links{display:flex;flex-wrap:wrap;gap:9px}
+.place-dossier .dossier-note{font-size:13px;font-style:italic;margin-top:23px}
+.place-dossier [hidden]{display:none!important}
+html[data-theme=dark] .place-dossier{background:#263f54;color:#f2eee7;border-color:#8c9ba4}
+html[data-theme=dark] .place-dossier .dossier-evidence{background:#364e61;color:#f2eee7}
+html[data-theme=dark] .place-dossier .dossier-kicker{color:#e4c992}
+@media(max-width:640px){.place-dossier .dossier-topbar{padding:12px}.place-dossier #dossier-fields{grid-template-columns:1fr}.place-dossier .dossier-field dt{border-bottom:none;padding:12px 2px 0}.place-dossier .dossier-field dd{padding:2px 2px 12px}}
+@media print{.place-dossier{max-height:none;width:100%;max-width:100%;box-shadow:none}.place-dossier .dossier-topbar button{display:none}}
+
 </style>
 </head>
 <body>
@@ -119,6 +154,7 @@ html[data-theme=dark] .geography .geo-filters :is(input,select){background:#324a
 <h3 class="subhead">Loci de De architectura</h3>
 <div id="place-loci"></div>
 <div class="geo-actions">
+<button type="button" id="place-expand" class="open-dossier">Ampliar ficha científica ↗</button>
 <a id="place-onomasticon" href="onomasticon.html">Abrir Onomasticon</a>
 <a id="place-source" href="#" target="_blank" rel="noopener noreferrer" hidden>Fuente de referencia</a>
 </div>
@@ -132,5 +168,33 @@ html[data-theme=dark] .geography .geo-filters :is(input,select){background:#324a
 <p><a href="data/atlas-geographicus-vitruvianus.json">Datos de georreferenciación y nivel de certeza (JSON)</a> · <a href="data/onomasticon-vitruvianum.json">Corpus de formas y loci (JSON)</a> · <a href="metodologia-filologica.html">Metodología y limitaciones</a>.</p>
 </section>
 </main>
+
+<dialog id="place-dossier" class="place-dossier" aria-labelledby="dossier-title" aria-describedby="dossier-summary">
+<div class="dossier-topbar"><span>ATLAS GEOGRAPHICUS · EXPEDIENTE FILOLÓGICO</span><button type="button" id="dossier-close" aria-label="Cerrar ficha científica">✕ Cerrar</button></div>
+<div class="dossier-content">
+<p class="dossier-kicker">TESTIMONIUM LOCI · NOMBRE HISTÓRICO Y EQUIVALENCIA MODERNA</p>
+<h2 id="dossier-title"></h2>
+<p class="dossier-greek" id="dossier-greek" lang="grc"></p>
+<p class="dossier-modern" id="dossier-modern"></p>
+<p class="dossier-description" id="dossier-summary"></p>
+<div class="dossier-evidence">
+<strong>Estado documental</strong>
+<p>Los nombres normalizados, las formas latinas halladas en la edición V514 y las formas griegas convencionales se muestran separadamente. Las coordenadas son orientativas y no identifican un yacimiento o monumento exacto.</p>
+</div>
+<h3>Identificación histórica y filológica</h3>
+<dl id="dossier-fields"></dl>
+<h3>Referencias a los libros de Vitruvio</h3>
+<p>Seleccioná una referencia para abrir el texto latino y sus traducciones en el lector de la biblioteca.</p>
+<nav id="dossier-loci" aria-label="Loci de De architectura"></nav>
+<h3>Fuentes y documentación</h3>
+<div class="dossier-links">
+<a id="dossier-onomasticon" href="onomasticon.html" target="_blank" rel="noopener noreferrer">Consultar Onomasticon ↗</a>
+<a id="dossier-source" href="#" target="_blank" rel="noopener noreferrer" hidden>Registro complementario ↗</a>
+<a id="dossier-deeplink" href="atlas-geographicus.html">Enlace permanente a este lugar ↗</a>
+</div>
+<p class="dossier-note">Esta ficha es un instrumento de investigación basado en índices editoriales; no equivale a una transcripción diplomática ni a una identificación arqueológica certificada.</p>
+</div>
+</dialog>
+
 </body>
 </html>
