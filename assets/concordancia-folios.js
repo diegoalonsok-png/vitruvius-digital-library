@@ -108,6 +108,29 @@ function renderMatches(){
  }
  if(items.length>35){const p=document.createElement('p');p.textContent='Se muestran los primeros 35 loci. Precisá la búsqueda para encontrar los restantes.';p.style.fontSize='12px';list.append(p)}
 }
+function exportTEI(){
+ const locus=selection.kind==='locus'?selection.value:map.entries.find(x=>x.folio===selection.value)?.loci?.[0]?.locus;
+ const p=passageByLocus.get(locus);
+ if(!p)return;
+ const x=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
+ const witness=getInfo(locus);
+ const provenance=witness?('Hipótesis de identificación: Harley MS 2767, f. '+witness.entry.folio+
+   ', imagen IIIF '+witness.entry.image_number+'. Alineación provisional, no cotejo diplomático.'):'Sin correspondencia verificada con un folio de Harley MS 2767.';
+ const xml='<?xml version="1.0" encoding="UTF-8"?>\n'
+ +'<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="la">\n'
+ +'  <teiHeader><fileDesc><titleStmt><title>De architectura, '+x(locus)+' · extracto editorial</title><author>Vitruvius</author><editor>Diego Kurilo</editor></titleStmt>'
+ +'<publicationStmt><p>Vitruvius Digital Library. Extracto TEI para investigación, no edición diplomática del manuscrito.</p></publicationStmt>'
+ +'<sourceDesc><bibl>Diego Kurilo, V514 · texto latino y traducción castellana. Locus '+x(locus)+'.</bibl>'
+ +'<p>Testigo de referencia: British Library, Harley MS 2767. '+x(provenance)+'</p></sourceDesc></fileDesc>'
+ +'<encodingDesc><p>Transcripción latina normalizada de edición V514. Sin aparato de variantes, sin colación de códices y sin alineación palabra a palabra.</p></encodingDesc></teiHeader>\n'
+ +'  <text><body><div type="passage" n="'+x(locus)+'"><ab xml:lang="la">'+x(p.latin)+'</ab>'
+ +'<div type="translation" xml:lang="es"><p>'+x(p.translation)+'</p></div>'
+ +'<note type="witness-status">'+x(provenance)+'</note>'
+ +'</div></body></text>\n</TEI>\n';
+ const blob=new Blob([xml],{type:'application/tei+xml;charset=utf-8'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.download='vitruvius-'+locus.replace(/[^a-z0-9.\-]/gi,'_')+'-V514.xml';a.href=url;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),15000);
+ $('f-latin-status').textContent='Exportación TEI-XML del locus '+locus+' generada desde la edición V514; no representa una lectura diplomática de H.';
+}
 function copyReference(){
  const locus=selection.kind==='locus'?selection.value:(map.entries.find(x=>x.folio===selection.value)?.loci?.[0]?.locus);
  if(!locus)return;
@@ -142,6 +165,7 @@ async function load(){
   $('f-search-form').addEventListener('submit',e=>{e.preventDefault();query=$('f-search').value.trim();renderMatches();});
   $('f-search').addEventListener('input',e=>{query=e.target.value.trim();renderMatches()});
   $('f-copy').addEventListener('click',copyReference);
+  $('f-tei').addEventListener('click',exportTEI);
  }catch(e){$('f-evidence').textContent='Error al cargar la concordancia: '+e.message;$('f-latin').textContent='Volvé a consultar el lector editorial y el visor institucional; no hay correspondencia atribuible sin los datos.';}
 }
 load();
