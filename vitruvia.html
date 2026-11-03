@@ -291,6 +291,67 @@ html,body{max-width:100%;overflow-x:clip}
   .navlinks{gap:7px 12px}
 }
 
+
+/* Vitruvia responsive refinement v3: mobile, notebook and wide desktop. */
+html{width:100%;overflow-x:hidden}
+body{width:100%;min-width:0;overflow-x:hidden}
+.site-shell{width:100%;min-width:0}
+.site-shell *, .site-shell *::before, .site-shell *::after{box-sizing:border-box}
+.hero,.hero>*,.nav,.nav>*,main,main>*,.results,.results-grid,.results-grid>*,.article-grid,.article-grid>*,.footer,.footer-columns,.footer-columns>*{min-width:0}
+img,video,iframe,canvas,svg{max-width:100%}
+img{height:auto}
+.result-card,.article-body,.article-aside,.sidebar,.featured,.featured-copy,.footer,.section-head{overflow-wrap:break-word}
+.result-card a,.article-body a,.sidebar a,.footer a{overflow-wrap:anywhere}
+@media(min-width:1021px) and (max-width:1400px){
+ .hero{grid-template-columns:minmax(0,1.32fr) minmax(0,.8fr);gap:clamp(26px,3vw,45px)}
+ .hero h1{font-size:clamp(76px,8vw,118px)}
+ .featured h2{font-size:clamp(28px,3vw,41px)}
+}
+@media(max-width:1020px){
+ .nav{flex-wrap:wrap}
+ .hero{grid-template-columns:minmax(0,1fr)!important}
+ .hero .featured{width:100%;max-width:100%;min-width:0}
+ .results-grid,.article-grid{grid-template-columns:minmax(0,1fr)!important}
+ .sidebar{min-width:0}
+ .footer-columns{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ :root{--mobile-padding:clamp(16px,4vw,22px)}
+ .site-shell{padding-left:var(--mobile-padding)!important;padding-right:var(--mobile-padding)!important}
+ .site-shell>*,.hero,.hero>*,.hero .featured,.results,.results-grid,.results-grid>*,.scholar-article,.article-grid,.article-grid>*,.footer{width:100%;max-width:100%;min-width:0}
+ .navlinks{width:100%;max-width:100%;min-width:0;overflow-wrap:break-word}
+ .hero{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:30px!important;margin:0}
+ .hero h1{max-width:100%;font-size:clamp(54px,15vw,78px)!important;white-space:normal;overflow-wrap:normal}
+ .hero h1 span{font-size:12px!important}
+ .hero .featured{padding:22px 0 0!important;overflow:hidden}
+ .featured-reading-list{min-width:0;max-width:100%;overflow:hidden}
+ .hero .featured a.featured-reading-item{width:100%;max-width:100%;grid-template-columns:22px minmax(0,1fr) 12px}
+ .hero .featured a.featured-reading-item span{min-width:0;overflow-wrap:anywhere}
+ .ai-platforms,.tabs,.suggestions,.academic-pill-row{width:100%;max-width:100%;min-width:0}
+ .tab,.academic-pill,.suggestions button{white-space:normal;max-width:100%}
+ .searchform{width:100%;max-width:100%;min-width:0;overflow:hidden}
+ .searchform .icon-search{flex:0 0 auto}
+ .searchform input{min-width:0!important;width:0!important;flex:1 1 0!important}
+ .searchform button{min-width:0;font-size:12px!important}
+ .search-suggestions{width:100%;max-width:100%;min-width:0}
+ .search-suggestion{min-width:0}
+ .search-suggestion>span{min-width:0}
+ .search-suggestion small{max-width:37%;overflow:hidden;text-overflow:ellipsis}
+ .metrics{width:100%;max-width:100%;min-width:0}
+ .result-card,.result-card .actions,.article-body,.article-source-list,.sidebar,.footer-columns{max-width:100%;min-width:0}
+ .result-card .actions{display:flex;flex-wrap:wrap;gap:7px}
+ .result-card .kind{white-space:normal}
+ .section-head{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+ .footer-columns{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:360px){
+ .hero h1{font-size:52px!important}
+ .searchform{padding-left:9px!important}
+ .searchform .icon-search{font-size:17px}
+ .searchform button{padding:8px!important}
+ .ai-platform-link{font-size:11px!important}
+}
+
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="index.html">V<strong>∎</strong></a>
