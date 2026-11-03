@@ -44,19 +44,32 @@ html[data-theme=dark] .classic-item span{color:#d8c8ab}
 html[data-theme=dark] .classic-item:hover,html[data-theme=dark] .classic-item[aria-current=true]{background:#344f64}
 html[data-theme=dark] .classic-status,html[data-theme=dark] .classic-viewer{background:#344e60;color:#f7eee1;border-color:#99a2aa}
 html[data-theme=dark] .classic-linkline a{color:#f4e5c5}
+.classic-read-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px;padding:12px;background:rgba(135,117,80,.12);border:1px solid #aa977b}
+.classic-read-toolbar label{flex:1 1 150px;min-width:145px;display:flex;flex-direction:column;gap:5px;font:700 12px system-ui,sans-serif}
+.classic-read-toolbar select,.classic-read-toolbar input{min-height:39px;padding:6px 8px;width:100%;background:#fffdf7;color:#23384b;border:1px solid #968368}
+.classic-read-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.classic-read-columns article{padding:14px 19px;background:#fbf8f0;border:1px solid #cbbca3;min-width:0}
+.classic-read-columns h4{font:700 12px system-ui,sans-serif;letter-spacing:.08em;color:#746341;margin:0 0 12px}
+.classic-read-columns p{font:400 19px/1.75 Georgia,serif;white-space:pre-line;overflow-wrap:anywhere;margin:0}
+.classic-read-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.classic-read-nav button{background:#243e52;color:white;border:1px solid #bca376;padding:10px 15px;cursor:pointer}
+html[data-theme=dark] .classic-read-columns article{background:#203748;color:#f6eee2;border-color:#7990a0}
+html[data-theme=dark] .classic-read-columns h4{color:#e2c68c}
+html[data-theme=dark] .classic-read-toolbar :is(select,input){background:#20384a;color:#fff;border-color:#9d9b90}
+@media(max-width:650px){.classic-read-columns{grid-template-columns:1fr}}
 </style>
 </head><body>
 <main class="classic-main">
 <nav class="classic-menu"><a href="index.html">← Vitruvius Digital Library</a><a href="ediciones-historicas.html">Ediciones históricas</a><a href="index-codicum.html">Index codicum</a><a href="como-citar.html">Cómo citar</a><a href="https://scaife.perseus.org/library/" rel="noopener noreferrer" target="_blank">Scaife · Perseus ↗</a></nav>
 <header class="classic-head"><div class="latin">BIBLIOTHECA GRAECA ET LATINA · REPERTORIVM ANTIQVITATIS</div>
-<h1>Biblioteca bibliográfica griega y latina</h1><p>Repertorio bibliográfico unificado de obras clásicas, cristianismo primitivo, arquitectura, ingeniería y ciencias desde el siglo I a. C. hasta la Antigüedad tardía. Reúne accesos al texto original, las traducciones, la tradición manuscrita y las digitalizaciones de ediciones históricas, con atribución documental.</p></header>
-<div class="classic-note"><strong>Nota filológica.</strong> Una obra compuesta en el siglo I no implica que conservemos un manuscrito de ese siglo. Las copias suelen ser medievales o posteriores. Los vínculos a Perseus, Scaife, Gallica e Internet Archive son repertorios de consulta; no equivalen a identificar una edición, una traducción o un PDF concreto. Solo se activa un visor de facsímil cuando contamos con un testimonio identificado. Los PDF acreditados de hasta 12 MB y con licencia compatible podrán conservarse en GitHub; los mayores o sujetos a derechos restrictivos se enlazarán a la fuente.</div>
+<h1>Biblioteca bibliográfica griega y latina</h1><p>Colección de obras antiguas efectivamente disponibles para leer en esta plataforma. El catálogo de trabajo comprende clásicos, cristianismo primitivo, arquitectura e ingeniería, pero solo se publican las obras cuyos textos están cargados y comprobados en GitHub.</p></header>
+<div class="classic-note"><strong>Nota filológica.</strong> Una obra compuesta en el siglo I no implica que conservemos un manuscrito de ese siglo. Las copias suelen ser medievales o posteriores. Los vínculos a Perseus, Scaife, Gallica e Internet Archive son repertorios de consulta; no equivalen a identificar una edición, una traducción o un PDF concreto. Solo se activa un visor de facsímil cuando contamos con un testimonio identificado. No se mostrarán fichas vacías ni pestañas PDF sin un archivo realmente disponible. El repertorio de trabajo no equivale al inventario de obras publicadas.</div>
 <div class="classic-controls" role="search"><label>Buscar autor, obra o disciplina<input id="classic-query" type="search" placeholder="Cicerón · Virgilio · Vitruvio · Strabo · historia"></label>
 <label>Idioma del original<select id="classic-language"><option value="">Griego y latín</option><option value="la">Latín</option><option value="grc">Griego antiguo</option></select></label>
 <label>Área de estudio<select id="classic-genre"><option value="">Todas las áreas</option></select></label>
 <label>Interfaz<select id="classic-ui-language"><option value="es">Español</option><option value="en">English</option></select></label></div>
-<p id="classic-count" role="status" aria-live="polite">Cargando índice…</p>
+<p id="classic-count" role="status" aria-live="polite">Cargando textos alojados en GitHub…</p><p class="classic-note"><strong>Colección de lectura directa.</strong> Solo aparecen obras con el texto original realmente incorporado al repositorio. La <em>Didaché</em>, el <em>Pastor de Hermas</em>, Faventino y los demás autores volverán al catálogo público cuando tengan un texto o PDF verificado que se pueda leer aquí mismo. No son traducciones automáticas ni se presentan transcripciones modernas como facsímiles de códices.</p>
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Seleccioná una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-02"></script></body></html>
+</main><script defer src="assets/theme.js"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-01"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-03"></script></body></html>
