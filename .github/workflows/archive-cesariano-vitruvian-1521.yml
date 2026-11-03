@@ -1,0 +1,27 @@
+name: Archive Cesariano 1521 Vitruvian man locally
+on:
+  push:
+    paths:
+      - 'scripts/archive-cesariano-vitruvian-1521.py'
+      - '.github/workflows/archive-cesariano-vitruvian-1521.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/archive-cesariano-vitruvian-1521.py
+      - name: Publish local facsimile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/hombre-vitruvio/cesariano-1521-homo-ad-circulum-50r.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Store Library of Congress Cesariano Vitruvian plate under images/"
+            git push
+          fi
