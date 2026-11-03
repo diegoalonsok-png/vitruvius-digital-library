@@ -144,54 +144,46 @@ async function europePmc(q){
    link,source:"Europe PMC"}
  })
 }
+/* Editorial featured column: matches the sourced textual entries; no image/book cover. */
 const originalFeature={
- image:"images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg",
- title:"Harley MS 2767",description:"Testimonio carolingio del De architectura, con 341 imágenes conservadas en GitHub.",
- link:"codex-h-doble-folio.html",credit:"British Library · Harley MS 2767",label:"ARCHIVO DESTACADO · SIGLO IX"
+ title:"Codex Harleianus",description:"Harley MS 2767. Testimonio carolingio de De architectura, conservado en la British Library.",
+ link:"harleianus.html",credit:"British Library · Harley MS 2767",label:"DESTACADO · BIBLIOTECA VITRVVIVS"
 };
+function highlightFeatured(term){
+ document.querySelectorAll(".featured-reading-item").forEach(a=>{
+  const t=norm(term||""),v=norm(a.dataset.featureTerm||"");
+  a.classList.toggle("is-current",!!t&&!!v&&(t.includes(v)||v.includes(t)));
+ });
+}
 function restoreFeature(){
  S.featureWeight=-Infinity;
  $("featured-label").textContent=originalFeature.label;
  $("featured-title").textContent=originalFeature.title;
  $("featured-description").textContent=originalFeature.description;
- $("featured-link").textContent="Abrir códice ↗";$("featured-link").href=originalFeature.link;
- const box=$("featured-cover"),img=$("featured-image");
- box.classList.remove("is-portrait");box.href=originalFeature.link;
- img.onerror=null;img.src=originalFeature.image;img.alt="Folio 1r del manuscrito Harley MS 2767";
- $("featured-cover-label").textContent="CODEX HARLEIANUS";$("featured-cover-title").textContent="De architectura";
- $("featured-credit").textContent="Imagen de consulta: "+originalFeature.credit+".";
+ $("featured-link").textContent="Consultar el manuscrito ›";
+ $("featured-link").href=originalFeature.link;
+ $("featured-credit").textContent=originalFeature.credit;
+ highlightFeatured("");
 }
-function allowedFeaturedImage(u){
- try{const x=new URL(u);return x.protocol==="https:"&&
- (x.hostname==="upload.wikimedia.org"||x.hostname==="thumb.wikimedia.org"||x.hostname==="covers.openlibrary.org"||x.hostname==="images.metmuseum.org"||x.hostname.endsWith(".metmuseum.org"))}catch{return false}
-}
+function allowedFeaturedImage(){return false}
 function considerFeatured(rows,query){
- const q=norm(query),isBook=/\b(libro|book|livre|medieval|codex|codice|codex|incunable|manuscrito|manuscript|portada|cover|edicion|edition)\b/.test(q);
- const qPythagoras=/\b(pitagoras|pythagoras)\b/.test(q)&&!/\b(regio|rhegium)\b/.test(q);
- const options=rows.filter(x=>x.image&&allowedFeaturedImage(x.image)&&!(qPythagoras&&/\b(de regio|of rhegium|da reggio)\b/.test(norm(x.title)))).map(x=>{
-  const match=norm(x.title).includes(q)||q.includes(norm(x.title));
-  const exact=norm(x.title)===q;
-  let weight=x.rating+(match?25:0)+(exact?65:0);
-  if(x.type==="wikipedia")weight+=50;
-  if(x.type==="museum"&&/\b(arte|art|painting|pintura|escultura|sculpture|museum|museo|cuadro|obra)\b/.test(q))weight+=25;
-  if(x.type==="openlibrary"&&isBook)weight+=65;
-  if(x.type==="openlibrary"&&!isBook)weight-=15;
-  return {row:x,weight};
- }).sort((a,b)=>b.weight-a.weight);
- if(!options.length||options[0].weight<=(S.featureWeight??-Infinity))return;
- const {row,weight}=options[0];S.featureWeight=weight;
- const img=$("featured-image");
- img.onerror=()=>{img.onerror=null;restoreFeature()};
- img.src=row.image;img.alt="Imagen documental vinculada a "+row.title+" · "+row.source;
+ const q=norm(query||"");if(!q)return;
+ const tokens=q.split(/\s+/).filter(t=>t.length>=4);
+ const picks=(rows||[]).filter(r=>r.link&&r.title).map(r=>{
+  const title=norm(r.title),matched=tokens.filter(t=>title.includes(t)).length,exact=title===q;
+  // Without topic agreement, suppress unrelated featured articles.
+  const weight=(exact?160:0)+(matched?60*matched/Math.max(1,tokens.length):0)+(title.includes(q)&&q.length>2?70:0);
+  return {row:r,weight}
+ }).filter(x=>x.weight>=45).sort((a,b)=>b.weight-a.weight);
+ if(!picks.length||picks[0].weight<=(S.featureWeight??-Infinity))return;
+ const {row,weight}=picks[0];S.featureWeight=weight;
+ $("featured-label").textContent=row.type==="wikipedia"?"DESTACADO · WIKIPEDIA":row.type==="manuscript"?"DESTACADO · MANUSCRITO":"DESTACADO · DOCUMENTACIÓN";
  $("featured-title").textContent=row.title;
- $("featured-label").textContent=(row.source||"FUENTE DOCUMENTAL").toUpperCase()+" · IMAGEN DE CONSULTA";
- $("featured-description").textContent=brief(row.excerpt||row.meta||"",220);
- $("featured-link").href=row.link;$("featured-link").textContent="Consultar la fuente ↗";
- const cover=$("featured-cover");cover.href=row.link;cover.classList.toggle("is-portrait",row.imageKind!=="book");
- $("featured-cover-label").textContent=(row.source||"ARCHIVO").toUpperCase();
- $("featured-cover-title").textContent=brief(row.title,49);
- const credit=$("featured-credit");credit.replaceChildren(document.createTextNode(row.imageCredit||"Imagen procedente de fuente externa"));
- const page=row.imageRights||row.link;const a=anchor(" · ficha de imagen y licencia ↗",page);if(a)credit.append(a);
+ $("featured-description").textContent=brief(row.excerpt||row.meta||"",230);
+ $("featured-link").href=row.link;
+ $("featured-link").textContent=row.type==="wikipedia"?"Leer el artículo ›":"Consultar la fuente ›";
+ $("featured-credit").textContent=[row.source||row.author,row.meta].filter(Boolean).join(" · ").slice(0,200);
+ highlightFeatured(q);
 }
 
 /* Iconografía de autoridad para casos históricos homónimos.
@@ -307,7 +299,7 @@ async function search(){
   else pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
  }
  if(outside){
-  pending.push(curatedHistoricalImage(q).catch(e=>({name:"Iconografía sin respuesta: "+e.message,rows:[]})));
+  /* No image request: featured content is textual and source-based. */
   pending.push(wiki(q,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
   if(S.lang!=="en")pending.push(wiki(q,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
