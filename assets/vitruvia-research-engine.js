@@ -21,12 +21,15 @@ const SYNONYMS={
  manuscrito:"codex codices manuscript manuscrito códice folio pergamino palaeografia",
  vitruvio:"vitruvius vitruvio vitruve de architectura architectura",
  ciceron:"cicero ciceron cicéron",
- lucrecio:"lucretius lucrecio rerum natura"
+ lucrecio:"lucretius lucrecio rerum natura",
+ pitagoras:"pitagoras pitagorico pitagoricos pythagoras pythagorean pythagoreans pythagoriciens pythagoricien pythagoricus pythagorici",
+ pythagoras:"pitagoras pitagorico pitagoricos pythagoras pythagorean pythagoreans pythagoriciens pythagorici"
 };
 function canonical(s){
  let q=flat(s).replace(/\b(harlesianus|harlesiano|harleyanus|harleian|harley|harlesian)\b/g,"harleianus")
  .replace(/\b(vitruvius|vitruve|vitruvii|vitrubio)\b/g,"vitruvio")
- .replace(/\b(codices|codice|codices|codices)\b/g,"codex");
+ .replace(/\b(codices|codice|codices|codices)\b/g,"codex")
+ .replace(/\b(pitagor(?:as|icos?|icas?)|pythagor(?:as|eans?|iciens?|ici|icus))\b/g,"pitagor");
  return q
 }
 function tokens(q,expanded){const list=terms(canonical(q));if(!expanded)return unique(list);const out=new Set(list);
@@ -108,7 +111,11 @@ function passageRows(q,corpora,{concept=false,limit=18}={}){
   const pageLabel=Number.isInteger(page)&&page>0?"página PDF "+page:"página PDF sin cotejo";
   const editionURL=({"recensio-es":"documents/kurilo-recensio-es.pdf","recensio-fr":"documents/kurilo-recensio-fr.pdf","theory-en":"documents/kurilo-theory-en.pdf"})[p.edition];
   const link=editionURL&&Number.isInteger(page)&&page>0?editionURL+"#page="+page:editionURL||null;
-  const excerpt=String(p.translation||p.latin).slice(0,420);
+  const body=String(p.translation||p.latin);
+  const hay=canonical(body),searchTerms=tokens(q,concept);
+  let at=hay.indexOf(canonical(q));
+  if(at<0){for(const term of searchTerms){const found=hay.indexOf(term);if(found>=0){at=found;break}}}
+  const excerpt=at<0?body.slice(0,420):body.slice(Math.max(0,at-145),Math.min(body.length,at+330));
   rows.push({type:"passage",title:"Vitruvio · De architectura "+p.locus+" · "+p.version,author:p.language.toUpperCase()+" · "+p.version+" · "+where,
     excerpt,meta:"Locus "+p.locus+" · "+pageLabel+" · "+p.method,rating:rating+(p.edition==="recensio-es"?0.2:0),
     link,source:p.edition,edition:p.edition,locus:p.locus,pdfPage:Number.isInteger(page)&&page>0?page:null,latin:p.latin,translation:p.translation,method:concept&&!loc?"Expansión terminológica (sin vectores)":where})
