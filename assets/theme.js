@@ -30,4 +30,26 @@
   for(const b of buttons){b.type='button';b.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem(key,next);}catch{}paint();});}paint();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+ /* Shared usability enhancements: keyboard navigation, semantics and reading comfort. */
+ function enhance(){
+  const main=document.querySelector('main');
+  if(main){
+   if(!main.id)main.id='main-content';
+   if(!document.querySelector('.library-skip-link')){
+    const skip=document.createElement('a');skip.className='library-skip-link';
+    skip.href='#'+main.id;skip.textContent='Ir al contenido principal';
+    document.body.insertBefore(skip,document.body.firstChild);
+   }
+   if(!main.hasAttribute('tabindex'))main.setAttribute('tabindex','-1');
+  }
+  document.querySelectorAll('a[target="_blank"]').forEach(a=>{
+   const rel=new Set((a.getAttribute('rel')||'').split(/\s+/).filter(Boolean));
+   rel.add('noopener');rel.add('noreferrer');a.setAttribute('rel',[...rel].join(' '));
+  });
+  document.querySelectorAll('img:not([alt])').forEach(img=>{
+   if(img.getAttribute('role')==='presentation'||img.getAttribute('aria-hidden')==='true')img.alt='';
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enhance);else enhance();
+
 })();
