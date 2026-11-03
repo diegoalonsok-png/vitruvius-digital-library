@@ -87,7 +87,7 @@ async function start(){
   const r=await fetch(INDEX);if(!r.ok)throw Error('HTTP '+r.status);
   const x=await r.json();pages=x.canvases||[];
   if(pages.length!==205||!pages.every((p,i)=>p.page===i+1))throw Error('Índice de 205 imágenes fuera de secuencia');
-  applySearch();loadImage(5);
+  applySearch();loadImage(Math.min(205,Math.max(1,Number(new URLSearchParams(location.search).get('image'))||5)));
  }catch(e){$('su-status').textContent='No se pudo leer el índice IIIF: '+e.message;$('su-results').textContent='Consultá el facsímil institucional.';}
 }
 $('su-open').addEventListener('click',()=>loadImage(selectedPage()));
