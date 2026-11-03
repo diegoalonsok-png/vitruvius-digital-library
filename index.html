@@ -190,6 +190,7 @@ html[data-theme=dark] .vitruvia-top-initial{color:#e5e3dc}
 @media(max-width:850px){.research-nav-controls .vitruvia-top-link{flex-basis:100%;justify-content:center;border-left:0;border-top:1px solid rgba(164,154,141,.34);padding:7px 2px}.research-nav-controls{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.research-nav-controls .vitruvia-top-initial{transition:none!important}}
 </style><style>.hero-folios-action{border-color:#c8a86e!important;font-weight:750!important;letter-spacing:.025em;background:rgba(202,169,102,.08)}.hero-folios-action:focus-visible{outline:3px solid #c8a86e;outline-offset:3px}</style>
+<link rel="stylesheet" href="assets/editorial-reading.css?v=20261103-1">
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -270,6 +271,51 @@ html[data-theme=dark] .vitruvia-top-initial{color:#e5e3dc}
         <a class="principal-catalog-link" href="#coleccion">Todas las versiones y traducciones <span aria-hidden="true">→</span></a>
       </aside>
     </section>
+    <section class="editorial-reading" id="lecturas-destacadas" aria-labelledby="ed-readings-title">
+      <div class="editorial-inner">
+        <div class="editorial-main">
+          <div class="editorial-heading">
+            <div><span class="editorial-label" data-er-key="eyebrow">BIBLIOTECA · CONSULTA DOCUMENTADA</span>
+              <h2 id="ed-readings-title" data-er-key="title">Lecturas documentadas</h2></div>
+            <p class="editorial-caption" data-er-key="caption">Fuentes identificadas; los registros no representan cambios editoriales en tiempo real.</p>
+          </div>
+          <div class="editorial-scroll" role="list" aria-label="Obras y manuscritos seleccionados">
+            <a class="editorial-card" role="listitem" href="lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2">
+              <small>DE ARCHITECTURA · III.1.2</small><strong>De proportionibus</strong>
+              <p data-er-key="one">Proporciones del cuerpo humano en el libro III. Texto latino y traducción castellana del pasaje identificado.</p>
+              <span class="ed-link" data-er-key="read">Leer y consultar →</span>
+            </a>
+            <a class="editorial-card" role="listitem" href="codex-h-doble-folio.html">
+              <small>BRITISH LIBRARY · HARLEY MS 2767</small><strong>Codex Harleianus</strong>
+              <p data-er-key="two">Testimonio carolingio de De architectura. Abrir los folios enfrentados en el visor de doble hoja.</p>
+              <span class="ed-link" data-er-key="read">Leer y consultar →</span>
+            </a>
+            <a class="editorial-card" role="listitem" href="https://bvpb.mcu.es/es/consulta/registro.do?id=452427" target="_blank" rel="noopener noreferrer">
+              <small>EDICIÓN CASTELLANA · 1582</small><strong>Miguel de Urrea</strong>
+              <p data-er-key="three">Traducción española del tratado de Vitruvio. Consulta del registro de la Biblioteca Virtual del Patrimonio Bibliográfico.</p>
+              <span class="ed-link" data-er-key="source">Consultar fuente externa ↗</span>
+            </a>
+            <a class="editorial-card" role="listitem" href="vitruvia.html?q=emplekton&amp;mode=all">
+              <small>LEXICON · TERMINOLOGÍA ARQUITECTÓNICA</small><strong>Emplekton</strong>
+              <p data-er-key="four">Abrir una búsqueda documental del término y sus fuentes disponibles, sin presuponer un locus no cotejado.</p>
+              <span class="ed-link" data-er-key="search">Buscar el término →</span>
+            </a>
+          </div>
+        </div>
+        <aside class="volume-area" aria-label="Recreación tipográfica del códice Harley MS 2767">
+          <div class="volume-stage">
+            <div class="volume-turn" tabindex="0" role="button" aria-label="Girar libro ilustrativo con las flechas del teclado o arrastrando" title="Arrastrar para girar; Escape para reiniciar">
+              <div class="volume-pages" aria-hidden="true"></div>
+              <div class="volume-back" aria-hidden="true"></div>
+              <div class="volume-spine" aria-hidden="true"><span>HARLEY MS 2767</span></div>
+              <div class="volume-cover" aria-hidden="true"><small>CODEX HARLEIANUS</small><strong>De architectura</strong><small>VITRVVIVS · H</small></div>
+            </div>
+          </div>
+          <span class="volume-note" data-er-key="volume">Recreación gráfica; no reproduce la encuadernación histórica.</span>
+          <a class="volume-read" href="harleianus.html" data-er-key="folio">Consultar el manuscrito ↗</a>
+        </aside>
+      </div>
+    </section>
     <section class="stats-band" aria-label="La colección en cifras"><div class="wrap stats-inner"><p><strong id="stat-records">175</strong><span>fichas en tres repertorios documentales</span></p><p><strong id="stat-indexed-editions">3</strong><span>ediciones de Diego Kurilo con índice textual</span></p><p><strong id="stat-pages">3.379</strong><span>páginas declaradas en esas tres ediciones</span></p><p><strong id="stat-languages">4</strong><span>idiomas en las ediciones catalogadas</span></p></div>
 <div class="wrap stat-audit-detail">
 <p><strong>Desglose verificable:</strong> <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>. <strong id="stat-passages">2.190</strong> pasajes textuales indexados por locus.</p>
@@ -341,6 +387,7 @@ document.getElementById('print-home')?.addEventListener('click',()=>window.print
   else paint(current());
 })();
 </script>
+<script src="assets/editorial-reading.js?v=20261103-1" defer></script>
 </body>
 </html>
 
