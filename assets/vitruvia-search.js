@@ -337,7 +337,18 @@ function mode(m){S.mode=["all","site","wiki","external","concept"].includes(m)?m
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)];
 }
-function theme(th){S.theme=th;document.documentElement.dataset.theme=th;$("theme").textContent=th==="dark"?"☀":"☾";
+function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
+ const control=$("theme");
+ control.replaceChildren();
+ const icon=document.createElementNS("http://www.w3.org/2000/svg","svg");
+ icon.setAttribute("viewBox","0 0 24 24");icon.setAttribute("width","19");icon.setAttribute("height","19");icon.setAttribute("aria-hidden","true");
+ icon.setAttribute("fill","none");icon.setAttribute("stroke","currentColor");icon.setAttribute("stroke-width","1.65");
+ icon.setAttribute("stroke-linecap","round");icon.setAttribute("stroke-linejoin","round");
+ const path=document.createElementNS("http://www.w3.org/2000/svg","path");
+ path.setAttribute("d",th==="dark"?"M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z":"M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6l1.4 1.4m10 10 1.4 1.4m0-12.8L17 7m-10 10-1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z");
+ icon.append(path);control.append(icon);
+ control.setAttribute("aria-label",th==="dark"?"Activar modo claro":"Activar modo oscuro");
+ control.setAttribute("title",th==="dark"?"Modo claro":"Modo oscuro");
  try{localStorage.setItem("vitruvia-theme",th)}catch{}
 }
 
