@@ -110,3 +110,8 @@ html[data-theme="dark"] :is(#place-loci,#dossier-loci,.loci-list,.locus-links,.i
 html:not([data-theme="dark"]) :is(#place-loci,#dossier-loci,.loci-list,.locus-links,.index-loci,.locus-pills) a {
  background:#faf5e9;color:#183a52;border-color:#ad946f;
 }
+
+/* Native dropdown options: operating-system menus must not render white labels on white. */
+html[data-theme="dark"] select {color-scheme:dark!important;background-color:#263d50!important;color:#f8f0e6!important;}
+html[data-theme="dark"] select option,html[data-theme="dark"] select optgroup {background-color:#263d50!important;color:#f8f0e6!important;}
+html:not([data-theme="dark"]) select option,html:not([data-theme="dark"]) select optgroup {background-color:#fffdf8!important;color:#1b3345!important;}
