@@ -143,6 +143,29 @@ html[data-theme="dark"] .geo-map-layers button[aria-pressed="true"]{background:#
 @media(max-width:650px){.geo-map-switcher{align-items:flex-start}.geo-map-layers{width:100%}.geo-map-layers button{flex:1}}
 @media print{.geo-map-layers{display:none}}
 
+/* Loci: explicit paired background and text colors in both reading themes. */
+.geography #place-loci a,.place-dossier #dossier-loci a{
+ display:inline-flex;align-items:center;
+ background:#faf6ee!important;color:#19364b!important;
+ border:1px solid #a88d60!important;
+ text-decoration:none!important;font-weight:700;
+}
+.geography #place-loci a:hover,.place-dossier #dossier-loci a:hover,
+.geography #place-loci a:focus-visible,.place-dossier #dossier-loci a:focus-visible{
+ background:#ecd8b5!important;color:#132f43!important;outline:2px solid #ad8851;outline-offset:1px;
+}
+html[data-theme="dark"] .geography #place-loci a,
+html[data-theme="dark"] .place-dossier #dossier-loci a{
+ background:#203a50!important;color:#fff1d8!important;
+ border-color:#d0b585!important;
+}
+html[data-theme="dark"] .geography #place-loci a:hover,
+html[data-theme="dark"] .place-dossier #dossier-loci a:hover,
+html[data-theme="dark"] .geography #place-loci a:focus-visible,
+html[data-theme="dark"] .place-dossier #dossier-loci a:focus-visible{
+ background:#e3c996!important;color:#182e40!important;
+}
+@media print {.geography #place-loci a,.place-dossier #dossier-loci a{background:#fff!important;color:#111!important;border-color:#777!important}}
 </style>
 </head>
 <body>
