@@ -5,6 +5,13 @@ var css=[
 "#single-options{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:#e9ddca;padding:12px;margin:12px 0;border:1px solid #b99e73}",
 "#single-options button{min-height:38px;padding:7px 10px}",
 "#single-options select{padding:8px}",
+"header{position:relative;padding-top:110px}",
+"#single-top-controls{position:absolute;top:16px;right:clamp(12px,2vw,30px);display:flex;justify-content:flex-end;align-items:center;gap:16px;flex-wrap:wrap;z-index:5}",
+"#single-top-controls label{display:flex;align-items:center;gap:12px;background:#29445a;color:white;border:1px solid #a5b1ba;border-radius:9px;padding:6px 8px 6px 12px}",
+"#single-top-controls select{min-height:47px;min-width:178px;border:1px solid #8fa0ac;border-radius:7px;padding:8px 30px 8px 13px;background:#29445a;color:#fff;font:650 16px system-ui,sans-serif}",
+"#single-top-controls button{min-height:60px;display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border:1px solid #a5b1ba;border-radius:9px;background:#29445a;color:#fff;font:650 16px system-ui,sans-serif}",
+"#single-top-controls .globe{font-size:20px}",
+"@media(max-width:650px){header{padding-top:150px}#single-top-controls{left:12px;right:12px;justify-content:flex-start;gap:8px}#single-top-controls select{min-width:132px}#single-top-controls button{padding:8px 12px}}",
 "#single-ruler{display:flex;flex-wrap:wrap;gap:9px;align-items:center;background:#eadfcd;padding:10px}",
 "#single-ruler input{flex:1 1 150px}",
 "#single-filters{background:#e9ddca;padding:10px;margin:8px 0}",
@@ -15,11 +22,14 @@ var css=[
 "#stage.is-dragging{cursor:grabbing!important}",
 "html[data-reader-theme=dark] body{background:#142638;color:#eee5d7}",
 "html[data-reader-theme=dark] #single-options,html[data-reader-theme=dark] #single-ruler,html[data-reader-theme=dark] #single-filters{background:#344b5d;color:#eee5d7}",
-"@media print{.gallery,.toolbar,#single-options,#single-ruler,#single-filters,nav,#state{display:none!important}#stage{height:auto;overflow:visible}#image{max-width:100%!important;width:auto!important;max-height:240mm!important;filter:none!important}}"
+"@media print{.gallery,.toolbar,#single-options,#single-ruler,#single-filters,#single-top-controls,nav,#state{display:none!important}#stage{height:auto;overflow:visible}#image{max-width:100%!important;width:auto!important;max-height:240mm!important;filter:none!important}}"
 ].join("\n");
 var style=document.createElement("style");style.textContent=css;document.head.append(style);
 var actions=document.createElement("div");actions.id="single-options";
-actions.innerHTML='<label>Idioma <select id="s-language"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option><option value="it">IT</option><option value="de">DE</option><option value="pt">PT</option></select></label> <button id="s-theme">☾ Color</button> <button id="s-loupe" aria-pressed="true">◉ Desactivar lupa</button> <button id="s-print">⎙ Imprimir</button> <button id="s-email">✉ Correo</button> <button id="s-wa">WhatsApp</button>';
+actions.innerHTML='<button id="s-loupe" aria-pressed="true">◉ Desactivar lupa</button> <button id="s-print">⎙ Imprimir</button> <button id="s-email">✉ Correo</button> <button id="s-wa">WhatsApp</button>';
+var headControls=document.createElement("div");headControls.id="single-top-controls";headControls.setAttribute("role","group");headControls.setAttribute("aria-label","Idioma y apariencia");
+headControls.innerHTML='<label><span class="globe" aria-hidden="true">🌐</span><select id="s-language" aria-label="Idioma de interfaz"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label><button id="s-theme" type="button" aria-pressed="false">☾ Oscuro</button>';
+document.querySelector("header").prepend(headControls);
 var reader=document.querySelector('section[aria-label="Lector de folios"]');reader.parentNode.insertBefore(actions,reader);
 var ruler=document.createElement("div");ruler.id="single-ruler";
 ruler.innerHTML='<label>Bajar por el folio</label><button id="s-up">↑</button><input type="range" min="0" max="100" value="0" id="s-scroll"><output id="s-percent">0%</output><button id="s-down">↓</button>';
@@ -42,7 +52,10 @@ $("s-up").addEventListener("click",()=>stage.scrollTo({top:0,behavior:"smooth"})
 $("s-down").addEventListener("click",()=>stage.scrollTo({top:stage.scrollHeight,behavior:"smooth"}));
 var current="es",theme="light",magnifier=true;
 try{current=localStorage.getItem("vitruvius-ui-lang")||"es";theme=localStorage.getItem("vitruvius-color-theme")==="dark"?"dark":"light"}catch(e){}
-function paint(){document.documentElement.dataset.readerTheme=theme;$("s-language").value=current;$("s-theme").textContent=theme==="dark"?"☀ Claro":"☾ Oscuro";$("s-loupe").textContent=magnifier?"◉ Desactivar lupa":"◉ Activar lupa";}
+function paint(){document.documentElement.dataset.readerTheme=theme;document.documentElement.lang=current;$("s-language").value=current;
+var light={es:"Claro",en:"Light",fr:"Clair",it:"Chiaro",de:"Hell",pt:"Claro"},dark={es:"Oscuro",en:"Dark",fr:"Sombre",it:"Scuro",de:"Dunkel",pt:"Escuro"};
+$("s-theme").textContent=theme==="dark"?"☀ "+(light[current]||light.es):"☾ "+(dark[current]||dark.es);$("s-theme").setAttribute("aria-pressed",String(theme==="dark"));
+$("s-loupe").textContent=magnifier?"◉ Desactivar lupa":"◉ Activar lupa";}
 $("s-language").addEventListener("change",e=>{current=e.target.value;try{localStorage.setItem("vitruvius-ui-lang",current)}catch{}paint()});
 $("s-theme").addEventListener("click",()=>{theme=theme==="dark"?"light":"dark";try{localStorage.setItem("vitruvius-color-theme",theme)}catch{}paint()});
 $("s-loupe").addEventListener("click",()=>{magnifier=!magnifier;$("s-loupe").setAttribute("aria-pressed",magnifier);paint()});
