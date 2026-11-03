@@ -121,6 +121,8 @@ for(const chunk of sections){
  shown++;length+=clean.length;
 }
 if(!shown)paragraph(top.excerpt,"article-lead");
+const firstBody=$("article-body").querySelector("p");const wikiCitation=href(d.fullurl||top.link,"[1]");
+if(firstBody&&wikiCitation){wikiCitation.className="inline-citation";firstBody.append(" ",wikiCitation)}
 appendResearch(rows,top.title,top.title);
 heading(phrase("Bibliografía y lecturas relacionadas","Bibliography and further reading","Bibliographie et lectures complémentaires"));
 const related=rows.filter(x=>x.link&&x.link!==top.link&&["passage","book","section","article","wikidata"].includes(x.type)).slice(0,6);
@@ -130,13 +132,13 @@ if(related.length){
  $("article-body").append(ul);
 }else paragraph(phrase("No hay documentos adicionales identificados para esta consulta.","No additional documents identified for this search.","Aucun document supplémentaire identifié pour cette recherche."),"article-note");
 const p=make("p",phrase("Texto enciclopédico procedente de Wikipedia. Consultar el artículo, su historial y referencias originales:","Encyclopedia text from Wikipedia. Consult the full article, edit history and original references:","Texte encyclopédique provenant de Wikipédia. Consulter l’article, son historique et les sources :"),"article-note");
-const a=href(d.fullurl||top.link,phrase("Abrir fuente original ↗","Open original source ↗","Ouvrir la source ↗"));if(a)p.append(document.createTextNode(" "),a);$("article-body").append(p)
+const a=href(d.fullurl||top.link,phrase("Abrir fuente original ↗","Open original source ↗","Ouvrir la source ↗"));if(a)p.append(document.createTextNode(" "),a);$("article-body").append(p);buildContents()
 }
 /* Article composed from live bibliographic records, not fabricated AI claims. */
 function renderTopic(top,rows,query){
  reset(query,phrase("Consulta general · resultados documentados","General search · documented results","Recherche générale · résultats documentés"),
   phrase("Dossier de búsqueda · fuentes externas y biblioteca","Research dossier · external and library sources","Dossier de recherche · sources externes et bibliothèque"));
- const matching=rows.filter(r=>relevance(r,query)>=45&&["wikipedia","article","wikidata","openlibrary","museum"].includes(r.type)).sort((a,b)=>relevance(b,query)-relevance(a,query)).slice(0,12);
+ const matching=rows.filter(r=>relevance(r,query)>=45&&["wikipedia","article","wikidata","openlibrary","googlebook","museum"].includes(r.type)).sort((a,b)=>relevance(b,query)-relevance(a,query)).slice(0,12);
  if(!matching.length){
   paragraph(phrase(
    "No se identificó todavía una fuente suficientemente pertinente para desarrollar este tema. No se reemplaza la consulta por otro asunto ni se fabrica una respuesta.",
@@ -158,16 +160,18 @@ function renderTopic(top,rows,query){
  const links=[
   ["Google", "https://www.google.com/search?"+new URLSearchParams({q:query})],
   ["Google Scholar","https://scholar.google.com/scholar?"+new URLSearchParams({q:query})],
+  ["Google AI · modo externo","https://www.google.com/search?"+new URLSearchParams({q:query,udm:"50"})],
   ["Wikipedia","https://"+(["en","fr"].includes(document.documentElement.lang)?document.documentElement.lang:"es")+".wikipedia.org/w/index.php?"+new URLSearchParams({search:query})]
  ];
  const ul=make("ul",undefined,"article-related");
  for(const [label,url] of links){const a=href(url,label);if(a){const li=make("li");li.append(a);ul.append(li)}}
  $("article-body").append(ul);
- aside(matching);references(matching);
+ aside(matching);references(matching);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
 function appendResearch(rows,query,sourceTitle){
  const papers=rows.filter(x=>x.type==="article"&&relevance(x,query)>=45&&x.link).slice(0,6);
+ const books=rows.filter(x=>x.type==="googlebook"&&x.link&&relevance(x,query)>=45).slice(0,4);
  const local=rows.filter(x=>x.type==="passage"&&(relevance(x,query)>=45||normalized(x.latin+" "+x.translation+" "+x.excerpt).includes(normalized(query)))).slice(0,5);
  const box=$("article-body");
  if(papers.length){
@@ -181,6 +185,15 @@ function appendResearch(rows,query,sourceTitle){
    if(p.author)div.append(make("span"," · "+p.author));
    if(p.excerpt)div.append(make("small",p.excerpt));
    box.append(div);
+  }
+ }
+ if(books.length){
+  heading(phrase("Libros localizados en Google Books","Books located in Google Books","Ouvrages repérés sur Google Books"));
+  for(const b of books){const p=make("p",undefined,"article-research-item");const a=href(b.link,b.title);
+   if(a)p.append(a);
+   if(b.author)p.append(make("span"," · "+b.author));
+   if(b.meta)p.append(make("small",b.meta));
+   box.append(p);
   }
  }
  if(local.length){
@@ -261,6 +274,18 @@ function reportEvidence(rows,q){
    if(last){fragment.append(document.createTextNode(original.slice(last)));n.replaceWith(fragment)}
   }
  }
+}
+function buildContents(){
+ const box=$("article-aside");if(!box)return;
+ const sections=[...$("article-body").querySelectorAll("h3")].slice(0,24);
+ if(!sections.length)return;
+ const nav=document.createElement("nav");nav.className="article-contents";nav.setAttribute("aria-label",phrase("Índice de contenidos","Table of contents","Sommaire"));
+ nav.append(make("h3",phrase("Contenido","Contents","Sommaire")));
+ for(const [i,h] of sections.entries()){
+  h.id="dossier-heading-"+i;
+  const a=make("a",h.textContent);a.href="#"+h.id;a.className="article-contents-link";nav.append(a);
+ }
+ box.prepend(nav);
 }
 function render(rows,q){const token=++active;
 if(!q||!rows?.length){root.hidden=true;return}
