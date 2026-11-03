@@ -76,6 +76,24 @@ html[data-theme=dark] .classic-suggestions{background:#233e52;border-color:#a89c
 html[data-theme=dark] .classic-suggestion{color:#f5eee0;border-color:#526a78}
 html[data-theme=dark] .classic-suggestion small{color:#c4c4bf}
 html[data-theme=dark] .classic-suggestion:hover,html[data-theme=dark] .classic-suggestion[aria-selected=true]{background:#385a71;color:#fff}
+
+.triple-panes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.triple-pane{min-width:0;background:#fffdf7;border:1px solid #b6a58a;display:flex;flex-direction:column}
+.triple-pane-head{background:#213d51;color:#f7ecdb;padding:12px;min-height:78px;display:flex;flex-direction:column;gap:6px;font:13px/1.4 system-ui,sans-serif}
+.triple-pane-head strong{font:700 13px system-ui,sans-serif;letter-spacing:.04em}
+.triple-pane-head small{color:#dfd1bd}
+.triple-pane-head select{padding:5px;width:100%;max-width:100%;background:#fff;color:#213d51}
+.triple-pane>iframe,.triple-ms>iframe{width:100%;height:70vh;min-height:460px;border:0;background:#fff}
+.triple-ms{height:70vh;min-height:460px;overflow-y:auto;text-align:center;padding:7px;background:#f1eadc;color:#253f50}
+.triple-ms img{max-width:100%;width:auto;height:auto;display:block;margin:8px auto}
+.triple-ms-note{font:12px/1.6 system-ui,sans-serif;text-align:left;overflow-wrap:anywhere}
+.triple-ms-note a{color:#174e82}
+.triple-folio-nav{position:sticky;top:0;display:flex;gap:4px;flex-wrap:wrap;justify-content:center;padding:8px;background:#e7ddc8;z-index:1}
+.triple-folio-nav button,.triple-folio-nav select{font:12px system-ui,sans-serif;padding:7px;border:1px solid #998767;max-width:100%}
+.triple-ms-status{font:12px system-ui,sans-serif;margin:8px}
+.triple-warning{margin:10px 0;font:13px/1.6 system-ui,sans-serif;background:#e7dfcf;padding:13px;color:#253c49}
+html[data-theme=dark] .triple-warning{background:#395063;color:#fff}
+@media(max-width:1100px){.triple-panes{grid-template-columns:1fr}.triple-ms,.triple-pane>iframe{min-height:440px;height:55vh}}
 </style>
 </head><body>
 <main class="classic-main">
@@ -91,4 +109,4 @@ html[data-theme=dark] .classic-suggestion:hover,html[data-theme=dark] .classic-s
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Seleccioná una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-suggest1"></script></body></html>
+</main><script defer src="assets/theme.js"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader.js?v=20261103-cicero1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-cicero3pane1"></script></body></html>
