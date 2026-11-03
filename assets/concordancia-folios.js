@@ -6,7 +6,7 @@ const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const fold=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const manifestUrl='https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001';
 const source={es:'data/structured/recensio-es.json',en:'data/structured/theory-en.json',fr:'data/structured/recensio-fr.json'};
-let map,passages=[],passageByLocus=new Map(),alignment,corpora={},canvases=[],imageIssue='',selection={kind:'folio',value:'1r'},query='';
+let map,passages=[],passageByLocus=new Map(),alignment,corpora={},canvases=[],imageIssue='',manifestLoading=true,selection={kind:'folio',value:'1r'},query='';
 const reader=(l,language='es')=>'lector-bilingue.html?edition='+({es:'recensio-es',en:'theory-en',fr:'recensio-fr'}[language]||'recensio-es')+'&locus='+encodeURIComponent(l);
 function getInfo(locus){for(const entry of map.entries){const record=entry.loci.find(p=>p.locus===locus);if(record)return {entry,record};}return null}
 async function loadTranslation(lang){if(corpora[lang])return corpora[lang];
@@ -18,7 +18,7 @@ async function loadTranslation(lang){if(corpora[lang])return corpora[lang];
 function showImage(index,folio){
  const image=$('f-image'),box=$('f-image-box');box.querySelector('.folio-no-image')?.remove();
  image.hidden=false;image.alt='Harley MS 2767, folio '+folio+', imagen digital '+index+' (British Library)';
- if(!canvases.length){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='No se pudo consultar el manifiesto IIIF desde este navegador. Abrí la imagen '+index+' desde el visor H; no se incorpora una fotografía de origen incierto.';box.append(p);return}
+ if(!canvases.length){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent=manifestLoading?'Cargando imagen '+index+' desde el manifiesto institucional IIIF…':'No se pudo consultar el manifiesto IIIF. Abrí la imagen '+index+' desde el visor H; no se incorpora una fotografía de origen incierto.';box.append(p);return}
  const c=canvases[index-1];
  if(!c){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='No se halló la imagen '+index+' en el manifiesto institucional.';box.append(p);return}
  const resource=c.images?.[0]?.resource||c.items?.[0]?.items?.[0]?.body;
@@ -124,7 +124,14 @@ async function load(){
   passages=j.passages||[];passageByLocus=new Map(passages.map(p=>[p.locus,p]));
   if(passages.length<700||map.entries.length<2)throw Error('Datos incompletos');
   corpora.es=passageByLocus;
-  try{const r=await fetch(manifestUrl,{headers:{Accept:'application/json'}});if(!r.ok)throw Error('HTTP '+r.status);const m=await r.json();canvases=m.sequences?.[0]?.canvases||m.items||[];}catch(e){imageIssue=e.message;console.warn('IIIF:',imageIssue);}
+  // IIIF es externo: su latencia no debe bloquear los loci ni las traducciones.
+  const controller=new AbortController();
+  const guard=setTimeout(()=>controller.abort(),8500);
+  fetch(manifestUrl,{headers:{Accept:'application/json'},signal:controller.signal})
+    .then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()})
+    .then(m=>{canvases=m.sequences?.[0]?.canvases||m.items||[];manifestLoading=false;const entry=selection.kind==='folio'?map.entries.find(x=>x.folio===selection.value):getInfo(selection.value)?.entry;if(entry)showImage(entry.image_number,entry.folio)})
+    .catch(e=>{imageIssue=e.message;manifestLoading=false;console.warn('IIIF:',imageIssue);const entry=selection.kind==='folio'?map.entries.find(x=>x.folio===selection.value):getInfo(selection.value)?.entry;if(entry)showImage(entry.image_number,entry.folio)})
+    .finally(()=>clearTimeout(guard));
   const params=new URLSearchParams(location.search),locus=params.get('locus'),folio=params.get('folio');
   if(locus&&passageByLocus.has(locus))selection={kind:'locus',value:locus};
   else if(folio&&map.entries.some(e=>e.folio===folio))selection={kind:'folio',value:folio};
