@@ -99,15 +99,16 @@ html[data-theme=light] .footer{color:#475e4e;border-color:#cbd8c8}
 <div>
 <div class="eyebrow">BIBLIOTHECA VITRUVII · INSTRUMENTUM QUAERENDI</div>
 <h1>Vitruvia<span>beta 1.0</span></h1>
-<p class="lead" id="lead">Conocimiento clásico, arquitectura y libros antiguos. Una búsqueda, manuscritos y textos con procedencia documentada.</p>
+<p class="lead" id="lead">Conocimiento universal, arte, historia, arquitectura y libros antiguos. Una búsqueda universal con foco en arte, historia y arquitectura; manuscritos y textos documentados.</p>
 <form class="searchform" id="search-form"><span class="icon-search" aria-hidden="true">⌕</span><input id="query" type="search" autocomplete="off" spellcheck="false" placeholder="Buscar en Vitruvio, códices, manuscritos, libros antiguos…" aria-label="Buscar en Vitruvia" required maxlength="180">
 <button type="submit" id="submit">Buscar ↗</button></form>
 <div class="tabs" role="group" aria-label="Tipo de búsqueda">
-<button type="button" class="tab" data-mode="site" aria-pressed="true">En la biblioteca</button>
-<button type="button" class="tab" data-mode="concept" aria-pressed="false">◎ Modo conceptual</button>
-<button type="button" class="tab" data-mode="external" aria-pressed="false">↗ Cultura en internet</button>
+<button type="button" class="tab" data-mode="all" aria-pressed="true">◎ Buscar todo</button>
+<button type="button" class="tab" data-mode="site" aria-pressed="false">Biblioteca interna</button>
+<button type="button" class="tab" data-mode="concept" aria-pressed="false">⌁ IA temática</button>
+<button type="button" class="tab" data-mode="external" aria-pressed="false">↗ Enciclopedias e internet</button>
 </div>
-<p class="explain" id="mode-note">Busca en los libros, pasajes y páginas realmente conservados en GitHub. Sin clave y sin publicidad.</p>
+<p class="explain" id="mode-note">Busca cualquier tema en Wikipedia, Wikidata y catálogos abiertos; prioriza arte, historia y arquitectura y también consulta esta biblioteca.</p>
 <div class="suggestions"><span>Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
 </div>
 <aside class="featured" aria-label="Manuscrito destacado">
@@ -120,7 +121,7 @@ html[data-theme=light] .footer{color:#475e4e;border-color:#cbd8c8}
 <div class="section-head"><h2 id="results-heading">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
 <div id="answer" hidden></div>
 <div class="results-grid"><div id="result-list"><div class="empty">Escribí una palabra, título, autor, concepto o locus para comenzar. Podés probar <strong>symmetria</strong>, <strong>agua</strong> o <strong>Cicerón</strong>.</div></div>
-<aside class="sidebar"><h3>Fuentes y método</h3><p>Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.</p>
+<aside class="sidebar"><h3>Fuentes y método</h3><div id="source-links" aria-live="polite"></div><p>Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.</p>
 <a href="bibliotheca-graeca-latina.html">Biblioteca griega y latina ↗</a><a href="lector-bilingue.html">Lector latino y traducciones ↗</a><a href="codex-h-folios-local.html">Galería Codex H ↗</a><a href="bibliografia.html">Bibliografía académica ↗</a><a href="metodologia-filologica.html">Criterio filológico ↗</a>
 <p>No se inventan traducciones. La búsqueda conceptual utiliza relaciones temáticas y recuperación textual; <strong>no es un chatbot generativo</strong>. El contenido de los PDF escaneados sin OCR sigue requiriendo lectura de facsímiles.</p></aside>
 </div></section>
