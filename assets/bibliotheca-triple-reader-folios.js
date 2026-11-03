@@ -9,7 +9,7 @@ window.BibliothecaTripleReader=(function(){"use strict";
   "cicero-officiis":{manuscript:{index:"data/manuscripts/cicero-de-officiis-geneve-lat88.json",label:"Genève · Bibliothèque de Genève · Ms. lat. 88",date:"siglo XV",isOldest:false},
     original:{path:"corpus/cicero-de-officiis-la.html",label:"Texto latino · ed. Walter Miller, 1913"},
     translations:[{lang:"en",label:"English · Walter Miller (1913)",path:"corpus/cicero-de-officiis-en.html"}]},
-  "lucretius":{manuscript:{manifest:"https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",label:"Leiden · Voss. Lat. Q. 94 (Codex Quadratus)",date:"siglo IX",isOldest:false},
+  "lucretius":{manuscript:{manifest:"https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest",label:"Leiden · Voss. Lat. F. 30 (Codex Oblongus, O)",date:"c. 825 · siglo IX",isOldest:false},
     original:{path:"corpus/lucretius-de-rerum-natura-la.html",label:"De rerum natura · latín · Wikisource"},
     translations:[{lang:"en",label:"English · William Ellery Leonard (1916)",path:"corpus/lucretius-de-rerum-natura-en.html"},{lang:"es",label:"Castellano · Rodríguez-Navas (prosa)",path:"corpus/lucretius-de-rerum-natura-es.html"}]}
  };
@@ -109,8 +109,19 @@ window.BibliothecaTripleReader=(function(){"use strict";
     show();
    }catch(err){ms.insertAdjacentHTML("beforeend",'<p role="alert">No se pudieron cargar los folios del testimonio: '+esc(err.message)+'</p>');}
   }else if(m.manifest){
-   const iframe=document.createElement("iframe");iframe.title="Folio del códice "+m.label;iframe.loading="lazy";iframe.src="https://uv-v4.netlify.app/#?manifest="+encodeURIComponent(m.manifest);iframe.style.minHeight="68vh";ms.append(iframe);
-   const p=document.createElement("p");p.className="triple-ms-note";p.textContent="Imágenes IIIF del titular institucional: conexión sujeta a disponibilidad y permisos de incrustación. La correspondencia de folios todavía no se ha validado.";ms.append(p);
+   // Official manuscript metadata verified; live folio images not yet verified.
+   const section=document.createElement("section");
+   section.className="triple-manuscript-record";
+   section.innerHTML='<h4>Tradición manuscrita carolingia · testimonios identificados</h4>'+
+     '<p><strong>O · Codex Oblongus.</strong> Leiden University Libraries, Voss. Lat. F. 30; c. 825, siglo IX. Testimonio carolingio temprano de <em>De rerum natura</em>.</p>'+
+     '<p><strong>Q · Codex Quadratus.</strong> Leiden University Libraries, Voss. Lat. Q. 94; primera mitad del siglo IX. Es un códice distinto.</p>'+
+     '<p role="status"><strong>Facsímil pendiente:</strong> no se pudo verificar el acceso a las imágenes digitales de Leiden; por rigor bibliográfico no se incorpora aquí un visor externo sin comprobar.</p>'+
+     '<div class="classic-linkline">'+
+       link("https://iiif.biblissima.fr/collections/manifest/cf0a18597bec8ca10248e6a82b64f94dc0288139","Ficha verificada · Codex Oblongus (O)")+
+       link("https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4","Ficha verificada · Codex Quadratus (Q)")+
+     '</div>'+
+     '<p class="triple-ms-note">Las fichas identifican manuscritos, no una equivalencia de páginas con el texto latino editorial. La concordancia folio–verso sigue pendiente.</p>';
+   ms.append(section);
   }
   return true;
  }
