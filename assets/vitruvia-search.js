@@ -32,7 +32,7 @@ const norm=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLo
 const words=s=>norm(s).split(" ").filter(x=>x.length>=3&&!stop.has(x));
 const brief=(s,n=255)=>{const v=String(s||"").replace(/\s+/g," ").trim();return v.length>n?v.slice(0,n).replace(/\s+\S*$/,"")+"…":v};
 const node=(tag,cls,content)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(content!==undefined)x.textContent=content;return x;};
-const localUrl=/^(?:[a-z0-9/_-]+\.html(?:\?[^#]*)?|documents\/[a-z0-9/_-]+\.pdf)$/i;
+const localUrl=/^(?:[a-z0-9/_-]+\.html(?:\?[^#]*)?(?:#[a-z0-9=&_-]+)?|documents\/[a-z0-9/_-]+\.pdf(?:#page=\d+)?)$/i;
 function anchor(text,url){const a=node("a",null,text);if(!url)return null;const external=/^https:\/\//i.test(url);
  if(!external&&!localUrl.test(url))return null;a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a}
 const I18N={
@@ -97,7 +97,7 @@ async function wiki(q,language){
   const photo=pictures[w.pageid],name=photo?.pageimage;
   const image=photo?.thumbnail?.source;
   const picturePage=name?"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(name.replace(/ /g,"_")):null;
-  return {type:"wikipedia",title:w.title,author:"Wikipedia · "+lang.toUpperCase(),excerpt:brief(htmlText(w.snippet),260),meta:"Artículo enciclopédico · Wikimedia",rating:42-i*2+culturalWeight(w.title,w.snippet),link:"https://"+lang+".wikipedia.org/?curid="+w.pageid,source:"Wikipedia ("+lang.toUpperCase()+")",image,imageRights:picturePage,imageCredit:"Wikipedia / Wikimedia Commons · consultar autor y licencia",imageKind:"documentary"};
+  return {type:"wikipedia",title:w.title,author:"Wikipedia · "+lang.toUpperCase(),excerpt:brief(htmlText(w.snippet),260),meta:"Artículo enciclopédico · Wikimedia",rating:42-i*2+culturalWeight(w.title,w.snippet),link:"https://"+lang+".wikipedia.org/?curid="+w.pageid,source:"Wikipedia ("+lang.toUpperCase()+")",image,imageRights:picturePage,imageCredit:"Wikipedia / Wikimedia Commons · consultar autor y licencia",imageKind:"documentary",pageid:w.pageid,wikiLang:lang};
  })
 }
 async function wikidata(q){
@@ -242,7 +242,8 @@ function renderCard(d){
  if(d.excerpt)card.append(node("p",null,d.excerpt));
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.link){const a=makeLink(d.type==="passage"||d.type==="book"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
+ if(d.link){const a=makeLink(d.type==="passage"||d.type==="book"||d.type==="manuscript"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
+ if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  else if(d.type==="book")acts.append(node("span","disabled",T().unpublished));
  if(d.pdf){const a=makeLink(T().pdf,d.pdf);if(a)acts.append(a)}
  card.append(acts);return card
@@ -255,12 +256,12 @@ function synthesize(rows){const box=$("answer");box.replaceChildren();
  box.append(node("p","detail",T().detail))
 }
 function display(rows,query,phase){
- const scored=rows.slice().sort((a,b)=>b.rating-a.rating),deduped=[],seen=new Set();
+ const scored=rows.slice().sort((a,b)=>(b.rating||0)-(a.rating||0)),deduped=[],seen=new Set();
  for(const r of scored){const k=r.type+":"+norm(r.title);if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  if(!deduped.length)list.append(node("div","empty",T().none));
  else for(const r of deduped.slice(0,44))list.append(renderCard(r));
- synthesize(deduped);
+ if(window.VitruviaArticles){$("answer").hidden=true;window.VitruviaArticles.render(deduped,query)}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
  $("result-state").textContent=deduped.length+" coincidencias · "+Math.min(44,deduped.length)+" visibles"+(phase?" · "+phase:"")
 }
@@ -284,15 +285,29 @@ async function search(){
  const q=$("query").value.trim(),id=++S.searchId;if(!q)return;
  restoreFeature();
  history.replaceState(null,"","vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
- const mode=S.mode,concept=mode==="concept",internal=mode!=="external",outside=mode==="all"||mode==="external";
+ const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=mode!=="external";
+ const engine=window.VitruviaResearchEngine;
+ const intent=engine?.classify(q);
+ // Una signatura, un manuscrito identificado o un locus exacto se resuelven
+ // antes que las coincidencias externas de vocabulario general.
+ const focused=!!(intent?.harley||intent?.vitruvian||intent?.locus);
+ const outside=(mode==="all"||mode==="external")&&!(focused&&mode!=="external");
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
+ if(window.VitruviaArticles)window.VitruviaArticles.render([],q);
  sourceLinks(q);
  let rows=[];
- if(internal){rows=[...liveBooks(q,concept),...livePages(q,concept)];display(rows,q,T().searching)}
+ if(internal){
+  rows=focused?[]:[...liveBooks(q,concept),...livePages(q,concept)];
+  if(rows.length)display(rows,q,T().searching)
+ }
  const pending=[];
- if(internal)pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
- if(outside){pending.push(curatedHistoricalImage(q).catch(e=>({name:"Iconografía sin respuesta: "+e.message,rows:[]})));
+ if(internal){
+  if(engine)pending.push(engine.query(q,{concept}).then(value=>({name:"Loci, léxico y códices",rows:value.rows||[],warnings:value.warnings||[]})).catch(e=>({name:"Índice documental no disponible",rows:[],warnings:[e.message]})));
+  else pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
+ }
+ if(outside){
+  pending.push(curatedHistoricalImage(q).catch(e=>({name:"Iconografía sin respuesta: "+e.message,rows:[]})));
   pending.push(wiki(q,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
   if(S.lang!=="en")pending.push(wiki(q,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
@@ -304,8 +319,13 @@ async function search(){
  if(!pending.length){display(rows,q,"Índice interno");return}
  let completed=0;
  await Promise.all(pending.map(p=>p.then(value=>{
-  if(id!==S.searchId)return;rows.push(...value.rows);if(value.featured)considerFeatured([value.featured],q);else considerFeatured(value.rows,q);completed++;
+  if(id!==S.searchId)return;
+  const incoming=value.rows||[];
+  rows.push(...incoming);
+  if(!focused){if(value.featured)considerFeatured([value.featured],q);else considerFeatured(incoming,q)}
+  completed++;
   display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
+  if(value.warnings?.length)$("result-state").title=value.warnings.join("; ");
  })));
  if(id===S.searchId)display(rows,q,"Búsqueda finalizada");
 }
