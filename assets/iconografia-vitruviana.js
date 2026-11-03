@@ -15,7 +15,7 @@ function createDatasetItems(source,info){
   const keep=(canvas,section,book,kind)=>{
     if(!canvas||selected.has(canvas.page))return;
     const label=String(canvas.iiif_label||"")||"Imagen "+canvas.page;
-    const cat=kind==="opening"?"ediciones":catOfBook(book);
+    const cat=book===3?"ediciones":catOfBook(book); // No etiquetar cualquier texto del libro III como antropometría ilustrada.
     selected.set(canvas.page,{
       id:source.id+"-p"+canvas.page,category:cat,type:source.type,title:source.title+" · "+(kind==="opening"?"preliminares":label),
       author:source.abbrev,date:source.date,century:source.era,place:source.production,institution:source.institution,
@@ -32,7 +32,8 @@ function createDatasetItems(source,info){
   };
   for(const s of sections){const b=parseSectionBook(s);const subset=source.canvases.filter(c=>c.page>=s.start&&c.page<=s.end);if(!subset.length)continue;
     if(b){keep(subset[0],s,b,"section");if(subset.length>5)keep(subset[Math.floor(subset.length/2)],s,b,"section");if(subset.length>11)keep(subset[Math.max(0,subset.length-3)],s,b,"section");}
-    else if(/title page|portada|frontispicio/i.test(s.label||"")){keep(subset[0],s,null,"opening");} // Cubiertas y guardas no sustituyen la portada ilustrada.
+    // Las cubiertas, guardas y portadas no se incorporan al atlas de láminas.
+    // Las portadas históricas verificadas se catalogan como fichas independientes.
   }
   if(!sections.length){/* Sin paginación comprobada no inferir portada o motivo visual. */}
   // No añadir las tres primeras páginas indiscriminadamente: suelen ser guardas o cubiertas.
