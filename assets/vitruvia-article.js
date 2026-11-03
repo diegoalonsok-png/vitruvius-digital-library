@@ -148,7 +148,7 @@ function highlightArticle(query){
 function render(rows,q){const token=++active;
 if(!q||!rows?.length){root.hidden=true;return}
 const top=choose(rows,q);if(!top){root.hidden=true;return}
-if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);return}
+if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
 if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
 if(top.type==="wikipedia"){void renderWiki(top,rows,token).then(()=>{if(token===active)highlightArticle(q)});return}
 renderOther(top,rows);highlightArticle(q)
