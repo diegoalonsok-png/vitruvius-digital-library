@@ -34,3 +34,51 @@
 @media(max-width:1050px){.editorial-reading .editorial-inner{grid-template-columns:1fr}.editorial-reading .volume-area{flex-direction:row;justify-content:center;padding-top:16px}.editorial-reading .volume-stage{width:160px;height:213px;transform:scale(.84)}.editorial-reading .volume-note{max-width:22ch}}
 @media(max-width:580px){.editorial-reading{padding:30px 0}.editorial-reading .editorial-inner{padding:0 17px}.editorial-reading .editorial-heading{margin-bottom:15px}.editorial-reading .volume-area{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.editorial-reading .volume-turn{animation:none;transform:rotateY(-20deg)}.editorial-reading .editorial-card{transition:none}.editorial-reading .editorial-card:hover{transform:none}}
+
+/* Portada bibliográfica — paleta propia, separada del buscador Vitruvia. */
+.editorial-reading{
+ background:var(--paper,#f8f5ee)!important;
+ color:var(--ink,#172b3c)!important;
+ border-top:1px solid var(--line,#d8d4c9);
+ border-bottom:1px solid var(--line,#d8d4c9);
+ overflow:hidden;
+}
+.editorial-reading .editorial-inner,.editorial-reading .editorial-main,.editorial-reading .editorial-heading,.editorial-reading .volume-area{min-width:0;max-width:100%}
+.editorial-reading .editorial-label{color:var(--muted,#646a6c)}
+.editorial-reading h2{color:var(--ink,#172b3c)}
+.editorial-reading .editorial-caption{color:var(--muted,#646a6c)}
+.editorial-reading .editorial-card{
+ background:var(--white,#fffdf8);
+ border-color:var(--line,#d8d4c9);
+ color:var(--ink,#172b3c);
+}
+.editorial-reading .editorial-card small{color:var(--muted,#646a6c)}
+.editorial-reading .editorial-card strong{color:var(--ink,#172b3c)}
+.editorial-reading .editorial-card p{color:var(--muted,#646a6c);text-align:left}
+.editorial-reading .editorial-card .ed-link{color:var(--ink,#172b3c);border-top-color:var(--line,#d8d4c9)}
+.editorial-reading .editorial-card:hover,.editorial-reading .editorial-card:focus-visible{border-color:var(--gold,#a18b59)}
+.editorial-reading .volume-note{color:var(--muted,#646a6c)}
+.editorial-reading .volume-read{color:var(--ink,#172b3c)}
+/* Escritorio: tarjetas distribuidas sobre una retícula editorial, sin escapar del ancho disponible. */
+@media(min-width:1051px){
+ .editorial-reading .editorial-scroll{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;overflow:visible;scroll-snap-type:none}
+ .editorial-reading .editorial-card{min-width:0;max-width:none;min-height:184px;flex:initial}
+ .editorial-reading .editorial-inner{grid-template-columns:minmax(0,1fr) minmax(190px,230px)}
+}
+@media(min-width:581px) and (max-width:1050px){
+ .editorial-reading .editorial-scroll{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;overflow:visible;scroll-snap-type:none}
+ .editorial-reading .editorial-card{min-width:0;max-width:none;min-height:170px;flex:initial}
+}
+/* Teléfonos: una sola columna. El libro en 3D se omite para evitar recortes y superposiciones. */
+@media(max-width:580px){
+ .editorial-reading{padding:30px 0!important}
+ .editorial-reading .editorial-inner{display:block!important;padding-inline:clamp(16px,4vw,22px)!important;width:100%;max-width:100%}
+ .editorial-reading .editorial-main{width:100%;min-width:0}
+ .editorial-reading .editorial-heading{display:block;margin-bottom:18px}
+ .editorial-reading .editorial-caption{max-width:100%;margin-top:12px}
+ .editorial-reading .editorial-scroll{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;overflow:visible!important;padding:0!important;scroll-snap-type:none!important}
+ .editorial-reading .editorial-card{width:100%!important;max-width:none!important;min-width:0!important;min-height:0!important;flex:none!important;gap:10px;padding:19px!important}
+ .editorial-reading .editorial-card strong{font-size:22px;overflow-wrap:anywhere}
+ .editorial-reading .editorial-card p{font-size:13px;line-height:1.65}
+ .editorial-reading .volume-area{display:none!important}
+}
