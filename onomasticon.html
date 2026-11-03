@@ -7,52 +7,62 @@
 <title>Onomasticon Vitruvianum · Personajes, lugares y análisis del texto</title>
 <link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/onomasticon.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/onomasticon.css?v=20261102b">
-<script type="module" src="assets/onomasticon.js?v=20261102b"></script>
+<link rel="stylesheet" href="assets/onomasticon.css?v=20261102-theme-i18n">
+<script type="module" src="assets/onomasticon.js?v=20261102-theme-i18n"></script>
 </head>
 <body>
 <a href="#ov-main" style="position:absolute;top:0;left:0;background:#fff;padding:6px;transform:translateY(-160%);" onfocus="this.style.transform='none'" onblur="this.style.transform='translateY(-160%)'">Saltar al contenido</a>
 <header class="ov-top">
+ <div class="ov-topline">
   <nav class="ov-nav" aria-label="Navegación de la biblioteca">
-   <a href="index.html">← Vitruvius Digital Library</a>
-   <a href="lector-bilingue.html">Lector bilingüe</a>
-   <a href="indices-locorum.html">Índice locorum</a>
+   <a href="index.html" data-i18n="homeLink">← Vitruvius Digital Library</a>
+   <a href="lector-bilingue.html" data-i18n="readerLink">Lector bilingüe</a>
+   <a href="indices-locorum.html" data-i18n="lociLink">Índice locorum</a>
    <a href="lexicon-vitruvianum.html">Lexicon Vitruvianum</a>
-   <a href="laboratorio-h.html">Codex H · tres visores</a>
+   <a href="laboratorio-h.html" data-i18n="codexLink">Codex H · tres visores</a>
   </nav>
+  <div class="ov-top-controls" aria-label="Preferencias de lectura">
+   <label class="ov-lang-control" for="ov-language"><span aria-hidden="true">🌐</span> <span data-i18n="language">Idioma</span>
+    <select id="ov-language" aria-label="Cambiar idioma de la interfaz">
+     <option value="es">Castellano</option><option value="en">English</option><option value="fr">Français</option><option value="la">Latine</option>
+    </select>
+   </label>
+   <button type="button" id="ov-color" class="ov-color-button" aria-label="Activar modo oscuro" aria-pressed="false">☾ <span id="ov-color-text">Oscuro</span></button>
+  </div>
+ </div>
   <h1>Onomasticon Vitruvianum</h1>
-  <p><strong>Personajes, lugares y lengua de <i>De architectura</i>.</strong> Biografías y contextos históricos, concordancias de los nombres en latín, traducciones de Diego Kurilo y estudio cuantitativo de los diez libros.</p>
+  <p data-i18n-html="intro"><strong>Personajes, lugares y lengua de <i>De architectura</i>.</strong> Biografías y contextos históricos, concordancias de los nombres en latín, traducciones de Diego Kurilo y estudio cuantitativo de los diez libros.</p>
 </header>
 <main id="ov-main" class="ov-wrap">
 <section class="ov-numbers" aria-label="Indicadores documentales">
- <article><strong id="ov-count-person">—</strong><small>Personajes con ficha inicial y locus localizado</small></article>
- <article><strong id="ov-count-place">—</strong><small>Lugares con ficha inicial y locus localizado</small></article>
- <article><strong id="ov-count-latin">—</strong><small>Palabras del alfabeto latino en V514</small></article>
- <article><strong id="ov-count-greek">—</strong><small>Palabras con grafías griegas en V514</small></article>
- <article><strong id="ov-count-loci">—</strong><small>Pasajes (loci) del tratado</small></article>
+ <article><strong id="ov-count-person">—</strong><small data-i18n="counterPeople">Personajes con ficha inicial y locus localizado</small></article>
+ <article><strong id="ov-count-place">—</strong><small data-i18n="counterPlaces">Lugares con ficha inicial y locus localizado</small></article>
+ <article><strong id="ov-count-latin">—</strong><small data-i18n="counterLatin">Palabras del alfabeto latino en V514</small></article>
+ <article><strong id="ov-count-greek">—</strong><small data-i18n="counterGreek">Palabras con grafías griegas en V514</small></article>
+ <article><strong id="ov-count-loci">—</strong><small data-i18n="counterLoci">Pasajes (loci) del tratado</small></article>
 </section>
 <p class="ov-note" id="ov-stat-scope">Los recuentos se están calculando a partir del texto editorial latino V514.</p>
 <div class="ov-tools" role="search" aria-label="Buscar personas, lugares y texto">
- <label style="flex:1;min-width:260px">Nombre, variante antigua o cualquier término
+ <label style="flex:1;min-width:260px"><span data-i18n="searchLabel">Nombre, variante antigua o cualquier término</span>
   <input type="search" id="ov-search" placeholder="Arquímedes · Syracusae · Hermogenes · Romae" autocomplete="off" aria-label="Buscar nombres y pasajes">
  </label>
- <label>Tipo
-  <select id="ov-type"><option value="all">Personas y lugares</option><option value="person">Personajes</option><option value="place">Lugares</option></select>
+ <label><span data-i18n="typeLabel">Tipo</span>
+  <select id="ov-type"><option value="all" data-i18n="typeAll">Personas y lugares</option><option value="person" data-i18n="typePerson">Personajes</option><option value="place" data-i18n="typePlace">Lugares</option></select>
  </label>
- <label>Libro
-  <select id="ov-book"><option value="all">Los diez libros</option>
+ <label><span data-i18n="bookLabel">Libro</span>
+  <select id="ov-book"><option value="all" data-i18n="allBooks">Los diez libros</option>
    <option value="1">I</option><option value="2">II</option><option value="3">III</option><option value="4">IV</option><option value="5">V</option><option value="6">VI</option><option value="7">VII</option><option value="8">VIII</option><option value="9">IX</option><option value="10">X</option>
   </select>
  </label>
- <button id="ov-clear" type="button">Limpiar</button>
- <button type="button" id="ov-show-entities" aria-pressed="true">Personajes y lugares</button>
- <button type="button" id="ov-show-stats" aria-pressed="false">Lengua y estadísticas</button>
+ <button id="ov-clear" type="button" data-i18n="clear">Limpiar</button>
+ <button type="button" id="ov-show-entities" aria-pressed="true" data-i18n="peoplePlaces">Personajes y lugares</button>
+ <button type="button" id="ov-show-stats" aria-pressed="false" data-i18n="languageStats">Lengua y estadísticas</button>
 </div>
 <p id="ov-loading" class="ov-note" role="status" aria-live="polite">Cargando fichas, loci y estadísticas del texto latino...</p>
 <section id="ov-repertory">
   <div class="ov-layout">
    <aside class="ov-index" aria-label="Índice de personajes y lugares">
-    <header><h2>Índice alfabético</h2><small id="ov-index-count">Cargando...</small></header>
+    <header><h2 data-i18n="alphabetical">Índice alfabético</h2><small id="ov-index-count">Cargando...</small></header>
     <div id="ov-list" aria-label="Seleccionar personaje o lugar"><p class="ov-empty">Preparando las referencias...</p></div>
    </aside>
    <section id="ov-detail" class="ov-detail" aria-live="polite">
@@ -60,25 +70,25 @@
    </section>
   </div>
   <section id="ov-text-section" class="ov-stats ov-hidden" aria-label="Concordancia libre de nombres y términos">
-   <h2>Buscar cualquier forma en los diez libros</h2>
+   <h2 data-i18n="freeSearch">Buscar cualquier forma en los diez libros</h2>
    <p class="ov-note">El buscador también recorre las 731 unidades textuales aunque no exista una ficha de persona o lugar. Una coincidencia literal no constituye una identificación histórica por sí sola; las biografías no documentadas se incorporarán tras contrastar fuentes.</p>
    <p id="ov-text-count" role="status"></p>
    <div id="ov-text-results"></div>
   </section>
 </section>
 <section id="ov-statistics" class="ov-stats ov-hidden" aria-labelledby="ov-stats-heading">
- <h2 id="ov-stats-heading">Análisis textual de los diez libros</h2>
+ <h2 id="ov-stats-heading" data-i18n="statsHeading">Análisis textual de los diez libros</h2>
  <p class="ov-note"><strong>Alcance:</strong> recuento de tokens del alfabeto latino y de palabras en grafía griega del <strong>texto latino editorial V514</strong>. No suma los paratextos, traducciones o comentarios y no describe todavía la escritura del Codex H, que es un manuscrito no transcrito íntegramente. Los números no son lemas y las diferencias entre ediciones pueden modificar el total.</p>
- <h3 class="ov-mini-title">Palabras por libro</h3>
+ <h3 class="ov-mini-title" data-i18n="byBook">Palabras por libro</h3>
  <div style="overflow-x:auto" id="ov-books"></div>
- <h3 class="ov-mini-title">Tema y palabras por capítulo</h3>
- <label for="ov-stat-book">Elegir libro</label>
+ <h3 class="ov-mini-title" data-i18n="byChapter">Tema y palabras por capítulo</h3>
+ <label for="ov-stat-book" data-i18n="chooseBook">Elegir libro</label>
  <select id="ov-stat-book" class="ov-select">
  <option value="1">Libro I</option><option value="2">Libro II</option><option value="3">Libro III</option><option value="4">Libro IV</option><option value="5">Libro V</option><option value="6">Libro VI</option><option value="7">Libro VII</option><option value="8">Libro VIII</option><option value="9">Libro IX</option><option value="10">Libro X</option>
  </select>
  <p class="ov-note">Los temas se tomaron de los sumarios editoriales donde existen; para capítulos sin resumen localizado se indica que debe consultarse el texto.</p>
  <div id="ov-chapters" style="overflow-x:auto"></div>
- <h3 class="ov-mini-title">Tiempos y formas verbales del latín</h3>
+ <h3 class="ov-mini-title" data-i18n="verbsHeading">Tiempos y formas verbales del latín</h3>
  <p class="ov-note"><strong>Precaución filológica:</strong> esto es un repertorio de <em>formas candidatas por terminación</em>, no un análisis morfológico completo. La morfología latina tiene homógrafos, formas pasivas, subjuntivas e irregulares; una terminación sola no identifica con certeza un tiempo. Los recuentos a continuación son aproximaciones exploratorias y los ejemplos enlazan a la lectura exacta del locus para comprobarlos.</p>
  <div id="ov-verbs"></div>
  <p class="ov-note">Para una clasificación rigurosa por persona, número, modo, voz y tiempo hace falta un analizador morfológico latino con desambiguación contextual y cotejo manual. Los textos griegos embebidos deben estudiarse por separado.</p>
