@@ -163,11 +163,12 @@ function restoreFeature(){
 }
 function allowedFeaturedImage(u){
  try{const x=new URL(u);return x.protocol==="https:"&&
- (x.hostname==="upload.wikimedia.org"||x.hostname==="covers.openlibrary.org"||x.hostname==="images.metmuseum.org"||x.hostname.endsWith(".metmuseum.org"))}catch{return false}
+ (x.hostname==="upload.wikimedia.org"||x.hostname==="thumb.wikimedia.org"||x.hostname==="covers.openlibrary.org"||x.hostname==="images.metmuseum.org"||x.hostname.endsWith(".metmuseum.org"))}catch{return false}
 }
 function considerFeatured(rows,query){
  const q=norm(query),isBook=/\b(libro|book|livre|medieval|codex|codice|codex|incunable|manuscrito|manuscript|portada|cover|edicion|edition)\b/.test(q);
- const options=rows.filter(x=>x.image&&allowedFeaturedImage(x.image)).map(x=>{
+ const qPythagoras=/\b(pitagoras|pythagoras)\b/.test(q)&&!/\b(regio|rhegium)\b/.test(q);
+ const options=rows.filter(x=>x.image&&allowedFeaturedImage(x.image)&&!(qPythagoras&&/\b(de regio|of rhegium|da reggio)\b/.test(norm(x.title)))).map(x=>{
   const match=norm(x.title).includes(q)||q.includes(norm(x.title));
   const exact=norm(x.title)===q;
   let weight=x.rating+(match?25:0)+(exact?65:0);
@@ -192,6 +193,34 @@ function considerFeatured(rows,query){
  const credit=$("featured-credit");credit.replaceChildren(document.createTextNode(row.imageCredit||"Imagen procedente de fuente externa"));
  const page=row.imageRights||row.link;const a=anchor(" · ficha de imagen y licencia ↗",page);if(a)credit.append(a);
 }
+
+/* Iconografía de autoridad para casos históricos homónimos.
+   No convertir una semejanza de nombre en identidad del personaje. */
+async function curatedHistoricalImage(query){
+ const q=norm(query);
+ let target=null;
+ if(/\b(pitagoras|pythagoras)\b/.test(q)&&!/\b(regio|rhegium|reggio)\b/.test(q)){
+  target={name:"Pythagoras Bust Vatican Museum.jpg",title:"Pitágoras de Samos",
+   description:"Busto tradicionalmente identificado con Pitágoras, conservado en los Museos Vaticanos. Representación posterior: no es un retrato contemporáneo del filósofo."};
+ }else if(/\b(vitruvio|vitruvius|vitruve)\b/.test(q)&&!/\b(hombre|man|leonardo)\b/.test(q)){
+  target={name:"Vitruvius, Florence, Plut. 30.10.jpg",title:"Vitruvio · manuscrito histórico",
+   description:"Folio ilustrado de De architectura, Florencia, Biblioteca Medicea Laurenziana, Plut. 30.10. Testimonio histórico, no retrato contemporáneo de Vitruvio."};
+ }
+ if(!target)return {name:"Iconografía histórica",rows:[]};
+ const p=new URLSearchParams({action:"query",prop:"imageinfo",titles:"File:"+target.name,iiprop:"url|extmetadata",iiurlwidth:"720",iilimit:"1",format:"json",origin:"*"});
+ const d=await fetchJSON("https://commons.wikimedia.org/w/api.php?"+p,12000);
+ const page=Object.values(d.query?.pages||{})[0],info=page?.imageinfo?.[0];
+ const image=info?.thumburl||info?.url;
+ if(!allowedFeaturedImage(image))throw Error("La fotografía patrimonial no está disponible");
+ const pageLink=info.descriptionurl||"https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(target.name.replace(/ /g,"_"));
+ const license=htmlText(info.extmetadata?.LicenseShortName?.value||"licencia en ficha institucional");
+ const record={type:"wikipedia",title:target.title,author:"Wikimedia Commons",excerpt:target.description,
+  meta:"Iconografía histórica identificada por objeto e institución",
+  rating:2200,link:pageLink,image,imageRights:pageLink,
+  imageCredit:"Wikimedia Commons · "+license+" · consultar autor y ficha",imageKind:"documentary",source:"FONDO ICONOGRÁFICO"};
+ return {name:"Iconografía histórica · autor y obra identificados",rows:[],featured:record};
+}
+
 function bindAcademia(){
  for(const b of document.querySelectorAll("button.academic-pill[data-domain]")){
   b.addEventListener("click",()=>{
@@ -263,7 +292,8 @@ async function search(){
  if(internal){rows=[...liveBooks(q,concept),...livePages(q,concept)];display(rows,q,T().searching)}
  const pending=[];
  if(internal)pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
- if(outside){pending.push(wiki(q,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
+ if(outside){pending.push(curatedHistoricalImage(q).catch(e=>({name:"Iconografía sin respuesta: "+e.message,rows:[]})));
+  pending.push(wiki(q,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
   if(S.lang!=="en")pending.push(wiki(q,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
   pending.push(openLibrary(q).then(rows=>({name:"Open Library",rows})).catch(e=>({name:"Open Library sin respuesta: "+e.message,rows:[]})));
@@ -274,7 +304,7 @@ async function search(){
  if(!pending.length){display(rows,q,"Índice interno");return}
  let completed=0;
  await Promise.all(pending.map(p=>p.then(value=>{
-  if(id!==S.searchId)return;rows.push(...value.rows);considerFeatured(value.rows,q);completed++;
+  if(id!==S.searchId)return;rows.push(...value.rows);if(value.featured)considerFeatured([value.featured],q);else considerFeatured(value.rows,q);completed++;
   display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
  })));
  if(id===S.searchId)display(rows,q,"Búsqueda finalizada");
