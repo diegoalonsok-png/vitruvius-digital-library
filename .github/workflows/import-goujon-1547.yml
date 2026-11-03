@@ -1,0 +1,28 @@
+name: Archive Jean Goujon 1547 Houghton illustrations
+on:
+  push:
+    paths:
+      - 'scripts/import-goujon-1547.py'
+      - '.github/workflows/import-goujon-1547.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Import Houghton Library 1547 images
+        run: python scripts/import-goujon-1547.py
+      - name: Commit local archival images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/hombre-vitruvio/goujon-martin-1547-*.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Add Jean Goujon 1547 woodcut reproduction images"
+            git push
+          fi
