@@ -33,6 +33,41 @@ function language(){return $("classic-ui-language").value||"es";}
 function terms(){return L[language()];}
 function navLink(url,txt){return '<a target="_blank" rel="noopener noreferrer" href="'+safe(url)+'">'+safe(txt)+' ↗</a>';}
 function filters(){const q=fold($("classic-query").value),lang=$("classic-language").value,genre=$("classic-genre").value;return works.filter(w=>(!lang||w.language===lang)&&(!genre||w.genre===genre)&&(!q||fold([w.author,w.title,w.genre,w.dating,w.language].join(" ")).includes(q)));}
+let suggestionIndex=-1;
+function showBookSuggestions(){
+ const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
+ const matches=filters().slice(0,40);list.replaceChildren();suggestionIndex=-1;
+ if(!matches.length){const empty=document.createElement("div");empty.className="classic-suggestion";empty.textContent=language()==="en"?"No matching books.":"No hay libros coincidentes.";list.append(empty)}
+ else for(const w of matches){const item=document.createElement("button");item.type="button";item.className="classic-suggestion";item.setAttribute("role","option");item.dataset.work=w.id;item.setAttribute("aria-selected","false");
+ const title=document.createElement("strong");title.textContent=w.title;const meta=document.createElement("small");meta.textContent=w.author+" · "+(w.pdf?.url?"PDF":w.localVersions?.length?"Latín / traducciones":w.localReader?.verified?"Texto bilingüe":"Texto completo");
+ item.append(title,meta);item.addEventListener("mousedown",event=>event.preventDefault());item.addEventListener("click",()=>selectSuggestion(w.id));list.append(item)}
+ list.hidden=false;field.setAttribute("aria-expanded","true");
+}
+function hideBookSuggestions(){const list=$("classic-search-suggestions");if(list)list.hidden=true;const field=$("classic-query");if(field){field.setAttribute("aria-expanded","false");field.removeAttribute("aria-activedescendant")}}
+function selectSuggestion(id){const w=works.find(x=>x.id===id);if(!w)return;$("classic-query").value=w.title;hideBookSuggestions();choose(w.id);$("classic-detail").scrollIntoView({block:"nearest",behavior:"smooth"});}
+function initBookSuggestions(){
+ const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
+ field.addEventListener("focus",showBookSuggestions);
+ field.addEventListener("click",showBookSuggestions);
+ field.addEventListener("input",()=>{showBookSuggestions()});
+ field.addEventListener("keydown",event=>{
+  if(event.key==="Escape"){hideBookSuggestions();return}
+  if(event.key==="ArrowDown"||event.key==="ArrowUp"){
+   event.preventDefault();if(list.hidden)showBookSuggestions();
+   const options=[...list.querySelectorAll("button[role=option]")];if(!options.length)return;
+   suggestionIndex=(suggestionIndex+(event.key==="ArrowDown"?1:-1)+options.length)%options.length;
+   options.forEach((o,i)=>o.setAttribute("aria-selected",String(i===suggestionIndex)));
+   options[suggestionIndex].scrollIntoView({block:"nearest"});return;
+  }
+  if(event.key==="Enter"&&!list.hidden){
+   const options=[...list.querySelectorAll("button[role=option]")];
+   const option=options[suggestionIndex]||options[0];if(option){event.preventDefault();selectSuggestion(option.dataset.work)}
+  }
+ });
+ document.addEventListener("pointerdown",event=>{if(!event.target.closest(".classic-search-wrap"))hideBookSuggestions()});
+ field.addEventListener("blur",()=>{if(!list.matches(":hover"))hideBookSuggestions()});
+}
+
 function render(){const data=filters(),t=terms();$("classic-count").textContent=data.length+" "+t.search;const target=$("classic-list");target.replaceChildren();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";b.addEventListener("click",()=>choose(w.id));target.append(b)}if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=data[0].pdf?.url?"pdf":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));detail();}
 function choose(id){selected=id;tab=works.find(x=>x.id===id)?.pdf?.url?"pdf":"text";render();const u=new URL(location.href);u.searchParams.set("work",id);history.replaceState(null,"",u);}
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=language()==="en"?"No results.":"Sin resultados.";return}
@@ -46,6 +81,6 @@ if(tab==="manuscript"){pane.innerHTML="<h3>"+safe(t.manuscript)+"</h3><p>"+safe(
 if(tab==="edition"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,"en");}else if(tab==="edition"){pane.innerHTML="<h3>"+safe(t.edition)+"</h3><p>"+safe(w.reading.status)+"</p><p>"+safe(t.noTrans)+"</p><p>"+safe(t.notHosted)+"</p><div class='classic-linkline'>"+navLink(w.links.scaife,t.scaife)+"</div>";}
 if(tab==="pdf"){if(w.pdf?.url){pane.innerHTML="<h3>"+safe(t.pdf)+"</h3><p>"+safe(w.pdf.status)+"</p><div class='classic-linkline'>"+navLink(w.pdf.url,t.open)+"</div>";const frame=document.createElement("iframe");frame.src=w.pdf.url+"#toolbar=1&navpanes=0";frame.title="PDF · "+w.author+" · "+w.title;frame.loading="lazy";pane.append(frame);}else{pane.innerHTML="<h3>"+safe(t.pdf)+"</h3><p>"+safe(t.noPdf)+"</p><div class='classic-linkline'>"+navLink(w.links.archive,t.archive)+" "+navLink(w.links.gallica,t.gallica)+"</div>";}}
 }
-async function boot(){const r=await fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json");if(!r.ok)throw Error("HTTP "+r.status);works=((await r.json()).works||[]).filter(w=>w.publicStatus==="lectura-local-completa"&&(w.localReader?.verified||w.pdf?.url||w.localHtml));const genres=[...new Set(works.map(x=>x.genre))].sort((a,b)=>a.localeCompare(b,"es"));for(const s of genres){const o=document.createElement("option");o.textContent=o.value=s;$("classic-genre").append(o)}const wanted=new URLSearchParams(location.search).get("work");selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";tab=works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text";try{const saved=localStorage.getItem("vitruvius-ui-lang");if(L[saved])$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();render();});translateInterface();render();}
+async function boot(){const r=await fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json");if(!r.ok)throw Error("HTTP "+r.status);works=((await r.json()).works||[]).filter(w=>w.publicStatus==="lectura-local-completa"&&(w.localReader?.verified||w.pdf?.url||w.localHtml));const genres=[...new Set(works.map(x=>x.genre))].sort((a,b)=>a.localeCompare(b,"es"));for(const s of genres){const o=document.createElement("option");o.textContent=o.value=s;$("classic-genre").append(o)}const wanted=new URLSearchParams(location.search).get("work");selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";tab=works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text";try{const saved=localStorage.getItem("vitruvius-ui-lang");if(L[saved])$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();render();});translateInterface();render();initBookSuggestions();}
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
 })();
