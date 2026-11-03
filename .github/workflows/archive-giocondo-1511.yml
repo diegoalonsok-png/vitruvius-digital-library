@@ -1,0 +1,28 @@
+name: Archive Fra Giocondo 1511 folios in repository
+on:
+  push:
+    paths:
+      - 'scripts/import-giocondo-1511.py'
+      - '.github/workflows/archive-giocondo-1511.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive-giocondo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Archive authentic facsimile images
+        run: python scripts/import-giocondo-1511.py
+      - name: Publish image files to GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/giocondo-1511
+          if ! git diff --cached --quiet; then
+            git commit -m "Archive Fra Giocondo 1511 facsimile plates"
+            git push
+          fi
