@@ -1,0 +1,269 @@
+{
+  "schema": "atlas-geographicus-1",
+  "updated": "2026-11-03",
+  "evidence": "Coordenadas de referencia espacial aproximadas para facilitar la navegación; no señalan la extensión exacta de la ciudad antigua ni la ubicación de un edificio. Entrada y loci provienen del Onomasticon editorial V514, salvo Fanum Fortunae (añadido a partir de V.1.6–10).",
+  "source": "data/onomasticon-vitruvianum.json",
+  "geo": [
+    {
+      "id": "alexandria",
+      "lat": 31.2,
+      "lon": 29.91,
+      "geotype": "ciudad",
+      "modern": "Alejandría (Egipto)",
+      "confidence": "alta"
+    },
+    {
+      "id": "athens",
+      "lat": 37.975,
+      "lon": 23.728,
+      "geotype": "ciudad",
+      "modern": "Atenas (Grecia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "babylon",
+      "lat": 32.542,
+      "lon": 44.421,
+      "geotype": "ciudad",
+      "modern": "Babilonia (Irak)",
+      "confidence": "alta"
+    },
+    {
+      "id": "carthage",
+      "lat": 36.852,
+      "lon": 10.323,
+      "geotype": "ciudad",
+      "modern": "Cartago (Túnez)",
+      "confidence": "alta"
+    },
+    {
+      "id": "corinth",
+      "lat": 37.906,
+      "lon": 22.879,
+      "geotype": "ciudad",
+      "modern": "Corinto (Grecia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "croton",
+      "lat": 39.079,
+      "lon": 17.124,
+      "geotype": "ciudad",
+      "modern": "Crotone (Italia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "ephesus",
+      "lat": 37.941,
+      "lon": 27.342,
+      "geotype": "ciudad",
+      "modern": "Éfeso (Turquía)",
+      "confidence": "alta"
+    },
+    {
+      "id": "halicarnassus",
+      "lat": 37.037,
+      "lon": 27.424,
+      "geotype": "ciudad",
+      "modern": "Bodrum / Halicarnaso (Turquía)",
+      "confidence": "alta"
+    },
+    {
+      "id": "miletus",
+      "lat": 37.531,
+      "lon": 27.278,
+      "geotype": "ciudad",
+      "modern": "Mileto (Turquía)",
+      "confidence": "alta"
+    },
+    {
+      "id": "pergamum",
+      "lat": 39.132,
+      "lon": 27.185,
+      "geotype": "ciudad",
+      "modern": "Pérgamo / Bergama (Turquía)",
+      "confidence": "alta"
+    },
+    {
+      "id": "puteoli",
+      "lat": 40.831,
+      "lon": 14.121,
+      "geotype": "ciudad",
+      "modern": "Pozzuoli (Italia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "rhodes",
+      "lat": 36.444,
+      "lon": 28.224,
+      "geotype": "ciudad/isla",
+      "modern": "Rodas (Grecia)",
+      "confidence": "media"
+    },
+    {
+      "id": "rome",
+      "lat": 41.891,
+      "lon": 12.487,
+      "geotype": "ciudad",
+      "modern": "Roma (Italia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "samos",
+      "lat": 37.756,
+      "lon": 26.978,
+      "geotype": "isla",
+      "modern": "Samos (Grecia), posición orientativa insular",
+      "confidence": "media"
+    },
+    {
+      "id": "syracuse",
+      "lat": 37.074,
+      "lon": 15.287,
+      "geotype": "ciudad",
+      "modern": "Siracusa (Italia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "tarentum",
+      "lat": 40.474,
+      "lon": 17.241,
+      "geotype": "ciudad",
+      "modern": "Taranto (Italia)",
+      "confidence": "alta"
+    },
+    {
+      "id": "asia",
+      "lat": null,
+      "lon": null,
+      "geotype": "región",
+      "modern": "Asia / Asia Menor: extensión variable",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "campania",
+      "lat": null,
+      "lon": null,
+      "geotype": "región",
+      "modern": "Campania: territorio histórico",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "egypt",
+      "lat": null,
+      "lon": null,
+      "geotype": "región",
+      "modern": "Egipto: territorio histórico",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "italy",
+      "lat": null,
+      "lon": null,
+      "geotype": "región",
+      "modern": "Italia: territorio histórico",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "sicily",
+      "lat": null,
+      "lon": null,
+      "geotype": "región/isla",
+      "modern": "Sicilia: isla y región histórica",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "euphrates",
+      "lat": null,
+      "lon": null,
+      "geotype": "río",
+      "modern": "Éufrates: curso fluvial",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "ganges",
+      "lat": null,
+      "lon": null,
+      "geotype": "río",
+      "modern": "Ganges: curso fluvial",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "nile",
+      "lat": null,
+      "lon": null,
+      "geotype": "río",
+      "modern": "Nilo: curso fluvial",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "tiber",
+      "lat": null,
+      "lon": null,
+      "geotype": "río",
+      "modern": "Tíber: curso fluvial",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "tigris",
+      "lat": null,
+      "lon": null,
+      "geotype": "río",
+      "modern": "Tigris: curso fluvial",
+      "confidence": "no puntual"
+    },
+    {
+      "id": "sparta",
+      "lat": null,
+      "lon": null,
+      "geotype": "revisión filológica",
+      "modern": "Sparta: revisar «sparto» en V514; no se considera nombre de ciudad confirmado",
+      "confidence": "no acreditado"
+    }
+  ],
+  "extra": [
+    {
+      "id": "fanum-fortunae",
+      "kind": "place",
+      "name": "Fano · Fanum Fortunae",
+      "period": "Piceno / costa adriática de Italia",
+      "summary": "Ciudad donde Vitruvio declara haber construido y dirigido una basílica, descrita con proporciones y soluciones constructivas en el libro V. El punto representa la ciudad histórica, no un plano arqueológico exacto del edificio.",
+      "aliases": [
+        "Fanum Fortunae",
+        "Colonia Iulia Fanestris",
+        "Fano",
+        "Basílica de Fano"
+      ],
+      "latin_forms": [
+        "Fani",
+        "Fanestri"
+      ],
+      "greek_name": null,
+      "loci": [
+        "5.1.6",
+        "5.1.7",
+        "5.1.8",
+        "5.1.9",
+        "5.1.10"
+      ],
+      "sourceStatus": "Entrada contextual adicional a partir de la descripción de la basílica en De architectura V.1.6–10. Las formas latinas deben cotejarse con la edición consultada.",
+      "source": "https://www.mlahanas.de/Greeks/Texts/Vitruvius/Book5.html",
+      "internal": "basilica-fano.html",
+      "coordinates": {
+        "lat": 43.84,
+        "lon": 13.019
+      },
+      "confidence": "alta",
+      "geotype": "ciudad",
+      "modern": "Fano (Marche, Italia)",
+      "note": "El emplazamiento exacto de la basílica y las atribuciones arqueológicas se estudian separadamente: el marcador es municipal y orientativo."
+    }
+  ],
+  "method": [
+    "Una mención en el Onomasticon V514 no equivale a una lectura certificada en el manuscrito Harley 2767.",
+    "Las formas griegas del índice son referencias eruditas y no se presentan como testimonios griegos del manuscrito de Vitruvio.",
+    "Señalar una ciudad en el mapa no localiza templos, basílicas ni otros edificios.",
+    "Los topónimos derivados de adjetivos, etnónimos o vocablos homógrafos requieren control filológico; en particular «sparto» no prueba por sí solo una mención de Esparta.",
+    "Los ríos y regiones no reciben pines puntuales ficticios."
+  ]
+}
