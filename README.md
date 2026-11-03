@@ -17,6 +17,8 @@ Each of Diego A. Kurilo's three editorial works has a distinct, crawlable biblio
 
 **Project DOI:** [10.5281/zenodo.23868911](https://doi.org/10.5281/zenodo.23868911).
 
+**Scientific cooperation and institutional support:** [Collaborations dossier](colaboraciones.html). Distinguishes documented external resource mentions from endorsements, partnerships, and financial sponsorship; none is implied by a reference link.
+
 ### Vatican Library manuscripts
 
 [Selective Vatican manuscript bibliography](codices-vaticanos.html) lists Urb. lat. 293, Arch. Cap. S. Pietro H.34, Reg. lat. 1328, 1504 and 2079 with catalogue links and explicit rights conditions. Vatican Apostolic Library images are *not* copied to this project; online republication requires permission from the rights holder.
