@@ -48,6 +48,7 @@ if(manuscript&&manuscript.rating>230)return manuscript;
 const exactLocus=/\b(?:[IVX]{1,4}|\d{1,2})\s*[.,:]\s*\d{1,2}\s*[.,:]\s*\d{1,2}\b/i.test(query);
 if(exactLocus){const p=rows.find(x=>x.type==="passage"&&x.rating>200);if(p)return p}
 const wiki=rows.filter(x=>x.type==="wikipedia").sort((a,b)=>relevance(b,query)+b.rating/20-relevance(a,query)-a.rating/20)[0];
+// Priorizar al sujeto enciclopédico exacto, no a libros homónimos ni menciones incidentales.
 if(wiki&&relevance(wiki,query)>=20)return wiki;
 const local=rows.find(x=>["book","section","manuscript","passage"].includes(x.type));
 return local||wiki||rows[0]||null
@@ -56,7 +57,7 @@ function wikiSummary(result){
 if(!result.pageid||!result.wikiLang)return Promise.resolve(null);
 const cacheKey=result.wikiLang+":"+result.pageid;
 if(!summaries.has(cacheKey)){
- const p=new URLSearchParams({action:"query",prop:"extracts|info",exintro:"1",explaintext:"1",inprop:"url",pageids:String(result.pageid),format:"json",origin:"*"});
+ const p=new URLSearchParams({action:"query",prop:"extracts|info",explaintext:"1",inprop:"url",pageids:String(result.pageid),format:"json",origin:"*"});
  const request=fetch("https://"+result.wikiLang+".wikipedia.org/w/api.php?"+p,{headers:{accept:"application/json"}}).then(r=>{
  if(!r.ok)throw Error("HTTP "+r.status);return r.json()
  }).then(data=>data.query?.pages?.[result.pageid]||null).catch(()=>null);
@@ -94,9 +95,27 @@ aside(rows);references([top,...rows],phrase("Wikipedia: extracto adaptado según
 if(!top.pageid)return;
 const d=await wikiSummary(top);if(token!==active||!d?.extract)return;
 $("article-body").replaceChildren();
-paragraph(cut(d.extract,2200),"article-lead");
-const p=make("p",phrase("Consultar el artículo, historial y bibliografía original:","Read full article, editorial history and bibliography:","Consulter l’article, son historique et sa bibliographie :"),"article-note");
-const a=href(d.fullurl||top.link,top.title+" ↗");if(a)p.append(document.createTextNode(" "),a);$("article-body").append(p)
+const raw=String(d.extract||"").trim();
+const chunks=raw.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+const sections=chunks.length>1?chunks:[raw.match(/[^.!?]+[.!?]+(?:\s|$)/g)?.join(" ")||raw];
+let length=0,shown=0;
+for(const chunk of sections){
+ if(length>6800 || shown>=14)break;
+ const clean=cut(chunk,Math.min(1600,Math.max(450,7200-length)));
+ if(!clean)continue;
+ paragraph(clean,shown===0?"article-lead":undefined);
+ shown++;length+=clean.length;
+}
+if(!shown)paragraph(top.excerpt,"article-lead");
+heading(phrase("Bibliografía y lecturas relacionadas","Bibliography and further reading","Bibliographie et lectures complémentaires"));
+const related=rows.filter(x=>x.link&&x.link!==top.link&&["passage","book","section","article","wikidata"].includes(x.type)).slice(0,6);
+if(related.length){
+ const ul=make("ul",undefined,"article-related");
+ for(const item of related){const li=make("li");const a=href(item.link,item.title);if(a)li.append(a);ul.append(li)}
+ $("article-body").append(ul);
+}else paragraph(phrase("No hay documentos adicionales identificados para esta consulta.","No additional documents identified for this search.","Aucun document supplémentaire identifié pour cette recherche."),"article-note");
+const p=make("p",phrase("Texto enciclopédico procedente de Wikipedia. Consultar el artículo, su historial y referencias originales:","Encyclopedia text from Wikipedia. Consult the full article, edit history and original references:","Texte encyclopédique provenant de Wikipédia. Consulter l’article, son historique et les sources :"),"article-note");
+const a=href(d.fullurl||top.link,phrase("Abrir fuente original ↗","Open original source ↗","Ouvrir la source ↗"));if(a)p.append(document.createTextNode(" "),a);$("article-body").append(p)
 }
 function renderOther(top,rows){reset(top.title,top.author||top.source||"",phrase("Ficha documental · fuentes verificables","Documentary record · verified sources","Notice documentaire · sources vérifiables"));
 paragraph(top.excerpt,"article-lead");
