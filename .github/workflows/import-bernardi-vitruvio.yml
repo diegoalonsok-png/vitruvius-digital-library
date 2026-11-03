@@ -1,0 +1,59 @@
+name: Importar grabado histórico de Vitruvio (Bernardi–Raggio)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-bernardi-vitruvio.yml'
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Descargar copia completa de dominio público y validar procedencia
+        run: |
+          python3 - <<'PY'
+          import pathlib, urllib.request, json, hashlib, time
+          url='https://upload.wikimedia.org/wikipedia/commons/9/9f/Vitruvio_Pollione_portrait.jpg'
+          dest=pathlib.Path('images/grabados/vitruvio-pollione-bernardi-raggio.jpg')
+          headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (academic project; Wikimedia Commons public-domain print)','Accept':'image/jpeg'}
+          data=None
+          for trial in range(4):
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as response:
+                      content_type=response.headers.get('Content-Type','')
+                      raw=response.read(9_000_000)
+                  if not content_type.startswith('image/') or not raw.startswith(bytes.fromhex('ffd8ff')) or len(raw)<250_000:
+                      raise ValueError('Respuesta no es JPEG completo: '+content_type+', bytes '+str(len(raw)))
+                  data=raw;break
+              except Exception as err:
+                  if trial==3:raise
+                  print('Reintento',trial+1,str(err),flush=True);time.sleep(5*(trial+1))
+          assert data is not None
+          dest.parent.mkdir(parents=True,exist_ok=True)
+          dest.write_bytes(data)
+          sha=hashlib.sha256(data).hexdigest()
+          print('Imagen local validada:',str(dest),'bytes',len(data),'sha256',sha)
+          path=pathlib.Path('data/iconografia-vitruviana.json')
+          catalog=json.loads(path.read_text(encoding='utf-8'))
+          rec=next(x for x in catalog['primaryRecords'] if x['id']=='bernardi-raggio-vitruvio-pollione')
+          assert rec['sourceImage']==url
+          rec['image']=str(dest)
+          rec['imageVerifiedLocally']=True
+          rec['imageSHA256']=sha
+          rec['imagePixelSize']='2446 × 3668 px (original Commons, sin recorte)'
+          path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Publicar original completo y actualizar atlas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/grabados/vitruvio-pollione-bernardi-raggio.jpg data/iconografia-vitruviana.json
+          if git diff --cached --quiet; then echo "Sin cambios"; else
+            git commit -m "Preserve full Bernardi–Raggio Vitruvio portrait locally with verified hash"
+            git push
+          fi
