@@ -434,5 +434,29 @@ try{
      await page.close();
    }
  });
+
+ await test('Atlas geográfico: abrir ficha científica desde el mapa y la columna derecha',async()=>{
+   const page=await pageFor('atlas-geographicus.html');
+   await page.waitForFunction(()=>document.querySelector('#place-count')?.textContent.includes('28 lugares'),{timeout:15000});
+   await page.locator('#place-query').fill('Crotona');
+   const croton=page.locator('[data-place-id="croton"]');
+   assert.equal(await croton.count(),1,'No aparece Crotona en el índice filtrado');
+   await croton.click();
+   await page.locator('#place-expand').click();
+   assert.equal(await page.locator('#place-dossier').evaluate(x=>x.open),true,'La ficha ampliada no se abre desde la columna derecha');
+   assert.match(await page.locator('#dossier-title').innerText(),/Croton/);
+   assert.match(await page.locator('#dossier-fields').innerText(),/Crotone/);
+   assert(await page.locator('#dossier-loci a[href*="locus=9.praef.2"]').count()>0,'Falta vínculo a locus de Crotona');
+   await page.locator('#dossier-close').click();
+   assert.equal(await page.locator('#place-dossier').evaluate(x=>x.open),false,'No cierra la ficha');
+   const mapReady=await page.evaluate(()=>typeof L!=='undefined'&&typeof markerById!=='undefined'&&markerById.has('croton'));
+   if(mapReady){
+     await page.evaluate(()=>markerById.get('croton').openPopup());
+     await page.locator('.map-popup-select[data-popup-place="croton"]').click();
+     assert.equal(await page.locator('#place-dossier').evaluate(x=>x.open),true,'El botón del mapa Abrir ficha científica no abre la ventana');
+     await page.locator('#dossier-close').click();
+   }else console.log('SKIP mapa emergente: Leaflet externo no disponible, comprobada apertura desde la ficha lateral');
+   await page.close();
+ });
 }finally{await browser?.close();server.kill()}
 if(failures.length){console.error('\nAUDITORIA CON FALLOS\n'+failures.join('\n'));process.exitCode=1}else console.log('\nAuditoría básica de navegador completada sin fallos.');
