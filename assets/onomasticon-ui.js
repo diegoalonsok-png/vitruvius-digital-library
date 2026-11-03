@@ -17,7 +17,19 @@ window.OVI18N={t,get lang(){return lang},get theme(){return theme},translate:tra
 function mount(){
   const selector=document.getElementById('ov-language'),b=document.getElementById('ov-color');
   selector.value=lang;
-  selector.addEventListener('change',()=>{lang=selector.value;try{localStorage.setItem(langKey,lang)}catch{}translated();paint();document.dispatchEvent(new CustomEvent("ov-locale-changed",{detail:{lang}}))});
+  const searchSelector=document.getElementById("ov-language-search");
+  if(searchSelector)searchSelector.value=lang;
+  const changeLanguage=value=>{
+    if(!dict[value])return;
+    lang=value;
+    selector.value=value;
+    if(searchSelector)searchSelector.value=value;
+    try{localStorage.setItem(langKey,lang)}catch{}
+    translated();paint();
+    document.dispatchEvent(new CustomEvent("ov-locale-changed",{detail:{lang}}));
+  };
+  selector.addEventListener('change',()=>changeLanguage(selector.value));
+  if(searchSelector)searchSelector.addEventListener('change',()=>changeLanguage(searchSelector.value));
   b.addEventListener('click',()=>{theme=theme==="dark"?"light":"dark";try{localStorage.setItem(themeKey,theme)}catch{}paint()});
   translated();paint();
 }
