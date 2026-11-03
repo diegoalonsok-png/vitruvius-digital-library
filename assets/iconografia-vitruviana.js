@@ -7,7 +7,7 @@ let items=[],filtered=[],visibleCount=24,activeIndex=0,zoom=1,offsetX=0,offsetY=
 const catLabels={codices:"Códices medievales",ediciones:"Portadas y folios impresos",proporcion:"Homo ad quadratum / ad circulum",ordenes:"Órdenes arquitectónicos",maquinas:"Maquinaria e ingeniería",arquitectura:"Arquitectura dibujada",lugares:"Lugares y arqueología"};
 function catOfBook(book){if(book===3)return "proporcion";if(book===4)return "ordenes";if(book===10||book===8)return "maquinas";if(book===5||book===6)return "arquitectura";return "ediciones";}
 function category(record){return catLabels[record.category]||record.category||"Documento";}
-function articleText(record){return [record.title,record.author,record.date,record.century,record.institution,record.shelfmark,record.folio,record.locus,record.production,record.notes,record.graphic,record.iconography,record.material,record.status,record.type].join(" ");}
+function articleText(record){return [record.title,record.author,record.date,record.century,record.institution,record.shelfmark,record.folio,record.locus,record.production,record.notes,record.graphic,record.iconography,record.material,record.status,record.type,record.visualType,...(record.tags||[])].join(" ");}
 function parseSectionBook(section){const value=String(section.id||"");return /^\d{1,2}$/.test(value)?Number(value):null;}
 function createDatasetItems(source,info){
   const sections=info?.sections||[];
