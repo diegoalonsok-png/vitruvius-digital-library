@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script defer src="assets/theme.js"></script>
-<script defer src="assets/atlas-geographicus.js?v=20261103-3"></script>
+<script defer src="assets/atlas-geographicus.js?v=20261103-4"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Atlas Geographicus Vitruvianus","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html","creator":{"@type":"Person","name":"Diego A. Kurilo"},"isAccessibleForFree":true,"inLanguage":"es","about":{"@type":"CreativeWork","name":"De architectura","author":{"@type":"Person","name":"Vitruvius"}}}</script>
 <style>
 .geography{max-width:1510px;margin:0 auto;padding:26px clamp(16px,3vw,44px) 70px;color:var(--ink,#223646);line-height:1.65}
@@ -116,6 +116,33 @@ html[data-theme=dark] .place-dossier .dossier-kicker{color:#e4c992}
 @media(max-width:640px){.place-dossier .dossier-topbar{padding:12px}.place-dossier #dossier-fields{grid-template-columns:1fr}.place-dossier .dossier-field dt{border-bottom:none;padding:12px 2px 0}.place-dossier .dossier-field dd{padding:2px 2px 12px}}
 @media print{.place-dossier{max-height:none;width:100%;max-width:100%;box-shadow:none}.place-dossier .dossier-topbar button{display:none}}
 
+
+/* Capas cartográficas, trazas regionales y pasajes textuales */
+.geo-map-switcher{display:flex;align-items:center;flex-wrap:wrap;gap:7px 15px;padding:10px 14px}
+.geo-map-layers{display:inline-flex;gap:5px}
+.geo-map-layers button{cursor:pointer;border:1px solid #a8916d;border-radius:3px;background:transparent;padding:8px 13px;font:700 12px/1.25 system-ui,sans-serif;color:inherit}
+.geo-map-layers button[aria-pressed="true"]{background:#244458;color:#fff;border-color:#244458}
+.geo-map-layers button:hover,.geo-map-layers button:focus-visible{outline:2px solid #ae8f56;outline-offset:2px}
+.geo-map-legend{font:700 11px system-ui,sans-serif}
+.geo-map-switcher #map-layer-status{flex-basis:100%;font:400 11px/1.45 system-ui,sans-serif;margin:0}
+.geo-swatch-reg{color:#c69752}.geo-swatch-river{color:#1e89c2}
+.geo-detail .place-passage{margin:24px 0 12px;border-top:2px solid #aa8a5b;padding-top:20px}
+.place-passage label,.dossier-passage label{display:block;font:700 12px system-ui,sans-serif;margin:11px 0 6px}
+.place-passage select,.dossier-passage select{width:100%;max-width:420px;border:1px solid #a49379;background:#fffdf6;color:#162f41;padding:10px 12px;min-height:44px;font:400 14px system-ui,sans-serif}
+.place-passage h4,.dossier-passage h4{font:600 15px/1.4 Georgia,serif;margin:14px 0 8px}
+.passage-evidence{border-left:3px solid #ba9655;padding:10px 12px;background:rgba(185,150,85,.10);font:400 12px/1.55 system-ui,sans-serif}
+.passage-language{font:700 11px/1.3 system-ui,sans-serif;letter-spacing:.06em;margin:17px 0 6px}
+.passage-text{font:400 14px/1.78 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left}
+.passage-text mark.toponym-match{background:#f4d562;color:#252d31;border-radius:2px;padding:0 2px}
+.dossier-passage{margin:24px 0;padding:19px;background:#f0eadf;border:1px solid #d3c3a7}
+.dossier-passage h3{margin:0 0 10px;font-size:1.43rem}
+.dossier-passage .passage-text{font-size:16px;line-height:1.9}
+html[data-theme="dark"] .place-passage select,html[data-theme="dark"] .dossier-passage select{background:#355267;color:#fff;border-color:#8398a4}
+html[data-theme="dark"] .dossier-passage{background:#324a5c;color:#f2eee7;border-color:#88949b}
+html[data-theme="dark"] .geo-map-layers button[aria-pressed="true"]{background:#dec18c;color:#172f43;border-color:#dec18c}
+@media(max-width:650px){.geo-map-switcher{align-items:flex-start}.geo-map-layers{width:100%}.geo-map-layers button{flex:1}}
+@media print{.geo-map-layers{display:none}}
+
 </style>
 </head>
 <body>
@@ -140,7 +167,14 @@ html[data-theme=dark] .place-dossier .dossier-kicker{color:#e4c992}
 <ul id="place-list"></ul>
 </section>
 <section class="geo-map-wrap" aria-label="Mapa de ciudades de Vitruvio">
-<div class="geo-map-toolbar">● Ciudades identificadas · ◉ Fano destacado · <span style="font-weight:400">Marcadores aproximados</span></div>
+<div class="geo-map-toolbar geo-map-switcher">
+ <div class="geo-map-layers" role="group" aria-label="Elegir base cartográfica">
+  <button id="map-modern" type="button" aria-pressed="true">Mapa moderno</button>
+  <button id="map-historic" type="button" aria-pressed="false">Mapa histórico</button>
+ </div>
+ <div class="geo-map-legend">● Ciudades · <span class="geo-swatch-reg">▧</span> Regiones · <span class="geo-swatch-river">━</span> Ríos · ◉ Fano</div>
+ <p id="map-layer-status" role="status">Mapa moderno OpenStreetMap · Áreas y ríos esquemáticos.</p>
+</div>
 <div id="vitruvian-map" role="application" aria-label="Mapa interactivo de ciudades y lugares mencionados por Vitruvio"></div>
 <p id="map-alert" hidden role="alert"></p>
 </section>
@@ -153,6 +187,18 @@ html[data-theme=dark] .place-dossier .dossier-kicker{color:#e4c992}
 <dl id="place-facts"></dl>
 <h3 class="subhead">Loci de De architectura</h3>
 <div id="place-loci"></div>
+<section class="place-passage" aria-labelledby="place-passage-heading">
+ <h3 class="subhead">Pasaje del tratado · latín y castellano</h3>
+ <label for="place-passage-select">Elegir un locus donde se menciona el lugar</label>
+ <select id="place-passage-select" aria-label="Elegir pasaje asociado al lugar"></select>
+ <h4 id="place-passage-heading"></h4>
+ <p class="passage-evidence" id="place-passage-evidence"></p>
+ <p class="passage-language">Latín · edición V514</p>
+ <div id="place-passage-latin" lang="la" class="passage-text"></div>
+ <p class="passage-language">Castellano · edición V514</p>
+ <div id="place-passage-translation" lang="es" class="passage-text"></div>
+ <p><a id="place-passage-reader" href="lector-bilingue.html" target="_blank" rel="noopener noreferrer">Leer el pasaje en el lector bilingüe ↗</a></p>
+</section>
 <div class="geo-actions">
 <button type="button" id="place-expand" class="open-dossier">Ampliar ficha científica ↗</button>
 <a id="place-onomasticon" href="onomasticon.html">Abrir Onomasticon</a>
@@ -186,6 +232,18 @@ html[data-theme=dark] .place-dossier .dossier-kicker{color:#e4c992}
 <h3>Referencias a los libros de Vitruvio</h3>
 <p>Seleccioná una referencia para abrir el texto latino y sus traducciones en el lector de la biblioteca.</p>
 <nav id="dossier-loci" aria-label="Loci de De architectura"></nav>
+<section class="dossier-passage" aria-labelledby="dossier-passage-heading">
+ <h3>Texto original y traducción castellana</h3>
+ <label for="dossier-passage-select">Seleccionar pasaje vinculado con este lugar</label>
+ <select id="dossier-passage-select" aria-label="Pasaje de Vitruvio"></select>
+ <h4 id="dossier-passage-heading"></h4>
+ <p class="passage-evidence" id="dossier-passage-evidence"></p>
+ <p class="passage-language">Latín · texto editorial V514</p>
+ <div class="passage-text" id="dossier-passage-latin" lang="la"></div>
+ <p class="passage-language">Castellano · traducción editorial V514</p>
+ <div class="passage-text" id="dossier-passage-translation" lang="es"></div>
+ <p><a id="dossier-passage-reader" href="lector-bilingue.html" target="_blank" rel="noopener noreferrer">Abrir este locus en el lector bilingüe ↗</a></p>
+</section>
 <h3>Fuentes y documentación</h3>
 <div class="dossier-links">
 <a id="dossier-onomasticon" href="onomasticon.html" target="_blank" rel="noopener noreferrer">Consultar Onomasticon ↗</a>
