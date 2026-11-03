@@ -98,3 +98,15 @@ html[data-theme="dark"] :is(.critical-form,.critical-parallel-edition){
 html[data-theme="dark"] :is(.critical-form,.critical-parallel-edition) :is(h2,h3,h4,label,p,strong){
   color:#f1ede4;
 }
+
+/* Cross-library locus navigation: never allow light-on-light labels. */
+html[data-theme="dark"] :is(#place-loci,#dossier-loci,.loci-list,.locus-links,.index-loci,.locus-pills) a {
+ background:#213b50!important;color:#f9ecd2!important;border-color:#d0b585!important;text-decoration:underline;text-decoration-color:#bda87d;
+}
+html[data-theme="dark"] :is(#place-loci,#dossier-loci,.loci-list,.locus-links,.index-loci,.locus-pills) a:hover,
+html[data-theme="dark"] :is(#place-loci,#dossier-loci,.loci-list,.locus-links,.index-loci,.locus-pills) a:focus-visible {
+ background:#e4c997!important;color:#152d41!important;outline:2px solid #ae8f5c;
+}
+html:not([data-theme="dark"]) :is(#place-loci,#dossier-loci,.loci-list,.locus-links,.index-loci,.locus-pills) a {
+ background:#faf5e9;color:#183a52;border-color:#ad946f;
+}
