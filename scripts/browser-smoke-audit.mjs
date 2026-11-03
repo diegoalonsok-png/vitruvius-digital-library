@@ -378,5 +378,61 @@ try{
    assert.match(await page.locator('#reading-output').innerText(),/I\.praef\.2/);
    await page.close();
  });
+
+ await test('Concordancia H: relaciones verificables, 1v sin inventar pasajes, búsqueda integral',async()=>{
+   const page=await pageFor('concordancia-folios.html');
+   await page.waitForFunction(()=>document.querySelector('#f-latin')?.textContent.includes('1.praef.2'),{timeout:18000});
+   assert.match(await page.locator('#f-latin-status').innerText(),/provisional/i,'Folio 1r no identificado como provisional');
+   assert.match(await page.locator('#f-evidence').innerText(),/imagen 9/,'Imagen 1r incorrecta');
+   assert(await page.locator('#f-open[href*="image=9"]').count()>0,'El enlace directo a H no lleva a imagen 9');
+   await page.locator('#f-folio').selectOption('1v');
+   assert.match(await page.locator('#f-evidence').innerText(),/imagen 10/,'Imagen del 1v distinta de 10');
+   assert.match(await page.locator('#f-latin').innerText(),/No hay transcripción ni pasaje/);
+   assert.match(await page.locator('#f-translation').innerText(),/Traducción no asignada/);
+   await page.locator('#f-search').fill('9.praef.10');
+   assert.match(await page.locator('#f-search-count').innerText(),/1 loci?/);
+   await page.locator('#f-search-results button').first().click();
+   assert.equal(await page.locator('#f-folio').inputValue(),'','No se debe atribuir folio a IX.praef.10');
+   assert.match(await page.locator('#f-evidence').innerText(),/Sin asignación material/);
+   assert.match(await page.locator('#f-latin').innerText(),/Archimed/i);
+   await page.locator('#f-lang').selectOption('en');
+   await page.waitForFunction(()=>document.querySelector('#f-translation-status')?.textContent.includes('English'),{timeout:15000}).catch(()=>{});
+   assert(await page.locator('#f-translation').innerText().then(t=>t.length>60),'Falta traducción en el locus');
+   await page.close();
+ });
+ await test('Cabecera principal: Laboratorio H y Claro juntos sin superposición',async()=>{
+   const page=await pageFor('index.html');
+   const lab=page.locator('.research-nav-controls .research-lab-button');
+   const theme=page.locator('.research-nav-controls .theme-switch');
+   await theme.waitFor({state:'visible',timeout:8000});
+   const a=await lab.boundingBox(),b=await theme.boundingBox();
+   assert(a&&b,'Faltan accesos Laboratorio H o Claro');
+   assert(Math.abs((a.y+a.height/2)-(b.y+b.height/2))<8,'Los botones no comparten renglón');
+   assert(a.x+a.width<=b.x+4,'Los botones se superponen');
+   assert(await page.locator('a[href="concordancia-folios.html"]').count()>0,'La nueva concordancia no está enlazada');
+   await page.close();
+ });
+ await test('Onomasticon: selector multilingüe y contraste claro/oscuro',async()=>{
+   const page=await pageFor('onomasticon.html');
+   await page.waitForFunction(()=>document.querySelector('#ov-count-person')?.textContent==='32',{timeout:15000});
+   await page.locator('#ov-language').selectOption('en');
+   await page.waitForFunction(()=>document.querySelector('[data-i18n="alphabetical"]')?.textContent==='Alphabetical index',{timeout:12000});
+   assert.match(await page.locator('#ov-detail').innerText(),/English V297|Spanish|Original historical profile/i);
+   await page.locator('#ov-color').click();
+   assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
+   const col=await page.locator('.ov-numbers article').first().evaluate(e=>({fg:getComputedStyle(e).color,bg:getComputedStyle(e).backgroundColor}));
+   assert.notEqual(col.fg,col.bg,'Panel ilegible en modo oscuro');
+   await page.close();
+ });
+ await test('Visores H S G C B: barras sutiles para compartir el folio actual',async()=>{
+   for(const path of ['harleianus.html','sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html','laboratorio-h.html']){
+     const page=await pageFor(path);
+     await page.locator('.vd-image-actions').waitFor({state:'visible',timeout:9000});
+     assert.equal(await page.locator('.vd-image-actions button').count(),4,path+' no incluye cuatro acciones');
+     assert.match(await page.locator('.vd-image-actions').innerText(),/Guardar imagen/);
+     assert.match(await page.locator('.vd-image-actions').innerText(),/WhatsApp/);
+     await page.close();
+   }
+ });
 }finally{await browser?.close();server.kill()}
 if(failures.length){console.error('\nAUDITORIA CON FALLOS\n'+failures.join('\n'));process.exitCode=1}else console.log('\nAuditoría básica de navegador completada sin fallos.');
