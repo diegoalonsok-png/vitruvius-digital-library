@@ -299,6 +299,67 @@
       "geotype": "monumento",
       "modern": "Ágora romana, Atenas, Grecia",
       "note": "Coordenadas del monumento conservado, no de la ciudad de Atenas. Los nombres griegos son equivalencias modernas de identificación, no lecturas de un códice. Referencia: Vitruvio, De architectura I.6.4."
+    },
+    {
+      "id": "mare-adriaticum",
+      "kind": "place",
+      "name": "Mar Adriático",
+      "latinCanonical": "Mare Adriaticum / mare Superum",
+      "greek_name": "Ἀδρίας",
+      "period": "Geografía mediterránea de época romana",
+      "summary": "Vitruvio se refiere a las costas del Adriático en su discusión de materiales y maderas. No corresponde asignar una coordenada puntual al mar.",
+      "aliases": [
+        "Mar Adriático",
+        "Mare Adriaticum / mare Superum",
+        "Ἀδρίας"
+      ],
+      "latin_forms": [
+        "Mare Adriaticum / mare Superum"
+      ],
+      "loci": [
+        "2.6.5",
+        "2.9.10"
+      ],
+      "sourceStatus": "Loci orientativos: comprobar formas y numeración con la edición crítica V514 antes de cita definitiva.",
+      "source": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/2*.html",
+      "confidence": "no puntual",
+      "geotype": "mar",
+      "modern": "Mar Adriático",
+      "coordinates": {
+        "lat": null,
+        "lon": null
+      },
+      "note": "Área marítima sin marcador puntual; la representación cartográfica requiere límites espaciales documentados."
+    },
+    {
+      "id": "mare-tyrrhenum",
+      "kind": "place",
+      "name": "Mar Tirreno",
+      "latinCanonical": "Mare Tyrrhenum / mare Inferum",
+      "greek_name": "Τυρρηνικὸν πέλαγος",
+      "period": "Geografía mediterránea de época romana",
+      "summary": "Mar occidental de la península itálica, contrapuesto al Adriático en la descripción del Apenino y las maderas.",
+      "aliases": [
+        "Mar Tirreno",
+        "Mare Tyrrhenum / mare Inferum",
+        "Τυρρηνικὸν πέλαγος"
+      ],
+      "latin_forms": [
+        "Mare Tyrrhenum / mare Inferum"
+      ],
+      "loci": [
+        "2.9.10"
+      ],
+      "sourceStatus": "Loci orientativos: comprobar formas y numeración con la edición crítica V514 antes de cita definitiva.",
+      "source": "https://libcoll.mpiwg-berlin.mpg.de/libview?mode=texttool&pn=110&start=51&tocMode=text&url=%2Fmpiwg%2Fonline%2Fpermanent%2Farchimedes_repository%2Flarge%2Fvitru_archi_514_la_1567%2Findex.meta&viewMode=text_image",
+      "confidence": "no puntual",
+      "geotype": "mar",
+      "modern": "Mar Tirreno",
+      "coordinates": {
+        "lat": null,
+        "lon": null
+      },
+      "note": "Área marítima sin marcador puntual; la representación cartográfica requiere límites espaciales documentados."
     }
   ],
   "method": [
