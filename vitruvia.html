@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VITRUVIA · Buscador cultural de la Biblioteca Vitruviana</title>
+<meta name="description" content="Buscador especializado de Vitruvio, arquitectura, códices y libros antiguos. Índice de obras y documentos de GitHub, lectura de textos y fuentes bibliográficas externas.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia.html">
+<meta name="theme-color" content="#0b0d0d">
+<style>
+:root{--bg:#0c0e0e;--ink:#f6f4ed;--muted:#a2a7a2;--line:#313b38;--surface:#141b1a;--surface2:#1c2925;--gold:#c6ad7b;--green:#8cc0a6;--chip:#1c2422}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.site-shell{max-width:1540px;margin:auto;padding:0 32px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:25px 0;border-bottom:1px solid #262b29}
+.logo-small{font:italic 26px/1 Georgia,serif;text-decoration:none;letter-spacing:-.07em}
+.logo-small strong{color:var(--green);font-weight:normal}
+.navlinks{display:flex;gap:21px;flex-wrap:wrap;font-size:12px;color:#c3c7c0}
+.navlinks a{text-decoration:none}.navlinks a:hover{color:#fff}
+.navtools{display:flex;gap:9px;align-items:center}
+#ui-language{background:#1c2422;border:1px solid #394b43;color:#eaece7;border-radius:6px;padding:9px;max-width:100px}
+#theme{border:1px solid #394b43;border-radius:6px;background:#1d2925;color:#eee;padding:9px 12px}
+.hero{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.75fr);gap:clamp(35px,5vw,95px);padding:clamp(62px,8vw,120px) 0 62px;align-items:center}
+.hero .eyebrow{letter-spacing:.22em;font-size:11px;font-weight:650;color:var(--green);text-transform:uppercase}
+.hero h1{font:italic clamp(75px,9.2vw,150px)/.95 Georgia,'Times New Roman',serif;letter-spacing:-.075em;font-weight:400;margin:19px 0}
+.hero h1 span{font:normal clamp(13px,1.4vw,22px)/1 system-ui,sans-serif;letter-spacing:0;color:#a7a7a1;vertical-align:middle;margin-left:18px}
+.lead{color:#a6aaa6;font-size:clamp(15px,1.5vw,20px);max-width:58ch;margin:0 0 35px}
+.searchform{display:flex;align-items:center;gap:9px;background:#f9f9f6;border:2px solid #f0f0ed;color:#1d2724;border-radius:40px;padding:6px 7px 6px 23px;min-height:74px;box-shadow:0 9px 45px #0005}
+.searchform .icon-search{font-size:23px;color:#4b5651}
+.searchform input{flex:1;min-width:30px;width:100%;border:0;outline:0;background:transparent;color:#14211b;font-size:17px}
+.searchform input:focus{outline:0}
+.searchform button{border:0;border-radius:35px;background:#163d30;color:white;padding:15px 21px;font-weight:700;white-space:nowrap;min-height:50px}
+.searchform button:hover{background:#2a5a45}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 12px}
+.tab{border:1px solid #37433f;background:transparent;color:#c1c7c1;border-radius:25px;padding:8px 16px;font-size:13px}
+.tab[aria-pressed=true]{border-color:#7cab8c;background:#1e3e32;color:#fff}
+.explain{font-size:12px;min-height:37px;color:#9ea79e}
+.suggestions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:#8d948c;font-size:12px;margin-top:8px}
+.suggestions button{border:1px solid #343c38;color:#c8d2c6;background:#161b1a;border-radius:24px;padding:7px 12px}
+.featured{display:grid;grid-template-columns:minmax(0,1fr) minmax(155px,.9fr);gap:20px;align-items:center;padding:19px;border-left:1px solid #252e2a;min-height:320px}
+.featured .meta{font-size:12px;color:#99a89c}.featured h2{font:normal clamp(25px,2.8vw,42px)/1.1 Georgia,serif;margin:16px 0}
+.featured p{color:#a4aba6;font-size:13px;max-width:26ch}
+.featured a{display:inline-block;margin-top:12px;color:#e9d0a0;font-size:13px;text-underline-offset:4px}
+.bookcover{height:315px;min-width:0;border-radius:5px;background:linear-gradient(145deg,#16493b,#091e1b);border:1px solid #294b40;box-shadow:16px 15px 23px #0008,-11px 1px 0 -7px #0b2e26;position:relative;overflow:hidden;padding:17px;display:flex;flex-direction:column;justify-content:space-between;text-align:center}
+.bookcover:before{content:"";position:absolute;inset:20px 14px;border:1px solid #aeaa7b55;pointer-events:none}
+.bookcover img{position:relative;width:100%;height:205px;object-fit:contain;filter:sepia(.4) contrast(1.05);border:1px solid #a8a17a44}
+.bookcover strong{position:relative;font:25px Georgia,serif;color:#f5e8c9}.bookcover small{position:relative;font-size:10px;letter-spacing:.13em;color:#c6b48a}
+.metrics{display:flex;flex-wrap:wrap;gap:22px;padding:21px 0;border-top:1px solid #282e2b;border-bottom:1px solid #282e2b;color:#a7afa7;font-size:12px}
+.metrics b{color:#eee7d6;font-size:18px;margin-right:6px}
+.results{padding:44px 0 95px;min-height:340px}
+.section-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 20px}
+.section-head h2{font:normal clamp(28px,3.3vw,46px) Georgia,serif;margin:0}
+.section-head select{background:#1b2724;color:#e8e9e3;border:1px solid #394c44;border-radius:5px;padding:10px}
+#result-state{color:#a1aca1;font-size:13px}
+#answer{background:linear-gradient(125deg,#1a3027,#101b19);border:1px solid #345244;border-left:3px solid #abbd94;border-radius:12px;padding:20px 23px;margin:15px 0 24px}
+#answer[hidden]{display:none}#answer h3{margin:0 0 7px;font:normal 23px Georgia,serif;color:#f3ead8}#answer p{margin:8px 0;color:#d1d7d0;line-height:1.75}
+#answer .detail{font-size:12px;color:#a9b9a9}
+.results-grid{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:27px}
+#result-list{display:grid;gap:12px;align-content:start}
+.result-card{background:#141b1a;border:1px solid #2d3c35;border-radius:10px;padding:19px 21px;min-width:0;transition:border-color .2s}
+.result-card:hover{border-color:#6f8a75}
+.result-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.result-card h3{font:normal 24px/1.22 Georgia,serif;margin:2px 0 7px}
+.result-card .kind{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#a7ceae;white-space:nowrap}
+.result-card p{font-size:13px;color:#a9b1a8;margin:8px 0 13px;line-height:1.65;overflow-wrap:anywhere}
+.result-card .author{font-size:12px;color:#d3c099}
+.result-card .meta-line{color:#a2c4b0;font-size:11px}
+.result-card .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.result-card .actions a,.result-card .actions button{display:inline-flex;align-items:center;border-radius:4px;border:1px solid #4b6656;background:#192c25;color:#e5eee3;text-decoration:none;padding:7px 10px;font-size:12px;font-weight:600}
+.result-card .actions .disabled{border:1px solid #343c37;color:#9fa79f;background:transparent;opacity:.8;padding:7px 10px;font-size:12px}
+.sidebar{border-left:1px solid #29332f;padding-left:25px;font-size:13px;color:#9caaa0}
+.sidebar h3{color:#ececdd;font:normal 24px Georgia,serif;margin:0 0 17px}
+.sidebar a{display:block;padding:12px 0;color:#c7d0c9;border-bottom:1px solid #2f3733;text-decoration:none}
+.sidebar a:hover{color:#fff}
+.sidebar p{font-size:12px;line-height:1.75}
+.footer{border-top:1px solid #313e36;color:#9ba39b;padding:25px 0 55px;font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer a{color:#c7d9c3}
+.empty{color:#a1b1a6;border:1px dashed #3c4e45;background:#121918;padding:22px;border-radius:8px}
+mark{background:#668d6b;color:#0a130e;padding:0 2px}
+:root[data-theme=light]{--bg:#eeeae0;--ink:#152922;--muted:#536059;--line:#c3d0c4;--surface:#fff;--surface2:#e8eee7}
+html[data-theme=light] body{background:#f7f5ef;color:#18352a}html[data-theme=light] .nav,html[data-theme=light] .metrics{border-color:#d4dcd2}
+html[data-theme=light] .logo-small,html[data-theme=light] .section-head h2{color:#173428}html[data-theme=light] .lead,html[data-theme=light] .explain{color:#52655c}
+html[data-theme=light] .result-card{background:white;border-color:#c9d6ce;color:#162b22}
+html[data-theme=light] .result-card p{color:#52635a}html[data-theme=light] .result-card h3{color:#18362a}
+html[data-theme=light] .navlinks,html[data-theme=light] .metrics,html[data-theme=light] .sidebar,html[data-theme=light] #result-state{color:#4c6052}
+html[data-theme=light] .sidebar h3{color:#143629}html[data-theme=light] .sidebar a{color:#315242;border-color:#cbd8ca}
+html[data-theme=light] .tab{color:#2e4a3c;border-color:#a9bdb0}html[data-theme=light] .tab[aria-pressed=true]{color:#fff}html[data-theme=light] .suggestions button{background:#e9efe6;color:#244c34}
+html[data-theme=light] .featured h2{color:#133c2b}html[data-theme=light] .featured p{color:#4a6a53}html[data-theme=light] .metrics b{color:#294835}
+html[data-theme=light] .footer{color:#475e4e;border-color:#cbd8c8}
+@media(max-width:1020px){.hero{grid-template-columns:1fr;padding:70px 0 40px}.featured{min-height:auto;max-width:700px}.results-grid{grid-template-columns:1fr}.sidebar{border-left:0;border-top:1px solid #39493e;padding:20px 0}.bookcover{height:245px}.bookcover img{height:150px}}
+@media(max-width:600px){.site-shell{padding:0 16px}.nav{gap:12px}.navlinks{order:3;width:100%;gap:13px}.hero h1{font-size:66px}.hero{padding:52px 0 30px}.searchform{padding:4px 4px 4px 14px;min-height:61px}.searchform input{font-size:15px}.searchform button{padding:10px 12px;min-height:48px}.featured{grid-template-columns:1fr 130px;gap:12px;padding:10px}.featured h2{font-size:27px}.bookcover{height:220px;padding:10px}.bookcover img{height:145px}.bookcover strong{font-size:16px}.result-head{display:block}.results{padding-top:30px}}
+</style></head><body>
+<div class="site-shell">
+<header class="nav"><a class="logo-small" href="index.html">V<strong>∎</strong></a>
+<nav class="navlinks" aria-label="Navegación"><a href="index.html">Biblioteca Vitruviana</a><a href="bibliotheca-graeca-latina.html">Autores y libros</a><a href="codex-h-doble-folio.html">Códices</a><a href="metodologia-filologica.html">Método académico</a></nav>
+<div class="navtools"><select id="ui-language" aria-label="Idioma de interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select><button type="button" id="theme" aria-label="Cambiar apariencia">☀</button></div>
+</header>
+<main>
+<section class="hero" aria-label="Buscar en Vitruvia">
+<div>
+<div class="eyebrow">BIBLIOTHECA VITRUVII · INSTRUMENTUM QUAERENDI</div>
+<h1>Vitruvia<span>beta 1.0</span></h1>
+<p class="lead" id="lead">Conocimiento clásico, arquitectura y libros antiguos. Una búsqueda, manuscritos y textos con procedencia documentada.</p>
+<form class="searchform" id="search-form"><span class="icon-search" aria-hidden="true">⌕</span><input id="query" type="search" autocomplete="off" spellcheck="false" placeholder="Buscar en Vitruvio, códices, manuscritos, libros antiguos…" aria-label="Buscar en Vitruvia" required maxlength="180">
+<button type="submit" id="submit">Buscar ↗</button></form>
+<div class="tabs" role="group" aria-label="Tipo de búsqueda">
+<button type="button" class="tab" data-mode="site" aria-pressed="true">En la biblioteca</button>
+<button type="button" class="tab" data-mode="concept" aria-pressed="false">◎ Modo conceptual</button>
+<button type="button" class="tab" data-mode="external" aria-pressed="false">↗ Cultura en internet</button>
+</div>
+<p class="explain" id="mode-note">Busca en los libros, pasajes y páginas realmente conservados en GitHub. Sin clave y sin publicidad.</p>
+<div class="suggestions"><span>Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
+</div>
+<aside class="featured" aria-label="Manuscrito destacado">
+<div><div class="meta">ARCHIVO DESTACADO · SIGLO IX</div><h2>Harley<br>MS 2767</h2><p>Un testimonio carolingio del <em>De architectura</em>, con 341 imágenes alojadas en la biblioteca.</p><a href="codex-h-doble-folio.html">Abrir el códice ↗</a></div>
+<a class="bookcover" href="codex-h-doble-folio.html" aria-label="Abrir el Codex H"><small>CODEX HARLEIANUS</small><img src="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg" alt="Folio 1r del manuscrito Harley MS 2767" loading="lazy"><strong>De architectura</strong></a>
+</aside>
+</section>
+<div class="metrics" id="metrics"><span><b id="metric-works">—</b> fichas de obras</span><span><b id="metric-pages">—</b> secciones documentadas</span><span><b>341</b> imágenes del Codex H</span><span><b id="metric-read">—</b> lecturas disponibles</span></div>
+<section class="results" id="results" aria-live="polite">
+<div class="section-head"><h2 id="results-heading">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
+<div id="answer" hidden></div>
+<div class="results-grid"><div id="result-list"><div class="empty">Escribí una palabra, título, autor, concepto o locus para comenzar. Podés probar <strong>symmetria</strong>, <strong>agua</strong> o <strong>Cicerón</strong>.</div></div>
+<aside class="sidebar"><h3>Fuentes y método</h3><p>Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.</p>
+<a href="bibliotheca-graeca-latina.html">Biblioteca griega y latina ↗</a><a href="lector-bilingue.html">Lector latino y traducciones ↗</a><a href="codex-h-folios-local.html">Galería Codex H ↗</a><a href="bibliografia.html">Bibliografía académica ↗</a><a href="metodologia-filologica.html">Criterio filológico ↗</a>
+<p>No se inventan traducciones. La búsqueda conceptual utiliza relaciones temáticas y recuperación textual; <strong>no es un chatbot generativo</strong>. El contenido de los PDF escaneados sin OCR sigue requiriendo lectura de facsímiles.</p></aside>
+</div></section>
+</main>
+<footer class="footer"><span>Vitruvia · búsqueda cultural de acceso abierto · Edición y estudios de Diego A. Kurilo</span><span><a href="index.html">Volver a Vitruvius Digital Library</a> · <a href="como-citar.html">Cómo citar</a></span></footer>
+</div>
+<script src="assets/vitruvia-search.js?v=20261103-1" defer></script>
+</body></html>
