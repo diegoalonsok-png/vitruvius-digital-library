@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Laboratorio experimental de traducción filológica con Google Gemini: extracción semántica de DOCX y PDF en latín y griego, segmentación, confrontación y exportación.">
+<meta name="description" content="Laboratorio experimental de lectura y traducción de DOCX y PDF latinos o griegos en el navegador: extracción local, concordancia y exportación temporal.">
 <meta name="robots" content="index,follow">
-<title>Laboratorio de traducción con IA · Vitruvius Digital Library</title>
+<title>Laboratorio de traducción · Vitruvius Digital Library</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/traduccion-ia.css?v=20261102-1">
-<script src="assets/traduccion-ia.js?v=20261102-1" defer></script>
+<link rel="stylesheet" href="assets/traduccion-ia.css?v=20261102-privacy-2">
+<script src="assets/traduccion-ia.js?v=20261102-privacy-2" defer></script>
 </head>
 <body>
 <header class="masthead">
@@ -19,20 +19,21 @@
   <a href="metodologia-filologica.html">Método filológico</a>
  </nav>
  <p class="eyebrow">SCRIPTORIUM · INSTRUMENTUM EXPERIMENTALE</p>
- <h1>Laboratorio de traducción filológica <span>con IA</span></h1>
- <p class="intro">Importá un documento latino o griego, extraé sus unidades textuales, alineá original y traducción y exportá el aparato de trabajo. Motor opcional: Google Gemini.</p>
+ <h1>Laboratorio de traducción filológica <span>experimental</span></h1>
+ <p class="intro">Importá un documento latino o griego, extraé sus unidades textuales, alineá original y traducción y exportá el aparato de trabajo. Consulta opcional de cada pasaje mediante Google Translate, con revisión humana.</p>
 </header>
 <main>
 <section class="notice" aria-labelledby="limits">
- <h2 id="limits">Alcance académico y privacidad</h2>
- <p>Esta herramienta es <strong>experimental</strong> y no sustituye una edición crítica, una transcripción paleográfica ni una traducción humana verificada. Los libros de Vitruvio V514 / V554 / V297 conservan sus traducciones originales: no se modifican.</p>
- <p>La extracción del documento ocurre <strong>en tu navegador</strong>. Solo los fragmentos que elijas traducir se enviarán a Google Gemini. En el plan gratuito de Gemini, Google puede utilizar el contenido enviado para mejorar sus servicios: no incluyas documentos confidenciales ni datos personales. Para ofrecer esta función públicamente sin una clave personal se requiere un servidor intermediario seguro.</p>
+ <h2 id="limits">Privacidad de la sesión · Biblioteca protegida</h2>
+ <p><strong>El archivo que el lector selecciona NO se sube ni se guarda en el servidor.</strong> Se procesa temporalmente en este navegador; tras la extracción se libera del selector de archivos. Cuando se cierra o recarga esta pestaña, o se abandona la página, el proyecto temporal se descarta de la memoria de la aplicación. También se puede eliminar inmediatamente con <strong>Limpiar proyecto</strong>.</p>
+ <p><strong>La biblioteca del sitio no se modifica:</strong> los códices, facsímiles, traducciones y ediciones V514, V554 y V297 conservan sus archivos originales. Una copia exportada expresamente por el lector sí permanecerá en su computadora hasta que él la elimine.</p>
+ <p>La extracción usa código de PDF.js o Mammoth cargado en el navegador. <strong>Si elegís abrir un fragmento en Google Translate, ese fragmento se compartirá con Google</strong> y estará sujeto a sus propias condiciones. Esta herramienta no puede borrar datos enviados a terceros. Los textos escaneados requieren OCR previo. Las traducciones automáticas, especialmente del griego antiguo, exigen revisión filológica.</p>
 </section>
 <section class="pane upload" aria-labelledby="import-title">
  <div class="section-head"><span class="step">01</span><h2 id="import-title">Importación y extracción estructurada</h2></div>
  <div class="config-grid">
   <label>Archivo DOCX, PDF, TXT o JSON (proyecto previo)
-   <input id="file" type="file" accept=".docx,.pdf,.txt,.json,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/json">
+   <input id="file" type="file" autocomplete="off" accept=".docx,.pdf,.txt,.json,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/json">
   </label>
   <label>Lengua del original
    <select id="source-lang"><option value="auto">Detectar / no especificar</option><option value="la">Latín</option><option value="grc">Griego antiguo</option><option value="mixed">Latín y griego</option></select>
@@ -42,32 +43,16 @@
   </label>
  </div>
  <label for="pasted" class="paste-label">O pegá aquí un fragmento latino o griego
-  <textarea id="pasted" rows="4" placeholder="Pegá un fragmento original para probar la extracción semántica..."></textarea>
+  <textarea id="pasted" autocomplete="off" rows="4" placeholder="Pegá un fragmento original para probar la extracción semántica..."></textarea>
  </label>
  <div class="actions"><button id="extract" type="button" class="primary">Extraer y codificar</button><button id="clear" type="button">Limpiar proyecto</button></div>
  <p id="import-status" class="status" role="status" aria-live="polite">No se cargó ningún documento.</p>
 </section>
 <section class="pane ai" aria-labelledby="ai-title">
- <div class="section-head"><span class="step">02</span><h2 id="ai-title">Traducción contextual con Google Gemini</h2></div>
- <div class="config-grid">
-  <label>Clave API de Google AI Studio (uso personal y temporal)
-   <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="Introducir solo para esta sesión">
-  </label>
-  <label>Modelo
-   <select id="model"><option value="gemini-2.5-flash">Gemini 2.5 Flash</option><option value="gemini-3.8-flash">Gemini 3.8 Flash (si está disponible)</option></select>
-  </label>
-  <label>Tipo de traducción
-   <select id="mode"><option value="philological">Filológica literal, con nota de ambigüedad</option><option value="reading">Lectura fluida, sin alterar el sentido</option></select>
-  </label>
- </div>
- <p class="micro">La clave no se almacena ni se publica en GitHub; mientras la utilizás, el navegador la transmite a la API de Google. No compartas claves ni uses una clave de producción en esta prueba. <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Administrar claves en Google AI Studio</a>. El servicio puede tener cuotas, costos y restricciones según la cuenta.</p>
- <div class="actions">
-  <button id="translate-next" class="primary" type="button" disabled>Traducir siguiente lote</button>
-  <button id="translate-all" type="button" disabled>Traducir todo</button>
-  <button id="stop" type="button" disabled>Detener</button>
- </div>
- <p id="ai-status" class="status" role="status" aria-live="polite">Primero importá un texto. La IA no se ejecutará hasta que lo solicites.</p>
- <progress id="progress" value="0" max="100" aria-label="Progreso de traducción"></progress>
+ <div class="section-head"><span class="step">02</span><h2 id="ai-title">Consulta asistida mediante Google Translate</h2></div>
+ <p>Después de importar el documento, cada unidad ofrecerá <strong>Abrir en Google Translate</strong>. Podés revisar allí la propuesta de traducción y copiarla manualmente en la columna derecha. No se usa una clave API ni se envía automáticamente el libro completo a Google.</p>
+ <p class="micro">El enlace externo se abre únicamente al pulsar el botón correspondiente. El latín puede consultarse como tal; Google utiliza griego moderno para el griego, por lo que no debe considerarse una traducción especializada de griego clásico. Esta fase no genera una traducción automática integrada en el sitio.</p>
+ <p id="ai-status" class="status">Modo de consulta externa: sin conexión automática ni almacenamiento de documentos.</p>
 </section>
 <section class="pane workspace" aria-labelledby="workspace-title">
  <div class="section-head"><span class="step">03</span><h2 id="workspace-title">Visor bilingüe de unidades semánticas</h2></div>
@@ -78,10 +63,10 @@
   <button id="export-text" type="button" disabled>Exportar TXT paralelo</button>
   <button id="print" type="button" disabled>Imprimir / guardar PDF</button>
  </div>
- <div class="columns-head"><span>Original · latín / griego</span><span>Traducción IA · revisable</span></div>
+ <div class="columns-head"><span>Original · latín / griego</span><span>Traducción propuesta · editable y revisable</span></div>
  <div id="segments" aria-live="polite"><p class="empty">Importá un documento para ver los pasajes alineados.</p></div>
  <div class="actions"><button id="more" type="button" hidden>Mostrar más unidades</button></div>
- <p class="micro">La codificación JSON conserva el identificador de cada unidad, el origen (página o párrafo), el texto de entrada, la versión traducida y las observaciones generadas. Las notas y traducciones pueden corregirse manualmente; se exportan con tus cambios.</p>
+ <p class="micro">El JSON conserva identificadores de unidad, origen, texto, traducción y notas. Todo se mantiene únicamente durante la sesión. Guardar proyecto JSON, Exportar TXT e Imprimir son acciones voluntarias: los archivos resultantes sí permanecen en tu computadora.</p>
 </section>
 <footer>
  <p><strong>Vitruvius Digital Library</strong> · Instrumento experimental. Los textos importados son responsabilidad de quien los utiliza. Las ediciones y traducciones de Diego Kurilo permanecen independientes de esta herramienta.</p>
