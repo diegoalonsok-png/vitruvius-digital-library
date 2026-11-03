@@ -217,6 +217,25 @@ html[data-theme=light] .ai-platform-link:hover{background:#4c4c4e}
 .search-suggestion>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .searchform:focus-within{border-color:#666}
 @media(prefers-reduced-motion:reduce){.ai-platform-link{transition:none!important}}
+
+/* Columna destacada de texto: sin libros, imágenes ni tarjetas verdes. */
+.hero .featured{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:27px;padding:20px 0 20px 31px;min-height:360px;border-left:1px solid #303030;background:transparent}
+.featured-copy{width:100%;min-width:0}
+.hero .featured .meta{color:#898989;font:400 12px/1.6 Arial,Helvetica,sans-serif;letter-spacing:.015em;text-transform:none}
+.hero .featured h2{color:#eee;font:400 clamp(30px,3vw,48px)/1.13 Georgia,"Times New Roman",serif;margin:15px 0 18px;letter-spacing:-.025em;overflow-wrap:anywhere}
+.hero .featured p{color:#a5a5a5;font:400 14px/1.75 Arial,Helvetica,sans-serif;max-width:40ch;margin:0 0 15px}
+.hero .featured a#featured-link{color:#ccc;font:400 13px/1.5 Arial,Helvetica,sans-serif;text-decoration:none;border-bottom:1px solid #5f5f5f;padding-bottom:3px;margin:4px 0}
+.hero .featured a#featured-link:hover,.hero .featured a#featured-link:focus-visible{color:#fff}
+.hero .featured .featured-credit{font:400 11px/1.6 Arial,Helvetica,sans-serif;color:#7f7f7f;margin:14px 0 0;max-width:36ch}
+.featured-reading-list{display:block;width:100%;border-top:1px solid #303030}
+.hero .featured a.featured-reading-item{display:grid;grid-template-columns:27px minmax(0,1fr) 14px;align-items:center;gap:7px;padding:11px 0;margin:0;border-bottom:1px solid #292929;text-decoration:none;color:#a5a5a5;font:400 13px/1.4 Arial,Helvetica,sans-serif;min-width:0}
+.featured-reading-item>.featured-number{color:#747474;font:400 12px/1.4 Arial,sans-serif}
+.featured-reading-item>span:nth-child(2){min-width:0}
+.hero .featured a.featured-reading-item:hover,.hero .featured a.featured-reading-item:focus-visible,.hero .featured a.featured-reading-item.is-current{color:#f0f0f0;background:#171717}
+.hero .featured a.featured-reading-item.is-current>.featured-number{color:#e8e8e8}
+.hero .featured .bookcover,.hero .featured #featured-image{display:none!important}
+@media(max-width:1020px){.hero .featured{min-height:0;max-width:100%;padding:20px 0 20px 22px}}
+@media(max-width:650px){.hero .featured{border-left:0;border-top:1px solid #303030;padding:22px 0}}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="index.html">V<strong>∎</strong></a>
@@ -268,19 +287,21 @@ html[data-theme=light] .ai-platform-link:hover{background:#4c4c4e}
   <p class="academic-hint" id="academic-hint">Cada botón busca el término escrito arriba dentro del dominio académico seleccionado.</p>
 </div>
 </div>
-<aside class="featured" aria-label="Ilustración documental relacionada con la búsqueda" id="featured">
-<div>
-  <div class="meta" id="featured-label">ARCHIVO DESTACADO · SIGLO IX</div>
-  <h2 id="featured-title">Harley MS 2767</h2>
-  <p id="featured-description">Un testimonio carolingio del <em>De architectura</em>, con 341 imágenes alojadas en la biblioteca.</p>
-  <a id="featured-link" href="codex-h-doble-folio.html">Abrir el códice ↗</a>
-  <div class="featured-credit" id="featured-credit">Imagen de consulta: British Library, Harley MS 2767.</div>
-</div>
-<a class="bookcover" id="featured-cover" href="codex-h-doble-folio.html" aria-label="Abrir la fuente de la ilustración">
-  <small id="featured-cover-label">CODEX HARLEIANUS</small>
-  <img id="featured-image" src="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg" alt="Folio 1r del manuscrito Harley MS 2767" loading="lazy">
-  <strong id="featured-cover-title">De architectura</strong>
-</a>
+<aside class="featured" aria-label="Artículo destacado y lecturas recomendadas" id="featured">
+ <div class="featured-copy">
+  <div class="meta" id="featured-label">DESTACADO · BIBLIOTECA VITRVVIVS</div>
+  <h2 id="featured-title">Codex Harleianus</h2>
+  <p id="featured-description">Harley MS 2767. Testimonio carolingio del <em>De architectura</em>, conservado en la British Library.</p>
+  <a id="featured-link" href="harleianus.html">Consultar el manuscrito <span aria-hidden="true">›</span></a>
+  <div class="featured-credit" id="featured-credit">British Library · Harley MS 2767</div>
+ </div>
+ <nav class="featured-reading-list" aria-label="Selección de obras para consultar">
+  <a href="harleianus.html" class="featured-reading-item" data-feature-term="harleianus"><span class="featured-number">01</span><span>Codex H · Harley 2767</span><span aria-hidden="true">›</span></a>
+  <a href="lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2" class="featured-reading-item" data-feature-term="symmetria"><span class="featured-number">02</span><span>Vitruvio · III.1.2</span><span aria-hidden="true">›</span></a>
+  <a href="giocondo-1511.html" class="featured-reading-item" data-feature-term="giocondo"><span class="featured-number">03</span><span>Fra Giocondo · 1511</span><span aria-hidden="true">›</span></a>
+  <a href="barbaro-1567.html" class="featured-reading-item" data-feature-term="barbaro"><span class="featured-number">04</span><span>Barbaro · 1567</span><span aria-hidden="true">›</span></a>
+  <a href="bibliotheca-graeca-latina.html?work=lucretius-de-rerum-natura" class="featured-reading-item" data-feature-term="lucrecio"><span class="featured-number">05</span><span>Lucrecio · De rerum natura</span><span aria-hidden="true">›</span></a>
+ </nav>
 </aside>
 </section>
 <div class="metrics" id="metrics"><span><b id="metric-works">—</b> fichas de obras</span><span><b id="metric-pages">—</b> secciones documentadas</span><span><b>341</b> imágenes del Codex H</span><span><b id="metric-read">—</b> lecturas disponibles</span></div>
