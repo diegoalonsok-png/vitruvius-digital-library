@@ -32,6 +32,8 @@ async function start(){
    pages=await readIndex(url);
    $('ces-page').max=String(pages.length);
    status.textContent=pages.length+' imágenes indexadas. Fuente de lectura: '+(url===LOCAL?'copia de estudio publicada en GitHub':'manifiesto original e-rara')+'.';
+   const requested=Number(new URLSearchParams(location.search).get('image'));
+   if(Number.isInteger(requested)&&requested>=1&&requested<=pages.length)$('ces-page').value=String(requested);
    openPage();
    return;
   }catch(e){reasons.push(e.message);}
