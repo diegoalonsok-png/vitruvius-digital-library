@@ -104,7 +104,8 @@
       "viewer": "https://commons.wikimedia.org/wiki/File:Vitruvian_Man_by_Leonardo_da_Vinci.jpg",
       "manifest": "",
       "rights": "Fotografía de Paris Orlando (2019), CC BY-SA 4.0, mediante Wikimedia Commons; obra original conservada en Venecia. Imagen enlazada externamente, no alojada en GitHub.",
-      "notes": "Conservación en las Gallerie dell’Accademia. La fotografía digital y el original histórico son objetos documentales distintos."
+      "notes": "Conservación en las Gallerie dell’Accademia. La fotografía digital y el original histórico son objetos documentales distintos.",
+      "book": 3
     },
     {
       "id": "duerer-proportiones-1528",
@@ -152,7 +153,58 @@
       "viewer": "https://diegoalonsok-png.github.io/vitruvius-digital-library/basilica-fano.html",
       "manifest": "",
       "rights": "No se incorpora fotografía sin fuente y licencia.",
-      "notes": "Registrar por separado evidencia arqueológica, interpretación reconstructiva y testimonio textual."
+      "notes": "Registrar por separado evidencia arqueológica, interpretación reconstructiva y testimonio textual.",
+      "book": 5
+    },
+    {
+      "id": "palladio-pantheon-plan",
+      "category": "arquitectura",
+      "type": "grabado / planta histórica",
+      "title": "Planta del Panteón de Roma · tradición de Palladio",
+      "author": "Andrea Palladio (dibujo histórico); reimpresión por Giacomo Leoni",
+      "date": "1570; reproducción en edición de 1721",
+      "century": "XVI–XVIII",
+      "place": "Roma (edificio); Venecia / Londres (tradición editorial)",
+      "institution": "Imagen histórica difundida en Wikimedia Commons, procedente de Quattro libri dell’architettura",
+      "shelfmark": "Registro de reproducción en Wikimedia Commons · Pantheon Palladio.jpg",
+      "folio": "Lámina de planta, numeración de folio original por contrastar",
+      "locus": "Arquitectura romana posterior a Vitruvio; referencia comparativa a III–IV, no cita de este edificio en De architectura.",
+      "material": "Dibujo arquitectónico de planta conservado como estampa histórica en transmisiones editoriales de Palladio; soporte del ejemplar concreto no examinado.",
+      "graphic": "Planta del edificio y sus articulaciones espaciales. No fotografía contemporánea.",
+      "iconography": "Representación convencional del Panteón romano mediante planta; diferencia entre obra adrianea y recepción renacentista.",
+      "status": "La ficha del archivo histórico atribuye la planta a Palladio (1570) y documenta su reproducción por Leoni (1721).",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Palladio.jpg?width=900",
+      "record": "https://commons.wikimedia.org/wiki/File:Pantheon_Palladio.jpg",
+      "viewer": "https://commons.wikimedia.org/wiki/File:Pantheon_Palladio.jpg",
+      "manifest": "",
+      "rights": "Grabado histórico en dominio público según la ficha de Commons; confirmar normas del ejemplar concreto.",
+      "notes": "El edificio conservado fue reconstruido esencialmente en época de Adriano, posterior a Vitruvio. Se incluye como estudio histórico de recepción del lenguaje clásico.",
+      "source": "palladio"
+    },
+    {
+      "id": "desgodetz-pantheon-elevation",
+      "category": "arquitectura",
+      "type": "grabado / alzado histórico",
+      "title": "Élévation de la face du Panthéon à Rome · alzado de fachada",
+      "author": "Antoine Desgodetz (dibujo); Louis de Chastillon (grabado)",
+      "date": "1682",
+      "century": "XVII",
+      "place": "París (edición); Roma (edificio)",
+      "institution": "The New York Public Library, Wallach Division · colección Les édifices antiques de Rome",
+      "shelfmark": "NYPL Digital Collections, imagen 1568117; reproducción histórica en Wikimedia Commons",
+      "folio": "Lámina III (según catalogación de la imagen en Commons)",
+      "locus": "Arquitectura romana posterior a Vitruvio; no debe atribuirse al propio tratadista.",
+      "material": "Grabado arquitectónico editado en París en 1682; la técnica individual del ejemplar requiere confirmación en el registro institucional.",
+      "graphic": "Alzado de fachada del Panteón según levantamiento histórico; dibujo neoclásico de lectura arquitectónica, no fotografía.",
+      "iconography": "Pórtico clásico con columnas, frontón y elementos de fachada.",
+      "status": "Atribución, fecha e identidad de la lámina apoyadas por NYPL y Wikimedia Commons.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Desgodetz_%E2%80%93_Edifices_antiques_de_Rome_%E2%80%93_Pantheon.jpg?width=900",
+      "record": "https://old-digitalcollections.nypl.org/items/510d47e3-057a-a3d9-e040-e00a18064a99",
+      "viewer": "https://commons.wikimedia.org/wiki/File:Desgodetz_%E2%80%93_Edifices_antiques_de_Rome_%E2%80%93_Pantheon.jpg",
+      "manifest": "",
+      "rights": "Grabado histórico (1682) de dominio público; digitalización enlazada desde Commons; consultar registro NYPL.",
+      "notes": "Se documenta la recepción gráfica del monumento romano mediante arquitectura de levantamiento histórico. El Panteón actual no es contemporáneo de Vitruvio.",
+      "source": "desgodetz"
     }
   ]
 }
