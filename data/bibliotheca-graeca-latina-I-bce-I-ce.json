@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "updated": "2026-11-03",
-  "title": "Bibliotheca Graeca et Latina — Saecula I a. C. / I d. C.",
-  "scope": "Obras compuestas o publicadas en torno a 100 a. C.–100 d. C.; las copias manuscritas conservadas son posteriores en la mayoría de los casos.",
+  "title": "Bibliotheca Graeca et Latina · Repertorium Antiquitatis",
+  "scope": "Catálogo bibliográfico unificado de obras griegas y latinas antiguas: literatura clásica, cristianismo primitivo, historia, arquitectura, ingeniería, filosofía, medicina y otros géneros, desde el siglo I a. C. hasta la Antigüedad tardía.",
   "method": "No equiparar manuscrito, edición moderna, traducción o PDF. El enlace de búsqueda no equivale a disponibilidad confirmada de una edición concreta. No copiar material bajo derechos sin autorización.",
   "works": [
     {
@@ -1019,6 +1019,684 @@
         "archive": "https://archive.org/search?query=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%9A%CE%BF%CF%81%CE%B9%CE%BD%CE%B8%CE%AF%CE%BF%CF%85%CF%82%20%CE%91%CA%B9%20Primera%20carta%20de%20Clemente",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%9A%CE%BF%CF%81%CE%B9%CE%BD%CE%B8%CE%AF%CE%BF%CF%85%CF%82%20%CE%91%CA%B9"
       }
+    },
+    {
+      "id": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχή · Didaché",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Finales del siglo I – comienzos del II (datación debatida)",
+      "century": "I–II",
+      "period": "I–II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/didache.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Hierosolymitanus 54, copiado en 1056; no es manuscrito del siglo I"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%94%CE%B9%CE%B4%CE%B1%CF%87%CE%AE%20%C2%B7%20Didach%C3%A9%20An%C3%B3nimo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%94%CE%B9%CE%B4%CE%B1%CF%87%CE%AE%20%C2%B7%20Didach%C3%A9"
+      }
+    },
+    {
+      "id": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Siglo II d. C.",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/shepherd.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Codex Sinaiticus conserva una parte; también hay otras copias griegas y versiones latinas"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%BF%CE%B9%CE%BC%E1%BD%B4%CE%BD%20%E1%BC%99%CF%81%CE%BC%E1%BE%B6%20%C2%B7%20Pastor%20de%20Hermas%20Hermas",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BF%CE%B9%CE%BC%E1%BD%B4%CE%BD%20%E1%BC%99%CF%81%CE%BC%E1%BE%B6%20%C2%B7%20Pastor%20de%20Hermas"
+      }
+    },
+    {
+      "id": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "language": "la",
+      "genre": "Arquitectura e ingeniería",
+      "dating": "Finales del siglo III – comienzos del IV d. C.",
+      "century": "III–IV",
+      "period": "III–IV",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": "https://www.e-codices.ch/en/list/one/bbb/0722-3",
+        "status": "Bern Burgerbibliothek Cod. 722.3: fragmento carolingio; otros testigos por cotejar"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Artis%20architectonicae%20privatis%20usibus%20adbreviatus%20liber%20Marco%20Cetio%20Faventino",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Artis%20architectonicae%20privatis%20usibus%20adbreviatus%20liber"
+      }
+    },
+    {
+      "id": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Finales del siglo I – primera mitad del II d. C.",
+      "century": "I–II",
+      "period": "I–II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/barnabas.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Entre los testimonios posteriores, Sinaiticus y Hierosolymitanus 54"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BC%98%CF%80%CE%B9%CF%83%CF%84%CE%BF%CE%BB%E1%BD%B4%20%CE%92%CE%B1%CF%81%CE%BD%CE%AC%CE%B2%CE%B1%20%C2%B7%20Epistula%20Barnabae%20An%C3%B3nimo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%98%CF%80%CE%B9%CF%83%CF%84%CE%BF%CE%BB%E1%BD%B4%20%CE%92%CE%B1%CF%81%CE%BD%CE%AC%CE%B2%CE%B1%20%C2%B7%20Epistula%20Barnabae"
+      }
+    },
+    {
+      "id": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Siglo II d. C. (cronología debatida)",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/ignatius.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Existen diferentes recensiones; cotejar siete cartas de recensión media y testigos"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BC%98%CF%80%CE%B9%CF%83%CF%84%CE%BF%CE%BB%CE%B1%CE%AF%20%C2%B7%20Cartas%20de%20Ignacio%20Ignacio%20de%20Antioqu%C3%ADa",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%98%CF%80%CE%B9%CF%83%CF%84%CE%BF%CE%BB%CE%B1%CE%AF%20%C2%B7%20Cartas%20de%20Ignacio"
+      }
+    },
+    {
+      "id": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Primera mitad del siglo II d. C.",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/polycarp.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tradición fragmentaria griega y latina"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%A6%CE%B9%CE%BB%CE%B9%CF%80%CF%80%CE%B7%CF%83%CE%AF%CE%BF%CF%85%CF%82%20%C2%B7%20Carta%20a%20los%20Filipenses%20Policarpo%20de%20Esmirna",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%A6%CE%B9%CE%BB%CE%B9%CF%80%CF%80%CE%B7%CF%83%CE%AF%CE%BF%CF%85%CF%82%20%C2%B7%20Carta%20a%20los%20Filipenses"
+      }
+    },
+    {
+      "id": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Siglo II d. C.",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/2clement.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Homilía transmitida bajo el nombre de Clemente; no atribuir autoría segura"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%94%CE%B5%CF%85%CF%84%CE%AD%CF%81%CE%B1%20%CE%9A%CE%BB%CE%AE%CE%BC%CE%B5%CE%BD%CF%84%CE%BF%CF%82%20%C2%B7%20Segunda%20carta%20de%20Clemente%20An%C3%B3nimo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%94%CE%B5%CF%85%CF%84%CE%AD%CF%81%CE%B1%20%CE%9A%CE%BB%CE%AE%CE%BC%CE%B5%CE%BD%CF%84%CE%BF%CF%82%20%C2%B7%20Segunda%20carta%20de%20Clemente"
+      }
+    },
+    {
+      "id": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Siglo II–III d. C. (discutido)",
+      "century": "II–III",
+      "period": "II–III",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/diognetus.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tradición textual singular; manuscrito principal perdido"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%94%CE%B9%CF%8C%CE%B3%CE%BD%CE%B7%CF%84%CE%BF%CE%BD%20%C2%B7%20Carta%20a%20Diogneto%20An%C3%B3nimo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%94%CE%B9%CF%8C%CE%B3%CE%BD%CE%B7%CF%84%CE%BF%CE%BD%20%C2%B7%20Carta%20a%20Diogneto"
+      }
+    },
+    {
+      "id": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Mediados del siglo II d. C.",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/justin.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "La tradición manuscrita ha de cotejarse edición por edición"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BC%88%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20%CF%80%CF%81%CF%8E%CF%84%CE%B7%20%C2%B7%20Primera%20Apolog%C3%ADa%20Justino%20M%C3%A1rtir",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%88%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20%CF%80%CF%81%CF%8E%CF%84%CE%B7%20%C2%B7%20Primera%20Apolog%C3%ADa"
+      }
+    },
+    {
+      "id": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Finales del siglo II d. C.",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/irenaeus.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Original griego conservado fragmentariamente; texto sustancial en traducción latina"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BC%9C%CE%BB%CE%B5%CE%B3%CF%87%CE%BF%CF%82%20%CE%BA%CE%B1%E1%BD%B6%20%E1%BC%80%CE%BD%CE%B1%CF%84%CF%81%CE%BF%CF%80%E1%BD%B4%20%CF%84%E1%BF%86%CF%82%20%CF%88%CE%B5%CF%85%CE%B4%CF%89%CE%BD%CF%8D%CE%BC%CE%BF%CF%85%20%CE%B3%CE%BD%CF%8E%CF%83%CE%B5%CF%89%CF%82%20%C2%B7%20Adversus%20haereses%20Ireneo%20de%20Lyon",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%9C%CE%BB%CE%B5%CE%B3%CF%87%CE%BF%CF%82%20%CE%BA%CE%B1%E1%BD%B6%20%E1%BC%80%CE%BD%CE%B1%CF%84%CF%81%CE%BF%CF%80%E1%BD%B4%20%CF%84%E1%BF%86%CF%82%20%CF%88%CE%B5%CF%85%CE%B4%CF%89%CE%BD%CF%8D%CE%BC%CE%BF%CF%85%20%CE%B3%CE%BD%CF%8E%CF%83%CE%B5%CF%89%CF%82%20%C2%B7%20Adversus%20haereses"
+      }
+    },
+    {
+      "id": "tertullian",
+      "author": "Tertuliano",
+      "title": "Apologeticum",
+      "language": "la",
+      "genre": "Cristianismo primitivo",
+      "dating": "197 d. C.",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": "https://www.tertullian.org/works/apologeticum.htm",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tratado latino; ejemplar histórico por identificar"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Apologeticum%20Tertuliano",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Apologeticum"
+      }
+    },
+    {
+      "id": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "Primera mitad del siglo III d. C.",
+      "century": "III",
+      "period": "III",
+      "reading": {
+        "url": "https://www.earlychristianwritings.com/origen.html",
+        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Conservado sustancialmente en traducción latina de Rufino; griego fragmentario"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%E1%BC%80%CF%81%CF%87%E1%BF%B6%CE%BD%20%C2%B7%20De%20principiis%20Or%C3%ADgenes",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%E1%BC%80%CF%81%CF%87%E1%BF%B6%CE%BD%20%C2%B7%20De%20principiis"
+      }
+    },
+    {
+      "id": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "language": "grc",
+      "genre": "Historia y cristianismo",
+      "dating": "Principios del siglo IV d. C.",
+      "century": "IV",
+      "period": "IV",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Manuscritos griegos y traducciones posteriores; cotejo individual pendiente"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BC%98%CE%BA%CE%BA%CE%BB%CE%B7%CF%83%CE%B9%CE%B1%CF%83%CF%84%CE%B9%CE%BA%E1%BD%B4%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%AF%CE%B1%20%C2%B7%20Historia%20eclesi%C3%A1stica%20Eusebio%20de%20Cesarea",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%98%CE%BA%CE%BA%CE%BB%CE%B7%CF%83%CE%B9%CE%B1%CF%83%CF%84%CE%B9%CE%BA%E1%BD%B4%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%AF%CE%B1%20%C2%B7%20Historia%20eclesi%C3%A1stica"
+      }
+    },
+    {
+      "id": "columella",
+      "author": "Columela",
+      "title": "De re rustica",
+      "language": "la",
+      "genre": "Agronomía",
+      "dating": "Siglo I d. C.",
+      "century": "I",
+      "period": "I",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tradición manuscrita medieval por identificar"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20re%20rustica%20Columela",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20rustica"
+      }
+    },
+    {
+      "id": "celsus",
+      "author": "Aulo Cornelio Celso",
+      "title": "De medicina",
+      "language": "la",
+      "genre": "Medicina",
+      "dating": "Siglo I d. C.",
+      "century": "I",
+      "period": "I",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tratado médico latino; edición histórica por cotejar"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20medicina%20Aulo%20Cornelio%20Celso",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20medicina"
+      }
+    },
+    {
+      "id": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "language": "la",
+      "genre": "Ingeniería y arte militar",
+      "dating": "Finales del siglo I d. C.",
+      "century": "I",
+      "period": "I",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tratado militar latino, original antiguo no conservado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Strategemata%20Frontino",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Strategemata"
+      }
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "language": "grc",
+      "genre": "Biografía e historia",
+      "dating": "Finales del siglo I – comienzos del II d. C.",
+      "century": "I–II",
+      "period": "I–II",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Obra griega extensa; múltiples testigos medievales"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%92%CE%AF%CE%BF%CE%B9%20%CE%A0%CE%B1%CF%81%CE%AC%CE%BB%CE%BB%CE%B7%CE%BB%CE%BF%CE%B9%20%C2%B7%20Vidas%20paralelas%20Plutarco",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%AF%CE%BF%CE%B9%20%CE%A0%CE%B1%CF%81%CE%AC%CE%BB%CE%BB%CE%B7%CE%BB%CE%BF%CE%B9%20%C2%B7%20Vidas%20paralelas"
+      }
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "language": "grc",
+      "genre": "Arquitectura e ingeniería",
+      "dating": "Siglo II d. C. (atribución y datación a precisar)",
+      "century": "II",
+      "period": "II",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Texto técnico de máquinas de asedio transmitido mediante copias tardías"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%BF%CE%BB%CE%B9%CE%BF%CF%81%CE%BA%CE%B7%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Poliorketika%20Apolodoro%20de%20Damasco%20(atribuci%C3%B3n%20tradicional)",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BF%CE%BB%CE%B9%CE%BF%CF%81%CE%BA%CE%B7%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Poliorketika"
+      }
+    },
+    {
+      "id": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "language": "grc",
+      "genre": "Arquitectura e ingeniería",
+      "dating": "Siglo I d. C. (datación del autor debatida)",
+      "century": "I",
+      "period": "I",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tradición técnica griega y traducciones posteriores; separar obras auténticas y dudosas"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%BD%CE%B5%CF%85%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Pneumatica%20Her%C3%B3n%20de%20Alejandr%C3%ADa",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BD%CE%B5%CF%85%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Pneumatica"
+      }
+    },
+    {
+      "id": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "language": "grc",
+      "genre": "Arquitectura e ingeniería",
+      "dating": "Siglo I d. C. (datación debatida)",
+      "century": "I",
+      "period": "I",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Transmitida en manuscritos técnicos posteriores; ilustraciones requieren cotejo"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%91%E1%BD%90%CF%84%CE%BF%CE%BC%CE%B1%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CF%84%CE%B9%CE%BA%CE%AE%20%C2%B7%20Automata%20Her%C3%B3n%20de%20Alejandr%C3%ADa",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%91%E1%BD%90%CF%84%CE%BF%CE%BC%CE%B1%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CF%84%CE%B9%CE%BA%CE%AE%20%C2%B7%20Automata"
+      }
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "language": "grc",
+      "genre": "Arquitectura e ingeniería",
+      "dating": "Siglo I a. C. (datación discutida)",
+      "century": "I a. C.",
+      "period": "I a. C.",
+      "reading": {
+        "url": null,
+        "status": "Edición textual aún no cotejada"
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tratado de máquinas de guerra conocido por manuscritos bizantinos"
+      },
+      "pdf": {
+        "url": null,
+        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+      },
+      "translation": {
+        "status": "Traducción no vinculada aún; identificar traductor y edición"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%B7%CE%BC%CE%AC%CF%84%CF%89%CE%BD%20%C2%B7%20De%20machinis%20Ateneo%20Mec%C3%A1nico",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%B7%CE%BC%CE%AC%CF%84%CF%89%CE%BD%20%C2%B7%20De%20machinis"
+      }
     }
-  ]
+  ],
+  "pdfPolicy": {
+    "maxBytes": 12000000,
+    "localDir": "pdf/bibliotheca-classica/",
+    "require": "URL institucional de la edición exacta, derechos de copia autorizados, validación PDF, página de créditos y registro de procedencia",
+    "fallback": "Enlace externo institucional si el archivo supera 12 MB, tiene licencia restrictiva o el documento no puede verificarse"
+  }
 }
