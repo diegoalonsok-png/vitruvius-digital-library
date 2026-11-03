@@ -101,7 +101,7 @@ async function start(){
  const jobs=meta.datasets.map(async ds=>{try{const [r,s]=await Promise.all([fetch(ds.file),ds.sections?fetch(ds.sections):Promise.resolve(null)]);if(!r.ok||s&&!s.ok)throw Error("HTTP datos");const data=await r.json();const section=s?await s.json():null;return createDatasetItems({...data,...ds},section).map(x=>({...x,source:ds.id}));}catch(err){console.warn("Fuente IIIF no incluida:",ds.id,err);return []}});
  const derived=(await Promise.all(jobs)).flat();
  items=[...meta.primaryRecords.map(x=>({...x,source:x.source||"registros"})),...derived];
- for(const x of items){if(!x.book){const mt=String(x.locus||"").match(/(?:Libro\s+|III\.)\s*(\d+)/i);if(mt&&+mt[1]>=1&&+mt[1]<=10)x.book=+mt[1];else if(/III\.1/i.test(x.locus||""))x.book=3;}}
+ for(const x of items){if(!x.book){const label=String(x.locus||"");const roman=label.match(/\b(X|IX|IV|V?I{1,3}|V|VIII|VII|VI)\.(?:\d+|praef)/i);const arabic=label.match(/\b(?:Libro\s+|Book\s+)(\d{1,2})\b/i);if(arabic&&+arabic[1]>=1&&+arabic[1]<=10)x.book=+arabic[1];else if(roman){const vals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};x.book=vals[roman[1].toUpperCase()]||null;}}}
  const editions=[...new Set(derived.map(x=>x.source))];
  for(const id of editions){const data=meta.datasets.find(x=>x.id===id);const o=document.createElement("option");o.value=id;o.textContent=data.title+" ("+data.date+")";$("atlas-edition").append(o)}
  items.sort((a,b)=>{const order={codices:0,proporcion:1,ediciones:2,ordenes:3,maquinas:4,arquitectura:5,lugares:6};return (order[a.category]??8)-(order[b.category]??8)||String(a.date).localeCompare(String(b.date))||String(a.id).localeCompare(String(b.id));});
