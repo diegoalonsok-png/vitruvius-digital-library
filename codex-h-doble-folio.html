@@ -57,6 +57,57 @@ h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(34px,4vw,6
 #spread-grid .folio-card strong{font:700 15px Georgia,serif}
 #spread-grid .folio-card small{font:11px system-ui,sans-serif;color:#f4e4c9}
 @media(max-width:700px){#spread-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#spread-grid .folio-card img{height:95px}}
+
+/* Doble hoja: controles de lectura independientes; ningún otro visor afectado. */
+.leaf-stage{overflow-x:auto;overflow-y:scroll;scrollbar-width:auto;scrollbar-color:#a27d47 #e7ddcc;cursor:grab}
+.leaf-stage.dragging,.leaf-stage.dragging img{cursor:grabbing!important}
+.leaf-stage::-webkit-scrollbar{width:15px;height:15px}
+.leaf-stage::-webkit-scrollbar-thumb{background:#a27d47;border:3px solid #eadfcb;border-radius:12px}
+.leaf-stage::-webkit-scrollbar-track{background:#eadfcb}
+.leaf-stage img{touch-action:auto;-webkit-user-drag:none}
+.scroll-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:9px;background:#ede4d6;border-top:1px solid #c1b29a}
+.scroll-nav label{font:600 12px system-ui,sans-serif;display:flex;align-items:center;gap:7px;flex:1 1 170px}
+.scroll-nav input[type=range]{min-width:90px;flex:1;accent-color:#9a7242}
+.scroll-nav button{padding:6px 8px;min-height:34px;font-size:12px}
+.scroll-nav output{min-width:35px;font-size:12px;font-variant-numeric:tabular-nums}
+.filters{background:#f4ecdc;border-top:1px solid #b8a88c}
+.filters summary{padding:9px 12px;cursor:pointer;font:600 13px system-ui,sans-serif;color:#223b4e}
+.filters summary:hover{background:#ebdcc3}
+.filter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;padding:10px}
+.filter-grid label{display:flex;gap:5px;align-items:center;flex-wrap:wrap;font-size:12px;font-weight:550}
+.filter-grid input[type=range]{width:100%;accent-color:#926e3d}
+.filter-grid input[type=checkbox]{width:18px;height:18px;accent-color:#926e3d}
+.filter-grid output{font-variant-numeric:tabular-nums;font-size:11px}
+.filter-grid button{min-height:33px;padding:5px 11px}
+.extra-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0;background:#f7f0e3;padding:11px;border:1px solid #baa786}
+.extra-toolbar label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.extra-toolbar select{padding:8px;background:white;border:1px solid #aa9777;color:#213b4e}
+.extra-toolbar button{min-height:39px}
+html[data-reader-theme=dark] body{--paper:#121f2b;--ink:#f0e7d9;--cream:#223547;background:#121f2b;color:#f0e7d9}
+html[data-reader-theme=dark] .notice{background:#2a3c4b;color:#f0e5d1}
+html[data-reader-theme=dark] .toolbar,html[data-reader-theme=dark] .extra-toolbar{background:#273a4b;color:#f9ecdc}
+html[data-reader-theme=dark] .leaf{background:#22313d}
+html[data-reader-theme=dark] .leaf-stage{background:#354352}
+html[data-reader-theme=dark] .leaf-tools,html[data-reader-theme=dark] .scroll-nav,html[data-reader-theme=dark] .filters{background:#394754;color:#f9ecdc}
+html[data-reader-theme=dark] .filters summary{color:#f9ecdc}
+html[data-reader-theme=dark] .filter-grid label{color:#f9ecdc}
+html[data-reader-theme=dark] .leaf-foot{background:#233746;color:#eee2ca}
+html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5eee4}
+@media print{
+ @page{size:landscape;margin:10mm}
+ body{background:#fff!important;color:#111!important}
+ nav,.toolbar,.extra-toolbar,.notice,.gallery,.leaf-tools,.filters,.scroll-nav,.bottom,#status,#lens{display:none!important}
+ main{width:100%;padding:0}
+ .banner{background:#fff!important;color:#111!important;border-top:0;padding:6px}
+ .banner h1{font-size:24px}
+ .book{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;padding:0;border:0;box-shadow:none;background:#fff!important;break-inside:avoid}
+ .leaf{border:1px solid #777!important;box-shadow:none}
+ .leaf-title{background:#fff!important;color:#111!important;padding:5px}
+ .leaf-stage{height:auto!important;min-height:0!important;overflow:visible!important;background:white!important}
+ .leaf-stage img{display:block!important;max-width:100%!important;width:auto!important;max-height:165mm!important;height:auto!important;margin:auto!important;filter:none!important;opacity:1!important}
+ .leaf-stage img[hidden],.leaf-stage .placeholder{display:none!important}
+ .leaf-foot{font-size:9px;padding:4px;background:#fff!important;color:#111!important}
+}
 </style></head><body><main>
 <nav><a href="index.html">← Biblioteca principal</a><a href="codex-h-folios-local.html">Lector de folio único</a><a href="harleianus.html">Visor H original</a></nav>
 <header class="banner"><small>BIBLIOTHECA VITRUVII · CODEX HARLEIANUS 2767</small>
@@ -68,15 +119,58 @@ h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(34px,4vw,6
 <label for="folio-search">Ir a folio o imagen</label><input id="folio-search" class="jump" type="search" placeholder="f.1v · f.20r · 10">
 <button id="go" type="button" disabled>Ir</button><span id="spread-total"></span>
 <button id="fit-both" type="button" disabled>Ajustar ambas</button></div>
+<div class="extra-toolbar" role="group" aria-label="Herramientas de lectura">
+<label for="reader-language"><span data-tr="language">Idioma</span><select id="reader-language" aria-label="Idioma de interfaz">
+<option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label>
+<button type="button" id="reader-theme" aria-pressed="false">☾ <span data-tr="dark">Modo oscuro</span></button>
+<button type="button" id="loupe-toggle" aria-pressed="true">◉ <span data-tr="loupeOn">Desactivar lupa</span></button>
+<button type="button" id="print-spread">⎙ <span data-tr="print">Imprimir apertura</span></button>
+<button type="button" id="email-spread">✉ <span data-tr="email">Enviar por correo</span></button>
+<button type="button" id="whatsapp-spread">✆ <span data-tr="whatsapp">Compartir por WhatsApp</span></button>
+</div>
 <p id="status" role="status">Cargando índice local de imágenes alojadas en GitHub…</p>
 <section class="book" aria-label="Libro abierto con doble folio">
 <article class="leaf left"><div class="leaf-title"><strong id="left-label">Folio izquierdo</strong><small id="left-meta">Verso</small></div>
 <div class="leaf-tools"><button id="left-minus" type="button" disabled>−</button><button id="left-plus" type="button" disabled>+ Ampliar</button><button id="left-fit" type="button" disabled>Ajustar</button><output id="left-percent">100%</output><small>Lupa al pasar el cursor</small></div>
 <div class="leaf-stage" id="left-stage" tabindex="0"><div class="placeholder" id="left-placeholder">Esperando el índice…</div><img id="left-image" alt="Folio izquierdo" hidden></div>
+<div class="scroll-nav">
+<label><span data-tr="scroll">Bajar por el folio</span>
+<input type="range" id="left-position" min="0" max="100" value="0" step="1" aria-label="Posición vertical del folio"></label>
+<output id="left-scroll-percent">0%</output>
+<button type="button" id="left-top" data-tr="top">↑ Arriba</button><button type="button" id="left-bottom" data-tr="bottom">Abajo ↓</button>
+</div>
+<details class="filters"><summary data-tr="filters">Ajustes de imagen · opacidad, colores y contraste</summary>
+<div class="filter-grid">
+<label><span data-tr="opacity">Opacidad</span><input type="range" id="left-opacity" min="20" max="100" value="100"><output id="left-opacity-out">100%</output></label>
+<label><span data-tr="brightness">Brillo</span><input type="range" id="left-brightness" min="40" max="180" value="100"><output id="left-brightness-out">100%</output></label>
+<label><span data-tr="contrast">Contraste</span><input type="range" id="left-contrast" min="40" max="220" value="100"><output id="left-contrast-out">100%</output></label>
+<label><span data-tr="saturation">Saturación</span><input type="range" id="left-saturation" min="0" max="200" value="100"><output id="left-saturation-out">100%</output></label>
+<label><span data-tr="grayscale">Escala de grises</span><input type="range" id="left-grayscale" min="0" max="100" value="0"><output id="left-grayscale-out">0%</output></label>
+<label><span data-tr="sepia">Sepia</span><input type="range" id="left-sepia" min="0" max="100" value="0"><output id="left-sepia-out">0%</output></label>
+<label><span data-tr="invert">Invertir colores</span><input type="checkbox" id="left-invert"></label>
+<button type="button" id="left-reset" data-tr="reset">Restablecer imagen</button>
+</div></details>
 <div class="leaf-foot" id="left-foot">—</div></article>
 <article class="leaf right"><div class="leaf-title"><strong id="right-label">Folio derecho</strong><small id="right-meta">Recto</small></div>
 <div class="leaf-tools"><button id="right-minus" type="button" disabled>−</button><button id="right-plus" type="button" disabled>+ Ampliar</button><button id="right-fit" type="button" disabled>Ajustar</button><output id="right-percent">100%</output><small>Lupa al pasar el cursor</small></div>
 <div class="leaf-stage" id="right-stage" tabindex="0"><div class="placeholder" id="right-placeholder">Esperando el índice…</div><img id="right-image" alt="Folio derecho" hidden></div>
+<div class="scroll-nav">
+<label><span data-tr="scroll">Bajar por el folio</span>
+<input type="range" id="right-position" min="0" max="100" value="0" step="1" aria-label="Posición vertical del folio"></label>
+<output id="right-scroll-percent">0%</output>
+<button type="button" id="right-top" data-tr="top">↑ Arriba</button><button type="button" id="right-bottom" data-tr="bottom">Abajo ↓</button>
+</div>
+<details class="filters"><summary data-tr="filters">Ajustes de imagen · opacidad, colores y contraste</summary>
+<div class="filter-grid">
+<label><span data-tr="opacity">Opacidad</span><input type="range" id="right-opacity" min="20" max="100" value="100"><output id="right-opacity-out">100%</output></label>
+<label><span data-tr="brightness">Brillo</span><input type="range" id="right-brightness" min="40" max="180" value="100"><output id="right-brightness-out">100%</output></label>
+<label><span data-tr="contrast">Contraste</span><input type="range" id="right-contrast" min="40" max="220" value="100"><output id="right-contrast-out">100%</output></label>
+<label><span data-tr="saturation">Saturación</span><input type="range" id="right-saturation" min="0" max="200" value="100"><output id="right-saturation-out">100%</output></label>
+<label><span data-tr="grayscale">Escala de grises</span><input type="range" id="right-grayscale" min="0" max="100" value="0"><output id="right-grayscale-out">0%</output></label>
+<label><span data-tr="sepia">Sepia</span><input type="range" id="right-sepia" min="0" max="100" value="0"><output id="right-sepia-out">0%</output></label>
+<label><span data-tr="invert">Invertir colores</span><input type="checkbox" id="right-invert"></label>
+<button type="button" id="right-reset" data-tr="reset">Restablecer imagen</button>
+</div></details>
 <div class="leaf-foot" id="right-foot">—</div></article></section>
 <p class="notice">Hacé clic en cada folio para ampliarlo; los botones de zoom y las barras de desplazamiento actúan sobre cada hoja por separado. Al pasar el cursor sobre una imagen aparece su lupa. Las imágenes se leen exclusivamente de la carpeta del repositorio.</p>
 <section class="gallery" aria-labelledby="gallery-title"><h2 id="gallery-title">Galería de folios · Harley MS 2767</h2>
@@ -94,6 +188,67 @@ const dir="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
 let images=[],spreads=[],active=0,visible=0,filtered=[],lensSource=null,folioToSpread=new Map();
 const sides={left:{stage:$("left-stage"),img:$("left-image"),label:$("left-label"),meta:$("left-meta"),foot:$("left-foot"),empty:$("left-placeholder"),zoom:100,serial:0},right:{stage:$("right-stage"),img:$("right-image"),label:$("right-label"),meta:$("right-meta"),foot:$("right-foot"),empty:$("right-placeholder"),zoom:100,serial:0}};
 const url=f=>dir+encodeURIComponent(f.archivo);
+
+const locale={
+ es:{language:"Idioma",dark:"Modo oscuro",light:"Modo claro",loupeOn:"Desactivar lupa",loupeOff:"Activar lupa",print:"Imprimir apertura",email:"Enviar por correo",whatsapp:"Compartir por WhatsApp",scroll:"Bajar por el folio",top:"↑ Arriba",bottom:"Abajo ↓",filters:"Ajustes de imagen · opacidad, colores y contraste",opacity:"Opacidad",brightness:"Brillo",contrast:"Contraste",saturation:"Saturación",grayscale:"Escala de grises",sepia:"Sepia",invert:"Invertir colores",reset:"Restablecer imagen",prev:"← Apertura anterior",next:"Apertura siguiente →",fit:"Ajustar ambas",go:"Ir",jump:"Ir a folio o imagen",zoom:"+ Ampliar",oneFit:"Ajustar"},
+ en:{language:"Language",dark:"Dark mode",light:"Light mode",loupeOn:"Disable magnifier",loupeOff:"Enable magnifier",print:"Print opening",email:"Send by email",whatsapp:"Share via WhatsApp",scroll:"Scroll down folio",top:"↑ Top",bottom:"Bottom ↓",filters:"Image adjustments · opacity, color and contrast",opacity:"Opacity",brightness:"Brightness",contrast:"Contrast",saturation:"Saturation",grayscale:"Grayscale",sepia:"Sepia",invert:"Invert colors",reset:"Reset image",prev:"← Previous opening",next:"Next opening →",fit:"Fit both",go:"Go",jump:"Go to folio or image",zoom:"+ Zoom",oneFit:"Fit"},
+ fr:{language:"Langue",dark:"Mode sombre",light:"Mode clair",loupeOn:"Désactiver la loupe",loupeOff:"Activer la loupe",print:"Imprimer la double page",email:"Envoyer par courriel",whatsapp:"Partager sur WhatsApp",scroll:"Descendre dans le folio",top:"↑ Haut",bottom:"Bas ↓",filters:"Réglages d’image · opacité, couleurs et contraste",opacity:"Opacité",brightness:"Luminosité",contrast:"Contraste",saturation:"Saturation",grayscale:"Niveaux de gris",sepia:"Sépia",invert:"Inverser les couleurs",reset:"Réinitialiser l’image",prev:"← Double page précédente",next:"Double page suivante →",fit:"Ajuster les deux",go:"Aller",jump:"Folio ou image",zoom:"+ Agrandir",oneFit:"Ajuster"},
+ it:{language:"Lingua",dark:"Modalità scura",light:"Modalità chiara",loupeOn:"Disattiva lente",loupeOff:"Attiva lente",print:"Stampa apertura",email:"Invia per email",whatsapp:"Condividi su WhatsApp",scroll:"Scorri il foglio",top:"↑ In alto",bottom:"In basso ↓",filters:"Regolazioni · opacità, colore e contrasto",opacity:"Opacità",brightness:"Luminosità",contrast:"Contrasto",saturation:"Saturazione",grayscale:"Scala di grigi",sepia:"Seppia",invert:"Inverti colori",reset:"Ripristina immagine",prev:"← Apertura precedente",next:"Apertura successiva →",fit:"Adatta entrambe",go:"Vai",jump:"Foglio o immagine",zoom:"+ Ingrandisci",oneFit:"Adatta"},
+ de:{language:"Sprache",dark:"Dunkelmodus",light:"Hellmodus",loupeOn:"Lupe ausschalten",loupeOff:"Lupe einschalten",print:"Doppelseite drucken",email:"Per E-Mail senden",whatsapp:"Über WhatsApp teilen",scroll:"Im Blatt nach unten",top:"↑ Oben",bottom:"Unten ↓",filters:"Bildanpassung · Deckkraft, Farben, Kontrast",opacity:"Deckkraft",brightness:"Helligkeit",contrast:"Kontrast",saturation:"Sättigung",grayscale:"Graustufen",sepia:"Sepia",invert:"Farben umkehren",reset:"Bild zurücksetzen",prev:"← Vorherige Doppelseite",next:"Nächste Doppelseite →",fit:"Beide einpassen",go:"Los",jump:"Folio oder Bild",zoom:"+ Vergrößern",oneFit:"Einpassen"},
+ pt:{language:"Idioma",dark:"Modo escuro",light:"Modo claro",loupeOn:"Desativar lupa",loupeOff:"Ativar lupa",print:"Imprimir abertura",email:"Enviar por e-mail",whatsapp:"Compartilhar no WhatsApp",scroll:"Descer pelo fólio",top:"↑ Acima",bottom:"Abaixo ↓",filters:"Ajustes · opacidade, cor e contraste",opacity:"Opacidade",brightness:"Brilho",contrast:"Contraste",saturation:"Saturação",grayscale:"Tons de cinza",sepia:"Sépia",invert:"Inverter cores",reset:"Restaurar imagem",prev:"← Abertura anterior",next:"Próxima abertura →",fit:"Ajustar ambas",go:"Ir",jump:"Fólio ou imagem",zoom:"+ Ampliar",oneFit:"Ajustar"}
+};
+let currentLanguage="es",loupeEnabled=true,readerTheme="light";
+try{const saved=localStorage.getItem("vitruvius-ui-lang");if(locale[saved])currentLanguage=saved;readerTheme=localStorage.getItem("vitruvius-color-theme")==="dark"?"dark":"light";}catch(e){}
+function paintUI(){
+ const t=locale[currentLanguage]||locale.es;
+ document.documentElement.lang=currentLanguage;
+ document.querySelectorAll("[data-tr]").forEach(el=>{const key=el.dataset.tr;if(t[key])el.textContent=t[key]});
+ $("previous").textContent=t.prev;$("following").textContent=t.next;
+ $("fit-both").textContent=t.fit;$("go").textContent=t.go;
+ document.querySelector('label[for="folio-search"]').textContent=t.jump;
+ for(const side of ["left","right"]) {$(side+"-plus").textContent=t.zoom;$(side+"-fit").textContent=t.oneFit}
+ $("reader-language").value=currentLanguage;
+ document.documentElement.dataset.readerTheme=readerTheme;
+ $("reader-theme").setAttribute("aria-pressed",String(readerTheme==="dark"));
+ $("reader-theme").querySelector("span").textContent=readerTheme==="dark"?t.light:t.dark;
+ $("loupe-toggle").setAttribute("aria-pressed",String(loupeEnabled));
+ $("loupe-toggle").querySelector("span").textContent=loupeEnabled?t.loupeOn:t.loupeOff;
+}
+$("reader-language").addEventListener("change",e=>{currentLanguage=e.target.value;try{localStorage.setItem("vitruvius-ui-lang",currentLanguage)}catch(e){}paintUI()});
+$("reader-theme").addEventListener("click",()=>{readerTheme=readerTheme==="dark"?"light":"dark";try{localStorage.setItem("vitruvius-color-theme",readerTheme)}catch(e){}paintUI()});
+$("loupe-toggle").addEventListener("click",()=>{loupeEnabled=!loupeEnabled;$("lens").style.display="none";paintUI()});
+paintUI();
+function shareAddress(){
+ const u=new URL(location.href),spread=spreads[active];
+ const primary=spread&&(spread.left||spread.right);
+ if(primary)u.searchParams.set("folio",primary.etiquetaOriginal);
+ return u.href;
+}
+function shareText(){
+ const s=spreads[active];
+ return "Codex H · Harley MS 2767 · Vitruvio · "+(s?.name||"Doble hoja")+"\n"+shareAddress()+"\nBritish Library · digitalización conservada en la biblioteca Vitruvio.";
+}
+$("print-spread").addEventListener("click",()=>window.print());
+$("email-spread").addEventListener("click",()=>{
+ const s=spreads[active],subject="Codex H · "+(s?.name||"Doble hoja");
+ location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(shareText());
+});
+$("whatsapp-spread").addEventListener("click",()=>{
+ window.open("https://wa.me/?text="+encodeURIComponent(shareText()),"_blank","noopener,noreferrer");
+});
+function updateScroll(name){
+ const s=sides[name],max=Math.max(0,s.stage.scrollHeight-s.stage.clientHeight);
+ const percent=max?Math.round(s.stage.scrollTop/max*100):0;
+ $(name+"-position").value=String(percent);$(name+"-scroll-percent").textContent=percent+"%";
+}
+function applyFilters(name){
+ const s=sides[name],val=k=>Number($(name+"-"+k).value);
+ const keys=["opacity","brightness","contrast","saturation","grayscale","sepia"];
+ for(const key of keys)$(name+"-"+key+"-out").textContent=val(key)+"%";
+ s.img.style.opacity=String(val("opacity")/100);
+ s.img.style.filter="brightness("+val("brightness")+"%) contrast("+val("contrast")+"%) saturate("+val("saturation")+"%) grayscale("+val("grayscale")+"%) sepia("+val("sepia")+"%) invert("+($(name+"-invert").checked?1:0)+")";
+}
+
 const normalized=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");
 function zoomSide(name,value,px,py){
  const side=sides[name],rect=side.img.getBoundingClientRect(),stageRect=side.stage.getBoundingClientRect(),oldW=rect.width||1,oldH=rect.height||1;
@@ -116,7 +271,7 @@ function display(name,f){
  s.img.hidden=true;s.empty.hidden=false;
  if(!f){s.img.removeAttribute("src");s.empty.textContent="Esta apertura contiene una sola hoja.";return}
  s.empty.textContent="Cargando "+f.etiquetaOriginal+" desde GitHub…";
- s.img.onload=()=>{if(ticket!==s.serial)return;s.img.hidden=false;s.empty.hidden=true;s.img.style.width=Math.round(Math.max(140,s.stage.clientWidth-22))+"px";$(name+"-percent").textContent="100%";};
+ s.img.onload=()=>{if(ticket!==s.serial)return;s.img.hidden=false;s.empty.hidden=true;s.img.style.width=Math.round(Math.max(140,s.stage.clientWidth-22))+"px";$(name+"-percent").textContent="100%";applyFilters(name);updateScroll(name);};
  s.img.onerror=()=>{if(ticket!==s.serial)return;s.empty.hidden=false;s.empty.textContent="No se pudo abrir el JPG local. Conservamos el nombre y número de imagen para cotejar.";};
  s.img.alt="Codex H, "+f.etiquetaOriginal+", imagen digital "+f.numeroImagen;s.img.src=url(f);
 }
@@ -129,6 +284,8 @@ function setSpread(i,scrollToBook){
  $("previous").disabled=i===0;$("following").disabled=i===spreads.length-1;
  $("spread-grid").querySelectorAll("button[data-image]").forEach(b=>b.setAttribute("aria-current",String(folioToSpread.get(Number(b.dataset.image))===i)));
  $("status").textContent="Lectura local: "+spread.name+". Dos folios independientes, sin traducciones.";
+ const shareUrl=new URL(location.href),first=spread.left||spread.right;
+ if(first){shareUrl.searchParams.set("folio",first.etiquetaOriginal);history.replaceState(null,"",shareUrl);}
  if(scrollToBook)document.querySelector(".book").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function createSpreads(){
@@ -188,7 +345,7 @@ function filterGallery(){
  if(filtered.length)addThumbs();else{$("gallery-status").textContent="No se encontró un folio con esa etiqueta";$("load-more").hidden=true}
 }
 function magnify(name,e){
- const s=sides[name],r=s.img.getBoundingClientRect();if(s.img.hidden||!s.img.naturalWidth)return;
+ const s=sides[name],r=s.img.getBoundingClientRect();if(!loupeEnabled||s.img.hidden||!s.img.naturalWidth)return;
  const x=e.clientX-r.left,y=e.clientY-r.top,lens=$("lens"),pic=$("lens-image");
  if(x<0||y<0||x>r.width||y>r.height){lens.style.display="none";return}
  const size=window.innerWidth<=700?130:190,scale=2.5;
@@ -202,9 +359,48 @@ function bindSide(name){
  $(name+"-minus").addEventListener("click",()=>zoomSide(name,s.zoom-25));
  $(name+"-plus").addEventListener("click",()=>zoomSide(name,s.zoom+25));
  $(name+"-fit").addEventListener("click",()=>{zoomSide(name,100);s.stage.scrollTo({top:0,left:0})});
- s.img.addEventListener("click",e=>zoomSide(name,s.zoom+50,e.clientX,e.clientY));
- s.stage.addEventListener("pointermove",e=>magnify(name,e));
+ s.img.addEventListener("click",e=>{if(s.suppressClick)return;zoomSide(name,s.zoom+50,e.clientX,e.clientY);});
+ // Paneo horizontal y vertical arrastrando sin cambiar de folio ni activar zoom.
+ let drag=null;
+ s.stage.addEventListener("pointerdown",e=>{
+  if(e.pointerType!=="mouse"||e.button!==0||s.img.hidden)return;
+  drag={id:e.pointerId,x:e.clientX,y:e.clientY,left:s.stage.scrollLeft,top:s.stage.scrollTop,moved:false};
+  s.stage.setPointerCapture(e.pointerId);
+ });
+ s.stage.addEventListener("pointermove",e=>{
+  if(drag&&drag.id===e.pointerId){
+   const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+   if(Math.abs(dx)+Math.abs(dy)>5){drag.moved=true;s.stage.classList.add("dragging");$("lens").style.display="none"}
+   if(drag.moved){s.stage.scrollLeft=drag.left-dx;s.stage.scrollTop=drag.top-dy;updateScroll(name)}
+  }else if(loupeEnabled)magnify(name,e);
+ });
+ const finish=e=>{
+  if(!drag||drag.id!==e.pointerId)return;
+  const moved=drag.moved;drag=null;s.stage.classList.remove("dragging");
+  if(s.stage.hasPointerCapture(e.pointerId))s.stage.releasePointerCapture(e.pointerId);
+  if(moved){s.suppressClick=true;setTimeout(()=>{s.suppressClick=false},0)}
+ };
+ s.stage.addEventListener("pointerup",finish);
+ s.stage.addEventListener("pointercancel",finish);
  s.stage.addEventListener("pointerleave",()=>{$("lens").style.display="none"});
+ s.stage.addEventListener("scroll",()=>updateScroll(name),{passive:true});
+ $(name+"-position").addEventListener("input",e=>{
+  const max=Math.max(0,s.stage.scrollHeight-s.stage.clientHeight);
+  s.stage.scrollTop=max*Number(e.target.value)/100;updateScroll(name);
+ });
+ $(name+"-top").addEventListener("click",()=>{s.stage.scrollTop=0;updateScroll(name)});
+ $(name+"-bottom").addEventListener("click",()=>{s.stage.scrollTop=s.stage.scrollHeight;updateScroll(name)});
+ for(const key of ["opacity","brightness","contrast","saturation","grayscale","sepia"]){
+  $(name+"-"+key).addEventListener("input",()=>applyFilters(name));
+ }
+ $(name+"-invert").addEventListener("change",()=>applyFilters(name));
+ $(name+"-reset").addEventListener("click",()=>{
+  for(const key of ["opacity","brightness","contrast","saturation"])$(name+"-"+key).value="100";
+  for(const key of ["grayscale","sepia"])$(name+"-"+key).value="0";
+  $(name+"-invert").checked=false;applyFilters(name);
+ });
+ applyFilters(name);
+
  s.stage.addEventListener("wheel",e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();zoomSide(name,s.zoom+(e.deltaY<0?25:-25),e.clientX,e.clientY)}},{passive:false});
 }
 bindSide("left");bindSide("right");
@@ -220,7 +416,10 @@ fetch(dir+"indice-folios.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error
  if(d.totalImagenes!==341||!Array.isArray(images)||images.length!==341||images.some((f,i)=>f.numeroImagen!==i+1||!/^H_\d{3}_[a-z0-9-]+\.jpg$/.test(f.archivo)))throw Error("Índice incompleto o fuera de orden");
  createSpreads();
  for(const id of ["previous","following","go","fit-both"])$(id).disabled=false;
- filterGallery();setSpread(folioToSpread.get(10));
+ filterGallery();
+ const requested=new URLSearchParams(location.search).get("folio");
+ const found=requested?doFind(requested):-1;
+ setSpread(found>=0?found:folioToSpread.get(10));
 }).catch(e=>{$("status").textContent="No fue posible verificar el archivo local: "+e.message;for(const n of ["left","right"])sides[n].empty.textContent="No hay folios comprobados disponibles."});
 })();
 </script></body></html>
