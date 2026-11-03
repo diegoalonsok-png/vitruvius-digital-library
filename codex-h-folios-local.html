@@ -72,7 +72,7 @@ function open(index,scroll=false){
 function append(){const last=Math.min(filtered.length,count+48),frag=document.createDocumentFragment();for(const i of filtered.slice(count,last)){
  const f=folios[i],b=document.createElement("button");b.className="card";b.type="button";b.dataset.i=i;b.setAttribute("aria-current",String(i===position));
  const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+f.etiquetaOriginal;image.src=file(f);
- const n=document.createElement("strong");n.textContent="Imagen "+(i+1),label=document.createElement("span");label.textContent=f.etiquetaOriginal;
+ const n=document.createElement("strong"),label=document.createElement("span");n.textContent="Imagen "+(i+1);label.textContent=f.etiquetaOriginal;
  b.append(image,n,label);b.addEventListener("click",()=>open(i,true));frag.append(b)}
  $("grid").append(frag);count=last;$("more").hidden=count>=filtered.length;$("gallery-status").textContent=filtered.length+" imágenes coincidentes · "+count+" miniaturas visibles"}
 function filter(){const raw=$("search").value.replace(/^imagen\s*/i,""),q=norm(raw);filtered=folios.map((_,i)=>i).filter(i=>!q||String(i+1)===q||norm(folios[i].etiquetaOriginal).includes(q));count=0;$("grid").replaceChildren();if(filtered.length)append();else{$("gallery-status").textContent="Sin coincidencias";$("more").hidden=true}}
@@ -84,7 +84,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  if(d.totalImagenes!==341||!Array.isArray(d.imagenes)||d.imagenes.length!==341||d.imagenes.some((x,i)=>x.numeroImagen!==i+1||!/^H_\d{3}_[a-z0-9-]+\.jpg$/.test(x.archivo)))throw Error("Índice inválido o incompleto");
  folios=d.imagenes;$("total").textContent="/ 341";$("number").max=341;
  for(const id of ["prev","next","number","minus","plus","fit","zoom"])$(id).disabled=false;
- filter();open(8);
-}).catch(err=>{$("state").textContent="Las fotografías locales aún no están publicadas o el índice no es válido ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
+ filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));const initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);open(initial>=0?initial:8);
+}).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
 </script><script src="assets/codex-h-single-controls.js?v=20261103-head-2" defer></script></body></html>
