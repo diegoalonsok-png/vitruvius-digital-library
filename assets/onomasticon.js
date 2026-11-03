@@ -10,6 +10,33 @@ const fmt=n=>Number(n||0).toLocaleString("es-AR");
 const locusBook=l=>Number(String(l).split(".")[0]);
 const reader=(l,edition="recensio-es")=>"lector-bilingue.html?edition="+encodeURIComponent(edition)+"&locus="+encodeURIComponent(l);
 let data=null,passages=[],byLocus=new Map(),selectedId="archimedes",limit=20,query="",type="all",book="all",statsBook="1",tab="entities";
+const T=k=>window.OVI18N?.t(k)||k, getLanguage=()=>window.OVI18N?.lang||'es';
+const translatedCorpora=new Map();let localeGeneration=0;
+async function getTranslation(lang){
+ if(!['en','fr'].includes(lang)||translatedCorpora.has(lang))return;
+ const path=lang==='en'?'data/structured/theory-en.json':'data/structured/recensio-fr.json';
+ try{
+  const resp=await fetch(path);if(!resp.ok)throw Error('HTTP '+resp.status);
+  const edition=await resp.json();translatedCorpora.set(lang,new Map((edition.passages||[]).map(p=>[p.locus,p.translation||p.translated||''])));
+ }catch(error){console.warn('Traducción no disponible:',lang,error);translatedCorpora.set(lang,new Map());}
+}
+function translationFor(p){
+ const lang=getLanguage();
+ if(lang==='la')return {text:p.latin,label:'Latín editorial V514',fallback:false};
+ if(lang==='es')return {text:p.translation,label:'Castellano V514',fallback:false};
+ const selected=translatedCorpora.get(lang)?.get(p.locus);
+ if(selected)return {text:selected,label:lang==='en'?'English V297':'Français V554',fallback:false};
+ return {text:p.translation,label:'Castellano V514 · sin traducción verificada',fallback:true};
+}
+async function refreshLocale(){
+ const counter=++localeGeneration;
+ await getTranslation(getLanguage());
+ if(counter!==localeGeneration||!data)return;
+ statNumbers();renderList();renderEntity();renderTextSearch();
+ if(tab==='stats')renderStats();
+}
+document.addEventListener('ov-locale-changed',refreshLocale);
+
 function highlight(text,q){
  const t=clean(text),term=clean(q).trim();if(!term)return html(t);
  const at=fold(t).indexOf(fold(term));if(at<0)return html(t);
@@ -27,7 +54,7 @@ function statNumbers(){
  $("ov-count-latin").textContent=fmt(data.totals.latinWords);
  $("ov-count-greek").textContent=fmt(data.totals.greekWords);
  $("ov-count-loci").textContent=fmt(data.totals.passages);
- $("ov-stat-scope").textContent="Conteos del texto latino editorial V514: "+fmt(data.totals.allWords)+" palabras latinas o griegas en "+fmt(data.totals.chapters)+" unidades de capítulo/prefacio; NO un recuento diplomático del Codex H.";
+ $("ov-stat-scope").textContent=T("scope").replace("{words}",fmt(data.totals.allWords)).replace("{units}",fmt(data.totals.chapters));
 }
 function entitiesFiltered(){
  return data.entities.filter(e=>(type==="all"||e.kind===type)
@@ -38,23 +65,25 @@ function entitiesFiltered(){
 function entityButton(e){
  const button=document.createElement("button");button.type="button";button.className="ov-entry";
  button.setAttribute("aria-pressed",String(e.id===selectedId));
- button.innerHTML="<strong>"+html(e.name)+"</strong><small>"+(e.kind==="person"?"Personaje":"Lugar")+" · "+fmt(e.mentions)+" locus"+(e.mentions===1?"":" citados")+"</small>";
+ button.innerHTML="<strong>"+html(e.name)+"</strong><small>"+(e.kind==="person"?T("entityPerson"):T("entityPlace"))+" · "+fmt(e.mentions)+" locus"+(e.mentions===1?"":" citados")+"</small>";
  button.onclick=()=>{selectedId=e.id;limit=20;renderEntity();renderList();};
  return button;
 }
 function renderList(){
  const items=entitiesFiltered(),root=$("ov-list");root.replaceChildren();
- $("ov-index-count").textContent=fmt(items.length)+" entradas documentadas";
+ $("ov-index-count").textContent=fmt(items.length)+" "+T("indexed");
  if(!items.length){root.innerHTML='<p class="ov-empty">No hay ficha biográfica o geográfica registrada con este filtro. El buscador de texto inferior permite encontrar cualquier nombre o variante que aparezca en el corpus y consultar su locus, aunque su identificación aún no esté verificada.</p>';return;}
  items.forEach(e=>root.append(entityButton(e)));
 }
 function referenceCard(p,term=""){
  const box=document.createElement("article");box.className="ov-locus";
  const l=p.locus;
+ const selected=translationFor(p);
  box.innerHTML="<h3>De architectura · "+html(l)+"</h3>"
  +"<p class='ov-latin' lang='la'><b>Latín:</b> "+passageExcerpt(p,term,true)+"</p>"
- +"<p class='ov-translated' lang='es'><b>Castellano V514:</b> "+passageExcerpt(p,term,false)+"</p>"
- +"<a href='"+reader(l)+"'>Leer locus en V514</a>"
+ +"<p class='ov-translated' lang='"+(selected.fallback?'es':getLanguage())+"'><b>"+html(selected.label)+":</b> "+passageExcerpt({latin:selected.text,translation:selected.text},term,false)+"</p>"
+ +(selected.fallback?"<p class='ov-note'>"+html(T("originalBio"))+"</p>":"")
+ +"<a href='"+reader(l)+"'>"+html(T("reader"))+"</a>"
  +"<a href='"+reader(l,"theory-en")+"'>English · V297</a>"
  +"<a href='"+reader(l,"recensio-fr")+"'>Français · V554</a>";
  return box;
@@ -64,13 +93,13 @@ function renderEntity(){
  const root=$("ov-detail");root.replaceChildren();
  if(!e){root.innerHTML='<div class="ov-content"><h2>Personajes y lugares en Vitruvio</h2><p>Seleccioná una ficha del índice para consultar los pasajes, o escribí cualquier nombre en el buscador.</p></div>';return;}
  const content=document.createElement("div");content.className="ov-content";
- const bio="<p class='ov-eyebrow'>"+(e.kind==="person"?"Personaje histórico":"Lugar de la Antigüedad")+"</p>"
+ const bio="<p class='ov-eyebrow'>"+(e.kind==="person"?T("historicalPerson"):T("historicalPlace"))+"</p>"
  +"<h2>"+html(e.name)+"</h2>"
  +"<p class='ov-sub'>"+html(e.period)+" · "+fmt(e.mentions)+" "+(e.mentions===1?"pasaje encontrado":"pasajes encontrados")+" en el latín editorial</p>"
- +"<p class='ov-bio'>"+html(e.summary)+"</p>"
- +"<div class='ov-source'><b>Estado de la ficha:</b> "+html(e.sourceStatus)+". "
+ +"<p class='ov-bio'>"+html(e.summary)+"</p>"+(getLanguage()!=="es"?"<p class='ov-note'>"+html(T("originalBio"))+"</p>":"")
+ +"<div class='ov-source'><b>"+html(T("recordStatus"))+":</b> "+html(e.sourceStatus)+". "
  +(e.source?"<a href='"+html(e.source)+"' target='_blank' rel='noopener'>"+html(e.sourceLabel||"Consultar referencia externa")+"</a>":"La localización de las citas es comprobable en las ediciones. La biografía es un resumen editorial que requiere contraste con bibliografía especializada.")
- +"</div><h3 class='ov-mini-title'>Dónde aparece en <i>De architectura</i></h3>"
+ +"</div><h3 class='ov-mini-title'>"+html(T("where"))+" <i>De architectura</i></h3>"
  +"<p class='ov-note'>Coincidencias del texto latino V514. Los nombres y sus formas pueden declinarse; la localización es editorial, no cotejo con las grafías de un códice concreto.</p>";
  content.innerHTML=bio;
  const loci=e.loci.slice(0,limit);
@@ -106,19 +135,19 @@ function statsTable(records,cols){
 }
 function renderStats(){
  $("ov-books").replaceChildren(statsTable(data.books,[
- {label:"Libro",html:b=>"<b>"+b.book+"</b>"},
- {label:"Tema general",key:"topic"},
- {label:"Palabras latinas",html:b=>fmt(b.latinWords)},
- {label:"Palabras griegas",html:b=>fmt(b.greekWords)},
+ {label:T("book"),html:b=>"<b>"+b.book+"</b>"},
+ {label:T("topic"),key:"topic"},
+ {label:T("latinWords"),html:b=>fmt(b.latinWords)},
+ {label:T("greekWords"),html:b=>fmt(b.greekWords)},
  {label:"Loci",html:b=>fmt(b.passages)}
  ]));
  const selector=$("ov-stat-book");selector.value=statsBook;
  const chapters=data.chapters.filter(c=>c.book===Number(statsBook));
  $("ov-chapters").replaceChildren(statsTable(chapters,[
- {label:"Sección",html:c=>"<a href='"+reader(c.openingLocus)+"'>"+(c.chapter==="praef"?"Prefacio":c.book+"."+c.chapter)+"</a>"},
- {label:"Tema del capítulo",html:c=>html(c.topic)},
- {label:"Latín",html:c=>fmt(c.latinWords)},
- {label:"Griego",html:c=>fmt(c.greekWords)},
+ {label:T("section"),html:c=>"<a href='"+reader(c.openingLocus)+"'>"+(c.chapter==="praef"?T("preface"):c.book+"."+c.chapter)+"</a>"},
+ {label:T("chapter"),html:c=>html(c.topic)},
+ {label:T("textLabel"),html:c=>fmt(c.latinWords)},
+ {label:T("greekWords"),html:c=>fmt(c.greekWords)},
  {label:"Loci",html:c=>fmt(c.passages)}
  ]));
  const vl=$("ov-verbs");vl.replaceChildren();
@@ -146,6 +175,7 @@ async function start(){
  data=await a.json();const j=await b.json();passages=j.passages||[];
  if(!passages.length||!data.entities?.length)throw Error("No se recibieron pasajes o fichas.");
  byLocus=new Map(passages.map(p=>[p.locus,p]));
+ await getTranslation(getLanguage());
  statNumbers();renderList();renderEntity();$("ov-loading").textContent="Índice cargado. "+fmt(data.totals.curatedEntries)+" fichas localizadas en "+fmt(passages.length)+" loci.";
  $("ov-search").addEventListener("input",event=>{query=event.target.value.trim();renderList();renderTextSearch();});
  $("ov-type").addEventListener("change",event=>{type=event.target.value;renderList();});
