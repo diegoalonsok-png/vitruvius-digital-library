@@ -68,7 +68,7 @@ async function load(){try{const [books,pages]=await Promise.all(["data/bibliothe
  $("result-state").textContent="Índices internos disponibles: "+S.works.length+" fichas y "+S.pages.length+" secciones";}catch(e){$("result-state").textContent="Índices internos no disponibles: "+e.message}}
 const dataPaths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json"];
 function passages(){if(S.passages)return Promise.resolve(S.passages);if(S.passagePromise)return S.passagePromise;
- S.passagePromise=Promise.allSettled(dataPaths.map(fetchJSON)).then(results=>{
+ S.passagePromise=Promise.allSettled(dataPaths.map(url=>fetchJSON(url))).then(results=>{
  const ok=results.filter(x=>x.status==="fulfilled");if(!ok.length)throw Error("Ningún corpus estructurado accesible");
  S.passages=ok.flatMap(x=>(x.value.passages||[]).map(p=>({locus:p.locus,latin:p.latin||"",translation:p.translation||"",edition:x.value.edition,lang:x.value.language,book:p.book})));
  return S.passages;
