@@ -466,6 +466,14 @@ html[data-theme=light] .article-print{color:#262626;border-color:#aaa}
 .passage-bilingual p{margin:0 0 10px!important;font:400 13px/1.7 Georgia,serif;color:#d6d6d6;overflow-wrap:break-word}
 html[data-theme=light] .passage-bilingual p{color:#343434}
 @media print{.passage-bilingual p{color:#111!important}}
+
+/* Print controls remain available for every search dossier. */
+@media print{
+ body>*:not(.site-shell){display:none!important}
+ .scholar-article-header{break-after:avoid}
+ .article-body h3{break-after:avoid}
+ .article-sources,.article-source-list{break-inside:auto}
+}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
