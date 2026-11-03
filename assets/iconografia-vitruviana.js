@@ -25,7 +25,7 @@ function createDatasetItems(source,info){
       graphic:kind==="opening"?"Página de preliminares. Se requiere inspección individual para atribuirla como portada o cubierta.":source.notes,
       iconography:book===3?"Sección del libro III: proporción humana y templos; la imagen concreta NO ha sido identificada como representación del cuerpo.":book===4?"Sección del libro IV: órdenes arquitectónicos; el motivo gráfico concreto requiere cotejo.":book===10?"Sección del libro X: maquinaria y asedio; no se afirma que la página ilustrada represente una máquina.":book===5?"Sección del libro V: arquitectura pública y basílicas; imagen sin atribución iconográfica individual.":"Folio de una sección del tratado; no se atribuye motivo visual sin inspección.",
       status:"Número y secuencia de imagen tomados del manifiesto IIIF institucional. Tema general derivado del índice; identificación iconográfica provisional.",
-      image:canvas.local_url||canvas.image_url,record:source.record,viewer:source.iiif_manifest,manifest:source.iiif_manifest,rights:source.rights||"Consultar condiciones de la institución conservadora.",
+      image:canvas.local_url||canvas.image_url,fallbackImage:canvas.local_url?canvas.image_url:null,record:source.record,viewer:source.iiif_manifest,manifest:source.iiif_manifest,rights:source.rights||"Consultar condiciones de la institución conservadora.",
       notes:"Impreso: corresponde una ficha de bibliografía material, no codicología de manuscritos. "+(source.notes||""),
       sort:kind==="opening"?0:(book||11),pageNumber:canvas.page,originalCanvas:canvas.canvas_id,iiifLabel:label
     });
@@ -38,18 +38,20 @@ function createDatasetItems(source,info){
   if(![...selected.values()].some(x=>x.pageNumber<=3)){for(let n=1;n<=Math.min(3,source.canvases.length);n++)keep(source.canvases[n-1],null,null,"opening");}
   return [...selected.values()];
 }
-function imageMarkup(r){return r.image?'<img alt="'+esc("Reproducción documental: "+r.title+"; "+r.folio)+'" src="'+esc(r.image)+'" loading="lazy" decoding="async">':'<div class="no-image"><span aria-hidden="true">▤</span><br>Imagen institucional pendiente de enlace directo<br><small>El catálogo y la ficha siguen disponibles</small></div>';}
+function imageMarkup(r){return r.image?'<img alt="'+esc("Reproducción documental: "+r.title+"; "+r.folio)+'" src="'+esc(r.image)+'" data-fallback="'+esc(r.fallbackImage||"")+'" loading="lazy" decoding="async">':'<div class="no-image"><span aria-hidden="true">▤</span><br>Imagen institucional pendiente de enlace directo<br><small>El catálogo y la ficha siguen disponibles</small></div>';}
 function summaryMarkup(r){const fields=[["Autor/edición",r.author||"No consignado"],["Datación",r.date||"No documentada"],["Folio / pág.",r.folio||"No identificado"],["Depósito",r.institution||"No documentado"]];return fields.map(([a,b])=>'<div><dt>'+esc(a)+'</dt><dd>'+esc(b)+'</dd></div>').join("");}
 function buildCard(r,idx){return '<article class="atlas-card"><button type="button" class="atlas-image" data-open="'+idx+'" aria-label="Ampliar '+esc(r.title)+'">'+imageMarkup(r)+'<span class="folio-stamp">'+esc(r.visualType?String(r.visualType).toUpperCase():r.pageNumber?"IMAGEN "+String(r.pageNumber).padStart(3,"0"):"DOCUMENTO")+'</span></button><div class="atlas-record"><p class="atlas-kind">'+esc(category(r))+' · '+esc(r.type||"Documento")+'</p><h3>'+esc(r.title)+'</h3><dl>'+summaryMarkup(r)+'</dl><p class="atlas-method">'+esc(r.status||"Ficha por completar")+'</p><div class="atlas-links"><button type="button" data-open="'+idx+'">Abrir expediente y ampliar</button><a href="'+esc(r.record||r.viewer||"#")+'" target="_blank" rel="noopener noreferrer">Fuente institucional ↗</a></div></div></article>';}
-function filters(){const q=norm($("atlas-search").value.trim()),cat=$("atlas-type").value,book=$("atlas-book").value,edition=$("atlas-edition").value;
-  filtered=items.filter(r=>(!cat||r.category===cat)&&(!book||String(r.book||"")===book)&&(!edition||r.source===edition||r.id?.startsWith(edition+"-"))&&(!q||norm(articleText(r)).includes(q)));
+function isHistoricalVitruvianBodySearch(q){return ["hombre de vitruvio","hombre vitruviano","homo vitruvianus","vitruvian man","uomo vitruviano","hombre de vitrubio","hombre de virtuvio","homo ad quadratum","homo ad circulum","proporcion humana","proporciones humanas"].some(term=>q.includes(term));}
+function isBodyCandidate(r){return r.id==="leonardo-vitruviano"||r.id==="duerer-proportiones-1528"||(r.book===3&&["giocondo-1511","cesariano-1521","barbaro-1567"].includes(r.source));}
+function filters(){const q=norm($("atlas-search").value.trim()),bodyQuery=isHistoricalVitruvianBodySearch(q),cat=$("atlas-type").value,book=$("atlas-book").value,edition=$("atlas-edition").value;
+  filtered=items.filter(r=>(!cat||r.category===cat)&&(!book||String(r.book||"")===book)&&(!edition||r.source===edition||r.id?.startsWith(edition+"-"))&&(!q||norm(articleText(r)).includes(q)||(bodyQuery&&isBodyCandidate(r))));
   visibleCount=24;render();
 }
 function render(){const list=$("atlas-grid");list.innerHTML=filtered.slice(0,visibleCount).map((r,i)=>buildCard(r,i)).join("");
  $("atlas-count").textContent=filtered.length+" fichas encontradas · "+Math.min(visibleCount,filtered.length)+" visibles";
  $("atlas-more").hidden=visibleCount>=filtered.length;
  $("atlas-empty").hidden=filtered.length>0;
- list.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{img.replaceWith(Object.assign(document.createElement("span"),{className:"atlas-fallback",textContent:"No se cargó la miniatura; consultar la fuente original"}));}));
+ list.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{const fallback=img.dataset.fallback;if(fallback&&img.src!==new URL(fallback,location.href).href){img.src=fallback;img.dataset.fallback="";return;}img.replaceWith(Object.assign(document.createElement("span"),{className:"atlas-fallback",textContent:"Reproducción no disponible aquí · abrir fuente institucional"}));}));
 }
 function detailRow(name,value){return '<dt>'+esc(name)+'</dt><dd>'+esc(value||"No documentado")+'</dd>';}
 function resetTransform(){zoom=1;offsetX=offsetY=0;transform();}
@@ -57,7 +59,7 @@ function transform(){const img=$("atlas-view-img");if(img)img.style.transform="t
 function show(index){if(index<0||index>=filtered.length)return;activeIndex=index;const r=filtered[index];const dialog=$("atlas-dialog");$("atlas-view-title").textContent=r.title;
  $("atlas-view-sub").textContent=category(r)+" · "+(r.folio||"sin folio")+(r.book?" · Libro "+r.book:"");
  const img=$("atlas-view-img"),empty=$("atlas-view-empty");img.hidden=!r.image;empty.hidden=!!r.image;
- if(r.image){img.src=r.image;img.alt="Facsímil: "+r.title+" · "+(r.folio||"");img.onerror=()=>{img.hidden=true;empty.hidden=false;empty.textContent="No se pudo cargar esta reproducción. Utilizá el enlace a la fuente institucional."};}
+ if(r.image){img.onerror=()=>{if(r.fallbackImage&&img.src!==new URL(r.fallbackImage,location.href).href){img.src=r.fallbackImage;return;}img.hidden=true;empty.hidden=false;empty.textContent="No se pudo cargar esta reproducción. Utilizá el enlace a la fuente institucional."};img.alt="Facsímil: "+r.title+" · "+(r.folio||"");img.src=r.image;}
  else empty.textContent="Reproducción no integrada: el registro de la institución está disponible en la ficha.";
  let defs=[["Objeto documental",r.type],["Autor / editor",r.author],["Datación",r.date],["Siglo / período",r.century],["Procedencia",r.place||r.production],["Biblioteca / institución",r.institution],["Signatura / registro",r.shelfmark],["Folio / imagen",r.folio],["Referencia al tratado",r.locus],["Soporte / bibliografía material",r.material],["Rasgos gráficos / paleografía",r.graphic],["Contenido iconográfico",r.iconography],["Estado de cotejo",r.status],["Derechos de reproducción",r.rights],["Inscripciones originales",r.inscriptions],["Medidas de la plancha",r.plate],["Medidas de la hoja",r.sheet],["Cita Chicago · ejemplar de referencia",r.chicago],["Cita Chicago · estampa reproducida",r.imageChicago],["Notas científicas",r.notes]];
  $("atlas-view-details").innerHTML=defs.map(d=>detailRow(...d)).join("");
@@ -101,6 +103,7 @@ async function start(){
  const jobs=meta.datasets.map(async ds=>{try{const [r,s]=await Promise.all([fetch(ds.file),ds.sections?fetch(ds.sections):Promise.resolve(null)]);if(!r.ok||s&&!s.ok)throw Error("HTTP datos");const data=await r.json();const section=s?await s.json():null;return createDatasetItems({...data,...ds},section).map(x=>({...x,source:ds.id}));}catch(err){console.warn("Fuente IIIF no incluida:",ds.id,err);return []}});
  const derived=(await Promise.all(jobs)).flat();
  items=[...meta.primaryRecords.map(x=>({...x,source:x.source||"registros"})),...derived];
+for(const x of items){if(x.book===3&&["giocondo-1511","cesariano-1521","barbaro-1567"].includes(x.source)){x.tags=[...(x.tags||[]),"proporciones del cuerpo humano","uomo vitruviano","homo ad circulum","homo ad quadratum","iconografía vitruviana por cotejar"];}}
  for(const x of items){if(!x.book){const label=String(x.locus||"");const roman=label.match(/\b(X|IX|IV|V?I{1,3}|V|VIII|VII|VI)\.(?:\d+|praef)/i);const arabic=label.match(/\b(?:Libro\s+|Book\s+)(\d{1,2})\b/i);if(arabic&&+arabic[1]>=1&&+arabic[1]<=10)x.book=+arabic[1];else if(roman){const vals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};x.book=vals[roman[1].toUpperCase()]||null;}}}
  const editions=[...new Set(derived.map(x=>x.source))];
  for(const id of editions){const data=meta.datasets.find(x=>x.id===id);const o=document.createElement("option");o.value=id;o.textContent=data.title+" ("+data.date+")";$("atlas-edition").append(o)}
