@@ -7,6 +7,8 @@ const latinCanonical={
  alexandria:"Alexandria",asia:"Asia",athens:"Athenae",babylon:"Babylon",campania:"Campania",carthage:"Carthago",corinth:"Corinthus",croton:"Croton",ephesus:"Ephesus",egypt:"Aegyptus",sparta:"Sparta",halicarnassus:"Halicarnassus",italy:"Italia",miletus:"Miletus",pergamum:"Pergamum",puteoli:"Puteoli",euphrates:"Euphrates",ganges:"Ganges",nile:"Nilus",tiber:"Tiberis",tigris:"Tigris",rhodes:"Rhodos",rome:"Roma",samos:"Samos",sicily:"Sicilia",syracuse:"Syracusae",tarentum:"Tarentum","fanum-fortunae":"Fanum Fortunae"
 };
 let all=[],results=[],selected=null,map=null,pins=null;
+let geometryById=new Map(),passagesByLocus=new Map(),activePassageLocus=null;
+let modernLayer=null,historicalLayer=null,activeBase="moderno",ancientLoads=0,ancientErrors=0;
 const markerById=new Map();
 const hasPoint=x=>Number.isFinite(x.lat)&&Number.isFinite(x.lon);
 const book=l=>Number(String(l).split(".")[0])||0;
@@ -19,13 +21,84 @@ function namesMarkup(r,tag){
  const el=tag||"div";
  return '<'+el+' class="ancient-names"><span lang="la" class="latin-name">'+html(r.latinCanonical)+'</span><span class="greek-name" lang="grc">'+html(r.greek_name||"—")+'</span><span class="modern-name">'+html(r.name)+'</span></'+el+'>';
 }
+
+function featureFor(r){return geometryById.get(r.id)||null;}
+function geoLabel(r){
+ const g=featureFor(r);
+ return hasPoint(r)?"Punto cartográfico aproximado · certeza "+r.confidence
+ :g?.geometry==="polygon"?"Área sombreada esquemática; NO representa límites históricos exactos"
+ :g?.geometry==="polyline"?"Recorrido fluvial esquemático; NO representa el cauce antiguo exacto"
+ :r.confidence==="no acreditado"?"Topónimo en revisión filológica · sin geometría acreditada"
+ :"Región o topónimo ambiguo · sin geometría atribuida";
+}
+function geoCoordinates(r){
+ const g=featureFor(r);
+ if(hasPoint(r))return r.lat.toFixed(3)+"°, "+r.lon.toFixed(3)+"° (centro orientativo, no lugar exacto de un edificio)";
+ if(g?.geometry==="polygon")return "Área esquemática de referencia ("+g.coordinates.length+" vértices). Límite histórico exacto no reconstruido.";
+ if(g?.geometry==="polyline")return "Recorrido de referencia ("+g.coordinates.length+" vértices). Curso antiguo no reconstruido.";
+ return "Sin coordenada o área geográfica verificada.";
+}
+function canonicalVariants(r){
+ return [...new Set([...(r.latin_forms||[]),r.latinCanonical,...(r.aliases||[])].filter(Boolean).map(String))]
+ .filter(x=>x.length>=3).sort((a,b)=>b.length-a.length);
+}
+function quoteForRegex(x){return [...x].map(c=>"\\^$.*+?()[]{}|".includes(c)?"\\"+c:c).join("");}
+function namePattern(r){
+ const v=canonicalVariants(r);
+ if(!v.length)return null;
+ return new RegExp("(^|[^\\p{L}])("+v.map(quoteForRegex).join("|")+")(?=$|[^\\p{L}])","giu");
+}
+function hasLiteralName(r,text){const reg=namePattern(r);return !!(reg&&reg.test(String(text||"")));}
+function highlightedLatin(r,text){
+ const textOriginal=String(text||""),reg=namePattern(r);
+ if(!reg)return html(textOriginal);
+ let last=0,out="";
+ for(const m of textOriginal.matchAll(reg)){
+  const start=m.index+(m[1]?.length||0),term=m[2];
+  if(!term||start<last)continue;
+  out+=html(textOriginal.slice(last,start))+"<mark class=\"toponym-match\">"+html(term)+"</mark>";
+  last=start+term.length;
+ }
+ return out+html(textOriginal.slice(last));
+}
+function initialLocus(r){
+ const loci=r?.loci||[];
+ return loci.find(l=>hasLiteralName(r,passagesByLocus.get(l)?.latin))||loci[0]||"";
+}
+function renderPassage(prefix,r,locus){
+ const allLoci=r.loci||[],sel=byId(prefix+"-select");
+ if(!sel)return;
+ const chosen=locus&&allLoci.includes(locus)?locus:initialLocus(r);
+ sel.innerHTML=allLoci.map(l=>'<option value="'+html(l)+'">'+html(l)+'</option>').join("");
+ sel.disabled=!allLoci.length;
+ sel.value=chosen;
+ const p=passagesByLocus.get(chosen);
+ byId(prefix+"-heading").textContent=chosen?"De architectura · "+chosen:"Referencia textual no disponible";
+ byId(prefix+"-latin").innerHTML=p?highlightedLatin(r,p.latin):"<em>Pasaje no incorporado.</em>";
+ byId(prefix+"-translation").textContent=p?.translation||"No se dispone de traducción para esta referencia.";
+ const literal=!!(p&&hasLiteralName(r,p.latin));
+ byId(prefix+"-evidence").textContent=p?(literal?
+   "Coincidencia literal de una forma latina catalogada, resaltada en amarillo en V514. No equivale a una lectura diplomática de un manuscrito.":
+   "Referencia del índice onomástico: aquí no se identifica literalmente ninguna forma latina catalogada. Comprobar el locus antes de citarlo."):
+   "No se recuperó el pasaje; consultar el lector.";
+ const link=byId(prefix+"-reader");
+ link.href=chosen?locusUrl(chosen):"lector-bilingue.html";
+ link.hidden=!chosen;
+ activePassageLocus=chosen;
+}
+function selectPassageFrom(prefix){
+ if(!selected)return;
+ const locus=byId(prefix+"-select").value;
+ for(const p of ["place-passage","dossier-passage"])renderPassage(p,selected,locus);
+}
+
 function renderDetails(){
  const r=selected;if(!r)return;
  byId("place-heading").innerHTML=namesMarkup(r,"div");
  byId("place-subtitle").textContent=r.modern||r.period;
  byId("place-summary").textContent=r.summary||"Descripción documental pendiente de cotejo.";
- byId("place-verification").textContent=r.confidence==="no acreditado"?"Identificación filológica pendiente":hasPoint(r)?"Punto cartográfico aproximado · certeza "+r.confidence:"Sin pin: región o río (no ubicación puntual)";
- const mt=hasPoint(r)?r.lat.toFixed(3)+"°, "+r.lon.toFixed(3)+"° (centro de referencia, no sitio arqueológico)": "No se fija coordenada puntual";
+ byId("place-verification").textContent=geoLabel(r);
+ const mt=geoCoordinates(r);
  byId("place-facts").innerHTML=[
    makeStat("Nombre latino histórico (normalizado)",r.latinCanonical),
    makeStat("Variantes literales del texto editorial V514",(r.latin_forms||[]).join(" · ")||"Sin forma acreditada"),
@@ -46,6 +119,7 @@ function renderDetails(){
  const source=byId("place-source");
  source.hidden=!r.source||r.id!=="fanum-fortunae";
  if(!source.hidden)source.href=r.source;
+ renderPassage("place-passage",r,activePassageLocus&&r.loci?.includes(activePassageLocus)?activePassageLocus:null);
 }
 function selectPlace(id,zoom=true,scroll=false){
  const r=all.find(x=>x.id===id);if(!r)return;
@@ -73,7 +147,7 @@ function openScientificDossier(id){
  byId("dossier-greek").textContent=r.greek_name||"Nombre griego no acreditado";
  byId("dossier-modern").textContent=r.modern||r.period||"Identificación moderna pendiente";
  byId("dossier-summary").textContent=r.summary||"Descripción histórica pendiente de cotejo";
- const coords=hasPoint(r)?r.lat.toFixed(4)+"°, "+r.lon.toFixed(4)+"° — ubicación orientativa de ciudad/área, no del edificio":"Sin coordenada puntual atribuida";
+ const coords=geoCoordinates(r);
  byId("dossier-fields").innerHTML=[
   dossierLine("Tipo de lugar",r.geotype),
   dossierLine("Nombre latino normalizado",r.latinCanonical),
@@ -98,6 +172,7 @@ function openScientificDossier(id){
  if(!source.hidden)source.href=r.source;
  const u=new URL(location.href);u.searchParams.set("lugar",r.id);u.searchParams.set("ficha","1");
  byId("dossier-deeplink").href=u.href;
+ renderPassage("dossier-passage",r,activePassageLocus);
  if(!d.open)d.showModal();
 }
 function typeGroup(r){
