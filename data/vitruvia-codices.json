@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "revision": "2026-11-03",
+  "description": "Índice de autoridad de los manuscritos vitruvianos descritos en el repositorio. Los accesos externos corresponden a referencias archivísticas, no a lectores internos ni implican la posesión de facsímiles.",
+  "records": [
+    {
+      "id": "harley-2767",
+      "title": "Codex Harleianus · Harley MS 2767 (H)",
+      "aliases": [
+        "Codex H",
+        "Codex Harleianus",
+        "Harlesianus",
+        "Harley 2767",
+        "Harley MS 2767",
+        "Harley",
+        "Harleian",
+        "Harleianus",
+        "Harlesian",
+        "Vitrubio Codex H",
+        "Vitruvio Codex H",
+        "De architectura Harley"
+      ],
+      "library": "British Library, Londres",
+      "date": "ca. 800–824 d. C. (datación catalogada en el proyecto)",
+      "description": "Testimonio carolingio de De architectura. La biblioteca ofrece 341 imágenes, lectura de folio único y apertura de doble hoja; el catálogo institucional permite verificar la signatura.",
+      "reader": "codex-h-doble-folio.html",
+      "secondaryReaders": [
+        {
+          "title": "Folio individual",
+          "url": "codex-h-folios-local.html"
+        },
+        {
+          "title": "Ficha codicológica y galería",
+          "url": "harleianus.html"
+        }
+      ],
+      "source": "https://searcharchives.bl.uk/catalog/040-002048598",
+      "sourceLabel": "British Library · registro Harley MS 2767",
+      "group": "vitruvian"
+    },
+    {
+      "id": "gudianus-69",
+      "title": "Codex Gudianus · Cod. Guelf. 69 Gud. lat. (G)",
+      "aliases": [
+        "Gudianus 69",
+        "Codex G",
+        "Codex Guelferbytanus 69",
+        "69 Gud lat",
+        "Gudianus G",
+        "Wolfenbüttel 69 Gud"
+      ],
+      "library": "Herzog August Bibliothek, Wolfenbüttel",
+      "date": "Siglo XI (según el inventario del proyecto)",
+      "description": "Testimonio de la tradición latina de De architectura, identificado por la signatura 69 Gud. lat. La consulta se realiza en el catálogo de la institución.",
+      "source": "https://diglib.hab.de/?catalog=Milchsack&db=mss&id=69-gud-lat&list=ms",
+      "sourceLabel": "Herzog August Bibliothek · catálogo 69 Gud. lat.",
+      "group": "vitruvian"
+    },
+    {
+      "id": "gudianus-132",
+      "title": "Codex Gudianus · Cod. Guelf. 132 Gud. lat. (E)",
+      "aliases": [
+        "Gudianus 132",
+        "Codex E",
+        "Epitome Gudiana",
+        "132 Gud lat",
+        "Codex Guelferbytanus 132",
+        "Epitome Vitruvii"
+      ],
+      "library": "Herzog August Bibliothek, Wolfenbüttel",
+      "date": "Tradición medieval (datación a verificar por unidad)",
+      "description": "Testimonio de extractos o epitome vitruviana. No hay visor local ni enlace institucional individual comprobado en el inventario; se remite al índice codicológico.",
+      "reader": "index-codicum.html",
+      "group": "vitruvian"
+    },
+    {
+      "id": "parisinus-10277",
+      "title": "Parisinus lat. 10277 · Pithoeanus (P)",
+      "aliases": [
+        "Parisinus 10277",
+        "Codex P",
+        "Pithoeanus",
+        "Paris lat 10277",
+        "BNF Latin 10277",
+        "Parisinus latinus 10277"
+      ],
+      "library": "Bibliothèque nationale de France, París",
+      "description": "Testimonio identificado en la tradición editorial como Pithoeanus, Parisinus lat. 10277. No confundir con Parisinus lat. 6882.",
+      "source": "https://gallica.bnf.fr/ark:/12148/btv1b9066098j",
+      "sourceLabel": "Gallica · BnF",
+      "group": "vitruvian"
+    },
+    {
+      "id": "selestat-17",
+      "title": "Sélestat MS 17 · Scletstatensis (S)",
+      "aliases": [
+        "Sélestat MS 17",
+        "Selestat 17",
+        "Schlettstadt 17",
+        "Scletstatensis 17",
+        "Codex S",
+        "Sletstatensis"
+      ],
+      "library": "Bibliothèque Humaniste / Sélestat · referencia de ARCA-CNRS",
+      "description": "Manuscrito vitruviano registrado como Scletstatensis 17, olim 1153 bis. Las filiaciones textuales se discuten en el Index codicum.",
+      "source": "https://arca.irht.cnrs.fr/ark:/63955/md41mg74rm3w",
+      "sourceLabel": "IRHT-CNRS · ARCA",
+      "group": "vitruvian"
+    },
+    {
+      "id": "eton-137",
+      "title": "Eton College Library MS 137",
+      "aliases": [
+        "Eton MS 137",
+        "Eton College 137",
+        "Codex Etonensis",
+        "Eton manuscript"
+      ],
+      "library": "Eton College Library, Inglaterra",
+      "description": "Manuscrito registrado por Eton College. El índice del proyecto indica que no dispone de facsímil público; consultar el catálogo institucional.",
+      "source": "https://catalogue.etoncollege.com/B50099",
+      "sourceLabel": "Eton College · ficha de catálogo",
+      "group": "vitruvian"
+    },
+    {
+      "id": "laurenziana-plut-30-13",
+      "title": "Biblioteca Medicea Laurenziana · Plut. 30.13",
+      "aliases": [
+        "Plut 30.13",
+        "Pluteo 30.13",
+        "Laurenziana 30.13",
+        "Codex Laurenzianus",
+        "Pluteus 30 13"
+      ],
+      "library": "Biblioteca Medicea Laurenziana, Florencia",
+      "description": "Testimonio de la tradición manuscrita vitruviana. Se ofrece referencia IIIF externa; la imagen permanece en la institución.",
+      "source": "https://iiif.biblissima.fr/collections/manifest/31fffbc12aa4358a793393a55a30643bc94b4a62",
+      "sourceLabel": "Biblissima · manifiesto IIIF",
+      "group": "vitruvian"
+    },
+    {
+      "id": "vatican-codices",
+      "title": "Códices vitruvianos de la Biblioteca Apostólica Vaticana",
+      "aliases": [
+        "Codices Vaticani",
+        "Vaticanus Reg. lat. 1328",
+        "Vaticanus Reg. lat. 2079",
+        "Codex V",
+        "Codex W",
+        "Reg lat 1328",
+        "Reg lat 2079",
+        "Vaticano Vitruvio"
+      ],
+      "library": "Biblioteca Apostólica Vaticana, Ciudad del Vaticano",
+      "description": "Catálogo del proyecto con cinco referencias vaticanas, signaturas y enlaces a fondos externos. No se republican fotografías sin autorización.",
+      "reader": "codices-vaticanos.html",
+      "group": "vitruvian"
+    },
+    {
+      "id": "index-codicum",
+      "title": "Index codicum et stemmata · tradición manuscrita de Vitruvio",
+      "aliases": [
+        "codices de Vitruvio",
+        "codex vitruvianus",
+        "codices vitruviani",
+        "manuscritos vitruvianos",
+        "códices vitruvianos",
+        "vitruvian codices",
+        "vitruvian manuscripts",
+        "testimonios manuscriptos",
+        "stemmata codicum",
+        "traditio textus"
+      ],
+      "library": "Vitruvius Digital Library",
+      "description": "Índice codicológico de testigos manuscritos de De architectura, con siglas de ediciones críticas, centros de conservación y referencias de filiación textual.",
+      "reader": "index-codicum.html",
+      "group": "index"
+    }
+  ]
+}
