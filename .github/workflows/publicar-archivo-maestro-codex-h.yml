@@ -72,5 +72,7 @@ jobs:
             echo 'No hay modificaciones: ya estaban archivadas';
           else
             git commit -m 'Preservar en GitHub 341 folios del Codex H con inventario y créditos'
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
