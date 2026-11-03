@@ -1,4 +1,4 @@
-name: Preparar copia de estudio del Codex H
+name: Recuperar y preservar copia de estudio del Codex H
 on:
   workflow_dispatch:
   push:
@@ -54,5 +54,5 @@ jobs:
         with:
           name: codex-h-estudio-iiif
           path: codex-h-estudio/
-          retention-days: 7
+          retention-days: 90
           if-no-files-found: warn
