@@ -321,6 +321,8 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 }
 async function search(){
  const q=$("query").value.trim(),id=++S.searchId;if(!q)return;
+ document.body.classList.add("vitruvia-reading");
+ $("clear-search").hidden=false;
  restoreFeature();
  history.replaceState(null,"","vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
  const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=["all","site","concept"].includes(mode);
@@ -460,6 +462,26 @@ function setupAutocomplete(){
  $("search-form").addEventListener("submit",hide);
 }
 setupAutocomplete();
+
+/* Clear the query, cancel old requests and restore the landing page. */
+const clearControl=$("clear-search");
+const searchInput=$("query");
+function updateClearControl(){clearControl.hidden=!searchInput.value.trim()}
+searchInput.addEventListener("input",updateClearControl);
+clearControl.addEventListener("click",()=>{
+ ++S.searchId;searchInput.value="";updateClearControl();
+ document.body.classList.remove("vitruvia-reading");
+ history.replaceState(null,"","vitruvia.html");
+ $("result-list").replaceChildren(node("div","empty","Escribí un tema, una obra, un autor o un locus para comenzar."));
+ $("results-heading").textContent=T().idle;
+ $("result-state").textContent="";
+ $("source-links").replaceChildren();
+ $("answer").hidden=true;
+ if(window.VitruviaArticles)window.VitruviaArticles.render([],"");
+ restoreFeature();
+ searchInput.focus();
+});
+updateClearControl();
 
 bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
