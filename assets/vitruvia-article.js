@@ -54,6 +54,11 @@ function relevance(row,q){
  return matches===b.length?105:Math.round(matches/b.length*60);
 }
 function choose(rows,query){
+ const prefaces=rows.filter(x=>x.type==="preface");
+ if(prefaces.length){
+  const verified=prefaces.filter(x=>!x.prefacePlaceholder&&Array.isArray(x.sections));
+  return (verified.length?verified:prefaces).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
+ }
  const exactLocus=/\b(?:[IVX]{1,4}|\d{1,2})\s*[.,:]\s*\d{1,2}\s*[.,:]\s*\d{1,2}\b/i.test(query);
  if(exactLocus){const p=rows.find(x=>x.type==="passage"&&x.rating>200);if(p)return p}
  const manuscript=rows.filter(x=>x.type==="manuscript"&&x.rating>230&&relevance(x,query)>=100).sort((a,b)=>b.rating-a.rating)[0];
@@ -90,6 +95,92 @@ $("article-body").append(div);
 paragraph(phrase("Los folios y las páginas de ediciones modernas tienen numeraciones distintas. No se atribuye una correspondencia sin cotejo documental.","Manuscript folios and modern edition pages have different numbering. No automatic equivalence is asserted.","Les folios des manuscrits et les pages des éditions modernes sont distincts ; aucune équivalence n’est supposée."),"article-note");
 aside(rows);references([top,...links],null)
 }
+/* Authoritative structural hit: a praefatio is a named part of De architectura,
+   not an arbitrary encyclopedia snippet. Only repository-backed edition text is shown. */
+function renderPreface(top,rows){
+ const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+ const all=rows.filter(r=>r.type==="preface"&&!r.prefacePlaceholder&&Array.isArray(r.sections));
+ const isAll=!top.prefaceBook;
+ const book=Number(top.prefaceBook||top.book)||null;
+ const title=book?"De architectura · "+phrase("Prefacio del Libro ","Preface of Book ","Préface du livre ")+roman[book]:
+  phrase("Prefacios de los diez libros de De architectura","Prefaces to the ten books of De architectura","Préfaces des dix livres du De architectura");
+ reset(title,"Marco Vitruvio Polión · "+phrase("V514 (castellano) / V297 (inglés)","V514 (Spanish) / V297 (English)","V514 (espagnol) / V297 (anglais)"),
+ phrase("Texto latino y traducciones editoriales · locus comprobado","Latin text and editorial translations · indexed locus","Texte latin et traductions éditoriales · locus indexé"));
+ if(!all.length){
+  paragraph(phrase("Localizando los prefacios en las ediciones estructuradas V514 y V297…",
+   "Locating the prefaces in the indexed V514 and V297 editions…",
+   "Repérage des préfaces dans les éditions indexées V514 et V297…"),"article-lead");
+  const a=href(top.link,phrase("Abrir prefacio del tratado ↗","Open preface ↗","Ouvrir la préface ↗"));
+  if(a)$("article-body").append(a);
+  return;
+ }
+ const matching=book?all.filter(r=>r.book===book):all;
+ paragraph(book?phrase(
+   "Este prefacio está identificado por sus loci en las ediciones del tratado. Se muestra el texto latino junto a la traducción castellana V514 y la inglesa V297, conservando las diferencias editoriales.",
+   "This preface is identified by locus in the editions. The Latin text is shown alongside the Spanish V514 and English V297 translations, with their editorial differences kept distinct.",
+   "Cette préface est identifiée par ses loci dans les éditions. Le latin est présenté avec les traductions espagnole V514 et anglaise V297, sans confondre les variantes éditoriales."):
+   phrase("Índice de los prefacios de los diez libros. Elegí un libro para leer todos sus pasajes en latín y traducción.",
+    "Index of the prefaces to the ten books. Choose a book to read each passage in Latin and translation.",
+    "Index des préfaces des dix livres. Choisissez un livre pour lire les passages latins et leurs traductions."),"article-lead");
+ const body=$("article-body"),grouped=new Map();
+ for(const row of matching){
+  if(!grouped.has(row.book))grouped.set(row.book,new Map());
+  for(const p of row.sections){
+   const byLocus=grouped.get(row.book);
+   if(!byLocus.has(p.locus))byLocus.set(p.locus,{});
+   byLocus.get(p.locus)[row.edition]=p;
+  }
+ }
+ for(const [bookNumber,sections] of [...grouped].sort((a,b)=>a[0]-b[0])){
+  heading(phrase("Libro ","Book ","Livre ")+roman[bookNumber]+" · Praefatio");
+  const entries=[...sections].sort((a,b)=>Number(a[0].split(".").at(-1))-Number(b[0].split(".").at(-1)));
+  if(!book){
+   paragraph(phrase(entries.length+" pasajes indexados. El prefacio completo está disponible en el lector paralelo.",
+    entries.length+" indexed passages. The complete preface is available in the parallel reader.",
+    entries.length+" passages indexés. La préface complète est disponible dans le lecteur parallèle."),"article-note");
+   for(const ed of ["recensio-es","theory-en"]){
+    const row=matching.find(x=>x.book===bookNumber&&x.edition===ed);
+    if(!row)continue;
+    const a=href(row.link,phrase("Leer ","Read ","Lire ")+(ed==="recensio-es"?"V514 · castellano":"V297 · English")+" ↗");
+    if(a)body.append(a,document.createTextNode(" "));
+   }
+   continue;
+  }
+  for(const [locus,editions] of entries){
+   const latin=editions["recensio-es"]||editions["theory-en"];
+   const es=editions["recensio-es"],en=editions["theory-en"];
+   const wrap=make("section",undefined,"preface-entry");
+   const ref=make("h4",locus);ref.className="preface-locus";wrap.append(ref);
+   if(latin?.latin){
+    const label=make("div",phrase("LATÍN · TEXTO EDITORIAL","LATIN · EDITED TEXT","LATIN · TEXTE ÉDITÉ"),"preface-language");
+    const text=make("p",latin.latin,"preface-latin");text.lang="la";wrap.append(label,text);
+   }
+   if(es?.translation){
+    const label=make("div","V514 · CASTELLANO","preface-language");
+    const text=make("p",es.translation,"preface-translation");text.lang="es";wrap.append(label,text);
+   }
+   if(en?.translation){
+    const label=make("div","V297 · ENGLISH","preface-language");
+    const text=make("p",en.translation,"preface-translation");text.lang="en";wrap.append(label,text);
+   }
+   const links=make("div",undefined,"preface-editions");
+   for(const [ed,version] of [["recensio-es","V514"],["theory-en","V297"]]){
+    if(!editions[ed])continue;
+    const a=href("lector-bilingue.html?edition="+ed+"&locus="+encodeURIComponent(locus),
+      phrase("Abrir locus ","Open locus ","Ouvrir locus ")+locus+" · "+version);
+    if(a)links.append(a);
+   }
+   wrap.append(links);body.append(wrap);
+  }
+ }
+ paragraph(phrase(
+  "Nota filológica: el texto latino se presenta según V514 y las traducciones según sus ediciones identificadas. No se afirma que estas lecturas correspondan literalmente a un folio específico del Codex H sin cotejo. La traducción francesa V554 no se muestra hasta disponer de un índice estructurado verificable.",
+  "Philological note: Latin follows V514, and translations retain their edition attribution. No particular reading is attributed to a Codex H folio without collation. French V554 is not shown until a verified structured index is available.",
+  "Note philologique : le latin suit V514 et les traductions sont attribuées à leurs éditions. Aucun folio de H n’est cité sans collation. La version française V554 ne sera intégrée qu’après vérification de son index."),"article-note");
+ const refs=matching.map(r=>({...r,title:"De architectura · "+r.version+" · praef. "+roman[r.book]}));
+ aside(refs);references(refs);buildContents();
+}
+
 function renderLocus(top,rows){const locus=top.locus||top.title;const editions=rows.filter(x=>x.type==="passage"&&(x.locus===top.locus)).slice(0,5);
 reset("De architectura · "+locus,phrase("Vitruvio · texto latino y traducciones","Vitruvius · Latin text and translations","Vitruve · texte latin et traductions"),phrase("Locus textual · resultados verificables","Textual locus · verified passages","Locus textuel · passages vérifiés"));
 if(top.latin){heading("Latine");paragraph(cut(top.latin,1500),"article-lead")}
@@ -291,7 +382,8 @@ function render(rows,q){const token=++active;
 if(!q||!rows?.length){root.hidden=true;return}
 reportEvidence(rows,q);
 const top=choose(rows,q);if(!top){root.hidden=true;return}
-if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
+if(top.type==="preface"){renderPreface(top,rows);highlightArticle(q);return}
+ if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
 if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
 if(top.type==="wikipedia"){void renderWiki(top,rows,token).then(()=>{if(token===active)highlightArticle(q)});return}
 if(top.type==="topic"){renderTopic(top,rows,q);highlightArticle(q);return}
