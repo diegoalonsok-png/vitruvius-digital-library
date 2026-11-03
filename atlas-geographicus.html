@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script defer src="assets/theme.js"></script>
-<script defer src="assets/atlas-geographicus.js?v=20261103-4"></script>
+<script defer src="assets/atlas-geographicus.js?v=20261103-people-seas-11"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Atlas Geographicus Vitruvianus","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html","creator":{"@type":"Person","name":"Diego A. Kurilo"},"isAccessibleForFree":true,"inLanguage":"es","about":{"@type":"CreativeWork","name":"De architectura","author":{"@type":"Person","name":"Vitruvius"}}}</script>
 <style>
 .geography{max-width:1510px;margin:0 auto;padding:26px clamp(16px,3vw,44px) 70px;color:var(--ink,#223646);line-height:1.65}
@@ -150,13 +150,13 @@ html[data-theme="dark"] .geo-map-layers button[aria-pressed="true"]{background:#
 <nav aria-label="Navegación"><a href="index.html">← Biblioteca principal</a> · <a href="onomasticon.html">Onomasticon</a> · <a href="indices-locorum.html">Índices locorum</a> · <a href="basilica-fano.html">Basílica de Fano</a> · <a href="iconografia-vitruviana.html">Atlas iconográfico</a></nav>
 <p class="eyebrow">GEOGRAPHIA VITRVVIANA · TOPONYMA · TESTIMONIA</p>
 <h1>Atlas Geographicus Vitruvianus</h1>
-<p class="introduction">Mapa académico de ciudades y lugares citados en los diez libros de <em>De architectura</em>, con tres niveles de denominación: <strong>nombre latino histórico, equivalente griego documentado como referencia y nombre moderno</strong>. Incluye Fanum Fortunae (Fano) y su basílica descrita en el libro V.</p>
+<p class="introduction" id="geo-intro">Mapa académico de ciudades y lugares citados en los diez libros de <em>De architectura</em>, con tres niveles de denominación: <strong>nombre latino histórico, equivalente griego documentado como referencia y nombre moderno</strong>. Incluye Fanum Fortunae (Fano) y su basílica descrita en el libro V.</p>
 <div class="method-note"><strong>Precisión filológica.</strong> El topónimo latino normalizado se distingue de las formas flexionadas literalmente localizadas en la edición V514. El griego consignado es una equivalencia histórica, <strong>no una lectura griega del códice H</strong>. Los marcadores señalan ciudades o áreas generales, no la ubicación exacta de un monumento. Ríos, regiones y topónimos dudosos permanecen en las fichas sin recibir una coordenada puntual ficticia.</div>
 <section aria-label="Filtrado cartográfico">
 <div class="geo-filters">
 <label>Buscar un lugar, nombre latino, griego, moderno o locus<input type="search" id="place-query" placeholder="Fanum Fortunae · Ἀθῆναι · Alejandría · 5.1.6" autocomplete="off"></label>
 <label>Libro del tratado<select id="place-book"><option value="">Libros I–X · todos</option><option value="1">I · Principios</option><option value="2">II · Materiales</option><option value="3">III · Templos</option><option value="4">IV · Órdenes</option><option value="5">V · Edificios públicos</option><option value="6">VI · Vivienda</option><option value="7">VII · Acabados</option><option value="8">VIII · Aguas</option><option value="9">IX · Astronomía</option><option value="10">X · Máquinas</option></select></label>
-<label>Tipo de lugar<select id="place-type"><option value="">Todos los lugares</option><option value="ciudad">Ciudades y sitios urbanos</option><option value="region">Regiones e islas</option><option value="rio">Ríos</option><option value="dudoso">Topónimos por verificar</option></select></label>
+<label>Tipo de lugar<select id="place-type"><option value="">Todos los lugares</option><option value="ciudad">Ciudades y sitios urbanos</option><option value="region">Regiones e islas</option><option value="rio">Ríos</option><option value="mar">Mares</option><option value="templo">Templos</option><option value="monumento">Monumentos y edificios</option><option value="personaje">Personajes históricos</option><option value="dudoso">Topónimos por verificar</option></select></label>
 </div>
 <p id="place-loading" role="status">Cargando el Onomasticon y las identificaciones cartográficas…</p>
 <p id="place-count" class="geo-result" aria-live="polite"></p>
@@ -256,5 +256,6 @@ html[data-theme="dark"] .geo-map-layers button[aria-pressed="true"]{background:#
 </div>
 </dialog>
 
+<script defer src="assets/atlas-language.js?v=20261103-switch-02"></script>
 </body>
 </html>
