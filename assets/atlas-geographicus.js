@@ -96,7 +96,7 @@ function openScientificDossier(id){
  const source=byId("dossier-source");
  source.hidden=!(r.id==="fanum-fortunae"&&r.source);
  if(!source.hidden)source.href=r.source;
- const u=new URL(location.href);u.searchParams.set("lugar",r.id);
+ const u=new URL(location.href);u.searchParams.set("lugar",r.id);u.searchParams.set("ficha","1");
  byId("dossier-deeplink").href=u.href;
  if(!d.open)d.showModal();
 }
@@ -131,7 +131,8 @@ function renderMapMarkers(){
  const color=r.id==="fanum-fortunae"?"#a06a29":"#244f65";
  const circle=L.circleMarker([r.lat,r.lon],{radius:r.id==="fanum-fortunae"?9:6,weight:2,color:"#fff9ed",fillColor:color,fillOpacity:.88});
  const name=html(r.latinCanonical)+" · "+html(r.name);
- circle.bindPopup('<strong>'+name+'</strong><p>Coordenadas aproximadas de ciudad o isla, no monumento.</p><button type="button" class="map-popup-select" data-popup-place="'+html(r.id)+'">Abrir ficha científica</button>');
+ const directLink=new URL(location.href);directLink.searchParams.set("lugar",r.id);directLink.searchParams.set("ficha","1");
+ circle.bindPopup('<strong>'+name+'</strong><p>Coordenadas aproximadas de ciudad o isla, no monumento.</p><a class="map-popup-select" href="'+html(directLink.href)+'" data-popup-place="'+html(r.id)+'">Abrir ficha científica ↗</a>');
  circle.on("click",()=>selectPlace(r.id,false,false));
  circle.addTo(pins);
  markerById.set(r.id,circle);
@@ -142,7 +143,7 @@ function initializeMap(){
  map=L.map("vitruvian-map",{minZoom:2,maxZoom:17,scrollWheelZoom:false}).setView([39.4,20.7],4);
  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
  pins=L.layerGroup().addTo(map);
- map.on("popupopen",e=>{const button=e.popup.getElement()?.querySelector("[data-popup-place]");if(button)button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();openScientificDossier(button.dataset.popupPlace);});});
+ // The popup is a real deep link; a capturing click handler below offers instant modal opening.
  renderMapMarkers();
 }
 async function start(){
@@ -150,6 +151,7 @@ async function start(){
  byId("dossier-close").addEventListener("click",()=>dialog.close());
  dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
  byId("place-expand").addEventListener("click",()=>{if(selected)openScientificDossier(selected.id);});
+ document.addEventListener("click",event=>{const link=event.target?.closest?.("a[data-popup-place]");if(!link)return;event.preventDefault();event.stopPropagation();openScientificDossier(link.dataset.popupPlace);},true);
  byId("place-query").addEventListener("input",filter);
  for(const id of ["place-book","place-type"])byId(id).addEventListener("change",filter);
  byId("place-list").addEventListener("click",e=>{const b=e.target.closest("[data-place-id]");if(b)selectPlace(b.dataset.placeId,true,true);});
@@ -165,6 +167,7 @@ async function start(){
  initializeMap();
  filter();
  selectPlace(selected?.id||all[0].id,false,false);
+ if(new URLSearchParams(location.search).get("ficha")==="1")openScientificDossier(selected.id);
  byId("place-loading").textContent=all.length+" fichas catalogadas. Nombres latinos normalizados, formas del texto, equivalentes griegos y denominaciones modernas indicados por separado.";
 }
 start().catch(err=>{byId("place-loading").textContent="No se pudo cargar el catálogo: "+err.message;console.error(err);});
