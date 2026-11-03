@@ -1,0 +1,2397 @@
+{
+  "manuscrito": "British Library, Harley MS 2767 · Vitruvius, De architectura",
+  "fuenteManifiesto": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+  "titularDigitalizacion": "British Library",
+  "derechosFuente": "Public Domain in most countries, other than the UK (IIIF metadata); consultar condiciones institucionales",
+  "criterioFoliacion": "Etiqueta IIIF original. Número de imagen digital y folio histórico no son equivalentes.",
+  "totalImagenes": 341,
+  "imagenes": [
+    {
+      "numeroImagen": 1,
+      "etiquetaOriginal": "front",
+      "archivo": "H_001_front.jpg",
+      "sha256": "9d1e4b20ba42d911a846ff66334931191c16062bcaa5b45770d7589da4d66cc3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000001/canvas/c/1"
+    },
+    {
+      "numeroImagen": 2,
+      "etiquetaOriginal": "front-i",
+      "archivo": "H_002_front-i.jpg",
+      "sha256": "4b0ef95429baf525eb47018445f4401f3598e4b60d5e266fad51a1f5238013ad",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000002/canvas/c/2"
+    },
+    {
+      "numeroImagen": 3,
+      "etiquetaOriginal": "fs.ir",
+      "archivo": "H_003_fs-ir.jpg",
+      "sha256": "7cc1010ba4742b064cf9bf00a85386bab78bad6537cf49c48513101ed5e340eb",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000003/canvas/c/3"
+    },
+    {
+      "numeroImagen": 4,
+      "etiquetaOriginal": "fs.iv",
+      "archivo": "H_004_fs-iv.jpg",
+      "sha256": "e7446941c9db2c13fd03905c4957cd187c420ff42a3fe2bd9d5fba64732ca62b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000004/canvas/c/4"
+    },
+    {
+      "numeroImagen": 5,
+      "etiquetaOriginal": "fs.iir",
+      "archivo": "H_005_fs-iir.jpg",
+      "sha256": "fd3a68510d21180c5f40c7d7a1785552fe1cc48cf4d230a9ce1065998fb84784",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000005/canvas/c/5"
+    },
+    {
+      "numeroImagen": 6,
+      "etiquetaOriginal": "fs.iiv",
+      "archivo": "H_006_fs-iiv.jpg",
+      "sha256": "43af8b164abd5ca217a1485763f762ba80b864d16340eb7cb9e1270476ca5d09",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000006/canvas/c/6"
+    },
+    {
+      "numeroImagen": 7,
+      "etiquetaOriginal": "fs.iiir",
+      "archivo": "H_007_fs-iiir.jpg",
+      "sha256": "0f8cd084a51cba41c4a4e0efbec4a41ea0e577f1903489e0aab28664e2706b6d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000007/canvas/c/7"
+    },
+    {
+      "numeroImagen": 8,
+      "etiquetaOriginal": "fs.iiiv",
+      "archivo": "H_008_fs-iiiv.jpg",
+      "sha256": "d639a8ac96b005f5a747e87a39d288740d09fb10a5761193c54fe5141a328424",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000008/canvas/c/8"
+    },
+    {
+      "numeroImagen": 9,
+      "etiquetaOriginal": "f.1r",
+      "archivo": "H_009_f-1r.jpg",
+      "sha256": "cc92a3fff044742bd171a490f3bd6328bc97b603850f62faf29c9120659cedf5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000009/canvas/c/9"
+    },
+    {
+      "numeroImagen": 10,
+      "etiquetaOriginal": "f.1v",
+      "archivo": "H_010_f-1v.jpg",
+      "sha256": "96b56941e8ae631654a107463923ad543425a9be67816ec8a47070e207339821",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00000a/canvas/c/10"
+    },
+    {
+      "numeroImagen": 11,
+      "etiquetaOriginal": "f.2r",
+      "archivo": "H_011_f-2r.jpg",
+      "sha256": "e4fffdaf72b2512facaaf07fdd4aaf69c94b97ffa9d36bd6a0ecdbe67b250874",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00000b/canvas/c/11"
+    },
+    {
+      "numeroImagen": 12,
+      "etiquetaOriginal": "f.2v",
+      "archivo": "H_012_f-2v.jpg",
+      "sha256": "7eada3fe40256c4211c783eafe7380e81e8000803696fb226e2691cac75b7297",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00000c/canvas/c/12"
+    },
+    {
+      "numeroImagen": 13,
+      "etiquetaOriginal": "f.3r",
+      "archivo": "H_013_f-3r.jpg",
+      "sha256": "ec98b430ee95d36c1bc444399ddf54590394c291f23962ca004df866da20e2dc",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00000d/canvas/c/13"
+    },
+    {
+      "numeroImagen": 14,
+      "etiquetaOriginal": "f.3v",
+      "archivo": "H_014_f-3v.jpg",
+      "sha256": "d43209af344b37987fcff253acdb87ce931bfe39faefa5acab1e1f49ca7dfa8b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00000e/canvas/c/14"
+    },
+    {
+      "numeroImagen": 15,
+      "etiquetaOriginal": "f.4r",
+      "archivo": "H_015_f-4r.jpg",
+      "sha256": "9653d3a8d881d22b02b56b7133ee6d004f3a3bf806d9ebe26b2b0c934b0bdfde",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00000f/canvas/c/15"
+    },
+    {
+      "numeroImagen": 16,
+      "etiquetaOriginal": "f.4v",
+      "archivo": "H_016_f-4v.jpg",
+      "sha256": "9aab58363a4862b1d4644fbba6ba2ba265954864b5f4870c9cf8b946651f2efe",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000010/canvas/c/16"
+    },
+    {
+      "numeroImagen": 17,
+      "etiquetaOriginal": "f.5r",
+      "archivo": "H_017_f-5r.jpg",
+      "sha256": "7e9b3272c5aec754fa3a61f97df66eb3ac246d926438394b61868505056d3e13",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000011/canvas/c/17"
+    },
+    {
+      "numeroImagen": 18,
+      "etiquetaOriginal": "f.5v",
+      "archivo": "H_018_f-5v.jpg",
+      "sha256": "f7039204730800039978bb67c57c57078894b9ff17838caf55551cafc57b0e78",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000012/canvas/c/18"
+    },
+    {
+      "numeroImagen": 19,
+      "etiquetaOriginal": "f.6r",
+      "archivo": "H_019_f-6r.jpg",
+      "sha256": "d55202b866d4e2c2d0300f6c9bd835243da8464ebdf4dc8f68d68e850d66c6af",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000013/canvas/c/19"
+    },
+    {
+      "numeroImagen": 20,
+      "etiquetaOriginal": "f.6v",
+      "archivo": "H_020_f-6v.jpg",
+      "sha256": "f0a9aa6fdcc014cb6a311fb3c8d280e33379cf548cc45687456bd5a75df0a20b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000014/canvas/c/20"
+    },
+    {
+      "numeroImagen": 21,
+      "etiquetaOriginal": "f.7r",
+      "archivo": "H_021_f-7r.jpg",
+      "sha256": "326dc1ed749405ba2e4008565dda002b87a098741395c97ea74e294a9dec1996",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000015/canvas/c/21"
+    },
+    {
+      "numeroImagen": 22,
+      "etiquetaOriginal": "f.7v",
+      "archivo": "H_022_f-7v.jpg",
+      "sha256": "8192d8ae3bce77801a96591e2e16c687eabc8f2334ca71b88442a9481091a5b5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000016/canvas/c/22"
+    },
+    {
+      "numeroImagen": 23,
+      "etiquetaOriginal": "f.8r",
+      "archivo": "H_023_f-8r.jpg",
+      "sha256": "9681a3b7a27a38026436ac89830fa52d354a4f1fc230d27c3baf07d0b08d87aa",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000017/canvas/c/23"
+    },
+    {
+      "numeroImagen": 24,
+      "etiquetaOriginal": "f.8v",
+      "archivo": "H_024_f-8v.jpg",
+      "sha256": "ab1eedcde356ce1ce899586ea9a321e0820ef9b79702014366a36c19c66c2382",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000018/canvas/c/24"
+    },
+    {
+      "numeroImagen": 25,
+      "etiquetaOriginal": "f.9r",
+      "archivo": "H_025_f-9r.jpg",
+      "sha256": "33a6a220db7f7fbcae201298fc1cd32ea1a9d8aac96b04750855c0fd02d4f54b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000019/canvas/c/25"
+    },
+    {
+      "numeroImagen": 26,
+      "etiquetaOriginal": "f.9v",
+      "archivo": "H_026_f-9v.jpg",
+      "sha256": "3fa754e6d099c1d29d1d2cb957b613b299e10bcd5da55c8a0992334934ad6879",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00001a/canvas/c/26"
+    },
+    {
+      "numeroImagen": 27,
+      "etiquetaOriginal": "f.10r",
+      "archivo": "H_027_f-10r.jpg",
+      "sha256": "073d735024c13f8696f29d0bead89f38d53b2a5e1c0de9f2c00ecb6524aa9a0b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00001b/canvas/c/27"
+    },
+    {
+      "numeroImagen": 28,
+      "etiquetaOriginal": "f.10v",
+      "archivo": "H_028_f-10v.jpg",
+      "sha256": "e82e5500e03e4f115456a19ba1106fa4654477afe143f00a56519a26f605aa39",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00001c/canvas/c/28"
+    },
+    {
+      "numeroImagen": 29,
+      "etiquetaOriginal": "f.11r",
+      "archivo": "H_029_f-11r.jpg",
+      "sha256": "bb402c240bb6c34ca9b5e1b9355ea9124a649db620909553d80ae7cd55328e2b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00001d/canvas/c/29"
+    },
+    {
+      "numeroImagen": 30,
+      "etiquetaOriginal": "f.11v",
+      "archivo": "H_030_f-11v.jpg",
+      "sha256": "68b6f8f30a83d8409f20ddc916f9278b7a9b54787509a0dfa0865cc7e6b067b2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00001e/canvas/c/30"
+    },
+    {
+      "numeroImagen": 31,
+      "etiquetaOriginal": "f.12r",
+      "archivo": "H_031_f-12r.jpg",
+      "sha256": "b633b6bcc258b4adc25a31ba9d18a30a6b0e539cb2562c016f1312e3c2a6c987",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00001f/canvas/c/31"
+    },
+    {
+      "numeroImagen": 32,
+      "etiquetaOriginal": "f.12v",
+      "archivo": "H_032_f-12v.jpg",
+      "sha256": "ef3821e6941ef58453699a06003e46e9ad625d80e9983e698e88151be924fe63",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000020/canvas/c/32"
+    },
+    {
+      "numeroImagen": 33,
+      "etiquetaOriginal": "f.13r",
+      "archivo": "H_033_f-13r.jpg",
+      "sha256": "00f1d79d9a4be2808dafbc71a45a8104ee43e61044e8c5f66a0ba6ba5894b8f2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000021/canvas/c/33"
+    },
+    {
+      "numeroImagen": 34,
+      "etiquetaOriginal": "f.13v",
+      "archivo": "H_034_f-13v.jpg",
+      "sha256": "d373947c798da6c5c4b0587c2ebb6bb65767c349dcc17549ca7a4480f729bd45",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000022/canvas/c/34"
+    },
+    {
+      "numeroImagen": 35,
+      "etiquetaOriginal": "f.14r",
+      "archivo": "H_035_f-14r.jpg",
+      "sha256": "39b00a5c577a55e83157fdd2b7b1508a128d258bb022fe7f513aa9e83c2d5873",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000023/canvas/c/35"
+    },
+    {
+      "numeroImagen": 36,
+      "etiquetaOriginal": "f.14v",
+      "archivo": "H_036_f-14v.jpg",
+      "sha256": "2c293add2861f3baf0436ed73d4c38285c9b5948f68d8421c76382c28b9e0441",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000024/canvas/c/36"
+    },
+    {
+      "numeroImagen": 37,
+      "etiquetaOriginal": "f.15r",
+      "archivo": "H_037_f-15r.jpg",
+      "sha256": "894e96e87bbc8aa6bddd70335c90b839abe465afd753c5c48089d656b43080df",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000025/canvas/c/37"
+    },
+    {
+      "numeroImagen": 38,
+      "etiquetaOriginal": "f.15v",
+      "archivo": "H_038_f-15v.jpg",
+      "sha256": "d3a1e2d9d540117d2d563f45b2c3e2fbb269076c3be12f8e19e1b6ec0bc6d303",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000026/canvas/c/38"
+    },
+    {
+      "numeroImagen": 39,
+      "etiquetaOriginal": "f.16r",
+      "archivo": "H_039_f-16r.jpg",
+      "sha256": "cc870bc35af8769104bd60c363ae76a3071843a9f29545ca7216efa396183c3c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000027/canvas/c/39"
+    },
+    {
+      "numeroImagen": 40,
+      "etiquetaOriginal": "f.16v",
+      "archivo": "H_040_f-16v.jpg",
+      "sha256": "14a2ec5b548e69003c6c6a1190c652ff562cccd01ff73e8f6e77a3c96819b79f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000028/canvas/c/40"
+    },
+    {
+      "numeroImagen": 41,
+      "etiquetaOriginal": "f.17r",
+      "archivo": "H_041_f-17r.jpg",
+      "sha256": "0e35cd8dcaf7a582f96df64a2c98587fbf45835ef7007caf4390fc4ab8112d08",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000029/canvas/c/41"
+    },
+    {
+      "numeroImagen": 42,
+      "etiquetaOriginal": "f.17v",
+      "archivo": "H_042_f-17v.jpg",
+      "sha256": "f88342c599425ef3cb2a1b47ec1abaffc4b900e245e1dcd639ec9c4ab3a192eb",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00002a/canvas/c/42"
+    },
+    {
+      "numeroImagen": 43,
+      "etiquetaOriginal": "f.18r",
+      "archivo": "H_043_f-18r.jpg",
+      "sha256": "9806663beca29fa146ca0619ba53f2f57a56390d11b0b1847bd1f538e80f49ba",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00002b/canvas/c/43"
+    },
+    {
+      "numeroImagen": 44,
+      "etiquetaOriginal": "f.18v",
+      "archivo": "H_044_f-18v.jpg",
+      "sha256": "2a9577b54eaae054ad2d0cdb7f3dc68c85474fe154527f377c8710554a324f7c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00002c/canvas/c/44"
+    },
+    {
+      "numeroImagen": 45,
+      "etiquetaOriginal": "f.19r",
+      "archivo": "H_045_f-19r.jpg",
+      "sha256": "029bfcf472517ab0ae78c27b7d2fcbd2b456aded84f1726d5b0b1a31db8fa9d8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00002d/canvas/c/45"
+    },
+    {
+      "numeroImagen": 46,
+      "etiquetaOriginal": "f.19v",
+      "archivo": "H_046_f-19v.jpg",
+      "sha256": "fbd01efd00bbfbea56f754a8e9b9c0599d0fb771d61cbebf4d3bdfbeb9e422e3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00002e/canvas/c/46"
+    },
+    {
+      "numeroImagen": 47,
+      "etiquetaOriginal": "f.20r",
+      "archivo": "H_047_f-20r.jpg",
+      "sha256": "790d8f3716f9e8d822d8f1379274384b8f9edd222df95378473c61094fc56244",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00002f/canvas/c/47"
+    },
+    {
+      "numeroImagen": 48,
+      "etiquetaOriginal": "f.20v",
+      "archivo": "H_048_f-20v.jpg",
+      "sha256": "9f1e3d21606f08ef7d28bf550382255d8deeef8db5d0aba921d064bdc866c3ac",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000030/canvas/c/48"
+    },
+    {
+      "numeroImagen": 49,
+      "etiquetaOriginal": "f.21r",
+      "archivo": "H_049_f-21r.jpg",
+      "sha256": "f9b89b78d44cf674cd23ae2029edc765597bd06e4b9d951d8e867af9dc0eabc9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000031/canvas/c/49"
+    },
+    {
+      "numeroImagen": 50,
+      "etiquetaOriginal": "f.21v",
+      "archivo": "H_050_f-21v.jpg",
+      "sha256": "e218637c2e567e7703dbd4da76485229863c216dde7e79f7581dff4d72917b14",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000032/canvas/c/50"
+    },
+    {
+      "numeroImagen": 51,
+      "etiquetaOriginal": "f.22r",
+      "archivo": "H_051_f-22r.jpg",
+      "sha256": "a6c6ea9eb8fd2a25baec8f17e04f19fbcdacc3a1e9ab6aba4e3ef57ea2d98d8c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000033/canvas/c/51"
+    },
+    {
+      "numeroImagen": 52,
+      "etiquetaOriginal": "f.22v",
+      "archivo": "H_052_f-22v.jpg",
+      "sha256": "3ed99c9d9e0dd41015c6ffd6ce4381269f922c1308125ed4d92d53528b634487",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000034/canvas/c/52"
+    },
+    {
+      "numeroImagen": 53,
+      "etiquetaOriginal": "f.23r",
+      "archivo": "H_053_f-23r.jpg",
+      "sha256": "97c58776b7d2f622ff5a5d00680ed560edec3fd09d32bc9d6f46adccaf9bfa21",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000035/canvas/c/53"
+    },
+    {
+      "numeroImagen": 54,
+      "etiquetaOriginal": "f.23v",
+      "archivo": "H_054_f-23v.jpg",
+      "sha256": "674f9de48cc5523e9b5bbebd58c41ec1b8cd1da0a8226cd7820cd9de197a6810",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000036/canvas/c/54"
+    },
+    {
+      "numeroImagen": 55,
+      "etiquetaOriginal": "f.24r",
+      "archivo": "H_055_f-24r.jpg",
+      "sha256": "77102b02a8d90df6986c19163e28083588576bfc4276f4a9b7b4920fa3fadf2b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000037/canvas/c/55"
+    },
+    {
+      "numeroImagen": 56,
+      "etiquetaOriginal": "f.24v",
+      "archivo": "H_056_f-24v.jpg",
+      "sha256": "70c0db3a334d02e782ddd76d94954a35e5f3193ee8c773c369cfdaca629d1076",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000038/canvas/c/56"
+    },
+    {
+      "numeroImagen": 57,
+      "etiquetaOriginal": "f.25r",
+      "archivo": "H_057_f-25r.jpg",
+      "sha256": "93f96e41370f0488f3c29b86692a331ac3606a4860f65e76c0b73ec7d1014b1a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000039/canvas/c/57"
+    },
+    {
+      "numeroImagen": 58,
+      "etiquetaOriginal": "f.25v",
+      "archivo": "H_058_f-25v.jpg",
+      "sha256": "9fffcae480817097192572e26f9a4a6369062e6670eaa6d60b37beff17bb6d20",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00003a/canvas/c/58"
+    },
+    {
+      "numeroImagen": 59,
+      "etiquetaOriginal": "f.26r",
+      "archivo": "H_059_f-26r.jpg",
+      "sha256": "12375a5845b8d2ead1a988121cdc6bd1239ee27a415e49e0de5f365ba640352c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00003b/canvas/c/59"
+    },
+    {
+      "numeroImagen": 60,
+      "etiquetaOriginal": "f.26v",
+      "archivo": "H_060_f-26v.jpg",
+      "sha256": "4c702d54d22bb7579fd60405e19e11aa51fb75b6b49a34f27765e3c25931a1f2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00003c/canvas/c/60"
+    },
+    {
+      "numeroImagen": 61,
+      "etiquetaOriginal": "f.27r",
+      "archivo": "H_061_f-27r.jpg",
+      "sha256": "67ad3057ab2a8eee30c05f57309e63e935e79b9a64dadbcdb3f09093b623c7d2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00003d/canvas/c/61"
+    },
+    {
+      "numeroImagen": 62,
+      "etiquetaOriginal": "f.27v",
+      "archivo": "H_062_f-27v.jpg",
+      "sha256": "19b91c5d5c217236f7f728a4ca884855788dbf4dbc7b9b699cbca373102cc17c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00003e/canvas/c/62"
+    },
+    {
+      "numeroImagen": 63,
+      "etiquetaOriginal": "f.28r",
+      "archivo": "H_063_f-28r.jpg",
+      "sha256": "526bff86dc752b200715546244f6ceccb2704d9ebbfa8a273ec8eaf77569926b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00003f/canvas/c/63"
+    },
+    {
+      "numeroImagen": 64,
+      "etiquetaOriginal": "f.28v",
+      "archivo": "H_064_f-28v.jpg",
+      "sha256": "1b1cea5e5d451d722a7218988a28f472a9dcb8b58eba65b14b5959c8fe8b1d7b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000040/canvas/c/64"
+    },
+    {
+      "numeroImagen": 65,
+      "etiquetaOriginal": "f.29r",
+      "archivo": "H_065_f-29r.jpg",
+      "sha256": "073680545f478cc6a41a67c9307185de316d702c10c76f6260d7077b323534b9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000041/canvas/c/65"
+    },
+    {
+      "numeroImagen": 66,
+      "etiquetaOriginal": "f.29v",
+      "archivo": "H_066_f-29v.jpg",
+      "sha256": "fd5f36336e64533039c8c282e65f446c847314be590355afc4aafd1ceb86791d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000042/canvas/c/66"
+    },
+    {
+      "numeroImagen": 67,
+      "etiquetaOriginal": "f.30r",
+      "archivo": "H_067_f-30r.jpg",
+      "sha256": "19541ff445582b779e29356bb35315a558750510583e8d80cd91c74810f24f4e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000043/canvas/c/67"
+    },
+    {
+      "numeroImagen": 68,
+      "etiquetaOriginal": "f.30v",
+      "archivo": "H_068_f-30v.jpg",
+      "sha256": "d1ee5290736ac858dc0ce4abe469041343406e8dfa797858c5de77d9d6567b9d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000044/canvas/c/68"
+    },
+    {
+      "numeroImagen": 69,
+      "etiquetaOriginal": "f.31r",
+      "archivo": "H_069_f-31r.jpg",
+      "sha256": "91506eaef4a53a73577190f17732c27ed7922bff18c9ff4405f59eabacfca16c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000045/canvas/c/69"
+    },
+    {
+      "numeroImagen": 70,
+      "etiquetaOriginal": "f.31v",
+      "archivo": "H_070_f-31v.jpg",
+      "sha256": "b9f37c39433df4ea744e521557130cdaab62c3ad863af557871138f767f8434f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000046/canvas/c/70"
+    },
+    {
+      "numeroImagen": 71,
+      "etiquetaOriginal": "f.32r",
+      "archivo": "H_071_f-32r.jpg",
+      "sha256": "8c4d45a9cc20ea7a102e754f9fc1ae7719f9c9441f784466f259bbcf4ef66353",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000047/canvas/c/71"
+    },
+    {
+      "numeroImagen": 72,
+      "etiquetaOriginal": "f.32v",
+      "archivo": "H_072_f-32v.jpg",
+      "sha256": "47fb89ce1b4d759c35aba6e9705ae359ca53e69ebe65bd35fe0f713e05dc557e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000048/canvas/c/72"
+    },
+    {
+      "numeroImagen": 73,
+      "etiquetaOriginal": "f.33r",
+      "archivo": "H_073_f-33r.jpg",
+      "sha256": "177977abea00c0323c96106766b2c8dd56c22dd2d03648b436455bca0410593e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000049/canvas/c/73"
+    },
+    {
+      "numeroImagen": 74,
+      "etiquetaOriginal": "f.33v",
+      "archivo": "H_074_f-33v.jpg",
+      "sha256": "c33a96091da30d134a7d9453fd6e3564d8d02c516ca9fd2abca0493d29798d17",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00004a/canvas/c/74"
+    },
+    {
+      "numeroImagen": 75,
+      "etiquetaOriginal": "f.34r",
+      "archivo": "H_075_f-34r.jpg",
+      "sha256": "b1f39bc8cae9ce58830b9ce5708d38383de04ea9e1c427061284246acd82170f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00004b/canvas/c/75"
+    },
+    {
+      "numeroImagen": 76,
+      "etiquetaOriginal": "f.34v",
+      "archivo": "H_076_f-34v.jpg",
+      "sha256": "0fa7b10de0456cb5d6d3befa914ded4722f4d9d1d415c647a552d84ba61b2057",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00004c/canvas/c/76"
+    },
+    {
+      "numeroImagen": 77,
+      "etiquetaOriginal": "f.35r",
+      "archivo": "H_077_f-35r.jpg",
+      "sha256": "a588790c5b4bcb2627c3f8024311caeb02ba4baf364a7ceae4fb33d3f7c9bae1",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00004d/canvas/c/77"
+    },
+    {
+      "numeroImagen": 78,
+      "etiquetaOriginal": "f.35v",
+      "archivo": "H_078_f-35v.jpg",
+      "sha256": "15180314fb03e867d460318259a08f6d950f7056f33c8491f75e40ca919a2169",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00004e/canvas/c/78"
+    },
+    {
+      "numeroImagen": 79,
+      "etiquetaOriginal": "f.36r",
+      "archivo": "H_079_f-36r.jpg",
+      "sha256": "304265b25f91fbd73ef02f78aa8e3e76f9faa2556f335770d1474e1c8eb4d45e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00004f/canvas/c/79"
+    },
+    {
+      "numeroImagen": 80,
+      "etiquetaOriginal": "f.36v",
+      "archivo": "H_080_f-36v.jpg",
+      "sha256": "ba8693fa72208846aef65f7d0ec938a809dca0daff07b4e03e2dde80a2018562",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000050/canvas/c/80"
+    },
+    {
+      "numeroImagen": 81,
+      "etiquetaOriginal": "f.37r",
+      "archivo": "H_081_f-37r.jpg",
+      "sha256": "b0839fa68c983e738ef7194cc2b80217d6e159918cc86dca81040b566c2e87f9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000051/canvas/c/81"
+    },
+    {
+      "numeroImagen": 82,
+      "etiquetaOriginal": "f.37v",
+      "archivo": "H_082_f-37v.jpg",
+      "sha256": "e8d54fd71a39480d74e3d2712e8b0535b9a8f0e3e2791c9fa4ab7cb8feb6dc1e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000052/canvas/c/82"
+    },
+    {
+      "numeroImagen": 83,
+      "etiquetaOriginal": "f.38r",
+      "archivo": "H_083_f-38r.jpg",
+      "sha256": "1196d54a5114bdf348b53b4fc3389df8591a0b130cc931de24833d590666619a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000053/canvas/c/83"
+    },
+    {
+      "numeroImagen": 84,
+      "etiquetaOriginal": "f.38v",
+      "archivo": "H_084_f-38v.jpg",
+      "sha256": "c8171b3974ebe1c84fa12631fe89311e1094e887c68a7523e4300b2e8394a037",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000054/canvas/c/84"
+    },
+    {
+      "numeroImagen": 85,
+      "etiquetaOriginal": "f.39r",
+      "archivo": "H_085_f-39r.jpg",
+      "sha256": "f069fda19410ab963215a58ed412ab8bd1b01b7a6df66be07206ee50e7a9b9f8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000055/canvas/c/85"
+    },
+    {
+      "numeroImagen": 86,
+      "etiquetaOriginal": "f.39v",
+      "archivo": "H_086_f-39v.jpg",
+      "sha256": "fc82a2494d08ae8fd007c3f62bb09d84fcf556a098d25a09899949df3c110df1",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000056/canvas/c/86"
+    },
+    {
+      "numeroImagen": 87,
+      "etiquetaOriginal": "f.40r",
+      "archivo": "H_087_f-40r.jpg",
+      "sha256": "b59d7a215074594dab2b78dae6223cbb07b03bc8fd1ae79ead72031e709fdbc5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000057/canvas/c/87"
+    },
+    {
+      "numeroImagen": 88,
+      "etiquetaOriginal": "f.40v",
+      "archivo": "H_088_f-40v.jpg",
+      "sha256": "3e4bbe6593ddb3caadfe30c2f4f3bb84cc984bf61d80dacce8c45270a335cef8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000058/canvas/c/88"
+    },
+    {
+      "numeroImagen": 89,
+      "etiquetaOriginal": "f.41r",
+      "archivo": "H_089_f-41r.jpg",
+      "sha256": "068e8ae37bf491caca1e45f0af5b7f2b6fba63bae624d202814224aa010d3289",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000059/canvas/c/89"
+    },
+    {
+      "numeroImagen": 90,
+      "etiquetaOriginal": "f.41v",
+      "archivo": "H_090_f-41v.jpg",
+      "sha256": "c83783d124381210f98ce502ad8ec6b970b95a1e0a6a6ea210c47352a02823f8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00005a/canvas/c/90"
+    },
+    {
+      "numeroImagen": 91,
+      "etiquetaOriginal": "f.42r",
+      "archivo": "H_091_f-42r.jpg",
+      "sha256": "fdad144bddb418b8c5e8c113d1313db92c70b8fd17268b13e6e24acd3e537c87",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00005b/canvas/c/91"
+    },
+    {
+      "numeroImagen": 92,
+      "etiquetaOriginal": "f.42v",
+      "archivo": "H_092_f-42v.jpg",
+      "sha256": "db3883e142e54c158fb0037ba93dfa1934f1f1aa65fcc544ec41a8419034fd34",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00005c/canvas/c/92"
+    },
+    {
+      "numeroImagen": 93,
+      "etiquetaOriginal": "f.43r",
+      "archivo": "H_093_f-43r.jpg",
+      "sha256": "4ce31c305fcf2c75fcfe2fd5db4f53d0bd88385f96cefc7f00782f47e713499b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00005d/canvas/c/93"
+    },
+    {
+      "numeroImagen": 94,
+      "etiquetaOriginal": "f.43v",
+      "archivo": "H_094_f-43v.jpg",
+      "sha256": "c285ac4175788c76a04793e2a9e78cf173351eb0cc3e7b4fd3bea9e5031b0acf",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00005e/canvas/c/94"
+    },
+    {
+      "numeroImagen": 95,
+      "etiquetaOriginal": "f.44r",
+      "archivo": "H_095_f-44r.jpg",
+      "sha256": "8bc709504ac2385eea5d3eb9488172458dd90f7cad56fc3f33c4037c280db284",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00005f/canvas/c/95"
+    },
+    {
+      "numeroImagen": 96,
+      "etiquetaOriginal": "f.44v",
+      "archivo": "H_096_f-44v.jpg",
+      "sha256": "7fb7edc35c1cf9b061ad3fac17386cd348427875498737851bb5fed782f3fce3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000060/canvas/c/96"
+    },
+    {
+      "numeroImagen": 97,
+      "etiquetaOriginal": "f.45r",
+      "archivo": "H_097_f-45r.jpg",
+      "sha256": "e0a36ba7bffc1a4a4cc09268e3319d87428a189e62b7d9372df5cf0c982b55ac",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000061/canvas/c/97"
+    },
+    {
+      "numeroImagen": 98,
+      "etiquetaOriginal": "f.45v",
+      "archivo": "H_098_f-45v.jpg",
+      "sha256": "dcb00a665b0227bd05d69c895f02f751ead55bb73c50a06b08cd19d502e867a6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000062/canvas/c/98"
+    },
+    {
+      "numeroImagen": 99,
+      "etiquetaOriginal": "f.46r",
+      "archivo": "H_099_f-46r.jpg",
+      "sha256": "6a7d9cbd116f5a1cb61653ca5598425aaf616694760039f0c5a636cd471d4f3f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000063/canvas/c/99"
+    },
+    {
+      "numeroImagen": 100,
+      "etiquetaOriginal": "f.46v",
+      "archivo": "H_100_f-46v.jpg",
+      "sha256": "a776cc0997cbd92326dfa9841467086e82eb810e45bd9e93b489aa9e9f3d2730",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000064/canvas/c/100"
+    },
+    {
+      "numeroImagen": 101,
+      "etiquetaOriginal": "f.47r",
+      "archivo": "H_101_f-47r.jpg",
+      "sha256": "e53e7db8257968bdf5cd62e8bff2b1e34b048239389af31f7d85fcb26a877fb6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000065/canvas/c/101"
+    },
+    {
+      "numeroImagen": 102,
+      "etiquetaOriginal": "f.47v",
+      "archivo": "H_102_f-47v.jpg",
+      "sha256": "8b3b542eb36f5418181d3d1c2e619072ba1cfe18cb039af9813f2296435b20c6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000066/canvas/c/102"
+    },
+    {
+      "numeroImagen": 103,
+      "etiquetaOriginal": "f.48r",
+      "archivo": "H_103_f-48r.jpg",
+      "sha256": "0f8c0f09532ca8e4ad0a26059f4bfb68bb4052200acc3b1165c6544dbacb8496",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000067/canvas/c/103"
+    },
+    {
+      "numeroImagen": 104,
+      "etiquetaOriginal": "f.48v",
+      "archivo": "H_104_f-48v.jpg",
+      "sha256": "7014d3011c47b3e5754f791d10f1140ff22ef659a92b82b58cc54dffe5375575",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000068/canvas/c/104"
+    },
+    {
+      "numeroImagen": 105,
+      "etiquetaOriginal": "f.49r",
+      "archivo": "H_105_f-49r.jpg",
+      "sha256": "c0053b2a8a72ad6aa8e11b6433df827d6802d377ebfcc04ea499c970baa13a6a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000069/canvas/c/105"
+    },
+    {
+      "numeroImagen": 106,
+      "etiquetaOriginal": "f.49v",
+      "archivo": "H_106_f-49v.jpg",
+      "sha256": "fb08a6ca29d11dfdeab277bc1bbd1002a6a382687316bd68ec137ec593f70c1a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00006a/canvas/c/106"
+    },
+    {
+      "numeroImagen": 107,
+      "etiquetaOriginal": "f.50r",
+      "archivo": "H_107_f-50r.jpg",
+      "sha256": "c28c65ce8b9a8c4abe75c2744f7b89ea484d8e52e657f0e68094adbe3579d6af",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00006b/canvas/c/107"
+    },
+    {
+      "numeroImagen": 108,
+      "etiquetaOriginal": "f.50v",
+      "archivo": "H_108_f-50v.jpg",
+      "sha256": "88873a65c188bf253d79a0e2b4c95d46c4bf40c86fb27b800768f3acfe95f9f7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00006c/canvas/c/108"
+    },
+    {
+      "numeroImagen": 109,
+      "etiquetaOriginal": "f.51r",
+      "archivo": "H_109_f-51r.jpg",
+      "sha256": "dd81f5193fd5ab77ee20af45d7298c37abd82e0d106f98934a315a6ec9d3808a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00006d/canvas/c/109"
+    },
+    {
+      "numeroImagen": 110,
+      "etiquetaOriginal": "f.51v",
+      "archivo": "H_110_f-51v.jpg",
+      "sha256": "775a077f9b524294566b9af91ac50567027e29d22c352823f837052ea882146e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00006e/canvas/c/110"
+    },
+    {
+      "numeroImagen": 111,
+      "etiquetaOriginal": "f.52r",
+      "archivo": "H_111_f-52r.jpg",
+      "sha256": "8b6e7a4e1c1108204e5ea0779f9950d059120473070e0e8cef15e39149b2ad9c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00006f/canvas/c/111"
+    },
+    {
+      "numeroImagen": 112,
+      "etiquetaOriginal": "f.52v",
+      "archivo": "H_112_f-52v.jpg",
+      "sha256": "eaf7d95173791d6176919a91e7f8534fb28f973339d508402049de94f527b778",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000070/canvas/c/112"
+    },
+    {
+      "numeroImagen": 113,
+      "etiquetaOriginal": "f.53r",
+      "archivo": "H_113_f-53r.jpg",
+      "sha256": "f1c5943a0a9169d7b5676dc3bdf60837981b2c2b0c150d3b525c7d5e52bff8bb",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000071/canvas/c/113"
+    },
+    {
+      "numeroImagen": 114,
+      "etiquetaOriginal": "f.53v",
+      "archivo": "H_114_f-53v.jpg",
+      "sha256": "7f657cbd4866c79f51e91e3af39d420c4045139aa958736ce4fd2aa6979d6716",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000072/canvas/c/114"
+    },
+    {
+      "numeroImagen": 115,
+      "etiquetaOriginal": "f.54r",
+      "archivo": "H_115_f-54r.jpg",
+      "sha256": "1a38c5f8a07b3d43debe4148acc849eb71401fb5f9d1196b044f1825d92a4c23",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000073/canvas/c/115"
+    },
+    {
+      "numeroImagen": 116,
+      "etiquetaOriginal": "f.54v",
+      "archivo": "H_116_f-54v.jpg",
+      "sha256": "6add5b593ff612e76369b58144a8a273ecbfe3dc0a2c72043a2cd274b9fad952",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000074/canvas/c/116"
+    },
+    {
+      "numeroImagen": 117,
+      "etiquetaOriginal": "f.55r",
+      "archivo": "H_117_f-55r.jpg",
+      "sha256": "8cb190adc732f5cdc4e4b0fe2fc8ee3c79421d9458da0937e674820e155978b2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000075/canvas/c/117"
+    },
+    {
+      "numeroImagen": 118,
+      "etiquetaOriginal": "f.55v",
+      "archivo": "H_118_f-55v.jpg",
+      "sha256": "dd423e028ab8ab3e196af322eedcaa83cd5f7695081cabe5177ead202e1a6be3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000076/canvas/c/118"
+    },
+    {
+      "numeroImagen": 119,
+      "etiquetaOriginal": "f.56r",
+      "archivo": "H_119_f-56r.jpg",
+      "sha256": "0cf383b5fb6c3981a738f40f78c58069c0019512f3385f28e1ed2b147cedf053",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000077/canvas/c/119"
+    },
+    {
+      "numeroImagen": 120,
+      "etiquetaOriginal": "f.56v",
+      "archivo": "H_120_f-56v.jpg",
+      "sha256": "fd8ce76f946f2d0a3657cd2c5a1bbd5e9659f086067db649a82f8c28aa341e10",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000078/canvas/c/120"
+    },
+    {
+      "numeroImagen": 121,
+      "etiquetaOriginal": "f.57r",
+      "archivo": "H_121_f-57r.jpg",
+      "sha256": "9c31a8bed9421a0edd8568b73e9c108f9fb8c96065f3c6228b8fe4bc934233ca",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000079/canvas/c/121"
+    },
+    {
+      "numeroImagen": 122,
+      "etiquetaOriginal": "f.57v",
+      "archivo": "H_122_f-57v.jpg",
+      "sha256": "d518b5b345e54079e51eefdf733e5cab79ba7e00eec601ef5ae210095d8a16a7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00007a/canvas/c/122"
+    },
+    {
+      "numeroImagen": 123,
+      "etiquetaOriginal": "f.58r",
+      "archivo": "H_123_f-58r.jpg",
+      "sha256": "3a9210e73915920b4b86c518c939fe77bd1607fcc59adebeb0486f4f4d8ce05c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00007b/canvas/c/123"
+    },
+    {
+      "numeroImagen": 124,
+      "etiquetaOriginal": "f.58v",
+      "archivo": "H_124_f-58v.jpg",
+      "sha256": "c40fd51d2a2db0ef48c40e573956c8934442d44479dcfe00034a9b8881fb4d13",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00007c/canvas/c/124"
+    },
+    {
+      "numeroImagen": 125,
+      "etiquetaOriginal": "f.59r",
+      "archivo": "H_125_f-59r.jpg",
+      "sha256": "a99cbf2796247ef5ded876bb32350336601f4cf79d36318d437112a1e0662f9f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00007d/canvas/c/125"
+    },
+    {
+      "numeroImagen": 126,
+      "etiquetaOriginal": "f.59v",
+      "archivo": "H_126_f-59v.jpg",
+      "sha256": "0c2dcb90e3cd1184374064ec76f300194689755b6353820e8b95ce7b5fd1f959",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00007e/canvas/c/126"
+    },
+    {
+      "numeroImagen": 127,
+      "etiquetaOriginal": "f.60r",
+      "archivo": "H_127_f-60r.jpg",
+      "sha256": "b7b534d35d7d5c25cda97ed0a93550d548a54c313d8ae8d8debbac2254a3d0a1",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00007f/canvas/c/127"
+    },
+    {
+      "numeroImagen": 128,
+      "etiquetaOriginal": "f.60v",
+      "archivo": "H_128_f-60v.jpg",
+      "sha256": "37371214627506381f5e6fef88ff6fff32e740a9140ad88227ede120aecb2bb2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000080/canvas/c/128"
+    },
+    {
+      "numeroImagen": 129,
+      "etiquetaOriginal": "f.61r",
+      "archivo": "H_129_f-61r.jpg",
+      "sha256": "ba7d27803e0ec2e9cd6bfc7db93475d143858dd1da7bb3492680d73041aa62d6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000081/canvas/c/129"
+    },
+    {
+      "numeroImagen": 130,
+      "etiquetaOriginal": "f.61v",
+      "archivo": "H_130_f-61v.jpg",
+      "sha256": "0448986a41cff86b6c61009da6b5fdcb869c4c2b4344d4941906e4f2e981ec67",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000082/canvas/c/130"
+    },
+    {
+      "numeroImagen": 131,
+      "etiquetaOriginal": "f.62r",
+      "archivo": "H_131_f-62r.jpg",
+      "sha256": "863c78626d9ba9d8234700d1a10d523237c7621d400230dd948e29a12e615ae2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000083/canvas/c/131"
+    },
+    {
+      "numeroImagen": 132,
+      "etiquetaOriginal": "f.62v",
+      "archivo": "H_132_f-62v.jpg",
+      "sha256": "b7f6c5b6605fe048e155118636ba13a4e8f120db5b9026b5073165d6acec97cc",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000084/canvas/c/132"
+    },
+    {
+      "numeroImagen": 133,
+      "etiquetaOriginal": "f.63r",
+      "archivo": "H_133_f-63r.jpg",
+      "sha256": "8927d4df134d834cfa4f4ab32b1267cf18e5c2a09dcc80d8c3efac0937b4a220",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000085/canvas/c/133"
+    },
+    {
+      "numeroImagen": 134,
+      "etiquetaOriginal": "f.63v",
+      "archivo": "H_134_f-63v.jpg",
+      "sha256": "e0622df4aa5f74f5ea2bf602ef947bad19d2a50fbbc9e1a25569124c502e0f9a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000086/canvas/c/134"
+    },
+    {
+      "numeroImagen": 135,
+      "etiquetaOriginal": "f.64r",
+      "archivo": "H_135_f-64r.jpg",
+      "sha256": "76a0818ff277a32590ffa64255f02bb78b3edcd5d0af363b4dcd25d808da65dc",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000087/canvas/c/135"
+    },
+    {
+      "numeroImagen": 136,
+      "etiquetaOriginal": "f.64v",
+      "archivo": "H_136_f-64v.jpg",
+      "sha256": "daaa7200ebce033ba696a98471642532ab158647e10c816e9e550d15d591037a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000088/canvas/c/136"
+    },
+    {
+      "numeroImagen": 137,
+      "etiquetaOriginal": "f.65r",
+      "archivo": "H_137_f-65r.jpg",
+      "sha256": "4375427bde889b0e77a69f457f984e225fa886f99bdb917976ca9414cbb9e5d0",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000089/canvas/c/137"
+    },
+    {
+      "numeroImagen": 138,
+      "etiquetaOriginal": "f.65v",
+      "archivo": "H_138_f-65v.jpg",
+      "sha256": "c37f5876dada41e21cc11944b4f0560271a2ad916c8b68b176dc58c8c619a781",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00008a/canvas/c/138"
+    },
+    {
+      "numeroImagen": 139,
+      "etiquetaOriginal": "f.66r",
+      "archivo": "H_139_f-66r.jpg",
+      "sha256": "af25720e83c4c385194ddb4f5b19d00f12b61aa2f877511afdd71a3b393e6c2e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00008b/canvas/c/139"
+    },
+    {
+      "numeroImagen": 140,
+      "etiquetaOriginal": "f.66v",
+      "archivo": "H_140_f-66v.jpg",
+      "sha256": "13acba6821f84254fab547254a6b599cdb3d7c76ae9b832d0aa14d28fa1755a2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00008c/canvas/c/140"
+    },
+    {
+      "numeroImagen": 141,
+      "etiquetaOriginal": "f.67r",
+      "archivo": "H_141_f-67r.jpg",
+      "sha256": "e917726393714f10d0b43f5119d80fd1f0556e6142c985944ce37f49c3934ab0",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00008d/canvas/c/141"
+    },
+    {
+      "numeroImagen": 142,
+      "etiquetaOriginal": "f.67v",
+      "archivo": "H_142_f-67v.jpg",
+      "sha256": "0064623a22740743d2765a3a942bd0ff479e1e62286740ac6277aef46a285767",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00008e/canvas/c/142"
+    },
+    {
+      "numeroImagen": 143,
+      "etiquetaOriginal": "f.68r",
+      "archivo": "H_143_f-68r.jpg",
+      "sha256": "370d99a9a2c903ad9f3e3d151860edc8962e5dfea80569e3ae94c0195c187449",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00008f/canvas/c/143"
+    },
+    {
+      "numeroImagen": 144,
+      "etiquetaOriginal": "f.68v",
+      "archivo": "H_144_f-68v.jpg",
+      "sha256": "cd666490003763da2cdd714d2d2537a5d1aa1997ba02ffeda32e3a527f20d80a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000090/canvas/c/144"
+    },
+    {
+      "numeroImagen": 145,
+      "etiquetaOriginal": "f.69r",
+      "archivo": "H_145_f-69r.jpg",
+      "sha256": "424a44dce40e056fe95d0b67f403165bcee9e615f11c242e8e7938148eb8a9a5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000091/canvas/c/145"
+    },
+    {
+      "numeroImagen": 146,
+      "etiquetaOriginal": "f.69v",
+      "archivo": "H_146_f-69v.jpg",
+      "sha256": "4dbca110b8f98b8c18d03b8eab0b26b15e59e2716a6c44f830efd9f77916dae8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000092/canvas/c/146"
+    },
+    {
+      "numeroImagen": 147,
+      "etiquetaOriginal": "f.70r",
+      "archivo": "H_147_f-70r.jpg",
+      "sha256": "2cf692e60df68c3ddc8dbfdf864d2ac33fa5cfdb5049e35ec7c90e306ea3af88",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000093/canvas/c/147"
+    },
+    {
+      "numeroImagen": 148,
+      "etiquetaOriginal": "f.70v",
+      "archivo": "H_148_f-70v.jpg",
+      "sha256": "8ec5ab9fdf535d47243ce6a21b2a3a29d57e85030365312db96c473ee243192d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000094/canvas/c/148"
+    },
+    {
+      "numeroImagen": 149,
+      "etiquetaOriginal": "f.71r",
+      "archivo": "H_149_f-71r.jpg",
+      "sha256": "9960fe288a776bc2d692cb26bd444c5eaf2ae313242a52c5d04cbfdec56cd5f3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000095/canvas/c/149"
+    },
+    {
+      "numeroImagen": 150,
+      "etiquetaOriginal": "f.71v",
+      "archivo": "H_150_f-71v.jpg",
+      "sha256": "ba1dac781bf4fca85f1430a93b50b0f7895eed2b0d99c2eceefc069d537bd64b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000096/canvas/c/150"
+    },
+    {
+      "numeroImagen": 151,
+      "etiquetaOriginal": "f.72r",
+      "archivo": "H_151_f-72r.jpg",
+      "sha256": "ae5a79e56efb432dedfcda4eb9afd839c7deea6c310fbc2a69e8d91a8b50e142",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000097/canvas/c/151"
+    },
+    {
+      "numeroImagen": 152,
+      "etiquetaOriginal": "f.72v",
+      "archivo": "H_152_f-72v.jpg",
+      "sha256": "b0e44de8d05da22a6855a951f056fc8f7a33819ff3f06211ab6d3ec0696e5a85",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000098/canvas/c/152"
+    },
+    {
+      "numeroImagen": 153,
+      "etiquetaOriginal": "f.73r",
+      "archivo": "H_153_f-73r.jpg",
+      "sha256": "573e45005d5e4ab7518145b5b8f7061a87b310194c9dc3bed42472ca9fad938c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000099/canvas/c/153"
+    },
+    {
+      "numeroImagen": 154,
+      "etiquetaOriginal": "f.73v",
+      "archivo": "H_154_f-73v.jpg",
+      "sha256": "e3e832260e14762dddc3a230855d8cfb476aa78718b361117e83d854f5361835",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00009a/canvas/c/154"
+    },
+    {
+      "numeroImagen": 155,
+      "etiquetaOriginal": "f.74r",
+      "archivo": "H_155_f-74r.jpg",
+      "sha256": "675d647cfec9fbf256ae949f5d94d36da257b57a0b9cfb2d79abdce37de33fe6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00009b/canvas/c/155"
+    },
+    {
+      "numeroImagen": 156,
+      "etiquetaOriginal": "f.74v",
+      "archivo": "H_156_f-74v.jpg",
+      "sha256": "e70d35d65da3fcb7a674c31e20a2f22851e5878c368db7a342ebee0eeecfd7bb",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00009c/canvas/c/156"
+    },
+    {
+      "numeroImagen": 157,
+      "etiquetaOriginal": "f.75r",
+      "archivo": "H_157_f-75r.jpg",
+      "sha256": "7d0ae79ba8e30183bb0a52f18c8050b07ef1fc51c49fd71d0578cabaa3fdceb9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00009d/canvas/c/157"
+    },
+    {
+      "numeroImagen": 158,
+      "etiquetaOriginal": "f.75v",
+      "archivo": "H_158_f-75v.jpg",
+      "sha256": "6e92a5a55abfa386c8aba95e42d8bd579dd5fdaaa43611ff752d12d1eca3e062",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00009e/canvas/c/158"
+    },
+    {
+      "numeroImagen": 159,
+      "etiquetaOriginal": "f.76r",
+      "archivo": "H_159_f-76r.jpg",
+      "sha256": "86b4a1e99897d8d32712680106582ae13e92697f8c8ee42b96818db0fd5ad9b9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00009f/canvas/c/159"
+    },
+    {
+      "numeroImagen": 160,
+      "etiquetaOriginal": "f.76v",
+      "archivo": "H_160_f-76v.jpg",
+      "sha256": "af919633226fd9a4c8ed8a4ba49ee2cce001aa23a3ca07c5869eeb4c10c21cd8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a0/canvas/c/160"
+    },
+    {
+      "numeroImagen": 161,
+      "etiquetaOriginal": "f.77r",
+      "archivo": "H_161_f-77r.jpg",
+      "sha256": "84d525fca1b6e697999b880b5083ed4cc92a057089a836ef092be53369f85fb2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a1/canvas/c/161"
+    },
+    {
+      "numeroImagen": 162,
+      "etiquetaOriginal": "f.77v",
+      "archivo": "H_162_f-77v.jpg",
+      "sha256": "0a2031b68d98b782c21ab2ccd293a91aad504c4277b3599b7907aa5daca6813d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a2/canvas/c/162"
+    },
+    {
+      "numeroImagen": 163,
+      "etiquetaOriginal": "f.78r",
+      "archivo": "H_163_f-78r.jpg",
+      "sha256": "285b88b2705631a613f006dd9fce5b1fa794eee6209862b1fbaad2c94b352293",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a3/canvas/c/163"
+    },
+    {
+      "numeroImagen": 164,
+      "etiquetaOriginal": "f.78v",
+      "archivo": "H_164_f-78v.jpg",
+      "sha256": "1da4c480f12fc26437802634655478f097c9ed5bf0ffc8255f1d422571957fc6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a4/canvas/c/164"
+    },
+    {
+      "numeroImagen": 165,
+      "etiquetaOriginal": "f.79r",
+      "archivo": "H_165_f-79r.jpg",
+      "sha256": "15b042f854a476bff82245cb9ffaa34e333061730508aeeb97140123dbfabc0e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a5/canvas/c/165"
+    },
+    {
+      "numeroImagen": 166,
+      "etiquetaOriginal": "f.79v",
+      "archivo": "H_166_f-79v.jpg",
+      "sha256": "74df536f0000debf6e93788702b9fc7c2f824e06962688e81337c8129b500c64",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a6/canvas/c/166"
+    },
+    {
+      "numeroImagen": 167,
+      "etiquetaOriginal": "f.80r",
+      "archivo": "H_167_f-80r.jpg",
+      "sha256": "27922381e56c48270fd11ee1c873f6835bf5a282b33252e524eef2ac68cc5b7d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a7/canvas/c/167"
+    },
+    {
+      "numeroImagen": 168,
+      "etiquetaOriginal": "f.80v",
+      "archivo": "H_168_f-80v.jpg",
+      "sha256": "20dfa2e14d47cf5f7c8cd4da81fbf3d1028ac6cb28e7d63aeed1c6e198810cf9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a8/canvas/c/168"
+    },
+    {
+      "numeroImagen": 169,
+      "etiquetaOriginal": "f.81r",
+      "archivo": "H_169_f-81r.jpg",
+      "sha256": "aa78f72ca2bd6e82bd9296ef7b06e05e2860817906e1a52021d4516a46f9177d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000a9/canvas/c/169"
+    },
+    {
+      "numeroImagen": 170,
+      "etiquetaOriginal": "f.81v",
+      "archivo": "H_170_f-81v.jpg",
+      "sha256": "3adf3e6584a7c3370c0009d809139dfa5654aa490e257207e4d587cc5479f9ac",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000aa/canvas/c/170"
+    },
+    {
+      "numeroImagen": 171,
+      "etiquetaOriginal": "f.82r",
+      "archivo": "H_171_f-82r.jpg",
+      "sha256": "83862e5b34280f4cd7759d2cea806a9160fcb5c8984705541d452080058a75a3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ab/canvas/c/171"
+    },
+    {
+      "numeroImagen": 172,
+      "etiquetaOriginal": "f.82v",
+      "archivo": "H_172_f-82v.jpg",
+      "sha256": "b6739975ba40456568ea608a2d7a0b88f9c38c87db2130c75b8878e4e3fdbb34",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ac/canvas/c/172"
+    },
+    {
+      "numeroImagen": 173,
+      "etiquetaOriginal": "f.83r",
+      "archivo": "H_173_f-83r.jpg",
+      "sha256": "f67d6bfc4e595e4f6e61f49c86c0ea46e980252768a31eb2ccceb140a23cecd8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ad/canvas/c/173"
+    },
+    {
+      "numeroImagen": 174,
+      "etiquetaOriginal": "f.83v",
+      "archivo": "H_174_f-83v.jpg",
+      "sha256": "1678c371d1162b418e21521663679a14949cdeaa6579a5b8c31e8f3744eaccf0",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ae/canvas/c/174"
+    },
+    {
+      "numeroImagen": 175,
+      "etiquetaOriginal": "f.84r",
+      "archivo": "H_175_f-84r.jpg",
+      "sha256": "81fed46ad297494d6bfbf77db3001853c4f3b2612bcc6c8d87a7c5d1f1041e31",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000af/canvas/c/175"
+    },
+    {
+      "numeroImagen": 176,
+      "etiquetaOriginal": "f.84v",
+      "archivo": "H_176_f-84v.jpg",
+      "sha256": "50ea2df9be76ec69d72bb28fdfe7a68c00095d0bf4ebe718d6c329470df937a9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b0/canvas/c/176"
+    },
+    {
+      "numeroImagen": 177,
+      "etiquetaOriginal": "f.85r",
+      "archivo": "H_177_f-85r.jpg",
+      "sha256": "bd50a48966a597153e1d4ab09c0ffc6931b912c73f9d9d387283b6f1f9b8349f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b1/canvas/c/177"
+    },
+    {
+      "numeroImagen": 178,
+      "etiquetaOriginal": "f.85v",
+      "archivo": "H_178_f-85v.jpg",
+      "sha256": "62c3e186f30c70442d7127c4afc198d6b5db0c5bb7343717005daa3bc1f73f72",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b2/canvas/c/178"
+    },
+    {
+      "numeroImagen": 179,
+      "etiquetaOriginal": "f.86r",
+      "archivo": "H_179_f-86r.jpg",
+      "sha256": "3d04bbf8e08adabc331a18fa517294aeff8037542baa3f99c38853a4cf941675",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b3/canvas/c/179"
+    },
+    {
+      "numeroImagen": 180,
+      "etiquetaOriginal": "f.86v",
+      "archivo": "H_180_f-86v.jpg",
+      "sha256": "bf9b7713ed691b8b76049f235c7e3ea6128b06cb4a225c1a12d3aa84644fb636",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b4/canvas/c/180"
+    },
+    {
+      "numeroImagen": 181,
+      "etiquetaOriginal": "f.87r",
+      "archivo": "H_181_f-87r.jpg",
+      "sha256": "46e810489b3651ae00330953a5701dc56623b5d820fb78150b79704d85232f6c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b5/canvas/c/181"
+    },
+    {
+      "numeroImagen": 182,
+      "etiquetaOriginal": "f.87v",
+      "archivo": "H_182_f-87v.jpg",
+      "sha256": "8992471c59785008298ae1ce92f815035d491df7119c324f4a47db7beb98c6bc",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b6/canvas/c/182"
+    },
+    {
+      "numeroImagen": 183,
+      "etiquetaOriginal": "f.88r",
+      "archivo": "H_183_f-88r.jpg",
+      "sha256": "70c311f2f93b3dc6ec6e4f991602555e1e718c3b43fc4c2264dec9c41b57c220",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b7/canvas/c/183"
+    },
+    {
+      "numeroImagen": 184,
+      "etiquetaOriginal": "f.88v",
+      "archivo": "H_184_f-88v.jpg",
+      "sha256": "e8abc576286e61ac2ef44450b2c151f9fb2f8e8312dc692446390e73ce90d9a0",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b8/canvas/c/184"
+    },
+    {
+      "numeroImagen": 185,
+      "etiquetaOriginal": "f.89r",
+      "archivo": "H_185_f-89r.jpg",
+      "sha256": "d0a7dc802d182a9a174dbd5cfbe64872b2ac4ea4e1a33773b864083aa08bd5b7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000b9/canvas/c/185"
+    },
+    {
+      "numeroImagen": 186,
+      "etiquetaOriginal": "f.89v",
+      "archivo": "H_186_f-89v.jpg",
+      "sha256": "cc20de20110a39c7c4d6171e2d76b0bf08dd2a0828ac106353cfa96de2a0deae",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ba/canvas/c/186"
+    },
+    {
+      "numeroImagen": 187,
+      "etiquetaOriginal": "f.90r",
+      "archivo": "H_187_f-90r.jpg",
+      "sha256": "57db8248b97284ac75b1d1026c19e450d5f57bd1d34153b79332ed0c5ba2fabd",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000bb/canvas/c/187"
+    },
+    {
+      "numeroImagen": 188,
+      "etiquetaOriginal": "f.90v",
+      "archivo": "H_188_f-90v.jpg",
+      "sha256": "e5931727915c9819e3573ba4ab09a0ccb8a6135645760ce7855243a0dd807cea",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000bc/canvas/c/188"
+    },
+    {
+      "numeroImagen": 189,
+      "etiquetaOriginal": "f.91r",
+      "archivo": "H_189_f-91r.jpg",
+      "sha256": "474736456958c321d94574ddff849474c72badca482f5fc239a30c7431d113e9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000bd/canvas/c/189"
+    },
+    {
+      "numeroImagen": 190,
+      "etiquetaOriginal": "f.91v",
+      "archivo": "H_190_f-91v.jpg",
+      "sha256": "375b033c9ec62a10394acbed7afdb17c10bd381c8aa961b0d6523d597866f641",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000be/canvas/c/190"
+    },
+    {
+      "numeroImagen": 191,
+      "etiquetaOriginal": "f.92r",
+      "archivo": "H_191_f-92r.jpg",
+      "sha256": "baac79629943220184ce7fda325714edea84e5f0170791b8a596e3a429f88ce7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000bf/canvas/c/191"
+    },
+    {
+      "numeroImagen": 192,
+      "etiquetaOriginal": "f.92v",
+      "archivo": "H_192_f-92v.jpg",
+      "sha256": "bf4df3d2a60f916c2174b07293025549886795b6fa637f549bebeb74fad19b67",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c0/canvas/c/192"
+    },
+    {
+      "numeroImagen": 193,
+      "etiquetaOriginal": "f.93r",
+      "archivo": "H_193_f-93r.jpg",
+      "sha256": "7786de064f2a97123757451000b8673c614e90d96685628f8992bae96f941001",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c1/canvas/c/193"
+    },
+    {
+      "numeroImagen": 194,
+      "etiquetaOriginal": "f.93v",
+      "archivo": "H_194_f-93v.jpg",
+      "sha256": "e5d7dcd2edf74327adf6ddbb05c15574ea4ce7f7b9f8d24c7fab090a623807b1",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c2/canvas/c/194"
+    },
+    {
+      "numeroImagen": 195,
+      "etiquetaOriginal": "f.94r",
+      "archivo": "H_195_f-94r.jpg",
+      "sha256": "c12365c22a1ab5e60481bf4353f5fb8dd66a142be854c3ec594426995aa64226",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c3/canvas/c/195"
+    },
+    {
+      "numeroImagen": 196,
+      "etiquetaOriginal": "f.94v",
+      "archivo": "H_196_f-94v.jpg",
+      "sha256": "d202ae03f05cde5aae1e43168543ef0c218d3d3bf842ae8ff1e81261b209fd1d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c4/canvas/c/196"
+    },
+    {
+      "numeroImagen": 197,
+      "etiquetaOriginal": "f.95r",
+      "archivo": "H_197_f-95r.jpg",
+      "sha256": "6275963f0deb3f74544495a8ab7474b6b5c22917ce790237968267445be724da",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c5/canvas/c/197"
+    },
+    {
+      "numeroImagen": 198,
+      "etiquetaOriginal": "f.95v",
+      "archivo": "H_198_f-95v.jpg",
+      "sha256": "8906219c4615d474d79aa9835aa5bc1e31b30b7de259399c85071533b514f878",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c6/canvas/c/198"
+    },
+    {
+      "numeroImagen": 199,
+      "etiquetaOriginal": "f.96r",
+      "archivo": "H_199_f-96r.jpg",
+      "sha256": "a508e4cfca9d71dfcffd1a96d4e15dcfa73257eeb5e783a080ad34977b696786",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c7/canvas/c/199"
+    },
+    {
+      "numeroImagen": 200,
+      "etiquetaOriginal": "f.96v",
+      "archivo": "H_200_f-96v.jpg",
+      "sha256": "b1c6da7b8464252d2eea9c871e38c2ae82d57e3e39bb1f86d9f559c47cfb140a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c8/canvas/c/200"
+    },
+    {
+      "numeroImagen": 201,
+      "etiquetaOriginal": "f.97r",
+      "archivo": "H_201_f-97r.jpg",
+      "sha256": "5716d4abb7b7bdc5f4322706135f638bf0da5990b5a5d97f735c8a518fa2e9aa",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000c9/canvas/c/201"
+    },
+    {
+      "numeroImagen": 202,
+      "etiquetaOriginal": "f.97v",
+      "archivo": "H_202_f-97v.jpg",
+      "sha256": "76eaaabc77e412d8bc05160cfcd2fc5f6e62258bbe9a7adbccd582368f31ff0f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ca/canvas/c/202"
+    },
+    {
+      "numeroImagen": 203,
+      "etiquetaOriginal": "f.98r",
+      "archivo": "H_203_f-98r.jpg",
+      "sha256": "8497ce6ed294e0d7466ac3c29efc5662dd0da0a895ff12b75ef3720c98331b5c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000cb/canvas/c/203"
+    },
+    {
+      "numeroImagen": 204,
+      "etiquetaOriginal": "f.98v",
+      "archivo": "H_204_f-98v.jpg",
+      "sha256": "eae6a87f768d1a124b52409389c52c214f93a3fe5f60ac83ca876a23748f0f36",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000cc/canvas/c/204"
+    },
+    {
+      "numeroImagen": 205,
+      "etiquetaOriginal": "f.99r",
+      "archivo": "H_205_f-99r.jpg",
+      "sha256": "fd92c7ac5699a34cd42a44a49788a859f118bfcc017fa4a3aca8a36351c9e0f8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000cd/canvas/c/205"
+    },
+    {
+      "numeroImagen": 206,
+      "etiquetaOriginal": "f.99v",
+      "archivo": "H_206_f-99v.jpg",
+      "sha256": "5fa92054ddd0accf05f5358f70e4c009bffeb6f84693cc25eabbf8d4215c8ff6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ce/canvas/c/206"
+    },
+    {
+      "numeroImagen": 207,
+      "etiquetaOriginal": "f.100r",
+      "archivo": "H_207_f-100r.jpg",
+      "sha256": "6d065f44fae79f9478884d61febfe6aa11c8142b1825590851addcb7941a12cc",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000cf/canvas/c/207"
+    },
+    {
+      "numeroImagen": 208,
+      "etiquetaOriginal": "f.100v",
+      "archivo": "H_208_f-100v.jpg",
+      "sha256": "4c6754eb2741cad6b0d6cd195725367d569f7d640e848d6ee45e3633034e6773",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d0/canvas/c/208"
+    },
+    {
+      "numeroImagen": 209,
+      "etiquetaOriginal": "f.101r",
+      "archivo": "H_209_f-101r.jpg",
+      "sha256": "7f3ad33d5a5c76597bf3e2959a3facb0de811a79356f4c8ff3a23190c7825da7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d1/canvas/c/209"
+    },
+    {
+      "numeroImagen": 210,
+      "etiquetaOriginal": "f.101v",
+      "archivo": "H_210_f-101v.jpg",
+      "sha256": "eeffa2571aadbf8bb0f5ff0633c7178da8780b8a6dc5e964a6646b1b986c8bca",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d2/canvas/c/210"
+    },
+    {
+      "numeroImagen": 211,
+      "etiquetaOriginal": "f.102r",
+      "archivo": "H_211_f-102r.jpg",
+      "sha256": "b3f0374efac61880a047dbabebf4c3aa290e80a64e0ebc384f408aa5d93d871f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d3/canvas/c/211"
+    },
+    {
+      "numeroImagen": 212,
+      "etiquetaOriginal": "f.102v",
+      "archivo": "H_212_f-102v.jpg",
+      "sha256": "209e13f694f20b80f42de07ac281c18572dca84b2b093d9f2be21c855103eb69",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d4/canvas/c/212"
+    },
+    {
+      "numeroImagen": 213,
+      "etiquetaOriginal": "f.103r",
+      "archivo": "H_213_f-103r.jpg",
+      "sha256": "b6546e17e2cb05aa0a79ae6a41a304473d0b8509383b0196217a49dee289e382",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d5/canvas/c/213"
+    },
+    {
+      "numeroImagen": 214,
+      "etiquetaOriginal": "f.103v",
+      "archivo": "H_214_f-103v.jpg",
+      "sha256": "793d1d3fd3c034028ed4d83e5807141a1b517ec63dc350c3fefbb18552a14781",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d6/canvas/c/214"
+    },
+    {
+      "numeroImagen": 215,
+      "etiquetaOriginal": "f.104r",
+      "archivo": "H_215_f-104r.jpg",
+      "sha256": "c2861530828ca4021c9ca11d42b7107e9c9a7a14dbf29545881c72e0069df390",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d7/canvas/c/215"
+    },
+    {
+      "numeroImagen": 216,
+      "etiquetaOriginal": "f.104v",
+      "archivo": "H_216_f-104v.jpg",
+      "sha256": "b0655a8d629efe4884f0f0a5404cb4592dc191356f9a0e3556f156dc377d0c94",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d8/canvas/c/216"
+    },
+    {
+      "numeroImagen": 217,
+      "etiquetaOriginal": "f.105r",
+      "archivo": "H_217_f-105r.jpg",
+      "sha256": "9a3e79b1e43badfd819dc4ff3272ef4bbfdd059bedf1c712100b75f74f8f7f45",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000d9/canvas/c/217"
+    },
+    {
+      "numeroImagen": 218,
+      "etiquetaOriginal": "f.105v",
+      "archivo": "H_218_f-105v.jpg",
+      "sha256": "efdceee8bc5054f4f07802087cba2aff4cc88f87973073489f85964214d8b423",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000da/canvas/c/218"
+    },
+    {
+      "numeroImagen": 219,
+      "etiquetaOriginal": "f.106r",
+      "archivo": "H_219_f-106r.jpg",
+      "sha256": "856087dd9338d4d187040c43f1f06e0498940c4d5c11a9ed4a8ddf7a2fe6e8a6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000db/canvas/c/219"
+    },
+    {
+      "numeroImagen": 220,
+      "etiquetaOriginal": "f.106v",
+      "archivo": "H_220_f-106v.jpg",
+      "sha256": "f46aeb43c819730df29dede9aba8501ceb0650ffa25f92fb0de528e597b2c805",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000dc/canvas/c/220"
+    },
+    {
+      "numeroImagen": 221,
+      "etiquetaOriginal": "f.107r",
+      "archivo": "H_221_f-107r.jpg",
+      "sha256": "2155adb674bc44c9df4a2f04a8543053083f5d04fcca07b26e3a0b17d5a033f5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000dd/canvas/c/221"
+    },
+    {
+      "numeroImagen": 222,
+      "etiquetaOriginal": "f.107v",
+      "archivo": "H_222_f-107v.jpg",
+      "sha256": "9e6d065221f9663ab6f299991701f2134db0927079aee1154c7ad7d674831e7a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000de/canvas/c/222"
+    },
+    {
+      "numeroImagen": 223,
+      "etiquetaOriginal": "f.108r",
+      "archivo": "H_223_f-108r.jpg",
+      "sha256": "9834d49133a88a5e1a663897904a495ac02e26ac034ce358fef812ca6e93b5ca",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000df/canvas/c/223"
+    },
+    {
+      "numeroImagen": 224,
+      "etiquetaOriginal": "f.108v",
+      "archivo": "H_224_f-108v.jpg",
+      "sha256": "b6ec27cfb07f734b6a60516a92df8dd6f3aa96439f1a5b0191160a1d714b06cf",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e0/canvas/c/224"
+    },
+    {
+      "numeroImagen": 225,
+      "etiquetaOriginal": "f.109r",
+      "archivo": "H_225_f-109r.jpg",
+      "sha256": "1d7f4b4ee7e9c3ac7abd78707ea23a50b0253cbda5d3d7d9c3c6743492a245c5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e1/canvas/c/225"
+    },
+    {
+      "numeroImagen": 226,
+      "etiquetaOriginal": "f.109v",
+      "archivo": "H_226_f-109v.jpg",
+      "sha256": "59f107c9542c63e5ae98a6720778fb5000f524aaaf02e9118c5408c0c911d535",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e2/canvas/c/226"
+    },
+    {
+      "numeroImagen": 227,
+      "etiquetaOriginal": "f.110r",
+      "archivo": "H_227_f-110r.jpg",
+      "sha256": "d0273ef5efa15b123c28dbe71f62886407c92e8cd93af0fdcb4d154a8185405c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e3/canvas/c/227"
+    },
+    {
+      "numeroImagen": 228,
+      "etiquetaOriginal": "f.110v",
+      "archivo": "H_228_f-110v.jpg",
+      "sha256": "8052ee89e6650677bca33341b3669316392ef7407fcdcb7d09c43dc1d638763f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e4/canvas/c/228"
+    },
+    {
+      "numeroImagen": 229,
+      "etiquetaOriginal": "f.111r",
+      "archivo": "H_229_f-111r.jpg",
+      "sha256": "6ea3584b786385d7d1f97901362fd7c140914468659e9a2102cc46153c311e7b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e5/canvas/c/229"
+    },
+    {
+      "numeroImagen": 230,
+      "etiquetaOriginal": "f.111v",
+      "archivo": "H_230_f-111v.jpg",
+      "sha256": "0fee54aa9c61227ffe2400777b880180fce43500d85096b16634c22d89bf821f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e6/canvas/c/230"
+    },
+    {
+      "numeroImagen": 231,
+      "etiquetaOriginal": "f.112r",
+      "archivo": "H_231_f-112r.jpg",
+      "sha256": "1749719fe11244d1f38440d191f7ae734f4cdf693b25bc303877415999496a35",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e7/canvas/c/231"
+    },
+    {
+      "numeroImagen": 232,
+      "etiquetaOriginal": "f.112v",
+      "archivo": "H_232_f-112v.jpg",
+      "sha256": "87002693e7646dad590ad733f2db167146abfd69ef22a4d3a3399b2aaec60ca3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e8/canvas/c/232"
+    },
+    {
+      "numeroImagen": 233,
+      "etiquetaOriginal": "f.113r",
+      "archivo": "H_233_f-113r.jpg",
+      "sha256": "10bbc587c1e6e3e481c9675bbec1b1b7fa202514121f4ab7235412c3000c71ca",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000e9/canvas/c/233"
+    },
+    {
+      "numeroImagen": 234,
+      "etiquetaOriginal": "f.113v",
+      "archivo": "H_234_f-113v.jpg",
+      "sha256": "b7cfd4a022a8bae8bf60cab64d0f2e70866d4f5fc74643f4ce8464be5f11e81b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ea/canvas/c/234"
+    },
+    {
+      "numeroImagen": 235,
+      "etiquetaOriginal": "f.114r",
+      "archivo": "H_235_f-114r.jpg",
+      "sha256": "5fd4fd8b4f43c388de48289fffff5f050b1a29454bc45e9637c4775ebc986902",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000eb/canvas/c/235"
+    },
+    {
+      "numeroImagen": 236,
+      "etiquetaOriginal": "f.114v",
+      "archivo": "H_236_f-114v.jpg",
+      "sha256": "057e8a7fc1d14886bd01c18fc13e0b30815020b82efe212255705159494e510b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ec/canvas/c/236"
+    },
+    {
+      "numeroImagen": 237,
+      "etiquetaOriginal": "f.115r",
+      "archivo": "H_237_f-115r.jpg",
+      "sha256": "a96528dea7eb2b4761c5b7051b0eb24cf88976a60bbe7760be048d5e4104ac7e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ed/canvas/c/237"
+    },
+    {
+      "numeroImagen": 238,
+      "etiquetaOriginal": "f.115v",
+      "archivo": "H_238_f-115v.jpg",
+      "sha256": "82d30cc2e0d8f0dc5aaca1203fdd1158920ea157536f7ef6eca2277167121577",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ee/canvas/c/238"
+    },
+    {
+      "numeroImagen": 239,
+      "etiquetaOriginal": "f.116r",
+      "archivo": "H_239_f-116r.jpg",
+      "sha256": "31fe19d02ed5e6a5755ec14865cb19b02ef74d752b50e74475cd65fecc723254",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ef/canvas/c/239"
+    },
+    {
+      "numeroImagen": 240,
+      "etiquetaOriginal": "f.116v",
+      "archivo": "H_240_f-116v.jpg",
+      "sha256": "07f4e172d0bf1c550fef78096381bad3b9e1a43bd6f3e7d362c93cef95d62627",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f0/canvas/c/240"
+    },
+    {
+      "numeroImagen": 241,
+      "etiquetaOriginal": "f.117r",
+      "archivo": "H_241_f-117r.jpg",
+      "sha256": "1418ddba22fdb54dea16e77d3e062010414318045cf5d916fc4e0b69a3eb84cc",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f1/canvas/c/241"
+    },
+    {
+      "numeroImagen": 242,
+      "etiquetaOriginal": "f.117v",
+      "archivo": "H_242_f-117v.jpg",
+      "sha256": "db508b051633f2b82723d30572b0be1823acc95d8ae534a7ff09a7b90afe0126",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f2/canvas/c/242"
+    },
+    {
+      "numeroImagen": 243,
+      "etiquetaOriginal": "f.118r",
+      "archivo": "H_243_f-118r.jpg",
+      "sha256": "da0d8d880d4cdf716c8eadc7cedcf77b9c9faafc8febf2cef682a50f3b569c46",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f3/canvas/c/243"
+    },
+    {
+      "numeroImagen": 244,
+      "etiquetaOriginal": "f.118v",
+      "archivo": "H_244_f-118v.jpg",
+      "sha256": "0cc99e692ea518d2182f616f11eea5c1cfde6862f125e8815c0153fe55791261",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f4/canvas/c/244"
+    },
+    {
+      "numeroImagen": 245,
+      "etiquetaOriginal": "f.119r",
+      "archivo": "H_245_f-119r.jpg",
+      "sha256": "cd9d296b9dc422b26f5da8293ccd4a73a6ccb7df0694e2fb12f88f954281f70f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f5/canvas/c/245"
+    },
+    {
+      "numeroImagen": 246,
+      "etiquetaOriginal": "f.119v",
+      "archivo": "H_246_f-119v.jpg",
+      "sha256": "694a99d25fce711c515876e6cbb61300a1db8e28116e4a9bd10af80e2e283f5e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f6/canvas/c/246"
+    },
+    {
+      "numeroImagen": 247,
+      "etiquetaOriginal": "f.120r",
+      "archivo": "H_247_f-120r.jpg",
+      "sha256": "4290e775e13669b4b4b59e03fded83adb534e3c395543ce557b0455e9275c9a5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f7/canvas/c/247"
+    },
+    {
+      "numeroImagen": 248,
+      "etiquetaOriginal": "f.120v",
+      "archivo": "H_248_f-120v.jpg",
+      "sha256": "cf98bbdea0cb8c554e8796b9d41c3c068496bad389a37c459fcce5de6d4c81a5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f8/canvas/c/248"
+    },
+    {
+      "numeroImagen": 249,
+      "etiquetaOriginal": "f.121r",
+      "archivo": "H_249_f-121r.jpg",
+      "sha256": "3fb826bd76f6f337854ca22c06150f5f4427680e16490c4a75680bf883b8552c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000f9/canvas/c/249"
+    },
+    {
+      "numeroImagen": 250,
+      "etiquetaOriginal": "f.121v",
+      "archivo": "H_250_f-121v.jpg",
+      "sha256": "052bb43fc625cedd92a875aafbfb11178d259b071b7a24eb668c3bf27a57cce5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000fa/canvas/c/250"
+    },
+    {
+      "numeroImagen": 251,
+      "etiquetaOriginal": "f.122r",
+      "archivo": "H_251_f-122r.jpg",
+      "sha256": "1e1b167016233432712109d5aaa6c67586b3d1ef9a725d63296ea8defdf470fe",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000fb/canvas/c/251"
+    },
+    {
+      "numeroImagen": 252,
+      "etiquetaOriginal": "f.122v",
+      "archivo": "H_252_f-122v.jpg",
+      "sha256": "d4163f7481e72b90a45b6eb3cd6dc41b239ddeec8b22b852a91db68a54cfacac",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000fc/canvas/c/252"
+    },
+    {
+      "numeroImagen": 253,
+      "etiquetaOriginal": "f.123r",
+      "archivo": "H_253_f-123r.jpg",
+      "sha256": "1a8b33205862cb9d47048fffb9f76a8de824445360bb41184596b78592cd6dd5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000fd/canvas/c/253"
+    },
+    {
+      "numeroImagen": 254,
+      "etiquetaOriginal": "f.123v",
+      "archivo": "H_254_f-123v.jpg",
+      "sha256": "0105ffe256300532567e8684a2f5f9a3c335799c16090a7670e38d7141d63621",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000fe/canvas/c/254"
+    },
+    {
+      "numeroImagen": 255,
+      "etiquetaOriginal": "f.124r",
+      "archivo": "H_255_f-124r.jpg",
+      "sha256": "8b00d2ecbcbf12402948c362125b3cfba9b6900767721c3d1ad48409d7a22205",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x0000ff/canvas/c/255"
+    },
+    {
+      "numeroImagen": 256,
+      "etiquetaOriginal": "f.124v",
+      "archivo": "H_256_f-124v.jpg",
+      "sha256": "e9413c73409b8cf82cf29eb85b73855897412306e608b4b31c78c0a1a384b9b6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000100/canvas/c/256"
+    },
+    {
+      "numeroImagen": 257,
+      "etiquetaOriginal": "f.125r",
+      "archivo": "H_257_f-125r.jpg",
+      "sha256": "b4da666508701883ddc3c624e11a7eab5bdc1d35268ed3b645e0c7f6a807b5fa",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000101/canvas/c/257"
+    },
+    {
+      "numeroImagen": 258,
+      "etiquetaOriginal": "f.125v",
+      "archivo": "H_258_f-125v.jpg",
+      "sha256": "1b64ce814d091360c5bf346fe8370b28d40074469dc1ab2581b125b56166f1f9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000102/canvas/c/258"
+    },
+    {
+      "numeroImagen": 259,
+      "etiquetaOriginal": "f.126r",
+      "archivo": "H_259_f-126r.jpg",
+      "sha256": "98bd7efc52d60076f8f7c9c2451cd3e9dbc24479db52fc368c593425b8c3f0e6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000103/canvas/c/259"
+    },
+    {
+      "numeroImagen": 260,
+      "etiquetaOriginal": "f.126v",
+      "archivo": "H_260_f-126v.jpg",
+      "sha256": "c08024cb438ed576b8a93485a4edd766ebd56f9018ebc692bacfd196408d0c0f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000104/canvas/c/260"
+    },
+    {
+      "numeroImagen": 261,
+      "etiquetaOriginal": "f.127r",
+      "archivo": "H_261_f-127r.jpg",
+      "sha256": "e86a861244a38e635c2e130c3fb79ba454174e9afe2b9acf40218e9a9c3f8bd7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000105/canvas/c/261"
+    },
+    {
+      "numeroImagen": 262,
+      "etiquetaOriginal": "f.127v",
+      "archivo": "H_262_f-127v.jpg",
+      "sha256": "25db3558bfffd289b2f40a1eb115456ef4155778cafbce97be32bd84669facc3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000106/canvas/c/262"
+    },
+    {
+      "numeroImagen": 263,
+      "etiquetaOriginal": "f.128r",
+      "archivo": "H_263_f-128r.jpg",
+      "sha256": "eb4c12c3499dac4f0dd0f704eacc94c715b318730561f88f35c8ed5e05591c4f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000107/canvas/c/263"
+    },
+    {
+      "numeroImagen": 264,
+      "etiquetaOriginal": "f.128v",
+      "archivo": "H_264_f-128v.jpg",
+      "sha256": "d4e88984f4447beab88a25af06bc8dd2776cc28efd32657b1fee38c9ac86edf9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000108/canvas/c/264"
+    },
+    {
+      "numeroImagen": 265,
+      "etiquetaOriginal": "f.129r",
+      "archivo": "H_265_f-129r.jpg",
+      "sha256": "67b6598f459857d6748a1536d6d87626577550e4e8b168a995d6298080724f75",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000109/canvas/c/265"
+    },
+    {
+      "numeroImagen": 266,
+      "etiquetaOriginal": "f.129v",
+      "archivo": "H_266_f-129v.jpg",
+      "sha256": "7fbca4c2994455adb2b213cf792e4673d45e65eff49a78090a643f41c61147f2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00010a/canvas/c/266"
+    },
+    {
+      "numeroImagen": 267,
+      "etiquetaOriginal": "f.130r",
+      "archivo": "H_267_f-130r.jpg",
+      "sha256": "707ec7a260c133510ee73595792bd4a97b29b48abac8119ab51f819dd6148d13",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00010b/canvas/c/267"
+    },
+    {
+      "numeroImagen": 268,
+      "etiquetaOriginal": "f.130v",
+      "archivo": "H_268_f-130v.jpg",
+      "sha256": "3151319331e63fd7ad719fb04751b9833a656d415eade3c060eb2ed6f1cbf335",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00010c/canvas/c/268"
+    },
+    {
+      "numeroImagen": 269,
+      "etiquetaOriginal": "f.131r",
+      "archivo": "H_269_f-131r.jpg",
+      "sha256": "243b3720053c9ccd916f38221851b7bbd8a6981a9c2099424a905034817d5ef7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00010d/canvas/c/269"
+    },
+    {
+      "numeroImagen": 270,
+      "etiquetaOriginal": "f.131v",
+      "archivo": "H_270_f-131v.jpg",
+      "sha256": "40eb68b74a5ef14c6999ca023fd02e7530f484d4ace58965059d92d66e3e47d5",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00010e/canvas/c/270"
+    },
+    {
+      "numeroImagen": 271,
+      "etiquetaOriginal": "f.132r",
+      "archivo": "H_271_f-132r.jpg",
+      "sha256": "2e4fe5e43de2c3b0c7ce877921493c1b102cdb0824b8007aeafa33cb7389c1a4",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00010f/canvas/c/271"
+    },
+    {
+      "numeroImagen": 272,
+      "etiquetaOriginal": "f.132v",
+      "archivo": "H_272_f-132v.jpg",
+      "sha256": "6c48d4a13f6e5de017de6da6b3a6f7dcee4910bc3600a78052715d681eff2816",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000110/canvas/c/272"
+    },
+    {
+      "numeroImagen": 273,
+      "etiquetaOriginal": "f.133r",
+      "archivo": "H_273_f-133r.jpg",
+      "sha256": "e78e9f52ed41489f65cb226ec6d65a4c7a20bb929d8e6791048c861dc93f9253",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000111/canvas/c/273"
+    },
+    {
+      "numeroImagen": 274,
+      "etiquetaOriginal": "f.133v",
+      "archivo": "H_274_f-133v.jpg",
+      "sha256": "ad884b5b3970bf8a9abaf08a35631ab67b5a1847b41debd8a8b4c8898989b644",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000112/canvas/c/274"
+    },
+    {
+      "numeroImagen": 275,
+      "etiquetaOriginal": "f.134r",
+      "archivo": "H_275_f-134r.jpg",
+      "sha256": "c065b4a483e8f65ebf71f87e9db8eaeabb9ae0564be4dece011c1550de67a166",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000113/canvas/c/275"
+    },
+    {
+      "numeroImagen": 276,
+      "etiquetaOriginal": "f.134v",
+      "archivo": "H_276_f-134v.jpg",
+      "sha256": "15704a0a2b272c038b24aea04fa3d2110a5e03e3d7a6a57b22b6f697e4e76f1f",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000114/canvas/c/276"
+    },
+    {
+      "numeroImagen": 277,
+      "etiquetaOriginal": "f.135r",
+      "archivo": "H_277_f-135r.jpg",
+      "sha256": "8fe86df1983b71a43e4d847338f857413dd5c342464fb01db0d3a0824299e7f8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000115/canvas/c/277"
+    },
+    {
+      "numeroImagen": 278,
+      "etiquetaOriginal": "f.135v",
+      "archivo": "H_278_f-135v.jpg",
+      "sha256": "ffd460d16bb819f46e4ad55aafba6acfc5b022a11f02ead4ce4dae71d4582037",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000116/canvas/c/278"
+    },
+    {
+      "numeroImagen": 279,
+      "etiquetaOriginal": "f.136r",
+      "archivo": "H_279_f-136r.jpg",
+      "sha256": "71459ebd947a1acf1dd39cefd75e67cc6f934d6197fe3737829fe4f8bafb4773",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000117/canvas/c/279"
+    },
+    {
+      "numeroImagen": 280,
+      "etiquetaOriginal": "f.136v",
+      "archivo": "H_280_f-136v.jpg",
+      "sha256": "9ee3ab3e2a5f637d8478e0beff8952d6b67eb1970357689135bc3e5e59841f86",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000118/canvas/c/280"
+    },
+    {
+      "numeroImagen": 281,
+      "etiquetaOriginal": "f.137r",
+      "archivo": "H_281_f-137r.jpg",
+      "sha256": "fc92520fc5966fcc45153010c93cf23418571bd13046cdeb57ffa16a49ba0175",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000119/canvas/c/281"
+    },
+    {
+      "numeroImagen": 282,
+      "etiquetaOriginal": "f.137v",
+      "archivo": "H_282_f-137v.jpg",
+      "sha256": "0dc8397b79f5087ecc62fc1a03fcc4ba8dbcfb44e4b3ce5d8c9231b8f08289b7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00011a/canvas/c/282"
+    },
+    {
+      "numeroImagen": 283,
+      "etiquetaOriginal": "f.138r",
+      "archivo": "H_283_f-138r.jpg",
+      "sha256": "a2228136e38bd2745a9399e587dd4c00f9d10bcd7ec5ed68b9a42fb31b3513e4",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00011b/canvas/c/283"
+    },
+    {
+      "numeroImagen": 284,
+      "etiquetaOriginal": "f.138v",
+      "archivo": "H_284_f-138v.jpg",
+      "sha256": "e521c523fe94b8efc8634b5fb3f6342e9b82e884143b472a7ccaebaa1a2e4490",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00011c/canvas/c/284"
+    },
+    {
+      "numeroImagen": 285,
+      "etiquetaOriginal": "f.139r",
+      "archivo": "H_285_f-139r.jpg",
+      "sha256": "a48852b4cae0a1f29ef30b44be81a93afd897d15074dea76eb8262393c78bec2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00011d/canvas/c/285"
+    },
+    {
+      "numeroImagen": 286,
+      "etiquetaOriginal": "f.139v",
+      "archivo": "H_286_f-139v.jpg",
+      "sha256": "6cdc93e3a20d50a9e4cbd61b8cb191d6de094eb4b3c313eee48ef157318daca7",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00011e/canvas/c/286"
+    },
+    {
+      "numeroImagen": 287,
+      "etiquetaOriginal": "f.140r",
+      "archivo": "H_287_f-140r.jpg",
+      "sha256": "ac36db8bead1e197a4f36e03564a715ce9ee2555971eacb7cd31fc722ad17480",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00011f/canvas/c/287"
+    },
+    {
+      "numeroImagen": 288,
+      "etiquetaOriginal": "f.140v",
+      "archivo": "H_288_f-140v.jpg",
+      "sha256": "09cf84c40452c24f25ac1a1b0f10314983c469b50500056daf45b76f3e112df9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000120/canvas/c/288"
+    },
+    {
+      "numeroImagen": 289,
+      "etiquetaOriginal": "f.141r",
+      "archivo": "H_289_f-141r.jpg",
+      "sha256": "574ed6aa47fa4973822a93c0e1c4f09199825db34eddc7b9ff33b812bf953276",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000121/canvas/c/289"
+    },
+    {
+      "numeroImagen": 290,
+      "etiquetaOriginal": "f.141v",
+      "archivo": "H_290_f-141v.jpg",
+      "sha256": "1390df984f60fb8c36d893f79122094594eb475e6647f97b2ad8ac45f4bd4587",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000122/canvas/c/290"
+    },
+    {
+      "numeroImagen": 291,
+      "etiquetaOriginal": "f.142r",
+      "archivo": "H_291_f-142r.jpg",
+      "sha256": "96cf780946a3612f667b09ccc3a09a287b193550d7ad1c317e97c49fdb652bc1",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000123/canvas/c/291"
+    },
+    {
+      "numeroImagen": 292,
+      "etiquetaOriginal": "f.142v",
+      "archivo": "H_292_f-142v.jpg",
+      "sha256": "a720931f30ba587953d731862376969ef31bb75bde243debfa85554a3a6165ae",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000124/canvas/c/292"
+    },
+    {
+      "numeroImagen": 293,
+      "etiquetaOriginal": "f.143r",
+      "archivo": "H_293_f-143r.jpg",
+      "sha256": "0d85a02cd948b5e0b602012697684b08b779b298f1424e18b0cdec6e59c606f6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000125/canvas/c/293"
+    },
+    {
+      "numeroImagen": 294,
+      "etiquetaOriginal": "f.143v",
+      "archivo": "H_294_f-143v.jpg",
+      "sha256": "deac2c8f76583188252acf5d8ba70562ebd318a9a908987c3cc598c36513352c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000126/canvas/c/294"
+    },
+    {
+      "numeroImagen": 295,
+      "etiquetaOriginal": "f.144r",
+      "archivo": "H_295_f-144r.jpg",
+      "sha256": "93cd2a6a0c1016c18931c8c1f262267807b9d6fecdd53f60566f82f3fcbf9f21",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000127/canvas/c/295"
+    },
+    {
+      "numeroImagen": 296,
+      "etiquetaOriginal": "f.144v",
+      "archivo": "H_296_f-144v.jpg",
+      "sha256": "d728fd5724507e94671e1e820837f172621eeee4b404a80f55cdcd1b33836c9e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000128/canvas/c/296"
+    },
+    {
+      "numeroImagen": 297,
+      "etiquetaOriginal": "f.145r",
+      "archivo": "H_297_f-145r.jpg",
+      "sha256": "70cfc90d88e052fe65514a25d7810cc7fea7e4798e7072a875fbcc6c1d833d63",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000129/canvas/c/297"
+    },
+    {
+      "numeroImagen": 298,
+      "etiquetaOriginal": "f.145v",
+      "archivo": "H_298_f-145v.jpg",
+      "sha256": "a056597840845cba9c54fb0b97e3e67c93985e7e0f844ba055cab48c6c108bc0",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00012a/canvas/c/298"
+    },
+    {
+      "numeroImagen": 299,
+      "etiquetaOriginal": "f.146r",
+      "archivo": "H_299_f-146r.jpg",
+      "sha256": "aaf78ebc5e1a56c28bdb46670ca9a71d42ec83db53235f4ef704eea70bcb6338",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00012b/canvas/c/299"
+    },
+    {
+      "numeroImagen": 300,
+      "etiquetaOriginal": "f.146v",
+      "archivo": "H_300_f-146v.jpg",
+      "sha256": "a656a7e2f267efa7567cbdcc2917cff961ea3e13f2ae95b309af73785d91d95d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00012c/canvas/c/300"
+    },
+    {
+      "numeroImagen": 301,
+      "etiquetaOriginal": "f.147r",
+      "archivo": "H_301_f-147r.jpg",
+      "sha256": "1a2374db9fe580542683fd47f1d4ad09e6556b2130a06201f8f15763a6690c0c",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00012d/canvas/c/301"
+    },
+    {
+      "numeroImagen": 302,
+      "etiquetaOriginal": "f.147v",
+      "archivo": "H_302_f-147v.jpg",
+      "sha256": "a2138851ff6cb6716de551c79d05baeed60bc0efcfc0e5b0cb0d941a4050c06b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00012e/canvas/c/302"
+    },
+    {
+      "numeroImagen": 303,
+      "etiquetaOriginal": "f.148r",
+      "archivo": "H_303_f-148r.jpg",
+      "sha256": "c12f2116c923d5924e2c94e72559bd0a450c0ed0c4abfb7ca180d58f06136c18",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00012f/canvas/c/303"
+    },
+    {
+      "numeroImagen": 304,
+      "etiquetaOriginal": "f.148v",
+      "archivo": "H_304_f-148v.jpg",
+      "sha256": "7c331653e6de5e3a5a86be0ef203c1c1ea9d8868972c68ae38947b94a04ca11e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000130/canvas/c/304"
+    },
+    {
+      "numeroImagen": 305,
+      "etiquetaOriginal": "f.149r",
+      "archivo": "H_305_f-149r.jpg",
+      "sha256": "f043d130aa4d9c76763f7700ecf164422e80c5907817f7f3cd9cbb898f6016ad",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000131/canvas/c/305"
+    },
+    {
+      "numeroImagen": 306,
+      "etiquetaOriginal": "f.149v",
+      "archivo": "H_306_f-149v.jpg",
+      "sha256": "ed8420a1afaf6f8dffacf18626416b41b6d36a8cf228f087276bfe561e3ed89a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000132/canvas/c/306"
+    },
+    {
+      "numeroImagen": 307,
+      "etiquetaOriginal": "f.150r",
+      "archivo": "H_307_f-150r.jpg",
+      "sha256": "3921c12cbe2bc845d2d9eee80cf417c2a83b77454ab22b0ff2ab96ce2e93a0c3",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000133/canvas/c/307"
+    },
+    {
+      "numeroImagen": 308,
+      "etiquetaOriginal": "f.150v",
+      "archivo": "H_308_f-150v.jpg",
+      "sha256": "280f54a33f51288d83f33f0aacc3ccc74dcceb27abebb54c3d328c02289ce19e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000134/canvas/c/308"
+    },
+    {
+      "numeroImagen": 309,
+      "etiquetaOriginal": "f.151r",
+      "archivo": "H_309_f-151r.jpg",
+      "sha256": "9bd8916bca931e9071e19ea76b520ff23429e71f3864c5b22359fba3c519faae",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000135/canvas/c/309"
+    },
+    {
+      "numeroImagen": 310,
+      "etiquetaOriginal": "f.151v",
+      "archivo": "H_310_f-151v.jpg",
+      "sha256": "1c691c1cdb278e52a76e31831163ea73a722dd130079a525e5a3adc6015934ea",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000136/canvas/c/310"
+    },
+    {
+      "numeroImagen": 311,
+      "etiquetaOriginal": "f.152r",
+      "archivo": "H_311_f-152r.jpg",
+      "sha256": "b61ebb946bff35ef337e731deaace98f36accc19c2025831cc951a1f0ad64581",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000137/canvas/c/311"
+    },
+    {
+      "numeroImagen": 312,
+      "etiquetaOriginal": "f.152v",
+      "archivo": "H_312_f-152v.jpg",
+      "sha256": "dc1e229e47662dc95179c4274f4a002f92c6b7b67f1365da609f3ff6076d0449",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000138/canvas/c/312"
+    },
+    {
+      "numeroImagen": 313,
+      "etiquetaOriginal": "f.153r",
+      "archivo": "H_313_f-153r.jpg",
+      "sha256": "9055c9b7d039bd2d07454ee884a10f591a7609f664a46ad488f06966f0842973",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000139/canvas/c/313"
+    },
+    {
+      "numeroImagen": 314,
+      "etiquetaOriginal": "f.153v",
+      "archivo": "H_314_f-153v.jpg",
+      "sha256": "8c8630cbd02eddbd819c3a9ad883c0c170b47b436f902f24499fe7b0b5d443a9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00013a/canvas/c/314"
+    },
+    {
+      "numeroImagen": 315,
+      "etiquetaOriginal": "f.154r",
+      "archivo": "H_315_f-154r.jpg",
+      "sha256": "a419f4d6e42279ccd894683cec40250a6e322894877a2640cb1abe5fdf4c37a2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00013b/canvas/c/315"
+    },
+    {
+      "numeroImagen": 316,
+      "etiquetaOriginal": "f.154v",
+      "archivo": "H_316_f-154v.jpg",
+      "sha256": "d44b6c1b97503d0fa776e815c25989b27b1fba46bccfc72d6cab515a4e0a707d",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00013c/canvas/c/316"
+    },
+    {
+      "numeroImagen": 317,
+      "etiquetaOriginal": "f.155r",
+      "archivo": "H_317_f-155r.jpg",
+      "sha256": "597442de27cca2eaff8b1a70d3cb3f8fa7487ad605d0f5745da46ee2cecef1a6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00013d/canvas/c/317"
+    },
+    {
+      "numeroImagen": 318,
+      "etiquetaOriginal": "f.155v",
+      "archivo": "H_318_f-155v.jpg",
+      "sha256": "5624d2fb6cc405cf193b6f5e3e472188c73ae54ba6946e9a634bc102d2213340",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00013e/canvas/c/318"
+    },
+    {
+      "numeroImagen": 319,
+      "etiquetaOriginal": "f.156r",
+      "archivo": "H_319_f-156r.jpg",
+      "sha256": "86d1d18483fdf836a5d8fac71921df40597762a6ad9fe6bad51809ec9b6fc709",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00013f/canvas/c/319"
+    },
+    {
+      "numeroImagen": 320,
+      "etiquetaOriginal": "f.156v",
+      "archivo": "H_320_f-156v.jpg",
+      "sha256": "77a47d0ed97ad974d5ebc555e41ea8004cc98f9d749744ae8ffd44d835e4f55b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000140/canvas/c/320"
+    },
+    {
+      "numeroImagen": 321,
+      "etiquetaOriginal": "f.157r",
+      "archivo": "H_321_f-157r.jpg",
+      "sha256": "cb7cdc965a35a09a01f82dc5e073ee209ac8c96cd8d011db6ec1776a03212473",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000141/canvas/c/321"
+    },
+    {
+      "numeroImagen": 322,
+      "etiquetaOriginal": "f.157v",
+      "archivo": "H_322_f-157v.jpg",
+      "sha256": "8f3046238c88a15ab3e0d9c639b719e5d3b36ae95e15f013dd50f2f6f7470fc2",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000142/canvas/c/322"
+    },
+    {
+      "numeroImagen": 323,
+      "etiquetaOriginal": "f.158r",
+      "archivo": "H_323_f-158r.jpg",
+      "sha256": "ed192c362ea7f2d07ad9855742ed157908ff0b8132c788f5b804a4a7005d4c59",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000143/canvas/c/323"
+    },
+    {
+      "numeroImagen": 324,
+      "etiquetaOriginal": "f.158v",
+      "archivo": "H_324_f-158v.jpg",
+      "sha256": "f320ed465fb6bada4444ddddecf3f3233c9f9283427ad8186a54c802281b2a9a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000144/canvas/c/324"
+    },
+    {
+      "numeroImagen": 325,
+      "etiquetaOriginal": "f.159r",
+      "archivo": "H_325_f-159r.jpg",
+      "sha256": "d36e6b03681decc942dda23911dca20980ee26c649fb423f7f6c7727077f2712",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000145/canvas/c/325"
+    },
+    {
+      "numeroImagen": 326,
+      "etiquetaOriginal": "f.159v",
+      "archivo": "H_326_f-159v.jpg",
+      "sha256": "26c41d44cf900e807bc4914c678d5fe74a3c72b8b9bd570e2c830e7331a10990",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000146/canvas/c/326"
+    },
+    {
+      "numeroImagen": 327,
+      "etiquetaOriginal": "f.160r",
+      "archivo": "H_327_f-160r.jpg",
+      "sha256": "14988acf39822bccb2253217ef873e579b7afe10dc3ae6687d251e2c5bd483a4",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000147/canvas/c/327"
+    },
+    {
+      "numeroImagen": 328,
+      "etiquetaOriginal": "f.160v",
+      "archivo": "H_328_f-160v.jpg",
+      "sha256": "d40973238549febfd5833118fc46350c7114c21d251efc5e744486bdc6164257",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000148/canvas/c/328"
+    },
+    {
+      "numeroImagen": 329,
+      "etiquetaOriginal": "f.161r",
+      "archivo": "H_329_f-161r.jpg",
+      "sha256": "8e56605eb0d79abaccdf24c74390eeb4ad3fd36ab7d638315a36d52bd8a5f788",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000149/canvas/c/329"
+    },
+    {
+      "numeroImagen": 330,
+      "etiquetaOriginal": "f.161v",
+      "archivo": "H_330_f-161v.jpg",
+      "sha256": "e8bb5fcdc51715319a508e200cbcf5e63b52143eb54c21c6dd680a47e2223ea8",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00014a/canvas/c/330"
+    },
+    {
+      "numeroImagen": 331,
+      "etiquetaOriginal": "f.162r",
+      "archivo": "H_331_f-162r.jpg",
+      "sha256": "dd450b997e863de8129e460984685fd97e8472c2ae94c6a46fc2038dedb2b7fe",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00014b/canvas/c/331"
+    },
+    {
+      "numeroImagen": 332,
+      "etiquetaOriginal": "f.162v",
+      "archivo": "H_332_f-162v.jpg",
+      "sha256": "4278b0921b59afd062eea268b050059aa7a98981b49b4997cf49e49e77a1d669",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00014c/canvas/c/332"
+    },
+    {
+      "numeroImagen": 333,
+      "etiquetaOriginal": "fse.ivr",
+      "archivo": "H_333_fse-ivr.jpg",
+      "sha256": "99ff4605d205e731c1592ece566d2bfa69dbca0df4a7c1a2101b727510b36c8e",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00014d/canvas/c/333"
+    },
+    {
+      "numeroImagen": 334,
+      "etiquetaOriginal": "fse.ivv",
+      "archivo": "H_334_fse-ivv.jpg",
+      "sha256": "90e7c95f33c0b9c1aa17542db9b3ff39502e22cfd65da259710294794f538b84",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00014e/canvas/c/334"
+    },
+    {
+      "numeroImagen": 335,
+      "etiquetaOriginal": "fse.vr",
+      "archivo": "H_335_fse-vr.jpg",
+      "sha256": "9498eb6786600518e3cfbd14a094432c974dd1c6e5c1adedf42d2a0c1dc4a476",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x00014f/canvas/c/335"
+    },
+    {
+      "numeroImagen": 336,
+      "etiquetaOriginal": "fse.vv",
+      "archivo": "H_336_fse-vv.jpg",
+      "sha256": "898f3b8b699baab944fdfddf5e01795c4b53db41c181469601d3cc235eff4d4b",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000150/canvas/c/336"
+    },
+    {
+      "numeroImagen": 337,
+      "etiquetaOriginal": "fse.vir",
+      "archivo": "H_337_fse-vir.jpg",
+      "sha256": "c3135ce6290ec1c3261d35ffb166ef887770b3a7cf56557b29db66c3a108ced9",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000151/canvas/c/337"
+    },
+    {
+      "numeroImagen": 338,
+      "etiquetaOriginal": "fse.viv",
+      "archivo": "H_338_fse-viv.jpg",
+      "sha256": "95e3692fd3c91961d8820a9955fcb0f436e2d680524be02a1096d31a2be7e2f4",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000152/canvas/c/338"
+    },
+    {
+      "numeroImagen": 339,
+      "etiquetaOriginal": "back-i",
+      "archivo": "H_339_back-i.jpg",
+      "sha256": "39f8c145c68fd5501b70c7b8132154de8855d85198ee99915fcf9e33f9e7c40a",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000153/canvas/c/339"
+    },
+    {
+      "numeroImagen": 340,
+      "etiquetaOriginal": "back",
+      "archivo": "H_340_back.jpg",
+      "sha256": "556b8d9985874cc295d6a589b5ed6ebf06b613701c7e49318d350d1aa3bb20a6",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000154/canvas/c/340"
+    },
+    {
+      "numeroImagen": 341,
+      "etiquetaOriginal": "spine",
+      "archivo": "H_341_spine.jpg",
+      "sha256": "ce77067d6c8021ca3ee2ac44eb38617c3f24abf4c727abb2ff283d2e44fe9137",
+      "canvasId": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000155/canvas/c/341"
+    }
+  ]
+}
