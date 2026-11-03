@@ -4,7 +4,7 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const norm=x=>String(x??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const bookNames={1:"I · Principios, ciudades y arquitectura",2:"II · Materiales",3:"III · Templos y proporciones",4:"IV · Órdenes arquitectónicos",5:"V · Edificios públicos y teatros",6:"VI · Arquitectura doméstica",7:"VII · Acabados",8:"VIII · Agua e hidráulica",9:"IX · Astronomía y gnomónica",10:"X · Máquinas, elevación y asedio"};
 let items=[],filtered=[],visibleCount=24,activeIndex=0,zoom=1,offsetX=0,offsetY=0,pressed=false,lastX=0,lastY=0;
-const catLabels={codices:"Códices medievales",ediciones:"Portadas y folios impresos",proporcion:"Homo ad quadratum / ad circulum",ordenes:"Órdenes arquitectónicos",maquinas:"Maquinaria e ingeniería",arquitectura:"Arquitectura dibujada",lugares:"Lugares y arqueología"};
+const catLabels={codices:"Códices medievales",retratos:"Retratos históricos de Vitruvio",ediciones:"Portadas y folios impresos",proporcion:"Homo ad quadratum / ad circulum",ordenes:"Órdenes arquitectónicos",maquinas:"Maquinaria e ingeniería",arquitectura:"Arquitectura dibujada",lugares:"Lugares y arqueología"};
 function catOfBook(book){if(book===3)return "proporcion";if(book===4)return "ordenes";if(book===10||book===8)return "maquinas";if(book===5||book===6)return "arquitectura";return "ediciones";}
 function category(record){return catLabels[record.category]||record.category||"Documento";}
 function articleText(record){return [record.title,record.author,record.date,record.century,record.institution,record.shelfmark,record.folio,record.locus,record.production,record.notes,record.graphic,record.iconography,record.material,record.status,record.type,record.visualType,...(record.tags||[])].join(" ");}
@@ -59,7 +59,7 @@ function show(index){if(index<0||index>=filtered.length)return;activeIndex=index
  const img=$("atlas-view-img"),empty=$("atlas-view-empty");img.hidden=!r.image;empty.hidden=!!r.image;
  if(r.image){img.src=r.image;img.alt="Facsímil: "+r.title+" · "+(r.folio||"");img.onerror=()=>{img.hidden=true;empty.hidden=false;empty.textContent="No se pudo cargar esta reproducción. Utilizá el enlace a la fuente institucional."};}
  else empty.textContent="Reproducción no integrada: el registro de la institución está disponible en la ficha.";
- let defs=[["Objeto documental",r.type],["Autor / editor",r.author],["Datación",r.date],["Siglo / período",r.century],["Procedencia",r.place||r.production],["Biblioteca / institución",r.institution],["Signatura / registro",r.shelfmark],["Folio / imagen",r.folio],["Referencia al tratado",r.locus],["Soporte / bibliografía material",r.material],["Rasgos gráficos / paleografía",r.graphic],["Contenido iconográfico",r.iconography],["Estado de cotejo",r.status],["Derechos de reproducción",r.rights],["Notas científicas",r.notes]];
+ let defs=[["Objeto documental",r.type],["Autor / editor",r.author],["Datación",r.date],["Siglo / período",r.century],["Procedencia",r.place||r.production],["Biblioteca / institución",r.institution],["Signatura / registro",r.shelfmark],["Folio / imagen",r.folio],["Referencia al tratado",r.locus],["Soporte / bibliografía material",r.material],["Rasgos gráficos / paleografía",r.graphic],["Contenido iconográfico",r.iconography],["Estado de cotejo",r.status],["Derechos de reproducción",r.rights],["Inscripciones originales",r.inscriptions],["Medidas de la plancha",r.plate],["Medidas de la hoja",r.sheet],["Cita Chicago · ejemplar de referencia",r.chicago],["Cita Chicago · estampa reproducida",r.imageChicago],["Notas científicas",r.notes]];
  $("atlas-view-details").innerHTML=defs.map(d=>detailRow(...d)).join("");
  $("atlas-view-record").href=r.record||r.viewer||"#";$("atlas-view-record").hidden=!(r.record||r.viewer);
  $("atlas-view-source").href=r.viewer||r.record||"#";$("atlas-view-source").hidden=!(r.viewer||r.record);
@@ -96,7 +96,7 @@ function bind(){
 }
 async function start(){
  bind();
- const response=await fetch("data/iconografia-vitruviana.json?v=20261103-pantheon-01");if(!response.ok)throw Error("Inventario no accesible: "+response.status);
+ const response=await fetch("data/iconografia-vitruviana.json?v=20261103-bernardi-01");if(!response.ok)throw Error("Inventario no accesible: "+response.status);
  const meta=await response.json();
  const jobs=meta.datasets.map(async ds=>{try{const [r,s]=await Promise.all([fetch(ds.file),ds.sections?fetch(ds.sections):Promise.resolve(null)]);if(!r.ok||s&&!s.ok)throw Error("HTTP datos");const data=await r.json();const section=s?await s.json():null;return createDatasetItems({...data,...ds},section).map(x=>({...x,source:ds.id}));}catch(err){console.warn("Fuente IIIF no incluida:",ds.id,err);return []}});
  const derived=(await Promise.all(jobs)).flat();
@@ -104,7 +104,7 @@ async function start(){
  for(const x of items){if(!x.book){const label=String(x.locus||"");const roman=label.match(/\b(X|IX|IV|V?I{1,3}|V|VIII|VII|VI)\.(?:\d+|praef)/i);const arabic=label.match(/\b(?:Libro\s+|Book\s+)(\d{1,2})\b/i);if(arabic&&+arabic[1]>=1&&+arabic[1]<=10)x.book=+arabic[1];else if(roman){const vals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};x.book=vals[roman[1].toUpperCase()]||null;}}}
  const editions=[...new Set(derived.map(x=>x.source))];
  for(const id of editions){const data=meta.datasets.find(x=>x.id===id);const o=document.createElement("option");o.value=id;o.textContent=data.title+" ("+data.date+")";$("atlas-edition").append(o)}
- items.sort((a,b)=>{const order={codices:0,proporcion:1,ediciones:2,ordenes:3,maquinas:4,arquitectura:5,lugares:6};return (order[a.category]??8)-(order[b.category]??8)||String(a.date).localeCompare(String(b.date))||String(a.id).localeCompare(String(b.id));});
+ items.sort((a,b)=>{const order={retratos:0,codices:1,proporcion:2,ediciones:3,ordenes:4,maquinas:5,arquitectura:6,lugares:7};return (order[a.category]??8)-(order[b.category]??8)||String(a.date).localeCompare(String(b.date))||String(a.id).localeCompare(String(b.id));});
  $("atlas-loading").textContent="Catálogo cargado: "+items.length+" expedientes y páginas seleccionadas de fuentes IIIF. El motivo visual exacto de cada lámina requiere verificación individual.";
  filters();tabIndexToOpen();
 }
