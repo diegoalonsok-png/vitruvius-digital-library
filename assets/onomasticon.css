@@ -55,3 +55,67 @@ mark{background:#ffdf4a;color:#242018;text-decoration:underline #bb8d20 2px;text
 .ov-footer{margin-top:28px;border-top:1px solid #b7a993;font-size:12px;padding-top:14px;line-height:1.8}
 @media(max-width:1100px){.ov-numbers{grid-template-columns:repeat(3,minmax(0,1fr))}.ov-layout{grid-template-columns:1fr}.ov-index{position:static;max-height:340px}.ov-stat-grid{grid-template-columns:1fr}}
 @media(max-width:640px){.ov-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}.ov-tools label{flex:1}.ov-tools input{width:100%}.ov-content,.ov-stats{padding:16px}.ov-verb-row{grid-template-columns:1fr}}
+
+
+/* Cabecera: dos controles independientes de idioma y color */
+.ov-topline{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.ov-topline .ov-nav{flex:1 1 670px;min-width:0}
+.ov-top-controls{display:flex;gap:9px;align-items:center;justify-content:flex-end;flex:0 0 auto;flex-wrap:wrap}
+.ov-lang-control,.ov-color-button{border:1px solid #bca57c;border-radius:4px;background:#273f54;color:#f8ecd9;min-height:39px;font:600 13px/1.3 system-ui,-apple-system,Segoe UI,sans-serif}
+.ov-lang-control{display:inline-flex;align-items:center;gap:7px;padding:4px 7px 4px 11px}
+.ov-lang-control select{cursor:pointer;background:#172b3d;color:#fff8e8;border:1px solid #a38b64;border-radius:3px;max-width:135px;font:600 13px system-ui;padding:7px 6px}
+.ov-color-button{padding:8px 13px;min-width:95px;cursor:pointer}
+.ov-color-button:hover,.ov-lang-control:focus-within{background:#365672;border-color:#efcc88}
+.ov-color-button[aria-pressed=true]{background:#f0d5a4;color:#12283a;border-color:#efcf98}
+html[data-theme="dark"]{color-scheme:dark;--ov-border:#586579}
+html[data-theme="dark"] body{background:#111c27;color:#e9e6dd}
+html[data-theme="dark"] .ov-top{background:#142637;color:#f8f3e8;border-color:#bca47a}
+html[data-theme="dark"] .ov-top p{color:#e1dcd3}
+html[data-theme="dark"] .ov-top a{color:#ead09b}
+html[data-theme="dark"] .ov-numbers article,
+html[data-theme="dark"] .ov-index,
+html[data-theme="dark"] .ov-detail,
+html[data-theme="dark"] .ov-stats,
+html[data-theme="dark"] .ov-tools{background:#233342;color:#eae6dd;border-color:#647487}
+html[data-theme="dark"] .ov-numbers small,
+html[data-theme="dark"] .ov-note,
+html[data-theme="dark"] .ov-index header small,
+html[data-theme="dark"] .ov-sub,
+html[data-theme="dark"] .ov-source,
+html[data-theme="dark"] .ov-verb-row small,
+html[data-theme="dark"] .ov-entry small{color:#cbd0d2}
+html[data-theme="dark"] .ov-index header,
+html[data-theme="dark"] .ov-table th{background:#31495c;color:#f5eee4;border-color:#607287}
+html[data-theme="dark"] .ov-entry{background:#233342;color:#f5f0e7;border-color:#45596b}
+html[data-theme="dark"] .ov-entry:hover,
+html[data-theme="dark"] .ov-entry[aria-pressed=true]{background:#41576b;color:#fff}
+html[data-theme="dark"] .ov-content h2,
+html[data-theme="dark"] .ov-stats h2,
+html[data-theme="dark"] .ov-index h2,
+html[data-theme="dark"] .ov-mini-title,
+html[data-theme="dark"] .ov-bio{color:#f2ece2}
+html[data-theme="dark"] .ov-eyebrow{color:#ecc588}
+html[data-theme="dark"] .ov-locus{background:#273a49;border-color:#596d7c;color:#efede9}
+html[data-theme="dark"] .ov-locus h3{color:#f1e1c9}
+html[data-theme="dark"] .ov-locus .ov-latin{color:#f2c3b9}
+html[data-theme="dark"] .ov-locus .ov-translated{color:#e3e7e9}
+html[data-theme="dark"] .ov-source{background:#344859;border-color:#bb9b63}
+html[data-theme="dark"] .ov-tools input,
+html[data-theme="dark"] .ov-tools select,
+html[data-theme="dark"] .ov-select{background:#192b3c;color:#faf1e6;border-color:#8d9aa4}
+html[data-theme="dark"] .ov-tools input::placeholder{color:#bbc6cf}
+html[data-theme="dark"] .ov-tools button,
+html[data-theme="dark"] .ov-button{background:#365773;color:#fff9ef;border-color:#c4a672}
+html[data-theme="dark"] .ov-tools button:hover,
+html[data-theme="dark"] .ov-button:hover{background:#4b7292}
+html[data-theme="dark"] .ov-table td{border-color:#566575;color:#f0ede6}
+html[data-theme="dark"] .ov-verb-row{border-color:#5a6878}
+html[data-theme="dark"] .ov-empty{background:#273a49;color:#e2d9c9}
+html[data-theme="dark"] .ov-footer{border-color:#718094;color:#ddd9d2}
+html[data-theme="dark"] .ov-wrap a{color:#d4c191}
+html[data-theme="dark"] mark{background:#f0d05b;color:#201a11;text-decoration-color:#6e560e}
+@media(max-width:830px){
+ .ov-top{padding:18px 14px}
+ .ov-top-controls{width:100%;justify-content:flex-start}
+ .ov-topline .ov-nav{flex:1 1 100%}
+}
