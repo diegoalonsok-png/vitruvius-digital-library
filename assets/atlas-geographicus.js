@@ -15,7 +15,7 @@ const book=l=>Number(String(l).split(".")[0])||0;
 const labelType=x=>x.geotype||"Localización no determinada";
 function searchText(r){return fold([r.name,r.modern,r.latinCanonical,r.greek_name,r.period,r.summary,r.geotype,...(r.aliases||[]),...(r.latin_forms||[]),...(r.loci||[])].join(" "));}
 function locusUrl(s){const u=new URL("lector-bilingue.html",location.href);u.searchParams.set("locus",s);return u.href;}
-function entryUrl(r){const u=new URL("onomasticon.html",location.href);u.searchParams.set("id",r.id);u.searchParams.set("type","place");return u.href;}
+function entryUrl(r){const u=new URL(r.internal||"onomasticon.html",location.href);if(!r.internal){u.searchParams.set("id",r.id);u.searchParams.set("type",r.kind==="person"?"person":"place");}return u.href;}
 function makeStat(label,value){return '<div class="place-stat"><dt>'+html(label)+'</dt><dd>'+html(value||"No determinado")+'</dd></div>';}
 function namesMarkup(r,tag){
  const el=tag||"div";
@@ -172,8 +172,8 @@ function openScientificDossier(id){
  const loci=byId("dossier-loci");
  loci.innerHTML=(r.loci||[]).map(l=>'<a href="'+html(locusUrl(l))+'" target="_blank" rel="noopener noreferrer" title="Leer locus '+html(l)+' en la biblioteca">'+html(l)+'</a>').join("")||"<span>Sin locus verificado</span>";
  const on=byId("dossier-onomasticon");
- on.href=r.internal||entryUrl(r);
- on.textContent=r.internal?"Estudio específico de la basílica de Fano ↗":"Abrir en Onomasticon ↗";
+ on.href=entryUrl(r);
+ on.textContent=r.internal?"Abrir monografía ↗":r.kind==="person"?"Consultar personaje en Onomasticon ↗":"Abrir en Onomasticon ↗";
  const source=byId("dossier-source");
  source.hidden=!(r.id==="fanum-fortunae"&&r.source);
  if(!source.hidden)source.href=r.source;
@@ -183,6 +183,10 @@ function openScientificDossier(id){
  if(!d.open)d.showModal();
 }
 function typeGroup(r){
+ if(r.kind==="person")return "personaje";
+ if(r.geotype==="templo")return "templo";
+ if(r.geotype==="monumento")return "monumento";
+ if(r.geotype==="mar")return "mar";
  if(/ciudad/i.test(r.geotype))return "ciudad";
  if(/río/i.test(r.geotype))return "rio";
  if(/revisión/i.test(r.geotype))return "dudoso";
@@ -220,7 +224,7 @@ function renderMapMarkers(){
   }else if(geo.geometry==="polyline"){
    shape=L.polyline(geo.coordinates,{color:"#197db7",weight:4,opacity:.9,dashArray:"8,5"});
   }else continue;
-  const name=html(r.latinCanonical)+" · "+html(r.name);
+  const name=html(r.latinCanonical||r.name)+" · "+html(r.name);
   const directLink=new URL(location.href);directLink.searchParams.set("lugar",r.id);directLink.searchParams.set("ficha","1");
   const hint=hasPoint(r)?"Ubicación aproximada de ciudad, no de edificio.":geo.geometry==="polygon"?"Área de referencia esquemática; NO delimita fronteras antiguas.":"Curso esquemático; NO muestra el cauce antiguo exacto.";
   shape.bindPopup('<strong>'+name+'</strong><p>'+hint+'</p><a class="map-popup-select" href="'+html(directLink.href)+'" data-popup-place="'+html(r.id)+'">Abrir ficha científica ↗</a>');
@@ -281,8 +285,24 @@ async function start(){
  if(rGeometry.ok){const data=await rGeometry.json();geometryById=new Map([...data.regions,...data.rivers].map(g=>[g.id,g]));}
  if(rPassages.ok){const data=await rPassages.json();passagesByLocus=new Map(data.passages.map(p=>[p.locus,p]));}
  const byGeo=new Map(geo.geo.map(x=>[x.id,x]));
+ const ar=await fetch("data/architecturae-vitruvianae.json");
+ const monuments=ar.ok?(await ar.json()).entries:[];
+ const monumentRecords=monuments.map(x=>({
+  id:"mon-"+x.id,kind:"monument",name:x.name,modern:x.site||x.region,
+  latinCanonical:x.latinName||x.name,greek_name:x.greekName==="—"?"":x.greekName,
+  period:x.chronology||"",summary:x.history||x.note||"",
+  aliases:[x.name,x.latinName,x.greekName,x.architects,x.region,x.type].filter(Boolean),
+  latin_forms:[],loci:[String(x.locus||"").match(/[IVX]+\.\d+(?:\.\d+)?/)?.[0]].filter(Boolean)
+    .map(s=>s.replace(/^([IVX]+)\./,(_,r)=>String(({I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10})[r])+".")),
+  sourceStatus:"Monumento documentado en el repertorio; identidad arqueológica y locus particular sujetos a cotejo.",
+  geotype:x.type==="templo"?"templo":"monumento",confidence:"sin punto arqueológico acreditado",
+  lat:null,lon:null,internal:"architecturae-vitruvianae.html?q="+encodeURIComponent(x.name),
+  note:(x.criticalNote||"")+" No asignar un punto artificial al monumento desde las coordenadas de su ciudad."
+ }));
+ const people=source.entities.filter(e=>e.kind==="person").map(r=>({...r,kind:"person",latinCanonical:r.aliases?.[0]||r.name,modern:r.period,geotype:"personaje",confidence:"No aplicable",lat:null,lon:null,note:"Persona histórica documentada en el Onomasticon. No posee marcador cartográfico ficticio."}));
  all=source.entities.filter(e=>e.kind==="place").map(r=>({...r,...(byGeo.get(r.id)||{}),latinCanonical:latinCanonical[r.id]||r.aliases?.[0]||r.name}))
- .concat(geo.extra.map(e=>({...e,lat:e.coordinates.lat,lon:e.coordinates.lon,latinCanonical:latinCanonical[e.id]||e.name})));
+ .concat(geo.extra.map(e=>({...e,lat:e.coordinates?.lat??null,lon:e.coordinates?.lon??null,latinCanonical:e.latinCanonical||latinCanonical[e.id]||e.name})))
+ .concat(monumentRecords,people);
  all.sort((a,b)=>fold(a.latinCanonical).localeCompare(fold(b.latinCanonical),"es"));
  const requested=new URLSearchParams(location.search).get("lugar");
  selected=all.find(x=>x.id===requested)||all.find(x=>x.id==="fanum-fortunae");
@@ -290,6 +310,6 @@ async function start(){
  filter();
  selectPlace(selected?.id||all[0].id,false,false);
  if(new URLSearchParams(location.search).get("ficha")==="1")openScientificDossier(selected.id);
- byId("place-loading").textContent=all.length+" fichas de lugares · "+passagesByLocus.size+" pasajes latinos y castellanos de V514 · "+geometryById.size+" áreas y ríos esquemáticos. Los nombres griegos no son lecturas de Codex H.";
+ byId("place-loading").textContent=all.length+" registros de lugares, templos, monumentos, mares y personajes · "+passagesByLocus.size+" pasajes de V514 · "+geometryById.size+" áreas y ríos esquemáticos. Los nombres griegos no son lecturas del Codex H.";
 }
 start().catch(err=>{byId("place-loading").textContent="No se pudo cargar el catálogo: "+err.message;console.error(err);});
