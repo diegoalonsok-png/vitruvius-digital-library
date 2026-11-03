@@ -119,3 +119,36 @@ html[data-theme="dark"] mark{background:#f0d05b;color:#201a11;text-decoration-co
  .ov-top-controls{width:100%;justify-content:flex-start}
  .ov-topline .ov-nav{flex:1 1 100%}
 }
+
+/* Impresión y envío de una ficha o concordancia seleccionada */
+.ov-sharebar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;background:#f5efe4;border:1px solid var(--ov-border);border-left:3px solid #ac8b58;padding:10px 15px;margin:12px 0 18px}
+.ov-current-result{font:600 13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:0}
+.ov-share-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.ov-share-buttons button{background:transparent;color:#20394b;border:1px solid #a98c62;border-radius:4px;padding:8px 11px;min-height:38px;font:600 12px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}
+.ov-share-buttons button:hover,.ov-share-buttons button:focus-visible{background:#e6d5b5;outline-offset:2px}
+.ov-share-buttons button:disabled{opacity:.45;cursor:not-allowed}
+html[data-theme="dark"] .ov-sharebar{background:#273c4e;color:#f4eee7;border-color:#776e63;border-left-color:#c8a374}
+html[data-theme="dark"] .ov-share-buttons button{background:#24384b;color:#eee7d8;border-color:#b99d72}
+html[data-theme="dark"] .ov-share-buttons button:hover{background:#3b5870}
+@media(max-width:640px){.ov-sharebar{align-items:flex-start}.ov-share-buttons{width:100%}.ov-share-buttons button{flex:1 1 auto}}
+@page{size:A4;margin:14mm}
+@media print{
+ html,html[data-theme="dark"],body,html[data-theme="dark"] body{background:#fff!important;color:#111!important;color-scheme:light!important}
+ body::before{content:"VITRVVIVS · DE ARCHITECTVRA — ONOMASTICON VITRVVIANVM";display:block;font:600 10pt/1.5 Georgia,serif;color:#333!important;border-bottom:1px solid #aaa;margin:0 0 10mm;padding-bottom:3mm}
+ .ov-top,.ov-numbers,#ov-stat-scope,.ov-tools,#ov-loading,.ov-sharebar,.ov-index,.ov-footer,.ov-select,.ov-button{display:none!important}
+ .ov-wrap{padding:0!important;max-width:none!important;width:auto!important;margin:0!important}
+ .ov-layout{display:block!important}
+ .ov-detail,.ov-stats,html[data-theme="dark"] .ov-detail,html[data-theme="dark"] .ov-stats{border:0!important;background:white!important;color:#111!important;margin:0!important;box-shadow:none!important}
+ .ov-content{padding:0!important;min-height:0!important}
+ .ov-content h2,.ov-mini-title,.ov-bio,.ov-eyebrow,.ov-sub,.ov-source,.ov-note,.ov-locus h3,.ov-locus p,html[data-theme="dark"] .ov-content h2,html[data-theme="dark"] .ov-mini-title,html[data-theme="dark"] .ov-bio,html[data-theme="dark"] .ov-source,html[data-theme="dark"] .ov-note{color:#111!important}
+ .ov-locus,html[data-theme="dark"] .ov-locus{background:white!important;color:#111!important;border:1px solid #bbb!important;break-inside:avoid;page-break-inside:avoid}
+ .ov-locus .ov-latin,html[data-theme="dark"] .ov-locus .ov-latin{color:#5c2430!important}
+ .ov-locus .ov-translated,html[data-theme="dark"] .ov-locus .ov-translated{color:#222!important}
+ .ov-source,html[data-theme="dark"] .ov-source{background:#fff!important;border-color:#aaa!important}
+ .ov-table th,html[data-theme="dark"] .ov-table th{background:#eee!important;color:#111!important}
+ .ov-table td,html[data-theme="dark"] .ov-table td{color:#111!important;border-color:#bbb!important}
+ .ov-table tr,.ov-verb-row{break-inside:avoid}
+ #ov-books,#ov-chapters{overflow:visible!important}
+ .ov-content a,.ov-stats a,html[data-theme="dark"] .ov-wrap a{color:#164d72!important}
+ mark,html[data-theme="dark"] mark{background:#fff0b3!important;color:#000!important}
+}
