@@ -278,9 +278,15 @@ function cleanFilename(){
 }
 function reportLines(){
  const parallel=$("export-layout").value==="parallel";
- const items=[];
+ const items=[];let lastSource="";
  for(const u of session.units){
-  items.push({kind:"label",text:u.origin+" · "+u.id});
+  // Un libro traducido en lectura corrida no necesita títulos técnicos U-00001
+  // entre cada párrafo; el cotejo paralelo sí conserva cada referencia.
+  if(parallel)items.push({kind:"label",text:u.origin+" · "+u.id});
+  else if(u.origin.startsWith("PDF · página ")&&u.origin!==lastSource){
+   items.push({kind:"label",text:u.origin});
+  }
+  lastSource=u.origin;
   if(parallel)items.push({kind:"original",text:u.original});
   items.push({kind:"translation",text:u.translation.trim()||"[TRADUCCIÓN PENDIENTE · "+u.id+"]"});
   if(u.note.trim())items.push({kind:"note",text:"Nota de traducción: "+u.note});
