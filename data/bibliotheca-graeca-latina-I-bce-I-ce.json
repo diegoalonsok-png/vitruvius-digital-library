@@ -1,0 +1,1024 @@
+{
+  "schema": 1,
+  "updated": "2026-11-03",
+  "title": "Bibliotheca Graeca et Latina — Saecula I a. C. / I d. C.",
+  "scope": "Obras compuestas o publicadas en torno a 100 a. C.–100 d. C.; las copias manuscritas conservadas son posteriores en la mayoría de los casos.",
+  "method": "No equiparar manuscrito, edición moderna, traducción o PDF. El enlace de búsqueda no equivale a disponibilidad confirmada de una edición concreta. No copiar material bajo derechos sin autorización.",
+  "works": [
+    {
+      "id": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem",
+      "language": "la",
+      "genre": "Arquitectura",
+      "dating": "c. 30–20 a. C.",
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/home.html",
+        "status": "Índice de lectura verificado"
+      },
+      "manuscript": {
+        "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b9066098j/manifest.json",
+        "status": "BnF Latin 10277: testimonio medieval (no autógrafo)"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20architectura%20libri%20decem%20Marco%20Vitruvio%20Poli%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20architectura%20libri%20decem"
+      }
+    },
+    {
+      "id": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "language": "la",
+      "genre": "Filosofía",
+      "dating": "44 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20officiis%20Cicer%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20officiis"
+      }
+    },
+    {
+      "id": "cicero-oratore",
+      "author": "Cicerón",
+      "title": "De oratore",
+      "language": "la",
+      "genre": "Retórica",
+      "dating": "55 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20oratore%20Cicer%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20oratore"
+      }
+    },
+    {
+      "id": "cicero-republica",
+      "author": "Cicerón",
+      "title": "De re publica",
+      "language": "la",
+      "genre": "Filosofía política",
+      "dating": "c. 54–51 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20re%20publica%20Cicer%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20publica"
+      }
+    },
+    {
+      "id": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "language": "la",
+      "genre": "Historia militar",
+      "dating": "c. 58–50 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Commentarii%20de%20bello%20Gallico%20Julio%20C%C3%A9sar",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20Gallico"
+      }
+    },
+    {
+      "id": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "language": "la",
+      "genre": "Historia militar",
+      "dating": "c. 49–48 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Commentarii%20de%20bello%20civili%20Julio%20C%C3%A9sar",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20civili"
+      }
+    },
+    {
+      "id": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae",
+      "language": "la",
+      "genre": "Historia",
+      "dating": "c. 43–40 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Bellum%20Catilinae%20Salustio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20Catilinae"
+      }
+    },
+    {
+      "id": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "language": "la",
+      "genre": "Historia",
+      "dating": "c. 41–40 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Bellum%20Iugurthinum%20Salustio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20Iugurthinum"
+      }
+    },
+    {
+      "id": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "language": "la",
+      "genre": "Agronomía",
+      "dating": "37 a. C.",
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Varro/de_Re_Rustica/home.html",
+        "status": "Índice de lectura verificado"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Rerum%20rusticarum%20libri%20tres%20Varr%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Rerum%20rusticarum%20libri%20tres"
+      }
+    },
+    {
+      "id": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "language": "la",
+      "genre": "Filosofía natural",
+      "dating": "c. 60–50 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20rerum%20natura%20Lucrecio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20rerum%20natura"
+      }
+    },
+    {
+      "id": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
+      "language": "la",
+      "genre": "Épica",
+      "dating": "29–19 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Aeneis%20Virgilio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Aeneis"
+      }
+    },
+    {
+      "id": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "language": "la",
+      "genre": "Agricultura y poesía",
+      "dating": "c. 37–29 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Georgica%20Virgilio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Georgica"
+      }
+    },
+    {
+      "id": "horace-odes",
+      "author": "Horacio",
+      "title": "Carmina",
+      "language": "la",
+      "genre": "Poesía",
+      "dating": "23–13 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Carmina%20Horacio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Carmina"
+      }
+    },
+    {
+      "id": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "language": "la",
+      "genre": "Historia de Roma",
+      "dating": "desde c. 27 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ab%20urbe%20condita%20Tito%20Livio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Ab%20urbe%20condita"
+      }
+    },
+    {
+      "id": "ovid",
+      "author": "Ovidio",
+      "title": "Metamorphoses",
+      "language": "la",
+      "genre": "Mitología",
+      "dating": "c. 8 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Metamorphoses%20Ovidio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Metamorphoses"
+      }
+    },
+    {
+      "id": "ovid-fasti",
+      "author": "Ovidio",
+      "title": "Fasti",
+      "language": "la",
+      "genre": "Calendario romano",
+      "dating": "c. 2–8 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Fasti%20Ovidio",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Fasti"
+      }
+    },
+    {
+      "id": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "language": "la",
+      "genre": "Biografía",
+      "dating": "siglo I a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20viris%20illustribus%20Cornelio%20Nepote",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20viris%20illustribus"
+      }
+    },
+    {
+      "id": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "language": "grc",
+      "genre": "Historia universal",
+      "dating": "c. 60–30 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%20Diodoro%20S%C3%ADculo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE"
+      }
+    },
+    {
+      "id": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "genre": "Historia de Roma",
+      "dating": "c. 7 a. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20Dionisio%20de%20Halicarnaso",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1"
+      }
+    },
+    {
+      "id": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "language": "grc",
+      "genre": "Geografía",
+      "dating": "c. 20 a. C.–23 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%93%CE%B5%CF%89%CE%B3%CF%81%CE%B1%CF%86%CE%B9%CE%BA%CE%AC%20Estrab%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%93%CE%B5%CF%89%CE%B3%CF%81%CE%B1%CF%86%CE%B9%CE%BA%CE%AC"
+      }
+    },
+    {
+      "id": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "language": "grc",
+      "genre": "Filosofía religiosa",
+      "dating": "siglo I d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20opificio%20mundi%20Fil%C3%B3n%20de%20Alejandr%C3%ADa",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20opificio%20mundi"
+      }
+    },
+    {
+      "id": "seneca-epistulae",
+      "author": "Séneca",
+      "title": "Epistulae morales ad Lucilium",
+      "language": "la",
+      "genre": "Filosofía estoica",
+      "dating": "c. 62–65 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Epistulae%20morales%20ad%20Lucilium%20S%C3%A9neca",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epistulae%20morales%20ad%20Lucilium"
+      }
+    },
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "genre": "Historia natural",
+      "dating": "c. 62–65 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Naturales%20quaestiones%20S%C3%A9neca",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Naturales%20quaestiones"
+      }
+    },
+    {
+      "id": "lucan",
+      "author": "Lucano",
+      "title": "Bellum civile",
+      "language": "la",
+      "genre": "Épica histórica",
+      "dating": "c. 60–65 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Bellum%20civile%20Lucano",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20civile"
+      }
+    },
+    {
+      "id": "pliny",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "language": "la",
+      "genre": "Historia natural",
+      "dating": "77 d. C.",
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Pliny_the_Elder/home.html",
+        "status": "Índice de lectura verificado"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Naturalis%20historia%20Plinio%20el%20Viejo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Naturalis%20historia"
+      }
+    },
+    {
+      "id": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "language": "grc",
+      "genre": "Farmacología",
+      "dating": "c. 50–70 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%E1%BD%95%CE%BB%CE%B7%CF%82%20%E1%BC%B0%CE%B1%CF%84%CF%81%CE%B9%CE%BA%E1%BF%86%CF%82%20Diosc%C3%B3rides",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%E1%BD%95%CE%BB%CE%B7%CF%82%20%E1%BC%B0%CE%B1%CF%84%CF%81%CE%B9%CE%BA%E1%BF%86%CF%82"
+      }
+    },
+    {
+      "id": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "language": "grc",
+      "genre": "Historia",
+      "dating": "c. 75–79 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CF%84%CE%BF%E1%BF%A6%20%E1%BC%B8%CE%BF%CF%85%CE%B4%CE%B1%CF%8A%CE%BA%CE%BF%E1%BF%A6%20%CF%80%CE%BF%CE%BB%CE%AD%CE%BC%CE%BF%CF%85%20Flavio%20Josefo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CF%84%CE%BF%E1%BF%A6%20%E1%BC%B8%CE%BF%CF%85%CE%B4%CE%B1%CF%8A%CE%BA%CE%BF%E1%BF%A6%20%CF%80%CE%BF%CE%BB%CE%AD%CE%BC%CE%BF%CF%85"
+      }
+    },
+    {
+      "id": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "genre": "Historia y religión",
+      "dating": "93–94 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%E1%BC%B8%CE%BF%CF%85%CE%B4%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20Flavio%20Josefo",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%B8%CE%BF%CF%85%CE%B4%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1"
+      }
+    },
+    {
+      "id": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "language": "la",
+      "genre": "Retórica y educación",
+      "dating": "c. 95 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Institutio%20oratoria%20Quintiliano",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Institutio%20oratoria"
+      }
+    },
+    {
+      "id": "martial",
+      "author": "Marcial",
+      "title": "Epigrammata",
+      "language": "la",
+      "genre": "Poesía",
+      "dating": "c. 86–101 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Epigrammata%20Marcial",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epigrammata"
+      }
+    },
+    {
+      "id": "tacitus-agricola",
+      "author": "Tácito",
+      "title": "Agricola",
+      "language": "la",
+      "genre": "Biografía e historia",
+      "dating": "98 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Agricola%20T%C3%A1cito",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Agricola"
+      }
+    },
+    {
+      "id": "tacitus-germania",
+      "author": "Tácito",
+      "title": "Germania",
+      "language": "la",
+      "genre": "Etnografía",
+      "dating": "98 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Germania%20T%C3%A1cito",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Germania"
+      }
+    },
+    {
+      "id": "frontinus",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "language": "la",
+      "genre": "Ingeniería hidráulica",
+      "dating": "c. 97–100 d. C.",
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/home.html",
+        "status": "Índice de lectura verificado"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20aquaeductu%20urbis%20Romae%20Frontino",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20aquaeductu%20urbis%20Romae"
+      }
+    },
+    {
+      "id": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "c. 65–75 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%95%E1%BD%90%CE%B1%CE%B3%CE%B3%CE%AD%CE%BB%CE%B9%CE%BF%CE%BD%20%CE%BA%CE%B1%CF%84%E1%BD%B0%20%CE%9C%E1%BE%B6%CF%81%CE%BA%CE%BF%CE%BD%20Evangelio%20seg%C3%BAn%20Marcos",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%95%E1%BD%90%CE%B1%CE%B3%CE%B3%CE%AD%CE%BB%CE%B9%CE%BF%CE%BD%20%CE%BA%CE%B1%CF%84%E1%BD%B0%20%CE%9C%E1%BE%B6%CF%81%CE%BA%CE%BF%CE%BD"
+      }
+    },
+    {
+      "id": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "language": "grc",
+      "genre": "Cristianismo primitivo",
+      "dating": "c. 95–100 d. C.",
+      "reading": {
+        "url": null,
+        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin facsímil de testimonio concreto validado"
+      },
+      "pdf": {
+        "url": null,
+        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+      },
+      "translation": {
+        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%9A%CE%BF%CF%81%CE%B9%CE%BD%CE%B8%CE%AF%CE%BF%CF%85%CF%82%20%CE%91%CA%B9%20Primera%20carta%20de%20Clemente",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%9A%CE%BF%CF%81%CE%B9%CE%BD%CE%B8%CE%AF%CE%BF%CF%85%CF%82%20%CE%91%CA%B9"
+      }
+    }
+  ]
+}
