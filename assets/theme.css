@@ -115,3 +115,19 @@ html:not([data-theme="dark"]) :is(#place-loci,#dossier-loci,.loci-list,.locus-li
 html[data-theme="dark"] select {color-scheme:dark!important;background-color:#263d50!important;color:#f8f0e6!important;}
 html[data-theme="dark"] select option,html[data-theme="dark"] select optgroup {background-color:#263d50!important;color:#f8f0e6!important;}
 html:not([data-theme="dark"]) select option,html:not([data-theme="dark"]) select optgroup {background-color:#fffdf8!important;color:#1b3345!important;}
+
+/* Unified academic theme icon, consistent with Vitruvia. */
+.theme-switch,.header-inner .theme-switch,.research-nav-controls .theme-switch,.research-nav-inner .theme-switch{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 0 42px!important;width:42px!important;min-width:42px!important;height:42px!important;min-height:42px!important;
+ padding:0!important;margin-left:8px;border-radius:11px!important;
+ border:1px solid #b5b8b7!important;background:#f2f1ed!important;color:#24313a!important;
+ font-size:0!important;line-height:1!important;box-shadow:none!important;
+ transition:background .2s ease,border-color .2s ease!important;
+}
+.theme-switch svg{width:19px;height:19px;display:block;flex:none}
+.theme-switch:hover,.theme-switch:focus-visible{background:#e1e2df!important;border-color:#77838b!important}
+html[data-theme="dark"] .theme-switch{background:#1b2833!important;border-color:#586470!important;color:#e8e8e8!important}
+html[data-theme="dark"] .theme-switch:hover{background:#344553!important}
+.theme-switch:focus-visible{outline:2px solid #b49a65!important;outline-offset:3px}
+@media(max-width:760px){.theme-switch,.header-inner .theme-switch{width:42px!important;min-width:42px!important;flex-basis:42px!important}}
