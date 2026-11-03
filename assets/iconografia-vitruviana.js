@@ -40,7 +40,7 @@ function createDatasetItems(source,info){
 }
 function imageMarkup(r){return r.image?'<img alt="'+esc("Reproducción documental: "+r.title+"; "+r.folio)+'" src="'+esc(r.image)+'" loading="lazy" decoding="async">':'<div class="no-image"><span aria-hidden="true">▤</span><br>Imagen institucional pendiente de enlace directo<br><small>El catálogo y la ficha siguen disponibles</small></div>';}
 function summaryMarkup(r){const fields=[["Autor/edición",r.author||"No consignado"],["Datación",r.date||"No documentada"],["Folio / pág.",r.folio||"No identificado"],["Depósito",r.institution||"No documentado"]];return fields.map(([a,b])=>'<div><dt>'+esc(a)+'</dt><dd>'+esc(b)+'</dd></div>').join("");}
-function buildCard(r,idx){return '<article class="atlas-card"><button type="button" class="atlas-image" data-open="'+idx+'" aria-label="Ampliar '+esc(r.title)+'">'+imageMarkup(r)+'<span class="folio-stamp">'+esc(r.pageNumber?"IMAGEN "+String(r.pageNumber).padStart(3,"0"):"DOCUMENTO")+'</span></button><div class="atlas-record"><p class="atlas-kind">'+esc(category(r))+' · '+esc(r.type||"Documento")+'</p><h3>'+esc(r.title)+'</h3><dl>'+summaryMarkup(r)+'</dl><p class="atlas-method">'+esc(r.status||"Ficha por completar")+'</p><div class="atlas-links"><button type="button" data-open="'+idx+'">Abrir expediente y ampliar</button><a href="'+esc(r.record||r.viewer||"#")+'" target="_blank" rel="noopener noreferrer">Fuente institucional ↗</a></div></div></article>';}
+function buildCard(r,idx){return '<article class="atlas-card"><button type="button" class="atlas-image" data-open="'+idx+'" aria-label="Ampliar '+esc(r.title)+'">'+imageMarkup(r)+'<span class="folio-stamp">'+esc(r.visualType?String(r.visualType).toUpperCase():r.pageNumber?"IMAGEN "+String(r.pageNumber).padStart(3,"0"):"DOCUMENTO")+'</span></button><div class="atlas-record"><p class="atlas-kind">'+esc(category(r))+' · '+esc(r.type||"Documento")+'</p><h3>'+esc(r.title)+'</h3><dl>'+summaryMarkup(r)+'</dl><p class="atlas-method">'+esc(r.status||"Ficha por completar")+'</p><div class="atlas-links"><button type="button" data-open="'+idx+'">Abrir expediente y ampliar</button><a href="'+esc(r.record||r.viewer||"#")+'" target="_blank" rel="noopener noreferrer">Fuente institucional ↗</a></div></div></article>';}
 function filters(){const q=norm($("atlas-search").value.trim()),cat=$("atlas-type").value,book=$("atlas-book").value,edition=$("atlas-edition").value;
   filtered=items.filter(r=>(!cat||r.category===cat)&&(!book||String(r.book||"")===book)&&(!edition||r.source===edition||r.id?.startsWith(edition+"-"))&&(!q||norm(articleText(r)).includes(q)));
   visibleCount=24;render();
@@ -96,7 +96,7 @@ function bind(){
 }
 async function start(){
  bind();
- const response=await fetch("data/iconografia-vitruviana.json");if(!response.ok)throw Error("Inventario no accesible: "+response.status);
+ const response=await fetch("data/iconografia-vitruviana.json?v=20261103-pantheon-01");if(!response.ok)throw Error("Inventario no accesible: "+response.status);
  const meta=await response.json();
  const jobs=meta.datasets.map(async ds=>{try{const [r,s]=await Promise.all([fetch(ds.file),ds.sections?fetch(ds.sections):Promise.resolve(null)]);if(!r.ok||s&&!s.ok)throw Error("HTTP datos");const data=await r.json();const section=s?await s.json():null;return createDatasetItems({...data,...ds},section).map(x=>({...x,source:ds.id}));}catch(err){console.warn("Fuente IIIF no incluida:",ds.id,err);return []}});
  const derived=(await Promise.all(jobs)).flat();
