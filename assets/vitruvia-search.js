@@ -323,6 +323,71 @@ function mode(m){S.mode=["all","site","concept","external"].includes(m)?m:"all";
 function theme(th){S.theme=th;document.documentElement.dataset.theme=th;$("theme").textContent=th==="dark"?"☀":"☾";
  try{localStorage.setItem("vitruvia-theme",th)}catch{}
 }
+
+/* Autocompletado local auténtico, con coincidencia de títulos y alias académicos.
+   No solicita credenciales ni simula búsquedas remotas. */
+function setupAutocomplete(){
+ const input=$("query"),menu=$("search-suggestions");if(!input||!menu)return;
+ let index=-1,options=[];
+ const canonical=[
+  ["Codex H · Harley MS 2767","Codex H",["harleianus","harlesianus","harley","codex h","2767","harl"] , "Manuscrito"],
+  ["Codex H · doble hoja","Codex H doble folio",["codex h","harleianus","doble hoja","doble folio"],"Lector"],
+  ["Códices de Vitruvio","códices de Vitruvio",["vitruvius","vitruvio","codice","codex","manuscrito","testigos"],"Catálogo"],
+  ["Daniele Barbaro · edición 1567","Barbaro 1567",["barbaro","barbaro 1567","codex barbaro"],"Edición"],
+  ["Cesare Cesariano · edición 1521","Cesariano 1521",["cesariano","cesarino","1521"],"Edición"],
+  ["Fra Giocondo · edición 1511","Giocondo 1511",["giocondo","jocundus","1511"],"Edición"],
+  ["Sulpizio · edición príncipe 1486","Sulpizio 1486",["sulpizio","sulpicio","1486"],"Edición"],
+  ["Lucrecio · De rerum natura","Lucrecio",["lucrecio","lucretius","rerum natura"],"Libro"],
+  ["Cicerón · De officiis","Cicerón De officiis",["ciceron","cicero","officiis"],"Libro"],
+  ["Vitruvio · De architectura","Vitruvio",["vitruvio","vitruvius","de architectura"],"Tratado"]
+ ];
+ const hide=()=>{menu.hidden=true;input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
+ const choose=v=>{input.value=v;hide();search()};
+ function build(){
+  const q=norm(input.value);menu.replaceChildren();index=-1;options=[];
+  if(q.length<2){hide();return}
+  const suggestions=[];
+  const seen=new Set();
+  const add=(label,value,subtitle,rank)=>{const key=norm(value);if(seen.has(key))return;seen.add(key);suggestions.push({label,value,subtitle,rank})};
+  for(const [label,value,aliases,type] of canonical){
+   const norms=aliases.map(norm);
+   if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))
+    add(label,value,type,norm(label).startsWith(q)?120:75);
+  }
+  for(const w of S.works){const title=w.title||"",author=w.author||"";
+   if(norm(title+" "+author).includes(q))add(title,title,author||"Obra",55+(norm(title).startsWith(q)?15:0));
+  }
+  for(const p of S.pages){const title=p.title||"";
+   if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0));
+  }
+  suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label));
+  const h=node("div","search-suggestions-title","Obras y consultas relacionadas");
+  menu.append(h);
+  for(const [i,hit] of suggestions.slice(0,7).entries()){
+   const btn=node("button","search-suggestion");
+   btn.type="button";btn.id="search-suggestion-"+i;btn.role="option";btn.setAttribute("aria-selected","false");
+   btn.append(node("span",null,hit.label),node("small",null,hit.subtitle));
+   btn.addEventListener("pointerdown",e=>e.preventDefault());
+   btn.addEventListener("click",()=>choose(hit.value));
+   options.push(btn);menu.append(btn);
+  }
+  if(!options.length){hide();return}
+  menu.hidden=false;input.setAttribute("aria-expanded","true");
+ }
+ const paint=()=>{options.forEach((b,i)=>b.setAttribute("aria-selected",String(i===index)));if(index>=0){input.setAttribute("aria-activedescendant",options[index].id);options[index].scrollIntoView({block:"nearest"})}else input.removeAttribute("aria-activedescendant")};
+ input.addEventListener("input",build);
+ input.addEventListener("focus",()=>{if(input.value.trim().length>=2)build()});
+ input.addEventListener("keydown",e=>{
+  if(menu.hidden)return;
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();index=(index+(e.key==="ArrowDown"?1:-1)+options.length)%options.length;paint()}
+  else if(e.key==="Escape"){e.preventDefault();hide()}
+  else if(e.key==="Enter"&&index>=0){e.preventDefault();options[index].click()}
+ });
+ document.addEventListener("pointerdown",e=>{if(!menu.contains(e.target)&&e.target!==input)hide()});
+ $("search-form").addEventListener("submit",hide);
+}
+setupAutocomplete();
+
 bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
 $("ui-language").addEventListener("change",e=>{language(e.target.value);if($("query").value.trim())search()});
