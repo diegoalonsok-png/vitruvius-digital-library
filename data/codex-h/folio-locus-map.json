@@ -1,0 +1,61 @@
+{
+  "schema": "vitruvius-folio-locus/1.0",
+  "updated": "2026-11-02",
+  "manuscript": {
+    "siglum": "H",
+    "name": "Harley MS 2767",
+    "institution": "British Library",
+    "shelfmark": "Harley MS 2767",
+    "catalogue_url": "https://searcharchives.bl.uk/catalog/040-002048598",
+    "iiif_manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001"
+  },
+  "method": "Tabla independiente del corpus editorial: la presencia de un locus en una edición no demuestra que esté en un folio manuscrito. Las atribuciones requieren inspección y registro material.",
+  "source_editorial": {
+    "id": "recensio-es",
+    "uri": "data/structured/recensio-es.json",
+    "language": "la-es",
+    "passages": 731
+  },
+  "status_labels": {
+    "provisional": "Propuesta de correspondencia material por inspección; transcripción y límites sin verificar diplomáticamente.",
+    "not_verified": "El folio existe en el facsímil pero no hay aún mapeo textual cotejado."
+  },
+  "entries": [
+    {
+      "folio": "1r",
+      "image_number": 9,
+      "folio_status": "provisional",
+      "alignment_source": "data/codex-h/aligned-1r.json",
+      "transcription_source": "data/codex-h/folio-1r.json",
+      "loci": [
+        {
+          "locus": "1.praef.1",
+          "extent": "full",
+          "status": "provisional",
+          "note": "Lectura alineada al primer párrafo del prefacio (V514); cotejo paleográfico letra a letra pendiente."
+        },
+        {
+          "locus": "1.praef.2",
+          "extent": "starts",
+          "status": "provisional",
+          "note": "Comienzo asignado al mismo folio como hipótesis; final y límites de versos sin cotejar."
+        }
+      ],
+      "notes": "La imagen 9 y la lectura de folio 1r han sido asociadas en el laboratorio experimental. No afirmar correspondencia palabra por palabra."
+    },
+    {
+      "folio": "1v",
+      "image_number": 10,
+      "folio_status": "not_verified",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [],
+      "notes": "Imagen digital siguiente del mismo manuscrito. No hay loci asignados hasta cotejo del facsímil. Aunque la edición continúa en 1.praef.2, no se presume el límite físico de este folio."
+    }
+  ],
+  "future_work": [
+    "Extender mapa mediante lectura del facsímil y colación, sin inferir foliación a partir de la numeración moderna.",
+    "Anotar límites de línea y abreviaturas por cada cara; documentar responsables, fechas y nivel de certeza.",
+    "Comprobar variantes frente a otras ramas de la tradición y separar con claridad cambios editoriales de lecturas materiales."
+  ]
+}
