@@ -59,8 +59,8 @@
         "record": "https://e-codices.ch/en/list/one/bge/lat0088",
         "institution": "Bibliothèque de Genève",
         "shelfmark": "Ms. lat. 88",
-        "dating": "siglo XV (datación precisa por confirmar con el catálogo)",
-        "status": "Testimonio digitalizado de De officiis; no es el más antiguo conservado. Se documentan 288 imágenes IIIF. La concordancia entre folios y pasajes sigue pendiente.",
+        "dating": "Siglo XV; la filigrana ofrece referencias 1440–1460",
+        "status": "Genève, Bibliothèque de Genève, Ms. lat. 88 (siglo XV): 121 folios de papel, 285 × 210 mm, una columna, 25–26 líneas; testimonio tardío identificado, no el más antiguo.",
         "license": "CC BY-NC 4.0; imágenes servidas desde e-codices",
         "index": "data/manuscripts/cicero-de-officiis-geneve-lat88.json",
         "oldest": {
@@ -72,7 +72,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Walter Miller, traducción inglesa, 1913, junto al texto latino, disponible en el visor del sitio."
+        "status": "Inglés: Walter Miller (1913), disponible; castellano y francés: traducciones completas pendientes de identificar, cotejar y alojar."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -114,8 +114,46 @@
         "workDate": "44 a. C.",
         "originalLanguage": "latín",
         "editionCitation": "Cicero, Marcus Tullius. De officiis. With an English translation by Walter Miller. London: William Heinemann; New York: Macmillan, 1913. Digital text, Project Gutenberg, eBook 47001, updated October 24, 2024.",
-        "manuscriptCitation": "Genève, Bibliothèque de Genève, Ms. lat. 88, De officiis, siglo XV (datación exacta por comprobar), facsímil digital, e-codices, https://e-codices.ch/en/list/one/bge/lat0088.",
+        "manuscriptCitation": "Genève, Bibliothèque de Genève, Ms. lat. 88, Cicero, De officiis, siglo XV, 121 folios, papel; Isabelle Jeger, Catalogue des manuscrits latins 1–376 (Genève, 2016), 409–411; digitalización e-codices, DOI 10.5076/e-codices-bge-lat0088.",
         "method": "Edición impresa de 1913, facsímil de un testigo tardío y traducción moderna diferenciados; no son la misma fuente material."
+      },
+      "codicology": {
+        "reviewDate": "2026-11-03",
+        "witnesses": [
+          {
+            "siglum": "BdG lat. 88 (signatura; no siglum crítico establecido)",
+            "name": "Cicero, De officiis — Ms. lat. 88",
+            "institution": "Bibliothèque de Genève",
+            "city": "Ginebra, Suiza",
+            "shelfmark": "Ms. lat. 88",
+            "dating": "Siglo XV; filigrana comparable a modelos fechados 1440–1460",
+            "dateKind": "Datación paleográfica y por filigrana, no fecha de copia certificada",
+            "origin": "Lugar de copia pendiente de verificar en catálogo",
+            "material": "Papel; filigrana de cabeza de buey coronada por cruz",
+            "extent": "II + 121 + II folios (guardas preliminares y finales)",
+            "folioRange": "121 folios; paginación antigua 1–228 corresponde a ff. 8r–121v; foliación moderna en lápiz",
+            "format": "285 × 210 mm",
+            "layout": "Una columna, 25–26 líneas",
+            "script": "Escritura bastarda",
+            "provenance": "Perteneció a Hugues Lejeune (1634–1707), quien lo donó a la biblioteca",
+            "digitization": "288 imágenes digitales IIIF; sus números NO equivalen automáticamente a folios",
+            "manifest": "https://e-codices.unifr.ch/metadata/iiif/bge-lat0088/manifest.json",
+            "catalogue": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+            "catalogueOther": "https://www.e-codices.unifr.ch/de/description/bge/lat0088/Jeger",
+            "doi": "10.5076/e-codices-bge-lat0088",
+            "credit": "Bibliothèque de Genève; e-codices",
+            "rights": "CC BY-NC 4.0 según registro del proyecto; verificar condiciones de imagen individual",
+            "verification": "Registro institucional y catálogo físico verificados; concordancia folio-libro-pasaje pendiente",
+            "role": "Testimonio digitalizado para consulta; NO es el manuscrito más antiguo del De officiis"
+          }
+        ],
+        "earlierWitnessNote": "La tradición crítica conoce testimonios del siglo IX, incluido un Codex Harleianus (siglum L en la introducción de Walter Miller); no se asigna aquí una signatura sin comprobación ni se afirma que Ms. lat. 88 sea el más antiguo.",
+        "bibliographicMethod": "Walter Miller (1913) es una edición/traducción impresa moderna; no debe confundirse con el testimonio del siglo XV.",
+        "primarySiglum": "BdG lat. 88",
+        "sourceReferences": [
+          "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+          "https://www.e-codices.unifr.ch/de/description/bge/lat0088/Jeger"
+        ]
       }
     },
     {
@@ -349,18 +387,23 @@
       "manuscript": {
         "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
         "record": "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
-        "status": "Codex Quadratus (Leiden, VLQ 94), primera mitad del siglo IX; reproduce De rerum natura. Manifiesto IIIF publicado por Leiden, aún sin prueba visual de carga dentro de la biblioteca. El latín editorial alojado procede de Wikisource; no es una transcripción diplomática del códice.",
+        "status": "Tradición carolingia: O = Codex Oblongus (Leiden, Voss. Lat. F. 30), ca. 825; Q = Codex Quadratus (Leiden, Voss. Lat. Q. 94), siglo IX. Ambos identificados; cotejo folio-verso pendiente.",
         "institution": "Universiteitsbibliotheek Leiden",
         "shelfmark": "Voss. Lat. Q. 94",
         "dating": "Primera mitad del siglo IX",
-        "license": "CC BY 4.0 (según Biblissima, imágenes de Leiden)"
+        "license": "CC BY 4.0 (según Biblissima, imágenes de Leiden)",
+        "earliestWitness": {
+          "name": "Codex Oblongus",
+          "shelfmark": "Voss. Lat. F. 30",
+          "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest"
+        }
       },
       "pdf": {
         "url": null,
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: William Ellery Leonard (1916), disponible; castellano: Manuel Rodríguez-Navas (prosa), disponible; francés: edición completa pendiente de identificar, cotejar y alojar."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -400,6 +443,66 @@
         "translation": "Inglés y español",
         "source": "Project Gutenberg #785 y #62711",
         "format": "HTML completo GitHub"
+      },
+      "codicology": {
+        "reviewDate": "2026-11-03",
+        "witnesses": [
+          {
+            "siglum": "O",
+            "name": "Codex Oblongus (Vossianus Oblongus)",
+            "institution": "Leiden University Libraries",
+            "city": "Leiden, Países Bajos",
+            "shelfmark": "Voss. Lat. F. 30 (VLF 30)",
+            "dating": "Siglo IX, ca. 825 (datación catalográfica 815–835)",
+            "dateKind": "Datación paleográfica aproximada; no fecha de copia explícita",
+            "origin": "Noroeste de las regiones germánicas",
+            "material": "Códice manuscrito; soporte pendiente de cotejo material individual",
+            "extent": "192 folios",
+            "folioRange": "Foliación total: ff. 1r–192v; correspondencia exacta del texto por locus pendiente",
+            "format": "325 × 210 mm",
+            "layout": "Escritura minúscula carolina; cotejo página por página pendiente",
+            "script": "Minúscula carolina",
+            "provenance": "Entre los poseedores históricos se documenta Isaac Vossius; anotaciones del corrector Dúngal",
+            "digitization": "Digitalización institucional; manifiesto IIIF sin carga comprobada en este navegador",
+            "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest",
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/cf0a18597bec8ca10248e6a82b64f94dc0288139",
+            "catalogueOther": "https://mira.ie/164",
+            "credit": "Leiden University Libraries; Biblissima+; MIrA",
+            "rights": "CC BY 4.0, según Biblissima para la digitalización de Leiden",
+            "verification": "Signatura, nombre, datación, extensión y referencia verificadas; imágenes IIIF y concordancia por folio pendientes",
+            "role": "Testimonio carolingio temprano; prioridad de comparación frente al Quadratus"
+          },
+          {
+            "siglum": "Q",
+            "name": "Codex Quadratus (Vossianus Quadratus)",
+            "institution": "Leiden University Libraries",
+            "city": "Leiden, Países Bajos",
+            "shelfmark": "Voss. Lat. Q. 94 (VLQ 94)",
+            "dating": "Primera mitad del siglo IX según Leiden; hacia mediados del siglo IX en estudios textuales",
+            "dateKind": "Datación paleográfica aproximada",
+            "origin": "Nordeste de Francia",
+            "material": "Códice manuscrito; soporte pendiente de verificación desde ficha física",
+            "extent": "69 folios",
+            "folioRange": "Texto principal: ff. 1r–69r; añadidos de versos omitidos al final de libro VI, ff. 68r–69v",
+            "format": "Pendiente de cotejo en catálogo físico",
+            "layout": "Dos columnas, normalmente 28 versos por columna (Butterfield)",
+            "script": "Pendiente de identificar en ficha paleográfica",
+            "provenance": "Propietarios modernos documentados en el catálogo de Leiden",
+            "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
+            "credit": "Leiden University Libraries / Biblissima+",
+            "rights": "CC BY 4.0 según Biblissima",
+            "verification": "Signatura, extensión y disposición verificadas; acceso IIIF y alineación por locus pendientes",
+            "role": "Testimonio temprano paralelo; NO reemplaza al Oblongus ni es una edición latina moderna"
+          }
+        ],
+        "bibliographicMethod": "Diferenciar códice manuscrito, edición crítica del latín, y traducción moderna. La imagen digital no equivale automáticamente a un folio o locus. No se ha establecido una concordancia folio-verso.",
+        "primarySiglum": "O",
+        "sourceReferences": [
+          "https://iiif.biblissima.fr/collections/manifest/cf0a18597bec8ca10248e6a82b64f94dc0288139",
+          "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
+          "https://mira.ie/164"
+        ]
       }
     },
     {
