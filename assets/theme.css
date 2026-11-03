@@ -146,7 +146,7 @@ main:focus{outline:none}
 :where(main,article,.reader-body) img{height:auto}
 :where(main,article,.reader-body) :is(pre,table){max-width:100%}
 :where(main,article,.reader-body) pre{overflow-x:auto}
-:where(main,article,.reader-body) table{display:block;overflow-x:auto}
+@media(max-width:760px){:where(main,article,.reader-body) table{display:block;overflow-x:auto}}
 :where(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--gold,#b99d68);outline-offset:3px}
 @media(max-width:760px){
  :where(main,article,.reader-body) :is(h1,h2,h3){overflow-wrap:break-word}
