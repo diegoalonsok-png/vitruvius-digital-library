@@ -1,12 +1,14 @@
 {
-  "schema": 1,
+  "schema": 2,
   "source": {
     "edition": "Diego Kurilo, V514, texto latino editorial",
     "path": "data/structured/recensio-es.json",
     "passages": 731,
     "scope": "El índice estadístico cuenta palabras del texto editorial latino V514, NO las grafías de los folios del manuscrito H.",
     "tokenization": "Secuencias Unicode de letras de alfabeto latino o griego. No equivale a lematización; no distingue homógrafos. Los nombres se cotejan por patrones expresos.",
-    "verifiedScope": "Las coincidencias de nombres se extraen del campo latino de la edición; es un índice editorial, no reconocimiento diplomático de todo el códice."
+    "verifiedScope": "Las coincidencias de nombres se extraen del campo latino de la edición; es un índice editorial, no reconocimiento diplomático de todo el códice.",
+    "onomastic_policy": "Latín: formas literales halladas en los loci del texto editorial V514, con flexión según el contexto. Griego: formas históricas de referencia, no denominadas 'grafías griegas de Vitruvio' salvo que consten en el texto latino con caracteres griegos; no se infieren grafías de los folios de H.",
+    "greek_reference": "Bibliografía griega de referencia: catálogo Perseus y léxicos de nombres antiguos; para Arquímedes, https://catalog.perseus.org/catalog/urn:cite:perseus:author.176. La correspondencia griega está normalizada para localizar nombres; las lecturas de los manuscritos requieren cotejo."
   },
   "totals": {
     "latinWords": 57639,
@@ -17,7 +19,9 @@
     "chapters": 105,
     "curatedEntries": 59,
     "persons": 32,
-    "places": 27
+    "places": 27,
+    "greekNameReferences": 54,
+    "entriesWithLiteralLatinForms": 59
   },
   "books": [
     {
@@ -1054,7 +1058,23 @@
         "7.praef.11"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Agatharchus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.praef.11"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀγάθαρχος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "alexandria",
@@ -1077,7 +1097,29 @@
         "9.8.2"
       ],
       "mentions": 7,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Alexandriae",
+        "Alexandriam",
+        "Alexandrino"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.praef.4",
+          "7.praef.4",
+          "7.praef.8",
+          "7.11.1",
+          "9.1.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀλεξάνδρεια",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "alexander",
@@ -1101,7 +1143,30 @@
         "10.13.3"
       ],
       "mentions": 7,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Alexander",
+        "Alexandro",
+        "Alexandrum",
+        "Alexandriam"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.praef.1",
+          "2.praef.2",
+          "2.praef.3",
+          "2.praef.4",
+          "7.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀλέξανδρος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "anaxagoras",
@@ -1121,7 +1186,27 @@
         "9.6.3"
       ],
       "mentions": 4,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Anaxagorae",
+        "Anaxagoras"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.praef.2",
+          "7.praef.11",
+          "8.praef.1",
+          "9.6.3"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀναξαγόρας",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "apelles",
@@ -1138,7 +1223,23 @@
         "1.1.13"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Apelles"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.13"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀπελλῆς",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "aristarchus",
@@ -1158,7 +1259,26 @@
         "9.8.1"
       ],
       "mentions": 4,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Aristarchus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.13",
+          "1.1.17",
+          "9.2.3",
+          "9.8.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀρίσταρχος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "aristotle",
@@ -1176,7 +1296,25 @@
         "9.praef.2"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Aristoteles",
+        "Aristotelis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀριστοτέλης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "archimedes",
@@ -1199,7 +1337,29 @@
         "9.praef.10"
       ],
       "mentions": 6,
-      "sourceStatus": "Fuente biográfica externa enlazada"
+      "sourceStatus": "Fuente biográfica externa enlazada",
+      "latin_forms": [
+        "Archimeden",
+        "Archimedes",
+        "Archimedis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.7",
+          "1.1.17",
+          "7.praef.14",
+          "8.5.3",
+          "9.praef.9"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀρχιμήδης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "artemisia",
@@ -1217,7 +1377,25 @@
         "2.8.15"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Artemisia",
+        "Artemisiae"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.8.14",
+          "2.8.15"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀρτεμισία",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "asia",
@@ -1239,7 +1417,29 @@
         "9.2.1"
       ],
       "mentions": 6,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Asia",
+        "Asiae",
+        "Asiam"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.3.4",
+          "2.6.5",
+          "3.3.8",
+          "4.1.4",
+          "8.2.6"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀσία",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "athens",
@@ -1277,7 +1477,32 @@
         "10.16.4"
       ],
       "mentions": 22,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Athenis",
+        "Atheniensem",
+        "Athenienses",
+        "Atheniensis",
+        "Atheniensium",
+        "Atheniensibus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.6.4",
+          "2.1.5",
+          "2.8.9",
+          "3.praef.2",
+          "3.2.8"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἀθῆναι",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "babylon",
@@ -1295,7 +1520,25 @@
         "8.3.8"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Babylone",
+        "Babyloni"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.5.8",
+          "8.3.8"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Βαβυλών",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "callippus",
@@ -1312,7 +1555,23 @@
         "9.6.3"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Callippus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "9.6.3"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Κάλλιππος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "campania",
@@ -1333,7 +1592,29 @@
         "8.3.17"
       ],
       "mentions": 5,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Campana",
+        "Campania",
+        "Campaniaeque"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.6.6",
+          "2.7.1",
+          "2.10.1",
+          "8.3.12",
+          "8.3.17"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": null,
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "No Greek form supplied without sufficient verification"
+      }
     },
     {
       "id": "carthage",
@@ -1351,7 +1632,25 @@
         "10.13.1"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Carthagini",
+        "Carthaginienses"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "8.3.8",
+          "10.13.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Καρχηδών",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "corinth",
@@ -1391,7 +1690,38 @@
         "8.4.1"
       ],
       "mentions": 24,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "corinthia",
+        "Corinthia",
+        "corinthii",
+        "Corinthii",
+        "corinthio",
+        "corinthiae",
+        "corinthiis",
+        "corinthios",
+        "Corinthios",
+        "corinthium",
+        "Corinthium",
+        "Corinthius"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.2.5",
+          "3.praef.2",
+          "3.5.15",
+          "4.praef.2",
+          "4.1.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Κόρινθος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "croton",
@@ -1408,7 +1738,23 @@
         "9.praef.2"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Crotoniates"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "9.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Κρότων",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "ctesibius",
@@ -1432,7 +1778,31 @@
         "10.7.5"
       ],
       "mentions": 7,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Ctesibii",
+        "Ctesibio",
+        "Ctesibica",
+        "Ctesibios",
+        "Ctesibius"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.7",
+          "7.praef.14",
+          "9.8.2",
+          "9.8.4",
+          "10.7.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Κτησίβιος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "democritus",
@@ -1455,7 +1825,29 @@
         "9.6.3"
       ],
       "mentions": 7,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Democriti",
+        "Democrito",
+        "Democritus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.2.1",
+          "7.praef.2",
+          "7.praef.11",
+          "9.praef.2",
+          "9.praef.14"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Δημόκριτος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "dinocrates",
@@ -1475,7 +1867,26 @@
         "2.praef.4"
       ],
       "mentions": 4,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Dinocrates"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.praef.1",
+          "2.praef.2",
+          "2.praef.3",
+          "2.praef.4"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Δεινοκράτης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "ephesus",
@@ -1504,7 +1915,30 @@
         "10.2.15"
       ],
       "mentions": 13,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Ephesi",
+        "Ephesum",
+        "Ephesius",
+        "Ephesiorum"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.2.1",
+          "2.9.13",
+          "3.praef.2",
+          "3.2.7",
+          "4.1.4"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἔφεσος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "egypt",
@@ -1530,7 +1964,33 @@
         "9.5.4"
       ],
       "mentions": 10,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Aegypti",
+        "Aegypto",
+        "aegyptii",
+        "Aegyptum",
+        "aegyptiis",
+        "aegyptios",
+        "Aegyptiorum"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.praef.4",
+          "4.5.2",
+          "6.1.1",
+          "6.3.8",
+          "6.3.9"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Αἴγυπτος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "epicurus",
@@ -1549,7 +2009,25 @@
         "7.praef.2"
       ],
       "mentions": 3,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Epicurus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.2.1",
+          "6.praef.3",
+          "7.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἐπίκουρος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "eratosthenes",
@@ -1570,7 +2048,30 @@
         "9.praef.14"
       ],
       "mentions": 5,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Eratosthene",
+        "Eratosthenem",
+        "Eratosthenes",
+        "Eratosthenis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.17",
+          "1.6.9",
+          "1.6.11",
+          "9.praef.13",
+          "9.praef.14"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἐρατοσθένης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "sparta",
@@ -1587,7 +2088,23 @@
         "7.3.2"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "sparto"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.3.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Σπάρτη",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "eudoxus",
@@ -1605,7 +2122,24 @@
         "9.8.1"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Eudoxus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "9.6.3",
+          "9.8.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Εὔδοξος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "phidias",
@@ -1622,7 +2156,23 @@
         "3.praef.2"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Phidias"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Φειδίας",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "halicarnassus",
@@ -1640,7 +2190,24 @@
         "2.8.11"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Halicarnasso"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.8.10",
+          "2.8.11"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἁλικαρνασσός",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "hermogenes",
@@ -1661,7 +2228,28 @@
         "7.praef.12"
       ],
       "mentions": 5,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Hermogenes",
+        "Hermogenis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.2.6",
+          "3.3.8",
+          "3.3.9",
+          "4.3.1",
+          "7.praef.12"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἑρμογένης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "herodotus",
@@ -1678,7 +2266,23 @@
         "8.3.27"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Herodotus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "8.3.27"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἡρόδοτος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "hipparchus",
@@ -1695,7 +2299,23 @@
         "9.6.3"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Hipparchus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "9.6.3"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἵππαρχος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "homer",
@@ -1713,7 +2333,25 @@
         "7.praef.9"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Homerum",
+        "Homeromastix"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.praef.8",
+          "7.praef.9"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ὅμηρος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "italy",
@@ -1741,7 +2379,30 @@
         "8.3.20"
       ],
       "mentions": 12,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Italia",
+        "Italiae",
+        "italico",
+        "italicae"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.6.5",
+          "2.8.9",
+          "5.1.1",
+          "5.5.8",
+          "5.11.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ἰταλία",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "lysippus",
@@ -1758,7 +2419,23 @@
         "3.praef.2"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Lysippus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Λύσιππος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "varro",
@@ -1777,7 +2454,25 @@
         "9.praef.17"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Varrone",
+        "Varronis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.8.9",
+          "9.praef.17"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": null,
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "No Greek form supplied without sufficient verification"
+      }
     },
     {
       "id": "cicero",
@@ -1795,7 +2490,23 @@
         "9.praef.17"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Cicerone"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "9.praef.17"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": null,
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "No Greek form supplied without sufficient verification"
+      }
     },
     {
       "id": "mausolus",
@@ -1816,7 +2527,30 @@
         "7.praef.12"
       ],
       "mentions": 5,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Mausoli",
+        "Mausoleo",
+        "Mausolus",
+        "Mausoleum"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.8.10",
+          "2.8.11",
+          "2.8.13",
+          "2.8.14",
+          "7.praef.12"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Μαύσωλος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "miletus",
@@ -1834,7 +2568,25 @@
         "7.praef.16"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Mileti",
+        "Miletum"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "4.1.4",
+          "7.praef.16"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Μίλητος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "milo",
@@ -1852,7 +2604,23 @@
         "9.praef.2"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Milo"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "9.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Μίλων",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "pergamum",
@@ -1869,7 +2637,23 @@
         "7.praef.4"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Pergami"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.praef.4"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Πέργαμον",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "pythagoras",
@@ -1894,7 +2678,30 @@
         "10.6.4"
       ],
       "mentions": 8,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Pythagorae",
+        "Pythagoras",
+        "Pythagoricum",
+        "Pythagoreorum"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.2.1",
+          "5.praef.3",
+          "8.praef.1",
+          "9.praef.2",
+          "9.praef.6"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Πυθαγόρας",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "pytheos",
@@ -1915,7 +2722,26 @@
         "7.praef.12"
       ],
       "mentions": 4,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Pytheos"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.12",
+          "1.1.15",
+          "4.3.1",
+          "7.praef.12"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": null,
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "No Greek form supplied without sufficient verification"
+      }
     },
     {
       "id": "plato",
@@ -1937,7 +2763,30 @@
         "9.praef.5"
       ],
       "mentions": 5,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Platon",
+        "Platone",
+        "Platoni",
+        "Platonis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Πλάτων",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "polyclitus",
@@ -1954,7 +2803,23 @@
         "3.praef.2"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Polycletus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.praef.2"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Πολύκλειτος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "praxiteles",
@@ -1971,7 +2836,23 @@
         "7.praef.13"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Praxiteles"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.praef.13"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Πραξιτέλης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "puteoli",
@@ -1988,7 +2869,23 @@
         "7.11.1"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Puteolis"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "7.11.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": null,
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "No Greek form supplied without sufficient verification"
+      }
     },
     {
       "id": "euphrates",
@@ -2005,7 +2902,23 @@
         "8.2.6"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Euphrates"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "8.2.6"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Εὐφράτης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "ganges",
@@ -2022,7 +2935,23 @@
         "8.2.6"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Ganges"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "8.2.6"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Γάγγης",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "nile",
@@ -2042,7 +2971,28 @@
         "8.2.7"
       ],
       "mentions": 4,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Nili",
+        "Nilum",
+        "Nilus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "2.praef.4",
+          "4.5.2",
+          "8.2.6",
+          "8.2.7"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Νεῖλος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "tiber",
@@ -2060,7 +3010,25 @@
         "8.2.6"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Tiberis",
+        "Tiberina"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.2.3",
+          "8.2.6"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Τίβερις",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "tigris",
@@ -2077,7 +3045,23 @@
         "8.2.6"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Tigris"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "8.2.6"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Τίγρις",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "rhodes",
@@ -2107,7 +3091,36 @@
         "10.16.8"
       ],
       "mentions": 14,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Rhodo",
+        "Rhodii",
+        "Rhodum",
+        "Rhodiis",
+        "Rhodius",
+        "Rhodanus",
+        "rhodiacum",
+        "Rhodiorum",
+        "Rhodiensium",
+        "Rhodiensibus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.4.12",
+          "2.8.14",
+          "2.8.15",
+          "6.praef.1",
+          "6.7.3"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ῥόδος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "rome",
@@ -2133,7 +3146,28 @@
         "9.7.2"
       ],
       "mentions": 10,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Romae",
+        "Romam"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "3.2.6",
+          "3.2.8",
+          "3.3.8",
+          "5.5.7",
+          "5.5.8"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Ῥώμη",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "samos",
@@ -2151,7 +3185,25 @@
         "7.praef.12"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Sami",
+        "Samum"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "4.1.4",
+          "7.praef.12"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Σάμος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "sicily",
@@ -2170,7 +3222,26 @@
         "10.11.7"
       ],
       "mentions": 3,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Sicilia",
+        "sicilicus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "8.3.7",
+          "8.3.12",
+          "10.11.7"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Σικελία",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "syracuse",
@@ -2189,7 +3260,26 @@
         "9.8.1"
       ],
       "mentions": 3,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Syracusis",
+        "Syracusius"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.17",
+          "9.praef.9",
+          "9.8.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Συράκουσαι",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "tarentum",
@@ -2208,7 +3298,26 @@
         "9.7.1"
       ],
       "mentions": 3,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Tarenti",
+        "Tarentini"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "1.1.17",
+          "9.praef.13",
+          "9.7.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Τάρας",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "themisto",
@@ -2225,7 +3334,23 @@
         "5.9.1"
       ],
       "mentions": 1,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Themistocles"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "5.9.1"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Θεμιστοκλῆς",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     },
     {
       "id": "theophrastus",
@@ -2243,7 +3368,25 @@
         "8.3.27"
       ],
       "mentions": 2,
-      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar"
+      "sourceStatus": "Resumen editorial, biografía ampliada pendiente de contrastar",
+      "latin_forms": [
+        "Theophrastos",
+        "Theophrastus"
+      ],
+      "latin_attestation": {
+        "source": "V514 · texto latino editorial",
+        "loci": [
+          "6.praef.2",
+          "8.3.27"
+        ],
+        "status": "verbatim_case_forms"
+      },
+      "greek_name": "Θεόφραστος",
+      "greek_attestation": {
+        "status": "not_attested_in_v514",
+        "loci": [],
+        "role": "Conventional historical Greek name; not a Greek witness reading of Codex H"
+      }
     }
   ],
   "verbAnalysis": {
