@@ -34,6 +34,7 @@ function clearProject(silent=false){
  $("file").value="";$("pasted").value="";$("search").value="";$("gemini-key").value="";
  $("translate-progress").value=0;
  $("segments").replaceChildren();
+ $("print-document").replaceChildren();document.body.classList.remove("print-translated");
  const message=document.createElement("p");message.className="empty";message.textContent="Importá un documento para ver los pasajes alineados.";
  $("segments").append(message);$("more").hidden=true;refreshStats();
  if(!silent)status("Los datos temporales fueron descartados de esta pestaña.");
