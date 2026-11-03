@@ -69,6 +69,430 @@ const i18n={
 'Comparación entre ediciones':['Comparison across editions','Comparaison des éditions'],
 'Bibliografía y derechos':['Bibliography and rights','Bibliographie et droits']
 };
+
+/* Complete the translation of public UI chrome; do not alter original scholarly editions. */
+Object.assign(i18n, {
+  "Saltar al contenido": [
+    "Skip to content",
+    "Aller au contenu"
+  ],
+  "Una biblioteca de acceso abierto": [
+    "An open-access library",
+    "Une bibliothèque en libre accès"
+  ],
+  "Lector bilingüe LA / ES / FR / EN": [
+    "Bilingual reader LA / ES / FR / EN",
+    "Lecteur bilingue LA / ES / FR / EN"
+  ],
+  "Docencia · Roma antigua": [
+    "Teaching · Ancient Rome",
+    "Enseignement · Rome antique"
+  ],
+  "Bibliotecas y universidades": [
+    "Libraries and universities",
+    "Bibliothèques et universités"
+  ],
+  "Cómo citar": [
+    "How to cite",
+    "Comment citer"
+  ],
+  "Principios editoriales": [
+    "Editorial principles",
+    "Principes éditoriaux"
+  ],
+  "Comparador de loci": [
+    "Locus comparison",
+    "Comparaison des loci"
+  ],
+  "Folios ↔ loci": [
+    "Folios ↔ passages",
+    "Folios ↔ loci"
+  ],
+  "Índice textual y notas": [
+    "Text index and notes",
+    "Index du texte et notes"
+  ],
+  "Índices locorum": [
+    "Indices of passages",
+    "Index locorum"
+  ],
+  "Ediciones libres": [
+    "Open-access editions",
+    "Éditions en libre accès"
+  ],
+  "Facsímiles manuscritos": [
+    "Manuscript facsimiles",
+    "Fac-similés des manuscrits"
+  ],
+  "Personajes y lugares": [
+    "People and places",
+    "Personnages et lieux"
+  ],
+  "Método filológico": [
+    "Philological method",
+    "Méthode philologique"
+  ],
+  "Traductor experimental": [
+    "Experimental translator",
+    "Traducteur expérimental"
+  ],
+  "Laboratorio H": [
+    "Laboratory H",
+    "Laboratoire H"
+  ],
+  "⎙ Imprimir": [
+    "⎙ Print",
+    "⎙ Imprimer"
+  ],
+  "ABRIR FACSÍMILES": [
+    "OPEN FACSIMILES",
+    "OUVRIR LES FAC-SIMILÉS"
+  ],
+  "Códices y ediciones históricas": [
+    "Codices and historical editions",
+    "Codices et éditions historiques"
+  ],
+  "BIBLIOTECA DIGITAL DE VITRUVIO": [
+    "VITRUVIUS DIGITAL LIBRARY",
+    "BIBLIOTHÈQUE NUMÉRIQUE DE VITRUVE"
+  ],
+  "Manuscritos, ediciones históricas, traducciones y estudios para leer, investigar y comparar los diez libros de Vitruvio.": [
+    "Manuscripts, historical editions, translations and studies to read, research and compare Vitruvius' ten books.",
+    "Manuscrits, éditions historiques, traductions et études pour lire, étudier et comparer les dix livres de Vitruve."
+  ],
+  "Edición y estudios de Diego Kurilo": [
+    "Edition and studies by Diego Kurilo",
+    "Édition et études de Diego Kurilo"
+  ],
+  "Visor grande del Codex H": [
+    "Large Codex H viewer",
+    "Grand lecteur du Codex H"
+  ],
+  "FACSIMILES Y EDICIONES HISTÓRICAS · ACCESO DIRECTO": [
+    "FACSIMILES AND HISTORICAL EDITIONS · DIRECT ACCESS",
+    "FAC-SIMILÉS ET ÉDITIONS HISTORIQUES · ACCÈS DIRECT"
+  ],
+  "c. 1486 · Edición príncipe": [
+    "c. 1486 · First printed edition",
+    "v. 1486 · Édition princeps"
+  ],
+  "EDICIÓN Y ESTUDIOS · DIEGO KURILO": [
+    "EDITION AND STUDIES · DIEGO KURILO",
+    "ÉDITION ET ÉTUDES · DIEGO KURILO"
+  ],
+  "LATÍN / CASTELLANO · OBRA ORIGINAL": [
+    "LATIN / SPANISH · ORIGINAL WORK",
+    "LATIN / ESPAGNOL · ŒUVRE ORIGINALE"
+  ],
+  "Leer": [
+    "Read",
+    "Lire"
+  ],
+  "ISBN de esta entrega: no consignado en el DOCX consultado": [
+    "ISBN not recorded in the consulted DOCX",
+    "ISBN non indiqué dans le DOCX consulté"
+  ],
+  "fichas en tres repertorios documentales": [
+    "records in three documentary catalogues",
+    "notices dans trois répertoires documentaires"
+  ],
+  "ediciones de Diego Kurilo con índice textual": [
+    "Diego Kurilo editions with text indexes",
+    "éditions de Diego Kurilo avec index textuel"
+  ],
+  "páginas declaradas en esas tres ediciones": [
+    "pages stated for these three editions",
+    "pages déclarées pour ces trois éditions"
+  ],
+  "idiomas en las ediciones catalogadas": [
+    "languages in catalogued editions",
+    "langues dans les éditions cataloguées"
+  ],
+  "Desglose verificable:": [
+    "Verifiable breakdown:",
+    "Détail vérifiable :"
+  ],
+  "fichas del": [
+    "records in the",
+    "notices du"
+  ],
+  "catálogo principal": [
+    "main catalogue",
+    "catalogue principal"
+  ],
+  "referencias del": [
+    "references in the",
+    "références de l'"
+  ],
+  "inventario de códices y ediciones": [
+    "inventory of codices and editions",
+    "inventaire des codices et des éditions"
+  ],
+  "pasajes textuales indexados por locus.": [
+    "textual passages indexed by locus.",
+    "passages textuels indexés par locus."
+  ],
+  "Cifras auditadas el": [
+    "Figures audited on",
+    "Chiffres vérifiés le"
+  ],
+  "2 de noviembre de 2026": [
+    "November 2, 2026",
+    "2 novembre 2026"
+  ],
+  ". Las fichas pueden repetirse entre repertorios: 175 no significa 175 obras únicas. Las 3.379 páginas son la suma de extensiones editoriales declaradas, no páginas indexadas individualmente.": [
+    ". Records may overlap between catalogues: 175 does not mean 175 unique works. The 3,379 pages are declared edition lengths, not individually indexed pages.",
+    ". Les notices peuvent se répéter entre répertoires : 175 ne signifie pas 175 œuvres distinctes. Les 3 379 pages correspondent aux volumes éditoriaux déclarés, non à des pages indexées individuellement."
+  ],
+  "LECTURA E INVESTIGACIÓN": [
+    "READING AND RESEARCH",
+    "LECTURE ET RECHERCHE"
+  ],
+  "Buscá una palabra, frase o locus.": [
+    "Search for a word, phrase or locus.",
+    "Recherchez un mot, une expression ou un locus."
+  ],
+  "Leé el latín y su traducción.": [
+    "Read the Latin and its translation.",
+    "Lisez le latin et sa traduction."
+  ],
+  "Palabra o frase en latín, castellano, francés o inglés": [
+    "Word or phrase in Latin, Spanish, French or English",
+    "Mot ou expression en latin, espagnol, français ou anglais"
+  ],
+  "Tres ediciones de Diego Kurilo": [
+    "Three Diego Kurilo editions",
+    "Trois éditions de Diego Kurilo"
+  ],
+  "Todos mis libros (3 ediciones)": [
+    "All my books (3 editions)",
+    "Tous mes livres (3 éditions)"
+  ],
+  "Internet se abre en otra pestaña.": [
+    "External search opens in another tab.",
+    "La recherche externe s'ouvre dans un autre onglet."
+  ],
+  "Mostrar más resultados": [
+    "Show more results",
+    "Afficher plus de résultats"
+  ],
+  "Ampliá la investigación con una consulta externa. Los resultados se abren en otra pestaña.": [
+    "Extend the research with an external search. Results open in a new tab.",
+    "Élargissez la recherche avec une requête externe. Les résultats s'ouvrent dans un nouvel onglet."
+  ],
+  "Consulta para internet": [
+    "External search query",
+    "Requête pour Internet"
+  ],
+  "Buscador de internet": [
+    "Web search engine",
+    "Moteur de recherche"
+  ],
+  "Buscar ↗": [
+    "Search ↗",
+    "Rechercher ↗"
+  ],
+  "Incluir Vitruvio en la consulta": [
+    "Include Vitruvius in search",
+    "Inclure Vitruve dans la recherche"
+  ],
+  "CATÁLOGO RAZONADO": [
+    "SCHOLARLY CATALOGUE",
+    "CATALOGUE RAISONNÉ"
+  ],
+  "Del testimonio manuscrito": [
+    "From the manuscript witness",
+    "Du témoin manuscrit"
+  ],
+  "a la lectura contemporánea.": [
+    "to contemporary scholarship.",
+    "à la lecture contemporaine."
+  ],
+  "Buscar en PDF históricos · OCR por página →": [
+    "Search historical PDFs · page OCR →",
+    "Rechercher dans les PDF historiques · OCR par page →"
+  ],
+  "Consultar selección de loci - 10 libri": [
+    "Browse selected loci · ten books",
+    "Consulter les loci sélectionnés · dix livres"
+  ],
+  "Nueva recensio": [
+    "New recensio",
+    "Nouvelle recensio"
+  ],
+  "Otras ediciones": [
+    "Other editions",
+    "Autres éditions"
+  ],
+  "Filtrar fichas por título, autor o idioma": [
+    "Filter records by title, author or language",
+    "Filtrer les notices par titre, auteur ou langue"
+  ],
+  "No hay fichas con ese criterio.": [
+    "No records match these criteria.",
+    "Aucune notice ne correspond à ces critères."
+  ],
+  "Cargando las fichas bibliográficas…": [
+    "Loading bibliographic records…",
+    "Chargement des notices bibliographiques…"
+  ],
+  "Descargar catálogo": [
+    "Download catalogue",
+    "Télécharger le catalogue"
+  ],
+  "Primer cuarto del siglo IX": [
+    "First quarter of the 9th century",
+    "Premier quart du IXe siècle"
+  ],
+  "UN TESTIMONIO FUNDAMENTAL": [
+    "A FUNDAMENTAL WITNESS",
+    "UN TÉMOIN FONDAMENTAL"
+  ],
+  "La British Library lo identifica como la copia conservada más antigua conocida de": [
+    "The British Library identifies it as the oldest known surviving copy of",
+    "La British Library l'identifie comme le plus ancien exemplaire conservé connu de"
+  ],
+  ". Sus imágenes permiten consultar el testimonio manuscrito y contrastarlo con las ediciones del tratado.": [
+    ". Its images allow readers to consult the manuscript witness and compare it with editions of the treatise.",
+    ". Ses images permettent de consulter le témoin manuscrit et de le comparer aux éditions du traité."
+  ],
+  "Abrir facsímil": [
+    "Open facsimile",
+    "Ouvrir le fac-similé"
+  ],
+  "Ficha de la British Library ↗": [
+    "British Library catalogue record ↗",
+    "Notice de la British Library ↗"
+  ],
+  "TRANSMISIÓN Y RECEPCIÓN": [
+    "TRANSMISSION AND RECEPTION",
+    "TRANSMISSION ET RÉCEPTION"
+  ],
+  "Copiar, leer, editar, traducir.": [
+    "Copy, read, edit, translate.",
+    "Copier, lire, éditer, traduire."
+  ],
+  "Notas para una historia de Vitruvio.": [
+    "Notes towards a history of Vitruvius.",
+    "Notes pour une histoire de Vitruve."
+  ],
+  "SIGLOS IX–XII": [
+    "9TH–12TH CENTURIES",
+    "IXe–XIIe SIÈCLES"
+  ],
+  "La tradición manuscrita": [
+    "The manuscript tradition",
+    "La tradition manuscrite"
+  ],
+  "SIGLOS IX–XV": [
+    "9TH–15TH CENTURIES",
+    "IXe–XVe SIÈCLES"
+  ],
+  "Un texto que no se perdió": [
+    "A text that was never lost",
+    "Un texte qui ne fut jamais perdu"
+  ],
+  "SIGLO XIV": [
+    "14TH CENTURY",
+    "XIVe SIÈCLE"
+  ],
+  "Petrarca y Boccaccio": [
+    "Petrarch and Boccaccio",
+    "Pétrarque et Boccace"
+  ],
+  "HACIA 1486–1487": [
+    "AROUND 1486–1487",
+    "VERS 1486–1487"
+  ],
+  "El texto entra en la imprenta": [
+    "The text enters print",
+    "Le texte entre dans l'imprimerie"
+  ],
+  "SIGLOS XVI–XVII": [
+    "16TH–17TH CENTURIES",
+    "XVIe–XVIIe SIÈCLES"
+  ],
+  "Las lenguas de la arquitectura": [
+    "The languages of architecture",
+    "Les langues de l'architecture"
+  ],
+  "SIGLOS XVIII–XXI": [
+    "18TH–21ST CENTURIES",
+    "XVIIIe–XXIe SIÈCLES"
+  ],
+  "La filología crítica": [
+    "Critical philology",
+    "La philologie critique"
+  ],
+  "Ediciones críticas modernas ↗": [
+    "Modern critical editions ↗",
+    "Éditions critiques modernes ↗"
+  ],
+  "CRITERIOS DE LA BIBLIOTECA": [
+    "LIBRARY PRINCIPLES",
+    "PRINCIPES DE LA BIBLIOTHÈQUE"
+  ],
+  "y consulta comparada.": [
+    "and comparative reading.",
+    "et consultation comparée."
+  ],
+  "Una biblioteca para estudiar la transmisión y las interpretaciones de Vitruvio, con la procedencia de cada documento a la vista.": [
+    "A library for studying the transmission and interpretations of Vitruvius, with the provenance of each document made clear.",
+    "Une bibliothèque pour étudier la transmission et les interprétations de Vitruve, en indiquant la provenance de chaque document."
+  ],
+  "Abrir dos ediciones en paralelo →": [
+    "Open two editions side by side →",
+    "Ouvrir deux éditions en parallèle →"
+  ],
+  "Una referencia precisa": [
+    "A precise reference",
+    "Une référence précise"
+  ],
+  "El texto y su testimonio": [
+    "The text and its witness",
+    "Le texte et son témoin"
+  ],
+  "Procedencia y condiciones de uso": [
+    "Provenance and terms of use",
+    "Provenance et conditions d'utilisation"
+  ],
+  "ARCHIVO DE INVESTIGACIÓN": [
+    "RESEARCH ARCHIVE",
+    "ARCHIVES DE RECHERCHE"
+  ],
+  "Documentos del proceso editorial,": [
+    "Editorial working documents,",
+    "Documents du processus éditorial,"
+  ],
+  "identificados por versión y fecha.": [
+    "identified by version and date.",
+    "identifiés par version et date."
+  ],
+  "Política editorial": [
+    "Editorial policy",
+    "Politique éditoriale"
+  ],
+  "Biografía académica de Diego A. Kurilo": [
+    "Academic biography of Diego A. Kurilo",
+    "Biographie académique de Diego A. Kurilo"
+  ],
+  "Buscador experimental": [
+    "Experimental search",
+    "Recherche expérimentale"
+  ],
+  "Proyecto y edición de Diego Kurilo": [
+    "Project and editing by Diego Kurilo",
+    "Projet et édition de Diego Kurilo"
+  ],
+  "Biblioteca académica independiente de acceso gratuito.": [
+    "Independent open-access academic library.",
+    "Bibliothèque académique indépendante en libre accès."
+  ],
+  "Fuentes y condiciones de uso": [
+    "Sources and terms of use",
+    "Sources et conditions d'utilisation"
+  ]
+});
 let currentLanguage='es';
 try{currentLanguage=localStorage.getItem(LANGUAGE_KEY)||'es'}catch{}
 if(!['es','en','fr'].includes(currentLanguage))currentLanguage='es';
@@ -78,7 +502,7 @@ function translateRoot(root=document){
  let node;
  while((node=walker.nextNode())){
   const parent=node.parentElement;
-  if(!parent||parent.closest('script,style,textarea,option,.catalog-list,.search-results,.compare-body,.reader-transcript,.study,.biblio-table'))continue;
+  if(!parent||parent.closest('script,style,textarea,.catalog-list,.search-results,.compare-body,.reader-transcript,.study,.biblio-table'))continue;
   const key=node.nodeValue.trim();
   if(!key)continue;
   const original=originalNodes.get(node)||key;
@@ -91,12 +515,12 @@ function translateRoot(root=document){
   const value=i18n[original];
   if(value)el.setAttribute('placeholder',currentLanguage==='es'?original:value[currentLanguage==='en'?0:1]);
  }
- document.documentElement.lang='es'; // Content remains predominantly Spanish; navigation translation is partial.
+ document.documentElement.lang=currentLanguage;
 }
 function setupLanguage(){
  for(const host of document.querySelectorAll('.header-languages')){
   host.textContent='';
-  const label=document.createElement('label');label.className='sr-only';label.textContent='Idioma de navegación (traducción parcial) / Navigation language (partial)';
+  const label=document.createElement('label');label.className='sr-only';label.textContent='Idioma de interfaz / Interface language';
   const select=document.createElement('select');select.setAttribute('aria-label','Idioma de navegación (traducción parcial) / Navigation language (partial)');select.style.cssText='font:inherit;background:transparent;color:inherit;border:1px solid currentColor;border-radius:2px;padding:3px 5px;max-width:110px';
   for(const [value,name] of [['es','ES'],['en','EN'],['fr','FR']]){const option=document.createElement('option');option.value=value;option.textContent=name;select.append(option);}
   select.value=currentLanguage;
