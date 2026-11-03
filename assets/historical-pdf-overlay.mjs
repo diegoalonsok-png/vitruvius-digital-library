@@ -30,8 +30,8 @@ function rectangles(text,term,prefix){
 async function draw(pageNumber,terms,prefix=false){
  const edition=document.querySelector('#ed')?.value;
  if(!pdfURLs[edition]){
-   viewer.hidden=true;fallback.hidden=false;
-   status.textContent='En esta edición se usa el PDF original externo. El resaltado se muestra en la transcripción OCR; el PDF externo puede impedir la superposición de marcas por restricciones de su servidor.';
+   viewer.hidden=true;fallback.hidden=edition==='perrault-1673';
+   status.textContent=edition==='perrault-1673'?'El facsímil de Perrault se lee en el visor IIIF con ampliación, contraste e inversión. Las coincidencias verificables se resaltan en amarillo en el OCR.':'La superposición sobre el PDF externo puede no estar disponible; consultá el OCR resaltado.';
    return;
  }
  const mine=++serial;
