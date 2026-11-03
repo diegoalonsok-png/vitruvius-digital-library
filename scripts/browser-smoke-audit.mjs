@@ -345,5 +345,38 @@ try{
    await page.close();
   }
  });
+
+ await test('Onomasticon: personajes, lugares, loci, palabras por capítulo y formas latinas',async()=>{
+   const page=await pageFor('onomasticon.html');
+   await page.waitForFunction(()=>document.querySelector('#ov-count-person')?.textContent.trim()==='32',{timeout:20000});
+   assert.equal((await page.locator('#ov-count-place').innerText()).trim(),'27');
+   assert.equal((await page.locator('#ov-count-latin').innerText()).trim(),'57.639');
+   assert.equal((await page.locator('#ov-count-greek').innerText()).trim(),'283');
+   assert.equal((await page.locator('#ov-count-loci').innerText()).trim(),'731');
+   assert.match(await page.locator('#ov-detail').innerText(),/Arquímedes de Siracusa/);
+   assert(await page.locator('#ov-detail a[href*="locus=9.praef.9"]').count()>0,'Falta locus de Arquímedes');
+   await page.locator('#ov-search').fill('Siracusa');
+   assert(await page.locator('#ov-list button').count()>0,'Falta índice y búsqueda de Siracusa');
+   await page.locator('#ov-clear').click();
+   await page.locator('#ov-show-stats').click();
+   assert(await page.locator('#ov-books tbody tr').count()===10,'La estadística no cubre diez libros');
+   assert(await page.locator('#ov-chapters tbody tr').count()>5,'Faltan datos por capítulo');
+   assert(await page.locator('#ov-verbs .ov-verb-row').count()>3,'No se representan tiempos latinos');
+   await page.close();
+ });
+ await test('Laboratorio H: latín legible y correspondencia con el prefacio completo de 1r',async()=>{
+   const page=await pageFor('laboratorio-h.html');
+   assert.match(await page.locator('#paleo-panel h2').innerText(),/Transcripción latina/);
+   await page.locator('#carolina-output').waitFor({state:'visible',timeout:10000});
+   const input=(await page.locator('#carolina-output').innerText()).trim();
+   assert(input.startsWith('VITRVVII DE ARCHITECTVRA LIB I'),'No se representa el incipit manuscrito');
+   assert(input.includes('imperator caesar'),'No aparece la continuación en minúsculas');
+   const font=await page.locator('#carolina-output').evaluate(e=>getComputedStyle(e).fontFamily);
+   assert.match(font,/Georgia|Times New Roman/,'Sigue presente la tipografía experimental ilegible');
+   await page.waitForFunction(()=>document.querySelector('#reading-output')?.textContent.includes('I.praef.2'),{timeout:20000});
+   assert.match(await page.locator('#reading-output').innerText(),/I\.praef\.1/);
+   assert.match(await page.locator('#reading-output').innerText(),/I\.praef\.2/);
+   await page.close();
+ });
 }finally{await browser?.close();server.kill()}
 if(failures.length){console.error('\nAUDITORIA CON FALLOS\n'+failures.join('\n'));process.exitCode=1}else console.log('\nAuditoría básica de navegador completada sin fallos.');
