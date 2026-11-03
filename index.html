@@ -197,6 +197,10 @@ html[data-theme=dark] .vitruvia-top-initial{color:#e5e3dc}
 html[data-theme=dark] .research-nav-controls .vitruvia-wing-v{color:#e9e5db}
 @media(max-width:850px){.research-nav-controls a.vitruvia-top-link{flex:0 0 auto;border:0;min-width:45px}}
 @media(prefers-reduced-motion:reduce){.research-nav-controls .vitruvia-wing-v{transition:none}}
+/* Titulus: cursiva latina editorial restaurada, sin alterar las interfaces. */
+.hero-academic h1 .hero-latin-title{font-family:LibraryGaramond,'EB Garamond','Baskerville','Palatino Linotype',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.055em}
+.hero-academic h1>span{font-style:normal;letter-spacing:normal}
+@media(max-width:600px){.hero-academic h1 .hero-latin-title{letter-spacing:-.04em}}
 </style><style>.hero-folios-action{border-color:#c8a86e!important;font-weight:750!important;letter-spacing:.025em;background:rgba(202,169,102,.08)}.hero-folios-action:focus-visible{outline:3px solid #c8a86e;outline-offset:3px}</style>
 <link rel="stylesheet" href="assets/editorial-reading.css?v=20261103-front-responsive-2">
 </head>
@@ -255,7 +259,7 @@ html[data-theme=dark] .research-nav-controls .vitruvia-wing-v{color:#e9e5db}
     <section class="hero hero-academic wrap" id="inicio">
       <div class="hero-copy">
         <p class="eyebrow">BIBLIOTECA DIGITAL DE VITRUVIO</p>
-        <h1>De architectura <span>libri decem</span></h1>
+        <h1><em class="hero-latin-title" lang="la">De architectura</em> <span>libri decem</span></h1>
         <p class="hero-subtitle">Texto latino, traducciones<br> y tradición manuscrita.</p>
         <p class="hero-description">Manuscritos, ediciones históricas, traducciones y estudios para leer, investigar y comparar los diez libros de Vitruvio.</p>
         <div class="hero-links hero-actions-academic"><a class="button primary" href="#buscar">Consultar los textos <span aria-hidden="true">↓</span></a><a class="button outline hero-folios-action" id="codex-folios-link" href="harleianus.html#h-folios" aria-label="Abrir los folios del Codex H"><span id="codex-folios-text">Codex H · folios</span><span aria-hidden="true">↗</span></a></div><p class="hero-editor-credit">Edición y estudios de Diego A. Kurilo · Biblioteca independiente de acceso abierto.</p>
