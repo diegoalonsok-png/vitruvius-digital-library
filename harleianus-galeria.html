@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galería de folios · Codex H · Harleianus 2767</title>
+<meta name="description" content="Galería interna de los folios digitalizados del Codex H, Harley MS 2767, según el manifiesto IIIF de la British Library.">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+main{max-width:1420px;margin:auto;padding:26px 18px 70px}h1{font:normal clamp(34px,5vw,56px) Georgia,serif}
+.note{border-left:3px solid #ac8e58;padding:12px 16px;line-height:1.65}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:20px 0;padding:15px;border:1px solid #b3a18a}
+.toolbar label{display:grid;gap:5px;min-width:190px;flex:1}.toolbar input{padding:11px;background:#fffdf8;color:#172b3c;border:1px solid #8e8981;min-height:44px}
+button{cursor:pointer}.toolbar button,#more{min-height:44px;padding:9px 15px;border:1px solid #aa9066;background:#f6eee0;color:#172b3c;font-weight:600}
+#gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:16px;margin-top:20px}
+.folio-card{display:flex;flex-direction:column;gap:8px;min-width:0;border:1px solid #ab9b83;padding:9px;background:#eee9dd;color:#162e40;text-align:left}
+.folio-card img{width:100%;height:205px;object-fit:contain;background:#d4cfc5}.folio-card strong{font-size:14px}.folio-card span{font-size:12px;overflow-wrap:anywhere}
+#more{display:block;margin:22px auto}.viewer{border:1px solid #ae9675;background:#e7dfd1;padding:14px;margin:22px 0;color:#162e40}
+.viewer img{display:block;max-width:100%;max-height:75vh;object-fit:contain;margin:12px auto}.viewer a{font-weight:700}
+#status{font-weight:600}html[data-theme="dark"] .folio-card,html[data-theme="dark"] .viewer{background:#e7dfd1;color:#162e40}
+@media(max-width:620px){#gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.folio-card img{height:165px}}
+</style></head>
+<body><main class="wrap">
+<p><a href="index.html">← Biblioteca</a> · <a href="harleianus.html">Lector ampliado H</a> · <a href="escritorio-h/index.html">Escritorio H</a> · <a href="cesariano-1521.html">Galería Cesariano</a></p>
+<p class="eyebrow">CODICOLOGIA · IMAGO · HARLEY MS 2767</p>
+<h1>Codex H · Galería de folios</h1>
+<p>Vitruvio, <em>De architectura</em>. Harleianus 2767, primer cuarto del siglo IX. Miniaturas desplegadas dentro de la biblioteca, siguiendo la secuencia original de digitalización de la British Library.</p>
+<p class="note"><strong>Nota codicológica:</strong> el número de imagen digital no equivale necesariamente al folio histórico. Las etiquetas se reproducen del manifiesto IIIF; las correspondencias no identificadas permanecen sin atribuir. Las imágenes se solicitan a la institución conservadora y no se almacenan aquí.</p>
+<div class="toolbar" role="search">
+<label>Buscar por etiqueta de folio o número de imagen<input id="query" type="search" placeholder="f.1r · 16v · imagen 150"></label>
+<button id="search" type="button">Buscar imágenes</button><button id="clear" type="button">Ver todas</button>
+</div>
+<p id="status" role="status">Cargando índice de imágenes IIIF…</p>
+<section id="selected" class="viewer" hidden aria-live="polite"><strong id="selected-label"></strong><img id="selected-image" alt="Folio seleccionado del Codex H"><p><a id="open-large" href="harleianus.html">Abrir en lector ampliado con lupa y filtros</a></p></section>
+<div id="gallery" aria-label="Galería de miniaturas del manuscrito"></div>
+<button id="more" type="button" hidden>Mostrar más folios</button>
+<p class="note">Fuente: British Library, Harley MS 2767. Miniaturas suministradas por su servicio IIIF. <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener noreferrer">Ficha institucional</a>.</p>
+</main><script src="assets/theme.js" defer></script><script type="module">
+const manifests=['https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001','https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100056038850.0x000001/manifest.json'];
+const $=id=>document.getElementById(id);let pages=[],matches=[],shown=0;const batch=40;
+function label(c){let l=c?.label;if(typeof l==='string')return l;if(l&&typeof l==='object')return Object.values(l).flat().join(' · ');return 'Sin etiqueta';}
+function service(c){const r=c.images?.[0]?.resource||c.items?.[0]?.items?.[0]?.body;const s=r?.service||r?.services;const v=Array.isArray(s)?s[0]:s;return {base:(typeof v==='string'?v:v?.id||v?.['@id']||'').replace(/\/$/,''),fallback:r?.id||r?.['@id']||''};}
+function url(c,size){const s=service(c);return s.base?s.base+'/full/'+size+',/0/default.jpg':s.fallback;}
+function showImage(i){const c=pages[i],n=i+1;const picture=$('selected-image');$('selected-label').textContent='Imagen digital '+n+' de '+pages.length+' · Etiqueta IIIF: '+label(c);picture.src=url(c,1200);picture.alt='Codex H · imagen '+n+' · '+label(c);$('open-large').href='harleianus.html?image='+n;$('selected').hidden=false;$('selected').scrollIntoView({behavior:'smooth',block:'start'});}
+function addCards(){let frag=document.createDocumentFragment();for(const i of matches.slice(shown,shown+batch)){const c=pages[i],b=document.createElement('button');b.className='folio-card';b.type='button';const im=document.createElement('img');im.loading='lazy';im.src=url(c,240);im.alt='Miniatura '+(i+1)+' '+label(c);const t=document.createElement('strong');t.textContent='Imagen '+(i+1);const d=document.createElement('span');d.textContent='Etiqueta IIIF: '+label(c);b.append(im,t,d);b.onclick=()=>showImage(i);frag.append(b);} $('gallery').append(frag);shown=Math.min(matches.length,shown+batch);$('more').hidden=shown>=matches.length;$('status').textContent=matches.length+' imágenes coincidentes · '+shown+' miniaturas mostradas de '+pages.length+' imágenes digitales';}
+function filter(){const raw=$('query').value.trim().toLowerCase();const q=raw.replace(/^(imagen|image|nº|n°)\s*/,'').replace(/[^a-z0-9]/g,'');matches=pages.map((c,i)=>i).filter(i=>!q||String(i+1)===q||label(pages[i]).toLowerCase().replace(/[^a-z0-9]/g,'').includes(q));shown=0;$('gallery').replaceChildren();$('selected').hidden=true;if(matches.length)addCards();else{$('more').hidden=true;$('status').textContent='No se encontraron etiquetas para esa búsqueda. Probá con el número de imagen digital.';}}
+$('search').onclick=filter;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')filter()});$('clear').onclick=()=>{$('query').value='';filter()};$('more').onclick=addCards;
+async function init(){let errors=[];for(const endpoint of manifests){try{const r=await fetch(endpoint);if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();const p=data.sequences?.[0]?.canvases||data.items;if(!Array.isArray(p)||!p.length)throw Error('sin canvases');pages=p;filter();return;}catch(e){errors.push(e.message)}}$('status').textContent='No se pudo cargar el manifiesto IIIF ('+errors.join('; ')+'). Podés utilizar el lector H existente mediante el enlace superior.'}init();
+</script></body></html>
