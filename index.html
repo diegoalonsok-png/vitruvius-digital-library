@@ -221,7 +221,7 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
         <h1>De architectura <span>libri decem</span></h1>
         <p class="hero-subtitle">Texto latino, traducciones<br> y tradición manuscrita.</p>
         <p class="hero-description">Manuscritos, ediciones históricas, traducciones y estudios para leer, investigar y comparar los diez libros de Vitruvio.</p>
-        <div class="hero-links hero-actions-academic"><a class="button primary" href="#buscar">Consultar los textos <span aria-hidden="true">↓</span></a><a class="button outline hero-folios-action" href="harleianus.html#h-folios" aria-label="Abrir directamente la galería visual de los folios del Codex H">Galería visual del Codex H <span aria-hidden="true">↗</span></a></div><p class="hero-editor-credit">Edición y estudios de Diego A. Kurilo · Biblioteca independiente de acceso abierto.</p>
+        <div class="hero-links hero-actions-academic"><a class="button primary" href="#buscar">Consultar los textos <span aria-hidden="true">↓</span></a><a class="button outline hero-folios-action" id="codex-folios-link" href="harleianus.html#h-folios" aria-label="Abrir los folios del Codex H"><span id="codex-folios-text">Codex H · folios</span><span aria-hidden="true">↗</span></a></div><p class="hero-editor-credit">Edición y estudios de Diego A. Kurilo · Biblioteca independiente de acceso abierto.</p>
 <div class="hero-scriptoria" aria-label="Acceso directo a los facsímiles históricos">
 <p class="hero-scriptoria-title">FACSIMILES Y EDICIONES HISTÓRICAS · ACCESO DIRECTO</p>
 <nav class="hero-scriptoria-grid" aria-label="Abrir lectores históricos">
@@ -277,6 +277,39 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
 <div class="wrap editorial-footer"><a href="colaboraciones.html">Colaboraciones científicas y apoyo institucional →</a> · <a href="https://libguides.cam.ac.uk/c.php?g=363717&amp;p=4973030" target="_blank" rel="noopener noreferrer" title="Enlace bibliográfico externo, sin aval ni afiliación académica">Referenciado en la guía de recursos latinos de Cambridge →</a> · <a href="onomasticon.html">Onomasticon · Personas, lugares y palabras del tratado →</a> · <a href="bibliotecas-universitarias.html">Ficha para bibliotecas y universidades · metadatos RIS / BibTeX / DOI →</a> · <a href="auditoria.html">Auditoría académica y editorial · 30 de octubre de 2026 →</a></div><script>
 /* La impresión es una acción local del navegador: sin archivos enviados al servidor. */
 document.getElementById('print-home')?.addEventListener('click',()=>window.print());
+</script>
+<script>
+/* Localización exclusiva del único botón Codex H de la portada. */
+(function(){
+  const translations={
+    es:{text:"Codex H · folios",aria:"Abrir los folios del Codex H"},
+    en:{text:"Codex H · manuscript folios",aria:"Open Codex H manuscript folios"},
+    fr:{text:"Codex H · feuillets",aria:"Ouvrir les feuillets du Codex H"},
+    it:{text:"Codex H · fogli",aria:"Aprire i fogli del Codex H"},
+    de:{text:"Codex H · Blätter",aria:"Die Blätter des Codex H öffnen"},
+    pt:{text:"Codex H · fólios",aria:"Abrir os fólios do Codex H"}
+  };
+  function paint(lang){
+    const item=translations[lang]||translations.es;
+    const label=document.getElementById("codex-folios-text");
+    const link=document.getElementById("codex-folios-link");
+    if(!label||!link)return;
+    label.textContent=item.text;
+    link.setAttribute("aria-label",item.aria);
+  }
+  function current(){
+    const select=document.querySelector(".header-languages select, .site-global-language select");
+    let saved="";
+    try{saved=localStorage.getItem("vitruvius-ui-lang")||""}catch(e){}
+    const choice=select&&select.value;
+    return translations[choice]?choice:(translations[saved]?saved:"es");
+  }
+  document.addEventListener("change",function(event){
+    if(event.target.matches(".header-languages select, .site-global-language select, #classic-ui-language, #atlas-language-select"))paint(event.target.value);
+  });
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>paint(current()));
+  else paint(current());
+})();
 </script>
 </body>
 </html>
