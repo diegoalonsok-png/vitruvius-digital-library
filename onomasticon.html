@@ -7,9 +7,9 @@
 <title>Onomasticon Vitruvianum · Personajes, lugares y análisis del texto</title>
 <link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/onomasticon.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/onomasticon.css?v=20261102-theme-i18n">
-<script src="assets/onomasticon-ui.js?v=20261103a" defer></script>
-<script type="module" src="assets/onomasticon.js?v=20261102-theme-i18n"></script>
+<link rel="stylesheet" href="assets/onomasticon.css?v=20261102-results-share-2">
+<script src="assets/onomasticon-ui.js?v=20261102-translate-share-2" defer></script>
+<script type="module" src="assets/onomasticon.js?v=20261102-canonical-results-2"></script>
 </head>
 <body>
 <a href="#ov-main" style="position:absolute;top:0;left:0;background:#fff;padding:6px;transform:translateY(-160%);" onfocus="this.style.transform='none'" onblur="this.style.transform='translateY(-160%)'">Saltar al contenido</a>
@@ -61,6 +61,14 @@
  <button type="button" id="ov-show-stats" aria-pressed="false" data-i18n="languageStats">Lengua y estadísticas</button>
 </div>
 <p id="ov-loading" class="ov-note" role="status" aria-live="polite">Cargando fichas, loci y estadísticas del texto latino...</p>
+<div id="ov-sharebar" class="ov-sharebar" role="group" aria-label="Acciones de impresión y envío del resultado">
+ <span id="ov-current-result" class="ov-current-result" aria-live="polite">Resultado seleccionado</span>
+ <div class="ov-share-buttons">
+  <button type="button" id="ov-print-result" data-i18n="printResults" title="Imprimir la ficha o los resultados visibles">Imprimir resultado</button>
+  <button type="button" id="ov-email-result" data-i18n="emailResults" title="Preparar correo con el resultado y enlace">Enviar por correo</button>
+  <button type="button" id="ov-whatsapp-result" data-i18n="whatsappResults" title="Compartir el resultado con su enlace">Compartir por WhatsApp</button>
+ </div>
+</div>
 <section id="ov-repertory">
   <div class="ov-layout">
    <aside class="ov-index" aria-label="Índice de personajes y lugares">
