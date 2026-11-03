@@ -458,5 +458,39 @@ try{
    }else console.log('SKIP mapa emergente: Leaflet externo no disponible, comprobada apertura desde la ficha lateral');
    await page.close();
  });
+
+ await test('Atlas geográfico: Campania como región, Nilo como río y pasajes V514 visibles',async()=>{
+   const page=await pageFor('atlas-geographicus.html');
+   await page.waitForFunction(()=>document.querySelector('#place-count')?.textContent.includes('28 lugares'),{timeout:15000});
+   assert.match(await page.locator('#place-count').innerText(),/4 áreas/);
+   assert.match(await page.locator('#place-count').innerText(),/5 ríos/);
+   await page.locator('#place-query').fill('Campania');
+   await page.locator('[data-place-id="campania"]').click();
+   assert.match(await page.locator('#place-verification').innerText(),/Área sombreada esquemática/i);
+   assert.match(await page.locator('#place-passage-heading').innerText(),/2\.6\.6/);
+   assert.match(await page.locator('#place-passage-latin').innerText(),/Campania/i);
+   assert.match(await page.locator('#place-passage-translation').innerText(),/tierra|fuego|Campania/i);
+   assert(await page.locator('#place-passage-latin mark.toponym-match').count()>0,'No se resalta la forma latina de Campania');
+   assert((await page.locator('#place-passage-reader').getAttribute('href')).includes('locus=2.6.6'),'El lector no lleva al pasaje correcto');
+   await page.locator('#place-expand').click();
+   assert.equal(await page.locator('#place-dossier').evaluate(d=>d.open),true);
+   assert.match(await page.locator('#dossier-passage-latin').innerText(),/Campania/i);
+   assert.match(await page.locator('#dossier-passage-translation').innerText(),/tierra|fuego|Campania/i);
+   await page.locator('#dossier-close').click();
+   await page.locator('#place-query').fill('Nilo');
+   await page.locator('[data-place-id="nile"]').click();
+   assert.match(await page.locator('#place-verification').innerText(),/Recorrido fluvial esquemático/i);
+   const geometries=await page.evaluate(()=>({campania:geometryById.get('campania')?.geometry,nile:geometryById.get('nile')?.geometry}));
+   assert.equal(geometries.campania,'polygon');
+   assert.equal(geometries.nile,'polyline');
+   const mapReady=await page.evaluate(()=>typeof L!=='undefined'&&!!map);
+   if(mapReady){
+    const shapeTypes=await page.evaluate(()=>({campania:markerById.get('campania')?.constructor.name,nile:markerById.get('nile')?.constructor.name}));
+    assert(shapeTypes.nile,'No hay línea de río Nilo en el mapa');
+    await page.locator('#map-historic').click();
+    assert.match(await page.locator('#map-layer-status').innerText(),/CAWM|históric|cargar/i);
+   }
+   await page.close();
+ });
 }finally{await browser?.close();server.kill()}
 if(failures.length){console.error('\nAUDITORIA CON FALLOS\n'+failures.join('\n'));process.exitCode=1}else console.log('\nAuditoría básica de navegador completada sin fallos.');
