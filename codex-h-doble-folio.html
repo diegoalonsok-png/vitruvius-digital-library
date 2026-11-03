@@ -365,12 +365,11 @@ function bindSide(name){
  s.stage.addEventListener("pointerdown",e=>{
   if(e.pointerType!=="mouse"||e.button!==0||s.img.hidden)return;
   drag={id:e.pointerId,x:e.clientX,y:e.clientY,left:s.stage.scrollLeft,top:s.stage.scrollTop,moved:false};
-  s.stage.setPointerCapture(e.pointerId);
  });
  s.stage.addEventListener("pointermove",e=>{
   if(drag&&drag.id===e.pointerId){
    const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
-   if(Math.abs(dx)+Math.abs(dy)>5){drag.moved=true;s.stage.classList.add("dragging");$("lens").style.display="none"}
+   if(!drag.moved&&Math.abs(dx)+Math.abs(dy)>5){drag.moved=true;s.stage.classList.add("dragging");s.stage.setPointerCapture(e.pointerId);$("lens").style.display="none"}
    if(drag.moved){s.stage.scrollLeft=drag.left-dx;s.stage.scrollTop=drag.top-dy;updateScroll(name)}
   }else if(loupeEnabled)magnify(name,e);
  });
