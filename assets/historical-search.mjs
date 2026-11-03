@@ -156,7 +156,7 @@ function selectHistoricalEdition(){
  if(link){link.href=id==='perrault-1673'?'https://doi.org/10.3931/e-rara-61952':info.url;link.textContent=id==='perrault-1673'?'Consultar facsímil Perrault en e-rara (sin descarga automática) ↗':'Abrir facsímil '+info.label+' en la biblioteca de origen ↗';}
  if(pdfjs)pdfjs.hidden=true;
  if(ocr)ocr.replaceChildren();
- if(pageLabel){pageLabel.value=id==='perrault-1673'?2:1;pageLabel.disabled=!info.ocr;}
+ if(pageLabel){pageLabel.value=id==='perrault-1673'?2:1;pageLabel.min=id==='perrault-1673'?'2':'1';pageLabel.max=id==='perrault-1673'?'371':id==='rose-1899'?'358':'314';pageLabel.disabled=!info.ocr;}
  const go=document.querySelector('#goto-page button');if(go)go.disabled=!info.ocr;
  const note=document.querySelector('#page-hit-status');if(note)note.textContent=info.ocr?'':'Sin índice OCR ni paginación sincronizada';
  const visual=document.querySelector('#perrault-page-viewer');if(visual){visual.hidden=id!=='perrault-1673';if(id==='perrault-1673')visual.dataset.page='2';}
