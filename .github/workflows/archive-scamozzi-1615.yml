@@ -1,0 +1,28 @@
+name: Archive public domain Scamozzi proportion plate
+on:
+  push:
+    paths:
+      - 'scripts/archive-scamozzi-1615.py'
+      - '.github/workflows/archive-scamozzi-1615.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and validate The Met public domain image
+        run: python scripts/archive-scamozzi-1615.py
+      - name: Commit image into repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/hombre-vitruvio/scamozzi-1615-p40.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Archive The Met CC0 Scamozzi 1615 p40 image"
+            git push
+          fi
