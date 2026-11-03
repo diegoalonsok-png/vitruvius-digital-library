@@ -474,7 +474,7 @@ html[data-theme=light] .passage-bilingual p{color:#343434}
  .article-body h3{break-after:avoid}
  .article-sources,.article-source-list{break-inside:auto}
 }
-</style></head><body>
+.article-toolbar{flex-wrap:wrap;gap:8px}.article-share{background:transparent;color:#ddd;border:1px solid #555;border-radius:9px;padding:9px 13px;cursor:pointer;font:500 12px Arial,sans-serif}.article-share:hover,.article-share:focus-visible{background:#303033;border-color:#aaa}html[data-theme=light] .article-share{color:#262626;border-color:#aaa}@media print{.article-share{display:none!important}}</style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
 <nav class="navlinks" aria-label="Navegación"><a href="index.html">Biblioteca Vitruviana</a><a href="bibliotheca-graeca-latina.html">Autores y libros</a><a href="codex-h-doble-folio.html">Códices</a><a href="metodologia-filologica.html">Método académico</a></nav>
@@ -547,7 +547,7 @@ html[data-theme=light] .passage-bilingual p{color:#343434}
 <section class="results" id="results" aria-live="polite">
 <div class="section-head"><h2 id="results-heading">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
 <section id="vitruvia-article" class="scholar-article" aria-live="polite" aria-label="Artículo de consulta" hidden>
-  <div class="scholar-article-header"><div class="article-toolbar"><button type="button" class="article-print" onclick="window.print()" aria-label="Imprimir artículo y fuentes">Imprimir artículo</button></div><div class="article-kicker" id="article-kicker">VITRUVIA · DOSSIER DOCUMENTAL</div>
+  <div class="scholar-article-header"><div class="article-toolbar"><button type="button" class="article-print" onclick="window.print()" aria-label="Imprimir o guardar como PDF">Imprimir / PDF</button><button type="button" class="article-share" data-channel="whatsapp" aria-label="Compartir por WhatsApp">WhatsApp</button><button type="button" class="article-share" data-channel="email" aria-label="Compartir por correo electrónico">Correo</button><button type="button" class="article-share" data-channel="copy" aria-label="Copiar enlace">Copiar enlace</button></div><div class="article-kicker" id="article-kicker">VITRUVIA · DOSSIER DOCUMENTAL</div>
   <h2 id="article-title"></h2><div class="article-byline" id="article-byline"></div></div>
   <div class="article-grid"><div class="article-body" id="article-body"></div><aside class="article-aside" id="article-aside"></aside></div>
   <div class="article-sources" id="article-sources"></div>
@@ -568,4 +568,19 @@ html[data-theme=light] .passage-bilingual p{color:#343434}
 <script src="assets/vitruvia-research-engine.js?v=20261103-pythagoras-v2" defer></script>
 <script src="assets/vitruvia-article.js?v=20261103-universal-highlight-v3" defer></script>
 <script src="assets/vitruvia-search.js?v=20261103-universal-highlight-v3" defer></script>
-</body></html>
+<script>
+document.addEventListener('click',function(event){
+ const button=event.target.closest('.article-share');if(!button)return;
+ const title=document.getElementById('article-title')?.textContent?.trim()||'Consulta en Vitruvia';
+ const query=new URLSearchParams(location.search).get('q')||document.getElementById('query')?.value?.trim()||title;
+ const url=new URL('vitruvia.html',location.href);url.searchParams.set('q',query);
+ url.searchParams.set('mode',new URLSearchParams(location.search).get('mode')||'all');
+ const text=title+' — Vitruvia\n'+url.href;
+ if(button.dataset.channel==='whatsapp')window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');
+ else if(button.dataset.channel==='email')location.href='mailto:?subject='+encodeURIComponent(title+' — Vitruvia')+'&body='+encodeURIComponent(text);
+ else if(button.dataset.channel==='copy'){
+  if(navigator.clipboard?.writeText)navigator.clipboard.writeText(url.href).then(()=>{button.textContent='Copiado';setTimeout(()=>button.textContent='Copiar enlace',1800)}).catch(()=>window.prompt('Copiá el enlace:',url.href));
+  else window.prompt('Copiá el enlace:',url.href);
+ }
+});
+</script></body></html>
