@@ -427,9 +427,19 @@ html[data-theme=light] #theme:hover{background:#e6e6e9!important}
  padding-right:36px!important;border-radius:11px!important}
 .ai-platform-link .ai-link-icon{color:inherit!important;opacity:.68}
 #theme svg{color:inherit!important}
+
+/* Wordmark replaces the isolated V icon; same editorial identity as the search title. */
+.logo-small{display:inline-flex;align-items:baseline;white-space:nowrap;
+ font:italic 27px/1.15 Georgia,'Times New Roman',serif!important;
+ letter-spacing:-.055em!important;color:var(--ink,#eee)!important;
+ text-decoration:none!important;min-width:0}
+.logo-small .logo-dot{color:#999;font-style:normal;font-size:23px;margin-left:1px}
+.logo-small:hover{opacity:.8}
+@media(max-width:700px){.logo-small{font-size:24px!important;letter-spacing:-.055em!important}.logo-small .logo-dot{font-size:20px}}
+@media(max-width:370px){.logo-small{font-size:21px!important}}
 </style></head><body>
 <div class="site-shell">
-<header class="nav"><a class="logo-small" href="index.html">V<strong>∎</strong></a>
+<header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
 <nav class="navlinks" aria-label="Navegación"><a href="index.html">Biblioteca Vitruviana</a><a href="bibliotheca-graeca-latina.html">Autores y libros</a><a href="codex-h-doble-folio.html">Códices</a><a href="metodologia-filologica.html">Método académico</a></nav>
 <div class="navtools"><select id="ui-language" aria-label="Idioma de interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select><button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button></div>
 </header>
