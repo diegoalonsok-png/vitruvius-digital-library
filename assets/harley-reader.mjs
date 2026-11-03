@@ -20,7 +20,7 @@ async function getManifest(url){const r=await fetch(url,{headers:{Accept:'applic
 async function init(){
  let failures=[];
  for(const url of [manifest,alternative]){
-  try{canvases=await getManifest(url);$('page').max=String(canvases.length);status.textContent='Manifiesto IIIF cargado: '+canvases.length+' imágenes disponibles.';openPage();return;}
+  try{canvases=await getManifest(url);$('page').max=String(canvases.length);status.textContent='Manifiesto IIIF cargado: '+canvases.length+' imágenes disponibles.';const image=Number(new URLSearchParams(location.search).get('image'));if(Number.isInteger(image)&&image>=1&&image<=canvases.length)$('page').value=String(image);openPage();return;}
   catch(e){failures.push(e.message)}
  }
  status.textContent='No se pudo recuperar el manifiesto IIIF desde este navegador ('+failures.join('; ')+'). Consultá el visor de la British Library mediante el enlace inferior.';
