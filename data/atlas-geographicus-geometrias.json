@@ -1,0 +1,502 @@
+{
+  "schema": "atlas-illustrative-geometries-v1",
+  "updated": "2026-11-03",
+  "license": "Geometrías esquemáticas editoriales creadas para este atlas; no se pretende reconstruir fronteras históricas ni cursos fluviales exactos.",
+  "methodology": "Los polígonos marcan zonas generales de referencia, NO límites políticos o administrativos de la época de Vitruvio. Las líneas de ríos son recorridos esquemáticos seleccionados manualmente sobre geografía actual, NO hidrografía antigua georreferenciada. En vista histórica, la base CAWM utiliza reconstrucciones de antigüedad de periodización amplia, no un corte preciso del siglo I a. C.",
+  "regions": [
+    {
+      "id": "campania",
+      "kind": "region",
+      "geometry": "polygon",
+      "coordinates": [
+        [
+          41.48,
+          14.11
+        ],
+        [
+          41.49,
+          14.77
+        ],
+        [
+          41.18,
+          15.15
+        ],
+        [
+          40.75,
+          15.32
+        ],
+        [
+          40.1,
+          15.43
+        ],
+        [
+          40.04,
+          14.76
+        ],
+        [
+          40.35,
+          14.58
+        ],
+        [
+          40.58,
+          14.08
+        ],
+        [
+          40.79,
+          13.85
+        ],
+        [
+          41.1,
+          13.95
+        ]
+      ],
+      "certainty": "zona esquemática de referencia",
+      "label": "Campania · zona referencial"
+    },
+    {
+      "id": "sicily",
+      "kind": "region",
+      "geometry": "polygon",
+      "coordinates": [
+        [
+          38.22,
+          15.65
+        ],
+        [
+          37.9,
+          15.85
+        ],
+        [
+          37.4,
+          15.31
+        ],
+        [
+          36.64,
+          15.1
+        ],
+        [
+          36.65,
+          14.13
+        ],
+        [
+          36.89,
+          13.29
+        ],
+        [
+          37.52,
+          12.43
+        ],
+        [
+          38.03,
+          12.42
+        ],
+        [
+          38.3,
+          13.1
+        ],
+        [
+          38.24,
+          14.2
+        ]
+      ],
+      "certainty": "contorno insular muy generalizado, no límite antiguo",
+      "label": "Sicilia · isla y región"
+    },
+    {
+      "id": "italy",
+      "kind": "region",
+      "geometry": "polygon",
+      "coordinates": [
+        [
+          46.25,
+          6.9
+        ],
+        [
+          46.4,
+          10
+        ],
+        [
+          46.7,
+          13.7
+        ],
+        [
+          45.2,
+          13.9
+        ],
+        [
+          44.15,
+          12.6
+        ],
+        [
+          42.95,
+          14.15
+        ],
+        [
+          41.8,
+          16.5
+        ],
+        [
+          40.25,
+          17.7
+        ],
+        [
+          39,
+          17.3
+        ],
+        [
+          37.9,
+          16.25
+        ],
+        [
+          38.3,
+          15.4
+        ],
+        [
+          40.2,
+          15.5
+        ],
+        [
+          41.6,
+          13.65
+        ],
+        [
+          42.8,
+          12.4
+        ],
+        [
+          44,
+          9.2
+        ],
+        [
+          45.15,
+          7.1
+        ]
+      ],
+      "certainty": "envolvente esquemática peninsular; Italia no equivale a un Estado moderno",
+      "label": "Italia · territorio general"
+    },
+    {
+      "id": "egypt",
+      "kind": "region",
+      "geometry": "polygon",
+      "coordinates": [
+        [
+          31.35,
+          24.75
+        ],
+        [
+          31.8,
+          26.6
+        ],
+        [
+          31.55,
+          31.9
+        ],
+        [
+          31,
+          34.1
+        ],
+        [
+          28.3,
+          33.6
+        ],
+        [
+          25.1,
+          33.5
+        ],
+        [
+          22,
+          31.9
+        ],
+        [
+          22.1,
+          25.1
+        ],
+        [
+          25,
+          25
+        ],
+        [
+          27.5,
+          24.9
+        ]
+      ],
+      "certainty": "envolvente esquemática amplia, no frontera faraónica/romana",
+      "label": "Aegyptus · referencia regional"
+    }
+  ],
+  "rivers": [
+    {
+      "id": "tiber",
+      "kind": "rio",
+      "geometry": "polyline",
+      "coordinates": [
+        [
+          43.78,
+          12.07
+        ],
+        [
+          43.5,
+          12.14
+        ],
+        [
+          43.28,
+          12.4
+        ],
+        [
+          42.93,
+          12.44
+        ],
+        [
+          42.77,
+          12.41
+        ],
+        [
+          42.48,
+          12.4
+        ],
+        [
+          42.1,
+          12.39
+        ],
+        [
+          41.93,
+          12.47
+        ],
+        [
+          41.76,
+          12.27
+        ]
+      ],
+      "certainty": "curso esquemático; no polilínea hidrográfica exacta"
+    },
+    {
+      "id": "nile",
+      "kind": "rio",
+      "geometry": "polyline",
+      "coordinates": [
+        [
+          15.61,
+          32.55
+        ],
+        [
+          17.49,
+          33.96
+        ],
+        [
+          18.12,
+          33.96
+        ],
+        [
+          19.6,
+          33.3
+        ],
+        [
+          21.9,
+          31.28
+        ],
+        [
+          24.09,
+          32.89
+        ],
+        [
+          25.7,
+          32.67
+        ],
+        [
+          27.2,
+          31.18
+        ],
+        [
+          28.73,
+          30.98
+        ],
+        [
+          30.04,
+          31.25
+        ],
+        [
+          30.83,
+          31.02
+        ],
+        [
+          31.2,
+          30.98
+        ]
+      ],
+      "certainty": "trazado esquemático del Nilo principal; delta y afluentes omitidos"
+    },
+    {
+      "id": "euphrates",
+      "kind": "rio",
+      "geometry": "polyline",
+      "coordinates": [
+        [
+          39.73,
+          38.5
+        ],
+        [
+          38.84,
+          38.64
+        ],
+        [
+          38.28,
+          38.14
+        ],
+        [
+          37.43,
+          37.99
+        ],
+        [
+          36.74,
+          38.04
+        ],
+        [
+          36.4,
+          38.45
+        ],
+        [
+          35.77,
+          39.55
+        ],
+        [
+          35,
+          40.55
+        ],
+        [
+          34.44,
+          41
+        ],
+        [
+          33.51,
+          43.36
+        ],
+        [
+          32.61,
+          44.39
+        ],
+        [
+          31.9,
+          45.59
+        ],
+        [
+          30.99,
+          47.37
+        ]
+      ],
+      "certainty": "recorrido de referencia; no georreferenciación antigua precisa"
+    },
+    {
+      "id": "tigris",
+      "kind": "rio",
+      "geometry": "polyline",
+      "coordinates": [
+        [
+          38.14,
+          40.2
+        ],
+        [
+          37.82,
+          40.37
+        ],
+        [
+          37.25,
+          41.25
+        ],
+        [
+          36.39,
+          42.23
+        ],
+        [
+          35.65,
+          43.12
+        ],
+        [
+          34.97,
+          43.85
+        ],
+        [
+          33.3,
+          44.38
+        ],
+        [
+          32.6,
+          45.44
+        ],
+        [
+          31.4,
+          46.68
+        ],
+        [
+          30.99,
+          47.37
+        ]
+      ],
+      "certainty": "recorrido de referencia; no georreferenciación antigua precisa"
+    },
+    {
+      "id": "ganges",
+      "kind": "rio",
+      "geometry": "polyline",
+      "coordinates": [
+        [
+          30.93,
+          78.65
+        ],
+        [
+          30.18,
+          78.33
+        ],
+        [
+          29.95,
+          78.26
+        ],
+        [
+          29.57,
+          78.58
+        ],
+        [
+          29.19,
+          79.22
+        ],
+        [
+          28.1,
+          80.82
+        ],
+        [
+          27.68,
+          82.41
+        ],
+        [
+          26.95,
+          84.16
+        ],
+        [
+          25.6,
+          85.13
+        ],
+        [
+          25.31,
+          87.06
+        ],
+        [
+          24.25,
+          88.25
+        ],
+        [
+          23.7,
+          89.48
+        ],
+        [
+          23.2,
+          90.45
+        ],
+        [
+          22.15,
+          90.85
+        ]
+      ],
+      "certainty": "trayecto amplio simplificado; curso fluvial histórico no reconstruido"
+    }
+  ]
+}
