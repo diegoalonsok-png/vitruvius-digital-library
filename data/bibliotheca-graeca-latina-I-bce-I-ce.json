@@ -1810,6 +1810,143 @@
       },
       "publicStatus": "pendiente-de-incorporar",
       "localReader": null
+    },
+    {
+      "language": "la",
+      "genre": "Arquitectura · ediciones de Vitruvio",
+      "dating": "Edición editorial, 2026",
+      "manuscript": {
+        "manifest": null,
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+      },
+      "translation": {
+        "status": "Consultar la información bibliográfica y el documento PDF."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20architectura%20libri%20decem%20Marco%20Vitruvio%20Poli%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20architectura%20libri%20decem"
+      },
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "pdf": {
+        "url": "documents/kurilo-recensio-es.pdf",
+        "status": "PDF completo alojado en GitHub, edición V514 de Diego A. Kurilo; 11,0 MB."
+      },
+      "localReader": {
+        "original": "data/structured/recensio-es.json",
+        "verified": true
+      },
+      "defaultLanguage": "es",
+      "reading": {
+        "url": null,
+        "status": "Lectura integral disponible en PDF dentro del visor."
+      },
+      "publicStatus": "lectura-local-completa"
+    },
+    {
+      "language": "la",
+      "genre": "Arquitectura · ediciones de Vitruvio",
+      "dating": "Edición editorial, 2026",
+      "manuscript": {
+        "manifest": null,
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+      },
+      "translation": {
+        "status": "Consultar la información bibliográfica y el documento PDF."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20architectura%20libri%20decem%20Marco%20Vitruvio%20Poli%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20architectura%20libri%20decem"
+      },
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "pdf": {
+        "url": "documents/kurilo-recensio-fr.pdf",
+        "status": "PDF completo alojado en GitHub, edición V554 de Diego A. Kurilo; 11,1 MB."
+      },
+      "localReader": {
+        "original": "data/structured/recensio-fr.json",
+        "verified": true
+      },
+      "defaultLanguage": "fr",
+      "reading": {
+        "url": null,
+        "status": "Lectura integral disponible en PDF dentro del visor."
+      },
+      "publicStatus": "lectura-local-completa"
+    },
+    {
+      "language": "la",
+      "genre": "Arquitectura · ediciones de Vitruvio",
+      "dating": "Edición editorial, 2026",
+      "manuscript": {
+        "manifest": null,
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+      },
+      "translation": {
+        "status": "Consultar la información bibliográfica y el documento PDF."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20architectura%20libri%20decem%20Marco%20Vitruvio%20Poli%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20architectura%20libri%20decem"
+      },
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "pdf": {
+        "url": "documents/kurilo-theory-en.pdf",
+        "status": "PDF completo alojado en GitHub, edición V297, The Architect of Theory, de Diego A. Kurilo; 11,8 MB."
+      },
+      "localReader": {
+        "original": "data/structured/theory-en.json",
+        "verified": true
+      },
+      "defaultLanguage": "en",
+      "reading": {
+        "url": null,
+        "status": "Lectura integral disponible en PDF dentro del visor."
+      },
+      "publicStatus": "lectura-local-completa"
+    },
+    {
+      "language": "la",
+      "genre": "Arquitectura · ediciones de Vitruvio",
+      "dating": "Edición crítica impresa, 1912",
+      "manuscript": {
+        "manifest": null,
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+      },
+      "translation": {
+        "status": "Consultar la información bibliográfica y el documento PDF."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=De%20architectura%20libri%20decem%20Marco%20Vitruvio%20Poli%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20architectura%20libri%20decem"
+      },
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "pdf": {
+        "url": "documents/krohn-1912.pdf",
+        "status": "PDF de la edición de Fritz Krohn (1912) alojado en GitHub; 22,0 MB. No se ha establecido alineación textual por locus."
+      },
+      "localReader": null,
+      "defaultLanguage": "la",
+      "reading": {
+        "url": null,
+        "status": "Lectura integral disponible en PDF dentro del visor."
+      },
+      "publicStatus": "lectura-local-completa"
     }
   ],
   "pdfPolicy": {
