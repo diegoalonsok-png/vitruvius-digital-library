@@ -229,6 +229,19 @@ function bindAcademia(){
  }
 }
 function makeLink(label,url){const a=anchor(label,url);return a}
+function markTerms(root,query){
+ const words=[...new Set(String(query||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(x=>x.length>=3))].slice(0,8);
+ if(!words.length)return;
+ const normText=x=>String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode()){const n=walker.currentNode;if(n.parentElement?.closest("a,button,mark,script,style"))continue;if(n.textContent.trim())nodes.push(n)}
+ for(const n of nodes){const original=n.textContent,normalized=normText(original);let hits=[];
+ for(const term of words){let from=0,i;while((i=normalized.indexOf(term,from))!==-1){hits.push([i,i+term.length]);from=i+term.length;if(hits.length>100)break}}
+ if(!hits.length)continue;hits.sort((x,y)=>x[0]-y[0]);const frag=document.createDocumentFragment();let end=0;
+ for(const [start,stop] of hits){if(start<end)continue;if(start>end)frag.append(document.createTextNode(original.slice(end,start)));const m=document.createElement("mark");m.className="query-hit";m.textContent=original.slice(start,stop);frag.append(m);end=stop}
+ if(end<original.length)frag.append(document.createTextNode(original.slice(end)));n.replaceWith(frag);
+ }
+}
 function renderCard(d){
  const card=node("article","result-card"),head=node("div","result-head"),title=node("div");
  title.append(node("span","kind",T()[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
@@ -254,7 +267,7 @@ function display(rows,query,phase){
  for(const r of scored){const k=r.type+":"+norm(r.title);if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  if(!deduped.length)list.append(node("div","empty",T().none));
- else for(const r of deduped.slice(0,44))list.append(renderCard(r));
+ else for(const r of deduped.slice(0,44)){const card=renderCard(r);if(r.type==='passage')markTerms(card,query);list.append(card)}
  if(window.VitruviaArticles){$("answer").hidden=true;window.VitruviaArticles.render(deduped,query)}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
  $("result-state").textContent=deduped.length+" coincidencias · "+Math.min(44,deduped.length)+" visibles"+(phase?" · "+phase:"")
