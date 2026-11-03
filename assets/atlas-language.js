@@ -36,7 +36,7 @@ function translate(root=document.body){
   for(const [node,value] of pending)node.nodeValue=value;
   for(const p of PARAGRAPHS){
     const el=document.getElementById(p[0]);
-    if(el)el.textContent=p[LANGS.indexOf(current)+1]||p[1];
+    if(el){const value=p[LANGS.indexOf(current)+1]||p[1];if(el.textContent!==value)el.textContent=value;}
   }
   document.documentElement.lang=current;
  }finally{updating=false;}
