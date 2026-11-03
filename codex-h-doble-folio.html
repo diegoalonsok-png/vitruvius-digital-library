@@ -108,17 +108,22 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
  .leaf-stage img[hidden],.leaf-stage .placeholder{display:none!important}
  .leaf-foot{font-size:9px;padding:4px;background:#fff!important;color:#111!important}
 }
+
+/* Controles superiores y barra de tratamiento de imagen visibles en ambas hojas. */
+.extra-toolbar{margin:0 0 12px;position:relative;z-index:2;justify-content:flex-end}
+.quick-image-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-left:auto}
+.quick-image-tools button{min-height:33px;padding:5px 8px;font-size:11px}
+.quick-image-tools button[aria-pressed=true]{background:#b68436!important;color:#182d3b!important;box-shadow:inset 0 0 0 2px #f7e8ce}
+.quick-image-tools label{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-size:11px}
+.quick-image-tools input[type=range]{width:90px;accent-color:#ad8248}
+.quick-image-tools output{font-size:11px;font-variant-numeric:tabular-nums}
+#loupe-toggle[aria-pressed=true]{outline:2px solid #c29a5e;outline-offset:0}
+#loupe-toggle[aria-pressed=false]{opacity:.8}
+#reader-language{max-width:145px}
+.leaf-tools{gap:6px}
+@media(max-width:700px){.extra-toolbar{justify-content:flex-start}.quick-image-tools{margin-left:0}.quick-image-tools label{flex:1 1 120px}}
 </style></head><body><main>
 <nav><a href="index.html">← Biblioteca principal</a><a href="codex-h-folios-local.html">Lector de folio único</a><a href="harleianus.html">Visor H original</a></nav>
-<header class="banner"><small>BIBLIOTHECA VITRUVII · CODEX HARLEIANUS 2767</small>
-<h1>Codex H · Doble hoja</h1>
-<p>Vitruvio, <em>De architectura</em>. British Library, Harley MS 2767, primer cuarto del siglo IX. Lectura del manuscrito en dos páginas enfrentadas, sin traducciones; ampliación y lupa independientes.</p></header>
-<p class="notice"><strong>Criterio codicológico:</strong> en un códice abierto se enfrenta normalmente un <em>verso</em> a la izquierda con el <em>recto</em> siguiente a la derecha (por ejemplo, f.1v y f.2r). El f.1r es una apertura inicial independiente. Cubiertas y guardas se mantienen identificadas en el índice original, pero no se emparejan arbitrariamente como folios de texto.</p>
-<div class="toolbar" aria-label="Navegación de aperturas"><button id="previous" type="button" disabled>← Apertura anterior</button>
-<strong id="spread-label">Apertura —</strong><button id="following" type="button" disabled>Apertura siguiente →</button>
-<label for="folio-search">Ir a folio o imagen</label><input id="folio-search" class="jump" type="search" placeholder="f.1v · f.20r · 10">
-<button id="go" type="button" disabled>Ir</button><span id="spread-total"></span>
-<button id="fit-both" type="button" disabled>Ajustar ambas</button></div>
 <div class="extra-toolbar" role="group" aria-label="Herramientas de lectura">
 <label for="reader-language"><span data-tr="language">Idioma</span><select id="reader-language" aria-label="Idioma de interfaz">
 <option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label>
@@ -128,10 +133,25 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 <button type="button" id="email-spread">✉ <span data-tr="email">Enviar por correo</span></button>
 <button type="button" id="whatsapp-spread">✆ <span data-tr="whatsapp">Compartir por WhatsApp</span></button>
 </div>
+<header class="banner"><small>BIBLIOTHECA VITRUVII · CODEX HARLEIANUS 2767</small>
+<h1>Codex H · Doble hoja</h1>
+<p>Vitruvio, <em>De architectura</em>. British Library, Harley MS 2767, primer cuarto del siglo IX. Lectura del manuscrito en dos páginas enfrentadas, sin traducciones; ampliación y lupa independientes.</p></header>
+<p class="notice"><strong>Criterio codicológico:</strong> en un códice abierto se enfrenta normalmente un <em>verso</em> a la izquierda con el <em>recto</em> siguiente a la derecha (por ejemplo, f.1v y f.2r). El f.1r es una apertura inicial independiente. Cubiertas y guardas se mantienen identificadas en el índice original, pero no se emparejan arbitrariamente como folios de texto.</p>
+<div class="toolbar" aria-label="Navegación de aperturas"><button id="previous" type="button" disabled>← Apertura anterior</button>
+<strong id="spread-label">Apertura —</strong><button id="following" type="button" disabled>Apertura siguiente →</button>
+<label for="folio-search">Ir a folio o imagen</label><input id="folio-search" class="jump" type="search" placeholder="f.1v · f.20r · 10">
+<button id="go" type="button" disabled>Ir</button><span id="spread-total"></span>
+<button id="fit-both" type="button" disabled>Ajustar ambas</button></div>
+
 <p id="status" role="status">Cargando índice local de imágenes alojadas en GitHub…</p>
 <section class="book" aria-label="Libro abierto con doble folio">
 <article class="leaf left"><div class="leaf-title"><strong id="left-label">Folio izquierdo</strong><small id="left-meta">Verso</small></div>
-<div class="leaf-tools"><button id="left-minus" type="button" disabled>−</button><button id="left-plus" type="button" disabled>+ Ampliar</button><button id="left-fit" type="button" disabled>Ajustar</button><output id="left-percent">100%</output><small>Lupa al pasar el cursor</small></div>
+<div class="leaf-tools"><button id="left-minus" type="button" disabled>−</button><button id="left-plus" type="button" disabled>+ Ampliar</button><button id="left-fit" type="button" disabled>Ajustar</button><output id="left-percent">100%</output><div class="quick-image-tools" role="group" aria-label="Ajustes rápidos del folio left">
+<button type="button" id="left-quick-invert" aria-pressed="false"><span data-tr="quickInvert">Invertir</span></button>
+<button type="button" id="left-quick-bw" aria-pressed="false"><span data-tr="quickBW">Blanco y negro</span></button>
+<label><span data-tr="contrast">Contraste</span> <input type="range" id="left-quick-contrast" min="40" max="220" value="100" aria-label="Contraste del folio left"><output id="left-quick-contrast-value">100%</output></label>
+<button type="button" id="left-quick-panel"><span data-tr="quickMore">Más ajustes</span></button>
+</div></div>
 <div class="leaf-stage" id="left-stage" tabindex="0"><div class="placeholder" id="left-placeholder">Esperando el índice…</div><img id="left-image" alt="Folio izquierdo" hidden></div>
 <div class="scroll-nav">
 <label><span data-tr="scroll">Bajar por el folio</span>
@@ -152,7 +172,12 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 </div></details>
 <div class="leaf-foot" id="left-foot">—</div></article>
 <article class="leaf right"><div class="leaf-title"><strong id="right-label">Folio derecho</strong><small id="right-meta">Recto</small></div>
-<div class="leaf-tools"><button id="right-minus" type="button" disabled>−</button><button id="right-plus" type="button" disabled>+ Ampliar</button><button id="right-fit" type="button" disabled>Ajustar</button><output id="right-percent">100%</output><small>Lupa al pasar el cursor</small></div>
+<div class="leaf-tools"><button id="right-minus" type="button" disabled>−</button><button id="right-plus" type="button" disabled>+ Ampliar</button><button id="right-fit" type="button" disabled>Ajustar</button><output id="right-percent">100%</output><div class="quick-image-tools" role="group" aria-label="Ajustes rápidos del folio right">
+<button type="button" id="right-quick-invert" aria-pressed="false"><span data-tr="quickInvert">Invertir</span></button>
+<button type="button" id="right-quick-bw" aria-pressed="false"><span data-tr="quickBW">Blanco y negro</span></button>
+<label><span data-tr="contrast">Contraste</span> <input type="range" id="right-quick-contrast" min="40" max="220" value="100" aria-label="Contraste del folio right"><output id="right-quick-contrast-value">100%</output></label>
+<button type="button" id="right-quick-panel"><span data-tr="quickMore">Más ajustes</span></button>
+</div></div>
 <div class="leaf-stage" id="right-stage" tabindex="0"><div class="placeholder" id="right-placeholder">Esperando el índice…</div><img id="right-image" alt="Folio derecho" hidden></div>
 <div class="scroll-nav">
 <label><span data-tr="scroll">Bajar por el folio</span>
@@ -189,6 +214,7 @@ let images=[],spreads=[],active=0,visible=0,filtered=[],lensSource=null,folioToS
 const sides={left:{stage:$("left-stage"),img:$("left-image"),label:$("left-label"),meta:$("left-meta"),foot:$("left-foot"),empty:$("left-placeholder"),zoom:100,serial:0},right:{stage:$("right-stage"),img:$("right-image"),label:$("right-label"),meta:$("right-meta"),foot:$("right-foot"),empty:$("right-placeholder"),zoom:100,serial:0}};
 const url=f=>dir+encodeURIComponent(f.archivo);
 
+const quickTranslations={es:{quickInvert:"Invertir",quickBW:"Blanco y negro",quickMore:"Más ajustes"},en:{quickInvert:"Invert",quickBW:"Black & white",quickMore:"More settings"},fr:{quickInvert:"Inverser",quickBW:"Noir et blanc",quickMore:"Plus de réglages"},it:{quickInvert:"Inverti",quickBW:"Bianco e nero",quickMore:"Altre opzioni"},de:{quickInvert:"Invertieren",quickBW:"Schwarzweiß",quickMore:"Mehr Optionen"},pt:{quickInvert:"Inverter",quickBW:"Preto e branco",quickMore:"Mais ajustes"}};
 const locale={
  es:{language:"Idioma",dark:"Modo oscuro",light:"Modo claro",loupeOn:"Desactivar lupa",loupeOff:"Activar lupa",print:"Imprimir apertura",email:"Enviar por correo",whatsapp:"Compartir por WhatsApp",scroll:"Bajar por el folio",top:"↑ Arriba",bottom:"Abajo ↓",filters:"Ajustes de imagen · opacidad, colores y contraste",opacity:"Opacidad",brightness:"Brillo",contrast:"Contraste",saturation:"Saturación",grayscale:"Escala de grises",sepia:"Sepia",invert:"Invertir colores",reset:"Restablecer imagen",prev:"← Apertura anterior",next:"Apertura siguiente →",fit:"Ajustar ambas",go:"Ir",jump:"Ir a folio o imagen",zoom:"+ Ampliar",oneFit:"Ajustar"},
  en:{language:"Language",dark:"Dark mode",light:"Light mode",loupeOn:"Disable magnifier",loupeOff:"Enable magnifier",print:"Print opening",email:"Send by email",whatsapp:"Share via WhatsApp",scroll:"Scroll down folio",top:"↑ Top",bottom:"Bottom ↓",filters:"Image adjustments · opacity, color and contrast",opacity:"Opacity",brightness:"Brightness",contrast:"Contrast",saturation:"Saturation",grayscale:"Grayscale",sepia:"Sepia",invert:"Invert colors",reset:"Reset image",prev:"← Previous opening",next:"Next opening →",fit:"Fit both",go:"Go",jump:"Go to folio or image",zoom:"+ Zoom",oneFit:"Fit"},
@@ -202,7 +228,7 @@ try{const saved=localStorage.getItem("vitruvius-ui-lang");if(locale[saved])curre
 function paintUI(){
  const t=locale[currentLanguage]||locale.es;
  document.documentElement.lang=currentLanguage;
- document.querySelectorAll("[data-tr]").forEach(el=>{const key=el.dataset.tr;if(t[key])el.textContent=t[key]});
+ document.querySelectorAll("[data-tr]").forEach(el=>{const key=el.dataset.tr;const v=quickTranslations[currentLanguage]||quickTranslations.es;if(t[key]||v[key])el.textContent=t[key]||v[key]});
  $("previous").textContent=t.prev;$("following").textContent=t.next;
  $("fit-both").textContent=t.fit;$("go").textContent=t.go;
  document.querySelector('label[for="folio-search"]').textContent=t.jump;
@@ -212,7 +238,7 @@ function paintUI(){
  $("reader-theme").setAttribute("aria-pressed",String(readerTheme==="dark"));
  $("reader-theme").querySelector("span").textContent=readerTheme==="dark"?t.light:t.dark;
  $("loupe-toggle").setAttribute("aria-pressed",String(loupeEnabled));
- $("loupe-toggle").querySelector("span").textContent=loupeEnabled?t.loupeOn:t.loupeOff;
+ $("loupe-toggle").querySelector("span").textContent=(loupeEnabled?"● ":"○ ")+(loupeEnabled?t.loupeOn:t.loupeOff);
 }
 $("reader-language").addEventListener("change",e=>{currentLanguage=e.target.value;try{localStorage.setItem("vitruvius-ui-lang",currentLanguage)}catch(e){}paintUI()});
 $("reader-theme").addEventListener("click",()=>{readerTheme=readerTheme==="dark"?"light":"dark";try{localStorage.setItem("vitruvius-color-theme",readerTheme)}catch(e){}paintUI()});
@@ -247,6 +273,10 @@ function applyFilters(name){
  for(const key of keys)$(name+"-"+key+"-out").textContent=val(key)+"%";
  s.img.style.opacity=String(val("opacity")/100);
  s.img.style.filter="brightness("+val("brightness")+"%) contrast("+val("contrast")+"%) saturate("+val("saturation")+"%) grayscale("+val("grayscale")+"%) sepia("+val("sepia")+"%) invert("+($(name+"-invert").checked?1:0)+")";
+ $(name+"-quick-invert").setAttribute("aria-pressed",String($(name+"-invert").checked));
+ $(name+"-quick-bw").setAttribute("aria-pressed",String(val("grayscale")===100));
+ $(name+"-quick-contrast").value=String(val("contrast"));
+ $(name+"-quick-contrast-value").textContent=val("contrast")+"%";
 }
 
 const normalized=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");
@@ -389,6 +419,10 @@ function bindSide(name){
  });
  $(name+"-top").addEventListener("click",()=>{s.stage.scrollTop=0;updateScroll(name)});
  $(name+"-bottom").addEventListener("click",()=>{s.stage.scrollTop=s.stage.scrollHeight;updateScroll(name)});
+ $(name+"-quick-invert").addEventListener("click",()=>{$(name+"-invert").checked=!$(name+"-invert").checked;applyFilters(name)});
+ $(name+"-quick-bw").addEventListener("click",()=>{$(name+"-grayscale").value=Number($(name+"-grayscale").value)===100?"0":"100";applyFilters(name)});
+ $(name+"-quick-contrast").addEventListener("input",e=>{$(name+"-contrast").value=e.target.value;applyFilters(name)});
+ $(name+"-quick-panel").addEventListener("click",()=>{const panel=$(name+"-quick-panel").closest(".leaf").querySelector("details.filters");panel.open=!panel.open;if(panel.open)panel.scrollIntoView({behavior:"smooth",block:"nearest"})});
  for(const key of ["opacity","brightness","contrast","saturation","grayscale","sepia"]){
   $(name+"-"+key).addEventListener("input",()=>applyFilters(name));
  }
