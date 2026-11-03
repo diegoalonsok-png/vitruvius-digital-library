@@ -42,12 +42,87 @@ function locus(q){
  const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
  return String(romans[m[1].toUpperCase()]||Number(m[1]))+"."+Number(m[2])+"."+Number(m[3])
 }
+/* Structural route: recognize Vitruvius prefaces before any lexical or web ranking.
+   Includes Spanish, Latin, English, French, Italian and Portuguese terms. */
+const romanBook={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+const ordinalBook={
+ primer:1,primero:1,primera:1,first:1,premier:1,premiere:1,primi:1,primus:1,primo:1,
+ segundo:2,segunda:2,second:2,secondo:2,secundi:2,secundus:2,deuxieme:2,
+ tercero:3,tercero:3,tercera:3,third:3,tertii:3,tertius:3,troisieme:3,
+ cuarto:4,cuarta:4,fourth:4,quarti:4,quartus:4,quatrieme:4,
+ quinto:5,quinta:5,fifth:5,quinti:5,quintus:5,cinquieme:5,
+ sexto:6,sexta:6,sixth:6,sexti:6,sextus:6,sixieme:6,
+ septimo:7,septima:7,seventh:7,septimi:7,septimus:7,septieme:7,
+ octavo:8,octava:8,eighth:8,octavi:8,octavus:8,huitieme:8,
+ noveno:9,novena:9,ninth:9,noni:9,nonus:9,neuvieme:9,
+ decimo:10,decima:10,tenth:10,decimi:10,decimus:10,dixieme:10
+};
+function resolveBook(value){
+ if(!value)return null;
+ const w=String(value).toLowerCase();
+ const n=/^\d{1,2}$/.test(w)?Number(w):romanBook[w]||ordinalBook[w]||null;
+ return n>=1&&n<=10?n:null;
+}
+function prefaceIntent(query){
+ const n=canonical(query);
+ const direct=n.match(/\b(x|ix|viii|vii|vi|v|iv|iii|ii|i|10|[1-9])\s*[.:]\s*(?:praef|praefatio|pref|prefacio|preface|prolog(?:o|ue|us)?)\b(?:\s*[.:]\s*(\d{1,2}))?/);
+ if(direct)return {book:resolveBook(direct[1]),section:direct[2]?Number(direct[2]):null};
+ if(!/\b(prefacio|prefacios|preface|prefaces|praefatio|praefationes|praefat(?:io|ionem|iones|ory)|praef|prologo|prologue|prologus|proemio|proemium|prooemium|prefazione|introduccion)\b/.test(n))return null;
+ const parts=n.split(/\s+/),bookTerms=new Set(["libro","libros","liber","libri","librum","book","books","livre","livres","livro","livros","tomo","volumen","volume"]);
+ let book=null;
+ for(let i=0;i<parts.length;i++){
+  if(!bookTerms.has(parts[i]))continue;
+  for(const j of [i+1,i+2,i-1,i-2]){
+   if(j<0||j>=parts.length)continue;
+   const candidate=resolveBook(parts[j]);
+   if(candidate){book=candidate;break}
+  }
+  if(book)break;
+ }
+ // Queries such as "praefatio I" or "prefacio 1" also designate a book.
+ if(!book&&parts.length<=5){
+  for(const word of parts){book=resolveBook(word);if(book)break}
+ }
+ return {book,section:null};
+}
+let prefacesPromise=null;
+function getPrefaces(){
+ if(!prefacesPromise)prefacesPromise=fetchJSON("vitruvia-prefaces.json").then(json=>{
+  if(!Array.isArray(json.entries)||json.entries.length<130)throw Error("Índice de prefacios incompleto");
+  return json.entries;
+ }).catch(err=>{prefacesPromise=null;throw err});
+ return prefacesPromise
+}
+function prefaceRows(intent,entries,preferred="es"){
+ const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+ const items=entries.filter(p=>(!intent.book||p.book===intent.book)&&(!intent.section||p.locus.endsWith("."+intent.section)));
+ const groups=new Map();
+ for(const p of items){
+  const key=p.book+":"+p.edition;
+  if(!groups.has(key))groups.set(key,{book:p.book,edition:p.edition,language:p.language,version:p.version,sections:[]});
+  groups.get(key).sections.push(p);
+ }
+ return [...groups.values()].map(g=>{
+  g.sections.sort((a,b)=>Number(a.locus.split(".").at(-1))-Number(b.locus.split(".").at(-1)));
+  const first=g.sections[0],start=first?.locus||g.book+".praef.1";
+  return {type:"preface",title:"De architectura · Prefacio del Libro "+roman[g.book]+" · "+g.version,
+   author:"Marco Vitruvio Polión · "+(g.language==="en"?"inglés":"castellano")+" · "+g.version,
+   excerpt:first?.translation?.slice(0,350)||first?.latin?.slice(0,350)||"",
+   meta:"Praefatio libri "+roman[g.book]+" · "+g.sections.length+" secciones verificadas · "+g.version,
+   rating:6000-(intent.book?0:g.book*2)+(g.language===preferred?3:0),
+   link:"lector-bilingue.html?edition="+encodeURIComponent(g.edition)+"&locus="+encodeURIComponent(start),
+   source:g.version,edition:g.edition,locus:start,book:g.book,prefaceBook:g.book,
+   sections:g.sections,language:g.language};
+ }).sort((a,b)=>b.rating-a.rating)
+}
+
 function classify(q){
  const n=canonical(q),l=locus(q),c=/\b(codex|manuscrit|manuscrito|manuscrit|manuscript|folio|harleianus|harley|gudianus|pithoeanus|vaticanus|scletstatensis|eton|plut)\b/.test(n);
  const bib=/\b(bibliograf|edicion|edition|krohn|rose|perrault|barbaro|sulpizio|cesariano|giocondo|isbn|doi)\b/.test(n);
  const h=/\b(harleianus|2767)\b/.test(n)||/\bcodex\s+h\b/.test(n);
  const genericVitruvian=c&&/\b(vitruvio|architectura|vitruvian\w*|vitruviano\w*|vitruvii)\b/.test(n);
- return {locus:l,codex:c,harley:h,vitruvian:genericVitruvian,edition:bib,kind:l?"locus":c?"manuscript":bib?"bibliography":"concept"};
+ const preface=prefaceIntent(q);
+ return {locus:l,preface,codex:c,harley:h,vitruvian:genericVitruvian,edition:bib,kind:preface?"preface":l?"locus":c?"manuscript":bib?"bibliography":"concept"};
 }
 async function fetchJSON(url){const response=await fetch(base+url,{headers:{accept:"application/json"}});if(!response.ok)throw Error("Archivo no disponible: "+url+" ("+response.status+")");return response.json()}
 function getCorpora(){if(!corporaPromise)corporaPromise=Promise.allSettled(catalogPaths.map(fetchJSON)).then(res=>{
@@ -124,6 +199,11 @@ function passageRows(q,corpora,{concept=false,limit=18}={}){
 }
 async function query(q,opts={}){
  const result={query:q,intent:classify(q),rows:[],warnings:[]};
+ if(result.intent.preface){
+  try{result.rows=prefaceRows(result.intent.preface,await getPrefaces(),opts.language||"es")}
+  catch(err){result.warnings.push("Índice de prefacios: "+err.message)}
+  return result
+ }
  const tasks=[getCorpora(),getCodices()];
  const [p,c]=await Promise.allSettled(tasks);
  if(p.status==="fulfilled")result.rows.push(...passageRows(q,p.value,{concept:!!opts.concept}));
@@ -134,5 +214,5 @@ async function query(q,opts={}){
  result.rows.sort((a,b)=>b.rating-a.rating);
  return result
 }
-window.VitruviaResearchEngine={canonical,classify,query,lexicalScore,manuscriptRows,passageRows,version:"1.0-local"};
+window.VitruviaResearchEngine={canonical,classify,prefaceIntent,prefaceRows,query,lexicalScore,manuscriptRows,passageRows,version:"1.1-prefaces"};
 })();
