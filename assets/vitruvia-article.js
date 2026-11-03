@@ -100,8 +100,8 @@ const chunks=raw.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
 const sections=chunks.length>1?chunks:[raw.match(/[^.!?]+[.!?]+(?:\s|$)/g)?.join(" ")||raw];
 let length=0,shown=0;
 for(const chunk of sections){
- if(length>6800 || shown>=14)break;
- const clean=cut(chunk,Math.min(1600,Math.max(450,7200-length)));
+ if(length>14500 || shown>=26)break;
+ const clean=cut(chunk,Math.min(1600,Math.max(450,15500-length)));
  if(!clean)continue;
  paragraph(clean,shown===0?"article-lead":undefined);
  shown++;length+=clean.length;
