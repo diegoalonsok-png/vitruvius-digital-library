@@ -230,10 +230,14 @@ function bindAcademia(){
 }
 function makeLink(label,url){const a=anchor(label,url);return a}
 function matchVariants(q){
- const terms=String(q||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3);
+ const stop=new Set(["para","como","donde","cuando","sobre","entre","desde","hasta","with","from","where","what","which","the","and","los","las","del","una","unos","unas","que","por","con","dans","pour","les","des"]);
+ const terms=String(q||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3&&!stop.has(w));
  const expanded=new Set(terms);
- if(terms.some(w=>/^pitagor|^pythagor/.test(w))){for(const w of ["pitagor","pythagor"])expanded.add(w)}
- return [...expanded].slice(0,12)
+ for(const w of terms){
+  if(w.length>=7){const stem=w.replace(/(ciones|cion|mente|idades|idad|ismos|ismo|istas|ista|icos|icas|ico|ica|orum|arum|ibus|ium|iones|eans|ean|iens|ien|ales|ales|ales|es|os|as|us|um|is|ae|am|em|en|s)$/,"");if(stem.length>=5&&stem.length>=w.length-5)expanded.add(stem)}
+  if(/^pitagor|^pythagor/.test(w)){expanded.add("pitagor");expanded.add("pythagor")}
+ }
+ return [...expanded].slice(0,18)
 }
 function markTerms(root,query){
  const words=matchVariants(query);
@@ -253,6 +257,13 @@ function renderCard(d){
  title.append(node("span","kind",T()[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
+ if(d.type==="passage"&&d.latin&&d.translation){
+  const bilingual=node("div","passage-bilingual");
+  const latin=node("p","passage-latin",d.latin.slice(0,700));
+  const translation=node("p","passage-translation",d.translation.slice(0,700));
+  bilingual.append(node("div","passage-language","LATÍN"),latin,node("div","passage-language","TRADUCCIÓN"),translation);
+  card.append(bilingual);
+ }
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
  if(d.link){const a=makeLink(d.type==="passage"||d.type==="book"||d.type==="manuscript"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
@@ -273,7 +284,7 @@ function display(rows,query,phase){
  for(const r of scored){const k=r.type+":"+norm(r.title);if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  if(!deduped.length)list.append(node("div","empty",T().none));
- else for(const r of deduped.slice(0,44)){const card=renderCard(r);if(r.type==='passage')markTerms(card,query);list.append(card)}
+ else for(const r of deduped.slice(0,44)){const card=renderCard(r);markTerms(card,query);list.append(card)}
  if(window.VitruviaArticles){$("answer").hidden=true;window.VitruviaArticles.render(deduped,query)}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
  $("result-state").textContent=deduped.length+" coincidencias · "+Math.min(44,deduped.length)+" visibles"+(phase?" · "+phase:"")
