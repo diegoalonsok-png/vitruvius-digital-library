@@ -124,8 +124,18 @@ const a=href(top.link,phrase("Consultar documento original →","Open original d
 if(a)$("article-body").append(a);
 aside(rows);references(rows)
 }
+function matchVariants(q){
+ const stop=new Set(["para","como","donde","cuando","sobre","entre","desde","hasta","with","from","where","what","which","the","and","los","las","del","una","unos","unas","que","por","con","dans","pour","les","des"]);
+ const terms=String(q||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3&&!stop.has(w));
+ const expanded=new Set(terms);
+ for(const w of terms){
+  if(w.length>=7){const stem=w.replace(/(ciones|cion|mente|idades|idad|ismos|ismo|istas|ista|icos|icas|ico|ica|orum|arum|ibus|ium|iones|eans|ean|iens|ien|ales|ales|ales|es|os|as|us|um|is|ae|am|em|en|s)$/,"");if(stem.length>=5&&stem.length>=w.length-5)expanded.add(stem)}
+  if(/^pitagor|^pythagor/.test(w)){expanded.add("pitagor");expanded.add("pythagor")}
+ }
+ return [...expanded].slice(0,18)
+}
 function highlightArticle(query){
- const words=[...new Set(String(query||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3))].slice(0,8);if(words.some(w=>/^pitagor|^pythagor/.test(w)))words.push("pitagor","pythagor");
+ const words=matchVariants(query);
  if(!words.length)return;
  const walker=document.createTreeWalker($("article-body"),NodeFilter.SHOW_TEXT),nodes=[];
  while(walker.nextNode()){const n=walker.currentNode;if(n.parentElement?.closest("a,button,mark,script,style"))continue;nodes.push(n)}
