@@ -54,3 +54,8 @@ footer{border-top:1px solid var(--line);padding:15px 0;font-size:12px;color:var(
 @media(max-width:650px){.columns-head{grid-template-columns:1fr}.columns-head span:nth-child(2){display:none}.segment{grid-template-columns:1fr;gap:0;margin-bottom:20px}.unit.right{border-top:0}.config-grid{gap:10px}.section-head h2{font-size:22px}}
 @page{size:A4;margin:15mm}
 @media print{body{background:white;color:black}.masthead,.notice,.upload,.ai,.actions,.status,.micro,footer{display:none!important}main{padding:0!important;max-width:none!important}.workspace{margin:0;padding:0;border:0;box-shadow:none;background:white}.workspace::before{content:"VITRVVIVS · SCRIPTORIUM — TRADUCTIO EXPERIMENTALIS";display:block;font:600 12pt Georgia,serif;border-bottom:1px solid #999;margin-bottom:10mm;padding-bottom:3mm}.section-head h2{font-size:20pt}.unit{border:1px solid #aaa!important;background:white!important}.unit.right{background:white!important}.unit-head{background:#eee!important;color:#222!important}.source-text,.editable{font-size:11pt!important;color:#111!important}.note-edit{font-size:9pt;color:#333!important}.segment{page-break-inside:avoid}.columns-head span{background:#eee;color:#333}button{display:none!important}}
+
+/* Controles por fragmento: solo se envía el texto si el lector pulsa Google. */
+.segment-actions{display:flex;flex-wrap:wrap;gap:8px;padding:9px 13px;border-top:1px solid #d7c9ad}
+.segment-actions button{min-height:34px;font-size:11px;padding:6px 9px}
+@media print{.segment-actions{display:none!important}}
