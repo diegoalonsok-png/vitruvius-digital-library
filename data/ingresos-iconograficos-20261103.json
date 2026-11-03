@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "date": "2026-11-03",
+  "description": "Registro de seis imágenes aportadas para el repertorio: los JPEG adjuntos pertenecen a la conversación y NO están alojados todavía en el repositorio GitHub.",
+  "entries": [
+    {
+      "id": "tory-champ-fleury-1529-proporciones",
+      "uploaded": "Geoffrey Tory, illustration from\" Champ Fleury\", 1529..jpg",
+      "title": "Dos esquemas de proporciones humanas en círculos",
+      "author": "Geoffroy Tory (atribución de la reproducción aportada, pendiente de cotejo con el ejemplar)",
+      "work": "Champ fleury",
+      "publication": "París, 1529",
+      "kind": "Página de impreso, no folio manuscrito",
+      "folio": "Página/folio a determinar por cotejo con ejemplar",
+      "institution": "Ejemplar de origen de la reproducción por identificar",
+      "status": "Pendiente de localizar en facsímil completo",
+      "chicago": "Tory, Geoffroy. Champ fleury. París, 1529. Lámina antropométrica, página por determinar."
+    },
+    {
+      "id": "vitruvius-portada-columnas",
+      "uploaded": "5064249fff476598154db42924ae992e.jpg",
+      "title": "Portada arquitectónica M. Vitruvii Pollionis De architectura libri decem",
+      "author": "Vitruvio; editor sin identificar en el recorte",
+      "work": "De architectura libri decem",
+      "publication": "Fecha y taller no legibles con seguridad en el recorte",
+      "kind": "Portada impresa",
+      "folio": "Portada, sin foliación",
+      "institution": "Ejemplar no identificado",
+      "status": "No asignar edición ni fecha hasta cotejar pie de imprenta",
+      "chicago": "Vitruvius. De architectura libri decem. Edición y datos de impresión por determinar. Portada ornamental."
+    },
+    {
+      "id": "de-laet-1649-portada",
+      "uploaded": "fce4bfa40cf4e3c5cf0e7f37202345d6.jpg",
+      "title": "Portada tipográfica de la edición colectiva de Joannes de Laet",
+      "author": "Vitruvio; Joannes de Laet, editor",
+      "work": "M. Vitruvii Pollionis De architectura libri decem",
+      "publication": "Ámsterdam: Ludovicus Elzevir, 1649",
+      "kind": "Portada impresa",
+      "folio": "Portada, no foliada",
+      "institution": "The Metropolitan Museum of Art, objeto 41.100.225; no se ha verificado que el recorte proceda de ese ejemplar",
+      "record": "https://www.metmuseum.org/art/collection/search/370894",
+      "status": "Edición confirmada; procedencia material del recorte por cotejar",
+      "chicago": "Vitruvius. M. Vitruvii Pollionis De architectura libri decem. Edited by Joannes de Laet. Amsterdam: Ludovicus Elzevir, 1649."
+    },
+    {
+      "id": "scamozzi-1615-p40",
+      "uploaded": "c7c72b97dd88cb3e22f486b2eee9a01f.jpg",
+      "title": "Diagramas de proporción y del cuerpo humano",
+      "author": "Vincenzo Scamozzi",
+      "work": "L'Idea della Architettura Universale",
+      "publication": "Venecia: Giorgio Valentino, 1615",
+      "kind": "Xilografía en libro impreso",
+      "folio": "Libro I, parte I, página 40",
+      "institution": "The Metropolitan Museum of Art, 42.60.2(40)",
+      "record": "https://www.metmuseum.org/art/collection/search/700428",
+      "image": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/700428/1517036/main-image",
+      "rights": "The Met Open Access; dominio público / CC0",
+      "status": "Autor, edición, página y objeto museístico verificados",
+      "chicago": "Scamozzi, Vincenzo. L'Idea della Architettura Universale. Venice: Giorgio Valentino, 1615. Book 1, part 1, 40. Woodcut. Metropolitan Museum of Art, 42.60.2(40). https://www.metmuseum.org/art/collection/search/700428."
+    },
+    {
+      "id": "perrault-1684-portada",
+      "uploaded": "d2866771054405c425192b9b7868b696.jpg",
+      "title": "Les dix livres d'architecture de Vitruve, segunda edición",
+      "author": "Vitruvio; Claude Perrault, traductor y comentarista",
+      "work": "Les dix livres d'architecture de Vitruve",
+      "publication": "París: Jean-Baptiste Coignard, 1684",
+      "kind": "Portada tipográfica de impreso",
+      "folio": "Portada, no foliada",
+      "institution": "Ejemplar de origen de la reproducción no identificado; cotejo disponible con Bibliothèque municipale de Besançon 11604",
+      "record": "https://architectura.univ-tours.fr/livres-notice/b250566101_11604/",
+      "status": "Edición verificada; la imagen aportada no está vinculada todavía a un ejemplar específico",
+      "chicago": "Vitruvius. Les dix livres d'architecture de Vitruve. Translated and annotated by Claude Perrault. 2nd ed. Paris: Jean-Baptiste Coignard, 1684."
+    },
+    {
+      "id": "galiani-1790-portada",
+      "uploaded": "b10608c88a372eb75145acd8a4765090.jpg",
+      "title": "L'Architettura di Marco Vitruvio Pollione, edizione seconda",
+      "author": "Vitruvio; Berardo Galiani, traductor, comentarista y diseñador",
+      "work": "L'Architettura di Marco Vitruvio Pollione",
+      "publication": "Nápoles: Fratelli Terres, 1790",
+      "kind": "Portada impresa con viñeta grabada",
+      "folio": "Portada, no foliada",
+      "institution": "The Metropolitan Museum of Art, objeto 41.100.402; identidad del ejemplar fotografiado por verificar",
+      "record": "https://www.metmuseum.org/art/collection/search/368880",
+      "status": "Edición verificada; la procedencia del recorte y los autores de la viñeta requieren cotejo",
+      "chicago": "Vitruvius. L'Architettura di Marco Vitruvio Pollione. Translated and annotated by Berardo Galiani. 2nd ed. Naples: Fratelli Terres, 1790."
+    }
+  ]
+}
