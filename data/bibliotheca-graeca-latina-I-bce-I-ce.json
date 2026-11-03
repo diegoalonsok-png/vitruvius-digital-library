@@ -312,12 +312,12 @@
       "dating": "c. 60–50 a. C.",
       "reading": {
         "url": null,
-        "status": "Dos versiones íntegras alojadas en GitHub: Leonard (inglés) y Rodríguez-Navas (versión libre en prosa castellana); texto original latino todavía no alojado."
+        "status": "Texto original latino completo de los seis libros alojado en GitHub; traducción inglesa de Leonard y versión castellana en prosa de Rodríguez-Navas, también almacenadas localmente."
       },
       "manuscript": {
         "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
         "record": "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
-        "status": "Codex Quadratus (Leiden, VLQ 94), primera mitad del siglo IX; reproduce De rerum natura. Manifiesto IIIF publicado por Leiden, aún sin prueba visual de carga dentro de la biblioteca.",
+        "status": "Codex Quadratus (Leiden, VLQ 94), primera mitad del siglo IX; reproduce De rerum natura. Manifiesto IIIF publicado por Leiden, aún sin prueba visual de carga dentro de la biblioteca. El latín editorial alojado procede de Wikisource; no es una transcripción diplomática del códice.",
         "institution": "Universiteitsbibliotheek Leiden",
         "shelfmark": "Voss. Lat. Q. 94",
         "dating": "Primera mitad del siglo IX",
@@ -338,8 +338,15 @@
       },
       "publicStatus": "lectura-local-completa",
       "localReader": null,
-      "localHtml": "corpus/lucretius-de-rerum-natura-en.html",
+      "localHtml": "corpus/lucretius-de-rerum-natura-la.html",
       "localVersions": [
+        {
+          "language": "la",
+          "label": "LATINE · De rerum natura (Libri I–VI)",
+          "path": "corpus/lucretius-de-rerum-natura-la.html",
+          "kind": "original-transcription",
+          "source": "Wikisource latina · atribución CC BY-SA · cotejo crítico pendiente"
+        },
         {
           "language": "en",
           "label": "English · William Ellery Leonard (1916)",
@@ -357,7 +364,7 @@
       ],
       "localEdition": {
         "editor": "William Ellery Leonard / Manuel Rodríguez-Navas",
-        "original": "Latín: manuscrito IIIF conectado; texto editorial latino pendiente de alojamiento",
+        "original": "Latín completo · seis libros · Wikisource latina",
         "translation": "Inglés y español",
         "source": "Project Gutenberg #785 y #62711",
         "format": "HTML completo GitHub"
