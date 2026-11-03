@@ -5,6 +5,13 @@ Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Air
 
 **Website:** https://diegoalonsok-png.github.io/vitruvius-digital-library/index.html
 
+## Research atlases
+
+- [Atlas Geographicus Vitruvianus — ancient Latin/Greek place names, modern equivalents, map and loci](atlas-geographicus.html)
+- [Atlas Iconographicus Vitruvianus — historical folios, IIIF sources, codicological and bibliographic descriptions](iconografia-vitruviana.html)
+
+Both tools use explicit provenance and uncertainty labels; geographical map pins do not assert monument coordinates, and book-level image classifications are not individual iconographic identifications.
+
 ## Citable editions (2026) · DOI & full text
 
 Each of Diego A. Kurilo's three editorial works has a distinct, crawlable bibliographic landing page, persistent Zenodo DOI and open-access PDF. These records describe the works; inclusion in search engines or Google Scholar is determined by their external crawlers and is **not guaranteed**.
