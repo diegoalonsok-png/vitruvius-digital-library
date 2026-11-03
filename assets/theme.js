@@ -13,8 +13,20 @@
  function mount(){
   const target=document.querySelector('.research-nav-controls')||document.querySelector('.research-nav-inner')||document.querySelector('.header-inner')||document.querySelector('main')||document.body;if(!target)return;
   const buttons=[...target.querySelectorAll('.theme-switch')];
-  if(!buttons.length){const b=document.createElement('button');b.type='button';b.className='theme-switch';target.append(b);if(!target.closest('header')){b.classList.add('theme-floating');b.style.cssText='position:fixed;right:18px;top:14px;z-index:9999;background:#263f54;color:#fff;border:1px solid #aeb7b4;padding:10px 14px;border-radius:5px;cursor:pointer'}buttons.push(b);}
-  const paint=()=>{const dark=document.documentElement.dataset.theme==='dark';for(const b of buttons){b.textContent=dark?'☀ Claro':'☾ Oscuro';b.setAttribute('aria-label',dark?'Activar fondo claro':'Activar fondo oscuro');b.setAttribute('aria-pressed',String(dark));}};
+  if(!buttons.length){const b=document.createElement('button');b.type='button';b.className='theme-switch';target.append(b);if(!target.closest('header')){b.classList.add('theme-floating');b.style.cssText='position:fixed;right:18px;top:14px;z-index:9999;cursor:pointer'}buttons.push(b);}
+  const paint=()=>{const dark=document.documentElement.dataset.theme==='dark';for(const b of buttons){
+   b.replaceChildren();
+   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+   svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','19');svg.setAttribute('height','19');
+   svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.65');
+   svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');
+   const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+   path.setAttribute('d',dark?'M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z':'M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6l1.4 1.4m10 10 1.4 1.4m0-12.8L17 7m-10 10-1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z');
+   svg.append(path);b.append(svg);
+   b.setAttribute('aria-label',dark?'Activar fondo claro':'Activar fondo oscuro');
+   b.setAttribute('title',dark?'Activar modo claro':'Activar modo oscuro');
+   b.setAttribute('aria-pressed',String(dark));
+ }};
   for(const b of buttons){b.type='button';b.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem(key,next);}catch{}paint();});}paint();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
