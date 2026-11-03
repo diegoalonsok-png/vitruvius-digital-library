@@ -437,6 +437,28 @@ html[data-theme=light] #theme:hover{background:#e6e6e9!important}
 .logo-small:hover{opacity:.8}
 @media(max-width:700px){.logo-small{font-size:24px!important;letter-spacing:-.055em!important}.logo-small .logo-dot{font-size:20px}}
 @media(max-width:370px){.logo-small{font-size:21px!important}}
+
+/* Scholarly print-ready dossier and highlighted verified corpus matches. */
+.query-hit,mark.query-hit{background:#f8df65!important;color:#191919!important;border-radius:2px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.article-toolbar{display:flex;justify-content:flex-end;margin:0 0 10px}
+.article-print{background:transparent;color:#e4e4e4;border:1px solid #555;border-radius:9px;padding:9px 15px;cursor:pointer;font:500 12px Arial,sans-serif}
+.article-print:hover,.article-print:focus-visible{background:#303033;border-color:#aaa}
+html[data-theme=light] .article-print{color:#262626;border-color:#aaa}
+@media print{
+ @page{size:A4;margin:17mm 16mm}
+ html,body,.site-shell{background:white!important;color:black!important;overflow:visible!important}
+ header.nav,.hero,.tabs,.search-wrap,.ai-platforms,.sidebar,.section-head,#result-list,.footer,.article-toolbar,.footer-legal,.source-links,.results-grid>.sidebar{display:none!important}
+ main,.site-shell,.results,.results-grid,#vitruvia-article,.scholar-article,.article-grid,.article-body,.article-aside,.article-sources{display:block!important;width:100%!important;max-width:none!important;overflow:visible!important;background:white!important;color:black!important;box-shadow:none!important;border-color:#ccc!important}
+ #vitruvia-article[hidden]{display:none!important}
+ .scholar-article{padding:0!important;margin:0!important;border:0!important}
+ .article-body,.article-body p,.article-byline,.article-kicker,.article-sources,.article-aside,.article-aside h3,.scholar-article h2,.article-body h3{color:#111!important}
+ .article-body{font-size:11pt!important;line-height:1.55!important}
+ .article-body p{break-inside:avoid-page;orphans:3;widows:3}
+ .article-aside{border-left:0!important;border-top:1px solid #bbb!important;margin-top:16px}
+ .article-sources{border-top:1px solid #bbb!important}
+ a{color:#111!important;text-decoration:underline!important}
+ .query-hit{background:#f8df65!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -510,7 +532,7 @@ html[data-theme=light] #theme:hover{background:#e6e6e9!important}
 <section class="results" id="results" aria-live="polite">
 <div class="section-head"><h2 id="results-heading">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
 <section id="vitruvia-article" class="scholar-article" aria-live="polite" aria-label="Artículo de consulta" hidden>
-  <div class="scholar-article-header"><div class="article-kicker" id="article-kicker">VITRUVIA · DOSSIER DOCUMENTAL</div>
+  <div class="scholar-article-header"><div class="article-toolbar"><button type="button" class="article-print" onclick="window.print()" aria-label="Imprimir artículo y fuentes">Imprimir artículo</button></div><div class="article-kicker" id="article-kicker">VITRUVIA · DOSSIER DOCUMENTAL</div>
   <h2 id="article-title"></h2><div class="article-byline" id="article-byline"></div></div>
   <div class="article-grid"><div class="article-body" id="article-body"></div><aside class="article-aside" id="article-aside"></aside></div>
   <div class="article-sources" id="article-sources"></div>
@@ -529,6 +551,6 @@ html[data-theme=light] #theme:hover{background:#e6e6e9!important}
 <div class="footer-legal"><span>© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.</span><span><a href="index.html">Biblioteca principal</a> · Buenos Aires · 2026</span></div></footer>
 </div>
 <script src="assets/vitruvia-research-engine.js?v=20261103-loci-v1" defer></script>
-<script src="assets/vitruvia-article.js?v=20261103-biography-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261103-icons-v6" defer></script>
+<script src="assets/vitruvia-article.js?v=20261103-print-highlight-v5" defer></script>
+<script src="assets/vitruvia-search.js?v=20261103-print-highlight-v7" defer></script>
 </body></html>
