@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas Geographicus Vitruvianus · Mapa de ciudades y lugares de Vitruvio</title>
+<meta name="description" content="Mapa interactivo de ciudades, ríos y regiones mencionadas en De architectura. Nombres latinos y griegos históricos, equivalentes modernos y pasajes por libro, con fichas filológicas y procedencia documental.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Atlas Geographicus Vitruvianus — Latín, griego, lugares modernos">
+<meta property="og:description" content="Lugares citados en Vitruvio: mapa por libros I–X, nombres antiguos y modernos, fichas y loci. Incluye Fanum Fortunae (Fano).">
+<meta property="og:url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html">
+<meta name="DC.title" content="Atlas Geographicus Vitruvianus">
+<meta name="DC.creator" content="Diego A. Kurilo">
+<meta name="DC.subject" content="Vitruvius; De architectura; Ancient geography; Toponymy; Historical gazetteer">
+<meta name="DC.language" content="es"><meta name="DC.language" content="la"><meta name="DC.language" content="grc">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer src="assets/theme.js"></script>
+<script defer src="assets/atlas-geographicus.js?v=20261103-1"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Atlas Geographicus Vitruvianus","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html","creator":{"@type":"Person","name":"Diego A. Kurilo"},"isAccessibleForFree":true,"inLanguage":"es","about":{"@type":"CreativeWork","name":"De architectura","author":{"@type":"Person","name":"Vitruvius"}}}</script>
+<style>
+.geography{max-width:1510px;margin:0 auto;padding:26px clamp(16px,3vw,44px) 70px;color:var(--ink,#223646);line-height:1.65}
+.geography *{box-sizing:border-box}
+.geography a{overflow-wrap:anywhere}
+.geography h1,.geography h2,.geography h3{font-family:Georgia,serif;font-weight:400}
+.geography h1{font-size:clamp(2.3rem,5.8vw,4.3rem);line-height:1.1;margin:14px 0}
+.geography .eyebrow{font:700 11px system-ui,sans-serif;letter-spacing:.14em;color:#947648}
+.geography .introduction{max-width:1100px;font-size:1.13rem}
+.geography .method-note{background:var(--white,#fff);color:inherit;border-left:4px solid #b29462;padding:14px 20px;margin:20px 0 26px}
+.geo-filters{display:grid;grid-template-columns:minmax(180px,2fr) minmax(170px,1fr) minmax(175px,1fr);gap:12px;margin-bottom:12px}
+.geo-filters label{font:700 12px system-ui,sans-serif}
+.geo-filters input,.geo-filters select{min-height:45px;width:100%;margin-top:7px;padding:10px;font:400 14px system-ui,sans-serif;color:var(--ink,#192e3d);background:var(--white,#fff);border:1px solid #bcae98}
+.geo-filters :is(input,select):focus-visible{outline:3px solid #a58550}
+.geography .geo-result{font-size:.87rem;margin:12px 0 16px}
+.geo-layout{display:grid;grid-template-columns:minmax(250px,.78fr) minmax(400px,1.55fr) minmax(290px,1.07fr);gap:16px;align-items:start}
+.geo-list-wrap,.geo-detail{background:var(--white,#fff);color:var(--ink,#193344);border:1px solid var(--line,#d5c9b7)}
+.geo-list-wrap h2,.geo-detail h2{margin:0;font-size:1.48rem;line-height:1.3}
+.geo-list-wrap{min-width:0;max-height:690px;overflow:hidden;display:flex;flex-direction:column}
+.geo-list-wrap .list-title{padding:18px 17px 10px;border-bottom:1px solid var(--line,#d5c9b7)}
+#place-list{padding:0;margin:0;list-style:none;overflow-y:auto;flex:1}
+#place-list li{margin:0;border-bottom:1px solid var(--line,#d5c9b7)}
+#place-list button{cursor:pointer;padding:15px 15px 12px;width:100%;display:block;text-align:left;border:0;background:transparent;color:inherit}
+#place-list button:hover{background:#f3eadc;color:#20384b}
+#place-list button[aria-current=true]{border-left:4px solid #a68852;background:#eee4d3;color:#253c48;padding-left:11px}
+#place-list small{display:block;margin-top:6px;font:400 12px/1.4 system-ui,sans-serif}
+.ancient-names{display:flex;flex-direction:column;gap:2px}
+.ancient-names .latin-name{font:600 19px/1.3 Georgia,serif}
+.ancient-names .greek-name{font-size:14px;line-height:1.3}
+.ancient-names .modern-name{font-size:13px;opacity:.86}
+.geo-map-wrap{min-width:0;border:1px solid #c6b6a0;background:#e7e0d4}
+.geo-map-toolbar{padding:10px 14px;background:var(--white,#fff);color:var(--ink,#193344);font:700 12px/1.5 system-ui,sans-serif}
+#vitruvian-map{height:660px;width:100%;z-index:0;background:#dce2e1}
+#map-alert{padding:20px}
+.leaflet-popup-content button{margin-top:6px;background:#1f4259;color:#fff;border:0;padding:7px 11px;cursor:pointer}
+.geo-detail{padding:19px 20px;max-height:690px;overflow-y:auto;scroll-margin-top:15px}
+.geo-detail h2{margin-bottom:8px}
+.geo-detail .place-subtitle{font-size:12px;font-weight:700;color:inherit;opacity:.85}
+.geo-detail .place-verification{border-left:3px solid #ad8851;padding:10px;background:rgba(168,139,91,.10);font-size:12px}
+.geo-detail p{font-size:14px}
+#place-heading .ancient-names{gap:7px}
+#place-heading .latin-name{font-size:27px}
+#place-heading .greek-name{font-size:19px}
+#place-heading .modern-name{font-size:16px}
+#place-facts{margin:14px 0}
+.place-stat{border-top:1px solid var(--line,#d5c9b7);padding:10px 0;display:block}
+.place-stat dt{font-weight:700;font-size:12px}
+.place-stat dd{font-size:13px;line-height:1.48;margin:5px 0 0;overflow-wrap:anywhere}
+#place-loci{display:flex;flex-wrap:wrap;gap:7px}
+#place-loci a{border:1px solid #ae9a7b;padding:5px 9px;font:700 12px/1.3 system-ui,sans-serif}
+.geo-detail .geo-actions{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin:17px 0}
+.geo-detail .geo-actions a{font-size:13px}
+.geo-detail .subhead{font:600 17px Georgia,serif;margin:18px 0 11px}
+.geo-detail .note{font-size:12px;font-style:italic}
+.geography .bottom-notes{padding-top:30px;margin-top:28px;border-top:1px solid var(--line,#d1c4b4)}
+.geography .bottom-notes h2{font-size:1.65rem}
+html[data-theme=dark] .geography :is(.geo-list-wrap,.geo-detail,.geo-map-toolbar,.method-note){background:#2a4155;color:#f4eee6;border-color:#8797a0}
+html[data-theme=dark] .geography .geo-filters :is(input,select){background:#324a5e;color:#fff;border-color:#92a0aa}
+@media(max-width:1260px){.geo-layout{grid-template-columns:280px 1fr}.geo-detail{grid-column:1/-1;max-height:none}.geo-list-wrap{max-height:580px}#vitruvian-map{height:580px}}
+@media(max-width:780px){.geo-layout,.geo-filters{grid-template-columns:1fr}.geo-list-wrap{max-height:340px}#vitruvian-map{height:430px}}
+@media print{.geo-map-wrap{display:none}.geo-layout{display:block}.geo-list-wrap{max-height:none}.geo-detail{max-height:none}#place-list{overflow:visible}}
+</style>
+</head>
+<body>
+<main class="geography">
+<nav aria-label="Navegación"><a href="index.html">← Biblioteca principal</a> · <a href="onomasticon.html">Onomasticon</a> · <a href="indices-locorum.html">Índices locorum</a> · <a href="basilica-fano.html">Basílica de Fano</a> · <a href="iconografia-vitruviana.html">Atlas iconográfico</a></nav>
+<p class="eyebrow">GEOGRAPHIA VITRVVIANA · TOPONYMA · TESTIMONIA</p>
+<h1>Atlas Geographicus Vitruvianus</h1>
+<p class="introduction">Mapa académico de ciudades y lugares citados en los diez libros de <em>De architectura</em>, con tres niveles de denominación: <strong>nombre latino histórico, equivalente griego documentado como referencia y nombre moderno</strong>. Incluye Fanum Fortunae (Fano) y su basílica descrita en el libro V.</p>
+<div class="method-note"><strong>Precisión filológica.</strong> El topónimo latino normalizado se distingue de las formas flexionadas literalmente localizadas en la edición V514. El griego consignado es una equivalencia histórica, <strong>no una lectura griega del códice H</strong>. Los marcadores señalan ciudades o áreas generales, no la ubicación exacta de un monumento. Ríos, regiones y topónimos dudosos permanecen en las fichas sin recibir una coordenada puntual ficticia.</div>
+<section aria-label="Filtrado cartográfico">
+<div class="geo-filters">
+<label>Buscar un lugar, nombre latino, griego, moderno o locus<input type="search" id="place-query" placeholder="Fanum Fortunae · Ἀθῆναι · Alejandría · 5.1.6" autocomplete="off"></label>
+<label>Libro del tratado<select id="place-book"><option value="">Libros I–X · todos</option><option value="1">I · Principios</option><option value="2">II · Materiales</option><option value="3">III · Templos</option><option value="4">IV · Órdenes</option><option value="5">V · Edificios públicos</option><option value="6">VI · Vivienda</option><option value="7">VII · Acabados</option><option value="8">VIII · Aguas</option><option value="9">IX · Astronomía</option><option value="10">X · Máquinas</option></select></label>
+<label>Tipo de lugar<select id="place-type"><option value="">Todos los lugares</option><option value="ciudad">Ciudades y sitios urbanos</option><option value="region">Regiones e islas</option><option value="rio">Ríos</option><option value="dudoso">Topónimos por verificar</option></select></label>
+</div>
+<p id="place-loading" role="status">Cargando el Onomasticon y las identificaciones cartográficas…</p>
+<p id="place-count" class="geo-result" aria-live="polite"></p>
+</section>
+<div class="geo-layout">
+<section class="geo-list-wrap" aria-label="Índice de topónimos">
+<div class="list-title"><h2>Índice de lugares</h2><p style="font-size:12px">Latín · griego · denominación moderna</p></div>
+<ul id="place-list"></ul>
+</section>
+<section class="geo-map-wrap" aria-label="Mapa de ciudades de Vitruvio">
+<div class="geo-map-toolbar">● Ciudades identificadas · ◉ Fano destacado · <span style="font-weight:400">Marcadores aproximados</span></div>
+<div id="vitruvian-map" role="application" aria-label="Mapa interactivo de ciudades y lugares mencionados por Vitruvio"></div>
+<p id="map-alert" hidden role="alert"></p>
+</section>
+<aside class="geo-detail" id="place-detail" aria-labelledby="place-detail-title">
+<h2 id="place-detail-title">Ficha geográfica y filológica</h2>
+<div id="place-heading"></div>
+<p id="place-subtitle" class="place-subtitle"></p>
+<p id="place-verification" class="place-verification"></p>
+<p id="place-summary"></p>
+<dl id="place-facts"></dl>
+<h3 class="subhead">Loci de De architectura</h3>
+<div id="place-loci"></div>
+<div class="geo-actions">
+<a id="place-onomasticon" href="onomasticon.html">Abrir Onomasticon</a>
+<a id="place-source" href="#" target="_blank" rel="noopener noreferrer" hidden>Fuente de referencia</a>
+</div>
+<p class="note" id="place-note"></p>
+</aside>
+</div>
+<section class="bottom-notes">
+<h2>Criterios del atlas</h2>
+<p>Las menciones y formas latinas provienen del <a href="onomasticon.html">Onomasticon Vitruvianum</a>, basado en la edición textual V514. Este atlas es una herramienta de consulta, no un repertorio de ubicaciones arqueológicas certificadas ni una edición diplomática de un manuscrito específico. Para cada lugar deben controlarse las lecturas, la equivalencia antigua/moderna y la extensión geográfica correspondiente al siglo I a. C. El registro complementario de Fano toma como punto de partida la descripción de la basílica en <em>De architectura</em> V.1.</p>
+<p>La entrada «Esparta» queda señalada como dudosa porque la forma <em>sparto</em> no acredita por sí misma el topónimo: puede representar una voz común. Los ríos y regiones no se reducen a un pin arbitrario.</p>
+<p><a href="data/atlas-geographicus-vitruvianus.json">Datos de georreferenciación y nivel de certeza (JSON)</a> · <a href="data/onomasticon-vitruvianum.json">Corpus de formas y loci (JSON)</a> · <a href="metodologia-filologica.html">Metodología y limitaciones</a>.</p>
+</section>
+</main>
+</body>
+</html>
