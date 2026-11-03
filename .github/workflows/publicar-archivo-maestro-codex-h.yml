@@ -1,0 +1,76 @@
+name: Publicar archivo maestro de folios Codex H
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/publicar-archivo-maestro-codex-h.yml'
+permissions:
+  contents: write
+concurrency:
+  group: publicar-codex-h-maestro
+  cancel-in-progress: false
+jobs:
+  preservar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Recuperar archivo ZIP con 341 imágenes verificadas
+        uses: actions/download-artifact@v4
+        with:
+          name: codex-h-estudio-iiif
+          run-id: 41685295690
+          github-token: ${{ github.token }}
+          path: /tmp/harley-recuperado
+      - name: Comprobar hashes y preservar folios con nombre real
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, re, shutil
+          source=pathlib.Path('/tmp/harley-recuperado')
+          destination=pathlib.Path('images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR')
+          candidates=list(source.rglob('indice-folios.csv'))
+          if len(candidates)!=1:raise SystemExit('Inventario ausente o ambiguo en artifact: '+str(candidates))
+          inventory=candidates[0]
+          root=inventory.parent
+          with inventory.open(encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
+          if len(rows)!=341:raise SystemExit(f'Se esperan 341 imágenes, hay {len(rows)}')
+          destination.mkdir(parents=True,exist_ok=True)
+          record=[]; names=set()
+          for expected,entry in enumerate(rows,1):
+            n=int(entry['imagen_oficial'])
+            if n!=expected:raise SystemExit(f'Orden digital incorrecto: {n} != {expected}')
+            if entry['estado']!='descargado':raise SystemExit(f'Imagen pendiente: {n}')
+            label=entry['etiqueta_iiif'].strip() or 'sin-etiqueta'
+            source_file=root/'imagenes'/entry['archivo_local']
+            if not source_file.is_file():raise SystemExit('Falta JPG: '+str(source_file))
+            data=source_file.read_bytes()
+            sha=hashlib.sha256(data).hexdigest()
+            if sha!=entry['sha256'] or len(data)<1500 or not data.startswith(b'\xff\xd8'):raise SystemExit(f'JPG invalido o hash incorrecto: {n}')
+            slug=re.sub(r'[^a-z0-9]+','-',label.lower()).strip('-')[:60] or 'sin-etiqueta'
+            fname=f'H_{n:03d}_{slug}.jpg'
+            if fname in names:raise SystemExit('Nombre duplicado: '+fname)
+            names.add(fname)
+            target=destination/fname
+            if target.exists() and hashlib.sha256(target.read_bytes()).hexdigest()!=sha:raise SystemExit('Conflicto con imagen existente: '+fname)
+            if not target.exists():shutil.copyfile(source_file,target)
+            record.append({'numeroImagen':n,'etiquetaOriginal':label,'archivo':fname,'sha256':sha,'canvasId':entry['canvas_id']})
+          index={'manuscrito':'British Library, Harley MS 2767 · Vitruvius, De architectura','fuenteManifiesto':'https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001','titularDigitalizacion':'British Library','derechosFuente':'Public Domain in most countries, other than the UK (IIIF metadata); consultar condiciones institucionales','criterioFoliacion':'Etiqueta IIIF original. Número de imagen digital y folio histórico no son equivalentes.','totalImagenes':len(record),'imagenes':record}
+          (destination/'indice-folios.json').write_text(json.dumps(index,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          shutil.copyfile(inventory,destination/'indice-folios-origen.csv')
+          (destination/'CREDITOS_Y_CONSERVACION.md').write_text('# Codex H — Harley MS 2767\n\nFuente y crédito: British Library, Harley MS 2767, *De architectura* de Vitruvio. Digitalización institucional y manifiesto IIIF: '+index['fuenteManifiesto']+'\n\nCondición indicada por la institución: «'+index['derechosFuente']+'». Verificar requisitos aplicables antes de redistribuir.\n\nLa numeración de las imágenes no equivale necesariamente a la foliación. Conservamos las etiquetas institucionales originales en `indice-folios.json`, los nombres de archivo y las huellas SHA-256.\n\n**NO BORRAR**: conjunto maestro del sitio. Mantener copia externa del repositorio.\n',encoding='utf-8')
+          print('ARCHIVADAS',len(record),'JPG; PRIMERA',record[0]['archivo'],'NOVENA',record[8]['archivo'],'ULTIMA',record[-1]['archivo'])
+          PY
+      - name: Confirmar los archivos en GitHub sin alterar visores
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/
+          if git diff --cached --quiet; then
+            echo 'No hay modificaciones: ya estaban archivadas';
+          else
+            git commit -m 'Preservar en GitHub 341 folios del Codex H con inventario y créditos'
+            git push origin HEAD:main
+          fi
