@@ -2,8 +2,8 @@
   "schema": 1,
   "updated": "2026-11-03",
   "title": "Bibliotheca Graeca et Latina · Repertorium Antiquitatis",
-  "scope": "Catálogo bibliográfico unificado de obras griegas y latinas antiguas: literatura clásica, cristianismo primitivo, historia, arquitectura, ingeniería, filosofía, medicina y otros géneros, desde el siglo I a. C. hasta la Antigüedad tardía.",
-  "method": "No equiparar manuscrito, edición moderna, traducción o PDF. El enlace de búsqueda no equivale a disponibilidad confirmada de una edición concreta. No copiar material bajo derechos sin autorización. La lista pública solo incluye obras efectivamente legibles dentro del sitio; las fichas sin edición alojada permanecen en el archivo de trabajo, no en el catálogo de consulta.",
+  "scope": "Repertorio de obras griegas y latinas, de la Antigüedad arcaica a la tardía. Distingue la consulta local del descubrimiento externo, las traducciones y los testimonios manuscritos.",
+  "method": "No equiparar ficha bibliográfica, transcripción original, edición, traducción, manuscrito o PDF. Las obras pendientes tienen enlaces de localización, no visores ficticios.",
   "works": [
     {
       "id": "vitruvius",
@@ -3960,6 +3960,2853 @@
         "archive": null,
         "gallica": null
       }
+    },
+    {
+      "id": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "472 a. C.",
+      "aliases": [
+        "Persas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Esquilo%20Persas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Esquilo%20Persas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Esquilo%20Persas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20Persas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "467 a. C.",
+      "aliases": [
+        "Siete contra Tebas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Esquilo%20Siete%20contra%20Tebas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Esquilo%20Siete%20contra%20Tebas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Esquilo%20Siete%20contra%20Tebas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20Siete%20contra%20Tebas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Las suplicantes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Esquilo%20Las%20suplicantes",
+        "gallica": "https://gallica.bnf.fr/Search?q=Esquilo%20Las%20suplicantes"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Esquilo%20Las%20suplicantes",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20Las%20suplicantes&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Prometeo encadenado"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Esquilo%20(atribuci%C3%B3n%20debatida)%20Prometeo%20encadenado",
+        "gallica": "https://gallica.bnf.fr/Search?q=Esquilo%20(atribuci%C3%B3n%20debatida)%20Prometeo%20encadenado"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Esquilo%20(atribuci%C3%B3n%20debatida)%20Prometeo%20encadenado",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20(atribuci%C3%B3n%20debatida)%20Prometeo%20encadenado&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "c. 441 a. C.",
+      "aliases": [
+        "Antígona"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%B3focles%20Ant%C3%ADgona",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%B3focles%20Ant%C3%ADgona"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%B3focles%20Ant%C3%ADgona",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Ant%C3%ADgona&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Áyax"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%B3focles%20%C3%81yax",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%B3focles%20%C3%81yax"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%B3focles%20%C3%81yax",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20%C3%81yax&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Electra"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%B3focles%20Electra",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%B3focles%20Electra"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%B3focles%20Electra",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Electra&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "409 a. C.",
+      "aliases": [
+        "Filoctetes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%B3focles%20Filoctetes",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%B3focles%20Filoctetes"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%B3focles%20Filoctetes",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Filoctetes&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "401 a. C.",
+      "aliases": [
+        "Edipo en Colono"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%B3focles%20Edipo%20en%20Colono",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%B3focles%20Edipo%20en%20Colono"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%B3focles%20Edipo%20en%20Colono",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Edipo%20en%20Colono&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Las traquinias"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%B3focles%20Las%20traquinias",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%B3focles%20Las%20traquinias"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%B3focles%20Las%20traquinias",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Las%20traquinias&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "405 a. C.",
+      "aliases": [
+        "Las bacantes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20Las%20bacantes",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20Las%20bacantes"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20Las%20bacantes",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Las%20bacantes&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "428 a. C.",
+      "aliases": [
+        "Hipólito"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20Hip%C3%B3lito",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20Hip%C3%B3lito"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20Hip%C3%B3lito",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Hip%C3%B3lito&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "438 a. C.",
+      "aliases": [
+        "Alcestis"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20Alcestis",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20Alcestis"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20Alcestis",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Alcestis&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Electra"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20Electra",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20Electra"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20Electra",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Electra&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "415 a. C.",
+      "aliases": [
+        "Las troyanas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20Las%20troyanas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20Las%20troyanas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20Las%20troyanas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Las%20troyanas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Hécuba"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20H%C3%A9cuba",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20H%C3%A9cuba"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20H%C3%A9cuba",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20H%C3%A9cuba&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "language": "grc",
+      "genre": "Tragedia",
+      "dating": "405 a. C.",
+      "aliases": [
+        "Ifigenia en Áulide"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eur%C3%ADpides%20Ifigenia%20en%20%C3%81ulide",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eur%C3%ADpides%20Ifigenia%20en%20%C3%81ulide"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Eur%C3%ADpides%20Ifigenia%20en%20%C3%81ulide",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Ifigenia%20en%20%C3%81ulide&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "language": "grc",
+      "genre": "Comedia",
+      "dating": "414 a. C.",
+      "aliases": [
+        "Las aves"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3fanes%20Las%20aves",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3fanes%20Las%20aves"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3fanes%20Las%20aves",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Las%20aves&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "language": "grc",
+      "genre": "Comedia",
+      "dating": "405 a. C.",
+      "aliases": [
+        "Las ranas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3fanes%20Las%20ranas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3fanes%20Las%20ranas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3fanes%20Las%20ranas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Las%20ranas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "language": "grc",
+      "genre": "Comedia",
+      "dating": "411 a. C.",
+      "aliases": [
+        "Lisístrata"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3fanes%20Lis%C3%ADstrata",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3fanes%20Lis%C3%ADstrata"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3fanes%20Lis%C3%ADstrata",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Lis%C3%ADstrata&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "language": "grc",
+      "genre": "Comedia",
+      "dating": "422 a. C.",
+      "aliases": [
+        "Las avispas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3fanes%20Las%20avispas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3fanes%20Las%20avispas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3fanes%20Las%20avispas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Las%20avispas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "language": "grc",
+      "genre": "Comedia",
+      "dating": "421 a. C.",
+      "aliases": [
+        "La paz"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3fanes%20La%20paz",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3fanes%20La%20paz"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3fanes%20La%20paz",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20La%20paz&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "language": "grc",
+      "genre": "Comedia",
+      "dating": "425 a. C.",
+      "aliases": [
+        "Los acarnienses"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3fanes%20Los%20acarnienses",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3fanes%20Los%20acarnienses"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3fanes%20Los%20acarnienses",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Los%20acarnienses&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "El banquete Symposium"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20El%20banquete%20Symposium",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20El%20banquete%20Symposium"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20El%20banquete%20Symposium",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20El%20banquete%20Symposium&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Fedón"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Fed%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Fed%C3%B3n"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Fed%C3%B3n",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Fed%C3%B3n&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Gorgias"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Gorgias",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Gorgias"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Gorgias",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Gorgias&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Timeo"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Timeo",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Timeo"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Timeo",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Timeo&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Menón"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Men%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Men%C3%B3n"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Men%C3%B3n",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Men%C3%B3n&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Fedro"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Fedro",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Fedro"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Fedro",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Fedro&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "language": "grc",
+      "genre": "Filosofía política",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Las leyes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Las%20leyes",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Las%20leyes"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Las%20leyes",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Las%20leyes&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Critón"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Plat%C3%B3n%20Crit%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Crit%C3%B3n"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Plat%C3%B3n%20Crit%C3%B3n",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Crit%C3%B3n&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "language": "grc",
+      "genre": "Filosofía moral",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Ética a Nicómaco"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3teles%20%C3%89tica%20a%20Nic%C3%B3maco",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3teles%20%C3%89tica%20a%20Nic%C3%B3maco"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3teles%20%C3%89tica%20a%20Nic%C3%B3maco",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20%C3%89tica%20a%20Nic%C3%B3maco&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Metafísica"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3teles%20Metaf%C3%ADsica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3teles%20Metaf%C3%ADsica"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3teles%20Metaf%C3%ADsica",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20Metaf%C3%ADsica&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "language": "grc",
+      "genre": "Filosofía natural",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Física"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3teles%20F%C3%ADsica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3teles%20F%C3%ADsica"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3teles%20F%C3%ADsica",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20F%C3%ADsica&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "language": "grc",
+      "genre": "Retórica",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Retórica"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3teles%20Ret%C3%B3rica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3teles%20Ret%C3%B3rica"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3teles%20Ret%C3%B3rica",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20Ret%C3%B3rica&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "language": "grc",
+      "genre": "Filosofía natural",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Acerca del alma"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3teles%20Acerca%20del%20alma",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3teles%20Acerca%20del%20alma"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Arist%C3%B3teles%20Acerca%20del%20alma",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20Acerca%20del%20alma&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "language": "grc",
+      "genre": "Filosofía",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Recuerdos de Sócrates"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Jenofonte%20Recuerdos%20de%20S%C3%B3crates",
+        "gallica": "https://gallica.bnf.fr/Search?q=Jenofonte%20Recuerdos%20de%20S%C3%B3crates"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Jenofonte%20Recuerdos%20de%20S%C3%B3crates",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Jenofonte%20Recuerdos%20de%20S%C3%B3crates&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "language": "grc",
+      "genre": "Historia",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Helénicas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Jenofonte%20Hel%C3%A9nicas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Jenofonte%20Hel%C3%A9nicas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Jenofonte%20Hel%C3%A9nicas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Jenofonte%20Hel%C3%A9nicas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "language": "grc",
+      "genre": "Oratoria",
+      "dating": "330 a. C.",
+      "aliases": [
+        "Sobre la corona"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Dem%C3%B3stenes%20Sobre%20la%20corona",
+        "gallica": "https://gallica.bnf.fr/Search?q=Dem%C3%B3stenes%20Sobre%20la%20corona"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Dem%C3%B3stenes%20Sobre%20la%20corona",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Dem%C3%B3stenes%20Sobre%20la%20corona&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "language": "grc",
+      "genre": "Oratoria",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Filípicas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Dem%C3%B3stenes%20Fil%C3%ADpicas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Dem%C3%B3stenes%20Fil%C3%ADpicas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Dem%C3%B3stenes%20Fil%C3%ADpicas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Dem%C3%B3stenes%20Fil%C3%ADpicas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "language": "grc",
+      "genre": "Poesía lírica",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Odas olímpicas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=P%C3%ADndaro%20Odas%20ol%C3%ADmpicas",
+        "gallica": "https://gallica.bnf.fr/Search?q=P%C3%ADndaro%20Odas%20ol%C3%ADmpicas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20P%C3%ADndaro%20Odas%20ol%C3%ADmpicas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=P%C3%ADndaro%20Odas%20ol%C3%ADmpicas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "language": "grc",
+      "genre": "Poesía lírica",
+      "dating": "siglo V a. C.",
+      "aliases": [
+        "Odas píticas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=P%C3%ADndaro%20Odas%20p%C3%ADticas",
+        "gallica": "https://gallica.bnf.fr/Search?q=P%C3%ADndaro%20Odas%20p%C3%ADticas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20P%C3%ADndaro%20Odas%20p%C3%ADticas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=P%C3%ADndaro%20Odas%20p%C3%ADticas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "language": "grc",
+      "genre": "Poesía",
+      "dating": "época arcaica y helenística",
+      "aliases": [
+        "Himnos homéricos (colección)"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=An%C3%B3nimo%20(atribuci%C3%B3n%20antigua%20a%20Homero)%20Himnos%20hom%C3%A9ricos%20(colecci%C3%B3n)",
+        "gallica": "https://gallica.bnf.fr/Search?q=An%C3%B3nimo%20(atribuci%C3%B3n%20antigua%20a%20Homero)%20Himnos%20hom%C3%A9ricos%20(colecci%C3%B3n)"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20An%C3%B3nimo%20(atribuci%C3%B3n%20antigua%20a%20Homero)%20Himnos%20hom%C3%A9ricos%20(colecci%C3%B3n)",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=An%C3%B3nimo%20(atribuci%C3%B3n%20antigua%20a%20Homero)%20Himnos%20hom%C3%A9ricos%20(colecci%C3%B3n)&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "language": "grc",
+      "genre": "Filosofía moral",
+      "dating": "siglo IV–III a. C.",
+      "aliases": [
+        "Caracteres"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Teofrasto%20Caracteres",
+        "gallica": "https://gallica.bnf.fr/Search?q=Teofrasto%20Caracteres"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Teofrasto%20Caracteres",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Teofrasto%20Caracteres&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "language": "grc",
+      "genre": "Botánica",
+      "dating": "siglo IV–III a. C.",
+      "aliases": [
+        "Historia de las plantas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Teofrasto%20Historia%20de%20las%20plantas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Teofrasto%20Historia%20de%20las%20plantas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Teofrasto%20Historia%20de%20las%20plantas",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Teofrasto%20Historia%20de%20las%20plantas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "language": "grc",
+      "genre": "Biografía y filosofía",
+      "dating": "siglo III d. C.",
+      "aliases": [
+        "Vidas de los filósofos ilustres"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Di%C3%B3genes%20Laercio%20Vidas%20de%20los%20fil%C3%B3sofos%20ilustres",
+        "gallica": "https://gallica.bnf.fr/Search?q=Di%C3%B3genes%20Laercio%20Vidas%20de%20los%20fil%C3%B3sofos%20ilustres"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Di%C3%B3genes%20Laercio%20Vidas%20de%20los%20fil%C3%B3sofos%20ilustres",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Di%C3%B3genes%20Laercio%20Vidas%20de%20los%20fil%C3%B3sofos%20ilustres&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "language": "la",
+      "genre": "Oratoria",
+      "dating": "62 a. C.",
+      "aliases": [
+        "En defensa del poeta Arquías"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20En%20defensa%20del%20poeta%20Arqu%C3%ADas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20En%20defensa%20del%20poeta%20Arqu%C3%ADas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20En%20defensa%20del%20poeta%20Arqu%C3%ADas",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20En%20defensa%20del%20poeta%20Arqu%C3%ADas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "language": "la",
+      "genre": "Filosofía",
+      "dating": "45 a. C.",
+      "aliases": [
+        "Sobre los fines del bien y del mal"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Sobre%20los%20fines%20del%20bien%20y%20del%20mal",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Sobre%20los%20fines%20del%20bien%20y%20del%20mal"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Sobre%20los%20fines%20del%20bien%20y%20del%20mal",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20los%20fines%20del%20bien%20y%20del%20mal&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "language": "la",
+      "genre": "Filosofía",
+      "dating": "45 a. C.",
+      "aliases": [
+        "Disputaciones tusculanas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Disputaciones%20tusculanas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Disputaciones%20tusculanas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Disputaciones%20tusculanas",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Disputaciones%20tusculanas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "language": "la",
+      "genre": "Filosofía religiosa",
+      "dating": "45 a. C.",
+      "aliases": [
+        "Sobre la naturaleza de los dioses"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Sobre%20la%20naturaleza%20de%20los%20dioses",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Sobre%20la%20naturaleza%20de%20los%20dioses"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Sobre%20la%20naturaleza%20de%20los%20dioses",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20naturaleza%20de%20los%20dioses&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "language": "la",
+      "genre": "Filosofía moral",
+      "dating": "44 a. C.",
+      "aliases": [
+        "Sobre la amistad"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Sobre%20la%20amistad",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Sobre%20la%20amistad"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Sobre%20la%20amistad",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20amistad&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "language": "la",
+      "genre": "Filosofía moral",
+      "dating": "44 a. C.",
+      "aliases": [
+        "Sobre la vejez"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Sobre%20la%20vejez",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Sobre%20la%20vejez"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Sobre%20la%20vejez",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20vejez&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "language": "la",
+      "genre": "Filosofía religiosa",
+      "dating": "44 a. C.",
+      "aliases": [
+        "Sobre la adivinación"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Sobre%20la%20adivinaci%C3%B3n",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Sobre%20la%20adivinaci%C3%B3n"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Sobre%20la%20adivinaci%C3%B3n",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20adivinaci%C3%B3n&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "language": "la",
+      "genre": "Retórica",
+      "dating": "46 a. C.",
+      "aliases": [
+        "Bruto historia de la oratoria romana"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Bruto%20historia%20de%20la%20oratoria%20romana",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Bruto%20historia%20de%20la%20oratoria%20romana"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Bruto%20historia%20de%20la%20oratoria%20romana",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Bruto%20historia%20de%20la%20oratoria%20romana&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "language": "la",
+      "genre": "Oratoria",
+      "dating": "44–43 a. C.",
+      "aliases": [
+        "Filípicas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Cicer%C3%B3n%20Fil%C3%ADpicas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Cicer%C3%B3n%20Fil%C3%ADpicas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Cicer%C3%B3n%20Fil%C3%ADpicas",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Fil%C3%ADpicas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "language": "la",
+      "genre": "Filosofía estoica",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Sobre la brevedad de la vida"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%A9neca%20Sobre%20la%20brevedad%20de%20la%20vida",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%A9neca%20Sobre%20la%20brevedad%20de%20la%20vida"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%A9neca%20Sobre%20la%20brevedad%20de%20la%20vida",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=S%C3%A9neca%20Sobre%20la%20brevedad%20de%20la%20vida&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "language": "la",
+      "genre": "Filosofía estoica",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Sobre la ira"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%A9neca%20Sobre%20la%20ira",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%A9neca%20Sobre%20la%20ira"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%A9neca%20Sobre%20la%20ira",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=S%C3%A9neca%20Sobre%20la%20ira&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "language": "la",
+      "genre": "Filosofía estoica",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Sobre la clemencia"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%A9neca%20Sobre%20la%20clemencia",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%A9neca%20Sobre%20la%20clemencia"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%A9neca%20Sobre%20la%20clemencia",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=S%C3%A9neca%20Sobre%20la%20clemencia&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "language": "la",
+      "genre": "Filosofía estoica",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Sobre la tranquilidad del ánimo"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=S%C3%A9neca%20Sobre%20la%20tranquilidad%20del%20%C3%A1nimo",
+        "gallica": "https://gallica.bnf.fr/Search?q=S%C3%A9neca%20Sobre%20la%20tranquilidad%20del%20%C3%A1nimo"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20S%C3%A9neca%20Sobre%20la%20tranquilidad%20del%20%C3%A1nimo",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=S%C3%A9neca%20Sobre%20la%20tranquilidad%20del%20%C3%A1nimo&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "language": "la",
+      "genre": "Poesía",
+      "dating": "c. 30 a. C.",
+      "aliases": [
+        "Épodos"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Horacio%20%C3%89podos",
+        "gallica": "https://gallica.bnf.fr/Search?q=Horacio%20%C3%89podos"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Horacio%20%C3%89podos",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Horacio%20%C3%89podos&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "language": "la",
+      "genre": "Poesía",
+      "dating": "siglo I a. C.",
+      "aliases": [
+        "Epístolas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Horacio%20Ep%C3%ADstolas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Horacio%20Ep%C3%ADstolas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Horacio%20Ep%C3%ADstolas",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Horacio%20Ep%C3%ADstolas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "language": "la",
+      "genre": "Poesía",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Tristes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ovidio%20Tristes",
+        "gallica": "https://gallica.bnf.fr/Search?q=Ovidio%20Tristes"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Ovidio%20Tristes",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20Tristes&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "language": "la",
+      "genre": "Poesía",
+      "dating": "siglo I a. C.–I d. C.",
+      "aliases": [
+        "Heroidas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ovidio%20Heroidas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Ovidio%20Heroidas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Ovidio%20Heroidas",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20Heroidas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "language": "la",
+      "genre": "Poesía didáctica",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Remedios de amor"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ovidio%20Remedios%20de%20amor",
+        "gallica": "https://gallica.bnf.fr/Search?q=Ovidio%20Remedios%20de%20amor"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Ovidio%20Remedios%20de%20amor",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20Remedios%20de%20amor&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "language": "la",
+      "genre": "Epistolografía",
+      "dating": "siglo I d. C.",
+      "aliases": [
+        "Pónticas"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ovidio%20P%C3%B3nticas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Ovidio%20P%C3%B3nticas"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Ovidio%20P%C3%B3nticas",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20P%C3%B3nticas&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "language": "la",
+      "genre": "Retórica",
+      "dating": "siglo I–II d. C.",
+      "aliases": [
+        "Diálogo de los oradores"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=T%C3%A1cito%20(atribuci%C3%B3n%20tradicional)%20Di%C3%A1logo%20de%20los%20oradores",
+        "gallica": "https://gallica.bnf.fr/Search?q=T%C3%A1cito%20(atribuci%C3%B3n%20tradicional)%20Di%C3%A1logo%20de%20los%20oradores"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20T%C3%A1cito%20(atribuci%C3%B3n%20tradicional)%20Di%C3%A1logo%20de%20los%20oradores",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=T%C3%A1cito%20(atribuci%C3%B3n%20tradicional)%20Di%C3%A1logo%20de%20los%20oradores&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "language": "la",
+      "genre": "Oratoria",
+      "dating": "siglo II d. C.",
+      "aliases": [
+        "Apología o De magia"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Apuleyo%20Apolog%C3%ADa%20o%20De%20magia",
+        "gallica": "https://gallica.bnf.fr/Search?q=Apuleyo%20Apolog%C3%ADa%20o%20De%20magia"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Apuleyo%20Apolog%C3%ADa%20o%20De%20magia",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Apuleyo%20Apolog%C3%ADa%20o%20De%20magia&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "genre": "Filosofía",
+      "dating": "siglo II d. C.",
+      "aliases": [
+        "Sobre el dios de Sócrates"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Apuleyo%20Sobre%20el%20dios%20de%20S%C3%B3crates",
+        "gallica": "https://gallica.bnf.fr/Search?q=Apuleyo%20Sobre%20el%20dios%20de%20S%C3%B3crates"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Apuleyo%20Sobre%20el%20dios%20de%20S%C3%B3crates",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Apuleyo%20Sobre%20el%20dios%20de%20S%C3%B3crates&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "language": "la",
+      "genre": "Ingeniería y arte militar",
+      "dating": "siglo IV–V d. C.",
+      "aliases": [
+        "Compendio de técnica militar"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Vegecio%20Compendio%20de%20t%C3%A9cnica%20militar",
+        "gallica": "https://gallica.bnf.fr/Search?q=Vegecio%20Compendio%20de%20t%C3%A9cnica%20militar"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Vegecio%20Compendio%20de%20t%C3%A9cnica%20militar",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Vegecio%20Compendio%20de%20t%C3%A9cnica%20militar&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "language": "la",
+      "genre": "Cristianismo primitivo",
+      "dating": "c. 397–400 d. C.",
+      "aliases": [
+        "Confesiones"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Agust%C3%ADn%20de%20Hipona%20Confesiones",
+        "gallica": "https://gallica.bnf.fr/Search?q=Agust%C3%ADn%20de%20Hipona%20Confesiones"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Agust%C3%ADn%20de%20Hipona%20Confesiones",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Agust%C3%ADn%20de%20Hipona%20Confesiones&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "language": "la",
+      "genre": "Filosofía religiosa",
+      "dating": "413–426 d. C.",
+      "aliases": [
+        "La ciudad de Dios"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Agust%C3%ADn%20de%20Hipona%20La%20ciudad%20de%20Dios",
+        "gallica": "https://gallica.bnf.fr/Search?q=Agust%C3%ADn%20de%20Hipona%20La%20ciudad%20de%20Dios"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Agust%C3%ADn%20de%20Hipona%20La%20ciudad%20de%20Dios",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Agust%C3%ADn%20de%20Hipona%20La%20ciudad%20de%20Dios&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "language": "la",
+      "genre": "Filosofía",
+      "dating": "c. 524 d. C.",
+      "aliases": [
+        "Consolación de la filosofía"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Boecio%20Consolaci%C3%B3n%20de%20la%20filosof%C3%ADa",
+        "gallica": "https://gallica.bnf.fr/Search?q=Boecio%20Consolaci%C3%B3n%20de%20la%20filosof%C3%ADa"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Boecio%20Consolaci%C3%B3n%20de%20la%20filosof%C3%ADa",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Boecio%20Consolaci%C3%B3n%20de%20la%20filosof%C3%ADa&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "language": "la",
+      "genre": "Miscelánea erudita",
+      "dating": "siglo V d. C.",
+      "aliases": [
+        "Saturnales"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Macrobio%20Saturnales",
+        "gallica": "https://gallica.bnf.fr/Search?q=Macrobio%20Saturnales"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org%2Freader%2F%20Macrobio%20Saturnales",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Macrobio%20Saturnales&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
     }
   ],
   "pdfPolicy": {
