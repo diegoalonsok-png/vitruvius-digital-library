@@ -277,7 +277,7 @@ function switchTab(value){
 }
 async function start(){
  const [a,b]=await Promise.all([
-  fetch("data/onomasticon-vitruvianum.json?v=20261102-greek-index"),
+  fetch("data/onomasticon-vitruvianum.json?v=20261103-portraits-01"),
   fetch("data/structured/recensio-es.json")
  ]);
  if(!a.ok||!b.ok)throw Error("No se pudo cargar el índice o el corpus V514 ("+a.status+", "+b.status+").");
