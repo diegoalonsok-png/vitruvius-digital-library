@@ -171,10 +171,12 @@ function considerFeatured(rows,query){
  const tokens=q.split(/\s+/).filter(t=>t.length>=4);
  const picks=(rows||[]).filter(r=>r.link&&r.title).map(r=>{
   const title=norm(r.title),matched=tokens.filter(t=>title.includes(t)).length,exact=title===q;
-  // Without topic agreement, suppress unrelated featured articles.
-  const weight=(exact?160:0)+(matched?60*matched/Math.max(1,tokens.length):0)+(title.includes(q)&&q.length>2?70:0);
+  // Wikipedia describes the subject; a same-titled Open Library book is NOT the subject.
+  const originBoost=r.type==="wikipedia"?180:r.type==="manuscript"?90:r.type==="passage"?35:
+    r.type==="openlibrary"?-180:r.type==="article"?-45:r.type==="museum"?-35:0;
+  const weight=(exact?160:0)+(matched?60*matched/Math.max(1,tokens.length):0)+(title.includes(q)&&q.length>2?70:0)+originBoost;
   return {row:r,weight}
- }).filter(x=>x.weight>=45).sort((a,b)=>b.weight-a.weight);
+ }).filter(x=>x.weight>=95 && x.row.type!=="openlibrary").sort((a,b)=>b.weight-a.weight);
  if(!picks.length||picks[0].weight<=(S.featureWeight??-Infinity))return;
  const {row,weight}=picks[0];S.featureWeight=weight;
  $("featured-label").textContent=row.type==="wikipedia"?"DESTACADO · WIKIPEDIA":row.type==="manuscript"?"DESTACADO · MANUSCRITO":"DESTACADO · DOCUMENTACIÓN";
@@ -317,7 +319,7 @@ async function search(){
   if(id!==S.searchId)return;
   const incoming=value.rows||[];
   rows.push(...incoming);
-  if(!focused){if(value.featured)considerFeatured([value.featured],q);else considerFeatured(incoming,q)}
+  if(value.featured)considerFeatured([value.featured],q);else considerFeatured(incoming,q)
   completed++;
   display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
   if(value.warnings?.length)$("result-state").title=value.warnings.join("; ");
