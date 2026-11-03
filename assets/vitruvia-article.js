@@ -125,7 +125,7 @@ if(a)$("article-body").append(a);
 aside(rows);references(rows)
 }
 function highlightArticle(query){
- const words=[...new Set(String(query||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3))].slice(0,8);
+ const words=[...new Set(String(query||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3))].slice(0,8);if(words.some(w=>/^pitagor|^pythagor/.test(w)))words.push("pitagor","pythagor");
  if(!words.length)return;
  const walker=document.createTreeWalker($("article-body"),NodeFilter.SHOW_TEXT),nodes=[];
  while(walker.nextNode()){const n=walker.currentNode;if(n.parentElement?.closest("a,button,mark,script,style"))continue;nodes.push(n)}
