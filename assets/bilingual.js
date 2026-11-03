@@ -1,6 +1,7 @@
 import {lexicalSuggestions,lexicalForms} from './lexical-suggestions.mjs?v=20261030-history';
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
 import {citation,roman,parseLocus,searchCorpus,tokens} from './search-core.mjs?v=20261030-docx-1';
+import {parallelHighlight} from './parallel-highlights.mjs?v=20261103-pair2';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const editionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'},names={es:'Castellano',fr:'Français',en:'English'};
 const datasets={},records={};let lexicon=[];
@@ -16,8 +17,10 @@ function refresh(book,chapter,section){
  const sections=[...new Set(rows.filter(p=>String(p.chapter)===$('chapter').value).map(p=>p.section))].sort((a,b)=>a-b);
  options('section',sections.map(n=>[n,'Sección '+n]),section);
 }
-function highlight(text){
+function highlight(text,lang='la',latin=''){
  text=String(text).replace(/\u00ad/g,'');
+ const paired=parallelHighlight(text,{query,lang,latin});
+ if(paired?.equivalent)return paired.html;
  const wanted=new Set(($('find-mode').value==='forms'?lexicalForms(query,lexicon):[query]).flatMap(x=>tokens(x).map(t=>t.value)));if(!wanted.size)return esc(text);
  let html='',at=0;for(const t of tokens(text)){if(!wanted.has(t.value))continue;html+=esc(text.slice(at,t.start))+'<mark>'+esc(text.slice(t.start,t.end))+'</mark>';at=t.end;}return html+esc(text.slice(at));
 }
@@ -31,8 +34,14 @@ function render(){
  $('locus').value=roman(base.book)+'.'+base.chapter+'.'+base.section;$('passage-ref').textContent=citation(base);
  $('translation-title').textContent=names[lang];$('translation-source').textContent='Traducción de Diego Kurilo · '+(data?.version||lang);
  $('latin-title').textContent=citation(p||base);$('latin-source').textContent='Texto latino de la edición '+(p?data.version:'V514')+' · Diego Kurilo';
- $('latin-text').innerHTML=highlight(p?.latin||base.latin);$('translation-text').lang=lang;
- $('translation-text').innerHTML=p?highlight(p.translation):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Podés consultar el castellano y el francés en el selector de traducción.</p>';
+ $('latin-text').innerHTML=highlight(p?.latin||base.latin,'la',p?.latin||base.latin);$('translation-text').lang=lang;
+ $('translation-text').innerHTML=p?highlight(p.translation,lang,p.latin||base.latin):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Podés consultar el castellano y el francés en el selector de traducción.</p>';
+ const pairedNote=$('parallel-lexical-note');
+ if(pairedNote){
+  const paired=p?.translation?parallelHighlight(p.translation,{query,lang,latin:p.latin||base.latin}):null;
+  pairedNote.hidden=!paired?.equivalent;
+  pairedNote.textContent=paired?.equivalent?'Equivalencias resaltadas en '+names[lang]+': '+paired.words.join(', ')+' · correspondencia léxica orientativa vinculada al locus; no traducción palabra por palabra.':'';
+ }
  if(lang==='es'&&p?.locus==='1.1.1'){
   $('translation-text').innerHTML=$('translation-text').innerHTML.replace(/\b(fabrica|ratiocinatio)\b/g,'<em>$1</em>');
  }
@@ -49,7 +58,7 @@ function render(){
  const others=$('other-translations');others.replaceChildren();others.hidden=!$('compare-all').checked;
  if($('compare-all').checked)for(const other of ['es','fr','en'].filter(x=>x!==lang)){
   const d=datasets[editionIds[other]],u=d?.passages.find(x=>atLocus(x,locus)),section=document.createElement('section');section.className='scholarly-panel';section.lang=other;
-  section.innerHTML='<p class="eyebrow">TRADUCCIÓN</p><h2>'+names[other]+'</h2><p class="source">'+bibliographyHTML(records[editionIds[other]])+'</p><div class="scholarly-text">'+(u?(u.scope_note?'<p class="source">'+esc(citation(u)+' · '+u.scope_note)+'</p>':'')+highlight(u.translation):'Traducción sin correspondencia disponible para este locus.')+'</div>';others.append(section);
+  section.innerHTML='<p class="eyebrow">TRADUCCIÓN</p><h2>'+names[other]+'</h2><p class="source">'+bibliographyHTML(records[editionIds[other]])+'</p><div class="scholarly-text">'+(u?(u.scope_note?'<p class="source">'+esc(citation(u)+' · '+u.scope_note)+'</p>':'')+highlight(u.translation,other,u.latin||base.latin):'Traducción sin correspondencia disponible para este locus.')+'</div>';others.append(section);
  }
  const ed=records[editionIds[lang]];const source=ed?.read_url||ed?.source_url;
  $('edition-citation').innerHTML=bibliographyHTML(ed);
