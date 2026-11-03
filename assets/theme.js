@@ -1,6 +1,6 @@
 (()=>{
  const base=(document.currentScript?.src||new URL('assets/theme.js',location.href).href).replace(/theme\.js(?:\?.*)?$/,'');
- if(!document.querySelector('link[href*="assets/theme.css"]')){const css=document.createElement('link');css.rel='stylesheet';css.href=base+'theme.css?v=20261101-contrast-h-2';document.head.append(css)}
+ if(!document.querySelector('link[href*="assets/theme.css"]')){const css=document.createElement('link');css.rel='stylesheet';css.href=base+'theme.css?v=20261103-loci-contrast-01';document.head.append(css)}
  const viewerNames=new Set(['harleianus.html','sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html','laboratorio-h.html']);
  if(viewerNames.has(location.pathname.split('/').pop())&&!document.querySelector('script[data-viewer-actions]')){
   const share=document.createElement('script');share.src=base+'viewer-actions.js?v=20261103-live-image';share.defer=true;share.dataset.viewerActions='1';document.head.append(share);
