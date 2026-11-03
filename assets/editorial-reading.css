@@ -1,5 +1,5 @@
 /* VITRVVIVS · vitrina editorial complementaria, sin alterar los lectores.
-   La tapa 3D es una RECREACIÓN tipográfica, nunca un facsímil histórico. */
+   La vitrina usa imágenes documentadas del Codex H, sin simulaciones de encuadernación. */
 .editorial-reading{background:#0a0a0a;color:#efefec;border-top:1px solid #333;border-bottom:1px solid #393939;padding:45px 0 46px;font-family:Arial,Helvetica,sans-serif}
 .editorial-reading *, .editorial-reading *::before, .editorial-reading *::after{box-sizing:border-box}
 .editorial-reading .editorial-inner{max-width:1500px;margin:0 auto;padding:0 30px;display:grid;grid-template-columns:minmax(0,1fr) 230px;align-items:center;gap:clamp(25px,4vw,60px)}
@@ -82,3 +82,31 @@
  .editorial-reading .editorial-card p{font-size:13px;line-height:1.65}
  .editorial-reading .volume-area{display:none!important}
 }
+
+
+/* Vitrina documental, en lugar de un libro 3D. Sin animaciones decorativas. */
+.editorial-reading .folio-feature{min-width:0;display:flex;flex-direction:column;gap:10px;align-items:stretch;align-self:start;padding:15px 15px 17px;border:1px solid var(--line,#dad6cf);background:var(--white,#fffdf8);color:var(--ink,#172b3c);border-radius:4px}
+.editorial-reading .folio-feature-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line,#dedbd6);padding-bottom:10px}
+.editorial-reading .folio-eyebrow{font:600 10px/1.5 Arial,sans-serif;letter-spacing:.11em;color:var(--muted,#555)}
+.editorial-reading .folio-number{font:italic 15px Georgia,serif;color:var(--ink,#172b3c)}
+.editorial-reading .folio-image-link{display:flex;min-width:0;align-items:center;justify-content:center;height:262px;padding:9px;background:#e8e1d1;border:1px solid #d2c8b9;overflow:hidden}
+.editorial-reading .folio-image-link:focus-visible{outline:2px solid #a98f5c;outline-offset:3px}
+.editorial-reading #folio-feature-image{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;filter:none;box-shadow:0 2px 9px #0002}
+.editorial-reading .folio-metadata{display:flex;flex-direction:column;gap:2px;min-width:0}
+.editorial-reading .folio-metadata strong{font:400 19px/1.2 Georgia,serif;color:var(--ink,#172b3c)}
+.editorial-reading .folio-metadata span{font:400 11px/1.5 Arial,sans-serif;color:var(--muted,#666)}
+.editorial-reading .folio-controls{display:flex;align-items:center;justify-content:center;gap:13px;border-top:1px solid var(--line,#ddd);padding-top:11px}
+.editorial-reading .folio-controls button{border:1px solid var(--line,#ccc);background:transparent;color:var(--ink,#172b3c);border-radius:4px;width:38px;height:34px;font:400 19px Georgia,serif;cursor:pointer}
+.editorial-reading .folio-controls button:hover:not(:disabled),.editorial-reading .folio-controls button:focus-visible{background:var(--paper,#eee9de);border-color:var(--gold,#a98f5c)}
+.editorial-reading .folio-controls button:disabled{opacity:.3;cursor:default}
+.editorial-reading .folio-controls span{font:400 12px/1.5 Arial,sans-serif;color:var(--muted,#666);min-width:33px;text-align:center}
+.editorial-reading .folio-note{font:400 11px/1.55 Arial,sans-serif;color:var(--muted,#666);margin:0}
+.editorial-reading .folio-read{font:500 12px/1.5 Arial,sans-serif;color:var(--ink,#172b3c);text-decoration:underline;text-underline-offset:3px;align-self:start}
+html[data-theme=dark] .editorial-reading .folio-feature{background:#142633;color:#eaeaea;border-color:#50606b}
+html[data-theme=dark] .editorial-reading .folio-feature-head,html[data-theme=dark] .editorial-reading .folio-controls{border-color:#50606b}
+html[data-theme=dark] .editorial-reading :is(.folio-metadata strong,.folio-number,.folio-read){color:#f0ede5}
+html[data-theme=dark] .editorial-reading :is(.folio-metadata span,.folio-eyebrow,.folio-note,.folio-controls span){color:#d2d0ca}
+html[data-theme=dark] .editorial-reading .folio-controls button{color:#eee;border-color:#576d77}
+@media(min-width:1051px){.editorial-reading .editorial-inner{grid-template-columns:minmax(0,1fr) minmax(218px,258px)}}
+@media(min-width:581px) and (max-width:1050px){.editorial-reading .folio-feature{max-width:330px;margin:12px auto 0}}
+@media(max-width:580px){.editorial-reading .folio-feature{margin-top:24px;padding:15px;width:100%}.editorial-reading .folio-image-link{height:235px}}
