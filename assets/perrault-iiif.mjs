@@ -3,7 +3,7 @@
 const host=document.querySelector("#perrault-page-viewer");
 if(host){
  host.replaceChildren();
- const manifest="https://www.e-rara.ch/i3f/v20/16797458/manifest";
+ const manifest="data/perrault-iiif-pages.json"; // verified local map of external IIIF URLs; no photographs stored
  const toolbar=document.createElement("div");toolbar.className="perrault-toolbar";
  toolbar.setAttribute("role","toolbar");toolbar.setAttribute("aria-label","Herramientas de lectura del facsímil");
  const viewport=document.createElement("div");viewport.className="perrault-viewport";
@@ -73,9 +73,9 @@ if(host){
   if(!fetching)fetching=fetch(manifest).then(r=>{
    if(!r.ok)throw Error("HTTP "+r.status);return r.json();
   }).then(data=>{
-   const canvases=data.sequences?.[0]?.canvases;
-   if(!Array.isArray(canvases)||canvases.length<350)throw Error("Manifiesto incompleto");
-   pages=canvases;return pages;
+   const entries=data.pages;
+   if(!Array.isArray(entries)||entries.length!==370)throw Error("Índice IIIF incompleto");
+   pages=entries;return pages;
   }).catch(e=>{fetching=null;throw e});
   return fetching;
  }
@@ -87,12 +87,10 @@ if(host){
   try{
    const list=await getPages();if(my!==serial||host.hidden)return;
    // La primera página del PDF es la cubierta y no está en el manifiesto.
-   const canvas=list[page-2];
-   const a=canvas?.images?.[0]?.resource||canvas?.thumbnail;
-   let svc=a?.service;if(Array.isArray(svc))svc=svc[0];
-   service=(typeof svc==="string"?svc:svc?.["@id"]||svc?.id||"").replace(/\/$/,"");
-   fallback=a?.["@id"]||a?.id||"";
-   if(!service&&!fallback)throw Error("Página sin imagen en el manifiesto");
+   const image=list[page-2];
+   service=image?.id?"https://www.e-rara.ch/i3f/v20/"+image.id:"";
+   fallback=image?.fallback||"";
+   if(!service&&!fallback)throw Error("La página no figura en el índice IIIF");
    loadWidth(1200);
   }catch(e){if(my!==serial)return;status.textContent="Visor institucional no disponible: "+e.message;img.hidden=true;}
  }
