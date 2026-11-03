@@ -36,9 +36,9 @@ const localUrl=/^(?:[a-z0-9/_-]+\.html(?:\?[^#]*)?|documents\/[a-z0-9/_-]+\.pdf)
 function anchor(text,url){const a=node("a",null,text);if(!url)return null;const external=/^https:\/\//i.test(url);
  if(!external&&!localUrl.test(url))return null;a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a}
 const I18N={
- es:{lead:"Buscador universal especializado en arte, historia, arquitectura y patrimonio cultural. Libros, códices, Wikipedia y fuentes académicas.",placeholder:"Preguntá sobre cualquier tema, obra, autor o concepto…",submit:"Buscar",modes:["◎ Todo","Biblioteca interna","⌁ Modo conceptual","↗ Enciclopedias"],explain:["Buscá cualquier tema en Wikipedia y otras fuentes públicas. Arte, historia y arquitectura reciben prioridad.","Busca en el catálogo, los pasajes en latín y sus traducciones, y las secciones alojadas en GitHub.","Relaciona conceptos, sinónimos y lenguas; ofrece una síntesis extractiva basada en citas, sin inventar respuestas.","Consulta en vivo Wikipedia, Wikidata y catálogos abiertos, independientemente de la materia."],heading:"Resultados documentados",idle:"Consultá la biblioteca y las enciclopedias",waiting:"Consultando fuentes verificables…",none:"No se obtuvieron resultados comprobados; podés usar las búsquedas institucionales directas.",book:"LIBRO DEL CATÁLOGO",passage:"TEXTO · LOCUS",section:"DOCUMENTO DEL SITIO",wikipedia:"ENCICLOPEDIA · WIKIPEDIA",wikidata:"DATOS · WIKIDATA",openlibrary:"CATÁLOGO · OPEN LIBRARY",museum:"ARTE · THE MET",read:"Leer en la biblioteca",document:"Abrir documento",source:"Consultar fuente",pdf:"Leer PDF",unpublished:"Ficha en preparación · lector no disponible",synthesis:"Síntesis de resultados documentados",detail:"Selección de fragmentos recuperados; verificá las afirmaciones en cada fuente. No es una respuesta generativa de IA.",external:"Búsquedas adicionales en fuentes reconocidas",searching:"La búsqueda continúa en fuentes externas…"},
- en:{lead:"Universal search with a focus on art, history, architecture and cultural heritage. Books, manuscripts, Wikipedia and scholarly sources.",placeholder:"Search any topic, author, book or concept…",submit:"Search",modes:["◎ All","This library","⌁ Concept mode","↗ Encyclopedias"],explain:["Search any topic in Wikipedia and public sources, prioritising art, history and architecture.","Search the catalog, Latin passages, translations and pages hosted on GitHub.","Link related terms across languages with source-based extracts, without inventing answers.","Live search of Wikipedia, Wikidata and open catalogs, on any topic."],heading:"Documented results",idle:"Explore library and encyclopedias",waiting:"Searching verifiable sources…",none:"No confirmed results; use the direct institutional searches.",book:"CATALOG BOOK",passage:"TEXT · LOCUS",section:"SITE DOCUMENT",wikipedia:"ENCYCLOPEDIA · WIKIPEDIA",wikidata:"DATA · WIKIDATA",openlibrary:"CATALOG · OPEN LIBRARY",museum:"ART · THE MET",read:"Read in library",document:"Open document",source:"View original",pdf:"Read PDF",unpublished:"Catalog entry pending · no reader",synthesis:"Source-based synthesis",detail:"Selected excerpts from retrieved documents; verify claims at the source. Not generative AI.",external:"Additional reputable sources",searching:"External sources are still loading…"},
- fr:{lead:"Recherche universelle privilégiant l’art, l’histoire, l’architecture et le patrimoine. Livres, codex, Wikipédia et sources scientifiques.",placeholder:"Chercher n’importe quel sujet, auteur ou ouvrage…",submit:"Rechercher",modes:["◎ Tout","Bibliothèque","⌁ Concepts","↗ Encyclopédies"],explain:["Tous les sujets sur Wikipédia et autres ressources ouvertes ; priorité à l’art, l’histoire et l’architecture.","Recherche dans les livres, passages latins, traductions et pages hébergées sur GitHub.","Relie synonymes et langues ; synthèse documentaire fondée sur des sources.","Recherche en direct dans Wikipédia, Wikidata et des catalogues ouverts pour tous les sujets."],heading:"Résultats documentés",idle:"Explorer les fonds",waiting:"Interrogation des sources vérifiables…",none:"Aucun résultat confirmé ; utiliser les recherches institutionnelles directes.",book:"LIVRE DU CATALOGUE",passage:"TEXTE · LOCUS",section:"DOCUMENT DU SITE",wikipedia:"ENCYCLOPÉDIE · WIKIPÉDIA",wikidata:"DONNÉES · WIKIDATA",openlibrary:"CATALOGUE · OPEN LIBRARY",museum:"ART · THE MET",read:"Lire dans la bibliothèque",document:"Ouvrir document",source:"Voir la source",pdf:"Lire PDF",unpublished:"Notice en attente · pas de lecteur",synthesis:"Synthèse sourcée",detail:"Extraits récupérés ; vérifier les sources. Ce n'est pas une IA générative.",external:"Autres références de qualité",searching:"Interrogation des sources externes en cours…"}
+ es:{lead:"Buscador universal especializado en arte, historia, arquitectura y patrimonio cultural. Libros, códices, Wikipedia y fuentes académicas.",placeholder:"Preguntá sobre cualquier tema, obra, autor o concepto…",submit:"Buscar",modes:["◎ Todo","Biblioteca interna","⌁ Modo conceptual","↗ Enciclopedias"],explain:["Buscá cualquier tema en Wikipedia y otras fuentes públicas. Arte, historia y arquitectura reciben prioridad.","Busca en el catálogo, los pasajes en latín y sus traducciones, y las secciones alojadas en GitHub.","Relaciona conceptos, sinónimos y lenguas; ofrece una síntesis extractiva basada en citas, sin inventar respuestas.","Consulta en vivo Wikipedia, Wikidata y catálogos abiertos, independientemente de la materia."],heading:"Resultados documentados",idle:"Consultá la biblioteca y las enciclopedias",waiting:"Consultando fuentes verificables…",none:"No se obtuvieron resultados comprobados; podés usar las búsquedas institucionales directas.",book:"LIBRO DEL CATÁLOGO",passage:"TEXTO · LOCUS",section:"DOCUMENTO DEL SITIO",wikipedia:"ENCICLOPEDIA · WIKIPEDIA",wikidata:"DATOS · WIKIDATA",openlibrary:"CATÁLOGO · OPEN LIBRARY",museum:"ARTE · THE MET",article:"ARTÍCULO CIENTÍFICO",read:"Leer en la biblioteca",document:"Abrir documento",source:"Consultar fuente",pdf:"Leer PDF",unpublished:"Ficha en preparación · lector no disponible",synthesis:"Síntesis de resultados documentados",detail:"Selección de fragmentos recuperados; verificá las afirmaciones en cada fuente. No es una respuesta generativa de IA.",external:"Búsquedas adicionales en fuentes reconocidas",searching:"La búsqueda continúa en fuentes externas…"},
+ en:{lead:"Universal search with a focus on art, history, architecture and cultural heritage. Books, manuscripts, Wikipedia and scholarly sources.",placeholder:"Search any topic, author, book or concept…",submit:"Search",modes:["◎ All","This library","⌁ Concept mode","↗ Encyclopedias"],explain:["Search any topic in Wikipedia and public sources, prioritising art, history and architecture.","Search the catalog, Latin passages, translations and pages hosted on GitHub.","Link related terms across languages with source-based extracts, without inventing answers.","Live search of Wikipedia, Wikidata and open catalogs, on any topic."],heading:"Documented results",idle:"Explore library and encyclopedias",waiting:"Searching verifiable sources…",none:"No confirmed results; use the direct institutional searches.",book:"CATALOG BOOK",passage:"TEXT · LOCUS",section:"SITE DOCUMENT",wikipedia:"ENCYCLOPEDIA · WIKIPEDIA",wikidata:"DATA · WIKIDATA",openlibrary:"CATALOG · OPEN LIBRARY",museum:"ART · THE MET",article:"RESEARCH ARTICLE",read:"Read in library",document:"Open document",source:"View original",pdf:"Read PDF",unpublished:"Catalog entry pending · no reader",synthesis:"Source-based synthesis",detail:"Selected excerpts from retrieved documents; verify claims at the source. Not generative AI.",external:"Additional reputable sources",searching:"External sources are still loading…"},
+ fr:{lead:"Recherche universelle privilégiant l’art, l’histoire, l’architecture et le patrimoine. Livres, codex, Wikipédia et sources scientifiques.",placeholder:"Chercher n’importe quel sujet, auteur ou ouvrage…",submit:"Rechercher",modes:["◎ Tout","Bibliothèque","⌁ Concepts","↗ Encyclopédies"],explain:["Tous les sujets sur Wikipédia et autres ressources ouvertes ; priorité à l’art, l’histoire et l’architecture.","Recherche dans les livres, passages latins, traductions et pages hébergées sur GitHub.","Relie synonymes et langues ; synthèse documentaire fondée sur des sources.","Recherche en direct dans Wikipédia, Wikidata et des catalogues ouverts pour tous les sujets."],heading:"Résultats documentés",idle:"Explorer les fonds",waiting:"Interrogation des sources vérifiables…",none:"Aucun résultat confirmé ; utiliser les recherches institutionnelles directes.",book:"LIVRE DU CATALOGUE",passage:"TEXTE · LOCUS",section:"DOCUMENT DU SITE",wikipedia:"ENCYCLOPÉDIE · WIKIPÉDIA",wikidata:"DONNÉES · WIKIDATA",openlibrary:"CATALOGUE · OPEN LIBRARY",museum:"ART · THE MET",article:"ARTICLE SCIENTIFIQUE",read:"Lire dans la bibliothèque",document:"Ouvrir document",source:"Voir la source",pdf:"Lire PDF",unpublished:"Notice en attente · pas de lecteur",synthesis:"Synthèse sourcée",detail:"Extraits récupérés ; vérifier les sources. Ce n'est pas une IA générative.",external:"Autres références de qualité",searching:"Interrogation des sources externes en cours…"}
 };
 const T=()=>I18N[S.lang]||I18N.es;
 function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
@@ -86,7 +86,19 @@ async function wiki(q,language){
  const lang=["es","en","fr"].includes(language)?language:"es";
  const p=new URLSearchParams({action:"query",list:"search",srsearch:q,srlimit:"7",srprop:"snippet|wordcount",format:"json",utf8:"1",origin:"*"});
  const d=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+p);
- return (d.query?.search||[]).map((w,i)=>({type:"wikipedia",title:w.title,author:"Wikipedia · "+lang.toUpperCase(),excerpt:brief(htmlText(w.snippet),260),meta:"Artículo enciclopédico · Wikimedia",rating:42-i*2+culturalWeight(w.title,w.snippet),link:"https://"+lang+".wikipedia.org/?curid="+w.pageid,source:"Wikipedia ("+lang.toUpperCase()+")"}))
+ const found=(d.query?.search||[]).filter(w=>Number.isInteger(w.pageid)&&w.pageid>0);
+ let pictures={};
+ if(found.length){
+  const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
+  const photos=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,9500).catch(()=>null);
+  pictures=photos?.query?.pages||{};
+ }
+ return found.map((w,i)=>{
+  const photo=pictures[w.pageid],name=photo?.pageimage;
+  const image=photo?.thumbnail?.source;
+  const picturePage=name?"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(name.replace(/ /g,"_")):null;
+  return {type:"wikipedia",title:w.title,author:"Wikipedia · "+lang.toUpperCase(),excerpt:brief(htmlText(w.snippet),260),meta:"Artículo enciclopédico · Wikimedia",rating:42-i*2+culturalWeight(w.title,w.snippet),link:"https://"+lang+".wikipedia.org/?curid="+w.pageid,source:"Wikipedia ("+lang.toUpperCase()+")",image,imageRights:picturePage,imageCredit:"Wikipedia / Wikimedia Commons · consultar autor y licencia",imageKind:"documentary"};
+ })
 }
 async function wikidata(q){
  const p=new URLSearchParams({action:"wbsearchentities",search:q,language:S.lang,uselang:S.lang,type:"item",limit:"6",format:"json",origin:"*"});
@@ -94,16 +106,104 @@ async function wikidata(q){
  return (d.search||[]).map((x,i)=>({type:"wikidata",title:x.label||x.id,excerpt:x.description||"Identificador de entidad · Wikidata",author:x.id,meta:"Datos enlazados · Wikimedia",rating:30-i+culturalWeight(x.label,x.description),link:"https://www.wikidata.org/wiki/"+x.id,source:"Wikidata"}))
 }
 async function openLibrary(q){
- const p=new URLSearchParams({q,limit:"6",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b"});
+ const p=new URLSearchParams({q,limit:"6",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i"});
  const d=await fetchJSON("https://openlibrary.org/search.json?"+p);
- return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library"}))
+ return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
 }
 async function museum(q){
  const params=new URLSearchParams({q,limit:"4",offset:"0"});
  const d=await fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1.1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
  const details=await Promise.allSettled(ids.map(id=>fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
- return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met"}});
+ return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
+}
+
+/* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
+async function crossref(q){
+ const params=new URLSearchParams({query:q,rows:"6",select:"DOI,title,author,published,issued,type,publisher,URL,container-title"});
+ const d=await fetchJSON("https://api.crossref.org/works?"+params,12000);
+ const items=d.message?.items||[];
+ return items.filter(x=>x.DOI&&Array.isArray(x.title)&&x.title[0]).map((x,i)=>{
+  const date=(x.published?.["date-parts"]||x.issued?.["date-parts"]||[])[0]||[];
+  const author=(x.author||[]).slice(0,2).map(y=>[y.given,y.family].filter(Boolean).join(" ")).join(", ");
+  return {type:"article",title:x.title[0],author:author||x.publisher||"",excerpt:[x["container-title"]?.[0],date[0],x.type].filter(Boolean).join(" · ")+" · Registro bibliográfico con DOI: "+x.DOI,
+   meta:"Crossref · DOI verificado en el registro · acceso al texto según editor",rating:26-i+culturalWeight(x.title[0],x["container-title"]?.[0]||""),
+   link:"https://doi.org/"+encodeURIComponent(x.DOI),source:"Crossref"};
+ })
+}
+async function europePmc(q){
+ const params=new URLSearchParams({query:q,format:"json",pageSize:"6",resultType:"core"});
+ const d=await fetchJSON("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+params,12000);
+ return (d.resultList?.result||[]).filter(x=>x.title&&(x.pmid||x.pmcid||x.doi)).map((x,i)=>{
+  const journal=x.journalTitle||"",isOpen=x.isOpenAccess==="Y"||x.isOpenAccess===true;
+  const link=x.pmcid?"https://europepmc.org/articles/"+encodeURIComponent(x.pmcid):
+    x.pmid?"https://europepmc.org/article/MED/"+encodeURIComponent(x.pmid):
+    "https://doi.org/"+encodeURIComponent(x.doi);
+  return {type:"article",title:x.title,author:x.authorString||"",excerpt:[x.pubYear,journal,x.journalInfo?.journalIssueId].filter(Boolean).join(" · ")+". "+brief(x.abstractText||"",180),
+   meta:"Europe PMC · "+(isOpen?"acceso abierto indicado por el proveedor":"comprobar acceso al artículo"),rating:28-i+culturalWeight(x.title,x.abstractText||""),
+   link,source:"Europe PMC"}
+ })
+}
+const originalFeature={
+ image:"images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg",
+ title:"Harley MS 2767",description:"Testimonio carolingio del De architectura, con 341 imágenes conservadas en GitHub.",
+ link:"codex-h-doble-folio.html",credit:"British Library · Harley MS 2767",label:"ARCHIVO DESTACADO · SIGLO IX"
+};
+function restoreFeature(){
+ S.featureWeight=-Infinity;
+ $("featured-label").textContent=originalFeature.label;
+ $("featured-title").textContent=originalFeature.title;
+ $("featured-description").textContent=originalFeature.description;
+ $("featured-link").textContent="Abrir códice ↗";$("featured-link").href=originalFeature.link;
+ const box=$("featured-cover"),img=$("featured-image");
+ box.classList.remove("is-portrait");box.href=originalFeature.link;
+ img.onerror=null;img.src=originalFeature.image;img.alt="Folio 1r del manuscrito Harley MS 2767";
+ $("featured-cover-label").textContent="CODEX HARLEIANUS";$("featured-cover-title").textContent="De architectura";
+ $("featured-credit").textContent="Imagen de consulta: "+originalFeature.credit+".";
+}
+function allowedFeaturedImage(u){
+ try{const x=new URL(u);return x.protocol==="https:"&&
+ (x.hostname==="upload.wikimedia.org"||x.hostname==="covers.openlibrary.org"||x.hostname==="images.metmuseum.org"||x.hostname.endsWith(".metmuseum.org"))}catch{return false}
+}
+function considerFeatured(rows,query){
+ const q=norm(query),isBook=/\b(libro|book|livre|medieval|codex|codice|codex|incunable|manuscrito|manuscript|portada|cover|edicion|edition)\b/.test(q);
+ const options=rows.filter(x=>x.image&&allowedFeaturedImage(x.image)).map(x=>{
+  const match=norm(x.title).includes(q)||q.includes(norm(x.title));
+  const exact=norm(x.title)===q;
+  let weight=x.rating+(match?25:0)+(exact?65:0);
+  if(x.type==="wikipedia")weight+=50;
+  if(x.type==="museum"&&/\b(arte|art|painting|pintura|escultura|sculpture|museum|museo|cuadro|obra)\b/.test(q))weight+=25;
+  if(x.type==="openlibrary"&&isBook)weight+=65;
+  if(x.type==="openlibrary"&&!isBook)weight-=15;
+  return {row:x,weight};
+ }).sort((a,b)=>b.weight-a.weight);
+ if(!options.length||options[0].weight<=(S.featureWeight??-Infinity))return;
+ const {row,weight}=options[0];S.featureWeight=weight;
+ const img=$("featured-image");
+ img.onerror=()=>{img.onerror=null;restoreFeature()};
+ img.src=row.image;img.alt="Imagen documental vinculada a "+row.title+" · "+row.source;
+ $("featured-title").textContent=row.title;
+ $("featured-label").textContent=(row.source||"FUENTE DOCUMENTAL").toUpperCase()+" · IMAGEN DE CONSULTA";
+ $("featured-description").textContent=brief(row.excerpt||row.meta||"",220);
+ $("featured-link").href=row.link;$("featured-link").textContent="Consultar la fuente ↗";
+ const cover=$("featured-cover");cover.href=row.link;cover.classList.toggle("is-portrait",row.imageKind!=="book");
+ $("featured-cover-label").textContent=(row.source||"ARCHIVO").toUpperCase();
+ $("featured-cover-title").textContent=brief(row.title,49);
+ const credit=$("featured-credit");credit.replaceChildren(document.createTextNode(row.imageCredit||"Imagen procedente de fuente externa"));
+ const page=row.imageRights||row.link;const a=anchor(" · ficha de imagen y licencia ↗",page);if(a)credit.append(a);
+}
+function bindAcademia(){
+ for(const b of document.querySelectorAll("button.academic-pill[data-domain]")){
+  b.addEventListener("click",()=>{
+   const raw=$("query").value.trim();
+   const query=raw||"Vitruvius architecture history art";
+   const domain=b.dataset.domain;
+   if(!/^[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(domain))return;
+   const url="https://www.google.com/search?"+new URLSearchParams({q:"site:"+domain+" "+query});
+   const popup=window.open(url,"_blank","noopener,noreferrer");
+   const hint=$("academic-hint");if(hint)hint.textContent="Consulta externa: "+query+" · "+domain+". Los resultados se abren en la universidad o repositorio elegido.";
+  })
+ }
 }
 function makeLink(label,url){const a=anchor(label,url);return a}
 function renderCard(d){
@@ -153,6 +253,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 }
 async function search(){
  const q=$("query").value.trim(),id=++S.searchId;if(!q)return;
+ restoreFeature();
  history.replaceState(null,"","vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
  const mode=S.mode,concept=mode==="concept",internal=mode!=="external",outside=mode==="all"||mode==="external";
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
@@ -167,11 +268,13 @@ async function search(){
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
   pending.push(openLibrary(q).then(rows=>({name:"Open Library",rows})).catch(e=>({name:"Open Library sin respuesta: "+e.message,rows:[]})));
   pending.push(museum(q).then(rows=>({name:"The Met",rows})).catch(e=>({name:"The Met sin respuesta: "+e.message,rows:[]})));
+  pending.push(crossref(q).then(rows=>({name:"Crossref",rows})).catch(e=>({name:"Crossref sin respuesta: "+e.message,rows:[]})));
+  pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
  }
  if(!pending.length){display(rows,q,"Índice interno");return}
  let completed=0;
  await Promise.all(pending.map(p=>p.then(value=>{
-  if(id!==S.searchId)return;rows.push(...value.rows);completed++;
+  if(id!==S.searchId)return;rows.push(...value.rows);considerFeatured(value.rows,q);completed++;
   display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
  })));
  if(id===S.searchId)display(rows,q,"Búsqueda finalizada");
@@ -190,6 +293,7 @@ function mode(m){S.mode=["all","site","concept","external"].includes(m)?m:"all";
 function theme(th){S.theme=th;document.documentElement.dataset.theme=th;$("theme").textContent=th==="dark"?"☀":"☾";
  try{localStorage.setItem("vitruvia-theme",th)}catch{}
 }
+bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
 $("ui-language").addEventListener("change",e=>{language(e.target.value);if($("query").value.trim())search()});
 $("theme").addEventListener("click",()=>theme(S.theme==="dark"?"light":"dark"));
