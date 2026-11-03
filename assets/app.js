@@ -1,5 +1,6 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
+import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261103-pair2';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
 const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -399,7 +400,20 @@ async function renderRightTranslation(article,group){
    source.innerHTML='<a href="'+escapeHTML(readerURL(ed.id,group.locus))+'">Comprobar el locus en el lector bilingüe →</a>';
    return;
   }
-  holder.innerHTML=resultSnippet({snippet:searchExcerpt(p.translation),form:'',context_start:null,context_length:null});
+  const latinAnchor=p.latin||preferredLatinHit(group)?.latin||'';
+  const excerpt=parallelExcerpt(p.translation,{query:lastQuery,lang,latin:latinAnchor,max:1700});
+  const paired=parallelHighlight(excerpt,{query:lastQuery,lang,latin:latinAnchor});
+  holder.innerHTML=paired?.equivalent?paired.html:resultSnippet({snippet:excerpt,form:'',context_start:null,context_length:null});
+  const note=$('.parallel-match-note',article),toggle=$('.parallel-equivalent-toggle',article);
+  if(note){
+   note.hidden=!paired?.equivalent;
+   note.textContent=paired?.equivalent?'Resaltado bilingüe: '+paired.words.join(', ')+' · equivalencias léxicas orientativas, no cotejo palabra por palabra.':'';
+  }
+  if(toggle){
+   toggle.hidden=!paired?.equivalent;
+   toggle.setAttribute('aria-pressed',String(!article.classList.contains('hide-equivalent-marks')));
+   toggle.textContent=article.classList.contains('hide-equivalent-marks')?'Mostrar equivalencias':'Ocultar equivalencias';
+  }
   const page=p.pdf_pages?.translation;
   const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
   source.innerHTML='<span class="parallel-source-label">'+escapeHTML(ed.version)+' · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):'')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
@@ -439,7 +453,7 @@ function renderMore(){
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
        '<div class="parallel-heading"><span>LATÍN · TEXTO DE CONSULTA</span><strong>'+escapeHTML(e.version)+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):'')+'</strong></div>'+
-       '<p class="parallel-passage">'+resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null})+'</p>'+
+       '<p class="parallel-passage">'+(parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
        '<p class="parallel-small">Edición latina: '+escapeHTML(e.version)+'. Verificá las variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
@@ -447,8 +461,9 @@ function renderMore(){
          '<option value="es">Castellano · V514</option><option value="fr">Français · V554</option><option value="en">English · V297</option>'+
        '</select></label></div>'+
        '<p class="parallel-passage parallel-translation-text" aria-live="polite">Cargando traducción…</p>'+
+       '<div class="parallel-match-controls"><p class="parallel-match-note" hidden></p><button class="parallel-equivalent-toggle" type="button" aria-pressed="true" hidden>Ocultar equivalencias</button></div>'+
        '<div class="parallel-translation-source"></div>'+
-       '<p class="parallel-small">Alineación por libro, capítulo y sección; el término latino no necesariamente aparece literalmente en la traducción.</p>'+
+       '<p class="parallel-small">Alineación por libro, capítulo y sección. Los resaltados traducidos son equivalencias léxicas orientativas, no cotejo palabra por palabra.</p>'+
      '</section></div>'+
    '<div class="result-actions"><a href="'+escapeHTML(readerURL(e.id,group.locus))+'">Leer el latín →</a>'+
      '<a class="parallel-open-translation" href="'+escapeHTML(readerURL(translationEditionIds[selectedTranslationLanguage],group.locus))+'">Leer traducción en contexto →</a>'+
@@ -459,6 +474,12 @@ function renderMore(){
   selector.addEventListener('change',event=>{
    selectedTranslationLanguage=event.target.value;
    refreshRightTranslations();
+  });
+  const toggle=$('.parallel-equivalent-toggle',article);
+  toggle.addEventListener('click',()=>{
+   const hidden=article.classList.toggle('hide-equivalent-marks');
+   toggle.setAttribute('aria-pressed',String(!hidden));
+   toggle.textContent=hidden?'Mostrar equivalencias':'Ocultar equivalencias';
   });
   container.append(article);
   renderRightTranslation(article,group);
