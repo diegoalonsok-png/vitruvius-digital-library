@@ -32,6 +32,15 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 .h-folio-card[aria-pressed="true"]{border:3px solid #b07b20;box-shadow:0 0 0 2px #e8c987}
 #h-gallery-more{display:block;margin:20px auto}#h-gallery-more[hidden]{display:none}
 @media(max-width:600px){#h-folio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.h-folio-card img{height:165px}}
+.h-gallery{background:#1f2d3c!important;color:#f4eee5!important;border-color:#738597!important}
+.h-gallery h2,.h-gallery p,.h-gallery label{color:#f4eee5!important}
+.h-gallery-tools input,.h-gallery-tools button,#h-gallery-more{background:#294158!important;color:#fff!important;border-color:#8ca0b0!important}
+#h-folio-grid{max-height:620px;overflow-y:auto;border:1px solid #7c8b98;padding:8px;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px;align-content:start}
+.h-folio-card{background:#29445a!important;color:#fff!important;border-color:#8496a5!important}
+.h-folio-card strong,.h-folio-card span{color:#fff!important}
+.h-folio-card[aria-pressed="true"]{border:3px solid #e7b452!important;box-shadow:0 0 0 2px #f1d18b}
+.h-folio-card img{height:175px}
+#stage{height:85vh;min-height:540px}
 </style></head><body><main>
 
 <p><a href="scriptorium.html">← Scriptorium digital</a> · <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">British Library, ficha oficial</a></p>
@@ -44,17 +53,18 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <label>Contraste <input id="contrast" type="range" min="70" max="220" value="100"> <output id="cval">100%</output></label>
 <div id="image-mode" role="group" aria-label="Visualización del manuscrito"><strong class="image-mode-heading">Visualización</strong><button type="button" data-image-mode="original" aria-pressed="true">Original</button><button type="button" data-image-mode="bw" aria-pressed="false">Blanco y negro</button><button type="button" data-image-mode="negative" aria-pressed="false">Negativo · letras blancas</button></div></div>
 <div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio leído: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Etiqueta IIIF: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">El folio se identifica mediante las etiquetas del manifiesto institucional.</p><p id="status" role="status">Consultando el manifiesto IIIF…</p>
-<div id="stage"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img id="magnified" alt=""></div>
 <section class="h-gallery" id="h-folios" aria-labelledby="h-gallery-title">
-<h2 id="h-gallery-title">Folios del Codex H · Galería visual</h2>
-<p>Debajo del visor, elegí la miniatura que querés leer: se abrirá arriba en el mismo lector, con lupa, zoom y filtros. Las imágenes siguen la secuencia digital IIIF de la British Library. <strong>El número de imagen no siempre coincide con el folio histórico.</strong></p>
+<h2 id="h-gallery-title">Buscar por imagen · Galería visual del Codex H</h2>
+<p>Elegí la miniatura que querés leer: se abrirá debajo en este mismo lector, con lupa, zoom y filtros. Las imágenes siguen la secuencia digital IIIF de la British Library. <strong>El número de imagen no siempre coincide con el folio histórico.</strong></p>
 <div class="h-gallery-tools" role="search">
 <label>Buscar folio o número de imagen<input id="h-gallery-query" type="search" placeholder="f.1r · 16v · 150"></label>
 <button id="h-gallery-search" type="button">Buscar</button><button id="h-gallery-reset" type="button">Mostrar todas</button>
 </div>
 <p id="h-gallery-status" role="status" aria-live="polite">Preparando las miniaturas del manuscrito…</p>
-<div id="h-folio-grid" aria-label="Seleccionar folio para leer en el visor superior"></div>
+<div id="h-folio-grid" aria-label="Seleccionar folio para leer en el visor inferior"></div>
 <button id="h-gallery-more" type="button" hidden>Mostrar más folios</button>
 </section>
+<div id="stage"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img id="magnified" alt=""></div>
+
 <p>Procedencia: British Library, <em>Harley MS 2767</em>. <a href="concordancia-folios.html" style="font-weight:650">Concordancia entre folios y loci</a> · <a id="source" href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">Ver original en el visor institucional</a>. Las condiciones de reutilización corresponden al proveedor institucional. Esta página no almacena ni redistribuye imágenes del códice.</p>
 </main><script type="module" src="assets/harley-reader.mjs?v=folio-panel-20261101-3"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script src="assets/theme.js?v=20261101-contrast-h-2" defer></script></body></html>
