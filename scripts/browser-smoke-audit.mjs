@@ -417,7 +417,7 @@ try{
    await page.waitForFunction(()=>document.querySelector('#ov-count-person')?.textContent==='32',{timeout:15000});
    await page.locator('#ov-language').selectOption('en');
    await page.waitForFunction(()=>document.querySelector('[data-i18n="alphabetical"]')?.textContent==='Alphabetical index',{timeout:12000});
-   assert.match(await page.locator('#ov-detail').innerText(),/English V297|Spanish|Original historical profile/i);
+   assert.match(await page.locator('#ov-detail').innerText(),/English V297|Castellano V514|Spanish|Original historical profile/i,'El detalle debe identificar la versión inglesa o señalar explícitamente su respaldo en castellano');
    await page.locator('#ov-color').click();
    assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
    const col=await page.locator('.ov-numbers article').first().evaluate(e=>({fg:getComputedStyle(e).color,bg:getComputedStyle(e).backgroundColor}));
