@@ -101,17 +101,17 @@
       "iconography": "VITRUVIO POLLIONE. Representación retrospectiva e idealizada: no existe identificación de retrato antiguo de Vitruvio que sustente una semejanza histórica.",
       "status": "Autoría, inscripciones, técnica, dimensiones del ejemplar y número de inventario comprobados con Hood Museum y la ficha de reproducción de la Staatliche Graphische Sammlung München. Fecha de impresión discrepante entre catálogos.",
       "inscriptions": "Inscripciones grabadas: margen inferior izquierdo «Vincenzo Raggio disegnò»; margen inferior derecho «Jacopo Bernardi incise»; centro «VITRUVIO POLLIONE» (lecturas según Hood Museum).",
-      "plate": "Plancha: 36,3 × 27,7 cm (ejemplar Dartmouth); Commons/Múnich: 36,2 × 27,6 cm (medidas de placa catalogadas).",
-      "sheet": "Hoja: 41,3 × 30,2 cm (ejemplar del Hood Museum PR.X.224; no extrapolar a la estampa de Múnich).",
+      "plate": "Múnich: 36,2 × 27,6 cm (Digitaler Portraitindex). Dartmouth: 36,3 × 27,7 cm (Hood Museum of Art).",
+      "sheet": "Múnich: 38,5 × 30,1 cm (Digitaler Portraitindex, ejemplar reproducido). Dartmouth: 41,3 × 30,2 cm (ejemplar comparativo, inv. PR.X.224).",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vitruvio_Pollione_portrait.jpg?width=1200",
       "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Vitruvio_Pollione_portrait.jpg",
       "record": "https://hoodmuseum.dartmouth.edu/objects/pr.x.224",
       "viewer": "https://commons.wikimedia.org/wiki/File:Vitruvio_Pollione_portrait.jpg",
       "manifest": "",
       "rights": "La reproducción del ejemplar histórico de Múnich consta en Wikimedia Commons bajo Public Domain Mark 1.0 (PD-Art). Imagen original completa 2446 × 3668 px. Se respetan las atribuciones y se indica el ejemplar representado.",
-      "notes": "No confundir autor representado con artista o dibujante de la estampa. El Hood Museum fecha su ejemplar «about 1830», mientras la reproducción de Múnich indica 1823 o 1847; se consigna la divergencia y se distingue el tamaño de placa del tamaño de hoja. El retrato es una imagen de recepción moderna y no evidencia iconográfica sobre el aspecto físico real de Vitruvio.",
+      "notes": "No confundir autor representado con artista o dibujante de la estampa. El Hood Museum fecha su ejemplar «about 1830», mientras la reproducción de Múnich indica 1823 o 1847; se consigna la divergencia y se distingue el tamaño de placa del tamaño de hoja. El retrato es una imagen de recepción moderna y no evidencia iconográfica sobre el aspecto físico real de Vitruvio. El Digitaler Portraitindex registra para el ejemplar de Múnich una hoja de 385 × 301 mm y una plancha de 362 × 276 mm, fotografía tomada en 2012. El fondo calcográfico Morcelli-Pinacoteca Repossi en Chiari registra otro ejemplar, con medidas y datación propias: no deben intercambiarse sus dimensiones.",
       "chicago": "Bernardi, Jacopo, after a drawing by Vincenzo Raggio. Vitruvio Pollione. Ca. 1830. Line engraving on paper, plate 36.3 × 27.7 cm; sheet 41.3 × 30.2 cm. Hood Museum of Art, Dartmouth College, PR.X.224. https://hoodmuseum.dartmouth.edu/objects/pr.x.224.",
-      "imageChicago": "Bernardi, Jacopo, after Vincenzo Raggio. Vitruvio Pollione. Nineteenth-century engraving, plate 36.2 × 27.6 cm. Staatliche Graphische Sammlung München, inv. 95013 D. Full-sheet reproduction via Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Vitruvio_Pollione_portrait.jpg.",
+      "imageChicago": "Bernardi, Jacopo, after a drawing by Vincenzo Raggio. Vitruvio Pollione. Nineteenth-century copper engraving and etching, sheet 38.5 × 30.1 cm, plate 36.2 × 27.6 cm. Staatliche Graphische Sammlung München, inv. 95013 D. Digitized 2012. Digitaler Portraitindex, https://www.portraitindex.de/documents/obj/34704758.",
       "source": "retratos-historicos",
       "tags": [
         "Vitruvio",
@@ -140,7 +140,43 @@
         "rostro de Vitruvio",
         "portrait"
       ],
-      "book": null
+      "book": null,
+      "additionalRecords": [
+        {
+          "institution": "Digitaler Portraitindex / Staatliche Graphische Sammlung München",
+          "url": "https://www.portraitindex.de/documents/obj/34704758",
+          "shelfmark": "95013 D",
+          "sheet_mm": [
+            385,
+            301
+          ],
+          "plate_mm": [
+            362,
+            276
+          ],
+          "digitization": "2012"
+        },
+        {
+          "institution": "Hood Museum of Art, Dartmouth College",
+          "url": "https://hoodmuseum.dartmouth.edu/objects/pr.x.224",
+          "shelfmark": "PR.X.224",
+          "sheet_mm": [
+            413,
+            302
+          ],
+          "plate_mm": [
+            363,
+            277
+          ],
+          "date": "about 1830"
+        },
+        {
+          "institution": "Fondazione Biblioteca Morcelli–Pinacoteca Repossi, Chiari (BS)",
+          "url": "https://www.lombardiabeniculturali.it/stampe/schede/3y010-00192/",
+          "date": "circa 1830–before 1899; distinct copy",
+          "notes": "Historical/technical notes based on SIRBeC, compilation 2003; do not apply their dimensions to Munich reproduction"
+        }
+      ]
     },
     {
       "id": "leonardo-vitruviano",
