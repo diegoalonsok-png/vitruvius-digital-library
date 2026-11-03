@@ -1,8 +1,8 @@
-/* Shared six-language navigation selector. Only UI labels for which translations exist are translated.
+/* Shared ES/EN/FR navigation selector. Only verified translated UI labels are changed.
    Greek/Latin scholarly sources, quotations, passages, and editorial texts remain unchanged. */
 (()=>{"use strict";
- const KEY="vitruvius-ui-lang",CODES=["es","en","fr","it","de","pt"];
- const names={es:"Español",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português"};
+ const KEY="vitruvius-ui-lang",CODES=["es","en","fr"];
+ const names={es:"Español",en:"English",fr:"Français"};
  const lookups={
  "Ediciones históricas":["Historical editions","Éditions historiques","Edizioni storiche","Historische Ausgaben","Edições históricas"],
  "Como citar":["How to cite","Comment citer","Come citare","Zitierweise","Como citar"],
