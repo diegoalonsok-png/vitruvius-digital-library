@@ -257,6 +257,48 @@
       "geotype": "ciudad",
       "modern": "Fano (Marche, Italia)",
       "note": "El emplazamiento exacto de la basílica y las atribuciones arqueológicas se estudian separadamente: el marcador es municipal y orientativo."
+    },
+    {
+      "id": "torre-de-los-vientos",
+      "kind": "place",
+      "name": "Torre de los Vientos · Atenas",
+      "period": "Atenas helenística / época romana temprana · siglo II–I a. C. (datación debatida)",
+      "summary": "Horologion octogonal en mármol, obra atribuida a Andrónico de Cirro. Vitruvio lo describe expresamente en De architectura I.6.4: ocho relieves de los vientos, uno por cara, y una veleta de bronce con un tritón que indicaba la dirección del viento. Se asocia también a relojes solares y una clepsidra.",
+      "aliases": [
+        "Torre de los Vientos",
+        "torre de los vientos en atenas",
+        "Tower of the Winds",
+        "Horologion of Andronikos",
+        "Horologion",
+        "Horologium Andronici",
+        "Andrónico de Cirro",
+        "Andronicus Cyrrhestes",
+        "Ὡρολόγιον",
+        "Αέρηδες",
+        "Aerides",
+        "Atenas",
+        "Athenae"
+      ],
+      "latin_forms": [
+        "Andronicus Cyrrhestes",
+        "Athenis",
+        "turrim marmoream octagonon"
+      ],
+      "greek_name": "Ὡρολόγιον τοῦ Ἀνδρονίκου τοῦ Κυρρήστου",
+      "loci": [
+        "1.6.4"
+      ],
+      "sourceStatus": "Mención explícita en Vitruvio I.6.4; localización del monumento actual contrastada con ToposText / OSM. La fecha precisa de construcción continúa en debate.",
+      "source": "https://topostext.org/place/380237BHor",
+      "internal": "architecturae-vitruvianae.html?q=torre",
+      "coordinates": {
+        "lat": 37.9742,
+        "lon": 23.72705
+      },
+      "confidence": "alta",
+      "geotype": "monumento",
+      "modern": "Ágora romana, Atenas, Grecia",
+      "note": "Coordenadas del monumento conservado, no de la ciudad de Atenas. Los nombres griegos son equivalencias modernas de identificación, no lecturas de un códice. Referencia: Vitruvio, De architectura I.6.4."
     }
   ],
   "method": [
