@@ -56,7 +56,8 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "record": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Officiis/Introduction%2A.html",
+        "status": "Entre los testigos medievales tempranos figura un codex Harleianus del siglo IX; falta identificar la signatura precisa y un facsímil individual con folios verificados."
       },
       "pdf": {
         "url": null,
@@ -311,11 +312,16 @@
       "dating": "c. 60–50 a. C.",
       "reading": {
         "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "status": "Dos versiones íntegras alojadas en GitHub: Leonard (inglés) y Rodríguez-Navas (versión libre en prosa castellana); texto original latino todavía no alojado."
       },
       "manuscript": {
-        "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
+        "record": "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
+        "status": "Codex Quadratus (Leiden, VLQ 94), primera mitad del siglo IX; reproduce De rerum natura. Manifiesto IIIF publicado por Leiden, aún sin prueba visual de carga dentro de la biblioteca.",
+        "institution": "Universiteitsbibliotheek Leiden",
+        "shelfmark": "Voss. Lat. Q. 94",
+        "dating": "Primera mitad del siglo IX",
+        "license": "CC BY 4.0 (según Biblissima, imágenes de Leiden)"
       },
       "pdf": {
         "url": null,
@@ -330,8 +336,32 @@
         "archive": "https://archive.org/search?query=De%20rerum%20natura%20Lucrecio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20rerum%20natura"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "publicStatus": "lectura-local-completa",
+      "localReader": null,
+      "localHtml": "corpus/lucretius-de-rerum-natura-en.html",
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · William Ellery Leonard (1916)",
+          "path": "corpus/lucretius-de-rerum-natura-en.html",
+          "kind": "translation",
+          "source": "Project Gutenberg eBook #785"
+        },
+        {
+          "language": "es",
+          "label": "Castellano · Manuel Rodríguez-Navas (versión en prosa)",
+          "path": "corpus/lucretius-de-rerum-natura-es.html",
+          "kind": "adaptation",
+          "source": "Project Gutenberg eBook #62711"
+        }
+      ],
+      "localEdition": {
+        "editor": "William Ellery Leonard / Manuel Rodríguez-Navas",
+        "original": "Latín: manuscrito IIIF conectado; texto editorial latino pendiente de alojamiento",
+        "translation": "Inglés y español",
+        "source": "Project Gutenberg #785 y #62711",
+        "format": "HTML completo GitHub"
+      }
     },
     {
       "id": "virgil-aeneid",
