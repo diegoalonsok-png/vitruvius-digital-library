@@ -236,6 +236,61 @@ html[data-theme=light] .ai-platform-link:hover{background:#4c4c4e}
 .hero .featured .bookcover,.hero .featured #featured-image{display:none!important}
 @media(max-width:1020px){.hero .featured{min-height:0;max-width:100%;padding:20px 0 20px 22px}}
 @media(max-width:650px){.hero .featured{border-left:0;border-top:1px solid #303030;padding:22px 0}}
+
+/* Mobile repair 2026-11-03 — scoped to Vitruvia only, not the library front page. */
+html,body{max-width:100%;overflow-x:clip}
+.site-shell,.nav,.hero,.hero>div,.featured,.featured-copy,.search-wrap,.results,.results-grid{min-width:0}
+.hero .featured .bookcover,.hero .featured #featured-image{display:none!important}
+@media(max-width:1020px){
+  .hero{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:30px!important}
+  .hero>div,.hero>.featured{width:100%!important;min-width:0!important;max-width:100%!important}
+  .results-grid{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:700px){
+  .site-shell{width:100%;max-width:100%;padding-inline:clamp(16px,4.5vw,24px)!important}
+  .nav{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:12px 10px;padding:16px 0!important;align-items:center}
+  .logo-small{grid-column:1;grid-row:1;font-size:25px}
+  .navtools{grid-column:2;grid-row:1;display:flex;gap:8px;justify-content:flex-end;min-width:0}
+  .navtools #ui-language{width:64px;max-width:64px;min-height:44px;padding:8px!important;font-size:14px}
+  .navtools #theme{min-height:44px;min-width:44px;padding:8px!important}
+  .navlinks{grid-column:1/-1;grid-row:2;display:flex;flex-wrap:wrap;gap:8px 17px;width:100%;min-width:0;font-size:12px;line-height:1.5}
+  .navlinks a{white-space:normal;overflow-wrap:normal}
+  .hero{padding:34px 0 26px!important;gap:36px!important}
+  .hero .eyebrow{font-size:10px!important;line-height:1.65;letter-spacing:.11em!important;overflow-wrap:normal}
+  .hero h1{font-size:clamp(58px,15vw,86px)!important;line-height:1.03!important;letter-spacing:-.075em!important;margin:15px 0 17px!important;overflow-wrap:normal}
+  .hero h1 span{display:inline-block!important;font-size:13px!important;margin-left:8px!important;vertical-align:middle}
+  .lead{font-size:16px!important;line-height:1.65!important;max-width:100%!important;margin:0 0 24px!important;overflow-wrap:normal;word-break:normal}
+  .search-wrap{width:100%}
+  .searchform{display:flex!important;min-width:0;min-height:56px!important;padding:5px 5px 5px 13px!important;gap:6px}
+  .searchform input{flex:1 1 auto!important;min-width:0!important;width:0!important;font-size:16px!important}
+  .searchform button{flex:0 0 auto;min-height:44px!important;padding:8px 13px!important;font-size:13px!important}
+  .ai-platforms{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center;gap:8px!important;margin:19px 0 15px!important}
+  .ai-platforms-label{flex:0 0 100%;width:100%;margin:0 0 2px;font-size:11px}
+  .ai-platform-link{display:inline-flex!important;width:auto!important;min-height:39px;padding:8px 12px!important;white-space:nowrap}
+  .tabs{display:flex!important;flex-wrap:wrap!important;gap:8px!important;max-width:100%}
+  .tab{width:auto!important;max-width:100%;min-height:39px;padding:8px 12px!important;white-space:normal;text-align:center}
+  .explain{font-size:12px!important;line-height:1.7;min-height:0}
+  .suggestions{flex-wrap:wrap!important;max-width:100%}
+  .academic-pill-row{gap:7px!important;min-width:0}
+  .academic-caption{flex-basis:100%;min-width:0!important}
+  .hero .featured{display:flex!important;grid-template-columns:none!important;gap:18px!important;border-left:0!important;border-top:1px solid #303030!important;padding:22px 0 0!important;min-height:0!important}
+  .hero .featured h2{font-size:clamp(27px,8vw,39px)!important;line-height:1.17!important;overflow-wrap:normal;word-break:normal}
+  .hero .featured p{max-width:100%;font-size:14px}
+  .featured-reading-list{max-width:100%}
+  .featured-reading-item{max-width:100%;overflow-wrap:anywhere}
+  .metrics{gap:11px 20px}
+  .results{padding-top:24px!important}
+  .results-grid{display:grid;grid-template-columns:minmax(0,1fr)!important;gap:20px!important}
+  .result-card h3{font-size:23px!important;overflow-wrap:anywhere}
+  .footer-columns{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:380px){
+  .hero h1{font-size:56px!important}
+  .hero h1 span{font-size:12px!important;margin-left:5px!important}
+  .searchform button{padding:8px 10px!important}
+  .navlinks{gap:7px 12px}
+}
+
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="index.html">V<strong>∎</strong></a>
