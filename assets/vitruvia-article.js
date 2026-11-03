@@ -124,13 +124,24 @@ const a=href(top.link,phrase("Consultar documento original →","Open original d
 if(a)$("article-body").append(a);
 aside(rows);references(rows)
 }
+function highlightArticle(query){
+ const words=[...new Set(String(query||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3))].slice(0,8);
+ if(!words.length)return;
+ const walker=document.createTreeWalker($("article-body"),NodeFilter.SHOW_TEXT),nodes=[];
+ while(walker.nextNode()){const n=walker.currentNode;if(n.parentElement?.closest("a,button,mark,script,style"))continue;nodes.push(n)}
+ for(const n of nodes){const original=n.textContent,normalized=original.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),hits=[];
+ for(const word of words){let at=0,pos;while((pos=normalized.indexOf(word,at))!==-1){hits.push([pos,pos+word.length]);at=pos+word.length;if(hits.length>80)break}}
+ if(!hits.length)continue;hits.sort((x,y)=>x[0]-y[0]);let end=0;const f=document.createDocumentFragment();
+ for(const [start,stop] of hits){if(start<end)continue;if(start>end)f.append(document.createTextNode(original.slice(end,start)));const mark=make("mark",original.slice(start,stop),"query-hit");f.append(mark);end=stop}
+ if(end<original.length)f.append(document.createTextNode(original.slice(end)));n.replaceWith(f)}
+}
 function render(rows,q){const token=++active;
 if(!q||!rows?.length){root.hidden=true;return}
 const top=choose(rows,q);if(!top){root.hidden=true;return}
 if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);return}
-if(top.type==="passage"&&top.locus){renderLocus(top,rows);return}
-if(top.type==="wikipedia"){void renderWiki(top,rows,token);return}
-renderOther(top,rows)
+if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
+if(top.type==="wikipedia"){void renderWiki(top,rows,token).then(()=>{if(token===active)highlightArticle(q)});return}
+renderOther(top,rows);highlightArticle(q)
 }
 window.VitruviaArticles={render,version:"1.0"};
 })();
