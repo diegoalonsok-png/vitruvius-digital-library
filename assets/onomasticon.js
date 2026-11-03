@@ -59,13 +59,17 @@ function statNumbers(){
 function entitiesFiltered(){
  return data.entities.filter(e=>(type==="all"||e.kind===type)
  &&(book==="all"||e.loci.some(l=>locusBook(l)===Number(book)))
- &&(!query||fold([e.name,e.period,e.summary,...e.aliases].join(" ")).includes(fold(query))
+ &&(!query||fold([e.name,e.period,e.summary,...e.aliases,...(e.latin_forms||[]),e.greek_name||""].join(" ")).includes(fold(query))
  ||e.loci.some(l=>{const p=byLocus.get(l);return p&&fold(p.latin).includes(fold(query))})));
 }
 function entityButton(e){
  const button=document.createElement("button");button.type="button";button.className="ov-entry";
  button.setAttribute("aria-pressed",String(e.id===selectedId));
- button.innerHTML="<strong>"+html(e.name)+"</strong><small>"+(e.kind==="person"?T("entityPerson"):T("entityPlace"))+" · "+fmt(e.mentions)+" locus"+(e.mentions===1?"":" citados")+"</small>";
+ const forms=e.latin_forms||[],greek=e.greek_name;
+ button.innerHTML="<strong>"+html(e.name)+"</strong>"
+ +"<span class='ov-entry-form' lang='la'><b>"+html(T("latinAttested"))+":</b> "+html(forms.slice(0,3).join(" · ")||"—")+(forms.length>3?"…":"")+"</span>"
+ +"<span class='ov-entry-form ov-entry-greek' lang='grc'><b>"+html(T("greekReference"))+":</b> "+html(greek||T("notVerified"))+"</span>"
+ +"<small>"+(e.kind==="person"?T("entityPerson"):T("entityPlace"))+" · "+fmt(e.mentions)+" locus"+(e.mentions===1?"":" citados")+"</small>";
  button.onclick=()=>{selectedId=e.id;limit=20;renderEntity();renderList();};
  return button;
 }
@@ -95,6 +99,10 @@ function renderEntity(){
  const content=document.createElement("div");content.className="ov-content";
  const bio="<p class='ov-eyebrow'>"+(e.kind==="person"?T("historicalPerson"):T("historicalPlace"))+"</p>"
  +"<h2>"+html(e.name)+"</h2>"
+ +"<div class='ov-onomastic' aria-label='"+html(T("linguisticIdentity"))+"'>"
+ +"<div><span class='ov-onomastic-label'>"+html(T("latinAttested"))+" · V514</span><p lang='la'>"+html((e.latin_forms||[]).join(" · ")||"—")+"</p></div>"
+ +"<div><span class='ov-onomastic-label'>"+html(T("greekReference"))+"</span><p lang='grc'>"+html(e.greek_name||T("notVerified"))+"</p></div>"
+ +"<p class='ov-onomastic-note'>"+html(e.greek_name?T("greekNotInVitruvius"):T("greekUnverified"))+"</p></div>"
  +"<p class='ov-sub'>"+html(e.period)+" · "+fmt(e.mentions)+" "+(e.mentions===1?"pasaje encontrado":"pasajes encontrados")+" en el latín editorial</p>"
  +"<p class='ov-bio'>"+html(e.summary)+"</p>"+(getLanguage()!=="es"?"<p class='ov-note'>"+html(T("originalBio"))+"</p>":"")
  +"<div class='ov-source'><b>"+html(T("recordStatus"))+":</b> "+html(e.sourceStatus)+". "
@@ -111,12 +119,32 @@ function renderTextSearch(){
  const result=$("ov-text-results");const term=query.trim();result.replaceChildren();
  if(!term){$("ov-text-section").classList.add("ov-hidden");return;}
  $("ov-text-section").classList.remove("ov-hidden");
- const filtered=passages.filter(p=>(book==="all"||p.book===Number(book))&&fold(p.latin+" "+p.translation).includes(fold(term)));
- $("ov-text-count").textContent=fmt(filtered.length)+" loci que contienen '"+term+"'";
- if(!filtered.length){result.innerHTML='<p class="ov-empty">No se encontraron coincidencias literales en los 731 pasajes de la V514. Probá una variante latina o castellana. Las grafías de los manuscritos pueden diferir del texto editorial.</p>';return;}
- for(const p of filtered.slice(0,50))result.append(referenceCard(p,term));
+ const termFold=fold(term);
+ // Una equivalencia onomástica griega lleva a los loci latinos del personaje/lugar.
+ // NO se computa falsamente como aparición literal del nombre griego en Vitruvio.
+ const greekEntities=data.entities.filter(e=>e.greek_name&&fold(e.greek_name).includes(termFold));
+ const aliases=new Map();
+ for(const e of greekEntities)for(const locus of e.loci){
+   if(!aliases.has(locus))aliases.set(locus,[]);
+   aliases.get(locus).push(e);
+ }
+ const literal=passages.filter(p=>(book==="all"||p.book===Number(book))&&fold(p.latin+" "+p.translation).includes(termFold));
+ const matched=new Set(literal.map(p=>p.locus));
+ for(const [locus] of aliases)if(book==="all"||locusBook(locus)===Number(book))matched.add(locus);
+ const filtered=passages.filter(p=>matched.has(p.locus));
+ $("ov-text-count").textContent=fmt(filtered.length)+(greekEntities.length?" loci relacionados con el nombre griego '"+term+"' (equivalencia, no mención griega literal)":" loci que contienen '"+term+"'");
+ if(!filtered.length){result.innerHTML='<p class="ov-empty">No se encontraron coincidencias literales ni equivalencias onomásticas verificadas. Probá una variante latina, griega o castellana.</p>';return;}
+ if(greekEntities.length){
+   const note=document.createElement("p");note.className="ov-source";
+   note.textContent=T("greekSearchNote");result.append(note);
+ }
+ for(const p of filtered.slice(0,50)){
+   const greekForm=aliases.get(p.locus)?.find(e=>e.latin_forms?.some(f=>fold(p.latin).includes(fold(f))));
+   const latinForm=greekForm?.latin_forms?.find(f=>fold(p.latin).includes(fold(f)))||"";
+   result.append(referenceCard(p,fold(p.latin+" "+p.translation).includes(termFold)?term:latinForm));
+ }
  if(filtered.length>50){const warning=document.createElement("p");warning.className="ov-note";warning.textContent="Se muestran los 50 primeros loci. Acotá la búsqueda por libro o nombre para ver el resto.";result.append(warning);}
- if(!data.entities.some(e=>fold(e.name)===fold(term)||e.aliases.some(a=>fold(a)===fold(term)))){
+ if(!data.entities.some(e=>fold(e.name)===fold(term)||e.aliases.some(a=>fold(a)===fold(term))||e.greek_name&&fold(e.greek_name)===fold(term)||e.latin_forms?.some(a=>fold(a)===fold(term)))){
    const n=document.createElement("p");n.className="ov-source";
    n.innerHTML="Una coincidencia de texto no identifica por sí sola una persona o un lugar. Si este nombre aún no tiene ficha, consultá sus pasajes y contrastá su identidad con <a href='https://scholar.google.com/scholar?q="+encodeURIComponent(term+" Vitruvius")+" ' target='_blank' rel='noopener'>bibliografía académica</a>.";
    result.prepend(n);
@@ -168,7 +196,7 @@ function switchTab(value){
 }
 async function start(){
  const [a,b]=await Promise.all([
-  fetch("data/onomasticon-vitruvianum.json?v=20261102b"),
+  fetch("data/onomasticon-vitruvianum.json?v=20261102-greek-index"),
   fetch("data/structured/recensio-es.json")
  ]);
  if(!a.ok||!b.ok)throw Error("No se pudo cargar el índice o el corpus V514 ("+a.status+", "+b.status+").");
