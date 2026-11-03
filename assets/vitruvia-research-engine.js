@@ -43,7 +43,7 @@ function classify(q){
  const n=canonical(q),l=locus(q),c=/\b(codex|manuscrit|manuscrito|manuscrit|manuscript|folio|harleianus|harley|gudianus|pithoeanus|vaticanus|scletstatensis|eton|plut)\b/.test(n);
  const bib=/\b(bibliograf|edicion|edition|krohn|rose|perrault|barbaro|sulpizio|cesariano|giocondo|isbn|doi)\b/.test(n);
  const h=/\b(harleianus|2767)\b/.test(n)||/\bcodex\s+h\b/.test(n);
- const genericVitruvian=c&&/\b(vitruvio|architectura|vitruviano|vitruvian)\b/.test(n);
+ const genericVitruvian=c&&/\b(vitruvio|architectura|vitruvian\w*|vitruviano\w*|vitruvii)\b/.test(n);
  return {locus:l,codex:c,harley:h,vitruvian:genericVitruvian,edition:bib,kind:l?"locus":c?"manuscript":bib?"bibliography":"concept"};
 }
 async function fetchJSON(url){const response=await fetch(base+url,{headers:{accept:"application/json"}});if(!response.ok)throw Error("Archivo no disponible: "+url+" ("+response.status+")");return response.json()}
