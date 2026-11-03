@@ -57,6 +57,12 @@ html[data-theme=dark] .classic-read-columns article{background:#203748;color:#f6
 html[data-theme=dark] .classic-read-columns h4{color:#e2c68c}
 html[data-theme=dark] .classic-read-toolbar :is(select,input){background:#20384a;color:#fff;border-color:#9d9b90}
 @media(max-width:650px){.classic-read-columns{grid-template-columns:1fr}}
+.classic-compare-toolbar{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0;padding:12px;background:#e8ddc9;color:#21394b;border:1px solid #b29b78}
+.classic-compare-toolbar label{font:600 13px system-ui,sans-serif;flex:1 1 240px}
+.classic-compare-toolbar select{display:block;width:100%;padding:10px;margin-top:6px;background:white;color:#243649}
+.classic-compare-panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.classic-compare-panes iframe{width:100%;min-height:76vh;background:white;border:1px solid #9f9076}
+@media(max-width:700px){.classic-compare-panes{grid-template-columns:1fr}}
 </style>
 </head><body>
 <main class="classic-main">
@@ -72,4 +78,4 @@ html[data-theme=dark] .classic-read-toolbar :is(select,input){background:#20384a
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Seleccioná una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-04"></script></body></html>
+</main><script defer src="assets/theme.js"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-05"></script></body></html>
