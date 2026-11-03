@@ -1,5 +1,25 @@
 # Vitruvius Digital Library — registro de cambios
 
+## 3 de noviembre de 2026 — hoja de ruta: biblioteca contextual de la Antigüedad
+
+**Estado: propuesta registrada; no implementada todavía.** Crear una biblioteca general de obras antiguas próxima a la época de Vitruvio, independiente de la bibliografía vitruviana existente. Núcleo temporal orientativo **125 a. C.–75 d. C.**, con expansión claramente separada para siglos II–IV d. C. y otras obras posteriores relevantes.
+
+- Catálogo alfabético por **autor antiguo, título original y traducción moderna**, con filtros por siglo, período, género y lengua latina/griega.
+- Géneros: poesía, historiografía, retórica, filosofía, matemáticas, medicina, astronomía, ingeniería e hidráulica, derecho, geografía, religión y textos cristianos antiguos.
+- Lector paralelo para versiones latinas/griegas históricas y traducciones cuando existan archivos de acceso legítimo; enlace siempre a la institución editora o custodial, metadatos de edición, traducción, procedencia y derechos.
+- Autores potenciales del núcleo: Cicerón, Lucrecio, Catulo, Virgilio, Horacio, Ovidio, Tito Livio, Séneca y otros con cronología y obras verificados.
+- Obras que **no deben clasificarse falsamente como contemporáneas**: *Didaché* (habitualmente datada entre finales del siglo I y comienzos del II d. C., según hipótesis), *Pastor de Hermas* (siglo II d. C.) y Marco Cetius Faventino (Antigüedad tardía). Se situarán en un anexo cronológico posterior.
+- No copiar obras modernas bajo derechos; priorizar ediciones históricas digitalizadas, textos de dominio público y colecciones con licencias claras.
+- Campos por obra: autor griego/latino, título original, traducción, fecha e incertidumbre, tradición textual, género, lengua, sigla o edición, fuentes institucionales, DOI/URN, estado de digitalización y enlace a visor.
+- **Pendiente:** verificar los registros, construir el JSON y el visor; esta anotación no certifica disponibilidad de ningún texto.
+
+## 3 de noviembre de 2026 — Atlas Geographicus Vitruvianus
+
+**Estado: implementación inicial de atlas y datos en desarrollo.** Mapa interactivo enlazado con el Onomasticon V514 y la descripción de la basílica de Fanum Fortunae (V.1). Debe permitir búsqueda libre y filtro por libro I–X, ficha por lugar, nombre **latino normalizado / variantes textuales / griego histórico / nombre moderno**, referencia a los loci, estado de atestiguación e identificación geográfica.
+
+La georreferenciación se refiere a la ciudad o al sitio general y no debe confundirse con la localización exacta de un edificio. Las regiones, accidentes hidrográficos y topónimos filológicamente dudosos se mantienen en un listado, sin puntos inventados. No se presentan las formas griegas eruditas como testimonios directamente leídos en el Codex H.
+
+
 ## 2 de noviembre de 2026 — ampliación bibliográfica y búsqueda por PDF seleccionado (segunda actualización)
 
 - Scriptorium: búsqueda por la edición o el PDF seleccionado (V514, V554, V297, Krohn 1912 y Rose 1899), conservando la consulta conjunta de todas las ediciones.
