@@ -32,6 +32,38 @@
 @media(max-width:1250px){.research-nav-inner{grid-template-columns:1fr}.research-nav-controls{justify-content:flex-end}.research-nav-links{row-gap:10px}}
 @media(max-width:700px){.research-nav-links>a{white-space:normal;font-size:11px}.research-nav-controls{justify-content:flex-start}}
 
+/* Acción de impresión junto a Laboratorio H y tema de lectura. */
+.research-nav-controls>.research-print-button{
+ display:inline-flex;align-items:center;justify-content:center;min-height:38px;min-width:89px;padding:9px 12px;
+ border:1px solid #b99b65;border-radius:4px;background:transparent;color:var(--ink);cursor:pointer;
+ font:700 12px/1.25 system-ui,-apple-system,Segoe UI,sans-serif;white-space:nowrap
+}
+.research-nav-controls>.research-print-button:hover,.research-nav-controls>.research-print-button:focus-visible{
+ background:#eadcc4;color:#13283d;border-color:#9e804d
+}
+html[data-theme=dark] .research-nav-controls>.research-print-button{
+ color:#f5eee3;border-color:#ab9876;background:#283f53
+}
+html[data-theme=dark] .research-nav-controls>.research-print-button:hover{background:#435f77;color:#fff}
+@page{size:auto;margin:15mm}
+@media print{
+ html,html[data-theme=dark],body{background:#fff!important;color:#141414!important;color-scheme:light!important}
+ .site-header{background:white!important;color:#111!important;border:0!important}
+ .site-header .header-inner>nav,.research-nav,.historic-top-access,.hero-scriptoria-grid,
+ .hero-h-link,.search-section,.collection-filters,.collection-controls,
+ .reader-dialog,.comparison-dialog,dialog,.theme-switch,.research-print-button,
+ .hero-actions,.site-header button,button,.reader-toolbar,.editorial-footer{display:none!important}
+ header,main,section,article,footer{background:transparent!important;color:#111!important;box-shadow:none!important}
+ .wrap{max-width:none!important;width:100%!important}
+ .hero{padding-top:8mm!important;padding-bottom:6mm!important}
+ h1,h2,h3,p,a{color:#111!important}
+ .catalog-card,.collection-card,.stats-inner>p,.history-entry{break-inside:avoid;box-shadow:none!important;border-color:#bbb!important}
+ .stats-band{border-top:1px solid #aaa!important;border-bottom:1px solid #aaa!important;padding:5mm 0!important}
+ .collection-section,.manuscript-feature,.history-section,.method-section,.research-section{break-before:auto!important}
+ a[href]::after{content:none!important}
+ img{max-width:100%!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+
 /* Two clear navigation levels: principal sections and scholarly instruments. */
 .site-header .header-inner > nav[aria-label="Navegación principal"]{row-gap:8px}
 .research-nav{border-top:1px solid var(--line);background:transparent}
@@ -126,6 +158,7 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
         </div>
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
+          <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir esta página" title="Abrir vista de impresión de la biblioteca">⎙ Imprimir</button>
         </div>
       </div>
     </nav>
@@ -203,6 +236,10 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
   <dialog id="reader-dialog" class="reader-dialog" aria-labelledby="reader-title"><div class="reader-header"><div><p class="eyebrow" id="reader-edition">EDICIÓN</p><h2 id="reader-title">Lectura</h2></div><div class="reader-actions"><button class="button outline" id="reader-compare" type="button">Comparar</button><a class="button outline" id="reader-download" download>PDF ↓</a><button type="button" class="close-button" id="close-reader" aria-label="Cerrar lectura">×</button></div></div><div class="reader-toolbar"><button type="button" id="reader-prev" aria-label="Página anterior">←</button><label>Página PDF <input id="reader-page" type="number" min="1" value="1"></label><span id="reader-page-total"></span><button type="button" id="reader-next" aria-label="Página siguiente">→</button><a id="reader-external" target="_blank" rel="noopener">Abrir PDF en otra pestaña ↗</a></div><div class="reader-content"><iframe id="reader-frame" title="Facsímil PDF de la edición"></iframe><aside class="reader-transcript"><p class="small-caps">TEXTO DE CONSULTA</p><p id="reader-text"></p><small>Texto extraído del PDF. Contrastá las lecturas con el documento.</small></aside></div></dialog>
   <dialog id="comparison-dialog" class="comparison-dialog" aria-labelledby="comparison-title"><div class="reader-header"><div><p class="eyebrow">CONSULTA COMPARADA</p><h2 id="comparison-title">Dos ediciones, una mesa de lectura.</h2></div><button type="button" class="close-button" id="close-comparison" aria-label="Cerrar comparación">×</button></div><p class="comparison-note">Elegí cada edición y su página de forma independiente. Las paginaciones varían entre versiones; esta vista no presupone una equivalencia entre las páginas.</p><div id="comparison-panes" class="comparison-panes"></div></dialog>
   <noscript><p class="wrap">Para usar el catálogo interactivo y la búsqueda, activá JavaScript. Los PDF también están disponibles en la carpeta documents del sitio.</p></noscript>
-<div class="wrap editorial-footer"><a href="https://libguides.cam.ac.uk/c.php?g=363717&amp;p=4973030" target="_blank" rel="noopener noreferrer" title="Enlace bibliográfico externo, sin aval ni afiliación académica">Referenciado en la guía de recursos latinos de Cambridge →</a> · <a href="onomasticon.html">Onomasticon · Personas, lugares y palabras del tratado →</a> · <a href="bibliotecas-universitarias.html">Ficha para bibliotecas y universidades · metadatos RIS / BibTeX / DOI →</a> · <a href="auditoria.html">Auditoría académica y editorial · 30 de octubre de 2026 →</a></div></body>
+<div class="wrap editorial-footer"><a href="https://libguides.cam.ac.uk/c.php?g=363717&amp;p=4973030" target="_blank" rel="noopener noreferrer" title="Enlace bibliográfico externo, sin aval ni afiliación académica">Referenciado en la guía de recursos latinos de Cambridge →</a> · <a href="onomasticon.html">Onomasticon · Personas, lugares y palabras del tratado →</a> · <a href="bibliotecas-universitarias.html">Ficha para bibliotecas y universidades · metadatos RIS / BibTeX / DOI →</a> · <a href="auditoria.html">Auditoría académica y editorial · 30 de octubre de 2026 →</a></div><script>
+/* La impresión es una acción local del navegador: sin archivos enviados al servidor. */
+document.getElementById('print-home')?.addEventListener('click',()=>window.print());
+</script>
+</body>
 </html>
 
