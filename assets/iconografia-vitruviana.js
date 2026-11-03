@@ -32,10 +32,10 @@ function createDatasetItems(source,info){
   };
   for(const s of sections){const b=parseSectionBook(s);const subset=source.canvases.filter(c=>c.page>=s.start&&c.page<=s.end);if(!subset.length)continue;
     if(b){keep(subset[0],s,b,"section");if(subset.length>5)keep(subset[Math.floor(subset.length/2)],s,b,"section");if(subset.length>11)keep(subset[Math.max(0,subset.length-3)],s,b,"section");}
-    else if(/cover|title|cubierta|portada|prelimin|front/i.test(s.label||"")){keep(subset[0],s,null,"opening");if(subset.length>2)keep(subset[subset.length-1],s,null,"opening");}
+    else if(/title page|portada|frontispicio/i.test(s.label||"")){keep(subset[0],s,null,"opening");} // Cubiertas y guardas no sustituyen la portada ilustrada.
   }
-  if(!sections.length){for(const p of [1,3,5,10,30,70,120,170,200]){const c=source.canvases[p-1];if(c)keep(c,null,null,"opening");}}
-  if(![...selected.values()].some(x=>x.pageNumber<=3)){for(let n=1;n<=Math.min(3,source.canvases.length);n++)keep(source.canvases[n-1],null,null,"opening");}
+  if(!sections.length){/* Sin paginación comprobada no inferir portada o motivo visual. */}
+  // No añadir las tres primeras páginas indiscriminadamente: suelen ser guardas o cubiertas.
   return [...selected.values()];
 }
 function imageMarkup(r){return r.image?'<img alt="'+esc("Reproducción documental: "+r.title+"; "+r.folio)+'" src="'+esc(r.image)+'" data-fallback="'+esc(r.fallbackImage||"")+'" loading="lazy" decoding="async">':'<div class="no-image"><span aria-hidden="true">▤</span><br>Imagen institucional pendiente de enlace directo<br><small>El catálogo y la ficha siguen disponibles</small></div>';}
@@ -107,8 +107,8 @@ async function start(){
  const meta=await response.json();
  const jobs=meta.datasets.map(async ds=>{try{const [r,s]=await Promise.all([fetch(ds.file),ds.sections?fetch(ds.sections):Promise.resolve(null)]);if(!r.ok||s&&!s.ok)throw Error("HTTP datos");const data=await r.json();const section=s?await s.json():null;return createDatasetItems({...data,...ds},section).map(x=>({...x,source:ds.id}));}catch(err){console.warn("Fuente IIIF no incluida:",ds.id,err);return []}});
  const derived=(await Promise.all(jobs)).flat();
- items=[...meta.primaryRecords.map(x=>({...x,source:x.source||"registros"})),...derived];
-for(const x of items){if(x.book===3&&["giocondo-1511","cesariano-1521","barbaro-1567"].includes(x.source)){x.tags=[...(x.tags||[]),"proporciones del cuerpo humano","uomo vitruviano","homo ad circulum","homo ad quadratum","iconografía vitruviana por cotejar"];}}
+ items=[...meta.primaryRecords.filter(x=>!!x.image).map(x=>({...x,source:x.source||"registros"})),...derived]; // Fichas sin reproducción se conservan en JSON, pero no se muestran como imagen vacía.
+for(const x of items){if(x.book===3&&["giocondo-1511","cesariano-1521","barbaro-1567"].includes(x.source)){x.tags=[...(x.tags||[]),"Libro III: antropometría vitruviana; motivo exacto de la lámina aún no cotejado"];}}
  for(const x of items){if(!x.book){const label=String(x.locus||"");const roman=label.match(/\b(X|IX|IV|V?I{1,3}|V|VIII|VII|VI)\.(?:\d+|praef)/i);const arabic=label.match(/\b(?:Libro\s+|Book\s+)(\d{1,2})\b/i);if(arabic&&+arabic[1]>=1&&+arabic[1]<=10)x.book=+arabic[1];else if(roman){const vals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};x.book=vals[roman[1].toUpperCase()]||null;}}}
  const editions=[...new Set(derived.map(x=>x.source))];
  for(const id of editions){const data=meta.datasets.find(x=>x.id===id);const o=document.createElement("option");o.value=id;o.textContent=data.title+" ("+data.date+")";$("atlas-edition").append(o)}
