@@ -434,6 +434,53 @@ html[data-theme=light] .ai-platforms .ai-platform-link:nth-of-type(1){border-col
 html[data-theme=light] .ai-platforms .ai-platform-link:nth-of-type(2){border-color:#b9aeb6!important}
 html[data-theme=light] .ai-platforms .ai-platform-link:nth-of-type(3){border-color:#c3af9f!important}
 html[data-theme=light] .ai-platforms .ai-platform-link:nth-of-type(4){border-color:#a9b2ce!important}
+/* Reading state: Grokipedia-like article layout, while preserving Vitruvia identity. */
+body.vitruvia-reading .nav{position:sticky;top:0;z-index:100;background:#0a0a0a;border-bottom:1px solid #272727}
+body.vitruvia-reading .hero{display:block!important;padding:21px 0 14px!important;margin:0!important;gap:0!important;min-height:auto!important}
+body.vitruvia-reading .hero>div:first-child{width:100%;max-width:none}
+body.vitruvia-reading .hero .eyebrow,
+body.vitruvia-reading .hero h1,
+body.vitruvia-reading .hero .lead,
+body.vitruvia-reading .hero .ai-platforms,
+body.vitruvia-reading .hero .suggestions,
+body.vitruvia-reading .hero .academic-pills,
+body.vitruvia-reading .hero .featured,
+body.vitruvia-reading .hero .explain,
+body.vitruvia-reading .metrics{display:none!important}
+body.vitruvia-reading .hero .search-wrap{max-width:790px;margin:0 auto}
+body.vitruvia-reading .hero .searchform{min-height:49px;padding:4px 5px 4px 14px}
+body.vitruvia-reading .hero .searchform button#submit{min-height:37px}
+body.vitruvia-reading .hero .tabs{justify-content:center;margin:11px auto 3px;gap:8px}
+body.vitruvia-reading .results{padding-top:12px}
+body.vitruvia-reading #vitruvia-article{border-top:0;padding-top:12px;margin-top:8px}
+body.vitruvia-reading #vitruvia-article .scholar-article-header{border-bottom:1px solid #303032;margin-bottom:25px}
+body.vitruvia-reading #vitruvia-article .article-body{max-width:none;font:400 16px/1.9 Arial,Helvetica,sans-serif}
+body.vitruvia-reading #vitruvia-article .article-body p{max-width:93ch;line-height:1.86}
+body.vitruvia-reading #vitruvia-article .article-body .article-lead{font:400 18px/1.85 Arial,Helvetica,sans-serif}
+body.vitruvia-reading #vitruvia-article .article-body h3{margin-top:36px;margin-bottom:19px}
+body.vitruvia-reading #vitruvia-article .article-toolbar{justify-content:flex-end}
+body.vitruvia-reading #vitruvia-article .article-byline{margin-top:8px}
+@media(min-width:1021px){
+ body.vitruvia-reading #vitruvia-article .article-grid{grid-template-columns:220px minmax(0,1fr)!important;gap:clamp(32px,5vw,72px)!important;align-items:start}
+ body.vitruvia-reading #vitruvia-article .article-body{grid-column:2;grid-row:1}
+ body.vitruvia-reading #vitruvia-article .article-aside{grid-column:1;grid-row:1;border-left:0;border-right:1px solid #303030;padding:0 16px 0 0;position:sticky;top:98px;max-height:calc(100vh - 118px);overflow:auto;scrollbar-width:thin}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header{padding-left:calc(220px + clamp(32px,5vw,72px))}
+}
+@media(max-width:1020px){
+ body.vitruvia-reading #vitruvia-article .article-grid{display:flex;flex-direction:column}
+ body.vitruvia-reading #vitruvia-article .article-aside{order:2;width:100%;padding:22px 0;border-left:0;border-top:1px solid #303030}
+ body.vitruvia-reading #vitruvia-article .article-body{order:1}
+ body.vitruvia-reading .hero .search-wrap{max-width:100%}
+}
+@media(max-width:600px){body.vitruvia-reading .nav{position:relative}body.vitruvia-reading #vitruvia-article .article-body .article-lead{font-size:16px}}
+html[data-theme=light] body.vitruvia-reading .nav{background:#f9f8f6}
+@media print{
+ body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}
+ body.vitruvia-reading #vitruvia-article .article-aside{display:none!important}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header{padding-left:0!important}
+ body.vitruvia-reading #vitruvia-article .article-body{width:100%!important}
+}
+
 /* Source-backed encyclopedia article, with inline citations and printable contents. */
 #vitruvia-article{scroll-margin-top:24px}
 #vitruvia-article .article-contents{border-bottom:1px solid #393939;padding:0 0 18px;margin:0 0 20px}
