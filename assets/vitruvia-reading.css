@@ -116,13 +116,13 @@ html:is([data-theme=light]:not([data-reading-background-tone=dark]),[data-readin
   border-color:var(--vr-control-border)!important;
  }
  /* Every control is neutral gray: no legacy dark-green buttons on a light page. */
- html body :is(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit){
+ html body :where(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit){
   background:var(--vr-control-bg)!important;
   color:var(--vr-control-ink)!important;
   border-color:var(--vr-control-border)!important;
  }
- html body :is(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):hover,
- html body :is(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):focus-visible{
+ html body :where(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):hover,
+ html body :where(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):focus-visible{
   background:var(--vr-control-hover)!important;
   color:var(--vr-control-ink)!important;
  }
