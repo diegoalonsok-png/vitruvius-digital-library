@@ -9,14 +9,19 @@ const get=async(url)=>{
  finally{clearTimeout(timer)}
 };
 const mediaWiki=(lang,parameters)=>"https://"+lang+".wikipedia.org/w/api.php?"+new URLSearchParams({...parameters,format:"json",origin:"*"});
-const clean=q=>String(q||"").trim().replace(/^(?:quien fue|quien es|biografia de|vida de|biography of|who was|what is|que es)\s+/i,"").trim();
+// Remove generic *intent* expressions but do not hard-code personalities.
+const clean=q=>{
+ const full=String(q||"").trim();
+ const cleaned=full.replace(/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:biograf[ií]a|historia|vida|vida y obra|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|pel[ií]culas|filmograf[ií]a|libros|tratados)\s+(?:de|del|sobre)\s+|(?:paintings|artworks|pictures|photographs|photos|images|films|movies|works|biography|history)\s+(?:of|by|about)\s+)/i,"").trim();
+ return cleaned.length>=3?cleaned:full;
+};
 const invalid=p=>!p||p.missing!==undefined||p.pageprops?.disambiguation!==undefined||/(?:desambiguaci[oó]n|disambiguation|homonymie)/i.test(p.title||"");
 async function lookupTitle(title,lang){
  const d=await get(mediaWiki(lang,{action:"query",titles:title,redirects:"1",prop:"extracts|info|pageprops",explaintext:"1",exsectionformat:"wiki",inprop:"url"}));
  const pages=Object.values(d.query?.pages||{});
  const page=pages.find(p=>!invalid(p));
  if(!page)return null;
- return {canonical:page.title,description:page.extract?.slice(0,360)||"",extract:page.extract||"",pageid:page.pageid,wikidataId:/^Q\\d+$/.test(page.pageprops?.wikibase_item||"")?page.pageprops.wikibase_item:null,language:lang,url:page.fullurl||"https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(page.title.replace(/ /g,"_")),aliases:(d.query?.redirects||[]).map(x=>x.from),type:"encyclopedia"};
+ return {canonical:page.title,description:page.extract?.slice(0,360)||"",extract:page.extract||"",pageid:page.pageid,wikidataId:/^Q\d+$/.test(page.pageprops?.wikibase_item||"")?page.pageprops.wikibase_item:null,language:lang,url:page.fullurl||"https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(page.title.replace(/ /g,"_")),aliases:(d.query?.redirects||[]).map(x=>x.from),type:"encyclopedia"};
 }
 async function searchTitle(q,lang){
  const d=await get(mediaWiki(lang,{action:"query",list:"search",srsearch:q,srlimit:"6",srprop:"snippet",utf8:"1"}));
