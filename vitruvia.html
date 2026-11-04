@@ -769,6 +769,20 @@ html[data-theme=light] #reading-font-reset{color:#254033}
 @media(max-width:1100px){.nav{flex-wrap:wrap}.navtools{flex-wrap:wrap}}
 @media(max-width:600px){.font-size-tools input[type=range]{width:72px}.font-size-tools{gap:5px;padding:5px 6px}}
 
+
+/* Opt-in neural search status; never modifies the main search bar dimensions. */
+.tab.ai-mode-tab{border-color:#597864;color:#cee9d5}
+.tab.ai-mode-tab[aria-pressed=true]{background:#274536;border-color:#a8ca9d;color:#fff}
+.ai-mode-help{font-size:11px;color:var(--muted);margin:0 0 9px}
+.ai-mode-status{font:500 12px/1.55 system-ui,sans-serif;padding:11px 14px;border-radius:6px;border:1px solid #536a54;background:#1a2820;color:#d6e9d4;margin:10px 0 12px;max-width:95ch}
+.ai-mode-status[hidden]{display:none}.ai-mode-status[data-phase=fallback]{border-color:#86683f;color:#eee3ca}
+.ai-mode-status[data-phase=success]{border-color:#61936a;color:#d5eace}
+#result-list .ai-evidence-card{border-left:3px solid #799b87}
+#result-list .ai-evidence-label{font:600 10px/1.3 system-ui,sans-serif;letter-spacing:.08em;color:#c6ddc8;margin:6px 0;text-transform:uppercase}
+html[data-theme=light] .ai-mode-help{color:#526459}
+html[data-theme=light] .ai-mode-status{background:#edf6ed;color:#2e5938;border-color:#96b39d}
+html[data-theme=light] #result-list .ai-evidence-label{color:#295438}
+
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -796,9 +810,12 @@ html[data-theme=light] #reading-font-reset{color:#254033}
 <button type="button" class="tab" data-mode="wiki" aria-pressed="false">Wikipedia</button>
 <button type="button" class="tab" data-mode="external" aria-pressed="false">Internet y academia</button>
 <button type="button" class="tab" data-mode="concept" aria-pressed="false">⌁ Conceptos</button>
+<button type="button" class="tab ai-mode-tab" data-mode="ai" aria-pressed="false" aria-describedby="ai-help" title="Búsqueda híbrida con modelo multilingüe de IA local y coincidencia textual BM25">✦ IA semántica</button>
 <button type="button" class="image-search-trigger" id="search-images-button" aria-controls="vitruvia-images" aria-label="Buscar imágenes de la consulta" title="Buscar imágenes de la consulta"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.6"/><path d="m4 17 5-5 3.5 3.5 2.7-2.7L20 18"/></svg><span>Imágenes</span></button>
 </div>
 <p class="explain" id="mode-note">Busca cualquier tema en Wikipedia, Wikidata y catálogos abiertos; prioriza arte, historia y arquitectura y también consulta esta biblioteca.</p>
+<p class="ai-mode-help" id="ai-help">IA opcional, sin clave ni servidor: analiza textos indexados; la primera carga del modelo puede descargar ~120 MB.</p>
+<div class="ai-mode-status" id="ai-status" role="status" aria-live="polite" hidden></div>
 <div class="suggestions"><span data-i18n="explore">Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
 <div class="academic-pills" aria-label="Buscar en universidades y repositorios">
   <div class="academic-pill-row"><span class="academic-caption" data-i18n="universities">UNIVERSIDADES</span>
@@ -1059,8 +1076,9 @@ html[data-theme=light] #reading-font-reset{color:#254033}
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
 <script src="assets/vitruvia-article.js?v=20261104-universal-dossiers-v4" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
-<script src="assets/search-agentic.js?v=20261104-bilingual-evidence-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-universal-codices-v8" defer></script>
+<script src="assets/search-agentic.js?v=20261104-corpus-manifest-v5" defer></script>
+<script src="assets/vitruvia-ai.js?v=20261104-neural-bm25-rrf-v1" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-ai-semantic-v9" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
