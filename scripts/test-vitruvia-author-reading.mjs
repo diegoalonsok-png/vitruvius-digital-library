@@ -29,7 +29,7 @@ const marcus=ctx.window.VitruviaAuthorReading.select(vm.runInContext('[...liveBo
 const meditations=marcus.books.find(b=>b.workId==='marcus-aurelius-meditations');
 assert(meditations, 'Marcus Aurelius bibliography missing');
 assert.equal(meditations.originalLanguage,'grc');
-assert.equal(meditations.originalReadings.length,0, 'Do not claim a Greek text is readable when only a record exists');
+assert(meditations.originalReadings.some(r=>r.language==='grc'&&r.kind==='external'&&r.url.startsWith('https://el.wikisource.org/wiki/')), 'Greek Meditations must link to the documented external original and not pretend to host it');
 const catullus=ctx.window.VitruviaAuthorReading.select(vm.runInContext('[...liveBooks("Catulo",false),...liveManuscripts("Catulo")]',ctx),'Catulo');
 assert(catullus.books.some(b=>b.originalReadings?.some(r=>r.language==='la'&&r.url.includes('catullus-carmina'))));
 const authorUI=read('assets/vitruvia-author-reading.js');
