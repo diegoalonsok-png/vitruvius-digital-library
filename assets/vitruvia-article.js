@@ -537,28 +537,63 @@ async function topicWikiData(query){
  }
  return null;
 }
+/* Topic dossiers: encyclopedic narrative first; original-language literature, scholarship, outreach after. */
+function addTopicBibliography(rows,query,ark){
+ const documented=rows.filter(x=>x.link&&x.title&&relevance(x,query)>=35);
+ const byType={
+  primary:documented.filter(x=>bibliographyCategory(x,query)==="primary"),
+  academic:documented.filter(x=>bibliographyCategory(x,query)==="academic"),
+  popular:documented.filter(x=>bibliographyCategory(x,query)==="popular")
+ };
+ if(ark){
+  byType.primary.unshift(
+   {title:"Éxodo 25:10–22 · hebreo bíblico",link:"https://www.sefaria.org/Exodus.25.10",author:"Texto hebreo (שמות)"},
+   {title:"1 Samuel 4–6 · hebreo bíblico",link:"https://www.sefaria.org/I_Samuel.4",author:"Texto hebreo (שמואל א)"},
+   {title:"2 Samuel 6 · hebreo bíblico",link:"https://www.sefaria.org/II_Samuel.6",author:"Texto hebreo (שמואל ב)"},
+   {title:"1 Reyes 8 · hebreo bíblico",link:"https://www.sefaria.org/I_Kings.8",author:"Texto hebreo (מלכים א)"},
+   {title:"Éxodo 25 · versiones griegas de la Septuaginta (localizar edición)",link:"https://www.google.com/search?q="+encodeURIComponent("Septuagint Exodus 25 Greek critical text"),author:"Tradición textual griega",incomplete:true},
+   {title:"Éxodo 25 · targumes arameos (localizar testimonio)",link:"https://www.sefaria.org/search?q="+encodeURIComponent("Targum Onkelos Exodus 25"),author:"Tradición targúmica aramea",incomplete:true},
+   {title:"Éxodo 25 · Vulgata latina (localizar edición)",link:"https://www.google.com/search?q="+encodeURIComponent("Vulgata Exodus 25 Latin critical edition"),author:"Tradición latina",incomplete:true}
+  );
+ }
+ const groups=[
+  ["II · Literatura histórica y fuentes primarias","primary"],
+  ["III · Investigación académica","academic"],
+  ["IV · Divulgación y obras generales","popular"]
+ ];
+ for(const [headingText,category] of groups){
+  heading(headingText);
+  if(category==="primary")paragraph("Se priorizan textos antiguos en lengua original (hebreo, arameo, griego o latín), cuando existen. Los enlaces de búsqueda se distinguen de ediciones identificadas.","article-note");
+  if(category==="popular")paragraph("Los registros de catálogos generales se ubican aquí provisionalmente cuando no consta que sean estudios académicos especializados.","article-note");
+  const entries=byType[category].slice().sort((a,b)=>(Number(a.year)||9999)-(Number(b.year)||9999)||String(a.title).localeCompare(String(b.title)));
+  if(!entries.length){paragraph("No se recuperaron registros verificables para esta categoría.","article-note");continue}
+  const list=make("ol",undefined,"article-related"),seen=new Set();
+  for(const entry of entries){
+   const identity=normalized(entry.title+" "+(entry.author||""));
+   if(seen.has(identity))continue;seen.add(identity);
+   const li=make("li"),link=href(entry.link,entry.title);
+   if(!link)continue;
+   li.append(link);
+   const info=[entry.author,entry.year,entry.journal||entry.publisher].filter(Boolean).join(" · ");
+   if(info)li.append(make("small"," — "+info,"article-license"));
+   if(entry.incomplete)li.append(make("small"," · Enlace de búsqueda, no edición cotejada.","article-license"));
+   list.append(li);
+   if(list.children.length>=25)break;
+  }
+  $("article-body").append(list);
+ }
+}
 async function renderTopic(top,rows,query,token){
  reset(query,phrase("Artículo temático · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
  const topic=normalized(query);
- const ark=topic.includes("arca de la alianza")||topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
+ const ark=topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
  const sources=rows.filter(x=>x.link&&relevance(x,query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum"].includes(x.type));
  const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,query)>=40).sort((x,y)=>relevance(y,query)-relevance(x,query))[0];
  paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
  if(ark){
   for(const [headingText,body] of arkSections){heading(headingText);paragraph(body)}
-  heading("Textos primarios y pasajes fundamentales");
-  const primary=[
-   ["Éxodo 25:10–22 · instrucciones y materiales","https://www.biblegateway.com/passage/?search=Exodus%2025%3A10-22"],
-   ["Éxodo 37:1–9 · ejecución del Arca","https://www.biblegateway.com/passage/?search=Exodus%2037%3A1-9"],
-   ["1 Samuel 4–6 · narraciones del Arca","https://www.biblegateway.com/passage/?search=1%20Samuel%204-6"],
-   ["2 Samuel 6 · traslado a Jerusalén","https://www.biblegateway.com/passage/?search=2%20Samuel%206"],
-   ["1 Reyes 8 · dedicación del templo","https://www.biblegateway.com/passage/?search=1%20Kings%208"],
-   ["Hebreos 9:4 · recepción posterior","https://www.biblegateway.com/passage/?search=Hebrews%209%3A4"]
-  ];
-  const list=make("ul",undefined,"article-related");
-  for(const [name,url] of primary){const li=make("li"),link=href(url,name);if(link)li.append(link);list.append(li)}
-  $("article-body").append(list);
+
  }
  const data=wiki?await wikiSummary(wiki):await topicWikiData(query);
  if(token!==active)return;
@@ -572,11 +607,16 @@ async function renderTopic(top,rows,query,token){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ heading("Imágenes y documentación visual");
+ paragraph("La galería documental de Wikimedia Commons se carga automáticamente con esta búsqueda. Incluye miniaturas enlazadas a su ficha de origen, donde se consultan autor y licencia.","article-note");
+ const galleryLink=href("#vitruvia-images","Ver galería de imágenes vinculadas a esta consulta");
+ if(galleryLink)$("article-body").append(galleryLink);
+ addTopicBibliography(rows,query,ark);
  heading(phrase("Investigación complementaria","Further research","Recherche complémentaire"));
  const list=make("ul",undefined,"article-related");
  for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
  if(list.childNodes.length)$("article-body").append(list);
- heading(phrase("Relación con Vitruvio y bibliografía","Relation to Vitruvius and bibliography","Relation avec Vitruve et bibliographie"));
+ heading(phrase("V · Relación con Vitruvio y aparato bibliográfico (Chicago 18)","V · Relationship with Vitruvius and references (Chicago 18)","V · Vitruve et bibliographie (Chicago 18)"));
  paragraph("Las coincidencias en el corpus vitruviano se consultan separadamente. No se atribuyen menciones ni relaciones directas sin locus verificable.","article-note");
  aside(sources);references(rows);buildContents();
 }
