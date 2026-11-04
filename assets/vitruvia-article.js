@@ -556,7 +556,7 @@ function optionalManuscriptAccess(rows){
  return true;
 }
 
-function appendBiographyExtract(raw){
+function appendBiographyExtract(raw,sourceURL=""){
  const blocks=window.VitruviaDiscovery?.parseExtract(raw)||[{type:"paragraph",text:String(raw||"")}];
  const body=$("article-body");
  let paragraphs=0,list=null;
@@ -589,6 +589,9 @@ function appendBiographyExtract(raw){
    list=null;
    for(const part of readableParagraphs(block.text)){
     paragraph(part,paragraphs===0?"article-lead":undefined);paragraphs++;
+    // Provenance only for documented Wikipedia extracts, never for original synthesis.
+    if(/^https:\/\/[a-z-]+\.wikipedia\.org\/(?:wiki\/|w\/index\.php)/i.test(sourceURL)&&body.lastElementChild?.tagName==="P")
+     body.lastElementChild.setAttribute("data-vr-origin",sourceURL);
    }
   }
  }
@@ -680,7 +683,7 @@ async function renderHistoricalPerson(top,rows,person,token){
  if(data?.extract){
   heading(phrase("Documentación enciclopédica complementaria","Supplementary encyclopedic documentation","Documentation encyclopédique complémentaire"));
   paragraph(phrase("A continuación se presenta material procedente de Wikipedia, atribuido a sus colaboradores (CC BY-SA). No constituye una redacción original de Vitruvia.","The following text is sourced from Wikipedia under CC BY-SA; it is not original Vitruvia authorship.","Le texte suivant provient de Wikipédia sous CC BY-SA et n'est pas une rédaction originale de Vitruvia."),"article-note");
-  if(!appendBiographyExtract(data.extract))paragraph(top?.excerpt||"","article-lead");
+  if(!appendBiographyExtract(data.extract,data.fullurl||top?.link))paragraph(top?.excerpt||"","article-lead");
   const original=href(data.fullurl||top?.link,phrase("Consultar el original, las notas y el historial","Consult source, references and history","Voir la source, les références et l'historique"));
   if(original)$("article-body").append(original);
  }else if(!isCicero){
@@ -1161,7 +1164,7 @@ async function renderTopic(top,rows,query,token,person=null){
    phrase("La fuente enciclopédica está disponible aquí en "+wiki.wikiLang.toUpperCase()+"; no se simula una traducción.",
     "The source text is available here in "+wiki.wikiLang.toUpperCase()+"; it has not been automatically translated.",
     "La source est disponible ici en "+wiki.wikiLang.toUpperCase()+" ; aucune traduction automatique n’est simulée."),"article-note");
-  appendBiographyExtract(data.extract);
+  appendBiographyExtract(data.extract,data.fullurl||wiki?.link);
   const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
   if(link)$("article-body").append(link);
  }else if(!profile&&!identified&&!ark&&!deity&&person?.id!=="cicero"){
