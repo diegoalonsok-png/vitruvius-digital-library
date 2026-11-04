@@ -55,10 +55,40 @@ body:has(#vitruvia-compact-nav) .hero .tabs{
 #vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more):focus-visible{
  outline:1px solid currentColor!important;outline-offset:3px!important;
 }
-#vitruvia-compact-nav .vitruvia-compact-more{
- appearance:auto!important;-webkit-appearance:menulist!important;
- width:auto;max-width:95px;
- color:#a0a1a5!important;
+/* Do not render the OS-native white select rectangle around “Más / More”.
+   The displayed first option already supplies the small down-arrow glyph. */
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more{
+ appearance:none!important;-webkit-appearance:none!important;-moz-appearance:none!important;
+ display:inline-block!important;
+ box-sizing:content-box!important;
+ width:auto!important;max-width:95px!important;
+ min-width:0!important;
+ padding:4px 0!important;
+ margin:0!important;
+ border:0!important;border-radius:0!important;
+ background:none!important;background-color:transparent!important;background-image:none!important;
+ box-shadow:none!important;-webkit-box-shadow:none!important;
+ color:#a0a1a5!important;-webkit-text-fill-color:#a0a1a5!important;
+ font:400 11px/1.6 Arial,Helvetica,sans-serif!important;
+ outline:0;cursor:pointer;
+ color-scheme:dark;
+}
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:focus-visible{
+ outline:1px solid currentColor!important;outline-offset:4px!important;
+}
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:is(:hover,:focus){
+ background:transparent!important;background-color:transparent!important;
+ box-shadow:none!important;border:0!important;
+}
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:hover{
+ color:#f2f0ec!important;-webkit-text-fill-color:#f2f0ec!important;
+}
+html[data-theme="light"] #vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more{
+ color:#62666b!important;-webkit-text-fill-color:#62666b!important;
+ color-scheme:light;
+}
+html[data-theme="light"] #vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:hover{
+ color:#202124!important;-webkit-text-fill-color:#202124!important;
 }
 #vitruvia-compact-nav .vitruvia-compact-more option{
  background:#28292b;color:#e6e6e6;
