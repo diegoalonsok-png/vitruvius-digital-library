@@ -415,9 +415,10 @@ function display(rows,query,phase){
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic"]);
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const ordered=S.mode==="all"
-  ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)),
+  ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,8),
      ...deduped.filter(r=>libraryTypes.has(r.type)),
-     ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type))]
+     ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)),
+     ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(8)]
   : deduped;
  if(!ordered.length)list.append(node("div","empty",T().none));
  else {
