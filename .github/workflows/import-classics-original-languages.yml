@@ -1,0 +1,144 @@
+name: Incorporar originales griegos y latinos verificados
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-classics-original-languages.yml'
+permissions:
+  contents: write
+concurrency:
+  group: import-classics-original-languages
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF validation tools
+        run: python -m pip install --disable-pip-version-check pymupdf requests
+      - name: Import originals with provenance checks and preserve translations
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,requests,fitz
+          folder=pathlib.Path("documents/classics");folder.mkdir(parents=True,exist_ok=True)
+          datafile=pathlib.Path("data/bibliotheca-graeca-latina-I-bce-I-ce.json")
+          refsfile=pathlib.Path("data/bibliotheca-testimonia-verified.json")
+          catalog=json.loads(datafile.read_text(encoding="utf-8"))
+          references=json.loads(refsfile.read_text(encoding="utf-8"))
+          idx={w["id"]:w for w in catalog["works"]}
+          editions=references.setdefault("editions",[])
+          records=[
+           dict(work="aristotle-poetics",file="aristotle-poetics-greek-christ-1893.pdf",
+            name="Aristotelis De arte poetica liber (IA aristotelisdear00aris).pdf",
+            ia="aristotelisdear00aris",page_count=68,bytes=None,sha1=None,language="grc",
+            year="1893",editor="Wilhelm von Christ · B. G. Teubner, Leipzig",
+            rights="https://commons.wikimedia.org/wiki/File:Aristotelis_De_arte_poetica_liber_(IA_aristotelisdear00aris).pdf",
+            coverage="obra completa en griego original, edición histórica",
+            note="Poética de Aristóteles: texto original griego, edición Wilhelm von Christ, Leipzig 1893, 68 páginas. No es un códice antiguo ni traducción latina."),
+           dict(work="lucretius",file="lucretius-de-rerum-natura-latin-1813.pdf",
+            name="De rerum natura libri sex (IA b2852228x).pdf",
+            ia="b2852228x",page_count=330,bytes=17095740,sha1="9b9d9b04cc19380ecbcf9d575907c97f3b376053",language="la",
+            year="1813",editor="Londini, in aedibus Ricardi Taylor · Royal College of Physicians of London",
+            rights="https://commons.wikimedia.org/wiki/File:De_rerum_natura_libri_sex_(IA_b2852228x).pdf",
+            coverage="los seis libros en latín original",
+            note="Lucrecio, De rerum natura libri sex, impreso en Londres en 1813: edición latina de los seis libros, 330 páginas. Texto original, no traducción inglesa."),
+           dict(work="virgil-georgica",file="virgil-georgica-latin-forbiger-1849.pdf",
+            name="Georgica; (IA georgica00virguoft).pdf",
+            ia="georgica00virguoft",page_count=76,bytes=None,sha1=None,language="la",
+            year="1849",editor="Albert Forbiger · Montreal, Armour",
+            rights="https://commons.wikimedia.org/wiki/File:Georgica;_(IA_georgica00virguoft).pdf",
+            coverage="edición histórica latina de Georgica",
+            note="Virgilio, Georgica, edición Albert Forbiger, Montreal 1849, 76 páginas; edición en latín. No corresponde a Eneida.")
+          ]
+          passed=[];failed=[]
+          for record in records:
+           name=record['name']
+           commons='https://commons.wikimedia.org/wiki/Special:Redirect/file/'+requests.utils.quote(name,safe='')
+           fallback='https://archive.org/download/'+record['ia']+'/'+record['ia']+'.pdf'
+           dest=folder/record["file"]
+           for url in ([None] if dest.exists() else [commons,fallback]):
+            temp=pathlib.Path(str(dest)+'.tmp')
+            try:
+             if url:
+              with requests.get(url,stream=True,timeout=(25,100),headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (github.com/diegoalonsok-png/vitruvius-digital-library)'}) as response:
+               response.raise_for_status()
+               size=0
+               with temp.open('wb') as fh:
+                for chunk in response.iter_content(256*1024):
+                 if not chunk:continue
+                 size+=len(chunk)
+                 if size>19*1024*1024:raise ValueError("File exceeds 19MiB limit")
+                 fh.write(chunk)
+              source=temp
+             else:source=dest
+             raw=source.read_bytes()
+             if len(raw)<100000 or len(raw)>19*1024*1024 or not raw.startswith(b'%PDF-'):
+              raise ValueError('Not a PDF or PDF size out of bounds')
+             sha=hashlib.sha1(raw).hexdigest()
+             if record['bytes'] and len(raw)!=record['bytes']:raise ValueError('Wikimedia Commons file size does not match')
+             if record['sha1'] and sha!=record['sha1']:raise ValueError('Wikimedia Commons SHA1 mismatch')
+             with fitz.open(stream=raw,filetype='pdf') as pdf:
+              if pdf.is_encrypted or len(pdf)!=record['page_count']:raise ValueError('Page count or encryption mismatch')
+              for page in (0,min(15,len(pdf)-1),len(pdf)-1):
+               r=pdf[page].rect
+               if r.width<100 or r.height<100:raise ValueError('Invalid page geometry')
+             if url:source.replace(dest)
+             record['real_bytes']=len(raw);record['real_sha1']=sha
+             passed.append(record)
+             print('VERIFIED',dest,len(raw),'pages',record['page_count'],'SHA1',sha)
+             break
+            except Exception as e:
+             print('REJECTED',url,record['file'],str(e)[:250])
+             temp.unlink(missing_ok=True)
+           else:failed.append(record["file"])
+          for record in passed:
+           w=idx[record['work']]
+           versions=w.setdefault("pdfEditions",[])
+           old=w.get("pdf") or {}
+           if old.get("url") and not any(x.get("url")==old['url'] for x in versions):
+            # Save earlier historical translation PDF instead of replacing its traceability.
+            oldlang="en" if record['work'] in ("aristotle-poetics","lucretius") else w['language']
+            versions.append({**old,'language':oldlang,'label':"Edición anterior · traducción inglesa" if oldlang=="en" else "Edición anterior",
+                             'role':"translation" if oldlang=="en" else "edition"})
+           local="documents/classics/"+record['file']
+           current={
+            "url":local,"language":record["language"],"role":"original",
+            "label":("GRIEGO ORIGINAL" if record['language']=="grc" else "LATÍN ORIGINAL")+" · "+record['year'],
+            "status":record["note"],"sizeBytes":record["real_bytes"],"pages":record["page_count"],
+            "sha1":record["real_sha1"],"rights":"Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+            "source":record["rights"],"coverage":record["coverage"],"publicationYear":record["year"],"editor":record["editor"]
+           }
+           versions=[x for x in versions if x.get('url')!=local]
+           w['pdfEditions']=[current,*versions]
+           w['pdf']=current
+           w['publicStatus']="lectura-local-completa"
+           w.setdefault('reading',{})['status']=record['note']
+           if not any(ed.get('workId')==record['work'] and ed.get('url')==local for ed in editions):
+            editions.append({
+              "workId":record["work"],"title":w["title"]+" · original "+record['year'],
+              "year":record['year'],"editor":record['editor'],"langs":[record['language']],
+              "type":"pdf-texto-original","url":local,
+              "provider":"Wikimedia Commons / Internet Archive · ejemplar depositado en GitHub",
+              "note":record['note']+" Fuente: "+record["rights"]
+            })
+          if passed:
+           datafile.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+           refsfile.write_text(json.dumps(references,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('NEW ORIGINALS',len(passed),'FAILED',failed)
+          PY
+      - name: Commit authenticated originals and bibliographic changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/classics/*.pdf data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-testimonia-verified.json
+          if git diff --cached --quiet; then echo "No validated additions"; else
+            git commit -m "Archive checked Greek and Latin original-language editions and preserve translation PDFs"
+            git pull --rebase origin main
+            git push
+          fi
