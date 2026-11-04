@@ -149,7 +149,10 @@ function selectSuggestion(id,selectedView){
  hideBookSuggestions();
  choose(w.id);
  if(selectedView==="edition"){
-  tab="edition";detail();
+  // The selected historical-edition links are already listed within the record.
+  // Do not switch to an unavailable internal reader for an external edition.
+  const evidence=$("classic-detail").querySelector(".classical-evidence");
+  if(evidence){evidence.setAttribute("tabindex","-1");evidence.scrollIntoView({block:"nearest",behavior:"smooth"})}
  }
  $("classic-detail").scrollIntoView({block:"start",behavior:"smooth"});
 }
