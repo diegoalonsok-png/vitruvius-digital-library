@@ -745,6 +745,13 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
 html[data-theme=light] #result-list .primary-codex-card{background:#f1ede2;color:#1b3029;border-color:#a48b64}
 html[data-theme=light] #result-list .primary-codex-card .primary-codex-label{color:#66502b}
 html[data-theme=light] #result-list .historical-editions-heading{color:#403525}
+
+/* Academic hierarchy: significant reference works follow the biography. */
+.article-reference-books .principal-reference-work{font-size:1.1em;border-left:3px solid #bca57a;padding:13px 16px;margin:10px 0 15px;background:rgba(187,165,116,.10);border-radius:4px}
+.article-reference-books .principal-reference-work strong{font:600 11px/1.6 Arial,sans-serif;letter-spacing:.11em;color:#c9b482;display:block;margin-bottom:7px}
+html[data-theme=light] .article-reference-books .principal-reference-work{background:#f4f0e7}
+html[data-theme=light] .article-reference-books .principal-reference-work strong{color:#716042}
+
 @media(max-width:600px){#result-list .primary-codex-card{padding:18px}#result-list .primary-codex-card h3{font-size:27px!important}}
 
 </style></head><body>
@@ -1013,10 +1020,10 @@ html[data-theme=light] #result-list .historical-editions-heading{color:#403525}
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-university-encyclopedia-v2" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-biography-reference-books-v3" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
 <script src="assets/search-agentic.js?v=20261104-bilingual-evidence-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-codex-primary-historical-v6" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-universal-codices-v7" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
