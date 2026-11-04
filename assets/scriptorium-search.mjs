@@ -212,6 +212,25 @@ $('script-search-form').addEventListener('submit',async event=>{
  const target=scope==='selected'?selectedIndex():scope;
  if(scope==='selected'&&!target){status.textContent='El PDF elegido no tiene un índice textual accesible. Elige Krohn 1912, Rose 1899 o una de tus tres ediciones; Budé solo puede consultarse bibliográficamente por ahora.';return;}
  const chosen=sources.filter(src=>target==='all'||target===src.id);
+ if(mode==='semantic'&&!locus){
+  // Búsqueda por sentido con el motor compartido de Vitruvia sobre los mismos índices.
+  status.textContent='Buscando por sentido en los índices del tratado y el OCR… la primera vez el navegador descarga el modelo multilingüe (~120 MB); si no puede, se usa BM25.';
+  if(!window.VitruviaAI?.rank)await new Promise(r=>{const sc=document.createElement('script');sc.src='assets/vitruvia-ai.js?v=20261104-rank-v1';sc.onload=r;sc.onerror=r;document.head.append(sc);});
+  if(!window.VitruviaAI?.rank){status.textContent='El motor de búsqueda por sentido no está disponible; usa otra modalidad.';return;}
+  const docs=[],missingSrc=[];
+  await Promise.all(chosen.map(async src=>{try{const data=await load(src);
+   if(src.kind==='edition'){for(const p of data.passages||[]){const page=Number(p.pdf_pages?.translation||p.pdf_pages?.latin||0)||null;
+     docs.push({id:src.id+':'+p.locus,text:(p.latin||'')+' '+(p.translation||''),row:{kind:'edition',id:src.id,source:src,p,field:'translation',term:'',page,snippet:p.translation||p.latin,label:'De architectura '+p.locus}})}}
+   else{for(const p of (Array.isArray(data)?data:data.pages||[]))docs.push({id:src.id+':'+p.page,text:p.text||'',row:{kind:'ocr',id:src.id,source:src,term:'',page:Number(p.page),snippet:p.text,label:'Página OCR '+p.page}})}
+  }catch(e){missingSrc.push(src.label)}}));
+  const res=await window.VitruviaAI.rank(q,docs.filter(d=>d.text.length>40),{limit:40});
+  if(serial!==running)return;
+  const words=q.split(/\s+/).filter(w=>w.length>3);
+  live=res.rows.map(x=>{const r={...x.doc.row};const fs=fold(r.snippet||'');r.term=words.find(w=>fs.includes(fold(w)))||'';return r});
+  render();
+  status.textContent=live.length+' resultados · '+(res.mode==='neural'?'por sentido (IA E5 multilingüe) + texto':'búsqueda textual BM25 (el modelo de IA no se cargó)')+' · Fuente: '+(target==='all'?'todas las ediciones y OCR':chosen[0]?.label)+(missingSrc.length?' · Sin acceso al índice: '+missingSrc.join(', '):'');
+  return;
+ }
  const terms=locus?[q]:await expandTerms(q,mode);
  const reports=await Promise.all(chosen.filter(src=>!locus||src.kind==='edition').map(async src=>{
   try{
