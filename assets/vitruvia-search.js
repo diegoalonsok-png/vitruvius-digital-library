@@ -497,6 +497,7 @@ function considerFeatured(rows,query){
  $("featured-link").textContent=row.type==="wikipedia"?"Leer el artículo ›":"Consultar la fuente ›";
  $("featured-credit").textContent=[row.source||row.author,row.meta].filter(Boolean).join(" · ").slice(0,200);
  highlightFeatured(q);
+ window.dispatchEvent(new CustomEvent("vitruvia:featured-result",{detail:{query,row}}));
 }
 
 /* Iconografía de autoridad para casos históricos homónimos.
