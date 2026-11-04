@@ -3,7 +3,7 @@
    NO un modelo generativo de lenguaje. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:44,people:[],historical:[]};
+const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:60,people:[],historical:[]};
 const lex={
  arquitectura:"architectura architecture arquitectura architecturae edificios aedificia edificaciones construcción building architettura",
  historia:"historia history historique histoire historien history historical roman romain antiguo ancient antigüedad antiquity",
@@ -515,50 +515,76 @@ function authorityWeight(row){
 function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)}
 
 function display(rows,query,phase){
- const romanVitruvius=/^(vitruvio|vitruvius|vitruve|marco vitruvio polion|marcus vitruvius pollio)$/i.test(norm(query));
- const scored=rows.filter(r=>(!romanVitruvius||!(/agustin vitruvio|agustín vitruvio|augustin vitruvio/i.test(r.title||"")))&&entityEvidence(r,query)).slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query)+(S.mode==="ai"&&b.aiEvidence?2800:0))-((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0))),deduped=[],seen=new Set();
- for(const r of scored){const k=r.type+":"+norm(r.title)+(r.type==="passage"?":"+norm(r.edition||r.author||r.meta||""):r.externalFulltext?":"+norm(r.author||""):"");if(seen.has(k))continue;seen.add(k);deduped.push(r)}
+ // No se eliminan resultados por umbrales de coincidencia en el título:
+ // los textos, alias, autores y metadatos documentales también cuentan.
+ const scored=rows.filter(r=>r&&r.title).slice().sort((a,b)=>
+  ((b.rating||0)+titleMatch(b,query)+(S.mode==="ai"&&b.aiEvidence?2800:0))-
+  ((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0)));
+ const deduped=[],seen=new Set();
+ for(const r of scored){
+  const k=r.type+":"+norm(r.title)+":"+(r.type==="wikipedia"?String(r.wikiLang||""):r.type==="passage"?norm(r.edition||r.author||r.meta||""):r.externalFulltext?norm(r.author||""):"");
+  if(seen.has(k))continue;
+  seen.add(k);deduped.push(r);
+ }
  const list=$("result-list");list.replaceChildren();
- // Present library evidence after encyclopedic context without hiding editions.
+ // Orden académico estable, sin reiterar filas ni encabezados cuando llegan
+ // respuestas de servicios externos en distinto orden.
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic"]);
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const textExternalTypes=new Set(["text-external"]);
- const ordered=S.mode==="ai"
-  ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,2),
-     ...deduped.filter(r=>r.aiEvidence).sort((a,b)=>(b.aiScore||0)-(a.aiScore||0)),
-     ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)),
-     ...deduped.filter(r=>textExternalTypes.has(r.type)),
-     ...deduped.filter(r=>!r.aiEvidence&&r.type!=="manuscript"&&!encyclopediaTypes.has(r.type)&&!textExternalTypes.has(r.type)),
-     ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(2)]
-  : S.mode==="all"
-  ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,8),
-     ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating),
-     ...deduped.filter(r=>textExternalTypes.has(r.type)),
-     ...deduped.filter(r=>r.historicalEdition).sort((a,b)=>a.editionYear-b.editionYear),
-     ...deduped.filter(r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&!r.historicalEdition),
-     ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)&&!textExternalTypes.has(r.type)),
-     ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(8)]
-  : deduped;
+ const byGroup=r=>S.mode==="ai"&&r.aiEvidence?"semantic":
+  encyclopediaTypes.has(r.type)?"encyclopedia":
+  r.type==="manuscript"?"manuscripts":
+  r.type==="edition"?"editions":
+  textExternalTypes.has(r.type)?"external-texts":
+  libraryTypes.has(r.type)?"library":"research";
+ const groupOrder=S.mode==="ai"?
+  ["encyclopedia","semantic","manuscripts","editions","library","external-texts","research"]:
+  ["encyclopedia","manuscripts","editions","library","external-texts","research"];
+ const grouped=new Map(groupOrder.map(g=>[g,[]]));
+ for(const r of deduped){
+  const group=byGroup(r);
+  if(!grouped.has(group))grouped.set(group,[]);
+  grouped.get(group).push(r);
+ }
+ // Para códices, primero el testimonio más antiguo INDEXADO; para ediciones,
+ // año ascendente (no se confunde una edición impresa con un manuscrito).
+ grouped.get("manuscripts")?.sort((a,b)=>
+  Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||
+  (a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating);
+ grouped.get("editions")?.sort((a,b)=>
+  (a.editionYear??9999)-(b.editionYear??9999)||b.rating-a.rating);
+ const ordered=(S.mode==="all"||S.mode==="ai")?
+  [...grouped.values()].flat():deduped;
+ const titles={
+  encyclopedia:"Enciclopedia, biografía y contexto",
+  semantic:"IA semántica · fragmentos documentales",
+  manuscripts:"Códices y testimonios manuscritos",
+  editions:"Ediciones y traducciones · orden cronológico",
+  library:"Obras y pasajes de la Biblioteca Vitruviana",
+  "external-texts":"Textos digitalizados · Wikisource",
+  research:"Investigación, bibliografía y catálogos externos"
+ };
  if(!ordered.length)list.append(node("div","empty",T().none));
  else {
   let lastGroup="";
   for(const r of ordered.slice(0,S.visibleResultCount)){
    if(S.mode==="all"||S.mode==="ai"){
-    const group=r.aiEvidence?"semantic":encyclopediaTypes.has(r.type)?"encyclopedia":textExternalTypes.has(r.type)?"external-texts":libraryTypes.has(r.type)?"library":"research";
+    const group=byGroup(r);
     if(group!==lastGroup){
-     const section=node("h3","vitruvia-result-group",group==="semantic"?"IA semántica · fragmentos del corpus":group==="encyclopedia"?"Enciclopedia y contexto histórico":group==="external-texts"?"Textos completos en bibliotecas externas · Wikisource":group==="library"?"Dentro de la Biblioteca Vitruviana":"Investigación y catálogos externos");
+     const section=node("h3","vitruvia-result-group",titles[group]||"Resultados documentados");
      section.setAttribute("data-result-group",group);list.append(section);lastGroup=group;
     }
    }
-   if((S.mode==="all"||S.mode==="ai")&&r.historicalEdition&&!list.querySelector(".historical-editions-heading")){const heading=node("h4","historical-editions-heading","Ediciones y traducciones históricas · orden cronológico");list.append(heading)}
+  
    const card=renderCard(r);markTerms(card,query);list.append(card)
   }
  }
  if(deduped.length>S.visibleResultCount){
   const left=deduped.length-S.visibleResultCount;
-  const label=S.lang==="en"?"View "+Math.min(left,44)+" more results":S.lang==="fr"?"Voir "+Math.min(left,44)+" résultats supplémentaires":"Ver "+Math.min(left,44)+" resultados más";
+  const label=S.lang==="en"?"View "+Math.min(left,50)+" more results":S.lang==="fr"?"Voir "+Math.min(left,50)+" résultats supplémentaires":"Ver "+Math.min(left,50)+" resultados más";
   const more=node("button","show-more-results",label);more.type="button";
-  more.addEventListener("click",()=>{S.visibleResultCount+=44;display(rows,query,phase)});
+  more.addEventListener("click",()=>{S.visibleResultCount+=50;display(rows,query,phase)});
   list.append(more);
  }
  if(window.VitruviaArticles){$("answer").hidden=true;window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query))}else synthesize(deduped);
@@ -585,7 +611,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  const p=node("p",null,"Britannica y Stanford: enlace a búsquedas externas; no se presentan resultados como si fueran API propias.");parent.append(p)
 }
 async function search(){
- const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=44;if(!q)return;
+ const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;if(!q)return;
  const person=identifyHistoricalPerson(q);
  const generalQuery=topicQuery(q);
  document.body.classList.add("vitruvia-reading");
@@ -685,7 +711,7 @@ async function search(){
   pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
  }
  if(!pending.length){display(rows,q,"Índice interno");return}
- let completed=0;
+ let completed=0,updateTimer=null;
  await Promise.all(pending.map(p=>p.then(value=>{
   if(id!==S.searchId)return;
   const incoming=value.rows||[];
@@ -702,9 +728,13 @@ async function search(){
   }
   if(!intent?.preface){if(value.featured)considerFeatured([value.featured],q);else considerFeatured(incoming,q)}
   completed++;
-  display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
+  clearTimeout(updateTimer);
+  updateTimer=setTimeout(()=>{
+   if(id===S.searchId)display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
+  },180);
   if(value.warnings?.length)$("result-state").title=value.warnings.join("; ");
  })));
+ clearTimeout(updateTimer);
  if(id===S.searchId)display(rows,q,"Búsqueda finalizada");
 }
 function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lang=S.lang;
