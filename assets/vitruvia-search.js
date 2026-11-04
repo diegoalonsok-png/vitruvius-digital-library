@@ -104,7 +104,9 @@ function liveManuscripts(q){
    rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
    link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
    viewerUrl:ms.viewer||ms.record,
-   links:[{label:"Ficha codicológica",url:ms.record},{label:"Ver facsímil / visor institucional",url:ms.viewer}].filter(x=>x.url),
+   iiifManifest:ms.manifest||null,
+   codexViewer:ms.manifest?"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record}).toString():(ms.viewer||ms.record||null),
+   links:[{label:"Ficha codicológica",url:ms.record},{label:"Visor oficial de la institución",url:ms.viewer}].filter(x=>x.url),
    source:"Bibliotheca Graeca et Latina"});
  }
  return out.sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||a.codexDate-b.codexDate||b.rating-a.rating).slice(0,30);
@@ -437,7 +439,7 @@ function renderCard(d){
  }
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.primaryWitness&&d.viewerUrl){const viewer=makeLink("Abrir facsímil / visor ↗",d.viewerUrl);if(viewer){viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
+ if(d.type==="manuscript"&&(d.codexViewer||d.viewerUrl)){const viewer=makeLink("Ver códice",d.codexViewer||d.viewerUrl);if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
