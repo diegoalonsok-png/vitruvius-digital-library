@@ -773,7 +773,7 @@ html[data-theme=light] #reading-font-reset{color:#254033}
 /* Opt-in neural search status; never modifies the main search bar dimensions. */
 .tab.ai-mode-tab{border-color:#597864;color:#cee9d5}
 .tab.ai-mode-tab[aria-pressed=true]{background:#274536;border-color:#a8ca9d;color:#fff}
-.ai-mode-help{font-size:11px;color:var(--muted);margin:0 0 9px}
+.ai-mode-help{display:none;font-size:11px;color:var(--muted);margin:0 0 9px}body.vitruvia-ai-active .ai-mode-help{display:block}
 .ai-mode-status{font:500 12px/1.55 system-ui,sans-serif;padding:11px 14px;border-radius:6px;border:1px solid #536a54;background:#1a2820;color:#d6e9d4;margin:10px 0 12px;max-width:95ch}
 .ai-mode-status[hidden]{display:none}.ai-mode-status[data-phase=fallback]{border-color:#86683f;color:#eee3ca}
 .ai-mode-status[data-phase=success]{border-color:#61936a;color:#d5eace}
@@ -1074,11 +1074,11 @@ html[data-theme=light] #result-list .ai-evidence-label{color:#295438}
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-universal-dossiers-v4" defer></script>
-<script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
-<script src="assets/search-agentic.js?v=20261104-corpus-manifest-v5" defer></script>
-<script src="assets/vitruvia-ai.js?v=20261104-neural-bm25-rrf-v1" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-ai-semantic-v9" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-exact-passages-v5" defer></script>
+<script src="assets/vitruvia-entity-resolver.js?v=20261104-wikidata-entity-v2" defer></script>
+<script src="assets/search-agentic.js?v=20261104-multicorpus-greek-v6" defer></script>
+<script src="assets/vitruvia-ai.js?v=20261104-evidence-links-v2" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-text-recognition-v10" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
