@@ -1,0 +1,154 @@
+name: Incorporar PDF clásicos históricos verificados
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-classics-verified-batch.yml'
+permissions:
+  contents: write
+concurrency:
+  group: import-classics-verified-batch
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install strict PDF validator
+        run: python -m pip install --disable-pip-version-check pymupdf requests
+      - name: Download verified Commons editions and attach only files that passed all checks
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,requests,fitz,time
+          repo='documents/classics'
+          folder=pathlib.Path(repo);folder.mkdir(parents=True,exist_ok=True)
+          titles=[
+           dict(id='plato-apology',name='plato-apologia-socratis-adam-1891.pdf',
+            url='https://upload.wikimedia.org/wikipedia/commons/a/ad/Platonis_Apologia_Socratis_%28IA_platonisapologia00plat%29.pdf',
+            fallback='https://archive.org/download/platonisapologia00plat/platonisapologia00plat.pdf',
+            rights='https://commons.wikimedia.org/wiki/File:Platonis_Apologia_Socratis_(IA_platonisapologia00plat).pdf',
+            sha1='7bd9a78dc92f380cc9648e65e38f5f243944cd1d',bytes=13444347,pages=188,year='1891',editor='James Adam · Cambridge University Press',
+            langs=['grc','en'],coverage='obra completa',
+            status='Platonis Apologia Socratis · edición histórica de James Adam, Cambridge, 1891; ejemplar digitalizado de 188 páginas. No es un códice antiguo.'),
+           dict(id='lucretius',name='lucretius-on-nature-things-1880.pdf',
+            url='https://upload.wikimedia.org/wikipedia/commons/1/16/On_the_nature_of_things_%28De_Rerum_Natura%29_%28IA_onnatureofthings00lucr_0%29.pdf',
+            fallback='https://archive.org/download/onnatureofthings00lucr_0/onnatureofthings00lucr_0.pdf',
+            rights='https://commons.wikimedia.org/wiki/File:On_the_nature_of_things_(De_Rerum_Natura)_(IA_onnatureofthings00lucr_0).pdf',
+            sha1='cacf76cc583fdcc2a38a0d5da3b8b430a0a5b3e5',bytes=14643313,pages=312,year='1880',editor='G. Routledge & Sons / E. P. Dutton',
+            langs=['en','la'],coverage='edición histórica',
+            status='On the Nature of Things (De rerum natura), edición londinense de 1880, 312 páginas; inglés, con material latino catalogado por la institución. No sustituye el lector crítico latino en HTML.'),
+           dict(id='virgil-aeneid',name='virgil-aeneid-book-i-walpole-1893.pdf',
+            url='https://upload.wikimedia.org/wikipedia/commons/4/4c/P._Vergili_Maronis_Aeneidos%2C_liber_I_%28IA_pvergilimaronisa00virgrich%29.pdf',
+            fallback='https://archive.org/download/pvergilimaronisa00virgrich/pvergilimaronisa00virgrich.pdf',
+            rights='https://commons.wikimedia.org/wiki/File:P._Vergili_Maronis_Aeneidos,_liber_I_(IA_pvergilimaronisa00virgrich).pdf',
+            sha1=None,bytes=None,pages=172,year='1893',editor='Arthur S. Walpole · Henry Clark Johnson',
+            langs=['la','en'],coverage='solo Eneida, libro I',
+            status='P. Vergili Maronis Aeneidos, liber I, ed. Walpole/Johnson (1893), latín y notas inglesas, 172 páginas. Solo libro I: no es una edición íntegra de los doce libros.'),
+           dict(id='caesar-gallico',name='caesar-de-bello-gallico-smith-1842.pdf',
+            url='https://upload.wikimedia.org/wikipedia/commons/7/76/De_bello_Gallico%3B_%28IA_debellogallico00caesuoft%29.pdf',
+            fallback='https://archive.org/download/debellogallico00caesuoft/debellogallico00caesuoft.pdf',
+            rights='https://commons.wikimedia.org/wiki/File:De_bello_Gallico;_(IA_debellogallico00caesuoft).pdf',
+            sha1=None,bytes=None,pages=236,year='1842',editor='Philip Smith · London: Simpkin',
+            langs=['la'],coverage='edición histórica en latín',
+            status='Julio César, De bello Gallico, edición latina de Philip Smith, 1842, 236 páginas; aparato e índice editorial. La cobertura de la edición se identifica por el volumen, no por correspondencia folio-locus.'),
+           dict(id='aristotle-poetics',name='aristotle-poetics-english-1819.pdf',
+            url='https://upload.wikimedia.org/wikipedia/commons/b/b4/Aristotle%27s_poetics_-_literally_translated%2C_with_explanatory_notes_and_an_analysis_%28IA_aristotlespoetic00arisiala%29.pdf',
+            fallback='https://archive.org/download/aristotlespoetic00arisiala/aristotlespoetic00arisiala.pdf',
+            rights='https://commons.wikimedia.org/wiki/File:Aristotle%27s_poetics_-_literally_translated,_with_explanatory_notes_and_an_analysis_(IA_aristotlespoetic00arisiala).pdf',
+            sha1='8348e888351f3e34b4ab6b091013fe420691323c',bytes=4148751,pages=102,year='1819',editor='London: G. & W. B. Whittaker',
+            langs=['en'],coverage='traducción inglesa completa de Poética',
+            status='Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado.')
+          ]
+          catalogue=pathlib.Path('data/bibliotheca-graeca-latina-I-bce-I-ce.json')
+          testimonia=pathlib.Path('data/bibliotheca-testimonia-verified.json')
+          catalog_data=json.loads(catalogue.read_text(encoding='utf-8'))
+          witness_data=json.loads(testimonia.read_text(encoding='utf-8'))
+          index={w['id']:w for w in catalog_data['works']}
+          existing={(ed.get('workId'),ed.get('url')) for ed in witness_data.get('editions',[])}
+          passed=[];failed=[]
+          for record in titles:
+           target=folder/record['name']
+           valid=False
+           for source in [record['url'],record['fallback']] if not target.exists() else [None]:
+            temp=pathlib.Path(str(target)+'.tmp')
+            try:
+             if source:
+              with requests.get(source,stream=True,timeout=(20,100),headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (https://github.com/diegoalonsok-png/vitruvius-digital-library)'}) as response:
+               response.raise_for_status()
+               with temp.open('wb') as output:
+                size=0
+                for chunk in response.iter_content(256*1024):
+                 if not chunk:continue
+                 size+=len(chunk)
+                 if size>18*1024*1024:raise ValueError('PDF exceeds 18MiB cap')
+                 output.write(chunk)
+              check=temp
+             else:check=target
+             raw=check.read_bytes()
+             if not raw.startswith(b'%PDF-'):raise ValueError('PDF signature not present')
+             if not 75000<len(raw)<=18*1024*1024:raise ValueError('Unexpected PDF file size')
+             digest=hashlib.sha1(raw).hexdigest()
+             if record['sha1'] and digest!=record['sha1']:raise ValueError('SHA-1 mismatch: refusing to import')
+             if record['bytes'] and len(raw)!=record['bytes']:raise ValueError('Byte-length mismatch: refusing to import')
+             with fitz.open(stream=raw,filetype='pdf') as pdf:
+              if pdf.is_encrypted:raise ValueError('Encrypted PDF rejected')
+              if len(pdf)!=record['pages']:raise ValueError('Page mismatch: '+str(len(pdf)))
+              for n in [0,min(10,len(pdf)-1),len(pdf)-1]:
+               page=pdf.load_page(n)
+               if page.rect.width<100 or page.rect.height<100:raise ValueError('Invalid PDF page dimensions')
+             if source:temp.replace(target)
+             record['real_bytes']=len(raw);record['actual_sha1']=digest
+             valid=True
+             print('VERIFIED',target,'bytes',len(raw),'pages',record['pages'],'sha1',digest)
+             break
+            except Exception as exc:
+             print('REJECTED',record['name'],str(exc)[:300])
+             if source:temp.unlink(missing_ok=True)
+           if not valid:
+            failed.append(record['name']);continue
+           passed.append(record['name'])
+           w=index.get(record['id'])
+           if not w:raise ValueError('Work ID missing in catalogue: '+record['id'])
+           localpath=str(target)
+           w['pdf']={
+            'url':localpath,'status':record['status'],
+            'sizeBytes':record['real_bytes'],'pages':record['pages'],
+            'rights':'Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.',
+            'source':record['rights'],'sha1':record['actual_sha1'],
+            'coverage':record['coverage'],'publicationYear':record['year'],'editor':record['editor']
+           }
+           w.setdefault('reading',{})['status']='PDF histórico verificado en GitHub · '+record['status']
+           w['publicStatus']='lectura-local-parcial' if record['id']=='virgil-aeneid' else 'lectura-local-completa'
+           if (record['id'],localpath) not in existing:
+            witness_data.setdefault('editions',[]).append({
+             'workId':record['id'],'title':w['title']+' · edición histórica '+record['year'],
+             'year':record['year'],'editor':record['editor'],'langs':record['langs'],
+             'type':'pdf-historico-local','url':localpath,
+             'provider':'Wikimedia Commons / Internet Archive; PDF verificado en GitHub',
+             'note':record['status']+' Fuente y derechos: '+record['rights']
+            })
+            existing.add((record['id'],localpath))
+          if passed:
+           catalogue.write_text(json.dumps(catalog_data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+           testimonia.write_text(json.dumps(witness_data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('PASSED',len(passed),passed)
+          print('FAILED',len(failed),failed)
+          PY
+      - name: Commit only real verified PDF files and the matching catalogue records
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/classics/*.pdf data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-testimonia-verified.json
+          if git diff --cached --quiet; then
+            echo "No new verified editions were available."
+          else
+            git commit -m "Incorporate validated public-domain Greek and Latin PDFs with bibliographic provenance"
+            git pull --rebase origin main
+            git push
+          fi
