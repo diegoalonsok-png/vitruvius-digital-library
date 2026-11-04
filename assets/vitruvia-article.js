@@ -849,9 +849,92 @@ function buildContents(){
  }
  box.prepend(nav);
 }
+/* Authoritative first result for the library's own author: biography + editions. */
+const vitruviusBiography=[
+["Vida y documentación biográfica","Marco Vitruvio Polión, conocido por el nombre latino Marcus Vitruvius Pollio, fue un escritor romano especializado en arquitectura e ingeniería, activo durante el último siglo de la República y los comienzos de la época de Augusto. Su nombre completo se transmite tradicionalmente de esa forma, aunque la identificación de Pollio no carece de discusión filológica. Las fechas exactas de nacimiento y muerte son desconocidas; las biografías que proponen años precisos suelen expresar conjeturas y no datos documentados."],
+["La Roma tardorrepublicana y el principado de Augusto","La actividad de Vitruvio se sitúa entre las guerras civiles del siglo I a. C. y la reorganización política y monumental del principado de Augusto. Este contexto explica la centralidad de las obras públicas, los sistemas hidráulicos, la construcción militar y la monumentalización urbana. La dedicatoria del tratado a César Augusto constituye una referencia interna esencial para situar la obra."],
+["La carrera técnica y militar","Vitruvio alude en el prefacio del libro I a su experiencia en el ámbito de la maquinaria de guerra y a tareas relacionadas con el mantenimiento de dispositivos militares. La documentación sobre su carrera es limitada y procede principalmente de sus propias afirmaciones. No hay base para reconstruir sin reservas un itinerario militar completo ni para atribuirle todos los proyectos mencionados en la tradición posterior."],
+["La basílica de Fano","En De architectura V, 1, Vitruvio describe una basílica de la colonia de Fano, cuya disposición permite estudiar la arquitectura pública romana, los órdenes y las proporciones. Se trata de uno de los pocos edificios para los que el autor ofrece una referencia a su propia intervención profesional. El edificio no se conserva como estructura identificada de manera incontrovertida, y las reconstrucciones publicadas deben entenderse como hipótesis arquitectónicas."],
+["De architectura y su organización","El tratado De architectura está compuesto por diez libros. Los primeros desarrollan la formación del arquitecto, los fundamentos de la disciplina, los materiales y la arquitectura religiosa. Los libros centrales se ocupan de edificios públicos, viviendas, acabados y sistemas constructivos. Los últimos examinan el agua, la gnomónica, los instrumentos y las máquinas. La obra reúne saberes griegos y romanos, observaciones técnicas y una reflexión sobre las artes liberales."],
+["Principios de arquitectura y terminología","Vitruvio analiza conceptos como ordinatio, dispositio, eurythmia, symmetria, decor y distributio. La conocida tríada firmitas, utilitas y venustas sintetiza en la recepción moderna problemas de solidez, función y belleza tratados por el autor; conviene cotejar sus formulaciones latinas y su contexto, en vez de tratar la tríada como una definición aislada. El vocabulario técnico es esencial para comprender cómo se transmitieron las teorías de proporción arquitectónica."],
+["Geometría, proporción y cuerpo humano","El libro III vincula la organización de los templos con relaciones proporcionales y la composición del cuerpo humano, pasaje de especial repercusión en el Renacimiento. La interpretación gráfica de estas relaciones dio lugar a dibujos célebres, incluido el Hombre de Vitruvio de Leonardo da Vinci. Estas imágenes son obras posteriores inspiradas en el texto, y no ilustraciones autógrafas conservadas del propio Vitruvio."],
+["Fuentes griegas y transmisión del saber","El tratado cita o incorpora tradiciones asociadas con arquitectos y pensadores griegos, entre ellos Hermógenes y Piteo, y ofrece información sobre obras técnicas perdidas. El estudio de estas referencias exige distinguir citas explícitas, reelaboraciones, traducción de términos técnicos y préstamos intelectuales cuya fuente precisa no puede determinarse."],
+["Tradición manuscrita medieval","De architectura sobrevivió gracias a su transmisión manuscrita durante la Antigüedad tardía y la Edad Media. Entre los testimonios relevantes destaca el códice Harleianus, British Library, Harley MS 2767, asociado a la tradición carolingia. Las ediciones modernas reconstruyen el texto cotejando manuscritos, lecturas divergentes y testimonios indirectos; no deben confundirse los folios de los códices con páginas de traducciones contemporáneas."],
+["Ediciones renacentistas y recepción humanista","La impresión del tratado a finales del siglo XV y las ediciones ilustradas de la Edad Moderna favorecieron su circulación entre arquitectos, artistas y estudiosos. Fra Giocondo (1511), Cesare Cesariano (1521), Daniele Barbaro y Claude Perrault figuran entre los hitos de su recepción editorial. Estos comentaristas interpretaron el texto desde sus propios horizontes técnicos y artísticos; sus reconstrucciones no sustituyen el testimonio latino."],
+["Vitruvio en la historia de la arquitectura","La recepción de Vitruvio influyó en la teoría arquitectónica del Renacimiento, en la discusión de los órdenes, en el urbanismo, en las proporciones y en la formación humanista de los arquitectos. Su importancia no significa que fuera el único teórico de la Antigüedad, sino que su tratado se convirtió en un testimonio excepcional por la conservación íntegra de sus diez libros."],
+["Problemas de investigación y método","Una biografía académica debe separar las noticias expresas del propio Vitruvio, las menciones posteriores y la interpretación contemporánea. Persisten dudas sobre su identidad completa, la datación exacta del tratado, las fuentes perdidas, las variantes textuales y las reconstrucciones arquitectónicas. Vitruvia presenta estos límites de evidencia junto con el acceso a manuscritos, ediciones y traducciones comparadas."]
+];
+function isVitruviusAuthority(q){
+ const normalizedQuery=normalized(q).replace(/^(biografia|biography|biographie|vida y obra de|vida de|quien fue|who was)\s+(de\s+)?/,"").trim();
+ return /^(vitruvio|vitruvius|vitruve|marco vitruvio polion|marcus vitruvius pollio|marco vitruvio|marcus vitruvius)$/.test(normalizedQuery);
+}
+function renderVitruviusAuthority(rows){
+ reset("Marco Vitruvio Polión",phrase("Arquitecto y tratadista romano · siglo I a. C. · perfil enciclopédico académico","Roman architect and author · first century BCE · scholarly encyclopedic profile","Architecte et théoricien romain · Ier siècle av. J.-C."),"01 · BIOGRAFÍA ENCICLOPÉDICA");
+ paragraph("Marcus Vitruvius Pollio · autor de De architectura libri decem. Biografía, texto latino, manuscritos, traducciones y recepción histórica.","article-lead");
+ for(const [title,body] of vitruviusBiography){heading(title);paragraph(body)}
+ heading("02 · Los diez libros de De architectura");
+ const subjects=[
+ "I · Formación del arquitecto, fundamentos y urbanismo",
+ "II · Materiales y técnicas de construcción",
+ "III · Templos y proporciones",
+ "IV · Órdenes y arquitectura sagrada",
+ "V · Edificios públicos y teatros",
+ "VI · Viviendas y arquitectura doméstica",
+ "VII · Acabados y ornamentación",
+ "VIII · Agua, fuentes y conducciones",
+ "IX · Astronomía, relojes e instrumentos",
+ "X · Máquinas y mecánica"
+ ];
+ const ol=make("ol",undefined,"article-related");
+ for(let n=1;n<=10;n++){
+  const item=make("li");
+  const link=href("lector-bilingue.html?edition=recensio-es&locus="+n+".1.1",subjects[n-1]);
+  if(link)item.append(link);ol.append(item);
+ }
+ $("article-body").append(ol);
+ heading("03 · Leer las ediciones en distintos idiomas");
+ paragraph("Estas versiones están alojadas en la Biblioteca Vitruviana. Se indican por separado las ediciones de consulta y sus PDF; no se presenta una traducción como si fuera un códice.","article-note");
+ const editions=[
+  {title:"Latín y castellano · V514",description:"Texto latino y edición castellana comparada",reader:"lector-bilingue.html?edition=recensio-es",page:"documents/edicion-v514.html",pdf:"documents/kurilo-recensio-es.pdf"},
+  {title:"Latín y francés · V554",description:"Texto latino y edición francesa",reader:"lector-bilingue.html?edition=recensio-fr",page:"documents/edicion-v554.html",pdf:"documents/kurilo-recensio-fr.pdf"},
+  {title:"Inglés · V297",description:"Edición y estudio en inglés",reader:"lector-bilingue.html?edition=theory-en",page:"documents/edicion-v297.html",pdf:"documents/kurilo-theory-en.pdf"}
+ ];
+ const gallery=make("div",undefined,"vitruvius-editions");
+ for(const ed of editions){
+  const card=make("section",undefined,"vitruvius-edition");
+  card.append(make("h4",ed.title),make("p",ed.description));
+  const links=make("div",undefined,"vitruvius-edition-links");
+  for(const [label,url] of [["Leer en línea",ed.reader],["Ficha de la edición",ed.page],["Abrir PDF",ed.pdf]]){
+   const link=href(url,label);if(link)links.append(link);
+  }
+  card.append(links);gallery.append(card);
+ }
+ $("article-body").append(gallery);
+ heading("04 · Manuscritos y ediciones históricas");
+ const manuscripts=[
+  ["Codex Harleianus · Harley MS 2767","codex-h-folios-local.html"],
+  ["Ficha codicológica del Codex H","harleianus.html"],
+  ["Fra Giocondo · edición de 1511","giocondo-1511.html"],
+  ["Daniele Barbaro · edición de 1567","barbaro-1567.html"],
+  ["Índice general de códices","index-codicum.html"],
+  ["Bibliografía especializada","bibliografia.html"]
+ ];
+ const ul=make("ul",undefined,"article-related");
+ for(const [name,url] of manuscripts){const li=make("li"),link=href(url,name);if(link)li.append(link);ul.append(li)}
+ $("article-body").append(ul);
+ heading("05 · Investigación y fuentes");
+ paragraph("La exposición distingue hechos biográficos sustentados, inferencias históricas y tradición editorial. Para cotejar citas y variantes debe consultarse el lugar preciso del texto latino y la edición utilizada.","article-note");
+ appendAcademicLinks("Marcus Vitruvius Pollio De architectura");
+ references([...rows.filter(x=>["book","edition","manuscript","article","wikipedia"].includes(x.type)),{title:"Vitruvio · De architectura, lector latino y traducciones",link:"lector-bilingue.html"},{title:"Harley MS 2767 · archivo de folios",link:"codex-h-folios-local.html"}],"Perfil editorial de Vitruvia. Consultar De architectura y bibliografía crítica para las noticias autobiográficas y la transmisión manuscrita.");
+ aside([{title:"Ediciones multilingües de De architectura",link:"lector-bilingue.html"},...rows.filter(x=>["book","edition","manuscript"].includes(x.type)).slice(0,8)]);
+ buildContents();
+}
+
 function render(rows,q,person=null){const token=++active;
 bibliographyContext={rows:rows||[],query:q||""};
-if(!q||!rows?.length){root.hidden=true;return}
+if(!q){root.hidden=true;return}
+if(isVitruviusAuthority(q)){ $("article-evidence")?.replaceChildren();renderVitruviusAuthority(rows||[]);return }
+if(!rows?.length){root.hidden=true;return}
 if(person){
  $("article-evidence")?.replaceChildren();
  const biographies=rows.filter(x=>personWikiHit(x,person,q)).sort((a,b)=>
