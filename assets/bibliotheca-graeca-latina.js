@@ -5,7 +5,7 @@ No fabricated digitization, translation, ISBN or PDF links. */
 const $=id=>document.getElementById(id);
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
-const L={es:{search:"fichas en el catálogo",select:"Seleccionar",work:"Obra",language:"Lengua",source:"Leer texto",manuscript:"Manuscrito",edition:"Edición y traducción",pdf:"PDF histórico",external:"Fuentes externas",notKnown:"No hay un facsímil ni edición concreta acreditados en esta ficha.",visit:"Consultar fuente original",open:"Abrir el lector original",notHosted:"Esta fuente no permite confirmar un lector embebido; abrila en su plataforma oficial.",witness:"El testimonio es posterior a la composición de la obra.",noPdf:"No hay PDF identificado con edición y licencia verificadas.",noTrans:"No se ha asignado todavía una traducción con autor y edición comprobados.",archive:"Buscar ediciones escaneadas",gallica:"Buscar en Gallica",scaife:"Consultar Scaife / Perseus"},en:{search:"catalogue records",select:"Select",work:"Work",language:"Original language",source:"Read text",manuscript:"Manuscript",edition:"Edition and translation",pdf:"Historical PDF",external:"External sources",notKnown:"No individual facsimile or edition has yet been verified for this record.",visit:"View original source",open:"Open original reader",notHosted:"Embedding has not been verified for this source; open it at its official platform.",witness:"The extant witness is later than the composition of the work.",noPdf:"No specific PDF with verified edition and rights has been identified.",noTrans:"No translation with verified translator and edition has yet been linked.",archive:"Search scanned editions",gallica:"Search Gallica",scaife:"Browse Scaife / Perseus"}};
+const L={es:{search:"fichas en el catálogo",select:"Seleccionar",work:"Obra",language:"Lengua",source:"Leer texto",manuscript:"Manuscrito",edition:"Edición y traducción",pdf:"PDF histórico",external:"Fuentes externas",notKnown:"No hay un facsímil ni edición concreta acreditados en esta ficha.",visit:"Consultar fuente original",open:"Abrir el lector original",notHosted:"Esta fuente no permite confirmar un lector embebido; ábrela en su plataforma oficial.",witness:"El testimonio es posterior a la composición de la obra.",noPdf:"No hay PDF identificado con edición y licencia verificadas.",noTrans:"No se ha asignado todavía una traducción con autor y edición comprobados.",archive:"Buscar ediciones escaneadas",gallica:"Buscar en Gallica",scaife:"Consultar Scaife / Perseus"},en:{search:"catalogue records",select:"Select",work:"Work",language:"Original language",source:"Read text",manuscript:"Manuscript",edition:"Edition and translation",pdf:"Historical PDF",external:"External sources",notKnown:"No individual facsimile or edition has yet been verified for this record.",visit:"View original source",open:"Open original reader",notHosted:"Embedding has not been verified for this source; open it at its official platform.",witness:"The extant witness is later than the composition of the work.",noPdf:"No specific PDF with verified edition and rights has been identified.",noTrans:"No translation with verified translator and edition has yet been linked.",archive:"Search scanned editions",gallica:"Search Gallica",scaife:"Browse Scaife / Perseus"}};
 
 const extraTerms={
 fr:{search:"notices disponibles",source:"Lire le texte",manuscript:"Manuscrit",edition:"Édition et traduction",pdf:"PDF historique",notKnown:"Aucun texte ni fac-similé attesté pour cette entrée.",visit:"Consulter la source",open:"Ouvrir le lecteur",notHosted:"Consulter la plateforme d’origine.",witness:"Ce témoin est postérieur à la composition de l’œuvre.",noPdf:"Aucun PDF identifié.",noTrans:"Traduction non encore documentée.",archive:"Chercher des éditions numérisées",gallica:"Chercher dans Gallica",scaife:"Consulter Scaife / Perseus"},
@@ -143,7 +143,7 @@ function suggestedWorks(){
 }
 function suggestionLabel(key){
  const dict={
-  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Elegí cualquier título para abrir su ficha y su lector disponible.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
+  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Elige cualquier título para abrir su ficha y su lector disponible.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
   en:{count:"matching works",local:"readable here",external:"with external sources",all:"Choose any title to open its record and available reader.",edition:"Identified edition",none:"No matching works under the current filters."},
   fr:{count:"œuvres trouvées",local:"à lire ici",external:"avec source externe",all:"Choisissez un titre pour consulter sa notice et son lecteur disponible.",edition:"Édition identifiée",none:"Aucune œuvre correspondante avec ces filtres."}
  };
@@ -262,7 +262,7 @@ function bibliographicSummary(data,query){
  const note=document.createElement("p");note.className="classic-bibliographic-note";
  note.textContent=en?"Select a title to view the bibliographic entry and any verified original, translation or manuscript. Catalogue entries alone do not guarantee a readable text.":
  fr?"Choisissez un titre pour ouvrir sa notice et les textes, traductions ou manuscrits vérifiés. Une notice seule ne garantit pas un texte consultable.":
- "Elegí un título para consultar su ficha bibliográfica, texto original, traducción o manuscrito disponible. Una obra catalogada no implica que ya exista un texto íntegro para leer.";
+ "Elige un título para consultar su ficha bibliográfica, texto original, traducción o manuscrito disponible. Una obra catalogada no implica que ya exista un texto íntegro para leer.";
  box.append(note);
  const list=document.createElement("ol");list.className="classic-bibliographic-list";
  for(const w of data){
@@ -475,7 +475,7 @@ if(tab==="pdf"){
 }
 async function boot(){
  const [res,reference]=await Promise.all([
-  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-readings-v1"),
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1"),
   fetch("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);

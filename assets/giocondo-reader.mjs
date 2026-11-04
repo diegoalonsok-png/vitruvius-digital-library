@@ -38,7 +38,7 @@ async function start(){
    return;
   }catch(e){reasons.push(e.message);}
  }
- status.textContent='No fue posible cargar el índice IIIF ('+reasons.join('; ')+'). Abrí el ejemplar mediante el enlace institucional.';
+ status.textContent='No fue posible cargar el índice IIIF ('+reasons.join('; ')+'). Abre el ejemplar mediante el enlace institucional.';
 }
 function filters(){
  const values='brightness('+$('gio-brightness').value+'%) contrast('+$('gio-contrast').value+'%)'+($('gio-gray').checked?' grayscale(1)':'')+($('gio-negative').checked?' invert(1) hue-rotate(180deg)':'');
@@ -59,7 +59,7 @@ function openPage(){
  let index=0;
  status.textContent='Abriendo imagen '+page+' de '+pages.length+'…';
  view.onload=()=>{if(serial!==currentSerial)return;mag.src=view.src;filters();status.textContent='Imagen '+page+' de '+pages.length+' cargada.'};
- view.onerror=()=>{if(serial!==currentSerial)return;if(index===0&&urls[1]){index=1;view.src=urls[1];return;}status.textContent='La imagen no se pudo cargar. Consultá el original institucional en e-rara.'};
+ view.onerror=()=>{if(serial!==currentSerial)return;if(index===0&&urls[1]){index=1;view.src=urls[1];return;}status.textContent='La imagen no se pudo cargar. Consulta el original institucional en e-rara.'};
  view.src=urls[0];
 }
 function step(n){if(!pages.length)return;$('gio-page').value=String(Math.max(1,Math.min(pages.length,Number($('gio-page').value)+n)));openPage();}
@@ -70,9 +70,9 @@ $('gio-prev').addEventListener('click',()=>step(-1));
 $('gio-next').addEventListener('click',()=>step(1));
 $('gio-find').addEventListener('click',()=>{
  const term=text($('gio-folio-search').value);
- if(!term){status.textContent='Escribí una etiqueta IIIF o foliación para buscar.';return;}
+ if(!term){status.textContent='Escribe una etiqueta IIIF o foliación para buscar.';return;}
  const positions=pages.map((p,i)=>({i,label:text(label(p))})).filter(p=>p.label===term||p.label.includes(term));
- if(positions.length!==1){status.textContent=positions.length?('Hay '+positions.length+' páginas con esa etiqueta; precisá la búsqueda.'):('No se encontró esa etiqueta en el índice IIIF.');return;}
+ if(positions.length!==1){status.textContent=positions.length?('Hay '+positions.length+' páginas con esa etiqueta; precisa la búsqueda.'):('No se encontró esa etiqueta en el índice IIIF.');return;}
  $('gio-page').value=String(positions[0].i+1);openPage();
 });
 $('gio-folio-search').addEventListener('keydown',e=>{if(e.key==='Enter'){$('gio-find').click();}});

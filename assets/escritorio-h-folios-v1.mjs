@@ -9,7 +9,7 @@ const heading=document.createElement('h3');heading.textContent='Control de integ
 const p=document.createElement('p');p.textContent=limit+' imágenes en secuencia oficial. Etiquetas no halladas en la serie teórica 1r–162v: '+missing.length+'. Etiquetas duplicadas: '+duplicates.length+'. Imágenes fuera de esa serie: '+labels.filter(x=>!/^f\\.?\\s*\\d+[rv]$/i.test(x)).length+'.';result.append(p);
 if(missing.length){const q=document.createElement('p');q.textContent='Etiquetas ausentes: '+missing.join(', ')+'. No necesariamente son imágenes perdidas: pueden ser lagunas materiales, variantes de foliación o etiquetas distintas.';result.append(q)}
 const note=document.createElement('p');note.textContent='La British Library registra dos hojas antiguamente vinculadas a H, actualmente en Bodleian Library, Rawlinson MS D. 893, ff. 135–136. No deben confundirse con imágenes omitidas del servidor.';result.append(note);
-show(limit+' imágenes del manifiesto oficial cargadas, en orden de digitalización. Seleccioná una imagen o folio para abrirlo.');}catch(e){show('No se pudo cargar el índice: '+e.message)}}
+show(limit+' imágenes del manifiesto oficial cargadas, en orden de digitalización. Selecciona una imagen o folio para abrirlo.');}catch(e){show('No se pudo cargar el índice: '+e.message)}}
 el('load-folio-index').onclick=load;
 
 const confirmed={1:{position:9,folio:'f.1r'}};
@@ -34,4 +34,4 @@ document.getElementById('codex-preface-open')?.addEventListener('click',()=>open
 document.getElementById('codex-preface')?.addEventListener('change',e=>openCodexPreface(e.target.value));
 document.addEventListener('escritorio-h-preface',e=>openCodexPreface(e.detail.book));
 
-const exportButton=el('folio-export');if(exportButton)exportButton.addEventListener('click',()=>{const labels=window.__hFolioLabels;if(!labels?.length){show('Primero cargá el índice oficial IIIF.');return}const csv='imagen_digital,etiqueta_iiif,estado_cotejo\\n'+labels.map((label,i)=>[i+1,'"'+label.replaceAll('"','""')+'"','pendiente'].join(',')).join('\\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='Harley_2767_indice_IIIF_para_cotejo.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)});
+const exportButton=el('folio-export');if(exportButton)exportButton.addEventListener('click',()=>{const labels=window.__hFolioLabels;if(!labels?.length){show('Primero carga el índice oficial IIIF.');return}const csv='imagen_digital,etiqueta_iiif,estado_cotejo\\n'+labels.map((label,i)=>[i+1,'"'+label.replaceAll('"','""')+'"','pendiente'].join(',')).join('\\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='Harley_2767_indice_IIIF_para_cotejo.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)});

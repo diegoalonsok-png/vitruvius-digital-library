@@ -18,7 +18,7 @@ async function loadTranslation(lang){if(corpora[lang])return corpora[lang];
 function showImage(index,folio){
  const image=$('f-image'),box=$('f-image-box');box.querySelector('.folio-no-image')?.remove();
  image.hidden=false;image.alt='Harley MS 2767, folio '+folio+', imagen digital '+index+' (British Library)';
- if(!canvases.length){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent=manifestLoading?'Cargando imagen '+index+' desde el manifiesto institucional IIIF…':'No se pudo consultar el manifiesto IIIF. Abrí la imagen '+index+' desde el visor H; no se incorpora una fotografía de origen incierto.';box.append(p);return}
+ if(!canvases.length){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent=manifestLoading?'Cargando imagen '+index+' desde el manifiesto institucional IIIF…':'No se pudo consultar el manifiesto IIIF. Abre la imagen '+index+' desde el visor H; no se incorpora una fotografía de origen incierto.';box.append(p);return}
  const c=canvases[index-1];
  if(!c){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='No se halló la imagen '+index+' en el manifiesto institucional.';box.append(p);return}
  const resource=c.images?.[0]?.resource||c.items?.[0]?.items?.[0]?.body;
@@ -28,7 +28,7 @@ function showImage(index,folio){
  const src=base?String(base).replace(/\/$/,'')+'/full/1200,/0/default.jpg':resource?.id||resource?.['@id'];
  if(!src){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='El manifiesto no publica enlace de imagen para este folio.';box.append(p);return}
  image.onload=()=>{$('f-evidence').dataset.imageLoaded='true'};
- image.onerror=()=>{image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='Imagen remota no disponible; usá el enlace institucional del visor H.';box.append(p)};
+ image.onerror=()=>{image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='Imagen remota no disponible; usa el enlace institucional del visor H.';box.append(p)};
  image.src=src;
 }
 function unsetImage(){
@@ -76,7 +76,7 @@ async function render(){
   let trans;
   if(chosen?.folio==='1r'){
    if(lang==='fr'){
-    trans='La traducción francesa parcial de este folio no está cotejada. Abrí la edición V554 por locus para la traducción completa (sin atribuirla a este folio).';
+    trans='La traducción francesa parcial de este folio no está cotejada. Abre la edición V554 por locus para la traducción completa (sin atribuirla a este folio).';
    }else trans=aligned?.translations?.[lang]||'Traducción parcial no disponible';
   }else{
    trans=(lang==='es'?p:otherMap.get(item.locus))?.translation||'No se dispone de traducción correspondiente para este locus en esta edición.';
@@ -106,7 +106,7 @@ function renderMatches(){
     history.replaceState(null,'',location.pathname+'?locus='+encodeURIComponent(p.locus));
   });div.append(main,button);list.append(div);
  }
- if(items.length>35){const p=document.createElement('p');p.textContent='Se muestran los primeros 35 loci. Precisá la búsqueda para encontrar los restantes.';p.style.fontSize='12px';list.append(p)}
+ if(items.length>35){const p=document.createElement('p');p.textContent='Se muestran los primeros 35 loci. Precisa la búsqueda para encontrar los restantes.';p.style.fontSize='12px';list.append(p)}
 }
 function exportTEI(){
  const locus=selection.kind==='locus'?selection.value:map.entries.find(x=>x.folio===selection.value)?.loci?.[0]?.locus;
@@ -166,7 +166,7 @@ async function load(){
   $('f-search').addEventListener('input',e=>{query=e.target.value.trim();renderMatches()});
   $('f-copy').addEventListener('click',copyReference);
   $('f-tei').addEventListener('click',exportTEI);
- }catch(e){$('f-evidence').textContent='Error al cargar la concordancia: '+e.message;$('f-latin').textContent='Volvé a consultar el lector editorial y el visor institucional; no hay correspondencia atribuible sin los datos.';}
+ }catch(e){$('f-evidence').textContent='Error al cargar la concordancia: '+e.message;$('f-latin').textContent='Vuelve a consultar el lector editorial y el visor institucional; no hay correspondencia atribuible sin los datos.';}
 }
 load();
 })();

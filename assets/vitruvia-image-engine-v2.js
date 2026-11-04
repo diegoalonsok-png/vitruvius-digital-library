@@ -225,15 +225,15 @@ async function searchImages(query){
   if(items.length){
    const selected=items.slice(0,80);
    displayGroups(selected,topic);
-   status.textContent=locale(selected.length+" imágenes con ficha de origen. Abrí una para ampliar; confirmá los derechos antes de reutilizarla.",
+   status.textContent=locale(selected.length+" imágenes con ficha de origen. Abre una para ampliar; confirmá los derechos antes de reutilizarla.",
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
    if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
-  }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Probá los catálogos externos.",
+  }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
    "No sufficiently identified images were retrieved. Try the external collections.",
    "Aucune image suffisamment documentée. Consulter les collections externes.");
  }catch(error){
-  if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usá los enlaces a los archivos.",
+  if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
    "The image service did not respond; use the linked archives.",
    "Le service d’images ne répond pas ; consulter les archives.");
  }finally{clearTimeout(timeout)}

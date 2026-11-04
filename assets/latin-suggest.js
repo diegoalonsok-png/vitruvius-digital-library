@@ -81,7 +81,7 @@
   }catch(error){status.textContent='No se pudo consultar el corpus: '+error.message;}
  }
 
- try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Volvé a intentarlo al recargar.';return;}
+ try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Vuelve a intentarlo al recargar.';return;}
  const norm=s=>String(s).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function textLine(parent,label,value){if(!value)return;const p=document.createElement('p'),b=document.createElement('strong');b.textContent=label+' ';p.append(b,document.createTextNode(value));parent.append(p);}
  function corpusContext(value){
@@ -167,7 +167,7 @@
          }
          loading.textContent=found.length?'Acepciones del lema (fuente lexicográfica, inglés):':'No fue posible extraer las acepciones del lema.';
          if(found.length){const list=document.createElement('ol');for(const meaning of found.slice(0,8)){const li=document.createElement('li');li.textContent=meaning;list.append(li);}lemmaPanel.append(list);}
-       }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar automáticamente el lema. Utilizá el enlace al diccionario.';});
+       }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar automáticamente el lema. Utiliza el enlace al diccionario.';});
      }
    }
    // Greek inflected forms: follow attested lemma links from the dictionary,
@@ -200,11 +200,11 @@
          }
          loading.textContent=definitions.length?'Acepciones del lema en inglés (Wikcionario):':'No fue posible extraer las acepciones del lema.';
          if(definitions.length){const list=document.createElement('ol');for(const definition of definitions.slice(0,8)){const item=document.createElement('li');item.textContent=definition;list.append(item);}panel.append(list);}
-       }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar el lema. Utilizá el enlace a la fuente.';});
+       }).catch(()=>{if(loading.isConnected)loading.textContent='No se pudo consultar el lema. Utiliza el enlace a la fuente.';});
        details.append(panel);
      }
    }
-   const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wikcionario en inglés (Wikimedia, CC BY-SA). La forma consultada puede requerir buscar su lema; verificá las acepciones según el contexto vitruviano.';details.append(foot);
+   const foot=document.createElement('p');foot.className='source';foot.textContent='Fuente: Wikcionario en inglés (Wikimedia, CC BY-SA). La forma consultada puede requerir buscar su lema; verifica las acepciones según el contexto vitruviano.';details.append(foot);
   });
  }
  const fullDictionaryPromises=new Map();
@@ -246,7 +246,7 @@
  function dictionaryLinks(words,isGreek){
    const pane=document.createElement('details');pane.open=true;pane.className='dictionary-live';
    const summary=document.createElement('summary');summary.textContent='Diccionarios clásicos · consultas por lema';pane.append(summary);
-   const intro=document.createElement('p');intro.textContent='Consultá cada término en fuentes lexicográficas externas. El enlace no representa una definición verificada en esta biblioteca.';pane.append(intro);
+   const intro=document.createElement('p');intro.textContent='Consulta cada término en fuentes lexicográficas externas. El enlace no representa una definición verificada en esta biblioteca.';pane.append(intro);
    for(const word of words){
      const line=document.createElement('p');const strong=document.createElement('strong');strong.textContent=word+' · ';line.append(strong);
      for(const [label,link] of [
@@ -271,7 +271,7 @@ function inlineLexicalTranslations(words){
       pane.append(p);
     }
   }
-  if(!found){const p=document.createElement('p');p.textContent='No hay traducción local verificada para esta grafía. Consultá las acepciones de las entradas externas que se muestran debajo; pueden estar en inglés.';pane.append(p);}
+  if(!found){const p=document.createElement('p');p.textContent='No hay traducción local verificada para esta grafía. Consulta las acepciones de las entradas externas que se muestran debajo; pueden estar en inglés.';pane.append(p);}
   gloss.prepend(pane);gloss.hidden=false;
 }
 async function showExpressionContexts(value){

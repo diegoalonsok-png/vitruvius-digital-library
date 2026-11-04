@@ -60,7 +60,7 @@ function transform(){const img=$("atlas-view-img");if(img)img.style.transform="t
 function show(index){if(index<0||index>=filtered.length)return;activeIndex=index;const r=filtered[index];const dialog=$("atlas-dialog");$("atlas-view-title").textContent=r.title;
  $("atlas-view-sub").textContent=category(r)+" · "+(r.folio||"sin folio")+(r.book?" · Libro "+r.book:"");
  const img=$("atlas-view-img"),empty=$("atlas-view-empty");img.hidden=!r.image;empty.hidden=!!r.image;
- if(r.image){img.onerror=()=>{if(r.fallbackImage&&img.src!==new URL(r.fallbackImage,location.href).href){img.src=r.fallbackImage;return;}img.hidden=true;empty.hidden=false;empty.textContent="No se pudo cargar esta reproducción. Utilizá el enlace a la fuente institucional."};img.alt="Facsímil: "+r.title+" · "+(r.folio||"");img.src=r.image;}
+ if(r.image){img.onerror=()=>{if(r.fallbackImage&&img.src!==new URL(r.fallbackImage,location.href).href){img.src=r.fallbackImage;return;}img.hidden=true;empty.hidden=false;empty.textContent="No se pudo cargar esta reproducción. Utiliza el enlace a la fuente institucional."};img.alt="Facsímil: "+r.title+" · "+(r.folio||"");img.src=r.image;}
  else empty.textContent="Reproducción no integrada: el registro de la institución está disponible en la ficha.";
  let defs=[["Objeto documental",r.type],["Autor / editor",r.author],["Datación",r.date],["Siglo / período",r.century],["Procedencia",r.place||r.production],["Biblioteca / institución",r.institution],["Signatura / registro",r.shelfmark],["Folio / imagen",r.folio],["Referencia al tratado",r.locus],["Soporte / bibliografía material",r.material],["Rasgos gráficos / paleografía",r.graphic],["Contenido iconográfico",r.iconography],["Estado de cotejo",r.status],["Derechos de reproducción",r.rights],["Inscripciones originales",r.inscriptions],["Medidas de la plancha",r.plate],["Medidas de la hoja",r.sheet],["Cita Chicago · ejemplar de referencia",r.chicago],["Cita Chicago · estampa reproducida",r.imageChicago],["Notas científicas",r.notes]];
  $("atlas-view-details").innerHTML=defs.map(d=>detailRow(...d)).join("");
@@ -117,4 +117,4 @@ for(const x of items){if(x.book===3&&["giocondo-1511","cesariano-1521","barbaro-
  $("atlas-loading").textContent="Catálogo cargado: "+items.length+" expedientes y páginas seleccionadas de fuentes IIIF. El motivo visual exacto de cada lámina requiere verificación individual.";
  filters();tabIndexToOpen();
 }
-start().catch(err=>{$("atlas-loading").textContent="No se pudo cargar el Atlas: "+err.message+". Consultá el inventario JSON y los registros institucionales.";console.error(err)});
+start().catch(err=>{$("atlas-loading").textContent="No se pudo cargar el Atlas: "+err.message+". Consulta el inventario JSON y los registros institucionales.";console.error(err)});

@@ -48,7 +48,7 @@ window.BibliothecaTripleReader=(function(){"use strict";
     }
     prev.addEventListener("click",()=>{if(i>0){i--;show()}});next.addEventListener("click",()=>{if(i<folios.length-1){i++;show()}});select.addEventListener("change",()=>{i=Number(select.value);show()});
     toolbar.append(prev,select,next);ms.append(toolbar,status,img);
-    img.addEventListener("error",()=>{status.textContent="No se pudo cargar esta imagen IIIF. Consultá la ficha institucional para verificar el servidor.";});
+    img.addEventListener("error",()=>{status.textContent="No se pudo cargar esta imagen IIIF. Consulta la ficha institucional para verificar el servidor.";});
     const cite=document.createElement("p");cite.className="triple-ms-note";cite.innerHTML="Fuente: "+esc(data.credit)+" · "+link(data.source,"Ficha y condiciones de uso")+" · "+link(data.manifest,"Manifiesto IIIF")+" · "+esc(data.license);ms.append(cite);
     show();
    }catch(err){ms.insertAdjacentHTML("beforeend",'<p role="alert">No se pudieron cargar los folios del testimonio: '+esc(err.message)+'</p>');}

@@ -145,7 +145,7 @@ async function mountPdf(target,item){
    if(n%20===0){searchResult.setAttribute("aria-busy","true");await new Promise(r=>setTimeout(r,0))}
   }
   searchResult.removeAttribute("aria-busy");
-  if(!hits)searchResult.textContent=hasText?tr("No se encontró el término en las capas de texto del PDF.","No match in the PDF text layer.","Aucun terme correspondant dans la couche de texte."):tr("Este facsímil no tiene OCR utilizable. Podés leerlo y ampliarlo, pero buscar palabras exige transcripción/OCR.","No usable OCR layer in this scan. Reading and zooming work; text search requires OCR.","Pas de couche OCR exploitable. Lecture et zoom possibles ; la recherche exige OCR.");
+  if(!hits)searchResult.textContent=hasText?tr("No se encontró el término en las capas de texto del PDF.","No match in the PDF text layer.","Aucun terme correspondant dans la couche de texte."):tr("Este facsímil no tiene OCR utilizable. Puedes leerlo y ampliarlo, pero buscar palabras exige transcripción/OCR.","No usable OCR layer in this scan. Reading and zooming work; text search requires OCR.","Pas de couche OCR exploitable. Lecture et zoom possibles ; la recherche exige OCR.");
  });
  pageInput.addEventListener("change",()=>loadPage(pageInput.value));
  target.addEventListener("keydown",ev=>{if(ev.target===input||ev.target===pageInput)return;if(ev.key==="ArrowRight")loadPage(pageNumber+1);else if(ev.key==="ArrowLeft")loadPage(pageNumber-1)});
@@ -185,7 +185,7 @@ function mountManuscript(target,record){
   addLink(toolbar,viewerUrl,tr("Abrir visor IIIF ↗","Open IIIF viewer ↗","Ouvrir le visualiseur IIIF ↗"));
   target.append(toolbar,wrap);
  }else{
-  target.append(el("p","classic-ref",tr("La institución no ofrece aquí un manifiesto IIIF comprobado; usá su visor oficial.","No verified IIIF manifest supplied here; use the institution's own viewer.","Aucun manifeste IIIF vérifié ; consultez le visualiseur institutionnel.")));
+  target.append(el("p","classic-ref",tr("La institución no ofrece aquí un manifiesto IIIF comprobado; usa su visor oficial.","No verified IIIF manifest supplied here; use the institution's own viewer.","Aucun manifeste IIIF vérifié ; consultez le visualiseur institutionnel.")));
  }
  const links=el("div","classic-linkline");
  addLink(links,record.viewer,tr("Abrir en biblioteca custodiante ↗","Open at holding library ↗","Ouvrir à la bibliothèque ↗"));

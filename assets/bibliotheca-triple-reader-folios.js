@@ -38,7 +38,7 @@ window.BibliothecaTripleReader=(function(){"use strict";
     const prev=document.createElement("button");prev.type="button";prev.textContent="← Folio";
     const select=document.createElement("select");select.setAttribute("aria-label","Folio manuscrito");
     const next=document.createElement("button");next.type="button";next.textContent="Folio →";
-    const img=document.createElement("img");img.className="triple-ms-main-image";img.alt="Folio del manuscrito "+m.label;img.loading="lazy";img.decoding="async";img.title="Hacé clic para leer este folio ampliado";
+    const img=document.createElement("img");img.className="triple-ms-main-image";img.alt="Folio del manuscrito "+m.label;img.loading="lazy";img.decoding="async";img.title="Haz clic para leer este folio ampliado";
     const status=document.createElement("div");status.className="triple-ms-status";status.setAttribute("role","status");
     const options=folios.map((x,index)=>{const o=document.createElement("option");o.value=String(index);o.textContent=x.label;return o});select.append(...options);
     function show(){const x=folios[i];select.value=String(i);status.textContent=x.label+" · "+(i+1)+"/"+folios.length;
@@ -52,7 +52,7 @@ window.BibliothecaTripleReader=(function(){"use strict";
     const large=document.createElement("button");large.type="button";large.className="triple-ms-open";large.textContent="⤢ Leer códice en grande";
     toolbar.append(prev,select,next,large);ms.append(toolbar,status,img);
     const gallery=document.createElement("section");gallery.className="triple-gallery";
-    gallery.innerHTML='<h4>Páginas del códice · Galería de folios</h4><p>Miniaturas en orden digital. Elegí una para abrirla ampliada. El número de imagen y la foliación histórica son distintos.</p><div class="triple-gallery-filter"><input type="search" aria-label="Buscar folios" placeholder="5r · V2v · imagen 60"><button type="button">Buscar</button></div><p class="triple-gallery-count" role="status"></p><div class="triple-thumbs"></div><button class="triple-more" type="button">Mostrar más folios</button>';
+    gallery.innerHTML='<h4>Páginas del códice · Galería de folios</h4><p>Miniaturas en orden digital. Elige una para abrirla ampliada. El número de imagen y la foliación histórica son distintos.</p><div class="triple-gallery-filter"><input type="search" aria-label="Buscar folios" placeholder="5r · V2v · imagen 60"><button type="button">Buscar</button></div><p class="triple-gallery-count" role="status"></p><div class="triple-thumbs"></div><button class="triple-more" type="button">Mostrar más folios</button>';
     const query=gallery.querySelector("input"),search=gallery.querySelector(".triple-gallery-filter button"),count=gallery.querySelector(".triple-gallery-count"),grid=gallery.querySelector(".triple-thumbs"),more=gallery.querySelector(".triple-more");
     ms.append(gallery);
     const dialog=document.createElement("dialog");dialog.className="triple-codex-modal";dialog.setAttribute("aria-label","Lector ampliado del códice "+m.label);
@@ -74,7 +74,7 @@ window.BibliothecaTripleReader=(function(){"use strict";
       let n=0;zoom=100;modalTitle.textContent="Imagen "+(i+1)+" / "+folios.length+" · "+f.label;
       zoomImage.alt="Folio "+f.label+" · "+m.label;modalStatus.textContent="Cargando imagen ampliada…";
       zoomImage.onload=()=>{if(k!==modalSeq)return;applyZoom();scroller.scrollTo({top:0,left:0});modalStatus.textContent=f.label+" · "+zoomImage.naturalWidth+" × "+zoomImage.naturalHeight+" píxeles";};
-      zoomImage.onerror=()=>{if(k!==modalSeq)return;n++;if(n<sources.length)zoomImage.src=sources[n];else modalStatus.textContent="La imagen no está disponible. Consultá la ficha institucional.";};
+      zoomImage.onerror=()=>{if(k!==modalSeq)return;n++;if(n<sources.length)zoomImage.src=sources[n];else modalStatus.textContent="La imagen no está disponible. Consulta la ficha institucional.";};
       zoomImage.src=sources[0];
     }
     function openLarge(){if(!dialog.open)dialog.showModal();refreshLarge();}
@@ -104,7 +104,7 @@ window.BibliothecaTripleReader=(function(){"use strict";
     query.addEventListener("input",filterThumbs);search.addEventListener("click",filterThumbs);more.addEventListener("click",addThumbs);
     filterThumbs();
 
-    img.addEventListener("error",()=>{status.textContent="No se pudo cargar esta imagen IIIF. Consultá la ficha institucional para verificar el servidor.";});
+    img.addEventListener("error",()=>{status.textContent="No se pudo cargar esta imagen IIIF. Consulta la ficha institucional para verificar el servidor.";});
     const cite=document.createElement("p");cite.className="triple-ms-note";cite.innerHTML="Fuente: "+esc(data.credit)+" · "+link(data.source,"Ficha y condiciones de uso")+" · "+link(data.manifest,"Manifiesto IIIF")+" · "+esc(data.license);ms.append(cite);
     show();
    }catch(err){ms.insertAdjacentHTML("beforeend",'<p role="alert">No se pudieron cargar los folios del testimonio: '+esc(err.message)+'</p>');}

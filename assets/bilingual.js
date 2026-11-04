@@ -30,12 +30,12 @@ function clearReading(message){
 function render(){
  const locus=[$('book').value,$('chapter').value,$('section').value].join('.'),lang=$('lang').value,data=datasets[editionIds[lang]],p=data?.passages.find(p=>atLocus(p,locus));
  const base=all.find(p=>atLocus(p,locus));current=base||null;
- if(!base){clearReading('Referencia no encontrada: '+locus+'. Revisá el libro, capítulo y sección.');return;}
+ if(!base){clearReading('Referencia no encontrada: '+locus+'. Revisa el libro, capítulo y sección.');return;}
  $('locus').value=roman(base.book)+'.'+base.chapter+'.'+base.section;$('passage-ref').textContent=citation(base);
  $('translation-title').textContent=names[lang];$('translation-source').textContent='Traducción de Diego Kurilo · '+(data?.version||lang);
  $('latin-title').textContent=citation(p||base);$('latin-source').textContent='Texto latino de la edición '+(p?data.version:'V514')+' · Diego Kurilo';
  $('latin-text').innerHTML=highlight(p?.latin||base.latin,'la',p?.latin||base.latin);$('translation-text').lang=lang;
- $('translation-text').innerHTML=p?highlight(p.translation,lang,p.latin||base.latin):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Podés consultar el castellano y el francés en el selector de traducción.</p>';
+ $('translation-text').innerHTML=p?highlight(p.translation,lang,p.latin||base.latin):'<p>Este locus todavía no tiene traducción inglesa alineada en el índice. Puedes consultar el castellano y el francés en el selector de traducción.</p>';
  const pairedNote=$('parallel-lexical-note');
  if(pairedNote){
   const paired=p?.translation?parallelHighlight(p.translation,{query,lang,latin:p.latin||base.latin}):null;
@@ -73,7 +73,7 @@ function render(){
  const url=new URL(location.href);url.searchParams.set('edition',editionIds[lang]);url.searchParams.set('locus',locus);if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');history.replaceState(null,'',url);
 }
 function openLocus(value){
- const ref=parseLocus(value);if(!ref){clearReading('Formato de referencia no reconocido. Usá III.1.2, VIII.1 o I.praef.1.');return;}
+ const ref=parseLocus(value);if(!ref){clearReading('Formato de referencia no reconocido. Usa III.1.2, VIII.1 o I.praef.1.');return;}
  const choices=all.filter(p=>p.book===ref.book&&(ref.chapter==null||p.chapter===ref.chapter)&&(ref.section==null||p.section===ref.section));
  if(!choices.length){clearReading('Locus no encontrado: '+value+'. No se muestra un pasaje distinto.');return;}
  const p=choices[0];refresh(p.book,p.chapter,p.section);render();
@@ -82,13 +82,13 @@ $('form').addEventListener('submit',e=>{e.preventDefault();openLocus($('locus').
 for(const id of ['book','chapter','section'])$(id).addEventListener('change',()=>{refresh($('book').value,id==='book'?null:$('chapter').value,id==='section'?$('section').value:null);render();});
 $('lang').addEventListener('change',render);$('compare-all').addEventListener('change',render);
 for(const [id,delta]of [['prev',-1],['next',1]])$(id).addEventListener('click',()=>{if(!current)return;const p=all[all.findIndex(x=>x.locus===current.locus)+delta];if(p){refresh(p.book,p.chapter,p.section);render();}});
-$('copy-passage-citation').addEventListener('click',async()=>{if(!passageCitation){$('citation-status').textContent='Abrí un locus válido para generar su cita.';return;}try{await navigator.clipboard.writeText(passageCitation);$('citation-status').textContent='Cita del pasaje copiada con edición y versión.';}catch{$('citation-status').textContent=passageCitation;}});
+$('copy-passage-citation').addEventListener('click',async()=>{if(!passageCitation){$('citation-status').textContent='Abre un locus válido para generar su cita.';return;}try{await navigator.clipboard.writeText(passageCitation);$('citation-status').textContent='Cita del pasaje copiada con edición y versión.';}catch{$('citation-status').textContent=passageCitation;}});
 $('print-passage').addEventListener('click',()=>window.print());
 $('find-form').addEventListener('submit',e=>{
  e.preventDefault();query=$('term').value.trim();const data=datasets[editionIds[$('lang').value]];if(!data){$('find-status').textContent='La edición no está disponible.';return;}
  const mode=$('find-mode').value,forms=mode==='forms'?lexicalForms(query,lexicon):[query];
  $('find-results').replaceChildren();
- if(!forms.length){$('find-status').textContent='No hay una familia flexiva documentada para «'+query+'» en el léxico selectivo. Elegí Todas las palabras o Frase exacta para buscar literalmente.';render();return;}
+ if(!forms.length){$('find-status').textContent='No hay una familia flexiva documentada para «'+query+'» en el léxico selectivo. Elige Todas las palabras o Frase exacta para buscar literalmente.';render();return;}
  const found=forms.flatMap(form=>searchCorpus([data],{query:form,kind:'words',mode:mode==='forms'?'words':mode,book:$('find-scope').value==='book'?$('book').value:'',language:'all'}).results);
  const output={results:[...new Map(found.map(r=>[r.locus+':'+r.language,r])).values()].sort((a,b)=>a.book-b.book||(a.chapter==='praef'?-1:Number(a.chapter))-(b.chapter==='praef'?-1:Number(b.chapter))||a.section-b.section)};
  $('find-status').textContent=output.results.length?output.results.length+' resultados con locus en la edición '+data.version+' (latín y '+names[$('lang').value]+'), con referencia.'+(mode==='forms'?' Formas consultadas: '+forms.join(', ')+'.':''):'No hay coincidencias literales para «'+query+'» en la selección.';
@@ -98,7 +98,7 @@ $('find-form').addEventListener('submit',e=>{
 });
 try{
  const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/latin-lexicon.json').then(r=>r.json()).then(d=>{lexicon=d.entries;}),fetch('data/catalog.json?v=20261030-citations').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
- if(!datasets['recensio-es'])throw Error('No se pudo cargar el corpus castellano. Recargá para volver a intentarlo.');
+ if(!datasets['recensio-es'])throw Error('No se pudo cargar el corpus castellano. Recarga para volver a intentarlo.');
  all=datasets['recensio-es'].passages;for(const id of ['book','chapter','section'])$(id).disabled=false;
  $('coverage').textContent=Object.values(datasets).map(d=>d.version+': '+d.passages.length+' bloques de lectura').join(' · ')+'. Los 731 loci están localizados en cada idioma; V297 conserva VII.7.1–3 y VII.7.4–5 como bloques conjuntos.';
  const requested=params.get('locus')||'1.1.1';openLocus(requested);

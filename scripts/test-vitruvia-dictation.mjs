@@ -57,7 +57,7 @@ test('interim revisions replace spoken text, preserve the existing query and not
  h.input.addEventListener('input',()=>inputs++);h.form.addEventListener('submit',()=>submits++);
  const r=h.begin();h.result(r,'del');h.result(r,'del café');h.result(r,'del café','en Roma');
  assert.equal(h.input.value,'historia del café en Roma');assert.equal(inputs,3);assert.equal(submits,0);
- r.emit('end');assert.match(h.status.textContent,/Revisá el texto y pulsá Buscar/);
+ r.emit('end');assert.match(h.status.textContent,/Revisa el texto y pulsa Buscar/);
 });
 
 test('stopping accepts the final words and ignores repeated stop clicks',()=>{

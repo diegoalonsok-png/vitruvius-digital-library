@@ -12,7 +12,7 @@ $('#folio-image').addEventListener('change',e=>{
  const file=e.target.files?.[0];if(previewUrl)URL.revokeObjectURL(previewUrl);
  chosenImage=file||null;previewUrl=file?URL.createObjectURL(file):null;
  const img=$('#image-preview');img.hidden=!previewUrl;if(previewUrl)img.src=previewUrl;
- ocrStatus.textContent=file?'Imagen preparada: '+file.name+'. Pulsá «Reconocer latín (OCR)».':'Seleccioná una imagen.';
+ ocrStatus.textContent=file?'Imagen preparada: '+file.name+'. Pulsa «Reconocer latín (OCR)».':'Selecciona una imagen.';
 });
 async function ensureOCR(){
  if(window.Tesseract)return window.Tesseract;
@@ -21,26 +21,26 @@ async function ensureOCR(){
 }
 $('#recognize').addEventListener('click',async()=>{
  const url=$('#image-url').value.trim(),src=chosenImage||url;
- if(!src){ocrStatus.textContent='Seleccioná un archivo de imagen o ingresá una URL IIIF directa (no la URL de la página del visor).';return;}
+ if(!src){ocrStatus.textContent='Selecciona un archivo de imagen o ingresa una URL IIIF directa (no la URL de la página del visor).';return;}
  const button=$('#recognize');button.disabled=true;let worker;
  try{
   ocrStatus.textContent='Cargando motor y modelo latino. Puede tardar en el primer uso…';
   const t=await ensureOCR();
   worker=await t.createWorker('lat',1,{logger:m=>{if(m.status)ocrStatus.textContent='OCR: '+m.status+(Number.isFinite(m.progress)?' '+Math.round(m.progress*100)+' %':'');}});
   const dim=await new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve({w:img.naturalWidth,h:img.naturalHeight});img.onerror=()=>reject(Error('No se pudo leer la imagen'));img.src=chosenImage?URL.createObjectURL(chosenImage):src;});
-  if(Math.min(dim.w,dim.h)<900){ocrStatus.textContent='ADVERTENCIA: imagen de '+dim.w+' × '+dim.h+' px. Resolución insuficiente para OCR fiable de minúscula carolina. Utilizá un folio IIIF en alta resolución o un modelo HTR especializado.';if(!confirm('Esta imagen es pequeña para lectura paleográfica y probablemente producirá texto incorrecto. ¿Ejecutar igualmente el OCR experimental?'))return;}
+  if(Math.min(dim.w,dim.h)<900){ocrStatus.textContent='ADVERTENCIA: imagen de '+dim.w+' × '+dim.h+' px. Resolución insuficiente para OCR fiable de minúscula carolina. Utiliza un folio IIIF en alta resolución o un modelo HTR especializado.';if(!confirm('Esta imagen es pequeña para lectura paleográfica y probablemente producirá texto incorrecto. ¿Ejecutar igualmente el OCR experimental?'))return;}
   const result=await worker.recognize(src);
   const value=String(result?.data?.text||'').trim();
   if(!value)throw Error('El motor no identificó texto en la imagen.');
   $('#transcription').value=value;
   ocrStatus.textContent='OCR experimental terminado ('+value.length+' caracteres). SALIDA NO VALIDADA: no es transcripción paleográfica. Las grafías carolinas requieren HTR especializado y revisión.';
- }catch(e){ocrStatus.textContent='No se pudo reconocer la imagen: '+e.message+'. Si es una URL IIIF, descargá el folio y cargalo como archivo local.';}
+ }catch(e){ocrStatus.textContent='No se pudo reconocer la imagen: '+e.message+'. Si es una URL IIIF, descarga el folio y cargalo como archivo local.';}
  finally{if(worker)await worker.terminate().catch(()=>{});button.disabled=false;}
 });
 function tokenize(s){return String(s||'').toLocaleLowerCase('la').match(/[a-záéíóúàèìòùâêîôûæœ]+/g)||[];}
 $('#compare').addEventListener('click',()=>{
  const h=tokenize($('#transcription').value),v=tokenize($('#modern-latin').textContent),out=$('#comparison');out.replaceChildren();
- if(!h.length||!v.length){out.textContent='Primero reconocé o ingresá el texto de H y consultá el locus V514 correspondiente.';return;}
+ if(!h.length||!v.length){out.textContent='Primero reconocé o ingresa el texto de H y consulta el locus V514 correspondiente.';return;}
  const counts=new Map();for(const w of v)counts.set(w,(counts.get(w)||0)+1);
  let common=0;for(const w of h){const n=counts.get(w)||0;if(n){common++;counts.set(w,n-1);}}
  const p=document.createElement('p');p.textContent='Coincidencia léxica aproximada: '+common+' de '+h.length+' palabras OCR presentes en la selección V514 ('+Math.round(common/h.length*100)+' %). No es una puntuación de fidelidad paleográfica ni colación de variantes.';out.append(p);
@@ -50,10 +50,10 @@ $('#compare').addEventListener('click',()=>{
 
 $('#htr-recognize').addEventListener('click',async()=>{
  const endpoint=$('#htr-endpoint').value.trim().replace(/\/$/,'');
- if(!chosenImage){ocrStatus.textContent='Para HTR seleccioná primero una imagen local del folio (PNG/JPG).';return;}
- if(!endpoint){ocrStatus.textContent='Falta configurar un servidor Kraken HTR. GitHub Pages no ejecuta este modelo por sí solo; consultá la guía de instalación.';return;}
+ if(!chosenImage){ocrStatus.textContent='Para HTR selecciona primero una imagen local del folio (PNG/JPG).';return;}
+ if(!endpoint){ocrStatus.textContent='Falta configurar un servidor Kraken HTR. GitHub Pages no ejecuta este modelo por sí solo; consulta la guía de instalación.';return;}
  if(!/^https:\/\//.test(endpoint)&&!/^http:\/\/localhost(?::\d+)?$/.test(endpoint)&&!/^http:\/\/127\.0\.0\.1(?::\d+)?$/.test(endpoint)){
- ocrStatus.textContent='Usá HTTPS o una dirección localhost explícita.';return;}
+ ocrStatus.textContent='Usa HTTPS o una dirección localhost explícita.';return;}
  const btn=$('#htr-recognize');btn.disabled=true;ocrStatus.textContent='Enviando folio a Kraken HTR…';
  try{
   const form=new FormData();form.append('image',chosenImage,chosenImage.name);
@@ -62,34 +62,34 @@ $('#htr-recognize').addEventListener('click',async()=>{
   if(!response.ok)throw Error(data.detail||'HTTP '+response.status);
   if(data.engine!=='Kraken'||typeof data.text!=='string')throw Error('Respuesta no reconocida del servicio HTR');
   $('#transcription').value=data.text;
-  ocrStatus.textContent=data.text.trim()?'HTR Kraken finalizado. Transcripción automática SIN REVISAR, comparala con la imagen.':'Kraken respondió sin texto reconocido; probá otra imagen o modelo.';
- }catch(e){ocrStatus.textContent='HTR no disponible: '+e.message+'. Comprobá conexión, CORS, HTTPS y que el modelo esté configurado.';}
+  ocrStatus.textContent=data.text.trim()?'HTR Kraken finalizado. Transcripción automática SIN REVISAR, comparala con la imagen.':'Kraken respondió sin texto reconocido; prueba otra imagen o modelo.';
+ }catch(e){ocrStatus.textContent='HTR no disponible: '+e.message+'. Comprueba conexión, CORS, HTTPS y que el modelo esté configurado.';}
  finally{btn.disabled=false;}
 });
 
 const diplomaticPrompt=[
 'Actuá como paleógrafo especializado en latín carolingio del siglo IX.',
 'Transcribí ÚNICAMENTE las letras que puedas leer en la imagen adjunta del manuscrito, respetando los saltos de línea, grafías medievales, puntuación y signos de abreviación visibles.',
-'Para letras dudosas usá [?] y para ilegibles [ilegible]; no inventes ni completes con el texto impreso de Krohn u otras ediciones.',
-'Indicá expansiones de abreviaturas entre corchetes y diferenciá lecturas seguras de conjeturas.',
+'Para letras dudosas usa [?] y para ilegibles [ilegible]; no inventes ni completes con el texto impreso de Krohn u otras ediciones.',
+'Indica expansiones de abreviaturas entre corchetes y diferenciá lecturas seguras de conjeturas.',
 'NO traduzcas, NO resumas, NO modernices automáticamente, NO reconstruyas frases usando conocimiento previo de Vitruvio.',
 'Primero devolvé SOLO la transcripción diplomática línea por línea. Después separá un breve apartado de dudas paleográficas.'
 ].join(' ');
 $('#copy-ai-prompt').addEventListener('click',async()=>{
- try{await navigator.clipboard.writeText(diplomaticPrompt);$('#ai-status').textContent='Instrucciones copiadas. Adjuntá la imagen de 4000 px en Google AI y pegá el resultado aquí.';}
- catch(e){$('#ai-status').textContent='El navegador bloqueó el portapapeles. Seleccioná y copiá estas instrucciones: '+diplomaticPrompt;}
+ try{await navigator.clipboard.writeText(diplomaticPrompt);$('#ai-status').textContent='Instrucciones copiadas. Adjuntá la imagen de 4000 px en Google AI y pega el resultado aquí.';}
+ catch(e){$('#ai-status').textContent='El navegador bloqueó el portapapeles. Selecciona y copia estas instrucciones: '+diplomaticPrompt;}
 });
 $('#apply-ai').addEventListener('click',()=>{
  const value=$('#ai-result').value.trim();
- if(!value){$('#ai-status').textContent='Primero pegá la transcripción obtenida de Google AI.';return;}
+ if(!value){$('#ai-status').textContent='Primero pega la transcripción obtenida de Google AI.';return;}
  $('#transcription').value=value;
  $('#transcription').focus();
- $('#ai-status').textContent='Transcripción incorporada al campo editable. Sigue sin revisar: cotejá cada línea con el folio original.';
+ $('#ai-status').textContent='Transcripción incorporada al campo editable. Sigue sin revisar: coteja cada línea con el folio original.';
 });
 $('#copy-latin').addEventListener('click',async()=>{
  if(!$('#transcription').value.trim()){$('#ai-status').textContent='No hay texto latino editable para copiar.';return;}
  try{await navigator.clipboard.writeText($('#transcription').value);$('#ai-status').textContent='Latín editable copiado.';}
- catch(e){$('#ai-status').textContent='El portapapeles está bloqueado; seleccioná el texto de la columna II.';}
+ catch(e){$('#ai-status').textContent='El portapapeles está bloqueado; selecciona el texto de la columna II.';}
 });
 
 $('#gemini-extract').addEventListener('click',async()=>{
@@ -97,9 +97,9 @@ $('#gemini-extract').addEventListener('click',async()=>{
  const token=$('#gemini-token').value;
  const file=$('#gemini-image').files?.[0]||chosenImage;
  const status=$('#gemini-status'),btn=$('#gemini-extract');
- if(!file){status.textContent='Seleccioná una imagen JPG/PNG/WebP de un folio en alta resolución.';return;}
- if(!endpoint||!token){status.textContent='El servicio Gemini todavía no está configurado. Se necesitan URL HTTPS del Worker y token de acceso; consultá la guía gratuita.';return;}
- if(!/^https:\/\/[a-z0-9.-]+(?::443)?$/i.test(endpoint)){status.textContent='Usá una URL base HTTPS válida, sin rutas ni credenciales.';return;}
+ if(!file){status.textContent='Selecciona una imagen JPG/PNG/WebP de un folio en alta resolución.';return;}
+ if(!endpoint||!token){status.textContent='El servicio Gemini todavía no está configurado. Se necesitan URL HTTPS del Worker y token de acceso; consulta la guía gratuita.';return;}
+ if(!/^https:\/\/[a-z0-9.-]+(?::443)?$/i.test(endpoint)){status.textContent='Usa una URL base HTTPS válida, sin rutas ni credenciales.';return;}
  btn.disabled=true;status.textContent='Gemini está leyendo el folio…';
  try{
   const body=new FormData();body.append('image',file);
@@ -109,7 +109,7 @@ $('#gemini-extract').addEventListener('click',async()=>{
   if(result.engine!=='Gemini'||typeof result.text!=='string')throw Error('La respuesta no tiene el formato esperado.');
   if(!result.text.trim())throw Error('Gemini no devolvió texto latino.');
   $('#transcription').value=result.text;$('#ai-result').value=result.text;
-  status.textContent='Transcripción automática Gemini recibida: '+result.text.length+' caracteres. SIN REVISAR; compará con la imagen.';
+  status.textContent='Transcripción automática Gemini recibida: '+result.text.length+' caracteres. SIN REVISAR; compara con la imagen.';
  }catch(err){status.textContent='Gemini no disponible: '+err.message+'. La transcripción manual con Google AI continúa disponible.';}
  finally{btn.disabled=false;}
 });

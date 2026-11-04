@@ -76,7 +76,7 @@ function select(i){
 }
 function renderSearch(){
  const target=$("results");target.replaceChildren();
- if(!search){target.textContent="Ingresá una palabra o frase para localizar coincidencias en esta edición.";return}
+ if(!search){target.textContent="Ingresa una palabra o frase para localizar coincidencias en esta edición.";return}
  results=data.passages.map((r,i)=>({i,r})).filter(x=>match(x.r.text,search,true));
  const lead=document.createElement("strong");
  lead.textContent=results.length+" coincidencias de sección · búsqueda literal + expansión léxica experimental";

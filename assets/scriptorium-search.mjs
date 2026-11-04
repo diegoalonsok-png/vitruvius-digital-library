@@ -39,7 +39,7 @@ const statusSelected = () => {
  const el=document.getElementById('script-selected-note'),source=selectedPDF(),src=sources.find(x=>x.id===selectedIndex());
  if(!el)return;
  if(document.getElementById('script-search-scope').value!=='selected'){el.textContent='Búsqueda comparada: todas las fuentes indexadas o la edición elegida en el filtro.';return;}
- el.textContent=src?'PDF elegido: '+src.label+'. Buscará únicamente en su texto indexado '+(src.kind==='ocr'?'(OCR página por página).':'(latín y traducción).'):'El documento seleccionado no dispone de índice de texto integrado: elegí Krohn, Rose, V514, V554 o V297, o buscá en todas las ediciones.';
+ el.textContent=src?'PDF elegido: '+src.label+'. Buscará únicamente en su texto indexado '+(src.kind==='ocr'?'(OCR página por página).':'(latín y traducción).'):'El documento seleccionado no dispone de índice de texto integrado: elige Krohn, Rose, V514, V554 o V297, o busca en todas las ediciones.';
 };
 document.getElementById('source')?.addEventListener('change',()=>{
  document.getElementById('script-search-scope').value='selected';
@@ -190,7 +190,7 @@ function render(){
     document.dispatchEvent(new CustomEvent('scriptorium:open-search-result',{detail:{source:r.source.pdf,page:r.page,term:r.term||'',locus:r.p?.locus||null}}));
     const step=document.getElementById('stage');if(step)setTimeout(()=>step.scrollIntoView({behavior:'smooth',block:'start'}),150);
    });
-   const note=document.createElement('small');note.textContent=r.kind==='ocr'?'Referencia por página OCR: cotejá la imagen.':'Página consignada por el índice del autor: cotejá la coincidencia en el PDF.';card.append(note);
+   const note=document.createElement('small');note.textContent=r.kind==='ocr'?'Referencia por página OCR: coteja la imagen.':'Página consignada por el índice del autor: coteja la coincidencia en el PDF.';card.append(note);
   }else{
    const p=document.createElement('small');p.textContent='No hay página PDF verificada para este resultado; no se inventa un salto de página.';card.append(p);
   }
@@ -199,18 +199,18 @@ function render(){
   }
   out.append(card);
  }
- if(live.length>count){const last=document.createElement('p');last.textContent='Se muestran los primeros '+count+' resultados. Precisá el término o elegí una edición para acotar la búsqueda.';out.append(last);}
+ if(live.length>count){const last=document.createElement('p');last.textContent='Se muestran los primeros '+count+' resultados. Precisa el término o elige una edición para acotar la búsqueda.';out.append(last);}
 }
 let running=0;
 $('script-search-form').addEventListener('submit',async event=>{
  event.preventDefault();
  const serial=++running,q=$('script-query').value.trim(),scope=$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
- if(!q){status.textContent='Ingresá un locus, palabra o frase.';return;}
+ if(!q){status.textContent='Ingresa un locus, palabra o frase.';return;}
  live=[];$('script-search-results').replaceChildren();
  const locus=locusQuery(q);
  status.textContent='Consultando índices del tratado y OCR histórico…';
  const target=scope==='selected'?selectedIndex():scope;
- if(scope==='selected'&&!target){status.textContent='El PDF elegido no tiene un índice textual accesible. Elegí Krohn 1912, Rose 1899 o una de tus tres ediciones; Budé solo puede consultarse bibliográficamente por ahora.';return;}
+ if(scope==='selected'&&!target){status.textContent='El PDF elegido no tiene un índice textual accesible. Elige Krohn 1912, Rose 1899 o una de tus tres ediciones; Budé solo puede consultarse bibliográficamente por ahora.';return;}
  const chosen=sources.filter(src=>target==='all'||target===src.id);
  const terms=locus?[q]:await expandTerms(q,mode);
  const reports=await Promise.all(chosen.filter(src=>!locus||src.kind==='edition').map(async src=>{

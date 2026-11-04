@@ -22,7 +22,7 @@ function loadImage(num){
  $('su-status').textContent='Abriendo imagen '+num+' de 205…';
  $('su-status').setAttribute('data-current',label(c));
  img.onload=()=>{if(serial!==requestId)return;magnified.src=img.src;updateFilter();$('su-status').textContent='Imagen '+num+'/205 · folio '+label(c)+' · original BSB (copia de consulta)';};
- img.onerror=()=>{if(serial!==requestId)return;if(!fallback&&remote(c)){fallback=true;img.src=remote(c);return;}$('su-status').textContent='No se pudo cargar la imagen '+num+'. Consultá el enlace institucional BSB.';};
+ img.onerror=()=>{if(serial!==requestId)return;if(!fallback&&remote(c)){fallback=true;img.src=remote(c);return;}$('su-status').textContent='No se pudo cargar la imagen '+num+'. Consulta el enlace institucional BSB.';};
  img.src=local(c)||remote(c);
  for(const button of $('su-grid').querySelectorAll('button[data-page]')){
   const active=Number(button.dataset.page)===num;
@@ -49,7 +49,7 @@ function folioSearch(){
  const raw=$('su-folio').value.trim();
  const n=byFolio(raw)||byNumber(raw);
  if(n){loadImage(n);$('su-stage').scrollIntoView({block:'center',behavior:'smooth'});}
- else $('su-status').textContent='Folio no encontrado: '+raw+'. Probá 1r, 27v o 98v.';
+ else $('su-status').textContent='Folio no encontrado: '+raw+'. Prueba 1r, 27v o 98v.';
 }
 function thumb(p){
  const b=document.createElement('button');b.type='button';b.dataset.page=String(p.page);
@@ -88,7 +88,7 @@ async function start(){
   const x=await r.json();pages=x.canvases||[];
   if(pages.length!==205||!pages.every((p,i)=>p.page===i+1))throw Error('Índice de 205 imágenes fuera de secuencia');
   applySearch();loadImage(Math.min(205,Math.max(1,Number(new URLSearchParams(location.search).get('image'))||5)));
- }catch(e){$('su-status').textContent='No se pudo leer el índice IIIF: '+e.message;$('su-results').textContent='Consultá el facsímil institucional.';}
+ }catch(e){$('su-status').textContent='No se pudo leer el índice IIIF: '+e.message;$('su-results').textContent='Consulta el facsímil institucional.';}
 }
 $('su-open').addEventListener('click',()=>loadImage(selectedPage()));
 $('su-page').addEventListener('change',()=>loadImage(selectedPage()));

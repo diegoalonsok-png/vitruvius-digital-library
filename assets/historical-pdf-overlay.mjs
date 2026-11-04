@@ -31,7 +31,7 @@ async function draw(pageNumber,terms,prefix=false){
  const edition=document.querySelector('#ed')?.value;
  if(!pdfURLs[edition]){
    viewer.hidden=true;fallback.hidden=edition==='perrault-1673';
-   status.textContent=edition==='perrault-1673'?'El facsímil de Perrault se lee en el visor IIIF con ampliación, contraste e inversión. Las coincidencias verificables se resaltan en amarillo en el OCR.':'La superposición sobre el PDF externo puede no estar disponible; consultá el OCR resaltado.';
+   status.textContent=edition==='perrault-1673'?'El facsímil de Perrault se lee en el visor IIIF con ampliación, contraste e inversión. Las coincidencias verificables se resaltan en amarillo en el OCR.':'La superposición sobre el PDF externo puede no estar disponible; consulta el OCR resaltado.';
    return;
  }
  const mine=++serial;
@@ -67,7 +67,7 @@ async function draw(pageNumber,terms,prefix=false){
    viewer.hidden=false;fallback.hidden=true;
    viewer.scrollTop=0;
    viewer.setAttribute('aria-label','Folio '+pageNumber+' de '+(edition==='rose-1899'?'Rose 1899':'Krohn 1912')+', visible en el lector de páginas');
-   status.textContent=found?'PDF original: '+found+' resaltado(s) amarillos sobre texto detectable en esta página.':'PDF original abierto. No hay coincidencias localizables en su capa de texto para esta página; consultá el OCR resaltado debajo.';
+   status.textContent=found?'PDF original: '+found+' resaltado(s) amarillos sobre texto detectable en esta página.':'PDF original abierto. No hay coincidencias localizables en su capa de texto para esta página; consulta el OCR resaltado debajo.';
  }catch(err){
    if(mine!==serial)return;
    viewer.hidden=true;fallback.hidden=false;

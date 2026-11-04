@@ -22,7 +22,7 @@ html[data-theme="dark"] .search input{background:#26333e;color:#f1ede4;border-co
 <body>
 <h1>Index locorum selectus - De architectura libri decem</h1>
 <div class="search"><input id="filter" placeholder="Filtrar locus o término: III.1.2 · symmetria" oninput="filtrar()" aria-label="Filtrar loci seleccionados"></div>
-<p>Selección orientativa de pasajes de los diez libros, no un índice exhaustivo. Cada enlace abre la consulta del locus en el índice textual; la correspondencia con folios manuscritos debe verificarse por separado.</p><p>Para buscar cualquier pasaje, incluso si no figura en esta selección, consultá el <a href="aparato-critico.html">índice textual completo</a>, los <a href="indices-locorum.html">índices latino, griego y matemático</a> o el <a href="lector-bilingue.html">lector bilingüe</a>.</p><p id="filter-status" role="status" aria-live="polite"></p>
+<p>Selección orientativa de pasajes de los diez libros, no un índice exhaustivo. Cada enlace abre la consulta del locus en el índice textual; la correspondencia con folios manuscritos debe verificarse por separado.</p><p>Para buscar cualquier pasaje, incluso si no figura en esta selección, consulta el <a href="aparato-critico.html">índice textual completo</a>, los <a href="indices-locorum.html">índices latino, griego y matemático</a> o el <a href="lector-bilingue.html">lector bilingüe</a>.</p><p id="filter-status" role="status" aria-live="polite"></p>
 
 <div class="libro" data-libro="I">
 <h2>Liber I - Architectura et architecti institutio</h2>
@@ -76,7 +76,7 @@ function filtrar(){
     lib.hidden=visible===0;
     total+=visible;
   });
-  document.getElementById('filter-status').textContent=q ? total+' loci seleccionados coincidentes. Si no figura aquí, buscá en el índice textual completo.' : '';
+  document.getElementById('filter-status').textContent=q ? total+' loci seleccionados coincidentes. Si no figura aquí, busca en el índice textual completo.' : '';
 }
 </script>
 <script src="assets/theme.js?v=20261101-everywhere" defer></script></body></html>

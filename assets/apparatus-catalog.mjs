@@ -89,7 +89,7 @@ function apply(){
  // Los bloques críticos del propio libro primero; ordenar por edición y página.
  visible.sort((a,b)=>(a.source==='nota')-(b.source==='nota')||ED.findIndex(e=>e.id===a.edition)-ED.findIndex(e=>e.id===b.edition)||(a.page??0)-(b.page??0));
  shown=0;q('apparatus-catalog-results').replaceChildren();
- q('apparatus-catalog-status').textContent=visible.length.toLocaleString('es-AR')+' registros encontrados. Filtrá por edición, tipo o término. Los datos proceden de los libros, no de variantes manuscritas inferidas.';
+ q('apparatus-catalog-status').textContent=visible.length.toLocaleString('es-AR')+' registros encontrados. Filtra por edición, tipo o término. Los datos proceden de los libros, no de variantes manuscritas inferidas.';
  renderNext();
 }
 function renderNext(){

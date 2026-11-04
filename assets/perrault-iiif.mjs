@@ -32,7 +32,7 @@ if(host){
  addButton("⛶","Pantalla completa",async()=>{
   try{if(document.fullscreenElement===host)await document.exitFullscreen();
    else if(host.requestFullscreen)await host.requestFullscreen();}
-  catch{status.textContent="Pantalla completa no disponible; podés usar el zoom."; }
+  catch{status.textContent="Pantalla completa no disponible; puedes usar el zoom."; }
  });
  addButton("Restaurar","Restablecer la vista",()=>{
   inverted=false;contrast=false;inv.setAttribute("aria-pressed","false");c.setAttribute("aria-pressed","false");
@@ -58,7 +58,7 @@ if(host){
   function next(i){
    if(my!==imageSerial)return;
    if(i>=candidates.length){
-    if(!loadedWidth){img.hidden=true;status.textContent="No fue posible cargar la imagen institucional. Abrí el original en e-rara."}
+    if(!loadedWidth){img.hidden=true;status.textContent="No fue posible cargar la imagen institucional. Abre el original en e-rara."}
     return;
    }
    const choice=candidates[i],loader=new Image();loader.decoding="async";

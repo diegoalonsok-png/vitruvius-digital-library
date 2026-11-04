@@ -41,9 +41,9 @@ export function findMatches(text,query,{prefix=false,phrase=false}={}){
 }
 export function searchCorpus(datasets,m){
   const reference=parseLocus(m.query);
-  if(m.kind==='locus'&&!reference&&!m.book)throw Error('Escribí un locus como III.1.2, un capítulo como VIII.1 o elegí un libro.');
+  if(m.kind==='locus'&&!reference&&!m.book)throw Error('Escribe un locus como III.1.2, un capítulo como VIII.1 o elige un libro.');
   const filter=reference||{book:Number(m.book)||null,chapter:m.chapter||null,section:null};
-  if(m.kind==='count'&&m.countMode==='prefix'&&tokens(m.query).length!==1)throw Error('Para contar por raíz, escribí una sola raíz, por ejemplo symmetr.');
+  if(m.kind==='count'&&m.countMode==='prefix'&&tokens(m.query).length!==1)throw Error('Para contar por raíz, escribe una sola raíz, por ejemplo symmetr.');
   const results=[],counts=[],forms=new Map();let total=0;
   for(const data of datasets){let editionCount=0;const loci=new Set();
     for(const p of data.passages){

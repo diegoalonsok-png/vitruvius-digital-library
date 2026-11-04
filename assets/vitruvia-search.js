@@ -36,7 +36,7 @@ const localUrl=/^(?:[a-z0-9/_-]+\.html(?:\?[^#]*)?(?:#[a-z0-9=&_-]+)?|documents\
 function anchor(text,url){const a=node("a",null,text);if(!url)return null;const external=/^https:\/\//i.test(url);
  if(!external&&!localUrl.test(url))return null;a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a}
 const I18N={
- es:{lead:"Vitruvia es un buscador universal con orientación académica. Podés investigar cualquier persona, obra, lugar o tema; combina enciclopedias, fuentes institucionales, bibliografía, documentos e imágenes con procedencia identificable.",placeholder:"Preguntá sobre cualquier tema, obra, autor o concepto…",submit:"Buscar",modes:["◎ Todo","Biblioteca","Wikipedia","Internet y academia","⌁ Conceptos"],explain:["Buscá en la biblioteca, Wikipedia y fuentes de Internet verificables, sin salir de Vitruvia cuando existe una API pública.","Consultá libros, manuscritos, pasajes en latín y traducciones de la Biblioteca Vitruviana.","Resultados de Wikipedia en el idioma elegido y en inglés como referencia complementaria.","Buscá en catálogos, museos, Wikidata y registros académicos. Para la web general ofrecemos enlaces de búsqueda directa.","Relacioná términos, sinónimos y lenguas en los documentos internos; no se afirma utilizar IA generativa."],heading:"Resultados documentados",idle:"Consultá la biblioteca y las enciclopedias",waiting:"Consultando fuentes verificables…",none:"No se obtuvieron resultados comprobados; podés usar las búsquedas institucionales directas.",book:"LIBRO DEL CATÁLOGO",edition:"EDICIÓN HISTÓRICA",preface:"PREFACIO · DE ARCHITECTURA",passage:"TEXTO · LOCUS",section:"DOCUMENTO DEL SITIO",wikipedia:"ENCICLOPEDIA · WIKIPEDIA",wikidata:"DATOS · WIKIDATA",openlibrary:"CATÁLOGO · OPEN LIBRARY",museum:"ARTE · THE MET",article:"ARTÍCULO CIENTÍFICO",googlebook:"LIBRO · GOOGLE BOOKS",read:"Leer en la biblioteca",document:"Abrir documento",source:"Consultar fuente",pdf:"Leer PDF",unpublished:"Ficha en preparación · lector no disponible",synthesis:"Síntesis de resultados documentados",detail:"Selección de fragmentos recuperados; verificá las afirmaciones en cada fuente. No es una respuesta generativa de IA.",external:"Búsquedas adicionales en fuentes reconocidas",searching:"La búsqueda continúa en fuentes externas…"},
+ es:{lead:"Vitruvia es un buscador universal con orientación académica. Puedes investigar cualquier persona, obra, lugar o tema; combina enciclopedias, fuentes institucionales, bibliografía, documentos e imágenes con procedencia identificable.",placeholder:"Preguntá sobre cualquier tema, obra, autor o concepto…",submit:"Buscar",modes:["◎ Todo","Biblioteca","Wikipedia","Internet y academia","⌁ Conceptos"],explain:["Busca en la biblioteca, Wikipedia y fuentes de Internet verificables, sin salir de Vitruvia cuando existe una API pública.","Consulta libros, manuscritos, pasajes en latín y traducciones de la Biblioteca Vitruviana.","Resultados de Wikipedia en el idioma elegido y en inglés como referencia complementaria.","Busca en catálogos, museos, Wikidata y registros académicos. Para la web general ofrecemos enlaces de búsqueda directa.","Relacioná términos, sinónimos y lenguas en los documentos internos; no se afirma utilizar IA generativa."],heading:"Resultados documentados",idle:"Consulta la biblioteca y las enciclopedias",waiting:"Consultando fuentes verificables…",none:"No se obtuvieron resultados comprobados; puedes usar las búsquedas institucionales directas.",book:"LIBRO DEL CATÁLOGO",edition:"EDICIÓN HISTÓRICA",preface:"PREFACIO · DE ARCHITECTURA",passage:"TEXTO · LOCUS",section:"DOCUMENTO DEL SITIO",wikipedia:"ENCICLOPEDIA · WIKIPEDIA",wikidata:"DATOS · WIKIDATA",openlibrary:"CATÁLOGO · OPEN LIBRARY",museum:"ARTE · THE MET",article:"ARTÍCULO CIENTÍFICO",googlebook:"LIBRO · GOOGLE BOOKS",read:"Leer en la biblioteca",document:"Abrir documento",source:"Consultar fuente",pdf:"Leer PDF",unpublished:"Ficha en preparación · lector no disponible",synthesis:"Síntesis de resultados documentados",detail:"Selección de fragmentos recuperados; verifica las afirmaciones en cada fuente. No es una respuesta generativa de IA.",external:"Búsquedas adicionales en fuentes reconocidas",searching:"La búsqueda continúa en fuentes externas…"},
  en:{lead:"Vitruvia is a universal search tool with an academic focus. Explore people, books, places and any topic through encyclopedias, institutional sources, scholarly records, documents and source-linked images.",placeholder:"Search any topic, author, book or concept…",submit:"Search",modes:["◎ All","Library","Wikipedia","Web & research","⌁ Concepts"],explain:["Search this library, Wikipedia and verifiable web sources in one place when public APIs allow it.","Search books, manuscripts, Latin passages and translations in this library.","Search Wikipedia in your selected language, plus English results when useful.","Explore open catalogs, museum records, Wikidata and scholarly sources; use direct links for the wider web.","Explore related terms and languages in local documents; this is not generative AI."],heading:"Documented results",idle:"Explore library and encyclopedias",waiting:"Searching verifiable sources…",none:"No confirmed results; use the direct institutional searches.",book:"CATALOG BOOK",edition:"HISTORICAL EDITION",preface:"PREFACE · DE ARCHITECTURA",passage:"TEXT · LOCUS",section:"SITE DOCUMENT",wikipedia:"ENCYCLOPEDIA · WIKIPEDIA",wikidata:"DATA · WIKIDATA",openlibrary:"CATALOG · OPEN LIBRARY",museum:"ART · THE MET",article:"RESEARCH ARTICLE",googlebook:"BOOK · GOOGLE BOOKS",read:"Read in library",document:"Open document",source:"View original",pdf:"Read PDF",unpublished:"Catalog entry pending · no reader",synthesis:"Source-based synthesis",detail:"Selected excerpts from retrieved documents; verify claims at the source. Not generative AI.",external:"Additional reputable sources",searching:"External sources are still loading…"},
  fr:{lead:"Vitruvia est un moteur de recherche universel à vocation académique. Explorez les personnes, œuvres, lieux et sujets grâce aux encyclopédies, institutions, références scientifiques, documents et images sourcées.",placeholder:"Chercher n’importe quel sujet, auteur ou ouvrage…",submit:"Rechercher",modes:["◎ Tout","Bibliothèque","Wikipédia","Web et recherche","⌁ Concepts"],explain:["Rechercher dans cette bibliothèque, Wikipédia et les sources web vérifiables disposant d’API ouvertes.","Explorer les livres, manuscrits, passages latins et traductions de la bibliothèque.","Consulter Wikipédia dans la langue choisie et, en complément, en anglais.","Explorer les catalogues ouverts, musées, Wikidata et références scientifiques ; liens directs pour le web général.","Relier les termes et synonymes des documents internes ; ce service n’est pas une IA générative."],heading:"Résultats documentés",idle:"Explorer les fonds",waiting:"Interrogation des sources vérifiables…",none:"Aucun résultat confirmé ; utiliser les recherches institutionnelles directes.",book:"LIVRE DU CATALOGUE",edition:"ÉDITION HISTORIQUE",preface:"PRÉFACE · DE ARCHITECTURA",passage:"TEXTE · LOCUS",section:"DOCUMENT DU SITE",wikipedia:"ENCYCLOPÉDIE · WIKIPÉDIA",wikidata:"DONNÉES · WIKIDATA",openlibrary:"CATALOGUE · OPEN LIBRARY",museum:"ART · THE MET",article:"ARTICLE SCIENTIFIQUE",googlebook:"LIVRE · GOOGLE BOOKS",read:"Lire dans la bibliothèque",document:"Ouvrir document",source:"Voir la source",pdf:"Lire PDF",unpublished:"Notice en attente · pas de lecteur",synthesis:"Synthèse sourcée",detail:"Extraits récupérés ; vérifier les sources. Ce n'est pas une IA générative.",external:"Autres références de qualité",searching:"Interrogation des sources externes en cours…"}
 };
@@ -49,15 +49,15 @@ const WELCOME_I18N={
   intro:"Vitruvia es el instrumento de búsqueda de Vitruvius Digital Library, un proyecto editorial independiente dedicado a estudiar, consultar y relacionar textos clásicos, tratados de arquitectura, manuscritos históricos y bibliografía especializada.",
   purpose:"Nació para ir más allá de encontrar palabras: vincular autores y obras con sus testimonios manuscritos, sus ediciones históricas, los pasajes originales y las traducciones disponibles, siempre que se puedan identificar sus fuentes.",
   methodTitle:"¿Cómo consultar?",
-  methodBody:"Buscá un autor, una obra, una palabra latina o griega, un lugar, un manuscrito o una pregunta. Las referencias locales y los registros de instituciones externas se distinguen; un enlace de catálogo no implica que se haya leído el texto completo.",
+  methodBody:"Busca un autor, una obra, una palabra latina o griega, un lugar, un manuscrito o una pregunta. Las referencias locales y los registros de instituciones externas se distinguen; un enlace de catálogo no implica que se haya leído el texto completo.",
   scope:"La búsqueda en IA es experimental y depende de los documentos realmente indexados. Los facsímiles sin texto reconocible no ofrecen todavía búsqueda íntegra.",
   readingTitle:"Textos originales y traducciones",
-  readingText:"Leé y cotejá pasajes del De architectura en latín y en las versiones editoriales disponibles, con referencias a libro y capítulo.",
+  readingText:"Lee y coteja pasajes del De architectura en latín y en las versiones editoriales disponibles, con referencias a libro y capítulo.",
   codexTitle:"Manuscritos y códices",
-  codexText:"Explorá testimonios conservados, signaturas y vínculos a bibliotecas custodias y visores digitales acreditados.",
+  codexText:"Explora testimonios conservados, signaturas y vínculos a bibliotecas custodias y visores digitales acreditados.",
   booksTitle:"Autores, obras y bibliografía",
-  booksText:"Accedé al repertorio de obras griegas y latinas, ediciones históricas y recursos de consulta vinculados.",
-  tryTitle:"Empezá por una consulta:"
+  booksText:"Accede al repertorio de obras griegas y latinas, ediciones históricas y recursos de consulta vinculados.",
+  tryTitle:"Empieza por una consulta:"
  },
  en:{
   kicker:"AN OPEN RESEARCH INSTRUMENT",
@@ -367,7 +367,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
- const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-readings-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
  const books=results[0].status==="fulfilled"?results[0].value:{works:[]},pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
@@ -752,18 +752,34 @@ function display(rows,query,phase){
   (a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating);
  grouped.get("editions")?.sort((a,b)=>
   (a.editionYear??9999)-(b.editionYear??9999)||b.rating-a.rating);
- const ordered=(S.mode==="all"||S.mode==="ai")?
-  [...grouped.values()].flat():deduped;
+ // «Todo»: dos bloques fijos. Primero lo que está en la Biblioteca Vitruviana
+ // (enlace interno o visor local), después la web académica; cada grupo conserva
+ // su orden propio dentro de su bloque.
+ const blockOf=r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
+  (r.localViewer||(r.link&&!/^https?:\/\//i.test(r.link)))?"site":"web";
+ const siteFirst=S.mode==="all";
+ const ordered=siteFirst?
+  [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
+  S.mode==="ai"?[...grouped.values()].flat():deduped;
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
  if(!ordered.length)list.append(node("div","empty",T().none));
  else {
-  let lastGroup="";
+  let lastGroup="",lastBlock="";
   for(const r of ordered.slice(0,S.visibleResultCount)){
    // The source-first manuscript card has already been displayed above the
    // encyclopedia: do not duplicate the same shelfmark in the regular list.
    if(selectedManuscript&&r.type==="manuscript"&&
      r.codexShelfmark===selectedManuscript.shelfmark&&
      r.codexRepository===selectedManuscript.library)continue;
+   if(siteFirst){
+    const block=blockOf(r);
+    if(block!==lastBlock){
+     const label=block==="site"?
+      (S.lang==="en"?"In the Vitruvian Library · Vitruvius and classical texts":S.lang==="fr"?"Dans la Bibliothèque vitruvienne · Vitruve et textes classiques":"En la Biblioteca Vitruviana · Vitruvio y textos clásicos"):
+      (S.lang==="en"?"On the academic web":S.lang==="fr"?"Sur le web académique":"En la web académica");
+     const h=node("h2","vitruvia-result-group",label);h.setAttribute("data-result-block",block);h.style.cssText="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;border-bottom:1px solid #C9A84C;padding-bottom:8px;margin-top:28px";list.append(h);lastBlock=block;lastGroup="";
+    }
+   }
    if(S.mode==="all"||S.mode==="ai"){
     const group=byGroup(r);
     if(group!==lastGroup){
