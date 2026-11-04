@@ -17,7 +17,8 @@ const notify=(message,phase="working")=>{
  window.dispatchEvent(new CustomEvent("vitruvia:ai-update",{detail:{message,phase}}));
 };
 const requestJSON=async url=>{const r=await fetch(url,{headers:{Accept:"application/json"}});if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()};
-const urlFor=(source,locus)=>{
+const urlFor=(source,locus,passage)=>{
+ if(passage?.reader&&/^https:\/\//i.test(passage.reader))return passage.reader;
  const base=source.reader||"bibliotheca-graeca-latina.html?work="+encodeURIComponent(source.workId||"");
  return base+(base.includes("?")?"&":"?")+"locus="+encodeURIComponent(locus);
 };
@@ -54,7 +55,7 @@ async function prepareCorpus(){
      locus:passage.locus,workTitle:source.workTitle||data.title||"Texto antiguo",
      author:source.author||data.author||"Autor documentado",
      edition:source.edition||data.version||"",language:source.language||data.language||"",
-     source:source.source||"Biblioteca Vitruviana",url:urlFor(source,passage.locus),
+     source:source.source||"Biblioteca Vitruviana",url:urlFor(source,passage.locus,passage),
      original,translation,excerptText:text,chunk,tf,length:tokens.length,lexical:0
     });
    }
