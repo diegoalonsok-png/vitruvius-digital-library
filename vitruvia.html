@@ -628,6 +628,26 @@ html[data-theme=light] #vitruvia-article .person-locus-entry p[lang=la]{color:#4
 html[data-theme=light] #vitruvia-article .person-edition-links a{color:#51442e}
 @media(max-width:650px){#vitruvia-article .person-locus-entry{padding:13px 14px}#vitruvia-article .person-locus-entry h4{font-size:17px}}
 @media print{#vitruvia-article .person-locus-entry{background:#fff!important;color:#111!important;border-color:#888!important}#vitruvia-article .person-other-language{display:block}}
+
+/* Search results image gallery — visually independent of the unchanged homepage. */
+.vitruvia-image-results{border-top:1px solid #303032;margin:28px 0 34px;padding-top:22px}
+.vitruvia-image-results[hidden]{display:none!important}
+.vitruvia-image-results .image-results-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.vitruvia-image-results h3{font:normal 29px/1.2 Georgia,'Times New Roman',serif;margin:0;color:var(--ink,#eee)}
+.vitruvia-image-results .image-status{font-size:12px;color:#a9aaa9}
+.vitruvia-image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:13px}
+.vitruvia-image-card{border:1px solid #333436;border-radius:10px;background:#171718;overflow:hidden;text-decoration:none;color:#e9e9e9;display:block}
+.vitruvia-image-card:hover,.vitruvia-image-card:focus-visible{border-color:#9f9f9f}
+.vitruvia-image-card img{display:block;width:100%;height:142px;object-fit:contain;background:#0f1010}
+.vitruvia-image-card .image-caption{padding:9px 11px;font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.vitruvia-image-card .image-origin{display:block;font-size:10px;color:#aaa;margin-top:4px}
+.vitruvia-image-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.vitruvia-image-actions a{border:1px solid #444;border-radius:20px;padding:7px 12px;text-decoration:none;font-size:12px}
+.vitruvia-image-actions a:hover{border-color:#aaa}
+html[data-theme=light] .vitruvia-image-card{background:#fff;color:#222;border-color:#ccc}
+html[data-theme=light] .vitruvia-image-results h3{color:#222}
+html[data-theme=light] .vitruvia-image-card .image-origin{color:#555}
+@media print{.vitruvia-image-results{display:none!important}}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -706,6 +726,11 @@ html[data-theme=light] #vitruvia-article .person-edition-links a{color:#51442e}
   <div class="article-grid"><div class="article-body" id="article-body"></div><aside class="article-aside" id="article-aside"></aside></div>
   <div class="article-sources" id="article-sources"></div><div class="article-evidence" id="article-evidence"></div>
 </section>
+<section id="vitruvia-images" class="vitruvia-image-results" hidden aria-label="Imágenes de fuentes documentales">
+ <div class="image-results-head"><h3 id="image-results-title">Imágenes relacionadas</h3><span class="image-status" id="image-results-status" role="status"></span></div>
+ <div id="vitruvia-image-grid" class="vitruvia-image-grid"></div>
+ <nav id="vitruvia-image-actions" class="vitruvia-image-actions" aria-label="Otras búsquedas de imágenes"></nav>
+</section>
 <div id="answer" hidden></div>
 <div class="results-grid"><div id="result-list"><div class="empty">Escribí una palabra, título, autor, concepto o locus para comenzar. Podés probar <strong>symmetria</strong>, <strong>agua</strong> o <strong>Cicerón</strong>.</div></div>
 <aside class="sidebar"><h3 data-i18n="sourcesMethod">Fuentes y método</h3><div id="source-links" aria-live="polite"></div><p data-i18n="sidebarIntro">Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.</p><p class="library-index-help">La Bibliotheca Graeca et Latina está integrada aquí: buscá autor, título griego o latino, nombre traducido, signatura de códice o edición histórica. Abrí el visor PDF o IIIF desde cada ficha, cuando esté acreditado.</p>
@@ -719,6 +744,50 @@ html[data-theme=light] #vitruvia-article .person-edition-links a{color:#51442e}
 <div><h3>Ediciones y DOI</h3><a href="https://doi.org/10.5281/zenodo.23868911" target="_blank" rel="noopener">Biblioteca · 10.5281/zenodo.23868911</a><a href="https://doi.org/10.5281/zenodo.23884757" target="_blank" rel="noopener">V514 · latín / castellano</a><a href="https://doi.org/10.5281/zenodo.23885110" target="_blank" rel="noopener">V554 · latín / francés</a><a href="https://doi.org/10.5281/zenodo.23885404" target="_blank" rel="noopener">V297 · inglés</a></div></div>
 <div class="footer-legal"><span data-i18n="footerLegal">© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.</span><span><a data-i18n="footerMain" href="index.html">Biblioteca principal</a> · Buenos Aires · 2026</span></div></footer>
 </div>
+
+<script>
+/* Public Wikimedia Commons MediaWiki API, without secret keys.
+   External Google image search is an attributed link, not a scraped gallery. */
+(()=>{
+ const section=document.getElementById('vitruvia-images'),grid=document.getElementById('vitruvia-image-grid'),actions=document.getElementById('vitruvia-image-actions'),status=document.getElementById('image-results-status'),title=document.getElementById('image-results-title');
+ if(!section||!grid||!actions)return;
+ let requestId=0,abort=null;
+ const add=(parent,tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;parent.append(el);return el};
+ function close(){requestId++;if(abort)abort.abort();abort=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent=''}
+ function link(label,url){const a=add(actions,'a','',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer'}
+ async function searchImages(query){
+  const q=String(query||'').trim();close();if(!q)return;
+  const current=++requestId;
+  section.hidden=false;
+  const language=document.documentElement.lang||'es';
+  title.textContent=language==='en'?'Related historical images':language==='fr'?'Images historiques associées':'Imágenes históricas relacionadas';
+  status.textContent=language==='en'?'Searching Wikimedia Commons…':language==='fr'?'Recherche dans Wikimedia Commons…':'Buscando en Wikimedia Commons…';
+  link('Wikimedia Commons','https://commons.wikimedia.org/w/index.php?search='+encodeURIComponent(q)+'&title=Special:MediaSearch&type=image');
+  link('Google Imágenes','https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q));
+  link('Europeana','https://www.europeana.eu/es/search?query='+encodeURIComponent(q));
+  const p=new URLSearchParams({action:'query',generator:'search',gsrsearch:q,gsrnamespace:'6',gsrlimit:'18',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'380',format:'json',origin:'*'});
+  abort=new AbortController();
+  try{
+   const timer=setTimeout(()=>abort?.abort(),12000);
+   let response;try{response=await fetch('https://commons.wikimedia.org/w/api.php?'+p.toString(),{signal:abort.signal,headers:{Accept:'application/json'}})}finally{clearTimeout(timer)}
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const data=await response.json();
+   if(current!==requestId)return;
+   const pages=Object.values(data.query?.pages||{}).sort((a,b)=>(a.index||999)-(b.index||999));
+   let count=0;
+   for(const page of pages){
+    const info=page.imageinfo?.[0];if(!info?.thumburl||!info?.descriptionurl||!String(info.mime||'').startsWith('image/'))continue;
+    const a=add(grid,'a','vitruvia-image-card');a.href=info.descriptionurl;a.target='_blank';a.rel='noopener noreferrer';
+    const img=add(a,'img');img.src=info.thumburl;img.loading='lazy';img.decoding='async';img.alt=page.title.replace(/^File:/,'').replace(/_/g,' ');
+    const cap=add(a,'div','image-caption',img.alt);add(cap,'span','image-origin','Wikimedia Commons · ficha y licencia');count++;
+   }
+   status.textContent=count?(count+' '+(language==='en'?'images found':language==='fr'?'images trouvées':'imágenes encontradas')):(language==='en'?'No preview images found. Use the search links.':'Sin imágenes disponibles aquí. Consultá los enlaces de búsqueda.');
+  }catch(e){if(current!==requestId)return;status.textContent='No fue posible cargar las vistas previas; podés consultar los buscadores de imágenes.'}
+ }
+ window.addEventListener('vitruvia:search',e=>searchImages(e.detail?.query));
+ window.addEventListener('vitruvia:clear',close);
+})();
+</script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
 <script src="assets/vitruvia-article.js?v=20261104-expanded-biographies-v2" defer></script>
 <script src="assets/vitruvia-search.js?v=20261104-historical-persons-v1" defer></script>
