@@ -892,6 +892,18 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
   // Iconographic subject must appear as a genuine label, not a loose generic association.
   return best;
  }
+
+ function historicalImageTier(item){
+  const value=normalizeImage([item.name,item.description||'',item.date||'',item.source||''].join(' '));
+  const related=/\b(painting|portrait|painting|oil|canvas|cuadro|pintura|bust|busto|statue|statua|escultura|sculpture|engraving|grabado|reconstruction|reconstruccion|modern|moderno|commemorative|monument|monumento|illustration|ilustracion)\b/.test(value);
+  const primary=/\b(manuscript|manuscrito|codex|codice|folio|miniature|miniat(?:ure|ura)|seal|sello|coin|moneda|medieval|medievale|carolingian|carolingio|contemporary|contemporaneo|documento|charter|carta)\b/.test(value);
+  // Attribution is conservative: a Wikipedia lead image is not automatically a period artifact.
+  return primary&&!/\b(modern|moderno|reconstruction|reconstruccion)\b/.test(value)?0:related?1:2;
+ }
+ function galleryHeading(label){
+  const h=add(grid,'h4','vitruvia-gallery-heading',label);
+  h.style.gridColumn='1 / -1';
+ }
  function renderImageResult(item){
   const a=add(grid,'a','vitruvia-image-card');a.href=item.link;a.target='_blank';a.rel='noopener noreferrer';
   const img=add(a,'img');img.src=item.image;img.loading='lazy';img.decoding='async';img.alt=item.name;
@@ -956,12 +968,20 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
     const score=deity?45:imageRelevance(name,description,aliases,q);
     if(score<45)continue;
     seen.add(info.descriptionurl);
-    ranked.push({name,link:info.descriptionurl,image:info.thumburl,source:'Wikimedia Commons · archivo y licencia en origen',score});
+    ranked.push({name,link:info.descriptionurl,image:info.thumburl,description,source:'Wikimedia Commons · archivo y licencia en origen',score});
    }
    ranked.sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
-   const chosen=ranked.slice(0,48);
-   for(const item of chosen)renderImageResult(item);
-   status.textContent=chosen.length?chosen.length+' imágenes ordenadas por relevancia documental (máximo 48). No se garantiza la atribución histórica sin examinar la ficha.':'No hay imágenes con identificación suficientemente clara. Consultá los archivos enlazados.';
+   const historical=ranked.filter(x=>historicalImageTier(x)===0).slice(0,20);
+   const historicalLinks=new Set(historical.map(x=>x.link));
+   const related=ranked.filter(x=>!historicalLinks.has(x.link)).sort((a,b)=>{
+    const tier=historicalImageTier(a)-historicalImageTier(b);
+    return tier||b.score-a.score||a.name.localeCompare(b.name);
+   }).slice(0,60);
+   if(historical.length){galleryHeading('I · Testimonios históricos identificados · '+historical.length+'/20');for(const item of historical)renderImageResult(item)}
+   if(related.length){galleryHeading('II · Pinturas, retratos, bustos y representaciones relacionadas · '+related.length);for(const item of related)renderImageResult(item)}
+   status.textContent=historical.length+related.length
+    ?(historical.length+related.length)+' imágenes: hasta 20 testimonios históricamente identificados, después representaciones y coincidencias próximas. La datación y autenticidad deben verificarse en la ficha original.'
+    :'No hay imágenes con identificación suficiente; consultá los archivos originales.';
   }catch(e){if(current!==requestId)return;status.textContent='No fue posible consultar las imágenes; usá los archivos externos.'}
  }
 
