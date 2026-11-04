@@ -3,7 +3,7 @@
    NO un modelo generativo de lenguaje. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:44,people:[]};
+const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:44,people:[],historical:[]};
 const lex={
  arquitectura:"architectura architecture arquitectura architecturae edificios aedificia edificaciones construcción building architettura",
  historia:"historia history historique histoire historien history historical roman romain antiguo ancient antigüedad antiquity",
@@ -104,6 +104,39 @@ function liveEditions(q){
    rating:rating+(pdf?4:0),link:libraryURL(w.id,pdf?"pdf":""),pdf,source:ed.provider});
  }return out.sort((a,b)=>b.rating-a.rating).slice(0,12);
 }
+/* Bibliographic chronology from the site's actual historical-editions catalogue.
+   Printed editions are not manuscripts; translations are not necessarily critical editions. */
+function liveHistoricalEditions(q){
+ const query=norm(topicQuery(q));
+ const vitruvian=/\\b(vitruvio|vitruvius|vitruve|vitruvii|de architectura|krohn|bude|budé|rose|giocondo|barbaro|cesariano)\\b/i.test(query);
+ if(!vitruvian)return [];
+ const result=S.historical.map(entry=>{
+  const year=Number.parseInt(entry.year,10)||9999;
+  const isTranslation=/traduc|tradutt|traduit|translation|traducci/i.test([entry.subtitle,entry.description].join(" "));
+  const kind=isTranslation?"Traducción histórica":"Edición histórica / texto crítico";
+  const link=entry.read_url||entry.source_url||"";
+  if(!/^https:\/\//.test(link))return null;
+  return {type:"edition",historicalEdition:true,editionYear:year,
+   title:entry.title,author:[entry.author,entry.year].filter(Boolean).join(" · "),
+   excerpt:[entry.subtitle,entry.publisher].filter(Boolean).join(" · "),
+   meta:kind+" · "+entry.year+" · "+(entry.publisher||"Catálogo histórico"),
+   link,source:"Catálogo de ediciones históricas · Vitruvia",
+   rating:24+(score([entry.title,entry.author,entry.subtitle].join(" "),q,false)||0),
+   links:[{label:"Abrir edición histórica · institución",url:link}]};
+ }).filter(Boolean);
+ // Budé is documented bibliographically; no direct digitized volume is asserted.
+ if(/\\b(bude|budé|vitruvio|vitruvius|vitruve)\\b/i.test(query)){
+  result.push({type:"edition",historicalEdition:true,editionYear:1969,
+   title:"Collection des Universités de France · Budé · De architectura",
+   author:"Les Belles Lettres · colección Budé · varios volúmenes",
+   excerpt:"Ediciones críticas y traducciones francesas publicadas por libros; verificar volumen, editor y año específico.",
+   meta:"Colección académica · no consta visor digital local acreditado",
+   link:"https://www.google.com/search?q="+encodeURIComponent("site:lesbelleslettres.com Vitruve De l'architecture Collection des Universités de France"),
+   source:"Referencia bibliográfica · consultar catálogo editorial",rating:24,
+   links:[{label:"Localizar volumen en la editorial",url:"https://www.google.com/search?q="+encodeURIComponent("site:lesbelleslettres.com Vitruve De l'architecture Collection des Universités de France")}]});
+ }
+ return result.sort((a,b)=>a.editionYear-b.editionYear||b.rating-a.rating);
+}
 const bookLinks={
  vitruvius:"lector-bilingue.html?edition=recensio-es",
  "cicero-officiis":"bibliotheca-graeca-latina.html?work=cicero-officiis",
@@ -157,12 +190,12 @@ function liveBooks(q,concept){return S.works.map(w=>{
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
- const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json","data/onomasticon-vitruvianum.json"];
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json","data/onomasticon-vitruvianum.json","data/catalog-completo.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
  if(results[0].status!=="fulfilled")throw results[0].reason;
  const books=results[0].value,pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
- S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.ready=true;
+ S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.historical=results[4]?.status==="fulfilled"&&Array.isArray(results[4].value)?results[4].value.filter(x=>x.category==="historical"):[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.ready=true;
  $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;$("metric-read").textContent=S.works.filter(verified).length;
  const mw=$("metric-witnesses"),me=$("metric-editions");
  if(mw)mw.textContent=S.witnesses.length;if(me)me.textContent=S.editions.length;
@@ -370,7 +403,7 @@ function markTerms(root,query){
  }
 }
 function renderCard(d){
- const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")),head=node("div","result-head"),title=node("div");
+ const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")+(d.historicalEdition?" historical-edition-card":"")),head=node("div","result-head"),title=node("div");
  if(d.primaryWitness){card.setAttribute("aria-label","Testimonio principal de De architectura: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
  title.append(node("span","kind",T()[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  if(d.author)card.append(node("div","author",d.author));
@@ -468,7 +501,8 @@ function display(rows,query,phase){
  const ordered=S.mode==="all"
   ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,8),
      ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating),
-     ...deduped.filter(r=>libraryTypes.has(r.type)&&r.type!=="manuscript"),
+     ...deduped.filter(r=>r.historicalEdition).sort((a,b)=>a.editionYear-b.editionYear),
+     ...deduped.filter(r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&!r.historicalEdition),
      ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)),
      ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(8)]
   : deduped;
@@ -483,6 +517,7 @@ function display(rows,query,phase){
      section.setAttribute("data-result-group",group);list.append(section);lastGroup=group;
     }
    }
+   if(S.mode==="all"&&r.historicalEdition&&!list.querySelector(".historical-editions-heading")){const heading=node("h4","historical-editions-heading","Ediciones y traducciones históricas · orden cronológico");list.append(heading)}
    const card=renderCard(r);markTerms(card,query);list.append(card)
   }
  }
@@ -539,7 +574,7 @@ async function search(){
  sourceLinks(generalQuery);
  let rows=[];
  if(internal){
-  rows=focused?[...liveManuscripts(q),...liveEditions(q)]:[...liveBooks(q,concept),...liveManuscripts(q),...liveEditions(q),...livePages(q,concept)];
+  rows=focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)];
   if(intent?.preface){
    const book=intent.preface.book;
    const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
