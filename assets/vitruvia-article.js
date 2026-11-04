@@ -660,9 +660,60 @@ function referenceBooks(rows,query){
  }
  return out;
 }
+
+/* Academic dossiers: verified institutional facts, no unverified claims of completeness. */
+function appendCuratedUniversities(rows){
+ const found=(rows||[]).filter(r=>r.curatedAcademic&&r.type==="university"&&r.link);
+ if(!found.length)return;
+ heading(phrase("Instituciones universitarias que estudian la obra","University research and collections","Universités et collections de recherche"));
+ paragraph(phrase("Selección documentada de bibliotecas y proyectos universitarios asociados con esta obra. No representa un listado exhaustivo.",
+ "Verified university libraries and research projects associated with this work; this is not an exhaustive directory.",
+ "Sélection documentée de bibliothèques et de projets de recherche liés à cette œuvre ; non exhaustive."),"article-note");
+ const ul=make("ul",undefined,"article-related");
+ for(const r of found){const li=make("li"),a=href(r.link,r.title);if(a)li.append(a);
+  li.append(make("small"," · "+[r.library,r.excerpt].filter(Boolean).join(" · "),"article-license"));ul.append(li)}
+ $("article-body").append(ul);
+}
+function appendCuratedEvidence(rows){
+ const fragment=(rows||[]).filter(r=>r.curatedAcademic&&r.type==="fragment"&&r.link)
+  .sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999));
+ if(fragment.length){
+  heading(phrase("Papiros y fragmentos antiguos","Ancient papyri and fragments","Papyrus et fragments antiques"));
+  paragraph(phrase("Los fragmentos anteriores al códice no son copias completas de la obra ni tienen formato de libro. Su datación y conservación se atribuyen a la institución custodiante.",
+   "Older fragments are neither complete copies nor bound codices. Dates and locations follow the holding institution.",
+   "Les fragments antérieurs ne sont ni des copies complètes ni des codex reliés. Dates et lieux suivent les notices de conservation."),"article-note");
+  const list=make("ol",undefined,"article-related");
+  for(const r of fragment){const li=make("li"),a=href(r.link,r.title);
+   if(a)li.append(a);li.append(make("small"," · "+[r.codexRepository,r.codexShelfmark,r.meta,r.excerpt].filter(Boolean).join(" · "),"article-license"));list.append(li)}
+  $("article-body").append(list);
+ }
+ const editions=(rows||[]).filter(r=>r.curatedAcademic&&r.type==="edition"&&r.link).sort((a,b)=>(a.editionYear??9999)-(b.editionYear??9999));
+ if(editions.length){
+  heading(phrase("Ediciones del texto original y traducciones identificadas","Identified original editions and translations","Éditions originales et traductions identifiées"));
+  paragraph(phrase("Cada traducción se atribuye a su responsable editorial y a un catálogo de lectura verificado; no se presenta como transcripción propia del códice.",
+   "Each translation is attributed to its editor and catalog; it is not presented as a transcription of the original manuscript.",
+   "Chaque traduction est attribuée à son éditeur et à son catalogue ; elle ne représente pas une transcription du codex."),"article-note");
+  const ul=make("ul",undefined,"article-related");
+  for(const r of editions){const li=make("li"),a=href(r.link,r.title);
+   if(a)li.append(a);li.append(make("small"," · "+[r.author,r.editionYear<9999?r.editionYear:"",r.meta,r.excerpt].filter(Boolean).join(" · "),"article-license"));ul.append(li)}
+  $("article-body").append(ul);
+ }
+ const scholars=(rows||[]).filter(r=>r.curatedAcademic&&r.type==="scholar"&&r.link);
+ if(scholars.length){
+  heading(phrase("Investigadores y estudios especializados","Scholars and specialist studies","Chercheurs et études spécialisées"));
+  paragraph(phrase("Investigadores identificados mediante páginas universitarias y publicaciones académicas. La selección no equivale a una clasificación de prestigio.",
+   "Scholars identified by university pages and academic publications; this is not a ranking.",
+   "Chercheurs identifiés grâce aux universités et publications ; il ne s'agit pas d'un classement."),"article-note");
+  const ul=make("ul",undefined,"article-related");
+  for(const r of scholars){const li=make("li"),a=href(r.link,r.title);if(a)li.append(a);
+   li.append(make("small"," · "+[r.author,r.excerpt].filter(Boolean).join(" · "),"article-license"));ul.append(li)}
+  $("article-body").append(ul);
+ }
+}
+
 function appendManuscriptHierarchy(rows,query){
  const items=(rows||[]).filter(r=>r.type==="manuscript"&&r.link&&(r.codexShelfmark||r.archiveDiscovery)&&
-  (r.primaryWitness||r.archiveDiscovery||relevance({...r,title:[r.title,r.author,r.excerpt].join(" ")},query)>=35))
+  (r.primaryWitness||r.curatedAcademic||r.archiveDiscovery||relevance({...r,title:[r.title,r.author,r.excerpt].join(" ")},query)>=35))
   .sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)).slice(0,25);
  if(!items.length)return;
  heading("Tradición manuscrita · códices y testimonios por obra");
@@ -865,7 +916,9 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ appendCuratedUniversities(rows);
  appendManuscriptHierarchy(rows,documentaryQuery);
+ appendCuratedEvidence(rows);
  appendReferenceBooks(rows,documentaryQuery);
  appendOfficialHistoricalSources(documentaryQuery);
  appendInstitutionalResearch(documentaryQuery);
