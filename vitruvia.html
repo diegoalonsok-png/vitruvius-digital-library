@@ -1029,6 +1029,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1" defer></script>
 <script src="assets/vitruvia-ai.js?v=20261104-evidence-links-v2" defer></script>
 <script src="assets/vitruvia-search.js?v=20261104-provider-repair-v21" defer></script>
+<script src="assets/vitruvia-dictation.js?v=20261104-microphone-v1" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
@@ -1049,6 +1050,9 @@ document.addEventListener('click',function(event){
 .vitruvia-session-tools{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 0;align-items:center}
 .vitruvia-session-tools button{font:inherit;font-size:12px;cursor:pointer;border:1px solid #7776;border-radius:7px;background:transparent;color:inherit;padding:6px 10px}
 .vitruvia-session-tools button[aria-pressed="true"]{outline:1px solid currentColor}
+.vitruvia-session-tools .vitruvia-dictation{display:inline-flex;gap:6px;align-items:center}
+.vitruvia-session-tools .vitruvia-dictation[data-state="listening"]{border-color:#e66b6b;box-shadow:0 0 0 1px #e66b6b}
+.vitruvia-session-tools button:disabled{cursor:default;opacity:.6}
 .vitruvia-session-status{font-size:12px;opacity:.78;margin-top:5px}
 </style>
 <script>
@@ -1060,8 +1064,9 @@ if(!input||!wrap||document.getElementById("vitruvia-session-tools"))return;
 const bar=document.createElement("div");bar.id="vitruvia-session-tools";bar.className="vitruvia-session-tools";
 const status=document.createElement("div");status.className="vitruvia-session-status";status.setAttribute("role","status");
 function button(label,title){const b=document.createElement("button");b.type="button";b.textContent=label;b.title=title;b.setAttribute("aria-label",title);bar.appendChild(b);return b}
-const voice=button("♩ Dictar","Dictar una búsqueda por micrófono");
+const voice=button("Dictar","Dictar una búsqueda por micrófono");
 const erase=button("⌫ Borrar sesión","Borrar consulta, resultados y datos de sesión de Vitruvia");
+erase.id="vitruvia-erase-session";
 const lock=button("◇ Privacidad","No guardar la consulta en la dirección web; no oculta las búsquedas a proveedores externos");
 wrap.append(bar,status);
 const originalPrivacy=document.getElementById("search-privacy");
@@ -1077,26 +1082,11 @@ erase.addEventListener("click",()=>{
  status.textContent="Consulta y sesión local de Vitruvia limpiadas. El historial del navegador y de servicios externos no se puede borrar desde aquí.";
  input.focus();
 });
-const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
-if(!Speech){voice.disabled=true;voice.title="El reconocimiento de voz no está disponible en este navegador";voice.textContent="♩ Dictado no disponible"}
-else{
- let recognition=null;
- function stopDictation(){if(recognition){recognition.onresult=null;recognition.abort();recognition=null;voice.textContent="♩ Dictar";voice.setAttribute("aria-pressed","false")}}
- window.addEventListener("vitruvia:clear",stopDictation);
- document.getElementById("search-form")?.addEventListener("submit",stopDictation);
- voice.addEventListener("click",()=>{
-  if(recognition){recognition.stop();return}
-  recognition=new Speech();recognition.lang=document.getElementById("ui-language")?.value==="en"?"en-US":document.getElementById("ui-language")?.value==="fr"?"fr-FR":"es-AR";
-  recognition.continuous=true;recognition.interimResults=true;
-  const prefix=input.value.trim(),join=prefix?" ":"";
-  recognition.onresult=e=>{let words="";for(let i=0;i<e.results.length;i++)words+=e.results[i][0].transcript+" ";input.value=prefix+join+words.trim();input.dispatchEvent(new Event("input",{bubbles:true}))};
-  recognition.onerror=e=>{status.textContent=e.error==="not-allowed"?"El navegador no permitió usar el micrófono. Habilitá el permiso del sitio y volvé a intentar.":"Dictado: "+e.error};
-  recognition.onend=()=>{recognition=null;voice.textContent="♩ Dictar";voice.setAttribute("aria-pressed","false")};
-  try{recognition.start();voice.textContent="■ Detener dictado";voice.setAttribute("aria-pressed","true");status.textContent="Dictando: revisá el texto antes de buscar."}catch(e){recognition=null;status.textContent="No se pudo iniciar el micrófono."}
- });
-}
+if(window.VitruviaDictation)window.VitruviaDictation.attach({button:voice,input,status});
+else{voice.disabled=true;status.textContent="No se pudo cargar el dictado. Recargá la página para volver a intentarlo."}
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
 </script>
 </body></html>
+
