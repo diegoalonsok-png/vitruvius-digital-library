@@ -254,15 +254,23 @@
       "dating": "c. 58–50 a. C.",
       "reading": {
         "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "status": "PDF histórico verificado en GitHub · Julio César, De bello Gallico, edición latina de Philip Smith, 1842, 236 páginas; aparato e índice editorial. La cobertura de la edición se identifica por el volumen, no por correspondencia folio-locus."
       },
       "manuscript": {
         "manifest": null,
         "status": "Sin facsímil de testimonio concreto validado"
       },
       "pdf": {
-        "url": null,
-        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+        "url": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
+        "status": "Julio César, De bello Gallico, edición latina de Philip Smith, 1842, 236 páginas; aparato e índice editorial. La cobertura de la edición se identifica por el volumen, no por correspondencia folio-locus.",
+        "sizeBytes": 10102000,
+        "pages": 236,
+        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:De_bello_Gallico;_(IA_debellogallico00caesuoft).pdf",
+        "sha1": "63671776bcbde191e9d7136eca1357b4961f90c8",
+        "coverage": "edición histórica en latín",
+        "publicationYear": "1842",
+        "editor": "Philip Smith · London: Simpkin"
       },
       "translation": {
         "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
@@ -273,7 +281,7 @@
         "archive": "https://archive.org/search?query=Commentarii%20de%20bello%20Gallico%20Julio%20C%C3%A9sar",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20Gallico"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "localReader": null,
       "aliases": [
         "César",
@@ -421,7 +429,7 @@
       "dating": "c. 60–50 a. C.",
       "reading": {
         "url": null,
-        "status": "Texto original latino completo de los seis libros alojado en GitHub; traducción inglesa de Leonard y versión castellana en prosa de Rodríguez-Navas, también almacenadas localmente."
+        "status": "PDF histórico verificado en GitHub · On the Nature of Things (De rerum natura), edición londinense de 1880, 312 páginas; inglés, con material latino catalogado por la institución. No sustituye el lector crítico latino en HTML."
       },
       "manuscript": {
         "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
@@ -438,8 +446,16 @@
         }
       },
       "pdf": {
-        "url": null,
-        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+        "url": "documents/classics/lucretius-on-nature-things-1880.pdf",
+        "status": "On the Nature of Things (De rerum natura), edición londinense de 1880, 312 páginas; inglés, con material latino catalogado por la institución. No sustituye el lector crítico latino en HTML.",
+        "sizeBytes": 14643313,
+        "pages": 312,
+        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:On_the_nature_of_things_(De_Rerum_Natura)_(IA_onnatureofthings00lucr_0).pdf",
+        "sha1": "cacf76cc583fdcc2a38a0d5da3b8b430a0a5b3e5",
+        "coverage": "edición histórica",
+        "publicationYear": "1880",
+        "editor": "G. Routledge & Sons / E. P. Dutton"
       },
       "translation": {
         "status": "Inglés: William Ellery Leonard (1916), disponible; castellano: Manuel Rodríguez-Navas (prosa), disponible; francés: edición completa pendiente de identificar, cotejar y alojar."
@@ -560,15 +576,23 @@
       "dating": "29–19 a. C.",
       "reading": {
         "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "status": "PDF histórico verificado en GitHub · P. Vergili Maronis Aeneidos, liber I, ed. Walpole/Johnson (1893), latín y notas inglesas, 172 páginas. Solo libro I: no es una edición íntegra de los doce libros."
       },
       "manuscript": {
         "manifest": null,
         "status": "Sin facsímil de testimonio concreto validado"
       },
       "pdf": {
-        "url": null,
-        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+        "url": "documents/classics/virgil-aeneid-book-i-walpole-1893.pdf",
+        "status": "P. Vergili Maronis Aeneidos, liber I, ed. Walpole/Johnson (1893), latín y notas inglesas, 172 páginas. Solo libro I: no es una edición íntegra de los doce libros.",
+        "sizeBytes": 7895481,
+        "pages": 172,
+        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:P._Vergili_Maronis_Aeneidos,_liber_I_(IA_pvergilimaronisa00virgrich).pdf",
+        "sha1": "245857f7d512a44c2ea5b5cea91a70962651271d",
+        "coverage": "solo Eneida, libro I",
+        "publicationYear": "1893",
+        "editor": "Arthur S. Walpole · Henry Clark Johnson"
       },
       "translation": {
         "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
@@ -579,7 +603,7 @@
         "archive": "https://archive.org/search?query=Aeneis%20Virgilio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Aeneis"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Virgilio",
@@ -4062,18 +4086,26 @@
       "language": "grc",
       "genre": "Filosofía",
       "dating": "siglo IV a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "PDF histórico verificado en GitHub · Platonis Apologia Socratis · edición histórica de James Adam, Cambridge, 1891; ejemplar digitalizado de 188 páginas. No es un códice antiguo."
       },
       "manuscript": {
         "manifest": null,
         "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
       },
       "pdf": {
-        "url": null,
-        "status": "PDF no acreditado ni publicado en la biblioteca."
+        "url": "documents/classics/plato-apologia-socratis-adam-1891.pdf",
+        "status": "Platonis Apologia Socratis · edición histórica de James Adam, Cambridge, 1891; ejemplar digitalizado de 188 páginas. No es un códice antiguo.",
+        "sizeBytes": 13444347,
+        "pages": 188,
+        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:Platonis_Apologia_Socratis_(IA_platonisapologia00plat).pdf",
+        "sha1": "7bd9a78dc92f380cc9648e65e38f5f243944cd1d",
+        "coverage": "obra completa",
+        "publicationYear": "1891",
+        "editor": "James Adam · Cambridge University Press"
       },
       "translation": {
         "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
@@ -4098,18 +4130,26 @@
       "language": "grc",
       "genre": "Poética",
       "dating": "siglo IV a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "PDF histórico verificado en GitHub · Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado."
       },
       "manuscript": {
         "manifest": null,
         "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
       },
       "pdf": {
-        "url": null,
-        "status": "PDF no acreditado ni publicado en la biblioteca."
+        "url": "documents/classics/aristotle-poetics-english-1819.pdf",
+        "status": "Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado.",
+        "sizeBytes": 4148751,
+        "pages": 102,
+        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:Aristotle%27s_poetics_-_literally_translated,_with_explanatory_notes_and_an_analysis_(IA_aristotlespoetic00arisiala).pdf",
+        "sha1": "8348e888351f3e34b4ab6b091013fe420691323c",
+        "coverage": "traducción inglesa completa de Poética",
+        "publicationYear": "1819",
+        "editor": "London: G. & W. B. Whittaker"
       },
       "translation": {
         "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
