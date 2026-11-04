@@ -72,6 +72,9 @@ async function mountPdf(target,item){
  const searchForm=el("form","classical-pdf-find");
  const input=el("input");input.type="search";input.placeholder=tr("Buscar texto OCR en el PDF…","Search PDF text layer…","Rechercher le texte OCR…");input.maxLength=100;
  input.setAttribute("aria-label",input.placeholder);searchForm.append(input);
+ const findMode=el("select");findMode.setAttribute("aria-label",tr("Tipo de búsqueda","Search type","Type de recherche"));
+ for(const [v,l] of [["exact",tr("Palabra exacta","Exact word","Mot exact")],["semantic",tr("Por sentido · IA","By meaning · AI","Par le sens · IA")]]){const o=el("option",null,l);o.value=v;findMode.append(o)}
+ searchForm.append(findMode);
  const find=el("button",null,tr("Buscar","Search","Chercher"));find.type="submit";searchForm.append(find);
  const searchResult=el("div","classical-pdf-search-results");
  target.append(top,searchForm,searchResult,reader,status,attribution);
@@ -120,9 +123,64 @@ async function mountPdf(target,item){
   btn.addEventListener("click",()=>{loadPage(page);reader.scrollIntoView({block:"start",behavior:"smooth"})});
   searchResult.append(btn);
  }
+ let pageTexts=null;
+ async function allPageTexts(mine){
+  if(pageTexts)return pageTexts;const out=[];
+  for(let n=1;n<=pdf.numPages;n++){
+   if(mine!==activeSearch||token!==session||!target.isConnected)return null;
+   try{const tc=await (await pdf.getPage(n)).getTextContent();out.push({id:String(n),page:n,text:tc.items.map(x=>x.str||"").join(" ").replace(/\s+/g," ").trim()})}catch{out.push({id:String(n),page:n,text:""})}
+   if(n%25===0){searchResult.textContent=tr("Leyendo el texto del PDF: ","Reading PDF text: ","Lecture du texte : ")+n+" / "+pdf.numPages+"…";await new Promise(r=>setTimeout(r,0))}
+  }
+  return pageTexts=out;
+ }
+ const foldTxt=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+ const STOPW=new Set("del los las una unos unas por para con sobre que the and for with from des les une pour avec dans sur qui cum sed est sunt quod quae atque".split(" "));
+ const qStems=q=>foldTxt(q).split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>2&&!STOPW.has(w)).map(w=>w.length>6?w.slice(0,-2):w.length>4?w.slice(0,-1):w);
+ function markInto(node,text,query){
+  const keys=qStems(query);
+  for(const part of String(text).split(/(\s+)/)){const w=foldTxt(part).replace(/[^\p{L}\p{N}]/gu,"");
+   if(w&&keys.some(k=>w.startsWith(k)))node.append(el("mark",null,part));else node.append(part)}
+ }
+ function bestWindow(text,query,len=240){
+  const f=foldTxt(text),keys=qStems(query);let at=-1;for(const k of keys){const i=f.indexOf(k);if(i>=0&&(at<0||i<at))at=i}
+  const from=Math.max(0,(at<0?0:at)-80);return (from?"…":"")+text.slice(from,from+len)+(from+len<text.length?"…":"");
+ }
+ function printPdfDossier(query,meta){
+  const w=window.open("","_blank");if(!w){window.print();return}
+  const d=w.document;d.title=tr("Dosier · ","Dossier · ","Dossier · ")+query;
+  const st=d.createElement("style");st.textContent="body{font:12pt Georgia,serif;color:#1B2A4A;margin:2cm}h1{font-size:17pt;margin:0 0 4pt}p.meta{font:9pt system-ui,sans-serif;color:#555;margin:0 0 14pt}h2{font-size:12pt;border-bottom:1px solid #C9A84C;padding-bottom:3pt;margin:16pt 0 6pt}.hit{margin:0 0 9pt;page-break-inside:avoid}mark{background:#f3e3a6;color:inherit}";
+  d.head.append(st);const h=d.createElement("h1");h.textContent=(title||"PDF")+" · «"+query+"»";const m=d.createElement("p");m.className="meta";m.textContent=meta+" · Vitruvius Digital Library · "+new Date().toLocaleDateString();d.body.append(h,m);
+  for(const n of searchResult.querySelectorAll("[data-pdf-group],[data-pdf-hit]")){if(n.dataset.pdfGroup){const g=d.createElement("h2");g.textContent=n.textContent;d.body.append(g)}else{const x=d.createElement("div");x.className="hit";x.innerHTML=n.innerHTML;d.body.append(x)}}
+  w.setTimeout(()=>{w.focus();w.print()},300);
+ }
+ async function semanticPdfSearch(term,mine){
+  const texts=await allPageTexts(mine);if(!texts)return;
+  if(!texts.some(t=>t.text.length>40)){searchResult.textContent=tr("Este facsímil no tiene OCR utilizable; la búsqueda por sentido necesita texto.","No usable OCR in this facsimile.","Pas d'OCR utilisable.");return}
+  searchResult.textContent=tr("Buscando por sentido… la primera vez el navegador descarga el modelo multilingüe (~120 MB); si no puede, se usa BM25.","Searching by meaning… first use downloads the multilingual model (~120 MB).","Recherche par le sens…");
+  if(!window.VitruviaAI)await new Promise(r=>{const sc=document.createElement("script");sc.src="assets/vitruvia-ai.js?v=20261104-rank-v1";sc.onload=r;sc.onerror=r;document.head.append(sc)});
+  if(!window.VitruviaAI?.rank){searchResult.textContent=tr("Motor de búsqueda por sentido no disponible.","Semantic engine unavailable.","Moteur indisponible.");return}
+  const res=await window.VitruviaAI.rank(term,texts.filter(t=>t.text.length>40),{limit:24});
+  if(mine!==activeSearch)return;searchResult.replaceChildren();
+  if(!res.rows.length){searchResult.textContent=tr("No hay páginas relacionadas.","No related pages.","Aucune page liée.");return}
+  const hits=res.rows.map(r=>({...r,page:r.doc.page})).sort((a,b)=>a.page-b.page);
+  const groups=[];for(const h of hits){const g=groups.at(-1);if(g&&h.page-g.at(-1).page<=3)g.push(h);else groups.push([h])}
+  groups.sort((a,b)=>Math.max(...b.map(x=>x.score))-Math.max(...a.map(x=>x.score)));
+  const meta=hits.length+tr(" páginas en "," pages in "," pages en ")+groups.length+tr(" tramos · "," sections · "," passages · ")+(res.mode==="neural"?tr("IA semántica (E5 multilingüe) + texto","semantic AI (E5) + text","IA sémantique + texte"):tr("búsqueda textual BM25 (sin modelo de IA)","BM25 text search (no AI model)","recherche BM25"));
+  const head=el("p","classical-pdf-semantic-meta",meta);const pr=el("button","classical-pdf-search-hit",tr("Imprimir dosier","Print dossier","Imprimer le dossier"));pr.type="button";pr.addEventListener("click",()=>printPdfDossier(term,meta));
+  searchResult.append(head,pr);
+  for(const g of groups){
+   const a=g[0].page,b=g.at(-1).page;const gh=el("h4","classical-pdf-semantic-group",(a===b?tr("Página ","Page ","Page ")+a:tr("Páginas ","Pages ","Pages ")+a+"–"+b)+" · "+g.length);gh.dataset.pdfGroup="1";searchResult.append(gh);
+   for(const h of g){const btn=el("button","classical-pdf-search-hit");btn.type="button";btn.dataset.pdfHit=String(h.page);
+    btn.append(el("strong",tr("Página ","Page ","Page ")+h.page+" · "));btn.append(el("small",null,h.exact?tr("frase literal · ","literal phrase · ","phrase littérale · "):res.mode==="neural"?tr("por sentido · ","by meaning · ","par le sens · "):tr("términos · ","terms · ","termes · ")));
+    markInto(btn,bestWindow(h.doc.text,term),term);btn.addEventListener("click",()=>{loadPage(h.page);reader.scrollIntoView({block:"start",behavior:"smooth"})});searchResult.append(btn)}
+  }
+ }
+ if(!document.getElementById("classical-pdf-semantic-style")){const st=document.createElement("style");st.id="classical-pdf-semantic-style";
+  st.textContent=".classical-pdf-semantic-group{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#8c6c39;border-bottom:1px solid #C9A84C;padding:14px 0 5px;margin:6px 0 4px}.classical-pdf-search-results mark{background:rgba(201,168,76,.32);color:inherit;padding:0 1px;border-radius:2px}.classical-pdf-semantic-meta{font:12px system-ui,sans-serif;color:#6b6f75;margin:6px 0}";document.head.append(st)}
  searchForm.addEventListener("submit",async ev=>{
   ev.preventDefault();
   if(!pdf)return;
+  if(findMode.value==="semantic"){const t=input.value.trim();searchResult.replaceChildren();if(t.length<2)return;await semanticPdfSearch(t,++activeSearch);return}
   const term=input.value.trim();searchResult.replaceChildren();if(term.length<2)return;
   const mine=++activeSearch;
   searchResult.textContent=tr("Buscando texto extraíble en el PDF; puede no haber OCR…","Searching extracted PDF text; OCR may be unavailable…","Recherche du texte extractible ; OCR possiblement absent…");
