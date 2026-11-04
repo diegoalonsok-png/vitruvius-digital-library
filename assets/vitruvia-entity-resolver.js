@@ -43,10 +43,55 @@ async function localize(identity,lang){
   return translated?{...translated,wikidataId:translated.wikidataId||identity.wikidataId,originalCanonical:identity.canonical,localized:true}:identity;
  }catch{return identity}
 }
+// Disambiguate via Wikidata authority aliases and cross-language coverage.
+// Matching an unaccented stage name must not outrank a widely attested
+// historical figure merely because the article title is an exact string match.
+async function authorityCandidates(q,lang){
+ const languages=[...new Set([lang,"es","en"])];
+ const hits=(await Promise.allSettled(languages.map(language=>
+  get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
+   action:"wbsearchentities",search:q,language,type:"item",limit:"9",format:"json",origin:"*"
+  }))
+ ))).flatMap((v,i)=>v.status==="fulfilled"?(v.value.search||[]).map((x,j)=>({...x,rank:j,searchLang:languages[i]})):[]);
+ const ids=[...new Set(hits.map(x=>x.id).filter(x=>/^Q\d+$/.test(x)))].slice(0,14);
+ if(!ids.length)return null;
+ const d=await get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
+  action:"wbgetentities",ids:ids.join("|"),props:"labels|aliases|descriptions|sitelinks",
+  languages:"es|en|fr",format:"json",origin:"*"
+ }));
+ const ranked=ids.map(id=>{
+  const entity=d.entities?.[id];if(!entity||entity.missing!==undefined)return null;
+  const labels=Object.values(entity.labels||{}).map(x=>x.value);
+  const aliases=Object.values(entity.aliases||{}).flat().map(x=>x.value);
+  const site=entity.sitelinks?.[lang+"wiki"]||entity.sitelinks?.eswiki||entity.sitelinks?.enwiki;
+  if(!site?.title)return null;
+  const exactLabel=labels.some(x=>norm(x)===norm(q)),exactAlias=aliases.some(x=>norm(x)===norm(q));
+  const searches=hits.filter(x=>x.id===id);
+  const searchMatch=searches.some(x=>norm(x.label)===norm(q)||norm(x.match?.text)===norm(q));
+  const coverage=Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length;
+  const score=(exactLabel?140:0)+(exactAlias?130:0)+(searchMatch?45:0)+
+   Math.min(coverage,180)*3+
+   (site.site===lang+"wiki"?35:0)+
+   Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
+  return {id,title:site.title,lang:site.site?.replace(/wiki$/,"")||lang,
+   score,coverage,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
+ }).filter(Boolean).sort((a,b)=>b.score-a.score);
+ const best=ranked[0];
+ if(!best||(best.score<130&&best.coverage<12))return null;
+ const resolved=await lookupTitle(best.title,best.lang);
+ return resolved?{...resolved,wikidataId:best.id,authorityDescription:best.description,
+  authorityCoverage:best.coverage,disambiguated:true}:null;
+}
 async function resolve(query,preferredLang="es"){
  const q=clean(query);
  if(!q||q.length>130)return null;
  const lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
+ // Wikidata has aliases such as "Virgen María" for the historical figure.
+ // Direct page-title matching on another language can instead return a DJ.
+ try{
+  const authority=await authorityCandidates(q,lang);
+  if(authority)return await localize(authority,lang);
+ }catch{}
  const langs=[...new Set([lang,"es","en"])];
  for(const language of langs){
   try{
@@ -54,8 +99,7 @@ async function resolve(query,preferredLang="es"){
    if(exact&&(norm(exact.canonical)===norm(q)||exact.aliases.some(x=>norm(x)===norm(q))))
     return await localize(exact,lang);
   }catch{}
- }
- for(const language of langs){
+  // Search the preferred language BEFORE accepting an exact English homonym.
   try{const hit=await searchTitle(q,language);if(hit)return await localize(hit,lang)}catch{}
  }
  return null;
