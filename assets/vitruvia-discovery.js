@@ -115,13 +115,46 @@
   for(const item of items)if(chosen.length<5&&!seen.has(item.page)){chosen.push(item);seen.add(item.page)}
   return sortImages(chosen,topic);
  }
+ /* Scholarly list entries must not be collapsed into an uninterrupted paragraph.
+    Keep each source's punctuation and wording intact; only recover boundaries. */
+ function splitBibliographyEntries(value){
+  const source=String(value||"").replace(/\s+/g," ").trim();
+  if(!source)return [];
+  // The Wikipedia plain-text extract sometimes joins all bibliography entries
+  // with spaces. A new surname/author/year record or repeat-author dash is a
+  // trustworthy editorial boundary, unlike every full stop or ISBN.
+  const record=/(?:\p{Lu}[\p{L}’'-]+(?:\s+(?:\p{Lu}[\p{L}’'-]+|de|del|la|las|los|y|van|von)){0,6}\s*,\s*\p{Lu}[\p{L}’'-]+(?:\s+\p{Lu}[\p{L}’'-]+){0,5}\s*(?:\((?:1[5-9]\d{2}|20\d{2})\)|,\s*(?:ed|dir|coord)\.)|[—–]\s*\((?:1[5-9]\d{2}|20\d{2})\))/giu;
+  const starts=[];
+  for(const found of source.matchAll(record)){
+   const before=source.slice(0,found.index).trimEnd();
+   // Avoid splitting on names appearing in the middle of a book title.
+   if(before&&!/[.!?;]$/.test(before))continue;
+   starts.push(found.index);
+  }
+  if(starts.length<2)return [source];
+  if(starts[0]!==0)starts.unshift(0);
+  return starts.map((from,i)=>source.slice(from,starts[i+1]??source.length).trim()).filter(Boolean);
+ }
  function parseExtract(raw){
-  const blocks=[];let buffer=[];
-  const flush=()=>{const text=buffer.join(" ").replace(/\s+/g," ").trim();buffer=[];if(text)blocks.push({type:"paragraph",text})};
+  const blocks=[];let buffer=[],bibliography=false;
+  const bibliographyHeading=heading=>/^(?:bibliograf[ií]a(?:\s|$)|referencias(?:\s+bibliogr[aá]ficas)?$|bibliography$|references$|works cited$|bibliographie$|literaturverzeichnis$|fuentes citadas$)/i.test(heading);
+  const flush=()=>{
+   const content=buffer.join(" ").replace(/\s+/g," ").trim();
+   buffer=[];
+   if(!content)return;
+   if(bibliography){
+    for(const entry of splitBibliographyEntries(content))blocks.push({type:"bibliography-item",text:entry});
+   }else blocks.push({type:"paragraph",text:content});
+  };
   for(const line of String(raw||"").split(/\r?\n/)){
    const text=line.trim(),heading=text.match(/^(={2,6})\s*(.+?)\s*\1$/);
-   if(heading){flush();blocks.push({type:"heading",text:heading[2],level:heading[1].length})}
-   else if(!text)flush();else buffer.push(text);
+   if(heading){
+    flush();bibliography=bibliographyHeading(heading[2].trim());
+    blocks.push({type:"heading",text:heading[2],level:heading[1].length});
+   }else if(!text)flush();
+   else if(bibliography&&/^(?:[*•]\s+|\d+[.)]\s+)/.test(text)){
+    flush();buffer.push(text.replace(/^(?:[*•]\s+|\d+[.)]\s+)/,""));
+   }else buffer.push(text);
   }
   flush();return blocks;
  }
