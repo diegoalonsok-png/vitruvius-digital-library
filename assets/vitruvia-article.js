@@ -104,21 +104,21 @@ function renderPreface(top,rows){
  const book=Number(top.prefaceBook||top.book)||null;
  const title=book?"De architectura · "+phrase("Prefacio del Libro ","Preface of Book ","Préface du livre ")+roman[book]:
   phrase("Prefacios de los diez libros de De architectura","Prefaces to the ten books of De architectura","Préfaces des dix livres du De architectura");
- reset(title,"Marco Vitruvio Polión · "+phrase("V514 (castellano) / V297 (inglés)","V514 (Spanish) / V297 (English)","V514 (espagnol) / V297 (anglais)"),
+ reset(title,"Marco Vitruvio Polión · "+phrase("V514 (castellano) / V554 (francés) / V297 (inglés)","V514 (Spanish) / V554 (French) / V297 (English)","V514 (espagnol) / V554 (français) / V297 (anglais)"),
  phrase("Texto latino y traducciones editoriales · locus comprobado","Latin text and editorial translations · indexed locus","Texte latin et traductions éditoriales · locus indexé"));
  if(!all.length){
-  paragraph(phrase("Localizando los prefacios en las ediciones estructuradas V514 y V297…",
-   "Locating the prefaces in the indexed V514 and V297 editions…",
-   "Repérage des préfaces dans les éditions indexées V514 et V297…"),"article-lead");
+  paragraph(phrase("Localizando los prefacios en las ediciones estructuradas V514, V554 y V297…",
+   "Locating the prefaces in the indexed V514, V554 and V297 editions…",
+   "Repérage des préfaces dans les éditions indexées V514, V554 et V297…"),"article-lead");
   const a=href(top.link,phrase("Abrir prefacio del tratado ↗","Open preface ↗","Ouvrir la préface ↗"));
   if(a)$("article-body").append(a);
   return;
  }
  const matching=book?all.filter(r=>r.book===book):all;
  paragraph(book?phrase(
-   "Este prefacio está identificado por sus loci en las ediciones del tratado. Se muestra el texto latino junto a la traducción castellana V514 y la inglesa V297, conservando las diferencias editoriales.",
-   "This preface is identified by locus in the editions. The Latin text is shown alongside the Spanish V514 and English V297 translations, with their editorial differences kept distinct.",
-   "Cette préface est identifiée par ses loci dans les éditions. Le latin est présenté avec les traductions espagnole V514 et anglaise V297, sans confondre les variantes éditoriales."):
+   "Este prefacio está identificado por sus loci en las ediciones del tratado. Se muestra el texto latino junto a las traducciones castellana V514, francesa V554 e inglesa V297, conservando las diferencias editoriales.",
+   "This preface is identified by locus in the editions. The Latin text is shown alongside Spanish V514, French V554 and English V297, with editorial differences kept distinct.",
+   "Cette préface est identifiée par ses loci dans les éditions. Le latin est présenté avec les traductions espagnole V514, française V554 et anglaise V297, sans confondre les variantes éditoriales."):
    phrase("Índice de los prefacios de los diez libros. Elegí un libro para leer todos sus pasajes en latín y traducción.",
     "Index of the prefaces to the ten books. Choose a book to read each passage in Latin and translation.",
     "Index des préfaces des dix livres. Choisissez un livre pour lire les passages latins et leurs traductions."),"article-lead");
@@ -138,17 +138,17 @@ function renderPreface(top,rows){
    paragraph(phrase(entries.length+" pasajes indexados. El prefacio completo está disponible en el lector paralelo.",
     entries.length+" indexed passages. The complete preface is available in the parallel reader.",
     entries.length+" passages indexés. La préface complète est disponible dans le lecteur parallèle."),"article-note");
-   for(const ed of ["recensio-es","theory-en"]){
+   for(const ed of ["recensio-es","recensio-fr","theory-en"]){
     const row=matching.find(x=>x.book===bookNumber&&x.edition===ed);
     if(!row)continue;
-    const a=href(row.link,phrase("Leer ","Read ","Lire ")+(ed==="recensio-es"?"V514 · castellano":"V297 · English")+" ↗");
+    const a=href(row.link,phrase("Leer ","Read ","Lire ")+(ed==="recensio-es"?"V514 · castellano":ed==="recensio-fr"?"V554 · français":"V297 · English")+" ↗");
     if(a)body.append(a,document.createTextNode(" "));
    }
    continue;
   }
   for(const [locus,editions] of entries){
    const latin=editions["recensio-es"]||editions["theory-en"];
-   const es=editions["recensio-es"],en=editions["theory-en"];
+   const es=editions["recensio-es"],fr=editions["recensio-fr"],en=editions["theory-en"];
    const wrap=make("section",undefined,"preface-entry");
    const ref=make("h4",locus);ref.className="preface-locus";wrap.append(ref);
    if(latin?.latin){
@@ -159,12 +159,16 @@ function renderPreface(top,rows){
     const label=make("div","V514 · CASTELLANO","preface-language");
     const text=make("p",es.translation,"preface-translation");text.lang="es";wrap.append(label,text);
    }
+   if(fr?.translation){
+    const label=make("div","V554 · FRANÇAIS","preface-language");
+    const text=make("p",fr.translation,"preface-translation");text.lang="fr";wrap.append(label,text);
+   }
    if(en?.translation){
     const label=make("div","V297 · ENGLISH","preface-language");
     const text=make("p",en.translation,"preface-translation");text.lang="en";wrap.append(label,text);
    }
    const links=make("div",undefined,"preface-editions");
-   for(const [ed,version] of [["recensio-es","V514"],["theory-en","V297"]]){
+   for(const [ed,version] of [["recensio-es","V514"],["recensio-fr","V554"],["theory-en","V297"]]){
     if(!editions[ed])continue;
     const a=href("lector-bilingue.html?edition="+ed+"&locus="+encodeURIComponent(locus),
       phrase("Abrir locus ","Open locus ","Ouvrir locus ")+locus+" · "+version);
@@ -174,9 +178,9 @@ function renderPreface(top,rows){
   }
  }
  paragraph(phrase(
-  "Nota filológica: el texto latino se presenta según V514 y las traducciones según sus ediciones identificadas. No se afirma que estas lecturas correspondan literalmente a un folio específico del Codex H sin cotejo. La traducción francesa V554 no se muestra hasta disponer de un índice estructurado verificable.",
-  "Philological note: Latin follows V514, and translations retain their edition attribution. No particular reading is attributed to a Codex H folio without collation. French V554 is not shown until a verified structured index is available.",
-  "Note philologique : le latin suit V514 et les traductions sont attribuées à leurs éditions. Aucun folio de H n’est cité sans collation. La version française V554 ne sera intégrée qu’après vérification de son index."),"article-note");
+  "Nota filológica: el texto latino se presenta según V514 y las traducciones según sus ediciones identificadas. No se afirma que estas lecturas correspondan literalmente a un folio específico del Codex H sin cotejo. Las tres ediciones V514, V554 y V297 se muestran con sus procedencias independientes.",
+  "Philological note: Latin follows V514, and translations retain their edition attribution. No particular reading is attributed to a Codex H folio without collation. The three V514, V554 and V297 editions retain their independent provenance.",
+  "Note philologique : le latin suit V514 et les traductions sont attribuées à leurs éditions. Aucun folio de H n’est cité sans collation. Les trois éditions V514, V554 et V297 conservent leur provenance propre."),"article-note");
  const refs=matching.map(r=>({...r,title:"De architectura · "+r.version+" · praef. "+roman[r.book]}));
  aside(refs);references(refs);buildContents();
 }
