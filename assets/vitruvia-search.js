@@ -59,6 +59,17 @@ const libraryURL=(id,view,ms)=>"bibliotheca-graeca-latina.html?"+new URLSearchPa
 const workString=w=>[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
 const witnessesFor=id=>S.witnesses.filter(ms=>(ms.workIds||[]).includes(id));
 const editionsFor=id=>S.editions.filter(ed=>ed.workId===id);
+/* Chronological manuscript ordering: known dates before undated witnesses.
+   Century estimates remain estimates; no manuscript is labeled an autograph. */
+function codexDateStart(date){
+ const raw=norm(date||"");
+ const match=raw.match(/(?:^|\s)(\d{3,4})\s*(?:[–-]\s*\d{3,4})?/);
+ if(match)return Number(match[1]);
+ const roman={"i":1,"ii":2,"iii":3,"iv":4,"v":5,"vi":6,"vii":7,"viii":8,"ix":9,"x":10,"xi":11,"xii":12,"xiii":13,"xiv":14,"xv":15,"xvi":16,"xvii":17,"xviii":18,"xix":19,"xx":20};
+ const century=raw.match(/(?:siglo|century|siecle|sec)\s+([ivx]+)/);
+ if(century&&roman[century[1]])return (roman[century[1]]-1)*100;
+ return 9999;
+}
 function liveManuscripts(q){
  const out=[];
  for(const ms of S.witnesses){
@@ -69,12 +80,13 @@ function liveManuscripts(q){
   const target=titles.find(w=>score(workString(w),q,false)>10)||titles[0];
   const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
   out.push({type:"manuscript",title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
-   meta:"TESTIMONIO CODICOLÓGICO · "+ms.date+" · "+(ms.manifest?"IIIF":"visor institucional"),
+   meta:"TESTIMONIO MANUSCRITO · "+(ms.date||"sin fecha documentada")+" · "+(ms.shelfmark||"sin signatura")+" · "+(ms.manifest?"IIIF":"visor institucional"),
+   codexDate:codexDateStart(ms.date),codexShelfmark:ms.shelfmark,codexRepository:ms.library,
    rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
    link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
    links:[{label:"Ficha institucional",url:ms.record},{label:"Visor de la institución",url:ms.viewer}].filter(x=>x.url),
    source:"Bibliotheca Graeca et Latina"});
- }return out.sort((a,b)=>b.rating-a.rating).slice(0,14);
+ }return out.sort((a,b)=>a.codexDate-b.codexDate||b.rating-a.rating).slice(0,30);
 }
 function liveEditions(q){
  const out=[];
