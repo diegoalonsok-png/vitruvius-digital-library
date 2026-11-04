@@ -123,7 +123,7 @@
   // The Wikipedia plain-text extract sometimes joins all bibliography entries
   // with spaces. A new surname/author/year record or repeat-author dash is a
   // trustworthy editorial boundary, unlike every full stop or ISBN.
-  const record=/(?:\p{Lu}[\p{L}’'-]+(?:\s+(?:\p{Lu}[\p{L}’'-]+|de|del|la|las|los|y|van|von)){0,6}\s*,\s*\p{Lu}[\p{L}’'-]+(?:\s+\p{Lu}[\p{L}’'-]+){0,5}\s*(?:\((?:1[5-9]\d{2}|20\d{2})\)|,\s*(?:ed|dir|coord)\.)|[—–]\s*\((?:1[5-9]\d{2}|20\d{2})\))/giu;
+  const record=/(?:\p{Lu}[\p{L}’'-]+(?:\s+(?:\p{Lu}[\p{L}’'-]+|de|del|la|las|los|y|van|von)){0,6}\s*,\s*\p{Lu}[\p{L}’'-]+(?:\s+\p{Lu}[\p{L}’'-]+){0,5}\s*(?:\((?:1[5-9]\d{2}|20\d{2})\)|,\s*(?:ed|dir|coord)\.)|[—–]\s*\((?:1[5-9]\d{2}|20\d{2})\))/gu;
   const starts=[];
   for(const found of source.matchAll(record)){
    const before=source.slice(0,found.index).trimEnd();
