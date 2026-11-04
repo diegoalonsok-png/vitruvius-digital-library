@@ -70,18 +70,89 @@ function workSearchText(w){return [w.author,w.title,w.genre,w.dating,w.language,
  ...(w.historicEditions||[]).flatMap(ed=>[ed.title,ed.editor,ed.year,ed.provider])].join(" ")}
 function filters(){const q=fold($("classic-query").value.trim()),lang=$("classic-language").value,genre=$("classic-genre").value,availability=$("classic-availability")?.value||"",period=$("classic-period")?.value||"";return works.filter(w=>(period!=="focus"||periodFocus(w))&&(!lang||w.language===lang)&&(!genre||w.genre===genre)&&(!availability||(availability==="local"?isLocal(w):availability==="source"?hasSource(w)&&!isLocal(w):!hasSource(w)))&&(!q||q.split(/\s+/).every(t=>fold(workSearchText(w)).includes(t))))}
 let suggestionIndex=-1;
+function suggestedWorks(){
+ const matched=filters();
+ // Return EVERY matched work, not the previous arbitrary 10-result cap.
+ // Prefer readable editions, then verified external text and catalog records.
+ const priority=w=>isLocal(w)?0:hasSource(w)?1:2;
+ return matched.sort((a,b)=>priority(a)-priority(b)||
+  fold(a.author).localeCompare(fold(b.author))||
+  fold(a.title).localeCompare(fold(b.title)));
+}
+function suggestionLabel(key){
+ const dict={
+  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Elegí cualquier título para abrir su ficha y su lector disponible.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
+  en:{count:"matching works",local:"readable here",external:"with external sources",all:"Choose any title to open its record and available reader.",edition:"Identified edition",none:"No matching works under the current filters."},
+  fr:{count:"œuvres trouvées",local:"à lire ici",external:"avec source externe",all:"Choisissez un titre pour consulter sa notice et son lecteur disponible.",edition:"Édition identifiée",none:"Aucune œuvre correspondante avec ces filtres."}
+ };
+ return (dict[language()]||dict.es)[key];
+}
 function showBookSuggestions(){
  const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
- const query=field.value.trim();if(query.length<2){hideBookSuggestions();return}
-  const matches=filters().slice(0,10);list.replaceChildren();suggestionIndex=-1;
- if(!matches.length){const empty=document.createElement("div");empty.className="classic-suggestion";empty.textContent=language()==="en"?"No matching books.":"No hay libros coincidentes.";list.append(empty)}
- else for(const w of matches){const item=document.createElement("button");item.type="button";item.className="classic-suggestion";item.setAttribute("role","option");item.dataset.work=w.id;item.setAttribute("aria-selected","false");
- const title=document.createElement("strong");title.textContent=w.title;const meta=document.createElement("small");meta.textContent=w.author+" · "+statusLabel(w);
- item.append(title,meta);item.addEventListener("mousedown",event=>event.preventDefault());item.addEventListener("click",()=>selectSuggestion(w.id));list.append(item)}
+ const query=field.value.trim();
+ if(query.length<2){hideBookSuggestions();return}
+ const matches=suggestedWorks(),exact=fold(query);
+ list.replaceChildren();suggestionIndex=-1;
+ if(!matches.length){
+  const empty=document.createElement("div");empty.className="classic-suggestion-empty";
+  empty.textContent=suggestionLabel("none");list.append(empty);
+ }else{
+  const heading=document.createElement("div");heading.className="classic-suggestions-heading";
+  heading.textContent=matches.length+" "+suggestionLabel("count")+" · "+
+   matches.filter(isLocal).length+" "+suggestionLabel("local")+" · "+
+   matches.filter(w=>hasSource(w)&&!isLocal(w)).length+" "+suggestionLabel("external");
+  list.append(heading);
+  const hint=document.createElement("p");hint.className="classic-suggestions-help";
+  hint.textContent=suggestionLabel("all");list.append(hint);
+  // Every work appears as a selectable row. Large lists scroll without being truncated.
+  for(const w of matches){
+   const item=document.createElement("button");item.type="button";
+   item.className="classic-suggestion";item.setAttribute("role","option");
+   item.dataset.work=w.id;item.setAttribute("aria-selected","false");
+   const title=document.createElement("strong");title.textContent=w.title;
+   const meta=document.createElement("small");
+   meta.textContent=w.author+" · "+(w.language==="grc"?"Griego / Greek":"Latín / Latin")+" · "+statusLabel(w);
+   item.append(title,meta);
+   item.addEventListener("mousedown",event=>event.preventDefault());
+   item.addEventListener("click",()=>selectSuggestion(w.id));
+   list.append(item);
+   // Edition queries should expose the matching edition without pretending it is a
+   // second literary work. Selecting it opens the containing work's editions.
+   const editions=(w.historicEditions||[]).filter(ed=>
+    [ed.title,ed.editor,ed.year,ed.provider].some(value=>fold(value).includes(exact)));
+   for(const ed of editions){
+    const entry=document.createElement("button");entry.type="button";
+    entry.className="classic-suggestion classic-edition-suggestion";
+    entry.setAttribute("role","option");entry.dataset.work=w.id;entry.dataset.edition="true";
+    entry.setAttribute("aria-selected","false");
+    const label=document.createElement("strong");label.textContent=suggestionLabel("edition")+": "+ed.title;
+    const desc=document.createElement("small");desc.textContent=[w.title,ed.editor,ed.year,ed.provider].filter(Boolean).join(" · ");
+    entry.append(label,desc);
+    entry.addEventListener("mousedown",event=>event.preventDefault());
+    entry.addEventListener("click",()=>selectSuggestion(w.id,"edition"));
+    list.append(entry);
+   }
+  }
+ }
  list.hidden=false;field.setAttribute("aria-expanded","true");
 }
-function hideBookSuggestions(){const list=$("classic-search-suggestions");if(list)list.hidden=true;const field=$("classic-query");if(field){field.setAttribute("aria-expanded","false");field.removeAttribute("aria-activedescendant")}}
-function selectSuggestion(id){const w=works.find(x=>x.id===id);if(!w)return;$("classic-query").value=w.title;hideBookSuggestions();choose(w.id);$("classic-detail").scrollIntoView({block:"nearest",behavior:"smooth"});}
+function hideBookSuggestions(){
+ const list=$("classic-search-suggestions");
+ if(list)list.hidden=true;
+ const field=$("classic-query");
+ if(field){field.setAttribute("aria-expanded","false");field.removeAttribute("aria-activedescendant")}
+}
+function selectSuggestion(id,selectedView){
+ const w=works.find(x=>x.id===id);if(!w)return;
+ // Do not replace an author or edition query with the selected title:
+ // keeping the query preserves the full matching book list.
+ hideBookSuggestions();
+ choose(w.id);
+ if(selectedView==="edition"){
+  tab="edition";detail();
+ }
+ $("classic-detail").scrollIntoView({block:"start",behavior:"smooth"});
+}
 function initBookSuggestions(){
  const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
  field.addEventListener("focus",showBookSuggestions);
