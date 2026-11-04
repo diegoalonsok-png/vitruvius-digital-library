@@ -79,12 +79,16 @@ function liveManuscripts(q){
   if(rating<3)continue;
   const target=titles.find(w=>score(workString(w),q,false)>10)||titles[0];
   const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
+  // Principal witness is an editorial designation supported by the catalog, not an autograph claim.
+  const primary=ms.id==="vitruvius-h";
   out.push({type:"manuscript",title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
    meta:"TESTIMONIO MANUSCRITO · "+(ms.date||"sin fecha documentada")+" · "+(ms.shelfmark||"sin signatura")+" · "+(ms.manifest?"IIIF":"visor institucional"),
    codexDate:codexDateStart(ms.date),codexShelfmark:ms.shelfmark,codexRepository:ms.library,
+   primaryWitness:primary,primaryLabel:primary?"TESTIMONIO PRINCIPAL · DE ARCHITECTURA":"",
    rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
    link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
-   links:[{label:"Ficha institucional",url:ms.record},{label:"Visor de la institución",url:ms.viewer}].filter(x=>x.url),
+   viewerUrl:ms.viewer||ms.record,
+   links:[{label:"Ficha codicológica",url:ms.record},{label:"Ver facsímil / visor institucional",url:ms.viewer}].filter(x=>x.url),
    source:"Bibliotheca Graeca et Latina"});
  }return out.sort((a,b)=>a.codexDate-b.codexDate||b.rating-a.rating).slice(0,30);
 }
@@ -366,7 +370,8 @@ function markTerms(root,query){
  }
 }
 function renderCard(d){
- const card=node("article","result-card"),head=node("div","result-head"),title=node("div");
+ const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")),head=node("div","result-head"),title=node("div");
+ if(d.primaryWitness){card.setAttribute("aria-label","Testimonio principal de De architectura: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
  title.append(node("span","kind",T()[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
@@ -379,6 +384,7 @@ function renderCard(d){
  }
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
+ if(d.primaryWitness&&d.viewerUrl){const viewer=makeLink("Abrir facsímil del Codex H ↗",d.viewerUrl);if(viewer){viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
@@ -461,7 +467,7 @@ function display(rows,query,phase){
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const ordered=S.mode==="all"
   ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,8),
-     ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating),
+     ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating),
      ...deduped.filter(r=>libraryTypes.has(r.type)&&r.type!=="manuscript"),
      ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)),
      ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(8)]
