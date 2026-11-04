@@ -42,7 +42,7 @@ assert(visual.includes('parser.search(pdfPages,term'),'PDF search must operate o
 assert(visual.includes('selection.file=null'),'Original file reference must be dropped after extraction');
 assert(visual.includes('pdfAbort?.abort();pdfAbort=null;pdfPages=null'),'PDF indexing and excerpts must clear on close/search');
 assert(visual.includes('ui.pdfResults.replaceChildren()'),'No result snippets should persist after closing');
-assert(visual.includes('document.createElement(\\'li\\')'),'Results should be safely escaped as text nodes');
+assert(visual.includes("document.createElement('li')"),'Results should be safely escaped as text nodes');
 assert(visual.includes('excerpt.textContent=item.excerpt'),'Never parse PDF text as HTML');
 assert(!visual.includes('fetch(')&&!visual.includes('XMLHttpRequest'),'Attachment UI must not upload content');
 assert(css.includes('.vr-visual-pdf-results'),'Local PDF search results styled');
