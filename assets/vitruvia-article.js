@@ -635,7 +635,7 @@ const curatedReferenceWorks={
 };
 function referenceBooks(rows,query){
  const q=normalized(query),words=q.split(" ").filter(w=>w.length>=4);
- const curated=curatedReferenceWorks[q]||[];
+ const curated=curatedReferenceWorks[q]||(q==="hitler"?curatedReferenceWorks["adolf hitler"]:[]);
  const matched=(rows||[]).filter(r=>
   ["openlibrary","googlebook","book"].includes(r.type)&&r.link&&r.title&&
   words.length&&words.every(w=>normalized([r.title,r.excerpt||""].join(" ")).includes(w))&&
@@ -650,6 +650,14 @@ function referenceBooks(rows,query){
   seen.add(key);out.push(item);
  }
  return out;
+}
+function appendOfficialHistoricalSources(query){
+ const q=normalized(query);
+ if(q!=="adolf hitler"&&q!=="hitler")return;
+ heading("Fuentes históricas institucionales");
+ const a=href("https://encyclopedia.ushmm.org/content/en/article/adolf-hitler","United States Holocaust Memorial Museum · Adolf Hitler");
+ if(a)$("article-body").append(a);
+ paragraph("Fuente institucional de contexto histórico. El estudio de la dictadura nazi y el Holocausto se apoya en documentación crítica y contrastable.","article-note");
 }
 function appendReferenceBooks(rows,query){
  const selected=referenceBooks(rows,query);
@@ -771,6 +779,7 @@ async function renderTopic(top,rows,query,token,person=null){
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
  appendReferenceBooks(rows,person?.name||query);
+ appendOfficialHistoricalSources(person?.name||query);
  addTopicBibliography(rows,person?.name||query,ark);
  heading("VI · Imágenes y documentación visual");
  paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
