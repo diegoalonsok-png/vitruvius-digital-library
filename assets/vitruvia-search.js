@@ -791,6 +791,16 @@ function display(rows,query,phase){
    const card=renderCard(r);markTerms(card,query);list.append(card)
   }
  }
+ // Consulta que nombra un códice con visor local (p. ej. «Codex H», «Harley 2767»):
+ // abrir una vez el mismo lector de folios, con sus comandos; se cierra con × o Esc.
+ if(window.VitruviaLocalManuscripts&&S.autoCodexOpened!==query){
+  const normText=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  const qTokens=normText(query).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  const codex=deduped.find(r=>r.type==="manuscript"&&r.localViewer&&qTokens.length&&(()=>{
+   const hay=normText([r.title,r.codexShelfmark,...(r.aliases||[])].join(" ")).split(/[^\p{L}\p{N}]+/u);
+   return qTokens.every(t=>hay.some(h=>h===t||t.length>2&&h.startsWith(t)));})());
+  if(codex){S.autoCodexOpened=query;setTimeout(()=>window.VitruviaLocalManuscripts.open(codex.localViewer,codex.title),350)}
+ }
  if(deduped.length>S.visibleResultCount){
   const left=deduped.length-S.visibleResultCount;
   const label=S.lang==="en"?"View "+Math.min(left,50)+" more results":S.lang==="fr"?"Voir "+Math.min(left,50)+" résultats supplémentaires":"Ver "+Math.min(left,50)+" resultados más";

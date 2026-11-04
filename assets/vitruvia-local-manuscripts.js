@@ -30,6 +30,13 @@ function dialog(){
  panel.append(header,note,iframe);el.append(panel);document.body.append(el);
  el.addEventListener("click",event=>{if(event.target===el)el.close()});
  el.addEventListener("close",()=>{iframe.removeAttribute("src")});
+ // Al abrir, ir directamente a la zona de lectura (folio y comandos) y permitir Esc.
+ iframe.addEventListener("load",()=>{try{
+  const d=iframe.contentDocument;if(!d)return;
+  const target=d.getElementById("label")?.closest("section,.reader,.viewer,div")||d.getElementById("stage");
+  if(target)target.scrollIntoView({block:"start"});
+  d.addEventListener("keydown",e=>{if(e.key==="Escape")el.close()});
+ }catch{}});
  return el;
 }
 function open(link,title){
