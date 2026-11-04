@@ -144,6 +144,111 @@
           "url": "https://academic.oup.com/edited-volume/41330/chapter/352334031"
         }
       ]
+    },
+    {
+      "subject": "septuagint",
+      "title": "Septuaginta · traducción griega de las Escrituras hebreas",
+      "aliases": [
+        "Septuaginta",
+        "Septuagint",
+        "Septuagint Bible",
+        "LXX",
+        "Biblia de los Setenta",
+        "Μετάφρασις τῶν Ἑβδομήκοντα",
+        "setenta traductores"
+      ],
+      "survival": "La Septuaginta no es la obra de un solo autor ni un único libro redactado de una vez. La traducción griega de la Torá surgió en Alejandría desde el siglo III a. C.; otros libros fueron traducidos después. Hay fragmentos antiguos anteriores a los grandes códices bíblicos. La Vetus Latina es una tradición de traducción al latín a partir de textos griegos; la Vulgata de Jerónimo no es simplemente «la Septuaginta en latín». No equiparar la fecha de traducción con la fecha de las copias conservadas.",
+      "survivalSource": "https://academic.oup.com/book/39198",
+      "literaryTestimonies": [
+        {
+          "title": "La traducción griega de la Torá · Alejandría",
+          "author": "Traductores judíos anónimos",
+          "date": "Desde el siglo III a. C. (composición)",
+          "dateStart": -300,
+          "language": "grc",
+          "kind": "original-greek-translation",
+          "note": "Cronología general del proyecto de traducción, no un manuscrito conservado del siglo III a. C.",
+          "source": "https://academic.oup.com/book/39198"
+        },
+        {
+          "title": "Vetus Latina · tradición latina antigua",
+          "author": "Traductores latinos anónimos",
+          "date": "Desde aproximadamente el siglo III d. C. (tradición de traducción)",
+          "dateStart": 200,
+          "language": "la",
+          "kind": "ancient-latin-translation",
+          "note": "La Antigua Latina sirve como testimonio de formas griegas de la LXX, pero no debe confundirse con el texto griego ni con la Vulgata.",
+          "source": "https://academic.oup.com/edited-volume/34470/chapter-abstract/292468818"
+        }
+      ],
+      "manuscripts": [
+        {
+          "title": "Codex Vaticanus · Vat. gr. 1209",
+          "shelfmark": "Vat. gr. 1209",
+          "library": "Biblioteca Apostolica Vaticana",
+          "date": "Siglo IV d. C. (copia conservada)",
+          "dateStart": 325,
+          "kind": "greek-biblical-codex",
+          "language": "grc",
+          "coverage": "Biblia griega; testimonio capital de la Septuaginta. Su contenido y sus lagunas deben verificarse para cada libro.",
+          "record": "https://spotlight.vatlib.it/greek-paleography/catalog/Vat_gr_1209",
+          "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.1209",
+          "rights": "Digitalización externa; consultar restricciones de reproducción de la Biblioteca Vaticana."
+        },
+        {
+          "title": "Codex Sinaiticus · Add MS 43725",
+          "shelfmark": "Add MS 43725, ff. 1r–199v",
+          "library": "British Library",
+          "date": "325–374 d. C. (copia conservada)",
+          "dateStart": 325,
+          "kind": "greek-biblical-codex",
+          "language": "grc",
+          "coverage": "Antiguo Testamento en griego, con pérdidas y partes distribuidas en varias instituciones. Esta signatura cubre la porción de la British Library.",
+          "record": "https://searcharchives.bl.uk/catalog/040-002169712",
+          "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/man_10000000.0x000001",
+          "rights": "Digitalización externa; consultar derechos del custodio."
+        }
+      ],
+      "translatedEditions": [
+        {
+          "title": "Texto griego · edición de H. B. Swete (1887–1894)",
+          "editor": "Henry Barclay Swete",
+          "language": "grc",
+          "year": 1887,
+          "kind": "historical-edition",
+          "url": "https://openscriptorium.org/works/swete-lxx",
+          "note": "Edición impresa histórica digitalizada. No es manuscrito ni traducción latina."
+        },
+        {
+          "title": "Texto griego · edición de Brenton, dominio público",
+          "editor": "Lancelot C. L. Brenton",
+          "language": "grc",
+          "year": 1851,
+          "kind": "historical-edition",
+          "url": "https://ebible.org/bible/details.php?id=grcbrent",
+          "note": "Texto griego consultable en línea y con formatos de lectura; verificar sus criterios editoriales."
+        }
+      ],
+      "research": [
+        {
+          "title": "The Septuagint from Alexandria to Constantinople",
+          "institution": "Oxford University Press",
+          "url": "https://doi.org/10.1093/oso/9780192898098.001.0001",
+          "doi": "10.1093/oso/9780192898098.001.0001"
+        },
+        {
+          "title": "The Vetus Latina (Old Latin)",
+          "institution": "Oxford University Press",
+          "url": "https://doi.org/10.1093/oxfordhb/9780199665716.013.38",
+          "doi": "10.1093/oxfordhb/9780199665716.013.38"
+        },
+        {
+          "title": "The Latin Bible and the Septuagint",
+          "institution": "Oxford University Press",
+          "url": "https://doi.org/10.1093/oxfordhb/9780190886097.013.23",
+          "doi": "10.1093/oxfordhb/9780190886097.013.23"
+        }
+      ]
     }
   ]
 }
