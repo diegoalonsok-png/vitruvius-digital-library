@@ -729,6 +729,8 @@ body.vitruvia-reading #vitruvia-article .article-body h3{font-size:23px!importan
 body.vitruvia-reading .hero .searchform{min-height:61px!important;padding:4px 4px 4px 14px!important}}
 
 /* Distinguish the library corpus without changing the search bar layout. */
+.vitruvia-gallery-heading{font:400 21px/1.35 Georgia,serif;color:#e7e0d0;padding:18px 0 8px;margin:9px 0;border-bottom:1px solid #494949}
+html[data-theme=light] .vitruvia-gallery-heading{color:#2e3a33;border-color:#c1ccc5}
 .vitruvia-result-group{font:400 23px/1.3 Georgia,serif;color:#e1dfda;margin:30px 0 9px;padding-bottom:11px;border-bottom:1px solid #414141}
 html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6}
 </style></head><body>
@@ -977,10 +979,10 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
     const tier=historicalImageTier(a)-historicalImageTier(b);
     return tier||b.score-a.score||a.name.localeCompare(b.name);
    }).slice(0,60);
-   if(historical.length){galleryHeading('I · Testimonios históricos identificados · '+historical.length+'/20');for(const item of historical)renderImageResult(item)}
+   if(historical.length){galleryHeading('I · Testimonios históricos candidatos · '+historical.length+'/20');for(const item of historical)renderImageResult(item)}
    if(related.length){galleryHeading('II · Pinturas, retratos, bustos y representaciones relacionadas · '+related.length);for(const item of related)renderImageResult(item)}
    status.textContent=historical.length+related.length
-    ?(historical.length+related.length)+' imágenes: hasta 20 testimonios históricamente identificados, después representaciones y coincidencias próximas. La datación y autenticidad deben verificarse en la ficha original.'
+    ?(historical.length+related.length)+' imágenes: hasta 20 testimonios históricos candidatos, después representaciones y coincidencias próximas. La datación y autenticidad deben verificarse en la ficha original.'
     :'No hay imágenes con identificación suficiente; consultá los archivos originales.';
   }catch(e){if(current!==requestId)return;status.textContent='No fue posible consultar las imágenes; usá los archivos externos.'}
  }
@@ -1000,7 +1002,7 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
 <script src="assets/vitruvia-article.js?v=20261104-university-encyclopedia-v2" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
 <script src="assets/search-agentic.js?v=20261104-bilingual-evidence-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-universal-relevance-v4" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-codex-chronology-v5" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
