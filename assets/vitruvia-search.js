@@ -42,8 +42,18 @@ const I18N={
 };
 const T=()=>I18N[S.lang]||I18N.es;
 function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
-function score(s,q,expand=false){const txt=norm(s),n=norm(q);if(!n||!txt)return 0;let r=txt.includes(n)?18:0;for(const word of words(q))if(txt.includes(word))r+=word.length>=5?6:3;
- if(expand){for(const w of related(q))if(txt.includes(w)&&!words(q).includes(w))r+=1.75}return r}
+/* Word-aware ranking: "auto" must not match "autor"; phrase matches outrank loose terms. */
+function hasTerm(hay,term){const h=" "+norm(hay)+" ",t=" "+norm(term)+" ";return !!t.trim()&&h.includes(t)}
+function score(s,q,expand=false){
+ const txt=norm(s),n=norm(q);if(!n||!txt)return 0;
+ const queryWords=words(q),unique=[...new Set(queryWords)];
+ let r=hasTerm(txt,n)?35:0;
+ const matched=unique.filter(w=>hasTerm(txt,w));
+ if(unique.length>1&&matched.length===unique.length)r+=14;
+ for(const word of matched)r+=word.length>=5?7:4;
+ if(expand){for(const w of related(q))if(!unique.includes(w)&&hasTerm(txt,w))r+=1.25}
+ return r;
+}
 const verified=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
 const libraryURL=(id,view,ms)=>"bibliotheca-graeca-latina.html?"+new URLSearchParams({work:id,...(view?{view}:{}),...(ms?{ms}:{})});
 const workString=w=>[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
