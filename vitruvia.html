@@ -754,11 +754,26 @@ html[data-theme=light] .article-reference-books .principal-reference-work strong
 
 @media(max-width:600px){#result-list .primary-codex-card{padding:18px}#result-list .primary-codex-card h3{font-size:27px!important}}
 
+
+/* Accessible typography control: only content scales, never the search bar or masthead. */
+:root{--vitruvia-reading-zoom:1}
+.font-size-tools{display:flex;align-items:center;gap:7px;white-space:nowrap;padding:6px 9px;background:#1a2421;border:1px solid #384b41;border-radius:8px;color:#e9eee7;font:600 12px system-ui,sans-serif}
+.font-size-tools input[type=range]{appearance:auto;accent-color:#a8ccaa;width:91px;min-width:60px;height:20px;padding:0;margin:0;cursor:pointer}
+.font-size-tools output{font:600 11px system-ui,sans-serif;min-width:31px;color:#d4e7ce;font-variant-numeric:tabular-nums}
+.font-size-small{font-size:10px}.font-size-large{font-size:17px}
+#reading-font-reset{padding:2px 7px;background:transparent;border:1px solid #526556;border-radius:5px;color:#f0f1e8;line-height:1.3}
+#article-body,#article-aside,#article-sources,#article-evidence,#result-list,#article-title{zoom:var(--vitruvia-reading-zoom)}
+html[data-theme=light] .font-size-tools{background:#e8eee7;color:#254033;border-color:#b1c5b8}
+html[data-theme=light] .font-size-tools output{color:#28523d}
+html[data-theme=light] #reading-font-reset{color:#254033}
+@media(max-width:1100px){.nav{flex-wrap:wrap}.navtools{flex-wrap:wrap}}
+@media(max-width:600px){.font-size-tools input[type=range]{width:72px}.font-size-tools{gap:5px;padding:5px 6px}}
+
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
 <nav class="navlinks" aria-label="Navegación"><a data-i18n="navLibrary" href="index.html">Biblioteca Vitruviana</a><a data-i18n="navAuthors" href="bibliotheca-graeca-latina.html">Autores y libros</a><a data-i18n="navCodices" href="index-codicum.html#codices" title="Abrir el índice general de todos los códices">Códices</a><a data-i18n="navMethod" href="metodologia-filologica.html">Método académico</a></nav>
-<div class="navtools"><select id="ui-language" aria-label="Idioma de interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select><button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button></div>
+<div class="navtools"><div class="font-size-tools" role="group" aria-label="Tamaño de letra del contenido"><span aria-hidden="true" class="font-size-small">A−</span><input id="reading-font-size" type="range" min="90" max="160" step="5" value="100" aria-label="Aumentar o reducir tamaño de letra de artículos y resultados" aria-valuemin="90" aria-valuemax="160" aria-valuenow="100"><span aria-hidden="true" class="font-size-large">A+</span><output id="reading-font-value" for="reading-font-size">100%</output><button id="reading-font-reset" type="button" title="Restablecer tamaño de letra" aria-label="Restablecer tamaño de letra">↺</button></div><select id="ui-language" aria-label="Idioma de interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select><button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button></div>
 </header>
 <main>
 <section class="hero" aria-label="Buscar en Vitruvia">
@@ -1018,6 +1033,27 @@ html[data-theme=light] .article-reference-books .principal-reference-work strong
    document.body.classList.add('vitruvia-reading');
    section.scrollIntoView({behavior:'smooth',block:'start'});
  });
+})();
+</script>
+<script>
+/* Font-size preference is kept locally, not sent with the search request. */
+(()=>{
+ const slider=document.getElementById('reading-font-size');
+ const output=document.getElementById('reading-font-value');
+ const reset=document.getElementById('reading-font-reset');
+ if(!slider||!output)return;
+ const key='vitruvia-reading-font-percent-v1';
+ function apply(value){
+  const numeric=Math.min(160,Math.max(90,Math.round(Number(value)/5)*5||100));
+  slider.value=String(numeric);slider.setAttribute('aria-valuenow',String(numeric));
+  output.value=numeric+'%';output.textContent=numeric+'%';
+  document.documentElement.style.setProperty('--vitruvia-reading-zoom',String(numeric/100));
+  try{localStorage.setItem(key,String(numeric))}catch{}
+ }
+ let remembered=100;try{remembered=Number(localStorage.getItem(key))||100}catch{}
+ apply(remembered);
+ slider.addEventListener('input',()=>apply(slider.value));
+ reset?.addEventListener('click',()=>apply(100));
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
