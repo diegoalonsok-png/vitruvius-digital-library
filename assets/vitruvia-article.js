@@ -11,6 +11,8 @@ const sentences=s=>String(s||"").replace(/\s+/g," ").trim();
 const cut=(s,n)=>{const x=sentences(s);return x.length>n?x.slice(0,n).replace(/\s+\S*$/,"")+"…":x};
 let active=0;
 const summaries=new Map();
+let bibliographyContext={rows:[],query:""};
+
 function phrase(es,en,fr){const l=document.documentElement.lang;return l==="en"?en:l==="fr"?fr:es}
 function href(url,text){if(!url)return null;try{const u=new URL(url,location.href);if(!/^https?:$/.test(u.protocol))return null;
 const a=make("a",text);a.href=u.href;
@@ -31,7 +33,118 @@ const li=make("li");sourceLink(li,r.title||r.source||"Fuente",r.link);
 if(r.author)li.append(make("span"," · "+r.author));
 ol.append(li);if(ol.children.length>=10)break}
 if(ol.children.length)box.append(ol);
-box.append(make("p",license||phrase("Dossier documental: no se han creado datos ni citas bibliográficas nuevas.","Documentary dossier: no newly invented bibliographic claims.","Dossier documentaire : aucune citation ni donnée inventée."),"article-license"))}
+box.append(make("p",license||phrase("Dossier documental: no se han creado datos ni citas bibliográficas nuevas.","Documentary dossier: no newly invented bibliographic claims.","Dossier documentaire : aucune citation ni donnée inventée."),"article-license"));
+renderChicagoBibliography(bibliographyContext.rows,bibliographyContext.query);
+}
+/* Chicago Manual of Style, 18th ed., bibliography (notes-bibliography system).
+   Ranking is by source type, not by publication year: ancient text, scholarship, outreach.
+   Missing metadata is not fabricated, and incomplete catalog hits are disclosed. */
+function bibliographicName(raw){
+ const name=String(raw||"").trim();
+ if(!name)return "";
+ if(/^(Wikipedia|Open Library|Google Books|Wikidata|Crossref|The Met)/i.test(name))return "";
+ if(name.includes(","))return name;
+ const parts=name.split(/\s+/);
+ return parts.length>1?parts[parts.length-1]+", "+parts.slice(0,-1).join(" "):name;
+}
+function bibliographicYear(row){
+ const value=String(row.year||"").trim();
+ if(/^\d{4}/.test(value))return value.slice(0,4);
+ return "";
+}
+function bibliographyCategory(row,query){
+ if(row.type==="wikipedia")return "popular";
+ if(row.recordKind==="museum-object"||row.type==="manuscript"||row.type==="edition")return "primary";
+ if(["article"].includes(row.type)&&row.journal)return "academic";
+ if(row.type==="article"&&row.doi)return "academic";
+ if(["openlibrary","googlebook","book"].includes(row.type)){
+  const work=normalized([row.title,row.author].join(" "));
+  const person=normalized(query);
+  const classical=/\b(cicero|ciceron|pythagoras|pitagoras|plato|platon|aristotle|aristoteles|vitruvius|vitruvio|lucretius|lucrecio|seneca|socrates|socrates|ovid|ovidio|plutarch|plutarco|tacitus|tacito|suetonius|suetonio)\b/.test(work);
+  // Primary is assigned only where a classical author's own work is identified
+  // from a local record, not from a modern book's title mentioning that author.
+  if(row.type==="book"&&classical&&row.author&&normalized(row.author).includes(person))return "primary";
+  if(row.type==="googlebook"||row.type==="openlibrary")return "popular"; // Unverified academic status
+  return "academic";
+ }
+ return null;
+}
+function chicagoEntry(row){
+ const title=String(row.title||"").trim(),url=String(row.link||"").trim();
+ if(!title||!/^https?:\/\//.test(url))return null;
+ const writer=bibliographicName(row.author);
+ const year=bibliographicYear(row);
+ const publisher=String(row.publisher||"").trim();
+ const journal=String(row.journal||"").trim();
+ const doi=String(row.doi||"").trim();
+ const citation=make("span");
+ const append=t=>citation.append(document.createTextNode(t));
+ const italic=t=>citation.append(make("em",t));
+ if(row.type==="wikipedia"){
+  append("Wikipedia contributors. “"+title+".” Wikipedia. ");
+  append("Consultado el "+new Date().toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"})+". ");
+ }else if(journal){
+  if(writer)append(writer+". ");
+  append("“"+title+".” ");
+  italic(journal);
+  if(row.volume)append(" "+row.volume);
+  if(row.issue)append(", no. "+row.issue);
+  if(year)append(" ("+year+")");
+  if(row.pages)append(": "+row.pages);
+  append(". ");
+ }else{
+  if(writer)append(writer+". ");
+  italic(title);
+  append(". ");
+  if(publisher)append(publisher+(year?", "+year:"")+". ");
+  else if(year)append(year+". ");
+ }
+ const link=href(doi?"https://doi.org/"+encodeURIComponent(doi):url,doi?"https://doi.org/"+doi:url);
+ if(link)citation.append(link);
+ return {citation,complete:!!(journal?year&&writer:row.type==="wikipedia"||year&&writer&&publisher)};
+}
+function renderChicagoBibliography(rows,query){
+ const box=$("article-sources");
+ if(!box||!query)return;
+ const exact=normalized(query);
+ const allowed=new Set(["book","edition","manuscript","article","openlibrary","googlebook","museum","wikipedia"]);
+ const relevant=rows.filter(r=>{
+  if(!allowed.has(r.type)||!r.link||!r.title)return false;
+  const field=normalized([r.title,r.author,r.excerpt].join(" "));
+  return (relevance(r,query)>=45||field.includes(exact)&&exact.length>3);
+ });
+ const sorted={primary:[],academic:[],popular:[]},seen=new Set();
+ for(const row of relevant){
+  const cat=bibliographyCategory(row,query);
+  if(!cat)continue;
+  const key=normalized(row.title)+"|"+normalized(row.author);
+  if(seen.has(key))continue;
+  const entry=chicagoEntry(row);
+  if(!entry)continue;
+  seen.add(key);
+  sorted[cat].push({row,entry,year:bibliographicYear(row)});
+ }
+ const groupDefs=[
+  ["primary","I · Fuentes históricas y primarias"],
+  ["academic","II · Bibliografía académica"],
+  ["popular","III · Divulgación y repertorios generales"]
+ ];
+ if(!Object.values(sorted).some(x=>x.length))return;
+ box.append(make("h3","Bibliografía temática · Chicago 18"));
+ box.append(make("p","Sistema de notas y bibliografía, 18.ª edición. Orden por categoría documental y, dentro de cada categoría, cronológicamente cuando se conoce el año. La clasificación de registros de catálogos no certifica revisión por pares.","article-license"));
+ for(const [key,title] of groupDefs){
+  const group=sorted[key].sort((a,b)=>(Number(a.year)||9999)-(Number(b.year)||9999)||a.row.title.localeCompare(b.row.title)).slice(0,18);
+  if(!group.length)continue;
+  box.append(make("h4",title));
+  const ol=make("ol",undefined,"article-source-list chicago-bibliography");
+  for(const item of group){
+   const li=make("li");li.append(item.entry.citation);
+   if(!item.entry.complete)li.append(make("small"," · Registro parcial: faltan datos para una cita bibliográfica completa.","article-license"));
+   ol.append(li);
+  }
+  box.append(ol);
+ }
+}
 function aside(rows){const box=$("article-aside");box.replaceChildren();
 box.append(make("h3",phrase("Documentos relacionados","Related documents","Documents liés")));
 const seen=new Set();
@@ -608,6 +721,7 @@ function buildContents(){
  box.prepend(nav);
 }
 function render(rows,q,person=null){const token=++active;
+bibliographyContext={rows:rows||[],query:q||""};
 if(!q||!rows?.length){root.hidden=true;return}
 reportEvidence(rows,q);
 if(person){
