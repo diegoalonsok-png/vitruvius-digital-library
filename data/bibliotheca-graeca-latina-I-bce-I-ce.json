@@ -429,7 +429,7 @@
       "dating": "c. 60–50 a. C.",
       "reading": {
         "url": null,
-        "status": "PDF histórico verificado en GitHub · On the Nature of Things (De rerum natura), edición londinense de 1880, 312 páginas; inglés, con material latino catalogado por la institución. No sustituye el lector crítico latino en HTML."
+        "status": "Lucrecio, De rerum natura libri sex, impreso en Londres en 1813: edición latina de los seis libros, 330 páginas. Texto original, no traducción inglesa."
       },
       "manuscript": {
         "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
@@ -446,16 +446,19 @@
         }
       },
       "pdf": {
-        "url": "documents/classics/lucretius-on-nature-things-1880.pdf",
-        "status": "On the Nature of Things (De rerum natura), edición londinense de 1880, 312 páginas; inglés, con material latino catalogado por la institución. No sustituye el lector crítico latino en HTML.",
-        "sizeBytes": 14643313,
-        "pages": 312,
-        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
-        "source": "https://commons.wikimedia.org/wiki/File:On_the_nature_of_things_(De_Rerum_Natura)_(IA_onnatureofthings00lucr_0).pdf",
-        "sha1": "cacf76cc583fdcc2a38a0d5da3b8b430a0a5b3e5",
-        "coverage": "edición histórica",
-        "publicationYear": "1880",
-        "editor": "G. Routledge & Sons / E. P. Dutton"
+        "url": "documents/classics/lucretius-de-rerum-natura-latin-1813.pdf",
+        "language": "la",
+        "role": "original",
+        "label": "LATÍN ORIGINAL · 1813",
+        "status": "Lucrecio, De rerum natura libri sex, impreso en Londres en 1813: edición latina de los seis libros, 330 páginas. Texto original, no traducción inglesa.",
+        "sizeBytes": 17095740,
+        "pages": 330,
+        "sha1": "9b9d9b04cc19380ecbcf9d575907c97f3b376053",
+        "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:De_rerum_natura_libri_sex_(IA_b2852228x).pdf",
+        "coverage": "los seis libros en latín original",
+        "publicationYear": "1813",
+        "editor": "Londini, in aedibus Ricardi Taylor · Royal College of Physicians of London"
       },
       "translation": {
         "status": "Inglés: William Ellery Leonard (1916), disponible; castellano: Manuel Rodríguez-Navas (prosa), disponible; francés: edición completa pendiente de identificar, cotejar y alojar."
@@ -565,6 +568,38 @@
         "Sobre la naturaleza de las cosas",
         "La naturaleza de las cosas",
         "On the Nature of Things"
+      ],
+      "pdfEditions": [
+        {
+          "url": "documents/classics/lucretius-de-rerum-natura-latin-1813.pdf",
+          "language": "la",
+          "role": "original",
+          "label": "LATÍN ORIGINAL · 1813",
+          "status": "Lucrecio, De rerum natura libri sex, impreso en Londres en 1813: edición latina de los seis libros, 330 páginas. Texto original, no traducción inglesa.",
+          "sizeBytes": 17095740,
+          "pages": 330,
+          "sha1": "9b9d9b04cc19380ecbcf9d575907c97f3b376053",
+          "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+          "source": "https://commons.wikimedia.org/wiki/File:De_rerum_natura_libri_sex_(IA_b2852228x).pdf",
+          "coverage": "los seis libros en latín original",
+          "publicationYear": "1813",
+          "editor": "Londini, in aedibus Ricardi Taylor · Royal College of Physicians of London"
+        },
+        {
+          "url": "documents/classics/lucretius-on-nature-things-1880.pdf",
+          "status": "On the Nature of Things (De rerum natura), edición londinense de 1880, 312 páginas; inglés, con material latino catalogado por la institución. No sustituye el lector crítico latino en HTML.",
+          "sizeBytes": 14643313,
+          "pages": 312,
+          "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+          "source": "https://commons.wikimedia.org/wiki/File:On_the_nature_of_things_(De_Rerum_Natura)_(IA_onnatureofthings00lucr_0).pdf",
+          "sha1": "cacf76cc583fdcc2a38a0d5da3b8b430a0a5b3e5",
+          "coverage": "edición histórica",
+          "publicationYear": "1880",
+          "editor": "G. Routledge & Sons / E. P. Dutton",
+          "language": "en",
+          "label": "Edición anterior · traducción inglesa",
+          "role": "translation"
+        }
       ]
     },
     {
@@ -623,15 +658,26 @@
       "dating": "c. 37–29 a. C.",
       "reading": {
         "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "status": "Virgilio, Georgica, edición Albert Forbiger, Montreal 1849, 76 páginas; edición en latín. No corresponde a Eneida."
       },
       "manuscript": {
         "manifest": null,
         "status": "Sin facsímil de testimonio concreto validado"
       },
       "pdf": {
-        "url": null,
-        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+        "url": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
+        "language": "la",
+        "role": "original",
+        "label": "LATÍN ORIGINAL · 1849",
+        "status": "Virgilio, Georgica, edición Albert Forbiger, Montreal 1849, 76 páginas; edición en latín. No corresponde a Eneida.",
+        "sizeBytes": 3075515,
+        "pages": 76,
+        "sha1": "6f53ff66e5fcfe7fbe991be4d1721689ca3b35cd",
+        "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:Georgica;_(IA_georgica00virguoft).pdf",
+        "coverage": "edición histórica latina de Georgica",
+        "publicationYear": "1849",
+        "editor": "Albert Forbiger · Montreal, Armour"
       },
       "translation": {
         "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
@@ -642,13 +688,30 @@
         "archive": "https://archive.org/search?query=Georgica%20Virgilio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Georgica"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "localReader": null,
       "aliases": [
         "Virgilio",
         "Vergilius",
         "Geórgicas",
         "Georgics"
+      ],
+      "pdfEditions": [
+        {
+          "url": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
+          "language": "la",
+          "role": "original",
+          "label": "LATÍN ORIGINAL · 1849",
+          "status": "Virgilio, Georgica, edición Albert Forbiger, Montreal 1849, 76 páginas; edición en latín. No corresponde a Eneida.",
+          "sizeBytes": 3075515,
+          "pages": 76,
+          "sha1": "6f53ff66e5fcfe7fbe991be4d1721689ca3b35cd",
+          "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+          "source": "https://commons.wikimedia.org/wiki/File:Georgica;_(IA_georgica00virguoft).pdf",
+          "coverage": "edición histórica latina de Georgica",
+          "publicationYear": "1849",
+          "editor": "Albert Forbiger · Montreal, Armour"
+        }
       ]
     },
     {
@@ -4133,23 +4196,26 @@
       "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "PDF histórico verificado en GitHub · Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado."
+        "status": "Poética de Aristóteles: texto original griego, edición Wilhelm von Christ, Leipzig 1893, 68 páginas. No es un códice antiguo ni traducción latina."
       },
       "manuscript": {
         "manifest": null,
         "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
       },
       "pdf": {
-        "url": "documents/classics/aristotle-poetics-english-1819.pdf",
-        "status": "Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado.",
-        "sizeBytes": 4148751,
-        "pages": 102,
-        "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
-        "source": "https://commons.wikimedia.org/wiki/File:Aristotle%27s_poetics_-_literally_translated,_with_explanatory_notes_and_an_analysis_(IA_aristotlespoetic00arisiala).pdf",
-        "sha1": "8348e888351f3e34b4ab6b091013fe420691323c",
-        "coverage": "traducción inglesa completa de Poética",
-        "publicationYear": "1819",
-        "editor": "London: G. & W. B. Whittaker"
+        "url": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
+        "language": "grc",
+        "role": "original",
+        "label": "GRIEGO ORIGINAL · 1893",
+        "status": "Poética de Aristóteles: texto original griego, edición Wilhelm von Christ, Leipzig 1893, 68 páginas. No es un códice antiguo ni traducción latina.",
+        "sizeBytes": 7614365,
+        "pages": 68,
+        "sha1": "5935d372ff3dcd6407db076dce9abaf95d396c20",
+        "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+        "source": "https://commons.wikimedia.org/wiki/File:Aristotelis_De_arte_poetica_liber_(IA_aristotelisdear00aris).pdf",
+        "coverage": "obra completa en griego original, edición histórica",
+        "publicationYear": "1893",
+        "editor": "Wilhelm von Christ · B. G. Teubner, Leipzig"
       },
       "translation": {
         "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
@@ -4165,6 +4231,38 @@
         "Aristotle",
         "Poética",
         "Poetics"
+      ],
+      "pdfEditions": [
+        {
+          "url": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
+          "language": "grc",
+          "role": "original",
+          "label": "GRIEGO ORIGINAL · 1893",
+          "status": "Poética de Aristóteles: texto original griego, edición Wilhelm von Christ, Leipzig 1893, 68 páginas. No es un códice antiguo ni traducción latina.",
+          "sizeBytes": 7614365,
+          "pages": 68,
+          "sha1": "5935d372ff3dcd6407db076dce9abaf95d396c20",
+          "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+          "source": "https://commons.wikimedia.org/wiki/File:Aristotelis_De_arte_poetica_liber_(IA_aristotelisdear00aris).pdf",
+          "coverage": "obra completa en griego original, edición histórica",
+          "publicationYear": "1893",
+          "editor": "Wilhelm von Christ · B. G. Teubner, Leipzig"
+        },
+        {
+          "url": "documents/classics/aristotle-poetics-english-1819.pdf",
+          "status": "Aristotle’s Poetics, traducción inglesa anotada publicada en Londres en 1819; 102 páginas. No contiene un texto griego integral comprobado.",
+          "sizeBytes": 4148751,
+          "pages": 102,
+          "rights": "Edición histórica de dominio público; reproducida con atribución de la copia Wikimedia Commons / Internet Archive.",
+          "source": "https://commons.wikimedia.org/wiki/File:Aristotle%27s_poetics_-_literally_translated,_with_explanatory_notes_and_an_analysis_(IA_aristotlespoetic00arisiala).pdf",
+          "sha1": "8348e888351f3e34b4ab6b091013fe420691323c",
+          "coverage": "traducción inglesa completa de Poética",
+          "publicationYear": "1819",
+          "editor": "London: G. & W. B. Whittaker",
+          "language": "en",
+          "label": "Edición anterior · traducción inglesa",
+          "role": "translation"
+        }
       ]
     },
     {
