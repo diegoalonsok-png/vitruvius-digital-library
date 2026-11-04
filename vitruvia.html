@@ -824,6 +824,24 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
     <button id="reading-font-reset" type="button" data-reading-label="reset">Restablecer ajustes</button>
   </div>
 </details>
+<details class="background-palette" id="front-background-options">
+ <summary id="front-background-toggle" aria-label="Color de fondo" title="Color de fondo" aria-controls="front-background-panel"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 1 0 0 17h2.2a2.1 2.1 0 0 0 1.5-3.6 1.6 1.6 0 0 1 1.1-2.7h1.1A4.1 4.1 0 0 0 22 10.1 9 9 0 0 0 12 3.5Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15.5" cy="7.5" r="1"/></svg><span data-reading-label="paletteButton">Fondo</span><span class="reading-chevron" aria-hidden="true">⌄</span></summary>
+ <div class="background-palette-panel" id="front-background-panel" role="group" aria-label="Elegir color de fondo">
+  <strong data-reading-label="paletteTitle">Color del fondo de Vitruvia</strong>
+  <div class="background-palette-swatches" role="group" aria-label="Colores disponibles">
+   <button type="button" data-background-color="#0d0d0e" style="--swatch:#0d0d0e" aria-label="Negro" title="Negro" aria-pressed="false"></button>
+   <button type="button" data-background-color="#202427" style="--swatch:#202427" aria-label="Grafito" title="Grafito" aria-pressed="false"></button>
+   <button type="button" data-background-color="#303640" style="--swatch:#303640" aria-label="Pizarra" title="Pizarra" aria-pressed="false"></button>
+   <button type="button" data-background-color="#f7f5ef" style="--swatch:#f7f5ef" aria-label="Marfil" title="Marfil" aria-pressed="false"></button>
+   <button type="button" data-background-color="#ffffff" style="--swatch:#ffffff" aria-label="Blanco" title="Blanco" aria-pressed="false"></button>
+   <button type="button" data-background-color="#e7e2d8" style="--swatch:#e7e2d8" aria-label="Papel" title="Papel" aria-pressed="false"></button>
+   <button type="button" data-background-color="#dfebea" style="--swatch:#dfebea" aria-label="Verde grisáceo" title="Verde grisáceo" aria-pressed="false"></button>
+   <button type="button" data-background-color="#e1e7f2" style="--swatch:#e1e7f2" aria-label="Azul grisáceo" title="Azul grisáceo" aria-pressed="false"></button>
+  </div>
+  <label class="background-palette-custom" for="front-background-custom"><span data-reading-label="paletteCustom">Elegir otro color</span><input type="color" id="front-background-custom" value="#0d0d0e"></label>
+  <button type="button" id="front-background-auto" class="background-palette-reset" data-reading-label="paletteAutomatic">Restablecer fondo automático</button>
+ </div>
+</details>
 <select id="ui-language" aria-label="Idioma de interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select><button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button></div>
 </header>
 <main>
