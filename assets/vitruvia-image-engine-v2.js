@@ -18,8 +18,9 @@ const paintingWords=/\b(pinturas?|cuadros?|paintings?|artworks?|obras?)\b/;
 const photoWords=/\b(fotografias?|photos?|pictures?|imagenes|images?)\b/;
 const safeLink=u=>{try{const x=new URL(u,location.href);return x.protocol==="https:"?x.href:null}catch{return null}};
 const locale=(es,en,fr)=>document.documentElement.lang==="en"?en:document.documentElement.lang==="fr"?fr:es;
+const groupLabel=group=>window.VitruviaDiscovery?.groups[group]?.[document.documentElement.lang||"es"]||window.VitruviaDiscovery?.groups[group]?.es||group;
 function external(label,url){const a=create(actions,"a","",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer"}
-function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent=""}
+function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
 async function getJSON(params,signal){
  const r=await fetch("https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"}),{signal,headers:{Accept:"application/json"}});
  if(!r.ok)throw Error("Wikimedia Commons HTTP "+r.status);
@@ -43,11 +44,11 @@ function matchingScore(page,aliases,query){
  if(page.fromTrustedCategory)score+=90;
  return score;
 }
-function displayItem(item){
- const button=create(grid,"button","vitruvia-image-card");
+function displayItem(item,parent=grid){
+ const button=create(parent,"button","vitruvia-image-card");
  button.type="button";button.setAttribute("aria-label",locale("Ampliar ","View ","Agrandir ")+item.name);
  const img=create(button,"img");img.src=item.preview;img.alt=item.name;img.loading="lazy";img.decoding="async";
- const caption=create(button,"div","image-caption",item.name);
+ const caption=create(button,"div","image-caption",item.caption||item.name);
  create(caption,"span","image-origin",item.credit);
  button.addEventListener("click",()=>showLarge(item));
 }
@@ -76,7 +77,7 @@ function showLarge(item){
  const image=dialog.querySelector(".vitruvia-image-large-photo");
  image.src=item.original||item.preview;image.alt=item.name;
  dialog.querySelector(".vitruvia-image-large-title").textContent=item.name;
- dialog.querySelector(".vitruvia-image-large-rights").textContent=item.credit+" · "+(item.license||locale("Licencia y atribución en ficha original","Check license and attribution at source","Licence et attribution dans la notice"));
+ dialog.querySelector(".vitruvia-image-large-rights").textContent=item.credit+(item.license?"":" · "+locale("Licencia y atribución en ficha original","Check license and attribution at source","Licence et attribution dans la notice"));
  dialog.querySelector(".vitruvia-image-large-original").href=item.original||item.preview;
  dialog.querySelector(".vitruvia-image-large-source").href=item.page;
  dialog.showModal();
@@ -84,6 +85,55 @@ function showLarge(item){
 function groupTitle(label){
  const h=create(grid,"h4","vitruvia-gallery-heading",label);
  h.style.gridColumn="1/-1";
+}
+function collectedImages(pages,topic){
+ const merged=new Map();
+ for(const page of pages){
+  const key=page.imageinfo?.[0]?.descriptionurl||page.title;
+  const previous=merged.get(key);
+  merged.set(key,previous?{...previous,fromEntityImage:previous.fromEntityImage||page.fromEntityImage,
+   fromTrustedCategory:previous.fromTrustedCategory||page.fromTrustedCategory,sourceCategory:previous.sourceCategory||page.sourceCategory}:page);
+ }
+ const subjectCollection=[...merged.values()].filter(p=>p.fromTrustedCategory);
+ // Generic file search can find a namesake (for example a ship named Frying
+ // Pan). Once an entity collection is available, it is the object authority.
+ const candidates=topic.kind==="object"&&subjectCollection.length>=8?[...merged.values()].filter(p=>p.fromTrustedCategory||p.fromEntityImage):[...merged.values()];
+ const items=[];
+ for(const page of candidates){
+  const info=page.imageinfo?.[0];
+  if(!info?.thumburl||!safeLink(info.thumburl)||!safeLink(info.descriptionurl))continue;
+  if(!/^image\/(?:jpeg|png|webp|gif|svg\+xml)$/i.test(info.mime||""))continue;
+  const rank=window.VitruviaDiscovery?.imageRank(page,topic)||{accepted:matchingScore(page,topic.aliases,topic.subject)>=50,score:matchingScore(page,topic.aliases,topic.subject),group:"context"};
+  if(!rank.accepted)continue;
+  const clean=window.VitruviaDiscovery?.plain||String;
+  const meta=info.extmetadata||{},license=clean(info.extmetadata?.LicenseShortName?.value||"").slice(0,90);
+  const creator=clean(meta.Artist?.value||"").slice(0,140);
+  const date=clean(meta.DateTimeOriginal?.value||meta.DateTime?.value||"").slice(0,70);
+  const name=String(page.title||"").replace(/^File:/,"").replace(/_/g," ");
+  const objectName=clean(meta.ObjectName?.value||"");
+  const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
+   .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
+  items.push({name,caption,preview:info.thumburl,original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
+   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),score:rank.score,group:rank.group});
+ }
+ return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
+}
+function displayGroups(items,topic){
+ grid.replaceChildren();let previous=null;
+ for(const item of items){
+  if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
+  displayItem(item);
+ }
+ const preview=document.getElementById("article-image-preview");
+ if(preview&&items.length){
+  preview.replaceChildren();preview.hidden=false;
+  const bar=create(preview,"div","article-image-preview-heading");
+  create(bar,"span","",locale("Imágenes: ","Images: ","Images : ")+topic.subject);
+  const link=create(bar,"a","",locale("Ver galería y fuentes","View gallery and sources","Voir la galerie et les sources"));link.href="#vitruvia-images";
+  const strip=create(preview,"div","article-image-preview-grid");
+  const selected=window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5);
+  selected.forEach(item=>displayItem(item,strip));
+ }
 }
 async function localCodex(id){
  heading.textContent="Codex Harleianus · Harley MS 2767";
@@ -119,61 +169,62 @@ async function searchImages(query){
  const language=document.documentElement.lang||"es";
  const identity=await window.VitruviaEntityResolver?.resolve(q,language).catch(()=>null);
  if(id!==active)return;
- const subject=identity?.canonical||q,paintings=paintingWords.test(fold(q)),photos=photoWords.test(fold(q));
+ const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
+ section.dataset.entityId=identity?.wikidataId||"";section.dataset.commonsCategory=identity?.commonsCategory||"";
+ const subject=topic.subject,paintings=paintingWords.test(fold(q)),photos=photoWords.test(fold(q));
  const aliases=distinct([q,subject,identity?.originalCanonical,...(identity?.aliases||[])]);
  if(identity?.url)external(locale("Artículo enciclopédico","Encyclopedia article","Article encyclopédique"),identity.url);
- const requests=distinct([subject,q,...aliases.slice(1,4),
-  ...(paintings?["paintings by "+subject,"paintings of "+subject]:[]),
-  ...(photos?["photographs of "+subject,"portraits of "+subject]:[]) ]).slice(0,6);
+ const requests=topic.queries;
  controller=new AbortController();const signal=controller.signal;
  const timeout=setTimeout(()=>controller.abort(),18500);
  try{
   const searchJobs=requests.map(term=>getJSON(imageParams({
-   action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"50"
+   action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"24"
   }),signal));
-  const categoryTerm=paintings?"paintings by "+subject:photos?"photographs of "+subject:subject;
+  const entityImages=(identity?.imageFiles||[]).filter(x=>typeof x==="string").map(x=>"File:"+x);
+  const representativeJob=entityImages.length&&topic.intent==="overview"?getJSON(imageParams({action:"query",titles:entityImages.join("|")}),signal).then(data=>{
+   const pages=Object.values(data.query?.pages||{}).map(p=>({...p,fromEntityImage:true}));
+   if(id===active){const first=collectedImages(pages,topic);if(first.length)displayGroups(first,topic)}
+   return pages;
+  }).catch(()=>[]):Promise.resolve([]);
+  const categorySubject=identity?.commonsSearchName||subject;
+  const categoryTerm=paintings?"paintings by "+categorySubject:photos?"photographs of "+categorySubject:categorySubject;
   const categoriesJob=getJSON({action:"query",list:"search",srnamespace:"14",srsearch:categoryTerm,srlimit:"12"},signal).catch(()=>null);
-  const settled=await Promise.allSettled([...searchJobs,categoriesJob]);
+  const subcategoriesJob=identity?.commonsCategory?getJSON({action:"query",list:"categorymembers",cmtitle:"Category:"+identity.commonsCategory,cmtype:"subcat",cmlimit:"30"},signal).catch(()=>null):Promise.resolve(null);
+  const settled=await Promise.allSettled(searchJobs);
   if(id!==active)return;
-  let pages=settled.slice(0,-1).filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
-  const categories=settled.at(-1).status==="fulfilled"?settled.at(-1).value?.query?.search||[]:[];
-  const subjectTokens=tokens(subject).filter(x=>x.length>3);
+  const pages=settled.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
+  pages.push(...await representativeJob);
+  const categories=(await categoriesJob)?.query?.search||[];
+  const children=(await subcategoriesJob)?.query?.categorymembers||[];
+  if(id!==active)return;
+  const exactCategory=identity?.commonsCategory?"Category:"+identity.commonsCategory:null;
   const accepted=categories.filter(c=>{
    const name=fold(c.title);
-   const overlap=subjectTokens.filter(w=>name.includes(w)).length;
-   return !!subjectTokens.length&&overlap>=Math.max(1,Math.ceil(subjectTokens.length*.65))&&
+   const related=topic.aliases.some(alias=>{const phrase=fold(alias);return phrase.length>3&&(" "+name+" ").includes(" "+phrase+" ")});
+   return related&&
     (!paintings||/painting|artwork|portrait|pintur|obra/.test(name))&&
     (!photos||/photo|portrait|picture|image/.test(name));
-  }).slice(0,4);
-  if(accepted.length){
-   const records=await Promise.allSettled(accepted.map(c=>getJSON(imageParams({
-    action:"query",generator:"categorymembers",gcmtitle:c.title,gcmtype:"file",gcmlimit:"50"
-   }),signal)));
+  });
+  const priority=title=>/bust|sculpture|statue/.test(fold(title))?0:/portrait|painting|engraving/.test(fold(title))?1:/book|manuscript/.test(fold(title))?2:3;
+  children.sort((a,b)=>priority(a.title)-priority(b.title));
+  const categoryTitles=distinct(exactCategory?[exactCategory,...children.slice(0,5).map(c=>c.title)]:accepted.map(c=>c.title)).slice(0,6);
+  if(categoryTitles.length){
+   const records=await Promise.allSettled(categoryTitles.map(title=>getJSON(imageParams({
+    action:"query",generator:"categorymembers",gcmtitle:title,gcmtype:"file",gcmlimit:"24"
+   }),signal).then(data=>({data,title}))));
    if(id!==active)return;
    for(const record of records)if(record.status==="fulfilled")
-    pages.push(...Object.values(record.value.query?.pages||{}).map(x=>({...x,fromTrustedCategory:true})));
+    pages.push(...Object.values(record.value.data.query?.pages||{}).map(x=>({...x,sourceCategory:record.value.title,fromTrustedCategory:true})));
   }
-  const items=[],seen=new Set();
-  for(const page of pages){
-   const info=page.imageinfo?.[0],name=String(page.title||"").replace(/^File:/,"").replace(/_/g," ");
-   if(!info?.thumburl||!info?.descriptionurl||!safeLink(info.thumburl)||!safeLink(info.descriptionurl))continue;
-   if(!/^image\/(?:jpeg|png|webp|gif|svg\+xml)$/i.test(info.mime||""))continue;
-   if(seen.has(info.descriptionurl))continue;
-   const score=matchingScore(page,aliases,subject);
-   if(score<(page.fromTrustedCategory?85:35))continue;
-   seen.add(info.descriptionurl);
-   const license=String(info.extmetadata?.LicenseShortName?.value||"").replace(/<[^>]*>/g,"").slice(0,90);
-   items.push({name,preview:info.thumburl,original:safeLink(info.url)||info.thumburl,
-    page:info.descriptionurl,license,credit:"Wikimedia Commons · "+(page.fromTrustedCategory?"colección temática":"archivo identificado"),score});
-  }
-  items.sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+  const items=collectedImages(pages,topic);
   if(items.length){
    const selected=items.slice(0,80);
-   groupTitle(locale("Colección visual documentada · "+selected.length,"Documented image collection · "+selected.length,"Collection iconographique documentée · "+selected.length));
-   selected.forEach(displayItem);
+   displayGroups(selected,topic);
    status.textContent=locale(selected.length+" imágenes con ficha de origen. Abrí una para ampliar; confirmá los derechos antes de reutilizarla.",
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
+   if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
   }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Probá los catálogos externos.",
    "No sufficiently identified images were retrieved. Try the external collections.",
    "Aucune image suffisamment documentée. Consulter les collections externes.");
@@ -193,3 +244,4 @@ document.getElementById("search-images-button")?.addEventListener("click",()=>{
  section.scrollIntoView({behavior:"smooth",block:"start"});
 });
 })();
+

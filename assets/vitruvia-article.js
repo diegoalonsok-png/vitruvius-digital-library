@@ -197,7 +197,7 @@ function wikiSummary(result){
 if(!result.pageid||!result.wikiLang)return Promise.resolve(null);
 const cacheKey=result.wikiLang+":"+result.pageid;
 if(!summaries.has(cacheKey)){
- const p=new URLSearchParams({action:"query",prop:"extracts|info",explaintext:"1",inprop:"url",pageids:String(result.pageid),format:"json",origin:"*"});
+ const p=new URLSearchParams({action:"query",prop:"extracts|info",explaintext:"1",exsectionformat:"wiki",inprop:"url",pageids:String(result.pageid),format:"json",origin:"*"});
  const request=fetch("https://"+result.wikiLang+".wikipedia.org/w/api.php?"+p,{headers:{accept:"application/json"}}).then(r=>{
  if(!r.ok)throw Error("HTTP "+r.status);return r.json()
  }).then(data=>data.query?.pages?.[result.pageid]||null).catch(()=>null);
@@ -555,24 +555,50 @@ function optionalManuscriptAccess(rows){
 }
 
 function appendBiographyExtract(raw){
- const pieces=String(raw||"").split(/\r?\n/);
- let buffer=[],length=0,paragraphs=0,sections=0;
- const flush=()=>{
-  const text=buffer.join(" ").replace(/\s+/g," ").trim();buffer=[];
-  if(!text||length>44000||paragraphs>=75)return;
-  const sample=cut(text,Math.min(3200,46000-length));
-  if(sample){paragraph(sample,paragraphs===0?"article-lead":undefined);length+=sample.length;paragraphs++}
- };
- for(const line of pieces){
-  if(length>44000||paragraphs>=75)break;
-  const trimmed=line.trim();
-  const title=trimmed.match(/^={2,5}\s*([^=]+?)\s*={2,5}$/);
-  if(title){flush();if(sections<35){heading(title[1]);sections++}}
-  else if(!trimmed)flush();
-  else buffer.push(trimmed);
+ const blocks=window.VitruviaDiscovery?.parseExtract(raw)||[{type:"paragraph",text:String(raw||"")}];
+ let paragraphs=0;
+ for(const block of blocks){
+  if(block.type==="heading")$("article-body").append(make(block.level>2?"h4":"h3",block.text));
+  else if(block.text){paragraph(block.text,paragraphs===0?"article-lead":undefined);paragraphs++}
  }
- flush();
  return paragraphs;
+}
+const objectContextCache=new Map();
+async function appendObjectContext(topic,token){
+ const lang=document.documentElement.lang||"es",titles=topic.contextTitles?.[lang];
+ if(topic.kind!=="object"||!titles?.length)return [];
+ const key=lang+":"+titles.join("|");
+ if(!objectContextCache.has(key))objectContextCache.set(key,(async()=>{
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6500);
+  try{
+   // TextExtracts returns full text for only one title per request.
+   const results=await Promise.allSettled(titles.map(async title=>{
+    const params=new URLSearchParams({action:"query",titles:title,redirects:"1",prop:"extracts|info|pageprops",explaintext:"1",exsectionformat:"wiki",inprop:"url",format:"json",origin:"*"});
+    const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:controller.signal});
+    if(!response.ok)throw Error("Context unavailable");
+    const data=await response.json();if(data.error)throw Error("Context unavailable");
+    return Object.values(data.query?.pages||{}).filter(p=>p.missing===undefined&&p.pageprops?.disambiguation===undefined&&p.extract);
+   }));
+   return results.filter(r=>r.status==="fulfilled").flatMap(r=>r.value);
+  }catch{return []}finally{clearTimeout(timer)}
+ })());
+ const pages=await objectContextCache.get(key);
+ if(token!==active||!pages.length)return [];
+ heading(phrase("Historia y contexto del objeto","History and context of the object","Histoire et contexte de l’objet"));
+ paragraph(phrase("Lecturas relacionadas para situar el objeto en su historia técnica y cultural. Fuente: colaboradores de Wikipedia, CC BY-SA.","Related reading on the object’s technical and cultural history. Source: Wikipedia contributors, CC BY-SA.","Lectures liées à l’histoire technique et culturelle de l’objet. Source : contributeurs de Wikipédia, CC BY-SA."),"article-note");
+ const sources=[];
+ for(const page of pages){
+  heading(phrase("Contexto relacionado: ","Related context: ","Contexte lié : ")+page.title);
+  const extract=page.extract.length>6000?page.extract.slice(0,6000).replace(/\s+\S*$/,"")+"…":page.extract;
+  const blocks=window.VitruviaDiscovery?.parseExtract(extract)||[{type:"paragraph",text:extract}];
+  for(const block of blocks)$("article-body").append(make(block.type==="heading"?"h4":"p",block.text));
+  const links=make("div",undefined,"article-actions");
+  const internal=href("vitruvia.html?"+new URLSearchParams({q:page.title,mode:"all"}),phrase("Leer el tema completo en Vitruvia","Read the full topic in Vitruvia","Lire le sujet complet dans Vitruvia"));
+  const original=href(page.fullurl,phrase("Wikipedia · referencias e historial","Wikipedia · references and history","Wikipédia · références et historique"));
+  if(internal)links.append(internal);if(original)links.append(original);$("article-body").append(links);
+  sources.push({title:page.title+" · Wikipedia",link:page.fullurl});
+ }
+ return sources;
 }
 /* External material is attributed; editorial overview is independently authored. */
 const ciceroChapters=[
@@ -693,14 +719,14 @@ async function topicWikiData(query){
  for(const lang of [...new Set(langs)]){
   for(const term of variations){
    try{
-    const p=new URLSearchParams({action:"query",generator:"search",gsrsearch:term,gsrlimit:"5",prop:"extracts|info",explaintext:"1",inprop:"url",format:"json",origin:"*"});
+    const p=new URLSearchParams({action:"query",generator:"search",gsrsearch:term,gsrlimit:"5",prop:"extracts|info",explaintext:"1",exsectionformat:"wiki",inprop:"url",format:"json",origin:"*"});
     const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+p);
     if(!response.ok)continue;
     const json=await response.json();
     const pages=Object.values(json.query?.pages||{}).filter(x=>x.extract?.length>300);
     const clean=x=>normalized(x).replace(/^(el|la|los|las|the|le|les) /,"");
     const selected=pages.find(x=>clean(x.title)===clean(term))||pages.find(x=>clean(x.title).includes(clean(term))||clean(term).includes(clean(x.title)));
-    if(selected)return selected;
+    if(selected)return {...selected,lang};
    }catch{}
   }
  }
@@ -1060,7 +1086,9 @@ function addTopicBibliography(rows,query,ark){
  }
 }
 async function renderTopic(top,rows,query,token,person=null){
- const identified=(rows||[]).filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
+ const authority=rows.find(r=>r.preferredWiki);
+ const topicPlan=window.VitruviaDiscovery?.plan(query,{canonical:authority?.entityCanonical,kind:authority?.entityKind,authorityDescription:authority?.entityDescription})||{kind:"topic"};
+ const identified=["person","object"].includes(topicPlan.kind)?null:(rows||[]).filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
  const documentaryQuery=identified?.title?.split(" · ")[0]||person?.name||query;
  reset(identified?.title||person?.name||query,phrase("Artículo enciclopédico · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
@@ -1077,7 +1105,7 @@ async function renderTopic(top,rows,query,token,person=null){
   Number(y.wikiLang===wanted)-Number(x.wikiLang===wanted)||
   relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
  if(wiki?.preferredWiki&&wiki.title)$("article-title").textContent=wiki.title;
- const profile=await biographyProfile(person?.name||query);
+ const profile=wanted==="es"?await biographyProfile(person?.name||query):null;
  if(token!==active)return;
  if(profile)renderVerifiedBiography(profile);
  else paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
@@ -1094,13 +1122,8 @@ async function renderTopic(top,rows,query,token,person=null){
  }
  const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
  if(token!==active)return;
- if(data?.extract&&profile){
-  const ref=href(data.fullurl||wiki?.link,phrase("Enciclopedia externa · comprobar referencias y ampliaciones",
-   "External encyclopedia · verify citations and additional context",
-   "Encyclopédie externe · vérifier les références et compléments"));
-  if(ref){heading(phrase("Comparar con una enciclopedia general","Compare with a general encyclopedia","Comparer avec une encyclopédie générale"));$("article-body").append(ref)}
- }else if(data?.extract){
-  heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
+ if(data?.extract){
+  heading(phrase("Desarrollo enciclopédico ampliado","Extended encyclopedia article","Développement encyclopédique approfondi"));
   paragraph("Material enciclopédico de Wikipedia: atribución CC BY-SA. La síntesis original y los textos externos se presentan diferenciados.","article-note");
   if(wiki&&wiki.wikiLang!==wanted)paragraph(
    phrase("La fuente enciclopédica está disponible aquí en "+wiki.wikiLang.toUpperCase()+"; no se simula una traducción.",
@@ -1109,10 +1132,12 @@ async function renderTopic(top,rows,query,token,person=null){
   appendBiographyExtract(data.extract);
   const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
   if(link)$("article-body").append(link);
- }else if(!identified&&!ark&&!deity&&person?.id!=="cicero"){
+ }else if(!profile&&!identified&&!ark&&!deity&&person?.id!=="cicero"){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ const contextSources=await appendObjectContext(topicPlan,token);
+ if(token!==active)return;
  // Advanced sources are present, but do not interrupt a general or school-level biography.
  const body=$("article-body"),previousNodes=new Set([...body.childNodes]);
  appendLocalRepositoryResources(rows);
@@ -1144,7 +1169,8 @@ async function renderTopic(top,rows,query,token,person=null){
  if(list.childNodes.length)$("article-body").append(list);
  if(person)appendPersonLoci(rows,person);else appendVerifiedTopicPassages(rows,query);
  appendAcademicLinks(person?.name||query);
- aside(sources);optionalManuscriptAccess(rows);references(rows);buildContents();
+ aside(sources);optionalManuscriptAccess(rows);
+ references([...(data?.fullurl?[{title:(data.title||query)+" · Wikipedia",link:data.fullurl}]:[]),...contextSources,...rows]);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
 function appendResearch(rows,query,sourceTitle){
@@ -1316,15 +1342,23 @@ function reportEvidence(rows,q){
 }
 function buildContents(){
  const box=$("article-aside");if(!box)return;
- const sections=[...$("article-body").querySelectorAll("h3")].slice(0,24);
+ const body=$("article-body");
+ box.querySelector(".article-contents")?.remove();body.querySelector(".article-inline-contents")?.remove();
+ const sections=[...body.querySelectorAll("h3,h4")];
  if(!sections.length)return;
  const nav=document.createElement("nav");nav.className="article-contents";nav.setAttribute("aria-label",phrase("Índice de contenidos","Table of contents","Sommaire"));
  nav.append(make("h3",phrase("Contenido","Contents","Sommaire")));
  for(const [i,h] of sections.entries()){
   h.id="dossier-heading-"+i;
-  const a=make("a",h.textContent);a.href="#"+h.id;a.className="article-contents-link";nav.append(a);
+  const a=make("a",h.textContent);a.href="#"+h.id;a.className="article-contents-link";
+  if(h.tagName==="H4")a.classList.add("article-contents-subsection");
+  a.addEventListener("click",()=>{for(let container=h.closest("details");container;container=container.parentElement?.closest("details"))container.open=true});
+  nav.append(a);
  }
- box.prepend(nav);
+ const inline=make("details",undefined,"article-inline-contents");
+ inline.append(make("summary",phrase("Contenido · ","Contents · ","Sommaire · ")+sections.length+phrase(" secciones"," sections"," sections")),nav);
+ const firstHeading=body.querySelector("h3,h4");
+ if(firstHeading)firstHeading.before(inline);else body.prepend(inline);
 }
 /* Authoritative first result for the library's own author: biography + editions. */
 const vitruviusBiography=[

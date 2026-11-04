@@ -1,0 +1,21 @@
+/* Reading navigation and a small, source-linked visual introduction. */
+#vitruvia-article .article-inline-contents{border:1px solid var(--line,#666);border-radius:10px;padding:12px 16px;margin:22px 0 30px;color:inherit;background:transparent}
+#vitruvia-article .article-inline-contents>summary{cursor:pointer;font-weight:600}
+#vitruvia-article .article-inline-contents .article-contents{display:block!important;max-height:320px;overflow:auto;margin:12px 0 0;padding:0;border:0;scrollbar-width:thin}
+#vitruvia-article .article-inline-contents .article-contents>h3{display:none}
+#vitruvia-article .article-inline-contents .article-contents-link{font-size:13px;line-height:1.55;color:inherit;padding:6px 0}
+#vitruvia-article .article-inline-contents .article-contents-subsection{padding-left:16px;font-size:12px}
+#vitruvia-article .article-body h4{font-size:1.05em;line-height:1.5;font-weight:600;color:inherit;margin:26px 0 12px;scroll-margin-top:110px}
+#vitruvia-article .article-image-preview{margin:12px 0 28px;color:inherit}
+#vitruvia-article .article-image-preview[hidden]{display:none}
+.article-image-preview-heading{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;margin:0 0 9px}
+.article-image-preview-heading a{font-weight:600}
+.article-image-preview-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.article-image-preview-grid .vitruvia-image-card{width:100%;text-align:left;cursor:pointer;padding:0;font:inherit}
+.article-image-preview-grid .vitruvia-image-card img{height:145px}
+.article-image-preview-grid .vitruvia-image-card .image-caption{font-size:11px;line-height:1.4;padding:8px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.article-image-preview-grid .image-origin{display:none}
+@media(max-width:700px){.article-image-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.article-image-preview-grid .vitruvia-image-card img{height:125px}}
+@media(max-width:420px){.article-image-preview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#vitruvia-article .article-inline-contents{padding:10px 12px}}
+@media print{#vitruvia-article .article-inline-contents{display:none}.article-image-preview-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.search-destinations .vitruvia-query-link{display:inline-flex;align-items:center;font-size:13px;min-height:38px;padding:8px 12px;text-decoration:none}

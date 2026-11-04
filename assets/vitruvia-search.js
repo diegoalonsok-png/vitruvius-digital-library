@@ -859,7 +859,7 @@ async function search(){
     excerpt:identity.description,fullExtract:identity.extract,
     meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
     rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
-    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,preferredWiki:identity.language===S.lang,sourceLanguage:identity.language
+    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityDescription:identity.authorityDescription||identity.description,preferredWiki:identity.language===S.lang,sourceLanguage:identity.language
    }]};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }

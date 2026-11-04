@@ -9,6 +9,15 @@ const get=async(url)=>{
  finally{clearTimeout(timer)}
 };
 const mediaWiki=(lang,parameters)=>"https://"+lang+".wikipedia.org/w/api.php?"+new URLSearchParams({...parameters,format:"json",origin:"*"});
+function entityMetadata(entity){
+ const values=property=>(entity.claims?.[property]||[]).filter(c=>c.rank!=="deprecated").map(c=>c.mainsnak?.datavalue?.value).filter(v=>v!==undefined);
+ const instanceOf=values("P31").map(v=>v.id).filter(Boolean);
+ const born=values("P569")[0]?.time?.match(/^([+-]\d+)/);
+ return {entityMetadata:!!entity.claims,instanceOf,kind:instanceOf.length?(instanceOf.includes("Q5")?"person":"topic"):null,
+  aliases:[...new Set([...Object.values(entity.labels||{}).map(x=>x.value),...Object.values(entity.aliases||{}).flat().map(x=>x.value)])].slice(0,40),
+  commonsSearchName:entity.labels?.en?.value||"",commonsCategory:values("P373")[0]||null,
+  imageFiles:values("P18").filter(x=>typeof x==="string").slice(0,4),birthYear:born?Number(born[1]):null};
+}
 // Remove generic *intent* expressions but do not hard-code personalities.
 const clean=q=>{
  const full=String(q||"").trim();
@@ -40,7 +49,7 @@ async function localize(identity,lang){
   const alternate=page?.langlinks?.find(x=>x.lang===lang)?.["*"];
   if(!alternate)return identity;
   const translated=await lookupTitle(alternate,lang);
-  return translated?{...translated,wikidataId:translated.wikidataId||identity.wikidataId,originalCanonical:identity.canonical,localized:true}:identity;
+  return translated?{...identity,...translated,aliases:[...new Set([...(identity.aliases||[]),...(translated.aliases||[])])],wikidataId:translated.wikidataId||identity.wikidataId,originalCanonical:identity.canonical,localized:true}:identity;
  }catch{return identity}
 }
 // Disambiguate via Wikidata authority aliases and cross-language coverage.
@@ -73,13 +82,18 @@ async function authorityCandidates(q,lang){
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
-  return {id,title:site.title,lang:site.site?.replace(/wiki$/,"")||lang,
+  return {id,entity,title:site.title,lang:site.site?.replace(/wiki$/,"")||lang,
    score,coverage,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
  }).filter(Boolean).sort((a,b)=>b.score-a.score);
  const best=ranked[0];
  if(!best||(best.score<130&&best.coverage<12))return null;
- const resolved=await lookupTitle(best.title,best.lang);
- return resolved?{...resolved,wikidataId:best.id,authorityDescription:best.description,
+ const [page,details]=await Promise.allSettled([
+  lookupTitle(best.title,best.lang),
+  get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({action:"wbgetentities",ids:best.id,props:"claims",format:"json",origin:"*"}))
+ ]);
+ const resolved=page.status==="fulfilled"?page.value:null;
+ const entity={...best.entity,claims:details.status==="fulfilled"?details.value.entities?.[best.id]?.claims:undefined};
+ return resolved?{...resolved,...entityMetadata(entity),wikidataId:best.id,authorityDescription:best.description,
   authorityCoverage:best.coverage,disambiguated:true}:null;
 }
 async function resolve(query,preferredLang="es"){
