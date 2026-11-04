@@ -889,7 +889,7 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
   const queryNorm=normal(q).replace(/^(?:quien fue|biografia de|vida de) /,'');
   const identityTerms=(identity?.canonical||'').split(/\\s+/);
   const likelyEntity=!!identity?.pageid&&!!identity?.url&&(
-    queryNorm===normal(identity.canonical)||
+    queryNorm===normal(identity.canonical)||queryNorm.replace(/\\s+/g,'')===normal(identity.canonical).replace(/\\s+/g,'')||
     (identity.aliases||[]).some(alias=>normal(alias)===queryNorm)||
     (queryNorm.length>=5&&identityTerms.some(term=>normal(term).length>=5&&queryNorm.includes(normal(term))))
   );
@@ -958,7 +958,7 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-entity-v1" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-university-encyclopedia-v2" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
 <script src="assets/search-agentic.js?v=20261104-bilingual-evidence-v4" defer></script>
 <script src="assets/vitruvia-search.js?v=20261104-library-groups-v3" defer></script>
