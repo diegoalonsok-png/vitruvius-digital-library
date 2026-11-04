@@ -16,9 +16,9 @@
  const key='vitruvia-reading-appearance-v2';
  const sizeKey='vitruvia-reading-font-percent-v1';
  const labels={
-  es:{title:'Opciones de lectura',size:'Tamaño de letra',font:'Tipografía',original:'Original',system:'Sistema',style:'Estilo',italic:'Cursiva',color:'Color del texto',background:'Color del fondo',automatic:'Automático',preview:'Así se verá el texto.',hint:'Se aplica a artículos y resultados.',reset:'Restablecer ajustes'},
-  en:{title:'Reading options',size:'Text size',font:'Typeface',original:'Original',system:'System',style:'Style',italic:'Italic',color:'Text color',background:'Background color',automatic:'Automatic',preview:'This is how the text will look.',hint:'Applies to articles and results.',reset:'Reset settings'},
-  fr:{title:'Options de lecture',size:'Taille du texte',font:'Police',original:'Originale',system:'Système',style:'Style',italic:'Italique',color:'Couleur du texte',background:'Couleur du fond',automatic:'Automatique',preview:'Voici l’apparence du texte.',hint:'S’applique aux articles et aux résultats.',reset:'Réinitialiser les réglages'}
+  es:{title:'Opciones de lectura',size:'Tamaño de letra',font:'Tipografía',original:'Original',system:'Sistema',style:'Estilo',italic:'Cursiva',color:'Color del texto',background:'Color del fondo',automatic:'Automático',preview:'Así se verá el texto.',hint:'Se aplica a artículos, resultados y fondo del buscador; el texto se adapta para mantener el contraste.',reset:'Restablecer ajustes'},
+  en:{title:'Reading options',size:'Text size',font:'Typeface',original:'Original',system:'System',style:'Style',italic:'Italic',color:'Text color',background:'Background color',automatic:'Automatic',preview:'This is how the text will look.',hint:'Applies to articles, results and page background; text adjusts to retain contrast.',reset:'Reset settings'},
+  fr:{title:'Options de lecture',size:'Taille du texte',font:'Police',original:'Originale',system:'Système',style:'Style',italic:'Italique',color:'Couleur du texte',background:'Couleur du fond',automatic:'Automatique',preview:'Voici l’apparence du texte.',hint:'S’applique aux articles, aux résultats et au fond de page ; le texte reste lisible.',reset:'Réinitialiser les réglages'}
  };
  const validFont=value=>Object.hasOwn(fonts,value);
  const validColor=value=>typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value);
@@ -101,7 +101,7 @@
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&options.open){options.open=false;summary.focus()}});
  new MutationObserver(records=>{
   if(records.some(record=>record.attributeName==='lang'))refreshLabels();
-  if(records.some(record=>record.attributeName==='data-theme'))refreshColor();
+  if(records.some(record=>record.attributeName==='data-theme'))apply();
  }).observe(root,{attributes:true,attributeFilter:['lang','data-theme']});
  refreshLabels();apply();
 })();
