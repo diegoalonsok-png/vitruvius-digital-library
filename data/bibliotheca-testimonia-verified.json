@@ -309,6 +309,22 @@
       "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
       "startFolio": "341r",
       "dateStart": 1301
+    },
+    {
+      "id": "faventinus-gudianus-132",
+      "workIds": [
+        "faventinus"
+      ],
+      "title": "Epítome de Faventino — Codex Gudianus 132 (E)",
+      "library": "Herzog August Bibliothek, Wolfenbüttel",
+      "shelfmark": "Cod. Guelf. 132 Gud. lat.",
+      "date": "siglos IX–X (datación del inventario del proyecto; verificar con el catálogo HAB)",
+      "coverage": "Epítome de M. Cetius Faventinus y extractos de De architectura; testimonio parcial, no edición completa.",
+      "language": "la",
+      "record": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
+      "viewer": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
+      "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
+      "verification": "Enlace HAB ya publicado en la portada del proyecto; ficha codicológica pendiente"
     }
   ],
   "editions": [
@@ -584,6 +600,34 @@
       "url": "https://catalog.folger.edu/record/37379",
       "provider": "Loeb Classical Library · W. Heinemann / G. P. Putnam; catálogo Folger Shakespeare Library",
       "note": "Edición revisada del texto griego y traducción inglesa. Ficha bibliográfica institucional; no es acceso al texto íntegro."
+    },
+    {
+      "workId": "faventinus",
+      "title": "Abrégé d'architecture privée",
+      "year": "2001",
+      "editor": "Marie-Thérèse Cam",
+      "langs": [
+        "la",
+        "fr"
+      ],
+      "type": "academic-translation-catalogue",
+      "url": "https://cca.qc.ca/en/search/details/library/publication/53373157",
+      "provider": "Collection des Universités de France · Les Belles Lettres",
+      "note": "Edición crítica, traducción francesa y comentario; CUF, Série latine 363. ISBN 978-2-251-01423-4."
+    },
+    {
+      "workId": "faventinus",
+      "title": "Vitruvius and Later Roman Building Manuals",
+      "year": "1973",
+      "editor": "Hugh Plommer",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "academic-translation-catalogue",
+      "url": "https://iucat.iu.edu/iub/6623459",
+      "provider": "Cambridge University Press",
+      "note": "Texto latino de Faventino con traducción inglesa y comparación con Vitruvio. ISBN 0-521-20141-1."
     }
   ]
 }

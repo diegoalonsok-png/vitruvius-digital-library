@@ -141,7 +141,7 @@ function displayGroups(items,topic){
 }
 async function localCodex(id){
  heading.textContent="Codex Harleianus · Harley MS 2767";
- external("341 folios · galería local","codex-h-folios-local.html");
+ external("341 imágenes · galería local","codex-h-folios-local.html");
  external("Ficha codicológica","harleianus.html");
  const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
  try{

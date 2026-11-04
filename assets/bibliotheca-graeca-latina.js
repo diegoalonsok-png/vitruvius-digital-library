@@ -332,6 +332,7 @@ const back=document.createElement("a");back.href="vitruvia.html?q="+encodeURICom
   const p=document.createElement("p");p.className="classic-ref";
   p.textContent="Traducción neolatina: pendiente de cotejo. La presencia del griego original no garantiza una versión latina, española ni inglesa disponible.";box.append(p);
  }
+ if(w.vitruvianLoci?.loci?.length){const roman=n=>{let r="",v=Number(n);for(const [k,x] of [[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]])while(v>=k){r+=x;v-=k}return r||n};const fmt=l=>{const [b,...rest]=String(l).split(".");return roman(b)+"."+rest.join(".")};const vl=document.createElement("p");vl.className="classic-ref";const lab=document.createElement("strong");lab.textContent=(language()==="en"?"Named by Vitruvius:":language()==="fr"?"Cité par Vitruve :":"Citado por Vitruvio:")+" ";vl.append(lab);w.vitruvianLoci.loci.forEach((l,i)=>{if(i)vl.append(", ");const a=document.createElement("a");a.href="lector-bilingue.html?edition="+encodeURIComponent(w.vitruvianLoci.edition||"recensio-es")+"&locus="+encodeURIComponent(l);a.textContent="De arch. "+fmt(l);vl.append(a)});if(w.vitruvianLoci.note){vl.append(" · "+w.vitruvianLoci.note)}box.append(vl)}
  if(w.bibliography){const bib=document.createElement("section");bib.className="classic-bibliography";bib.setAttribute("aria-label","Registro bibliográfico y codicológico");const title=document.createElement("h3");title.textContent="Registro bibliográfico · Chicago 18";bib.append(title);const p=document.createElement("p");p.textContent=w.bibliography.editionCitation||w.bibliography.preferredCitation||"";bib.append(p);if(w.bibliography.manuscriptCitation){const h=document.createElement("h4");h.textContent="Codicología · Testimonio digital";bib.append(h);const witness=document.createElement("p");witness.textContent=w.bibliography.manuscriptCitation;bib.append(witness)}const note=document.createElement("p");note.textContent=w.bibliography.method||"";bib.append(note);box.append(bib)}
 const localWitness=(w.witnessRecords||[]).find(ms=>localManuscriptUrl(ms));
 if(localWitness){
@@ -474,8 +475,8 @@ if(tab==="pdf"){
 }
 async function boot(){
  const [res,reference]=await Promise.all([
-  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-reading-cta-v4"),
-  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-authors-witnesses-v3").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-loci-v1"),
+  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-faventinus-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;

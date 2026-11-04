@@ -894,11 +894,27 @@ function appendCuratedEvidence(rows){
 
 /* Internal corpus is authoritative for what is actually hosted here; external
    manuscript ownership and edition identity remain attributed separately. */
-function appendLocalRepositoryResources(rows){
- const local=(rows||[]).filter(r=>
+/* Relevance for local holdings: compare word stems (first six letters) of the
+   query with title, author, aliases and description, so that "faventino" finds
+   "Faventinus" and an unrelated hosted work is not listed for a specific query. */
+function localResourceMatches(r,query){
+ const stems=t=>roots(t).map(x=>x.slice(0,6)).filter(x=>x.length>=4);
+ const q=stems(query||"");
+ if(!q.length)return true;
+ const words=new Set(stems([r.title,r.author,(r.aliases||[]).join(" "),r.excerpt,r.meta,r.codexShelfmark].filter(Boolean).join(" ")));
+ return q.some(t=>words.has(t));
+}
+function appendLocalRepositoryResources(rows,query){
+ const hosted=(rows||[]).filter(r=>
   r.type==="manuscript"&&r.localViewer||
   r.type==="book"&&r.localHosted||
   r.type==="edition"&&/^(?:lector-bilingue|bibliotheca-graeca-latina)\.html(?:\?|$)/.test(r.link||""));
+ let local=hosted;
+ if(query){
+  const related=hosted.filter(r=>localResourceMatches(r,query));
+  // A term found inside De architectura keeps the Vitruvian readers; otherwise only related holdings.
+  local=related.length?related:((rows||[]).some(r=>r.type==="passage")?hosted.filter(r=>/vitruv/.test(normalized([r.title,r.author].join(" ")))):[]);
+ }
  if(!local.length)return;
  const unique=[],seen=new Set();
  for(const r of local){
@@ -1176,7 +1192,7 @@ async function renderTopic(top,rows,query,token,person=null){
  if(token!==active)return;
  // Advanced sources are present, but do not interrupt a general or school-level biography.
  const body=$("article-body"),previousNodes=new Set([...body.childNodes]);
- appendLocalRepositoryResources(rows);
+ appendLocalRepositoryResources(rows,documentaryQuery);
  appendCuratedUniversities(rows);
  appendManuscriptHierarchy(rows,documentaryQuery);
  appendCuratedEvidence(rows);
@@ -1431,7 +1447,7 @@ function renderVitruviusAuthority(rows){
   "Copie carolingienne de De architectura datée d'environ 800–824, conservée à la British Library (Londres), cote Harley MS 2767. Parcourez les 341 images numérisées, folio par folio. La datation de la copie ne correspond pas à celle de la composition.")));
  const links=make("div",undefined,"article-source-first-links");
  const local=featuredManuscript?.localViewer||"codex-h-folios-local.html?folio=f.1r";
- const read=href(local,phrase("Leer Codex H · 341 folios digitalizados","Read Codex H · 341 digital images","Lire Codex H · 341 images numérisées"));
+ const read=href(local,phrase("Leer Codex H · 341 imágenes digitalizadas","Read Codex H · 341 digital images","Lire Codex H · 341 images numérisées"));
  if(read)links.append(read);
  if(window.VitruviaLocalManuscripts){
   const embedded=make("button",phrase("Abrir visor aquí","Open reader here","Ouvrir la visionneuse ici"));

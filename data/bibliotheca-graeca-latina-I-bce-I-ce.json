@@ -175,7 +175,14 @@
         "On Duties",
         "De los oficios",
         "Officiis"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-oratore",
@@ -212,7 +219,14 @@
         "Cicero",
         "Del orador",
         "On the Orator"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-republica",
@@ -247,7 +261,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20publica"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "caesar-gallico",
@@ -422,7 +443,15 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Rerum%20rusticarum%20libri%20tres"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.14",
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "lucretius",
@@ -613,7 +642,14 @@
           "label": "Edición anterior · traducción inglesa",
           "role": "translation"
         }
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "virgil-aeneid",
@@ -1628,14 +1664,14 @@
       "manuscript": {
         "manifest": null,
         "record": "https://www.e-codices.ch/en/list/one/bbb/0722-3",
-        "status": "Bern Burgerbibliothek Cod. 722.3: fragmento carolingio; otros testigos por cotejar"
+        "status": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. (E): reúne el epítome de Faventino y extractos vitruvianos. Bern, Burgerbibliothek, Cod. 722.3: fragmento carolingio. Otros testigos por cotejar."
       },
       "pdf": {
         "url": null,
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Ediciones con traducción: M.-T. Cam, Cetius Faventinus, Abrégé d'architecture privée (CUF, 2001; texto latino y traducción francesa) y H. Plommer, Vitruvius and Later Roman Building Manuals (Cambridge, 1973; texto latino y traducción inglesa)."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1644,7 +1680,18 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Artis%20architectonicae%20privatis%20usibus%20adbreviatus%20liber"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "De diversis fabricis architectonicae",
+        "Cetius Faventinus",
+        "M. Cetius Faventinus",
+        "Faventino"
+      ],
+      "bibliography": {
+        "editionCitation": "Cetius Faventinus. Abrégé d'architecture privée. Texte établi, traduit et commenté par Marie-Thérèse Cam. Collection des Universités de France, Série latine 363. Paris: Les Belles Lettres, 2001. ISBN 978-2-251-01423-4.",
+        "preferredCitation": "Plommer, Hugh. Vitruvius and Later Roman Building Manuals. Cambridge: Cambridge University Press, 1973. ISBN 0-521-20141-1.",
+        "method": "Edición crítica de referencia: Cam 2001 (CUF). Plommer 1973 ofrece texto, traducción inglesa y comparación con Vitruvio. Ninguna de las dos se aloja en este sitio."
+      }
     },
     {
       "id": "barnabas",
@@ -2585,6 +2632,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -3069,6 +3123,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.14",
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -3861,7 +3923,15 @@
         "Iliada",
         "Iliad",
         "Ilias"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.8",
+          "7.praef.9"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "homer-odyssey",
@@ -3898,7 +3968,15 @@
         "Odisea",
         "Odyssey",
         "Odysseia"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.8",
+          "7.praef.9"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "hesiod-theogony",
@@ -4006,7 +4084,14 @@
         "Aeschylus",
         "Orestíada",
         "Oresteia"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "sophocles-oedipus",
@@ -4078,7 +4163,16 @@
         "Eurípides",
         "Euripides",
         "Medea"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-clouds",
@@ -4114,7 +4208,17 @@
         "Aristophanes",
         "Las nubes",
         "Clouds"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "herodotus-historiae",
@@ -4150,7 +4254,14 @@
         "Herodotus",
         "Historias",
         "The Histories"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "8.3.27"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "thucydides-war",
@@ -4261,7 +4372,18 @@
         "República",
         "Republic",
         "Politeia"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-apology",
@@ -4305,7 +4427,18 @@
         "Plato",
         "Apología de Sócrates",
         "Apology of Socrates"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-poetics",
@@ -4384,7 +4517,15 @@
           "label": "Edición anterior · traducción inglesa",
           "role": "translation"
         }
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-politics",
@@ -4420,7 +4561,15 @@
         "Aristotle",
         "Política",
         "Politics"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "hippocrates-aphorisms",
@@ -4456,7 +4605,14 @@
         "Hippocrates",
         "Aforismos",
         "Aphorisms"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "epictetus-discourses",
@@ -4640,7 +4796,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aeschylus-seven-thebes",
@@ -4679,7 +4842,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aeschylus-suppliants",
@@ -4718,7 +4888,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aeschylus-prometheus",
@@ -5030,7 +5207,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-hippolytus",
@@ -5069,7 +5255,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-alcestis",
@@ -5108,7 +5303,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-electra",
@@ -5147,7 +5351,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-troades",
@@ -5186,7 +5399,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-hecuba",
@@ -5225,7 +5447,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-iphigenia-aulid",
@@ -5264,7 +5495,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-aves",
@@ -5303,7 +5543,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-ranae",
@@ -5342,7 +5592,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-lysistrata",
@@ -5381,7 +5641,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-vespae",
@@ -5420,7 +5690,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-pax",
@@ -5459,7 +5739,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-acharnenses",
@@ -5498,7 +5788,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-symposium",
@@ -5537,7 +5837,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-phaedo",
@@ -5576,7 +5887,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-gorgias",
@@ -5615,7 +5937,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-timaeus",
@@ -5654,7 +5987,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-meno",
@@ -5693,7 +6037,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-phaedrus",
@@ -5732,7 +6087,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-laws",
@@ -5771,7 +6137,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-crito",
@@ -5810,7 +6187,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-nicomachean-ethics",
@@ -5849,7 +6237,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-metaphysics",
@@ -5888,7 +6284,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-physics",
@@ -5927,7 +6331,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-rhetoric",
@@ -5966,7 +6378,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-de-anima",
@@ -6005,7 +6425,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "xenophon-memorabilia",
@@ -6325,7 +6753,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "lectura-local-completa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.2",
+          "8.3.27"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "theophrastus-historia-plantarum",
@@ -6364,7 +6800,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.2",
+          "8.3.27"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "diogenes-laertius-vitae",
@@ -6442,7 +6886,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-finibus",
@@ -6481,7 +6932,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-tusculanae",
@@ -6520,7 +6978,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-natura-deorum",
@@ -6559,7 +7024,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-amicitia",
@@ -6598,7 +7070,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-senectute",
@@ -6637,7 +7116,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-divinatione",
@@ -6676,7 +7162,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-brutus",
@@ -6715,7 +7208,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-philippicae",
@@ -6754,7 +7254,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "seneca-de-brevitate",
@@ -7541,6 +8048,253 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/",
         "perseus": "https://www.perseus.tufts.edu/hopper/"
+      }
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "language": "grc",
+      "genre": "Música y teoría armónica",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Elementa harmonica",
+        "Elementos de armonía",
+        "Aristoxenus"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.13",
+          "5.4.1",
+          "5.5.6"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "siglo III a. C.",
+      "aliases": [
+        "De corporibus fluitantibus",
+        "Sobre los cuerpos flotantes",
+        "Archimedes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.7",
+          "1.1.17",
+          "7.praef.14",
+          "8.5.3",
+          "9.praef.9",
+          "9.praef.10"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "language": "grc",
+      "genre": "Poesía didáctica",
+      "dating": "siglo III a. C.",
+      "aliases": [
+        "Phaenomena",
+        "Fenómenos",
+        "Aratus"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arato%20de%20Solos%20Phaenomena",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arato%20de%20Solos%20Phaenomena"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Arato%20de%20Solos%20Phaenomena",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arato%20de%20Solos%20Phaenomena&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.6.3"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "language": "la",
+      "genre": "Épica",
+      "dating": "siglo II a. C.",
+      "aliases": [
+        "Anales",
+        "Ennius",
+        "Quintus Ennius"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ennio%20Anales",
+        "gallica": "https://gallica.bnf.fr/Search?q=Ennio%20Anales"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Ennio%20Anales",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Ennio%20Anales&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.16"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "language": "la",
+      "genre": "Tragedia",
+      "dating": "siglos II–I a. C.",
+      "aliases": [
+        "Fragmentos trágicos",
+        "Accius",
+        "Lucius Accius"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Accio%20Fragmentos%20tr%C3%A1gicos",
+        "gallica": "https://gallica.bnf.fr/Search?q=Accio%20Fragmentos%20tr%C3%A1gicos"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Accio%20Fragmentos%20tr%C3%A1gicos",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Accio%20Fragmentos%20tr%C3%A1gicos&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.16"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     }
   ],
