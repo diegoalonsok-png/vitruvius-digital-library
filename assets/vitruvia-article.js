@@ -661,17 +661,18 @@ function referenceBooks(rows,query){
  return out;
 }
 function appendManuscriptHierarchy(rows,query){
- const items=(rows||[]).filter(r=>r.type==="manuscript"&&r.link&&r.codexShelfmark&&
-  (r.primaryWitness||relevance({...r,title:[r.title,r.author,r.excerpt].join(" ")},query)>=35))
+ const items=(rows||[]).filter(r=>r.type==="manuscript"&&r.link&&(r.codexShelfmark||r.archiveDiscovery)&&
+  (r.primaryWitness||r.archiveDiscovery||relevance({...r,title:[r.title,r.author,r.excerpt].join(" ")},query)>=35))
   .sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)).slice(0,25);
  if(!items.length)return;
  heading("Tradición manuscrita · códices y testimonios por obra");
- paragraph("Se destaca el testimonio más antiguo IDENTIFICADO EN ESTA BIBLIOTECA para cada obra. No implica que sea el más antiguo conservado ni un autógrafo del autor.","article-note");
+ paragraph("Se destacan testimonios fechados e identificados en la biblioteca. Los registros externos enlazados por Wikidata requieren comprobación codicológica: ni su datación ni su importancia constituyen una atribución verificada.","article-note");
  const list=make("ol",undefined,"article-related article-manuscripts");
  for(const [i,r] of items.entries()){
-  const li=make("li",undefined,r.primaryWitness?"principal-reference-work":undefined);
-  if(r.primaryWitness)li.append(make("strong","TESTIMONIO DESTACADO · "));
-  const a=href(r.viewerUrl||r.link,r.title);
+  const li=make("li",undefined,r.primaryWitness||r.archiveDiscovery&&i===0?"principal-reference-work":undefined);
+  if(r.primaryWitness)li.append(make("strong","TESTIMONIO DESTACADO EN EL CATÁLOGO · "));
+  else if(r.archiveDiscovery&&i===0)li.append(make("strong","PRIMER REGISTRO DE MANUSCRITO VINCULADO · "));
+  const a=href(r.codexViewer||r.viewerUrl||r.link,r.title);
   if(a)li.append(a);
   li.append(make("small"," · "+[r.codexRepository,r.meta].filter(Boolean).join(" · "),"article-license"));
   const record=href(r.links?.find(x=>/ficha/i.test(x.label))?.url||r.link," · Ficha institucional");
@@ -726,7 +727,7 @@ function appendReferenceBooks(rows,query){
 }
 function addTopicBibliography(rows,query,ark){
  const deity=isDeityQuery(query);
- const relevant=rows.filter(r=>r.link&&r.title&&(
+ const relevant=rows.filter(r=>r.link&&r.title&&(r.archiveDiscovery||
   relevance({...r,title:[r.title,r.author,...(r.aliases||[])].join(" ")},query)>=35||
   normalized([r.title,r.author,r.excerpt].join(" ")).includes(normalized(query))
  ));
