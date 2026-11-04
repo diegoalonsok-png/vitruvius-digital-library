@@ -826,6 +826,21 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 @media(max-width:450px){.vitruvia-image-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.vitruvia-image-grid .vitruvia-image-card img{height:135px!important}}
 @media print{.vitruvia-image-large{display:none!important}}
 
+
+/* First-document prominence in scholarly dossiers: no deceptive oldest-codex claim. */
+.article-source-first{padding:20px 22px;margin:18px 0 27px;border:1px solid currentColor;border-left:4px solid #aa9272;border-radius:7px;background:rgba(139,132,118,.09);text-align:left}
+.article-source-first h3{margin:0 0 12px;font:400 clamp(23px,2.5vw,32px)/1.25 Georgia,serif;color:inherit}
+.article-source-first p{margin:0 0 13px;max-width:73ch;line-height:1.8}
+.article-source-first-links{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0 4px}
+.article-source-first-links a,.article-source-first-links button{
+ display:inline-flex;align-items:center;justify-content:center;padding:10px 13px;
+ font:600 12px/1.45 Arial,sans-serif;border:1px solid #999;border-radius:6px;
+ color:#f9f9f9!important;background:#34363b!important;text-decoration:none!important;
+ min-height:39px;cursor:pointer;
+}
+.article-source-first-links a:hover,.article-source-first-links button:hover{background:#53565d!important;color:#fff!important}
+.article-source-first-links a:focus-visible,.article-source-first-links button:focus-visible{outline:3px solid #b79b68;outline-offset:3px}
+
 </style>
 <link rel="stylesheet" href="assets/vitruvia-reading.css?v=20261104-local-codex-v7">
 </head><body>
@@ -1007,13 +1022,13 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-reading.js?v=20261104-high-contrast-fixed-v8" defer></script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
 <script src="assets/vitruvia-local-manuscripts.js?v=20261104-modal-folio-v1" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-local-codex-v10" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-source-first-v11" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-universal-subject-v4" defer></script>
 <script src="assets/search-agentic.js?v=20261104-multicorpus-greek-v6" defer></script>
 <script src="assets/vitruvia-archives.js?v=20261104-linked-authorities-v1" defer></script>
 <script src="assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1" defer></script>
 <script src="assets/vitruvia-ai.js?v=20261104-evidence-links-v2" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-folio-links-v19" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-source-first-v20" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
