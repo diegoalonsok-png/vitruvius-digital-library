@@ -70,30 +70,46 @@ function codexDateStart(date){
  if(century&&roman[century[1]])return (roman[century[1]]-1)*100;
  return 9999;
 }
+function matchingWorkIds(q){
+ const query=norm(topicQuery(q));
+ const queryWords=query.split(/\\s+/).filter(x=>x.length>=4);
+ const found=S.works.filter(w=>{
+  const names=[w.title,w.author,...(w.aliases||[])].map(norm);
+  return names.some(name=>name===query||name.includes(query)&&query.length>=5)||
+   queryWords.length>0&&names.some(name=>queryWords.every(t=>name.split(" ").includes(t)));
+ });
+ return new Set(found.map(w=>w.id));
+}
 function liveManuscripts(q){
- const out=[];
+ const out=[],workIds=matchingWorkIds(q);
+ // Highlight the oldest INDEXED witness per work, never assert it is the oldest surviving manuscript.
+ const earliest=new Map();
+ for(const ms of S.witnesses){
+  const date=codexDateStart(ms.date);
+  for(const id of ms.workIds||[])if(!earliest.has(id)||date<earliest.get(id).date)earliest.set(id,{id:ms.id,date});
+ }
  for(const ms of S.witnesses){
   const titles=(ms.workIds||[]).map(id=>S.works.find(w=>w.id===id)).filter(Boolean);
   const description=[ms.title,ms.shelfmark,ms.library,ms.date,ms.coverage,...titles.flatMap(w=>[w.title,w.author,...(w.aliases||[])])].join(" ");
-  const vitruviusQuery=/\b(vitruvio|vitruvius|vitruve|vitruvii|de architectura|codex h|harley 2767)\b/i.test(norm(q));
-  const isVitruvian=vitruviusQuery&&(ms.workIds||[]).includes("vitruvius");
-  const rating=score(description,q,false)+(isVitruvian?80:0),nameRating=score(ms.title+" "+ms.shelfmark,q,false);
+  const belongs=(ms.workIds||[]).some(id=>workIds.has(id));
+  const rating=score(description,q,false)+(belongs?80:0),nameRating=score(ms.title+" "+ms.shelfmark,q,false);
   if(rating<3)continue;
-  const target=titles.find(w=>score(workString(w),q,false)>10)||titles[0];
+  const target=titles.find(w=>workIds.has(w.id))||titles[0];
   const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
-  // Principal witness is an editorial designation supported by the catalog, not an autograph claim.
-  const primary=ms.id==="vitruvius-h";
+  const primary=belongs&&(ms.workIds||[]).some(id=>earliest.get(id)?.id===ms.id);
   out.push({type:"manuscript",title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
    meta:"TESTIMONIO MANUSCRITO · "+(ms.date||"sin fecha documentada")+" · "+(ms.shelfmark||"sin signatura")+" · "+(ms.manifest?"IIIF":"visor institucional"),
    codexDate:codexDateStart(ms.date),codexShelfmark:ms.shelfmark,codexRepository:ms.library,
-   primaryWitness:primary,primaryLabel:primary?"TESTIMONIO PRINCIPAL · DE ARCHITECTURA":"",
+   primaryWitness:primary,primaryLabel:primary?"TESTIMONIO MÁS ANTIGUO INDEXADO · "+(target?.title||"obra documentada"):"",
    rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
    link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
    viewerUrl:ms.viewer||ms.record,
    links:[{label:"Ficha codicológica",url:ms.record},{label:"Ver facsímil / visor institucional",url:ms.viewer}].filter(x=>x.url),
    source:"Bibliotheca Graeca et Latina"});
- }return out.sort((a,b)=>a.codexDate-b.codexDate||b.rating-a.rating).slice(0,30);
+ }
+ return out.sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||a.codexDate-b.codexDate||b.rating-a.rating).slice(0,30);
 }
+
 function liveEditions(q){
  const out=[];
  for(const ed of S.editions){
@@ -103,7 +119,9 @@ function liveEditions(q){
   const pdf=ed.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(ed.url)?ed.url:null;
   out.push({type:"edition",title:ed.title,author:ed.editor+" · "+ed.year,excerpt:ed.note,
    meta:(pdf?"PDF LOCAL · ":"EDICIÓN DOCUMENTADA · ")+(ed.langs||[]).join("/"),
-   rating:rating+(pdf?4:0),link:libraryURL(w.id,pdf?"pdf":""),pdf,source:ed.provider});
+   rating:rating+(pdf?4:0),link:(ed.url&&(/^(https:\/\/|[a-z0-9/_-]+\\.html(?:\\?|$)|documents\\/)/i.test(ed.url))?ed.url:libraryURL(w.id,pdf?"pdf":"")),pdf,source:ed.provider,
+   historicalEdition:Number.parseInt(ed.year,10)<2000,editionYear:Number.parseInt(ed.year,10)||9999,
+   links:ed.url?[{label:"Abrir edición o traducción documentada",url:ed.url}]:[]});
  }return out.sort((a,b)=>b.rating-a.rating).slice(0,12);
 }
 /* Bibliographic chronology from the site's actual historical-editions catalogue.
@@ -406,7 +424,7 @@ function markTerms(root,query){
 }
 function renderCard(d){
  const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")+(d.historicalEdition?" historical-edition-card":"")),head=node("div","result-head"),title=node("div");
- if(d.primaryWitness){card.setAttribute("aria-label","Testimonio principal de De architectura: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
+ if(d.primaryWitness){card.setAttribute("aria-label","Testimonio manuscrito destacado: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
  title.append(node("span","kind",T()[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
@@ -419,7 +437,7 @@ function renderCard(d){
  }
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.primaryWitness&&d.viewerUrl){const viewer=makeLink("Abrir facsímil del Codex H ↗",d.viewerUrl);if(viewer){viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
+ if(d.primaryWitness&&d.viewerUrl){const viewer=makeLink("Abrir facsímil / visor ↗",d.viewerUrl);if(viewer){viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
