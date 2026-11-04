@@ -23,6 +23,11 @@ jobs:
           node scripts/test-history.mjs
           node scripts/test-citations.mjs
           node scripts/test-search.mjs
+          node scripts/test-vitruvia-discovery.mjs
+          node scripts/test-vitruvia-dictation.mjs
+          node scripts/test-vitruvia-resilience.mjs
+          node --check assets/vitruvia-search.js
+          node --check assets/vitruvia-entity-resolver.js
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'

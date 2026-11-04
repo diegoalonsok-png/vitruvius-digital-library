@@ -121,7 +121,10 @@ async function resolve(query,preferredLang="es"){
 const cache=new Map();
 window.VitruviaEntityResolver={subject:clean,resolve(q,lang="es"){
  const key=norm(clean(q))+":"+lang;
- if(!cache.has(key))cache.set(key,resolve(q,lang));
+ if(!cache.has(key)){
+  const pending=resolve(q,lang).then(value=>{if(!value&&cache.get(key)===pending)cache.delete(key);return value},error=>{if(cache.get(key)===pending)cache.delete(key);throw error});
+  cache.set(key,pending);
+ }
  return cache.get(key);
 }};
 })();
