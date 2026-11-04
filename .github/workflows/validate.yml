@@ -27,6 +27,7 @@ jobs:
           node scripts/test-vitruvia-dictation.mjs
           node scripts/test-vitruvia-resilience.mjs
           node scripts/test-vitruvia-entity-priority.mjs
+          node scripts/test-vitruvia-author-reading.mjs
           node --check assets/vitruvia-search.js
           node --check assets/vitruvia-entity-resolver.js
       - name: Comprobar catálogo y archivos publicados

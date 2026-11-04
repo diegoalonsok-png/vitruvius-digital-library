@@ -236,6 +236,79 @@
       "manifest": null,
       "rights": "Imágenes del Homer Multitext / Biblioteca Nazionale Marciana: verificar licencia CC BY-NC-SA y condiciones institucionales; no se redistribuyen en GitHub.",
       "verification": "Homer Multitext Project / Center for Hellenic Studies / Biblioteca Marciana; edición y facsímil documentados."
+    },
+    {
+      "id": "catullus-thuaneus-8071",
+      "workIds": [
+        "catullus-carmina"
+      ],
+      "title": "Catulo · carmen 62 — Codex Thuaneus (T)",
+      "library": "Bibliothèque nationale de France",
+      "shelfmark": "Latin 8071",
+      "date": "siglo IX",
+      "coverage": "Testimonio parcial: únicamente carmen 62 de Catulo; no contiene el corpus completo. Siglum T y datación en los sigla de Robinson Ellis, Catulli Carmina (1904).",
+      "language": "la",
+      "record": "https://www.gutenberg.org/files/23294/23294-h/23294-h.htm",
+      "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b9078246d",
+      "manifest": null,
+      "verification": "Ellis 1904, Sigla: T = Thuaneus Paris. 8071, c. LXII, saec. IX; facsímil Gallica",
+      "rights": "Consultar condiciones de la BnF.",
+      "dateStart": 800
+    },
+    {
+      "id": "catullus-oxford-o",
+      "workIds": [
+        "catullus-carmina"
+      ],
+      "title": "Catulo · Carmina — Oxford Catullus (O)",
+      "library": "Bodleian Libraries, University of Oxford",
+      "shelfmark": "MS. Canon. Class. Lat. 30",
+      "date": "siglo XIV, tercer cuarto (1351–1375)",
+      "coverage": "Testimonio del corpus de poemas, posterior al testimonio parcial T del carmen 62. Manifiesto institucional comprobado: 84 imágenes digitales. La imagen digital y el folio manuscrito no son numeraciones equivalentes.",
+      "language": "la",
+      "record": "https://iiif.biblissima.fr/collections/manifest/c691ed800d5576a3f70898d3d0dd0eaa4f375c18",
+      "viewer": "https://digital.bodleian.ox.ac.uk/objects/c645f804-d10b-45e4-8a14-c9b22676b87d/",
+      "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/c645f804-d10b-45e4-8a14-c9b22676b87d.json",
+      "verification": "Digital Bodleian / Biblissima institucional, fecha y signatura; Ellis 1904, siglum O",
+      "rights": "Bodleian Libraries: consultar derechos de las imágenes.",
+      "dateStart": 1351
+    },
+    {
+      "id": "cicero-republica-vat5757",
+      "workIds": [
+        "cicero-republica"
+      ],
+      "title": "Cicerón · De re publica — palimpsesto Vaticano",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 5757",
+      "date": "siglos IV–V (texto inferior); siglo VII (texto superior)",
+      "dateStart": 300,
+      "coverage": "Testimonio fragmentario de De re publica en la escritura inferior. La copia de Agustín del siglo VII pertenece al texto superior; las dos fechas no deben confundirse. No es De officiis ni la obra completa de Cicerón.",
+      "language": "la",
+      "record": "https://spotlight.vatlib.it/overview/catalog/Vat_lat_5757",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.5757",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.5757/manifest.json",
+      "verification": "Biblioteca Apostolica Vaticana, catálogo y proyecto Palinsesti Vaticani",
+      "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción."
+    },
+    {
+      "id": "marcus-aurelius-vat1950",
+      "workIds": [
+        "marcus-aurelius-meditations"
+      ],
+      "title": "Marco Aurelio · Meditaciones — Codex Vaticanus (A)",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 1950, parte 2",
+      "date": "siglo XIV, antes de mediados de siglo",
+      "coverage": "Meditaciones, ff. 341r–392v, dentro de un códice misceláneo. Testimonio conservado; el códice usado por Xylander para la edición de 1558–1559 se perdió y no se ofrece un visor de ese códice perdido.",
+      "language": "grc",
+      "record": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.1950.pt.2/manifest.json",
+      "verification": "DigiVatLib, signatura, fecha y contenido; Pinakes 68579",
+      "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
+      "startFolio": "341r",
+      "dateStart": 1301
     }
   ],
   "editions": [
@@ -483,6 +556,34 @@
       "url": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
       "provider": "Wikimedia Commons / Internet Archive · ejemplar depositado en GitHub",
       "note": "Virgilio, Georgica, edición Albert Forbiger, Montreal 1849, 76 páginas; edición en latín. No corresponde a Eneida. Fuente: https://commons.wikimedia.org/wiki/File:Georgica;_(IA_georgica00virguoft).pdf"
+    },
+    {
+      "workId": "catullus-carmina",
+      "title": "Catullus · traducción inglesa de F. W. Cornish, revisión de G. P. Goold",
+      "year": "1988",
+      "editor": "F. W. Cornish; revisión de G. P. Goold",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "academic-translation-catalogue",
+      "url": "https://catalog.folger.edu/record/78692",
+      "provider": "Loeb Classical Library 6 · Harvard University Press; catálogo Folger Shakespeare Library",
+      "note": "Latín e inglés enfrentados. Ficha bibliográfica institucional; no es acceso al texto íntegro."
+    },
+    {
+      "workId": "marcus-aurelius-meditations",
+      "title": "Meditaciones / The Communings with Himself",
+      "year": "1916",
+      "editor": "C. R. Haines",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "academic-translation-catalogue",
+      "url": "https://catalog.folger.edu/record/37379",
+      "provider": "Loeb Classical Library · W. Heinemann / G. P. Putnam; catálogo Folger Shakespeare Library",
+      "note": "Edición revisada del texto griego y traducción inglesa. Ficha bibliográfica institucional; no es acceso al texto íntegro."
     }
   ]
 }

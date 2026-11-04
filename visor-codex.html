@@ -37,6 +37,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
   <button id="prev" disabled aria-label="Página anterior">← Anterior</button>
   <span id="count" class="counter" aria-live="polite">— / —</span>
   <button id="next" disabled aria-label="Página siguiente">Siguiente →</button>
+  <label for="folio-select">Ir a folio</label><select id="folio-select" aria-label="Elegir folio manuscrito" disabled></select>
   <label for="zoom">Ampliación</label>
   <input type="range" id="zoom" min="60" max="250" value="100" step="10" aria-label="Ampliación de imagen">
   <output for="zoom" id="zoom-label">100 %</output>
@@ -77,6 +78,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
  }
  function updateControls(){
   $("count").textContent=(pages.length?pos+1:0)+" / "+pages.length;
+  $("folio-select").value=String(pos);
   $("prev").disabled=pos===0;$("next").disabled=pos>=pages.length-1;
  }
  function applyZoom(percent){
@@ -97,6 +99,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
   };
   img.alt="Folio "+data.label;img.src=data.url;
   $("label").textContent=data.label;
+  const current=new URL(location.href);current.searchParams.set("folio",data.label);history.replaceState(null,"",current);
   $("viewport").scrollTop=0;$("viewport").scrollLeft=0;updateControls();
  }
  $("prev").addEventListener("click",()=>show(pos-1));
@@ -118,7 +121,15 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
    if(Array.isArray(data.items))data.items.forEach(pushCanvas);
    else if(Array.isArray(data.sequences?.[0]?.canvases))data.sequences[0].canvases.forEach(pushCanvas);
    $("source").textContent=(text(data.label)||"Testimonio digitalizado")+" · "+pages.length+" imágenes obtenidas del manifiesto institucional.";
-   if(pages.length)show(0);
+   if(pages.length){
+    const select=$("folio-select");
+    pages.forEach((p,i)=>{const option=document.createElement("option");option.value=String(i);option.textContent=p.label;select.append(option)});
+    select.disabled=false;select.addEventListener("change",()=>show(Number(select.value)));
+    const normalize=s=>String(s||"").toLowerCase().replace(/(?:folio|fol\.|f\.)/g,"").replace(/[^a-z0-9]/g,"");
+    const wanted=normalize(params.get("folio"));
+    const initial=wanted?pages.findIndex(p=>normalize(p.label)===wanted):-1;
+    show(initial>=0?initial:0);
+   }
    else $("message").textContent="El manifiesto no ofrece imágenes compatibles con este visor. Consultá el visor oficial.";
   }catch(e){
    $("source").textContent="No se pudo leer el manifiesto IIIF desde esta página ("+String(e.message||"error")+").";

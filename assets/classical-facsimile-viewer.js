@@ -171,7 +171,9 @@ function mountManuscript(target,record){
  const toolbar=el("div","classical-ms-toolbar");
  const manifest=record.manifest;
  if(manifest&&/^https:\/\//i.test(manifest)){
-  const viewerUrl="https://uv-v4.netlify.app/#?manifest="+encodeURIComponent(manifest);
+  const viewerParams=new URLSearchParams({manifest,title:record.title||record.shelfmark||"Códice",official:record.viewer||record.record||""});
+  if(record.startFolio)viewerParams.set("folio",record.startFolio);
+  const viewerUrl="visor-codex.html?"+viewerParams;
   const wrap=el("div","classical-ms-container");
   const frame=el("iframe","classical-ms-frame");
   frame.src=viewerUrl;frame.title="IIIF · "+record.shelfmark+" · "+record.title;

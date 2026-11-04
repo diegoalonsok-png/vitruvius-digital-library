@@ -68,6 +68,10 @@ function pubLinks(entries,title,container){
   if(x.note){const p=document.createElement("p");p.textContent=x.note;article.append(p)}
   if(x.rights){const p=document.createElement("small");p.textContent=x.rights;article.append(p)}
   const links=document.createElement("div");links.className="classic-linkline";
+  if(x.manifest){
+   const p=new URLSearchParams({manifest:x.manifest,title:x.title,official:x.viewer||x.record||""});if(x.startFolio)p.set("folio",x.startFolio);
+   const a=document.createElement("a");a.href="visor-codex.html?"+p;a.textContent="Leer códice dentro de Vitruvia";links.append(a);
+  }
   for(const [label,url] of [["Leer códice folio a folio · biblioteca local",x.localViewer],["Ver códice en la institución",x.viewer],["Registro y signatura",x.record],["Edición / PDF en la fuente",x.url]]){
    if(!url||!/^https:\/\//.test(url)&&!/^documents\/classics\/[a-z0-9-]+\.pdf$/.test(url)&&!(x.localViewer===url&&localManuscriptUrl(x)))continue;
    if([...links.querySelectorAll("a")].some(a=>a.href===url))continue;
@@ -453,7 +457,7 @@ if(tab==="pdf"){
 async function boot(){
  const [res,reference]=await Promise.all([
   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json"),
-  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-local-folios-v2").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
+  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-authors-witnesses-v3").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;
@@ -463,6 +467,7 @@ async function boot(){
   const w=map.get(id);if(w)(w.witnessRecords??=[]).push(record);
  }
  for(const edition of witnessData.editions||[]){const w=map.get(edition.workId);if(w)(w.historicEditions??=[]).push(edition)}
+ for(const w of works)w.witnessRecords?.sort((a,b)=>(a.dateStart??9999)-(b.dateStart??9999));
  const n=$("classic-witness-count");if(n)n.textContent=(witnessData.records||[]).length+" testimonios codicológicos individualizados";const genres=[...new Set(works.map(x=>x.genre))].sort((a,b)=>a.localeCompare(b,"es"));for(const s of genres){const o=document.createElement("option");o.textContent=o.value=s;$("classic-genre").append(o)}const availability=$("classic-availability");if(availability)availability.addEventListener("change",()=>{hideBookSuggestions();render()});
  const period=$("classic-period");if(period)period.addEventListener("change",()=>{hideBookSuggestions();render()});
  const clear=$("classic-clear");if(clear){const inp=$("classic-query");const sync=()=>{clear.hidden=!inp.value};inp.addEventListener("input",sync);clear.addEventListener("click",()=>{inp.value="";sync();hideBookSuggestions();render();inp.focus()});inp.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&inp.value){ev.preventDefault();inp.value="";sync();hideBookSuggestions();render()}});sync()}

@@ -118,13 +118,13 @@ function codexDateStart(date){
  const match=raw.match(/(?:^|\s)(\d{3,4})\s*(?:[–-]\s*\d{3,4})?/);
  if(match)return Number(match[1]);
  const roman={"i":1,"ii":2,"iii":3,"iv":4,"v":5,"vi":6,"vii":7,"viii":8,"ix":9,"x":10,"xi":11,"xii":12,"xiii":13,"xiv":14,"xv":15,"xvi":16,"xvii":17,"xviii":18,"xix":19,"xx":20};
- const century=raw.match(/(?:siglo|century|siecle|sec)\s+([ivx]+)/);
+ const century=raw.match(/(?:siglos?|century|siecle|sec)\s+([ivx]+)/);
  if(century&&roman[century[1]])return (roman[century[1]]-1)*100;
  return 9999;
 }
 function matchingWorkIds(q){
  const query=norm(topicQuery(q));
- const queryWords=query.split(/\\s+/).filter(x=>x.length>=4);
+ const queryWords=query.split(/\s+/).filter(x=>x.length>=4);
  const found=S.works.filter(w=>{
   const names=[w.title,w.author,...(w.aliases||[])].map(norm);
   return names.some(name=>name===query||name.includes(query)&&query.length>=5)||
@@ -180,9 +180,9 @@ function liveManuscripts(q){
   const target=titles.find(w=>workIds.has(w.id))||titles[0];
   const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
   const primary=belongs&&(ms.workIds||[]).some(id=>earliest.get(id)?.id===ms.id);
-  out.push({type:"manuscript",title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
+  out.push({type:"manuscript",workIds:ms.workIds||[],title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
    meta:"TESTIMONIO MANUSCRITO · "+(ms.date||"sin fecha documentada")+" · "+(ms.shelfmark||"sin signatura")+" · "+(ms.manifest?"IIIF":"visor institucional"),
-   codexDate:codexDateStart(ms.date),codexShelfmark:ms.shelfmark,codexRepository:ms.library,
+   codexDate:ms.dateStart??codexDateStart(ms.date),codexShelfmark:ms.shelfmark,codexRepository:ms.library,
    primaryWitness:primary,primaryLabel:primary?"TESTIMONIO MÁS ANTIGUO INDEXADO · "+(target?.title||"obra documentada"):"",
    rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
    link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
@@ -191,7 +191,7 @@ function liveManuscripts(q){
    localFolioCount:ms.localFolioCount||null,
    localFolioStart:ms.localFolioStart||null,
    iiifManifest:ms.manifest||null,
-   codexViewer:ms.localViewer||(ms.manifest?"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record}).toString():(ms.viewer||ms.record||null)),
+   codexViewer:ms.localViewer||(ms.manifest?"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record,...(ms.startFolio?{folio:ms.startFolio}:{})}).toString():(ms.viewer||ms.record||null)),
    citationText:[ms.library,ms.shelfmark,ms.title,ms.date,ms.record].filter(Boolean).join(". "),
    links:[ms.localViewer?{label:"Leer folio a folio · biblioteca local",url:ms.localViewer}:null,
      {label:"Ficha codicológica institucional",url:ms.record},
@@ -336,7 +336,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
   pdf?(w.pdf?.language==="grc"?"Texto original en griego · PDF":w.pdf?.language==="la"?"Texto original en latín · PDF":"Edición histórica · PDF"):
   local?"Texto local acreditado":witnesses.length?"Códice identificado · institución de custodia":
   w.reading?.url?"Texto externo identificado":editions.length?"Edición vinculada · revisar acceso":"Ficha bibliográfica · edición pendiente";
- return {type:"book",title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
+ return {type:"book",workId:w.id,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
   links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
@@ -347,7 +347,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
- const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-local-reader-v2","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-authors-witnesses-v3","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
  const books=results[0].status==="fulfilled"?results[0].value:{works:[]},pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];

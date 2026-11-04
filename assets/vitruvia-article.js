@@ -1139,6 +1139,7 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ window.VitruviaAuthorReading?.render(rows,documentaryQuery,person);
  const contextSources=await appendObjectContext(topicPlan,token);
  if(token!==active)return;
  // Advanced sources are present, but do not interrupt a general or school-level biography.

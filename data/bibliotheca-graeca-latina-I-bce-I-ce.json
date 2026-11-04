@@ -226,8 +226,12 @@
         "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
       },
       "manuscript": {
-        "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.5757/manifest.json",
+        "status": "Testimonio fragmentario de De re publica en la escritura inferior. La copia de Agustín del siglo VII pertenece al texto superior; las dos fechas no deben confundirse. No es De officiis ni la obra completa de Cicerón.",
+        "record": "https://spotlight.vatlib.it/overview/catalog/Vat_lat_5757",
+        "institution": "Biblioteca Apostolica Vaticana",
+        "shelfmark": "Vat. lat. 5757",
+        "dating": "siglos IV–V (texto inferior); siglo VII (texto superior)"
       },
       "pdf": {
         "url": null,
@@ -2587,15 +2591,19 @@
         "status": "Texto latino de la edición de Robinson Ellis, Oxford: Clarendon Press, 1904, incorporado para lectura local por poemas I–CXVI (113 composiciones, sin XVIII–XX en esta edición). Aparato crítico consultable por poema. Fuente de transcripción: Project Gutenberg n.º 23294. No es un facsímil de manuscrito."
       },
       "manuscript": {
-        "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/c645f804-d10b-45e4-8a14-c9b22676b87d.json",
+        "status": "Testimonio del corpus de poemas, posterior al testimonio parcial T del carmen 62. Manifiesto institucional comprobado: 84 imágenes digitales. La imagen digital y el folio manuscrito no son numeraciones equivalentes.",
+        "record": "https://iiif.biblissima.fr/collections/manifest/c691ed800d5576a3f70898d3d0dd0eaa4f375c18",
+        "institution": "Bodleian Libraries, University of Oxford",
+        "shelfmark": "MS. Canon. Class. Lat. 30",
+        "dating": "siglo XIV, tercer cuarto (1351–1375)"
       },
       "pdf": {
         "url": null,
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Sin traducción moderna incorporada; el lector contiene solamente el texto original latino y variantes críticas."
+        "status": "Traducción inglesa de F. W. Cornish, revisión de G. P. Goold (Loeb, 1988): ficha institucional Folger vinculada en Edición y traducción; no se presenta como texto íntegro alojado."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0472.phi001.perseus-lat2",
@@ -3780,15 +3788,19 @@
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
       },
       "manuscript": {
-        "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.1950.pt.2/manifest.json",
+        "status": "Meditaciones, ff. 341r–392v, dentro de un códice misceláneo. Testimonio conservado; el códice usado por Xylander para la edición de 1558–1559 se perdió y no se ofrece un visor de ese códice perdido.",
+        "record": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
+        "institution": "Biblioteca Apostolica Vaticana",
+        "shelfmark": "Vat. gr. 1950, parte 2",
+        "dating": "siglo XIV, antes de mediados de siglo"
       },
       "pdf": {
         "url": null,
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Griego e inglés: C. R. Haines (Loeb, 1916), edición y traducción documentadas en catálogo Folger; acceso al texto íntegro según la institución."
       },
       "links": {
         "scaife": null,
