@@ -481,6 +481,13 @@ html[data-theme=light] body.vitruvia-reading .nav{background:#f9f8f6}
  body.vitruvia-reading #vitruvia-article .article-body{width:100%!important}
 }
 
+/* Complete classical search results can expand without changing the article layout. */
+.show-more-results{width:100%;min-height:46px;margin:16px 0 23px;border:1px solid #505457;border-radius:4px;background:transparent;color:#e4dfd2;font:500 13px/1.5 system-ui;cursor:pointer}
+.show-more-results:hover,.show-more-results:focus-visible{background:#252829;border-color:#aa997a}
+html[data-theme=light] .show-more-results{color:#343b41;border-color:#a6a9ac}
+html[data-theme=light] .show-more-results:hover{background:#ece9e2}
+.library-index-help{font:12px/1.65 system-ui;color:#c9cbcb;margin:17px 0;padding:12px 0;border-top:1px solid #414343;border-bottom:1px solid #414343}
+html[data-theme=light] .library-index-help{color:#535b5c;border-color:#d4d0c7}
 /* Source-backed encyclopedia article, with inline citations and printable contents. */
 #vitruvia-article{scroll-margin-top:24px}
 #vitruvia-article .article-contents{border-bottom:1px solid #393939;padding:0 0 18px;margin:0 0 20px}
@@ -664,11 +671,11 @@ html[data-theme=light] .searchform button#clear-search:hover{color:#f5f5f5!impor
   <a href="lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2" class="featured-reading-item" data-feature-term="symmetria"><span class="featured-number">02</span><span>Vitruvio · III.1.2</span><span aria-hidden="true">›</span></a>
   <a href="giocondo-1511.html" class="featured-reading-item" data-feature-term="giocondo"><span class="featured-number">03</span><span>Fra Giocondo · 1511</span><span aria-hidden="true">›</span></a>
   <a href="barbaro-1567.html" class="featured-reading-item" data-feature-term="barbaro"><span class="featured-number">04</span><span>Barbaro · 1567</span><span aria-hidden="true">›</span></a>
-  <a href="bibliotheca-graeca-latina.html?work=lucretius-de-rerum-natura" class="featured-reading-item" data-feature-term="lucrecio"><span class="featured-number">05</span><span>Lucrecio · De rerum natura</span><span aria-hidden="true">›</span></a>
+  <a href="bibliotheca-graeca-latina.html?work=lucretius" class="featured-reading-item" data-feature-term="lucrecio"><span class="featured-number">05</span><span>Lucrecio · De rerum natura</span><span aria-hidden="true">›</span></a>
  </nav>
 </aside>
 </section>
-<div class="metrics" id="metrics"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span></div>
+<div class="metrics" id="metrics"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span><span><b id="metric-witnesses">—</b> testimonios manuscritos</span><span><b id="metric-editions">—</b> ediciones vinculadas</span></div>
 <section class="results" id="results" aria-live="polite">
 <div class="section-head"><h2 id="results-heading" data-i18n="headingIdle">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
 <section id="vitruvia-article" class="scholar-article" aria-live="polite" aria-label="Artículo de consulta" hidden>
@@ -679,7 +686,7 @@ html[data-theme=light] .searchform button#clear-search:hover{color:#f5f5f5!impor
 </section>
 <div id="answer" hidden></div>
 <div class="results-grid"><div id="result-list"><div class="empty">Escribí una palabra, título, autor, concepto o locus para comenzar. Podés probar <strong>symmetria</strong>, <strong>agua</strong> o <strong>Cicerón</strong>.</div></div>
-<aside class="sidebar"><h3 data-i18n="sourcesMethod">Fuentes y método</h3><div id="source-links" aria-live="polite"></div><p data-i18n="sidebarIntro">Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.</p>
+<aside class="sidebar"><h3 data-i18n="sourcesMethod">Fuentes y método</h3><div id="source-links" aria-live="polite"></div><p data-i18n="sidebarIntro">Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.</p><p class="library-index-help">La Bibliotheca Graeca et Latina está integrada aquí: buscá autor, título griego o latino, nombre traducido, signatura de códice o edición histórica. Abrí el visor PDF o IIIF desde cada ficha, cuando esté acreditado.</p>
 <a data-i18n="sideGraeco" href="bibliotheca-graeca-latina.html">Biblioteca griega y latina ↗</a><a data-i18n="sideReader" href="lector-bilingue.html">Lector latino y traducciones ↗</a><a data-i18n="sideCodex" href="codex-h-folios-local.html">Galería Codex H ↗</a><a data-i18n="sideBib" href="bibliografia.html">Bibliografía académica ↗</a><a data-i18n="sidePhilology" href="metodologia-filologica.html">Criterio filológico ↗</a>
 <p data-i18n="sidebarCaveat">No se inventan traducciones. La búsqueda conceptual utiliza relaciones temáticas y recuperación textual; no es un chatbot generativo. El contenido de los PDF escaneados sin OCR sigue requiriendo lectura de facsímiles.</p></aside>
 </div></section>
@@ -691,8 +698,8 @@ html[data-theme=light] .searchform button#clear-search:hover{color:#f5f5f5!impor
 <div class="footer-legal"><span data-i18n="footerLegal">© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.</span><span><a data-i18n="footerMain" href="index.html">Biblioteca principal</a> · Buenos Aires · 2026</span></div></footer>
 </div>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261103-trilingual-prefaces-v3" defer></script>
-<script src="assets/vitruvia-search.js?v=20261103-semantic-privacy-v2" defer></script>
+<script src="assets/vitruvia-article.js?v=20261103-classics-source-v4" defer></script>
+<script src="assets/vitruvia-search.js?v=20261103-bibliotheca-unified-v5" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
