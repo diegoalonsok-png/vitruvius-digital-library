@@ -20,7 +20,15 @@
       "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
       "manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
       "rights": "British Library: consultar y respetar condiciones institucionales.",
-      "verification": "British Library archive catalogue; published IIIF viewer"
+      "verification": "British Library archive catalogue; published IIIF viewer",
+      "localViewer": "codex-h-folios-local.html?folio=f.1r",
+      "localFolioIndex": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json",
+      "localFolioCount": 341,
+      "localFolioStart": {
+        "folio": "f.1r",
+        "digitalImage": 9
+      },
+      "hostedImageNote": "341 fotografías en la biblioteca de GitHub; identificación y derechos de la digitalización: British Library. Imagen digital y folio histórico no son equivalentes."
     },
     {
       "id": "cicero-officiis-geneva",
