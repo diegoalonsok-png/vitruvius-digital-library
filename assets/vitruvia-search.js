@@ -183,9 +183,9 @@ async function wikidata(generalQuery){
  return (d.search||[]).map((x,i)=>({type:"wikidata",title:x.label||x.id,excerpt:x.description||"Identificador de entidad · Wikidata",author:x.id,meta:"Datos enlazados · Wikimedia",rating:30-i+culturalWeight(x.label,x.description),link:"https://www.wikidata.org/wiki/"+x.id,source:"Wikidata"}))
 }
 async function openLibrary(generalQuery){
- const p=new URLSearchParams({q:generalQuery,limit:"6",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i"});
+ const p=new URLSearchParams({q:generalQuery,limit:"12",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i,publisher"});
  const d=await fetchJSON("https://openlibrary.org/search.json?"+p);
- return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
+ return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",year:x.first_publish_year||null,publisher:(x.publisher||[])[0]||"",recordKind:"work",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
 }
 /* Google Books public volume metadata, not Google AI / Google Search results. */
 async function googleBooks(generalQuery){
@@ -197,7 +197,7 @@ async function googleBooks(generalQuery){
   return {type:"googlebook",title:v.title,author:(v.authors||[]).slice(0,3).join(", "),
    excerpt:brief(htmlText(v.description||""),340)||[v.publisher,v.publishedDate].filter(Boolean).join(" · "),
    meta:[v.publisher,v.publishedDate].filter(Boolean).join(" · ")||"Google Books · registro bibliográfico",
-   rating:24-i+culturalWeight(v.title,v.subtitle||""),link:info,source:"Google Books"};
+   rating:24-i+culturalWeight(v.title,v.subtitle||""),link:info,source:"Google Books",year:v.publishedDate||null,publisher:v.publisher||"",recordKind:"book"};
  }).filter(Boolean)
 }
 
@@ -206,12 +206,12 @@ async function museum(generalQuery){
  const d=await fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1.1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
  const details=await Promise.allSettled(ids.map(id=>fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
- return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
+ return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
 }
 
 /* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
 async function crossref(generalQuery){
- const params=new URLSearchParams({query:q,rows:"6",select:"DOI,title,author,published,issued,type,publisher,URL,container-title"});
+ const params=new URLSearchParams({query:generalQuery,rows:"8",select:"DOI,title,author,published,issued,type,publisher,URL,container-title,volume,issue,page"});
  const d=await fetchJSON("https://api.crossref.org/works?"+params,12000);
  const items=d.message?.items||[];
  return items.filter(x=>x.DOI&&Array.isArray(x.title)&&x.title[0]).map((x,i)=>{
@@ -219,11 +219,11 @@ async function crossref(generalQuery){
   const author=(x.author||[]).slice(0,2).map(y=>[y.given,y.family].filter(Boolean).join(" ")).join(", ");
   return {type:"article",title:x.title[0],author:author||x.publisher||"",excerpt:[x["container-title"]?.[0],date[0],x.type].filter(Boolean).join(" · ")+" · Registro bibliográfico con DOI: "+x.DOI,
    meta:"Crossref · DOI verificado en el registro · acceso al texto según editor",rating:26-i+culturalWeight(x.title[0],x["container-title"]?.[0]||""),
-   link:"https://doi.org/"+encodeURIComponent(x.DOI),source:"Crossref"};
+   link:"https://doi.org/"+encodeURIComponent(x.DOI),source:"Crossref",year:date[0]||null,publisher:x.publisher||"",journal:x["container-title"]?.[0]||"",volume:x.volume||"",issue:x.issue||"",pages:x.page||"",doi:x.DOI,recordKind:x.type||"journal-article"};
  })
 }
 async function europePmc(generalQuery){
- const params=new URLSearchParams({query:q,format:"json",pageSize:"6",resultType:"core"});
+ const params=new URLSearchParams({query:generalQuery,format:"json",pageSize:"6",resultType:"core"});
  const d=await fetchJSON("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+params,12000);
  return (d.resultList?.result||[]).filter(x=>x.title&&(x.pmid||x.pmcid||x.doi)).map((x,i)=>{
   const journal=x.journalTitle||"",isOpen=x.isOpenAccess==="Y"||x.isOpenAccess===true;
@@ -232,7 +232,7 @@ async function europePmc(generalQuery){
     "https://doi.org/"+encodeURIComponent(x.doi);
   return {type:"article",title:x.title,author:x.authorString||"",excerpt:[x.pubYear,journal,x.journalInfo?.journalIssueId].filter(Boolean).join(" · ")+". "+brief(x.abstractText||"",180),
    meta:"Europe PMC · "+(isOpen?"acceso abierto indicado por el proveedor":"comprobar acceso al artículo"),rating:28-i+culturalWeight(x.title,x.abstractText||""),
-   link,source:"Europe PMC"}
+   link,source:"Europe PMC",year:x.pubYear||null,journal:x.journalTitle||"",doi:x.doi||"",recordKind:"journal-article"}
  })
 }
 /* Editorial featured column: matches the sourced textual entries; no image/book cover. */
