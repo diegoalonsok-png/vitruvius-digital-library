@@ -4,6 +4,9 @@
 .vr-study-heading strong{font:600 13px/1.45 Arial,sans-serif}
 #vr-progress{font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
 .vr-progress-track{height:3px;background:var(--vr-control-border,#555);border-radius:2px;overflow:hidden}
+.vr-source-snapshot{font:400 10px/1.5 Arial,Helvetica,sans-serif;color:var(--vr-page-muted,#aaa);padding:9px 0 3px}
+.vr-source-snapshot .vr-original-link{display:block;color:var(--vr-page-ink,#ddd);text-decoration:underline;text-underline-offset:3px;margin:6px 0 1px;font-size:11px}
+
 #vr-progress-fill{height:100%;width:0;background:var(--vr-page-ink,#ddd);transition:width .1s ease}
 #vr-academic-tools #vr-summary{cursor:pointer;font-weight:600;font-size:12px;padding:12px 0}
 .vr-study-inner{padding:0 0 10px}
