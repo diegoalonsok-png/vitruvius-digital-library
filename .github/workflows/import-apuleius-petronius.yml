@@ -1,0 +1,58 @@
+name: Incorporar Apuleyo y Petronio en latín y traducciones
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-apuleius-petronius.yml'
+permissions:
+  contents: write
+concurrency:
+  group: import-apuleius-petronius
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar descarga HTTPS verificada
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Extraer el latín editorial TEI y las traducciones históricas de origen acreditado
+        run: python scripts/import-classics-codex-texts.py
+      - name: Verificar los archivos generados antes de publicar
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          base=pathlib.Path("data/classics-corpus")
+          expectations={
+           "apuleius-metamorphoses":{"la":150,"es":15,"en":15},
+           "petronius-satyrica":{"la":100,"en":15}
+          }
+          for work,langs in expectations.items():
+           for language,min_passages in langs.items():
+            path=base/(work+"-"+language+".json")
+            j=json.loads(path.read_text(encoding="utf-8"))
+            assert j["workId"]==work and j["language"]==language
+            assert len(j["passages"])>=min_passages,(path,len(j["passages"]))
+            assert all(x["locus"] and x["text"] for x in j["passages"])
+            print("VALID",path,len(j["passages"]),"passages")
+          cat=json.loads(pathlib.Path("data/bibliotheca-graeca-latina-I-bce-I-ce.json").read_text(encoding="utf-8"))
+          for work in expectations:
+           w=next(x for x in cat["works"] if x["id"]==work)
+           assert set(w["corpusFiles"])==set(expectations[work])
+          PY
+      - name: Registrar solo fuentes realmente descargadas y validadas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/classics-corpus/*.json data/bibliotheca-graeca-latina-I-bce-I-ce.json
+          if git diff --cached --quiet; then echo "Sin nuevos originales"; else
+            git commit -m "Publish Apuleius and Petronius primary Latin texts and accredited public-domain translations"
+            git pull --rebase origin main
+            git push
+          fi
