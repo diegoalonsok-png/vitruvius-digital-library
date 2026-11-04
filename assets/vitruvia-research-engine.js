@@ -106,7 +106,7 @@ function prefaceRows(intent,entries,preferred="es"){
   g.sections.sort((a,b)=>Number(a.locus.split(".").at(-1))-Number(b.locus.split(".").at(-1)));
   const first=g.sections[0],start=first?.locus||g.book+".praef.1";
   return {type:"preface",title:"De architectura · Prefacio del Libro "+roman[g.book]+" · "+g.version,
-   author:"Marco Vitruvio Polión · "+(g.language==="en"?"inglés":"castellano")+" · "+g.version,
+   author:"Marco Vitruvio Polión · "+(g.language==="en"?"inglés":g.language==="fr"?"francés":"castellano")+" · "+g.version,
    excerpt:first?.translation?.slice(0,350)||first?.latin?.slice(0,350)||"",
    meta:"Praefatio libri "+roman[g.book]+" · "+g.sections.length+" secciones verificadas · "+g.version,
    rating:6000-(intent.book?0:g.book*2)+(g.language===preferred?3:0),
