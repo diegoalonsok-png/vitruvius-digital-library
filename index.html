@@ -129,6 +129,16 @@ html[data-theme="dark"] .hero-scriptorium-link{background:#263746!important;colo
 html[data-theme="dark"] .hero-scriptorium-letter{background:#192938!important;color:#fff1dc!important;border-color:#a38c65!important}
 html[data-theme="dark"] .hero-scriptorium-link :is(strong,small){color:#f7efe2!important}
 html[data-theme="dark"] .hero-scriptorium-link:hover,html[data-theme="dark"] .hero-scriptorium-link:focus-visible{background:#36526a!important;color:#fff!important;outline-color:#d7bb82!important}
+/* Las cuatro ediciones históricas conservan una paleta única, con leves variaciones
+   entre azul pizarra claro y oscuro. Solo afecta a las tarjetas S/G/C/B. */
+.hero-scriptoria-grid>.hero-scriptorium-link:nth-child(1):not(:hover):not(:focus-visible){background:#f7f3ec}
+.hero-scriptoria-grid>.hero-scriptorium-link:nth-child(2):not(:hover):not(:focus-visible){background:#f0e9de}
+.hero-scriptoria-grid>.hero-scriptorium-link:nth-child(3):not(:hover):not(:focus-visible){background:#f9f6f0}
+.hero-scriptoria-grid>.hero-scriptorium-link:nth-child(4):not(:hover):not(:focus-visible){background:#ede6da}
+html[data-theme="dark"] .hero-scriptoria-grid>.hero-scriptorium-link:nth-child(1):not(:hover):not(:focus-visible){background:#2b3e4e!important}
+html[data-theme="dark"] .hero-scriptoria-grid>.hero-scriptorium-link:nth-child(2):not(:hover):not(:focus-visible){background:#304456!important}
+html[data-theme="dark"] .hero-scriptoria-grid>.hero-scriptorium-link:nth-child(3):not(:hover):not(:focus-visible){background:#253544!important}
+html[data-theme="dark"] .hero-scriptoria-grid>.hero-scriptorium-link:nth-child(4):not(:hover):not(:focus-visible){background:#21313f!important}
 @media(max-width:500px){.hero-scriptoria-grid{grid-template-columns:1fr}}
 
 /* Letras S/G/C/B a la vista en la navegación principal; H queda intacto. */
