@@ -18,15 +18,16 @@
   {kind:'external',id:'videos'},
   {kind:'external',id:'news'},
   {kind:'external',id:'shopping'},
-  {kind:'external',id:'maps'}
+  {kind:'external',id:'maps'},
+  {kind:'reader',id:'reading'}
  ];
  const dict={
-  es:{aria:'Categorías de búsqueda',ai:'Modo IA',all:'Todo',images:'Imágenes',videos:'Vídeos',news:'Noticias',shopping:'Shopping',maps:'Maps',more:'Más',
-   other:'Más búsquedas',site:'Biblioteca',wiki:'Wikipedia',external:'Internet y academia',concept:'Conceptos',externalTitle:'Búsqueda externa en',imagesTitle:'Buscar imágenes en Vitruvia',aiTitle:'Búsqueda semántica de documentos indexados',allTitle:'Buscar en todas las fuentes'},
-  en:{aria:'Search categories',ai:'AI mode',all:'All',images:'Images',videos:'Videos',news:'News',shopping:'Shopping',maps:'Maps',more:'More',
-   other:'More search types',site:'Library',wiki:'Wikipedia',external:'Web & research',concept:'Concepts',externalTitle:'External search on',imagesTitle:'Search images in Vitruvia',aiTitle:'Semantic search of indexed documents',allTitle:'Search all available sources'},
-  fr:{aria:'Catégories de recherche',ai:'Mode IA',all:'Tout',images:'Images',videos:'Vidéos',news:'Actualités',shopping:'Shopping',maps:'Plans',more:'Plus',
-   other:'Autres catégories',site:'Bibliothèque',wiki:'Wikipédia',external:'Web et recherche',concept:'Concepts',externalTitle:'Recherche externe sur',imagesTitle:'Rechercher des images dans Vitruvia',aiTitle:'Recherche sémantique du corpus',allTitle:'Rechercher dans toutes les sources'}
+  es:{aria:'Categorías de búsqueda',ai:'Modo IA',all:'Todo',images:'Imágenes',videos:'Vídeos',news:'Noticias',shopping:'Shopping',maps:'Maps',reading:'Aa · Lectura',more:'Más',
+   other:'Más búsquedas',site:'Biblioteca',wiki:'Wikipedia',external:'Internet y academia',concept:'Conceptos',externalTitle:'Búsqueda externa en',imagesTitle:'Buscar imágenes en Vitruvia',aiTitle:'Búsqueda semántica de documentos indexados',allTitle:'Buscar en todas las fuentes',readingTitle:'Mostrar y mover los controles de lectura'},
+  en:{aria:'Search categories',ai:'AI mode',all:'All',images:'Images',videos:'Videos',news:'News',shopping:'Shopping',maps:'Maps',reading:'Aa · Reading',more:'More',
+   other:'More search types',site:'Library',wiki:'Wikipedia',external:'Web & research',concept:'Concepts',externalTitle:'External search on',imagesTitle:'Search images in Vitruvia',aiTitle:'Semantic search of indexed documents',allTitle:'Search all available sources',readingTitle:'Show and move reading controls'},
+  fr:{aria:'Catégories de recherche',ai:'Mode IA',all:'Tout',images:'Images',videos:'Vidéos',news:'Actualités',shopping:'Shopping',maps:'Plans',reading:'Aa · Lecture',more:'Plus',
+   other:'Autres catégories',site:'Bibliothèque',wiki:'Wikipédia',external:'Web et recherche',concept:'Concepts',externalTitle:'Recherche externe sur',imagesTitle:'Rechercher des images dans Vitruvia',aiTitle:'Recherche sémantique du corpus',allTitle:'Rechercher dans toutes les sources',readingTitle:'Afficher et déplacer les commandes de lecture'}
  };
  const lang=()=>dict[document.documentElement.lang?.slice(0,2)]||dict.es;
  const controls=new Map();
@@ -60,6 +61,8 @@
    });
   }else if(category.kind==='mode'){
    el.addEventListener('click',()=>action(category.id));
+  }else if(category.kind==='reader'){
+   el.addEventListener('click',()=>window.dispatchEvent(new Event('vitruvia:reader-open')));
   }else{
    el.addEventListener('click',()=>{
     const imageTrigger=document.getElementById('search-images-button');
@@ -102,7 +105,7 @@
     const brand=c.id==='news'?'Google News':c.id==='maps'?'Google Maps':'Google';
     el.title=t.externalTitle+' '+brand;
     el.setAttribute('aria-label',t[c.id]+' · '+t.externalTitle+' '+brand);
-   }else el.title=c.kind==='images'?t.imagesTitle:c.id==='ai'?t.aiTitle:t.allTitle;
+   }else el.title=c.kind==='reader'?t.readingTitle:c.kind==='images'?t.imagesTitle:c.id==='ai'?t.aiTitle:t.allTitle;
   }
   extra.setAttribute('aria-label',t.other);
   extra.title=t.other;
