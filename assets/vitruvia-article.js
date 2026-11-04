@@ -727,10 +727,18 @@ function appendReferenceBooks(rows,query){
 }
 function addTopicBibliography(rows,query,ark){
  const deity=isDeityQuery(query);
- const relevant=rows.filter(r=>r.link&&r.title&&(r.archiveDiscovery||
-  relevance({...r,title:[r.title,r.author,...(r.aliases||[])].join(" ")},query)>=35||
-  normalized([r.title,r.author,r.excerpt].join(" ")).includes(normalized(query))
- ));
+ // No descartar fichas por el título únicamente: autores, alias, signaturas,
+ // descripción y texto documentado también son evidencia recuperada.
+ const queryTerms=roots(query);
+ const relevant=rows.filter(r=>{
+  if(!r.link||!r.title)return false;
+  const corpus=normalized([r.title,r.author,r.excerpt,r.meta,...(r.aliases||[])].filter(Boolean).join(" "));
+  const exact=normalized(query);
+  const overlap=queryTerms.length?queryTerms.filter(t=>corpus.includes(t)).length/queryTerms.length:0;
+  return !!r.archiveDiscovery||!!r.exactTextMatch||!!r.externalFulltext||
+   !!r.primaryWitness||relevance({...r,title:[r.title,r.author,...(r.aliases||[])].join(" ")},query)>=35||
+   (exact.length>=3&&corpus.includes(exact))||overlap>=0.5;
+ });
  const groups={primary:[],books:[],academic:[],popular:[]},seen=new Set();
  function insert(group,row){
   const key=normalized(row.title)+"|"+normalized(row.author||"");
@@ -748,8 +756,9 @@ function addTopicBibliography(rows,query,ark){
  for(const r of relevant){
   if(r.type==="passage")continue;
   const category=bibliographyCategory(r,query);
-  if(r.type==="manuscript"||r.type==="edition"||category==="primary"){insert("primary",r);continue}
+  if(r.type==="manuscript"||r.type==="edition"){insert("primary",r);continue}
   if(["book","openlibrary","googlebook"].includes(r.type)){insert("books",r);continue}
+  if(category==="primary"){insert("primary",r);continue}
   if(r.type==="article"||category==="academic"){insert("academic",r);continue}
   if(category==="popular"||r.type==="wikipedia"){
    // A search snippet mentioning the subject is not proof that an unrelated article
@@ -789,7 +798,28 @@ function addTopicBibliography(rows,query,ark){
    for(const [name,url] of destinations){const li=make("li"),a=href(url,name);if(a){li.append(a);ul.append(li)}}
    $("article-body").append(ul);
   }
-  if(!selected.length){paragraph("No se recuperaron registros directamente consultados para esta categoría.","article-note");continue}
+  if(!selected.length){
+   // Los catálogos externos no son registros encontrados: se identifican como
+   // búsquedas adicionales y jamás se simulan citas o manuscritos confirmados.
+   const q=encodeURIComponent(query);
+   const routes=category==="primary"?[
+    ["Buscar manuscritos y testimonios en Europeana","https://www.europeana.eu/es/search?query="+q],
+    ["Buscar en el catálogo de BnF Gallica","https://gallica.bnf.fr/Search?q="+q]
+   ]:category==="books"?[
+    ["Buscar libros y ediciones en Open Library","https://openlibrary.org/search?q="+q],
+    ["Buscar ediciones bibliográficas en WorldCat","https://search.worldcat.org/search?q="+q]
+   ]:category==="academic"?[
+    ["Buscar investigación en Google Scholar","https://scholar.google.com/scholar?q="+q],
+    ["Buscar artículos y estudios en Crossref","https://search.crossref.org/?q="+q]
+   ]:[];
+   if(routes.length){
+    paragraph("No hay fichas directas recuperadas en esta consulta. Podés continuar en estos catálogos; son búsquedas externas, no resultados verificados por Vitruvia.","article-note");
+    const ul=make("ul",undefined,"article-related");
+    for(const [name,url] of routes){const li=make("li"),a=href(url,name);if(a){li.append(a);ul.append(li)}}
+    $("article-body").append(ul);
+   }
+   continue;
+  }
   const list=make("ol",undefined,"article-related");
   for(const item of selected){
    const li=make("li"),a=href(item.link,item.title);if(!a)continue;
