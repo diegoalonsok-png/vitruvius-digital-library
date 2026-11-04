@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "updated": "2026-11-03",
+  "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores.",
+  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional.",
+  "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
+  "records": [
+    {
+      "id": "vitruvius-h",
+      "workIds": [
+        "vitruvius"
+      ],
+      "title": "De architectura — Codex Harleianus H",
+      "library": "British Library, Londres",
+      "shelfmark": "Harley MS 2767",
+      "date": "800–824 d. C. · siglo IX",
+      "coverage": "Testimonio completo del tratado; dos folios separados se conservan en Oxford (Rawlinson MS D. 893, ff. 135–136).",
+      "language": "la",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048598",
+      "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+      "manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+      "rights": "British Library: consultar y respetar condiciones institucionales.",
+      "verification": "British Library archive catalogue; published IIIF viewer"
+    },
+    {
+      "id": "cicero-officiis-geneva",
+      "workIds": [
+        "cicero-officiis"
+      ],
+      "title": "De officiis — Manuscrito ginebrino",
+      "library": "Bibliothèque de Genève, Ginebra",
+      "shelfmark": "Ms. lat. 88",
+      "date": "siglo XV",
+      "coverage": "De officiis completo con comentario marginal; no es un manuscrito contemporáneo de Cicerón.",
+      "language": "la",
+      "record": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+      "viewer": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+      "manifest": "https://e-codices.unifr.ch/metadata/iiif/bge-lat0088/manifest.json",
+      "rights": "e-codices: atribuir y consultar la licencia específica de las imágenes.",
+      "verification": "e-codices institutional record"
+    },
+    {
+      "id": "lucretius-oblongus",
+      "workIds": [
+        "lucretius"
+      ],
+      "title": "De rerum natura — Codex Oblongus O",
+      "library": "Universiteitsbibliotheek Leiden",
+      "shelfmark": "Voss. Lat. F. 30 (VLF 30)",
+      "date": "siglo IX · c. 825",
+      "coverage": "Testimonio carolingio de De rerum natura, con correcciones; no es autógrafo de Lucrecio.",
+      "language": "la",
+      "record": "https://portail.biblissima.fr/en/ark:/43093/mdataf212112b405b61b0e8e15847a6636ba25c322e9a",
+      "viewer": "https://digitalcollections.universiteitleiden.nl/view/item/4127827",
+      "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest",
+      "rights": "Universidad de Leiden: revisar condiciones de reutilización.",
+      "verification": "Biblissima / Leiden University Libraries"
+    },
+    {
+      "id": "vergil-vaticanus-aeneid",
+      "workIds": [
+        "virgil-aeneid"
+      ],
+      "title": "Aeneis (fragmentos) — Vergilius Vaticanus",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 3225",
+      "date": "siglo IV; algunos folios del siglo V",
+      "coverage": "Fragmentos de Aeneis I–IX y XI; el códice no contiene la obra íntegra.",
+      "language": "la",
+      "record": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json",
+      "rights": "Biblioteca Vaticana: imágenes para estudio personal; solicitar autorización para reproducción pública.",
+      "verification": "DigiVatLib codicological catalogue"
+    },
+    {
+      "id": "vergil-vaticanus-georgica",
+      "workIds": [
+        "virgil-georgica"
+      ],
+      "title": "Georgica III–IV (fragmentos) — Vergilius Vaticanus",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 3225, ff. 1r–10v",
+      "date": "siglo IV",
+      "coverage": "Fragmentos de Georgica III y IV, no los cuatro libros completos.",
+      "language": "la",
+      "record": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json",
+      "rights": "Biblioteca Vaticana: imágenes para estudio personal; autorización para reproducción pública.",
+      "verification": "DigiVatLib table of contents"
+    },
+    {
+      "id": "vergil-romanus",
+      "workIds": [
+        "virgil-aeneid",
+        "virgil-georgica"
+      ],
+      "title": "Opera Vergilii — Vergilius Romanus",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 3867",
+      "date": "finales del siglo V o comienzos del VI",
+      "coverage": "Bucolica, Georgica y Aeneis con lagunas textuales; codex tardorromano.",
+      "language": "la",
+      "record": "https://spotlight.vatlib.it/latin-paleography/catalog/Vat_lat_3867",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3867",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3867/manifest.json",
+      "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
+      "verification": "Vatican Library Latin Paleography / DigiVatLib"
+    },
+    {
+      "id": "tacitus-mediceus-1",
+      "workIds": [
+        "tacitus-annales"
+      ],
+      "title": "Annales I–VI — Mediceus prior",
+      "library": "Biblioteca Medicea Laurenziana, Florencia",
+      "shelfmark": "Plut. 68.1",
+      "date": "siglo XI",
+      "coverage": "Principal testimonio para Annales I–VI; no confundir con el Mediceus posterior.",
+      "language": "la",
+      "record": "https://iiif.biblissima.fr/collections/manifest/62b4f03e4446b2d1df4529cb493ce95ed92bac55",
+      "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1334704",
+      "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1334704/manifest.json",
+      "rights": "Biblioteca Laurenziana: consultar políticas del visor institucional.",
+      "verification": "Biblissima Laurenziana catalogue"
+    },
+    {
+      "id": "tacitus-mediceus-2",
+      "workIds": [
+        "tacitus-annales",
+        "tacitus-historiae"
+      ],
+      "title": "Annales XI–XVI y Historiae — Mediceus alter",
+      "library": "Biblioteca Medicea Laurenziana, Florencia",
+      "shelfmark": "Plut. 68.2",
+      "date": "siglo XI",
+      "coverage": "Contiene Annales XI–XVI y secciones de Historiae; no contiene todo lo perdido del corpus.",
+      "language": "la",
+      "record": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
+      "viewer": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
+      "manifest": null,
+      "rights": "Biblioteca Laurenziana: consultar condiciones institucionales.",
+      "verification": "Biblissima Laurenziana catalogue"
+    },
+    {
+      "id": "josephus-pal-gr-14",
+      "workIds": [
+        "josephus-antiquities"
+      ],
+      "title": "Antiquitates Iudaicae XI–XVII — Palatinus graecus",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. gr. 14",
+      "date": "siglo X",
+      "coverage": "Solo libros XI–XVII de Antiquitates Iudaicae; incluye Vita Iosephi.",
+      "language": "grc",
+      "record": "https://digi.vatlib.it/view/MSS_Pal.gr.14",
+      "viewer": "https://digi.vatlib.it/view/MSS_Pal.gr.14",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Pal.gr.14/manifest.json",
+      "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
+      "verification": "DigiVatLib item record"
+    },
+    {
+      "id": "josephus-vat-gr-984",
+      "workIds": [
+        "josephus-war",
+        "josephus-antiquities"
+      ],
+      "title": "Flavii Iosephi Opera — Vaticano griego",
+      "library": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 984",
+      "date": "1354 d. C. · siglo XIV",
+      "coverage": "Antiquitates Iudaicae, Vita Iosephi y De bello Iudaico; cotejar secciones por folio en el catálogo.",
+      "language": "grc",
+      "record": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.984/manifest.json",
+      "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
+      "verification": "DigiVatLib item record"
+    },
+    {
+      "id": "dioscorides-vienna",
+      "workIds": [
+        "dioscorides"
+      ],
+      "title": "Περὶ ὕλης ἰατρικῆς — Dioscórides de Viena",
+      "library": "Österreichische Nationalbibliothek, Viena",
+      "shelfmark": "Cod. med. gr. 1",
+      "date": "c. 512 d. C. · siglo VI",
+      "coverage": "Códice de la Materia medica con imágenes y otros textos médicos; el enlace institucional da acceso a folios digitalizados, no se acredita aquí un único PDF íntegro.",
+      "language": "grc",
+      "record": "https://onb.digital/search/811603",
+      "viewer": "https://onb.digital/search/811603",
+      "manifest": null,
+      "rights": "ÖNB: imágenes institucionales sujetas a condiciones de reutilización.",
+      "verification": "Österreichische Nationalbibliothek image search"
+    },
+    {
+      "id": "dioscorides-paris",
+      "workIds": [
+        "dioscorides"
+      ],
+      "title": "De materia medica — Testimonio griego de París",
+      "library": "Bibliothèque nationale de France, París",
+      "shelfmark": "Grec 2179",
+      "date": "siglo IX",
+      "coverage": "Testimonio griego digitalizado de textos de Dioscórides; cotejar la extensión y su relación con la obra en la ficha de Gallica.",
+      "language": "grc",
+      "record": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
+      "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
+      "manifest": null,
+      "rights": "BnF: uso conforme a condiciones de Gallica.",
+      "verification": "BnF Gallica shelfmark and digital record"
+    }
+  ],
+  "editions": [
+    {
+      "workId": "cicero-officiis",
+      "title": "De officiis / On Duties",
+      "year": "1913",
+      "editor": "Walter Miller",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "pdf-historico-bilingue",
+      "url": "https://en.wikisource.org/wiki/File:De_Officiis.pdf",
+      "provider": "Wikisource / University of Toronto scan",
+      "note": "PDF íntegro de edición bilingüe histórica latín-inglés, no manuscrito."
+    },
+    {
+      "workId": "vitruvius",
+      "title": "De architectura · V514",
+      "year": "2026",
+      "editor": "Diego A. Kurilo",
+      "langs": [
+        "la",
+        "es"
+      ],
+      "type": "edicion-contemporanea",
+      "url": "lector-bilingue.html?edition=recensio-es",
+      "provider": "Vitruvius Digital Library",
+      "note": "Edición latina y traducción moderna; no es un facsímil del códice H."
+    },
+    {
+      "workId": "vitruvius",
+      "title": "De architectura · V554",
+      "year": "2026",
+      "editor": "Diego A. Kurilo",
+      "langs": [
+        "la",
+        "fr"
+      ],
+      "type": "edicion-contemporanea",
+      "url": "lector-bilingue.html?edition=recensio-fr",
+      "provider": "Vitruvius Digital Library",
+      "note": "Edición latina con traducción francesa."
+    },
+    {
+      "workId": "vitruvius",
+      "title": "De architectura · V297",
+      "year": "2026",
+      "editor": "Diego A. Kurilo",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "edicion-contemporanea",
+      "url": "lector-bilingue.html?edition=theory-en",
+      "provider": "Vitruvius Digital Library",
+      "note": "Edición del corpus con texto latino y versión inglesa."
+    },
+    {
+      "workId": "lucretius",
+      "title": "De rerum natura — tres versiones locales",
+      "year": "diversas",
+      "editor": "Wikisource / W. E. Leonard / Rodríguez-Navas",
+      "langs": [
+        "la",
+        "en",
+        "es"
+      ],
+      "type": "textos-digitales-locales",
+      "url": "bibliotheca-graeca-latina.html?work=lucretius",
+      "provider": "Vitruvius Digital Library",
+      "note": "Latín y traducciones con atribución editorial. Sin concordancia folio-locus acreditada."
+    },
+    {
+      "workId": "cicero-officiis",
+      "title": "De officiis — visores locales",
+      "year": "1913",
+      "editor": "Walter Miller",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "textos-digitales-locales",
+      "url": "bibliotheca-graeca-latina.html?work=cicero-officiis",
+      "provider": "Vitruvius Digital Library",
+      "note": "Latín e inglés y visor del testimonio de Ginebra; los visores no están alineados por folio."
+    }
+  ]
+}
