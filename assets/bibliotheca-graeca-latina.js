@@ -32,6 +32,29 @@ let works=[],selected="",tab="text",witnessData={records:[],editions:[]},showSel
 const bcFocusIds=new Set(("vitruvius cicero-officiis cicero-oratore cicero-republica cicero-catilinariae cicero-de-finibus cicero-tusculanae cicero-de-natura-deorum cicero-de-amicitia cicero-de-senectute cicero-de-divinatione cicero-brutus cicero-philippicae caesar-gallico caesar-civili sallust-catiline sallust-iugurtha varro-rustica varro-de-lingua-latina lucretius virgil-aeneid virgil-georgica horace-odes horace-sermones horace-ars-poetica horace-epodi horace-epistulae catullus-carmina plautus-amphitruo plautus-aulularia terentius-andria terentius-heautontimorumenos cato-agri-cultura polybius-historiae").split(" "));
 const adFocusIds=new Set(("diodorus dionysius strabo philo philo-legum-allegoriae philo-de-vita-mosis seneca-epistulae seneca-naturales seneca-de-brevitate seneca-de-ira seneca-de-clementia seneca-de-tranquillitate lucan pliny dioscorides josephus-war josephus-antiquities quintilian martial tacitus-agricola tacitus-germania tacitus-annales tacitus-historiae tacitus-dialogus frontinus frontinus-strategemata celsus columella juvenal suetonius-caesares petronius-satyrica pliny-younger-epistulae apuleius-metamorphoses apuleius-apologia apuleius-de-deo-socratis plutarch-lives plutarch-moralia galen-ars-medica galen-de-usu-partium ptolemy-almagest ptolemy-geographia marcus-aurelius-meditations epictetus-discourses arrian-anabasis-alexandri pausanias-periegesis").split(" "));
 function periodFocus(w){return bcFocusIds.has(w.id)||adFocusIds.has(w.id)||!!w.witnessRecords?.length}
+/* Only verified, relative, same-origin manuscript readers may be embedded. */
+function localManuscriptUrl(record){
+ const raw=String(record?.localViewer||"").trim();
+ if(!/^[a-z0-9/_-]+\.html(?:\?[a-z0-9._%=&+-]+)?$/i.test(raw)||raw.includes(".."))return null;
+ try{const url=new URL(raw,location.href);return url.origin===location.origin?url.href:null}catch{return null}
+}
+function showLocalManuscript(container,record){
+ const url=localManuscriptUrl(record);if(!url)return false;
+ container.replaceChildren();
+ const intro=document.createElement("p");intro.className="classical-local-manuscript-note";
+ intro.textContent="Facsímil alojado en Vitruvius Digital Library · "+[record.shelfmark,record.library,record.localFolioCount?record.localFolioCount+" fotografías":"",record.localFolioStart?"f. 1r = imagen digital "+record.localFolioStart.digitalImage:""].filter(Boolean).join(" · ")+". Folio e imagen digital tienen numeraciones diferentes. Verificar derechos de la digitalización en la ficha institucional.";
+ const toolbar=document.createElement("div");toolbar.className="classical-local-manuscript-toolbar";
+ const open=document.createElement("a");open.href=url;open.target="_blank";open.rel="noopener noreferrer";
+ open.textContent="Abrir lector completo · folios y lupa";toolbar.append(open);
+ if(record.record&&/^https:\/\//.test(record.record)){
+  const source=document.createElement("a");source.href=record.record;source.target="_blank";source.rel="noopener noreferrer";
+  source.textContent="Ficha y signatura institucional";toolbar.append(source);
+ }
+ const frame=document.createElement("iframe");frame.src=url;frame.loading="lazy";
+ frame.className="classical-local-manuscript-iframe";frame.title=record.title+" · lector de folios locales";
+ container.append(intro,toolbar,frame);return true;
+}
+
 function pubLinks(entries,title,container){
  if(!entries?.length)return;
  const section=document.createElement("section");section.className="classical-evidence";
@@ -45,8 +68,8 @@ function pubLinks(entries,title,container){
   if(x.note){const p=document.createElement("p");p.textContent=x.note;article.append(p)}
   if(x.rights){const p=document.createElement("small");p.textContent=x.rights;article.append(p)}
   const links=document.createElement("div");links.className="classic-linkline";
-  for(const [label,url] of [["Ver códice en la institución",x.viewer],["Registro y signatura",x.record],["Edición / PDF en la fuente",x.url]]){
-   if(!url||!/^https:\/\//.test(url)&&!/^documents\/classics\/[a-z0-9-]+\.pdf$/.test(url))continue;
+  for(const [label,url] of [["Leer códice folio a folio · biblioteca local",x.localViewer],["Ver códice en la institución",x.viewer],["Registro y signatura",x.record],["Edición / PDF en la fuente",x.url]]){
+   if(!url||!/^https:\/\//.test(url)&&!/^documents\/classics\/[a-z0-9-]+\.pdf$/.test(url)&&!(x.localViewer===url&&localManuscriptUrl(x)))continue;
    if([...links.querySelectorAll("a")].some(a=>a.href===url))continue;
    const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label+" ↗";links.append(a);
   }
@@ -266,7 +289,7 @@ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||
   w.pdfEditions.filter(x=>window.ClassicsFacsimileViewer?.isLocalPDF(x.url)):hasPdf?[w.pdf]:[];
  const multiplePdf=pdfEditions.length>=2;
  const hasThreePanels=hasPdf&&w.localVersions?.length>=2;
- const manuscriptTab=hasWitness?[["manuscript",t.manuscript+" · IIIF"]]:[];
+ const manuscriptTab=hasWitness?[["manuscript",t.manuscript+(w.witnessRecords?.some(ms=>localManuscriptUrl(ms))?" · folios locales / IIIF":" · IIIF")]]:[];
  const pdfTab=hasPdf?[["pdf",multiplePdf?"PDF · original / traducción":t.pdf+" · Zoom / páginas"]]:[];
  const compareTab=multiplePdf?[["comparepdf","Comparar dos PDF · original / traducción"]]:[];
  const tripleTab=hasThreePanels?[["parallel","Tres visores · facsímil / latín / traducción"]]:[];
@@ -288,6 +311,27 @@ const back=document.createElement("a");back.href="vitruvia.html?q="+encodeURICom
   p.textContent="Traducción neolatina: pendiente de cotejo. La presencia del griego original no garantiza una versión latina, española ni inglesa disponible.";box.append(p);
  }
  if(w.bibliography){const bib=document.createElement("section");bib.className="classic-bibliography";bib.setAttribute("aria-label","Registro bibliográfico y codicológico");const title=document.createElement("h3");title.textContent="Registro bibliográfico · Chicago 18";bib.append(title);const p=document.createElement("p");p.textContent=w.bibliography.editionCitation||w.bibliography.preferredCitation||"";bib.append(p);if(w.bibliography.manuscriptCitation){const h=document.createElement("h4");h.textContent="Codicología · Testimonio digital";bib.append(h);const witness=document.createElement("p");witness.textContent=w.bibliography.manuscriptCitation;bib.append(witness)}const note=document.createElement("p");note.textContent=w.bibliography.method||"";bib.append(note);box.append(bib)}
+const localWitness=(w.witnessRecords||[]).find(ms=>localManuscriptUrl(ms));
+if(localWitness){
+ const feature=document.createElement("section");feature.className="classical-local-manuscript-feature";
+ const title=document.createElement("h3");title.textContent="Manuscrito digitalizado disponible en esta biblioteca";
+ const subtitle=document.createElement("p");
+ subtitle.textContent=[localWitness.title,localWitness.shelfmark,localWitness.library,localWitness.localFolioCount?localWitness.localFolioCount+" imágenes digitales":""].filter(Boolean).join(" · ");
+ const open=document.createElement("button");open.type="button";open.className="classical-local-manuscript-cta";
+ open.textContent="Leer Codex H · folio a folio en esta página";
+ open.addEventListener("click",()=>{
+  tab="manuscript";const u=new URL(location.href);
+  u.searchParams.set("work",w.id);u.searchParams.set("view","manuscript");u.searchParams.set("ms",localWitness.id);
+  history.replaceState(null,"",u);detail();
+  $("classic-panel")?.scrollIntoView({block:"start",behavior:"smooth"});
+ });
+ const external=document.createElement("a");external.href=localManuscriptUrl(localWitness);
+ external.target="_blank";external.rel="noopener noreferrer";
+ external.textContent="Abrir lector completo en otra pestaña";
+ feature.append(title,subtitle,open,external);
+ const target=box.querySelector(".classic-tabstrip");
+ if(target)target.before(feature);else box.append(feature);
+}
 box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
   tab=b.dataset.tab;const u=new URL(location.href);u.searchParams.set("work",w.id);u.searchParams.set("view",tab);
   if(tab!=="manuscript")u.searchParams.delete("ms");if(tab!=="pdf")u.searchParams.delete("pdf");history.replaceState(null,"",u);detail();
@@ -320,7 +364,7 @@ if(tab==="manuscript"){
    if(requestedMs){const index=witnesses.findIndex(ms=>ms.id===requestedMs);if(index>=0)selector.value=String(index)}
     label.append(selector);bar.append(label);pane.append(bar);
    const viewer=document.createElement("div");viewer.className="classical-manuscript-panel";pane.append(viewer);
-   const show=()=>window.ClassicsFacsimileViewer?.mountManuscript(viewer,witnesses[Number(selector.value)]||witnesses[0]);
+   const show=()=>{const chosen=witnesses[Number(selector.value)]||witnesses[0];if(!showLocalManuscript(viewer,chosen))window.ClassicsFacsimileViewer?.mountManuscript(viewer,chosen)};
    selector.addEventListener("change",()=>{const url=new URL(location.href);url.searchParams.set("work",w.id);url.searchParams.set("view","manuscript");url.searchParams.set("ms",witnesses[Number(selector.value)]?.id||"");history.replaceState(null,"",url);show()});show();
   }else if(w.manuscript?.manifest){
    const fallback={title:w.title,shelfmark:w.title,library:w.author,manifest:w.manuscript.manifest,viewer:w.manuscript.record||w.manuscript.manifest,record:w.manuscript.record||w.manuscript.manifest,coverage:w.manuscript.status||"",rights:"Consultar condiciones institucionales de reproducción."};
@@ -409,7 +453,7 @@ if(tab==="pdf"){
 async function boot(){
  const [res,reference]=await Promise.all([
   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json"),
-  fetch("data/bibliotheca-testimonia-verified.json?v=20261103-codices1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
+  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-local-folios-v2").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;
