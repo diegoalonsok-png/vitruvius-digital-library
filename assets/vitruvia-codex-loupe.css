@@ -1,0 +1,33 @@
+/* Manuscript detail loupe · localized enlargement without full-page reflow */
+.codex-local-loupe-button{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:42px;white-space:nowrap;
+ border-radius:8px;letter-spacing:.015em;font-weight:600;
+}
+.codex-local-loupe-button[aria-pressed="true"]{
+ outline:2px solid #c4b287;outline-offset:2px;
+ background:#454b4e!important;color:#fff!important;border-color:#d6c6a3!important;
+}
+.codex-local-loupe-enabled :is(#folio,#image),
+.codex-local-loupe-enabled#stage #image,
+.codex-local-loupe-enabled#viewport #folio{cursor:crosshair!important}
+.codex-local-loupe-lens{
+ position:fixed;z-index:14000;pointer-events:none;
+ box-sizing:border-box;border:5px solid #898d90;border-radius:50%;
+ background-color:#282a2c;background-repeat:no-repeat;
+ box-shadow:0 17px 46px #0009,0 0 0 2px #dad4c5,0 0 0 4px #252525;
+}
+.codex-local-loupe-lens[hidden]{display:none!important}
+.codex-local-loupe-scale{
+ position:absolute;bottom:13px;right:14px;
+ color:#fff;background:#191b1ddd;border:1px solid #888e94;
+ border-radius:14px;padding:3px 9px;
+ font:600 11px/1.2 Arial,Helvetica,sans-serif;
+ letter-spacing:.06em;
+}
+@media(max-width:650px){
+ .codex-local-loupe-button{min-height:40px;padding:8px 12px}
+ .codex-local-loupe-lens{border-width:4px}
+ .codex-local-loupe-scale{bottom:11px;right:11px}
+}
+@media print{#codex-local-loupe,.codex-local-loupe-lens{display:none!important}}
