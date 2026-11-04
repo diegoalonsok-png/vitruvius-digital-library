@@ -1,0 +1,53 @@
+/* Reading controls are scoped to Vitruvia; preferences never restyle navigation. */
+:root{--vitruvia-reading-zoom:1}
+#article-body,#article-aside,#article-sources,#article-evidence,#result-list,#article-title,#answer{zoom:var(--vitruvia-reading-zoom)}
+.nav{position:relative;z-index:100}
+.reading-options{position:relative;color:#ededee;font:400 13px/1.5 Arial,Helvetica,sans-serif}
+.reading-options summary{display:flex;align-items:center;gap:9px;min-height:42px;padding:7px 11px;list-style:none;cursor:pointer;background:#262628;border:1px solid #505053;border-radius:7px;white-space:nowrap}
+.reading-options summary::-webkit-details-marker{display:none}
+.reading-options summary:hover,.reading-options[open] summary{background:#333336;border-color:#77777b}
+.reading-options summary:focus-visible{outline:2px solid #dedee1;outline-offset:3px}
+.reading-aa{font:22px/1 Georgia,serif;letter-spacing:-.05em}
+.reading-options :is(output,#reading-font-value){font:500 11px/1.5 Arial,sans-serif;font-variant-numeric:tabular-nums;min-width:31px;color:#ededee}
+.reading-chevron{color:#b7b7bb}
+.reading-options[open] .reading-chevron{transform:rotate(180deg)}
+.reading-options-panel{position:absolute;right:0;top:calc(100% + 9px);z-index:200;width:304px;padding:20px;background:#242426;color:#ededee;border:1px solid #505053;border-radius:10px;box-shadow:0 16px 45px #0007;max-height:calc(100dvh - 105px);overflow-y:auto;white-space:normal}
+.reading-options-panel>strong{display:block;margin-bottom:17px;font:600 15px/1.4 Arial,sans-serif}
+.reading-options-panel>label{display:block;margin:15px 0 7px;font-size:12px;color:#c5c5c9}
+.reading-size-row,.reading-style-row,.reading-color-row{display:flex;align-items:center;gap:12px}
+.reading-size-row>span{color:#bcbcc0;font-family:Georgia,serif}
+.reading-size-row>span:nth-of-type(2){font-size:19px}
+.reading-options input[type=range]{flex:1;width:100%;min-width:0;padding:0;margin:0;accent-color:#c9c9ce;cursor:pointer;min-height:32px}
+.reading-options #reading-font-family{width:100%;min-height:40px;padding:7px 10px;border:1px solid #5d5d63;border-radius:6px;background:#303033;color:#f1f1f2;font:14px Arial,sans-serif;color-scheme:dark}
+.reading-style-row{justify-content:space-between;margin-top:17px;color:#c5c5c9;font-size:12px}
+.reading-options button{min-height:38px;border:1px solid #5d5d63;border-radius:6px;padding:7px 12px;background:#303033;color:#eeeef0;font:12px/1.5 Arial,sans-serif}
+.reading-options button:hover{border-color:#a5a5ad;background:#3b3b40}
+.reading-options button[aria-pressed=true]{border-color:#babac2;background:#e2e2e5;color:#202023}
+#reading-italic i{font:italic 18px/1 Georgia,serif;margin-right:5px}
+.reading-options input[type=color]{width:56px;height:38px;padding:3px;border:1px solid #5d5d63;border-radius:6px;background:#303033;cursor:pointer}
+.reading-options :is(button,input,select):focus-visible{outline:2px solid #dedee1;outline-offset:3px}
+.reading-options .reading-preview{margin:17px 0 8px;padding:12px;border:1px solid #505053;border-radius:6px;background:#0d0d0e;color:var(--vitruvia-reading-color,#d0d0ce);font:400 calc(15px * var(--vitruvia-reading-zoom))/1.6 var(--vitruvia-reading-family,Arial,Helvetica,sans-serif);overflow-wrap:anywhere}
+html[data-theme=light] .reading-options .reading-preview{background:#f7f5ef;color:var(--vitruvia-reading-color,#242424)}
+html[data-reading-italic=true] .reading-options .reading-preview{font-style:italic}
+.reading-options-hint{font:11px/1.5 Arial,sans-serif;color:#b2b2b7;margin:8px 0 17px}
+#reading-font-reset{width:100%}
+html[data-reading-font] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer),
+html[data-reading-font] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer) :where(*){font-family:var(--vitruvia-reading-family)!important}
+html[data-reading-italic=true] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer),
+html[data-reading-italic=true] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer) :where(*){font-style:italic!important}
+/* Preserve readable search highlights and apply custom ink only on screen. */
+@media screen{
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title),
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title) :where(*),
+ html[data-reading-color=custom] body :is(#result-list,#answer),
+ html[data-reading-color=custom] body :is(#result-list,#answer) :where(*){color:var(--vitruvia-reading-color)!important}
+ html[data-reading-color=custom] body :is(#vitruvia-article,#result-list,#answer) mark,
+ html[data-reading-color=custom] body :is(#vitruvia-article,#result-list,#answer) mark :where(*){color:#191919!important;background:#ffe36c!important}
+}
+@media(max-width:1100px){.nav{flex-wrap:wrap}.navtools{flex-wrap:wrap}}
+@media(max-width:700px){
+ .reading-options summary{min-height:44px}
+ .reading-options-panel{position:fixed;left:16px;right:16px;top:76px;width:auto;max-width:360px;margin-left:auto;max-height:calc(100dvh - 92px)}
+}
+@media(max-width:380px){.reading-options summary{gap:5px;padding-inline:9px}.reading-options summary #reading-font-value{display:none}}
+@media print{.reading-options{display:none!important}}
