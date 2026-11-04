@@ -28,14 +28,39 @@ document.querySelectorAll("[data-bi]").forEach(el=>{const v=dict[el.dataset.bi];
 try{localStorage.setItem("vitruvius-ui-lang",lang)}catch{}
 }
 
-let works=[],selected="",tab="text";
+let works=[],selected="",tab="text",witnessData={records:[],editions:[]};
+const bcFocusIds=new Set(("vitruvius cicero-officiis cicero-oratore cicero-republica cicero-catilinariae cicero-de-finibus cicero-tusculanae cicero-de-natura-deorum cicero-de-amicitia cicero-de-senectute cicero-de-divinatione cicero-brutus cicero-philippicae caesar-gallico caesar-civili sallust-catiline sallust-iugurtha varro-rustica varro-de-lingua-latina lucretius virgil-aeneid virgil-georgica horace-odes horace-sermones horace-ars-poetica horace-epodi horace-epistulae catullus-carmina plautus-amphitruo plautus-aulularia terentius-andria terentius-heautontimorumenos cato-agri-cultura polybius-historiae").split(" "));
+const adFocusIds=new Set(("diodorus dionysius strabo philo philo-legum-allegoriae philo-de-vita-mosis seneca-epistulae seneca-naturales seneca-de-brevitate seneca-de-ira seneca-de-clementia seneca-de-tranquillitate lucan pliny dioscorides josephus-war josephus-antiquities quintilian martial tacitus-agricola tacitus-germania tacitus-annales tacitus-historiae tacitus-dialogus frontinus frontinus-strategemata celsus columella juvenal suetonius-caesares petronius-satyrica pliny-younger-epistulae apuleius-metamorphoses apuleius-apologia apuleius-de-deo-socratis plutarch-lives plutarch-moralia galen-ars-medica galen-de-usu-partium ptolemy-almagest ptolemy-geographia marcus-aurelius-meditations epictetus-discourses arrian-anabasis-alexandri pausanias-periegesis").split(" "));
+function periodFocus(w){return bcFocusIds.has(w.id)||adFocusIds.has(w.id)||!!w.witnessRecords?.length}
+function pubLinks(entries,title,container){
+ if(!entries?.length)return;
+ const section=document.createElement("section");section.className="classical-evidence";
+ const h=document.createElement("h3");h.textContent=title;section.append(h);
+ for(const x of entries){
+  const article=document.createElement("article");article.className="classical-evidence-record";
+  const strong=document.createElement("strong");strong.textContent=x.title;article.append(strong);
+  const meta=document.createElement("p");meta.className="classical-evidence-meta";
+  meta.textContent=[x.library,x.shelfmark,x.date].filter(Boolean).join(" · ");article.append(meta);
+  if(x.coverage){const p=document.createElement("p");p.textContent=x.coverage;article.append(p)}
+  if(x.note){const p=document.createElement("p");p.textContent=x.note;article.append(p)}
+  if(x.rights){const p=document.createElement("small");p.textContent=x.rights;article.append(p)}
+  const links=document.createElement("div");links.className="classic-linkline";
+  for(const [label,url] of [["Ver códice en la institución",x.viewer],["Registro y signatura",x.record],["Edición / PDF en la fuente",x.url]]){
+   if(!url||!/^https:\/\//.test(url))continue;
+   if([...links.querySelectorAll("a")].some(a=>a.href===url))continue;
+   const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label+" ↗";links.append(a);
+  }
+  article.append(links);section.append(article);
+ }
+ container.append(section);
+}
 function language(){return $("classic-ui-language").value||"es";}
 function terms(){return L[language()];}
 function navLink(url,txt){return '<a target="_blank" rel="noopener noreferrer" href="'+safe(url)+'">'+safe(txt)+' ↗</a>';}
 function isLocal(w){return w.publicStatus==="lectura-local-completa"&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length)}
 function hasSource(w){return !!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest)}
 function statusLabel(w){return isLocal(w)?"LECTURA EN VITRUVIA":hasSource(w)?"FUENTE IDENTIFICADA":"REPERTORIO · LOCALIZACIÓN"}
-function filters(){const q=fold($("classic-query").value.trim()),lang=$("classic-language").value,genre=$("classic-genre").value,availability=$("classic-availability")?.value||"";return works.filter(w=>(!lang||w.language===lang)&&(!genre||w.genre===genre)&&(!availability||(availability==="local"?isLocal(w):availability==="source"?hasSource(w)&&!isLocal(w):!hasSource(w)))&&(!q||q.split(/\s+/).every(t=>fold([w.author,w.title,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ")).includes(t))))}
+function filters(){const q=fold($("classic-query").value.trim()),lang=$("classic-language").value,genre=$("classic-genre").value,availability=$("classic-availability")?.value||"",period=$("classic-period")?.value||"";return works.filter(w=>(period!=="focus"||periodFocus(w))&&(!lang||w.language===lang)&&(!genre||w.genre===genre)&&(!availability||(availability==="local"?isLocal(w):availability==="source"?hasSource(w)&&!isLocal(w):!hasSource(w)))&&(!q||q.split(/\s+/).every(t=>fold([w.author,w.title,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ")).includes(t))))}
 let suggestionIndex=-1;
 function showBookSuggestions(){
  const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
@@ -79,7 +104,13 @@ function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail")
 const isTriple=w.id==="cicero-officiis";const labels=!isLocal(w)?[["external",w.reading?.url?"Fuente externa y ficha":"Localizar ediciones"],...(w.manuscript?.manifest?[["manuscript",t.manuscript]]:[])]:isTriple?[["text","Tres visores · Códice / latín / traducción"]]:w.pdf?.url?[["pdf",t.pdf],...(w.localReader?.verified?[["text",t.source]]:[])]:w.localHtml?[["text",t.source],...(w.manuscript?.manifest?[["manuscript",t.manuscript]]:[])]:[["text",t.source],["manuscript",t.manuscript],["edition",t.edition]];if(!labels.some(x=>x[0]===tab))tab=labels[0][0];
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"Traducción sin cotejar.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
-if(w.bibliography){const bib=document.createElement("section");bib.className="classic-bibliography";bib.setAttribute("aria-label","Registro bibliográfico y codicológico");const title=document.createElement("h3");title.textContent="Registro bibliográfico · Chicago 18";bib.append(title);const p=document.createElement("p");p.textContent=w.bibliography.editionCitation||w.bibliography.preferredCitation||"";bib.append(p);if(w.bibliography.manuscriptCitation){const h=document.createElement("h4");h.textContent="Codicología · Testimonio digital";bib.append(h);const witness=document.createElement("p");witness.textContent=w.bibliography.manuscriptCitation;bib.append(witness)}const note=document.createElement("p");note.textContent=w.bibliography.method||"";bib.append(note);box.append(bib)}
+pubLinks(w.witnessRecords,"Testimonios manuscritos verificados · códices",box);
+ pubLinks(w.historicEditions,"Ediciones históricas, textos y PDF identificados",box);
+ if(w.language==="grc"&&!w.historicEditions?.some(x=>x.langs?.includes("la"))){
+  const p=document.createElement("p");p.className="classic-ref";
+  p.textContent="Traducción neolatina: pendiente de cotejo. La presencia del griego original no garantiza una versión latina, española ni inglesa disponible.";box.append(p);
+ }
+ if(w.bibliography){const bib=document.createElement("section");bib.className="classic-bibliography";bib.setAttribute("aria-label","Registro bibliográfico y codicológico");const title=document.createElement("h3");title.textContent="Registro bibliográfico · Chicago 18";bib.append(title);const p=document.createElement("p");p.textContent=w.bibliography.editionCitation||w.bibliography.preferredCitation||"";bib.append(p);if(w.bibliography.manuscriptCitation){const h=document.createElement("h4");h.textContent="Codicología · Testimonio digital";bib.append(h);const witness=document.createElement("p");witness.textContent=w.bibliography.manuscriptCitation;bib.append(witness)}const note=document.createElement("p");note.textContent=w.bibliography.method||"";bib.append(note);box.append(bib)}
 box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{tab=b.dataset.tab;detail();}));
 const pane=$("classic-panel");
 if(tab==="external"){
@@ -101,7 +132,21 @@ if(tab==="manuscript"){pane.innerHTML="<h3>"+safe(t.manuscript)+"</h3><p>"+safe(
 if(tab==="edition"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,"en");}else if(tab==="edition"){pane.innerHTML="<h3>"+safe(t.edition)+"</h3><p>"+safe(w.reading.status)+"</p><p>"+safe(t.noTrans)+"</p><p>"+safe(t.notHosted)+"</p><div class='classic-linkline'>"+navLink(w.links.scaife,t.scaife)+"</div>";}
 if(tab==="pdf"){if(w.pdf?.url){pane.innerHTML="<h3>"+safe(t.pdf)+"</h3><p>"+safe(w.pdf.status)+"</p><div class='classic-linkline'>"+navLink(w.pdf.url,t.open)+"</div>";const frame=document.createElement("iframe");frame.src=w.pdf.url+"#toolbar=1&navpanes=0";frame.title="PDF · "+w.author+" · "+w.title;frame.loading="lazy";pane.append(frame);}else{pane.innerHTML="<h3>"+safe(t.pdf)+"</h3><p>"+safe(t.noPdf)+"</p><div class='classic-linkline'>"+navLink(w.links.archive,t.archive)+" "+navLink(w.links.gallica,t.gallica)+"</div>";}}
 }
-async function boot(){const r=await fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json");if(!r.ok)throw Error("HTTP "+r.status);works=((await r.json()).works||[]).filter(w=>w&&w.id&&w.title&&(w.language==="la"||w.language==="grc"));const genres=[...new Set(works.map(x=>x.genre))].sort((a,b)=>a.localeCompare(b,"es"));for(const s of genres){const o=document.createElement("option");o.textContent=o.value=s;$("classic-genre").append(o)}const availability=$("classic-availability");if(availability)availability.addEventListener("change",()=>{hideBookSuggestions();render()});
+async function boot(){
+ const [res,reference]=await Promise.all([
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json"),
+  fetch("data/bibliotheca-testimonia-verified.json?v=20261103-codices1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
+ ]);
+ if(!res.ok)throw Error("HTTP "+res.status);
+ witnessData=reference;
+ works=((await res.json()).works||[]).filter(w=>w&&w.id&&w.title&&(w.language==="la"||w.language==="grc"));
+ const map=new Map(works.map(w=>[w.id,w]));
+ for(const record of (witnessData.records||[]))for(const id of record.workIds||[]){
+  const w=map.get(id);if(w)(w.witnessRecords??=[]).push(record);
+ }
+ for(const edition of witnessData.editions||[]){const w=map.get(edition.workId);if(w)(w.historicEditions??=[]).push(edition)}
+ const n=$("classic-witness-count");if(n)n.textContent=(witnessData.records||[]).length+" testimonios codicológicos individualizados";const genres=[...new Set(works.map(x=>x.genre))].sort((a,b)=>a.localeCompare(b,"es"));for(const s of genres){const o=document.createElement("option");o.textContent=o.value=s;$("classic-genre").append(o)}const availability=$("classic-availability");if(availability)availability.addEventListener("change",()=>{hideBookSuggestions();render()});
+ const period=$("classic-period");if(period)period.addEventListener("change",()=>{hideBookSuggestions();render()});
  const clear=$("classic-clear");if(clear){const inp=$("classic-query");const sync=()=>{clear.hidden=!inp.value};inp.addEventListener("input",sync);clear.addEventListener("click",()=>{inp.value="";sync();hideBookSuggestions();render();inp.focus()});inp.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&inp.value){ev.preventDefault();inp.value="";sync();hideBookSuggestions();render()}});sync()}
  const wanted=new URLSearchParams(location.search).get("work");selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";tab=works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text";try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();render();});translateInterface();render();initBookSuggestions();}
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
