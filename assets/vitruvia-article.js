@@ -13,17 +13,19 @@ let active=0;
 const summaries=new Map();
 let bibliographyContext={rows:[],query:""};
 
+const EDITORIAL_LOCALE={"Desarrollo enciclopédico y debates":{"en":"Encyclopedic overview and debates","fr":"Synthèse encyclopédique et débats"},"Documentación disponible":{"en":"Available documentation","fr":"Documentation disponible"},"Pasaje exacto reconocido en la biblioteca":{"en":"Exact passage identified in the library","fr":"Passage exact identifié dans la bibliothèque"},"Tradición manuscrita · códices y testimonios por obra":{"en":"Manuscript tradition · codices and witnesses by work","fr":"Tradition manuscrite · codex et témoins par œuvre"},"Obras fundamentales y bibliografía de referencia":{"en":"Key reference works and bibliography","fr":"Ouvrages de référence et bibliographie"},"Universidades, museos y centros de investigación":{"en":"Universities, museums and research centers","fr":"Universités, musées et centres de recherche"},"Fuentes históricas institucionales":{"en":"Institutional historical sources","fr":"Sources historiques institutionnelles"},"II · Literatura histórica, códices y fuentes originales":{"en":"II · Historical literature, codices and primary sources","fr":"II · Littérature historique, codex et sources originales"},"III · Libros y ediciones bibliográficas":{"en":"III · Books and bibliographic editions","fr":"III · Livres et éditions bibliographiques"},"IV · Investigación académica y estudios especializados":{"en":"IV · Academic research and specialist studies","fr":"IV · Recherche académique et études spécialisées"},"V · Enciclopedias y divulgación":{"en":"V · Encyclopedias and general introductions","fr":"V · Encyclopédies et vulgarisation"},"VI · Imágenes y documentación visual":{"en":"VI · Images and visual documentation","fr":"VI · Images et documentation visuelle"},"VII · Otras fuentes para contrastar la investigación":{"en":"VII · Additional sources for verification","fr":"VII · Autres sources de vérification"},"Consultar galería de imágenes documentadas":{"en":"Open documented image gallery","fr":"Consulter la galerie d’images documentées"},"Consultar fuente original, notas e historial":{"en":"View source, notes and edit history","fr":"Consulter la source, les notes et l’historique"},"Leer el pasaje en la edición de origen":{"en":"Read the passage in its source edition","fr":"Lire le passage dans son édition source"},"Buscar manuscritos y testimonios en Europeana":{"en":"Search manuscripts and witnesses in Europeana","fr":"Rechercher des manuscrits et témoins sur Europeana"},"Buscar en el catálogo de BnF Gallica":{"en":"Search the BnF Gallica catalogue","fr":"Rechercher dans le catalogue Gallica de la BnF"},"Buscar libros y ediciones en Open Library":{"en":"Search books and editions in Open Library","fr":"Rechercher des livres et éditions sur Open Library"},"Buscar ediciones bibliográficas en WorldCat":{"en":"Search bibliographic editions in WorldCat","fr":"Rechercher des éditions bibliographiques sur WorldCat"},"Buscar investigación en Google Scholar":{"en":"Search academic research in Google Scholar","fr":"Rechercher des études sur Google Scholar"},"Buscar artículos y estudios en Crossref":{"en":"Search articles and papers in Crossref","fr":"Rechercher des articles et études sur Crossref"},"Buscar artículos y estudios académicos":{"en":"Search scholarly articles and studies","fr":"Rechercher des articles et études scientifiques"},"Buscar bibliografía sobre":{"en":"Search bibliography on","fr":"Rechercher une bibliographie sur"},"Material enciclopédico de Wikipedia: atribución CC BY-SA. La síntesis original y los textos externos se presentan diferenciados.":{"en":"Encyclopedic material from Wikipedia, attributed under CC BY-SA. The editorial overview and external texts are identified separately.","fr":"Matériel encyclopédique provenant de Wikipédia, sous licence CC BY-SA. La synthèse éditoriale et les textes externes sont distingués."},"Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.":{"en":"A topical introduction distinguishing historical sources, verified evidence and modern interpretations.","fr":"Une introduction thématique distinguant les sources historiques, les données vérifiées et les interprétations modernes."},"Se destacan testimonios fechados e identificados en la biblioteca. Los registros externos enlazados por Wikidata requieren comprobación codicológica: ni su datación ni su importancia constituyen una atribución verificada.":{"en":"Dated, catalogued manuscript witnesses are highlighted. External Wikidata records still require codicological verification; dates and significance are not guaranteed.","fr":"Les témoins datés et catalogués sont mis en évidence. Les notices Wikidata nécessitent une vérification codicologique ; ni leur datation ni leur importance ne sont garanties."},"Búsquedas acotadas por institución. Son rutas externas para localizar estudios y colecciones; Vitruvia no afirma haber leído ni evaluado cada resultado.":{"en":"Institution-specific research links. These are external searches, not studies that Vitruvia claims to have read or evaluated.","fr":"Liens de recherche par institution. Il s’agit de recherches externes, non de travaux lus ou évalués par Vitruvia."},"Fuentes antiguas, manuscritos y ediciones documentadas. La fecha de un códice no equivale a la fecha de composición de la obra.":{"en":"Documented ancient sources, manuscripts and editions. A codex's date is not the date when the work was composed.","fr":"Sources antiques, manuscrits et éditions documentés. La date d'un codex ne correspond pas à celle de la composition de l’œuvre."},"Libros identificados en la Biblioteca Vitruviana y catálogos abiertos. Una ficha no acredita lectura del texto completo.":{"en":"Books recorded in the Vitruvian Library and open catalogues. A catalog entry does not imply full-text access.","fr":"Livres identifiés dans la Bibliothèque vitruvienne et les catalogues ouverts. Une notice ne garantit pas l’accès au texte intégral."},"Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.":{"en":"Documentary previews appear in the gallery, with provenance, creator and license links.","fr":"Les aperçus documentaires figurent dans la galerie, avec liens vers la provenance, l’auteur et la licence."},"No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.":{"en":"An extended encyclopedia overview could not be retrieved for this search. Only traceable sources are displayed; unsupported claims are not generated.","fr":"Une synthèse encyclopédique détaillée n'a pas pu être récupérée. Seules les sources traçables sont présentées, sans affirmations non étayées."},"No hay fichas directas recuperadas en esta consulta. Podés continuar en estos catálogos; son búsquedas externas, no resultados verificados por Vitruvia.":{"en":"No matching records were retrieved directly. Continue in these external catalogues; these links are not verified Vitruvia results.","fr":"Aucune notice directe retrouvée. Poursuivre dans ces catalogues externes : ce ne sont pas des résultats vérifiés par Vitruvia."}};
+const localText=s=>EDITORIAL_LOCALE[String(s)]?.[document.documentElement.lang]||s;
 function phrase(es,en,fr){const l=document.documentElement.lang;return l==="en"?en:l==="fr"?fr:es}
 function href(url,text){if(!url)return null;try{const u=new URL(url,location.href);if(!/^https?:$/.test(u.protocol))return null;
-const a=make("a",text);a.href=u.href;
+const a=make("a",localText(text));a.href=u.href;
 if(u.origin!==location.origin){a.target="_blank";a.rel="noopener noreferrer"}return a}catch{return null}}
 function reset(title,sub,kicker){root.hidden=false;
 $("article-title").textContent=title;
 $("article-byline").textContent=sub||"";
 $("article-kicker").textContent=kicker;
 for(const id of ["article-body","article-aside","article-sources"])$(id).replaceChildren()}
-function paragraph(t,cls){if(t)$("article-body").append(make("p",t,cls))}
-function heading(t){$("article-body").append(make("h3",t))}
+function paragraph(t,cls){if(t)$("article-body").append(make("p",localText(t),cls))}
+function heading(t){$("article-body").append(make("h3",localText(t)))}
 function sourceLink(parent,label,url){const a=href(url,label);if(a)parent.append(a)}
 function references(rows,license){const box=$("article-sources");box.replaceChildren();
 box.append(make("h3",phrase("Fuentes y referencias","Sources and references","Sources et références")));
@@ -569,7 +571,7 @@ const arkSections=[
 ];
 async function topicWikiData(query){
  const variations=[query,normalized(query).replace(/^(el|la|los|las|the|le|les) /,"")];
- const langs=[document.documentElement.lang==="en"?"en":"es","en"];
+ const langs=[...new Set([document.documentElement.lang||"es","es","en"])];
  for(const lang of [...new Set(langs)]){
   for(const term of variations){
    try{
@@ -891,7 +893,15 @@ async function renderTopic(top,rows,query,token,person=null){
  const deity=isDeityQuery(query);
  const ark=topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
  const sources=rows.filter(x=>x.link&&relevance({...x,title:[x.title,x.author||""].join(" ")},query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum","book","edition","manuscript"].includes(x.type));
- const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,person?.name||query)>=40).sort((x,y)=>relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
+ const wanted=document.documentElement.lang||"es";
+ const candidates=rows.filter(x=>x.type==="wikipedia"&&x.pageid&&(
+  x.preferredWiki||relevance(x,person?.name||query)>=40
+ ));
+ const wiki=candidates.sort((x,y)=>
+  Number(!!y.preferredWiki)-Number(!!x.preferredWiki)||
+  Number(y.wikiLang===wanted)-Number(x.wikiLang===wanted)||
+  relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
+ if(wiki?.preferredWiki&&wiki.title)$("article-title").textContent=wiki.title;
  paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
  if(deity){for(const [sectionTitle,body] of deityDossier){heading(sectionTitle);paragraph(body)}}
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
@@ -909,6 +919,10 @@ async function renderTopic(top,rows,query,token,person=null){
  if(data?.extract){
   heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
   paragraph("Material enciclopédico de Wikipedia: atribución CC BY-SA. La síntesis original y los textos externos se presentan diferenciados.","article-note");
+  if(wiki&&wiki.wikiLang!==wanted)paragraph(
+   phrase("La fuente enciclopédica está disponible aquí en "+wiki.wikiLang.toUpperCase()+"; no se simula una traducción.",
+    "The source text is available here in "+wiki.wikiLang.toUpperCase()+"; it has not been automatically translated.",
+    "La source est disponible ici en "+wiki.wikiLang.toUpperCase()+" ; aucune traduction automatique n’est simulée."),"article-note");
   appendBiographyExtract(data.extract);
   const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
   if(link)$("article-body").append(link);
