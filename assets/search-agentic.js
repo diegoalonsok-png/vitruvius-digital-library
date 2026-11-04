@@ -15,7 +15,8 @@ const dictionary={
  templo:["templo","templum","templi","aedes","temple"]
 };
 const terms=q=>{const raw=normalize(q).split(" ").filter(x=>x.length>2&&!stop.has(x));return raw.length===1&&dictionary[raw[0]]?dictionary[raw[0]]:raw};
-const relevant=(text,tt)=>{const hay=normalize(text);return tt.reduce((n,t)=>n+(hay.includes(t)?1:0),0)};
+const containsWord=(text,word)=>{const hay=" "+normalize(text)+" ";return hay.includes(" "+normalize(word)+" ")};
+const relevant=(text,tt)=>tt.reduce((n,t)=>n+(containsWord(text,t)?1:0),0);
 const get=async(url)=>{const response=await fetch(url,{headers:{Accept:"application/json"}});if(!response.ok)throw Error(url+" HTTP "+response.status);return response.json()};
 let chunkPromise=null,bibPromise=null;
 async function chunks(){
@@ -39,7 +40,7 @@ async function search(q){
  const locus=/^(?:[ivx]+|\d{1,2})\.\d{1,2}\.\d{1,2}$/i.test(query);
  const detected=cs.map(c=>{
   const corpus=(c.texto||"")+" "+(c.traduccion||"");
-  const exact=normalize(corpus).includes(query);
+  const exact=containsWord(corpus,query);
   const score=locus?Number(normalize(c.locus)===query)*100:(exact?85:relevant(corpus,tt)*8);
   return {c,score,exact};
  }).filter(h=>h.score>0).sort((a,b)=>b.score-a.score).slice(0,30);
