@@ -558,10 +558,39 @@ function optionalManuscriptAccess(rows){
 
 function appendBiographyExtract(raw){
  const blocks=window.VitruviaDiscovery?.parseExtract(raw)||[{type:"paragraph",text:String(raw||"")}];
- let paragraphs=0;
+ const body=$("article-body");
+ let paragraphs=0,list=null;
+ // Split only at existing sentence ends: never add punctuation or rewrite prose.
+ // Avoid artificial breaks at initials, volumes, chapters or other abbreviations.
+ const readableParagraphs=value=>{
+  const text=String(value||"").trim();
+  if(text.length<=780)return text?[text]:[];
+  const chunks=[];let begin=0;
+  const endings=/[.!?](?:["”»')\]]*)\s+(?=[«“¿¡"']?\p{Lu})/gu;
+  for(const boundary of text.matchAll(endings)){
+   const stop=boundary.index+boundary[0].trimEnd().length;
+   if(stop-begin<430)continue;
+   const prev=text.slice(Math.max(begin,stop-25),boundary.index).match(/([\p{L}]{1,8})$/u)?.[1]||"";
+   if(/^(?:sr|sra|dr|dra|etc|vol|vols|p|pp|fig|figs|cap|núm|num|ed|eds|sig|pro[f]?|s|a|d)$/i.test(prev)||prev.length===1)continue;
+   chunks.push(text.slice(begin,stop).trim());
+   begin=boundary.index+boundary[0].length;
+  }
+  if(begin<text.length)chunks.push(text.slice(begin).trim());
+  return chunks.length?chunks:[text];
+ };
  for(const block of blocks){
-  if(block.type==="heading")$("article-body").append(make(block.level>2?"h4":"h3",block.text));
-  else if(block.text){paragraph(block.text,paragraphs===0?"article-lead":undefined);paragraphs++}
+  if(block.type==="heading"){
+   list=null;
+   body.append(make(block.level>2?"h4":"h3",block.text));
+  }else if(block.type==="bibliography-item"){
+   if(!list){list=make("ul",undefined,"article-bibliography-list");body.append(list)}
+   if(block.text)list.append(make("li",block.text));
+  }else if(block.text){
+   list=null;
+   for(const part of readableParagraphs(block.text)){
+    paragraph(part,paragraphs===0?"article-lead":undefined);paragraphs++;
+   }
+  }
  }
  return paragraphs;
 }
