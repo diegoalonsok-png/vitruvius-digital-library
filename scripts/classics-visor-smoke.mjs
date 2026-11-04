@@ -45,13 +45,13 @@ try{
    assert.match(await p.locator('#result-list').innerText(),/Poética|Περὶ ποιητικῆς/);
   }finally{await p.close()}
  });
- await check('Aristotle Poetics opens 102-page on-site reader',async()=>{
+ await check('Aristotle Poetics defaults to verified 68-page Greek original',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   try{
    await p.locator('#classic-panel .classical-pdf-toolbar, #classic-panel .classical-native-pdf').first().waitFor({timeout:25000});
-   await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent?.includes('102')||
+   await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent?.includes('68')||
     !!document.querySelector('iframe.classical-native-pdf'),{timeout:25000});
-   assert.match(await p.locator('#classic-detail').innerText(),/1819/);
+   assert.match(await p.locator('#classic-detail').innerText(),/1893/);
    if(await p.locator('.classical-pdf-total').count() && await p.locator('.classical-pdf-total').innerText()!=='/ —'){
     await p.locator('.classical-pdf-pager button').last().click();
     assert.equal(await p.locator('.classical-pdf-number').inputValue(),'2');
