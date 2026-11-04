@@ -684,6 +684,27 @@ body.vitruvia-reading #search-images-button{min-height:30px!important;padding:5p
 html[data-theme=light] .vitruvius-edition{background:#fff;border-color:#c9c9c9}
 html[data-theme=light] .vitruvius-edition h4{color:#222}
 html[data-theme=light] .vitruvius-edition p{color:#555}
+
+/* CONSISTENT SEARCH UI: no shrinking/reflow when results become visible.
+   Keep the editorial homepage typography, search pill and controls unchanged. */
+body.vitruvia-reading .hero{display:grid!important;padding:inherit!important;margin:inherit!important;gap:inherit!important;min-height:inherit!important}
+body.vitruvia-reading .hero .eyebrow,
+body.vitruvia-reading .hero h1,
+body.vitruvia-reading .hero .lead,
+body.vitruvia-reading .hero .ai-platforms,
+body.vitruvia-reading .hero .suggestions,
+body.vitruvia-reading .hero .academic-pills,
+body.vitruvia-reading .hero .featured,
+body.vitruvia-reading .hero .explain,
+body.vitruvia-reading .metrics{display:revert!important}
+body.vitruvia-reading .hero .search-wrap{max-width:revert!important;margin:revert!important}
+body.vitruvia-reading .hero .searchform{min-height:revert!important;padding:revert!important}
+body.vitruvia-reading .hero .searchform button#submit{min-height:revert!important;padding:revert!important;font-size:revert!important}
+body.vitruvia-reading .hero .tabs{justify-content:revert!important;margin:revert!important;gap:revert!important}
+body.vitruvia-reading .hero .tab{font-size:revert!important;padding:revert!important}
+body.vitruvia-reading #vitruvia-article .article-body{font:400 16px/1.85 Arial,Helvetica,sans-serif!important}
+body.vitruvia-reading #vitruvia-article .article-body .article-lead{font-size:18px!important}
+body.vitruvia-reading #vitruvia-article .article-body h3{font-size:23px!important}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
