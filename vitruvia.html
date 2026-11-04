@@ -733,6 +733,20 @@ body.vitruvia-reading .hero .searchform{min-height:61px!important;padding:4px 4p
 html[data-theme=light] .vitruvia-gallery-heading{color:#2e3a33;border-color:#c1ccc5}
 .vitruvia-result-group{font:400 23px/1.3 Georgia,serif;color:#e1dfda;margin:30px 0 9px;padding-bottom:11px;border-bottom:1px solid #414141}
 html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6}
+
+/* Manuscript hierarchy: scholarly prominence for a designated principal witness. */
+#result-list .primary-codex-card{background:linear-gradient(145deg,#202925,#151a19);border:1px solid #94836a;border-left:4px solid #c4aa78;border-radius:9px;padding:24px 27px;margin:15px 0 27px;box-shadow:0 8px 24px #0002}
+#result-list .primary-codex-card h3{font-size:clamp(29px,3.2vw,40px)!important;line-height:1.17}
+#result-list .primary-codex-card .primary-codex-label{display:block;font:600 11px/1.5 Arial,sans-serif;letter-spacing:.14em;color:#dac5a0;margin-bottom:8px}
+#result-list .primary-codex-card .kind{display:block;margin-bottom:8px}
+#result-list .primary-codex-card .actions .primary-codex-viewer{background:#a99571;color:#181713;font-weight:700;font-size:13px;border-color:#c9b88b;padding:10px 15px}
+#result-list .historical-editions-heading{font:400 23px/1.3 Georgia,serif;color:#d8c7a6;margin:25px 0 12px;padding-bottom:10px;border-bottom:1px solid #655944}
+#result-list .historical-edition-card{padding-left:12px;border-left:2px solid #70634f}
+html[data-theme=light] #result-list .primary-codex-card{background:#f1ede2;color:#1b3029;border-color:#a48b64}
+html[data-theme=light] #result-list .primary-codex-card .primary-codex-label{color:#66502b}
+html[data-theme=light] #result-list .historical-editions-heading{color:#403525}
+@media(max-width:600px){#result-list .primary-codex-card{padding:18px}#result-list .primary-codex-card h3{font-size:27px!important}}
+
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -1002,7 +1016,7 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
 <script src="assets/vitruvia-article.js?v=20261104-university-encyclopedia-v2" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
 <script src="assets/search-agentic.js?v=20261104-bilingual-evidence-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-codex-chronology-v5" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-codex-primary-historical-v6" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
