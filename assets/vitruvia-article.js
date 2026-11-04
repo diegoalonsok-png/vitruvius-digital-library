@@ -549,9 +549,15 @@ function buildContents(){
  }
  box.prepend(nav);
 }
-function render(rows,q){const token=++active;
+function render(rows,q,person=null){const token=++active;
 if(!q||!rows?.length){root.hidden=true;return}
 reportEvidence(rows,q);
+if(person){
+ const biographies=rows.filter(x=>personWikiHit(x,person,q)).sort((a,b)=>
+  Number(b.wikiLang===document.documentElement.lang)-Number(a.wikiLang===document.documentElement.lang));
+ void renderHistoricalPerson(biographies[0]||null,rows,person,token).then(()=>{if(token===active)highlightArticle(q)});
+ return;
+}
 const top=choose(rows,q);if(!top){root.hidden=true;return}
 if(top.type==="preface"){renderPreface(top,rows);highlightArticle(q);return}
  if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
@@ -560,5 +566,5 @@ if(top.type==="wikipedia"){void renderWiki(top,rows,token).then(()=>{if(token===
 if(top.type==="topic"){renderTopic(top,rows,q);highlightArticle(q);return}
 renderOther(top,rows);highlightArticle(q)
 }
-window.VitruviaArticles={render,version:"1.0"};
+window.VitruviaArticles={render,version:"1.1-person-biography"};
 })();
