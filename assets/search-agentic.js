@@ -50,7 +50,7 @@ async function chunks(){
     editionId:d.edition,language:d.language||source.language,sourceLabel:source.source||"",
     texto:p.latin||p.original||"",traduccion:p.translation||"",
     pagina_pdf:p.pdf_pages?.translation,
-    lector:(source.reader||"bibliotheca-graeca-latina.html")+"&locus="+encodeURIComponent(p.locus)
+    lector:p.reader||(source.reader||"bibliotheca-graeca-latina.html")+"&locus="+encodeURIComponent(p.locus)
    }));
   });
  })().catch(error=>{chunkPromise=null;throw error});
