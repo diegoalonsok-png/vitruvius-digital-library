@@ -621,6 +621,55 @@ function deityPrimaryBibliography(){
  ];
 }
 
+/* Reference works follow the biography. Editorial priorities are explicit
+   where an identified bibliography exists; otherwise results remain provisional. */
+const curatedReferenceWorks={
+ "adolf hitler":[
+  {title:"Hitler, 1889–1936: Hubris",author:"Ian Kershaw",year:1998,
+   link:"https://www.penguin.co.uk/books/13312/hitler-1889-1936-by-ian-kershaw/9780140133639",
+   note:"Biografía histórica de referencia · volumen I · editorial Penguin"},
+  {title:"Hitler, 1936–1945: Nemesis",author:"Ian Kershaw",year:2000,
+   link:"https://www.penguin.co.uk/books/24213/hitler-1936-1945-by-kershaw-ian/9780141925813",
+   note:"Biografía histórica de referencia · volumen II · editorial Penguin"}
+ ]
+};
+function referenceBooks(rows,query){
+ const q=normalized(query),words=q.split(" ").filter(w=>w.length>=4);
+ const curated=curatedReferenceWorks[q]||[];
+ const matched=(rows||[]).filter(r=>
+  ["openlibrary","googlebook","book"].includes(r.type)&&r.link&&r.title&&
+  words.length&&words.every(w=>normalized([r.title,r.excerpt||""].join(" ")).includes(w))&&
+  !normalized(r.author||"").includes(q)
+ ).map(r=>({title:r.title,author:r.author||r.publisher||"",year:r.year||"",
+  link:r.link,note:r.meta||"Ficha bibliográfica externa · comprobar contenido",priority:50+relevance(r,query)}))
+ .sort((a,b)=>b.priority-a.priority).slice(0,12);
+ const out=[],seen=new Set();
+ for(const item of [...curated.map((x,i)=>({...x,priority:900-i})),...matched]){
+  const key=normalized(item.title);
+  if(!key||seen.has(key))continue;
+  seen.add(key);out.push(item);
+ }
+ return out;
+}
+function appendReferenceBooks(rows,query){
+ const selected=referenceBooks(rows,query);
+ heading("Obras fundamentales y bibliografía de referencia");
+ paragraph("Selección priorizada por pertinencia del tema y respaldo bibliográfico. Las obras identificadas como referencia editorial se distinguen de las coincidencias recuperadas automáticamente; ninguna ficha implica acceso al texto íntegro.","article-note");
+ if(!selected.length){
+  const a=href("https://search.worldcat.org/search?q="+encodeURIComponent(query),"Buscar bibliografía sobre «"+query+"» en WorldCat");
+  if(a)$("article-body").append(a);
+  return;
+ }
+ const list=make("ol",undefined,"article-related article-reference-books");
+ for(const [i,item] of selected.entries()){
+  const li=make("li",undefined,i===0?"principal-reference-work":undefined);
+  if(i===0)li.append(make("strong","OBRA DESTACADA · "));
+  const a=href(item.link,item.title);if(a)li.append(a);
+  li.append(make("small"," · "+[item.author,item.year,item.note].filter(Boolean).join(" · "),"article-license"));
+  list.append(li);
+ }
+ $("article-body").append(list);
+}
 function addTopicBibliography(rows,query,ark){
  const deity=isDeityQuery(query);
  const relevant=rows.filter(r=>r.link&&r.title&&(
@@ -721,6 +770,7 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ appendReferenceBooks(rows,person?.name||query);
  addTopicBibliography(rows,person?.name||query,ark);
  heading("VI · Imágenes y documentación visual");
  paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
