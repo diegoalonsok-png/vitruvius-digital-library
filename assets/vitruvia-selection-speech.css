@@ -1,0 +1,46 @@
+/* Only after the reader marks a fragment: unobtrusive contextual voice player */
+.vr-selection-speech{
+ position:fixed;z-index:15020;display:flex;align-items:center;
+ box-sizing:border-box;gap:5px;
+ max-width:calc(100vw - 14px);
+ padding:5px 7px;border:1px solid #75777b;border-radius:13px;
+ background:#242527;color:#f0efec;
+ box-shadow:0 8px 26px #0007;
+ font:400 11px/1.2 Arial,Helvetica,sans-serif;
+}
+.vr-selection-speech[hidden],.vr-selection-speech [hidden]{display:none!important}
+.vr-selection-speech button{
+ box-sizing:border-box;border:0!important;background:transparent!important;
+ color:inherit!important;box-shadow:none!important;
+ display:inline-grid;place-items:center;min-height:27px;
+ min-width:30px;padding:4px 7px!important;
+ border-radius:8px!important;cursor:pointer;
+ font:500 14px/1 Arial,Helvetica,sans-serif!important;
+}
+.vr-selection-speech button:hover,.vr-selection-speech button:focus-visible{
+ background:#424447!important;color:#fff!important;
+}
+.vr-selection-speech button:disabled{opacity:.45;cursor:default}
+.vr-selection-speech .vr-selection-speech-status{
+ font:400 10px/1.3 Arial,Helvetica,sans-serif;color:#b8babc;
+ white-space:nowrap;max-width:160px;overflow:hidden;text-overflow:ellipsis;
+ padding-right:5px;
+}
+html[data-theme="light"] .vr-selection-speech,
+html[data-reading-background-tone="light"] .vr-selection-speech{
+ color:#22262a;background:#f5f5f3;border-color:#8b8d91;
+ box-shadow:0 8px 22px #0003;
+}
+html[data-theme="light"] .vr-selection-speech .vr-selection-speech-status,
+html[data-reading-background-tone="light"] .vr-selection-speech .vr-selection-speech-status{
+ color:#4b4d52;
+}
+html[data-theme="light"] .vr-selection-speech button:is(:hover,:focus-visible),
+html[data-reading-background-tone="light"] .vr-selection-speech button:is(:hover,:focus-visible){
+ background:#dddfdf!important;color:#171717!important;
+}
+@media(max-width:600px){
+ .vr-selection-speech{gap:4px;padding:4px 5px;border-radius:12px}
+ .vr-selection-speech button{min-height:35px;min-width:35px}
+}
+@media print{.vr-selection-speech{display:none!important}}
