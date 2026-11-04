@@ -40,6 +40,56 @@ const I18N={
  en:{lead:"Universal search with a focus on art, history, architecture and cultural heritage. Books, manuscripts, Wikipedia and scholarly sources.",placeholder:"Search any topic, author, book or concept…",submit:"Search",modes:["◎ All","Library","Wikipedia","Web & research","⌁ Concepts"],explain:["Search this library, Wikipedia and verifiable web sources in one place when public APIs allow it.","Search books, manuscripts, Latin passages and translations in this library.","Search Wikipedia in your selected language, plus English results when useful.","Explore open catalogs, museum records, Wikidata and scholarly sources; use direct links for the wider web.","Explore related terms and languages in local documents; this is not generative AI."],heading:"Documented results",idle:"Explore library and encyclopedias",waiting:"Searching verifiable sources…",none:"No confirmed results; use the direct institutional searches.",book:"CATALOG BOOK",edition:"HISTORICAL EDITION",preface:"PREFACE · DE ARCHITECTURA",passage:"TEXT · LOCUS",section:"SITE DOCUMENT",wikipedia:"ENCYCLOPEDIA · WIKIPEDIA",wikidata:"DATA · WIKIDATA",openlibrary:"CATALOG · OPEN LIBRARY",museum:"ART · THE MET",article:"RESEARCH ARTICLE",googlebook:"BOOK · GOOGLE BOOKS",read:"Read in library",document:"Open document",source:"View original",pdf:"Read PDF",unpublished:"Catalog entry pending · no reader",synthesis:"Source-based synthesis",detail:"Selected excerpts from retrieved documents; verify claims at the source. Not generative AI.",external:"Additional reputable sources",searching:"External sources are still loading…"},
  fr:{lead:"Recherche universelle privilégiant l’art, l’histoire, l’architecture et le patrimoine. Livres, codex, Wikipédia et sources scientifiques.",placeholder:"Chercher n’importe quel sujet, auteur ou ouvrage…",submit:"Rechercher",modes:["◎ Tout","Bibliothèque","Wikipédia","Web et recherche","⌁ Concepts"],explain:["Rechercher dans cette bibliothèque, Wikipédia et les sources web vérifiables disposant d’API ouvertes.","Explorer les livres, manuscrits, passages latins et traductions de la bibliothèque.","Consulter Wikipédia dans la langue choisie et, en complément, en anglais.","Explorer les catalogues ouverts, musées, Wikidata et références scientifiques ; liens directs pour le web général.","Relier les termes et synonymes des documents internes ; ce service n’est pas une IA générative."],heading:"Résultats documentés",idle:"Explorer les fonds",waiting:"Interrogation des sources vérifiables…",none:"Aucun résultat confirmé ; utiliser les recherches institutionnelles directes.",book:"LIVRE DU CATALOGUE",edition:"ÉDITION HISTORIQUE",preface:"PRÉFACE · DE ARCHITECTURA",passage:"TEXTE · LOCUS",section:"DOCUMENT DU SITE",wikipedia:"ENCYCLOPÉDIE · WIKIPÉDIA",wikidata:"DONNÉES · WIKIDATA",openlibrary:"CATALOGUE · OPEN LIBRARY",museum:"ART · THE MET",article:"ARTICLE SCIENTIFIQUE",googlebook:"LIVRE · GOOGLE BOOKS",read:"Lire dans la bibliothèque",document:"Ouvrir document",source:"Voir la source",pdf:"Lire PDF",unpublished:"Notice en attente · pas de lecteur",synthesis:"Synthèse sourcée",detail:"Extraits récupérés ; vérifier les sources. Ce n'est pas une IA générative.",external:"Autres références de qualité",searching:"Interrogation des sources externes en cours…"}
 };
+const WELCOME_I18N={
+ es:{
+  kicker:"UNA HERRAMIENTA DE INVESTIGACIÓN ABIERTA",
+  headline:"Un punto de encuentro entre los textos antiguos y la investigación actual",
+  intro:"Vitruvia es el instrumento de búsqueda de Vitruvius Digital Library, un proyecto editorial independiente dedicado a estudiar, consultar y relacionar textos clásicos, tratados de arquitectura, manuscritos históricos y bibliografía especializada.",
+  purpose:"Nació para ir más allá de encontrar palabras: vincular autores y obras con sus testimonios manuscritos, sus ediciones históricas, los pasajes originales y las traducciones disponibles, siempre que se puedan identificar sus fuentes.",
+  methodTitle:"¿Cómo consultar?",
+  methodBody:"Buscá un autor, una obra, una palabra latina o griega, un lugar, un manuscrito o una pregunta. Las referencias locales y los registros de instituciones externas se distinguen; un enlace de catálogo no implica que se haya leído el texto completo.",
+  scope:"La búsqueda en IA es experimental y depende de los documentos realmente indexados. Los facsímiles sin texto reconocible no ofrecen todavía búsqueda íntegra.",
+  readingTitle:"Textos originales y traducciones",
+  readingText:"Leé y cotejá pasajes del De architectura en latín y en las versiones editoriales disponibles, con referencias a libro y capítulo.",
+  codexTitle:"Manuscritos y códices",
+  codexText:"Explorá testimonios conservados, signaturas y vínculos a bibliotecas custodias y visores digitales acreditados.",
+  booksTitle:"Autores, obras y bibliografía",
+  booksText:"Accedé al repertorio de obras griegas y latinas, ediciones históricas y recursos de consulta vinculados.",
+  tryTitle:"Empezá por una consulta:"
+ },
+ en:{
+  kicker:"AN OPEN RESEARCH INSTRUMENT",
+  headline:"Connecting ancient texts with contemporary scholarship",
+  intro:"Vitruvia is the discovery tool of Vitruvius Digital Library, an independent editorial project dedicated to classical texts, architectural treatises, historical manuscripts and scholarly bibliography.",
+  purpose:"Its purpose goes beyond keyword matching: connecting authors and works to manuscript witnesses, historical editions, original passages and available translations whenever their sources can be identified.",
+  methodTitle:"How to search",
+  methodBody:"Enter an author, work, Latin or Greek term, place, manuscript or question. Local records are distinguished from institutional catalogues; a catalogue link does not imply that the full text has been consulted.",
+  scope:"AI-based searching is experimental and limited to documents actually indexed. Scanned facsimiles without recognized text cannot yet be searched in full.",
+  readingTitle:"Original texts and translations",
+  readingText:"Read and compare passages of De architectura in Latin and available editorial translations, with book and chapter references.",
+  codexTitle:"Manuscripts and codices",
+  codexText:"Explore manuscript witnesses, shelfmarks and links to holding libraries and documented digital viewers.",
+  booksTitle:"Authors, works and bibliography",
+  booksText:"Consult Greek and Latin works, historical editions and linked research resources.",
+  tryTitle:"Start with a search:"
+ },
+ fr:{
+  kicker:"UN INSTRUMENT DE RECHERCHE OUVERT",
+  headline:"Relier les textes anciens à la recherche contemporaine",
+  intro:"Vitruvia est l'outil de recherche de Vitruvius Digital Library, un projet éditorial indépendant consacré aux textes classiques, aux traités d'architecture, aux manuscrits anciens et à la bibliographie savante.",
+  purpose:"Son objectif dépasse la recherche de mots : relier les auteurs et les œuvres aux témoins manuscrits, aux éditions historiques, aux passages originaux et aux traductions disponibles, lorsque leurs sources sont identifiables.",
+  methodTitle:"Comment chercher",
+  methodBody:"Saisissez un auteur, une œuvre, un terme latin ou grec, un lieu, un manuscrit ou une question. Les documents locaux et les catalogues institutionnels sont distingués ; une notice ne signifie pas que le texte intégral a été consulté.",
+  scope:"La recherche par IA est expérimentale et limitée aux documents effectivement indexés. Les fac-similés numérisés sans texte reconnu ne sont pas encore intégralement consultables par recherche.",
+  readingTitle:"Textes originaux et traductions",
+  readingText:"Lire et comparer des passages du De architectura en latin et dans les traductions éditoriales disponibles, avec références aux livres et chapitres.",
+  codexTitle:"Manuscrits et codex",
+  codexText:"Explorer les témoins manuscrits, cotes et liens vers les bibliothèques de conservation et leurs visionneuses numériques.",
+  booksTitle:"Auteurs, œuvres et bibliographie",
+  booksText:"Consulter les œuvres grecques et latines, les éditions historiques et les ressources bibliographiques associées.",
+  tryTitle:"Pour commencer :"
+ }
+};
 const T=()=>I18N[S.lang]||I18N.es;
 function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
 /* Word-aware ranking: "auto" must not match "autor"; phrase matches outrank loose terms. */
@@ -739,8 +789,15 @@ async function search(){
 }
 function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lang=S.lang;
  const t=T();$("lead").textContent=t.lead;$("query").placeholder=t.placeholder;$("submit").textContent=t.submit;
- document.querySelectorAll("button.tab").forEach((b,i)=>b.textContent=t.modes[i]);
- $("mode-note").textContent=t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)];
+ document.querySelectorAll("button.tab").forEach((b,i)=>{if(t.modes[i])b.textContent=t.modes[i]});
+ $("mode-note").textContent=S.mode==="ai"
+  ?(S.lang==="en"?"Experimental multilingual semantic search over indexed documents. Web catalogues are not part of the local AI model.":S.lang==="fr"?"Recherche sémantique multilingue expérimentale sur les documents indexés. Les catalogues web ne font pas partie du modèle local.":"Búsqueda semántica multilingüe experimental sobre documentos indexados. Los catálogos web no forman parte del modelo local.")
+  :(t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||t.explain[0]);
+ const welcome=WELCOME_I18N[S.lang]||WELCOME_I18N.es;
+ document.querySelectorAll("[data-landing-key]").forEach(element=>{
+  const value=welcome[element.dataset.landingKey];if(value)element.textContent=value;
+ });
+ if(!document.body.classList.contains("vitruvia-reading"))$("results-heading").textContent=t.idle;
  $("ui-language").value=S.lang;
  if(typeof renderPrivacy==="function")renderPrivacy();
  try{localStorage.setItem("vitruvius-ui-lang",S.lang)}catch{}
