@@ -384,7 +384,7 @@ async function wiki(q,language){
  let pictures={};
  if(found.length){
   const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
-  const photos=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,9500).catch(()=>null);
+  const photos=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,2000).catch(()=>null);
   pictures=photos?.query?.pages||{};
  }
  return found.map((w,i)=>{
@@ -406,7 +406,7 @@ async function openLibrary(generalQuery){
 }
 /* Google Books public volume metadata, not Google AI / Google Search results. */
 async function googleBooks(generalQuery){
- const params=new URLSearchParams({q,maxResults:"8",printType:"books"});
+ const params=new URLSearchParams({q:generalQuery,maxResults:"8",printType:"books"});
  const d=await fetchJSON("https://www.googleapis.com/books/v1/volumes?"+params,11000);
  return (d.items||[]).filter(item=>item.volumeInfo?.title&&item.volumeInfo?.infoLink).map((item,i)=>{
   const v=item.volumeInfo;const info=String(v.infoLink||"");
@@ -419,8 +419,8 @@ async function googleBooks(generalQuery){
 }
 
 async function museum(generalQuery){
- const params=new URLSearchParams({q,limit:"4",offset:"0"});
- const d=await fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1.1/search?"+params,12500);
+ const params=new URLSearchParams({q:generalQuery,hasImages:"true"});
+ const d=await fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
  const details=await Promise.allSettled(ids.map(id=>fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
  return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
@@ -888,6 +888,7 @@ async function search(){
  }
  if(!pending.length){display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
+ const sourceWarnings=[];
  await Promise.all(pending.map(p=>p.then(value=>{
   if(id!==S.searchId)return;
   const incoming=value.rows||[];
@@ -908,10 +909,18 @@ async function search(){
   updateTimer=setTimeout(()=>{
    if(id===S.searchId)display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
   },180);
-  if(value.warnings?.length)$("result-state").title=value.warnings.join("; ");
+  if(value.warnings?.length)sourceWarnings.push(value.name+": "+value.warnings.join("; "));
+  else if(/sin respuesta|no disponible/.test(value.name))sourceWarnings.push(value.name);
  })));
  clearTimeout(updateTimer);
- if(id===S.searchId)display(rows,q,"Búsqueda finalizada");
+ if(id===S.searchId){
+  const failed=sourceWarnings.length;
+  const phase=S.lang==="en"?`Search complete · ${completed-failed}/${pending.length} sources responded${failed?" · some sources unavailable":""}`:
+   S.lang==="fr"?`Recherche terminée · ${completed-failed}/${pending.length} sources disponibles${failed?" · certaines sources indisponibles":""}`:
+   `Búsqueda finalizada · ${completed-failed}/${pending.length} fuentes respondieron${failed?" · algunas fuentes no disponibles":""}`;
+  display(rows,q,phase);
+  $("result-state").title=sourceWarnings.join("; ");
+ }
 }
 function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lang=S.lang;
  const t=T();$("lead").textContent=t.lead;$("query").placeholder=t.placeholder;$("submit").textContent=t.submit;

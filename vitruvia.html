@@ -1028,7 +1028,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-archives.js?v=20261104-linked-authorities-v1" defer></script>
 <script src="assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1" defer></script>
 <script src="assets/vitruvia-ai.js?v=20261104-evidence-links-v2" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-source-first-v20" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-provider-repair-v21" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
@@ -1072,7 +1072,7 @@ if(originalPrivacy)new MutationObserver(sync).observe(originalPrivacy,{attribute
 erase.addEventListener("click",()=>{
  document.getElementById("clear-search")?.click();
  if(input.value){input.value="";input.dispatchEvent(new Event("input",{bubbles:true}))}
- try{sessionStorage.clear()}catch(e){}
+ // Clear only the Vitruvia query; preserve other tools sharing this origin.
  try{history.replaceState(null,"",location.pathname)}catch(e){}
  status.textContent="Consulta y sesión local de Vitruvia limpiadas. El historial del navegador y de servicios externos no se puede borrar desde aquí.";
  input.focus();
@@ -1081,13 +1081,16 @@ const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
 if(!Speech){voice.disabled=true;voice.title="El reconocimiento de voz no está disponible en este navegador";voice.textContent="♩ Dictado no disponible"}
 else{
  let recognition=null;
+ function stopDictation(){if(recognition){recognition.onresult=null;recognition.abort();recognition=null;voice.textContent="♩ Dictar";voice.setAttribute("aria-pressed","false")}}
+ window.addEventListener("vitruvia:clear",stopDictation);
+ document.getElementById("search-form")?.addEventListener("submit",stopDictation);
  voice.addEventListener("click",()=>{
   if(recognition){recognition.stop();return}
   recognition=new Speech();recognition.lang=document.getElementById("ui-language")?.value==="en"?"en-US":document.getElementById("ui-language")?.value==="fr"?"fr-FR":"es-AR";
   recognition.continuous=true;recognition.interimResults=true;
   const prefix=input.value.trim(),join=prefix?" ":"";
   recognition.onresult=e=>{let words="";for(let i=0;i<e.results.length;i++)words+=e.results[i][0].transcript+" ";input.value=prefix+join+words.trim();input.dispatchEvent(new Event("input",{bubbles:true}))};
-  recognition.onerror=e=>{status.textContent="Dictado: "+e.error};
+  recognition.onerror=e=>{status.textContent=e.error==="not-allowed"?"El navegador no permitió usar el micrófono. Habilitá el permiso del sitio y volvé a intentar.":"Dictado: "+e.error};
   recognition.onend=()=>{recognition=null;voice.textContent="♩ Dictar";voice.setAttribute("aria-pressed","false")};
   try{recognition.start();voice.textContent="■ Detener dictado";voice.setAttribute("aria-pressed","true");status.textContent="Dictando: revisá el texto antes de buscar."}catch(e){recognition=null;status.textContent="No se pudo iniciar el micrófono."}
  });
