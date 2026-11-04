@@ -801,7 +801,9 @@ function addTopicBibliography(rows,query,ark){
  }
 }
 async function renderTopic(top,rows,query,token,person=null){
- reset(person?.name||query,phrase("Artículo enciclopédico · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
+ const identified=(rows||[]).filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
+ const documentaryQuery=identified?.title?.split(" · ")[0]||person?.name||query;
+ reset(identified?.title||person?.name||query,phrase("Artículo enciclopédico · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
  const topic=normalized(query);
  const deity=isDeityQuery(query);
@@ -812,7 +814,15 @@ async function renderTopic(top,rows,query,token,person=null){
  if(deity){for(const [sectionTitle,body] of deityDossier){heading(sectionTitle);paragraph(body)}}
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
  if(person?.id==="cicero"){for(const [sectionTitle,body] of ciceroChapters){heading(sectionTitle);paragraph(body)}}
- const data=wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
+ if(identified){
+  heading("Pasaje exacto reconocido en la biblioteca");
+  paragraph("La búsqueda coincide literalmente con un fragmento de «"+documentaryQuery+"». El locus procede de una edición textual identificada; no se le atribuye un folio manuscrito sin cotejo.","article-note");
+  const original=identified.latin||identified.excerpt||"";
+  if(original){const p=make("p",cut(original,1250),"article-lead");if(/[\u0370-\u03ff\u1f00-\u1fff]/u.test(original))p.lang="grc";else p.lang="la";$("article-body").append(p)}
+  const source=href(identified.link,"Leer el pasaje en la edición de origen");
+  if(source)$("article-body").append(source);
+ }
+ const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
  if(token!==active)return;
  if(data?.extract){
   heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
@@ -820,15 +830,15 @@ async function renderTopic(top,rows,query,token,person=null){
   appendBiographyExtract(data.extract);
   const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
   if(link)$("article-body").append(link);
- }else if(!ark&&!deity&&person?.id!=="cicero"){
+ }else if(!identified&&!ark&&!deity&&person?.id!=="cicero"){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
- appendManuscriptHierarchy(rows,person?.name||query);
- appendReferenceBooks(rows,person?.name||query);
- appendOfficialHistoricalSources(person?.name||query);
- appendInstitutionalResearch(person?.name||query);
- addTopicBibliography(rows,person?.name||query,ark);
+ appendManuscriptHierarchy(rows,documentaryQuery);
+ appendReferenceBooks(rows,documentaryQuery);
+ appendOfficialHistoricalSources(documentaryQuery);
+ appendInstitutionalResearch(documentaryQuery);
+ addTopicBibliography(rows,documentaryQuery,ark);
  heading("VI · Imágenes y documentación visual");
  paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
  const galleryLink=href("#vitruvia-images","Consultar galería de imágenes documentadas");
