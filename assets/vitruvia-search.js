@@ -470,6 +470,21 @@ async function search(){
   if(rows.length)display(rows,q,T().searching)
  }
  const pending=[];
+ // Resolve the subject independently of matching catalog titles.
+ // Wikipedia titles and redirects supply canonical names for external retrieval.
+ if(window.VitruviaEntityResolver&&wikiEnabled){
+  pending.push(window.VitruviaEntityResolver.resolve(generalQuery).then(identity=>{
+   if(!identity)return {name:"No se resolvió una entidad enciclopédica",rows:[]};
+   const link=identity.url;
+   return {name:"Entidad enciclopédica · "+identity.canonical,rows:[{
+    type:"wikipedia",title:identity.canonical,author:"Wikipedia · "+identity.language.toUpperCase(),
+    excerpt:identity.description,fullExtract:identity.extract,
+    meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
+    rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
+    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical
+   }]};
+  }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
+ }
  if(internal&&window.VitruviaAgentic){
   pending.push(window.VitruviaAgentic.search(generalQuery).then(value=>({
    name:"Corpus completo y bibliografía del sitio · "+value.stats.chunks+" pasajes indexados",
