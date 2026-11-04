@@ -768,6 +768,37 @@ html[data-theme=light] .ai-mode-help{color:#526459}
 html[data-theme=light] .ai-mode-status{background:#edf6ed;color:#2e5938;border-color:#96b39d}
 html[data-theme=light] #result-list .ai-evidence-label{color:#295438}
 
+
+/* Portada documental visible antes de la primera consulta o al borrar una búsqueda. */
+#vitruvia-welcome{padding:7px 0 44px;max-width:1280px}
+#vitruvia-welcome .welcome-kicker{font:500 11px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:#a6a6a6;margin:0 0 17px}
+#vitruvia-welcome .welcome-intro{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(245px,.8fr);column-gap:clamp(28px,6vw,92px);align-items:start;border-top:1px solid #3a3a3a;padding-top:27px}
+#vitruvia-welcome h3{font:400 clamp(29px,3.3vw,44px)/1.17 Georgia,"Times New Roman",serif;letter-spacing:-.025em;color:#ededeb;margin:0 0 18px}
+#vitruvia-welcome p{color:#adadad;font-size:15px;line-height:1.85;max-width:82ch;margin:0 0 16px}
+#vitruvia-welcome .welcome-aside{border-left:1px solid #333;padding-left:25px}
+#vitruvia-welcome .welcome-aside strong{display:block;font:400 21px/1.35 Georgia,serif;color:#e6e6e4;margin-bottom:12px}
+#vitruvia-welcome .welcome-aside p{font-size:13px;line-height:1.75}
+#vitruvia-welcome .welcome-sections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,3vw,35px);margin-top:30px}
+#vitruvia-welcome .welcome-entry{border-top:1px solid #454545;padding:19px 0 9px;min-width:0}
+#vitruvia-welcome .welcome-entry>a{color:#eee;text-decoration:none;font:400 21px/1.35 Georgia,serif;display:inline-block;margin-bottom:9px;text-underline-offset:4px}
+#vitruvia-welcome .welcome-entry>a:hover,#vitruvia-welcome .welcome-entry>a:focus-visible{text-decoration:underline}
+#vitruvia-welcome .welcome-entry p{font-size:13px;line-height:1.7;margin:0}
+#vitruvia-welcome .welcome-examples{border-top:1px solid #333;margin-top:20px;padding-top:16px;color:#999;font-size:13px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+#vitruvia-welcome .welcome-examples a{border:1px solid #444;border-radius:20px;padding:6px 12px;color:#d6d6d3;text-decoration:none}
+#vitruvia-welcome .welcome-examples a:hover,#vitruvia-welcome .welcome-examples a:focus-visible{background:#282828;color:#fff}
+body.vitruvia-reading #vitruvia-welcome{display:none!important}
+body:not(.vitruvia-reading) .results-grid{display:none!important}
+html[data-theme=light] #vitruvia-welcome .welcome-intro,
+html[data-theme=light] #vitruvia-welcome .welcome-entry,
+html[data-theme=light] #vitruvia-welcome .welcome-examples{border-color:#d2d2cc}
+html[data-theme=light] #vitruvia-welcome .welcome-aside{border-color:#d2d2cc}
+html[data-theme=light] #vitruvia-welcome h3,html[data-theme=light] #vitruvia-welcome .welcome-entry>a,html[data-theme=light] #vitruvia-welcome .welcome-aside strong{color:#27342e}
+html[data-theme=light] #vitruvia-welcome p,html[data-theme=light] #vitruvia-welcome .welcome-kicker{color:#4e5954}
+html[data-theme=light] #vitruvia-welcome .welcome-examples a{color:#294037;border-color:#bccac0}
+html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e7eee9}
+@media(max-width:820px){#vitruvia-welcome .welcome-intro{grid-template-columns:1fr;row-gap:17px}#vitruvia-welcome .welcome-aside{border-left:0;border-top:1px solid #333;padding:18px 0 0}#vitruvia-welcome .welcome-sections{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){#vitruvia-welcome{padding-bottom:25px}#vitruvia-welcome .welcome-sections{grid-template-columns:1fr;gap:7px}#vitruvia-welcome .welcome-examples{gap:7px}#vitruvia-welcome h3{font-size:30px}}
+
 </style>
 <link rel="stylesheet" href="assets/vitruvia-reading.css?v=20261104-appearance-v1">
 </head><body>
@@ -863,6 +894,43 @@ html[data-theme=light] #result-list .ai-evidence-label{color:#295438}
 <div class="metrics" id="metrics"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span><span><b id="metric-witnesses">—</b> testimonios manuscritos</span><span><b id="metric-editions">—</b> ediciones vinculadas</span></div>
 <section class="results" id="results" aria-live="polite">
 <div class="section-head"><h2 id="results-heading" data-i18n="headingIdle">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
+
+<section id="vitruvia-welcome" aria-label="Presentación del buscador y la biblioteca">
+  <p class="welcome-kicker" data-landing-key="kicker">UNA HERRAMIENTA DE INVESTIGACIÓN ABIERTA</p>
+  <div class="welcome-intro">
+    <div>
+      <h3 data-landing-key="headline">Un punto de encuentro entre los textos antiguos y la investigación actual</h3>
+      <p data-landing-key="intro">Vitruvia es el instrumento de búsqueda de Vitruvius Digital Library, un proyecto editorial independiente dedicado a estudiar, consultar y relacionar textos clásicos, tratados de arquitectura, manuscritos históricos y bibliografía especializada.</p>
+      <p data-landing-key="purpose">Nació para ir más allá de encontrar palabras: vincular autores y obras con sus testimonios manuscritos, sus ediciones históricas, los pasajes originales y las traducciones disponibles, siempre que se puedan identificar sus fuentes.</p>
+    </div>
+    <aside class="welcome-aside">
+      <strong data-landing-key="methodTitle">¿Cómo consultar?</strong>
+      <p data-landing-key="methodBody">Buscá un autor, una obra, una palabra latina o griega, un lugar, un manuscrito o una pregunta. Las referencias locales y los registros de instituciones externas se distinguen; un enlace de catálogo no implica que se haya leído el texto completo.</p>
+      <p data-landing-key="scope">La búsqueda en IA es experimental y depende de los documentos realmente indexados. Los facsímiles sin texto reconocible no ofrecen todavía búsqueda íntegra.</p>
+    </aside>
+  </div>
+  <div class="welcome-sections">
+    <article class="welcome-entry">
+      <a href="lector-bilingue.html" data-landing-key="readingTitle">Textos originales y traducciones</a>
+      <p data-landing-key="readingText">Leé y cotejá pasajes del De architectura en latín y en las versiones editoriales disponibles, con referencias a libro y capítulo.</p>
+    </article>
+    <article class="welcome-entry">
+      <a href="index-codicum.html" data-landing-key="codexTitle">Manuscritos y códices</a>
+      <p data-landing-key="codexText">Explorá testimonios conservados, signaturas y vínculos a bibliotecas custodias y visores digitales acreditados.</p>
+    </article>
+    <article class="welcome-entry">
+      <a href="bibliotheca-graeca-latina.html" data-landing-key="booksTitle">Autores, obras y bibliografía</a>
+      <p data-landing-key="booksText">Accedé al repertorio de obras griegas y latinas, ediciones históricas y recursos de consulta vinculados.</p>
+    </article>
+  </div>
+  <nav class="welcome-examples" aria-label="Búsquedas para comenzar">
+    <span data-landing-key="tryTitle">Empezá por una consulta:</span>
+    <a href="vitruvia.html?q=Vitruvio&amp;mode=all">Vitruvio</a>
+    <a href="vitruvia.html?q=Cicer%C3%B3n&amp;mode=all">Cicerón</a>
+    <a href="vitruvia.html?q=De%20architectura&amp;mode=all">De architectura</a>
+    <a href="vitruvia.html?q=Harley%20MS%202767&amp;mode=all">Harley MS 2767</a>
+  </nav>
+</section>
 <section id="vitruvia-article" class="scholar-article" aria-live="polite" aria-label="Artículo de consulta" hidden>
   <div class="scholar-article-header"><div class="article-toolbar"><button type="button" class="article-print" data-i18n="print" onclick="window.print()" aria-label="Imprimir o guardar como PDF">Imprimir / PDF</button><button type="button" class="article-share" data-channel="whatsapp" aria-label="Compartir por WhatsApp">WhatsApp</button><button type="button" class="article-share" data-i18n="email" data-channel="email" aria-label="Compartir por correo electrónico">Correo</button><button type="button" class="article-share" data-i18n="copy" data-channel="copy" aria-label="Copiar enlace">Copiar enlace</button></div><div class="article-kicker" id="article-kicker">VITRUVIA · DOSSIER DOCUMENTAL</div>
   <h2 id="article-title"></h2><div class="article-byline" id="article-byline"></div></div>
