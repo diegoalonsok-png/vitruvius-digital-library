@@ -587,47 +587,52 @@ async function topicWikiData(query){
  return null;
 }
 /* Topic dossiers: encyclopedic narrative first; original-language literature, scholarship, outreach after. */
+/* Academic research hierarchy: encyclopedia -> historical works -> books -> scholarship -> images. */
 function addTopicBibliography(rows,query,ark){
- const documented=rows.filter(x=>x.link&&x.title&&relevance(x,query)>=35);
- const byType={
-  primary:documented.filter(x=>bibliographyCategory(x,query)==="primary"),
-  academic:documented.filter(x=>bibliographyCategory(x,query)==="academic"),
-  popular:documented.filter(x=>bibliographyCategory(x,query)==="popular")
- };
- if(ark){
-  byType.primary.unshift(
-   {title:"Éxodo 25:10–22 · hebreo bíblico",link:"https://www.sefaria.org/Exodus.25.10",author:"Texto hebreo (שמות)"},
-   {title:"1 Samuel 4–6 · hebreo bíblico",link:"https://www.sefaria.org/I_Samuel.4",author:"Texto hebreo (שמואל א)"},
-   {title:"2 Samuel 6 · hebreo bíblico",link:"https://www.sefaria.org/II_Samuel.6",author:"Texto hebreo (שמואל ב)"},
-   {title:"1 Reyes 8 · hebreo bíblico",link:"https://www.sefaria.org/I_Kings.8",author:"Texto hebreo (מלכים א)"},
-   {title:"Éxodo 25 · versiones griegas de la Septuaginta (localizar edición)",link:"https://www.google.com/search?q="+encodeURIComponent("Septuagint Exodus 25 Greek critical text"),author:"Tradición textual griega",incomplete:true},
-   {title:"Éxodo 25 · targumes arameos (localizar testimonio)",link:"https://www.sefaria.org/search?q="+encodeURIComponent("Targum Onkelos Exodus 25"),author:"Tradición targúmica aramea",incomplete:true},
-   {title:"Éxodo 25 · Vulgata latina (localizar edición)",link:"https://www.google.com/search?q="+encodeURIComponent("Vulgata Exodus 25 Latin critical edition"),author:"Tradición latina",incomplete:true}
-  );
+ const relevant=rows.filter(r=>r.link&&r.title&&(
+  relevance({...r,title:[r.title,r.author,...(r.aliases||[])].join(" ")},query)>=35||
+  normalized([r.title,r.author,r.excerpt].join(" ")).includes(normalized(query))
+ ));
+ const groups={primary:[],books:[],academic:[],popular:[]},seen=new Set();
+ function insert(group,row){
+  const key=normalized(row.title)+"|"+normalized(row.author||"");
+  if(seen.has(key))return;seen.add(key);groups[group].push(row);
  }
- const groups=[
-  ["II · Literatura histórica y fuentes primarias","primary"],
-  ["III · Investigación académica","academic"],
-  ["IV · Divulgación y obras generales","popular"]
+ if(ark){
+  [
+   ["Éxodo 25:10–22 · hebreo bíblico","https://www.sefaria.org/Exodus.25.10","Texto hebreo"],
+   ["1 Samuel 4–6 · hebreo bíblico","https://www.sefaria.org/I_Samuel.4","Texto hebreo"],
+   ["2 Samuel 6 · hebreo bíblico","https://www.sefaria.org/II_Samuel.6","Texto hebreo"],
+   ["1 Reyes 8 · hebreo bíblico","https://www.sefaria.org/I_Kings.8","Texto hebreo"]
+  ].forEach(([title,link,author])=>insert("primary",{title,link,author}));
+ }
+ for(const r of relevant){
+  if(r.type==="passage")continue;
+  const category=bibliographyCategory(r,query);
+  if(r.type==="manuscript"||r.type==="edition"||category==="primary"){insert("primary",r);continue}
+  if(["book","openlibrary","googlebook"].includes(r.type)){insert("books",r);continue}
+  if(r.type==="article"||category==="academic"){insert("academic",r);continue}
+  if(category==="popular"||r.type==="wikipedia"){insert("popular",r)}
+ }
+ const sections=[
+  ["II · Literatura histórica, códices y fuentes originales","primary"],
+  ["III · Libros y ediciones bibliográficas","books"],
+  ["IV · Investigación académica y estudios especializados","academic"],
+  ["V · Enciclopedias y divulgación","popular"]
  ];
- for(const [headingText,category] of groups){
-  heading(headingText);
-  if(category==="primary")paragraph("Se priorizan textos antiguos en lengua original (hebreo, arameo, griego o latín), cuando existen. Los enlaces de búsqueda se distinguen de ediciones identificadas.","article-note");
-  if(category==="popular")paragraph("Los registros de catálogos generales se ubican aquí provisionalmente cuando no consta que sean estudios académicos especializados.","article-note");
-  const entries=byType[category].slice().sort((a,b)=>(Number(a.year)||9999)-(Number(b.year)||9999)||String(a.title).localeCompare(String(b.title)));
-  if(!entries.length){paragraph("No se recuperaron registros verificables para esta categoría.","article-note");continue}
-  const list=make("ol",undefined,"article-related"),seen=new Set();
-  for(const entry of entries){
-   const identity=normalized(entry.title+" "+(entry.author||""));
-   if(seen.has(identity))continue;seen.add(identity);
-   const li=make("li"),link=href(entry.link,entry.title);
-   if(!link)continue;
-   li.append(link);
-   const info=[entry.author,entry.year,entry.journal||entry.publisher].filter(Boolean).join(" · ");
-   if(info)li.append(make("small"," — "+info,"article-license"));
-   if(entry.incomplete)li.append(make("small"," · Enlace de búsqueda, no edición cotejada.","article-license"));
+ for(const [label,category] of sections){
+  heading(label);
+  if(category==="primary")paragraph("Fuentes antiguas, manuscritos y ediciones documentadas. La fecha de un códice no equivale a la fecha de composición de la obra.","article-note");
+  if(category==="books")paragraph("Libros identificados en la Biblioteca Vitruviana y catálogos abiertos. Una ficha no acredita lectura del texto completo.","article-note");
+  const selected=groups[category].sort((a,b)=>(Number(a.year)||9999)-(Number(b.year)||9999)||String(a.title).localeCompare(String(b.title))).slice(0,25);
+  if(!selected.length){paragraph("No se recuperaron registros pertinentes para esta categoría.","article-note");continue}
+  const list=make("ol",undefined,"article-related");
+  for(const item of selected){
+   const li=make("li"),a=href(item.link,item.title);if(!a)continue;
+   li.append(a);
+   const desc=[item.author,item.year,item.publisher||item.journal,item.meta].filter(Boolean).join(" · ");
+   if(desc)li.append(make("small"," — "+cut(desc,240),"article-license"));
    list.append(li);
-   if(list.children.length>=25)break;
   }
   $("article-body").append(list);
  }
@@ -637,7 +642,7 @@ async function renderTopic(top,rows,query,token,person=null){
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
  const topic=normalized(query);
  const ark=topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
- const sources=rows.filter(x=>x.link&&relevance(x,query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum"].includes(x.type));
+ const sources=rows.filter(x=>x.link&&relevance({...x,title:[x.title,x.author||""].join(" ")},query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum","book","edition","manuscript"].includes(x.type));
  const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,person?.name||query)>=40).sort((x,y)=>relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
  paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
@@ -654,12 +659,12 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
- heading("Imágenes y documentación visual");
- paragraph("La galería documental de Wikimedia Commons se carga automáticamente con esta búsqueda. Incluye miniaturas enlazadas a su ficha de origen, donde se consultan autor y licencia.","article-note");
- const galleryLink=href("#vitruvia-images","Ver galería de imágenes vinculadas a esta consulta");
- if(galleryLink)$("article-body").append(galleryLink);
  addTopicBibliography(rows,person?.name||query,ark);
- heading(phrase("Investigación complementaria","Further research","Recherche complémentaire"));
+ heading("VI · Imágenes y documentación visual");
+ paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
+ const galleryLink=href("#vitruvia-images","Consultar galería de imágenes documentadas");
+ if(galleryLink)$("article-body").append(galleryLink);
+ heading("VII · Otras fuentes para contrastar la investigación");
  const list=make("ul",undefined,"article-related");
  for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
  if(list.childNodes.length)$("article-body").append(list);
