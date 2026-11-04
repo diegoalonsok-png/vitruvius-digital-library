@@ -98,9 +98,9 @@
   if(event.key==='Escape'&&!ui.panel.hidden){expand(false);ui.open.focus()}
  });
  function visibility(){
-  const rect=article.getBoundingClientRect();
-  const visible=document.body.classList.contains('vitruvia-reading')&&
-   !article.hidden&&rect.top<window.innerHeight-80&&rect.bottom>90;
+  // The rail is fixed and should accompany the reader throughout the entire
+  // results page; viewport checks could incorrectly hide it mid-article.
+  const visible=document.body.classList.contains('vitruvia-reading')&&!article.hidden;
   bar.dataset.visible=String(visible);
   if(!visible&&!ui.panel.hidden)expand(false);
  }
