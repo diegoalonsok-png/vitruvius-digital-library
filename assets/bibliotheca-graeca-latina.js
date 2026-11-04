@@ -52,7 +52,7 @@ function pubLinks(entries,title,container){
   }
   if(x.url&&window.ClassicsFacsimileViewer?.isLocalPDF(x.url)){
    const action=document.createElement("button");action.type="button";action.className="classical-pdf-open";action.textContent="Leer PDF dentro de Vitruvia ↗";
-   action.addEventListener("click",()=>{tab="pdf";detail();document.getElementById("classic-panel")?.scrollIntoView({block:"start",behavior:"smooth"})});
+   action.addEventListener("click",()=>{tab="pdf";const u=new URL(location.href);u.searchParams.set("work",selected);u.searchParams.set("view","pdf");u.searchParams.set("pdf",x.url);history.replaceState(null,"",u);detail();document.getElementById("classic-panel")?.scrollIntoView({block:"start",behavior:"smooth"})});
    links.prepend(action);
   }
   article.append(links);section.append(article);
@@ -108,15 +108,22 @@ function initBookSuggestions(){
 function render(){const data=filters(),t=terms();const total=works.length,local=works.filter(isLocal).length,withSource=works.filter(w=>hasSource(w)&&!isLocal(w)).length;
  $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+(language()==="en"?"local reading":"lecturas locales")+" · "+withSource+" "+(language()==="en"?"external source records":"fuentes externas identificadas");const target=$("classic-list");target.replaceChildren();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);b.addEventListener("click",()=>choose(w.id));target.append(b)}if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=data[0].pdf?.url?"pdf":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));detail();}
 function choose(id){selected=id;tab=works.find(x=>x.id===id)?.pdf?.url?"pdf":"text";render();
- const u=new URL(location.href);u.searchParams.set("work",id);u.searchParams.delete("view");u.searchParams.delete("ms");history.replaceState(null,"",u);}
+ const u=new URL(location.href);u.searchParams.set("work",id);u.searchParams.delete("view");u.searchParams.delete("ms");u.searchParams.delete("pdf");history.replaceState(null,"",u);}
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=language()==="en"?"No results.":"Sin resultados.";return}
 const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||w.manuscript?.manifest);
  const hasPdf=!!w.pdf?.url;
+ const pdfEditions=Array.isArray(w.pdfEditions)&&w.pdfEditions.length?
+  w.pdfEditions.filter(x=>window.ClassicsFacsimileViewer?.isLocalPDF(x.url)):hasPdf?[w.pdf]:[];
+ const multiplePdf=pdfEditions.length>=2;
+ const hasThreePanels=hasPdf&&w.localVersions?.length>=2;
  const manuscriptTab=hasWitness?[["manuscript",t.manuscript+" · IIIF"]]:[];
- const pdfTab=hasPdf?[["pdf",t.pdf+" · Zoom / páginas"]]:[];
- const labels=isTriple?[["text","Tres visores · Códice / latín / traducción"],...pdfTab,...manuscriptTab]:
+ const pdfTab=hasPdf?[["pdf",multiplePdf?"PDF · original / traducción":t.pdf+" · Zoom / páginas"]]:[];
+ const compareTab=multiplePdf?[["comparepdf","Comparar dos PDF · original / traducción"]]:[];
+ const tripleTab=hasThreePanels?[["parallel","Tres visores · facsímil / latín / traducción"]]:[];
+ const transcriptionTab=(w.localVersions?.length||w.localHtml||w.localReader?.verified)?[["text",t.source+" · transcripción"]]:[];
+ const labels=isTriple?[["text","Tres visores · Códice / latín / traducción"],...pdfTab,...compareTab,...manuscriptTab]:
   !isLocal(w)?[["external",w.reading?.url?"Fuente externa y ficha":"Localizar ediciones"],...pdfTab,...manuscriptTab]:
-  hasPdf?[...pdfTab,...(w.localReader?.verified?[["text",t.source]]:[]),...manuscriptTab]:
+  hasPdf?[...pdfTab,...tripleTab,...compareTab,...transcriptionTab,...manuscriptTab]:
   w.localHtml?[["text",t.source],...manuscriptTab]:
   [["text",t.source],...manuscriptTab,["edition",t.edition]];
  if(!labels.some(x=>x[0]===tab))tab=labels[0][0];
@@ -133,7 +140,7 @@ const back=document.createElement("a");back.href="vitruvia.html?q="+encodeURICom
  if(w.bibliography){const bib=document.createElement("section");bib.className="classic-bibliography";bib.setAttribute("aria-label","Registro bibliográfico y codicológico");const title=document.createElement("h3");title.textContent="Registro bibliográfico · Chicago 18";bib.append(title);const p=document.createElement("p");p.textContent=w.bibliography.editionCitation||w.bibliography.preferredCitation||"";bib.append(p);if(w.bibliography.manuscriptCitation){const h=document.createElement("h4");h.textContent="Codicología · Testimonio digital";bib.append(h);const witness=document.createElement("p");witness.textContent=w.bibliography.manuscriptCitation;bib.append(witness)}const note=document.createElement("p");note.textContent=w.bibliography.method||"";bib.append(note);box.append(bib)}
 box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
   tab=b.dataset.tab;const u=new URL(location.href);u.searchParams.set("work",w.id);u.searchParams.set("view",tab);
-  if(tab!=="manuscript")u.searchParams.delete("ms");history.replaceState(null,"",u);detail();
+  if(tab!=="manuscript")u.searchParams.delete("ms");if(tab!=="pdf")u.searchParams.delete("pdf");history.replaceState(null,"",u);detail();
  }));
 const pane=$("classic-panel");
 if(tab==="external"){
@@ -173,13 +180,79 @@ if(tab==="manuscript"){
 if(tab==="edition"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,"en");}else if(tab==="edition"){pane.innerHTML="<h3>"+safe(t.edition)+"</h3><p>"+safe(w.reading.status)+"</p><p>"+safe(t.noTrans)+"</p><p>"+safe(t.notHosted)+"</p><div class='classic-linkline'>"+navLink(w.links.scaife,t.scaife)+"</div>";}
 if(tab==="pdf"){
   if(w.pdf?.url){
-   window.ClassicsFacsimileViewer?.mountPdf(pane,{
-    url:w.pdf.url,title:w.title,
-    note:w.pdf.status+" · "+(w.pdf.rights||"Consultar procedencia de la fuente."),
-    sizeLabel:w.pdf.sizeBytes?(w.pdf.sizeBytes/1048576).toFixed(1)+" MiB":"PDF histórico"
-   });
-  }else{
-   pane.innerHTML="<h3>"+safe(t.pdf)+"</h3><p>"+safe(t.noPdf)+"</p>";
+   const variants=pdfEditions.length?pdfEditions:[w.pdf];
+   const requested=new URLSearchParams(location.search).get("pdf");
+   const selectedEdition=variants.find(v=>v.url===requested)||variants.find(v=>v.role==="original")||variants[0];
+   pane.replaceChildren();
+   const view=document.createElement("div");view.className="classic-selected-pdf";
+   function showEdition(v){
+    const langLabel=v.language==="grc"?"GRIEGO ORIGINAL":v.language==="la"?"LATÍN ORIGINAL":v.language==="en"?"TRADUCCIÓN INGLESA":v.language==="es"?"TRADUCCIÓN CASTELLANA":"EDICIÓN HISTÓRICA";
+    window.ClassicsFacsimileViewer?.mountPdf(view,{
+     url:v.url,title:w.title+" · "+langLabel,
+     note:langLabel+" · "+(v.status||"")+" · "+(v.rights||"")+" · "+(v.coverage||""),
+     sizeLabel:v.sizeBytes?(v.sizeBytes/1048576).toFixed(1)+" MiB":"PDF histórico"
+    });
+   }
+   if(variants.length>1){
+    const bar=document.createElement("div");bar.className="classic-pdf-version-toolbar";
+    const label=document.createElement("label");label.textContent="Edición para consultar";
+    const selector=document.createElement("select");selector.setAttribute("aria-label","Elegir PDF original o traducción");
+    for(const [i,v] of variants.entries()){
+     const option=document.createElement("option");option.value=String(i);
+     option.textContent=(v.label||(v.language==="grc"?"Griego":v.language==="la"?"Latín":"Traducción"))+" · "+(v.pages||"—")+" páginas";
+     selector.append(option);
+    }
+    selector.value=String(variants.indexOf(selectedEdition));label.append(selector);bar.append(label);
+    const note=document.createElement("p");note.className="classic-ref";
+    note.textContent="Ediciones independientes: el original y la traducción no están alineados por número de página.";bar.append(note);
+    pane.append(bar);
+    selector.addEventListener("change",()=>{
+     const chosen=variants[Number(selector.value)]||variants[0],u=new URL(location.href);
+     u.searchParams.set("work",w.id);u.searchParams.set("view","pdf");u.searchParams.set("pdf",chosen.url);
+     history.replaceState(null,"",u);showEdition(chosen);
+    });
+   }
+   pane.append(view);showEdition(selectedEdition);
+  }else pane.innerHTML="<h3>"+safe(t.pdf)+"</h3><p>"+safe(t.noPdf)+"</p>";
+ }
+ if(tab==="comparepdf"&&pdfEditions.length>=2){
+  pane.replaceChildren();
+  const note=document.createElement("p");note.className="classic-ref";
+  note.textContent="Dos ediciones históricas independientes. No se afirma correspondencia exacta entre las páginas.";pane.append(note);
+  const holder=document.createElement("div");holder.className="classic-double-pdf";pane.append(holder);
+  const first=pdfEditions.find(v=>v.role==="original")||pdfEditions[0];
+  const second=pdfEditions.find(v=>v.role==="translation")||pdfEditions.find(v=>v.url!==first.url)||pdfEditions[0];
+  for(const v of [first,second]){
+   const box=document.createElement("section");box.className="classic-compare-item";
+   const title=document.createElement("h3");title.textContent=v.label||"Edición";box.append(title);
+   const frame=document.createElement("iframe");frame.loading="lazy";frame.title=title.textContent+" · "+w.title;frame.src=v.url+"#toolbar=1&navpanes=0";box.append(frame);
+   const open=document.createElement("a");open.href=v.url;open.target="_blank";open.rel="noopener noreferrer";open.textContent="Abrir PDF completo ↗";box.append(open);
+   holder.append(box);
+  }
+ }
+ if(tab==="parallel"&&hasThreePanels){
+  pane.replaceChildren();
+  const note=document.createElement("p");note.className="classic-ref";
+  note.textContent="Fascímil histórico, transcripción original y traducción en tres visores independientes. No existe alineación automática de folios, páginas y versos.";pane.append(note);
+  const original=w.localVersions.find(v=>v.language===w.language)||w.localVersions[0];
+  const translations=w.localVersions.filter(v=>v.path!==original.path);
+  const holder=document.createElement("div");holder.className="classic-triple-reading";pane.append(holder);
+  const def=[
+   {name:"01 · PDF histórico",path:w.pdf.url,pdf:true},
+   {name:"02 · "+(w.language==="grc"?"Griego original":"Latín original"),path:original.path},
+   {name:"03 · Traducción",path:(translations[0]||original).path,options:translations}
+  ];
+  for(const info of def){
+   const column=document.createElement("section");column.className="classic-triple-column";
+   const title=document.createElement("h3");title.textContent=info.name;column.append(title);
+   const frame=document.createElement("iframe");frame.loading="lazy";frame.title=info.name;frame.src=info.path+(info.pdf?"#toolbar=1&navpanes=0":"");
+   if(info.options?.length>1){
+    const select=document.createElement("select");select.setAttribute("aria-label","Seleccionar idioma de traducción");
+    info.options.forEach((v,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=v.label||v.language;select.append(opt)});
+    select.addEventListener("change",()=>{frame.src=info.options[Number(select.value)].path});
+    column.append(select);
+   }
+   column.append(frame);holder.append(column);
   }
  }
 }
@@ -202,6 +275,6 @@ async function boot(){
  const startParams=new URLSearchParams(location.search),wanted=startParams.get("work");
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
- tab=["pdf","manuscript","external","text","edition"].includes(requestedView)?requestedView:(works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text");try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();render();});translateInterface();render();initBookSuggestions();}
+ tab=["pdf","manuscript","external","text","edition","comparepdf","parallel"].includes(requestedView)?requestedView:(works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text");try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();render();});translateInterface();render();initBookSuggestions();}
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
 })();
