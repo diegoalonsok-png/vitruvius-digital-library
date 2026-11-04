@@ -470,6 +470,12 @@ async function search(){
   if(rows.length)display(rows,q,T().searching)
  }
  const pending=[];
+ if(internal&&window.VitruviaAgentic){
+  pending.push(window.VitruviaAgentic.search(generalQuery).then(value=>({
+   name:"Corpus completo y bibliografía del sitio · "+value.stats.chunks+" pasajes indexados",
+   rows:value.rows||[]
+  })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
+ }
  if(internal){
   if(engine)pending.push(engine.query(q,{concept,language:S.lang}).then(value=>({name:intent?.preface?"Prefacios y prólogos de Vitruvio":"Loci, léxico y códices",rows:value.rows||[],warnings:value.warnings||[]})).catch(e=>({name:"Índice documental no disponible",rows:[],warnings:[e.message]})));
   else pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
