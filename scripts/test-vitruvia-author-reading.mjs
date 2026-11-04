@@ -21,13 +21,28 @@ for(const [author,oldest,translation] of [['Catulo','Latin 8071','Cornish'],['Ci
  assert(selected.translations.some(r=>[r.title,r.note].join(' ').includes(translation)),author);
  assert(selected.witnesses.every(r=>r.codexDate<9999),author);
 }
+// Original-language reading actions must be linked to genuinely available texts.
+const lucretius=ctx.window.VitruviaAuthorReading.select(vm.runInContext('[...liveBooks("Lucrecio",false),...liveManuscripts("Lucrecio")]',ctx),'Lucrecio');
+const nature=lucretius.books.find(b=>b.workId==='lucretius');
+assert(nature?.originalReadings?.some(r=>r.url==='corpus/lucretius-de-rerum-natura-la.html'&&r.language==='la'), 'Lucretius Latin original missing');
+const marcus=ctx.window.VitruviaAuthorReading.select(vm.runInContext('[...liveBooks("Marco Aurelio",false),...liveManuscripts("Marco Aurelio")]',ctx),'Marco Aurelio');
+const meditations=marcus.books.find(b=>b.workId==='marcus-aurelius-meditations');
+assert(meditations, 'Marcus Aurelius bibliography missing');
+assert.equal(meditations.originalLanguage,'grc');
+assert.equal(meditations.originalReadings.length,0, 'Do not claim a Greek text is readable when only a record exists');
+const catullus=ctx.window.VitruviaAuthorReading.select(vm.runInContext('[...liveBooks("Catulo",false),...liveManuscripts("Catulo")]',ctx),'Catulo');
+assert(catullus.books.some(b=>b.originalReadings?.some(r=>r.language==='la'&&r.url.includes('catullus-carmina'))));
+const authorUI=read('assets/vitruvia-author-reading.js');
+assert(authorUI.includes('article-original-reading-cta'),'Prominent original-language reading CTA missing');
+assert(authorUI.includes('originalReading(b)'),'Original text availability guard missing');
+
 const cat=ctx.window.VitruviaAuthorReading.select(vm.runInContext('[...liveBooks("Catulo",false),...liveManuscripts("Catulo")]',ctx),'Catulo');
 assert.match(cat.witnesses[0].excerpt,/únicamente carmen 62/);
 assert(cat.witnesses.some(r=>r.codexShelfmark==='MS. Canon. Class. Lat. 30'));
 assert(cat.translations.every(r=>r.fulltext===false));
 assert(source.includes('workIds:ms.workIds||[]'));
 const article=read('assets/vitruvia-article.js');
-assert(article.indexOf('appendBiographyExtract(data.extract);',article.indexOf('async function renderTopic'))<article.indexOf('window.VitruviaAuthorReading?.render'));
+assert(article.indexOf('appendBiographyExtract(data.extract,data.fullurl||wiki?.link);',article.indexOf('async function renderTopic'))<article.indexOf('window.VitruviaAuthorReading?.render'));
 assert(article.indexOf('window.VitruviaAuthorReading?.render')<article.indexOf('const body=$("article-body"),previousNodes='));
 console.log('Author reading checks passed: Catulo, Cicerón, Marco Aurelio; oldest dated witnesses first, partial coverage, scholarly translations, and placement after biography outside collapsed sources.');
 // Internal author viewers retain the holding institution and jump to the actual work.
