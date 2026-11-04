@@ -1,0 +1,69 @@
+/* Optional paragraph magnification, with a consistent scholarly grey style. */
+#vr-pm-trigger{font-size:24px;line-height:1;cursor:zoom-in}
+#vr-pm-trigger[aria-pressed="true"]{background:var(--vr-control-hover,#52555b)!important;color:#fff!important;outline:1px solid #92969c;outline-offset:-2px}
+#vr-pm-trigger.vr-pm-floating-trigger{
+ position:fixed;right:17px;bottom:20vh;z-index:105;
+ width:51px;height:51px;border:1px solid #72767b;border-radius:50%;
+ color:#eee;background:#282a2d;box-shadow:0 9px 23px #0005;
+ display:grid;place-items:center;padding:0;
+}
+#vr-pm-trigger.vr-pm-floating-trigger:hover{background:#42464a}
+body.vr-pm-active #article-body p:not(:has(a:hover)),
+body.vr-pm-active #classic-detail :is(p,li),
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) section p.poem,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) main p,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) pre{
+ cursor:zoom-in;
+}
+body.vr-pm-active #article-body p:hover,
+body.vr-pm-active #classic-detail :is(p,li):hover,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) section p.poem:hover,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) main p:hover,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) pre:hover{
+ outline:1px dashed #96999d;outline-offset:4px;
+}
+.vr-pm-backdrop{
+ position:fixed;inset:0;z-index:15000;
+ display:grid;place-items:center;padding:clamp(10px,3vw,30px);
+ background:rgba(5,7,10,.72);backdrop-filter:blur(3px);
+}
+.vr-pm-backdrop[hidden]{display:none!important}
+.vr-pm-dialog{
+ width:min(780px,96vw);max-height:min(85dvh,850px);
+ box-sizing:border-box;padding:clamp(17px,3vw,30px);
+ border:1px solid #6c6f73;border-radius:15px;
+ background:#202225;color:#f4f1e9;box-shadow:0 20px 70px #0009;
+ display:flex;flex-direction:column;min-height:0;gap:12px;
+ font-family:Arial,Helvetica,sans-serif;
+}
+.vr-pm-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.vr-pm-eyebrow{display:block;color:#a5a8ad;font-size:10px;letter-spacing:.09em;font-weight:600;margin-bottom:7px}
+.vr-pm-header h2{font:500 24px/1.18 Georgia,serif;color:inherit!important;margin:0!important}
+.vr-pm-control{
+ background:#35383d;color:inherit;min-width:38px;min-height:37px;
+ border:1px solid #666a70;border-radius:7px;cursor:pointer;
+ font:600 14px/1 Arial,Helvetica,sans-serif;
+}
+.vr-pm-close{font-size:25px;min-width:42px;min-height:42px}
+.vr-pm-zoom-controls{display:flex;align-items:center;gap:12px;padding:8px 0 10px;border-bottom:1px solid #505459}
+.vr-pm-zoom-controls input[type="range"]{accent-color:#bec0c2;flex:1;min-width:30px;cursor:pointer}
+#vr-pm-size-label{min-width:42px;text-align:right;font:12px/1.4 Arial,Helvetica,sans-serif;font-variant-numeric:tabular-nums}
+.vr-pm-text-scroll{overflow:auto;min-height:0;overscroll-behavior:contain;scrollbar-color:#737780 #36383b;scrollbar-width:auto;padding:5px 7px 5px 0}
+.vr-pm-text{
+ font:400 26px/1.75 Georgia,'Times New Roman',serif;
+ white-space:pre-wrap;overflow-wrap:anywhere;hyphens:auto;text-align:left;
+ direction:auto;max-width:100%;
+}
+.vr-pm-excerpt-note{margin:0!important;color:#bdc0c4;font:400 11px/1.5 Arial,Helvetica,sans-serif}
+.vr-pm-dialog :is(button,input):focus-visible,#vr-pm-trigger:focus-visible{outline:2px solid #e3cc91;outline-offset:3px}
+html[data-theme="light"] .vr-pm-dialog{background:#f9f7f1;color:#20242a;border-color:#a5a8aa}
+html[data-theme="light"] .vr-pm-eyebrow,html[data-theme="light"] .vr-pm-excerpt-note{color:#58616a}
+html[data-theme="light"] .vr-pm-control{background:#e5e6e7;color:#20242a;border-color:#a6adb1}
+html[data-theme="light"] .vr-pm-zoom-controls{border-bottom-color:#bfc2c4}
+@media(max-width:700px){
+ .vr-pm-dialog{width:calc(100vw - 20px);max-height:88dvh;padding:16px;border-radius:11px}
+ .vr-pm-header h2{font-size:21px}
+ .vr-pm-zoom-controls{gap:8px}
+ #vr-pm-trigger.vr-pm-floating-trigger{right:9px;bottom:14vh;width:44px;height:44px}
+}
+@media print{#vr-pm-trigger,.vr-pm-backdrop{display:none!important}}
