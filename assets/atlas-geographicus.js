@@ -201,7 +201,7 @@ function filter(){
  .filter(r=>!q||searchText(r).includes(q));
  renderList();
  renderMapMarkers();
- byId("place-count").textContent=results.length+" lugares · "+results.filter(hasPoint).length+" puntos · "+results.filter(x=>featureFor(x)?.geometry==="polygon").length+" áreas · "+results.filter(x=>featureFor(x)?.geometry==="polyline").length+" ríos";
+ byId("place-count").textContent=results.length+" registros · "+results.filter(hasPoint).length+" puntos · "+results.filter(x=>featureFor(x)?.geometry==="polygon").length+" áreas · "+results.filter(x=>featureFor(x)?.geometry==="polyline").length+" ríos";
  if(!results.includes(selected)){selected=results.find(x=>x.id==="fanum-fortunae")||results[0]||null;activePassageLocus=null;}
  if(selected)renderDetails();
  if(!results.length)byId("place-list").innerHTML='<li class="no-results">Ningún lugar coincide con los filtros.</li>';
