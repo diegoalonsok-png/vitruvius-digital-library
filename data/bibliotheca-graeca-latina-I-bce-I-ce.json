@@ -2581,10 +2581,10 @@
       "language": "la",
       "genre": "Poesía lírica",
       "dating": "siglo I a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "corpus/catullus-carmina-la.html",
+        "status": "Texto latino de la edición de Robinson Ellis, Oxford: Clarendon Press, 1904, incorporado para lectura local por poemas I–CXVI (113 composiciones, sin XVIII–XX en esta edición). Aparato crítico consultable por poema. Fuente de transcripción: Project Gutenberg n.º 23294. No es un facsímil de manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -2595,13 +2595,40 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Sin traducción moderna incorporada; el lector contiene solamente el texto original latino y variantes críticas."
       },
       "links": {
-        "scaife": null,
+        "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0472.phi001.perseus-lat2",
         "perseus": null,
         "archive": null,
-        "gallica": null
+        "gallica": null,
+        "gutenberg": "https://www.gutenberg.org/ebooks/23294",
+        "digitalLatinLibrary": "https://catalog.digitallatin.org/dll-work/w2960"
+      },
+      "localHtml": "corpus/catullus-carmina-la.html",
+      "localEdition": {
+        "original": "Latín, edición crítica de Robinson Ellis (1904)",
+        "source": "Robinson Ellis, Catulli Carmina, Clarendon Press, 1904; texto digital Project Gutenberg, eBook 23294.",
+        "rights": "Texto y edición histórica en dominio público (verificar jurisdicción local si procede).",
+        "coverage": "113 poemas numerados de la edición Ellis; sin XVIII–XX ni los fragmentos y prefacio adicionales presentes en el eBook.",
+        "editor": "Robinson Ellis",
+        "year": 1904,
+        "sourceUrl": "https://www.gutenberg.org/ebooks/23294"
+      },
+      "aliases": [
+        "Catulli Carmina",
+        "Catulo",
+        "Catullus",
+        "Catullus Carmina",
+        "Gayo Valerio Catulo"
+      ],
+      "bibliography": {
+        "editionCitation": "Catullus, Gaius Valerius. Catulli Carmina. Ed. Robinson Ellis. Oxford: Clarendon Press, 1904. Transcripción digital: Project Gutenberg, n.º 23294.",
+        "preferredCitation": "Catulo. Carmina. Ed. Robinson Ellis. Oxford: Clarendon Press, 1904; copia digital en Vitruvius Digital Library.",
+        "method": "Edición impresa de 1904 digitalizada por Project Gutenberg. El lector contiene 113 poemas numerados (XVIII–XX ausentes) con su aparato crítico; no se atribuyen textos a códices concretos ni traducciones no incorporadas.",
+        "rights": "Domino público de la edición histórica (donde proceda); respetar los términos del proveedor del ebook original.",
+        "source": "https://www.gutenberg.org/ebooks/23294",
+        "cts": "urn:cts:latinLit:phi0472.phi001"
       }
     },
     {
