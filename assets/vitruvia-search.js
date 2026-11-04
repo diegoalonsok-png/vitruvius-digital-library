@@ -3,7 +3,7 @@
    NO un modelo generativo de lenguaje. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false};
+const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false};
 const lex={
  arquitectura:"architectura architecture arquitectura architecturae edificios aedificia edificaciones construcción building architettura",
  historia:"historia history historique histoire historien history historical roman romain antiguo ancient antigüedad antiquity",
@@ -44,7 +44,40 @@ const T=()=>I18N[S.lang]||I18N.es;
 function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
 function score(s,q,expand=false){const txt=norm(s),n=norm(q);if(!n||!txt)return 0;let r=txt.includes(n)?18:0;for(const word of words(q))if(txt.includes(word))r+=word.length>=5?6:3;
  if(expand){for(const w of related(q))if(txt.includes(w)&&!words(q).includes(w))r+=1.75}return r}
-const verified=w=>w.publicStatus==="lectura-local-completa";
+const verified=w=>w.publicStatus==="lectura-local-completa"&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
+const libraryURL=(id,view,ms)=>"bibliotheca-graeca-latina.html?"+new URLSearchParams({work:id,...(view?{view}:{}),...(ms?{ms}:{})});
+const workString=w=>[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
+const witnessesFor=id=>S.witnesses.filter(ms=>(ms.workIds||[]).includes(id));
+const editionsFor=id=>S.editions.filter(ed=>ed.workId===id);
+function liveManuscripts(q){
+ const out=[];
+ for(const ms of S.witnesses){
+  const titles=(ms.workIds||[]).map(id=>S.works.find(w=>w.id===id)).filter(Boolean);
+  const description=[ms.title,ms.shelfmark,ms.library,ms.date,ms.coverage,...titles.flatMap(w=>[w.title,w.author,...(w.aliases||[])])].join(" ");
+  const rating=score(description,q,false),nameRating=score(ms.title+" "+ms.shelfmark,q,false);
+  if(rating<3)continue;
+  const target=titles.find(w=>score(workString(w),q,false)>10)||titles[0];
+  const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
+  out.push({type:"manuscript",title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
+   meta:"TESTIMONIO CODICOLÓGICO · "+ms.date+" · "+(ms.manifest?"IIIF":"visor institucional"),
+   rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
+   link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
+   links:[{label:"Ficha institucional",url:ms.record},{label:"Visor de la institución",url:ms.viewer}].filter(x=>x.url),
+   source:"Bibliotheca Graeca et Latina"});
+ }return out.sort((a,b)=>b.rating-a.rating).slice(0,14);
+}
+function liveEditions(q){
+ const out=[];
+ for(const ed of S.editions){
+  const w=S.works.find(x=>x.id===ed.workId);if(!w)continue;
+  const rating=score([ed.title,ed.editor,ed.year,ed.provider,w.author,w.title,...(w.aliases||[])].join(" "),q,false);
+  if(rating<4)continue;
+  const pdf=ed.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(ed.url)?ed.url:null;
+  out.push({type:"edition",title:ed.title,author:ed.editor+" · "+ed.year,excerpt:ed.note,
+   meta:(pdf?"PDF LOCAL · ":"EDICIÓN DOCUMENTADA · ")+(ed.langs||[]).join("/"),
+   rating:rating+(pdf?4:0),link:libraryURL(w.id,pdf?"pdf":""),pdf,source:ed.provider});
+ }return out.sort((a,b)=>b.rating-a.rating).slice(0,12);
+}
 const bookLinks={
  vitruvius:"lector-bilingue.html?edition=recensio-es",
  "cicero-officiis":"bibliotheca-graeca-latina.html?work=cicero-officiis",
@@ -56,20 +89,33 @@ const bookLinks={
 };
 const pdfs={"vitruvio-v514-pdf":"documents/kurilo-recensio-es.pdf","vitruvio-v554-pdf":"documents/kurilo-recensio-fr.pdf","theory-v297-pdf":"documents/kurilo-theory-en.pdf","krohn-1912-pdf":"documents/krohn-1912.pdf"};
 function liveBooks(q,concept){return S.works.map(w=>{
-  const terms=[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
-  const sc=score(terms,q,concept),link="bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id);
-  const local=verified(w),hasInstitution=!!(w.reading?.url||w.manuscript?.manifest);
-  return {type:"book",title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,local?w.reading?.status:"Estado editorial y acceso en la ficha"].filter(Boolean).join(" · "),
-   meta:local?"Lectura local acreditada":hasInstitution?"Fuente externa registrada":"Repertorio académico · localizar edición",
-   rating:sc+(local?3:0),link:local?(bookLinks[w.id]||link):link,pdf:local?pdfs[w.id]:null,readable:local,source:"Bibliotheca Graeca et Latina"}
- }).filter(x=>x.rating>2)}
+ const rating=score(workString(w),q,concept);
+ const witnesses=witnessesFor(w.id),editions=editionsFor(w.id),local=verified(w);
+ const pdf=w.pdf?.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(w.pdf.url)?w.pdf.url:null;
+ const extras=[];
+ if(witnesses.length)extras.push({label:"Ver códice(s)",url:libraryURL(w.id,"manuscript",witnesses[0].id)});
+ if(pdf)extras.push({label:"Visor PDF",url:libraryURL(w.id,"pdf")});
+ if(w.reading?.url&&/^https:\/\//.test(w.reading.url))extras.push({label:"Fuente de lectura",url:w.reading.url});
+ const status=pdf?"PDF original alojado":local?"Edición local para leer":witnesses.length?"Códice identificado · institución de custodia":w.reading?.url?"Texto externo identificado":editions.length?"Edición vinculada · revisar acceso":"Ficha bibliográfica · edición pendiente";
+ return {type:"book",title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
+  meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
+  rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
+  links:extras,readable:local,source:"Bibliotheca Graeca et Latina"};
+ }).filter(x=>x.rating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)}
+
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
-async function load(){try{const [books,pages]=await Promise.all(["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json"].map(url=>fetchJSON(url)));
- S.works=books.works||[];S.pages=pages.pages||[];S.ready=true;
- $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;
- $("metric-read").textContent=S.works.filter(verified).length;
- $("result-state").textContent="Índices internos disponibles: "+S.works.length+" fichas y "+S.pages.length+" secciones";}catch(e){$("result-state").textContent="Índices internos no disponibles: "+e.message}}
+async function load(){try{
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json"];
+ const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
+ if(results[0].status!=="fulfilled")throw results[0].reason;
+ const books=results[0].value,pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
+ S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
+ S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.ready=true;
+ $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;$("metric-read").textContent=S.works.filter(verified).length;
+ $("result-state").textContent=S.works.length+" obras · "+S.witnesses.length+" códices · "+S.editions.length+" ediciones y "+S.pages.length+" secciones documentales";
+ }catch(e){$("result-state").textContent="Índice de la biblioteca no disponible: "+e.message}}
+
 const dataPaths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json"];
 function passages(){if(S.passages)return Promise.resolve(S.passages);if(S.passagePromise)return S.passagePromise;
  S.passagePromise=Promise.allSettled(dataPaths.map(url=>fetchJSON(url))).then(results=>{
