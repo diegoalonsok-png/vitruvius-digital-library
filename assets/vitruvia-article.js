@@ -63,6 +63,12 @@ function choose(rows,query){
  if(exactLocus){const p=rows.find(x=>x.type==="passage"&&x.rating>200);if(p)return p}
  const manuscript=rows.filter(x=>x.type==="manuscript"&&x.rating>230&&relevance(x,query)>=100).sort((a,b)=>b.rating-a.rating)[0];
  if(manuscript)return manuscript;
+ const exactWork=rows.filter(x=>x.type==="book").find(x=>{
+  const queryText=normalized(query),title=normalized(x.title),author=normalized(x.author);
+  if(queryText.length<4||author===queryText||author.includes(queryText)&&queryText.length<8)return false;
+  return title===queryText||(x.aliases||[]).some(a=>normalized(a)===queryText&&normalized(a)!==author);
+ });
+ if(exactWork)return exactWork;
  const lang=document.documentElement.lang||"es";
  const wiki=rows.filter(x=>x.type==="wikipedia").sort((a,b)=>
   relevance(b,query)-relevance(a,query)||Number(b.wikiLang===lang)-Number(a.wikiLang===lang))[0];
@@ -294,6 +300,19 @@ function appendResearch(rows,query,sourceTitle){
    box.append(p);
   }
  }
+ const codices=rows.filter(x=>x.type==="manuscript"&&x.link&&relevance(x,query)>=45).slice(0,6);
+ const editions=rows.filter(x=>x.type==="edition"&&x.link&&relevance(x,query)>=45).slice(0,5);
+ if(codices.length){
+  heading(phrase("Códices y testimonios conservados","Surviving codices and manuscripts","Codex et manuscrits conservés"));
+  paragraph(phrase("La fecha indicada corresponde al manuscrito conservado, no a la composición de la obra.",
+   "Dates refer to surviving manuscript witnesses, not to the original composition.",
+   "Les dates se rapportent aux témoins manuscrits, et non à la composition de l'œuvre."),"article-note");
+  for(const m of codices){const p=make("p",undefined,"article-research-item");const a=href(m.link,m.title);if(a)p.append(a);if(m.author)p.append(make("small",m.author+" · "+m.meta));box.append(p)}
+ }
+ if(editions.length){
+  heading(phrase("Ediciones históricas y PDF","Historical editions and PDFs","Éditions historiques et PDF"));
+  for(const ed of editions){const p=make("p",undefined,"article-research-item");const a=href(ed.link,ed.title);if(a)p.append(a);if(ed.meta)p.append(make("small",ed.meta));box.append(p)}
+ }
  if(classical.length){
   heading(phrase("Obras griegas y latinas del repertorio","Greek and Latin works in the repertory","Œuvres grecques et latines du répertoire"));
   for(const b of classical){
@@ -314,13 +333,24 @@ function appendResearch(rows,query,sourceTitle){
   }
  }
 }
-function renderOther(top,rows){reset(top.title,top.author||top.source||"",phrase("Ficha documental · fuentes verificables","Documentary record · verified sources","Notice documentaire · sources vérifiables"));
-paragraph(top.excerpt,"article-lead");
-if(top.meta)paragraph(top.meta,"article-note");
-const a=href(top.link,phrase("Consultar documento original →","Open original document →","Consulter le document original →"));
-if(a)$("article-body").append(a);
-aside(rows);references(rows)
+function renderOther(top,rows){
+ const isClassical=["book","edition"].includes(top.type);
+ reset(top.title,top.author||top.source||"",isClassical?
+ phrase("Bibliotheca Graeca et Latina · registro documentado","Bibliotheca Graeca et Latina · documented record","Bibliotheca Graeca et Latina · notice documentée"):
+ phrase("Ficha documental · fuentes verificables","Documentary record · verified sources","Notice documentaire · sources vérifiables"));
+ paragraph(top.excerpt,"article-lead");if(top.meta)paragraph(top.meta,"article-note");
+ const label=isClassical?phrase("Abrir obra, códices y ediciones en la biblioteca →","Open work, codices and editions →","Consulter œuvre, codex et éditions →"):
+ phrase("Consultar documento original →","Open original document →","Consulter le document original →");
+ const a=href(top.link,label);if(a)$("article-body").append(a);
+ if(isClassical){
+  paragraph(phrase("Obra, manuscrito, edición impresa, PDF y traducción son testimonios diferentes. La existencia de una ficha no significa que el texto íntegro esté digitalizado.",
+    "A work, manuscript, printed edition, PDF, and translation are distinct resources. A catalogue entry does not guarantee full-text access.",
+    "L'œuvre, le manuscrit, l'édition imprimée, le PDF et la traduction sont des ressources distinctes. Une notice ne garantit pas le texte intégral."),"article-note");
+  appendResearch(rows,top.title,top.title);
+ }
+ aside(rows);references(rows)
 }
+
 function matchVariants(q){
  const stop=new Set(["para","como","donde","cuando","sobre","entre","desde","hasta","with","from","where","what","which","the","and","los","las","del","una","unos","unas","que","por","con","dans","pour","les","des"]);
  const terms=String(q||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=3&&!stop.has(w));
