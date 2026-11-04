@@ -409,10 +409,30 @@ function titleMatch(row,query){
 function display(rows,query,phase){
  const romanVitruvius=/^(vitruvio|vitruvius|vitruve|marco vitruvio polion|marcus vitruvius pollio)$/i.test(norm(query));
  const scored=rows.filter(r=>!romanVitruvius||!(/agustin vitruvio|agustín vitruvio|augustin vitruvio/i.test(r.title||""))).slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query))-((a.rating||0)+titleMatch(a,query))),deduped=[],seen=new Set();
- for(const r of scored){const k=r.type+":"+norm(r.title);if(seen.has(k))continue;seen.add(k);deduped.push(r)}
+ for(const r of scored){const k=r.type+":"+norm(r.title)+(r.type==="passage"?":"+norm(r.edition||r.author||r.meta||""):"");if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
- if(!deduped.length)list.append(node("div","empty",T().none));
- else for(const r of deduped.slice(0,S.visibleResultCount)){const card=renderCard(r);markTerms(card,query);list.append(card)}
+ // Present library evidence after encyclopedic context without hiding editions.
+ const encyclopediaTypes=new Set(["wikipedia","wikidata","topic"]);
+ const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
+ const ordered=S.mode==="all"
+  ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)),
+     ...deduped.filter(r=>libraryTypes.has(r.type)),
+     ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type))]
+  : deduped;
+ if(!ordered.length)list.append(node("div","empty",T().none));
+ else {
+  let lastGroup="";
+  for(const r of ordered.slice(0,S.visibleResultCount)){
+   if(S.mode==="all"){
+    const group=encyclopediaTypes.has(r.type)?"encyclopedia":libraryTypes.has(r.type)?"library":"research";
+    if(group!==lastGroup){
+     const section=node("h3","vitruvia-result-group",group==="encyclopedia"?"Enciclopedia y contexto histórico":group==="library"?"Dentro de la Biblioteca Vitruviana":"Investigación y catálogos externos");
+     section.setAttribute("data-result-group",group);list.append(section);lastGroup=group;
+    }
+   }
+   const card=renderCard(r);markTerms(card,query);list.append(card)
+  }
+ }
  if(deduped.length>S.visibleResultCount){
   const left=deduped.length-S.visibleResultCount;
   const label=S.lang==="en"?"View "+Math.min(left,44)+" more results":S.lang==="fr"?"Voir "+Math.min(left,44)+" résultats supplémentaires":"Ver "+Math.min(left,44)+" resultados más";
