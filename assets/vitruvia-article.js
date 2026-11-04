@@ -327,13 +327,65 @@ function personWikiHit(row,person,query){
  if(person.id==="cicero")alternatives.push("ciceron","cicero","marco tulio ciceron");
  return alternatives.some(name=>title===name);
 }
+/* Match the actual indexed De architectura text, not the title of an external result. */
+function vitruvianMatches(rows,terms){
+ const wanted=[...new Set((terms||[]).map(normalized).filter(x=>x.length>=4))];
+ if(!wanted.length)return [];
+ return rows.filter(row=>{
+  if(row.type!=="passage"||!row.locus||!(row.latin||row.translation))return false;
+  const source=" "+normalized([row.latin,row.translation].join(" "))+" ";
+  return wanted.some(term=>source.includes(" "+term+" "));
+ });
+}
+function matchingPersonPassages(rows,person){
+ const names=[person.name,...(person.aliases||[]),...(person.latin_forms||[])];
+ if(person.id==="cicero")names.push("Cicerón","Cicero","Ciceronis","Ciceronem","Cicerone","Ciceroni");
+ return vitruvianMatches(rows,names);
+}
+function appendVerifiedTopicPassages(rows,query){
+ const terms=[query];
+ const matches=vitruvianMatches(rows,terms);
+ if(!matches.length)return false;
+ heading("V · Coincidencias documentadas en el tratado de Vitruvio");
+ paragraph(matches.length+" pasajes indexados contienen una mención literal a la consulta. Las coincidencias se marcan en amarillo únicamente dentro del texto del tratado.","article-note");
+ const container=make("div",undefined,"person-vitruvian-list");
+ $("article-body").append(container);
+ const seen=new Set();
+ for(const entry of matches){
+  const key=entry.locus+"|"+(entry.edition||"");
+  if(seen.has(key))continue;seen.add(key);
+  const section=make("section",undefined,"person-locus-entry");
+  section.append(make("h4","De architectura · "+entry.locus+" · "+(entry.edition||"edición")));
+  if(entry.latin){const p=make("p",entry.latin);p.lang="la";section.append(p)}
+  if(entry.translation){const p=make("p",entry.translation);section.append(p)}
+  const original=href(entry.link,"Abrir edición y locus documentado");if(original)section.append(original);
+  container.append(section);
+  if(seen.size>=18)break;
+ }
+ return true;
+}
+function appendAcademicLinks(query){
+ heading("Enlaces académicos para ampliar la investigación");
+ const links=[
+  ["Google Scholar","https://scholar.google.com/scholar?q="+encodeURIComponent(query)],
+  ["WorldCat","https://search.worldcat.org/search?q="+encodeURIComponent(query)],
+  ["JSTOR","https://www.jstor.org/action/doBasicSearch?Query="+encodeURIComponent(query)],
+  ["Perseus Digital Library","https://www.perseus.tufts.edu/hopper/searchresults?q="+encodeURIComponent(query)]
+ ];
+ const group=make("ul",undefined,"article-related");
+ for(const [name,url] of links){const li=make("li"),a=href(url,name);if(a)li.append(a);if(li.childNodes.length)group.append(li)}
+ $("article-body").append(group);
+ paragraph("Estos enlaces abren búsquedas externas; no se presentan como documentos ya cotejados.","article-note");
+}
 function appendPersonLoci(rows,person){
- heading(phrase("Pasajes de Vitruvio que mencionan al personaje","Passages in Vitruvius mentioning this person","Passages de Vitruve mentionnant cette personne"));
+ const verified=matchingPersonPassages(rows,person);
+ if(!verified.length)return false;
+ heading(phrase("Coincidencias documentadas en el tratado de Vitruvio","Documented mentions in Vitruvius","Mentions attestées dans Vitruve"));
  const names=[person.name,...(person.aliases||[]),...(person.latin_forms||[])];
  if(person.id==="cicero")names.push("Cicero","Ciceronis","Ciceronem","Cicerone","Ciceroni","Cicerón");
  if(person.id==="cicero")names.push("Cicerón","Cicero","Cicerone","Ciceronis","Ciceronem");
  const forms=[...new Set(names.map(normalized).filter(x=>x.length>=5))];
- const matches=rows.filter(x=>x.type==="passage"&&x.locus&&forms.some(form=>(" "+normalized([x.latin,x.translation,x.excerpt].join(" "))+" ").includes(" "+form+" ")));
+ const matches=verified;
  const grouped=new Map();
  for(const hit of matches){
   if(!grouped.has(hit.locus))grouped.set(hit.locus,[]);
@@ -458,11 +510,6 @@ async function renderHistoricalPerson(top,rows,person,token){
   paragraph(top?.excerpt||phrase("No se obtuvo una biografía extensa verificable de las fuentes públicas consultadas.","A verified long biography could not be retrieved.","Biographie complète indisponible."),"article-lead");
  }
  addExternalDiscovery(person);
- heading(phrase("02 · Relación histórica con Vitruvio","02 · Historical relationship with Vitruvius","02 · Rapport historique avec Vitruve"));
- paragraph(isCicero?
-  "Cicerón y Vitruvio pertenecen al mundo intelectual de la Roma tardorrepublicana. El primero murió en 43 a. C.; el tratado De architectura se asocia habitualmente con el período de Augusto. La coincidencia de época y de referencias culturales permite comparar sus concepciones de las artes, la educación y la técnica, pero no prueba una relación personal ni una influencia textual directa. Los loci que siguen se incluyen solo cuando el índice recupera menciones efectivas.":
-  phrase("La coincidencia cronológica o temática no demuestra una relación personal o textual directa. Se distinguen las menciones literales comprobables de las analogías históricas.","Chronological overlap does not establish a direct personal or textual relationship; verified references and contextual parallels are distinguished.","La contemporanéité n'établit pas de relation directe ; on distingue attestations et parallèles."),"article-note");
- appendPersonLoci(rows,person);
  heading(phrase("Bibliografía y referencias comprobables","Bibliography and verifiable references","Bibliographie et références vérifiables"));
  const related=rows.filter(x=>x.link&&["book","article","wikidata","googlebook","wikipedia"].includes(x.type));
  const seen=new Set(),ul=make("ul",undefined,"article-related");
@@ -472,6 +519,8 @@ async function renderHistoricalPerson(top,rows,person,token){
  if(data?.fullurl)refs.unshift({title:"Wikipedia · "+(data.title||person.name),link:data.fullurl});
  if(isCicero)refs.push({title:"Cicero · Stanford Encyclopedia of Philosophy",link:"https://plato.stanford.edu/entries/cicero/"});
  references(refs,"Síntesis editorial propia de Vitruvia; información enciclopédica externa identificada y atribuida. Las fuentes enlazadas no equivalen a una consulta automática de Google AI o Grokipedia.");
+ appendPersonLoci(rows,person);
+ appendAcademicLinks(person.name);
  buildContents();
 }
 async function renderWiki(top,rows,token){reset(top.title,top.author||"Wikipedia",
@@ -616,8 +665,8 @@ async function renderTopic(top,rows,query,token){
  const list=make("ul",undefined,"article-related");
  for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
  if(list.childNodes.length)$("article-body").append(list);
- heading(phrase("V · Relación con Vitruvio y aparato bibliográfico (Chicago 18)","V · Relationship with Vitruvius and references (Chicago 18)","V · Vitruve et bibliographie (Chicago 18)"));
- paragraph("Las coincidencias en el corpus vitruviano se consultan separadamente. No se atribuyen menciones ni relaciones directas sin locus verificable.","article-note");
+ appendVerifiedTopicPassages(rows,query);
+ appendAcademicLinks(query);
  aside(sources);references(rows);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
@@ -803,14 +852,16 @@ function buildContents(){
 function render(rows,q,person=null){const token=++active;
 bibliographyContext={rows:rows||[],query:q||""};
 if(!q||!rows?.length){root.hidden=true;return}
-reportEvidence(rows,q);
 if(person){
+ $("article-evidence")?.replaceChildren();
  const biographies=rows.filter(x=>personWikiHit(x,person,q)).sort((a,b)=>
   Number(b.wikiLang===document.documentElement.lang)-Number(a.wikiLang===document.documentElement.lang));
  void renderHistoricalPerson(biographies[0]||null,rows,person,token).then(()=>{if(token===active)highlightArticle(person.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q)});
  return;
 }
 const top=choose(rows,q);if(!top){root.hidden=true;return}
+if(top.type==="topic")$("article-evidence")?.replaceChildren();
+else reportEvidence(rows,q);
 if(top.type==="preface"){renderPreface(top,rows);highlightArticle(q);return}
  if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
 if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
