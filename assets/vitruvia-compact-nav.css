@@ -1,0 +1,82 @@
+/* Unobtrusive search categories next to ◇ Private query.
+   Original search tabs are retained for existing event handlers and disabled
+   visually only after the compact controls are available. */
+body:has(#vitruvia-compact-nav) .hero .tabs{
+ display:none!important;
+}
+.search-wrap .search-utility:has(#vitruvia-compact-nav){
+ display:flex!important;
+ align-items:center!important;
+ justify-content:flex-start!important;
+ gap:12px!important;
+ flex-flow:row nowrap!important;
+ overflow-x:auto;
+ overflow-y:hidden;
+ max-width:100%;
+ min-width:0;
+ scrollbar-width:thin;
+ scrollbar-color:#48494b transparent;
+ padding:3px 2px 5px;
+}
+.search-wrap .search-utility:has(#vitruvia-compact-nav)>#search-privacy{
+ order:0;flex:0 0 auto;
+ white-space:nowrap;
+ padding:4px 0!important;
+ text-decoration:none!important;
+ font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+ color:#9b9b9f!important;
+}
+.search-wrap .search-utility:has(#vitruvia-compact-nav)>#clear-all{
+ order:2;flex:0 0 auto;white-space:nowrap;margin-left:auto;
+}
+#vitruvia-compact-nav{
+ order:1;display:flex;align-items:center;gap:clamp(9px,1.1vw,19px);
+ flex:0 0 auto;white-space:nowrap;min-width:0;
+}
+#vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more){
+ position:relative;display:inline-flex;align-items:center;justify-content:center;
+ padding:4px 0!important;margin:0!important;
+ border:0!important;border-radius:0!important;
+ background:transparent!important;
+ color:#a0a1a5!important;
+ font:400 11px/1.6 Arial,Helvetica,sans-serif!important;
+ text-decoration:none!important;letter-spacing:0!important;
+ min-height:27px!important;white-space:nowrap;box-shadow:none!important;
+ cursor:pointer;
+}
+#vitruvia-compact-nav .vitruvia-compact-item[aria-current="page"]{
+ color:#ecebea!important;
+ border-bottom:1px solid #b4b5b7!important;
+ font-weight:600!important;
+}
+#vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more):hover{
+ color:#f2f0ec!important;
+}
+#vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more):focus-visible{
+ outline:1px solid currentColor!important;outline-offset:3px!important;
+}
+#vitruvia-compact-nav .vitruvia-compact-more{
+ appearance:auto!important;-webkit-appearance:menulist!important;
+ width:auto;max-width:95px;
+ color:#a0a1a5!important;
+}
+#vitruvia-compact-nav .vitruvia-compact-more option{
+ background:#28292b;color:#e6e6e6;
+}
+html[data-theme="light"] #vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more){
+ color:#62666b!important;
+}
+html[data-theme="light"] #vitruvia-compact-nav .vitruvia-compact-item[aria-current="page"]{
+ color:#202124!important;border-bottom-color:#323538!important;
+}
+html[data-theme="light"] #vitruvia-compact-nav .vitruvia-compact-more option{
+ background:#fafafa;color:#202124;
+}
+html[data-theme="light"] .search-wrap .search-utility:has(#vitruvia-compact-nav)>#search-privacy{
+ color:#62666b!important;
+}
+@media(max-width:640px){
+ .search-wrap .search-utility:has(#vitruvia-compact-nav){gap:10px!important;justify-content:flex-start!important}
+ #vitruvia-compact-nav{gap:12px}
+}
+@media print{#vitruvia-compact-nav{display:none!important}}
