@@ -45,7 +45,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css?v=20261102-latin-traduccion-1">
   <script src="assets/app.js?v=20261103-parallel2" type="module"></script>
-<script src="assets/i18n.js?v=20261103-frontpage-complete-2" defer></script><script src="assets/latin-suggest.js?v=20261101-gloss-spelling-36" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261103-shared-icons-fix2" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
+<script src="assets/i18n.js?v=20261104-vitruvia-entry-1" defer></script><script src="assets/latin-suggest.js?v=20261101-gloss-spelling-36" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261103-shared-icons-fix2" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
 /* Jerarquía clara de acciones y crédito editorial separado. */
 .hero-actions-academic{display:flex;align-items:center;gap:12px 15px;flex-wrap:wrap;margin-top:24px}
 .hero-actions-academic .button{display:inline-flex;align-items:center;gap:8px;padding:12px 19px;min-height:46px;text-decoration:none;white-space:normal}
@@ -187,26 +187,22 @@ html[data-theme="dark"] .stat-audit-detail a{color:#f0ddba}
 @media(max-width:650px){.footer-legal{align-items:flex-start;flex-direction:column;gap:13px}}
 @media(prefers-reduced-motion:reduce){.vitruvia-footer-v,.historic-top-links a.vitruvia-v-link .vitruvia-v-glyph{transition:none!important;transform:none!important}}
 
-/* Vitruvia al lado del selector Claro/Oscuro: discreción académica. */
-.research-nav-controls .vitruvia-top-link{display:inline-flex;align-items:center;gap:9px;color:inherit;text-decoration:none;padding:3px 9px;min-height:41px;white-space:normal;border-left:1px solid rgba(164,154,141,.34);flex:0 0 auto}
-.research-nav-controls .vitruvia-top-initial{display:inline-block;color:var(--ink,#273540);font:italic 500 32px/.98 Georgia,serif;letter-spacing:-.12em;transition:transform .3s ease}
-.research-nav-controls .vitruvia-top-copy{display:flex;flex-direction:column;gap:1px;min-width:0}
-.research-nav-controls .vitruvia-top-copy strong{font:500 11px/1.3 system-ui,Arial,sans-serif;letter-spacing:.11em;color:inherit}
-.research-nav-controls .vitruvia-top-copy small{font:400 10px/1.4 system-ui,Arial,sans-serif;color:var(--muted,#838990);max-width:190px;white-space:normal}
-.research-nav-controls .vitruvia-top-link:hover .vitruvia-top-initial,.research-nav-controls .vitruvia-top-link:focus-visible .vitruvia-top-initial{transform:translateY(-3px) rotate(-6deg)}
-html[data-theme=dark] .vitruvia-top-copy small{color:#b0b2b5}
-html[data-theme=dark] .vitruvia-top-initial{color:#e5e3dc}
-
-@media(max-width:850px){.research-nav-controls .vitruvia-top-link{flex-basis:100%;justify-content:center;border-left:0;border-top:1px solid rgba(164,154,141,.34);padding:7px 2px}.research-nav-controls{flex-wrap:wrap}}
-@media(prefers-reduced-motion:reduce){.research-nav-controls .vitruvia-top-initial{transition:none!important}}
-
-/* Monograma Vitruvia: ala derecha extendida, sin rótulo ni marco. */
-.research-nav-controls a.vitruvia-top-link{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:45px;min-height:45px;width:45px;padding:0 3px;border:0;background:transparent;text-decoration:none;color:inherit}
-.research-nav-controls .vitruvia-wing-v{display:block;width:32px;height:39px;color:var(--ink,#e9e7df);transition:transform .25s ease}
-.research-nav-controls a.vitruvia-top-link:hover .vitruvia-wing-v,.research-nav-controls a.vitruvia-top-link:focus-visible .vitruvia-wing-v{transform:scale(1.09) rotate(-5deg)}
-html[data-theme=dark] .research-nav-controls .vitruvia-wing-v{color:#e9e5db}
-@media(max-width:850px){.research-nav-controls a.vitruvia-top-link{flex:0 0 auto;border:0;min-width:45px}}
-@media(prefers-reduced-motion:reduce){.research-nav-controls .vitruvia-wing-v{transition:none}}
+/* Vitruvia: acceso visible al buscador académico desde la portada. */
+.research-nav-controls a.vitruvia-top-link{display:inline-flex;align-items:center;justify-content:flex-start;gap:11px;flex:0 1 auto;width:auto;min-width:0;max-width:100%;min-height:50px;padding:7px 13px;border:1px solid #a58b60;border-radius:6px;background:rgba(170,144,98,.06);color:var(--ink,#263644);text-decoration:none;white-space:normal;transition:background .2s ease,border-color .2s ease}
+.research-nav-controls .vitruvia-wing-v{display:block;width:30px;height:36px;flex:0 0 30px;color:#8c6c39;transition:transform .2s ease}
+.research-nav-controls .vitruvia-top-copy{display:flex;flex-direction:column;gap:4px;min-width:0;text-align:left}
+.research-nav-controls .vitruvia-top-copy strong{font:italic 400 23px/1 Georgia,"Times New Roman",serif;letter-spacing:-.035em;color:inherit}
+.research-nav-controls .vitruvia-top-copy small{max-width:none;font:500 11px/1.35 system-ui,Arial,sans-serif;letter-spacing:0;color:#53616b;white-space:normal}
+.research-nav-controls a.vitruvia-top-link:hover{background:rgba(170,144,98,.14);border-color:#8c6c39;text-decoration:none}
+.research-nav-controls a.vitruvia-top-link:focus-visible{outline:2px solid #8c6c39;outline-offset:4px;text-decoration:none}
+.research-nav-controls a.vitruvia-top-link:hover .vitruvia-wing-v{transform:translateY(-1px) rotate(-4deg)}
+html[data-theme=dark] .research-nav-controls a.vitruvia-top-link{color:#f3ecdf;border-color:#a58b60;background:rgba(190,163,106,.08)}
+html[data-theme=dark] .research-nav-controls .vitruvia-top-copy small{color:#d0c9bb}
+html[data-theme=dark] .research-nav-controls .vitruvia-wing-v{color:#d0b47d}
+html[data-theme=dark] .research-nav-controls a.vitruvia-top-link:hover{background:rgba(190,163,106,.17)}
+html[data-theme=dark] .research-nav-controls a.vitruvia-top-link:focus-visible{outline-color:#d0b47d}
+@media(max-width:850px){.research-nav-controls a.vitruvia-top-link{flex:0 1 auto;justify-content:flex-start;border:1px solid #a58b60;padding:7px 11px}.research-nav-controls{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.research-nav-controls a.vitruvia-top-link,.research-nav-controls .vitruvia-wing-v{transition:none}.research-nav-controls a.vitruvia-top-link:hover .vitruvia-wing-v{transform:none}}
 /* Titulus: cursiva latina editorial restaurada, sin alterar las interfaces. */
 .hero-academic h1 .hero-latin-title{font-family:LibraryGaramond,'EB Garamond','Baskerville','Palatino Linotype',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.055em}
 .hero-academic h1>span{font-style:normal;letter-spacing:normal}
@@ -246,7 +242,7 @@ html[data-theme=dark] .research-nav-controls .vitruvia-wing-v{color:#e9e5db}
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
           <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir esta página" title="Abrir vista de impresión de la biblioteca">⎙ Imprimir</button>
-          <a class="vitruvia-top-link" href="vitruvia.html" aria-label="Abrir buscador Vitruvia"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></a>
+          <a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a>
         </div>
       </div>
     </nav>
