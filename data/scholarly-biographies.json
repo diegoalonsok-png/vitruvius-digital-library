@@ -1,0 +1,120 @@
+{
+  "schema": "vitruvia-scholarly-biographies-v1",
+  "policy": "Las fichas biográficas combinan una síntesis escolar accesible con análisis académico ampliado; distinguen datos seguros, hipótesis, testimonios y atribuciones. No se atribuye una obra escrita al personaje cuando no hay evidencia auténtica.",
+  "references": {
+    "stanford": "https://plato.stanford.edu/entries/pythagoras/",
+    "stAndrews": "https://mathshistory.st-andrews.ac.uk/Biographies/Pythagoras/"
+  },
+  "profiles": [
+    {
+      "id": "Q10261",
+      "key": "pythagoras",
+      "aliases": [
+        "Pitágoras",
+        "Pitagoras",
+        "Pitágoras de Samos",
+        "Pythagoras",
+        "Pythagoras of Samos",
+        "Pythagore",
+        "biografia de pitagoras",
+        "vida de pitagoras"
+      ],
+      "category": "Filósofo griego · presocrático · fundador de la comunidad pitagórica",
+      "name": "Pitágoras de Samos",
+      "ancientGreek": "Πυθαγόρας ὁ Σάμιος",
+      "latin": "Pythagoras Samius",
+      "facts": [
+        {
+          "label": "Nacimiento",
+          "value": "Hacia 570 a. C.; isla de Samos (fecha aproximada)"
+        },
+        {
+          "label": "Muerte",
+          "value": "Hacia 490 a. C.; probablemente en Metaponto, Magna Grecia (incierto)"
+        },
+        {
+          "label": "Actividad",
+          "value": "Samos y Crotona (sur de Italia)"
+        },
+        {
+          "label": "Ámbito",
+          "value": "Filosofía, comunidad religiosa y ética, tradiciones sobre número y música"
+        },
+        {
+          "label": "Obras escritas auténticas",
+          "value": "Ninguna conservada; la mayoría de especialistas considera probable que no escribiera libros"
+        }
+      ],
+      "survival": {
+        "status": "no-authentic-writings",
+        "statement": "No se conservan escritos auténticos de Pitágoras. Tampoco hay testimonios tempranos fiables de que haya compuesto libros. Los llamados textos pitagóricos transmitidos por autores posteriores deben distinguirse de una obra escrita por él.",
+        "source": "https://plato.stanford.edu/entries/pythagoras/"
+      },
+      "introduction": "Pitágoras fue un pensador griego de finales del siglo VI y comienzos del V a. C., originario de Samos y activo sobre todo en Crotona, en la Magna Grecia. Su nombre designa una de las tradiciones más influyentes de la Antigüedad, aunque es difícil separar al personaje histórico de las ideas desarrolladas por sus seguidores y de leyendas nacidas siglos después.",
+      "sections": [
+        {
+          "heading": "1. Samos y la formación",
+          "body": "Pitágoras habría nacido hacia 570 a. C. en Samos, isla jónica del Egeo próxima a las costas de Asia Menor. Su juventud transcurrió en una región vinculada al comercio, a las ciudades griegas orientales y a las primeras investigaciones sobre la naturaleza. Los detalles biográficos sobre su familia, sus maestros y sus viajes proceden en gran parte de tradiciones redactadas mucho después de su muerte. Por ello, aunque se mencionan estancias en Egipto y en Oriente, no todas pueden considerarse hechos demostrados."
+        },
+        {
+          "heading": "2. El traslado a Crotona",
+          "body": "Las noticias antiguas sitúan su marcha de Samos hacia los cuarenta años y su llegada, aproximadamente hacia 530 a. C., a Crotona, colonia griega del sur de Italia. Allí reunió seguidores e impulsó una forma de vida comunitaria. La escuela pitagórica no puede describirse simplemente como una academia de matemáticas: sus prácticas combinaban disciplina personal, educación, costumbres religiosas y vínculos entre sus miembros. La separación entre el maestro y las generaciones posteriores es un problema constante de la historiografía."
+        },
+        {
+          "heading": "3. La comunidad pitagórica",
+          "body": "En torno a Pitágoras se configuró una comunidad con normas de conducta, hábitos de aprendizaje y una concepción compartida de la vida buena. Las fuentes tardías atribuyen a sus integrantes reglas sobre el alimento, el silencio, la memoria, la amistad y la convivencia. No es posible atribuir cada regla al fundador: algunos testimonios se contradicen, por ejemplo, sobre las prácticas alimentarias. Lo documentable con mayor prudencia es que el modo de vida pitagórico fue percibido desde la Antigüedad como un rasgo distintivo de sus seguidores."
+        },
+        {
+          "heading": "4. El alma y la transmigración",
+          "body": "La creencia en la supervivencia del alma y su paso a otros seres vivos aparece entre las doctrinas más antiguamente asociadas con Pitágoras. Esta idea de la transmigración o metempsicosis enlaza con tradiciones religiosas y filosóficas griegas, pero sus formulaciones exactas variaron. Diógenes, Porfirio y Jámblico narran episodios extraordinarios que no deben confundirse con testimonios contemporáneos. Para estudiar esta doctrina conviene comparar las alusiones tempranas con los relatos biográficos posteriores."
+        },
+        {
+          "heading": "5. El número y el cosmos",
+          "body": "La tradición pitagórica otorgó una importancia extraordinaria a las relaciones numéricas y a las estructuras del mundo. Sin embargo, no toda la doctrina posterior de que el número es principio de las cosas puede atribuirse directamente al Pitágoras histórico. Las formulaciones conocidas dependen de testimonios de distintas épocas, incluidos Aristóteles y autores neoplatónicos. Los estudios actuales distinguen el papel del fundador, las investigaciones de los pitagóricos del siglo V a. C. y las reconstrucciones más tardías."
+        },
+        {
+          "heading": "6. Música, proporción y armonía",
+          "body": "La relación entre intervalos musicales y proporciones matemáticas se vinculó tradicionalmente con el pitagorismo y tuvo una recepción decisiva en la teoría musical antigua y medieval. El célebre relato de Pitágoras descubriendo proporciones mediante martillos de una fragua es una leyenda de transmisión posterior, no una prueba histórica de un experimento concreto. La cuestión académica consiste en identificar qué resultados pertenecen a la tradición pitagórica antigua y cuáles fueron sistematizados por autores de generaciones posteriores."
+        },
+        {
+          "heading": "7. El teorema de Pitágoras",
+          "body": "El teorema geométrico que lleva su nombre establece la relación entre los cuadrados de los lados de un triángulo rectángulo. La relación era conocida en tradiciones matemáticas anteriores a Pitágoras; no puede afirmarse con seguridad que él la descubriera ni que dejara una demostración escrita. La asociación del teorema con su nombre forma parte de la historia de la matemática y de su recepción. Por eso conviene distinguir el enunciado matemático, su conocimiento en distintas civilizaciones y las atribuciones biográficas."
+        },
+        {
+          "heading": "8. Política, conflictos y muerte",
+          "body": "Las comunidades pitagóricas tuvieron también una dimensión cívica en las ciudades de la Magna Grecia. Algunas noticias antiguas hablan de oposición política y violencia contra sus integrantes. Una reconstrucción considerada plausible sitúa la salida de Pitágoras de Crotona tras esos conflictos y su muerte en Metaponto hacia 490 a. C. No conocemos con exactitud ni la fecha ni las circunstancias. Los relatos posteriores presentan versiones divergentes, de modo que deben exponerse como hipótesis y tradiciones."
+        },
+        {
+          "heading": "9. Discípulos y desarrollo del pitagorismo",
+          "body": "Durante los siglos V y IV a. C. la tradición pitagórica siguió desarrollándose mucho después del fundador. Filolao y Arquitas son especialmente importantes para conocer la evolución del pensamiento sobre número, cosmología y matemáticas. Sus aportaciones no deben identificarse de modo automático con lo que enseñó Pitágoras. Una historia rigurosa del pitagorismo trata por separado al fundador, los testimonios más próximos y las doctrinas de autores posteriores, cuya influencia llegó a Platón, Aristóteles y al neoplatonismo."
+        },
+        {
+          "heading": "10. Las fuentes antiguas: qué sabemos realmente",
+          "body": "No poseemos memorias ni libros redactados por Pitágoras. Su figura aparece en alusiones tempranas de autores como Jenófanes y Heráclito, mientras que testimonios más amplios de Aristóxeno, Dicearco y otros escritores del siglo IV a. C. se conservan parcialmente en citas posteriores. Las biografías extensas de Diógenes Laercio, Porfirio y Jámblico se escribieron unos ocho siglos después del personaje. Son fuentes imprescindibles para estudiar su recepción, pero no equivalen a una biografía contemporánea."
+        },
+        {
+          "heading": "11. Libros falsamente atribuidos al fundador",
+          "body": "En época helenística circularon escritos bajo el nombre de Pitágoras, entre ellos títulos que tratan de educación, política o naturaleza. La investigación no los considera pruebas de una autoría auténtica. Lo mismo ocurre con distintas sentencias y composiciones pseudopitagóricas transmitidas por la tradición. Cuando Vitruvia recupere una edición o un manuscrito de esos textos deberá catalogarlos como testimonios de la recepción pitagórica, nunca como un autógrafo ni como una obra comprobada del filósofo."
+        },
+        {
+          "heading": "12. Influencia y legado",
+          "body": "Pitágoras se convirtió en una figura de referencia para la filosofía, las matemáticas, la música, la literatura y las artes. Su herencia pasó por escuelas antiguas, el neopitagorismo y el neoplatonismo, y reapareció en la educación medieval y renacentista. La importancia cultural del nombre de Pitágoras es indiscutible; en cambio, cada descubrimiento o doctrina que se le atribuye exige establecer quién lo transmitió y cuándo. Esa diferencia entre fama histórica y prueba documental es central para comprender su legado."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Carl Huffman · Pythagoras",
+          "institution": "Stanford Encyclopedia of Philosophy",
+          "url": "https://plato.stanford.edu/entries/pythagoras/",
+          "note": "Investigación histórica, testimonios tempranos y problema de las obras atribuidas"
+        },
+        {
+          "title": "Pythagoras of Samos",
+          "institution": "MacTutor History of Mathematics · University of St Andrews",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Pythagoras/",
+          "note": "Biografía, cronología e historia de la matemática"
+        }
+      ]
+    }
+  ]
+}
