@@ -246,6 +246,25 @@ html[data-theme=dark] .classic-search-via-vitruvia{color:#e3d5aa;border-color:#b
 @media(max-width:1050px){.classic-triple-reading{grid-template-columns:1fr}.classic-triple-column iframe{height:50vh;min-height:350px}}
 @media(max-width:680px){.classic-double-pdf{grid-template-columns:1fr}.classic-compare-item iframe{height:60vh;min-height:360px}}
 @media print{.classic-pdf-version-toolbar select{display:none}.classic-double-pdf,.classic-triple-reading{grid-template-columns:1fr}}
+
+/* Scholarly result overview for ANY author or topic with multiple catalogue records. */
+.classic-bibliographic-kicker{font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.14em;color:#86704d;margin:0 0 9px}
+.classic-bibliographic-count{font:700 13px/1.7 system-ui,sans-serif;border-top:1px solid #c8bda7;padding-top:11px}
+.classic-bibliographic-note{font:14px/1.8 system-ui,sans-serif;max-width:75ch;margin:15px 0}
+.classic-bibliographic-list{list-style:decimal;padding:0 0 0 25px;margin:20px 0;max-height:75vh;overflow:auto;scrollbar-width:thin;border-top:1px solid #b8a98e}
+.classic-bibliographic-entry{padding:20px 12px 21px;border-bottom:1px solid #c8baa0;overflow-wrap:anywhere}
+.classic-bibliographic-entry h3{font:400 clamp(21px,2vw,27px)/1.32 Georgia,serif;margin:0 0 8px}
+.classic-bibliographic-entry p{font:13px/1.7 system-ui,sans-serif;margin:0 0 9px}
+.classic-bibliographic-entry .classic-item-status{margin:4px 9px 9px 0}
+.classic-bibliographic-open{display:inline-block;padding:9px 14px;border:1px solid #786c5c;border-radius:5px;background:#274156;color:white;cursor:pointer;font:600 12px/1.4 system-ui,sans-serif}
+.classic-bibliographic-open:hover,.classic-bibliographic-open:focus-visible{background:#44627a;outline:2px solid #af966c;outline-offset:2px}
+html[data-theme=dark] .classic-bibliographic-kicker{color:#e3c99c}
+html[data-theme=dark] .classic-bibliographic-count,html[data-theme=dark] .classic-bibliographic-list,html[data-theme=dark] .classic-bibliographic-entry{border-color:#667d8f}
+html[data-theme=dark] .classic-bibliographic-open{background:#e4ddcf;color:#1c3040;border-color:#b5a88e}
+html[data-theme=dark] .classic-bibliographic-open:hover{background:#f3ead6}
+@media(max-width:900px){.classic-bibliographic-list{max-height:none}}
+@media print{.classic-bibliographic-open{display:none}}
+
 </style>
 </head><body>
 <main class="classic-main">
@@ -261,4 +280,4 @@ html[data-theme=dark] .classic-search-via-vitruvia{color:#e3d5aa;border-color:#b
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Seleccioná una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261103-3lang3"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261103-pdf-codex-v1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261104-author-editions-v5"></script></body></html>
+</main><script defer src="assets/theme.js?v=20261103-3lang3"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261103-pdf-codex-v1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261104-bibliographic-overview-v6"></script></body></html>
