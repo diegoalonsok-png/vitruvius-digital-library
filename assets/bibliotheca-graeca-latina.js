@@ -28,7 +28,7 @@ document.querySelectorAll("[data-bi]").forEach(el=>{const v=dict[el.dataset.bi];
 try{localStorage.setItem("vitruvius-ui-lang",lang)}catch{}
 }
 
-let works=[],selected="",tab="text",witnessData={records:[],editions:[]};
+let works=[],selected="",tab="text",witnessData={records:[],editions:[]},showSelectedDetail=false;
 const bcFocusIds=new Set(("vitruvius cicero-officiis cicero-oratore cicero-republica cicero-catilinariae cicero-de-finibus cicero-tusculanae cicero-de-natura-deorum cicero-de-amicitia cicero-de-senectute cicero-de-divinatione cicero-brutus cicero-philippicae caesar-gallico caesar-civili sallust-catiline sallust-iugurtha varro-rustica varro-de-lingua-latina lucretius virgil-aeneid virgil-georgica horace-odes horace-sermones horace-ars-poetica horace-epodi horace-epistulae catullus-carmina plautus-amphitruo plautus-aulularia terentius-andria terentius-heautontimorumenos cato-agri-cultura polybius-historiae").split(" "));
 const adFocusIds=new Set(("diodorus dionysius strabo philo philo-legum-allegoriae philo-de-vita-mosis seneca-epistulae seneca-naturales seneca-de-brevitate seneca-de-ira seneca-de-clementia seneca-de-tranquillitate lucan pliny dioscorides josephus-war josephus-antiquities quintilian martial tacitus-agricola tacitus-germania tacitus-annales tacitus-historiae tacitus-dialogus frontinus frontinus-strategemata celsus columella juvenal suetonius-caesares petronius-satyrica pliny-younger-epistulae apuleius-metamorphoses apuleius-apologia apuleius-de-deo-socratis plutarch-lives plutarch-moralia galen-ars-medica galen-de-usu-partium ptolemy-almagest ptolemy-geographia marcus-aurelius-meditations epictetus-discourses arrian-anabasis-alexandri pausanias-periegesis").split(" "));
 function periodFocus(w){return bcFocusIds.has(w.id)||adFocusIds.has(w.id)||!!w.witnessRecords?.length}
@@ -217,9 +217,47 @@ function initBookSuggestions(){
  field.addEventListener("blur",()=>{if(!list.matches(":hover"))hideBookSuggestions()});
 }
 
+
+function bibliographicSummary(data,query){
+ const box=$("classic-detail");box.replaceChildren();
+ const lang=language(),en=lang==="en",fr=lang==="fr";
+ const subject=fold(query);
+ const exact=data.filter(w=>fold(w.author)===subject||(w.aliases||[]).some(a=>fold(a)===subject));
+ const named=exact.length>=2?exact[0].author:null;
+ const kicker=document.createElement("p");kicker.className="classic-bibliographic-kicker";
+ kicker.textContent=en?"BIBLIOGRAPHIC OVERVIEW":fr?"SYNTHÈSE BIBLIOGRAPHIQUE":"PANORAMA BIBLIOGRÁFICO";box.append(kicker);
+ const title=document.createElement("h2");title.textContent=named||query;box.append(title);
+ const summary=document.createElement("p");summary.className="classic-bibliographic-count";
+ summary.textContent=data.length+" "+(en?"catalogued works":fr?"œuvres répertoriées":"obras catalogadas")+" · "+
+ data.filter(isLocal).length+" "+(en?"available for local reading":fr?"à lire ici":"con lectura local")+" · "+
+ data.filter(w=>hasSource(w)&&!isLocal(w)).length+" "+(en?"with identified sources":fr?"avec des sources identifiées":"con fuentes identificadas");
+ box.append(summary);
+ const note=document.createElement("p");note.className="classic-bibliographic-note";
+ note.textContent=en?"Select a title to view the bibliographic entry and any verified original, translation or manuscript. Catalogue entries alone do not guarantee a readable text.":
+ fr?"Choisissez un titre pour ouvrir sa notice et les textes, traductions ou manuscrits vérifiés. Une notice seule ne garantit pas un texte consultable.":
+ "Elegí un título para consultar su ficha bibliográfica, texto original, traducción o manuscrito disponible. Una obra catalogada no implica que ya exista un texto íntegro para leer.";
+ box.append(note);
+ const list=document.createElement("ol");list.className="classic-bibliographic-list";
+ for(const w of data){
+  const li=document.createElement("li");li.className="classic-bibliographic-entry";
+  const h=document.createElement("h3");h.textContent=w.title;h.lang=w.language;li.append(h);
+  const meta=document.createElement("p");
+  meta.textContent=[w.author,w.dating,w.genre,w.language==="grc"?"Griego antiguo":"Latín"].filter(Boolean).join(" · ");
+  li.append(meta);
+  const badge=document.createElement("span");badge.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");
+  badge.textContent=statusLabel(w);li.append(badge);
+  const button=document.createElement("button");button.type="button";button.className="classic-bibliographic-open";
+  button.textContent=isLocal(w)?(en?"Read this work":fr?"Lire cette œuvre":"Leer esta obra"):
+   (en?"View bibliographic record":fr?"Voir la notice":"Consultar ficha y fuentes");
+  button.addEventListener("click",()=>{choose(w.id);box.scrollIntoView({block:"start",behavior:"smooth"})});
+  li.append(button);list.append(li);
+ }
+ box.append(list);
+}
+
 function render(){const data=filters(),t=terms();const total=works.length,local=works.filter(isLocal).length,withSource=works.filter(w=>hasSource(w)&&!isLocal(w)).length;
- $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+(language()==="en"?"local reading":"lecturas locales")+" · "+withSource+" "+(language()==="en"?"external source records":"fuentes externas identificadas");const target=$("classic-list");target.replaceChildren();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);b.addEventListener("click",()=>choose(w.id));target.append(b)}if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=data[0].pdf?.url?"pdf":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));detail();}
-function choose(id){selected=id;tab=works.find(x=>x.id===id)?.pdf?.url?"pdf":"text";render();
+ $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+(language()==="en"?"local reading":"lecturas locales")+" · "+withSource+" "+(language()==="en"?"external source records":"fuentes externas identificadas");const target=$("classic-list");target.replaceChildren();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);b.addEventListener("click",()=>choose(w.id));target.append(b)}if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=data[0].pdf?.url?"pdf":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));const q=$("classic-query").value.trim();if(q&&data.length>1&&!showSelectedDetail)bibliographicSummary(data,q);else detail();}
+function choose(id){selected=id;showSelectedDetail=true;tab=works.find(x=>x.id===id)?.pdf?.url?"pdf":"text";render();
  const u=new URL(location.href);u.searchParams.set("work",id);u.searchParams.delete("view");u.searchParams.delete("ms");u.searchParams.delete("pdf");history.replaceState(null,"",u);}
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=language()==="en"?"No results.":"Sin resultados.";return}
 const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||w.manuscript?.manifest);
@@ -387,6 +425,6 @@ async function boot(){
  const startParams=new URLSearchParams(location.search),wanted=startParams.get("work");
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
- tab=["pdf","manuscript","external","text","edition","comparepdf","parallel"].includes(requestedView)?requestedView:(works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text");try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();render();});translateInterface();render();initBookSuggestions();}
+ tab=["pdf","manuscript","external","text","edition","comparepdf","parallel"].includes(requestedView)?requestedView:(works.find(w=>w.id===selected)?.pdf?.url?"pdf":"text");try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();showSelectedDetail=false;render();});translateInterface();render();initBookSuggestions();}
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
 })();
