@@ -14,6 +14,7 @@
  bar.dataset.visible='false';
  bar.innerHTML=[
   '<div class="vrf-rail" role="toolbar" aria-label="Controles de lectura">',
+  '<button type="button" id="vrf-drag" class="vrf-key vrf-drag" aria-label="Mover barra de lectura" title="Arrastrar para mover · doble clic para centrar">⠿</button>',
   '<button type="button" id="vrf-decrease" class="vrf-key" aria-label="Reducir letra" title="Reducir letra">A−</button>',
   '<button type="button" id="vrf-settings" class="vrf-key vrf-key-main" aria-label="Opciones de lectura" aria-controls="vrf-panel" aria-expanded="false" title="Opciones de lectura">Aa</button>',
   '<button type="button" id="vrf-increase" class="vrf-key" aria-label="Agrandar letra" title="Agrandar letra">A+</button>',
@@ -32,7 +33,7 @@
  ].join('');
  document.body.append(bar);
  const ui={
-  minus:$('vrf-decrease'),plus:$('vrf-increase'),open:$('vrf-settings'),
+  grip:$('vrf-drag'),minus:$('vrf-decrease'),plus:$('vrf-increase'),open:$('vrf-settings'),
   colors:$('vrf-colors'),dot:bar.querySelector('.vrf-ink-dot'),panel:$('vrf-panel'),
   close:$('vrf-close'),size:$('vrf-size'),percent:$('vrf-percent'),
   font:$('vrf-font'),color:$('vrf-color'),auto:$('vrf-automatic'),
@@ -46,6 +47,9 @@
  function translate(){
   const l=languages[document.documentElement.lang?.slice(0,2)]||languages.es;
   bar.querySelector('.vrf-rail').setAttribute('aria-label',l.rail);
+  const tongue=document.documentElement.lang?.slice(0,2);
+  ui.grip.title=tongue==='en'?'Drag to move · double-click to reset':tongue==='fr'?'Glisser pour déplacer · double-clic pour réinitialiser':'Arrastrar para mover · doble clic para restaurar';
+  ui.grip.setAttribute('aria-label',tongue==='en'?'Move reading toolbar':tongue==='fr'?'Déplacer la barre de lecture':'Mover barra de lectura');
   for(const [el,label] of [[ui.minus,l.smaller],[ui.plus,l.larger],[ui.open,l.settings],[ui.colors,l.colorShortcut]]){
    el.setAttribute('aria-label',label);el.title=label;
   }
@@ -97,10 +101,78 @@
  document.addEventListener('keydown',event=>{
   if(event.key==='Escape'&&!ui.panel.hidden){expand(false);ui.open.focus()}
  });
+ // Movable reading toolbar: a dedicated grip avoids hijacking A+/Aa/color clicks.
+ const positionKey='vitruvia-reader-toolbar-position-v1';
+ const clamp=(n,lo,hi)=>Math.max(lo,Math.min(n,Math.max(lo,hi)));
+ function place(x,y,persist=false){
+  const width=bar.getBoundingClientRect().width||52;
+  const height=bar.getBoundingClientRect().height||245;
+  const left=clamp(x,8,window.innerWidth-width-8);
+  const top=clamp(y,8,window.innerHeight-height-8);
+  bar.style.right='auto';bar.style.bottom='auto';
+  bar.style.left=left+'px';bar.style.top=top+'px';
+  bar.classList.add('vrf-user-positioned');
+  if(persist)try{localStorage.setItem(positionKey,JSON.stringify({x:left,y:top}))}catch{}
+  adjustPanelSide();
+ }
+ function adjustPanelSide(){
+  if(bar.getBoundingClientRect().left<360)ui.panel.classList.add('vrf-panel-right');
+  else ui.panel.classList.remove('vrf-panel-right');
+ }
+ function resetPlacement(){
+  for(const key of ['left','right','top','bottom'])bar.style.removeProperty(key);
+  bar.classList.remove('vrf-user-positioned');
+  ui.panel.classList.remove('vrf-panel-right');
+  try{localStorage.removeItem(positionKey)}catch{}
+ }
+ let drag=null;
+ ui.grip.addEventListener('pointerdown',event=>{
+  if(event.pointerType==='mouse'&&event.button!==0)return;
+  event.preventDefault();
+  const r=bar.getBoundingClientRect();
+  drag={pointer:event.pointerId,dx:event.clientX-r.left,dy:event.clientY-r.top};
+  place(r.left,r.top);
+  bar.classList.add('vrf-dragging');
+ });
+ window.addEventListener('pointermove',event=>{
+  if(!drag||drag.pointer!==event.pointerId)return;
+  event.preventDefault();
+  place(event.clientX-drag.dx,event.clientY-drag.dy);
+ },{passive:false});
+ const finish=event=>{
+  if(!drag||drag.pointer!==event.pointerId)return;
+  drag=null;bar.classList.remove('vrf-dragging');
+  const r=bar.getBoundingClientRect();place(r.left,r.top,true);
+ };
+ window.addEventListener('pointerup',finish);
+ window.addEventListener('pointercancel',finish);
+ ui.grip.addEventListener('dblclick',resetPlacement);
+ ui.grip.addEventListener('keydown',event=>{
+  if(event.key==='Home'){event.preventDefault();resetPlacement();return}
+  const directions={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+  const v=directions[event.key];if(!v)return;
+  event.preventDefault();
+  const r=bar.getBoundingClientRect(),step=event.shiftKey?30:10;
+  place(r.left+v[0]*step,r.top+v[1]*step,true);
+ });
+ window.addEventListener('vitruvia:reader-open',()=>{
+  bar.dataset.userVisible='true';
+  schedule();
+  adjustPanelSide();
+  expand(true);
+  bar.scrollIntoView?.({block:'nearest'});
+ });
+ try{
+  const stored=JSON.parse(localStorage.getItem(positionKey)||'null');
+  if(Number.isFinite(stored?.x)&&Number.isFinite(stored?.y)){
+   bar.dataset.userVisible='true';
+   place(stored.x,stored.y);
+  }
+ }catch{}
  function visibility(){
   // The rail is fixed and should accompany the reader throughout the entire
   // results page; viewport checks could incorrectly hide it mid-article.
-  const visible=document.body.classList.contains('vitruvia-reading')&&!article.hidden;
+  const visible=bar.dataset.userVisible==='true'||document.body.classList.contains('vitruvia-reading')&&!article.hidden;
   bar.dataset.visible=String(visible);
   if(!visible&&!ui.panel.hidden)expand(false);
  }
@@ -110,7 +182,7 @@
   raf=true;requestAnimationFrame(()=>{raf=false;visibility()});
  }
  window.addEventListener('scroll',schedule,{passive:true});
- window.addEventListener('resize',schedule,{passive:true});
+ window.addEventListener('resize',()=>{if(bar.classList.contains('vrf-user-positioned')){const r=bar.getBoundingClientRect();place(r.left,r.top)}schedule()},{passive:true});
  window.addEventListener('vitruvia:search',schedule);
  window.addEventListener('vitruvia:clear',schedule);
  new MutationObserver(schedule).observe(article,{attributes:true,attributeFilter:['hidden']});
