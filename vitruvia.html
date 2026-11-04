@@ -956,11 +956,12 @@ html[data-theme=light] .article-reference-books .principal-reference-work strong
     link('Artículo enciclopédico',identity.url);
    }
   }
-  // Well-attested multilingual names allow a genuine iconographic archive search.
-  const royal=/^(carlo\s*magno|carlomagno|charlemagne|charles\s+the\s+great|karolus\s+magnus)$/i.test(normalizeImage(q));
-  if(royal)aliases.push('Charlemagne','Charlemagne coronation','Charlemagne manuscript','Charlemagne portrait','Carolus Magnus','Karl der Grosse','Carlo Magno','Carlomagno');
+  // No personality-specific rules: query all documented canonical names and redirects.
   const searches=deity?['Zeus statue','Shiva sculpture','Osiris Egyptian god','Jupiter Roman god']:
-   [...new Set([aliases[0],...(royal?['Charlemagne','Carolus Magnus']:[]),identity?.canonical].filter(Boolean))].slice(0,3);
+   [...new Set(aliases.filter(v=>String(v).trim().length>=3))].slice(0,5);
+  link('Museos · localizar obras','https://www.google.com/search?'+new URLSearchParams({q:q+' site:louvre.fr OR site:metmuseum.org OR site:uffizi.it OR site:nationalgallery.org.uk'}));
+  link('Colecciones de museos · Europeana','https://www.europeana.eu/es/search?'+new URLSearchParams({query:q}));
+  link('Smithsonian · colecciones','https://www.si.edu/es/search/collection-images?'+new URLSearchParams({edan_q:q}));
   const makeParams=term=>new URLSearchParams({action:'query',generator:'search',gsrsearch:'intitle:'+term,gsrnamespace:'6',gsrlimit:'50',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'480',format:'json',origin:'*'});
   abort=new AbortController();
   try{
@@ -1020,10 +1021,10 @@ html[data-theme=light] .article-reference-books .principal-reference-work strong
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-biography-reference-books-v3" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-universal-dossiers-v4" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261104-entity-v1" defer></script>
 <script src="assets/search-agentic.js?v=20261104-bilingual-evidence-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261104-universal-codices-v7" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-universal-codices-v8" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
