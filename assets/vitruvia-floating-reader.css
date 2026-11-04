@@ -78,3 +78,27 @@
  .vitruvia-reading-float{display:none!important}
  body.vitruvia-reading #vitruvia-article .article-grid{padding-right:0!important}
 }
+
+/* Resilient visibility: show the reader for every open result, regardless of
+   how the article was reached or how its scroll geometry changes. */
+@media screen{
+ body.vitruvia-reading #vitruvia-reading-float{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+ }
+ /* If JavaScript failed to create the enhanced rail, the native Aa settings
+    still follow the user down the page, never hiding the only reading control. */
+ body.vitruvia-reading:not(:has(#vitruvia-reading-float)) #reading-options{
+  position:fixed!important;
+  top:clamp(150px,33vh,310px)!important;
+  right:clamp(12px,2vw,30px)!important;
+  z-index:400!important;
+  margin:0!important;
+  box-shadow:0 10px 32px #0007!important;
+ }
+ body.vitruvia-reading:not(:has(#vitruvia-reading-float)) #reading-options .reading-options-panel{
+  right:0!important;
+ }
+}
