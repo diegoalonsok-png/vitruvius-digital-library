@@ -632,19 +632,17 @@ function addTopicBibliography(rows,query,ark){
   $("article-body").append(list);
  }
 }
-async function renderTopic(top,rows,query,token){
- reset(query,phrase("Artículo temático · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
+async function renderTopic(top,rows,query,token,person=null){
+ reset(person?.name||query,phrase("Artículo enciclopédico · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
  const topic=normalized(query);
  const ark=topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
  const sources=rows.filter(x=>x.link&&relevance(x,query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum"].includes(x.type));
- const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,query)>=40).sort((x,y)=>relevance(y,query)-relevance(x,query))[0];
+ const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,person?.name||query)>=40).sort((x,y)=>relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
  paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
- if(ark){
-  for(const [headingText,body] of arkSections){heading(headingText);paragraph(body)}
-
- }
- const data=wiki?await wikiSummary(wiki):await topicWikiData(query);
+ if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
+ if(person?.id==="cicero"){for(const [sectionTitle,body] of ciceroChapters){heading(sectionTitle);paragraph(body)}}
+ const data=wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
  if(token!==active)return;
  if(data?.extract){
   heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
@@ -652,7 +650,7 @@ async function renderTopic(top,rows,query,token){
   appendBiographyExtract(data.extract);
   const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
   if(link)$("article-body").append(link);
- }else if(!ark){
+ }else if(!ark&&person?.id!=="cicero"){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
@@ -660,13 +658,13 @@ async function renderTopic(top,rows,query,token){
  paragraph("La galería documental de Wikimedia Commons se carga automáticamente con esta búsqueda. Incluye miniaturas enlazadas a su ficha de origen, donde se consultan autor y licencia.","article-note");
  const galleryLink=href("#vitruvia-images","Ver galería de imágenes vinculadas a esta consulta");
  if(galleryLink)$("article-body").append(galleryLink);
- addTopicBibliography(rows,query,ark);
+ addTopicBibliography(rows,person?.name||query,ark);
  heading(phrase("Investigación complementaria","Further research","Recherche complémentaire"));
  const list=make("ul",undefined,"article-related");
  for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
  if(list.childNodes.length)$("article-body").append(list);
- appendVerifiedTopicPassages(rows,query);
- appendAcademicLinks(query);
+ if(person)appendPersonLoci(rows,person);else appendVerifiedTopicPassages(rows,query);
+ appendAcademicLinks(person?.name||query);
  aside(sources);references(rows);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
@@ -930,27 +928,21 @@ function renderVitruviusAuthority(rows){
  buildContents();
 }
 
-function render(rows,q,person=null){const token=++active;
-bibliographyContext={rows:rows||[],query:q||""};
-if(!q){root.hidden=true;return}
-if(isVitruviusAuthority(q)){ $("article-evidence")?.replaceChildren();renderVitruviusAuthority(rows||[]);return }
-if(!rows?.length){root.hidden=true;return}
-if(person){
+function render(rows,q,person=null){
+ const token=++active;
+ bibliographyContext={rows:rows||[],query:person?.name||q||""};
+ if(!q){root.hidden=true;return}
  $("article-evidence")?.replaceChildren();
- const biographies=rows.filter(x=>personWikiHit(x,person,q)).sort((a,b)=>
-  Number(b.wikiLang===document.documentElement.lang)-Number(a.wikiLang===document.documentElement.lang));
- void renderHistoricalPerson(biographies[0]||null,rows,person,token).then(()=>{if(token===active)highlightArticle(person.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q)});
- return;
-}
-const top=choose(rows,q);if(!top){root.hidden=true;return}
-if(top.type==="topic")$("article-evidence")?.replaceChildren();
-else reportEvidence(rows,q);
-if(top.type==="preface"){renderPreface(top,rows);highlightArticle(q);return}
- if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
-if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
-if(top.type==="wikipedia"){void renderWiki(top,rows,token).then(()=>{if(token===active)highlightArticle(q)});return}
-if(top.type==="topic"){void renderTopic(top,rows,q,token).then(()=>{if(token===active)highlightArticle(q)});return}
-renderOther(top,rows);highlightArticle(q)
+ if(isVitruviusAuthority(q)){renderVitruviusAuthority(rows||[]);return}
+ const found=rows||[];
+ const top=found.length?choose(found,q):{type:"topic",title:q};
+ const isCodex=/(?:codex|harley|harleianus|ms\s*2767)/i.test(q);
+ const isLocus=/(?:[IVX]{1,4}|\d{1,2})\s*[.,:]\s*\d{1,2}\s*[.,:]\s*\d{1,2}/i.test(q);
+ if(isCodex&&top.type==="manuscript"){renderManuscript(top,found);return}
+ if(isLocus&&top.type==="passage"){renderLocus(top,found);highlightArticle(q);return}
+ void renderTopic({type:"topic",title:q},found,q,token,person).then(()=>{
+  if(token===active)highlightArticle(person?.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q);
+ });
 }
 window.VitruviaArticles={render,version:"1.1-person-biography"};
 })();
