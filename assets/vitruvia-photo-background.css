@@ -1,0 +1,50 @@
+/* Photo backgrounds are optional and local to the reader's preferences. */
+.vr-photo-options{
+ display:flex;flex-direction:column;gap:9px;
+ margin-top:18px;padding:15px 0 3px;
+ border-top:1px solid #82828280;color:inherit;
+ font:400 12px/1.5 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options h3{font:600 14px/1.4 Arial,Helvetica,sans-serif;margin:0 0 3px}
+.vr-photo-options a{color:inherit!important;text-decoration:underline;text-underline-offset:3px}
+.vr-photo-options label{color:inherit!important;opacity:.95}
+.vr-photo-url-row,.vr-photo-opacity-row{display:flex;align-items:center;gap:7px;min-width:0}
+.vr-photo-options input[type=url]{
+ flex:1;min-width:0;width:100%;box-sizing:border-box;
+ padding:8px;border:1px solid #777;border-radius:7px;
+ color:var(--vr-control-ink,#eee);background:var(--vr-control-bg,#353537);
+ font:12px/1.4 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options input[type=file]{
+ width:100%;min-width:0;box-sizing:border-box;font:11px/1.5 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options input[type=file]::file-selector-button{
+ background:var(--vr-control-bg,#353537);color:inherit;
+ border:1px solid #777;border-radius:6px;padding:7px 10px;
+}
+.vr-photo-options input[type=range]{flex:1;min-width:0;accent-color:#aeb1b4}
+.vr-photo-options output{min-width:40px;font-size:11px}
+.vr-photo-options button{
+ border:1px solid #797b80;border-radius:7px;padding:8px 11px;
+ background:var(--vr-control-bg,#353537);color:inherit;cursor:pointer;
+ font:500 12px/1.4 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options #vr-photo-message{
+ font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+ color:inherit!important;opacity:.8;margin:0!important;
+}
+@media screen{
+ html[data-reading-photo=true] body,
+ html[data-reading-photo=true] .site-shell,
+ html[data-reading-photo=true] body.vitruvia-reading .nav{
+  background-image:linear-gradient(var(--vr-photo-veil),var(--vr-photo-veil)),var(--vr-photo-image)!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-position:center,center!important;
+  background-attachment:fixed,fixed!important;
+ }
+}
+@media print{
+ html[data-reading-photo=true] body,
+ html[data-reading-photo=true] .site-shell{background-image:none!important}
+}
