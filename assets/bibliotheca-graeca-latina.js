@@ -62,9 +62,9 @@ function pubLinks(entries,title,container){
 function language(){return $("classic-ui-language").value||"es";}
 function terms(){return L[language()];}
 function navLink(url,txt){return '<a target="_blank" rel="noopener noreferrer" href="'+safe(url)+'">'+safe(txt)+' ↗</a>';}
-function isLocal(w){return w.publicStatus==="lectura-local-completa"&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length)}
+function isLocal(w){return ["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length)}
 function hasSource(w){return !!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest||w.witnessRecords?.length||w.historicEditions?.length)}
-function statusLabel(w){return isLocal(w)?"LECTURA EN VITRUVIA":hasSource(w)?"FUENTE IDENTIFICADA":"REPERTORIO · LOCALIZACIÓN"}
+function statusLabel(w){return isLocal(w)?(w.publicStatus==="lectura-local-parcial"?"PDF PARCIAL · OBRA INCOMPLETA":"LECTURA EN VITRUVIA"):hasSource(w)?"FUENTE IDENTIFICADA":"REPERTORIO · LOCALIZACIÓN"}
 function workSearchText(w){return [w.author,w.title,w.genre,w.dating,w.language,...(w.aliases||[]),
  ...(w.witnessRecords||[]).flatMap(ms=>[ms.title,ms.shelfmark,ms.library,ms.date]),
  ...(w.historicEditions||[]).flatMap(ed=>[ed.title,ed.editor,ed.year,ed.provider])].join(" ")}
