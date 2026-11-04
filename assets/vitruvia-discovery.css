@@ -21,3 +21,50 @@
 .search-destinations .vitruvia-query-link{display:inline-flex;align-items:center;font-size:13px;min-height:38px;padding:8px 12px;text-decoration:none}
 
 .article-author-reading{border-top:1px solid var(--line,#777);border-bottom:1px solid var(--line,#777);margin:30px 0;padding:16px 0}.article-author-reading li{margin:14px 0}.article-author-reading li>a{font-weight:600}.article-author-reading small{display:block;line-height:1.6}.article-author-reading h4{margin-top:22px}
+
+/* Editorial typesetting · universal encyclopedia results (not source rewriting).
+   A book-like measure and separate bibliographic records replace full-width walls of text. */
+body.vitruvia-reading #vitruvia-article .article-body{
+ max-width:77ch!important;
+ width:100%;
+}
+body.vitruvia-reading #vitruvia-article .article-body p:not(.article-note){
+ max-width:100%!important;
+ margin:0 0 1.35em!important;
+ text-align:left!important;
+ text-justify:auto;
+ hyphens:manual!important;
+ -webkit-hyphens:manual!important;
+ line-height:1.85!important;
+}
+#vitruvia-article .article-bibliography-list{
+ list-style:none;
+ padding:0;
+ margin:12px 0 32px;
+ max-width:100%;
+}
+#vitruvia-article .article-bibliography-list>li{
+ display:list-item;
+ list-style:none;
+ padding-left:1.65em;
+ text-indent:-1.65em;
+ margin:0 0 1.3em;
+ line-height:1.8;
+ hyphens:manual;
+ -webkit-hyphens:manual;
+ overflow-wrap:anywhere;
+}
+#vitruvia-article .article-bibliography-list>li:last-child{margin-bottom:0}
+@media(max-width:700px){
+ body.vitruvia-reading #vitruvia-article .article-body{max-width:100%!important}
+ #vitruvia-article .article-bibliography-list>li{padding-left:1.15em;text-indent:-1.15em}
+}
+@media print{
+ body.vitruvia-reading #vitruvia-article .article-body{max-width:none!important}
+ #vitruvia-article .article-bibliography-list>li{
+  color:#111!important;
+  break-inside:avoid-page;
+  page-break-inside:avoid;
+  orphans:3;widows:3;
+ }
+}
