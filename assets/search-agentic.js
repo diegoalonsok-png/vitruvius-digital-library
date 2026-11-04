@@ -45,7 +45,7 @@ async function chunks(){
    const d=result.value,source=sources[outcomes.indexOf(result)];
    return d.passages.map(p=>({
     id:(source.workId||"work")+"-"+(d.edition||source.edition)+"-"+p.locus,
-    locus:p.locus,workTitle:source.workTitle||d.title||"Obra clásica",
+    locus:p.locus,workId:source.workId,workTitle:source.workTitle||d.title||"Obra clásica",
     author:source.author||d.author||"Autor documentado",edicion:d.version||source.edition,
     editionId:d.edition,language:d.language||source.language,sourceLabel:source.source||"",
     texto:p.latin||p.original||"",traduccion:p.translation||"",
@@ -77,7 +77,7 @@ async function search(q){
   latin:c.texto||"",translation:c.traduccion||"",locus:c.locus,
   excerpt:excerptAt(latinScore>translationScore?c.texto:c.traduccion||c.texto,tt),
   meta:"Fuente textual verificada · "+(c.pagina_pdf?"p. PDF "+c.pagina_pdf+" · ":"")+"locus "+c.locus,
-  link:c.lector||"lector-bilingue.html",edition:c.edicion,
+  link:c.lector||"lector-bilingue.html",edition:c.edicion,workId:c.workId,
   rating:score,source:c.sourceLabel||"Corpus textual",
   exactTextMatch:exact
  }));
