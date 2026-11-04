@@ -201,7 +201,7 @@ html[data-reading-background-tone=light] .background-palette-swatches button[ari
 
 /* Custom backgrounds also restyle the landing page's editorial ink and divisions. */
 @media screen{
- html[data-reading-background=custom] body :is(.logo-small,.navlinks a,.hero h1,.hero .eyebrow,.hero .lead,.hero .explain,.hero .featured h2,.hero .featured .featured-copy .meta,.hero .featured p,.hero .featured a#featured-link,.hero .featured a.featured-reading-item,.hero .featured .featured-credit,.hero .featured .featured-number,.metrics,.metrics b,.results .section-head h2,.footer,.footer h3,.footer a,.footer p,#vitruvia-welcome h3,#vitruvia-welcome .welcome-aside strong,#vitruvia-welcome .welcome-entry>a,#vitruvia-welcome .welcome-kicker,#vitruvia-welcome .welcome-examples a){
+ html[data-reading-background=custom] body :is(.logo-small,.navlinks a,.hero h1,.hero .eyebrow,.hero .lead,.hero .explain,.hero .featured h2,.hero .featured .featured-copy .meta,.hero .featured p,.hero .featured a.featured-reading-item,.hero .featured .featured-credit,.hero .featured .featured-number,.metrics,.metrics b,.results .section-head h2,.footer,.footer h3,.footer a,.footer p,#vitruvia-welcome h3,#vitruvia-welcome .welcome-aside strong,#vitruvia-welcome .welcome-entry>a,#vitruvia-welcome .welcome-kicker,#vitruvia-welcome .welcome-examples a){
   color:var(--vr-page-ink)!important;
  }
  html[data-reading-background=custom] body :is(.hero .suggestions,.hero .featured .meta,.hero .featured p,.hero .featured .featured-credit,.footer-legal,#vitruvia-welcome p,.welcome-examples,.welcome-kicker){
@@ -251,4 +251,44 @@ html[data-reading-background-tone=light] .background-palette-swatches button[ari
   background:transparent!important;color:var(--vr-page-ink)!important;border:0!important;
  }
  html[data-reading-background=custom] body .searchform button#clear-search:hover{background:var(--vr-control-hover)!important;color:var(--vr-control-ink)!important}
+}
+
+/* Fix: the feature CTA was dark-on-dark because general landing ink overrode its
+   button ink. Its colors follow the actual selected background, not only theme. */
+@media screen {
+ html body .hero .featured a#featured-link{
+  background:#303034!important;
+  color:#f8f8f9!important;
+  border:1px solid #89898e!important;
+  text-decoration:none!important;
+ }
+ html body .hero .featured a#featured-link :is(span,svg){
+  color:inherit!important;
+ }
+ html body .hero .featured a#featured-link:is(:hover,:focus-visible){
+  background:#4c4c51!important;
+  color:#fff!important;
+  border-color:#bcbcc0!important;
+ }
+ html[data-theme=light]:not([data-reading-background-tone=dark]) body .hero .featured a#featured-link,
+ html[data-reading-background-tone=light] body .hero .featured a#featured-link{
+  background:#ededee!important;
+  color:#1b1b1f!important;
+  border-color:#7e7e84!important;
+ }
+ html[data-theme=light]:not([data-reading-background-tone=dark]) body .hero .featured a#featured-link:is(:hover,:focus-visible),
+ html[data-reading-background-tone=light] body .hero .featured a#featured-link:is(:hover,:focus-visible){
+  background:#d6d6d9!important;
+  color:#101014!important;
+  border-color:#55555a!important;
+ }
+ html[data-reading-background-tone=dark] body .hero .featured a#featured-link{
+  background:#303034!important;
+  color:#f8f8f9!important;
+  border-color:#89898e!important;
+ }
+ html[data-reading-background-tone=dark] body .hero .featured a#featured-link:is(:hover,:focus-visible){
+  background:#4c4c51!important;
+  color:#fff!important;
+ }
 }
