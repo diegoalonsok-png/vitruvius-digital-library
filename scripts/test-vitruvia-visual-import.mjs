@@ -34,14 +34,14 @@ assert(js.includes('discard({clearDescription:true});close({reset:false})'),'Sea
 assert(js.includes("window.addEventListener('pagehide'"),'Navigation must clear image');
 assert(js.includes("document.addEventListener('visibilitychange'"),'Background tabs must clear images');
 assert(js.includes("window.addEventListener(name,()=>close())"),'Search and reset must clear images');
-assert(js.includes('form.addEventListener(\\'submit\\',()=>close(),true)'),'All search submits must clear images');
+assert(js.includes("form.addEventListener('submit',()=>close(),true)"),'All search submits must clear images');
 assert(js.includes("window.VitruviaVisualImport={filenameQuery,directPhotoURL,version:'1.0'}"),'Public API must not expose raw file bytes');
 assert(js.includes('https://lens.google.com/'),'Visual recognition is explicitly routed to optional external service');
 assert(js.includes('https://lens.google.com/')&&js.includes('Ningún archivo se envía desde Vitruvia'),'No silent external upload');
 assert(css.includes('.vr-visual-panel[hidden]'),'Panel starts hidden');
 assert(page.includes('id="vr-visual-add"')&&page.includes('id="vr-visual-camera"'),'Both icons must be in the real search form');
-assert(page.includes('assets/vitruvia-visual-import.js?v=20261104-ephemeral-visual-v1'));
-assert(page.includes('assets/vitruvia-visual-import.css?v=20261104-ephemeral-visual-v1'));
+assert(page.includes('assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2'));
+assert(page.includes('assets/vitruvia-visual-import.css?v=20261104-private-pdf-v2'));
 const searchForm=page.slice(page.indexOf('<form class="searchform"'),page.indexOf('</form>',page.indexOf('<form class="searchform"')));
 assert(searchForm.includes('id="vr-visual-camera"')&&searchForm.includes('id="vr-visual-add"'),'Icons must be inside form');
 assert(searchForm.indexOf('id="vr-visual-camera"')<searchForm.indexOf('id="submit"'),'Camera must precede submit button');
