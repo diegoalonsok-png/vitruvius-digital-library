@@ -307,6 +307,23 @@ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||
  if(!labels.some(x=>x[0]===tab))tab=labels[0][0];
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"Traducción sin cotejar.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
+if(w.encyclopedia?.url&&/^https:\/\/[a-z-]+\.wikipedia\.org\/wiki\//i.test(w.encyclopedia.url)){
+  const study=document.createElement('section');study.className='classic-encyclopedia-study';
+  const heading=document.createElement('h3');heading.textContent='Estudio enciclopédico · contextualización de la obra';
+  const intro=document.createElement('p');
+  intro.textContent=w.encyclopedia.note||'Artículo secundario de contexto histórico; no es la edición del texto antiguo.';
+  const links=document.createElement('div');links.className='classic-linkline';
+  const internal=document.createElement('a');internal.href=w.encyclopedia.internalSearch||'vitruvia.html?q='+encodeURIComponent(w.title);
+  internal.textContent='Leer estudio enciclopédico dentro de Vitruvia ↗';links.append(internal);
+  const original=document.createElement('a');original.href=w.encyclopedia.url;
+  original.target='_blank';original.rel='noopener noreferrer';
+  original.textContent='Fuente original, notas e historial en Wikipedia ↗';links.append(original);
+  const attribution=document.createElement('small');
+  attribution.textContent=w.encyclopedia.attribution||'Wikipedia · licencia CC BY-SA; consultar fuente original.';
+  study.append(heading,intro,links,attribution);
+  const tabs=box.querySelector('.classic-tabstrip');
+  if(tabs)tabs.before(study);else box.append(study);
+ }
 const back=document.createElement("a");back.href="vitruvia.html?q="+encodeURIComponent((w.aliases||[])[0]||w.title)+"&mode=site";
  back.className="classic-search-via-vitruvia";back.textContent="⌕ Buscar esta obra, sus códices y ediciones en Vitruvia";box.append(back);
  pubLinks(w.witnessRecords,"Testimonios manuscritos verificados · códices",box);
