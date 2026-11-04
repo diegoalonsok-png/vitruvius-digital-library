@@ -24,6 +24,8 @@ jobs:
           node scripts/test-citations.mjs
           node scripts/test-search.mjs
           node scripts/test-vitruvia-discovery.mjs
+          node --check assets/vitruvia-academic-reader.js
+          node scripts/test-vitruvia-academic-reader.mjs
           node scripts/test-vitruvia-dictation.mjs
           node scripts/test-vitruvia-resilience.mjs
           node scripts/test-vitruvia-entity-priority.mjs
