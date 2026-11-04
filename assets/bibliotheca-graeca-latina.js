@@ -303,6 +303,7 @@ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||
   hasPdf?[...pdfTab,...tripleTab,...compareTab,...transcriptionTab,...manuscriptTab]:
   w.localHtml?[["text",t.source],...manuscriptTab]:
   [["text",t.source],...manuscriptTab,["edition",t.edition]];
+ if(w.historicEditions?.length&&!labels.some(x=>x[0]==="edition"))labels.push(["edition",t.edition]);
  if(!labels.some(x=>x[0]===tab))tab=labels[0][0];
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"Traducción sin cotejar.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
@@ -375,7 +376,7 @@ if(tab==="manuscript"){
    window.ClassicsFacsimileViewer?.mountManuscript(pane,fallback);
   }else pane.append(document.createTextNode("Sin códice identificado para esta obra."));
  }
-if(tab==="edition"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,"en");}else if(tab==="edition"){pane.innerHTML="<h3>"+safe(t.edition)+"</h3><p>"+safe(w.reading.status)+"</p><p>"+safe(t.noTrans)+"</p><p>"+safe(t.notHosted)+"</p><div class='classic-linkline'>"+navLink(w.links.scaife,t.scaife)+"</div>";}
+if(tab==="edition"&&w.historicEditions?.length){pane.replaceChildren();pubLinks(w.historicEditions,t.edition,pane);}else if(tab==="edition"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,"en");}else if(tab==="edition"){pane.innerHTML="<h3>"+safe(t.edition)+"</h3><p>"+safe(w.reading.status)+"</p><p>"+safe(t.noTrans)+"</p><p>"+safe(t.notHosted)+"</p><div class='classic-linkline'>"+navLink(w.links.scaife,t.scaife)+"</div>";}
 if(tab==="pdf"){
   if(w.pdf?.url){
    const variants=pdfEditions.length?pdfEditions:[w.pdf];
@@ -456,7 +457,7 @@ if(tab==="pdf"){
 }
 async function boot(){
  const [res,reference]=await Promise.all([
-  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json"),
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-authors-witnesses-v3"),
   fetch("data/bibliotheca-testimonia-verified.json?v=20261104-authors-witnesses-v3").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
