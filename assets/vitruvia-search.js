@@ -367,7 +367,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
- const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-loci-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-faventinus-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-readings-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
  const books=results[0].status==="fulfilled"?results[0].value:{works:[]},pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];

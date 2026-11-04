@@ -475,8 +475,8 @@ if(tab==="pdf"){
 }
 async function boot(){
  const [res,reference]=await Promise.all([
-  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-loci-v1"),
-  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-faventinus-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-readings-v1"),
+  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;

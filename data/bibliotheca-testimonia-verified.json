@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores.",
   "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
@@ -628,6 +628,391 @@
       "url": "https://iucat.iu.edu/iub/6623459",
       "provider": "Cambridge University Press",
       "note": "Texto latino de Faventino con traducción inglesa y comparación con Vitruvio. ISBN 0-521-20141-1."
+    },
+    {
+      "workId": "caesar-civili",
+      "title": "Commentarii de bello civili · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Caesar/Civil_Wars/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "caesar-gallico",
+      "title": "Commentarii de bello Gallico · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Caesar/Gallic_War/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "sallust-catiline",
+      "title": "Bellum Catilinae · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "sallust-iugurtha",
+      "title": "Bellum Iugurthinum · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "varro-rustica",
+      "title": "Rerum rusticarum libri tres · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Varro/de_Re_Rustica/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "diodorus",
+      "title": "Βιβλιοθήκη ἱστορική · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "dionysius",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "quintilian",
+      "title": "Institutio oratoria · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Quintilian/Institutio_Oratoria/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "tacitus-annales",
+      "title": "Annales · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Tacitus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "tacitus-historiae",
+      "title": "Historiae · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Tacitus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "frontinus",
+      "title": "De aquaeductu urbis Romae · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "frontinus-strategemata",
+      "title": "Strategemata · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "columella",
+      "title": "De re rustica · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Columella/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "celsus",
+      "title": "De medicina · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Celsus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "title": "De agri cultura · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "plutarch-lives",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "plutarch-moralia",
+      "title": "Ἠθικά (Moralia) · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "cicero-de-finibus",
+      "title": "De finibus bonorum et malorum · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Finibus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "cicero-de-amicitia",
+      "title": "Laelius de amicitia · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/Laelius_de_Amicitia/text*.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "cicero-de-senectute",
+      "title": "Cato Maior de senectute · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/Cato_Maior_de_Senectute/text*.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "cicero-de-divinatione",
+      "title": "De divinatione · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "velleius-historia",
+      "title": "Historia Romana · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "suetonius-caesares",
+      "title": "De vita Caesarum · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "polybius-historiae",
+      "title": "Ἱστορίαι · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "herodotus-historiae",
+      "title": "Ἱστορίαι · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "cassius-dio-historia",
+      "title": "Ῥωμαϊκὴ ἱστορία · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "appian-romaika",
+      "title": "Ῥωμαϊκά · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Appian/",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "ps-aristotle-mechanica",
+      "title": "Μηχανικὰ προβλήματα · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aristotle/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "title": "Πολιορκητικά · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aeneas_Tacticus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "procopius-aedificiis",
+      "title": "Περὶ κτισμάτων · texto y traducción inglesa",
+      "langs": [
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "title": "De die natali · texto y traducción francesa",
+      "langs": [
+        "la",
+        "fr"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Censorinus/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago)",
+      "note": "Traducción francesa con el texto latino; la edición de base se indica en la fuente. Enlace externo, no alojado en este sitio."
+    },
+    {
+      "workId": "augustus-res-gestae",
+      "title": "Res gestae divi Augusti · texto y traducción inglesa",
+      "langs": [
+        "la",
+        "grc",
+        "en"
+      ],
+      "type": "texto-traduccion-en-linea",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Augustus/Res_Gestae/home.html",
+      "provider": "LacusCurtius (Bill Thayer, University of Chicago) · edición Loeb Classical Library en dominio público",
+      "note": "Traducción inglesa de la edición Loeb en dominio público con el texto original enfrentado; fuente externa, no alojada en este sitio."
     }
   ]
 }
