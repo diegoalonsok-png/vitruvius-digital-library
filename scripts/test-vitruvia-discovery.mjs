@@ -141,3 +141,33 @@ test('museum records outrank equivalent unprovenanced photographs and masked var
  const mask=D.imageRank(page('Vitruvius bust with surgical mask.jpg'),topic);
  assert(museum.score>plain.score);assert(mask.score<plain.score);
 });
+
+
+test('Quijote bibliography is typeset as separate records without losing or inventing words',()=>{
+ const citation='Aguirre Bellver, Joaquín (2005). El borrador de Cervantes. ISBN 84-321-2919-4. Anso, Carlos (2001). Don Quijote o el sueño de Cervantes. Pamplona: Pamiela. Ascunce Arrieta, José Ángel (1997). Los quijotes del Quijote. — (2005). El Quijote como tragedia. Bonilla y San Martín, Adolfo (1926). Beltrán, Francisco, ed. Cervantes y su obra. Madrid.';
+ const blocks=D.parseExtract('== Referencias ==\n\n=== Bibliografía ===\n\n'+citation+'\n\n== Enlaces externos ==\n\nVolver a la obra.');
+ const list=blocks.filter(b=>b.type==='bibliography-item');
+ assert.equal(list.length,6);
+ assert.equal(list.map(b=>b.text).join(' '),citation);
+ assert.equal(blocks.at(-1).type,'paragraph');
+ assert.equal(blocks.at(-1).text,'Volver a la obra.');
+});
+test('long encyclopedia sections read as paragraphs; bibliography uses a hanging-indent list',()=>{
+ const code=source('assets/vitruvia-article.js');
+ const fn=code.slice(code.indexOf('function appendBiographyExtract('),code.indexOf('const objectContextCache='));
+ const rendered=[];
+ const make=(tag,text,cls)=>({tag,text,cls,children:[],append(item){this.children.push(item)}});
+ const append=new Function('window','make','$','paragraph',fn+';return appendBiographyExtract;')(
+  {VitruviaDiscovery:D},make,()=>({append:item=>rendered.push(item)}),(text,cls)=>rendered.push({tag:'p',text,cls}));
+ const phrase='La tradición manuscrita del Quijote requiere estudiar ediciones, impresores y el contexto de cada testimonio. ';
+ const prose=phrase.repeat(17).trim();
+ const citation='Aguirre Bellver, Joaquín (2005). El borrador de Cervantes. Anso, Carlos (2001). Don Quijote o el sueño de Cervantes.';
+ append('== Ediciones en castellano ==\n\n'+prose+'\n\n== Bibliografía ==\n\n'+citation);
+ const paragraphs=rendered.filter(x=>x.tag==='p'),lists=rendered.filter(x=>x.tag==='ul');
+ assert.ok(paragraphs.length>=2);
+ assert.equal(paragraphs.map(p=>p.text).join(' '),prose);
+ assert.equal(lists.length,1);
+ assert.equal(lists[0].cls,'article-bibliography-list');
+ assert.deepEqual(lists[0].children.map(x=>x.text).join(' '),citation);
+ assert.equal(lists[0].children.length,2);
+});
