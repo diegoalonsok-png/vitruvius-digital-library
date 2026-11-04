@@ -332,7 +332,7 @@ const htmlText=s=>new DOMParser().parseFromString(String(s||""),"text/html").bod
 function culturalWeight(title,description){const s=norm(title+" "+description);const all=["architecture","arquitectura","architect","history","historia","histoire","arte","artist","artistic","roman","romano","ancient","antiguo","greek","griego","archaeology","arqueologia","patrimonio","heritage","cultural","medieval","renaissance","renacimiento","manuscript","manuscrito","architecture"];return all.some(x=>s.includes(x))?7:0}
 async function wiki(q,language){
  const lang=["es","en","fr"].includes(language)?language:"es";
- const p=new URLSearchParams({action:"query",list:"search",srsearch:q,srlimit:"7",srprop:"snippet|wordcount",format:"json",utf8:"1",origin:"*"});
+ const p=new URLSearchParams({action:"query",list:"search",srsearch:q,srlimit:"15",srprop:"snippet|wordcount",format:"json",utf8:"1",origin:"*"});
  const d=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+p);
  const found=(d.query?.search||[]).filter(w=>Number.isInteger(w.pageid)&&w.pageid>0);
  let pictures={};
@@ -382,7 +382,7 @@ async function museum(generalQuery){
 
 /* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
 async function crossref(generalQuery){
- const params=new URLSearchParams({query:generalQuery,rows:"8",select:"DOI,title,author,published,issued,type,publisher,URL,container-title,volume,issue,page"});
+ const params=new URLSearchParams({query:generalQuery,rows:"12",select:"DOI,title,author,published,issued,type,publisher,URL,container-title,volume,issue,page"});
  const d=await fetchJSON("https://api.crossref.org/works?"+params,12000);
  const items=d.message?.items||[];
  return items.filter(x=>x.DOI&&Array.isArray(x.title)&&x.title[0]).map((x,i)=>{
@@ -700,7 +700,7 @@ async function search(){
  const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;if(!q)return;
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
- const generalQuery=authority?authority.personName:topicQuery(q);
+ const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));
  document.body.classList.add("vitruvia-reading");
  window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
  $("clear-search").hidden=false;
