@@ -1,0 +1,16 @@
+{
+  "schema": "vitruvia-classics-index-manifest-v1",
+  "updated": "2026-11-04",
+  "description": "Sharded full-text indexes for locally hosted Greek and Latin editions. Each work has an attributed, individually inspectable reading source. Add one entry per verified text, not per catalogue card.",
+  "works": [
+    {
+      "workId": "catullus-carmina",
+      "index": "data/classics-corpus/catullus-carmina-index.json",
+      "reader": "corpus/catullus-carmina-la.html",
+      "source": "https://www.gutenberg.org/ebooks/23294",
+      "language": "la",
+      "edition": "Robinson Ellis 1904",
+      "sections": 113
+    }
+  ]
+}
