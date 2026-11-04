@@ -25,6 +25,56 @@ button:disabled{opacity:.5;cursor:not-allowed}input[type=number]{width:80px;padd
 .card img{width:100%;height:152px;object-fit:contain;background:#e9e2d4}
 .card strong,.card span{font-size:12px;overflow-wrap:anywhere}
 #more{background:#f8e8cc;color:var(--ink);margin:14px auto 0;display:block}#more[hidden]{display:none}
+
+/* Legibility of folio status and controls, regardless of saved site theme.
+   Dark mode used to inherit near-white body text on cream/white panels. */
+.note,#state{
+  background:#eee3d0;
+  color:#172b3a;
+  border-left-color:#b69361;
+}
+.toolbar{
+  background:#ffffff;
+  color:#172b3a;
+}
+.toolbar :is(strong,label,#total,#percent,#label){
+  color:inherit;
+}
+.toolbar input[type="number"],.toolbar select{
+  background:#ffffff;
+  color:#172b3a;
+  border:1px solid #867d70;
+  color-scheme:light;
+}
+#stage{color:#172b3a}
+html[data-reader-theme="dark"] body .note,
+html[data-reader-theme="dark"] body #state{
+  background:#30475a;
+  color:#f8f1e6;
+  border-left-color:#c6a776;
+}
+html[data-reader-theme="dark"] body .toolbar{
+  background:#253e52;
+  color:#f9f4e9;
+  border-color:#637c8e;
+}
+html[data-reader-theme="dark"] body .toolbar :is(strong,label,#total,#percent,#label){
+  color:#f9f4e9;
+}
+html[data-reader-theme="dark"] body .toolbar input[type="number"],
+html[data-reader-theme="dark"] body .toolbar select{
+  background:#f9f6ed;
+  color:#172b3a;
+  border-color:#b4a88f;
+  color-scheme:light;
+}
+/* The folio picture area remains parchment-colored, including loading notices. */
+html[data-reader-theme="dark"] body #stage{color:#172b3a}
+#message{color:inherit}
+@media print{
+  .note,#state,.toolbar{background:#fff!important;color:#111!important}
+}
+
 footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media(max-width:650px){#grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card img{height:108px}.card{padding:4px}#stage{min-height:360px;height:65vh}}
 @media print{.toolbar,.gallery,nav{display:none}#stage{height:auto;overflow:visible}}
@@ -92,4 +142,4 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));const initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);open(initial>=0?initial:8);
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-single-controls.js?v=20261103-head-2" defer></script></body></html>
+</script><script src="assets/codex-h-single-controls.js?v=20261104-reader-controls-contrast-v3" defer></script></body></html>
