@@ -261,12 +261,15 @@ function renderTopic(top,rows,query){
  const ul=make("ul",undefined,"article-related");
  for(const [label,url] of links){const a=href(url,label);if(a){const li=make("li");li.append(a);ul.append(li)}}
  $("article-body").append(ul);
- aside(matching);references(matching);buildContents();
+ appendResearch(rows,query,query);aside(matching);references(matching);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
 function appendResearch(rows,query,sourceTitle){
  const papers=rows.filter(x=>x.type==="article"&&relevance(x,query)>=45&&x.link).slice(0,6);
  const books=rows.filter(x=>x.type==="googlebook"&&x.link&&relevance(x,query)>=45).slice(0,4);
+ const classical=rows.filter(x=>x.type==="book"&&x.link&&
+  relevance({...x,title:[x.title,x.author,...(x.aliases||[])].join(" ")},query)>=45)
+  .slice(0,8);
  const local=rows.filter(x=>x.type==="passage"&&(relevance(x,query)>=45||normalized(x.latin+" "+x.translation+" "+x.excerpt).includes(normalized(query)))).slice(0,5);
  const box=$("article-body");
  if(papers.length){
@@ -286,6 +289,16 @@ function appendResearch(rows,query,sourceTitle){
   heading(phrase("Libros localizados en Google Books","Books located in Google Books","Ouvrages repérés sur Google Books"));
   for(const b of books){const p=make("p",undefined,"article-research-item");const a=href(b.link,b.title);
    if(a)p.append(a);
+   if(b.author)p.append(make("span"," · "+b.author));
+   if(b.meta)p.append(make("small",b.meta));
+   box.append(p);
+  }
+ }
+ if(classical.length){
+  heading(phrase("Obras griegas y latinas del repertorio","Greek and Latin works in the repertory","Œuvres grecques et latines du répertoire"));
+  for(const b of classical){
+   const p=make("p",undefined,"article-research-item");
+   const a=href(b.link,b.title);if(a)p.append(a);
    if(b.author)p.append(make("span"," · "+b.author));
    if(b.meta)p.append(make("small",b.meta));
    box.append(p);
