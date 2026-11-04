@@ -56,8 +56,12 @@ const bookLinks={
 };
 const pdfs={"vitruvio-v514-pdf":"documents/kurilo-recensio-es.pdf","vitruvio-v554-pdf":"documents/kurilo-recensio-fr.pdf","theory-v297-pdf":"documents/kurilo-theory-en.pdf","krohn-1912-pdf":"documents/krohn-1912.pdf"};
 function liveBooks(q,concept){return S.works.map(w=>{
- const sc=score([w.title,w.author,w.genre,w.dating,w.language,w.manuscript?.status].join(" "),q,concept);
- return {type:"book",title:w.title,author:w.author,excerpt:[w.genre,w.dating,w.reading?.status].filter(Boolean).join(" · "),meta:verified(w)?"Edición consultable en la biblioteca":"Ficha bibliográfica en preparación",rating:sc+(verified(w)?3:0),link:verified(w)?bookLinks[w.id]:null,pdf:verified(w)?pdfs[w.id]:null}
+  const terms=[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
+  const sc=score(terms,q,concept),link="bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id);
+  const local=verified(w),hasInstitution=!!(w.reading?.url||w.manuscript?.manifest);
+  return {type:"book",title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,local?w.reading?.status:"Estado editorial y acceso en la ficha"].filter(Boolean).join(" · "),
+   meta:local?"Lectura local acreditada":hasInstitution?"Fuente externa registrada":"Repertorio académico · localizar edición",
+   rating:sc+(local?3:0),link:local?(bookLinks[w.id]||link):link,pdf:local?pdfs[w.id]:null,readable:local,source:"Bibliotheca Graeca et Latina"}
  }).filter(x=>x.rating>2)}
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
@@ -280,7 +284,7 @@ function renderCard(d){
  }
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.link){const a=makeLink(d.type==="passage"||d.type==="book"||d.type==="manuscript"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
+ if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  else if(d.type==="book")acts.append(node("span","disabled",T().unpublished));
  if(d.pdf){const a=makeLink(T().pdf,d.pdf);if(a)acts.append(a)}
