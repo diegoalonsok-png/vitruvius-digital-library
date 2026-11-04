@@ -668,6 +668,15 @@ async function search(){
   const incoming=value.rows||[];
   if(intent?.preface&&incoming.some(r=>r.type==="preface"))rows=rows.filter(r=>!r.prefacePlaceholder);
   rows.push(...incoming);
+  // If an exact quotation identifies an indexed work, retrieve its actual
+  // catalogued manuscripts automatically, even when the author/title was not typed.
+  const workIds=[...new Set(incoming.filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).map(r=>r.workId))].slice(0,3);
+  for(const workId of workIds){
+   const identified=S.works.find(w=>w.id===workId);if(!identified)continue;
+   rows.push(...liveManuscripts(identified.title));
+   const work=liveBooks(identified.title,false).find(w=>norm(w.title)===norm(identified.title));
+   if(work)rows.push(work);
+  }
   if(!intent?.preface){if(value.featured)considerFeatured([value.featured],q);else considerFeatured(incoming,q)}
   completed++;
   display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
