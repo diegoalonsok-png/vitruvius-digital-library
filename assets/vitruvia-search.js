@@ -40,6 +40,8 @@ const I18N={
  en:{lead:"Vitruvia is the academic search tool of Vitruvius Digital Library. Explore original texts, manuscripts, translations and scholarly bibliography, with documented sources.",placeholder:"Search any topic, author, book or concept…",submit:"Search",modes:["◎ All","Library","Wikipedia","Web & research","⌁ Concepts"],explain:["Search this library, Wikipedia and verifiable web sources in one place when public APIs allow it.","Search books, manuscripts, Latin passages and translations in this library.","Search Wikipedia in your selected language, plus English results when useful.","Explore open catalogs, museum records, Wikidata and scholarly sources; use direct links for the wider web.","Explore related terms and languages in local documents; this is not generative AI."],heading:"Documented results",idle:"Explore library and encyclopedias",waiting:"Searching verifiable sources…",none:"No confirmed results; use the direct institutional searches.",book:"CATALOG BOOK",edition:"HISTORICAL EDITION",preface:"PREFACE · DE ARCHITECTURA",passage:"TEXT · LOCUS",section:"SITE DOCUMENT",wikipedia:"ENCYCLOPEDIA · WIKIPEDIA",wikidata:"DATA · WIKIDATA",openlibrary:"CATALOG · OPEN LIBRARY",museum:"ART · THE MET",article:"RESEARCH ARTICLE",googlebook:"BOOK · GOOGLE BOOKS",read:"Read in library",document:"Open document",source:"View original",pdf:"Read PDF",unpublished:"Catalog entry pending · no reader",synthesis:"Source-based synthesis",detail:"Selected excerpts from retrieved documents; verify claims at the source. Not generative AI.",external:"Additional reputable sources",searching:"External sources are still loading…"},
  fr:{lead:"Vitruvia est le moteur de recherche académique de Vitruvius Digital Library. Explorez les textes originaux, manuscrits, traductions et références savantes avec leurs sources.",placeholder:"Chercher n’importe quel sujet, auteur ou ouvrage…",submit:"Rechercher",modes:["◎ Tout","Bibliothèque","Wikipédia","Web et recherche","⌁ Concepts"],explain:["Rechercher dans cette bibliothèque, Wikipédia et les sources web vérifiables disposant d’API ouvertes.","Explorer les livres, manuscrits, passages latins et traductions de la bibliothèque.","Consulter Wikipédia dans la langue choisie et, en complément, en anglais.","Explorer les catalogues ouverts, musées, Wikidata et références scientifiques ; liens directs pour le web général.","Relier les termes et synonymes des documents internes ; ce service n’est pas une IA générative."],heading:"Résultats documentés",idle:"Explorer les fonds",waiting:"Interrogation des sources vérifiables…",none:"Aucun résultat confirmé ; utiliser les recherches institutionnelles directes.",book:"LIVRE DU CATALOGUE",edition:"ÉDITION HISTORIQUE",preface:"PRÉFACE · DE ARCHITECTURA",passage:"TEXTE · LOCUS",section:"DOCUMENT DU SITE",wikipedia:"ENCYCLOPÉDIE · WIKIPÉDIA",wikidata:"DONNÉES · WIKIDATA",openlibrary:"CATALOGUE · OPEN LIBRARY",museum:"ART · THE MET",article:"ARTICLE SCIENTIFIQUE",googlebook:"LIVRE · GOOGLE BOOKS",read:"Lire dans la bibliothèque",document:"Ouvrir document",source:"Voir la source",pdf:"Lire PDF",unpublished:"Notice en attente · pas de lecteur",synthesis:"Synthèse sourcée",detail:"Extraits récupérés ; vérifier les sources. Ce n'est pas une IA générative.",external:"Autres références de qualité",searching:"Interrogation des sources externes en cours…"}
 };
+const UI_TEXT={"es":{"navLibrary":"Biblioteca Vitruviana","navAuthors":"Autores y libros","navCodices":"Códices","navMethod":"Método académico","otherAI":"CONSULTAR OTRAS IA","explore":"Explorar","universities":"UNIVERSIDADES","research":"INVESTIGACIÓN","academicHint":"Cada botón busca el término escrito arriba dentro del dominio académico seleccionado.","metricWorks":"fichas de obras","metricPages":"secciones documentadas","metricImages":"imágenes del Codex H","metricRead":"lecturas disponibles","headingIdle":"Consultar la biblioteca","print":"Imprimir / PDF","email":"Correo","copy":"Copiar enlace","sourcesMethod":"Fuentes y método","sidebarIntro":"Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.","sideGraeco":"Biblioteca griega y latina ↗","sideReader":"Lector latino y traducciones ↗","sideCodex":"Galería Codex H ↗","sideBib":"Bibliografía académica ↗","sidePhilology":"Criterio filológico ↗","sidebarCaveat":"No se inventan traducciones. La búsqueda conceptual utiliza relaciones temáticas y recuperación textual; no es un chatbot generativo. El contenido de los PDF escaneados sin OCR sigue requiriendo lectura de facsímiles.","footerDesc":"Biblioteca digital abierta para las ciencias, las artes y las humanidades. Búsqueda documental con fuentes identificadas.","footerAuthors":"Autores y obras clásicas","footerCodices":"Índice de códices","footerBib":"Bibliografía","footerCite":"Cómo citar","footerLegal":"© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.","footerMain":"Biblioteca principal"},"en":{"navLibrary":"Vitruvian Library","navAuthors":"Authors and books","navCodices":"Codices","navMethod":"Scholarly methodology","otherAI":"OTHER AI SERVICES","explore":"Explore","universities":"UNIVERSITIES","research":"RESEARCH","academicHint":"Each button searches the selected academic domain for your query.","metricWorks":"work records","metricPages":"documented sections","metricImages":"Codex H images","metricRead":"readable works","headingIdle":"Explore the library","print":"Print / PDF","email":"Email","copy":"Copy link","sourcesMethod":"Sources and method","sidebarIntro":"Local results link to repository documents, distinguishing available texts from pending records. External results open on the source institution's site.","sideGraeco":"Greek and Latin library ↗","sideReader":"Latin reader and translations ↗","sideCodex":"Codex H gallery ↗","sideBib":"Scholarly bibliography ↗","sidePhilology":"Philological criteria ↗","sidebarCaveat":"No translations are invented. Conceptual search uses related terms and text retrieval; it is not a generative chatbot. Scanned PDFs without OCR still require reading facsimiles.","footerDesc":"Open digital library for science, arts and humanities. Documentary research with identified sources.","footerAuthors":"Classical authors and works","footerCodices":"Codex index","footerBib":"Bibliography","footerCite":"How to cite","footerLegal":"© 2026 Diego A. Kurilo · All rights reserved for original content and editorial design. External sources retain their own licenses.","footerMain":"Main library"},"fr":{"navLibrary":"Bibliothèque vitruvienne","navAuthors":"Auteurs et livres","navCodices":"Codex","navMethod":"Méthode académique","otherAI":"AUTRES IA","explore":"Explorer","universities":"UNIVERSITÉS","research":"RECHERCHE","academicHint":"Chaque bouton recherche dans le domaine académique sélectionné.","metricWorks":"notices d’œuvres","metricPages":"sections documentées","metricImages":"images du Codex H","metricRead":"œuvres consultables","headingIdle":"Consulter la bibliothèque","print":"Imprimer / PDF","email":"Courriel","copy":"Copier le lien","sourcesMethod":"Sources et méthode","sidebarIntro":"Les résultats locaux renvoient aux documents du dépôt et distinguent les textes accessibles des notices en attente. Les résultats externes s’ouvrent sur le site de leur institution.","sideGraeco":"Bibliothèque grecque et latine ↗","sideReader":"Lecteur latin et traductions ↗","sideCodex":"Galerie Codex H ↗","sideBib":"Bibliographie académique ↗","sidePhilology":"Critères philologiques ↗","sidebarCaveat":"Aucune traduction n’est inventée. La recherche conceptuelle relie des termes et retrouve des textes ; ce n’est pas un agent génératif. Les PDF numérisés sans OCR nécessitent la lecture des fac-similés.","footerDesc":"Bibliothèque numérique ouverte pour les sciences, les arts et les humanités. Recherche documentaire avec sources identifiées.","footerAuthors":"Auteurs et œuvres classiques","footerCodices":"Index des codex","footerBib":"Bibliographie","footerCite":"Comment citer","footerLegal":"© 2026 Diego A. Kurilo · Tous droits réservés sur les contenus originaux et la conception éditoriale. Les sources externes conservent leurs licences.","footerMain":"Bibliothèque principale"}};
+const RESULT_TEXT={"es":{"encyclopedia":"Enciclopedia, biografía y contexto","semantic":"IA semántica · fragmentos documentales","universities":"Universidades y centros de investigación","manuscripts":"Códices conservados · orden por antigüedad","fragments":"Papiros y fragmentos antiguos","editions":"Ediciones y traducciones · orden cronológico","scholars":"Investigadores y estudios fundamentales","library":"Obras y pasajes de la Biblioteca Vitruviana","external-texts":"Textos digitalizados · Wikisource","research":"Investigación, bibliografía y catálogos externos","matching":"coincidencias","visible":"visibles","sourceNote":"Los enlaces de búsqueda externa no son resultados verificados ni textos recuperados íntegramente."},"en":{"encyclopedia":"Encyclopedia, biography and context","semantic":"Semantic AI · documentary passages","universities":"Universities and research centers","manuscripts":"Surviving codices · earliest indexed first","fragments":"Ancient papyri and fragments","editions":"Editions and translations · chronological","scholars":"Scholars and key studies","library":"Works and passages in the Vitruvian Library","external-texts":"Digitized texts · Wikisource","research":"Research, bibliography and external catalogues","matching":"matches","visible":"shown","sourceNote":"External search links are not verified results or fully retrieved texts."},"fr":{"encyclopedia":"Encyclopédie, biographies et contexte","semantic":"IA sémantique · extraits documentés","universities":"Universités et centres de recherche","manuscripts":"Codex conservés · par ancienneté","fragments":"Papyrus et fragments anciens","editions":"Éditions et traductions · chronologie","scholars":"Chercheurs et études fondamentales","library":"Œuvres et passages de la Bibliothèque vitruvienne","external-texts":"Textes numérisés · Wikisource","research":"Recherche, bibliographie et catalogues externes","matching":"résultats","visible":"affichés","sourceNote":"Les liens de recherche externe ne sont pas des résultats vérifiés ou des textes intégraux."}};
 const WELCOME_I18N={
  es:{
   kicker:"UNA HERRAMIENTA DE INVESTIGACIÓN ABIERTA",
@@ -648,18 +650,7 @@ function display(rows,query,phase){
   (a.editionYear??9999)-(b.editionYear??9999)||b.rating-a.rating);
  const ordered=(S.mode==="all"||S.mode==="ai")?
   [...grouped.values()].flat():deduped;
- const titles={
-  encyclopedia:"Enciclopedia, biografía y contexto",
-  semantic:"IA semántica · fragmentos documentales",
-  universities:"Universidades y centros de estudio especializados",
-  manuscripts:"Códices conservados · orden por antigüedad",
-  fragments:"Papiros y fragmentos antiguos · no confundir con códices",
-  scholars:"Investigadores y estudios fundamentales",
-  editions:"Ediciones y traducciones · orden cronológico",
-  library:"Obras y pasajes de la Biblioteca Vitruviana",
-  "external-texts":"Textos digitalizados · Wikisource",
-  research:"Investigación, bibliografía y catálogos externos"
- };
+ const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
  if(!ordered.length)list.append(node("div","empty",T().none));
  else {
   let lastGroup="";
@@ -684,7 +675,7 @@ function display(rows,query,phase){
  }
  if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null))}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
- $("result-state").textContent=deduped.length+" coincidencias · "+Math.min(S.visibleResultCount,deduped.length)+" visibles"+(phase?" · "+phase:"")
+ $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"")
 }
 function sourceLinks(query){const parent=$("source-links");parent.replaceChildren();
  if(!query)return;
@@ -703,7 +694,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  ];
  const h=node("h3",null,T().external);parent.append(h);
  for(const [label,url] of links){const a=makeLink(label+" ↗",url);if(a)parent.append(a)}
- const p=node("p",null,"Britannica y Stanford: enlace a búsquedas externas; no se presentan resultados como si fueran API propias.");parent.append(p)
+ const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
 async function search(){
  const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;if(!q)return;
@@ -774,7 +765,7 @@ async function search(){
  // Resolve the subject independently of matching catalog titles.
  // Wikipedia titles and redirects supply canonical names for external retrieval.
  if(window.VitruviaEntityResolver&&wikiEnabled){
-  pending.push(window.VitruviaEntityResolver.resolve(generalQuery).then(identity=>{
+  pending.push(window.VitruviaEntityResolver.resolve(generalQuery,S.lang).then(identity=>{
    if(!identity)return {name:"No se resolvió una entidad enciclopédica",rows:[]};
    const link=identity.url;
    return {name:"Entidad enciclopédica · "+identity.canonical,rows:[{
@@ -782,7 +773,7 @@ async function search(){
     excerpt:identity.description,fullExtract:identity.extract,
     meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
     rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
-    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical
+    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,preferredWiki:identity.language===S.lang,sourceLanguage:identity.language
    }]};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
@@ -842,6 +833,10 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  $("mode-note").textContent=S.mode==="ai"
   ?(S.lang==="en"?"Experimental multilingual semantic search over indexed documents. Web catalogues are not part of the local AI model.":S.lang==="fr"?"Recherche sémantique multilingue expérimentale sur les documents indexés. Les catalogues web ne font pas partie du modèle local.":"Búsqueda semántica multilingüe experimental sobre documentos indexados. Los catálogos web no forman parte del modelo local.")
   :(t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||t.explain[0]);
+ const ui=UI_TEXT[S.lang]||UI_TEXT.es;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const value=ui[el.dataset.i18n];if(value)el.textContent=value;
+ });
  const welcome=WELCOME_I18N[S.lang]||WELCOME_I18N.es;
  document.querySelectorAll("[data-landing-key]").forEach(element=>{
   const value=welcome[element.dataset.landingKey];if(value)element.textContent=value;
@@ -855,7 +850,9 @@ function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes
  document.body.classList.toggle("vitruvia-ai-active",S.mode==="ai");
  if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
- $("mode-note").textContent=S.mode==="ai"?"IA semántica multilingüe: combina BM25 y embeddings locales sobre documentos indexados; primera carga del modelo ≈120 MB. Los resultados externos son bibliográficos y no equivalen a análisis IA de toda la web.":T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)];
+ $("mode-note").textContent=S.mode==="ai"?
+ (S.lang==="en"?"Experimental multilingual semantic search of indexed documents. Initial model download ≈120 MB. External catalogues are not part of the neural model.":S.lang==="fr"?"Recherche sémantique multilingue expérimentale sur les documents indexés. Premier téléchargement ≈120 Mo. Les catalogues externes ne font pas partie du modèle.":"Búsqueda semántica multilingüe experimental sobre documentos indexados; primera descarga ≈120 MB. Los catálogos externos no forman parte del modelo."):
+ (T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||T().explain[0]);
 }
 function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
  const control=$("theme");
