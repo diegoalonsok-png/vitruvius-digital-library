@@ -157,10 +157,9 @@
  });
  window.addEventListener('vitruvia:reader-open',()=>{
   bar.dataset.userVisible='true';
-  schedule();
+  bar.dataset.visible='true';
   adjustPanelSide();
   expand(true);
-  bar.scrollIntoView?.({block:'nearest'});
  });
  try{
   const stored=JSON.parse(localStorage.getItem(positionKey)||'null');
