@@ -330,9 +330,9 @@ function renderCard(d){
  }
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
+ if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
- else if(d.type==="book")acts.append(node("span","disabled",T().unpublished));
+ if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
  if(d.pdf){const a=makeLink(T().pdf,d.pdf);if(a)acts.append(a)}
  card.append(acts);return card
 }
@@ -419,7 +419,7 @@ async function search(){
  sourceLinks(generalQuery);
  let rows=[];
  if(internal){
-  rows=focused?[]:[...liveBooks(q,concept),...livePages(q,concept)];
+  rows=focused?[]:[...liveBooks(q,concept),...liveManuscripts(q),...liveEditions(q),...livePages(q,concept)];
   if(intent?.preface){
    const book=intent.preface.book;
    const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
@@ -427,7 +427,7 @@ async function search(){
     title:book?"De architectura · Prefacio del Libro "+roman[book]:"De architectura · Prefacios de los diez libros",
     author:"Marco Vitruvio Polión · Biblioteca Vitruviana",
     excerpt:"Consultando el índice filológico de los prefacios…",
-    meta:"Texto latino y traducciones editoriales V514 / V297",
+    meta:"Texto latino y traducciones editoriales V514 / V554 / V297",
     rating:7000,link:"lector-bilingue.html?edition=recensio-es&locus="+(book||1)+".praef.1"});
   }
   if(rows.length)display(rows,q,T().searching)
@@ -521,14 +521,28 @@ function setupAutocomplete(){
    if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))
     add(label,value,type,norm(label).startsWith(q)?120:75);
   }
-  for(const w of S.works){const title=w.title||"",author=w.author||"";
-   if(norm(title+" "+author).includes(q))add(title,title,author||"Obra",55+(norm(title).startsWith(q)?15:0));
+  for(const w of S.works){
+   const title=w.title||"",author=w.author||"",aliases=w.aliases||[];
+   const joined=norm([title,author,...aliases].join(" "));
+   if(joined.includes(q)){
+    const alias=aliases.find(a=>norm(a).includes(q));
+    add(title,alias&&norm(title).indexOf(q)<0?alias:title,
+      author+" · "+(verified(w)?"lectura local":"ficha de obra"),65+(norm(title).startsWith(q)?18:0)+(alias?8:0));
+   }
+  }
+  for(const ms of S.witnesses){
+   if(norm([ms.title,ms.shelfmark,ms.library].join(" ")).includes(q))
+    add(ms.title+" · "+ms.shelfmark,ms.shelfmark,ms.library+" · manuscrito",100+(norm(ms.shelfmark).startsWith(q)?22:0));
+  }
+  for(const ed of S.editions){
+   if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))
+    add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
   }
   for(const p of S.pages){const title=p.title||"";
    if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0));
   }
   suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label));
-  const h=node("div","search-suggestions-title","Obras y consultas relacionadas");
+  const h=node("div","search-suggestions-title",S.lang==="en"?"Works, manuscripts and editions":S.lang==="fr"?"Œuvres, manuscrits et éditions":"Libros, códices y ediciones históricas");
   menu.append(h);
   for(const [i,hit] of suggestions.slice(0,7).entries()){
    const btn=node("button","search-suggestion");
