@@ -397,7 +397,8 @@ function titleMatch(row,query){
 }
 
 function display(rows,query,phase){
- const scored=rows.slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query))-((a.rating||0)+titleMatch(a,query))),deduped=[],seen=new Set();
+ const romanVitruvius=/^(vitruvio|vitruvius|vitruve|marco vitruvio polion|marcus vitruvius pollio)$/i.test(norm(query));
+ const scored=rows.filter(r=>!romanVitruvius||!(/agustin vitruvio|agustín vitruvio|augustin vitruvio/i.test(r.title||""))).slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query))-((a.rating||0)+titleMatch(a,query))),deduped=[],seen=new Set();
  for(const r of scored){const k=r.type+":"+norm(r.title);if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  if(!deduped.length)list.append(node("div","empty",T().none));
