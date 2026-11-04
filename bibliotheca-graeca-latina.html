@@ -154,6 +154,52 @@ html[data-theme=dark] .classic-item-status,html[data-theme=dark] .classic-detail
 html[data-theme=dark] .classical-evidence{border-color:#7c8892}
 html[data-theme=dark] .classical-evidence-record{border-color:#60788a}
 html[data-theme=dark] .classical-evidence-record .classical-evidence-meta,html[data-theme=dark] .classical-evidence-record small{color:#cbbfa5}
+
+/* Academic scanned-PDF reader and custody-library IIIF viewer. */
+.classical-pdf-toolbar{position:sticky;top:6px;z-index:4;display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:11px;background:#21384a;color:#fff;border:1px solid #9d927d;border-radius:6px;margin-bottom:9px}
+.classical-pdf-toolbar .classical-pdf-tool,.classical-ms-toolbar .classical-pdf-tool,.classical-pdf-find button,.classical-pdf-open{background:#354f62;color:#fff;border:1px solid #a99c81;border-radius:4px;padding:9px 12px;min-height:36px;cursor:pointer;font:600 12px/1.3 system-ui,sans-serif}
+.classical-pdf-tool:hover,.classical-pdf-tool:focus-visible,.classical-pdf-open:hover{background:#456981!important;border-color:#e0c692!important}
+.classical-pdf-tool:disabled{opacity:.45;cursor:default}
+.classical-pdf-tool[aria-pressed=true]{background:#7a6340!important;color:#fff!important}
+.classical-pdf-zoom,.classical-pdf-total{font:600 12px system-ui,sans-serif;white-space:nowrap;color:#e9e2d7;min-width:46px;text-align:center}
+.classical-pdf-pager{display:flex;gap:5px;align-items:center;border-left:1px solid #70808b;padding-left:10px;margin:0 4px}
+.classical-pdf-number{width:65px!important;min-width:65px!important;max-width:65px!important;height:35px!important;min-height:35px!important;border:1px solid #9c9e9c!important;background:#f8f3e8!important;color:#152f40!important;text-align:center;padding:4px!important;font:600 13px system-ui,sans-serif}
+.classical-pdf-external{margin-left:auto;display:flex;gap:9px;flex-wrap:wrap}
+.classical-pdf-link{display:inline-flex;align-items:center;min-height:34px;padding:6px 8px;border-bottom:1px solid #cbb987!important;color:#f3e4c3!important;font:600 12px system-ui,sans-serif;text-decoration:none}
+.classical-pdf-link:hover{text-decoration:underline;color:white!important}
+.classical-pdf-find{display:flex;gap:8px;margin:12px 0}
+.classical-pdf-find input{flex:1;min-width:0;border:1px solid #b2a58b;background:#fffdf7;color:#243748;padding:10px 12px;font:400 13px system-ui,sans-serif}
+.classical-pdf-find button{color:#fff}
+.classical-pdf-search-results{max-height:240px;overflow:auto;margin:7px 0;font:400 12px/1.6 system-ui,sans-serif}
+.classical-pdf-search-results[aria-busy=true]{opacity:.8}
+.classical-pdf-search-hit{display:block;width:100%;text-align:left;background:#f7f0e2;color:#1e3a4c;border:0;border-bottom:1px solid #c2b39e;padding:10px;cursor:pointer;font:400 12px/1.55 system-ui,sans-serif}
+.classical-pdf-search-hit:hover{background:#e9dcc5}
+.classical-pdf-search-hit mark{background:#f8dd69;color:#202020}
+.classical-pdf-viewport{height:min(76vh,820px);min-height:360px;max-width:100%;overflow:auto;overscroll-behavior:contain;background:#b5b3ae;border:1px solid #a19c91;padding:10px;text-align:center;scrollbar-width:thin}
+.classical-pdf-canvas{max-width:none!important;display:block;margin:0 auto;background:white;box-shadow:0 4px 15px #0005}
+.classical-pdf-status{font:400 12px/1.6 system-ui,sans-serif;margin:7px 0;min-height:20px}
+.classical-native-pdf{width:100%!important;min-height:75vh!important;height:75vh!important}
+#classic-panel:fullscreen{display:flex;flex-direction:column;padding:15px;background:#202a33!important;color:#f8f0e1!important;overflow:hidden}
+#classic-panel:fullscreen .classical-pdf-toolbar{top:0}
+#classic-panel:fullscreen .classical-pdf-viewport{flex:1;min-height:100px;height:auto}
+.classical-ms-switch{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.classical-ms-switch label{display:flex;flex-direction:column;gap:7px;font:600 12px/1.5 system-ui,sans-serif;width:100%}
+.classical-ms-switch select{max-width:100%;padding:11px;background:#fffdf8;color:#173448;border:1px solid #a99777}
+.classical-ms-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.classical-ms-toolbar .classical-pdf-link{color:#2e4b5c!important;border-color:#b09d77!important}
+.classical-ms-container{height:min(77vh,870px);min-height:420px;border:1px solid #a59d8e;background:#1d2835}
+.classical-ms-frame{width:100%!important;height:100%!important;min-height:0!important;border:0!important}
+.classical-ms-container:fullscreen{height:100vh;max-height:none}
+.classical-ms-container:fullscreen .classical-ms-frame{height:100vh!important}
+.classical-pdf-open{margin:8px 0}
+html[data-theme=dark] .classical-pdf-viewport{background:#161b20;border-color:#8093a2}
+html[data-theme=dark] .classical-pdf-find input{background:#263b4e;color:#fff}
+html[data-theme=dark] .classical-pdf-search-hit{background:#2d495d;color:#f8eeda;border-color:#526b7d}
+html[data-theme=dark] .classical-pdf-search-hit:hover{background:#3a596e}
+html[data-theme=dark] .classical-ms-toolbar .classical-pdf-link{color:#e7d5ab!important}
+@media(max-width:700px){.classical-pdf-toolbar{position:static;padding:8px;gap:4px}.classical-pdf-toolbar .classical-pdf-tool{padding:7px 8px}.classical-pdf-external{margin-left:0;flex-basis:100%}.classical-pdf-viewport{height:60vh;min-height:320px}.classical-ms-container{height:66vh;min-height:360px}}
+@media print{.classical-pdf-toolbar,.classical-pdf-find,.classical-pdf-external,.classical-pdf-search-results,.classical-ms-toolbar{display:none!important}.classical-pdf-viewport{border:0;height:auto;overflow:visible}.classical-pdf-canvas{width:100%!important;height:auto!important}}
+
 </style>
 </head><body>
 <main class="classic-main">
@@ -169,4 +215,4 @@ html[data-theme=dark] .classical-evidence-record .classical-evidence-meta,html[d
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Seleccioná una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261103-3lang3"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-testimonia-2"></script></body></html>
+</main><script defer src="assets/theme.js?v=20261103-3lang3"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261103-pdf-codex-v1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-pdf-codex-v1"></script></body></html>
