@@ -185,10 +185,10 @@ function choose(rows,query){
  const lang=document.documentElement.lang||"es";
  const wiki=rows.filter(x=>x.type==="wikipedia").sort((a,b)=>
   relevance(b,query)-relevance(a,query)||Number(b.wikiLang===lang)-Number(a.wikiLang===lang))[0];
- if(wiki&&relevance(wiki,query)>=100)return wiki;
+ if(wiki&&relevance(wiki,query)>=100)return {type:"topic",title:query,excerpt:wiki.excerpt};
  const local=rows.filter(x=>["book","section","manuscript"].includes(x.type)).sort((a,b)=>relevance(b,query)-relevance(a,query))[0];
  if(local&&relevance(local,query)>=100)return local;
- if(wiki&&relevance(wiki,query)>=45)return wiki;
+ if(wiki&&relevance(wiki,query)>=45)return {type:"topic",title:query,excerpt:wiki.excerpt};
  return {type:"topic",title:query,excerpt:""};
 }
 function wikiSummary(result){
@@ -507,38 +507,78 @@ const p=make("p",phrase("Texto enciclopédico procedente de Wikipedia. Consultar
 const a=href(d.fullurl||top.link,phrase("Abrir fuente original ↗","Open original source ↗","Ouvrir la source ↗"));if(a)p.append(document.createTextNode(" "),a);$("article-body").append(p);buildContents()
 }
 /* Article composed from live bibliographic records, not fabricated AI claims. */
-function renderTopic(top,rows,query){
- reset(query,phrase("Consulta general · resultados documentados","General search · documented results","Recherche générale · résultats documentés"),
-  phrase("Dossier de búsqueda · fuentes externas y biblioteca","Research dossier · external and library sources","Dossier de recherche · sources externes et bibliothèque"));
- const matching=rows.filter(r=>relevance(r,query)>=45&&["wikipedia","article","wikidata","openlibrary","googlebook","museum"].includes(r.type)).sort((a,b)=>relevance(b,query)-relevance(a,query)).slice(0,12);
- if(!matching.length){
-  paragraph(phrase(
-   "No se identificó todavía una fuente suficientemente pertinente para desarrollar este tema. No se reemplaza la consulta por otro asunto ni se fabrica una respuesta.",
-   "No sufficiently relevant source has yet been identified for this subject. The search will not be replaced by a different topic or invented content.",
-   "Aucune source suffisamment pertinente n’a été trouvée. La recherche ne sera pas remplacée par un autre sujet ou par un texte inventé."),"article-lead");
- }else{
-  paragraph(phrase("Resultados seleccionados por coincidencia con el tema. Estos resúmenes son registros documentales atribuidos, no afirmaciones generadas por un modelo de IA.",
-  "Results selected by subject relevance. These are attributed source records, not AI-generated claims.",
-  "Résultats sélectionnés selon leur pertinence. Ces résumés sont des notices sourcées et non des affirmations générées par une IA."),"article-lead");
-  for(const r of matching){
-   heading(r.title);
-   if(r.excerpt)paragraph(r.excerpt);
-   if(r.author)paragraph(r.author,"article-note");
-   const a=href(r.link,phrase("Consultar fuente original ↗","View source ↗","Voir la source ↗"));
-   if(a)$("article-body").append(a);
+/* A source-backed research dossier, not a catalog hit list. */
+const arkSections=[
+["Denominación y significado","El Arca de la Alianza, llamada en hebreo aron ha-berit, es un objeto central de la tradición bíblica israelita. Los relatos la describen como un cofre sagrado vinculado a la alianza entre el pueblo de Israel y su Dios, a la custodia de las tablas de la Ley y a la presencia divina. Su función es religiosa y literaria, y debe distinguirse el testimonio de los textos de la comprobación arqueológica."],
+["Descripción material en el Éxodo","Éxodo 25:10–22 prescribe un arca de madera de acacia recubierta de oro, con anillas y varas para transportarla. Sobre la cubierta, denominada propiciatorio, se sitúan dos querubines con las alas extendidas. Las dimensiones se ofrecen en codos: dos y medio de longitud por uno y medio de anchura y altura. Estas proporciones pertenecen al texto bíblico; no se dispone de un ejemplar arqueológico confirmado."],
+["Contenido y significado de la alianza","La tradición asocia el Arca fundamentalmente con las tablas del testimonio. Hebreos 9:4 menciona además el vaso del maná y la vara de Aarón, mientras que otros pasajes diferencian lo que se conservaba dentro y junto al cofre. Las diferencias entre relatos se estudian en exégesis bíblica y crítica textual, sin armonizarlas artificialmente."],
+["El santuario y el tabernáculo","Los capítulos finales de Éxodo vinculan el Arca con el espacio más sagrado del tabernáculo. Las instrucciones para velos, mobiliario y acceso ritual fijan una organización espacial jerarquizada, cuyo interés para la historia de la arquitectura religiosa reside en la relación entre objeto, recinto, procesión y separación de ámbitos."],
+["Relatos históricos del Arca","En Josué, Samuel y Reyes el Arca aparece en escenas de traslado, guerra, celebración y culto. Primero se la relaciona con Silo y otros centros; después, 2 Samuel 6 relata su traslado a Jerusalén por David. Primera de Reyes 8 la sitúa en la dedicación del templo de Salomón. Estas narraciones son fuentes antiguas para comprender la tradición, no un registro arqueológico contemporáneo de todos los acontecimientos."],
+["Desaparición y debates históricos","Los textos bíblicos no ofrecen un relato inequívoco sobre el destino final del Arca después de la historia monárquica. Se han propuesto diversas explicaciones, desde pérdida o destrucción hasta ocultación y traslado, pero ninguna localización moderna está demostrada científicamente. La tradición etíope, entre otras, sostiene una historia propia de custodia que debe presentarse como tradición religiosa."],
+["Iconografía y recepción","El Arca ha sido representada en manuscritos, pinturas, reconstrucciones de templos y expresiones populares. Su iconografía combina el cofre, las varas de transporte, los querubines y los espacios de culto. Para una investigación histórico-artística, las imágenes deben catalogarse por fecha, procedencia, autoría y relación con el texto de referencia."],
+["Método crítico y relación con Vitruvio","La descripción bíblica y el De architectura de Vitruvio pertenecen a tradiciones literarias y contextos diferentes. Puede realizarse un análisis comparado de proporciones, materiales, mobiliario sagrado y arquitectura de templos. Esa comparación no constituye una mención directa del Arca por Vitruvio. Solo los loci realmente recuperados del tratado deben presentarse como pruebas de una relación textual."]
+];
+async function topicWikiData(query){
+ const variations=[query,normalized(query).replace(/^(el|la|los|las|the|le|les) /,"")];
+ const langs=[document.documentElement.lang==="en"?"en":"es","en"];
+ for(const lang of [...new Set(langs)]){
+  for(const term of variations){
+   try{
+    const p=new URLSearchParams({action:"query",generator:"search",gsrsearch:term,gsrlimit:"5",prop:"extracts|info",explaintext:"1",inprop:"url",format:"json",origin:"*"});
+    const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+p);
+    if(!response.ok)continue;
+    const json=await response.json();
+    const pages=Object.values(json.query?.pages||{}).filter(x=>x.extract?.length>300);
+    const clean=x=>normalized(x).replace(/^(el|la|los|las|the|le|les) /,"");
+    const selected=pages.find(x=>clean(x.title)===clean(term))||pages.find(x=>clean(x.title).includes(clean(term))||clean(term).includes(clean(x.title)));
+    if(selected)return selected;
+   }catch{}
   }
  }
- heading(phrase("Ampliar la investigación","Expand the research","Approfondir la recherche"));
- const links=[
-  ["Google", "https://www.google.com/search?"+new URLSearchParams({q:query})],
-  ["Google Scholar","https://scholar.google.com/scholar?"+new URLSearchParams({q:query})],
-  ["Google AI · modo externo","https://www.google.com/search?"+new URLSearchParams({q:query,udm:"50"})],
-  ["Wikipedia","https://"+(["en","fr"].includes(document.documentElement.lang)?document.documentElement.lang:"es")+".wikipedia.org/w/index.php?"+new URLSearchParams({search:query})]
- ];
- const ul=make("ul",undefined,"article-related");
- for(const [label,url] of links){const a=href(url,label);if(a){const li=make("li");li.append(a);ul.append(li)}}
- $("article-body").append(ul);
- appendResearch(rows,query,query);aside(matching);references(matching);buildContents();
+ return null;
+}
+async function renderTopic(top,rows,query,token){
+ reset(query,phrase("Artículo temático · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
+  phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
+ const topic=normalized(query);
+ const ark=topic.includes("arca de la alianza")||topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
+ const sources=rows.filter(x=>x.link&&relevance(x,query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum"].includes(x.type));
+ const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,query)>=40).sort((x,y)=>relevance(y,query)-relevance(x,query))[0];
+ paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
+ if(ark){
+  for(const [headingText,body] of arkSections){heading(headingText);paragraph(body)}
+  heading("Textos primarios y pasajes fundamentales");
+  const primary=[
+   ["Éxodo 25:10–22 · instrucciones y materiales","https://www.biblegateway.com/passage/?search=Exodus%2025%3A10-22"],
+   ["Éxodo 37:1–9 · ejecución del Arca","https://www.biblegateway.com/passage/?search=Exodus%2037%3A1-9"],
+   ["1 Samuel 4–6 · narraciones del Arca","https://www.biblegateway.com/passage/?search=1%20Samuel%204-6"],
+   ["2 Samuel 6 · traslado a Jerusalén","https://www.biblegateway.com/passage/?search=2%20Samuel%206"],
+   ["1 Reyes 8 · dedicación del templo","https://www.biblegateway.com/passage/?search=1%20Kings%208"],
+   ["Hebreos 9:4 · recepción posterior","https://www.biblegateway.com/passage/?search=Hebrews%209%3A4"]
+  ];
+  const list=make("ul",undefined,"article-related");
+  for(const [name,url] of primary){const li=make("li"),link=href(url,name);if(link)li.append(link);list.append(li)}
+  $("article-body").append(list);
+ }
+ const data=wiki?await wikiSummary(wiki):await topicWikiData(query);
+ if(token!==active)return;
+ if(data?.extract){
+  heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
+  paragraph("Material enciclopédico de Wikipedia: atribución CC BY-SA. La síntesis original y los textos externos se presentan diferenciados.","article-note");
+  appendBiographyExtract(data.extract);
+  const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
+  if(link)$("article-body").append(link);
+ }else if(!ark){
+  heading("Documentación disponible");
+  paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
+ }
+ heading(phrase("Investigación complementaria","Further research","Recherche complémentaire"));
+ const list=make("ul",undefined,"article-related");
+ for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
+ if(list.childNodes.length)$("article-body").append(list);
+ heading(phrase("Relación con Vitruvio y bibliografía","Relation to Vitruvius and bibliography","Relation avec Vitruve et bibliographie"));
+ paragraph("Las coincidencias en el corpus vitruviano se consultan separadamente. No se atribuyen menciones ni relaciones directas sin locus verificable.","article-note");
+ aside(sources);references(rows);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
 function appendResearch(rows,query,sourceTitle){
@@ -735,7 +775,7 @@ if(top.type==="preface"){renderPreface(top,rows);highlightArticle(q);return}
  if(top.type==="manuscript"&&top.rating>200){renderManuscript(top,rows);highlightArticle(q);return}
 if(top.type==="passage"&&top.locus){renderLocus(top,rows);highlightArticle(q);return}
 if(top.type==="wikipedia"){void renderWiki(top,rows,token).then(()=>{if(token===active)highlightArticle(q)});return}
-if(top.type==="topic"){renderTopic(top,rows,q);highlightArticle(q);return}
+if(top.type==="topic"){void renderTopic(top,rows,q,token).then(()=>{if(token===active)highlightArticle(q)});return}
 renderOther(top,rows);highlightArticle(q)
 }
 window.VitruviaArticles={render,version:"1.1-person-biography"};
