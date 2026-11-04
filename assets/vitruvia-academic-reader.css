@@ -44,3 +44,78 @@
  #vitruvia-article .vr-source-citation{color:#333!important;text-decoration:underline!important}
  #vitruvia-article mark.vr-study-match{background:transparent!important;color:inherit!important;outline:none!important}
 }
+
+
+/* Movable navigation · neutral charcoal manuscript-reader control. */
+#vr-academic-tools .vr-study-controls{display:inline-flex;align-items:center;justify-content:flex-end;gap:4px;flex-shrink:0}
+#vr-academic-tools .vr-drag-handle,
+#vr-academic-tools .vr-dock-button{
+ display:inline-grid;place-items:center;cursor:grab;
+ min-width:30px;min-height:29px;padding:2px 4px;border-radius:8px;
+ border:1px solid var(--vr-control-border,#5a5a5d);
+ background:var(--vr-control-bg,#292a2d);color:inherit;font-size:18px;
+ touch-action:none;user-select:none;-webkit-user-select:none;
+}
+#vr-academic-tools .vr-drag-handle:active{cursor:grabbing}
+#vr-academic-tools .vr-dock-button{cursor:pointer;font-size:17px}
+#vr-academic-tools .vr-dock-button[hidden]{display:none!important}
+#vr-academic-tools.vr-is-floating{
+ position:fixed!important;z-index:180!important;
+ display:block!important;box-sizing:border-box!important;
+ right:auto!important;bottom:auto!important;
+ max-width:calc(100vw - 16px);
+ max-height:calc(100dvh - 20px);
+ padding:14px 15px 8px!important;
+ overflow-y:auto!important;overscroll-behavior:contain;
+ background:var(--vr-panel-bg,#242527)!important;
+ color:var(--vr-control-ink,#f0f0f0)!important;
+ border:1px solid var(--vr-control-border,#666)!important;
+ border-radius:12px!important;
+ box-shadow:0 14px 35px #0007!important;
+}
+#vr-academic-tools.vr-is-dragging{user-select:none;-webkit-user-select:none}
+#vr-academic-tools.vr-is-floating #vr-index{max-height:min(43vh,370px)}
+/* Grey track, thick rounded graphite scrollbar, rather than the browser white bar. */
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside),
+#vr-academic-tools.vr-is-floating,
+#vr-academic-tools.vr-is-floating #vr-index{
+ scrollbar-width:auto!important;
+ scrollbar-color:#62676d #303338!important;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar{
+ width:14px;height:14px;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-track,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar-track,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-track{
+ background:#303338;border-radius:999px;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-thumb,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar-thumb,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-thumb{
+ background:#62676d;border-radius:999px;
+ border:3px solid #303338;min-height:38px;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-thumb:hover,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar-thumb:hover,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-thumb:hover{
+ background:#868d94;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside),
+html[data-theme=light] #vr-academic-tools.vr-is-floating,
+html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index{
+ scrollbar-color:#50555b #bfc3c6!important;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-track,
+html[data-theme=light] #vr-academic-tools.vr-is-floating::-webkit-scrollbar-track,
+html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-track{
+ background:#bfc3c6;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-thumb,
+html[data-theme=light] #vr-academic-tools.vr-is-floating::-webkit-scrollbar-thumb,
+html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-thumb{
+ background:#50555b;border-color:#bfc3c6;
+}
+@media print{#vr-academic-tools.vr-is-floating{display:none!important}}
