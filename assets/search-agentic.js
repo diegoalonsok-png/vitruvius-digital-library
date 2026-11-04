@@ -22,16 +22,14 @@ const containsWord=(text,word)=>{const hay=" "+normalize(text)+" ";return hay.in
 const relevant=(text,tt)=>tt.reduce((n,t)=>n+(containsWord(text,t)?1:0),0);
 /* Extract the matching passage, not an unrelated first 350 characters. */
 function excerptAt(text,tt,max=420){
- const source=String(text||"").replace(/\\s+/g," ").trim();if(!source)return "";
- const normalized=normalize(source),rawTerms=tt.map(normalize).filter(Boolean);
+ const source=String(text||"").replace(/\s+/g," ").trim();if(!source)return "";
+ const lowered=source.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
  let position=-1;
- for(const term of rawTerms){
-  const match=new RegExp("(^|[^\\\\p{L}\\\\p{N}])"+term.replace(/[.*+?^$\{\}()|[\]\\\\]/g,"\\\\const relevant=(text,tt)=>tt.reduce((n,t)=>n+(containsWord(text,t)?1:0),0);")+"(?=$|[^\\\\p{L}\\\\p{N}])","iu");
-  // Accent folding alters character offsets; use a case-insensitive original substring as a fast path.
-  const simple=source.toLowerCase().indexOf(term);
-  if(simple>=0&&(position<0||simple<position))position=simple;
+ for(const term of tt){
+  const word=normalize(term);if(!word)continue;
+  const i=lowered.indexOf(word);
+  if(i>=0&&(position<0||i<position))position=i;
  }
- if(position<0){for(const term of rawTerms){const i=normalized.indexOf(term);if(i>=0){position=Math.min(source.length-1,i);break}}}
  if(position<0)return source.slice(0,max)+(source.length>max?"…":"");
  const start=Math.max(0,position-105),end=Math.min(source.length,start+max);
  return (start?"…":"")+source.slice(start,end)+(end<source.length?"…":"");
