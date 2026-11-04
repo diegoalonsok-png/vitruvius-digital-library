@@ -12,13 +12,18 @@
  const background=document.getElementById('reading-background-color');
  const backgroundAutomatic=document.getElementById('reading-background-auto');
  const summary=document.getElementById('reading-options-toggle');
+ const palette=document.getElementById('front-background-options');
+ const paletteToggle=document.getElementById('front-background-toggle');
+ const paletteCustom=document.getElementById('front-background-custom');
+ const paletteAuto=document.getElementById('front-background-auto');
+ const paletteSwatches=[...document.querySelectorAll('[data-background-color]')];
  const fonts={original:null,georgia:'Georgia, "Times New Roman", serif',palatino:'Palatino, "Palatino Linotype", "Book Antiqua", serif',times:'"Times New Roman", Times, serif',arial:'Arial, Helvetica, sans-serif',system:'system-ui, -apple-system, "Segoe UI", sans-serif'};
  const key='vitruvia-reading-appearance-v2';
  const sizeKey='vitruvia-reading-font-percent-v1';
  const labels={
-  es:{title:'Opciones de lectura',size:'Tamaño de letra',font:'Tipografía',original:'Original',system:'Sistema',style:'Estilo',italic:'Cursiva',color:'Color del texto',background:'Color del fondo',automatic:'Automático',preview:'Así se verá el texto.',hint:'Se aplica a artículos, resultados y fondo del buscador; el texto se adapta para mantener el contraste.',reset:'Restablecer ajustes'},
-  en:{title:'Reading options',size:'Text size',font:'Typeface',original:'Original',system:'System',style:'Style',italic:'Italic',color:'Text color',background:'Background color',automatic:'Automatic',preview:'This is how the text will look.',hint:'Applies to articles, results and page background; text adjusts to retain contrast.',reset:'Reset settings'},
-  fr:{title:'Options de lecture',size:'Taille du texte',font:'Police',original:'Originale',system:'Système',style:'Style',italic:'Italique',color:'Couleur du texte',background:'Couleur du fond',automatic:'Automatique',preview:'Voici l’apparence du texte.',hint:'S’applique aux articles, aux résultats et au fond de page ; le texte reste lisible.',reset:'Réinitialiser les réglages'}
+  es:{title:'Opciones de lectura',size:'Tamaño de letra',font:'Tipografía',original:'Original',system:'Sistema',style:'Estilo',italic:'Cursiva',color:'Color del texto',background:'Color del fondo',automatic:'Automático',preview:'Así se verá el texto.',hint:'Se aplica a artículos, resultados y fondo del buscador; el texto se adapta para mantener el contraste.',reset:'Restablecer ajustes',paletteButton:'Fondo',paletteTitle:'Color del fondo de Vitruvia',paletteCustom:'Elegir otro color',paletteAutomatic:'Restablecer fondo automático',swatchNames:['Negro','Grafito','Pizarra','Marfil','Blanco','Papel','Verde grisáceo','Azul grisáceo']},
+  en:{title:'Reading options',size:'Text size',font:'Typeface',original:'Original',system:'System',style:'Style',italic:'Italic',color:'Text color',background:'Background color',automatic:'Automatic',preview:'This is how the text will look.',hint:'Applies to articles, results and page background; text adjusts to retain contrast.',reset:'Reset settings',paletteButton:'Background',paletteTitle:'Vitruvia page background',paletteCustom:'Choose another color',paletteAutomatic:'Restore automatic background',swatchNames:['Black','Graphite','Slate','Ivory','White','Paper','Gray-green','Gray-blue']},
+  fr:{title:'Options de lecture',size:'Taille du texte',font:'Police',original:'Originale',system:'Système',style:'Style',italic:'Italique',color:'Couleur du texte',background:'Couleur du fond',automatic:'Automatique',preview:'Voici l’apparence du texte.',hint:'S’applique aux articles, aux résultats et au fond de page ; le texte reste lisible.',reset:'Réinitialiser les réglages',paletteButton:'Fond',paletteTitle:'Couleur de fond de Vitruvia',paletteCustom:'Choisir une autre couleur',paletteAutomatic:'Restaurer le fond automatique',swatchNames:['Noir','Graphite','Ardoise','Ivoire','Blanc','Papier','Vert grisé','Bleu grisé']}
  };
  const validFont=value=>Object.hasOwn(fonts,value);
  const validColor=value=>typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value);
@@ -43,7 +48,14 @@
  }catch{}
  function refreshLabels(){
   const t=labels[root.lang?.slice(0,2)]||labels.es;
-  options.querySelectorAll('[data-reading-label]').forEach(el=>{el.textContent=t[el.dataset.readingLabel]});
+  document.querySelectorAll('[data-reading-label]').forEach(el=>{
+   const label=t[el.dataset.readingLabel];if(label)el.textContent=label;
+  });
+  if(paletteToggle){paletteToggle.setAttribute('aria-label',t.paletteTitle);paletteToggle.title=t.paletteTitle}
+  if(paletteCustom)paletteCustom.setAttribute('aria-label',t.paletteCustom);
+  paletteSwatches.forEach((btn,index)=>{
+   btn.setAttribute('aria-label',t.swatchNames[index]);btn.title=t.swatchNames[index];
+  });
   summary.setAttribute('aria-label',t.title);summary.title=t.title;
   color.setAttribute('aria-label',t.color);
   background.setAttribute('aria-label',t.background);
@@ -53,6 +65,7 @@
   const bg=effectiveBackground();
   color.value=state.color||(luminance(bg)>.179?'#171717':'#f8f8f8');
   background.value=bg;
+  if(paletteCustom)paletteCustom.value=bg;
  }
  function apply(){
   slider.value=String(state.size);slider.setAttribute('aria-valuenow',String(state.size));
@@ -83,6 +96,9 @@
   }
   automatic.setAttribute('aria-pressed',String(!state.color));
   backgroundAutomatic.setAttribute('aria-pressed',String(!state.background));
+  if(paletteAuto)paletteAuto.setAttribute('aria-pressed',String(!state.background));
+  if(paletteToggle)paletteToggle.style.setProperty('--selected-color',bg);
+  paletteSwatches.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.backgroundColor===state.background)));
   refreshColor();
   try{localStorage.setItem(key,JSON.stringify(state));localStorage.setItem(sizeKey,String(state.size))}catch{}
  }
@@ -96,9 +112,34 @@
  background.addEventListener('input',chooseBackground);
  background.addEventListener('change',chooseBackground);
  backgroundAutomatic.addEventListener('click',()=>{state.background=null;apply()});
+ paletteSwatches.forEach(button=>button.addEventListener('click',()=>{
+  const hex=button.dataset.backgroundColor;
+  if(validColor(hex)){state.background=hex.toLowerCase();apply();if(palette)palette.open=false}
+ }));
+ if(paletteCustom){
+  paletteCustom.addEventListener('input',()=>{
+   if(validColor(paletteCustom.value)){state.background=paletteCustom.value.toLowerCase();apply()}
+  });
+  paletteCustom.addEventListener('change',()=>{
+   if(validColor(paletteCustom.value)){state.background=paletteCustom.value.toLowerCase();apply()}
+  });
+ }
+ if(paletteAuto)paletteAuto.addEventListener('click',()=>{state.background=null;apply();if(palette)palette.open=false});
+ if(palette&&options){
+  palette.addEventListener('toggle',()=>{if(palette.open)options.open=false});
+  options.addEventListener('toggle',()=>{if(options.open)palette.open=false});
+ }
  document.getElementById('reading-font-reset').addEventListener('click',()=>{state={size:100,font:'original',italic:false,color:null,background:null};apply()});
- document.addEventListener('click',event=>{if(options.open&&!options.contains(event.target))options.open=false});
- document.addEventListener('keydown',event=>{if(event.key==='Escape'&&options.open){options.open=false;summary.focus()}});
+ document.addEventListener('click',event=>{
+  if(options.open&&!options.contains(event.target))options.open=false;
+  if(palette?.open&&!palette.contains(event.target))palette.open=false;
+ });
+ document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+   if(palette?.open){palette.open=false;paletteToggle.focus()}
+   else if(options.open){options.open=false;summary.focus()}
+  }
+ });
  new MutationObserver(records=>{
   if(records.some(record=>record.attributeName==='lang'))refreshLabels();
   if(records.some(record=>record.attributeName==='data-theme'))apply();
