@@ -37,16 +37,17 @@
   '<div class="vr-study-inner"><label for="vr-find" id="vr-find-label">Buscar dentro del artículo</label>',
   '<div class="vr-find-row"><input id="vr-find" type="search" autocomplete="off" spellcheck="false" placeholder="Palabra o frase"><button id="vr-clear" type="button" aria-label="Borrar">×</button></div>',
   '<div class="vr-find-nav"><span id="vr-count" role="status" aria-live="polite">Sin búsqueda</span><div><button id="vr-prev" type="button" aria-label="Anterior">↑</button><button id="vr-next" type="button" aria-label="Siguiente">↓</button></div></div>',
+  '<div class="vr-ai-row"><button id="vr-ask-ai" type="button" aria-describedby="vr-ask-ai-detail">✦ IA documental</button><small id="vr-ask-ai-detail" role="status">Buscar por significado en los textos indexados.</small></div>',
   '<nav id="vr-index" aria-label="Secciones del artículo"></nav>',
   '<div class="vr-source-footer"><a id="vr-sources-link" href="#article-sources">Fuentes y bibliografía ↓</a><small id="vr-source-note">Procedencia señalada solo donde está documentada.</small></div>',
   '</div></details>'
  ].join('');
  const q=selector=>panel.querySelector(selector);
- const ui={heading:q('#vr-heading'),progress:q('#vr-progress'),fill:q('#vr-progress-fill'),snapshot:q('#vr-source-snapshot'),collapse:q('#vr-study-collapse'),summary:q('#vr-summary'),label:q('#vr-find-label'),input:q('#vr-find'),clear:q('#vr-clear'),prev:q('#vr-prev'),next:q('#vr-next'),count:q('#vr-count'),index:q('#vr-index'),sources:q('#vr-sources-link'),note:q('#vr-source-note')};
+ const ui={heading:q('#vr-heading'),progress:q('#vr-progress'),fill:q('#vr-progress-fill'),snapshot:q('#vr-source-snapshot'),collapse:q('#vr-study-collapse'),summary:q('#vr-summary'),label:q('#vr-find-label'),input:q('#vr-find'),clear:q('#vr-clear'),prev:q('#vr-prev'),next:q('#vr-next'),count:q('#vr-count'),ai:q('#vr-ask-ai'),aiDetail:q('#vr-ask-ai-detail'),index:q('#vr-index'),sources:q('#vr-sources-link'),note:q('#vr-source-note')};
  const languages={
-  es:['Navegación del artículo','Índice y búsqueda','Buscar dentro del artículo','Palabra o frase','Sin búsqueda','Escribí al menos 2 caracteres','Sin coincidencias','coincidencias','Fuentes y bibliografía ↓','Procedencia señalada solo donde está documentada.','Fuente: Wikipedia','Procedencia general de este párrafo: artículo original de Wikipedia. Las citas específicas se consultan en sus notas.','Resultado anterior','Resultado siguiente','Borrar búsqueda','secciones','enlaces documentales','Abrir fuente original'],
-  en:['Article navigation','Contents and search','Find within this article','Word or phrase','No search','Enter at least 2 characters','No matches','matches','Sources and bibliography ↓','Provenance shown only when documented.','Source: Wikipedia','General provenance of this paragraph: original Wikipedia article. Check its footnotes for specific claims.','Previous match','Next match','Clear search','sections','documentary links','Open original source'],
-  fr:['Navigation de l’article','Sommaire et recherche','Chercher dans cet article','Mot ou expression','Aucune recherche','Saisir au moins 2 caractères','Aucun résultat','occurrences','Sources et bibliographie ↓','Provenance indiquée uniquement si documentée.','Source : Wikipédia','Provenance générale de ce paragraphe : article Wikipédia. Consultez les notes pour les références précises.','Occurrence précédente','Occurrence suivante','Effacer','sections','liens documentaires','Ouvrir la source originale']
+  es:['Navegación del artículo','Índice y búsqueda','Buscar dentro del artículo','Palabra o frase','Sin búsqueda','Escribí al menos 2 caracteres','Sin coincidencias','coincidencias','Fuentes y bibliografía ↓','Procedencia señalada solo donde está documentada.','Fuente: Wikipedia','Procedencia general de este párrafo: artículo original de Wikipedia. Las citas específicas se consultan en sus notas.','Resultado anterior','Resultado siguiente','Borrar búsqueda','secciones','enlaces documentales','Abrir fuente original','✦ IA documental','Busca por significado en la biblioteca indexada.','Buscar el texto en el corpus con IA semántica','La búsqueda semántica no está disponible en esta sesión.'],
+  en:['Article navigation','Contents and search','Find within this article','Word or phrase','No search','Enter at least 2 characters','No matches','matches','Sources and bibliography ↓','Provenance shown only when documented.','Source: Wikipedia','General provenance of this paragraph: original Wikipedia article. Check its footnotes for specific claims.','Previous match','Next match','Clear search','sections','documentary links','Open original source','✦ Documentary AI','Semantic search across indexed library texts.','Search the indexed corpus using semantic AI','Semantic search is unavailable in this session.'],
+  fr:['Navigation de l’article','Sommaire et recherche','Chercher dans cet article','Mot ou expression','Aucune recherche','Saisir au moins 2 caractères','Aucun résultat','occurrences','Sources et bibliographie ↓','Provenance indiquée uniquement si documentée.','Source : Wikipédia','Provenance générale de ce paragraphe : article Wikipédia. Consultez les notes pour les références précises.','Occurrence précédente','Occurrence suivante','Effacer','sections','liens documentaires','Ouvrir la source originale','✦ IA documentaire','Recherche par sens dans la bibliothèque indexée.','Rechercher dans le corpus avec IA sémantique','La recherche sémantique est indisponible pendant cette session.']
  };
  const labels=()=>languages[document.documentElement.lang?.slice(0,2)]||languages.es;
  let headings=[],links=[],marks=[],current=-1,lastTitle=null,buildTimer=0,searchTimer=0,scrollQueued=false;
@@ -131,6 +132,8 @@
   ui.heading.textContent=t[0];ui.summary.textContent=t[1];ui.label.textContent=t[2];
   ui.input.placeholder=t[3];ui.sources.textContent=t[8];ui.note.textContent=t[9];
   ui.prev.setAttribute('aria-label',t[12]);ui.next.setAttribute('aria-label',t[13]);ui.clear.setAttribute('aria-label',t[14]);
+  ui.ai.textContent=t[18];ui.ai.title=t[20];
+  if(!ui.aiDetail.dataset.aiBusy)ui.aiDetail.textContent=t[19];
   dragButton.title=document.documentElement.lang==='en'?'Drag navigator':document.documentElement.lang==='fr'?'Déplacer le panneau':'Arrastrar navegador';
   homeButton.title=document.documentElement.lang==='en'?'Dock to sidebar':document.documentElement.lang==='fr'?'Replacer dans la colonne':'Volver al lateral';
   if(!ui.input.value)ui.count.textContent=t[4];
@@ -275,6 +278,32 @@
  ui.prev.addEventListener('click',()=>goto(current-1));
  ui.next.addEventListener('click',()=>goto(current+1));
  ui.clear.addEventListener('click',()=>{ui.input.value='';unmark();ui.count.textContent=labels()[4];ui.prev.disabled=true;ui.next.disabled=true;ui.input.focus()});
+
+ // The local find field keeps literal highlighting. The separate IA action
+ // runs the existing opt-in E5/BM25 search across actual indexed works.
+ ui.ai.addEventListener('click',()=>{
+  const query=(ui.input.value.trim()||document.getElementById('article-title')?.textContent?.trim()||'').slice(0,180);
+  if(!query){ui.aiDetail.textContent=labels()[4];return}
+  const main=document.getElementById('query');
+  const tab=document.querySelector('button.tab[data-mode="ai"]');
+  if(!main||!tab||!window.VitruviaAI){
+   ui.aiDetail.textContent=labels()[21];return;
+  }
+  main.value=query;
+  main.dispatchEvent(new Event('input',{bubbles:true}));
+  ui.aiDetail.dataset.aiBusy='true';
+  ui.aiDetail.textContent=labels()[19];
+  tab.click(); // Uses the searcher's existing mode and documented results.
+  document.getElementById('results')?.scrollIntoView({
+   block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'
+  });
+ });
+ window.addEventListener('vitruvia:ai-update',event=>{
+  if(!ui.aiDetail.dataset.aiBusy)return;
+  ui.aiDetail.textContent=String(event.detail?.message||labels()[19]).slice(0,220);
+  if(['success','fallback'].includes(event.detail?.phase||''))delete ui.aiDetail.dataset.aiBusy;
+ });
+
  ui.sources.addEventListener('click',e=>{const s=document.getElementById('article-sources');if(s){e.preventDefault();s.scrollIntoView({block:'start',behavior:'smooth'})}});
  ui.prev.disabled=true;ui.next.disabled=true;
  window.addEventListener('scroll',scheduleScroll,{passive:true});
