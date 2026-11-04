@@ -461,7 +461,8 @@ function display(rows,query,phase){
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
  const ordered=S.mode==="all"
   ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,8),
-     ...deduped.filter(r=>libraryTypes.has(r.type)),
+     ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating),
+     ...deduped.filter(r=>libraryTypes.has(r.type)&&r.type!=="manuscript"),
      ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)),
      ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(8)]
   : deduped;
