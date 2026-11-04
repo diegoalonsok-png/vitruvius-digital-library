@@ -8,15 +8,34 @@ const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"")
 const stop=new Set("de del la el los las un una y o en con para por sobre the of and for in le les des du".split(" "));
 const dictionary={
  dios:["dios","dioses","deus","numen","divinus","divina","divinidad","god","divine","deorum"],
- simetria:["simetria","symmetria","proportio","proportion","modulus"],
- pitagoras:["pitagoras","pythagoras","pythagorei","pythagorean"],
- ciceron:["ciceron","cicero","ciceronis","ciceronem","cicerone"],
+ simetria:["simetria","symmetria","symmetriae","proportio","proportion","modulus"],
+ lucrecio:["lucrecio","lucretius","lucretii","lucretium","lucreti"],
+ catulo:["catulo","catullus","catulli","catullum"],
+ agua:["agua","aqua","aquae","aquarum","water","eau"],
+ pitagoras:["pitagoras","pitagoricos","pitagorico","pitagorica","pythagoras","pythagorei","pythagoreis","pythagorici","pythagoricorum","pythagorean"],
+ ciceron:["ciceron","cicero","ciceronis","ciceronem","cicerone","tullius"],
  arquitectura:["arquitectura","architectura","architecture","aedificatio"],
  templo:["templo","templum","templi","aedes","temple"]
 };
-const terms=q=>{const raw=normalize(q).split(" ").filter(x=>x.length>2&&!stop.has(x));return raw.length===1&&dictionary[raw[0]]?dictionary[raw[0]]:raw};
+const terms=q=>{const raw=normalize(q).split(" ").filter(x=>x.length>2&&!stop.has(x));return [...new Set(raw.flatMap(t=>dictionary[t]||[t]))]};
 const containsWord=(text,word)=>{const hay=" "+normalize(text)+" ";return hay.includes(" "+normalize(word)+" ")};
 const relevant=(text,tt)=>tt.reduce((n,t)=>n+(containsWord(text,t)?1:0),0);
+/* Extract the matching passage, not an unrelated first 350 characters. */
+function excerptAt(text,tt,max=420){
+ const source=String(text||"").replace(/\\s+/g," ").trim();if(!source)return "";
+ const normalized=normalize(source),rawTerms=tt.map(normalize).filter(Boolean);
+ let position=-1;
+ for(const term of rawTerms){
+  const match=new RegExp("(^|[^\\\\p{L}\\\\p{N}])"+term.replace(/[.*+?^$\{\}()|[\]\\\\]/g,"\\\\const relevant=(text,tt)=>tt.reduce((n,t)=>n+(containsWord(text,t)?1:0),0);")+"(?=$|[^\\\\p{L}\\\\p{N}])","iu");
+  // Accent folding alters character offsets; use a case-insensitive original substring as a fast path.
+  const simple=source.toLowerCase().indexOf(term);
+  if(simple>=0&&(position<0||simple<position))position=simple;
+ }
+ if(position<0){for(const term of rawTerms){const i=normalized.indexOf(term);if(i>=0){position=Math.min(source.length-1,i);break}}}
+ if(position<0)return source.slice(0,max)+(source.length>max?"…":"");
+ const start=Math.max(0,position-105),end=Math.min(source.length,start+max);
+ return (start?"…":"")+source.slice(start,end)+(end<source.length?"…":"");
+}
 const get=async(url)=>{const response=await fetch(url,{headers:{Accept:"application/json"}});if(!response.ok)throw Error(url+" HTTP "+response.status);return response.json()};
 let chunkPromise=null,bibPromise=null;
 async function chunks(){
@@ -47,7 +66,7 @@ async function search(q){
  const passages=detected.map(({c,score,exact})=>({
   type:"passage",title:"De architectura · "+c.locus,author:(c.edicion||"Edición")+" · "+(c.language||""),
   latin:c.texto||"",translation:c.traduccion||"",locus:c.locus,
-  excerpt:(c.traduccion||c.texto||"").slice(0,350),
+  excerpt:excerptAt(c.traduccion||c.texto||"",tt),
   meta:"Fuente textual verificada · "+(c.pagina_pdf?"p. PDF "+c.pagina_pdf+" · ":"")+"locus "+c.locus,
   link:c.lector||"lector-bilingue.html",edition:c.edicion,
   rating:score,source:"Corpus textual",
