@@ -633,16 +633,25 @@ const curatedReferenceWorks={
    note:"Biografía histórica de referencia · volumen II · editorial Penguin"}
  ]
 };
+/* Universal bibliography: title coverage, source metadata and edition history.
+   A high catalogue count is evidence of dissemination, not proof of scholarly quality. */
 function referenceBooks(rows,query){
- const q=normalized(query),words=q.split(" ").filter(w=>w.length>=4);
+ const q=normalized(query),words=q.split(" ").filter(w=>w.length>=3);
  const curated=curatedReferenceWorks[q]||(q==="hitler"?curatedReferenceWorks["adolf hitler"]:[]);
- const matched=(rows||[]).filter(r=>
-  ["openlibrary","googlebook","book"].includes(r.type)&&r.link&&r.title&&
-  words.length&&words.every(w=>normalized([r.title,r.excerpt||""].join(" ")).includes(w))&&
-  !normalized(r.author||"").includes(q)
- ).map(r=>({title:r.title,author:r.author||r.publisher||"",year:r.year||"",
-  link:r.link,note:r.meta||"Ficha bibliográfica externa · comprobar contenido",priority:50+relevance(r,query)}))
- .sort((a,b)=>b.priority-a.priority).slice(0,12);
+ const matched=(rows||[]).filter(r=>{
+  if(!["openlibrary","googlebook","book"].includes(r.type)||!r.link||!r.title)return false;
+  const title=normalized(r.title),subject=normalized([r.title,r.excerpt||""].join(" "));
+  const full=words.length&&words.every(w=>subject.includes(w));
+  const authorIsSubject=normalized(r.author||"")===q;
+  return full&&!authorIsSubject&&title.length>3;
+ }).map(r=>{
+  const name=normalized(r.title),titleCoverage=words.filter(w=>name.includes(w)).length/Math.max(1,words.length);
+  const editionEvidence=Math.min(30,Math.log2(1+(Number(r.editionCount)||0))*5);
+  const scholarly=/university press|academic|critical edition|edicion critica|cambridge|oxford/i.test([r.publisher,r.meta].join(" "))?13:0;
+  return {title:r.title,author:r.author||r.publisher||"",year:r.year||"",link:r.link,
+   note:r.meta||"Ficha bibliográfica externa · comprobar contenido",
+   priority:Math.round(80*titleCoverage+editionEvidence+scholarly+Math.min(25,(r.rating||0)/6))};
+ }).sort((a,b)=>b.priority-a.priority).slice(0,25);
  const out=[],seen=new Set();
  for(const item of [...curated.map((x,i)=>({...x,priority:900-i})),...matched]){
   const key=normalized(item.title);
@@ -650,6 +659,43 @@ function referenceBooks(rows,query){
   seen.add(key);out.push(item);
  }
  return out;
+}
+function appendManuscriptHierarchy(rows,query){
+ const items=(rows||[]).filter(r=>r.type==="manuscript"&&r.link&&r.codexShelfmark&&
+  (r.primaryWitness||relevance({...r,title:[r.title,r.author,r.excerpt].join(" ")},query)>=35))
+  .sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)).slice(0,25);
+ if(!items.length)return;
+ heading("Tradición manuscrita · códices y testimonios por obra");
+ paragraph("Se destaca el testimonio más antiguo IDENTIFICADO EN ESTA BIBLIOTECA para cada obra. No implica que sea el más antiguo conservado ni un autógrafo del autor.","article-note");
+ const list=make("ol",undefined,"article-related article-manuscripts");
+ for(const [i,r] of items.entries()){
+  const li=make("li",undefined,r.primaryWitness?"principal-reference-work":undefined);
+  if(r.primaryWitness)li.append(make("strong","TESTIMONIO DESTACADO · "));
+  const a=href(r.viewerUrl||r.link,r.title);
+  if(a)li.append(a);
+  li.append(make("small"," · "+[r.codexRepository,r.meta].filter(Boolean).join(" · "),"article-license"));
+  const record=href(r.links?.find(x=>/ficha/i.test(x.label))?.url||r.link," · Ficha institucional");
+  if(record)li.append(record);
+  list.append(li);
+ }
+ $("article-body").append(list);
+}
+function appendInstitutionalResearch(query){
+ heading("Universidades, museos y centros de investigación");
+ paragraph("Búsquedas acotadas por institución. Son rutas externas para localizar estudios y colecciones; Vitruvia no afirma haber leído ni evaluado cada resultado.","article-note");
+ const domains=[
+  ["Universidad de Oxford","ox.ac.uk"],["Universidad de Cambridge","cam.ac.uk"],
+  ["Harvard University","harvard.edu"],["Universidad de Heidelberg","uni-heidelberg.de"],
+  ["Museos y colecciones europeas","europeana.eu"],["Bibliotecas y manuscritos · Biblissima","biblissima.fr"],
+  ["Gallica · Bibliothèque nationale de France","gallica.bnf.fr"],["British Library","bl.uk"],
+  ["JSTOR · investigación académica","jstor.org"]
+ ];
+ const list=make("ul",undefined,"article-related");
+ for(const [label,domain] of domains){
+  const u="https://www.google.com/search?"+new URLSearchParams({q:"site:"+domain+" "+query});
+  const li=make("li"),a=href(u,label);if(a){li.append(a);list.append(li)}
+ }
+ $("article-body").append(list);
 }
 function appendOfficialHistoricalSources(query){
  const q=normalized(query);
@@ -671,7 +717,7 @@ function appendReferenceBooks(rows,query){
  const list=make("ol",undefined,"article-related article-reference-books");
  for(const [i,item] of selected.entries()){
   const li=make("li",undefined,i===0?"principal-reference-work":undefined);
-  if(i===0)li.append(make("strong","OBRA DESTACADA · "));
+  if(i===0)li.append(make("strong","PRIMERA REFERENCIA DEL CATÁLOGO · "));
   const a=href(item.link,item.title);if(a)li.append(a);
   li.append(make("small"," · "+[item.author,item.year,item.note].filter(Boolean).join(" · "),"article-license"));
   list.append(li);
@@ -778,8 +824,10 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ appendManuscriptHierarchy(rows,person?.name||query);
  appendReferenceBooks(rows,person?.name||query);
  appendOfficialHistoricalSources(person?.name||query);
+ appendInstitutionalResearch(person?.name||query);
  addTopicBibliography(rows,person?.name||query,ark);
  heading("VI · Imágenes y documentación visual");
  paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
