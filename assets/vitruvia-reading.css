@@ -51,3 +51,102 @@ html[data-reading-italic=true] body :is(#article-body,#article-aside,#article-so
 }
 @media(max-width:380px){.reading-options summary{gap:5px;padding-inline:9px}.reading-options summary #reading-font-value{display:none}}
 @media print{.reading-options{display:none!important}}
+
+/* Contrast repair, Nov 2026: article, title and contents remain readable in light mode.
+   The background picker changes the search page, never the browser print stylesheet. */
+html{
+ --vr-page-ink:#f4f4f4;
+ --vr-page-muted:#ececec;
+ --vr-control-bg:#28282a;
+ --vr-control-ink:#fafafa;
+ --vr-control-border:#77777a;
+ --vr-control-hover:#414144;
+ --vr-active-bg:#dedee0;
+ --vr-active-ink:#161617;
+ --vr-panel-bg:#202021;
+}
+html:is([data-theme=light]:not([data-reading-background-tone=dark]),[data-reading-background-tone=light]){
+ --vr-page-ink:#161616;
+ --vr-page-muted:#292929;
+ --vr-control-bg:#eeeeed;
+ --vr-control-ink:#202020;
+ --vr-control-border:#828282;
+ --vr-control-hover:#dddddc;
+ --vr-active-bg:#29292b;
+ --vr-active-ink:#fff;
+ --vr-panel-bg:#f1f1f0;
+}
+@media screen{
+ /* The color picker is a page background control, not a search-result background-only workaround. */
+ html[data-reading-background=custom] body,
+ html[data-reading-background=custom] .site-shell,
+ html[data-reading-background=custom] body.vitruvia-reading .nav{
+  background:var(--vitruvia-reading-background)!important;
+ }
+ html[data-reading-background=custom] .reading-options .reading-preview{
+  background:var(--vitruvia-reading-background)!important;
+  color:var(--vitruvia-reading-color,var(--vr-page-ink))!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ /* Existing article headers and the TOC retained dark-mode inks on white surfaces. */
+ html body #vitruvia-article,
+ html body #vitruvia-article :is(.scholar-article-header,.article-grid,.article-body,.article-aside,.article-sources,.article-evidence,.article-kicker,.article-byline,.article-lead,.article-contents,.article-contents-link,.article-contents h3,.article-contents-link a),
+ html body #vitruvia-article :is(h2,h3,h4,h5,h6,p,li,span,strong,small,blockquote,summary,dt,dd,a),
+ html body #vitruvia-article :is(.article-contents,.article-aside,.article-sources,.article-evidence) :where(*),
+ html body :is(#result-list,#answer) :is(h2,h3,h4,p,li,span,strong,small,a),
+ html body .sidebar :is(h3,p,a,small),
+ html body #vitruvia-article .article-kicker,
+ html body #vitruvia-article .article-byline{
+  color:var(--vitruvia-reading-color,var(--vr-page-ink))!important;
+ }
+ html body #vitruvia-article :is(a,.article-contents-link,.article-aside a){
+  text-decoration-color:var(--vr-control-border)!important;
+ }
+ /* Keep source/TOC rules, borders and scrolling legible in both themes. */
+ html body #vitruvia-article :is(.article-aside,.article-aside .article-index-link,.article-contents-link,.article-sources,.scholar-article-header,.article-body h3,.article-evidence,.evidence-entry){
+  border-color:var(--vr-control-border)!important;
+ }
+ /* Markdown quotation, citations and cards should never create pale-on-pale islands. */
+ html[data-reading-background=custom] body #vitruvia-article :is(.preface-entry,.person-locus-entry,.principal-reference-work,.vitruvius-edition,.article-research-item,.evidence-entry),
+ html[data-reading-background=custom] body :is(#answer,.result-card,.empty){
+  background:var(--vr-panel-bg)!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ html[data-reading-background=custom] body .sidebar{
+  border-color:var(--vr-control-border)!important;
+ }
+ /* Every control is neutral gray: no legacy dark-green buttons on a light page. */
+ html body :is(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit){
+  background:var(--vr-control-bg)!important;
+  color:var(--vr-control-ink)!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ html body :is(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):hover,
+ html body :is(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):focus-visible{
+  background:var(--vr-control-hover)!important;
+  color:var(--vr-control-ink)!important;
+ }
+ html body .tab[aria-pressed=true]{
+  background:var(--vr-active-bg)!important;
+  color:var(--vr-active-ink)!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ html body .searchform{
+  background:var(--vr-panel-bg)!important;
+  border-color:var(--vr-control-border)!important;
+  color:var(--vr-page-ink)!important;
+ }
+ html body .searchform input{color:var(--vr-page-ink)!important}
+ html body .searchform input::placeholder{color:var(--vr-page-muted)!important;opacity:1}
+ html body .searchform .icon-search{color:var(--vr-page-ink)!important}
+ html body :is(.section-head h2,#result-state,.vitruvia-result-group,.vitruvia-gallery-heading){color:var(--vr-page-ink)!important}
+ html body :is(#article-body,#article-aside,#article-sources,#article-evidence,#result-list) :is(mark,.query-hit){
+  background:#ffe36c!important;
+  color:#181818!important;
+ }
+ /* Maintain contrast even if an old custom ink preference was white on a white page. */
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title) :where(mark,.query-hit),
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence) :where(mark,.query-hit) :where(*){
+  background:#ffe36c!important;color:#181818!important;
+ }
+}
