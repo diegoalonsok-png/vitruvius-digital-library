@@ -457,6 +457,103 @@ function appendPersonLoci(rows,person){
   "Philological note: these are edited texts, not codex OCR. Inflected forms require collation; manuscript folios are not inferred.",
   "Note philologique : textes édités, non OCR du codex. Les formes fléchies requièrent un examen ; aucun folio n'est supposé."),"article-note");
 }
+/* Extensible biographical profiles: one verified JSON entry per subject.
+   Missing entries fall back to normal encyclopedic discovery, never empty stubs. */
+let biographyIndexPromise=null;
+function normalizeBiographyQuery(query){
+ return normalized(String(query||"").replace(/^(?:biograf[ií]a|vida y obra|vida|historia|biography|life and works|who was|who is|quien fue|quién fue|quien es|quién es)\s+(?:de|del|of)?\s*/i,""));
+}
+async function biographyProfile(query){
+ if(!biographyIndexPromise){
+  biographyIndexPromise=fetch("data/scholarly-biographies.json?v=20261104-profiles-v1")
+   .then(r=>{if(!r.ok)throw Error("Perfil no disponible");return r.json()})
+   .catch(()=>({profiles:[]}));
+ }
+ const d=await biographyIndexPromise;
+ const q=normalizeBiographyQuery(query);
+ if(!q)return null;
+ return (d.profiles||[]).find(profile=>[profile.name,...(profile.aliases||[])].some(alias=>normalized(alias)===q))||null;
+}
+function renderVerifiedBiography(profile){
+ if(!profile)return;
+ $("article-title").textContent=profile.name;
+ $("article-byline").textContent=profile.category||"";
+ paragraph(profile.introduction,"article-lead");
+ heading(phrase("Identidad, cronología y nombres antiguos","Identity, chronology and ancient names","Identité, chronologie et noms anciens"));
+ const names=make("dl",undefined,"vitruvia-bio-facts");
+ for(const [key,value] of [
+  [phrase("Griego antiguo","Ancient Greek","Grec ancien"),profile.ancientGreek],
+  [phrase("Latín","Latin","Latin"),profile.latin],
+  ...(profile.facts||[]).map(x=>[x.label,x.value])
+ ]){
+  if(!value)continue;
+  const dt=make("dt",key),dd=make("dd",value);
+  if(key==="Griego antiguo"||key==="Ancient Greek"||key==="Grec ancien")dd.lang="grc";
+  if(key==="Latín"||key==="Latin")dd.lang="la";
+  names.append(dt,dd);
+ }
+ $("article-body").append(names);
+ for(const section of profile.sections||[]){heading(section.heading);paragraph(section.body)}
+ if(profile.survival?.statement){
+  heading(phrase("Obras auténticas y conservación","Authentic writings and survival","Écrits authentiques et transmission"));
+  paragraph(profile.survival.statement);
+  const ref=href(profile.survival.source,phrase("Consultar análisis crítico de las fuentes","Consult source-critical study","Consulter l'étude critique des sources"));
+  if(ref)$("article-body").append(ref);
+ }
+ if(profile.sources?.length){
+  heading(phrase("Bibliografía crítica para ampliar","Scholarly sources for further reading","Bibliographie critique pour approfondir"));
+  const ul=make("ul",undefined,"article-related");
+  for(const source of profile.sources){
+   const li=make("li");const link=href(source.url,source.title);if(link)li.append(link);
+   if(source.institution)li.append(document.createTextNode(" · "+source.institution));
+   if(source.note)li.append(make("p",source.note,"article-note"));
+   ul.append(li);
+  }
+  $("article-body").append(ul);
+ }
+}
+function optionalManuscriptAccess(rows){
+ const sources=(rows||[]).filter(row=>
+  row.type==="manuscript"&&row.codexShelfmark&&row.codexRepository&&
+  (row.localViewer||row.codexViewer||row.viewerUrl));
+ if(!sources.length)return false;
+ const unique=[],seen=new Set();
+ for(const row of sources.sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999))){
+  const key=row.codexRepository+"|"+row.codexShelfmark;
+  if(seen.has(key))continue;seen.add(key);unique.push(row);
+ }
+ const container=make("details",undefined,"article-optional-manuscripts");
+ container.id="article-manuscript-access";
+ container.append(make("summary",phrase("Consultar manuscritos y visores (opcional) · "+unique.length,
+  "Manuscripts and readers (optional) · "+unique.length,
+  "Manuscrits et visionneuses (facultatif) · "+unique.length)));
+ const p=make("p",phrase(
+  "Los manuscritos se consultan solo si querés profundizar. Las fechas se refieren a las copias conservadas, no a la composición del texto.",
+  "Open manuscripts only if you wish to explore further. Dates refer to surviving copies, not the work's composition.",
+  "L'accès aux manuscrits est facultatif. Les dates concernent les copies conservées, non la rédaction du texte."),"article-note");
+ container.append(p);
+ const list=make("ol",undefined,"article-related");
+ for(const row of unique.slice(0,20)){
+  const li=make("li"),link=href(row.localViewer||row.codexViewer||row.viewerUrl,row.title||row.codexShelfmark);
+  if(link)li.append(link);
+  li.append(make("small"," · "+[row.codexRepository,row.codexShelfmark,row.meta].filter(Boolean).join(" · "),"article-license"));
+  if(row.localViewer&&window.VitruviaLocalManuscripts){
+   const open=make("button",phrase("Ampliar visor aquí","Expand reader here","Agrandir la visionneuse ici"));
+   open.type="button";open.className="article-local-viewer";
+   open.addEventListener("click",()=>window.VitruviaLocalManuscripts.open(row.localViewer,row.title));
+   li.append(document.createTextNode(" "),open);
+  }
+  list.append(li);
+ }
+ container.append(list);$("article-body").append(container);
+ const side=$("article-aside");
+ if(side){
+  const nav=href("#article-manuscript-access",phrase("Códices y visores · opcional","Codices and readers · optional","Codex et visionneuses · facultatif"));
+  if(nav){nav.className="article-index-link article-viewer-shortcut";nav.addEventListener("click",()=>{container.open=true});side.append(nav)}
+ }
+ return true;
+}
+
 function appendBiographyExtract(raw){
  const pieces=String(raw||"").split(/\r?\n/);
  let buffer=[],length=0,paragraphs=0,sections=0;
@@ -980,7 +1077,10 @@ async function renderTopic(top,rows,query,token,person=null){
   Number(y.wikiLang===wanted)-Number(x.wikiLang===wanted)||
   relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
  if(wiki?.preferredWiki&&wiki.title)$("article-title").textContent=wiki.title;
- paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
+ const profile=await biographyProfile(person?.name||query);
+ if(token!==active)return;
+ if(profile)renderVerifiedBiography(profile);
+ else paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
  if(deity){for(const [sectionTitle,body] of deityDossier){heading(sectionTitle);paragraph(body)}}
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
  if(person?.id==="cicero"){for(const [sectionTitle,body] of ciceroChapters){heading(sectionTitle);paragraph(body)}}
@@ -994,7 +1094,12 @@ async function renderTopic(top,rows,query,token,person=null){
  }
  const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
  if(token!==active)return;
- if(data?.extract){
+ if(data?.extract&&profile){
+  const ref=href(data.fullurl||wiki?.link,phrase("Enciclopedia externa · comprobar referencias y ampliaciones",
+   "External encyclopedia · verify citations and additional context",
+   "Encyclopédie externe · vérifier les références et compléments"));
+  if(ref){heading(phrase("Comparar con una enciclopedia general","Compare with a general encyclopedia","Comparer avec une encyclopédie générale"));$("article-body").append(ref)}
+ }else if(data?.extract){
   heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
   paragraph("Material enciclopédico de Wikipedia: atribución CC BY-SA. La síntesis original y los textos externos se presentan diferenciados.","article-note");
   if(wiki&&wiki.wikiLang!==wanted)paragraph(
@@ -1008,6 +1113,8 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ // Advanced sources are present, but do not interrupt a general or school-level biography.
+ const body=$("article-body"),previousNodes=new Set([...body.childNodes]);
  appendLocalRepositoryResources(rows);
  appendCuratedUniversities(rows);
  appendManuscriptHierarchy(rows,documentaryQuery);
@@ -1016,6 +1123,17 @@ async function renderTopic(top,rows,query,token,person=null){
  appendOfficialHistoricalSources(documentaryQuery);
  appendInstitutionalResearch(documentaryQuery);
  addTopicBibliography(rows,documentaryQuery,ark);
+ const advanced=[...body.childNodes].filter(node=>!previousNodes.has(node));
+ if(advanced.length){
+  const details=make("details",undefined,"article-academic-expansion");
+  details.id="article-academic-expansion";
+  details.append(make("summary",phrase("Fuentes antiguas, universidades, códices y bibliografía especializada",
+   "Ancient sources, universities, manuscripts and scholarly bibliography",
+   "Sources anciennes, universités, manuscrits et bibliographie scientifique")));
+  const contents=make("div",undefined,"article-academic-expansion-inner");
+  for(const node of advanced)contents.append(node);
+  details.append(contents);body.append(details);
+ }
  heading("VI · Imágenes y documentación visual");
  paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
  const galleryLink=href("#vitruvia-images","Consultar galería de imágenes documentadas");
@@ -1026,7 +1144,7 @@ async function renderTopic(top,rows,query,token,person=null){
  if(list.childNodes.length)$("article-body").append(list);
  if(person)appendPersonLoci(rows,person);else appendVerifiedTopicPassages(rows,query);
  appendAcademicLinks(person?.name||query);
- aside(sources);references(rows);buildContents();
+ aside(sources);optionalManuscriptAccess(rows);references(rows);buildContents();
 }
 /* Separate verifiable article sections from supporting catalogue records. */
 function appendResearch(rows,query,sourceTitle){
@@ -1257,7 +1375,7 @@ function renderVitruviusAuthority(rows){
  const edition=href("lector-bilingue.html",phrase("Comparar latín y traducciones","Compare Latin and translations","Comparer latin et traductions"));
  if(edition)links.append(edition);
  manuscripta.append(links);
- $("article-body").append(manuscripta);
+ // Keep the document access available but out of the way of the biography.
  appendLocalRepositoryResources(rows);
  for(const [title,body] of vitruviusBiography){heading(title);paragraph(body)}
  heading("02 · Los diez libros de De architectura");
@@ -1313,8 +1431,17 @@ function renderVitruviusAuthority(rows){
  heading("05 · Investigación y fuentes");
  paragraph("La exposición distingue hechos biográficos sustentados, inferencias históricas y tradición editorial. Para cotejar citas y variantes debe consultarse el lugar preciso del texto latino y la edición utilizada.","article-note");
  appendAcademicLinks("Marcus Vitruvius Pollio De architectura");
+ manuscripta.id="article-manuscript-access";
+ const archive=make("details",undefined,"article-optional-manuscripts");
+ archive.append(make("summary",phrase("Leer el Codex H · acceso opcional al visor y sus 341 imágenes",
+  "Read Codex H · optional reader and 341 images",
+  "Lire le Codex H · visionneuse facultative et 341 images")));
+ archive.append(manuscripta);
+ $("article-body").append(archive);
  references([...rows.filter(x=>["book","edition","manuscript","article","wikipedia"].includes(x.type)),{title:"Vitruvio · De architectura, lector latino y traducciones",link:"lector-bilingue.html"},{title:"Harley MS 2767 · archivo de folios",link:"codex-h-folios-local.html"}],"Perfil editorial de Vitruvia. Consultar De architectura y bibliografía crítica para las noticias autobiográficas y la transmisión manuscrita.");
  aside([{title:"Ediciones multilingües de De architectura",link:"lector-bilingue.html"},...rows.filter(x=>["book","edition","manuscript"].includes(x.type)).slice(0,8)]);
+ const shortcut=href("#article-manuscript-access",phrase("Codex H · visor opcional","Codex H · optional reader","Codex H · visionneuse facultative"));
+ if(shortcut){shortcut.className="article-index-link article-viewer-shortcut";shortcut.addEventListener("click",()=>{archive.open=true});$("article-aside").append(shortcut)}
  buildContents();
 }
 
