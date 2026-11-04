@@ -217,6 +217,7 @@ function personWikiHit(row,person,query){
 function appendPersonLoci(rows,person){
  heading(phrase("Pasajes de Vitruvio que mencionan al personaje","Passages in Vitruvius mentioning this person","Passages de Vitruve mentionnant cette personne"));
  const names=[person.name,...(person.aliases||[]),...(person.latin_forms||[])];
+ if(person.id==="cicero")names.push("Cicero","Ciceronis","Ciceronem","Cicerone","Ciceroni","Cicerón");
  if(person.id==="cicero")names.push("Cicerón","Cicero","Cicerone","Ciceronis","Ciceronem");
  const forms=[...new Set(names.map(normalized).filter(x=>x.length>=5))];
  const matches=rows.filter(x=>x.type==="passage"&&x.locus&&forms.some(form=>(" "+normalized([x.latin,x.translation,x.excerpt].join(" "))+" ").includes(" "+form+" ")));
@@ -288,43 +289,76 @@ function appendBiographyExtract(raw){
  flush();
  return paragraphs;
 }
+/* External material is attributed; editorial overview is independently authored. */
+const ciceroChapters=[
+["Origen y formación","Marco Tulio Cicerón (106–43 a. C.) nació en Arpino, en una familia acomodada del orden ecuestre. Su origen fuera de la aristocracia senatorial romana marcó su ascenso como homo novus. Se educó en Roma, estudió retórica, derecho y filosofía y completó su formación con maestros griegos. La tradición le atribuye una extraordinaria capacidad para unir argumentación jurídica, cultura literaria y vida política."],
+["Carrera pública y ascenso","Tras sus primeras actuaciones como abogado, Cicerón desempeñó las magistraturas de cuestor, edil y pretor hasta alcanzar el consulado en 63 a. C. Su carrera coincidió con la crisis de la República tardía, cuando las antiguas instituciones estaban sometidas a la competencia entre grandes generales, facciones senatoriales y tribunos populares."],
+["La conjuración de Catilina","Durante su consulado denunció la conspiración de Lucio Sergio Catilina y pronunció las célebres Catilinarias. La ejecución de conspiradores sin juicio popular se convirtió después en una controversia jurídica y política que afectaría decisivamente a su carrera. La discusión sobre la salvación de la República y los límites del poder consular atraviesa su legado."],
+["Exilio y retorno","En 58 a. C. una legislación impulsada por Publio Clodio Pulcro precipitó el exilio de Cicerón, relacionado con las condenas de los conjurados. Regresó al año siguiente gracias a un movimiento político favorable. Sus discursos y cartas de ese período expresan tanto su preocupación por el orden constitucional como su propia vulnerabilidad ante las alianzas cambiantes de Roma."],
+["César y la guerra civil","Cicerón miró con desconfianza la concentración de poder en torno a Julio César, aunque sus posiciones prácticas variaron con las circunstancias. Durante la guerra civil se aproximó al bando de Pompeyo y posteriormente recibió el perdón de César. Tras la victoria cesariana dedicó una parte significativa de su actividad a la escritura filosófica y retórica."],
+["Los últimos años y la muerte","Después del asesinato de César en 44 a. C., Cicerón defendió la autoridad del Senado y atacó públicamente a Marco Antonio en las Filípicas. La formación del Segundo Triunvirato lo dejó expuesto a las proscripciones; fue asesinado en 43 a. C. Su muerte se convirtió en una imagen duradera de la violencia que acompañó al final de la República."],
+["Obra oratoria y retórica","Discursos judiciales y políticos como Pro Archia, Pro Caelio, In Verrem, Pro Milone y las Catilinarias permiten estudiar las técnicas de persuasión y el funcionamiento de la vida forense romana. En De oratore, Brutus y Orator reflexionó sobre la educación del orador, la elocuencia, los estilos discursivos y la relación entre filosofía y palabra pública."],
+["Obra filosófica y pensamiento político","En De re publica y De legibus examinó la comunidad política, la justicia y las leyes. En De officiis trató los deberes morales, lo útil y lo honesto; en De finibus, Tusculanae disputationes, De natura deorum y De divinatione dialogó con las principales escuelas helenísticas. Su aporte no consistió en reproducir mecánicamente la filosofía griega, sino en construir un vocabulario latino capaz de discutirla."],
+["Epistolario y vida privada","Las colecciones de cartas a Ático, familiares y a su hermano Quinto revelan el modo en que sus decisiones públicas se entrelazaban con intereses patrimoniales, vínculos de amistad y preocupaciones domésticas. Constituyen testimonios fundamentales sobre las redes sociales y políticas de la República tardía, aunque deben leerse teniendo en cuenta su carácter personal y circunstancial."],
+["Recepción e influencia","La prosa de Cicerón ejerció una influencia profunda sobre la educación retórica latina, la transmisión medieval de los clásicos y el humanismo renacentista. Su discusión de la ley natural, los deberes cívicos, el gobierno mixto y la elocuencia también marcó tradiciones posteriores de pensamiento político. Sus escritos se valoran como documentos históricos y como obras literarias, pero sus afirmaciones deben contrastarse con otras fuentes antiguas."]
+];
+function addExternalDiscovery(person){
+ heading(phrase("Otras enciclopedias y herramientas de investigación","Other encyclopedias and research tools","Autres encyclopédies et outils de recherche"));
+ paragraph(phrase("Estos enlaces complementan la investigación; sus respuestas no se importan automáticamente ni se presentan como fuentes ya leídas.","These links extend the research; their results are not automatically imported or represented as consulted.","Ces liens complètent la recherche sans prétendre que leurs résultats ont été consultés."),"article-note");
+ const names=[["Google", "https://www.google.com/search?q="+encodeURIComponent(person.name+" biografía historia fuentes")],["Google AI", "https://www.google.com/search?q="+encodeURIComponent(person.name+" biografía historia")],["Grokipedia","https://grokipedia.com/search?q="+encodeURIComponent(person.name)],["Wikipedia","https://es.wikipedia.org/w/index.php?search="+encodeURIComponent(person.name)]];
+ const div=make("div",undefined,"article-actions");
+ for(const [name,url] of names){const link=href(url,name);if(link)div.append(link)}
+ $("article-body").append(div);
+}
+async function fallbackWiki(person){
+ const name=person.id==="cicero"?"Marco Tulio Cicerón":person.name;
+ for(const lang of [document.documentElement.lang==="en"?"en":"es","en"]){
+  try{
+   const search=new URLSearchParams({action:"query",generator:"search",gsrsearch:name,gsrlimit:"3",prop:"extracts|info",explaintext:"1",inprop:"url",exsectionformat:"wiki",format:"json",origin:"*"});
+   const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+search);
+   if(!response.ok)continue;
+   const json=await response.json(),pages=Object.values(json.query?.pages||{});
+   const page=pages.find(p=>normalized(p.title).includes(normalized(name))||normalized(name).includes(normalized(p.title)));
+   if(page?.extract)return {extract:page.extract,fullurl:page.fullurl,title:page.title,lang};
+  }catch{}
+ }
+ return null;
+}
 async function renderHistoricalPerson(top,rows,person,token){
- reset(person.name,phrase("Historia y biografía · fuentes documentadas","History and biography · documented sources","Histoire et biographie · sources documentées"),
+ reset(person.name,phrase("Síntesis editorial y biografía documentada","Editorial synthesis and documented biography","Synthèse éditoriale et biographie documentée"),
   phrase("01 · BIOGRAFÍA HISTÓRICA","01 · HISTORICAL BIOGRAPHY","01 · BIOGRAPHIE HISTORIQUE"));
  aside(rows);
- references([...(top?[top]:[]),...rows.filter(x=>["wikidata","article","book"].includes(x.type))],
-  "Wikipedia: atribución CC BY-SA 4.0; consultar la historia editorial y referencias originales. Los textos de Vitruvio provienen de sus ediciones indexadas, no de Wikipedia.");
- if(top){
-  paragraph(top.excerpt,"article-lead");
-  const data=await wikiSummary(top);
-  if(token!==active)return;
-  if(data?.extract){
-   $("article-body").replaceChildren();
-   if(!appendBiographyExtract(data.extract))paragraph(top.excerpt,"article-lead");
-  }else paragraph("La fuente enciclopédica extensa no respondió. Se mantiene el resumen documentado y el enlace original.","article-note");
-  const original=href(data?.fullurl||top.link,phrase("Leer artículo biográfico íntegro, referencias e historial ↗","Read full biography, references and history ↗","Lire la biographie intégrale, références et historique ↗"));
+ const isCicero=person.id==="cicero";
+ if(isCicero){
+  paragraph("Marco Tulio Cicerón · Arpino, 106 a. C. — Formias, 43 a. C. · Orador, jurista, filósofo y político de la República romana.","article-lead");
+  for(const [header,body] of ciceroChapters){heading(header);paragraph(body)}
+ }
+ const data=top?await wikiSummary(top):await fallbackWiki(person);
+ if(token!==active)return;
+ if(data?.extract){
+  heading(phrase("Documentación enciclopédica complementaria","Supplementary encyclopedic documentation","Documentation encyclopédique complémentaire"));
+  paragraph(phrase("A continuación se presenta material procedente de Wikipedia, atribuido a sus colaboradores (CC BY-SA). No constituye una redacción original de Vitruvia.","The following text is sourced from Wikipedia under CC BY-SA; it is not original Vitruvia authorship.","Le texte suivant provient de Wikipédia sous CC BY-SA et n'est pas une rédaction originale de Vitruvia."),"article-note");
+  if(!appendBiographyExtract(data.extract))paragraph(top?.excerpt||"","article-lead");
+  const original=href(data.fullurl||top?.link,phrase("Consultar el original, las notas y el historial","Consult source, references and history","Voir la source, les références et l'historique"));
   if(original)$("article-body").append(original);
- }else{
-  paragraph(phrase("Recuperando el artículo biográfico de fuentes identificadas. No se sustituye una biografía por una ficha de libro.",
-   "Retrieving an attributed biography. A catalog record is not a substitute for biographical evidence.",
-   "Recherche d'une biographie attribuée. Une notice bibliographique ne s'y substitue pas."),"article-lead");
-  const lookup=href("https://es.wikipedia.org/w/index.php?"+new URLSearchParams({search:person.name}),"Buscar biografía en Wikipedia ↗");
-  if(lookup)$("article-body").append(lookup);
+ }else if(!isCicero){
+  paragraph(top?.excerpt||phrase("No se obtuvo una biografía extensa verificable de las fuentes públicas consultadas.","A verified long biography could not be retrieved.","Biographie complète indisponible."),"article-lead");
  }
+ addExternalDiscovery(person);
+ heading(phrase("02 · Relación histórica con Vitruvio","02 · Historical relationship with Vitruvius","02 · Rapport historique avec Vitruve"));
+ paragraph(isCicero?
+  "Cicerón y Vitruvio pertenecen al mundo intelectual de la Roma tardorrepublicana. El primero murió en 43 a. C.; el tratado De architectura se asocia habitualmente con el período de Augusto. La coincidencia de época y de referencias culturales permite comparar sus concepciones de las artes, la educación y la técnica, pero no prueba una relación personal ni una influencia textual directa. Los loci que siguen se incluyen solo cuando el índice recupera menciones efectivas.":
+  phrase("La coincidencia cronológica o temática no demuestra una relación personal o textual directa. Se distinguen las menciones literales comprobables de las analogías históricas.","Chronological overlap does not establish a direct personal or textual relationship; verified references and contextual parallels are distinguished.","La contemporanéité n'établit pas de relation directe ; on distingue attestations et parallèles."),"article-note");
  appendPersonLoci(rows,person);
- heading(phrase("Bibliografía y fuentes relacionadas","Related bibliography and sources","Bibliographie et sources liées"));
- const seen=new Set(),list=make("ul",undefined,"article-related");
- for(const item of rows.filter(x=>x.link&&["book","article","wikidata","googlebook"].includes(x.type))){
-  const candidate=normalized([item.title,item.author,...(item.aliases||[])].join(" "));
-  const needles=[person.name,...(person.aliases||[])].map(normalized).filter(x=>x.length>=5);
-  if(!needles.some(x=>candidate.includes(x))||seen.has(item.link))continue;
-  seen.add(item.link);
-  const li=make("li"),a=href(item.link,item.title+" · "+(item.author||item.source||""));
-  if(a)li.append(a);list.append(li);
-  if(list.children.length>=10)break;
- }
- if(list.children.length)$("article-body").append(list);
- else paragraph("Las referencias adicionales solo se presentan cuando es posible identificar su fuente.","article-note");
+ heading(phrase("Bibliografía y referencias comprobables","Bibliography and verifiable references","Bibliographie et références vérifiables"));
+ const related=rows.filter(x=>x.link&&["book","article","wikidata","googlebook","wikipedia"].includes(x.type));
+ const seen=new Set(),ul=make("ul",undefined,"article-related");
+ for(const r of related){if(seen.has(r.link))continue;seen.add(r.link);const li=make("li"),link=href(r.link,r.title||r.source);if(link)li.append(link);if(li.childNodes.length)ul.append(li);if(ul.children.length>=14)break}
+ if(ul.children.length)$("article-body").append(ul);
+ const refs=[...(top?[top]:[]),...related];
+ if(data?.fullurl)refs.unshift({title:"Wikipedia · "+(data.title||person.name),link:data.fullurl});
+ if(isCicero)refs.push({title:"Cicero · Stanford Encyclopedia of Philosophy",link:"https://plato.stanford.edu/entries/cicero/"});
+ references(refs,"Síntesis editorial propia de Vitruvia; información enciclopédica externa identificada y atribuida. Las fuentes enlazadas no equivalen a una consulta automática de Google AI o Grokipedia.");
  buildContents();
 }
 async function renderWiki(top,rows,token){reset(top.title,top.author||"Wikipedia",
@@ -555,7 +589,7 @@ reportEvidence(rows,q);
 if(person){
  const biographies=rows.filter(x=>personWikiHit(x,person,q)).sort((a,b)=>
   Number(b.wikiLang===document.documentElement.lang)-Number(a.wikiLang===document.documentElement.lang));
- void renderHistoricalPerson(biographies[0]||null,rows,person,token).then(()=>{if(token===active)highlightArticle(q)});
+ void renderHistoricalPerson(biographies[0]||null,rows,person,token).then(()=>{if(token===active)highlightArticle(person.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q)});
  return;
 }
 const top=choose(rows,q);if(!top){root.hidden=true;return}
