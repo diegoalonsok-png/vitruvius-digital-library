@@ -336,7 +336,26 @@ function liveBooks(q,concept){return S.works.map(w=>{
   pdf?(w.pdf?.language==="grc"?"Texto original en griego · PDF":w.pdf?.language==="la"?"Texto original en latín · PDF":"Edición histórica · PDF"):
   local?"Texto local acreditado":witnesses.length?"Códice identificado · institución de custodia":
   w.reading?.url?"Texto externo identificado":editions.length?"Edición vinculada · revisar acceso":"Ficha bibliográfica · edición pendiente";
- return {type:"book",workId:w.id,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
+ const originalReadings=[];
+ const readPaths=new Set();
+ const addOriginal=(url,kind,editionLabel)=>{
+  if(!url||readPaths.has(url))return;
+  // Only catalogue-verified local transcription/PDF or an explicit text source.
+  if(!/^(?:corpus|documents)\/[a-z0-9_\/.-]+\.(?:html|pdf)(?:\?.*)?$/i.test(url)
+      &&!/^https:\/\/[a-z0-9.-]+\/.+/i.test(url))return;
+  readPaths.add(url);originalReadings.push({url,kind,label:editionLabel||"",language:w.language});
+ };
+ for(const version of w.localVersions||[]){
+  if(version.language!==w.language||version.kind==="translation"||version.kind==="adaptation")continue;
+  addOriginal(version.path,"text",version.label);
+ }
+ if(w.localHtml)addOriginal(w.localHtml,"text","Transcripción original · lectura en Vitruvia");
+ if(w.pdf?.url&&(w.pdf.role==="original"||w.pdf.language===w.language)){
+  addOriginal(libraryURL(w.id,"pdf"),"pdf","Edición histórica · facsímil PDF");
+ }
+ if(!originalReadings.length&&w.localReader?.verified)addOriginal(libraryURL(w.id,"text"),"reader","Texto original · lector del sitio");
+ if(!originalReadings.length&&w.reading?.url)addOriginal(w.reading.url,"external","Edición original · fuente identificada");
+ return {type:"book",workId:w.id,originalReadings,originalLanguage:w.language,originalEditionStatus:w.publicStatus,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
   links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
