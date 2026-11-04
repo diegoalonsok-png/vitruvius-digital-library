@@ -63,7 +63,7 @@ function pubLinks(entries,title,container){
   const article=document.createElement("article");article.className="classical-evidence-record";
   const strong=document.createElement("strong");strong.textContent=x.title;article.append(strong);
   const meta=document.createElement("p");meta.className="classical-evidence-meta";
-  meta.textContent=[x.library,x.shelfmark,x.date].filter(Boolean).join(" · ");article.append(meta);
+  meta.textContent=[x.library,x.shelfmark,x.date,x.editor,x.year,x.provider].filter(Boolean).join(" · ");article.append(meta);
   if(x.coverage){const p=document.createElement("p");p.textContent=x.coverage;article.append(p)}
   if(x.note){const p=document.createElement("p");p.textContent=x.note;article.append(p)}
   if(x.rights){const p=document.createElement("small");p.textContent=x.rights;article.append(p)}
