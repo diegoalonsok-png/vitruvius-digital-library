@@ -41,7 +41,14 @@
         ],
         "verified": true
       },
-      "publicStatus": "lectura-local-completa"
+      "publicStatus": "lectura-local-completa",
+      "aliases": [
+        "Vitruvio",
+        "Vitruvius",
+        "Vitruve",
+        "Diez libros de arquitectura",
+        "Los diez libros de arquitectura"
+      ]
     },
     {
       "id": "cicero-officiis",
@@ -158,7 +165,17 @@
           "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
           "https://www.e-codices.unifr.ch/de/description/bge/lat0088/Jeger"
         ]
-      }
+      },
+      "aliases": [
+        "Cicerón",
+        "Cicero",
+        "Cicéron",
+        "Los deberes",
+        "Sobre los deberes",
+        "On Duties",
+        "De los oficios",
+        "Officiis"
+      ]
     },
     {
       "id": "cicero-oratore",
@@ -189,7 +206,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20oratore"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Cicerón",
+        "Cicero",
+        "Del orador",
+        "On the Orator"
+      ]
     },
     {
       "id": "cicero-republica",
@@ -251,7 +274,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20Gallico"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "César",
+        "Caesar",
+        "La guerra de las Galias",
+        "Gallic War"
+      ]
     },
     {
       "id": "caesar-civili",
@@ -282,7 +311,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20civili"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "César",
+        "Caesar",
+        "Guerra civil",
+        "Civil War"
+      ]
     },
     {
       "id": "sallust-catiline",
@@ -507,7 +542,14 @@
           "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
           "https://mira.ie/164"
         ]
-      }
+      },
+      "aliases": [
+        "Lucrecio",
+        "Lucretius",
+        "Sobre la naturaleza de las cosas",
+        "La naturaleza de las cosas",
+        "On the Nature of Things"
+      ]
     },
     {
       "id": "virgil-aeneid",
@@ -538,7 +580,15 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Aeneis"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Virgilio",
+        "Vergilius",
+        "Virgil",
+        "Eneida",
+        "Aeneid",
+        "Aeneidos"
+      ]
     },
     {
       "id": "virgil-georgica",
@@ -569,7 +619,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Georgica"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Virgilio",
+        "Vergilius",
+        "Geórgicas",
+        "Georgics"
+      ]
     },
     {
       "id": "horace-odes",
@@ -600,7 +656,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Carmina"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Odas",
+        "Horatius",
+        "Horace",
+        "Horacio"
+      ]
     },
     {
       "id": "livy",
@@ -631,7 +693,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Ab%20urbe%20condita"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Tito Livio",
+        "Livy",
+        "Historia de Roma",
+        "Historia romana",
+        "Ab urbe condita"
+      ]
     },
     {
       "id": "ovid",
@@ -662,7 +731,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Metamorphoses"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Ovidio",
+        "Ovid",
+        "Metamorfosis",
+        "Metamorphoses"
+      ]
     },
     {
       "id": "ovid-fasti",
@@ -755,7 +830,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Diodoro Sículo",
+        "Biblioteca histórica",
+        "Bibliotheca historica",
+        "Diodorus Siculus"
+      ]
     },
     {
       "id": "dionysius",
@@ -786,7 +867,12 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Antigüedades romanas",
+        "Roman Antiquities",
+        "Dionysius of Halicarnassus"
+      ]
     },
     {
       "id": "strabo",
@@ -817,7 +903,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%93%CE%B5%CF%89%CE%B3%CF%81%CE%B1%CF%86%CE%B9%CE%BA%CE%AC"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Estrabón",
+        "Strabo",
+        "Geografía",
+        "Geography",
+        "Geographica"
+      ]
     },
     {
       "id": "philo",
@@ -848,7 +941,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20opificio%20mundi"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Filón",
+        "Philo",
+        "Philo of Alexandria",
+        "La creación del mundo",
+        "De opificio mundi"
+      ]
     },
     {
       "id": "seneca-epistulae",
@@ -879,7 +979,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epistulae%20morales%20ad%20Lucilium"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Séneca",
+        "Seneca",
+        "Cartas a Lucilio",
+        "Letters to Lucilius",
+        "Moral Letters"
+      ]
     },
     {
       "id": "seneca-naturales",
@@ -910,7 +1017,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Naturales%20quaestiones"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Séneca",
+        "Seneca",
+        "Cuestiones naturales",
+        "Natural Questions"
+      ]
     },
     {
       "id": "lucan",
@@ -972,7 +1085,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Naturalis%20historia"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Plinio el Viejo",
+        "Pliny the Elder",
+        "Historia natural",
+        "Natural History",
+        "Plinius"
+      ]
     },
     {
       "id": "dioscorides",
@@ -1003,7 +1123,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%E1%BD%95%CE%BB%CE%B7%CF%82%20%E1%BC%B0%CE%B1%CF%84%CF%81%CE%B9%CE%BA%E1%BF%86%CF%82"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Dioscórides",
+        "Dioscorides",
+        "De materia medica",
+        "Materia médica",
+        "Sobre los remedios medicinales"
+      ]
     },
     {
       "id": "josephus-war",
@@ -1034,7 +1161,15 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CF%84%CE%BF%E1%BF%A6%20%E1%BC%B8%CE%BF%CF%85%CE%B4%CE%B1%CF%8A%CE%BA%CE%BF%E1%BF%A6%20%CF%80%CE%BF%CE%BB%CE%AD%CE%BC%CE%BF%CF%85"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Flavio Josefo",
+        "Josephus",
+        "Guerra de los judíos",
+        "La guerra judía",
+        "Jewish War",
+        "Bellum Iudaicum"
+      ]
     },
     {
       "id": "josephus-antiquities",
@@ -1065,7 +1200,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%B8%CE%BF%CF%85%CE%B4%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Flavio Josefo",
+        "Josephus",
+        "Antigüedades judías",
+        "Jewish Antiquities",
+        "Antiquitates Iudaicae"
+      ]
     },
     {
       "id": "quintilian",
@@ -1220,7 +1362,14 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20aquaeductu%20urbis%20Romae"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Frontino",
+        "Frontinus",
+        "Sobre los acueductos",
+        "De aquis",
+        "Aqueducts of Rome"
+      ]
     },
     {
       "id": "mark",
@@ -1316,7 +1465,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%94%CE%B9%CE%B4%CE%B1%CF%87%CE%AE%20%C2%B7%20Didach%C3%A9"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Didaché",
+        "Didache",
+        "Doctrina de los doce apóstoles",
+        "Teaching of the Twelve Apostles"
+      ]
     },
     {
       "id": "pastor-hermas",
@@ -1350,7 +1505,12 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BF%CE%B9%CE%BC%E1%BD%B4%CE%BD%20%E1%BC%99%CF%81%CE%BC%E1%BE%B6%20%C2%B7%20Pastor%20de%20Hermas"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Hermas",
+        "Shepherd of Hermas",
+        "Pastor de Hermas"
+      ]
     },
     {
       "id": "faventinus",
@@ -1724,7 +1884,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%98%CE%BA%CE%BA%CE%BB%CE%B7%CF%83%CE%B9%CE%B1%CF%83%CF%84%CE%B9%CE%BA%E1%BD%B4%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%AF%CE%B1%20%C2%B7%20Historia%20eclesi%C3%A1stica"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Eusebio",
+        "Eusebius",
+        "Historia eclesiástica",
+        "Ecclesiastical History"
+      ]
     },
     {
       "id": "columella",
@@ -1860,7 +2026,13 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%AF%CE%BF%CE%B9%20%CE%A0%CE%B1%CF%81%CE%AC%CE%BB%CE%BB%CE%B7%CE%BB%CE%BF%CE%B9%20%C2%B7%20Vidas%20paralelas"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "Plutarco",
+        "Plutarch",
+        "Vidas paralelas",
+        "Parallel Lives"
+      ]
     },
     {
       "id": "apollodorus-poliorcetics",
@@ -2523,7 +2695,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Tácito",
+        "Tacitus",
+        "Anales",
+        "Annals",
+        "Annales"
+      ]
     },
     {
       "id": "tacitus-historiae",
@@ -2553,7 +2732,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Tácito",
+        "Tacitus",
+        "Historias",
+        "Histories"
+      ]
     },
     {
       "id": "suetonius-caesares",
@@ -2583,7 +2768,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Suetonio",
+        "Suetonius",
+        "Vidas de los doce césares",
+        "Lives of the Caesars",
+        "Doce césares"
+      ]
     },
     {
       "id": "juvenal-saturae",
@@ -2973,7 +3165,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Polibio",
+        "Polybius",
+        "Historias",
+        "Histories"
+      ]
     },
     {
       "id": "pseudo-apollodorus-bibliotheca",
@@ -3033,7 +3231,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Filón",
+        "Philo",
+        "Alegorías de las leyes",
+        "Legum allegoriae"
+      ]
     },
     {
       "id": "philo-de-vita-mosis",
@@ -3063,7 +3267,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Filón",
+        "Philo",
+        "Vida de Moisés",
+        "Life of Moses"
+      ]
     },
     {
       "id": "plutarch-moralia",
@@ -3093,7 +3303,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Plutarco",
+        "Plutarch",
+        "Obras morales",
+        "Moralia"
+      ]
     },
     {
       "id": "lucian-dialogi-mortuorum",
@@ -3123,7 +3339,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Luciano",
+        "Lucian",
+        "Diálogos de los muertos",
+        "Dialogues of the Dead"
+      ]
     },
     {
       "id": "lucian-verae-historiae",
@@ -3153,7 +3375,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Luciano",
+        "Lucian",
+        "Historia verdadera",
+        "True History"
+      ]
     },
     {
       "id": "pausanias-periegesis",
@@ -3183,7 +3411,12 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Pausanias",
+        "Descripción de Grecia",
+        "Description of Greece"
+      ]
     },
     {
       "id": "galen-ars-medica",
@@ -3273,7 +3506,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Claudio Ptolomeo",
+        "Ptolemy",
+        "Almagesto",
+        "Almagest"
+      ]
     },
     {
       "id": "ptolemy-geographia",
@@ -3303,7 +3542,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Ptolomeo",
+        "Ptolemy",
+        "Geografía",
+        "Geographia"
+      ]
     },
     {
       "id": "appian-romaika",
@@ -3363,7 +3608,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Marco Aurelio",
+        "Marcus Aurelius",
+        "Meditaciones",
+        "Meditations",
+        "Pensamientos"
+      ]
     },
     {
       "id": "homer-iliad",
@@ -3393,7 +3645,15 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Homero",
+        "Homer",
+        "Ilíada",
+        "Iliada",
+        "Iliad",
+        "Ilias"
+      ]
     },
     {
       "id": "homer-odyssey",
@@ -3423,7 +3683,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Homero",
+        "Homer",
+        "Odisea",
+        "Odyssey",
+        "Odysseia"
+      ]
     },
     {
       "id": "hesiod-theogony",
@@ -3453,7 +3720,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Hesíodo",
+        "Hesiod",
+        "Teogonía",
+        "Theogony"
+      ]
     },
     {
       "id": "hesiod-works-days",
@@ -3483,7 +3756,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Hesíodo",
+        "Hesiod",
+        "Los trabajos y los días",
+        "Works and Days"
+      ]
     },
     {
       "id": "aeschylus-oresteia",
@@ -3513,7 +3792,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Esquilo",
+        "Aeschylus",
+        "Orestíada",
+        "Oresteia"
+      ]
     },
     {
       "id": "sophocles-oedipus",
@@ -3543,7 +3828,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Sófocles",
+        "Sophocles",
+        "Edipo rey",
+        "Oedipus Rex",
+        "Oedipus the King"
+      ]
     },
     {
       "id": "euripides-medea",
@@ -3573,7 +3865,12 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Eurípides",
+        "Euripides",
+        "Medea"
+      ]
     },
     {
       "id": "aristophanes-clouds",
@@ -3603,7 +3900,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Aristófanes",
+        "Aristophanes",
+        "Las nubes",
+        "Clouds"
+      ]
     },
     {
       "id": "herodotus-historiae",
@@ -3633,7 +3936,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Heródoto",
+        "Herodotus",
+        "Historias",
+        "The Histories"
+      ]
     },
     {
       "id": "thucydides-war",
@@ -3663,7 +3972,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Tucídides",
+        "Thucydides",
+        "Guerra del Peloponeso",
+        "Peloponnesian War"
+      ]
     },
     {
       "id": "xenophon-anabasis",
@@ -3693,7 +4008,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Jenofonte",
+        "Xenophon",
+        "Anábasis",
+        "Anabasis",
+        "Expedición de los diez mil"
+      ]
     },
     {
       "id": "plato-republic",
@@ -3723,7 +4045,15 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Platón",
+        "Plato",
+        "La República",
+        "República",
+        "Republic",
+        "Politeia"
+      ]
     },
     {
       "id": "plato-apology",
@@ -3753,7 +4083,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Platón",
+        "Plato",
+        "Apología de Sócrates",
+        "Apology of Socrates"
+      ]
     },
     {
       "id": "aristotle-poetics",
@@ -3783,7 +4119,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Aristóteles",
+        "Aristotle",
+        "Poética",
+        "Poetics"
+      ]
     },
     {
       "id": "aristotle-politics",
@@ -3813,7 +4155,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Aristóteles",
+        "Aristotle",
+        "Política",
+        "Politics"
+      ]
     },
     {
       "id": "hippocrates-aphorisms",
@@ -3843,7 +4191,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Hipócrates",
+        "Hippocrates",
+        "Aforismos",
+        "Aphorisms"
+      ]
     },
     {
       "id": "epictetus-discourses",
@@ -3873,7 +4227,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Epicteto",
+        "Epictetus",
+        "Disertaciones",
+        "Discursos",
+        "Discourses"
+      ]
     },
     {
       "id": "arrian-anabasis-alexandri",
@@ -3903,7 +4264,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Arriano",
+        "Arrian",
+        "Anábasis de Alejandro",
+        "Anabasis of Alexander"
+      ]
     },
     {
       "id": "cassius-dio-historia",
@@ -3933,7 +4300,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Dión Casio",
+        "Cassius Dio",
+        "Historia romana",
+        "Roman History"
+      ]
     },
     {
       "id": "athenaeus-deipnosophistae",
@@ -3963,7 +4336,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "aliases": [
+        "Ateneo de Náucratis",
+        "Athenaeus",
+        "Banquete de los eruditos",
+        "Deipnosophists"
+      ]
     },
     {
       "id": "aeschylus-persae",
@@ -5650,7 +6029,11 @@
       "genre": "Filosofía moral",
       "dating": "siglo IV–III a. C.",
       "aliases": [
-        "Caracteres"
+        "Caracteres",
+        "Teofrasto",
+        "Theophrastus",
+        "The Characters",
+        "Characteres"
       ],
       "reading": {
         "url": null,
@@ -6826,7 +7209,10 @@
       "aliases": [
         "Manual de Epicteto",
         "Epicteti Manuale",
-        "Encheiridion"
+        "Encheiridion",
+        "Epicteto",
+        "Epictetus",
+        "Handbook of Epictetus"
       ],
       "translation": {
         "status": "Esta ficha incorpora texto griego de la edición histórica de 1870. No hay una traducción española o inglesa cotejada en la plataforma."
@@ -6866,7 +7252,9 @@
       "aliases": [
         "Tabla de Cebes",
         "Cebetis Thebani Tabula",
-        "Pinax"
+        "Pinax",
+        "Tabula Cebetis",
+        "Cebes Tablet"
       ],
       "translation": {
         "status": "Texto griego en edición impresa de 1870. Atribución y cronología debatidas; traducciones pendientes de verificación."
@@ -6933,5 +7321,6 @@
       "lectura-local-completa",
       "edicion-integral-verificada"
     ]
-  }
+  },
+  "searchMetadata": "Títulos originales y variantes de consulta en castellano, inglés y latín; los alias sirven para localizar obras, no acreditan traducciones publicadas."
 }
