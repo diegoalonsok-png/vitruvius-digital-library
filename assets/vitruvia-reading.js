@@ -17,6 +17,7 @@
  const paletteCustom=document.getElementById('front-background-custom');
  const paletteAuto=document.getElementById('front-background-auto');
  const paletteSwatches=[...document.querySelectorAll('[data-background-color]')];
+ const featuredCTA=document.getElementById('featured-link');
  const fonts={original:null,georgia:'Georgia, "Times New Roman", serif',palatino:'Palatino, "Palatino Linotype", "Book Antiqua", serif',times:'"Times New Roman", Times, serif',arial:'Arial, Helvetica, sans-serif',system:'system-ui, -apple-system, "Segoe UI", sans-serif'};
  const key='vitruvia-reading-appearance-v2';
  const sizeKey='vitruvia-reading-font-percent-v1';
@@ -80,6 +81,15 @@
   italic.setAttribute('aria-pressed',String(state.italic));
   const bg=effectiveBackground(),light=luminance(bg)>.179;
   const readable=light?'#151515':'#f8f8f8';
+  // Give this prominent button an atomic, readable foreground/background pair.
+  // Inline important values override legacy article/landing selectors and also
+  // update immediately when a custom background is selected.
+  if(featuredCTA){
+   featuredCTA.style.setProperty('background-color',light?'#eeeeef':'#29292d','important');
+   featuredCTA.style.setProperty('color',light?'#17171b':'#fafafa','important');
+   featuredCTA.style.setProperty('border-color',light?'#69696f':'#99999e','important');
+   featuredCTA.style.setProperty('color-scheme',light?'light':'dark');
+  }
   const ink=state.color&&contrast(bg,state.color)>=4.5?state.color:readable;
   if(state.color){root.dataset.readingColor='custom';root.style.setProperty('--vitruvia-reading-color',ink)}
   else{delete root.dataset.readingColor;root.style.removeProperty('--vitruvia-reading-color')}
