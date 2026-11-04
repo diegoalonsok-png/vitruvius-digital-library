@@ -50,22 +50,111 @@
  };
  const labels=()=>languages[document.documentElement.lang?.slice(0,2)]||languages.es;
  let headings=[],links=[],marks=[],current=-1,lastTitle=null,buildTimer=0,searchTimer=0,scrollQueued=false;
+ /* Movable scholarly navigator: only the handle drags, never the text area. */
+ const headingRow=panel.querySelector('.vr-study-heading');
+ const toolbar=document.createElement('span');toolbar.className='vr-study-controls';
+ const dragButton=document.createElement('button');
+ dragButton.type='button';dragButton.className='vr-drag-handle';dragButton.textContent='⠿';
+ dragButton.setAttribute('aria-label','Mover índice');dragButton.title='Arrastrar para mover';
+ const homeButton=document.createElement('button');
+ homeButton.type='button';homeButton.className='vr-dock-button';homeButton.textContent='↩';
+ homeButton.setAttribute('aria-label','Volver al lateral');homeButton.title='Volver al lateral';
+ homeButton.hidden=true;
+ ui.progress.replaceWith(toolbar);toolbar.append(ui.progress,dragButton,homeButton);
+ const saveKey='vitruvia-study-position-v1';
+ const clamp=(value,min,max)=>Math.min(Math.max(value,min),Math.max(min,max));
+ function positionFloating(x,y,save=false){
+  const rect=panel.getBoundingClientRect();
+  const width=rect.width||280,height=rect.height||250;
+  const left=clamp(x,8,window.innerWidth-width-8);
+  const top=clamp(y,8,window.innerHeight-height-8);
+  panel.style.left=left+'px';panel.style.top=top+'px';
+  if(save){try{localStorage.setItem(saveKey,JSON.stringify({x:left,y:top}))}catch{}}
+ }
+ function constrainFloating(){
+  if(!panel.classList.contains('vr-is-floating'))return;
+  const rect=panel.getBoundingClientRect();
+  positionFloating(rect.left,rect.top);
+ }
+ function placeFloating(x,y){
+  if(!panel.classList.contains('vr-is-floating')){
+   const width=panel.getBoundingClientRect().width||290;
+   panel.classList.add('vr-is-floating');
+   document.body.append(panel);
+   panel.style.width=Math.min(Math.max(width,245),Math.max(245,window.innerWidth-16))+'px';
+  }
+  homeButton.hidden=false;
+  positionFloating(x,y);
+ }
+ function dockIndex(){
+  panel.classList.remove('vr-is-floating','vr-is-dragging');
+  for(const prop of ['left','top','width'])panel.style.removeProperty(prop);
+  homeButton.hidden=true;
+  try{localStorage.removeItem(saveKey)}catch{}
+  mount();
+ }
+ let moving=null;
+ dragButton.addEventListener('pointerdown',event=>{
+  if(event.pointerType==='mouse'&&event.button!==0)return;
+  event.preventDefault();
+  const rect=panel.getBoundingClientRect();
+  moving={pointerId:event.pointerId,offsetX:event.clientX-rect.left,offsetY:event.clientY-rect.top};
+  placeFloating(rect.left,rect.top);
+  panel.classList.add('vr-is-dragging');
+ });
+ window.addEventListener('pointermove',event=>{
+  if(!moving||moving.pointerId!==event.pointerId)return;
+  event.preventDefault();
+  positionFloating(event.clientX-moving.offsetX,event.clientY-moving.offsetY);
+ },{passive:false});
+ function finishMove(event){
+  if(!moving||moving.pointerId!==event.pointerId)return;
+  moving=null;panel.classList.remove('vr-is-dragging');
+  const rect=panel.getBoundingClientRect();
+  positionFloating(rect.left,rect.top,true);
+ }
+ window.addEventListener('pointerup',finishMove);
+ window.addEventListener('pointercancel',finishMove);
+ dragButton.addEventListener('keydown',event=>{
+  const offsets={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+  if(!offsets[event.key])return;
+  event.preventDefault();
+  if(!panel.classList.contains('vr-is-floating')){
+   const rect=panel.getBoundingClientRect();placeFloating(rect.left,rect.top);
+  }
+  const rect=panel.getBoundingClientRect(),step=event.shiftKey?30:10;
+  positionFloating(rect.left+offsets[event.key][0]*step,rect.top+offsets[event.key][1]*step,true);
+ });
+ homeButton.addEventListener('click',dockIndex);
  function translate(){
   const t=labels();
   ui.heading.textContent=t[0];ui.summary.textContent=t[1];ui.label.textContent=t[2];
   ui.input.placeholder=t[3];ui.sources.textContent=t[8];ui.note.textContent=t[9];
   ui.prev.setAttribute('aria-label',t[12]);ui.next.setAttribute('aria-label',t[13]);ui.clear.setAttribute('aria-label',t[14]);
+  dragButton.title=document.documentElement.lang==='en'?'Drag navigator':document.documentElement.lang==='fr'?'Déplacer le panneau':'Arrastrar navegador';
+  homeButton.title=document.documentElement.lang==='en'?'Dock to sidebar':document.documentElement.lang==='fr'?'Replacer dans la colonne':'Volver al lateral';
   if(!ui.input.value)ui.count.textContent=t[4];
   for(const el of body.querySelectorAll('.vr-source-citation')){el.textContent=t[10];el.title=t[11]}
  }
  function mount(){
+  if(panel.classList.contains('vr-is-floating')){
+   if(!panel.isConnected)document.body.append(panel);
+   constrainFloating();
+   return;
+  }
   const small=window.matchMedia('(max-width:1020px)').matches;
   const target=small?article.querySelector('.scholar-article-header'):aside;
   if(!target)return;
   if(small){
    if(panel.parentElement!==article)target.after(panel);
   }else if(panel.parentElement!==aside||aside.firstElementChild!==panel)aside.prepend(panel);
-  if(!panel.dataset.initialized){ui.collapse.open=!small;panel.dataset.initialized='true'}
+  if(!panel.dataset.initialized){
+   ui.collapse.open=!small;panel.dataset.initialized='true';
+   try{
+    const last=JSON.parse(localStorage.getItem('vitruvia-study-position-v1')||'null');
+    if(Number.isFinite(last?.x)&&Number.isFinite(last?.y))placeFloating(last.x,last.y);
+   }catch{}
+  }
  }
  function sourceAllowed(url){
   try{const u=new URL(url);return u.protocol==='https:'&&/^[a-z-]+\.wikipedia\.org$/i.test(u.hostname)&&/^\/(?:wiki\/|w\/index\.php)/.test(u.pathname)}
