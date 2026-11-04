@@ -23,6 +23,8 @@ try{
  await check('All five verified historical PDF files remain present',async()=>{
   const files=[
    'plato-apologia-socratis-adam-1891.pdf','lucretius-on-nature-things-1880.pdf',
+   'aristotle-poetics-greek-christ-1893.pdf','lucretius-de-rerum-natura-latin-1813.pdf',
+   'virgil-georgica-latin-forbiger-1849.pdf',
    'virgil-aeneid-book-i-walpole-1893.pdf','caesar-de-bello-gallico-smith-1842.pdf',
    'aristotle-poetics-english-1819.pdf'
   ];
@@ -82,6 +84,43 @@ try{
    const tabs=await p.locator('.classic-tabstrip').innerText();
    assert.match(tabs,/Tres visores/);
    assert.match(tabs,/PDF histórico/);
+  }finally{await p.close()}
+ });
+ await check('Aristotle offers Greek original and historical English translation',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
+  try{
+   const select=p.locator('.classic-pdf-version-toolbar select');
+   await select.waitFor({timeout:15000});
+   assert.equal(await select.locator('option').count(),2);
+   const labels=await select.locator('option').allInnerTexts();
+   assert(labels.some(x=>x.includes('GRIEGO ORIGINAL')),'Greek original PDF missing');
+   assert(labels.some(x=>x.includes('traducción inglesa')),'English PDF missing');
+   await select.selectOption('1');
+   assert((await p.url()).includes('aristotle-poetics-english-1819.pdf'),'Edition selection not reflected in URL');
+   await p.locator('[data-tab="comparepdf"]').click();
+   assert.equal(await p.locator('.classic-double-pdf iframe').count(),2);
+  }finally{await p.close()}
+ });
+ await check('Lucretius compares Latin original and translations with three independent readers',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=lucretius&view=pdf');
+  try{
+   const select=p.locator('.classic-pdf-version-toolbar select');
+   await select.waitFor({timeout:15000});
+   assert.equal(await select.locator('option').count(),2);
+   assert((await select.locator('option').first().innerText()).includes('LATÍN ORIGINAL'));
+   await p.locator('[data-tab="parallel"]').click();
+   assert.equal(await p.locator('.classic-triple-reading iframe').count(),3);
+   assert.equal(await p.locator('.classic-triple-reading select option').count(),2,'English and Spanish translation options are missing');
+   assert.equal(await p.locator('[data-tab="text"]').count(),1,'Latin transcription tab is hidden');
+  }finally{await p.close()}
+ });
+ await check('Virgil Georgics original Latin PDF is available locally',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=virgil-georgica&view=pdf');
+  try{
+   await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent.includes('76')||
+    !!document.querySelector('.classical-native-pdf'),{timeout:25000});
+   assert.match(await p.locator('#classic-detail').innerText(),/1849/);
+   assert.match(await p.locator('.classic-detail-status').innerText(),/LECTURA EN VITRUVIA/);
   }finally{await p.close()}
  });
 }finally{if(browser)await browser.close();server.kill()}
