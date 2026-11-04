@@ -565,6 +565,22 @@ html[data-theme=light] .passage-bilingual p{color:#343434}
  .article-sources,.article-source-list{break-inside:auto}
 }
 .article-toolbar{flex-wrap:wrap;gap:8px}.article-share{background:transparent;color:#ddd;border:1px solid #555;border-radius:9px;padding:9px 13px;cursor:pointer;font:500 12px Arial,sans-serif}.article-share:hover,.article-share:focus-visible{background:#303033;border-color:#aaa}html[data-theme=light] .article-share{color:#262626;border-color:#aaa}@media print{.article-share{display:none!important}}.article-evidence{border-top:1px solid #444;margin-top:25px;padding-top:20px;color:#ccc}.article-evidence h3{font:400 25px Georgia,serif;margin:0 0 12px}.article-evidence h4{font:400 20px Georgia,serif;margin:25px 0 12px}.article-evidence h5{font:600 14px Georgia,serif;margin:0 0 10px}.evidence-entry{border-bottom:1px solid #333;padding:14px 0;break-inside:avoid-page}.evidence-entry p{font:400 13px/1.75 Georgia,serif;margin:4px 0 12px;white-space:pre-wrap;overflow-wrap:anywhere}.evidence-label{font:600 10px Arial,sans-serif;letter-spacing:.14em;color:#999}.evidence-bibliography li{margin:0 0 13px;overflow-wrap:anywhere}.evidence-bibliography p{font:400 12px/1.6 Georgia,serif}.article-evidence a{color:inherit;text-decoration:underline;text-underline-offset:3px}html[data-theme=light] .article-evidence{color:#333}@media print{.article-evidence,.article-evidence h3,.article-evidence h4,.article-evidence h5,.article-evidence p,.evidence-label{color:#111!important}.evidence-entry{border-color:#aaa!important}.article-evidence{display:block!important}}
+/* Parallel critical reading of Vitruvius prefaces, aligned by textual locus. */
+#vitruvia-article .preface-entry{margin:20px 0 27px;padding:18px clamp(12px,2vw,25px);border:1px solid #353537;border-radius:6px;background:#141619;break-inside:avoid-page}
+#vitruvia-article .preface-locus{font:500 18px/1.5 Georgia,serif;color:#e0cd9d;margin:0 0 14px;padding:0 0 11px;border-bottom:1px solid #3c3c3d}
+#vitruvia-article .preface-language{font:650 10px/1.5 Arial,sans-serif;letter-spacing:.14em;color:#9da5aa;margin:15px 0 6px}
+#vitruvia-article .preface-latin{font:400 16px/1.9 Georgia,serif;white-space:pre-wrap;color:#efeee9}
+#vitruvia-article .preface-translation{font:400 15px/1.82 Georgia,serif;white-space:pre-wrap;color:#d7d7d3}
+#vitruvia-article .preface-editions{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0 1px;padding-top:11px;border-top:1px solid #393b3c}
+#vitruvia-article .preface-editions a{font:500 12px/1.5 Arial,sans-serif;color:#ceb57e;text-underline-offset:3px}
+html[data-theme=light] #vitruvia-article .preface-entry{background:#f5f3ee;border-color:#d3c9ba}
+html[data-theme=light] #vitruvia-article .preface-locus{color:#705a2e;border-color:#d5c6ad}
+html[data-theme=light] #vitruvia-article .preface-language{color:#686c6a}
+html[data-theme=light] #vitruvia-article .preface-latin,html[data-theme=light] #vitruvia-article .preface-translation{color:#292929}
+html[data-theme=light] #vitruvia-article .preface-editions a{color:#695027}
+@media(max-width:640px){#vitruvia-article .preface-entry{padding:12px 13px}#vitruvia-article .preface-latin{font-size:14px}#vitruvia-article .preface-translation{font-size:14px}}
+@media print{#vitruvia-article .preface-entry{background:#fff!important;color:#111!important;border-color:#b7b7b7!important;break-inside:auto}#vitruvia-article .preface-locus,#vitruvia-article .preface-latin,#vitruvia-article .preface-translation,#vitruvia-article .preface-language{color:#111!important}}
+
 /* Search usability and privacy control: privacy only omits query from URL, not HTTPS requests to external sources. */
 .search-utility{display:flex;justify-content:flex-end;gap:14px;align-items:center;flex-wrap:wrap;min-height:28px;margin:7px 1px 0}
 .search-utility button{padding:5px 2px;border:0;background:none;color:#aeb1b4;cursor:pointer;font:500 11px/1.5 Arial,Helvetica,sans-serif;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#5d6065}
@@ -674,8 +690,8 @@ html[data-theme=light] .searchform button#clear-search:hover{color:#f5f5f5!impor
 <div><h3>Ediciones y DOI</h3><a href="https://doi.org/10.5281/zenodo.23868911" target="_blank" rel="noopener">Biblioteca · 10.5281/zenodo.23868911</a><a href="https://doi.org/10.5281/zenodo.23884757" target="_blank" rel="noopener">V514 · latín / castellano</a><a href="https://doi.org/10.5281/zenodo.23885110" target="_blank" rel="noopener">V554 · latín / francés</a><a href="https://doi.org/10.5281/zenodo.23885404" target="_blank" rel="noopener">V297 · inglés</a></div></div>
 <div class="footer-legal"><span data-i18n="footerLegal">© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.</span><span><a data-i18n="footerMain" href="index.html">Biblioteca principal</a> · Buenos Aires · 2026</span></div></footer>
 </div>
-<script src="assets/vitruvia-research-engine.js?v=20261103-pythagoras-v2" defer></script>
-<script src="assets/vitruvia-article.js?v=20261103-reading-v6" defer></script>
+<script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
+<script src="assets/vitruvia-article.js?v=20261103-trilingual-prefaces-v3" defer></script>
 <script src="assets/vitruvia-search.js?v=20261103-semantic-privacy-v2" defer></script>
 <script>
 document.addEventListener('click',function(event){
