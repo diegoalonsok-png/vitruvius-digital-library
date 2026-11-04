@@ -2731,10 +2731,10 @@
       "language": "la",
       "genre": "Narrativa satírica",
       "dating": "siglo I d. C. (atribución debatida)",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "classics-text-reader.html?work=petronius-satyrica&lang=la",
+        "status": "Petronio: todos los fragmentos que transmite la edición latina digitalizada (Heseltine 1913), inglés histórico Firebaugh. Obra original perdida parcialmente; no se afirma integridad."
       },
       "manuscript": {
         "manifest": null,
@@ -2745,14 +2745,47 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés histórico y castellano externo en Wikisource. Traducciones NO cotejadas locus por locus con el texto latino."
       },
       "links": {
         "scaife": null,
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/petronius-satyrica-la.json",
+        "en": "data/classics-corpus/petronius-satyrica-en.json"
+      },
+      "localHtml": "classics-text-reader.html?work=petronius-satyrica&lang=la",
+      "localVersions": [
+        {
+          "language": "la",
+          "label": "Latín original · edición Perseus",
+          "path": "classics-text-reader.html?work=petronius-satyrica&lang=la",
+          "kind": "edited-text",
+          "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0972/phi001/phi0972.phi001.perseus-lat2.xml"
+        },
+        {
+          "language": "en",
+          "label": "English · traducción histórica",
+          "path": "classics-text-reader.html?work=petronius-satyrica&lang=en",
+          "kind": "historical-translation",
+          "source": "https://www.gutenberg.org/cache/epub/5225/pg5225.txt"
+        }
+      ],
+      "aliases": [
+        "Petronio",
+        "Petronius",
+        "Satiricón",
+        "Satyricon",
+        "Satyrica",
+        "Cena Trimalchionis",
+        "Cena de Trimalción",
+        "Trimalcion",
+        "banquete",
+        "novela satírica"
+      ]
     },
     {
       "id": "tacitus-annales",
@@ -2901,10 +2934,10 @@
       "language": "la",
       "genre": "Novela",
       "dating": "siglo II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "classics-text-reader.html?work=apuleius-metamorphoses&lang=la",
+        "status": "Apuleyo: once libros latinos editados (Gaselee 1915), inglés histórico Adlington y castellano histórico de 1890. Sin alineación folio-locus."
       },
       "manuscript": {
         "manifest": null,
@@ -2915,14 +2948,54 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés histórico y castellano histórico, ambos disponibles localmente. Traducciones NO cotejadas locus por locus con el texto latino."
       },
       "links": {
         "scaife": null,
         "perseus": null,
         "archive": null,
         "gallica": null
-      }
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/apuleius-metamorphoses-la.json",
+        "en": "data/classics-corpus/apuleius-metamorphoses-en.json",
+        "es": "data/classics-corpus/apuleius-metamorphoses-es.json"
+      },
+      "localHtml": "classics-text-reader.html?work=apuleius-metamorphoses&lang=la",
+      "localVersions": [
+        {
+          "language": "la",
+          "label": "Latín original · edición Perseus",
+          "path": "classics-text-reader.html?work=apuleius-metamorphoses&lang=la",
+          "kind": "edited-text",
+          "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1212/phi002/phi1212.phi002.perseus-lat1.xml"
+        },
+        {
+          "language": "en",
+          "label": "English · traducción histórica",
+          "path": "classics-text-reader.html?work=apuleius-metamorphoses&lang=en",
+          "kind": "historical-translation",
+          "source": "https://www.gutenberg.org/cache/epub/1666/pg1666.txt"
+        },
+        {
+          "language": "es",
+          "label": "Castellano · traducción histórica",
+          "path": "classics-text-reader.html?work=apuleius-metamorphoses&lang=es",
+          "kind": "historical-translation",
+          "source": "https://www.gutenberg.org/cache/epub/66591/pg66591.txt"
+        }
+      ],
+      "aliases": [
+        "Apuleyo",
+        "Apuleius",
+        "Asno de oro",
+        "El asno de oro",
+        "El asno dorado",
+        "Golden Ass",
+        "Cupid and Psyche",
+        "Psique y Cupido",
+        "Metamorfosis de Apuleyo"
+      ]
     },
     {
       "id": "varro-de-lingua-latina",
