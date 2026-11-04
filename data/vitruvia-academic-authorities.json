@@ -1,0 +1,213 @@
+{
+  "schema": "vitruvia-vetted-academic-authorities-v1",
+  "updated": "2026-11-04",
+  "method": "Selección ilustrativa de registros verificados en instituciones de origen; cobertura no exhaustiva. Una búsqueda externa no equivale a un hallazgo; códice, papiro, edición y traducción se catalogan por separado. Fechas aproximadas se muestran como aproximadas.",
+  "records": [
+    {
+      "id": "odyssey-codex-rylands-53",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "codex",
+      "title": "Manchester Odyssey · Greek P 53",
+      "library": "John Rylands Library · University of Manchester",
+      "shelfmark": "P. Ryl. Gr. I 53 / Greek P 53",
+      "date": "siglo III d. C. · datación de la University of Manchester",
+      "dateStart": 200,
+      "highlight": "CÓDICE MÁS ANTIGUO CONSERVADO EN FORMATO LIBRO · según University of Manchester",
+      "coverage": "Fragmentos de un códice en pergamino de la Odisea. No se conserva íntegro; se distingue de los papiros más antiguos en rollo.",
+      "url": "https://stories.manchester.ac.uk/the-manchester-odyssey/",
+      "institutionUrl": "https://www.manchester.ac.uk/about/news/from-homer-to-hollywood-the-manchester-odyssey/",
+      "source": "The University of Manchester"
+    },
+    {
+      "id": "odyssey-papyrus-met-0918250",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "papyrus",
+      "title": "Fragmento de papiro de la Odisea · libro XX",
+      "library": "The Metropolitan Museum of Art · Nueva York",
+      "shelfmark": "09.182.50",
+      "date": "c. 285–250 a. C.",
+      "dateStart": -285,
+      "coverage": "Testimonio fragmentario helenístico del libro XX, con versos que difieren del texto estándar. Es anterior a los códices en formato libro; no es un códice ni una copia completa.",
+      "url": "https://www.metmuseum.org/art/collection/search/248134",
+      "source": "The Metropolitan Museum of Art"
+    },
+    {
+      "id": "odyssey-laurenziana-plut3224",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "codex",
+      "title": "Homeri Odyssea · Plut. 32.24",
+      "library": "Biblioteca Medicea Laurenziana · Florencia",
+      "shelfmark": "Plut. 32.24",
+      "date": "datación por confirmar en la ficha codicológica",
+      "dateStart": null,
+      "coverage": "Manuscrito griego de la Odisea conservado en la Biblioteca Laurenziana. Digitalización pública y manifiesto IIIF vinculados; no se presupone antigüedad relativa sin estudio de datación.",
+      "url": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
+      "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/735325",
+      "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:735325/manifest.json",
+      "source": "Biblissima · Biblioteca Medicea Laurenziana"
+    },
+    {
+      "id": "odyssey-laurenziana-plut91",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "codex",
+      "title": "Homeri Ilias et Odyssea · Plut. 91 sup. 2",
+      "library": "Biblioteca Medicea Laurenziana · Florencia",
+      "shelfmark": "Plut. 91 sup. 2",
+      "date": "datación no indicada en el registro consultado",
+      "dateStart": null,
+      "coverage": "Volumen con Ilíada y Odisea, identificado por signatura y digitalización. No se afirma que sea el siguiente más antiguo.",
+      "url": "https://iiif.biblissima.fr/collections/manifest/d66d68c56ec34fe8bc9bb7086388b13fc5c7f51c",
+      "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/960580",
+      "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:960580/manifest.json",
+      "source": "Biblissima · Biblioteca Medicea Laurenziana"
+    },
+    {
+      "id": "odyssey-univ-manchester",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "university",
+      "title": "University of Manchester · John Rylands Library",
+      "library": "University of Manchester",
+      "coverage": "Investigación, conservación y exhibición del códice Manchester Odyssey · Greek P 53.",
+      "url": "https://stories.manchester.ac.uk/the-manchester-odyssey/",
+      "source": "University of Manchester"
+    },
+    {
+      "id": "odyssey-univ-tufts",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "university",
+      "title": "Tufts University · Perseus Digital Library",
+      "library": "Tufts University",
+      "coverage": "Catálogo de la Odisea, ediciones del texto griego y traducciones en lector digital.",
+      "url": "https://atlas.perseus.tufts.edu/library/urn:cts:greekLit:tlg0012.tlg002/",
+      "source": "Perseus / Tufts University"
+    },
+    {
+      "id": "odyssey-homer-multitext",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "university",
+      "title": "Homer Multitext · Houston / Holy Cross",
+      "library": "University of Houston · College of the Holy Cross",
+      "coverage": "Investigación colaborativa sobre la tradición oral y multiformidad de Homero. El archivo facsimilar principal se centra en la Ilíada; no se presenta como edición completa de la Odisea.",
+      "url": "https://www.homermultitext.org/about/",
+      "source": "Homer Multitext"
+    },
+    {
+      "id": "odyssey-edition-murray-grc",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "edition",
+      "title": "Ὀδύσσεια · edición griega de A. T. Murray",
+      "library": "Perseus · Tufts University",
+      "editor": "A. T. Murray",
+      "year": 1919,
+      "language": "grc",
+      "coverage": "Edición del texto griego de la Odisea, con referencia editorial (1919); lector digital en Scaife.",
+      "url": "https://atlas.perseus.tufts.edu/library/urn:cts:greekLit:tlg0012.tlg002/",
+      "source": "Perseus / Scaife"
+    },
+    {
+      "id": "odyssey-translation-murray-en",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "translation",
+      "title": "Odyssey · traducción inglesa de A. T. Murray",
+      "library": "Perseus · Tufts University",
+      "editor": "A. T. Murray",
+      "year": 1919,
+      "language": "en",
+      "coverage": "Traducción inglesa identificada; texto alineable en Scaife con la edición griega.",
+      "url": "https://atlas.perseus.tufts.edu/library/urn:cts:greekLit:tlg0012.tlg002/",
+      "source": "Perseus / Scaife"
+    },
+    {
+      "id": "odyssey-translation-butler-en",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "translation",
+      "title": "Odyssey · traducción inglesa de Samuel Butler",
+      "library": "Perseus · Tufts University",
+      "editor": "Samuel Butler",
+      "year": 1900,
+      "language": "en",
+      "coverage": "Traducción en prosa de Samuel Butler (1900), revisada en la edición digital indicada por Perseus.",
+      "url": "https://atlas.perseus.tufts.edu/library/urn:cts:greekLit:tlg0012.tlg002/",
+      "source": "Perseus / Scaife"
+    },
+    {
+      "id": "odyssey-scholar-nagy",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "scholar",
+      "title": "Gregory Nagy · Homeric Questions",
+      "library": "Center for Hellenic Studies · Harvard University",
+      "coverage": "Investigación sobre tradición oral, formación de los poemas homéricos, autoría y transmisión; libro de referencia de 1996.",
+      "url": "https://chs.harvard.edu/book/nagy-gregory-homeric-questions/",
+      "source": "Harvard CHS"
+    },
+    {
+      "id": "odyssey-scholar-due",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "scholar",
+      "title": "Casey Dué Hackney · investigación homérica",
+      "library": "University of Houston",
+      "coverage": "Especialista en poesía homérica, tradición oral, crítica textual; editora del Homer Multitext con Mary Ebbott.",
+      "url": "https://m.uh.edu/class/mcl/faculty/due-hackney_c/index.php",
+      "source": "University of Houston"
+    },
+    {
+      "id": "odyssey-scholar-ebbott",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "kind": "scholar",
+      "title": "Mary Ebbott · Homer Multitext",
+      "library": "College of the Holy Cross",
+      "coverage": "Coeditora del proyecto Homer Multitext; estudio filológico de la multiformidad de la tradición homérica.",
+      "url": "https://www.homermultitext.org/about/",
+      "source": "Homer Multitext"
+    }
+  ],
+  "currentAuthorities": [
+    {
+      "id": "pontiff-leo-xiv",
+      "queries": [
+        "papa leon",
+        "papa león",
+        "papa leo",
+        "papa leon actual",
+        "papa león actual",
+        "actual papa leon",
+        "actual papa león",
+        "quien es el papa leon",
+        "quién es el papa león"
+      ],
+      "title": "León XIV · papa actual",
+      "personName": "León XIV",
+      "description": "Robert Francis Prevost. Pontífice de la Iglesia católica desde el 8 de mayo de 2025 (267.º papa); respuesta oficial para la consulta ambigua «papa León».",
+      "verifiedAsOf": "2026-11-04",
+      "url": "https://www.vatican.va/content/leo-xiv/es.html",
+      "biography": "https://www.vatican.va/content/leo-xiv/es/biography/documents/biografia_leone-xiv.html",
+      "source": "Santa Sede · Vaticano"
+    }
+  ]
+}
