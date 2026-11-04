@@ -68,8 +68,12 @@
         }
       },
       "pdf": {
-        "url": null,
-        "status": "Pendiente de acreditar un PDF de una edición histórica específica"
+        "url": "documents/classics/cicero-de-officiis-miller-1913.pdf",
+        "status": "PDF histórico completo alojado en GitHub; Walter Miller, ed. y traducción, 1913; texto latino y traducción inglesa. No es un manuscrito medieval.",
+        "sizeBytes": 14460506,
+        "pages": 450,
+        "rights": "Edición histórica de dominio público; digitalización de Wikimedia Commons.",
+        "sha1": "5f590d1569deab3313f19dc80b5b89c8a5095e4d"
       },
       "translation": {
         "status": "Inglés: Walter Miller (1913), disponible; castellano y francés: traducciones completas pendientes de identificar, cotejar y alojar."
@@ -5650,15 +5654,19 @@
       ],
       "reading": {
         "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "status": "Characteres en griego: consultar la edición histórica conjunta de 1870, disponible en el visor PDF local."
       },
       "manuscript": {
         "manifest": null,
         "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
       },
       "pdf": {
-        "url": null,
-        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+        "url": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
+        "status": "PDF histórico de 1870 que incluye Characteres, Manuale de Epicteto y Tabula atribuida a Cebes. Griego original en una edición histórica compuesta (102 páginas).",
+        "sizeBytes": 5024353,
+        "pages": 102,
+        "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+        "sha1": "5a431e1adf3e1e49867da5c3ff492e082ff255ad"
       },
       "translation": {
         "status": "Traducción no incorporada ni alineada con una edición identificada."
@@ -5674,7 +5682,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Teofrasto%20Caracteres&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-completa",
       "localReader": null
     },
     {
@@ -6807,6 +6815,86 @@
       },
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
+    },
+    {
+      "id": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "language": "grc",
+      "genre": "Filosofía estoica",
+      "dating": "siglo II d. C.",
+      "aliases": [
+        "Manual de Epicteto",
+        "Epicteti Manuale",
+        "Encheiridion"
+      ],
+      "translation": {
+        "status": "Esta ficha incorpora texto griego de la edición histórica de 1870. No hay una traducción española o inglesa cotejada en la plataforma."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Sin testimonio manuscrito individual asociado a esta ficha; PDF impreso de 1870, no códice."
+      },
+      "pdf": {
+        "url": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
+        "status": "PDF histórico de 1870 que incluye Characteres, Manuale de Epicteto y Tabula atribuida a Cebes. Griego original en una edición histórica compuesta (102 páginas).",
+        "sizeBytes": 5024353,
+        "pages": 102,
+        "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+        "sha1": "5a431e1adf3e1e49867da5c3ff492e082ff255ad"
+      },
+      "reading": {
+        "url": null,
+        "status": "Edición impresa griega de 1870 alojada en GitHub para lectura completa con visor."
+      },
+      "publicStatus": "lectura-local-completa",
+      "localReader": null,
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/"
+      }
+    },
+    {
+      "id": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "language": "grc",
+      "genre": "Filosofía moral",
+      "dating": "siglo I–II d. C. (datación debatida)",
+      "aliases": [
+        "Tabla de Cebes",
+        "Cebetis Thebani Tabula",
+        "Pinax"
+      ],
+      "translation": {
+        "status": "Texto griego en edición impresa de 1870. Atribución y cronología debatidas; traducciones pendientes de verificación."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "El PDF es una edición impresa, no un manuscrito antiguo."
+      },
+      "pdf": {
+        "url": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
+        "status": "PDF histórico de 1870 que incluye Characteres, Manuale de Epicteto y Tabula atribuida a Cebes. Griego original en una edición histórica compuesta (102 páginas).",
+        "sizeBytes": 5024353,
+        "pages": 102,
+        "rights": "Edición histórica de dominio público; fuente Wikimedia Commons / Internet Archive.",
+        "sha1": "5a431e1adf3e1e49867da5c3ff492e082ff255ad"
+      },
+      "reading": {
+        "url": null,
+        "status": "Edición impresa griega de 1870 alojada en GitHub para lectura completa con visor."
+      },
+      "publicStatus": "lectura-local-completa",
+      "localReader": null,
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "gallica": "https://gallica.bnf.fr/",
+        "archive": "https://archive.org/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/"
+      }
     }
   ],
   "pdfPolicy": {
