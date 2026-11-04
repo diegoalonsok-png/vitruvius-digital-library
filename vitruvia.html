@@ -685,26 +685,39 @@ html[data-theme=light] .vitruvius-edition{background:#fff;border-color:#c9c9c9}
 html[data-theme=light] .vitruvius-edition h4{color:#222}
 html[data-theme=light] .vitruvius-edition p{color:#555}
 
-/* CONSISTENT SEARCH UI: no shrinking/reflow when results become visible.
-   Keep the editorial homepage typography, search pill and controls unchanged. */
-body.vitruvia-reading .hero{display:grid!important;padding:inherit!important;margin:inherit!important;gap:inherit!important;min-height:inherit!important}
+
+/* Identical header/search design before and after submitting any query. */
+body.vitruvia-reading .hero{
+ display:grid!important;
+ grid-template-columns:minmax(0,1.4fr) minmax(260px,.76fr)!important;
+ gap:clamp(34px,4vw,78px)!important;
+ padding:68px 0 45px!important;
+ margin:revert!important;
+ align-items:center!important;
+ min-height:auto!important
+}
+body.vitruvia-reading .hero>div:first-child{width:100%!important}
 body.vitruvia-reading .hero .eyebrow,
 body.vitruvia-reading .hero h1,
 body.vitruvia-reading .hero .lead,
-body.vitruvia-reading .hero .ai-platforms,
 body.vitruvia-reading .hero .suggestions,
 body.vitruvia-reading .hero .academic-pills,
 body.vitruvia-reading .hero .featured,
 body.vitruvia-reading .hero .explain,
 body.vitruvia-reading .metrics{display:revert!important}
-body.vitruvia-reading .hero .search-wrap{max-width:revert!important;margin:revert!important}
-body.vitruvia-reading .hero .searchform{min-height:revert!important;padding:revert!important}
-body.vitruvia-reading .hero .searchform button#submit{min-height:revert!important;padding:revert!important;font-size:revert!important}
-body.vitruvia-reading .hero .tabs{justify-content:revert!important;margin:revert!important;gap:revert!important}
-body.vitruvia-reading .hero .tab{font-size:revert!important;padding:revert!important}
+body.vitruvia-reading .hero .ai-platforms{display:flex!important}
+body.vitruvia-reading .hero .search-wrap{max-width:none!important;margin:0!important}
+body.vitruvia-reading .hero .searchform{min-height:56px!important;padding:5px 7px 5px 18px!important;border-radius:45px!important}
+body.vitruvia-reading .hero .searchform button#submit{min-height:42px!important;padding:9px 16px!important;font-size:13px!important;border-radius:35px!important}
+body.vitruvia-reading .hero .searchform input{font-size:15px!important}
+body.vitruvia-reading .hero .tabs{justify-content:flex-start!important;margin:17px 0 9px!important;gap:7px!important}
+body.vitruvia-reading .hero .tab{font-size:12px!important;padding:6px 13px!important}
 body.vitruvia-reading #vitruvia-article .article-body{font:400 16px/1.85 Arial,Helvetica,sans-serif!important}
 body.vitruvia-reading #vitruvia-article .article-body .article-lead{font-size:18px!important}
 body.vitruvia-reading #vitruvia-article .article-body h3{font-size:23px!important}
+@media(max-width:900px){body.vitruvia-reading .hero{grid-template-columns:1fr!important;padding:70px 0 40px!important}}
+@media(max-width:600px){body.vitruvia-reading .hero{padding:52px 0 30px!important}
+body.vitruvia-reading .hero .searchform{min-height:61px!important;padding:4px 4px 4px 14px!important}}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
