@@ -85,10 +85,14 @@
   // Inline important values override legacy article/landing selectors and also
   // update immediately when a custom background is selected.
   if(featuredCTA){
-   featuredCTA.style.setProperty('background-color',light?'#eeeeef':'#29292d','important');
-   featuredCTA.style.setProperty('color',light?'#17171b':'#fafafa','important');
-   featuredCTA.style.setProperty('border-color',light?'#69696f':'#99999e','important');
-   featuredCTA.style.setProperty('color-scheme',light?'light':'dark');
+   // Single, fixed, WCAG-compliant color pair in every theme/background.
+   // Explicit text-fill is necessary because custom reading ink may override link ink.
+   featuredCTA.style.setProperty('background','#232326','important');
+   featuredCTA.style.setProperty('background-color','#232326','important');
+   featuredCTA.style.setProperty('color','#ffffff','important');
+   featuredCTA.style.setProperty('-webkit-text-fill-color','#ffffff','important');
+   featuredCTA.style.setProperty('border-color','#9b9b9f','important');
+   featuredCTA.style.setProperty('color-scheme','dark');
   }
   const ink=state.color&&contrast(bg,state.color)>=4.5?state.color:readable;
   if(state.color){root.dataset.readingColor='custom';root.style.setProperty('--vitruvia-reading-color',ink)}
