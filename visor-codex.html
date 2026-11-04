@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visor de códices · Vitruvia</title>
+<meta name="description" content="Visor académico de manuscritos IIIF, con folios, navegación y enlaces a la institución de custodia.">
+<style>
+:root{color-scheme:dark;--bg:#0d100f;--panel:#18211e;--stroke:#35453d;--ink:#f1eee5;--muted:#b9c5bb;--gold:#c7b58e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Arial,sans-serif}
+main,header,footer{max-width:1480px;margin:auto;padding:18px 24px}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--stroke)}
+h1{font:normal clamp(28px,3vw,42px)/1.2 Georgia,serif;margin:12px 0}
+a{color:#e5d4af}a:hover{color:white}.brand{font:italic 24px Georgia,serif;text-decoration:none}
+.intro{color:var(--muted);max-width:85ch}.metadata{border:1px solid var(--stroke);background:var(--panel);padding:15px 19px;border-radius:9px;margin-bottom:15px}
+.viewer-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0}
+button,.action{padding:10px 14px;min-height:42px;border:1px solid #627568;background:#22362b;color:#f6f1e6;border-radius:7px;text-decoration:none;cursor:pointer}
+button:disabled{opacity:.35;cursor:not-allowed}.counter{min-width:120px;color:#e9e1ce;font-variant-numeric:tabular-nums;text-align:center}
+input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#viewport{width:100%;height:min(71vh,900px);min-height:310px;overflow:auto;border:1px solid var(--stroke);border-radius:9px;background:#101413;text-align:center}
+#folio{display:block;margin:16px auto;max-width:none;width:auto;max-height:none;box-shadow:0 6px 20px #0007}
+#message{color:var(--muted);padding:25px 14px}#label{margin:14px 0;color:var(--muted)}
+.small{font-size:12px;color:var(--muted)}.hidden{display:none!important}
+@media(max-width:650px){main,header,footer{padding:13px 14px}.viewer-controls{gap:5px}button,.action{padding:9px}}
+</style></head>
+<body>
+<header><a class="brand" href="vitruvia.html">Vitruvia.</a><nav><a href="vitruvia.html">Volver al buscador</a> · <a href="index-codicum.html">Índice de códices</a></nav></header>
+<main>
+ <p class="small">BIBLIOTHECA · CODICOLOGÍA DIGITAL · IIIF</p>
+ <h1 id="title">Visor de códices</h1>
+ <p class="intro">Manuscrito digitalizado por la institución custodiante. La datación, foliación, autoría y condiciones de reproducción se verifican siempre en la ficha institucional.</p>
+ <section class="metadata" aria-label="Ficha del testimonio">
+  <div id="source">Consultando manifiesto IIIF…</div>
+  <div class="viewer-controls">
+   <a id="official" class="action" target="_blank" rel="noopener noreferrer" hidden>Ver visor oficial ↗</a>
+   <a id="manifest-link" class="action" target="_blank" rel="noopener noreferrer" hidden>Manifiesto IIIF ↗</a>
+  </div>
+ </section>
+ <div class="viewer-controls" role="group" aria-label="Navegación entre folios">
+  <button id="prev" disabled aria-label="Página anterior">← Anterior</button>
+  <span id="count" class="counter" aria-live="polite">— / —</span>
+  <button id="next" disabled aria-label="Página siguiente">Siguiente →</button>
+  <label for="zoom">Ampliación</label>
+  <input type="range" id="zoom" min="60" max="250" value="100" step="10" aria-label="Ampliación de imagen">
+  <output for="zoom" id="zoom-label">100 %</output>
+  <button id="reset" aria-label="Restablecer ampliación">Ajustar</button>
+ </div>
+ <div id="viewport" tabindex="0" aria-label="Imagen del folio manuscrito"><p id="message" role="status">Cargando imágenes del repositorio…</p><img id="folio" alt="Folio del códice" class="hidden" loading="eager"></div>
+ <p id="label" aria-live="polite"></p>
+ <p class="small">Si el servidor IIIF no permite acceso desde GitHub Pages, usá el botón «Ver visor oficial». Este visor no almacena ni reivindica derechos sobre las imágenes institucionales.</p>
+</main>
+<footer class="small">Vitruvius Digital Library · Visualización documental con referencias a instituciones custodias</footer>
+<script>
+(function(){
+ "use strict";
+ const $=id=>document.getElementById(id);
+ const params=new URLSearchParams(location.search);
+ const manifest=params.get("manifest"),official=params.get("official"),label=params.get("title");
+ function validHttps(u){try{return new URL(u).protocol==="https:"}catch{return false}}
+ const manifestURL=validHttps(manifest)?manifest:null;
+ const officialURL=validHttps(official)?official:null;
+ if(label)$("title").textContent=label.slice(0,160)+" · visor de códice";
+ if(officialURL){$("official").href=officialURL;$("official").hidden=false}
+ if(manifestURL){$("manifest-link").href=manifestURL;$("manifest-link").hidden=false}
+ const pages=[];let pos=0,scale=100,baseWidth=900;
+ const text=v=>typeof v==="string"?v:(v?.es?.[0]||v?.en?.[0]||v?.none?.[0]||Object.values(v||{})[0]?.[0]||"");
+ function imageURL(body){
+  if(!body||typeof body!=="object")return null;
+  const service=Array.isArray(body.service)?body.service[0]:body.service;
+  let root=service?.id||service?.["@id"];
+  if(root&&validHttps(root))return root.replace(/\/$/,"")+"/full/!1800,1800/0/default.jpg";
+  const direct=body.id||body["@id"];
+  return validHttps(direct)?direct:null;
+ }
+ function pushCanvas(canvas){
+  const item=canvas?.items?.[0]?.items?.find(x=>x.body)||canvas?.images?.[0];
+  const body=Array.isArray(item?.body)?item.body[0]:item?.body||item?.resource;
+  const url=imageURL(body);
+  if(url)pages.push({url,label:text(canvas.label)||"Página "+(pages.length+1),fallback:body?.id||body?.["@id"]});
+ }
+ function updateControls(){
+  $("count").textContent=(pages.length?pos+1:0)+" / "+pages.length;
+  $("prev").disabled=pos===0;$("next").disabled=pos>=pages.length-1;
+ }
+ function applyZoom(percent){
+  scale=percent;$("zoom").value=String(scale);$("zoom-label").textContent=scale+" %";
+  const img=$("folio");if(!img.classList.contains("hidden"))img.style.width=Math.max(200,Math.round(baseWidth*scale/100))+"px";
+ }
+ function show(index){
+  if(!pages.length)return;
+  pos=Math.max(0,Math.min(pages.length-1,index));
+  const data=pages[pos],img=$("folio");
+  img.classList.add("hidden");$("message").classList.remove("hidden");
+  $("message").textContent="Cargando "+data.label+"…";
+  img.onload=function(){baseWidth=Math.min(img.naturalWidth||1000,1100);img.classList.remove("hidden");$("message").classList.add("hidden");applyZoom(scale)};
+  img.onerror=function(){
+   if(data.fallback&&validHttps(data.fallback)&&img.src!==data.fallback){img.src=data.fallback;return}
+   img.classList.add("hidden");$("message").classList.remove("hidden");
+   $("message").textContent="La imagen no se puede cargar aquí. Abrí el visor de la institución.";
+  };
+  img.alt="Folio "+data.label;img.src=data.url;
+  $("label").textContent=data.label;
+  $("viewport").scrollTop=0;$("viewport").scrollLeft=0;updateControls();
+ }
+ $("prev").addEventListener("click",()=>show(pos-1));
+ $("next").addEventListener("click",()=>show(pos+1));
+ $("zoom").addEventListener("input",()=>applyZoom(Number($("zoom").value)));
+ $("reset").addEventListener("click",()=>applyZoom(100));
+ document.addEventListener("keydown",event=>{
+  if(["INPUT","BUTTON"].includes(document.activeElement?.tagName))return;
+  if(event.key==="ArrowRight")show(pos+1);
+  else if(event.key==="ArrowLeft")show(pos-1);
+ });
+ async function load(){
+  if(!manifestURL){$("source").textContent="Este registro no contiene un manifiesto IIIF válido. Consultá la ficha de la institución.";return}
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),16000);
+  try{
+   const response=await fetch(manifestURL,{signal:controller.signal,headers:{Accept:"application/json, application/ld+json"}});
+   if(!response.ok)throw Error("HTTP "+response.status);
+   const data=await response.json();
+   if(Array.isArray(data.items))data.items.forEach(pushCanvas);
+   else if(Array.isArray(data.sequences?.[0]?.canvases))data.sequences[0].canvases.forEach(pushCanvas);
+   $("source").textContent=(text(data.label)||"Testimonio digitalizado")+" · "+pages.length+" imágenes obtenidas del manifiesto institucional.";
+   if(pages.length)show(0);
+   else $("message").textContent="El manifiesto no ofrece imágenes compatibles con este visor. Consultá el visor oficial.";
+  }catch(e){
+   $("source").textContent="No se pudo leer el manifiesto IIIF desde esta página ("+String(e.message||"error")+").";
+   $("message").textContent="El servidor institucional puede impedir la carga externa. Utilizá «Ver visor oficial».";
+  }finally{clearTimeout(timer)}
+ }
+ load();
+})();
+</script></body></html>
