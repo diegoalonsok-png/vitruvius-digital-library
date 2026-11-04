@@ -1058,6 +1058,22 @@ document.addEventListener('click',function(event){
 .vitruvia-session-tools .vitruvia-dictation[data-state="listening"]{border-color:#e66b6b;box-shadow:0 0 0 1px #e66b6b}
 .vitruvia-session-tools button:disabled{cursor:default;opacity:.6}
 .vitruvia-session-status{font-size:12px;opacity:.78;margin-top:5px}
+/* Justificación tipográfica final: el texto enciclopédico, no las notas ni los títulos. 
+   Ubicada al final para no depender de la caché del CSS externo. */
+@media screen{
+ body.vitruvia-reading #vitruvia-article #article-body > p:not(.article-note),
+ body.vitruvia-reading #vitruvia-article #article-body .article-academic-expansion p:not(.article-note){
+  display:block;
+  width:100%;
+  text-align:justify!important;
+  text-align-last:start!important;
+  text-justify:inter-word;
+  hyphens:auto!important;
+  -webkit-hyphens:auto!important;
+  overflow-wrap:break-word;
+  word-break:normal;
+ }
+}
 </style>
 <script>
 (function(){
