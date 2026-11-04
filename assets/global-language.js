@@ -36,7 +36,7 @@
   const built=document.querySelector("#classic-ui-language,#atlas-language-select,.header-languages select");
   if(built){
     if([...built.options].some(o=>o.value===current)&&built.value!==current){built.value=current;built.dispatchEvent(new Event("change",{bubbles:true}))}
-    built.addEventListener("change",()=>{current=built.value;try{localStorage.setItem(KEY,current)}catch{};translateStatic()});
+    built.addEventListener("change",()=>{if(!CODES.includes(built.value))return;current=built.value;try{localStorage.setItem(KEY,current)}catch{};translateStatic()});
     translateStatic();return;
   }
   const toolbar=document.createElement("label");
