@@ -1044,4 +1044,56 @@ document.addEventListener('click',function(event){
   else window.prompt('Copiá el enlace:',url.href);
  }
 });
-</script></body></html>
+</script><!-- Vitruvia accessibility and session controls 2026-11-04 -->
+<style>
+.vitruvia-session-tools{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 0;align-items:center}
+.vitruvia-session-tools button{font:inherit;font-size:12px;cursor:pointer;border:1px solid #7776;border-radius:7px;background:transparent;color:inherit;padding:6px 10px}
+.vitruvia-session-tools button[aria-pressed="true"]{outline:1px solid currentColor}
+.vitruvia-session-status{font-size:12px;opacity:.78;margin-top:5px}
+</style>
+<script>
+(function(){
+"use strict";
+function init(){
+const input=document.getElementById("query"),wrap=document.querySelector(".search-wrap");
+if(!input||!wrap||document.getElementById("vitruvia-session-tools"))return;
+const bar=document.createElement("div");bar.id="vitruvia-session-tools";bar.className="vitruvia-session-tools";
+const status=document.createElement("div");status.className="vitruvia-session-status";status.setAttribute("role","status");
+function button(label,title){const b=document.createElement("button");b.type="button";b.textContent=label;b.title=title;b.setAttribute("aria-label",title);bar.appendChild(b);return b}
+const voice=button("♩ Dictar","Dictar una búsqueda por micrófono");
+const erase=button("⌫ Borrar sesión","Borrar consulta, resultados y datos de sesión de Vitruvia");
+const lock=button("◇ Privacidad","No guardar la consulta en la dirección web; no oculta las búsquedas a proveedores externos");
+wrap.append(bar,status);
+const originalPrivacy=document.getElementById("search-privacy");
+function sync(){const active=originalPrivacy?.getAttribute("aria-pressed")==="true";lock.setAttribute("aria-pressed",String(active));lock.textContent=active?"◆ Privacidad activada":"◇ Privacidad"}
+lock.addEventListener("click",()=>{originalPrivacy?.click();sync();status.textContent="La consulta no se guarda en la URL cuando el modo privado está activo. Los servicios externos pueden recibirla."});
+sync();
+if(originalPrivacy)new MutationObserver(sync).observe(originalPrivacy,{attributes:true,attributeFilter:["aria-pressed"]});
+erase.addEventListener("click",()=>{
+ document.getElementById("clear-search")?.click();
+ if(input.value){input.value="";input.dispatchEvent(new Event("input",{bubbles:true}))}
+ try{sessionStorage.clear()}catch(e){}
+ try{history.replaceState(null,"",location.pathname)}catch(e){}
+ status.textContent="Consulta y sesión local de Vitruvia limpiadas. El historial del navegador y de servicios externos no se puede borrar desde aquí.";
+ input.focus();
+});
+const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!Speech){voice.disabled=true;voice.title="El reconocimiento de voz no está disponible en este navegador";voice.textContent="♩ Dictado no disponible"}
+else{
+ let recognition=null;
+ voice.addEventListener("click",()=>{
+  if(recognition){recognition.stop();return}
+  recognition=new Speech();recognition.lang=document.getElementById("ui-language")?.value==="en"?"en-US":document.getElementById("ui-language")?.value==="fr"?"fr-FR":"es-AR";
+  recognition.continuous=true;recognition.interimResults=true;
+  const prefix=input.value.trim(),join=prefix?" ":"";
+  recognition.onresult=e=>{let words="";for(let i=0;i<e.results.length;i++)words+=e.results[i][0].transcript+" ";input.value=prefix+join+words.trim();input.dispatchEvent(new Event("input",{bubbles:true}))};
+  recognition.onerror=e=>{status.textContent="Dictado: "+e.error};
+  recognition.onend=()=>{recognition=null;voice.textContent="♩ Dictar";voice.setAttribute("aria-pressed","false")};
+  try{recognition.start();voice.textContent="■ Detener dictado";voice.setAttribute("aria-pressed","true");status.textContent="Dictando: revisá el texto antes de buscar."}catch(e){recognition=null;status.textContent="No se pudo iniciar el micrófono."}
+ });
+}
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+</script>
+</body></html>
