@@ -647,7 +647,13 @@ function addTopicBibliography(rows,query,ark){
   if(r.type==="manuscript"||r.type==="edition"||category==="primary"){insert("primary",r);continue}
   if(["book","openlibrary","googlebook"].includes(r.type)){insert("books",r);continue}
   if(r.type==="article"||category==="academic"){insert("academic",r);continue}
-  if(category==="popular"||r.type==="wikipedia"){insert("popular",r)}
+  if(category==="popular"||r.type==="wikipedia"){
+   // A search snippet mentioning the subject is not proof that an unrelated article
+   // (e.g. an Alpine valley or a canal incident) is about that person.
+   const q=normalized(query).replace(/\\s+/g,""),title=normalized(r.title).replace(/\\s+/g,"");
+   if(r.type==="wikipedia"&&q.length>=4&&!(title===q||title.includes(q)||q.includes(title)))continue;
+   insert("popular",r);
+  }
  }
  const sections=[
   ["II · Literatura histórica, códices y fuentes originales","primary"],
@@ -660,7 +666,26 @@ function addTopicBibliography(rows,query,ark){
   if(category==="primary")paragraph("Fuentes antiguas, manuscritos y ediciones documentadas. La fecha de un códice no equivale a la fecha de composición de la obra.","article-note");
   if(category==="books")paragraph("Libros identificados en la Biblioteca Vitruviana y catálogos abiertos. Una ficha no acredita lectura del texto completo.","article-note");
   const selected=groups[category].sort((a,b)=>(Number(a.year)||9999)-(Number(b.year)||9999)||String(a.title).localeCompare(String(b.title))).slice(0,25);
-  if(!selected.length){paragraph("No se recuperaron registros pertinentes para esta categoría.","article-note");continue}
+  if(category==="popular"){
+   paragraph("Consultas complementarias a enciclopedias, universidades y sitios oficiales. Los enlaces siguientes abren búsquedas externas; sus resultados no están verificados ni indexados por Vitruvia.","article-note");
+   const q=String(query||"").trim();
+   const destinations=[
+    ["Grokipedia · buscar artículos","https://www.google.com/search?"+new URLSearchParams({q:"site:grokipedia.com "+q})],
+    ["Encyclopaedia Britannica","https://www.google.com/search?"+new URLSearchParams({q:"site:britannica.com "+q})],
+    ["Stanford Encyclopedia of Philosophy","https://plato.stanford.edu/search?"+new URLSearchParams({query:q})],
+    ["Oxford · recursos universitarios","https://www.google.com/search?"+new URLSearchParams({q:"site:ox.ac.uk "+q})],
+    ["Cambridge · recursos universitarios","https://www.google.com/search?"+new URLSearchParams({q:"site:cam.ac.uk "+q})],
+    ["Harvard · recursos universitarios","https://www.google.com/search?"+new URLSearchParams({q:"site:harvard.edu "+q})],
+    ["World History Encyclopedia","https://www.google.com/search?"+new URLSearchParams({q:"site:worldhistory.org "+q})],
+    ["Perseus Digital Library","https://www.perseus.tufts.edu/hopper/searchresults?"+new URLSearchParams({q})],
+    ["Europeana · patrimonio europeo","https://www.europeana.eu/es/search?"+new URLSearchParams({query:q})],
+    ["Google · sitios institucionales","https://www.google.com/search?"+new URLSearchParams({q:q+" site:edu OR site:ac.uk OR site:gov"})]
+   ];
+   const ul=make("ul",undefined,"article-related");
+   for(const [name,url] of destinations){const li=make("li"),a=href(url,name);if(a){li.append(a);ul.append(li)}}
+   $("article-body").append(ul);
+  }
+  if(!selected.length){paragraph("No se recuperaron registros directamente consultados para esta categoría.","article-note");continue}
   const list=make("ol",undefined,"article-related");
   for(const item of selected){
    const li=make("li"),a=href(item.link,item.title);if(!a)continue;
