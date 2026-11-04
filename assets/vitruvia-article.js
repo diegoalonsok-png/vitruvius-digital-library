@@ -713,6 +713,63 @@ function appendCuratedEvidence(rows){
  }
 }
 
+
+/* Internal corpus is authoritative for what is actually hosted here; external
+   manuscript ownership and edition identity remain attributed separately. */
+function appendLocalRepositoryResources(rows){
+ const local=(rows||[]).filter(r=>
+  r.type==="manuscript"&&r.localViewer||
+  r.type==="book"&&r.localHosted||
+  r.type==="edition"&&/^(?:lector-bilingue|bibliotheca-graeca-latina)\.html(?:\?|$)/.test(r.link||""));
+ if(!local.length)return;
+ const unique=[],seen=new Set();
+ for(const r of local){
+  const key=r.type+":"+normalized(r.title)+"|"+normalized(r.author);
+  if(seen.has(key))continue;seen.add(key);unique.push(r);
+ }
+ heading(phrase("Leer en esta biblioteca · códices, textos y ediciones",
+  "Read in this library · codices, texts and editions",
+  "Lire dans cette bibliothèque · codex, textes et éditions"));
+ paragraph(phrase("Recursos efectivamente incorporados o enlazados al lector de Vitruvius Digital Library. Un facsímil manuscrito, una transcripción, una edición moderna y su traducción son documentos diferentes.",
+  "Materials hosted or opened in the Vitruvius Digital Library reader. A manuscript facsimile, transcription, modern edition and translation are different objects.",
+  "Documents hébergés ou ouverts dans le lecteur de Vitruvius Digital Library. Fac-similé, transcription, édition et traduction sont des objets distincts."),"article-note");
+ const list=make("div",undefined,"article-local-library");
+ for(const r of unique.slice(0,20)){
+  const card=make("article",undefined,"article-local-resource");
+  const h=make("h4",r.title);card.append(h);
+  card.append(make("p",[r.author,r.meta].filter(Boolean).join(" · "),"article-license"));
+  if(r.excerpt)card.append(make("p",cut(r.excerpt,260),"article-note"));
+  const nav=make("div",undefined,"article-local-actions");
+  const internal=[r.localViewer?{label:phrase("Leer folios locales","Read local folios","Lire les folios locaux"),url:r.localViewer}:null,
+   ...((r.links||[]).filter(x=>/^(?:codex-h-folios-local|lector-bilingue|bibliotheca-graeca-latina|corpus\/[a-z0-9/_-]+|documents\/[a-z0-9/_-]+)\.html|^documents\/(?:classics\/)?[a-z0-9-]+\.pdf/i.test(x.url||"")).slice(0,5)),
+   r.pdf?{label:phrase("Abrir PDF","Open PDF","Ouvrir PDF"),url:r.pdf}:null,
+   {label:phrase("Ficha de la obra","Work record","Notice de l’œuvre"),url:r.link}
+  ].filter(x=>x?.url);
+  const links=new Set();
+  for(const data of internal){
+   if(links.has(data.url))continue;links.add(data.url);
+   const a=href(data.url,data.label);if(a)nav.append(a);
+  }
+  if(r.localViewer&&window.VitruviaLocalManuscripts){
+   const btn=make("button",phrase("Leer el códice aquí","Read codex here","Lire le codex ici"));
+   btn.type="button";btn.className="article-local-viewer";
+   btn.addEventListener("click",()=>window.VitruviaLocalManuscripts.open(r.localViewer,r.title));
+   nav.prepend(btn);
+  }
+  if(r.citationText&&navigator.clipboard?.writeText){
+   const btn=make("button",phrase("Copiar cita","Copy citation","Copier la référence"));
+   btn.type="button";btn.className="article-copy-source";
+   btn.addEventListener("click",()=>{
+    navigator.clipboard.writeText(r.citationText).then(()=>{
+     btn.textContent=phrase("Cita copiada","Citation copied","Référence copiée");
+    }).catch(()=>{btn.textContent=phrase("Error al copiar","Copy failed","Erreur de copie")});
+   });nav.append(btn);
+  }
+  card.append(nav);list.append(card);
+ }
+ $("article-body").append(list);
+}
+
 function appendManuscriptHierarchy(rows,query){
  const items=(rows||[]).filter(r=>r.type==="manuscript"&&r.link&&(r.codexShelfmark||r.archiveDiscovery)&&
   (r.primaryWitness||r.curatedAcademic||r.archiveDiscovery||relevance({...r,title:[r.title,r.author,r.excerpt].join(" ")},query)>=35))
@@ -930,6 +987,7 @@ async function renderTopic(top,rows,query,token,person=null){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
+ appendLocalRepositoryResources(rows);
  appendCuratedUniversities(rows);
  appendManuscriptHierarchy(rows,documentaryQuery);
  appendCuratedEvidence(rows);
@@ -1151,6 +1209,7 @@ function isVitruviusAuthority(q){
 function renderVitruviusAuthority(rows){
  reset("Marco Vitruvio Polión",phrase("Arquitecto y tratadista romano · siglo I a. C. · perfil enciclopédico académico","Roman architect and author · first century BCE · scholarly encyclopedic profile","Architecte et théoricien romain · Ier siècle av. J.-C."),"01 · BIOGRAFÍA ENCICLOPÉDICA");
  paragraph("Marcus Vitruvius Pollio · autor de De architectura libri decem. Biografía, texto latino, manuscritos, traducciones y recepción histórica.","article-lead");
+ appendLocalRepositoryResources(rows);
  for(const [title,body] of vitruviusBiography){heading(title);paragraph(body)}
  heading("02 · Los diez libros de De architectura");
  const subjects=[
