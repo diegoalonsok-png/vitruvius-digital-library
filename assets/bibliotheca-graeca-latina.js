@@ -318,7 +318,7 @@ if(localWitness){
  const subtitle=document.createElement("p");
  subtitle.textContent=[localWitness.title,localWitness.shelfmark,localWitness.library,localWitness.localFolioCount?localWitness.localFolioCount+" imágenes digitales":""].filter(Boolean).join(" · ");
  const open=document.createElement("button");open.type="button";open.className="classical-local-manuscript-cta";
- open.textContent="Leer Codex H · folio a folio en esta página";
+ open.textContent="Leer "+localWitness.shelfmark+" · folio a folio en esta página";
  open.addEventListener("click",()=>{
   tab="manuscript";const u=new URL(location.href);
   u.searchParams.set("work",w.id);u.searchParams.set("view","manuscript");u.searchParams.set("ms",localWitness.id);
