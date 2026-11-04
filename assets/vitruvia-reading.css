@@ -218,3 +218,37 @@ html[data-reading-background-tone=light] .background-palette-swatches button[ari
   color:inherit!important;
  }
 }
+
+/* All top-bar controls follow the selected background instead of the OLD theme only.
+   With a light custom background, a dark #theme/#ui-language formerly looked black. */
+@media screen{
+ html[data-reading-background-tone=light] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary){
+  background:#eeeeed!important;color:#202024!important;border:1px solid #85858a!important;
+ }
+ html[data-reading-background-tone=dark] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary){
+  background:#303035!important;color:#f8f8fa!important;border:1px solid #a3a3aa!important;
+ }
+ html[data-reading-background-tone=light] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary):is(:hover,:focus-visible){
+  background:#d9d9dd!important;color:#151518!important;
+ }
+ html[data-reading-background-tone=dark] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary):is(:hover,:focus-visible){
+  background:#48484f!important;color:#fff!important;
+ }
+ html[data-reading-background-tone=light] body :is(.reading-options #reading-font-value,.reading-options .reading-aa,.reading-options .reading-chevron,.background-palette .reading-chevron),
+ html[data-reading-background-tone=light] body #theme svg{color:#202024!important;stroke:currentColor!important}
+ html[data-reading-background-tone=dark] body :is(.reading-options #reading-font-value,.reading-options .reading-aa,.reading-options .reading-chevron,.background-palette .reading-chevron),
+ html[data-reading-background-tone=dark] body #theme svg{color:#f8f8fa!important;stroke:currentColor!important}
+ html[data-reading-background-tone=light] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]){
+  color:#17171a!important;background:#eeeeed!important;border-color:#98989b!important;
+ }
+ html[data-reading-background-tone=dark] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]){
+  color:#f8f8fa!important;background:#313136!important;border-color:#82828b!important;
+ }
+ html[data-reading-background-tone=light] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]):hover{background:#dadadc!important;color:#111!important}
+ html[data-reading-background-tone=dark] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]):hover{background:#4a4a50!important;color:#fff!important}
+ /* Clear-search icon remains legible, never a solid black opaque circle. */
+ html[data-reading-background=custom] body .searchform button#clear-search{
+  background:transparent!important;color:var(--vr-page-ink)!important;border:0!important;
+ }
+ html[data-reading-background=custom] body .searchform button#clear-search:hover{background:var(--vr-control-hover)!important;color:var(--vr-control-ink)!important}
+}
