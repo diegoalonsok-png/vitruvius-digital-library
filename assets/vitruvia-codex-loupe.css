@@ -17,6 +17,9 @@
  background-color:#282a2c;background-repeat:no-repeat;
  box-shadow:0 17px 46px #0009,0 0 0 2px #dad4c5,0 0 0 4px #252525;
 }
+.codex-local-loupe-lens{overflow:hidden}
+.codex-local-loupe-image{position:absolute;inset:0;border-radius:inherit;background-color:#292b2e;background-repeat:no-repeat;will-change:background-position}
+.codex-local-loupe-scale{z-index:1}
 .codex-local-loupe-lens[hidden]{display:none!important}
 .codex-local-loupe-scale{
  position:absolute;bottom:13px;right:14px;
