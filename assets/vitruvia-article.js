@@ -1230,6 +1230,34 @@ function isVitruviusAuthority(q){
 function renderVitruviusAuthority(rows){
  reset("Marco Vitruvio Polión",phrase("Arquitecto y tratadista romano · siglo I a. C. · perfil enciclopédico académico","Roman architect and author · first century BCE · scholarly encyclopedic profile","Architecte et théoricien romain · Ier siècle av. J.-C."),"01 · BIOGRAFÍA ENCICLOPÉDICA");
  paragraph("Marcus Vitruvius Pollio · autor de De architectura libri decem. Biografía, texto latino, manuscritos, traducciones y recepción histórica.","article-lead");
+ // Manuscript evidence is the first documentary action, ahead of secondary references.
+ const featuredManuscript=(rows||[]).filter(r=>r.type==="manuscript"&&r.localViewer&&r.codexShelfmark)
+  .sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999))[0];
+ const manuscripta=make("section",undefined,"article-source-first");
+ manuscripta.append(make("h3",phrase("Documento primario · Codex Harleianus (Harley MS 2767)",
+  "Primary source · Codex Harleianus (Harley MS 2767)",
+  "Source primaire · Codex Harleianus (Harley MS 2767)")));
+ manuscripta.append(make("p",phrase(
+  "Testimonio carolingio temprano de De architectura, fechado aproximadamente entre 800 y 824 d. C. Conservado en la British Library (Londres), signatura Harley MS 2767. El manuscrito puede leerse en esta biblioteca, folio por folio, en una colección local de 341 imágenes. La datación de esta copia no es la fecha de composición del tratado.",
+  "An early Carolingian copy of De architectura, dated approximately 800–824 CE. Held by the British Library, London, shelfmark Harley MS 2767. Browse its 341 digitized images folio by folio in this library. The manuscript's date is not the composition date.",
+  "Copie carolingienne de De architectura datée d'environ 800–824, conservée à la British Library (Londres), cote Harley MS 2767. Parcourez les 341 images numérisées, folio par folio. La datation de la copie ne correspond pas à celle de la composition.")));
+ const links=make("div",undefined,"article-source-first-links");
+ const local=featuredManuscript?.localViewer||"codex-h-folios-local.html?folio=f.1r";
+ const read=href(local,phrase("Leer Codex H · 341 folios digitalizados","Read Codex H · 341 digital images","Lire Codex H · 341 images numérisées"));
+ if(read)links.append(read);
+ if(window.VitruviaLocalManuscripts){
+  const embedded=make("button",phrase("Abrir visor aquí","Open reader here","Ouvrir la visionneuse ici"));
+  embedded.type="button";embedded.className="article-local-viewer";
+  embedded.addEventListener("click",()=>window.VitruviaLocalManuscripts.open(local,"Harley MS 2767 · Codex H"));
+  links.append(embedded);
+ }
+ const record=href("https://searcharchives.bl.uk/catalog/040-002048598",
+  phrase("British Library · ficha y signatura","British Library · record and shelfmark","British Library · notice et cote"));
+ if(record)links.append(record);
+ const edition=href("lector-bilingue.html",phrase("Comparar latín y traducciones","Compare Latin and translations","Comparer latin et traductions"));
+ if(edition)links.append(edition);
+ manuscripta.append(links);
+ $("article-body").append(manuscripta);
  appendLocalRepositoryResources(rows);
  for(const [title,body] of vitruviusBiography){heading(title);paragraph(body)}
  heading("02 · Los diez libros de De architectura");
