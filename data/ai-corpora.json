@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "updated": "2026-11-04",
+  "description": "Public texts searchable by the generic lexical and optional semantic engines. Only verified nonempty sources are listed; additions require bibliographic metadata and working source links.",
+  "sources": [
+    {
+      "url": "data/structured/recensio-es.json",
+      "workId": "vitruvius",
+      "workTitle": "De architectura libri decem",
+      "author": "Marco Vitruvio Polión",
+      "edition": "V514",
+      "language": "es",
+      "reader": "lector-bilingue.html?edition=recensio-es",
+      "source": "Edición editorial V514, texto latino y castellano"
+    },
+    {
+      "url": "data/structured/theory-en.json",
+      "workId": "vitruvius",
+      "workTitle": "De architectura libri decem",
+      "author": "Marco Vitruvio Polión",
+      "edition": "V297",
+      "language": "en",
+      "reader": "lector-bilingue.html?edition=theory-en",
+      "source": "Edición editorial V297, texto latino e inglés"
+    }
+  ]
+}
