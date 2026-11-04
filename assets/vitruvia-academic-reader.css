@@ -119,3 +119,29 @@ html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index::-webkit-scro
  background:#50555b;border-color:#bfc3c6;
 }
 @media print{#vr-academic-tools.vr-is-floating{display:none!important}}
+
+
+/* AI mode from the compact movable navigation. Literal search remains separate. */
+#vr-academic-tools .vr-ai-row{
+ display:flex;flex-direction:column;align-items:stretch;gap:6px;
+ border-top:1px solid var(--vr-control-border,#53565a);
+ border-bottom:1px solid var(--vr-control-border,#53565a);
+ padding:11px 0;margin:0 0 14px;
+}
+#vr-academic-tools #vr-ask-ai{
+ display:block;width:100%;min-height:38px;
+ padding:8px 11px;background:var(--vr-control-bg,#35373b);
+ border:1px solid var(--vr-control-border,#656a71);
+ border-radius:8px;color:inherit;
+ font:600 12px/1.35 Arial,Helvetica,sans-serif;
+ text-align:left;letter-spacing:.015em;
+}
+#vr-academic-tools #vr-ask-ai:hover,
+#vr-academic-tools #vr-ask-ai:focus-visible{
+ background:var(--vr-control-hover,#4b4f54);
+}
+#vr-academic-tools #vr-ask-ai-detail{
+ display:block;font:400 10px/1.55 Arial,Helvetica,sans-serif;
+ color:var(--vr-page-muted,#aaa);overflow-wrap:anywhere;
+}
+@media print{#vr-academic-tools .vr-ai-row{display:none!important}}
