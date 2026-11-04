@@ -102,3 +102,33 @@
   right:0!important;
  }
 }
+
+
+/* Drag grip for the existing Aa reading rail; compatible with its panel controls. */
+.vitruvia-reading-float .vrf-drag{
+ font:500 20px/1 Arial,Helvetica,sans-serif;
+ color:var(--vr-control-ink,#d5d5d5);
+ opacity:.74;cursor:grab;
+ touch-action:none;user-select:none;-webkit-user-select:none;
+ border-bottom:1px solid var(--vr-control-border,#444);
+ border-radius:13px 13px 8px 8px;
+}
+.vitruvia-reading-float .vrf-drag:hover,
+.vitruvia-reading-float .vrf-drag:focus-visible{
+ opacity:1;background:var(--vr-control-hover,#47474a);
+}
+.vitruvia-reading-float.vrf-dragging .vrf-drag{cursor:grabbing}
+.vitruvia-reading-float.vrf-user-positioned{
+ right:auto!important;
+ bottom:auto!important;
+}
+.vitruvia-reading-float .vrf-panel.vrf-panel-right{
+ left:calc(100% + 12px);
+ right:auto;
+}
+@media(max-width:700px){
+ .vitruvia-reading-float .vrf-drag{font-size:18px}
+ .vitruvia-reading-float .vrf-panel.vrf-panel-right{
+  left:calc(100% + 7px);right:auto;
+ }
+}
