@@ -693,6 +693,8 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  try{localStorage.setItem("vitruvius-ui-lang",S.lang)}catch{}
 }
 function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes(m)?m:"all";
+ document.body.classList.toggle("vitruvia-ai-active",S.mode==="ai");
+ if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=S.mode==="ai"?"IA semántica multilingüe: combina BM25 y embeddings locales sobre documentos indexados; primera carga del modelo ≈120 MB. Los resultados externos son bibliográficos y no equivalen a análisis IA de toda la web.":T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)];
 }
