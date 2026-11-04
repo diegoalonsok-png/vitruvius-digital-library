@@ -1,0 +1,85 @@
+/* Vitruvia regression suite. Offline and repeatable, no third-party API needed.
+ * Run: npm run check:vitruvia
+ * This checks parsing, query intent, local results and page wiring.
+ * A separate browser/network smoke test is required for real availability. */
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {Script} from "node:vm";
+const sourceFile=name=>readFileSync(new URL("../"+name,import.meta.url),"utf8");
+const modules=[
+ "assets/vitruvia-image-engine-v2.js",
+ "assets/vitruvia-entity-resolver.js",
+ "assets/vitruvia-search.js",
+ "assets/vitruvia-article.js",
+ "assets/vitruvia-reading.js",
+ "assets/bibliotheca-graeca-latina.js"
+];
+for(const name of modules){
+ new Script(sourceFile(name),{filename:name});
+ console.log("✓ Syntax:",name);
+}
+const vitruviaHTML=sourceFile("vitruvia.html");
+const bibliothecaHTML=sourceFile("bibliotheca-graeca-latina.html");
+for(const [label,html] of [["Vitruvia",vitruviaHTML],["Bibliotheca",bibliothecaHTML]]){
+ const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).filter(x=>x.trim());
+ for(const [i,text] of scripts.entries())new Script(text,{filename:label+" inline "+i});
+ console.log("✓ Inline scripts:",label);
+}
+for(const needle of [
+ "assets/vitruvia-image-engine-v2.js",
+ "assets/vitruvia-entity-resolver.js",
+ "assets/vitruvia-search.js",
+ "assets/vitruvia-reading.css"
+])assert.ok(vitruviaHTML.includes(needle),"Missing main asset: "+needle);
+assert.ok(bibliothecaHTML.includes("assets/bibliotheca-graeca-latina.js"));
+const resolverWindow={};
+new Function("window",sourceFile("assets/vitruvia-entity-resolver.js"))(resolverWindow);
+const subject=resolverWindow.VitruviaEntityResolver.subject;
+const examples={
+ "pinturas de Leonardo da Vinci":"Leonardo da Vinci",
+ "fotos de Penélope Cruz":"Penélope Cruz",
+ "biografía de María Antonieta":"María Antonieta",
+ "obras de Cicerón":"Cicerón",
+ "Ramsés II":"Ramsés II"
+};
+for(const [q,wanted] of Object.entries(examples)){
+ assert.equal(subject(q),wanted,"Subject resolution failed: "+q);
+ console.log("✓ Universal subject:",q,"→",wanted);
+}
+const works=JSON.parse(sourceFile("data/bibliotheca-graeca-latina-I-bce-I-ce.json")).works;
+assert.ok(works.length>=190,"Unexpected classical catalogue shrinkage");
+const classical=sourceFile("assets/bibliotheca-graeca-latina.js");
+const first=classical.indexOf("function workSearchText(");
+const last=classical.indexOf("let suggestionIndex=",first);
+assert.ok(first>=0&&last>first,"Missing classical search implementation");
+let query="";
+const field=id=>({value:id==="classic-query"?query:""});
+const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+const isLocal=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)
+ &&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
+const hasSource=w=>!!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest
+ ||w.witnessRecords?.length||w.historicEditions?.length);
+const filters=new Function("works","$","fold","isLocal","hasSource","periodFocus",
+ classical.slice(first,last)+";return filters;")(works,field,fold,isLocal,hasSource,()=>true);
+for(const [q,min] of [["Cicerón",10],["Homero",3],["Platón",7],["tratados clásicos",25],["odisea",1]]){
+ query=q;const results=filters();
+ assert.ok(results.length>=min,q+" matched only "+results.length+" records");
+ console.log("✓ Classical retrieval:",q,results.length,"records");
+}
+query="Penélope Cruz";
+assert.equal(filters().length,0,"Classical catalogue should not invent a modern actress");
+const search=sourceFile("assets/vitruvia-search.js");
+assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
+assert.ok(search.includes("window.VitruviaEntityResolver?.subject(topicQuery(q))"),"Universal subject not connected");
+assert.ok(search.includes("pending.push(wiki("),"Encyclopedia discovery not wired");
+assert.ok(search.includes("pending.push(crossref("),"Academic publications not wired");
+const images=sourceFile("assets/vitruvia-image-engine-v2.js");
+assert.match(images,/generator:"categorymembers"/,"Topic image collections not wired");
+assert.match(images,/dialog\.showModal\(\)/,"Large-image viewer absent");
+assert.match(images,/items\.slice\(0,80\)/,"Bulk gallery limit is missing");
+assert.match(images,/info\.extmetadata\?\.LicenseShortName/,"Image licensing metadata absent");
+assert.ok(vitruviaHTML.includes("id=\"featured-link\""));
+const css=sourceFile("assets/vitruvia-reading.css");
+assert.ok(css.includes("Fix: the feature CTA was dark-on-dark"));
+console.log("✓ Universal search, image source attribution and accessibility hooks present");
+console.log("PASS: Vitruvia offline regression checks. Live API/browser checks remain separate.");
