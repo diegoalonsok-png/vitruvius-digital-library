@@ -35,6 +35,10 @@ jobs:
           node scripts/test-vitruvia-selection-speech.mjs
           node --check assets/vitruvia-photo-background.js
           node scripts/test-vitruvia-photo-background.mjs
+          node --check assets/vitruvia-visual-import.js
+          node --check assets/vitruvia-pdf-local.js
+          node scripts/test-vitruvia-visual-import.mjs
+          node scripts/test-vitruvia-pdf-local.mjs
           node --check assets/vitruvia-search.js
           node --check assets/vitruvia-entity-resolver.js
       - name: Comprobar catálogo y archivos publicados
