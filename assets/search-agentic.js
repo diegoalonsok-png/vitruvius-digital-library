@@ -37,13 +37,23 @@ function excerptAt(text,tt,max=420){
 const get=async(url)=>{const response=await fetch(url,{headers:{Accept:"application/json"}});if(!response.ok)throw Error(url+" HTTP "+response.status);return response.json()};
 let chunkPromise=null,bibPromise=null;
 async function chunks(){
- if(!chunkPromise)chunkPromise=get(BASE+"data/vitruvius-chunks.json").then(v=>v.chunks||v).catch(async()=>{
-  const files=["recensio-es","recensio-fr","theory-en"];
-  const outcomes=await Promise.allSettled(files.map(f=>get(BASE+"data/structured/"+f+".json")));
-  return outcomes.filter(x=>x.status==="fulfilled").flatMap(x=>{
-   const d=x.value;return(d.passages||[]).map(p=>({id:d.edition+"-"+p.locus,locus:p.locus,edicion:d.version,language:d.language,texto:p.latin,traduccion:p.translation,pagina_pdf:p.pdf_pages?.translation,lector:"lector-bilingue.html?edition="+encodeURIComponent(d.edition)+"&locus="+encodeURIComponent(p.locus)}));
+ if(!chunkPromise)chunkPromise=(async()=>{
+  const manifest=await get(BASE+"data/ai-corpora.json");
+  const sources=Array.isArray(manifest.sources)?manifest.sources:[];
+  const outcomes=await Promise.allSettled(sources.map(source=>get(BASE+source.url)));
+  return outcomes.filter((r,i)=>r.status==="fulfilled"&&Array.isArray(r.value?.passages)).flatMap(result=>{
+   const d=result.value,source=sources[outcomes.indexOf(result)];
+   return d.passages.map(p=>({
+    id:(source.workId||"work")+"-"+(d.edition||source.edition)+"-"+p.locus,
+    locus:p.locus,workTitle:source.workTitle||d.title||"Obra clásica",
+    author:source.author||d.author||"Autor documentado",edicion:d.version||source.edition,
+    editionId:d.edition,language:d.language||source.language,sourceLabel:source.source||"",
+    texto:p.latin||p.original||"",traduccion:p.translation||"",
+    pagina_pdf:p.pdf_pages?.translation,
+    lector:(source.reader||"bibliotheca-graeca-latina.html")+"&locus="+encodeURIComponent(p.locus)
+   }));
   });
- });
+ })().catch(error=>{chunkPromise=null;throw error});
  return chunkPromise;
 }
 async function bibliography(){
@@ -63,12 +73,12 @@ async function search(q){
   return {c,score,exact,latinScore,translationScore};
  }).filter(h=>h.score>0).sort((a,b)=>b.score-a.score).slice(0,30);
  const passages=detected.map(({c,score,exact,latinScore,translationScore})=>({
-  type:"passage",title:"De architectura · "+c.locus,author:(c.edicion||"Edición")+" · "+(c.language||""),
+  type:"passage",title:(c.workTitle||"Obra clásica")+" · "+c.locus,author:(c.author||"")+" · "+(c.edicion||"Edición")+" · "+(c.language||""),
   latin:c.texto||"",translation:c.traduccion||"",locus:c.locus,
   excerpt:excerptAt(latinScore>translationScore?c.texto:c.traduccion||c.texto,tt),
   meta:"Fuente textual verificada · "+(c.pagina_pdf?"p. PDF "+c.pagina_pdf+" · ":"")+"locus "+c.locus,
   link:c.lector||"lector-bilingue.html",edition:c.edicion,
-  rating:score,source:"Corpus textual",
+  rating:score,source:c.sourceLabel||"Corpus textual",
   exactTextMatch:exact
  }));
  const bibliographyRows=bs.map(entry=>{
@@ -91,5 +101,5 @@ async function search(q){
  }).filter(Boolean).sort((a,b)=>b.rating-a.rating).slice(0,25);
  return {rows:[...passages,...bibliographyRows],stats:{chunks:cs.length,bibliography:bs.length,passages:passages.length,exact:detected.filter(h=>h.exact).length}};
 }
-window.VitruviaAgentic={search,version:"1.1-bilingual-evidence"};
+window.VitruviaAgentic={search,version:"1.2-source-manifest"};
 })();
