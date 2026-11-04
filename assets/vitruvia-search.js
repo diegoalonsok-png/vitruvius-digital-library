@@ -392,23 +392,56 @@ function topicQuery(q){
  out=out.replace(/^[\s:;,.!?]+|[\s:;,.!?]+$/g,"").trim();
  return out.length>=2?out:String(q||"").trim();
 }
-function titleMatch(row,query){
- const stem=t=>t.length>6?t.replace(/(?:ciones|ciones|cion|ations|ation|mente|idades|idad|ements|ement|ismos|istas|ista|es|as|os|s)$/,""):t.length>4?t.replace(/s$/,""):t;
- const bits=x=>words(x).map(stem).filter(Boolean);
- const queryBits=bits(query),titleBits=bits(row.title||"");
- if(!queryBits.length||!titleBits.length)return 0;
- const a=titleBits.join(" "),b=queryBits.join(" ");
- if(a===b)return 1300;
- if(a.includes(b))return 780;
- let common=0;
- for(const q of queryBits)if(titleBits.some(t=>t===q||(q.length>4&&(t.startsWith(q)||q.startsWith(t)))))common++;
- if(!common)return -70;
- return common===queryBits.length?Math.round(470*common/queryBits.length):Math.round(85*common/queryBits.length);
+/* Entity-focused ranking for EVERY query, independent of any list of famous names.
+   Full title and all query tokens outrank incidental text matches. */
+function queryTokens(value){return [...new Set(words(value).filter(w=>w.length>=3))]}
+function rankedTitle(row,query){
+ const q=norm(topicQuery(query)).replace(/^(?:biografia de|vida de|quien fue|quien es|who was|what is) /,"").trim();
+ const title=norm(row.title||"");
+ if(!q||!title)return -100;
+ const terms=queryTokens(q),titleTerms=queryTokens(title);
+ if(!terms.length)return 0;
+ if(title===q)return 1600;
+ const aliases=[...(row.aliases||[]),row.entityCanonical||""].map(norm).filter(Boolean);
+ if(aliases.includes(q))return 1550;
+ const exactCount=terms.filter(t=>titleTerms.includes(t)).length;
+ const coverage=exactCount/terms.length;
+ if(coverage===1){
+  const extra=Math.max(0,titleTerms.length-terms.length);
+  return 800-Math.min(450,extra*70);
+ }
+ if(coverage>=.75)return Math.round(180*coverage);
+ if(coverage>=.5)return Math.round(65*coverage);
+ return -220;
 }
+function entityEvidence(row,query){
+ const q=norm(topicQuery(query));if(!q)return true;
+ const title=norm(row.title||""),author=norm(row.author||""),description=norm(row.excerpt||"");
+ const terms=queryTokens(q),titleTokens=queryTokens(title);
+ if(!terms.length)return true;
+ const allTitle=terms.every(t=>titleTokens.includes(t));
+ const aliases=(row.aliases||[]).some(a=>norm(a)===q)||norm(row.entityCanonical||"")===q;
+ // Long natural-language searches may also match an appropriate descriptive title.
+ if(allTitle||aliases)return true;
+ // Documentary corpus, catalogues and primary texts are assessed independently.
+ if(["passage","book","edition","manuscript","preface","section"].includes(row.type))return true;
+ const coverage=terms.filter(t=>titleTokens.includes(t)).length/terms.length;
+ if(coverage<1)return false;
+ return !!description||!!author;
+}
+function authorityWeight(row){
+ if(row.type==="wikipedia")return 35;
+ if(row.type==="wikidata")return 20;
+ if(row.type==="passage")return 25;
+ if(row.type==="article"&&row.doi)return 15;
+ if(row.type==="manuscript")return 25;
+ return 0;
+}
+function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)}
 
 function display(rows,query,phase){
  const romanVitruvius=/^(vitruvio|vitruvius|vitruve|marco vitruvio polion|marcus vitruvius pollio)$/i.test(norm(query));
- const scored=rows.filter(r=>!romanVitruvius||!(/agustin vitruvio|agustín vitruvio|augustin vitruvio/i.test(r.title||""))).slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query))-((a.rating||0)+titleMatch(a,query))),deduped=[],seen=new Set();
+ const scored=rows.filter(r=>(!romanVitruvius||!(/agustin vitruvio|agustín vitruvio|augustin vitruvio/i.test(r.title||"")))&&entityEvidence(r,query)).slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query))-((a.rating||0)+titleMatch(a,query))),deduped=[],seen=new Set();
  for(const r of scored){const k=r.type+":"+norm(r.title)+(r.type==="passage"?":"+norm(r.edition||r.author||r.meta||""):"");if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  // Present library evidence after encyclopedic context without hiding editions.
