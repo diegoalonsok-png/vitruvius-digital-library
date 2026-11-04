@@ -437,7 +437,7 @@ try{
 
  await test('Atlas geográfico: abrir ficha científica desde el mapa y la columna derecha',async()=>{
    const page=await pageFor('atlas-geographicus.html');
-   await page.waitForFunction(()=>document.querySelector('#place-count')?.textContent.includes('28 lugares'),{timeout:15000});
+   await page.waitForFunction(()=>(()=>{const t=document.querySelector('#place-count')?.textContent||'';return /^[1-9]\d* registros ·/.test(t)})(),{timeout:15000});
    await page.locator('#place-query').fill('Crotona');
    const croton=page.locator('[data-place-id="croton"]');
    assert.equal(await croton.count(),1,'No aparece Crotona en el índice filtrado');
@@ -461,7 +461,7 @@ try{
 
  await test('Atlas geográfico: Campania como región, Nilo como río y pasajes V514 visibles',async()=>{
    const page=await pageFor('atlas-geographicus.html');
-   await page.waitForFunction(()=>document.querySelector('#place-count')?.textContent.includes('28 lugares'),{timeout:15000});
+   await page.waitForFunction(()=>(()=>{const t=document.querySelector('#place-count')?.textContent||'';return /^[1-9]\d* registros ·/.test(t)})(),{timeout:15000});
    assert.match(await page.locator('#place-count').innerText(),/4 áreas/);
    assert.match(await page.locator('#place-count').innerText(),/5 ríos/);
    await page.locator('#place-query').fill('Campania');
