@@ -169,6 +169,8 @@ function relevance(row,q){
  return matches===b.length?105:Math.round(matches/b.length*60);
 }
 function choose(rows,query){
+ const resolved=rows.find(x=>x.type==="wikipedia"&&x.entityCanonical);
+ if(resolved)return {type:"topic",title:resolved.entityCanonical,excerpt:resolved.excerpt};
  const prefaces=rows.filter(x=>x.type==="preface");
  if(prefaces.length){
   const verified=prefaces.filter(x=>!x.prefacePlaceholder&&Array.isArray(x.sections));
@@ -1088,7 +1090,8 @@ function addTopicBibliography(rows,query,ark){
 async function renderTopic(top,rows,query,token,person=null){
  const authority=rows.find(r=>r.preferredWiki);
  const topicPlan=window.VitruviaDiscovery?.plan(query,{canonical:authority?.entityCanonical,kind:authority?.entityKind,authorityDescription:authority?.entityDescription})||{kind:"topic"};
- const identified=["person","object"].includes(topicPlan.kind)?null:(rows||[]).filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
+ const quotation=String(query).trim().split(/\s+/).length>=4;
+ const identified=(!quotation||authority||["person","object"].includes(topicPlan.kind))?null:(rows||[]).filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
  const documentaryQuery=identified?.title?.split(" · ")[0]||person?.name||query;
  reset(identified?.title||person?.name||query,phrase("Artículo enciclopédico · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));

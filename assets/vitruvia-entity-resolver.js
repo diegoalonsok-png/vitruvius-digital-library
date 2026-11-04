@@ -77,6 +77,9 @@ async function authorityCandidates(q,lang){
   const exactLabel=labels.some(x=>norm(x)===norm(q)),exactAlias=aliases.some(x=>norm(x)===norm(q));
   const searches=hits.filter(x=>x.id===id);
   const searchMatch=searches.some(x=>norm(x.label)===norm(q)||norm(x.match?.text)===norm(q));
+  const queryTerms=norm(q).split(" ").filter(Boolean);
+  const completeName=[...labels,...aliases].some(name=>queryTerms.every(term=>norm(name).split(" ").includes(term)));
+  if(!exactLabel&&!exactAlias&&!searchMatch&&!completeName)return null;
   const coverage=Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length;
   const score=(exactLabel?140:0)+(exactAlias?130:0)+(searchMatch?45:0)+
    Math.min(coverage,180)*3+
