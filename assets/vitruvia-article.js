@@ -203,6 +203,130 @@ if(editions.length)for(const r of editions){
 }else paragraph(top.excerpt);
 aside(rows);references(editions.length?editions:[top],phrase("Cada número de página procede del índice del archivo de origen cuando está registrado; no se equipara a un folio manuscrito.","Page numbers derive only from registered source metadata; no manuscript folio is inferred.","Les pages proviennent des métadonnées disponibles ; aucune équivalence avec un folio n’est supposée."))
 }
+
+/* Personas históricas: primero biografía documentada; después menciones
+   verificables de Vitruvio. Una coincidencia editorial no equivale a folio. */
+function personWikiHit(row,person,query){
+ if(row.type!=="wikipedia")return false;
+ const title=normalized(row.title);
+ if(/desambiguacion|disambiguation|homonymie|categoria/.test(title))return false;
+ const alternatives=[person.name,query,...(person.aliases||[])].map(normalized).filter(x=>x.length>=4);
+ if(person.id==="cicero")alternatives.push("ciceron","cicero","marco tulio ciceron");
+ return alternatives.some(name=>title===name);
+}
+function appendPersonLoci(rows,person){
+ heading(phrase("Pasajes de Vitruvio que mencionan al personaje","Passages in Vitruvius mentioning this person","Passages de Vitruve mentionnant cette personne"));
+ const names=[person.name,...(person.aliases||[]),...(person.latin_forms||[])];
+ if(person.id==="cicero")names.push("Cicerón","Cicero","Cicerone","Ciceronis","Ciceronem");
+ const forms=[...new Set(names.map(normalized).filter(x=>x.length>=5))];
+ const matches=rows.filter(x=>x.type==="passage"&&x.locus&&forms.some(form=>(" "+normalized([x.latin,x.translation,x.excerpt].join(" "))+" ").includes(" "+form+" ")));
+ const grouped=new Map();
+ for(const hit of matches){
+  if(!grouped.has(hit.locus))grouped.set(hit.locus,[]);
+  if(!grouped.get(hit.locus).some(x=>x.edition===hit.edition))grouped.get(hit.locus).push(hit);
+ }
+ const loci=[...grouped].sort((a,b)=>{
+  const left=a[0].split(".").map(Number),right=b[0].split(".").map(Number);
+  return (left[0]-right[0])||(left[1]-right[1])||(left[2]-right[2]);
+ });
+ const books=new Set(loci.map(x=>x[0].split(".")[0]));
+ paragraph(loci.length?
+   phrase(loci.length+" loci identificados en "+books.size+" libros de De architectura (ediciones V514, V554 y V297). Se muestra el texto latino y sus traducciones disponibles.",
+   loci.length+" loci identified in "+books.size+" books of De architectura (V514, V554 and V297), with Latin and available translations.",
+   loci.length+" loci identifiés dans "+books.size+" livres de De architectura (V514, V554 et V297), avec le latin et les traductions disponibles."):
+   phrase("No se recuperó una mención literal en los pasajes indexados para esta búsqueda. Esto no demuestra la ausencia del personaje en toda la tradición textual.",
+   "No literal mention was retrieved in indexed passages. This does not prove absence from the full textual tradition.",
+   "Aucune mention littérale retrouvée dans les passages indexés. Cela ne démontre pas une absence de toute la tradition textuelle."),"article-note");
+ const holder=make("div",undefined,"person-vitruvian-list");$("article-body").append(holder);
+ const romans=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+ for(const [locus,versions] of loci.slice(0,24)){
+  const section=make("section",undefined,"person-locus-entry");
+  section.append(make("h4","De architectura · Libro "+(romans[Number(locus.split(".")[0])]||locus.split(".")[0])+" · "+locus));
+  const latin=versions.find(x=>x.edition==="recensio-es"&&x.latin)||versions.find(x=>x.latin);
+  if(latin){
+   section.append(make("div","LATINE · TEXTO EDITORIAL","person-language-label"));
+   const p=make("p",cut(latin.latin,1150));p.lang="la";section.append(p);
+  }
+  for(const [edition,language,label] of [["recensio-es","es","V514 · CASTELLANO"],["recensio-fr","fr","V554 · FRANÇAIS"],["theory-en","en","V297 · ENGLISH"]]){
+   const item=versions.find(x=>x.edition===edition&&x.translation);
+   if(!item)continue;
+   const outer=make("div",undefined,"person-translation");
+   outer.append(make("div",label,"person-language-label"));
+   const p=make("p",cut(item.translation,1250));p.lang=language;outer.append(p);
+   if(language==="es")section.append(outer);
+   else{const details=make("details",undefined,"person-other-language");details.append(make("summary",language==="fr"?"Leer en francés":"Read in English"),outer);section.append(details)}
+  }
+  const links=make("div",undefined,"person-edition-links");
+  for(const item of versions){
+   const link=href(item.link,"Leer locus "+locus+" · "+(item.edition||item.source||"edición"));
+   if(link)links.append(link);
+  }
+  section.append(links);holder.append(section);
+ }
+ if(loci.length>24)paragraph("Se muestran 24 loci; las demás coincidencias están disponibles en el listado de resultados.","article-note");
+ paragraph(phrase("Nota filológica: el texto procede de ediciones indexadas, no de OCR del códice. Las variantes flexivas exigen cotejo; no se asigna ningún folio manuscrito sin verificación.",
+  "Philological note: these are edited texts, not codex OCR. Inflected forms require collation; manuscript folios are not inferred.",
+  "Note philologique : textes édités, non OCR du codex. Les formes fléchies requièrent un examen ; aucun folio n'est supposé."),"article-note");
+}
+function appendBiographyExtract(raw){
+ const pieces=String(raw||"").split(/\r?\n/);
+ let buffer=[],length=0,paragraphs=0,sections=0;
+ const flush=()=>{
+  const text=buffer.join(" ").replace(/\s+/g," ").trim();buffer=[];
+  if(!text||length>44000||paragraphs>=75)return;
+  const sample=cut(text,Math.min(3200,46000-length));
+  if(sample){paragraph(sample,paragraphs===0?"article-lead":undefined);length+=sample.length;paragraphs++}
+ };
+ for(const line of pieces){
+  if(length>44000||paragraphs>=75)break;
+  const trimmed=line.trim();
+  const title=trimmed.match(/^={2,5}\s*([^=]+?)\s*={2,5}$/);
+  if(title){flush();if(sections<35){heading(title[1]);sections++}}
+  else if(!trimmed)flush();
+  else buffer.push(trimmed);
+ }
+ flush();
+ return paragraphs;
+}
+async function renderHistoricalPerson(top,rows,person,token){
+ reset(person.name,phrase("Historia y biografía · fuentes documentadas","History and biography · documented sources","Histoire et biographie · sources documentées"),
+  phrase("01 · BIOGRAFÍA HISTÓRICA","01 · HISTORICAL BIOGRAPHY","01 · BIOGRAPHIE HISTORIQUE"));
+ aside(rows);
+ references([...(top?[top]:[]),...rows.filter(x=>["wikidata","article","book"].includes(x.type))],
+  "Wikipedia: atribución CC BY-SA 4.0; consultar la historia editorial y referencias originales. Los textos de Vitruvio provienen de sus ediciones indexadas, no de Wikipedia.");
+ if(top){
+  paragraph(top.excerpt,"article-lead");
+  const data=await wikiSummary(top);
+  if(token!==active)return;
+  if(data?.extract){
+   $("article-body").replaceChildren();
+   if(!appendBiographyExtract(data.extract))paragraph(top.excerpt,"article-lead");
+  }else paragraph("La fuente enciclopédica extensa no respondió. Se mantiene el resumen documentado y el enlace original.","article-note");
+  const original=href(data?.fullurl||top.link,phrase("Leer artículo biográfico íntegro, referencias e historial ↗","Read full biography, references and history ↗","Lire la biographie intégrale, références et historique ↗"));
+  if(original)$("article-body").append(original);
+ }else{
+  paragraph(phrase("Recuperando el artículo biográfico de fuentes identificadas. No se sustituye una biografía por una ficha de libro.",
+   "Retrieving an attributed biography. A catalog record is not a substitute for biographical evidence.",
+   "Recherche d'une biographie attribuée. Une notice bibliographique ne s'y substitue pas."),"article-lead");
+  const lookup=href("https://es.wikipedia.org/w/index.php?"+new URLSearchParams({search:person.name}),"Buscar biografía en Wikipedia ↗");
+  if(lookup)$("article-body").append(lookup);
+ }
+ appendPersonLoci(rows,person);
+ heading(phrase("Bibliografía y fuentes relacionadas","Related bibliography and sources","Bibliographie et sources liées"));
+ const seen=new Set(),list=make("ul",undefined,"article-related");
+ for(const item of rows.filter(x=>x.link&&["book","article","wikidata","googlebook"].includes(x.type))){
+  const candidate=normalized([item.title,item.author,...(item.aliases||[])].join(" "));
+  const needles=[person.name,...(person.aliases||[])].map(normalized).filter(x=>x.length>=5);
+  if(!needles.some(x=>candidate.includes(x))||seen.has(item.link))continue;
+  seen.add(item.link);
+  const li=make("li"),a=href(item.link,item.title+" · "+(item.author||item.source||""));
+  if(a)li.append(a);list.append(li);
+  if(list.children.length>=10)break;
+ }
+ if(list.children.length)$("article-body").append(list);
+ else paragraph("Las referencias adicionales solo se presentan cuando es posible identificar su fuente.","article-note");
+ buildContents();
+}
 async function renderWiki(top,rows,token){reset(top.title,top.author||"Wikipedia",
 phrase("Extracto enciclopédico · fuente identificada","Encyclopedia extract · attributed source","Extrait encyclopédique · source attribuée"));
 paragraph(top.excerpt,"article-lead");
