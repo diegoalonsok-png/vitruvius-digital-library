@@ -75,7 +75,9 @@ function liveManuscripts(q){
  for(const ms of S.witnesses){
   const titles=(ms.workIds||[]).map(id=>S.works.find(w=>w.id===id)).filter(Boolean);
   const description=[ms.title,ms.shelfmark,ms.library,ms.date,ms.coverage,...titles.flatMap(w=>[w.title,w.author,...(w.aliases||[])])].join(" ");
-  const rating=score(description,q,false),nameRating=score(ms.title+" "+ms.shelfmark,q,false);
+  const vitruviusQuery=/\b(vitruvio|vitruvius|vitruve|vitruvii|de architectura|codex h|harley 2767)\b/i.test(norm(q));
+  const isVitruvian=vitruviusQuery&&(ms.workIds||[]).includes("vitruvius");
+  const rating=score(description,q,false)+(isVitruvian?80:0),nameRating=score(ms.title+" "+ms.shelfmark,q,false);
   if(rating<3)continue;
   const target=titles.find(w=>score(workString(w),q,false)>10)||titles[0];
   const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
