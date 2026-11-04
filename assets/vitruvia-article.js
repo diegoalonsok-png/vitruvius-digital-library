@@ -684,7 +684,7 @@ async function renderTopic(top,rows,query,token,person=null){
  if(deity){for(const [sectionTitle,body] of deityDossier){heading(sectionTitle);paragraph(body)}}
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
  if(person?.id==="cicero"){for(const [sectionTitle,body] of ciceroChapters){heading(sectionTitle);paragraph(body)}}
- const data=wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
+ const data=wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
  if(token!==active)return;
  if(data?.extract){
   heading(phrase("Desarrollo enciclopédico y debates","Encyclopedic research and debates","Étude encyclopédique et débats"));
