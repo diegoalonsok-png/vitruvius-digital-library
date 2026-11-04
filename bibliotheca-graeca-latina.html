@@ -204,6 +204,21 @@ html[data-theme=dark] .classical-ms-toolbar .classical-pdf-link{color:#e7d5ab!im
 .classic-search-via-vitruvia:hover,.classic-search-via-vitruvia:focus-visible{text-decoration:underline;border-color:#bb965a}
 html[data-theme=dark] .classic-search-via-vitruvia{color:#e3d5aa;border-color:#b39d70}
 @media print{.classic-search-via-vitruvia{display:none!important}}
+/* Nuevos visores filológicos, sin cambios en la estética general del sitio. */
+.classic-pdf-version-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:10px 12px;margin:3px 0 12px;border:1px solid var(--line,#a3a3a3);border-radius:4px}
+.classic-pdf-version-toolbar label{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font:600 12px/1.5 system-ui}
+.classic-pdf-version-toolbar select{max-width:min(100%,510px);min-height:37px;border-radius:4px}
+.classic-pdf-version-toolbar .classic-ref{flex:1 1 260px;font:11px/1.5 system-ui;margin:0}
+.classic-double-pdf,.classic-triple-reading{display:grid;gap:12px;align-items:stretch;grid-template-columns:repeat(2,minmax(0,1fr))}
+.classic-triple-reading{grid-template-columns:repeat(3,minmax(0,1fr))}
+.classic-compare-item,.classic-triple-column{min-width:0;padding:10px;border:1px solid #8b9197;border-radius:4px;background:transparent}
+.classic-compare-item h3,.classic-triple-column h3{font:600 13px/1.5 Georgia,serif;margin:0 0 10px}
+.classic-compare-item iframe,.classic-triple-column iframe{display:block;width:100%;height:65vh;min-height:430px;border:1px solid #7a838a;background:#f5f0e8}
+.classic-compare-item a{display:inline-block;margin-top:8px;font:12px/1.5 system-ui}
+.classic-triple-column select{display:block;margin:0 0 10px;max-width:100%;width:100%;min-height:34px}
+@media(max-width:1050px){.classic-triple-reading{grid-template-columns:1fr}.classic-triple-column iframe{height:50vh;min-height:350px}}
+@media(max-width:680px){.classic-double-pdf{grid-template-columns:1fr}.classic-compare-item iframe{height:60vh;min-height:360px}}
+@media print{.classic-pdf-version-toolbar select{display:none}.classic-double-pdf,.classic-triple-reading{grid-template-columns:1fr}}
 </style>
 </head><body>
 <main class="classic-main">
@@ -219,4 +234,4 @@ html[data-theme=dark] .classic-search-via-vitruvia{color:#e3d5aa;border-color:#b
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Seleccioná una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261103-3lang3"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261103-pdf-codex-v1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-unified-search-deeplink-v2"></script></body></html>
+</main><script defer src="assets/theme.js?v=20261103-3lang3"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261103-pdf-codex-v1"></script><script defer src="assets/bibliotheca-graeca-latina.js?v=20261103-original-comparison-v3"></script></body></html>
