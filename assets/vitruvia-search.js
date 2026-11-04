@@ -424,7 +424,7 @@ async function europePmc(generalQuery){
 /* Editorial featured column: matches the sourced textual entries; no image/book cover. */
 const originalFeature={
  title:"Codex Harleianus",description:"Harley MS 2767. Testimonio carolingio de De architectura, conservado en la British Library.",
- link:"harleianus.html",credit:"British Library · Harley MS 2767",label:"DESTACADO · BIBLIOTECA VITRVVIVS"
+ link:"codex-h-folios-local.html?folio=f.1r",credit:"British Library · Harley MS 2767 · 341 fotografías en la biblioteca local",label:"DESTACADO · BIBLIOTECA VITRVVIVS"
 };
 function highlightFeatured(term){
  document.querySelectorAll(".featured-reading-item").forEach(a=>{
