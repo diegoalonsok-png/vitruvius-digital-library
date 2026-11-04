@@ -3,7 +3,7 @@
    NO un modelo generativo de lenguaje. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],passages:null,passagePromise:null,searchId:0,ready:false};
+const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false};
 const lex={
  arquitectura:"architectura architecture arquitectura architecturae edificios aedificia edificaciones construcción building architettura",
  historia:"historia history historique histoire historien history historical roman romain antiguo ancient antigüedad antiquity",
@@ -100,18 +100,18 @@ async function wiki(q,language){
   return {type:"wikipedia",title:w.title,author:"Wikipedia · "+lang.toUpperCase(),excerpt:brief(htmlText(w.snippet),260),meta:"Artículo enciclopédico · Wikimedia",rating:42-i*2+culturalWeight(w.title,w.snippet),link:"https://"+lang+".wikipedia.org/?curid="+w.pageid,source:"Wikipedia ("+lang.toUpperCase()+")",image,imageRights:picturePage,imageCredit:"Wikipedia / Wikimedia Commons · consultar autor y licencia",imageKind:"documentary",pageid:w.pageid,wikiLang:lang};
  })
 }
-async function wikidata(q){
+async function wikidata(generalQuery){
  const p=new URLSearchParams({action:"wbsearchentities",search:q,language:S.lang,uselang:S.lang,type:"item",limit:"6",format:"json",origin:"*"});
  const d=await fetchJSON("https://www.wikidata.org/w/api.php?"+p);
  return (d.search||[]).map((x,i)=>({type:"wikidata",title:x.label||x.id,excerpt:x.description||"Identificador de entidad · Wikidata",author:x.id,meta:"Datos enlazados · Wikimedia",rating:30-i+culturalWeight(x.label,x.description),link:"https://www.wikidata.org/wiki/"+x.id,source:"Wikidata"}))
 }
-async function openLibrary(q){
+async function openLibrary(generalQuery){
  const p=new URLSearchParams({q,limit:"6",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i"});
  const d=await fetchJSON("https://openlibrary.org/search.json?"+p);
  return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
 }
 /* Google Books public volume metadata, not Google AI / Google Search results. */
-async function googleBooks(q){
+async function googleBooks(generalQuery){
  const params=new URLSearchParams({q,maxResults:"8",printType:"books"});
  const d=await fetchJSON("https://www.googleapis.com/books/v1/volumes?"+params,11000);
  return (d.items||[]).filter(item=>item.volumeInfo?.title&&item.volumeInfo?.infoLink).map((item,i)=>{
@@ -124,7 +124,7 @@ async function googleBooks(q){
  }).filter(Boolean)
 }
 
-async function museum(q){
+async function museum(generalQuery){
  const params=new URLSearchParams({q,limit:"4",offset:"0"});
  const d=await fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1.1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
@@ -133,7 +133,7 @@ async function museum(q){
 }
 
 /* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
-async function crossref(q){
+async function crossref(generalQuery){
  const params=new URLSearchParams({query:q,rows:"6",select:"DOI,title,author,published,issued,type,publisher,URL,container-title"});
  const d=await fetchJSON("https://api.crossref.org/works?"+params,12000);
  const items=d.message?.items||[];
@@ -145,7 +145,7 @@ async function crossref(q){
    link:"https://doi.org/"+encodeURIComponent(x.DOI),source:"Crossref"};
  })
 }
-async function europePmc(q){
+async function europePmc(generalQuery){
  const params=new URLSearchParams({query:q,format:"json",pageSize:"6",resultType:"core"});
  const d=await fetchJSON("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+params,12000);
  return (d.resultList?.result||[]).filter(x=>x.title&&(x.pmid||x.pmcid||x.doi)).map((x,i)=>{
@@ -293,8 +293,34 @@ function synthesize(rows){const box=$("answer");box.replaceChildren();
  for(const r of evidence){const p=node("p");const l=makeLink(r.title,r.link);if(l)p.append(l,document.createTextNode(": "));p.append(document.createTextNode(brief(r.excerpt,220)));box.append(p)}
  box.append(node("p","detail",T().detail))
 }
+/* Linguistic query normalization for external retrieval. Internal authority data keeps the original query. */
+function topicQuery(q){
+ let out=String(q||"").trim();
+ const introductions=[
+  /^(?:por\s+favor[\s,]*)?(?:busca(?:me)?|buscar|encontra(?:me)?|encontrar|investiga(?:me)?|investigar|explica(?:me)?|explicar|quisiera\s+informaci[oó]n\s+sobre|informaci[oó]n\s+sobre|quiero\s+saber\s+sobre|que\s+sabes\s+sobre|qué\s+sabes\s+sobre|h[aá]blame\s+de)\s+/i,
+  /^(?:please\s+)?(?:search\s+for|find|tell\s+me\s+about|information\s+about|explain)\s+/i,
+  /^(?:rechercher|chercher|informations?\s+sur|parlez[- ]moi\s+de)\s+/i
+ ];
+ for(const re of introductions)out=out.replace(re,"");
+ out=out.replace(/^[\s:;,.!?]+|[\s:;,.!?]+$/g,"").trim();
+ return out.length>=2?out:String(q||"").trim();
+}
+function titleMatch(row,query){
+ const stem=t=>t.length>6?t.replace(/(?:ciones|ciones|cion|ations|ation|mente|idades|idad|ements|ement|ismos|istas|ista|es|as|os|s)$/,""):t.length>4?t.replace(/s$/,""):t;
+ const bits=x=>words(x).map(stem).filter(Boolean);
+ const queryBits=bits(query),titleBits=bits(row.title||"");
+ if(!queryBits.length||!titleBits.length)return 0;
+ const a=titleBits.join(" "),b=queryBits.join(" ");
+ if(a===b)return 1300;
+ if(a.includes(b))return 780;
+ let common=0;
+ for(const q of queryBits)if(titleBits.some(t=>t===q||(q.length>4&&(t.startsWith(q)||q.startsWith(t)))))common++;
+ if(!common)return -70;
+ return common===queryBits.length?Math.round(470*common/queryBits.length):Math.round(85*common/queryBits.length);
+}
+
 function display(rows,query,phase){
- const scored=rows.slice().sort((a,b)=>(b.rating||0)-(a.rating||0)),deduped=[],seen=new Set();
+ const scored=rows.slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query))-((a.rating||0)+titleMatch(a,query))),deduped=[],seen=new Set();
  for(const r of scored){const k=r.type+":"+norm(r.title);if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  if(!deduped.length)list.append(node("div","empty",T().none));
@@ -324,10 +350,11 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 }
 async function search(){
  const q=$("query").value.trim(),id=++S.searchId;if(!q)return;
+ const generalQuery=topicQuery(q);
  document.body.classList.add("vitruvia-reading");
  $("clear-search").hidden=false;
  restoreFeature();
- history.replaceState(null,"","vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
  const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=["all","site","concept"].includes(mode);
  const engine=window.VitruviaResearchEngine;
  const intent=engine?.classify(q);
@@ -339,7 +366,7 @@ async function search(){
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.render([],q);
- sourceLinks(q);
+ sourceLinks(generalQuery);
  let rows=[];
  if(internal){
   rows=focused?[]:[...liveBooks(q,concept),...livePages(q,concept)];
@@ -362,8 +389,8 @@ async function search(){
  }
  if(wikiEnabled){
   /* Wikipedia is queried even for precise codex/locus searches in All mode. */
-  pending.push(wiki(q,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
-  if(S.lang!=="en")pending.push(wiki(q,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
+  pending.push(wiki(generalQuery,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
+  if(S.lang!=="en")pending.push(wiki(generalQuery,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
  }
  if(academicEnabled){
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
@@ -392,6 +419,7 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  document.querySelectorAll("button.tab").forEach((b,i)=>b.textContent=t.modes[i]);
  $("mode-note").textContent=t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)];
  $("ui-language").value=S.lang;
+ if(typeof renderPrivacy==="function")renderPrivacy();
  try{localStorage.setItem("vitruvius-ui-lang",S.lang)}catch{}
 }
 function mode(m){S.mode=["all","site","wiki","external","concept"].includes(m)?m:"all";
@@ -478,24 +506,42 @@ function setupAutocomplete(){
 setupAutocomplete();
 
 /* Clear the query, cancel old requests and restore the landing page. */
-const clearControl=$("clear-search");
-const searchInput=$("query");
-function updateClearControl(){clearControl.hidden=!searchInput.value.trim()}
-searchInput.addEventListener("input",updateClearControl);
-clearControl.addEventListener("click",()=>{
+const clearControl=$("clear-search"),clearAll=$("clear-all"),searchInput=$("query"),privacy=$("search-privacy");
+function updateClearControl(){
+ const empty=!searchInput.value.trim();
+ clearControl.hidden=empty;clearAll.hidden=empty;
+}
+function clearSearch(){
  ++S.searchId;searchInput.value="";updateClearControl();
+ const menu=$("search-suggestions");menu.hidden=true;menu.replaceChildren();
+ searchInput.setAttribute("aria-expanded","false");searchInput.removeAttribute("aria-activedescendant");
  document.body.classList.remove("vitruvia-reading");
  history.replaceState(null,"","vitruvia.html");
- $("result-list").replaceChildren(node("div","empty","Escribí un tema, una obra, un autor o un locus para comenzar."));
+ $("result-list").replaceChildren(node("div","empty",T().idle));
  $("results-heading").textContent=T().idle;
  $("result-state").textContent="";
  $("source-links").replaceChildren();
  $("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.render([],"");
- restoreFeature();
- searchInput.focus();
+ restoreFeature();searchInput.focus();
+}
+function renderPrivacy(){
+ privacy.setAttribute("aria-pressed",String(S.privateMode));
+ privacy.textContent=(S.lang==="en"?"◇ Private query: ":S.lang==="fr"?"◇ Recherche privée : ":"◇ Consulta privada: ")+(S.privateMode?(S.lang==="en"?"on":S.lang==="fr"?"activée":"activada"):(S.lang==="en"?"off":S.lang==="fr"?"désactivée":"desactivada"));
+ privacy.title=S.lang==="en"?"Does not retain the query in the address bar. External providers still receive the search terms. Not end-to-end encryption.":S.lang==="fr"?"La requête n’est pas conservée dans l’URL. Les services externes reçoivent toujours les termes ; pas de chiffrement de bout en bout.":"No guarda la búsqueda en la URL. Las fuentes externas siguen recibiendo los términos; no es cifrado de extremo a extremo.";
+}
+searchInput.addEventListener("input",updateClearControl);
+searchInput.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&!ev.defaultPrevented&&searchInput.value.trim()){ev.preventDefault();clearSearch()}});
+clearControl.addEventListener("click",clearSearch);
+clearAll.addEventListener("click",clearSearch);
+privacy.addEventListener("click",()=>{
+ S.privateMode=!S.privateMode;
+ try{localStorage.setItem("vitruvia-private-url",S.privateMode?"1":"0")}catch{}
+ const q=searchInput.value.trim();
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}):"vitruvia.html");
+ renderPrivacy();
 });
-updateClearControl();
+updateClearControl();renderPrivacy();
 
 bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
@@ -503,7 +549,7 @@ $("ui-language").addEventListener("change",e=>{language(e.target.value);if($("qu
 $("theme").addEventListener("click",()=>theme(S.theme==="dark"?"light":"dark"));
 document.querySelectorAll("button.tab").forEach(b=>b.addEventListener("click",()=>{mode(b.dataset.mode);if($("query").value.trim())search()}));
 document.querySelectorAll("button[data-q]").forEach(b=>b.addEventListener("click",()=>{$("query").value=b.dataset.q;search();document.querySelector("#results").scrollIntoView({behavior:"smooth",block:"start"})}));
-try{const saved=localStorage.getItem("vitruvius-ui-lang");if(I18N[saved])S.lang=saved;const savedTheme=localStorage.getItem("vitruvia-theme");if(savedTheme==="light")S.theme="light"}catch{}
+try{const saved=localStorage.getItem("vitruvius-ui-lang");if(I18N[saved])S.lang=saved;const savedTheme=localStorage.getItem("vitruvia-theme");if(savedTheme==="light")S.theme="light";S.privateMode=localStorage.getItem("vitruvia-private-url")==="1"}catch{}
 theme(S.theme);
 const params=new URLSearchParams(location.search);mode(params.get("mode")||"all");language(S.lang);
 load().then(()=>{const q=params.get("q");if(q){$("query").value=q;search()}}) ;
