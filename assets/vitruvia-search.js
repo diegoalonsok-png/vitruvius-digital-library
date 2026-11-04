@@ -437,6 +437,7 @@ async function search(){
  const person=identifyHistoricalPerson(q);
  const generalQuery=topicQuery(q);
  document.body.classList.add("vitruvia-reading");
+ window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
  $("clear-search").hidden=false;
  restoreFeature();
  history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
@@ -615,6 +616,7 @@ function clearSearch(){
  const menu=$("search-suggestions");menu.hidden=true;menu.replaceChildren();
  searchInput.setAttribute("aria-expanded","false");searchInput.removeAttribute("aria-activedescendant");
  document.body.classList.remove("vitruvia-reading");
+ window.dispatchEvent(new Event("vitruvia:clear"));
  history.replaceState(null,"","vitruvia.html");
  $("result-list").replaceChildren(node("div","empty",T().idle));
  $("results-heading").textContent=T().idle;
