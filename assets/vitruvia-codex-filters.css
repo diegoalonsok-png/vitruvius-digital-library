@@ -1,0 +1,41 @@
+/* Academic codex image enhancement · neutral greys and restrained controls. */
+.codex-image-filters{
+ display:flex;align-items:center;flex-wrap:wrap;gap:9px;
+ box-sizing:border-box;min-width:0;width:100%;
+ padding:10px 12px;margin:6px 0 1px;
+ border:1px solid #666a70;border-radius:9px;
+ background:#282b2f;color:#f1f1ed;
+ font:400 13px/1.5 Arial,Helvetica,sans-serif;
+}
+.codex-image-filters legend{
+ padding:0 6px;font:600 12px/1.4 Arial,Helvetica,sans-serif;
+ letter-spacing:.02em;color:inherit;
+}
+.codex-image-filter-modes{display:flex;flex-wrap:wrap;gap:6px}
+.codex-image-filters button{
+ appearance:none;display:inline-flex;align-items:center;justify-content:center;
+ padding:7px 12px;min-height:36px;
+ border-radius:7px;border:1px solid #73777c;
+ background:#393c41;color:#e5e6e7;
+ font:500 12px/1.4 Arial,Helvetica,sans-serif;
+}
+.codex-image-filters button[aria-pressed="true"]{
+ background:#aeb2b6!important;color:#15181b!important;border-color:#ccd0d3!important;
+ font-weight:650;
+}
+.codex-image-filters label{font:500 12px/1.4 Arial,Helvetica,sans-serif}
+.codex-image-filters input[type="range"]{
+ width:min(158px,35vw);accent-color:#c4c8ca;cursor:pointer;
+}
+#codex-contrast-value{font:600 12px/1.4 Arial,Helvetica,sans-serif;min-width:49px;font-variant-numeric:tabular-nums}
+#codex-filters-reset{margin-left:auto;white-space:nowrap}
+.codex-image-filters :is(button,input):focus-visible{outline:2px solid #eee0bb;outline-offset:3px}
+body:has(#stage) .codex-image-filters{
+ background:#3e444a;color:#f2efeb;border-color:#747a81;
+}
+@media(max-width:650px){
+ .codex-image-filters{padding:9px 10px;gap:8px}
+ #codex-filters-reset{margin-left:0}
+ .codex-image-filters input[type="range"]{width:118px}
+}
+@media print{#codex-image-filters{display:none!important}#folio,#image{filter:none!important}}
