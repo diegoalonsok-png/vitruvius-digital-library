@@ -672,6 +672,18 @@ body.vitruvia-reading .section-head h2{font-size:clamp(24px,3vw,38px)!important}
 #search-images-button:hover,#search-images-button:focus-visible{background:#353431!important;border-color:#b5a382!important;color:#fff!important}
 html[data-theme=light] #search-images-button{background:#e8e7e2!important;color:#232323!important;border-color:#aaa!important}
 body.vitruvia-reading #search-images-button{min-height:30px!important;padding:5px 11px!important;font-size:11px!important}
+
+/* Vitruvius edition cards only inside documentary results. */
+.vitruvius-editions{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:15px 0 26px}
+.vitruvius-edition{border:1px solid #363638;border-radius:11px;background:#171718;padding:16px}
+.vitruvius-edition h4{font:normal 18px/1.25 Georgia,serif;margin:0 0 9px;color:#f0eeeb}
+.vitruvius-edition p{font-size:12px!important;color:#b6b6b5;margin:0 0 13px!important}
+.vitruvius-edition-links{display:flex;gap:8px;flex-wrap:wrap}
+.vitruvius-edition-links a{font:12px/1.4 Arial,sans-serif;border:1px solid #565657;border-radius:15px;padding:6px 9px;text-decoration:none}
+.vitruvius-edition-links a:hover{border-color:#c7b48b}
+html[data-theme=light] .vitruvius-edition{background:#fff;border-color:#c9c9c9}
+html[data-theme=light] .vitruvius-edition h4{color:#222}
+html[data-theme=light] .vitruvius-edition p{color:#555}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -861,7 +873,7 @@ body.vitruvia-reading #search-images-button{min-height:30px!important;padding:5p
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-verified-v6" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-vitruvius-biography-v7" defer></script>
 <script src="assets/vitruvia-search.js?v=20261104-chicago18-v3" defer></script>
 <script>
 document.addEventListener('click',function(event){
