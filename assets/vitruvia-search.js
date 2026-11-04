@@ -3,7 +3,7 @@
    NO un modelo generativo de lenguaje. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:44};
+const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:44,people:[]};
 const lex={
  arquitectura:"architectura architecture arquitectura architecturae edificios aedificia edificaciones construcción building architettura",
  historia:"historia history historique histoire historien history historical roman romain antiguo ancient antigüedad antiquity",
@@ -88,6 +88,24 @@ const bookLinks={
  "krohn-1912-pdf":"documents/krohn-1912.pdf"
 };
 const pdfs={"vitruvio-v514-pdf":"documents/kurilo-recensio-es.pdf","vitruvio-v554-pdf":"documents/kurilo-recensio-fr.pdf","theory-v297-pdf":"documents/kurilo-theory-en.pdf","krohn-1912-pdf":"documents/krohn-1912.pdf"};
+function identifyHistoricalPerson(query){
+ const value=norm(query).replace(/^(?:biografia|biography|biographie|vida y obra de|vida de|quien fue|quien era|who was|qui etait)\s+(?:de\s+)?/,"").trim();
+ if(!value||value.length<3||value.length>80)return null;
+ const matches=[];
+ for(const person of S.people){
+  const names=[person.name,...(person.aliases||[]),...(person.latin_forms||[])];
+  if(person.id==="cicero")names.push("Cicerón","Cicero","Marco Tulio Cicerón","Marcus Tullius Cicero","Cicéron");
+  if(names.some(name=>norm(name)===value)){matches.push(person)}
+ }
+ if(matches.length)return matches.sort((a,b)=>(a.name||"").length-(b.name||"").length)[0];
+ const authors=S.works.map(w=>w.author).filter(Boolean);
+ for(const author of authors){
+  const short=author.replace(/\s*\([^)]*\).*/,"").replace(/^(.+?)\s*[·,].*$/,"$1").trim();
+  if(norm(short)===value||(/^[a-zá-ú]{5,}$/i.test(query.trim())&&norm(short).split(" ").includes(value)))
+   return {id:"author-"+value,name:short,aliases:[short],source:"Bibliotheca Graeca et Latina"};
+ }
+ return null;
+}
 function liveBooks(q,concept){return S.works.map(w=>{
  const rating=score(workString(w),q,concept);
  const witnesses=witnessesFor(w.id),editions=editionsFor(w.id),local=verified(w);
@@ -113,12 +131,12 @@ function liveBooks(q,concept){return S.works.map(w=>{
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
- const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json"];
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json","data/onomasticon-vitruvianum.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
  if(results[0].status!=="fulfilled")throw results[0].reason;
  const books=results[0].value,pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
- S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.ready=true;
+ S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.ready=true;
  $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;$("metric-read").textContent=S.works.filter(verified).length;
  const mw=$("metric-witnesses"),me=$("metric-editions");
  if(mw)mw.textContent=S.witnesses.length;if(me)me.textContent=S.editions.length;
@@ -160,12 +178,12 @@ async function wiki(q,language){
  })
 }
 async function wikidata(generalQuery){
- const p=new URLSearchParams({action:"wbsearchentities",search:q,language:S.lang,uselang:S.lang,type:"item",limit:"6",format:"json",origin:"*"});
+ const p=new URLSearchParams({action:"wbsearchentities",search:generalQuery,language:S.lang,uselang:S.lang,type:"item",limit:"6",format:"json",origin:"*"});
  const d=await fetchJSON("https://www.wikidata.org/w/api.php?"+p);
  return (d.search||[]).map((x,i)=>({type:"wikidata",title:x.label||x.id,excerpt:x.description||"Identificador de entidad · Wikidata",author:x.id,meta:"Datos enlazados · Wikimedia",rating:30-i+culturalWeight(x.label,x.description),link:"https://www.wikidata.org/wiki/"+x.id,source:"Wikidata"}))
 }
 async function openLibrary(generalQuery){
- const p=new URLSearchParams({q,limit:"6",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i"});
+ const p=new URLSearchParams({q:generalQuery,limit:"6",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i"});
  const d=await fetchJSON("https://openlibrary.org/search.json?"+p);
  return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
 }
@@ -391,7 +409,7 @@ function display(rows,query,phase){
   more.addEventListener("click",()=>{S.visibleResultCount+=44;display(rows,query,phase)});
   list.append(more);
  }
- if(window.VitruviaArticles){$("answer").hidden=true;window.VitruviaArticles.render(deduped,query)}else synthesize(deduped);
+ if(window.VitruviaArticles){$("answer").hidden=true;window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query))}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
  $("result-state").textContent=deduped.length+" coincidencias · "+Math.min(S.visibleResultCount,deduped.length)+" visibles"+(phase?" · "+phase:"")
 }
@@ -416,6 +434,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 }
 async function search(){
  const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=44;if(!q)return;
+ const person=identifyHistoricalPerson(q);
  const generalQuery=topicQuery(q);
  document.body.classList.add("vitruvia-reading");
  $("clear-search").hidden=false;
@@ -427,7 +446,7 @@ async function search(){
  // Una signatura, un manuscrito identificado o un locus exacto se resuelven
  // antes que las coincidencias externas de vocabulario general.
  const focused=!!(intent?.harley||intent?.vitruvian||intent?.locus||intent?.preface);
- const wikiEnabled=["all","wiki","external"].includes(mode);
+ const wikiEnabled=["all","wiki","external"].includes(mode)||!!person;
  const academicEnabled=["all","external"].includes(mode);
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
@@ -455,8 +474,8 @@ async function search(){
  }
  if(wikiEnabled){
   /* Wikipedia is queried even for precise codex/locus searches in All mode. */
-  pending.push(wiki(generalQuery,S.lang).then(rows=>({name:"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
-  if(S.lang!=="en")pending.push(wiki(generalQuery,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
+  pending.push(wiki(person?person.name:generalQuery,S.lang).then(rows=>({name:person?"Biografía · Wikipedia":"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
+  if(S.lang!=="en")pending.push(wiki(person?person.name:generalQuery,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
  }
  if(academicEnabled){
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
