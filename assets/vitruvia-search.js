@@ -132,6 +132,37 @@ function matchingWorkIds(q){
  });
  return new Set(found.map(w=>w.id));
 }
+/* Earliest INDEXED witness with a documented reader for the searched work.
+   Source dates refer to extant copies, never to the composition of the work.
+   The selection works generically for every work subsequently catalogued. */
+function primaryManuscriptFor(query){
+ const ids=matchingWorkIds(query);
+ if(!ids.size)return null;
+ const witnesses=S.witnesses.filter(ms=>(ms.workIds||[]).some(id=>ids.has(id))&&
+  (ms.localViewer||ms.viewer||ms.manifest));
+ if(!witnesses.length)return null;
+ return witnesses.slice().sort((a,b)=>
+  codexDateStart(a.date)-codexDateStart(b.date)||
+  Number(!!b.localViewer)-Number(!!a.localViewer)||
+  String(a.shelfmark||"").localeCompare(String(b.shelfmark||"")))[0];
+}
+function promotePrimaryManuscript(query){
+ const ms=primaryManuscriptFor(query);if(!ms)return;
+ S.featureWeight=Number.POSITIVE_INFINITY; // No general Wikipedia result can replace this.
+ $("featured-label").textContent=S.lang==="en"?"PRIMARY SOURCE · MANUSCRIPT":S.lang==="fr"?"SOURCE PRIMAIRE · MANUSCRIT":"FUENTE PRIMARIA · MANUSCRITO";
+ $("featured-title").textContent=ms.title||ms.shelfmark;
+ $("featured-description").textContent=[
+  ms.shelfmark,ms.date,ms.library,
+  ms.localFolioCount?ms.localFolioCount+" imágenes en la biblioteca":""
+ ].filter(Boolean).join(" · ");
+ $("featured-link").href=ms.localViewer||ms.viewer||ms.record;
+ $("featured-link").textContent=ms.localViewer?
+  (S.lang==="en"?"Read original folios ›":S.lang==="fr"?"Lire les folios originaux ›":"Leer folios originales ›"):
+  (S.lang==="en"?"Open institutional viewer ›":"Abrir visor institucional ›");
+ $("featured-credit").textContent=(ms.library||"")+(ms.record?" · Signatura documentada":"");
+ highlightFeatured(ms.shelfmark||"");
+}
+
 function liveManuscripts(q){
  const out=[],workIds=matchingWorkIds(q);
  // Highlight the oldest INDEXED witness per work, never assert it is the oldest surviving manuscript.
@@ -651,6 +682,22 @@ function display(rows,query,phase){
   seen.add(k);deduped.push(r);
  }
  const list=$("result-list");list.replaceChildren();
+ const selectedManuscript=["all","site","concept","ai"].includes(S.mode)?primaryManuscriptFor(query):null;
+ if(selectedManuscript){
+  const witness=liveManuscripts(query).find(r=>r.codexShelfmark===selectedManuscript.shelfmark&&
+    r.codexRepository===selectedManuscript.library);
+  if(witness){
+   const section=node("h3","vitruvia-result-group",
+    S.lang==="en"?"PRIMARY DOCUMENT · READ THE EARLIEST INDEXED MANUSCRIPT":
+    S.lang==="fr"?"DOCUMENT PRIMAIRE · PREMIER MANUSCRIT RÉPERTORIÉ":
+    "FUENTE PRINCIPAL · LEER EL TESTIMONIO MANUSCRITO MÁS ANTIGUO INDEXADO");
+   section.setAttribute("data-result-group","primary-witness");
+   list.append(section,renderCard({...witness,primaryWitness:true,
+    primaryLabel:S.lang==="en"?"EARLIEST CATALOGUED WITNESS WITH VIEWER":
+     S.lang==="fr"?"TÉMOIN LE PLUS ANCIEN RÉPERTORIÉ AVEC VISIONNEUSE":
+     "TESTIMONIO MÁS ANTIGUO INDEXADO CON VISOR"}));
+  }
+ }
  // Orden académico estable, sin reiterar filas ni encabezados cuando llegan
  // respuestas de servicios externos en distinto orden.
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic","authority"]);
@@ -688,6 +735,11 @@ function display(rows,query,phase){
  else {
   let lastGroup="";
   for(const r of ordered.slice(0,S.visibleResultCount)){
+   // The source-first manuscript card has already been displayed above the
+   // encyclopedia: do not duplicate the same shelfmark in the regular list.
+   if(selectedManuscript&&r.type==="manuscript"&&
+     r.codexShelfmark===selectedManuscript.shelfmark&&
+     r.codexRepository===selectedManuscript.library)continue;
    if(S.mode==="all"||S.mode==="ai"){
     const group=byGroup(r);
     if(group!==lastGroup){
@@ -738,6 +790,7 @@ async function search(){
  window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
  $("clear-search").hidden=false;
  restoreFeature();
+ promotePrimaryManuscript(q);
  history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
  const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=["all","site","concept","ai"].includes(mode);
  const engine=window.VitruviaResearchEngine;
