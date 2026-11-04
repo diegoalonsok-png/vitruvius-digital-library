@@ -49,8 +49,13 @@
  const technical=/\b(theorem|teorema|diagram|diagrams|diagrama|triang\w*|geometry|geometria|geometric|formula|demonstration|patent|patente|schematic|section drawing)\b/;
  function imageGroup(page,topic){
   const info=page.imageinfo?.[0],meta=info?.extmetadata||{};
+  const fileName=fold(page.title);
   const name=fold((page.title||"")+" "+(page.sourceCategory||""));
   const description=fold(plain(meta.ImageDescription?.value).slice(0,1800));
+  // A collection label must not turn a coin or a print into a marble bust.
+  if(topic.kind==="person"&&/\b(coin|coins|moneda|monedas|aureus|denarius|sestertius|medal|medaille|stamp|stamps)\b/.test(fileName))return "context";
+  if(book.test(fileName))return "book";
+  if(topic.kind==="person"&&/\b(engraving|engravings|grabado|grabados|woodcut|lithograph|etching|painting|paintings|drawing|dibujo|fresco|print|prints)\b/.test(fileName))return topic.intent==="artworks"?"artwork":"portrait";
   if(book.test(name))return "book";
   if(topic.kind==="person"){
    if(bust.test(name))return "sculpture";
@@ -83,6 +88,9 @@
   }
   // Only entity images and subject-specific collections may bypass a title match.
   if(page.fromEntityImage){matched=true;score+=160}
+  const institution=plain(meta.Institution?.value||meta.Credit?.value||"");
+  if(/museum|museo|musee|british library|bibliotheque|metropolitan|hermitage|uffizi|louvre|capitolini/i.test(institution+" "+name))score+=25;
+  if(/\b(surgical mask|face mask|mascarilla|meme|parody|parodia|souvenir)\b/.test(name))score-=180;
   if(page.fromTrustedCategory){matched=true;score+=65}
   return {accepted:matched,score,group:imageGroup(page,topic)};
  }

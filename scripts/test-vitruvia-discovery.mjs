@@ -127,3 +127,17 @@ test('new assets are wired before their consumers and original manuscript/dictat
  const index=source('index.html');assert.match(index,/id="search-in-vitruvia"/);assert.match(index,/assets\/vitruvia-library-bridge.js/);
  for(const file of ['assets/vitruvia-discovery.js','assets/vitruvia-image-engine-v2.js','assets/vitruvia-entity-resolver.js','assets/vitruvia-article.js','assets/vitruvia-search.js','assets/vitruvia-library-bridge.js'])new Script(source(file),{filename:file});
 });
+
+test('coins and prints cannot inherit the sculpture group from a category',()=>{
+ const nero=D.plan('Nerón',{canonical:'Nerón',kind:'person',commonsSearchName:'Nero'});
+ assert.equal(D.imageRank(page('Nero aureus coin.jpg','',{sourceCategory:'Category:Busts of Nero',fromTrustedCategory:true}),nero).group,'context');
+ assert.equal(D.imageRank(page('Nero bust engraving.jpg','',{sourceCategory:'Category:Busts of Nero',fromTrustedCategory:true}),nero).group,'portrait');
+ assert.equal(D.imageRank(page('Marble bust of Nero.jpg'),nero).group,'sculpture');
+});
+test('museum records outrank equivalent unprovenanced photographs and masked variants',()=>{
+ const topic=D.plan('Vitruvio',{canonical:'Vitruvio',kind:'person',commonsSearchName:'Vitruvius'});
+ const plain=D.imageRank(page('Vitruvius bust.jpg'),topic);
+ const museum=D.imageRank(page('Vitruvius bust museum.jpg'),topic);
+ const mask=D.imageRank(page('Vitruvius bust with surgical mask.jpg'),topic);
+ assert(museum.score>plain.score);assert(mask.score<plain.score);
+});
