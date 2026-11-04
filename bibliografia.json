@@ -1,0 +1,287 @@
+{
+  "schema": 1,
+  "source": "Archivo bibliográfico suministrado por el editor; enlaces no verificados descartados y rutas locales al repositorio",
+  "entries": [
+    {
+      "id": "H",
+      "tipo": "manuscrito",
+      "sigla": "H",
+      "signatura": "Harley MS 2767",
+      "biblioteca": "British Library",
+      "ubicacion": "London",
+      "fecha": "800-824",
+      "fecha_iso": "800/824",
+      "folios": "162",
+      "soporte": "pergamino",
+      "contenido": "De architectura completo",
+      "wikidata": "Q158124",
+      "descripcion": "Testimonio conservado más antiguo conocido, primer cuarto s. IX, escritura carolina, 341 imágenes en visor grande.",
+      "prioridad": 1,
+      "local_url": "harleianus.html",
+      "iiif_manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001"
+    },
+    {
+      "id": "G69",
+      "tipo": "manuscrito",
+      "sigla": "G",
+      "signatura": "Gudianus 69",
+      "biblioteca": "Herzog August Bibliothek",
+      "ubicacion": "Wolfenbüttel",
+      "fecha": "s.XI",
+      "fecha_iso": "1000/1099",
+      "folios": "120",
+      "soporte": "pergamino",
+      "contenido": "Núcleo principal De arch.",
+      "iiif_manifest": "https://diglib.hab.de/mss/69-gud-lat/manifest",
+      "descripcion": "Transmite núcleo principal texto, base ediciones Rose/Krohn",
+      "prioridad": 1
+    },
+    {
+      "id": "E",
+      "tipo": "manuscrito",
+      "sigla": "E",
+      "signatura": "Gudianus 132",
+      "biblioteca": "Herzog August Bibliothek",
+      "ubicacion": "Wolfenbüttel",
+      "fecha": "s.IX-X",
+      "fecha_iso": "850/950",
+      "folios": "80",
+      "contenido": "Faventino + extractos Vitruvio",
+      "iiif_manifest": "https://diglib.hab.de/mss/132-gud-lat/manifest",
+      "descripcion": "Reúne material de M. Cetius Faventinus y extractos vitruvianos",
+      "prioridad": 2
+    },
+    {
+      "id": "Cott",
+      "tipo": "manuscrito",
+      "sigla": "C",
+      "signatura": "Cotton Cleopatra D I",
+      "biblioteca": "British Library",
+      "ubicacion": "London",
+      "fecha": "s.XI",
+      "folios": "45",
+      "descripcion": "Fragmentos y anotaciones"
+    },
+    {
+      "id": "OxAuctF57",
+      "tipo": "manuscrito",
+      "sigla": "O",
+      "signatura": "Auct. F.5.7",
+      "biblioteca": "Bodleian Library",
+      "ubicacion": "Oxford",
+      "fecha": "s.XIV",
+      "descripcion": "Códice de Petrarca, glosas atribuidas, estudio Modonutti 2024",
+      "estudio": "Modonutti 2024",
+      "prioridad": 2
+    },
+    {
+      "id": "Alberti1450",
+      "tipo": "tratado_respuesta",
+      "autor": "Leon Battista Alberti",
+      "titulo": "De re aedificatoria",
+      "fecha": "c.1450",
+      "fecha_iso": "1445/1452",
+      "descripcion": "Respuesta humanista a Vitruvio antes de imprenta",
+      "prioridad": 2
+    },
+    {
+      "id": "Sulpizio1486",
+      "tipo": "incunable",
+      "sigla": "S",
+      "autor": "Giovanni Sulpizio da Veroli",
+      "titulo": "De architectura",
+      "fecha": "1486-1487",
+      "fecha_iso": "1486/1487",
+      "lugar": "Roma",
+      "impresor": "Herolt",
+      "biblioteca": "Morgan Library",
+      "iiif": "https://www.themorgan.org/collection/De-architectura/1",
+      "descripcion": "Primera edición impresa, inicio tradición impresa",
+      "prioridad": 1
+    },
+    {
+      "id": "Giocondo1511",
+      "tipo": "edicion_impresa",
+      "sigla": "J",
+      "autor": "Fra Giocondo",
+      "titulo": "M. Vitruvius per Iocundum solito castigatior factus",
+      "fecha": "1511",
+      "lugar": "Venecia",
+      "impresor": "Giovanni Tacuino",
+      "descripcion": "Primera ilustrada, fija texto Renacimiento, usa IIIF institucional sin copia local",
+      "prioridad": 1,
+      "local_url": "giocondo-1511.html"
+    },
+    {
+      "id": "Cesariano1521",
+      "tipo": "traduccion",
+      "autor": "Cesare Cesariano",
+      "lengua": "italiano",
+      "fecha": "1521",
+      "lugar": "Como",
+      "descripcion": "Primera traducción italiano con comentario"
+    },
+    {
+      "id": "Philander1544",
+      "tipo": "edicion_comentada",
+      "autor": "Guillaume Philander",
+      "fecha": "1544",
+      "lugar": "Lyon"
+    },
+    {
+      "id": "Barbaro1556",
+      "tipo": "edicion_comentada",
+      "sigla": "B",
+      "autor": "Daniele Barbaro",
+      "fecha": "1556",
+      "lugar": "Venecia",
+      "descripcion": "Comentario + ilustraciones, IIIF institucional",
+      "local_url": "barbaro-1567.html"
+    },
+    {
+      "id": "Martin1547",
+      "tipo": "traduccion",
+      "autor": "Jean Martin",
+      "lengua": "francés",
+      "fecha": "1547",
+      "lugar": "Paris"
+    },
+    {
+      "id": "Urrea1582",
+      "tipo": "traduccion",
+      "autor": "Miguel de Urrea",
+      "lengua": "castellano",
+      "fecha": "1582",
+      "lugar": "Alcalá",
+      "biblioteca": "BVPB",
+      "digital": "https://bvpb.mcu.es/es/consulta/registro.do?id=405015",
+      "descripcion": "Traducción castellana, copia digital BVPB",
+      "prioridad": 1
+    },
+    {
+      "id": "Perrault1673",
+      "tipo": "traduccion",
+      "autor": "Claude Perrault",
+      "lengua": "francés",
+      "fecha": "1673",
+      "lugar": "Paris",
+      "biblioteca": "e-rara",
+      "descripcion": "Traducción + facsímil e-rara",
+      "prioridad": 1
+    },
+    {
+      "id": "Galiani1758",
+      "tipo": "edicion_critica",
+      "autor": "Berardo Galiani",
+      "fecha": "1758",
+      "lugar": "Nápoles",
+      "descripcion": "Abre edición comentada moderna"
+    },
+    {
+      "id": "Ortiz1787",
+      "tipo": "traduccion_critica",
+      "autor": "Joseph Ortiz y Sanz",
+      "lengua": "castellano",
+      "fecha": "1787",
+      "lugar": "Madrid",
+      "descripcion": "Abre edición comentada moderna castellana"
+    },
+    {
+      "id": "Schneider1807",
+      "tipo": "edicion_critica",
+      "autor": "J.G. Schneider",
+      "fecha": "1807-1808"
+    },
+    {
+      "id": "Rose1867",
+      "tipo": "edicion_critica",
+      "autor": "Valentin Rose & Müller-Strübing",
+      "fecha": "1867",
+      "descripcion": "Establece texto sobre base manuscritos carolingios",
+      "prioridad": 1
+    },
+    {
+      "id": "Rose1899",
+      "tipo": "edicion_critica",
+      "autor": "Valentin Rose",
+      "fecha": "1899",
+      "descripcion": "Segunda edición crítica"
+    },
+    {
+      "id": "Krohn1912",
+      "tipo": "edicion_critica",
+      "autor": "F. Krohn",
+      "fecha": "1912",
+      "lugar": "Leipzig",
+      "editorial": "Teubner",
+      "descripcion": "Edición de referencia hasta Budé, base V297",
+      "prioridad": 1,
+      "local_url": "documents/krohn-1912.pdf"
+    },
+    {
+      "id": "Bude1969",
+      "tipo": "edicion_critica",
+      "autor": "Collection des Universités de France",
+      "fecha": "1969-2009",
+      "descripcion": "Budé, volumen por libro, edición crítica referencia actual",
+      "prioridad": 1
+    },
+    {
+      "id": "Krinsky1967",
+      "tipo": "estudio",
+      "autor": "Carol Herselle Krinsky",
+      "fecha": "1967",
+      "titulo": "Seventy-Eight Vitruvius Manuscripts",
+      "descripcion": "Censo 78 manuscritos, corrige mito redescubrimiento Poggio 1416"
+    },
+    {
+      "id": "Modonutti2024",
+      "tipo": "estudio",
+      "autor": "Rino Modonutti",
+      "fecha": "2024",
+      "titulo": "Oxford Auct F.5.7 Petrarca Boccaccio",
+      "descripcion": "Reexamen glosas Petrarca/Boccaccio"
+    },
+    {
+      "id": "V297",
+      "tipo": "edicion_autoral",
+      "autor": "Diego Kurilo",
+      "titulo": "The Architect of Theory - De architectura libri decem Ed. V297",
+      "fecha": "2026",
+      "paginas": 1042,
+      "base_textual": "Krohn 1912 + H + G",
+      "lenguas": "latín + ES + EN",
+      "licencia": "CC BY-SA 4.0",
+      "descripcion": "Edición crítica autoral 1042 págs con Praefatio p.201, Conspectus siglorum, Index verborum",
+      "prioridad": 1,
+      "local_url": "documents/edicion-v297.html"
+    },
+    {
+      "id": "V514",
+      "tipo": "edicion_autoral",
+      "autor": "Diego Kurilo",
+      "titulo": "De architectura V514",
+      "fecha": "2026",
+      "paginas": 650,
+      "descripcion": "Edición intermedia",
+      "local_url": "documents/edicion-v514.html"
+    },
+    {
+      "id": "V554",
+      "tipo": "edicion_autoral",
+      "autor": "Diego Kurilo",
+      "titulo": "De architectura V554",
+      "fecha": "2026",
+      "paginas": 720,
+      "descripcion": "Edición con estudio preliminar",
+      "local_url": "documents/edicion-v554.html"
+    },
+    {
+      "id": "HarleyCatalog",
+      "tipo": "catalogo",
+      "autor": "British Library",
+      "titulo": "Catalogue Harley MS 2767",
+      "digital": "https://searcharchives.bl.uk/primo_library/libweb/action/display.do?doc=IAMS032-001739323"
+    }
+  ]
+}
