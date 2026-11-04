@@ -155,11 +155,17 @@ function liveManuscripts(q){
    primaryWitness:primary,primaryLabel:primary?"TESTIMONIO MÁS ANTIGUO INDEXADO · "+(target?.title||"obra documentada"):"",
    rating:Math.max(rating,nameRating)+(exact?350:nameRating>15?55:0),
    link:target?libraryURL(target.id,"manuscript",ms.id):ms.record,
-   viewerUrl:ms.viewer||ms.record,
+   viewerUrl:ms.localViewer||ms.viewer||ms.record,
+   localViewer:ms.localViewer||null,
+   localFolioCount:ms.localFolioCount||null,
+   localFolioStart:ms.localFolioStart||null,
    iiifManifest:ms.manifest||null,
-   codexViewer:ms.manifest?"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record}).toString():(ms.viewer||ms.record||null),
-   links:[{label:"Ficha codicológica",url:ms.record},{label:"Visor oficial de la institución",url:ms.viewer}].filter(x=>x.url),
-   source:"Bibliotheca Graeca et Latina"});
+   codexViewer:ms.localViewer||(ms.manifest?"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record}).toString():(ms.viewer||ms.record||null)),
+   citationText:[ms.library,ms.shelfmark,ms.title,ms.date,ms.record].filter(Boolean).join(". "),
+   links:[ms.localViewer?{label:"Leer folio a folio · biblioteca local",url:ms.localViewer}:null,
+     {label:"Ficha codicológica institucional",url:ms.record},
+     {label:"Visor oficial de la institución",url:ms.viewer}].filter(x=>x?.url),
+   source:ms.localViewer?"Vitruvius Digital Library · fotos locales; British Library · custodia":"Bibliotheca Graeca et Latina"});
  }
  return out.sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||a.codexDate-b.codexDate||b.rating-a.rating).slice(0,30);
 }
@@ -282,6 +288,13 @@ function liveBooks(q,concept){return S.works.map(w=>{
  const pdf=w.pdf?.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(w.pdf.url)?w.pdf.url:null;
  const extras=[];
  if(witnesses.length)extras.push({label:"Ver códice(s)",url:libraryURL(w.id,"manuscript",witnesses[0].id)});
+ const localWitness=witnesses.find(ms=>ms.localViewer);
+ if(localWitness)extras.unshift({label:"Leer "+localWitness.shelfmark+" · "+localWitness.localFolioCount+" imágenes",url:localWitness.localViewer});
+ if(w.id==="vitruvius")extras.unshift({label:"Leer latín y traducciones · lector de Vitruvio",url:"lector-bilingue.html"});
+ if(w.localHtml&&/^(?:corpus|documents)\/[a-z0-9/_-]+\.html$/i.test(w.localHtml))
+  extras.unshift({label:"Leer texto incorporado al sitio",url:w.localHtml});
+ for(const v of (w.localVersions||[]).filter(v=>/^(?:corpus|documents)\/[a-z0-9/_-]+\.html$/i.test(v.path||"")).slice(0,3))
+  extras.push({label:v.label||("Lectura en "+v.language),url:v.path});
  if(pdf)extras.push({label:w.pdf?.language==="grc"?"PDF · griego original":w.pdf?.language==="la"?"PDF · latín original":"Visor PDF",url:libraryURL(w.id,"pdf")});
  for(const v of (w.pdfEditions||[]).filter(v=>v.url!==pdf&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(v.url||"")).slice(0,2)){
   const label=v.language==="en"?"Traducción inglesa · PDF":v.language==="es"?"Castellano · PDF":v.language==="la"?"Latín · PDF":"Griego · PDF";
@@ -295,7 +308,9 @@ function liveBooks(q,concept){return S.works.map(w=>{
  return {type:"book",title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
-  links:extras,readable:local,source:"Bibliotheca Graeca et Latina"};
+  links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
+  citationText:w.bibliography?.editionCitation||"",
+  localHosted:!!(w.localReader?.verified||w.localHtml||w.localVersions?.length||pdf||localWitness)};
  }).filter(x=>x.rating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)}
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
@@ -531,11 +546,29 @@ function renderCard(d){
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.type==="manuscript"&&(d.codexViewer||d.viewerUrl)){const viewer=makeLink(d.archiveDiscovery&&!d.codexViewer?"Consultar ficha del manuscrito":"Ver códice",d.codexViewer||d.viewerUrl);if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
+ if(d.type==="manuscript"&&d.localViewer){
+  const open=node("button","codex-local-open",S.lang==="en"?"Read codex here · "+d.localFolioCount+" images":S.lang==="fr"?"Lire le codex ici · "+d.localFolioCount+" images":"Leer códice aquí · "+d.localFolioCount+" imágenes");
+  open.type="button";open.addEventListener("click",()=>window.VitruviaLocalManuscripts?.open(d.localViewer,d.title));
+  acts.append(open);
+ }
+ if(d.type==="manuscript"&&(d.codexViewer||d.viewerUrl)){
+  const label=d.localViewer?(S.lang==="en"?"Open full folio reader":S.lang==="fr"?"Ouvrir le lecteur de folios":"Abrir lector completo folio a folio"):
+   (d.archiveDiscovery&&!d.codexViewer?"Consultar ficha del manuscrito":"Ver códice");
+  const viewer=makeLink(label,d.codexViewer||d.viewerUrl);
+  if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}
+ }
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
  if(d.pdf){const a=makeLink(T().pdf,d.pdf);if(a)acts.append(a)}
+ if(d.citationText&&navigator.clipboard?.writeText){
+  const copy=node("button","citation-copy",S.lang==="en"?"Copy citation":S.lang==="fr"?"Copier la référence":"Copiar cita");
+  copy.type="button";copy.addEventListener("click",()=>{
+   navigator.clipboard.writeText(d.citationText).then(()=>{
+    copy.textContent=S.lang==="en"?"Citation copied":S.lang==="fr"?"Référence copiée":"Cita copiada";
+   }).catch(()=>{copy.textContent=S.lang==="en"?"Unable to copy":S.lang==="fr"?"Copie impossible":"No se pudo copiar"});
+  });acts.append(copy);
+ }
  card.append(acts);return card
 }
 function synthesize(rows){const box=$("answer");box.replaceChildren();
