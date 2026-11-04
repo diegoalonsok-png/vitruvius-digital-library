@@ -440,7 +440,7 @@ function renderCard(d){
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
- if(d.type==="manuscript"&&(d.codexViewer||d.viewerUrl)){const viewer=makeLink("Ver códice",d.codexViewer||d.viewerUrl);if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
+ if(d.type==="manuscript"&&(d.codexViewer||d.viewerUrl)){const viewer=makeLink(d.archiveDiscovery&&!d.codexViewer?"Consultar ficha del manuscrito":"Ver códice",d.codexViewer||d.viewerUrl);if(viewer){viewer.classList.add("codex-viewer-button");if(d.primaryWitness)viewer.classList.add("primary-codex-viewer");acts.append(viewer)}}
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
@@ -617,6 +617,19 @@ async function search(){
   if(rows.length)display(rows,q,T().searching)
  }
  const pending=[];
+ if(["all","external","ai"].includes(mode)&&window.VitruviaArchives){
+  pending.push(window.VitruviaArchives.search(generalQuery).then(value=>{
+   const linked=value.rows||[];
+   const portals=!linked.length&&value.reason!=="entity-not-exactly-resolved"&&value.reason!=="authority-not-found"
+    ?(value.portals||[]).slice(0,3).map(p=>({
+       type:"archive-portal",title:p.title+" · "+generalQuery,
+       author:"Catálogo institucional externo",excerpt:"Búsqueda de manuscritos y códices en archivo externo; no se presenta como hallazgo documental verificado.",
+       meta:"Consulta externa · confirmar en la institución",link:p.url,source:"Bibliotecas patrimoniales",rating:26
+      })):[];
+   return {name:"Manuscritos en catálogos de autoridad · "+value.reason,
+    rows:[...linked,...portals],warnings:value.warning?[value.warning]:[]};
+  }).catch(e=>({name:"Catálogos de manuscritos no disponibles",rows:[],warnings:[String(e.message||e)]})));
+ }
  if(mode==="ai"&&window.VitruviaAI){
   pending.push(window.VitruviaAI.search(generalQuery).then(v=>({
    name:v.mode==="neural"?"IA semántica multilingüe · BM25 + embeddings":v.mode==="bm25-fallback"?"BM25: modelo de IA no disponible":"Búsqueda de documentos",
