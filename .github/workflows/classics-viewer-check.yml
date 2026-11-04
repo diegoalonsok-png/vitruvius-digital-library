@@ -1,0 +1,36 @@
+name: Verificar visores PDF y códices clásicos
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/classics-viewer-check.yml'
+      - 'scripts/classics-visor-smoke.mjs'
+      - 'assets/classical-facsimile-viewer.js'
+      - 'assets/bibliotheca-graeca-latina.js'
+      - 'assets/vitruvia-search.js'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'documents/classics/**'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of classical interfaces and the regression script
+        run: |
+          node --check scripts/classics-visor-smoke.mjs
+          node --check assets/bibliotheca-graeca-latina.js
+          node --check assets/classical-facsimile-viewer.js
+          node --check assets/vitruvia-search.js
+      - name: Install headless Chromium
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify in a real browser the five PDFs, cross-index, page navigation and IIIF links
+        run: node scripts/classics-visor-smoke.mjs
