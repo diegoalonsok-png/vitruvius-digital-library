@@ -119,7 +119,7 @@ function liveEditions(q){
   const pdf=ed.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(ed.url)?ed.url:null;
   out.push({type:"edition",title:ed.title,author:ed.editor+" · "+ed.year,excerpt:ed.note,
    meta:(pdf?"PDF LOCAL · ":"EDICIÓN DOCUMENTADA · ")+(ed.langs||[]).join("/"),
-   rating:rating+(pdf?4:0),link:(ed.url&&(/^(https:\/\/|[a-z0-9/_-]+\\.html(?:\\?|$)|documents\\/)/i.test(ed.url))?ed.url:libraryURL(w.id,pdf?"pdf":"")),pdf,source:ed.provider,
+   rating:rating+(pdf?4:0),link:ed.url||libraryURL(w.id,pdf?"pdf":""),pdf,source:ed.provider,
    historicalEdition:Number.parseInt(ed.year,10)<2000,editionYear:Number.parseInt(ed.year,10)||9999,
    links:ed.url?[{label:"Abrir edición o traducción documentada",url:ed.url}]:[]});
  }return out.sort((a,b)=>b.rating-a.rating).slice(0,12);
