@@ -4,7 +4,7 @@ No fabricated digitization, translation, ISBN or PDF links. */
 "use strict";
 const $=id=>document.getElementById(id);
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const fold=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 const L={es:{search:"fichas en el catálogo",select:"Seleccionar",work:"Obra",language:"Lengua",source:"Leer texto",manuscript:"Manuscrito",edition:"Edición y traducción",pdf:"PDF histórico",external:"Fuentes externas",notKnown:"No hay un facsímil ni edición concreta acreditados en esta ficha.",visit:"Consultar fuente original",open:"Abrir el lector original",notHosted:"Esta fuente no permite confirmar un lector embebido; abrila en su plataforma oficial.",witness:"El testimonio es posterior a la composición de la obra.",noPdf:"No hay PDF identificado con edición y licencia verificadas.",noTrans:"No se ha asignado todavía una traducción con autor y edición comprobados.",archive:"Buscar ediciones escaneadas",gallica:"Buscar en Gallica",scaife:"Consultar Scaife / Perseus"},en:{search:"catalogue records",select:"Select",work:"Work",language:"Original language",source:"Read text",manuscript:"Manuscript",edition:"Edition and translation",pdf:"Historical PDF",external:"External sources",notKnown:"No individual facsimile or edition has yet been verified for this record.",visit:"View original source",open:"Open original reader",notHosted:"Embedding has not been verified for this source; open it at its official platform.",witness:"The extant witness is later than the composition of the work.",noPdf:"No specific PDF with verified edition and rights has been identified.",noTrans:"No translation with verified translator and edition has yet been linked.",archive:"Search scanned editions",gallica:"Search Gallica",scaife:"Browse Scaife / Perseus"}};
 
 const extraTerms={
@@ -68,7 +68,42 @@ function statusLabel(w){return isLocal(w)?(w.publicStatus==="lectura-local-parci
 function workSearchText(w){return [w.author,w.title,w.genre,w.dating,w.language,...(w.aliases||[]),
  ...(w.witnessRecords||[]).flatMap(ms=>[ms.title,ms.shelfmark,ms.library,ms.date]),
  ...(w.historicEditions||[]).flatMap(ed=>[ed.title,ed.editor,ed.year,ed.provider])].join(" ")}
-function filters(){const q=fold($("classic-query").value.trim()),lang=$("classic-language").value,genre=$("classic-genre").value,availability=$("classic-availability")?.value||"",period=$("classic-period")?.value||"";return works.filter(w=>(period!=="focus"||periodFocus(w))&&(!lang||w.language===lang)&&(!genre||w.genre===genre)&&(!availability||(availability==="local"?isLocal(w):availability==="source"?hasSource(w)&&!isLocal(w):!hasSource(w)))&&(!q||q.split(/\s+/).every(t=>fold(workSearchText(w)).includes(t))))}
+// Academic categories work on the existing catalogue data, not a fixed list of famous works.
+const technicalSubjects=/arquitect|ingenier|mecanic|hidraul|agricultur|agronom|medicin|farmacolog|botanic|astronom|geograf|cartograf|filosofi|retoric|oratori|poetic|exeges|linguist|historia natural|educacion/i;
+const genericTerms=new Set(["tratado","tratados","classical","classic","classics","clasico","clasicos","clasica","clasicas","obra","obras","literatura","texto","textos","biblioteca","catalogo","catalog","book","books","work","works","antiguo","antiguos","antigua","antiguas","ancient","antiquity","latina","latino","latin","griega","griego","greek","de","del","la","el","las","los","the","of","and","et","y","sobre","in","en"]);
+function isClassicalTreatise(w){
+ const field=fold(w.genre||"");
+ return technicalSubjects.test(field);
+}
+function searchIntent(q){
+ const clean=fold(q).replace(/[^\p{L}\p{N}]+/gu," ").trim();
+ const terms=clean.split(/\s+/).filter(Boolean);
+ const treatise=/\b(tratado|tratados|treatise|treatises|tractatus|tratado[s]?)\b/.test(clean);
+ const meaningful=terms.filter(t=>!genericTerms.has(t)&&!["treatise","treatises","tractatus"].includes(t));
+ return {terms:meaningful,treatise};
+}
+function relevanceForWork(w,q){
+ const {terms,treatise}=searchIntent(q);
+ if(!terms.length)return treatise?(isClassicalTreatise(w)?25:-1):0;
+ const hay=fold(workSearchText(w));
+ if(!terms.every(term=>hay.includes(term)))return -1;
+ let value=terms.reduce((sum,term)=>sum+(fold(w.title).includes(term)?12:0)+(fold(w.author).includes(term)?7:0),0);
+ if(treatise&&isClassicalTreatise(w))value+=16;
+ return value;
+}
+function filters(){
+ const q=$("classic-query").value.trim(),lang=$("classic-language").value,genre=$("classic-genre").value,
+       availability=$("classic-availability")?.value||"",period=$("classic-period")?.value||"";
+ const criteria=searchIntent(q);
+ return works.filter(w=>(period!=="focus"||periodFocus(w))&&(!lang||w.language===lang)&&(!genre||w.genre===genre)
+  &&(!availability||(availability==="local"?isLocal(w):availability==="source"?hasSource(w)&&!isLocal(w):!hasSource(w)))
+  &&(!q||relevanceForWork(w,q)>=0))
+  .sort((a,b)=>{
+   const rank=w=>isLocal(w)?0:hasSource(w)?1:2;
+   return (q?relevanceForWork(b,q)-relevanceForWork(a,q):0)||rank(a)-rank(b)
+    ||fold(a.author).localeCompare(fold(b.author))||fold(a.title).localeCompare(fold(b.title));
+  });
+}
 let suggestionIndex=-1;
 function suggestedWorks(){
  const matched=filters();
