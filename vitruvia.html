@@ -664,6 +664,14 @@ body.vitruvia-reading #vitruvia-article .article-byline{font-size:11px!important
 body.vitruvia-reading .section-head h2{font-size:clamp(24px,3vw,38px)!important}
 #search-images-button{border-color:#59544b}
 #search-images-button:hover,#search-images-button:focus-visible{border-color:#d2c29d;color:#fff;background:#292723}
+
+/* Image finder: compact institutional treatment, no changes to homepage structure. */
+#search-images-button{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;vertical-align:middle;white-space:nowrap!important;flex:0 0 auto;min-width:105px;min-height:32px;padding:6px 12px!important;border:1px solid #55585a!important;border-radius:18px!important;background:#242526!important;color:#e7e5df!important;font:500 12px/1.3 Arial,Helvetica,sans-serif!important;letter-spacing:0;opacity:1!important;visibility:visible!important;cursor:pointer}
+#search-images-button span{display:inline!important;opacity:1!important;color:inherit!important}
+#search-images-button svg{flex:0 0 15px;display:block!important}
+#search-images-button:hover,#search-images-button:focus-visible{background:#353431!important;border-color:#b5a382!important;color:#fff!important}
+html[data-theme=light] #search-images-button{background:#e8e7e2!important;color:#232323!important;border-color:#aaa!important}
+body.vitruvia-reading #search-images-button{min-height:30px!important;padding:5px 11px!important;font-size:11px!important}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -691,7 +699,7 @@ body.vitruvia-reading .section-head h2{font-size:clamp(24px,3vw,38px)!important}
 <button type="button" class="tab" data-mode="wiki" aria-pressed="false">Wikipedia</button>
 <button type="button" class="tab" data-mode="external" aria-pressed="false">Internet y academia</button>
 <button type="button" class="tab" data-mode="concept" aria-pressed="false">⌁ Conceptos</button>
-<button type="button" class="tab image-search-trigger" id="search-images-button" aria-controls="vitruvia-images" title="Buscar imágenes relacionadas con el tema">▧ Buscar imágenes</button>
+<button type="button" class="image-search-trigger" id="search-images-button" aria-controls="vitruvia-images" aria-label="Buscar imágenes de la consulta" title="Buscar imágenes de la consulta"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.6"/><path d="m4 17 5-5 3.5 3.5 2.7-2.7L20 18"/></svg><span>Imágenes</span></button>
 </div>
 <p class="explain" id="mode-note">Busca cualquier tema en Wikipedia, Wikidata y catálogos abiertos; prioriza arte, historia y arquitectura y también consulta esta biblioteca.</p>
 <div class="suggestions"><span data-i18n="explore">Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
@@ -772,35 +780,75 @@ body.vitruvia-reading .section-head h2{font-size:clamp(24px,3vw,38px)!important}
  const add=(parent,tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;parent.append(el);return el};
  function close(){requestId++;if(abort)abort.abort();abort=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent=''}
  function link(label,url){const a=add(actions,'a','',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer'}
+
+ async function showCodexH(current){
+  const base='images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/';
+  title.textContent='Codex Harleianus · Harley MS 2767';
+  status.textContent='Consultando los folios originales de la biblioteca…';
+  link('Galería completa · 341 folios','codex-h-folios-local.html');
+  link('Ficha del Codex H','harleianus.html');
+  link('Manifiesto IIIF · British Library','https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001');
+  try{
+   abort=new AbortController();
+   const response=await fetch(base+'indice-folios.json',{signal:abort.signal});
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const data=await response.json();
+   if(current!==requestId)return;
+   const folios=Array.isArray(data.imagenes)?data.imagenes:[];
+   // The archive itself is the authority. Never mix external unrelated codices.
+   const chosen=folios.filter(x=>/^H_\d{3}_[a-z0-9-]+\.jpg$/i.test(x.archivo||'')).slice(0,24);
+   for(const f of chosen){
+    const n=Number(f.numeroImagen)||chosen.indexOf(f)+1;
+    const a=add(grid,'a','vitruvia-image-card');a.href='codex-h-folios-local.html#imagen='+n;a.title='Consultar folio en la galería del Codex H';
+    const img=add(a,'img');img.src=base+encodeURIComponent(f.archivo);img.loading='lazy';img.decoding='async';img.alt='Harley MS 2767 · '+(f.etiquetaOriginal||'imagen '+n);
+    const cap=add(a,'div','image-caption','Harley MS 2767 · '+(f.etiquetaOriginal||'Imagen '+n));
+    add(cap,'span','image-origin','Archivo local · British Library · Codex H');
+   }
+   status.textContent=chosen.length+' folios del Codex H · '+folios.length+' imágenes en el archivo';
+  }catch(e){if(current!==requestId)return;status.textContent='No se pudo cargar el índice local del Codex H. Consultá la galería completa.'}
+ }
+ function matchTitle(q,title){
+  const normalize=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const stop=new Set(['the','of','and','de','del','la','el','las','los','in','at','for','codex','manuscript','manuscrito','image','imagen','file','folio']);
+  const terms=normalize(q).split(/[^a-z0-9]+/).filter(w=>w.length>2&&!stop.has(w));
+  const candidate=normalize(title);
+  return terms.length>0&&terms.every(term=>candidate.includes(term));
+ }
  async function searchImages(query){
   const q=String(query||'').trim();close();if(!q)return;
-  const current=++requestId;
-  section.hidden=false;
+  const current=++requestId;section.hidden=false;
   const language=document.documentElement.lang||'es';
-  title.textContent=language==='en'?'Related historical images':language==='fr'?'Images historiques associées':'Imágenes históricas relacionadas';
-  status.textContent=language==='en'?'Searching Wikimedia Commons…':language==='fr'?'Recherche dans Wikimedia Commons…':'Buscando en Wikimedia Commons…';
+  title.textContent=language==='en'?'Documentary images':language==='fr'?'Images documentaires':'Imágenes documentales';
+  const isCodexH=/\b(harleianus|harley(?:\s+ms)?\s*2767|codex\s*h\b|harleian(?:us)?)\b/i.test(q);
+  if(isCodexH){await showCodexH(current);return}
+  status.textContent='Buscando imágenes pertinentes en Wikimedia Commons…';
   link('Wikimedia Commons','https://commons.wikimedia.org/w/index.php?search='+encodeURIComponent(q)+'&title=Special:MediaSearch&type=image');
   link('Google Imágenes','https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q));
   link('Europeana','https://www.europeana.eu/es/search?query='+encodeURIComponent(q));
-  const p=new URLSearchParams({action:'query',generator:'search',gsrsearch:q,gsrnamespace:'6',gsrlimit:'18',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'380',format:'json',origin:'*'});
+  // A quoted query reduces unrelated matches; only names matching the searched terms are shown.
+  const p=new URLSearchParams({action:'query',generator:'search',gsrsearch:'"'+q+'"',gsrnamespace:'6',gsrlimit:'35',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'380',format:'json',origin:'*'});
   abort=new AbortController();
   try{
-   const timer=setTimeout(()=>abort?.abort(),12000);
-   let response;try{response=await fetch('https://commons.wikimedia.org/w/api.php?'+p.toString(),{signal:abort.signal,headers:{Accept:'application/json'}})}finally{clearTimeout(timer)}
+   const controller=abort,timer=setTimeout(()=>controller.abort(),12000);
+   let response;try{response=await fetch('https://commons.wikimedia.org/w/api.php?'+p.toString(),{signal:controller.signal,headers:{Accept:'application/json'}})}finally{clearTimeout(timer)}
    if(!response.ok)throw Error('HTTP '+response.status);
    const data=await response.json();
    if(current!==requestId)return;
    const pages=Object.values(data.query?.pages||{}).sort((a,b)=>(a.index||999)-(b.index||999));
    let count=0;
    for(const page of pages){
-    const info=page.imageinfo?.[0];if(!info?.thumburl||!info?.descriptionurl||!String(info.mime||'').startsWith('image/'))continue;
+    const info=page.imageinfo?.[0],name=page.title?.replace(/^File:/,'').replace(/_/g,' ')||'';
+    if(!info?.thumburl||!info?.descriptionurl||!String(info.mime||'').startsWith('image/'))continue;
+    if(!matchTitle(q,name))continue;
     const a=add(grid,'a','vitruvia-image-card');a.href=info.descriptionurl;a.target='_blank';a.rel='noopener noreferrer';
-    const img=add(a,'img');img.src=info.thumburl;img.loading='lazy';img.decoding='async';img.alt=page.title.replace(/^File:/,'').replace(/_/g,' ');
-    const cap=add(a,'div','image-caption',img.alt);add(cap,'span','image-origin','Wikimedia Commons · ficha y licencia');count++;
+    const img=add(a,'img');img.src=info.thumburl;img.loading='lazy';img.decoding='async';img.alt=name;
+    const cap=add(a,'div','image-caption',name);add(cap,'span','image-origin','Wikimedia Commons · ficha y licencia');count++;
+    if(count>=18)break;
    }
-   status.textContent=count?(count+' '+(language==='en'?'images found':language==='fr'?'images trouvées':'imágenes encontradas')):(language==='en'?'No preview images found. Use the search links.':'Sin imágenes disponibles aquí. Consultá los enlaces de búsqueda.');
-  }catch(e){if(current!==requestId)return;status.textContent='No fue posible cargar las vistas previas; podés consultar los buscadores de imágenes.'}
+   status.textContent=count?count+' imágenes con correspondencia textual': 'Sin imágenes con correspondencia suficiente. Consultá las fuentes externas.';
+  }catch(e){if(current!==requestId)return;status.textContent='No se pudieron cargar vistas previas. Consultá las fuentes externas.'}
  }
+
  window.addEventListener('vitruvia:search',e=>searchImages(e.detail?.query));
  window.addEventListener('vitruvia:clear',close);
  document.getElementById('search-images-button')?.addEventListener('click',()=>{
