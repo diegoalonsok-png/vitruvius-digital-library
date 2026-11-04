@@ -588,7 +588,41 @@ async function topicWikiData(query){
 }
 /* Topic dossiers: encyclopedic narrative first; original-language literature, scholarship, outreach after. */
 /* Academic research hierarchy: encyclopedia -> historical works -> books -> scholarship -> images. */
+
+/* Wikimedia-style editorial organization; content is original, sources remain attributed. */
+const deityDossier=[
+["Definición y alcance","Dios es una denominación que puede referirse a una divinidad suprema, a una entidad sobrenatural venerada o, en plural, a los seres divinos de tradiciones politeístas. El significado depende del sistema religioso, de la lengua y de la época. El estudio académico distingue la concepción de los creyentes, el análisis filosófico de la divinidad y la descripción histórica de los cultos; ninguna de estas aproximaciones, por sí sola, demuestra o refuta una afirmación metafísica."],
+["Historia de las ideas religiosas","Las comunidades antiguas formularon explicaciones sobre el origen del mundo, la legitimidad política, el orden cósmico y la existencia humana mediante narraciones de dioses y poderes sagrados. Mesopotamia, Egipto, la cuenca mediterránea, Asia meridional y otras regiones desarrollaron panteones, prácticas rituales y teologías diferentes. Estas tradiciones no forman una secuencia evolutiva única: convivieron, se transformaron y se influyeron de maneras históricamente específicas."],
+["Monoteísmo, politeísmo y otras concepciones","En el monoteísmo se afirma la existencia de un solo Dios; el politeísmo reconoce múltiples divinidades, con competencias y genealogías variables. En el henoteísmo se privilegia el culto a una divinidad sin excluir necesariamente otras. El panteísmo identifica de algún modo lo divino con la totalidad de lo real; el panenteísmo sostiene una relación distinta entre Dios y el universo. Estas categorías modernas son herramientas de comparación y requieren cautela al aplicarlas a textos antiguos."],
+["Judaísmo y textos hebreos","La Biblia hebrea reúne obras de épocas y géneros diversos. En ellas se desarrolla la relación entre el Dios de Israel, la alianza, la ley, la historia y la sabiduría. Génesis, Éxodo, Deuteronomio, Salmos y los libros proféticos constituyen fuentes primarias importantes. El nombre divino, las traducciones de los términos hebreos y la historia textual de las versiones griegas y arameas son objeto de investigación filológica."],
+["Cristianismo y teologías históricas","La tradición cristiana interpreta a Dios a la luz de las Escrituras judías y de los escritos del Nuevo Testamento. Las doctrinas de la Trinidad, la creación, la encarnación y la gracia fueron objeto de debates históricos, concilios y desarrollos teológicos. Para estudiar estas ideas se consultan tanto los textos bíblicos como autores patrísticos, manuscritos y documentos doctrinales, diferenciando las formulaciones confesionales de su contexto histórico."],
+["Islam y el Corán","El islam afirma la unicidad de Dios, expresada en la noción de tawḥīd. El Corán constituye su escritura central; entre sus pasajes teológicos fundamentales se encuentra la sura 112, al-Ijlāṣ. Los estudios históricos y filológicos examinan el árabe coránico, las tradiciones exegéticas, el desarrollo intelectual islámico y las distintas escuelas de teología. El Corán y sus comentarios no deben confundirse con obras de otras tradiciones."],
+["Dioses griegos y romanos","Zeus, Hera, Atenea, Apolo, Artemisa, Afrodita, Poseidón y otras figuras integran tradiciones griegas transmitidas por épica, poesía, himnos, teatro y testimonios materiales. Los romanos reinterpretaron numerosos cultos y nombres, como Júpiter, Juno, Minerva y Venus, sin que las equivalencias sean siempre exactas. Homero, Hesíodo, los himnos y los testimonios epigráficos son fuentes indispensables para comprender la diversidad de sus representaciones."],
+["Egipto, Mesopotamia y otras tradiciones","En Egipto, figuras como Ra, Amón, Osiris, Isis y Horus formaron parte de prácticas locales y regias que cambiaron durante milenios. Mesopotamia conoció divinidades como Anu, Enlil, Enki, Inanna e Ishtar. En India, las tradiciones hindúes incluyen concepciones muy diversas de Brahman, Vishnu, Shiva y Devi. Las religiones nórdicas, africanas, americanas y de Asia oriental ofrecen otras cosmologías que deben estudiarse en su propia documentación."],
+["Filosofía y argumentos sobre la existencia divina","La filosofía antigua y medieval elaboró argumentos cosmológicos, ontológicos y teleológicos, así como objeciones relativas al mal, el conocimiento y la relación entre libertad y providencia. Platón, Aristóteles, Plotino, Agustín, Avicena, Maimónides y Tomás de Aquino pertenecen a tradiciones intelectuales diferentes. La filosofía moderna y contemporánea debate también sobre la inteligibilidad de los atributos divinos y el estatuto de la experiencia religiosa."],
+["Arte, imágenes y representaciones","La representación visual de lo divino varía considerablemente: esculturas de culto, frescos, mosaicos, iconos, miniaturas y pintura religiosa. Algunas tradiciones desarrollaron imágenes antropomórficas, mientras otras restringieron o rechazaron determinadas representaciones de Dios. Es necesario distinguir una imagen de un dios mitológico, una alegoría, un objeto ritual y una representación posterior inspirada en la literatura antigua."],
+["Métodos históricos y límites del conocimiento","La investigación combina crítica textual, historia de las religiones, arqueología, iconografía, antropología y filosofía. Los manuscritos conservados no siempre reproducen sin variaciones las primeras versiones; las dataciones pueden ser discutidas y la ausencia de pruebas no equivale a una refutación. Una enciclopedia académica debe identificar los testimonios y separar creencias, hipótesis e información documental."],
+["Relaciones con la arquitectura religiosa","Templos, altares, santuarios, iglesias y mezquitas constituyen espacios arquitectónicos que responden a tradiciones muy distintas. La disposición ritual, la orientación, las proporciones y los programas iconográficos conectan creencias y formas construidas. El tratado de Vitruvio sirve para estudiar determinados edificios sagrados del mundo grecorromano, pero sus referencias a divinidades no constituyen una exposición universal de la idea de Dios."]
+];
+function isDeityQuery(query){
+ return /^(?:dios|dioses|deidad|deidades|divinidad|god|gods|deity|deities|dieu|dieux)$/.test(normalized(query).trim());
+}
+function deityPrimaryBibliography(){
+ return [
+ {title:"Biblia hebrea · Génesis (texto hebreo)",author:"Tradición bíblica hebrea",link:"https://www.sefaria.org/Genesis.1",type:"book"},
+ {title:"Biblia hebrea · Éxodo (texto hebreo)",author:"Tradición bíblica hebrea",link:"https://www.sefaria.org/Exodus.1",type:"book"},
+ {title:"Nuevo Testamento · Evangelio según Juan (griego y traducciones)",author:"Tradición cristiana",link:"https://www.biblegateway.com/passage/?search=John%201",type:"book"},
+ {title:"Corán · al-Fātiḥa, sura 1 (árabe)",author:"Tradición islámica",link:"https://quran.com/1",type:"book"},
+ {title:"Corán · al-Ijlāṣ, sura 112 (árabe)",author:"Tradición islámica",link:"https://quran.com/112",type:"book"},
+ {title:"Hesíodo · Teogonía (griego antiguo)",author:"Hesíodo",link:"https://www.perseus.tufts.edu/hopper/searchresults?q=Hesiod+Theogony",type:"book"},
+ {title:"Homero · Ilíada (griego antiguo)",author:"Homero",link:"https://www.perseus.tufts.edu/hopper/searchresults?q=Homer+Iliad",type:"book"},
+ {title:"Himnos homéricos (griego antiguo)",author:"Tradición griega",link:"https://www.perseus.tufts.edu/hopper/searchresults?q=Homeric+Hymns",type:"book"},
+ {title:"Ovidio · Metamorfosis (latín)",author:"Publio Ovidio Nasón",link:"https://www.perseus.tufts.edu/hopper/searchresults?q=Ovid+Metamorphoses",type:"book"}
+ ];
+}
+
 function addTopicBibliography(rows,query,ark){
+ const deity=isDeityQuery(query);
  const relevant=rows.filter(r=>r.link&&r.title&&(
   relevance({...r,title:[r.title,r.author,...(r.aliases||[])].join(" ")},query)>=35||
   normalized([r.title,r.author,r.excerpt].join(" ")).includes(normalized(query))
@@ -598,6 +632,7 @@ function addTopicBibliography(rows,query,ark){
   const key=normalized(row.title)+"|"+normalized(row.author||"");
   if(seen.has(key))return;seen.add(key);groups[group].push(row);
  }
+ if(deity){for(const row of deityPrimaryBibliography())insert("primary",row)}
  if(ark){
   [
    ["Éxodo 25:10–22 · hebreo bíblico","https://www.sefaria.org/Exodus.25.10","Texto hebreo"],
@@ -641,10 +676,12 @@ async function renderTopic(top,rows,query,token,person=null){
  reset(person?.name||query,phrase("Artículo enciclopédico · investigación documental","Thematic article · documentary research","Article thématique · recherche documentaire"),
   phrase("Dossier de investigación · síntesis y fuentes","Research dossier · synthesis and sources","Dossier de recherche · synthèse et sources"));
  const topic=normalized(query);
+ const deity=isDeityQuery(query);
  const ark=topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
  const sources=rows.filter(x=>x.link&&relevance({...x,title:[x.title,x.author||""].join(" ")},query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum","book","edition","manuscript"].includes(x.type));
  const wiki=rows.filter(x=>x.type==="wikipedia"&&relevance(x,person?.name||query)>=40).sort((x,y)=>relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
  paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
+ if(deity){for(const [sectionTitle,body] of deityDossier){heading(sectionTitle);paragraph(body)}}
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
  if(person?.id==="cicero"){for(const [sectionTitle,body] of ciceroChapters){heading(sectionTitle);paragraph(body)}}
  const data=wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
@@ -655,7 +692,7 @@ async function renderTopic(top,rows,query,token,person=null){
   appendBiographyExtract(data.extract);
   const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
   if(link)$("article-body").append(link);
- }else if(!ark&&person?.id!=="cicero"){
+ }else if(!ark&&!deity&&person?.id!=="cicero"){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
  }
