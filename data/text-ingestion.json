@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "updated": "2026-11-04",
+  "purpose": "Public-domain/openly licensed texts processed generically, with no per-author application code. Text/edition copyright remains at source.",
+  "maxNewDocumentsPerRun": 12,
+  "maxOutputBytesPerRun": 10000000,
+  "collections": [
+    {
+      "kind": "github-tei",
+      "repository": "PerseusDL/canonical-greekLit",
+      "ref": "master",
+      "prefix": "data/",
+      "language": "grc",
+      "license": "CC BY-SA 4.0",
+      "source": "Perseus Digital Library · Tufts University",
+      "enabled": true,
+      "maxBytesPerDocument": 1800000,
+      "excludeFileNames": [
+        "tlg0012.tlg001.perseus-grc2.xml"
+      ]
+    },
+    {
+      "kind": "github-tei",
+      "repository": "PerseusDL/canonical-latinLit",
+      "ref": "master",
+      "prefix": "data/",
+      "language": "la",
+      "license": "CC BY-SA 4.0",
+      "source": "Perseus Digital Library · Tufts University",
+      "enabled": true,
+      "maxBytesPerDocument": 1800000
+    }
+  ],
+  "localFiles": [],
+  "notes": [
+    "The scheduled indexer discovers additional texts in both canonical repositories automatically, respecting caps, licensing and source citations.",
+    "Add an eligible local .txt/.html/.tei/.xml/.docx/.pdf text source to localFiles for other authors/languages. Scanned PDFs need OCR first.",
+    "A catalogue entry or search-result snippet is not evidence that the underlying full text has been indexed."
+  ]
+}
