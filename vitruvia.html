@@ -881,6 +881,39 @@ html[data-theme=light] .vitruvia-result-group{color:#27372e;border-color:#c7cec6
   const isCodexH=/\b(harleianus|harley(?:\s+ms)?\s*2767|codex\s*h\b|harleian(?:us)?)\b/i.test(q);
   if(isCodexH){await showCodexH(current);return}
   const deity=/^(dios|dioses|deidad|deidades|divinidad|god|gods|deity|deities|dieu|dieux)$/i.test(q);
+  // A named entity should use the image attached to its canonical encyclopedia article,
+  // not arbitrary Commons hits where only the words happen to match.
+  const identity=window.VitruviaEntityResolver?await window.VitruviaEntityResolver.resolve(q).catch(()=>null):null;
+  if(current!==requestId)return;
+  const normal=x=>String(x||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  const queryNorm=normal(q).replace(/^(?:quien fue|biografia de|vida de) /,'');
+  const identityTerms=(identity?.canonical||'').split(/\\s+/);
+  const likelyEntity=!!identity?.pageid&&!!identity?.url&&(
+    queryNorm===normal(identity.canonical)||
+    (identity.aliases||[]).some(alias=>normal(alias)===queryNorm)||
+    (queryNorm.length>=5&&identityTerms.some(term=>normal(term).length>=5&&queryNorm.includes(normal(term))))
+  );
+  if(likelyEntity&&!deity){
+   title.textContent='Iconografía documentada · '+identity.canonical;
+   status.textContent='Consultando la ilustración del artículo enciclopédico…';
+   link('Artículo de referencia · '+identity.canonical,identity.url);
+   link('Wikimedia Commons · '+identity.canonical,'https://commons.wikimedia.org/w/index.php?search='+encodeURIComponent(identity.canonical)+'&title=Special:MediaSearch&type=image');
+   try{
+    const params=new URLSearchParams({action:'query',prop:'pageimages',pageids:String(identity.pageid),piprop:'thumbnail|original',pithumbsize:'900',format:'json',origin:'*'});
+    const response=await fetch('https://'+identity.language+'.wikipedia.org/w/api.php?'+params.toString());
+    if(!response.ok)throw Error('HTTP '+response.status);
+    const data=await response.json();if(current!==requestId)return;
+    const page=data.query?.pages?.[identity.pageid],url=page?.thumbnail?.source||page?.original?.source;
+    if(url&&/^https:\/\//.test(url)){
+     const a=add(grid,'a','vitruvia-image-card');a.href=identity.url;a.target='_blank';a.rel='noopener noreferrer';
+     const img=add(a,'img');img.src=url;img.loading='lazy';img.decoding='async';img.alt='Imagen asociada al artículo '+identity.canonical;
+     const cap=add(a,'div','image-caption',identity.canonical);
+     add(cap,'span','image-origin','Wikipedia · imagen del artículo; consultar ficha y licencia');
+     status.textContent='Imagen del artículo enciclopédico identificado. Procedencia y licencia en la fuente.';
+    }else status.textContent='No hay imagen de portada verificada para este artículo. Consultá el archivo iconográfico.';
+   }catch(e){if(current!==requestId)return;status.textContent='No se pudo verificar la imagen enciclopédica; se omiten coincidencias dudosas.'}
+   return;
+  }
   status.textContent='Buscando imágenes pertinentes en Wikimedia Commons…';
   link('Wikimedia Commons','https://commons.wikimedia.org/w/index.php?search='+encodeURIComponent(q)+'&title=Special:MediaSearch&type=image');
   link('Google Imágenes','https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q));
