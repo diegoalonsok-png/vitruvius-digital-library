@@ -44,7 +44,7 @@ const T=()=>I18N[S.lang]||I18N.es;
 function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
 function score(s,q,expand=false){const txt=norm(s),n=norm(q);if(!n||!txt)return 0;let r=txt.includes(n)?18:0;for(const word of words(q))if(txt.includes(word))r+=word.length>=5?6:3;
  if(expand){for(const w of related(q))if(txt.includes(w)&&!words(q).includes(w))r+=1.75}return r}
-const verified=w=>w.publicStatus==="lectura-local-completa"&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
+const verified=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
 const libraryURL=(id,view,ms)=>"bibliotheca-graeca-latina.html?"+new URLSearchParams({work:id,...(view?{view}:{}),...(ms?{ms}:{})});
 const workString=w=>[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
 const witnessesFor=id=>S.witnesses.filter(ms=>(ms.workIds||[]).includes(id));
@@ -94,9 +94,16 @@ function liveBooks(q,concept){return S.works.map(w=>{
  const pdf=w.pdf?.url&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(w.pdf.url)?w.pdf.url:null;
  const extras=[];
  if(witnesses.length)extras.push({label:"Ver códice(s)",url:libraryURL(w.id,"manuscript",witnesses[0].id)});
- if(pdf)extras.push({label:"Visor PDF",url:libraryURL(w.id,"pdf")});
+ if(pdf)extras.push({label:w.pdf?.language==="grc"?"PDF · griego original":w.pdf?.language==="la"?"PDF · latín original":"Visor PDF",url:libraryURL(w.id,"pdf")});
+ for(const v of (w.pdfEditions||[]).filter(v=>v.url!==pdf&&/^documents\/(?:classics\/)?[a-z0-9-]+\.pdf$/i.test(v.url||"")).slice(0,2)){
+  const label=v.language==="en"?"Traducción inglesa · PDF":v.language==="es"?"Castellano · PDF":v.language==="la"?"Latín · PDF":"Griego · PDF";
+  extras.push({label,url:libraryURL(w.id,"pdf")+"&pdf="+encodeURIComponent(v.url)});
+ }
  if(w.reading?.url&&/^https:\/\//.test(w.reading.url))extras.push({label:"Fuente de lectura",url:w.reading.url});
- const status=pdf?"PDF original alojado":local?"Edición local para leer":witnesses.length?"Códice identificado · institución de custodia":w.reading?.url?"Texto externo identificado":editions.length?"Edición vinculada · revisar acceso":"Ficha bibliográfica · edición pendiente";
+ const status=w.publicStatus==="lectura-local-parcial"?"PDF parcial · obra no íntegra":
+  pdf?(w.pdf?.language==="grc"?"Texto original en griego · PDF":w.pdf?.language==="la"?"Texto original en latín · PDF":"Edición histórica · PDF"):
+  local?"Texto local acreditado":witnesses.length?"Códice identificado · institución de custodia":
+  w.reading?.url?"Texto externo identificado":editions.length?"Edición vinculada · revisar acceso":"Ficha bibliográfica · edición pendiente";
  return {type:"book",title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
