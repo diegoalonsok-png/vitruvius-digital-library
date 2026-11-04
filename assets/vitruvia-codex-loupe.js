@@ -28,10 +28,13 @@
  lens.hidden=true;
  lens.setAttribute('role','img');
  lens.setAttribute('aria-label','Detalle ampliado de la fotografía del folio');
+ const imageSurface=document.createElement('div');
+ imageSurface.id='codex-local-loupe-image';
+ imageSurface.className='codex-local-loupe-image';
  const strength=document.createElement('span');
  strength.className='codex-local-loupe-scale';
  strength.textContent='2,5×';
- lens.append(strength);
+ lens.append(imageSurface,strength);
  document.body.append(lens);
  let enabled=false,touchPinned=false;
  const factor=2.5;
@@ -66,9 +69,10 @@
   // Pointer anchored to image geometry rather than scroll offsets, so that
   // this works after panning the folio inside the original scrollable viewer.
   const fx=clientX-rect.left,fy=clientY-rect.top;
-  lens.style.backgroundImage='url('+JSON.stringify(img.currentSrc||img.src)+')';
-  lens.style.backgroundSize=(rect.width*factor)+'px '+(rect.height*factor)+'px';
-  lens.style.backgroundPosition=(diameter/2-fx*factor)+'px '+(diameter/2-fy*factor)+'px';
+  imageSurface.style.backgroundImage='url('+JSON.stringify(img.currentSrc||img.src)+')';
+  imageSurface.style.filter=img.style.filter||'none';
+  imageSurface.style.backgroundSize=(rect.width*factor)+'px '+(rect.height*factor)+'px';
+  imageSurface.style.backgroundPosition=(diameter/2-fx*factor)+'px '+(diameter/2-fy*factor)+'px';
   lens.style.width=diameter+'px';lens.style.height=diameter+'px';
   let x=clientX+30,y=clientY-diameter/2;
   if(x+diameter+12>window.innerWidth)x=clientX-diameter-30;
