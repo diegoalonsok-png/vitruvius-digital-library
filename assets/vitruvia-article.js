@@ -193,10 +193,10 @@ function renderPreface(top,rows){
 
 function renderLocus(top,rows){const locus=top.locus||top.title;const editions=rows.filter(x=>x.type==="passage"&&(x.locus===top.locus)).slice(0,5);
 reset("De architectura · "+locus,phrase("Vitruvio · texto latino y traducciones","Vitruvius · Latin text and translations","Vitruve · texte latin et traductions"),phrase("Locus textual · resultados verificables","Textual locus · verified passages","Locus textuel · passages vérifiés"));
-if(top.latin){heading("Latine");paragraph(cut(top.latin,1500),"article-lead")}
+if(top.latin){heading("Latine");paragraph(cut(top.latin,1500),"article-lead vitruvian-text")}
 if(editions.length)for(const r of editions){
  heading(r.author||r.source||r.edition);
- paragraph(cut(r.translation||r.excerpt,1700));
+ paragraph(cut(r.translation||r.excerpt,1700),"vitruvian-text");
  const linkEl=href(r.link,phrase("Leer edición y página PDF →","Open edition and PDF page →","Consulter l’édition et la page PDF →"));
  if(linkEl)$("article-body").append(linkEl);
  if(r.meta)paragraph(r.meta,"article-note")
@@ -519,16 +519,40 @@ function matchVariants(q){
  }
  return [...expanded].slice(0,18)
 }
+/* Yellow marks are restricted to authenticated De architectura excerpts.
+   Biographies, encyclopedias, external articles and bibliography remain unmarked. */
 function highlightArticle(query){
  const words=matchVariants(query);
  if(!words.length)return;
- const walker=document.createTreeWalker($("article-body"),NodeFilter.SHOW_TEXT),nodes=[];
- while(walker.nextNode()){const n=walker.currentNode;if(n.parentElement?.closest("a,button,mark,script,style"))continue;nodes.push(n)}
- for(const n of nodes){const original=n.textContent,normalized=original.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),hits=[];
- for(const word of words){let at=0,pos;while((pos=normalized.indexOf(word,at))!==-1){hits.push([pos,pos+word.length]);at=pos+word.length;if(hits.length>80)break}}
- if(!hits.length)continue;hits.sort((x,y)=>x[0]-y[0]);let end=0;const f=document.createDocumentFragment();
- for(const [start,stop] of hits){if(start<end)continue;if(start>end)f.append(document.createTextNode(original.slice(end,start)));const mark=make("mark",original.slice(start,stop),"query-hit");f.append(mark);end=stop}
- if(end<original.length)f.append(document.createTextNode(original.slice(end)));n.replaceWith(f)}
+ const scopes=[...root.querySelectorAll(".person-vitruvian-list, .vitruvian-text, #article-evidence .evidence-entry")];
+ const nodes=[];
+ for(const scope of scopes){
+  const walker=document.createTreeWalker(scope,NodeFilter.SHOW_TEXT);
+  while(walker.nextNode()){
+   const n=walker.currentNode;
+   if(n.parentElement?.closest("a,button,mark,script,style,h3,h4,h5,.person-language-label,.evidence-label"))continue;
+   if(n.parentElement?.closest("p"))nodes.push(n);
+  }
+ }
+ for(const n of nodes){
+  const original=n.textContent,plain=original.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),hits=[];
+  for(const word of words){
+   let at=0,pos;
+   while((pos=plain.indexOf(word,at))!==-1){
+    hits.push([pos,pos+word.length]);at=pos+word.length;
+    if(hits.length>80)break;
+   }
+  }
+  if(!hits.length)continue;
+  hits.sort((x,y)=>x[0]-y[0]);let end=0;const f=document.createDocumentFragment();
+  for(const [from,to] of hits){
+   if(from<end)continue;
+   if(from>end)f.append(document.createTextNode(original.slice(end,from)));
+   f.append(make("mark",original.slice(from,to),"query-hit"));end=to;
+  }
+  if(end<original.length)f.append(document.createTextNode(original.slice(end)));
+  n.replaceWith(f);
+ }
 }
 function reportEvidence(rows,q){
  const box=$("article-evidence");if(!box)return;box.replaceChildren();
