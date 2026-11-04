@@ -123,6 +123,39 @@ try{
    assert.match(await p.locator('.classic-detail-status').innerText(),/LECTURA EN VITRUVIA/);
   }finally{await p.close()}
  });
+
+ await check('Vitruvia: Cicero biography first, Latin Vitruvius passages second',async()=>{
+  const page=await browser.newPage({viewport:{width:1280,height:900}});
+  await page.route(/https:\/\/(?:es|en)\.wikipedia\.org\/w\/api\.php/,async route=>{
+   const req=new URL(route.request().url()),en=req.hostname.startsWith("en.");
+   const id=en?135791:246802;
+   const payload=req.searchParams.get("list")==="search"?
+    {query:{search:[{pageid:id,title:en?"Cicero":"Cicerón",snippet:"Biografía histórica documentada de prueba.",wordcount:1100}]}}:
+    req.searchParams.get("prop")==="pageimages"?
+     {query:{pages:{[id]:{pageid:id,title:en?"Cicero":"Cicerón"}}}}:
+     {query:{pages:{[id]:{pageid:id,title:en?"Cicero":"Cicerón",
+       extract:"Biografía de prueba para verificar el orden del artículo.\n\n== Trayectoria histórica ==\nSegundo párrafo biográfico de prueba con documentación.\n\n== Obras ==\nTercer párrafo sobre obras, sin inventar hechos en producción.",
+       fullurl:"https://es.wikipedia.org/wiki/Cicer%C3%B3n"}}}};
+   await route.fulfill({status:200,contentType:"application/json",headers:{"access-control-allow-origin":"*"},
+     body:JSON.stringify(payload)});
+  });
+  try{
+   const res=await page.goto(base+'vitruvia.html?q=Cicer%C3%B3n&mode=site',
+      {waitUntil:'domcontentloaded',timeout:40000});
+   assert.equal(res?.status(),200);
+   await page.waitForFunction(()=>document.querySelector('#article-kicker')?.textContent.includes('BIOGRAFÍA'),
+    {timeout:20000});
+   await page.waitForFunction(()=>document.querySelector('#article-body')?.textContent.includes('Biografía de prueba')&&
+    document.querySelector('#article-body')?.textContent.includes('Pasajes de Vitruvio'),{timeout:20000});
+   const text=await page.locator('#article-body').innerText();
+   assert(text.indexOf('Biografía de prueba')<text.indexOf('Pasajes de Vitruvio'),
+    'The biography must precede the relevant Vitruvius passages');
+   assert.match(await page.locator('#article-title').innerText(),/Cicerón/);
+   const passages=await page.locator('.person-locus-entry').count();
+   console.log('CICERO VERIFIED LOCI',passages);
+   assert(passages>=1,'No verified Vitruvian passage was recovered for Cicero');
+  }finally{await page.close()}
+ });
 }finally{if(browser)await browser.close();server.kill()}
 if(failed){console.error('CLASSICAL VIEWER CHECK FAILURES',failed);process.exitCode=1}
 else console.log('CLASSICAL VIEWER CHECKS: ALL PASS');
