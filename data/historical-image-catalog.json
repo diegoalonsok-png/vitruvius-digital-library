@@ -1,0 +1,35 @@
+{
+  "schema": "vitruvia-documented-images-v1",
+  "policy": "Los testimonios históricos se ordenan por la fecha aproximada del OBJETO, no por fecha de publicación/subida de la fotografía. Las dataciones, atribuciones e interpretaciones se deben respaldar documentalmente. No presentar identificaciones controvertidas como seguras.",
+  "entries": [
+    {
+      "subject": "Q345",
+      "title": "Virgen con el Niño y un profeta",
+      "workDateStart": 200,
+      "workDateEnd": 250,
+      "period": "Primera mitad del siglo III d. C. (datación aproximada)",
+      "location": "Catacumbas de Priscila, Roma",
+      "attribution": "Pintor paleocristiano desconocido",
+      "confidence": "identificación histórica tradicional",
+      "file": "File:Madonna catacomb.jpg",
+      "catalogue": "https://commons.wikimedia.org/wiki/File:Madonna_catacomb.jpg",
+      "institutionalSource": "https://press.vatican.va/roman_curia/pontifical_commissions/archeo/spagnolo/documents/rc_com_archeo_doc_20011010_cataccrist_sp.html",
+      "interpretation": "María con el Niño; el personaje masculino se interpreta como un profeta, posiblemente Balaam o Isaías. La fecha exacta es debatida."
+    },
+    {
+      "subject": "Q345",
+      "title": "Mujer junto al pozo · baptisterio de Dura-Europos",
+      "workDateStart": 235,
+      "workDateEnd": 256,
+      "period": "Hacia 240 d. C.",
+      "location": "Dura-Europos (Siria); Yale University Art Gallery, inv. 1932.1204.2",
+      "attribution": "Pintor paleocristiano desconocido",
+      "confidence": "atribución iconográfica discutida",
+      "file": "File:Baptistery wall painting, Woman at the Well - YDEA - 34502.jpg",
+      "catalogue": "https://commons.wikimedia.org/wiki/File:Baptistery_wall_painting,_Woman_at_the_Well_-_YDEA_-_34502.jpg",
+      "institutionalSource": "https://duraeuropos.artgallery.yale.edu/christian-building",
+      "study": "https://doi.org/10.12987/yale/9780300213997.003.0006",
+      "interpretation": "Michael Peppard propone identificar a la mujer como María en la Anunciación; Yale documenta también la lectura tradicional de la samaritana. No existe consenso inequívoco."
+    }
+  ]
+}
