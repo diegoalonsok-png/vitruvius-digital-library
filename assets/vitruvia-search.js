@@ -497,6 +497,7 @@ function entityEvidence(row,query){
  const aliases=(row.aliases||[]).some(a=>norm(a)===q)||norm(row.entityCanonical||"")===q;
  // Long natural-language searches may also match an appropriate descriptive title.
  if(allTitle||aliases)return true;
+ if(row.externalFulltext)return true; // The external full-text provider reports matches inside its indexed text.
  // Documentary corpus, catalogues and primary texts are assessed independently.
  if(["passage","book","edition","manuscript","preface","section"].includes(row.type))return true;
  const coverage=terms.filter(t=>titleTokens.includes(t)).length/terms.length;
@@ -516,23 +517,26 @@ function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row
 function display(rows,query,phase){
  const romanVitruvius=/^(vitruvio|vitruvius|vitruve|marco vitruvio polion|marcus vitruvius pollio)$/i.test(norm(query));
  const scored=rows.filter(r=>(!romanVitruvius||!(/agustin vitruvio|agustín vitruvio|augustin vitruvio/i.test(r.title||"")))&&entityEvidence(r,query)).slice().sort((a,b)=>((b.rating||0)+titleMatch(b,query)+(S.mode==="ai"&&b.aiEvidence?2800:0))-((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0))),deduped=[],seen=new Set();
- for(const r of scored){const k=r.type+":"+norm(r.title)+(r.type==="passage"?":"+norm(r.edition||r.author||r.meta||""):"");if(seen.has(k))continue;seen.add(k);deduped.push(r)}
+ for(const r of scored){const k=r.type+":"+norm(r.title)+(r.type==="passage"?":"+norm(r.edition||r.author||r.meta||""):r.externalFulltext?":"+norm(r.author||""):"");if(seen.has(k))continue;seen.add(k);deduped.push(r)}
  const list=$("result-list");list.replaceChildren();
  // Present library evidence after encyclopedic context without hiding editions.
  const encyclopediaTypes=new Set(["wikipedia","wikidata","topic"]);
  const libraryTypes=new Set(["passage","book","manuscript","edition","preface","section"]);
+ const textExternalTypes=new Set(["text-external"]);
  const ordered=S.mode==="ai"
   ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,2),
      ...deduped.filter(r=>r.aiEvidence).sort((a,b)=>(b.aiScore||0)-(a.aiScore||0)),
      ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)),
-     ...deduped.filter(r=>!r.aiEvidence&&r.type!=="manuscript"&&!encyclopediaTypes.has(r.type)),
+     ...deduped.filter(r=>textExternalTypes.has(r.type)),
+     ...deduped.filter(r=>!r.aiEvidence&&r.type!=="manuscript"&&!encyclopediaTypes.has(r.type)&&!textExternalTypes.has(r.type)),
      ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(2)]
   : S.mode==="all"
   ? [...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(0,8),
      ...deduped.filter(r=>r.type==="manuscript").sort((a,b)=>Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||(a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating),
+     ...deduped.filter(r=>textExternalTypes.has(r.type)),
      ...deduped.filter(r=>r.historicalEdition).sort((a,b)=>a.editionYear-b.editionYear),
      ...deduped.filter(r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&!r.historicalEdition),
-     ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)),
+     ...deduped.filter(r=>!encyclopediaTypes.has(r.type)&&!libraryTypes.has(r.type)&&!textExternalTypes.has(r.type)),
      ...deduped.filter(r=>encyclopediaTypes.has(r.type)).slice(8)]
   : deduped;
  if(!ordered.length)list.append(node("div","empty",T().none));
@@ -540,9 +544,9 @@ function display(rows,query,phase){
   let lastGroup="";
   for(const r of ordered.slice(0,S.visibleResultCount)){
    if(S.mode==="all"||S.mode==="ai"){
-    const group=r.aiEvidence?"semantic":encyclopediaTypes.has(r.type)?"encyclopedia":libraryTypes.has(r.type)?"library":"research";
+    const group=r.aiEvidence?"semantic":encyclopediaTypes.has(r.type)?"encyclopedia":textExternalTypes.has(r.type)?"external-texts":libraryTypes.has(r.type)?"library":"research";
     if(group!==lastGroup){
-     const section=node("h3","vitruvia-result-group",group==="semantic"?"IA semántica · fragmentos auténticos del corpus":group==="encyclopedia"?"Enciclopedia y contexto histórico":group==="library"?"Dentro de la Biblioteca Vitruviana":"Investigación y catálogos externos");
+     const section=node("h3","vitruvia-result-group",group==="semantic"?"IA semántica · fragmentos del corpus":group==="encyclopedia"?"Enciclopedia y contexto histórico":group==="external-texts"?"Textos completos en bibliotecas externas · Wikisource":group==="library"?"Dentro de la Biblioteca Vitruviana":"Investigación y catálogos externos");
      section.setAttribute("data-result-group",group);list.append(section);lastGroup=group;
     }
    }
@@ -589,7 +593,7 @@ async function search(){
  $("clear-search").hidden=false;
  restoreFeature();
  history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
- const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=["all","site","concept"].includes(mode);
+ const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=["all","site","concept","ai"].includes(mode);
  const engine=window.VitruviaResearchEngine;
  const intent=engine?.classify(q);
  // Una signatura, un manuscrito identificado o un locus exacto se resuelven
@@ -617,6 +621,12 @@ async function search(){
   if(rows.length)display(rows,q,T().searching)
  }
  const pending=[];
+ if(["all","external","ai"].includes(mode)&&window.VitruviaExternalTexts){
+  pending.push(window.VitruviaExternalTexts.search(generalQuery).then(result=>({
+   name:"Búsqueda dentro de textos · Wikisource "+result.sources.join("/"),
+   rows:result.rows||[],warnings:result.errors||[]
+  })).catch(e=>({name:"Textos externos no disponibles",rows:[],warnings:[String(e.message||e)]})));
+ }
  if(["all","external","ai"].includes(mode)&&window.VitruviaArchives){
   pending.push(window.VitruviaArchives.search(generalQuery).then(value=>{
    const linked=value.rows||[];
