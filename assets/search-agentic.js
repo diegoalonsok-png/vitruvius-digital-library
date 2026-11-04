@@ -56,15 +56,16 @@ async function search(q){
  const [cs,bs]=await Promise.all([chunks(),bibliography()]);
  const locus=/^(?:[ivx]+|\d{1,2})\.\d{1,2}\.\d{1,2}$/i.test(query);
  const detected=cs.map(c=>{
-  const corpus=(c.texto||"")+" "+(c.traduccion||"");
-  const exact=containsWord(corpus,query);
-  const score=locus?Number(normalize(c.locus)===query)*100:(exact?85:relevant(corpus,tt)*8);
-  return {c,score,exact};
+  const latin=c.texto||"",translation=c.traduccion||"";
+  const exact=containsWord(latin,query)||containsWord(translation,query);
+  const latinScore=relevant(latin,tt),translationScore=relevant(translation,tt);
+  const score=locus?Number(normalize(c.locus)===query)*100:(exact?85:Math.max(latinScore,translationScore)*8);
+  return {c,score,exact,latinScore,translationScore};
  }).filter(h=>h.score>0).sort((a,b)=>b.score-a.score).slice(0,30);
- const passages=detected.map(({c,score,exact})=>({
+ const passages=detected.map(({c,score,exact,latinScore,translationScore})=>({
   type:"passage",title:"De architectura · "+c.locus,author:(c.edicion||"Edición")+" · "+(c.language||""),
   latin:c.texto||"",translation:c.traduccion||"",locus:c.locus,
-  excerpt:excerptAt(c.traduccion||c.texto||"",tt),
+  excerpt:excerptAt(latinScore>translationScore?c.texto:c.traduccion||c.texto,tt),
   meta:"Fuente textual verificada · "+(c.pagina_pdf?"p. PDF "+c.pagina_pdf+" · ":"")+"locus "+c.locus,
   link:c.lector||"lector-bilingue.html",edition:c.edicion,
   rating:score,source:"Corpus textual",
@@ -90,5 +91,5 @@ async function search(q){
  }).filter(Boolean).sort((a,b)=>b.rating-a.rating).slice(0,25);
  return {rows:[...passages,...bibliographyRows],stats:{chunks:cs.length,bibliography:bs.length,passages:passages.length,exact:detected.filter(h=>h.exact).length}};
 }
-window.VitruviaAgentic={search,version:"1.0-indexed-text"};
+window.VitruviaAgentic={search,version:"1.1-bilingual-evidence"};
 })();
