@@ -209,6 +209,27 @@ phrase("Manuscrito · archivo de autoridad","Manuscript · authority record","Ma
 paragraph(top.excerpt,"article-lead");
 if(top.meta)paragraph(top.meta);
 heading(phrase("Consulta del documento","Consult the document","Consulter le document"));
+if(top.localViewer){
+ const local=make("div",undefined,"article-local-reader-feature");
+ local.append(make("h3",phrase("Leer el códice original folio a folio",
+  "Read the original codex folio by folio","Lire le codex original folio par folio")));
+ const count=top.localFolioCount||341;
+ const explanation=phrase(
+  "Fotografías del manuscrito disponibles dentro de esta biblioteca: "+count+" imágenes. Elegí un folio, avanzá por el códice y ampliá la escritura. El documento original se conserva en "+top.author+".",
+  "Manuscript photographs hosted in this library: "+count+" images. Select folios, turn pages and magnify the text. Original held at "+top.author+".",
+  "Photographies hébergées dans cette bibliothèque : "+count+" images. Parcourez les folios et agrandissez l'écriture. Manuscrit conservé à "+top.author+".");
+ local.append(make("p",explanation));
+ const actions=make("div",undefined,"article-local-actions");
+ if(window.VitruviaLocalManuscripts){
+  const open=make("button",phrase("Abrir visor en Vitruvia","Open reader in Vitruvia","Ouvrir le lecteur dans Vitruvia"));
+  open.type="button";open.className="article-local-viewer";
+  open.addEventListener("click",()=>window.VitruviaLocalManuscripts.open(top.localViewer,top.title));
+  actions.append(open);
+ }
+ const link=href(top.localViewer,phrase("Abrir lector completo · folios y lupa","Open full reader · folios and zoom","Ouvrir le lecteur complet · folios et zoom"));
+ if(link)actions.append(link);
+ local.append(actions);$("article-body").append(local);
+}
 const links=[{title:top.title,link:top.link},...(top.links||[]).map(x=>({title:x.label,link:x.url}))];
 const div=make("div",undefined,"article-actions");
 for(const r of links){const a=href(r.link,r.title);if(a){a.className="article-index-link";div.append(a)}}
