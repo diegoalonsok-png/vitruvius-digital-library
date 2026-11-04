@@ -833,25 +833,30 @@ html[data-theme=light] .vitruvius-edition p{color:#555}
   title.textContent=language==='en'?'Documentary images':language==='fr'?'Images documentaires':'Imágenes documentales';
   const isCodexH=/\b(harleianus|harley(?:\s+ms)?\s*2767|codex\s*h\b|harleian(?:us)?)\b/i.test(q);
   if(isCodexH){await showCodexH(current);return}
+  const deity=/^(dios|dioses|deidad|deidades|divinidad|god|gods|deity|deities|dieu|dieux)$/i.test(q);
   status.textContent='Buscando imágenes pertinentes en Wikimedia Commons…';
   link('Wikimedia Commons','https://commons.wikimedia.org/w/index.php?search='+encodeURIComponent(q)+'&title=Special:MediaSearch&type=image');
   link('Google Imágenes','https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q));
   link('Europeana','https://www.europeana.eu/es/search?query='+encodeURIComponent(q));
-  // A quoted query reduces unrelated matches; only names matching the searched terms are shown.
-  const p=new URLSearchParams({action:'query',generator:'search',gsrsearch:'"'+q+'"',gsrnamespace:'6',gsrlimit:'35',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'380',format:'json',origin:'*'});
+  // Thematic searches need iconographic concepts, not an exact Spanish title.
+  const searches=deity?['Zeus statue','Shiva sculpture','Osiris Egyptian god','Jupiter Roman god','Christian icon God']:['"'+q+'"'];
+  const makeParams=term=>new URLSearchParams({action:'query',generator:'search',gsrsearch:term,gsrnamespace:'6',gsrlimit:'12',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'380',format:'json',origin:'*'});
   abort=new AbortController();
   try{
    const controller=abort,timer=setTimeout(()=>controller.abort(),12000);
-   let response;try{response=await fetch('https://commons.wikimedia.org/w/api.php?'+p.toString(),{signal:controller.signal,headers:{Accept:'application/json'}})}finally{clearTimeout(timer)}
-   if(!response.ok)throw Error('HTTP '+response.status);
-   const data=await response.json();
+   let pages=[];
+   try{
+    const results=await Promise.allSettled(searches.map(term=>fetch('https://commons.wikimedia.org/w/api.php?'+makeParams(term).toString(),{signal:controller.signal,headers:{Accept:'application/json'}}).then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.json()})));
+    pages=results.filter(x=>x.status==='fulfilled').flatMap(x=>Object.values(x.value.query?.pages||{})).sort((x,y)=>(x.index||999)-(y.index||999));
+   }finally{clearTimeout(timer)}
    if(current!==requestId)return;
-   const pages=Object.values(data.query?.pages||{}).sort((a,b)=>(a.index||999)-(b.index||999));
    let count=0;
+   const seenImages=new Set();
    for(const page of pages){
     const info=page.imageinfo?.[0],name=page.title?.replace(/^File:/,'').replace(/_/g,' ')||'';
     if(!info?.thumburl||!info?.descriptionurl||!String(info.mime||'').startsWith('image/'))continue;
-    if(!matchTitle(q,name))continue;
+    if(!deity&&!matchTitle(q,name))continue;
+    if(seenImages.has(info.descriptionurl))continue;seenImages.add(info.descriptionurl);
     const a=add(grid,'a','vitruvia-image-card');a.href=info.descriptionurl;a.target='_blank';a.rel='noopener noreferrer';
     const img=add(a,'img');img.src=info.thumburl;img.loading='lazy';img.decoding='async';img.alt=name;
     const cap=add(a,'div','image-caption',name);add(cap,'span','image-origin','Wikimedia Commons · ficha y licencia');count++;
@@ -873,7 +878,7 @@ html[data-theme=light] .vitruvius-edition p{color:#555}
 })();
 </script>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261104-scholarly-order-v10" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-deity-encyclopedia-v11" defer></script>
 <script src="assets/vitruvia-search.js?v=20261104-universal-academic-v9" defer></script>
 <script>
 document.addEventListener('click',function(event){
