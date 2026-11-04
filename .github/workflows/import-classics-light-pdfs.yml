@@ -1,0 +1,109 @@
+name: Incorporar dos PDF clásicos de dominio público
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-classics-light-pdfs.yml'
+permissions:
+  contents: write
+concurrency:
+  group: import-classics-light-pdfs
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF validator
+        run: python -m pip install --disable-pip-version-check pymupdf requests
+      - name: Download only authenticated public-domain archival files under a strict size cap
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, requests, fitz
+          files = [
+            {
+              'name':'cicero-de-officiis-miller-1913.pdf',
+              'sources':[
+                'https://upload.wikimedia.org/wikipedia/commons/5/5d/De_Officiis.pdf',
+                'https://archive.org/download/deofficiiswithen00ciceuoft/deofficiiswithen00ciceuoft.pdf'
+              ],
+              'bytes':14460506,
+              'sha1':'5f590d1569deab3313f19dc80b5b89c8a5095e4d',
+              'pages':450,
+              'work':'Cicero, De officiis, Walter Miller translation, William Heinemann, 1913',
+              'rights':'https://commons.wikimedia.org/wiki/File:De_Officiis.pdf'
+            },
+            {
+              'name':'epictetus-theophrastus-greek-1870.pdf',
+              'sources':[
+                'https://upload.wikimedia.org/wikipedia/commons/b/b6/Characteres%2C_Epicteti_Manuale_et_Cebetis_Thebani_Tabula_%28IA_characteresepict00theo%29.pdf',
+                'https://archive.org/download/characteresepict00theo/characteresepict00theo.pdf'
+              ],
+              'bytes':5024353,
+              'sha1':'5a431e1adf3e1e49867da5c3ff492e082ff255ad',
+              'pages':102,
+              'work':'Theophrastus / Epictetus / Cebes, Greek-language scholarly edition, Leipzig, 1870',
+              'rights':'https://commons.wikimedia.org/wiki/File:Characteres,_Epicteti_Manuale_et_Cebetis_Thebani_Tabula_(IA_characteresepict00theo).pdf'
+            }
+          ]
+          folder=pathlib.Path('documents/classics')
+          folder.mkdir(parents=True,exist_ok=True)
+          problems=[]
+          for record in files:
+            dest=folder/record['name']
+            if dest.exists():
+              print('Already present:',dest,dest.stat().st_size)
+              continue
+            ok=False
+            for source in record['sources']:
+              try:
+                with requests.get(source,timeout=(20,100),stream=True,headers={'User-Agent':'VitruviusDigitalLibrary/1.0 (+https://github.com/diegoalonsok-png/vitruvius-digital-library)'}) as response:
+                  response.raise_for_status()
+                  length=0
+                  digest=hashlib.sha1()
+                  with open(str(dest)+'.tmp','wb') as handle:
+                    for chunk in response.iter_content(1024*256):
+                      if not chunk:continue
+                      length+=len(chunk)
+                      if length>16*1024*1024:
+                        raise ValueError('File exceeds 16 MiB safety limit')
+                      digest.update(chunk)
+                      handle.write(chunk)
+                temp=pathlib.Path(str(dest)+'.tmp')
+                if length!=record['bytes'] or digest.hexdigest()!=record['sha1']:
+                  raise ValueError('Unexpected byte count or SHA-1; refusing to publish')
+                if temp.open('rb').read(5)!=b'%PDF-':
+                  raise ValueError('Not a PDF')
+                with fitz.open(temp) as pdf:
+                  if len(pdf)!=record['pages']:
+                    raise ValueError(f'Unexpected PDF length: {len(pdf)}')
+                temp.rename(dest)
+                print('IMPORTED:',dest,'bytes',length,'pages',record['pages'],'source',source)
+                ok=True
+                break
+              except Exception as exc:
+                pathlib.Path(str(dest)+'.tmp').unlink(missing_ok=True)
+                print('Source failed:',source,str(exc)[:250])
+            if not ok:problems.append(record['name'])
+          if problems:
+            print('NOT IMPORTED:',', '.join(problems))
+          else:
+            print('All lightweight public-domain PDFs imported with checksum validation.')
+          PY
+      - name: Commit only validated PDFs (do not overwrite any existing research files)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/classics/*.pdf
+          if git diff --cached --quiet; then
+            echo "No new validated PDFs were downloaded."
+          else
+            git commit -m "Archive verified lightweight Greek and Latin classical PDF editions"
+            git push
+          fi
