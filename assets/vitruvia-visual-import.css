@@ -1,0 +1,114 @@
+/* Discreet camera and attachments on the Vitruvia search bar. */
+html body #search-form button.vr-visual-icon{
+ box-sizing:border-box!important;display:inline-flex!important;
+ align-items:center!important;justify-content:center!important;
+ flex:0 0 34px!important;width:34px!important;height:34px!important;
+ min-width:34px!important;min-height:34px!important;
+ padding:0!important;margin:0!important;border:1px solid transparent!important;
+ border-radius:50%!important;background:transparent!important;
+ box-shadow:none!important;color:#aaa!important;
+ cursor:pointer;
+}
+html body #search-form button.vr-visual-icon svg{width:20px;height:20px;display:block;stroke:currentColor}
+html body #search-form button.vr-visual-add{
+ flex-basis:25px!important;width:25px!important;min-width:25px!important;
+ font:400 24px/1 Arial,Helvetica,sans-serif!important;
+}
+html body #search-form button.vr-visual-icon:is(:hover,:focus-visible),
+html body #search-form button.vr-visual-icon[aria-expanded=true]{
+ background:#353638!important;border-color:#73767a!important;color:#f7f6f4!important;
+}
+html[data-theme=light] body #search-form button.vr-visual-icon{color:#555!important}
+html[data-theme=light] body #search-form button.vr-visual-icon:is(:hover,:focus-visible),
+html[data-theme=light] body #search-form button.vr-visual-icon[aria-expanded=true]{
+ background:#e5e5e5!important;border-color:#888!important;color:#151515!important
+}
+.vr-visual-panel{
+ position:absolute;left:0;top:calc(100% + 6px);z-index:700;
+ box-sizing:border-box;width:min(580px,100%);
+ padding:19px;border:1px solid #676a6d;border-radius:17px;
+ box-shadow:0 15px 45px #0009;background:#222325;color:#f1f1ef;
+ font:400 13px/1.45 Arial,Helvetica,sans-serif;
+}
+.vr-visual-panel[hidden],.vr-visual-panel [hidden]{display:none!important}
+.vr-visual-panel .vr-visual-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px}
+.vr-visual-panel .vr-visual-head strong{font:600 17px/1.3 Georgia,serif}
+.vr-visual-panel button,.vr-visual-panel a{
+ box-sizing:border-box;min-height:35px;padding:8px 10px;
+ border:1px solid #696b6f;border-radius:8px;
+ background:#37383a;color:inherit;text-decoration:none;
+ font:500 12px/1.3 Arial,Helvetica,sans-serif;
+ display:inline-flex;align-items:center;justify-content:center;
+ cursor:pointer;
+}
+.vr-visual-panel .vr-visual-close{width:34px;min-height:34px;font-size:22px;padding:2px}
+.vr-visual-panel button:is(:hover,:focus-visible),.vr-visual-panel a:is(:hover,:focus-visible){
+ background:#45474b;border-color:#999;
+}
+.vr-visual-panel .vr-visual-actions{
+ display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:12px;
+}
+.vr-visual-panel label{display:block;margin:12px 0 6px;color:#c5c6c8;font-size:12px}
+.vr-visual-panel input:not([type=file]){
+ display:block;box-sizing:border-box;width:100%;min-width:0;
+ padding:10px 11px;border-radius:8px;border:1px solid #777a80;
+ font:400 13px/1.3 Arial,Helvetica,sans-serif;
+ background:#171819;color:#f0f0ee;
+}
+.vr-visual-panel .vr-visual-url-row{display:flex;align-items:center;gap:8px}
+.vr-visual-panel .vr-visual-url-row input{flex:1 1 auto}
+.vr-visual-panel .vr-visual-url-row button{flex:0 0 auto}
+.vr-visual-panel .vr-visual-preview{
+ display:flex;gap:12px;align-items:center;
+ padding:10px;border:1px solid #616369;border-radius:10px;
+ background:#303135;
+}
+.vr-visual-panel .vr-visual-preview img{
+ width:75px;height:65px;object-fit:contain;border-radius:6px;background:#171819;
+}
+.vr-visual-panel .vr-visual-file-copy{display:flex;flex-direction:column;flex:1 1 auto;gap:4px;min-width:0}
+.vr-visual-panel .vr-visual-file-copy strong{
+ font:500 12px/1.5 Arial,Helvetica,sans-serif;overflow-wrap:anywhere;
+}
+.vr-visual-panel .vr-visual-file-copy small{color:#c4c4c5;font:400 11px/1.4 Arial,Helvetica,sans-serif}
+.vr-visual-panel .vr-visual-preview #vr-visual-remove{font-size:20px;padding:5px;width:33px;min-width:33px}
+.vr-visual-panel .vr-visual-submit{
+ display:flex;justify-content:center;width:100%;margin-top:12px;
+ border-color:#a1a3a7;background:#44464a;font-weight:650;
+}
+.vr-visual-panel .vr-visual-note{
+ font:400 11px/1.5 Arial,Helvetica,sans-serif;
+ color:#c0c1c3;margin:12px 0 5px!important;
+}
+.vr-visual-panel .vr-visual-status{
+ min-height:13px;font:500 11px/1.4 Arial,Helvetica,sans-serif;
+ color:#e4d7bd;margin:8px 0 0!important;
+}
+.vr-visual-panel :is(button,input,a):focus-visible{outline:2px solid #e8cfa1;outline-offset:2px}
+html[data-theme=light] .vr-visual-panel,html[data-reading-background-tone=light] .vr-visual-panel{
+ background:#f5f5f3;color:#202124;border-color:#9d9fa3;box-shadow:0 12px 32px #0003;
+}
+html[data-theme=light] .vr-visual-panel :is(button,a),html[data-reading-background-tone=light] .vr-visual-panel :is(button,a){
+ background:#e3e4e5;color:#202124;border-color:#a9aeb1;
+}
+html[data-theme=light] .vr-visual-panel label,html[data-reading-background-tone=light] .vr-visual-panel label{color:#50545a}
+html[data-theme=light] .vr-visual-panel input:not([type=file]),html[data-reading-background-tone=light] .vr-visual-panel input:not([type=file]){
+ background:white;color:#1e1e20;border-color:#a0a4ab;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-preview,html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-preview{
+ background:#ececed;border-color:#aaa;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-note,html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-note,
+html[data-theme=light] .vr-visual-panel .vr-visual-file-copy small,html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-file-copy small{color:#52565d}
+@media(max-width:620px){
+ html body #search-form button.vr-visual-icon{
+  width:30px!important;min-width:30px!important;flex-basis:30px!important;
+ }
+ html body #search-form button.vr-visual-add{
+  width:23px!important;min-width:23px!important;flex-basis:23px!important;
+ }
+ .vr-visual-panel{padding:13px;border-radius:13px;max-height:72dvh;overflow-y:auto}
+ .vr-visual-panel .vr-visual-url-row{flex-wrap:wrap}
+ .vr-visual-panel .vr-visual-url-row button{min-width:100%}
+}
+@media print{.vr-visual-panel,#vr-visual-camera,#vr-visual-add{display:none!important}}
