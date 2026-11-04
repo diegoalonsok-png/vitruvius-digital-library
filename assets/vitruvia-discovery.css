@@ -68,3 +68,83 @@ body.vitruvia-reading #vitruvia-article .article-body p:not(.article-note){
   orphans:3;widows:3;
  }
 }
+
+
+/* Classical reading: a prominent edition link, not just an inline text link.
+   Never use a "Read" CTA for catalogue-only records. */
+#vitruvia-article .article-original-readings{
+ display:grid;gap:11px;padding:15px 0 20px;max-width:100%;
+}
+#vitruvia-article .article-original-readings>h4{
+ margin:0 0 6px!important;font-size:1.15rem!important;
+}
+#vitruvia-article .article-original-reading-card{
+ display:flex;align-items:center;justify-content:space-between;gap:17px;
+ padding:17px 19px;margin:0!important;
+ border:1px solid var(--vr-control-border,#515357);
+ border-left:3px solid #9b9996;
+ border-radius:9px;
+ background:var(--vr-control-bg,#1c1d1f);
+ color:var(--vr-page-ink,#eee);
+ font-family:Arial,Helvetica,sans-serif;
+}
+#vitruvia-article .article-original-reading-details{
+ display:flex;flex-direction:column;align-items:flex-start;gap:5px;
+ flex:1 1 45%;min-width:0;
+}
+#vitruvia-article .article-original-reading-eyebrow{
+ font:600 10px/1.5 Arial,Helvetica,sans-serif!important;
+ letter-spacing:.10em;color:var(--vr-page-muted,#b1b3b5);
+}
+#vitruvia-article .article-original-reading-title{
+ font:600 clamp(17px,1.4vw,22px)/1.35 Georgia,'Times New Roman',serif!important;
+ overflow-wrap:break-word;
+}
+#vitruvia-article .article-original-reading-note{
+ font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+ color:var(--vr-page-muted,#b1b3b5);
+}
+#vitruvia-article .article-original-reading-actions{
+ display:flex;flex:0 0 auto;flex-direction:column;
+ justify-content:center;align-items:flex-end;gap:8px;
+ max-width:min(50%,330px);
+}
+#vitruvia-article .article-original-reading-cta{
+ display:inline-flex;justify-content:center;align-items:center;
+ border:1px solid #858789;border-radius:7px;
+ padding:10px 14px;text-decoration:none!important;
+ font:600 13px/1.4 Arial,Helvetica,sans-serif!important;
+ color:var(--vr-page-ink,#f5f5f5)!important;
+ background:rgba(135,139,142,.14);
+ min-height:41px;text-align:center;
+}
+#vitruvia-article .article-original-reading-cta:is(:hover,:focus-visible){
+ background:rgba(135,139,142,.29);border-color:#b3b6b8;
+}
+#vitruvia-article .article-original-reading-record{
+ color:var(--vr-page-muted,#b5b7b8)!important;
+ font:400 11px/1.4 Arial,Helvetica,sans-serif!important;
+ text-decoration:underline;text-underline-offset:3px;
+}
+#vitruvia-article .article-original-reading-card.is-contextual{
+ margin:12px 0 25px!important;
+ padding:14px 17px;max-width:100%;
+}
+#vitruvia-article .article-original-reading-card.is-contextual .article-original-reading-title{
+ font-size:18px!important;
+}
+@media(max-width:700px){
+ #vitruvia-article .article-original-reading-card{
+  flex-direction:column;align-items:stretch;padding:13px;gap:12px;
+ }
+ #vitruvia-article .article-original-reading-actions{
+  align-items:stretch;max-width:100%;width:100%;
+ }
+ #vitruvia-article .article-original-reading-cta{
+  width:100%;box-sizing:border-box;
+ }
+}
+@media print{
+ #vitruvia-article .article-original-reading-card{break-inside:avoid-page;background:transparent!important;border-color:#777!important}
+ #vitruvia-article .article-original-reading-cta{color:#111!important;border-color:#555!important;background:transparent!important}
+}
