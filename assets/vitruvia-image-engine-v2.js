@@ -4,7 +4,7 @@
 const section=document.getElementById("vitruvia-images"),grid=document.getElementById("vitruvia-image-grid"),actions=document.getElementById("vitruvia-image-actions");
 const status=document.getElementById("image-results-status"),heading=document.getElementById("image-results-title");
 if(!section||!grid||!actions||!status||!heading)return;
-let active=0,controller=null;
+let active=0,controller=null,currentImageQuery="";
 const create=(parent,tag,cls,content)=>{
  const el=document.createElement(tag);if(cls)el.className=cls;
  if(content!==undefined)el.textContent=content;parent.append(el);return el;
@@ -134,6 +134,10 @@ function displayGroups(items,topic){
   const selected=window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5);
   selected.forEach(item=>displayItem(item,strip));
  }
+ // Only already-vetted Wikimedia files are shared with the featured illustration.
+ window.dispatchEvent(new CustomEvent("vitruvia:documentary-images",{
+  detail:{query:currentImageQuery,kind:topic.kind,items:items.slice(0,12)}
+ }));
 }
 async function localCodex(id){
  heading.textContent="Codex Harleianus · Harley MS 2767";
@@ -157,7 +161,7 @@ async function localCodex(id){
  }catch{if(id===active)status.textContent="Abrir galería local de manuscritos."}
 }
 async function searchImages(query){
- const q=String(query||"").trim();reset();if(!q)return;
+ const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
  heading.textContent=locale("Imágenes y fuentes visuales","Images and visual sources","Images et sources visuelles");
  status.textContent=locale("Buscando obras y fotografías documentadas…","Searching documented artworks and photographs…","Recherche d’œuvres et de photographies documentées…");
