@@ -1,0 +1,95 @@
+name: Incorporar PDF clásicos bilingües (Internet Archive)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: import-classics-ia-batch
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF validator
+        run: python -m pip install --disable-pip-version-check pymupdf requests
+      - name: Download public-domain bilingual editions within size limits
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, requests, fitz
+          UA={'User-Agent':'VitruviusDigitalLibrary/1.0 (github.com/diegoalonsok-png/vitruvius-digital-library)'}
+          cfg=json.loads(pathlib.Path('data/classics-pdf-candidates.json').read_text(encoding='utf-8'))
+          maxfile=cfg['limits']['maxFileMiB']*1024*1024; maxbatch=cfg['limits']['maxBatchMiB']*1024*1024
+          folder=pathlib.Path('documents/classics'); folder.mkdir(parents=True, exist_ok=True)
+          catfile=pathlib.Path('data/bibliotheca-graeca-latina-I-bce-I-ce.json'); reffile=pathlib.Path('data/bibliotheca-testimonia-verified.json')
+          catalog=json.loads(catfile.read_text(encoding='utf-8')); refs=json.loads(reffile.read_text(encoding='utf-8'))
+          idx={w['id']:w for w in catalog['works']}; editions=refs.setdefault('editions',[])
+          total=0; passed=[]; failed=[]
+          for c in cfg['candidates']:
+            dest=folder/c['file']
+            if c['work'] not in idx: failed.append((c['file'],'work id not in catalogue')); continue
+            if dest.exists(): print('ALREADY PRESENT',dest); continue
+            done=False
+            for ia in c['ia']:
+              try:
+                meta=requests.get(f'https://archive.org/metadata/{ia}',headers=UA,timeout=40).json()
+                status=(meta.get('metadata',{}).get('possible-copyright-status') or '')
+                year=str(meta.get('metadata',{}).get('date',''))[:4]
+                if status and status!='NOT_IN_COPYRIGHT' and not (year.isdigit() and int(year)<1929):
+                  raise ValueError('rights status not public domain: '+status)
+                pdfs=[f for f in meta.get('files',[]) if f.get('name','').lower().endswith('.pdf') and f.get('size')]
+                pdfs=sorted(pdfs,key=lambda f:int(f['size']))
+                pdfs=[f for f in pdfs if int(f['size'])<=maxfile]
+                if not pdfs: raise ValueError('no PDF within size limit')
+                textpdfs=[x for x in pdfs if x.get('format')=='Text PDF']
+                f=(textpdfs or pdfs)[-1]
+                size=int(f['size'])
+                if total+size>maxbatch: raise ValueError('batch size limit reached')
+                url=f'https://archive.org/download/{ia}/'+requests.utils.quote(f['name'])
+                raw=requests.get(url,headers=UA,timeout=(30,300)).content
+                if len(raw)!=size or not raw.startswith(b'%PDF-'): raise ValueError('download incomplete or not a PDF')
+                with fitz.open(stream=raw,filetype='pdf') as pdf:
+                  if pdf.is_encrypted or len(pdf)<50: raise ValueError('encrypted or too few pages')
+                  pages=len(pdf)
+                dest.write_bytes(raw); total+=size
+                passed.append(dict(c,ia_used=ia,bytes=size,pages=pages,sha1=hashlib.sha1(raw).hexdigest(),source='https://archive.org/details/'+ia))
+                print('VERIFIED',dest,size,'bytes',pages,'pages',ia); done=True; break
+              except Exception as e:
+                print('REJECTED',ia,str(e)[:200])
+            if not done: failed.append((c['file'],'all sources rejected'))
+          for r in passed:
+            w=idx[r['work']]; local='documents/classics/'+r['file']
+            orig='GRIEGO ORIGINAL' if r['language']=='grc' else 'LATÍN ORIGINAL'
+            current={'url':local,'language':r['language'],'role':'original','label':orig+' + TRADUCCIÓN INGLESA · '+r['year'],
+              'status':r['note'],'sizeBytes':r['bytes'],'pages':r['pages'],'sha1':r['sha1'],
+              'rights':'Edición histórica de dominio público; ejemplar de Internet Archive.','source':r['source'],
+              'coverage':'texto original y traducción enfrentados','publicationYear':r['year'],'editor':r['editor']}
+            versions=[x for x in w.get('pdfEditions',[]) if x.get('url')!=local]
+            if w.get('pdf',{}).get('url') and not any(x.get('url')==w['pdf']['url'] for x in versions): versions.append(w['pdf'])
+            w['pdfEditions']=[current,*versions]; w['pdf']=current; w['publicStatus']='lectura-local-completa'
+            w.setdefault('reading',{})['status']=r['note']
+            if not any(e.get('workId')==r['work'] and e.get('url')==local for e in editions):
+              editions.append({'workId':r['work'],'title':w['title']+' · texto y traducción '+r['year'],'year':r['year'],'editor':r['editor'],
+                'langs':[r['language'],r['translation']],'type':'pdf-historico-bilingue','url':local,
+                'provider':'Internet Archive · ejemplar depositado en GitHub','note':r['note']+' Fuente: '+r['source']})
+          if passed:
+            catfile.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+            reffile.write_text(json.dumps(refs,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('ADDED',len(passed),'MiB',round(total/1048576,1),'FAILED',failed)
+          PY
+      - name: Commit validated PDFs and catalogue updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/classics/*.pdf data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-testimonia-verified.json
+          if git diff --cached --quiet; then echo "No validated additions"; else
+            git commit -m "Incorporar PDF clásicos bilingües de dominio público (Internet Archive)"
+            git pull --rebase origin main
+            git push
+          fi

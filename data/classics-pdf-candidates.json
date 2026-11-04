@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "updated": "2026-11-04",
+  "method": "Ejemplares de dominio público en Internet Archive (estado NOT_IN_COPYRIGHT o anteriores a 1929), con texto original y traducción enfrentados. El flujo import-classics-ia-batch los descarga solo si el PDF es válido, no está cifrado y respeta los límites de tamaño.",
+  "limits": {"maxFileMiB": 45, "maxBatchMiB": 150},
+  "candidates": [
+    {"work": "aristoxenus-harmonica", "ia": ["harmonicsofarist00aris", "harmonicsaristo00arisgoog"], "file": "aristoxenus-harmonics-macran-1902.pdf", "language": "grc", "translation": "en", "year": "1902", "editor": "Henry S. Macran · Clarendon Press, Oxford", "note": "Aristóxeno, Elementa harmonica: texto griego, traducción inglesa, introducción y notas de H. S. Macran (Oxford, 1902). Fuente de Vitruvio V.4."},
+    {"work": "aratus-phaenomena", "ia": ["callimachuslycop00calluoft"], "file": "callimachus-lycophron-aratus-mair-1921.pdf", "language": "grc", "translation": "en", "year": "1921", "editor": "A. W. Mair y G. R. Mair · Loeb Classical Library 129", "note": "Arato, Phaenomena (con Calímaco y Licofrón): texto griego y traducción inglesa enfrentados, Loeb 1921. Vitruvio lo nombra en IX.6.3."},
+    {"work": "theophrastus-historia-plantarum", "ia": ["enquiryintoplan01theo", "enquiryintoplant00theo"], "file": "theophrastus-enquiry-plants-hort-1916-v1.pdf", "language": "grc", "translation": "en", "year": "1916", "editor": "Arthur Hort · Loeb Classical Library 70", "note": "Teofrasto, Historia plantarum, libros I–V: texto griego y traducción inglesa enfrentados, Loeb 1916 (vol. I)."},
+    {"work": "seneca-epistulae", "ia": ["adluciliumepistu01seneuoft", "adluciliumepistu01sene"], "file": "seneca-epistulae-gummere-1917-v1.pdf", "language": "la", "translation": "en", "year": "1917", "editor": "Richard M. Gummere · Loeb Classical Library 75", "note": "Séneca, Epistulae morales I–LXV: texto latino y traducción inglesa enfrentados, Loeb 1917 (vol. I)."},
+    {"work": "herodotus-historiae", "ia": ["herodotus01hero"], "file": "herodotus-godley-1920-v1.pdf", "language": "grc", "translation": "en", "year": "1920", "editor": "A. D. Godley · Loeb Classical Library 117", "note": "Heródoto, Historias I–II: texto griego y traducción inglesa enfrentados, Loeb 1920 (vol. I)."}
+  ]
+}
