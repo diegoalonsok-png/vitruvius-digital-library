@@ -61,7 +61,7 @@ async function resolve(query,preferredLang="es"){
  return null;
 }
 const cache=new Map();
-window.VitruviaEntityResolver={resolve(q,lang="es"){
+window.VitruviaEntityResolver={subject:clean,resolve(q,lang="es"){
  const key=norm(clean(q))+":"+lang;
  if(!cache.has(key))cache.set(key,resolve(q,lang));
  return cache.get(key);
