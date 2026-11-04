@@ -1,0 +1,43 @@
+/* Vitruvia · university-style section navigation and documented in-article search. */
+#vr-academic-tools{box-sizing:border-box;font:400 12px/1.48 Arial,Helvetica,sans-serif;color:var(--vr-page-ink,#e9e9e8);min-width:0;margin:0 0 22px}
+.vr-study-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 9px}
+.vr-study-heading strong{font:600 13px/1.45 Arial,sans-serif}
+#vr-progress{font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
+.vr-progress-track{height:3px;background:var(--vr-control-border,#555);border-radius:2px;overflow:hidden}
+#vr-progress-fill{height:100%;width:0;background:var(--vr-page-ink,#ddd);transition:width .1s ease}
+#vr-academic-tools #vr-summary{cursor:pointer;font-weight:600;font-size:12px;padding:12px 0}
+.vr-study-inner{padding:0 0 10px}
+#vr-academic-tools label{display:block;font-size:11px;margin:3px 0 7px}
+.vr-find-row{display:flex;align-items:stretch;gap:4px}
+.vr-find-row input{box-sizing:border-box;min-width:0;flex:1 1 auto;width:100%;min-height:37px;border:1px solid var(--vr-control-border,#555);background:var(--vr-control-bg,#242426);color:inherit;border-radius:7px;padding:7px 10px;font:inherit}
+#vr-academic-tools button{border:1px solid var(--vr-control-border,#555);border-radius:6px;background:var(--vr-control-bg,#242426);color:inherit;cursor:pointer;min-width:31px;min-height:31px;font:inherit}
+#vr-academic-tools button:disabled{opacity:.4;cursor:default}
+#vr-academic-tools :is(button,input,a,summary):focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.vr-find-nav{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:7px 0 11px;color:var(--vr-page-muted,#aaa)}
+.vr-find-nav button{font-size:15px!important}
+#vr-count{font-size:11px;font-variant-numeric:tabular-nums}
+#vr-index{display:flex;flex-direction:column;gap:1px;max-height:38vh;overflow-y:auto;scrollbar-width:thin;margin:5px 0 18px}
+#vr-index .vr-section{display:block;text-decoration:none;color:inherit;border-left:2px solid transparent;font:400 12px/1.43 Arial,Helvetica,sans-serif;opacity:.78;padding:7px 7px 7px 9px;overflow-wrap:break-word}
+#vr-index .vr-subsection{font-size:11px;padding-left:19px}
+#vr-index .vr-section:hover,#vr-index .vr-section.is-active{opacity:1;border-left-color:currentColor;background:rgba(130,130,130,.1)}
+#vr-index .vr-section.is-active{font-weight:600}
+.vr-source-footer{padding-top:12px;border-top:1px solid var(--vr-control-border,#555)}
+.vr-source-footer a{display:block;color:inherit;text-underline-offset:3px;font-size:11px}
+.vr-source-footer small{display:block;color:var(--vr-page-muted,#aaa);font-size:10px;line-height:1.5;margin-top:8px}
+#vitruvia-article .vr-source-citation{font:400 10px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;border-bottom:1px dotted currentColor;color:var(--vr-page-muted,#aaa)!important;white-space:nowrap;letter-spacing:0}
+#vitruvia-article .vr-source-citation:hover{text-decoration:underline!important}
+#vitruvia-article mark.vr-study-match{background:#d8bd67!important;color:#131313!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#vitruvia-article mark.vr-study-match.vr-study-current{background:#ffdd72!important;color:#080808!important;outline:2px solid #b98735;outline-offset:1px}
+#vitruvia-article #article-body :is(h3,h4){scroll-margin-top:120px}
+#vitruvia-article #article-sources{scroll-margin-top:110px}
+@media(min-width:1021px){body.vitruvia-reading #vitruvia-article .article-aside>#vr-academic-tools{border-bottom:1px solid var(--vr-control-border,#555);padding:0 0 14px;margin:0 0 18px}}
+@media(max-width:1020px){
+ body.vitruvia-reading #vitruvia-article>#vr-academic-tools{position:sticky;top:6px;z-index:65;margin:12px 48px 18px 0;padding:10px 14px 8px;border:1px solid var(--vr-control-border,#555);border-radius:9px;background:var(--vr-panel-bg,#222326);color:var(--vr-control-ink,#e7e7e7);box-shadow:0 8px 20px #0004}
+ #vr-index{max-height:25vh}
+}
+@media(max-width:700px){body.vitruvia-reading #vitruvia-article>#vr-academic-tools{margin-right:44px}.vr-study-heading strong{font-size:12px}}
+@media print{
+ #vr-academic-tools{display:none!important}
+ #vitruvia-article .vr-source-citation{color:#333!important;text-decoration:underline!important}
+ #vitruvia-article mark.vr-study-match{background:transparent!important;color:inherit!important;outline:none!important}
+}
