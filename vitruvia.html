@@ -606,6 +606,28 @@ html[data-theme=light] .search-utility button:hover,html[data-theme=light] .sear
 .searchform button#clear-search svg{display:block}
 html[data-theme=light] .searchform button#clear-search{color:#8f8f90!important}
 html[data-theme=light] .searchform button#clear-search:hover{color:#f5f5f5!important}
+/* Fichas de personajes: biografía primero, testimonios de Vitruvio después.
+   No modifica la estética ni los controles existentes del buscador. */
+#vitruvia-article .person-vitruvian-list{display:grid;grid-template-columns:1fr;gap:16px;margin:14px 0 24px}
+#vitruvia-article .person-locus-entry{padding:19px 21px;border:1px solid #343a3b;border-left:2px solid #a68c64;border-radius:4px;background:#161a1b}
+#vitruvia-article .person-locus-entry h4{font:500 19px/1.4 Georgia,serif;color:#ece4d7;margin:0 0 16px}
+#vitruvia-article .person-language-label{font:600 10px/1.5 system-ui,sans-serif;color:#b7aa91;letter-spacing:.11em;margin:11px 0 5px}
+#vitruvia-article .person-locus-entry p{max-width:none!important;margin:0 0 12px;font:400 14px/1.77 Georgia,serif;color:#dededb}
+#vitruvia-article .person-locus-entry p[lang=la]{color:#f1e3c9}
+#vitruvia-article .person-other-language{margin:9px 0;border-top:1px solid #343d3c;padding-top:6px}
+#vitruvia-article .person-other-language summary{font:500 12px/1.7 system-ui;color:#c3baaa;cursor:pointer}
+#vitruvia-article .person-edition-links{display:flex;flex-wrap:wrap;gap:11px;margin-top:12px}
+#vitruvia-article .person-edition-links a{font:500 12px/1.7 system-ui;color:#d6c09d}
+#vitruvia-article .article-source-original{margin:12px 0 28px;display:block}
+html[data-theme=light] #vitruvia-article .person-locus-entry{background:#f7f6f2;border-color:#cec4b5;border-left-color:#8c714d}
+html[data-theme=light] #vitruvia-article .person-locus-entry h4,
+html[data-theme=light] #vitruvia-article .person-locus-entry p{color:#272d31}
+html[data-theme=light] #vitruvia-article .person-language-label,
+html[data-theme=light] #vitruvia-article .person-other-language summary{color:#5d5650}
+html[data-theme=light] #vitruvia-article .person-locus-entry p[lang=la]{color:#45392e}
+html[data-theme=light] #vitruvia-article .person-edition-links a{color:#51442e}
+@media(max-width:650px){#vitruvia-article .person-locus-entry{padding:13px 14px}#vitruvia-article .person-locus-entry h4{font-size:17px}}
+@media print{#vitruvia-article .person-locus-entry{background:#fff!important;color:#111!important;border-color:#888!important}#vitruvia-article .person-other-language{display:block}}
 </style></head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -698,8 +720,8 @@ html[data-theme=light] .searchform button#clear-search:hover{color:#f5f5f5!impor
 <div class="footer-legal"><span data-i18n="footerLegal">© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.</span><span><a data-i18n="footerMain" href="index.html">Biblioteca principal</a> · Buenos Aires · 2026</span></div></footer>
 </div>
 <script src="assets/vitruvia-research-engine.js?v=20261103-prefaces-v3" defer></script>
-<script src="assets/vitruvia-article.js?v=20261103-classics-source-v4" defer></script>
-<script src="assets/vitruvia-search.js?v=20261103-bibliotheca-unified-v5" defer></script>
+<script src="assets/vitruvia-article.js?v=20261104-biographies-first-v1" defer></script>
+<script src="assets/vitruvia-search.js?v=20261104-historical-persons-v1" defer></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
