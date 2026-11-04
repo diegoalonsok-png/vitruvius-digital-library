@@ -6,7 +6,7 @@
   for(let i=0;i<text.length;){
    const ch=String.fromCodePoint(text.codePointAt(i));
    const part=ch.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
-   for(const letter of part){value+=letter;begin.push(i);end.push(i+ch.length)}
+   for(let j=0;j<part.length;j++){value+=part[j];begin.push(i);end.push(i+ch.length)}
    i+=ch.length;
   }
   return {value,begin,end};
@@ -32,6 +32,7 @@
  panel.innerHTML=[
   '<div class="vr-study-heading"><strong id="vr-heading">Navegación del artículo</strong><span id="vr-progress">0%</span></div>',
   '<div class="vr-progress-track"><div id="vr-progress-fill"></div></div>',
+  '<div id="vr-source-snapshot" class="vr-source-snapshot" aria-live="polite"></div>',
   '<details id="vr-study-collapse" open><summary id="vr-summary">Índice y búsqueda</summary>',
   '<div class="vr-study-inner"><label for="vr-find" id="vr-find-label">Buscar dentro del artículo</label>',
   '<div class="vr-find-row"><input id="vr-find" type="search" autocomplete="off" spellcheck="false" placeholder="Palabra o frase"><button id="vr-clear" type="button" aria-label="Borrar">×</button></div>',
@@ -41,11 +42,11 @@
   '</div></details>'
  ].join('');
  const q=selector=>panel.querySelector(selector);
- const ui={heading:q('#vr-heading'),progress:q('#vr-progress'),fill:q('#vr-progress-fill'),collapse:q('#vr-study-collapse'),summary:q('#vr-summary'),label:q('#vr-find-label'),input:q('#vr-find'),clear:q('#vr-clear'),prev:q('#vr-prev'),next:q('#vr-next'),count:q('#vr-count'),index:q('#vr-index'),sources:q('#vr-sources-link'),note:q('#vr-source-note')};
+ const ui={heading:q('#vr-heading'),progress:q('#vr-progress'),fill:q('#vr-progress-fill'),snapshot:q('#vr-source-snapshot'),collapse:q('#vr-study-collapse'),summary:q('#vr-summary'),label:q('#vr-find-label'),input:q('#vr-find'),clear:q('#vr-clear'),prev:q('#vr-prev'),next:q('#vr-next'),count:q('#vr-count'),index:q('#vr-index'),sources:q('#vr-sources-link'),note:q('#vr-source-note')};
  const languages={
-  es:['Navegación del artículo','Índice y búsqueda','Buscar dentro del artículo','Palabra o frase','Sin búsqueda','Escribí al menos 2 caracteres','Sin coincidencias','coincidencias','Fuentes y bibliografía ↓','Procedencia señalada solo donde está documentada.','Fuente: Wikipedia','Procedencia general de este párrafo: artículo original de Wikipedia. Las citas específicas se consultan en sus notas.','Resultado anterior','Resultado siguiente','Borrar búsqueda'],
-  en:['Article navigation','Contents and search','Find within this article','Word or phrase','No search','Enter at least 2 characters','No matches','matches','Sources and bibliography ↓','Provenance shown only when documented.','Source: Wikipedia','General provenance of this paragraph: original Wikipedia article. Check its footnotes for specific claims.','Previous match','Next match','Clear search'],
-  fr:['Navigation de l’article','Sommaire et recherche','Chercher dans cet article','Mot ou expression','Aucune recherche','Saisir au moins 2 caractères','Aucun résultat','occurrences','Sources et bibliographie ↓','Provenance indiquée uniquement si documentée.','Source : Wikipédia','Provenance générale de ce paragraphe : article Wikipédia. Consultez les notes pour les références précises.','Occurrence précédente','Occurrence suivante','Effacer']
+  es:['Navegación del artículo','Índice y búsqueda','Buscar dentro del artículo','Palabra o frase','Sin búsqueda','Escribí al menos 2 caracteres','Sin coincidencias','coincidencias','Fuentes y bibliografía ↓','Procedencia señalada solo donde está documentada.','Fuente: Wikipedia','Procedencia general de este párrafo: artículo original de Wikipedia. Las citas específicas se consultan en sus notas.','Resultado anterior','Resultado siguiente','Borrar búsqueda','secciones','enlaces documentales','Abrir fuente original'],
+  en:['Article navigation','Contents and search','Find within this article','Word or phrase','No search','Enter at least 2 characters','No matches','matches','Sources and bibliography ↓','Provenance shown only when documented.','Source: Wikipedia','General provenance of this paragraph: original Wikipedia article. Check its footnotes for specific claims.','Previous match','Next match','Clear search','sections','documentary links','Open original source'],
+  fr:['Navigation de l’article','Sommaire et recherche','Chercher dans cet article','Mot ou expression','Aucune recherche','Saisir au moins 2 caractères','Aucun résultat','occurrences','Sources et bibliographie ↓','Provenance indiquée uniquement si documentée.','Source : Wikipédia','Provenance générale de ce paragraphe : article Wikipédia. Consultez les notes pour les références précises.','Occurrence précédente','Occurrence suivante','Effacer','sections','liens documentaires','Ouvrir la source originale']
  };
  const labels=()=>languages[document.documentElement.lang?.slice(0,2)]||languages.es;
  let headings=[],links=[],marks=[],current=-1,lastTitle=null,buildTimer=0,searchTimer=0,scrollQueued=false;
@@ -106,6 +107,18 @@
    ui.index.append(a);links.push(a);
   }
   addCitations();
+  // Google's useful at-a-glance overview, restricted to observed DOM facts:
+  // headings, linked records, and an original-source URL that actually exists.
+  const t=labels();
+  const sourceLinks=[...document.querySelectorAll('#article-sources .article-source-list a[href]')];
+  ui.snapshot.replaceChildren(document.createTextNode(headings.length+' '+t[15]+' · '+sourceLinks.length+' '+t[16]));
+  const original=body.querySelector('p[data-vr-origin]')?.getAttribute('data-vr-origin');
+  if(sourceAllowed(original)){
+   const link=document.createElement('a');link.href=original;
+   link.target='_blank';link.rel='noopener noreferrer';
+   link.textContent=t[17];link.className='vr-original-link';
+   ui.snapshot.append(link);
+  }
   if(ui.input.value.trim().length>=2)search(false);
   scheduleScroll();
  }
@@ -154,7 +167,7 @@
   scrollQueued=false;
   if(article.hidden||!headings.length)return;
   let index=0;
-  for(let i=0;i<headings.length;i++)if(headings[i].getBoundingClientRect().top<=190)index=i;
+  for(let i=0;i<headings.length;i++)if(headings[i].getClientRects().length&&headings[i].getBoundingClientRect().top<=190)index=i;
   for(let i=0;i<links.length;i++){
    links[i].classList.toggle('is-active',i===index);
    if(i===index)links[i].setAttribute('aria-current','location');else links[i].removeAttribute('aria-current');
