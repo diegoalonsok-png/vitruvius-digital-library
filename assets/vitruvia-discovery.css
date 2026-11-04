@@ -31,10 +31,10 @@ body.vitruvia-reading #vitruvia-article .article-body{
 body.vitruvia-reading #vitruvia-article .article-body p:not(.article-note){
  max-width:100%!important;
  margin:0 0 1.35em!important;
- text-align:left!important;
- text-justify:auto;
- hyphens:manual!important;
- -webkit-hyphens:manual!important;
+ text-align:justify!important;
+ text-justify:inter-word;
+ hyphens:auto!important;
+ -webkit-hyphens:auto!important;
  line-height:1.85!important;
 }
 #vitruvia-article .article-bibliography-list{
