@@ -25,24 +25,40 @@ async function searchTitle(q,lang){
  const first=exact||hits.find(x=>!/(?:desambiguaci[oó]n|disambiguation)/i.test(x.title));
  return first?lookupTitle(first.title,lang):null;
 }
-async function resolve(query){
+async function localize(identity,lang){
+ if(!identity||identity.language===lang||!["es","en","fr"].includes(lang))return identity;
+ try{
+  const json=await get(mediaWiki(identity.language,{
+   action:"query",pageids:String(identity.pageid),prop:"langlinks",lllang:lang,lllimit:"1"
+  }));
+  const page=Object.values(json.query?.pages||{})[0];
+  const alternate=page?.langlinks?.find(x=>x.lang===lang)?.["*"];
+  if(!alternate)return identity;
+  const translated=await lookupTitle(alternate,lang);
+  return translated?{...translated,wikidataId:translated.wikidataId||identity.wikidataId,originalCanonical:identity.canonical,localized:true}:identity;
+ }catch{return identity}
+}
+async function resolve(query,preferredLang="es"){
  const q=clean(query);
  if(!q||q.length>130)return null;
- for(const language of ["es","en"]){
+ const lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
+ const langs=[...new Set([lang,"es","en"])];
+ for(const language of langs){
   try{
    const exact=await lookupTitle(q,language);
-   if(exact&&(norm(exact.canonical)===norm(q)||exact.aliases.some(x=>norm(x)===norm(q))))return exact;
+   if(exact&&(norm(exact.canonical)===norm(q)||exact.aliases.some(x=>norm(x)===norm(q))))
+    return await localize(exact,lang);
   }catch{}
  }
- for(const language of ["es","en"]){
-  try{const hit=await searchTitle(q,language);if(hit)return hit}catch{}
+ for(const language of langs){
+  try{const hit=await searchTitle(q,language);if(hit)return await localize(hit,lang)}catch{}
  }
  return null;
 }
 const cache=new Map();
-window.VitruviaEntityResolver={resolve(q){
- const key=norm(clean(q));
- if(!cache.has(key))cache.set(key,resolve(q));
+window.VitruviaEntityResolver={resolve(q,lang="es"){
+ const key=norm(clean(q))+":"+lang;
+ if(!cache.has(key))cache.set(key,resolve(q,lang));
  return cache.get(key);
 }};
 })();
