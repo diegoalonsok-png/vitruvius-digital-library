@@ -1,0 +1,149 @@
+{
+  "schema": "vitruvia-academic-evidence-v1",
+  "method": "Source-linked ancient testimonies and survival notes keyed by Wikidata Q-ID. Composition dates, surviving manuscript dates, and visual-object dates must be stored separately. Never infer a surviving codex from the composition date, never infer authorship from a work about the subject, never assert manuscript holdings without shelfmark and an institutional record.",
+  "entries": [
+    {
+      "subject": "Q10261",
+      "title": "Pitágoras de Samos",
+      "aliases": [
+        "Pitágoras",
+        "Pythagoras",
+        "Pitagoras",
+        "Pythagore"
+      ],
+      "survival": "No se conservan textos escritos atribuibles con seguridad al Pitágoras histórico; la investigación moderna considera probable que no escribiera libros. Los escritos pseudopitagóricos posteriores deben catalogarse por separado.",
+      "survivalSource": "https://plato.stanford.edu/entries/pythagoras/",
+      "literaryTestimonies": [
+        {
+          "title": "Heródoto, Historias II.81 y IV.95",
+          "author": "Heródoto",
+          "date": "Siglo V a. C.",
+          "dateStart": -450,
+          "language": "grc",
+          "kind": "testimony",
+          "note": "Referencias tempranas a prácticas pitagóricas y a Pitágoras en tradiciones antiguas; no es un libro escrito por Pitágoras.",
+          "source": "https://plato.stanford.edu/entries/pythagoras/"
+        },
+        {
+          "title": "Aristóteles y sus discípulos · testimonios y fragmentos sobre los pitagóricos",
+          "author": "Aristóteles, Aristóxeno y Dicearco",
+          "date": "Siglo IV a. C.",
+          "dateStart": -350,
+          "language": "grc",
+          "kind": "fragmentary-testimony",
+          "note": "Fragmentos de obras antiguas transmitidos por autores posteriores. No existe aquí una transcripción autógrafa de Pitágoras.",
+          "source": "https://plato.stanford.edu/entries/pythagoras/"
+        },
+        {
+          "title": "Diógenes Laercio, Vidas de los filósofos ilustres, VIII",
+          "author": "Diógenes Laercio",
+          "date": "Siglo III d. C.",
+          "dateStart": 200,
+          "language": "grc",
+          "kind": "later-biography",
+          "note": "Biografía antigua posterior; separar afirmaciones históricas de atribuciones tardías.",
+          "source": "https://plato.stanford.edu/entries/pythagoras/"
+        },
+        {
+          "title": "Porfirio, Vida de Pitágoras",
+          "author": "Porfirio",
+          "date": "Siglo III d. C.",
+          "dateStart": 250,
+          "language": "grc",
+          "kind": "later-biography",
+          "note": "Testimonio tardío y de interpretación filosófica; no es un texto escrito por Pitágoras.",
+          "source": "https://plato.stanford.edu/entries/pythagoras/"
+        },
+        {
+          "title": "Jámblico, Sobre la vida pitagórica",
+          "author": "Jámblico",
+          "date": "Siglos III–IV d. C.",
+          "dateStart": 290,
+          "language": "grc",
+          "kind": "later-biography",
+          "note": "Obra neoplatónica posterior. Su tradición debe cotejarse con las fuentes más antiguas.",
+          "source": "https://plato.stanford.edu/entries/pythagoras/"
+        }
+      ],
+      "manuscripts": [],
+      "translatedEditions": [],
+      "research": [
+        {
+          "title": "Pythagoras · Stanford Encyclopedia of Philosophy",
+          "institution": "Stanford University",
+          "url": "https://plato.stanford.edu/entries/pythagoras/"
+        }
+      ]
+    },
+    {
+      "subject": "Q345",
+      "title": "María, madre de Jesús",
+      "aliases": [
+        "Virgen María",
+        "Virgen Maria",
+        "María de Nazaret",
+        "Mary, mother of Jesus",
+        "The Virgin Mary",
+        "Vierge Marie"
+      ],
+      "survival": "Las fuentes cristianas más tempranas sobre María son textos transmitidos por comunidades posteriores, no escritos por ella. Las fechas aproximadas de composición de los relatos no son las fechas de los manuscritos que se conservan. Distinguir la madre de Jesús de María Magdalena y de otras Marías presentes en fuentes gnósticas y apócrifas.",
+      "survivalSource": "https://academic.oup.com/reference/62341/reference-article-abstract/561705889",
+      "literaryTestimonies": [
+        {
+          "title": "Evangelio según Mateo · relatos del nacimiento",
+          "author": "Tradición atribuida a Mateo",
+          "date": "Finales del siglo I d. C. (datación aproximada)",
+          "dateStart": 70,
+          "language": "grc",
+          "kind": "canonical-source",
+          "note": "Narración cristiana antigua sobre María y el nacimiento de Jesús; su composición no certifica la fecha de ningún códice.",
+          "source": "https://academic.oup.com/reference/62341/reference-article-abstract/561705889"
+        },
+        {
+          "title": "Evangelio según Lucas · relatos de la infancia",
+          "author": "Tradición atribuida a Lucas",
+          "date": "Finales del siglo I d. C. (datación aproximada)",
+          "dateStart": 70,
+          "language": "grc",
+          "kind": "canonical-source",
+          "note": "Los relatos de la anunciación y la infancia se distinguen de las tradiciones apócrifas posteriores.",
+          "source": "https://academic.oup.com/reference/62341/reference-article-abstract/561705889"
+        },
+        {
+          "title": "Protoevangelio de Santiago",
+          "author": "Autor cristiano anónimo (atribuido tradicionalmente a Santiago)",
+          "date": "Siglo II d. C. (aproximado)",
+          "dateStart": 140,
+          "language": "grc",
+          "kind": "apocryphal-source",
+          "note": "Narración apócrifa sobre la infancia de María, no biografía contemporánea ni evangelio canónico.",
+          "source": "https://academic.oup.com/book/34752/chapter-abstract/296714827"
+        },
+        {
+          "title": "Sub tuum praesidium · testimonio temprano de devoción mariana",
+          "author": "Tradición cristiana antigua",
+          "date": "Papiro discutido entre siglos III y IV d. C. (aproximadamente)",
+          "dateStart": 200,
+          "language": "grc",
+          "kind": "early-devotional-source",
+          "note": "La cronología del testimonio material es debatida; requiere comprobar manuscrito y signatura para crear un visor.",
+          "source": "https://academic.oup.com/edited-volume/41330/chapter/352334031"
+        }
+      ],
+      "manuscripts": [],
+      "translatedEditions": [],
+      "research": [
+        {
+          "title": "Mary · Oxford Bibliographies",
+          "institution": "Oxford University Press",
+          "url": "https://academic.oup.com/reference/62341/reference-article-abstract/561705889"
+        },
+        {
+          "title": "Mary and Mariology · Oxford Handbook",
+          "institution": "Oxford University Press",
+          "url": "https://academic.oup.com/edited-volume/41330/chapter/352334031"
+        }
+      ]
+    }
+  ]
+}
