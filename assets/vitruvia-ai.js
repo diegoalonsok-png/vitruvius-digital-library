@@ -170,7 +170,7 @@ async function search(query){
  const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
  try{
   const model=await getModel();
-  notify("Modelo cargado. Comparando significado en castellano, latín, griego y otras lenguas…");
+  notify("Modelo cargado. Comparando significado; los textos clásicos conservan búsquedas literales comprobables…");
   const inputs=["query: "+q,...candidates.map(entry=>"passage: "+entry.doc.workTitle+". "+entry.doc.excerptText.slice(0,1100))];
   const embeddings=await vectors(model,inputs),queryVec=embeddings.shift();
   const semantic=candidates.map((entry,i)=>({...entry,similarity:dot(queryVec,embeddings[i])}))
