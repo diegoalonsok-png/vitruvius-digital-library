@@ -52,6 +52,7 @@ async function prepareCorpus(){
     const tf=new Map();for(const t of tokens)tf.set(t,(tf.get(t)||0)+1);
     documents.push({
      id:(source.workId||"work")+":"+(data.edition||source.edition)+":"+passage.locus+":"+chunk,
+     workId:source.workId||"work",
      locus:passage.locus,workTitle:source.workTitle||data.title||"Texto antiguo",
      author:source.author||data.author||"Autor documentado",
      edition:source.edition||data.version||"",language:source.language||data.language||"",
@@ -122,7 +123,7 @@ function renderRow(doc,query,score,semantic=false){
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
   excerpt:sourceExcerpt(doc,query),latin:doc.original,translation:doc.translation,
-  locus:doc.locus,edition:doc.edition,link:doc.url,source:doc.source,
+  locus:doc.locus,edition:doc.edition,workId:doc.workId,link:doc.url,source:doc.source,
   meta:kind+" · "+doc.source+" · locus "+doc.locus,
   rating:Math.round(score),aiScore:Math.round(score),aiSemantic:semantic,
   exactTextMatch:exact,aiEvidence:true
