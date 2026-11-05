@@ -437,7 +437,8 @@ async function googleBooks(generalQuery){
   return {type:"googlebook",title:v.title,author:(v.authors||[]).slice(0,3).join(", "),
    excerpt:brief(htmlText(v.description||""),340)||[v.publisher,v.publishedDate].filter(Boolean).join(" · "),
    meta:[v.publisher,v.publishedDate].filter(Boolean).join(" · ")||"Google Books · registro bibliográfico",
-   rating:24-i+culturalWeight(v.title,v.subtitle||""),link:info,source:"Google Books",year:v.publishedDate||null,publisher:v.publisher||"",recordKind:"book"};
+   rating:24-i+culturalWeight(v.title,v.subtitle||""),link:info,source:"Google Books",year:v.publishedDate||null,publisher:v.publisher||"",recordKind:"book",
+   isbn:(v.industryIdentifiers||[]).find(x=>x.type==="ISBN_13")?.identifier||(v.industryIdentifiers||[]).find(x=>x.type==="ISBN_10")?.identifier||null};
  }).filter(Boolean)
 }
 
@@ -882,7 +883,8 @@ function display(rows,query,phase){
  }
  if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null))}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
- $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"")
+ $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"");
+ window.dispatchEvent(new CustomEvent("vitruvia:results",{detail:{query,rows:deduped,phase}}));
 }
 function sourceLinks(query){const parent=$("source-links");parent.replaceChildren();
  if(!query)return;
@@ -991,7 +993,7 @@ async function search(){
     excerpt:identity.description,fullExtract:identity.extract,
     meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
     rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
-    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityDescription:identity.authorityDescription||identity.description,preferredWiki:true,sourceLanguage:identity.language
+    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityDescription:identity.authorityDescription||identity.description,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
    }]};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
