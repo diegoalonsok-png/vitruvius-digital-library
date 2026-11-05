@@ -90,9 +90,27 @@ def ocr(image_bytes, lang):
         lines.append(" ".join(cur))
     return {"w": W, "h": H, "words": words}, "\n".join(lines)
 
+def sections(manifest, pages):
+    """Rangos del manifiesto IIIF (índice de la institución): «Liber primus», «Libro secondo», etc."""
+    doc = json.loads(fetch(manifest))
+    by_canvas = {c["canvas_id"]: c["page"] for c in pages}
+    out = []
+    for r in doc.get("structures") or []:
+        ids = r.get("canvases") or [x.get("id") for x in (r.get("items") or []) if isinstance(x, dict)]
+        nums = sorted(by_canvas[i] for i in ids if i in by_canvas)
+        if nums:
+            out.append({"label": label_of(r), "start": nums[0], "end": nums[-1]})
+    return sorted(out, key=lambda x: (x["start"], -x["end"]))
+
 def run(ed):
     cfg = EDITIONS[ed]
     pages = canvases(cfg["manifest"])
+    try:
+        secs = sections(cfg["manifest"], pages)
+        (ROOT / f"data/iiif/barbaro-1567-{ed}-ranges.json").write_text(json.dumps({"source": cfg["manifest"], "ranges": secs}, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(ed, "rangos del manifiesto:", len(secs))
+    except Exception as e:  # noqa: BLE001
+        print("aviso: sin rangos del manifiesto", ed, e)
     if ed == "la":
         cfg["index"].write_text(json.dumps({"schema": "vitruvius-iiif-index/1",
             "title": "Vitruvius, De architectura libri decem cum commentariis Danielis Barbari (Venecia, 1567)",

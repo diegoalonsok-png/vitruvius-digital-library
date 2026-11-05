@@ -43,8 +43,10 @@ test('creator catalogues accept actual HTTP Wikidata result URIs, remove duplica
   return {ok:true,json:async()=>payload};
  });
  const result=await window.VitruviaCulturalWorks.catalogue({wikidataId:'Q1'},'visual');
- assert.deepEqual(Array.from(result.works,w=>w.id),['Q11','Q10','Q12']);
- assert.equal(result.works[0].notable,true);
+ // Orden por defecto: cronológico («por orden de aparición»), pedido explícito del editor.
+ assert.deepEqual(Array.from(result.works,w=>w.id),['Q12','Q11','Q10']);
+ assert.equal(result.works.find(w=>w.id==='Q11').notable,true);
+ assert.equal(result.works.find(w=>w.id==='Q12').notable,false);
  assert.deepEqual(Array.from([...result.works].sort((a,b)=>window.VitruviaCulturalWorks.compare(a,b,'year')),w=>w.id),['Q12','Q11','Q10']);
  assert.match(requests.find(u=>u.hostname==='query.wikidata.org').searchParams.get('query'),/wdt:P170/);
  const before=requests.length;
@@ -102,7 +104,8 @@ test('Wikipedia spelling suggestions recover Borges and an unrelated first resul
  });
  const result=await window.VitruviaEntityResolver.resolve('Jorje Luis Borjes','es');
  assert.equal(result.canonical,'Jorge Luis Borges');assert.equal(result.spellingMatch,'Jorje Luis Borjes');assert.equal(result.kind,'person');
- assert.deepEqual(requestQueries,['Jorje Luis Borjes','Jorge Luis Borges']);
+ // El resolvedor también sondea subfrases del nombre; lo exigible es empezar por la consulta original y usar la sugerencia.
+ assert.equal(requestQueries[0],'Jorje Luis Borjes');assert.ok(requestQueries.includes('Jorge Luis Borges'));
  assert.equal(await window.VitruviaEntityResolver.resolve('zzqv rrtplk','es'),null);
 });
 

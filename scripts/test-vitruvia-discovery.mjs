@@ -42,7 +42,8 @@ test('explicit artwork or book requests retain the requested visual intent',()=>
 test('the leading strip is diverse and still puts sculpture before portraits and books',()=>{
  const items=['sculpture','sculpture','sculpture','portrait','portrait','book','context'].map((group,i)=>({group,name:String(i),page:String(i),score:100-i}));
  const strip=D.previewImages(items,pythagoras);
- assert.equal(strip.length,5);assert.deepEqual(Array.from(strip,x=>x.group),['sculpture','sculpture','portrait','portrait','book']);
+ // La franja inicial sigue el mismo orden que la galería (cronológico; escultura antes que retratos y libros).
+ assert.equal(strip.length,5);assert.deepEqual(Array.from(strip,x=>x.group),['sculpture','sculpture','sculpture','portrait','portrait']);
 });
 for(const q of ['cafetera','cafeteras','coffee maker','cafetiere'])test('object and coffee history remain distinct for '+q,()=>{
  const topic=D.plan(q);assert.equal(topic.kind,'object');assert.equal(topic.family,'coffee');
@@ -78,7 +79,7 @@ test('the article renderer also retains text beyond its former 75-paragraph cuto
 });
 test('image records retain attribution, remove markup and reject unsafe image URLs',()=>{
  const engine=source('assets/vitruvia-image-engine-v2.js');
- const fn=engine.slice(engine.indexOf('function collectedImages('),engine.indexOf('function displayGroups('));
+ const fn=engine.slice(engine.indexOf('function documentedYear('),engine.indexOf('\n}\n',engine.indexOf('function documentedYear('))+3)+engine.slice(engine.indexOf('function collectedImages('),engine.indexOf('function displayGroups(')); // el motor fecha las imágenes
  const safeLink=url=>{try{const u=new URL(url);return u.protocol==='https:'?u.href:null}catch{return null}};
  const collect=new Function('window','safeLink','matchingScore',fn+';return collectedImages;')({VitruviaDiscovery:D},safeLink,()=>0);
  const bust=page('Pythagoras bust.jpg'),unsafe=page('Pythagoras portrait.jpg');unsafe.imageinfo[0].thumburl='javascript:alert(1)';
@@ -107,7 +108,7 @@ test('object history requests obey provider limits and retain both related sourc
 });
 test('an identified object collection excludes a namesake from generic image search',()=>{
  const engine=source('assets/vitruvia-image-engine-v2.js');
- const fn=engine.slice(engine.indexOf('function collectedImages('),engine.indexOf('function displayGroups('));
+ const fn=engine.slice(engine.indexOf('function documentedYear('),engine.indexOf('\n}\n',engine.indexOf('function documentedYear('))+3)+engine.slice(engine.indexOf('function collectedImages('),engine.indexOf('function displayGroups(')); // el motor fecha las imágenes
  const collect=new Function('window','safeLink','matchingScore',fn+';return collectedImages;')({VitruviaDiscovery:D},x=>x.startsWith('https:')?x:null,()=>0);
  const fixtures=Array.from({length:9},(_,i)=>page('Frying pan museum '+i+'.jpg','',{fromTrustedCategory:true}));
  fixtures.push(page('Frying Pan Chelsea ship.jpg'));

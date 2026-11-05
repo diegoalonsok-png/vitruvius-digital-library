@@ -77,7 +77,7 @@ assert.ok(search.includes("pending.push(crossref("),"Academic publications not w
 const images=sourceFile("assets/vitruvia-image-engine-v2.js");
 assert.match(images,/generator:"categorymembers"/,"Topic image collections not wired");
 assert.match(images,/dialog\.showModal\(\)/,"Large-image viewer absent");
-assert.match(images,/items\.slice\(0,80\)/,"Bulk gallery limit is missing");
+assert.match(images,/items\.slice\(0,150\)/,"Bulk gallery limit is missing");
 assert.match(images,/info\.extmetadata\?\.LicenseShortName/,"Image licensing metadata absent");
 assert.ok(vitruviaHTML.includes("id=\"featured-link\""));
 const css=sourceFile("assets/vitruvia-reading.css");
