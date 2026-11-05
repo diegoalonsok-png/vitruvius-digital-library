@@ -182,3 +182,57 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-wor
 html[data-theme=light] body.vitruvia-reading #vitruvia-context .web-dossier-card-body>a:first-child{
  color:#463a2b;
 }
+
+/* Universal researched item cards: photographic architectural works, literary
+   covers, and album artwork in one accessible stacked catalogue layout. */
+body.vitruvia-reading #vitruvia-context .architecture-work-visual {
+ display:grid;grid-template-columns:78px minmax(0,1fr);
+ gap:8px 11px;align-items:start;width:100%;min-width:0;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-photo-link {
+ display:block;grid-column:1;grid-row:1;max-width:78px;width:100%;
+ overflow:hidden;border:1px solid #454548;border-radius:4px;
+ background:#252729;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-photo {
+ display:block;width:100%;height:auto;max-height:108px;object-fit:cover;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-content {
+ grid-column:2;grid-row:1;min-width:0;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-visual:not(:has(.architecture-work-photo-link)) .architecture-work-content {
+ grid-column:1 / -1;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-review {
+ font:400 12px/1.55 Arial,Helvetica,sans-serif;color:#c8c4bd;
+ margin:6px 0 3px;white-space:normal!important;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-drawings {
+ grid-column:1 / -1;border:1px solid #38383b;border-radius:5px;
+ padding:6px 8px;min-width:0;margin:2px 0 0;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-drawings summary{
+ cursor:pointer;color:#c2c6c8;font:500 11px/1.6 Arial,Helvetica,sans-serif;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate-stack{
+ display:flex;flex-direction:column;gap:10px;padding:8px 0;
+ min-width:0;max-width:100%;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate{
+ display:flex;flex-direction:column;gap:5px;margin:0;padding:0 0 10px;
+ max-width:100%;min-width:0;border-bottom:1px solid #343638;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate img {
+ display:block;width:100%;height:auto;max-height:330px;object-fit:contain;
+ background:#e6e0d4;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate figcaption {
+ overflow-wrap:anywhere;font:400 11px/1.55 Arial,sans-serif;color:#c8c4bd;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card .web-dossier-cover-link {
+ flex:0 0 73px;max-width:73px;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card .web-dossier-cover {
+ width:73px;max-height:110px;object-fit:contain;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-work-review {color:#505050}
