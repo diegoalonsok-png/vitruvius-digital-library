@@ -25,6 +25,11 @@ async function render(){
  if(my!==ticket)return;
  const t=T[lang]||T.es,el=ensure();el.replaceChildren();
  const eyebrow=document.createElement("p");eyebrow.className="eyebrow";eyebrow.textContent=t.h.toUpperCase()+" · "+A.cite(locus);el.append(eyebrow);
+ if(window.CodexHConcordance){const hp=document.createElement("p");hp.style.cssText="margin:.2em 0 .8em;font-size:.93em";el.append(hp);
+  window.CodexHConcordance.locate(locus).then(c=>{if(my!==ticket)return;const ex=c.exact.find(x=>x.status!=="catalogue"),f=ex?ex.folio:c.estimate&&c.estimate.folio;if(!f)return;
+   const a=document.createElement("a");a.href="codex-h-folios-local.html?locus="+encodeURIComponent(locus);a.textContent="Codex H · f. "+f+" →";
+   hp.append(a," "+(ex?"("+window.CodexHConcordance.label(ex.status)+")":"(posición estimada en el libro "+c.book.roman+", ff. "+c.book.start+"–"+c.book.end+")"),"  ·  ");
+   const l=document.createElement("a");l.href="laboratorio-h.html?locus="+encodeURIComponent(locus);l.textContent="Lectura paralela en el Laboratorio H →";hp.append(l)}).catch(()=>{})}
  if(!hits){const p=document.createElement("p");p.textContent="Índice del aparato no disponible.";el.append(p);return}
  if(!hits.length){const p=document.createElement("p");p.textContent=t.none;el.append(p)}
  for(const e of hits){

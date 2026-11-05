@@ -6,6 +6,7 @@ const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const fold=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 const manifestUrl='https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001';
 const source={es:'data/structured/recensio-es.json',en:'data/structured/theory-en.json',fr:'data/structured/recensio-fr.json'};
+let localIndex=null,estimates=new Map();
 let map,passages=[],passageByLocus=new Map(),alignment,corpora={},canvases=[],imageIssue='',manifestLoading=true,selection={kind:'folio',value:'1r'},query='';
 const reader=(l,language='es')=>'lector-bilingue.html?edition='+({es:'recensio-es',en:'theory-en',fr:'recensio-fr'}[language]||'recensio-es')+'&locus='+encodeURIComponent(l);
 function getInfo(locus){for(const entry of map.entries){const record=entry.loci.find(p=>p.locus===locus);if(record)return {entry,record};}return null}
@@ -18,6 +19,8 @@ async function loadTranslation(lang){if(corpora[lang])return corpora[lang];
 function showImage(index,folio){
  const image=$('f-image'),box=$('f-image-box');box.querySelector('.folio-no-image')?.remove();
  image.hidden=false;image.alt='Harley MS 2767, folio '+folio+', imagen digital '+index+' (British Library)';
+ const local=localIndex?.imagenes?.find(x=>x.numeroImagen===index);
+ if(local){image.onload=()=>{$('f-evidence').dataset.imageLoaded='true'};image.onerror=null;image.src='images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/'+local.archivo;return}
  if(!canvases.length){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent=manifestLoading?'Cargando imagen '+index+' desde el manifiesto institucional IIIF…':'No se pudo consultar el manifiesto IIIF. Abre la imagen '+index+' desde el visor H; no se incorpora una fotografía de origen incierto.';box.append(p);return}
  const c=canvases[index-1];
  if(!c){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='No se halló la imagen '+index+' en el manifiesto institucional.';box.append(p);return}
@@ -50,12 +53,16 @@ async function render(){
  const chosen=selection.kind==='folio'?map.entries.find(x=>x.folio===selection.value):getInfo(selection.value)?.entry;
  if(chosen){
   $('f-evidence').textContent='Harley MS 2767 · f. '+chosen.folio+' · imagen '+chosen.image_number+' · '+map.status_labels[chosen.folio_status];
-  $('f-open').href='harleianus.html?image='+chosen.image_number;
+  $('f-open').href='codex-h-folios-local.html?image='+chosen.image_number;
   $('f-open').hidden=false;
   showImage(chosen.image_number,chosen.folio);
  }else{
-  $('f-evidence').textContent='Sin asignación material: el locus se conoce en las ediciones, pero no se ha localizado en un folio cotejado.';
-  $('f-open').hidden=true;unsetImage();
+  const est=selection.kind==='locus'?estimates.get(selection.value):null;
+  const img=est&&localIndex?.imagenes?.find(x=>x.etiquetaOriginal==='f.'+est.folio);
+  if(est&&img){$('f-evidence').textContent='Sin asignación material. Harley MS 2767 · libro '+est.book.roman+', ff. '+est.book.start+'–'+est.book.end+' (límites verificados en las rúbricas) · posición estimada f. '+est.folio+' por proporción de texto, solo orientativa.';
+   $('f-open').href='codex-h-folios-local.html?folio=f.'+est.folio;$('f-open').hidden=false;showImage(img.numeroImagen,est.folio+' (estimado)')}
+  else{$('f-evidence').textContent='Sin asignación material: el locus se conoce en las ediciones, pero no se ha localizado en un folio cotejado.';
+  $('f-open').hidden=true;unsetImage();}
  }
  const entries=selection.kind==='folio'?(chosen?.loci||[]):[{locus:selection.value,extent:'full',status:'editorial_only'}];
  if(selection.kind==='folio'&&!entries.length){
@@ -93,11 +100,11 @@ function renderMatches(){
  const list=$('f-search-results');list.replaceChildren();
  let q=query.trim(),items=passages;
  if(q){items=passages.filter(p=>fold(p.locus).includes(fold(q))||fold(p.latin).includes(fold(q))||fold(p.translation).includes(fold(q)));}
- $('f-search-count').textContent=items.length+' loci'+(q?' coincidentes con «'+q+'»':' editoriales disponibles')+'; de ellos solo los expresamente asociados tienen folio.';
+ $('f-search-count').textContent=items.length+' loci'+(q?' coincidentes con «'+q+'»':' editoriales disponibles')+'. Folio material solo en los expresamente asociados; en los demás, libro verificado y posición estimada.';
  for(const p of items.slice(0,35)){
   const div=document.createElement('div');div.className='folio-result';
   const inf=getInfo(p.locus),main=document.createElement('div'),tag=document.createElement('span');tag.className='folio-badge';
-  tag.textContent=inf?'Folio '+inf.entry.folio+' · mapeo provisional':'Folio no atribuido';
+  const est=estimates.get(p.locus);tag.textContent=inf?'Folio '+inf.entry.folio+' · '+({visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'mapeo provisional'}[inf.record.status]||inf.record.status):est?'Libro '+est.book.roman+' · ff. '+est.book.start+'–'+est.book.end+' · ≈ f. '+est.folio+' (estimado)':'Folio no atribuido';
   const strong=document.createElement('strong');strong.textContent=p.locus;
   const small=document.createElement('small');small.textContent=p.latin.slice(0,170)+(p.latin.length>170?'…':'');
   main.append(tag,document.createElement('br'),strong,small);
@@ -134,7 +141,7 @@ function exportTEI(){
 function copyReference(){
  const locus=selection.kind==='locus'?selection.value:(map.entries.find(x=>x.folio===selection.value)?.loci?.[0]?.locus);
  if(!locus)return;
- const info=getInfo(locus),folio=info?' · H f. '+info.entry.folio+' (atribución provisional)':' · folio no identificado';
+ const info=getInfo(locus),est=estimates.get(locus),folio=info?' · H f. '+info.entry.folio+' ('+(map.status_labels[info.record.status]?({visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'atribución provisional'}[info.record.status]||info.record.status):'atribución provisional')+')':est?' · H libro '+est.book.roman+', ff. '+est.book.start+'–'+est.book.end+', posición estimada f. '+est.folio:' · folio no identificado';
  const link=new URL(location.href);link.search='?locus='+encodeURIComponent(locus);
  const text='Vitruvius, De architectura '+locus+' · texto latino en V514, ed. Diego Kurilo'+folio+' · '+link.href;
  if(navigator.clipboard?.writeText){navigator.clipboard.writeText(text).then(()=>{$('f-latin-status').textContent='Referencia copiada al portapapeles.'}).catch(()=>{prompt('Copiar referencia:',text)})}else prompt('Copiar referencia:',text);
@@ -146,6 +153,11 @@ async function load(){
   map=await rMap.json();const j=await rCorpus.json();alignment=await rAlignment.json();
   passages=j.passages||[];passageByLocus=new Map(passages.map(p=>[p.locus,p]));
   if(passages.length<700||map.entries.length<2)throw Error('Datos incompletos');
+  try{localIndex=await fetch('images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json').then(r=>r.ok?r.json():null)}catch(e){localIndex=null}
+  if(window.CodexHConcordance){try{const all=await Promise.all(passages.map(p=>window.CodexHConcordance.locate(p.locus)));all.forEach(c=>{if(c.book&&c.estimate)estimates.set(c.locus,{folio:c.estimate.folio,book:c.book})})}catch(e){}}
+  {const sel=$('f-folio'),short={visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'estudio provisional',not_verified:'locus pendiente'};sel.replaceChildren();
+   for(const e of map.entries){const o=document.createElement('option');o.value=e.folio;o.textContent=e.folio+' · '+(short[e.folio_status]||e.folio_status)+(e.loci?.length?' · '+e.loci.map(l=>l.locus).join(' / '):'');sel.append(o)}
+   const none=document.createElement('option');none.value='';none.textContent='Sin folio material asignado al locus';sel.append(none)}
   corpora.es=passageByLocus;
   // IIIF es externo: su latencia no debe bloquear los loci ni las traducciones.
   const controller=new AbortController();
