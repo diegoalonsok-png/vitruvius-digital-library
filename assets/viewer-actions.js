@@ -67,7 +67,7 @@
     }
   });
   button('⎙','Imprimir',()=>{
-    if(!ready()){feedback('Primero abre una imagen y esperá a que cargue.');return}
+    if(!ready()){feedback('Primero abre una imagen y espera a que cargue.');return}
     const s=state();
     let page=document.getElementById('vd-print-page');if(!page){page=document.createElement('div');page.id='vd-print-page';document.body.append(page)}
     page.replaceChildren();

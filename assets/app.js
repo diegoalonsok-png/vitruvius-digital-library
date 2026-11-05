@@ -533,7 +533,7 @@ function emailResults(){
     lines.push(sourceURL(e,r.page));
     lines.push('');
   });
-  lines.push('Para enviar el PDF completo con todos los contextos: primero elige «Imprimir / guardar PDF» en el sitio, guardá el archivo y adjuntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
+  lines.push('Para enviar el PDF completo con todos los contextos: primero elige «Imprimir / guardar PDF» en el sitio, guarda el archivo y adjúntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
   let dialog=$('#email-dialog');if(!dialog){dialog=document.createElement('dialog');dialog.id='email-dialog';dialog.className='reader-dialog';document.body.append(dialog);}dialog.replaceChildren();const title=document.createElement('h2');title.textContent='Correo preparado';const close=document.createElement('button');close.type='button';close.textContent='Cerrar';close.addEventListener('click',()=>dialog.close());const text=document.createElement('textarea');text.readOnly=true;text.style.cssText='width:100%;min-height:320px;padding:20px';text.value=subject+'\n\n'+lines.filter(Boolean).join('\n');const open=document.createElement('a');open.textContent='Abrir mi aplicación de correo ↗';open.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\n'));dialog.append(title,close,text,open);dialog.showModal();
 }
 
