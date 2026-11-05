@@ -33,7 +33,7 @@ def texts(src):
     raw = p.read_text(encoding="utf-8")
     if p.suffix == ".json":
         d = json.loads(raw)
-        return " ".join(x.get("text", "") for x in d.get("passages", []))
+        return " ".join(x.get("text") or x.get("latin") or "" for x in d.get("passages", []))
     raw = re.sub(r"<(script|style)\b.*?</\1>", " ", raw, flags=re.S | re.I)
     return html.unescape(re.sub(r"<[^>]+>", " ", raw))
 
@@ -64,6 +64,7 @@ def load_ls(path, wanted):
             re.sub(r"<[^>]+>", "", gen.group(1)) if gen else "",
             re.sub(r"<[^>]+>", "", pos.group(1)) if pos else "",
         ] if x).strip()
+        head = re.sub(r"[\^_]", "", head)
         body2 = re.sub(r"<cit\b.*?</cit>|<bibl\b.*?</bibl>|<etym\b.*?</etym>|<foreign\b.*?</foreign>", " ", body, flags=re.S)
         gl = []
         for t in re.findall(r'<hi rend="ital">(.*?)</hi>', body2, re.S):

@@ -4,7 +4,7 @@ import {citation,roman,parseLocus,searchCorpus,tokens} from './search-core.mjs?v
 import {parallelHighlight} from './parallel-highlights.mjs?v=20261103-pair2';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const editionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'},names={es:'Castellano',fr:'Français',en:'English'};
-const datasets={},records={};let lexicon=[];
+const datasets={},records={};let lexicon=[],lemmaGlossary=null;
 const atLocus=(p,locus)=>p.locus===locus||Boolean(p.section_end&&(()=>{const r=parseLocus(locus);return r&&p.book===r.book&&p.chapter===r.chapter&&r.section>=p.section&&r.section<=p.section_end;})());let all=[],current=null,query='',pendingLocus=null,passageCitation='';
 const params=new URLSearchParams(location.search);
 if(params.has('edition'))$('lang').value=Object.keys(editionIds).find(k=>editionIds[k]===params.get('edition'))||'es';
@@ -97,7 +97,10 @@ $('find-form').addEventListener('submit',e=>{
  render();
 });
 try{
- const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/latin-lexicon.json').then(r=>r.json()).then(d=>{lexicon=d.entries;}),fetch('data/catalog.json?v=20261030-citations').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
+ const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/latin-lexicon.json').then(r=>r.json()).then(d=>{lexicon=d.entries;}),fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(d=>{lemmaGlossary=d}).catch(()=>{}),fetch('data/catalog.json?v=20261030-citations').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
+ // Todas las formas de cada lema (CLTK + Lewis & Short) se suman al léxico revisado, que conserva prioridad.
+ if(lemmaGlossary?.forms){const by=new Map();for(const [form,lems] of Object.entries(lemmaGlossary.forms))for(const l of lems){if(!by.has(l))by.set(l,new Set());by.get(l).add(form)}
+  for(const [l,forms] of by){const head=String(lemmaGlossary.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'');const lem=head.replace(/\d+$/,''),nk=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');const cur=lexicon.find(e=>!e.derived&&nk(e.lemma)===nk(lem));if(cur)cur.forms=[...new Set([...(cur.forms||[]),...forms])];else lexicon.push({lemma:lem,forms:[...forms],derived:true})}}
  if(!datasets['recensio-es'])throw Error('No se pudo cargar el corpus castellano. Recarga para volver a intentarlo.');
  all=datasets['recensio-es'].passages;for(const id of ['book','chapter','section'])$(id).disabled=false;
  $('coverage').textContent=Object.values(datasets).map(d=>d.version+': '+d.passages.length+' bloques de lectura').join(' · ')+'. Los 731 loci están localizados en cada idioma; V297 conserva VII.7.1–3 y VII.7.4–5 como bloques conjuntos.';

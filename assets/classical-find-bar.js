@@ -7,7 +7,7 @@
 const me=document.currentScript;const work=me?.dataset.work||"";const lookupMode=me?.dataset.lookup||"la";
 const base=(me?.src||"").replace(/assets\/classical-find-bar\.js.*$/,"");
 function ready(fn){document.readyState==="loading"?document.addEventListener("DOMContentLoaded",fn):fn()}
-function loadLex(){return window.ClassicalLexicon?Promise.resolve():new Promise(r=>{const s=document.createElement("script");s.src=base+"assets/classical-lexicon.js?v=20261105-lex-v1";s.onload=r;s.onerror=r;document.head.append(s)})}
+function loadLex(){return window.ClassicalLexicon?Promise.resolve():new Promise(r=>{const s=document.createElement("script");s.src=base+"assets/classical-lexicon.js?v=20261105-lex-v2";s.onload=r;s.onerror=r;document.head.append(s)})}
 ready(async()=>{
  await loadLex();const LEX=window.ClassicalLexicon;if(!LEX)return;LEX.css();
  const root=document.querySelector("main")||document.body;

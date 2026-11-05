@@ -122,8 +122,8 @@ async function greekGlossary(work){
  });
  glossaryIndex.set(path,p);return p;
 }
-const GREEK_GLOSSARIES=["theophrastus-characters","plato-apology","aristotle-poetics"];
-const LATIN_GLOSSARIES=new Set(["caesar-gallico","virgil-aeneid","virgil-georgica","petronius-satyrica","apuleius-metamorphoses","cicero-officiis","lucretius","catullus-carmina"]);
+const GREEK_GLOSSARIES=["vitruvius","theophrastus-characters","plato-apology","aristotle-poetics"];
+const LATIN_GLOSSARIES=new Set(["vitruvius","caesar-gallico","virgil-aeneid","virgil-georgica","petronius-satyrica","apuleius-metamorphoses","cicero-officiis","lucretius","catullus-carmina"]);
 async function lookupGreek(word,work){
  const works=[...new Set([work,...GREEK_GLOSSARIES].filter(Boolean))];
  const w=word.normalize("NFC").toLowerCase(),k=fold(word);
@@ -134,7 +134,7 @@ async function lookupGreek(word,work){
   if(!an)continue;
   const seen=new Set(),entries=[];
   for(const [lemma,tag] of an){const key=lemma+"|"+tag;if(seen.has(key))continue;seen.add(key);
-   const L=g.data.lemmas[lemma]||{};entries.push({lemma,morph:morph(tag),gloss:L.g||"",lang:"grc",source:"LSJ (glosa inglesa) · lematización Celano",lsjId:L.id||""})}
+   const L=g.data.lemmas[lemma]||{};entries.push({lemma:L.probable||lemma,morph:L.probable?"lema probable (forma "+lemma+"; verificar)":morph(tag),gloss:L.g||"",lang:"grc",source:"LSJ (glosa inglesa) · lematización Celano",lsjId:L.id||""})}
   return{entries,via,sources:g.data.sources,note:g.data.note};
  }
  /* Sin forma atestiguada: lema probable por raíz común en los glosarios (orientativo). */
@@ -197,6 +197,11 @@ async function lookup(word,{lang,work,online=true}={}){
  lang=lang||detectLang(w);
  let res=lang==="grc"?await lookupGreek(w,work):await lookupLatin(w,work);
  if(!res&&online)res=await wiktionary(w,lang)||(w!==w.toLowerCase()?await wiktionary(w.toLowerCase(),lang):null);
+ if(lang==="la"&&res?.entries?.length){
+  const lx=await json("data/latin-lexicon.json");const strip=x=>fold(String(x||"").split(/[\s,]/)[0]).replace(/-/g,"");
+  for(const e of res.entries){const k=strip(e.lemma);const hit=(lx?.entries||[]).find(x=>strip(x.lemma)===k||(x.forms||[]).some(f=>fold(f)===fold(w)&&strip(x.lemma)===k));
+   if(hit){e.es=hit.es;e.esSense=(hit.senses||[])[0]||"";e.term=hit.lemma}}
+ }
  const first=res?.entries?.[0]?.lemma?.split(/\s/)[0]?.normalize("NFD").replace(/[\u0304\u0306]/g,"").normalize("NFC").replace(/-/g,"");
  return{word:w,lang,entries:res?.entries||[],via:res?.via||"",sources:res?.sources||[],note:res?.note||"",links:links(w,lang,first)};
 }
@@ -237,7 +242,9 @@ async function renderPanel(container,word,opts={}){
   const box=document.createElement("div");box.className="cl-entry";
   const l=document.createElement("span");l.className="cl-lemma";l.lang=e.lang==="grc"?"grc":"la";l.textContent=e.lemma;box.append(l);
   if(e.morph){const m=document.createElement("span");m.className="cl-morph";m.textContent=e.morph;box.append(m)}
-  const g=document.createElement("span");g.className="cl-gloss";g.textContent=e.gloss||"(sin glosa breve: ver el léxico completo)";box.append(g);
+  if(e.es){const es=document.createElement("span");es.className="cl-gloss";es.textContent="Castellano: "+e.es+(e.esSense?" — "+e.esSense:"");box.append(es)}
+  const g=document.createElement("span");g.className="cl-gloss";g.textContent=(e.es?"Inglés (léxico): ":"")+(e.gloss||"(sin glosa breve: ver el léxico completo)");box.append(g);
+  if(e.term){const a=document.createElement("a");a.href=ROOT+"termino.html?t="+encodeURIComponent(e.term);a.textContent="Ficha del término en Vitruvio →";a.style.fontSize="12px";box.append(a)}
   container.append(box);
  }
  if(res.sources?.length){const s=document.createElement("p");s.className="cl-src";s.textContent="Fuente: "+res.sources.map(x=>x.label+(x.license?" ("+x.license+")":"")).join(" · ")+(res.note?" — "+res.note:"");container.append(s)}
