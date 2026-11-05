@@ -23,6 +23,9 @@ function classify(query,rows=[]){
     return nameTerms.length?nameTerms.every(w=>t.includes(w)||t.some(z=>z.startsWith(w)||w.startsWith(z))):false;
   }).sort((a,b)=>Number(!!b.preferredWiki)-Number(!!a.preferredWiki));
  if(wiki.length)return{kind:'person',subject:short(wiki[0].title),identity:wiki[0]};
+ // A UNESCO-attested architect can still be identified if external snippets omit
+ // occupation or the entity API is temporarily unreachable.
+ if(certifiedSites[q])return{kind:'person',subject:short(query),identity:rows.find(x=>x.type==='wikipedia'&&normalize(x.title||'')===q)||null};
  // No attribution without a matching biographical record.
  if(KEY.test(q))return{kind:'general',subject:short(query),identity:null};
  return null;
