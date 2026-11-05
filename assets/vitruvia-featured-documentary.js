@@ -42,6 +42,7 @@
  }
  function preferImage(item){
   const score=Number(item.score)||0;
+  if(item.verifiedIdentity)return score+1000;
   const person=item.kind==='person',group=item.group||'';
   const boost=person?(group==='sculpture'?230:group==='portrait'?160:group==='book'?45:0):
    item.kind==='object'?(group==='object'?230:group==='historic'?195:group==='technical'?30:0):
