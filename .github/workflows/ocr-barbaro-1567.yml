@@ -25,6 +25,8 @@ jobs:
       - name: Instalar Tesseract (italiano y latín)
         run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-ita tesseract-ocr-lat
       - name: OCR de las dos ediciones
+        env:
+          OMP_THREAD_LIMIT: "1"
         run: python scripts/ocr-barbaro-1567.py it la
       - name: Concordancia por libro, capítulo y locus
         run: python scripts/build-barbaro-concordance.py
