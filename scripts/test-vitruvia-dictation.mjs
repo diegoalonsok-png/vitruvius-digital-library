@@ -182,5 +182,8 @@ test('page wiring loads the controller once and removes the old recognition hand
  assert.equal((html.match(/src="assets\/vitruvia-dictation.js\?/g)||[]).length,1);
  assert.match(html,/VitruviaDictation\.attach\(\{button:voice,input,status\}\)/);
  assert.doesNotMatch(html,/recognition\.onresult|recognition\.continuous/);
- for(const [i,m] of [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].entries())new Script(m[1],{filename:'inline '+i});
+ for(const [i,m] of [...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/gi)].entries()){
+  if(/type=["']application\/ld\+json["']/i.test(m[1]))JSON.parse(m[2]);
+  else new Script(m[2],{filename:'inline '+i});
+ }
 });

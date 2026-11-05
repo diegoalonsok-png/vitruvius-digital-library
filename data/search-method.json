@@ -1,0 +1,28 @@
+{
+  "name": "Vitruvia · Fuentes y método de recuperación",
+  "local_corpus": {
+    "catalog": "data/catalog.json",
+    "semantic_corpus_manifest": "data/ai-corpora.json",
+    "scope": "Only the documents actually indexed. Manuscript images without verified text do not constitute a searchable transcription."
+  },
+  "external_sources": {
+    "Wikipedia": "Encyclopedic context and attributed extracts. Not independent verification of every claim.",
+    "Wikidata": "Entity identification and linked metadata. Not a textual quotation.",
+    "Crossref": "Bibliographic metadata and DOI records. A record does not prove full-text access or peer review.",
+    "Open Library and Google Books": "Catalogue and book discovery. Academic status is not automatically certified.",
+    "Institutional search buttons": "External searches; results are not already read or collated by Vitruvia."
+  },
+  "semantic_search": {
+    "state": "experimental",
+    "runtime_model": "Xenova/multilingual-e5-small",
+    "runtime_library": "@huggingface/transformers@3.8.1",
+    "execution": "visitor browser; explicitly selected AI mode",
+    "initial_download_approx_mb": 120,
+    "lexical_method": "BM25",
+    "fallback": "BM25 lexical results when the neural model cannot load",
+    "output": "Retrieval of indexed source fragments; no newly generated translations or manuscript readings."
+  },
+  "manuscript_evidence": "Canonical locus, editorial paragraph and manuscript folio are different references; automatic alignment is not an independent collatio.",
+  "privacy": "Visual imports and local PDFs retain their existing transient browser processing. This update introduces no persistent query history or file storage.",
+  "documentation": "https://diegoalonsok-png.github.io/vitruvius-digital-library/metodologia-filologica.html"
+}
