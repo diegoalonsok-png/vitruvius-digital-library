@@ -237,7 +237,7 @@ async function renderPanel(container,word,opts={}){
  const w=document.createElement("p");w.className="cl-word";w.textContent=clean(word);w.lang=detectLang(word)==="grc"?"grc":"la";container.append(w);
  const wait=document.createElement("p");wait.className="cl-note";wait.textContent="Consultando el glosario local…";container.append(wait);
  const res=await lookup(word,opts);wait.remove();
- if(!res.entries.length){const p=document.createElement("p");p.textContent="Sin entrada en los glosarios locales ni respuesta del diccionario en línea. Consulte los léxicos enlazados.";container.append(p)}
+ if(!res.entries.length){const p=document.createElement("p");p.textContent="Sin entrada en los glosarios locales ni respuesta del diccionario en línea. Consulta los léxicos enlazados.";container.append(p)}
  for(const e of res.entries){
   const box=document.createElement("div");box.className="cl-entry";
   const l=document.createElement("span");l.className="cl-lemma";l.lang=e.lang==="grc"?"grc":"la";l.textContent=e.lemma;box.append(l);

@@ -23,7 +23,7 @@ html[data-theme=dark] .classic-fulltext a{background:#263d50;border-color:#72839
   box.replaceChildren();
   if(!rows.length){box.textContent="«"+q+"» no aparece en los textos alojados en el sitio (búsqueda por palabra, sin diacríticos).";return}
   const head=document.createElement("p");head.style.margin="0";
-  head.append(document.createTextNode("Palabra en los textos: "),Object.assign(document.createElement("mark"),{textContent:q}),document.createTextNode(" · "+rows.reduce((n,r)=>n+(r.count||0),0)+" coincidencias. Abra una obra para verla resaltada y consultar el diccionario."));
+  head.append(document.createTextNode("Palabra en los textos: "),Object.assign(document.createElement("mark"),{textContent:q}),document.createTextNode(" · "+rows.reduce((n,r)=>n+(r.count||0),0)+" coincidencias. Abre una obra para verla resaltada y consultar el diccionario."));
   const ul=document.createElement("ul");
   for(const r of rows){const li=document.createElement("li"),a=document.createElement("a");
    a.href=r.link.startsWith("corpus/")?r.link:"bibliotheca-graeca-latina.html?work="+encodeURIComponent(r.workId)+"&view=text&term="+encodeURIComponent(q);

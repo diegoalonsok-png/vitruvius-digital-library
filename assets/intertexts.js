@@ -18,7 +18,7 @@ async function update(){
   a.textContent=w.author+" · "+w.title;li.append(a);
   const s=document.createElement("small");s.textContent=hasText?" — texto en el sitio con búsqueda y diccionario":" — ficha y fuentes externas";li.append(s);ul.append(li)}
  box.append(ul);
- const n=document.createElement("small");n.textContent="La mención no implica cita literal de la obra; verifique el pasaje.";box.append(n);
+ const n=document.createElement("small");n.textContent="La mención no implica cita literal de la obra; verifica el pasaje.";box.append(n);
 }
 function ready(fn){document.readyState==="loading"?document.addEventListener("DOMContentLoaded",fn):fn()}
 ready(()=>{const anchor=document.getElementById("pdf-links");if(!anchor)return;anchor.after(box);

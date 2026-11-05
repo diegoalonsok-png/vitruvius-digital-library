@@ -152,7 +152,7 @@ async function mountPdf(target,item){
   const LEX=window.ClassicalLexicon;if(!LEX)return;
   const w=wordFromPoint(ev);
   if(!w||w.length<2){
-   if(!pageItems.length&&item.transcription){dict.replaceChildren(el("p","classic-ref",tr("Esta página no tiene capa de texto utilizable. Para consultar palabras, abra la transcripción del sitio.","This page has no usable text layer. Open the site transcription to look up words.","Pas de couche de texte utilisable. Ouvrez la transcription du site.")));addLink(dict,item.transcription,tr("Abrir transcripción con diccionario →","Open transcription with dictionary →","Ouvrir la transcription →"))}
+   if(!pageItems.length&&item.transcription){dict.replaceChildren(el("p","classic-ref",tr("Esta página no tiene capa de texto utilizable. Para consultar palabras, abre la transcripción del sitio.","This page has no usable text layer. Open the site transcription to look up words.","Pas de couche de texte utilisable. Ouvrez la transcription du site.")));addLink(dict,item.transcription,tr("Abrir transcripción con diccionario →","Open transcription with dictionary →","Ouvrir la transcription →"))}
    return;
   }
   const lang=/[\u0370-\u03ff\u1f00-\u1fff]/.test(w)?"grc":"la";

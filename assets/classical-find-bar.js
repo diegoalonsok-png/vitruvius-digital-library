@@ -27,7 +27,7 @@ html[data-theme=dark] .cl-findbar input{background:#171a1e;color:#f3efe8;border-
  bar.innerHTML=`<button type="button" class="cl-toggle" aria-expanded="false">⌕ Buscar palabra · diccionario</button>
 <div class="cl-box"><form><label class="cl-sr" style="position:absolute;left:-9999px" for="cl-q">Buscar palabra en el texto</label><input id="cl-q" type="search" placeholder="Palabra latina o griega…" autocomplete="off"><button type="submit">Buscar</button><button type="button" class="cl-close" aria-label="Cerrar">✕</button></form>
 <div class="cl-row"><span class="cl-count" role="status" aria-live="polite"></span><button type="button" class="cl-prev" aria-label="Coincidencia anterior">↑</button><button type="button" class="cl-next" aria-label="Coincidencia siguiente">↓</button></div>
-<div class="cl-dict-area"></div><p style="font-size:11px;color:#77736b;margin:8px 0 0">${lookupMode==="off"?"Resaltado en amarillo de todas las coincidencias.":"Haga clic en una palabra del texto para consultar el diccionario."}</p></div>`;
+<div class="cl-dict-area"></div><p style="font-size:11px;color:#77736b;margin:8px 0 0">${lookupMode==="off"?"Resaltado en amarillo de todas las coincidencias.":"Haz clic en una palabra del texto para consultar el diccionario."}</p></div>`;
  document.body.append(bar);
  const q=bar.querySelector("#cl-q"),count=bar.querySelector(".cl-count"),dict=bar.querySelector(".cl-dict-area");
  let marks=[],at=-1;

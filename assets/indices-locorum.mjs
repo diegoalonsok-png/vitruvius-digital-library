@@ -132,8 +132,8 @@ function render(){
    a.textContent=roman(p.book)+'.'+p.chapter+'.'+p.section;a.title='Abrir pasaje '+p.locus;locs.append(a)}
   card.append(locs);
   if(mode!=='math')dictionary(card,entry);
-  if(mode==='greek'){const note=document.createElement('p');note.className='index-meta';note.textContent='La entrada puede reunir grafías griegas literales y equivalencias latinas documentadas. Verifique cada pasaje antes de citarla como testimonio griego.';card.append(note)}
-  if(entry.loci.length>45){const d=document.createElement('p');d.className='index-meta';d.textContent='Se muestran 45 loci; filtre por libro para acotar. La concordancia en contexto los incluye todos.';card.append(d)}
+  if(mode==='greek'){const note=document.createElement('p');note.className='index-meta';note.textContent='La entrada puede reunir grafías griegas literales y equivalencias latinas documentadas. Verifica cada pasaje antes de citarla como testimonio griego.';card.append(note)}
+  if(entry.loci.length>45){const d=document.createElement('p');d.className='index-meta';d.textContent='Se muestran 45 loci; filtra por libro para acotar. La concordancia en contexto los incluye todos.';card.append(d)}
   root.append(card);
  }
  $('#index-status').textContent=valid.length+' entradas · '+valid.reduce((n,x)=>n+x.loci.length,0)+' referencias de locus'+(mode==='latin'?(grouping==='lemma'?' · agrupado por lema':' · agrupado por forma gráfica'):'');

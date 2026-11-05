@@ -91,7 +91,7 @@ async function show(locus){
    if(e.pdf){const a=el("a",null,"Abrir la página de la edición ↗");a.href=e.pdf;a.target="_blank";a.rel="noopener";d.append(a)}apBox.append(d)}
  }catch{apBox.append(el("p","coll-meta","Aparato no disponible."))}
  root.append(apBox);
- root.append(el("p","coll-method",coll.method+" Las diferencias señaladas pueden deberse a erratas de reconocimiento óptico: verifíquelas en la página impresa antes de citarlas."));
+ root.append(el("p","coll-method",coll.method+" Las diferencias señaladas pueden deberse a erratas de reconocimiento óptico: verifícalas en la página impresa antes de citarlas."));
 }
 function parse(v){
  const q=String(v||"").trim();if(!q)return null;
