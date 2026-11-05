@@ -105,11 +105,11 @@ const words=v=>norm(v).split(/\s+/).filter(Boolean);
 try{
  const r=await fetch('data/corpus-expansion-inventory.json');if(!r.ok)throw Error('Catálogo no disponible');
  const records=(await r.json()).records.filter(x=>x.group==='manuscripts');
- const searchText=x=>norm([x.display_title,x.shelfmark,x.siglum,x.institution,x.place,x.date_display,x.date].filter(Boolean).join(' '));
+ const searchText=x=>norm([x.display_title,x.shelfmark,x.siglum,x.institution,x.place,x.date_display,x.date,...(x.aliases||[])].filter(Boolean).join(' '));
  function render(){
   const terms=words(query.value),found=records.filter(x=>terms.every(t=>searchText(x).includes(t)));
   counter.textContent=found.length+' de '+records.length+' fichas manuscritas coincidentes · las signaturas provisionales deben cotejarse con el catálogo institucional.';
-  out.innerHTML=found.length?found.map(x=>'<article style="border-bottom:1px solid #c9c3b8;padding:12px 0"><strong>'+esc(x.display_title)+'</strong> · '+esc(x.date_display||x.date)+'<p>Signatura: '+esc(x.shelfmark||'Por cotejar')+' · Sigla editorial: <span class="codex-siglum" translate="no" lang="la">'+esc(x.siglum||'no asignada')+'</span> · '+esc(x.institution||x.place||'')+'</p>'+(x.view_url&&/^https:\/\//i.test(x.view_url)?'<p><a target="_blank" rel="noopener noreferrer" href="'+esc(x.view_url)+'">Ficha o facsímil institucional ↗</a></p>':'')+'</article>').join(''):'<p>No hay coincidencias en el inventario. Pruebe otra signatura o consulte el catálogo de manuscritos.</p>';
+  out.innerHTML=found.length?found.map(x=>'<article style="border-bottom:1px solid #c9c3b8;padding:12px 0"><strong>'+esc(x.display_title)+'</strong> · '+esc(x.date_display||x.date)+'<p>Signatura: '+esc(x.shelfmark||'Por cotejar')+' · Sigla editorial: <span class="codex-siglum" translate="no" lang="la">'+esc(x.siglum||'no asignada')+'</span> · '+esc(x.institution||x.place||'')+'</p><p style="font-size:12px">Estado: '+esc(x.metadata_status==='documented'?'metadatos documentados; el texto requiere cotejo':'ficha provisional, verificar con la institución conservadora')+'</p>'+(x.view_url&&/^https:\/\//i.test(x.view_url)?'<p><a target="_blank" rel="noopener noreferrer" href="'+esc(x.view_url)+'">Ficha o facsímil institucional ↗</a></p>':'')+'<p><a href="bibliotheca-graeca-latina.html?'+new URLSearchParams({q:x.shelfmark||x.work_title||x.display_title})+'">Buscar en la biblioteca clásica ↗</a></p></article>').join(''):'<p>No hay coincidencias en el inventario. Pruebe otra signatura o consulte el catálogo de manuscritos.</p>';
  }
  query.addEventListener('input',render);render();
 }catch(err){counter.textContent='No se pudo cargar el inventario';out.textContent='No se pudo cargar el índice. Consulte la bibliografía general.'}
