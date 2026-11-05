@@ -159,7 +159,30 @@ async function localize(identity,lang){
 // Disambiguate via Wikidata authority aliases and cross-language coverage.
 // Matching an unaccented stage name must not outrank a widely attested
 // historical figure merely because the article title is an exact string match.
-async function authorityCandidates(q,lang){
+/* Match a query's requested output against documented occupations when a
+   shared name refers to different cultural subjects. */
+function creatorIntent(raw){
+ const q=norm(raw);
+ if(/\b(albumes|albums|album|discos|discografia|discography|canciones|songs|musica|music|conciertos)\b/.test(q))return "music";
+ if(/\b(peliculas|films|movies|filmografia|filmography|cine)\b/.test(q))return "cinema";
+ if(/\b(arquitectura|arquitecto|architecture|architect|edificios|buildings|planos|fachadas)\b/.test(q))return "architect";
+ if(/\b(libros|books|bibliografia|novelas|novels|poemas|poems)\b/.test(q))return "author";
+ if(/\b(pinturas|paintings|cuadros|esculturas|sculptures)\b/.test(q))return "visual";
+ return "";
+}
+function occupationFit(description,intent){
+ if(!intent)return 0;
+ const d=norm(description);
+ const patterns={
+  music:/\b(singer|cantante|musician|musico|songwriter|compositor|rapper|band|banda|grupo musical|recording artist|pop star)\b/,
+  cinema:/\b(film director|filmmaker|cineasta|director de cine|directora de cine|screenwriter|guionista|actor|actriz)\b/,
+  architect:/\b(architect|arquitecto|arquitecta|engineer|ingeniero|ingeniera|urbanista)\b/,
+  author:/\b(writer|escritor|escritora|author|novelist|poet|poeta|philosopher|filosofo)\b/,
+  visual:/\b(painter|pintor|pintora|sculptor|escultor|artist|artista|photographer|fotografo)\b/
+ };
+ return patterns[intent]?.test(d)?850:-450;
+}
+async function authorityCandidates(q,lang,intent=""){
  const languages=[...new Set([lang,"es","en"])];
  const hits=(await Promise.allSettled(languages.map(language=>
   get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
@@ -190,7 +213,8 @@ async function authorityCandidates(q,lang){
   const coverage=Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length;
   // Prefer an exact primary name over an alias of a different, equally prominent entity.
   // Coverage can still disambiguate a little-known namesake from a major historical figure.
-  const score=(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+
+  const occupation=entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||"";
+  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
@@ -260,7 +284,7 @@ async function resolve(query,preferredLang="es"){
  // Wikidata has aliases such as "Virgen María" for the historical figure.
  // Direct page-title matching on another language can instead return a DJ.
  try{
-  const authority=await authorityCandidates(q,lang);
+  const authority=await authorityCandidates(q,lang,creatorIntent(query));
   if(authority)return await localize(authority,lang);
  }catch{}
  const langs=[...new Set([lang,"es","en"])];
