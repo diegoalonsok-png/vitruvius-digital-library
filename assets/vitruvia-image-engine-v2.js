@@ -52,7 +52,7 @@ async function getJSON(params,signal){
  const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d;
 }
 function imageParams(extra){
- return {...extra,prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"400"};
+ return {...extra,prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"360"};
 }
 function matchingScore(page,aliases,query){
  const name=fold(page.title||"").replace(/^file /,"").replace(/\b(jpg|jpeg|png|webp|svg|tiff)\b/g,"");
@@ -73,7 +73,8 @@ function matchingScore(page,aliases,query){
 function displayItem(item,parent=grid){
  const button=create(parent,"button","vitruvia-image-card");
  button.type="button";button.setAttribute("aria-label",locale("Ampliar ","View ","Agrandir ")+item.name);
- const img=create(button,"img");img.alt=item.name;img.loading="lazy";img.decoding="async";
+ const img=create(button,"img");img.alt=item.name;img.loading=parent===grid?"lazy":"eager";img.decoding="async";
+ if(parent!==grid)img.fetchPriority="high";
  let fallbackAttempted=false;
  img.addEventListener("error",()=>{
   if(!fallbackAttempted&&item.original&&item.original!==item.preview&&safeLink(item.original)){
@@ -153,7 +154,7 @@ function collectedImages(pages,topic){
   const objectName=clean(meta.ObjectName?.value||"");
   const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
    .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
-  items.push({name,caption,preview:info.thumburl,large:(info.width>1600?info.thumburl.replace(/\/\d+px-/,"/1600px-"):safeLink(info.url)||info.thumburl),original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
+  items.push({name,caption,preview:info.thumburl,large:(info.width>1200?info.thumburl.replace(/\/\d+px-/,"/1200px-"):safeLink(info.url)||info.thumburl),original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
    credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group,verifiedIdentity:!!page.fromEntityImage});
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
@@ -233,7 +234,7 @@ async function addArticleImages(id,identity,seen){
  if(en)pairs.push(["en",en]);
  const out=[];
  await Promise.all(pairs.map(async([lang,title])=>{
-  const params=new URLSearchParams({action:"query",format:"json",origin:"*",redirects:"1",generator:"images",titles:title,gimlimit:"40",prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"400"});
+  const params=new URLSearchParams({action:"query",format:"json",origin:"*",redirects:"1",generator:"images",titles:title,gimlimit:"40",prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"360"});
   const d=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{headers:{Accept:"application/json"}}).then(r=>r.ok?r.json():null).catch(()=>null);
   for(const p of Object.values(d?.query?.pages||{})){
    const info=p.imageinfo?.[0];if(!info?.thumburl||!/^image\/(jpeg|png|webp|gif)$/.test(info.mime||""))continue;
@@ -286,7 +287,7 @@ async function verifiedLeadImage(identity,topic,id){
   try{
    const params=new URLSearchParams({action:"query",format:"json",origin:"*",redirects:"1",
     titles:candidates.join("|"),prop:"pageimages|pageprops",piprop:"thumbnail|name",
-    pithumbsize:"720",pilicense:"any"});
+    pithumbsize:"480",pilicense:"any"});
    const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});
    if(!response.ok)return null;
    const data=await response.json();
