@@ -214,5 +214,5 @@ async function query(q,opts={}){
  result.rows.sort((a,b)=>b.rating-a.rating);
  return result
 }
-window.VitruviaResearchEngine={canonical,classify,prefaceIntent,prefaceRows,query,lexicalScore,manuscriptRows,passageRows,version:"1.1-prefaces"};
+window.VitruviaResearchEngine={canonical,classify,prefaceIntent,prefaceRows,query,lexicalScore,manuscriptRows,passageRows,getCorpora,version:"1.2-context-panel"};
 })();
