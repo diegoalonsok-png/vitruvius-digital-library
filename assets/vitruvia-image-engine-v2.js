@@ -237,13 +237,12 @@ async function searchImages(query){
    if(id!==active)return;if(again)identity=again}
  }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
- const isFilm=Boolean(identity?.instanceOf?.includes("Q11424")||identity?.instanceOf?.includes("Q24869")||
-  /\\b(?:film|movie|pelicula|largometraje|motion picture|feature film)\\b/.test(fold(identity?.authorityDescription||"")));
+ const isFilm=Boolean(identity?.instanceOf?.includes("Q11424")||
+  /\b(?:film|movie|pelicula|largometraje|motion picture|feature film)\b/.test(fold(identity?.authorityDescription||identity?.description||"")));
  if(isFilm){
-  // The year alone and the word "film" must never identify unrelated posters.
-  const canonical=String(identity?.originalCanonical||identity?.canonical||"").replace(/\\s*\\((?:pelicula|film|movie)\\)\\s*$/i,"").trim();
+  const canonical=String(identity?.originalCanonical||identity?.canonical||"").replace(/\s*\((?:pelicula|film|movie)[^)]*\)\s*$/i,"").trim();
   const english=String(identity?.commonsSearchName||"").trim();
-  topic.aliases=distinct([canonical,english,identity?.canonical].filter(x=>fold(x).replace(/\\b(film|movie|pelicula)\\b/g,"").trim().length>4));
+  topic.aliases=distinct([canonical,english,identity?.canonical].filter(x=>fold(x).replace(/\b(film|movie|pelicula)\b/g,"").trim().length>4));
   topic.queries=distinct([english+" film",canonical+" film",canonical].filter(Boolean)).slice(0,3);
  }
  section.dataset.entityId=identity?.wikidataId||"";section.dataset.commonsCategory=identity?.commonsCategory||"";
@@ -313,7 +312,12 @@ async function searchImages(query){
    const items=collectedImages(candidatePages,topic);
   if(items.length){
    const selected=items.slice(0,80);
-   displayGroups(selected,topic);
+   // Show the verified film image first; Commons matches may be incomplete.
+   const exactLead=isFilm?(leadItems.length?leadItems:await leadPromise):[];
+   if(id!==active)return;
+   if(exactLead.length){
+    displayGroups([...exactLead,...selected.filter(x=>x.preview!==exactLead[0].preview)].slice(0,80),topic);
+   }else displayGroups(selected,topic);
    status.textContent=locale(selected.length+" imágenes con ficha de origen. Abre una para ampliar; confirma los derechos antes de reutilizarla.",
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
