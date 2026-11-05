@@ -21,6 +21,17 @@ const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
 const stop=new Set("de del la las los el una un the and for with images image fotos foto fotografias photography photos paintings painting cuadros pintura obras file".split(" "));
 const tokens=s=>fold(s).split(/\s+/).filter(x=>x.length>2&&!stop.has(x));
 const distinct=a=>[...new Set(a.map(x=>String(x||"").trim()).filter(Boolean))];
+
+/* Prefer documented creation date; never use Commons upload timestamps to date artwork. */
+function documentedYear(value){
+ const raw=String(value||"").replace(/<[^>]*>/g," ").replace(/&[^;]+;/g," ").trim();
+ if(!raw)return null;
+ const m=raw.match(/(?:^|[^\d])((?:1[0-9]{3}|20[0-9]{2}|[1-9][0-9]{2}))(?!\d)/);
+ if(!m)return null;
+ const y=Number(m[1]);
+ return y<=new Date().getFullYear()+1?y:null;
+}
+
 const genericImageWords=/\b(pinturas?|cuadros?|paintings?|artworks?|obras?|retratos?|portraits?|fotografias?|photos?|pictures?|images?|imagenes|sculptures?|esculturas?|estatuas?|statues?)\b/;
 const paintingWords=/\b(pinturas?|cuadros?|paintings?|artworks?|obras?)\b/;
 const photoWords=/\b(fotografias?|photos?|pictures?|imagenes|images?)\b/;
@@ -117,13 +128,15 @@ function collectedImages(pages,topic){
   const clean=window.VitruviaDiscovery?.plain||String;
   const meta=info.extmetadata||{},license=clean(info.extmetadata?.LicenseShortName?.value||"").slice(0,90);
   const creator=clean(meta.Artist?.value||"").slice(0,140);
-  const date=clean(meta.DateTimeOriginal?.value||meta.DateTime?.value||"").slice(0,70);
+  const historicalDate=clean(meta.DateTimeOriginal?.value||meta.DateTimeDigitized?.value||"").slice(0,70);
+  const year=documentedYear(historicalDate);
+  const date=historicalDate;
   const name=String(page.title||"").replace(/^File:/,"").replace(/_/g," ");
   const objectName=clean(meta.ObjectName?.value||"");
   const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
    .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
   items.push({name,caption,preview:info.thumburl,original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
-   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),score:rank.score,group:rank.group});
+   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group});
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
 }
@@ -197,13 +210,13 @@ async function addBookCovers(id,topic,identity,q){
  const params=new URLSearchParams({q:title,limit:"40",fields:"key,title,author_name,first_publish_year,cover_i,edition_count"});
  const data=await fetch("https://openlibrary.org/search.json?"+params,{headers:{Accept:"application/json"}}).then(r=>r.ok?r.json():null).catch(()=>null);
  if(id!==active||!data)return 0;
- const docs=(data.docs||[]).filter(d=>d.cover_i&&d.title).sort((a,b)=>(a.first_publish_year||9999)-(b.first_publish_year||9999)).slice(0,16);
+ const docs=(data.docs||[]).filter(d=>d.cover_i&&d.title).sort((a,b)=>(a.first_publish_year??99999)-(b.first_publish_year??99999)||String(a.title).localeCompare(String(b.title))).slice(0,16);
  if(!docs.length)return 0;
  groupTitle(locale("Tapas de ediciones · Open Library","Edition covers · Open Library","Couvertures d’éditions · Open Library"));
  for(const d of docs){
   const author=(d.author_name||[]).slice(0,2).join(", ");
   displayItem({name:d.title,caption:[d.title,d.first_publish_year,author].filter(Boolean).join(" · "),
-   preview:"https://covers.openlibrary.org/b/id/"+d.cover_i+"-M.jpg",original:"https://covers.openlibrary.org/b/id/"+d.cover_i+"-L.jpg",
+   year:Number(d.first_publish_year)||null,preview:"https://covers.openlibrary.org/b/id/"+d.cover_i+"-M.jpg",original:"https://covers.openlibrary.org/b/id/"+d.cover_i+"-L.jpg",
    page:"https://openlibrary.org"+d.key,license:"",credit:locale("Open Library · tapa de edición; derechos de la editorial","Open Library · edition cover; publisher’s rights","Open Library · couverture ; droits de l’éditeur"),score:0,group:"book"});
  }
  return docs.length;
