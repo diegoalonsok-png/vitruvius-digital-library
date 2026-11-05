@@ -139,6 +139,60 @@ function displayFacts(root,data){
  }
  return qids(entity,'P800').map(id=>label(labels,id)).filter(Boolean).slice(0,6);
 }
+/* Wikidata property P84 connects a building directly with its architect.
+   We list only works with a Wikidata record, not similarly named pictures. */
+function constructedWorks(id){
+ if(!/^Q\d+$/.test(id||''))return Promise.resolve([]);
+ return remember('buildings:'+id,async()=>{
+  const sparql='SELECT DISTINCT ?work ?workLabel ?date ?locationLabel WHERE {'+
+   ' ?work wdt:P84 wd:'+id+' .'+
+   ' OPTIONAL { ?work wdt:P571 ?date . }'+
+   ' OPTIONAL { ?work wdt:P131 ?location . }'+
+   ' SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en,fr". }'+
+   ' } LIMIT 35';
+  const endpoint='https://query.wikidata.org/sparql?'+new URLSearchParams({query:sparql,format:'json'});
+  const result=await getJSON(endpoint);
+  const found=new Map();
+  for(const entry of result.results?.bindings||[]){
+   const uri=entry.work?.value||'';
+   if(!/^https:\/\/www\.wikidata\.org\/entity\/Q\d+$/.test(uri))continue;
+   const label=entry.workLabel?.value||'';
+   if(!label||/^Q\d+$/.test(label))continue;
+   const place=entry.locationLabel?.value||'';
+   const date=String(entry.date?.value||'').match(/^-?\d{3,4}/)?.[0]||'';
+   if(!found.has(uri))found.set(uri,{title:label,date,place:place&&!/^Q\d+$/.test(place)?place:'',url:uri.replace('/entity/','/wiki/')});
+  }
+  return[...found.values()].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title)).slice(0,30);
+ });
+}
+function listConstructedWorks(root,id,valid){
+ const section=el('section','architecture-built-list');
+ heading(section,localized('Obras de arquitectura documentadas','Documented architectural works','Œuvres architecturales documentées'));
+ root.append(section);
+ const status=el('p','context-note',localized('Consultando obras atribuidas en Wikidata…','Checking attributed architectural works in Wikidata…','Consultation des œuvres attribuées dans Wikidata…'));
+ section.append(status);
+ void constructedWorks(id).then(items=>{
+  if(!valid()||!section.isConnected)return;
+  section.replaceChildren();
+  if(!items?.length){
+   section.append(el('p','context-note',localized('El catálogo no devolvió obras arquitectónicas atribuidas con una ficha identificable.','The catalogue returned no independently identifiable architectural works.','Aucune œuvre architecturale identifiable n’a été renvoyée.')));
+  }else{
+   section.append(el('p','context-note',localized('Obras vinculadas al arquitecto en Wikidata (P84). La atribución puede contrastarse en cada ficha.','Works linked to the architect in Wikidata (P84). Consult each record to verify attribution.','Œuvres associées à l’architecte dans Wikidata (P84). Vérifiez chaque attribution dans sa notice.')));
+   const stack=el('ol','architecture-work-stack');
+   for(const work of items){
+    const li=el('li','architecture-work-item');
+    li.append(link(work.title+' ↗',work.url));
+    if(work.date||work.place)li.append(el('p','architecture-work-meta',[work.date,work.place].filter(Boolean).join(' · ')));
+    stack.append(li);
+   }
+   section.append(stack);
+  }
+  section.append(link(localized('Explorar las obras registradas en Wikidata ↗','Explore recorded works in Wikidata ↗','Explorer les œuvres répertoriées dans Wikidata ↗'),
+   'https://www.wikidata.org/wiki/'+id));
+ }).catch(()=>{if(valid()&&section.isConnected){
+  section.replaceChildren(el('p','context-note',localized('No se pudo consultar el catálogo de obras.','Could not retrieve the works catalogue.','Impossible de consulter le catalogue des œuvres.')));
+ }});
+}
 function render(panel,query,rows,stillCurrent){
  const subject=classify(query,rows);
  if(!subject)return;
@@ -165,6 +219,9 @@ function render(panel,query,rows,stillCurrent){
  const gallery=el('div','architecture-gallery');area.append(gallery);
  const status=el('p','context-note',localized('Buscando planos y cortes documentados…','Searching documented plans and sections…','Recherche de plans et coupes documentés…'));gallery.append(status);
  const apiId=subject.identity?.wikidataId;
+ if(subject.kind==='person'&&apiId){
+  listConstructedWorks(area,apiId,stillCurrent);
+ }
  const present=async()=>{
   let works=[];
   if(subject.kind==='person'&&apiId){
