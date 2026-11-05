@@ -8,12 +8,14 @@ const ED={
  "theory-en":{v:"V297",title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",lang:"latín e inglés",doi:"10.5281/zenodo.23885404"}};
 const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const cite=l=>{const [b,...r]=String(l).split(".");return (R[+b]||b)+"."+r.join(".").replace(/^praef\./,"praef. ")};
+// Chicago 18 (14.256): en las referencias a obras clásicas, divisiones con números arábigos y sin «p.».
+const arab=l=>String(l).replace(/\.praef\./,".pr.");
 function texts(ed,locus,page){const e=ED[ed]||ED["recensio-es"],loc="Vitr. "+cite(locus),pg=page?", "+page:"";
  // Identificador persistente del pasaje (Canonical Text Services, numeración de Perseus: phi1056.phi001).
  const urn="urn:cts:latinLit:phi1056.phi001:"+String(locus).replace(/^(\d+)\.praef\./,"$1.pr.");
  return {
   urn,
-  nota:"Vitruvio, De architectura "+cite(locus)+", en Diego Kurilo, "+e.title+" ("+e.v+"; Sophia Lux Ediciones Académicas, 2026)"+pg+", https://doi.org/"+e.doi+".",
+  nota:"Vitruvio, De architectura "+arab(locus)+", en Diego Kurilo, "+e.title+" ("+e.v+"; Sophia Lux Ediciones Académicas, 2026)"+pg.replace(/p\.\s*/,"")+", https://doi.org/"+e.doi+".",
   bibliografia:"Kurilo, Diego. "+e.title+". "+e.v+". Sophia Lux Ediciones Académicas, 2026. https://doi.org/"+e.doi+".",
   bibtex:"@book{kurilo2026"+e.v.toLowerCase()+",\n  author    = {Kurilo, Diego},\n  title     = {"+e.title+"},\n  edition   = {"+e.v+"},\n  publisher = {Sophia Lux Ediciones Académicas},\n  year      = {2026},\n  doi       = {"+e.doi+"},\n  note      = {"+loc+(page?", "+page:"")+"}\n}"}}
 function decorate(article){

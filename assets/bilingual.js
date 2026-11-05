@@ -1,5 +1,5 @@
 import {lexicalSuggestions,lexicalForms} from './lexical-suggestions.mjs?v=20261105-ortho-v1';
-import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
+import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation,roman,parseLocus,searchCorpus,tokens} from './search-core.mjs?v=20261105-prefacio-aliases-v1';
 import {parallelHighlight} from './parallel-highlights.mjs?v=20261103-pair2';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
