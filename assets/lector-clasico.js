@@ -1,0 +1,172 @@
+/* Lector clásico: códice conservado más antiguo (o texto original) a la izquierda y traducción a la derecha.
+   Textos: Perseus Digital Library (TEI EpiDoc, CC BY-SA 4.0), leídos en el momento desde GitHub; no se copian
+   al repositorio. Testimonios: data/clasicos-testimonios.json (manifiestos IIIF verificados). */
+(()=>{
+"use strict";
+const $=id=>document.getElementById(id);
+const params=new URLSearchParams(location.search);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
+let catalog=null,witnesses=[],work=null,orig=[],trans=[],cur=0,query="";
+
+/* ---------- TEI → pasajes ---------- */
+function textOf(node){
+ const c=node.cloneNode(true);
+ for(const x of [...c.getElementsByTagNameNS("*","note"),...c.getElementsByTagNameNS("*","bibl"),...c.getElementsByTagNameNS("*","del")])x.remove();
+ const lines=[...c.getElementsByTagNameNS("*","l")];
+ if(lines.length)return lines.map(l=>(l.getAttribute("n")?l.getAttribute("n")+"  ":"")+l.textContent.replace(/\s+/g," ").trim()).join("\n");
+ return c.textContent.replace(/\s+/g," ").trim();
+}
+function parseTEI(xml){
+ const doc=new DOMParser().parseFromString(xml,"text/xml");
+ const body=doc.getElementsByTagNameNS("*","body")[0];if(!body)throw Error("TEI sin cuerpo");
+ const out=[];
+ const isPart=d=>d.localName==="div"&&d.getAttribute("type")==="textpart"&&!/commentary|translation/.test(d.getAttribute("subtype")||"");
+ function walk(node,path){
+  const kids=[...node.children].filter(isPart);
+  if(!kids.length){
+   const lines=[...node.getElementsByTagNameNS("*","l")];
+   // Poesía extensa (libro entero sin subdivisiones): tramos de 30 versos citables por número de verso.
+   if(lines.length>45){
+    for(let i=0;i<lines.length;i+=30){const part=lines.slice(i,i+30);
+     const a=part[0].getAttribute("n")||String(i+1),b=part.at(-1).getAttribute("n")||String(i+part.length);
+     out.push({locus:[...path,a].join("."),range:[num(a),num(b)],book:path.join("."),text:part.map(l=>(l.getAttribute("n")||"")+"  "+textOf(l)).join("\n")})}
+    return;
+   }
+   const t=textOf(node);if(t)out.push({locus:path.join(".")||"1",text:t,book:path.slice(0,-1).join("."),
+    range:lines.length?[num(lines[0].getAttribute("n")),num(lines.at(-1).getAttribute("n"))]:null});
+   return;
+  }
+  for(const k of kids)walk(k,[...path,k.getAttribute("n")||String(kids.indexOf(k)+1)]);
+ }
+ const top=[...body.children].filter(d=>d.localName==="div");
+ for(const d of top){const kids=[...d.children].filter(isPart);if(kids.length)for(const k of kids)walk(k,[k.getAttribute("n")||"1"]);else walk(d,[])}
+ return out;
+}
+const num=s=>{const m=String(s||"").match(/\d+/);return m?Number(m[0]):NaN};
+async function fetchText(url){
+ const r=await fetch(url);if(!r.ok)throw Error("Perseus respondió "+r.status);return r.text();
+}
+// Traducción que corresponde al pasaje: mismo locus; si no, el de prefijo más largo; en verso, el que se superpone.
+function translationFor(p){
+ if(!trans.length)return null;
+ const exact=trans.find(t=>t.locus===p.locus);if(exact)return[exact];
+ if(p.range&&!isNaN(p.range[0])){
+  const bookOf=x=>x.book||x.locus.split(".").slice(0,-1).join(".");
+  const same=trans.filter(t=>bookOf(t)===p.book||t.locus.split(".")[0]===p.locus.split(".")[0]);
+  // Las «cards» inglesas empiezan en un verso: su tramo llega hasta la siguiente.
+  const spans=same.map((t,i)=>{const s=t.range&&!isNaN(t.range[0])?t.range[0]:num(t.locus.split(".").at(-1));const e=t.range&&!isNaN(t.range[1])?t.range[1]:(same[i+1]?num(same[i+1].locus.split(".").at(-1))-1:Infinity);return{t,s,e}});
+  const hit=spans.filter(x=>x.s<=p.range[1]&&x.e>=p.range[0]).map(x=>x.t);if(hit.length)return hit.slice(0,4);
+ }
+ const parts=p.locus.split(".");
+ for(let k=parts.length-1;k>0;k--){const pre=parts.slice(0,k).join(".");const c=trans.filter(t=>t.locus===pre||t.locus.startsWith(pre+"."));if(c.length)return c.slice(0,3)}
+ return null;
+}
+
+/* ---------- Marcado de la búsqueda ---------- */
+function marked(text){
+ if(!query)return esc(text);
+ const words=query.split(/\s+/).filter(w=>w.length>1).map(fold);
+ return text.split(/(\s+)/).map(tok=>{const f=fold(tok.replace(/[^\p{L}\p{N}]/gu,""));return f&&words.some(w=>f===w||(w.length>=4&&f.startsWith(w)))?"<mark>"+esc(tok)+"</mark>":esc(tok)}).join("");
+}
+
+/* ---------- Códice (IIIF) ---------- */
+let canvases=[],ci=0;
+async function loadWitness(w){
+ const box=$("codex");box.innerHTML="<p class='muted'>Cargando las imágenes del códice…</p>";
+ try{
+  const m=await (await fetch(w.manifest)).json();
+  canvases=(m.sequences?.[0]?.canvases||m.items||[]).map(c=>{
+   const img=c.images?.[0]?.resource||c.items?.[0]?.items?.[0]?.body||{};
+   let svc=img.service;if(Array.isArray(svc))svc=svc[0];
+   const id=(svc?.["@id"]||svc?.id||"").replace(/\/$/,"");
+   const label=typeof c.label==="string"?c.label:(Object.values(c.label||{})[0]||[])[0]||"";
+   return{label,src:id?id+"/full/1000,/0/default.jpg":(img["@id"]||img.id||"")}}).filter(c=>c.src);
+  ci=0;showCanvas();
+ }catch(e){box.innerHTML="<p>No se pudieron cargar las imágenes desde la institución ("+esc(e.message)+"). <a target='_blank' rel='noopener' href='"+esc(w.manifest)+"'>Manifiesto IIIF ↗</a></p>"}
+}
+function showCanvas(){
+ const box=$("codex");if(!canvases.length){box.textContent="El manifiesto no contiene imágenes.";return}
+ const c=canvases[ci];
+ box.innerHTML=`<div class="codex-nav"><button type="button" id="cv-prev">←</button><label>Imagen <input id="cv-n" type="number" min="1" max="${canvases.length}" value="${ci+1}"> / ${canvases.length}</label><button type="button" id="cv-next">→</button><span class="muted">${esc(c.label)}</span></div><a href="${esc(c.src.replace("/full/1000,/","/full/max/"))}" target="_blank" rel="noopener"><img alt="${esc(work.witness.shelfmark+" · "+c.label)}" src="${esc(c.src)}" loading="lazy"></a>`;
+ $("cv-prev").onclick=()=>{if(ci>0){ci--;showCanvas()}};$("cv-next").onclick=()=>{if(ci<canvases.length-1){ci++;showCanvas()}};
+ $("cv-n").onchange=e=>{const n=Number(e.target.value)-1;if(n>=0&&n<canvases.length){ci=n;showCanvas()}};
+}
+
+/* ---------- Lectura ---------- */
+function render(){
+ const p=orig[cur];if(!p)return;
+ $("locus").textContent=work.title+" "+p.locus;
+ $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p><div class="txt" lang="${work.language==="grc"?"grc":"la"}">${marked(p.text)}</div>`;
+ const t=translationFor(p);
+ $("translation").innerHTML=!work.translations.length?"<p class='muted'>Perseus no ofrece traducción para esta obra. Puedes leer el original a la izquierda.</p>":
+  trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='muted'>Sin pasaje correspondiente en la traducción para este locus.</p>"):"<p class='muted'>Cargando la traducción…</p>";
+ $("toc").value=String(cur);
+ const u=new URL(location.href);u.searchParams.set("loc",p.locus);if(query)u.searchParams.set("q",query);else u.searchParams.delete("q");history.replaceState(null,"",u);
+ const share=work.author+" · "+work.title+" "+p.locus+" — "+location.href;
+ $("wa").href="https://wa.me/?text="+encodeURIComponent(share);
+ $("mail").href="mailto:?subject="+encodeURIComponent(work.author+" · "+work.title+" "+p.locus)+"&body="+encodeURIComponent(share);
+ if(window.ClassicalLexicon?.attachClick&&!$("original").dataset.lex){$("original").dataset.lex="1";try{window.ClassicalLexicon.attachClick($("original"))}catch{}}
+}
+function search(){
+ query=$("q").value.trim();const out=$("hits");out.replaceChildren();
+ if(!query){render();return}
+ const words=query.split(/\s+/).filter(w=>w.length>1).map(fold);
+ const hit=(text)=>{const toks=text.split(/\s+/).map(t=>fold(t.replace(/[^\p{L}\p{N}]/gu,"")));return words.every(w=>toks.some(f=>f===w||(w.length>=4&&f.startsWith(w))))};
+ const found=[];orig.forEach((p,i)=>{if(hit(p.text))found.push({i,side:"original"})});
+ trans.forEach(t=>{if(hit(t.text)){const i=orig.findIndex(p=>p.locus===t.locus||p.locus.startsWith(t.locus+"."));if(i>=0&&!found.some(f=>f.i===i))found.push({i,side:"traducción"})}});
+ found.sort((a,b)=>a.i-b.i);
+ out.append(found.length+" pasajes · ");
+ for(const f of found.slice(0,120)){const b=document.createElement("button");b.type="button";b.textContent=orig[f.i].locus+(f.side==="traducción"?" (trad.)":"");b.onclick=()=>{cur=f.i;render()};out.append(b," ")}
+ if(found.length){cur=found[0].i}render();
+}
+async function openWork(id){
+ work=catalog.works.find(w=>w.id===id);if(!work){$("status").textContent="Obra no encontrada en el catálogo.";return}
+ document.title=work.author+" · "+work.title+" · Lector clásico";
+ $("index").hidden=true;$("reader").hidden=false;
+ $("title").textContent=work.author+" · "+work.title;$("meta").textContent=work.dates+" · "+(work.language==="grc"?"griego antiguo":"latín")+" · "+work.urn;
+ work.witness=witnesses.find(w=>w.match.some(m=>work.id===m||work.authorId===m))||null;
+ // Primero el códice más antiguo conservado (si hay imágenes verificadas); si no, el texto original.
+ const wbox=$("witness-info");
+ if(work.witness){const w=work.witness;
+  wbox.innerHTML=`<strong>${esc(w.name)}</strong> · ${esc(w.shelfmark)} · ${esc(w.date)} · ${esc(w.library)}<br><span class="muted">${w.oldest?"Testimonio conservado más antiguo con imágenes abiertas.":"No es el testimonio más antiguo: "}${esc(w.note||"")}</span>${(w.also||[]).map(a=>` · <button type="button" class="alt-ms" data-m="${esc(a.manifest)}" data-s="${esc(a.shelfmark)}">${esc(a.name+" ("+a.date+")")}</button>`).join("")}`;
+  for(const b of wbox.querySelectorAll(".alt-ms"))b.onclick=()=>{work.witness={...work.witness,shelfmark:b.dataset.s,manifest:b.dataset.m};loadWitness(work.witness)};
+  setLeft("codex");loadWitness(w);
+ }else{wbox.innerHTML="<span class='muted'>No hay todavía un manuscrito o impreso antiguo de esta obra con imágenes IIIF verificadas; se muestra el texto original editado.</span>";$("tab-codex").disabled=true;setLeft("original")}
+ $("status").textContent="Cargando el texto original desde Perseus…";
+ try{orig=parseTEI(await fetchText(work.original))}catch(e){$("status").textContent="No se pudo leer el texto original ("+e.message+").";return}
+ $("toc").replaceChildren(...orig.map((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;return o}));
+ const loc=params.get("loc");cur=Math.max(0,orig.findIndex(p=>p.locus===loc));
+ $("q").value=params.get("q")||"";query=$("q").value.trim();
+ $("status").textContent=orig.length+" pasajes · texto: Perseus Digital Library (CC BY-SA 4.0)"+(work.translations.length?" · cargando traducción…":"");render();
+ if(work.translations.length){
+  try{trans=parseTEI(await fetchText(work.translations[0].url));$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · Perseus Digital Library (CC BY-SA 4.0)"}
+  catch(e){$("status").textContent+=" · no se pudo leer la traducción ("+e.message+")"}
+  if(query)search();else render();
+ }
+}
+function setLeft(which){
+ for(const [b,p] of [["tab-codex","codex"],["tab-original","original"]]){$(b).setAttribute("aria-pressed",String(p===which));$(p).hidden=p!==which}
+}
+function renderIndex(){
+ const box=$("index-list"),f=fold($("filter").value);box.replaceChildren();
+ let last=null,count=0;
+ for(const w of catalog.works){
+  if(f&&!fold(w.author+" "+w.title+" "+w.id).includes(f))continue;
+  if(w.authorId!==last){last=w.authorId;const h=document.createElement("h3");h.innerHTML=esc(w.author)+" <small>"+esc(w.dates)+(witnesses.some(x=>x.match.includes(w.authorId))?" · códice con imágenes":"")+"</small>";box.append(h)}
+  const a=document.createElement("a");a.href="?obra="+encodeURIComponent(w.id);a.textContent=w.title+(w.translations.length?"":" · solo original");box.append(a," · ");count++;
+ }
+ $("index-count").textContent=count+" obras de "+catalog.authors+" autores (siglo II a. C.–siglo II d. C.)";
+}
+(async()=>{
+ [catalog,{witnesses}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json())]);
+ $("tab-codex").onclick=()=>setLeft("codex");$("tab-original").onclick=()=>setLeft("original");
+ $("search").onsubmit=e=>{e.preventDefault();search()};
+ $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};
+ $("toc").onchange=e=>{cur=Number(e.target.value);render()};
+ $("filter").oninput=renderIndex;
+ $("print").onclick=()=>window.print(); // «Guardar como PDF» en el diálogo de impresión
+ $("copy").onclick=()=>navigator.clipboard?.writeText(location.href).then(()=>{$("copy").textContent="Enlace copiado ✓";setTimeout(()=>$("copy").textContent="Copiar enlace",1600)});
+ const id=params.get("obra");if(id)openWork(id);else renderIndex();
+})().catch(e=>{$("status").textContent="No se pudo cargar el catálogo: "+e.message});
+})();

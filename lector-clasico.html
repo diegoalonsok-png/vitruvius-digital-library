@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lector clásico · códice, original y traducción · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Autores griegos y latinos del siglo II a. C. al siglo II d. C.: el códice conservado más antiguo con imágenes abiertas, el texto original y su traducción, lado a lado, con búsqueda y loci citables.">
+<meta name="DC.title" content="Lector clásico · códice, original y traducción">
+<meta name="DC.type" content="InteractiveResource">
+<meta name="DC.publisher" content="Vitruvius Digital Library · Sophia Lux Ediciones Académicas">
+<meta name="DC.language" content="es">
+<meta name="DC.identifier" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/lector-clasico.html">
+<style>
+:root{color-scheme:light;--bg:#f6f3ed;--fg:#202b35;--panel:#fffdfa;--line:#bcb3a4;--muted:#666b70;--gold:#987b4e;--mark:#ffe875}
+html[data-theme=dark]{color-scheme:dark;--bg:#17202a;--fg:#f6efe5;--panel:#243440;--line:#6b777e;--muted:#b7bfc4;--mark:#b39233}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--fg);background:var(--bg);font:15px/1.65 system-ui,-apple-system,sans-serif}
+a{color:inherit;text-underline-offset:3px}header{border-bottom:1px solid var(--line);padding:16px clamp(16px,3vw,40px);display:flex;gap:15px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+header .brand{text-transform:uppercase;letter-spacing:.13em;font:600 12px/1.6 system-ui}header nav{display:flex;flex-wrap:wrap;gap:16px;font:12px/1.6 system-ui}
+main{max-width:1800px;margin:auto;padding:22px clamp(16px,3vw,40px)}
+h1{font:normal clamp(28px,3vw,42px)/1.2 Georgia,"Times New Roman",serif;margin:0 0 10px}h2{font:normal 24px/1.35 Georgia,serif}
+.sub{color:var(--muted);font-size:13px;margin:0 0 16px}.notice{border-left:3px solid var(--gold);padding:11px 15px;background:var(--panel);font-size:12px;line-height:1.7}
+.tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:18px 0}
+.tools input,.tools select,.tools button,.tools a{border:1px solid var(--line);background:var(--panel);color:var(--fg);padding:9px 12px;border-radius:3px;min-height:40px;font:13px/1.4 system-ui}
+.tools input{flex:1;min-width:190px}.tools button{cursor:pointer}.reader-grid{display:grid;grid-template-columns:minmax(190px,265px) minmax(0,1fr);gap:18px}
+aside,.reader{border:1px solid var(--line);background:var(--panel);padding:16px}.reader{min-height:60vh}
+#toc{max-height:73vh;overflow-y:auto;margin:0;padding:0;list-style:none}#toc li button{display:block;width:100%;text-align:left;padding:7px 9px;margin:2px 0;cursor:pointer;background:none;color:var(--fg);border:0;border-bottom:1px solid var(--line);font:12px/1.4 system-ui}
+#toc li button[aria-current=true]{border-left:3px solid var(--gold);font-weight:700;background:var(--bg)}
+.passages{font:clamp(17px,1.45vw,21px)/1.8 Georgia,serif;overflow-wrap:break-word}.passages p{margin:0 0 22px;white-space:pre-wrap}.passages .locus{font:600 12px/1.5 system-ui;display:block;margin:0 0 6px;color:var(--muted)}mark{background:var(--mark);color:#14120e;padding:0 1px;border-radius:2px}
+.reader-toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px}
+.reader-toolbar button{background:none;border:1px solid var(--line);color:var(--fg);padding:6px 10px;cursor:pointer}#results{margin:10px 0;font-size:12px}#results a{display:inline-block;margin:2px 9px 2px 0}
+#lexicon{margin-top:25px;padding:12px;border-top:1px solid var(--line);font:12px/1.6 system-ui}
+.hit-nav{display:flex;gap:8px;align-items:center;font:12px/1.4 system-ui;margin:0 0 10px}.hit-nav button{background:none;border:1px solid var(--line);color:var(--fg);padding:3px 9px;cursor:pointer}
+footer{border-top:1px solid var(--line);margin-top:35px;padding-top:16px;font:12px/1.65 system-ui;color:var(--muted)}
+@media(max-width:730px){.reader-grid{grid-template-columns:minmax(0,1fr)}#toc{max-height:170px}.reader{min-height:45vh}}
+@media print{header,.tools,aside,.reader-toolbar,#results,#lexicon,footer{display:none!important}.reader{border:0;padding:0}.reader-grid{display:block}body{background:white;color:#111}}
+</style>
+<style>
+.lc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:14px}
+.lc-pane{border:1px solid var(--line);background:var(--panel);padding:16px;min-height:60vh}
+.lc-tabs{display:flex;gap:8px;margin:0 0 10px}.lc-tabs button{border:1px solid var(--line);background:none;color:var(--fg);padding:6px 10px;cursor:pointer}
+.lc-tabs button[aria-pressed=true]{border-bottom:3px solid var(--gold);font-weight:700}.lc-tabs button:disabled{opacity:.45;cursor:not-allowed}
+#codex img{width:100%;height:auto;display:block;background:#ddd}.codex-nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 8px;font:13px system-ui}
+.codex-nav input{width:70px}.codex-nav button{border:1px solid var(--line);background:none;color:var(--fg);padding:4px 10px;cursor:pointer}
+.txt{font:clamp(17px,1.35vw,20px)/1.8 Georgia,serif;white-space:pre-wrap}.txt[lang=grc]{font-family:"Gentium Plus","GFS Didot",Georgia,serif}
+.loc{font:600 12px/1.5 system-ui;color:var(--muted);margin:0 0 6px}.muted{color:var(--muted)}mark{background:var(--mark);color:inherit;padding:0 1px}
+#hits{font:12px/1.9 system-ui;margin:6px 0}#hits button{border:0;background:none;color:inherit;text-decoration:underline;cursor:pointer;padding:0 2px}
+#index-list h3{font:normal 20px/1.3 Georgia,serif;margin:22px 0 6px}#index-list h3 small{font:12px system-ui;color:var(--muted)}#index-list a{font-size:14px}
+#witness-info{font-size:13px;margin:0 0 10px;line-height:1.6}.alt-ms{border:1px solid var(--line);background:none;color:inherit;cursor:pointer;padding:1px 6px}
+@media print{header,form,#hits,.lc-tabs,#codex .codex-nav,footer,.site-bar{display:none!important}.lc-pane{border:0;min-height:0}.lc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.lc-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/lector-clasico.html">
+<script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
+<script defer src="assets/lector-clasico.js?v=20261105-v1"></script>
+<script defer src="assets/viewer-appearance.js?v=20261105-v2"></script>
+</head>
+<body>
+<header><a class="brand" href="index.html">Vitruvius Digital Library</a><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca Graeca et Latina</a><a href="lector-clasico.html">Lector clásico</a><a href="lector-bilingue.html">Vitruvio bilingüe</a></nav></header>
+<main>
+<section id="index">
+<h1>Lector clásico</h1>
+<p class="sub">Siglo II a. C.–siglo II d. C. · primero el códice conservado más antiguo con imágenes abiertas (o el texto original cuando no lo hay), después la traducción.</p>
+<p class="notice">Textos y traducciones: Perseus Digital Library (Tufts University), TEI EpiDoc, CC BY-SA 4.0, leídos en el momento desde GitHub. Códices: manifiestos IIIF de las bibliotecas que los conservan. Las imágenes del códice no se alinean automáticamente folio a folio con el texto editado.</p>
+<div class="tools"><input id="filter" type="search" placeholder="Filtrar por autor u obra: Cicerón, Polibio, Eneida…" aria-label="Filtrar el catálogo"></div>
+<p class="sub" id="index-count"></p><div id="index-list"></div>
+</section>
+<section id="reader" hidden>
+<p class="sub"><a href="lector-clasico.html">← Catálogo</a></p>
+<h1 id="title"></h1><p class="sub" id="meta"></p>
+<form id="search" class="tools" role="search"><input id="q" type="search" placeholder="Palabra o frase en el original o en la traducción" aria-label="Buscar en la obra"><button type="submit">Buscar</button>
+<button type="button" id="prev">← Anterior</button><select id="toc" aria-label="Locus"></select><button type="button" id="next">Siguiente →</button><button type="button" id="print">Imprimir / PDF</button><a id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a id="mail" href="#">Correo</a><button type="button" id="copy">Copiar enlace</button></form>
+<div id="hits"></div><p class="sub" id="status"></p><p class="sub" id="locus"></p>
+<div class="lc-grid">
+<div class="lc-pane"><div class="lc-tabs"><button type="button" id="tab-codex" aria-pressed="true">Códice más antiguo</button><button type="button" id="tab-original" aria-pressed="false">Texto original</button></div>
+<div id="witness-info"></div><div id="codex"></div><div id="original" hidden></div></div>
+<div class="lc-pane"><div class="lc-tabs"><button type="button" aria-pressed="true">Traducción</button></div><div id="translation"></div></div>
+</div>
+</section>
+<footer>Texto y traducción: Perseus Digital Library, CC BY-SA 4.0 (conservar atribución y compartir adaptaciones). Imágenes: según las condiciones de cada biblioteca.</footer>
+</main>
+</body></html>

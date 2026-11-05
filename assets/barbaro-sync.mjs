@@ -72,6 +72,15 @@ function syncFrom(w,p){
  if(page&&page!==window.BarbaroParallel.state[other].number){syncing=true;window.BarbaroParallel.loadPage(other,page,"sync");syncing=false}
 }
 
+// Libro y capítulo de la imagen y, para los loci ubicados, enlace al aparato crítico de las ediciones de Kurilo.
+function placeInto(w,n){
+ const el=$(w+"-place");if(!el)return;el.replaceChildren();if(!conc)return;
+ const e=entry(w,n);el.append(placeText(e).replace(/ · loci .*$/,""));
+ const loci=e?.loci||[];
+ if(loci.length){el.append(" · Aparato crítico: ");
+  loci.slice(0,8).forEach((l,i)=>{const a=document.createElement("a");a.href="aparato-critico.html?locus="+encodeURIComponent(l);a.textContent=l;a.title="Aparato crítico de V514 · V554 · V297 para "+l;if(i)el.append(", ");el.append(a)})}
+ else if(e?.book&&e.chapter&&e.chapter!=="praef"){el.append(" · ");const a=document.createElement("a");a.href="aparato-critico.html?locus="+encodeURIComponent(e.book+"."+e.chapter+".1");a.textContent="Aparato crítico del capítulo";el.append(a)}
+}
 /* ---------- Búsqueda ---------- */
 function parseLocus(q){
  const s=q.trim().toLowerCase().replace(/\s+/g," ");let m;
@@ -180,14 +189,14 @@ async function highlight(w,p){
 function start(){
  ui();
  document.addEventListener("barbaro:page",e=>{const {which,number,origin}=e.detail;
-  $(which+"-place").textContent=conc?placeText(entry(which,number)):"";
+  placeInto(which,number);
   highlight(which,number);
   if(conc&&$("bs-sync").checked&&!syncing&&origin!=="sync"&&origin!=="home")syncFrom(which,number);
  });
  $("bs-form").addEventListener("submit",e=>{e.preventDefault();search($("bs-q").value)});
  fetch("data/barbaro-1567-concordance.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{conc=d;buildSpans();
   $("bs-status").textContent="Concordancia lista: "+spans.la.size+" tramos en latín y "+spans.it.size+" en italiano. Busca un locus o una palabra.";
-  for(const w of ["it","la"]){const n=window.BarbaroParallel.state[w].number;$(w+"-place").textContent=placeText(entry(w,n))}
+  for(const w of ["it","la"])placeInto(w,window.BarbaroParallel.state[w].number);
  }).catch(()=>{$("bs-status").textContent="La concordancia y el OCR de ambas ediciones se están preparando. Mientras tanto, cada visor funciona por separado.";$("bs-sync").disabled=true});
  const params=new URLSearchParams(location.search);if(params.get("q")){$("bs-q").value=params.get("q");setTimeout(()=>search(params.get("q")),800)}
 }

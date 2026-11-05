@@ -223,6 +223,7 @@ function render(){
     const n=document.createElement('small');n.textContent=' Página localizada comparando el latín del locus con el OCR ('+ok.map(([s,f])=>s.label.split(' · ')[0]+': '+f.share+' % de coincidencia').join('; ')+'). Coteja la imagen.';box.append(n);
    });
   }
+  if(r.p?.locus){const ap=document.createElement('a');ap.href='aparato-critico.html?locus='+encodeURIComponent(r.p.locus);ap.textContent='Aparato crítico de este locus →';ap.style.marginRight='14px';card.append(ap)}
   if(r.p){
    const a=document.createElement('a');a.href='lector-bilingue.html?locus='+encodeURIComponent(r.p.locus)+'&lang='+({recensio:'es','recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[r.id]||'es');a.textContent='Consultar locus con texto y traducción →';card.append(a);
    if(/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(r.p.locus)){const h=document.createElement('a');h.href='codex-h-folios-local.html?locus='+encodeURIComponent(r.p.locus);h.textContent=' · Ver en el Codex H (folio verificado o estimado) →';h.title='Abre el folio de Harley MS 2767: comienzo de libro verificado o posición estimada, según el caso';card.append(h);}
