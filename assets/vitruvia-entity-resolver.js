@@ -3,6 +3,39 @@
  */
 (()=>{"use strict";
 const norm=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+// Bounded spelling tolerance for whole names, including adjacent transpositions.
+// A page merely mentioning the words is never enough to identify the subject.
+function distance(a,b){
+ const rows=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));
+ for(let i=0;i<=a.length;i++)rows[i][0]=i;
+ for(let j=0;j<=b.length;j++)rows[0][j]=j;
+ for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++){
+  rows[i][j]=Math.min(rows[i-1][j]+1,rows[i][j-1]+1,rows[i-1][j-1]+Number(a[i-1]!==b[j-1]));
+  if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])rows[i][j]=Math.min(rows[i][j],rows[i-2][j-2]+1);
+ }
+ return rows[a.length][b.length];
+}
+function nameSimilarity(query,name){
+ const a=norm(query),b=norm(String(name||'').replace(/\s*\([^)]*\)\s*$/,''));
+ if(!a||!b)return 0;
+ if(a===b)return 1;
+ const aa=a.split(' '),bb=b.split(' ');
+ // Short tokens (Le, U2, AC) must match; longer tokens allow 1–2 edits each.
+ const used=new Set();let edits=0;
+ for(const word of aa){
+  let best=null;
+  bb.forEach((target,index)=>{if(used.has(index))return;const d=distance(word,target);if(!best||d<best.d)best={index,d}});
+  const limit=word.length<=3?0:word.length<=6?1:2;
+  if(!best||best.d>limit){
+   const x=a.replace(/ /g,''),y=b.replace(/ /g,'');
+   const d=distance(x,y);
+   return Math.max(x.length,y.length)>=7&&d<=2&&1-d/Math.max(x.length,y.length)>=.78?1-d/Math.max(x.length,y.length):0;
+  }
+  used.add(best.index);edits+=best.d;
+ }
+ const score=1-edits/Math.max(1,a.length);
+ return score>=.78?score:0;
+}
 const get=async(url)=>{
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6500);
  try{const r=await fetch(url,{signal:controller.signal,headers:{Accept:"application/json"}});if(!r.ok)throw Error("HTTP "+r.status);return await r.json()}
@@ -16,12 +49,15 @@ function entityMetadata(entity){
  return {entityMetadata:!!entity.claims,instanceOf,kind:instanceOf.length?(instanceOf.includes("Q5")?"person":"topic"):null,
   aliases:[...new Set([...Object.values(entity.labels||{}).map(x=>x.value),...Object.values(entity.aliases||{}).flat().map(x=>x.value)])].slice(0,40),
   commonsSearchName:entity.labels?.en?.value||"",commonsCategory:values("P373")[0]||null,
-  imageFiles:values("P18").filter(x=>typeof x==="string").slice(0,4),birthYear:born?Number(born[1]):null};
+  imageFiles:values("P18").filter(x=>typeof x==="string").slice(0,4),
+  notableWorkIds:values("P800").map(v=>v.id).filter(Boolean).slice(0,50),
+  occupationIds:values("P106").map(v=>v.id).filter(Boolean),
+  catalogName:entity.labels?.["en"]?.value||entity.labels?.["es"]?.value||"",birthYear:born?Number(born[1]):null};
 }
 // Remove generic *intent* expressions but do not hard-code personalities.
 const clean=q=>{
  const full=String(q||"").trim();
- const cleaned=full.replace(/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:biograf[ií]a|historia|vida|vida y obra|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|pel[ií]culas|filmograf[ií]a|libros|tratados)\s+(?:de|del|sobre)\s+|(?:paintings|artworks|pictures|photographs|photos|images|films|movies|works|biography|history)\s+(?:of|by|about)\s+)/i,"").trim();
+ const cleaned=full.replace(/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:biograf[ií]a|historia|vida|vida y obra|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|pel[ií]culas|filmograf[ií]a|libros|tratados|[aá]lbumes|discos|discograf[ií]a|planos|plantas|cortes|fachadas)\s+(?:de|del|sobre)\s+|(?:paintings|artworks|pictures|photographs|photos|images|films|movies|works|biography|history|albums|discography|plans)\s+(?:of|by|about)\s+)/i,"").trim();
  return cleaned.length>=3?cleaned:full;
 };
 const invalid=p=>!p||p.missing!==undefined||p.pageprops?.disambiguation!==undefined||/(?:desambiguaci[oó]n|disambiguation|homonymie)/i.test(p.title||"");
@@ -32,12 +68,20 @@ async function lookupTitle(title,lang){
  if(!page)return null;
  return {canonical:page.title,description:page.extract?.slice(0,360)||"",extract:page.extract||"",pageid:page.pageid,wikidataId:/^Q\d+$/.test(page.pageprops?.wikibase_item||"")?page.pageprops.wikibase_item:null,language:lang,url:page.fullurl||"https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(page.title.replace(/ /g,"_")),aliases:(d.query?.redirects||[]).map(x=>x.from),type:"encyclopedia"};
 }
-async function searchTitle(q,lang){
- const d=await get(mediaWiki(lang,{action:"query",list:"search",srsearch:q,srlimit:"6",srprop:"snippet",utf8:"1"}));
+async function searchTitle(q,lang,suggest=true){
+ const d=await get(mediaWiki(lang,{action:"query",list:"search",srsearch:q,srlimit:"8",srprop:"snippet",srinfo:"suggestion|rewrittenquery",utf8:"1"}));
  const hits=d.query?.search||[];
- const exact=hits.find(x=>norm(x.title)===norm(q));
- const first=exact||hits.find(x=>!/(?:desambiguaci[oó]n|disambiguation)/i.test(x.title));
- return first?lookupTitle(first.title,lang):null;
+ const matches=hits.filter(x=>!/(?:desambiguaci[oó]n|disambiguation)/i.test(x.title)).map((x,index)=>({x,index,score:nameSimilarity(q,x.title)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.index-b.index);
+ if(matches[0]){
+  const page=await lookupTitle(matches[0].x.title,lang);
+  return page?{...page,spellingMatch:norm(q)!==norm(page.canonical)?q:null}:null;
+ }
+ const correction=d.query?.searchinfo?.suggestion||d.query?.searchinfo?.rewrittenquery;
+ if(suggest&&typeof correction==='string'&&norm(correction)!==norm(q)&&nameSimilarity(q,correction)>0){
+  const page=await searchTitle(correction,lang,false);
+  return page?{...page,spellingMatch:q}:null;
+ }
+ return null;
 }
 async function localize(identity,lang){
  if(!identity||identity.language===lang||!["es","en","fr"].includes(lang))return identity;
@@ -79,14 +123,17 @@ async function authorityCandidates(q,lang){
   const searchMatch=searches.some(x=>norm(x.label)===norm(q)||norm(x.match?.text)===norm(q));
   const queryTerms=norm(q).split(" ").filter(Boolean);
   const completeName=[...labels,...aliases].some(name=>queryTerms.every(term=>norm(name).split(" ").includes(term)));
-  if(!exactLabel&&!exactAlias&&!searchMatch&&!completeName)return null;
+  const similarity=Math.max(0,...labels.map(name=>nameSimilarity(q,name)));
+  if(!exactLabel&&!exactAlias&&!searchMatch&&!completeName&&!similarity)return null;
   const coverage=Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length;
-  const score=(exactLabel?140:0)+(exactAlias?130:0)+(searchMatch?45:0)+
+  // Prefer an exact primary name over an alias of a different, equally prominent entity.
+  // Coverage can still disambiguate a little-known namesake from a major historical figure.
+  const score=(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
   return {id,entity,title:site.title,lang:site.site?.replace(/wiki$/,"")||lang,
-   score,coverage,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
+   score,coverage,spellingMatch:!exactLabel&&!exactAlias&&similarity?q:null,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
  }).filter(Boolean).sort((a,b)=>b.score-a.score);
  const best=ranked[0];
  if(!best||(best.score<130&&best.coverage<12))return null;
@@ -97,7 +144,7 @@ async function authorityCandidates(q,lang){
  const resolved=page.status==="fulfilled"?page.value:null;
  const entity={...best.entity,claims:details.status==="fulfilled"?details.value.entities?.[best.id]?.claims:undefined};
  return resolved?{...resolved,...entityMetadata(entity),wikidataId:best.id,authorityDescription:best.description,
-  authorityCoverage:best.coverage,disambiguated:true}:null;
+  authorityCoverage:best.coverage,spellingMatch:best.spellingMatch,disambiguated:true}:null;
 }
 async function resolve(query,preferredLang="es"){
  const q=clean(query);
@@ -121,11 +168,20 @@ async function resolve(query,preferredLang="es"){
  }
  return null;
 }
+async function completeIdentity(identity){
+ if(!identity||identity.entityMetadata||!/^Q\d+$/.test(identity.wikidataId||''))return identity;
+ try{
+  const data=await get('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:identity.wikidataId,props:'labels|aliases|descriptions|claims',languages:'es|en|fr',format:'json',origin:'*'}));
+  const entity=data.entities?.[identity.wikidataId];
+  if(entity)return {...identity,...entityMetadata(entity),authorityDescription:entity.descriptions?.[identity.language]?.value||entity.descriptions?.en?.value||identity.description};
+ }catch{}
+ return identity;
+}
 const cache=new Map();
 window.VitruviaEntityResolver={subject:clean,resolve(q,lang="es"){
  const key=norm(clean(q))+":"+lang;
  if(!cache.has(key)){
-  const pending=resolve(q,lang).then(value=>{if(!value&&cache.get(key)===pending)cache.delete(key);return value},error=>{if(cache.get(key)===pending)cache.delete(key);throw error});
+  const pending=resolve(q,lang).then(completeIdentity).then(value=>{if(value&&!value.spellingMatch&&norm(clean(q))!==norm(value.canonical)&&nameSimilarity(clean(q),value.canonical)>0)value={...value,spellingMatch:clean(q)};if(!value&&cache.get(key)===pending)cache.delete(key);return value},error=>{if(cache.get(key)===pending)cache.delete(key);throw error});
   cache.set(key,pending);
  }
  return cache.get(key);

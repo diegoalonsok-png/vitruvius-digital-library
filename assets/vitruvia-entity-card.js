@@ -122,7 +122,8 @@ async function renderCard(r){
   const l=el("p","vu-links");l.append(a(T("Leer en Wikipedia ↗","Read on Wikipedia ↗","Lire sur Wikipédia ↗"),"https://"+f.wikiLang+".wikipedia.org/wiki/"+encodeURIComponent(f.wiki.replace(/ /g,"_"))));card.append(l)}
  // Obras en orden cronológico (Wikidata): álbumes, películas, libros, cuadros o edificios según la persona.
  const worksBox=el("div","vu-works");worksBox.append(el("p","vu-src",T("Buscando obras…","Looking for works…","Recherche des œuvres…")));card.append(worksBox);
- renderWorks(worksBox,f,kind);
+ if(window.VitruviaCulturalWorks&&["music","author","architect","artist","film"].includes(kind))worksBox.remove();
+ else renderWorks(worksBox,f,kind);
  card.append(el("h3",null,kind==="music"?T("Escuchar y comprar música","Listen and buy music","Écouter et acheter"):T("Comprar libros","Buy books","Acheter des livres")));
  const shop=el("p","vu-links");for(const [t,u] of shopLinks(kind==="music"?"music":"books",f.label))shop.append(a(t+" ↗",u));card.append(shop);
  card.append(el("p","vu-src",T("Datos: Wikidata (","Data: Wikidata (","Données : Wikidata (")+f.qid+T(") y Wikipedia. Enlaces de compra: búsquedas en cada tienda, sin afiliación.",") and Wikipedia. Shop links are store searches, without affiliation.",") et Wikipédia. Liens d’achat : recherches dans chaque boutique, sans affiliation.")));
@@ -130,13 +131,13 @@ async function renderCard(r){
 }
 function place(){
  const panel=$("vitruvia-context");if(!panel||!current)return;
- if(!panel.contains(current.card)){panel.prepend(current.card)}panel.hidden=false;
+ if(!panel.contains(current.card)){const catalogue=panel.querySelector(".cultural-dossier");if(catalogue)catalogue.after(current.card);else panel.prepend(current.card)}panel.hidden=false;
 }
 async function onSearch(query){
  const me=++serial;current=null;window.VitruviaCurrentEntity=null;$("vitruvia-entity-card")?.remove();const hosts=ensureHosts();if(hosts.top)hosts.top.replaceChildren();
  if(!window.VitruviaUnderstand||!query||query.length<2)return;
  if(/^(?:vitr|[ivx]+\.\d|\d+\.\d|f\.|fol)/i.test(query.trim()))return; // locus o folio: lo resuelve el índice propio
- const r=await Promise.race([window.VitruviaUnderstand.resolve(query,lang()),new Promise(res=>setTimeout(()=>res(null),6000))]).catch(()=>null);
+ const r=await Promise.race([window.VitruviaUnderstand.resolve(query,lang()),new Promise(res=>setTimeout(()=>res(null),15000))]).catch(()=>null);
  if(me!==serial||!r)return;
  const top=ensureHosts().top;
  // 1. Corrección automática de tipeo (una sola vez por consulta).
@@ -178,12 +179,23 @@ const triedFallback=new Set();
 window.addEventListener("vitruvia:results",async e=>{setTimeout(place,0);
  const q=String(e.detail?.query||"").trim(),n=(e.detail?.rows||[]).length;
  if(!q||n>2||triedFallback.has(q)||skipCorrectionFor===q||!window.VitruviaUnderstand)return;triedFallback.add(q);
+ // A sparse early result batch must not replace a still-resolving proper
+ // name with a dictionary word (Radiohed → Radio → an unrelated article).
+ if(window.VitruviaEntityResolver){
+  const identity=await window.VitruviaEntityResolver.resolve(q,lang()).catch(()=>null);
+  if(identity||String($("query")?.value||"").trim()!==q)return;
+ }
  const U=window.VitruviaUnderstand;
- // Orden: sugerencia de la enciclopedia (corrige solo lo mal escrito), luego nombres del sitio, luego vocabulario general.
  let fix=(await U.bestTitle(q,lang()).catch(()=>null))?.corrected||null;
  if(!fix)fix=U.localCorrect(q)||await U.generalCorrect(q).catch(()=>null);
  if(!fix||U.fold(fix)===U.fold(q))return;
- skipCorrectionFor=fix;originalBeforeCorrection=q;const input=$("query"),form=$("search-form");if(input&&form){input.value=fix;form.requestSubmit()}
+ if(String($("query")?.value||"").trim()!==q)return;
+ // Without a resolved identity, offer the proposed word instead of silently
+ // switching the visitor to a different subject.
+ const top=ensureHosts().top;if(!top)return;
+ const suggestion=el("p","vu-banner"),button=el("button",null,T("¿Quisiste decir «","Did you mean “","Vouliez-vous dire « ")+fix+T("»?","”?"," » ?"));button.type="button";
+ button.addEventListener("click",()=>{skipCorrectionFor=fix;originalBeforeCorrection=q;$("query").value=fix;$("search-form").requestSubmit()});
+ suggestion.append(button);top.append(suggestion);
 });
 window.addEventListener("vitruvia:clear",()=>{serial++;current=null;$("vitruvia-entity-card")?.remove();$("vitruvia-understanding")?.replaceChildren()});
 document.addEventListener("DOMContentLoaded",()=>{const panel=$("vitruvia-context");if(panel)new MutationObserver(()=>{if(current&&!panel.contains(current.card))setTimeout(place,0)}).observe(panel,{childList:true})});

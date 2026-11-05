@@ -43,7 +43,7 @@ function identity(query,rows){
   const overlap=terms.filter(t=>parts.includes(t)||parts.some(p=>t.length>=5&&p.length>=5&&(
    t===p||p.startsWith(t)||t.startsWith(p)))).length;
   const exact=title===normalized(query)||title===normalized(plan?.subject||query);
-  return{x,score:(exact?250:0)+overlap*60+Number(!!x.preferredWiki)*25};
+  return{x,score:Number(!!x.preferredWiki)*1000+(exact?250:0)+overlap*60};
  }).sort((a,b)=>b.score-a.score);
  const first=matches[0];
  if(!first||first.score<75||(!first.x.preferredWiki&&first.score<120))return null;
@@ -51,7 +51,8 @@ function identity(query,rows){
 }
 function topicType(query,rows){
  const person=identity(query,rows);
- const desc=normalized([person?.entityDescription,person?.excerpt,person?.fullExtract?.slice(0,350)].filter(Boolean).join(' '));
+ const desc=normalized(person?.entityDescription||person?.excerpt||person?.fullExtract?.slice(0,350)||'');
+ const personName=String(person?.catalogName||person?.entityCanonical||person?.title||'').replace(/\s*\([^)]*\)\s*$/,'').trim();
  const q=normalized(query);
  if(person){
   // A literary title is a WORK, not the writer mentioned in its description.
@@ -59,14 +60,17 @@ function topicType(query,rows){
   const title=normalized(person.title||person.entityCanonical||'');
   if(literary.test(desc)&&(title===q||normalized(person.entityCanonical||'')===q)&&
     !/\b(writer|author|poet|poeta|escritor|escritora|novelist|singer|cantante|musician|musico|arquitecto|architect)\b/.test(desc.slice(0,75))){
-   return{kind:'literary-work',name:person.entityCanonical||person.title,person};
+   return{kind:'literary-work',name:personName,person};
   }
-  if(/\b(singer|musician|composer|vocalist|cantante|musico|musica|compositor|compositora|rapero|rapper|band|grupo musical|banda|rock band|cantautor|pianista|guitarrista|interprete)\b/.test(desc))
-   return {kind:'music',name:person.entityCanonical||person.title,person};
-  if(/\b(architect|arquitecto|arquitecta|urbanista|engineer|ingeniero|ingeniera)\b/.test(desc))
-   return {kind:'architect',name:person.entityCanonical||person.title,person};
-  if(/\b(writer|author|poet|poeta|escritor|escritora|novelist|filosofo|philosopher|humanist|historiador|historian|dramaturgo|playwright)\b/.test(desc))
-   return {kind:'author',name:person.entityCanonical||person.title,person};
+  // For people with several professions, the first documented role leads.
+  const roles=[
+   {kind:'music',pattern:/\b(singer|musician|composer|vocalist|cantante|musico|musica|compositor|compositora|rapero|rapper|band|grupo musical|banda|rock band|cantautor|pianista|guitarrista|interprete)\b/},
+   {kind:'visual',pattern:/\b(painter|sculptor|photographer|illustrator|artist|pintor|pintora|escultor|escultora|fotografo|fotografa|ilustrador|ilustradora|artista visual|peintre|sculpteur|photographe)\b/},
+   {kind:'cinema',pattern:/\b(film director|filmmaker|cinematographer|director de cine|directora de cine|cineasta|realisateur|realisatrice|acteur|actrice|actor|actriz)\b/},
+   {kind:'architect',pattern:/\b(architect|arquitecto|arquitecta|urbanista|engineer|ingeniero|ingeniera)\b/},
+   {kind:'author',pattern:/\b(writer|author|poet|poeta|escritor|escritora|novelist|filosofo|philosopher|humanist|historiador|historian|dramaturgo|playwright)\b/}
+  ].map(role=>({...role,position:desc.search(role.pattern)})).filter(role=>role.position>=0).sort((a,b)=>a.position-b.position);
+  if(roles[0])return {kind:roles[0].kind,name:personName,person};
  }
  if(/\b(arquitectura|arquitectos|arquitectas|architects|architecture|architettura)\b/.test(q))
   return{kind:'architecture',name:query,person};
@@ -94,6 +98,13 @@ function card(root,title,href,description,cover,metadata,cta){
  if(description)body.append(el('p','web-dossier-description',description));
  body.append(link(cta||L('Consultar ficha y disponibilidad ↗','View record and availability ↗','Consulter la notice et la disponibilité ↗'),href));
  item.append(body);root.append(item);return item;
+}
+function catalogOrder(section,cards,compare,stack){
+ const control=el('label','cultural-order',L('Ordenar por','Sort by','Trier par'));
+ const select=el('select');select.setAttribute('aria-label',L('Orden del catálogo','Catalogue order','Ordre du catalogue'));
+ for(const [value,text] of [['importance',L('Importancia documental','Documentary prominence','Importance documentaire')],['year',L('Año de aparición','Year of release','Année de parution')]]){const option=el('option',null,text);option.value=value;select.append(option)}
+ select.addEventListener('change',()=>{for(const entry of [...cards].sort((a,b)=>compare(a.record,b.record,select.value)))stack.append(entry.item)});
+ control.append(select);section.insertBefore(control,stack);
 }
 function libraryAuthor(name){
  const url='https://openlibrary.org/search.json?'+new URLSearchParams({
@@ -161,7 +172,7 @@ async function books(root,topic,valid){
    if(key.length<3||seen.has(key))continue;
    seen.add(key);books.push(record);
   }
-  books.sort((a,b)=>(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999));
+  books.sort((a,b)=>(Number(b.edition_count)||0)-(Number(a.edition_count)||0)||(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999));
   if(!books.length){
    info(section,L('No se recuperaron títulos atribuibles con seguridad a este autor en Open Library. Puedes consultar el catálogo externo.',
     'No titles reliably attributable to this author were recovered in Open Library. Check the external catalogue.',
@@ -169,10 +180,11 @@ async function books(root,topic,valid){
   }else{
    const note=el('p','web-dossier-count',
     L('Obras catalogadas: ','Catalogue works: ','Œuvres cataloguées : ')+books.length+
-    L(' · ordenadas por el primer año de publicación registrado, no necesariamente por fecha de composición.',
-      ' · ordered by first catalogued publication year, which may differ from composition date.',
-      ' · classées par première date de publication répertoriée, distincte de la date de composition.'));section.append(note);
+    L(' · por presencia documental (cantidad de ediciones). Puedes elegir el año de aparición.',
+      ' · ranked by catalogue edition count. You can select publication order.',
+      ' · classées par nombre d’éditions. Le tri chronologique est disponible.'));section.append(note);
    const stack=el('div','web-dossier-stack');section.append(stack);
+   const bookCards=[];
    for(const book of books.slice(0,50)){
     const url='https://openlibrary.org'+book.key;
     const isbn=(Array.isArray(book.isbn)?book.isbn:[]).find(x=>/^(?:97[89])?[0-9Xx]{10,13}$/.test(String(x).replace(/[- ]/g,'')));
@@ -181,8 +193,10 @@ async function books(root,topic,valid){
     const metadata=[book.first_publish_year?L('Primera publicación catalogada: ','First catalogued publication: ','Première publication cataloguée : ')+book.first_publish_year:'',
       (book.author_name||[])[0],'Open Library'].filter(Boolean).join(' · ');
     const recordCard=card(stack,book.title,url,bookDescription(book),cover,metadata);
+    recordCard.classList.add('cultural-book');bookCards.push({item:recordCard,record:book});
     if(books.indexOf(book)<10)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
    }
+   catalogOrder(section,bookCards,(a,b,order)=>order==='year'?(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999):(Number(b.edition_count)||0)-(Number(a.edition_count)||0),stack);
    if(books.length>50)info(section,L('Se presentan 50 registros; consulta el catálogo para continuar.','Showing 50 records; continue in the catalogue.','50 notices affichées ; poursuivre dans le catalogue.'));
   }
   section.append(link(L('Buscar más obras del autor en Open Library ↗','Search more works in Open Library ↗','Chercher d’autres œuvres dans Open Library ↗'),
@@ -195,29 +209,35 @@ async function albums(root,topic,valid){
  const section=el('div','web-dossier-list');root.append(section);
  const status=el('p','context-note',L('Consultando discografía…','Checking discography…','Consultation de la discographie…'));section.append(status);
  const artistName=topic.name;
+ const artistNames=new Set([artistName,...(topic.aliases||[])].map(x=>normalized(x).replace(/^(the|los|las|el|la) /,'')));
+ const baseTitle=s=>normalized(s).replace(/\b(deluxe|expanded|remastered|remaster|edition|version|edicion|anniversary|bonus|tracks|track)\b/g,'').replace(/\b\d+(st|nd|rd|th)?\b/g,'').replace(/\s+/g,' ').trim();
  try{
   const params=new URLSearchParams({term:artistName,entity:'album',limit:'90',country:'US',media:'music'});
   const d=await cached('https://itunes.apple.com/search?'+params);
   if(!valid()||!root.isConnected)return;
   section.replaceChildren();
-  const matches=(d?.results||[]).filter(x=>x.wrapperType==='collection'&&x.collectionName&&x.collectionViewUrl&&x.artistName&&
-    normalized(x.artistName).replace(/^(the|los|las|el|la) /,'')===normalized(artistName).replace(/^(the|los|las|el|la) /,''));
+  const matches=(d?.results||[]).filter(x=>x.wrapperType==='collection'&&x.collectionName&&!/\b(?:Single|EP)\s*$/i.test(x.collectionName)&&x.collectionViewUrl&&x.artistName&&
+    artistNames.has(normalized(x.artistName).replace(/^(the|los|las|el|la) /,'')));
   const seen=new Set(),records=[];
   for(const x of matches){
-   const key=String(x.collectionId||x.collectionName);
+   const key=baseTitle(x.collectionName);
    if(seen.has(key))continue;seen.add(key);records.push(x);
   }
-  records.sort((a,b)=>String(a.releaseDate||'').localeCompare(String(b.releaseDate||'')));
+  // Retain the catalogue's relevance ordering by default; chronology is selectable.
+  records.forEach((x,index)=>{x.catalogRank=index});
   if(!records.length){info(section,L('No hay álbumes atribuibles con certeza a este artista en el catálogo consultado.','No confidently attributed albums were found in the consulted catalogue.','Aucun album attribuable avec certitude dans le catalogue interrogé.'))}
   else{
    info(section,L('Catálogo de Apple Music/iTunes. Disponibilidad de compra según país y edición.','Apple Music/iTunes catalogue. Purchase availability varies by country and edition.','Catalogue Apple Music/iTunes. Disponibilité variable selon le pays et l’édition.'));
    const stack=el('div','web-dossier-stack');section.append(stack);
+   const albumCards=[];
    for(const rec of records.slice(0,45)){
     const cover=String(rec.artworkUrl100||'').replace(/100x100bb/,'200x200bb');
     const meta=[rec.releaseDate?.slice(0,4),rec.primaryGenreName,rec.trackCount?String(rec.trackCount)+' '+L('temas','tracks','titres'):''].filter(Boolean).join(' · ');
-    const descr=L('Álbum registrado en el catálogo musical, con fecha, género y cantidad de pistas cuando están disponibles.','Album listed in the music catalogue with release, genre and track count where available.','Album répertorié dans le catalogue musical avec date, genre et nombre de titres disponibles.');
-    card(stack,rec.collectionName,rec.collectionViewUrl,descr,cover,meta,L('Ver álbum y opciones disponibles ↗','View album and available options ↗','Voir l’album et les options disponibles ↗'));
+    const descr=L('Álbum de ','Album by ','Album de ')+rec.artistName+'. '+[rec.primaryGenreName,rec.trackCount?rec.trackCount+' '+L('pistas en esta edición','tracks in this edition','titres dans cette édition'):''].filter(Boolean).join(' · ')+'.';
+    const item=card(stack,rec.collectionName,rec.collectionViewUrl,descr,cover,meta,L('Ver álbum y opciones disponibles ↗','View album and available options ↗','Voir l’album et les options disponibles ↗'));
+    item.classList.add('cultural-album');albumCards.push({item,record:rec});
    }
+   catalogOrder(section,albumCards,(a,b,order)=>order==='year'?String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')):a.catalogRank-b.catalogRank,stack);
   }
   section.append(link(L('Buscar más discos en MusicBrainz ↗','Find more releases in MusicBrainz ↗','Chercher d’autres disques sur MusicBrainz ↗'),
    'https://musicbrainz.org/search?'+new URLSearchParams({query:artistName,type:'artist',method:'indexed'})));
@@ -290,7 +310,7 @@ async function literaryEditions(root,topic,valid){
  }
 }
 function relatedImages(root,topic,rows){
- if(topic.kind==='architect'||topic.kind==='architecture')return; // dedicated architecture plates
+ if(['author','architect','architecture','music','visual','cinema'].includes(topic.kind))return; // works carry their own images
  const matches=rows.filter(x=>x.image&&x.link&&(x.type==='wikipedia'||x.type==='museum'||x.type==='authority')&&
    (normalized(x.title||'')===normalized(topic.name)||
     (topic.person&&x.wikidataId&&x.wikidataId===topic.person.wikidataId)));
@@ -308,23 +328,47 @@ function relatedImages(root,topic,rows){
  root.append(gallery);
 }
 function render(panel,query,rows,isCurrent){
- const topic=topicType(query,rows||[]);
- const eligible=topic.person||topic.kind!=='general';
- if(!eligible)return;
- const section=el('section','web-dossier');panel.append(section);
- if(topic.person){
-  header(section,L('Dossier de obras y fuentes','Works and sources dossier','Dossier des œuvres et sources'));
-  info(section,L('Registros de catálogos externos, organizados por tipo. Las fichas comerciales o bibliográficas no equivalen a una reseña crítica.',
-   'External catalogue records organized by type. Commercial and bibliographic descriptions are not critical reviews.',
-   'Notices de catalogues externes organisées par type. Les descriptions commerciales ou bibliographiques ne constituent pas des recensions critiques.'));
- }else{
-  header(section,L('Investigación complementaria','Additional research','Recherche complémentaire'));
- }
+ const section=el('section','web-dossier cultural-dossier');panel.append(section);
+ header(section,L('Obras y productos culturales','Works and cultural creations','Œuvres et créations culturelles'));
+ const status=el('p','context-note',L('Identificando al referente y sus catálogos…','Identifying the subject and its catalogues…','Identification du sujet et de ses catalogues…'));section.append(status);
  const valid=()=>isCurrent()&&section.isConnected;
- if(['author','architect','literature'].includes(topic.kind))void books(section,topic,valid);
- if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
- if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
- relatedImages(section,topic,rows||[]);
+ void (async()=>{
+  let authority=null;
+  try{authority=await window.VitruviaEntityResolver?.resolve(query,language())}catch{}
+  if(!valid())return;
+  let records=rows||[];
+  if(authority){
+   const primary={type:'wikipedia',title:authority.canonical,entityCanonical:authority.canonical,
+    catalogName:authority.catalogName,link:authority.url,pageid:authority.pageid,wikidataId:authority.wikidataId,
+    preferredWiki:true,entityKind:authority.kind,entityDescription:authority.authorityDescription||authority.description,
+    excerpt:authority.description,fullExtract:authority.extract};
+   records=[primary,...records.filter(x=>!x.preferredWiki)];
+  }
+  const topic=topicType(query,records);
+  const sameIdentity=!authority?.wikidataId||!topic.person?.wikidataId||authority.wikidataId===topic.person.wikidataId;
+  topic.aliases=sameIdentity?(authority?.aliases||[]):[];
+  if(sameIdentity&&authority?.catalogName&&topic.kind!=='literary-work')topic.name=authority.catalogName;
+  status.remove();
+  if(!topic.person&&topic.kind==='general'){section.remove();return}
+  if(topic.person?.title||authority?.canonical){const title=panel.querySelector('.context-term');if(title)title.textContent=topic.person?.title||authority.canonical}
+  if(sameIdentity&&authority?.spellingMatch)section.append(el('p','cultural-correction',L('Resultado para ','Showing ','Résultat pour ')+authority.canonical+L('. Escribiste «','. You entered “','. Vous avez saisi « ')+authority.spellingMatch+L('».','”.',' ».')));
+  if(topic.person)info(section,L('Obras propias con imágenes y fuentes. Orden inicial por importancia documental; también puedes consultar su cronología.',
+   'The subject’s own works with images and sources. Documentary prominence first; chronological order is also available.',
+   'Œuvres du sujet avec images et sources, classées par importance documentaire ; tri chronologique disponible.'));
+  const architectural=window.VitruviaArchitecture?.classify(query,records);
+  if(architectural&&architectural.kind!=='person'&&topic.kind!=='architect'&&topic.person?.entityKind!=='person')window.VitruviaArchitecture?.render(section,query,records,valid);
+  const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
+  // The requested media lead: album covers for musicians, book covers for authors.
+  if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
+  if(['author','literature'].includes(topic.kind))void books(section,topic,valid);
+  if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
+  const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
+   !/cantante|singer|band|grupo|banda|rapper/.test(normalized(topic.person?.entityDescription))?'composer':topic.kind;
+  if(creator&&topic.person?.wikidataId&&window.VitruviaCulturalWorks)
+   void window.VitruviaCulturalWorks.render(section,{...(sameIdentity?authority:{}),wikidataId:topic.person.wikidataId},relationKind,valid).catch(()=>{});
+  if(topic.kind==='architect')void books(section,topic,valid);
+  relatedImages(section,topic,records);
+ })().catch(()=>{if(valid())status.textContent=L('No se pudo consultar el catálogo cultural.','Cultural catalogue unavailable.','Catalogue culturel indisponible.')});
 }
 window.VitruviaWebDossier={render,topicType};
 })();
