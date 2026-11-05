@@ -84,7 +84,10 @@
       "source": "https://commons.wikimedia.org/wiki/File:PalladioRotondaPlan.jpg",
       "rights": "Dominio público (Commons, reproducción fiel de obra de 1570).",
       "local": "images/laminas-historicas/palladio-1570-rotonda-planta.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "importedFrom": "https://commons.wikimedia.org/wiki/Special:FilePath/PalladioRotondaPlan.jpg?width=1800",
+      "provider": "Wikimedia Commons",
+      "imported": "2026-11-05"
     },
     {
       "id": "palladio-1570-marte-ultor",
@@ -101,7 +104,10 @@
       "source": "https://commons.wikimedia.org/wiki/File:I_quattro_libri_dell%27architettura_Image290.jpg",
       "rights": "Dominio público (Library of Congress / Commons).",
       "local": "images/laminas-historicas/palladio-1570-marte-ultor.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "importedFrom": "https://commons.wikimedia.org/wiki/Special:FilePath/I_quattro_libri_dell%27architettura_Image290.jpg?width=1800",
+      "provider": "Wikimedia Commons",
+      "imported": "2026-11-05"
     },
     {
       "id": "palladio-1570-vesta",
@@ -118,7 +124,10 @@
       "source": "https://commons.wikimedia.org/wiki/File:I_quattro_libri_dell%27architettura_Image_329.jpg",
       "rights": "Dominio público (Library of Congress / Commons).",
       "local": "images/laminas-historicas/palladio-1570-vesta.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "importedFrom": "https://commons.wikimedia.org/wiki/Special:FilePath/I_quattro_libri_dell%27architettura_Image_329.jpg?width=1800",
+      "provider": "Wikimedia Commons",
+      "imported": "2026-11-05"
     },
     {
       "id": "palladio-1581-libro-ii-p19",
@@ -135,7 +144,15 @@
       "source": "https://www.metmuseum.org/art/collection/search/703825",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/palladio-1581-libro-ii-p19.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "metObject": {
+        "title": "I quattro libri dell'architettura di Andrea Palladio. Ne'quale dopo un breue trattato de' cinque ordini (Book 2, page 19)",
+        "objectDate": "1581",
+        "accession": "41.100.128-(2.19)"
+      },
+      "importedFrom": "https://images.metmuseum.org/CRDImages/dp/original/DP102222.jpg",
+      "provider": "The Metropolitan Museum of Art (Open Access)",
+      "imported": "2026-11-05"
     },
     {
       "id": "desgodetz-pantheon-alzado",
@@ -151,7 +168,10 @@
       "source": "https://commons.wikimedia.org/wiki/File:DesgodetzPantheon.jpg",
       "rights": "Dominio público (PD-Art, Commons).",
       "local": "images/laminas-historicas/desgodetz-pantheon-alzado.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "importedFrom": "https://commons.wikimedia.org/wiki/Special:FilePath/DesgodetzPantheon.jpg?width=1800",
+      "provider": "Wikimedia Commons",
+      "imported": "2026-11-05"
     },
     {
       "id": "perrault-1684-piliers-tutelle",
@@ -167,7 +187,10 @@
       "source": "https://commons.wikimedia.org/wiki/File:Piliers_de_tutelle_(Bordeaux_1669)_(cropped).JPG",
       "rights": "Dominio público (PD-Art, Commons).",
       "local": "images/laminas-historicas/perrault-1684-piliers-tutelle.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "importedFrom": "https://commons.wikimedia.org/wiki/Special:FilePath/Piliers_de_tutelle_%28Bordeaux_1669%29_%28cropped%29.JPG?width=1800",
+      "provider": "Wikimedia Commons",
+      "imported": "2026-11-05"
     },
     {
       "id": "piranesi-1761-acqua-giulia",
@@ -184,7 +207,10 @@
       "source": "https://manifests.collections.yale.edu/yuag/obj/178068",
       "rights": "CC0 (Yale University Art Gallery).",
       "local": "images/laminas-historicas/piranesi-1761-acqua-giulia.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "importedFrom": "https://images.collections.yale.edu/iiif/2/yuag:8b2a37d4-86dc-4e6a-ba6f-a96bbeb98286/full/!1800,1800/0/default.jpg",
+      "provider": "Yale University Art Gallery (CC0)",
+      "imported": "2026-11-05"
     },
     {
       "id": "piranesi-1761-acqua-giulia-tav2",
@@ -201,7 +227,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/405683",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1761-acqua-giulia-tav2.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     },
     {
       "id": "piranesi-1761-acqua-giulia-tav11",
@@ -218,7 +245,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/405698",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1761-acqua-giulia-tav11.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     },
     {
       "id": "piranesi-1786-pantheon-seccion",
@@ -235,7 +263,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/407110",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1786-pantheon-seccion.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     },
     {
       "id": "piranesi-1756-pantheon-interior",
@@ -252,7 +281,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/404007",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-pantheon-interior.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     },
     {
       "id": "piranesi-1756-marcello-primo-ordine",
@@ -269,7 +299,15 @@
       "source": "https://www.metmuseum.org/art/collection/search/416052",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-marcello-primo-ordine.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "metObject": {
+        "title": "Partial elevation and plan of the first-order portico at the Theater of Marcellus (Dimostrazione di una parte de' portici del prim' ordine del Teatro di Marcello), from \"Le Antichità Romane\"",
+        "objectDate": "1756",
+        "accession": "2012.136.862.6"
+      },
+      "importedFrom": "https://images.metmuseum.org/CRDImages/dp/original/DP831900.jpg",
+      "provider": "The Metropolitan Museum of Art (Open Access)",
+      "imported": "2026-11-05"
     },
     {
       "id": "piranesi-1756-marcello-secondo-ordine",
@@ -286,7 +324,15 @@
       "source": "https://www.metmuseum.org/art/collection/search/416054",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-marcello-secondo-ordine.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "metObject": {
+        "title": "Elevation and plan of the second-order portico at the Theater of Marcellus (Teatro di Marcello), Rome, from \"Le Antichità Romane\"",
+        "objectDate": "1756",
+        "accession": "2012.136.862.7"
+      },
+      "importedFrom": "https://images.metmuseum.org/CRDImages/dp/original/DP831899.jpg",
+      "provider": "The Metropolitan Museum of Art (Open Access)",
+      "imported": "2026-11-05"
     },
     {
       "id": "piranesi-1756-marcello-cimientos",
@@ -303,7 +349,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/404928",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-marcello-cimientos.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     },
     {
       "id": "piranesi-1756-fortuna-virile-basa",
@@ -320,7 +367,15 @@
       "source": "https://www.metmuseum.org/art/collection/search/416057",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-fortuna-virile-basa.jpg",
-      "status": "por importar"
+      "status": "en el repositorio",
+      "metObject": {
+        "title": "Section of column base from the Temple of Fortuna Virilis (Tempio della Fortuna Virile), from \"Le Antichità Romane\"",
+        "objectDate": "1756",
+        "accession": "2012.136.862.10"
+      },
+      "importedFrom": "https://images.metmuseum.org/CRDImages/dp/original/DP831898.jpg",
+      "provider": "The Metropolitan Museum of Art (Open Access)",
+      "imported": "2026-11-05"
     },
     {
       "id": "piranesi-1756-ladrillos",
@@ -337,7 +392,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/404579",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-ladrillos.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     },
     {
       "id": "piranesi-1756-muralla-aureliana-tejas",
@@ -354,7 +410,8 @@
       "source": "https://www.metmuseum.org/art/collection/search/403991",
       "rights": "Se importa solo si la API del Met declara isPublicDomain=true.",
       "local": "images/laminas-historicas/piranesi-1756-muralla-aureliana-tejas.jpg",
-      "status": "por importar"
+      "status": "por importar",
+      "importError": "el Met no declara dominio público"
     }
   ]
 }
