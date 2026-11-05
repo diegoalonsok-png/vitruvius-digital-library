@@ -17,3 +17,4 @@ jobs:
           python3 -m http.server 8766 --bind 127.0.0.1 &
           sleep 2
           node scripts/all-pages-check.mjs
+          node scripts/contrast-check.mjs || true
