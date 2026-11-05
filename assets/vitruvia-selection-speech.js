@@ -22,9 +22,9 @@
   if(part)out.push(part);
   return out;
  }
- window.VitruviaSelectionSpeech={splitText,version:'1.0'};
+ window.VitruviaSelectionSpeech={splitText,version:'2.0-site-wide'};
  function init(){
-  const root=document.getElementById('article-body');
+  const root=document.body;
   if(!root||document.getElementById('vr-selection-speech'))return;
   const supported=typeof window.SpeechSynthesisUtterance==='function'&&!!window.speechSynthesis;
   const speech=window.speechSynthesis;
@@ -88,9 +88,12 @@
    const parent=ancestor.nodeType===1?ancestor:ancestor.parentElement;
    if(!parent||!root.contains(parent))return null;
    // Never offer to read editorial control labels or linked actions.
-   if(parent.closest('button, input, select, textarea, .article-toolbar, .vr-pm-dialog'))return null;
+   if(parent.closest('button, input, select, textarea, [contenteditable], .article-toolbar, .vr-pm-dialog, .vr-selection-speech, .site-bar, nav, [role="toolbar"], [role="menu"], .research-folder-fab'))return null;
    const point=range.startContainer.nodeType===1?range.startContainer:range.startContainer.parentElement;
-   const lang=point?.closest('[lang]')?.getAttribute('lang')||document.documentElement.lang||'es';
+   let lang=point?.closest('[lang]')?.getAttribute('lang')||document.documentElement.lang||'es';
+   // Detect the Latin column even on legacy readers whose heading is the only language cue.
+   if(!point?.closest('[lang]')&&point?.closest('#latin-text, .latin-text, [data-language="latin"]'))lang='la';
+   if(!point?.closest('[lang]')&&point?.closest('#translation-text')&&document.getElementById('lang'))lang=document.getElementById('lang').value||lang;
    const boxes=range.getClientRects();
    const rect=boxes.length?boxes[boxes.length-1]:range.getBoundingClientRect();
    if(!rect||(!rect.width&&!rect.height))return null;
