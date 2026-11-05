@@ -44,32 +44,24 @@ async function load(){
  const status=q('apparatus-catalog-status');
  status.textContent='Leyendo el aparato y las notas de las tres ediciones…';
  promise=(async()=>{
-  const tasks=await Promise.allSettled([...ED.map(async ed=>{
-   const r=await fetch(ed.index);
-   if(!r.ok)throw Error(ed.index+' (HTTP '+r.status+')');
-   const pages=await r.json();if(!Array.isArray(pages))throw Error('Formato incompatible: '+ed.index);
-   return extract(ed,pages);
-  }),fetch('data/critical-notes.json').then(async r=>{if(!r.ok)throw Error('Notas: HTTP '+r.status);return (await r.json()).entries;})]);
-  const warnings=[];
-  entries=[];
-  tasks.slice(0,3).forEach((r,i)=>r.status==='fulfilled'?entries.push(...r.value):warnings.push(ED[i].name+': '+r.reason.message));
-  const n=tasks[3];
-  if(n.status==='fulfilled'){
-   entries.push(...n.value.map(note=>({
-    edition:note.edition,editionName:ED.find(e=>e.id===note.edition)?.name||note.edition,
-    pdf:ED.find(e=>e.id===note.edition)?.pdf||'',page:null,type:'nota',
-    source:'nota',title:'Nota '+note.footnote_id,text:String(note.text||''),anchor:note.anchor||'',
-    sourceParagraph:note.source_paragraph,locusMention:note.locus||note.candidate_locus||null,
-    locusCertified:Boolean(note.locus)
-   })));
-  }else warnings.push('Notas DOCX: '+n.reason.message);
+  // Índice estático generado por scripts/build-apparatus-index.py (bloques del PDF con su locus + notas DOCX).
+  const warnings=[];entries=[];
+  try{
+   const r=await fetch('data/apparatus-index.json?v=20261105-apparatus-v1');if(!r.ok)throw Error('HTTP '+r.status);
+   const d=await r.json();
+   for(const e of d.entries){const ed=ED.find(x=>x.id===e.edition)||{name:e.version,pdf:''};
+    entries.push({edition:e.edition,editionName:ed.name,pdf:ed.pdf,page:e.page,type:e.source==='nota'?'nota':e.kind,source:e.source,
+     title:e.source==='nota'?'Nota '+String(e.id).split('-n').pop():e.label+(e.locusMention?' — '+e.locusMention:''),
+     text:e.text,anchor:e.anchor||'',locusMention:e.locusMention||(e.loci||[])[0]||null,
+     locusCertified:e.source==='nota'?e.locusLink==='locus explícito':!!e.locusInHeading,pageLoci:e.loci||[]});}
+  }catch(err){warnings.push('Índice del aparato: '+err.message)}
   loaded=true;
   const blockCount=entries.filter(e=>e.source==='bloque').length;
   const noteCount=entries.filter(e=>e.source==='nota').length;
   q('apparatus-catalog-totals').textContent=blockCount.toLocaleString('es-AR')+' encabezados o bloques de aparato localizados en páginas PDF; '+noteCount.toLocaleString('es-AR')+' notas del índice DOCX. Son registros de consulta, no variantes manuscritas individualmente certificadas.';
   if(warnings.length){const p=document.createElement('p');p.textContent='Índices no disponibles: '+warnings.join('; ');q('apparatus-catalog-totals').after(p);}
   apply();
- })().catch(e=>{status.textContent='No se pudo cargar el catálogo: '+e.message+'. Intentá de nuevo.';promise=null;});
+ })().catch(e=>{status.textContent='No se pudo cargar el catálogo: '+e.message+'. Inténtelo de nuevo.';promise=null;});
  return promise;
 }
 function excerpt(text,term){
@@ -85,7 +77,7 @@ function apply(){
  if(!loaded)return;
  const term=fold(q('apparatus-catalog-query').value),edition=q('apparatus-catalog-edition').value,type=q('apparatus-catalog-type').value;
  const terms=term.split(' ').filter(Boolean);
- visible=entries.filter(e=>(!edition||edition===e.edition)&&(!type||type===e.type)&&(!terms.length||terms.every(t=>fold([e.title,e.text,e.anchor,e.locusMention,e.editionName].join(' ')).includes(t))));
+ visible=entries.filter(e=>(!edition||edition===e.edition)&&(!type||type===e.type)&&(!terms.length||terms.every(t=>fold([e.title,e.text,e.anchor,e.locusMention,(e.pageLoci||[]).join(' '),e.editionName].join(' ')).includes(t))));
  // Los bloques críticos del propio libro primero; ordenar por edición y página.
  visible.sort((a,b)=>(a.source==='nota')-(b.source==='nota')||ED.findIndex(e=>e.id===a.edition)-ED.findIndex(e=>e.id===b.edition)||(a.page??0)-(b.page??0));
  shown=0;q('apparatus-catalog-results').replaceChildren();
@@ -100,12 +92,12 @@ function renderNext(){
   const location=e.page?'PDF, página '+e.page:'Nota DOCX '+(e.sourceParagraph===undefined?'':'· párrafo '+e.sourceParagraph);
   const status=e.source==='nota'?'Nota al pie extraída del DOCX':'Encabezado o apartado localizado mediante texto del PDF';
   const link=e.page?pdfURL(e,e.page):e.pdf;
-  const locus=e.locusMention?' · referencia mencionada '+e.locusMention+(e.source==='nota'&&!e.locusCertified?' (anclaje propuesto)':''):'';
+  const locus=e.locusMention?' · locus '+e.locusMention+(e.locusCertified?' (en el rótulo)':e.source==='nota'?' (anclaje propuesto)':' (mencionado en el texto)'):'';const readLocus=e.locusMention&&/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(e.locusMention)?e.locusMention:(e.pageLoci||[])[0];
   article.innerHTML='<p class="meta">'+esc(e.editionName)+' · '+esc(location)+' · '+esc(status)+'</p>'+
    '<h3 style="font-family:var(--serif);font-weight:500">'+esc(e.title)+'</h3>'+
    '<p>'+excerpt(e.text,term)+'</p>'+
    '<p class="source-note">Tipo: '+esc(e.type)+esc(locus)+' · El PDF es el testimonio editorial que debe consultarse antes de citar.</p>'+
-   '<div class="actions"><a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(e.page?'Abrir la página '+e.page+' del PDF':'Consultar libro original PDF')+' ↗</a></div>';
+   '<div class="actions"><a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(e.page?'Abrir la página '+e.page+' del PDF':'Consultar libro original PDF')+' ↗</a>'+(readLocus?' <a href="lector-bilingue.html?edition='+esc(e.edition)+'&amp;locus='+esc(encodeURIComponent(readLocus))+'">Leer el locus en el lector →</a>':'')+'</div>';
   area.append(article);
  }
  shown+=rows.length;
@@ -117,6 +109,7 @@ for(const id of ['apparatus-catalog-edition','apparatus-catalog-type'])q(id).add
 q('apparatus-catalog-more').addEventListener('click',renderNext);
 q('apparatus-catalog-load').addEventListener('click',load);
 const target=q('apparatus-catalog');
+{const u=new URLSearchParams(location.search),v=u.get('q')||u.get('locus');if(v){q('apparatus-catalog-query').value=v;load();}}
 if('IntersectionObserver' in window){
  const observer=new IntersectionObserver(records=>{if(records.some(e=>e.isIntersecting)){observer.disconnect();load();}},{rootMargin:'550px'});
  observer.observe(target);
