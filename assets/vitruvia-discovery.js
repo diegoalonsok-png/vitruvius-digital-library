@@ -14,7 +14,13 @@
  const objectWords=/\b(aparato|dispositivo|utensilio|herramienta|recipiente|maquina|electrodomestico|instrumento|appliance|device|utensil|tool|machine|cookware|appareil|ustensile|outil)\b/;
  const peopleWords=/\b(filosofo|filosofa|matematico|matematica|escritor|escritora|emperador|pintor|pintora|philosopher|mathematician|writer|emperor|painter|historian|politician|actor|actress|philosophe|ecrivain|empereur|peintre)\b/;
  function plan(query,identity={}){
-  const subject=identity.canonical||query,terms=unique([fold(subject),fold(query),...(identity.aliases||[]).map(fold)]);
+  const qRaw=fold(query);
+  const colorRequested=/\b(?:a color|en color|colores|colour|color|coloured|colored|couleur|couleurs)\b/.test(qRaw)
+   && !/\b(?:sin color|no color|blanco y negro|black and white|monochrome|monocromo)\b/.test(qRaw);
+  const genericColor=/^(?:(?:ejemplo|ejemplos|mostrar|ver|buscar)\s+)?(?:(?:imagenes|fotos|fotografias|images|photos|pictures)(?:\s+(?:a|en|de))?\s+)?(?:color|colores|colour|colored|coloured|couleur)(?:\s+(?:imagenes|images|fotos|photos))?$/.test(qRaw);
+  const rawSubject=identity.canonical||query;
+  const subject=genericColor?"Color photography":rawSubject;
+  const terms=unique([fold(subject),fold(query),...(identity.aliases||[]).map(fold)]);
   const description=fold(identity.authorityDescription||identity.description);
   let family=families.find(f=>f.aliases.some(a=>terms.includes(a)));
   if(!family&&/\b(cafetera|coffee maker|coffeemaker|cafetiere)\b/.test(description))family=families[0];
@@ -24,15 +30,26 @@
   const kind=family?"object":person?"person":musicalGroup?"music-group":objectWords.test(description)?"object":"topic";
   const q=fold(query);
   const intent=/\b(pinturas|cuadros|paintings|artworks|tableaux)\b/.test(q)?"artworks":/\b(bustos|busts|esculturas|sculptures)\b/.test(q)?"sculptures":/\b(libros|books|manuscritos|manuscripts)\b/.test(q)?"books":"overview";
-  const visualName=identity.commonsSearchName||identity.originalCanonical||subject;
-  const aliases=unique([subject,visualName,...(identity.aliases||[])]);
-  const queries=intent==="artworks"?[visualName+" painting",visualName+" artwork",query]:
+  const brutalism=/\b(brutalist|brutalism|brutalista|brutalismo|beton brut)\b/.test(qRaw+" "+description);
+  const visualName=genericColor?subject:identity.commonsSearchName||identity.originalCanonical||subject;
+  let aliases=unique([subject,visualName,...(identity.aliases||[])]);
+  let queries=intent==="artworks"?[visualName+" painting",visualName+" artwork",query]:
    intent==="sculptures"?[visualName+" bust",visualName+" sculpture",query]:
    intent==="books"?[visualName+" book",visualName+" manuscript",query]:
    kind==="person"?(typeof identity.birthYear==="number"&&identity.birthYear>=1800?[visualName+" portrait photograph",visualName+" photographer",visualName+" at work",visualName,subject]:[visualName+" bust",visualName+" portrait painting",visualName+" book manuscript",visualName,subject]):
    kind==="music-group"?[visualName+" band live concert",visualName+" band members",visualName+" performing",visualName+" group photograph",visualName]:
    kind==="object"?[visualName,visualName+" museum historic",visualName+" history book",subject]:[visualName,subject,query];
-  return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),family:family?.id||null,
+  if(brutalism&&kind==="topic"){
+   aliases=unique([...aliases,"brutalist architecture","brutalism","brutalist","brutalismo","brutalista"]);
+   queries=unique(["brutalist architecture building color photograph","brutalist architecture concrete buildings","brutalism building architecture photography","brutalist architecture",...queries]);
+  }else if(genericColor){
+   aliases=["color photography","colour photography","color photograph","color photo","colorful photography","color"];
+   queries=["color photography","colour photographs","color photos architecture","colorful photography","color photographs"];
+  }else if(colorRequested&&kind==="topic"){
+   queries=unique([visualName+" color photograph",visualName+" colour photography",...queries]);
+  }
+  const visualStyle=colorRequested||genericColor?"color":brutalism?"prefer-color":"any";
+  return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,family:family?.id||null,
    contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0};
  }
  const groups={
@@ -105,6 +122,12 @@
   if(/museum|museo|musee|british library|bibliotheque|metropolitan|hermitage|uffizi|louvre|capitolini/i.test(institution+" "+name))score+=25;
   if(/\b(surgical mask|face mask|mascarilla|meme|parody|parodia|souvenir)\b/.test(name))score-=180;
   if(page.fromTrustedCategory){matched=true;score+=65}
+  if(topic.visualStyle==="color"||topic.visualStyle==="prefer-color"){
+   const visualText=name+" "+description;
+   if(/\b(?:black and white|black white|grayscale|greyscale|monochrome|monochromatic|schwarzweiss|noir et blanc|blanco y negro|sepia|bnw)\b/.test(visualText))score-=topic.visualStyle==="color"?260:160;
+   if(/\b(?:colour|color|colourful|colorful|polychrome|polychromatic|in colour|in color)\b/.test(visualText))score+=65;
+   if(/\b(?:photograph|photo|fotografia|photography|building|buildings|facade|facades|architecture|arquitectura)\b/.test(visualText))score+=20;
+  }
   if(topic.kind==="music-group"){
    const file=fold(page.title||"");
    if(/\b(concert|live|performing|band members|group photo|band photo|festival|tour|photograph|photo)\b/.test(file))score+=130;
@@ -126,7 +149,8 @@
   const order=groupOrder(topic);
   const validYear=x=>Number.isFinite(x)&&x>=-4000&&x<=new Date().getFullYear()+1;
   return [...items].sort((a,b)=>{
-   if(topic.kind==="music-group")return order.indexOf(a.group)-order.indexOf(b.group)||b.score-a.score||a.name.localeCompare(b.name);
+   if(topic.kind==="music-group"||topic.visualStyle==="color"||topic.visualStyle==="prefer-color")
+    return b.score-a.score||order.indexOf(a.group)-order.indexOf(b.group)||a.name.localeCompare(b.name);
    const ay=validYear(a.year)?a.year:null,by=validYear(b.year)?b.year:null;
    if(ay!==null&&by!==null&&ay!==by)return ay-by;
    if(ay!==null&&by===null)return -1;
