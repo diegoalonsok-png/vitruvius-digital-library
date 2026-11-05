@@ -56,8 +56,9 @@ function ensureTypography(){
  '<button id="site-typeface-reset" type="button">Restablecer</button></div>';
  const palette=document.getElementById('home-palette-toggle')||document.getElementById('front-background-toggle');
  const theme=document.querySelector('.research-nav-controls .theme-switch, .nav .theme-switch, .theme-switch');
- const anchor=palette?.closest('.home-color-tools, details')||palette||theme;
- if(anchor?.parentElement)anchor.after(tool);
+ const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
+ if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
+ else if(anchor?.parentElement)anchor.after(tool);
  else(document.querySelector('.research-nav-controls')||document.querySelector('header')||document.body).append(tool);
  const button=tool.querySelector('#site-typeface-toggle'),panel=tool.querySelector('#site-typeface-panel'),select=tool.querySelector('#site-typeface-select'),italic=tool.querySelector('#site-typeface-italic');
  function apply(){
