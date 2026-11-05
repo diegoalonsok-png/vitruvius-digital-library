@@ -360,6 +360,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   baseRating:rating,rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
   links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
+  localReader:/^corpus\/[a-z0-9/_-]+\.html$/i.test(w.localHtml||"")?w.localHtml:null,
   citationText:w.bibliography?.editionCitation||"",
   localHosted:!!(w.localReader?.verified||w.localHtml||w.localVersions?.length||pdf||localWitness)};
  }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
@@ -630,6 +631,11 @@ function renderCard(d){
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
+ if(d.type==="book"&&d.localReader&&window.VitruviaClassicsViewer){
+  const open=node("button","classics-local-open",S.lang==="en"?"Read original text here":S.lang==="fr"?"Lire le texte original ici":"Leer texto original aquí");
+  open.type="button";open.addEventListener("click",()=>window.VitruviaClassicsViewer.open(d.localReader,d.author+" · "+d.title));
+  acts.append(open);
+ }
  if(d.type==="manuscript"&&d.localViewer){
   const open=node("button","codex-local-open",S.lang==="en"?"Read codex here · "+d.localFolioCount+" images":S.lang==="fr"?"Lire le codex ici · "+d.localFolioCount+" images":"Leer códice aquí · "+d.localFolioCount+" imágenes");
   open.type="button";open.addEventListener("click",()=>window.VitruviaLocalManuscripts?.open(d.localViewer,d.title));
