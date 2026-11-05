@@ -189,6 +189,27 @@ async function addBookCovers(id,topic,identity,q){
  }
  return docs.length;
 }
+async function verifiedLeadImage(identity,topic,id){
+ if(!identity?.wikidataId)return [];
+ const langs=[...new Set([identity.wikiLang,"en","es"].filter(x=>/^(en|es|fr|de|it|pt)$/.test(x)))].slice(0,3);
+ const names=[identity.wikiTitle,identity.canonical,identity.originalCanonical,...(identity.aliases||[])].filter(Boolean).map(fold);
+ for(const lang of langs){
+  if(id!==active)return [];
+  try{
+   const title=identity.wikiTitle||identity.canonical||topic.subject;
+   const args=new URLSearchParams({action:"query",titles:title,redirects:"1",prop:"pageimages",piprop:"thumbnail|name",pithumbsize:"900",format:"json",origin:"*"});
+   const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+args);
+   if(!r.ok)continue;
+   const d=await r.json(),page=Object.values(d.query?.pages||{}).find(p=>p.thumbnail?.source&&p.pageimage);
+   if(!page||!names.includes(fold(page.title))||!safeLink(page.thumbnail.source))continue;
+   const filename=page.pageimage.replace(/_/g," ");
+   return [{name:filename,caption:page.title,preview:page.thumbnail.source,original:page.thumbnail.source,
+    page:"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(filename),
+    license:"",credit:"Wikipedia · "+lang.toUpperCase()+" · archivo y derechos",score:150,group:"context"}];
+  }catch{}
+ }
+ return [];
+}
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
@@ -267,9 +288,17 @@ async function searchImages(query){
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
    if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
-  }else{grid.replaceChildren();status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
-   "No sufficiently identified images were retrieved. Try the external collections.",
-   "Aucune image suffisamment documentée. Consulter les collections externes.");}
+  }else{
+   grid.replaceChildren();
+   const lead=await verifiedLeadImage(identity,topic,id);
+   if(id!==active)return;
+   if(lead.length){
+    displayGroups(lead,topic);
+    status.textContent=locale("Imagen enciclopédica identificada; consulta su archivo para verificar autoría y derechos.","Identified encyclopedia image; check its source for attribution and rights.","Image encyclopédique identifiée ; vérifiez sa source.");
+   }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
+    "No sufficiently identified images were retrieved. Try the external collections.",
+    "Aucune image suffisamment documentée. Consulter les collections externes.");
+  }
   const covers=await addBookCovers(id,topic,identity,q);
   if(covers&&!items.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){
