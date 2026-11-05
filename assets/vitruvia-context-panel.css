@@ -1,0 +1,37 @@
+/* Vitruvia — context column for source-checked classical and general searches. */
+#vitruvia-context[hidden]{display:none!important}
+body.vitruvia-reading #vitruvia-context{color:#bebdb9;min-width:0;overflow-wrap:anywhere;font:400 12px/1.65 Arial,Helvetica,sans-serif;border-left:1px solid #383839;padding:0 0 12px 20px;align-self:start}
+body.vitruvia-reading #vitruvia-context .context-kicker{color:#b7a27c;font:600 10px/1.5 Arial,sans-serif;letter-spacing:.12em;margin:0 0 9px}
+body.vitruvia-reading #vitruvia-context .context-term{font:italic 400 25px/1.2 Georgia,serif;color:#eeeae2;margin:0 0 21px;letter-spacing:-.025em}
+body.vitruvia-reading #vitruvia-context .context-section-title{font:400 18px/1.3 Georgia,serif;color:#e8e6df;margin:24px 0 9px;padding-top:12px;border-top:1px solid #343436}
+body.vitruvia-reading #vitruvia-context .context-note{font:400 12px/1.72 Arial,sans-serif;color:#bebeba;margin:6px 0 13px}
+body.vitruvia-reading #vitruvia-context .context-greek{font:italic 26px/1.2 Georgia,serif;color:#d8c6a7}
+body.vitruvia-reading #vitruvia-context a{color:#d3bd96;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+body.vitruvia-reading #vitruvia-context .context-minor-link{display:block;font-size:11px;margin:9px 0}
+body.vitruvia-reading #vitruvia-context .context-locus{border-bottom:1px solid #353538;padding:11px 0 13px}
+body.vitruvia-reading #vitruvia-context .context-locus>a{display:block;font:600 12px/1.4 Arial,sans-serif;margin-bottom:7px}
+body.vitruvia-reading #vitruvia-context .context-latin{font:italic 13px/1.66 Georgia,serif;color:#e5e1d7;margin:6px 0}
+body.vitruvia-reading #vitruvia-context .context-translation{font:400 12px/1.56 Arial,sans-serif;color:#a6a6a6;margin:6px 0}
+body.vitruvia-reading #vitruvia-context mark.context-match{background:#f4dd5f!important;color:#181818!important;border-radius:2px;padding:1px 2px}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item{border-bottom:1px solid #333;padding:9px 0 11px;display:grid;gap:4px}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item>a{font-size:12px;line-height:1.5}
+body.vitruvia-reading #vitruvia-context .context-biblio-meta{font-size:11px;color:#aaa;margin:0}
+body.vitruvia-reading #vitruvia-context .context-identifier{font:500 10px/1.5 Arial,sans-serif;color:#b8c2bc;overflow-wrap:anywhere}
+body.vitruvia-reading #vitruvia-context .context-universities{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+body.vitruvia-reading #vitruvia-context .context-universities>a{display:block;text-align:center;text-decoration:none;font-size:11px;padding:7px 3px;border:1px solid #444;border-radius:5px;background:#202021;color:#dad5c8}
+body.vitruvia-reading #vitruvia-context .context-disclaimer{color:#999;font:400 10px/1.55 Arial,sans-serif;margin:10px 0}
+@media(min-width:1250px){
+ body.vitruvia-reading #vitruvia-article .article-grid{display:grid!important;grid-template-columns:195px minmax(0,1fr) minmax(255px,300px)!important;gap:clamp(18px,2.2vw,32px)!important;align-items:start!important}
+ body.vitruvia-reading #vitruvia-article .article-aside{grid-column:1;grid-row:1}
+ body.vitruvia-reading #vitruvia-article .article-body{grid-column:2;grid-row:1;min-width:0}
+ body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;grid-column:3;grid-row:1;position:sticky;top:92px;max-height:calc(100vh - 112px);overflow-y:auto;scrollbar-width:thin}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header{padding-left:calc(195px + clamp(18px,2.2vw,32px))}
+}
+@media(min-width:1021px) and (max-width:1249px){body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;grid-column:2;grid-row:2;position:static;margin-top:22px;padding-top:20px;border-top:1px solid #444}}
+@media(max-width:1020px){body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;order:3;width:100%;position:static;margin:16px 0 0;padding:20px 0;border-left:0;border-top:1px solid #444}}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context{color:#333;border-color:#c1c1bd}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context :is(.context-term,.context-section-title,.context-latin){color:#222}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context :is(.context-note,.context-translation,.context-disclaimer,.context-biblio-meta){color:#565656}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context a{color:#594a32}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .context-universities>a{color:#333;background:#eee9df}
+@media print{body.vitruvia-reading #vitruvia-article #vitruvia-context{display:none!important}body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}body.vitruvia-reading #vitruvia-article .article-body{width:100%!important}}
