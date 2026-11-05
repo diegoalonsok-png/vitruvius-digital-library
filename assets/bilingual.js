@@ -98,10 +98,14 @@ $('find-form').addEventListener('submit',e=>{
  render();
 });
 try{
- const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/latin-lexicon.json').then(r=>r.json()).then(d=>{lexicon=d.entries;}),fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(d=>{lemmaGlossary=d}).catch(()=>{}),fetch('data/catalog.json?v=20261030-citations').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
+ const responses=await Promise.allSettled([...Object.values(editionIds).map(async id=>{const response=await fetch('data/structured/'+id+'.json');if(!response.ok)throw Error(id);datasets[id]=await response.json();}),fetch('data/latin-lexicon.json').then(r=>r.json()).then(d=>{lexicon=d.entries;}),fetch('data/catalog.json?v=20261030-citations').then(r=>r.json()).then(c=>{for(const e of c.editions)records[e.id]=e;})]);
  // Todas las formas de cada lema (CLTK + Lewis & Short) se suman al léxico revisado, que conserva prioridad.
- if(lemmaGlossary?.forms){const by=new Map();for(const [form,lems] of Object.entries(lemmaGlossary.forms))for(const l of lems){if(!by.has(l))by.set(l,new Set());by.get(l).add(form)}
+ // Carga diferida: al enfocar el buscador del lector.
+ const mergeLemmas=()=>{if(!lemmaGlossary?.forms)return;const by=new Map();for(const [form,lems] of Object.entries(lemmaGlossary.forms))for(const l of lems){if(!by.has(l))by.set(l,new Set());by.get(l).add(form)}
   for(const [l,forms] of by){const head=String(lemmaGlossary.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'');const lem=head.replace(/\d+$/,''),nk=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');const cur=lexicon.find(e=>!e.derived&&nk(e.lemma)===nk(lem));if(cur)cur.forms=[...new Set([...(cur.forms||[]),...forms])];else lexicon.push({lemma:lem,forms:[...forms],derived:true})}}
+
+ const termInput=$('term');const loadLemmas=()=>fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(d=>{lemmaGlossary=d;mergeLemmas()}).catch(()=>{});
+ if(termInput){termInput.addEventListener('focus',loadLemmas,{once:true});if(termInput.value)loadLemmas()}
  if(!datasets['recensio-es'])throw Error('No se pudo cargar el corpus castellano. Recarga para volver a intentarlo.');
  all=datasets['recensio-es'].passages;for(const id of ['book','chapter','section'])$(id).disabled=false;
  $('coverage').textContent=Object.values(datasets).map(d=>d.version+': '+d.passages.length+' bloques de lectura').join(' · ')+'. Los 731 loci están localizados en cada idioma; V297 conserva VII.7.1–3 y VII.7.4–5 como bloques conjuntos.';

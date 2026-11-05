@@ -83,8 +83,10 @@
 
  try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;
   // Todas las formas del texto latino (CLTK + Lewis & Short) para las sugerencias ortográficas y de grafía.
-  fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(g=>{if(!g?.forms)return;const by=new Map();for(const [f,ls] of Object.entries(g.forms))for(const l of ls){if(!by.has(l))by.set(l,[]);by.get(l).push(f)}
-   for(const [l,fs] of by)derivedForms.push({lemma:String(g.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'').replace(/\d+$/,''),forms:fs,derived:true})}).catch(()=>{});}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Vuelve a intentarlo al recargar.';return;}
+  const loadDerived=()=>fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(g=>{if(!g?.forms)return;const by=new Map();for(const [f,ls] of Object.entries(g.forms))for(const l of ls){if(!by.has(l))by.set(l,[]);by.get(l).push(f)}
+   for(const [l,fs] of by)derivedForms.push({lemma:String(g.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'').replace(/\d+$/,''),forms:fs,derived:true})}).catch(()=>{});
+  // Carga diferida: solo cuando la persona empieza a escribir.
+  input.addEventListener('focus',loadDerived,{once:true});if(document.activeElement===input||input.value)loadDerived();}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Vuelve a intentarlo al recargar.';return;}
  const norm=s=>String(s).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function textLine(parent,label,value){if(!value)return;const p=document.createElement('p'),b=document.createElement('strong');b.textContent=label+' ';p.append(b,document.createTextNode(value));parent.append(p);}
  function corpusContext(value){

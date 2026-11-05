@@ -121,6 +121,14 @@ try{
    await p.waitForFunction(()=>/virt[uū]s/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
   }finally{await p.close()}
  });
+ await check('Collation by locus: V514 against Rose 1899 shows the omission of «cum fuerit» at I.3.2',async()=>{
+  const p=await open('colacion.html?locus=1.3.2');
+  try{await p.waitForFunction(()=>/fuerit\s*\]\s*om\./.test(document.querySelector('#coll-body')?.textContent||''),{timeout:20000})}finally{await p.close()}
+ });
+ await check('Indices locorum group Latin forms by lemma (symmetria)',async()=>{
+  const p=await open('indices-locorum.html?q=symmetri');
+  try{await p.waitForFunction(()=>{const h=[...document.querySelectorAll('.index-row h3')].map(x=>x.textContent);return h.length===1&&h[0]==='symmetria'},{timeout:20000})}finally{await p.close()}
+ });
  await check('Lucretius compares Latin original and translations with three independent readers',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=lucretius&view=pdf');
   try{

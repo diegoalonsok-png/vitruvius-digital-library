@@ -21,6 +21,7 @@ html[data-theme="dark"] .search input{background:#26333e;color:#f1ede4;border-co
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261105-bar-v1"></script></head>
 <body>
+<main id="contenido">
 <h1>Index locorum selectus - De architectura libri decem</h1>
 <div class="search"><input id="filter" placeholder="Filtrar locus o término: III.1.2 · symmetria" oninput="filtrar()" aria-label="Filtrar loci seleccionados"></div>
 <p>Selección orientativa de pasajes de los diez libros, no un índice exhaustivo. Cada enlace abre la consulta del locus en el índice textual; la correspondencia con folios manuscritos debe verificarse por separado.</p><p>Para buscar cualquier pasaje, incluso si no figura en esta selección, consulta el <a href="aparato-critico.html">índice textual completo</a>, los <a href="indices-locorum.html">índices latino, griego y matemático</a> o el <a href="lector-bilingue.html">lector bilingüe</a>.</p><p id="filter-status" role="status" aria-live="polite"></p>
@@ -61,6 +62,7 @@ html[data-theme="dark"] .search input{background:#26333e;color:#f1ede4;border-co
 <a href="index.html" style="color:#C9A86A">← Biblioteca</a> | <a href="principios.html" style="color:#C9A86A">Principios</a> | <a href="facsimiles.html" style="color:#C9A86A">Facsímil H 800-824</a>
 </footer>
 
+</main>
 <script>
 function filtrar(){
   const q=document.getElementById('filter').value.trim().toLocaleLowerCase();
