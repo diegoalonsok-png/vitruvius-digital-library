@@ -58,7 +58,7 @@ function workRecord(entity,notable,coverage=0){
   href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,
   photoTitle:entity.sitelinks?.enwiki?.title||site?.title||title,wikiLang,wikiTitle:site?.title||'',aliases:Object.values(entity.labels||{}).map(x=>x.value)};
 }
-function compare(a,b,order='importance'){
+function compare(a,b,order='year'){
  if(order==='year')return (a.year??99999)-(b.year??99999)||a.title.localeCompare(b.title);
  return Number(b.notable)-Number(a.notable)||b.coverage-a.coverage||(a.year??99999)-(b.year??99999)||a.title.localeCompare(b.title);
 }
@@ -70,7 +70,7 @@ async function catalogue(identity,kind){
  const notable=[...new Set([...ids(creator,'P800'),...(identity.notableWorkIds||[]).filter(qid)])].slice(0,40);
  const all=[...new Set([...notable,...reverse.records.map(x=>x.id)])].slice(0,50);
  const records=await entities(all);
- const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage)).filter(Boolean).sort(compare);
+ const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage)).filter(Boolean).sort((a,b)=>compare(a,b,'year'));
  return {works,available:!!creator||reverse.available,partial:!creator||!reverse.available};
 }
 async function preview(item,work,valid){
@@ -92,9 +92,9 @@ async function preview(item,work,valid){
 function showWorks(root,works,valid){
  const controls=el('label','cultural-order',L('Ordenar por','Sort by','Trier par'));
  const select=el('select');select.setAttribute('aria-label',L('Orden de las obras culturales','Cultural works order','Ordre des œuvres culturelles'));
- for(const [value,text] of [['importance',L('Importancia documental','Documentary prominence','Importance documentaire')],['year',L('Año de aparición','Year of release','Année de parution')]]){const option=el('option',null,text);option.value=value;select.append(option)}
+ for(const [value,text] of [['year',L('Más antiguas primero','Oldest first','Plus anciennes d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  controls.append(select);root.append(controls);
- root.append(el('p','web-dossier-count',L('Obras destacadas primero; luego, presencia en los catálogos.','Notable works first, then catalogue coverage.','Œuvres notables en premier, puis présence dans les catalogues.')));
+ root.append(el('p','web-dossier-count',L('Obras ordenadas por aparición: primera a última; las obras sin fecha van al final.','Works ordered from earliest to latest; undated records follow.','Œuvres classées de la plus ancienne à la plus récente ; œuvres non datées à la fin.')));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
  const cards=new Map();let expanded=false;
  const limit=8;
