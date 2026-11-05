@@ -312,11 +312,20 @@ async function searchImages(query){
  status.textContent=locale("Buscando obras y fotografías documentadas…","Searching documented artworks and photographs…","Recherche d’œuvres et de photographies documentées…");
  const isCodex=/\b(harleianus|harley(?:\s+ms)?\s*2767|codex\s*h\b|harleian(?:us)?)\b/i.test(q);
  if(isCodex){await localCodex(id);return}
+ // Química: «molécula de carbono», «átomo de oxígeno» → la galería busca la sustancia identificada por su
+ // nombre inglés (el de Commons) y su categoría, no la frase literal.
+ let chem=null;
+ if(window.VitruviaScience?.subject(q).explicit){
+  chem=await window.VitruviaScience.resolveCached(q).catch(()=>null);
+  if(id!==active)return;
+ }
+ const chemName=chem?.entity?.labels?.en?.value||null;
  external("Wikimedia Commons","https://commons.wikimedia.org/w/index.php?search="+encodeURIComponent(q)+"&title=Special:MediaSearch&type=image");
  external("Google Imágenes","https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q));
  external("Europeana","https://www.europeana.eu/es/search?query="+encodeURIComponent(q));
  const language=document.documentElement.lang||"es";
- let identity=await window.VitruviaEntityResolver?.resolve(q,language).catch(()=>null);
+ let identity=await window.VitruviaEntityResolver?.resolve(chemName||q,chemName?"en":language).catch(()=>null);
+ if(chemName&&identity&&!identity.commonsCategory&&chem.entity.claims?.P373?.[0])identity.commonsCategory=chem.entity.claims.P373[0].mainsnak?.datavalue?.value;
  if(id!==active)return;
  // Consulta con errores o en otro idioma («2001 odisea en el espacio», «A Pace Odyssey»): si el resolvedor
  // directo no identifica nada, se usa la entidad que identificó la ficha de Vitruvia (Wikidata) y se
