@@ -15,7 +15,7 @@ export default {async fetch(request,env){
  if(len>9000000)return Response.json({error:'Archivo demasiado grande'}, {status:413,headers});
  try {
  const form=await request.formData(),file=form.get('image');
- if(!(file instanceof File)||!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>6000000)return Response.json({error:'Subí JPG/PNG/WebP de menos de 6 MB'}, {status:400,headers});
+ if(!(file instanceof File)||!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>6000000)return Response.json({error:'Sube JPG/PNG/WebP de menos de 6 MB'}, {status:400,headers});
  const bytes=new Uint8Array(await file.arrayBuffer());
  let binary='';for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
  const data=btoa(binary);

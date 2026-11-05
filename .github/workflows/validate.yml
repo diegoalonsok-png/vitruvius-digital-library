@@ -22,6 +22,7 @@ jobs:
           node --check assets/history-core.mjs
           node scripts/test-history.mjs
           node scripts/test-citations.mjs
+          node scripts/test-no-voseo.mjs
           node scripts/test-search.mjs
           node --test scripts/test-query-discovery.mjs
           node scripts/test-vitruvia-discovery.mjs
