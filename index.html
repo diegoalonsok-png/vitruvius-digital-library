@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Biblioteca digital de Vitruvio. De architectura: manuscritos, ediciones históricas, traducciones y estudios de Diego Kurilo. Lectura, búsqueda y consulta comparada.">
-  <meta name="theme-color" content="#122a42">
+  <meta name="theme-color" content="#0b0e12">
   <link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/index.html">
   <meta name="robots" content="index, follow, max-snippet:-1">
   <meta property="og:type" content="website">
@@ -50,7 +50,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css?v=20261102-latin-traduccion-1">
   <script src="assets/app.js?v=20261104-query-1" type="module"></script>
-<script src="assets/i18n.js?v=20261104-vitruvia-entry-1" defer></script><script src="assets/latin-suggest.js?v=20261101-gloss-spelling-36" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261104-front-default-dark" defer></script><script src="assets/front-palette.js?v=20261104-v1" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
+<script src="assets/i18n.js?v=20261104-front-langbar-2" defer></script><script src="assets/latin-suggest.js?v=20261101-gloss-spelling-36" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261104-front-preference-2" defer></script><script src="assets/front-palette.js?v=20261104-extended-v2" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
 /* Jerarquía clara de acciones y crédito editorial separado. */
 .hero-actions-academic{display:flex;align-items:center;gap:12px 15px;flex-wrap:wrap;margin-top:24px}
 .hero-actions-academic .button{display:inline-flex;align-items:center;gap:8px;padding:12px 19px;min-height:46px;text-decoration:none;white-space:normal}
@@ -253,6 +253,39 @@ html[data-theme="dark"] .home-color-panel{background:#19232c;color:#f0ece4;borde
  border-bottom:1px solid #a58b60;padding:4px 0;cursor:pointer}
 @media print{.home-color-tools{display:none!important}}
 
+/* Idioma alineado en la barra de herramientas; paleta inmediatamente al final. */
+.research-nav-controls>.header-languages{
+ display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto!important;
+ margin:0!important;padding:0!important;min-height:42px!important;white-space:nowrap!important;
+ color:var(--ink)!important;font-size:12px!important;letter-spacing:0!important;
+}
+.research-nav-controls>.header-languages select{
+ appearance:auto;width:76px!important;min-width:76px!important;max-width:76px!important;
+ height:42px!important;min-height:42px!important;padding:0 7px!important;margin:0!important;
+ border:1px solid #b5b8b7!important;border-radius:11px!important;
+ color:#24313a!important;background:#f2f1ed!important;font:600 12px Arial,sans-serif!important;cursor:pointer!important;
+}
+html[data-theme="dark"] .research-nav-controls>.header-languages select{
+ color:#f1eee8!important;background:#1b2833!important;border-color:#586470!important;color-scheme:dark;
+}
+.research-nav-controls>.header-languages select:focus-visible{outline:2px solid #b49a65!important;outline-offset:3px}
+.research-nav-controls{align-items:center!important;flex-wrap:wrap!important}
+.research-nav-controls .home-color-tools{order:10}
+@media(max-width:850px){
+ .research-nav-controls>.header-languages{flex-basis:auto!important}
+ .research-nav-controls>.header-languages select{width:76px!important;max-width:76px!important}
+}
+/* El selector libre admite claros y oscuros, manteniendo legibilidad del front. */
+html[data-theme="dark"].front-color-light{
+ --ink:#182b38!important;--muted:#40515a!important;--line:#a9aeb0!important;
+}
+html[data-theme="dark"].front-color-light :is(.hero h1,.hero-academic h1,.hero-academic h1 span,.wordmark-name,.hero-subtitle){color:#162936!important}
+html[data-theme="dark"].front-color-light :is(.hero-editor-credit,.hero-description,.eyebrow){color:#324653!important}
+html[data-theme="dark"].front-color-light .research-nav-controls a.vitruvia-top-link{color:#182b38!important}
+html[data-theme="dark"].front-color-light .research-nav-controls .vitruvia-top-copy small{color:#324653!important}
+html[data-theme="dark"].front-color-light .research-nav-controls>.research-print-button{color:#182b38!important;background:rgba(255,255,255,.4)!important}
+
+
 </style><style>.hero-folios-action{border-color:#c8a86e!important;font-weight:750!important;letter-spacing:.025em;background:rgba(202,169,102,.08)}.hero-folios-action:focus-visible{outline:3px solid #c8a86e;outline-offset:3px}</style>
 <link rel="stylesheet" href="assets/editorial-reading.css?v=20261103-front-responsive-2">
 </head>
@@ -263,7 +296,6 @@ html[data-theme="dark"] .home-color-panel{background:#19232c;color:#f0ece4;borde
     <div class="wrap header-inner">
       <a class="wordmark" href="index.html" aria-label="Vitruvius Digital Library, inicio"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a>
       <nav aria-label="Navegación principal"><a href="#coleccion">La colección</a><a href="#buscar">Buscar en los textos</a><button id="open-comparison" type="button">Consulta comparada</button><a class="nav-history" href="#historia">Historia del texto</a><a href="lector-bilingue.html">Lector bilingüe LA / ES / FR / EN</a><a href="estudios.html">Estudios académicos</a><a href="for-researchers.html">For researchers</a><a href="docencia-roma-antigua.html">Docencia · Roma antigua</a><a href="bibliotecas-universitarias.html">Bibliotecas y universidades</a><a href="como-citar.html">Cómo citar</a><a class="nav-fano" href="basilica-fano.html">Basílica de Fano</a></nav>
-      <span class="header-languages" aria-label="Latín, castellano, francés e inglés">LA / ES / FR / EN</span>
     </div>
     <nav class="research-nav" aria-label="Herramientas de investigación">
       <div class="wrap research-nav-inner">
@@ -289,6 +321,7 @@ html[data-theme="dark"] .home-color-panel{background:#19232c;color:#f0ece4;borde
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
           <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir esta página" title="Abrir vista de impresión de la biblioteca">⎙ Imprimir</button>
           <a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a>
+          <span class="header-languages" aria-label="Seleccionar idioma de interfaz" title="Seleccionar idioma / Select language"></span>
         </div>
       </div>
     </nav>
