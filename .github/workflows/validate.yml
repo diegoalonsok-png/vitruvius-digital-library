@@ -34,6 +34,8 @@ jobs:
           node scripts/test-vitruvia-resilience.mjs
           node scripts/test-vitruvia-entity-priority.mjs
           node scripts/test-vitruvia-author-reading.mjs
+          node scripts/test-classical-catalogue-integrity.mjs
+          node --check assets/bibliotheca-graeca-latina.js
           node --check assets/vitruvia-selection-speech.js
           node scripts/test-vitruvia-selection-speech.mjs
           node --check assets/vitruvia-photo-background.js
