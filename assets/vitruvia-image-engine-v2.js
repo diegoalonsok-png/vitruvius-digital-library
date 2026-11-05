@@ -24,6 +24,10 @@ const stop=new Set("de del la las los el una un the and for with images image fo
 const tokens=s=>fold(s).split(/\s+/).filter(x=>x.length>2&&!stop.has(x));
 const distinct=a=>[...new Set(a.map(x=>String(x||"").trim()).filter(Boolean))];
 
+const childhoodPhoto=/\b(baby|infant|infancy|childhood|as a child|as a baby|as a boy|as a girl|toddler|newborn|bebe|nino|nina|infancia|infantil|enfant|bambino|bambina|kindheit|als kind)\b/i;
+const isChildhoodPhoto=item=>childhoodPhoto.test(fold([item?.name,item?.caption,item?.page].filter(Boolean).join(" ")));
+
+
 /* Prefer documented creation date; never use Commons upload timestamps to date artwork. */
 function documentedYear(value){
  const raw=String(value||"").replace(/<[^>]*>/g," ").replace(/&[^;]+;/g," ").trim();
@@ -143,6 +147,10 @@ function collectedImages(pages,topic){
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
 }
 function displayGroups(items,topic){
+ // Childhood photos are historical documents, but never lead a person's gallery
+ // when adult photographs are available. If all imagery is childhood, retain it.
+ if(topic.kind==="person"&&items.some(item=>!isChildhoodPhoto(item)))
+  items=items.filter(item=>!isChildhoodPhoto(item));
  // Multiple API pages may represent the same photo under alternative records.
  const seen=new Set();
  items=items.filter(item=>{
@@ -319,7 +327,7 @@ async function searchImages(query){
  const leadPromise=verifiedLeadImage(identity,topic,id).then(items=>{
   if(id!==active)return [];
   leadItems=items;
-  if(items.length&&!grid.querySelector(".vitruvia-image-card"))displayGroups(items,topic);
+  if(items.length&&!grid.querySelector(".vitruvia-image-card")&&!(topic.kind==="person"&&items.every(isChildhoodPhoto)))displayGroups(items,topic);
   return items;
  }).catch(()=>[]);
  const requests=topic.queries;
