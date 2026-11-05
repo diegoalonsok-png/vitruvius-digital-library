@@ -28,6 +28,10 @@ function isAbout(subject,title){
  return significant.length?significant.some(x=>b.includes(x)):normalized(title).includes(normalized(subject));
 }
 function identity(query,rows){
+ // Si la consulta ya fue identificada en Wikidata (ficha de persona), esa entidad manda sobre las coincidencias de texto.
+ const ce=window.VitruviaCurrentEntity;
+ if(ce&&[ce.query,ce.corrected,ce.label].some(x=>x&&normalized(x)===normalized(query)))
+  return{type:'wikipedia',title:ce.label,entityCanonical:ce.label,entityDescription:ce.description,preferredWiki:true,wikidataId:ce.qid,link:ce.wiki?'https://'+(ce.wikiLang||'es')+'.wikipedia.org/wiki/'+encodeURIComponent(ce.wiki.replace(/ /g,'_')):''};
  const plan=window.VitruviaSemanticQuery?.plan(query);
  const terms=(plan?.terms||normalized(query).split(' ')).filter(x=>x.length>2);
  const identities=rows.filter(r=>r.type==='wikipedia'&&r.link&&(
@@ -159,7 +163,7 @@ async function books(root,topic,valid){
   }
   books.sort((a,b)=>(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999));
   if(!books.length){
-   info(section,L('No se recuperaron títulos atribuibles con seguridad a este autor en Open Library. Podés consultar el catálogo externo.',
+   info(section,L('No se recuperaron títulos atribuibles con seguridad a este autor en Open Library. Puedes consultar el catálogo externo.',
     'No titles reliably attributable to this author were recovered in Open Library. Check the external catalogue.',
     'Aucun titre attribuable avec certitude à cet auteur dans Open Library. Consultez le catalogue externe.'));
   }else{
@@ -179,7 +183,7 @@ async function books(root,topic,valid){
     const recordCard=card(stack,book.title,url,bookDescription(book),cover,metadata);
     if(books.indexOf(book)<10)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
    }
-   if(books.length>50)info(section,L('Se presentan 50 registros; consultá el catálogo para continuar.','Showing 50 records; continue in the catalogue.','50 notices affichées ; poursuivre dans le catalogue.'));
+   if(books.length>50)info(section,L('Se presentan 50 registros; consulta el catálogo para continuar.','Showing 50 records; continue in the catalogue.','50 notices affichées ; poursuivre dans le catalogue.'));
   }
   section.append(link(L('Buscar más obras del autor en Open Library ↗','Search more works in Open Library ↗','Chercher d’autres œuvres dans Open Library ↗'),
    'https://openlibrary.org/search?'+new URLSearchParams({author:topic.name})));
@@ -250,7 +254,7 @@ async function literaryEditions(root,topic,valid){
   const work=matches[0];
   if(!work){
    section.replaceChildren(el('p','context-note',L(
-    'No se recuperaron ediciones con el título exacto en este catálogo. Consultá los registros externos.',
+    'No se recuperaron ediciones con el título exacto en este catálogo. Consulta los registros externos.',
     'No editions with a matching title were retrieved from this catalogue. Check external records.',
     'Aucune édition correspondant exactement au titre n’a été récupérée. Consultez les notices externes.')));
   }else{
@@ -272,7 +276,7 @@ async function literaryEditions(root,topic,valid){
     if(seen.has(key))continue;seen.add(key);
     const publicRecord='https://openlibrary.org'+item.key;
     const cover=bookCoverFromEdition(item);
-    const annotation=L('Edición registrada en un catálogo bibliográfico. Consultá la ficha para verificar traductor, editorial y disponibilidad.','Edition recorded in a bibliographic catalogue. Consult the record for translator, publisher and availability.','Édition inscrite dans un catalogue bibliographique. Consultez la notice pour traducteur, éditeur et disponibilité.');
+    const annotation=L('Edición registrada en un catálogo bibliográfico. Consulta la ficha para verificar traductor, editorial y disponibilidad.','Edition recorded in a bibliographic catalogue. Consult the record for translator, publisher and availability.','Édition inscrite dans un catalogue bibliographique. Consultez la notice pour traducteur, éditeur et disponibilité.');
     card(stack,editionName,publicRecord,annotation,cover,[date,publisher,'Open Library'].filter(Boolean).join(' · '));
     shown++;if(shown>=50)break;
    }

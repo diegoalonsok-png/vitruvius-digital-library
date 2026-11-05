@@ -36,12 +36,12 @@ const localUrl=/^(?:[a-z0-9/_-]+\.html(?:\?[^#]*)?(?:#[a-z0-9=&_-]+)?|documents\
 function anchor(text,url){const a=node("a",null,text);if(!url)return null;const external=/^https:\/\//i.test(url);
  if(!external&&!localUrl.test(url))return null;a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a}
 const I18N={
- es:{lead:"Vitruvia es un buscador universal con orientación académica. Podés investigar cualquier persona, obra, lugar o tema; combina enciclopedias, fuentes institucionales, bibliografía, documentos e imágenes con procedencia identificable.",placeholder:"Preguntá sobre cualquier tema, obra, autor o concepto…",submit:"Buscar",modes:["◎ Todo","Biblioteca","Wikipedia","Internet y academia","⌁ Conceptos"],explain:["Buscá en la biblioteca, Wikipedia y fuentes de Internet verificables, sin salir de Vitruvia cuando existe una API pública.","Consultá libros, manuscritos, pasajes en latín y traducciones de la Biblioteca Vitruviana.","Resultados de Wikipedia en el idioma elegido y en inglés como referencia complementaria.","Buscá en catálogos, museos, Wikidata y registros académicos. Para la web general ofrecemos enlaces de búsqueda directa.","Relacioná términos, sinónimos y lenguas en los documentos internos; no se afirma utilizar IA generativa."],heading:"Resultados documentados",idle:"Consultá la biblioteca y las enciclopedias",waiting:"Consultando fuentes verificables…",none:"No se obtuvieron resultados comprobados; podés usar las búsquedas institucionales directas.",book:"LIBRO DEL CATÁLOGO",edition:"EDICIÓN HISTÓRICA",preface:"PREFACIO · DE ARCHITECTURA",passage:"TEXTO · LOCUS",section:"DOCUMENTO DEL SITIO",wikipedia:"ENCICLOPEDIA · WIKIPEDIA",wikidata:"DATOS · WIKIDATA",openlibrary:"CATÁLOGO · OPEN LIBRARY",museum:"ARTE · THE MET",article:"ARTÍCULO CIENTÍFICO",googlebook:"LIBRO · GOOGLE BOOKS",read:"Leer en la biblioteca",document:"Abrir documento",source:"Consultar fuente",pdf:"Leer PDF",unpublished:"Ficha en preparación · lector no disponible",synthesis:"Síntesis de resultados documentados",detail:"Selección de fragmentos recuperados; verificá las afirmaciones en cada fuente. No es una respuesta generativa de IA.",external:"Búsquedas adicionales en fuentes reconocidas",searching:"La búsqueda continúa en fuentes externas…"},
+ es:{lead:"Vitruvia es un buscador universal con orientación académica. Puedes investigar cualquier persona, obra, lugar o tema; combina enciclopedias, fuentes institucionales, bibliografía, documentos e imágenes con procedencia identificable.",placeholder:"Pregunta sobre cualquier tema, obra, autor o concepto…",submit:"Buscar",modes:["◎ Todo","Biblioteca","Wikipedia","Internet y academia","⌁ Conceptos"],explain:["Busca en la biblioteca, Wikipedia y fuentes de Internet verificables, sin salir de Vitruvia cuando existe una API pública.","Consulta libros, manuscritos, pasajes en latín y traducciones de la Biblioteca Vitruviana.","Resultados de Wikipedia en el idioma elegido y en inglés como referencia complementaria.","Busca en catálogos, museos, Wikidata y registros académicos. Para la web general ofrecemos enlaces de búsqueda directa.","Relacioná términos, sinónimos y lenguas en los documentos internos; no se afirma utilizar IA generativa."],heading:"Resultados documentados",idle:"Consulta la biblioteca y las enciclopedias",waiting:"Consultando fuentes verificables…",none:"No se obtuvieron resultados comprobados; puedes usar las búsquedas institucionales directas.",book:"LIBRO DEL CATÁLOGO",edition:"EDICIÓN HISTÓRICA",preface:"PREFACIO · DE ARCHITECTURA",passage:"TEXTO · LOCUS",section:"DOCUMENTO DEL SITIO",wikipedia:"ENCICLOPEDIA · WIKIPEDIA",wikidata:"DATOS · WIKIDATA",openlibrary:"CATÁLOGO · OPEN LIBRARY",museum:"ARTE · THE MET",article:"ARTÍCULO CIENTÍFICO",googlebook:"LIBRO · GOOGLE BOOKS",read:"Leer en la biblioteca",document:"Abrir documento",source:"Consultar fuente",pdf:"Leer PDF",unpublished:"Ficha en preparación · lector no disponible",synthesis:"Síntesis de resultados documentados",detail:"Selección de fragmentos recuperados; verifica las afirmaciones en cada fuente. No es una respuesta generativa de IA.",external:"Búsquedas adicionales en fuentes reconocidas",searching:"La búsqueda continúa en fuentes externas…"},
  en:{lead:"Vitruvia is a universal search tool with an academic focus. Explore people, books, places and any topic through encyclopedias, institutional sources, scholarly records, documents and source-linked images.",placeholder:"Search any topic, author, book or concept…",submit:"Search",modes:["◎ All","Library","Wikipedia","Web & research","⌁ Concepts"],explain:["Search this library, Wikipedia and verifiable web sources in one place when public APIs allow it.","Search books, manuscripts, Latin passages and translations in this library.","Search Wikipedia in your selected language, plus English results when useful.","Explore open catalogs, museum records, Wikidata and scholarly sources; use direct links for the wider web.","Explore related terms and languages in local documents; this is not generative AI."],heading:"Documented results",idle:"Explore library and encyclopedias",waiting:"Searching verifiable sources…",none:"No confirmed results; use the direct institutional searches.",book:"CATALOG BOOK",edition:"HISTORICAL EDITION",preface:"PREFACE · DE ARCHITECTURA",passage:"TEXT · LOCUS",section:"SITE DOCUMENT",wikipedia:"ENCYCLOPEDIA · WIKIPEDIA",wikidata:"DATA · WIKIDATA",openlibrary:"CATALOG · OPEN LIBRARY",museum:"ART · THE MET",article:"RESEARCH ARTICLE",googlebook:"BOOK · GOOGLE BOOKS",read:"Read in library",document:"Open document",source:"View original",pdf:"Read PDF",unpublished:"Catalog entry pending · no reader",synthesis:"Source-based synthesis",detail:"Selected excerpts from retrieved documents; verify claims at the source. Not generative AI.",external:"Additional reputable sources",searching:"External sources are still loading…"},
  fr:{lead:"Vitruvia est un moteur de recherche universel à vocation académique. Explorez les personnes, œuvres, lieux et sujets grâce aux encyclopédies, institutions, références scientifiques, documents et images sourcées.",placeholder:"Chercher n’importe quel sujet, auteur ou ouvrage…",submit:"Rechercher",modes:["◎ Tout","Bibliothèque","Wikipédia","Web et recherche","⌁ Concepts"],explain:["Rechercher dans cette bibliothèque, Wikipédia et les sources web vérifiables disposant d’API ouvertes.","Explorer les livres, manuscrits, passages latins et traductions de la bibliothèque.","Consulter Wikipédia dans la langue choisie et, en complément, en anglais.","Explorer les catalogues ouverts, musées, Wikidata et références scientifiques ; liens directs pour le web général.","Relier les termes et synonymes des documents internes ; ce service n’est pas une IA générative."],heading:"Résultats documentés",idle:"Explorer les fonds",waiting:"Interrogation des sources vérifiables…",none:"Aucun résultat confirmé ; utiliser les recherches institutionnelles directes.",book:"LIVRE DU CATALOGUE",edition:"ÉDITION HISTORIQUE",preface:"PRÉFACE · DE ARCHITECTURA",passage:"TEXTE · LOCUS",section:"DOCUMENT DU SITE",wikipedia:"ENCYCLOPÉDIE · WIKIPÉDIA",wikidata:"DONNÉES · WIKIDATA",openlibrary:"CATALOGUE · OPEN LIBRARY",museum:"ART · THE MET",article:"ARTICLE SCIENTIFIQUE",googlebook:"LIVRE · GOOGLE BOOKS",read:"Lire dans la bibliothèque",document:"Ouvrir document",source:"Voir la source",pdf:"Lire PDF",unpublished:"Notice en attente · pas de lecteur",synthesis:"Synthèse sourcée",detail:"Extraits récupérés ; vérifier les sources. Ce n'est pas une IA générative.",external:"Autres références de qualité",searching:"Interrogation des sources externes en cours…"}
 };
 const UI_TEXT={"es":{"navLibrary":"Biblioteca Vitruviana","navAuthors":"Autores y libros","navCodices":"Códices","navMethod":"Método académico","otherAI":"CONSULTAR OTRAS IA","explore":"Explorar","universities":"UNIVERSIDADES","research":"INVESTIGACIÓN","academicHint":"Cada botón busca el término escrito arriba dentro del dominio académico seleccionado.","metricWorks":"fichas de obras","metricPages":"secciones documentadas","metricImages":"imágenes del Codex H","metricRead":"lecturas disponibles","headingIdle":"Consultar la biblioteca","print":"Imprimir / PDF","email":"Correo","copy":"Copiar enlace","sourcesMethod":"Fuentes y método","sidebarIntro":"Los resultados internos enlazan a documentos del repositorio y distinguen los títulos disponibles de las fichas pendientes. Los resultados externos se abren en sus instituciones de origen.","sideGraeco":"Biblioteca griega y latina ↗","sideReader":"Lector latino y traducciones ↗","sideCodex":"Galería Codex H ↗","sideBib":"Bibliografía académica ↗","sidePhilology":"Criterio filológico ↗","sidebarCaveat":"No se inventan traducciones. La búsqueda conceptual utiliza relaciones temáticas y recuperación textual; no es un chatbot generativo. El contenido de los PDF escaneados sin OCR sigue requiriendo lectura de facsímiles.","footerDesc":"Biblioteca digital abierta para las ciencias, las artes y las humanidades. Búsqueda documental con fuentes identificadas.","footerAuthors":"Autores y obras clásicas","footerCodices":"Índice de códices","footerBib":"Bibliografía","footerCite":"Cómo citar","footerLegal":"© 2026 Diego A. Kurilo · Todos los derechos reservados sobre los contenidos originales y el diseño editorial. Las fuentes externas conservan sus propias licencias.","footerMain":"Biblioteca principal"},"en":{"navLibrary":"Vitruvian Library","navAuthors":"Authors and books","navCodices":"Codices","navMethod":"Scholarly methodology","otherAI":"OTHER AI SERVICES","explore":"Explore","universities":"UNIVERSITIES","research":"RESEARCH","academicHint":"Each button searches the selected academic domain for your query.","metricWorks":"work records","metricPages":"documented sections","metricImages":"Codex H images","metricRead":"readable works","headingIdle":"Explore the library","print":"Print / PDF","email":"Email","copy":"Copy link","sourcesMethod":"Sources and method","sidebarIntro":"Local results link to repository documents, distinguishing available texts from pending records. External results open on the source institution's site.","sideGraeco":"Greek and Latin library ↗","sideReader":"Latin reader and translations ↗","sideCodex":"Codex H gallery ↗","sideBib":"Scholarly bibliography ↗","sidePhilology":"Philological criteria ↗","sidebarCaveat":"No translations are invented. Conceptual search uses related terms and text retrieval; it is not a generative chatbot. Scanned PDFs without OCR still require reading facsimiles.","footerDesc":"Open digital library for science, arts and humanities. Documentary research with identified sources.","footerAuthors":"Classical authors and works","footerCodices":"Codex index","footerBib":"Bibliography","footerCite":"How to cite","footerLegal":"© 2026 Diego A. Kurilo · All rights reserved for original content and editorial design. External sources retain their own licenses.","footerMain":"Main library"},"fr":{"navLibrary":"Bibliothèque vitruvienne","navAuthors":"Auteurs et livres","navCodices":"Codex","navMethod":"Méthode académique","otherAI":"AUTRES IA","explore":"Explorer","universities":"UNIVERSITÉS","research":"RECHERCHE","academicHint":"Chaque bouton recherche dans le domaine académique sélectionné.","metricWorks":"notices d’œuvres","metricPages":"sections documentées","metricImages":"images du Codex H","metricRead":"œuvres consultables","headingIdle":"Consulter la bibliothèque","print":"Imprimer / PDF","email":"Courriel","copy":"Copier le lien","sourcesMethod":"Sources et méthode","sidebarIntro":"Les résultats locaux renvoient aux documents du dépôt et distinguent les textes accessibles des notices en attente. Les résultats externes s’ouvrent sur le site de leur institution.","sideGraeco":"Bibliothèque grecque et latine ↗","sideReader":"Lecteur latin et traductions ↗","sideCodex":"Galerie Codex H ↗","sideBib":"Bibliographie académique ↗","sidePhilology":"Critères philologiques ↗","sidebarCaveat":"Aucune traduction n’est inventée. La recherche conceptuelle relie des termes et retrouve des textes ; ce n’est pas un agent génératif. Les PDF numérisés sans OCR nécessitent la lecture des fac-similés.","footerDesc":"Bibliothèque numérique ouverte pour les sciences, les arts et les humanités. Recherche documentaire avec sources identifiées.","footerAuthors":"Auteurs et œuvres classiques","footerCodices":"Index des codex","footerBib":"Bibliographie","footerCite":"Comment citer","footerLegal":"© 2026 Diego A. Kurilo · Tous droits réservés sur les contenus originaux et la conception éditoriale. Les sources externes conservent leurs licences.","footerMain":"Bibliothèque principale"}};
-const RESULT_TEXT={"es":{"encyclopedia":"Enciclopedia, biografía y contexto","semantic":"IA semántica · fragmentos documentales","universities":"Universidades y centros de investigación","manuscripts":"Códices conservados · orden por antigüedad","fragments":"Papiros y fragmentos antiguos","editions":"Ediciones y traducciones · orden cronológico","scholars":"Investigadores y estudios fundamentales","library":"Obras y pasajes de la Biblioteca Vitruviana","external-texts":"Textos digitalizados · Wikisource","research":"Investigación, bibliografía y catálogos externos","matching":"coincidencias","visible":"visibles","sourceNote":"Los enlaces de búsqueda externa no son resultados verificados ni textos recuperados íntegramente."},"en":{"encyclopedia":"Encyclopedia, biography and context","semantic":"Semantic AI · documentary passages","universities":"Universities and research centers","manuscripts":"Surviving codices · earliest indexed first","fragments":"Ancient papyri and fragments","editions":"Editions and translations · chronological","scholars":"Scholars and key studies","library":"Works and passages in the Vitruvian Library","external-texts":"Digitized texts · Wikisource","research":"Research, bibliography and external catalogues","matching":"matches","visible":"shown","sourceNote":"External search links are not verified results or fully retrieved texts."},"fr":{"encyclopedia":"Encyclopédie, biographies et contexte","semantic":"IA sémantique · extraits documentés","universities":"Universités et centres de recherche","manuscripts":"Codex conservés · par ancienneté","fragments":"Papyrus et fragments anciens","editions":"Éditions et traductions · chronologie","scholars":"Chercheurs et études fondamentales","library":"Œuvres et passages de la Bibliothèque vitruvienne","external-texts":"Textes numérisés · Wikisource","research":"Recherche, bibliographie et catalogues externes","matching":"résultats","visible":"affichés","sourceNote":"Les liens de recherche externe ne sont pas des résultats vérifiés ou des textes intégraux."}};
+const RESULT_TEXT={"es":{"encyclopedia":"Enciclopedia, biografía y contexto","semantic":"IA semántica · fragmentos documentales","universities":"Universidades y centros de investigación","manuscripts":"Códices conservados · orden por antigüedad","apparatus":"Aparato crítico · ediciones de Diego Kurilo (V514 · V554 · V297)","fragments":"Papiros y fragmentos antiguos","editions":"Ediciones y traducciones · orden cronológico","scholars":"Investigadores y estudios fundamentales","library":"Obras y pasajes de la Biblioteca Vitruviana","external-texts":"Textos digitalizados · Wikisource","research":"Investigación, bibliografía y catálogos externos","matching":"coincidencias","visible":"visibles","sourceNote":"Los enlaces de búsqueda externa no son resultados verificados ni textos recuperados íntegramente."},"en":{"encyclopedia":"Encyclopedia, biography and context","semantic":"Semantic AI · documentary passages","universities":"Universities and research centers","manuscripts":"Surviving codices · earliest indexed first","apparatus":"Critical apparatus · Diego Kurilo editions (V514 · V554 · V297)","fragments":"Ancient papyri and fragments","editions":"Editions and translations · chronological","scholars":"Scholars and key studies","library":"Works and passages in the Vitruvian Library","external-texts":"Digitized texts · Wikisource","research":"Research, bibliography and external catalogues","matching":"matches","visible":"shown","sourceNote":"External search links are not verified results or fully retrieved texts."},"fr":{"encyclopedia":"Encyclopédie, biographies et contexte","semantic":"IA sémantique · extraits documentés","universities":"Universités et centres de recherche","manuscripts":"Codex conservés · par ancienneté","apparatus":"Apparat critique · éditions de Diego Kurilo (V514 · V554 · V297)","fragments":"Papyrus et fragments anciens","editions":"Éditions et traductions · chronologie","scholars":"Chercheurs et études fondamentales","library":"Œuvres et passages de la Bibliothèque vitruvienne","external-texts":"Textes numérisés · Wikisource","research":"Recherche, bibliographie et catalogues externes","matching":"résultats","visible":"affichés","sourceNote":"Les liens de recherche externe ne sont pas des résultats vérifiés ou des textes intégraux."}};
 const WELCOME_I18N={
  es:{
   kicker:"UNA HERRAMIENTA DE INVESTIGACIÓN ABIERTA",
@@ -49,15 +49,15 @@ const WELCOME_I18N={
   intro:"Vitruvia es el instrumento de búsqueda de Vitruvius Digital Library, un proyecto editorial independiente dedicado a estudiar, consultar y relacionar textos clásicos, tratados de arquitectura, manuscritos históricos y bibliografía especializada.",
   purpose:"Nació para ir más allá de encontrar palabras: vincular autores y obras con sus testimonios manuscritos, sus ediciones históricas, los pasajes originales y las traducciones disponibles, siempre que se puedan identificar sus fuentes.",
   methodTitle:"¿Cómo consultar?",
-  methodBody:"Buscá un autor, una obra, una palabra latina o griega, un lugar, un manuscrito o una pregunta. Las referencias locales y los registros de instituciones externas se distinguen; un enlace de catálogo no implica que se haya leído el texto completo.",
+  methodBody:"Busca un autor, una obra, una palabra latina o griega, un lugar, un manuscrito o una pregunta. Las referencias locales y los registros de instituciones externas se distinguen; un enlace de catálogo no implica que se haya leído el texto completo.",
   scope:"La búsqueda en IA es experimental y depende de los documentos realmente indexados. Los facsímiles sin texto reconocible no ofrecen todavía búsqueda íntegra.",
   readingTitle:"Textos originales y traducciones",
-  readingText:"Leé y cotejá pasajes del De architectura en latín y en las versiones editoriales disponibles, con referencias a libro y capítulo.",
+  readingText:"Lee y coteja pasajes del De architectura en latín y en las versiones editoriales disponibles, con referencias a libro y capítulo.",
   codexTitle:"Manuscritos y códices",
-  codexText:"Explorá testimonios conservados, signaturas y vínculos a bibliotecas custodias y visores digitales acreditados.",
+  codexText:"Explora testimonios conservados, signaturas y vínculos a bibliotecas custodias y visores digitales acreditados.",
   booksTitle:"Autores, obras y bibliografía",
-  booksText:"Accedé al repertorio de obras griegas y latinas, ediciones históricas y recursos de consulta vinculados.",
-  tryTitle:"Empezá por una consulta:"
+  booksText:"Accede al repertorio de obras griegas y latinas, ediciones históricas y recursos de consulta vinculados.",
+  tryTitle:"Empieza por una consulta:"
  },
  en:{
   kicker:"AN OPEN RESEARCH INSTRUMENT",
@@ -358,21 +358,23 @@ function liveBooks(q,concept){return S.works.map(w=>{
  if(!originalReadings.length&&w.reading?.url)addOriginal(w.reading.url,"external","Edición original · fuente identificada");
  return {type:"book",workId:w.id,originalReadings,originalLanguage:w.language,originalEditionStatus:w.publicStatus,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
-  rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
+  baseRating:rating,rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
   links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
   citationText:w.bibliography?.editionCitation||"",
   localHosted:!!(w.localReader?.verified||w.localHtml||w.localVersions?.length||pdf||localWitness)};
- }).filter(x=>x.rating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)}
+ }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
- const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-reading-cta-v4","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-authors-witnesses-v3","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
+ const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
  const books=results[0].status==="fulfilled"?results[0].value:{works:[]},pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
  S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.historical=results[4]?.status==="fulfilled"&&Array.isArray(results[4].value)?results[4].value.filter(x=>x.category==="historical"):[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.academicRecords=results[5]?.status==="fulfilled"?(results[5].value.records||[]):[];
  S.currentAuthorities=results[5]?.status==="fulfilled"?(results[5].value.currentAuthorities||[]):[];S.ready=true;
+ (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),...S.witnesses.map(w=>w.title),...(S.people||[]).flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
+  "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"]);
  $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;$("metric-read").textContent=S.works.filter(verified).length;
  const mw=$("metric-witnesses"),me=$("metric-editions");
  if(mw)mw.textContent=S.witnesses.length;if(me)me.textContent=S.editions.length;
@@ -462,6 +464,28 @@ async function crossref(generalQuery){
    meta:"Crossref · DOI verificado en el registro · acceso al texto según editor",rating:26-i+culturalWeight(x.title[0],x["container-title"]?.[0]||""),
    link:"https://doi.org/"+encodeURIComponent(x.DOI),source:"Crossref",year:date[0]||null,publisher:x.publisher||"",journal:x["container-title"]?.[0]||"",volume:x.volume||"",issue:x.issue||"",pages:x.page||"",doi:x.DOI,recordKind:x.type||"journal-article"};
  })
+}
+/* OpenAlex: índice abierto de obras académicas (CORS abierto, sin clave). */
+async function openAlex(generalQuery){
+ const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,type,open_access,cited_by_count"});
+ const d=await fetchJSON("https://api.openalex.org/works?"+params,12000);
+ return (d.results||[]).filter(x=>x.title).map((x,i)=>{
+  const author=(x.authorships||[]).slice(0,2).map(a=>a.author?.display_name).filter(Boolean).join(", ");
+  const venue=x.primary_location?.source?.display_name||"";
+  const oa=x.open_access?.is_oa?" · acceso abierto":"";
+  return {type:"article",title:x.title,author,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
+   meta:"OpenAlex · índice académico abierto"+(x.doi?" · DOI":""),rating:24-i+culturalWeight(x.title,venue),
+   link:x.doi||x.open_access?.oa_url||x.id,source:"OpenAlex",year:x.publication_year||null,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
+ });
+}
+/* Getty AAT: término normalizado del tesauro de arte y arquitectura (SPARQL público). */
+async function gettyAat(generalQuery){
+ const term=String(generalQuery||"").trim().replace(/["\\]/g,"");if(!term||term.split(/\s+/).length>4)return[];
+ const sparql=`select ?s ?label ?scope where { ?s a skos:Concept; skos:inScheme aat: ; luc:term "${term}"; gvp:prefLabelGVP/xl:literalForm ?label . optional { ?s skos:scopeNote/rdf:value ?scope . filter(lang(?scope)="en") } } limit 5`;
+ const d=await fetchJSON("https://vocab.getty.edu/sparql.json?"+new URLSearchParams({query:sparql}),9000);
+ return (d.results?.bindings||[]).map((b,i)=>({type:"topic",title:b.label?.value||term,author:"Getty Art & Architecture Thesaurus",
+  excerpt:(b.scope?.value||"Término normalizado del tesauro AAT.").slice(0,320),meta:"GETTY AAT · VOCABULARIO CONTROLADO (ODC-By)",rating:40-i,
+  link:b.s?.value||"https://www.getty.edu/research/tools/vocabularies/aat/",source:"Getty AAT"}));
 }
 async function europePmc(generalQuery){
  const params=new URLSearchParams({query:generalQuery,format:"json",pageSize:"6",resultType:"core"});
@@ -588,7 +612,7 @@ function markTerms(root,query){
 function renderCard(d){
  const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")+(d.historicalEdition?" historical-edition-card":"")),head=node("div","result-head"),title=node("div");
  if(d.primaryWitness){card.setAttribute("aria-label","Testimonio manuscrito destacado: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
- const kindLabels={authority:"FUENTE OFICIAL · AUTORIDAD ACTUAL",fragment:"PAPIRO · TESTIMONIO FRAGMENTARIO",university:"UNIVERSIDAD · INVESTIGACIÓN",scholar:"INVESTIGADOR · ESTUDIOS ESPECIALIZADOS"};
+ const kindLabels={manuscript:"CÓDICE · TESTIMONIO MANUSCRITO",apparatus:"APARATO CRÍTICO · EDICIONES DE DIEGO KURILO",authority:"FUENTE OFICIAL · AUTORIDAD ACTUAL",fragment:"PAPIRO · TESTIMONIO FRAGMENTARIO",university:"UNIVERSIDAD · INVESTIGACIÓN",scholar:"INVESTIGADOR · ESTUDIOS ESPECIALIZADOS"};
  title.append(node("span","kind",T()[d.type]||kindLabels[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
@@ -706,6 +730,13 @@ function display(rows,query,phase){
   if(seen.has(k))continue;
   seen.add(k);deduped.push(r);
  }
+ // Homónimos: si la consulta quedó identificada con una entidad (Wikidata), los artículos enciclopédicos
+ // de otra acepción no se mezclan en la lista (siguen disponibles en «¿Buscabas otra acepción?»).
+ try{const ce=window.VitruviaCurrentEntity,nq=norm(query);
+  if(ce&&[ce.query,ce.corrected,ce.label].some(x=>x&&norm(x)===nq)){const lab=norm(ce.label);
+   for(let i=deduped.length-1;i>=0;i--){const r=deduped[i];if(!["wikipedia","wikidata"].includes(r.type))continue;
+    const t=norm(r.title||""),ex=norm(r.excerpt||"");if(t===lab||t.startsWith(lab+" ")||t.includes(lab)&&ex.includes(norm(ce.description||"").split(" ")[0]||"\u0000"))continue;
+    if(!t.includes(lab)||/desambiguaci|disambiguation/.test(t+" "+ex))deduped.splice(i,1)}}}catch{}
  const list=$("result-list");list.replaceChildren();
  const selectedManuscript=["all","site","concept","ai"].includes(S.mode)?primaryManuscriptFor(query):null;
  if(selectedManuscript){
@@ -732,14 +763,25 @@ function display(rows,query,phase){
   encyclopediaTypes.has(r.type)?"encyclopedia":
   r.type==="university"?"universities":
   r.type==="manuscript"?"manuscripts":
+  r.type==="apparatus"?"apparatus":
   r.type==="fragment"?"fragments":
   r.type==="scholar"?"scholars":
   r.type==="edition"?"editions":
   textExternalTypes.has(r.type)?"external-texts":
   libraryTypes.has(r.type)?"library":"research";
  const groupOrder=S.mode==="ai"?
-  ["encyclopedia","semantic","universities","manuscripts","fragments","editions","scholars","library","external-texts","research"]:
-  ["encyclopedia","universities","manuscripts","fragments","editions","scholars","library","external-texts","research"];
+  ["encyclopedia","semantic","universities","manuscripts","apparatus","fragments","editions","scholars","library","external-texts","research"]:
+  ["encyclopedia","universities","manuscripts","apparatus","fragments","editions","scholars","library","external-texts","research"];
+ // Consulta sin intención codicológica (concepto, autor, lugar): los pasajes, obras y el
+ // aparato preceden a los códices. Con signatura, sigla o folio, los códices van primero.
+ const codexIntent=(()=>{try{const CQ=window.CodexQuery,cq=CQ&&CQ.parse(query);
+  if(cq&&(cq.folios.length||cq.range||cq.image))return true;
+  if(window.VitruviaResearchEngine?.classify(query)?.codex)return true;
+  return /\b(?:ms|mss|cod|codd|vat|pal|harl(?:ey)?|gud|voss|plut|lat\.|gr\.|grec|latin)\b|\b\d{2,4}\s*[rv]?\b/i.test(query)&&deduped.some(r=>r.type==="manuscript"&&norm(r.title).includes(norm(query).split(/\s+/).find(t=>t.length>2)||"\u0000"))}catch{return false}})();
+ // Con un locus explícito (Vitr. 3.1.1, III.1.1), el texto del pasaje precede a su aparato.
+ const locusIntent=(()=>{try{return !!window.CodexQuery?.locus?.(query)}catch{return false}})();
+ if(locusIntent){const a=groupOrder.indexOf("apparatus"),l=groupOrder.indexOf("library");if(a>=0&&l>a){groupOrder.splice(a,1);groupOrder.splice(groupOrder.indexOf("library")+1,0,"apparatus")}}
+ if(!codexIntent){const i=groupOrder.indexOf("manuscripts");if(i>=0){groupOrder.splice(i,1);groupOrder.splice(groupOrder.indexOf("library")+1,0,"manuscripts")}}
  const grouped=new Map(groupOrder.map(g=>[g,[]]));
  for(const r of deduped){
   const group=byGroup(r);
@@ -748,23 +790,57 @@ function display(rows,query,phase){
  }
  // Para códices, primero el testimonio más antiguo INDEXADO; para ediciones,
  // año ascendente (no se confunde una edición impresa con un manuscrito).
+ const msExact=r=>{const t=norm([r.title,r.codexShelfmark].join(" ")),q=norm(query);return q.length>2&&(t.includes(q)||norm(r.codexShelfmark||"")===q)?1:0};
  grouped.get("manuscripts")?.sort((a,b)=>
+  msExact(b)-msExact(a)||
   Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||
   (a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating);
  grouped.get("editions")?.sort((a,b)=>
   (a.editionYear??9999)-(b.editionYear??9999)||b.rating-a.rating);
- const ordered=(S.mode==="all"||S.mode==="ai")?
-  [...grouped.values()].flat():deduped;
+ // «Todo»: dos bloques fijos. Primero lo que está en la Biblioteca Vitruviana
+ // (enlace interno o visor local), después la web académica; cada grupo conserva
+ // su orden propio dentro de su bloque.
+ const blockOf=r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
+  (r.localViewer||(r.link&&!/^https?:\/\//i.test(r.link)))?"site":"web";
+ const siteFirst=S.mode==="all";
+ const ordered=siteFirst?
+  [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
+  S.mode==="ai"?[...grouped.values()].flat():deduped;
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
- if(!ordered.length)list.append(node("div","empty",T().none));
+ if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
+  st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
+  document.head.append(st)}
+ // Facetas: filtrar la lista por tipo de fuente sin perder el orden académico.
+ const facetGroups=[...grouped].filter(([,a])=>a.length);
+ if(S.facet&&!facetGroups.some(([g])=>g===S.facet))S.facet="";
+ if(facetGroups.length>1){
+  const bar=node("div","result-facets");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label",S.lang==="en"?"Filter by source type":S.lang==="fr"?"Filtrer par type de source":"Filtrar por tipo de fuente");
+  const short=t=>String(t||"").split(" · ")[0];
+  const mk=(g,label,n)=>{const b=node("button","result-facet"+(S.facet===g?" active":""),label+" · "+n);b.type="button";b.setAttribute("aria-pressed",String(S.facet===g));
+   b.addEventListener("click",()=>{S.facet=g;display(rows,query,phase)});bar.append(b)};
+  mk("",S.lang==="en"?"All":S.lang==="fr"?"Tout":"Todo",ordered.length);
+  for(const [g,a] of facetGroups)mk(g,short(titles[g]||g),a.length);
+  list.append(bar);
+ }
+ const shown=S.facet?ordered.filter(r=>byGroup(r)===S.facet):ordered;
+ if(!shown.length)list.append(node("div","empty",T().none));
  else {
-  let lastGroup="";
-  for(const r of ordered.slice(0,S.visibleResultCount)){
+  let lastGroup="",lastBlock="";
+  for(const r of shown.slice(0,S.visibleResultCount)){
    // The source-first manuscript card has already been displayed above the
    // encyclopedia: do not duplicate the same shelfmark in the regular list.
    if(selectedManuscript&&r.type==="manuscript"&&
      r.codexShelfmark===selectedManuscript.shelfmark&&
      r.codexRepository===selectedManuscript.library)continue;
+   if(siteFirst){
+    const block=blockOf(r);
+    if(block!==lastBlock){
+     const label=block==="site"?
+      (S.lang==="en"?"In the Vitruvian Library · Vitruvius and classical texts":S.lang==="fr"?"Dans la Bibliothèque vitruvienne · Vitruve et textes classiques":"En la Biblioteca Vitruviana · Vitruvio y textos clásicos"):
+      (S.lang==="en"?"On the academic web":S.lang==="fr"?"Sur le web académique":"En la web académica");
+     const h=node("h2","vitruvia-result-group",label);h.setAttribute("data-result-block",block);h.style.cssText="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;border-bottom:1px solid #C9A84C;padding-bottom:8px;margin-top:28px";list.append(h);lastBlock=block;lastGroup="";
+    }
+   }
    if(S.mode==="all"||S.mode==="ai"){
     const group=byGroup(r);
     if(group!==lastGroup){
@@ -775,6 +851,37 @@ function display(rows,query,phase){
   
    const card=renderCard(r);markTerms(card,query);list.append(card)
   }
+ }
+ // Consulta que nombra un códice con visor local (p. ej. «Codex H», «Harley 2767»):
+ // abrir una vez el mismo lector de folios, con sus comandos; se cierra con × o Esc.
+ if(window.VitruviaLocalManuscripts&&S.autoCodexOpened!==query){
+  const normText=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  // Consulta codicológica: «Harley MS 2767, f. 12r», «H f. 45v», «Codex H ff. 12r–14v», «London, BL, Harl. 2767, fol. 3r».
+  const CQ=window.CodexQuery,cq=CQ?CQ.parse(query):null,hasFolio=!!(cq&&(cq.range||cq.folios.length||cq.image));
+  const folioParam=!hasFolio?"":cq.range?"ff. "+cq.range.from+"-"+cq.range.to:cq.image?"imagen "+cq.image:cq.folios.length===1?CQ.display(cq.folios[0]):"f. "+parseInt(cq.folios[0]);
+  const withFolio=(url)=>{if(!folioParam||!url)return url;try{const u=new URL(url,location.href);u.searchParams.delete("image");u.searchParams.set("folio",folioParam);return u.pathname.split("/").pop()+u.search}catch(e){return url}};
+  const residual=hasFolio?cq.rest:query;
+  const qTokens=normText(residual).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  const exactTokens=r=>{const hay=normText([r.title,r.codexShelfmark,...(r.aliases||[])].join(" ")).split(/[^\p{L}\p{N}]+/u);
+   return qTokens.length&&qTokens.every(t=>hay.some(h=>h===t||t.length>2&&h.startsWith(t)))};
+  let codex=deduped.find(r=>r.type==="manuscript"&&(r.localViewer||hasFolio&&r.codexViewer)&&exactTokens(r));
+  if(!codex&&hasFolio&&CQ&&residual){
+   // Signatura académica con abreviaturas institucionales (BL, HAB, BAV, Harl., Gud. lat.).
+   let best=null,bestScore=0;
+   for(const r of deduped.filter(x=>x.type==="manuscript"&&(x.localViewer||x.codexViewer))){
+    const sc=CQ.shelfmarkScore(residual,[r.title,r.codexShelfmark,r.codexRepository,...(r.aliases||[])].join(" "));if(sc>bestScore){best=r;bestScore=sc}}
+   if(best&&bestScore>=.75)codex=best;
+   if(!codex){ // el testimonio puede no figurar entre los resultados mostrados: se consulta el fichero de testimonios
+    for(const ms of S.witnesses||[]){if(!ms.localViewer&&!ms.manifest)continue;
+     const hay=[ms.title,ms.shelfmark,ms.library,ms.siglum,...(ms.aliases||[])].join(" ");
+     const sc=Math.max(CQ.shelfmarkScore(residual,hay),exactTokens({title:hay})?1:0);
+     if(sc>bestScore){bestScore=sc;best={title:ms.title+" · "+ms.shelfmark,localViewer:ms.localViewer||null,
+      codexViewer:ms.localViewer||"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record}).toString()}}}
+    if(best&&bestScore>=.75)codex=best;
+   }
+  }
+  if(codex){S.autoCodexOpened=query;const url=withFolio(codex.localViewer||codex.codexViewer);
+   setTimeout(()=>window.VitruviaLocalManuscripts.open(url,codex.title+(folioParam?" · "+folioParam:"")),350)}
  }
  if(deduped.length>S.visibleResultCount){
   const left=deduped.length-S.visibleResultCount;
@@ -801,14 +908,24 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  ["Google Books","https://books.google.com/books?"+new URLSearchParams({q:query})],
  ["Wikipedia en español","https://es.wikipedia.org/w/index.php?"+new URLSearchParams({search:query})],
  ["Wikipedia in English","https://en.wikipedia.org/w/index.php?"+new URLSearchParams({search:query})],
- ["Open Library","https://openlibrary.org/search?"+new URLSearchParams({q:query})]
+ ["Open Library","https://openlibrary.org/search?"+new URLSearchParams({q:query})],
+ ["Zenon · DAI (arqueología y Antigüedad)","https://zenon.dainst.org/Search/Results?"+new URLSearchParams({lookfor:query,type:"AllFields"})],
+ ["Persée","https://www.persee.fr/search?"+new URLSearchParams({ta:"article",q:query})],
+ ["Dialnet","https://dialnet.unirioja.es/buscar/documentos?"+new URLSearchParams({querysDismax:query})],
+ ["Pleiades · lugares antiguos","https://pleiades.stoa.org/search?"+new URLSearchParams({SearchableText:query})],
+ ["Getty AAT · tesauro de arquitectura","https://www.getty.edu/vow/AATServlet?"+new URLSearchParams({english:"N",find:query,logic:"AND",page:"1",note:""})],
+ ["OpenAlex","https://openalex.org/works?"+new URLSearchParams({search:query})],
+ ["L'Année philologique (suscripción)","https://about.brepolis.net/aph-lannee-philologique/"]
  ];
  const h=node("h3",null,T().external);parent.append(h);
  for(const [label,url] of links){const a=makeLink(label+" ↗",url);if(a)parent.append(a)}
  const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
 async function search(){
- const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;if(!q)return;
+ let q=$("query").value.trim();const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
+ if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexicon=S.lexicon||await fetch("data/latin-lexicon.json").then(r=>r.json()).then(d=>d.entries||[]);
+  const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
  const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));
@@ -896,6 +1013,36 @@ async function search(){
   })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal){
+  pending.push(fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
+   const f=x=>norm(String(x||"")).replace(/j/g,"i").replace(/v/g,"u"),q=f(generalQuery).trim();
+   const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[])].some(y=>f(y)===q));
+   return {name:"Ficha de término",rows:e?[{type:"section",title:"Ficha del término «"+e.lemma+"» en Vitruvio",author:[e.es,e.fr,e.en].filter(Boolean).join(" · "),
+    excerpt:"Definición de Vitruvio con las traducciones V514 · V554 · V297, todas las apariciones por prefacio y capítulo con su folio en el Codex H, aparato crítico, láminas y estudios.",
+    meta:"FICHA DE TÉRMINO · BIBLIOTECA VITRUVIANA",rating:3200,link:"termino.html?t="+encodeURIComponent(e.lemma),source:"Biblioteca Vitruviana"}]:[]}}).catch(()=>({name:"Léxico no disponible",rows:[]})));
+ }
+ if(internal){
+  pending.push(fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
+   const f=x=>norm(String(x||"")),q=f(generalQuery),toks=q.split(/\s+/).filter(t=>t.length>3),loc=intent?.locus||null;
+   const rows=(d.entries||[]).map(e=>{const hay=f([e.title,e.author,e.work,e.edition,e.plate,e.folio,e.witness,e.relation].join(" "));
+    let r=0;if(loc&&e.locus&&(e.locus===loc||e.locus.startsWith(loc.split(".").slice(0,2).join(".")+".")))r+=120;for(const t of toks)if(hay.includes(t))r+=30;
+    return {e,r}}).filter(x=>x.r>=30*Math.max(1,Math.ceil(toks.length/2))||x.r>=120).sort((a,b)=>b.r-a.r).slice(0,6).map(({e,r})=>({type:"section",
+     title:e.title+" · "+[e.folio,e.plate].filter(Boolean).join(" · "),author:[e.author,e.work].filter(Boolean).join(", "),
+     excerpt:[e.edition,e.witness,e.relation].filter(Boolean).join(" · "),meta:"LÁMINA HISTÓRICA · "+(e.rights||""),rating:60+r,
+     link:"iconografia-vitruviana.html#lamina-"+e.id,source:"Atlas iconográfico · láminas"}));
+   return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
+ }
+ if(internal&&window.ClassicsCorpusSearch){
+  pending.push(window.ClassicsCorpusSearch.search(generalQuery,{limit:6}).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
+ }
+ if(internal&&window.KuriloApparatus){
+  const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
+  pending.push(ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null}).then(hits=>({name:"Aparato crítico · ediciones Kurilo",
+   rows:(()=>{/* Un bloque por página impresa: los demás de la misma página se cuentan, no se repiten. */
+    const seen=new Map(),out=[];for(const e of hits){const k=e.page?e.edition+"#"+e.page:e.id;if(seen.has(k)){seen.get(k).more++;continue}const r=ap.toRow(e,generalQuery,S.lang);r.more=0;seen.set(k,r);out.push(r)}
+    for(const r of out)if(r.more){r.title=r.title.replace(/ \(\d+\)$/,"");r.meta+=" · "+(S.lang==="en"?r.more+" more block(s) on this page":S.lang==="fr"?r.more+" autre(s) bloc(s) sur cette page":r.more+(r.more===1?" bloque más en la misma página":" bloques más en la misma página"))}
+    return out})()})).catch(e=>({name:"Aparato crítico no disponible",rows:[],warnings:[String(e.message||e)]})));
+ }
+ if(internal){
   if(engine)pending.push(engine.query(q,{concept,language:S.lang}).then(value=>({name:intent?.preface?"Prefacios y prólogos de Vitruvio":"Loci, léxico y códices",rows:value.rows||[],warnings:value.warnings||[]})).catch(e=>({name:"Índice documental no disponible",rows:[],warnings:[e.message]})));
   else pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
  }
@@ -911,6 +1058,8 @@ async function search(){
   pending.push(museum(q).then(rows=>({name:"The Met",rows})).catch(e=>({name:"The Met sin respuesta: "+e.message,rows:[]})));
   pending.push(crossref(q).then(rows=>({name:"Crossref",rows})).catch(e=>({name:"Crossref sin respuesta: "+e.message,rows:[]})));
   pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
+  pending.push(openAlex(q).then(rows=>({name:"OpenAlex",rows})).catch(e=>({name:"OpenAlex sin respuesta: "+e.message,rows:[]})));
+  pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
  }
  if(!pending.length){display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
@@ -994,7 +1143,8 @@ function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
    No solicita credenciales ni simula búsquedas remotas. */
 function setupAutocomplete(){
  const input=$("query"),menu=$("search-suggestions");if(!input||!menu)return;
- let index=-1,options=[];
+ let index=-1,options=[],remote={entities:[],completions:[]},remoteFor="",timer=0,serial=0,previewId="";
+ const U=()=>window.VitruviaUnderstand;
  const canonical=[
   ["Codex H · Harley MS 2767","Codex H",["harleianus","harlesianus","harley","codex h","2767","harl"] , "Manuscrito"],
   ["Codex H · doble hoja","Codex H doble folio",["codex h","harleianus","doble hoja","doble folio"],"Lector"],
@@ -1007,59 +1157,92 @@ function setupAutocomplete(){
   ["Cicerón · De officiis","Cicerón De officiis",["ciceron","cicero","officiis"],"Libro"],
   ["Vitruvio · De architectura","Vitruvio",["vitruvio","vitruvius","de architectura"],"Tratado"]
  ];
- const hide=()=>{menu.hidden=true;input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
+ const hide=()=>{menu.hidden=true;menu.classList.remove("has-preview");input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
  const choose=v=>{input.value=v;hide();search()};
- function build(){
-  const q=norm(input.value);menu.replaceChildren();index=-1;options=[];
-  if(q.length<2){hide();return}
-  const suggestions=[];
-  const seen=new Set();
+ // Coincidencias del sitio, con tolerancia a errores de tipeo (distancia de edición sobre palabras).
+ function local(q){
+  const suggestions=[],seen=new Set();
   const add=(label,value,subtitle,rank)=>{const key=norm(value);if(seen.has(key))return;seen.add(key);suggestions.push({label,value,subtitle,rank})};
+  const near=(text)=>{const ws=norm(text).split(" ");return q.length>=4&&ws.some(w=>w.length>=4&&U()?.dist(w.slice(0,q.length+1),q)<=(q.length>=7?2:1))};
   for(const [label,value,aliases,type] of canonical){
    const norms=aliases.map(norm);
-   if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))
-    add(label,value,type,norm(label).startsWith(q)?120:75);
+   if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))add(label,value,type,norm(label).startsWith(q)?120:75);
+   else if(norms.some(a=>near(a)))add(label,value,type,40);
   }
   for(const w of S.works){
    const title=w.title||"",author=w.author||"",aliases=w.aliases||[];
    const joined=norm([title,author,...aliases].join(" "));
-   if(joined.includes(q)){
-    const alias=aliases.find(a=>norm(a).includes(q));
-    add(title,alias&&norm(title).indexOf(q)<0?alias:title,
-      author+" · "+(verified(w)?"lectura local":"ficha de obra"),65+(norm(title).startsWith(q)?18:0)+(alias?8:0));
-   }
+   if(joined.includes(q)){const alias=aliases.find(a=>norm(a).includes(q));
+    add(title,alias&&norm(title).indexOf(q)<0?alias:title,author+" · "+(verified(w)?"lectura local":"ficha de obra"),65+(norm(title).startsWith(q)?18:0)+(alias?8:0))}
+   else if(near(joined))add(title,title,author+" · "+(verified(w)?"lectura local":"ficha de obra"),30);
   }
-  for(const ms of S.witnesses){
-   if(norm([ms.title,ms.shelfmark,ms.library].join(" ")).includes(q))
-    add(ms.title+" · "+ms.shelfmark,ms.shelfmark,ms.library+" · manuscrito",100+(norm(ms.shelfmark).startsWith(q)?22:0));
-  }
-  for(const ed of S.editions){
-   if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))
-    add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
-  }
-  for(const p of S.pages){const title=p.title||"";
-   if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0));
-  }
-  suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label));
-  const h=node("div","search-suggestions-title",S.lang==="en"?"Works, manuscripts and editions":S.lang==="fr"?"Œuvres, manuscrits et éditions":"Libros, códices y ediciones históricas");
-  menu.append(h);
-  for(const [i,hit] of suggestions.slice(0,7).entries()){
-   const btn=node("button","search-suggestion");
-   btn.type="button";btn.id="search-suggestion-"+i;btn.role="option";btn.setAttribute("aria-selected","false");
-   btn.append(node("span",null,hit.label),node("small",null,hit.subtitle));
-   btn.addEventListener("pointerdown",e=>e.preventDefault());
-   btn.addEventListener("click",()=>choose(hit.value));
-   options.push(btn);menu.append(btn);
-  }
-  if(!options.length){hide();return}
-  menu.hidden=false;input.setAttribute("aria-expanded","true");
+  for(const ms of S.witnesses)if(norm([ms.title,ms.shelfmark,ms.library].join(" ")).includes(q))
+   add(ms.title+" · "+ms.shelfmark,ms.shelfmark,ms.library+" · manuscrito",100+(norm(ms.shelfmark).startsWith(q)?22:0));
+  for(const ed of S.editions)if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
+  for(const p of S.pages){const title=p.title||"";if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0))}
+  return suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label)).slice(0,5);
  }
- const paint=()=>{options.forEach((b,i)=>b.setAttribute("aria-selected",String(i===index)));if(index>=0){input.setAttribute("aria-activedescendant",options[index].id);options[index].scrollIntoView({block:"nearest"})}else input.removeAttribute("aria-activedescendant")};
- input.addEventListener("input",build);
- input.addEventListener("focus",()=>{if(input.value.trim().length>=2)build()});
+ const T3=(es,en,fr)=>S.lang==="en"?en:S.lang==="fr"?fr:es;
+ function option(cls,children,onPick,entity){
+  const btn=node("button","search-suggestion "+cls);btn.type="button";btn.id="search-suggestion-"+options.length;btn.setAttribute("role","option");btn.setAttribute("aria-selected","false");
+  btn.append(...children);btn.addEventListener("pointerdown",e=>e.preventDefault());btn.addEventListener("click",onPick);
+  if(entity){btn.dataset.entity=entity.id;btn.addEventListener("pointerenter",()=>preview(entity))}
+  options.push(btn);return btn;
+ }
+ function build(){
+  const raw=input.value.trim(),q=norm(raw);index=-1;options=[];menu.replaceChildren();
+  if(q.length<2){hide();return}
+  const list=node("div","search-suggestions-list");
+  const rem=remoteFor===raw?remote:{entities:[],completions:[]};
+  for(const e of rem.entities){
+   const row=option("is-entity",[node("span","sg-main",e.label),node("small",null,e.description)],()=>choose(e.label),e);
+   list.append(row);
+  }
+  for(const c of rem.completions){
+   const strong=node("span","sg-main");const low=c.toLowerCase(),pre=raw.toLowerCase();
+   if(low.startsWith(pre)){strong.append(c.slice(0,raw.length));strong.append(node("b",null,c.slice(raw.length)))}else strong.append(node("b",null,c));
+   list.append(option("is-completion",[node("span","sg-icon","⌕"),strong],()=>choose(c)));
+  }
+  const loc=local(q);
+  if(loc.length){list.append(node("div","search-suggestions-title",T3("En la biblioteca · libros, códices y ediciones","In the library · works, manuscripts and editions","Dans la bibliothèque · œuvres, manuscrits et éditions")));
+   for(const hit of loc)list.append(option("is-local",[node("span","sg-main",hit.label),node("small",null,hit.subtitle)],()=>choose(hit.value)))}
+  if(!options.length&&remoteFor!==raw){list.append(node("div","search-suggestions-title",T3("Buscando sugerencias…","Looking for suggestions…","Recherche de suggestions…")))}
+  else if(!options.length){hide();return}
+  const pv=node("aside","search-preview");pv.setAttribute("aria-live","polite");
+  menu.append(list,pv);
+  // El desplegable se abre justo debajo del campo de búsqueda, como en los buscadores generales.
+  const form=$("search-form");if(form&&menu.offsetParent!==null||form){menu.style.top=(form.offsetTop+form.offsetHeight+6)+"px"}
+  menu.hidden=false;input.setAttribute("aria-expanded","true");
+  if(rem.entities[0])preview(rem.entities[0]);else menu.classList.remove("has-preview");
+ }
+ // Ficha de vista previa (columna derecha del desplegable): descripción, fechas y resumen enciclopédico.
+ async function preview(e){
+  const pv=menu.querySelector(".search-preview");if(!pv||!U())return;previewId=e.id;menu.classList.add("has-preview");
+  pv.replaceChildren(node("h3",null,e.label),node("p","sp-desc",e.description||""));
+  const f=await U().facts(e.id,S.lang).catch(()=>null);if(previewId!==e.id||!f)return;
+  const yrs=[f.birth?.year,f.death?.year].filter(Boolean).join(" – ");
+  const where=[f.birthPlace?.label,f.deathPlace?.label].filter(Boolean).join(" · ");
+  if(yrs||where)pv.append(node("p","sp-dates",[yrs,where].filter(Boolean).join(" · ")));
+  const tags=[...f.occupations.slice(0,2),...f.movements.slice(0,2),...f.genres.slice(0,2)].map(x=>x.label);
+  if(tags.length)pv.append(node("p","sp-tags",tags.join(" · ")));
+  if(f.wiki){const sm=await U().summary(f.wiki,f.wikiLang).catch(()=>null);if(previewId!==e.id)return;
+   if(sm?.extract)pv.append(node("p","sp-extract",sm.extract.length>300?sm.extract.slice(0,300).replace(/\s\S*$/,"")+"…":sm.extract))}
+  const more=node("button","sp-more",T3("Ver más ›","See more ›","Voir plus ›"));more.type="button";
+  more.addEventListener("pointerdown",ev=>ev.preventDefault());more.addEventListener("click",()=>choose(e.label));pv.append(more);
+  pv.append(node("p","sp-source",T3("Fuente: Wikidata y Wikipedia","Source: Wikidata and Wikipedia","Source : Wikidata et Wikipédia")));
+ }
+ async function fetchRemote(){
+  const raw=input.value.trim(),me=++serial;if(raw.length<2||!U())return;
+  const r=await U().suggest(raw,S.lang).catch(()=>null);if(me!==serial||input.value.trim()!==raw)return;
+  remote=r||{entities:[],completions:[]};remoteFor=raw;if(document.activeElement===input)build();
+ }
+ const paint=()=>{options.forEach((b,i)=>b.setAttribute("aria-selected",String(i===index)));if(index>=0){input.setAttribute("aria-activedescendant",options[index].id);options[index].scrollIntoView({block:"nearest"});
+  const id=options[index].dataset.entity;if(id){const e=remote.entities.find(x=>x.id===id);if(e)preview(e)}}else input.removeAttribute("aria-activedescendant")};
+ input.addEventListener("input",()=>{build();clearTimeout(timer);timer=setTimeout(fetchRemote,230)});
+ input.addEventListener("focus",()=>{if(input.value.trim().length>=2){build();if(remoteFor!==input.value.trim())fetchRemote()}});
  input.addEventListener("keydown",e=>{
   if(menu.hidden)return;
-  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();index=(index+(e.key==="ArrowDown"?1:-1)+options.length)%options.length;paint()}
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){if(!options.length)return;e.preventDefault();index=(index+(e.key==="ArrowDown"?1:-1)+options.length)%options.length;paint()}
   else if(e.key==="Escape"){e.preventDefault();hide()}
   else if(e.key==="Enter"&&index>=0){e.preventDefault();options[index].click()}
  });

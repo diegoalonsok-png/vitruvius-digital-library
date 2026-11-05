@@ -47,7 +47,9 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 .h-zoom-controls input{width:170px}
 .h-zoom-controls button{background:#f9f3e8;border:1px solid #a8906d;color:#152b3f;padding:8px 13px;font-weight:650;min-height:42px;border-radius:3px}
 .h-zoom-controls output{display:inline-block;min-width:46px;font-variant-numeric:tabular-nums}
-</style></head><body><main>
+</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><meta name="description" content="Harleianus 2767 (H) — ← Scriptorium digital · British Library, ficha oficial"><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/harleianus.html">
+</head><body><main>
 
 <p><a href="scriptorium.html">← Scriptorium digital</a> · <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">British Library, ficha oficial</a></p>
 <p class="eyebrow">LECTIO · IMAGO · CODEX H</p><h1>Harleianus 2767 (H)</h1>
@@ -61,7 +63,7 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio leído: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Etiqueta IIIF: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">El folio se identifica mediante las etiquetas del manifiesto institucional.</p><p id="status" role="status">Consultando el manifiesto IIIF…</p>
 <section class="h-gallery" id="h-folios" aria-labelledby="h-gallery-title">
 <h2 id="h-gallery-title">Buscar por imagen · Galería visual del Codex H</h2>
-<p>Elegí la miniatura que querés leer: se abrirá debajo en este mismo lector, con lupa, zoom y filtros. Las imágenes siguen la secuencia digital IIIF de la British Library. <strong>El número de imagen no siempre coincide con el folio histórico.</strong></p>
+<p>Elige la miniatura que quieres leer: se abrirá debajo en este mismo lector, con lupa, zoom y filtros. Las imágenes siguen la secuencia digital IIIF de la British Library. <strong>El número de imagen no siempre coincide con el folio histórico.</strong></p>
 <div class="h-gallery-tools" role="search">
 <label>Buscar folio o número de imagen<input id="h-gallery-query" type="search" placeholder="f.1r · 16v · 150"></label>
 <button id="h-gallery-search" type="button">Buscar</button><button id="h-gallery-reset" type="button">Mostrar todas</button>
@@ -70,8 +72,8 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div id="h-folio-grid" aria-label="Seleccionar folio para leer en el visor inferior"></div>
 <button id="h-gallery-more" type="button" hidden>Mostrar más folios</button>
 </section>
-<p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usá <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplazate dentro del visor para examinar la escritura.</p>
+<p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usa <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplázate dentro del visor para examinar la escritura.</p>
 <div id="stage" tabindex="0" aria-label="Visor ampliable del Codex H: teclas más, menos y cero para zoom"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img id="magnified" alt=""></div>
 
 <p>Procedencia: British Library, <em>Harley MS 2767</em>. <a href="concordancia-folios.html" style="font-weight:650">Concordancia entre folios y loci</a> · <a id="source" href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">Ver original en el visor institucional</a>. Las condiciones de reutilización corresponden al proveedor institucional. Esta página no almacena ni redistribuye imágenes del códice.</p>
-</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261103-zoom-500"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script src="assets/theme.js?v=20261101-contrast-h-2" defer></script></body></html>
+</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261103-zoom-500"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script></body></html>

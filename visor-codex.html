@@ -20,7 +20,9 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
 .small{font-size:12px;color:var(--muted)}.hidden{display:none!important}
 @media(max-width:650px){main,header,footer{padding:13px 14px}.viewer-controls{gap:5px}button,.action{padding:9px}}
 </style><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
-<link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"></head>
+<link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/visor-codex.html">
+</head>
 <body>
 <header><a class="brand" href="vitruvia.html">Vitruvia.</a><nav><a href="vitruvia.html">Volver al buscador</a> · <a href="index-codicum.html">Índice de códices</a></nav></header>
 <main>
@@ -39,6 +41,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
   <span id="count" class="counter" aria-live="polite">— / —</span>
   <button id="next" disabled aria-label="Página siguiente">Siguiente →</button>
   <label for="folio-select">Ir a folio</label><select id="folio-select" aria-label="Elegir folio manuscrito" disabled></select>
+  <label for="folio-find">Buscar folio</label><input id="folio-find" type="search" placeholder="f. 45v · ff. 12r–14v · imagen 20" aria-label="Buscar por folio, intervalo, guarda o imagen digital" style="font:inherit;min-height:38px;padding:6px 9px;max-width:230px" disabled><span id="folio-find-note" role="status" style="font-size:.9em"></span>
   <label for="zoom">Ampliación</label>
   <input type="range" id="zoom" min="60" max="250" value="100" step="10" aria-label="Ampliación de imagen">
   <output for="zoom" id="zoom-label">100 %</output>
@@ -46,9 +49,10 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
  </div>
  <div id="viewport" tabindex="0" aria-label="Imagen del folio manuscrito"><p id="message" role="status">Cargando imágenes del repositorio…</p><img id="folio" alt="Folio del códice" class="hidden" loading="eager"></div>
  <p id="label" aria-live="polite"></p>
- <p class="small">Si el servidor IIIF no permite acceso desde GitHub Pages, usá el botón «Ver visor oficial». Este visor no almacena ni reivindica derechos sobre las imágenes institucionales.</p>
+ <p class="small">Si el servidor IIIF no permite acceso desde GitHub Pages, usa el botón «Ver visor oficial». Este visor no almacena ni reivindica derechos sobre las imágenes institucionales.</p>
 </main>
 <footer class="small">Vitruvius Digital Library · Visualización documental con referencias a instituciones custodias</footer>
+<script src="assets/codicological-query.js?v=20261105-cq-v1"></script>
 <script>
 (function(){
  "use strict";
@@ -96,7 +100,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
   img.onerror=function(){
    if(data.fallback&&validHttps(data.fallback)&&img.src!==data.fallback){img.src=data.fallback;return}
    img.classList.add("hidden");$("message").classList.remove("hidden");
-   $("message").textContent="La imagen no se puede cargar aquí. Abrí el visor de la institución.";
+   $("message").textContent="La imagen no se puede cargar aquí. Abre el visor de la institución.";
   };
   img.alt="Folio "+data.label;img.src=data.url;
   $("label").textContent=data.label;
@@ -113,7 +117,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
   else if(event.key==="ArrowLeft")show(pos-1);
  });
  async function load(){
-  if(!manifestURL){$("source").textContent="Este registro no contiene un manifiesto IIIF válido. Consultá la ficha de la institución.";return}
+  if(!manifestURL){$("source").textContent="Este registro no contiene un manifiesto IIIF válido. Consulta la ficha de la institución.";return}
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),16000);
   try{
    const response=await fetch(manifestURL,{signal:controller.signal,headers:{Accept:"application/json, application/ld+json"}});
@@ -127,14 +131,22 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
     pages.forEach((p,i)=>{const option=document.createElement("option");option.value=String(i);option.textContent=p.label;select.append(option)});
     select.disabled=false;select.addEventListener("change",()=>show(Number(select.value)));
     const normalize=s=>String(s||"").toLowerCase().replace(/(?:folio|fol\.|f\.)/g,"").replace(/[^a-z0-9]/g,"");
-    const wanted=normalize(params.get("folio"));
-    const initial=wanted?pages.findIndex(p=>normalize(p.label)===wanted):-1;
-    show(initial>=0?initial:0);
+    const CQ=window.CodexQuery,labels=pages.map(p=>p.label);
+    const find=text=>{if(!String(text||"").trim())return {hits:[],note:""};
+     if(CQ){const q=CQ.parse(text);
+      if(q.image&&q.image<=pages.length)return {hits:[q.image-1],note:"Imagen digital "+q.image+" = "+labels[q.image-1]};
+      if(q.range||q.folios.length){const hits=CQ.match(q,labels);return {hits,note:hits.length?q.display+" · "+hits.length+" imagen(es)":"Sin "+q.display+" en la foliación del manifiesto"}}}
+     const w=normalize(text),i=labels.findIndex(l=>normalize(l)===w);return {hits:i>=0?[i]:[],note:i>=0?"":"Sin coincidencias"}};
+    const box=$("folio-find"),note=$("folio-find-note");box.disabled=false;
+    box.addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();const r=find(box.value);note.textContent=r.note;if(r.hits.length)show(r.hits[0])});
+    const asked=params.get("folio")||params.get("q");const first=asked?find(asked):{hits:[]};
+    if(asked&&first.hits.length){box.value=asked;note.textContent=first.note}
+    show(first.hits.length?first.hits[0]:0);
    }
-   else $("message").textContent="El manifiesto no ofrece imágenes compatibles con este visor. Consultá el visor oficial.";
+   else $("message").textContent="El manifiesto no ofrece imágenes compatibles con este visor. Consulta el visor oficial.";
   }catch(e){
    $("source").textContent="No se pudo leer el manifiesto IIIF desde esta página ("+String(e.message||"error")+").";
-   $("message").textContent="El servidor institucional puede impedir la carga externa. Utilizá «Ver visor oficial».";
+   $("message").textContent="El servidor institucional puede impedir la carga externa. Utiliza «Ver visor oficial».";
   }finally{clearTimeout(timer)}
  }
  load();

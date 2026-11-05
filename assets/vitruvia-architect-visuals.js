@@ -10,7 +10,22 @@ const element=(tag,cl,txt)=>{const e=document.createElement(tag);if(cl)e.classNa
 const a=(label,href)=>{const x=element('a',null,label);x.href=href;x.target='_blank';x.rel='noopener noreferrer';return x};
 const cache=new Map();
 async function read(url){let p=cache.get(url);if(!p){p=(async()=>{const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),6500);try{const r=await fetch(url,{signal:ctl.signal,headers:{Accept:'application/json'}});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}finally{clearTimeout(timer)}})().catch(()=>null);cache.set(url,p)}return p}
+function commonsPlate(item,src,caption,cls){
+ const file=decodeURIComponent(src.split('/Special:FilePath/')[1]||'');
+ const page='https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file.replace(/ /g,'_'));
+ const fig=a('',page);fig.className=cls;
+ const image=element('img',cls==='architecture-work-photo-link'?'architecture-work-photo':'architecture-work-plan');
+ image.src=src+(src.includes('?')?'&':'?')+'width=520';image.alt=caption;image.loading='lazy';image.decoding='async';
+ image.addEventListener('error',()=>fig.remove());fig.append(image);
+ if(cls!=='architecture-work-photo-link'){const f=element('figure','architecture-plate');f.append(fig);f.append(element('figcaption',null,caption));return f}
+ return fig;
+}
 async function photo(item,work){
+ // Imagen declarada en Wikidata (P18) para esta misma obra: prioridad sobre la búsqueda por título.
+ if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.image||'')){
+  const fig=commonsPlate(item,work.image,localized('Foto documentada de ','Documentary photo of ','Photo documentaire de ')+work.title,'architecture-work-photo-link');
+  item.insertBefore(fig,item.querySelector('.architecture-work-content')||item.firstChild);return;
+ }
  const title=work.photoTitle||work.title;
  if(!title||!item.isConnected)return;
  const api='https://en.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:title,redirects:'1',prop:'pageimages',piprop:'thumbnail|name',pithumbsize:'480',pilicense:'free',format:'json',origin:'*'});
@@ -63,6 +78,9 @@ function enhance(item,work){
  while(item.firstChild)content.append(item.firstChild);
  item.append(content);
  if(work.description)content.append(element('p','architecture-work-review',work.description));
+ // Planta declarada en Wikidata (P3311) para esta obra: se muestra sin desplegar nada.
+ if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.plan||''))
+  content.append(commonsPlate(item,work.plan,localized('Planta · ','Plan · ','Plan · ')+work.title,'architecture-plan-link'));
  const details=element('details','architecture-work-drawings');
  const toggle=element('summary',null,localized('Plantas, cortes y fachadas','Plans, sections and elevations','Plans, coupes et façades'));
  details.append(toggle);

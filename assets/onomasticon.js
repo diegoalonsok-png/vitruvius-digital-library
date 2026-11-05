@@ -119,7 +119,7 @@ function referenceCard(p,term=""){
 function renderEntity(){
  const e=data.entities.find(x=>x.id===selectedId);
  const root=$("ov-detail");root.replaceChildren();
- if(!e){root.innerHTML='<div class="ov-content"><h2>'+html(query?'Resultados de «'+query+'»':'Personajes y lugares en Vitruvio')+'</h2><p>'+html(query?'No se ha identificado una ficha onomástica directa para este término. Consultá las coincidencias textuales en la sección inferior; no se atribuye automáticamente el término a una persona o lugar.':'Seleccioná una ficha del índice para consultar los pasajes, o escribí cualquier nombre en el buscador.')+'</p></div>';updateActions();return;}
+ if(!e){root.innerHTML='<div class="ov-content"><h2>'+html(query?'Resultados de «'+query+'»':'Personajes y lugares en Vitruvio')+'</h2><p>'+html(query?'No se ha identificado una ficha onomástica directa para este término. Consulta las coincidencias textuales en la sección inferior; no se atribuye automáticamente el término a una persona o lugar.':'Selecciona una ficha del índice para consultar los pasajes, o escribe cualquier nombre en el buscador.')+'</p></div>';updateActions();return;}
  const content=document.createElement("div");content.className="ov-content";
  const bio="<p class='ov-eyebrow'>"+(e.kind==="person"?T("historicalPerson"):T("historicalPlace"))+"</p>"
  +"<h2>"+html(e.name)+"</h2>"
@@ -159,7 +159,7 @@ function renderTextSearch(){
  for(const locus of associations.keys())if(book==="all"||locusBook(locus)===Number(book))matched.add(locus);
  const filtered=passages.filter(p=>matched.has(p.locus));
  $("ov-text-count").textContent=fmt(filtered.length)+" loci relacionados con «"+term+"»";
- if(!filtered.length){result.innerHTML='<p class="ov-empty">No se encontraron coincidencias en el corpus ni equivalencias de nombres. Probá otra variante o consultá el índice.</p>';updateActions();return;}
+ if(!filtered.length){result.innerHTML='<p class="ov-empty">No se encontraron coincidencias en el corpus ni equivalencias de nombres. Prueba otra variante o consulta el índice.</p>';updateActions();return;}
  if(names.length){
   const note=document.createElement("p");note.className="ov-source";
   note.textContent="Concordancia por nombre o variante: "+names.map(e=>e.name).join(", ")+". Las grafías griegas de referencia no son automáticamente lecturas griegas atestiguadas en V514 ni en el Codex H.";
@@ -202,7 +202,7 @@ function exportSummary(){
 }
 function updateActions(){
  const el=$("ov-current-result");if(!el)return;
- el.textContent=tab==="stats"?"Estadísticas V514":currentEntity()?"Ficha seleccionada: "+currentEntity().name:(query?"Búsqueda textual: "+query:"Seleccioná un resultado");
+ el.textContent=tab==="stats"?"Estadísticas V514":currentEntity()?"Ficha seleccionada: "+currentEntity().name:(query?"Búsqueda textual: "+query:"Selecciona un resultado");
  for(const id of ["ov-print-result","ov-email-result","ov-whatsapp-result"]){
   const button=$(id);if(button)button.disabled=tab!=="stats"&&!currentEntity()&&!query.trim();
  }
@@ -302,4 +302,4 @@ async function start(){
  $("ov-stat-book").addEventListener("change",event=>{statsBook=event.target.value;renderStats();});
  bindActions();if(view==="stats")switchTab("stats");updateActions();
 }
-start().catch(error=>{$("ov-loading").textContent="Error al cargar el repertorio: "+error.message;$("ov-detail").innerHTML="<div class='ov-content'><h2>No se pudo cargar el índice</h2><p>Comprobá los archivos de datos de GitHub Pages y recargá la página. La biblioteca principal sigue disponible.</p></div>";});
+start().catch(error=>{$("ov-loading").textContent="Error al cargar el repertorio: "+error.message;$("ov-detail").innerHTML="<div class='ov-content'><h2>No se pudo cargar el índice</h2><p>Comprueba los archivos de datos de GitHub Pages y recarga la página. La biblioteca principal sigue disponible.</p></div>";});

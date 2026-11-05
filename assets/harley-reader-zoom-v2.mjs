@@ -53,11 +53,11 @@ async function init(){
   try{canvases=await getManifest(url);$('page').max=String(canvases.length);status.textContent='Manifiesto IIIF cargado: '+canvases.length+' imágenes disponibles.';const image=Number(new URLSearchParams(location.search).get('image'));if(Number.isInteger(image)&&image>=1&&image<=canvases.length)$('page').value=String(image);openPage();return;}
   catch(e){failures.push(e.message)}
  }
- status.textContent='No se pudo recuperar el manifiesto IIIF desde este navegador ('+failures.join('; ')+'). Consultá el visor de la British Library mediante el enlace inferior.';
+ status.textContent='No se pudo recuperar el manifiesto IIIF desde este navegador ('+failures.join('; ')+'). Consulta el visor de la British Library mediante el enlace inferior.';
 }
 function canvasLabel(c){const v=c?.label;if(typeof v==='string')return v;if(v&&typeof v==='object')return Object.values(v).flat().join(' · ');return '';}
 function canonicalFolio(s){const text=String(s||'').toLowerCase().replace(/folio|fol\.|fol\s*|f\./g,'').replace(/[^0-9rv]/g,'');const m=text.match(/^(\d{1,3})([rv])$/);return m?Number(m[1])+m[2]:null;}
-function openFolio(){if(!canvases.length){status.textContent='El índice de folios todavía no está disponible.';return}const target=canonicalFolio($('folio-ref').value);if(!target){status.textContent='Escribí un folio con recto o verso; por ejemplo, f.1r o 16v.';return}const matches=[];for(let i=0;i<canvases.length;i++){const label=canvasLabel(canvases[i]);const m=label.match(/(?:^|[^a-z\d])(?:f(?:ol(?:io)?)?\.?\s*)?(\d{1,3})\s*([rv])(?:$|[^a-z\d])/i);if(m&&Number(m[1])+m[2].toLowerCase()===target)matches.push(i+1)}if(matches.length!==1){status.textContent=matches.length?'Folio '+target+' tiene varias imágenes posibles ('+matches.join(', ')+'); es necesario cotejarlas.':'El folio '+target+' no aparece identificado en las etiquetas IIIF.';return}$('page').value=String(matches[0]);openPage();}
+function openFolio(){if(!canvases.length){status.textContent='El índice de folios todavía no está disponible.';return}const target=canonicalFolio($('folio-ref').value);if(!target){status.textContent='Escribe un folio con recto o verso; por ejemplo, f.1r o 16v.';return}const matches=[];for(let i=0;i<canvases.length;i++){const label=canvasLabel(canvases[i]);const m=label.match(/(?:^|[^a-z\d])(?:f(?:ol(?:io)?)?\.?\s*)?(\d{1,3})\s*([rv])(?:$|[^a-z\d])/i);if(m&&Number(m[1])+m[2].toLowerCase()===target)matches.push(i+1)}if(matches.length!==1){status.textContent=matches.length?'Folio '+target+' tiene varias imágenes posibles ('+matches.join(', ')+'); es necesario cotejarlas.':'El folio '+target+' no aparece identificado en las etiquetas IIIF.';return}$('page').value=String(matches[0]);openPage();}
 $('go-folio')?.addEventListener('click',openFolio);
 $('folio-ref')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();openFolio()}});
 function openPage(){
@@ -69,8 +69,8 @@ function openPage(){
  stage.scrollTop=0;stage.scrollLeft=0;
  let attempt=0;
  status.textContent='Abriendo imagen '+p+' de '+canvases.length+' a alta resolución…';
- img.onload=()=>{if(id!==serial)return;mag.src=img.src;setFilters();status.textContent='Imagen '+p+' de '+canvases.length+' cargada ('+img.naturalWidth+' × '+img.naturalHeight+' píxeles). Usá +, − o el deslizador para ampliar.'};
- img.onerror=()=>{if(id!==serial)return;attempt++;if(attempt<urls.length){status.textContent='Probando otra resolución institucional…';img.src=urls[attempt];}else status.textContent='No se pudo cargar la imagen desde la British Library. Utilizá el visor institucional.'};
+ img.onload=()=>{if(id!==serial)return;mag.src=img.src;setFilters();status.textContent='Imagen '+p+' de '+canvases.length+' cargada ('+img.naturalWidth+' × '+img.naturalHeight+' píxeles). Usa +, − o el deslizador para ampliar.'};
+ img.onerror=()=>{if(id!==serial)return;attempt++;if(attempt<urls.length){status.textContent='Probando otra resolución institucional…';img.src=urls[attempt];}else status.textContent='No se pudo cargar la imagen desde la British Library. Utiliza el visor institucional.'};
  img.src=urls[0];
 }
 $('open').addEventListener('click',openPage);

@@ -1,0 +1,18 @@
+/* Columna derecha de Vitruvia: más ancha, legible y sin desplazamiento interno (se lee con la página). */
+@media (min-width:981px){
+ body.vitruvia-reading #vitruvia-article .article-grid{grid-template-columns:180px minmax(0,1fr) clamp(380px,31vw,540px)!important}
+ body.vitruvia-reading #vitruvia-article #vitruvia-context{position:static!important;max-height:none!important;overflow:visible!important;font-size:14px!important;line-height:1.65!important}
+}
+body.vitruvia-reading #vitruvia-context .context-note,body.vitruvia-reading #vitruvia-context .context-translation{font-size:13.5px!important;line-height:1.65!important}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item>a{font-size:14px!important}
+body.vitruvia-reading #vitruvia-context .context-biblio-meta{font-size:12.5px!important}
+body.vitruvia-reading #vitruvia-context .context-section-title{font-size:20px!important}
+.vu-card{font-size:14.5px!important}
+.vu-work{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.vu-work.no-cover{display:block}
+.vu-cover{width:64px;height:auto;min-height:40px;border-radius:3px;box-shadow:0 2px 8px #0006;background:#2a2a2c}
+@media (max-width:980px){body.vitruvia-reading #vitruvia-article #vitruvia-context{position:static!important;max-height:none!important;overflow:visible!important}}
+/* Fotos (P18) y plantas (P3311) de cada obra, tomadas del registro de Wikidata de esa misma obra. */
+body.vitruvia-reading #vitruvia-context .architecture-work-plan{display:block;width:100%;height:auto;max-height:420px;object-fit:contain;background:#f4f1ea;border-radius:4px}
+body.vitruvia-reading #vitruvia-context .architecture-work-photo{width:100%;height:auto;max-height:340px;object-fit:cover;border-radius:4px}
+body.vitruvia-reading #vitruvia-context .architecture-work-review{font-size:13.5px!important;line-height:1.6!important}

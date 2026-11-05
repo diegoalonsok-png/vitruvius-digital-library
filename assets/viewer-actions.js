@@ -60,14 +60,14 @@
       const response=await fetch(s.src,{mode:'cors'});if(!response.ok)throw Error('HTTP '+response.status);
       const blob=await response.blob();
       if(!blob.type.startsWith('image/'))throw Error('El servidor no entregó una imagen');
-      const src=URL.createObjectURL(blob),a=document.createElement('a');a.href=src;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(src),12000);feedback('Imagen guardada con referencia al ejemplar. Revisá las condiciones de reutilización.');
+      const src=URL.createObjectURL(blob),a=document.createElement('a');a.href=src;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(src),12000);feedback('Imagen guardada con referencia al ejemplar. Revisa las condiciones de reutilización.');
     }catch{
-      if(s.src.startsWith('blob:')){feedback('Esta imagen local no puede recuperarse; probá abrirla desde su origen.');return}
-      openExternal(s.src);feedback('El servidor institucional restringe la descarga directa. Se abrió la imagen original: usá «Guardar imagen como…» desde esa pestaña.');
+      if(s.src.startsWith('blob:')){feedback('Esta imagen local no puede recuperarse; prueba abrirla desde su origen.');return}
+      openExternal(s.src);feedback('El servidor institucional restringe la descarga directa. Se abrió la imagen original: usa «Guardar imagen como…» desde esa pestaña.');
     }
   });
   button('⎙','Imprimir',()=>{
-    if(!ready()){feedback('Primero abrí una imagen y esperá a que cargue.');return}
+    if(!ready()){feedback('Primero abre una imagen y espera a que cargue.');return}
     const s=state();
     let page=document.getElementById('vd-print-page');if(!page){page=document.createElement('div');page.id='vd-print-page';document.body.append(page)}
     page.replaceChildren();
@@ -80,7 +80,7 @@
     window.print();
   });
   button('✉','Correo',()=>{
-    if(!ready()){feedback('Primero cargá la imagen actual.');return}
+    if(!ready()){feedback('Primero carga la imagen actual.');return}
     const s=state();
     const subject='Vitruvio · '+s.caption;
     const body=s.caption+'\n'+s.url+'\n\nFuente: '+s.credit+'\nEl enlace abre esta imagen en el visor de la biblioteca. La fotografía no se adjunta automáticamente.';
@@ -88,7 +88,7 @@
     feedback('Se abrió el programa de correo con el enlace al folio; la imagen no se adjunta automáticamente.');
   });
   button('◉','WhatsApp',()=>{
-    if(!ready()){feedback('Primero cargá la imagen actual.');return}
+    if(!ready()){feedback('Primero carga la imagen actual.');return}
     const s=state(),message=s.caption+'\n'+s.url+'\nFuente: '+s.credit;
     openExternal('https://api.whatsapp.com/send?text='+encodeURIComponent(message));
     feedback('Se abrió WhatsApp con el enlace a la imagen actual.');

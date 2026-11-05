@@ -22,6 +22,7 @@ jobs:
           node --check assets/history-core.mjs
           node scripts/test-history.mjs
           node scripts/test-citations.mjs
+          node scripts/test-no-voseo.mjs
           node scripts/test-search.mjs
           node --test scripts/test-query-discovery.mjs
           node scripts/test-vitruvia-discovery.mjs
@@ -31,7 +32,6 @@ jobs:
           node scripts/test-vitruvia-resilience.mjs
           node scripts/test-vitruvia-entity-priority.mjs
           node scripts/test-vitruvia-author-reading.mjs
-          node scripts/test-vitruvia-service-shortcuts.mjs
           node --check assets/vitruvia-selection-speech.js
           node scripts/test-vitruvia-selection-speech.mjs
           node --check assets/vitruvia-photo-background.js

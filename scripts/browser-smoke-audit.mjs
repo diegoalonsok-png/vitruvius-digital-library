@@ -35,7 +35,7 @@ try{
   assert.match(await page.locator('#ces-counter').innerText(),/150\s*\/\s*390/,'Contador de lectura incorrecto');
   await page.close();
  });
- await test('Scriptorium C: contraste legible de cuadros y botones en claro y oscuro',async()=>{
+ await test('Scriptorium Caes.: contraste legible de cuadros y botones en claro y oscuro',async()=>{
   const page=await pageFor('cesariano-1521.html');
   await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:15000});
   for(const mode of ['light','dark']){
@@ -70,14 +70,14 @@ try{
   }
   await page.close();
  });
- await test('Portada: franja H S G C B a la vista en la primera pantalla',async()=>{
+ await test('Portada: franja H · Sulp. · Iuc. · Caes. · Barb. a la vista en la primera pantalla',async()=>{
    const page=await pageFor('index.html');
    await page.setViewportSize({width:1850,height:830});
    const bar=page.locator('.historic-top-access');
    assert(await bar.isVisible(),'La franja de facsimiles no aparece');
    const pos=await bar.boundingBox();
    assert(pos&&pos.y>=0&&pos.y+pos.height<=830,'La franja quedo fuera de primera pantalla');
-   for(const [name,href] of [['H','harleianus.html'],['S','sulpizio-1486.html'],['G','giocondo-1511.html'],['C','cesariano-1521.html'],['B','barbaro-1567.html']]){
+   for(const [name,href] of [['H','harleianus.html'],['Sulp.','sulpizio-1486.html'],['Iuc.','giocondo-1511.html'],['Caes.','cesariano-1521.html'],['Barb.','barbaro-1567.html']]){
      const link=bar.locator('a[href="'+href+'"]');
      assert.equal(await link.count(),1,'Falta boton '+name);
      assert(await link.isVisible(),'Boton oculto '+name);
@@ -104,7 +104,7 @@ try{
    assert.equal(await page.locator('.research-prints a').count(),0,'Aún figuran botones pequeños duplicados');
    await page.close();
  });
- await test('Scriptorium B y G: galería, navegación y modo oscuro',async()=>{
+ await test('Scriptorium Barb. y G: galería, navegación y modo oscuro',async()=>{
   for(const record of [
     {letter:'B',path:'barbaro-1567.html',total:522,prefix:'bar',first:173,last:214},
     {letter:'G',path:'giocondo-1511.html',total:254,prefix:'gio',first:73,last:97}
@@ -129,7 +129,7 @@ try{
     await page.close();
   }
  });
- await test('Scriptorium S: 205 imágenes locales, galería y búsqueda 27v',async()=>{
+ await test('Scriptorium Sulp.: 205 imágenes locales, galería y búsqueda 27v',async()=>{
    const page=await pageFor('sulpizio-1486.html');
    assert.match(await page.locator('h1').innerText(),/Sulpizio/);
    await page.locator('#su-grid button[data-page]').first().waitFor({state:'visible',timeout:20000});
@@ -161,13 +161,13 @@ try{
      await page.close();
    }
  });
- await test('Scriptorium C: botón directo y selector abren Cesariano',async()=>{
+ await test('Scriptorium Caes.: botón directo y selector abren Cesariano',async()=>{
   const page=await pageFor('scriptorium.html');
   assert.equal(await page.locator('a[href="cesariano-1521.html"]').count()>0,true,'No aparece botón C');
   assert.equal(await page.locator('#source option[value="print:cesariano-1521"]').count(),1,'No aparece Cesariano en el selector');
   await page.locator('#source').selectOption('print:cesariano-1521');
   await page.waitForURL(/cesariano-1521\.html/, {timeout:12000});
-  assert.match(await page.locator('h1').innerText(),/Scriptorium C/,'No aparece el título de Scriptorium C');
+  assert.match(await page.locator('h1').innerText(),/Scriptorium Caes./,'No aparece el título de Scriptorium Caes.');
   await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:18000});
   assert.equal(await page.locator('#ces-gallery-results [data-ces-image]').count(),24,'La galería C no muestra las primeras 24 imágenes');
   await page.close();
@@ -379,7 +379,7 @@ try{
    await page.close();
  });
 
- await test('Concordancia H: relaciones verificables, 1v sin inventar pasajes, búsqueda integral',async()=>{
+ await test('Concordancia H: relaciones verificables, 1v con el paso verificado a I.1, búsqueda integral',async()=>{
    const page=await pageFor('concordancia-folios.html');
    await page.waitForFunction(()=>document.querySelector('#f-latin')?.textContent.includes('1.praef.2'),{timeout:18000});
    assert.match(await page.locator('#f-latin-status').innerText(),/provisional/i,'Folio 1r no identificado como provisional');
@@ -387,8 +387,9 @@ try{
    assert(await page.locator('#f-open[href*="image=9"]').count()>0,'El enlace directo a H no lleva a imagen 9');
    await page.locator('#f-folio').selectOption('1v');
    assert.match(await page.locator('#f-evidence').innerText(),/imagen 10/,'Imagen del 1v distinta de 10');
-   assert.match(await page.locator('#f-latin').innerText(),/No hay transcripción ni pasaje/);
-   assert.match(await page.locator('#f-translation').innerText(),/Traducción no asignada/);
+   // f. 1v: paso del prefacio a I.1 verificado en la fotografía (rúbrica «De architectis instituendis»).
+   assert.match(await page.locator('#f-latin').innerText(),/1\.1\.1/);
+   assert.match(await page.locator('#f-evidence').innerText(),/verificado|rúbrica/i);
    await page.locator('#f-search').fill('9.praef.10');
    assert.match(await page.locator('#f-search-count').innerText(),/1 loci?/);
    await page.locator('#f-search-results button').first().click();

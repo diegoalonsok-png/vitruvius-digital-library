@@ -190,5 +190,27 @@ async function search(query){
   return {rows:fallback,mode:"bm25-fallback",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning:String(e.message||e)};
  }
 }
-window.VitruviaAI={search,model:MODEL,version:"1.0-hybrid-local"};
+/* Ordenación genérica por sentido para visores (p. ej. páginas de un PDF):
+ * BM25 sobre los textos recibidos + reordenamiento E5 de los mejores candidatos.
+ * docs: [{id,text,...}] · devuelve {mode:"neural"|"bm25-fallback",rows:[{doc,score,exact}]}. */
+async function rank(query,docs,{limit=30,candidates=40}={}){
+ const q=asString(query);if(!q||!Array.isArray(docs)||!docs.length)return {mode:"empty",rows:[]};
+ const prepared=docs.map(d=>{const tokens=terms(d.text);const tf=new Map();for(const t of tokens)tf.set(t,(tf.get(t)||0)+1);return {doc:d,tf,length:Math.max(1,tokens.length)}}).filter(x=>x.length>3);
+ const df=new Map();for(const x of prepared)for(const w of x.tf.keys())df.set(w,(df.get(w)||0)+1);
+ const avg=prepared.reduce((a,x)=>a+x.length,0)/Math.max(1,prepared.length),n=prepared.length,qt=[...new Set(terms(q))],exactQ=normalize(q);
+ const scored=prepared.map(x=>{let score=0;for(const t of qt){const f=x.tf.get(t)||0;if(!f)continue;const d=df.get(t)||0;score+=Math.log(1+(n-d+.5)/(d+.5))*(f*2.4)/(f+1.4*(1-.72+.72*x.length/avg))}
+  const exact=exactQ.length>4&&normalize(x.doc.text).includes(exactQ);if(exact)score+=75;return {doc:x.doc,score,exact}}).sort((a,b)=>b.score-a.score);
+ const pool=scored.filter(x=>x.score>0).slice(0,candidates);
+ const fill=scored.filter(x=>x.score<=0).slice(0,Math.max(0,Math.min(12,candidates-pool.length)));
+ const cand=[...pool,...fill];if(!cand.length)return {mode:"empty",rows:[]};
+ try{
+  const model=await getModel();
+  const vecs=await vectors(model,["query: "+q,...cand.map(x=>"passage: "+String(x.doc.text).slice(0,1100))]);const qv=vecs.shift();
+  const sem=cand.map((x,i)=>({...x,similarity:dot(qv,vecs[i])})).sort((a,b)=>b.similarity-a.similarity);
+  const lr=new Map(scored.map((x,i)=>[x.doc.id,i+1])),sr=new Map(sem.map((x,i)=>[x.doc.id,i+1]));
+  const rows=cand.map(x=>({...x,score:(1/(60+(lr.get(x.doc.id)||999))+1/(60+(sr.get(x.doc.id)||999))+(x.exact?.011:0))*16000})).sort((a,b)=>b.score-a.score).slice(0,limit);
+  notify("IA semántica activa en el visor.","success");return {mode:"neural",rows};
+ }catch(e){return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning:String(e.message||e)}}
+}
+window.VitruviaAI={search,rank,model:MODEL,version:"1.1-hybrid-local"};
 })();

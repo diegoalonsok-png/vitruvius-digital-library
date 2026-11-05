@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-folio-locus/1.0",
-  "updated": "2026-11-02",
+  "updated": "2026-11-05",
   "manuscript": {
     "siglum": "H",
     "name": "Harley MS 2767",
@@ -18,7 +18,11 @@
   },
   "status_labels": {
     "provisional": "Propuesta de correspondencia material por inspección; transcripción y límites sin verificar diplomáticamente.",
-    "not_verified": "El folio existe en el facsímil pero no hay aún mapeo textual cotejado."
+    "not_verified": "El folio existe en el facsímil pero no hay aún mapeo textual cotejado.",
+    "visual_rubric": "Límite de libro verificado visualmente en la fotografía del folio: rúbrica roja «Explicit / Incipit liber …» seguida del comienzo del prefacio.",
+    "catalogue": "Elemento descrito en el catálogo de la British Library (p. ej., diagrama), sin colación del texto.",
+    "estimated": "Posición estimada dentro del libro por proporción de texto entre dos límites verificados; orientativa, no material.",
+    "visual_text": "Comienzo de capítulo verificado leyendo el texto en la fotografía (fin del prefacio y primeras palabras del capítulo, sin rúbrica)."
   },
   "entries": [
     {
@@ -46,16 +50,514 @@
     {
       "folio": "1v",
       "image_number": 10,
-      "folio_status": "not_verified",
+      "folio_status": "visual_rubric",
       "alignment_source": null,
       "transcription_source": null,
-      "loci": [],
-      "notes": "Imagen digital siguiente del mismo manuscrito. No hay loci asignados hasta cotejo del facsímil. Aunque la edición continúa en 1.praef.2, no se presume el límite físico de este folio."
+      "loci": [
+        {
+          "locus": "1.praef.3",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del prefacio del libro I."
+        },
+        {
+          "locus": "1.1.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Comienzo del capítulo 1 del libro I: Rúbrica roja «De architectis instituendis» y «Architecti est scientia pluribus disciplinis…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro I, identificado en la fotografía local (imagen 10). Verificado 2026-11-05."
+    },
+    {
+      "folio": "16v",
+      "image_number": 40,
+      "folio_status": "catalogue",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "1.6",
+          "extent": "within",
+          "status": "catalogue",
+          "note": "Diagrama de los vientos en tinta parda (catálogo BL), correspondiente a la doctrina de los vientos de I.6."
+        }
+      ],
+      "notes": "Catálogo de la British Library: «Diagram of the winds in brown ink (f. 16v)»."
+    },
+    {
+      "folio": "18r",
+      "image_number": 43,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "1.7.2",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro I: rúbrica «Vitruvii liber I explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "2.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber II» y comienzo del prefacio: «Dinocrates architectus cogitationibus et sollertia fretus…»."
+        }
+      ],
+      "notes": "Límite entre los libros I y II identificado en la fotografía local (imagen 43). Verificado 2026-11-05."
+    },
+    {
+      "folio": "19r",
+      "image_number": 45,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "2.praef.5",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro II."
+        },
+        {
+          "locus": "2.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro II: «…ab his sum institutus exponam. Homines vetere more ut ferae in silvis et speluncis…» (parte inferior)"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro II, identificado en la fotografía local (imagen 45). Verificado 2026-11-05."
+    },
+    {
+      "folio": "36r",
+      "image_number": 79,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "2.10.3",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro II: rúbrica «Vitruvii liber II explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "3.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber III» y comienzo del prefacio: «Delphicus Apollo Socratem omnium sapientissimum…»."
+        }
+      ],
+      "notes": "Límite entre los libros II y III identificado en la fotografía local (imagen 79). Verificado 2026-11-05."
+    },
+    {
+      "folio": "37v",
+      "image_number": 82,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "3.praef.4",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro III."
+        },
+        {
+          "locus": "3.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro III: «…de deorum immortalium aedibus sacris dicam… Aedium compositio constat ex symmetria…» (mitad de la página)"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro III, identificado en la fotografía local (imagen 82). Verificado 2026-11-05."
+    },
+    {
+      "folio": "47r",
+      "image_number": 101,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "3.5.15",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro III: rúbrica «Vitruvii liber III explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "4.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber IV» y comienzo del prefacio: «Cum animadvertissem, imperator, plures…»."
+        }
+      ],
+      "notes": "Límite entre los libros III y IV identificado en la fotografía local (imagen 101). Verificado 2026-11-05."
+    },
+    {
+      "folio": "47v",
+      "image_number": 102,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "4.praef.2",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro IV."
+        },
+        {
+          "locus": "4.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro IV: «…de doricis corinthiisque… explicabo. Columnae corinthiae praeter capitula omnes symmetrias habent…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro IV, identificado en la fotografía local (imagen 102). Verificado 2026-11-05."
+    },
+    {
+      "folio": "58v",
+      "image_number": 124,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "4.9.1",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro IV: rúbrica «Vitruvii liber IV explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "5.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber V» y comienzo del prefacio: «Qui amplioribus voluminibus, imperator…»."
+        }
+      ],
+      "notes": "Límite entre los libros IV y V identificado en la fotografía local (imagen 124). Verificado 2026-11-05."
+    },
+    {
+      "folio": "60r",
+      "image_number": 127,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "5.praef.5",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro V."
+        },
+        {
+          "locus": "5.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro V: «hoc libro publicorum locorum expediam dispositiones… Graeci in quadrato amplissimis et duplicibus porticibus…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro V, identificado en la fotografía local (imagen 127). Verificado 2026-11-05."
+    },
+    {
+      "folio": "75v",
+      "image_number": 158,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "5.12.7",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro V: rúbrica «Vitruvii liber V explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "6.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber VI» y comienzo del prefacio: «Aristippus philosophus Socraticus…»."
+        }
+      ],
+      "notes": "Límite entre los libros V y VI identificado en la fotografía local (imagen 158). Verificado 2026-11-05."
+    },
+    {
+      "folio": "77v",
+      "image_number": 162,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "6.praef.7",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro VI."
+        },
+        {
+          "locus": "6.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro VI: «…commensus symmetriarum explicabo. Haec autem ita erunt recte disposita…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro VI, identificado en la fotografía local (imagen 162). Verificado 2026-11-05."
+    },
+    {
+      "folio": "90v",
+      "image_number": 188,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "6.8.10",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro VI: rúbrica «Vitruvii liber VI explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "7.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber VII» y comienzo del prefacio: «Maiores cum sapienter tum etiam utiliter…»."
+        }
+      ],
+      "notes": "Límite entre los libros VI y VII identificado en la fotografía local (imagen 188). Verificado 2026-11-05."
+    },
+    {
+      "folio": "94v",
+      "image_number": 196,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "7.praef.18",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro VII."
+        },
+        {
+          "locus": "7.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro VII: «…de expolitionibus… exponam. Primumque incipiam de ruderatione…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro VII, identificado en la fotografía local (imagen 196). Verificado 2026-11-05."
+    },
+    {
+      "folio": "107v",
+      "image_number": 222,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "7.14.3",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro VII: rúbrica «Vitruvii liber VII explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "8.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber VIII» y comienzo del prefacio: «De septem sapientibus Thales Milesius…»."
+        }
+      ],
+      "notes": "Límite entre los libros VII y VIII identificado en la fotografía local (imagen 222). Verificado 2026-11-05."
+    },
+    {
+      "folio": "108v",
+      "image_number": 224,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "8.praef.4",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro VIII."
+        },
+        {
+          "locus": "8.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro VIII: «…de inventionibus aquae… scribere. Est enim maxime necessaria et ad vitam et ad delectationes…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro VIII, identificado en la fotografía local (imagen 224). Verificado 2026-11-05."
+    },
+    {
+      "folio": "123r",
+      "image_number": 253,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "8.6.15",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro VIII: rúbrica «Vitruvii liber VIII explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "9.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber IX» y comienzo del prefacio: «Nobilibus athletis, qui Olympia, Isthmia…»."
+        }
+      ],
+      "notes": "Límite entre los libros VIII y IX identificado en la fotografía local (imagen 253). Verificado 2026-11-05."
+    },
+    {
+      "folio": "126v",
+      "image_number": 260,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "9.praef.18",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro IX."
+        },
+        {
+          "locus": "9.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro IX: «…de gnomonicis rationibus… explicabo. Ea autem sunt divina mente comparata…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro IX, identificado en la fotografía local (imagen 260). Verificado 2026-11-05."
+    },
+    {
+      "folio": "139v",
+      "image_number": 286,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "9.8.15",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro IX: rúbrica «Vitruvii liber IX explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "10.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber X» y comienzo del prefacio: «Nobili Graecorum et ampla civitate Ephesi…»."
+        }
+      ],
+      "notes": "Límite entre los libros IX y X identificado en la fotografía local (imagen 286). Verificado 2026-11-05."
+    },
+    {
+      "folio": "140v",
+      "image_number": 288,
+      "folio_status": "visual_text",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "10.praef.4",
+          "extent": "ends",
+          "status": "visual_text",
+          "note": "Fin del prefacio del libro X."
+        },
+        {
+          "locus": "10.1.1",
+          "extent": "starts",
+          "status": "visual_text",
+          "note": "Comienzo del capítulo 1 del libro X: «…machinationis praecepta explicare. Machina est continens e materia coniunctio…»"
+        }
+      ],
+      "notes": "Paso del prefacio al capítulo 1 del libro X, identificado en la fotografía local (imagen 288). Verificado 2026-11-05."
     }
   ],
   "future_work": [
     "Extender mapa mediante lectura del facsímil y colación, sin inferir foliación a partir de la numeración moderna.",
     "Anotar límites de línea y abreviaturas por cada cara; documentar responsables, fechas y nivel de certeza.",
     "Comprobar variantes frente a otras ramas de la tradición y separar con claridad cambios editoriales de lecturas materiales."
-  ]
+  ],
+  "books": [
+    {
+      "book": 1,
+      "start": "1r",
+      "end": "18r",
+      "status": "visual_rubric",
+      "chapter1": "1v"
+    },
+    {
+      "book": 2,
+      "start": "18r",
+      "end": "36r",
+      "status": "visual_rubric",
+      "chapter1": "19r"
+    },
+    {
+      "book": 3,
+      "start": "36r",
+      "end": "47r",
+      "status": "visual_rubric",
+      "chapter1": "37v"
+    },
+    {
+      "book": 4,
+      "start": "47r",
+      "end": "58v",
+      "status": "visual_rubric",
+      "chapter1": "47v"
+    },
+    {
+      "book": 5,
+      "start": "58v",
+      "end": "75v",
+      "status": "visual_rubric",
+      "chapter1": "60r"
+    },
+    {
+      "book": 6,
+      "start": "75v",
+      "end": "90v",
+      "status": "visual_rubric",
+      "chapter1": "77v"
+    },
+    {
+      "book": 7,
+      "start": "90v",
+      "end": "107v",
+      "status": "visual_rubric",
+      "chapter1": "94v"
+    },
+    {
+      "book": 8,
+      "start": "107v",
+      "end": "123r",
+      "status": "visual_rubric",
+      "chapter1": "108v"
+    },
+    {
+      "book": 9,
+      "start": "123r",
+      "end": "139v",
+      "status": "visual_rubric",
+      "chapter1": "126v"
+    },
+    {
+      "book": 10,
+      "start": "139v",
+      "end": "162v",
+      "status": "visual_rubric",
+      "chapter1": "140v"
+    }
+  ],
+  "books_note": "Cada libro empieza en el folio de su rúbrica «Incipit» y termina en el de la rúbrica «Explicit» siguiente (el mismo folio). Fin del tratado: f. 162v (catálogo BL: ff. 1r–162v). «chapter1»: folio donde termina el prefacio y empieza el capítulo 1 (verificado en la fotografía)."
 }

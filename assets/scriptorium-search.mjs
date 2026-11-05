@@ -39,7 +39,7 @@ const statusSelected = () => {
  const el=document.getElementById('script-selected-note'),source=selectedPDF(),src=sources.find(x=>x.id===selectedIndex());
  if(!el)return;
  if(document.getElementById('script-search-scope').value!=='selected'){el.textContent='Búsqueda comparada: todas las fuentes indexadas o la edición elegida en el filtro.';return;}
- el.textContent=src?'PDF elegido: '+src.label+'. Buscará únicamente en su texto indexado '+(src.kind==='ocr'?'(OCR página por página).':'(latín y traducción).'):'El documento seleccionado no dispone de índice de texto integrado: elegí Krohn, Rose, V514, V554 o V297, o buscá en todas las ediciones.';
+ el.textContent=src?'PDF elegido: '+src.label+'. Buscará únicamente en su texto indexado '+(src.kind==='ocr'?'(OCR página por página).':'(latín y traducción).'):'El documento seleccionado no dispone de índice de texto integrado: elige Krohn, Rose, V514, V554 o V297, o busca en todas las ediciones.';
 };
 document.getElementById('source')?.addEventListener('change',()=>{
  document.getElementById('script-search-scope').value='selected';
@@ -190,28 +190,48 @@ function render(){
     document.dispatchEvent(new CustomEvent('scriptorium:open-search-result',{detail:{source:r.source.pdf,page:r.page,term:r.term||'',locus:r.p?.locus||null}}));
     const step=document.getElementById('stage');if(step)setTimeout(()=>step.scrollIntoView({behavior:'smooth',block:'start'}),150);
    });
-   const note=document.createElement('small');note.textContent=r.kind==='ocr'?'Referencia por página OCR: cotejá la imagen.':'Página consignada por el índice del autor: cotejá la coincidencia en el PDF.';card.append(note);
+   const note=document.createElement('small');note.textContent=r.kind==='ocr'?'Referencia por página OCR: coteja la imagen.':'Página consignada por el índice del autor: coteja la coincidencia en el PDF.';card.append(note);
   }else{
    const p=document.createElement('small');p.textContent='No hay página PDF verificada para este resultado; no se inventa un salto de página.';card.append(p);
   }
   if(r.p){
    const a=document.createElement('a');a.href='lector-bilingue.html?locus='+encodeURIComponent(r.p.locus)+'&lang='+({recensio:'es','recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[r.id]||'es');a.textContent='Consultar locus con texto y traducción →';card.append(a);
+   if(/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(r.p.locus)){const h=document.createElement('a');h.href='codex-h-folios-local.html?locus='+encodeURIComponent(r.p.locus);h.textContent=' · Ver en el Codex H (folio verificado o estimado) →';h.title='Abre el folio de Harley MS 2767: comienzo de libro verificado o posición estimada, según el caso';card.append(h);}
   }
   out.append(card);
  }
- if(live.length>count){const last=document.createElement('p');last.textContent='Se muestran los primeros '+count+' resultados. Precisá el término o elegí una edición para acotar la búsqueda.';out.append(last);}
+ if(live.length>count){const last=document.createElement('p');last.textContent='Se muestran los primeros '+count+' resultados. Precisa el término o elige una edición para acotar la búsqueda.';out.append(last);}
 }
 let running=0;
 $('script-search-form').addEventListener('submit',async event=>{
  event.preventDefault();
  const serial=++running,q=$('script-query').value.trim(),scope=$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
- if(!q){status.textContent='Ingresá un locus, palabra o frase.';return;}
+ if(!q){status.textContent='Ingresa un locus, palabra o frase.';return;}
  live=[];$('script-search-results').replaceChildren();
  const locus=locusQuery(q);
  status.textContent='Consultando índices del tratado y OCR histórico…';
  const target=scope==='selected'?selectedIndex():scope;
- if(scope==='selected'&&!target){status.textContent='El PDF elegido no tiene un índice textual accesible. Elegí Krohn 1912, Rose 1899 o una de tus tres ediciones; Budé solo puede consultarse bibliográficamente por ahora.';return;}
+ if(scope==='selected'&&!target){status.textContent='El PDF elegido no tiene un índice textual accesible. Elige Krohn 1912, Rose 1899 o una de tus tres ediciones; Budé solo puede consultarse bibliográficamente por ahora.';return;}
  const chosen=sources.filter(src=>target==='all'||target===src.id);
+ if(mode==='semantic'&&!locus){
+  // Búsqueda por sentido con el motor compartido de Vitruvia sobre los mismos índices.
+  status.textContent='Buscando por sentido en los índices del tratado y el OCR… la primera vez el navegador descarga el modelo multilingüe (~120 MB); si no puede, se usa BM25.';
+  if(!window.VitruviaAI?.rank)await new Promise(r=>{const sc=document.createElement('script');sc.src='assets/vitruvia-ai.js?v=20261104-rank-v1';sc.onload=r;sc.onerror=r;document.head.append(sc);});
+  if(!window.VitruviaAI?.rank){status.textContent='El motor de búsqueda por sentido no está disponible; usa otra modalidad.';return;}
+  const docs=[],missingSrc=[];
+  await Promise.all(chosen.map(async src=>{try{const data=await load(src);
+   if(src.kind==='edition'){for(const p of data.passages||[]){const page=Number(p.pdf_pages?.translation||p.pdf_pages?.latin||0)||null;
+     docs.push({id:src.id+':'+p.locus,text:(p.latin||'')+' '+(p.translation||''),row:{kind:'edition',id:src.id,source:src,p,field:'translation',term:'',page,snippet:p.translation||p.latin,label:'De architectura '+p.locus}})}}
+   else{for(const p of (Array.isArray(data)?data:data.pages||[]))docs.push({id:src.id+':'+p.page,text:p.text||'',row:{kind:'ocr',id:src.id,source:src,term:'',page:Number(p.page),snippet:p.text,label:'Página OCR '+p.page}})}
+  }catch(e){missingSrc.push(src.label)}}));
+  const res=await window.VitruviaAI.rank(q,docs.filter(d=>d.text.length>40),{limit:40});
+  if(serial!==running)return;
+  const words=q.split(/\s+/).filter(w=>w.length>3);
+  live=res.rows.map(x=>{const r={...x.doc.row};const fs=fold(r.snippet||'');r.term=words.find(w=>fs.includes(fold(w)))||'';return r});
+  render();
+  status.textContent=live.length+' resultados · '+(res.mode==='neural'?'por sentido (IA E5 multilingüe) + texto':'búsqueda textual BM25 (el modelo de IA no se cargó)')+' · Fuente: '+(target==='all'?'todas las ediciones y OCR':chosen[0]?.label)+(missingSrc.length?' · Sin acceso al índice: '+missingSrc.join(', '):'');
+  return;
+ }
  const terms=locus?[q]:await expandTerms(q,mode);
  const reports=await Promise.all(chosen.filter(src=>!locus||src.kind==='edition').map(async src=>{
   try{

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "title": "Bibliotheca Graeca et Latina · Repertorium Antiquitatis",
   "scope": "Repertorio de obras griegas y latinas, de la Antigüedad arcaica a la tardía. Distingue la consulta local del descubrimiento externo, las traducciones y los testimonios manuscritos.",
   "method": "No equiparar ficha bibliográfica, transcripción original, edición, traducción, manuscrito o PDF. Las obras pendientes tienen enlaces de localización, no visores ficticios.",
@@ -175,7 +175,14 @@
         "On Duties",
         "De los oficios",
         "Officiis"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-oratore",
@@ -185,8 +192,8 @@
       "genre": "Retórica",
       "dating": "55 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -205,14 +212,21 @@
         "archive": "https://archive.org/search?query=De%20oratore%20Cicer%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20oratore"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Cicerón",
         "Cicero",
         "Del orador",
         "On the Orator"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-republica",
@@ -222,8 +236,8 @@
       "genre": "Filosofía política",
       "dating": "c. 54–51 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.5757/manifest.json",
@@ -246,8 +260,15 @@
         "archive": "https://archive.org/search?query=De%20re%20publica%20Cicer%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20publica"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "caesar-gallico",
@@ -277,7 +298,7 @@
         "editor": "Philip Smith · London: Simpkin"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -292,7 +313,15 @@
         "Caesar",
         "La guerra de las Galias",
         "Gallic War"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/caesar-gallico-la.json"
+      },
+      "localHtml": "classics-text-reader.html?work=caesar-gallico&lang=la",
+      "localEdition": {
+        "original": "Latín · ed. T. Rice Holmes (Oxford 1914)",
+        "source": "Texto latino editado de Perseus Digital Library (TEI, CC BY-SA 4.0), por libro y capítulo, incluido el libro VIII de Hircio. Búsqueda con resaltado y diccionario latino (Lewis & Short, lematización CLTK)."
+      }
     },
     {
       "id": "caesar-civili",
@@ -302,8 +331,8 @@
       "genre": "Historia militar",
       "dating": "c. 49–48 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/caesar",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -314,7 +343,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -322,7 +351,7 @@
         "archive": "https://archive.org/search?query=Commentarii%20de%20bello%20civili%20Julio%20C%C3%A9sar",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Commentarii%20de%20bello%20civili"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "César",
@@ -339,8 +368,8 @@
       "genre": "Historia",
       "dating": "c. 43–40 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -351,7 +380,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -359,7 +388,7 @@
         "archive": "https://archive.org/search?query=Bellum%20Catilinae%20Salustio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20Catilinae"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -370,8 +399,8 @@
       "genre": "Historia",
       "dating": "c. 41–40 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -382,7 +411,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -390,7 +419,7 @@
         "archive": "https://archive.org/search?query=Bellum%20Iugurthinum%20Salustio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20Iugurthinum"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -413,7 +442,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -421,8 +450,16 @@
         "archive": "https://archive.org/search?query=Rerum%20rusticarum%20libri%20tres%20Varr%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Rerum%20rusticarum%20libri%20tres"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.14",
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "lucretius",
@@ -613,7 +650,14 @@
           "label": "Edición anterior · traducción inglesa",
           "role": "translation"
         }
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "virgil-aeneid",
@@ -651,7 +695,7 @@
         "archive": "https://archive.org/search?query=Aeneis%20Virgilio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Aeneis"
       },
-      "publicStatus": "lectura-local-parcial",
+      "publicStatus": "lectura-local-completa",
       "localReader": null,
       "aliases": [
         "Virgilio",
@@ -660,7 +704,15 @@
         "Eneida",
         "Aeneid",
         "Aeneidos"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/virgil-aeneid-la.json"
+      },
+      "localHtml": "classics-text-reader.html?work=virgil-aeneid&lang=la",
+      "localEdition": {
+        "original": "Latín · ed. J. B. Greenough (Boston 1900)",
+        "source": "Eneida completa (12 libros) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario latino (Lewis & Short, lematización CLTK)."
+      }
     },
     {
       "id": "virgil-georgica",
@@ -725,7 +777,15 @@
           "publicationYear": "1849",
           "editor": "Albert Forbiger · Montreal, Armour"
         }
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/virgil-georgica-la.json"
+      },
+      "localHtml": "classics-text-reader.html?work=virgil-georgica&lang=la",
+      "localEdition": {
+        "original": "Latín · ed. J. B. Greenough (Boston 1900)",
+        "source": "Geórgicas completas (4 libros) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario latino (Lewis & Short, lematización CLTK)."
+      }
     },
     {
       "id": "horace-odes",
@@ -735,8 +795,8 @@
       "genre": "Poesía",
       "dating": "23–13 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/hor.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -755,7 +815,7 @@
         "archive": "https://archive.org/search?query=Carmina%20Horacio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Carmina"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Odas",
@@ -772,8 +832,8 @@
       "genre": "Historia de Roma",
       "dating": "desde c. 27 a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/liv.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -792,7 +852,7 @@
         "archive": "https://archive.org/search?query=Ab%20urbe%20condita%20Tito%20Livio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Ab%20urbe%20condita"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Tito Livio",
@@ -855,8 +915,8 @@
       "genre": "Calendario romano",
       "dating": "c. 2–8 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/ovid.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -875,7 +935,7 @@
         "archive": "https://archive.org/search?query=Fasti%20Ovidio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Fasti"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -886,8 +946,8 @@
       "genre": "Biografía",
       "dating": "siglo I a. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/nepos.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -906,7 +966,7 @@
         "archive": "https://archive.org/search?query=De%20viris%20illustribus%20Cornelio%20Nepote",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20viris%20illustribus"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -929,7 +989,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -937,7 +997,7 @@
         "archive": "https://archive.org/search?query=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%20Diodoro%20S%C3%ADculo",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Diodoro Sículo",
@@ -966,7 +1026,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -974,7 +1034,7 @@
         "archive": "https://archive.org/search?query=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20Dionisio%20de%20Halicarnaso",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Antigüedades romanas",
@@ -1066,8 +1126,8 @@
       "genre": "Filosofía estoica",
       "dating": "c. 62–65 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1086,7 +1146,7 @@
         "archive": "https://archive.org/search?query=Epistulae%20morales%20ad%20Lucilium%20S%C3%A9neca",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epistulae%20morales%20ad%20Lucilium"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Séneca",
@@ -1094,7 +1154,11 @@
         "Cartas a Lucilio",
         "Letters to Lucilius",
         "Moral Letters"
-      ]
+      ],
+      "bibliography": {
+        "editionCitation": "Seneca. Ad Lucilium epistulae morales. Translated by Richard M. Gummere. 3 vols. Loeb Classical Library 75–77. London: William Heinemann; New York: G. P. Putnam's Sons, 1917–1925.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "seneca-naturales",
@@ -1104,8 +1168,8 @@
       "genre": "Historia natural",
       "dating": "c. 62–65 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1124,7 +1188,7 @@
         "archive": "https://archive.org/search?query=Naturales%20quaestiones%20S%C3%A9neca",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Naturales%20quaestiones"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Séneca",
@@ -1141,8 +1205,8 @@
       "genre": "Épica histórica",
       "dating": "c. 60–65 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/lucan.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1161,7 +1225,7 @@
         "archive": "https://archive.org/search?query=Bellum%20civile%20Lucano",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20civile"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -1325,8 +1389,8 @@
       "genre": "Retórica y educación",
       "dating": "c. 95 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/quintilian.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1337,7 +1401,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1345,7 +1409,7 @@
         "archive": "https://archive.org/search?query=Institutio%20oratoria%20Quintiliano",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Institutio%20oratoria"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -1356,8 +1420,8 @@
       "genre": "Poesía",
       "dating": "c. 86–101 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/martial.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1376,7 +1440,7 @@
         "archive": "https://archive.org/search?query=Epigrammata%20Marcial",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epigrammata"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -1387,8 +1451,8 @@
       "genre": "Biografía e historia",
       "dating": "98 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/tac.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1407,7 +1471,7 @@
         "archive": "https://archive.org/search?query=Agricola%20T%C3%A1cito",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Agricola"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -1418,8 +1482,8 @@
       "genre": "Etnografía",
       "dating": "98 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://thelatinlibrary.com/tac.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -1438,7 +1502,7 @@
         "archive": "https://archive.org/search?query=Germania%20T%C3%A1cito",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Germania"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -1461,7 +1525,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1469,7 +1533,7 @@
         "archive": "https://archive.org/search?query=De%20aquaeductu%20urbis%20Romae%20Frontino",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20aquaeductu%20urbis%20Romae"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Frontino",
@@ -1477,7 +1541,11 @@
         "Sobre los acueductos",
         "De aquis",
         "Aqueducts of Rome"
-      ]
+      ],
+      "bibliography": {
+        "editionCitation": "Frontinus. The Stratagems and The Aqueducts of Rome. Translated by Charles E. Bennett; edited by Mary B. McElwain. Loeb Classical Library 174. London: William Heinemann; New York: G. P. Putnam's Sons, 1925.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "mark",
@@ -1636,14 +1704,14 @@
       "manuscript": {
         "manifest": null,
         "record": "https://www.e-codices.ch/en/list/one/bbb/0722-3",
-        "status": "Bern Burgerbibliothek Cod. 722.3: fragmento carolingio; otros testigos por cotejar"
+        "status": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. (E): reúne el epítome de Faventino y extractos vitruvianos. Bern, Burgerbibliothek, Cod. 722.3: fragmento carolingio. Otros testigos por cotejar."
       },
       "pdf": {
         "url": null,
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Ediciones con traducción: M.-T. Cam, Cetius Faventinus, Abrégé d'architecture privée (CUF, 2001; texto latino y traducción francesa) y H. Plommer, Vitruvius and Later Roman Building Manuals (Cambridge, 1973; texto latino y traducción inglesa)."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1652,7 +1720,18 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Artis%20architectonicae%20privatis%20usibus%20adbreviatus%20liber"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "aliases": [
+        "De diversis fabricis architectonicae",
+        "Cetius Faventinus",
+        "M. Cetius Faventinus",
+        "Faventino"
+      ],
+      "bibliography": {
+        "editionCitation": "Cetius Faventinus. Abrégé d'architecture privée. Texte établi, traduit et commenté par Marie-Thérèse Cam. Collection des Universités de France, Série latine 363. Paris: Les Belles Lettres, 2001. ISBN 978-2-251-01423-4.",
+        "preferredCitation": "Plommer, Hugh. Vitruvius and Later Roman Building Manuals. Cambridge: Cambridge University Press, 1973. ISBN 0-521-20141-1.",
+        "method": "Edición crítica de referencia: Cam 2001 (CUF). Plommer 1973 ofrece texto, traducción inglesa y comparación con Vitruvio. Ninguna de las dos se aloja en este sitio."
+      }
     },
     {
       "id": "barnabas",
@@ -2010,8 +2089,8 @@
       "century": "I",
       "period": "I",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Columella/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -2023,7 +2102,7 @@
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -2031,7 +2110,7 @@
         "archive": "https://archive.org/search?query=De%20re%20rustica%20Columela",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20rustica"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -2044,8 +2123,8 @@
       "century": "I",
       "period": "I",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Celsus/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -2057,7 +2136,7 @@
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -2065,7 +2144,7 @@
         "archive": "https://archive.org/search?query=De%20medicina%20Aulo%20Cornelio%20Celso",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20medicina"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null
     },
     {
@@ -2078,8 +2157,8 @@
       "century": "I",
       "period": "I",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -2091,7 +2170,7 @@
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -2099,8 +2178,12 @@
         "archive": "https://archive.org/search?query=Strategemata%20Frontino",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Strategemata"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "bibliography": {
+        "editionCitation": "Frontinus. The Stratagems and The Aqueducts of Rome. Translated by Charles E. Bennett; edited by Mary B. McElwain. Loeb Classical Library 174. London: William Heinemann; New York: G. P. Putnam's Sons, 1925.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "plutarch-lives",
@@ -2125,7 +2208,7 @@
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -2133,7 +2216,7 @@
         "archive": "https://archive.org/search?query=%CE%92%CE%AF%CE%BF%CE%B9%20%CE%A0%CE%B1%CF%81%CE%AC%CE%BB%CE%BB%CE%B7%CE%BB%CE%BF%CE%B9%20%C2%B7%20Vidas%20paralelas%20Plutarco",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%AF%CE%BF%CE%B9%20%CE%A0%CE%B1%CF%81%CE%AC%CE%BB%CE%BB%CE%B7%CE%BB%CE%BF%CE%B9%20%C2%B7%20Vidas%20paralelas"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "aliases": [
         "Plutarco",
@@ -2152,8 +2235,8 @@
       "century": "II",
       "period": "II",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://archive.org/details/poliorktikakaip00petegoog",
+        "status": "Facsímil de la edición de C. Wescher, Poliorcétique des Grecs (París: Imprimerie impériale, 1867). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Atribución a Apolodoro de Damasco discutida (cf. P. H. Blyth, GRBS 33, 1992)."
       },
       "manuscript": {
         "manifest": null,
@@ -2162,7 +2245,7 @@
       },
       "pdf": {
         "url": null,
-        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
       },
       "translation": {
         "status": "Traducción no vinculada aún; identificar traductor y edición"
@@ -2170,10 +2253,10 @@
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
-        "archive": "https://archive.org/search?query=%CE%A0%CE%BF%CE%BB%CE%B9%CE%BF%CF%81%CE%BA%CE%B7%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Poliorketika%20Apolodoro%20de%20Damasco%20(atribuci%C3%B3n%20tradicional)",
+        "archive": "https://archive.org/details/poliorktikakaip00petegoog",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BF%CE%BB%CE%B9%CE%BF%CF%81%CE%BA%CE%B7%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Poliorketika"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "fuente-externa-identificada",
       "localReader": null
     },
     {
@@ -2186,8 +2269,8 @@
       "century": "I",
       "period": "I",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://archive.org/details/heronisalexandri01hero",
+        "status": "Facsímil de la edición de W. Schmidt, Heronis Alexandrini Opera I: Pneumatica et automata (Leipzig: Teubner, 1899), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Incluye en apéndice los capítulos de Vitruvio sobre pneumática. Texto griego también en Scaife ATLAS: https://atlas.perseus.tufts.edu/library/urn:cts:greekLit:tlg0559.tlg001"
       },
       "manuscript": {
         "manifest": null,
@@ -2196,18 +2279,18 @@
       },
       "pdf": {
         "url": null,
-        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Traducción alemana de Schmidt en la misma edición."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
-        "archive": "https://archive.org/search?query=%CE%A0%CE%BD%CE%B5%CF%85%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Pneumatica%20Her%C3%B3n%20de%20Alejandr%C3%ADa",
+        "archive": "https://archive.org/details/heronisalexandri01hero",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BD%CE%B5%CF%85%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Pneumatica"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "fuente-externa-identificada",
       "localReader": null
     },
     {
@@ -2220,8 +2303,8 @@
       "century": "I",
       "period": "I",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://archive.org/details/heronisalexandri01hero",
+        "status": "Facsímil de la edición de W. Schmidt, Heronis Alexandrini Opera I: Pneumatica et automata (Leipzig: Teubner, 1899), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -2230,18 +2313,18 @@
       },
       "pdf": {
         "url": null,
-        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Traducción alemana de Schmidt en la misma edición."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
-        "archive": "https://archive.org/search?query=%CE%91%E1%BD%90%CF%84%CE%BF%CE%BC%CE%B1%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CF%84%CE%B9%CE%BA%CE%AE%20%C2%B7%20Automata%20Her%C3%B3n%20de%20Alejandr%C3%ADa",
+        "archive": "https://archive.org/details/heronisalexandri01hero",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%91%E1%BD%90%CF%84%CE%BF%CE%BC%CE%B1%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CF%84%CE%B9%CE%BA%CE%AE%20%C2%B7%20Automata"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "fuente-externa-identificada",
       "localReader": null
     },
     {
@@ -2254,8 +2337,8 @@
       "century": "I a. C.",
       "period": "I a. C.",
       "reading": {
-        "url": null,
-        "status": "Edición textual aún no cotejada"
+        "url": "https://archive.org/details/poliorktikakaip00petegoog",
+        "status": "Facsímil de la edición de C. Wescher, Poliorcétique des Grecs (París: Imprimerie impériale, 1867). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Texto paralelo a Vitruvio X.13–16 (máquinas de asedio)."
       },
       "manuscript": {
         "manifest": null,
@@ -2264,7 +2347,7 @@
       },
       "pdf": {
         "url": null,
-        "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
       },
       "translation": {
         "status": "Traducción no vinculada aún; identificar traductor y edición"
@@ -2272,10 +2355,10 @@
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
-        "archive": "https://archive.org/search?query=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%B7%CE%BC%CE%AC%CF%84%CF%89%CE%BD%20%C2%B7%20De%20machinis%20Ateneo%20Mec%C3%A1nico",
+        "archive": "https://archive.org/details/poliorktikakaip00petegoog",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%B7%CE%BC%CE%AC%CF%84%CF%89%CE%BD%20%C2%B7%20De%20machinis"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "fuente-externa-identificada",
       "localReader": null
     },
     {
@@ -2422,10 +2505,10 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "siglo II a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/plautus.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2452,10 +2535,10 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "siglo II a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/plautus.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2482,10 +2565,10 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "166 a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/ter.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2512,10 +2595,10 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "163 a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/ter.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2542,10 +2625,10 @@
       "language": "la",
       "genre": "Agricultura",
       "dating": "siglo II a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -2556,7 +2639,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -2572,10 +2655,10 @@
       "language": "la",
       "genre": "Oratoria",
       "dating": "63 a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2593,6 +2676,13 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -2663,10 +2753,10 @@
       "language": "la",
       "genre": "Sátira",
       "dating": "siglo I a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/hor.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2693,10 +2783,10 @@
       "language": "la",
       "genre": "Poética",
       "dating": "siglo I a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/hor.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2723,10 +2813,10 @@
       "language": "la",
       "genre": "Poesía didáctica",
       "dating": "siglo I a. C.–siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/ovid.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2753,10 +2843,10 @@
       "language": "la",
       "genre": "Tragedia",
       "dating": "siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2846,10 +2936,10 @@
       "language": "la",
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/tac.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2860,7 +2950,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -2883,10 +2973,10 @@
       "language": "la",
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/tac.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -2897,7 +2987,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -2919,10 +3009,10 @@
       "language": "la",
       "genre": "Biografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -2933,7 +3023,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -2947,7 +3037,11 @@
         "Vidas de los doce césares",
         "Lives of the Caesars",
         "Doce césares"
-      ]
+      ],
+      "bibliography": {
+        "editionCitation": "Suetonius. Suetonius. Translated by J. C. Rolfe. 2 vols. Loeb Classical Library 31, 38. London: William Heinemann, 1913–1914. Texto latino de Maximilian Ihm (Teubner, 1907).",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "juvenal-saturae",
@@ -2956,10 +3050,10 @@
       "language": "la",
       "genre": "Sátira",
       "dating": "siglos I–II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/juvenal.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3056,10 +3150,10 @@
       "language": "la",
       "genre": "Lingüística",
       "dating": "siglo I a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/varro.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3077,6 +3171,14 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.14",
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -3086,10 +3188,10 @@
       "language": "la",
       "genre": "Elegía",
       "dating": "siglo I a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/tib.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3116,10 +3218,10 @@
       "language": "la",
       "genre": "Elegía",
       "dating": "siglo I a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/prop.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3146,10 +3248,10 @@
       "language": "la",
       "genre": "Fábulas",
       "dating": "siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/phaedrus.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3176,10 +3278,10 @@
       "language": "la",
       "genre": "Épica",
       "dating": "siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/statius.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3206,10 +3308,10 @@
       "language": "la",
       "genre": "Epistolografía",
       "dating": "siglos I–II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/pliny.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3236,10 +3338,10 @@
       "language": "la",
       "genre": "Miscelánea erudita",
       "dating": "siglo II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Gellius/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -3266,10 +3368,10 @@
       "language": "la",
       "genre": "Historia ejemplar",
       "dating": "siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/valmax.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3296,10 +3398,10 @@
       "language": "la",
       "genre": "Historiografía",
       "dating": "siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -3310,13 +3412,17 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "bibliography": {
+        "editionCitation": "Velleius Paterculus. Compendium of Roman History; Res Gestae Divi Augusti. Translated by Frederick W. Shipley. Loeb Classical Library 152. London: William Heinemann, 1924.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
       }
     },
     {
@@ -3326,10 +3432,10 @@
       "language": "la",
       "genre": "Épica",
       "dating": "siglo I d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://thelatinlibrary.com/silius.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -3356,7 +3462,7 @@
       "language": "grc",
       "genre": "Historiografía",
       "dating": "siglo II a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
         "url": null,
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
@@ -3370,7 +3476,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -3494,7 +3600,7 @@
       "language": "grc",
       "genre": "Filosofía moral",
       "dating": "siglos I–II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
         "url": null,
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
@@ -3508,7 +3614,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -3769,7 +3875,7 @@
       "language": "grc",
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
         "url": null,
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
@@ -3783,7 +3889,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -3840,10 +3946,10 @@
       "language": "grc",
       "genre": "Épica",
       "dating": "tradición arcaica; fijación y datación debatidas",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Ilíada completa en griego en el lector del sitio (Perseus Digital Library, CC BY-SA 4.0), con búsqueda por palabra resaltada y diccionario."
       },
       "manuscript": {
         "manifest": null,
@@ -3869,7 +3975,23 @@
         "Iliada",
         "Iliad",
         "Ilias"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.8",
+          "7.praef.9"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/homer-iliad-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=homer-iliad&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. D. B. Monro y T. W. Allen (Oxford)",
+        "source": "Ilíada completa (24 cantos) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
+      }
     },
     {
       "id": "homer-odyssey",
@@ -3878,10 +4000,10 @@
       "language": "grc",
       "genre": "Épica",
       "dating": "tradición arcaica; fijación y datación debatidas",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Odisea completa en griego en el lector del sitio (Perseus Digital Library, CC BY-SA 4.0), con búsqueda por palabra resaltada y diccionario."
       },
       "manuscript": {
         "manifest": null,
@@ -3906,7 +4028,23 @@
         "Odisea",
         "Odyssey",
         "Odysseia"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.8",
+          "7.praef.9"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/homer-odyssey-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=homer-odyssey&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. A. T. Murray (1919)",
+        "source": "Odisea completa (24 cantos) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
+      }
     },
     {
       "id": "hesiod-theogony",
@@ -4014,7 +4152,14 @@
         "Aeschylus",
         "Orestíada",
         "Oresteia"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "sophocles-oedipus",
@@ -4086,7 +4231,16 @@
         "Eurípides",
         "Euripides",
         "Medea"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-clouds",
@@ -4122,7 +4276,17 @@
         "Aristophanes",
         "Las nubes",
         "Clouds"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "herodotus-historiae",
@@ -4131,10 +4295,10 @@
       "language": "grc",
       "genre": "Historia",
       "dating": "siglo V a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -4145,7 +4309,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -4158,7 +4322,18 @@
         "Herodotus",
         "Historias",
         "The Histories"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "8.3.27"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Herodotus. Herodotus. Translated by A. D. Godley. 4 vols. Loeb Classical Library 117–120. London: William Heinemann; New York: G. P. Putnam's Sons, 1920–1925.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "thucydides-war",
@@ -4277,6 +4452,17 @@
         "translationHosted": false,
         "folioAlignment": false,
         "verifiedOn": "2026-11-05"
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -4321,7 +4507,26 @@
         "Plato",
         "Apología de Sócrates",
         "Apology of Socrates"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-apology-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=plato-apology&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. J. Burnet (Oxford 1903)",
+        "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), por páginas de Stephanus. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
+      }
     },
     {
       "id": "aristotle-poetics",
@@ -4400,7 +4605,23 @@
           "label": "Edición anterior · traducción inglesa",
           "role": "translation"
         }
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristotle-poetics-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. R. Kassel (Oxford 1965)",
+        "source": "Texto griego distribuido por Perseus Digital Library (TEI, CC BY-SA 4.0), por capítulos. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
+      }
     },
     {
       "id": "aristotle-politics",
@@ -4436,7 +4657,15 @@
         "Aristotle",
         "Política",
         "Politics"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "hippocrates-aphorisms",
@@ -4472,7 +4701,14 @@
         "Hippocrates",
         "Aforismos",
         "Aphorisms"
-      ]
+      ],
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "epictetus-discourses",
@@ -4554,7 +4790,7 @@
       "language": "grc",
       "genre": "Historiografía",
       "dating": "siglos II–III d. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "repertoriado-busqueda-externa",
       "reading": {
         "url": null,
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
@@ -4568,7 +4804,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -4656,7 +4892,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aeschylus-seven-thebes",
@@ -4695,7 +4938,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aeschylus-suppliants",
@@ -4734,7 +4984,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.11"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aeschylus-prometheus",
@@ -5046,7 +5303,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-hippolytus",
@@ -5085,7 +5351,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-alcestis",
@@ -5124,7 +5399,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-electra",
@@ -5163,7 +5447,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-troades",
@@ -5202,7 +5495,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-hecuba",
@@ -5241,7 +5543,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "euripides-iphigenia-aulid",
@@ -5280,7 +5591,16 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "8.praef.1",
+          "8.3.16",
+          "9.1.13"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-aves",
@@ -5319,7 +5639,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-ranae",
@@ -5358,7 +5688,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-lysistrata",
@@ -5397,7 +5737,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-vespae",
@@ -5436,7 +5786,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-pax",
@@ -5475,7 +5835,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristophanes-acharnenses",
@@ -5514,7 +5884,17 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.3",
+          "7.praef.5",
+          "7.praef.6",
+          "7.praef.7"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-symposium",
@@ -5553,7 +5933,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-phaedo",
@@ -5592,7 +5983,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-gorgias",
@@ -5631,7 +6033,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-timaeus",
@@ -5678,6 +6091,17 @@
         "translationHosted": false,
         "folioAlignment": false,
         "verifiedOn": "2026-11-05"
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -5717,7 +6141,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-phaedrus",
@@ -5756,7 +6191,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "plato-laws",
@@ -5803,6 +6249,17 @@
         "translationHosted": false,
         "folioAlignment": false,
         "verifiedOn": "2026-11-05"
+      },
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       }
     },
     {
@@ -5842,7 +6299,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "3.1.5",
+          "7.praef.2",
+          "9.praef.2",
+          "9.praef.4",
+          "9.praef.5"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-nicomachean-ethics",
@@ -5881,7 +6349,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-metaphysics",
@@ -5920,7 +6396,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-physics",
@@ -5959,7 +6443,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-rhetoric",
@@ -5998,7 +6490,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "aristotle-de-anima",
@@ -6037,7 +6537,15 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.2",
+          "9.praef.2"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "xenophon-memorabilia",
@@ -6328,7 +6836,7 @@
       ],
       "reading": {
         "url": null,
-        "status": "Characteres en griego: consultar la edición histórica conjunta de 1870, disponible en el visor PDF local."
+        "status": "Characteres en griego: texto editado de Diels (1909) en el lector del sitio, con búsqueda por palabra resaltada y diccionario; la edición histórica de 1870 se conserva como facsímil PDF."
       },
       "manuscript": {
         "manifest": null,
@@ -6357,7 +6865,23 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "lectura-local-completa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.2",
+          "8.3.27"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/theophrastus-characters-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=theophrastus-characters&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. H. Diels (Oxford 1909)",
+        "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), 31 unidades (proemio y 30 caracteres) con secciones citables. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
+      }
     },
     {
       "id": "theophrastus-historia-plantarum",
@@ -6396,7 +6920,19 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "6.praef.2",
+          "8.3.27"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Theophrastus. Enquiry into Plants and Minor Works on Odours and Weather Signs. Translated by Arthur Hort. 2 vols. Loeb Classical Library 70, 79. London: William Heinemann; New York: G. P. Putnam's Sons, 1916.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "diogenes-laertius-vitae",
@@ -6448,8 +6984,8 @@
         "En defensa del poeta Arquías"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6474,7 +7010,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-finibus",
@@ -6487,8 +7030,8 @@
         "Sobre los fines del bien y del mal"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Finibus/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -6499,7 +7042,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -6513,7 +7056,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Cicero. De finibus bonorum et malorum. Translated by H. Rackham. 2nd ed. Loeb Classical Library 40. London: William Heinemann; Cambridge, MA: Harvard University Press, 1931.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "cicero-tusculanae",
@@ -6526,8 +7080,8 @@
         "Disputaciones tusculanas"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6552,7 +7106,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-natura-deorum",
@@ -6565,8 +7126,8 @@
         "Sobre la naturaleza de los dioses"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6591,7 +7152,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-de-amicitia",
@@ -6604,8 +7172,8 @@
         "Sobre la amistad"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/Laelius_de_Amicitia/text*.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -6616,7 +7184,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -6630,7 +7198,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Cicero. De senectute; De amicitia; De divinatione. Translated by William Armistead Falconer. Loeb Classical Library 154. London: William Heinemann, 1923.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "cicero-de-senectute",
@@ -6643,8 +7222,8 @@
         "Sobre la vejez"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/Cato_Maior_de_Senectute/text*.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -6655,7 +7234,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -6669,7 +7248,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Cicero. De senectute; De amicitia; De divinatione. Translated by William Armistead Falconer. Loeb Classical Library 154. London: William Heinemann, 1923.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "cicero-de-divinatione",
@@ -6682,8 +7272,8 @@
         "Sobre la adivinación"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Divinatione/1*.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -6694,7 +7284,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -6708,7 +7298,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Cicero. De senectute; De amicitia; De divinatione. Translated by William Armistead Falconer. Loeb Classical Library 154. London: William Heinemann, 1923.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
     },
     {
       "id": "cicero-brutus",
@@ -6721,8 +7322,8 @@
         "Bruto historia de la oratoria romana"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6747,7 +7348,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "cicero-philippicae",
@@ -6760,8 +7368,8 @@
         "Filípicas"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/cicero",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6786,7 +7394,14 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.17"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
     },
     {
       "id": "seneca-de-brevitate",
@@ -6799,8 +7414,8 @@
         "Sobre la brevedad de la vida"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6838,8 +7453,8 @@
         "Sobre la ira"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6877,8 +7492,8 @@
         "Sobre la clemencia"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6916,8 +7531,8 @@
         "Sobre la tranquilidad del ánimo"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/sen.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6955,8 +7570,8 @@
         "Épodos"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/hor.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -6994,8 +7609,8 @@
         "Epístolas"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/hor.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -7033,8 +7648,8 @@
         "Tristes"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/ovid.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -7072,8 +7687,8 @@
         "Heroidas"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/ovid.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -7111,8 +7726,8 @@
         "Remedios de amor"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/ovid.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -7150,8 +7765,8 @@
         "Pónticas"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/ovid.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -7189,8 +7804,8 @@
         "Diálogo de los oradores"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://thelatinlibrary.com/tac.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
       },
       "manuscript": {
         "manifest": null,
@@ -7462,8 +8077,8 @@
         "Saturnales"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Macrobius/Saturnalia/home.html",
+        "status": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
       },
       "manuscript": {
         "manifest": null,
@@ -7531,6 +8146,14 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/",
         "perseus": "https://www.perseus.tufts.edu/hopper/"
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/epictetus-enchiridion-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. H. Schenkl (Leipzig 1916)",
+        "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), 53 capítulos. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ)."
       }
     },
     {
@@ -7574,6 +8197,1062 @@
         "archive": "https://archive.org/",
         "perseus": "https://www.perseus.tufts.edu/hopper/"
       }
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "language": "grc",
+      "genre": "Música y teoría armónica",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Elementa harmonica",
+        "Elementos de armonía",
+        "Aristoxenus"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.13",
+          "5.4.1",
+          "5.5.6"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Aristoxenus. The Harmonics of Aristoxenus. Edited with translation, notes, introduction and index of words by Henry S. Macran. Oxford: Clarendon Press, 1902.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "siglo III a. C.",
+      "aliases": [
+        "De corporibus fluitantibus",
+        "Sobre los cuerpos flotantes",
+        "Archimedes"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arqu%C3%ADmedes%20De%20corporibus%20fluitantibus&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.7",
+          "1.1.17",
+          "7.praef.14",
+          "8.5.3",
+          "9.praef.9",
+          "9.praef.10"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "language": "grc",
+      "genre": "Poesía didáctica",
+      "dating": "siglo III a. C.",
+      "aliases": [
+        "Phaenomena",
+        "Fenómenos",
+        "Aratus"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Arato%20de%20Solos%20Phaenomena",
+        "gallica": "https://gallica.bnf.fr/Search?q=Arato%20de%20Solos%20Phaenomena"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Arato%20de%20Solos%20Phaenomena",
+        "wikisource": "https://el.wikisource.org/w/index.php?search=Arato%20de%20Solos%20Phaenomena&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.6.3"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "bibliography": {
+        "editionCitation": "Callimachus and Lycophron, translated by A. W. Mair; Aratus, translated by G. R. Mair. Loeb Classical Library 129. London: William Heinemann; New York: G. P. Putnam's Sons, 1921.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "language": "la",
+      "genre": "Épica",
+      "dating": "siglo II a. C.",
+      "aliases": [
+        "Anales",
+        "Ennius",
+        "Quintus Ennius"
+      ],
+      "reading": {
+        "url": "https://thelatinlibrary.com/enn.html",
+        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Ennio%20Anales",
+        "gallica": "https://gallica.bnf.fr/Search?q=Ennio%20Anales"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Ennio%20Anales",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Ennio%20Anales&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.16"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "language": "la",
+      "genre": "Tragedia",
+      "dating": "siglos II–I a. C.",
+      "aliases": [
+        "Fragmentos trágicos",
+        "Accius",
+        "Lucius Accius"
+      ],
+      "reading": {
+        "url": null,
+        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Accio%20Fragmentos%20tr%C3%A1gicos",
+        "gallica": "https://gallica.bnf.fr/Search?q=Accio%20Fragmentos%20tr%C3%A1gicos"
+      },
+      "discovery": {
+        "scaife": "https://www.google.com/search?q=site%3Ascaife.perseus.org/reader/%20Accio%20Fragmentos%20tr%C3%A1gicos",
+        "wikisource": "https://la.wikisource.org/w/index.php?search=Accio%20Fragmentos%20tr%C3%A1gicos&title=Special%3ASearch&fulltext=1",
+        "description": "Búsqueda de fuente externa, no lectura directa verificada."
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "vitruvianLoci": {
+        "loci": [
+          "9.praef.16"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "siglos IV–III a. C.",
+      "aliases": [
+        "Mechanica",
+        "Problemas mecánicos",
+        "Quaestiones mechanicae"
+      ],
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aristotle/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Pseudo-Arist%C3%B3teles%20%28escuela%20peripat%C3%A9tica%29%20Mechanica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Pseudo-Arist%C3%B3teles%20%28escuela%20peripat%C3%A9tica%29%20Mechanica"
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "language": "grc",
+      "genre": "Ingeniería y arte militar",
+      "dating": "siglo IV a. C.",
+      "aliases": [
+        "Poliorcetica",
+        "Sobre la defensa de las plazas",
+        "Aeneas Tacticus"
+      ],
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aeneas_Tacticus/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Eneas%20el%20T%C3%A1ctico%20Poliorcetica",
+        "gallica": "https://gallica.bnf.fr/Search?q=Eneas%20el%20T%C3%A1ctico%20Poliorcetica"
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "language": "grc",
+      "genre": "Arquitectura",
+      "dating": "siglo VI d. C.",
+      "aliases": [
+        "De aedificiis",
+        "Los edificios",
+        "Buildings"
+      ],
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Procopio%20de%20Cesarea%20De%20aedificiis",
+        "gallica": "https://gallica.bnf.fr/Search?q=Procopio%20de%20Cesarea%20De%20aedificiis"
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "language": "la",
+      "genre": "Miscelánea erudita",
+      "dating": "siglo VII d. C.",
+      "aliases": [
+        "Etimologías",
+        "Origines",
+        "Isidorus Hispalensis"
+      ],
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Isidore/home.html",
+        "status": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Traducción no incorporada ni alineada con una edición identificada."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Isidoro%20de%20Sevilla%20Etimolog%C3%ADas",
+        "gallica": "https://gallica.bnf.fr/Search?q=Isidoro%20de%20Sevilla%20Etimolog%C3%ADas"
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "genre": "Calendario romano",
+      "dating": "238 d. C.",
+      "aliases": [
+        "Sobre el día del nacimiento",
+        "Censorinus"
+      ],
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Censorinus/home.html",
+        "status": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Francés: traducción con texto latino en LacusCurtius, enlace externo verificado. Castellano e inglés pendientes."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Censorino%20Sobre%20el%20d%C3%ADa%20del%20nacimiento",
+        "gallica": "https://gallica.bnf.fr/Search?q=Censorino%20Sobre%20el%20d%C3%ADa%20del%20nacimiento"
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null
+    },
+    {
+      "id": "augustus-res-gestae",
+      "author": "Augusto",
+      "title": "Res gestae divi Augusti",
+      "language": "la",
+      "genre": "Historia de Roma",
+      "dating": "14 d. C.",
+      "aliases": [
+        "Monumentum Ancyranum",
+        "Hechos del divino Augusto",
+        "Augustus"
+      ],
+      "reading": {
+        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Augustus/Res_Gestae/home.html",
+        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No consta una digitalización PDF específica verificada en esta ficha."
+      },
+      "translation": {
+        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Augusto%20Monumentum%20Ancyranum",
+        "gallica": "https://gallica.bnf.fr/Search?q=Augusto%20Monumentum%20Ancyranum"
+      },
+      "publicStatus": "repertoriado-busqueda-externa",
+      "localReader": null,
+      "bibliography": {
+        "editionCitation": "Velleius Paterculus. Compendium of Roman History; Res Gestae Divi Augusti. Translated by Frederick W. Shipley. Loeb Classical Library 152. London: William Heinemann, 1924.",
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      }
+    },
+    {
+      "id": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "c. 300 a. C.",
+      "century": "III a. C.",
+      "period": "III a. C.",
+      "aliases": [
+        "Euclid",
+        "Elementos",
+        "Elements",
+        "Euclidis Elementa"
+      ],
+      "reading": {
+        "url": "https://goobi.tib.eu/viewer/metadata/895699559/1",
+        "status": "Facsímil de la edición de J. L. Heiberg y H. Menge, Euclidis Opera omnia I (Leipzig: Teubner, 1883), libros I–IV. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Volumen digitalizado por la TIB Hannover (Public Domain Mark)."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tradición manuscrita griega (p. ej., Vat. gr. 190; Oxford, Bodleian, MS. D'Orville 301); cotejo no realizado en este sitio."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción latina de Heiberg en la misma edición (página enfrentada)."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Elementa%20Euclides",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Elementa%20Euclides"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "c. 300 a. C.",
+      "century": "III a. C.",
+      "period": "III a. C.",
+      "aliases": [
+        "Euclid Optics",
+        "Óptica de Euclides",
+        "Optica"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/euclidisoperaomn07eucluoft",
+        "status": "Facsímil de la edición de J. L. Heiberg, Euclidis Opera omnia VII: Optica, Opticorum recensio Theonis, Catoptrica (Leipzig: Teubner, 1895). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción latina de Heiberg en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/euclidisoperaomn07eucluoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Optica%20Euclides"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "language": "grc",
+      "genre": "Astronomía y música",
+      "dating": "c. 300 a. C.",
+      "century": "III a. C.",
+      "period": "III a. C.",
+      "aliases": [
+        "Sectio canonis",
+        "Κατατομὴ κανόνος",
+        "Phaenomena"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/euclidisoperaomn08eucl",
+        "status": "Facsímil de la edición de H. Menge, Euclidis Opera omnia VIII: Phaenomena et scripta musica (Leipzig: Teubner, 1916). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El volumen incluye la Sectio canonis y la Introductio harmonica transmitida bajo el nombre de Euclides (hoy atribuida a Cleónides)."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción moderna no vinculada aún."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/euclidisoperaomn08eucl",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Phaenomena%20y%20escritos%20musicales%20Euclides"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "language": "grc",
+      "genre": "Teoría musical",
+      "dating": "s. II d. C. (datación debatida)",
+      "century": "II",
+      "period": "II",
+      "aliases": [
+        "Cleonides",
+        "Introducción armónica",
+        "Harmonic introduction"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/euclidisoperaomn08eucl",
+        "status": "Facsímil de la edición de H. Menge, Euclidis Opera omnia VIII (Leipzig: Teubner, 1916). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Edición crítica alternativa: C. Jan, Musici scriptores Graeci (Leipzig: Teubner, 1895). Pertinente para la armonía de Vitruvio V.4 (doctrina aristoxénica)."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción moderna no vinculada aún."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/euclidisoperaomn08eucl",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Introductio%20harmonica%20Cle%C3%B3nides%20%28transmitido%20bajo%20el%20nombre%20de%20Euclides%29"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "language": "grc",
+      "genre": "Ingeniería y arte militar",
+      "dating": "s. I d. C. (datación del autor debatida)",
+      "century": "I",
+      "period": "I",
+      "aliases": [
+        "Heron Belopoiika",
+        "Construcción de catapultas",
+        "Artillery"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/heronsbelopoiika00hero",
+        "status": "Facsímil de la edición de H. Diels y E. Schramm, Herons Belopoiika (Berlín: Abh. Preuß. Akad. Wiss., 1918), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para las catapultas y ballestas de Vitruvio X.10–12."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción alemana de Diels y Schramm en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/heronsbelopoiika00hero",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Belopoeica%20Her%C3%B3n%20de%20Alejandr%C3%ADa"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "language": "grc",
+      "genre": "Ingeniería y arte militar",
+      "dating": "finales del s. III a. C.",
+      "century": "III a. C.",
+      "period": "III a. C.",
+      "aliases": [
+        "Philo of Byzantium",
+        "Philon",
+        "Belopoiika"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/philonsbelopoiik00philuoft",
+        "status": "Facsímil de la edición de H. Diels y E. Schramm, Philons Belopoiika (viertes Buch der Mechanik) (Berlín: Abh. Preuß. Akad. Wiss., 1919), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la proporción de las máquinas de tiro en Vitruvio X."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción alemana de Diels y Schramm en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/philonsbelopoiik00philuoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Belopoeica%20%28Mechanike%20syntaxis%20IV%29%20Fil%C3%B3n%20de%20Bizancio"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos",
+      "vitruvianLoci": {
+        "loci": [
+          "7.praef.14"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "language": "grc",
+      "genre": "Ingeniería y arte militar",
+      "dating": "s. III–II a. C.",
+      "century": "II a. C.",
+      "period": "II a. C.",
+      "aliases": [
+        "Biton",
+        "Construcción de máquinas de guerra"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/poliorktikakaip00petegoog",
+        "status": "Facsímil de la edición de C. Wescher, Poliorcétique des Grecs (París: Imprimerie impériale, 1867). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El volumen de Wescher reúne también a Ateneo Mecánico, Herón, Apolodoro y Filón."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción moderna no vinculada aún."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/poliorktikakaip00petegoog",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%9A%CE%B1%CF%84%CE%B1%CF%83%CE%BA%CE%B5%CF%85%CE%B1%E1%BD%B6%20%CF%80%CE%BF%CE%BB%CE%B5%CE%BC%CE%B9%CE%BA%E1%BF%B6%CE%BD%20%E1%BD%80%CF%81%CE%B3%CE%AC%CE%BD%CF%89%CE%BD%20%CE%BA%CE%B1%E1%BD%B6%20%CE%BA%CE%B1%CF%84%CE%B1%CF%80%CE%B1%CE%BB%CF%84%CE%B9%CE%BA%E1%BF%B6%CE%BD%20Bit%C3%B3n"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "language": "grc",
+      "genre": "Astronomía",
+      "dating": "s. I a. C.",
+      "century": "I a. C.",
+      "period": "I a. C.",
+      "aliases": [
+        "Geminus",
+        "Introducción a los fenómenos",
+        "Introduction to the Phenomena"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/geminoueisagoget00gemi",
+        "status": "Facsímil de la edición de K. Manitius (Leipzig: Teubner, 1898), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la astronomía de Vitruvio IX."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción alemana de Manitius en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/geminoueisagoget00gemi",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Elementa%20astronomiae%20G%C3%A9mino"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "language": "grc",
+      "genre": "Astronomía",
+      "dating": "s. III a. C.",
+      "century": "III a. C.",
+      "period": "III a. C.",
+      "aliases": [
+        "Aristarchus",
+        "Sobre los tamaños y distancias del Sol y la Luna",
+        "De magnitudinibus et distantiis solis et lunae"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/aristarchusofsam00heatuoft",
+        "status": "Facsímil de la edición de T. L. Heath, Aristarchus of Samos, the Ancient Copernicus (Oxford: Clarendon Press, 1913), texto griego con traducción inglesa. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Vitruvio nombra a Aristarco de Samos en I.1.17, IX.2.3 y IX.8.1."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción inglesa de Heath en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/aristarchusofsam00heatuoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%B5%CF%81%E1%BD%B6%20%CE%BC%CE%B5%CE%B3%CE%B5%CE%B8%E1%BF%B6%CE%BD%20%CE%BA%CE%B1%E1%BD%B6%20%E1%BC%80%CF%80%CE%BF%CF%83%CF%84%CE%B7%CE%BC%CE%AC%CF%84%CF%89%CE%BD%20%E1%BC%A1%CE%BB%CE%AF%CE%BF%CF%85%20%CE%BA%CE%B1%E1%BD%B6%20%CF%83%CE%B5%CE%BB%CE%AE%CE%BD%CE%B7%CF%82%20Aristarco%20de%20Samos"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos",
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.17",
+          "9.2.3",
+          "9.8.1"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "finales del s. III a. C.",
+      "century": "III a. C.",
+      "period": "III a. C.",
+      "aliases": [
+        "Apollonius of Perga",
+        "Cónicas",
+        "Conics"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/apolloniipergaei01apoluoft",
+        "status": "Facsímil de la edición de J. L. Heiberg, Apollonii Pergaei quae graece exstant I (Leipzig: Teubner, 1891), libros I–III. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción latina de Heiberg en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/apolloniipergaei01apoluoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Conica%20Apolonio%20de%20Perge"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos",
+      "vitruvianLoci": {
+        "loci": [
+          "1.1.17",
+          "9.8.1"
+        ],
+        "edition": "recensio-es",
+        "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      }
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "language": "grc",
+      "genre": "Matemáticas y mecánica",
+      "dating": "c. 320 d. C.",
+      "century": "IV",
+      "period": "IV",
+      "aliases": [
+        "Pappus",
+        "Colección matemática",
+        "Collection"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/pappialexandrin04pappgoog",
+        "status": "Facsímil de la edición de F. Hultsch, Pappi Alexandrini collectionis quae supersunt III.1 (Berlín: Weidmann, 1878). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El libro VIII trata de la mecánica y de los mecánicos de la escuela de Herón. Volumen I (libros II–V): https://archive.org/details/pappialexandrin00hultgoog."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción latina de Hultsch en la misma edición."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/pappialexandrin04pappgoog",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Collectio%20%28libro%20VIII%3A%20mec%C3%A1nica%29%20Papo%20de%20Alejandr%C3%ADa"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "language": "la",
+      "genre": "Agrimensura",
+      "dating": "s. I–II d. C. (datación debatida)",
+      "century": "II",
+      "period": "II",
+      "aliases": [
+        "Hyginus Gromaticus",
+        "Agrimensores",
+        "Corpus agrimensorum"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/corpusagrimensor01thuluoft",
+        "status": "Facsímil de la edición de C. Thulin, Corpus agrimensorum Romanorum I.1 (Leipzig: Teubner, 1913), pp. 131–171. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la orientación y el trazado urbano (Vitruvio I.6)."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Tradición ilustrada del Corpus agrimensorum (p. ej., Wolfenbüttel, Cod. Guelf. 36.23 Aug. 2°, «Arcerianus»); cotejo no realizado."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción moderna no vinculada aún."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/corpusagrimensor01thuluoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Constitutio%20limitum%20Higino%20Grom%C3%A1tico"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "language": "la",
+      "genre": "Agrimensura",
+      "dating": "finales del s. I d. C.",
+      "century": "I",
+      "period": "I",
+      "aliases": [
+        "Frontinus gromatic",
+        "Agrimensura de Frontino"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/corpusagrimensor01thuluoft",
+        "status": "Facsímil de la edición de C. Thulin, Corpus agrimensorum Romanorum I.1 (Leipzig: Teubner, 1913), pp. 1–19. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción moderna no vinculada aún."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/corpusagrimensor01thuluoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Opuscula%20gromatica%20%28De%20agrorum%20qualitate%2C%20De%20controversiis%2C%20De%20limitibus%29%20Frontino"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "language": "la",
+      "genre": "Agrimensura",
+      "dating": "s. I–II d. C. (datación debatida)",
+      "century": "II",
+      "period": "II",
+      "aliases": [
+        "Siculus Flaccus",
+        "Agrimensores"
+      ],
+      "reading": {
+        "url": "https://archive.org/details/corpusagrimensor01thuluoft",
+        "status": "Facsímil de la edición de C. Thulin, Corpus agrimensorum Romanorum I.1 (Leipzig: Teubner, 1913), pp. 98–130. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+      },
+      "manuscript": {
+        "manifest": null,
+        "record": null,
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+      },
+      "pdf": {
+        "url": null,
+        "status": "Facsímil PDF disponible en la fuente externa citada; no se copia a GitHub."
+      },
+      "translation": {
+        "status": "Traducción moderna no vinculada aún."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/details/corpusagrimensor01thuluoft",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20condicionibus%20agrorum%20S%C3%ADculo%20Flaco"
+      },
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
     }
   ],
   "pdfPolicy": {

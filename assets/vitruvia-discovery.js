@@ -83,7 +83,11 @@
    const inName=(" "+name+" ").includes(" "+term+" ");
    const inDescription=(" "+description+" ").includes(" "+term+" ");
    const words=term.split(" ").filter(w=>w.length>2&&!['the','and','del','los','las','of','de'].includes(w));
-   const complete=words.length>1&&words.every(w=>(" "+name+" ").includes(" "+w+" "));
+   // Las palabras del título buscado deben aparecer juntas y en orden (máximo dos palabras intercaladas):
+   // «Contra Celso» no acepta «Celso Giannazi – Contra o desmonte…» ni «Contra-almirante… Celso Amorim».
+   const near=text=>{const t=text.split(" ");let pos=-1;for(const w of words){let k=-1;for(let i=pos+1;i<t.length;i++)if(t[i]===w){k=i;break}
+     if(k<0||(pos>=0&&k-pos>3))return false;pos=k}return true};
+   const complete=words.length>1&&near(name);
    if(inName||inDescription||complete){matched=true;score=Math.max(score,(inName?120:0)+(complete?70:0)+(inDescription?25:0))}
   }
   // Only entity images and subject-specific collections may bypass a title match.

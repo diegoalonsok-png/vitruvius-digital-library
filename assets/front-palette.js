@@ -39,7 +39,7 @@
     '<circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/><circle cx="17" cy="11.5" r="1"/>'+
     '</svg></button>'+
     '<div class="home-color-panel" id="home-color-panel" hidden role="group" aria-label="Colores de fondo de la portada">'+
-    '<h2>Color de fondo</h2><p>Elegí un tono para la portada. La selección se guarda en este navegador.</p>'+
+    '<h2>Color de fondo</h2><p>Elige un tono para la portada. La selección se guarda en este navegador.</p>'+
     '<div class="home-swatch-grid" id="home-swatch-grid"></div>'+
     '<label class="home-color-custom" for="home-custom-color">Color personalizado <input id="home-custom-color" type="color" value="#15191e"></label>'+
     '<button class="home-color-reset" id="home-color-reset" type="button">Restaurar negro original</button>'+

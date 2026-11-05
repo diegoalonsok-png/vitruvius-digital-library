@@ -92,7 +92,7 @@ function downloadLink(e,format){return e[`${format}_chunks`]?.length?sourceURL(e
 async function downloadDocument(control,e,format){
   const originalText=control.textContent;control.setAttribute('aria-busy','true');control.textContent='Preparando…';
   try{const url=await documentURL(e,format);const link=document.createElement('a');link.href=url;link.download=`${e.id}.${format}`;link.click();}
-  catch(error){window.alert(`${error.message} Volvé a intentar la descarga.`);}
+  catch(error){window.alert(`${error.message} Vuelve a intentar la descarga.`);}
   finally{control.removeAttribute('aria-busy');control.textContent=originalText;}
 }
 
@@ -173,22 +173,22 @@ async function setReaderPage(page){
         const reflowed=excerpt.replace(/([^\n])\n(?!\n)/g,'$1 ').replace(/\n{3,}/g,'\n\n');
         $('#reader-text').innerHTML=resultSnippet({snippet:reflowed});
         const mark=$('#reader-text').querySelector('mark');if(mark)mark.scrollIntoView({block:'center'});
-        if(!text)$('#reader-text').textContent='No hay texto extraíble en esta página. Consultá el PDF.';
+        if(!text)$('#reader-text').textContent='No hay texto extraíble en esta página. Consulta el PDF.';
       }catch{
         if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el fragmento textual. El PDF original sigue disponible.';
       }
       return;
     }
     $('#reader-text').textContent='Cargando la transcripción histórica de esta página…';
-    try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'No hay texto OCR en esta página. Abrí el facsímil original.';}
-    catch{if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el OCR. Abrí la fuente original.';}
+    try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'No hay texto OCR en esta página. Abre el facsímil original.';}
+    catch{if(revision===readerRevision)$('#reader-text').textContent='No se pudo cargar el OCR. Abre la fuente original.';}
     return;
   }
   $('#reader-external').textContent='Abrir PDF en otra pestaña ↗';
-  documentURL(e).then(url=>{if(revision!==readerRevision||currentReader?.id!==e.id||!$('#reader-dialog').open)return;const pdfURL=`${url}#page=${requestedPage}&view=FitH`;$('#reader-frame').src=pdfURL;$('#reader-external').href=pdfURL;}).catch(error=>{if(revision===readerRevision)$('#reader-text').textContent=`${error.message} Volvé a abrir la edición para intentarlo de nuevo.`;});
-  $('#reader-text').textContent=e.id==='krohn-1912'?'Edición Krohn (1912): consultá el facsímil visible. El OCR original contiene errores de caracteres griegos y signos críticos; se utiliza solo para localizar páginas.':e.searchable?'Cargando el texto de esta página…':'Facsímil en imagen. Consultá el PDF para ver el testimonio manuscrito.';
+  documentURL(e).then(url=>{if(revision!==readerRevision||currentReader?.id!==e.id||!$('#reader-dialog').open)return;const pdfURL=`${url}#page=${requestedPage}&view=FitH`;$('#reader-frame').src=pdfURL;$('#reader-external').href=pdfURL;}).catch(error=>{if(revision===readerRevision)$('#reader-text').textContent=`${error.message} Vuelve a abrir la edición para intentarlo de nuevo.`;});
+  $('#reader-text').textContent=e.id==='krohn-1912'?'Edición Krohn (1912): consulta el facsímil visible. El OCR original contiene errores de caracteres griegos y signos críticos; se utiliza solo para localizar páginas.':e.searchable?'Cargando el texto de esta página…':'Facsímil en imagen. Consulta el PDF para ver el testimonio manuscrito.';
   if(!e.searchable||e.id==='krohn-1912')return;
-  try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'Esta página no contiene texto extraíble. Consultá el PDF.';}catch{if(revision===readerRevision)$('#reader-text').textContent='El texto de consulta no se pudo cargar. Podés abrir el PDF de esta página.';}
+  try{const pages=await getPages(e);if(revision===readerRevision&&currentReader?.id===e.id)$('#reader-text').textContent=pages?.[requestedPage-1]?.text||'Esta página no contiene texto extraíble. Consulta el PDF.';}catch{if(revision===readerRevision)$('#reader-text').textContent='El texto de consulta no se pudo cargar. Puedes abrir el PDF de esta página.';}
 }
 
 function closeReader(){ readerRevision++;$('#reader-dialog').close();$('#reader-frame').removeAttribute('src'); }
@@ -205,7 +205,7 @@ function openComparison(id='recensio-es',page=1){
   for(const[selector,delta]of [['.compare-prev',-1],['.compare-next',1]])$(selector,pane).addEventListener('click',()=>{$('.compare-page',pane).value=Math.max(1,Number($('.compare-page',pane).value)+delta);renderComparePane(pane);});
   $('.compare-mode',pane).addEventListener('click',()=>{const e=edition($('select',pane).value);window.open(e.read_url||e.pdf||e.source_url,'_blank','noopener');});container.append(pane);renderComparePane(pane);
  }
- $('.comparison-note').textContent='Consulta del facsímil histórico y una edición de Kurilo. Cada página se selecciona por separado: no se presupone equivalencia entre las paginaciones. Para traducciones sincronizadas por locus, usá el lector bilingüe.';
+ $('.comparison-note').textContent='Consulta del facsímil histórico y una edición de Kurilo. Cada página se selecciona por separado: no se presupone equivalencia entre las paginaciones. Para traducciones sincronizadas por locus, usa el lector bilingüe.';
  $('#comparison-dialog').showModal();
 }
 
@@ -237,34 +237,34 @@ async function renderComparePane(pane){
       passage.style.cssText='';
       // Preserve paragraph breaks but reflow PDF line wrapping for readable text.
       const readable=text.replace(/([^\n])\n(?!\n)/g,'$1 ').replace(/\n{3,}/g,'\n\n');
-      passage.textContent=readable||'Esta página no contiene texto extraíble. Abrí el documento original para consultar la imagen.';
+      passage.textContent=readable||'Esta página no contiene texto extraíble. Abre el documento original para consultar la imagen.';
       body.replaceChildren(heading,passage);
       citation.textContent=e.version+' · Página PDF '+page+' · texto digital (no imagen del PDF)';
-    }catch(error){body.textContent='No se pudo consultar el texto de esta página: '+error.message+'. Usá «Abrir fuente» para leer el PDF original.';}
+    }catch(error){body.textContent='No se pudo consultar el texto de esta página: '+error.message+'. Usa «Abrir fuente» para leer el PDF original.';}
     return;
   }
   if(e.external){
     if(e.access==='public_pdf'&&e.searchable){
-      body.textContent='El visor externo no admite navegar automáticamente a esta página. Para lectura navegable elegí «Leer texto indexado». El PDF original se abre desde «Abrir fuente». ';
+      body.textContent='El visor externo no admite navegar automáticamente a esta página. Para lectura navegable elige «Leer texto indexado». El PDF original se abre desde «Abrir fuente». ';
       return;
     }
     if(false){
       body.textContent='OCR AUTOMÁTICO NO REVISADO — puede presentar caracteres corruptos y no debe citarse sin cotejar el facsímil.\n\nCargando transcripción…';
-      try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent='OCR AUTOMÁTICO NO REVISADO — no citar sin cotejar el facsímil.\n\n'+(pages?.[page-1]?.text||'Sin OCR en esta página. Consultá el facsímil.');}
-      catch{body.textContent='OCR no disponible. Consultá el facsímil original.';}
+      try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)body.textContent='OCR AUTOMÁTICO NO REVISADO — no citar sin cotejar el facsímil.\n\n'+(pages?.[page-1]?.text||'Sin OCR en esta página. Consulta el facsímil.');}
+      catch{body.textContent='OCR no disponible. Consulta el facsímil original.';}
     }else{
       const url=e.read_url||e.source_url,archive=(url||'').match(/archive\.org\/details\/([^/?#]+)/),drive=(url||'').match(/drive\.google\.com\/file\/d\/([^/?#]+)/);
       if(archive){const frame=document.createElement('iframe');frame.title=e.title+' · página '+page;frame.src='https://archive.org/embed/'+encodeURIComponent(archive[1])+'/page/n'+Math.max(0,page-1);body.replaceChildren(frame);}
       else if(drive){const frame=document.createElement('iframe');frame.title=e.title+' · libro completo';frame.src='https://drive.google.com/file/d/'+encodeURIComponent(drive[1])+'/preview';body.replaceChildren(frame);}
-      else body.textContent='Consultá el facsímil en la institución mediante «Abrir fuente».';
+      else body.textContent='Consulta el facsímil en la institución mediante «Abrir fuente».';
     }return;
   }
   if(pane.dataset.mode==='pdf'||!e.searchable){
     const loading=document.createElement('p');loading.className='compare-source-note';loading.textContent='Preparando el facsímil…';body.append(loading);
-    try{const url=await documentURL(e);if($('select',pane).value!==e.id||Number(pageInput.value)!==page||(pane.dataset.mode!=='pdf'&&e.searchable))return;const frame=document.createElement('iframe');frame.title=`${e.title}, página PDF ${page}`;frame.src=`${url}#page=${page}&view=FitH`;external.href=frame.src;body.replaceChildren(frame);}catch(error){loading.textContent=`${error.message} Volvé a seleccionar la edición para intentarlo de nuevo.`;}return;
+    try{const url=await documentURL(e);if($('select',pane).value!==e.id||Number(pageInput.value)!==page||(pane.dataset.mode!=='pdf'&&e.searchable))return;const frame=document.createElement('iframe');frame.title=`${e.title}, página PDF ${page}`;frame.src=`${url}#page=${page}&view=FitH`;external.href=frame.src;body.replaceChildren(frame);}catch(error){loading.textContent=`${error.message} Vuelve a seleccionar la edición para intentarlo de nuevo.`;}return;
   }
   const p=document.createElement('p');p.textContent='Cargando la página…';body.append(p);
-  try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)p.textContent=(e.id==='krohn-1912'?'OCR AUTOMÁTICO SIN REVISAR — cotejar facsímil antes de citar.\n\n':'')+(pages?.[page-1]?.text||'Sin texto extraíble en esta página. Usá «Ver PDF».');}catch{p.textContent='No se pudo cargar el texto. Usá «Ver PDF» para consultar el documento.';}
+  try{const pages=await getPages(e);if($('select',pane).value===e.id&&Number(pageInput.value)===page)p.textContent=(e.id==='krohn-1912'?'OCR AUTOMÁTICO SIN REVISAR — cotejar facsímil antes de citar.\n\n':'')+(pages?.[page-1]?.text||'Sin texto extraíble en esta página. Usa «Ver PDF».');}catch{p.textContent='No se pudo cargar el texto. Usa «Ver PDF» para consultar el documento.';}
 }
 
 function ensureWorker(){
@@ -277,17 +277,17 @@ function ensureWorker(){
   if(data.type==='error'){$('#search-status').textContent=data.message;return;}
   if(data.type==='results'){
    results=data.results;alignedGroups=groupMatchesByLocus(results);countSummary=data.countSummary||null;shown=0;translationRevision++;$('#search-results').replaceChildren();renderCountSummary(countSummary);
-   $('#search-status').textContent=(countSummary?countSummary.total.toLocaleString('es-AR')+' apariciones en '+countSummary.passages+' pasajes de las ediciones seleccionadas.':results.length?results.length.toLocaleString('es-AR')+(results.length===1?' coincidencia':' coincidencias')+' con libro, capítulo y sección para «'+lastQuery+'».':'Palabra, frase o locus no encontrado: «'+lastQuery+'» en esta selección. Revisá los filtros o la grafía. Algunas secciones inglesas se conservan agrupadas como en el original.')+(data.warnings?.length?' '+data.warnings.join('. '):'');
+   $('#search-status').textContent=(countSummary?countSummary.total.toLocaleString('es-AR')+' apariciones en '+countSummary.passages+' pasajes de las ediciones seleccionadas.':results.length?results.length.toLocaleString('es-AR')+(results.length===1?' coincidencia':' coincidencias')+' con libro, capítulo y sección para «'+lastQuery+'».':'Palabra, frase o locus no encontrado: «'+lastQuery+'» en esta selección. Revisa los filtros o la grafía. Algunas secciones inglesas se conservan agrupadas como en el original.')+(data.warnings?.length?' '+data.warnings.join('. '):'');
    if(results.length&&alignedGroups.length!==results.length)$('#search-status').textContent+=' Vista comparada: '+alignedGroups.length+' loci distintos (las coincidencias por edición se conservan en CSV y PDF).';renderMore();$('#export-tools').hidden=!results.length;
   }
  };
- worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador. Volvé a buscar para reintentarlo.';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;};
+ worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador. Vuelve a buscar para reintentarlo.';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;};
  return worker;
 }
 function startSearch(){
  $('#query').dispatchEvent(new Event('change'));
  const query=$('#query').value.trim(),kind=$('#search-kind').value;
- if(!query&&kind!=='locus'){$('#search-status').textContent='Escribí una palabra o frase.';$('#query').focus();return;}
+ if(!query&&kind!=='locus'){$('#search-status').textContent='Escribe una palabra o frase.';$('#query').focus();return;}
  if(kind==='internet'){searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return;}
  lastQuery=query||(roman(Number($('#filter-book').value))+( $('#filter-chapter').value?'.'+$('#filter-chapter').value:''));searchKind=kind;results=[];alignedGroups=[];translationRevision++;countSummary=null;renderCountSummary(null);shown=0;requestId++;
  $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();$('#search-status').textContent='Consultando el índice de los DOCX…';$('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
@@ -333,7 +333,7 @@ function scholarlyExcerpt(r,e){
   const raw=String(r.snippet||'');
   const glued=/(?:[a-záéíóúñü]{24,}|[a-záéíóúñü]{8,}-\s*[a-záéíóúñü]{1,})/i.test(raw);
   if(glued&&['recensio-es','recensio-fr','theory-en'].includes(e.id)){
-    return '<span class="book-source">La extracción del PDF contiene palabras pegadas o cortadas; no se muestra como transcripción académica. Consultá el documento original o el índice DOCX en preparación.</span>';
+    return '<span class="book-source">La extracción del PDF contiene palabras pegadas o cortadas; no se muestra como transcripción académica. Consulta el documento original o el índice DOCX en preparación.</span>';
   }
   return resultSnippet(r);
 }
@@ -429,7 +429,7 @@ async function renderRightTranslation(article,group){
   if(link)link.href=readerURL(ed.id,group.locus);
  }catch(e){
   if(revision!==translationRevision||!article.isConnected)return;
-  holder.textContent='No se pudo cargar la traducción '+languages[lang]+': '+e.message+'. Probá otro idioma o abrí el lector bilingüe.';
+  holder.textContent='No se pudo cargar la traducción '+languages[lang]+': '+e.message+'. Prueba otro idioma o abre el lector bilingüe.';
   source.textContent='';
  }
 }
@@ -462,7 +462,7 @@ function renderMore(){
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
        '<div class="parallel-heading"><span>LATÍN · TEXTO DE CONSULTA</span><strong>'+escapeHTML(e.version)+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):'')+'</strong></div>'+
        '<p class="parallel-passage">'+(parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
-       '<p class="parallel-small">Edición latina: '+escapeHTML(e.version)+'. Verificá las variantes en el aparato crítico.</p>'+
+       '<p class="parallel-small">Edición latina: '+escapeHTML(e.version)+'. Verifica las variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
        '<div class="parallel-heading"><label>TRADUCCIÓN · IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
@@ -503,7 +503,7 @@ function printResults(){
   const popup=window.open('','_blank');if(!popup){$('#search-status').textContent='Permití abrir la vista de impresión en tu navegador para guardar los resultados como PDF.';return;}
   const date=new Intl.DateTimeFormat('es-AR',{dateStyle:'long'}).format(new Date());
   const content=rows.map((r,i)=>{const e=edition(r.edition);const link=sourceURL(e,r.page);return `<article><div class="n">${i+1} · ${escapeHTML(e.version)} · ${escapeHTML(languageLabel(e))}</div><h2>${escapeHTML(bookTitle(e))}</h2><p class="ref">${bibliographyHTML(e)} ${escapeHTML(locusReference(r))}.</p><blockquote>${resultSnippet(r)}</blockquote><p class="url">Fuente: ${escapeHTML(link)}</p></article>`;}).join('');
-  popup.document.open();popup.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius — Resultados de ${escapeHTML(lastQuery)}</title><style>body{max-width:760px;margin:40px auto;color:#172b3c;font-family:Georgia,serif;line-height:1.65;padding:0 25px}h1{font-size:31px;font-weight:400;margin-bottom:6px}h2{font-size:20px;margin:5px 0;font-weight:400}.sub,.ref,.n,.url{font-family:Arial,sans-serif;font-size:10px;color:#626969}.n{font-size:9px;letter-spacing:.6px}article{border-top:1px solid #bbb;padding:20px 0;break-inside:avoid}blockquote{font-size:16px;margin:12px 0;text-align:justify;text-align-last:left;hyphens:none}.url{overflow-wrap:anywhere;font-size:8px}.tools{font-family:Arial,sans-serif;margin:25px 0;padding:15px;background:#eeece5}.tools button{background:#122a42;color:#fff;border:0;padding:12px;cursor:pointer}.tools p{font-size:11px}@page{size:A4;margin:20mm 18mm}@media print{body{margin:0;max-width:none;padding:0}.tools{display:none}h1{font-size:26px}}</style></head><body><h1>Vitruvius Digital Library</h1><p class="sub">LISTADO DE RESULTADOS · ${escapeHTML(date)}</p><p>Consulta: <strong>${escapeHTML(lastQuery)}</strong><br>Modo: ${searchKind==='semantic'?'Afinidad semántica':searchKind==='count'?'Recuento literal':'Búsqueda textual'}. ${rows.length} resultados incluidos de ${results.length}.${countSummary?`<br>Recuento: ${countSummary.total} apariciones en ${countSummary.passages} pasajes. ${countSummary.mode==='prefix'?'Palabras que empiezan por la raíz escrita.':'Palabra o secuencia exacta.'} Excluye notas y comentarios; se normalizan mayúsculas, acentos, u/v e i/j.`:''}</p><div class="tools"><button id="print">Imprimir / guardar como PDF</button><p>En el cuadro de impresión del navegador, elegí «Guardar como PDF». Las páginas indicadas corresponden al archivo PDF consultado.</p></div>${content}<p class="sub">Proyecto y edición de Diego Kurilo. Verificá las citas en los documentos de referencia.</p></body></html>`);popup.document.close();popup.document.getElementById('print').addEventListener('click',()=>popup.print());
+  popup.document.open();popup.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius — Resultados de ${escapeHTML(lastQuery)}</title><style>body{max-width:760px;margin:40px auto;color:#172b3c;font-family:Georgia,serif;line-height:1.65;padding:0 25px}h1{font-size:31px;font-weight:400;margin-bottom:6px}h2{font-size:20px;margin:5px 0;font-weight:400}.sub,.ref,.n,.url{font-family:Arial,sans-serif;font-size:10px;color:#626969}.n{font-size:9px;letter-spacing:.6px}article{border-top:1px solid #bbb;padding:20px 0;break-inside:avoid}blockquote{font-size:16px;margin:12px 0;text-align:justify;text-align-last:left;hyphens:none}.url{overflow-wrap:anywhere;font-size:8px}.tools{font-family:Arial,sans-serif;margin:25px 0;padding:15px;background:#eeece5}.tools button{background:#122a42;color:#fff;border:0;padding:12px;cursor:pointer}.tools p{font-size:11px}@page{size:A4;margin:20mm 18mm}@media print{body{margin:0;max-width:none;padding:0}.tools{display:none}h1{font-size:26px}}</style></head><body><h1>Vitruvius Digital Library</h1><p class="sub">LISTADO DE RESULTADOS · ${escapeHTML(date)}</p><p>Consulta: <strong>${escapeHTML(lastQuery)}</strong><br>Modo: ${searchKind==='semantic'?'Afinidad semántica':searchKind==='count'?'Recuento literal':'Búsqueda textual'}. ${rows.length} resultados incluidos de ${results.length}.${countSummary?`<br>Recuento: ${countSummary.total} apariciones en ${countSummary.passages} pasajes. ${countSummary.mode==='prefix'?'Palabras que empiezan por la raíz escrita.':'Palabra o secuencia exacta.'} Excluye notas y comentarios; se normalizan mayúsculas, acentos, u/v e i/j.`:''}</p><div class="tools"><button id="print">Imprimir / guardar como PDF</button><p>En el cuadro de impresión del navegador, elige «Guardar como PDF». Las páginas indicadas corresponden al archivo PDF consultado.</p></div>${content}<p class="sub">Proyecto y edición de Diego Kurilo. Verifica las citas en los documentos de referencia.</p></body></html>`);popup.document.close();popup.document.getElementById('print').addEventListener('click',()=>popup.print());
 }
 
 function downloadCSV(){
@@ -533,7 +533,7 @@ function emailResults(){
     lines.push(sourceURL(e,r.page));
     lines.push('');
   });
-  lines.push('Para enviar el PDF completo con todos los contextos: primero elegí «Imprimir / guardar PDF» en el sitio, guardá el archivo y adjuntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
+  lines.push('Para enviar el PDF completo con todos los contextos: primero elige «Imprimir / guardar PDF» en el sitio, guarda el archivo y adjúntalo manualmente a este correo. La página no puede adjuntar archivos automáticamente desde un enlace mailto.');
   let dialog=$('#email-dialog');if(!dialog){dialog=document.createElement('dialog');dialog.id='email-dialog';dialog.className='reader-dialog';document.body.append(dialog);}dialog.replaceChildren();const title=document.createElement('h2');title.textContent='Correo preparado';const close=document.createElement('button');close.type='button';close.textContent='Cerrar';close.addEventListener('click',()=>dialog.close());const text=document.createElement('textarea');text.readOnly=true;text.style.cssText='width:100%;min-height:320px;padding:20px';text.value=subject+'\n\n'+lines.filter(Boolean).join('\n');const open=document.createElement('a');open.textContent='Abrir mi aplicación de correo ↗';open.href='mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.filter(Boolean).join('\n'));dialog.append(title,close,text,open);dialog.showModal();
 }
 
@@ -558,7 +558,7 @@ async function initialize(){
     searchInternet($('#internet-query').value,$('#internet-provider').value,$('#internet-vitruvio').checked);
   });
   const loads=await Promise.allSettled([fetchJSON('data/catalog.json?v=20261030-citations'),fetchJSON('data/historical.json'),fetchJSON('data/supplements.json'),fetchJSON('data/site-metrics.json?v=20261102-audit')]);
-  if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recargá la página para intentarlo de nuevo.');return;}
+  if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recarga la página para intentarlo de nuevo.');return;}
   catalog=loads[0].value;records=[...catalog.editions,...(loads[1].status==='fulfilled'?loads[1].value:[])];
   for(const e of records)if(e.id.startsWith('gudianus'))e.category='manuscripts';
   // Audited statistics distinguish repertory records from distinct works
@@ -614,8 +614,8 @@ async function initialize(){
   }
   if(!records.some(e=>e.searchable&&e.text_index)){
     const input=document.querySelector('#query');
-    if(input)input.placeholder='Corpus textual en incorporación; podés buscar en Google y Google Académico';
-    $('#search-status').textContent='Los índices textuales todavía no están publicados. La búsqueda dentro de los libros estará disponible cuando se incorporen. Mientras tanto, podés consultar las fuentes externas.';
+    if(input)input.placeholder='Corpus textual en incorporación; puedes buscar en Google y Google Académico';
+    $('#search-status').textContent='Los índices textuales todavía no están publicados. La búsqueda dentro de los libros estará disponible cuando se incorporen. Mientras tanto, puedes consultar las fuentes externas.';
   }
   if(loads[1].status==='rejected')$('#catalog-status').textContent+=' · El catálogo externo no se pudo cargar.';
   const supplements=loads[2].status==='fulfilled'?loads[2].value:[];
@@ -649,5 +649,5 @@ async function initialize(){
     startSearch();
   }
 }
-initialize().catch(()=>showError($('#catalog-status'),'No se pudo iniciar el catálogo. Recargá la página.'));
+initialize().catch(()=>showError($('#catalog-status'),'No se pudo iniciar el catálogo. Recarga la página.'));
 

@@ -20,7 +20,8 @@
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/iconografia-vitruviana.css?v=20261103-atlas-01">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Atlas Iconographicus Vitruvianus","description":"Independent research atlas of historic images, Roman architectural diagrams, manuscript folios and selected IIIF reproductions associated with De architectura; including provenance and evidence status.","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/iconografia-vitruviana.html","creator":{"@type":"Person","name":"Diego A. Kurilo"},"isPartOf":{"@type":"CollectionPage","name":"Vitruvius Digital Library","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/"},"isAccessibleForFree":true,"inLanguage":"es"}</script>
-</head>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script></head>
 <body>
 <div id="atlas-language-toolbar" role="group" aria-label="Idioma de la interfaz" style="position:fixed;top:14px;right:128px;z-index:10005;display:flex;align-items:center;gap:8px;padding:7px 10px;background:#243d51;color:#fff;border:1px solid #c5ad82;border-radius:5px;font:600 13px system-ui,sans-serif"><label for="atlas-language-select">🌐 Idioma</label><select id="atlas-language-select" aria-label="Cambiar idioma" style="padding:7px 9px;background:#152b3d;color:#fff;border:1px solid #af9872;border-radius:3px"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></div>
 <main class="atlas" id="contenido">
@@ -78,7 +79,7 @@
 <p id="atlas-loading" class="atlas-status" role="status">Preparando inventario y referencias institucionales…</p>
 <div class="count-bar"><h2>Folios, láminas y testimonios</h2><p id="atlas-count" aria-live="polite">Cargando registros…</p></div>
 <div id="atlas-grid" class="atlas-grid" aria-live="polite"></div>
-<p id="atlas-empty" hidden>No hay fichas que coincidan. Restablecé los filtros o probá otra expresión.</p>
+<p id="atlas-empty" hidden>No hay fichas que coincidan. Restablecé los filtros o prueba otra expresión.</p>
 <button id="atlas-more" class="atlas-load" type="button" hidden>Mostrar 24 fichas más</button>
 </section>
 <section class="atlas-footnotes">
@@ -88,6 +89,7 @@
 <p>Las reproducciones de e-rara, Bayerische Staatsbibliothek, British Library, Museo del Prado y otras entidades se atribuyen a sus respectivas instituciones, con enlaces al origen y a sus condiciones de reutilización. Ninguna imagen enlazada implica patrocinio institucional. Algunas reproducciones pueden no cargarse por políticas del servidor de origen: la ficha bibliográfica y el enlace original permanecerán accesibles.</p>
 <p><a href="data/iconografia-vitruviana.json">Consultar el inventario científico en JSON</a> · <a href="iiif-comparador.html">Comparador IIIF</a> · <a href="metodologia.html">Alcance y límites editoriales</a>.</p>
 </section>
+<section id="laminas-historicas" class="wrap" aria-labelledby="laminas-titulo" style="margin:40px auto"></section>
 </main>
 <dialog id="atlas-dialog" class="atlas-dialog" aria-label="Visor de documento histórico">
 <div class="viewer-header"><strong id="atlas-view-sub">Folio</strong>
@@ -120,4 +122,4 @@
 <script src="assets/theme.js" defer></script>
 <script src="assets/iconografia-vitruviana.js?v=20261103-cover-fix-08" type="module"></script>
 <script defer src="assets/atlas-language.js?v=20261103-native-control-04"></script>
-</body></html>
+<script src="assets/laminas-historicas.js?v=20261105-folder-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script></body></html>

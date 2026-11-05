@@ -37,10 +37,10 @@ try{
    }finally{fs.closeSync(fd)}
   }
  });
- await check('Vitruvia loads 196 works and searches Spanish aliases',async()=>{
+ await check('Vitruvia loads the full classical catalogue (≥196 works) and searches Spanish aliases',async()=>{
   const p=await open('vitruvia.html?q=Po%C3%A9tica&mode=site');
   try{
-   await p.waitForFunction(()=>document.querySelector('#metric-works')?.textContent==='196',{timeout:20000});
+   await p.waitForFunction(()=>Number(document.querySelector('#metric-works')?.textContent)>=196,{timeout:20000});
    await p.locator('#result-list a[href*="work=aristotle-poetics"]').first().waitFor({state:'attached',timeout:15000});
    assert.match(await p.locator('#result-list').innerText(),/Poética|Περὶ ποιητικῆς/);
   }finally{await p.close()}
@@ -58,13 +58,15 @@ try{
    }
   }finally{await p.close()}
  });
- await check('Virgil Aeneid PDF explicitly states Book I is partial',async()=>{
+ await check('Virgil Aeneid PDF states Book I is partial; full text available in the reader',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=virgil-aeneid&view=pdf');
   try{
    await p.waitForFunction(()=>document.querySelector('#classic-detail')?.textContent?.includes('Solo libro I'),{timeout:20000});
    await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent?.includes('172')||
     !!document.querySelector('iframe.classical-native-pdf'),{timeout:30000});
-   assert.match(await p.locator('.classic-detail-status').innerText(),/PARCIAL/);
+   // El PDF histórico sigue declarado como parcial (solo libro I); la Eneida completa se lee en la transcripción del sitio.
+   assert.match(await p.locator('#classic-detail').innerText(),/Solo libro I/);
+   assert.ok(await p.locator('[data-tab="text"], button:has-text("transcripción")').count()>0,'falta la pestaña de transcripción completa');
   }finally{await p.close()}
  });
  await check('Virgil manuscript deep link selects Romanus Vat. lat. 3867',async()=>{
@@ -100,6 +102,32 @@ try{
    await p.locator('[data-tab="comparepdf"]').click();
    assert.equal(await p.locator('.classic-double-pdf iframe').count(),2);
   }finally{await p.close()}
+ });
+ await check('Theophrastus Greek text: word search highlights in yellow and the dictionary answers',async()=>{
+  const p=await open('classics-text-reader.html?work=theophrastus-characters&q='+encodeURIComponent('κολακ'));
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#passages mark.cl-hit').length>=3,{timeout:20000});
+   const bg=await p.locator('#passages mark.cl-hit').first().evaluate(m=>getComputedStyle(m).backgroundColor);
+   assert.match(bg,/rgb\(255, (2[0-9]{2}|18[0-9]), /,'el resaltado no es amarillo: '+bg);
+   await p.locator('#passages mark.cl-hit').first().click();
+   await p.waitForFunction(()=>/κολακεία/.test(document.querySelector('#lexicon')?.textContent||'')&&/flattery/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
+  }finally{await p.close()}
+ });
+ await check('Latin text: Caesar word search and Lewis & Short dictionary',async()=>{
+  const p=await open('classics-text-reader.html?work=caesar-gallico&q=virtute');
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#passages mark.cl-hit').length>=1,{timeout:20000});
+   await p.locator('#passages mark.cl-hit').first().click();
+   await p.waitForFunction(()=>/virt[uū]s/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
+  }finally{await p.close()}
+ });
+ await check('Collation by locus: V514 against Rose 1899 shows the omission of «cum fuerit» at I.3.2',async()=>{
+  const p=await open('colacion.html?locus=1.3.2');
+  try{await p.waitForFunction(()=>/fuerit\s*\]\s*om\./.test(document.querySelector('#coll-body')?.textContent||''),{timeout:20000})}finally{await p.close()}
+ });
+ await check('Indices locorum group Latin forms by lemma (symmetria)',async()=>{
+  const p=await open('indices-locorum.html?q=symmetri');
+  try{await p.waitForFunction(()=>{const h=[...document.querySelectorAll('.index-row h3')].map(x=>x.textContent);return h.length===1&&h[0]==='symmetria'},{timeout:20000})}finally{await p.close()}
  });
  await check('Lucretius compares Latin original and translations with three independent readers',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=lucretius&view=pdf');

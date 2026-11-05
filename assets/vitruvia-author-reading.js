@@ -94,8 +94,8 @@ function render(rows,query,person){
   mention.after(makeReadingCard(b,true));
   anchorsUsed.add(mention);contextualCount++;
  }
- add(section,'h4',text('1 · Testimonios manuscritos, del más antiguo al más reciente','1 · Manuscript witnesses, earliest first','1 · Témoins manuscrits, du plus ancien au plus récent'));
  if(data.witnesses.length){
+ add(section,'h4',text('1 · Testimonios manuscritos, del más antiguo al más reciente','1 · Manuscript witnesses, earliest first','1 · Témoins manuscrits, du plus ancien au plus récent'));
   add(section,'p',text('Ordenados por la fecha de la copia documentada. Un testimonio parcial no equivale a un libro completo; la antigüedad se compara entre los registros identificados.','Ordered by the documented date of the copy. A partial witness is not a complete book; chronology applies to identified records.','Classés selon la date documentée de la copie. Un témoin partiel ne correspond pas à un livre complet ; la chronologie concerne les notices identifiées.'),'article-note');
   const ol=add(section,'ol');
   for(const [i,r] of data.witnesses.entries()){
@@ -105,12 +105,10 @@ function render(rows,query,person){
    link(li,text('Abrir visor','Open viewer','Ouvrir la visionneuse'),r.codexViewer||r.viewerUrl||r.link);
    const record=r.links?.find(x=>/ficha/i.test(x.label));if(record){add(li,'span',' · ');link(li,text('Ficha institucional','Institutional record','Notice institutionnelle'),record.url)}
   }
- }else add(section,'p',text('Aún no hay un testimonio manuscrito verificado para estas obras en el catálogo.','No verified manuscript witness is catalogued for these works yet.','Aucun témoin manuscrit vérifié n’est encore répertorié pour ces œuvres.'),'article-note');
+ }
  add(section,'h4',text('2 · Textos originales y fichas de obras','2 · Original texts and work records','2 · Textes originaux et notices des œuvres'));
  const originals=add(section,'ul');for(const b of data.books){const li=add(originals,'li');link(li,b.title,b.link);if(b.citationText)add(li,'small',' · '+b.citationText);else if(!b.localHosted)add(li,'small',text('Ficha de obra · lectura según disponibilidad de la fuente','Work record · reading depends on source availability','Notice de l’œuvre · lecture selon la disponibilité de la source'))}
- add(section,'h4',text('3 · Traducciones académicas identificadas','3 · Identified scholarly translations','3 · Traductions scientifiques identifiées'));
- if(data.translations.length){const ol=add(section,'ol');for(const r of data.translations){const li=add(ol,'li');link(li,r.workTitle+' · '+r.title,r.url);add(li,'p',r.note,'article-note');add(li,'small',r.fulltext?text('Lectura enlazada · edición identificada','Linked reading · identified edition','Lecture liée · édition identifiée'):text('Ficha bibliográfica · acceso al texto según la institución','Bibliographic record · text access depends on the institution','Notice bibliographique · accès au texte selon l’institution'));}}
- else add(section,'p',text('No hay traducciones académicas verificadas vinculadas todavía.','No verified scholarly translations have been linked yet.','Aucune traduction scientifique vérifiée n’est encore liée.'),'article-note');
+ if(data.translations.length){add(section,'h4',text('3 · Traducciones académicas identificadas','3 · Identified scholarly translations','3 · Traductions scientifiques identifiées'));const ol=add(section,'ol');for(const r of data.translations){const li=add(ol,'li');link(li,r.workTitle+' · '+r.title,r.url);add(li,'p',r.note,'article-note');add(li,'small',r.fulltext?text('Lectura enlazada · edición identificada','Linked reading · identified edition','Lecture liée · édition identifiée'):text('Ficha bibliográfica · acceso al texto según la institución','Bibliographic record · text access depends on the institution','Notice bibliographique · accès au texte selon l’institution'));}}
  body.append(section);return true;
 }
 window.VitruviaAuthorReading={select,render};

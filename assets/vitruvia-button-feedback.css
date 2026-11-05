@@ -1,0 +1,11 @@
+/* Respuesta visual sutil de los botones del buscador Vitruvia: estado activo, pulsación y foco.
+   Solo afecta al aspecto de los botones; no cambia la disposición ni el comportamiento. */
+:is(.tab,.academic-pill,.suggestions button,#submit,.search-privacy,.image-search-trigger,.clear-all){
+  transition:transform .08s ease,border-color .2s ease,box-shadow .2s ease}
+:is(.tab,.academic-pill,.suggestions button,#submit,.search-privacy,.image-search-trigger,.clear-all):active{
+  transform:scale(.98)}
+html body .tab[aria-pressed="true"]{box-shadow:inset 0 -2px 0 #C9A84C}
+:is(.tab,.academic-pill,.suggestions button,#submit,.search-privacy):focus-visible{
+  outline:1px solid #C9A84C;outline-offset:2px}
+html body :is(.academic-pill,.suggestions button).is-clicked{border-color:#C9A84C;box-shadow:0 0 0 1px rgba(201,168,76,.45)}
+@media (prefers-reduced-motion:reduce){:is(.tab,.academic-pill,.suggestions button,#submit):active{transform:none}}

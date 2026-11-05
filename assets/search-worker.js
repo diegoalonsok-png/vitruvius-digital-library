@@ -3,7 +3,7 @@ const cache=new Map();
 async function corpus(edition,baseURL){
  if(!cache.has(edition.id))cache.set(edition.id,(async()=>{
   const response=await fetch(new URL('data/structured/'+edition.id+'.json',baseURL));
-  if(!response.ok)throw Error('No se pudo cargar '+edition.version+'. Volvé a intentar.');
+  if(!response.ok)throw Error('No se pudo cargar '+edition.version+'. Vuelve a intentar.');
   const data=await response.json();
   if(!Array.isArray(data.passages)||data.edition!==edition.id)throw Error('Índice estructurado inválido: '+edition.version);
   return data;
@@ -15,7 +15,7 @@ self.onmessage=async({data:m})=>{
  try{
   
   const selected=m.editions.filter(e=>m.scope==='all'||m.scope==='principal'||e.id===m.scope);
-  if(!selected.length)throw Error('Elegí una edición con índice DOCX.');
+  if(!selected.length)throw Error('Elige una edición con índice DOCX.');
   self.postMessage({type:'progress',requestId:m.requestId,message:'Consultando pasajes por libro, capítulo y sección…'});
   const loaded=await Promise.allSettled(selected.map(e=>corpus(e,m.baseURL)));
   const datasets=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value);
@@ -34,7 +34,7 @@ self.onmessage=async({data:m})=>{
   // fabricating an exact match or silently returning zero.
   const identifyOtherWork=v=>/\bde\s+aqu(?:ae|e)ductu\s+urbis\s+rom(?:ae|e)\b/i.test(v.replace(/æ/g,'ae').replace(/Æ/g,'Ae'))||/\bde\s+aquis\s+urbis\s+rom(?:ae|e)\b/i.test(v.replace(/æ/g,'ae'));
   if(identifyOtherWork(requested)){
-    warnings.push('Esta expresión es el título de una obra de Sexto Julio Frontino (De aquaeductu urbis Romae), no una cita literal de De architectura. Para consultar el tema en Vitruvio, buscá aqua, aquaeductus o el Libro VIII.');
+    warnings.push('Esta expresión es el título de una obra de Sexto Julio Frontino (De aquaeductu urbis Romae), no una cita literal de De architectura. Para consultar el tema en Vitruvio, busca aqua, aquaeductus o el Libro VIII.');
     self.postMessage({type:'results',requestId:m.requestId,results:[],countSummary:null,warnings,semanticTerms:[]});
     return;
   }
@@ -229,7 +229,7 @@ self.onmessage=async({data:m})=>{
    }
    matches.sort((a,b)=>b.score-a.score||a.book-b.book||a.section-b.section);
    output.results=matches.slice(0,30);
-   if(matches.length)warnings.push('Cita aproximada de otra edición: resultados ordenados por vocabulario compartido; verificá el locus y el texto original antes de citar.');
+   if(matches.length)warnings.push('Cita aproximada de otra edición: resultados ordenados por vocabulario compartido; verifica el locus y el texto original antes de citar.');
   }
   if(!output.results.length&&m.kind!=='count'&&m.kind!=='locus'&&!direct&&!heading){
    // Graceful lexical fallback for phrases: return real source passages only.
@@ -275,7 +275,7 @@ self.onmessage=async({data:m})=>{
     const candidates=[...vocab].map(([word,count])=>({word,count,d:distance(needle,word)}))
       .filter(x=>x.d>0&&x.d<=threshold)
       .sort((a,b)=>a.d-b.d||b.count-a.count||a.word.localeCompare(b.word)).slice(0,5);
-    if(candidates.length)warnings.push('Posibles grafías documentadas en el corpus (sugerencias, no citas): '+candidates.map(x=>x.word).join(' · ')+'. Volvé a buscar la forma deseada.');
+    if(candidates.length)warnings.push('Posibles grafías documentadas en el corpus (sugerencias, no citas): '+candidates.map(x=>x.word).join(' · ')+'. Vuelve a buscar la forma deseada.');
   }
   // Automatic cross-language concordance by canonical locus. No fixed term list:
   // every indexed word can bring up its aligned Latin/ES/FR/EN passage.
@@ -301,10 +301,10 @@ self.onmessage=async({data:m})=>{
     }
     if(aligned.size){
       output.results.push(...aligned.values());
-      warnings.push('Se incluyen '+aligned.size+' textos paralelos recuperados automáticamente por locus. Los pasajes alineados no prueban la equivalencia palabra por palabra; verificá las traducciones.');
+      warnings.push('Se incluyen '+aligned.size+' textos paralelos recuperados automáticamente por locus. Los pasajes alineados no prueban la equivalencia palabra por palabra; verifica las traducciones.');
     }
   }
-  if(!output.results.length)warnings.push('Sin coincidencias en los documentos indexados con esta consulta. Probá otra forma, un lema más breve o un locus como IV.1.');
+  if(!output.results.length)warnings.push('Sin coincidencias en los documentos indexados con esta consulta. Prueba otra forma, un lema más breve o un locus como IV.1.');
   self.postMessage({type:'results',requestId:m.requestId,...output,warnings});
  }catch(error){self.postMessage({type:'error',requestId:m.requestId,message:error.message||'No se pudo completar la consulta.'});}
 };

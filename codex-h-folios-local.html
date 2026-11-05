@@ -79,7 +79,9 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 @media(max-width:650px){#grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card img{height:108px}.card{padding:4px}#stage{min-height:360px;height:65vh}}
 @media print{.toolbar,.gallery,nav{display:none}#stage{height:auto;overflow:visible}}
 </style><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
-<link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"></head><body><main>
+<link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego A."><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
+</head><body><main>
 <nav><a href="index.html">← Biblioteca principal</a><a href="scriptorium.html">Scriptorium histórico</a><a href="harleianus.html">Visor IIIF existente</a></nav>
 <header><small>LECTIO · IMAGO · HARLEIANUS 2767 · TESTIMONIVM CAROLINGIVM</small><h1>Codex H · Folios</h1>
 <p>Vitruvio, <em>De architectura</em>. The British Library, Harley MS 2767, primer cuarto del siglo IX. Galería local ordenada según la secuencia y las etiquetas originales de su digitalización.</p></header>
@@ -89,14 +91,14 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span><label>Elegir folio <select id="folio-select" aria-label="Elegir por folio o número de imagen" disabled><option value="">Cargando los folios…</option></select></label>
 <button id="minus" disabled>−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" disabled></label><output id="percent">100%</output><button id="plus" disabled>+ Ampliar</button><button id="fit" disabled>Ajustar</button></div>
 <div id="stage" tabindex="0" aria-label="Folio ampliable, clic para aumentar"><p id="message">La galería se abrirá cuando se verifique el archivo maestro.</p><img id="image" hidden alt="Folio manuscrito del Codex H"></div>
-<p>Hacé clic en la imagen para ampliar la zona señalada. Desplazate por el visor con las barras horizontal y vertical.</p><div id="folio-quick" aria-label="Accesos rápidos a los primeros folios"></div></section>
+<p>Haz clic en la imagen para ampliar la zona señalada. Desplázate por el visor con las barras horizontal y vertical.</p><div id="folio-quick" aria-label="Accesos rápidos a los primeros folios"></div></section>
 <section class="gallery" id="h-folios" aria-label="Galería de miniaturas">
-<h2>Buscar por imagen · Galería visual del Codex H</h2><p>Todos los folios en orden digital y con sus etiquetas IIIF originales. Seleccioná una miniatura para leerla arriba.</p>
-<div class="filter"><input id="search" type="search" placeholder="f.1r · f.16v · imagen 150" aria-label="Buscar folio o número"><button id="reset">Mostrar todas</button></div>
+<h2>Buscar por imagen · Galería visual del Codex H</h2><p>Todos los folios en orden digital y con sus etiquetas IIIF originales. Selecciona una miniatura para leerla arriba.</p>
+<div class="filter"><input id="search" type="search" placeholder="f. 45v · ff. 12r–14v · Vitr. 3 praef. 1 · symmetria" aria-label="Buscar por folio, intervalo, guarda, imagen digital, locus de Vitruvio o palabra latina"><button id="reset">Mostrar todas</button></div>
 <p id="gallery-status" role="status">Comprobando índice…</p><div id="grid"></div><button id="more" hidden>Mostrar más folios</button></section>
 <footer><p><strong>Créditos institucionales:</strong> The British Library, London, Harley MS 2767, Vitruvius, <em>De architectura</em>. Digitalización y etiquetas de folio procedentes del <a href="https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">manifiesto IIIF institucional</a>. Condiciones citadas por el proveedor: «Public Domain in most countries, other than the UK»; deben respetarse las condiciones aplicables.</p>
 <p>El repositorio conserva los nombres originales, la correspondencia de imagen y la huella SHA-256. No se presenta una equivalencia entre folios y loci sin cotejo.</p></footer>
-</main><script>
+</main><script src="assets/codicological-query.js?v=20261105-cq-v1"></script><script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script><script>
 (()=>{"use strict";const $=id=>document.getElementById(id);
 const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
 let folios=[],filtered=[],count=0,position=8,zoom=100,seq=0;const stage=$("stage"),img=$("image");
@@ -111,37 +113,97 @@ function setZoom(z,cx,cy){
 }
 function open(index,scroll=false){
  if(index<0||index>=folios.length)return;
- position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("folio-select").value=String(index);$("label").textContent="Folio: "+f.etiquetaOriginal;
+ position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("folio-select").value=String(index);$("label").textContent="Folio: "+fol(f.etiquetaOriginal);showLocus(f.etiquetaOriginal);setTimeout(()=>saveFolio(f.etiquetaOriginal),50);
  $("prev").disabled=index===0;$("next").disabled=index===folios.length-1;
- $("message").textContent="Cargando "+f.etiquetaOriginal+"…";$("message").hidden=false;img.hidden=true;
- img.onload=()=>{if(ticket!==seq)return;img.hidden=false;$("message").hidden=true;setZoom(100);stage.scrollTo({left:0,top:0});$("state").textContent="Imagen digital "+(index+1)+"/"+folios.length+" · "+f.etiquetaOriginal+" · "+img.naturalWidth+" × "+img.naturalHeight+" px"};
+ $("message").textContent="Cargando "+fol(f.etiquetaOriginal)+"…";$("message").hidden=false;img.hidden=true;
+ img.onload=()=>{if(ticket!==seq)return;img.hidden=false;$("message").hidden=true;setZoom(100);stage.scrollTo({left:0,top:0});$("state").textContent="Imagen digital "+(index+1)+"/"+folios.length+" · "+fol(f.etiquetaOriginal)+" · "+img.naturalWidth+" × "+img.naturalHeight+" px"};
  img.onerror=()=>{if(ticket!==seq)return;$("message").textContent="No se pudo abrir esta fotografía local; el índice conserva la referencia.";};
- img.alt="Harley MS 2767 · "+f.etiquetaOriginal+" · imagen digital "+(index+1);img.src=file(f);
+ img.alt="Harley MS 2767 · "+fol(f.etiquetaOriginal)+" · imagen digital "+(index+1);img.src=file(f);
  $("grid").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));$("folio-quick").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));
  if(scroll)document.querySelector("section[aria-label='Lector de folios']").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function append(){const last=Math.min(filtered.length,count+48),frag=document.createDocumentFragment();for(const i of filtered.slice(count,last)){
  const f=folios[i],b=document.createElement("button");b.className="card";b.type="button";b.dataset.i=i;b.setAttribute("aria-current",String(i===position));
- const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+f.etiquetaOriginal;image.src=file(f);
- const n=document.createElement("strong"),label=document.createElement("span");n.textContent="Imagen "+(i+1);label.textContent=f.etiquetaOriginal;
+ const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+fol(f.etiquetaOriginal);image.src=file(f);
+ const n=document.createElement("strong"),label=document.createElement("span");n.textContent="Imagen "+(i+1);label.textContent=fol(f.etiquetaOriginal);
  b.append(image,n,label);b.addEventListener("click",()=>open(i,true));frag.append(b)}
  $("grid").append(frag);count=last;$("more").hidden=count>=filtered.length;$("gallery-status").textContent=filtered.length+" imágenes coincidentes · "+count+" miniaturas visibles"}
-function filter(){const raw=$("search").value.replace(/^imagen\s*/i,""),q=norm(raw);filtered=folios.map((_,i)=>i).filter(i=>!q||String(i+1)===q||norm(folios[i].etiquetaOriginal).includes(q));count=0;$("grid").replaceChildren();if(filtered.length)append();else{$("gallery-status").textContent="Sin coincidencias";$("more").hidden=true}}
+const fol=x=>String(x||"").replace(/^(fs?)\.\s*(?=[0-9ivxlc])/i,(m,p)=>p+". ");let locusMap=null,locusInfo=null;
+function saveFolio(label){let sp=document.getElementById("h-save");if(!sp){sp=document.createElement("span");sp.id="h-save";sp.style.marginLeft="10px";(document.getElementById("h-locus")||$("label")).after(sp)}
+ sp.replaceChildren();if(!window.ResearchFolder)return;const f=fol(label);sp.append(ResearchFolder.button({id:"folio:H:"+label,kind:"folio",title:"Londres, British Library, Harley MS 2767 (H), "+f,ref:"Vitruvio, De architectura · fotografía local",url:"codex-h-folios-local.html?folio="+encodeURIComponent(f)}))}
+function showLocus(label){let el=document.getElementById("h-locus");if(!el){el=document.createElement("span");el.id="h-locus";el.style.cssText="font-size:.92em;margin-left:6px";$("label").after(el)}
+ el.textContent="";if(!window.CodexHConcordance)return;const k=String(label||"").replace(/^f\./,"");
+ window.CodexHConcordance.forFolio(k).then(r=>{if(!r.book){el.textContent="";return}
+  const C=window.CodexHConcordance,mat=r.entry&&r.entry.loci&&(r.entry.loci.find(l=>l.extent==="starts"||l.extent==="full")||r.entry.loci.find(l=>l.extent!=="within"));
+  const loc=mat?mat.locus:r.estimate;el.replaceChildren();
+  el.append("· Libro "+r.book.roman+" ("+(mat?C.label(mat.status):"posición estimada")+"): ");
+  if(loc){const a=document.createElement("a");a.href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(loc);a.textContent=(mat?"":"≈ ")+C.cite(loc)+" →";a.title="Abrir este pasaje en el lector bilingüe con su aparato";el.append(a)}
+ }).catch(()=>{})}const CQ=()=>window.CodexQuery;
+function resolveQuery(text){const raw=String(text||"").trim();if(!raw)return {indices:null,note:""};const Q=CQ();
+ if(Q){const p=Q.parse(raw),labels=folios.map(f=>f.etiquetaOriginal);
+  if(p.image&&p.image>=1&&p.image<=folios.length)return {indices:[p.image-1],note:"Imagen digital "+p.image+" = "+fol(folios[p.image-1].etiquetaOriginal)+" (el número de imagen no es el folio)"};
+  if(p.range||p.folios.length){const hits=Q.match(p,labels);return {indices:hits,note:hits.length?"Consulta codicológica: Harley MS 2767, "+p.display+" · "+hits.length+" imagen(es)":"Harley MS 2767 no tiene "+p.display+" en la foliación IIIF"}}
+  if(p.locus){const c=locusInfo&&locusInfo.locus===p.locus?locusInfo:null;
+   if(c){const ex=c.exact.filter(x=>x.status!=="catalogue"),f=ex.length?ex[0].folio:c.estimate?.folio;
+    const hit=f?labels.findIndex(l=>Q.labelKey(l)===Q.labelKey("f."+f)):-1;
+    const note=ex.length?p.locusLabel+" → Harley MS 2767, f. "+ex[0].folio+" · "+window.CodexHConcordance.label(ex[0].status):
+     c.book?p.locusLabel+" → libro "+c.book.roman+" de H, ff. "+c.book.start+"–"+c.book.end+" (límites verificados en las rúbricas)"+(c.estimate?"; posición estimada f. "+c.estimate.folio+" (proporción de texto, no colación)":""):p.locusLabel+": locus sin correspondencia en H";
+    return {indices:hit>=0?[hit]:[],note}}
+   if(window.CodexHConcordance){window.CodexHConcordance.locate(p.locus).then(c=>{locusInfo=c;filter();if(filtered.length&&$("search").dataset.go==="1"){$("search").dataset.go="";open(filtered[0],true)}}).catch(()=>{})}
+   return {indices:[],note:p.locusLabel+": consultando la concordancia…"}}}
+ if(Q&&/[a-zà-ÿ]{3,}/i.test(raw)&&!/^(?:f|fs|fse|front|back|spine|imagen)\b/i.test(raw.trim()))latinSearch(raw);else clearLatin();
+ const q=norm(raw.replace(/^imagen\s*/i,"")).replace(/\s+/g,"");
+ return {indices:folios.map((_,i)=>i).filter(i=>String(i+1)===q||norm(folios[i].etiquetaOriginal).replace(/\s+/g,"").includes(q)),note:""}}
+
+/* Búsqueda de palabras latinas en el texto de V514, ordenada por libro y por prefacio / capítulos, con su folio en H. */
+let latinTicket=0;
+function clearLatin(){const b=document.getElementById("latin-hits");if(b)b.replaceChildren()}
+function latinBox(){let b=document.getElementById("latin-hits");if(!b){b=document.createElement("div");b.id="latin-hits";b.setAttribute("aria-live","polite");b.style.cssText="margin:10px 0 18px";document.getElementById("gallery-status").after(b)}return b}
+async function latinSearch(raw){const C=window.CodexHConcordance;if(!C)return;const my=++latinTicket;
+ const fold=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
+ const terms=fold(raw).split(/[^a-z]+/).filter(t=>t.length>=3);if(!terms.length){clearLatin();return}
+ const d=await C.load();if(my!==latinTicket)return;
+ const hits=d.passages.filter(p=>{const t=fold(p.latin);return terms.every(w=>new RegExp("(^|[^a-z])"+w).test(t))});
+ const box=latinBox();box.replaceChildren();
+ if(!hits.length){box.textContent="«"+raw+"» no aparece en el latín de V514.";return}
+ const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"],groups=new Map();
+ for(const h of hits){const k=h.book+"|"+(h.locus.includes(".praef.")?"praef":"cap");if(!groups.has(k))groups.set(k,[]);groups.get(k).push(h)}
+ const head=document.createElement("p");head.style.cssText="font-weight:600;margin:0 0 6px";head.textContent="«"+raw+"» en el latín de V514: "+hits.length+" pasajes, ordenados por libro y por prefacio / capítulos, con su folio en H.";box.append(head);const tl=document.createElement("a");tl.href="termino.html?t="+encodeURIComponent(raw.trim());tl.textContent="Ficha del término «"+raw.trim()+"» →";tl.style.cssText="display:inline-block;margin:0 0 8px";box.append(tl);
+ let gi=0;for(const [k,list] of groups){const [b,part]=k.split("|"),br=d.bookRanges.get(+b);
+  const det=document.createElement("details");det.open=groups.size<=4||gi++===0;const sum=document.createElement("summary");
+  sum.textContent="Libro "+R[b]+" · "+(part==="praef"?"Prefacio":"Capítulos")+(br?" (H, ff. "+(part==="praef"?br.start+"–"+(br.chapter1||br.end):(br.chapter1||br.start)+"–"+br.end)+")":"")+" · "+list.length;det.append(sum);
+  for(const h of list.slice(0,40)){const row=document.createElement("div");row.style.cssText="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:5px 0";
+   const t=fold(h.latin),w=terms[0],i=t.search(new RegExp("(^|[^a-z])"+w)),at=i<0?0:i+(t[i]===w[0]?0:1);
+   const snip=document.createElement("span");snip.style.flex="1 1 380px";snip.append(C.cite(h.locus)+" · "+(at>60?"…":"")+h.latin.slice(Math.max(0,at-60),at));
+   const m=document.createElement("mark");m.textContent=h.latin.slice(at,at+w.length+8).split(/[\s,.;:]/)[0];snip.append(m,h.latin.slice(at+m.textContent.length,at+m.textContent.length+70)+"…");
+   const btn=document.createElement("button");btn.type="button";btn.textContent="Ver en H";btn.style.cssText="min-height:32px;padding:4px 10px";
+   btn.addEventListener("click",async()=>{const c=await C.locate(h.locus);const ex=c.exact.find(x=>x.status!=="catalogue"),f=ex?ex.folio:c.estimate&&c.estimate.folio;
+    const idx=f?folios.findIndex(x=>window.CodexQuery.labelKey(x.etiquetaOriginal)===f):-1;if(idx>=0)open(idx,true);
+    btn.textContent=f?"f. "+f+(ex?" · verificado":" · estimado"):"sin folio"});
+   const rd=document.createElement("a");rd.href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(h.locus)+"&q="+encodeURIComponent(raw);rd.textContent="Leer →";
+   row.append(snip,btn,rd);det.append(row)}
+  if(list.length>40){const more=document.createElement("p");more.textContent="… y "+(list.length-40)+" pasajes más en este grupo.";det.append(more)}
+  box.append(det)}
+}
+function filter(){const r=resolveQuery($("search").value);filtered=r.indices===null?folios.map((_,i)=>i):r.indices;count=0;$("grid").replaceChildren();if(filtered.length){append();if(r.note)$("gallery-status").textContent=r.note+" · "+$("gallery-status").textContent}else{$("gallery-status").textContent=r.note||(/[a-zà-ÿ]{3,}/i.test($("search").value)?"Ningún folio lleva esa etiqueta; si es una palabra latina, los pasajes y sus folios aparecen debajo.":"Sin coincidencias");$("more").hidden=true}}
 $("prev").addEventListener("click",()=>open(position-1));$("next").addEventListener("click",()=>open(position+1));$("number").addEventListener("change",()=>open(+$("number").value-1));$("folio-select").addEventListener("change",()=>open(Number($("folio-select").value),true));
 $("minus").addEventListener("click",()=>setZoom(zoom-25));$("plus").addEventListener("click",()=>setZoom(zoom+25));$("fit").addEventListener("click",()=>{setZoom(100);stage.scrollTo({top:0,left:0})});
 $("zoom").addEventListener("input",()=>setZoom(+$("zoom").value));img.addEventListener("click",e=>setZoom(zoom+50,e.clientX,e.clientY));
-$("search").addEventListener("input",filter);$("reset").addEventListener("click",()=>{$("search").value="";filter()});$("more").addEventListener("click",append);
+$("search").addEventListener("input",filter);$("search").addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();$("search").dataset.go="1";filter();if(filtered.length){$("search").dataset.go="";open(filtered[0],true)}});$("reset").addEventListener("click",()=>{$("search").value="";filter()});$("more").addEventListener("click",append);
 fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
  if(d.totalImagenes!==341||!Array.isArray(d.imagenes)||d.imagenes.length!==341||d.imagenes.some((x,i)=>x.numeroImagen!==i+1||!/^H_\d{3}_[a-z0-9-]+\.jpg$/.test(x.archivo)))throw Error("Índice inválido o incompleto");
  folios=d.imagenes;$("total").textContent="/ 341";$("number").max=341;
  const picker=$("folio-select"),fragment=document.createDocumentFragment();
- for(let i=0;i<folios.length;i++){const option=document.createElement("option");option.value=String(i);option.textContent=folios[i].etiquetaOriginal+" · imagen "+(i+1);fragment.append(option)}
+ for(let i=0;i<folios.length;i++){const option=document.createElement("option");option.value=String(i);option.textContent=fol(folios[i].etiquetaOriginal)+" · imagen "+(i+1);fragment.append(option)}
  picker.replaceChildren(fragment);picker.disabled=false;
  const quick=$("folio-quick");quick.replaceChildren();
- for(let i=8;i<Math.min(20,folios.length);i++){const button=document.createElement("button");button.type="button";button.dataset.i=String(i);button.textContent=folios[i].etiquetaOriginal;button.addEventListener("click",()=>open(i,true));quick.append(button)}
+ for(let i=8;i<Math.min(20,folios.length);i++){const button=document.createElement("button");button.type="button";button.dataset.i=String(i);button.textContent=fol(folios[i].etiquetaOriginal);button.addEventListener("click",()=>open(i,true));quick.append(button)}
  for(const id of ["prev","next","number","minus","plus","fit","zoom"])$(id).disabled=false;
- filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));const initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);open(initial>=0?initial:8);
+ filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));let initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);
+ const asked=params.get("q")||(initial<0?params.get("folio")||params.get("locus"):"");
+ const go=()=>{if(asked){$("search").value=asked;$("search").dataset.go="1";filter();if(filtered.length)$("search").dataset.go="";if(initial<0&&filtered.length)initial=filtered[0]}open(initial>=0?initial:8)};
+ fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-single-controls.js?v=20261104-reader-controls-contrast-v3" defer></script><script src="assets/vitruvia-codex-loupe.js?v=20261104-filter-linked-loupe-v2" defer></script>
-<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script></body></html>
+</script><script src="assets/codex-h-single-controls.js?v=20261105-a11y-v1" defer></script><script src="assets/vitruvia-codex-loupe.js?v=20261104-filter-linked-loupe-v2" defer></script>
+<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script><script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".gallery .filter");const c=document.createElement("div");f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const s=document.getElementById("search");s.value=t;s.dispatchEvent(new Event("input"))}});});</script><script src="assets/research-folder.js?v=20261105-v1" defer></script></body></html>

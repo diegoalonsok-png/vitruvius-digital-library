@@ -52,7 +52,7 @@ function render(){
  visible.sort((a,b)=>sort==='author'?a.author.localeCompare(b.author,'es'):a.sort-b.sort||a.author.localeCompare(b.author,'es'));
  $('ancient-count').textContent=visible.length+' de '+works.length+' fichas visibles · '+works.filter(r=>r.status==='perdido').length+' referencias a obras perdidas · '+works.filter(r=>r.status==='conservado').length+' obras conservadas.';
  const parent=$('ancient-results');parent.replaceChildren();
- if(!visible.length){parent.append(elt('p',{},'No hay coincidencias con estos filtros. Probá con otro término o dejá los filtros en «Todas».'));return;}
+ if(!visible.length){parent.append(elt('p',{},'No hay coincidencias con estos filtros. Prueba con otro término o dejá los filtros en «Todas».'));return;}
  const fragment=document.createDocumentFragment();
  for(const r of visible)fragment.append(resultCard(r));
  parent.append(fragment);
@@ -64,4 +64,4 @@ try{
  if(!response.ok)throw Error('HTTP '+response.status);
  const data=await response.json();
  works=data.works||[];render();
-}catch(error){$('ancient-count').textContent='No se pudo cargar la bibliografía: '+error.message+'. Recargá la página para intentar nuevamente.';}
+}catch(error){$('ancient-count').textContent='No se pudo cargar la bibliografía: '+error.message+'. Recarga la página para intentar nuevamente.';}

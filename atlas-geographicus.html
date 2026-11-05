@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script defer src="assets/theme.js"></script>
-<script defer src="assets/atlas-geographicus.js?v=20261103-people-seas-11"></script>
+<script defer src="assets/atlas-geographicus.js?v=20261105-pleiades-v1"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Atlas Geographicus Vitruvianus","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/atlas-geographicus.html","creator":{"@type":"Person","name":"Diego A. Kurilo"},"isAccessibleForFree":true,"inLanguage":"es","about":{"@type":"CreativeWork","name":"De architectura","author":{"@type":"Person","name":"Vitruvius"}}}</script>
 <style>
 .geography{max-width:1510px;margin:0 auto;padding:26px clamp(16px,3vw,44px) 70px;color:var(--ink,#223646);line-height:1.65}
@@ -167,11 +167,12 @@ html[data-theme="dark"] .place-dossier #dossier-loci a:focus-visible{
 }
 @media print {.geography #place-loci a,.place-dossier #dossier-loci a{background:#fff!important;color:#111!important;border-color:#777!important}}
 </style>
-</head>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script></head>
 <body>
 <div id="atlas-language-toolbar" role="group" aria-label="Idioma de la interfaz" style="position:fixed;top:14px;right:128px;z-index:10005;display:flex;align-items:center;gap:8px;padding:7px 10px;background:#243d51;color:#fff;border:1px solid #c5ad82;border-radius:5px;font:600 13px system-ui,sans-serif"><label for="atlas-language-select">🌐 Idioma</label><select id="atlas-language-select" aria-label="Cambiar idioma" style="padding:7px 9px;background:#152b3d;color:#fff;border:1px solid #af9872;border-radius:3px"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></div>
 <main class="geography">
-<nav aria-label="Navegación"><a href="index.html">← Biblioteca principal</a> · <a href="onomasticon.html">Onomasticon</a> · <a href="indices-locorum.html">Índices locorum</a> · <a href="basilica-fano.html">Basílica de Fano</a> · <a href="iconografia-vitruviana.html">Atlas iconográfico</a></nav>
+<nav aria-label="Navegación"><a href="index.html">← Biblioteca principal</a> · <a href="onomasticon.html">Onomasticon</a> · <a href="indices-locorum.html">Índices locorum</a> · <a href="basilica-fano.html">Basílica de Fano</a> · <a href="iconografia-vitruviana.html">Atlas iconográfico</a><a href="mapas-antiguos.html">Mapas antiguos con folio</a></nav>
 <p class="eyebrow">GEOGRAPHIA VITRVVIANA · TOPONYMA · TESTIMONIA</p>
 <h1>Atlas Geographicus Vitruvianus</h1>
 <p class="introduction" id="geo-intro">Mapa académico de ciudades y lugares citados en los diez libros de <em>De architectura</em>, con tres niveles de denominación: <strong>nombre latino histórico, equivalente griego documentado como referencia y nombre moderno</strong>. Incluye Fanum Fortunae (Fano) y su basílica descrita en el libro V.</p>
@@ -256,7 +257,7 @@ html[data-theme="dark"] .place-dossier #dossier-loci a:focus-visible{
 <h3>Identificación histórica y filológica</h3>
 <dl id="dossier-fields"></dl>
 <h3>Referencias a los libros de Vitruvio</h3>
-<p>Seleccioná una referencia para abrir el texto latino y sus traducciones en el lector de la biblioteca.</p>
+<p>Selecciona una referencia para abrir el texto latino y sus traducciones en el lector de la biblioteca.</p>
 <nav id="dossier-loci" aria-label="Loci de De architectura"></nav>
 <section class="dossier-passage" aria-labelledby="dossier-passage-heading">
  <h3>Texto original y traducción castellana</h3>

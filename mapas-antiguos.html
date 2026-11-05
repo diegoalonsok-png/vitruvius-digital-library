@@ -1,0 +1,38 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tabulae geographicae · Mapas antiguos y planos históricos · Vitruvius Digital Library</title>
+<meta name="description" content="Mapas antiguos y planos históricos del más antiguo al más reciente, con fecha, lugar, personalidad asociada, signatura, folio y relación con Vitruvio.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css?v=20261030-docx-1">
+<link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1">
+<link rel="stylesheet" href="assets/theme.css?v=20261030-docx-1">
+<link rel="stylesheet" href="assets/academic.css?v=20261103-pair2">
+<style>
+.maps-main{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+.maps-eyebrow{font:600 11px/1.4 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#9a7c3c}
+.maps-main h1{font-family:Georgia,serif;font-weight:500;margin:.2em 0 .2em;font-size:clamp(2rem,5vw,3rem)}
+.map-tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.map-tools input,.map-tools select{padding:9px 11px;border:1px solid rgba(150,130,95,.6);background:transparent;color:inherit;font:14px system-ui,sans-serif}
+.map-card{display:grid;grid-template-columns:minmax(220px,38%) 1fr;gap:22px;border-top:1px solid rgba(150,130,95,.45);padding:22px 0}
+.map-figure{margin:0}.map-figure img{width:100%;height:auto;max-height:420px;object-fit:contain;background:rgba(128,110,75,.08);border:1px solid rgba(150,130,95,.35)}
+.map-noimg{font-size:13px;opacity:.75;border:1px dashed rgba(150,130,95,.5);padding:28px 14px;text-align:center}
+.map-date{font:600 12px/1.4 Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase;color:#9a7c3c;margin:0}
+.map-body h2{font:400 26px/1.2 Georgia,serif;margin:4px 0 10px}
+.map-body dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:14px;margin:0 0 10px}.map-body dt{font-weight:600;opacity:.8}.map-body dd{margin:0}
+.map-vitr{border-left:2px solid #C9A84C;padding-left:10px}.map-links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px}.map-cite{font-size:12px;opacity:.75}
+@media(max-width:760px){.map-card{grid-template-columns:1fr}}
+</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><meta name="citation_title" content="Vitruvius Digital Library · datos e índices descargables"><meta name="citation_author" content="Kurilo, Diego A."><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/datos.html">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/mapas-antiguos.html"></head><body>
+<header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="index.html"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a><nav aria-label="Navegación"><a href="atlas-geographicus.html">Atlas geográfico</a><a href="iconografia-vitruviana.html">Atlas iconográfico</a><a href="codex-h-folios-local.html">Codex H</a></nav><button class="theme-switch" type="button">Oscuro</button></div></header>
+<main class="maps-main" id="contenido">
+<p class="maps-eyebrow">Atlas Geographicus Vitruvianus · Tabulae geographicae</p>
+<h1>Mapas antiguos y planos históricos</h1>
+<p>Del plano marmóreo de Roma a los grabados del siglo XVIII: cada mapa con su fecha, lugar, personalidad asociada, institución, signatura, folio y relación con el texto de Vitruvio.</p>
+<p class="map-cite" id="map-note"></p>
+<div class="map-tools" role="search"><label>Época <select id="map-era"><option value="">Todas</option><option value="antigua">Antigüedad</option><option value="medieval">Edad Media</option><option value="renacimiento">Renacimiento</option><option value="moderna">Edad Moderna</option></select></label><label>Buscar <input id="map-q" type="search" placeholder="Ptolomeo, Roma, Harley 2767…"></label></div>
+<p id="map-count" role="status">Cargando…</p>
+<div id="map-list"></div>
+</main>
+<script src="assets/mapas-antiguos.js?v=20261105-v1" defer></script>
+<script src="assets/research-folder.js?v=20261105-v1" defer></script>
+<script src="assets/theme.js?v=20261105-merge-v1" defer></script>
+</body></html>

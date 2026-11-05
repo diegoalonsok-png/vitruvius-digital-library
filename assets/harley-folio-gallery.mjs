@@ -17,7 +17,7 @@ function add(){const frag=document.createDocumentFragment();for(const i of filte
  const l=document.createElement('span');l.textContent=label(canvases[i]);
  b.append(im,n,l);b.addEventListener('click',()=>openPage(i));frag.append(b);
  }grid.append(frag);count=Math.min(filtered.length,count+chunk);byId('h-gallery-more').hidden=count>=filtered.length;status.textContent=filtered.length+' imágenes coincidentes · '+count+' miniaturas desplegadas de '+canvases.length+' imágenes digitales';highlight();}
-function runFilter(){const q=search.value.trim().toLowerCase().replace(/[^a-z0-9]/g,'').replace(/^(imagen|image)/,'');filtered=canvases.map((_,i)=>i).filter(i=>!q||String(i+1)===q||label(canvases[i]).toLowerCase().replace(/[^a-z0-9]/g,'').includes(q));count=0;grid.replaceChildren();if(filtered.length)add();else{status.textContent='Sin coincidencias: probá con otra etiqueta o número de imagen.';byId('h-gallery-more').hidden=true;}}
+function runFilter(){const q=search.value.trim().toLowerCase().replace(/[^a-z0-9]/g,'').replace(/^(imagen|image)/,'');filtered=canvases.map((_,i)=>i).filter(i=>!q||String(i+1)===q||label(canvases[i]).toLowerCase().replace(/[^a-z0-9]/g,'').includes(q));count=0;grid.replaceChildren();if(filtered.length)add();else{status.textContent='Sin coincidencias: prueba con otra etiqueta o número de imagen.';byId('h-gallery-more').hidden=true;}}
 byId('h-gallery-search').addEventListener('click',runFilter);
 search.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();runFilter();}});
 byId('h-gallery-reset').addEventListener('click',()=>{search.value='';runFilter();});

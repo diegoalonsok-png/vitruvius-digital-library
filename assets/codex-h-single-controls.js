@@ -32,7 +32,7 @@ headControls.innerHTML='<label><span class="globe" aria-hidden="true">🌐</span
 document.querySelector("header").prepend(headControls);
 var reader=document.querySelector('section[aria-label="Lector de folios"]');reader.parentNode.insertBefore(actions,reader);
 var ruler=document.createElement("div");ruler.id="single-ruler";
-ruler.innerHTML='<label>Bajar por el folio</label><button id="s-up">↑</button><input type="range" min="0" max="100" value="0" id="s-scroll"><output id="s-percent">0%</output><button id="s-down">↓</button>';
+ruler.innerHTML='<label>Bajar por el folio</label><button id="s-up">↑</button><input type="range" min="0" max="100" value="0" id="s-scroll" aria-label="Desplazamiento vertical de la imagen"><output id="s-percent">0%</output><button id="s-down">↓</button>';
 stage.insertAdjacentElement("afterend",ruler);
 var filters=document.createElement("details");filters.id="single-filters";
 filters.innerHTML='<summary>Ajustes · opacidad, brillo, contraste, inversión, sepia</summary><div id="s-filter-controls"></div>';

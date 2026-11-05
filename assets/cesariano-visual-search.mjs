@@ -179,7 +179,7 @@ async function readOCR(){
 }
 async function searchOCR(){
  const q=$('ces-ocr-query').value.trim(),mode=$('ces-ocr-mode').value;
- if(q.length<2){$('ces-ocr-status').textContent='Escribí al menos dos caracteres.';return;}
+ if(q.length<2){$('ces-ocr-status').textContent='Escribe al menos dos caracteres.';return;}
  $('ces-ocr-results').replaceChildren();$('ces-ocr-status').textContent='Consultando OCR del ejemplar Getty…';
  try{
   const pagesOCR=await readOCR();

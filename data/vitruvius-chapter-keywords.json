@@ -1,0 +1,9457 @@
+{
+ "schema": "vitruvius-chapter-keywords/1",
+ "source": "data/structured/recensio-es.json (latín V514)",
+ "method": "tf-idf por familia léxica (raíz aproximada) entre prefacios y capítulos; índice de orientación, no lematización.",
+ "units": [
+  {
+   "unit": "1.praef",
+   "book": 1,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "1.praef.1",
+   "last": "1.praef.3",
+   "keywords": [
+    {
+     "term": "publicorum",
+     "count": 3
+    },
+    {
+     "term": "tempore",
+     "count": 3
+    },
+    {
+     "term": "parenti",
+     "count": 2
+    },
+    {
+     "term": "aedificiorum",
+     "count": 5
+    },
+    {
+     "term": "curam",
+     "count": 2
+    },
+    {
+     "term": "reliquorumque",
+     "count": 2
+    },
+    {
+     "term": "attendens",
+     "count": 2
+    },
+    {
+     "term": "memoriae",
+     "count": 2
+    },
+    {
+     "term": "cogitationibus",
+     "count": 2
+    },
+    {
+     "term": "primo",
+     "count": 2
+    },
+    {
+     "term": "tribuisti",
+     "count": 1
+    },
+    {
+     "term": "tormentorum",
+     "count": 1
+    },
+    {
+     "term": "subirem",
+     "count": 1
+    },
+    {
+     "term": "sororis",
+     "count": 1
+    },
+    {
+     "term": "servasti",
+     "count": 1
+    },
+    {
+     "term": "recognitionem",
+     "count": 1
+    },
+    {
+     "term": "qualia",
+     "count": 1
+    },
+    {
+     "term": "praesto",
+     "count": 1
+    },
+    {
+     "term": "posses",
+     "count": 1
+    },
+    {
+     "term": "obligatus",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "1.1",
+   "book": 1,
+   "part": "caput",
+   "chapter": 1,
+   "first": "1.1.1",
+   "last": "1.1.18",
+   "keywords": [
+    {
+     "term": "architecti",
+     "count": 23
+    },
+    {
+     "term": "disciplinarum",
+     "count": 14
+    },
+    {
+     "term": "philosophia",
+     "count": 7
+    },
+    {
+     "term": "doctrinarum",
+     "count": 8
+    },
+    {
+     "term": "exercitati",
+     "count": 7
+    },
+    {
+     "term": "litteris",
+     "count": 4
+    },
+    {
+     "term": "geometricis",
+     "count": 5
+    },
+    {
+     "term": "eruditionibus",
+     "count": 4
+    },
+    {
+     "term": "astrologia",
+     "count": 4
+    },
+    {
+     "term": "noverit",
+     "count": 3
+    },
+    {
+     "term": "musicus",
+     "count": 3
+    },
+    {
+     "term": "graphidos",
+     "count": 3
+    },
+    {
+     "term": "grammaticus",
+     "count": 3
+    },
+    {
+     "term": "caryatides",
+     "count": 3
+    },
+    {
+     "term": "scientiae",
+     "count": 4
+    },
+    {
+     "term": "artibus",
+     "count": 4
+    },
+    {
+     "term": "memoriae",
+     "count": 4
+    },
+    {
+     "term": "ratiocinationibus",
+     "count": 6
+    },
+    {
+     "term": "novisse",
+     "count": 3
+    },
+    {
+     "term": "singulas",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "1.2",
+   "book": 1,
+   "part": "caput",
+   "chapter": 2,
+   "first": "1.2.1",
+   "last": "1.2.9",
+   "keywords": [
+    {
+     "term": "operis",
+     "count": 9
+    },
+    {
+     "term": "decor",
+     "count": 4
+    },
+    {
+     "term": "eurythmia",
+     "count": 3
+    },
+    {
+     "term": "membrorum",
+     "count": 3
+    },
+    {
+     "term": "diis",
+     "count": 3
+    },
+    {
+     "term": "symmetriis",
+     "count": 6
+    },
+    {
+     "term": "universam",
+     "count": 3
+    },
+    {
+     "term": "graece",
+     "count": 5
+    },
+    {
+     "term": "convenientes",
+     "count": 4
+    },
+    {
+     "term": "scaenographia",
+     "count": 2
+    },
+    {
+     "term": "sappinorum",
+     "count": 2
+    },
+    {
+     "term": "orthographia",
+     "count": 2
+    },
+    {
+     "term": "ichnographia",
+     "count": 2
+    },
+    {
+     "term": "capiuntur",
+     "count": 2
+    },
+    {
+     "term": "abietis",
+     "count": 2
+    },
+    {
+     "term": "consuetudinibus",
+     "count": 3
+    },
+    {
+     "term": "effectus",
+     "count": 4
+    },
+    {
+     "term": "cogitationibus",
+     "count": 3
+    },
+    {
+     "term": "teneritatem",
+     "count": 2
+    },
+    {
+     "term": "distributiones",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "1.3",
+   "book": 1,
+   "part": "caput",
+   "chapter": 3,
+   "first": "1.3.1",
+   "last": "1.3.2",
+   "keywords": [
+    {
+     "term": "defensionis",
+     "count": 2
+    },
+    {
+     "term": "publicis",
+     "count": 2
+    },
+    {
+     "term": "religione",
+     "count": 2
+    },
+    {
+     "term": "opportunitates",
+     "count": 2
+    },
+    {
+     "term": "venustatem",
+     "count": 2
+    },
+    {
+     "term": "locorum",
+     "count": 2
+    },
+    {
+     "term": "firmitatem",
+     "count": 2
+    },
+    {
+     "term": "ratio",
+     "count": 3
+    },
+    {
+     "term": "aedificiorum",
+     "count": 3
+    },
+    {
+     "term": "communi",
+     "count": 2
+    },
+    {
+     "term": "utilitates",
+     "count": 2
+    },
+    {
+     "term": "distributiones",
+     "count": 2
+    },
+    {
+     "term": "altera",
+     "count": 2
+    },
+    {
+     "term": "quaque",
+     "count": 1
+    },
+    {
+     "term": "fanorum",
+     "count": 1
+    },
+    {
+     "term": "aediumque",
+     "count": 1
+    },
+    {
+     "term": "publicum",
+     "count": 1
+    },
+    {
+     "term": "portarum",
+     "count": 1
+    },
+    {
+     "term": "murorum",
+     "count": 1
+    },
+    {
+     "term": "iustas",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "1.4",
+   "book": 1,
+   "part": "caput",
+   "chapter": 4,
+   "first": "1.4.1",
+   "last": "1.4.12",
+   "keywords": [
+    {
+     "term": "paludes",
+     "count": 5
+    },
+    {
+     "term": "pestilentes",
+     "count": 6
+    },
+    {
+     "term": "principiis",
+     "count": 10
+    },
+    {
+     "term": "corpora",
+     "count": 7
+    },
+    {
+     "term": "salubritatem",
+     "count": 7
+    },
+    {
+     "term": "mare",
+     "count": 5
+    },
+    {
+     "term": "animalium",
+     "count": 4
+    },
+    {
+     "term": "locis",
+     "count": 10
+    },
+    {
+     "term": "umoris",
+     "count": 5
+    },
+    {
+     "term": "dissolvuntur",
+     "count": 5
+    },
+    {
+     "term": "terreni",
+     "count": 4
+    },
+    {
+     "term": "temperata",
+     "count": 8
+    },
+    {
+     "term": "terrestrium",
+     "count": 3
+    },
+    {
+     "term": "composita",
+     "count": 6
+    },
+    {
+     "term": "moenia",
+     "count": 4
+    },
+    {
+     "term": "refrigerationibus",
+     "count": 4
+    },
+    {
+     "term": "meridie",
+     "count": 4
+    },
+    {
+     "term": "piscium",
+     "count": 3
+    },
+    {
+     "term": "litus",
+     "count": 3
+    },
+    {
+     "term": "licet",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "1.5",
+   "book": 1,
+   "part": "caput",
+   "chapter": 5,
+   "first": "1.5.1",
+   "last": "1.5.8",
+   "keywords": [
+    {
+     "term": "turrium",
+     "count": 6
+    },
+    {
+     "term": "muri",
+     "count": 6
+    },
+    {
+     "term": "fundamenta",
+     "count": 5
+    },
+    {
+     "term": "hostis",
+     "count": 3
+    },
+    {
+     "term": "turres",
+     "count": 3
+    },
+    {
+     "term": "murum",
+     "count": 4
+    },
+    {
+     "term": "muro",
+     "count": 3
+    },
+    {
+     "term": "facienda",
+     "count": 6
+    },
+    {
+     "term": "substructionis",
+     "count": 3
+    },
+    {
+     "term": "interiore",
+     "count": 4
+    },
+    {
+     "term": "crassitudo",
+     "count": 5
+    },
+    {
+     "term": "fossae",
+     "count": 2
+    },
+    {
+     "term": "aggeris",
+     "count": 2
+    },
+    {
+     "term": "exteriore",
+     "count": 3
+    },
+    {
+     "term": "factum",
+     "count": 3
+    },
+    {
+     "term": "turribus",
+     "count": 2
+    },
+    {
+     "term": "murus",
+     "count": 2
+    },
+    {
+     "term": "hostem",
+     "count": 2
+    },
+    {
+     "term": "arietes",
+     "count": 2
+    },
+    {
+     "term": "praecipitia",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "1.6",
+   "book": 1,
+   "part": "caput",
+   "chapter": 6,
+   "first": "1.6.1",
+   "last": "1.6.13",
+   "keywords": [
+    {
+     "term": "ventorum",
+     "count": 14
+    },
+    {
+     "term": "septentrionem",
+     "count": 15
+    },
+    {
+     "term": "littera",
+     "count": 10
+    },
+    {
+     "term": "solanum",
+     "count": 6
+    },
+    {
+     "term": "austrum",
+     "count": 6
+    },
+    {
+     "term": "flatus",
+     "count": 7
+    },
+    {
+     "term": "favonium",
+     "count": 6
+    },
+    {
+     "term": "decusatim",
+     "count": 6
+    },
+    {
+     "term": "angiportis",
+     "count": 6
+    },
+    {
+     "term": "venti",
+     "count": 7
+    },
+    {
+     "term": "centrum",
+     "count": 9
+    },
+    {
+     "term": "linea",
+     "count": 9
+    },
+    {
+     "term": "signandum",
+     "count": 5
+    },
+    {
+     "term": "rotundationis",
+     "count": 8
+    },
+    {
+     "term": "umbrae",
+     "count": 5
+    },
+    {
+     "term": "octagoni",
+     "count": 4
+    },
+    {
+     "term": "antemeridiana",
+     "count": 4
+    },
+    {
+     "term": "circino",
+     "count": 5
+    },
+    {
+     "term": "gnomonis",
+     "count": 5
+    },
+    {
+     "term": "meridiana",
+     "count": 6
+    }
+   ]
+  },
+  {
+   "unit": "1.7",
+   "book": 1,
+   "part": "caput",
+   "chapter": 7,
+   "first": "1.7.1",
+   "last": "1.7.2",
+   "keywords": [
+    {
+     "term": "sacrificiorum",
+     "count": 3
+    },
+    {
+     "term": "extra",
+     "count": 4
+    },
+    {
+     "term": "sacris",
+     "count": 3
+    },
+    {
+     "term": "volcani",
+     "count": 2
+    },
+    {
+     "term": "aedibus",
+     "count": 3
+    },
+    {
+     "term": "martis",
+     "count": 2
+    },
+    {
+     "term": "urbem",
+     "count": 2
+    },
+    {
+     "term": "portum",
+     "count": 2
+    },
+    {
+     "term": "dedicata",
+     "count": 2
+    },
+    {
+     "term": "areae",
+     "count": 2
+    },
+    {
+     "term": "religione",
+     "count": 2
+    },
+    {
+     "term": "moenia",
+     "count": 2
+    },
+    {
+     "term": "foro",
+     "count": 2
+    },
+    {
+     "term": "aedificiorum",
+     "count": 3
+    },
+    {
+     "term": "secundum",
+     "count": 2
+    },
+    {
+     "term": "loco",
+     "count": 2
+    },
+    {
+     "term": "distributiones",
+     "count": 2
+    },
+    {
+     "term": "civitatibus",
+     "count": 2
+    },
+    {
+     "term": "veneria",
+     "count": 1
+    },
+    {
+     "term": "tutela",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "2.praef",
+   "book": 2,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "2.praef.1",
+   "last": "2.praef.5",
+   "keywords": [
+    {
+     "term": "dinocrates",
+     "count": 6
+    },
+    {
+     "term": "alexander",
+     "count": 6
+    },
+    {
+     "term": "commendationem",
+     "count": 3
+    },
+    {
+     "term": "statura",
+     "count": 2
+    },
+    {
+     "term": "populum",
+     "count": 2
+    },
+    {
+     "term": "insequatur",
+     "count": 2
+    },
+    {
+     "term": "inquit",
+     "count": 2
+    },
+    {
+     "term": "petît",
+     "count": 2
+    },
+    {
+     "term": "initia",
+     "count": 2
+    },
+    {
+     "term": "facie",
+     "count": 2
+    },
+    {
+     "term": "aegyptum",
+     "count": 2
+    },
+    {
+     "term": "naturae",
+     "count": 3
+    },
+    {
+     "term": "praesidia",
+     "count": 2
+    },
+    {
+     "term": "tueri",
+     "count": 2
+    },
+    {
+     "term": "iussit",
+     "count": 2
+    },
+    {
+     "term": "frumenta",
+     "count": 2
+    },
+    {
+     "term": "architecti",
+     "count": 3
+    },
+    {
+     "term": "formae",
+     "count": 2
+    },
+    {
+     "term": "civitatibus",
+     "count": 3
+    },
+    {
+     "term": "moenia",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "2.1",
+   "book": 2,
+   "part": "caput",
+   "chapter": 1,
+   "first": "2.1.1",
+   "last": "2.1.9",
+   "keywords": [
+    {
+     "term": "tecta",
+     "count": 8
+    },
+    {
+     "term": "luto",
+     "count": 6
+    },
+    {
+     "term": "aedificiorum",
+     "count": 10
+    },
+    {
+     "term": "materia",
+     "count": 7
+    },
+    {
+     "term": "artes",
+     "count": 3
+    },
+    {
+     "term": "fronde",
+     "count": 3
+    },
+    {
+     "term": "coeperunt",
+     "count": 3
+    },
+    {
+     "term": "animalium",
+     "count": 3
+    },
+    {
+     "term": "natura",
+     "count": 6
+    },
+    {
+     "term": "tegentes",
+     "count": 2
+    },
+    {
+     "term": "stramentis",
+     "count": 2
+    },
+    {
+     "term": "metas",
+     "count": 2
+    },
+    {
+     "term": "iugumentantes",
+     "count": 2
+    },
+    {
+     "term": "educunt",
+     "count": 2
+    },
+    {
+     "term": "congressu",
+     "count": 2
+    },
+    {
+     "term": "coetu",
+     "count": 2
+    },
+    {
+     "term": "casarum",
+     "count": 2
+    },
+    {
+     "term": "gradatim",
+     "count": 3
+    },
+    {
+     "term": "possumus",
+     "count": 3
+    },
+    {
+     "term": "inventionibus",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "2.2",
+   "book": 2,
+   "part": "caput",
+   "chapter": 2,
+   "first": "2.2.1",
+   "last": "2.2.2",
+   "keywords": [
+    {
+     "term": "individua",
+     "count": 2
+    },
+    {
+     "term": "democritus",
+     "count": 2
+    },
+    {
+     "term": "ignem",
+     "count": 2
+    },
+    {
+     "term": "corpora",
+     "count": 2
+    },
+    {
+     "term": "infinitas",
+     "count": 2
+    },
+    {
+     "term": "aedificiorum",
+     "count": 3
+    },
+    {
+     "term": "aquam",
+     "count": 2
+    },
+    {
+     "term": "sectionibus",
+     "count": 1
+    },
+    {
+     "term": "nascique",
+     "count": 1
+    },
+    {
+     "term": "insecabilia",
+     "count": 1
+    },
+    {
+     "term": "errorem",
+     "count": 1
+    },
+    {
+     "term": "atomos",
+     "count": 1
+    },
+    {
+     "term": "rerum",
+     "count": 2
+    },
+    {
+     "term": "vocitaverunt",
+     "count": 1
+    },
+    {
+     "term": "secutus",
+     "count": 1
+    },
+    {
+     "term": "putavit",
+     "count": 1
+    },
+    {
+     "term": "nominavit",
+     "count": 1
+    },
+    {
+     "term": "interitionem",
+     "count": 1
+    },
+    {
+     "term": "heraclitus",
+     "count": 1
+    },
+    {
+     "term": "dividuntur",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "2.3",
+   "book": 2,
+   "part": "caput",
+   "chapter": 3,
+   "first": "2.3.1",
+   "last": "2.3.4",
+   "keywords": [
+    {
+     "term": "struuntur",
+     "count": 4
+    },
+    {
+     "term": "ducti",
+     "count": 3
+    },
+    {
+     "term": "siccescendo",
+     "count": 3
+    },
+    {
+     "term": "semilateria",
+     "count": 2
+    },
+    {
+     "term": "lateres",
+     "count": 2
+    },
+    {
+     "term": "ducendi",
+     "count": 2
+    },
+    {
+     "term": "tectoria",
+     "count": 3
+    },
+    {
+     "term": "sidentes",
+     "count": 2
+    },
+    {
+     "term": "palmum",
+     "count": 2
+    },
+    {
+     "term": "ducuntur",
+     "count": 2
+    },
+    {
+     "term": "terra",
+     "count": 3
+    },
+    {
+     "term": "lateribus",
+     "count": 3
+    },
+    {
+     "term": "sabulone",
+     "count": 2
+    },
+    {
+     "term": "utuntur",
+     "count": 2
+    },
+    {
+     "term": "appellant",
+     "count": 3
+    },
+    {
+     "term": "dissolvuntur",
+     "count": 2
+    },
+    {
+     "term": "firmitatem",
+     "count": 2
+    },
+    {
+     "term": "structura",
+     "count": 2
+    },
+    {
+     "term": "genera",
+     "count": 2
+    },
+    {
+     "term": "parte",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "2.4",
+   "book": 2,
+   "part": "caput",
+   "chapter": 4,
+   "first": "2.4.1",
+   "last": "2.4.3",
+   "keywords": [
+    {
+     "term": "structura",
+     "count": 5
+    },
+    {
+     "term": "tectoria",
+     "count": 4
+    },
+    {
+     "term": "fossiciae",
+     "count": 3
+    },
+    {
+     "term": "terrosa",
+     "count": 2
+    },
+    {
+     "term": "harenaria",
+     "count": 2
+    },
+    {
+     "term": "concamerationes",
+     "count": 2
+    },
+    {
+     "term": "recentes",
+     "count": 2
+    },
+    {
+     "term": "commixta",
+     "count": 2
+    },
+    {
+     "term": "idonea",
+     "count": 2
+    },
+    {
+     "term": "siccescendo",
+     "count": 2
+    },
+    {
+     "term": "recipit",
+     "count": 2
+    },
+    {
+     "term": "caementa",
+     "count": 2
+    },
+    {
+     "term": "parietes",
+     "count": 2
+    },
+    {
+     "term": "continenter",
+     "count": 2
+    },
+    {
+     "term": "stridorem",
+     "count": 1
+    },
+    {
+     "term": "signinum",
+     "count": 1
+    },
+    {
+     "term": "rimis",
+     "count": 1
+    },
+    {
+     "term": "resolvuntur",
+     "count": 1
+    },
+    {
+     "term": "pinguitudini",
+     "count": 1
+    },
+    {
+     "term": "oneraque",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "2.5",
+   "book": 2,
+   "part": "caput",
+   "chapter": 5,
+   "first": "2.5.1",
+   "last": "2.5.3",
+   "keywords": [
+    {
+     "term": "harenae",
+     "count": 5
+    },
+    {
+     "term": "calcis",
+     "count": 3
+    },
+    {
+     "term": "saxa",
+     "count": 3
+    },
+    {
+     "term": "structura",
+     "count": 4
+    },
+    {
+     "term": "foraminis",
+     "count": 3
+    },
+    {
+     "term": "marina",
+     "count": 2
+    },
+    {
+     "term": "fluviatica",
+     "count": 2
+    },
+    {
+     "term": "ignis",
+     "count": 3
+    },
+    {
+     "term": "fervore",
+     "count": 2
+    },
+    {
+     "term": "soliditatem",
+     "count": 2
+    },
+    {
+     "term": "fornace",
+     "count": 2
+    },
+    {
+     "term": "corpore",
+     "count": 2
+    },
+    {
+     "term": "raritates",
+     "count": 2
+    },
+    {
+     "term": "mixtionem",
+     "count": 2
+    },
+    {
+     "term": "umore",
+     "count": 2
+    },
+    {
+     "term": "temperata",
+     "count": 3
+    },
+    {
+     "term": "tertia",
+     "count": 2
+    },
+    {
+     "term": "tunsam",
+     "count": 1
+    },
+    {
+     "term": "testam",
+     "count": 1
+    },
+    {
+     "term": "succretam",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "2.6",
+   "book": 2,
+   "part": "caput",
+   "chapter": 6,
+   "first": "2.6.1",
+   "last": "2.6.6",
+   "keywords": [
+    {
+     "term": "locis",
+     "count": 10
+    },
+    {
+     "term": "crebri",
+     "count": 3
+    },
+    {
+     "term": "ardores",
+     "count": 3
+    },
+    {
+     "term": "fontes",
+     "count": 4
+    },
+    {
+     "term": "etruria",
+     "count": 3
+    },
+    {
+     "term": "ignis",
+     "count": 5
+    },
+    {
+     "term": "nascitur",
+     "count": 4
+    },
+    {
+     "term": "vehementi",
+     "count": 5
+    },
+    {
+     "term": "efficit",
+     "count": 5
+    },
+    {
+     "term": "montibus",
+     "count": 3
+    },
+    {
+     "term": "spongia",
+     "count": 2
+    },
+    {
+     "term": "baianis",
+     "count": 2
+    },
+    {
+     "term": "liquorem",
+     "count": 3
+    },
+    {
+     "term": "tofus",
+     "count": 2
+    },
+    {
+     "term": "memorantur",
+     "count": 2
+    },
+    {
+     "term": "appenninus",
+     "count": 2
+    },
+    {
+     "term": "materia",
+     "count": 4
+    },
+    {
+     "term": "aqua",
+     "count": 4
+    },
+    {
+     "term": "vapor",
+     "count": 2
+    },
+    {
+     "term": "trans",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "2.7",
+   "book": 2,
+   "part": "caput",
+   "chapter": 7,
+   "first": "2.7.1",
+   "last": "2.7.5",
+   "keywords": [
+    {
+     "term": "lapidicinis",
+     "count": 5
+    },
+    {
+     "term": "ignis",
+     "count": 5
+    },
+    {
+     "term": "tempestatibus",
+     "count": 4
+    },
+    {
+     "term": "saxa",
+     "count": 3
+    },
+    {
+     "term": "pallenses",
+     "count": 2
+    },
+    {
+     "term": "albanae",
+     "count": 2
+    },
+    {
+     "term": "aeris",
+     "count": 3
+    },
+    {
+     "term": "tiburtina",
+     "count": 2
+    },
+    {
+     "term": "tacta",
+     "count": 2
+    },
+    {
+     "term": "plurimumque",
+     "count": 2
+    },
+    {
+     "term": "gelicidiis",
+     "count": 2
+    },
+    {
+     "term": "urbem",
+     "count": 2
+    },
+    {
+     "term": "perficere",
+     "count": 2
+    },
+    {
+     "term": "officinae",
+     "count": 2
+    },
+    {
+     "term": "terreni",
+     "count": 2
+    },
+    {
+     "term": "patentibus",
+     "count": 2
+    },
+    {
+     "term": "comparata",
+     "count": 3
+    },
+    {
+     "term": "caementa",
+     "count": 2
+    },
+    {
+     "term": "temperata",
+     "count": 3
+    },
+    {
+     "term": "vetustatem",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "2.8",
+   "book": 2,
+   "part": "caput",
+   "chapter": 8,
+   "first": "2.8.1",
+   "last": "2.8.20",
+   "keywords": [
+    {
+     "term": "structura",
+     "count": 15
+    },
+    {
+     "term": "latericiis",
+     "count": 8
+    },
+    {
+     "term": "caementa",
+     "count": 10
+    },
+    {
+     "term": "artemisia",
+     "count": 5
+    },
+    {
+     "term": "rhodii",
+     "count": 5
+    },
+    {
+     "term": "vetustatem",
+     "count": 8
+    },
+    {
+     "term": "rhodiorum",
+     "count": 4
+    },
+    {
+     "term": "materia",
+     "count": 9
+    },
+    {
+     "term": "domus",
+     "count": 4
+    },
+    {
+     "term": "parietum",
+     "count": 6
+    },
+    {
+     "term": "testacea",
+     "count": 4
+    },
+    {
+     "term": "crassitudo",
+     "count": 8
+    },
+    {
+     "term": "reticulatum",
+     "count": 3
+    },
+    {
+     "term": "remigibus",
+     "count": 3
+    },
+    {
+     "term": "molli",
+     "count": 3
+    },
+    {
+     "term": "militibus",
+     "count": 3
+    },
+    {
+     "term": "classem",
+     "count": 3
+    },
+    {
+     "term": "urbe",
+     "count": 4
+    },
+    {
+     "term": "parietes",
+     "count": 7
+    },
+    {
+     "term": "patiuntur",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "2.9",
+   "book": 2,
+   "part": "caput",
+   "chapter": 9,
+   "first": "2.9.1",
+   "last": "2.9.17",
+   "keywords": [
+    {
+     "term": "materies",
+     "count": 9
+    },
+    {
+     "term": "terreni",
+     "count": 8
+    },
+    {
+     "term": "aeris",
+     "count": 9
+    },
+    {
+     "term": "umoris",
+     "count": 8
+    },
+    {
+     "term": "abies",
+     "count": 4
+    },
+    {
+     "term": "recipiens",
+     "count": 6
+    },
+    {
+     "term": "cupresso",
+     "count": 5
+    },
+    {
+     "term": "ignis",
+     "count": 8
+    },
+    {
+     "term": "flammam",
+     "count": 4
+    },
+    {
+     "term": "diuturnitatem",
+     "count": 4
+    },
+    {
+     "term": "umore",
+     "count": 6
+    },
+    {
+     "term": "ulmus",
+     "count": 3
+    },
+    {
+     "term": "tractabilitatem",
+     "count": 3
+    },
+    {
+     "term": "satietatem",
+     "count": 3
+    },
+    {
+     "term": "igni",
+     "count": 4
+    },
+    {
+     "term": "arbores",
+     "count": 4
+    },
+    {
+     "term": "mixtionem",
+     "count": 5
+    },
+    {
+     "term": "comparata",
+     "count": 7
+    },
+    {
+     "term": "liquor",
+     "count": 3
+    },
+    {
+     "term": "aeternitatem",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "2.10",
+   "book": 2,
+   "part": "caput",
+   "chapter": 10,
+   "first": "2.10.1",
+   "last": "2.10.3",
+   "keywords": [
+    {
+     "term": "apricis",
+     "count": 3
+    },
+    {
+     "term": "opacis",
+     "count": 2
+    },
+    {
+     "term": "raritates",
+     "count": 3
+    },
+    {
+     "term": "montis",
+     "count": 2
+    },
+    {
+     "term": "venarum",
+     "count": 2
+    },
+    {
+     "term": "etruria",
+     "count": 2
+    },
+    {
+     "term": "potestate",
+     "count": 3
+    },
+    {
+     "term": "aedificiorum",
+     "count": 4
+    },
+    {
+     "term": "cursum",
+     "count": 2
+    },
+    {
+     "term": "curvaturam",
+     "count": 2
+    },
+    {
+     "term": "perpetuo",
+     "count": 2
+    },
+    {
+     "term": "regionibus",
+     "count": 2
+    },
+    {
+     "term": "solis",
+     "count": 2
+    },
+    {
+     "term": "habentes",
+     "count": 2
+    },
+    {
+     "term": "umbrosis",
+     "count": 1
+    },
+    {
+     "term": "vitalem",
+     "count": 1
+    },
+    {
+     "term": "vergit",
+     "count": 1
+    },
+    {
+     "term": "tyrrenico",
+     "count": 1
+    },
+    {
+     "term": "superum",
+     "count": 1
+    },
+    {
+     "term": "repletae",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "3.praef",
+   "book": 3,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "3.praef.1",
+   "last": "3.praef.4",
+   "keywords": [
+    {
+     "term": "scientiae",
+     "count": 6
+    },
+    {
+     "term": "gratia",
+     "count": 4
+    },
+    {
+     "term": "ambitione",
+     "count": 3
+    },
+    {
+     "term": "polycletus",
+     "count": 2
+    },
+    {
+     "term": "artis",
+     "count": 3
+    },
+    {
+     "term": "industria",
+     "count": 3
+    },
+    {
+     "term": "disciplinarum",
+     "count": 3
+    },
+    {
+     "term": "oportuisse",
+     "count": 2
+    },
+    {
+     "term": "opera",
+     "count": 3
+    },
+    {
+     "term": "iudiciis",
+     "count": 2
+    },
+    {
+     "term": "ceterique",
+     "count": 2
+    },
+    {
+     "term": "veris",
+     "count": 2
+    },
+    {
+     "term": "nobilibus",
+     "count": 2
+    },
+    {
+     "term": "civibus",
+     "count": 2
+    },
+    {
+     "term": "sollertia",
+     "count": 3
+    },
+    {
+     "term": "fecerunt",
+     "count": 2
+    },
+    {
+     "term": "sensus",
+     "count": 2
+    },
+    {
+     "term": "potius",
+     "count": 2
+    },
+    {
+     "term": "fortunae",
+     "count": 2
+    },
+    {
+     "term": "sententiam",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "3.1",
+   "book": 3,
+   "part": "caput",
+   "chapter": 1,
+   "first": "3.1.1",
+   "last": "3.1.9",
+   "keywords": [
+    {
+     "term": "perfectum",
+     "count": 12
+    },
+    {
+     "term": "numerum",
+     "count": 6
+    },
+    {
+     "term": "decusis",
+     "count": 4
+    },
+    {
+     "term": "hominis",
+     "count": 5
+    },
+    {
+     "term": "imas",
+     "count": 4
+    },
+    {
+     "term": "cubitum",
+     "count": 3
+    },
+    {
+     "term": "universam",
+     "count": 4
+    },
+    {
+     "term": "proportionibus",
+     "count": 6
+    },
+    {
+     "term": "commensus",
+     "count": 4
+    },
+    {
+     "term": "mento",
+     "count": 3
+    },
+    {
+     "term": "articulis",
+     "count": 3
+    },
+    {
+     "term": "numero",
+     "count": 4
+    },
+    {
+     "term": "membra",
+     "count": 4
+    },
+    {
+     "term": "corporibus",
+     "count": 5
+    },
+    {
+     "term": "quartae",
+     "count": 3
+    },
+    {
+     "term": "membrorum",
+     "count": 3
+    },
+    {
+     "term": "imis",
+     "count": 3
+    },
+    {
+     "term": "radices",
+     "count": 3
+    },
+    {
+     "term": "decem",
+     "count": 3
+    },
+    {
+     "term": "partis",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "3.2",
+   "book": 3,
+   "part": "caput",
+   "chapter": 2,
+   "first": "3.2.1",
+   "last": "3.2.8",
+   "keywords": [
+    {
+     "term": "postico",
+     "count": 8
+    },
+    {
+     "term": "columnae",
+     "count": 12
+    },
+    {
+     "term": "antis",
+     "count": 4
+    },
+    {
+     "term": "prostylos",
+     "count": 3
+    },
+    {
+     "term": "dipteros",
+     "count": 3
+    },
+    {
+     "term": "fronte",
+     "count": 4
+    },
+    {
+     "term": "exemplar",
+     "count": 4
+    },
+    {
+     "term": "antas",
+     "count": 3
+    },
+    {
+     "term": "pronao",
+     "count": 3
+    },
+    {
+     "term": "angularibus",
+     "count": 3
+    },
+    {
+     "term": "amphiprostylos",
+     "count": 2
+    },
+    {
+     "term": "ordines",
+     "count": 3
+    },
+    {
+     "term": "octastylos",
+     "count": 2
+    },
+    {
+     "term": "parietibus",
+     "count": 3
+    },
+    {
+     "term": "pseudodipteros",
+     "count": 2
+    },
+    {
+     "term": "peripteros",
+     "count": 2
+    },
+    {
+     "term": "iovis",
+     "count": 2
+    },
+    {
+     "term": "hypaethroe",
+     "count": 2
+    },
+    {
+     "term": "cellam",
+     "count": 2
+    },
+    {
+     "term": "romae",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "3.3",
+   "book": 3,
+   "part": "caput",
+   "chapter": 3,
+   "first": "3.3.1",
+   "last": "3.3.13",
+   "keywords": [
+    {
+     "term": "columnae",
+     "count": 24
+    },
+    {
+     "term": "intercolumnia",
+     "count": 12
+    },
+    {
+     "term": "crassitudo",
+     "count": 18
+    },
+    {
+     "term": "dividatur",
+     "count": 8
+    },
+    {
+     "term": "pycnostylos",
+     "count": 4
+    },
+    {
+     "term": "araeostylis",
+     "count": 4
+    },
+    {
+     "term": "partes",
+     "count": 10
+    },
+    {
+     "term": "dimidia",
+     "count": 7
+    },
+    {
+     "term": "aspectus",
+     "count": 6
+    },
+    {
+     "term": "octastylos",
+     "count": 3
+    },
+    {
+     "term": "partis",
+     "count": 5
+    },
+    {
+     "term": "modulorum",
+     "count": 4
+    },
+    {
+     "term": "pedibus",
+     "count": 4
+    },
+    {
+     "term": "contracturae",
+     "count": 4
+    },
+    {
+     "term": "systylos",
+     "count": 3
+    },
+    {
+     "term": "semissem",
+     "count": 3
+    },
+    {
+     "term": "diastylo",
+     "count": 3
+    },
+    {
+     "term": "moduli",
+     "count": 3
+    },
+    {
+     "term": "cellam",
+     "count": 3
+    },
+    {
+     "term": "facienda",
+     "count": 6
+    }
+   ]
+  },
+  {
+   "unit": "3.4",
+   "book": 3,
+   "part": "caput",
+   "chapter": 4,
+   "first": "3.4.1",
+   "last": "3.4.5",
+   "keywords": [
+    {
+     "term": "stylobatam",
+     "count": 4
+    },
+    {
+     "term": "columnae",
+     "count": 6
+    },
+    {
+     "term": "solidum",
+     "count": 3
+    },
+    {
+     "term": "gradus",
+     "count": 3
+    },
+    {
+     "term": "intercolumnia",
+     "count": 3
+    },
+    {
+     "term": "pycnostylos",
+     "count": 2
+    },
+    {
+     "term": "scamillos",
+     "count": 2
+    },
+    {
+     "term": "videbitur",
+     "count": 2
+    },
+    {
+     "term": "primus",
+     "count": 2
+    },
+    {
+     "term": "inpares",
+     "count": 2
+    },
+    {
+     "term": "graduum",
+     "count": 2
+    },
+    {
+     "term": "solidissima",
+     "count": 2
+    },
+    {
+     "term": "crassiores",
+     "count": 2
+    },
+    {
+     "term": "fundamenta",
+     "count": 2
+    },
+    {
+     "term": "fronte",
+     "count": 2
+    },
+    {
+     "term": "aedem",
+     "count": 2
+    },
+    {
+     "term": "fiant",
+     "count": 2
+    },
+    {
+     "term": "eundem",
+     "count": 2
+    },
+    {
+     "term": "modum",
+     "count": 2
+    },
+    {
+     "term": "lateribus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "3.5",
+   "book": 3,
+   "part": "caput",
+   "chapter": 5,
+   "first": "3.5.1",
+   "last": "3.5.15",
+   "keywords": [
+    {
+     "term": "columnae",
+     "count": 24
+    },
+    {
+     "term": "epistylia",
+     "count": 15
+    },
+    {
+     "term": "dimidia",
+     "count": 15
+    },
+    {
+     "term": "proiectura",
+     "count": 11
+    },
+    {
+     "term": "crassitudo",
+     "count": 16
+    },
+    {
+     "term": "cymatium",
+     "count": 7
+    },
+    {
+     "term": "oculi",
+     "count": 6
+    },
+    {
+     "term": "altitudo",
+     "count": 22
+    },
+    {
+     "term": "pars",
+     "count": 14
+    },
+    {
+     "term": "partes",
+     "count": 15
+    },
+    {
+     "term": "capituli",
+     "count": 9
+    },
+    {
+     "term": "abaco",
+     "count": 5
+    },
+    {
+     "term": "facienda",
+     "count": 11
+    },
+    {
+     "term": "partem",
+     "count": 9
+    },
+    {
+     "term": "volutarum",
+     "count": 4
+    },
+    {
+     "term": "coronae",
+     "count": 5
+    },
+    {
+     "term": "plintho",
+     "count": 4
+    },
+    {
+     "term": "octava",
+     "count": 5
+    },
+    {
+     "term": "abaci",
+     "count": 4
+    },
+    {
+     "term": "dividatur",
+     "count": 5
+    }
+   ]
+  },
+  {
+   "unit": "4.praef",
+   "book": 4,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "4.praef.1",
+   "last": "4.praef.2",
+   "keywords": [
+    {
+     "term": "volumine",
+     "count": 4
+    },
+    {
+     "term": "ordinata",
+     "count": 2
+    },
+    {
+     "term": "generum",
+     "count": 2
+    },
+    {
+     "term": "architecti",
+     "count": 2
+    },
+    {
+     "term": "generibus",
+     "count": 2
+    },
+    {
+     "term": "errabundas",
+     "count": 1
+    },
+    {
+     "term": "dignam",
+     "count": 1
+    },
+    {
+     "term": "tantae",
+     "count": 1
+    },
+    {
+     "term": "ionici",
+     "count": 1
+    },
+    {
+     "term": "incepta",
+     "count": 1
+    },
+    {
+     "term": "eruditus",
+     "count": 1
+    },
+    {
+     "term": "officio",
+     "count": 1
+    },
+    {
+     "term": "docui",
+     "count": 1
+    },
+    {
+     "term": "quantitate",
+     "count": 1
+    },
+    {
+     "term": "particulis",
+     "count": 1
+    },
+    {
+     "term": "utilissimam",
+     "count": 1
+    },
+    {
+     "term": "secundo",
+     "count": 1
+    },
+    {
+     "term": "quasque",
+     "count": 1
+    },
+    {
+     "term": "eorumque",
+     "count": 1
+    },
+    {
+     "term": "earumque",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "4.1",
+   "book": 4,
+   "part": "caput",
+   "chapter": 1,
+   "first": "4.1.1",
+   "last": "4.1.12",
+   "keywords": [
+    {
+     "term": "capituli",
+     "count": 13
+    },
+    {
+     "term": "corinthiis",
+     "count": 12
+    },
+    {
+     "term": "columnae",
+     "count": 14
+    },
+    {
+     "term": "graciliores",
+     "count": 6
+    },
+    {
+     "term": "crassitudo",
+     "count": 11
+    },
+    {
+     "term": "abaci",
+     "count": 5
+    },
+    {
+     "term": "symmetriis",
+     "count": 10
+    },
+    {
+     "term": "altitudo",
+     "count": 12
+    },
+    {
+     "term": "nominatur",
+     "count": 4
+    },
+    {
+     "term": "civitatibus",
+     "count": 6
+    },
+    {
+     "term": "fecerunt",
+     "count": 3
+    },
+    {
+     "term": "dorica",
+     "count": 3
+    },
+    {
+     "term": "genus",
+     "count": 4
+    },
+    {
+     "term": "excelsiores",
+     "count": 3
+    },
+    {
+     "term": "iones",
+     "count": 2
+    },
+    {
+     "term": "folia",
+     "count": 2
+    },
+    {
+     "term": "cauliculos",
+     "count": 2
+    },
+    {
+     "term": "calathus",
+     "count": 2
+    },
+    {
+     "term": "asiam",
+     "count": 2
+    },
+    {
+     "term": "acanthi",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "4.2",
+   "book": 4,
+   "part": "caput",
+   "chapter": 2,
+   "first": "4.2.1",
+   "last": "4.2.6",
+   "keywords": [
+    {
+     "term": "cantherios",
+     "count": 9
+    },
+    {
+     "term": "triglyphi",
+     "count": 10
+    },
+    {
+     "term": "tignorum",
+     "count": 6
+    },
+    {
+     "term": "denticuli",
+     "count": 6
+    },
+    {
+     "term": "prominentes",
+     "count": 5
+    },
+    {
+     "term": "proiectura",
+     "count": 6
+    },
+    {
+     "term": "operibus",
+     "count": 7
+    },
+    {
+     "term": "ionicis",
+     "count": 4
+    },
+    {
+     "term": "imitationem",
+     "count": 4
+    },
+    {
+     "term": "fenestrarum",
+     "count": 4
+    },
+    {
+     "term": "asseres",
+     "count": 3
+    },
+    {
+     "term": "veritate",
+     "count": 3
+    },
+    {
+     "term": "mutulorum",
+     "count": 3
+    },
+    {
+     "term": "tigna",
+     "count": 3
+    },
+    {
+     "term": "doricis",
+     "count": 3
+    },
+    {
+     "term": "inventa",
+     "count": 4
+    },
+    {
+     "term": "intertigniûm",
+     "count": 2
+    },
+    {
+     "term": "asserum",
+     "count": 2
+    },
+    {
+     "term": "nominatur",
+     "count": 3
+    },
+    {
+     "term": "originibus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "4.3",
+   "book": 4,
+   "part": "caput",
+   "chapter": 3,
+   "first": "4.3.1",
+   "last": "4.3.10",
+   "keywords": [
+    {
+     "term": "triglyphi",
+     "count": 18
+    },
+    {
+     "term": "moduli",
+     "count": 11
+    },
+    {
+     "term": "dimidia",
+     "count": 8
+    },
+    {
+     "term": "metopae",
+     "count": 4
+    },
+    {
+     "term": "columnae",
+     "count": 8
+    },
+    {
+     "term": "intercolumnia",
+     "count": 5
+    },
+    {
+     "term": "dividatur",
+     "count": 5
+    },
+    {
+     "term": "taenia",
+     "count": 3
+    },
+    {
+     "term": "metopas",
+     "count": 3
+    },
+    {
+     "term": "metoparum",
+     "count": 3
+    },
+    {
+     "term": "capituli",
+     "count": 5
+    },
+    {
+     "term": "angularibus",
+     "count": 4
+    },
+    {
+     "term": "latitudo",
+     "count": 7
+    },
+    {
+     "term": "medios",
+     "count": 3
+    },
+    {
+     "term": "doricae",
+     "count": 3
+    },
+    {
+     "term": "tetrantes",
+     "count": 3
+    },
+    {
+     "term": "mediis",
+     "count": 3
+    },
+    {
+     "term": "quadrato",
+     "count": 5
+    },
+    {
+     "term": "distributiones",
+     "count": 5
+    },
+    {
+     "term": "ionicis",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "4.4",
+   "book": 4,
+   "part": "caput",
+   "chapter": 4,
+   "first": "4.4.1",
+   "last": "4.4.4",
+   "keywords": [
+    {
+     "term": "columnae",
+     "count": 10
+    },
+    {
+     "term": "striarum",
+     "count": 4
+    },
+    {
+     "term": "antas",
+     "count": 4
+    },
+    {
+     "term": "crassitudo",
+     "count": 5
+    },
+    {
+     "term": "striglium",
+     "count": 2
+    },
+    {
+     "term": "striata",
+     "count": 2
+    },
+    {
+     "term": "aeque",
+     "count": 3
+    },
+    {
+     "term": "antae",
+     "count": 2
+    },
+    {
+     "term": "pronai",
+     "count": 2
+    },
+    {
+     "term": "latitudo",
+     "count": 4
+    },
+    {
+     "term": "graciliores",
+     "count": 2
+    },
+    {
+     "term": "crassae",
+     "count": 2
+    },
+    {
+     "term": "parte",
+     "count": 5
+    },
+    {
+     "term": "rata",
+     "count": 2
+    },
+    {
+     "term": "lineae",
+     "count": 2
+    },
+    {
+     "term": "aequales",
+     "count": 2
+    },
+    {
+     "term": "fronte",
+     "count": 2
+    },
+    {
+     "term": "longitudo",
+     "count": 3
+    },
+    {
+     "term": "fiant",
+     "count": 2
+    },
+    {
+     "term": "conclusi",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "4.5",
+   "book": 4,
+   "part": "caput",
+   "chapter": 5,
+   "first": "4.5.1",
+   "last": "4.5.2",
+   "keywords": [
+    {
+     "term": "spectare",
+     "count": 3
+    },
+    {
+     "term": "deorum",
+     "count": 3
+    },
+    {
+     "term": "sacrificiorum",
+     "count": 2
+    },
+    {
+     "term": "simulacra",
+     "count": 2
+    },
+    {
+     "term": "orientem",
+     "count": 2
+    },
+    {
+     "term": "aedis",
+     "count": 2
+    },
+    {
+     "term": "caeli",
+     "count": 2
+    },
+    {
+     "term": "suscipientes",
+     "count": 1
+    },
+    {
+     "term": "spectet",
+     "count": 1
+    },
+    {
+     "term": "signumque",
+     "count": 1
+    },
+    {
+     "term": "salutationes",
+     "count": 1
+    },
+    {
+     "term": "sacrae",
+     "count": 1
+    },
+    {
+     "term": "ripas",
+     "count": 1
+    },
+    {
+     "term": "respicere",
+     "count": 1
+    },
+    {
+     "term": "nilum",
+     "count": 1
+    },
+    {
+     "term": "liberaque",
+     "count": 1
+    },
+    {
+     "term": "immolantes",
+     "count": 1
+    },
+    {
+     "term": "exaudientia",
+     "count": 1
+    },
+    {
+     "term": "contueantur",
+     "count": 1
+    },
+    {
+     "term": "conspectu",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "4.6",
+   "book": 4,
+   "part": "caput",
+   "chapter": 6,
+   "first": "4.6.1",
+   "last": "4.6.6",
+   "keywords": [
+    {
+     "term": "antepagmenti",
+     "count": 14
+    },
+    {
+     "term": "cymatium",
+     "count": 8
+    },
+    {
+     "term": "luminis",
+     "count": 5
+    },
+    {
+     "term": "inpagis",
+     "count": 4
+    },
+    {
+     "term": "supercilii",
+     "count": 5
+    },
+    {
+     "term": "parte",
+     "count": 13
+    },
+    {
+     "term": "astragalum",
+     "count": 4
+    },
+    {
+     "term": "crassitudo",
+     "count": 8
+    },
+    {
+     "term": "partes",
+     "count": 9
+    },
+    {
+     "term": "doricis",
+     "count": 4
+    },
+    {
+     "term": "sexta",
+     "count": 4
+    },
+    {
+     "term": "latitudo",
+     "count": 7
+    },
+    {
+     "term": "dividatur",
+     "count": 4
+    },
+    {
+     "term": "altitudo",
+     "count": 9
+    },
+    {
+     "term": "contrahatur",
+     "count": 4
+    },
+    {
+     "term": "fiat",
+     "count": 4
+    },
+    {
+     "term": "lumen",
+     "count": 3
+    },
+    {
+     "term": "lesbium",
+     "count": 2
+    },
+    {
+     "term": "inponitur",
+     "count": 2
+    },
+    {
+     "term": "hyperthyrum",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "4.7",
+   "book": 4,
+   "part": "caput",
+   "chapter": 7,
+   "first": "4.7.1",
+   "last": "4.7.5",
+   "keywords": [
+    {
+     "term": "crassitudo",
+     "count": 8
+    },
+    {
+     "term": "columnae",
+     "count": 7
+    },
+    {
+     "term": "compacta",
+     "count": 4
+    },
+    {
+     "term": "antas",
+     "count": 3
+    },
+    {
+     "term": "apophysi",
+     "count": 2
+    },
+    {
+     "term": "trabes",
+     "count": 3
+    },
+    {
+     "term": "dividatur",
+     "count": 3
+    },
+    {
+     "term": "parte",
+     "count": 6
+    },
+    {
+     "term": "spirae",
+     "count": 2
+    },
+    {
+     "term": "plinthum",
+     "count": 2
+    },
+    {
+     "term": "hypotrachelio",
+     "count": 2
+    },
+    {
+     "term": "latitudo",
+     "count": 4
+    },
+    {
+     "term": "partes",
+     "count": 4
+    },
+    {
+     "term": "dimidia",
+     "count": 3
+    },
+    {
+     "term": "detur",
+     "count": 2
+    },
+    {
+     "term": "altitudo",
+     "count": 5
+    },
+    {
+     "term": "mediae",
+     "count": 2
+    },
+    {
+     "term": "designentur",
+     "count": 2
+    },
+    {
+     "term": "supraque",
+     "count": 2
+    },
+    {
+     "term": "eaeque",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "4.8",
+   "book": 4,
+   "part": "caput",
+   "chapter": 8,
+   "first": "4.8.1",
+   "last": "4.8.7",
+   "keywords": [
+    {
+     "term": "stylobatam",
+     "count": 5
+    },
+    {
+     "term": "columnae",
+     "count": 8
+    },
+    {
+     "term": "isdem",
+     "count": 5
+    },
+    {
+     "term": "cellae",
+     "count": 4
+    },
+    {
+     "term": "aedes",
+     "count": 4
+    },
+    {
+     "term": "diametros",
+     "count": 4
+    },
+    {
+     "term": "cella",
+     "count": 3
+    },
+    {
+     "term": "symmetriis",
+     "count": 6
+    },
+    {
+     "term": "castoris",
+     "count": 2
+    },
+    {
+     "term": "circo",
+     "count": 2
+    },
+    {
+     "term": "quantam",
+     "count": 2
+    },
+    {
+     "term": "peripteros",
+     "count": 2
+    },
+    {
+     "term": "tuscanicis",
+     "count": 2
+    },
+    {
+     "term": "proportionibus",
+     "count": 3
+    },
+    {
+     "term": "tantam",
+     "count": 2
+    },
+    {
+     "term": "sacrificiorum",
+     "count": 2
+    },
+    {
+     "term": "figurae",
+     "count": 2
+    },
+    {
+     "term": "constituantur",
+     "count": 6
+    },
+    {
+     "term": "ordinata",
+     "count": 2
+    },
+    {
+     "term": "quanta",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "4.9",
+   "book": 4,
+   "part": "caput",
+   "chapter": 9,
+   "first": "4.9.1",
+   "last": "4.9.1",
+   "keywords": [
+    {
+     "term": "explicare",
+     "count": 4
+    },
+    {
+     "term": "vestae",
+     "count": 1
+    },
+    {
+     "term": "reddemus",
+     "count": 1
+    },
+    {
+     "term": "omnibusque",
+     "count": 1
+    },
+    {
+     "term": "matrique",
+     "count": 1
+    },
+    {
+     "term": "ararum",
+     "count": 1
+    },
+    {
+     "term": "supplicationem",
+     "count": 1
+    },
+    {
+     "term": "idoneae",
+     "count": 1
+    },
+    {
+     "term": "humiles",
+     "count": 1
+    },
+    {
+     "term": "modulationibus",
+     "count": 1
+    },
+    {
+     "term": "decorem",
+     "count": 1
+    },
+    {
+     "term": "suspiciamus",
+     "count": 1
+    },
+    {
+     "term": "spectent",
+     "count": 1
+    },
+    {
+     "term": "divinitas",
+     "count": 1
+    },
+    {
+     "term": "componantur",
+     "count": 1
+    },
+    {
+     "term": "sacrificiorum",
+     "count": 1
+    },
+    {
+     "term": "disparibus",
+     "count": 1
+    },
+    {
+     "term": "caelestium",
+     "count": 1
+    },
+    {
+     "term": "excelsiores",
+     "count": 1
+    },
+    {
+     "term": "altitudo",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.praef",
+   "book": 5,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "5.praef.1",
+   "last": "5.praef.5",
+   "keywords": [
+    {
+     "term": "legentium",
+     "count": 3
+    },
+    {
+     "term": "praecepta",
+     "count": 4
+    },
+    {
+     "term": "pronuntiavi",
+     "count": 3
+    },
+    {
+     "term": "volumine",
+     "count": 5
+    },
+    {
+     "term": "versuum",
+     "count": 2
+    },
+    {
+     "term": "cybus",
+     "count": 2
+    },
+    {
+     "term": "inmotam",
+     "count": 2
+    },
+    {
+     "term": "iudicavi",
+     "count": 2
+    },
+    {
+     "term": "historias",
+     "count": 2
+    },
+    {
+     "term": "expeditum",
+     "count": 3
+    },
+    {
+     "term": "scribendum",
+     "count": 2
+    },
+    {
+     "term": "breviter",
+     "count": 2
+    },
+    {
+     "term": "stabilitatem",
+     "count": 2
+    },
+    {
+     "term": "sensus",
+     "count": 2
+    },
+    {
+     "term": "sententiam",
+     "count": 2
+    },
+    {
+     "term": "scribere",
+     "count": 2
+    },
+    {
+     "term": "paucis",
+     "count": 2
+    },
+    {
+     "term": "memoriae",
+     "count": 2
+    },
+    {
+     "term": "conscripsi",
+     "count": 2
+    },
+    {
+     "term": "cogitationibus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.1",
+   "book": 5,
+   "part": "caput",
+   "chapter": 1,
+   "first": "5.1.1",
+   "last": "5.1.10",
+   "keywords": [
+    {
+     "term": "columnae",
+     "count": 15
+    },
+    {
+     "term": "basilicarum",
+     "count": 7
+    },
+    {
+     "term": "trabes",
+     "count": 7
+    },
+    {
+     "term": "pedes",
+     "count": 9
+    },
+    {
+     "term": "testudinis",
+     "count": 5
+    },
+    {
+     "term": "superioribus",
+     "count": 8
+    },
+    {
+     "term": "porticus",
+     "count": 5
+    },
+    {
+     "term": "negotiatores",
+     "count": 3
+    },
+    {
+     "term": "hemicyclium",
+     "count": 3
+    },
+    {
+     "term": "parastaticae",
+     "count": 3
+    },
+    {
+     "term": "latae",
+     "count": 3
+    },
+    {
+     "term": "inferior",
+     "count": 5
+    },
+    {
+     "term": "angularibus",
+     "count": 3
+    },
+    {
+     "term": "altae",
+     "count": 3
+    },
+    {
+     "term": "contignationibus",
+     "count": 3
+    },
+    {
+     "term": "finiatur",
+     "count": 2
+    },
+    {
+     "term": "constituantur",
+     "count": 8
+    },
+    {
+     "term": "parte",
+     "count": 6
+    },
+    {
+     "term": "molestiam",
+     "count": 2
+    },
+    {
+     "term": "epistylia",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "5.2",
+   "book": 5,
+   "part": "caput",
+   "chapter": 2,
+   "first": "5.2.1",
+   "last": "5.2.2",
+   "keywords": [
+    {
+     "term": "curia",
+     "count": 2
+    },
+    {
+     "term": "elata",
+     "count": 2
+    },
+    {
+     "term": "dimidia",
+     "count": 3
+    },
+    {
+     "term": "praecinctiones",
+     "count": 2
+    },
+    {
+     "term": "coronis",
+     "count": 2
+    },
+    {
+     "term": "intellegatur",
+     "count": 2
+    },
+    {
+     "term": "foro",
+     "count": 2
+    },
+    {
+     "term": "altitudo",
+     "count": 4
+    },
+    {
+     "term": "parietes",
+     "count": 2
+    },
+    {
+     "term": "priusquam",
+     "count": 1
+    },
+    {
+     "term": "carcer",
+     "count": 1
+    },
+    {
+     "term": "aerarium",
+     "count": 1
+    },
+    {
+     "term": "morata",
+     "count": 1
+    },
+    {
+     "term": "audientibus",
+     "count": 1
+    },
+    {
+     "term": "latitudo",
+     "count": 2
+    },
+    {
+     "term": "auribus",
+     "count": 1
+    },
+    {
+     "term": "albario",
+     "count": 1
+    },
+    {
+     "term": "primis",
+     "count": 1
+    },
+    {
+     "term": "oblonga",
+     "count": 1
+    },
+    {
+     "term": "addita",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "5.3",
+   "book": 5,
+   "part": "caput",
+   "chapter": 3,
+   "first": "5.3.1",
+   "last": "5.3.8",
+   "keywords": [
+    {
+     "term": "theatro",
+     "count": 5
+    },
+    {
+     "term": "undarum",
+     "count": 3
+    },
+    {
+     "term": "aures",
+     "count": 3
+    },
+    {
+     "term": "offensionibus",
+     "count": 3
+    },
+    {
+     "term": "praecinctiones",
+     "count": 3
+    },
+    {
+     "term": "disturbant",
+     "count": 2
+    },
+    {
+     "term": "interpellaverit",
+     "count": 3
+    },
+    {
+     "term": "gradatim",
+     "count": 3
+    },
+    {
+     "term": "pervenit",
+     "count": 4
+    },
+    {
+     "term": "locus",
+     "count": 4
+    },
+    {
+     "term": "vocem",
+     "count": 2
+    },
+    {
+     "term": "resonantia",
+     "count": 2
+    },
+    {
+     "term": "eligendus",
+     "count": 2
+    },
+    {
+     "term": "circuli",
+     "count": 2
+    },
+    {
+     "term": "designata",
+     "count": 3
+    },
+    {
+     "term": "substructionis",
+     "count": 2
+    },
+    {
+     "term": "palustri",
+     "count": 2
+    },
+    {
+     "term": "exitus",
+     "count": 2
+    },
+    {
+     "term": "fundamenta",
+     "count": 2
+    },
+    {
+     "term": "spectat",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.4",
+   "book": 5,
+   "part": "caput",
+   "chapter": 4,
+   "first": "5.4.1",
+   "last": "5.4.9",
+   "keywords": [
+    {
+     "term": "hemitonium",
+     "count": 11
+    },
+    {
+     "term": "tetrachordorum",
+     "count": 8
+    },
+    {
+     "term": "hypate",
+     "count": 5
+    },
+    {
+     "term": "intervalla",
+     "count": 10
+    },
+    {
+     "term": "harmonia",
+     "count": 5
+    },
+    {
+     "term": "finitionem",
+     "count": 6
+    },
+    {
+     "term": "disdiapason",
+     "count": 4
+    },
+    {
+     "term": "diatessaron",
+     "count": 4
+    },
+    {
+     "term": "diapente",
+     "count": 4
+    },
+    {
+     "term": "diapason",
+     "count": 4
+    },
+    {
+     "term": "distantes",
+     "count": 5
+    },
+    {
+     "term": "modulationibus",
+     "count": 4
+    },
+    {
+     "term": "trite",
+     "count": 3
+    },
+    {
+     "term": "parhypate",
+     "count": 3
+    },
+    {
+     "term": "nete",
+     "count": 3
+    },
+    {
+     "term": "lichanos",
+     "count": 3
+    },
+    {
+     "term": "chroma",
+     "count": 3
+    },
+    {
+     "term": "apparet",
+     "count": 3
+    },
+    {
+     "term": "sonitus",
+     "count": 4
+    },
+    {
+     "term": "tertium",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "5.5",
+   "book": 5,
+   "part": "caput",
+   "chapter": 5,
+   "first": "5.5.1",
+   "last": "5.5.8",
+   "keywords": [
+    {
+     "term": "diatessaron",
+     "count": 14
+    },
+    {
+     "term": "chromaticen",
+     "count": 9
+    },
+    {
+     "term": "diatonon",
+     "count": 6
+    },
+    {
+     "term": "synhemmenon",
+     "count": 4
+    },
+    {
+     "term": "hyperbolaeon",
+     "count": 4
+    },
+    {
+     "term": "hypaton",
+     "count": 4
+    },
+    {
+     "term": "theatra",
+     "count": 4
+    },
+    {
+     "term": "consonantiam",
+     "count": 4
+    },
+    {
+     "term": "neten",
+     "count": 3
+    },
+    {
+     "term": "theatro",
+     "count": 4
+    },
+    {
+     "term": "ponantur",
+     "count": 3
+    },
+    {
+     "term": "meson",
+     "count": 3
+    },
+    {
+     "term": "diezeugmenon",
+     "count": 3
+    },
+    {
+     "term": "diapente",
+     "count": 3
+    },
+    {
+     "term": "cornibus",
+     "count": 3
+    },
+    {
+     "term": "sonitum",
+     "count": 3
+    },
+    {
+     "term": "prima",
+     "count": 3
+    },
+    {
+     "term": "theatri",
+     "count": 3
+    },
+    {
+     "term": "sonantia",
+     "count": 2
+    },
+    {
+     "term": "sextis",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.6",
+   "book": 5,
+   "part": "caput",
+   "chapter": 6,
+   "first": "5.6.1",
+   "last": "5.6.9",
+   "keywords": [
+    {
+     "term": "orchestrae",
+     "count": 6
+    },
+    {
+     "term": "scaenae",
+     "count": 6
+    },
+    {
+     "term": "diametros",
+     "count": 4
+    },
+    {
+     "term": "columnae",
+     "count": 6
+    },
+    {
+     "term": "ornatus",
+     "count": 3
+    },
+    {
+     "term": "altitudo",
+     "count": 8
+    },
+    {
+     "term": "gradus",
+     "count": 3
+    },
+    {
+     "term": "pulpiti",
+     "count": 2
+    },
+    {
+     "term": "plutei",
+     "count": 2
+    },
+    {
+     "term": "ornationis",
+     "count": 2
+    },
+    {
+     "term": "parte",
+     "count": 7
+    },
+    {
+     "term": "satyricum",
+     "count": 2
+    },
+    {
+     "term": "pulpitum",
+     "count": 2
+    },
+    {
+     "term": "praecidit",
+     "count": 2
+    },
+    {
+     "term": "hospitalia",
+     "count": 2
+    },
+    {
+     "term": "quarta",
+     "count": 3
+    },
+    {
+     "term": "circinationis",
+     "count": 3
+    },
+    {
+     "term": "dirigantur",
+     "count": 2
+    },
+    {
+     "term": "cunei",
+     "count": 2
+    },
+    {
+     "term": "ascensus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.7",
+   "book": 5,
+   "part": "caput",
+   "chapter": 7,
+   "first": "5.7.1",
+   "last": "5.7.2",
+   "keywords": [
+    {
+     "term": "proscaenii",
+     "count": 4
+    },
+    {
+     "term": "circinationis",
+     "count": 6
+    },
+    {
+     "term": "orchestrae",
+     "count": 3
+    },
+    {
+     "term": "praecinctiones",
+     "count": 3
+    },
+    {
+     "term": "parallelos",
+     "count": 2
+    },
+    {
+     "term": "dirigantur",
+     "count": 2
+    },
+    {
+     "term": "sinistra",
+     "count": 4
+    },
+    {
+     "term": "scaenae",
+     "count": 2
+    },
+    {
+     "term": "quadrato",
+     "count": 3
+    },
+    {
+     "term": "curvaturam",
+     "count": 2
+    },
+    {
+     "term": "linea",
+     "count": 2
+    },
+    {
+     "term": "circumagatur",
+     "count": 2
+    },
+    {
+     "term": "designata",
+     "count": 2
+    },
+    {
+     "term": "intervalla",
+     "count": 2
+    },
+    {
+     "term": "tragici",
+     "count": 1
+    },
+    {
+     "term": "thymelici",
+     "count": 1
+    },
+    {
+     "term": "signantur",
+     "count": 1
+    },
+    {
+     "term": "minoreque",
+     "count": 1
+    },
+    {
+     "term": "logei",
+     "count": 1
+    },
+    {
+     "term": "latino",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "5.8",
+   "book": 5,
+   "part": "caput",
+   "chapter": 8,
+   "first": "5.8.1",
+   "last": "5.8.2",
+   "keywords": [
+    {
+     "term": "vocis",
+     "count": 3
+    },
+    {
+     "term": "repulsa",
+     "count": 2
+    },
+    {
+     "term": "desonantes",
+     "count": 2
+    },
+    {
+     "term": "resonantia",
+     "count": 2
+    },
+    {
+     "term": "circumsonantes",
+     "count": 2
+    },
+    {
+     "term": "verborum",
+     "count": 2
+    },
+    {
+     "term": "consonantiam",
+     "count": 2
+    },
+    {
+     "term": "incerta",
+     "count": 2
+    },
+    {
+     "term": "emendatas",
+     "count": 2
+    },
+    {
+     "term": "significat",
+     "count": 2
+    },
+    {
+     "term": "diligentius",
+     "count": 2
+    },
+    {
+     "term": "sonans",
+     "count": 1
+    },
+    {
+     "term": "resiliens",
+     "count": 1
+    },
+    {
+     "term": "resiliat",
+     "count": 1
+    },
+    {
+     "term": "residens",
+     "count": 1
+    },
+    {
+     "term": "opprimit",
+     "count": 1
+    },
+    {
+     "term": "notatae",
+     "count": 1
+    },
+    {
+     "term": "exsolvens",
+     "count": 1
+    },
+    {
+     "term": "egrediatur",
+     "count": 1
+    },
+    {
+     "term": "diserta",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "5.9",
+   "book": 5,
+   "part": "caput",
+   "chapter": 9,
+   "first": "5.9.1",
+   "last": "5.9.9",
+   "keywords": [
+    {
+     "term": "ambulationes",
+     "count": 11
+    },
+    {
+     "term": "columnae",
+     "count": 11
+    },
+    {
+     "term": "porticus",
+     "count": 7
+    },
+    {
+     "term": "hypaethroe",
+     "count": 5
+    },
+    {
+     "term": "capituli",
+     "count": 6
+    },
+    {
+     "term": "moduli",
+     "count": 4
+    },
+    {
+     "term": "libro",
+     "count": 4
+    },
+    {
+     "term": "videntur",
+     "count": 5
+    },
+    {
+     "term": "viridibus",
+     "count": 2
+    },
+    {
+     "term": "spira",
+     "count": 2
+    },
+    {
+     "term": "siccae",
+     "count": 2
+    },
+    {
+     "term": "umores",
+     "count": 3
+    },
+    {
+     "term": "modulorum",
+     "count": 3
+    },
+    {
+     "term": "exteriore",
+     "count": 3
+    },
+    {
+     "term": "repentinis",
+     "count": 2
+    },
+    {
+     "term": "civitatibus",
+     "count": 4
+    },
+    {
+     "term": "abundantia",
+     "count": 3
+    },
+    {
+     "term": "fiat",
+     "count": 3
+    },
+    {
+     "term": "scapus",
+     "count": 2
+    },
+    {
+     "term": "templis",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.10",
+   "book": 5,
+   "part": "caput",
+   "chapter": 10,
+   "first": "5.10.1",
+   "last": "5.10.5",
+   "keywords": [
+    {
+     "term": "caldaria",
+     "count": 6
+    },
+    {
+     "term": "tepidarium",
+     "count": 5
+    },
+    {
+     "term": "hypocausim",
+     "count": 4
+    },
+    {
+     "term": "eaeque",
+     "count": 5
+    },
+    {
+     "term": "tegulae",
+     "count": 3
+    },
+    {
+     "term": "utique",
+     "count": 2
+    },
+    {
+     "term": "alvei",
+     "count": 2
+    },
+    {
+     "term": "contignationibus",
+     "count": 3
+    },
+    {
+     "term": "suspensurae",
+     "count": 2
+    },
+    {
+     "term": "hemisphaerii",
+     "count": 2
+    },
+    {
+     "term": "argilla",
+     "count": 2
+    },
+    {
+     "term": "sudationibus",
+     "count": 2
+    },
+    {
+     "term": "concamarationes",
+     "count": 2
+    },
+    {
+     "term": "arcus",
+     "count": 2
+    },
+    {
+     "term": "capillo",
+     "count": 2
+    },
+    {
+     "term": "frigida",
+     "count": 2
+    },
+    {
+     "term": "bipedales",
+     "count": 2
+    },
+    {
+     "term": "pedes",
+     "count": 3
+    },
+    {
+     "term": "struantur",
+     "count": 2
+    },
+    {
+     "term": "pilae",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.11",
+   "book": 5,
+   "part": "caput",
+   "chapter": 11,
+   "first": "5.11.1",
+   "last": "5.11.4",
+   "keywords": [
+    {
+     "term": "porticus",
+     "count": 8
+    },
+    {
+     "term": "palaestris",
+     "count": 3
+    },
+    {
+     "term": "exercentur",
+     "count": 3
+    },
+    {
+     "term": "athletae",
+     "count": 3
+    },
+    {
+     "term": "frigida",
+     "count": 3
+    },
+    {
+     "term": "duplex",
+     "count": 3
+    },
+    {
+     "term": "peristylia",
+     "count": 3
+    },
+    {
+     "term": "disponantur",
+     "count": 3
+    },
+    {
+     "term": "xystum",
+     "count": 2
+    },
+    {
+     "term": "elaeothesium",
+     "count": 2
+    },
+    {
+     "term": "conisterium",
+     "count": 2
+    },
+    {
+     "term": "ambulationes",
+     "count": 3
+    },
+    {
+     "term": "xysta",
+     "count": 2
+    },
+    {
+     "term": "marginibus",
+     "count": 2
+    },
+    {
+     "term": "proxime",
+     "count": 3
+    },
+    {
+     "term": "lavatio",
+     "count": 2
+    },
+    {
+     "term": "laconicum",
+     "count": 2
+    },
+    {
+     "term": "graecos",
+     "count": 2
+    },
+    {
+     "term": "exhedrae",
+     "count": 2
+    },
+    {
+     "term": "versura",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "5.12",
+   "book": 5,
+   "part": "caput",
+   "chapter": 12,
+   "first": "5.12.1",
+   "last": "5.12.7",
+   "keywords": [
+    {
+     "term": "compleantur",
+     "count": 4
+    },
+    {
+     "term": "destinandaeque",
+     "count": 3
+    },
+    {
+     "term": "structura",
+     "count": 5
+    },
+    {
+     "term": "struatur",
+     "count": 3
+    },
+    {
+     "term": "naves",
+     "count": 3
+    },
+    {
+     "term": "exaequata",
+     "count": 3
+    },
+    {
+     "term": "portuum",
+     "count": 2
+    },
+    {
+     "term": "finitus",
+     "count": 2
+    },
+    {
+     "term": "arcas",
+     "count": 2
+    },
+    {
+     "term": "harena",
+     "count": 3
+    },
+    {
+     "term": "saeptiones",
+     "count": 2
+    },
+    {
+     "term": "pulvis",
+     "count": 2
+    },
+    {
+     "term": "promunturia",
+     "count": 2
+    },
+    {
+     "term": "murus",
+     "count": 2
+    },
+    {
+     "term": "arcae",
+     "count": 2
+    },
+    {
+     "term": "planitia",
+     "count": 3
+    },
+    {
+     "term": "pulvinus",
+     "count": 2
+    },
+    {
+     "term": "isque",
+     "count": 2
+    },
+    {
+     "term": "margines",
+     "count": 2
+    },
+    {
+     "term": "catenis",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "6.praef",
+   "book": 6,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "6.praef.1",
+   "last": "6.praef.7",
+   "keywords": [
+    {
+     "term": "pecuniae",
+     "count": 5
+    },
+    {
+     "term": "architecti",
+     "count": 7
+    },
+    {
+     "term": "fortunae",
+     "count": 4
+    },
+    {
+     "term": "disciplinarum",
+     "count": 4
+    },
+    {
+     "term": "iudicantes",
+     "count": 3
+    },
+    {
+     "term": "philosophia",
+     "count": 3
+    },
+    {
+     "term": "potius",
+     "count": 3
+    },
+    {
+     "term": "athenienses",
+     "count": 3
+    },
+    {
+     "term": "naufragio",
+     "count": 2
+    },
+    {
+     "term": "liberos",
+     "count": 2
+    },
+    {
+     "term": "comites",
+     "count": 2
+    },
+    {
+     "term": "doctrinarum",
+     "count": 3
+    },
+    {
+     "term": "arte",
+     "count": 3
+    },
+    {
+     "term": "permittat",
+     "count": 2
+    },
+    {
+     "term": "parenti",
+     "count": 2
+    },
+    {
+     "term": "liberis",
+     "count": 2
+    },
+    {
+     "term": "committendum",
+     "count": 2
+    },
+    {
+     "term": "audacia",
+     "count": 2
+    },
+    {
+     "term": "ambiuntur",
+     "count": 2
+    },
+    {
+     "term": "vera",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "6.1",
+   "book": 6,
+   "part": "caput",
+   "chapter": 1,
+   "first": "6.1.1",
+   "last": "6.1.12",
+   "keywords": [
+    {
+     "term": "mundi",
+     "count": 8
+    },
+    {
+     "term": "septentrionem",
+     "count": 11
+    },
+    {
+     "term": "meridiana",
+     "count": 9
+    },
+    {
+     "term": "gentium",
+     "count": 5
+    },
+    {
+     "term": "nationes",
+     "count": 6
+    },
+    {
+     "term": "refrigerationibus",
+     "count": 7
+    },
+    {
+     "term": "graviores",
+     "count": 4
+    },
+    {
+     "term": "vocis",
+     "count": 5
+    },
+    {
+     "term": "inclinationem",
+     "count": 6
+    },
+    {
+     "term": "gentes",
+     "count": 4
+    },
+    {
+     "term": "solis",
+     "count": 7
+    },
+    {
+     "term": "sanguinis",
+     "count": 4
+    },
+    {
+     "term": "temperata",
+     "count": 9
+    },
+    {
+     "term": "caeli",
+     "count": 6
+    },
+    {
+     "term": "qualitates",
+     "count": 5
+    },
+    {
+     "term": "corpora",
+     "count": 5
+    },
+    {
+     "term": "regionibus",
+     "count": 6
+    },
+    {
+     "term": "acutissimum",
+     "count": 3
+    },
+    {
+     "term": "natura",
+     "count": 7
+    },
+    {
+     "term": "consiliis",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "6.2",
+   "book": 6,
+   "part": "caput",
+   "chapter": 2,
+   "first": "6.2.1",
+   "last": "6.2.5",
+   "keywords": [
+    {
+     "term": "oculis",
+     "count": 4
+    },
+    {
+     "term": "detractionibus",
+     "count": 3
+    },
+    {
+     "term": "aspectus",
+     "count": 4
+    },
+    {
+     "term": "infracti",
+     "count": 2
+    },
+    {
+     "term": "falsa",
+     "count": 2
+    },
+    {
+     "term": "acuminis",
+     "count": 2
+    },
+    {
+     "term": "debeant",
+     "count": 2
+    },
+    {
+     "term": "videntur",
+     "count": 3
+    },
+    {
+     "term": "directiones",
+     "count": 2
+    },
+    {
+     "term": "desideretur",
+     "count": 2
+    },
+    {
+     "term": "efficere",
+     "count": 2
+    },
+    {
+     "term": "symmetriis",
+     "count": 3
+    },
+    {
+     "term": "adiectionibus",
+     "count": 2
+    },
+    {
+     "term": "planitia",
+     "count": 2
+    },
+    {
+     "term": "locorum",
+     "count": 2
+    },
+    {
+     "term": "videtur",
+     "count": 3
+    },
+    {
+     "term": "proportionibus",
+     "count": 2
+    },
+    {
+     "term": "summam",
+     "count": 2
+    },
+    {
+     "term": "tandem",
+     "count": 1
+    },
+    {
+     "term": "rationum",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "6.3",
+   "book": 6,
+   "part": "caput",
+   "chapter": 3,
+   "first": "6.3.1",
+   "last": "6.3.11",
+   "keywords": [
+    {
+     "term": "latitudo",
+     "count": 23
+    },
+    {
+     "term": "atrii",
+     "count": 6
+    },
+    {
+     "term": "longitudo",
+     "count": 14
+    },
+    {
+     "term": "columnae",
+     "count": 10
+    },
+    {
+     "term": "compluvia",
+     "count": 4
+    },
+    {
+     "term": "trabes",
+     "count": 6
+    },
+    {
+     "term": "triclinia",
+     "count": 5
+    },
+    {
+     "term": "corinthiis",
+     "count": 6
+    },
+    {
+     "term": "pedibus",
+     "count": 5
+    },
+    {
+     "term": "tertia",
+     "count": 6
+    },
+    {
+     "term": "tribuatur",
+     "count": 3
+    },
+    {
+     "term": "alis",
+     "count": 3
+    },
+    {
+     "term": "alarum",
+     "count": 3
+    },
+    {
+     "term": "partes",
+     "count": 8
+    },
+    {
+     "term": "oeci",
+     "count": 3
+    },
+    {
+     "term": "lacunaria",
+     "count": 4
+    },
+    {
+     "term": "epistylia",
+     "count": 5
+    },
+    {
+     "term": "symmetriis",
+     "count": 7
+    },
+    {
+     "term": "altitudo",
+     "count": 10
+    },
+    {
+     "term": "tetrastylos",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "6.4",
+   "book": 6,
+   "part": "caput",
+   "chapter": 4,
+   "first": "6.4.1",
+   "last": "6.4.2",
+   "keywords": [
+    {
+     "term": "occidentem",
+     "count": 4
+    },
+    {
+     "term": "vespertino",
+     "count": 2
+    },
+    {
+     "term": "libri",
+     "count": 2
+    },
+    {
+     "term": "calorem",
+     "count": 2
+    },
+    {
+     "term": "bybliothecam",
+     "count": 2
+    },
+    {
+     "term": "adversus",
+     "count": 2
+    },
+    {
+     "term": "triclinia",
+     "count": 2
+    },
+    {
+     "term": "spectare",
+     "count": 2
+    },
+    {
+     "term": "orientem",
+     "count": 2
+    },
+    {
+     "term": "solis",
+     "count": 2
+    },
+    {
+     "term": "umidos",
+     "count": 1
+    },
+    {
+     "term": "verna",
+     "count": 1
+    },
+    {
+     "term": "textrina",
+     "count": 1
+    },
+    {
+     "term": "tepidiorem",
+     "count": 1
+    },
+    {
+     "term": "solitum",
+     "count": 1
+    },
+    {
+     "term": "praetenta",
+     "count": 1
+    },
+    {
+     "term": "plumariorum",
+     "count": 1
+    },
+    {
+     "term": "pictorumque",
+     "count": 1
+    },
+    {
+     "term": "pallore",
+     "count": 1
+    },
+    {
+     "term": "alunt",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "6.5",
+   "book": 6,
+   "part": "caput",
+   "chapter": 5,
+   "first": "6.5.1",
+   "last": "6.5.3",
+   "keywords": [
+    {
+     "term": "atria",
+     "count": 4
+    },
+    {
+     "term": "vestibula",
+     "count": 4
+    },
+    {
+     "term": "peristylia",
+     "count": 3
+    },
+    {
+     "term": "ruri",
+     "count": 2
+    },
+    {
+     "term": "officia",
+     "count": 2
+    },
+    {
+     "term": "aedificiorum",
+     "count": 5
+    },
+    {
+     "term": "communi",
+     "count": 3
+    },
+    {
+     "term": "decorem",
+     "count": 2
+    },
+    {
+     "term": "urbe",
+     "count": 2
+    },
+    {
+     "term": "magnificentia",
+     "count": 2
+    },
+    {
+     "term": "propria",
+     "count": 2
+    },
+    {
+     "term": "ceteraque",
+     "count": 2
+    },
+    {
+     "term": "commoda",
+     "count": 2
+    },
+    {
+     "term": "ambulationes",
+     "count": 2
+    },
+    {
+     "term": "publica",
+     "count": 2
+    },
+    {
+     "term": "elegantes",
+     "count": 2
+    },
+    {
+     "term": "praestant",
+     "count": 2
+    },
+    {
+     "term": "rationibus",
+     "count": 3
+    },
+    {
+     "term": "tabulina",
+     "count": 1
+    },
+    {
+     "term": "rusticorum",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "6.6",
+   "book": 6,
+   "part": "caput",
+   "chapter": 6,
+   "first": "6.6.1",
+   "last": "6.6.7",
+   "keywords": [
+    {
+     "term": "lumen",
+     "count": 4
+    },
+    {
+     "term": "boves",
+     "count": 3
+    },
+    {
+     "term": "pedes",
+     "count": 5
+    },
+    {
+     "term": "calidis",
+     "count": 3
+    },
+    {
+     "term": "villae",
+     "count": 2
+    },
+    {
+     "term": "rusticae",
+     "count": 2
+    },
+    {
+     "term": "praesepia",
+     "count": 2
+    },
+    {
+     "term": "obstare",
+     "count": 2
+    },
+    {
+     "term": "focum",
+     "count": 2
+    },
+    {
+     "term": "culinae",
+     "count": 2
+    },
+    {
+     "term": "inpeditione",
+     "count": 3
+    },
+    {
+     "term": "torcular",
+     "count": 2
+    },
+    {
+     "term": "aedificiorum",
+     "count": 5
+    },
+    {
+     "term": "ministratio",
+     "count": 2
+    },
+    {
+     "term": "fructuum",
+     "count": 2
+    },
+    {
+     "term": "denûm",
+     "count": 2
+    },
+    {
+     "term": "coniuncta",
+     "count": 3
+    },
+    {
+     "term": "caeli",
+     "count": 3
+    },
+    {
+     "term": "quaternos",
+     "count": 2
+    },
+    {
+     "term": "iuga",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "6.7",
+   "book": 6,
+   "part": "caput",
+   "chapter": 7,
+   "first": "6.7.1",
+   "last": "6.7.7",
+   "keywords": [
+    {
+     "term": "peristylia",
+     "count": 8
+    },
+    {
+     "term": "ianuas",
+     "count": 4
+    },
+    {
+     "term": "triclinia",
+     "count": 5
+    },
+    {
+     "term": "appellant",
+     "count": 9
+    },
+    {
+     "term": "porticus",
+     "count": 5
+    },
+    {
+     "term": "cubicula",
+     "count": 4
+    },
+    {
+     "term": "hospitalia",
+     "count": 3
+    },
+    {
+     "term": "familiarum",
+     "count": 4
+    },
+    {
+     "term": "hospitio",
+     "count": 3
+    },
+    {
+     "term": "domus",
+     "count": 3
+    },
+    {
+     "term": "graeci",
+     "count": 6
+    },
+    {
+     "term": "telamones",
+     "count": 2
+    },
+    {
+     "term": "prothyrum",
+     "count": 2
+    },
+    {
+     "term": "mittebant",
+     "count": 2
+    },
+    {
+     "term": "meridie",
+     "count": 3
+    },
+    {
+     "term": "virilia",
+     "count": 2
+    },
+    {
+     "term": "matres",
+     "count": 2
+    },
+    {
+     "term": "graece",
+     "count": 4
+    },
+    {
+     "term": "historias",
+     "count": 2
+    },
+    {
+     "term": "convivia",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "6.8",
+   "book": 6,
+   "part": "caput",
+   "chapter": 8,
+   "first": "6.8.1",
+   "last": "6.8.10",
+   "keywords": [
+    {
+     "term": "structura",
+     "count": 9
+    },
+    {
+     "term": "substructionis",
+     "count": 6
+    },
+    {
+     "term": "muro",
+     "count": 3
+    },
+    {
+     "term": "pilae",
+     "count": 3
+    },
+    {
+     "term": "congesticius",
+     "count": 3
+    },
+    {
+     "term": "spatio",
+     "count": 4
+    },
+    {
+     "term": "crassitudo",
+     "count": 5
+    },
+    {
+     "term": "respondeant",
+     "count": 4
+    },
+    {
+     "term": "domini",
+     "count": 2
+    },
+    {
+     "term": "trabes",
+     "count": 3
+    },
+    {
+     "term": "architecti",
+     "count": 4
+    },
+    {
+     "term": "centrum",
+     "count": 3
+    },
+    {
+     "term": "aedificiorum",
+     "count": 5
+    },
+    {
+     "term": "quanta",
+     "count": 3
+    },
+    {
+     "term": "parietum",
+     "count": 3
+    },
+    {
+     "term": "poterint",
+     "count": 2
+    },
+    {
+     "term": "postes",
+     "count": 2
+    },
+    {
+     "term": "vetustatem",
+     "count": 3
+    },
+    {
+     "term": "solet",
+     "count": 2
+    },
+    {
+     "term": "muri",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "7.praef",
+   "book": 7,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "7.praef.1",
+   "last": "7.praef.18",
+   "keywords": [
+    {
+     "term": "institutis",
+     "count": 9
+    },
+    {
+     "term": "aristophanes",
+     "count": 4
+    },
+    {
+     "term": "commentariis",
+     "count": 5
+    },
+    {
+     "term": "scripta",
+     "count": 7
+    },
+    {
+     "term": "philo",
+     "count": 3
+    },
+    {
+     "term": "cossutius",
+     "count": 3
+    },
+    {
+     "term": "agendae",
+     "count": 3
+    },
+    {
+     "term": "symmetriis",
+     "count": 8
+    },
+    {
+     "term": "cogitationibus",
+     "count": 5
+    },
+    {
+     "term": "memoriae",
+     "count": 4
+    },
+    {
+     "term": "architecti",
+     "count": 6
+    },
+    {
+     "term": "vituperetur",
+     "count": 3
+    },
+    {
+     "term": "dianae",
+     "count": 4
+    },
+    {
+     "term": "comparata",
+     "count": 6
+    },
+    {
+     "term": "athenis",
+     "count": 4
+    },
+    {
+     "term": "fuissent",
+     "count": 3
+    },
+    {
+     "term": "probare",
+     "count": 3
+    },
+    {
+     "term": "bybliothecam",
+     "count": 3
+    },
+    {
+     "term": "aevo",
+     "count": 3
+    },
+    {
+     "term": "perfecit",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "7.1",
+   "book": 7,
+   "part": "caput",
+   "chapter": 1,
+   "first": "7.1.1",
+   "last": "7.1.7",
+   "keywords": [
+    {
+     "term": "pavimentum",
+     "count": 9
+    },
+    {
+     "term": "rudus",
+     "count": 5
+    },
+    {
+     "term": "statumine",
+     "count": 4
+    },
+    {
+     "term": "inducatur",
+     "count": 5
+    },
+    {
+     "term": "coagmenta",
+     "count": 6
+    },
+    {
+     "term": "fricatum",
+     "count": 3
+    },
+    {
+     "term": "gelicidiis",
+     "count": 3
+    },
+    {
+     "term": "contignationibus",
+     "count": 4
+    },
+    {
+     "term": "coaxationibus",
+     "count": 3
+    },
+    {
+     "term": "calcis",
+     "count": 3
+    },
+    {
+     "term": "tesseris",
+     "count": 2
+    },
+    {
+     "term": "solidetur",
+     "count": 2
+    },
+    {
+     "term": "sectilia",
+     "count": 2
+    },
+    {
+     "term": "quercei",
+     "count": 2
+    },
+    {
+     "term": "pandatione",
+     "count": 2
+    },
+    {
+     "term": "nucleus",
+     "count": 2
+    },
+    {
+     "term": "exacta",
+     "count": 2
+    },
+    {
+     "term": "tessera",
+     "count": 2
+    },
+    {
+     "term": "grandi",
+     "count": 2
+    },
+    {
+     "term": "mixtionem",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "7.2",
+   "book": 7,
+   "part": "caput",
+   "chapter": 2,
+   "first": "7.2.1",
+   "last": "7.2.2",
+   "keywords": [
+    {
+     "term": "macerata",
+     "count": 5
+    },
+    {
+     "term": "tenore",
+     "count": 2
+    },
+    {
+     "term": "calculi",
+     "count": 2
+    },
+    {
+     "term": "recte",
+     "count": 2
+    },
+    {
+     "term": "siccum",
+     "count": 1
+    },
+    {
+     "term": "recens",
+     "count": 1
+    },
+    {
+     "term": "pustulas",
+     "count": 1
+    },
+    {
+     "term": "pinguis",
+     "count": 1
+    },
+    {
+     "term": "permacerantur",
+     "count": 1
+    },
+    {
+     "term": "macerabuntur",
+     "count": 1
+    },
+    {
+     "term": "educetur",
+     "count": 1
+    },
+    {
+     "term": "dolatur",
+     "count": 1
+    },
+    {
+     "term": "crudos",
+     "count": 1
+    },
+    {
+     "term": "concoquatur",
+     "count": 1
+    },
+    {
+     "term": "ascietur",
+     "count": 1
+    },
+    {
+     "term": "ascia",
+     "count": 1
+    },
+    {
+     "term": "sumitur",
+     "count": 1
+    },
+    {
+     "term": "siticulosam",
+     "count": 1
+    },
+    {
+     "term": "optimae",
+     "count": 1
+    },
+    {
+     "term": "operi",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.3",
+   "book": 7,
+   "part": "caput",
+   "chapter": 3,
+   "first": "7.3.1",
+   "last": "7.3.11",
+   "keywords": [
+    {
+     "term": "tectoria",
+     "count": 10
+    },
+    {
+     "term": "trullissetur",
+     "count": 4
+    },
+    {
+     "term": "harenato",
+     "count": 4
+    },
+    {
+     "term": "rimas",
+     "count": 4
+    },
+    {
+     "term": "marmoris",
+     "count": 4
+    },
+    {
+     "term": "inducatur",
+     "count": 4
+    },
+    {
+     "term": "harundinibus",
+     "count": 4
+    },
+    {
+     "term": "tomice",
+     "count": 3
+    },
+    {
+     "term": "religentur",
+     "count": 3
+    },
+    {
+     "term": "splendorem",
+     "count": 4
+    },
+    {
+     "term": "politionibus",
+     "count": 4
+    },
+    {
+     "term": "remittunt",
+     "count": 3
+    },
+    {
+     "term": "asseres",
+     "count": 3
+    },
+    {
+     "term": "vetustatem",
+     "count": 5
+    },
+    {
+     "term": "luto",
+     "count": 3
+    },
+    {
+     "term": "harena",
+     "count": 4
+    },
+    {
+     "term": "inducti",
+     "count": 3
+    },
+    {
+     "term": "soliditatem",
+     "count": 3
+    },
+    {
+     "term": "tenues",
+     "count": 2
+    },
+    {
+     "term": "subarescente",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "7.4",
+   "book": 7,
+   "part": "caput",
+   "chapter": 4,
+   "first": "7.4.1",
+   "last": "7.4.5",
+   "keywords": [
+    {
+     "term": "trullissetur",
+     "count": 4
+    },
+    {
+     "term": "pavimentum",
+     "count": 5
+    },
+    {
+     "term": "nares",
+     "count": 4
+    },
+    {
+     "term": "dirigatur",
+     "count": 3
+    },
+    {
+     "term": "tectoria",
+     "count": 4
+    },
+    {
+     "term": "testa",
+     "count": 3
+    },
+    {
+     "term": "libramentum",
+     "count": 3
+    },
+    {
+     "term": "respuant",
+     "count": 2
+    },
+    {
+     "term": "inducitur",
+     "count": 2
+    },
+    {
+     "term": "harenato",
+     "count": 2
+    },
+    {
+     "term": "spiramenta",
+     "count": 2
+    },
+    {
+     "term": "testacea",
+     "count": 2
+    },
+    {
+     "term": "canalis",
+     "count": 2
+    },
+    {
+     "term": "tegulae",
+     "count": 2
+    },
+    {
+     "term": "politionibus",
+     "count": 2
+    },
+    {
+     "term": "patietur",
+     "count": 2
+    },
+    {
+     "term": "patentes",
+     "count": 2
+    },
+    {
+     "term": "utilis",
+     "count": 2
+    },
+    {
+     "term": "triclinia",
+     "count": 2
+    },
+    {
+     "term": "ornatus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "7.5",
+   "book": 7,
+   "part": "caput",
+   "chapter": 5,
+   "first": "7.5.1",
+   "last": "7.5.8",
+   "keywords": [
+    {
+     "term": "veritate",
+     "count": 4
+    },
+    {
+     "term": "fastigium",
+     "count": 6
+    },
+    {
+     "term": "apaturius",
+     "count": 3
+    },
+    {
+     "term": "coliculi",
+     "count": 3
+    },
+    {
+     "term": "alabandis",
+     "count": 3
+    },
+    {
+     "term": "picturae",
+     "count": 3
+    },
+    {
+     "term": "tecta",
+     "count": 3
+    },
+    {
+     "term": "sigilla",
+     "count": 3
+    },
+    {
+     "term": "probare",
+     "count": 3
+    },
+    {
+     "term": "pinguntur",
+     "count": 2
+    },
+    {
+     "term": "licymnius",
+     "count": 2
+    },
+    {
+     "term": "iudicatos",
+     "count": 2
+    },
+    {
+     "term": "indecentiae",
+     "count": 2
+    },
+    {
+     "term": "finitis",
+     "count": 2
+    },
+    {
+     "term": "sustinere",
+     "count": 4
+    },
+    {
+     "term": "tectoria",
+     "count": 3
+    },
+    {
+     "term": "tegularum",
+     "count": 2
+    },
+    {
+     "term": "insipientes",
+     "count": 2
+    },
+    {
+     "term": "flores",
+     "count": 2
+    },
+    {
+     "term": "candelabra",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "7.6",
+   "book": 7,
+   "part": "caput",
+   "chapter": 6,
+   "first": "7.6.1",
+   "last": "7.6.1",
+   "keywords": [
+    {
+     "term": "subcretum",
+     "count": 2
+    },
+    {
+     "term": "operibus",
+     "count": 4
+    },
+    {
+     "term": "contusa",
+     "count": 2
+    },
+    {
+     "term": "locis",
+     "count": 4
+    },
+    {
+     "term": "procreatur",
+     "count": 2
+    },
+    {
+     "term": "utilitates",
+     "count": 2
+    },
+    {
+     "term": "salis",
+     "count": 1
+    },
+    {
+     "term": "moluntur",
+     "count": 1
+    },
+    {
+     "term": "molitae",
+     "count": 1
+    },
+    {
+     "term": "molere",
+     "count": 1
+    },
+    {
+     "term": "marmorarii",
+     "count": 1
+    },
+    {
+     "term": "cernere",
+     "count": 1
+    },
+    {
+     "term": "assulae",
+     "count": 1
+    },
+    {
+     "term": "parata",
+     "count": 1
+    },
+    {
+     "term": "micas",
+     "count": 1
+    },
+    {
+     "term": "fodiuntur",
+     "count": 1
+    },
+    {
+     "term": "farina",
+     "count": 1
+    },
+    {
+     "term": "deiciuntur",
+     "count": 1
+    },
+    {
+     "term": "contunduntur",
+     "count": 1
+    },
+    {
+     "term": "tractationibus",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.7",
+   "book": 7,
+   "part": "caput",
+   "chapter": 7,
+   "first": "7.7.1",
+   "last": "7.7.5",
+   "keywords": [
+    {
+     "term": "optima",
+     "count": 3
+    },
+    {
+     "term": "ponto",
+     "count": 3
+    },
+    {
+     "term": "metallum",
+     "count": 2
+    },
+    {
+     "term": "locis",
+     "count": 5
+    },
+    {
+     "term": "argentum",
+     "count": 2
+    },
+    {
+     "term": "multis",
+     "count": 2
+    },
+    {
+     "term": "foditur",
+     "count": 2
+    },
+    {
+     "term": "pluribus",
+     "count": 2
+    },
+    {
+     "term": "fuerat",
+     "count": 2
+    },
+    {
+     "term": "graece",
+     "count": 2
+    },
+    {
+     "term": "theodotus",
+     "count": 1
+    },
+    {
+     "term": "sinope",
+     "count": 1
+    },
+    {
+     "term": "melinum",
+     "count": 1
+    },
+    {
+     "term": "lemno",
+     "count": 1
+    },
+    {
+     "term": "insulae",
+     "count": 1
+    },
+    {
+     "term": "hypanim",
+     "count": 1
+    },
+    {
+     "term": "habetur",
+     "count": 1
+    },
+    {
+     "term": "fruenda",
+     "count": 1
+    },
+    {
+     "term": "fodiebantur",
+     "count": 1
+    },
+    {
+     "term": "cycladi",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.8",
+   "book": 7,
+   "part": "caput",
+   "chapter": 8,
+   "first": "7.8.1",
+   "last": "7.8.4",
+   "keywords": [
+    {
+     "term": "argentum",
+     "count": 4
+    },
+    {
+     "term": "panni",
+     "count": 2
+    },
+    {
+     "term": "inponatur",
+     "count": 2
+    },
+    {
+     "term": "auri",
+     "count": 2
+    },
+    {
+     "term": "centena",
+     "count": 2
+    },
+    {
+     "term": "aurum",
+     "count": 2
+    },
+    {
+     "term": "foditur",
+     "count": 2
+    },
+    {
+     "term": "invenitur",
+     "count": 2
+    },
+    {
+     "term": "liquorem",
+     "count": 2
+    },
+    {
+     "term": "veste",
+     "count": 1
+    },
+    {
+     "term": "vasis",
+     "count": 1
+    },
+    {
+     "term": "subrufo",
+     "count": 1
+    },
+    {
+     "term": "scripulum",
+     "count": 1
+    },
+    {
+     "term": "residebunt",
+     "count": 1
+    },
+    {
+     "term": "resedit",
+     "count": 1
+    },
+    {
+     "term": "pulverem",
+     "count": 1
+    },
+    {
+     "term": "pannum",
+     "count": 1
+    },
+    {
+     "term": "negandum",
+     "count": 1
+    },
+    {
+     "term": "natabit",
+     "count": 1
+    },
+    {
+     "term": "labitur",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.9",
+   "book": 7,
+   "part": "caput",
+   "chapter": 9,
+   "first": "7.9.1",
+   "last": "7.9.6",
+   "keywords": [
+    {
+     "term": "expolitionibus",
+     "count": 4
+    },
+    {
+     "term": "vitiatur",
+     "count": 3
+    },
+    {
+     "term": "minio",
+     "count": 3
+    },
+    {
+     "term": "metallis",
+     "count": 3
+    },
+    {
+     "term": "lamna",
+     "count": 3
+    },
+    {
+     "term": "colorem",
+     "count": 3
+    },
+    {
+     "term": "ponticam",
+     "count": 2
+    },
+    {
+     "term": "ceram",
+     "count": 2
+    },
+    {
+     "term": "colore",
+     "count": 3
+    },
+    {
+     "term": "minium",
+     "count": 2
+    },
+    {
+     "term": "curantur",
+     "count": 2
+    },
+    {
+     "term": "relictis",
+     "count": 2
+    },
+    {
+     "term": "radios",
+     "count": 2
+    },
+    {
+     "term": "glaebae",
+     "count": 2
+    },
+    {
+     "term": "vitio",
+     "count": 2
+    },
+    {
+     "term": "splendorem",
+     "count": 2
+    },
+    {
+     "term": "igni",
+     "count": 2
+    },
+    {
+     "term": "officinae",
+     "count": 2
+    },
+    {
+     "term": "peristylia",
+     "count": 2
+    },
+    {
+     "term": "colores",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "7.10",
+   "book": 7,
+   "part": "caput",
+   "chapter": 10,
+   "first": "7.10.1",
+   "last": "7.10.4",
+   "keywords": [
+    {
+     "term": "atramenti",
+     "count": 5
+    },
+    {
+     "term": "laconicum",
+     "count": 3
+    },
+    {
+     "term": "glutino",
+     "count": 2
+    },
+    {
+     "term": "colorem",
+     "count": 2
+    },
+    {
+     "term": "nares",
+     "count": 2
+    },
+    {
+     "term": "fornace",
+     "count": 2
+    },
+    {
+     "term": "necessitate",
+     "count": 2
+    },
+    {
+     "term": "urendo",
+     "count": 1
+    },
+    {
+     "term": "terantur",
+     "count": 1
+    },
+    {
+     "term": "taedae",
+     "count": 1
+    },
+    {
+     "term": "superque",
+     "count": 1
+    },
+    {
+     "term": "schidiae",
+     "count": 1
+    },
+    {
+     "term": "retineatur",
+     "count": 1
+    },
+    {
+     "term": "partim",
+     "count": 1
+    },
+    {
+     "term": "parabitur",
+     "count": 1
+    },
+    {
+     "term": "inducetur",
+     "count": 1
+    },
+    {
+     "term": "gummi",
+     "count": 1
+    },
+    {
+     "term": "fornacula",
+     "count": 1
+    },
+    {
+     "term": "dabit",
+     "count": 1
+    },
+    {
+     "term": "comburantur",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.11",
+   "book": 7,
+   "part": "caput",
+   "chapter": 11,
+   "first": "7.11.1",
+   "last": "7.11.2",
+   "keywords": [
+    {
+     "term": "satis",
+     "count": 2
+    },
+    {
+     "term": "harena",
+     "count": 2
+    },
+    {
+     "term": "colore",
+     "count": 2
+    },
+    {
+     "term": "inventa",
+     "count": 2
+    },
+    {
+     "term": "ignis",
+     "count": 2
+    },
+    {
+     "term": "vehementi",
+     "count": 2
+    },
+    {
+     "term": "urceo",
+     "count": 1
+    },
+    {
+     "term": "urcei",
+     "count": 1
+    },
+    {
+     "term": "vestorius",
+     "count": 1
+    },
+    {
+     "term": "suisque",
+     "count": 1
+    },
+    {
+     "term": "scobis",
+     "count": 1
+    },
+    {
+     "term": "rediguntur",
+     "count": 1
+    },
+    {
+     "term": "puteolis",
+     "count": 1
+    },
+    {
+     "term": "nitri",
+     "count": 1
+    },
+    {
+     "term": "limis",
+     "count": 1
+    },
+    {
+     "term": "flore",
+     "count": 1
+    },
+    {
+     "term": "discedunt",
+     "count": 1
+    },
+    {
+     "term": "dando",
+     "count": 1
+    },
+    {
+     "term": "cyprum",
+     "count": 1
+    },
+    {
+     "term": "conteritur",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.12",
+   "book": 7,
+   "part": "caput",
+   "chapter": 12,
+   "first": "7.12.1",
+   "last": "7.12.2",
+   "keywords": [
+    {
+     "term": "cerussa",
+     "count": 3
+    },
+    {
+     "term": "aerugineque",
+     "count": 2
+    },
+    {
+     "term": "sarmenta",
+     "count": 2
+    },
+    {
+     "term": "incendiorum",
+     "count": 2
+    },
+    {
+     "term": "suffuso",
+     "count": 1
+    },
+    {
+     "term": "massis",
+     "count": 1
+    },
+    {
+     "term": "emittatur",
+     "count": 1
+    },
+    {
+     "term": "didicerunt",
+     "count": 1
+    },
+    {
+     "term": "aperientes",
+     "count": 1
+    },
+    {
+     "term": "aerucam",
+     "count": 1
+    },
+    {
+     "term": "aeruca",
+     "count": 1
+    },
+    {
+     "term": "aereas",
+     "count": 1
+    },
+    {
+     "term": "plumbeis",
+     "count": 1
+    },
+    {
+     "term": "operculis",
+     "count": 1
+    },
+    {
+     "term": "obturatum",
+     "count": 1
+    },
+    {
+     "term": "mutato",
+     "count": 1
+    },
+    {
+     "term": "metallis",
+     "count": 1
+    },
+    {
+     "term": "massas",
+     "count": 1
+    },
+    {
+     "term": "lamella",
+     "count": 1
+    },
+    {
+     "term": "doliis",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.13",
+   "book": 7,
+   "part": "caput",
+   "chapter": 13,
+   "first": "7.13.1",
+   "last": "7.13.3",
+   "keywords": [
+    {
+     "term": "legitur",
+     "count": 2
+    },
+    {
+     "term": "conchylio",
+     "count": 2
+    },
+    {
+     "term": "excipit",
+     "count": 2
+    },
+    {
+     "term": "invenitur",
+     "count": 2
+    },
+    {
+     "term": "proxima",
+     "count": 2
+    },
+    {
+     "term": "occidentem",
+     "count": 2
+    },
+    {
+     "term": "septentrionem",
+     "count": 2
+    },
+    {
+     "term": "regionibus",
+     "count": 2
+    },
+    {
+     "term": "solis",
+     "count": 2
+    },
+    {
+     "term": "violaceo",
+     "count": 1
+    },
+    {
+     "term": "testis",
+     "count": 1
+    },
+    {
+     "term": "terendo",
+     "count": 1
+    },
+    {
+     "term": "scinduntur",
+     "count": 1
+    },
+    {
+     "term": "sanies",
+     "count": 1
+    },
+    {
+     "term": "ostro",
+     "count": 1
+    },
+    {
+     "term": "marinarum",
+     "count": 1
+    },
+    {
+     "term": "lecta",
+     "count": 1
+    },
+    {
+     "term": "fusum",
+     "count": 1
+    },
+    {
+     "term": "creatur",
+     "count": 1
+    },
+    {
+     "term": "concharum",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "7.14",
+   "book": 7,
+   "part": "caput",
+   "chapter": 14,
+   "first": "7.14.1",
+   "last": "7.14.3",
+   "keywords": [
+    {
+     "term": "colores",
+     "count": 3
+    },
+    {
+     "term": "cretam",
+     "count": 2
+    },
+    {
+     "term": "indici",
+     "count": 2
+    },
+    {
+     "term": "coloris",
+     "count": 2
+    },
+    {
+     "term": "colorem",
+     "count": 2
+    },
+    {
+     "term": "quibusque",
+     "count": 2
+    },
+    {
+     "term": "appellant",
+     "count": 3
+    },
+    {
+     "term": "faciunt",
+     "count": 2
+    },
+    {
+     "term": "vitro",
+     "count": 1
+    },
+    {
+     "term": "violis",
+     "count": 1
+    },
+    {
+     "term": "violam",
+     "count": 1
+    },
+    {
+     "term": "vaccinium",
+     "count": 1
+    },
+    {
+     "term": "selinusiam",
+     "count": 1
+    },
+    {
+     "term": "rubiae",
+     "count": 1
+    },
+    {
+     "term": "miscentes",
+     "count": 1
+    },
+    {
+     "term": "luteum",
+     "count": 1
+    },
+    {
+     "term": "linteum",
+     "count": 1
+    },
+    {
+     "term": "inficiunt",
+     "count": 1
+    },
+    {
+     "term": "inficientes",
+     "count": 1
+    },
+    {
+     "term": "infectiva",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "8.praef",
+   "book": 8,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "8.praef.1",
+   "last": "8.praef.4",
+   "keywords": [
+    {
+     "term": "sacerdotibus",
+     "count": 3
+    },
+    {
+     "term": "animalium",
+     "count": 3
+    },
+    {
+     "term": "philosophia",
+     "count": 3
+    },
+    {
+     "term": "principiis",
+     "count": 4
+    },
+    {
+     "term": "potestate",
+     "count": 4
+    },
+    {
+     "term": "ignem",
+     "count": 3
+    },
+    {
+     "term": "spiritus",
+     "count": 3
+    },
+    {
+     "term": "physicis",
+     "count": 2
+    },
+    {
+     "term": "praestant",
+     "count": 3
+    },
+    {
+     "term": "caloris",
+     "count": 2
+    },
+    {
+     "term": "proprietates",
+     "count": 3
+    },
+    {
+     "term": "vitam",
+     "count": 2
+    },
+    {
+     "term": "aquam",
+     "count": 3
+    },
+    {
+     "term": "desideretur",
+     "count": 2
+    },
+    {
+     "term": "corpore",
+     "count": 2
+    },
+    {
+     "term": "septem",
+     "count": 2
+    },
+    {
+     "term": "inventionibus",
+     "count": 2
+    },
+    {
+     "term": "dissolvuntur",
+     "count": 2
+    },
+    {
+     "term": "terram",
+     "count": 2
+    },
+    {
+     "term": "procreatur",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "8.1",
+   "book": 8,
+   "part": "caput",
+   "chapter": 1,
+   "first": "8.1.1",
+   "last": "8.1.7",
+   "keywords": [
+    {
+     "term": "montium",
+     "count": 4
+    },
+    {
+     "term": "quaerenda",
+     "count": 5
+    },
+    {
+     "term": "terra",
+     "count": 6
+    },
+    {
+     "term": "campestribus",
+     "count": 3
+    },
+    {
+     "term": "aquam",
+     "count": 5
+    },
+    {
+     "term": "salubritatem",
+     "count": 4
+    },
+    {
+     "term": "tenuis",
+     "count": 3
+    },
+    {
+     "term": "lacunis",
+     "count": 2
+    },
+    {
+     "term": "solis",
+     "count": 4
+    },
+    {
+     "term": "signa",
+     "count": 3
+    },
+    {
+     "term": "invenietur",
+     "count": 3
+    },
+    {
+     "term": "locus",
+     "count": 4
+    },
+    {
+     "term": "loco",
+     "count": 4
+    },
+    {
+     "term": "stillae",
+     "count": 2
+    },
+    {
+     "term": "erumpunt",
+     "count": 2
+    },
+    {
+     "term": "umbris",
+     "count": 2
+    },
+    {
+     "term": "sudores",
+     "count": 2
+    },
+    {
+     "term": "sapore",
+     "count": 2
+    },
+    {
+     "term": "fodiatur",
+     "count": 2
+    },
+    {
+     "term": "locis",
+     "count": 5
+    }
+   ]
+  },
+  {
+   "unit": "8.2",
+   "book": 8,
+   "part": "caput",
+   "chapter": 2,
+   "first": "8.2.1",
+   "last": "8.2.9",
+   "keywords": [
+    {
+     "term": "umores",
+     "count": 8
+    },
+    {
+     "term": "septentrionem",
+     "count": 7
+    },
+    {
+     "term": "percalefacta",
+     "count": 4
+    },
+    {
+     "term": "montes",
+     "count": 4
+    },
+    {
+     "term": "nubes",
+     "count": 3
+    },
+    {
+     "term": "capita",
+     "count": 4
+    },
+    {
+     "term": "profluentes",
+     "count": 3
+    },
+    {
+     "term": "frigida",
+     "count": 3
+    },
+    {
+     "term": "terra",
+     "count": 4
+    },
+    {
+     "term": "undas",
+     "count": 2
+    },
+    {
+     "term": "mauretaniam",
+     "count": 2
+    },
+    {
+     "term": "refrigerationibus",
+     "count": 3
+    },
+    {
+     "term": "fontes",
+     "count": 3
+    },
+    {
+     "term": "solis",
+     "count": 4
+    },
+    {
+     "term": "moti",
+     "count": 2
+    },
+    {
+     "term": "liquescendo",
+     "count": 2
+    },
+    {
+     "term": "meridiana",
+     "count": 3
+    },
+    {
+     "term": "aeris",
+     "count": 3
+    },
+    {
+     "term": "quocumque",
+     "count": 2
+    },
+    {
+     "term": "paludibus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "8.3",
+   "book": 8,
+   "part": "caput",
+   "chapter": 3,
+   "first": "8.3.1",
+   "last": "8.3.28",
+   "keywords": [
+    {
+     "term": "fontes",
+     "count": 18
+    },
+    {
+     "term": "aquae",
+     "count": 16
+    },
+    {
+     "term": "lacus",
+     "count": 7
+    },
+    {
+     "term": "terrae",
+     "count": 12
+    },
+    {
+     "term": "flumen",
+     "count": 7
+    },
+    {
+     "term": "epigramma",
+     "count": 5
+    },
+    {
+     "term": "venas",
+     "count": 7
+    },
+    {
+     "term": "proprietates",
+     "count": 11
+    },
+    {
+     "term": "locis",
+     "count": 15
+    },
+    {
+     "term": "aqua",
+     "count": 11
+    },
+    {
+     "term": "sapore",
+     "count": 5
+    },
+    {
+     "term": "fons",
+     "count": 5
+    },
+    {
+     "term": "terra",
+     "count": 8
+    },
+    {
+     "term": "percurrit",
+     "count": 5
+    },
+    {
+     "term": "fontium",
+     "count": 5
+    },
+    {
+     "term": "bitumine",
+     "count": 5
+    },
+    {
+     "term": "odore",
+     "count": 4
+    },
+    {
+     "term": "bitumen",
+     "count": 4
+    },
+    {
+     "term": "biberint",
+     "count": 4
+    },
+    {
+     "term": "inflationem",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "8.4",
+   "book": 8,
+   "part": "caput",
+   "chapter": 4,
+   "first": "8.4.1",
+   "last": "8.4.2",
+   "keywords": [
+    {
+     "term": "aqua",
+     "count": 5
+    },
+    {
+     "term": "inquinatus",
+     "count": 2
+    },
+    {
+     "term": "probatis",
+     "count": 2
+    },
+    {
+     "term": "sparsa",
+     "count": 1
+    },
+    {
+     "term": "requieta",
+     "count": 1
+    },
+    {
+     "term": "puram",
+     "count": 1
+    },
+    {
+     "term": "novus",
+     "count": 1
+    },
+    {
+     "term": "nitidis",
+     "count": 1
+    },
+    {
+     "term": "nascetur",
+     "count": 1
+    },
+    {
+     "term": "muscus",
+     "count": 1
+    },
+    {
+     "term": "membratura",
+     "count": 1
+    },
+    {
+     "term": "maculam",
+     "count": 1
+    },
+    {
+     "term": "lippis",
+     "count": 1
+    },
+    {
+     "term": "limpida",
+     "count": 1
+    },
+    {
+     "term": "fossus",
+     "count": 1
+    },
+    {
+     "term": "bitur",
+     "count": 1
+    },
+    {
+     "term": "aeneo",
+     "count": 1
+    },
+    {
+     "term": "aenei",
+     "count": 1
+    },
+    {
+     "term": "valentibus",
+     "count": 1
+    },
+    {
+     "term": "profluxerit",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "8.5",
+   "book": 8,
+   "part": "caput",
+   "chapter": 5,
+   "first": "8.5.1",
+   "last": "8.5.3",
+   "keywords": [
+    {
+     "term": "chorobate",
+     "count": 5
+    },
+    {
+     "term": "regula",
+     "count": 4
+    },
+    {
+     "term": "librata",
+     "count": 4
+    },
+    {
+     "term": "aqua",
+     "count": 6
+    },
+    {
+     "term": "sphaeroides",
+     "count": 2
+    },
+    {
+     "term": "scietur",
+     "count": 2
+    },
+    {
+     "term": "perlibratio",
+     "count": 2
+    },
+    {
+     "term": "libratum",
+     "count": 2
+    },
+    {
+     "term": "ancones",
+     "count": 2
+    },
+    {
+     "term": "lineas",
+     "count": 2
+    },
+    {
+     "term": "descriptiones",
+     "count": 3
+    },
+    {
+     "term": "pariter",
+     "count": 2
+    },
+    {
+     "term": "canalem",
+     "count": 2
+    },
+    {
+     "term": "regulam",
+     "count": 2
+    },
+    {
+     "term": "aeque",
+     "count": 2
+    },
+    {
+     "term": "regulae",
+     "count": 2
+    },
+    {
+     "term": "capitibus",
+     "count": 2
+    },
+    {
+     "term": "capita",
+     "count": 2
+    },
+    {
+     "term": "necesse",
+     "count": 2
+    },
+    {
+     "term": "fastigium",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "8.6",
+   "book": 8,
+   "part": "caput",
+   "chapter": 6,
+   "first": "8.6.1",
+   "last": "8.6.15",
+   "keywords": [
+    {
+     "term": "fistulae",
+     "count": 11
+    },
+    {
+     "term": "pondo",
+     "count": 10
+    },
+    {
+     "term": "castellum",
+     "count": 8
+    },
+    {
+     "term": "libramentum",
+     "count": 8
+    },
+    {
+     "term": "ventris",
+     "count": 5
+    },
+    {
+     "term": "fistulis",
+     "count": 4
+    },
+    {
+     "term": "plumbeis",
+     "count": 4
+    },
+    {
+     "term": "decursus",
+     "count": 4
+    },
+    {
+     "term": "ductionibus",
+     "count": 4
+    },
+    {
+     "term": "tubulis",
+     "count": 3
+    },
+    {
+     "term": "spiritus",
+     "count": 5
+    },
+    {
+     "term": "geniculus",
+     "count": 3
+    },
+    {
+     "term": "moenia",
+     "count": 4
+    },
+    {
+     "term": "aquae",
+     "count": 6
+    },
+    {
+     "term": "denûm",
+     "count": 3
+    },
+    {
+     "term": "expressionibus",
+     "count": 4
+    },
+    {
+     "term": "coagmenta",
+     "count": 4
+    },
+    {
+     "term": "quinquaginta",
+     "count": 3
+    },
+    {
+     "term": "substructionis",
+     "count": 3
+    },
+    {
+     "term": "venter",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "9.praef",
+   "book": 9,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "9.praef.1",
+   "last": "9.praef.18",
+   "keywords": [
+    {
+     "term": "pedes",
+     "count": 10
+    },
+    {
+     "term": "duplicare",
+     "count": 5
+    },
+    {
+     "term": "quadrato",
+     "count": 9
+    },
+    {
+     "term": "massa",
+     "count": 4
+    },
+    {
+     "term": "corona",
+     "count": 5
+    },
+    {
+     "term": "areae",
+     "count": 5
+    },
+    {
+     "term": "cogitationibus",
+     "count": 6
+    },
+    {
+     "term": "scriptorum",
+     "count": 5
+    },
+    {
+     "term": "sapientibus",
+     "count": 5
+    },
+    {
+     "term": "honores",
+     "count": 4
+    },
+    {
+     "term": "argenti",
+     "count": 4
+    },
+    {
+     "term": "aquae",
+     "count": 7
+    },
+    {
+     "term": "pedum",
+     "count": 6
+    },
+    {
+     "term": "auro",
+     "count": 3
+    },
+    {
+     "term": "paribus",
+     "count": 4
+    },
+    {
+     "term": "invenitur",
+     "count": 4
+    },
+    {
+     "term": "hominibus",
+     "count": 4
+    },
+    {
+     "term": "numero",
+     "count": 4
+    },
+    {
+     "term": "inventionibus",
+     "count": 4
+    },
+    {
+     "term": "explicare",
+     "count": 9
+    }
+   ]
+  },
+  {
+   "unit": "9.1",
+   "book": 9,
+   "part": "caput",
+   "chapter": 1,
+   "first": "9.1.1",
+   "last": "9.1.16",
+   "keywords": [
+    {
+     "term": "signum",
+     "count": 8
+    },
+    {
+     "term": "circinationis",
+     "count": 10
+    },
+    {
+     "term": "mundo",
+     "count": 8
+    },
+    {
+     "term": "cursum",
+     "count": 8
+    },
+    {
+     "term": "percurrit",
+     "count": 6
+    },
+    {
+     "term": "signis",
+     "count": 7
+    },
+    {
+     "term": "signo",
+     "count": 6
+    },
+    {
+     "term": "signi",
+     "count": 4
+    },
+    {
+     "term": "pervagari",
+     "count": 6
+    },
+    {
+     "term": "saturni",
+     "count": 4
+    },
+    {
+     "term": "mensibus",
+     "count": 4
+    },
+    {
+     "term": "iter",
+     "count": 4
+    },
+    {
+     "term": "diebus",
+     "count": 4
+    },
+    {
+     "term": "terra",
+     "count": 6
+    },
+    {
+     "term": "circumitionem",
+     "count": 6
+    },
+    {
+     "term": "solis",
+     "count": 7
+    },
+    {
+     "term": "veneris",
+     "count": 4
+    },
+    {
+     "term": "stella",
+     "count": 4
+    },
+    {
+     "term": "martis",
+     "count": 4
+    },
+    {
+     "term": "terram",
+     "count": 6
+    }
+   ]
+  },
+  {
+   "unit": "9.2",
+   "book": 9,
+   "part": "caput",
+   "chapter": 2,
+   "first": "9.2.1",
+   "last": "9.2.4",
+   "keywords": [
+    {
+     "term": "sole",
+     "count": 7
+    },
+    {
+     "term": "occidentem",
+     "count": 6
+    },
+    {
+     "term": "candentem",
+     "count": 4
+    },
+    {
+     "term": "solis",
+     "count": 7
+    },
+    {
+     "term": "splendorem",
+     "count": 4
+    },
+    {
+     "term": "impetu",
+     "count": 4
+    },
+    {
+     "term": "caeli",
+     "count": 5
+    },
+    {
+     "term": "solem",
+     "count": 3
+    },
+    {
+     "term": "totum",
+     "count": 3
+    },
+    {
+     "term": "medias",
+     "count": 3
+    },
+    {
+     "term": "luna",
+     "count": 3
+    },
+    {
+     "term": "lumen",
+     "count": 3
+    },
+    {
+     "term": "mundi",
+     "count": 3
+    },
+    {
+     "term": "vocari",
+     "count": 2
+    },
+    {
+     "term": "radiosque",
+     "count": 2
+    },
+    {
+     "term": "lunam",
+     "count": 2
+    },
+    {
+     "term": "inluminatur",
+     "count": 2
+    },
+    {
+     "term": "distet",
+     "count": 2
+    },
+    {
+     "term": "decumo",
+     "count": 2
+    },
+    {
+     "term": "dimidia",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "9.3",
+   "book": 9,
+   "part": "caput",
+   "chapter": 3,
+   "first": "9.3.1",
+   "last": "9.3.3",
+   "keywords": [
+    {
+     "term": "leonis",
+     "count": 3
+    },
+    {
+     "term": "aequat",
+     "count": 3
+    },
+    {
+     "term": "vergiliis",
+     "count": 3
+    },
+    {
+     "term": "octavam",
+     "count": 3
+    },
+    {
+     "term": "percurrit",
+     "count": 3
+    },
+    {
+     "term": "dierum",
+     "count": 3
+    },
+    {
+     "term": "progreditur",
+     "count": 4
+    },
+    {
+     "term": "sagittarii",
+     "count": 3
+    },
+    {
+     "term": "transiens",
+     "count": 2
+    },
+    {
+     "term": "diei",
+     "count": 2
+    },
+    {
+     "term": "spatium",
+     "count": 4
+    },
+    {
+     "term": "cursum",
+     "count": 3
+    },
+    {
+     "term": "sinum",
+     "count": 2
+    },
+    {
+     "term": "iniit",
+     "count": 2
+    },
+    {
+     "term": "auget",
+     "count": 2
+    },
+    {
+     "term": "scorpionis",
+     "count": 3
+    },
+    {
+     "term": "partem",
+     "count": 4
+    },
+    {
+     "term": "circinationis",
+     "count": 3
+    },
+    {
+     "term": "minuit",
+     "count": 2
+    },
+    {
+     "term": "brevissimum",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "9.4",
+   "book": 9,
+   "part": "caput",
+   "chapter": 4,
+   "first": "9.4.1",
+   "last": "9.4.6",
+   "keywords": [
+    {
+     "term": "equi",
+     "count": 5
+    },
+    {
+     "term": "cassiepiae",
+     "count": 5
+    },
+    {
+     "term": "andromedae",
+     "count": 5
+    },
+    {
+     "term": "caput",
+     "count": 8
+    },
+    {
+     "term": "stella",
+     "count": 5
+    },
+    {
+     "term": "septentrionem",
+     "count": 7
+    },
+    {
+     "term": "capitis",
+     "count": 4
+    },
+    {
+     "term": "laevo",
+     "count": 3
+    },
+    {
+     "term": "minoris",
+     "count": 3
+    },
+    {
+     "term": "laeva",
+     "count": 3
+    },
+    {
+     "term": "arietis",
+     "count": 3
+    },
+    {
+     "term": "tauri",
+     "count": 3
+    },
+    {
+     "term": "tenet",
+     "count": 3
+    },
+    {
+     "term": "longe",
+     "count": 3
+    },
+    {
+     "term": "volucris",
+     "count": 2
+    },
+    {
+     "term": "serpens",
+     "count": 2
+    },
+    {
+     "term": "ophiuchos",
+     "count": 2
+    },
+    {
+     "term": "custodis",
+     "count": 2
+    },
+    {
+     "term": "cephei",
+     "count": 2
+    },
+    {
+     "term": "aurigae",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "9.5",
+   "book": 9,
+   "part": "caput",
+   "chapter": 5,
+   "first": "9.5.1",
+   "last": "9.5.4",
+   "keywords": [
+    {
+     "term": "caudam",
+     "count": 5
+    },
+    {
+     "term": "ceti",
+     "count": 3
+    },
+    {
+     "term": "anguis",
+     "count": 3
+    },
+    {
+     "term": "leonem",
+     "count": 3
+    },
+    {
+     "term": "subiectus",
+     "count": 5
+    },
+    {
+     "term": "stellarum",
+     "count": 3
+    },
+    {
+     "term": "piscis",
+     "count": 2
+    },
+    {
+     "term": "piscibus",
+     "count": 2
+    },
+    {
+     "term": "canis",
+     "count": 2
+    },
+    {
+     "term": "austrinus",
+     "count": 2
+    },
+    {
+     "term": "sequitur",
+     "count": 2
+    },
+    {
+     "term": "profluit",
+     "count": 2
+    },
+    {
+     "term": "pressus",
+     "count": 2
+    },
+    {
+     "term": "geminos",
+     "count": 2
+    },
+    {
+     "term": "centauros",
+     "count": 2
+    },
+    {
+     "term": "terrae",
+     "count": 3
+    },
+    {
+     "term": "cardines",
+     "count": 2
+    },
+    {
+     "term": "simulacra",
+     "count": 2
+    },
+    {
+     "term": "figurata",
+     "count": 2
+    },
+    {
+     "term": "caput",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "9.6",
+   "book": 9,
+   "part": "caput",
+   "chapter": 6,
+   "first": "9.6.1",
+   "last": "9.6.3",
+   "keywords": [
+    {
+     "term": "reliquerunt",
+     "count": 3
+    },
+    {
+     "term": "genethlialogiae",
+     "count": 2
+    },
+    {
+     "term": "concedendum",
+     "count": 2
+    },
+    {
+     "term": "chaldaeorum",
+     "count": 2
+    },
+    {
+     "term": "astrologia",
+     "count": 2
+    },
+    {
+     "term": "siderum",
+     "count": 2
+    },
+    {
+     "term": "mundi",
+     "count": 2
+    },
+    {
+     "term": "signa",
+     "count": 2
+    },
+    {
+     "term": "disciplinarum",
+     "count": 2
+    },
+    {
+     "term": "significat",
+     "count": 2
+    },
+    {
+     "term": "tempestatibus",
+     "count": 2
+    },
+    {
+     "term": "fuerunt",
+     "count": 2
+    },
+    {
+     "term": "ratiocinationibus",
+     "count": 2
+    },
+    {
+     "term": "effectus",
+     "count": 2
+    },
+    {
+     "term": "studens",
+     "count": 1
+    },
+    {
+     "term": "primusque",
+     "count": 1
+    },
+    {
+     "term": "perspecta",
+     "count": 1
+    },
+    {
+     "term": "parapegmatorum",
+     "count": 1
+    },
+    {
+     "term": "iterumque",
+     "count": 1
+    },
+    {
+     "term": "hipparchus",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "9.7",
+   "book": 9,
+   "part": "caput",
+   "chapter": 7,
+   "first": "9.7.1",
+   "last": "9.7.7",
+   "keywords": [
+    {
+     "term": "littera",
+     "count": 22
+    },
+    {
+     "term": "aequinoctialis",
+     "count": 11
+    },
+    {
+     "term": "linea",
+     "count": 12
+    },
+    {
+     "term": "radius",
+     "count": 5
+    },
+    {
+     "term": "centrum",
+     "count": 9
+    },
+    {
+     "term": "circinationis",
+     "count": 9
+    },
+    {
+     "term": "planitia",
+     "count": 7
+    },
+    {
+     "term": "lineae",
+     "count": 6
+    },
+    {
+     "term": "describatur",
+     "count": 6
+    },
+    {
+     "term": "secat",
+     "count": 4
+    },
+    {
+     "term": "gnomonis",
+     "count": 5
+    },
+    {
+     "term": "umbrae",
+     "count": 4
+    },
+    {
+     "term": "parallelos",
+     "count": 4
+    },
+    {
+     "term": "hemicyclium",
+     "count": 4
+    },
+    {
+     "term": "circino",
+     "count": 4
+    },
+    {
+     "term": "lineam",
+     "count": 5
+    },
+    {
+     "term": "aestivus",
+     "count": 3
+    },
+    {
+     "term": "novem",
+     "count": 4
+    },
+    {
+     "term": "diducto",
+     "count": 3
+    },
+    {
+     "term": "perducendae",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "unit": "9.8",
+   "book": 9,
+   "part": "caput",
+   "chapter": 8,
+   "first": "9.8.1",
+   "last": "9.8.15",
+   "keywords": [
+    {
+     "term": "horas",
+     "count": 6
+    },
+    {
+     "term": "tympanum",
+     "count": 9
+    },
+    {
+     "term": "puncta",
+     "count": 7
+    },
+    {
+     "term": "horologiorum",
+     "count": 8
+    },
+    {
+     "term": "horarum",
+     "count": 7
+    },
+    {
+     "term": "foramen",
+     "count": 7
+    },
+    {
+     "term": "tympani",
+     "count": 7
+    },
+    {
+     "term": "versationibus",
+     "count": 9
+    },
+    {
+     "term": "spatia",
+     "count": 11
+    },
+    {
+     "term": "virgula",
+     "count": 4
+    },
+    {
+     "term": "orbiculos",
+     "count": 5
+    },
+    {
+     "term": "aqua",
+     "count": 10
+    },
+    {
+     "term": "capricorni",
+     "count": 4
+    },
+    {
+     "term": "phellos",
+     "count": 3
+    },
+    {
+     "term": "horae",
+     "count": 3
+    },
+    {
+     "term": "cavum",
+     "count": 3
+    },
+    {
+     "term": "dierum",
+     "count": 4
+    },
+    {
+     "term": "pondus",
+     "count": 4
+    },
+    {
+     "term": "sublevat",
+     "count": 3
+    },
+    {
+     "term": "sigillum",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "10.praef",
+   "book": 10,
+   "part": "praefatio",
+   "chapter": null,
+   "first": "10.praef.1",
+   "last": "10.praef.4",
+   "keywords": [
+    {
+     "term": "adicientes",
+     "count": 3
+    },
+    {
+     "term": "inpensa",
+     "count": 3
+    },
+    {
+     "term": "amplius",
+     "count": 3
+    },
+    {
+     "term": "machinae",
+     "count": 4
+    },
+    {
+     "term": "bonis",
+     "count": 2
+    },
+    {
+     "term": "aestimant",
+     "count": 2
+    },
+    {
+     "term": "opus",
+     "count": 4
+    },
+    {
+     "term": "sumptu",
+     "count": 2
+    },
+    {
+     "term": "patres",
+     "count": 2
+    },
+    {
+     "term": "poena",
+     "count": 2
+    },
+    {
+     "term": "ludorum",
+     "count": 2
+    },
+    {
+     "term": "diligentius",
+     "count": 3
+    },
+    {
+     "term": "tradita",
+     "count": 2
+    },
+    {
+     "term": "architecti",
+     "count": 3
+    },
+    {
+     "term": "aedificiorum",
+     "count": 4
+    },
+    {
+     "term": "magistratus",
+     "count": 2
+    },
+    {
+     "term": "praeparata",
+     "count": 2
+    },
+    {
+     "term": "prudentia",
+     "count": 2
+    },
+    {
+     "term": "alienum",
+     "count": 2
+    },
+    {
+     "term": "familiarum",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.1",
+   "book": 10,
+   "part": "caput",
+   "chapter": 1,
+   "first": "10.1.1",
+   "last": "10.1.6",
+   "keywords": [
+    {
+     "term": "machinae",
+     "count": 9
+    },
+    {
+     "term": "scansorium",
+     "count": 3
+    },
+    {
+     "term": "tractorium",
+     "count": 3
+    },
+    {
+     "term": "organa",
+     "count": 3
+    },
+    {
+     "term": "spirabile",
+     "count": 2
+    },
+    {
+     "term": "fructûm",
+     "count": 2
+    },
+    {
+     "term": "torcular",
+     "count": 2
+    },
+    {
+     "term": "versationibus",
+     "count": 3
+    },
+    {
+     "term": "machinis",
+     "count": 2
+    },
+    {
+     "term": "habuisset",
+     "count": 2
+    },
+    {
+     "term": "conligantur",
+     "count": 2
+    },
+    {
+     "term": "continenter",
+     "count": 3
+    },
+    {
+     "term": "usum",
+     "count": 3
+    },
+    {
+     "term": "prudentia",
+     "count": 2
+    },
+    {
+     "term": "opportunitates",
+     "count": 2
+    },
+    {
+     "term": "maiores",
+     "count": 2
+    },
+    {
+     "term": "arte",
+     "count": 2
+    },
+    {
+     "term": "natura",
+     "count": 3
+    },
+    {
+     "term": "animadvertere",
+     "count": 3
+    },
+    {
+     "term": "spiritus",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.2",
+   "book": 10,
+   "part": "caput",
+   "chapter": 2,
+   "first": "10.2.1",
+   "last": "10.2.15",
+   "keywords": [
+    {
+     "term": "trocleae",
+     "count": 22
+    },
+    {
+     "term": "orbiculos",
+     "count": 19
+    },
+    {
+     "term": "funis",
+     "count": 12
+    },
+    {
+     "term": "machinae",
+     "count": 16
+    },
+    {
+     "term": "referuntur",
+     "count": 6
+    },
+    {
+     "term": "rotas",
+     "count": 5
+    },
+    {
+     "term": "inclusi",
+     "count": 5
+    },
+    {
+     "term": "retinaculis",
+     "count": 4
+    },
+    {
+     "term": "redeunt",
+     "count": 4
+    },
+    {
+     "term": "pixodarus",
+     "count": 4
+    },
+    {
+     "term": "ductarius",
+     "count": 4
+    },
+    {
+     "term": "armillis",
+     "count": 4
+    },
+    {
+     "term": "funes",
+     "count": 5
+    },
+    {
+     "term": "capita",
+     "count": 7
+    },
+    {
+     "term": "religati",
+     "count": 5
+    },
+    {
+     "term": "funibus",
+     "count": 4
+    },
+    {
+     "term": "lapidicinis",
+     "count": 4
+    },
+    {
+     "term": "tympanum",
+     "count": 5
+    },
+    {
+     "term": "suculam",
+     "count": 3
+    },
+    {
+     "term": "paconius",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "10.3",
+   "book": 10,
+   "part": "caput",
+   "chapter": 3,
+   "first": "10.3.1",
+   "last": "10.3.9",
+   "keywords": [
+    {
+     "term": "pressione",
+     "count": 8
+    },
+    {
+     "term": "porrecti",
+     "count": 8
+    },
+    {
+     "term": "onus",
+     "count": 8
+    },
+    {
+     "term": "vectis",
+     "count": 6
+    },
+    {
+     "term": "phalangarum",
+     "count": 5
+    },
+    {
+     "term": "oneris",
+     "count": 5
+    },
+    {
+     "term": "centro",
+     "count": 7
+    },
+    {
+     "term": "caput",
+     "count": 7
+    },
+    {
+     "term": "centrum",
+     "count": 7
+    },
+    {
+     "term": "examinatio",
+     "count": 4
+    },
+    {
+     "term": "longius",
+     "count": 5
+    },
+    {
+     "term": "motus",
+     "count": 5
+    },
+    {
+     "term": "vela",
+     "count": 3
+    },
+    {
+     "term": "longior",
+     "count": 4
+    },
+    {
+     "term": "mali",
+     "count": 3
+    },
+    {
+     "term": "progreditur",
+     "count": 5
+    },
+    {
+     "term": "propius",
+     "count": 3
+    },
+    {
+     "term": "onerum",
+     "count": 3
+    },
+    {
+     "term": "brevior",
+     "count": 3
+    },
+    {
+     "term": "lingula",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "10.4",
+   "book": 10,
+   "part": "caput",
+   "chapter": 4,
+   "first": "10.4.1",
+   "last": "10.4.4",
+   "keywords": [
+    {
+     "term": "axem",
+     "count": 6
+    },
+    {
+     "term": "rotae",
+     "count": 3
+    },
+    {
+     "term": "tympani",
+     "count": 3
+    },
+    {
+     "term": "situlos",
+     "count": 2
+    },
+    {
+     "term": "extulerint",
+     "count": 2
+    },
+    {
+     "term": "columbaria",
+     "count": 2
+    },
+    {
+     "term": "calcantibus",
+     "count": 2
+    },
+    {
+     "term": "tympano",
+     "count": 2
+    },
+    {
+     "term": "tabulae",
+     "count": 2
+    },
+    {
+     "term": "infundent",
+     "count": 2
+    },
+    {
+     "term": "aperturas",
+     "count": 2
+    },
+    {
+     "term": "haurientes",
+     "count": 2
+    },
+    {
+     "term": "modioli",
+     "count": 2
+    },
+    {
+     "term": "castellum",
+     "count": 2
+    },
+    {
+     "term": "rota",
+     "count": 2
+    },
+    {
+     "term": "aquam",
+     "count": 3
+    },
+    {
+     "term": "axis",
+     "count": 2
+    },
+    {
+     "term": "multitudinem",
+     "count": 2
+    },
+    {
+     "term": "summum",
+     "count": 2
+    },
+    {
+     "term": "habens",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.5",
+   "book": 10,
+   "part": "caput",
+   "chapter": 5,
+   "first": "10.5.1",
+   "last": "10.5.2",
+   "keywords": [
+    {
+     "term": "fluminis",
+     "count": 3
+    },
+    {
+     "term": "dentatum",
+     "count": 2
+    },
+    {
+     "term": "inclusum",
+     "count": 2
+    },
+    {
+     "term": "cogunt",
+     "count": 2
+    },
+    {
+     "term": "tympani",
+     "count": 2
+    },
+    {
+     "term": "dentes",
+     "count": 2
+    },
+    {
+     "term": "tympanum",
+     "count": 2
+    },
+    {
+     "term": "subigitur",
+     "count": 1
+    },
+    {
+     "term": "referentes",
+     "count": 1
+    },
+    {
+     "term": "percutiuntur",
+     "count": 1
+    },
+    {
+     "term": "operarum",
+     "count": 1
+    },
+    {
+     "term": "molis",
+     "count": 1
+    },
+    {
+     "term": "molarum",
+     "count": 1
+    },
+    {
+     "term": "hydraletae",
+     "count": 1
+    },
+    {
+     "term": "cultrum",
+     "count": 1
+    },
+    {
+     "term": "versatae",
+     "count": 1
+    },
+    {
+     "term": "planum",
+     "count": 1
+    },
+    {
+     "term": "inpendentes",
+     "count": 1
+    },
+    {
+     "term": "calcatum",
+     "count": 1
+    },
+    {
+     "term": "adfiguntur",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "10.6",
+   "book": 10,
+   "part": "caput",
+   "chapter": 6,
+   "first": "10.6.1",
+   "last": "10.6.4",
+   "keywords": [
+    {
+     "term": "decusatim",
+     "count": 4
+    },
+    {
+     "term": "cocleae",
+     "count": 4
+    },
+    {
+     "term": "longitudo",
+     "count": 9
+    },
+    {
+     "term": "pice",
+     "count": 3
+    },
+    {
+     "term": "oblique",
+     "count": 3
+    },
+    {
+     "term": "lineae",
+     "count": 4
+    },
+    {
+     "term": "tigni",
+     "count": 3
+    },
+    {
+     "term": "puncta",
+     "count": 3
+    },
+    {
+     "term": "octavum",
+     "count": 2
+    },
+    {
+     "term": "figitur",
+     "count": 2
+    },
+    {
+     "term": "octo",
+     "count": 3
+    },
+    {
+     "term": "sumitur",
+     "count": 2
+    },
+    {
+     "term": "punctum",
+     "count": 2
+    },
+    {
+     "term": "decusis",
+     "count": 2
+    },
+    {
+     "term": "tigno",
+     "count": 2
+    },
+    {
+     "term": "tabulae",
+     "count": 2
+    },
+    {
+     "term": "liquida",
+     "count": 2
+    },
+    {
+     "term": "ferrea",
+     "count": 2
+    },
+    {
+     "term": "figuntur",
+     "count": 2
+    },
+    {
+     "term": "libellam",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.7",
+   "book": 10,
+   "part": "caput",
+   "chapter": 7,
+   "first": "10.7.1",
+   "last": "10.7.5",
+   "keywords": [
+    {
+     "term": "fistulae",
+     "count": 6
+    },
+    {
+     "term": "catinum",
+     "count": 4
+    },
+    {
+     "term": "ctesibii",
+     "count": 3
+    },
+    {
+     "term": "modioli",
+     "count": 3
+    },
+    {
+     "term": "paenula",
+     "count": 2
+    },
+    {
+     "term": "catino",
+     "count": 2
+    },
+    {
+     "term": "spiritus",
+     "count": 3
+    },
+    {
+     "term": "foraminis",
+     "count": 3
+    },
+    {
+     "term": "pressione",
+     "count": 2
+    },
+    {
+     "term": "asses",
+     "count": 2
+    },
+    {
+     "term": "nares",
+     "count": 2
+    },
+    {
+     "term": "expressionibus",
+     "count": 2
+    },
+    {
+     "term": "coagmenta",
+     "count": 2
+    },
+    {
+     "term": "subtiliter",
+     "count": 2
+    },
+    {
+     "term": "aquam",
+     "count": 2
+    },
+    {
+     "term": "aquae",
+     "count": 2
+    },
+    {
+     "term": "trudent",
+     "count": 1
+    },
+    {
+     "term": "supernis",
+     "count": 1
+    },
+    {
+     "term": "selegi",
+     "count": 1
+    },
+    {
+     "term": "saliendum",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "10.8",
+   "book": 10,
+   "part": "caput",
+   "chapter": 8,
+   "first": "10.8.1",
+   "last": "10.8.6",
+   "keywords": [
+    {
+     "term": "foraminis",
+     "count": 9
+    },
+    {
+     "term": "modiolorum",
+     "count": 4
+    },
+    {
+     "term": "obturant",
+     "count": 4
+    },
+    {
+     "term": "verticulis",
+     "count": 3
+    },
+    {
+     "term": "arcula",
+     "count": 3
+    },
+    {
+     "term": "ancones",
+     "count": 3
+    },
+    {
+     "term": "canalibus",
+     "count": 3
+    },
+    {
+     "term": "fistulae",
+     "count": 3
+    },
+    {
+     "term": "modioli",
+     "count": 3
+    },
+    {
+     "term": "canales",
+     "count": 3
+    },
+    {
+     "term": "tabulam",
+     "count": 2
+    },
+    {
+     "term": "pnigeos",
+     "count": 2
+    },
+    {
+     "term": "manubriis",
+     "count": 2
+    },
+    {
+     "term": "fundos",
+     "count": 2
+    },
+    {
+     "term": "cymbala",
+     "count": 2
+    },
+    {
+     "term": "regulae",
+     "count": 3
+    },
+    {
+     "term": "tabula",
+     "count": 2
+    },
+    {
+     "term": "epitonium",
+     "count": 2
+    },
+    {
+     "term": "delphinus",
+     "count": 2
+    },
+    {
+     "term": "aerei",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.9",
+   "book": 10,
+   "part": "caput",
+   "chapter": 9,
+   "first": "10.9.1",
+   "last": "10.9.7",
+   "keywords": [
+    {
+     "term": "tympani",
+     "count": 13
+    },
+    {
+     "term": "denticuli",
+     "count": 12
+    },
+    {
+     "term": "tympanum",
+     "count": 11
+    },
+    {
+     "term": "loculamentum",
+     "count": 6
+    },
+    {
+     "term": "fixus",
+     "count": 4
+    },
+    {
+     "term": "tympano",
+     "count": 5
+    },
+    {
+     "term": "plani",
+     "count": 4
+    },
+    {
+     "term": "calculi",
+     "count": 4
+    },
+    {
+     "term": "inclusum",
+     "count": 4
+    },
+    {
+     "term": "latus",
+     "count": 5
+    },
+    {
+     "term": "versationibus",
+     "count": 6
+    },
+    {
+     "term": "habens",
+     "count": 6
+    },
+    {
+     "term": "miliariorum",
+     "count": 3
+    },
+    {
+     "term": "dentibus",
+     "count": 3
+    },
+    {
+     "term": "rotunditatem",
+     "count": 4
+    },
+    {
+     "term": "rotae",
+     "count": 4
+    },
+    {
+     "term": "planum",
+     "count": 3
+    },
+    {
+     "term": "numero",
+     "count": 4
+    },
+    {
+     "term": "extra",
+     "count": 5
+    },
+    {
+     "term": "semel",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "unit": "10.10",
+   "book": 10,
+   "part": "caput",
+   "chapter": 10,
+   "first": "10.10.1",
+   "last": "10.10.6",
+   "keywords": [
+    {
+     "term": "foraminis",
+     "count": 45
+    },
+    {
+     "term": "crassitudo",
+     "count": 17
+    },
+    {
+     "term": "longitudo",
+     "count": 15
+    },
+    {
+     "term": "latitudo",
+     "count": 15
+    },
+    {
+     "term": "sign",
+     "count": 6
+    },
+    {
+     "term": "bracchia",
+     "count": 6
+    },
+    {
+     "term": "parastaticae",
+     "count": 5
+    },
+    {
+     "term": "columella",
+     "count": 4
+    },
+    {
+     "term": "capituli",
+     "count": 6
+    },
+    {
+     "term": "cardines",
+     "count": 4
+    },
+    {
+     "term": "bucculas",
+     "count": 2
+    },
+    {
+     "term": "altitudo",
+     "count": 6
+    },
+    {
+     "term": "suculae",
+     "count": 2
+    },
+    {
+     "term": "cardinibus",
+     "count": 2
+    },
+    {
+     "term": "longior",
+     "count": 2
+    },
+    {
+     "term": "chelonia",
+     "count": 2
+    },
+    {
+     "term": "columnae",
+     "count": 3
+    },
+    {
+     "term": "sagittarii",
+     "count": 2
+    },
+    {
+     "term": "trium",
+     "count": 2
+    },
+    {
+     "term": "partis",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.11",
+   "book": 10,
+   "part": "caput",
+   "chapter": 11,
+   "first": "10.11.1",
+   "last": "10.11.9",
+   "keywords": [
+    {
+     "term": "foraminis",
+     "count": 34
+    },
+    {
+     "term": "pondo",
+     "count": 12
+    },
+    {
+     "term": "digitorum",
+     "count": 11
+    },
+    {
+     "term": "crassitudo",
+     "count": 18
+    },
+    {
+     "term": "latitudo",
+     "count": 17
+    },
+    {
+     "term": "sign",
+     "count": 7
+    },
+    {
+     "term": "pedis",
+     "count": 6
+    },
+    {
+     "term": "longitudo",
+     "count": 12
+    },
+    {
+     "term": "climacidos",
+     "count": 4
+    },
+    {
+     "term": "ballistarum",
+     "count": 5
+    },
+    {
+     "term": "curvaturam",
+     "count": 5
+    },
+    {
+     "term": "regulae",
+     "count": 4
+    },
+    {
+     "term": "parte",
+     "count": 9
+    },
+    {
+     "term": "mittere",
+     "count": 3
+    },
+    {
+     "term": "foramen",
+     "count": 3
+    },
+    {
+     "term": "catapultis",
+     "count": 3
+    },
+    {
+     "term": "sexta",
+     "count": 3
+    },
+    {
+     "term": "ponderis",
+     "count": 3
+    },
+    {
+     "term": "mensae",
+     "count": 2
+    },
+    {
+     "term": "nervo",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.12",
+   "book": 10,
+   "part": "caput",
+   "chapter": 12,
+   "first": "10.12.1",
+   "last": "10.12.2",
+   "keywords": [
+    {
+     "term": "includuntur",
+     "count": 3
+    },
+    {
+     "term": "suculas",
+     "count": 2
+    },
+    {
+     "term": "capituli",
+     "count": 3
+    },
+    {
+     "term": "catapultis",
+     "count": 2
+    },
+    {
+     "term": "alteram",
+     "count": 2
+    },
+    {
+     "term": "vectibus",
+     "count": 2
+    },
+    {
+     "term": "foraminis",
+     "count": 2
+    },
+    {
+     "term": "tacti",
+     "count": 1
+    },
+    {
+     "term": "sonent",
+     "count": 1
+    },
+    {
+     "term": "rudentum",
+     "count": 1
+    },
+    {
+     "term": "rudentes",
+     "count": 1
+    },
+    {
+     "term": "moveantur",
+     "count": 1
+    },
+    {
+     "term": "involvuntur",
+     "count": 1
+    },
+    {
+     "term": "insecantur",
+     "count": 1
+    },
+    {
+     "term": "excisionibus",
+     "count": 1
+    },
+    {
+     "term": "exciduntur",
+     "count": 1
+    },
+    {
+     "term": "duces",
+     "count": 1
+    },
+    {
+     "term": "cuneoli",
+     "count": 1
+    },
+    {
+     "term": "cuneisque",
+     "count": 1
+    },
+    {
+     "term": "auditionibus",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "10.13",
+   "book": 10,
+   "part": "caput",
+   "chapter": 13,
+   "first": "10.13.1",
+   "last": "10.13.8",
+   "keywords": [
+    {
+     "term": "cubitorum",
+     "count": 6
+    },
+    {
+     "term": "tabulatorum",
+     "count": 5
+    },
+    {
+     "term": "machinae",
+     "count": 8
+    },
+    {
+     "term": "turrem",
+     "count": 3
+    },
+    {
+     "term": "arietaria",
+     "count": 3
+    },
+    {
+     "term": "turris",
+     "count": 3
+    },
+    {
+     "term": "murum",
+     "count": 4
+    },
+    {
+     "term": "oppugnandum",
+     "count": 3
+    },
+    {
+     "term": "arrectaria",
+     "count": 3
+    },
+    {
+     "term": "tignum",
+     "count": 3
+    },
+    {
+     "term": "testudinis",
+     "count": 3
+    },
+    {
+     "term": "tegebat",
+     "count": 2
+    },
+    {
+     "term": "demolitionem",
+     "count": 2
+    },
+    {
+     "term": "cubita",
+     "count": 2
+    },
+    {
+     "term": "diades",
+     "count": 2
+    },
+    {
+     "term": "aries",
+     "count": 2
+    },
+    {
+     "term": "altam",
+     "count": 2
+    },
+    {
+     "term": "fastigium",
+     "count": 3
+    },
+    {
+     "term": "suspendit",
+     "count": 2
+    },
+    {
+     "term": "crudis",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.14",
+   "book": 10,
+   "part": "caput",
+   "chapter": 14,
+   "first": "10.14.1",
+   "last": "10.14.3",
+   "keywords": [
+    {
+     "term": "arbusculae",
+     "count": 3
+    },
+    {
+     "term": "capreoli",
+     "count": 3
+    },
+    {
+     "term": "pedes",
+     "count": 4
+    },
+    {
+     "term": "proiectura",
+     "count": 3
+    },
+    {
+     "term": "conlocentur",
+     "count": 4
+    },
+    {
+     "term": "tigna",
+     "count": 2
+    },
+    {
+     "term": "compacta",
+     "count": 2
+    },
+    {
+     "term": "cardines",
+     "count": 2
+    },
+    {
+     "term": "conclusi",
+     "count": 2
+    },
+    {
+     "term": "versationibus",
+     "count": 2
+    },
+    {
+     "term": "pedum",
+     "count": 2
+    },
+    {
+     "term": "insuper",
+     "count": 2
+    },
+    {
+     "term": "quadrato",
+     "count": 2
+    },
+    {
+     "term": "transversa",
+     "count": 2
+    },
+    {
+     "term": "intervalla",
+     "count": 2
+    },
+    {
+     "term": "graece",
+     "count": 2
+    },
+    {
+     "term": "continenter",
+     "count": 2
+    },
+    {
+     "term": "textae",
+     "count": 1
+    },
+    {
+     "term": "tenuibus",
+     "count": 1
+    },
+    {
+     "term": "tegatur",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "unit": "10.15",
+   "book": 10,
+   "part": "caput",
+   "chapter": 15,
+   "first": "10.15.1",
+   "last": "10.15.7",
+   "keywords": [
+    {
+     "term": "habuerat",
+     "count": 7
+    },
+    {
+     "term": "compacta",
+     "count": 6
+    },
+    {
+     "term": "pedum",
+     "count": 8
+    },
+    {
+     "term": "crassitudo",
+     "count": 8
+    },
+    {
+     "term": "capreoli",
+     "count": 4
+    },
+    {
+     "term": "aries",
+     "count": 3
+    },
+    {
+     "term": "sign",
+     "count": 3
+    },
+    {
+     "term": "funes",
+     "count": 3
+    },
+    {
+     "term": "tabulis",
+     "count": 3
+    },
+    {
+     "term": "religati",
+     "count": 3
+    },
+    {
+     "term": "latitudo",
+     "count": 6
+    },
+    {
+     "term": "coriis",
+     "count": 3
+    },
+    {
+     "term": "testudinis",
+     "count": 3
+    },
+    {
+     "term": "machinae",
+     "count": 4
+    },
+    {
+     "term": "erigebantur",
+     "count": 2
+    },
+    {
+     "term": "contabulatio",
+     "count": 2
+    },
+    {
+     "term": "insuper",
+     "count": 4
+    },
+    {
+     "term": "transversa",
+     "count": 4
+    },
+    {
+     "term": "fuerant",
+     "count": 2
+    },
+    {
+     "term": "cardinato",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "unit": "10.16",
+   "book": 10,
+   "part": "caput",
+   "chapter": 16,
+   "first": "10.16.1",
+   "last": "10.16.12",
+   "keywords": [
+    {
+     "term": "murum",
+     "count": 14
+    },
+    {
+     "term": "diognetus",
+     "count": 8
+    },
+    {
+     "term": "specus",
+     "count": 9
+    },
+    {
+     "term": "machinae",
+     "count": 12
+    },
+    {
+     "term": "helepolim",
+     "count": 5
+    },
+    {
+     "term": "intra",
+     "count": 7
+    },
+    {
+     "term": "fuerat",
+     "count": 8
+    },
+    {
+     "term": "hostes",
+     "count": 5
+    },
+    {
+     "term": "comparata",
+     "count": 10
+    },
+    {
+     "term": "exemplar",
+     "count": 6
+    },
+    {
+     "term": "architecti",
+     "count": 6
+    },
+    {
+     "term": "stercoris",
+     "count": 3
+    },
+    {
+     "term": "rhodii",
+     "count": 3
+    },
+    {
+     "term": "ballistarum",
+     "count": 4
+    },
+    {
+     "term": "candentem",
+     "count": 3
+    },
+    {
+     "term": "munitiones",
+     "count": 3
+    },
+    {
+     "term": "totam",
+     "count": 3
+    },
+    {
+     "term": "aquae",
+     "count": 5
+    },
+    {
+     "term": "machinis",
+     "count": 3
+    },
+    {
+     "term": "vidissent",
+     "count": 2
+    }
+   ]
+  }
+ ]
+}

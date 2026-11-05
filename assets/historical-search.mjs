@@ -223,12 +223,12 @@ form.addEventListener('submit',async e=>{
   if(pageHits.length){const firstLiteral=pageHits.find(p=>historicMatches(p.text,q,prefix,edition).length>0);const selected=firstLiteral||pageHits[0];showPage(selected.page,selected.text,selected.hits);}
   status.textContent=(variants.length?'Consulta multilingüe: '+literal+' coincidencias literales; equivalencias lexicográficas exploradas ('+source.label+'): '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
   if(!total){showTypoSuggestions(q,edition);showOcrAlternatives(cache,q);const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
- }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprobá que su índice OCR esté publicado.';}
+ }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprueba que su índice OCR esté publicado.';}
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  e.preventDefault();const n=Number(document.querySelector('#pdf-page-number').value),note=document.querySelector('#page-hit-status');
  const max=source.id==='perrault-1673'?371:Math.max(314,...(cache||[]).map(row=>row.page));
- if(!Number.isInteger(n)||n<1||n>max){if(note)note.textContent='Ingresá una página entre 1 y '+max+'.';return;}
+ if(!Number.isInteger(n)||n<1||n>max){if(note)note.textContent='Ingresa una página entre 1 y '+max+'.';return;}
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}
   const record=cache.find(x=>x.page===n);

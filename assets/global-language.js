@@ -55,7 +55,7 @@
   'Referencia directa':['Direct reference','Référence directe'],
   'Abrir locus →':['Open passage →','Ouvrir le locus →'],
   'Lectura por libro, capítulo y sección':['Reading by book, chapter and section','Lecture par livre, chapitre et section'],
-  'Texto latino y traducción enfrentados, vinculados por la numeración del tratado. Elegí una referencia o buscá una frase en los textos.':['Facing Latin text and translation, aligned by the treatise’s numbering. Choose a reference or search for a phrase in the texts.','Texte latin et traduction en regard, alignés selon la numérotation du traité. Choisissez une référence ou recherchez une expression dans les textes.'],
+  'Texto latino y traducción enfrentados, vinculados por la numeración del tratado. Elige una referencia o busca una frase en los textos.':['Facing Latin text and translation, aligned by the treatise’s numbering. Choose a reference or search for a phrase in the texts.','Texte latin et traduction en regard, alignés selon la numérotation du traité. Choisissez une référence ou recherchez une expression dans les textes.'],
   'EDICIÓN Y TRADUCCIONES DE DIEGO KURILO':['EDITION AND TRANSLATIONS BY DIEGO KURILO','ÉDITION ET TRADUCTIONS DE DIEGO KURILO'],
   'Facsímiles de los códices vitruvianos':['Facsimiles of Vitruvian manuscripts','Fac-similés des manuscrits vitruviens'],
   'TESTIMONIA · TRADICIÓN MANUSCRITA':['TESTIMONIA · MANUSCRIPT TRADITION','TESTIMONIA · TRADITION MANUSCRITE'],
@@ -93,7 +93,7 @@
   'Ficha científica ARCA / CNRS ↗':['ARCA / CNRS scholarly record ↗','Notice scientifique ARCA / CNRS ↗'],
   'Leer facsímil digital en Gallica ↗':['Read digital facsimile on Gallica ↗','Lire le fac-similé numérique sur Gallica ↗'],
   'Ficha del manuscrito en BnF ↗':['BnF manuscript record ↗','Notice du manuscrit à la BnF ↗'],
-  'Si el visor se muestra vacío, usá «Abrir visor»; algunas plataformas no permiten mostrarse dentro de un iframe externo. La paginación del facsímil y la foliación del códice no se equiparan automáticamente.':[
+  'Si el visor se muestra vacío, usa «Abrir visor»; algunas plataformas no permiten mostrarse dentro de un iframe externo. La paginación del facsímil y la foliación del códice no se equiparan automáticamente.':[
     'If the viewer appears empty, use “Open viewer”; some platforms do not allow embedding on external sites. Facsimile page numbering and manuscript foliation are not assumed to correspond automatically.',
     'Si la visionneuse est vide, utilisez « Ouvrir la visionneuse » : certaines plateformes n’autorisent pas l’intégration sur un site externe. La pagination du fac-similé et la foliotation du manuscrit ne sont pas assimilées automatiquement.'
   ],

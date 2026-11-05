@@ -120,6 +120,16 @@ function renderDetails(){
  source.hidden=!r.source||r.id!=="fanum-fortunae";
  if(!source.hidden)source.href=r.source;
  renderPassage("place-passage",r,activePassageLocus&&r.loci?.includes(activePassageLocus)?activePassageLocus:null);
+ extraLinks("place-onomasticon",r);
+}
+function extraLinks(anchorId,r){
+ const anchor=byId(anchorId);if(!anchor)return;const id=anchorId+"-extra";let box=byId(id);
+ if(!box){box=document.createElement("span");box.id=id;box.className="atlas-extra-links";anchor.after(box)}
+ const ancient=String(r.latinCanonical||r.name||"").split("·").pop().trim();const modern=String(r.modern||"").replace(/\s*\(.*\)\s*$/,"");
+ const q=ancient||modern;box.replaceChildren();
+ const add=(t,u)=>{const a=document.createElement("a");a.href=u;a.textContent=t;a.target="_blank";a.rel="noopener noreferrer";a.style.marginLeft="14px";box.append(a)};
+ add("Pleiades ↗","https://pleiades.stoa.org/search?"+new URLSearchParams({SearchableText:q,portal_type:"Place"}));
+ add("Textos clásicos que lo nombran ↗","bibliotheca-graeca-latina.html?"+new URLSearchParams({term:(w=>w.length>6?w.slice(0,-2):w)(q.split(/\s+/)[0])}));
 }
 function selectPlace(id,zoom=true,scroll=false){
  const r=all.find(x=>x.id===id);if(!r)return;
@@ -180,6 +190,7 @@ function openScientificDossier(id){
  const u=new URL(location.href);u.searchParams.set("lugar",r.id);u.searchParams.set("ficha","1");
  byId("dossier-deeplink").href=u.href;
  renderPassage("dossier-passage",r,activePassageLocus);
+ extraLinks("dossier-onomasticon",r);
  if(!d.open)d.showModal();
 }
 function typeGroup(r){

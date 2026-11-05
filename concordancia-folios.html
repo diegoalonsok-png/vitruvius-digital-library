@@ -66,7 +66,8 @@ html[data-theme=dark] .folio-panel select{background:#1b3143;color:#fff4e5;borde
 html[data-theme=dark] .folio-badge{background:#385065;color:#f4eadb;border-color:#8da0b0}
 html[data-theme=dark] .folio-no-image{background:#263847;color:#e9e0d1}
 @media(max-width:1130px){.folio-workspace{grid-template-columns:1fr}.folio-image{height:510px;min-height:300px}.folio-paragraphs{min-height:220px}}
-</style></head>
+</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script></head>
 <body><main class="folio-main" id="contenido">
 <nav class="folio-nav"><a href="index.html">← Biblioteca principal</a><a href="harleianus.html">Visor H</a><a href="laboratorio-h.html">Laboratorio H</a><a href="metodologia-filologica.html">Método filológico</a><a href="aparato-critico.html">Notas y aparato</a><a href="auditoria.html">Estado de auditoría</a></nav>
 <p style="font:700 11px system-ui;letter-spacing:.13em;color:#957340">BIBLIOTECA DIGITAL · CRÍTICA TEXTUAL</p>
@@ -97,12 +98,12 @@ html[data-theme=dark] .folio-no-image{background:#263847;color:#e9e0d1}
 </div>
 <section class="folio-search" aria-labelledby="f-search-heading">
 <h2 id="f-search-heading">Buscar cualquier locus del tratado</h2>
-<p>Esta consulta recorre los 731 pasajes latinos indexados, pero <b>no les atribuye un folio sin evidencia</b>. Probá <i>1.praef.1</i>, <i>symmetria</i>, <i>Archimedes</i> o <i>9.praef.10</i>.</p>
+<p>Esta consulta recorre los 731 pasajes latinos indexados, pero <b>no les atribuye un folio sin evidencia</b>. Prueba <i>1.praef.1</i>, <i>symmetria</i>, <i>Archimedes</i> o <i>9.praef.10</i>.</p>
 <form role="search" id="f-search-form"><label for="f-search">Locus, palabra o frase en latín o castellano<input id="f-search" type="search" placeholder="architectura · 1.2.1 · Archimedes" autocomplete="off"></label><button type="submit" style="padding:11px 15px;border:1px solid #9a7a47;background:#1d3b53;color:#fff;cursor:pointer">Buscar</button></form>
 <p id="f-search-count" role="status" style="font-size:12px"></p><div id="f-search-results" aria-live="polite"></div>
 </section>
 <section class="folio-notes"><h2>Procedencia y criterios</h2>
 <p>Manuscrito: <a href="https://searcharchives.bl.uk/catalog/040-002048598" target="_blank" rel="noopener">British Library, Harley MS 2767</a>. Las imágenes son servidas desde la infraestructura institucional IIIF. Textos editoriales: ediciones de Diego Kurilo <b>V514</b> (castellano), <b>V297</b> (inglés) y <b>V554</b> (francés). El registro preliminar del folio 1r se publica con indicación expresa de su nivel de certeza. La página no constituye una nueva colación de todos los códices.</p>
 <p><a href="data/codex-h/folio-locus-map.json">Descargar tabla de correspondencias (JSON)</a> · <a href="data/codex-h/aligned-1r.json">Consultar propuesta de 1r</a> · <a href="metodologia-filologica.html">Protocolo filológico aplicado</a></p></section></main>
-<script type="module" src="assets/concordancia-folios.js?v=20261102-first-evidence"></script>
-</body></html>
+<script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script><script type="module" src="assets/concordancia-folios.js?v=20261105-books-v1"></script>
+<script src="assets/research-folder.js?v=20261105-v1" defer></script></body></html>

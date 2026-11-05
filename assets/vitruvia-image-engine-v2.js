@@ -36,11 +36,12 @@ function matchingScore(page,aliases,query){
  for(const alias of aliases){
   const phrase=fold(alias),terms=tokens(alias);
   if(!phrase||!terms.length)continue;
-  const overlap=terms.filter(w=>titleTokens.includes(w)||name.includes(w)).length/terms.length;
+  // Coincidencia parcial de palabras sueltas solo cuenta para nombres de una palabra; con varias, hace falta la frase.
+  const overlap=terms.length>1&&!name.includes(terms.join(" "))?0:terms.filter(w=>titleTokens.includes(w)||name.includes(w)).length/terms.length;
   score=Math.max(score,(name.includes(phrase)?75:0)+Math.round(overlap*85)+(desc.includes(phrase)?15:0));
  }
  const qtokens=tokens(query);
- if(qtokens.length&&qtokens.every(w=>name.includes(w)))score=Math.max(score,65);
+ if(qtokens.length===1&&name.includes(qtokens[0])||qtokens.length>1&&name.includes(qtokens.join(" ")))score=Math.max(score,65);
  if(page.fromTrustedCategory)score+=90;
  return score;
 }
@@ -141,7 +142,7 @@ function displayGroups(items,topic){
 }
 async function localCodex(id){
  heading.textContent="Codex Harleianus · Harley MS 2767";
- external("341 folios · galería local","codex-h-folios-local.html");
+ external("341 imágenes · galería local","codex-h-folios-local.html");
  external("Ficha codicológica","harleianus.html");
  const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
  try{
@@ -225,15 +226,15 @@ async function searchImages(query){
   if(items.length){
    const selected=items.slice(0,80);
    displayGroups(selected,topic);
-   status.textContent=locale(selected.length+" imágenes con ficha de origen. Abrí una para ampliar; confirmá los derechos antes de reutilizarla.",
+   status.textContent=locale(selected.length+" imágenes con ficha de origen. Abre una para ampliar; confirma los derechos antes de reutilizarla.",
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
    if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
-  }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Probá los catálogos externos.",
+  }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
    "No sufficiently identified images were retrieved. Try the external collections.",
    "Aucune image suffisamment documentée. Consulter les collections externes.");
  }catch(error){
-  if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usá los enlaces a los archivos.",
+  if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
    "The image service did not respond; use the linked archives.",
    "Le service d’images ne répond pas ; consulter les archives.");
  }finally{clearTimeout(timeout)}
