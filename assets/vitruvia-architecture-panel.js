@@ -252,11 +252,58 @@ const architecturalNotes={
  'taliesin west':['Estudio, residencia y centro de enseñanza en el desierto de Arizona.','Taliesin West'],
  'solomon r guggenheim museum':['Museo de Nueva York organizado alrededor de una rampa helicoidal.','Solomon R. Guggenheim Museum']
 };
+/* Direct, sourced photo fallback independent of Wikidata SPARQL availability.
+   Category membership supplies attribution; no unverified image search. */
+async function commonsBuildings(root,name,valid){
+ const host=el('section','architecture-built-list');
+ heading(host,localized('Fotografías de obras · Wikimedia Commons','Building photographs · Wikimedia Commons','Photographies des œuvres · Wikimedia Commons'));
+ root.append(host);
+ const status=el('p','context-note',localized('Recuperando fotografías documentadas…','Retrieving documented photos…','Recherche de photographies documentées…'));
+ host.append(status);
+ const category='Category:Buildings by '+name;
+ const base='https://commons.wikimedia.org/w/api.php?';
+ const params=new URLSearchParams({action:'query',list:'categorymembers',cmtitle:category,cmtype:'subcat',cmlimit:'45',format:'json',origin:'*'});
+ const response=await getJSON(base+params,11500).catch(()=>null);
+ if(!valid()||!host.isConnected)return;
+ const categories=(response?.query?.categorymembers||[]).filter(x=>/^Category:/.test(x.title||'')).slice(0,18);
+ if(!categories.length){
+  status.textContent=localized('No se recuperó una colección directa de edificios en Commons.','No direct building collection returned by Commons.','Aucune collection directe de bâtiments retrouvée sur Commons.');
+  host.append(link(localized('Buscar fotografías verificadas ↗','Search documented photographs ↗','Chercher des photographies documentées ↗'),
+   'https://commons.wikimedia.org/wiki/Special:MediaSearch?'+new URLSearchParams({type:'image',search:name+' building'})));
+  return;
+ }
+ const results=await Promise.all(categories.slice(0,12).map(async categoryRow=>{
+  const args=new URLSearchParams({action:'query',generator:'categorymembers',gcmtitle:categoryRow.title,
+   gcmtype:'file',gcmlimit:'5',prop:'imageinfo',iiprop:'url|mime',iiurlwidth:'420',format:'json',origin:'*'});
+  const data=await getJSON(base+args,9500).catch(()=>null);
+  const file=Object.values(data?.query?.pages||{}).find(p=>p.imageinfo?.[0]?.thumburl&&
+    /^image\/(?:jpeg|png|webp)$/i.test(p.imageinfo[0].mime||''));
+  return file?{label:categoryRow.title.replace(/^Category:/,'').replace(/_/g,' '),
+   url:'https://commons.wikimedia.org/wiki/'+encodeURIComponent(categoryRow.title.replace(/ /g,'_')),
+   image:file.imageinfo[0].thumburl,photoPage:file.imageinfo[0].descriptionurl}:null;
+ }));
+ if(!valid()||!host.isConnected)return;
+ const records=results.filter(Boolean);
+ if(!records.length){status.textContent=localized('La colección existe, pero no devolvió miniaturas.','Collection found but thumbnails unavailable.','Collection trouvée, miniatures indisponibles.');return}
+ status.textContent=localized('Imágenes de colecciones atribuidas al arquitecto; cada fotografía enlaza a su fuente.','Images from architect-attributed categories; each photo links to its source.','Images de catégories attribuées à l’architecte, avec sources.');
+ const gallery=el('div','architecture-gallery');host.append(gallery);
+ records.forEach(item=>{
+  const figure=el('figure','architecture-plate'),a=link('',item.photoPage||item.url);
+  const img=el('img');img.src=item.image;img.loading='lazy';img.alt=item.label;
+  img.addEventListener('error',()=>figure.remove());a.append(img);figure.append(a);
+  figure.append(el('figcaption',null,item.label));
+  figure.append(link(localized('Colección documentada ↗','Documented collection ↗','Collection documentée ↗'),item.url));
+  gallery.append(figure);
+ });
+ host.append(link(localized('Ver colección completa ↗','View full collection ↗','Voir toute la collection ↗'),
+  'https://commons.wikimedia.org/wiki/'+encodeURIComponent(category.replace(/ /g,'_'))));
+}
 function listConstructedWorks(root,name,id,valid){
  const section=el('section','architecture-built-list');
  heading(section,localized('Obras de arquitectura','Architectural works','Œuvres architecturales'));
  root.append(section);
  const list=el('ol','architecture-work-stack');section.append(list);
+ void commonsBuildings(section,name,valid).catch(()=>{});
  const certified=certifiedSites[normalize(name)];
  const seen=new Set();
  function addWork(work,provenance){
