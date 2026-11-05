@@ -3,6 +3,8 @@
 (()=>{"use strict";
 const section=document.getElementById("vitruvia-images"),grid=document.getElementById("vitruvia-image-grid"),actions=document.getElementById("vitruvia-image-actions");
 const status=document.getElementById("image-results-status"),heading=document.getElementById("image-results-title");
+// Only the compact strip is visible by default; the full gallery is opt-in.
+grid.hidden=true;
 if(!section||!grid||!actions||!status||!heading)return;
 let active=0,controller=null,currentImageQuery="";
 const quick=document.createElement("section");
@@ -39,7 +41,7 @@ const safeLink=u=>{try{const x=new URL(u,location.href);return x.protocol==="htt
 const locale=(es,en,fr)=>document.documentElement.lang==="en"?en:document.documentElement.lang==="fr"?fr:es;
 const groupLabel=group=>window.VitruviaDiscovery?.groups[group]?.[document.documentElement.lang||"es"]||window.VitruviaDiscovery?.groups[group]?.es||group;
 function external(label,url){const a=create(actions,"a","",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer"}
-function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";quick.replaceChildren();quick.hidden=true;const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
+function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";quick.replaceChildren();quick.hidden=true;const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
 async function getJSON(params,signal){
  const r=await fetch("https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"}),{signal,headers:{Accept:"application/json"}});
  if(!r.ok)throw Error("Wikimedia Commons HTTP "+r.status);
@@ -141,6 +143,12 @@ function collectedImages(pages,topic){
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
 }
 function displayGroups(items,topic){
+ // Multiple API pages may represent the same photo under alternative records.
+ const seen=new Set();
+ items=items.filter(item=>{
+  const key=String(item.page||item.original||item.preview||item.name||"").toLowerCase().replace(/[#?].*$/,"");
+  if(seen.has(key))return false;seen.add(key);return true;
+ });
  grid.replaceChildren();let previous=null;
  for(const item of items){
   if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
@@ -153,6 +161,7 @@ function displayGroups(items,topic){
   create(bar,"span","",locale("Imágenes del resultado: ","Result images: ","Images du résultat : ")+topic.subject);
   const jump=create(bar,"a","",locale("Todas las imágenes y fuentes","All images and sources","Toutes les images et sources"));
   jump.href="#vitruvia-images";
+  jump.addEventListener("click",()=>{grid.hidden=false});
   const strip=create(quick,"div","article-image-preview-grid");
   (window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5)).slice(0,5).forEach(item=>displayItem(item,strip));
   quick.hidden=false;
@@ -417,6 +426,7 @@ document.getElementById("search-images-button")?.addEventListener("click",()=>{
  if(!q){document.getElementById("query")?.focus();return}
  document.body.classList.add("vitruvia-reading");
  void searchImages(q);
+ grid.hidden=false;
  section.scrollIntoView({behavior:"smooth",block:"start"});
 });
 })();
