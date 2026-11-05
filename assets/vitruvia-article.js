@@ -30,7 +30,7 @@ function sourceLink(parent,label,url){const a=href(url,label);if(a)parent.append
 function references(rows,license){const box=$("article-sources");box.replaceChildren();
 box.append(make("h3",phrase("Fuentes y referencias","Sources and references","Sources et références")));
 const ol=make("ol",undefined,"article-source-list"),seen=new Set();
-for(const r of rows){if(!r.link||seen.has(r.link))continue;seen.add(r.link);
+for(const r of rows){if(!r.link||seen.has(r.link)||window.VitruviaDocumentaryRelevance&&!window.VitruviaDocumentaryRelevance.accepts(r,bibliographyContext.query))continue;seen.add(r.link);
 const li=make("li");sourceLink(li,r.title||r.source||"Fuente",r.link);
 if(r.author)li.append(make("span"," · "+r.author));
 ol.append(li);if(ol.children.length>=10)break}
@@ -112,6 +112,7 @@ function renderChicagoBibliography(rows,query){
  const allowed=new Set(["book","edition","manuscript","article","openlibrary","googlebook","museum","wikipedia"]);
  const relevant=rows.filter(r=>{
   if(!allowed.has(r.type)||!r.link||!r.title)return false;
+  if(window.VitruviaDocumentaryRelevance&&!window.VitruviaDocumentaryRelevance.accepts(r,query))return false;
   const field=normalized([r.title,r.author,r.excerpt].join(" "));
   return (relevance(r,query)>=45||field.includes(exact)&&exact.length>3);
  });

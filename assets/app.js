@@ -1,6 +1,7 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
 import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261103-pair2';
+import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261104-query-1';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
 const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -292,6 +293,13 @@ function startSearch(){
  $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();$('#search-status').textContent='Consultando el índice de los DOCX…';$('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
  const parsedReference=parseLocus(query);
  const canonicalQuery=parsedReference?roman(parsedReference.book)+(parsedReference.chapter!=null?'.'+parsedReference.chapter+(parsedReference.section!=null?'.'+parsedReference.section:''):''):query||lastQuery;
+ // Static, reproducible query links: no server state or local file persistence.
+ const shared=searchStateURL(location.href,{query:query||lastQuery,kind,scope:$('#scope').value,match:$('#search-mode').value,book:$('#filter-book').value,chapter:$('#filter-chapter').value,language:$('#text-language').value,count:$('#count-mode').value});
+ if(shared)try{
+  let privateQuery=false;try{privateQuery=localStorage.getItem('vitruvia-private-url')==='1';}catch{}
+  if(privateQuery){const clean=new URL(location.href);clean.search='';clean.hash='buscar';history.replaceState(null,'',clean.href);}
+  else history.replaceState(null,'',shared.href);
+ }catch{}
  try{ensureWorker().postMessage({type:'search',requestId,query:canonicalQuery,kind:parsedReference?'locus':kind,mode:$('#search-mode').value,countMode:$('#count-mode').value,scope:$('#scope').value,book:$('#filter-book').value,chapter:$('#filter-chapter').value,language:$('#text-language').value,baseURL:new URL('./',location.href).href,editions:records.filter(e=>authorIds.includes(e.id)&&e.searchable)});}catch(error){$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';$('#search-status').textContent=error.message;}
 }
 
@@ -628,6 +636,18 @@ async function initialize(){
   $('#close-comparison').addEventListener('click',()=>$('#comparison-dialog').close());$('#comparison-dialog').addEventListener('close',()=>$('#comparison-panes').replaceChildren());
   $('#more-results').addEventListener('click',renderMore);
   const params=new URLSearchParams(location.search);if(params.has('edition'))openReader(params.get('edition'),Number(params.get('page'))||1);
+  const restored=readSearchState(params);
+  if(restored){
+    $('#query').value=restored.query;
+    if(restored.kind){$('#search-kind').value=restored.kind;$('#search-kind').dispatchEvent(new Event('change'));}
+    if(restored.scope)$('#scope').value=restored.scope;
+    if(restored.match)$('#search-mode').value=restored.match;
+    if(restored.language)$('#text-language').value=restored.language;
+    if(restored.count)$('#count-mode').value=restored.count;
+    if(restored.book){$('#filter-book').value=restored.book;$('#filter-book').dispatchEvent(new Event('change'));}
+    if(restored.chapter)$('#filter-chapter').value=restored.chapter;
+    startSearch();
+  }
 }
 initialize().catch(()=>showError($('#catalog-status'),'No se pudo iniciar el catálogo. Recarga la página.'));
 

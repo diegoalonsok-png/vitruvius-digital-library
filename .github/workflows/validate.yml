@@ -23,6 +23,7 @@ jobs:
           node scripts/test-history.mjs
           node scripts/test-citations.mjs
           node scripts/test-search.mjs
+          node --test scripts/test-query-discovery.mjs
           node scripts/test-vitruvia-discovery.mjs
           node --check assets/vitruvia-academic-reader.js
           node scripts/test-vitruvia-academic-reader.mjs
