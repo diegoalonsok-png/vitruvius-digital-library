@@ -1,5 +1,18 @@
 # Vitruvius Digital Library
 
+## Interdisciplinary Greek and Latin teaching / Docencia clásica interdisciplinaria
+
+This project has a specialized Vitruvian core and a broader **Bibliotheca Graeca et Latina** for students and researchers across classical philology, philosophy, history, literary studies, archaeology, ancient science and the history of ideas.
+
+- [Interdisciplinary classroom gateway](docencia-clasica.html): discipline-based reading routes into existing Greek/Latin texts and translations; suitable for university seminars, not restricted to architectural history.
+- [Bibliotheca Graeca et Latina](bibliotheca-graeca-latina.html): status-labelled catalogue, distinguishing locally readable texts, identified external sources and bibliography-only records.
+- [Model source-critical reading](modelo-critico-prefacio.html): Harley MS 2767, f. 1r; separates facsimile, provisional semidiplomatic reading, editorial Latin and attributed translations. Not a definitive scholarly collation.
+- [Reproducible technical checks](auditoria-tecnica.html): browser-delivered file/corpus checks plus 200 *unexecuted* Vitruvia regression queries for manual review. The checklist is not a test pass claim.
+- [Specialized Roman architecture teaching guide](docencia-roma-antigua.html): seven existing seminars on Vitruvian passages.
+
+Citation metadata and DOI references are already present in [CITATION.cff](CITATION.cff). Before asserting indexing, verify actual records in DataCite/OpenAIRE and inspect the corresponding registered metadata. The site's [sitemap.xml](sitemap.xml) is advertised in [robots.txt](robots.txt); Search Console ownership and submission are separate actions.
+
+
 **Independent open-access research resource for Vitruvius' *De architectura*.**  
 Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Aires, Argentina).
 
