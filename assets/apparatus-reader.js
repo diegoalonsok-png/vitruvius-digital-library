@@ -24,6 +24,8 @@ async function render(){
  let hits=[];try{hits=await A.forLocus(locus,{lang,limit:8})}catch(e){hits=null}
  if(my!==ticket)return;
  const t=T[lang]||T.es,el=ensure();el.replaceChildren();
+ if(window.ResearchFolder){let sp=document.getElementById("passage-save");if(!sp){sp=document.createElement("span");sp.id="passage-save";sp.style.marginLeft="12px";$("passage-ref")?.after(sp)}
+  sp.replaceChildren(ResearchFolder.button({id:"passage:"+locus,kind:"passage",title:"Vitruvio, De architectura · "+window.KuriloApparatus.cite(locus),ref:({es:"V514",fr:"V554",en:"V297"}[lang]||"V514"),url:"lector-bilingue.html?edition="+({es:"recensio-es",fr:"recensio-fr",en:"theory-en"}[lang]||"recensio-es")+"&locus="+encodeURIComponent(locus),locus}))}
  const eyebrow=document.createElement("p");eyebrow.className="eyebrow";eyebrow.textContent=t.h.toUpperCase()+" · "+A.cite(locus);el.append(eyebrow);
  if(window.CodexHConcordance){const hp=document.createElement("p");hp.style.cssText="margin:.2em 0 .8em;font-size:.93em";el.append(hp);
   window.CodexHConcordance.locate(locus).then(c=>{if(my!==ticket)return;const ex=c.exact.find(x=>x.status!=="catalogue"),f=ex?ex.folio:c.estimate&&c.estimate.folio;if(!f)return;

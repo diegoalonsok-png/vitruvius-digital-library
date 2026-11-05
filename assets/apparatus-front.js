@@ -26,6 +26,9 @@ async function lexical(){
  let box=$("#apparatus-search-results");
  if(!box){box=document.createElement("section");box.id="apparatus-search-results";box.setAttribute("aria-label","Coincidencias en el aparato crítico");results.parentNode.insertBefore(box,results.nextSibling)}
  box.replaceChildren();if(q.length<3)return;
+ fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():null).then(d=>{if(!d)return;const f=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u"),fq=f(q);
+  const e=d.entries.find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[])].some(y=>f(y)===fq));if(!e||box.querySelector(".term-link"))return;
+  const p=document.createElement("p");p.className="term-link";p.style.cssText="margin:14px 0;font-weight:600";const a=document.createElement("a");a.href="termino.html?t="+encodeURIComponent(e.lemma);a.textContent="Ficha del término «"+e.lemma+"»: definición, traducciones, apariciones por capítulo con folio en H, aparato y láminas →";p.append(a);box.prepend(p)}).catch(()=>{});
  const my=++ticket;let hits=[];
  try{hits=await A().search(q,{lang:"es",limit:6})}catch{return}
  if(my!==ticket||!hits.length)return;

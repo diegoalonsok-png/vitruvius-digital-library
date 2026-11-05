@@ -951,6 +951,14 @@ async function search(){
   })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal){
+  pending.push(fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
+   const f=x=>norm(String(x||"")).replace(/j/g,"i").replace(/v/g,"u"),q=f(generalQuery).trim();
+   const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[])].some(y=>f(y)===q));
+   return {name:"Ficha de término",rows:e?[{type:"section",title:"Ficha del término «"+e.lemma+"» en Vitruvio",author:[e.es,e.fr,e.en].filter(Boolean).join(" · "),
+    excerpt:"Definición de Vitruvio con las traducciones V514 · V554 · V297, todas las apariciones por prefacio y capítulo con su folio en el Codex H, aparato crítico, láminas y estudios.",
+    meta:"FICHA DE TÉRMINO · BIBLIOTECA VITRUVIANA",rating:3200,link:"termino.html?t="+encodeURIComponent(e.lemma),source:"Biblioteca Vitruviana"}]:[]}}).catch(()=>({name:"Léxico no disponible",rows:[]})));
+ }
+ if(internal){
   pending.push(fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
    const f=x=>norm(String(x||"")),q=f(generalQuery),toks=q.split(/\s+/).filter(t=>t.length>3),loc=intent?.locus||null;
    const rows=(d.entries||[]).map(e=>{const hay=f([e.title,e.author,e.work,e.edition,e.plate,e.folio,e.witness,e.relation].join(" "));
