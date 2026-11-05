@@ -117,3 +117,5 @@ ready(()=>{
  new MutationObserver(paint).observe(document.body,{attributes:true,attributeFilter:["class","data-theme","style"]});
 });
 })();
+// Guardia de legibilidad: corrige solo textos con contraste insuficiente (< 3:1) en cualquier tema o fondo.
+(()=>{if(document.querySelector('script[src*="contrast-guard.js"]'))return;const s=document.createElement('script');s.src='assets/contrast-guard.js?v=20261105-v1';s.defer=true;document.head.append(s)})();

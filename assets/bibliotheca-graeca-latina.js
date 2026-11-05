@@ -365,8 +365,8 @@ box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
 const pane=$("classic-panel");
 if(tab==="perseus"&&w.perseus?.length){
   pane.replaceChildren();
-  const h=document.createElement("h3");h.textContent=w.perseus.some(x=>x.translation)?"Texto original y traducción inglesa · Perseus Digital Library":"Texto original · Perseus Digital Library";pane.append(h);
-  const note=document.createElement("p");note.className="classic-ref";note.textContent="Edición TEI de Perseus (CC BY-SA 4.0), leída en el momento desde su repositorio público; no se copia en este sitio. Cuando hay imágenes verificadas del códice más antiguo, el visor las muestra primero.";pane.append(note);
+  const h=document.createElement("h3");h.textContent=w.perseus.some(x=>x.translation)?"Texto original y traducción inglesa · Perseus / Open Greek and Latin":"Texto original · Perseus / Open Greek and Latin";pane.append(h);
+  const note=document.createElement("p");note.className="classic-ref";note.textContent="Edición TEI de Perseus Digital Library u Open Greek and Latin (First1KGreek), CC BY-SA 4.0, leída en el momento desde su repositorio público; no se copia en este sitio. Cuando hay imágenes verificadas del códice más antiguo, el visor las muestra primero.";pane.append(note);
   const bar=document.createElement("div");bar.className="classic-linkline";let pick=null;
   if(w.perseus.length>1){const lab=document.createElement("label");lab.className="classic-perseus-part";lab.textContent="Parte de la obra ";pick=document.createElement("select");
    for(const x of w.perseus){const o=document.createElement("option");o.value=x.obra;o.textContent=x.title+(x.translation?"":" · solo original");pick.append(o)}lab.append(pick);bar.append(lab)}

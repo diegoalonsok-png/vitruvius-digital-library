@@ -44,8 +44,25 @@ function parseTEI(xml){
  return out;
 }
 const num=s=>{const m=String(s||"").match(/\d+/);return m?Number(m[0]):NaN};
+/* ---------- Texto plano (The Latin Library, espejo de CLTK en GitHub) → pasajes ---------- */
+function parsePlain(txt,book){
+ const out=[];let head="",k=0;
+ const paras=String(txt).replace(/\r/g,"").split(/\n\s*\n/).map(p=>p.split("\n").map(l=>l.replace(/\s+/g," ").trim()).filter(Boolean).join("\n")).filter(Boolean);
+ for(const p of paras){
+  if(/The Latin Library|The Classics Page|Christian Latin|Neo-Latin/i.test(p)&&p.length<160||/^[\d\s]+$/.test(p))continue;
+  if(!k&&!head&&/^[^\n]{3,60}:\s[^\n]{1,60}$/.test(p))continue; // cabecera «Autor: Obra» de The Latin Library
+  if(p.length<70&&!p.includes("\n")){head=head?head+" · "+p:p;continue}
+  k++;const m=head.match(/^\[?([IVXLC]+|\d+)\.?\]?(?:\s|$)/);
+  out.push({locus:book+"."+(m?m[1]+"."+k:k),book:String(book),text:(head?head+"\n":"")+p,range:null});head="";
+ }
+ return out;
+}
+async function loadPlain(parts){
+ const texts=await Promise.all(parts.map(x=>fetchText(x.url)));
+ return texts.flatMap((t,i)=>parsePlain(t,parts[i].n||String(i+1)));
+}
 async function fetchText(url){
- const r=await fetch(url);if(!r.ok)throw Error("Perseus respondió "+r.status);return r.text();
+ const r=await fetch(url);if(!r.ok)throw Error("el repositorio respondió "+r.status);return r.text();
 }
 // Traducción que corresponde al pasaje: mismo locus; si no, el de prefijo más largo; en verso, el que se superpone.
 function translationFor(p){
@@ -99,7 +116,7 @@ function render(){
  $("locus").textContent=work.title+" "+p.locus;
  $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p><div class="txt" lang="${work.language==="grc"?"grc":"la"}">${marked(p.text)}</div>`;
  const t=translationFor(p);
- $("translation").innerHTML=!work.translations.length?"<p class='muted'>Perseus no ofrece traducción para esta obra. Puedes leer el original a la izquierda.</p>":
+ $("translation").innerHTML=!work.translations.length?"<p class='muted'>No hay una traducción abierta disponible para esta obra en el repositorio de origen. Puedes leer el original a la izquierda.</p>":
   trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='muted'>Sin pasaje correspondiente en la traducción para este locus.</p>"):"<p class='muted'>Cargando la traducción…</p>";
  $("toc").value=String(cur);
  const u=new URL(location.href);u.searchParams.set("loc",p.locus);if(query)u.searchParams.set("q",query);else u.searchParams.delete("q");history.replaceState(null,"",u);
@@ -133,14 +150,15 @@ async function openWork(id){
   for(const b of wbox.querySelectorAll(".alt-ms"))b.onclick=()=>{work.witness={...work.witness,shelfmark:b.dataset.s,manifest:b.dataset.m};loadWitness(work.witness)};
   setLeft("codex");loadWitness(w);
  }else{wbox.innerHTML="<span class='muted'>No hay todavía un manuscrito o impreso antiguo de esta obra con imágenes IIIF verificadas; se muestra el texto original editado.</span>";$("tab-codex").disabled=true;setLeft("original")}
- $("status").textContent="Cargando el texto original desde Perseus…";
- try{orig=parseTEI(await fetchText(work.original))}catch(e){$("status").textContent="No se pudo leer el texto original ("+e.message+").";return}
+ $("status").textContent="Cargando el texto original…";
+ try{orig=work.parts?await loadPlain(work.parts):parseTEI(await fetchText(work.original))}catch(e){$("status").textContent="No se pudo leer el texto original ("+e.message+").";return}
  $("toc").replaceChildren(...orig.map((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;return o}));
  const loc=params.get("loc");cur=Math.max(0,orig.findIndex(p=>p.locus===loc));
  $("q").value=params.get("q")||"";query=$("q").value.trim();
- $("status").textContent=orig.length+" pasajes · texto: Perseus Digital Library (CC BY-SA 4.0)"+(work.translations.length?" · cargando traducción…":"");render();
+ const srcName=u=>/latin_text_latin_library/.test(u||"")?"The Latin Library (texto de dominio público; copia de CLTK en GitHub)":/First1KGreek/.test(u||"")?"Open Greek and Latin · First1KGreek (CC BY-SA 4.0)":"Perseus Digital Library (CC BY-SA 4.0)";
+ $("status").textContent=orig.length+" pasajes · texto: "+srcName(work.original)+(work.translations.length?" · cargando traducción…":"");render();
  if(work.translations.length){
-  try{trans=parseTEI(await fetchText(work.translations[0].url));$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · Perseus Digital Library (CC BY-SA 4.0)"}
+  try{trans=parseTEI(await fetchText(work.translations[0].url));$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · "+srcName(work.translations[0].url)}
   catch(e){$("status").textContent+=" · no se pudo leer la traducción ("+e.message+")"}
   if(query)search();else render();
  }
@@ -148,15 +166,46 @@ async function openWork(id){
 function setLeft(which){
  for(const [b,p] of [["tab-codex","codex"],["tab-original","original"]]){$(b).setAttribute("aria-pressed",String(p===which));$(p).hidden=p!==which}
 }
+function visibleWorks(){
+ const f=fold($("filter").value),lang=$("f-lang")?.value||"",all=[...catalog.works,...($("f-extra")?.checked?extraWorks:[])];
+ return all.filter(w=>(!f||fold(w.author+" "+w.title+" "+w.id).includes(f))&&(!lang||w.language===lang));
+}
 function renderIndex(){
- const box=$("index-list"),f=fold($("filter").value);box.replaceChildren();
- let last=null,count=0;
- for(const w of catalog.works){
-  if(f&&!fold(w.author+" "+w.title+" "+w.id).includes(f))continue;
+ const box=$("index-list");box.replaceChildren();
+ let last=null,count=0;const list=visibleWorks();
+ for(const w of list){
   if(w.authorId!==last){last=w.authorId;const h=document.createElement("h3");h.innerHTML=esc(w.author)+" <small>"+esc(w.dates)+(witnesses.some(x=>x.match.includes(w.authorId))?" · códice con imágenes":"")+"</small>";box.append(h)}
   const a=document.createElement("a");a.href="?obra="+encodeURIComponent(w.id);a.textContent=w.title+(w.translations.length?"":" · solo original");box.append(a," · ");count++;
  }
- $("index-count").textContent=count+" obras de "+catalog.authors+" autores (siglo II a. C.–siglo II d. C.)";
+ $("index-count").textContent=count+" obras"+($("f-extra")?.checked?" (incluidas las de otras épocas)":" de "+catalog.authors+" autores (siglo II a. C.–siglo II d. C.)");
+}
+/* ---------- Búsqueda en el corpus: palabra o frase en todas las obras listadas ---------- */
+let corpusRun=0;
+async function corpusSearch(){
+ const q=$("cq").value.trim(),out=$("chits");out.replaceChildren();if(!q)return;
+ const run=++corpusRun,words=q.split(/\s+/).filter(w=>w.length>1).map(fold);
+ const hit=text=>{const toks=text.split(/\s+/).map(t=>fold(t.replace(/[^\p{L}\p{N}]/gu,"")));return words.every(w=>toks.some(f=>f===w||(w.length>=4&&f.startsWith(w))))};
+ const list=visibleWorks().slice(0,160);let done=0,total=0;
+ const status=document.createElement("p");status.className="sub";out.append(status);$("cstop").hidden=false;
+ const show=()=>{status.textContent=`${total} pasajes en ${done} de ${list.length} obras revisadas`+(visibleWorks().length>160?" (se revisan las primeras 160; filtra por autor o lengua para acotar)":"")+(done<list.length?"…":"")};show();
+ const queue=[...list];
+ async function worker(){
+  while(queue.length&&run===corpusRun){
+   const w=queue.shift();let ps=[];
+   try{ps=w.parts?await loadPlain(w.parts):parseTEI(await fetchText(w.original))}catch{}
+   if(run!==corpusRun)return;
+   const found=ps.filter(p=>hit(p.text));done++;
+   if(found.length){total+=found.length;
+    const box=document.createElement("div");box.className="corpus-hit";const h=document.createElement("h3");h.textContent=w.author+" · "+w.title+" · "+found.length;box.append(h);
+    for(const p of found.slice(0,25)){const a=document.createElement("a");a.href="?obra="+encodeURIComponent(w.id)+"&loc="+encodeURIComponent(p.locus)+"&q="+encodeURIComponent(q);
+     const flat=p.text.replace(/\s+/g," ");const t=fold(flat);const at=Math.max(0,t.indexOf(words[0])-60);
+     a.innerHTML="<b>"+esc(p.locus)+"</b> "+marked((at?"…":"")+flat.slice(at,at+170)+"…");box.append(a)}
+    out.append(box)}
+   show();
+  }
+ }
+ const prev=query;query=q;await Promise.all([worker(),worker(),worker(),worker()]);query=prev;
+ if(run===corpusRun){$("cstop").hidden=true;show()}
 }
 (async()=>{
  if(params.get("embed")==="1")document.documentElement.classList.add("lc-embed");
@@ -165,8 +214,27 @@ function renderIndex(){
  $("search").onsubmit=e=>{e.preventDefault();search()};
  $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};
  $("toc").onchange=e=>{cur=Number(e.target.value);render()};
- $("filter").oninput=renderIndex;
+ $("filter").oninput=renderIndex;if($("f-lang"))$("f-lang").onchange=renderIndex;if($("f-extra"))$("f-extra").onchange=renderIndex;
+ if($("corpus-search")){$("corpus-search").onsubmit=e=>{e.preventDefault();corpusSearch()};$("cstop").onclick=()=>{corpusRun++;$("cstop").hidden=true}}
  $("print").onclick=()=>window.print(); // «Guardar como PDF» en el diálogo de impresión
+ $("cite").onclick=async()=>{
+  const p=orig[cur];if(!p)return;
+  const d=new Date().toLocaleDateString("es",{day:"numeric",month:"long",year:"numeric"});
+  const src=/latin_text_latin_library/.test(work.original)?"The Latin Library":/First1KGreek/.test(work.original)?"Open Greek and Latin, First1KGreek":"Perseus Digital Library";
+  const urn=/^urn:cts:/.test(work.urn||"")?work.urn+":"+p.locus:"";
+  const link=location.href.split("#")[0];
+  // Chicago 18 (14.142–14.147, obras clásicas): autor, título en cursiva y locus con números arábigos, sin coma.
+  const plain=`${work.author}, ${work.title} ${p.locus}. Texto: ${src}${urn?", "+urn:""}, ${link}, consultado el ${d}.`;
+  const html=`${esc(work.author)}, <i>${esc(work.title)}</i> ${esc(p.locus)}. Texto: ${esc(src)}${urn?", "+esc(urn):""}, ${esc(link)}, consultado el ${esc(d)}.`;
+  try{if(window.ClipboardItem&&navigator.clipboard?.write)await navigator.clipboard.write([new ClipboardItem({"text/plain":new Blob([plain],{type:"text/plain"}),"text/html":new Blob([html],{type:"text/html"})})]);else await navigator.clipboard.writeText(plain)}catch{}
+  $("cite-out").textContent=plain;$("cite-out").hidden=false;$("cite").textContent="Cita copiada ✓";setTimeout(()=>$("cite").textContent="Citar (Chicago 18)",1800);
+ };
+ // Atajos: ← y → cambian de pasaje; «/» lleva a la búsqueda.
+ document.addEventListener("keydown",e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey||$("reader").hidden)return;
+  const t=e.target;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;
+  if(e.key==="ArrowLeft"){e.preventDefault();$("prev").click()}else if(e.key==="ArrowRight"){e.preventDefault();$("next").click()}else if(e.key==="/"){e.preventDefault();$("q").focus()}
+ });
  $("copy").onclick=()=>navigator.clipboard?.writeText(location.href).then(()=>{$("copy").textContent="Enlace copiado ✓";setTimeout(()=>$("copy").textContent="Copiar enlace",1600)});
  const id=params.get("obra");if(id)openWork(id);else renderIndex();
 })().catch(e=>{$("status").textContent="No se pudo cargar el catálogo: "+e.message});

@@ -4,6 +4,86 @@
 "license": "Textos y traducciones: Perseus Digital Library (Tufts University), CC BY-SA 4.0; se leen desde GitHub en el momento, sin copia en este repositorio.",
 "works": [
 {
+"urn": "urn:cts:greekLit:tlg0018.tlg001",
+"id": "tlg0018.tlg001",
+"authorId": "tlg0018",
+"author": "Filón de Alejandría",
+"dates": "siglo I d. C.",
+"title": "De Opificio Mundi",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg001/tlg0018.tlg001.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg001/tlg0018.tlg001.1st1K-eng1.xml"
+}
+],
+"bibliotheca": "philo"
+},
+{
+"urn": "urn:cts:greekLit:tlg0656.tlg001",
+"id": "tlg0656.tlg001",
+"authorId": "tlg0656",
+"author": "Dioscórides",
+"dates": "c. 50–70 d. C.",
+"title": "De materia medica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0656/tlg001/tlg0656.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "dioscorides"
+},
+{
+"urn": "urn:cts:greekLit:tlg1271.tlg001",
+"id": "tlg1271.tlg001",
+"authorId": "tlg1271",
+"author": "Primera carta de Clemente",
+"dates": "c. 95–100 d. C.",
+"title": "The First Epistle of Clement to the Corinthians",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1271/tlg001/tlg1271.tlg001.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1271/tlg001/tlg1271.tlg001.perseus-eng1.xml"
+}
+],
+"bibliotheca": "clement"
+},
+{
+"urn": "urn:cts:greekLit:tlg1311.tlg001",
+"id": "tlg1311.tlg001",
+"authorId": "tlg1311",
+"author": "Anónimo",
+"dates": "Finales del siglo I – comienzos del II (datación debatida)",
+"title": "Didache",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1311/tlg001/tlg1311.tlg001.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1311/tlg001/tlg1311.tlg001.perseus-eng1.xml"
+}
+],
+"bibliotheca": "didache"
+},
+{
+"urn": "urn:cts:greekLit:tlg1419.tlg001",
+"id": "tlg1419.tlg001",
+"authorId": "tlg1419",
+"author": "Hermas",
+"dates": "Siglo II d. C.",
+"title": "The Shepherd of Hermas",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1419/tlg001/tlg1419.tlg001.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1419/tlg001/tlg1419.tlg001.perseus-eng1.xml"
+}
+],
+"bibliotheca": "pastor-hermas"
+},
+{
 "urn": "urn:cts:greekLit:tlg1216.tlg001",
 "id": "tlg1216.tlg001",
 "authorId": "tlg1216",
@@ -19,6 +99,98 @@
 }
 ],
 "bibliotheca": "barnabas"
+},
+{
+"urn": "urn:cts:greekLit:tlg1443.tlg001",
+"id": "tlg1443.tlg001",
+"authorId": "tlg1443",
+"author": "Ignacio de Antioquía",
+"dates": "Siglo II d. C. (cronología debatida)",
+"title": "Epistles",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1443/tlg001/tlg1443.tlg001.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1443/tlg001/tlg1443.tlg001.perseus-eng1.xml"
+}
+],
+"bibliotheca": "ignatius"
+},
+{
+"urn": "urn:cts:greekLit:tlg1622.tlg001",
+"id": "tlg1622.tlg001",
+"authorId": "tlg1622",
+"author": "Policarpo de Esmirna",
+"dates": "Primera mitad del siglo II d. C.",
+"title": "Epistula ad Philippenses",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1622/tlg001/tlg1622.tlg001.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1622/tlg001/tlg1622.tlg001.perseus-eng1.xml"
+}
+],
+"bibliotheca": "polycarp"
+},
+{
+"urn": "urn:cts:greekLit:tlg1271.tlg002",
+"id": "tlg1271.tlg002",
+"authorId": "tlg1271",
+"author": "Anónimo",
+"dates": "Siglo II d. C.",
+"title": "The Second Epistle of Clement to the Corinthians",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1271/tlg002/tlg1271.tlg002.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1271/tlg002/tlg1271.tlg002.perseus-eng1.xml"
+}
+],
+"bibliotheca": "clement-2"
+},
+{
+"urn": "urn:cts:greekLit:tlg0646.tlg004",
+"id": "tlg0646.tlg004",
+"authorId": "tlg0646",
+"author": "Anónimo",
+"dates": "Siglo II–III d. C. (discutido)",
+"title": "The Epistle to Diogentus",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0646/tlg004/tlg0646.tlg004.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0646/tlg004/tlg0646.tlg004.perseus-eng1.xml"
+}
+],
+"bibliotheca": "diognetus"
+},
+{
+"urn": "urn:cts:greekLit:tlg0645.tlg001",
+"id": "tlg0645.tlg001",
+"authorId": "tlg0645",
+"author": "Justino Mártir",
+"dates": "Mediados del siglo II d. C.",
+"title": "Apologia I",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0645/tlg001/tlg0645.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "justin"
+},
+{
+"urn": "urn:cts:greekLit:tlg1447.tlg001",
+"id": "tlg1447.tlg001",
+"authorId": "tlg1447",
+"author": "Ireneo de Lyon",
+"dates": "Finales del siglo II d. C.",
+"title": "Libros quinque adversus haereses",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1447/tlg001/tlg1447.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "irenaeus"
 },
 {
 "urn": "urn:cts:latinLit:stoa0275.stoa009",
@@ -41,7 +213,12 @@
 "title": "Ecclesiastical History",
 "language": "grc",
 "original": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2018/tlg002/tlg2018.tlg002.perseus-grc2.xml",
-"translations": [],
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2018/tlg002/tlg2018.tlg002.1st1K-eng1.xml"
+}
+],
 "bibliotheca": "eusebio"
 },
 {
@@ -60,6 +237,30 @@
 }
 ],
 "bibliotheca": "celsus"
+},
+{
+"urn": "urn:cts:greekLit:tlg0559.tlg001",
+"id": "tlg0559.tlg001",
+"authorId": "tlg0559",
+"author": "Herón de Alejandría",
+"dates": "Siglo I d. C. (datación del autor debatida)",
+"title": "Pneumatica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0559/tlg001/tlg0559.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "hero-pneumatica"
+},
+{
+"urn": "urn:cts:greekLit:tlg0559.tlg002",
+"id": "tlg0559.tlg002",
+"authorId": "tlg0559",
+"author": "Herón de Alejandría",
+"dates": "Siglo I d. C. (datación debatida)",
+"title": "De automatis",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0559/tlg002/tlg0559.tlg002.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "hero-automata"
 },
 {
 "urn": "urn:cts:latinLit:stoa0079.stoa001",
@@ -106,6 +307,40 @@
 }
 ],
 "bibliotheca": "pseudo-apollodorus-bibliotheca"
+},
+{
+"urn": "urn:cts:greekLit:tlg0018.tlg002",
+"id": "tlg0018.tlg002",
+"authorId": "tlg0018",
+"author": "Filón de Alejandría",
+"dates": "siglo I d. C.",
+"title": "Legum Allegoriarum Libri I-III",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg002/tlg0018.tlg002.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg002/tlg0018.tlg002.1st1K-eng1.xml"
+}
+],
+"bibliotheca": "philo-legum-allegoriae"
+},
+{
+"urn": "urn:cts:greekLit:tlg0018.tlg022",
+"id": "tlg0018.tlg022",
+"authorId": "tlg0018",
+"author": "Filón de Alejandría",
+"dates": "siglo I d. C.",
+"title": "De Vita Mosis (Lib. I-II)",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg022/tlg0018.tlg022.1st1K-grc1.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg022/tlg0018.tlg022.1st1K-eng1.xml"
+}
+],
+"bibliotheca": "philo-de-vita-mosis"
 },
 {
 "urn": "urn:cts:greekLit:tlg0007.tlg082a",
@@ -174,6 +409,66 @@
 }
 ],
 "bibliotheca": "plutarch-moralia"
+},
+{
+"urn": "urn:cts:greekLit:tlg0007.tlg146",
+"id": "tlg0007.tlg146",
+"authorId": "tlg0007",
+"author": "Plutarco",
+"dates": "siglos I–II d. C.",
+"title": "Παροιμίαι αἷς Ἀλεξανδρεῖς ἐχρῶντο",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0007/tlg146/tlg0007.tlg146.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "plutarch-moralia"
+},
+{
+"urn": "urn:cts:greekLit:tlg0007.tlg147",
+"id": "tlg0007.tlg147",
+"authorId": "tlg0007",
+"author": "Plutarco",
+"dates": "siglos I–II d. C.",
+"title": "Ἐκλογὴ περὶ τῶν ἀδυνάτων",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0007/tlg147/tlg0007.tlg147.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "plutarch-moralia"
+},
+{
+"urn": "urn:cts:greekLit:tlg0057.tlg007",
+"id": "tlg0057.tlg007",
+"authorId": "tlg0057",
+"author": "Galeno",
+"dates": "siglo II d. C.",
+"title": "Ars Medica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg007/tlg0057.tlg007.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "galen-ars-medica"
+},
+{
+"urn": "urn:cts:greekLit:tlg0057.tlg017",
+"id": "tlg0057.tlg017",
+"authorId": "tlg0057",
+"author": "Galeno",
+"dates": "siglo II d. C.",
+"title": "De usu partium corporis humani I-XI",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0057/tlg017/tlg0057.tlg017.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "galen-de-usu-partium"
+},
+{
+"urn": "urn:cts:greekLit:tlg0363.tlg001",
+"id": "tlg0363.tlg001",
+"authorId": "tlg0363",
+"author": "Claudio Ptolomeo",
+"dates": "siglo II d. C.",
+"title": "Syntaxis mathematica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0363/tlg001/tlg0363.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "ptolemy-almagest"
 },
 {
 "urn": "urn:cts:greekLit:tlg0012.tlg001",
@@ -1047,6 +1342,18 @@
 "bibliotheca": "aristotle-metaphysics"
 },
 {
+"urn": "urn:cts:greekLit:tlg0086.tlg031",
+"id": "tlg0086.tlg031",
+"authorId": "tlg0086",
+"author": "Aristóteles",
+"dates": "siglo IV a. C.",
+"title": "Physica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg031/tlg0086.tlg031.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "aristotle-physics"
+},
+{
 "urn": "urn:cts:greekLit:tlg0086.tlg038",
 "id": "tlg0086.tlg038",
 "authorId": "tlg0086",
@@ -1062,6 +1369,18 @@
 }
 ],
 "bibliotheca": "aristotle-rhetoric"
+},
+{
+"urn": "urn:cts:greekLit:tlg0086.tlg002",
+"id": "tlg0086.tlg002",
+"authorId": "tlg0086",
+"author": "Aristóteles",
+"dates": "siglo IV a. C.",
+"title": "De anima",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg002/tlg0086.tlg002.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "aristotle-de-anima"
 },
 {
 "urn": "urn:cts:greekLit:tlg0032.tlg002",
@@ -1790,6 +2109,18 @@
 "bibliotheca": "theophrastus-characters"
 },
 {
+"urn": "urn:cts:greekLit:tlg0093.tlg001",
+"id": "tlg0093.tlg001",
+"authorId": "tlg0093",
+"author": "Teofrasto",
+"dates": "siglo IV–III a. C.",
+"title": "Enquiry into Plants",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0093/tlg001/tlg0093.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "theophrastus-historia-plantarum"
+},
+{
 "urn": "urn:cts:greekLit:tlg0004.tlg001",
 "id": "tlg0004.tlg001",
 "authorId": "tlg0004",
@@ -1824,6 +2155,42 @@
 "bibliotheca": "boethius-consolatio"
 },
 {
+"urn": "urn:cts:greekLit:tlg1247.tlg001",
+"id": "tlg1247.tlg001",
+"authorId": "tlg1247",
+"author": "Pseudo-Cebes (atribución tradicional)",
+"dates": "siglo I–II d. C. (datación debatida)",
+"title": "Cebetis tabula",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1247/tlg001/tlg1247.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "cebes-tabula"
+},
+{
+"urn": "urn:cts:greekLit:tlg0088.tlg001",
+"id": "tlg0088.tlg001",
+"authorId": "tlg0088",
+"author": "Aristóxeno de Tarento",
+"dates": "siglo IV a. C.",
+"title": "Ἁρμονικὰ στοιχεῖα",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0088/tlg001/tlg0088.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "aristoxenus-harmonica"
+},
+{
+"urn": "urn:cts:greekLit:tlg0552.tlg008",
+"id": "tlg0552.tlg008",
+"authorId": "tlg0552",
+"author": "Arquímedes",
+"dates": "siglo III a. C.",
+"title": "De corporibus fluitantibus",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0552/tlg008/tlg0552.tlg008.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "archimedes-fluitantibus"
+},
+{
 "urn": "urn:cts:greekLit:tlg0653.tlg001",
 "id": "tlg0653.tlg001",
 "authorId": "tlg0653",
@@ -1834,6 +2201,18 @@
 "original": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0653/tlg001/tlg0653.tlg001.perseus-grc2.xml",
 "translations": [],
 "bibliotheca": "aratus-phaenomena"
+},
+{
+"urn": "urn:cts:greekLit:tlg0086.tlg023",
+"id": "tlg0086.tlg023",
+"authorId": "tlg0086",
+"author": "Pseudo-Aristóteles (escuela peripatética)",
+"dates": "siglos IV–III a. C.",
+"title": "Mechanica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg023/tlg0086.tlg023.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "ps-aristotle-mechanica"
 },
 {
 "urn": "urn:cts:greekLit:tlg0058.tlg001",
@@ -1863,6 +2242,828 @@
 }
 ],
 "bibliotheca": "euclid-elementa"
+},
+{
+"urn": "urn:cts:greekLit:tlg1799.tlg009",
+"id": "tlg1799.tlg009",
+"authorId": "tlg1799",
+"author": "Euclides",
+"dates": "c. 300 a. C.",
+"title": "Optica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg009/tlg1799.tlg009.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "euclid-optica"
+},
+{
+"urn": "urn:cts:greekLit:tlg1799.tlg012",
+"id": "tlg1799.tlg012",
+"authorId": "tlg1799",
+"author": "Euclides",
+"dates": "c. 300 a. C.",
+"title": "Phaenomena",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg012/tlg1799.tlg012.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "euclid-phaenomena"
+},
+{
+"urn": "urn:cts:greekLit:tlg1799.tlg015",
+"id": "tlg1799.tlg015",
+"authorId": "tlg1799",
+"author": "Euclides",
+"dates": "c. 300 a. C.",
+"title": "Sectio canonis [Sp.]",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1799/tlg015/tlg1799.tlg015.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "euclid-phaenomena"
+},
+{
+"urn": "urn:cts:greekLit:tlg0361.tlg001",
+"id": "tlg0361.tlg001",
+"authorId": "tlg0361",
+"author": "Cleónides (transmitido bajo el nombre de Euclides)",
+"dates": "s. II d. C. (datación debatida)",
+"title": "Introductio Harmonica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0361/tlg001/tlg0361.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "cleonides-harmonica"
+},
+{
+"urn": "urn:cts:greekLit:tlg0559.tlg012",
+"id": "tlg0559.tlg012",
+"authorId": "tlg0559",
+"author": "Herón de Alejandría",
+"dates": "s. I d. C. (datación del autor debatida)",
+"title": "Belopoeica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0559/tlg012/tlg0559.tlg012.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "hero-belopoeica"
+},
+{
+"urn": "urn:cts:greekLit:tlg1383.tlg001",
+"id": "tlg1383.tlg001",
+"authorId": "tlg1383",
+"author": "Gémino",
+"dates": "s. I a. C.",
+"title": "Elementa astronomia",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1383/tlg001/tlg1383.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "geminus-isagoge"
+},
+{
+"urn": "urn:cts:greekLit:tlg1181.tlg001",
+"id": "tlg1181.tlg001",
+"authorId": "tlg1181",
+"author": "Aristarco de Samos",
+"dates": "s. III a. C.",
+"title": "De magnitudinibus et distantiis solis et lunae",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1181/tlg001/tlg1181.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "aristarchus-magnitudines"
+},
+{
+"urn": "urn:cts:greekLit:tlg0550.tlg001",
+"id": "tlg0550.tlg001",
+"authorId": "tlg0550",
+"author": "Apolonio de Perge",
+"dates": "finales del s. III a. C.",
+"title": "Conica",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "apollonius-conica"
+},
+{
+"urn": "urn:cts:greekLit:tlg2032.tlg001",
+"id": "tlg2032.tlg001",
+"authorId": "tlg2032",
+"author": "Papo de Alejandría",
+"dates": "c. 320 d. C.",
+"title": "Synagoge",
+"language": "grc",
+"original": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2032/tlg001/tlg2032.tlg001.1st1K-grc1.xml",
+"translations": [],
+"bibliotheca": "pappus-synagoge"
+},
+{
+"urn": "urn:cts:latinLit:phi1056.phi001",
+"id": "phi1056.phi001",
+"authorId": "phi1056",
+"author": "Vitruvio",
+"dates": "c. 30–20 a. C.",
+"title": "De architectura",
+"language": "la",
+"original": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1056/phi001/phi1056.phi001.perseus-lat2.xml",
+"translations": [
+{
+"language": "en",
+"url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1056/phi001/phi1056.phi001.perseus-eng2.xml"
+}
+],
+"bibliotheca": "vitruvius"
+},
+{
+"urn": "thelatinlibrary:varro.rr1.txt",
+"id": "ll.varro-rustica",
+"authorId": "ll-varro",
+"author": "Varrón",
+"dates": "37 a. C.",
+"title": "Rerum rusticarum libri III",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.rr1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.rr1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.rr2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.rr3.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "varro-rustica"
+},
+{
+"urn": "thelatinlibrary:varro.ll5.txt",
+"id": "ll.varro-de-lingua-latina",
+"authorId": "ll-varro",
+"author": "Varrón",
+"dates": "siglo I a. C.",
+"title": "De lingua Latina V–X",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll5.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll5.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll6.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll7.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll8.txt"
+},
+{
+"n": "5",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll9.txt"
+},
+{
+"n": "6",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/varro.ll10.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "varro-de-lingua-latina"
+},
+{
+"urn": "thelatinlibrary:sen/sen.qn1.txt",
+"id": "ll.seneca-naturales",
+"authorId": "ll-seneca",
+"author": "Séneca",
+"dates": "c. 62–65 d. C.",
+"title": "Naturales quaestiones",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn4.txt"
+},
+{
+"n": "5",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn5.txt"
+},
+{
+"n": "6",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn6.txt"
+},
+{
+"n": "7",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.qn7.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "seneca-naturales"
+},
+{
+"urn": "thelatinlibrary:sen/sen.brevita.txt",
+"id": "ll.seneca-de-brevitate",
+"authorId": "ll-seneca",
+"author": "Séneca",
+"dates": "siglo I d. C.",
+"title": "De brevitate vitae",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.brevita.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.brevita.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "seneca-de-brevitate"
+},
+{
+"urn": "thelatinlibrary:sen/sen.ira1.txt",
+"id": "ll.seneca-de-ira",
+"authorId": "ll-seneca",
+"author": "Séneca",
+"dates": "siglo I d. C.",
+"title": "De ira",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.ira1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.ira1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.ira2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.ira3.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "seneca-de-ira"
+},
+{
+"urn": "thelatinlibrary:sen/sen.tranq.txt",
+"id": "ll.seneca-de-tranquillitate",
+"authorId": "ll-seneca",
+"author": "Séneca",
+"dates": "siglo I d. C.",
+"title": "De tranquillitate animi",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.tranq.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/sen/sen.tranq.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "seneca-de-tranquillitate"
+},
+{
+"urn": "thelatinlibrary:frontinus/aqua1.txt",
+"id": "ll.frontinus",
+"authorId": "ll-frontinus",
+"author": "Frontino",
+"dates": "c. 97–100 d. C.",
+"title": "De aquaeductu urbis Romae",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/aqua1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/aqua1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/aqua2.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "frontinus"
+},
+{
+"urn": "thelatinlibrary:frontinus/strat1.txt",
+"id": "ll.frontinus-strategemata",
+"authorId": "ll-frontinus",
+"author": "Frontino",
+"dates": "Finales del siglo I d. C.",
+"title": "Strategemata",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/strat1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/strat1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/strat2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/strat3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/strat4.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "frontinus-strategemata"
+},
+{
+"urn": "thelatinlibrary:frontinus/qualitate.txt",
+"id": "ll.frontinus-gromatica",
+"authorId": "ll-frontinus",
+"author": "Frontino",
+"dates": "finales del s. I d. C.",
+"title": "Opuscula gromatica",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/qualitate.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/qualitate.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/contro.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/lim.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/frontinus/mensoria.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "frontinus-gromatica"
+},
+{
+"urn": "thelatinlibrary:petronius1.txt",
+"id": "ll.petronius-satyrica",
+"authorId": "ll-petronius",
+"author": "Petronio (atribución tradicional)",
+"dates": "siglo I d. C. (atribución debatida)",
+"title": "Satyrica",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/petronius1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/petronius1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/petroniusfrag.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "petronius-satyrica"
+},
+{
+"urn": "thelatinlibrary:phaedr1.txt",
+"id": "ll.phraedrus-fabulae",
+"authorId": "ll-phraedrus",
+"author": "Fedro",
+"dates": "siglo I d. C.",
+"title": "Fabulae",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedr1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedr1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedr2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedr3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedr4.txt"
+},
+{
+"n": "5",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedr5.txt"
+},
+{
+"n": "6",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/phaedrapp.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "phraedrus-fabulae"
+},
+{
+"urn": "thelatinlibrary:vell1.txt",
+"id": "ll.velleius-historia",
+"authorId": "ll-velleius",
+"author": "Veleyo Patérculo",
+"dates": "siglo I d. C.",
+"title": "Historia Romana",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vell1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vell1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vell2.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "velleius-historia"
+},
+{
+"urn": "thelatinlibrary:apuleius/apuleius.deosocratis.txt",
+"id": "ll.apuleius-de-deo-socratis",
+"authorId": "ll-apuleius",
+"author": "Apuleyo",
+"dates": "siglo II d. C.",
+"title": "De deo Socratis",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/apuleius/apuleius.deosocratis.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "apuleius-de-deo-socratis"
+},
+{
+"urn": "thelatinlibrary:vegetius1.txt",
+"id": "ll.vegetius-epitoma",
+"authorId": "ll-vegetius",
+"author": "Vegecio",
+"dates": "siglo IV–V d. C.",
+"title": "Epitoma rei militaris",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vegetius1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vegetius1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vegetius2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vegetius3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/vegetius4.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "vegetius-epitoma"
+},
+{
+"urn": "thelatinlibrary:augustine/conf1.txt",
+"id": "ll.augustine-confessiones",
+"authorId": "ll-augustine",
+"author": "Agustín de Hipona",
+"dates": "c. 397–400 d. C.",
+"title": "Confessiones",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf4.txt"
+},
+{
+"n": "5",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf5.txt"
+},
+{
+"n": "6",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf6.txt"
+},
+{
+"n": "7",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf7.txt"
+},
+{
+"n": "8",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf8.txt"
+},
+{
+"n": "9",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf9.txt"
+},
+{
+"n": "10",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf10.txt"
+},
+{
+"n": "11",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf11.txt"
+},
+{
+"n": "12",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf12.txt"
+},
+{
+"n": "13",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/conf13.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "augustine-confessiones"
+},
+{
+"urn": "thelatinlibrary:augustine/civ1.txt",
+"id": "ll.augustine-civitate-dei",
+"authorId": "ll-augustine",
+"author": "Agustín de Hipona",
+"dates": "413–426 d. C.",
+"title": "De civitate Dei",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ4.txt"
+},
+{
+"n": "5",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ5.txt"
+},
+{
+"n": "6",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ6.txt"
+},
+{
+"n": "7",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ7.txt"
+},
+{
+"n": "8",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ8.txt"
+},
+{
+"n": "9",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ9.txt"
+},
+{
+"n": "10",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ10.txt"
+},
+{
+"n": "11",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ11.txt"
+},
+{
+"n": "12",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ12.txt"
+},
+{
+"n": "13",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ13.txt"
+},
+{
+"n": "14",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ14.txt"
+},
+{
+"n": "15",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ15.txt"
+},
+{
+"n": "16",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ16.txt"
+},
+{
+"n": "17",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ17.txt"
+},
+{
+"n": "18",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ18.txt"
+},
+{
+"n": "19",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ19.txt"
+},
+{
+"n": "20",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ20.txt"
+},
+{
+"n": "21",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ21.txt"
+},
+{
+"n": "22",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/augustine/civ22.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "augustine-civitate-dei"
+},
+{
+"urn": "thelatinlibrary:isidore/1.txt",
+"id": "ll.isidore-etymologiae",
+"authorId": "ll-isidore",
+"author": "Isidoro de Sevilla",
+"dates": "siglo VII d. C.",
+"title": "Etymologiae",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/1.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/1.txt"
+},
+{
+"n": "2",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/2.txt"
+},
+{
+"n": "3",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/3.txt"
+},
+{
+"n": "4",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/4.txt"
+},
+{
+"n": "5",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/5.txt"
+},
+{
+"n": "6",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/6.txt"
+},
+{
+"n": "7",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/7.txt"
+},
+{
+"n": "8",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/8.txt"
+},
+{
+"n": "9",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/9.txt"
+},
+{
+"n": "10",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/10.txt"
+},
+{
+"n": "11",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/11.txt"
+},
+{
+"n": "12",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/12.txt"
+},
+{
+"n": "13",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/13.txt"
+},
+{
+"n": "14",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/14.txt"
+},
+{
+"n": "15",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/15.txt"
+},
+{
+"n": "16",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/16.txt"
+},
+{
+"n": "17",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/17.txt"
+},
+{
+"n": "18",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/18.txt"
+},
+{
+"n": "19",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/19.txt"
+},
+{
+"n": "20",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/isidore/20.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "isidore-etymologiae"
+},
+{
+"urn": "thelatinlibrary:censorinus.txt",
+"id": "ll.censorinus-die-natali",
+"authorId": "ll-censorinus",
+"author": "Censorino",
+"dates": "238 d. C.",
+"title": "De die natali",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/censorinus.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/censorinus.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "censorinus-die-natali"
+},
+{
+"urn": "thelatinlibrary:resgestae.txt",
+"id": "ll.augustus-res-gestae",
+"authorId": "ll-augustus",
+"author": "Augusto",
+"dates": "14 d. C.",
+"title": "Res gestae divi Augusti",
+"language": "la",
+"original": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/resgestae.txt",
+"parts": [
+{
+"n": "1",
+"url": "https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/resgestae.txt"
+}
+],
+"translations": [],
+"source": "The Latin Library",
+"bibliotheca": "augustus-res-gestae"
 }
 ]
 }

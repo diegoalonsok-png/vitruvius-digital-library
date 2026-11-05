@@ -248,6 +248,13 @@
 "translation": true
 }
 ],
+"philo": [
+{
+"obra": "tlg0018.tlg001",
+"title": "De Opificio Mundi",
+"translation": true
+}
+],
 "seneca-epistulae": [
 {
 "obra": "phi1017.phi015",
@@ -267,6 +274,13 @@
 "obra": "phi0978.phi001",
 "title": "Naturalis Historia",
 "translation": true
+}
+],
+"dioscorides": [
+{
+"obra": "tlg0656.tlg001",
+"title": "De materia medica",
+"translation": false
 }
 ],
 "josephus-war": [
@@ -311,11 +325,81 @@
 "translation": true
 }
 ],
+"mark": [
+{
+"obra": "tlg0031.tlg002",
+"title": "Mark",
+"translation": true
+}
+],
+"clement": [
+{
+"obra": "tlg1271.tlg001",
+"title": "The First Epistle of Clement to the Corinthians",
+"translation": true
+}
+],
+"didache": [
+{
+"obra": "tlg1311.tlg001",
+"title": "Didache",
+"translation": true
+}
+],
+"pastor-hermas": [
+{
+"obra": "tlg1419.tlg001",
+"title": "The Shepherd of Hermas",
+"translation": true
+}
+],
 "barnabas": [
 {
 "obra": "tlg1216.tlg001",
 "title": "The Epistle of Barnabas",
 "translation": true
+}
+],
+"ignatius": [
+{
+"obra": "tlg1443.tlg001",
+"title": "Epistles",
+"translation": true
+}
+],
+"polycarp": [
+{
+"obra": "tlg1622.tlg001",
+"title": "Epistula ad Philippenses",
+"translation": true
+}
+],
+"clement-2": [
+{
+"obra": "tlg1271.tlg002",
+"title": "The Second Epistle of Clement to the Corinthians",
+"translation": true
+}
+],
+"diognetus": [
+{
+"obra": "tlg0646.tlg004",
+"title": "The Epistle to Diogentus",
+"translation": true
+}
+],
+"justin": [
+{
+"obra": "tlg0645.tlg001",
+"title": "Apologia I",
+"translation": false
+}
+],
+"irenaeus": [
+{
+"obra": "tlg1447.tlg001",
+"title": "Libros quinque adversus haereses",
+"translation": false
 }
 ],
 "tertullian": [
@@ -329,7 +413,7 @@
 {
 "obra": "tlg2018.tlg002",
 "title": "Ecclesiastical History",
-"translation": false
+"translation": true
 }
 ],
 "columella": [
@@ -678,6 +762,20 @@
 "translation": true
 }
 ],
+"hero-pneumatica": [
+{
+"obra": "tlg0559.tlg001",
+"title": "Pneumatica",
+"translation": false
+}
+],
+"hero-automata": [
+{
+"obra": "tlg0559.tlg002",
+"title": "De automatis",
+"translation": false
+}
+],
 "plautus-amphitruo": [
 {
 "obra": "phi0119.phi001",
@@ -955,6 +1053,20 @@
 {
 "obra": "tlg0548.tlg002",
 "title": "Epitome",
+"translation": true
+}
+],
+"philo-legum-allegoriae": [
+{
+"obra": "tlg0018.tlg002",
+"title": "Legum Allegoriarum Libri I-III",
+"translation": true
+}
+],
+"philo-de-vita-mosis": [
+{
+"obra": "tlg0018.tlg022",
+"title": "De Vita Mosis (Lib. I-II)",
 "translation": true
 }
 ],
@@ -1343,6 +1455,16 @@
 "obra": "tlg0007.tlg141",
 "title": "An Recte Dictum Sit Latenter Esse Vivendum",
 "translation": true
+},
+{
+"obra": "tlg0007.tlg146",
+"title": "Παροιμίαι αἷς Ἀλεξανδρεῖς ἐχρῶντο",
+"translation": false
+},
+{
+"obra": "tlg0007.tlg147",
+"title": "Ἐκλογὴ περὶ τῶν ἀδυνάτων",
+"translation": false
 }
 ],
 "lucian-dialogi-mortuorum": [
@@ -1364,6 +1486,27 @@
 "obra": "tlg0525.tlg001",
 "title": "Description of Greece",
 "translation": true
+}
+],
+"galen-ars-medica": [
+{
+"obra": "tlg0057.tlg007",
+"title": "Ars Medica",
+"translation": false
+}
+],
+"galen-de-usu-partium": [
+{
+"obra": "tlg0057.tlg017",
+"title": "De usu partium corporis humani I-XI",
+"translation": false
+}
+],
+"ptolemy-almagest": [
+{
+"obra": "tlg0363.tlg001",
+"title": "Syntaxis mathematica",
+"translation": false
 }
 ],
 "appian-romaika": [
@@ -1826,11 +1969,25 @@
 "translation": true
 }
 ],
+"aristotle-physics": [
+{
+"obra": "tlg0086.tlg031",
+"title": "Physica",
+"translation": false
+}
+],
 "aristotle-rhetoric": [
 {
 "obra": "tlg0086.tlg038",
 "title": "Rhetoric",
 "translation": true
+}
+],
+"aristotle-de-anima": [
+{
+"obra": "tlg0086.tlg002",
+"title": "De anima",
+"translation": false
 }
 ],
 "xenophon-memorabilia": [
@@ -2064,6 +2221,13 @@
 "translation": false
 }
 ],
+"theophrastus-historia-plantarum": [
+{
+"obra": "tlg0093.tlg001",
+"title": "Enquiry into Plants",
+"translation": false
+}
+],
 "diogenes-laertius-vitae": [
 {
 "obra": "tlg0004.tlg001",
@@ -2211,10 +2375,38 @@
 "translation": true
 }
 ],
+"cebes-tabula": [
+{
+"obra": "tlg1247.tlg001",
+"title": "Cebetis tabula",
+"translation": false
+}
+],
+"aristoxenus-harmonica": [
+{
+"obra": "tlg0088.tlg001",
+"title": "Ἁρμονικὰ στοιχεῖα",
+"translation": false
+}
+],
+"archimedes-fluitantibus": [
+{
+"obra": "tlg0552.tlg008",
+"title": "De corporibus fluitantibus",
+"translation": false
+}
+],
 "aratus-phaenomena": [
 {
 "obra": "tlg0653.tlg001",
 "title": "Phaenomena",
+"translation": false
+}
+],
+"ps-aristotle-mechanica": [
+{
+"obra": "tlg0086.tlg023",
+"title": "Mechanica",
 "translation": false
 }
 ],
@@ -2230,6 +2422,200 @@
 "obra": "tlg1799.tlg001",
 "title": "Elementa",
 "translation": true
+}
+],
+"euclid-optica": [
+{
+"obra": "tlg1799.tlg009",
+"title": "Optica",
+"translation": false
+}
+],
+"euclid-phaenomena": [
+{
+"obra": "tlg1799.tlg012",
+"title": "Phaenomena",
+"translation": false
+},
+{
+"obra": "tlg1799.tlg015",
+"title": "Sectio canonis [Sp.]",
+"translation": false
+}
+],
+"cleonides-harmonica": [
+{
+"obra": "tlg0361.tlg001",
+"title": "Introductio Harmonica",
+"translation": false
+}
+],
+"hero-belopoeica": [
+{
+"obra": "tlg0559.tlg012",
+"title": "Belopoeica",
+"translation": false
+}
+],
+"geminus-isagoge": [
+{
+"obra": "tlg1383.tlg001",
+"title": "Elementa astronomia",
+"translation": false
+}
+],
+"aristarchus-magnitudines": [
+{
+"obra": "tlg1181.tlg001",
+"title": "De magnitudinibus et distantiis solis et lunae",
+"translation": false
+}
+],
+"apollonius-conica": [
+{
+"obra": "tlg0550.tlg001",
+"title": "Conica",
+"translation": false
+}
+],
+"pappus-synagoge": [
+{
+"obra": "tlg2032.tlg001",
+"title": "Synagoge",
+"translation": false
+}
+],
+"varro-rustica": [
+{
+"obra": "ll.varro-rustica",
+"title": "Rerum rusticarum libri III",
+"translation": false
+}
+],
+"varro-de-lingua-latina": [
+{
+"obra": "ll.varro-de-lingua-latina",
+"title": "De lingua Latina V–X",
+"translation": false
+}
+],
+"seneca-naturales": [
+{
+"obra": "ll.seneca-naturales",
+"title": "Naturales quaestiones",
+"translation": false
+}
+],
+"seneca-de-brevitate": [
+{
+"obra": "ll.seneca-de-brevitate",
+"title": "De brevitate vitae",
+"translation": false
+}
+],
+"seneca-de-ira": [
+{
+"obra": "ll.seneca-de-ira",
+"title": "De ira",
+"translation": false
+}
+],
+"seneca-de-tranquillitate": [
+{
+"obra": "ll.seneca-de-tranquillitate",
+"title": "De tranquillitate animi",
+"translation": false
+}
+],
+"frontinus": [
+{
+"obra": "ll.frontinus",
+"title": "De aquaeductu urbis Romae",
+"translation": false
+}
+],
+"frontinus-strategemata": [
+{
+"obra": "ll.frontinus-strategemata",
+"title": "Strategemata",
+"translation": false
+}
+],
+"frontinus-gromatica": [
+{
+"obra": "ll.frontinus-gromatica",
+"title": "Opuscula gromatica",
+"translation": false
+}
+],
+"petronius-satyrica": [
+{
+"obra": "ll.petronius-satyrica",
+"title": "Satyrica",
+"translation": false
+}
+],
+"phraedrus-fabulae": [
+{
+"obra": "ll.phraedrus-fabulae",
+"title": "Fabulae",
+"translation": false
+}
+],
+"velleius-historia": [
+{
+"obra": "ll.velleius-historia",
+"title": "Historia Romana",
+"translation": false
+}
+],
+"apuleius-de-deo-socratis": [
+{
+"obra": "ll.apuleius-de-deo-socratis",
+"title": "De deo Socratis",
+"translation": false
+}
+],
+"vegetius-epitoma": [
+{
+"obra": "ll.vegetius-epitoma",
+"title": "Epitoma rei militaris",
+"translation": false
+}
+],
+"augustine-confessiones": [
+{
+"obra": "ll.augustine-confessiones",
+"title": "Confessiones",
+"translation": false
+}
+],
+"augustine-civitate-dei": [
+{
+"obra": "ll.augustine-civitate-dei",
+"title": "De civitate Dei",
+"translation": false
+}
+],
+"isidore-etymologiae": [
+{
+"obra": "ll.isidore-etymologiae",
+"title": "Etymologiae",
+"translation": false
+}
+],
+"censorinus-die-natali": [
+{
+"obra": "ll.censorinus-die-natali",
+"title": "De die natali",
+"translation": false
+}
+],
+"augustus-res-gestae": [
+{
+"obra": "ll.augustus-res-gestae",
+"title": "Res gestae divi Augusti",
+"translation": false
 }
 ]
 }
