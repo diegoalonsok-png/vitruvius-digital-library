@@ -25,8 +25,11 @@
  }
  function promote(rows,query,entries){
   const intention=plan(query,entries);
-  if(!intention.focused)return rows;
+  if(!intention.focused&&!rows.some(r=>r.type==="book"&&r.localReader&&fold(r.author)===fold(query)))return rows;
   const weight=r=>{
+   // An author such as Catullus must open the local verified text ahead
+   // of encyclopedia cards, without treating the work as a Vitruvian passage.
+   if(r.type==="book"&&r.localReader&&fold(r.author)===fold(query))return 0;
    if(r.type==="preface"&&!r.prefacePlaceholder)return 0;
    if(r.type==="passage"&&["recensio-es","recensio-fr","theory-en"].includes(r.edition))return 1;
    if(r.type==="section"&&/^Ficha del término/.test(r.title||""))return 2;
