@@ -1,6 +1,6 @@
 {
   "standard": "Objetivo de normalización: Chicago 18 (2024), notas y bibliografía; fichas de trabajo en revisión",
-  "status": "Bibliografía sobre Vitruvio: fichas con ISBN/DOI contrastados según la fuente de cada registro; otros metadatos siguen en revisión. No implica acceso libre al libro ni arbitraje del sitio.",
+  "status": "Bibliografía sobre Vitruvio: 35 fichas con metadatos bibliográficos principales contrastados, 34 pendientes de cotejo. La comprobación de una ficha no equivale a revisar su contenido, ni supone acceso abierto o aval institucional.",
   "records": [
     {
       "author": "McEwen, Indra Kagis",
@@ -46,9 +46,11 @@
       "url": "https://iucat.iu.edu/iub/6623459",
       "type": "Estudio, edición y traducción de Faventino",
       "id": "study-003",
-      "verification": "Referencia de investigación; cotejo editorial pendiente",
-      "verification_status": "pending",
-      "source": "Catálogo de investigación del proyecto; procedencia bibliográfica detallada pendiente de documentar"
+      "verification": "Metadatos bibliográficos básicos contrastados en Indiana University Libraries (IUCAT): título, ed./trad. Hugh Plommer, Cambridge University Press, 1973, 117 páginas, ISBN 0521201411.",
+      "verification_status": "checked",
+      "source": "Indiana University Libraries, IUCAT Bloomington, registro 6623459, consultado 2026-11-05",
+      "verified_fields": "Identidad bibliográfica y metadatos especificados; no certificación del contenido ni revisión por pares del sitio",
+      "reviewed_at": "2026-11-05"
     },
     {
       "author": "Nichols, Marden Fitzpatrick",
@@ -689,15 +691,17 @@
       "year": "1912",
       "type": "Edición crítica latina",
       "theme": "Texto latino de referencia",
-      "url": "https://archive.org/details/vitruviidearchit00vitr",
+      "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AlatinLit%3Aphi1056.phi001.perseus-lat1",
       "source_paragraph": 4303,
-      "verification": "Referencia del autor; datos de la edición por cotejar",
-      "source": "Diego Kurilo, V514, DOCX, párrafo 4304",
+      "verification": "Edición latina de Fritz Krohn, Leipzig, B. G. Teubner, 1912, contrastada con registro CTS de Perseus; no implica colación manuscrita.",
+      "source": "Perseus Catalog (Tufts University), urn:cts:latinLit:phi1056.phi001.perseus-lat1, consultado 2026-11-05",
       "source_reference": "Krohn, Fritz, ed. Vitruvii de architectura libri decem. B. G. Teubner, 1912.",
       "isbn": null,
       "pages": null,
       "id": "study-041",
-      "verification_status": "pending"
+      "verification_status": "checked",
+      "verified_fields": "Identidad bibliográfica y metadatos especificados; no certificación del contenido ni revisión por pares del sitio",
+      "reviewed_at": "2026-11-05"
     },
     {
       "author": "Vitruvius; Valentin Rose (ed.)",
@@ -706,15 +710,17 @@
       "year": "1899",
       "type": "Edición crítica latina",
       "theme": "Constitución del texto latino",
-      "url": null,
+      "url": "https://www.metmuseum.org/art/collection/search/371944",
       "source_paragraph": 4305,
-      "verification": "Referencia del autor; datos de la edición por cotejar",
-      "source": "Diego Kurilo, V514, DOCX, párrafo 4306",
+      "verification": "Edición de Valentin Rose, 1899, Leipzig, Teubner, contrastada con la ficha del Metropolitan Museum of Art, objeto 41.100.317.",
+      "source": "The Metropolitan Museum of Art, catálogo de la colección, objeto 41.100.317, consultado 2026-11-05",
       "source_reference": "Rose, Valentin, ed. Vitruvii de architectura libri decem. B. G. Teubner, 1899.",
       "isbn": null,
       "pages": null,
       "id": "study-042",
-      "verification_status": "pending"
+      "verification_status": "checked",
+      "verified_fields": "Identidad bibliográfica y metadatos especificados; no certificación del contenido ni revisión por pares del sitio",
+      "reviewed_at": "2026-11-05"
     },
     {
       "author": "Choisy, Auguste",
@@ -958,13 +964,15 @@
       "year": "1867",
       "type": "Edición crítica latina",
       "theme": "Primera edición crítica moderna del texto latino",
-      "url": null,
+      "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AlatinLit%3Aphi1056.phi001.opp-lat1",
       "isbn": null,
       "pages": null,
       "id": "study-057",
-      "verification": "Referencia de investigación; cotejo editorial pendiente",
-      "verification_status": "pending",
-      "source": "Incorporada en la revisión académica del 30 de octubre de 2026; datos por cotejar con el catálogo de la editorial o de la revista"
+      "verification": "Edición de Valentin Rose y Hermann Müller-Strübing, Leipzig, Teubner, 1867, contrastada con registro CTS de Perseus; no implica cotejo de variantes.",
+      "verification_status": "checked",
+      "source": "Perseus Catalog (Tufts University), urn:cts:latinLit:phi1056.phi001.opp-lat1, consultado 2026-11-05",
+      "verified_fields": "Identidad bibliográfica y metadatos especificados; no certificación del contenido ni revisión por pares del sitio",
+      "reviewed_at": "2026-11-05"
     },
     {
       "author": "Krinsky, Carol Herselle",
@@ -973,13 +981,19 @@
       "year": "1967",
       "type": "Artículo académico",
       "theme": "Censo de la tradición manuscrita",
-      "url": null,
+      "url": "https://www.journals.uchicago.edu/doi/10.2307/750736",
       "isbn": null,
-      "pages": null,
+      "pages": "36–70",
       "id": "study-058",
-      "verification": "Referencia de investigación; cotejo editorial pendiente",
-      "verification_status": "pending",
-      "source": "Incorporada en la revisión académica del 30 de octubre de 2026; datos por cotejar con el catálogo de la editorial o de la revista"
+      "verification": "Artículo de Carol Herselle Krinsky, volumen 30, número 1 (1967), páginas 36–70 y DOI contrastados con la ficha de la revista publicada por University of Chicago Press para el Warburg Institute.",
+      "verification_status": "checked",
+      "source": "Journal of the Warburg and Courtauld Institutes, University of Chicago Press, DOI 10.2307/750736, consultado 2026-11-05",
+      "doi": "10.2307/750736",
+      "journal": "Journal of the Warburg and Courtauld Institutes",
+      "volume": "30",
+      "issue": "1",
+      "verified_fields": "Identidad bibliográfica y metadatos especificados; no certificación del contenido ni revisión por pares del sitio",
+      "reviewed_at": "2026-11-05"
     },
     {
       "author": "Baldwin, Barry",
@@ -1154,6 +1168,6 @@
       "source": "Oxford University Press, ficha editorial consultada el 2026-11-02"
     }
   ],
-  "updated": "2026-11-02",
-  "reviewed_at": "2026-11-02"
+  "updated": "2026-11-05",
+  "reviewed_at": "2026-11-05"
 }
