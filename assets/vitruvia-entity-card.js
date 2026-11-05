@@ -16,7 +16,7 @@ const MONTHS={es:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","n
 function fmt(d){if(!d)return"";if(d.precision<11)return d.year.replace(/^-(\d+)/,"$1 a. C.");const [y,m,dd]=d.iso.replace(/^-/,"").split("-");return (+dd)+" "+MONTHS[lang()][+m-1]+" "+(d.iso.startsWith("-")?y+" a. C.":y)}
 function css(){if($("vitruvia-entity-style"))return;const s=el("style");s.id="vitruvia-entity-style";s.textContent=`
 .vu-banner{margin:0 0 14px;font:14px/1.5 Arial,Helvetica,sans-serif;color:inherit;opacity:.92}.vu-banner button{background:none;border:0;color:#8ab4f8;cursor:pointer;font:inherit;padding:0;text-decoration:underline}
-.vu-answer{border:1px solid rgba(201,168,76,.55);border-radius:12px;padding:16px 18px;margin:0 0 18px;font:14px/1.5 Arial,Helvetica,sans-serif}
+.vu-senses{font:13.5px/1.9 Arial,Helvetica,sans-serif;margin:0 0 14px;opacity:.95}.vu-sense{margin:0 6px 4px 0;border:1px solid rgba(150,140,120,.6);background:transparent;color:inherit;border-radius:999px;padding:3px 11px;cursor:pointer;font:12.5px Arial,sans-serif}.vu-answer{border:1px solid rgba(201,168,76,.55);border-radius:12px;padding:16px 18px;margin:0 0 18px;font:14px/1.5 Arial,Helvetica,sans-serif}
 .vu-answer .k{font:600 11px/1.4 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:.7}.vu-answer .v{font:400 26px/1.25 Georgia,"Times New Roman",serif;margin:4px 0 6px}.vu-answer small{opacity:.75}
 .vu-card{border:1px solid rgba(150,140,120,.45);border-radius:14px;padding:18px 18px 14px;margin:0 0 18px;font:14px/1.55 Arial,Helvetica,sans-serif}
 .vu-card h2{font:400 30px/1.12 Georgia,"Times New Roman",serif;margin:0 0 4px}.vu-card .vu-desc{font-size:15px;opacity:.9;margin:0 0 10px}
@@ -96,7 +96,8 @@ async function renderWorks(box,f,kind){
  if(others.length){const o=el("p","vu-src",T("También hay en Wikidata: ","Also in Wikidata: ","Aussi dans Wikidata : ")+others.map(k=>T(...HEAD[k]).split(" · ")[0].toLowerCase()+" ("+all.filter(w=>w.kind===k).length+")").join(", "));box.append(o)}
 }
 async function renderCard(r){
- const f=r.entity;if(!f||!["person","band"].includes(f.kind))return;
+ const f=r.entity;if(f){window.VitruviaCurrentEntity={qid:f.qid,label:f.label,description:f.description,query:r.original,corrected:r.corrected,wiki:f.wiki,wikiLang:f.wikiLang,kind:f.kind};window.dispatchEvent(new CustomEvent("vitruvia:entity",{detail:window.VitruviaCurrentEntity}))}
+ if(!f||!["person","band"].includes(f.kind))return;
  // Entidad identificada (Wikidata): los demás paneles la usan para no confundir homónimos (p. ej., Madonna y la Virgen María).
  window.VitruviaCurrentEntity={qid:f.qid,label:f.label,description:f.description,query:r.original,corrected:r.corrected,wiki:f.wiki,wikiLang:f.wikiLang,kind:f.kind};
  window.dispatchEvent(new CustomEvent("vitruvia:entity",{detail:window.VitruviaCurrentEntity}));
@@ -157,7 +158,16 @@ async function onSearch(query){
   if(r.entity?.wiki){s.append(" · ",a("Wikipedia","https://"+r.entity.wikiLang+".wikipedia.org/wiki/"+encodeURIComponent(r.entity.wiki.replace(/ /g,"_"))))}
   box.append(s);top.append(box);
  }
- // 3. Ficha de persona o grupo musical.
+ // 3. Una sola acepción a la vez: se indica cuál se muestra y se ofrecen las demás aparte.
+ if(r.entity&&r.senses?.length){
+  const sb=el("p","vu-senses");sb.append(T("Se muestra: ","Showing: ","Affiché : "));sb.append(el("strong",null,r.entity.label+(r.entity.description?" ("+r.entity.description+")":"")));
+  sb.append(T(". ¿Buscabas otra acepción? ",". Looking for something else? ",". Autre sens ? "));
+  r.senses.forEach((x,i)=>{const b=el("button","vu-sense",x.label+" · "+x.description);b.type="button";
+   b.addEventListener("click",()=>{try{const m=JSON.parse(sessionStorage.getItem("vitruvia-sense")||"{}");m[window.VitruviaUnderstand.fold(r.subject)]=x.id;sessionStorage.setItem("vitruvia-sense",JSON.stringify(m))}catch{};skipCorrectionFor=query;$("query").value=query;$("search-form").requestSubmit()});
+   sb.append(b)});
+  top.append(sb);
+ }
+ // 4. Ficha de persona o grupo musical.
  await renderCard(r);
 }
 window.addEventListener("vitruvia:search",e=>onSearch(e.detail?.query||""));

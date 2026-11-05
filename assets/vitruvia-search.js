@@ -730,6 +730,13 @@ function display(rows,query,phase){
   if(seen.has(k))continue;
   seen.add(k);deduped.push(r);
  }
+ // Homónimos: si la consulta quedó identificada con una entidad (Wikidata), los artículos enciclopédicos
+ // de otra acepción no se mezclan en la lista (siguen disponibles en «¿Buscabas otra acepción?»).
+ try{const ce=window.VitruviaCurrentEntity,nq=norm(query);
+  if(ce&&[ce.query,ce.corrected,ce.label].some(x=>x&&norm(x)===nq)){const lab=norm(ce.label);
+   for(let i=deduped.length-1;i>=0;i--){const r=deduped[i];if(!["wikipedia","wikidata"].includes(r.type))continue;
+    const t=norm(r.title||""),ex=norm(r.excerpt||"");if(t===lab||t.startsWith(lab+" ")||t.includes(lab)&&ex.includes(norm(ce.description||"").split(" ")[0]||"\u0000"))continue;
+    if(!t.includes(lab)||/desambiguaci|disambiguation/.test(t+" "+ex))deduped.splice(i,1)}}}catch{}
  const list=$("result-list");list.replaceChildren();
  const selectedManuscript=["all","site","concept","ai"].includes(S.mode)?primaryManuscriptFor(query):null;
  if(selectedManuscript){

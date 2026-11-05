@@ -229,14 +229,19 @@ async function resolve(text,lang){
  const local=localCorrect(parsed.subject);
  let {title,corrected}=await bestTitle(local||parsed.subject,lang);
  if(local&&!corrected)corrected=local;
- const ref=await qidFor(title,lang);const f=ref?.qid?await facts(ref.qid,lang):null;
+ // Acepción elegida por la persona (otras acepciones): manda sobre la búsqueda automática.
+ let forced=null;try{forced=JSON.parse(sessionStorage.getItem("vitruvia-sense")||"{}")[fold(parsed.subject)]||null}catch{}
+ const ref=forced?{qid:forced,title}:await qidFor(title,lang);const f=ref?.qid?await facts(ref.qid,lang):null;
+ // Otras acepciones del mismo nombre (homónimos), para ofrecerlas aparte sin mezclarlas.
+ let senses=[];try{const p2=new URLSearchParams({action:"wbsearchentities",search:parsed.subject,language:lang,uselang:lang,type:"item",limit:"8",format:"json",origin:"*"});
+  const w=await j("https://www.wikidata.org/w/api.php?"+p2,3500);senses=(w?.search||[]).filter(x=>x.id!==f?.qid&&x.description&&!/desambiguaci|disambiguation|homonymie|Wikimedia|categor/i.test(x.description)&&fold(x.label).includes(fold(parsed.subject).split(" ")[0])).slice(0,4).map(x=>({id:x.id,label:x.label,description:x.description}))}catch{}
  let answer=null;
  if(f&&parsed.prop){
   const map={P1346:f.winner,P84:f.architect,P50:f.author,P36:f.capital,P19:f.birthPlace?[f.birthPlace]:[],P569:f.birth?[{label:f.birth.iso}]:[],P570:f.death?[{label:f.death.iso}]:[]};
   const v=map[parsed.prop]||[];
   answer={prop:parsed.prop,label:PROPS[parsed.prop],values:v,source:"https://www.wikidata.org/wiki/"+f.qid,pending:!v.length};
  }
- return{original:text,subject:parsed.subject,question:parsed.question,corrected:corrected&&fold(corrected)!==fold(parsed.subject)?corrected:null,title:ref?.title||title,entity:f,answer,lang};
+ return{senses,original:text,subject:parsed.subject,question:parsed.question,corrected:corrected&&fold(corrected)!==fold(parsed.subject)?corrected:null,title:ref?.title||title,entity:f,answer,lang};
 }
 window.VitruviaUnderstand={suggest,resolve,facts,summary,works,olCover,olBooks,setVocabulary,localCorrect,generalCorrect,parseQuestion,bestTitle,fold,dist};
 })();

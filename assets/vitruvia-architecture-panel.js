@@ -46,8 +46,8 @@ function classify(query,rows=[]){
 const el=(tag,cl,value)=>{const node=document.createElement(tag);if(cl)node.className=cl;if(value!==undefined)node.textContent=value;return node};
 const link=(value,url)=>{const a=el('a',null,value);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a};
 function heading(root,value){root.append(el('h4','context-section-title',value))}
-async function getJSON(url){
- const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),6500);
+async function getJSON(url,ms=6500){
+ const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),ms);
  try{const r=await fetch(url,{signal:ctrl.signal,headers:{Accept:'application/json'}});if(!r.ok)throw Error('HTTP '+r.status);const json=await r.json();if(json.error)throw Error(json.error.info||'Public API error');return json}
  finally{clearTimeout(timer)}
 }
@@ -159,15 +159,24 @@ function displayFacts(root,data){
    We list only works with a Wikidata record, not similarly named pictures. */
 function constructedWorks(id){
  if(!/^Q\d+$/.test(id||''))return Promise.resolve([]);
- return remember('buildings:'+id,async()=>{
-  const sparql='SELECT DISTINCT ?work ?workLabel ?workDescription ?date ?locationLabel WHERE {'+
-   ' ?work wdt:P84 wd:'+id+' .'+
-   ' OPTIONAL { ?work wdt:P571 ?date . }'+
-   ' OPTIONAL { ?work wdt:P131 ?location . }'+
-   ' SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en,fr". }'+
-   ' } LIMIT 35';
-  const endpoint='https://query.wikidata.org/sparql?'+new URLSearchParams({query:sparql,format:'json'});
-  const result=await getJSON(endpoint);
+ const key='buildings:'+id;
+ if(cache.has(key))return cache.get(key);
+ // Imagen (P18), planta (P3311) y artículo en inglés para la foto; tiempo de espera amplio y un reintento:
+ // el servicio SPARQL a veces tarda más de seis segundos y antes eso se leía como «sin obras».
+ const sparql='SELECT ?work ?workLabel ?workDescription (SAMPLE(?d) AS ?date) (SAMPLE(?loc) AS ?locationLabel) (SAMPLE(?img) AS ?image) (SAMPLE(?pl) AS ?plan) (SAMPLE(?en) AS ?enTitle) WHERE {'+
+  ' ?work wdt:P84 wd:'+id+' .'+
+  ' OPTIONAL { ?work wdt:P571 ?d . }'+
+  ' OPTIONAL { ?work wdt:P131 ?l . ?l rdfs:label ?loc . FILTER(LANG(?loc)="es") }'+
+  ' OPTIONAL { ?work wdt:P18 ?img . }'+
+  ' OPTIONAL { ?work wdt:P3311 ?pl . }'+
+  ' OPTIONAL { ?a schema:about ?work ; schema:isPartOf <https://en.wikipedia.org/> ; schema:name ?en . }'+
+  ' SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en,it,fr". }'+
+  ' } GROUP BY ?work ?workLabel ?workDescription LIMIT 60';
+ const endpoint='https://query.wikidata.org/sparql?'+new URLSearchParams({query:sparql,format:'json'});
+ const job=(async()=>{
+  let result=null;
+  for(let i=0;i<2&&!result;i++)result=await getJSON(endpoint,15000).catch(()=>null);
+  if(!result)throw Error('sparql');
   const found=new Map();
   for(const entry of result.results?.bindings||[]){
    const uri=entry.work?.value||'';
@@ -177,12 +186,16 @@ function constructedWorks(id){
    const place=entry.locationLabel?.value||'';
    const date=String(entry.date?.value||'').match(/^-?\d{3,4}/)?.[0]||'';
    const recordDescription=String(entry.workDescription?.value||'');
+   const commons=v=>/^https?:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(v||'')?v.replace(/^http:/,'https:'):'';
    if(!found.has(uri))found.set(uri,{title:label,date,place:place&&!/^Q\d+$/.test(place)?place:'',
     description:recordDescription&&!/^Q\d+$/.test(recordDescription)?recordDescription:'',
+    image:commons(entry.image?.value),plan:commons(entry.plan?.value),photoTitle:entry.enTitle?.value||'',
     url:uri.replace('/entity/','/wiki/')});
   }
-  return[...found.values()].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title)).slice(0,30);
- });
+  return[...found.values()].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title)).slice(0,40);
+ })();
+ cache.set(key,job);job.catch(()=>cache.delete(key)); // solo se recuerdan las respuestas buenas
+ return job;
 }
 /* A verified first page when external Wikidata or Commons APIs fail.
    UNESCO World Heritage Centre entry 1496 gives these eight component sites.
@@ -267,13 +280,17 @@ function listConstructedWorks(root,name,id,valid){
  const status=el('p','context-note',localized('Consultando otras obras documentadas…','Checking additional documented works…','Recherche d’autres œuvres documentées…'));
  section.append(status);
  void (async()=>{
-  const resolved=await findArchitectQid(name,id);
+  // La entidad identificada por la búsqueda (ficha de la derecha) sirve de respaldo si la fila no traía su QID.
+  const ce=window.VitruviaCurrentEntity;
+  const ceId=ce&&/^Q\d+$/.test(ce.qid||'')&&tokens(name).some(t=>tokens(ce.label).includes(t))?ce.qid:null;
+  let resolved=await findArchitectQid(name,id||ceId);
   if(!valid()||!section.isConnected)return;
   if(!resolved){
    status.textContent=localized('No se pudieron verificar más obras en el catálogo externo.','No additional works could be verified in the external catalogue.','Aucune œuvre supplémentaire vérifiable dans le catalogue externe.');
    return;
   }
-  const items=await constructedWorks(resolved);
+  let items=await constructedWorks(resolved);
+  if(!items.length&&ceId&&ceId!==resolved){resolved=ceId;items=await constructedWorks(ceId)}
   if(!valid()||!section.isConnected)return;
   if(items?.length){
    for(const work of items)addWork(work,'Wikidata · P84');
