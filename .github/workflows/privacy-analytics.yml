@@ -1,0 +1,22 @@
+name: Analytics privacy and integration
+on:
+  pull_request:
+    paths:
+      - 'assets/analytics.js'
+      - 'assets/analytics-config.js'
+      - 'index.html'
+      - 'vitruvia.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'scripts/test-privacy-analytics.mjs'
+      - '.github/workflows/privacy-analytics.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/analytics.js
+      - run: node scripts/test-privacy-analytics.mjs
