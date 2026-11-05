@@ -402,6 +402,27 @@ async function searchImages(query){
    });
    pages.splice(0,pages.length,...filtered);
   }
+  // When the identified person has a one-word name, a title match alone
+  // cannot identify artwork: require career context or a verified source.
+  if(identity?.kind==="person"&&creatorRole){
+   const full=String(identity?.commonsSearchName||identity?.originalCanonical||identity?.canonical||"").trim();
+   if(tokens(full).length===1){
+    const musical=/\b(concert|tour|singer|musician|music|album|song|stage|performance|performing|sings|cantante|musica|concierto|gira|disco)\b/;
+    const visual=/\b(portrait|photograph|photo|photography|headshot|retrato|fotografia)\b/;
+    const cultural=/\b(film|movie|cinema|actor|actress|book|author|writer|artist|painter|painting|artwork)\b/;
+    const career=/\b(singer|cantante|musician|musico|compositor|rapper|band|banda)\b/.test(occupation)?musical:
+      /\b(filmmaker|director|actor|actress|cineasta)\b/.test(occupation)?cultural:
+      visual;
+    const label=fold(full);
+    const original=pages.filter(p=>{
+     if(p.fromEntityImage)return true;
+     if(p.fromTrustedCategory&&identity.commonsCategory&&fold(p.sourceCategory||"").includes(fold(identity.commonsCategory)))return true;
+     const title=fold(p.title||"");
+     return title.includes(label)&&career.test(title+" "+fold(p.sourceCategory||""));
+    });
+    pages.splice(0,pages.length,...original);
+   }
+  }
   let candidatePages=pages;
    if(isFilm){
     const names=topic.aliases.map(fold).filter(x=>x.length>4);
