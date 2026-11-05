@@ -358,11 +358,11 @@ function liveBooks(q,concept){return S.works.map(w=>{
  if(!originalReadings.length&&w.reading?.url)addOriginal(w.reading.url,"external","Edición original · fuente identificada");
  return {type:"book",workId:w.id,originalReadings,originalLanguage:w.language,originalEditionStatus:w.publicStatus,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
-  rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
+  baseRating:rating,rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
   links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
   citationText:w.bibliography?.editionCitation||"",
   localHosted:!!(w.localReader?.verified||w.localHtml||w.localVersions?.length||pdf||localWitness)};
- }).filter(x=>x.rating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)}
+ }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
@@ -609,7 +609,7 @@ function markTerms(root,query){
 function renderCard(d){
  const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")+(d.historicalEdition?" historical-edition-card":"")),head=node("div","result-head"),title=node("div");
  if(d.primaryWitness){card.setAttribute("aria-label","Testimonio manuscrito destacado: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
- const kindLabels={apparatus:"APARATO CRÍTICO · EDICIONES DE DIEGO KURILO",authority:"FUENTE OFICIAL · AUTORIDAD ACTUAL",fragment:"PAPIRO · TESTIMONIO FRAGMENTARIO",university:"UNIVERSIDAD · INVESTIGACIÓN",scholar:"INVESTIGADOR · ESTUDIOS ESPECIALIZADOS"};
+ const kindLabels={manuscript:"CÓDICE · TESTIMONIO MANUSCRITO",apparatus:"APARATO CRÍTICO · EDICIONES DE DIEGO KURILO",authority:"FUENTE OFICIAL · AUTORIDAD ACTUAL",fragment:"PAPIRO · TESTIMONIO FRAGMENTARIO",university:"UNIVERSIDAD · INVESTIGACIÓN",scholar:"INVESTIGADOR · ESTUDIOS ESPECIALIZADOS"};
  title.append(node("span","kind",T()[d.type]||kindLabels[d.type]||d.type.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
@@ -768,6 +768,9 @@ function display(rows,query,phase){
   if(cq&&(cq.folios.length||cq.range||cq.image))return true;
   if(window.VitruviaResearchEngine?.classify(query)?.codex)return true;
   return /\b(?:ms|mss|cod|codd|vat|pal|harl(?:ey)?|gud|voss|plut|lat\.|gr\.|grec|latin)\b|\b\d{2,4}\s*[rv]?\b/i.test(query)&&deduped.some(r=>r.type==="manuscript"&&norm(r.title).includes(norm(query).split(/\s+/).find(t=>t.length>2)||"\u0000"))}catch{return false}})();
+ // Con un locus explícito (Vitr. 3.1.1, III.1.1), el texto del pasaje precede a su aparato.
+ const locusIntent=(()=>{try{return !!window.CodexQuery?.locus?.(query)}catch{return false}})();
+ if(locusIntent){const a=groupOrder.indexOf("apparatus"),l=groupOrder.indexOf("library");if(a>=0&&l>a){groupOrder.splice(a,1);groupOrder.splice(groupOrder.indexOf("library")+1,0,"apparatus")}}
  if(!codexIntent){const i=groupOrder.indexOf("manuscripts");if(i>=0){groupOrder.splice(i,1);groupOrder.splice(groupOrder.indexOf("library")+1,0,"manuscripts")}}
  const grouped=new Map(groupOrder.map(g=>[g,[]]));
  for(const r of deduped){
@@ -908,7 +911,10 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
 async function search(){
- const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ let q=$("query").value.trim();const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
+ if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexicon=S.lexicon||await fetch("data/latin-lexicon.json").then(r=>r.json()).then(d=>d.entries||[]);
+  const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
  const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));

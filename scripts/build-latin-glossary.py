@@ -79,8 +79,36 @@ def load_ls(path, wanted):
     return out
 
 
+# Correcciones de la tabla CLTK para formas frecuentes del latín técnico (homógrafos mal asignados).
+OVERRIDES = {}
+for lemma, forms in {
+    "pars": "parte partis partem partes partium partibus",
+    "paries": "paries parietis parietem parietes parietum parietibus pariete",
+    "par": "pari paria paribus pares parem",
+    "pes": "pes pedis pedem pede pedes pedum pedibus",
+    "locus": "loco locum loci locus loca locis locorum",
+    "genus": "genus generis genere genera generum generibus",
+    "res": "res rei rem re rebus rerum",
+    "sine": "sine", "circa": "circa", "circum": "circum", "extra": "extra",
+    "spatium": "spatium spatii spatio spatia spatiis spatiorum",
+    "materia": "materia materiae materiam materies materiem materiarum",
+    "caput": "caput capitis capiti capite capita capitum capitibus",
+    "dies": "dies diei diem die diebus dierum",
+    "deus": "deus dei deo deum dii diis deorum deos di dis",
+    "occidens": "occidens occidentis occidentem occidente occidentes occidentibus",
+    "nascor": "nascitur nascuntur nascens nascentes nascentia nascatur nascerentur nasceretur nascebantur nascentem nascentur",
+    "ratio": "ratio rationis rationem ratione rationes rationum rationibus",
+    "columna": "columna columnae columnam columnas columnis columnarum",
+}.items():
+    for f in forms.split():
+        OVERRIDES[f] = lemma
+
+
 def lemma_for(form, table):
     f = form.lower()
+    ov = OVERRIDES.get(f.replace("j", "i").replace("v", "u")) or OVERRIDES.get(f)
+    if ov:
+        return ov
     cands = [f, f.replace("j", "i"), f.replace("v", "u"), f.replace("u", "v"), f.replace("j", "i").replace("v", "u")]
     for c in cands:
         if c in table:
