@@ -1,0 +1,1608 @@
+{
+  "schema": 1,
+  "title": "Vitruvia academic search regression queries",
+  "created": "2026-11-05",
+  "method": "200 cases; expected identity for human review; this fixture is NOT a report of passed searches",
+  "cases": [
+    {
+      "id": "001",
+      "query": "Pitagoras",
+      "category": "person",
+      "expectedEntity": "Pitágoras",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "002",
+      "query": "Pitágorras",
+      "category": "person",
+      "expectedEntity": "Pitágoras",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "003",
+      "query": "Pitagorás",
+      "category": "person",
+      "expectedEntity": "Pitágoras",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "004",
+      "query": "Pitagoras filosofo",
+      "category": "person",
+      "expectedEntity": "Pitágoras",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "005",
+      "query": "Pythagoras",
+      "category": "person",
+      "expectedEntity": "Pitágoras",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "006",
+      "query": "Cicero",
+      "category": "person",
+      "expectedEntity": "Cicerón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "007",
+      "query": "Siseron",
+      "category": "person",
+      "expectedEntity": "Cicerón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "008",
+      "query": "Ciceron orador",
+      "category": "person",
+      "expectedEntity": "Cicerón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "009",
+      "query": "Marco Tulio Ciceron",
+      "category": "person",
+      "expectedEntity": "Cicerón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "010",
+      "query": "Cicéron",
+      "category": "person",
+      "expectedEntity": "Cicerón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "011",
+      "query": "Marco Aurélio",
+      "category": "person",
+      "expectedEntity": "Marco Aurelio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "012",
+      "query": "Marco Aurelío",
+      "category": "person",
+      "expectedEntity": "Marco Aurelio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "013",
+      "query": "Marc Aurele",
+      "category": "person",
+      "expectedEntity": "Marco Aurelio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "014",
+      "query": "Marcus Aurelius",
+      "category": "person",
+      "expectedEntity": "Marco Aurelio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "015",
+      "query": "Marco Aurelio meditaciones",
+      "category": "person",
+      "expectedEntity": "Marco Aurelio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "016",
+      "query": "Catullus",
+      "category": "person",
+      "expectedEntity": "Catulo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "017",
+      "query": "Catullo",
+      "category": "person",
+      "expectedEntity": "Catulo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "018",
+      "query": "Catulo poemas",
+      "category": "person",
+      "expectedEntity": "Catulo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "019",
+      "query": "Catulo carmina",
+      "category": "person",
+      "expectedEntity": "Catulo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "020",
+      "query": "Cátulo",
+      "category": "person",
+      "expectedEntity": "Catulo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "021",
+      "query": "Vitruvius",
+      "category": "person",
+      "expectedEntity": "Vitruvio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "022",
+      "query": "Vitruvio arquitecto",
+      "category": "person",
+      "expectedEntity": "Vitruvio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "023",
+      "query": "Marco Vitruvio Polion",
+      "category": "person",
+      "expectedEntity": "Vitruvio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "024",
+      "query": "Vitrubio",
+      "category": "person",
+      "expectedEntity": "Vitruvio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "025",
+      "query": "Vitruvio De architectura",
+      "category": "person",
+      "expectedEntity": "Vitruvio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "026",
+      "query": "Platon",
+      "category": "person",
+      "expectedEntity": "Platón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "027",
+      "query": "Platón filósofo",
+      "category": "person",
+      "expectedEntity": "Platón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "028",
+      "query": "Pláton",
+      "category": "person",
+      "expectedEntity": "Platón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "029",
+      "query": "Plato",
+      "category": "person",
+      "expectedEntity": "Platón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "030",
+      "query": "Platon apologia",
+      "category": "person",
+      "expectedEntity": "Platón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "031",
+      "query": "Aristoteles",
+      "category": "person",
+      "expectedEntity": "Aristóteles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "032",
+      "query": "Aristóteles poética",
+      "category": "person",
+      "expectedEntity": "Aristóteles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "033",
+      "query": "Aristotele",
+      "category": "person",
+      "expectedEntity": "Aristóteles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "034",
+      "query": "Aristoteles griego",
+      "category": "person",
+      "expectedEntity": "Aristóteles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "035",
+      "query": "Aristotle",
+      "category": "person",
+      "expectedEntity": "Aristóteles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "036",
+      "query": "Akhenaton",
+      "category": "person",
+      "expectedEntity": "Akenatón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "037",
+      "query": "Akhenaten",
+      "category": "person",
+      "expectedEntity": "Akenatón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "038",
+      "query": "Ajenatón",
+      "category": "person",
+      "expectedEntity": "Akenatón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "039",
+      "query": "Akenaton Egipto",
+      "category": "person",
+      "expectedEntity": "Akenatón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "040",
+      "query": "Amenhotep IV",
+      "category": "person",
+      "expectedEntity": "Akenatón",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "041",
+      "query": "Hypatia",
+      "category": "person",
+      "expectedEntity": "Hipatia",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "042",
+      "query": "Hipatia Alejandria",
+      "category": "person",
+      "expectedEntity": "Hipatia",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "043",
+      "query": "Hypatia of Alexandria",
+      "category": "person",
+      "expectedEntity": "Hipatia",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "044",
+      "query": "Hipatía",
+      "category": "person",
+      "expectedEntity": "Hipatia",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "045",
+      "query": "Hypathia",
+      "category": "person",
+      "expectedEntity": "Hipatia",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "046",
+      "query": "Leonardo Davinci",
+      "category": "person",
+      "expectedEntity": "Leonardo da Vinci",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "047",
+      "query": "Leonardo da Vinchi",
+      "category": "person",
+      "expectedEntity": "Leonardo da Vinci",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "048",
+      "query": "Leonardo DaVinci obras",
+      "category": "person",
+      "expectedEntity": "Leonardo da Vinci",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "049",
+      "query": "Leonardo da Vinci dibujos",
+      "category": "person",
+      "expectedEntity": "Leonardo da Vinci",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "050",
+      "query": "Leonardo di ser Piero da Vinci",
+      "category": "person",
+      "expectedEntity": "Leonardo da Vinci",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "051",
+      "query": "Shakespear",
+      "category": "person",
+      "expectedEntity": "William Shakespeare",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "052",
+      "query": "William Shakespere",
+      "category": "person",
+      "expectedEntity": "William Shakespeare",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "053",
+      "query": "Shakespeare obras",
+      "category": "person",
+      "expectedEntity": "William Shakespeare",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "054",
+      "query": "William Shakspeare",
+      "category": "person",
+      "expectedEntity": "William Shakespeare",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "055",
+      "query": "Shakespeare dramaturgo",
+      "category": "person",
+      "expectedEntity": "William Shakespeare",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "056",
+      "query": "Jorge Borges",
+      "category": "person",
+      "expectedEntity": "Jorge Luis Borges",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "057",
+      "query": "Jorge Luis Borgues",
+      "category": "person",
+      "expectedEntity": "Jorge Luis Borges",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "058",
+      "query": "Borges cuentos",
+      "category": "person",
+      "expectedEntity": "Jorge Luis Borges",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "059",
+      "query": "J L Borges",
+      "category": "person",
+      "expectedEntity": "Jorge Luis Borges",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "060",
+      "query": "Borgés",
+      "category": "person",
+      "expectedEntity": "Jorge Luis Borges",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "061",
+      "query": "Kafca",
+      "category": "person",
+      "expectedEntity": "Franz Kafka",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "062",
+      "query": "Frans Kafka",
+      "category": "person",
+      "expectedEntity": "Franz Kafka",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "063",
+      "query": "Kafka libros",
+      "category": "person",
+      "expectedEntity": "Franz Kafka",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "064",
+      "query": "Franz Kafka escritor",
+      "category": "person",
+      "expectedEntity": "Franz Kafka",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "065",
+      "query": "Kafka metamorfosis",
+      "category": "person",
+      "expectedEntity": "Franz Kafka",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "066",
+      "query": "Homer",
+      "category": "person",
+      "expectedEntity": "Homero",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "067",
+      "query": "Omero",
+      "category": "person",
+      "expectedEntity": "Homero",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "068",
+      "query": "Homero iliada",
+      "category": "person",
+      "expectedEntity": "Homero",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "069",
+      "query": "Homero Odisea",
+      "category": "person",
+      "expectedEntity": "Homero",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "070",
+      "query": "Homéros",
+      "category": "person",
+      "expectedEntity": "Homero",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "071",
+      "query": "Lucretius",
+      "category": "person",
+      "expectedEntity": "Lucrecio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "072",
+      "query": "Lucrecio de rerum natura",
+      "category": "person",
+      "expectedEntity": "Lucrecio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "073",
+      "query": "Tito Lucrecio Caro",
+      "category": "person",
+      "expectedEntity": "Lucrecio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "074",
+      "query": "Lukrecio",
+      "category": "person",
+      "expectedEntity": "Lucrecio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "075",
+      "query": "Lucrèce",
+      "category": "person",
+      "expectedEntity": "Lucrecio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "076",
+      "query": "Ovidius",
+      "category": "person",
+      "expectedEntity": "Ovidio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "077",
+      "query": "Ovidio metamorfosis",
+      "category": "person",
+      "expectedEntity": "Ovidio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "078",
+      "query": "Publio Ovidio Nason",
+      "category": "person",
+      "expectedEntity": "Ovidio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "079",
+      "query": "Ovídio",
+      "category": "person",
+      "expectedEntity": "Ovidio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "080",
+      "query": "Ovide",
+      "category": "person",
+      "expectedEntity": "Ovidio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "081",
+      "query": "Michelangelo",
+      "category": "person",
+      "expectedEntity": "Miguel Ángel",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "082",
+      "query": "Miguel Angel Buonarroti",
+      "category": "person",
+      "expectedEntity": "Miguel Ángel",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "083",
+      "query": "Miguelangel",
+      "category": "person",
+      "expectedEntity": "Miguel Ángel",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "084",
+      "query": "Michel Ange",
+      "category": "person",
+      "expectedEntity": "Miguel Ángel",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "085",
+      "query": "Michelangelo Buonarroti",
+      "category": "person",
+      "expectedEntity": "Miguel Ángel",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "086",
+      "query": "Piero de la Francesca",
+      "category": "person",
+      "expectedEntity": "Piero della Francesca",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "087",
+      "query": "Piero della Franceska",
+      "category": "person",
+      "expectedEntity": "Piero della Francesca",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "088",
+      "query": "Piero della Francesca obras",
+      "category": "person",
+      "expectedEntity": "Piero della Francesca",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "089",
+      "query": "Piero della Francésca",
+      "category": "person",
+      "expectedEntity": "Piero della Francesca",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "090",
+      "query": "Piero dei Franceschi",
+      "category": "person",
+      "expectedEntity": "Piero della Francesca",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "091",
+      "query": "Dante",
+      "category": "person",
+      "expectedEntity": "Dante Alighieri",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "092",
+      "query": "Dante Aligeri",
+      "category": "person",
+      "expectedEntity": "Dante Alighieri",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "093",
+      "query": "Dante Divina Comedia",
+      "category": "person",
+      "expectedEntity": "Dante Alighieri",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "094",
+      "query": "Durante Alighieri",
+      "category": "person",
+      "expectedEntity": "Dante Alighieri",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "095",
+      "query": "Dante Alighíeri",
+      "category": "person",
+      "expectedEntity": "Dante Alighieri",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "096",
+      "query": "Richard Buckminster Fuller",
+      "category": "person",
+      "expectedEntity": "Buckminster Fuller",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "097",
+      "query": "Buckmister Fuller",
+      "category": "person",
+      "expectedEntity": "Buckminster Fuller",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "098",
+      "query": "Bucky Fuller obras",
+      "category": "person",
+      "expectedEntity": "Buckminster Fuller",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "099",
+      "query": "Buckminster Fuller arquitecto",
+      "category": "person",
+      "expectedEntity": "Buckminster Fuller",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "100",
+      "query": "Richard B Fuller",
+      "category": "person",
+      "expectedEntity": "Buckminster Fuller",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "101",
+      "query": "Frank Loyd Wright",
+      "category": "architect",
+      "expectedEntity": "Frank Lloyd Wright",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "102",
+      "query": "Frank Lloyd Wrigth",
+      "category": "architect",
+      "expectedEntity": "Frank Lloyd Wright",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "103",
+      "query": "Frank Lloyd Wright obras",
+      "category": "architect",
+      "expectedEntity": "Frank Lloyd Wright",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "104",
+      "query": "Frank L Wright",
+      "category": "architect",
+      "expectedEntity": "Frank Lloyd Wright",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "105",
+      "query": "Frank Lloyd Wright planos",
+      "category": "architect",
+      "expectedEntity": "Frank Lloyd Wright",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "106",
+      "query": "Le Corbusier arquitectura",
+      "category": "architect",
+      "expectedEntity": "Le Corbusier",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "107",
+      "query": "Le Courbusier",
+      "category": "architect",
+      "expectedEntity": "Le Corbusier",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "108",
+      "query": "Charles-Édouard Jeanneret",
+      "category": "architect",
+      "expectedEntity": "Le Corbusier",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "109",
+      "query": "Le Corbusier planos",
+      "category": "architect",
+      "expectedEntity": "Le Corbusier",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "110",
+      "query": "Le Corbusier buildings",
+      "category": "architect",
+      "expectedEntity": "Le Corbusier",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "111",
+      "query": "Zaha Hadid buildings",
+      "category": "architect",
+      "expectedEntity": "Zaha Hadid",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "112",
+      "query": "Zaha Hadid planos",
+      "category": "architect",
+      "expectedEntity": "Zaha Hadid",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "113",
+      "query": "Zaha Hadit",
+      "category": "architect",
+      "expectedEntity": "Zaha Hadid",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "114",
+      "query": "Zaha Hádid",
+      "category": "architect",
+      "expectedEntity": "Zaha Hadid",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "115",
+      "query": "Zaha Hadid arquitectura",
+      "category": "architect",
+      "expectedEntity": "Zaha Hadid",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "116",
+      "query": "Antonio Gaudi",
+      "category": "architect",
+      "expectedEntity": "Antoni Gaudí",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "117",
+      "query": "Antoni Gaudi arquitectura",
+      "category": "architect",
+      "expectedEntity": "Antoni Gaudí",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "118",
+      "query": "Gaudí obras",
+      "category": "architect",
+      "expectedEntity": "Antoni Gaudí",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "119",
+      "query": "Antoni Gaudí planos",
+      "category": "architect",
+      "expectedEntity": "Antoni Gaudí",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "120",
+      "query": "Gaudi Sagrada Familia",
+      "category": "architect",
+      "expectedEntity": "Antoni Gaudí",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "121",
+      "query": "Palladio",
+      "category": "architect",
+      "expectedEntity": "Andrea Palladio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "122",
+      "query": "Andrea Paladio",
+      "category": "architect",
+      "expectedEntity": "Andrea Palladio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "123",
+      "query": "Palladio villas planos",
+      "category": "architect",
+      "expectedEntity": "Andrea Palladio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "124",
+      "query": "Palladio arquitecto",
+      "category": "architect",
+      "expectedEntity": "Andrea Palladio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "125",
+      "query": "I quattro libri architettura",
+      "category": "architect",
+      "expectedEntity": "Andrea Palladio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "126",
+      "query": "Madona cantante",
+      "category": "musician",
+      "expectedEntity": "Madonna",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "127",
+      "query": "Madonna albums",
+      "category": "musician",
+      "expectedEntity": "Madonna",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "128",
+      "query": "Madonna discografia",
+      "category": "musician",
+      "expectedEntity": "Madonna",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "129",
+      "query": "Madonna cantante",
+      "category": "musician",
+      "expectedEntity": "Madonna",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "130",
+      "query": "Madonna música",
+      "category": "musician",
+      "expectedEntity": "Madonna",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "131",
+      "query": "Beatles",
+      "category": "musician",
+      "expectedEntity": "The Beatles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "132",
+      "query": "The Beetles",
+      "category": "musician",
+      "expectedEntity": "The Beatles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "133",
+      "query": "Beatles albums",
+      "category": "musician",
+      "expectedEntity": "The Beatles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "134",
+      "query": "Los Beatles",
+      "category": "musician",
+      "expectedEntity": "The Beatles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "135",
+      "query": "Beatles discografia",
+      "category": "musician",
+      "expectedEntity": "The Beatles",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "136",
+      "query": "Rolling Stones",
+      "category": "musician",
+      "expectedEntity": "The Rolling Stones",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "137",
+      "query": "Rollings Stones",
+      "category": "musician",
+      "expectedEntity": "The Rolling Stones",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "138",
+      "query": "Rolling Stones discos",
+      "category": "musician",
+      "expectedEntity": "The Rolling Stones",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "139",
+      "query": "The Rolling Stone band",
+      "category": "musician",
+      "expectedEntity": "The Rolling Stones",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "140",
+      "query": "Rolling Stones música",
+      "category": "musician",
+      "expectedEntity": "The Rolling Stones",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "141",
+      "query": "Radio Head",
+      "category": "musician",
+      "expectedEntity": "Radiohead",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "142",
+      "query": "Radiohead discografía",
+      "category": "musician",
+      "expectedEntity": "Radiohead",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "143",
+      "query": "Radiohead albums",
+      "category": "musician",
+      "expectedEntity": "Radiohead",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "144",
+      "query": "Radiohed",
+      "category": "musician",
+      "expectedEntity": "Radiohead",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "145",
+      "query": "Radiohead banda",
+      "category": "musician",
+      "expectedEntity": "Radiohead",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "146",
+      "query": "Nina Simóne",
+      "category": "musician",
+      "expectedEntity": "Nina Simone",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "147",
+      "query": "Nina Simone albums",
+      "category": "musician",
+      "expectedEntity": "Nina Simone",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "148",
+      "query": "Nina Simone jazz",
+      "category": "musician",
+      "expectedEntity": "Nina Simone",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "149",
+      "query": "Nina Simon",
+      "category": "musician",
+      "expectedEntity": "Nina Simone",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "150",
+      "query": "Nina Simone discografía",
+      "category": "musician",
+      "expectedEntity": "Nina Simone",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "151",
+      "query": "Aerosil producto",
+      "category": "object",
+      "expectedEntity": "Aerosil",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "152",
+      "query": "Aerosil dióxido de silicio",
+      "category": "object",
+      "expectedEntity": "Aerosil",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "153",
+      "query": "Aerosil silica",
+      "category": "object",
+      "expectedEntity": "Aerosil",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "154",
+      "query": "Aerossil",
+      "category": "object",
+      "expectedEntity": "Aerosil",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "155",
+      "query": "Aerosil química",
+      "category": "object",
+      "expectedEntity": "Aerosil",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "156",
+      "query": "Cafeetera",
+      "category": "object",
+      "expectedEntity": "Cafetera",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "157",
+      "query": "Cafetera historia",
+      "category": "object",
+      "expectedEntity": "Cafetera",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "158",
+      "query": "Coffee maker",
+      "category": "object",
+      "expectedEntity": "Cafetera",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "159",
+      "query": "Cafetera aparato",
+      "category": "object",
+      "expectedEntity": "Cafetera",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "160",
+      "query": "Cafetéra",
+      "category": "object",
+      "expectedEntity": "Cafetera",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "161",
+      "query": "Sarten",
+      "category": "object",
+      "expectedEntity": "Sartén",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "162",
+      "query": "Sartén historia",
+      "category": "object",
+      "expectedEntity": "Sartén",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "163",
+      "query": "Sartenn",
+      "category": "object",
+      "expectedEntity": "Sartén",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "164",
+      "query": "Frying pan",
+      "category": "object",
+      "expectedEntity": "Sartén",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "165",
+      "query": "Sarten utensilio",
+      "category": "object",
+      "expectedEntity": "Sartén",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "166",
+      "query": "Aluminium",
+      "category": "science",
+      "expectedEntity": "Aluminio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "167",
+      "query": "Alumínio",
+      "category": "science",
+      "expectedEntity": "Aluminio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "168",
+      "query": "Alumino elemento",
+      "category": "science",
+      "expectedEntity": "Aluminio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "169",
+      "query": "Aluminio química",
+      "category": "science",
+      "expectedEntity": "Aluminio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "170",
+      "query": "Aluminio tabla periódica",
+      "category": "science",
+      "expectedEntity": "Aluminio",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "171",
+      "query": "DNA",
+      "category": "science",
+      "expectedEntity": "ADN",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "172",
+      "query": "Acido desoxirribonucleico",
+      "category": "science",
+      "expectedEntity": "ADN",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "173",
+      "query": "Ácido desoxirribonucleico",
+      "category": "science",
+      "expectedEntity": "ADN",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "174",
+      "query": "ADN estructura",
+      "category": "science",
+      "expectedEntity": "ADN",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "175",
+      "query": "DNA molécula",
+      "category": "science",
+      "expectedEntity": "ADN",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "176",
+      "query": "2001: a pace odyssey periculo",
+      "category": "work",
+      "expectedEntity": "2001: A Space Odyssey",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "177",
+      "query": "2001 odisea del espacio",
+      "category": "work",
+      "expectedEntity": "2001: A Space Odyssey",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "178",
+      "query": "2001 A Space Odissey",
+      "category": "work",
+      "expectedEntity": "2001: A Space Odyssey",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "179",
+      "query": "2001 Kubrick pelicula",
+      "category": "work",
+      "expectedEntity": "2001: A Space Odyssey",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "180",
+      "query": "2001 Arthur C Clarke novela",
+      "category": "work",
+      "expectedEntity": "2001: A Space Odyssey",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "181",
+      "query": "Iliada",
+      "category": "work",
+      "expectedEntity": "Ilíada",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "182",
+      "query": "Ἰλιάς",
+      "category": "work",
+      "expectedEntity": "Ilíada",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "183",
+      "query": "La Illiada",
+      "category": "work",
+      "expectedEntity": "Ilíada",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "184",
+      "query": "Iliad Homer",
+      "category": "work",
+      "expectedEntity": "Ilíada",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "185",
+      "query": "Ilíada Homero códices",
+      "category": "work",
+      "expectedEntity": "Ilíada",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "186",
+      "query": "De architectura libri decem",
+      "category": "work",
+      "expectedEntity": "De architectura",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "187",
+      "query": "De arquitecvtura",
+      "category": "work",
+      "expectedEntity": "De architectura",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "188",
+      "query": "Vitruvio libro",
+      "category": "work",
+      "expectedEntity": "De architectura",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "189",
+      "query": "De architecture Vitruvius",
+      "category": "work",
+      "expectedEntity": "De architectura",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "190",
+      "query": "Diez libros arquitectura",
+      "category": "work",
+      "expectedEntity": "De architectura",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "191",
+      "query": "Septuagina",
+      "category": "work",
+      "expectedEntity": "Septuaginta",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "192",
+      "query": "Setenta griego Biblia",
+      "category": "work",
+      "expectedEntity": "Septuaginta",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "193",
+      "query": "Septuagint",
+      "category": "work",
+      "expectedEntity": "Septuaginta",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "194",
+      "query": "LXX traducción griega",
+      "category": "work",
+      "expectedEntity": "Septuaginta",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "195",
+      "query": "Septuaginta códice",
+      "category": "work",
+      "expectedEntity": "Septuaginta",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "196",
+      "query": "Asno de oro",
+      "category": "work",
+      "expectedEntity": "Metamorfosis de Apuleyo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "197",
+      "query": "Apuleius Metamorphoses",
+      "category": "work",
+      "expectedEntity": "Metamorfosis de Apuleyo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "198",
+      "query": "Metamorfoses Apuleio",
+      "category": "work",
+      "expectedEntity": "Metamorfosis de Apuleyo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "199",
+      "query": "Metamorfosis Apuleyo libro",
+      "category": "work",
+      "expectedEntity": "Metamorfosis de Apuleyo",
+      "review": "manual",
+      "status": "not-run"
+    },
+    {
+      "id": "200",
+      "query": "Asinus aureus",
+      "category": "work",
+      "expectedEntity": "Metamorfosis de Apuleyo",
+      "review": "manual",
+      "status": "not-run"
+    }
+  ]
+}
