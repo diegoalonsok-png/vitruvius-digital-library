@@ -206,7 +206,10 @@ function redraw(keepPosition=true){
  if(!lastQuery){panel.hidden=true;return}
  const scroll=keepPosition?panel.scrollTop:0;
  const token=++requestId;
- frame(lastQuery);origin(lastQuery);const lexical=lexicalNeedles(lastQuery);
+ frame(lastQuery);origin(lastQuery);
+ // Architecture is documented separately and never conflated with the general lexicon.
+ window.VitruviaArchitecture?.render(panel,lastQuery,currentRows,()=>token===requestId);
+ const lexical=lexicalNeedles(lastQuery);
  if(lexical.length)void loci(lastQuery,token);
  bibliography(lastQuery);universityLinks(lastQuery);
  if(keepPosition)requestAnimationFrame(()=>{if(token===requestId)panel.scrollTop=scroll});
