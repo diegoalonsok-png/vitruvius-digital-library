@@ -1,0 +1,19 @@
+name: Cotejo estructural y cobertura de Bibliotheca
+on:
+  pull_request:
+    paths:
+      - 'scripts/test-cotejo-bibliotheca.mjs'
+      - 'data/structured/**'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/clasicos-perseus-extra.json'
+      - '.github/workflows/cotejo-bibliotheca.yml'
+  workflow_dispatch:
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-cotejo-bibliotheca.mjs
