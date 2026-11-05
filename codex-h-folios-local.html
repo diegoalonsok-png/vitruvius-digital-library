@@ -92,11 +92,11 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <p>Haz clic en la imagen para ampliar la zona señalada. Desplázate por el visor con las barras horizontal y vertical.</p><div id="folio-quick" aria-label="Accesos rápidos a los primeros folios"></div></section>
 <section class="gallery" id="h-folios" aria-label="Galería de miniaturas">
 <h2>Buscar por imagen · Galería visual del Codex H</h2><p>Todos los folios en orden digital y con sus etiquetas IIIF originales. Selecciona una miniatura para leerla arriba.</p>
-<div class="filter"><input id="search" type="search" placeholder="f. 45v · ff. 12r–14v · fs. ii r · imagen 150 · Vitr. 1 praef. 1" aria-label="Buscar por folio, intervalo, guarda, imagen digital o locus de Vitruvio"><button id="reset">Mostrar todas</button></div>
+<div class="filter"><input id="search" type="search" placeholder="f. 45v · ff. 12r–14v · Vitr. 3 praef. 1 · symmetria" aria-label="Buscar por folio, intervalo, guarda, imagen digital, locus de Vitruvio o palabra latina"><button id="reset">Mostrar todas</button></div>
 <p id="gallery-status" role="status">Comprobando índice…</p><div id="grid"></div><button id="more" hidden>Mostrar más folios</button></section>
 <footer><p><strong>Créditos institucionales:</strong> The British Library, London, Harley MS 2767, Vitruvius, <em>De architectura</em>. Digitalización y etiquetas de folio procedentes del <a href="https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">manifiesto IIIF institucional</a>. Condiciones citadas por el proveedor: «Public Domain in most countries, other than the UK»; deben respetarse las condiciones aplicables.</p>
 <p>El repositorio conserva los nombres originales, la correspondencia de imagen y la huella SHA-256. No se presenta una equivalencia entre folios y loci sin cotejo.</p></footer>
-</main><script src="assets/codicological-query.js?v=20261105-cq-v1"></script><script src="assets/codex-h-concordance.js?v=20261105-books-v1"></script><script>
+</main><script src="assets/codicological-query.js?v=20261105-cq-v1"></script><script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script><script>
 (()=>{"use strict";const $=id=>document.getElementById(id);
 const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
 let folios=[],filtered=[],count=0,position=8,zoom=100,seq=0;const stage=$("stage"),img=$("image");
@@ -147,9 +147,41 @@ function resolveQuery(text){const raw=String(text||"").trim();if(!raw)return {in
     return {indices:hit>=0?[hit]:[],note}}
    if(window.CodexHConcordance){window.CodexHConcordance.locate(p.locus).then(c=>{locusInfo=c;filter();if(filtered.length&&$("search").dataset.go==="1"){$("search").dataset.go="";open(filtered[0],true)}}).catch(()=>{})}
    return {indices:[],note:p.locusLabel+": consultando la concordancia…"}}}
+ if(Q&&/[a-zà-ÿ]{3,}/i.test(raw)&&!/^(?:f|fs|fse|front|back|spine|imagen)\b/i.test(raw.trim()))latinSearch(raw);else clearLatin();
  const q=norm(raw.replace(/^imagen\s*/i,"")).replace(/\s+/g,"");
  return {indices:folios.map((_,i)=>i).filter(i=>String(i+1)===q||norm(folios[i].etiquetaOriginal).replace(/\s+/g,"").includes(q)),note:""}}
-function filter(){const r=resolveQuery($("search").value);filtered=r.indices===null?folios.map((_,i)=>i):r.indices;count=0;$("grid").replaceChildren();if(filtered.length){append();if(r.note)$("gallery-status").textContent=r.note+" · "+$("gallery-status").textContent}else{$("gallery-status").textContent=r.note||"Sin coincidencias";$("more").hidden=true}}
+
+/* Búsqueda de palabras latinas en el texto de V514, ordenada por libro y por prefacio / capítulos, con su folio en H. */
+let latinTicket=0;
+function clearLatin(){const b=document.getElementById("latin-hits");if(b)b.replaceChildren()}
+function latinBox(){let b=document.getElementById("latin-hits");if(!b){b=document.createElement("div");b.id="latin-hits";b.setAttribute("aria-live","polite");b.style.cssText="margin:10px 0 18px";document.getElementById("gallery-status").after(b)}return b}
+async function latinSearch(raw){const C=window.CodexHConcordance;if(!C)return;const my=++latinTicket;
+ const fold=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
+ const terms=fold(raw).split(/[^a-z]+/).filter(t=>t.length>=3);if(!terms.length){clearLatin();return}
+ const d=await C.load();if(my!==latinTicket)return;
+ const hits=d.passages.filter(p=>{const t=fold(p.latin);return terms.every(w=>new RegExp("(^|[^a-z])"+w).test(t))});
+ const box=latinBox();box.replaceChildren();
+ if(!hits.length){box.textContent="«"+raw+"» no aparece en el latín de V514.";return}
+ const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"],groups=new Map();
+ for(const h of hits){const k=h.book+"|"+(h.locus.includes(".praef.")?"praef":"cap");if(!groups.has(k))groups.set(k,[]);groups.get(k).push(h)}
+ const head=document.createElement("p");head.style.cssText="font-weight:600;margin:0 0 6px";head.textContent="«"+raw+"» en el latín de V514: "+hits.length+" pasajes, ordenados por libro y por prefacio / capítulos, con su folio en H.";box.append(head);
+ let gi=0;for(const [k,list] of groups){const [b,part]=k.split("|"),br=d.bookRanges.get(+b);
+  const det=document.createElement("details");det.open=groups.size<=4||gi++===0;const sum=document.createElement("summary");
+  sum.textContent="Libro "+R[b]+" · "+(part==="praef"?"Prefacio":"Capítulos")+(br?" (H, ff. "+(part==="praef"?br.start+"–"+(br.chapter1||br.end):(br.chapter1||br.start)+"–"+br.end)+")":"")+" · "+list.length;det.append(sum);
+  for(const h of list.slice(0,40)){const row=document.createElement("div");row.style.cssText="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:5px 0";
+   const t=fold(h.latin),w=terms[0],i=t.search(new RegExp("(^|[^a-z])"+w)),at=i<0?0:i+(t[i]===w[0]?0:1);
+   const snip=document.createElement("span");snip.style.flex="1 1 380px";snip.append(C.cite(h.locus)+" · "+(at>60?"…":"")+h.latin.slice(Math.max(0,at-60),at));
+   const m=document.createElement("mark");m.textContent=h.latin.slice(at,at+w.length+8).split(/[\s,.;:]/)[0];snip.append(m,h.latin.slice(at+m.textContent.length,at+m.textContent.length+70)+"…");
+   const btn=document.createElement("button");btn.type="button";btn.textContent="Ver en H";btn.style.cssText="min-height:32px;padding:4px 10px";
+   btn.addEventListener("click",async()=>{const c=await C.locate(h.locus);const ex=c.exact.find(x=>x.status!=="catalogue"),f=ex?ex.folio:c.estimate&&c.estimate.folio;
+    const idx=f?folios.findIndex(x=>window.CodexQuery.labelKey(x.etiquetaOriginal)===f):-1;if(idx>=0)open(idx,true);
+    btn.textContent=f?"f. "+f+(ex?" · verificado":" · estimado"):"sin folio"});
+   const rd=document.createElement("a");rd.href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(h.locus)+"&q="+encodeURIComponent(raw);rd.textContent="Leer →";
+   row.append(snip,btn,rd);det.append(row)}
+  if(list.length>40){const more=document.createElement("p");more.textContent="… y "+(list.length-40)+" pasajes más en este grupo.";det.append(more)}
+  box.append(det)}
+}
+function filter(){const r=resolveQuery($("search").value);filtered=r.indices===null?folios.map((_,i)=>i):r.indices;count=0;$("grid").replaceChildren();if(filtered.length){append();if(r.note)$("gallery-status").textContent=r.note+" · "+$("gallery-status").textContent}else{$("gallery-status").textContent=r.note||(/[a-zà-ÿ]{3,}/i.test($("search").value)?"Ningún folio lleva esa etiqueta; si es una palabra latina, los pasajes y sus folios aparecen debajo.":"Sin coincidencias");$("more").hidden=true}}
 $("prev").addEventListener("click",()=>open(position-1));$("next").addEventListener("click",()=>open(position+1));$("number").addEventListener("change",()=>open(+$("number").value-1));$("folio-select").addEventListener("change",()=>open(Number($("folio-select").value),true));
 $("minus").addEventListener("click",()=>setZoom(zoom-25));$("plus").addEventListener("click",()=>setZoom(zoom+25));$("fit").addEventListener("click",()=>{setZoom(100);stage.scrollTo({top:0,left:0})});
 $("zoom").addEventListener("input",()=>setZoom(+$("zoom").value));img.addEventListener("click",e=>setZoom(zoom+50,e.clientX,e.clientY));
