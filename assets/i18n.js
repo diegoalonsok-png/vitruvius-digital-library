@@ -503,12 +503,14 @@ let currentLanguage='es';
 try{currentLanguage=localStorage.getItem(LANGUAGE_KEY)||'es'}catch{}
 if(!['es','en','fr'].includes(currentLanguage))currentLanguage='es';
 const originalNodes=new WeakMap();
+/* Codex sigla and source titles are data, never UI-language words. */
+const preservedSelector='[translate="no"],.codicum-stemma,[data-codex-siglum],.codex-siglum,.manuscript-siglum';
 function translateRoot(root=document){
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
  let node;
  while((node=walker.nextNode())){
   const parent=node.parentElement;
-  if(!parent||parent.closest('script,style,textarea,.catalog-list,.search-results,.compare-body,.reader-transcript,.study,.biblio-table'))continue;
+  if(!parent||parent.closest('script,style,textarea,.catalog-list,.search-results,.compare-body,.reader-transcript,.study,.biblio-table')||parent.closest(preservedSelector))continue;
   const key=node.nodeValue.trim();
   if(!key)continue;
   const original=originalNodes.get(node)||key;
@@ -527,11 +529,11 @@ function setupLanguage(){
  for(const host of document.querySelectorAll('.header-languages')){
   host.textContent='';
   const label=document.createElement('label');label.className='sr-only';label.textContent='Idioma de interfaz / Interface language';
-  const select=document.createElement('select');select.setAttribute('aria-label','Cambiar idioma de interfaz / Change interface language');select.title='Seleccionar idioma / Select language';
+  const select=document.createElement('select');select.setAttribute('aria-label','Cambiar idioma de interfaz / Change interface language');select.title='Idioma de la interfaz / Interface language';
   for(const [value,name] of [['es','ES'],['en','EN'],['fr','FR']]){const option=document.createElement('option');option.value=value;option.textContent=name;select.append(option);}
   select.value=currentLanguage;
   select.addEventListener('change',()=>{currentLanguage=select.value;try{localStorage.setItem(LANGUAGE_KEY,currentLanguage)}catch{};document.querySelectorAll('.header-languages select').forEach(other=>other.value=currentLanguage);translateRoot();document.dispatchEvent(new CustomEvent('vitruvius:language-changed',{detail:{language:currentLanguage}}))});
-  host.append(label,select);
+  host.setAttribute('translate','no');host.append(label,select);
  }
  translateRoot();
 }
