@@ -1,0 +1,523 @@
+{
+ "schema": "vitruvian-world-links/1",
+ "note": "Personas y testimonios del mundo vitruviano con sus visores y fichas en el sitio. Los códices se toman además de data/vitruvia-codices.json.",
+ "people": [
+  {
+   "id": "barbaro",
+   "name": "Daniele Barbaro",
+   "dates": "1514–1570",
+   "role": "Patriarca electo de Aquilea; tradujo y comentó De architectura (1556; 1567, latín e italiano), con láminas de Andrea Palladio.",
+   "aliases": [
+    "Barbaro",
+    "Daniele Barbaro",
+    "Daniel Barbaro",
+    "Daniel Barbarus",
+    "Barbarus"
+   ],
+   "links": [
+    [
+     "Scriptorium Barb. · edición de 1567 folio por folio",
+     "barbaro-1567.html"
+    ],
+    [
+     "Ediciones italiana y latina enfrentadas (1567)",
+     "barbaro-enfrentado-1567.html"
+    ],
+    [
+     "Gabinete vitruviano de Daniele Barbaro",
+     "daniele-barbaro.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "palladio",
+   "name": "Andrea Palladio",
+   "dates": "1508–1580",
+   "role": "Arquitecto; dibujó las láminas de la edición de Barbaro (1556 y 1567).",
+   "aliases": [
+    "Palladio",
+    "Andrea Palladio",
+    "Andrés Paladio",
+    "Paladio"
+   ],
+   "links": [
+    [
+     "Láminas de Palladio en Barbaro 1567",
+     "barbaro-1567.html"
+    ],
+    [
+     "Gabinete vitruviano de Daniele Barbaro",
+     "daniele-barbaro.html"
+    ],
+    [
+     "Atlas iconográfico",
+     "iconografia-vitruviana.html"
+    ]
+   ]
+  },
+  {
+   "id": "perrault",
+   "name": "Claude Perrault",
+   "dates": "1613–1688",
+   "role": "Médico y arquitecto; tradujo y anotó Les dix livres d’architecture de Vitruve (1673; 2.ª ed. 1684).",
+   "aliases": [
+    "Perrault",
+    "Claude Perrault",
+    "Claudio Perrault",
+    "Claudius Perraltus"
+   ],
+   "links": [
+    [
+     "Ediciones históricas · Perrault 1673 y 1684",
+     "ediciones-historicas.html"
+    ],
+    [
+     "Perrault 1673 · e-rara (ETH Zürich)",
+     "https://doi.org/10.3931/e-rara-61952"
+    ],
+    [
+     "Concordancia histórica",
+     "concordancia-historica.html"
+    ]
+   ]
+  },
+  {
+   "id": "giocondo",
+   "name": "Fra Giovanni Giocondo",
+   "dates": "c. 1433–1515",
+   "role": "Humanista y arquitecto; primera edición ilustrada y crítica de Vitruvio (Venecia, 1511).",
+   "aliases": [
+    "Giocondo",
+    "Fra Giocondo",
+    "Giovanni Giocondo",
+    "Iocundus",
+    "Jocundus",
+    "Iucundus"
+   ],
+   "links": [
+    [
+     "Scriptorium Iuc. · Giocondo 1511",
+     "giocondo-1511.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "cesariano",
+   "name": "Cesare Cesariano",
+   "dates": "1475/1478–1543",
+   "role": "Arquitecto; primera traducción italiana comentada e ilustrada (Como, 1521).",
+   "aliases": [
+    "Cesariano",
+    "Cesare Cesariano",
+    "Caesarianus"
+   ],
+   "links": [
+    [
+     "Scriptorium Caes. · Cesariano 1521",
+     "cesariano-1521.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "sulpizio",
+   "name": "Giovanni Sulpizio da Veroli",
+   "dates": "s. XV",
+   "role": "Editor de la editio princeps de De architectura (Roma, c. 1486–1487).",
+   "aliases": [
+    "Sulpizio",
+    "Sulpicius",
+    "Giovanni Sulpizio",
+    "Sulpizio da Veroli",
+    "editio princeps"
+   ],
+   "links": [
+    [
+     "Scriptorium Sulp. · editio princeps",
+     "sulpizio-1486.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "martin",
+   "name": "Jean Martin y Jean Goujon",
+   "dates": "1547",
+   "role": "Primera traducción francesa (Jean Martin), con láminas de Jean Goujon (París, 1547).",
+   "aliases": [
+    "Jean Martin",
+    "Goujon",
+    "Jean Goujon"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ],
+    [
+     "Atlas iconográfico",
+     "iconografia-vitruviana.html"
+    ]
+   ]
+  },
+  {
+   "id": "ryff",
+   "name": "Walther Hermann Ryff",
+   "dates": "c. 1500–1548",
+   "role": "Primera traducción alemana, Vitruvius Teutsch (Núremberg, 1548).",
+   "aliases": [
+    "Ryff",
+    "Rivius",
+    "Walther Ryff",
+    "Gualtherus Rivius"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "urrea",
+   "name": "Miguel de Urrea",
+   "dates": "m. c. 1569",
+   "role": "Primera traducción castellana impresa (Alcalá de Henares, 1582).",
+   "aliases": [
+    "Urrea",
+    "Miguel de Urrea"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "galiani",
+   "name": "Berardo Galiani",
+   "dates": "1724–1774",
+   "role": "Edición y traducción italiana (Nápoles, 1758).",
+   "aliases": [
+    "Galiani",
+    "Berardo Galiani"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "ortiz",
+   "name": "José Ortiz y Sanz",
+   "dates": "1739–1822",
+   "role": "Traducción castellana anotada (Madrid, 1787).",
+   "aliases": [
+    "Ortiz y Sanz",
+    "Jose Ortiz y Sanz",
+    "Ortiz Sanz"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "gwilt",
+   "name": "Joseph Gwilt",
+   "dates": "1784–1863",
+   "role": "Traducción inglesa (Londres, 1826).",
+   "aliases": [
+    "Gwilt",
+    "Joseph Gwilt"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "rose",
+   "name": "Valentin Rose",
+   "dates": "1829–1916",
+   "role": "Edición crítica teubneriana (Leipzig, 1867; 2.ª ed. 1899), base de la colación del sitio.",
+   "aliases": [
+    "Valentin Rose",
+    "Valentinus Rose",
+    "Rose 1899",
+    "Rose 1867",
+    "edicion de Rose",
+    "Rose Teubner"
+   ],
+   "links": [
+    [
+     "Colación por locus (Rose 1899)",
+     "colacion.html"
+    ],
+    [
+     "Aparato crítico",
+     "aparato-critico.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "krohn",
+   "name": "Fritz Krohn",
+   "dates": "1873–1944",
+   "role": "Edición crítica teubneriana (Leipzig, 1912).",
+   "aliases": [
+    "Krohn",
+    "Fritz Krohn",
+    "F. Krohn"
+   ],
+   "links": [
+    [
+     "Colación por locus",
+     "colacion.html"
+    ],
+    [
+     "Aparato crítico",
+     "aparato-critico.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "morgan",
+   "name": "Morris Hicky Morgan",
+   "dates": "1859–1910",
+   "role": "Traducción inglesa The Ten Books on Architecture (1914).",
+   "aliases": [
+    "Morris Hicky Morgan",
+    "Morris Morgan",
+    "Morgan 1914",
+    "Morgan Vitruvius"
+   ],
+   "links": [
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ]
+   ]
+  },
+  {
+   "id": "vitruvio",
+   "name": "Marco Vitruvio Polión",
+   "dates": "s. I a. C.",
+   "role": "Autor de De architectura libri decem.",
+   "aliases": [
+    "Vitruvio",
+    "Vitruvius",
+    "Vitruve",
+    "Vitrubio",
+    "Marco Vitruvio",
+    "Vitruvio Polion",
+    "Vitruvius Pollio"
+   ],
+   "links": [
+    [
+     "Lector bilingüe por libro y locus",
+     "lector-bilingue.html"
+    ],
+    [
+     "Índice de códices",
+     "index-codicum.html"
+    ],
+    [
+     "Ediciones históricas",
+     "ediciones-historicas.html"
+    ],
+    [
+     "Codex H · Harley 2767",
+     "codex-h-doble-folio.html"
+    ]
+   ]
+  },
+  {
+   "id": "alberti",
+   "name": "Leon Battista Alberti",
+   "dates": "1404–1472",
+   "role": "Humanista y arquitecto; De re aedificatoria (c. 1452; impreso en 1485) reelabora el modelo vitruviano para el Renacimiento.",
+   "aliases": [
+    "Alberti",
+    "Leon Battista Alberti",
+    "Leo Baptista Albertus",
+    "De re aedificatoria"
+   ],
+   "links": [
+    [
+     "Estudios académicos",
+     "estudios.html"
+    ],
+    [
+     "Bibliografía histórica",
+     "bibliografia.html"
+    ],
+    [
+     "Tratados de arquitectura de la Antigüedad",
+     "tratados-antiguos.html"
+    ]
+   ]
+  },
+  {
+   "id": "scamozzi",
+   "name": "Vincenzo Scamozzi",
+   "dates": "1548–1616",
+   "role": "Arquitecto; L’idea dell’architettura universale (Venecia, 1615), con lecturas y láminas de tradición vitruviana.",
+   "aliases": [
+    "Scamozzi",
+    "Vincenzo Scamozzi"
+   ],
+   "links": [
+    [
+     "Atlas iconográfico (Scamozzi 1615)",
+     "iconografia-vitruviana.html"
+    ],
+    [
+     "Bibliografía histórica",
+     "bibliografia.html"
+    ]
+   ]
+  },
+  {
+   "id": "choisy",
+   "name": "Auguste Choisy",
+   "dates": "1841–1909",
+   "role": "Ingeniero e historiador de la arquitectura; edición y traducción francesa de Vitruvio (1909).",
+   "aliases": [
+    "Choisy",
+    "Auguste Choisy"
+   ],
+   "links": [
+    [
+     "Estudios académicos",
+     "estudios.html"
+    ],
+    [
+     "Colación por locus",
+     "colacion.html"
+    ]
+   ]
+  },
+  {
+   "id": "granger",
+   "name": "Frank Granger",
+   "dates": "1864–1936",
+   "role": "Edición y traducción inglesa de la Loeb Classical Library (1931–1934).",
+   "aliases": [
+    "Granger",
+    "Frank Granger",
+    "Loeb Vitruvius"
+   ],
+   "links": [
+    [
+     "Estudios académicos",
+     "estudios.html"
+    ],
+    [
+     "Aparato crítico",
+     "aparato-critico.html"
+    ]
+   ]
+  },
+  {
+   "id": "fensterbusch",
+   "name": "Curt Fensterbusch",
+   "dates": "1888–1978",
+   "role": "Edición bilingüe latín–alemán, Zehn Bücher über Architektur (1964).",
+   "aliases": [
+    "Fensterbusch",
+    "Curt Fensterbusch"
+   ],
+   "links": [
+    [
+     "Estudios académicos",
+     "estudios.html"
+    ],
+    [
+     "Aparato crítico",
+     "aparato-critico.html"
+    ]
+   ]
+  },
+  {
+   "id": "gros",
+   "name": "Pierre Gros",
+   "dates": "n. 1939",
+   "role": "Arqueólogo; editor y comentarista de varios libros de Vitruvio en la Collection des Universités de France (Budé) y de la edición de Einaudi (1997).",
+   "aliases": [
+    "Pierre Gros",
+    "Gros Vitruve",
+    "Budé",
+    "Bude",
+    "Collection des Universites de France"
+   ],
+   "links": [
+    [
+     "Estudios académicos",
+     "estudios.html"
+    ],
+    [
+     "Bibliografía",
+     "bibliografia.html"
+    ],
+    [
+     "Aparato crítico",
+     "aparato-critico.html"
+    ]
+   ]
+  },
+  {
+   "id": "callebat",
+   "name": "Louis Callebat",
+   "dates": "n. 1936",
+   "role": "Latinista; editor de varios libros de Vitruvio en la Collection des Universités de France (Budé).",
+   "aliases": [
+    "Callebat",
+    "Louis Callebat"
+   ],
+   "links": [
+    [
+     "Estudios académicos",
+     "estudios.html"
+    ],
+    [
+     "Aparato crítico",
+     "aparato-critico.html"
+    ]
+   ]
+  }
+ ],
+ "codexLinks": {
+  "gudianus-69": "scriptorium-gudiani.html",
+  "gudianus-132": "scriptorium-gudiani.html"
+ }
+}

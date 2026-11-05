@@ -171,12 +171,15 @@ try{
    const res=await page.goto(base+'vitruvia.html?q=Cicer%C3%B3n&mode=site',
       {waitUntil:'domcontentloaded',timeout:40000});
    assert.equal(res?.status(),200);
-   await page.waitForFunction(()=>document.querySelector('#article-kicker')?.textContent.includes('BIOGRAFÍA'),
+   // El encabezado editorial cambió a «Dossier de investigación»; lo que se verifica es el orden:
+   // primero la biografía y después los pasajes documentados de Vitruvio.
+   await page.waitForFunction(()=>/BIOGRAF|Dossier/i.test(document.querySelector('#article-kicker')?.textContent||''),
     {timeout:20000});
+   const LOCI=/Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/;
    await page.waitForFunction(()=>document.querySelector('#article-body')?.textContent.includes('Biografía de prueba')&&
-    document.querySelector('#article-body')?.textContent.includes('Pasajes de Vitruvio'),{timeout:20000});
+    /Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/.test(document.querySelector('#article-body')?.textContent||''),{timeout:20000});
    const text=await page.locator('#article-body').innerText();
-   assert(text.indexOf('Biografía de prueba')<text.indexOf('Pasajes de Vitruvio'),
+   assert(text.indexOf('Biografía de prueba')<text.search(LOCI),
     'The biography must precede the relevant Vitruvius passages');
    assert.match(await page.locator('#article-title').innerText(),/Cicerón/);
    const passages=await page.locator('.person-locus-entry').count();

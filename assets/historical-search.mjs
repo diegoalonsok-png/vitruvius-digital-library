@@ -1,5 +1,31 @@
 const form=document.querySelector('#search'),query=document.querySelector('#q'),status=document.querySelector('#status'),out=document.querySelector('#results');
-const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/16797458.pdf',label:'Perrault (1673)'}};
+const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/16797458.pdf',label:'Perrault (1673)',pages:371},
+ 'ortiz-1787':{id:'ortiz-1787',index:'data/text/ortiz-1787.json',pdf:'https://archive.org/download/A065112/A065112.pdf',label:'Ortiz y Sanz (1787)',pages:370},
+ 'cesariano-1521':{id:'cesariano-1521',index:'data/text/cesariano-1521.json',pdf:null,viewer:n=>'cesariano-1521.html?image='+n,label:'Cesariano (1521)',pages:378},
+ 'recensio-es':{id:'recensio-es',index:'data/text/recensio-es.json',pdf:'documents/kurilo-recensio-es.pdf',label:'Kurilo V514 · Latín–Castellano (2026)',pages:1157},
+ 'recensio-fr':{id:'recensio-fr',index:'data/text/recensio-fr.json',pdf:'documents/kurilo-recensio-fr.pdf',label:'Kurilo V554 · Latín–Francés (2026)',pages:1166},
+ 'theory-en':{id:'theory-en',index:'data/text/theory-en.json',pdf:'documents/kurilo-theory-en.pdf',label:'Kurilo V297 · Latín–Inglés (2026)',pages:1056}};
+sources['krohn-1912'].pages=314;sources['rose-1899'].pages=358;
+/* Facsímiles sin texto indexado en el sitio: se listan todos (data/historical.json) para poder abrirlos. */
+const facsimiles={};
+const pageURL=(src,n)=>src.viewer?src.viewer(n):src.pdf+'#page='+n;
+fetch('data/historical.json').then(r=>r.json()).then(list=>{
+ const sel=document.querySelector('#ed');if(!sel)return;
+ const group=document.createElement('optgroup');group.label='Manuscritos y facsímiles sin texto indexado · abrir en su visor';
+ const indexed={'Valentin Rose':1,'Fritz Krohn':1};
+ for(const e of list){
+  if((e.author==='Claude Perrault'&&e.year==='1673')||indexed[e.author]||(e.author==='Cesare Cesariano')||(e.author==='José Ortiz y Sanz'))continue;
+  // Si el sitio tiene su propio visor (folio por folio), se abre ese; si no, la institución.
+  const local=/Harley/.test(e.title)?'codex-h-doble-folio.html':/Gudianus/.test(e.title)?'scriptorium-gudiani.html':e.author?.includes('Sulpizio')?'sulpizio-1486.html':
+   e.author?.includes('Giocondo')?'giocondo-1511.html':(e.author==='Daniele Barbaro'&&e.year==='1567'&&/Pollionis/.test(e.title))?'barbaro-1567.html':null;
+  const url=local||e.read_url||e.pdf_landing_url||e.source_url;if(!url)continue;
+  const when=e.dateShort||String(e.year||'').split(/[;,]| según/)[0];
+  const ms=e.witness_type&&/manuscript|codex/i.test(e.witness_type)||/Codex|Harley/.test(e.title);
+  const id='fac:'+e.id;facsimiles[id]={label:(e.author||'')+' · '+when,title:e.title,url,local:Boolean(local)};
+  const o=document.createElement('option');o.value=id;o.textContent=(ms?e.title.replace(/\s*—\s*De architectura$/,''):(e.author||'')+' · '+e.title.slice(0,55))+' · '+when+(local?' · visor del sitio':ms?' · manuscrito':' · facsímil');group.append(o);
+ }
+ if(group.children.length)sel.append(group);
+}).catch(()=>{});
 let source=sources['krohn-1912'];
 let requestSerial=0;
 let cache=null;let activeQuery="",activePrefix=false;
@@ -128,12 +154,12 @@ function showOcrAlternatives(rows,q){
  }
  out.prepend(div);
 }
-function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.id==='perrault-1673'?'#perrault-page-viewer':source.pdf+'#page='+page;a.target=source.id==='perrault-1673'?'_self':'_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{ev.preventDefault();const record=cache?.find(x=>x.page===page);if(!record)return;const hits=historicMatches(record.text,activeQuery,activePrefix,source.id);{const options=editionVariants(activeQuery,source.id);const near=options.filter(v=>distance(fold(activeQuery),v)<=3);for(const alt of source.id==='perrault-1673'?options:(near.length?near:options))hits.push(...matches(record.text,alt,false));}showPage(page,record.text,hits.sort((a,b)=>a.start-b.start));document.querySelector(source.id==='perrault-1673'?'#perrault-page-viewer':source.id==='krohn-1912'?'#pdfjs-viewer':'.historical-viewer')?.scrollIntoView({behavior:'smooth',block:'nearest'});});el.append(h,p,a);return el;}
+function result(page,text,m,number){const el=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),a=document.createElement('a');h.textContent=source.label+' — página PDF '+page;p.append(document.createTextNode((m.start>100?'…':'')+text.slice(Math.max(0,m.start-100),m.start)));const mark=document.createElement('mark');mark.textContent=text.slice(m.start,m.end);p.append(mark,document.createTextNode(text.slice(m.end,m.end+165)+(m.end+165<text.length?'…':'')));a.href=source.id==='perrault-1673'?'#perrault-page-viewer':pageURL(source,page);a.target=source.id==='perrault-1673'?'_self':'_blank';a.rel='noopener';a.textContent='Ver facsímil · página '+page+' ↗';a.addEventListener('click',ev=>{ev.preventDefault();const record=cache?.find(x=>x.page===page);if(!record)return;const hits=historicMatches(record.text,activeQuery,activePrefix,source.id);{const options=editionVariants(activeQuery,source.id);const near=options.filter(v=>distance(fold(activeQuery),v)<=3);for(const alt of source.id==='perrault-1673'?options:(near.length?near:options))hits.push(...matches(record.text,alt,false));}showPage(page,record.text,hits.sort((a,b)=>a.start-b.start));document.querySelector(source.id==='perrault-1673'?'#perrault-page-viewer':source.id==='krohn-1912'?'#pdfjs-viewer':'.historical-viewer')?.scrollIntoView({behavior:'smooth',block:'nearest'});});el.append(h,p,a);return el;}
 function showPage(page,text,hits){
  const field=document.querySelector('#pdf-page-number');if(field)field.value=String(page);const note=document.querySelector('#page-hit-status');if(note)note.textContent=hits.length+' coincidencia(s) en esta página';
- const pdf=source.pdf+'#page='+page,frame=document.querySelector('#historical-pdf'),link=document.querySelector('#historical-pdf-link'),ocr=document.querySelector('#ocr-page');
- if(frame){if(source.id==='perrault-1673'){frame.hidden=true;frame.removeAttribute('src');}else if(frame.src!==new URL(pdf,location.href).href){frame.hidden=false;frame.src=pdf;}}if(link)link.href=source.id==='perrault-1673'?'https://doi.org/10.3931/e-rara-61952':pdf;
- const pdfPage=document.querySelector('#pdf-page-number');if(pdfPage)pdfPage.max=source.id==='perrault-1673'?'371':source.id==='rose-1899'?'358':'314';
+ const pdf=pageURL(source,page),frame=document.querySelector('#historical-pdf'),link=document.querySelector('#historical-pdf-link'),ocr=document.querySelector('#ocr-page');
+ if(frame){if(source.id==='perrault-1673'||!source.pdf){frame.hidden=true;frame.removeAttribute('src');}else if(frame.src!==new URL(pdf,location.href).href){frame.hidden=false;frame.src=pdf;}}if(link)link.href=source.id==='perrault-1673'?'https://doi.org/10.3931/e-rara-61952':pdf;
+ const pdfPage=document.querySelector('#pdf-page-number');if(pdfPage)pdfPage.max=String(source.pages||314);
  const visual=document.querySelector('#perrault-page-viewer');if(visual){visual.hidden=source.id!=='perrault-1673';if(source.id==='perrault-1673')visual.setAttribute('data-page',String(page));}const current=document.querySelector('#q')?.value.trim()||'';const concept=source.id==='krohn-1912'?conceptFor(current):null;document.dispatchEvent(new CustomEvent('historical-pdf-page',{detail:{page,query:current,roots:concept?.roots||[],prefix:document.querySelector('#mode')?.value==='prefix'}}));if(!ocr)return;
  ocr.replaceChildren();let offset=0;
  for(const hit of hits){if(hit.start<offset)continue;ocr.append(document.createTextNode(text.slice(offset,hit.start)));const mark=document.createElement('mark');mark.textContent=text.slice(hit.start,hit.end);ocr.append(mark);offset=hit.end;}
@@ -150,20 +176,32 @@ function selectHistoricalEdition(){
    'rose-1899':{label:'Rose 1899',url:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=1',ocr:true},
    'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/download/pdf/16797458.pdf#page=1',ocr:true}
  };
+ for(const [k,v] of Object.entries(sources))if(!editionInfo[k])editionInfo[k]={label:v.label,url:v.pdf?v.pdf+'#page=1':pageURL(v,1),ocr:true,embed:Boolean(v.pdf)};
+ const fac=facsimiles[id];
+ if(fac){
+  if(heading)heading.textContent='Facsímil · '+fac.label;
+  if(frame){frame.hidden=true;frame.removeAttribute('src');}
+  if(link){link.href=fac.url;link.textContent=fac.local?'Abrir '+fac.title+' en el visor del sitio →':'Abrir el facsímil de '+fac.label+' en la institución ↗';}
+  if(pdfjs)pdfjs.hidden=true;if(ocr)ocr.replaceChildren();
+  if(pageLabel)pageLabel.disabled=true;const go=document.querySelector('#goto-page button');if(go)go.disabled=true;
+  const note=document.querySelector('#page-hit-status');if(note)note.textContent='Este facsímil no tiene texto indexado en el sitio: ábrelo en la institución. Para buscar en latín usa Krohn o Rose.';
+  const visual=document.querySelector('#perrault-page-viewer');if(visual)visual.hidden=true;
+  return{label:fac.label,url:fac.url,ocr:false,facsimile:true};
+ }
  const info=editionInfo[id];if(!info)return;
  if(heading)heading.textContent='Facsímil original · '+info.label;
- if(frame){frame.title='Facsímil '+info.label;if(id==='perrault-1673'){frame.hidden=true;frame.removeAttribute('src');}else{frame.hidden=!info.ocr;frame.src=info.ocr?info.url:'about:blank';}}
+ if(frame){frame.title='Facsímil '+info.label;if(id==='perrault-1673'||info.embed===false){frame.hidden=true;frame.removeAttribute('src');}else{frame.hidden=!info.ocr;frame.src=info.ocr?info.url:'about:blank';}}
  if(link){link.href=id==='perrault-1673'?'https://doi.org/10.3931/e-rara-61952':info.url;link.textContent=id==='perrault-1673'?'Consultar facsímil Perrault en e-rara (sin descarga automática) ↗':'Abrir facsímil '+info.label+' en la biblioteca de origen ↗';}
  if(pdfjs)pdfjs.hidden=true;
  if(ocr)ocr.replaceChildren();
- if(pageLabel){pageLabel.value=id==='perrault-1673'?2:1;pageLabel.min=id==='perrault-1673'?'2':'1';pageLabel.max=id==='perrault-1673'?'371':id==='rose-1899'?'358':'314';pageLabel.disabled=!info.ocr;}
+ if(pageLabel){pageLabel.value=id==='perrault-1673'?2:1;pageLabel.min=id==='perrault-1673'?'2':'1';pageLabel.max=String(sources[id]?.pages||314);pageLabel.disabled=!info.ocr;}
  const go=document.querySelector('#goto-page button');if(go)go.disabled=!info.ocr;
  const note=document.querySelector('#page-hit-status');if(note)note.textContent=info.ocr?'':'Sin índice OCR ni paginación sincronizada';
  const visual=document.querySelector('#perrault-page-viewer');if(visual){visual.hidden=id!=='perrault-1673';if(id==='perrault-1673')visual.dataset.page='2';}
  return info;
 }
 document.querySelector('#ed')?.addEventListener('change',()=>{
- ++requestSerial;cache=null;activeQuery='';source=sources[document.querySelector('#ed').value];
+ ++requestSerial;cache=null;activeQuery='';source=sources[document.querySelector('#ed').value]||source;
  selectHistoricalEdition();out.replaceChildren();
  document.querySelector('#page-results')?.replaceChildren();
  status.textContent='Edición cambiada. La búsqueda OCR depende del índice disponible para esta edición.';
@@ -192,6 +230,7 @@ async function showBook(book,serial){
 form.addEventListener('submit',async e=>{
  e.preventDefault();const myRequest=++requestSerial;
  const edition=document.querySelector('#ed')?.value||'krohn-1912';selectHistoricalEdition();
+ if(facsimiles[edition]){status.textContent='«'+facsimiles[edition].label+'» no tiene texto indexado en el sitio; ábrelo con el enlace del visor. Para buscar la palabra en latín, elige Krohn 1912 o Rose 1899.';out.replaceChildren();return}
  source=sources[edition];cache=null;
  document.querySelector('.historical-viewer h2').textContent='Facsímil original · '+source.label;
  const q=query.value.trim();if(!q)return;
@@ -227,7 +266,7 @@ form.addEventListener('submit',async e=>{
 });
 document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
  e.preventDefault();const n=Number(document.querySelector('#pdf-page-number').value),note=document.querySelector('#page-hit-status');
- const max=source.id==='perrault-1673'?371:Math.max(314,...(cache||[]).map(row=>row.page));
+ const max=source.pages||Math.max(314,...(cache||[]).map(row=>row.page));
  if(!Number.isInteger(n)||n<1||n>max){if(note)note.textContent='Ingresa una página entre 1 y '+max+'.';return;}
  try{
   if(!cache){const r=await fetch(source.index);if(!r.ok)throw Error('Índice no disponible');cache=await r.json();}

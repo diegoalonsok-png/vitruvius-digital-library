@@ -1,351 +1,392 @@
 {
-  "schema": "vitruvia-mapas-antiguos-v1",
-  "updated": "2026-11-05",
-  "note": "Mapas y planos históricos ordenados por fecha. La signatura y el folio se indican solo cuando constan en el catálogo de la institución; en los demás casos la ficha lo señala como pendiente de verificación. Las imágenes se muestran desde Wikimedia Commons con su página de procedencia y licencia.",
-  "entries": [
-    {
-      "id": "forma-urbis-romae",
-      "title": "Forma Urbis Romae (plano marmóreo severiano)",
-      "date": "c. 203–211 d. C.",
-      "sort": 205,
-      "place": "Roma, Templum Pacis",
-      "person": "Septimio Severo (emperador)",
-      "type": "Plano catastral grabado en mármol",
-      "holding": "Roma, Musei Capitolini (fragmentos)",
-      "shelfmark": "Fragmentos numerados según el Stanford Digital Forma Urbis Romae Project",
-      "folio": null,
-      "evidence": "catálogo",
-      "summary": "Plano de la ciudad de Roma a escala aproximada 1:240, grabado sobre losas de mármol; se conservan cerca de un millar de fragmentos.",
-      "vitruvius": "Documenta la planta de edificios públicos que Vitruvio describe por tipos (pórticos, templos, teatros) y la Roma augustea posterior a su tratado.",
-      "commonsSearch": "Forma Urbis Romae",
-      "links": [
-        [
-          "Stanford Digital Forma Urbis Romae",
-          "https://formaurbis.stanford.edu/"
-        ]
-      ]
-    },
-    {
-      "id": "vitruvio-rosa-vientos-h",
-      "title": "Rosa de los ocho vientos de Vitruvio (Vitr. I.6)",
-      "date": "s. IX (copia carolingia del texto del s. I a. C.)",
-      "sort": 830,
-      "place": "Scriptorium carolingio (Codex Harleianus)",
-      "person": "Vitruvio (texto) · copista carolingio",
-      "type": "Diagrama de orientación de la ciudad según los vientos",
-      "holding": "Londres, British Library",
-      "shelfmark": "Harley MS 2767",
-      "folio": "f. 16v",
-      "evidence": "verificado en la fotografía del folio (rúbrica y texto de I.6.12)",
-      "summary": "Vitruvio prescribe orientar las calles para evitar los vientos dominantes y describe una rosa de ocho vientos trazada con el gnomon.",
-      "vitruvius": "Vitr. I.6.1–13: trazado urbano y vientos.",
-      "localLink": "codex-h-folios-local.html?folio=16v",
-      "readerLink": "lector-bilingue.html?edition=recensio-es&locus=1.6.12",
-      "links": [],
-      "localImage": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_040_f-16v.jpg",
-      "rights": "British Library, Harley MS 2767: «Public Domain in most countries, other than the UK» (metadatos IIIF de la institución)."
-    },
-    {
-      "id": "madaba",
-      "title": "Mapa de Madaba",
-      "date": "c. 542–570",
-      "sort": 560,
-      "place": "Madaba (actual Jordania), iglesia de San Jorge",
-      "person": "Comunidad cristiana de Madaba (autoría anónima)",
-      "type": "Mosaico de pavimento",
-      "holding": "Madaba, iglesia de San Jorge (in situ)",
-      "shelfmark": "Mosaico in situ",
-      "folio": null,
-      "evidence": "catálogo",
-      "summary": "El mapa más antiguo conservado de Tierra Santa, con una vista detallada de Jerusalén y sus calles columnadas.",
-      "vitruvius": "Muestra la ciudad helenístico-romana con cardo porticado, la tipología urbana que la tradición vitruviana describe.",
-      "commonsFile": "Madaba map.jpg",
-      "links": []
-    },
-    {
-      "id": "cotton-mapamundi",
-      "title": "Mapamundi anglosajón (Cotton map)",
-      "date": "c. 1025–1050",
-      "sort": 1040,
-      "place": "Inglaterra (probablemente Canterbury)",
-      "person": "Copista anónimo; tradición de Prisciano y Orosio",
-      "type": "Mapamundi en códice miscelánea",
-      "holding": "Londres, British Library",
-      "shelfmark": "Cotton MS Tiberius B V/1",
-      "folio": "f. 56v",
-      "evidence": "catálogo",
-      "summary": "Uno de los mapamundis medievales más precisos anteriores al siglo XIII, con las islas británicas reconocibles.",
-      "vitruvius": "Contemporáneo de la circulación medieval de los códices de Vitruvio en Inglaterra y Francia.",
-      "commonsSearch": "Anglo-Saxon world map Cotton Tiberius B V",
-      "links": []
-    },
-    {
-      "id": "beato-saint-sever",
-      "title": "Mapamundi del Beato de Saint-Sever",
-      "date": "c. 1060–1072",
-      "sort": 1065,
-      "place": "Abadía de Saint-Sever (Gascuña)",
-      "person": "Abad Gregorio Muntaner; ilustrador Stephanus Garsia",
-      "type": "Mapamundi en el Comentario al Apocalipsis de Beato de Liébana",
-      "holding": "París, Bibliothèque nationale de France",
-      "shelfmark": "Latin 8878",
-      "folio": "ff. 45bis v – 45ter r",
-      "evidence": "catálogo",
-      "summary": "Mapamundi de la familia de los Beatos, orientado al este, con la distribución de los apóstoles por el mundo.",
-      "vitruvius": "Ejemplo de la cartografía monástica que convive con la copia de tratados antiguos en los scriptoria.",
-      "commonsSearch": "Saint-Sever Beatus world map",
-      "links": [
-        [
-          "Gallica · búsqueda",
-          "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&query=%28gallica%20all%20%22Beatus%20Saint-Sever%22%29"
-        ]
-      ]
-    },
-    {
-      "id": "tabula-peutingeriana",
-      "title": "Tabula Peutingeriana",
-      "date": "c. 1200 (copia de un original romano del s. IV)",
-      "sort": 1200,
-      "place": "Suroeste de Alemania (copia); original romano tardío",
-      "person": "Konrad Peutinger (1465–1547), poseedor que le da nombre; Konrad Celtis",
-      "type": "Itinerario pintado del Imperio romano en rollo",
-      "holding": "Viena, Österreichische Nationalbibliothek",
-      "shelfmark": "Cod. 324",
-      "folio": "Segmentos I–XI (el primero perdido)",
-      "evidence": "catálogo",
-      "summary": "Mapa de carreteras del mundo romano, de casi siete metros, con estaciones, distancias y viñetas de ciudades.",
-      "vitruvius": "Representa la red viaria y las ciudades del mundo que Vitruvio conocía; útil para situar los lugares que nombra.",
-      "commonsFile": "TabulaPeutingeriana.jpg",
-      "links": [
-        [
-          "Österreichische Nationalbibliothek",
-          "https://www.onb.ac.at/"
-        ]
-      ]
-    },
-    {
-      "id": "salterio-mapamundi",
-      "title": "Mapamundi del Salterio (Psalter map)",
-      "date": "c. 1265",
-      "sort": 1265,
-      "place": "Londres",
-      "person": "Iluminador anónimo",
-      "type": "Mapamundi T-O en un salterio",
-      "holding": "Londres, British Library",
-      "shelfmark": "Add MS 28681",
-      "folio": "f. 9r",
-      "evidence": "catálogo",
-      "summary": "Pequeño mapamundi centrado en Jerusalén, con Cristo bendiciendo el mundo.",
-      "vitruvius": "Contexto de la cosmografía medieval frente a la geografía física de Vitruvio (libros I, VIII y IX).",
-      "commonsFile": "Psalter World Map, c.1265.jpg",
-      "links": []
-    },
-    {
-      "id": "ptolomeo-urb-gr-82",
-      "title": "Geografía de Ptolomeo · mapamundi",
-      "date": "c. 1300",
-      "sort": 1300,
-      "place": "Constantinopla",
-      "person": "Claudio Ptolomeo (texto, s. II); Máximo Planudes (recuperación bizantina)",
-      "type": "Atlas manuscrito griego",
-      "holding": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
-      "shelfmark": "Urb. gr. 82",
-      "folio": "ff. 60v–61r",
-      "evidence": "catálogo",
-      "summary": "Uno de los manuscritos más antiguos con los mapas de la Geografía de Ptolomeo.",
-      "vitruvius": "Ptolomeo y Vitruvio comparten la tradición griega de la gnomónica y la astronomía (Vitr. libro IX).",
-      "commonsSearch": "Urb. gr. 82 Ptolemy",
-      "links": [
-        [
-          "DigiVatLib · Urb. gr. 82",
-          "https://digi.vatlib.it/view/MSS_Urb.gr.82"
-        ]
-      ]
-    },
-    {
-      "id": "hereford",
-      "title": "Mappa Mundi de Hereford",
-      "date": "c. 1300",
-      "sort": 1301,
-      "place": "Hereford (Inglaterra)",
-      "person": "Richard de Haldingham y Lafford (atribución inscrita)",
-      "type": "Mapamundi sobre una sola piel de vitela",
-      "holding": "Hereford, catedral",
-      "shelfmark": "Hoja única (no foliada)",
-      "folio": null,
-      "evidence": "catálogo",
-      "summary": "El mayor mapamundi medieval conservado, centrado en Jerusalén, con unas 1.100 inscripciones.",
-      "vitruvius": "Sintetiza la geografía clásica (Plinio, Solino, Orosio) que comparte fuentes con Vitruvio.",
-      "commonsFile": "Hereford-Karte.jpg",
-      "links": []
-    },
-    {
-      "id": "atlas-catalan",
-      "title": "Atlas catalán",
-      "date": "1375",
-      "sort": 1375,
-      "place": "Palma de Mallorca",
-      "person": "Cresques Abraham (atribución)",
-      "type": "Mapamundi portulano en seis tablas",
-      "holding": "París, Bibliothèque nationale de France",
-      "shelfmark": "Espagnol 30",
-      "folio": "Tablas 1–6 (sin foliación de códice)",
-      "evidence": "catálogo",
-      "summary": "Cumbre de la cartografía mallorquina, con costas de portulano y un mundo que llega hasta China.",
-      "vitruvius": "Muestra el Mediterráneo de los puertos y ciudades que Vitruvio menciona en sus libros.",
-      "commonsSearch": "Catalan Atlas",
-      "links": []
-    },
-    {
-      "id": "fra-mauro",
-      "title": "Mapamundi de Fra Mauro",
-      "date": "c. 1450",
-      "sort": 1450,
-      "place": "Monasterio de San Michele, Murano (Venecia)",
-      "person": "Fra Mauro, monje camaldulense",
-      "type": "Mapamundi circular sobre pergamino montado en madera",
-      "holding": "Venecia, Biblioteca Nazionale Marciana",
-      "shelfmark": "Pieza única (no foliada)",
-      "folio": null,
-      "evidence": "catálogo",
-      "summary": "Gran mapamundi orientado al sur que combina la tradición ptolemaica con relatos de viajeros.",
-      "vitruvius": "Contemporáneo del redescubrimiento humanista de Vitruvio y de sus primeras lecturas en Italia.",
-      "commonsSearch": "Fra Mauro map",
-      "links": []
-    },
-    {
-      "id": "isidoro-zainer-1472",
-      "title": "Mapa T-O de Isidoro de Sevilla (primera edición impresa)",
-      "date": "1472",
-      "sort": 1472,
-      "place": "Augsburgo",
-      "person": "Isidoro de Sevilla (texto, Etymologiae XIV); Günther Zainer (impresor)",
-      "type": "Xilografía en libro impreso",
-      "holding": "Ejemplares en varias bibliotecas",
-      "shelfmark": "Isidorus, Etymologiae, Augsburg: Günther Zainer, 1472",
-      "folio": "Por verificar según el ejemplar",
-      "evidence": "edición identificada; foliación pendiente",
-      "summary": "Considerado el primer mapa impreso de Europa: el esquema T-O de Asia, Europa y África.",
-      "vitruvius": "Isidoro transmite a la Edad Media definiciones arquitectónicas derivadas en parte de Vitruvio.",
-      "commonsFile": "T and O map Guntherus Ziner 1472.jpg",
-      "links": []
-    },
-    {
-      "id": "ptolomeo-ulm-1482",
-      "title": "Mapamundi de la Geografía de Ptolomeo, edición de Ulm",
-      "date": "1482",
-      "sort": 1482,
-      "place": "Ulm",
-      "person": "Claudio Ptolomeo; Nicolaus Germanus (revisión); Lienhart Holle (impresor)",
-      "type": "Xilografía coloreada en edición impresa",
-      "holding": "Ejemplares en varias bibliotecas",
-      "shelfmark": "Ptolemaeus, Cosmographia, Ulm: Lienhart Holle, 1482",
-      "folio": "Por verificar según el ejemplar",
-      "evidence": "edición identificada; foliación pendiente",
-      "summary": "Primera edición de Ptolomeo impresa al norte de los Alpes, con mapas grabados en madera.",
-      "vitruvius": "Contemporánea de la edición príncipe de Vitruvio (Sulpizio, c. 1486), disponible en este sitio.",
-      "commonsFile": "Claudius Ptolemy- The World.jpg",
-      "links": [
-        [
-          "Sulpizio 1486 en el sitio",
-          "sulpizio-1486.html"
-        ]
-      ]
-    },
-    {
-      "id": "leonardo-imola",
-      "title": "Plano de Imola",
-      "date": "1502",
-      "sort": 1502,
-      "place": "Imola",
-      "person": "Leonardo da Vinci, al servicio de César Borgia",
-      "type": "Plano icnográfico a pluma y acuarela",
-      "holding": "Windsor, Royal Collection",
-      "shelfmark": "RCIN 912284",
-      "folio": "Hoja suelta",
-      "evidence": "catálogo",
-      "summary": "Uno de los primeros planos urbanos medidos con precisión, trazado con un círculo de ocho vientos.",
-      "vitruvius": "Aplica la rosa de los vientos de Vitr. I.6 al levantamiento de una ciudad; Leonardo dibujó además el Hombre de Vitruvio.",
-      "commonsSearch": "Leonardo da Vinci Imola map",
-      "links": [
-        [
-          "Royal Collection Trust · RCIN 912284",
-          "https://www.rct.uk/collection/912284"
-        ]
-      ]
-    },
-    {
-      "id": "cesariano-1521-vientos",
-      "title": "Rosa de los vientos y trazado urbano de Cesariano",
-      "date": "1521",
-      "sort": 1521,
-      "place": "Como",
-      "person": "Cesare Cesariano (traductor y grabador)",
-      "type": "Xilografía en la primera traducción italiana de Vitruvio",
-      "holding": "Stiftung Bibliothek Werner Oechslin (ejemplar digitalizado en e-rara)",
-      "shelfmark": "Vitruvius, De architectura libri dece, Como 1521 (DOI 10.3931/e-rara-19393)",
-      "folio": "Libro I, cap. VI (foliación por verificar en el visor)",
-      "evidence": "edición identificada; folio pendiente",
-      "summary": "Cesariano ilustra la orientación de la ciudad según los vientos que prescribe Vitruvio.",
-      "vitruvius": "Ilustra directamente Vitr. I.6.",
-      "localLink": "cesariano-1521.html",
-      "links": []
-    },
-    {
-      "id": "bufalini-1551",
-      "title": "Pianta di Roma de Leonardo Bufalini",
-      "date": "1551",
-      "sort": 1551,
-      "place": "Roma",
-      "person": "Leonardo Bufalini",
-      "type": "Plano icnográfico grabado en madera",
-      "holding": "Ejemplares conservados en bibliotecas romanas y extranjeras",
-      "shelfmark": "Por verificar según el ejemplar",
-      "folio": null,
-      "evidence": "edición identificada",
-      "summary": "Primer plano icnográfico impreso de Roma, que reconstruye además monumentos antiguos.",
-      "vitruvius": "Representa la Roma antigua cuyos edificios Vitruvio describe por tipos.",
-      "commonsSearch": "Bufalini Rome 1551",
-      "links": []
-    },
-    {
-      "id": "nolli-1748",
-      "title": "Nuova pianta di Roma (Pianta grande)",
-      "date": "1748",
-      "sort": 1748,
-      "place": "Roma",
-      "person": "Giovanni Battista Nolli (con la colaboración de Piranesi)",
-      "type": "Plano icnográfico grabado en doce planchas",
-      "holding": "Ejemplares en numerosas colecciones",
-      "shelfmark": "Planchas 1–12",
-      "folio": null,
-      "evidence": "edición identificada",
-      "summary": "Plano de Roma de precisión excepcional, con el espacio público dibujado en blanco, incluido el interior de iglesias y patios.",
-      "vitruvius": "Base de los estudios neoclásicos de la arquitectura romana que también recogen las láminas de Piranesi del sitio.",
-      "commonsSearch": "Nolli map Rome 1748",
-      "links": [
-        [
-          "Láminas de Piranesi en el sitio",
-          "iconografia-vitruviana.html#laminas-historicas"
-        ]
-      ]
-    },
-    {
-      "id": "piranesi-campo-marzio",
-      "title": "Ichnographia Campi Martii antiquae urbis",
-      "date": "1762",
-      "sort": 1762,
-      "place": "Roma",
-      "person": "Giovanni Battista Piranesi",
-      "type": "Planta reconstructiva grabada en seis planchas",
-      "holding": "Ejemplares en numerosas colecciones",
-      "shelfmark": "Il Campo Marzio dell'antica Roma, Roma 1762",
-      "folio": "Planchas por verificar según el ejemplar",
-      "evidence": "edición identificada",
-      "summary": "Reconstrucción imaginativa del Campo de Marte antiguo, entre la arqueología y la invención arquitectónica.",
-      "vitruvius": "Interpretación neoclásica de la arquitectura romana pública que Vitruvio codifica.",
-      "commonsSearch": "Ichnographia Campi Martii Piranesi",
-      "links": []
-    }
-  ]
+ "schema": "vitruvia-mapas-antiguos-v1",
+ "updated": "2026-11-05",
+ "note": "Mapas y planos históricos ordenados por fecha. La signatura y el folio se indican solo cuando constan en el catálogo de la institución; en los demás casos la ficha lo señala como pendiente de verificación. Las imágenes se muestran desde Wikimedia Commons con su página de procedencia y licencia.",
+ "entries": [
+  {
+   "id": "forma-urbis-romae",
+   "title": "Forma Urbis Romae (plano marmóreo severiano)",
+   "date": "c. 203–211 d. C.",
+   "sort": 205,
+   "place": "Roma, Templum Pacis",
+   "person": "Septimio Severo (emperador)",
+   "type": "Plano catastral grabado en mármol",
+   "holding": "Roma, Musei Capitolini (fragmentos)",
+   "shelfmark": "Fragmentos numerados según el Stanford Digital Forma Urbis Romae Project",
+   "folio": null,
+   "evidence": "catálogo",
+   "summary": "Plano de la ciudad de Roma a escala aproximada 1:240, grabado sobre losas de mármol; se conservan cerca de un millar de fragmentos.",
+   "vitruvius": "Documenta la planta de edificios públicos que Vitruvio describe por tipos (pórticos, templos, teatros) y la Roma augustea posterior a su tratado.",
+   "commonsSearch": "Forma Urbis Romae",
+   "links": [
+    [
+     "Stanford Digital Forma Urbis Romae",
+     "https://formaurbis.stanford.edu/"
+    ]
+   ],
+   "commonsKeys": [
+    "forma",
+    "urbis"
+   ]
+  },
+  {
+   "id": "vitruvio-rosa-vientos-h",
+   "title": "Rosa de los ocho vientos de Vitruvio (Vitr. I.6)",
+   "date": "s. IX (copia carolingia del texto del s. I a. C.)",
+   "sort": 830,
+   "place": "Scriptorium carolingio (Codex Harleianus)",
+   "person": "Vitruvio (texto) · copista carolingio",
+   "type": "Diagrama de orientación de la ciudad según los vientos",
+   "holding": "Londres, British Library",
+   "shelfmark": "Harley MS 2767",
+   "folio": "f. 16v",
+   "evidence": "verificado en la fotografía del folio (rúbrica y texto de I.6.12)",
+   "summary": "Vitruvio prescribe orientar las calles para evitar los vientos dominantes y describe una rosa de ocho vientos trazada con el gnomon.",
+   "vitruvius": "Vitr. I.6.1–13: trazado urbano y vientos.",
+   "localLink": "codex-h-folios-local.html?folio=16v",
+   "readerLink": "lector-bilingue.html?edition=recensio-es&locus=1.6.12",
+   "links": [],
+   "localImage": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_040_f-16v.jpg",
+   "rights": "British Library, Harley MS 2767: «Public Domain in most countries, other than the UK» (metadatos IIIF de la institución)."
+  },
+  {
+   "id": "madaba",
+   "title": "Mapa de Madaba",
+   "date": "c. 542–570",
+   "sort": 560,
+   "place": "Madaba (actual Jordania), iglesia de San Jorge",
+   "person": "Comunidad cristiana de Madaba (autoría anónima)",
+   "type": "Mosaico de pavimento",
+   "holding": "Madaba, iglesia de San Jorge (in situ)",
+   "shelfmark": "Mosaico in situ",
+   "folio": null,
+   "evidence": "catálogo",
+   "summary": "El mapa más antiguo conservado de Tierra Santa, con una vista detallada de Jerusalén y sus calles columnadas.",
+   "vitruvius": "Muestra la ciudad helenístico-romana con cardo porticado, la tipología urbana que la tradición vitruviana describe.",
+   "commonsFile": "Madaba map.jpg",
+   "links": []
+  },
+  {
+   "id": "cotton-mapamundi",
+   "title": "Mapamundi anglosajón (Cotton map)",
+   "date": "c. 1025–1050",
+   "sort": 1040,
+   "place": "Inglaterra (probablemente Canterbury)",
+   "person": "Copista anónimo; tradición de Prisciano y Orosio",
+   "type": "Mapamundi en códice miscelánea",
+   "holding": "Londres, British Library",
+   "shelfmark": "Cotton MS Tiberius B V/1",
+   "folio": "f. 56v",
+   "evidence": "catálogo",
+   "summary": "Uno de los mapamundis medievales más precisos anteriores al siglo XIII, con las islas británicas reconocibles.",
+   "vitruvius": "Contemporáneo de la circulación medieval de los códices de Vitruvio en Inglaterra y Francia.",
+   "commonsSearch": "Anglo-Saxon world map Cotton Tiberius B V",
+   "links": [],
+   "commonsKeys": [
+    "cotton|anglo",
+    "map|mappa|world"
+   ]
+  },
+  {
+   "id": "beato-saint-sever",
+   "title": "Mapamundi del Beato de Saint-Sever",
+   "date": "c. 1060–1072",
+   "sort": 1065,
+   "place": "Abadía de Saint-Sever (Gascuña)",
+   "person": "Abad Gregorio Muntaner; ilustrador Stephanus Garsia",
+   "type": "Mapamundi en el Comentario al Apocalipsis de Beato de Liébana",
+   "holding": "París, Bibliothèque nationale de France",
+   "shelfmark": "Latin 8878",
+   "folio": "ff. 45bis v – 45ter r",
+   "evidence": "catálogo",
+   "summary": "Mapamundi de la familia de los Beatos, orientado al este, con la distribución de los apóstoles por el mundo.",
+   "vitruvius": "Ejemplo de la cartografía monástica que convive con la copia de tratados antiguos en los scriptoria.",
+   "commonsSearch": "Saint-Sever Beatus world map",
+   "links": [
+    [
+     "Gallica · búsqueda",
+     "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&query=%28gallica%20all%20%22Beatus%20Saint-Sever%22%29"
+    ]
+   ],
+   "commonsKeys": [
+    "sever",
+    "beat|map|mappa|world"
+   ]
+  },
+  {
+   "id": "tabula-peutingeriana",
+   "title": "Tabula Peutingeriana",
+   "date": "c. 1200 (copia de un original romano del s. IV)",
+   "sort": 1200,
+   "place": "Suroeste de Alemania (copia); original romano tardío",
+   "person": "Konrad Peutinger (1465–1547), poseedor que le da nombre; Konrad Celtis",
+   "type": "Itinerario pintado del Imperio romano en rollo",
+   "holding": "Viena, Österreichische Nationalbibliothek",
+   "shelfmark": "Cod. 324",
+   "folio": "Segmentos I–XI (el primero perdido)",
+   "evidence": "catálogo",
+   "summary": "Mapa de carreteras del mundo romano, de casi siete metros, con estaciones, distancias y viñetas de ciudades.",
+   "vitruvius": "Representa la red viaria y las ciudades del mundo que Vitruvio conocía; útil para situar los lugares que nombra.",
+   "commonsFile": "TabulaPeutingeriana.jpg",
+   "links": [
+    [
+     "Österreichische Nationalbibliothek",
+     "https://www.onb.ac.at/"
+    ]
+   ]
+  },
+  {
+   "id": "salterio-mapamundi",
+   "title": "Mapamundi del Salterio (Psalter map)",
+   "date": "c. 1265",
+   "sort": 1265,
+   "place": "Londres",
+   "person": "Iluminador anónimo",
+   "type": "Mapamundi T-O en un salterio",
+   "holding": "Londres, British Library",
+   "shelfmark": "Add MS 28681",
+   "folio": "f. 9r",
+   "evidence": "catálogo",
+   "summary": "Pequeño mapamundi centrado en Jerusalén, con Cristo bendiciendo el mundo.",
+   "vitruvius": "Contexto de la cosmografía medieval frente a la geografía física de Vitruvio (libros I, VIII y IX).",
+   "commonsFile": "Psalter World Map, c.1265.jpg",
+   "links": []
+  },
+  {
+   "id": "ptolomeo-urb-gr-82",
+   "title": "Geografía de Ptolomeo · mapamundi",
+   "date": "c. 1300",
+   "sort": 1300,
+   "place": "Constantinopla",
+   "person": "Claudio Ptolomeo (texto, s. II); Máximo Planudes (recuperación bizantina)",
+   "type": "Atlas manuscrito griego",
+   "holding": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+   "shelfmark": "Urb. gr. 82",
+   "folio": "ff. 60v–61r",
+   "evidence": "catálogo",
+   "summary": "Uno de los manuscritos más antiguos con los mapas de la Geografía de Ptolomeo.",
+   "vitruvius": "Ptolomeo y Vitruvio comparten la tradición griega de la gnomónica y la astronomía (Vitr. libro IX).",
+   "commonsSearch": "Urb. gr. 82 Ptolemy",
+   "links": [
+    [
+     "DigiVatLib · Urb. gr. 82",
+     "https://digi.vatlib.it/view/MSS_Urb.gr.82"
+    ]
+   ],
+   "commonsKeys": [
+    "ptolem|tolom",
+    "urb"
+   ]
+  },
+  {
+   "id": "hereford",
+   "title": "Mappa Mundi de Hereford",
+   "date": "c. 1300",
+   "sort": 1301,
+   "place": "Hereford (Inglaterra)",
+   "person": "Richard de Haldingham y Lafford (atribución inscrita)",
+   "type": "Mapamundi sobre una sola piel de vitela",
+   "holding": "Hereford, catedral",
+   "shelfmark": "Hoja única (no foliada)",
+   "folio": null,
+   "evidence": "catálogo",
+   "summary": "El mayor mapamundi medieval conservado, centrado en Jerusalén, con unas 1.100 inscripciones.",
+   "vitruvius": "Sintetiza la geografía clásica (Plinio, Solino, Orosio) que comparte fuentes con Vitruvio.",
+   "commonsFile": "Hereford-Karte.jpg",
+   "links": []
+  },
+  {
+   "id": "atlas-catalan",
+   "title": "Atlas catalán",
+   "date": "1375",
+   "sort": 1375,
+   "place": "Palma de Mallorca",
+   "person": "Cresques Abraham (atribución)",
+   "type": "Mapamundi portulano en seis tablas",
+   "holding": "París, Bibliothèque nationale de France",
+   "shelfmark": "Espagnol 30",
+   "folio": "Tablas 1–6 (sin foliación de códice)",
+   "evidence": "catálogo",
+   "summary": "Cumbre de la cartografía mallorquina, con costas de portulano y un mundo que llega hasta China.",
+   "vitruvius": "Muestra el Mediterráneo de los puertos y ciudades que Vitruvio menciona en sus libros.",
+   "commonsSearch": "Catalan Atlas",
+   "links": [],
+   "commonsKeys": [
+    "catalan|catala",
+    "atlas"
+   ]
+  },
+  {
+   "id": "fra-mauro",
+   "title": "Mapamundi de Fra Mauro",
+   "date": "c. 1450",
+   "sort": 1450,
+   "place": "Monasterio de San Michele, Murano (Venecia)",
+   "person": "Fra Mauro, monje camaldulense",
+   "type": "Mapamundi circular sobre pergamino montado en madera",
+   "holding": "Venecia, Biblioteca Nazionale Marciana",
+   "shelfmark": "Pieza única (no foliada)",
+   "folio": null,
+   "evidence": "catálogo",
+   "summary": "Gran mapamundi orientado al sur que combina la tradición ptolemaica con relatos de viajeros.",
+   "vitruvius": "Contemporáneo del redescubrimiento humanista de Vitruvio y de sus primeras lecturas en Italia.",
+   "commonsSearch": "Fra Mauro map",
+   "links": [],
+   "commonsKeys": [
+    "fra",
+    "mauro"
+   ]
+  },
+  {
+   "id": "isidoro-zainer-1472",
+   "title": "Mapa T-O de Isidoro de Sevilla (primera edición impresa)",
+   "date": "1472",
+   "sort": 1472,
+   "place": "Augsburgo",
+   "person": "Isidoro de Sevilla (texto, Etymologiae XIV); Günther Zainer (impresor)",
+   "type": "Xilografía en libro impreso",
+   "holding": "Ejemplares en varias bibliotecas",
+   "shelfmark": "Isidorus, Etymologiae, Augsburg: Günther Zainer, 1472",
+   "folio": "Por verificar según el ejemplar",
+   "evidence": "edición identificada; foliación pendiente",
+   "summary": "Considerado el primer mapa impreso de Europa: el esquema T-O de Asia, Europa y África.",
+   "vitruvius": "Isidoro transmite a la Edad Media definiciones arquitectónicas derivadas en parte de Vitruvio.",
+   "commonsFile": "T and O map Guntherus Ziner 1472.jpg",
+   "links": []
+  },
+  {
+   "id": "ptolomeo-ulm-1482",
+   "title": "Mapamundi de la Geografía de Ptolomeo, edición de Ulm",
+   "date": "1482",
+   "sort": 1482,
+   "place": "Ulm",
+   "person": "Claudio Ptolomeo; Nicolaus Germanus (revisión); Lienhart Holle (impresor)",
+   "type": "Xilografía coloreada en edición impresa",
+   "holding": "Ejemplares en varias bibliotecas",
+   "shelfmark": "Ptolemaeus, Cosmographia, Ulm: Lienhart Holle, 1482",
+   "folio": "Por verificar según el ejemplar",
+   "evidence": "edición identificada; foliación pendiente",
+   "summary": "Primera edición de Ptolomeo impresa al norte de los Alpes, con mapas grabados en madera.",
+   "vitruvius": "Contemporánea de la edición príncipe de Vitruvio (Sulpizio, c. 1486), disponible en este sitio.",
+   "commonsFile": "Claudius Ptolemy- The World.jpg",
+   "links": [
+    [
+     "Sulpizio 1486 en el sitio",
+     "sulpizio-1486.html"
+    ]
+   ]
+  },
+  {
+   "id": "leonardo-imola",
+   "title": "Plano de Imola",
+   "date": "1502",
+   "sort": 1502,
+   "place": "Imola",
+   "person": "Leonardo da Vinci, al servicio de César Borgia",
+   "type": "Plano icnográfico a pluma y acuarela",
+   "holding": "Windsor, Royal Collection",
+   "shelfmark": "RCIN 912284",
+   "folio": "Hoja suelta",
+   "evidence": "catálogo",
+   "summary": "Uno de los primeros planos urbanos medidos con precisión, trazado con un círculo de ocho vientos.",
+   "vitruvius": "Aplica la rosa de los vientos de Vitr. I.6 al levantamiento de una ciudad; Leonardo dibujó además el Hombre de Vitruvio.",
+   "commonsSearch": "Leonardo da Vinci Imola map",
+   "links": [
+    [
+     "Royal Collection Trust · RCIN 912284",
+     "https://www.rct.uk/collection/912284"
+    ]
+   ],
+   "commonsKeys": [
+    "imola"
+   ]
+  },
+  {
+   "id": "cesariano-1521-vientos",
+   "title": "Rosa de los vientos y trazado urbano de Cesariano",
+   "date": "1521",
+   "sort": 1521,
+   "place": "Como",
+   "person": "Cesare Cesariano (traductor y grabador)",
+   "type": "Xilografía en la primera traducción italiana de Vitruvio",
+   "holding": "Stiftung Bibliothek Werner Oechslin (ejemplar digitalizado en e-rara)",
+   "shelfmark": "Vitruvius, De architectura libri dece, Como 1521 (DOI 10.3931/e-rara-19393)",
+   "folio": "Libro I, cap. VI (foliación por verificar en el visor)",
+   "evidence": "edición identificada; folio pendiente",
+   "summary": "Cesariano ilustra la orientación de la ciudad según los vientos que prescribe Vitruvio.",
+   "vitruvius": "Ilustra directamente Vitr. I.6.",
+   "localLink": "cesariano-1521.html",
+   "links": [],
+   "commonsSearch": "Cesariano 1521 Vitruvius winds",
+   "commonsKeys": [
+    "cesariano"
+   ]
+  },
+  {
+   "id": "bufalini-1551",
+   "title": "Pianta di Roma de Leonardo Bufalini",
+   "date": "1551",
+   "sort": 1551,
+   "place": "Roma",
+   "person": "Leonardo Bufalini",
+   "type": "Plano icnográfico grabado en madera",
+   "holding": "Ejemplares conservados en bibliotecas romanas y extranjeras",
+   "shelfmark": "Por verificar según el ejemplar",
+   "folio": null,
+   "evidence": "edición identificada",
+   "summary": "Primer plano icnográfico impreso de Roma, que reconstruye además monumentos antiguos.",
+   "vitruvius": "Representa la Roma antigua cuyos edificios Vitruvio describe por tipos.",
+   "commonsSearch": "Bufalini Rome 1551",
+   "links": [],
+   "commonsKeys": [
+    "bufalini"
+   ]
+  },
+  {
+   "id": "nolli-1748",
+   "title": "Nuova pianta di Roma (Pianta grande)",
+   "date": "1748",
+   "sort": 1748,
+   "place": "Roma",
+   "person": "Giovanni Battista Nolli (con la colaboración de Piranesi)",
+   "type": "Plano icnográfico grabado en doce planchas",
+   "holding": "Ejemplares en numerosas colecciones",
+   "shelfmark": "Planchas 1–12",
+   "folio": null,
+   "evidence": "edición identificada",
+   "summary": "Plano de Roma de precisión excepcional, con el espacio público dibujado en blanco, incluido el interior de iglesias y patios.",
+   "vitruvius": "Base de los estudios neoclásicos de la arquitectura romana que también recogen las láminas de Piranesi del sitio.",
+   "commonsSearch": "Nolli map Rome 1748",
+   "links": [
+    [
+     "Láminas de Piranesi en el sitio",
+     "iconografia-vitruviana.html#laminas-historicas"
+    ]
+   ],
+   "commonsKeys": [
+    "nolli"
+   ]
+  },
+  {
+   "id": "piranesi-campo-marzio",
+   "title": "Ichnographia Campi Martii antiquae urbis",
+   "date": "1762",
+   "sort": 1762,
+   "place": "Roma",
+   "person": "Giovanni Battista Piranesi",
+   "type": "Planta reconstructiva grabada en seis planchas",
+   "holding": "Ejemplares en numerosas colecciones",
+   "shelfmark": "Il Campo Marzio dell'antica Roma, Roma 1762",
+   "folio": "Planchas por verificar según el ejemplar",
+   "evidence": "edición identificada",
+   "summary": "Reconstrucción imaginativa del Campo de Marte antiguo, entre la arqueología y la invención arquitectónica.",
+   "vitruvius": "Interpretación neoclásica de la arquitectura romana pública que Vitruvio codifica.",
+   "commonsSearch": "Ichnographia Campi Martii Piranesi",
+   "links": [],
+   "commonsKeys": [
+    "piranesi",
+    "campo|campi|ichnograph|martius|marzio"
+   ]
+  }
+ ]
 }
