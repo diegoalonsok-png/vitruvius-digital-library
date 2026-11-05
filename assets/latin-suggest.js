@@ -3,9 +3,9 @@
  const form=input.form;if(!form)return;
  const host=document.createElement('div');host.id='latin-suggest';host.hidden=true;host.className='dictionary-entry';host.setAttribute('aria-label','Sugerencias léxicas latinas');form.append(host);
  const gloss=document.createElement('section');gloss.id='latin-gloss';gloss.className='dictionary-entry';gloss.hidden=true;gloss.setAttribute('aria-live','polite');form.after(gloss);
- let entries=[],passageData=null;
+ let entries=[],passageData=null;const derivedForms=[];
  const occurrences=document.createElement('section');occurrences.id='lexical-occurrences';occurrences.className='dictionary-entry';occurrences.hidden=true;occurrences.setAttribute('aria-live','polite');gloss.after(occurrences);
- const {lexicalSuggestions}=await import('./lexical-suggestions.mjs?v=20261030-history');
+ const {lexicalSuggestions}=await import('./lexical-suggestions.mjs?v=20261105-ortho-v1');
  const normalizeWord=v=>String(v).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function wordMatches(text,words){
   const tokens=String(text||'').match(/[\p{L}\p{M}]+/gu)||[];
@@ -81,7 +81,10 @@
   }catch(error){status.textContent='No se pudo consultar el corpus: '+error.message;}
  }
 
- try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Vuelve a intentarlo al recargar.';return;}
+ try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;
+  // Todas las formas del texto latino (CLTK + Lewis & Short) para las sugerencias ortográficas y de grafía.
+  fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(g=>{if(!g?.forms)return;const by=new Map();for(const [f,ls] of Object.entries(g.forms))for(const l of ls){if(!by.has(l))by.set(l,[]);by.get(l).push(f)}
+   for(const [l,fs] of by)derivedForms.push({lemma:String(g.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'').replace(/\d+$/,''),forms:fs,derived:true})}).catch(()=>{});}catch{gloss.hidden=false;gloss.textContent='El léxico local no pudo cargarse. Vuelve a intentarlo al recargar.';return;}
  const norm=s=>String(s).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  function textLine(parent,label,value){if(!value)return;const p=document.createElement('p'),b=document.createElement('strong');b.textContent=label+' ';p.append(b,document.createTextNode(value));parent.append(p);}
  function corpusContext(value){
@@ -387,7 +390,7 @@ function displayGloss(){
      const btn=document.createElement('button');btn.type='button';btn.className='dictionary-form';btn.textContent='Buscar pasajes relacionados en Vitruvio';btn.addEventListener('click',()=>{form.requestSubmit();});details.append(btn);
      gloss.append(details);gloss.hidden=false;return;
    }
-   const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Léxico latino selectivo: «'+value+'»';details.append(summary);textLine(details,'','Esta forma no tiene una definición revisada en el léxico local. Se ofrece su concordancia textual sin atribuirle un significado no documentado.');for(const word of lexicalSuggestions(value,entries)){const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+word+'»';b.addEventListener('click',()=>{input.value=word;hide();displayGloss();form.requestSubmit();});details.append(b);}const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener';a.textContent='Consultar esta forma en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
+   const details=document.createElement('details'),summary=document.createElement('summary');details.open=true;summary.textContent='Léxico latino selectivo: «'+value+'»';details.append(summary);textLine(details,'','Esta forma no tiene una definición revisada en el léxico local. Se ofrece su concordancia textual sin atribuirle un significado no documentado.');for(const word of lexicalSuggestions(value,entries.concat(derivedForms))){const b=document.createElement('button');b.type='button';b.className='dictionary-form';b.textContent='Buscar «'+word+'»';b.addEventListener('click',()=>{input.value=word;hide();displayGloss();form.requestSubmit();});details.append(b);}const a=document.createElement('a');a.href='https://logeion.uchicago.edu/'+encodeURIComponent(value);a.target='_blank';a.rel='noopener';a.textContent='Consultar esta forma en Logeion ↗';details.append(a);gloss.append(details);gloss.hidden=false;return;
   }
   const details=document.createElement('details');details.open=true;const summary=document.createElement('summary');summary.textContent='Léxico latino selectivo · '+(entry.headword||entry.lemma);details.append(summary);
   const h=document.createElement('h3');h.textContent=entry.headword||entry.lemma;details.append(h);

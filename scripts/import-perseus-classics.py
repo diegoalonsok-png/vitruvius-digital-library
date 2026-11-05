@@ -40,6 +40,20 @@ WORKS = {
         "alignment": "Locus = capítulo del Manual; secciones [n] en el texto",
         "min": (50, 25000),
     },
+    "homer-iliad": {
+        "url": BASE + "canonical-greekLit/master/data/tlg0012/tlg001/tlg0012.tlg001.perseus-grc2.xml",
+        "lang": "grc", "mode": "verse",
+        "attribution": "D. B. Monro y T. W. Allen, Homeri Opera I–II, Oxford, Clarendon Press, 1920; Perseus DL TEI, CC BY-SA 4.0",
+        "alignment": "Locus = canto.verso inicial del pasaje; la numeración de versos se conserva",
+        "min": (300, 600000),
+    },
+    "homer-odyssey": {
+        "url": BASE + "canonical-greekLit/master/data/tlg0012/tlg002/tlg0012.tlg002.perseus-grc2.xml",
+        "lang": "grc", "mode": "verse",
+        "attribution": "A. T. Murray, Homer, The Odyssey (texto griego), Cambridge MA, Harvard University Press, 1919; Perseus DL TEI, CC BY-SA 4.0",
+        "alignment": "Locus = canto.verso inicial del pasaje; la numeración de versos se conserva",
+        "min": (200, 450000),
+    },
     "caesar-gallico": {
         "url": BASE + "canonical-latinLit/master/data/phi0448/phi001/phi0448.phi001.perseus-lat2.xml",
         "lang": "la", "mode": "divs", "subtype": "chapter", "inner": "section", "parent": "book",
@@ -121,7 +135,7 @@ def by_divs(root, cfg):
 def by_verse(root, cfg):
     out = []
     for book in root.iter(TEI + "div"):
-        if book.attrib.get("subtype") != "book" or book.attrib.get("type") != "textpart":
+        if (book.attrib.get("subtype") or "").lower() != "book" or book.attrib.get("type") != "textpart":
             continue
         bn = book.attrib.get("n", "")
         chunk = []

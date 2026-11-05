@@ -3946,10 +3946,10 @@
       "language": "grc",
       "genre": "Épica",
       "dating": "tradición arcaica; fijación y datación debatidas",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Ilíada completa en griego en el lector del sitio (Perseus Digital Library, CC BY-SA 4.0), con búsqueda por palabra resaltada y diccionario."
       },
       "manuscript": {
         "manifest": null,
@@ -3983,6 +3983,14 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/homer-iliad-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=homer-iliad&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. D. B. Monro y T. W. Allen (Oxford)",
+        "source": "Ilíada completa (24 cantos) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
       }
     },
     {
@@ -3992,10 +4000,10 @@
       "language": "grc",
       "genre": "Épica",
       "dating": "tradición arcaica; fijación y datación debatidas",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "lectura-local-completa",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Odisea completa en griego en el lector del sitio (Perseus Digital Library, CC BY-SA 4.0), con búsqueda por palabra resaltada y diccionario."
       },
       "manuscript": {
         "manifest": null,
@@ -4028,6 +4036,14 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/homer-odyssey-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=homer-odyssey&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. A. T. Murray (1919)",
+        "source": "Odisea completa (24 cantos) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
       }
     },
     {

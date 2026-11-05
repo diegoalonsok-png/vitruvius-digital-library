@@ -9,6 +9,8 @@ const WORKS=[
  ["plato-apology","grc","Platón","Apología de Sócrates"],
  ["aristotle-poetics","grc","Aristóteles","Poética (Περὶ ποιητικῆς)"],
  ["epictetus-enchiridion","grc","Epicteto","Enchiridion (Ἐγχειρίδιον)"],
+ ["homer-iliad","grc","Homero","Ilíada"],
+ ["homer-odyssey","grc","Homero","Odisea"],
  ["caesar-gallico","la","Julio César","De bello Gallico"],
  ["virgil-aeneid","la","Virgilio","Aeneis"],
  ["virgil-georgica","la","Virgilio","Georgica"],

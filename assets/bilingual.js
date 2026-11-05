@@ -1,4 +1,4 @@
-import {lexicalSuggestions,lexicalForms} from './lexical-suggestions.mjs?v=20261030-history';
+import {lexicalSuggestions,lexicalForms} from './lexical-suggestions.mjs?v=20261105-ortho-v1';
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
 import {citation,roman,parseLocus,searchCorpus,tokens} from './search-core.mjs?v=20261030-docx-1';
 import {parallelHighlight} from './parallel-highlights.mjs?v=20261103-pair2';
