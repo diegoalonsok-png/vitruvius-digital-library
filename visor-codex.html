@@ -39,6 +39,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
   <span id="count" class="counter" aria-live="polite">— / —</span>
   <button id="next" disabled aria-label="Página siguiente">Siguiente →</button>
   <label for="folio-select">Ir a folio</label><select id="folio-select" aria-label="Elegir folio manuscrito" disabled></select>
+  <label for="folio-find">Buscar folio</label><input id="folio-find" type="search" placeholder="f. 45v · ff. 12r–14v · imagen 20" aria-label="Buscar por folio, intervalo, guarda o imagen digital" style="font:inherit;min-height:38px;padding:6px 9px;max-width:230px" disabled><span id="folio-find-note" role="status" style="font-size:.9em"></span>
   <label for="zoom">Ampliación</label>
   <input type="range" id="zoom" min="60" max="250" value="100" step="10" aria-label="Ampliación de imagen">
   <output for="zoom" id="zoom-label">100 %</output>
@@ -49,6 +50,7 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
  <p class="small">Si el servidor IIIF no permite acceso desde GitHub Pages, usa el botón «Ver visor oficial». Este visor no almacena ni reivindica derechos sobre las imágenes institucionales.</p>
 </main>
 <footer class="small">Vitruvius Digital Library · Visualización documental con referencias a instituciones custodias</footer>
+<script src="assets/codicological-query.js?v=20261105-cq-v1"></script>
 <script>
 (function(){
  "use strict";
@@ -127,9 +129,17 @@ input[type=range]{accent-color:var(--gold);width:118px}button:focus-visible,a:fo
     pages.forEach((p,i)=>{const option=document.createElement("option");option.value=String(i);option.textContent=p.label;select.append(option)});
     select.disabled=false;select.addEventListener("change",()=>show(Number(select.value)));
     const normalize=s=>String(s||"").toLowerCase().replace(/(?:folio|fol\.|f\.)/g,"").replace(/[^a-z0-9]/g,"");
-    const wanted=normalize(params.get("folio"));
-    const initial=wanted?pages.findIndex(p=>normalize(p.label)===wanted):-1;
-    show(initial>=0?initial:0);
+    const CQ=window.CodexQuery,labels=pages.map(p=>p.label);
+    const find=text=>{if(!String(text||"").trim())return {hits:[],note:""};
+     if(CQ){const q=CQ.parse(text);
+      if(q.image&&q.image<=pages.length)return {hits:[q.image-1],note:"Imagen digital "+q.image+" = "+labels[q.image-1]};
+      if(q.range||q.folios.length){const hits=CQ.match(q,labels);return {hits,note:hits.length?q.display+" · "+hits.length+" imagen(es)":"Sin "+q.display+" en la foliación del manifiesto"}}}
+     const w=normalize(text),i=labels.findIndex(l=>normalize(l)===w);return {hits:i>=0?[i]:[],note:i>=0?"":"Sin coincidencias"}};
+    const box=$("folio-find"),note=$("folio-find-note");box.disabled=false;
+    box.addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();const r=find(box.value);note.textContent=r.note;if(r.hits.length)show(r.hits[0])});
+    const asked=params.get("folio")||params.get("q");const first=asked?find(asked):{hits:[]};
+    if(asked&&first.hits.length){box.value=asked;note.textContent=first.note}
+    show(first.hits.length?first.hits[0]:0);
    }
    else $("message").textContent="El manifiesto no ofrece imágenes compatibles con este visor. Consulta el visor oficial.";
   }catch(e){

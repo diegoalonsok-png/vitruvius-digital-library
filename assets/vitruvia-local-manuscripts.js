@@ -1,7 +1,7 @@
 /* Generic local manuscript-reader launcher. Embeds only explicitly catalogued
    same-origin readers. The host is never assumed to own historical manuscripts. */
 (()=>{"use strict";
-const supported=/^(?:codex-h-folios-local|harleianus)\.html(?:\?(?:[a-z0-9_.%=&+-]+))?$/i;
+const supported=/^(?:codex-h-folios-local|harleianus|visor-codex)\.html(?:\?(?:[a-z0-9_.%=&+-]+))?$/i;
 function locate(link){
  const url=String(link||"").trim();
  if(!supported.test(url))return null;

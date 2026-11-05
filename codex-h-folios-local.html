@@ -92,11 +92,11 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <p>Haz clic en la imagen para ampliar la zona señalada. Desplazate por el visor con las barras horizontal y vertical.</p><div id="folio-quick" aria-label="Accesos rápidos a los primeros folios"></div></section>
 <section class="gallery" id="h-folios" aria-label="Galería de miniaturas">
 <h2>Buscar por imagen · Galería visual del Codex H</h2><p>Todos los folios en orden digital y con sus etiquetas IIIF originales. Selecciona una miniatura para leerla arriba.</p>
-<div class="filter"><input id="search" type="search" placeholder="f.1r · f.16v · imagen 150" aria-label="Buscar folio o número"><button id="reset">Mostrar todas</button></div>
+<div class="filter"><input id="search" type="search" placeholder="f. 45v · ff. 12r–14v · fs. ii r · imagen 150 · Vitr. 1 praef. 1" aria-label="Buscar por folio, intervalo, guarda, imagen digital o locus de Vitruvio"><button id="reset">Mostrar todas</button></div>
 <p id="gallery-status" role="status">Comprobando índice…</p><div id="grid"></div><button id="more" hidden>Mostrar más folios</button></section>
 <footer><p><strong>Créditos institucionales:</strong> The British Library, London, Harley MS 2767, Vitruvius, <em>De architectura</em>. Digitalización y etiquetas de folio procedentes del <a href="https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">manifiesto IIIF institucional</a>. Condiciones citadas por el proveedor: «Public Domain in most countries, other than the UK»; deben respetarse las condiciones aplicables.</p>
 <p>El repositorio conserva los nombres originales, la correspondencia de imagen y la huella SHA-256. No se presenta una equivalencia entre folios y loci sin cotejo.</p></footer>
-</main><script>
+</main><script src="assets/codicological-query.js?v=20261105-cq-v1"></script><script>
 (()=>{"use strict";const $=id=>document.getElementById(id);
 const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
 let folios=[],filtered=[],count=0,position=8,zoom=100,seq=0;const stage=$("stage"),img=$("image");
@@ -111,36 +111,51 @@ function setZoom(z,cx,cy){
 }
 function open(index,scroll=false){
  if(index<0||index>=folios.length)return;
- position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("folio-select").value=String(index);$("label").textContent="Folio: "+f.etiquetaOriginal;
+ position=index;const f=folios[index],ticket=++seq;$("number").value=index+1;$("folio-select").value=String(index);$("label").textContent="Folio: "+fol(f.etiquetaOriginal);
  $("prev").disabled=index===0;$("next").disabled=index===folios.length-1;
- $("message").textContent="Cargando "+f.etiquetaOriginal+"…";$("message").hidden=false;img.hidden=true;
- img.onload=()=>{if(ticket!==seq)return;img.hidden=false;$("message").hidden=true;setZoom(100);stage.scrollTo({left:0,top:0});$("state").textContent="Imagen digital "+(index+1)+"/"+folios.length+" · "+f.etiquetaOriginal+" · "+img.naturalWidth+" × "+img.naturalHeight+" px"};
+ $("message").textContent="Cargando "+fol(f.etiquetaOriginal)+"…";$("message").hidden=false;img.hidden=true;
+ img.onload=()=>{if(ticket!==seq)return;img.hidden=false;$("message").hidden=true;setZoom(100);stage.scrollTo({left:0,top:0});$("state").textContent="Imagen digital "+(index+1)+"/"+folios.length+" · "+fol(f.etiquetaOriginal)+" · "+img.naturalWidth+" × "+img.naturalHeight+" px"};
  img.onerror=()=>{if(ticket!==seq)return;$("message").textContent="No se pudo abrir esta fotografía local; el índice conserva la referencia.";};
- img.alt="Harley MS 2767 · "+f.etiquetaOriginal+" · imagen digital "+(index+1);img.src=file(f);
+ img.alt="Harley MS 2767 · "+fol(f.etiquetaOriginal)+" · imagen digital "+(index+1);img.src=file(f);
  $("grid").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));$("folio-quick").querySelectorAll("[data-i]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.i===index)));
  if(scroll)document.querySelector("section[aria-label='Lector de folios']").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function append(){const last=Math.min(filtered.length,count+48),frag=document.createDocumentFragment();for(const i of filtered.slice(count,last)){
  const f=folios[i],b=document.createElement("button");b.className="card";b.type="button";b.dataset.i=i;b.setAttribute("aria-current",String(i===position));
- const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+f.etiquetaOriginal;image.src=file(f);
- const n=document.createElement("strong"),label=document.createElement("span");n.textContent="Imagen "+(i+1);label.textContent=f.etiquetaOriginal;
+ const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+fol(f.etiquetaOriginal);image.src=file(f);
+ const n=document.createElement("strong"),label=document.createElement("span");n.textContent="Imagen "+(i+1);label.textContent=fol(f.etiquetaOriginal);
  b.append(image,n,label);b.addEventListener("click",()=>open(i,true));frag.append(b)}
  $("grid").append(frag);count=last;$("more").hidden=count>=filtered.length;$("gallery-status").textContent=filtered.length+" imágenes coincidentes · "+count+" miniaturas visibles"}
-function filter(){const raw=$("search").value.replace(/^imagen\s*/i,""),q=norm(raw);filtered=folios.map((_,i)=>i).filter(i=>!q||String(i+1)===q||norm(folios[i].etiquetaOriginal).includes(q));count=0;$("grid").replaceChildren();if(filtered.length)append();else{$("gallery-status").textContent="Sin coincidencias";$("more").hidden=true}}
+const fol=x=>String(x||"").replace(/^(fs?)\.\s*(?=[0-9ivxlc])/i,(m,p)=>p+". ");let locusMap=null;const CQ=()=>window.CodexQuery;
+function resolveQuery(text){const raw=String(text||"").trim();if(!raw)return {indices:null,note:""};const Q=CQ();
+ if(Q){const p=Q.parse(raw),labels=folios.map(f=>f.etiquetaOriginal);
+  if(p.image&&p.image>=1&&p.image<=folios.length)return {indices:[p.image-1],note:"Imagen digital "+p.image+" = "+fol(folios[p.image-1].etiquetaOriginal)+" (el número de imagen no es el folio)"};
+  if(p.range||p.folios.length){const hits=Q.match(p,labels);return {indices:hits,note:hits.length?"Consulta codicológica: Harley MS 2767, "+p.display+" · "+hits.length+" imagen(es)":"Harley MS 2767 no tiene "+p.display+" en la foliación IIIF"}}
+  if(p.locus){const e=(locusMap?.entries||[]).filter(x=>(x.loci||[]).some(l=>l.locus===p.locus));
+   if(e.length){const hits=e.map(x=>labels.findIndex(l=>Q.labelKey(l)===Q.labelKey(x.folio))).filter(i=>i>=0);
+    const st=e.flatMap(x=>x.loci.filter(l=>l.locus===p.locus).map(l=>l.status)).join(", ");
+    return {indices:hits,note:p.locusLabel+" → Harley MS 2767, "+e.map(x=>"f. "+x.folio).join(", ")+" · concordancia "+(st==="provisional"?"provisional (sin cotejo paleográfico completo)":st)}}
+   return {indices:[],note:p.locusLabel+": sin folio de H asignado con evidencia; consulte la concordancia folio–locus"}}}
+ const q=norm(raw.replace(/^imagen\s*/i,"")).replace(/\s+/g,"");
+ return {indices:folios.map((_,i)=>i).filter(i=>String(i+1)===q||norm(folios[i].etiquetaOriginal).replace(/\s+/g,"").includes(q)),note:""}}
+function filter(){const r=resolveQuery($("search").value);filtered=r.indices===null?folios.map((_,i)=>i):r.indices;count=0;$("grid").replaceChildren();if(filtered.length){append();if(r.note)$("gallery-status").textContent=r.note+" · "+$("gallery-status").textContent}else{$("gallery-status").textContent=r.note||"Sin coincidencias";$("more").hidden=true}}
 $("prev").addEventListener("click",()=>open(position-1));$("next").addEventListener("click",()=>open(position+1));$("number").addEventListener("change",()=>open(+$("number").value-1));$("folio-select").addEventListener("change",()=>open(Number($("folio-select").value),true));
 $("minus").addEventListener("click",()=>setZoom(zoom-25));$("plus").addEventListener("click",()=>setZoom(zoom+25));$("fit").addEventListener("click",()=>{setZoom(100);stage.scrollTo({top:0,left:0})});
 $("zoom").addEventListener("input",()=>setZoom(+$("zoom").value));img.addEventListener("click",e=>setZoom(zoom+50,e.clientX,e.clientY));
-$("search").addEventListener("input",filter);$("search").addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();filter();const q=norm($("search").value.replace(/^imagen\s*/i,"")).replace(/^f\.?\s*/,"");const exact=filtered.find(i=>norm(folios[i].etiquetaOriginal).replace(/^f\.?\s*/,"")===q||String(i+1)===q);const t=exact!==undefined?exact:(filtered.length===1?filtered[0]:undefined);if(t!==undefined)open(t,true)});$("reset").addEventListener("click",()=>{$("search").value="";filter()});$("more").addEventListener("click",append);
+$("search").addEventListener("input",filter);$("search").addEventListener("keydown",e=>{if(e.key!=="Enter")return;e.preventDefault();filter();if(filtered.length)open(filtered[0],true)});$("reset").addEventListener("click",()=>{$("search").value="";filter()});$("more").addEventListener("click",append);
 fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
  if(d.totalImagenes!==341||!Array.isArray(d.imagenes)||d.imagenes.length!==341||d.imagenes.some((x,i)=>x.numeroImagen!==i+1||!/^H_\d{3}_[a-z0-9-]+\.jpg$/.test(x.archivo)))throw Error("Índice inválido o incompleto");
  folios=d.imagenes;$("total").textContent="/ 341";$("number").max=341;
  const picker=$("folio-select"),fragment=document.createDocumentFragment();
- for(let i=0;i<folios.length;i++){const option=document.createElement("option");option.value=String(i);option.textContent=folios[i].etiquetaOriginal+" · imagen "+(i+1);fragment.append(option)}
+ for(let i=0;i<folios.length;i++){const option=document.createElement("option");option.value=String(i);option.textContent=fol(folios[i].etiquetaOriginal)+" · imagen "+(i+1);fragment.append(option)}
  picker.replaceChildren(fragment);picker.disabled=false;
  const quick=$("folio-quick");quick.replaceChildren();
- for(let i=8;i<Math.min(20,folios.length);i++){const button=document.createElement("button");button.type="button";button.dataset.i=String(i);button.textContent=folios[i].etiquetaOriginal;button.addEventListener("click",()=>open(i,true));quick.append(button)}
+ for(let i=8;i<Math.min(20,folios.length);i++){const button=document.createElement("button");button.type="button";button.dataset.i=String(i);button.textContent=fol(folios[i].etiquetaOriginal);button.addEventListener("click",()=>open(i,true));quick.append(button)}
  for(const id of ["prev","next","number","minus","plus","fit","zoom"])$(id).disabled=false;
- filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));const initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);open(initial>=0?initial:8);
+ filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));let initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);
+ const asked=params.get("q")||(initial<0?params.get("folio")||params.get("locus"):"");
+ const go=()=>{if(asked){$("search").value=asked;filter();if(initial<0&&filtered.length)initial=filtered[0]}open(initial>=0?initial:8)};
+ fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
 </script><script src="assets/codex-h-single-controls.js?v=20261104-reader-controls-contrast-v3" defer></script><script src="assets/vitruvia-codex-loupe.js?v=20261104-filter-linked-loupe-v2" defer></script>
