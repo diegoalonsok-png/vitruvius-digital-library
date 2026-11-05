@@ -64,7 +64,7 @@ const clean=q=>{
  let subject=cleaned;
  for(let i=0;i<2;i++){
   const next=subject.replace(suffix,"").trim();
-  if(next===subject||norm(next).split(" ").length<2)break;
+  if(next===subject||norm(next).length<3)break;
   subject=next;
  }
  return subject.length>=3?subject:full;
