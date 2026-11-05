@@ -309,6 +309,45 @@
       "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
       "startFolio": "341r",
       "dateStart": 1301
+    },
+    {
+      "id": "plato-parisinus-graecus-1807",
+      "workIds": [
+        "plato-republic",
+        "plato-timaeus",
+        "plato-laws"
+      ],
+      "title": "Platón · República, Timeo y Leyes — Parisinus graecus 1807 (A)",
+      "library": "Bibliothèque nationale de France, París",
+      "shelfmark": "Grec 1807",
+      "date": "siglo IX, tercer cuarto",
+      "dateStart": 850,
+      "coverage": "Testimonio griego en pergamino: República, ff. 3r–114r; Timeo, ff. 114r–144v; Leyes, ff. 155r–291r. Es un códice medieval, no un autógrafo de Platón. La numeración de la digitalización puede diferir de la foliación.",
+      "language": "grc",
+      "record": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
+      "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b8419248n",
+      "manifest": null,
+      "verification": "Biblissima/Gallica, cote Grec 1807; IRHT-CNRS Pinakes para obra, folios y datación (Rep., Tim., Leg.); consulta del facsímil en Gallica.",
+      "rights": "Bibliothèque nationale de France / Gallica: consultar condiciones de uso y reproducción. Se enlaza el facsímil externo; imágenes no copiadas al repositorio.",
+      "note": "El enlace de facsímil está identificado; no se afirma disponibilidad de un manifiesto IIIF reutilizable ni alineación automática con las ediciones modernas."
+    },
+    {
+      "id": "ovid-metamorphoses-vat-lat-2781",
+      "workIds": [
+        "ovid"
+      ],
+      "title": "Ovidio · Metamorphoses — Vaticanus latinus 2781",
+      "library": "Biblioteca Apostolica Vaticana, Ciudad del Vaticano",
+      "shelfmark": "Vat. lat. 2781",
+      "date": "siglos XIV–XV",
+      "dateStart": 1301,
+      "coverage": "Metamorphoses, ff. 1r–185v; Accessus ad Ovidii Metamorphoses, ff. 185v–189r; índice, f. 189v, según catálogo de DigiVatLib. No se presenta como el testimonio más antiguo conservado.",
+      "language": "la",
+      "record": "https://digi.vatlib.it/mss/detail/Vat.lat.2781",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.2781",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2781/manifest.json",
+      "verification": "DigiVatLib, catalogación directa, signatura, contenido y manifiesto IIIF oficial.",
+      "rights": "Imágenes © Biblioteca Apostolica Vaticana. Uso personal y académico de consulta; su reproducción/publicación requiere permiso del custodio. No se almacenan aquí."
     }
   ],
   "editions": [
@@ -584,6 +623,142 @@
       "url": "https://catalog.folger.edu/record/37379",
       "provider": "Loeb Classical Library · W. Heinemann / G. P. Putnam; catálogo Folger Shakespeare Library",
       "note": "Edición revisada del texto griego y traducción inglesa. Ficha bibliográfica institucional; no es acceso al texto íntegro."
+    },
+    {
+      "workId": "plato-republic",
+      "title": "Πολιτεία · texto griego",
+      "year": "1905",
+      "editor": "John Burnet",
+      "langs": [
+        "grc"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg030.perseus-grc2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Texto griego de República; edición moderna, no transcripción diplomática del manuscrito A.",
+      "note": "Obra griega original vinculada a una edición identificada; no existe correspondencia automática por folios.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "plato-republic",
+      "title": "Republic · traducción inglesa",
+      "year": "1935–1937",
+      "editor": "Paul Shorey",
+      "langs": [
+        "en"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg030.perseus-eng2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Traducción inglesa de República; libro completo en recurso externo.",
+      "note": "Edición académica distinguida del testimonio manuscrito.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "plato-timaeus",
+      "title": "Τίμαιος · texto griego",
+      "year": "1905",
+      "editor": "John Burnet",
+      "langs": [
+        "grc"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg031.perseus-grc2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Texto griego del Timeo; edición moderna.",
+      "note": "No se afirma coincidencia literal con variantes del códice Grec 1807.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "plato-timaeus",
+      "title": "Timaeus · traducción inglesa",
+      "year": "1929",
+      "editor": "R. G. Bury",
+      "langs": [
+        "en"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg031.perseus-eng2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Traducción inglesa del Timeo en biblioteca académica.",
+      "note": "No alojada en este proyecto.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "plato-laws",
+      "title": "Νόμοι · texto griego",
+      "year": "1914",
+      "editor": "John Burnet",
+      "langs": [
+        "grc"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg034.perseus-grc2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Texto griego de las Leyes; edición moderna.",
+      "note": "No se identifica como transcripción diplomática de Grec 1807.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "plato-laws",
+      "title": "Laws · traducción inglesa",
+      "year": "1926",
+      "editor": "R. G. Bury",
+      "langs": [
+        "en"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg034.perseus-eng2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Traducción inglesa de las Leyes.",
+      "note": "Edición académica externa.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "ovid",
+      "title": "Metamorphoses · texto latino",
+      "year": "1892–1919",
+      "editor": "Hugo Magnus",
+      "langs": [
+        "la"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AlatinLit%3Aphi0959.phi006.perseus-lat2/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Texto latino de Metamorfosis; edición crítica impresa moderna.",
+      "note": "No se trata de transcripción del Vat. lat. 2781.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "ovid",
+      "title": "Metamorphoses · traducción inglesa",
+      "year": "1922",
+      "editor": "Brookes More",
+      "langs": [
+        "en"
+      ],
+      "type": "external-academic-text",
+      "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AlatinLit%3Aphi0959.phi006.perseus-eng3/",
+      "provider": "Scaife ATLAS / Perseus Digital Library",
+      "coverage": "Traducción inglesa de Metamorfosis.",
+      "note": "Lectura externa enlazada y atribuida.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
+    },
+    {
+      "workId": "ovid",
+      "title": "The Ovid Collection · textos latinos y traducciones",
+      "year": "—",
+      "editor": "University of Virginia Electronic Text Center",
+      "langs": [
+        "la",
+        "en"
+      ],
+      "type": "external-academic-text",
+      "url": "https://ovid.lib.virginia.edu/",
+      "provider": "The Ovid Collection · University of Virginia",
+      "coverage": "Repositorio académico con versiones del texto latino y traducciones inglesas, además de otros materiales históricos.",
+      "note": "Los derechos varían según edición; consultar términos de cada texto antes de reproducir.",
+      "rights": "Consulta mediante sitio externo. No se copia ni aloja aquí el texto."
     }
   ]
 }
