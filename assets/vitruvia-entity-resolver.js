@@ -58,7 +58,16 @@ function entityMetadata(entity){
 const clean=q=>{
  const full=String(q||"").trim();
  const cleaned=full.replace(/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:biograf[ií]a|historia|vida|vida y obra|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|pel[ií]culas|filmograf[ií]a|libros|tratados|[aá]lbumes|discos|discograf[ií]a|planos|plantas|cortes|fachadas)\s+(?:de|del|sobre)\s+|(?:paintings|artworks|pictures|photographs|photos|images|films|movies|works|biography|history|albums|discography|plans)\s+(?:of|by|about)\s+)/i,"").trim();
- return cleaned.length>=3?cleaned:full;
+ // Search intent at the end belongs to a creator, not to the title of a
+ // similarly named UNESCO collection, book or other subject.
+ const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía)$/i;
+ let subject=cleaned;
+ for(let i=0;i<2;i++){
+  const next=subject.replace(suffix,"").trim();
+  if(next===subject||norm(next).split(" ").length<2)break;
+  subject=next;
+ }
+ return subject.length>=3?subject:full;
 };
 const invalid=p=>!p||p.missing!==undefined||p.pageprops?.disambiguation!==undefined||/(?:desambiguaci[oó]n|disambiguation|homonymie)/i.test(p.title||"");
 async function lookupTitle(title,lang){
