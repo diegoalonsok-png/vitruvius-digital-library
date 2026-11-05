@@ -174,6 +174,27 @@ function localCorrect(text){
  return changed?out.join(""):null;
 }
 
+/* ---------- Corrección general (cualquier palabra) ----------
+   Vocabulario de frecuencias tomado de los textos del sitio (traducción castellana y latín de Vitruvio)
+   más los nombres registrados. Se aplica cuando una búsqueda no da resultados o da muy pocos. */
+let words=null;
+async function loadWords(){
+ if(words)return words;words=new Map();
+ const add=t=>{for(const w of String(t||"").toLowerCase().match(/[\p{L}]{3,}/gu)||[]){const f=fold(w);const e=words.get(f);if(e)e.n++;else words.set(f,{w,n:1})}};
+ try{const d=await fetch("data/structured/recensio-es.json").then(r=>r.json());for(const p of d.passages||[]){add(p.translation);add(p.latin)}}catch{}
+ for(const [,orig] of vocab)add(orig);
+ return words;
+}
+async function generalCorrect(text){
+ const W=await loadWords();let changed=false;
+ const out=String(text).split(/(\s+)/).map(tok=>{const f=fold(tok);if(f.length<4||W.has(f)||vocab.has(f)||/\d/.test(f))return tok;
+  const max=f.length>=7?2:1;let best=null,bs=-1;
+  for(const [k,v] of W){if(Math.abs(k.length-f.length)>max)continue;if(k[0]!==f[0]&&k.slice(-2)!==f.slice(-2))continue;const d=dist(k,f);if(d>max)continue;const score=(max-d)*1000+Math.min(v.n,999);if(score>bs){bs=score;best=v.w}}
+  for(const [k,orig] of vocab){const d=dist(k,f);if(d<=max&&(max-d)*1000+999>bs){bs=(max-d)*1000+999;best=orig}}
+  if(best){changed=true;return /^\p{Lu}/u.test(tok)?best.charAt(0).toUpperCase()+best.slice(1):best}return tok});
+ return changed?out.join(""):null;
+}
+
 /* ---------- API pública ---------- */
 /* Sugerencias para el desplegable: entidades (con descripción) y completados de búsqueda. */
 async function suggest(text,lang){
@@ -184,6 +205,10 @@ async function suggest(text,lang){
  // Con errores de tipeo, Wikidata no encuentra nada: se usa el título difuso de Wikipedia.
  if(!ents.length&&fz[0]){const p2=new URLSearchParams({action:"wbsearchentities",search:fz[0],language:lang,uselang:lang,type:"item",limit:"3",format:"json",origin:"*"});
   const w2=await j("https://www.wikidata.org/w/api.php?"+p2,3500).catch(()=>null);ents=(w2?.search||[]).filter(x=>x.description&&!/desambiguaci|disambiguation|homonymie|Wikimedia/i.test(x.description))}
+ // Homónimos: se priorizan coincidencias exactas del nombre y descripciones de personas, grupos u obras;
+ // los usos religiosos o genéricos («Madonna» como advocación mariana) quedan después.
+ const qf=fold(q),rank=x=>(fold(x.label)===qf?40:fold(x.label).startsWith(qf)?20:0)+(/cantante|music|músic|singer|actriz|actor|arquitect|architect|escritor|writer|poeta|pintor|painter|director|banda|band|compositor/i.test(x.description)?15:0)-(/advocaci|virgen|iconograf|representaci|t[ií]tulo|apellido|nombre de pila|given name|family name/i.test(x.description)?25:0);
+ ents=ents.map((x,i)=>({x,s:rank(x)-i})).sort((a,b)=>b.s-a.s).map(o=>o.x);
  const entities=ents.slice(0,3).map(x=>({id:x.id,label:x.label,description:x.description}));
  const seen=new Set(entities.map(e=>fold(e.label)));const completions=[];
  const top=entities[0];
@@ -213,5 +238,5 @@ async function resolve(text,lang){
  }
  return{original:text,subject:parsed.subject,question:parsed.question,corrected:corrected&&fold(corrected)!==fold(parsed.subject)?corrected:null,title:ref?.title||title,entity:f,answer,lang};
 }
-window.VitruviaUnderstand={suggest,resolve,facts,summary,works,olCover,olBooks,setVocabulary,localCorrect,parseQuestion,bestTitle,fold,dist};
+window.VitruviaUnderstand={suggest,resolve,facts,summary,works,olCover,olBooks,setVocabulary,localCorrect,generalCorrect,parseQuestion,bestTitle,fold,dist};
 })();

@@ -28,6 +28,10 @@ function isAbout(subject,title){
  return significant.length?significant.some(x=>b.includes(x)):normalized(title).includes(normalized(subject));
 }
 function identity(query,rows){
+ // Si la consulta ya fue identificada en Wikidata (ficha de persona), esa entidad manda sobre las coincidencias de texto.
+ const ce=window.VitruviaCurrentEntity;
+ if(ce&&[ce.query,ce.corrected,ce.label].some(x=>x&&normalized(x)===normalized(query)))
+  return{type:'wikipedia',title:ce.label,entityCanonical:ce.label,entityDescription:ce.description,preferredWiki:true,wikidataId:ce.qid,link:ce.wiki?'https://'+(ce.wikiLang||'es')+'.wikipedia.org/wiki/'+encodeURIComponent(ce.wiki.replace(/ /g,'_')):''};
  const plan=window.VitruviaSemanticQuery?.plan(query);
  const terms=(plan?.terms||normalized(query).split(' ')).filter(x=>x.length>2);
  const identities=rows.filter(r=>r.type==='wikipedia'&&r.link&&(

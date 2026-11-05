@@ -24,7 +24,7 @@ function css(){if($("vitruvia-entity-style"))return;const s=el("style");s.id="vi
 .vu-card h3{font:600 11px/1.4 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin:16px 0 8px;opacity:.75}
 .vu-work{border-top:1px solid rgba(150,140,120,.3);padding:9px 0}.vu-work strong{display:block;font:400 17px/1.3 Georgia,serif}.vu-work p{margin:2px 0 4px;opacity:.85}
 .vu-links{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px}.vu-links a{text-decoration:underline;text-underline-offset:3px}
-.vu-src{font-size:11px;opacity:.65;margin-top:12px}.vu-year{opacity:.7;font:600 13px Arial,sans-serif}.vu-more{margin:8px 0;border:1px solid rgba(150,140,120,.6);background:transparent;color:inherit;border-radius:999px;padding:7px 14px;cursor:pointer}`;document.head.append(s)}
+.vu-src{font-size:11px;opacity:.65;margin-top:12px}.vu-year{opacity:.7;font:600 13px Arial,sans-serif}.vu-fold summary{cursor:pointer;font:600 12px/1.5 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin:12px 0 6px}.vu-more{margin:8px 0;border:1px solid rgba(150,140,120,.6);background:transparent;color:inherit;border-radius:999px;padding:7px 14px;cursor:pointer}`;document.head.append(s)}
 function ensureHosts(){
  css();const list=$("result-list");if(!list)return{};
  let top=$("vitruvia-understanding");if(!top){top=el("div");top.id="vitruvia-understanding";list.before(top)}
@@ -85,11 +85,21 @@ async function renderWorks(box,f,kind){
    for(const [t,u] of actions(w,f.label))ln.append(a(t+" ↗",u));info.append(ln);item.append(info);box.append(item)}
   if(list.length>n){const more=el("button","vu-more",T("Ver todas (","Show all (","Tout afficher (")+list.length+")");more.type="button";more.addEventListener("click",()=>draw(list.length));box.append(more)}};
  draw(12);
+ // Si el dossier de catálogos ya muestra libros o álbumes con portada, la cronología de Wikidata queda plegada
+ // para no repetir la misma lista dos veces en la columna.
+ if(["book","album"].includes(main)){const panel=document.getElementById("vitruvia-context");let done=false;
+  const fold=()=>{if(done||!panel||!box.isConnected)return;const ds=panel.querySelector(".web-dossier");if(!ds||!ds.querySelector(".web-dossier-cover"))return;done=true;
+   const det=el("details","vu-fold");const sum=el("summary",null,T("Cronología completa según Wikidata · ","Full chronology from Wikidata · ","Chronologie complète selon Wikidata · ")+list.length);det.append(sum);
+   while(box.firstChild)det.append(box.firstChild);box.append(det);det.querySelector("h3")?.remove()};
+  fold();if(panel){const mo=new MutationObserver(fold);mo.observe(panel,{childList:true,subtree:true});setTimeout(()=>mo.disconnect(),15000)}}
  const others=[...new Set(all.map(w=>w.kind))].filter(k=>k!==main&&k!=="song"&&HEAD[k]);
  if(others.length){const o=el("p","vu-src",T("También hay en Wikidata: ","Also in Wikidata: ","Aussi dans Wikidata : ")+others.map(k=>T(...HEAD[k]).split(" · ")[0].toLowerCase()+" ("+all.filter(w=>w.kind===k).length+")").join(", "));box.append(o)}
 }
 async function renderCard(r){
  const f=r.entity;if(!f||!["person","band"].includes(f.kind))return;
+ // Entidad identificada (Wikidata): los demás paneles la usan para no confundir homónimos (p. ej., Madonna y la Virgen María).
+ window.VitruviaCurrentEntity={qid:f.qid,label:f.label,description:f.description,query:r.original,corrected:r.corrected,wiki:f.wiki,wikiLang:f.wikiLang,kind:f.kind};
+ window.dispatchEvent(new CustomEvent("vitruvia:entity",{detail:window.VitruviaCurrentEntity}));
  const panel=$("vitruvia-context");if(!panel)return;
  const kind=classify(f);
  const card=el("section","vu-card");card.id="vitruvia-entity-card";card.setAttribute("aria-label",T("Ficha de ","Profile of ","Fiche de ")+f.label);
@@ -120,7 +130,7 @@ function place(){
  if(!panel.contains(current.card)){panel.prepend(current.card)}panel.hidden=false;
 }
 async function onSearch(query){
- const me=++serial;current=null;$("vitruvia-entity-card")?.remove();const hosts=ensureHosts();if(hosts.top)hosts.top.replaceChildren();
+ const me=++serial;current=null;window.VitruviaCurrentEntity=null;$("vitruvia-entity-card")?.remove();const hosts=ensureHosts();if(hosts.top)hosts.top.replaceChildren();
  if(!window.VitruviaUnderstand||!query||query.length<2)return;
  if(/^(?:vitr|[ivx]+\.\d|\d+\.\d|f\.|fol)/i.test(query.trim()))return; // locus o folio: lo resuelve el índice propio
  const r=await Promise.race([window.VitruviaUnderstand.resolve(query,lang()),new Promise(res=>setTimeout(()=>res(null),6000))]).catch(()=>null);
@@ -151,7 +161,17 @@ async function onSearch(query){
  await renderCard(r);
 }
 window.addEventListener("vitruvia:search",e=>onSearch(e.detail?.query||""));
-window.addEventListener("vitruvia:results",()=>setTimeout(place,0));
+// Corrección general: si la búsqueda no da resultados (o casi), se prueba la forma corregida de cualquier palabra.
+const triedFallback=new Set();
+window.addEventListener("vitruvia:results",async e=>{setTimeout(place,0);
+ const q=String(e.detail?.query||"").trim(),n=(e.detail?.rows||[]).length;
+ if(!q||n>2||triedFallback.has(q)||skipCorrectionFor===q||!window.VitruviaUnderstand)return;triedFallback.add(q);
+ const U=window.VitruviaUnderstand;
+ let fix=U.localCorrect(q)||await U.generalCorrect(q).catch(()=>null);
+ if(!fix){const r=await U.bestTitle(q,lang()).catch(()=>null);fix=r?.corrected||null}
+ if(!fix||U.fold(fix)===U.fold(q))return;
+ skipCorrectionFor=fix;originalBeforeCorrection=q;const input=$("query"),form=$("search-form");if(input&&form){input.value=fix;form.requestSubmit()}
+});
 window.addEventListener("vitruvia:clear",()=>{serial++;current=null;$("vitruvia-entity-card")?.remove();$("vitruvia-understanding")?.replaceChildren()});
 document.addEventListener("DOMContentLoaded",()=>{const panel=$("vitruvia-context");if(panel)new MutationObserver(()=>{if(current&&!panel.contains(current.card))setTimeout(place,0)}).observe(panel,{childList:true})});
 })();
