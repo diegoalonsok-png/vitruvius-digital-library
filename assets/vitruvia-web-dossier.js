@@ -357,12 +357,22 @@ function render(panel,query,rows,isCurrent){
    records=[primary,...records.filter(x=>!x.preferredWiki)];
   }
   const topic=topicType(query,records);
+  // Work lists must inherit the verified Wikidata person, not a stale namesake.
+  if(authority?.wikidataId&&authority.kind==='person'){
+   topic.person=records[0];
+   topic.name=authority.catalogName||authority.canonical;
+   const role=normalized(authority.authorityDescription||authority.description||'');
+   if(/\b(singer|cantante|musician|musico|composer|compositor|rapper|band|banda|music|musica)\b/.test(role))topic.kind='music';
+   else if(/\b(film director|filmmaker|cineasta|director de cine|screenwriter|actor|actress|actriz)\b/.test(role))topic.kind='cinema';
+   else if(/\b(architect|arquitecto|arquitecta|engineer|ingeniero|ingeniera)\b/.test(role))topic.kind='architect';
+   else if(/\b(writer|author|novelist|poet|poeta|escritor|escritora)\b/.test(role))topic.kind='author';
+  }
   const sameIdentity=!authority?.wikidataId||!topic.person?.wikidataId||authority.wikidataId===topic.person.wikidataId;
   topic.aliases=sameIdentity?(authority?.aliases||[]):[];
   if(sameIdentity&&authority?.catalogName&&topic.kind!=='literary-work')topic.name=authority.catalogName;
   status.remove();
   if(!topic.person&&topic.kind==='general'){section.remove();return}
-  if(topic.person?.title||authority?.canonical){const title=panel.querySelector('.context-term');if(title)title.textContent=topic.person?.title||authority.canonical}
+  if(topic.person?.title||authority?.canonical){const title=panel.querySelector('.context-term');if(title)title.textContent=authority?.canonical||topic.person?.title}
   if(sameIdentity&&authority?.spellingMatch)section.append(el('p','cultural-correction',L('Resultado para ','Showing ','Résultat pour ')+authority.canonical+L('. Escribiste «','. You entered “','. Vous avez saisi « ')+authority.spellingMatch+L('».','”.',' ».')));
   if(topic.person)info(section,L('Obras propias con imágenes y fuentes, ordenadas de la más antigua a la más reciente.',
    'The subject’s works with images and sources, from oldest to newest.',
