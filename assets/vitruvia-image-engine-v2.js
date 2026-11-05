@@ -47,7 +47,11 @@ const groupLabel=group=>window.VitruviaDiscovery?.groups[group]?.[document.docum
 function external(label,url){const a=create(actions,"a","",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer"}
 function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";quick.replaceChildren();quick.hidden=true;const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
 async function getJSON(params,signal){
- const r=await fetch("https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"}),{signal,headers:{Accept:"application/json"}});
+ const url="https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"});
+ // Centralize Commons requests: the shared transport deduplicates identical
+ // requests, bounds its memory cache, honours cancellation and throttles 429s.
+ if(window.VitruviaData?.remoteJSON)return window.VitruviaData.remoteJSON(url,{signal,timeoutMs:9000,maxAge:120000});
+ const r=await fetch(url,{signal,headers:{Accept:"application/json"}});
  if(!r.ok)throw Error("Wikimedia Commons HTTP "+r.status);
  const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d;
 }
