@@ -157,16 +157,9 @@ function displayGroups(items,topic){
   (window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5)).slice(0,5).forEach(item=>displayItem(item,strip));
   quick.hidden=false;
  }
+ // Keep one quick image strip above the article, not a duplicate inside it.
  const preview=document.getElementById("article-image-preview");
- if(preview&&items.length){
-  preview.replaceChildren();preview.hidden=false;
-  const bar=create(preview,"div","article-image-preview-heading");
-  create(bar,"span","",locale("Imágenes: ","Images: ","Images : ")+topic.subject);
-  const link=create(bar,"a","",locale("Ver galería y fuentes","View gallery and sources","Voir la galerie et les sources"));link.href="#vitruvia-images";
-  const strip=create(preview,"div","article-image-preview-grid");
-  const selected=window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5);
-  selected.forEach(item=>displayItem(item,strip));
- }
+ if(preview){preview.replaceChildren();preview.hidden=true}
  // Only already-vetted Wikimedia files are shared with the featured illustration.
  window.dispatchEvent(new CustomEvent("vitruvia:documentary-images",{
   detail:{query:currentImageQuery,kind:topic.kind,items:items.slice(0,12)}
@@ -288,6 +281,18 @@ async function searchImages(query){
    if(id!==active)return;if(again)identity=again}
  }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
+ const role=fold(identity?.authorityDescription||identity?.description||"");
+ const isArchitect=Boolean(identity?.wikidataId&&(identity.kind==="person"||identity.instanceOf?.includes("Q5"))&&
+  /\b(arquitect\w*|architect\w*|ingenier\w*|engineer\w*|architet\w*)\b/.test(role));
+ if(isArchitect){
+  const full=String(identity.commonsSearchName||identity.originalCanonical||identity.canonical||"").trim();
+  const local=String(identity.canonical||"").trim();
+  const fullNames=distinct([full,local,...(identity.aliases||[])]).filter(n=>tokens(n).length>=2);
+  topic.aliases=fullNames.length?fullNames.slice(0,7):[full];
+  topic.queries=distinct([full+" architecture",full+" buildings",full+" bridges",full+" architect",local+" arquitectura"]).slice(0,5);
+  topic.architect=true;
+ }
+
  const isFilm=Boolean(identity?.instanceOf?.includes("Q11424")||
   /\b(?:film|movie|pelicula|largometraje|motion picture|feature film)\b/.test(fold(identity?.authorityDescription||identity?.description||"")));
  if(isFilm){
@@ -350,6 +355,20 @@ async function searchImages(query){
    if(id!==active)return;
    for(const record of records)if(record.status==="fulfilled")
     pages.push(...Object.values(record.value.data.query?.pages||{}).map(x=>({...x,sourceCategory:record.value.title,fromTrustedCategory:true})));
+  }
+  if(isArchitect){
+   const parts=tokens(identity.commonsSearchName||identity.originalCanonical||identity.canonical);
+   const first=parts[0]||"",surname=parts[parts.length-1]||"";
+   const built=/\b(architecture|architectural|building|buildings|bridge|bridges|station|railway|airport|museum|museo|puente|estacion|estadio|stadium|tower|torre|terminal|ciudad|city|pavilion|pabellon|viaduct|viaducto|auditorium|auditorio|guillemins|construction)\b/;
+   const filtered=pages.filter(page=>{
+    if(page.fromEntityImage)return true;
+    const title=fold(page.title||""),context=fold(page.sourceCategory||"");
+    const fullName=first&&surname&&title.includes(first)&&title.includes(surname);
+    const architecture=title.includes(surname)&&built.test(title+" "+context);
+    const verifiedCategory=page.fromTrustedCategory&&context.includes(first)&&context.includes(surname);
+    return Boolean(fullName||architecture||verifiedCategory);
+   });
+   pages.splice(0,pages.length,...filtered);
   }
   let candidatePages=pages;
    if(isFilm){
