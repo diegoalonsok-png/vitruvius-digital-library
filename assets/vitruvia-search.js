@@ -462,6 +462,28 @@ async function crossref(generalQuery){
    link:"https://doi.org/"+encodeURIComponent(x.DOI),source:"Crossref",year:date[0]||null,publisher:x.publisher||"",journal:x["container-title"]?.[0]||"",volume:x.volume||"",issue:x.issue||"",pages:x.page||"",doi:x.DOI,recordKind:x.type||"journal-article"};
  })
 }
+/* OpenAlex: índice abierto de obras académicas (CORS abierto, sin clave). */
+async function openAlex(generalQuery){
+ const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,type,open_access,cited_by_count"});
+ const d=await fetchJSON("https://api.openalex.org/works?"+params,12000);
+ return (d.results||[]).filter(x=>x.title).map((x,i)=>{
+  const author=(x.authorships||[]).slice(0,2).map(a=>a.author?.display_name).filter(Boolean).join(", ");
+  const venue=x.primary_location?.source?.display_name||"";
+  const oa=x.open_access?.is_oa?" · acceso abierto":"";
+  return {type:"article",title:x.title,author,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
+   meta:"OpenAlex · índice académico abierto"+(x.doi?" · DOI":""),rating:24-i+culturalWeight(x.title,venue),
+   link:x.doi||x.open_access?.oa_url||x.id,source:"OpenAlex",year:x.publication_year||null,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
+ });
+}
+/* Getty AAT: término normalizado del tesauro de arte y arquitectura (SPARQL público). */
+async function gettyAat(generalQuery){
+ const term=String(generalQuery||"").trim().replace(/["\\]/g,"");if(!term||term.split(/\s+/).length>4)return[];
+ const sparql=`select ?s ?label ?scope where { ?s a skos:Concept; skos:inScheme aat: ; luc:term "${term}"; gvp:prefLabelGVP/xl:literalForm ?label . optional { ?s skos:scopeNote/rdf:value ?scope . filter(lang(?scope)="en") } } limit 5`;
+ const d=await fetchJSON("https://vocab.getty.edu/sparql.json?"+new URLSearchParams({query:sparql}),9000);
+ return (d.results?.bindings||[]).map((b,i)=>({type:"topic",title:b.label?.value||term,author:"Getty Art & Architecture Thesaurus",
+  excerpt:(b.scope?.value||"Término normalizado del tesauro AAT.").slice(0,320),meta:"GETTY AAT · VOCABULARIO CONTROLADO (ODC-By)",rating:40-i,
+  link:b.s?.value||"https://www.getty.edu/research/tools/vocabularies/aat/",source:"Getty AAT"}));
+}
 async function europePmc(generalQuery){
  const params=new URLSearchParams({query:generalQuery,format:"json",pageSize:"6",resultType:"core"});
  const d=await fetchJSON("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+params,12000);
@@ -772,10 +794,26 @@ function display(rows,query,phase){
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
- if(!ordered.length)list.append(node("div","empty",T().none));
+ if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
+  st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
+  document.head.append(st)}
+ // Facetas: filtrar la lista por tipo de fuente sin perder el orden académico.
+ const facetGroups=[...grouped].filter(([,a])=>a.length);
+ if(S.facet&&!facetGroups.some(([g])=>g===S.facet))S.facet="";
+ if(facetGroups.length>1){
+  const bar=node("div","result-facets");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label",S.lang==="en"?"Filter by source type":S.lang==="fr"?"Filtrer par type de source":"Filtrar por tipo de fuente");
+  const short=t=>String(t||"").split(" · ")[0];
+  const mk=(g,label,n)=>{const b=node("button","result-facet"+(S.facet===g?" active":""),label+" · "+n);b.type="button";b.setAttribute("aria-pressed",String(S.facet===g));
+   b.addEventListener("click",()=>{S.facet=g;display(rows,query,phase)});bar.append(b)};
+  mk("",S.lang==="en"?"All":S.lang==="fr"?"Tout":"Todo",ordered.length);
+  for(const [g,a] of facetGroups)mk(g,short(titles[g]||g),a.length);
+  list.append(bar);
+ }
+ const shown=S.facet?ordered.filter(r=>byGroup(r)===S.facet):ordered;
+ if(!shown.length)list.append(node("div","empty",T().none));
  else {
   let lastGroup="",lastBlock="";
-  for(const r of ordered.slice(0,S.visibleResultCount)){
+  for(const r of shown.slice(0,S.visibleResultCount)){
    // The source-first manuscript card has already been displayed above the
    // encyclopedia: do not duplicate the same shelfmark in the regular list.
    if(selectedManuscript&&r.type==="manuscript"&&
@@ -856,14 +894,21 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  ["Google Books","https://books.google.com/books?"+new URLSearchParams({q:query})],
  ["Wikipedia en español","https://es.wikipedia.org/w/index.php?"+new URLSearchParams({search:query})],
  ["Wikipedia in English","https://en.wikipedia.org/w/index.php?"+new URLSearchParams({search:query})],
- ["Open Library","https://openlibrary.org/search?"+new URLSearchParams({q:query})]
+ ["Open Library","https://openlibrary.org/search?"+new URLSearchParams({q:query})],
+ ["Zenon · DAI (arqueología y Antigüedad)","https://zenon.dainst.org/Search/Results?"+new URLSearchParams({lookfor:query,type:"AllFields"})],
+ ["Persée","https://www.persee.fr/search?"+new URLSearchParams({ta:"article",q:query})],
+ ["Dialnet","https://dialnet.unirioja.es/buscar/documentos?"+new URLSearchParams({querysDismax:query})],
+ ["Pleiades · lugares antiguos","https://pleiades.stoa.org/search?"+new URLSearchParams({SearchableText:query})],
+ ["Getty AAT · tesauro de arquitectura","https://www.getty.edu/vow/AATServlet?"+new URLSearchParams({english:"N",find:query,logic:"AND",page:"1",note:""})],
+ ["OpenAlex","https://openalex.org/works?"+new URLSearchParams({search:query})],
+ ["L'Année philologique (suscripción)","https://about.brepolis.net/aph-lannee-philologique/"]
  ];
  const h=node("h3",null,T().external);parent.append(h);
  for(const [label,url] of links){const a=makeLink(label+" ↗",url);if(a)parent.append(a)}
  const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
 async function search(){
- const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;if(!q)return;
+ const q=$("query").value.trim(),id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
  const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));
@@ -993,6 +1038,8 @@ async function search(){
   pending.push(museum(q).then(rows=>({name:"The Met",rows})).catch(e=>({name:"The Met sin respuesta: "+e.message,rows:[]})));
   pending.push(crossref(q).then(rows=>({name:"Crossref",rows})).catch(e=>({name:"Crossref sin respuesta: "+e.message,rows:[]})));
   pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
+  pending.push(openAlex(q).then(rows=>({name:"OpenAlex",rows})).catch(e=>({name:"OpenAlex sin respuesta: "+e.message,rows:[]})));
+  pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
  }
  if(!pending.length){display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
