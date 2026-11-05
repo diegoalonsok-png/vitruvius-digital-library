@@ -9,7 +9,10 @@ const ED={
 const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const cite=l=>{const [b,...r]=String(l).split(".");return (R[+b]||b)+"."+r.join(".").replace(/^praef\./,"praef. ")};
 function texts(ed,locus,page){const e=ED[ed]||ED["recensio-es"],loc="Vitr. "+cite(locus),pg=page?", "+page:"";
+ // Identificador persistente del pasaje (Canonical Text Services, numeración de Perseus: phi1056.phi001).
+ const urn="urn:cts:latinLit:phi1056.phi001:"+String(locus).replace(/^(\d+)\.praef\./,"$1.pr.");
  return {
+  urn,
   nota:"Vitruvio, De architectura "+cite(locus)+", en Diego Kurilo, "+e.title+" ("+e.v+"; Sophia Lux Ediciones Académicas, 2026)"+pg+", https://doi.org/"+e.doi+".",
   bibliografia:"Kurilo, Diego. "+e.title+". "+e.v+". Sophia Lux Ediciones Académicas, 2026. https://doi.org/"+e.doi+".",
   bibtex:"@book{kurilo2026"+e.v.toLowerCase()+",\n  author    = {Kurilo, Diego},\n  title     = {"+e.title+"},\n  edition   = {"+e.v+"},\n  publisher = {Sophia Lux Ediciones Académicas},\n  year      = {2026},\n  doi       = {"+e.doi+"},\n  note      = {"+loc+(page?", "+page:"")+"}\n}"}}
@@ -24,7 +27,7 @@ function decorate(article){
  b.style.cssText="font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer";
  const box=document.createElement("div");box.hidden=true;box.style.cssText="margin:10px 0;padding:10px 12px;border:1px solid rgba(160,140,100,.5);font-size:.9em";
  const t=texts(ed,locus,page);
- for(const [k,label] of [["nota","Chicago · nota"],["bibliografia","Chicago · bibliografía"],["bibtex","BibTeX"]]){
+ for(const [k,label] of [["nota","Chicago · nota"],["bibliografia","Chicago · bibliografía"],["bibtex","BibTeX"],["urn","URN CTS del pasaje"]]){
   const row=document.createElement("div");row.style.margin="0 0 8px";
   const lab=document.createElement("strong");lab.textContent=label+" ";const copy=document.createElement("button");copy.type="button";copy.textContent="Copiar";copy.style.cssText="font:inherit;font-size:.85em;margin-left:6px";
   const pre=document.createElement(k==="bibtex"?"pre":"p");pre.textContent=t[k];pre.style.cssText="margin:4px 0;white-space:pre-wrap";

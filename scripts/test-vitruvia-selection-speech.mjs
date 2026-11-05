@@ -13,7 +13,7 @@ const document={readyState:'loading',addEventListener(event,cb){
 vm.runInNewContext(js,{window,document,console}, {timeout:1000});
 const split=window.VitruviaSelectionSpeech?.splitText;
 assert.equal(typeof split,'function');
-assert.equal(window.VitruviaSelectionSpeech.version,'1.0');
+assert.equal(window.VitruviaSelectionSpeech.version,'2.0-site-wide');
 assert.deepEqual(Array.from(split('')),[]);
 assert.deepEqual(Array.from(split('Un párrafo corto.')),['Un párrafo corto.']);
 const long=Array(160).fill('palabras latinas para estudiar textos').join(' ');
