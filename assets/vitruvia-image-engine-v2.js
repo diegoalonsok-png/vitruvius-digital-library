@@ -161,6 +161,34 @@ async function localCodex(id){
   status.textContent=list.length+" imágenes del Codex H · colección local";
  }catch{if(id===active)status.textContent="Abrir galería local de manuscritos."}
 }
+function entityFor(q,ms){
+ const same=e=>e&&[e.query,e.corrected,e.label].some(x=>fold(x||"")===fold(q));
+ if(same(window.VitruviaCurrentEntity))return Promise.resolve(window.VitruviaCurrentEntity);
+ return new Promise(done=>{const t=setTimeout(()=>{window.removeEventListener("vitruvia:entity",on);done(null)},ms);
+  function on(ev){if(same(ev.detail)){clearTimeout(t);window.removeEventListener("vitruvia:entity",on);done(ev.detail)}}
+  window.addEventListener("vitruvia:entity",on)});
+}
+/* Libros: tapas de ediciones (Open Library), del primer año de publicación en adelante.
+   Se agregan a la galería, después de las imágenes de Commons, con enlace a la ficha de cada edición. */
+const BOOKISH=/\b(novela|libro|libros|obra literaria|poema|poemario|ensayo|tratado|cuento|saga|novel|book|books|literary work|poem|essay|treatise|roman|livre|ouvrage)\b/;
+async function addBookCovers(id,topic,identity,q){
+ const desc=fold((identity?.authorityDescription||"")+" "+(identity?.description||"").slice(0,200));
+ if(!(topic.intent==="books"||BOOKISH.test(desc)||/\b(libro|libros|book|books|novela|novel)\b/.test(fold(q))))return 0;
+ const title=String(identity?.originalCanonical||identity?.canonical||topic.subject||q).replace(/\s*\((?:novela|libro|novel|book)[^)]*\)\s*$/i,"").replace(/^(?:libros?|books?|novela|novel)\s+(?:de|del|of|sobre|about)?\s*/i,"");
+ const params=new URLSearchParams({q:title,limit:"40",fields:"key,title,author_name,first_publish_year,cover_i,edition_count"});
+ const data=await fetch("https://openlibrary.org/search.json?"+params,{headers:{Accept:"application/json"}}).then(r=>r.ok?r.json():null).catch(()=>null);
+ if(id!==active||!data)return 0;
+ const docs=(data.docs||[]).filter(d=>d.cover_i&&d.title).sort((a,b)=>(a.first_publish_year||9999)-(b.first_publish_year||9999)).slice(0,16);
+ if(!docs.length)return 0;
+ groupTitle(locale("Tapas de ediciones · Open Library","Edition covers · Open Library","Couvertures d’éditions · Open Library"));
+ for(const d of docs){
+  const author=(d.author_name||[]).slice(0,2).join(", ");
+  displayItem({name:d.title,caption:[d.title,d.first_publish_year,author].filter(Boolean).join(" · "),
+   preview:"https://covers.openlibrary.org/b/id/"+d.cover_i+"-M.jpg",original:"https://covers.openlibrary.org/b/id/"+d.cover_i+"-L.jpg",
+   page:"https://openlibrary.org"+d.key,license:"",credit:locale("Open Library · tapa de edición; derechos de la editorial","Open Library · edition cover; publisher’s rights","Open Library · couverture ; droits de l’éditeur"),score:0,group:"book"});
+ }
+ return docs.length;
+}
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
@@ -172,8 +200,17 @@ async function searchImages(query){
  external("Google Imágenes","https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q));
  external("Europeana","https://www.europeana.eu/es/search?query="+encodeURIComponent(q));
  const language=document.documentElement.lang||"es";
- const identity=await window.VitruviaEntityResolver?.resolve(q,language).catch(()=>null);
+ let identity=await window.VitruviaEntityResolver?.resolve(q,language).catch(()=>null);
  if(id!==active)return;
+ // Consulta con errores o en otro idioma («2001 odisea en el espacio», «A Pace Odyssey»): si el resolvedor
+ // directo no identifica nada, se usa la entidad que identificó la ficha de Vitruvia (Wikidata) y se
+ // resuelve por su título; así llegan sus nombres en todos los idiomas y su categoría de Commons.
+ if(!identity?.wikidataId){
+  const ce=await entityFor(q,6000);
+  if(id!==active)return;
+  if(ce){const again=await window.VitruviaEntityResolver?.resolve(ce.wiki||ce.label,ce.wikiLang||language).catch(()=>null);
+   if(id!==active)return;if(again)identity=again}
+ }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
  section.dataset.entityId=identity?.wikidataId||"";section.dataset.commonsCategory=identity?.commonsCategory||"";
  const subject=topic.subject,paintings=paintingWords.test(fold(q)),photos=photoWords.test(fold(q));
@@ -230,9 +267,11 @@ async function searchImages(query){
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
    if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
-  }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
+  }else{grid.replaceChildren();status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
    "No sufficiently identified images were retrieved. Try the external collections.",
-   "Aucune image suffisamment documentée. Consulter les collections externes.");
+   "Aucune image suffisamment documentée. Consulter les collections externes.");}
+  const covers=await addBookCovers(id,topic,identity,q);
+  if(covers&&!items.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){
   if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
    "The image service did not respond; use the linked archives.",

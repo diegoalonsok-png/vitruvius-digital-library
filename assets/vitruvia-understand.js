@@ -166,9 +166,10 @@ async function olBooks(author,limit=30){
 const vocab=new Map(); // forma plegada → forma original con tildes
 // Solo nombres propios (con mayúscula inicial): así no se «corrigen» palabras comunes válidas.
 function setVocabulary(list){for(const item of list||[])for(const w of String(item||"").split(/[\s,.;:·()\/«»"-]+/)){const f=fold(w);if(f.length>=4&&/^\p{Lu}/u.test(w)&&!vocab.has(f))vocab.set(f,w)}}
+const COMMON=new Set("space espacio odyssey odisea time tiempo world mundo house casa city ciudad love amor night noche life vida book libro song cancion music musica history historia star stars war guerra king rey queen reina man woman hombre mujer black white blanco negro water agua fire fuego earth tierra light luz dark the and with para como sobre entre".split(" "));
 function localCorrect(text){
  if(!vocab.size)return null;let changed=false;
- const out=String(text).split(/(\s+)/).map(tok=>{const f=fold(tok);if(f.length<4||vocab.has(f)||/\d/.test(f))return tok;
+ const out=String(text).split(/(\s+)/).map(tok=>{const f=fold(tok);if(f.length<4||vocab.has(f)||COMMON.has(f)||words?.has(f)||/\d/.test(f))return tok;
   let best=null,bd=9;for(const [k,orig] of vocab){if(k[0]!==f[0]||Math.abs(k.length-f.length)>2)continue;const d=dist(k,f);if(d<bd){bd=d;best=orig}}
   if(best&&bd<=(f.length>=7?2:1)){changed=true;return best}return tok});
  return changed?out.join(""):null;
@@ -226,9 +227,12 @@ async function suggest(text,lang){
 /* Consulta completa: pregunta, corrección, entidad y respuesta directa si existe. */
 async function resolve(text,lang){
  lang=L(lang);const parsed=parseQuestion(text);
- const local=localCorrect(parsed.subject);
- let {title,corrected}=await bestTitle(local||parsed.subject,lang);
- if(local&&!corrected)corrected=local;
+ // Primero la consulta tal como se escribió: las palabras correctas («Space», «espacio») nunca se
+ // reemplazan por nombres parecidos del vocabulario del sitio («Pace», «Estacio»). El vocabulario
+ // propio solo corrige cuando la enciclopedia no reconoce nada.
+ let {title,corrected}=await bestTitle(parsed.subject,lang);
+ if(!title){const local=localCorrect(parsed.subject);
+  if(local){const r2=await bestTitle(local,lang);if(r2.title){title=r2.title;corrected=r2.corrected||local}}}
  // Acepción elegida por la persona (otras acepciones): manda sobre la búsqueda automática.
  let forced=null;try{forced=JSON.parse(sessionStorage.getItem("vitruvia-sense")||"{}")[fold(parsed.subject)]||null}catch{}
  const ref=forced?{qid:forced,title}:await qidFor(title,lang);const f=ref?.qid?await facts(ref.qid,lang):null;
