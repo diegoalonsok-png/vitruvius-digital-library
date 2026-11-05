@@ -28,7 +28,7 @@ for(const [code,words] of Object.entries(longInterfaceWords))Object.assign(inter
 function translateInterface(){
 const lang=language(),dict=interfaceWords[lang]||interfaceWords.es;
 document.documentElement.lang=lang;
-document.querySelectorAll("[data-bi]").forEach(el=>{const v=dict[el.dataset.bi];if(v)el.textContent=v});const query=$("classic-query");if(query)query.placeholder=dict["search-placeholder"];const clear=$("classic-clear");if(clear){clear.title=dict["clear-aria"];clear.setAttribute("aria-label",dict["clear-aria"])}
+document.querySelectorAll("[data-bi]").forEach(el=>{const v=dict[el.dataset.bi];if(v)el.textContent=v});const witness=$("classic-witness-count");if(witness&&witnessData.records?.length)witness.textContent=witnessData.records.length+" "+dict["witness-count"];const query=$("classic-query");if(query)query.placeholder=dict["search-placeholder"];const clear=$("classic-clear");if(clear){clear.title=dict["clear-aria"];clear.setAttribute("aria-label",dict["clear-aria"])}
 try{localStorage.setItem("vitruvius-ui-lang",lang)}catch{}
 }
 
