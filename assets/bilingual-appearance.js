@@ -26,6 +26,7 @@
    '<p class="bilingual-appearance-note" id="bilingual-appearance-note">Los ajustes afectan solo a las columnas de texto latino y traducciones.</p>';
   // Controls belong inside the actual facing-text viewer, not in the page toolbar.
   viewer.prepend(bar);
+  document.dispatchEvent(new CustomEvent('vitruvius:interface-mounted',{detail:{root:bar}}));
   const $=id=>bar.querySelector('#'+id);
   const mode=$('bilingual-preset'),background=$('bilingual-background'),ink=$('bilingual-ink'),font=$('bilingual-font'),italic=$('bilingual-italic'),note=$('bilingual-appearance-note');
   const luminosity=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
@@ -53,3 +54,4 @@
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
+

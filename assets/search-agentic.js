@@ -18,8 +18,10 @@ const dictionary={
  templo:["templo","templum","templi","aedes","temple"]
 };
 const terms=q=>{const raw=normalize(q).split(" ").filter(x=>x.length>2&&!stop.has(x));return [...new Set(raw.flatMap(t=>dictionary[t]||[t]))]};
-const containsWord=(text,word)=>{const hay=" "+normalize(text)+" ";return hay.includes(" "+normalize(word)+" ")};
-const relevant=(text,tt)=>tt.reduce((n,t)=>n+(containsWord(text,t)?1:0),0);
+const containsWord=(text,word)=>wordText(text).includes(" "+normalize(word)+" ");
+const normalizedTexts=new Map();
+const wordText=text=>{if(normalizedTexts.has(text))return normalizedTexts.get(text);const value=" "+normalize(text)+" ";normalizedTexts.set(text,value);if(normalizedTexts.size>12000)normalizedTexts.delete(normalizedTexts.keys().next().value);return value};
+const relevant=(text,tt)=>{const hay=wordText(text);return tt.reduce((n,t)=>n+(hay.includes(" "+t+" ")?1:0),0)};
 /* Extract the matching passage, not an unrelated first 350 characters. */
 function excerptAt(text,tt,max=420){
  const source=String(text||"").replace(/\s+/g," ").trim();if(!source)return "";
@@ -34,7 +36,7 @@ function excerptAt(text,tt,max=420){
  const start=Math.max(0,position-105),end=Math.min(source.length,start+max);
  return (start?"…":"")+source.slice(start,end)+(end<source.length?"…":"");
 }
-const get=async(url)=>{const response=await fetch(url,{headers:{Accept:"application/json"}});if(!response.ok)throw Error(url+" HTTP "+response.status);return response.json()};
+const get=async(url)=>{if(window.VitruviaData)return window.VitruviaData.json(url);const response=await fetch(url,{headers:{Accept:"application/json"}});if(!response.ok)throw Error(url+" HTTP "+response.status);return response.json()};
 let chunkPromise=null,bibPromise=null;
 async function chunks(){
  if(!chunkPromise)chunkPromise=(async()=>{
@@ -76,7 +78,7 @@ async function search(q){
   type:"passage",title:(c.workTitle||"Obra clásica")+" · "+c.locus,author:(c.author||"")+" · "+(c.edicion||"Edición")+" · "+(c.language||""),
   latin:c.texto||"",translation:c.traduccion||"",locus:c.locus,
   excerpt:excerptAt(latinScore>translationScore?c.texto:c.traduccion||c.texto,tt),
-  meta:"Fuente textual verificada · "+(c.pagina_pdf?"p. PDF "+c.pagina_pdf+" · ":"")+"locus "+c.locus,
+  meta:"Texto de edición identificada · "+(c.pagina_pdf?"p. PDF "+c.pagina_pdf+" · ":"")+"locus "+c.locus,
   link:c.lector||"lector-bilingue.html",edition:c.edicion,workId:c.workId,
   rating:score,source:c.sourceLabel||"Corpus textual",
   exactTextMatch:exact

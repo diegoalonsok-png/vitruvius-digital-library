@@ -365,7 +365,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
  }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
-async function fetchJSON(url,ms=12500){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
+async function fetchJSON(url,ms=9000,signal){if(window.VitruviaData){const local=new URL(url,location.href).origin===location.origin;return local?window.VitruviaData.json(url,{timeoutMs:ms}):window.VitruviaData.remoteJSON(url,{timeoutMs:ms,signal})}const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 async function load(){try{
  const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
@@ -401,15 +401,15 @@ function livePassages(ps,q,concept){
 }
 const htmlText=s=>new DOMParser().parseFromString(String(s||""),"text/html").body.textContent||"";
 function culturalWeight(title,description){const s=norm(title+" "+description);const all=["architecture","arquitectura","architect","history","historia","histoire","arte","artist","artistic","roman","romano","ancient","antiguo","greek","griego","archaeology","arqueologia","patrimonio","heritage","cultural","medieval","renaissance","renacimiento","manuscript","manuscrito","architecture"];return all.some(x=>s.includes(x))?7:0}
-async function wiki(q,language){
+async function wiki(q,language){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);
  const lang=["es","en","fr"].includes(language)?language:"es";
  const p=new URLSearchParams({action:"query",list:"search",srsearch:q,srlimit:"15",srprop:"snippet|wordcount",format:"json",utf8:"1",origin:"*"});
- const d=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+p);
+ const d=await request("https://"+lang+".wikipedia.org/w/api.php?"+p);
  const found=(d.query?.search||[]).filter(w=>Number.isInteger(w.pageid)&&w.pageid>0);
  let pictures={};
  if(found.length){
   const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
-  const photos=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,2000).catch(()=>null);
+  const photos=await request("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,2000).catch(()=>null);
   pictures=photos?.query?.pages||{};
  }
  return found.map((w,i)=>{
@@ -419,20 +419,20 @@ async function wiki(q,language){
   return {type:"wikipedia",title:w.title,author:"Wikipedia · "+lang.toUpperCase(),excerpt:brief(htmlText(w.snippet),260),meta:"Artículo enciclopédico · Wikimedia",rating:42-i*2+culturalWeight(w.title,w.snippet),link:"https://"+lang+".wikipedia.org/?curid="+w.pageid,source:"Wikipedia ("+lang.toUpperCase()+")",image,imageRights:picturePage,imageCredit:"Wikipedia / Wikimedia Commons · consultar autor y licencia",imageKind:"documentary",pageid:w.pageid,wikiLang:lang};
  })
 }
-async function wikidata(generalQuery){
+async function wikidata(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);
  const p=new URLSearchParams({action:"wbsearchentities",search:generalQuery,language:S.lang,uselang:S.lang,type:"item",limit:"6",format:"json",origin:"*"});
- const d=await fetchJSON("https://www.wikidata.org/w/api.php?"+p);
+ const d=await request("https://www.wikidata.org/w/api.php?"+p);
  return (d.search||[]).map((x,i)=>({type:"wikidata",title:x.label||x.id,excerpt:x.description||"Identificador de entidad · Wikidata",author:x.id,meta:"Datos enlazados · Wikimedia",rating:30-i+culturalWeight(x.label,x.description),link:"https://www.wikidata.org/wiki/"+x.id,source:"Wikidata"}))
 }
-async function openLibrary(generalQuery){
+async function openLibrary(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const p=new URLSearchParams({q:generalQuery,limit:"25",fields:"key,title,author_name,first_publish_year,edition_count,has_fulltext,public_scan_b,cover_i,publisher"});
- const d=await fetchJSON("https://openlibrary.org/search.json?"+p);
+ const d=await request("https://openlibrary.org/search.json?"+p);
  return (d.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||"")).map((x,i)=>({type:"openlibrary",title:x.title||"Libro sin título",author:(x.author_name||[]).slice(0,2).join(", "),excerpt:"Primera publicación registrada: "+(x.first_publish_year||"sin datos")+" · "+(x.edition_count||0)+" ediciones catalogadas. Consultar disponibilidad de lectura en Open Library.",meta:"Catálogo externo · disponibilidad sujeta al proveedor",rating:27-i+culturalWeight(x.title,(x.author_name||[]).join(" ")),link:"https://openlibrary.org"+x.key,source:"Open Library",editionCount:Number(x.edition_count)||0,year:x.first_publish_year||null,publisher:(x.publisher||[])[0]||"",recordKind:"work",image:Number.isInteger(x.cover_i)?"https://covers.openlibrary.org/b/id/"+x.cover_i+"-L.jpg":null,imageRights:"https://openlibrary.org"+x.key,imageCredit:"Open Library · derechos de portada según ficha",imageKind:"book"}))
 }
 /* Google Books public volume metadata, not Google AI / Google Search results. */
-async function googleBooks(generalQuery){
+async function googleBooks(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const params=new URLSearchParams({q:generalQuery,maxResults:"8",printType:"books"});
- const d=await fetchJSON("https://www.googleapis.com/books/v1/volumes?"+params,11000);
+ const d=await request("https://www.googleapis.com/books/v1/volumes?"+params,11000);
  return (d.items||[]).filter(item=>item.volumeInfo?.title&&item.volumeInfo?.infoLink).map((item,i)=>{
   const v=item.volumeInfo;const info=String(v.infoLink||"");
   if(!/^https:\/\//i.test(info))return null;
@@ -444,18 +444,18 @@ async function googleBooks(generalQuery){
  }).filter(Boolean)
 }
 
-async function museum(generalQuery){
+async function museum(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const params=new URLSearchParams({q:generalQuery,hasImages:"true"});
- const d=await fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1/search?"+params,12500);
+ const d=await request("https://collectionapi.metmuseum.org/public/collection/v1/search?"+params,12500);
  const ids=(d.objectIDs||[]).slice(0,3);
- const details=await Promise.allSettled(ids.map(id=>fetchJSON("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
+ const details=await Promise.allSettled(ids.map(id=>request("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+id,9000)));
  return details.filter(x=>x.status==="fulfilled").map((x,i)=>{const o=x.value;return {type:"museum",title:o.title||"Objeto de museo",author:[o.artistDisplayName,o.objectDate].filter(Boolean).join(" · "),excerpt:[o.culture,o.period,o.medium,o.department].filter(Boolean).join(" · "),meta:"Colección del Metropolitan Museum of Art",rating:29-i+culturalWeight(o.title,o.department),link:o.objectURL||"https://www.metmuseum.org",source:"The Met",year:o.objectBeginDate||null,recordKind:"museum-object",image:o.primaryImageSmall||o.primaryImage||null,imageRights:o.objectURL||"https://www.metmuseum.org",imageCredit:"The Metropolitan Museum of Art · verificar licencia de la obra",imageKind:"artwork"}});
 }
 
 /* Distinción académica: resultados de revistas y ciencias no se presentan como texto íntegro salvo enlace de acceso. */
-async function crossref(generalQuery){
+async function crossref(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const params=new URLSearchParams({query:generalQuery,rows:"12",select:"DOI,title,author,published,issued,type,publisher,URL,container-title,volume,issue,page"});
- const d=await fetchJSON("https://api.crossref.org/works?"+params,12000);
+ const d=await request("https://api.crossref.org/works?"+params,12000);
  const items=d.message?.items||[];
  return items.filter(x=>x.DOI&&Array.isArray(x.title)&&x.title[0]).map((x,i)=>{
   const date=(x.published?.["date-parts"]||x.issued?.["date-parts"]||[])[0]||[];
@@ -466,9 +466,9 @@ async function crossref(generalQuery){
  })
 }
 /* OpenAlex: índice abierto de obras académicas (CORS abierto, sin clave). */
-async function openAlex(generalQuery){
+async function openAlex(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const params=new URLSearchParams({search:generalQuery,"per-page":"10",select:"id,doi,title,publication_year,authorships,primary_location,type,open_access,cited_by_count"});
- const d=await fetchJSON("https://api.openalex.org/works?"+params,12000);
+ const d=await request("https://api.openalex.org/works?"+params,12000);
  return (d.results||[]).filter(x=>x.title).map((x,i)=>{
   const author=(x.authorships||[]).slice(0,2).map(a=>a.author?.display_name).filter(Boolean).join(", ");
   const venue=x.primary_location?.source?.display_name||"";
@@ -479,17 +479,17 @@ async function openAlex(generalQuery){
  });
 }
 /* Getty AAT: término normalizado del tesauro de arte y arquitectura (SPARQL público). */
-async function gettyAat(generalQuery){
+async function gettyAat(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const term=String(generalQuery||"").trim().replace(/["\\]/g,"");if(!term||term.split(/\s+/).length>4)return[];
  const sparql=`select ?s ?label ?scope where { ?s a skos:Concept; skos:inScheme aat: ; luc:term "${term}"; gvp:prefLabelGVP/xl:literalForm ?label . optional { ?s skos:scopeNote/rdf:value ?scope . filter(lang(?scope)="en") } } limit 5`;
- const d=await fetchJSON("https://vocab.getty.edu/sparql.json?"+new URLSearchParams({query:sparql}),9000);
+ const d=await request("https://vocab.getty.edu/sparql.json?"+new URLSearchParams({query:sparql}),9000);
  return (d.results?.bindings||[]).map((b,i)=>({type:"topic",title:b.label?.value||term,author:"Getty Art & Architecture Thesaurus",
   excerpt:(b.scope?.value||"Término normalizado del tesauro AAT.").slice(0,320),meta:"GETTY AAT · VOCABULARIO CONTROLADO (ODC-By)",rating:40-i,
   link:b.s?.value||"https://www.getty.edu/research/tools/vocabularies/aat/",source:"Getty AAT"}));
 }
-async function europePmc(generalQuery){
+async function europePmc(generalQuery){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);if(window.VitruviaData)await window.VitruviaData.defer(()=>null,{signal:providerSignal,delay:180});
  const params=new URLSearchParams({query:generalQuery,format:"json",pageSize:"6",resultType:"core"});
- const d=await fetchJSON("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+params,12000);
+ const d=await request("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+params,12000);
  return (d.resultList?.result||[]).filter(x=>x.title&&(x.pmid||x.pmcid||x.doi)).map((x,i)=>{
   const journal=x.journalTitle||"",isOpen=x.isOpenAccess==="Y"||x.isOpenAccess===true;
   const link=x.pmcid?"https://europepmc.org/articles/"+encodeURIComponent(x.pmcid):
@@ -744,7 +744,9 @@ function display(rows,query,phase){
    for(let i=deduped.length-1;i>=0;i--){const r=deduped[i];if(!["wikipedia","wikidata"].includes(r.type))continue;
     const t=norm(r.title||""),ex=norm(r.excerpt||"");if(t===lab||t.startsWith(lab+" ")||t.includes(lab)&&ex.includes(norm(ce.description||"").split(" ")[0]||"\u0000"))continue;
     if(!t.includes(lab)||/desambiguaci|disambiguation/.test(t+" "+ex))deduped.splice(i,1)}}}catch{}
- const list=$("result-list");list.replaceChildren();
+ const liveList=$("result-list"),desired=[];const list={append:(...children)=>desired.push(...children)};
+ const cards=S.cardCache||(S.cardCache=new Map());
+ const cardFor=d=>{const key=S.lang+JSON.stringify(d);if(cards.has(key))return cards.get(key);const card=renderCard(d);markTerms(card,query);cards.set(key,card);if(cards.size>200)cards.delete(cards.keys().next().value);return card};
  const selectedManuscript=["all","site","concept","ai"].includes(S.mode)?primaryManuscriptFor(query):null;
  if(selectedManuscript){
   const witness=liveManuscripts(query).find(r=>r.codexShelfmark===selectedManuscript.shelfmark&&
@@ -755,7 +757,7 @@ function display(rows,query,phase){
     S.lang==="fr"?"DOCUMENT PRIMAIRE · PREMIER MANUSCRIT RÉPERTORIÉ":
     "FUENTE PRINCIPAL · LEER EL TESTIMONIO MANUSCRITO MÁS ANTIGUO INDEXADO");
    section.setAttribute("data-result-group","primary-witness");
-   list.append(section,renderCard({...witness,primaryWitness:true,
+   list.append(section,cardFor({...witness,primaryWitness:true,
     primaryLabel:S.lang==="en"?"EARLIEST CATALOGUED WITNESS WITH VIEWER":
      S.lang==="fr"?"TÉMOIN LE PLUS ANCIEN RÉPERTORIÉ AVEC VISIONNEUSE":
      "TESTIMONIO MÁS ANTIGUO INDEXADO CON VISOR"}));
@@ -856,7 +858,7 @@ function display(rows,query,phase){
     }
    }
   
-   const card=renderCard(r);markTerms(card,query);list.append(card)
+   list.append(cardFor(r))
   }
  }
  // Consulta que nombra un códice con visor local (p. ej. «Codex H», «Harley 2767»):
@@ -897,8 +899,12 @@ function display(rows,query,phase){
   more.addEventListener("click",()=>{S.visibleResultCount+=50;display(rows,query,phase)});
   list.append(more);
  }
- if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null))}else synthesize(deduped);
+ if(window.VitruviaData)window.VitruviaData.reconcile(liveList,desired);else liveList.replaceChildren(...desired);
+ if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null),{progressive:true,final:!!S.searchComplete})}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
+ if(deduped.length&&S.firstResultAt==null){S.firstResultAt=performance.now()-S.searchStarted;$("result-state").dataset.firstResultMs=String(Math.round(S.firstResultAt))}
+ $("result-list").setAttribute("aria-busy",String(!S.searchComplete));
+ if(S.searchComplete)$("result-state").dataset.completeMs=String(Math.round(performance.now()-S.searchStarted));
  $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"");
  const snapshot={query,rows:deduped,phase};
  window.VitruviaSearchSnapshot=snapshot;
@@ -931,7 +937,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
 async function search(){
- let q=$("query").value.trim();const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:220}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
  if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexicon=S.lexicon||await fetch("data/latin-lexicon.json").then(r=>r.json()).then(d=>d.entries||[]);
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
@@ -954,8 +960,10 @@ async function search(){
  const wikiEnabled=["all","wiki","external","ai"].includes(mode)||!!person;
  const academicEnabled=["all","external","ai"].includes(mode);
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
+  delete $("result-state").dataset.firstResultMs;delete $("result-state").dataset.completeMs;
+  $("result-list").setAttribute("aria-busy","true");
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
- if(window.VitruviaArticles)window.VitruviaArticles.render([],q);
+ if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
  let rows=[];
  if(internal){
@@ -1017,13 +1025,13 @@ async function search(){
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal&&window.VitruviaAgentic){
-  pending.push(window.VitruviaAgentic.search(generalQuery).then(value=>({
+  pending.push(later(()=>window.VitruviaAgentic.search(generalQuery)).then(value=>({
    name:"Corpus completo y bibliografía del sitio · "+value.stats.chunks+" pasajes indexados",
    rows:value.rows||[]
   })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal){
-  pending.push(fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
+  pending.push((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():{entries:[]})).then(d=>{
    const f=x=>norm(String(x||"")).replace(/j/g,"i").replace(/v/g,"u"),q=f(generalQuery).trim();
    const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[])].some(y=>f(y)===q));
    return {name:"Ficha de término",rows:e?[{type:"section",title:"Ficha del término «"+e.lemma+"» en Vitruvio",author:[e.es,e.fr,e.en].filter(Boolean).join(" · "),
@@ -1031,7 +1039,7 @@ async function search(){
     meta:"FICHA DE TÉRMINO · BIBLIOTECA VITRUVIANA",rating:3200,link:"termino.html?t="+encodeURIComponent(e.lemma),source:"Biblioteca Vitruviana"}]:[]}}).catch(()=>({name:"Léxico no disponible",rows:[]})));
  }
  if(internal){
-  pending.push(fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
+  pending.push((window.VitruviaData?window.VitruviaData.json("data/laminas-historicas.json?v=20261105-v1"):fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():{entries:[]})).then(d=>{
    const f=x=>norm(String(x||"")),q=f(generalQuery),toks=q.split(/\s+/).filter(t=>t.length>3),loc=intent?.locus||null;
    const rows=(d.entries||[]).map(e=>{const hay=f([e.title,e.author,e.work,e.edition,e.plate,e.folio,e.witness,e.relation].join(" "));
     let r=0;if(loc&&e.locus&&(e.locus===loc||e.locus.startsWith(loc.split(".").slice(0,2).join(".")+".")))r+=120;for(const t of toks)if(hay.includes(t))r+=30;
@@ -1042,11 +1050,11 @@ async function search(){
    return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
  }
  if(internal&&window.ClassicsCorpusSearch){
-  pending.push(window.ClassicsCorpusSearch.search(generalQuery,{limit:6}).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
+  pending.push(later(()=>window.ClassicsCorpusSearch.search(generalQuery,{limit:6})).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
  }
  if(internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
-  pending.push(ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null}).then(hits=>({name:"Aparato crítico · ediciones Kurilo",
+  pending.push(later(()=>ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null})).then(hits=>({name:"Aparato crítico · ediciones Kurilo",
    rows:(()=>{/* Un bloque por página impresa: los demás de la misma página se cuentan, no se repiten. */
     const seen=new Map(),out=[];for(const e of hits){const k=e.page?e.edition+"#"+e.page:e.id;if(seen.has(k)){seen.get(k).more++;continue}const r=ap.toRow(e,generalQuery,S.lang);r.more=0;seen.set(k,r);out.push(r)}
     for(const r of out)if(r.more){r.title=r.title.replace(/ \(\d+\)$/,"");r.meta+=" · "+(S.lang==="en"?r.more+" more block(s) on this page":S.lang==="fr"?r.more+" autre(s) bloc(s) sur cette page":r.more+(r.more===1?" bloque más en la misma página":" bloques más en la misma página"))}
@@ -1071,7 +1079,7 @@ async function search(){
   pending.push(openAlex(q).then(rows=>({name:"OpenAlex",rows})).catch(e=>({name:"OpenAlex sin respuesta: "+e.message,rows:[]})));
   pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
  }
- if(!pending.length){display(rows,q,"Índice interno");return}
+ if(!pending.length){S.searchComplete=true;display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
  const sourceWarnings=[];
  await Promise.all(pending.map(p=>p.then(value=>{
@@ -1090,15 +1098,16 @@ async function search(){
   }
   if(!intent?.preface){if(value.featured)considerFeatured([value.featured],q);else considerFeatured(incoming,q)}
   completed++;
-  clearTimeout(updateTimer);
-  updateTimer=setTimeout(()=>{
-   if(id===S.searchId)display(rows,q,completed+"/"+pending.length+" fuentes procesadas · "+value.name);
-  },180);
+  if(!updateTimer)updateTimer=setTimeout(()=>{
+   updateTimer=null;
+   if(id===S.searchId)display(rows,q,completed+"/"+pending.length+" fuentes procesadas");
+  },100);
   if(value.warnings?.length)sourceWarnings.push(value.name+": "+value.warnings.join("; "));
   else if(/sin respuesta|no disponible/.test(value.name))sourceWarnings.push(value.name);
  })));
  clearTimeout(updateTimer);
  if(id===S.searchId){
+  S.searchComplete=true;
   const failed=sourceWarnings.length;
   const phase=S.lang==="en"?`Search complete · ${completed-failed}/${pending.length} sources responded${failed?" · some sources unavailable":""}`:
    S.lang==="fr"?`Recherche terminée · ${completed-failed}/${pending.length} sources disponibles${failed?" · certaines sources indisponibles":""}`:
@@ -1268,6 +1277,7 @@ function updateClearControl(){
  clearControl.hidden=empty;clearAll.hidden=empty;
 }
 function clearSearch(){
+ S.searchController?.abort();
  ++S.searchId;searchInput.value="";updateClearControl();
  window.VitruviaSearchSnapshot=null;
  const menu=$("search-suggestions");menu.hidden=true;menu.replaceChildren();
@@ -1276,6 +1286,7 @@ function clearSearch(){
  window.dispatchEvent(new Event("vitruvia:clear"));
  history.replaceState(null,"","vitruvia.html");
  $("result-list").replaceChildren(node("div","empty",T().idle));
+ $("result-list").setAttribute("aria-busy","false");
  $("results-heading").textContent=T().idle;
  $("result-state").textContent="";
  $("source-links").replaceChildren();
@@ -1312,3 +1323,4 @@ theme(S.theme);
 const params=new URLSearchParams(location.search);mode(params.get("mode")||"all");language(S.lang);
 load().then(()=>{const q=params.get("q");if(q){$("query").value=q;search()}}) ;
 })();
+

@@ -1,0 +1,23 @@
+name: Vitruvia performance and reference integrity
+on:
+  push:
+    paths: ["assets/**", "vitruvia.html", "lector-bilingue.html", "sw.js", "scripts/test-vitruvia-performance.mjs", "data/structured/**"]
+  pull_request:
+    paths: ["assets/**", "vitruvia.html", "lector-bilingue.html", "sw.js", "scripts/test-vitruvia-performance.mjs", "data/structured/**"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/vitruvia-regression-check.mjs
+      - run: node tests/locus-aliases.mjs
+      - run: node scripts/test-vitruvia-resilience.mjs
+      - run: node scripts/test-vitruvia-performance.mjs
+      - run: node scripts/academic-integrity.mjs
+      - run: node scripts/test-navigation.mjs
