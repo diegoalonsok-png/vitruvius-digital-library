@@ -47,7 +47,7 @@ html[data-theme="dark"] .codicum-stemma{
 <p style="font-size:12px">Las signaturas y fuentes se registran en el inventario general. La inclusión de un enlace no implica autorización de reproducción ni colaboración institucional. Los impresos renacentistas conservan sus lectores ya existentes.</p>
 </section>
 <p><strong>Nuevo catálogo especial:</strong> <a href="codices-vaticanos.html">cinco testimonios vitruvianos de la Biblioteca Apostólica Vaticana</a>, con signaturas, fuentes y enlaces oficiales o de repertorio. Las imágenes permanecen en el sistema de la Biblioteca Vaticana y no se republican sin permiso.</p><p>Consulta el <a href="bibliografia.html?group=manuscripts">catálogo de manuscritos</a> para conocer las signaturas, dataciones, lugares de conservación y fuentes. Los enlaces individuales conducen a registros y reproducciones institucionales.</p>
-<div id="codices" aria-live="polite"><p>Abriendo índice de manuscritos…</p></div>
+<div role="search" style="margin:16px 0"><label for="codex-query"><strong>Buscar por signatura, sigla, biblioteca o datación</strong></label><input type="search" id="codex-query" placeholder="Ej.: Harley 2767, Gudianus 69, Vaticano…" autocomplete="off" style="display:block;max-width:100%;width:460px;margin:8px 0;padding:11px;border:1px solid var(--line);background:var(--white);color:var(--ink)"><p id="codex-results-count" role="status" aria-live="polite" style="font-size:13px">La búsqueda comprende las fichas del inventario; no busca dentro de los facsímiles.</p></div><div id="codices" aria-live="polite"><p>Abriendo índice de manuscritos…</p></div>
 <h2>Stemmata codicum · comparación crítica</h2>
 <p>Las figuras son modelos historiográficos <strong>no intercambiables</strong>. Una línea de dependencia solo debe considerarse establecida cuando esté respaldada por errores conjuntivos y separativos en los loci pertinentes. Las ediciones de Diego Kurilo presentan esquemas de H y una hipótesis α/β con advertencias sobre su simplificación; se contrastan aquí con estudios textuales externos.</p>
 <h3>Rose · segunda edición crítica, 1899</h3>
@@ -98,6 +98,19 @@ H → L, e, P, v, f, p, b, l, c, h
 <p><strong>Relación con las ediciones de Diego Kurilo:</strong> el apartado «Stemma codicum» de las versiones V213, V255 y V402 expone un esquema simplificado centrado en H y discute una hipótesis α/β. Esta página conserva esa procedencia, pero no presenta ninguna de esas simplificaciones como consenso definitivo ni confunde las siglas entre sistemas editoriales.</p>
 <p><a href="aparato-critico.html">Consultar aparato crítico</a> · <a href="ediciones-historicas.html">Ediciones y testigos digitalizados</a></p>
 </main><script type="module">
-const out=document.getElementById('codices');const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-try{const r=await fetch('data/corpus-expansion-inventory.json');if(!r.ok)throw Error('Catálogo no disponible');const records=(await r.json()).records.filter(x=>x.group==='manuscripts');out.innerHTML='<p>'+records.length+' fichas manuscritas del inventario general; algunas signaturas y dataciones permanecen provisionales.</p>'+records.map(x=>'<article style="border-bottom:1px solid #c9c3b8;padding:12px 0"><strong>'+esc(x.display_title)+'</strong> · '+esc(x.date_display||x.date)+'<p>Signatura: '+esc(x.shelfmark||'Por cotejar')+' · Sigla editorial: <span class="codex-siglum" translate="no" lang="la">'+esc(x.siglum||'no asignada')+'</span> · '+esc(x.institution||x.place||'')+'</p>'+(x.view_url?'<p><a target="_blank" rel="noopener" href="'+esc(x.view_url)+'">Ficha o facsímil institucional ↗</a></p>':'')+'</article>').join('');}catch(err){out.textContent='No se pudo cargar el índice. Consulte la bibliografía general.'}
+const out=document.getElementById('codices'),query=document.getElementById('codex-query'),counter=document.getElementById('codex-results-count');
+const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=v=>String(v??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+const words=v=>norm(v).split(/\s+/).filter(Boolean);
+try{
+ const r=await fetch('data/corpus-expansion-inventory.json');if(!r.ok)throw Error('Catálogo no disponible');
+ const records=(await r.json()).records.filter(x=>x.group==='manuscripts');
+ const searchText=x=>norm([x.display_title,x.shelfmark,x.siglum,x.institution,x.place,x.date_display,x.date].filter(Boolean).join(' '));
+ function render(){
+  const terms=words(query.value),found=records.filter(x=>terms.every(t=>searchText(x).includes(t)));
+  counter.textContent=found.length+' de '+records.length+' fichas manuscritas coincidentes · las signaturas provisionales deben cotejarse con el catálogo institucional.';
+  out.innerHTML=found.length?found.map(x=>'<article style="border-bottom:1px solid #c9c3b8;padding:12px 0"><strong>'+esc(x.display_title)+'</strong> · '+esc(x.date_display||x.date)+'<p>Signatura: '+esc(x.shelfmark||'Por cotejar')+' · Sigla editorial: <span class="codex-siglum" translate="no" lang="la">'+esc(x.siglum||'no asignada')+'</span> · '+esc(x.institution||x.place||'')+'</p>'+(x.view_url&&/^https:\/\//i.test(x.view_url)?'<p><a target="_blank" rel="noopener noreferrer" href="'+esc(x.view_url)+'">Ficha o facsímil institucional ↗</a></p>':'')+'</article>').join(''):'<p>No hay coincidencias en el inventario. Pruebe otra signatura o consulte el catálogo de manuscritos.</p>';
+ }
+ query.addEventListener('input',render);render();
+}catch(err){counter.textContent='No se pudo cargar el inventario';out.textContent='No se pudo cargar el índice. Consulte la bibliografía general.'}
 </script><script src="assets/global-language.js?v=20261105-merge-v1" data-global-language defer></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script></body></html>
