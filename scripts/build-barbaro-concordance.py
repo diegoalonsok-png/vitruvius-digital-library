@@ -47,7 +47,60 @@ def ordinal(word, ed):
             return n
     return None
 
+def chapter_heading(line):
+    """«Cap. IIII.», «Cap: > JI.», «Cap. 11IL», «Cap. VIL»: el OCR confunde I con 1, l, L, J y |."""
+    low = line.lower()
+    m = re.search(r"\bcap\s*[.:;,]\s*[>»\-–]?\s*([ivxl1j|!]{1,6})(?![a-z])", low)
+    if not m:
+        return None
+    tok = re.sub(r"[l1j|!]", "i", m.group(1))
+    tok = re.sub(r"i{5,}", "iiii", tok)
+    return ROMAN.get(tok)
+
+def book_ranges(ed):
+    """Libros según los rangos del manifiesto (más fiables que la cabecera corrida leída por OCR)."""
+    files = [ROOT / f"data/iiif/barbaro-1567-{ed}-ranges.json"]
+    if ed == "it":
+        files.append(ROOT / "data/iiif/barbaro-1567-sections.json")
+    for f in files:
+        if not f.exists():
+            continue
+        d = json.loads(f.read_text(encoding="utf-8"))
+        out = []
+        for r in d.get("ranges") or d.get("sections") or []:
+            lab = unicodedata.normalize("NFD", r.get("label", "")).encode("ascii", "ignore").decode().lower()
+            m = re.search(r"\b(?:libro|liber|lib)\.?\s+([ivx]+|\d+|[a-z]+)\b", lab)
+            if not m:
+                continue
+            tok = m.group(1)
+            n = ROMAN.get(tok) or (int(tok) if tok.isdigit() else ordinal(tok, ed) or ordinal(tok, "la" if ed == "it" else "it"))
+            if n and 1 <= n <= 10:
+                out.append((int(r["start"]), int(r["end"]), n))
+        if len({n for *_, n in out}) >= 8:
+            return sorted(out)
+    return None
+
 def detect(pages, ed):
+    ranges = book_ranges(ed)
+    if ranges:
+        out, book, chap, praef = [], 0, 0, False
+        for p in pages:
+            b = next((n for s, e, n in ranges if s <= p["page"] <= e), None)
+            if b != book:
+                book, chap, praef = (b or 0), 0, bool(b)
+            lines = [l.strip() for l in (p.get("text") or "").split("\n") if l.strip()]
+            for l in lines:
+                if len(l) > 90 or not book:
+                    continue
+                n = chapter_heading(l)
+                if n and (chap < n <= chap + 3 or (n == 1 and chap == 0)):
+                    chap, praef = n, False
+            out.append({"page": p["page"], "label": p.get("label", ""), "book": book or None,
+                        "chapter": ("praef" if praef and chap == 0 else (chap or None)) if book else None})
+        return out
+    return detect_by_heads(pages, ed)
+
+def detect_by_heads(pages, ed):
     out, book, chap, praef = [], 0, 0, False
     head_word = "libro" if ed == "it" else "liber"
     for p in pages:
@@ -85,28 +138,57 @@ def detect(pages, ed):
     return out
 
 def latin_loci(pages, conc):
+    """Ubica cada locus de V514 en la imagen latina con más palabras largas en común (mínimo 25 % y
+    claramente por encima de la segunda candidata), descarta lo que rompe el orden del texto y, con eso,
+    asigna libro y capítulo a todas las imágenes (los títulos leídos por OCR en cursiva son poco fiables)."""
     data = json.loads((ROOT / "data/structured/recensio-es.json").read_text(encoding="utf-8"))
     sets = [set(re.findall(r"[a-z]{6,}", mfold(p.get("text") or ""))) for p in pages]
+    hits = []
+    for order, ps in enumerate(data.get("passages", [])):
+        words = set(re.findall(r"[a-z]{6,}", mfold(ps.get("latin") or "")))
+        if len(words) < 6:
+            continue
+        scored = sorted(((len(words & st), i) for i, st in enumerate(sets)), reverse=True)[:2]
+        best, second = scored[0][0] / len(words), (scored[1][0] / len(words) if len(scored) > 1 else 0)
+        if best >= 0.25 and best >= 1.5 * max(second, 0.01):
+            hits.append((order, scored[0][1], ps["locus"]))
+    # Subsecuencia creciente más larga: el impreso sigue el orden del texto.
+    import bisect
+    tails, prev, idx = [], [None] * len(hits), []
+    for k, (_, page, _) in enumerate(hits):
+        j = bisect.bisect_right([hits[t][1] for t in tails], page)
+        if j > 0:
+            prev[k] = tails[j - 1]
+        if j == len(tails):
+            tails.append(k)
+        else:
+            tails[j] = k
+    keep, k = [], (tails[-1] if tails else None)
+    while k is not None:
+        keep.append(hits[k]); k = prev[k]
+    keep.reverse()
     for c in conc:
         c["loci"] = []
-    for ps in data.get("passages", []):
-        words = set(re.findall(r"[a-z]{6,}", mfold(ps.get("latin") or "")))
-        if len(words) < 4:
-            continue
-        cands = [i for i, c in enumerate(conc) if c["book"] in (None, ps.get("book"))] or range(len(conc))
-        best, bn = None, 0
-        for i in cands:
-            n = len(words & sets[i])
-            if n > bn:
-                best, bn = i, n
-        if best is not None and bn >= max(4, round(len(words) * 0.4)):
-            conc[best]["loci"].append(ps["locus"])
-    # El locus manda sobre la detección por títulos cuando la contradice.
-    for c in conc:
-        if c["loci"]:
-            b, ch = c["loci"][0].split(".")[:2]
-            c["book"] = int(b)
-            c["chapter"] = "praef" if ch == "praef" else int(ch)
+    for _, page, locus in keep:
+        conc[page]["loci"].append(locus)
+    if len(keep) >= 100:
+        cur = None
+        for c in conc:
+            if c["loci"]:
+                b, ch = c["loci"][0].split(".")[:2]
+                cur = (int(b), "praef" if ch == "praef" else int(ch))
+                last = c["loci"][-1].split(".")[:2]
+                c["book"], c["chapter"] = cur
+                cur = (int(last[0]), "praef" if last[1] == "praef" else int(last[1]))
+            elif cur:
+                c["book"], c["chapter"] = cur
+            else:
+                c["book"], c["chapter"] = None, None
+        # Después del último locus del libro X, el resto (tablas e índices) queda sin asignar.
+        lastloc = max((c["page"] for c in conc if c["loci"]), default=0)
+        for c in conc:
+            if c["page"] > lastloc + 3:
+                c["book"], c["chapter"] = None, None
     return conc
 
 def main():

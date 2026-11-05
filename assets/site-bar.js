@@ -22,7 +22,7 @@ function ensureSelectionAudio(){
   style.href=root+'assets/vitruvia-selection-speech.css?v=20261105-global-v2';document.head.append(style);
  }
  if(!document.querySelector('script[src*="vitruvia-selection-speech.js"]')){
-  const script=document.createElement('script');script.src=root+'assets/vitruvia-selection-speech.js?v=20261105-global-v2';
+  const script=document.createElement('script');script.src=root+'assets/vitruvia-selection-speech.js?v=20261105-noloop-v1';
   script.defer=true;document.head.append(script);
  }
 }

@@ -52,7 +52,7 @@ async function getJSON(params,signal){
  const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d;
 }
 function imageParams(extra){
- return {...extra,prop:"imageinfo",iiprop:"url|mime|extmetadata",iiurlwidth:"900"};
+ return {...extra,prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"400"};
 }
 function matchingScore(page,aliases,query){
  const name=fold(page.title||"").replace(/^file /,"").replace(/\b(jpg|jpeg|png|webp|svg|tiff)\b/g,"");
@@ -101,7 +101,7 @@ function viewer(){
 function showLarge(item){
  const dialog=viewer();
  const image=dialog.querySelector(".vitruvia-image-large-photo");
- image.src=item.original||item.preview;image.alt=item.name;
+ image.src=item.large||item.original||item.preview;image.alt=item.name;
  dialog.querySelector(".vitruvia-image-large-title").textContent=item.name;
  dialog.querySelector(".vitruvia-image-large-rights").textContent=item.credit+(item.license?"":" · "+locale("Licencia y atribución en ficha original","Check license and attribution at source","Licence et attribution dans la notice"));
  dialog.querySelector(".vitruvia-image-large-original").href=item.original||item.preview;
@@ -141,7 +141,7 @@ function collectedImages(pages,topic){
   const objectName=clean(meta.ObjectName?.value||"");
   const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
    .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
-  items.push({name,caption,preview:info.thumburl,original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
+  items.push({name,caption,preview:info.thumburl,large:(info.width>1600?info.thumburl.replace(/\/\d+px-/,"/1600px-"):safeLink(info.url)||info.thumburl),original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
    credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group,verifiedIdentity:!!page.fromEntityImage});
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
@@ -209,6 +209,36 @@ function entityFor(q,ms){
  return new Promise(done=>{const t=setTimeout(()=>{window.removeEventListener("vitruvia:entity",on);done(null)},ms);
   function on(ev){if(same(ev.detail)){clearTimeout(t);window.removeEventListener("vitruvia:entity",on);done(ev.detail)}}
   window.addEventListener("vitruvia:entity",on)});
+}
+/* Imágenes que usa el propio artículo de Wikipedia (castellano e inglés): incluye material con derechos
+   (afiches, tapas, fotogramas) que Wikipedia publica como cita. Se muestra como referencia, enlazado a su
+   ficha, sin filtrar por licencia y con el aviso de que no es reutilizable sin permiso. */
+const ICONISH=/(icon|logo|symbol|flag|commons-|wiki|question|ambox|disambig|edit|padlock|ooui|portal|stub|star|crystal|nuvola|gnome|pictogram|semi-protection|red pencil|folder|speaker|sound|audio)/i;
+async function addArticleImages(id,identity,seen){
+ if(!identity?.canonical)return 0;
+ const pairs=[[identity.language||"es",identity.canonical]];
+ const en=identity.originalCanonical&&identity.originalCanonical!==identity.canonical?identity.originalCanonical:identity.commonsSearchName;
+ if(en)pairs.push(["en",en]);
+ const out=[];
+ await Promise.all(pairs.map(async([lang,title])=>{
+  const params=new URLSearchParams({action:"query",format:"json",origin:"*",redirects:"1",generator:"images",titles:title,gimlimit:"40",prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"400"});
+  const d=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{headers:{Accept:"application/json"}}).then(r=>r.ok?r.json():null).catch(()=>null);
+  for(const p of Object.values(d?.query?.pages||{})){
+   const info=p.imageinfo?.[0];if(!info?.thumburl||!/^image\/(jpeg|png|webp|gif)$/.test(info.mime||""))continue;
+   if(ICONISH.test(p.title)||(info.width&&info.width<160)||(info.height&&info.height<160))continue;
+   const key=info.thumburl.replace(/\/\d+px-.*$/,"");if(seen.has(key))continue;seen.add(key);
+   const meta=info.extmetadata||{},nonfree=/true/i.test(meta.NonFree?.value||"")||!/commons\.wikimedia\.org/.test(info.descriptionurl||"");
+   const lic=String(meta.LicenseShortName?.value||"").replace(/<[^>]*>/g,"");
+   out.push({name:p.title.replace(/^[^:]+:/,""),caption:p.title.replace(/^[^:]+:/,"").replace(/\.[a-z]+$/i,""),preview:info.thumburl,
+    large:info.width>1600?info.thumburl.replace(/\/\d+px-/,"/1600px-"):info.url,original:info.url,page:info.descriptionurl,license:nonfree?"":lic,
+    credit:nonfree?locale("Wikipedia · imagen con derechos de autor, mostrada como referencia; no reutilizar sin permiso","Wikipedia · copyrighted image shown for reference; do not reuse without permission","Wikipédia · image protégée, affichée à titre de référence"):
+     locale("Wikipedia · ","Wikipedia · ","Wikipédia · ")+(lic||locale("licencia en la ficha","license at source","licence sur la notice")),score:0,group:"article"});
+  }
+ }));
+ if(id!==active||!out.length)return 0;
+ groupTitle(locale("Imágenes del artículo de Wikipedia · con y sin derechos de autor","Images used in the Wikipedia article · free and copyrighted","Images de l’article Wikipédia · libres et protégées"));
+ for(const item of out.slice(0,40))displayItem(item);
+ return out.length;
 }
 /* Libros: tapas de ediciones (Open Library), del primer año de publicación en adelante.
    Se agregan a la galería, después de las imágenes de Commons, con enlace a la ficha de cada edición. */
@@ -291,8 +321,8 @@ async function searchImages(query){
  // Consulta con errores o en otro idioma («2001 odisea en el espacio», «A Pace Odyssey»): si el resolvedor
  // directo no identifica nada, se usa la entidad que identificó la ficha de Vitruvia (Wikidata) y se
  // resuelve por su título; así llegan sus nombres en todos los idiomas y su categoría de Commons.
- if(!identity?.wikidataId){
-  const ce=await entityFor(q,6000);
+ if(!identity){
+  const ce=await entityFor(q,2500);
   if(id!==active)return;
   if(ce){const again=await window.VitruviaEntityResolver?.resolve(ce.wiki||ce.label,ce.wikiLang||language).catch(()=>null);
    if(id!==active)return;if(again)identity=again}
@@ -350,7 +380,7 @@ async function searchImages(query){
  const timeout=setTimeout(()=>controller.abort(),18500);
  try{
   const searchJobs=requests.map(term=>getJSON(imageParams({
-   action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"24"
+   action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"50"
   }),signal));
   const entityImages=(identity?.imageFiles||[]).filter(x=>typeof x==="string").map(x=>"File:"+x);
   const representativeJob=entityImages.length&&topic.intent==="overview"?getJSON(imageParams({action:"query",titles:entityImages.join("|")}),signal).then(data=>{
@@ -365,6 +395,12 @@ async function searchImages(query){
   const settled=await Promise.allSettled(searchJobs);
   if(id!==active)return;
   const pages=settled.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
+  // Primera tanda visible enseguida (sin esperar categorías). Para personas de nombre de una palabra,
+  // arquitectos y películas se espera el filtrado completo, que evita imágenes de homónimos.
+  if(!isArchitect&&!isFilm&&!(identity?.kind==="person"&&creatorRole)&&!grid.querySelector(".vitruvia-image-card")){
+   const early=collectedImages(pages,topic).slice(0,24);
+   if(early.length){displayGroups(early,topic);status.textContent=locale("Primeras imágenes; se siguen sumando las de las colecciones relacionadas…","First images; related collections are still loading…","Premières images ; chargement des collections liées…")}
+  }
   pages.push(...await representativeJob);
   const categories=(await categoriesJob)?.query?.search||[];
   const children=(await subcategoriesJob)?.query?.categorymembers||[];
@@ -379,10 +415,10 @@ async function searchImages(query){
   });
   const priority=title=>/bust|sculpture|statue/.test(fold(title))?0:/portrait|painting|engraving/.test(fold(title))?1:/book|manuscript/.test(fold(title))?2:3;
   children.sort((a,b)=>priority(a.title)-priority(b.title));
-  const categoryTitles=distinct(exactCategory?[exactCategory,...children.slice(0,5).map(c=>c.title)]:accepted.map(c=>c.title)).slice(0,6);
+  const categoryTitles=distinct(exactCategory?[exactCategory,...children.slice(0,8).map(c=>c.title)]:accepted.map(c=>c.title)).slice(0,9);
   if(categoryTitles.length){
    const records=await Promise.allSettled(categoryTitles.map(title=>getJSON(imageParams({
-    action:"query",generator:"categorymembers",gcmtitle:title,gcmtype:"file",gcmlimit:"24"
+    action:"query",generator:"categorymembers",gcmtitle:title,gcmtype:"file",gcmlimit:"50"
    }),signal).then(data=>({data,title}))));
    if(id!==active)return;
    for(const record of records)if(record.status==="fulfilled")
@@ -434,12 +470,12 @@ async function searchImages(query){
    }
    const items=collectedImages(candidatePages,topic);
   if(items.length){
-   const selected=items.slice(0,80);
+   const selected=items.slice(0,150);
    // Show the verified film image first; Commons matches may be incomplete.
    const exactLead=isFilm?(leadItems.length?leadItems:await leadPromise):[];
    if(id!==active)return;
    if(exactLead.length){
-    displayGroups([...exactLead,...selected.filter(x=>x.preview!==exactLead[0].preview)].slice(0,80),topic);
+    displayGroups([...exactLead,...selected.filter(x=>x.preview!==exactLead[0].preview)].slice(0,150),topic);
    }else displayGroups(selected,topic);
    status.textContent=locale(selected.length+" imágenes con ficha de origen. Abre una para ampliar; confirma los derechos antes de reutilizarla.",
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
@@ -455,6 +491,9 @@ async function searchImages(query){
     "No sufficiently identified images were retrieved. Try the external collections.",
     "Aucune image suffisamment documentée. Consulter les collections externes.");
   }
+  const seen=new Set([...grid.querySelectorAll("img")].map(i=>String(i.src).replace(/\/\d+px-.*$/,"")));
+  const fromArticle=await addArticleImages(id,identity,seen);
+  if(fromArticle&&!items.length&&!leadItems.length)status.textContent=locale(fromArticle+" imágenes del artículo de Wikipedia (algunas con derechos de autor).",fromArticle+" images from the Wikipedia article (some copyrighted).",fromArticle+" images de l’article Wikipédia.");
   const covers=await addBookCovers(id,topic,identity,q);
   if(covers&&!items.length&&!leadItems.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){

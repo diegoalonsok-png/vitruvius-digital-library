@@ -188,8 +188,11 @@
   }
   window.addEventListener('pagehide',()=>stopReading());
   window.addEventListener('resize',()=>{if(!ui.hidden&&!active)schedule()},{passive:true});
-  new MutationObserver(records=>{
-   if(records.some(r=>r.attributeName==='lang'))update();
+  // Solo cuando el idioma cambia de verdad: reasignar el mismo valor no debe volver a dibujar la interfaz
+  // (con atlas-language.js eso producía un bucle que congelaba Atlas geográfico y Atlas iconográfico).
+  let lastLang=document.documentElement.lang;
+  new MutationObserver(()=>{
+   const now=document.documentElement.lang;if(now===lastLang)return;lastLang=now;update();
   }).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   update();
  }

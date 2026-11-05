@@ -38,14 +38,14 @@ function translate(root=document.body){
     const el=document.getElementById(p[0]);
     if(el){const value=p[LANGS.indexOf(current)+1]||p[1];if(el.textContent!==value)el.textContent=value;}
   }
-  document.documentElement.lang=current;
+  if(document.documentElement.lang!==current)document.documentElement.lang=current; // evita un bucle con otros observadores de «lang»
  }finally{updating=false;}
 }
 let queued=false;
 const obs=new MutationObserver(()=>{
  if(updating||queued)return;
  queued=true;
- queueMicrotask(()=>{queued=false;translate();});
+ setTimeout(()=>{queued=false;translate();},0); // tarea, no microtarea: no bloquea la página aunque otro script reaccione
 });
 obs.observe(document.body,{childList:true,subtree:true});
 sel.addEventListener("change",()=>{current=sel.value;try{localStorage.setItem("vitruvius-atlas-lang",current);}catch{}translate();});

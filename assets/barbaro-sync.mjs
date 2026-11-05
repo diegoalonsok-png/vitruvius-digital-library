@@ -62,11 +62,13 @@ function target(w,book,chapter,frac=0){
 function syncFrom(w,p){
  const e=entry(w,p);if(!e?.book)return;
  const other=w==="it"?"la":"it";
- let page=null;
- // Del latín con loci ubicados: proporción dentro del capítulo según el locus.
- const s=spans[w].get(key(e.book,e.chapter??"0"))||spans[w].get(key(e.book,"*"));
- const frac=s&&s[1]>s[0]?(p-s[0])/(s[1]-s[0]):0;
- page=target(other,e.book,e.chapter,frac);
+ // Si ambas ediciones tienen detectado el mismo capítulo, proporción dentro del capítulo;
+ // si no, proporción dentro del libro (los títulos de capítulo leídos por OCR son incompletos).
+ const sc=spans[w].get(key(e.book,e.chapter??"0")),oc=spans[other].get(key(e.book,e.chapter??"0"));
+ const sb=spans[w].get(key(e.book,"*")),ob=spans[other].get(key(e.book,"*"));
+ const [s,o]=sc&&oc?[sc,oc]:[sb,ob];if(!s||!o)return;
+ const frac=s[1]>s[0]?(p-s[0])/(s[1]-s[0]):0;
+ const page=Math.min(o[1],o[0]+Math.round(frac*(o[1]-o[0])));
  if(page&&page!==window.BarbaroParallel.state[other].number){syncing=true;window.BarbaroParallel.loadPage(other,page,"sync");syncing=false}
 }
 
