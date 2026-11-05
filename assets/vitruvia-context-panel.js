@@ -209,6 +209,7 @@ function redraw(keepPosition=true){
  frame(lastQuery);origin(lastQuery);
  // Architecture is documented separately and never conflated with the general lexicon.
  window.VitruviaArchitecture?.render(panel,lastQuery,currentRows,()=>token===requestId);
+ window.VitruviaWebDossier?.render(panel,lastQuery,currentRows,()=>token===requestId);
  const lexical=lexicalNeedles(lastQuery);
  if(lexical.length)void loci(lastQuery,token);
  bibliography(lastQuery);universityLinks(lastQuery);
