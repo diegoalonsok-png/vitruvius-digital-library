@@ -7,13 +7,13 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const cite=l=>{if(!l)return"";const [b,...r]=String(l).split(".");return "Vitr. "+(R[+b]||b)+"."+r.join(".").replace(/^praef\./,"praef. ")};
 function thumb(e){
- if(e.status==="en el repositorio")return e.local;
+ if(e.status==="en el repositorio")return e.thumb||e.local; // miniatura de 800 px; el original se abre al hacer clic
  if(e.commons)return "https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(e.commons.replace(/ /g,"_"))+"?width=640";
  return null
 }
 async function mount(target){
  if(!target)return;let d;
- try{const r=await fetch("data/laminas-historicas.json?v=20261105-v1");if(!r.ok)throw Error("HTTP "+r.status);d=await r.json()}
+ try{const r=await fetch("data/laminas-historicas.json?v=20261105-thumbs-v1");if(!r.ok)throw Error("HTTP "+r.status);d=await r.json()}
  catch(e){target.textContent="Catálogo de láminas no disponible: "+e.message;return}
  const groups=Object.entries(d.groups);
  const head=document.createElement("div");
@@ -27,7 +27,7 @@ async function mount(target){
    const src=thumb(e),ref=[e.folio,e.plate].filter(Boolean).join(" · ");
    const viewer=e.group==="codicologia"&&e.folio?'codex-h-folios-local.html?folio='+encodeURIComponent(e.folio):null;
    const fig=document.createElement("figure");fig.className="lamina";fig.id="lamina-"+e.id;
-   fig.innerHTML=(src?'<a href="'+esc(viewer||src)+'"'+(viewer?'':' target="_blank" rel="noopener"')+'><img loading="lazy" src="'+esc(src)+'" alt="'+esc(e.title+(ref?" · "+ref:""))+'"></a>'
+   fig.innerHTML=(src?'<a href="'+esc(viewer||(e.status==="en el repositorio"?e.local:src))+'"'+(viewer?'':' target="_blank" rel="noopener"')+'><img loading="lazy" decoding="async" src="'+esc(src)+'" alt="'+esc(e.title+(ref?" · "+ref:""))+'"></a>'
      :'<div class="lamina-pendiente">Imagen pendiente de importación desde la institución (derechos verificados en origen).</div>')+
     '<figcaption><strong>'+esc(e.title)+'</strong>'+
     '<span>'+[e.author&&esc(e.author),e.work&&('<i>'+esc(e.work)+'</i>')].filter(Boolean).join(", ")+'</span>'+

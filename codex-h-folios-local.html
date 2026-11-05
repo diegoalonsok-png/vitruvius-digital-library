@@ -78,7 +78,7 @@ html[data-reader-theme="dark"] body #stage{color:#172b3a}
 footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media(max-width:650px){#grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card img{height:108px}.card{padding:4px}#stage{min-height:360px;height:65vh}}
 @media print{.toolbar,.gallery,nav{display:none}#stage{height:auto;overflow:visible}}
-</style><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
+</style><script src="assets/vitruvia-fetch-cache.js?v=20261105-v2"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
 </head><body><main>
@@ -103,6 +103,8 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 const base="images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/";
 let folios=[],filtered=[],count=0,position=8,zoom=100,seq=0;const stage=$("stage"),img=$("image");
 function file(f){return base+encodeURIComponent(f.archivo)}
+// Miniaturas de 240 px para la galería (la lectura usa siempre la fotografía completa).
+function thumbFile(f){return "images/miniaturas/codex-h/"+encodeURIComponent(f.archivo)}
 function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"")}
 function setZoom(z,cx,cy){
  const old=img.getBoundingClientRect(),box=stage.getBoundingClientRect(),fx=cx==null?.5:(stage.scrollLeft+cx-box.left)/Math.max(1,old.width),fy=cy==null?.5:(stage.scrollTop+cy-box.top)/Math.max(1,old.height);
@@ -124,7 +126,7 @@ function open(index,scroll=false){
 }
 function append(){const last=Math.min(filtered.length,count+48),frag=document.createDocumentFragment();for(const i of filtered.slice(count,last)){
  const f=folios[i],b=document.createElement("button");b.className="card";b.type="button";b.dataset.i=i;b.setAttribute("aria-current",String(i===position));
- const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+fol(f.etiquetaOriginal);image.src=file(f);
+ const image=document.createElement("img");image.loading="lazy";image.alt="Miniatura "+fol(f.etiquetaOriginal);image.decoding="async";image.src=thumbFile(f);image.onerror=()=>{image.onerror=null;image.src=file(f)};
  const n=document.createElement("strong"),label=document.createElement("span");n.textContent="Imagen "+(i+1);label.textContent=fol(f.etiquetaOriginal);
  b.append(image,n,label);b.addEventListener("click",()=>open(i,true));frag.append(b)}
  $("grid").append(frag);count=last;$("more").hidden=count>=filtered.length;$("gallery-status").textContent=filtered.length+" imágenes coincidentes · "+count+" miniaturas visibles"}
