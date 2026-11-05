@@ -16,7 +16,7 @@ function classify(query,rows=[]){
  const broad=/^(?:(?:historia|evolucion|origen|tipos|estilos)\s+(?:de|la|los)\s+)?(?:arquitectura|arquitecturas|arquitectos|arquitectas|architecture|architects|architectural styles|estilos arquitectonicos|arquitectura antigua|arquitectura moderna|arquitectura gotica|arquitectura romana|arquitectura griega|arquitectura renacentista|arquitectura contemporanea)$/.test(q);
  if(broad)return{kind:'general',subject:short(query),identity:null};
  const qt=tokens(query);
- const wiki=rows.filter(x=>x.type==='wikipedia'&&x.link&&/architect|arquitect|architet|architecte/i.test(String(x.excerpt||'')+' '+String(x.entityDescription||'')))
+ const wiki=rows.filter(x=>x.type==='wikipedia'&&x.link&&/architect|arquitect|architet|architecte/i.test(String(x.excerpt||'')+' '+String(x.entityDescription||'')+' '+String(x.fullExtract||'').slice(0,900)))
   .filter(x=>{
     const t=tokens(x.title||x.entityCanonical||'');
     const nameTerms=qt.filter(w=>!['biografia','vida','obras','trabajo','estilo','disenos','diseños','planos','cortes','famoso','famosos','arquitectonico'].includes(w));
@@ -165,33 +165,92 @@ function constructedWorks(id){
   return[...found.values()].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title)).slice(0,30);
  });
 }
-function listConstructedWorks(root,id,valid){
+/* A verified first page when external Wikidata or Commons APIs fail.
+   UNESCO World Heritage Centre entry 1496 gives these eight component sites.
+   This is a *curated verified subset*, not a claim of complete works. */
+const certifiedSites={
+ 'frank lloyd wright':{
+  source:'UNESCO · World Heritage Centre · n.º 1496 (2019)',
+  url:'https://whc.unesco.org/en/list/1496',
+  items:[
+   ['Unity Temple','1906–1909','Oak Park, Illinois'],
+   ['Frederick C. Robie House','1910','Chicago, Illinois'],
+   ['Taliesin','1911–1959','Spring Green, Wisconsin'],
+   ['Hollyhock House','1918–1921','Los Ángeles, California'],
+   ['Fallingwater (Casa de la Cascada)','1936–1939','Mill Run, Pennsylvania'],
+   ['Herbert and Katherine Jacobs House','1936–1937','Madison, Wisconsin'],
+   ['Taliesin West','desde 1938','Scottsdale, Arizona'],
+   ['Solomon R. Guggenheim Museum','1956–1959','Nueva York']
+  ]
+ }
+};
+async function findArchitectQid(subject,existing){
+ if(/^Q\d+$/.test(existing||''))return existing;
+ const query=String(subject||'').trim();
+ if(!query)return null;
+ const url='https://www.wikidata.org/w/api.php?'+new URLSearchParams({
+  action:'wbsearchentities',search:query,language:'en',limit:'12',type:'item',format:'json',origin:'*'
+ });
+ const response=await remember('architect-id:'+normalize(query),()=>getJSON(url).catch(()=>null));
+ const q=normalize(query);
+ const matches=(response?.search||[]).filter(x=>{
+  const full=normalize(x.label||'');
+  const alias=normalize(x.match?.text||'');
+  const source=q===full||q===alias;
+  const profession=/architect|arquitect|architet|architecte|baumeister|bauhaus/i.test(String(x.description||''));
+  return source&&profession&&/^Q\d+$/.test(x.id||'');
+ });
+ return matches.length===1?matches[0].id:null; // Ambiguous identity is not guessed.
+}
+function listConstructedWorks(root,name,id,valid){
  const section=el('section','architecture-built-list');
- heading(section,localized('Obras de arquitectura documentadas','Documented architectural works','Œuvres architecturales documentées'));
+ heading(section,localized('Obras de arquitectura','Architectural works','Œuvres architecturales'));
  root.append(section);
- const status=el('p','context-note',localized('Consultando obras atribuidas en Wikidata…','Checking attributed architectural works in Wikidata…','Consultation des œuvres attribuées dans Wikidata…'));
+ const list=el('ol','architecture-work-stack');section.append(list);
+ const certified=certifiedSites[normalize(name)];
+ const seen=new Set();
+ function addWork(work,provenance){
+  const title=normalize(work.title||'');
+  if(!title||seen.has(title))return;
+  seen.add(title);
+  const item=el('li','architecture-work-item');
+  item.append(link(work.title+' ↗',work.url));
+  if(work.date||work.place)item.append(el('p','architecture-work-meta',[work.date,work.place].filter(Boolean).join(' · ')));
+  if(provenance)item.append(el('p','architecture-work-meta',provenance));
+  list.append(item);
+ }
+ if(certified){
+  section.append(el('p','context-note',localized(
+   'Selección documental: ocho edificios incluidos en la Lista del Patrimonio Mundial de la UNESCO (2019). No es el catálogo completo del arquitecto.',
+   'Documented selection: eight buildings inscribed on the UNESCO World Heritage List (2019). This is not a complete catalogue.',
+   'Sélection documentaire : huit édifices inscrits au patrimoine mondial de l’UNESCO en 2019. Il ne s’agit pas d’un catalogue complet.'
+  )));
+  for(const [title,date,place] of certified.items)addWork({title,date,place,url:certified.url},null);
+  section.append(link(localized('Fuente: ficha oficial de UNESCO ↗','Source: UNESCO official record ↗','Source : fiche officielle UNESCO ↗'),certified.url));
+ }
+ const status=el('p','context-note',localized('Consultando otras obras documentadas…','Checking additional documented works…','Recherche d’autres œuvres documentées…'));
  section.append(status);
- void constructedWorks(id).then(items=>{
+ void (async()=>{
+  const resolved=await findArchitectQid(name,id);
   if(!valid()||!section.isConnected)return;
-  section.replaceChildren();
-  if(!items?.length){
-   section.append(el('p','context-note',localized('El catálogo no devolvió obras arquitectónicas atribuidas con una ficha identificable.','The catalogue returned no independently identifiable architectural works.','Aucune œuvre architecturale identifiable n’a été renvoyée.')));
-  }else{
-   section.append(el('p','context-note',localized('Obras vinculadas al arquitecto en Wikidata (P84). La atribución puede contrastarse en cada ficha.','Works linked to the architect in Wikidata (P84). Consult each record to verify attribution.','Œuvres associées à l’architecte dans Wikidata (P84). Vérifiez chaque attribution dans sa notice.')));
-   const stack=el('ol','architecture-work-stack');
-   for(const work of items){
-    const li=el('li','architecture-work-item');
-    li.append(link(work.title+' ↗',work.url));
-    if(work.date||work.place)li.append(el('p','architecture-work-meta',[work.date,work.place].filter(Boolean).join(' · ')));
-    stack.append(li);
-   }
-   section.append(stack);
+  if(!resolved){
+   status.textContent=localized('No se pudieron verificar más obras en el catálogo externo.','No additional works could be verified in the external catalogue.','Aucune œuvre supplémentaire vérifiable dans le catalogue externe.');
+   return;
   }
-  section.append(link(localized('Explorar las obras registradas en Wikidata ↗','Explore recorded works in Wikidata ↗','Explorer les œuvres répertoriées dans Wikidata ↗'),
-   'https://www.wikidata.org/wiki/'+id));
- }).catch(()=>{if(valid()&&section.isConnected){
-  section.replaceChildren(el('p','context-note',localized('No se pudo consultar el catálogo de obras.','Could not retrieve the works catalogue.','Impossible de consulter le catalogue des œuvres.')));
- }});
+  const items=await constructedWorks(resolved);
+  if(!valid()||!section.isConnected)return;
+  if(items?.length){
+   for(const work of items)addWork(work,'Wikidata · P84');
+   status.remove();
+  }else{
+   status.textContent=localized('No se recuperaron otras obras atribuidas con certeza de Wikidata.','No further confidently attributed works were retrieved from Wikidata.','Aucune autre œuvre attribuée avec certitude récupérée de Wikidata.');
+  }
+  const follow=link(localized('Más obras en Wikidata ↗','More works in Wikidata ↗','Autres œuvres sur Wikidata ↗'),'https://www.wikidata.org/wiki/'+resolved);
+  section.append(follow);
+ })().catch(()=>{
+  if(!valid()||!section.isConnected)return;
+  status.textContent=localized('El catálogo externo no respondió. Se conservan las obras verificadas arriba.','The external catalogue did not respond; verified works above remain visible.','Le catalogue externe ne répond pas ; les œuvres vérifiées ci-dessus restent visibles.');
+ });
 }
 function render(panel,query,rows,stillCurrent){
  const subject=classify(query,rows);
@@ -215,13 +274,11 @@ function render(panel,query,rows,stillCurrent){
   if(/^https:\/\//.test(subject.identity.link||''))area.append(link(
     localized('Biografía y fuentes de la ficha ↗','Biography and sources ↗','Biographie et sources ↗'),subject.identity.link));
  }
+ const apiId=subject.identity?.wikidataId;
+ if(subject.kind==='person')listConstructedWorks(area,subject.subject,apiId,stillCurrent);
  const facts=el('div','architecture-facts');area.append(facts);
  const gallery=el('div','architecture-gallery');area.append(gallery);
  const status=el('p','context-note',localized('Buscando planos y cortes documentados…','Searching documented plans and sections…','Recherche de plans et coupes documentés…'));gallery.append(status);
- const apiId=subject.identity?.wikidataId;
- if(subject.kind==='person'&&apiId){
-  listConstructedWorks(area,apiId,stillCurrent);
- }
  const present=async()=>{
   let works=[];
   if(subject.kind==='person'&&apiId){
