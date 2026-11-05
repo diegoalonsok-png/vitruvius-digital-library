@@ -1,4 +1,4 @@
-import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261030-history';
+import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
 import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261103-pair2';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261104-query-1';
