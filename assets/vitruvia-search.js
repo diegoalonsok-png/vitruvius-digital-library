@@ -809,9 +809,10 @@ function display(rows,query,phase){
  const blockOf=r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
   (r.localViewer||(r.link&&!/^https?:\/\//i.test(r.link)))?"site":"web";
  const siteFirst=S.mode==="all";
- const ordered=siteFirst?
+ const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
+ const ordered=window.VitruviaLocalPriority?.promote(firstOrdered,query,S.lexicon)||firstOrdered;
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
  if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
   st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
@@ -1022,7 +1023,9 @@ async function search(){
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal&&window.VitruviaAgentic){
-  pending.push(later(()=>window.VitruviaAgentic.search(generalQuery)).then(value=>({
+  const corpusTask=()=>window.VitruviaAgentic.search(generalQuery);
+  const vital=window.VitruviaLocalPriority?.plan(q,S.lexicon)?.focused;
+  pending.push((vital?Promise.resolve().then(corpusTask):later(corpusTask)).then(value=>({
    name:"Corpus completo y bibliografía del sitio · "+value.stats.chunks+" pasajes indexados",
    rows:value.rows||[]
   })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
@@ -1030,9 +1033,10 @@ async function search(){
  if(internal){
   pending.push((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():{entries:[]})).then(d=>{
    const f=x=>norm(String(x||"")).replace(/j/g,"i").replace(/v/g,"u"),q=f(generalQuery).trim();
-   const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[])].some(y=>f(y)===q));
+   S.lexicon=d.entries||[];
+   const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[]),x.greek].filter(Boolean).some(y=>f(y)===q));
    return {name:"Ficha de término",rows:e?[{type:"section",title:"Ficha del término «"+e.lemma+"» en Vitruvio",author:[e.es,e.fr,e.en].filter(Boolean).join(" · "),
-    excerpt:"Definición de Vitruvio con las traducciones V514 · V554 · V297, todas las apariciones por prefacio y capítulo con su folio en el Codex H, aparato crítico, láminas y estudios.",
+    excerpt:"Ficha del léxico enlazada a las ediciones estructuradas del tratado. La presencia de un término en las ediciones no acredita por sí sola su ubicación en un folio manuscrito.",
     meta:"FICHA DE TÉRMINO · BIBLIOTECA VITRUVIANA",rating:3200,link:"termino.html?t="+encodeURIComponent(e.lemma),source:"Biblioteca Vitruviana"}]:[]}}).catch(()=>({name:"Léxico no disponible",rows:[]})));
  }
  if(internal){
