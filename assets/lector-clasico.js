@@ -44,8 +44,25 @@ function parseTEI(xml){
  return out;
 }
 const num=s=>{const m=String(s||"").match(/\d+/);return m?Number(m[0]):NaN};
+/* ---------- Texto plano (The Latin Library, espejo de CLTK en GitHub) → pasajes ---------- */
+function parsePlain(txt,book){
+ const out=[];let head="",k=0;
+ const paras=String(txt).replace(/\r/g,"").split(/\n\s*\n/).map(p=>p.split("\n").map(l=>l.replace(/\s+/g," ").trim()).filter(Boolean).join("\n")).filter(Boolean);
+ for(const p of paras){
+  if(/The Latin Library|The Classics Page|Christian Latin|Neo-Latin/i.test(p)&&p.length<160||/^[\d\s]+$/.test(p))continue;
+  if(!k&&!head&&/^[^\n]{3,60}:\s[^\n]{1,60}$/.test(p))continue; // cabecera «Autor: Obra» de The Latin Library
+  if(p.length<70&&!p.includes("\n")){head=head?head+" · "+p:p;continue}
+  k++;const m=head.match(/^\[?([IVXLC]+|\d+)\.?\]?(?:\s|$)/);
+  out.push({locus:book+"."+(m?m[1]+"."+k:k),book:String(book),text:(head?head+"\n":"")+p,range:null});head="";
+ }
+ return out;
+}
+async function loadPlain(parts){
+ const texts=await Promise.all(parts.map(x=>fetchText(x.url)));
+ return texts.flatMap((t,i)=>parsePlain(t,parts[i].n||String(i+1)));
+}
 async function fetchText(url){
- const r=await fetch(url);if(!r.ok)throw Error("Perseus respondió "+r.status);return r.text();
+ const r=await fetch(url);if(!r.ok)throw Error("el repositorio respondió "+r.status);return r.text();
 }
 // Traducción que corresponde al pasaje: mismo locus; si no, el de prefijo más largo; en verso, el que se superpone.
 function translationFor(p){
@@ -133,14 +150,15 @@ async function openWork(id){
   for(const b of wbox.querySelectorAll(".alt-ms"))b.onclick=()=>{work.witness={...work.witness,shelfmark:b.dataset.s,manifest:b.dataset.m};loadWitness(work.witness)};
   setLeft("codex");loadWitness(w);
  }else{wbox.innerHTML="<span class='muted'>No hay todavía un manuscrito o impreso antiguo de esta obra con imágenes IIIF verificadas; se muestra el texto original editado.</span>";$("tab-codex").disabled=true;setLeft("original")}
- $("status").textContent="Cargando el texto original desde Perseus…";
- try{orig=parseTEI(await fetchText(work.original))}catch(e){$("status").textContent="No se pudo leer el texto original ("+e.message+").";return}
+ $("status").textContent="Cargando el texto original…";
+ try{orig=work.parts?await loadPlain(work.parts):parseTEI(await fetchText(work.original))}catch(e){$("status").textContent="No se pudo leer el texto original ("+e.message+").";return}
  $("toc").replaceChildren(...orig.map((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;return o}));
  const loc=params.get("loc");cur=Math.max(0,orig.findIndex(p=>p.locus===loc));
  $("q").value=params.get("q")||"";query=$("q").value.trim();
- $("status").textContent=orig.length+" pasajes · texto: Perseus Digital Library (CC BY-SA 4.0)"+(work.translations.length?" · cargando traducción…":"");render();
+ const srcName=u=>/latin_text_latin_library/.test(u||"")?"The Latin Library (texto de dominio público; copia de CLTK en GitHub)":/First1KGreek/.test(u||"")?"Open Greek and Latin · First1KGreek (CC BY-SA 4.0)":"Perseus Digital Library (CC BY-SA 4.0)";
+ $("status").textContent=orig.length+" pasajes · texto: "+srcName(work.original)+(work.translations.length?" · cargando traducción…":"");render();
  if(work.translations.length){
-  try{trans=parseTEI(await fetchText(work.translations[0].url));$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · Perseus Digital Library (CC BY-SA 4.0)"}
+  try{trans=parseTEI(await fetchText(work.translations[0].url));$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · "+srcName(work.translations[0].url)}
   catch(e){$("status").textContent+=" · no se pudo leer la traducción ("+e.message+")"}
   if(query)search();else render();
  }
