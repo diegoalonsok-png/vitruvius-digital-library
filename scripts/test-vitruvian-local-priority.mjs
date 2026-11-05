@@ -28,7 +28,7 @@ const pref=P.promote([{type:"wikipedia"},{type:"preface",title:"De architectura"
 assert.equal(pref[0].type,"preface");
 const corpus=P.promote([{type:"wikipedia"},{type:"passage",edition:"recensio-es",title:"Vitruvio 3.1.1"}],"symmetria",entries);
 assert.equal(corpus[0].type,"passage");
-const x={window:{},location:{href:"https://library.test/vitruvia.html",origin:"https://library.test"}};
+const x={window:{},URL,location:{href:"https://library.test/vitruvia.html",origin:"https://library.test"}};
 vm.runInNewContext(read("assets/vitruvia-classics-viewer.js"),x);
 assert.equal(x.window.VitruviaClassicsViewer.locate("corpus/catullus-carmina-la.html"),"https://library.test/corpus/catullus-carmina-la.html");
 assert.equal(x.window.VitruviaClassicsViewer.locate("https://evil.test/inject.html"),null);
