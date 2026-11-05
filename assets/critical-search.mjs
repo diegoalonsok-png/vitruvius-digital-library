@@ -59,20 +59,64 @@ async function compareLocus(locus){
  const datasets=await Promise.allSettled(editions.map(getCorpus));
  const grid=document.createElement('div');grid.className='critical-parallel';
  let referenceLatin='';
- datasets.forEach((res,i)=>{
+ const ref=parseLocus(locus);
+ const findP=res=>res.status==='fulfilled'?res.value.passages.find(p=>p.locus===locus||(ref&&p.book===ref.book&&String(p.chapter)===String(ref.chapter)&&ref.section>=p.section&&ref.section<=(p.section_end||p.section))):null;
+ const passages=datasets.map(findP);
+ referenceLatin=(passages.find(p=>p?.latin)||{}).latin||'';
+ /* Cada recuadro elige su versión: ediciones críticas históricas (Krohn, Rose: texto OCR localizado por
+    coincidencia con el latín del locus) o el latín y la traducción de cada edición de Kurilo. */
+ const VERSIONS=[
+  {id:'krohn',label:'Krohn 1912 · latín (OCR)',ocr:'krohn-1912',pdf:'https://archive.org/details/vitruviidearchit00vitr/page/n'},
+  {id:'rose',label:'Rose 1899 · latín (OCR)',ocr:'rose-1899',pdf:'https://archive.org/details/vitruviidearchit00vitr_0/page/n'},
+  {id:'es-la',label:'V514 · latín (Kurilo)',ed:0,field:'latin'},{id:'es-tr',label:'V514 · castellano (Kurilo)',ed:0,field:'translation'},
+  {id:'fr-la',label:'V554 · latín (Kurilo)',ed:1,field:'latin'},{id:'fr-tr',label:'V554 · francés (Kurilo)',ed:1,field:'translation'},
+  {id:'en-la',label:'V297 · latín (Kurilo)',ed:2,field:'latin'},{id:'en-tr',label:'V297 · inglés (Kurilo)',ed:2,field:'translation'}];
+ let saved=['krohn','es-la','en-tr'];try{const v=JSON.parse(localStorage.getItem('vitruvius-cotejo-versiones')||'null');if(Array.isArray(v)&&v.length===3&&v.every(x=>VERSIONS.some(y=>y.id===x)))saved=v}catch{}
+ const ocrCache={};
+ const ocrPages=id=>ocrCache[id]||(ocrCache[id]=fetch('data/text/'+id+'.json').then(r=>r.ok?r.json():[]).catch(()=>[]));
+ // Tramo del OCR que mejor coincide con el latín del locus (ventana de palabras con más coincidencias).
+ const fold=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+ async function ocrPassage(id){
+  const pages=await ocrPages(id);const want=new Set((fold(referenceLatin).match(/[a-z]{5,}/g)||[]));if(!want.size||!pages.length)return null;
+  let best=null;
+  for(const pg of pages){const words=String(pg.text||'').split(/\s+/);const hits=words.map(w=>want.has(fold(w).replace(/[^a-z]/g,''))?1:0);
+   const span=Math.max(40,Math.round(referenceLatin.split(/\s+/).length*1.15));let sum=0;
+   for(let i=0;i<words.length;i++){sum+=hits[i];if(i>=span)sum-=hits[i-span];if(!best||sum>best.sum)best={sum,page:pg.page,words,end:i,span}}}
+  if(!best||best.sum<Math.max(4,want.size*0.3))return null;
+  const a=Math.max(0,best.end-best.span+1);const win=best.words.slice(a,best.end+1);const got=new Set(win.map(w=>fold(w).replace(/[^a-z]/g,'')).filter(w=>want.has(w)));return {page:best.page,text:win.join(' '),share:Math.min(100,Math.round(100*got.size/want.size))};
+ }
+ function cardFor(slot){
   const card=document.createElement('article');card.className='critical-parallel-edition';
-  const heading=document.createElement('h3');heading.textContent=editions[i].name;card.append(heading);
-  if(res.status==='fulfilled'){
-   const ref=parseLocus(locus);const p=res.value.passages.find(p=>p.locus===locus||(ref&&p.book===ref.book&&String(p.chapter)===String(ref.chapter)&&ref.section>=p.section&&ref.section<=(p.section_end||p.section)));
-   if(p){if(!referenceLatin&&p.latin)referenceLatin=p.latin;for(const [label,value] of [['Texto latino',p.latin],['Traducción',p.translation]]){const strong=document.createElement('strong');strong.textContent=label;const paragraph=document.createElement('p');paragraph.textContent=value;card.append(strong,paragraph);}}
-   else{const p=document.createElement('p');p.textContent='Locus no individualizado en esta edición.';card.append(p);}
-  }else{const p=document.createElement('p');p.textContent='No fue posible cargar esta edición.';card.append(p);}
-  const ownNotes=noteEntries.filter(n=>n.edition===editions[i].id);
-  const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico';card.append(subtitle);
-  if(ownNotes.length)for(const n of ownNotes){const p=document.createElement('p');const passage=res.status==='fulfilled'?res.value.passages.find(item=>item.locus===locus||(locusRef&&item.book===locusRef.book&&String(item.chapter)===String(locusRef.chapter)&&locusRef.section>=item.section&&locusRef.section<=(item.section_end||item.section))):null;const evidence=anchorEvidence(n,passage);const status=n.locus?'Locus citado expresamente en nota':evidence.status==='strong_unreviewed'?'Locus probable: anclaje textual fuerte (sin cotejo editorial)':'Locus propuesto, requiere cotejo';p.textContent=status+' · Nota '+n.footnote_id+': '+n.text;card.append(p);}
-  else{const p=document.createElement('p');p.textContent='No hay notas vinculadas a este locus en el índice actual de esta edición. Otras notas pueden estar pendientes de asignación.';card.append(p);}
-  grid.append(card);
- });panel.append(grid);
+  const head=document.createElement('div');head.className='critical-version-head';
+  const sel=document.createElement('select');sel.setAttribute('aria-label','Versión del recuadro '+(slot+1));
+  for(const v of VERSIONS){const o=document.createElement('option');o.value=v.id;o.textContent=v.label;sel.append(o)}sel.value=saved[slot];
+  head.append(sel);card.append(head);const body=document.createElement('div');card.append(body);
+  async function paint(){
+   const v=VERSIONS.find(x=>x.id===sel.value);body.replaceChildren();
+   if(v.ocr){
+    const st=document.createElement('p');st.className='source-note';st.textContent='Localizando el locus en el OCR…';body.append(st);
+    const hit=await ocrPassage(v.ocr);if(sel.value!==v.id)return;
+    if(!hit){st.textContent='No se localizó este locus en el OCR con suficiente coincidencia. Consulta el facsímil.';return}
+    st.textContent='OCR sin revisar · página '+hit.page+' del PDF · '+hit.share+' % de las palabras del locus. Coteja con la imagen antes de citar.';
+    const para=document.createElement('p');para.lang='la';para.textContent=hit.text;body.append(para);
+    const a=document.createElement('a');a.href=v.pdf+Math.max(0,hit.page-1)+'/mode/1up';a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir la página '+hit.page+' del facsímil ↗';body.append(a);
+    return;
+   }
+   const p=passages[v.ed];
+   if(!p){const x=document.createElement('p');x.textContent=datasets[v.ed].status==='fulfilled'?'Locus no individualizado en esta edición.':'No fue posible cargar esta edición.';body.append(x);return}
+   const strong=document.createElement('strong');strong.textContent=v.field==='latin'?'Texto latino':'Traducción';
+   const para=document.createElement('p');para.textContent=p[v.field]||'—';if(v.field==='latin')para.lang='la';body.append(strong,para);
+   const ownNotes=noteEntries.filter(n=>n.edition===editions[v.ed].id);
+   const subtitle=document.createElement('h4');subtitle.textContent='Aparato crítico · '+editions[v.ed].name.split(' · ')[0];body.append(subtitle);
+   if(ownNotes.length)for(const n of ownNotes){const q=document.createElement('p');const evidence=anchorEvidence(n,p);
+    q.textContent=(n.locus?'Locus citado expresamente en nota':evidence.status==='strong_unreviewed'?'Locus probable: anclaje textual fuerte (sin cotejo editorial)':'Locus propuesto, requiere cotejo')+' · Nota '+n.footnote_id+': '+n.text;body.append(q)}
+   else{const q=document.createElement('p');q.textContent='No hay notas vinculadas a este locus en el índice actual de esta edición.';body.append(q)}
+  }
+  sel.addEventListener('change',()=>{saved[slot]=sel.value;try{localStorage.setItem('vitruvius-cotejo-versiones',JSON.stringify(saved))}catch{}paint()});
+  paint();return card;
+ }
+ for(let slot=0;slot<3;slot++)grid.append(cardFor(slot));
+ panel.append(grid);
  const sources=document.createElement('section');sources.className='critical-parallel-edition';
  const sourceTitle=document.createElement('h3');sourceTitle.textContent='Cotejo con ediciones críticas históricas';sources.append(sourceTitle);
  const details=document.createElement('p');details.textContent='Krohn (1912): consultar la edición crítica y su aparato original. La transcripción OCR del sitio no posee una correspondencia de locus verificada, por lo que no se atribuyen variantes automáticamente.';sources.append(details);
