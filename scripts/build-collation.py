@@ -31,6 +31,8 @@ def norm(w):
 def clean_page(t):
     t = re.sub(r"-[ \t]*\d{0,3}[ \t]*\n\s*", "", t)  # guiones de fin de línea (con número de línea al margen)
     t = re.sub(r"\s+", " ", t)
+    # guion de corte con número de línea o de página intercalado: «sym- (25) metriarum»
+    t = re.sub(r"([A-Za-zÀ-ÿ])-\s+(?:[\(\[]?\d{1,3}[a-z]?[\)\]]?\s+)?(?=[a-zà-ÿ])", r"\1", t)
     return t.strip()
 
 

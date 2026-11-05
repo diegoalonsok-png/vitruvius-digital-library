@@ -1,0 +1,45 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Colación por locus · De architectura · Vitruvius Digital Library</title>
+<meta name="description" content="Tabla de colación por locus de Vitruvio: texto latino V514 de Diego Kurilo frente a Rose (1899) y Krohn (1912), lecturas divergentes, aparato crítico y folio del Codex Harleianus.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css?v=20261030-docx-1">
+<link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1">
+<link rel="stylesheet" href="assets/theme.css?v=20261030-docx-1">
+<link rel="stylesheet" href="assets/academic.css?v=20261103-pair2">
+<style>
+.coll-main{max-width:1080px;margin:0 auto;padding:24px 20px 80px}
+.coll-eyebrow{font:600 11px/1.4 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#9a7c3c}
+.coll-main h1{font-family:Georgia,serif;font-weight:500;margin:.2em 0 .2em;font-size:clamp(2rem,5vw,3rem)}
+.coll-main h2{font-family:Georgia,serif;font-weight:500;font-size:1.7rem;margin:18px 0 8px}
+#coll-form{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 6px}
+#coll-form input{padding:9px 11px;border:1px solid rgba(150,130,95,.6);min-width:180px;font:15px Georgia,serif;background:transparent;color:inherit}
+#coll-form button{padding:9px 14px;border:1px solid rgba(150,130,95,.6);background:transparent;color:inherit;cursor:pointer}
+.coll-row{border-top:1px solid rgba(150,130,95,.45);padding:14px 0}
+.coll-row h3{font:600 12px Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase;margin:0 0 6px}
+.coll-text{font:17px/1.75 Georgia,serif;margin:6px 0}
+.coll-text mark,.coll-readings mark{background:#ffe45c;color:#14120e;padding:0 2px;border-radius:2px}
+.coll-cite,.coll-meta,.coll-method,#coll-status{font-size:12.5px;opacity:.8}
+.coll-readings{margin:8px 0;padding:8px 12px;border-left:2px solid #C9A84C;background:rgba(128,110,75,.07)}
+.coll-readings summary{cursor:pointer;font-weight:600}
+.coll-readings ol{columns:2 280px;margin:8px 0;padding-left:20px;font:15px/1.6 Georgia,serif}
+.coll-lem{font-style:normal}.coll-var{font-style:italic}.coll-sig{font:11px Arial,sans-serif;opacity:.7}
+.coll-note{margin:8px 0 12px}.coll-note p{margin:3px 0}
+.coll-base{background:rgba(201,168,76,.06);padding:14px 12px}
+</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer src="assets/site-bar.js?v=20261105-bar-v1"></script></head><body>
+<header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="index.html"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a><nav aria-label="Navegación"><a href="index.html#buscar">Buscador de textos</a><a href="lector-bilingue.html">Lector bilingüe</a><a href="aparato-critico.html">Aparato crítico</a><a href="indices-locorum.html">Indices locorum</a></nav><button class="theme-switch" type="button">Oscuro</button></div></header>
+<main class="coll-main" id="contenido">
+<p class="coll-eyebrow">Instrumenta philologica · Collatio</p>
+<h1>Colación por locus</h1>
+<p>Para cada pasaje, el texto latino de la edición de Diego Kurilo (V514) frente a las ediciones críticas de Rose (1899) y Krohn (1912), con las lecturas divergentes en forma de aparato, las notas del aparato crítico de las ediciones Kurilo y el folio correspondiente del Codex Harleianus.</p>
+<form id="coll-form" role="search"><label for="coll-locus">Locus</label><input id="coll-locus" list="coll-list" placeholder="I.2.4 · 3.1.1 · 5.praef.1" autocomplete="off"><datalist id="coll-list"></datalist><button type="submit">Ir</button><button id="coll-prev" type="button" aria-label="Locus anterior">←</button><button id="coll-next" type="button" aria-label="Locus siguiente">→</button></form>
+<p id="coll-status" role="status">Cargando…</p>
+<div id="coll-body" aria-live="polite"></div>
+</main>
+<script src="assets/codicological-query.js?v=20261105-cq-v1"></script>
+<script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script>
+<script src="assets/kurilo-apparatus.js?v=20261105-apparatus-v1"></script>
+<script src="assets/research-folder.js?v=20261105-v1"></script>
+<script src="assets/collation-page.js?v=20261105-v1"></script>
+<script src="assets/theme.js?v=20261105-merge-v1" defer></script>
+</body></html>
