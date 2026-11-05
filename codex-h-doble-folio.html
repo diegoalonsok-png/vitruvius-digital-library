@@ -76,6 +76,8 @@ h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(34px,4vw,6
 .scroll-nav input[type=range]{min-width:90px;flex:1;accent-color:#9a7242}
 .scroll-nav button{padding:6px 8px;min-height:34px;font-size:12px}
 .scroll-nav output{min-width:35px;font-size:12px;font-variant-numeric:tabular-nums}
+.both-tools{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px;padding:8px 12px;border:1px solid #b8a88c;background:#f4ecdc;font:13px system-ui,sans-serif;color:#223b4e}.both-tools button{font:inherit;padding:5px 10px;border:1px solid #b8a88c;background:#fffaf0;color:inherit;cursor:pointer}.both-tools button[aria-pressed=true]{background:#223b4e;color:#fff}
+html[data-reader-theme=dark] .both-tools{background:#394754;color:#f9ecdc}html[data-reader-theme=dark] .both-tools button{background:#22303b;color:#f9ecdc}
 .filters{background:#f4ecdc;border-top:1px solid #b8a88c}
 .filters summary{padding:9px 12px;cursor:pointer;font:600 13px system-ui,sans-serif;color:#223b4e}
 .filters summary:hover{background:#ebdcc3}
@@ -102,7 +104,7 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 @media print{
  @page{size:landscape;margin:10mm}
  body{background:#fff!important;color:#111!important}
- nav,.toolbar,.extra-toolbar,.notice,.gallery,.leaf-tools,.filters,.scroll-nav,.bottom,#status,#lens{display:none!important}
+ nav,.toolbar,.extra-toolbar,.both-tools,.notice,.gallery,.leaf-tools,.filters,.scroll-nav,.bottom,#status,#lens{display:none!important}
  main{width:100%;padding:0}
  .banner{background:#fff!important;color:#111!important;border-top:0;padding:6px}
  .banner h1{font-size:24px}
@@ -157,8 +159,8 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 <button type="button" id="reader-theme" class="reader-header-color" aria-pressed="false"><span class="reader-theme-symbol" aria-hidden="true">☾</span> <span data-tr="dark">Oscuro</span></button>
 </div><small>BIBLIOTHECA VITRUVII · CODEX HARLEIANUS 2767</small>
 <h1>Codex H · Doble hoja</h1>
-<p>Vitruvio, <em>De architectura</em>. British Library, Harley MS 2767, primer cuarto del siglo IX. Lectura del manuscrito en dos páginas enfrentadas, sin traducciones; ampliación y lupa independientes.</p></header>
-<p class="notice"><strong>Criterio codicológico:</strong> en un códice abierto se enfrenta normalmente un <em>verso</em> a la izquierda con el <em>recto</em> siguiente a la derecha (por ejemplo, f.1v y f.2r). El f.1r es una apertura inicial independiente. Cubiertas y guardas se mantienen identificadas en el índice original, pero no se emparejan arbitrariamente como folios de texto.</p>
+<p data-trhtml="lead">Vitruvio, <em>De architectura</em>. British Library, Harley MS 2767, primer cuarto del siglo IX. Lectura del manuscrito en dos páginas enfrentadas, sin traducciones; ampliación y lupa independientes.</p></header>
+<p class="notice" data-trhtml="criterion"><strong>Criterio codicológico:</strong> en un códice abierto se enfrenta normalmente un <em>verso</em> a la izquierda con el <em>recto</em> siguiente a la derecha (por ejemplo, f.1v y f.2r). El f.1r es una apertura inicial independiente. Cubiertas y guardas se mantienen identificadas en el índice original, pero no se emparejan arbitrariamente como folios de texto.</p>
 <div class="toolbar" aria-label="Navegación de aperturas"><button id="previous" type="button" disabled>← Apertura anterior</button>
 <strong id="spread-label">Apertura —</strong><button id="following" type="button" disabled>Apertura siguiente →</button>
 <label for="folio-search">Ir a folio o imagen</label><input id="folio-search" class="jump" type="search" placeholder="f.1v · f.20r · 10">
@@ -166,6 +168,13 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 <button id="fit-both" type="button" disabled>Ajustar ambas</button></div>
 
 <p id="status" role="status">Cargando índice local de imágenes alojadas en GitHub…</p>
+<div class="both-tools" role="group" aria-label="Ajustes de imagen para ambas hojas"><strong data-tr2="both">Ambas hojas</strong>
+<button type="button" id="both-invert" aria-pressed="false" data-tr2="invertBoth">Invertir colores</button>
+<button type="button" id="both-bw" aria-pressed="false" data-tr2="bwBoth">Blanco y negro</button>
+<label><span data-tr2="contrastBoth">Contraste</span> <input type="range" id="both-contrast" min="40" max="220" value="100"></label>
+<label><span data-tr2="brightnessBoth">Brillo</span> <input type="range" id="both-brightness" min="40" max="180" value="100"></label>
+<label><span data-tr2="sepiaBoth">Sepia</span> <input type="range" id="both-sepia" min="0" max="100" value="0"></label>
+<button type="button" id="both-reset" data-tr2="resetBoth">Restablecer</button></div>
 <section class="book" aria-label="Libro abierto con doble folio">
 <article class="leaf left"><div class="leaf-title"><strong id="left-label">Folio izquierdo</strong><small id="left-meta">Verso</small></div>
 <div class="leaf-tools"><button id="left-minus" type="button" disabled>−</button><button id="left-plus" type="button" disabled>+ Ampliar</button><button id="left-fit" type="button" disabled>Ajustar</button><output id="left-percent">100%</output><div class="quick-image-tools" role="group" aria-label="Ajustes rápidos del folio left">
@@ -219,9 +228,9 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 <button type="button" id="right-reset" data-tr="reset">Restablecer imagen</button>
 </div></details>
 <div class="leaf-foot" id="right-foot">—</div></article></section>
-<p class="notice">Haz clic en cada folio para ampliarlo; los botones de zoom y las barras de desplazamiento actúan sobre cada hoja por separado. Al pasar el cursor sobre una imagen aparece su lupa. Las imágenes se leen exclusivamente de la carpeta del repositorio.</p>
-<section class="gallery" aria-labelledby="gallery-title"><h2 id="gallery-title">Galería de folios · Harley MS 2767</h2>
-<p><strong>341 imágenes institucionales, en orden y con sus nombres originales.</strong> Cada miniatura lleva la etiqueta exacta de la British Library: <em>f.1r, f.1v, f.2r, f.2v…</em>; también figuran las cubiertas y guardas tal como aparecen en su manifiesto. Pulsa un folio para ver su apertura en el lector superior.</p>
+<p class="notice" data-trhtml="help">Haz clic en cada folio para ampliarlo; los botones de zoom y las barras de desplazamiento actúan sobre cada hoja por separado. Al pasar el cursor sobre una imagen aparece su lupa. Las imágenes se leen exclusivamente de la carpeta del repositorio.</p>
+<section class="gallery" aria-labelledby="gallery-title"><h2 id="gallery-title" data-trhtml="galleryTitle">Galería de folios · Harley MS 2767</h2>
+<p data-trhtml="galleryText"><strong>341 imágenes institucionales, en orden y con sus nombres originales.</strong> Cada miniatura lleva la etiqueta exacta de la British Library: <em>f.1r, f.1v, f.2r, f.2v…</em>; también figuran las cubiertas y guardas tal como aparecen en su manifiesto. Pulsa un folio para ver su apertura en el lector superior.</p>
 <div class="gallery-bar"><input id="gallery-query" type="search" placeholder="Buscar f.1r, f.2v, imagen 100…" aria-label="Buscar en la galería"><button id="gallery-reset" type="button">Mostrar todas</button></div>
 <p id="gallery-status" role="status">Preparando aperturas…</p><div id="spread-grid"></div><button id="load-more" type="button" hidden>Mostrar más folios</button></section>
 <footer class="bottom"><p><strong>Procedencia y créditos:</strong> The British Library, London, Harley MS 2767, Vitruvius, <em>De architectura</em>. La identificación de folios procede del manifiesto digital de la British Library. Condición declarada por el proveedor: «Public Domain in most countries, other than the UK»; verificar las condiciones aplicables en cada jurisdicción. Archivo local preservado con índice, créditos y huellas SHA-256.</p>
@@ -478,4 +487,52 @@ fetch(dir+"indice-folios.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error
  setSpread(found>=0?found:folioToSpread.get(10));
 }).catch(e=>{$("status").textContent="No fue posible verificar el archivo local: "+e.message;for(const n of ["left","right"])sides[n].empty.textContent="No hay folios comprobados disponibles."});
 })();
-</script></body></html>
+</script><script>
+/* Traducción de los textos de la página (no solo de los controles) y ajustes de imagen para ambas hojas. */
+(()=>{
+const H={
+ es:{both:"Ambas hojas",invertBoth:"Invertir colores",bwBoth:"Blanco y negro",contrastBoth:"Contraste",brightnessBoth:"Brillo",sepiaBoth:"Sepia",resetBoth:"Restablecer"},
+ en:{lead:"Vitruvius, <em>De architectura</em>. British Library, Harley MS 2767, first quarter of the ninth century. The manuscript read as two facing pages, without translations; independent zoom and magnifier.",
+  criterion:"<strong>Codicological criterion:</strong> in an open codex a <em>verso</em> on the left normally faces the following <em>recto</em> on the right (e.g. f.1v and f.2r). f.1r is a separate opening. Covers and flyleaves keep their labels from the original index but are not paired arbitrarily as text leaves.",
+  help:"Click a leaf to enlarge it; zoom buttons and scroll bars act on each leaf separately. Hovering over an image shows its magnifier. Images are read only from the repository folder.",
+  galleryTitle:"Gallery of leaves · Harley MS 2767",galleryText:"<strong>341 institutional images, in order and with their original names.</strong> Each thumbnail carries the British Library’s exact label: <em>f.1r, f.1v, f.2r, f.2v…</em>; covers and flyleaves appear as in its manifest. Select a leaf to open its spread in the reader above.",
+  both:"Both leaves",invertBoth:"Invert colours",bwBoth:"Black & white",contrastBoth:"Contrast",brightnessBoth:"Brightness",sepiaBoth:"Sepia",resetBoth:"Reset"},
+ fr:{lead:"Vitruve, <em>De architectura</em>. British Library, Harley MS 2767, premier quart du IX<sup>e</sup> siècle. Lecture du manuscrit en double page, sans traduction ; zoom et loupe indépendants.",
+  criterion:"<strong>Critère codicologique :</strong> dans un codex ouvert, un <em>verso</em> à gauche fait face au <em>recto</em> suivant à droite (par ex. f.1v et f.2r). Le f.1r forme une ouverture isolée. Les plats et gardes gardent leur étiquette d’origine mais ne sont pas appariés arbitrairement comme feuillets de texte.",
+  help:"Cliquez sur un feuillet pour l’agrandir ; les boutons de zoom et les barres de défilement agissent sur chaque feuillet séparément. Au survol, la loupe apparaît. Les images sont lues uniquement depuis le dossier du dépôt.",
+  galleryTitle:"Galerie des feuillets · Harley MS 2767",galleryText:"<strong>341 images institutionnelles, dans l’ordre et avec leurs noms d’origine.</strong> Chaque vignette porte l’étiquette exacte de la British Library : <em>f.1r, f.1v, f.2r, f.2v…</em> ; plats et gardes figurent comme dans son manifeste. Choisissez un feuillet pour ouvrir sa double page ci-dessus.",
+  both:"Les deux feuillets",invertBoth:"Inverser les couleurs",bwBoth:"Noir et blanc",contrastBoth:"Contraste",brightnessBoth:"Luminosité",sepiaBoth:"Sépia",resetBoth:"Réinitialiser"},
+ it:{lead:"Vitruvio, <em>De architectura</em>. British Library, Harley MS 2767, primo quarto del secolo IX. Lettura del manoscritto in due pagine affiancate, senza traduzioni; ingrandimento e lente indipendenti.",
+  criterion:"<strong>Criterio codicologico:</strong> in un codice aperto un <em>verso</em> a sinistra fronteggia di norma il <em>recto</em> successivo a destra (per es. f.1v e f.2r). Il f.1r è un’apertura isolata. Coperte e guardie mantengono l’etichetta dell’indice originale ma non vengono accoppiate arbitrariamente come fogli di testo.",
+  help:"Fai clic su un foglio per ingrandirlo; i pulsanti di zoom e le barre di scorrimento agiscono su ciascun foglio separatamente. Passando sopra un’immagine compare la lente. Le immagini si leggono solo dalla cartella del repository.",
+  galleryTitle:"Galleria dei fogli · Harley MS 2767",galleryText:"<strong>341 immagini istituzionali, in ordine e con i nomi originali.</strong> Ogni miniatura porta l’etichetta esatta della British Library: <em>f.1r, f.1v, f.2r, f.2v…</em>; coperte e guardie compaiono come nel suo manifesto. Scegli un foglio per aprire la sua apertura nel lettore sopra.",
+  both:"Entrambi i fogli",invertBoth:"Inverti i colori",bwBoth:"Bianco e nero",contrastBoth:"Contrasto",brightnessBoth:"Luminosità",sepiaBoth:"Seppia",resetBoth:"Ripristina"},
+ de:{lead:"Vitruv, <em>De architectura</em>. British Library, Harley MS 2767, erstes Viertel des 9. Jahrhunderts. Lektüre der Handschrift als Doppelseite, ohne Übersetzungen; Zoom und Lupe unabhängig.",
+  criterion:"<strong>Kodikologisches Kriterium:</strong> In einem aufgeschlagenen Kodex steht links gewöhnlich ein <em>Verso</em> dem folgenden <em>Recto</em> rechts gegenüber (z. B. f.1v und f.2r). f.1r ist eine eigene Öffnung. Einbände und Vorsätze behalten ihre Bezeichnung aus dem Originalindex, werden aber nicht willkürlich als Textblätter gepaart.",
+  help:"Klicken Sie auf ein Blatt, um es zu vergrößern; Zoom und Bildlaufleisten wirken auf jedes Blatt einzeln. Beim Überfahren erscheint die Lupe. Die Bilder werden ausschließlich aus dem Ordner des Repositoriums gelesen.",
+  galleryTitle:"Blattgalerie · Harley MS 2767",galleryText:"<strong>341 institutionelle Bilder, in Reihenfolge und mit ihren Originalnamen.</strong> Jede Miniatur trägt die genaue Bezeichnung der British Library: <em>f.1r, f.1v, f.2r, f.2v…</em>; Einbände und Vorsätze erscheinen wie in ihrem Manifest. Wählen Sie ein Blatt, um die Doppelseite oben zu öffnen.",
+  both:"Beide Blätter",invertBoth:"Farben umkehren",bwBoth:"Schwarzweiß",contrastBoth:"Kontrast",brightnessBoth:"Helligkeit",sepiaBoth:"Sepia",resetBoth:"Zurücksetzen"},
+ pt:{lead:"Vitrúvio, <em>De architectura</em>. British Library, Harley MS 2767, primeiro quarto do século IX. Leitura do manuscrito em duas páginas lado a lado, sem traduções; ampliação e lupa independentes.",
+  criterion:"<strong>Critério codicológico:</strong> num códice aberto, um <em>verso</em> à esquerda fica normalmente diante do <em>recto</em> seguinte à direita (por ex., f.1v e f.2r). O f.1r é uma abertura isolada. Capas e guardas mantêm o rótulo do índice original, mas não são emparelhadas arbitrariamente como fólios de texto.",
+  help:"Clique em cada fólio para o ampliar; os botões de zoom e as barras de rolagem atuam em cada fólio separadamente. Ao passar o cursor, aparece a lupa. As imagens são lidas apenas da pasta do repositório.",
+  galleryTitle:"Galeria de fólios · Harley MS 2767",galleryText:"<strong>341 imagens institucionais, em ordem e com os nomes originais.</strong> Cada miniatura traz o rótulo exato da British Library: <em>f.1r, f.1v, f.2r, f.2v…</em>; capas e guardas aparecem como no seu manifesto. Escolha um fólio para abrir a abertura no leitor acima.",
+  both:"Ambas as folhas",invertBoth:"Inverter cores",bwBoth:"Preto e branco",contrastBoth:"Contraste",brightnessBoth:"Brilho",sepiaBoth:"Sépia",resetBoth:"Restaurar"}};
+const original={};
+document.querySelectorAll("[data-trhtml]").forEach(el=>{original[el.dataset.trhtml]=el.innerHTML});
+function paintTexts(){
+ const lang=document.getElementById("reader-language")?.value||"es";const t=H[lang]||{};
+ document.querySelectorAll("[data-trhtml]").forEach(el=>{el.innerHTML=t[el.dataset.trhtml]||original[el.dataset.trhtml]});
+ document.querySelectorAll("[data-tr2]").forEach(el=>{el.textContent=t[el.dataset.tr2]||H.es[el.dataset.tr2]});
+}
+document.getElementById("reader-language").addEventListener("change",paintTexts);paintTexts();
+// Ajustes para ambas hojas: escriben en los controles de cada hoja y aplican sus filtros.
+const sides=["left","right"],$=id=>document.getElementById(id);
+const set=(k,v)=>sides.forEach(n=>{const el=$(n+"-"+k);if(!el)return;if(el.type==="checkbox"){el.checked=v;el.dispatchEvent(new Event("change",{bubbles:true}))}else{el.value=String(v);el.dispatchEvent(new Event("input",{bubbles:true}))}});
+$("both-invert").onclick=e=>{const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",String(on));set("invert",on)};
+$("both-bw").onclick=e=>{const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",String(on));set("grayscale",on?100:0)};
+$("both-contrast").oninput=e=>set("contrast",e.target.value);$("both-brightness").oninput=e=>set("brightness",e.target.value);$("both-sepia").oninput=e=>set("sepia",e.target.value);
+$("both-reset").onclick=()=>{for(const [k,v] of [["invert",false],["grayscale",0],["contrast",100],["brightness",100],["sepia",0],["saturation",100],["opacity",100]])set(k,v);
+ for(const id of ["both-invert","both-bw"])$(id).setAttribute("aria-pressed","false");$("both-contrast").value=100;$("both-brightness").value=100;$("both-sepia").value=0};
+})();
+</script>
+</body></html>
