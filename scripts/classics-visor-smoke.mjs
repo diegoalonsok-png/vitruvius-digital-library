@@ -58,13 +58,15 @@ try{
    }
   }finally{await p.close()}
  });
- await check('Virgil Aeneid PDF explicitly states Book I is partial',async()=>{
+ await check('Virgil Aeneid PDF states Book I is partial; full text available in the reader',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=virgil-aeneid&view=pdf');
   try{
    await p.waitForFunction(()=>document.querySelector('#classic-detail')?.textContent?.includes('Solo libro I'),{timeout:20000});
    await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent?.includes('172')||
     !!document.querySelector('iframe.classical-native-pdf'),{timeout:30000});
-   assert.match(await p.locator('.classic-detail-status').innerText(),/PARCIAL/);
+   // El PDF histórico sigue declarado como parcial (solo libro I); la Eneida completa se lee en la transcripción del sitio.
+   assert.match(await p.locator('#classic-detail').innerText(),/Solo libro I/);
+   assert.ok(await p.locator('[data-tab="text"], button:has-text("transcripción")').count()>0,'falta la pestaña de transcripción completa');
   }finally{await p.close()}
  });
  await check('Virgil manuscript deep link selects Romanus Vat. lat. 3867',async()=>{
@@ -99,6 +101,24 @@ try{
    assert((await p.url()).includes('aristotle-poetics-english-1819.pdf'),'Edition selection not reflected in URL');
    await p.locator('[data-tab="comparepdf"]').click();
    assert.equal(await p.locator('.classic-double-pdf iframe').count(),2);
+  }finally{await p.close()}
+ });
+ await check('Theophrastus Greek text: word search highlights in yellow and the dictionary answers',async()=>{
+  const p=await open('classics-text-reader.html?work=theophrastus-characters&q='+encodeURIComponent('κολακ'));
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#passages mark.cl-hit').length>=3,{timeout:20000});
+   const bg=await p.locator('#passages mark.cl-hit').first().evaluate(m=>getComputedStyle(m).backgroundColor);
+   assert.match(bg,/rgb\(255, (2[0-9]{2}|18[0-9]), /,'el resaltado no es amarillo: '+bg);
+   await p.locator('#passages mark.cl-hit').first().click();
+   await p.waitForFunction(()=>/κολακεία/.test(document.querySelector('#lexicon')?.textContent||'')&&/flattery/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
+  }finally{await p.close()}
+ });
+ await check('Latin text: Caesar word search and Lewis & Short dictionary',async()=>{
+  const p=await open('classics-text-reader.html?work=caesar-gallico&q=virtute');
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#passages mark.cl-hit').length>=1,{timeout:20000});
+   await p.locator('#passages mark.cl-hit').first().click();
+   await p.waitForFunction(()=>/virt[uū]s/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
   }finally{await p.close()}
  });
  await check('Lucretius compares Latin original and translations with three independent readers',async()=>{

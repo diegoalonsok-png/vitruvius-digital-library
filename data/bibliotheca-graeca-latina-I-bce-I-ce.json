@@ -313,7 +313,15 @@
         "Caesar",
         "La guerra de las Galias",
         "Gallic War"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/caesar-gallico-la.json"
+      },
+      "localHtml": "classics-text-reader.html?work=caesar-gallico&lang=la",
+      "localEdition": {
+        "original": "Latín · ed. T. Rice Holmes (Oxford 1914)",
+        "source": "Texto latino editado de Perseus Digital Library (TEI, CC BY-SA 4.0), por libro y capítulo, incluido el libro VIII de Hircio. Búsqueda con resaltado y diccionario latino (Lewis & Short, lematización CLTK)."
+      }
     },
     {
       "id": "caesar-civili",
@@ -687,7 +695,7 @@
         "archive": "https://archive.org/search?query=Aeneis%20Virgilio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Aeneis"
       },
-      "publicStatus": "lectura-local-parcial",
+      "publicStatus": "lectura-local-completa",
       "localReader": null,
       "aliases": [
         "Virgilio",
@@ -696,7 +704,15 @@
         "Eneida",
         "Aeneid",
         "Aeneidos"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/virgil-aeneid-la.json"
+      },
+      "localHtml": "classics-text-reader.html?work=virgil-aeneid&lang=la",
+      "localEdition": {
+        "original": "Latín · ed. J. B. Greenough (Boston 1900)",
+        "source": "Eneida completa (12 libros) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario latino (Lewis & Short, lematización CLTK)."
+      }
     },
     {
       "id": "virgil-georgica",
@@ -761,7 +777,15 @@
           "publicationYear": "1849",
           "editor": "Albert Forbiger · Montreal, Armour"
         }
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/virgil-georgica-la.json"
+      },
+      "localHtml": "classics-text-reader.html?work=virgil-georgica&lang=la",
+      "localEdition": {
+        "original": "Latín · ed. J. B. Greenough (Boston 1900)",
+        "source": "Geórgicas completas (4 libros) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario latino (Lewis & Short, lematización CLTK)."
+      }
     },
     {
       "id": "horace-odes",
@@ -4478,6 +4502,14 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-apology-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=plato-apology&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. J. Burnet (Oxford 1903)",
+        "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), por páginas de Stephanus. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
       }
     },
     {
@@ -4565,6 +4597,14 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristotle-poetics-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. R. Kassel (Oxford 1965)",
+        "source": "Texto griego distribuido por Perseus Digital Library (TEI, CC BY-SA 4.0), por capítulos. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
       }
     },
     {
@@ -6780,7 +6820,7 @@
       ],
       "reading": {
         "url": null,
-        "status": "Characteres en griego: consultar la edición histórica conjunta de 1870, disponible en el visor PDF local."
+        "status": "Characteres en griego: texto editado de Diels (1909) en el lector del sitio, con búsqueda por palabra resaltada y diccionario; la edición histórica de 1870 se conserva como facsímil PDF."
       },
       "manuscript": {
         "manifest": null,
@@ -6817,6 +6857,14 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/theophrastus-characters-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=theophrastus-characters&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. H. Diels (Oxford 1909)",
+        "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), 31 unidades (proemio y 30 caracteres) con secciones citables. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
       }
     },
     {
@@ -8082,6 +8130,14 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/",
         "perseus": "https://www.perseus.tufts.edu/hopper/"
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/epictetus-enchiridion-grc.json"
+      },
+      "localHtml": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc",
+      "localEdition": {
+        "original": "Griego · ed. H. Schenkl (Leipzig 1916)",
+        "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), 53 capítulos. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ)."
       }
     },
     {

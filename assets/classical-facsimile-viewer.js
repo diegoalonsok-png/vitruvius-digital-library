@@ -41,13 +41,14 @@ async function mountPdf(target,item){
  const top=el("div","classical-pdf-toolbar");top.setAttribute("role","toolbar");top.setAttribute("aria-label","Controles de lectura del PDF");
  const reader=el("div","classical-pdf-viewport");reader.tabIndex=0;reader.setAttribute("aria-label","Página del documento; desplazar para leer");
  const canvas=el("canvas","classical-pdf-canvas");canvas.setAttribute("role","img");canvas.setAttribute("aria-label","Página digitalizada del libro");
- reader.append(canvas);
+ const pageBox=el("div","classical-pdf-page");const hl=el("div","classical-pdf-hl");hl.setAttribute("aria-hidden","true");
+ pageBox.append(canvas,hl);reader.append(pageBox);
  const status=el("p","classical-pdf-status",tr("Cargando documento PDF…","Loading PDF…","Chargement du PDF…"));status.setAttribute("role","status");
  const attribution=el("p","classic-ref",item.note||item.status||"");attribution.style.margin="8px 0 0";
  const links=el("div","classical-pdf-external");
  addLink(links,src,tr("Abrir PDF ↗","Open PDF ↗","Ouvrir le PDF ↗"));
  addLink(links,src,tr("Descargar PDF","Download PDF","Télécharger PDF"),true);
- let pdf=null,pageNumber=1,scale=1,turn=0,contrast=false,inverted=false,renderTask=null,taskSerial=0,activeSearch=0;
+ let pdf=null,pageNumber=1,scale=1,turn=0,contrast=false,inverted=false,renderTask=null,taskSerial=0,activeSearch=0,hlTerm="",pageItems=[];
  const pager=el("div","classical-pdf-pager");
  const prev=addButton(pager,"←",tr("Página anterior","Previous page","Page précédente"),()=>loadPage(pageNumber-1));
  const pageInput=el("input","classical-pdf-number");
@@ -77,7 +78,8 @@ async function mountPdf(target,item){
  searchForm.append(findMode);
  const find=el("button",null,tr("Buscar","Search","Chercher"));find.type="submit";searchForm.append(find);
  const searchResult=el("div","classical-pdf-search-results");
- target.append(top,searchForm,searchResult,reader,status,attribution);
+ const dict=el("div","classical-pdf-dict");dict.setAttribute("role","status");dict.setAttribute("aria-live","polite");
+ target.append(top,searchForm,searchResult,dict,reader,status,attribution);
  function filter(){canvas.style.filter=[inverted?"invert(1) hue-rotate(180deg)":"",contrast?"grayscale(1) contrast(1.65) brightness(1.08)":""].filter(Boolean).join(" ");}
  function setZoom(value){scale=Math.max(0.6,Math.min(3.5,value));zoomOutput.textContent=Math.round(scale*100)+" %";minus.disabled=scale<=.6;render()}
  function loadPage(page){
@@ -103,11 +105,60 @@ async function mountPdf(target,item){
    renderTask=pg.render({canvasContext:ctx,viewport,transform:dpr!==1?[dpr,0,0,dpr,0,0]:null});
    await renderTask.promise;
    if(serial!==taskSerial||token!==session)return;
+   await layoutText(pg,viewport,serial);
    status.textContent=tr("Página ","Page ","Page ")+pageNumber+" / "+pdf.numPages+" · "+Math.round(scale*100)+" % · "+(item.sizeLabel||"PDF local");
   }catch(e){if(e?.name==="RenderingCancelledException")return;
    if(serial===taskSerial)status.textContent=tr("No se pudo representar esta página: ","Could not render page: ","Impossible d'afficher la page : ")+e.message;
   }
  }
+ /* Capa de texto: rectángulos de cada fragmento en coordenadas CSS de la página renderizada. */
+ async function layoutText(pg,viewport,serial){
+  hl.replaceChildren();pageItems=[];
+  hl.style.width=canvas.style.width;hl.style.height=canvas.style.height;
+  if(turn!==0||!window.pdfjsLib?.Util)return;
+  let tc;try{tc=await pg.getTextContent()}catch{return}
+  if(serial!==taskSerial)return;
+  for(const it of tc.items){
+   const str=it.str||"";if(!str.trim())continue;
+   const tx=window.pdfjsLib.Util.transform(viewport.transform,it.transform);
+   const h=Math.hypot(tx[2],tx[3]);const w=(it.width||0)*viewport.scale;
+   if(!(h>0)||!(w>0))continue;
+   pageItems.push({str,x:tx[4],y:tx[5]-h,w,h});
+  }
+  paintHits();
+ }
+ function paintHits(){
+  hl.replaceChildren();const LEX=window.ClassicalLexicon;if(!hlTerm||!LEX)return 0;let n=0,first=null;
+  for(const it of pageItems){
+   for(const [a,b] of LEX.find(it.str,hlTerm)){
+    const box=el("span","classical-pdf-hit");const len=it.str.length||1;
+    box.style.left=(it.x+it.w*a/len-1)+"px";box.style.top=(it.y-1)+"px";
+    box.style.width=(it.w*(b-a)/len+2)+"px";box.style.height=(it.h+3)+"px";
+    hl.append(box);n++;first=first||box;
+   }
+  }
+  if(first)requestAnimationFrame(()=>{const r=reader.getBoundingClientRect(),f=first.getBoundingClientRect();reader.scrollTop+=f.top-r.top-r.height/3;reader.scrollLeft+=Math.max(0,f.left-r.left-r.width/2)});
+  return n;
+ }
+ function wordFromPoint(ev){
+  const rect=canvas.getBoundingClientRect(),x=ev.clientX-rect.left,y=ev.clientY-rect.top;
+  const it=pageItems.find(i=>x>=i.x&&x<=i.x+i.w&&y>=i.y-2&&y<=i.y+i.h+2);if(!it)return"";
+  const s=it.str,len=s.length;let k=Math.max(0,Math.min(len-1,Math.floor((x-it.x)/it.w*len)));
+  const isW=c=>!!c&&/[\p{L}\p{M}]/u.test(c);if(!isW(s[k])&&isW(s[k+1]))k++;
+  let a=k,b=k;while(a>0&&isW(s[a-1]))a--;while(b<len&&isW(s[b]))b++;
+  return s.slice(a,b);
+ }
+ canvas.addEventListener("click",ev=>{
+  const LEX=window.ClassicalLexicon;if(!LEX)return;
+  const w=wordFromPoint(ev);
+  if(!w||w.length<2){
+   if(!pageItems.length&&item.transcription){dict.replaceChildren(el("p","classic-ref",tr("Esta página no tiene capa de texto utilizable. Para consultar palabras, abra la transcripción del sitio.","This page has no usable text layer. Open the site transcription to look up words.","Pas de couche de texte utilisable. Ouvrez la transcription du site.")));addLink(dict,item.transcription,tr("Abrir transcripción con diccionario →","Open transcription with dictionary →","Ouvrir la transcription →"))}
+   return;
+  }
+  const lang=/[\u0370-\u03ff\u1f00-\u1fff]/.test(w)?"grc":"la";
+  if(lang==="la"&&!["la",""].includes(item.language||""))return;
+  LEX.renderPanel(dict,w,{lang,work:item.workId});
+ });
  function showSearchHit(page,preview,term){
   const btn=el("button","classical-pdf-search-hit");
   btn.type="button";
@@ -120,7 +171,7 @@ async function mountPdf(target,item){
    btn.append(el("mark",null,fragment.slice(index,index+term.length)));
    btn.append(fragment.slice(index+term.length));
   }
-  btn.addEventListener("click",()=>{loadPage(page);reader.scrollIntoView({block:"start",behavior:"smooth"})});
+  btn.addEventListener("click",()=>{hlTerm=term;if(page===pageNumber)paintHits();else loadPage(page);reader.scrollIntoView({block:"start",behavior:"smooth"})});
   searchResult.append(btn);
  }
  let pageTexts=null;
@@ -176,13 +227,14 @@ async function mountPdf(target,item){
   }
  }
  if(!document.getElementById("classical-pdf-semantic-style")){const st=document.createElement("style");st.id="classical-pdf-semantic-style";
-  st.textContent=".classical-pdf-semantic-group{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#8c6c39;border-bottom:1px solid #C9A84C;padding:14px 0 5px;margin:6px 0 4px}.classical-pdf-search-results mark{background:rgba(201,168,76,.32);color:inherit;padding:0 1px;border-radius:2px}.classical-pdf-semantic-meta{font:12px system-ui,sans-serif;color:#6b6f75;margin:6px 0}";document.head.append(st)}
+  st.textContent=".classical-pdf-page{position:relative;display:inline-block;margin:0 auto}.classical-pdf-hl{position:absolute;left:0;top:0;pointer-events:none}.classical-pdf-hit{position:absolute;background:rgba(255,222,40,.45);mix-blend-mode:multiply;border-bottom:2px solid #d9a400;border-radius:2px}.classical-pdf-canvas{cursor:help}.classical-pdf-dict:empty{display:none}.classical-pdf-dict{margin:8px 0}.classical-pdf-semantic-group{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#8c6c39;border-bottom:1px solid #C9A84C;padding:14px 0 5px;margin:6px 0 4px}.classical-pdf-search-results mark{background:rgba(201,168,76,.32);color:inherit;padding:0 1px;border-radius:2px}.classical-pdf-semantic-meta{font:12px system-ui,sans-serif;color:#6b6f75;margin:6px 0}";document.head.append(st)}
  searchForm.addEventListener("submit",async ev=>{
   ev.preventDefault();
   if(!pdf)return;
   if(findMode.value==="semantic"){const t=input.value.trim();searchResult.replaceChildren();if(t.length<2)return;await semanticPdfSearch(t,++activeSearch);return}
   const term=input.value.trim();searchResult.replaceChildren();if(term.length<2)return;
-  const mine=++activeSearch;
+  const mine=++activeSearch;hlTerm=term;paintHits();
+  if(window.ClassicalLexicon&&!/\s/.test(term)){const lang=/[\u0370-\u03ff\u1f00-\u1fff]/.test(term)?"grc":"la";if(lang==="grc"||["la",""].includes(item.language||""))window.ClassicalLexicon.renderPanel(dict,term,{lang,work:item.workId})}
   searchResult.textContent=tr("Buscando texto extraíble en el PDF; puede no haber OCR…","Searching extracted PDF text; OCR may be unavailable…","Recherche du texte extractible ; OCR possiblement absent…");
   let hits=0,hasText=0;
   for(let n=1;n<=pdf.numPages;n++){
@@ -192,7 +244,8 @@ async function mountPdf(target,item){
     const tc=await pg.getTextContent();
     const value=tc.items.map(x=>x.str||"").join(" ");
     if(value.trim())hasText++;
-    const index=value.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());
+    const hitsAt=window.ClassicalLexicon?window.ClassicalLexicon.find(value,term):[];
+    const index=hitsAt.length?hitsAt[0][0]:value.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());
     if(index>=0){
      if(hits===0)searchResult.replaceChildren();
      const context=value.slice(Math.max(0,index-70),Math.min(value.length,index+term.length+135));
@@ -203,6 +256,7 @@ async function mountPdf(target,item){
    if(n%20===0){searchResult.setAttribute("aria-busy","true");await new Promise(r=>setTimeout(r,0))}
   }
   searchResult.removeAttribute("aria-busy");
+  if(!hits&&item.transcription){searchResult.replaceChildren(el("p",null,tr("Este facsímil no tiene una capa de texto que permita buscar esta palabra. La transcripción del sitio sí permite la búsqueda con resaltado y diccionario.","This facsimile has no searchable text layer for this word. The site transcription supports highlighted search and dictionary.","Ce fac-similé n'a pas de couche de texte exploitable. La transcription du site permet la recherche.")));addLink(searchResult,item.transcription+"&term="+encodeURIComponent(term),tr("Buscar «","Search «","Chercher «")+term+tr("» en la transcripción →","» in the transcription →","» dans la transcription →"));return}
   if(!hits)searchResult.textContent=hasText?tr("No se encontró el término en las capas de texto del PDF.","No match in the PDF text layer.","Aucun terme correspondant dans la couche de texte."):tr("Este facsímil no tiene OCR utilizable. Puedes leerlo y ampliarlo, pero buscar palabras exige transcripción/OCR.","No usable OCR layer in this scan. Reading and zooming work; text search requires OCR.","Pas de couche OCR exploitable. Lecture et zoom possibles ; la recherche exige OCR.");
  });
  pageInput.addEventListener("change",()=>loadPage(pageInput.value));

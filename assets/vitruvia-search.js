@@ -969,6 +969,9 @@ async function search(){
      link:"iconografia-vitruviana.html#lamina-"+e.id,source:"Atlas iconográfico · láminas"}));
    return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
  }
+ if(internal&&window.ClassicsCorpusSearch){
+  pending.push(window.ClassicsCorpusSearch.search(generalQuery,{limit:6}).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
+ }
  if(internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
   pending.push(ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null}).then(hits=>({name:"Aparato crítico · ediciones Kurilo",

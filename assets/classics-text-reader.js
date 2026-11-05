@@ -3,11 +3,12 @@
 "use strict";
 const $=id=>document.getElementById(id);
 const p=new URLSearchParams(location.search),work=p.get("work")||"apuleius-metamorphoses";
-const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus)","petronius-satyrica":"Petronio · Satyrica / Satyricon"};
-if(!allowed[work]){$("source-title").textContent="Obra no identificada en este lector";return}
+const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus)","petronius-satyrica":"Petronio · Satyrica / Satyricon","theophrastus-characters":"Teofrasto · Ἠθικοὶ χαρακτῆρες (Caracteres)"};
+const LEX=window.ClassicalLexicon;
+if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="";
-const fold=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replaceAll("j","i");
+const fold=s=>LEX?LEX.fold(s):String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replaceAll("j","i");
 const tokenize=s=>fold(s).match(/[\p{L}]{3,}/gu)||[];
 const equivalences=[
  ["asno","burro","asno","asinus","asini","ass","donkey"],
@@ -42,21 +43,25 @@ function match(text,q,semantic=false){
  return qstems.some(t=>words.some(w=>w===t||((t.length>=5)&&(stem(w).length>=4)&&stem(t)===stem(w))));
 }
 function markText(target,text,q){
- target.replaceChildren();
- if(!q){target.textContent=text;return}
- const key=fold(q),norm=fold(text),found=norm.indexOf(key);
- // Keep source exact: visual mark only, never silently change Latin.
- if(found<0){target.textContent=text;return}
- target.append(document.createTextNode(text.slice(0,found)));
- const span=document.createElement("mark");span.textContent=text.slice(found,found+q.length);target.append(span);
- target.append(document.createTextNode(text.slice(found+q.length)));
+ // Marca visual de todas las coincidencias; el texto editado no se altera.
+ if(LEX)return LEX.highlightInto(target,text,q);
+ target.replaceChildren();target.textContent=text;return[];
 }
+let hitMarks=[],hitAt=-1;
+function focusHit(step){
+ if(!hitMarks.length)return;
+ hitMarks[hitAt]?.classList.remove("cl-current");
+ hitAt=(hitAt+step+hitMarks.length)%hitMarks.length;
+ const m=hitMarks[hitAt];m.classList.add("cl-current");m.scrollIntoView({block:"center",behavior:"smooth"});
+ const c=$("hit-count");if(c)c.textContent=(hitAt+1)+" / "+hitMarks.length;
+}
+const unitLabel=()=>data?.language==="la"?"Locus":data?.language==="grc"?(work==="theophrastus-characters"?"Carácter":work==="plato-apology"?"Stephanus":"Capítulo"):"Bloque";
 function setQuery(q){search=q.trim();input.value=search;}
 function renderToc(){
  const target=$("toc");target.replaceChildren();
  data.passages.forEach((v,i)=>{
   const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";
-  btn.textContent=(data.language==="la"?"§ ":"")+v.locus;
+  btn.textContent=(data.language==="la"?"§ ":"")+v.locus+(v.title?" · "+v.title:"");if(v.title)btn.lang=data.language;
   btn.setAttribute("aria-current",String(i===active));btn.addEventListener("click",()=>select(i));
   li.append(btn);target.append(li);
  });
@@ -65,12 +70,14 @@ function select(i){
  if(!data)return;
  active=Math.max(0,Math.min(data.passages.length-1,i));
  const rec=data.passages[active];
- $("current-locus").textContent=(data.language==="la"?"Locus ":"Unidad ")+rec.locus+" · "+(active+1)+"/"+data.passages.length;
+ $("current-locus").textContent=unitLabel()+" "+rec.locus+(rec.title?" · "+rec.title:"")+" · "+(active+1)+"/"+data.passages.length;
  $("prev").disabled=active===0;$("next").disabled=active>=data.passages.length-1;
  const target=$("passages"),p1=document.createElement("p"),label=document.createElement("span");
- label.className="locus";label.textContent=(data.language==="la"?"Locus":"Bloque")+" "+rec.locus;
- p1.append(label);const txt=document.createElement("span");markText(txt,rec.text,search);p1.append(txt);
+ label.className="locus";label.textContent=unitLabel()+" "+rec.locus+(rec.title?" · "+rec.title:"");
+ p1.append(label);const txt=document.createElement("span");hitMarks=markText(txt,rec.text,search)||[];hitAt=-1;p1.append(txt);
  target.replaceChildren(p1);target.setAttribute("lang",data.language);
+ const nav=$("hit-nav");if(nav){nav.hidden=!hitMarks.length;$("hit-count").textContent=hitMarks.length?hitMarks.length+" en este pasaje":"";}
+ if(hitMarks.length)requestAnimationFrame(()=>focusHit(1));
  for(const [j,btn] of Array.from($("toc").querySelectorAll("button")).entries())btn.setAttribute("aria-current",String(j===active));
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");history.replaceState(null,"",u);
 }
@@ -82,7 +89,7 @@ function renderSearch(){
  lead.textContent=results.length+" coincidencias de sección · búsqueda literal + expansión léxica experimental";
  target.append(lead);
  results.slice(0,45).forEach(({i,r})=>{
-  const a=document.createElement("a");a.href="#passages";a.textContent="§ "+r.locus;
+  const a=document.createElement("a");a.href="#passages";const n=LEX?LEX.find(r.text,search).length:0;a.textContent="§ "+r.locus+(n?" ("+n+")":"");
   a.addEventListener("click",e=>{e.preventDefault();select(i);$("passages").scrollIntoView({block:"start",behavior:"smooth"})});
   target.append(a);
  });
@@ -102,8 +109,10 @@ function morphology(token){
  const info=document.createElement("p");info.textContent=possibilities.join(" · ")+". Análisis sintáctico contextual no certificado.";box.append(info);
  const link=document.createElement("a");link.href="https://atlas.perseus.tufts.edu/";link.target="_blank";link.rel="noopener noreferrer";link.textContent="Consultar léxico y formas en Perseus ATLAS ↗";box.append(link);
 }
-$("passages").addEventListener("mouseup",()=>{if(data?.language!=="la")return;const selection=window.getSelection()?.toString()?.trim();if(selection&&/^[A-Za-zÀ-ž]{3,40}$/.test(selection))morphology(selection)});
+if(LEX)LEX.attachClick($("passages"),$("lexicon"),()=>(data&&["la","grc"].includes(data.language))?{lang:data.language,work}:null);
+else{
 $("passages").addEventListener("dblclick",()=>{if(data?.language!=="la")return;const selection=window.getSelection()?.toString()?.trim();if(selection&&/^[A-Za-zÀ-ž]{3,40}$/.test(selection))morphology(selection)});
+}
 async function load(language){
  const path=base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
@@ -123,10 +132,11 @@ async function load(language){
  else{renderSearch();select(chosen)}
 }
 async function swap(lang){try{await load(lang)}catch(err){$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado."}}
-$("work-title").textContent=allowed[work];$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
+const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
 $("language").addEventListener("change",e=>swap(e.target.value));
 $("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);renderSearch();if(results.length)select(results[0].i)});
 input.addEventListener("keydown",e=>{if(e.key==="Enter"){$("find").click()}});
+$("hit-prev")?.addEventListener("click",()=>focusHit(-1));$("hit-next")?.addEventListener("click",()=>focusHit(1));
 $("clear").addEventListener("click",()=>{setQuery("");renderSearch();if(data)select(active)});
 $("print").addEventListener("click",()=>window.print());
 $("theme").addEventListener("click",()=>{const html=document.documentElement;html.dataset.theme=html.dataset.theme==="dark"?"light":"dark"});
@@ -135,8 +145,9 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
  try{
   const catalog=await(await fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json")).json();
   const record=(catalog.works||[]).find(x=>x.id===work);if(!record?.corpusFiles)throw Error("La incorporación de los textos editados aún no está publicada.");
+  if(!allowed[work])setTitle(record.author+" · "+record.title);
   for(const o of [...langSelect.options])if(!record.corpusFiles[o.value])o.remove();
-  if(![...langSelect.options].some(o=>o.value===p.get("lang")))langSelect.value="la";
+  if(![...langSelect.options].some(o=>o.value===p.get("lang")))langSelect.value=record.corpusFiles.grc?"grc":langSelect.options[0]?.value||"la";
   else langSelect.value=p.get("lang");
   await swap(langSelect.value);
  }catch(err){$("source-title").textContent=err.message;$("method-note").textContent="Se conserva el acceso al códice de la institución; no se publica aquí un texto latino incompleto."}
