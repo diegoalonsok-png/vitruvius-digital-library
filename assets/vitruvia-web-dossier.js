@@ -102,7 +102,7 @@ function card(root,title,href,description,cover,metadata,cta){
 function catalogOrder(section,cards,compare,stack){
  const control=el('label','cultural-order',L('Ordenar por','Sort by','Trier par'));
  const select=el('select');select.setAttribute('aria-label',L('Orden del catálogo','Catalogue order','Ordre du catalogue'));
- for(const [value,text] of [['importance',L('Importancia documental','Documentary prominence','Importance documentaire')],['year',L('Año de aparición','Year of release','Année de parution')]]){const option=el('option',null,text);option.value=value;select.append(option)}
+ for(const [value,text] of [['year',L('Más antiguos primero','Oldest first','Plus anciens d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  select.addEventListener('change',()=>{for(const entry of [...cards].sort((a,b)=>compare(a.record,b.record,select.value)))stack.append(entry.item)});
  control.append(select);section.insertBefore(control,stack);
 }
@@ -111,6 +111,16 @@ function libraryAuthor(name){
   author:name,limit:'70',fields:'key,title,author_name,first_publish_year,edition_count,cover_i,first_sentence,publisher,isbn'
  });
  return cached(url);
+}
+function authorQueries(topic){
+ const name=String(topic.name||"").trim(),names=[name,...(topic.aliases||[]).filter(x=>typeof x==="string")];
+ const parts=normalized(name).split(" ").filter(Boolean),last=parts.at(-1);
+ if(parts.length>=3)names.push(parts.slice(-2).join(" "));
+ const valid=[...new Set(names.map(x=>String(x).trim()).filter(x=>{
+  const t=normalized(x).split(" ").filter(Boolean);
+  return t.length>=2&&t.at(-1)===last&&t.some(w=>w.length>=4&&w!==last);
+ }))];
+ return (valid.length?valid:[name]).slice(0,4);
 }
 function isAuthor(book,name){
  const bs=(book.author_name||[]).map(normalized);
@@ -162,17 +172,19 @@ async function books(root,topic,valid){
  if(!isPerson&&topic.kind!=='literature'){heading.remove();section.remove();return}
  const status=el('p','context-note',L('Consultando catálogos bibliográficos…','Checking bibliographic catalogues…','Consultation des catalogues bibliographiques…'));section.append(status);
  try{
-  const response=await libraryAuthor(topic.name);
+  const authorNames=authorQueries(topic);
+   const responses=await Promise.all(authorNames.map(n=>libraryAuthor(n).catch(()=>null)));
+   const response={docs:responses.flatMap(r=>r?.docs||[])};
   if(!valid()||!root.isConnected)return;
   section.replaceChildren();
-  const docs=(response?.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||'')&&isAuthor(x,topic.name));
+  const docs=(response?.docs||[]).filter(x=>/^\/works\/OL\d+W$/.test(x.key||'')&&authorNames.some(n=>isAuthor(x,n)));
   const seen=new Set(),books=[];
   for(const record of docs){
    const key=normalizedWorkTitle(record.title||'');
    if(key.length<3||seen.has(key))continue;
    seen.add(key);books.push(record);
   }
-  books.sort((a,b)=>(Number(b.edition_count)||0)-(Number(a.edition_count)||0)||(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999));
+  books.sort((a,b)=>(Number(a.first_publish_year)||99999)-(Number(b.first_publish_year)||99999)||(Number(b.edition_count)||0)-(Number(a.edition_count)||0));
   if(!books.length){
    info(section,L('No se recuperaron títulos atribuibles con seguridad a este autor en Open Library. Puedes consultar el catálogo externo.',
     'No titles reliably attributable to this author were recovered in Open Library. Check the external catalogue.',
@@ -181,7 +193,7 @@ async function books(root,topic,valid){
    const note=el('p','web-dossier-count',
     L('Obras catalogadas: ','Catalogue works: ','Œuvres cataloguées : ')+books.length+
     L(' · por presencia documental (cantidad de ediciones). Puedes elegir el año de aparición.',
-      ' · ranked by catalogue edition count. You can select publication order.',
+      ' · ordered by first catalogued publication.',
       ' · classées par nombre d’éditions. Le tri chronologique est disponible.'));section.append(note);
    const stack=el('div','web-dossier-stack');section.append(stack);
    const bookCards=[];
@@ -366,13 +378,13 @@ function render(panel,query,rows,isCurrent){
   const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
-  if(['author','literature'].includes(topic.kind))void books(section,topic,valid);
+  if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
   const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
    !/cantante|singer|band|grupo|banda|rapper/.test(normalized(topic.person?.entityDescription))?'composer':topic.kind;
   if(creator&&topic.person?.wikidataId&&window.VitruviaCulturalWorks)
    void window.VitruviaCulturalWorks.render(section,{...(sameIdentity?authority:{}),wikidataId:topic.person.wikidataId},relationKind,valid).catch(()=>{});
-  if(topic.kind==='architect')void books(section,topic,valid);
+  
   relatedImages(section,topic,records);
  })().catch(()=>{if(valid())status.textContent=L('No se pudo consultar el catálogo cultural.','Cultural catalogue unavailable.','Catalogue culturel indisponible.')});
 }
