@@ -810,34 +810,42 @@
       "genre": "Mitología",
       "dating": "c. 8 d. C.",
       "reading": {
-        "url": null,
-        "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+        "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AlatinLit%3Aphi0959.phi006.perseus-lat2/",
+        "status": "Texto original latino en Scaife ATLAS / Perseus; edición identificada, alojada en sitio académico externo. No es transcripción diplomática del códice medieval."
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Testimonio identificado: Vat. lat. 2781, siglos XIV–XV, ff. 1r–185v. Manifiesto IIIF oficial Vaticano en «Manuscrito»."
       },
       "pdf": {
         "url": null,
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Brookes More (inglés; Perseus/Scaife), con otros recursos de la University of Virginia. Enlaces en «Edición y traducción». No son traducciones alojadas aquí."
       },
       "links": {
-        "scaife": "https://scaife.perseus.org/library/",
+        "scaife": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AlatinLit%3Aphi0959.phi006/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
         "archive": "https://archive.org/search?query=Metamorphoses%20Ovidio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Metamorphoses"
       },
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "fuente-externa-identificada",
       "localReader": null,
       "aliases": [
         "Ovidio",
         "Ovid",
         "Metamorfosis",
         "Metamorphoses"
-      ]
+      ],
+      "sourceRegistration": {
+        "status": "fuentes-externas-identificadas",
+        "witnesses": "data/bibliotheca-testimonia-verified.json",
+        "originalLanguage": "la",
+        "translationHosted": false,
+        "folioAlignment": false,
+        "verifiedOn": "2026-11-05"
+      }
     },
     {
       "id": "ovid-fasti",
@@ -4232,24 +4240,24 @@
       "language": "grc",
       "genre": "Filosofía",
       "dating": "siglo IV a. C.",
-      "publicStatus": "pendiente-de-incorporar",
+      "publicStatus": "fuente-externa-identificada",
       "reading": {
-        "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg030.perseus-grc2/",
+        "status": "Texto original griego en Scaife ATLAS / Perseus; edición identificada, alojada en sitio académico externo. No es transcripción diplomática del códice medieval."
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con República. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado."
       },
       "pdf": {
         "url": null,
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Paul Shorey (inglés; Perseus/Scaife). Enlace documentado en la pestaña «Edición y traducción». No está alojada ni cotejada localmente."
       },
       "links": {
-        "scaife": null,
+        "scaife": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg030/",
         "perseus": null,
         "archive": null,
         "gallica": null
@@ -4261,7 +4269,15 @@
         "República",
         "Republic",
         "Politeia"
-      ]
+      ],
+      "sourceRegistration": {
+        "status": "fuentes-externas-identificadas",
+        "witnesses": "data/bibliotheca-testimonia-verified.json",
+        "originalLanguage": "grc",
+        "translationHosted": false,
+        "folioAlignment": false,
+        "verifiedOn": "2026-11-05"
+      }
     },
     {
       "id": "plato-apology",
@@ -5628,22 +5644,22 @@
         "Timeo"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg031.perseus-grc2/",
+        "status": "Texto original griego en Scaife ATLAS / Perseus; edición identificada, alojada en sitio académico externo. No es transcripción diplomática del códice medieval."
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con Timeo. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado."
       },
       "pdf": {
         "url": null,
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "R. G. Bury (inglés; Perseus/Scaife). Enlace en «Edición y traducción». Sin alineación local con los folios."
       },
       "links": {
-        "scaife": "https://scaife.perseus.org/library/",
+        "scaife": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg031/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
         "archive": "https://archive.org/search?query=Plat%C3%B3n%20Timeo",
         "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Timeo"
@@ -5653,8 +5669,16 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Timeo&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "sourceRegistration": {
+        "status": "fuentes-externas-identificadas",
+        "witnesses": "data/bibliotheca-testimonia-verified.json",
+        "originalLanguage": "grc",
+        "translationHosted": false,
+        "folioAlignment": false,
+        "verifiedOn": "2026-11-05"
+      }
     },
     {
       "id": "plato-meno",
@@ -5745,22 +5769,22 @@
         "Las leyes"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg034.perseus-grc2/",
+        "status": "Texto original griego en Scaife ATLAS / Perseus; edición identificada, alojada en sitio académico externo. No es transcripción diplomática del códice medieval."
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con Leyes. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado."
       },
       "pdf": {
         "url": null,
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "R. G. Bury (inglés; Perseus/Scaife). Enlace en «Edición y traducción». Sin alineación local con los folios."
       },
       "links": {
-        "scaife": "https://scaife.perseus.org/library/",
+        "scaife": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg034/",
         "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
         "archive": "https://archive.org/search?query=Plat%C3%B3n%20Las%20leyes",
         "gallica": "https://gallica.bnf.fr/Search?q=Plat%C3%B3n%20Las%20leyes"
@@ -5770,8 +5794,16 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Las%20leyes&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "publicStatus": "fuente-externa-identificada",
+      "localReader": null,
+      "sourceRegistration": {
+        "status": "fuentes-externas-identificadas",
+        "witnesses": "data/bibliotheca-testimonia-verified.json",
+        "originalLanguage": "grc",
+        "translationHosted": false,
+        "folioAlignment": false,
+        "verifiedOn": "2026-11-05"
+      }
     },
     {
       "id": "plato-crito",
