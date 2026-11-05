@@ -1,0 +1,2447 @@
+{
+"schema": "vitruvius-iiif-index/1",
+"title": "Vitruvius, De architectura libri decem cum commentariis Danielis Barbari (Venecia, 1567)",
+"iiif_manifest": "https://www.e-rara.ch/i3f/v20/6105281/manifest",
+"record": "https://doi.org/10.3931/e-rara-19438",
+"institution": "Stiftung Bibliothek Werner Oechslin, Einsiedeln",
+"rights": "Public Domain Mark",
+"total": 406,
+"canvases": [
+{
+"page": 1,
+"iiif_label": "[1]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105283",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105283/full/1200,/0/default.jpg"
+},
+{
+"page": 2,
+"iiif_label": "[2]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105284",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105284/full/1200,/0/default.jpg"
+},
+{
+"page": 3,
+"iiif_label": "[3]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105285",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105285/full/1200,/0/default.jpg"
+},
+{
+"page": 4,
+"iiif_label": "[4]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105286",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105286/full/1200,/0/default.jpg"
+},
+{
+"page": 5,
+"iiif_label": "[5]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105287",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105287/full/1200,/0/default.jpg"
+},
+{
+"page": 6,
+"iiif_label": "[6]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105288",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105288/full/1200,/0/default.jpg"
+},
+{
+"page": 7,
+"iiif_label": "[7]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105289",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105289/full/1200,/0/default.jpg"
+},
+{
+"page": 8,
+"iiif_label": "[8]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105290",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105290/full/1200,/0/default.jpg"
+},
+{
+"page": 9,
+"iiif_label": "[9]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105291",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105291/full/1200,/0/default.jpg"
+},
+{
+"page": 10,
+"iiif_label": "[10]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105292",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105292/full/1200,/0/default.jpg"
+},
+{
+"page": 11,
+"iiif_label": "[11]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105293",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105293/full/1200,/0/default.jpg"
+},
+{
+"page": 12,
+"iiif_label": "[12]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105294",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105294/full/1200,/0/default.jpg"
+},
+{
+"page": 13,
+"iiif_label": "[13]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105295",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105295/full/1200,/0/default.jpg"
+},
+{
+"page": 14,
+"iiif_label": "[14]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105296",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105296/full/1200,/0/default.jpg"
+},
+{
+"page": 15,
+"iiif_label": "[15]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105297",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105297/full/1200,/0/default.jpg"
+},
+{
+"page": 16,
+"iiif_label": "[16]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105298",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105298/full/1200,/0/default.jpg"
+},
+{
+"page": 17,
+"iiif_label": "[17]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105299",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105299/full/1200,/0/default.jpg"
+},
+{
+"page": 18,
+"iiif_label": "[18]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105300",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105300/full/1200,/0/default.jpg"
+},
+{
+"page": 19,
+"iiif_label": "[19]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105301",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105301/full/1200,/0/default.jpg"
+},
+{
+"page": 20,
+"iiif_label": "[20]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105302",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105302/full/1200,/0/default.jpg"
+},
+{
+"page": 21,
+"iiif_label": "[21]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105303",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105303/full/1200,/0/default.jpg"
+},
+{
+"page": 22,
+"iiif_label": "[22]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105304",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105304/full/1200,/0/default.jpg"
+},
+{
+"page": 23,
+"iiif_label": "[23]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105305",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105305/full/1200,/0/default.jpg"
+},
+{
+"page": 24,
+"iiif_label": "[24]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105306",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105306/full/1200,/0/default.jpg"
+},
+{
+"page": 25,
+"iiif_label": "1",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105307",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105307/full/1200,/0/default.jpg"
+},
+{
+"page": 26,
+"iiif_label": "2",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105308",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105308/full/1200,/0/default.jpg"
+},
+{
+"page": 27,
+"iiif_label": "3",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105309",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105309/full/1200,/0/default.jpg"
+},
+{
+"page": 28,
+"iiif_label": "4",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105310",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105310/full/1200,/0/default.jpg"
+},
+{
+"page": 29,
+"iiif_label": "5",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105311",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105311/full/1200,/0/default.jpg"
+},
+{
+"page": 30,
+"iiif_label": "6",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105312",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105312/full/1200,/0/default.jpg"
+},
+{
+"page": 31,
+"iiif_label": "7",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105313",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105313/full/1200,/0/default.jpg"
+},
+{
+"page": 32,
+"iiif_label": "8",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105314",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105314/full/1200,/0/default.jpg"
+},
+{
+"page": 33,
+"iiif_label": "9",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105315",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105315/full/1200,/0/default.jpg"
+},
+{
+"page": 34,
+"iiif_label": "10",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105316",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105316/full/1200,/0/default.jpg"
+},
+{
+"page": 35,
+"iiif_label": "11",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105317",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105317/full/1200,/0/default.jpg"
+},
+{
+"page": 36,
+"iiif_label": "12",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105318",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105318/full/1200,/0/default.jpg"
+},
+{
+"page": 37,
+"iiif_label": "13",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105319",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105319/full/1200,/0/default.jpg"
+},
+{
+"page": 38,
+"iiif_label": "14",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105320",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105320/full/1200,/0/default.jpg"
+},
+{
+"page": 39,
+"iiif_label": "15",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105321",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105321/full/1200,/0/default.jpg"
+},
+{
+"page": 40,
+"iiif_label": "16",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105322",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105322/full/1200,/0/default.jpg"
+},
+{
+"page": 41,
+"iiif_label": "17",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105323",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105323/full/1200,/0/default.jpg"
+},
+{
+"page": 42,
+"iiif_label": "18",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105324",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105324/full/1200,/0/default.jpg"
+},
+{
+"page": 43,
+"iiif_label": "19",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105325",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105325/full/1200,/0/default.jpg"
+},
+{
+"page": 44,
+"iiif_label": "20",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105326",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105326/full/1200,/0/default.jpg"
+},
+{
+"page": 45,
+"iiif_label": "21",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105327",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105327/full/1200,/0/default.jpg"
+},
+{
+"page": 46,
+"iiif_label": "22",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105328",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105328/full/1200,/0/default.jpg"
+},
+{
+"page": 47,
+"iiif_label": "23",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105329",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105329/full/1200,/0/default.jpg"
+},
+{
+"page": 48,
+"iiif_label": "24",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105330",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105330/full/1200,/0/default.jpg"
+},
+{
+"page": 49,
+"iiif_label": "25",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105331",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105331/full/1200,/0/default.jpg"
+},
+{
+"page": 50,
+"iiif_label": "26",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105332",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105332/full/1200,/0/default.jpg"
+},
+{
+"page": 51,
+"iiif_label": "27",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105333",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105333/full/1200,/0/default.jpg"
+},
+{
+"page": 52,
+"iiif_label": "28",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105334",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105334/full/1200,/0/default.jpg"
+},
+{
+"page": 53,
+"iiif_label": "29",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105335",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105335/full/1200,/0/default.jpg"
+},
+{
+"page": 54,
+"iiif_label": "30",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105336",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105336/full/1200,/0/default.jpg"
+},
+{
+"page": 55,
+"iiif_label": "31",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105337",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105337/full/1200,/0/default.jpg"
+},
+{
+"page": 56,
+"iiif_label": "32",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105338",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105338/full/1200,/0/default.jpg"
+},
+{
+"page": 57,
+"iiif_label": "33",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105339",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105339/full/1200,/0/default.jpg"
+},
+{
+"page": 58,
+"iiif_label": "34",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105340",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105340/full/1200,/0/default.jpg"
+},
+{
+"page": 59,
+"iiif_label": "35",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105341",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105341/full/1200,/0/default.jpg"
+},
+{
+"page": 60,
+"iiif_label": "36",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105342",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105342/full/1200,/0/default.jpg"
+},
+{
+"page": 61,
+"iiif_label": "36",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105344",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105344/full/1200,/0/default.jpg"
+},
+{
+"page": 62,
+"iiif_label": "37",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105345",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105345/full/1200,/0/default.jpg"
+},
+{
+"page": 63,
+"iiif_label": "37",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105343",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105343/full/1200,/0/default.jpg"
+},
+{
+"page": 64,
+"iiif_label": "38",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105346",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105346/full/1200,/0/default.jpg"
+},
+{
+"page": 65,
+"iiif_label": "39",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105347",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105347/full/1200,/0/default.jpg"
+},
+{
+"page": 66,
+"iiif_label": "40",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105348",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105348/full/1200,/0/default.jpg"
+},
+{
+"page": 67,
+"iiif_label": "41",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105349",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105349/full/1200,/0/default.jpg"
+},
+{
+"page": 68,
+"iiif_label": "42",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105350",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105350/full/1200,/0/default.jpg"
+},
+{
+"page": 69,
+"iiif_label": "43",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105351",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105351/full/1200,/0/default.jpg"
+},
+{
+"page": 70,
+"iiif_label": "44",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105352",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105352/full/1200,/0/default.jpg"
+},
+{
+"page": 71,
+"iiif_label": "45",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105353",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105353/full/1200,/0/default.jpg"
+},
+{
+"page": 72,
+"iiif_label": "46",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105354",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105354/full/1200,/0/default.jpg"
+},
+{
+"page": 73,
+"iiif_label": "47",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105355",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105355/full/1200,/0/default.jpg"
+},
+{
+"page": 74,
+"iiif_label": "48",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105356",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105356/full/1200,/0/default.jpg"
+},
+{
+"page": 75,
+"iiif_label": "49",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105357",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105357/full/1200,/0/default.jpg"
+},
+{
+"page": 76,
+"iiif_label": "50",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105358",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105358/full/1200,/0/default.jpg"
+},
+{
+"page": 77,
+"iiif_label": "51",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105359",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105359/full/1200,/0/default.jpg"
+},
+{
+"page": 78,
+"iiif_label": "52",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105360",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105360/full/1200,/0/default.jpg"
+},
+{
+"page": 79,
+"iiif_label": "53",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105361",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105361/full/1200,/0/default.jpg"
+},
+{
+"page": 80,
+"iiif_label": "54",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105362",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105362/full/1200,/0/default.jpg"
+},
+{
+"page": 81,
+"iiif_label": "55",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105363",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105363/full/1200,/0/default.jpg"
+},
+{
+"page": 82,
+"iiif_label": "56",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105364",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105364/full/1200,/0/default.jpg"
+},
+{
+"page": 83,
+"iiif_label": "57",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105365",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105365/full/1200,/0/default.jpg"
+},
+{
+"page": 84,
+"iiif_label": "58",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105366",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105366/full/1200,/0/default.jpg"
+},
+{
+"page": 85,
+"iiif_label": "59",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105367",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105367/full/1200,/0/default.jpg"
+},
+{
+"page": 86,
+"iiif_label": "60",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105368",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105368/full/1200,/0/default.jpg"
+},
+{
+"page": 87,
+"iiif_label": "61",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105369",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105369/full/1200,/0/default.jpg"
+},
+{
+"page": 88,
+"iiif_label": "62",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105370",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105370/full/1200,/0/default.jpg"
+},
+{
+"page": 89,
+"iiif_label": "63",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105371",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105371/full/1200,/0/default.jpg"
+},
+{
+"page": 90,
+"iiif_label": "64",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105372",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105372/full/1200,/0/default.jpg"
+},
+{
+"page": 91,
+"iiif_label": "65",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105373",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105373/full/1200,/0/default.jpg"
+},
+{
+"page": 92,
+"iiif_label": "66",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105374",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105374/full/1200,/0/default.jpg"
+},
+{
+"page": 93,
+"iiif_label": "67",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105375",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105375/full/1200,/0/default.jpg"
+},
+{
+"page": 94,
+"iiif_label": "68",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105376",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105376/full/1200,/0/default.jpg"
+},
+{
+"page": 95,
+"iiif_label": "69",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105377",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105377/full/1200,/0/default.jpg"
+},
+{
+"page": 96,
+"iiif_label": "70",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105378",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105378/full/1200,/0/default.jpg"
+},
+{
+"page": 97,
+"iiif_label": "71",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105379",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105379/full/1200,/0/default.jpg"
+},
+{
+"page": 98,
+"iiif_label": "72",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105380",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105380/full/1200,/0/default.jpg"
+},
+{
+"page": 99,
+"iiif_label": "73",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105381",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105381/full/1200,/0/default.jpg"
+},
+{
+"page": 100,
+"iiif_label": "74",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105382",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105382/full/1200,/0/default.jpg"
+},
+{
+"page": 101,
+"iiif_label": "75",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105383",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105383/full/1200,/0/default.jpg"
+},
+{
+"page": 102,
+"iiif_label": "76",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105384",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105384/full/1200,/0/default.jpg"
+},
+{
+"page": 103,
+"iiif_label": "77",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105385",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105385/full/1200,/0/default.jpg"
+},
+{
+"page": 104,
+"iiif_label": "78",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105386",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105386/full/1200,/0/default.jpg"
+},
+{
+"page": 105,
+"iiif_label": "79",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105387",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105387/full/1200,/0/default.jpg"
+},
+{
+"page": 106,
+"iiif_label": "80",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105388",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105388/full/1200,/0/default.jpg"
+},
+{
+"page": 107,
+"iiif_label": "81",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105389",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105389/full/1200,/0/default.jpg"
+},
+{
+"page": 108,
+"iiif_label": "82",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105390",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105390/full/1200,/0/default.jpg"
+},
+{
+"page": 109,
+"iiif_label": "83",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105391",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105391/full/1200,/0/default.jpg"
+},
+{
+"page": 110,
+"iiif_label": "84",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105392",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105392/full/1200,/0/default.jpg"
+},
+{
+"page": 111,
+"iiif_label": "85",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105393",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105393/full/1200,/0/default.jpg"
+},
+{
+"page": 112,
+"iiif_label": "86",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105394",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105394/full/1200,/0/default.jpg"
+},
+{
+"page": 113,
+"iiif_label": "87",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105395",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105395/full/1200,/0/default.jpg"
+},
+{
+"page": 114,
+"iiif_label": "88",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105396",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105396/full/1200,/0/default.jpg"
+},
+{
+"page": 115,
+"iiif_label": "89",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105397",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105397/full/1200,/0/default.jpg"
+},
+{
+"page": 116,
+"iiif_label": "90",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105398",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105398/full/1200,/0/default.jpg"
+},
+{
+"page": 117,
+"iiif_label": "91",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105399",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105399/full/1200,/0/default.jpg"
+},
+{
+"page": 118,
+"iiif_label": "92",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105400",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105400/full/1200,/0/default.jpg"
+},
+{
+"page": 119,
+"iiif_label": "93",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105401",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105401/full/1200,/0/default.jpg"
+},
+{
+"page": 120,
+"iiif_label": "94",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105402",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105402/full/1200,/0/default.jpg"
+},
+{
+"page": 121,
+"iiif_label": "95",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105403",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105403/full/1200,/0/default.jpg"
+},
+{
+"page": 122,
+"iiif_label": "96",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105404",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105404/full/1200,/0/default.jpg"
+},
+{
+"page": 123,
+"iiif_label": "97",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105405",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105405/full/1200,/0/default.jpg"
+},
+{
+"page": 124,
+"iiif_label": "98",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105406",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105406/full/1200,/0/default.jpg"
+},
+{
+"page": 125,
+"iiif_label": "99",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105407",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105407/full/1200,/0/default.jpg"
+},
+{
+"page": 126,
+"iiif_label": "100",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105408",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105408/full/1200,/0/default.jpg"
+},
+{
+"page": 127,
+"iiif_label": "101",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105409",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105409/full/1200,/0/default.jpg"
+},
+{
+"page": 128,
+"iiif_label": "102",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105410",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105410/full/1200,/0/default.jpg"
+},
+{
+"page": 129,
+"iiif_label": "103",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105411",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105411/full/1200,/0/default.jpg"
+},
+{
+"page": 130,
+"iiif_label": "104",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105412",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105412/full/1200,/0/default.jpg"
+},
+{
+"page": 131,
+"iiif_label": "105",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105413",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105413/full/1200,/0/default.jpg"
+},
+{
+"page": 132,
+"iiif_label": "106",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105414",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105414/full/1200,/0/default.jpg"
+},
+{
+"page": 133,
+"iiif_label": "107",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105415",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105415/full/1200,/0/default.jpg"
+},
+{
+"page": 134,
+"iiif_label": "108",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105416",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105416/full/1200,/0/default.jpg"
+},
+{
+"page": 135,
+"iiif_label": "109",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105417",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105417/full/1200,/0/default.jpg"
+},
+{
+"page": 136,
+"iiif_label": "110",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105418",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105418/full/1200,/0/default.jpg"
+},
+{
+"page": 137,
+"iiif_label": "111",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105419",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105419/full/1200,/0/default.jpg"
+},
+{
+"page": 138,
+"iiif_label": "112",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105420",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105420/full/1200,/0/default.jpg"
+},
+{
+"page": 139,
+"iiif_label": "113",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105421",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105421/full/1200,/0/default.jpg"
+},
+{
+"page": 140,
+"iiif_label": "114",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105422",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105422/full/1200,/0/default.jpg"
+},
+{
+"page": 141,
+"iiif_label": "115",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105423",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105423/full/1200,/0/default.jpg"
+},
+{
+"page": 142,
+"iiif_label": "116",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105424",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105424/full/1200,/0/default.jpg"
+},
+{
+"page": 143,
+"iiif_label": "117",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105425",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105425/full/1200,/0/default.jpg"
+},
+{
+"page": 144,
+"iiif_label": "118",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105426",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105426/full/1200,/0/default.jpg"
+},
+{
+"page": 145,
+"iiif_label": "119",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105427",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105427/full/1200,/0/default.jpg"
+},
+{
+"page": 146,
+"iiif_label": "120",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105428",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105428/full/1200,/0/default.jpg"
+},
+{
+"page": 147,
+"iiif_label": "121",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105429",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105429/full/1200,/0/default.jpg"
+},
+{
+"page": 148,
+"iiif_label": "122",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105430",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105430/full/1200,/0/default.jpg"
+},
+{
+"page": 149,
+"iiif_label": "123",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105431",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105431/full/1200,/0/default.jpg"
+},
+{
+"page": 150,
+"iiif_label": "124",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105432",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105432/full/1200,/0/default.jpg"
+},
+{
+"page": 151,
+"iiif_label": "125",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105433",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105433/full/1200,/0/default.jpg"
+},
+{
+"page": 152,
+"iiif_label": "126",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105434",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105434/full/1200,/0/default.jpg"
+},
+{
+"page": 153,
+"iiif_label": "127",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105435",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105435/full/1200,/0/default.jpg"
+},
+{
+"page": 154,
+"iiif_label": "128",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105436",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105436/full/1200,/0/default.jpg"
+},
+{
+"page": 155,
+"iiif_label": "129",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105437",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105437/full/1200,/0/default.jpg"
+},
+{
+"page": 156,
+"iiif_label": "130",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105438",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105438/full/1200,/0/default.jpg"
+},
+{
+"page": 157,
+"iiif_label": "131",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105439",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105439/full/1200,/0/default.jpg"
+},
+{
+"page": 158,
+"iiif_label": "132",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105440",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105440/full/1200,/0/default.jpg"
+},
+{
+"page": 159,
+"iiif_label": "133",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105441",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105441/full/1200,/0/default.jpg"
+},
+{
+"page": 160,
+"iiif_label": "134",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105442",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105442/full/1200,/0/default.jpg"
+},
+{
+"page": 161,
+"iiif_label": "135",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105443",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105443/full/1200,/0/default.jpg"
+},
+{
+"page": 162,
+"iiif_label": "136",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105444",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105444/full/1200,/0/default.jpg"
+},
+{
+"page": 163,
+"iiif_label": "137",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105445",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105445/full/1200,/0/default.jpg"
+},
+{
+"page": 164,
+"iiif_label": "138",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105446",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105446/full/1200,/0/default.jpg"
+},
+{
+"page": 165,
+"iiif_label": "139",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105447",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105447/full/1200,/0/default.jpg"
+},
+{
+"page": 166,
+"iiif_label": "140",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105448",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105448/full/1200,/0/default.jpg"
+},
+{
+"page": 167,
+"iiif_label": "141",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105449",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105449/full/1200,/0/default.jpg"
+},
+{
+"page": 168,
+"iiif_label": "142",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105450",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105450/full/1200,/0/default.jpg"
+},
+{
+"page": 169,
+"iiif_label": "143",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105451",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105451/full/1200,/0/default.jpg"
+},
+{
+"page": 170,
+"iiif_label": "144",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105452",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105452/full/1200,/0/default.jpg"
+},
+{
+"page": 171,
+"iiif_label": "145",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105453",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105453/full/1200,/0/default.jpg"
+},
+{
+"page": 172,
+"iiif_label": "146",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105454",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105454/full/1200,/0/default.jpg"
+},
+{
+"page": 173,
+"iiif_label": "147",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105455",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105455/full/1200,/0/default.jpg"
+},
+{
+"page": 174,
+"iiif_label": "148",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105456",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105456/full/1200,/0/default.jpg"
+},
+{
+"page": 175,
+"iiif_label": "149",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105457",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105457/full/1200,/0/default.jpg"
+},
+{
+"page": 176,
+"iiif_label": "150",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105458",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105458/full/1200,/0/default.jpg"
+},
+{
+"page": 177,
+"iiif_label": "151",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105459",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105459/full/1200,/0/default.jpg"
+},
+{
+"page": 178,
+"iiif_label": "152",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105460",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105460/full/1200,/0/default.jpg"
+},
+{
+"page": 179,
+"iiif_label": "153",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105461",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105461/full/1200,/0/default.jpg"
+},
+{
+"page": 180,
+"iiif_label": "154",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105462",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105462/full/1200,/0/default.jpg"
+},
+{
+"page": 181,
+"iiif_label": "155",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105463",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105463/full/1200,/0/default.jpg"
+},
+{
+"page": 182,
+"iiif_label": "156",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105464",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105464/full/1200,/0/default.jpg"
+},
+{
+"page": 183,
+"iiif_label": "157",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105465",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105465/full/1200,/0/default.jpg"
+},
+{
+"page": 184,
+"iiif_label": "158",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105466",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105466/full/1200,/0/default.jpg"
+},
+{
+"page": 185,
+"iiif_label": "159",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105467",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105467/full/1200,/0/default.jpg"
+},
+{
+"page": 186,
+"iiif_label": "160",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105468",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105468/full/1200,/0/default.jpg"
+},
+{
+"page": 187,
+"iiif_label": "161",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105469",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105469/full/1200,/0/default.jpg"
+},
+{
+"page": 188,
+"iiif_label": "162",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105470",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105470/full/1200,/0/default.jpg"
+},
+{
+"page": 189,
+"iiif_label": "163",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105471",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105471/full/1200,/0/default.jpg"
+},
+{
+"page": 190,
+"iiif_label": "164",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105472",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105472/full/1200,/0/default.jpg"
+},
+{
+"page": 191,
+"iiif_label": "165",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105473",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105473/full/1200,/0/default.jpg"
+},
+{
+"page": 192,
+"iiif_label": "166",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105474",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105474/full/1200,/0/default.jpg"
+},
+{
+"page": 193,
+"iiif_label": "167",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105475",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105475/full/1200,/0/default.jpg"
+},
+{
+"page": 194,
+"iiif_label": "168",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105476",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105476/full/1200,/0/default.jpg"
+},
+{
+"page": 195,
+"iiif_label": "169",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105477",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105477/full/1200,/0/default.jpg"
+},
+{
+"page": 196,
+"iiif_label": "170",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105478",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105478/full/1200,/0/default.jpg"
+},
+{
+"page": 197,
+"iiif_label": "171",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105479",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105479/full/1200,/0/default.jpg"
+},
+{
+"page": 198,
+"iiif_label": "172",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105480",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105480/full/1200,/0/default.jpg"
+},
+{
+"page": 199,
+"iiif_label": "173",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105481",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105481/full/1200,/0/default.jpg"
+},
+{
+"page": 200,
+"iiif_label": "174",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105482",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105482/full/1200,/0/default.jpg"
+},
+{
+"page": 201,
+"iiif_label": "175",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105483",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105483/full/1200,/0/default.jpg"
+},
+{
+"page": 202,
+"iiif_label": "176",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105484",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105484/full/1200,/0/default.jpg"
+},
+{
+"page": 203,
+"iiif_label": "177",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105485",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105485/full/1200,/0/default.jpg"
+},
+{
+"page": 204,
+"iiif_label": "178",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105486",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105486/full/1200,/0/default.jpg"
+},
+{
+"page": 205,
+"iiif_label": "179",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105487",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105487/full/1200,/0/default.jpg"
+},
+{
+"page": 206,
+"iiif_label": "180",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105488",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105488/full/1200,/0/default.jpg"
+},
+{
+"page": 207,
+"iiif_label": "181",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105489",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105489/full/1200,/0/default.jpg"
+},
+{
+"page": 208,
+"iiif_label": "182",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105490",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105490/full/1200,/0/default.jpg"
+},
+{
+"page": 209,
+"iiif_label": "183",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105491",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105491/full/1200,/0/default.jpg"
+},
+{
+"page": 210,
+"iiif_label": "184",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105492",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105492/full/1200,/0/default.jpg"
+},
+{
+"page": 211,
+"iiif_label": "185",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105493",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105493/full/1200,/0/default.jpg"
+},
+{
+"page": 212,
+"iiif_label": "186",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105494",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105494/full/1200,/0/default.jpg"
+},
+{
+"page": 213,
+"iiif_label": "187",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105495",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105495/full/1200,/0/default.jpg"
+},
+{
+"page": 214,
+"iiif_label": "188",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105496",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105496/full/1200,/0/default.jpg"
+},
+{
+"page": 215,
+"iiif_label": "189",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105497",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105497/full/1200,/0/default.jpg"
+},
+{
+"page": 216,
+"iiif_label": "190",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105498",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105498/full/1200,/0/default.jpg"
+},
+{
+"page": 217,
+"iiif_label": "191",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105499",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105499/full/1200,/0/default.jpg"
+},
+{
+"page": 218,
+"iiif_label": "192",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105500",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105500/full/1200,/0/default.jpg"
+},
+{
+"page": 219,
+"iiif_label": "193",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105501",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105501/full/1200,/0/default.jpg"
+},
+{
+"page": 220,
+"iiif_label": "194",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105502",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105502/full/1200,/0/default.jpg"
+},
+{
+"page": 221,
+"iiif_label": "195",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105503",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105503/full/1200,/0/default.jpg"
+},
+{
+"page": 222,
+"iiif_label": "196",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105504",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105504/full/1200,/0/default.jpg"
+},
+{
+"page": 223,
+"iiif_label": "197",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105505",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105505/full/1200,/0/default.jpg"
+},
+{
+"page": 224,
+"iiif_label": "198",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105506",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105506/full/1200,/0/default.jpg"
+},
+{
+"page": 225,
+"iiif_label": "199",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105507",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105507/full/1200,/0/default.jpg"
+},
+{
+"page": 226,
+"iiif_label": "200",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105508",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105508/full/1200,/0/default.jpg"
+},
+{
+"page": 227,
+"iiif_label": "201",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105509",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105509/full/1200,/0/default.jpg"
+},
+{
+"page": 228,
+"iiif_label": "202",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105510",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105510/full/1200,/0/default.jpg"
+},
+{
+"page": 229,
+"iiif_label": "203",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105511",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105511/full/1200,/0/default.jpg"
+},
+{
+"page": 230,
+"iiif_label": "204",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105512",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105512/full/1200,/0/default.jpg"
+},
+{
+"page": 231,
+"iiif_label": "205",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105513",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105513/full/1200,/0/default.jpg"
+},
+{
+"page": 232,
+"iiif_label": "206",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105514",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105514/full/1200,/0/default.jpg"
+},
+{
+"page": 233,
+"iiif_label": "207",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105515",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105515/full/1200,/0/default.jpg"
+},
+{
+"page": 234,
+"iiif_label": "208",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105516",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105516/full/1200,/0/default.jpg"
+},
+{
+"page": 235,
+"iiif_label": "209",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105517",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105517/full/1200,/0/default.jpg"
+},
+{
+"page": 236,
+"iiif_label": "210",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105518",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105518/full/1200,/0/default.jpg"
+},
+{
+"page": 237,
+"iiif_label": "211",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105519",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105519/full/1200,/0/default.jpg"
+},
+{
+"page": 238,
+"iiif_label": "212",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105520",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105520/full/1200,/0/default.jpg"
+},
+{
+"page": 239,
+"iiif_label": "213",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105521",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105521/full/1200,/0/default.jpg"
+},
+{
+"page": 240,
+"iiif_label": "214",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105522",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105522/full/1200,/0/default.jpg"
+},
+{
+"page": 241,
+"iiif_label": "215",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105523",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105523/full/1200,/0/default.jpg"
+},
+{
+"page": 242,
+"iiif_label": "216",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105524",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105524/full/1200,/0/default.jpg"
+},
+{
+"page": 243,
+"iiif_label": "217",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105525",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105525/full/1200,/0/default.jpg"
+},
+{
+"page": 244,
+"iiif_label": "812",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105526",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105526/full/1200,/0/default.jpg"
+},
+{
+"page": 245,
+"iiif_label": "219",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105527",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105527/full/1200,/0/default.jpg"
+},
+{
+"page": 246,
+"iiif_label": "220",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105528",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105528/full/1200,/0/default.jpg"
+},
+{
+"page": 247,
+"iiif_label": "221",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105529",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105529/full/1200,/0/default.jpg"
+},
+{
+"page": 248,
+"iiif_label": "222",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105530",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105530/full/1200,/0/default.jpg"
+},
+{
+"page": 249,
+"iiif_label": "223",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105531",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105531/full/1200,/0/default.jpg"
+},
+{
+"page": 250,
+"iiif_label": "224",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105532",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105532/full/1200,/0/default.jpg"
+},
+{
+"page": 251,
+"iiif_label": "225",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105533",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105533/full/1200,/0/default.jpg"
+},
+{
+"page": 252,
+"iiif_label": "226",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105534",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105534/full/1200,/0/default.jpg"
+},
+{
+"page": 253,
+"iiif_label": "227",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105535",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105535/full/1200,/0/default.jpg"
+},
+{
+"page": 254,
+"iiif_label": "228",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105536",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105536/full/1200,/0/default.jpg"
+},
+{
+"page": 255,
+"iiif_label": "229",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105537",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105537/full/1200,/0/default.jpg"
+},
+{
+"page": 256,
+"iiif_label": "230",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105538",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105538/full/1200,/0/default.jpg"
+},
+{
+"page": 257,
+"iiif_label": "231",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105539",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105539/full/1200,/0/default.jpg"
+},
+{
+"page": 258,
+"iiif_label": "232",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105540",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105540/full/1200,/0/default.jpg"
+},
+{
+"page": 259,
+"iiif_label": "233",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105541",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105541/full/1200,/0/default.jpg"
+},
+{
+"page": 260,
+"iiif_label": "234",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105542",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105542/full/1200,/0/default.jpg"
+},
+{
+"page": 261,
+"iiif_label": "235",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105543",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105543/full/1200,/0/default.jpg"
+},
+{
+"page": 262,
+"iiif_label": "236",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105544",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105544/full/1200,/0/default.jpg"
+},
+{
+"page": 263,
+"iiif_label": "237",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105545",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105545/full/1200,/0/default.jpg"
+},
+{
+"page": 264,
+"iiif_label": "238",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105546",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105546/full/1200,/0/default.jpg"
+},
+{
+"page": 265,
+"iiif_label": "239",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105547",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105547/full/1200,/0/default.jpg"
+},
+{
+"page": 266,
+"iiif_label": "240",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105548",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105548/full/1200,/0/default.jpg"
+},
+{
+"page": 267,
+"iiif_label": "241",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105549",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105549/full/1200,/0/default.jpg"
+},
+{
+"page": 268,
+"iiif_label": "242",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105550",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105550/full/1200,/0/default.jpg"
+},
+{
+"page": 269,
+"iiif_label": "243",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105551",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105551/full/1200,/0/default.jpg"
+},
+{
+"page": 270,
+"iiif_label": "244",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105552",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105552/full/1200,/0/default.jpg"
+},
+{
+"page": 271,
+"iiif_label": "245",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105553",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105553/full/1200,/0/default.jpg"
+},
+{
+"page": 272,
+"iiif_label": "246",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105554",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105554/full/1200,/0/default.jpg"
+},
+{
+"page": 273,
+"iiif_label": "247",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105555",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105555/full/1200,/0/default.jpg"
+},
+{
+"page": 274,
+"iiif_label": "248",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105556",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105556/full/1200,/0/default.jpg"
+},
+{
+"page": 275,
+"iiif_label": "249",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105557",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105557/full/1200,/0/default.jpg"
+},
+{
+"page": 276,
+"iiif_label": "250",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105558",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105558/full/1200,/0/default.jpg"
+},
+{
+"page": 277,
+"iiif_label": "251",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105559",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105559/full/1200,/0/default.jpg"
+},
+{
+"page": 278,
+"iiif_label": "252",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105560",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105560/full/1200,/0/default.jpg"
+},
+{
+"page": 279,
+"iiif_label": "253",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105561",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105561/full/1200,/0/default.jpg"
+},
+{
+"page": 280,
+"iiif_label": "254",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105562",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105562/full/1200,/0/default.jpg"
+},
+{
+"page": 281,
+"iiif_label": "255",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105563",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105563/full/1200,/0/default.jpg"
+},
+{
+"page": 282,
+"iiif_label": "256",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105564",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105564/full/1200,/0/default.jpg"
+},
+{
+"page": 283,
+"iiif_label": "257",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105565",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105565/full/1200,/0/default.jpg"
+},
+{
+"page": 284,
+"iiif_label": "258",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105566",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105566/full/1200,/0/default.jpg"
+},
+{
+"page": 285,
+"iiif_label": "259",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105567",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105567/full/1200,/0/default.jpg"
+},
+{
+"page": 286,
+"iiif_label": "260",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105568",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105568/full/1200,/0/default.jpg"
+},
+{
+"page": 287,
+"iiif_label": "261",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105569",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105569/full/1200,/0/default.jpg"
+},
+{
+"page": 288,
+"iiif_label": "262",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105570",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105570/full/1200,/0/default.jpg"
+},
+{
+"page": 289,
+"iiif_label": "263",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105571",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105571/full/1200,/0/default.jpg"
+},
+{
+"page": 290,
+"iiif_label": "264",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105572",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105572/full/1200,/0/default.jpg"
+},
+{
+"page": 291,
+"iiif_label": "265",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105573",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105573/full/1200,/0/default.jpg"
+},
+{
+"page": 292,
+"iiif_label": "266",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105574",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105574/full/1200,/0/default.jpg"
+},
+{
+"page": 293,
+"iiif_label": "267",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105575",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105575/full/1200,/0/default.jpg"
+},
+{
+"page": 294,
+"iiif_label": "268",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105576",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105576/full/1200,/0/default.jpg"
+},
+{
+"page": 295,
+"iiif_label": "269",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105577",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105577/full/1200,/0/default.jpg"
+},
+{
+"page": 296,
+"iiif_label": "270",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105578",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105578/full/1200,/0/default.jpg"
+},
+{
+"page": 297,
+"iiif_label": "271",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105579",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105579/full/1200,/0/default.jpg"
+},
+{
+"page": 298,
+"iiif_label": "272",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105580",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105580/full/1200,/0/default.jpg"
+},
+{
+"page": 299,
+"iiif_label": "273",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105581",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105581/full/1200,/0/default.jpg"
+},
+{
+"page": 300,
+"iiif_label": "274",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105582",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105582/full/1200,/0/default.jpg"
+},
+{
+"page": 301,
+"iiif_label": "275",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105583",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105583/full/1200,/0/default.jpg"
+},
+{
+"page": 302,
+"iiif_label": "276",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105584",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105584/full/1200,/0/default.jpg"
+},
+{
+"page": 303,
+"iiif_label": "277",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105585",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105585/full/1200,/0/default.jpg"
+},
+{
+"page": 304,
+"iiif_label": "278",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105586",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105586/full/1200,/0/default.jpg"
+},
+{
+"page": 305,
+"iiif_label": "279",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105587",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105587/full/1200,/0/default.jpg"
+},
+{
+"page": 306,
+"iiif_label": "280",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105588",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105588/full/1200,/0/default.jpg"
+},
+{
+"page": 307,
+"iiif_label": "281",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105589",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105589/full/1200,/0/default.jpg"
+},
+{
+"page": 308,
+"iiif_label": "282",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105590",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105590/full/1200,/0/default.jpg"
+},
+{
+"page": 309,
+"iiif_label": "283",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105591",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105591/full/1200,/0/default.jpg"
+},
+{
+"page": 310,
+"iiif_label": "284",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105592",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105592/full/1200,/0/default.jpg"
+},
+{
+"page": 311,
+"iiif_label": "285",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105593",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105593/full/1200,/0/default.jpg"
+},
+{
+"page": 312,
+"iiif_label": "286",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105594",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105594/full/1200,/0/default.jpg"
+},
+{
+"page": 313,
+"iiif_label": "287",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105595",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105595/full/1200,/0/default.jpg"
+},
+{
+"page": 314,
+"iiif_label": "288",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105596",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105596/full/1200,/0/default.jpg"
+},
+{
+"page": 315,
+"iiif_label": "289",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105597",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105597/full/1200,/0/default.jpg"
+},
+{
+"page": 316,
+"iiif_label": "290",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105598",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105598/full/1200,/0/default.jpg"
+},
+{
+"page": 317,
+"iiif_label": "291",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105599",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105599/full/1200,/0/default.jpg"
+},
+{
+"page": 318,
+"iiif_label": "292",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105600",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105600/full/1200,/0/default.jpg"
+},
+{
+"page": 319,
+"iiif_label": "293",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105601",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105601/full/1200,/0/default.jpg"
+},
+{
+"page": 320,
+"iiif_label": "294",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105602",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105602/full/1200,/0/default.jpg"
+},
+{
+"page": 321,
+"iiif_label": "295",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105603",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105603/full/1200,/0/default.jpg"
+},
+{
+"page": 322,
+"iiif_label": "296",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105604",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105604/full/1200,/0/default.jpg"
+},
+{
+"page": 323,
+"iiif_label": "297",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105605",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105605/full/1200,/0/default.jpg"
+},
+{
+"page": 324,
+"iiif_label": "298",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105606",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105606/full/1200,/0/default.jpg"
+},
+{
+"page": 325,
+"iiif_label": "299",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105607",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105607/full/1200,/0/default.jpg"
+},
+{
+"page": 326,
+"iiif_label": "300",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105608",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105608/full/1200,/0/default.jpg"
+},
+{
+"page": 327,
+"iiif_label": "301",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105609",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105609/full/1200,/0/default.jpg"
+},
+{
+"page": 328,
+"iiif_label": "302",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105610",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105610/full/1200,/0/default.jpg"
+},
+{
+"page": 329,
+"iiif_label": "303",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105611",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105611/full/1200,/0/default.jpg"
+},
+{
+"page": 330,
+"iiif_label": "304",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105612",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105612/full/1200,/0/default.jpg"
+},
+{
+"page": 331,
+"iiif_label": "305",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105613",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105613/full/1200,/0/default.jpg"
+},
+{
+"page": 332,
+"iiif_label": "306",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105614",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105614/full/1200,/0/default.jpg"
+},
+{
+"page": 333,
+"iiif_label": "307",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105615",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105615/full/1200,/0/default.jpg"
+},
+{
+"page": 334,
+"iiif_label": "308",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105616",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105616/full/1200,/0/default.jpg"
+},
+{
+"page": 335,
+"iiif_label": "309",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105617",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105617/full/1200,/0/default.jpg"
+},
+{
+"page": 336,
+"iiif_label": "310",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105618",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105618/full/1200,/0/default.jpg"
+},
+{
+"page": 337,
+"iiif_label": "311",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105619",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105619/full/1200,/0/default.jpg"
+},
+{
+"page": 338,
+"iiif_label": "312",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105620",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105620/full/1200,/0/default.jpg"
+},
+{
+"page": 339,
+"iiif_label": "213",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105621",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105621/full/1200,/0/default.jpg"
+},
+{
+"page": 340,
+"iiif_label": "314",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105622",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105622/full/1200,/0/default.jpg"
+},
+{
+"page": 341,
+"iiif_label": "315",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105623",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105623/full/1200,/0/default.jpg"
+},
+{
+"page": 342,
+"iiif_label": "316",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105624",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105624/full/1200,/0/default.jpg"
+},
+{
+"page": 343,
+"iiif_label": "317",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105625",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105625/full/1200,/0/default.jpg"
+},
+{
+"page": 344,
+"iiif_label": "318",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105626",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105626/full/1200,/0/default.jpg"
+},
+{
+"page": 345,
+"iiif_label": "319",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105627",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105627/full/1200,/0/default.jpg"
+},
+{
+"page": 346,
+"iiif_label": "320",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105628",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105628/full/1200,/0/default.jpg"
+},
+{
+"page": 347,
+"iiif_label": "321",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105629",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105629/full/1200,/0/default.jpg"
+},
+{
+"page": 348,
+"iiif_label": "322",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105630",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105630/full/1200,/0/default.jpg"
+},
+{
+"page": 349,
+"iiif_label": "323",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105631",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105631/full/1200,/0/default.jpg"
+},
+{
+"page": 350,
+"iiif_label": "324",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105632",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105632/full/1200,/0/default.jpg"
+},
+{
+"page": 351,
+"iiif_label": "325",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105633",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105633/full/1200,/0/default.jpg"
+},
+{
+"page": 352,
+"iiif_label": "326",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105634",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105634/full/1200,/0/default.jpg"
+},
+{
+"page": 353,
+"iiif_label": "327",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105635",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105635/full/1200,/0/default.jpg"
+},
+{
+"page": 354,
+"iiif_label": "328",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105636",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105636/full/1200,/0/default.jpg"
+},
+{
+"page": 355,
+"iiif_label": "329",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105637",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105637/full/1200,/0/default.jpg"
+},
+{
+"page": 356,
+"iiif_label": "330",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105638",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105638/full/1200,/0/default.jpg"
+},
+{
+"page": 357,
+"iiif_label": "331",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105639",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105639/full/1200,/0/default.jpg"
+},
+{
+"page": 358,
+"iiif_label": "332",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105640",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105640/full/1200,/0/default.jpg"
+},
+{
+"page": 359,
+"iiif_label": "333",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105641",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105641/full/1200,/0/default.jpg"
+},
+{
+"page": 360,
+"iiif_label": "334",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105642",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105642/full/1200,/0/default.jpg"
+},
+{
+"page": 361,
+"iiif_label": "335",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105643",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105643/full/1200,/0/default.jpg"
+},
+{
+"page": 362,
+"iiif_label": "336",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105644",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105644/full/1200,/0/default.jpg"
+},
+{
+"page": 363,
+"iiif_label": "337",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105645",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105645/full/1200,/0/default.jpg"
+},
+{
+"page": 364,
+"iiif_label": "338",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105646",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105646/full/1200,/0/default.jpg"
+},
+{
+"page": 365,
+"iiif_label": "339",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105647",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105647/full/1200,/0/default.jpg"
+},
+{
+"page": 366,
+"iiif_label": "340",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105648",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105648/full/1200,/0/default.jpg"
+},
+{
+"page": 367,
+"iiif_label": "341",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105649",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105649/full/1200,/0/default.jpg"
+},
+{
+"page": 368,
+"iiif_label": "342",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105650",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105650/full/1200,/0/default.jpg"
+},
+{
+"page": 369,
+"iiif_label": "343",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105651",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105651/full/1200,/0/default.jpg"
+},
+{
+"page": 370,
+"iiif_label": "344",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105652",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105652/full/1200,/0/default.jpg"
+},
+{
+"page": 371,
+"iiif_label": "345",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105653",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105653/full/1200,/0/default.jpg"
+},
+{
+"page": 372,
+"iiif_label": "346",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105654",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105654/full/1200,/0/default.jpg"
+},
+{
+"page": 373,
+"iiif_label": "347",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105655",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105655/full/1200,/0/default.jpg"
+},
+{
+"page": 374,
+"iiif_label": "348",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105656",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105656/full/1200,/0/default.jpg"
+},
+{
+"page": 375,
+"iiif_label": "349",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105657",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105657/full/1200,/0/default.jpg"
+},
+{
+"page": 376,
+"iiif_label": "350",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105658",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105658/full/1200,/0/default.jpg"
+},
+{
+"page": 377,
+"iiif_label": "351",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105659",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105659/full/1200,/0/default.jpg"
+},
+{
+"page": 378,
+"iiif_label": "352",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105660",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105660/full/1200,/0/default.jpg"
+},
+{
+"page": 379,
+"iiif_label": "353",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105661",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105661/full/1200,/0/default.jpg"
+},
+{
+"page": 380,
+"iiif_label": "354",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105662",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105662/full/1200,/0/default.jpg"
+},
+{
+"page": 381,
+"iiif_label": "355",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105663",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105663/full/1200,/0/default.jpg"
+},
+{
+"page": 382,
+"iiif_label": "356",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105664",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105664/full/1200,/0/default.jpg"
+},
+{
+"page": 383,
+"iiif_label": "357",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105665",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105665/full/1200,/0/default.jpg"
+},
+{
+"page": 384,
+"iiif_label": "358",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6105666",
+"image_url": "https://www.e-rara.ch/i3f/v20/6105666/full/1200,/0/default.jpg"
+},
+{
+"page": 385,
+"iiif_label": "359",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633613",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633613/full/1200,/0/default.jpg"
+},
+{
+"page": 386,
+"iiif_label": "360",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633614",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633614/full/1200,/0/default.jpg"
+},
+{
+"page": 387,
+"iiif_label": "361",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633615",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633615/full/1200,/0/default.jpg"
+},
+{
+"page": 388,
+"iiif_label": "362",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633616",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633616/full/1200,/0/default.jpg"
+},
+{
+"page": 389,
+"iiif_label": "363",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633617",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633617/full/1200,/0/default.jpg"
+},
+{
+"page": 390,
+"iiif_label": "364",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633618",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633618/full/1200,/0/default.jpg"
+},
+{
+"page": 391,
+"iiif_label": "365",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633619",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633619/full/1200,/0/default.jpg"
+},
+{
+"page": 392,
+"iiif_label": "366",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633620",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633620/full/1200,/0/default.jpg"
+},
+{
+"page": 393,
+"iiif_label": "367",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633621",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633621/full/1200,/0/default.jpg"
+},
+{
+"page": 394,
+"iiif_label": "368",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633622",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633622/full/1200,/0/default.jpg"
+},
+{
+"page": 395,
+"iiif_label": "369",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633623",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633623/full/1200,/0/default.jpg"
+},
+{
+"page": 396,
+"iiif_label": "370",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633624",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633624/full/1200,/0/default.jpg"
+},
+{
+"page": 397,
+"iiif_label": "371",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633625",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633625/full/1200,/0/default.jpg"
+},
+{
+"page": 398,
+"iiif_label": "372",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633626",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633626/full/1200,/0/default.jpg"
+},
+{
+"page": 399,
+"iiif_label": "373",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633627",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633627/full/1200,/0/default.jpg"
+},
+{
+"page": 400,
+"iiif_label": "374",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633628",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633628/full/1200,/0/default.jpg"
+},
+{
+"page": 401,
+"iiif_label": "375",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633629",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633629/full/1200,/0/default.jpg"
+},
+{
+"page": 402,
+"iiif_label": "[402]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633630",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633630/full/1200,/0/default.jpg"
+},
+{
+"page": 403,
+"iiif_label": "[403]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633631",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633631/full/1200,/0/default.jpg"
+},
+{
+"page": 404,
+"iiif_label": "[404]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633632",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633632/full/1200,/0/default.jpg"
+},
+{
+"page": 405,
+"iiif_label": "[405]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633633",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633633/full/1200,/0/default.jpg"
+},
+{
+"page": 406,
+"iiif_label": "[406]",
+"canvas_id": "https://www.e-rara.ch/i3f/v20/6105281/canvas/6633636",
+"image_url": "https://www.e-rara.ch/i3f/v20/6633636/full/1200,/0/default.jpg"
+}
+]
+}
