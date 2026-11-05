@@ -35,6 +35,8 @@ html[data-theme=dark] .classic-fulltext a{background:#263d50;border-color:#72839
  }
  input.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(run,650)});
  input.addEventListener("keydown",e=>{if(e.key==="Enter"){clearTimeout(timer);run()}});
- const t=new URLSearchParams(location.search).get("term");if(t&&!input.value){/* la obra ya se abre con la palabra resaltada */}
+ const sp=new URLSearchParams(location.search),t=sp.get("term");
+ // Sin obra elegida, «term» abre directamente la búsqueda de la palabra en todos los textos.
+ if(t&&!sp.get("work")){input.value=t;setTimeout(run,300)}
 });
 })();
