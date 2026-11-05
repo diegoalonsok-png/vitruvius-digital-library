@@ -24,7 +24,7 @@
  const hasKind=(type,groups)=>groups.includes(type);
 
  const childhood=/\b(baby|infant|infancy|childhood|as a child|as a baby|as a boy|as a girl|toddler|newborn|beb[eé]|niñ[oa]|infancia|infantil|enfant|bambin[oa]|kindheit|als kind)\b/i;
- const isChildhood=item=>childhood.test([item?.caption,item?.name,item?.alt,item?.page].filter(Boolean).join(" ").normalize("NFD").replace(/\p{M}/gu,""));
+ const isChildhood=item=>childhood.test([item?.caption,item?.name,item?.alt,item?.page].filter(Boolean).map(value=>{try{return decodeURIComponent(value)}catch{return value}}).join(" ").normalize("NFD").replace(/\p{M}/gu,""));
 
  function validImage(url){
   try{
