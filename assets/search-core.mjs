@@ -3,10 +3,21 @@ export const roman=n=>['','I','II','III','IV','V','VI','VII','VIII','IX','X'][n]
 export const normalize=value=>String(value??'').normalize('NFD').replace(/\p{M}/gu,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 export function tokens(text){return [...String(text).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({value:normalize(m[0]),raw:m[0],start:m.index,end:m.index+m[0].length}));}
 export function parseLocus(value){
- const input=String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+ let input=String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
   .replace(/[–—−]/g,'-').replace(/\s+/g,' ').trim()
   .replace(/^(?:vitruvio|vitruvius|vitruve|vitr\.?)\s*[,;:]?\s*(?:de\s+arch(?:itectura)?\.?\s*)?/,'')
   .replace(/^de\s+arch(?:itectura)?\.?\s*/,'').trim();
+
+ // Treat an appended author credit as context, not part of the locus.
+ input=input.replace(/\s+(?:(?:de|del|por|by|of|di|da|do)\s+)?(?:marco\s+)?(?:marcus\s+)?vitruvi(?:o|us|i|e)(?:\s+pol(?:l)?io?n?)?\s*\.?$/i,'').trim();
+ // Shorthand pref 1.2 refers to book I, preface, section 2.
+ const shortPref=input.match(/^(?:pr|pref|praef|prefacio|preface|praefatio|prefazione|prologo|prologue|proemio|proemium|prooemium)\.?\s+(10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)\s*[.:/\s-]\s*(\d{1,3})\.?$/i);
+ if(shortPref){
+  const romanNumbers={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+  const book=romanNumbers[shortPref[1]]||Number(shortPref[1]),section=Number(shortPref[2]);
+  if(book>=1&&book<=10&&section>=1&&section<=999)return{book,chapter:'praef',section};
+ }
+
  if(!input)return null;
  const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
  const ordinals={primer:1,primero:1,primera:1,first:1,primus:1,primo:1,premier:1,premiere:1,
