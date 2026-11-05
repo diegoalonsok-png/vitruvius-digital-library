@@ -3,19 +3,73 @@ export const roman=n=>['','I','II','III','IV','V','VI','VII','VIII','IX','X'][n]
 export const normalize=value=>String(value??'').normalize('NFD').replace(/\p{M}/gu,'').replace(/æ/gi,'ae').replace(/œ/gi,'oe').replace(/ſ/g,'s').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 export function tokens(text){return [...String(text).matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map(m=>({value:normalize(m[0]),raw:m[0],start:m.index,end:m.index+m[0].length}));}
 export function parseLocus(value){
-  const raw=String(value).trim()
-    .replace(/^(?:vitr\.?\s*[,;]?\s*)?(?:de\s+arch(?:itectura)?\.?\s*)?/i,'')
-    .replace(/^(?:liber|libro|lib\.?|livre|book|liver)\s+/i,'')
-    .replace(/\s+(?:caput|capítulo|capitulo|chapter|chapitre)\s+/ig,'.')
-    .replace(/\s+praef(?:atio)?\s*/ig,'.praef.')
-    .replace(/\s*[,·:]\s*/g,'.').replace(/\s*\.\s*/g,'.')
-    .replace(/^(I|II|III|IV|V|VI|VII|VIII|IX|X|10|[1-9])\s+(?=\d)/i,'$1.');
-
-  const m=raw.match(/^(10|[1-9]|VIII|VII|III|II|IV|VI|IX|I|V|X)(?:\s*\.\s*(praef(?:atio)?\.?|\d{1,2})(?:\s*\.\s*(\d{1,3}))?)?\.?$/i);
-  if(!m)return null;
-  const book=/^\d+$/.test(m[1])?Number(m[1]):['','I','II','III','IV','V','VI','VII','VIII','IX','X'].indexOf(m[1].toUpperCase());
-  const chapter=m[2]?/^praef/i.test(m[2])?'praef':Number(m[2]):null,section=m[3]?Number(m[3]):null;
-  if(book<1||book>10||chapter===0||section===0)return null;return{book,chapter,section};
+ const input=String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+  .replace(/[–—−]/g,'-').replace(/\s+/g,' ').trim()
+  .replace(/^(?:vitruvio|vitruvius|vitruve|vitr\.?)\s*[,;:]?\s*(?:de\s+arch(?:itectura)?\.?\s*)?/,'')
+  .replace(/^de\s+arch(?:itectura)?\.?\s*/,'').trim();
+ if(!input)return null;
+ const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+ const ordinals={primer:1,primero:1,primera:1,first:1,primus:1,primo:1,premier:1,premiere:1,
+ segundo:2,segunda:2,second:2,secondo:2,secundus:2,deuxieme:2,
+ tercero:3,tercera:3,third:3,terzo:3,troisieme:3,
+ cuarto:4,cuarta:4,fourth:4,quarto:4,quatrieme:4,
+ quinto:5,quinta:5,fifth:5,quinto:5,cinquieme:5,
+ sexto:6,sexta:6,sixth:6,sesto:6,sixieme:6,
+ septimo:7,septima:7,seventh:7,settimo:7,septieme:7,
+ octavo:8,octava:8,eighth:8,ottavo:8,huitieme:8,
+ noveno:9,novena:9,ninth:9,nono:9,neuvieme:9,
+ decimo:10,decima:10,tenth:10,dixieme:10};
+ const bookValue=word=>{
+  const w=String(word||'').toLowerCase(),n=/^\d{1,2}$/.test(w)?Number(w):roman[w]||ordinals[w]||null;
+  return n>=1&&n<=10?n:null;
+ };
+ const sectionValue=word=>{
+  const w=String(word||'').toLowerCase(),n=/^\d{1,3}$/.test(w)?Number(w):roman[w]||ordinals[w]||null;
+  return n>=1&&n<=999?n:null;
+ };
+ const number='(?:10|[1-9]|viii|vii|vi|iv|iii|ii|ix|i|v|x|primero|primera|primer|segundo|segunda|tercero|tercera|cuarto|cuarta|quinto|quinta|sexto|sexta|septimo|septima|octavo|octava|noveno|novena|decimo|decima|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|premier|premiere|deuxieme|troisieme|quatrieme|cinquieme|sixieme|septieme|huitieme|neuvieme|dixieme|primo|secondo|terzo|quarto|quinto|sesto|settimo|ottavo|nono)';
+ const bookWord='(?:libro|libros|liber|libri|lib\\.?|livre|livro|book|tomo|volumen|volume)';
+ const preface='(?:pr|praef|praefatio|praefationes|pref|prefacio|prefacios|preface|prefaces|prefazione|prologo|prologue|prologus|proemio|proemium|prooemium)';
+ const sep='(?:\\s*[.:/,-]\\s*|\\s+)';
+ const full=new RegExp('^('+number+')'+sep+'('+preface+'|\\d{1,2})(?:'+sep+'(\\d{1,3}))?\\.?$','i');
+ const stripped=input.replace(new RegExp('^'+bookWord+'\\s+','i'),'').trim();
+ const compact=stripped.match(full);
+ if(compact){
+  const book=bookValue(compact[1]);
+  if(!book)return null;
+  const chapter=new RegExp('^'+preface+'$','i').test(compact[2])?'praef':Number(compact[2]);
+  const section=compact[3]?Number(compact[3]):null;
+  if(chapter===0||section===0)return null;
+  return{book,chapter,section};
+ }
+ const prefPattern=new RegExp('\\b'+preface+'\\b','i'),prefMatch=input.match(prefPattern);
+ const bookForward=input.match(new RegExp('\\b'+bookWord+'\\s*(?:n(?:umero|umber|[°º])?\\.?\\s*)?('+number+')\\b','i'));
+ const bookReverse=input.match(new RegExp('\\b('+number+')\\s+'+bookWord+'\\b','i'));
+ let book=bookValue(bookForward?.[1]||bookReverse?.[1]);
+ if(prefMatch){
+  const after=input.slice(prefMatch.index+prefMatch[0].length);
+  const beforeBook=after.match(new RegExp('^\\s*('+number+')\\s+(?:de(?:l)?\\s+)?'+bookWord+'\\b','i'));
+  const sectionWord=input.match(/\b(?:seccion|apartado|parrafo|paragraph|section|paragraphe|caput)\s*(?:n(?:[°º])?\.?\s*)?([ivx]+|\d{1,3}|primero|primera|first|premier)\b/i);
+  let section=sectionValue(sectionWord?.[1]);
+  if(book&&beforeBook&&!section)section=sectionValue(beforeBook[1]);
+  if(book&&!section){
+   const afterBook=after.match(new RegExp('(?:\\b'+bookWord+'\\b\\s*'+number+'\\b)\\s*[,;:.\\-]?\\s*([ivx]+|\\d{1,3})\\s*$','i'));
+   if(afterBook)section=sectionValue(afterBook[1]);
+  }
+  if(!book){
+   const direct=after.match(new RegExp('^\\s*('+number+')\\s*$','i'));
+   if(direct)book=bookValue(direct[1]);
+  }
+  return book?{book,chapter:'praef',section}:null;
+ }
+ if(book){
+  const chapterWord=input.match(/\b(?:capitulo|caput|chapitre|chapter|cap)\s*(?:n(?:[°º])?\.?\s*)?([ivx]+|\d{1,2})\b/i);
+  const chapter=chapterWord?sectionValue(chapterWord[1]):null;
+  const sectionWord=input.match(/\b(?:seccion|parrafo|section|paragraph)\s*(?:n(?:[°º])?\.?\s*)?(\d{1,3})\b/i);
+  return{book,chapter,section:chapter?sectionValue(sectionWord?.[1]):null};
+ }
+ const bareBook=bookValue(stripped.replace(/[.]$/,''));
+ return bareBook?{book:bareBook,chapter:null,section:null}:null;
 }
 export function citation(p){return 'Vitr., De arch. '+roman(p.book)+'.'+(p.chapter==='praef'?'praef.':p.chapter)+(p.section==null?'':(p.chapter==='praef'?'':'.')+p.section+(p.section_end?'–'+p.section_end:''));}
 export function findMatches(text,query,{prefix=false,phrase=false}={}){
