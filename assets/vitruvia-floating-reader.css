@@ -66,14 +66,6 @@
 @media(min-width:701px) and (max-width:1120px){
  body.vitruvia-reading #vitruvia-article .article-grid{padding-right:52px}
 }
-@media(max-width:700px){
- .vitruvia-reading-float{right:7px;top:auto;bottom:20vh}
- .vrf-rail{padding:3px;border-radius:17px}
- .vrf-key{width:33px;height:36px;font-size:12px}
- .vrf-key-main{font-size:17px}
- .vrf-panel{right:calc(100% + 7px);top:auto;bottom:0;max-width:calc(100vw - 58px);max-height:75dvh}
- body.vitruvia-reading #vitruvia-article .article-grid{padding-right:43px}
-}
 @media print{
  .vitruvia-reading-float{display:none!important}
  body.vitruvia-reading #vitruvia-article .article-grid{padding-right:0!important}
@@ -126,9 +118,23 @@
  left:calc(100% + 12px);
  right:auto;
 }
-@media(max-width:700px){
- .vitruvia-reading-float .vrf-drag{font-size:18px}
- .vitruvia-reading-float .vrf-panel.vrf-panel-right{
-  left:calc(100% + 7px);right:auto;
+/* A desktop drag position must not cover mobile paragraphs or the search box.
+   Keep all reading controls in a compact dock above the bottom navigation. */
+@media screen and (max-width:700px){
+ #vitruvia-reading-float{
+  left:50%!important;right:auto!important;top:auto!important;
+  bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;
+  transform:translateX(-50%);
  }
+ #vitruvia-reading-float .vrf-rail{flex-direction:row;padding:4px;border-radius:25px}
+ #vitruvia-reading-float .vrf-key{width:44px;height:44px;font-size:13px}
+ #vitruvia-reading-float .vrf-key-main{font-size:19px}
+ #vitruvia-reading-float .vrf-drag{display:none}
+ #vitruvia-reading-float .vrf-panel,
+ #vitruvia-reading-float .vrf-panel.vrf-panel-right{
+  right:50%;left:auto;top:auto;bottom:calc(100% + 8px);
+  transform:translateX(50%);max-width:calc(100vw - 24px);max-height:65dvh;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid{padding-right:0;padding-bottom:76px}
 }
+
