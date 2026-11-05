@@ -96,7 +96,7 @@ function terms(){return L[language()];}
 function navLink(url,txt){return '<a target="_blank" rel="noopener noreferrer" href="'+safe(url)+'">'+safe(txt)+' ↗</a>';}
 function isLocal(w){return ["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length)}
 function hasSource(w){return !!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest||w.witnessRecords?.length||w.historicEditions?.length)}
-function statusLabel(w){const d=summaryWords[language()]||summaryWords.es;return isLocal(w)?(w.publicStatus==="lectura-local-parcial"?d.statusLocal+" · PDF PARCIAL":d.statusLocal):hasSource(w)?d.statusExternal:d.statusCatalogue}
+function statusLabel(w){const d=summaryWords[language()]||summaryWords.es;if(!isLocal(w)&&w.perseus?.length)return ({es:"TEXTO EN VISOR",en:"TEXT IN VIEWER",fr:"TEXTE DANS LA VISIONNEUSE",it:"TESTO NEL VISORE",de:"TEXT IM BETRACHTER",pt:"TEXTO NO VISUALIZADOR"})[language()]||"TEXTO EN VISOR";return isLocal(w)?(w.publicStatus==="lectura-local-parcial"?d.statusLocal+" · PDF PARCIAL":d.statusLocal):hasSource(w)?d.statusExternal:d.statusCatalogue}
 function workSearchText(w){return [w.author,w.title,w.genre,w.dating,w.language,...(w.aliases||[]),
  ...(w.witnessRecords||[]).flatMap(ms=>[ms.title,ms.shelfmark,ms.library,ms.date]),
  ...(w.historicEditions||[]).flatMap(ed=>[ed.title,ed.editor,ed.year,ed.provider])].join(" ")}
@@ -306,6 +306,7 @@ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||
   w.localHtml?[["text",t.source],...manuscriptTab]:
   [["text",t.source],...manuscriptTab,["edition",t.edition]];
  if(w.historicEditions?.length&&!labels.some(x=>x[0]==="edition"))labels.push(["edition",t.edition]);
+ if(w.perseus?.length)(isLocal(w)?labels.push.bind(labels):labels.unshift.bind(labels))(["perseus",w.perseus.some(x=>x.translation)?"Leer original y traducción":"Leer texto original"]);
  if(!labels.some(x=>x[0]===tab))tab=labels[0][0];
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"Traducción sin cotejar.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
@@ -362,7 +363,19 @@ box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
   if(tab!=="manuscript")u.searchParams.delete("ms");if(tab!=="pdf")u.searchParams.delete("pdf");history.replaceState(null,"",u);detail();
  }));
 const pane=$("classic-panel");
-if(tab==="external"){
+if(tab==="perseus"&&w.perseus?.length){
+  pane.replaceChildren();
+  const h=document.createElement("h3");h.textContent=w.perseus.some(x=>x.translation)?"Texto original y traducción inglesa · Perseus Digital Library":"Texto original · Perseus Digital Library";pane.append(h);
+  const note=document.createElement("p");note.className="classic-ref";note.textContent="Edición TEI de Perseus (CC BY-SA 4.0), leída en el momento desde su repositorio público; no se copia en este sitio. Cuando hay imágenes verificadas del códice más antiguo, el visor las muestra primero.";pane.append(note);
+  const bar=document.createElement("div");bar.className="classic-linkline";let pick=null;
+  if(w.perseus.length>1){const lab=document.createElement("label");lab.className="classic-perseus-part";lab.textContent="Parte de la obra ";pick=document.createElement("select");
+   for(const x of w.perseus){const o=document.createElement("option");o.value=x.obra;o.textContent=x.title+(x.translation?"":" · solo original");pick.append(o)}lab.append(pick);bar.append(lab)}
+  const full=document.createElement("a");full.target="_blank";full.rel="noopener noreferrer";bar.append(full);pane.append(bar);
+  const frame=document.createElement("iframe");frame.className="classic-perseus-frame";frame.title="Lector clásico · "+w.title;
+  frame.style.cssText="width:100%;height:min(82vh,900px);border:1px solid #b49a6e;background:#fff";pane.append(frame);
+  const load=id=>{frame.src="lector-clasico.html?obra="+encodeURIComponent(id)+"&embed=1";full.href="lector-clasico.html?obra="+encodeURIComponent(id);full.textContent="Abrir en pantalla completa ↗"};
+  load(w.perseus[0].obra);if(pick)pick.addEventListener("change",()=>load(pick.value));
+ }else if(tab==="external"){
   const searchText=[w.author,(w.aliases||[])[0]||w.title].join(" ");
   const googleBooks="https://books.google.com/books?q="+encodeURIComponent(searchText);
   const scaifeDiscovery=w.discovery?.scaife||"https://www.google.com/search?q="+encodeURIComponent("site:scaife.perseus.org "+searchText);
@@ -478,9 +491,10 @@ if(tab==="pdf"){
  }
 }
 async function boot(){
- const [res,reference]=await Promise.all([
+ const [res,reference,perseusLinks]=await Promise.all([
   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1"),
-  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]}))
+  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]})),
+  fetch("data/bibliotheca-perseus.json?v=20261105-v1").then(r=>r.ok?r.json():{links:{}}).catch(()=>({links:{}}))
  ]);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;
@@ -490,6 +504,7 @@ async function boot(){
   const w=map.get(id);if(w)(w.witnessRecords??=[]).push(record);
  }
  for(const edition of witnessData.editions||[]){const w=map.get(edition.workId);if(w)(w.historicEditions??=[]).push(edition)}
+ for(const [id,list] of Object.entries(perseusLinks.links||{})){const w=map.get(id);if(w&&Array.isArray(list)&&list.length)w.perseus=list}
  for(const w of works)w.witnessRecords?.sort((a,b)=>(a.dateStart??9999)-(b.dateStart??9999));
  const n=$("classic-witness-count");if(n)n.textContent=(witnessData.records||[]).length+" "+additionalInterfaceWords[language()]["witness-count"];const genres=[...new Set(works.map(x=>x.genre))].sort((a,b)=>a.localeCompare(b,"es"));for(const s of genres){const o=document.createElement("option");o.textContent=o.value=s;$("classic-genre").append(o)}const availability=$("classic-availability");if(availability)availability.addEventListener("change",()=>{hideBookSuggestions();render()});
  const period=$("classic-period");if(period)period.addEventListener("change",()=>{hideBookSuggestions();render()});
@@ -497,6 +512,6 @@ async function boot(){
  const startParams=new URLSearchParams(location.search),wanted=startParams.get("work");
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
- tab=["pdf","manuscript","external","text","edition","comparepdf","parallel"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&sw?.localHtml?"text":sw?.pdf?.url?"pdf":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();showSelectedDetail=false;render();});translateInterface();render();initBookSuggestions();}
+ tab=["pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&sw?.localHtml?"text":sw?.pdf?.url?"pdf":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();showSelectedDetail=false;render();});translateInterface();render();initBookSuggestions();}
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
 })();

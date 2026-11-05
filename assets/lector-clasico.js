@@ -7,7 +7,7 @@ const $=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
-let catalog=null,witnesses=[],work=null,orig=[],trans=[],cur=0,query="";
+let catalog=null,witnesses=[],extraWorks=[],work=null,orig=[],trans=[],cur=0,query="";
 
 /* ---------- TEI → pasajes ---------- */
 function textOf(node){
@@ -121,7 +121,7 @@ function search(){
  if(found.length){cur=found[0].i}render();
 }
 async function openWork(id){
- work=catalog.works.find(w=>w.id===id);if(!work){$("status").textContent="Obra no encontrada en el catálogo.";return}
+ work=catalog.works.find(w=>w.id===id)||extraWorks.find(w=>w.id===id);if(!work){$("status").textContent="Obra no encontrada en el catálogo.";return}
  document.title=work.author+" · "+work.title+" · Lector clásico";
  $("index").hidden=true;$("reader").hidden=false;
  $("title").textContent=work.author+" · "+work.title;$("meta").textContent=work.dates+" · "+(work.language==="grc"?"griego antiguo":"latín")+" · "+work.urn;
@@ -159,7 +159,8 @@ function renderIndex(){
  $("index-count").textContent=count+" obras de "+catalog.authors+" autores (siglo II a. C.–siglo II d. C.)";
 }
 (async()=>{
- [catalog,{witnesses}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json())]);
+ if(params.get("embed")==="1")document.documentElement.classList.add("lc-embed");
+ [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261105-v1").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
  $("tab-codex").onclick=()=>setLeft("codex");$("tab-original").onclick=()=>setLeft("original");
  $("search").onsubmit=e=>{e.preventDefault();search()};
  $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};

@@ -1,0 +1,2236 @@
+{
+"schema": "bibliotheca-perseus/1",
+"note": "Obra de la Bibliotheca Graeca Latina → obras TEI de Perseus Digital Library (CC BY-SA 4.0), leídas en tiempo de ejecución.",
+"links": {
+"cicero-officiis": [
+{
+"obra": "phi0474.phi055",
+"title": "De Officiis",
+"translation": true
+}
+],
+"cicero-oratore": [
+{
+"obra": "phi0474.phi037",
+"title": "On Oratory",
+"translation": false
+}
+],
+"cicero-republica": [
+{
+"obra": "phi0474.phi043",
+"title": "De Republica",
+"translation": false
+}
+],
+"caesar-gallico": [
+{
+"obra": "phi0448.phi001",
+"title": "Gallic War",
+"translation": true
+}
+],
+"caesar-civili": [
+{
+"obra": "phi0448.phi002",
+"title": "Civil War",
+"translation": true
+}
+],
+"sallust-catiline": [
+{
+"obra": "phi0631.phi001",
+"title": "Catilinae Coniuratio",
+"translation": true
+}
+],
+"sallust-iugurtha": [
+{
+"obra": "phi0631.phi002",
+"title": "Bellum Iugurthinum",
+"translation": true
+}
+],
+"lucretius": [
+{
+"obra": "phi0550.phi001",
+"title": "De Rerum Natura",
+"translation": true
+}
+],
+"virgil-aeneid": [
+{
+"obra": "phi0690.phi003",
+"title": "Aeneid",
+"translation": true
+}
+],
+"virgil-georgica": [
+{
+"obra": "phi0690.phi002",
+"title": "Georgics",
+"translation": true
+}
+],
+"horace-odes": [
+{
+"obra": "phi0893.phi001",
+"title": "Carmina",
+"translation": true
+}
+],
+"livy": [
+{
+"obra": "phi0914.phi001",
+"title": "Ab urbe condita",
+"translation": true
+}
+],
+"ovid": [
+{
+"obra": "phi0959.phi006",
+"title": "Metamorphoses",
+"translation": true
+}
+],
+"ovid-fasti": [
+{
+"obra": "phi0959.phi007",
+"title": "Fasti",
+"translation": false
+}
+],
+"nepos": [
+{
+"obra": "phi0588.abo001",
+"title": "Miltiades",
+"translation": false
+},
+{
+"obra": "phi0588.abo002",
+"title": "Themistocles",
+"translation": false
+},
+{
+"obra": "phi0588.abo003",
+"title": "Aristides",
+"translation": false
+},
+{
+"obra": "phi0588.abo004",
+"title": "Pausanias",
+"translation": false
+},
+{
+"obra": "phi0588.abo005",
+"title": "Cimon",
+"translation": false
+},
+{
+"obra": "phi0588.abo006",
+"title": "Lysander",
+"translation": false
+},
+{
+"obra": "phi0588.abo007",
+"title": "Alcibiades",
+"translation": false
+},
+{
+"obra": "phi0588.abo008",
+"title": "Thrasybulus",
+"translation": false
+},
+{
+"obra": "phi0588.abo009",
+"title": "Conon",
+"translation": false
+},
+{
+"obra": "phi0588.abo010",
+"title": "Dion",
+"translation": false
+},
+{
+"obra": "phi0588.abo011",
+"title": "Iphicrates",
+"translation": false
+},
+{
+"obra": "phi0588.abo012",
+"title": "Chabrias",
+"translation": false
+},
+{
+"obra": "phi0588.abo013",
+"title": "Timotheus",
+"translation": false
+},
+{
+"obra": "phi0588.abo014",
+"title": "Datames",
+"translation": false
+},
+{
+"obra": "phi0588.abo015",
+"title": "Epaminondas",
+"translation": false
+},
+{
+"obra": "phi0588.abo016",
+"title": "Pelopidas",
+"translation": false
+},
+{
+"obra": "phi0588.abo017",
+"title": "Agesilaus",
+"translation": false
+},
+{
+"obra": "phi0588.abo018",
+"title": "Eumenes",
+"translation": false
+},
+{
+"obra": "phi0588.abo019",
+"title": "Phocion",
+"translation": false
+},
+{
+"obra": "phi0588.abo020",
+"title": "Timoleon",
+"translation": false
+},
+{
+"obra": "phi0588.abo021",
+"title": "De Regibus",
+"translation": false
+},
+{
+"obra": "phi0588.abo022",
+"title": "Hamilcar",
+"translation": false
+},
+{
+"obra": "phi0588.abo023",
+"title": "Hannibal",
+"translation": false
+},
+{
+"obra": "phi0588.abo024",
+"title": "Cato",
+"translation": false
+},
+{
+"obra": "phi0588.abo025",
+"title": "Atticus",
+"translation": false
+}
+],
+"diodorus": [
+{
+"obra": "tlg0060.tlg001",
+"title": "Historical Library",
+"translation": false
+}
+],
+"dionysius": [
+{
+"obra": "tlg0081.tlg001",
+"title": "Antiquitates Romanae",
+"translation": false
+}
+],
+"strabo": [
+{
+"obra": "tlg0099.tlg001",
+"title": "Geography",
+"translation": true
+}
+],
+"seneca-epistulae": [
+{
+"obra": "phi1017.phi015",
+"title": "Epistulae",
+"translation": false
+}
+],
+"lucan": [
+{
+"obra": "phi0917.phi001",
+"title": "Civil War",
+"translation": true
+}
+],
+"pliny": [
+{
+"obra": "phi0978.phi001",
+"title": "Naturalis Historia",
+"translation": true
+}
+],
+"josephus-war": [
+{
+"obra": "tlg0526.tlg004",
+"title": "The Jewish War",
+"translation": true
+}
+],
+"josephus-antiquities": [
+{
+"obra": "tlg0526.tlg001",
+"title": "Jewish Antiquities",
+"translation": true
+}
+],
+"quintilian": [
+{
+"obra": "phi1002.phi001",
+"title": "Institutio Oratoria",
+"translation": true
+}
+],
+"martial": [
+{
+"obra": "phi1294.phi002",
+"title": "Epigrammata",
+"translation": false
+}
+],
+"tacitus-agricola": [
+{
+"obra": "phi1351.phi001",
+"title": "Agricola",
+"translation": true
+}
+],
+"tacitus-germania": [
+{
+"obra": "phi1351.phi002",
+"title": "Germania",
+"translation": true
+}
+],
+"barnabas": [
+{
+"obra": "tlg1216.tlg001",
+"title": "The Epistle of Barnabas",
+"translation": true
+}
+],
+"tertullian": [
+{
+"obra": "stoa0275.stoa009",
+"title": "Apologeticum",
+"translation": false
+}
+],
+"eusebio": [
+{
+"obra": "tlg2018.tlg002",
+"title": "Ecclesiastical History",
+"translation": false
+}
+],
+"columella": [
+{
+"obra": "phi0845.phi002",
+"title": "Res Rustica",
+"translation": true
+}
+],
+"celsus": [
+{
+"obra": "phi0836.phi002",
+"title": "De Medicina",
+"translation": true
+}
+],
+"plutarch-lives": [
+{
+"obra": "tlg0007.tlg001",
+"title": "Theseus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg002",
+"title": "Romulus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg003",
+"title": "Comparison of Theseus and Romulus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg004",
+"title": "Lycurgus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg005",
+"title": "Numa",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg006",
+"title": "Comparison of Lycurgus and Numa",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg007",
+"title": "Solon",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg008",
+"title": "Publicola",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg009",
+"title": "Comparison of Solon and Publicola",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg010",
+"title": "Themistocles",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg011",
+"title": "Camillus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg012",
+"title": "Pericles",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg013",
+"title": "Fabius Maximus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg014",
+"title": "Comparison of Pericles and Fabius Maximus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg015",
+"title": "Alcibiades",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg016",
+"title": "Caius Marcius Coriolanus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg017",
+"title": "Comparison of Alcibiades and Coriolanus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg018",
+"title": "Timoleon",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg019",
+"title": "Aemilius Paulus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg020",
+"title": "Comparison of Timoleon and Aemilius",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg021",
+"title": "Pelopidas",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg022",
+"title": "Marcellus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg023",
+"title": "Comparison of Pelopidas and Marcellus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg024",
+"title": "Aristides",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg025",
+"title": "Marcus Cato",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg026",
+"title": "Comparison of Aristides and Marcus Cato",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg027",
+"title": "Philopoemen",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg028",
+"title": "Titus Flamininus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg029",
+"title": "Comparison of Philopoemen and Titus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg030",
+"title": "Pyrrhus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg031",
+"title": "Caius Marius",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg032",
+"title": "Lysander",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg033",
+"title": "Sulla",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg034",
+"title": "Comparison of Lysander and Sulla",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg035",
+"title": "Cimon",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg036",
+"title": "Lucullus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg037",
+"title": "Comparison of Lucullus and Cimon",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg038",
+"title": "Nicias",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg039",
+"title": "Crassus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg040",
+"title": "Comparison of Nicias and Crassus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg041",
+"title": "Eumenes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg042",
+"title": "Sertorius",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg043",
+"title": "Comparison of Sertorius and Eumenes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg044",
+"title": "Agesilaus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg045",
+"title": "Pompey",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg046",
+"title": "Comparison of Agesilaus and Pompey",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg047",
+"title": "Alexander",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg048",
+"title": "Caesar",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg049",
+"title": "Phocion",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg050",
+"title": "Cato the Younger",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg051",
+"title": "Agis and Cleomenes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg052",
+"title": "Tiberius and Caius Gracchus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg053",
+"title": "Comparison of Agis and Cleomenes and the Gracchi",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg054",
+"title": "Demosthenes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg055",
+"title": "Cicero",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg056",
+"title": "Comparison of Demosthenes and Cicero",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg057",
+"title": "Demetrius",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg058",
+"title": "Antony",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg059",
+"title": "Comparison of Demetrius and Antony",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg060",
+"title": "Dion",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg061",
+"title": "Brutus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg062",
+"title": "Comparison of Dion and Brutus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg063",
+"title": "Aratus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg064",
+"title": "Artaxerxes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg065",
+"title": "Galba",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg066",
+"title": "Otho",
+"translation": true
+}
+],
+"plautus-amphitruo": [
+{
+"obra": "phi0119.phi001",
+"title": "Amphitruo",
+"translation": true
+}
+],
+"plautus-aulularia": [
+{
+"obra": "phi0119.phi003",
+"title": "Aulularia",
+"translation": true
+}
+],
+"terentius-andria": [
+{
+"obra": "phi0134.phi001",
+"title": "Andria",
+"translation": true
+}
+],
+"terentius-heautontimorumenos": [
+{
+"obra": "phi0134.phi002",
+"title": "Heautontimorumenos",
+"translation": true
+}
+],
+"cato-agri-cultura": [
+{
+"obra": "stoa0079.stoa001",
+"title": "De agricultura",
+"translation": false
+}
+],
+"cicero-catilinariae": [
+{
+"obra": "phi0474.phi013",
+"title": "In Catilinam",
+"translation": true
+}
+],
+"catullus-carmina": [
+{
+"obra": "phi0472.phi001",
+"title": "Carmina",
+"translation": true
+}
+],
+"horace-sermones": [
+{
+"obra": "phi0893.phi004",
+"title": "Satires",
+"translation": true
+}
+],
+"horace-ars-poetica": [
+{
+"obra": "phi0893.phi006",
+"title": "Ars Poetica",
+"translation": true
+}
+],
+"ovid-ars-amatoria": [
+{
+"obra": "phi0959.phi004",
+"title": "Ars Amatoria",
+"translation": true
+}
+],
+"seneca-tragoediae": [
+{
+"obra": "phi1017.phi001",
+"title": "Hercules Furens",
+"translation": false
+},
+{
+"obra": "phi1017.phi002",
+"title": "Troades Furens",
+"translation": false
+},
+{
+"obra": "phi1017.phi003",
+"title": "Phoenissae",
+"translation": false
+},
+{
+"obra": "phi1017.phi004",
+"title": "Medea",
+"translation": false
+},
+{
+"obra": "phi1017.phi005",
+"title": "Phaedra",
+"translation": false
+},
+{
+"obra": "phi1017.phi006",
+"title": "Oedipus",
+"translation": false
+},
+{
+"obra": "phi1017.phi007",
+"title": "Agamemnon",
+"translation": false
+},
+{
+"obra": "phi1017.phi008",
+"title": "Thyestes",
+"translation": false
+},
+{
+"obra": "phi1017.phi009",
+"title": "Hercules Oetaeus",
+"translation": false
+},
+{
+"obra": "phi1017.phi010",
+"title": "Octavia",
+"translation": false
+}
+],
+"tacitus-annales": [
+{
+"obra": "phi1351.phi005",
+"title": "Annales",
+"translation": true
+}
+],
+"tacitus-historiae": [
+{
+"obra": "phi1351.phi004",
+"title": "Historiae",
+"translation": true
+}
+],
+"suetonius-caesares": [
+{
+"obra": "phi1348.abo011",
+"title": "Divus Julius",
+"translation": true
+},
+{
+"obra": "phi1348.abo012",
+"title": "Divus Augustus",
+"translation": true
+},
+{
+"obra": "phi1348.abo013",
+"title": "Tiberius",
+"translation": true
+},
+{
+"obra": "phi1348.abo014",
+"title": "Caligula",
+"translation": true
+},
+{
+"obra": "phi1348.abo015",
+"title": "Divus Claudius",
+"translation": true
+},
+{
+"obra": "phi1348.abo016",
+"title": "Nero",
+"translation": true
+},
+{
+"obra": "phi1348.abo017",
+"title": "Galba",
+"translation": true
+},
+{
+"obra": "phi1348.abo018",
+"title": "Otho",
+"translation": true
+},
+{
+"obra": "phi1348.abo019",
+"title": "Vitellius",
+"translation": true
+},
+{
+"obra": "phi1348.abo020",
+"title": "Divus Vespasianus",
+"translation": true
+},
+{
+"obra": "phi1348.abo021",
+"title": "Divus Titus",
+"translation": true
+},
+{
+"obra": "phi1348.abo022",
+"title": "Domitianus",
+"translation": true
+}
+],
+"juvenal-saturae": [
+{
+"obra": "phi1276.phi001",
+"title": "Saturae",
+"translation": false
+}
+],
+"apuleius-metamorphoses": [
+{
+"obra": "phi1212.phi002",
+"title": "Metamorphoses",
+"translation": true
+}
+],
+"tibullus-elegiae": [
+{
+"obra": "phi0660.phi001",
+"title": "Elegiae",
+"translation": false
+}
+],
+"propertius-elegiae": [
+{
+"obra": "phi0620.phi001",
+"title": "Elegiae",
+"translation": false
+}
+],
+"statius-thebais": [
+{
+"obra": "phi1020.phi001",
+"title": "Thebais",
+"translation": false
+}
+],
+"pliny-younger-epistulae": [
+{
+"obra": "phi1318.phi001",
+"title": "Epistulae",
+"translation": false
+}
+],
+"aulus-gellius-noctes": [
+{
+"obra": "phi1254.phi001",
+"title": "Noctes Atticae",
+"translation": true
+}
+],
+"valerius-maximus-facta": [
+{
+"obra": "phi1038.phi001",
+"title": "Facta et Dicta Memorabilia",
+"translation": false
+}
+],
+"silius-punica": [
+{
+"obra": "phi1345.phi001",
+"title": "Punica",
+"translation": false
+}
+],
+"polybius-historiae": [
+{
+"obra": "tlg0543.tlg001",
+"title": "Histories",
+"translation": true
+}
+],
+"pseudo-apollodorus-bibliotheca": [
+{
+"obra": "tlg0548.tlg001",
+"title": "Library",
+"translation": true
+},
+{
+"obra": "tlg0548.tlg002",
+"title": "Epitome",
+"translation": true
+}
+],
+"plutarch-moralia": [
+{
+"obra": "tlg0007.tlg067",
+"title": "De liberis educandis",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg068",
+"title": "Quomodo adolescens poetas audire debeat",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg069",
+"title": "De recta ratione audiendi",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg070",
+"title": "Quomodo adulator ab amico internoscatur",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg071",
+"title": "Quomodo quis suos in virtute sentiat profectus",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg072",
+"title": "De capienda ex inimicis utilitate",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg073",
+"title": "De amicorum multitudine",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg074",
+"title": "De fortuna",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg075",
+"title": "De virtute et vitio",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg076",
+"title": "Consolatio ad Apollonium",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg077",
+"title": "De tuenda sanitate praecepta",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg078",
+"title": "Conjugalia Praecepta",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg079",
+"title": "Septem sapientium convivium",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg080",
+"title": "De Superstitione",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg081",
+"title": "Regum et imperatorum apophthegmata",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg082",
+"title": "Apophthegmata Laconica",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg082a",
+"title": "Instituta Laconia",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg082b",
+"title": "Lacaenarum Apophthegmata",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg083",
+"title": "Mulierum virtutes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg084a",
+"title": "Quaestiones Romanae",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg084b",
+"title": "Quaestiones Graecae",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg085",
+"title": "Parallela minora",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg086",
+"title": "De fortuna Romanorum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg087",
+"title": "De Alexandri magni fortuna aut virtute",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg088",
+"title": "De gloria Atheniensium",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg089",
+"title": "De Iside et Osiride",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg090",
+"title": "De E apud Delphos",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg091",
+"title": "De Pythiae oraculis",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg092",
+"title": "De Defectu Oraculorum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg093",
+"title": "An Virtus Doceri Possit",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg094",
+"title": "De Virtute Morali",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg095",
+"title": "De cohibenda ira",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg096",
+"title": "De Tranquillitate Animi",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg097",
+"title": "De fraterno amore",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg098",
+"title": "De Amore Prolis",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg099",
+"title": "An vitiositas ad infelicitatem sufficia",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg100",
+"title": "Animine an corporis affectiones sint peiores",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg101",
+"title": "De Garrulitate",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg102",
+"title": "De curiositate",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg103",
+"title": "De Cupiditate Divitiarum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg104",
+"title": "De Vitioso Pudore",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg105",
+"title": "De Invidia et Odio",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg106",
+"title": "De Se Ipsum Citra Invidiam Laudando",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg107",
+"title": "De Sera Numinis Vindicta",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg108",
+"title": "De Fato",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg109",
+"title": "De Genio Socratis",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg110",
+"title": "De exilio",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg111",
+"title": "Consolatio Ad Uxorem",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg112",
+"title": "Quaestiones Convivales",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg113",
+"title": "Amatorius",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg114",
+"title": "Amatoriae Narrationes",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg115",
+"title": "Maxime Cum Principibus Viris Philosopho Esse Disserendum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg116",
+"title": "Ad principem ineruditum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg117",
+"title": "An seni respublica gerenda sit",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg118",
+"title": "Praecepta gerendae reipublicae",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg119",
+"title": "De unius in republica dominatione, populari statu, et paucorum imperio",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg120",
+"title": "De vitando aere alieno",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg121",
+"title": "Vitae decem oratorum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg122",
+"title": "Comparationis Aristophanis et Menandri compendium",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg123",
+"title": "De Heroditi malignate",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg125",
+"title": "Quaestiones Naturales",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg126",
+"title": "De Facie Quae in orbe Lunae Apparet",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg127",
+"title": "De primo frigido",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg128",
+"title": "Aquane an ignis sit utilior",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg129",
+"title": "De sollertia animalium",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg130",
+"title": "Bruta animalia ratione uti",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg131",
+"title": "De esu carnium I",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg132",
+"title": "De esu carnium II",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg133",
+"title": "Platonicae quaestiones",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg134",
+"title": "De animae procreatione in Timaeo",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg135",
+"title": "Epitome libri de animae procreatione in Timaeo",
+"translation": false
+},
+{
+"obra": "tlg0007.tlg136",
+"title": "De Stoicorum repugnantiis",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg137",
+"title": "Compendium argumenti Stoicos absurdiora poetis dicere",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg138",
+"title": "De communibus notitiis adversus Stoicos",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg139",
+"title": "Non Posse Suaviter Vivi Secundum Epicurum",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg140",
+"title": "Adversus Coloten",
+"translation": true
+},
+{
+"obra": "tlg0007.tlg141",
+"title": "An Recte Dictum Sit Latenter Esse Vivendum",
+"translation": true
+}
+],
+"lucian-dialogi-mortuorum": [
+{
+"obra": "tlg0062.tlg066",
+"title": "Dialogi mortuorum",
+"translation": true
+}
+],
+"lucian-verae-historiae": [
+{
+"obra": "tlg0062.tlg012",
+"title": "Verae historiae",
+"translation": true
+}
+],
+"pausanias-periegesis": [
+{
+"obra": "tlg0525.tlg001",
+"title": "Description of Greece",
+"translation": true
+}
+],
+"appian-romaika": [
+{
+"obra": "tlg0551.tlg002",
+"title": "Kings",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg003",
+"title": "Italy",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg004",
+"title": "Samnite History",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg005",
+"title": "Gallic History",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg006",
+"title": "Sicily and the Other Islands",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg007",
+"title": "Wars in Spain",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg008",
+"title": "Hannibalic War",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg009",
+"title": "Punic Wars",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg010",
+"title": "Numidian Affairs",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg011",
+"title": "Macedonian Affairs",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg012",
+"title": "Illyrian Wars",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg013",
+"title": "Syrian Wars",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg014",
+"title": "Mithridatic Wars",
+"translation": true
+},
+{
+"obra": "tlg0551.tlg017",
+"title": "Civil Wars",
+"translation": true
+}
+],
+"marcus-aurelius-meditations": [
+{
+"obra": "tlg0562.tlg001",
+"title": "Ad Se Ipsum",
+"translation": false
+}
+],
+"homer-iliad": [
+{
+"obra": "tlg0012.tlg001",
+"title": "Iliad",
+"translation": true
+}
+],
+"homer-odyssey": [
+{
+"obra": "tlg0012.tlg002",
+"title": "Odyssey",
+"translation": true
+}
+],
+"hesiod-theogony": [
+{
+"obra": "tlg0020.tlg001",
+"title": "Theogony",
+"translation": true
+}
+],
+"hesiod-works-days": [
+{
+"obra": "tlg0020.tlg002",
+"title": "Works and Days",
+"translation": true
+}
+],
+"aeschylus-oresteia": [
+{
+"obra": "tlg0085.tlg005",
+"title": "Agamemnon",
+"translation": true
+},
+{
+"obra": "tlg0085.tlg006",
+"title": "Libation Bearers",
+"translation": true
+},
+{
+"obra": "tlg0085.tlg007",
+"title": "Eumenides",
+"translation": true
+}
+],
+"sophocles-oedipus": [
+{
+"obra": "tlg0011.tlg004",
+"title": "Oedipus Tyrannus",
+"translation": true
+}
+],
+"euripides-medea": [
+{
+"obra": "tlg0006.tlg003",
+"title": "Medea",
+"translation": true
+}
+],
+"aristophanes-clouds": [
+{
+"obra": "tlg0019.tlg003",
+"title": "Clouds",
+"translation": true
+}
+],
+"herodotus-historiae": [
+{
+"obra": "tlg0016.tlg001",
+"title": "Histories",
+"translation": true
+}
+],
+"thucydides-war": [
+{
+"obra": "tlg0003.tlg001",
+"title": "History of the Peloponnesian War",
+"translation": true
+}
+],
+"xenophon-anabasis": [
+{
+"obra": "tlg0032.tlg006",
+"title": "Anabasis",
+"translation": true
+}
+],
+"plato-republic": [
+{
+"obra": "tlg0059.tlg030",
+"title": "Republic",
+"translation": true
+}
+],
+"plato-apology": [
+{
+"obra": "tlg0059.tlg002",
+"title": "Apology",
+"translation": true
+}
+],
+"aristotle-poetics": [
+{
+"obra": "tlg0086.tlg034",
+"title": "Poetics",
+"translation": true
+}
+],
+"aristotle-politics": [
+{
+"obra": "tlg0086.tlg035",
+"title": "Politics",
+"translation": true
+}
+],
+"hippocrates-aphorisms": [
+{
+"obra": "tlg0627.tlg012",
+"title": "Aphorismi",
+"translation": true
+}
+],
+"epictetus-discourses": [
+{
+"obra": "tlg0557.tlg001",
+"title": "Discourses",
+"translation": true
+}
+],
+"arrian-anabasis-alexandri": [
+{
+"obra": "tlg0074.tlg001",
+"title": "Ἀλεξάνδρου Ἀνάβασις",
+"translation": false
+}
+],
+"cassius-dio-historia": [
+{
+"obra": "tlg0385.tlg001",
+"title": "Historia Romana",
+"translation": false
+}
+],
+"athenaeus-deipnosophistae": [
+{
+"obra": "tlg0008.tlg001",
+"title": "Deipnosophistae",
+"translation": true
+}
+],
+"aeschylus-persae": [
+{
+"obra": "tlg0085.tlg002",
+"title": "Persians",
+"translation": true
+}
+],
+"aeschylus-seven-thebes": [
+{
+"obra": "tlg0085.tlg004",
+"title": "Seven Against Thebes",
+"translation": true
+}
+],
+"aeschylus-suppliants": [
+{
+"obra": "tlg0085.tlg001",
+"title": "Supplices",
+"translation": true
+}
+],
+"aeschylus-prometheus": [
+{
+"obra": "tlg0085.tlg003",
+"title": "Prometheus Bound",
+"translation": true
+}
+],
+"sophocles-antigone": [
+{
+"obra": "tlg0011.tlg002",
+"title": "Antigone",
+"translation": true
+}
+],
+"sophocles-ajax": [
+{
+"obra": "tlg0011.tlg003",
+"title": "Ajax",
+"translation": true
+}
+],
+"sophocles-electra": [
+{
+"obra": "tlg0011.tlg005",
+"title": "Electra",
+"translation": true
+}
+],
+"sophocles-philoctetes": [
+{
+"obra": "tlg0011.tlg006",
+"title": "Philoctetes",
+"translation": true
+}
+],
+"sophocles-oedipus-colonus": [
+{
+"obra": "tlg0011.tlg007",
+"title": "Oedipus at Colonus",
+"translation": true
+}
+],
+"sophocles-trachiniae": [
+{
+"obra": "tlg0011.tlg001",
+"title": "Trachiniae",
+"translation": true
+}
+],
+"euripides-bacchae": [
+{
+"obra": "tlg0006.tlg017",
+"title": "Bacchae",
+"translation": true
+}
+],
+"euripides-hippolytus": [
+{
+"obra": "tlg0006.tlg005",
+"title": "Hippolytus",
+"translation": true
+}
+],
+"euripides-alcestis": [
+{
+"obra": "tlg0006.tlg002",
+"title": "Alcestis",
+"translation": true
+}
+],
+"euripides-electra": [
+{
+"obra": "tlg0006.tlg012",
+"title": "Electra",
+"translation": true
+}
+],
+"euripides-troades": [
+{
+"obra": "tlg0006.tlg011",
+"title": "The Trojan Women",
+"translation": true
+}
+],
+"euripides-hecuba": [
+{
+"obra": "tlg0006.tlg007",
+"title": "Hecuba",
+"translation": true
+}
+],
+"euripides-iphigenia-aulid": [
+{
+"obra": "tlg0006.tlg018",
+"title": "Iphigenia in Aulis",
+"translation": true
+}
+],
+"aristophanes-aves": [
+{
+"obra": "tlg0019.tlg006",
+"title": "Birds",
+"translation": true
+}
+],
+"aristophanes-ranae": [
+{
+"obra": "tlg0019.tlg009",
+"title": "Frogs",
+"translation": false
+}
+],
+"aristophanes-lysistrata": [
+{
+"obra": "tlg0019.tlg007",
+"title": "Lysistrata",
+"translation": false
+}
+],
+"aristophanes-vespae": [
+{
+"obra": "tlg0019.tlg004",
+"title": "Wasps",
+"translation": false
+}
+],
+"aristophanes-pax": [
+{
+"obra": "tlg0019.tlg005",
+"title": "Peace",
+"translation": false
+}
+],
+"aristophanes-acharnenses": [
+{
+"obra": "tlg0019.tlg001",
+"title": "Acharnians",
+"translation": false
+}
+],
+"plato-symposium": [
+{
+"obra": "tlg0059.tlg011",
+"title": "Symposium",
+"translation": true
+}
+],
+"plato-phaedo": [
+{
+"obra": "tlg0059.tlg004",
+"title": "Phaedo",
+"translation": true
+}
+],
+"plato-gorgias": [
+{
+"obra": "tlg0059.tlg023",
+"title": "Gorgias",
+"translation": true
+}
+],
+"plato-timaeus": [
+{
+"obra": "tlg0059.tlg031",
+"title": "Timaeus",
+"translation": true
+}
+],
+"plato-meno": [
+{
+"obra": "tlg0059.tlg024",
+"title": "Meno",
+"translation": true
+}
+],
+"plato-phaedrus": [
+{
+"obra": "tlg0059.tlg012",
+"title": "Phaedrus",
+"translation": true
+}
+],
+"plato-laws": [
+{
+"obra": "tlg0059.tlg034",
+"title": "Laws",
+"translation": true
+}
+],
+"plato-crito": [
+{
+"obra": "tlg0059.tlg003",
+"title": "Crito",
+"translation": true
+}
+],
+"aristotle-nicomachean-ethics": [
+{
+"obra": "tlg0086.tlg010",
+"title": "Nicomachean Ethics",
+"translation": true
+}
+],
+"aristotle-metaphysics": [
+{
+"obra": "tlg0086.tlg025",
+"title": "Metaphysics",
+"translation": true
+}
+],
+"aristotle-rhetoric": [
+{
+"obra": "tlg0086.tlg038",
+"title": "Rhetoric",
+"translation": true
+}
+],
+"xenophon-memorabilia": [
+{
+"obra": "tlg0032.tlg002",
+"title": "Memorabilia",
+"translation": true
+}
+],
+"xenophon-hellenica": [
+{
+"obra": "tlg0032.tlg001",
+"title": "Hellenica",
+"translation": true
+}
+],
+"demosthenes-de-corona": [
+{
+"obra": "tlg0014.tlg018",
+"title": "On the Crown",
+"translation": true
+}
+],
+"demosthenes-philippicae": [
+{
+"obra": "tlg0014.tlg004",
+"title": "First Philippic",
+"translation": true
+},
+{
+"obra": "tlg0014.tlg006",
+"title": "Second Philippic",
+"translation": true
+},
+{
+"obra": "tlg0014.tlg009",
+"title": "Third Philippic",
+"translation": true
+},
+{
+"obra": "tlg0014.tlg010",
+"title": "Fourth Philippic",
+"translation": true
+}
+],
+"pindar-olympian": [
+{
+"obra": "tlg0033.tlg001",
+"title": "Olympian",
+"translation": true
+}
+],
+"pindar-pythian": [
+{
+"obra": "tlg0033.tlg002",
+"title": "Pythian",
+"translation": true
+}
+],
+"homeric-hymns": [
+{
+"obra": "tlg0013.tlg001",
+"title": "Hymn 1 to Dionysus",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg002",
+"title": "Hymn 2 to Demeter",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg003",
+"title": "Hymn 3 to Delian and Pythian Apollo",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg004",
+"title": "Hymn 4 to Hermes",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg005",
+"title": "Hymn 5 to Aphrodite",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg006",
+"title": "Hymn 6 to Aphrodite",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg007",
+"title": "Hymn 7 to Dionysus",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg008",
+"title": "Hymn 8 to Ares",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg009",
+"title": "Hymn 9 to Artemis",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg010",
+"title": "Hymn 10 to Aphrodite",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg011",
+"title": "Hymn 11 To Athena",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg012",
+"title": "Hymn 12 to Hera",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg013",
+"title": "Hymn 13 to Demeter",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg014",
+"title": "Hymn 14 to the Mother of the Gods",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg015",
+"title": "Hymn 15 To Heracles",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg016",
+"title": "Hymn 16 To Asclepius",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg017",
+"title": "Hymn 17 To the Dioscuri",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg018",
+"title": "Hymn 18 to Hermes",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg019",
+"title": "Hymn 19 to Pan",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg020",
+"title": "Hymn 20 To Hephaestus",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg021",
+"title": "Hymn 21 To Apollo",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg022",
+"title": "Hymn 22 To Poseidon",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg023",
+"title": "Hymn 23 to Zeus",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg024",
+"title": "Hymn 24 To Hestia",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg025",
+"title": "Hymn 25 To the Muses and Apollo",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg026",
+"title": "Hymn 26 To Dionysus",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg027",
+"title": "Hymn 27 to Artemis",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg028",
+"title": "Hymn 28 to Athena",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg029",
+"title": "Hymn 29 to Hestia",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg030",
+"title": "Hymn 30 to Earth",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg031",
+"title": "Hymn 31 to Helios",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg032",
+"title": "Hymn 32 To Selene",
+"translation": true
+},
+{
+"obra": "tlg0013.tlg033",
+"title": "Hymn 33 To the Dioscuri",
+"translation": true
+}
+],
+"theophrastus-characters": [
+{
+"obra": "tlg0093.tlg009",
+"title": "Characters",
+"translation": false
+}
+],
+"diogenes-laertius-vitae": [
+{
+"obra": "tlg0004.tlg001",
+"title": "Vitae philosophorum",
+"translation": true
+}
+],
+"cicero-pro-archia": [
+{
+"obra": "phi0474.phi016",
+"title": "Pro Archia Poeta",
+"translation": true
+}
+],
+"cicero-de-finibus": [
+{
+"obra": "phi0474.phi048",
+"title": "de Finibus Bonorum et Malorum",
+"translation": false
+}
+],
+"cicero-tusculanae": [
+{
+"obra": "phi0474.phi049",
+"title": "Tusculanae Disputationes",
+"translation": false
+}
+],
+"cicero-de-natura-deorum": [
+{
+"obra": "phi0474.phi050",
+"title": "De Natura Deorum",
+"translation": false
+}
+],
+"cicero-de-amicitia": [
+{
+"obra": "phi0474.phi052",
+"title": "De Amicitia",
+"translation": true
+}
+],
+"cicero-de-senectute": [
+{
+"obra": "phi0474.phi051",
+"title": "De Senectute",
+"translation": true
+}
+],
+"cicero-de-divinatione": [
+{
+"obra": "phi0474.phi053",
+"title": "De Divinatione",
+"translation": true
+}
+],
+"cicero-brutus": [
+{
+"obra": "phi0474.phi039",
+"title": "Brutus",
+"translation": false
+}
+],
+"cicero-philippicae": [
+{
+"obra": "phi0474.phi035",
+"title": "Philippicae",
+"translation": true
+}
+],
+"seneca-de-clementia": [
+{
+"obra": "phi1017.phi014",
+"title": "De Clementia",
+"translation": false
+}
+],
+"horace-epodi": [
+{
+"obra": "phi0893.phi003",
+"title": "Epodi",
+"translation": false
+}
+],
+"horace-epistulae": [
+{
+"obra": "phi0893.phi005",
+"title": "Epistulae",
+"translation": false
+}
+],
+"ovid-tristia": [
+{
+"obra": "phi0959.phi008",
+"title": "Tristia",
+"translation": false
+}
+],
+"ovid-heroides": [
+{
+"obra": "phi0959.phi002",
+"title": "Epistulae",
+"translation": true
+}
+],
+"ovid-remedia-amoris": [
+{
+"obra": "phi0959.phi005",
+"title": "Remedia amoris",
+"translation": true
+}
+],
+"ovid-ex-ponto": [
+{
+"obra": "phi0959.phi009",
+"title": "Ex Ponto",
+"translation": false
+}
+],
+"tacitus-dialogus": [
+{
+"obra": "phi1351.phi003",
+"title": "Dialogus",
+"translation": true
+}
+],
+"apuleius-apologia": [
+{
+"obra": "phi1212.phi001",
+"title": "Apologia",
+"translation": false
+}
+],
+"boethius-consolatio": [
+{
+"obra": "stoa0058.stoa001",
+"title": "De consolatione philosophiae",
+"translation": true
+}
+],
+"epictetus-enchiridion": [
+{
+"obra": "tlg0557.tlg002",
+"title": "The Handbook",
+"translation": true
+}
+],
+"aratus-phaenomena": [
+{
+"obra": "tlg0653.tlg001",
+"title": "Phaenomena",
+"translation": false
+}
+],
+"aeneas-tacticus-poliorketika": [
+{
+"obra": "tlg0058.tlg001",
+"title": "Poliorcetica",
+"translation": false
+}
+],
+"euclid-elementa": [
+{
+"obra": "tlg1799.tlg001",
+"title": "Elementa",
+"translation": true
+}
+]
+}
+}
