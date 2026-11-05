@@ -42,7 +42,7 @@ function urls(c){
  if(c.image_url)result.push(c.image_url);
  return [...new Set(result.filter(Boolean))];
 }
-function loadPage(which,number){
+function loadPage(which,number,origin="user"){
  const s=state[which];
  number=Math.max(1,Math.min(s.pages.length||1,Math.round(Number(number)||1)));
  s.number=number;
@@ -64,11 +64,14 @@ function loadPage(which,number){
  if(candidates.length){image.src=candidates[0];status.textContent="Abriendo imagen "+number+"…";}
  else{image.hidden=true;status.textContent="Sin reproducción identificada.";}
  const link=$(which+"-direct");link.href=config[which].record;
+ // Aviso para la sincronización y el resaltado (assets/barbaro-sync.mjs).
+ document.dispatchEvent(new CustomEvent("barbaro:page",{detail:{which,number,origin}}));
 }
 function step(which,amount){loadPage(which,state[which].number+amount);}
 function setZoom(which,value){
  let s=state[which];s.zoom=Math.max(50,Math.min(250,Math.round(Number(value)||100)));
- $(which+"-image").style.width=s.zoom+"%";
+ const img=$(which+"-image"),box=img.parentElement?.classList.contains("hl-wrap")?img.parentElement:null;
+ if(box){box.style.width=s.zoom+"%";img.style.width="100%"}else img.style.width=s.zoom+"%";
  $(which+"-zoom").value=s.zoom;
  $(which+"-zoom-output").textContent=s.zoom+"%";
 }
@@ -82,4 +85,6 @@ function init(which){
  fetchPages(which);
 }
 init("it");init("la");
-$("parallel-home").addEventListener("click",()=>{loadPage("it",1);loadPage("la",1);});
+$("parallel-home").addEventListener("click",()=>{loadPage("it",1,"home");loadPage("la",1,"home");});
+window.BarbaroParallel={loadPage,state,setZoom};
+document.dispatchEvent(new CustomEvent("barbaro:ready"));
