@@ -1,5 +1,5 @@
 /* Prominent yet restrained documentary image in the Wikipedia feature. */
-#featured-documentary-visual{margin:14px 0 16px;max-width:390px;min-width:0}
+#featured-documentary-visual{margin:0 0 4px;width:100%;max-width:520px;min-width:0;align-self:flex-start}
 #featured-documentary-visual[hidden]{display:none!important}
 #featured-documentary-visual .featured-documentary-photo{
  display:block!important;width:100%;margin:0!important;
@@ -7,7 +7,7 @@
  overflow:hidden;text-decoration:none;line-height:0;padding:0!important;
 }
 #featured-documentary-visual img{
- display:block;width:100%;height:clamp(145px,16vw,230px);
+ display:block;width:100%;height:clamp(190px,19vw,300px);
  object-fit:contain;object-position:center;background:#1d2023;
  filter:none;transition:filter .2s ease;
 }
@@ -37,3 +37,7 @@ html[data-theme=light] #featured-documentary-visual .featured-documentary-credit
  #featured-documentary-visual{max-width:280px}
  #featured-documentary-visual img{height:180px}
 }
+
+/* Diagramas químicos (PubChem, modelos de Bohr): fondo claro para que se lean las líneas. */
+#featured-documentary-visual.is-diagram img{background:#f4f2ec;padding:10px;box-sizing:border-box}
+html[data-theme=light] #featured-documentary-visual.is-diagram img{background:#fff}

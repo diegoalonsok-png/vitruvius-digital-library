@@ -78,6 +78,13 @@ async function render(found,q,token){
  const pcPage=cid?"https://pubchem.ncbi.nlm.nih.gov/compound/"+cid:"https://pubchem.ncbi.nlm.nih.gov/#query="+encodeURIComponent(pubchemName);
  if(pcImg)figs.prepend(figure(pcImg,"Estructura 2D · PubChem (NCBI)",pcPage));
  card.append(figs);
+ // Imagen principal para el espacio superior del panel destacado.
+ {const enName=(e?.labels?.en?.value||"").replace(/^./,c=>c.toUpperCase()),z=Number(claim(e,"P1086")?.amount);
+  const lead=element&&z&&enName?{preview:commons("Electron shell "+String(z).padStart(3,"0")+" "+enName+".svg")+"?width=600",page:fileLink("Electron shell "+String(z).padStart(3,"0")+" "+enName+".svg"),caption:name+" · capas electrónicas (modelo de Bohr)",credit:"Wikimedia Commons · ficha y licencia"}:
+   claims(e,"P8224")[0]?{preview:commons(claims(e,"P8224")[0])+"?width=600",page:fileLink(claims(e,"P8224")[0]),caption:name+" · modelo molecular",credit:"Wikimedia Commons · ficha y licencia"}:
+   pcImg?{preview:pcImg,page:pcPage,caption:name+" · estructura 2D",credit:"PubChem (NCBI)"}:
+   claims(e,"P117")[0]?{preview:commons(claims(e,"P117")[0])+"?width=600",page:fileLink(claims(e,"P117")[0]),caption:name+" · fórmula estructural",credit:"Wikimedia Commons · ficha y licencia"}:null;
+  if(lead&&token===seq)window.dispatchEvent(new CustomEvent("vitruvia:hero-visual",{detail:{query:q,weight:5000,item:{...lead,alt:lead.caption,diagram:true,group:"",kind:"",score:0}}}));}
  const cat=claim(e,"P373");
  if(cat){const strip=el("div","vs-figs");strip.setAttribute("aria-label","Imágenes de la categoría de Commons");card.append(el("p","vs-kicker","Más imágenes · Commons, categoría «"+cat+"»"),strip);
   j("https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({action:"query",format:"json",origin:"*",generator:"categorymembers",gcmtitle:"Category:"+cat,gcmtype:"file",gcmlimit:"40",prop:"imageinfo",iiprop:"url|mime",iiurlwidth:"300"}),9000).then(d=>{
