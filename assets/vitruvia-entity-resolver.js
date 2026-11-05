@@ -149,6 +149,15 @@ async function authorityCandidates(q,lang){
 async function resolve(query,preferredLang="es"){
  const q=clean(query);
  if(!q||q.length>130)return null;
+ // Common, strongly identifiable shorthand for the 1968 film, not a generic year search.
+ // Keep date-only queries ambiguous; 2001 film specifically refers to the title in this catalogue.
+ const shorthand=norm(q);
+ if(/^(?:2001(?: a)? (?:film|movie|pelicula)|2001 (?:odisea|odyssey)(?: (?:en|del|de|in|the|el|espacio|space|a))*|2001 a (?:pace|space) odyssey)$/.test(shorthand)){
+  try{
+   const film=await lookupTitle("2001: A Space Odyssey","en");
+   if(film)return await localize({...film,spellingMatch:norm(q)===norm("2001: A Space Odyssey")?null:q},"es");
+  }catch{}
+ }
  const lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
  // Wikidata has aliases such as "Virgen María" for the historical figure.
  // Direct page-title matching on another language can instead return a DJ.
