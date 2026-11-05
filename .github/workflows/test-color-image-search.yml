@@ -1,0 +1,19 @@
+name: Regresión de imágenes a color
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-discovery.js'
+      - 'scripts/test-color-image-search.mjs'
+      - '.github/workflows/test-color-image-search.yml'
+  workflow_dispatch:
+jobs:
+  color:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-discovery.js
+      - run: node scripts/test-color-image-search.mjs
+      - run: node scripts/test-musical-group-images.mjs
