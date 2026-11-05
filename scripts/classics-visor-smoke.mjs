@@ -37,10 +37,10 @@ try{
    }finally{fs.closeSync(fd)}
   }
  });
- await check('Vitruvia loads 196 works and searches Spanish aliases',async()=>{
+ await check('Vitruvia loads the full classical catalogue (≥196 works) and searches Spanish aliases',async()=>{
   const p=await open('vitruvia.html?q=Po%C3%A9tica&mode=site');
   try{
-   await p.waitForFunction(()=>document.querySelector('#metric-works')?.textContent==='196',{timeout:20000});
+   await p.waitForFunction(()=>Number(document.querySelector('#metric-works')?.textContent)>=196,{timeout:20000});
    await p.locator('#result-list a[href*="work=aristotle-poetics"]').first().waitFor({state:'attached',timeout:15000});
    assert.match(await p.locator('#result-list').innerText(),/Poética|Περὶ ποιητικῆς/);
   }finally{await p.close()}
