@@ -83,13 +83,21 @@ function drawingsFor(query,person,works=[]){
   const t=normalize(item.title),name=tokens(item.title);
   const hasKind=FILE_PLAN.test(t)||FILE_SECTION.test(t);
   if(!hasKind)return false;
-  if(!person)return true; // generic architectural query: title is still independently labeled
+  if(!person){
+   const q=normalize(query);
+   const aliases={'gotica':'gothic','gotico':'gothic','romana':'roman','romano':'roman','griega':'greek','griego':'greek',
+    'renacentista':'renaissance','barroca':'baroque','barroco':'baroque','moderna':'modern','contemporanea':'contemporary'};
+   const style=Object.keys(aliases).find(w=>q.split(' ').includes(w));
+   return !style||t.includes(style)||t.includes(aliases[style]);
+  }
   return (surname.length>3&&(name.includes(surname)||name.some(n=>n.startsWith(surname)))) ||
    (fullTokens.length>=2&&fullTokens.every(w=>name.includes(w))) ||
-   workTerms.some(arr=>arr.length>=2&&arr.every(w=>name.includes(w)));
+   workTerms.some(arr=>(arr.length>=2&&arr.every(w=>name.includes(w)))||(arr.length===1&&arr[0].length>=9&&name.includes(arr[0])));
  };
+ const generic=/^(arquitectura|arquitecturas|arquitectos|arquitectas|architecture|architects)$/.test(normalize(query));
  const queries=person?
   ['"'+subject+'" plan','"'+subject+'" architectural section',...works.slice(0,2).map(w=>'"'+w+'" floor plan')]:
+  generic?['architecture floor plan','architectural section']:
   [query+' architectural plan',query+' architectural section'];
  return Promise.allSettled(queries.map(commonsSearch)).then(results=>{
   const combined=results.flatMap(r=>r.status==='fulfilled'&&Array.isArray(r.value)?r.value:[]);
@@ -147,6 +155,12 @@ function render(panel,query,rows,stillCurrent){
    'Documentary examples of plans and sections across different styles and periods. They are not necessarily by the same architect.',
    'Exemples documentaires de plans et de coupes de différentes époques et styles, sans attribution à un auteur unique.');
  area.append(el('p','context-note',summary));
+ if(subject.kind==='person'&&subject.identity){
+  const extract=short(subject.identity.fullExtract||subject.identity.excerpt||subject.identity.entityDescription||'');
+  if(extract)area.append(el('p','context-note',extract.slice(0,500)+(extract.length>500?'…':'')));
+  if(/^https:\/\//.test(subject.identity.link||''))area.append(link(
+    localized('Biografía y fuentes de la ficha ↗','Biography and sources ↗','Biographie et sources ↗'),subject.identity.link));
+ }
  const facts=el('div','architecture-facts');area.append(facts);
  const gallery=el('div','architecture-gallery');area.append(gallery);
  const status=el('p','context-note',localized('Buscando planos y cortes documentados…','Searching documented plans and sections…','Recherche de plans et coupes documentés…'));gallery.append(status);
@@ -157,6 +171,7 @@ function render(panel,query,rows,stillCurrent){
    const d=await wikidata(apiId);
    if(!stillCurrent()||!area.isConnected)return;
    works=displayFacts(facts,d);
+   facts.append(link(localized('Consultar metadatos en Wikidata ↗','View metadata in Wikidata ↗','Consulter les métadonnées Wikidata ↗'),'https://www.wikidata.org/wiki/'+apiId));
   }
   const results=await drawingsFor(subject.subject,subject.kind==='person'?subject.subject:null,works);
   if(!stillCurrent()||!area.isConnected)return;
