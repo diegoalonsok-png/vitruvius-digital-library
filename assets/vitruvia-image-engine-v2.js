@@ -142,7 +142,7 @@ function collectedImages(pages,topic){
   const caption=(objectName&&objectName.length<170&&!/QS:|\{\{/.test(objectName)?objectName:name)
    .replace(/\.(jpe?g|png|webp|tiff?|svg)$/i,"").replace(/^\d{3,}\s*[-–]\s*/,"").replace(/\s*[-–]\s*(?:foto|photo|photograph)\b.*$/i,"");
   items.push({name,caption,preview:info.thumburl,original:safeLink(info.url)||info.thumburl,page:info.descriptionurl,license,
-   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group});
+   credit:["Wikimedia Commons",creator,date,license].filter(Boolean).join(" · "),year,score:rank.score,group:rank.group,verifiedIdentity:!!page.fromEntityImage});
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
 }
@@ -298,6 +298,21 @@ async function searchImages(query){
    if(id!==active)return;if(again)identity=again}
  }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
+ // A one-word stage name can also denote religious figures or unrelated art.
+ // Search the verified person's profession, never an ambiguous bare keyword.
+ const occupation=fold(identity?.authorityDescription||identity?.description||"");
+ const creatorRole=/\b(singer|cantante|musician|musico|composer|compositor|rapper|band|banda|actor|actress|actriz|director de cine|filmmaker|cineasta|writer|escritor|architect|arquitecto|painter|pintor)\b/.test(occupation);
+ if(identity?.kind==="person"&&creatorRole){
+  const base=String(identity?.commonsSearchName||identity?.originalCanonical||identity?.canonical||"").trim();
+  const role=/\b(singer|cantante|musician|musico|composer|compositor|rapper|band|banda)\b/.test(occupation)?"singer musician":
+   /\b(actor|actress|actriz|director de cine|filmmaker|cineasta)\b/.test(occupation)?"actor film director":
+   /\b(writer|escritor)\b/.test(occupation)?"writer author":/\b(painter|pintor)\b/.test(occupation)?"artist":"portrait";
+  if(tokens(base).length===1){
+   topic.queries=distinct([base+" "+role,base+" portrait photograph",base+" performing",base+" photographed"]).slice(0,4);
+   topic.aliases=distinct([base,identity?.originalCanonical,identity?.canonical]);
+  }
+ }
+
  const role=fold(identity?.authorityDescription||identity?.description||"");
  const isArchitect=Boolean(identity?.wikidataId&&(identity.kind==="person"||identity.instanceOf?.includes("Q5"))&&
   /\b(arquitect\w*|architect\w*|ingenier\w*|engineer\w*|architet\w*)\b/.test(role));
