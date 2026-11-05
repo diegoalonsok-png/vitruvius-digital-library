@@ -373,6 +373,8 @@ async function load(){try{
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
  S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.historical=results[4]?.status==="fulfilled"&&Array.isArray(results[4].value)?results[4].value.filter(x=>x.category==="historical"):[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.academicRecords=results[5]?.status==="fulfilled"?(results[5].value.records||[]):[];
  S.currentAuthorities=results[5]?.status==="fulfilled"?(results[5].value.currentAuthorities||[]):[];S.ready=true;
+ (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),...S.witnesses.map(w=>w.title),...(S.people||[]).flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
+  "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"]);
  $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;$("metric-read").textContent=S.works.filter(verified).length;
  const mw=$("metric-witnesses"),me=$("metric-editions");
  if(mw)mw.textContent=S.witnesses.length;if(me)me.textContent=S.editions.length;

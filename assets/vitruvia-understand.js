@@ -119,7 +119,7 @@ const PAINT=new Set(["Q3305213","Q860861","Q93184","Q11060274","Q18761202"]);
 const SONG=new Set(["Q134556","Q7366","Q105543609"]);
 async function works(qid,lang){
  if(!/^Q\d+$/.test(qid||""))return[];lang=L(lang);
- const q=`SELECT ?w (SAMPLE(?lab) AS ?label) (SAMPLE(?desc) AS ?description) (MIN(?date) AS ?when) (GROUP_CONCAT(DISTINCT STRAFTER(STR(?type),"entity/");separator=" ") AS ?types) (SAMPLE(?role) AS ?r) (SAMPLE(?collL) AS ?collection) (SAMPLE(?c) AS ?coord) (SAMPLE(?art) AS ?article) WHERE {
+ const q=`SELECT ?w (SAMPLE(?lab) AS ?label) (SAMPLE(?desc) AS ?description) (MIN(?date) AS ?when) (GROUP_CONCAT(DISTINCT STRAFTER(STR(?type),"entity/");separator=" ") AS ?types) (SAMPLE(?role) AS ?r) (SAMPLE(?collL) AS ?collection) (SAMPLE(?c) AS ?coord) (SAMPLE(?art) AS ?article) (SAMPLE(?img) AS ?image) WHERE {
  VALUES (?p ?role) { (wdt:P175 "performer") (wdt:P170 "creator") (wdt:P84 "architect") (wdt:P57 "director") (wdt:P50 "author") (wdt:P86 "composer") }
  ?w ?p wd:${qid} .
  OPTIONAL{?w wdt:P577 ?pub} OPTIONAL{?w wdt:P571 ?inc} OPTIONAL{?w wdt:P1619 ?open}
@@ -129,16 +129,49 @@ async function works(qid,lang){
  OPTIONAL{?w schema:description ?d1 FILTER(LANG(?d1)="${lang}")} OPTIONAL{?w schema:description ?d2 FILTER(LANG(?d2)="en")} BIND(COALESCE(?d1,?d2) AS ?desc)
  OPTIONAL{?w wdt:P195 ?coll . ?coll rdfs:label ?collL FILTER(LANG(?collL)="${lang}")}
  OPTIONAL{?w wdt:P625 ?c}
+ OPTIONAL{?w wdt:P18 ?img}
  OPTIONAL{?art schema:about ?w ; schema:isPartOf <https://${lang}.wikipedia.org/>}
 } GROUP BY ?w LIMIT 600`;
  const d=await j("https://query.wikidata.org/sparql?format=json&query="+encodeURIComponent(q),12000).catch(()=>null);
  const rows=(d?.results?.bindings||[]).map(b=>{const types=(b.types?.value||"").split(" ").filter(Boolean);
   const kind=types.some(t=>ALBUM.has(t))?"album":types.some(t=>FILM.has(t))?"film":types.some(t=>PAINT.has(t))?"painting":types.some(t=>SONG.has(t))?"song":types.some(t=>BOOK.has(t))?"book":b.r?.value==="architect"?"building":b.r?.value==="author"?"book":b.r?.value==="director"?"film":"work";
   const cm=(b.coord?.value||"").match(/Point\(([-\d.]+) ([-\d.]+)\)/);
-  return{id:(b.w.value.match(/Q\d+$/)||[])[0],label:b.label?.value||"",description:b.description?.value||"",date:b.when?.value?b.when.value.slice(0,10):"",year:b.when?.value?b.when.value.replace(/^(-?\d+).*/,"$1"):"",
-   kind,role:b.r?.value||"",collection:b.collection?.value||"",lat:cm?+cm[2]:null,lon:cm?+cm[1]:null,article:b.article?.value||""}}).filter(x=>x.label&&!/^Q\d+$/.test(x.label));
- rows.sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));
+  return{id:(b.w.value.match(/Q\d+$/)||[])[0],label:b.label?.value||"",description:b.description?.value||"",date:b.when?.value?b.when.value.replace(/T.*$/,""):"",year:b.when?.value?String(parseInt(b.when.value,10)):"",
+   kind,role:b.r?.value||"",collection:b.collection?.value||"",image:b.image?.value?b.image.value.replace(/^http:/,"https:")+"?width=200":"",lat:cm?+cm[2]:null,lon:cm?+cm[1]:null,article:b.article?.value||""}}).filter(x=>x.label&&!/^Q\d+$/.test(x.label));
+ // Orden cronológico numérico (incluye fechas antes de Cristo).
+ const key=r=>{if(!r.date)return 1e9;const m=r.date.match(/^(-?)(\d+)-(\d\d)-(\d\d)/);if(!m)return 1e9;const y=(m[1]?-1:1)*+m[2];return y+(+m[3]-1)/12+(+m[4]-1)/365};
+ rows.sort((a,b)=>key(a)-key(b));
  return rows;
+}
+
+/* ---------- Libros con tapa (Open Library) ---------- */
+const OL="https://openlibrary.org/search.json?";
+const cover=id=>id?"https://covers.openlibrary.org/b/id/"+id+"-M.jpg":"";
+async function olCover(title,author){
+ const d=await j(OL+new URLSearchParams({title,author,limit:"1",fields:"cover_i,first_publish_year,key,edition_count"}),5000).catch(()=>null);const x=d?.docs?.[0];
+ return x?{cover:cover(x.cover_i),year:x.first_publish_year||"",key:x.key||"",editions:x.edition_count||0}:null;
+}
+/* Libros de un autor ordenados por primera publicación (cuando Wikidata registra pocos). */
+async function olBooks(author,limit=30){
+ const d=await j(OL+new URLSearchParams({author,sort:"old",limit:String(limit),fields:"title,first_publish_year,cover_i,key,edition_count,author_name,language"}),6000).catch(()=>null);
+ const seen=new Set(),out=[];
+ for(const x of d?.docs||[]){const k=fold(x.title).slice(0,40);if(!x.title||seen.has(k))continue;
+  if(!(x.author_name||[]).some(a=>fold(a).split(" ").some(t=>t.length>3&&fold(author).includes(t))))continue;
+  seen.add(k);out.push({label:x.title,year:x.first_publish_year?String(x.first_publish_year):"",date:x.first_publish_year?String(x.first_publish_year):"",kind:"book",image:cover(x.cover_i),
+   description:(x.edition_count?x.edition_count+(x.edition_count===1?" edición registrada":" ediciones registradas"):"")+" · Open Library",article:"https://openlibrary.org"+x.key,source:"Open Library"})}
+ return out.sort((a,b)=>(a.year||"9999").localeCompare(b.year||"9999"));
+}
+
+/* ---------- Corrección con el vocabulario propio del sitio (autores, obras, códices, lugares) ---------- */
+const vocab=new Map(); // forma plegada → forma original con tildes
+// Solo nombres propios (con mayúscula inicial): así no se «corrigen» palabras comunes válidas.
+function setVocabulary(list){for(const item of list||[])for(const w of String(item||"").split(/[\s,.;:·()\/«»"-]+/)){const f=fold(w);if(f.length>=4&&/^\p{Lu}/u.test(w)&&!vocab.has(f))vocab.set(f,w)}}
+function localCorrect(text){
+ if(!vocab.size)return null;let changed=false;
+ const out=String(text).split(/(\s+)/).map(tok=>{const f=fold(tok);if(f.length<4||vocab.has(f)||/\d/.test(f))return tok;
+  let best=null,bd=9;for(const [k,orig] of vocab){if(k[0]!==f[0]||Math.abs(k.length-f.length)>2)continue;const d=dist(k,f);if(d<bd){bd=d;best=orig}}
+  if(best&&bd<=(f.length>=7?2:1)){changed=true;return best}return tok});
+ return changed?out.join(""):null;
 }
 
 /* ---------- API pública ---------- */
@@ -168,7 +201,9 @@ async function suggest(text,lang){
 /* Consulta completa: pregunta, corrección, entidad y respuesta directa si existe. */
 async function resolve(text,lang){
  lang=L(lang);const parsed=parseQuestion(text);
- const {title,corrected}=await bestTitle(parsed.subject,lang);
+ const local=localCorrect(parsed.subject);
+ let {title,corrected}=await bestTitle(local||parsed.subject,lang);
+ if(local&&!corrected)corrected=local;
  const ref=await qidFor(title,lang);const f=ref?.qid?await facts(ref.qid,lang):null;
  let answer=null;
  if(f&&parsed.prop){
@@ -178,5 +213,5 @@ async function resolve(text,lang){
  }
  return{original:text,subject:parsed.subject,question:parsed.question,corrected:corrected&&fold(corrected)!==fold(parsed.subject)?corrected:null,title:ref?.title||title,entity:f,answer,lang};
 }
-window.VitruviaUnderstand={suggest,resolve,facts,summary,works,parseQuestion,bestTitle,fold,dist};
+window.VitruviaUnderstand={suggest,resolve,facts,summary,works,olCover,olBooks,setVocabulary,localCorrect,parseQuestion,bestTitle,fold,dist};
 })();

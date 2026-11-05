@@ -66,15 +66,23 @@ async function renderWorks(box,f,kind){
  const prefer=kind==="music"?["album","song"]:kind==="architect"?["building","work"]:kind==="author"?["book","work"]:kind==="artist"?["painting","work"]:kind==="film"?["film"]:["album","film","book","painting","building","work"];
  let main=null;for(const k of prefer){const n=all.filter(w=>w.kind===k);if(n.length){main=k;break}}
  let list=main?all.filter(w=>w.kind===main):[];
+ // Escritores con pocas obras en Wikidata: libros por fecha de primera publicación desde Open Library, con tapa.
+ if(kind==="author"&&(main!=="book"||list.length<5)){const ol=await window.VitruviaUnderstand.olBooks(f.label).catch(()=>[]);
+  if(ol.length>list.length){list=ol;main="book"}}
  if(!list.length&&f.works?.length){list=f.works.map(w=>({label:w.label,description:w.description,kind:kind==="architect"?"building":kind==="music"?"album":kind==="author"?"book":"work",article:w.wiki?"https://"+lang()+".wikipedia.org/wiki/"+encodeURIComponent(w.wiki.replace(/ /g,"_")):""}));main=list[0].kind}
  if(!list.length){box.append(el("p","vu-src",T("Wikidata no registra obras atribuidas a esta persona.","Wikidata records no works attributed to this person.","Wikidata n’enregistre aucune œuvre attribuée.")));return}
  const h=HEAD[main]||HEAD.work;box.append(el("h3",null,T(...h)+" · "+list.length));
  const draw=n=>{box.querySelectorAll(".vu-work,.vu-more").forEach(x=>x.remove());
-  for(const w of list.slice(0,n)){const item=el("div","vu-work");
-   const title=el("strong");if(w.year)title.append(el("span","vu-year",w.year.replace(/^-(\d+)/,"$1 a. C.")+" · "));title.append(w.label);item.append(title);
-   const meta=[w.description,w.collection].filter(Boolean).join(" · ");if(meta)item.append(el("p",null,meta));
-   const ln=el("p","vu-links");if(w.article)ln.append(a(T("Reseña · Wikipedia ↗","Overview · Wikipedia ↗","Présentation · Wikipédia ↗"),w.article));
-   for(const [t,u] of actions(w,f.label))ln.append(a(t+" ↗",u));item.append(ln);box.append(item)}
+  for(const w of list.slice(0,n)){const item=el("div","vu-work");const info=el("div");
+   const showCover=w.kind!=="album"&&w.kind!=="song"; // las portadas de discos suelen ser retratos del artista: no se muestran
+   if(showCover){const img=el("img","vu-cover");img.alt=T("Tapa o imagen de ","Cover or image of ","Couverture ou image de ")+w.label;img.loading="lazy";img.decoding="async";
+    img.addEventListener("error",()=>{img.remove();item.classList.add("no-cover")});
+    if(w.image)img.src=w.image;else if(w.kind==="book"){item.classList.add("no-cover");window.VitruviaUnderstand.olCover(w.label,f.label).then(c=>{if(c?.cover){img.src=c.cover;item.classList.remove("no-cover");item.prepend(img)}}).catch(()=>{})}
+    if(w.image)item.append(img)}else item.classList.add("no-cover");
+   const title=el("strong");if(w.year)title.append(el("span","vu-year",w.year.replace(/^-(\d+)/,"$1 a. C.")+" · "));title.append(w.label);info.append(title);
+   const meta=[w.description,w.collection].filter(Boolean).join(" · ");if(meta)info.append(el("p",null,meta));
+   const ln=el("p","vu-links");if(w.article)ln.append(a(w.source==="Open Library"?T("Ficha · Open Library ↗","Record · Open Library ↗","Notice · Open Library ↗"):T("Reseña · Wikipedia ↗","Overview · Wikipedia ↗","Présentation · Wikipédia ↗"),w.article));
+   for(const [t,u] of actions(w,f.label))ln.append(a(t+" ↗",u));info.append(ln);item.append(info);box.append(item)}
   if(list.length>n){const more=el("button","vu-more",T("Ver todas (","Show all (","Tout afficher (")+list.length+")");more.type="button";more.addEventListener("click",()=>draw(list.length));box.append(more)}};
  draw(12);
  const others=[...new Set(all.map(w=>w.kind))].filter(k=>k!==main&&k!=="song"&&HEAD[k]);
