@@ -5,7 +5,7 @@
    contexto de la página impresa o locus candidato sin verificar. */
 (()=>{
 "use strict";
-const URL_INDEX="data/apparatus-index.json?v=20261105-apparatus-v1";
+const URL_INDEX="data/apparatus-index.json?v=20261105-loci-v2";
 const EDITION_LABEL={"recensio-es":"V514 · castellano","recensio-fr":"V554 · français","theory-en":"V297 · English"};
 const KIND={es:{comparativa:"Aparato crítico comparativo",filologica:"Nota ecdótica / crítica",tecnica:"Nota técnica y terminológica",comentario:"Comentario",nota:"Nota al pie"},
  en:{comparativa:"Comparative critical apparatus",filologica:"Critical / textual note",tecnica:"Technical note",comentario:"Commentary",nota:"Footnote"},
@@ -73,7 +73,8 @@ function toRow(e,q,lang="es"){
  const loc=e.locusMention?cite(e.locusMention):(e.loci||[]).length?cite(e.loci[0])+((e.loci.length>1)?"–"+String(e.loci.at(-1)).split(".").pop():""):"";
  const links=[{label:lang==="en"?"Printed page (PDF)":lang==="fr"?"Page imprimée (PDF)":"Página impresa (PDF)",url:e.pdf},
   {label:lang==="en"?"Full apparatus catalogue":lang==="fr"?"Catalogue de l’apparat":"Catálogo del aparato",url:"aparato-critico.html?q="+encodeURIComponent(e.locusMention||q)}];
- return {type:"apparatus",title:kind+(loc?" · "+loc:"")+" · "+e.version+" · "+where,
+ const sec=!loc&&e.section?" · "+(lang==="en"?(e.section==="introducción"?"introduction":"appendices"):lang==="fr"?(e.section==="introducción"?"introduction":"annexes"):e.section):"";
+ return {type:"apparatus",title:kind+(loc?" · "+loc:"")+sec+" · "+e.version+" · "+where,
   author:"Diego Kurilo · "+(EDITION_LABEL[e.edition]||e.version)+" · "+e.label,
   excerpt:excerpt(e.text,q),meta:relationLabel(e.relation,lang)+(e.references?.length?" · cita: "+e.references.join(", "):""),
   rating:e.relation==="explicit"?2300:e.relation==="page"?1500:e.relation==="candidate"?600:300,

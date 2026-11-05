@@ -1028,7 +1028,10 @@ async function search(){
  if(internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
   pending.push(ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null}).then(hits=>({name:"Aparato crítico · ediciones Kurilo",
-   rows:hits.map(e=>ap.toRow(e,generalQuery,S.lang))})).catch(e=>({name:"Aparato crítico no disponible",rows:[],warnings:[String(e.message||e)]})));
+   rows:(()=>{/* Un bloque por página impresa: los demás de la misma página se cuentan, no se repiten. */
+    const seen=new Map(),out=[];for(const e of hits){const k=e.page?e.edition+"#"+e.page:e.id;if(seen.has(k)){seen.get(k).more++;continue}const r=ap.toRow(e,generalQuery,S.lang);r.more=0;seen.set(k,r);out.push(r)}
+    for(const r of out)if(r.more){r.title=r.title.replace(/ \(\d+\)$/,"");r.meta+=" · "+(S.lang==="en"?r.more+" more block(s) on this page":S.lang==="fr"?r.more+" autre(s) bloc(s) sur cette page":r.more+(r.more===1?" bloque más en la misma página":" bloques más en la misma página"))}
+    return out})()})).catch(e=>({name:"Aparato crítico no disponible",rows:[],warnings:[String(e.message||e)]})));
  }
  if(internal){
   if(engine)pending.push(engine.query(q,{concept,language:S.lang}).then(value=>({name:intent?.preface?"Prefacios y prólogos de Vitruvio":"Loci, léxico y códices",rows:value.rows||[],warnings:value.warnings||[]})).catch(e=>({name:"Índice documental no disponible",rows:[],warnings:[e.message]})));
