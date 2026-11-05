@@ -21,11 +21,11 @@ body.vitruvia-reading #vitruvia-context .context-universities{display:grid;grid-
 body.vitruvia-reading #vitruvia-context .context-universities>a{display:block;text-align:center;text-decoration:none;font-size:11px;padding:7px 3px;border:1px solid #444;border-radius:5px;background:#202021;color:#dad5c8}
 body.vitruvia-reading #vitruvia-context .context-disclaimer{color:#999;font:400 10px/1.55 Arial,sans-serif;margin:10px 0}
 @media(min-width:1250px){
- body.vitruvia-reading #vitruvia-article .article-grid{display:grid!important;grid-template-columns:195px minmax(0,1fr) minmax(255px,300px)!important;gap:clamp(18px,2.2vw,32px)!important;align-items:start!important}
+ body.vitruvia-reading #vitruvia-article .article-grid{display:grid!important;grid-template-columns:190px minmax(0,1fr) clamp(315px,25vw,370px)!important;gap:clamp(16px,2vw,28px)!important;align-items:start!important}
  body.vitruvia-reading #vitruvia-article .article-aside{grid-column:1;grid-row:1}
  body.vitruvia-reading #vitruvia-article .article-body{grid-column:2;grid-row:1;min-width:0}
- body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;grid-column:3;grid-row:1;position:sticky;top:92px;max-height:calc(100vh - 112px);overflow-y:auto;scrollbar-width:thin}
- body.vitruvia-reading #vitruvia-article .scholar-article-header{padding-left:calc(195px + clamp(18px,2.2vw,32px))}
+ body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;grid-column:3;grid-row:1;position:sticky;top:76px;max-height:calc(100dvh - 92px);overflow-y:auto;overflow-x:hidden;scrollbar-width:auto;scrollbar-color:#71757a #1a1b1e;scrollbar-gutter:stable}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header{padding-left:calc(190px + clamp(16px,2vw,28px))}
 }
 @media(min-width:1021px) and (max-width:1249px){body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;grid-column:2;grid-row:2;position:static;margin-top:22px;padding-top:20px;border-top:1px solid #444}}
 @media(max-width:1020px){body.vitruvia-reading #vitruvia-article #vitruvia-context{display:block;order:3;width:100%;position:static;margin:16px 0 0;padding:20px 0;border-left:0;border-top:1px solid #444}}
@@ -35,3 +35,58 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-context :is(.context-note
 html[data-theme=light] body.vitruvia-reading #vitruvia-context a{color:#594a32}
 html[data-theme=light] body.vitruvia-reading #vitruvia-context .context-universities>a{color:#333;background:#eee9df}
 @media print{body.vitruvia-reading #vitruvia-article #vitruvia-context{display:none!important}body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}body.vitruvia-reading #vitruvia-article .article-body{width:100%!important}}
+/* Bibliographic reader: comfortable scrollbar and complete, wrapping references. */
+body.vitruvia-reading #vitruvia-article #vitruvia-context{
+ box-sizing:border-box;min-width:0;max-width:100%;padding-right:13px;
+}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar{width:17px;height:17px}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-track{background:#1a1b1e;border-radius:9px}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-thumb{
+ background:#747981;border:3px solid #1a1b1e;border-radius:12px;min-height:64px;
+}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-thumb:hover{background:#afb3ba}
+body.vitruvia-reading #vitruvia-context :is(.context-bibliography-list,.context-bibliography-item,.context-locus){
+ min-width:0;width:100%;max-width:100%;overflow:visible;box-sizing:border-box;
+}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item{
+ display:flex;flex-direction:column;align-items:stretch;gap:5px;
+ padding:14px 0 16px;min-height:0;max-height:none;
+}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item .context-biblio-title{
+ display:block;width:100%;max-width:100%;white-space:normal!important;
+ overflow:visible!important;text-overflow:clip!important;
+ overflow-wrap:anywhere;word-break:normal;hyphens:auto;line-height:1.55;font-size:13px;
+}
+body.vitruvia-reading #vitruvia-context :is(.context-biblio-meta,.context-biblio-source,.context-identifier){
+ display:block;max-width:100%;white-space:normal!important;
+ overflow-wrap:anywhere;word-break:normal;line-height:1.55;margin:0;
+}
+body.vitruvia-reading #vitruvia-context .context-biblio-source{
+ color:#a7aaa9;font:400 10px/1.5 Arial,Helvetica,sans-serif;
+}
+body.vitruvia-reading #vitruvia-context .context-bibliography-count{
+ font:500 11px/1.5 Arial,sans-serif;color:#a3a6a8;margin:7px 0 10px;
+}
+body.vitruvia-reading #vitruvia-context .context-biblio-more{
+ display:block;width:100%;min-height:42px;margin:15px 0 20px;padding:10px 12px;
+ border:1px solid #60646a;border-radius:7px;background:#242629;
+ color:#e8e8e8;font:500 12px/1.4 Arial,sans-serif;text-align:center;
+ cursor:pointer;white-space:normal;
+}
+body.vitruvia-reading #vitruvia-context .context-biblio-more:hover,
+body.vitruvia-reading #vitruvia-context .context-biblio-more:focus-visible{
+ background:#383b40;border-color:#a2a6ad;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context{scrollbar-color:#777b80 #e3e1dc}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-track{background:#e3e1dc}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-thumb{
+ background:#898e95;border-color:#e3e1dc;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .context-biblio-more{
+ color:#333;background:#f1eee7;border-color:#969696;
+}
+@media(max-width:1249px){
+ body.vitruvia-reading #vitruvia-article #vitruvia-context{
+  max-height:none!important;overflow:visible!important;scrollbar-gutter:auto;padding-right:0;
+ }
+}
