@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores.",
   "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
@@ -28,7 +28,9 @@
         "folio": "f.1r",
         "digitalImage": 9
       },
-      "hostedImageNote": "341 fotografías en la biblioteca de GitHub; identificación y derechos de la digitalización: British Library. Imagen digital y folio histórico no son equivalentes."
+      "hostedImageNote": "341 fotografías en la biblioteca de GitHub; identificación y derechos de la digitalización: British Library. Imagen digital y folio histórico no son equivalentes.",
+      "dateStart": 800,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "cicero-officiis-geneva",
@@ -45,7 +47,9 @@
       "viewer": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
       "manifest": "https://e-codices.unifr.ch/metadata/iiif/bge-lat0088/manifest.json",
       "rights": "e-codices: atribuir y consultar la licencia específica de las imágenes.",
-      "verification": "e-codices institutional record"
+      "verification": "e-codices institutional record",
+      "dateStart": 1401,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "lucretius-oblongus",
@@ -62,7 +66,9 @@
       "viewer": "https://digitalcollections.universiteitleiden.nl/view/item/4127827",
       "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest",
       "rights": "Universidad de Leiden: revisar condiciones de reutilización.",
-      "verification": "Biblissima / Leiden University Libraries"
+      "verification": "Biblissima / Leiden University Libraries",
+      "dateStart": 800,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "vergil-vaticanus-aeneid",
@@ -79,7 +85,9 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json",
       "rights": "Biblioteca Vaticana: imágenes para estudio personal; solicitar autorización para reproducción pública.",
-      "verification": "DigiVatLib codicological catalogue"
+      "verification": "DigiVatLib codicological catalogue",
+      "dateStart": 301,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "vergil-vaticanus-georgica",
@@ -96,7 +104,9 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json",
       "rights": "Biblioteca Vaticana: imágenes para estudio personal; autorización para reproducción pública.",
-      "verification": "DigiVatLib table of contents"
+      "verification": "DigiVatLib table of contents",
+      "dateStart": 301,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "vergil-romanus",
@@ -114,7 +124,9 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3867",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3867/manifest.json",
       "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
-      "verification": "Vatican Library Latin Paleography / DigiVatLib"
+      "verification": "Vatican Library Latin Paleography / DigiVatLib",
+      "dateStart": 475,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "tacitus-mediceus-1",
@@ -131,7 +143,9 @@
       "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1334704",
       "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1334704/manifest.json",
       "rights": "Biblioteca Laurenziana: consultar políticas del visor institucional.",
-      "verification": "Biblissima Laurenziana catalogue"
+      "verification": "Biblissima Laurenziana catalogue",
+      "dateStart": 1001,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "tacitus-mediceus-2",
@@ -149,7 +163,9 @@
       "viewer": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
       "manifest": null,
       "rights": "Biblioteca Laurenziana: consultar condiciones institucionales.",
-      "verification": "Biblissima Laurenziana catalogue"
+      "verification": "Biblissima Laurenziana catalogue",
+      "dateStart": 1001,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "josephus-pal-gr-14",
@@ -166,7 +182,9 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Pal.gr.14",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Pal.gr.14/manifest.json",
       "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
-      "verification": "DigiVatLib item record"
+      "verification": "DigiVatLib item record",
+      "dateStart": 901,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "josephus-vat-gr-984",
@@ -184,7 +202,9 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.984/manifest.json",
       "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
-      "verification": "DigiVatLib item record"
+      "verification": "DigiVatLib item record",
+      "dateStart": 1354,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "dioscorides-vienna",
@@ -201,7 +221,9 @@
       "viewer": "https://onb.digital/search/811603",
       "manifest": null,
       "rights": "ÖNB: imágenes institucionales sujetas a condiciones de reutilización.",
-      "verification": "Österreichische Nationalbibliothek image search"
+      "verification": "Österreichische Nationalbibliothek image search",
+      "dateStart": 512,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "dioscorides-paris",
@@ -218,7 +240,9 @@
       "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
       "manifest": null,
       "rights": "BnF: uso conforme a condiciones de Gallica.",
-      "verification": "BnF Gallica shelfmark and digital record"
+      "verification": "BnF Gallica shelfmark and digital record",
+      "dateStart": 801,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "homer-iliad-venetus-a",
@@ -235,7 +259,9 @@
       "viewer": "https://homermultitext.github.io/facsimiles/venetus-a/",
       "manifest": null,
       "rights": "Imágenes del Homer Multitext / Biblioteca Nazionale Marciana: verificar licencia CC BY-NC-SA y condiciones institucionales; no se redistribuyen en GitHub.",
-      "verification": "Homer Multitext Project / Center for Hellenic Studies / Biblioteca Marciana; edición y facsímil documentados."
+      "verification": "Homer Multitext Project / Center for Hellenic Studies / Biblioteca Marciana; edición y facsímil documentados.",
+      "dateStart": 975,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "catullus-thuaneus-8071",
@@ -363,7 +389,9 @@
       "record": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
       "viewer": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
       "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
-      "verification": "Enlace HAB ya publicado en la portada del proyecto; ficha codicológica pendiente"
+      "verification": "Enlace HAB ya publicado en la portada del proyecto; ficha codicológica pendiente",
+      "dateStart": 801,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "euclid-vat-gr-190",
@@ -379,7 +407,9 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.190.pt.1",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.190.pt.1/manifest.json",
       "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
-      "verification": "DigiVatLib (MSS_Vat.gr.190.pt.1); descripción por cotejar con el catálogo de la BAV"
+      "verification": "DigiVatLib (MSS_Vat.gr.190.pt.1); descripción por cotejar con el catálogo de la BAV",
+      "dateStart": 801,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "agrimensores-arcerianus",
@@ -396,7 +426,9 @@
       "record": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
       "viewer": "https://diglib.hab.de/mss/36-23-aug-2f/start.htm",
       "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
-      "verification": "Digitalización HAB citada por Wikipedia y por R. Marshall, Mnemosyne 2022"
+      "verification": "Digitalización HAB citada por Wikipedia y por R. Marshall, Mnemosyne 2022",
+      "dateStart": 501,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     },
     {
       "id": "agrimensores-pal-lat-1564",
@@ -413,7 +445,9 @@
       "language": "la",
       "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_1564",
       "rights": "Bibliotheca Palatina digital (UB Heidelberg / BAV): consultar condiciones.",
-      "verification": "Heidelberg, Bibliotheca Palatina digital; contenidos según Leges (Univ. Köln)"
+      "verification": "Heidelberg, Bibliotheca Palatina digital; contenidos según Leges (Univ. Köln)",
+      "dateStart": 840,
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
     }
   ],
   "editions": [
