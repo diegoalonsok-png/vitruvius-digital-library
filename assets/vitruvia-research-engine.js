@@ -36,54 +36,92 @@ function tokens(q,expanded){const list=terms(canonical(q));if(!expanded)return u
  for(const [k,v] of Object.entries(SYNONYMS)){if(list.some(w=>k.startsWith(w)||w.startsWith(k)||terms(v).includes(w)))for(const w of terms(v))out.add(w)}
  return [...out].slice(0,45)
 }
-function locus(q){
- const m=String(q||"").match(/(?:^|[^\da-z])((?:X|IX|IV|V?I{1,3}|\d{1,2}))\s*[.:,]\s*(\d{1,2})\s*[.:,]\s*(\d{1,2})(?!\d)/i);
- if(!m)return null;
- const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
- return String(romans[m[1].toUpperCase()]||Number(m[1]))+"."+Number(m[2])+"."+Number(m[3])
+function parseReference(value){
+ const input=String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+  .replace(/[–—−]/g,'-').replace(/\s+/g,' ').trim()
+  .replace(/^(?:vitruvio|vitruvius|vitruve|vitr\.?)\s*[,;:]?\s*(?:de\s+arch(?:itectura)?\.?\s*)?/,'')
+  .replace(/^de\s+arch(?:itectura)?\.?\s*/,'').trim();
+ if(!input)return null;
+ const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+ const ordinals={primer:1,primero:1,primera:1,first:1,primus:1,primo:1,premier:1,premiere:1,
+ segundo:2,segunda:2,second:2,secondo:2,secundus:2,deuxieme:2,
+ tercero:3,tercera:3,third:3,terzo:3,troisieme:3,
+ cuarto:4,cuarta:4,fourth:4,quarto:4,quatrieme:4,
+ quinto:5,quinta:5,fifth:5,quinto:5,cinquieme:5,
+ sexto:6,sexta:6,sixth:6,sesto:6,sixieme:6,
+ septimo:7,septima:7,seventh:7,settimo:7,septieme:7,
+ octavo:8,octava:8,eighth:8,ottavo:8,huitieme:8,
+ noveno:9,novena:9,ninth:9,nono:9,neuvieme:9,
+ decimo:10,decima:10,tenth:10,dixieme:10};
+ const bookValue=word=>{
+  const w=String(word||'').toLowerCase(),n=/^\d{1,2}$/.test(w)?Number(w):roman[w]||ordinals[w]||null;
+  return n>=1&&n<=10?n:null;
+ };
+ const sectionValue=word=>{
+  const w=String(word||'').toLowerCase(),n=/^\d{1,3}$/.test(w)?Number(w):roman[w]||ordinals[w]||null;
+  return n>=1&&n<=999?n:null;
+ };
+ const number='(?:10|[1-9]|viii|vii|vi|iv|iii|ii|ix|i|v|x|primero|primera|primer|segundo|segunda|tercero|tercera|cuarto|cuarta|quinto|quinta|sexto|sexta|septimo|septima|octavo|octava|noveno|novena|decimo|decima|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|premier|premiere|deuxieme|troisieme|quatrieme|cinquieme|sixieme|septieme|huitieme|neuvieme|dixieme|primo|secondo|terzo|quarto|quinto|sesto|settimo|ottavo|nono)';
+ const bookWord='(?:libro|libros|liber|libri|lib\\.?|livre|livro|book|tomo|volumen|volume)';
+ const preface='(?:pr|praef|praefatio|praefationes|pref|prefacio|prefacios|preface|prefaces|prefazione|prologo|prologue|prologus|proemio|proemium|prooemium)';
+ const sep='(?:\\s*[.:/,-]\\s*|\\s+)';
+ const full=new RegExp('^('+number+')'+sep+'('+preface+'|\\d{1,2})(?:'+sep+'(\\d{1,3}))?\\.?$','i');
+ const stripped=input.replace(new RegExp('^'+bookWord+'\\s+','i'),'').trim();
+ const compact=stripped.match(full);
+ if(compact){
+  const book=bookValue(compact[1]);
+  if(!book)return null;
+  const chapter=new RegExp('^'+preface+'$','i').test(compact[2])?'praef':Number(compact[2]);
+  const section=compact[3]?Number(compact[3]):null;
+  if(chapter===0||section===0)return null;
+  return{book,chapter,section};
+ }
+ const prefPattern=new RegExp('\\b'+preface+'\\b','i'),prefMatch=input.match(prefPattern);
+ const bookForward=input.match(new RegExp('\\b'+bookWord+'\\s*(?:n(?:umero|umber|[°º])?\\.?\\s*)?('+number+')\\b','i'));
+ const bookReverse=input.match(new RegExp('\\b('+number+')\\s+'+bookWord+'\\b','i'));
+ let book=bookValue(bookForward?.[1]||bookReverse?.[1]);
+ if(prefMatch){
+  const after=input.slice(prefMatch.index+prefMatch[0].length);
+  const beforeBook=after.match(new RegExp('^\\s*('+number+')\\s+(?:de(?:l)?\\s+)?'+bookWord+'\\b','i'));
+  const sectionWord=input.match(/\b(?:seccion|apartado|parrafo|paragraph|section|paragraphe|caput)\s*(?:n(?:[°º])?\.?\s*)?([ivx]+|\d{1,3}|primero|primera|first|premier)\b/i);
+  let section=sectionValue(sectionWord?.[1]);
+  if(book&&beforeBook&&!section)section=sectionValue(beforeBook[1]);
+  if(book&&!section){
+   const afterBook=after.match(new RegExp('(?:\\b'+bookWord+'\\b\\s*'+number+'\\b)\\s*[,;:.\\-]?\\s*([ivx]+|\\d{1,3})\\s*$','i'));
+   if(afterBook)section=sectionValue(afterBook[1]);
+  }
+  if(!book){
+   const direct=after.match(new RegExp('^\\s*('+number+')\\s*$','i'));
+   if(direct)book=bookValue(direct[1]);
+  }
+  return book?{book,chapter:'praef',section}:null;
+ }
+ if(book){
+  const chapterWord=input.match(/\b(?:capitulo|caput|chapitre|chapter|cap)\s*(?:n(?:[°º])?\.?\s*)?([ivx]+|\d{1,2})\b/i);
+  const chapter=chapterWord?sectionValue(chapterWord[1]):null;
+  const sectionWord=input.match(/\b(?:seccion|parrafo|section|paragraph)\s*(?:n(?:[°º])?\.?\s*)?(\d{1,3})\b/i);
+  return{book,chapter,section:chapter?sectionValue(sectionWord?.[1]):null};
+ }
+ const bareBook=bookValue(stripped.replace(/[.]$/,''));
+ return bareBook?{book:bareBook,chapter:null,section:null}:null;
 }
-/* Structural route: recognize Vitruvius prefaces before any lexical or web ranking.
-   Includes Spanish, Latin, English, French, Italian and Portuguese terms. */
-const romanBook={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
-const ordinalBook={
- primer:1,primero:1,primera:1,first:1,premier:1,premiere:1,primi:1,primus:1,primo:1,
- segundo:2,segunda:2,second:2,secondo:2,secundi:2,secundus:2,deuxieme:2,
- tercero:3,tercero:3,tercera:3,third:3,tertii:3,tertius:3,troisieme:3,
- cuarto:4,cuarta:4,fourth:4,quarti:4,quartus:4,quatrieme:4,
- quinto:5,quinta:5,fifth:5,quinti:5,quintus:5,cinquieme:5,
- sexto:6,sexta:6,sixth:6,sexti:6,sextus:6,sixieme:6,
- septimo:7,septima:7,seventh:7,septimi:7,septimus:7,septieme:7,
- octavo:8,octava:8,eighth:8,octavi:8,octavus:8,huitieme:8,
- noveno:9,novena:9,ninth:9,noni:9,nonus:9,neuvieme:9,
- decimo:10,decima:10,tenth:10,decimi:10,decimus:10,dixieme:10
-};
-function resolveBook(value){
- if(!value)return null;
- const w=String(value).toLowerCase();
- const n=/^\d{1,2}$/.test(w)?Number(w):romanBook[w]||ordinalBook[w]||null;
- return n>=1&&n<=10?n:null;
+
+function locus(q){
+ const ref=parseReference(q);
+ if(!ref||ref.chapter===null||ref.chapter==='praef')return null;
+ return String(ref.book)+'.'+String(ref.chapter)+(ref.section==null?'':'.'+String(ref.section));
 }
 function prefaceIntent(query){
+ const ref=parseReference(query);
+ if(ref?.chapter==='praef')return{book:ref.book,section:ref.section};
  const n=canonical(query);
- const direct=n.match(/\b(x|ix|viii|vii|vi|v|iv|iii|ii|i|10|[1-9])\s*[.:]\s*(?:praef|praefatio|pref|prefacio|preface|prolog(?:o|ue|us)?)\b(?:\s*[.:]\s*(\d{1,2}))?/);
- if(direct)return {book:resolveBook(direct[1]),section:direct[2]?Number(direct[2]):null};
- if(!/\b(prefacio|prefacios|preface|prefaces|praefatio|praefationes|praefat(?:io|ionem|iones|ory)|praef|prologo|prologue|prologus|proemio|proemium|prooemium|prefazione|introduccion)\b/.test(n))return null;
- const parts=n.split(/\s+/),bookTerms=new Set(["libro","libros","liber","libri","librum","book","books","livre","livres","livro","livros","tomo","volumen","volume"]);
- let book=null;
- for(let i=0;i<parts.length;i++){
-  if(!bookTerms.has(parts[i]))continue;
-  for(const j of [i+1,i+2,i-1,i-2]){
-   if(j<0||j>=parts.length)continue;
-   const candidate=resolveBook(parts[j]);
-   if(candidate){book=candidate;break}
-  }
-  if(book)break;
- }
- // Queries such as "praefatio I" or "prefacio 1" also designate a book.
- if(!book&&parts.length<=5){
-  for(const word of parts){book=resolveBook(word);if(book)break}
- }
- return {book,section:null};
+ if(!/\b(prefacio|prefacios|preface|prefaces|praefatio|praefationes|praef|pref|pr|prologo|prologue|prologus|proemio|proemium|prooemium|prefazione)\b/.test(n))return null;
+ // Incomplete natural queries intentionally search across books: "prefacio I del libro"
+ // requests section I but does not identify which book it belongs to.
+ const partial=n.match(/\b(?:prefacio|preface|praefatio|prefazione|prologo|prologue|praef|pref)\s+(i|ii|iii|iv|v|vi|vii|viii|ix|x|\d{1,2})\s+(?:de(?:l)?\s+)?(?:libro|book|livre|liber|livro)\s*$/);
+ const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+ const val=partial?.[1],section=val?(roman[val]||Number(val)):null;
+ return{book:null,section:section>=1&&section<=99?section:null};
 }
 let prefacesPromise=null;
 function getPrefaces(){
@@ -179,7 +217,11 @@ function passageRows(q,corpora,{concept=false,limit=18}={}){
  for(const p of corpora){
   let rating=0,where="";
   const text=[p.latin,p.translation].join(" ");
-  if(loc){if(p.locus===loc){rating=2500;where="Locus exacto"}else if(p.locus.startsWith(loc.slice(0,loc.lastIndexOf("."))+'.'))rating=80}
+  if(loc){
+   if(p.locus===loc){rating=2500;where="Locus exacto"}
+   else if(loc.split('.').length===2&&p.locus.startsWith(loc+'.')){rating=2350;where="Capítulo solicitado"}
+   else if(loc.split('.').length===3&&p.locus.startsWith(loc.slice(0,loc.lastIndexOf("."))+'.')){rating=80;where="Capítulo relacionado"}
+  }
   else {const la=lexicalScore(p.latin,q,concept),modern=lexicalScore(p.translation,q,concept);rating=Math.max(la,modern);where=la>modern?"Latín original":"Traducción "+p.language}
   if(rating<10)continue;
   const page=p.pdfPages?.translation;
@@ -210,6 +252,27 @@ async function query(q,opts={}){
  else result.warnings.push("Corpus estructurado: "+p.reason?.message);
  if(c.status==="fulfilled")result.rows.push(...manuscriptRows(q,c.value));
  else result.warnings.push("Catálogo de códices: "+c.reason?.message);
+ // Hyphenated shorthand is ambiguous in human usage. Keep "Libro II-1" as
+ // chapter 1, but offer Preface II.1 explicitly rather than silently changing it.
+ const abbreviated=String(q||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .match(/^\s*(?:libro|liber|livre|livro|book)\s+(10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)\s*[-–—]\s*1\s*$/i);
+ if(abbreviated){
+  const ref=parseReference(q);
+  if(ref?.book&&ref.chapter===1&&ref.section==null){
+   try{
+    const alternatives=prefaceRows({book:ref.book,section:1},await getPrefaces(),opts.language||"es");
+    if(alternatives.length){
+     const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+     const suggestion={...alternatives[0],
+      title:"¿Buscabas el prefacio del Libro "+roman[ref.book]+"? · §1",
+      excerpt:"La notación con guion se interpreta como capítulo 1. El prefacio es una referencia distinta: "+ref.book+".praef.1.",
+      meta:"Referencia alternativa · "+ref.book+".praef.1 · texto latino y traducción",
+      rating:400};
+     result.rows.push(suggestion);
+    }
+   }catch(err){result.warnings.push("Alternativa de prefacio no disponible: "+err.message)}
+  }
+ }
  // Specific local document is deliberately preferred to an unrelated generic result.
  result.rows.sort((a,b)=>b.rating-a.rating);
  return result
