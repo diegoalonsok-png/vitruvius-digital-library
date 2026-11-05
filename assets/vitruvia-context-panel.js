@@ -61,7 +61,7 @@ const highlight=(target,text,needle)=>{
  while(true){const i=lower.indexOf(find,last);if(i<0)break;let end=i+search.length;while(end<t.length&&/[\p{L}\p{M}]/u.test(t[end]))end++;target.append(document.createTextNode(t.slice(last,i)),mk('mark','context-match',t.slice(i,end)));last=end;if(last>=t.length)break;}
  target.append(document.createTextNode(t.slice(last)));
 };
-let lastQuery='',currentRows=[],requestId=0,recordsLoaded=false;
+let lastQuery='',currentRows=[],requestId=0,expandedBibliography=false;
 function frame(query){
  panel.replaceChildren();
  const d=dict();
@@ -149,24 +149,48 @@ function bibliography(query){
  const d=dict();heading(d.sources);
  const related=(row)=>{
   const q=norm(query),title=norm(row.title),summary=norm([row.excerpt,row.journal,row.publisher].join(' '));
-  const targets=termFor(query).key==='edad media'?['edad media','medieval','middle ages','middle age','moyen age','medioevo']:termFor(query).key==='symmetria'?['symmetria','symmetry','simetria','vitruvius','vitruvio','proportion']: [q];
+  const targets=termFor(query).key==='edad media'?['edad media','medieval','middle ages','middle age','moyen age','medioevo']:termFor(query).key==='symmetria'?['symmetria','symmetry','simetria','vitruvius','vitruvio','proportion']:[q];
   return targets.some(x=>title.includes(x))||q.split(' ').filter(x=>x.length>3).every(x=>title.includes(x))||targets.some(x=>x.length>5&&summary.includes(x)&&title.includes(x.split(' ')[0]));
  };
- const books=currentRows.filter(row=>row.link&&['googlebook','article','openlibrary','book','edition'].includes(row.type)&&related(row)&&
-   ((row.doi&&/^10\.\d{4,9}\/\S+/.test(row.doi))||(row.isbn&&/^\d{10}(\d{3})?$/.test(row.isbn.replace(/-/g,'')))));
- const unique=new Set();let count=0;
- for(const row of books){
+ const validDOI=doi=>typeof doi==='string'&&/^10\.\d{4,9}\/\S+$/.test(doi);
+ const validISBN=isbn=>typeof isbn==='string'&&/^\d{10}(\d{3})?$/.test(isbn.replace(/[-\s]/g,''));
+ const records=currentRows.filter(row=>row.link&&['googlebook','article','openlibrary','book','edition'].includes(row.type)&&related(row)&&(validDOI(row.doi)||validISBN(row.isbn)));
+ const unique=new Set(),books=[];
+ for(const row of records){
   const key=row.doi||row.isbn||norm(row.title);
-  if(unique.has(key))continue;unique.add(key);
-  const item=mk('div','context-bibliography-item');
-  item.append(link(row.title+' ↗',row.link));
-  const by=[row.author,row.publisher,row.year].filter(Boolean).join(' · ');
-  if(by)item.append(mk('p','context-biblio-meta',by));
-  if(row.doi)item.append(mk('span','context-identifier','DOI: '+row.doi));
-  if(row.isbn)item.append(mk('span','context-identifier','ISBN: '+row.isbn));
-  panel.append(item);if(++count>=7)break;
+  if(unique.has(key))continue;
+  unique.add(key);books.push(row);
  }
- if(!count)panel.append(mk('p','context-note',d.noSources));
+ const list=mk('div','context-bibliography-list');panel.append(list);
+ if(!books.length){list.append(mk('p','context-note',d.noSources));return}
+ const total=books.length,initial=9,limit=expandedBibliography?total:initial;
+ list.append(mk('p','context-bibliography-count',
+   lang()==='en'?Math.min(limit,total)+' of '+total+' documented references':
+   lang()==='fr'?Math.min(limit,total)+' sur '+total+' références documentées':
+   Math.min(limit,total)+' de '+total+' referencias documentadas'));
+ for(const row of books.slice(0,limit)){
+  const item=mk('div','context-bibliography-item');
+  const name=link(String(row.title||'')+' ↗',row.link);name.className='context-biblio-title';item.append(name);
+  const author=String(row.author||'').trim(),publisher=String(row.publisher||'').trim(),journal=String(row.journal||'').trim();
+  if(author)item.append(mk('p','context-biblio-meta',author));
+  const publication=[journal||(norm(publisher)!==norm(author)?publisher:''),row.year].filter(Boolean).join(' · ');
+  if(publication)item.append(mk('p','context-biblio-meta',publication));
+  const source=[row.source,row.recordKind].filter(Boolean).join(' · ');
+  if(source)item.append(mk('p','context-biblio-source',source));
+  if(validDOI(row.doi))item.append(mk('span','context-identifier','DOI: '+row.doi));
+  if(validISBN(row.isbn))item.append(mk('span','context-identifier','ISBN: '+row.isbn));
+  list.append(item);
+ }
+ if(total>initial){
+  const button=mk('button','context-biblio-more');
+  button.type='button';
+  button.textContent=expandedBibliography?
+   (lang()==='en'?'Show fewer references':lang()==='fr'?'Afficher moins de références':'Mostrar menos referencias'):
+   (lang()==='en'?'Show all '+total+' references':lang()==='fr'?'Afficher les '+total+' références':'Mostrar las '+total+' referencias');
+  button.setAttribute('aria-expanded',String(expandedBibliography));
+  button.addEventListener('click',()=>{expandedBibliography=!expandedBibliography;redraw(true)});
+  list.append(button);
+ }
 }
 function universityLinks(query){
  const d=dict();heading(d.external);
@@ -178,15 +202,18 @@ function universityLinks(query){
  }
  panel.append(area,mk('p','context-disclaimer',d.notice));
 }
-function redraw(){
+function redraw(keepPosition=true){
  if(!lastQuery){panel.hidden=true;return}
+ const scroll=keepPosition?panel.scrollTop:0;
  const token=++requestId;
  frame(lastQuery);origin(lastQuery);const lexical=lexicalNeedles(lastQuery);
  if(lexical.length)void loci(lastQuery,token);
  bibliography(lastQuery);universityLinks(lastQuery);
+ if(keepPosition)requestAnimationFrame(()=>{if(token===requestId)panel.scrollTop=scroll});
+ else panel.scrollTop=0;
 }
 window.addEventListener('vitruvia:search',e=>{
- lastQuery=String(e.detail?.query||'').trim();currentRows=[];redraw();
+ const next=String(e.detail?.query||'').trim();if(norm(next)!==norm(lastQuery))expandedBibliography=false;lastQuery=next;currentRows=[];redraw(false);
 });
 window.addEventListener('vitruvia:results',e=>{
  const q=String(e.detail?.query||'').trim();
@@ -194,6 +221,6 @@ window.addEventListener('vitruvia:results',e=>{
  currentRows=Array.isArray(e.detail.rows)?e.detail.rows:[];
  redraw();
 });
-window.addEventListener('vitruvia:clear',()=>{lastQuery='';currentRows=[];requestId++;panel.hidden=true;panel.replaceChildren()});
+window.addEventListener('vitruvia:clear',()=>{lastQuery='';currentRows=[];expandedBibliography=false;requestId++;panel.hidden=true;panel.replaceChildren();panel.scrollTop=0});
 new MutationObserver(records=>{if(records.some(r=>r.attributeName==='lang')&&lastQuery)redraw()}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
