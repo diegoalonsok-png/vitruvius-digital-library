@@ -317,6 +317,26 @@ html[data-theme=light] .ai-platform-link:hover{background:#4c4c4e}
 /* Desplegable diseñado para títulos documentados; no se emplea datalist nativo blanco. */
 .search-wrap{position:relative;isolation:isolate;z-index:18}
 .search-suggestions[hidden]{display:none!important}
+.search-suggestions{max-height:min(520px,72vh)}
+.search-suggestions.has-preview{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,40%);gap:0;padding:0}
+.search-suggestions-list{padding:7px 0;min-width:0;overflow-y:auto}
+.search-suggestion .sg-main{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.search-suggestion.is-entity{flex-direction:column;align-items:flex-start;gap:2px;padding:10px 19px}
+.search-suggestion.is-entity .sg-main{font-size:16px;color:#fff}
+.search-suggestion.is-entity small{white-space:normal;max-width:100%}
+.search-suggestion.is-completion{justify-content:flex-start;gap:14px}
+.search-suggestion.is-completion .sg-icon{opacity:.6;font-size:15px;width:16px;text-align:center}
+.search-suggestion.is-completion b{font-weight:700}
+.search-preview{border-left:1px solid #3a3a3c;background:#2a2a2c;padding:20px 22px;margin:10px;border-radius:12px;overflow-y:auto;font:400 13px/1.55 Arial,Helvetica,sans-serif;color:#dcdcda}
+.search-suggestions:not(.has-preview) .search-preview{display:none}
+.search-preview h3{font:400 26px/1.15 Georgia,"Times New Roman",serif;color:#fff;margin:0 0 6px}
+.search-preview .sp-desc{font-size:15px;color:#e6e6e4;margin:0 0 10px}
+.search-preview .sp-dates,.search-preview .sp-tags{margin:0 0 6px;color:#bdbdbb}
+.search-preview .sp-extract{margin:10px 0 14px;color:#d2d2d0}
+.search-preview .sp-more{border:1px solid #555;background:#1f1f20;color:#fff;border-radius:999px;padding:10px 22px;cursor:pointer;font:400 14px Arial,sans-serif}
+.search-preview .sp-more:hover{background:#333}
+.search-preview .sp-source{font-size:11px;color:#8d8d8b;margin:12px 0 0}
+@media(max-width:820px){.search-suggestions.has-preview{display:block}.search-preview{display:none}}
 .search-suggestions{position:absolute;top:calc(100% + 5px);left:0;right:0;background:#202021;color:#efefed;border:1px solid #414143;border-radius:12px;box-shadow:0 24px 45px #0009;overflow:hidden;max-height:390px;overflow-y:auto;z-index:50;padding:7px 0}
 .search-suggestions-title{padding:8px 19px 7px;color:#a1a1a2;font:400 11px Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .search-suggestion{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;color:#e5e5e4;padding:11px 19px;text-align:left;font:400 14px/1.35 Arial,Helvetica,sans-serif;cursor:pointer}
@@ -1198,7 +1218,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-ai.js?v=20261104-evidence-links-v2" defer></script>
 <script src="assets/codicological-query.js?v=20261105-cq-v1" defer></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-apparatus-v1" defer></script>
-<script src="assets/classical-lexicon.js?v=20261105-lex-v3" defer></script><script src="assets/classics-corpus-search.js?v=20261105-lex-v1" defer></script><script src="assets/vitruvia-search.js?v=20261105-merge2-v1" defer></script>
+<script src="assets/classical-lexicon.js?v=20261105-lex-v3" defer></script><script src="assets/classics-corpus-search.js?v=20261105-lex-v1" defer></script><script src="assets/vitruvia-understand.js?v=20261105-v1" defer></script><script src="assets/vitruvia-search.js?v=20261105-ac-v2" defer></script><script src="assets/vitruvia-entity-card.js?v=20261105-v1" defer></script>
 <script src="assets/vitruvia-architecture-panel.js?v=20261105-works-v1" defer></script>
 <script src="assets/vitruvia-web-dossier.js?v=20261105-works-v1" defer></script>
 <script src="assets/vitruvia-context-panel.js?v=20261105-works-v1" defer></script>

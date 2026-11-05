@@ -1131,7 +1131,8 @@ function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
    No solicita credenciales ni simula búsquedas remotas. */
 function setupAutocomplete(){
  const input=$("query"),menu=$("search-suggestions");if(!input||!menu)return;
- let index=-1,options=[];
+ let index=-1,options=[],remote={entities:[],completions:[]},remoteFor="",timer=0,serial=0,previewId="";
+ const U=()=>window.VitruviaUnderstand;
  const canonical=[
   ["Codex H · Harley MS 2767","Codex H",["harleianus","harlesianus","harley","codex h","2767","harl"] , "Manuscrito"],
   ["Codex H · doble hoja","Codex H doble folio",["codex h","harleianus","doble hoja","doble folio"],"Lector"],
@@ -1144,59 +1145,92 @@ function setupAutocomplete(){
   ["Cicerón · De officiis","Cicerón De officiis",["ciceron","cicero","officiis"],"Libro"],
   ["Vitruvio · De architectura","Vitruvio",["vitruvio","vitruvius","de architectura"],"Tratado"]
  ];
- const hide=()=>{menu.hidden=true;input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
+ const hide=()=>{menu.hidden=true;menu.classList.remove("has-preview");input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
  const choose=v=>{input.value=v;hide();search()};
- function build(){
-  const q=norm(input.value);menu.replaceChildren();index=-1;options=[];
-  if(q.length<2){hide();return}
-  const suggestions=[];
-  const seen=new Set();
+ // Coincidencias del sitio, con tolerancia a errores de tipeo (distancia de edición sobre palabras).
+ function local(q){
+  const suggestions=[],seen=new Set();
   const add=(label,value,subtitle,rank)=>{const key=norm(value);if(seen.has(key))return;seen.add(key);suggestions.push({label,value,subtitle,rank})};
+  const near=(text)=>{const ws=norm(text).split(" ");return q.length>=4&&ws.some(w=>w.length>=4&&U()?.dist(w.slice(0,q.length+1),q)<=(q.length>=7?2:1))};
   for(const [label,value,aliases,type] of canonical){
    const norms=aliases.map(norm);
-   if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))
-    add(label,value,type,norm(label).startsWith(q)?120:75);
+   if(norms.some(a=>a.includes(q)||q.includes(a))||norm(label).includes(q))add(label,value,type,norm(label).startsWith(q)?120:75);
+   else if(norms.some(a=>near(a)))add(label,value,type,40);
   }
   for(const w of S.works){
    const title=w.title||"",author=w.author||"",aliases=w.aliases||[];
    const joined=norm([title,author,...aliases].join(" "));
-   if(joined.includes(q)){
-    const alias=aliases.find(a=>norm(a).includes(q));
-    add(title,alias&&norm(title).indexOf(q)<0?alias:title,
-      author+" · "+(verified(w)?"lectura local":"ficha de obra"),65+(norm(title).startsWith(q)?18:0)+(alias?8:0));
-   }
+   if(joined.includes(q)){const alias=aliases.find(a=>norm(a).includes(q));
+    add(title,alias&&norm(title).indexOf(q)<0?alias:title,author+" · "+(verified(w)?"lectura local":"ficha de obra"),65+(norm(title).startsWith(q)?18:0)+(alias?8:0))}
+   else if(near(joined))add(title,title,author+" · "+(verified(w)?"lectura local":"ficha de obra"),30);
   }
-  for(const ms of S.witnesses){
-   if(norm([ms.title,ms.shelfmark,ms.library].join(" ")).includes(q))
-    add(ms.title+" · "+ms.shelfmark,ms.shelfmark,ms.library+" · manuscrito",100+(norm(ms.shelfmark).startsWith(q)?22:0));
-  }
-  for(const ed of S.editions){
-   if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))
-    add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
-  }
-  for(const p of S.pages){const title=p.title||"";
-   if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0));
-  }
-  suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label));
-  const h=node("div","search-suggestions-title",S.lang==="en"?"Works, manuscripts and editions":S.lang==="fr"?"Œuvres, manuscrits et éditions":"Libros, códices y ediciones históricas");
-  menu.append(h);
-  for(const [i,hit] of suggestions.slice(0,7).entries()){
-   const btn=node("button","search-suggestion");
-   btn.type="button";btn.id="search-suggestion-"+i;btn.role="option";btn.setAttribute("aria-selected","false");
-   btn.append(node("span",null,hit.label),node("small",null,hit.subtitle));
-   btn.addEventListener("pointerdown",e=>e.preventDefault());
-   btn.addEventListener("click",()=>choose(hit.value));
-   options.push(btn);menu.append(btn);
-  }
-  if(!options.length){hide();return}
-  menu.hidden=false;input.setAttribute("aria-expanded","true");
+  for(const ms of S.witnesses)if(norm([ms.title,ms.shelfmark,ms.library].join(" ")).includes(q))
+   add(ms.title+" · "+ms.shelfmark,ms.shelfmark,ms.library+" · manuscrito",100+(norm(ms.shelfmark).startsWith(q)?22:0));
+  for(const ed of S.editions)if(norm([ed.title,ed.editor,ed.year].join(" ")).includes(q))add(ed.title,ed.title,ed.year+" · "+(ed.langs||[]).join("/"),50);
+  for(const p of S.pages){const title=p.title||"";if(norm(title+" "+p.description).includes(q))add(title,title,"Biblioteca digital",35+(norm(title).startsWith(q)?10:0))}
+  return suggestions.sort((a,b)=>b.rank-a.rank||a.label.localeCompare(b.label)).slice(0,5);
  }
- const paint=()=>{options.forEach((b,i)=>b.setAttribute("aria-selected",String(i===index)));if(index>=0){input.setAttribute("aria-activedescendant",options[index].id);options[index].scrollIntoView({block:"nearest"})}else input.removeAttribute("aria-activedescendant")};
- input.addEventListener("input",build);
- input.addEventListener("focus",()=>{if(input.value.trim().length>=2)build()});
+ const T3=(es,en,fr)=>S.lang==="en"?en:S.lang==="fr"?fr:es;
+ function option(cls,children,onPick,entity){
+  const btn=node("button","search-suggestion "+cls);btn.type="button";btn.id="search-suggestion-"+options.length;btn.setAttribute("role","option");btn.setAttribute("aria-selected","false");
+  btn.append(...children);btn.addEventListener("pointerdown",e=>e.preventDefault());btn.addEventListener("click",onPick);
+  if(entity){btn.dataset.entity=entity.id;btn.addEventListener("pointerenter",()=>preview(entity))}
+  options.push(btn);return btn;
+ }
+ function build(){
+  const raw=input.value.trim(),q=norm(raw);index=-1;options=[];menu.replaceChildren();
+  if(q.length<2){hide();return}
+  const list=node("div","search-suggestions-list");
+  const rem=remoteFor===raw?remote:{entities:[],completions:[]};
+  for(const e of rem.entities){
+   const row=option("is-entity",[node("span","sg-main",e.label),node("small",null,e.description)],()=>choose(e.label),e);
+   list.append(row);
+  }
+  for(const c of rem.completions){
+   const strong=node("span","sg-main");const low=c.toLowerCase(),pre=raw.toLowerCase();
+   if(low.startsWith(pre)){strong.append(c.slice(0,raw.length));strong.append(node("b",null,c.slice(raw.length)))}else strong.append(node("b",null,c));
+   list.append(option("is-completion",[node("span","sg-icon","⌕"),strong],()=>choose(c)));
+  }
+  const loc=local(q);
+  if(loc.length){list.append(node("div","search-suggestions-title",T3("En la biblioteca · libros, códices y ediciones","In the library · works, manuscripts and editions","Dans la bibliothèque · œuvres, manuscrits et éditions")));
+   for(const hit of loc)list.append(option("is-local",[node("span","sg-main",hit.label),node("small",null,hit.subtitle)],()=>choose(hit.value)))}
+  if(!options.length&&remoteFor!==raw){list.append(node("div","search-suggestions-title",T3("Buscando sugerencias…","Looking for suggestions…","Recherche de suggestions…")))}
+  else if(!options.length){hide();return}
+  const pv=node("aside","search-preview");pv.setAttribute("aria-live","polite");
+  menu.append(list,pv);
+  // El desplegable se abre justo debajo del campo de búsqueda, como en los buscadores generales.
+  const form=$("search-form");if(form&&menu.offsetParent!==null||form){menu.style.top=(form.offsetTop+form.offsetHeight+6)+"px"}
+  menu.hidden=false;input.setAttribute("aria-expanded","true");
+  if(rem.entities[0])preview(rem.entities[0]);else menu.classList.remove("has-preview");
+ }
+ // Ficha de vista previa (columna derecha del desplegable): descripción, fechas y resumen enciclopédico.
+ async function preview(e){
+  const pv=menu.querySelector(".search-preview");if(!pv||!U())return;previewId=e.id;menu.classList.add("has-preview");
+  pv.replaceChildren(node("h3",null,e.label),node("p","sp-desc",e.description||""));
+  const f=await U().facts(e.id,S.lang).catch(()=>null);if(previewId!==e.id||!f)return;
+  const yrs=[f.birth?.year,f.death?.year].filter(Boolean).join(" – ");
+  const where=[f.birthPlace?.label,f.deathPlace?.label].filter(Boolean).join(" · ");
+  if(yrs||where)pv.append(node("p","sp-dates",[yrs,where].filter(Boolean).join(" · ")));
+  const tags=[...f.occupations.slice(0,2),...f.movements.slice(0,2),...f.genres.slice(0,2)].map(x=>x.label);
+  if(tags.length)pv.append(node("p","sp-tags",tags.join(" · ")));
+  if(f.wiki){const sm=await U().summary(f.wiki,f.wikiLang).catch(()=>null);if(previewId!==e.id)return;
+   if(sm?.extract)pv.append(node("p","sp-extract",sm.extract.length>300?sm.extract.slice(0,300).replace(/\s\S*$/,"")+"…":sm.extract))}
+  const more=node("button","sp-more",T3("Ver más ›","See more ›","Voir plus ›"));more.type="button";
+  more.addEventListener("pointerdown",ev=>ev.preventDefault());more.addEventListener("click",()=>choose(e.label));pv.append(more);
+  pv.append(node("p","sp-source",T3("Fuente: Wikidata y Wikipedia","Source: Wikidata and Wikipedia","Source : Wikidata et Wikipédia")));
+ }
+ async function fetchRemote(){
+  const raw=input.value.trim(),me=++serial;if(raw.length<2||!U())return;
+  const r=await U().suggest(raw,S.lang).catch(()=>null);if(me!==serial||input.value.trim()!==raw)return;
+  remote=r||{entities:[],completions:[]};remoteFor=raw;if(document.activeElement===input)build();
+ }
+ const paint=()=>{options.forEach((b,i)=>b.setAttribute("aria-selected",String(i===index)));if(index>=0){input.setAttribute("aria-activedescendant",options[index].id);options[index].scrollIntoView({block:"nearest"});
+  const id=options[index].dataset.entity;if(id){const e=remote.entities.find(x=>x.id===id);if(e)preview(e)}}else input.removeAttribute("aria-activedescendant")};
+ input.addEventListener("input",()=>{build();clearTimeout(timer);timer=setTimeout(fetchRemote,230)});
+ input.addEventListener("focus",()=>{if(input.value.trim().length>=2){build();if(remoteFor!==input.value.trim())fetchRemote()}});
  input.addEventListener("keydown",e=>{
   if(menu.hidden)return;
-  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();index=(index+(e.key==="ArrowDown"?1:-1)+options.length)%options.length;paint()}
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){if(!options.length)return;e.preventDefault();index=(index+(e.key==="ArrowDown"?1:-1)+options.length)%options.length;paint()}
   else if(e.key==="Escape"){e.preventDefault();hide()}
   else if(e.key==="Enter"&&index>=0){e.preventDefault();options[index].click()}
  });
