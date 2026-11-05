@@ -166,15 +166,46 @@ async function openWork(id){
 function setLeft(which){
  for(const [b,p] of [["tab-codex","codex"],["tab-original","original"]]){$(b).setAttribute("aria-pressed",String(p===which));$(p).hidden=p!==which}
 }
+function visibleWorks(){
+ const f=fold($("filter").value),lang=$("f-lang")?.value||"",all=[...catalog.works,...($("f-extra")?.checked?extraWorks:[])];
+ return all.filter(w=>(!f||fold(w.author+" "+w.title+" "+w.id).includes(f))&&(!lang||w.language===lang));
+}
 function renderIndex(){
- const box=$("index-list"),f=fold($("filter").value);box.replaceChildren();
- let last=null,count=0;
- for(const w of catalog.works){
-  if(f&&!fold(w.author+" "+w.title+" "+w.id).includes(f))continue;
+ const box=$("index-list");box.replaceChildren();
+ let last=null,count=0;const list=visibleWorks();
+ for(const w of list){
   if(w.authorId!==last){last=w.authorId;const h=document.createElement("h3");h.innerHTML=esc(w.author)+" <small>"+esc(w.dates)+(witnesses.some(x=>x.match.includes(w.authorId))?" · códice con imágenes":"")+"</small>";box.append(h)}
   const a=document.createElement("a");a.href="?obra="+encodeURIComponent(w.id);a.textContent=w.title+(w.translations.length?"":" · solo original");box.append(a," · ");count++;
  }
- $("index-count").textContent=count+" obras de "+catalog.authors+" autores (siglo II a. C.–siglo II d. C.)";
+ $("index-count").textContent=count+" obras"+($("f-extra")?.checked?" (incluidas las de otras épocas)":" de "+catalog.authors+" autores (siglo II a. C.–siglo II d. C.)");
+}
+/* ---------- Búsqueda en el corpus: palabra o frase en todas las obras listadas ---------- */
+let corpusRun=0;
+async function corpusSearch(){
+ const q=$("cq").value.trim(),out=$("chits");out.replaceChildren();if(!q)return;
+ const run=++corpusRun,words=q.split(/\s+/).filter(w=>w.length>1).map(fold);
+ const hit=text=>{const toks=text.split(/\s+/).map(t=>fold(t.replace(/[^\p{L}\p{N}]/gu,"")));return words.every(w=>toks.some(f=>f===w||(w.length>=4&&f.startsWith(w))))};
+ const list=visibleWorks().slice(0,160);let done=0,total=0;
+ const status=document.createElement("p");status.className="sub";out.append(status);$("cstop").hidden=false;
+ const show=()=>{status.textContent=`${total} pasajes en ${done} de ${list.length} obras revisadas`+(visibleWorks().length>160?" (se revisan las primeras 160; filtra por autor o lengua para acotar)":"")+(done<list.length?"…":"")};show();
+ const queue=[...list];
+ async function worker(){
+  while(queue.length&&run===corpusRun){
+   const w=queue.shift();let ps=[];
+   try{ps=w.parts?await loadPlain(w.parts):parseTEI(await fetchText(w.original))}catch{}
+   if(run!==corpusRun)return;
+   const found=ps.filter(p=>hit(p.text));done++;
+   if(found.length){total+=found.length;
+    const box=document.createElement("div");box.className="corpus-hit";const h=document.createElement("h3");h.textContent=w.author+" · "+w.title+" · "+found.length;box.append(h);
+    for(const p of found.slice(0,25)){const a=document.createElement("a");a.href="?obra="+encodeURIComponent(w.id)+"&loc="+encodeURIComponent(p.locus)+"&q="+encodeURIComponent(q);
+     const flat=p.text.replace(/\s+/g," ");const t=fold(flat);const at=Math.max(0,t.indexOf(words[0])-60);
+     a.innerHTML="<b>"+esc(p.locus)+"</b> "+marked((at?"…":"")+flat.slice(at,at+170)+"…");box.append(a)}
+    out.append(box)}
+   show();
+  }
+ }
+ const prev=query;query=q;await Promise.all([worker(),worker(),worker(),worker()]);query=prev;
+ if(run===corpusRun){$("cstop").hidden=true;show()}
 }
 (async()=>{
  if(params.get("embed")==="1")document.documentElement.classList.add("lc-embed");
@@ -183,7 +214,8 @@ function renderIndex(){
  $("search").onsubmit=e=>{e.preventDefault();search()};
  $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};
  $("toc").onchange=e=>{cur=Number(e.target.value);render()};
- $("filter").oninput=renderIndex;
+ $("filter").oninput=renderIndex;if($("f-lang"))$("f-lang").onchange=renderIndex;if($("f-extra"))$("f-extra").onchange=renderIndex;
+ if($("corpus-search")){$("corpus-search").onsubmit=e=>{e.preventDefault();corpusSearch()};$("cstop").onclick=()=>{corpusRun++;$("cstop").hidden=true}}
  $("print").onclick=()=>window.print(); // «Guardar como PDF» en el diálogo de impresión
  $("cite").onclick=async()=>{
   const p=orig[cur];if(!p)return;

@@ -33,6 +33,7 @@ footer{border-top:1px solid var(--line);margin-top:35px;padding-top:16px;font:12
 @media(max-width:730px){.reader-grid{grid-template-columns:minmax(0,1fr)}#toc{max-height:170px}.reader{min-height:45vh}}
 html.lc-embed header,html.lc-embed footer,html.lc-embed .site-bar,html.lc-embed #site-bar{display:none!important}html.lc-embed main{padding-top:8px}
 @media print{header,.tools,aside,.reader-toolbar,#results,#lexicon,footer{display:none!important}.reader{border:0;padding:0}.reader-grid{display:block}body{background:white;color:#111}}
+.corpus-hit{margin:14px 0;padding:10px 0;border-top:1px solid #d9cfb9}.corpus-hit h3{margin:0 0 6px;font-size:16px}.corpus-hit a{display:block;margin:4px 0;text-decoration:none;color:inherit;line-height:1.45}.corpus-hit a:hover b{text-decoration:underline}
 </style>
 <style>
 .lc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:14px}
@@ -52,7 +53,7 @@ html.lc-embed header,html.lc-embed footer,html.lc-embed .site-bar,html.lc-embed 
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script src="assets/vitruvia-fetch-cache.js?v=20261105-v1"></script><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/lector-clasico.html">
 <script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
-<script defer src="assets/lector-clasico.js?v=20261105-cite-v1"></script>
+<script defer src="assets/lector-clasico.js?v=20261105-corpus-v1"></script>
 <script defer src="assets/viewer-appearance.js?v=20261105-v3"></script>
 </head>
 <body>
@@ -63,6 +64,9 @@ html.lc-embed header,html.lc-embed footer,html.lc-embed .site-bar,html.lc-embed 
 <p class="sub">Siglo II a. C.–siglo II d. C. · primero el códice conservado más antiguo con imágenes abiertas (o el texto original cuando no lo hay), después la traducción.</p>
 <p class="notice">Textos y traducciones: Perseus Digital Library (Tufts University), TEI EpiDoc, CC BY-SA 4.0, leídos en el momento desde GitHub. Códices: manifiestos IIIF de las bibliotecas que los conservan. Las imágenes del códice no se alinean automáticamente folio a folio con el texto editado.</p>
 <div class="tools"><input id="filter" type="search" placeholder="Filtrar por autor u obra: Cicerón, Polibio, Eneida…" aria-label="Filtrar el catálogo"></div>
+<div class="tools"><select id="f-lang" aria-label="Lengua"><option value="">Latín y griego</option><option value="la">Solo latín</option><option value="grc">Solo griego</option></select><label class="sub"><input type="checkbox" id="f-extra"> Incluir obras de otras épocas (Bibliotheca Graeca Latina)</label></div>
+<form id="corpus-search" class="tools" role="search"><input id="cq" type="search" placeholder="Buscar en las obras listadas: symmetria, ἁρμονία, firmitas…" aria-label="Buscar en el corpus"><button type="submit">Buscar en el corpus</button><button type="button" id="cstop" hidden>Detener</button></form>
+<div id="chits" aria-live="polite"></div>
 <p class="sub" id="index-count"></p><div id="index-list"></div>
 </section>
 <section id="reader" hidden>

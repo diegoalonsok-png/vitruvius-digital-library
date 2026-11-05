@@ -620,6 +620,7 @@ function renderCard(d){
   wikipedia:"obra de referencia",wikidata:"obra de referencia",encyclopedia:"obra de referencia",topic:"obra de referencia",
   authority:"fuente oficial",museum:"colección institucional",portal:"portal institucional","archive-portal":"archivo institucional"}[d.type];
  title.append(node("span","kind",(T()[d.type]||kindLabels[d.type]||d.type.toUpperCase())+(evidence?" · "+evidence.toUpperCase():"")),node("h3",null,d.title));head.append(title);card.append(head);
+ card.dataset.evidence=({"fuente primaria":"primary","edición crítica":"edition","estudio o edición":"study","estudio":"study","obra de referencia":"reference","fuente oficial":"institution","colección institucional":"institution","portal institucional":"institution","archivo institucional":"institution"})[evidence]||"other";
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
  if(d.type==="passage"&&d.latin&&d.translation){

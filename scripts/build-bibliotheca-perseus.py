@@ -64,6 +64,10 @@ for bid,w in bib.items():
     o=pick(k,'orig');t=pick(k,'eng')
     extra[k]={'urn':'urn:cts:'+('greekLit' if k.startswith('tlg') else 'latinLit')+':'+k,'id':k,'authorId':k.split('.')[0],'author':w['author'],'dates':w.get('dating',''),
       'title':ext[k]['title'],'language':'grc' if '-grc' in o else 'la','original':url(k,o),'translations':[{'language':'en','url':url(k,f)} for f in t[-1:]],'bibliotheca':bid}
+# Vitruvio (Perseus) en el catálogo ampliado para la búsqueda en el corpus; la Bibliotheca usa las ediciones propias.
+k='phi1056.phi001'
+if k in ext and k not in incat and pick(k,'orig'):
+  extra[k]={'urn':'urn:cts:latinLit:'+k,'id':k,'authorId':'phi1056','author':'Vitruvio','dates':'c. 30–20 a. C.','title':'De architectura','language':'la','original':url(k,pick(k,'orig')),'translations':[{'language':'en','url':url(k,f)} for f in pick(k,'eng')[-1:]],'bibliotheca':'vitruvius'}
 # The Latin Library (texto plano de dominio público, espejo de CLTK en GitHub) para obras latinas sin TEI.
 LL='https://raw.githubusercontent.com/cltk/latin_text_latin_library/master/'
 LLW={
