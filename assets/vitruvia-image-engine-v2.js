@@ -199,7 +199,7 @@ async function verifiedLeadImage(identity,topic,id){
   for(const title of titles){
    try{
     const params=new URLSearchParams({action:"query",titles:title,redirects:"1",prop:"pageimages|pageprops",
-     piprop:"thumbnail|name",pithumbsize:"900",format:"json",origin:"*"});
+     piprop:"thumbnail|name",pithumbsize:"900",pilicense:"any",format:"json",origin:"*"});
     const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),5000);
     let d;try{const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});if(!r.ok)continue;d=await r.json()}finally{clearTimeout(timer)}
     const page=Object.values(d.query?.pages||{}).find(p=>p.thumbnail?.source&&p.pageimage);
