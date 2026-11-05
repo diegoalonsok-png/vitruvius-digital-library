@@ -106,20 +106,24 @@
   'Basílica de Fano':['Basilica of Fano','Basilique de Fano'],
   'Información para investigadores':['Information for researchers','Informations pour les chercheurs']
  };
+ Object.assign(translations,{"Lector bilingüe": ["Bilingual reader", "Lecteur bilingue"], "Índices y colación": ["Indices and collation", "Index et collation"], "Bibliotheca clásica": ["Classical library", "Bibliothèque classique"], "← Pasaje anterior": ["← Previous passage", "← Passage précédent"], "Pasaje siguiente →": ["Next passage →", "Passage suivant →"], "Mostrar las tres traducciones": ["Show all three translations", "Afficher les trois traductions"], "Imprimir / guardar PDF": ["Print / save PDF", "Imprimer / enregistrer en PDF"], "Buscar en el tratado": ["Search the treatise", "Rechercher dans le traité"], "Palabra o frase": ["Word or phrase", "Mot ou expression"], "Ámbito": ["Scope", "Portée"], "Coincidencia": ["Match", "Correspondance"], "Los diez libros": ["All ten books", "Les dix livres"], "Este libro de Vitruvio": ["This book of Vitruvius", "Ce livre de Vitruve"], "Todas las palabras": ["All words", "Tous les mots"], "Frase exacta": ["Exact phrase", "Expression exacte"], "Todas las formas del lema": ["All forms of the lemma", "Toutes les formes du lemme"], "Por sentido · IA (agrupa pasajes)": ["By meaning · AI (groups passages)", "Par sens · IA (regroupe les passages)"], "Buscar →": ["Search →", "Rechercher →"], "Prólogo": ["Preface", "Préface"], "TEXTO LATINO": ["LATIN TEXT", "TEXTE LATIN"], "TRADUCCIÓN": ["TRANSLATION", "TRADUCTION"], "REFERENCIA BIBLIOGRÁFICA": ["BIBLIOGRAPHIC REFERENCE", "RÉFÉRENCE BIBLIOGRAPHIQUE"], "Edición consultada": ["Edition consulted", "Édition consultée"], "Copiar cita Chicago 18 del pasaje": ["Copy Chicago 18 passage citation", "Copier la référence du passage (Chicago 18)"], "Procedencia y referencia del texto": ["Text provenance and reference", "Provenance et référence du texte"], "Cobertura del índice": ["Index coverage", "Couverture de l’index"], "Continuar investigación:": ["Continue research:", "Poursuivre la recherche :"], "Notas críticas": ["Critical notes", "Notes critiques"], "Scriptorium y folios": ["Scriptorium and folios", "Scriptorium et folios"], "Apariencia del visor": ["Reader appearance", "Apparence du lecteur"], "Combinación": ["Colour scheme", "Palette"], "Original": ["Original", "Original"], "Negro · blanco": ["Black · white", "Noir · blanc"], "Marfil": ["Ivory", "Ivoire"], "Sepia": ["Sepia", "Sépia"], "Personalizado": ["Custom", "Personnalisé"], "Fondo": ["Background", "Fond"], "Texto": ["Text", "Texte"], "Tipografía": ["Typeface", "Police"], "Sistema": ["System", "Système"], "Cursiva": ["Italic", "Italique"], "Restablecer": ["Reset", "Réinitialiser"], "Se aplica únicamente a los textos del visor bilingüe.": ["Applies to the texts in the bilingual reader.", "S’applique aux textes du lecteur bilingue."], "Ir al contenido principal": ["Skip to main content", "Aller au contenu principal"], "Saltar al texto": ["Skip to the text", "Aller au texte"], "Cargando índice de pasajes…": ["Loading passage index…", "Chargement de l’index des passages…"], "Activar fondo claro": ["Use light background", "Activer le fond clair"], "Activar fondo oscuro": ["Use dark background", "Activer le fond sombre"], "☆ Guardar": ["☆ Save", "☆ Enregistrer"]});
+ for(let n=1;n<=10;n++){const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"][n];translations["Libro "+roman]=["Book "+roman,"Livre "+roman]}
+ for(let n=1;n<=100;n++){translations["Capítulo "+n]=["Chapter "+n,"Chapitre "+n];translations["Sección "+n]=["Section "+n,"Section "+n]}
+ Object.assign(translations,{"TEXTO Y TRADUCCIONES": ["TEXT AND TRANSLATIONS", "TEXTE ET TRADUCTIONS"], "Secciones de la biblioteca": ["Library sections", "Sections de la bibliothèque"], "Navegación del lector": ["Reader navigation", "Navigation du lecteur"], "Personalizar visor bilingüe": ["Customise bilingual reader", "Personnaliser le lecteur bilingue"], "Continuar investigación": ["Continue research", "Poursuivre la recherche"], "Color del fondo del texto": ["Text background colour", "Couleur de fond du texte"], "Color del texto": ["Text colour", "Couleur du texte"], "Palabras clave por libro, prefacio y capítulo": ["Keywords by book, preface and chapter", "Mots-clés par livre, préface et chapitre"], "Haz clic en una palabra latina o griega para consultar el diccionario.": ["Click a Latin or Greek word to consult the dictionary.", "Cliquez sur un mot latin ou grec pour consulter le dictionnaire."], "El buscador por locus funciona en este lector; el visor externo de Google Drive puede ignorar el salto automático a la página.": ["Passage references work in this reader; the external Google Drive viewer may ignore automatic page jumps.", "Les références fonctionnent dans ce lecteur ; le lecteur externe Google Drive peut ignorer le saut automatique à la page."], "Los 731 loci están localizados en las tres versiones. V297 reúne VII.7.1–3 y VII.7.4–5 en dos bloques; el lector conserva esos conjuntos y los identifica expresamente.": ["All 731 passages are located in the three versions. V297 groups VII.7.1–3 and VII.7.4–5 into two blocks; the reader preserves and identifies those groups.", "Les 731 passages sont localisés dans les trois versions. V297 réunit VII.7.1–3 et VII.7.4–5 en deux blocs ; le lecteur conserve et signale ces regroupements."], "El índice sigue los encabezados de libro y capítulo y los párrafos numerados de los DOCX del autor. No constituye una nueva colación de manuscritos. Las páginas del PDF solo se indican cuando se ha localizado una coincidencia textual inequívoca.": ["The index follows book and chapter headings and numbered paragraphs in the author’s DOCX files. It is not a new manuscript collation. PDF pages are shown only when an unambiguous textual match has been identified.", "L’index suit les titres des livres et chapitres et les paragraphes numérotés des fichiers DOCX de l’auteur. Il ne constitue pas une nouvelle collation des manuscrits. Les pages PDF ne sont indiquées que lorsqu’une correspondance textuelle certaine a été identifiée."]});
  const reverse=new Map();
  Object.entries(translations).forEach(([es,variants])=>{
    for(const key of [es,...variants])if(!reverse.has(key))reverse.set(key,es);
  });
- const preserved='script,style,template,code,pre,textarea,noscript,svg,[translate="no"],[lang="la"],[lang="grc"],[lang="gr"],[lang="el"],.codicum-stemma,.codex-siglum,[data-codex-siglum],.reader-transcript,.passage-text,.latin-name,.greek-name';
+ const preserved='script,style,template,code,pre,textarea,noscript,svg,[translate="no"],[lang="la"],[lang="grc"],[lang="gr"],[lang="el"],.codicum-stemma,.codex-siglum,[data-codex-siglum],.reader-transcript,.passage-text,.latin-name,.greek-name,.scholarly-text,#edition-citation,#edition-metadata';
  let current='es';
  try{const value=localStorage.getItem(KEY);if(codes.includes(value))current=value;}catch{}
- const originals=new WeakMap();
+ const originals=new WeakMap(),attributeOriginals=new WeakMap();
  function translate(root=document){
   const walker=document.createTreeWalker(root.body||root,NodeFilter.SHOW_TEXT);
   let node;
   while((node=walker.nextNode())){
    const parent=node.parentElement;
-   if(!parent||parent.closest(preserved)||parent.closest('.site-global-language'))continue;
+   if(!parent||(parent.closest(preserved)&&!parent.matches('.scholarly-panel > .eyebrow,.reader-dictionary-hint'))||parent.closest('.site-global-language'))continue;
    const text=node.nodeValue,trim=text.trim();
    if(!trim)continue;
    let source=originals.get(node);
@@ -128,6 +132,15 @@
    if(!variants)continue;
    const next=current==='es'?source:variants[current==='en'?0:1];
    if(trim!==next)node.nodeValue=text.slice(0,text.indexOf(trim))+next+text.slice(text.indexOf(trim)+trim.length);
+  }
+  for(const element of (root.querySelectorAll?root:document).querySelectorAll('[aria-label],[title],[placeholder]')){
+   if(element.closest(preserved))continue;
+   let saved=attributeOriginals.get(element);if(!saved){saved={};attributeOriginals.set(element,saved)}
+   for(const name of ['aria-label','title','placeholder']){
+    const raw=element.getAttribute(name);if(!raw)continue;
+    const source=saved[name]||(saved[name]=reverse.get(raw)||raw),values=translations[source];
+    if(values){const next=current==='es'?source:values[current==='en'?0:1];if(raw!==next)element.setAttribute(name,next)}
+   }
   }
   document.documentElement.lang=current;
  }
@@ -143,6 +156,24 @@
  '@media(max-width:600px){.header-inner>.site-global-language{display:inline-flex;margin:15px 0 10px}}' +
  '@media print{.site-global-language,.site-global-language-inline{display:none!important}}';
  document.head.append(style);
+ let readerObserver=null;
+ function watchReader(){
+  if(readerObserver||!document.getElementById('reading'))return;
+  readerObserver=new MutationObserver(records=>{
+   const roots=new Set(records.map(r=>r.target.nodeType===3?r.target.parentElement:r.target));
+   for(const root of roots)translate(root);
+  });
+  for(const root of document.querySelectorAll('#form,#find-form,.passage-toolbar,#bilingual-appearance'))
+   readerObserver.observe(root,{childList:true,characterData:true,subtree:true});
+ }
+ document.addEventListener('vitruvius:language-changed',event=>{
+  const next=event.detail?.language;
+  if(!['es','en','fr'].includes(next)||next===current)return;
+  current=next;translate();
+ });
+ document.addEventListener('vitruvius:interface-mounted',event=>{
+  if(event.detail?.root){translate(event.detail.root);readerObserver?.observe(event.detail.root,{childList:true,characterData:true,subtree:true})}
+ });
  function dispatch(){
   try{localStorage.setItem(KEY,current);}catch{}
   translate();
@@ -157,6 +188,7 @@
  }
  function init(){
   if(!document.body)return;
+  watchReader();
   const existing=document.querySelector('#classic-ui-language,#atlas-language-select,.header-languages select,#ui-language');
   if(existing){bindExisting(existing);return;}
   if(document.querySelector('.site-global-language'))return;

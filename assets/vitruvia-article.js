@@ -4,12 +4,13 @@
 */
 (()=>{"use strict";
 const root=document.getElementById("vitruvia-article");if(!root)return;
-const $=id=>document.getElementById(id);
+let articleBodyTarget=null;
+const $=id=>id==="article-body"&&articleBodyTarget?articleBodyTarget:document.getElementById(id);
 const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=String(text||"");if(cls)e.className=cls;return e};
 const normalized=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
 const sentences=s=>String(s||"").replace(/\s+/g," ").trim();
 const cut=(s,n)=>{const x=sentences(s);return x.length>n?x.slice(0,n).replace(/\s+\S*$/,"")+"…":x};
-let active=0;
+let active=0,renderedKey="",renderingKey="",renderedTopic=false;
 const summaries=new Map();
 let bibliographyContext={rows:[],query:""};
 
@@ -748,16 +749,17 @@ const arkSections=[
 ["Iconografía y recepción","El Arca ha sido representada en manuscritos, pinturas, reconstrucciones de templos y expresiones populares. Su iconografía combina el cofre, las varas de transporte, los querubines y los espacios de culto. Para una investigación histórico-artística, las imágenes deben catalogarse por fecha, procedencia, autoría y relación con el texto de referencia."],
 ["Método crítico y relación con Vitruvio","La descripción bíblica y el De architectura de Vitruvio pertenecen a tradiciones literarias y contextos diferentes. Puede realizarse un análisis comparado de proporciones, materiales, mobiliario sagrado y arquitectura de templos. Esa comparación no constituye una mención directa del Arca por Vitruvio. Solo los loci realmente recuperados del tratado deben presentarse como pruebas de una relación textual."]
 ];
-async function topicWikiData(query){
+const topicRequests=new Map();
+function topicWikiData(query){const key=(document.documentElement.lang||"es")+":"+query;if(!topicRequests.has(key)){const request=loadTopicWikiData(query).catch(error=>{topicRequests.delete(key);throw error});topicRequests.set(key,request);if(topicRequests.size>30)topicRequests.delete(topicRequests.keys().next().value)}return topicRequests.get(key)}
+async function loadTopicWikiData(query){
  const variations=[query,normalized(query).replace(/^(el|la|los|las|the|le|les) /,"")];
  const langs=[...new Set([document.documentElement.lang||"es","es","en"])];
  for(const lang of [...new Set(langs)]){
   for(const term of variations){
    try{
     const p=new URLSearchParams({action:"query",generator:"search",gsrsearch:term,gsrlimit:"5",prop:"extracts|info",explaintext:"1",exsectionformat:"wiki",inprop:"url",format:"json",origin:"*"});
-    const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+p);
-    if(!response.ok)continue;
-    const json=await response.json();
+    const url="https://"+lang+".wikipedia.org/w/api.php?"+p;
+    const json=window.VitruviaData?await window.VitruviaData.remoteJSON(url,{timeoutMs:6000}):await fetch(url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()});
     const pages=Object.values(json.query?.pages||{}).filter(x=>x.extract?.length>300);
     const clean=x=>normalized(x).replace(/^(el|la|los|las|the|le|les) /,"");
     const selected=pages.find(x=>clean(x.title)===clean(term))||pages.find(x=>clean(x.title).includes(clean(term))||clean(term).includes(clean(x.title)));
@@ -1136,6 +1138,35 @@ function addTopicBibliography(rows,query,ark){
   $("article-body").append(list);
  }
 }
+function refreshTopicSources(rows,query){
+ const body=document.getElementById("article-body");if(!body)return;
+ let details=body.querySelector("#article-academic-expansion");
+ if(!details){
+  details=make("details",undefined,"article-academic-expansion");details.id="article-academic-expansion";
+  details.append(make("summary",phrase("Fuentes antiguas, universidades, códices y bibliografía especializada",
+   "Ancient sources, universities, manuscripts and scholarly bibliography",
+   "Sources anciennes, universités, manuscrits et bibliographie scientifique")));
+  const before=body.querySelector(".article-related");
+  if(before)before.before(details);else body.append(details);
+ }
+ const contents=make("div",undefined,"article-academic-expansion-inner"),previous=articleBodyTarget;
+ try{
+  articleBodyTarget=contents;
+  appendLocalRepositoryResources(rows,query);appendCuratedUniversities(rows);appendManuscriptHierarchy(rows,query);
+  appendCuratedEvidence(rows);appendReferenceBooks(rows,query);appendOfficialHistoricalSources(query);
+  const topic=normalized(query),ark=topic.includes("arca de la alianza")||topic.includes("ark of the covenant")||topic.includes("arca del pacto");
+  appendInstitutionalResearch(query);addTopicBibliography(rows,query,ark);
+ }finally{articleBodyTarget=previous}
+ const current=details.querySelector(".article-academic-expansion-inner");
+ if(current)current.replaceWith(contents);else details.append(contents);
+ details.hidden=!contents.childNodes.length;
+}
+function refreshArticleSources(rows,query,person){
+ const sources=rows.filter(x=>x.link&&relevance({...x,title:[x.title,x.author||""].join(" ")},query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum","book","edition","manuscript"].includes(x.type));
+ refreshTopicSources(rows,person?.name||query);aside(sources);references(rows);
+ window.VitruviaAuthorReading?.render(rows,person?.name||query,person);
+}
+
 async function renderTopic(top,rows,query,token,person=null){
  const authority=rows.find(r=>r.preferredWiki);
  const topicPlan=window.VitruviaDiscovery?.plan(query,{canonical:authority?.entityCanonical,kind:authority?.entityKind,authorityDescription:authority?.entityDescription})||{kind:"topic"};
@@ -1191,27 +1222,7 @@ async function renderTopic(top,rows,query,token,person=null){
  window.VitruviaAuthorReading?.render(rows,documentaryQuery,person);
  const contextSources=await appendObjectContext(topicPlan,token);
  if(token!==active)return;
- // Advanced sources are present, but do not interrupt a general or school-level biography.
- const body=$("article-body"),previousNodes=new Set([...body.childNodes]);
- appendLocalRepositoryResources(rows,documentaryQuery);
- appendCuratedUniversities(rows);
- appendManuscriptHierarchy(rows,documentaryQuery);
- appendCuratedEvidence(rows);
- appendReferenceBooks(rows,documentaryQuery);
- appendOfficialHistoricalSources(documentaryQuery);
- appendInstitutionalResearch(documentaryQuery);
- addTopicBibliography(rows,documentaryQuery,ark);
- const advanced=[...body.childNodes].filter(node=>!previousNodes.has(node));
- if(advanced.length){
-  const details=make("details",undefined,"article-academic-expansion");
-  details.id="article-academic-expansion";
-  details.append(make("summary",phrase("Fuentes antiguas, universidades, códices y bibliografía especializada",
-   "Ancient sources, universities, manuscripts and scholarly bibliography",
-   "Sources anciennes, universités, manuscrits et bibliographie scientifique")));
-  const contents=make("div",undefined,"article-academic-expansion-inner");
-  for(const node of advanced)contents.append(node);
-  details.append(contents);body.append(details);
- }
+ refreshTopicSources(rows,documentaryQuery);
  heading("VI · Imágenes y documentación visual");
  paragraph("Las vistas previas documentales se presentan en la galería con enlaces a su procedencia, autor y licencia.","article-note");
  const galleryLink=href("#vitruvia-images","Consultar galería de imágenes documentadas");
@@ -1587,23 +1598,44 @@ function renderPreface(rows,query,intent){
  references(records,phrase('Texto latino y traducción procedentes de las ediciones estructuradas del sitio. La numeración de los loci no equivale a una foliación manuscrita.','Latin text and translations from the site’s structured editions. Passage numbering must not be confused with manuscript foliation.','Textes latins et traductions issus des éditions structurées du site. La numérotation des passages ne correspond pas aux folios manuscrits.'));
 }
 
-function render(rows,q,person=null){
- const token=++active;
+function begin(q){
+ active++;renderedKey="";renderingKey="";renderedTopic=false;
+ bibliographyContext={rows:[],query:q||""};root.hidden=true;
+}
+function render(rows,q,person=null,options={}){
  bibliographyContext={rows:rows||[],query:person?.name||q||""};
- if(!q){root.hidden=true;return}
- $("article-evidence")?.replaceChildren();
- const referenceIntent=window.VitruviaResearchEngine?.classify(q);
- if(referenceIntent?.preface){renderPreface(rows||[],q,referenceIntent.preface);return}
- if(isVitruviusAuthority(q)){renderVitruviusAuthority(rows||[]);return}
- const found=rows||[];
+ if(!q){begin("");return}
+ const found=rows||[],referenceIntent=window.VitruviaResearchEngine?.classify(q);
  const top=found.length?choose(found,q):{type:"topic",title:q};
  const isCodex=/(?:codex|harley|harleianus|ms\s*2767)/i.test(q);
  const isLocus=/(?:[IVX]{1,4}|\d{1,2})\s*[.,:]\s*\d{1,2}\s*[.,:]\s*\d{1,2}/i.test(q);
- if(isCodex&&top.type==="manuscript"){renderManuscript(top,found);return}
- if(isLocus&&top.type==="passage"){renderLocus(top,found);highlightArticle(q);return}
+ const specialized=!!(referenceIntent?.preface||isVitruviusAuthority(q)||isCodex&&top.type==="manuscript"||isLocus&&top.type==="passage");
+ const wanted=document.documentElement.lang||"es";
+ const wiki=found.filter(x=>x.type==="wikipedia"&&x.pageid&&(x.preferredWiki||relevance(x,person?.name||q)>=40))
+  .sort((a,b)=>Number(!!b.preferredWiki)-Number(!!a.preferredWiki)||Number(b.wikiLang===wanted)-Number(a.wikiLang===wanted)||relevance(b,q)-relevance(a,q))[0];
+ const exact=found.find(x=>x.type==="passage"&&x.exactTextMatch&&x.workId);
+ // While source discovery runs, do not start a duplicate encyclopedia search for
+ // every partial result. Local result cards remain usable throughout.
+ if(options.progressive&&!options.final&&!specialized&&!wiki&&!exact)return;
+ const key=JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
+ if(key===renderedKey||key===renderingKey){
+  if(key===renderedKey&&renderedTopic)refreshArticleSources(found,q,person);
+  return;
+ }
+ const token=++active;renderingKey=key;renderedTopic=false;
+ $("article-evidence")?.replaceChildren();
+ const done=()=>{if(token!==active)return;renderedKey=key;renderingKey=""};
+ if(referenceIntent?.preface){renderPreface(found,q,referenceIntent.preface);done();return}
+ if(isVitruviusAuthority(q)){renderVitruviusAuthority(found);done();return}
+ if(isCodex&&top.type==="manuscript"){renderManuscript(top,found);done();return}
+ if(isLocus&&top.type==="passage"){renderLocus(top,found);highlightArticle(q);done();return}
  void renderTopic({type:"topic",title:q},found,q,token,person).then(()=>{
-  if(token===active)highlightArticle(person?.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q);
- });
+  if(token!==active)return;
+  highlightArticle(person?.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q);
+  done();renderedTopic=true;
+  refreshArticleSources(bibliographyContext.rows,q,person);
+ }).catch(()=>{if(token===active)renderingKey=""});
 }
-window.VitruviaArticles={render,version:"1.2-preface-primary"};
+window.VitruviaArticles={render,begin,version:"1.2-preface-primary"};
 })();
+

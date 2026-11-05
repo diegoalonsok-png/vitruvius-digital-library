@@ -13,7 +13,7 @@ const KIND={es:{comparativa:"Aparato crítico comparativo",filologica:"Nota ecd�
 const STOP=new Set("aparato critico critica apparatus apparat critique critical nota notas note notes ecdotica de la el los las del en y a que se un una por con para su sus al lo como es o the of and to in a is for on by with as an le les des du et un une dans pour par sur au aux est qui que ne pas".split(" "));
 const fold=s=>String(s??"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 let promise=null;
-function load(){if(!promise)promise=fetch(URL_INDEX).then(r=>{if(!r.ok)throw Error("Aparato: HTTP "+r.status);return r.json()}).then(d=>{
+function load(){if(!promise)promise=(window.VitruviaData?window.VitruviaData.json(URL_INDEX):fetch(URL_INDEX).then(r=>{if(!r.ok)throw Error("Aparato: HTTP "+r.status);return r.json()})).then(d=>{
  for(const e of d.entries){e._hay=fold([e.label,e.text,e.anchor,(e.references||[]).join(" ")].join(" "));e._loci=new Set([e.locusMention,...(e.loci||[])].filter(Boolean))}
  return d}).catch(e=>{promise=null;throw e});return promise}
 const roman=n=>["","I","II","III","IV","V","VI","VII","VIII","IX","X"][n]||String(n);
@@ -82,3 +82,4 @@ function toRow(e,q,lang="es"){
 }
 window.KuriloApparatus={load,forLocus,search,excerpt,toRow,cite,relationLabel,kindLabel:(k,l)=>(KIND[l]||KIND.es)[k]||k,version:"1.0"};
 })();
+

@@ -31,7 +31,7 @@ function loadHtml(path){
 }
 function load(id,lang){
  const k=id+"-"+lang;
- if(!cache.has(k))cache.set(k,fetch("data/classics-corpus/"+k+".json").then(r=>r.ok?r.json():null).catch(()=>null));
+ if(!cache.has(k))cache.set(k,(window.VitruviaData?window.VitruviaData.json("data/classics-corpus/"+k+".json"):fetch("data/classics-corpus/"+k+".json").then(r=>r.ok?r.json():null)).catch(()=>null));
  return cache.get(k);
 }
 const fold=s=>window.ClassicalLexicon?window.ClassicalLexicon.fold(s):String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").replace(/j/g,"i").replace(/v/g,"u");
@@ -70,3 +70,4 @@ async function search(q,{limit=8}={}){
 }
 window.ClassicsCorpusSearch={search,works:WORKS.map(w=>({id:w[0],lang:w[1],author:w[2],title:w[3]}))};
 })();
+

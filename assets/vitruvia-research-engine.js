@@ -173,7 +173,7 @@ function classify(q){
  const preface=prefaceIntent(q);
  return {locus:l,preface,codex:c,harley:h,vitruvian:genericVitruvian,edition:bib,kind:preface?"preface":l?"locus":c?"manuscript":bib?"bibliography":"concept"};
 }
-async function fetchJSON(url){const response=await fetch(base+url,{headers:{accept:"application/json"}});if(!response.ok)throw Error("Archivo no disponible: "+url+" ("+response.status+")");return response.json()}
+async function fetchJSON(url){if(window.VitruviaData)return window.VitruviaData.json(base+url);const response=await fetch(base+url,{headers:{accept:"application/json"}});if(!response.ok)throw Error("Archivo no disponible: "+url+" ("+response.status+")");return response.json()}
 function getCorpora(){if(!corporaPromise)corporaPromise=Promise.allSettled(catalogPaths.map(fetchJSON)).then(res=>{
  const good=res.filter(x=>x.status==="fulfilled").map(x=>x.value);
  if(!good.length)throw Error("Ninguna de las ediciones estructuradas está disponible");

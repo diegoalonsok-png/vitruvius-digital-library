@@ -5,6 +5,10 @@
 "use strict";
 if(window.top!==window.self||/[?&]embed=1\b/.test(location.search)||document.querySelector(".site-bar"))return;
 const me=document.currentScript?.src||"";const root=me.replace(/assets\/site-bar\.js.*$/,"");
+if(!document.querySelector('script[data-fast-navigation]')){
+ const navigation=document.createElement("script");navigation.src=root+"assets/fast-navigation.js?v=20261105-academic-navigation-2";
+ navigation.dataset.fastNavigation="";navigation.defer=true;document.head.append(navigation);
+}
 const LINKS=[
  ["Biblioteca","Inicio","index.html"],
  ["Lector bilingüe","Lector","lector-bilingue.html"],
@@ -108,6 +112,13 @@ ready(()=>{
   const m=c.match(/\d+(\.\d+)?/g)||[246,243,237];nav.style.setProperty("--sb-bg",`rgba(${m[0]},${m[1]},${m[2]},.94)`)};
  const skip=document.querySelector("a.skip,.skip-link");
  if(skip)skip.after(nav);else document.body.prepend(nav);
+ const barLanguage=event=>{
+  const lang=event?.detail?.language||document.documentElement.lang||"es";
+  const names={en:[["Library","Home"],["Bilingual reader","Reader"],["Codex H","Codex H"],["Indices and collation","Indices"],["Classical library","Classics"],["Vitruvia","Vitruvia"]],fr:[["Bibliothèque","Accueil"],["Lecteur bilingue","Lecteur"],["Codex H","Codex H"],["Index et collation","Index"],["Bibliothèque classique","Classiques"],["Vitruvia","Vitruvia"]]};
+  nav.setAttribute("aria-label",lang==="en"?"Library sections":lang==="fr"?"Sections de la bibliothèque":"Secciones de la biblioteca");
+  [...nav.querySelectorAll("a")].forEach((a,i)=>{const pair=names[lang]?.[i]||LINKS[i];a.querySelector(".sb-long").textContent=pair[0];a.querySelector(".sb-short").textContent=pair[1]});
+ };
+ barLanguage();document.addEventListener("vitruvius:language-changed",barLanguage);
  ensureSelectionAudio();
  // Allow other deferred controls to mount before placing the typography button.
  // The bilingual text reader has its own controls INSIDE the Latin and translation panels.
@@ -119,3 +130,4 @@ ready(()=>{
 })();
 // Guardia de legibilidad: corrige solo textos con contraste insuficiente (< 3:1) en cualquier tema o fondo.
 (()=>{if(document.querySelector('script[src*="contrast-guard.js"]'))return;const s=document.createElement('script');s.src='assets/contrast-guard.js?v=20261105-v1';s.defer=true;document.head.append(s)})();
+
