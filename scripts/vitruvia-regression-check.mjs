@@ -60,8 +60,9 @@ const isLocal=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.p
  &&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
 const hasSource=w=>!!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest
  ||w.witnessRecords?.length||w.historicEditions?.length);
-const filters=new Function("works","$","fold","isLocal","hasSource","periodFocus",
- classical.slice(first,last)+";return filters;")(works,field,fold,isLocal,hasSource,()=>true);
+const searchFold=s=>fold(s).replace(/[^\p{L}\p{N}]+/gu," ").trim();
+const filters=new Function("works","$","fold","searchFold","isLocal","hasSource","periodFocus",
+ classical.slice(first,last)+";return filters;")(works,field,fold,searchFold,isLocal,hasSource,()=>true);
 for(const [q,min] of [["Cicerón",10],["Homero",3],["Platón",7],["tratados clásicos",25],["odisea",1]]){
  query=q;const results=filters();
  assert.ok(results.length>=min,q+" matched only "+results.length+" records");

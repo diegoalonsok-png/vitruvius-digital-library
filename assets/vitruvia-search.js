@@ -614,13 +614,10 @@ function renderCard(d){
  if(d.primaryWitness){card.setAttribute("aria-label","Testimonio manuscrito destacado: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
  const kindLabels={manuscript:"CÓDICE · TESTIMONIO MANUSCRITO",apparatus:"APARATO CRÍTICO · EDICIONES DE DIEGO KURILO",authority:"FUENTE OFICIAL · AUTORIDAD ACTUAL",fragment:"PAPIRO · TESTIMONIO FRAGMENTARIO",university:"UNIVERSIDAD · INVESTIGACIÓN",scholar:"INVESTIGADOR · ESTUDIOS ESPECIALIZADOS"};
  // Nivel de evidencia: qué clase de fuente es, para que el lector pondere el resultado.
- const evidence={manuscript:"fuente primaria",fragment:"fuente primaria",passage:"fuente primaria",preface:"fuente primaria",paragraph:"fuente primaria","text-external":"fuente primaria",
-  apparatus:"edición crítica",edition:"edición crítica",collation:"edición crítica",
-  book:"estudio o edición",googlebook:"estudio o edición",openlibrary:"estudio o edición",article:"estudio",scholar:"estudio",university:"estudio","bibliography-item":"estudio",
-  wikipedia:"obra de referencia",wikidata:"obra de referencia",encyclopedia:"obra de referencia",topic:"obra de referencia",
-  authority:"fuente oficial",museum:"colección institucional",portal:"portal institucional","archive-portal":"archivo institucional"}[d.type];
- title.append(node("span","kind",(T()[d.type]||kindLabels[d.type]||d.type.toUpperCase())+(evidence?" · "+evidence.toUpperCase():"")),node("h3",null,d.title));head.append(title);card.append(head);
- card.dataset.evidence=({"fuente primaria":"primary","edición crítica":"edition","estudio o edición":"study","estudio":"study","obra de referencia":"reference","fuente oficial":"institution","colección institucional":"institution","portal institucional":"institution","archivo institucional":"institution"})[evidence]||"other";
+ const documented=window.VitruviaEvidence?.classify(d);
+ const evidenceLabel=window.VitruviaEvidence?.label(d,S.lang)||"fuente enlazada";
+ title.append(node("span","kind",(T()[d.type]||kindLabels[d.type]||d.type.toUpperCase())+" · "+evidenceLabel.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
+ card.dataset.evidence=documented?.key||"source";
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
  if(d.type==="passage"&&d.latin&&d.translation){
