@@ -260,6 +260,8 @@ function render(panel,query,rows,stillCurrent){
   localized('Arquitectura · trayectoria y obras','Architecture · career and works','Architecture · carrière et œuvres'):
   localized('Arquitectura · planos y cortes','Architecture · drawings and sections','Architecture · plans et coupes'));
  panel.append(area);
+ const apiId=subject.identity?.wikidataId;
+ if(subject.kind==='person')listConstructedWorks(area,subject.subject,apiId,stillCurrent);
  const summary=subject.kind==='person'?
   localized('Estilo y años de actividad según registros documentales, cuando constan. Los planos se atribuyen solo si la fuente permite relacionarlos con este arquitecto o sus obras.',
    'Style and working years are shown only when documented. Drawings are attributed only when their source links them to the architect or a known work.',
@@ -274,8 +276,6 @@ function render(panel,query,rows,stillCurrent){
   if(/^https:\/\//.test(subject.identity.link||''))area.append(link(
     localized('Biografía y fuentes de la ficha ↗','Biography and sources ↗','Biographie et sources ↗'),subject.identity.link));
  }
- const apiId=subject.identity?.wikidataId;
- if(subject.kind==='person')listConstructedWorks(area,subject.subject,apiId,stillCurrent);
  const facts=el('div','architecture-facts');area.append(facts);
  const gallery=el('div','architecture-gallery');area.append(gallery);
  const status=el('p','context-note',localized('Buscando planos y cortes documentados…','Searching documented plans and sections…','Recherche de plans et coupes documentés…'));gallery.append(status);
