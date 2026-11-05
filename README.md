@@ -97,11 +97,11 @@ Se agradecen observaciones de latinistas, filólogos clásicos, historiadores de
 
 ## Reference aliases and reproducible lookup
 
-The canonical *De architectura* preface locus is written as \`2.praef.1\` (book II, preface, section 1). Search and direct-locus input also accept \`2.pr.1\`, \`II.pref.1\`, \`prefacio I del libro II\` and \`prefacio del libro II, sección 1\`. These forms resolve to the same indexed passage without rewriting the historical testimony or the editor's source wording.
+The canonical *De architectura* preface locus is written as `2.praef.1` (book II, preface, section 1). Search and direct-locus input also accept `2.pr.1`, `II.pref.1`, `prefacio I del libro II` and `prefacio del libro II, sección 1`. These forms resolve to the same indexed passage without rewriting the historical testimony or the editor's source wording.
 
-An unqualified shorthand such as \`libro 2 - 1\` means **book II, chapter 1**, not the preface. In Vitruvia the search also offers an alternative link to preface II.1, so the two are not silently conflated. \`prefacio I del libro\` without a book number searches the first section of the prefaces across books; the software does not invent a missing book number.
+An unqualified shorthand such as `libro 2 - 1` means **book II, chapter 1**, not the preface. In Vitruvia the search also offers an alternative link to preface II.1, so the two are not silently conflated. `prefacio I del libro` without a book number searches the first section of the prefaces across books; the software does not invent a missing book number.
 
-Regression tests: \`node tests/locus-aliases.mjs\`. All automated associations remain navigational conveniences, not manuscript collation or independent validation of the textual readings.
+Regression tests: `node tests/locus-aliases.mjs`. All automated associations remain navigational conveniences, not manuscript collation or independent validation of the textual readings.
 
 ## Deployment and rights
 
