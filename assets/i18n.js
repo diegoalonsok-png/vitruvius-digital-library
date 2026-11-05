@@ -537,5 +537,12 @@ function setupLanguage(){
  }
  translateRoot();
 }
+/* React to shared selectors on secondary pages while retaining the full front-page glossary. */
+document.addEventListener('vitruvius:language-changed',event=>{
+ const next=event.detail?.language;
+ if(!['es','en','fr'].includes(next))return;
+ currentLanguage=next;
+ translateRoot();
+});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setupLanguage);else setupLanguage();
 
