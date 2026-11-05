@@ -28,7 +28,7 @@
   const queries=intent==="artworks"?[visualName+" painting",visualName+" artwork",query]:
    intent==="sculptures"?[visualName+" bust",visualName+" sculpture",query]:
    intent==="books"?[visualName+" book",visualName+" manuscript",query]:
-   kind==="person"?[visualName+" bust",visualName+" portrait painting",visualName+" book manuscript",visualName,subject]:
+   kind==="person"?(typeof identity.birthYear==="number"&&identity.birthYear>=1800?[visualName+" portrait photograph",visualName+" photographer",visualName+" at work",visualName,subject]:[visualName+" bust",visualName+" portrait painting",visualName+" book manuscript",visualName,subject]):
    kind==="object"?[visualName,visualName+" museum historic",visualName+" history book",subject]:[visualName,subject,query];
   return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),family:family?.id||null,
    contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0};
