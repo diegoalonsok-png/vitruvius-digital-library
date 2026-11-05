@@ -41,6 +41,15 @@ async function render(){
   el.append(d)
  }
  const more=document.createElement("p"),link=document.createElement("a");link.href="aparato-critico.html?locus="+encodeURIComponent(locus);link.textContent=t.all;more.append(link);el.append(more)
+ fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():null).then(d=>{if(!d||my!==ticket)return;
+  const ch=locus.split(".").slice(0,2).join("."),rel=d.entries.filter(e=>e.locus&&(e.locus===locus||e.locus.split(".").slice(0,2).join(".")===ch));if(!rel.length)return;
+  const h=document.createElement("p");h.className="eyebrow";h.style.marginTop="14px";h.textContent=(lang==="en"?"RELATED HISTORICAL PLATES":lang==="fr"?"PLANCHES HISTORIQUES LIÉES":"LÁMINAS HISTÓRICAS RELACIONADAS");el.append(h);
+  const row=document.createElement("div");row.style.cssText="display:flex;gap:12px;flex-wrap:wrap";
+  for(const e of rel.slice(0,6)){const a=document.createElement("a");a.href="iconografia-vitruviana.html#lamina-"+e.id;a.style.cssText="display:flex;flex-direction:column;width:170px;font-size:.85em;gap:4px;text-decoration:none";
+   const src=e.status==="en el repositorio"?e.local:e.commons?"https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(e.commons.replace(/ /g,"_"))+"?width=340":null;
+   if(src){const im=document.createElement("img");im.src=src;im.alt=e.title;im.loading="lazy";im.style.cssText="width:170px;height:120px;object-fit:contain;background:#f3eee4";a.append(im)}
+   const c=document.createElement("span");c.textContent=e.title+" · "+[e.folio,e.plate].filter(Boolean).join(" · ");a.append(c);row.append(a)}
+  el.append(row)}).catch(()=>{})
 }
 function start(){
  const ref=$("passage-ref");if(!ref)return;

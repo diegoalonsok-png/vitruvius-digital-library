@@ -950,6 +950,17 @@ async function search(){
    rows:value.rows||[]
   })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
  }
+ if(internal){
+  pending.push(fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():{entries:[]}).then(d=>{
+   const f=x=>norm(String(x||"")),q=f(generalQuery),toks=q.split(/\s+/).filter(t=>t.length>3),loc=intent?.locus||null;
+   const rows=(d.entries||[]).map(e=>{const hay=f([e.title,e.author,e.work,e.edition,e.plate,e.folio,e.witness,e.relation].join(" "));
+    let r=0;if(loc&&e.locus&&(e.locus===loc||e.locus.startsWith(loc.split(".").slice(0,2).join(".")+".")))r+=120;for(const t of toks)if(hay.includes(t))r+=30;
+    return {e,r}}).filter(x=>x.r>=30*Math.max(1,Math.ceil(toks.length/2))||x.r>=120).sort((a,b)=>b.r-a.r).slice(0,6).map(({e,r})=>({type:"section",
+     title:e.title+" · "+[e.folio,e.plate].filter(Boolean).join(" · "),author:[e.author,e.work].filter(Boolean).join(", "),
+     excerpt:[e.edition,e.witness,e.relation].filter(Boolean).join(" · "),meta:"LÁMINA HISTÓRICA · "+(e.rights||""),rating:60+r,
+     link:"iconografia-vitruviana.html#lamina-"+e.id,source:"Atlas iconográfico · láminas"}));
+   return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
+ }
  if(internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
   pending.push(ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null}).then(hits=>({name:"Aparato crítico · ediciones Kurilo",
