@@ -15,11 +15,16 @@
  function darken(value){
   if(!valid(value))return defaultBg;
   const rgb=[1,3,5].map(i=>parseInt(value.slice(i,i+2),16));
-  const max=Math.max(...rgb);
-  const ratio=max>72?72/max:1;
-  return '#'+rgb.map(c=>Math.round(c*ratio).toString(16).padStart(2,'0')).join('');
+  return '#'+rgb.map(c=>c.toString(16).padStart(2,'0')).join('');
+ }
+ function ensureContrast(value){
+  if(!valid(value))value=defaultBg;
+  const linear=hex=>{const c=parseInt(hex,16)/255;return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4)};
+  const luminance=0.2126*linear(value.slice(1,3))+0.7152*linear(value.slice(3,5))+0.0722*linear(value.slice(5,7));
+  root.classList.toggle('front-color-light',luminance>0.32);
  }
  root.style.setProperty('--front-page-bg',fromStore());
+ ensureContrast(fromStore());
  function mount(){
   const controls=document.querySelector('.research-nav-controls');
   const moon=controls&&controls.querySelector('.theme-switch');
@@ -39,7 +44,7 @@
     '<label class="home-color-custom" for="home-custom-color">Color personalizado <input id="home-custom-color" type="color" value="#15191e"></label>'+
     '<button class="home-color-reset" id="home-color-reset" type="button">Restaurar negro original</button>'+
     '</div>';
-  moon.insertAdjacentElement('afterend',wrapper);
+  controls.append(wrapper); // Always the final control, after the language selector.
   const toggle=wrapper.querySelector('#home-palette-toggle');
   const panel=wrapper.querySelector('#home-color-panel');
   const grid=wrapper.querySelector('#home-swatch-grid');
@@ -53,6 +58,7 @@
   function setColor(value){
    const color=darken(value);
    root.style.setProperty('--front-page-bg',color);
+   ensureContrast(color);
    try{localStorage.setItem(key,color);}catch{}
    if(root.dataset.theme!=='dark')moon.click();
    paint();close();toggle.focus();
@@ -67,7 +73,7 @@
   });
   toggle.addEventListener('click',()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden));});
   custom.addEventListener('change',()=>setColor(custom.value));
-  reset.addEventListener('click',()=>{try{localStorage.removeItem(key);}catch{} root.style.setProperty('--front-page-bg',defaultBg);paint();close();toggle.focus();});
+  reset.addEventListener('click',()=>{try{localStorage.removeItem(key);}catch{} root.style.setProperty('--front-page-bg',defaultBg);ensureContrast(defaultBg);paint();close();toggle.focus();});
   document.addEventListener('pointerdown',event=>{if(!wrapper.contains(event.target))close();});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!panel.hidden){close();toggle.focus();}});
   paint();
