@@ -221,7 +221,10 @@ async function authorityCandidates(q,lang,intent=""){
   return {id,entity,title:site.title,lang:site.site?.replace(/wiki$/,"")||lang,
    score,coverage,spellingMatch:!exactLabel&&!exactAlias&&similarity?q:null,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
  }).filter(Boolean).sort((a,b)=>b.score-a.score);
- const best=ranked[0];
+ // A work-type query must not resolve to a homonym of an unrelated profession.
+ // A missing occupational match remains unresolved rather than presenting false works.
+ const eligible=intent?ranked.filter(item=>occupationFit(item.description,intent)>0):ranked;
+ const best=eligible[0];
  if(!best||(best.score<130&&best.coverage<12))return null;
  const [page,details]=await Promise.allSettled([
   lookupTitle(best.title,best.lang),
