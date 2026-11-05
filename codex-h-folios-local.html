@@ -202,4 +202,4 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
 </script><script src="assets/codex-h-single-controls.js?v=20261104-reader-controls-contrast-v3" defer></script><script src="assets/vitruvia-codex-loupe.js?v=20261104-filter-linked-loupe-v2" defer></script>
-<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script></body></html>
+<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script><script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".gallery .filter");const c=document.createElement("div");f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const s=document.getElementById("search");s.value=t;s.dispatchEvent(new Event("input"))}});});</script></body></html>
