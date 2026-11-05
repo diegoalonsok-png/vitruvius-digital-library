@@ -997,7 +997,7 @@ async function search(){
  // Resolve the subject independently of matching catalog titles.
  // Wikipedia titles and redirects supply canonical names for external retrieval.
  if(window.VitruviaEntityResolver&&wikiEnabled){
-  pending.push(window.VitruviaEntityResolver.resolve(generalQuery,S.lang).then(identity=>{
+  pending.push(window.VitruviaEntityResolver.resolve(q,S.lang).then(identity=>{
    if(!identity)return {name:"No se resolvió una entidad enciclopédica",rows:[]};
    const link=identity.url;
    return {name:"Entidad enciclopédica · "+identity.canonical,rows:[{
