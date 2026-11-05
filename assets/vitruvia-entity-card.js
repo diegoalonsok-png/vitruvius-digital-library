@@ -179,8 +179,9 @@ window.addEventListener("vitruvia:results",async e=>{setTimeout(place,0);
  const q=String(e.detail?.query||"").trim(),n=(e.detail?.rows||[]).length;
  if(!q||n>2||triedFallback.has(q)||skipCorrectionFor===q||!window.VitruviaUnderstand)return;triedFallback.add(q);
  const U=window.VitruviaUnderstand;
- let fix=U.localCorrect(q)||await U.generalCorrect(q).catch(()=>null);
- if(!fix){const r=await U.bestTitle(q,lang()).catch(()=>null);fix=r?.corrected||null}
+ // Orden: sugerencia de la enciclopedia (corrige solo lo mal escrito), luego nombres del sitio, luego vocabulario general.
+ let fix=(await U.bestTitle(q,lang()).catch(()=>null))?.corrected||null;
+ if(!fix)fix=U.localCorrect(q)||await U.generalCorrect(q).catch(()=>null);
  if(!fix||U.fold(fix)===U.fold(q))return;
  skipCorrectionFor=fix;originalBeforeCorrection=q;const input=$("query"),form=$("search-form");if(input&&form){input.value=fix;form.requestSubmit()}
 });
