@@ -102,7 +102,7 @@ function isLocal(w){return ["lectura-local-completa","lectura-local-parcial"].in
 function hasSource(w){return !!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest||w.witnessRecords?.length||w.historicEditions?.length)}
 function statusLabel(w){const d=summaryWords[language()]||summaryWords.es;if(!isLocal(w)&&w.perseus?.length)return ({es:"TEXTO EN VISOR",en:"TEXT IN VIEWER",fr:"TEXTE DANS LA VISIONNEUSE",it:"TESTO NEL VISORE",de:"TEXT IM BETRACHTER",pt:"TEXTO NO VISUALIZADOR"})[language()]||"TEXTO EN VISOR";return isLocal(w)?(w.publicStatus==="lectura-local-parcial"?d.statusLocal+" · PDF PARCIAL":d.statusLocal):hasSource(w)?d.statusExternal:d.statusCatalogue}
 function workSearchText(w){return [w.author,w.title,w.genre,w.dating,w.language,...(w.aliases||[]),
- ...(w.witnessRecords||[]).flatMap(ms=>[ms.title,ms.shelfmark,ms.library,ms.date]),
+ ...(w.witnessRecords||[]).flatMap(ms=>[ms.title,ms.shelfmark,ms.library,ms.date,ms.coverage]),
  ...(w.historicEditions||[]).flatMap(ed=>[ed.title,ed.editor,ed.year,ed.provider])].join(" ")}
 // Academic categories work on the existing catalogue data, not a fixed list of famous works.
 const technicalSubjects=/arquitect|ingenier|mecanic|hidraul|agricultur|agronom|medicin|farmacolog|botanic|astronom|geograf|cartograf|filosofi|retoric|oratori|poetic|exeges|linguist|historia natural|educacion/i;
@@ -528,6 +528,8 @@ async function boot(){
  const sort=$("classic-sort");if(sort)sort.addEventListener("change",()=>{hideBookSuggestions();render()});
  const clear=$("classic-clear");if(clear){const inp=$("classic-query");const sync=()=>{clear.hidden=!inp.value};inp.addEventListener("input",sync);clear.addEventListener("click",()=>{inp.value="";sync();hideBookSuggestions();render();inp.focus()});inp.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&inp.value){ev.preventDefault();inp.value="";sync();hideBookSuggestions();render()}});sync()}
  const startParams=new URLSearchParams(location.search),wanted=startParams.get("work");
+ const initialQuery=(startParams.get("q")||"").trim().slice(0,180);
+ if(initialQuery)$("classic-query").value=initialQuery;
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
  tab=["pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&sw?.localHtml?"text":sw?.pdf?.url?"pdf":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();showSelectedDetail=false;render();});translateInterface();render();initBookSuggestions();}
