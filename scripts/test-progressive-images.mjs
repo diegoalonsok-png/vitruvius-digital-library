@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const source=readFileSync(new URL('../assets/vitruvia-image-engine-v2.js',import.meta.url),'utf8');
+new vm.Script(source);
+const first=source.indexOf('Promise.allSettled(requests.slice(0,2).map(queryImages))');
+const early=source.indexOf('const early=collectedImages(pages,topic)');
+const rest=source.indexOf('Promise.allSettled(requests.slice(2).map(queryImages))');
+const category=source.indexOf('const categories=(await categoriesJob)');
+assert.ok(first>=0&&early>first&&rest>early&&category>rest,'First images must render before supplemental searches and categories');
+assert.match(source,/if\(id!==active\)return;\s*pages\.push\(\.\.\.remaining/,'Stale searches must not repaint');
+assert.match(source,/if\(!isArchitect&&!isFilm&&!\(identity\?\.kind==="person"&&creatorRole\)/,'Identity gate must remain');
+assert.match(source,/pages\.push\(\.\.\.remaining\.filter/,'Supplemental results must be included');
+assert.match(source,/img\.loading=parent===grid\?"lazy":"eager"/,'Preserve light thumbnails');
+assert.match(source,/vitruvia-image-unavailable/,'Preserve failed-image source links');
+console.log('Progressive image search: first batch, identity filtering and full coverage validated');
