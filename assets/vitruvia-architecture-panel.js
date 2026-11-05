@@ -147,7 +147,7 @@ function displayFacts(root,data){
 function constructedWorks(id){
  if(!/^Q\d+$/.test(id||''))return Promise.resolve([]);
  return remember('buildings:'+id,async()=>{
-  const sparql='SELECT DISTINCT ?work ?workLabel ?date ?locationLabel WHERE {'+
+  const sparql='SELECT DISTINCT ?work ?workLabel ?workDescription ?date ?locationLabel WHERE {'+
    ' ?work wdt:P84 wd:'+id+' .'+
    ' OPTIONAL { ?work wdt:P571 ?date . }'+
    ' OPTIONAL { ?work wdt:P131 ?location . }'+
@@ -163,7 +163,10 @@ function constructedWorks(id){
    if(!label||/^Q\d+$/.test(label))continue;
    const place=entry.locationLabel?.value||'';
    const date=String(entry.date?.value||'').match(/^-?\d{3,4}/)?.[0]||'';
-   if(!found.has(uri))found.set(uri,{title:label,date,place:place&&!/^Q\d+$/.test(place)?place:'',url:uri.replace('/entity/','/wiki/')});
+   const recordDescription=String(entry.workDescription?.value||'');
+   if(!found.has(uri))found.set(uri,{title:label,date,place:place&&!/^Q\d+$/.test(place)?place:'',
+    description:recordDescription&&!/^Q\d+$/.test(recordDescription)?recordDescription:'',
+    url:uri.replace('/entity/','/wiki/')});
   }
   return[...found.values()].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title)).slice(0,30);
  });
@@ -205,6 +208,19 @@ async function findArchitectQid(subject,existing){
  });
  return matches.length===1?matches[0].id:null; // Ambiguous identity is not guessed.
 }
+
+/* Editorial identifications tied to UNESCO's Frank Lloyd Wright component sites.
+   Photos themselves are retrieved from the matching building's Wikimedia record. */
+const architecturalNotes={
+ 'unity temple':['Templo de hormigón armado; combina el espacio de culto con una organización innovadora de la luz.','Unity Temple'],
+ 'frederick c robie house':['Casa de la Escuela de la Pradera, conocida por sus amplias líneas horizontales.','Robie House'],
+ 'taliesin':['Residencia y estudio de Wright integrados en el paisaje de Wisconsin.','Taliesin (studio)'],
+ 'hollyhock house':['Residencia proyectada para Aline Barnsdall en Los Ángeles.','Hollyhock House'],
+ 'fallingwater casa de la cascada':['Casa construida sobre una cascada, con terrazas en voladizo y arquitectura integrada al paisaje.','Fallingwater'],
+ 'herbert and katherine jacobs house':['Uno de los primeros ejemplos de vivienda usoniana de Wright.','Herbert Jacobs House'],
+ 'taliesin west':['Estudio, residencia y centro de enseñanza en el desierto de Arizona.','Taliesin West'],
+ 'solomon r guggenheim museum':['Museo de Nueva York organizado alrededor de una rampa helicoidal.','Solomon R. Guggenheim Museum']
+};
 function listConstructedWorks(root,name,id,valid){
  const section=el('section','architecture-built-list');
  heading(section,localized('Obras de arquitectura','Architectural works','Œuvres architecturales'));
@@ -221,6 +237,7 @@ function listConstructedWorks(root,name,id,valid){
   if(work.date||work.place)item.append(el('p','architecture-work-meta',[work.date,work.place].filter(Boolean).join(' · ')));
   if(provenance)item.append(el('p','architecture-work-meta',provenance));
   list.append(item);
+  window.VitruviaArchitectVisuals?.enhance(item,work);
  }
  if(certified){
   section.append(el('p','context-note',localized(
@@ -228,7 +245,10 @@ function listConstructedWorks(root,name,id,valid){
    'Documented selection: eight buildings inscribed on the UNESCO World Heritage List (2019). This is not a complete catalogue.',
    'Sélection documentaire : huit édifices inscrits au patrimoine mondial de l’UNESCO en 2019. Il ne s’agit pas d’un catalogue complet.'
   )));
-  for(const [title,date,place] of certified.items)addWork({title,date,place,url:certified.url},null);
+  for(const [title,date,place] of certified.items){
+   const [description,photoTitle]=architecturalNotes[normalize(title)]||[];
+   addWork({title,date,place,description,photoTitle,url:certified.url},null);
+  }
   section.append(link(localized('Fuente: ficha oficial de UNESCO ↗','Source: UNESCO official record ↗','Source : fiche officielle UNESCO ↗'),certified.url));
  }
  const status=el('p','context-note',localized('Consultando otras obras documentadas…','Checking additional documented works…','Recherche d’autres œuvres documentées…'));
