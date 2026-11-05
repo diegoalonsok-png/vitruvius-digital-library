@@ -1,0 +1,40 @@
+name: OCR y concordancia de Barbaro 1567 (italiano y latín)
+on:
+  push:
+    paths:
+      - 'scripts/ocr-barbaro-1567.py'
+      - 'scripts/build-barbaro-concordance.py'
+      - '.github/workflows/ocr-barbaro-1567.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ocr-barbaro-1567-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  ocr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar Tesseract (italiano y latín)
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-ita tesseract-ocr-lat
+      - name: OCR de las dos ediciones
+        run: python scripts/ocr-barbaro-1567.py it la
+      - name: Concordancia por libro, capítulo y locus
+        run: python scripts/build-barbaro-concordance.py
+      - name: Publicar en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/text/barbaro-1567-it.json data/text/barbaro-1567-la.json data/ocr/barbaro-1567-it data/ocr/barbaro-1567-la data/iiif/barbaro-latin-1567.json data/barbaro-1567-concordance.json
+          if ! git diff --cached --quiet; then
+            git commit -m "OCR y concordancia de Barbaro 1567 (italiano y latín)"
+            git pull --rebase
+            git push
+          fi
