@@ -154,13 +154,9 @@ function filters(){
 }
 let suggestionIndex=-1;
 function suggestedWorks(){
- const matched=filters();
- // Return EVERY matched work, not the previous arbitrary 10-result cap.
- // Prefer readable editions, then verified external text and catalog records.
- const priority=w=>isLocal(w)?0:hasSource(w)?1:2;
- return matched.sort((a,b)=>priority(a)-priority(b)||
-  fold(a.author).localeCompare(fold(b.author))||
-  fold(a.title).localeCompare(fold(b.title)));
+ // Preserve the same academic ranking and sort choice as the visible catalogue.
+ // Reordering suggestions by availability alone obscures exact shelfmark hits.
+ return filters();
 }
 function suggestionLabel(key){
  const dict={
