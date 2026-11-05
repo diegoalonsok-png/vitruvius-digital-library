@@ -154,7 +154,7 @@ async function qualifiedCreator(query,lang){
  if(!roleMatch)return null;
  const name=roleMatch[1].trim(),discipline=norm(roleMatch[2]);
  if(name.length<3||name.length>90)return null;
- const fields=/arquitect|architect/.test(discipline)?/\b(architect|arquitect|ingenier|engineer|architet|architecte)\b/i:
+ const fields=/arquitect|architect/.test(discipline)?/\b(architect\w*|arquitect\w*|ingenier\w*|engineer\w*|architet\w*|architecte\w*)\b/i:
   /film|pelicul|movie/.test(discipline)?/\b(director|filmmaker|cineasta|actor|actress|actriz|film)\b/i:
   /disco/.test(discipline)?/\b(musician|music|singer|band|cantante|musico|grupo|composer)\b/i:
   /libro|book/.test(discipline)?/\b(writer|author|escritor|novelist|poet|poeta)\b/i:
