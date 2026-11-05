@@ -33,7 +33,7 @@
  const area=location.pathname.endsWith("/vitruvia.html")?"vitruvia":
   location.pathname.endsWith("/bibliotheca-graeca-latina.html")?"bibliotheca":"vitruvius";
  if(area==="vitruvia"){
-  window.addEventListener("vitruvia:search",()=>{latestSearch++;track("site_search",{area:"vitruvia"})});
+  window.addEventListener("vitruvia:search",()=>{latestSearch++;const state=document.getElementById("result-state");if(state)delete state.dataset.completeMs;track("site_search",{area:"vitruvia"})});
   window.addEventListener("vitruvia:results",()=>{
    const state=document.getElementById("result-state");
    const ms=Number(state?.dataset.completeMs);
