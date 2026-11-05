@@ -5,10 +5,10 @@
      otro de distinta versión. Tras cinco minutos se espera a la red.
    - JS/CSS versionados (?v=): caché primero. Imágenes y PDF: caché primero con límite.
    - Recursos de otros dominios: no se interceptan. */
-const VERSION="vdl-20261105-academic-navigation-2";
+const VERSION="vdl-20261105-mobile-apps-3";
 const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
 const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html",
- "manifest.webmanifest","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
+ "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
 const MEDIA_LIMIT=400;
 self.addEventListener("install",e=>{e.waitUntil(caches.open(SHELL).then(c=>Promise.allSettled(CORE.map(u=>c.add(new Request(u,{cache:"reload"}))))).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil((async()=>{
@@ -59,6 +59,9 @@ async function updatePage(request,cache){
 }
 async function pageResponse(event){
  const cache=await caches.open(PAGES),hit=await cache.match(pageKey(event.request));
+ if(new URL(event.request.url).searchParams.get("source")==="install"){
+  try{return await updatePage(event.request,cache)}catch{return hit||(await caches.match("offline.html"))||Response.error()}
+ }
  if(hit&&Date.now()-Number(hit.headers.get("x-vitruvia-page-at")||0)<120000){
   event.waitUntil(updatePage(event.request,cache).catch(()=>{}));return hit;
  }
@@ -78,7 +81,7 @@ self.addEventListener("fetch",e=>{
  if(req.mode==="navigate"||req.destination==="document"||/\.html$/i.test(url.pathname)){e.respondWith(pageResponse(e));return}
  const p=url.pathname;
  if(/\.json$/i.test(p)){e.respondWith(dataResponse(e));return}
- if(/\.(?:js|mjs|css|svg|woff2?)$/i.test(p)){e.respondWith(url.search?cacheFirst(req,STATIC):networkFirst(req,STATIC));return}
+ if(/\.(?:js|mjs|css|svg|woff2?|webmanifest)$/i.test(p)){e.respondWith(url.search?cacheFirst(req,STATIC):networkFirst(req,STATIC));return}
  if(/\.(?:png|jpe?g|webp|gif|pdf)$/i.test(p)){e.respondWith(cacheFirst(req,MEDIA,MEDIA_LIMIT));return}
 });
 self.addEventListener("message",e=>{if(e.data==="skipWaiting")self.skipWaiting()});

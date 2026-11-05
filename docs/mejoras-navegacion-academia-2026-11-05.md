@@ -24,3 +24,9 @@ Esta validación comprueba integridad del índice y trazabilidad. No acredita au
 Comparación local sobre 4.163 pasajes: 24 búsquedas repetidas, 30.481 ms antes y 888 ms después, conservando los resultados y sus puntuaciones. Esta medición corresponde a recuperación local con índices cargados; no mide la latencia de Internet ni garantiza esos tiempos en otros dispositivos. En la vista de prueba, la consulta «Lucrecio» presentó sus primeros resultados en 194 ms; las fuentes externas continuaron completándose después.
 
 La revisión visual comprobó la resolución de `2.pr.1`, el latín con las tres traducciones y el cambio de controles a inglés y francés. La navegación normal, los enlaces directos y el historial permanecen a cargo del navegador.
+
+## Accesos instalables en celulares
+
+Vitruvius conserva su manifiesto e identidad de instalación. Vitruvia incorpora otro manifiesto, identificador, icono y página de inicio. Son accesos complementarios de una plataforma: comparten origen, service worker, documentos y preferencias; no se presentan como aplicaciones con almacenamiento aislado. La apertura desde los iconos dirige a la biblioteca o al buscador respectivamente. El comportamiento de captura de enlaces puede variar entre navegadores al compartir origen.
+
+`instalar-apps.html` explica los pasos de Android y Safari en iPhone/iPad. El botón de instalación abre la petición nativa únicamente tras una acción del usuario; cuando el navegador no ofrece esa petición, enlaza la guía. Los recursos externos siguen necesitando conexión y la instalación no descarga el corpus completo. Las pruebas verifican identidades distintas, destinos, iconos, metadatos en el `head` y apertura de la petición por acción explícita; la instalación en un teléfono físico debe comprobarse en el dispositivo del usuario.

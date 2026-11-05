@@ -21,3 +21,4 @@ jobs:
       - run: node scripts/test-vitruvia-performance.mjs
       - run: node scripts/academic-integrity.mjs
       - run: node scripts/test-navigation.mjs
+      - run: node scripts/test-pwa.mjs
