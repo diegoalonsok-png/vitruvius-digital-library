@@ -227,15 +227,19 @@ async function suggest(text,lang){
 /* Consulta completa: pregunta, corrección, entidad y respuesta directa si existe. */
 async function resolve(text,lang){
  lang=L(lang);const parsed=parseQuestion(text);
- // Primero la consulta tal como se escribió: las palabras correctas («Space», «espacio») nunca se
- // reemplazan por nombres parecidos del vocabulario del sitio («Pace», «Estacio»). El vocabulario
- // propio solo corrige cuando la enciclopedia no reconoce nada.
- let {title,corrected}=await bestTitle(parsed.subject,lang);
- if(!title){const local=localCorrect(parsed.subject);
-  if(local){const r2=await bestTitle(local,lang);if(r2.title){title=r2.title;corrected=r2.corrected||local}}}
- // Acepción elegida por la persona (otras acepciones): manda sobre la búsqueda automática.
+ // One verified identity for spelling corrections, the article and both panels.
+ // A sense explicitly selected by the visitor takes precedence.
  let forced=null;try{forced=JSON.parse(sessionStorage.getItem("vitruvia-sense")||"{}")[fold(parsed.subject)]||null}catch{}
- const ref=forced?{qid:forced,title}:await qidFor(title,lang);const f=ref?.qid?await facts(ref.qid,lang):null;
+ const authority=!forced&&window.VitruviaEntityResolver?await window.VitruviaEntityResolver.resolve(parsed.subject,lang).catch(()=>null):null;
+ let title=authority?.canonical||null,corrected=authority?.spellingMatch?authority.canonical:null;
+ if(!authority&&!forced){
+  // Keep the question parser's broad lookup, but do not assign an unrelated
+  // person to an unrecognised or badly misspelled name.
+  if(window.VitruviaEntityResolver&&!parsed.question)return{senses:[],original:text,subject:parsed.subject,question:false,corrected:null,title:null,entity:null,answer:null,lang};
+  const result=await bestTitle(parsed.subject,lang);title=result.title;corrected=result.corrected;
+  if(!title){const local=localCorrect(parsed.subject);if(local){const retry=await bestTitle(local,lang);title=retry.title;corrected=retry.corrected||local}}
+ }
+ const ref=forced?{qid:forced,title}:authority?.wikidataId?{qid:authority.wikidataId,title}:await qidFor(title,lang);const f=ref?.qid?await facts(ref.qid,lang):null;
  // Otras acepciones del mismo nombre (homónimos), para ofrecerlas aparte sin mezclarlas.
  let senses=[];try{const p2=new URLSearchParams({action:"wbsearchentities",search:parsed.subject,language:lang,uselang:lang,type:"item",limit:"8",format:"json",origin:"*"});
   const w=await j("https://www.wikidata.org/w/api.php?"+p2,3500);senses=(w?.search||[]).filter(x=>x.id!==f?.qid&&x.description&&!/desambiguaci|disambiguation|homonymie|Wikimedia|categor/i.test(x.description)&&fold(x.label).includes(fold(parsed.subject).split(" ")[0])).slice(0,4).map(x=>({id:x.id,label:x.label,description:x.description}))}catch{}

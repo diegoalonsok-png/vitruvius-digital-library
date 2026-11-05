@@ -15,7 +15,14 @@ function commonsPlate(item,src,caption,cls){
  const page='https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file.replace(/ /g,'_'));
  const fig=a('',page);fig.className=cls;
  const image=element('img',cls==='architecture-work-photo-link'?'architecture-work-photo':'architecture-work-plan');
- image.src=src+(src.includes('?')?'&':'?')+'width=520';image.alt=caption;image.loading='lazy';image.decoding='async';
+ image.alt=caption;image.loading='lazy';image.decoding='async';
+ // Commons thumbnails convert TIFF/PDF drawings to a browser-readable image.
+ // Special:FilePath alone can redirect to an original TIFF the browser cannot display.
+ const api='https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:'File:'+file,prop:'imageinfo',iiprop:'url',iiurlwidth:'520',format:'json',origin:'*'});
+ void read(api).then(data=>{if(!image.isConnected)return;const info=Object.values(data?.query?.pages||{}).find(x=>x.imageinfo?.[0])?.imageinfo?.[0];
+  const thumbnail=info?.thumburl||(/\.(?:jpe?g|png|webp|gif|svg)$/i.test(file)?info?.url||src:'');
+  if(/^https:\/\//.test(thumbnail||''))image.src=thumbnail;else fig.remove();
+ });
  image.addEventListener('error',()=>fig.remove());fig.append(image);
  if(cls!=='architecture-work-photo-link'){const f=element('figure','architecture-plate');f.append(fig);f.append(element('figcaption',null,caption));return f}
  return fig;
@@ -47,14 +54,18 @@ async function photo(item,work){
 async function drawings(target,work){
  const name=work.photoTitle||work.title;
  const terms=words(name),url='https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({
-  action:'query',generator:'search',gsrsearch:'"'+name+'" (floor plan OR section OR elevation OR facade)',
-  gsrnamespace:'6',gsrlimit:'28',prop:'imageinfo',iiprop:'url|mime',iiurlwidth:'520',format:'json',origin:'*'});
+  action:'query',generator:'search',gsrsearch:'"'+name.replace(/["“”]/g,'')+'" (plan OR section OR elevation OR grundriss OR coupe OR pianta)',
+  gsrnamespace:'6',gsrlimit:'40',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'520',format:'json',origin:'*'});
  const data=await read(url);if(!target.isConnected)return;
  target.replaceChildren();
  const items=Object.values(data?.query?.pages||{}).map(x=>{
   const info=x.imageinfo?.[0],title=String(x.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'');
+  const description=String(info?.extmetadata?.ImageDescription?.value||'').replace(/<[^>]*>/g,' ');
+  // A tourist map labelled simply «plan» is not an architectural floor plan.
+  const technical=/floor.?plan|ground.?floor|upper.?floor|grundriss|pianta|planta|planimetr|architectural|architectur|HABS|section|seccion|corte|schnitt|coupe|elevation|alzato|rez.de.chaussee/i.test(title+' '+description);
+  const mapOnly=/tourist|tourisme|environs|location map|locator map|carte routiere|plan de situation/i.test(title+' '+description)&&!type.test(title.replace(/\bplan\b/ig,''));
   const matched=terms.filter(term=>words(title).includes(term)).length>=Math.min(2,terms.length);
-  return terms.length&&matched&&type.test(title)&&/^image\/(jpeg|png|webp|gif)$/.test(String(info?.mime||''))&&
+  return terms.length&&matched&&(type.test(title)||/HABS.*sheet|measured drawing/i.test(title+' '+description))&&technical&&!mapOnly&&/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(String(info?.mime||''))&&
    /^https:\/\//.test(info?.thumburl||'')&&/^https:\/\/commons\.wikimedia\.org\//.test(info?.descriptionurl||'')
    ?{title,preview:info.thumburl,href:info.descriptionurl}:null;
  }).filter(Boolean).slice(0,6);
@@ -90,6 +101,7 @@ function enhance(item,work){
   box.append(element('p','context-note',localized('Buscando documentación de esta obra…','Finding drawings for this building…','Recherche des dessins de cet édifice…')));
   void drawings(box,work).catch(()=>{if(box.isConnected)box.replaceChildren(element('p','context-note',localized('La fuente no responde.','Source unavailable.','Source indisponible.')))});
  });item.append(details);
+ if(work.previewDrawings)details.open=true;
  // Load photos when a card is about to enter the visible right-hand scroll pane.
  if(typeof IntersectionObserver!=='undefined'){
   const observer=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)){observer.disconnect();void photo(item,work).catch(()=>{})}},{rootMargin:'220px'});

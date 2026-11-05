@@ -15,6 +15,11 @@ function classify(query,rows=[]){
  const q=normalize(query);
  const broad=/^(?:(?:historia|evolucion|origen|tipos|estilos)\s+(?:de|la|los)\s+)?(?:arquitectura|arquitecturas|arquitectos|arquitectas|architecture|architects|architectural styles|estilos arquitectonicos|arquitectura antigua|arquitectura moderna|arquitectura gotica|arquitectura romana|arquitectura griega|arquitectura renacentista|arquitectura contemporanea)$/.test(q);
  if(broad)return{kind:'general',subject:short(query),identity:null};
+ // A resolved person's biography takes precedence over similarly named
+ // buildings (e.g. Andrea Palladio versus Andrea Palladio power station).
+ const primary=rows.find(x=>x.preferredWiki&&x.entityKind==='person'&&x.link);
+ if(primary)return /architect|arquitect|architet|architecte|ingenier|engineer/i.test(String(primary.entityDescription||primary.excerpt||''))?
+  {kind:'person',subject:short(primary.title),identity:primary}:null;
  const qt=tokens(query);
  // Resolve an actual identified building before reading architect names in its description.
  const buildingWords=/\b(building|buildings|house|museum|temple|church|cathedral|bridge|tower|skyscraper|dam|stadium|palace|castle|station|library|viaduct|monument|edificio|casa|museo|templo|iglesia|catedral|puente|torre|rascacielos|represa|presa|estadio|palacio|castillo|estacion|biblioteca|viaducto|monumento|anfiteatro|acueducto|amphitheater)\b/i;
@@ -180,7 +185,7 @@ function constructedWorks(id){
   const found=new Map();
   for(const entry of result.results?.bindings||[]){
    const uri=entry.work?.value||'';
-   if(!/^https:\/\/www\.wikidata\.org\/entity\/Q\d+$/.test(uri))continue;
+   if(!/^https?:\/\/www\.wikidata\.org\/entity\/Q\d+$/.test(uri))continue;
    const label=entry.workLabel?.value||'';
    if(!label||/^Q\d+$/.test(label))continue;
    const place=entry.locationLabel?.value||'';

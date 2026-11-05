@@ -5,9 +5,9 @@ const $=id=>document.getElementById(id);
 const panel=$('vitruvia-context');
 if(!panel)return;
 const txt={
- es:{title:'Contexto histórico y filológico',origin:'Origen y sentido del término',loci:'Vitruvio · pasajes documentados',sources:'Bibliografía y estudios',external:'Explorar por universidad',noLoci:'No hay coincidencias literales verificadas en las ediciones estructuradas disponibles.',noSources:'Los resultados todavía no aportan un ISBN o DOI verificable para esta búsqueda.',loading:'Consultando textos y registros…',caution:'El panel distingue citas textuales de relaciones conceptuales. No atribuye a Vitruvio conceptos que no figuran en el pasaje.',modern:'Concepto general y fuentes externas',site:'Consulta externa en',notice:'Los enlaces institucionales son búsquedas, no avales ni obras verificadas.',etymology:'Para confirmar la etimología'},
- en:{title:'Historical and philological context',origin:'Origin and meaning of the term',loci:'Vitruvius · documented passages',sources:'Bibliography and scholarship',external:'Explore by university',noLoci:'No verified literal matches in the available structured editions.',noSources:'The results do not yet provide a verifiable ISBN or DOI for this query.',loading:'Reading texts and records…',caution:'The panel distinguishes textual quotations from conceptual associations. It does not attribute undocumented ideas to Vitruvius.',modern:'General context and external sources',site:'External search at',notice:'University links are searches, not endorsements or verified publications.',etymology:'To verify the etymology'},
- fr:{title:'Contexte historique et philologique',origin:'Origine et sens du terme',loci:'Vitruve · passages documentés',sources:'Bibliographie et études',external:'Explorer par université',noLoci:'Aucune occurrence littérale vérifiée dans les éditions structurées disponibles.',noSources:'Les résultats ne fournissent pas encore d’ISBN ou de DOI vérifiable pour cette recherche.',loading:'Consultation des textes et des notices…',caution:'Le panneau distingue les citations textuelles des associations conceptuelles et n’attribue pas à Vitruve des idées absentes des passages.',modern:'Contexte général et sources externes',site:'Recherche externe sur',notice:'Ces liens sont des recherches, non des recommandations institutionnelles.',etymology:'Pour vérifier l’étymologie'}
+ es:{title:'Obras y contexto cultural',origin:'Origen y sentido del término',loci:'Vitruvio · pasajes documentados',sources:'Bibliografía y estudios',external:'Explorar por universidad',noLoci:'No hay coincidencias literales verificadas en las ediciones estructuradas disponibles.',noSources:'Los resultados todavía no aportan un ISBN o DOI verificable para esta búsqueda.',loading:'Consultando textos y registros…',caution:'El panel distingue citas textuales de relaciones conceptuales. No atribuye a Vitruvio conceptos que no figuran en el pasaje.',modern:'Concepto general y fuentes externas',site:'Consulta externa en',notice:'Los enlaces institucionales son búsquedas, no avales ni obras verificadas.',etymology:'Para confirmar la etimología'},
+ en:{title:'Works and cultural context',origin:'Origin and meaning of the term',loci:'Vitruvius · documented passages',sources:'Bibliography and scholarship',external:'Explore by university',noLoci:'No verified literal matches in the available structured editions.',noSources:'The results do not yet provide a verifiable ISBN or DOI for this query.',loading:'Reading texts and records…',caution:'The panel distinguishes textual quotations from conceptual associations. It does not attribute undocumented ideas to Vitruvius.',modern:'General context and external sources',site:'External search at',notice:'University links are searches, not endorsements or verified publications.',etymology:'To verify the etymology'},
+ fr:{title:'Œuvres et contexte culturel',origin:'Origine et sens du terme',loci:'Vitruve · passages documentés',sources:'Bibliographie et études',external:'Explorer par université',noLoci:'Aucune occurrence littérale vérifiée dans les éditions structurées disponibles.',noSources:'Les résultats ne fournissent pas encore d’ISBN ou de DOI vérifiable pour cette recherche.',loading:'Consultation des textes et des notices…',caution:'Le panneau distingue les citations textuelles des associations conceptuelles et n’attribue pas à Vitruve des idées absentes des passages.',modern:'Contexte général et sources externes',site:'Recherche externe sur',notice:'Ces liens sont des recherches, non des recommandations institutionnelles.',etymology:'Pour vérifier l’étymologie'}
 };
 const note={
  'symmetria':{latin:['symmetr'],greek:'συμμετρία', preferred:['1.2.4','3.1.1','1.2.2','1.2.1'],
@@ -207,11 +207,9 @@ function redraw(keepPosition=true){
  const scroll=keepPosition?panel.scrollTop:0;
  const token=++requestId;
  frame(lastQuery);
- // Prioritize constructed works and books for architectural queries.
- const architectural=window.VitruviaArchitecture?.classify(lastQuery,currentRows);
- if(architectural)window.VitruviaArchitecture?.render(panel,lastQuery,currentRows,()=>token===requestId);
- origin(lastQuery);
+ // The subject's own creations lead the right-hand panel in every discipline.
  window.VitruviaWebDossier?.render(panel,lastQuery,currentRows,()=>token===requestId);
+ origin(lastQuery);
  const lexical=lexicalNeedles(lastQuery);
  if(lexical.length)void loci(lastQuery,token);
  bibliography(lastQuery);universityLinks(lastQuery);
@@ -223,10 +221,17 @@ window.addEventListener('vitruvia:search',e=>{
 });
 window.addEventListener('vitruvia:results',e=>{
  const q=String(e.detail?.query||'').trim();
+ // Recover a missed initial search event when a cached search starts first.
+ if(q&&!lastQuery&&norm(q)===norm($('query')?.value)){lastQuery=q;expandedBibliography=false}
  if(!q||norm(q)!==norm(lastQuery))return;
  currentRows=Array.isArray(e.detail.rows)?e.detail.rows:[];
  redraw();
 });
+window.addEventListener('vitruvia:entity',e=>{if(lastQuery&&[e.detail?.query,e.detail?.corrected].some(q=>q&&norm(q)===norm(lastQuery)))redraw()});
 window.addEventListener('vitruvia:clear',()=>{lastQuery='';currentRows=[];expandedBibliography=false;requestId++;panel.hidden=true;panel.replaceChildren();panel.scrollTop=0});
 new MutationObserver(records=>{if(records.some(r=>r.attributeName==='lang')&&lastQuery)redraw()}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+// Deferred modules may finish downloading after the first results. Replay only
+// the current in-memory search; nothing is stored across sessions.
+const initial=window.VitruviaSearchSnapshot;
+if(initial?.query){lastQuery=String(initial.query).trim();currentRows=Array.isArray(initial.rows)?initial.rows:[];redraw(false)}
 })();

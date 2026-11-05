@@ -893,7 +893,9 @@ function display(rows,query,phase){
  if(window.VitruviaArticles){$("answer").hidden=true;const authority=currentAuthorityFor(query);window.VitruviaArticles.render(deduped,query,identifyHistoricalPerson(query)||(authority?{id:authority.id,name:authority.personName}:null))}else synthesize(deduped);
  $("results-heading").textContent=T().heading;
  $("result-state").textContent=deduped.length+" "+titles.matching+" · "+Math.min(S.visibleResultCount,deduped.length)+" "+titles.visible+(phase?" · "+phase:"");
- window.dispatchEvent(new CustomEvent("vitruvia:results",{detail:{query,rows:deduped,phase}}));
+ const snapshot={query,rows:deduped,phase};
+ window.VitruviaSearchSnapshot=snapshot;
+ window.dispatchEvent(new CustomEvent("vitruvia:results",{detail:snapshot}));
 }
 function sourceLinks(query){const parent=$("source-links");parent.replaceChildren();
  if(!query)return;
@@ -930,6 +932,7 @@ async function search(){
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
  const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));
  document.body.classList.add("vitruvia-reading");
+ window.VitruviaSearchSnapshot={query:q,rows:[]};
  window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
  $("clear-search").hidden=false;
  restoreFeature();
@@ -1259,6 +1262,7 @@ function updateClearControl(){
 }
 function clearSearch(){
  ++S.searchId;searchInput.value="";updateClearControl();
+ window.VitruviaSearchSnapshot=null;
  const menu=$("search-suggestions");menu.hidden=true;menu.replaceChildren();
  searchInput.setAttribute("aria-expanded","false");searchInput.removeAttribute("aria-activedescendant");
  document.body.classList.remove("vitruvia-reading");
