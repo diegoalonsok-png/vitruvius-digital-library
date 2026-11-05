@@ -58,7 +58,7 @@ const highlight=(target,text,needle)=>{
  const search=String(needle||'');
  if(!search||!t){target.textContent=t;return}
  let last=0;const lower=t.toLocaleLowerCase(),find=search.toLocaleLowerCase();
- while(true){const i=lower.indexOf(find,last);if(i<0)break;target.append(document.createTextNode(t.slice(last,i)),mk('mark','context-match',t.slice(i,i+search.length)));last=i+search.length;if(last>=t.length)break;}
+ while(true){const i=lower.indexOf(find,last);if(i<0)break;let end=i+search.length;while(end<t.length&&/[\p{L}\p{M}]/u.test(t[end]))end++;target.append(document.createTextNode(t.slice(last,i)),mk('mark','context-match',t.slice(i,end)));last=end;if(last>=t.length)break;}
  target.append(document.createTextNode(t.slice(last)));
 };
 let lastQuery='',currentRows=[],requestId=0,recordsLoaded=false;
@@ -69,7 +69,7 @@ function frame(query){
  panel.append(mk('h3','context-term',query));
  panel.hidden=false;
 }
-function heading(text){panel.append(mk('h4','context-section-title',text))}
+function heading(text){const h=mk('h4','context-section-title',text);panel.append(h);return h}
 function origin(query){
  const d=dict(),{entry}=termFor(query);
  heading(d.origin);
@@ -101,14 +101,16 @@ function lexicalNeedles(query){
 async function loci(query,token){
  const d=dict(),{entry}=termFor(query),needles=lexicalNeedles(query);
  if(!needles.length)return;
- heading(d.loci);
+ const explicit=!!entry?.latin||isGreek(query);
+ const headingEl=heading(d.loci);
  const slot=mk('div','context-loci');panel.append(slot);
+ if(!explicit){headingEl.hidden=true;slot.hidden=true}
  slot.append(mk('p','context-pending',d.loading));
  try{
   const corpus=await window.VitruviaResearchEngine?.getCorpora?.();
   if(token!==requestId)return;
   slot.replaceChildren();
-  if(!Array.isArray(corpus)){slot.append(mk('p','context-note',d.noLoci));return}
+  if(!Array.isArray(corpus)){if(!explicit){slot.remove();headingEl.remove()}else slot.append(mk('p','context-note',d.noLoci));return}
   const usable=corpus.filter(x=>x?.latin&&x.locus);
   const byEdition=lang()==='en'?'theory-en':lang()==='fr'?'recensio-fr':'recensio-es';
   const chosen=usable.some(x=>x.edition===byEdition)?byEdition:'recensio-es';
@@ -122,7 +124,8 @@ async function loci(query,token){
    const rank=n=>n<0?999:n;
    return rank(pa)-rank(pb)||String(a.p.locus).localeCompare(String(b.p.locus),undefined,{numeric:true});
   }).slice(0,4);
-  if(!ordered.length){slot.append(mk('p','context-note',d.noLoci));return}
+  if(!ordered.length){if(!explicit){slot.remove();headingEl.remove()}else slot.append(mk('p','context-note',d.noLoci));return}
+  headingEl.hidden=false;slot.hidden=false;
   for(const {p,found} of ordered){
    const item=mk('div','context-locus');
    const href='lector-bilingue.html?'+new URLSearchParams({edition:p.edition,locus:p.locus});
@@ -139,7 +142,7 @@ async function loci(query,token){
   slot.append(mk('p','context-disclaimer',d.caution));
  }catch(e){
    if(token!==requestId)return;
-   slot.replaceChildren(mk('p','context-note',d.noLoci));
+   if(!explicit){slot.remove();headingEl.remove()}else slot.replaceChildren(mk('p','context-note',d.noLoci));
  }
 }
 function bibliography(query){
