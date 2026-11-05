@@ -237,6 +237,15 @@ async function searchImages(query){
    if(id!==active)return;if(again)identity=again}
  }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
+ const isFilm=Boolean(identity?.instanceOf?.includes("Q11424")||identity?.instanceOf?.includes("Q24869")||
+  /\\b(?:film|movie|pelicula|largometraje|motion picture|feature film)\\b/.test(fold(identity?.authorityDescription||"")));
+ if(isFilm){
+  // The year alone and the word "film" must never identify unrelated posters.
+  const canonical=String(identity?.originalCanonical||identity?.canonical||"").replace(/\\s*\\((?:pelicula|film|movie)\\)\\s*$/i,"").trim();
+  const english=String(identity?.commonsSearchName||"").trim();
+  topic.aliases=distinct([canonical,english,identity?.canonical].filter(x=>fold(x).replace(/\\b(film|movie|pelicula)\\b/g,"").trim().length>4));
+  topic.queries=distinct([english+" film",canonical+" film",canonical].filter(Boolean)).slice(0,3);
+ }
  section.dataset.entityId=identity?.wikidataId||"";section.dataset.commonsCategory=identity?.commonsCategory||"";
  const subject=topic.subject,paintings=paintingWords.test(fold(q)),photos=photoWords.test(fold(q));
  const aliases=distinct([q,subject,identity?.originalCanonical,...(identity?.aliases||[])]);
@@ -292,7 +301,16 @@ async function searchImages(query){
    for(const record of records)if(record.status==="fulfilled")
     pages.push(...Object.values(record.value.data.query?.pages||{}).map(x=>({...x,sourceCategory:record.value.title,fromTrustedCategory:true})));
   }
-  const items=collectedImages(pages,topic);
+  let candidatePages=pages;
+   if(isFilm){
+    const names=topic.aliases.map(fold).filter(x=>x.length>4);
+    candidatePages=pages.filter(page=>{
+     if(page.fromEntityImage||page.fromTrustedCategory)return true;
+     const title=fold(page.title||"").replace(/^file /,"");
+     return names.some(name=>name.split(" ").filter(w=>w.length>3).length>=2 && title.includes(name));
+    });
+   }
+   const items=collectedImages(candidatePages,topic);
   if(items.length){
    const selected=items.slice(0,80);
    displayGroups(selected,topic);
