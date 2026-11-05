@@ -146,9 +146,46 @@ async function authorityCandidates(q,lang){
  return resolved?{...resolved,...entityMetadata(entity),wikidataId:best.id,authorityDescription:best.description,
   authorityCoverage:best.coverage,spellingMatch:best.spellingMatch,disambiguated:true}:null;
 }
+/* A surname + cultural discipline denotes a creator, not a dictionary topic.
+   Inspect occupation in Wikidata search descriptions before selecting a namesake. */
+async function qualifiedCreator(query,lang){
+ const raw=String(query||"").trim();
+ const roleMatch=raw.match(/^(?:obras?\s+(?:de|del)\s+)?(.+?)\s+(arquitectura|arquitecto|arquitecta|arquitecto\s+ingeniero|architecture|architect|arquitecte|filmografia|discografia|discography|peliculas|films|movies|libros|books|pinturas|paintings)$/i);
+ if(!roleMatch)return null;
+ const name=roleMatch[1].trim(),discipline=norm(roleMatch[2]);
+ if(name.length<3||name.length>90)return null;
+ const fields=/arquitect|architect/.test(discipline)?/\b(architect|arquitect|ingenier|engineer|architet|architecte)\b/i:
+  /film|pelicul|movie/.test(discipline)?/\b(director|filmmaker|cineasta|actor|actress|actriz|film)\b/i:
+  /disco/.test(discipline)?/\b(musician|music|singer|band|cantante|musico|grupo|composer)\b/i:
+  /libro|book/.test(discipline)?/\b(writer|author|escritor|novelist|poet|poeta)\b/i:
+  /\b(painter|artist|pintor|artista)\b/i;
+ const languages=[...new Set([lang,"es","en"])];
+ const entries=(await Promise.allSettled(languages.map(language=>get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
+  action:"wbsearchentities",search:name,language,type:"item",limit:"25",format:"json",origin:"*"
+ })) ))).flatMap((r,i)=>r.status==="fulfilled"?(r.value.search||[]).map((x,j)=>({...x,searchLang:languages[i],rank:j})):[]);
+ const tokens=norm(name).split(" ").filter(Boolean);
+ const candidates=[...new Map(entries.filter(x=>/^Q\d+$/.test(x.id||"")&&fields.test(x.description||"")&&
+  tokens.every(t=>norm(x.label||"").split(" ").some(w=>w===t||w.startsWith(t)&&t.length>=5)))
+  .map(x=>[x.id,x])).values()].sort((a,b)=>a.rank-b.rank);
+ for(const candidate of candidates.slice(0,5)){
+  const title=candidate.label;
+  for(const language of [...new Set([lang,candidate.searchLang,"en","es"])]){
+   try{
+    const page=await lookupTitle(title,language);
+    if(page?.wikidataId===candidate.id){
+     return {...page,authorityDescription:candidate.description,spellingMatch:raw,
+      qualifierResolved:true};
+    }
+   }catch{}
+  }
+ }
+ return null;
+}
 async function resolve(query,preferredLang="es"){
  const q=clean(query);
  if(!q||q.length>130)return null;
+ const lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
+ try{const creator=await qualifiedCreator(query,lang);if(creator)return await localize(creator,lang)}catch{}
  // Common, strongly identifiable shorthand for the 1968 film, not a generic year search.
  // Keep date-only queries ambiguous; 2001 film specifically refers to the title in this catalogue.
  const shorthand=norm(q);
@@ -158,7 +195,6 @@ async function resolve(query,preferredLang="es"){
    if(film)return await localize({...film,spellingMatch:norm(q)===norm("2001: A Space Odyssey")?null:q},"es");
   }catch{}
  }
- const lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
  // Wikidata has aliases such as "Virgen María" for the historical figure.
  // Direct page-title matching on another language can instead return a DJ.
  try{
