@@ -87,8 +87,10 @@ async function renderWorks(box,f,kind){
  draw(12);
  // Si el dossier de catálogos ya muestra libros o álbumes con portada, la cronología de Wikidata queda plegada
  // para no repetir la misma lista dos veces en la columna.
- if(["book","album"].includes(main)){const panel=document.getElementById("vitruvia-context");let done=false;
-  const fold=()=>{if(done||!panel||!box.isConnected)return;const ds=panel.querySelector(".web-dossier");if(!ds||!ds.querySelector(".web-dossier-cover"))return;done=true;
+ // Lo mismo con los edificios cuando el panel de arquitectura ya los lista con foto y planta.
+ if(["book","album","building"].includes(main)){const panel=document.getElementById("vitruvia-context");let done=false;
+  const fold=()=>{if(done||!panel||!box.isConnected)return;
+   const ready=main==="building"?panel.querySelector(".architecture-built-list .architecture-work-item"):panel.querySelector(".web-dossier .web-dossier-cover");if(!ready)return;done=true;
    const det=el("details","vu-fold");const sum=el("summary",null,T("Cronología completa según Wikidata · ","Full chronology from Wikidata · ","Chronologie complète selon Wikidata · ")+list.length);det.append(sum);
    while(box.firstChild)det.append(box.firstChild);box.append(det);det.querySelector("h3")?.remove()};
   fold();if(panel){const mo=new MutationObserver(fold);mo.observe(panel,{childList:true,subtree:true});setTimeout(()=>mo.disconnect(),15000)}}
