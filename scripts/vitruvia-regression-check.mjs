@@ -21,7 +21,8 @@ for(const name of modules){
 const vitruviaHTML=sourceFile("vitruvia.html");
 const bibliothecaHTML=sourceFile("bibliotheca-graeca-latina.html");
 for(const [label,html] of [["Vitruvia",vitruviaHTML],["Bibliotheca",bibliothecaHTML]]){
- const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).filter(x=>x.trim());
+ // Solo JavaScript ejecutable: se excluyen JSON-LD y otros tipos de datos.
+ const scripts=[...html.matchAll(/<script(\s[^>]*)?>([\s\S]*?)<\/script>/gi)].filter(m=>!/type\s*=\s*["']?(application\/(ld\+)?json|module|text\/template)/i.test(m[1]||"")).map(m=>m[2]).filter(x=>x.trim());
  for(const [i,text] of scripts.entries())new Script(text,{filename:label+" inline "+i});
  console.log("✓ Inline scripts:",label);
 }
