@@ -35,7 +35,7 @@ async function photo(item,work){
  }
  const title=work.photoTitle||work.title;
  if(!title||!item.isConnected)return;
- const api='https://en.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:title,redirects:'1',prop:'pageimages',piprop:'thumbnail|name',pithumbsize:'480',pilicense:'free',format:'json',origin:'*'});
+ const api='https://en.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:title,redirects:'1',prop:'pageimages',piprop:'thumbnail|name',pithumbsize:'480',pilicense:'any',format:'json',origin:'*'});
  const data=await read(api);if(!item.isConnected)return;
  const target=norm(title),redirection=(data?.query?.redirects||[]).find(x=>norm(x.from)===target);
  const final=norm(redirection?.to||title);
