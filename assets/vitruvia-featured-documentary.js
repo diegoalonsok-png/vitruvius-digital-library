@@ -68,7 +68,7 @@
    if(request!==token)return;
    visual.hidden=true;ready=false;rank=0;
    const next=gallery.filter(x=>x.preview!==item.preview&&!attempted.has(x.preview))[0];
-   if(next)show(next,preferImage(next));
+   if(next)show(next,Math.max(25,100+preferImage(next)));
    else if(featured?.preview!==item.preview&&featured&&!attempted.has(featured.preview))show(featured,25);
   };
   open.href=item.page;
@@ -106,8 +106,12 @@
   if(!results.length)return;
   const safeKind=['person','object','topic'].includes(d.kind)?d.kind:'topic';
   gallery=results.map(x=>({...x,kind:safeKind})).sort((a,b)=>preferImage(b)-preferImage(a));
-  const candidate=gallery.find(x=>!attempted.has(x.preview));
-  if(candidate)show(candidate,100+preferImage(candidate));
+  const adults=gallery.filter(x=>!isChildhood(x));
+  const candidate=(adults.length?adults:gallery).find(x=>!attempted.has(x.preview));
+  if(candidate){
+   if(!isChildhood(candidate))clearTimeout(fallbackTimer);
+   show(candidate,Math.max(25,100+preferImage(candidate)));
+  }
  }
  window.addEventListener('vitruvia:search',e=>setQuery(e.detail?.query||''));
  window.addEventListener('vitruvia:featured-result',onFeatured);
