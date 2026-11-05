@@ -527,10 +527,10 @@ function setupLanguage(){
  for(const host of document.querySelectorAll('.header-languages')){
   host.textContent='';
   const label=document.createElement('label');label.className='sr-only';label.textContent='Idioma de interfaz / Interface language';
-  const select=document.createElement('select');select.setAttribute('aria-label','Idioma de navegación (traducción parcial) / Navigation language (partial)');select.style.cssText='font:inherit;background:transparent;color:inherit;border:1px solid currentColor;border-radius:2px;padding:3px 5px;max-width:110px';
+  const select=document.createElement('select');select.setAttribute('aria-label','Cambiar idioma de interfaz / Change interface language');select.title='Seleccionar idioma / Select language';
   for(const [value,name] of [['es','ES'],['en','EN'],['fr','FR']]){const option=document.createElement('option');option.value=value;option.textContent=name;select.append(option);}
   select.value=currentLanguage;
-  select.addEventListener('change',()=>{currentLanguage=select.value;try{localStorage.setItem(LANGUAGE_KEY,currentLanguage)}catch{};document.querySelectorAll('.header-languages select').forEach(other=>other.value=currentLanguage);translateRoot()});
+  select.addEventListener('change',()=>{currentLanguage=select.value;try{localStorage.setItem(LANGUAGE_KEY,currentLanguage)}catch{};document.querySelectorAll('.header-languages select').forEach(other=>other.value=currentLanguage);translateRoot();document.dispatchEvent(new CustomEvent('vitruvius:language-changed',{detail:{language:currentLanguage}}))});
   host.append(label,select);
  }
  translateRoot();
