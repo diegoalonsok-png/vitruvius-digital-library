@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const path=new URL('../assets/vitruvia-image-engine-v2.js',import.meta.url);
+const source=readFileSync(path,'utf8');
+new vm.Script(source,{filename:'vitruvia-image-engine-v2.js'});
+assert.match(source,/img\.addEventListener\("error"/,'Missing image failure handler');
+assert.match(source,/button\.replaceWith\(link\)/,'Broken thumbnails must have a source link');
+assert.match(source,/safeLink\(item\.page\)/,'Source link must use safe HTTPS URL');
+assert.match(source,/img\.src=item\.original/,'Original image fallback missing');
+assert.match(source,/window\.VitruviaDiscovery\?\.previewImages/,'Keep ranked gallery previews');
+console.log('Image fallback, source links and syntactic checks passed.');

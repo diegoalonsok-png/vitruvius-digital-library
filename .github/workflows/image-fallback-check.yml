@@ -1,0 +1,18 @@
+name: Integridad de imagenes documentales
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-image-engine-v2.js'
+      - 'scripts/test-image-fallback.mjs'
+      - '.github/workflows/image-fallback-check.yml'
+  workflow_dispatch:
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-image-engine-v2.js
+      - run: node scripts/test-image-fallback.mjs

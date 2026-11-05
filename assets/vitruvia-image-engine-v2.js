@@ -73,7 +73,19 @@ function matchingScore(page,aliases,query){
 function displayItem(item,parent=grid){
  const button=create(parent,"button","vitruvia-image-card");
  button.type="button";button.setAttribute("aria-label",locale("Ampliar ","View ","Agrandir ")+item.name);
- const img=create(button,"img");img.src=item.preview;img.alt=item.name;img.loading="lazy";img.decoding="async";
+ const img=create(button,"img");img.alt=item.name;img.loading="lazy";img.decoding="async";
+ let fallbackAttempted=false;
+ img.addEventListener("error",()=>{
+  if(!fallbackAttempted&&item.original&&item.original!==item.preview&&safeLink(item.original)){
+   fallbackAttempted=true;img.src=item.original;return;
+  }
+  const link=document.createElement("a");link.className="vitruvia-image-card vitruvia-image-unavailable";
+  link.href=safeLink(item.page)||"#vitruvia-images";link.target="_blank";link.rel="noopener noreferrer";
+  link.textContent=locale("Imagen no disponible · Consultar fuente","Image unavailable · Open source","Image indisponible · Voir la source");
+  link.setAttribute("aria-label",link.textContent+": "+item.name);
+  button.replaceWith(link);
+ });
+ img.src=item.preview;
  const caption=create(button,"div","image-caption",item.caption||item.name);
  create(caption,"span","image-origin",item.credit);
  button.addEventListener("click",()=>showLarge(item));
