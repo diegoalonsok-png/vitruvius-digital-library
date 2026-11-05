@@ -8,6 +8,29 @@ const commons=f=>"https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeUR
 const commonsPage=f=>"https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(f.replace(/ /g,"_"));
 const ERA=s=>s<500?"antigua":s<1450?"medieval":s<1600?"renacimiento":"moderna";
 let all=[];
+const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+/* Mapas sin archivo fijado: se busca en Commons y solo se acepta un archivo cuyo nombre contenga las
+   palabras clave de esa pieza (commonsKeys). Se enlaza la ficha de Commons con autor y licencia. */
+async function findCommons(e,fig){
+ const u="https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({action:"query",format:"json",origin:"*",generator:"search",
+  gsrsearch:e.commonsSearch+" filetype:bitmap",gsrnamespace:"6",gsrlimit:"20",prop:"imageinfo",iiprop:"url|mime|size|extmetadata",iiurlwidth:"900"});
+ const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),12000);
+ let d=null;try{d=await (await fetch(u,{signal:ctl.signal})).json()}finally{clearTimeout(t)}
+ const keys=(e.commonsKeys||fold(e.commonsSearch).split(/\s+/).filter(w=>w.length>3)).map(fold);
+ const need=Math.min(2,keys.length);
+ const pages=Object.values(d?.query?.pages||{}).map(p=>({p,i:p.imageinfo?.[0],t:fold(p.title)}))
+  .filter(x=>x.i&&/^image\/(jpeg|png|tiff)$/.test(x.i.mime||"")&&x.i.thumburl&&keys.filter(k=>k.split("|").some(v=>x.t.includes(v))).length>=need)
+  .map(x=>({...x,score:keys.filter(k=>k.split("|").some(v=>x.t.includes(v))).length*10+(/\b(detail|detalle|ausschnitt|fragment)\b/.test(x.t)?-8:0)+Math.min(8,(x.i.width||0)/1000)+(x.p.index?(20-x.p.index)/10:0)}))
+  .sort((a,b)=>b.score-a.score);
+ const best=pages[0];
+ if(!best||!fig.isConnected){fig.replaceChildren(el("p","map-noimg","Sin reproducción identificada con certeza en Commons: consulta la institución (enlaces al pie de la ficha)."));return}
+ const img=el("img");img.src=best.i.thumburl;img.loading="lazy";img.decoding="async";img.alt=e.title+" · "+(e.shelfmark||"");
+ const a=el("a");a.href=best.i.descriptionurl;a.target="_blank";a.rel="noopener noreferrer";a.append(img);
+ const strip=s=>String(s||"").replace(/<[^>]*>/g,"").trim();
+ const lic=strip(best.i.extmetadata?.LicenseShortName?.value);
+ const cap=el("figcaption","map-cap","Reproducción en Wikimedia Commons: "+best.p.title.replace(/^File:/,"")+(lic?" · "+lic:""));
+ fig.replaceChildren(a,cap);
+}
 function card(e){
  const c=el("article","map-card");c.id=e.id;c.dataset.era=ERA(e.sort);
  const fig=el("figure","map-figure");
@@ -15,7 +38,8 @@ function card(e){
  if(src){const img=el("img");img.src=src;img.loading="lazy";img.decoding="async";img.alt=e.title+" · "+(e.shelfmark||"");
   img.addEventListener("error",()=>{fig.replaceChildren(el("p","map-noimg","Imagen no disponible en este momento: consulta la reproducción en la institución o en Commons."))});
   const a=el("a");a.href=e.localImage||commonsPage(e.commonsFile);a.target="_blank";a.rel="noopener noreferrer";a.append(img);fig.append(a)}
- else fig.append(el("p","map-noimg","Reproducción en la institución o en Commons (enlaces al pie de la ficha)."));
+ else{const wait=el("p","map-noimg","Buscando una reproducción documentada en Wikimedia Commons…");fig.append(wait);
+  if(e.commonsSearch)void findCommons(e,fig).catch(()=>{});else wait.textContent="Reproducción en la institución (enlaces al pie de la ficha)."}
  c.append(fig);
  const body=el("div","map-body");
  body.append(el("p","map-date",e.date),el("h2",null,e.title));
