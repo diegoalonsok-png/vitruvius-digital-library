@@ -5,6 +5,14 @@ const section=document.getElementById("vitruvia-images"),grid=document.getElemen
 const status=document.getElementById("image-results-status"),heading=document.getElementById("image-results-title");
 if(!section||!grid||!actions||!status||!heading)return;
 let active=0,controller=null,currentImageQuery="";
+const quick=document.createElement("section");
+quick.id="vitruvia-quick-images";
+quick.className="article-image-preview";
+quick.hidden=true;
+quick.setAttribute("aria-label","Imágenes del resultado");
+const article=document.getElementById("vitruvia-article");
+if(article?.parentNode)article.parentNode.insertBefore(quick,article);
+
 const create=(parent,tag,cls,content)=>{
  const el=document.createElement(tag);if(cls)el.className=cls;
  if(content!==undefined)el.textContent=content;parent.append(el);return el;
@@ -20,7 +28,7 @@ const safeLink=u=>{try{const x=new URL(u,location.href);return x.protocol==="htt
 const locale=(es,en,fr)=>document.documentElement.lang==="en"?en:document.documentElement.lang==="fr"?fr:es;
 const groupLabel=group=>window.VitruviaDiscovery?.groups[group]?.[document.documentElement.lang||"es"]||window.VitruviaDiscovery?.groups[group]?.es||group;
 function external(label,url){const a=create(actions,"a","",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer"}
-function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
+function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";quick.replaceChildren();quick.hidden=true;const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
 async function getJSON(params,signal){
  const r=await fetch("https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"}),{signal,headers:{Accept:"application/json"}});
  if(!r.ok)throw Error("Wikimedia Commons HTTP "+r.status);
@@ -125,6 +133,17 @@ function displayGroups(items,topic){
   if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
   displayItem(item);
  }
+ const quick=document.getElementById("vitruvia-quick-images");
+ if(quick){
+  quick.replaceChildren();
+  const bar=create(quick,"div","article-image-preview-heading");
+  create(bar,"span","",locale("Imágenes del resultado: ","Result images: ","Images du résultat : ")+topic.subject);
+  const jump=create(bar,"a","",locale("Todas las imágenes y fuentes","All images and sources","Toutes les images et sources"));
+  jump.href="#vitruvia-images";
+  const strip=create(quick,"div","article-image-preview-grid");
+  (window.VitruviaDiscovery?.previewImages(items,topic)||items.slice(0,5)).slice(0,5).forEach(item=>displayItem(item,strip));
+  quick.hidden=false;
+ }
  const preview=document.getElementById("article-image-preview");
  if(preview&&items.length){
   preview.replaceChildren();preview.hidden=false;
@@ -189,28 +208,47 @@ async function addBookCovers(id,topic,identity,q){
  }
  return docs.length;
 }
+/* Quickly retrieve a documentary image tied to the exact identified Wikidata item.
+   Calls run concurrently; never use an unrelated page with the same date/words. */
 async function verifiedLeadImage(identity,topic,id){
  if(!identity?.wikidataId)return [];
- const langs=distinct([identity.language,identity.wikiLang,document.documentElement.lang,"en","es"])
-  .filter(x=>/^(en|es|fr|it|de|pt)$/.test(x)).slice(0,4);
- const titles=distinct([identity.canonical,identity.originalCanonical,identity.wikiTitle,topic.subject]).slice(0,4);
- for(const lang of langs){
-  if(id!==active)return [];
-  for(const title of titles){
-   try{
-    const params=new URLSearchParams({action:"query",titles:title,redirects:"1",prop:"pageimages|pageprops",
-     piprop:"thumbnail|name",pithumbsize:"900",pilicense:"any",format:"json",origin:"*"});
-    const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),5000);
-    let d;try{const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});if(!r.ok)continue;d=await r.json()}finally{clearTimeout(timer)}
-    const page=Object.values(d.query?.pages||{}).find(p=>p.thumbnail?.source&&p.pageimage);
-    if(!page||!safeLink(page.thumbnail.source))continue;
-    if(page.pageprops?.wikibase_item!==identity.wikidataId)continue;
-    const filename=page.pageimage.replace(/_/g," ");
-    return [{name:filename,caption:page.title,preview:page.thumbnail.source,original:page.thumbnail.source,
-     page:"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(filename),
-     license:"",credit:"Wikipedia · "+lang.toUpperCase()+" · archivo y derechos",score:190,group:"context"}];
-   }catch{}
-  }
+ const languages=distinct([identity.language,document.documentElement.lang,"en","es","fr"])
+  .filter(x=>/^(en|es|fr|de|it|pt)$/.test(x)).slice(0,4);
+ const candidates=distinct([identity.originalCanonical,identity.canonical,identity.wikiTitle,
+  identity.commonsSearchName,topic.subject]).slice(0,5);
+ async function wikipedia(lang){
+  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),5500);
+  try{
+   const params=new URLSearchParams({action:"query",format:"json",origin:"*",redirects:"1",
+    titles:candidates.join("|"),prop:"pageimages|pageprops",piprop:"thumbnail|name",
+    pithumbsize:"720",pilicense:"any"});
+   const response=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});
+   if(!response.ok)return null;
+   const data=await response.json();
+   const page=Object.values(data.query?.pages||{}).find(p=>p.pageprops?.wikibase_item===identity.wikidataId&&
+    p.thumbnail?.source&&p.pageimage&&safeLink(p.thumbnail.source));
+   if(!page)return null;
+   const file=page.pageimage.replace(/_/g," ");
+   return {name:file,caption:page.title,preview:page.thumbnail.source,
+    original:page.thumbnail.source,page:"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(file),
+    license:"",credit:"Wikipedia · "+lang.toUpperCase()+" · archivo y derechos",
+    score:300,group:"context",verifiedIdentity:true};
+  }catch{return null}finally{clearTimeout(timer)}
+ }
+ const all=await Promise.all(languages.map(wikipedia));
+ if(id!==active)return [];
+ const found=all.filter(Boolean);
+ if(found.length)return [found[0]];
+ // Wikidata P18 is a second authority route for people, paintings, buildings, objects.
+ if(identity.imageFiles?.length){
+  try{
+   const names=identity.imageFiles.filter(x=>typeof x==="string").slice(0,3);
+   const data=await getJSON(imageParams({action:"query",titles:names.map(x=>"File:"+x).join("|")}));
+   if(id!==active)return [];
+   const items=Object.values(data.query?.pages||{}).filter(p=>p.imageinfo?.[0]?.thumburl)
+    .map(p=>({...p,fromEntityImage:true}));
+   return collectedImages(items,topic).slice(0,3).map(x=>({...x,verifiedIdentity:true}));
+  }catch{}
  }
  return [];
 }
@@ -323,7 +361,6 @@ async function searchImages(query){
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
    if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
   }else{
-   grid.replaceChildren();
    const lead=leadItems.length?leadItems:await leadPromise;
    if(id!==active)return;
    if(lead.length){
