@@ -17,7 +17,8 @@
   '<figcaption><span class="featured-documentary-caption"></span>',
   '<a class="featured-documentary-credit" target="_blank" rel="noopener noreferrer"></a></figcaption>'
  ].join('');
- label.after(visual);
+ // Arriba del panel destacado: ocupa el espacio libre sobre el título.
+ block.prepend(visual);
  const photo=visual.querySelector('img'),open=visual.querySelector('.featured-documentary-photo');
  const caption=visual.querySelector('.featured-documentary-caption'),credit=visual.querySelector('.featured-documentary-credit');
  const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
@@ -29,13 +30,13 @@
  function validImage(url){
   try{
    const u=new URL(url);
-   return u.protocol==='https:' && (u.hostname==='upload.wikimedia.org'||u.hostname==='commons.wikimedia.org'||/^[a-z-]+\.wikipedia\.org$/.test(u.hostname));
+   return u.protocol==='https:' && (u.hostname==='upload.wikimedia.org'||u.hostname==='commons.wikimedia.org'||/^[a-z-]+\.wikipedia\.org$/.test(u.hostname)||u.hostname==='pubchem.ncbi.nlm.nih.gov'||u.hostname==='covers.openlibrary.org');
   }catch{return false}
  }
  function validSource(url){
   try{
    const u=new URL(url);
-   return u.protocol==='https:'&&(u.hostname==='commons.wikimedia.org'||/^[a-z-]+\.wikipedia\.org$/.test(u.hostname));
+   return u.protocol==='https:'&&(u.hostname==='commons.wikimedia.org'||/^[a-z-]+\.wikipedia\.org$/.test(u.hostname)||u.hostname==='pubchem.ncbi.nlm.nih.gov'||u.hostname==='openlibrary.org');
   }catch{return false}
  }
  const locale=(es,en,fr)=>document.documentElement.lang?.startsWith('en')?en:document.documentElement.lang?.startsWith('fr')?fr:es;
@@ -58,6 +59,7 @@
   if(!validImage(item.preview)||!validSource(item.page))return false;
   if(weight<rank||attempted.has(item.preview))return false;
   attempted.add(item.preview);selected=item.preview;rank=weight;
+  visual.classList.toggle('is-diagram',!!item.diagram);
   const request=++token;
   photo.onload=()=>{
    if(request!==token)return;
@@ -75,7 +77,7 @@
   photo.alt=item.alt||item.caption||locale('Imagen documental del tema consultado','Documentary image of the searched topic','Image documentaire du sujet');
   caption.textContent=String(item.caption||'').slice(0,165);
   credit.href=item.page;
-  credit.textContent=locale('Ficha, autor y licencia · Wikimedia','File, creator and license · Wikimedia','Notice, auteur et licence · Wikimedia');
+  credit.textContent=item.credit||locale('Ficha, autor y licencia · Wikimedia','File, creator and license · Wikimedia','Notice, auteur et licence · Wikimedia');
   photo.src=item.preview;
   return true;
  }
@@ -84,9 +86,33 @@
   return {preview:row.image,page:row.imageRights,caption:row.title||'',
    alt:row.title||'',group:'',kind:'',score:0};
  }
+ // Imagen principal del artículo destacado (retrato del personaje, tapa del libro, portada del álbum…).
+ // pilicense=any incluye las portadas de uso legítimo de Wikipedia; se muestran enlazadas a su ficha.
+ async function leadImage(row,current){
+  let u;try{u=new URL(row.link)}catch{return}
+  if(!/^[a-z-]+\.wikipedia\.org$/.test(u.hostname)||!u.pathname.startsWith('/wiki/'))return;
+  const title=decodeURIComponent(u.pathname.slice(6));
+  try{
+   const api='https://'+u.hostname+'/w/api.php?'+new URLSearchParams({action:'query',prop:'pageimages',piprop:'thumbnail|name',pithumbsize:'640',pilicense:'any',redirects:'1',titles:title,format:'json',origin:'*'});
+   const ctrl=new AbortController();const t=setTimeout(()=>ctrl.abort(),8000);
+   const data=await fetch(api,{signal:ctrl.signal}).then(r=>r.ok?r.json():null).finally(()=>clearTimeout(t));
+   if(current!==query)return;
+   const page=Object.values(data?.query?.pages||{})[0];
+   if(!page?.thumbnail?.source||!page.pageimage)return;
+   const item={preview:page.thumbnail.source,page:'https://'+u.hostname+'/wiki/File:'+encodeURIComponent(page.pageimage),caption:row.title||'',alt:row.title||'',group:'',kind:'',score:0,
+    credit:locale('Imagen principal del artículo · ficha y derechos en Wikipedia','Lead image of the article · file and rights on Wikipedia','Image principale de l’article · fiche et droits sur Wikipédia')};
+   if(!isChildhood(item))show(item,900);
+  }catch{}
+ }
+ function onHero(event){
+  const d=event.detail||{};
+  if(!query||fold(d.query)!==query||!d.item)return;
+  show(d.item,Number(d.weight)||5000);
+ }
  function onFeatured(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query)return;
+  if(d.row?.type==='wikipedia')leadImage(d.row,query);
   const item=fromRow(d.row);
   if(!item)return;
   featured=item;
@@ -116,6 +142,7 @@
  window.addEventListener('vitruvia:search',e=>setQuery(e.detail?.query||''));
  window.addEventListener('vitruvia:featured-result',onFeatured);
  window.addEventListener('vitruvia:documentary-images',onGallery);
+ window.addEventListener('vitruvia:hero-visual',onHero);
  window.addEventListener('vitruvia:clear',()=>setQuery(''));
  // A results-page deep link triggers the same search event after all defer scripts load.
  window.VitruviaFeaturedVisual={version:'1.0',validImage,validSource};
