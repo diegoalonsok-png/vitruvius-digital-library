@@ -379,7 +379,7 @@ try{
    await page.close();
  });
 
- await test('Concordancia H: relaciones verificables, 1v sin inventar pasajes, búsqueda integral',async()=>{
+ await test('Concordancia H: relaciones verificables, 1v con el paso verificado a I.1, búsqueda integral',async()=>{
    const page=await pageFor('concordancia-folios.html');
    await page.waitForFunction(()=>document.querySelector('#f-latin')?.textContent.includes('1.praef.2'),{timeout:18000});
    assert.match(await page.locator('#f-latin-status').innerText(),/provisional/i,'Folio 1r no identificado como provisional');
@@ -387,8 +387,9 @@ try{
    assert(await page.locator('#f-open[href*="image=9"]').count()>0,'El enlace directo a H no lleva a imagen 9');
    await page.locator('#f-folio').selectOption('1v');
    assert.match(await page.locator('#f-evidence').innerText(),/imagen 10/,'Imagen del 1v distinta de 10');
-   assert.match(await page.locator('#f-latin').innerText(),/No hay transcripción ni pasaje/);
-   assert.match(await page.locator('#f-translation').innerText(),/Traducción no asignada/);
+   // f. 1v: paso del prefacio a I.1 verificado en la fotografía (rúbrica «De architectis instituendis»).
+   assert.match(await page.locator('#f-latin').innerText(),/1\.1\.1/);
+   assert.match(await page.locator('#f-evidence').innerText(),/verificado|rúbrica/i);
    await page.locator('#f-search').fill('9.praef.10');
    assert.match(await page.locator('#f-search-count').innerText(),/1 loci?/);
    await page.locator('#f-search-results button').first().click();

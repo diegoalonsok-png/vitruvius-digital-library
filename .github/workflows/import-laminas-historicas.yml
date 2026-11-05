@@ -1,0 +1,29 @@
+name: Importar láminas históricas verificadas
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/laminas-historicas.json'
+      - 'scripts/import-laminas-historicas.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Descargar láminas con derechos verificados en origen
+        run: python scripts/import-laminas-historicas.py
+      - name: Registrar las imágenes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/laminas-historicas/ data/laminas-historicas.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Láminas históricas importadas con procedencia y derechos verificados"
+            git push
+          fi
