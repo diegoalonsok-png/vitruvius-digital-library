@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const source=readFileSync(new URL('../assets/vitruvia-image-engine-v2.js',import.meta.url),'utf8');
+new vm.Script(source,{filename:'vitruvia-image-engine-v2.js'});
+assert.match(source,/iiurlwidth:"360"/,"Gallery must request small thumbs");
+assert.match(source,/pithumbsize:"480"/,"Lead image must remain compact");
+assert.match(source,/info\.width>1200/,"Large gallery images should be bounded on initial enlargement");
+assert.match(source,/\/1200px-/,"Image lightbox cap missing");
+assert.match(source,/img\.loading=parent===grid\?"lazy":"eager"/,"Viewport image priority missing");
+assert.match(source,/img\.addEventListener\("error"/,"Image failover regression");
+assert.match(source,/vitruvia-image-unavailable/,"Image source fallback regression");
+assert.match(source,/vitruvia-image-large-original/,"Original resolution link must remain");
+console.log('Compact thumbnails, lazy gallery, eager first preview and original-link checks passed');
