@@ -50,7 +50,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css?v=20261102-latin-traduccion-1">
   <script src="assets/app.js?v=20261104-query-1" type="module"></script>
-<script src="assets/i18n.js?v=20261104-vitruvia-entry-1" defer></script><script src="assets/latin-suggest.js?v=20261101-gloss-spelling-36" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261103-shared-icons-fix2" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
+<script src="assets/i18n.js?v=20261104-vitruvia-entry-1" defer></script><script src="assets/latin-suggest.js?v=20261101-gloss-spelling-36" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261104-front-default-dark" defer></script><script src="assets/front-palette.js?v=20261104-v1" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
 /* Jerarquía clara de acciones y crédito editorial separado. */
 .hero-actions-academic{display:flex;align-items:center;gap:12px 15px;flex-wrap:wrap;margin-top:24px}
 .hero-actions-academic .button{display:inline-flex;align-items:center;gap:8px;padding:12px 19px;min-height:46px;text-decoration:none;white-space:normal}
@@ -212,6 +212,47 @@ html[data-theme=dark] .research-nav-controls a.vitruvia-top-link:focus-visible{o
 .hero-academic h1 .hero-latin-title{font-family:LibraryGaramond,'EB Garamond','Baskerville','Palatino Linotype',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.055em}
 .hero-academic h1>span{font-style:normal;letter-spacing:normal}
 @media(max-width:600px){.hero-academic h1 .hero-latin-title{letter-spacing:-.04em}}
+
+/* Portada únicamente: fondo negro editorial, independiente de los visores. */
+html[data-theme="dark"]{--front-page-bg:#0b0e12;--paper:var(--front-page-bg);--navy:#0c1116;--navy2:#19232b;--line:#354047}
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .research-nav{background:var(--front-page-bg)}
+html[data-theme="dark"] .institution-bar{background:#111820}
+/* La familia tipográfica y cursiva de Vitruvia, conservando título y jerarquía. */
+.hero-academic h1,.hero-academic h1 .hero-latin-title,.hero-academic h1>span{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-style:italic!important;font-weight:400!important;letter-spacing:-.035em!important;
+}
+/* Paleta nueva, gemela al selector lunar existente. */
+.home-color-tools{position:relative;display:inline-flex;align-items:center;flex:0 0 42px;z-index:4}
+.home-palette-toggle{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 42px;
+  width:42px;height:42px;min-width:42px;min-height:42px;padding:0!important;margin:0!important;
+  border-radius:11px!important;border:1px solid #b5b8b7!important;background:#f2f1ed!important;
+  color:#24313a!important;cursor:pointer;transition:background .2s,border-color .2s}
+.home-palette-toggle svg{width:19px;height:19px;display:block}
+.home-palette-toggle:hover,.home-palette-toggle:focus-visible{background:#e1e2df!important;border-color:#77838b!important}
+html[data-theme="dark"] .home-palette-toggle{background:#1b2833!important;border-color:#586470!important;color:#e8e8e8!important}
+html[data-theme="dark"] .home-palette-toggle:hover{background:#344553!important}
+.home-palette-toggle:focus-visible{outline:2px solid #b49a65!important;outline-offset:3px}
+.home-color-panel{position:absolute;top:calc(100% + 12px);right:0;width:min(275px,calc(100vw - 32px));
+ padding:17px;border:1px solid #a58b60;border-radius:9px;background:#fffdf8;color:#172b3c;
+ box-shadow:0 16px 45px #0007;white-space:normal;text-align:left;font:13px/1.45 Arial,sans-serif}
+html[data-theme="dark"] .home-color-panel{background:#19232c;color:#f0ece4;border-color:#b69a69}
+.home-color-panel[hidden]{display:none!important}
+.home-color-panel h2{font:italic 20px/1.2 Georgia,serif;margin:0 0 5px;color:inherit}
+.home-color-panel p{font:12px/1.45 Arial,sans-serif;margin:0 0 13px;color:inherit;opacity:.86}
+.home-swatch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.home-swatch{display:inline-flex;gap:7px;align-items:center;min-height:37px;padding:6px!important;
+ border:1px solid #928d82!important;border-radius:6px;background:transparent!important;color:inherit!important;
+ font:12px Arial,sans-serif!important;text-align:left;cursor:pointer}
+.home-swatch:hover,.home-swatch[aria-pressed="true"]{border-color:#b69a69!important;outline:1px solid #b69a69;outline-offset:0}
+.home-swatch-dot{display:inline-block;width:20px;height:20px;flex:0 0 20px;border:1px solid #aaa;border-radius:50%}
+.home-color-custom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:13px 0 10px;font:12px Arial,sans-serif}
+.home-color-custom input{width:56px;height:35px;padding:2px;background:transparent;border:1px solid #a58b60;border-radius:5px;cursor:pointer}
+.home-color-reset{font:12px Arial,sans-serif;color:inherit;background:transparent;border:0;
+ border-bottom:1px solid #a58b60;padding:4px 0;cursor:pointer}
+@media print{.home-color-tools{display:none!important}}
+
 </style><style>.hero-folios-action{border-color:#c8a86e!important;font-weight:750!important;letter-spacing:.025em;background:rgba(202,169,102,.08)}.hero-folios-action:focus-visible{outline:3px solid #c8a86e;outline-offset:3px}</style>
 <link rel="stylesheet" href="assets/editorial-reading.css?v=20261103-front-responsive-2">
 </head>
