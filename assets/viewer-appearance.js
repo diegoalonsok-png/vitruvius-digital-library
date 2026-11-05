@@ -21,7 +21,10 @@ function css(){
 [data-va-font=on] .va-target .va-text,[data-va-font=on] .va-target .parallel-passage,[data-va-font=on] .va-target .txt{font-family:var(--va-font)!important}
 .va-scope .va-target .va-text,.va-scope .va-target .parallel-passage,.va-scope .va-target .txt{font-size:calc(var(--va-size,100) * 1%)!important}
 [data-va-italic=on] .va-target .parallel-passage,[data-va-italic=on] .va-target .txt{font-style:italic}
-.va-actions{display:inline-flex;gap:12px;flex-wrap:wrap;margin-left:12px}.va-actions a,.va-actions button{font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer}`;
+.va-actions{display:inline-flex;gap:8px;flex-wrap:wrap;align-items:center}
+.va-actions a,.va-actions button{display:inline-flex;align-items:center;gap:6px;font:600 11.5px/1 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:7px 12px!important;border:1px solid var(--gold,#b8955a)!important;border-radius:999px;background:transparent;color:inherit!important;text-decoration:none!important;cursor:pointer;transition:background .15s,color .15s}
+.va-actions a:hover,.va-actions button:hover{background:var(--gold,#b8955a);color:#111!important}
+.va-actions svg{width:14px;height:14px;fill:currentColor}`;
  document.head.append(s);
 }
 function apply(scope){
@@ -62,13 +65,14 @@ function bar(scope,label){
 function actions(card,title,url){
  const box=document.createElement("span");box.className="va-actions";
  const text=title+" — "+url;
- const pr=document.createElement("button");pr.type="button";pr.textContent="Imprimir / PDF";
+ const icon=d=>'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'"/></svg>';
+ const pr=document.createElement("button");pr.type="button";pr.innerHTML=icon("M6 9V2h12v7h2a2 2 0 0 1 2 2v6h-4v5H6v-5H2v-6a2 2 0 0 1 2-2h2zm2-5v5h8V4H8zm0 12v4h8v-4H8z")+"PDF · Imprimir";pr.title="Imprimir o guardar este pasaje como PDF";
  pr.addEventListener("click",()=>{const w=window.open("","_blank");if(!w)return window.print();
   const clone=card.cloneNode(true);clone.querySelectorAll("button,select,.va-actions,.result-actions,dialog").forEach(x=>x.remove());
   w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${title.replace(/</g,"&lt;")}</title><style>body{font:16px/1.7 Georgia,serif;max-width:1000px;margin:30px auto;padding:0 20px;color:#111}mark{background:#ffe14d}.parallel-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px}</style></head><body>${clone.innerHTML}<p style="font:12px system-ui;color:#555">${url.replace(/</g,"&lt;")}</p></body></html>`);
   w.document.close();w.focus();setTimeout(()=>w.print(),300)});
- const wa=document.createElement("a");wa.textContent="WhatsApp";wa.target="_blank";wa.rel="noopener";wa.href="https://wa.me/?text="+encodeURIComponent(text);
- const ml=document.createElement("a");ml.textContent="Correo";ml.href="mailto:?subject="+encodeURIComponent(title)+"&body="+encodeURIComponent(text);
+ const wa=document.createElement("a");wa.innerHTML=icon("M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z")+"WhatsApp";wa.target="_blank";wa.rel="noopener";wa.href="https://wa.me/?text="+encodeURIComponent(text);
+ const ml=document.createElement("a");ml.innerHTML=icon("M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.3-8-5.3zM5.5 7l6.5 4.3L18.5 7h-13z")+"Correo";ml.href="mailto:?subject="+encodeURIComponent(title)+"&body="+encodeURIComponent(text);
  box.append(pr,wa,ml);return box;
 }
 window.VitruviusViewerAppearance={bar,apply,actions};
