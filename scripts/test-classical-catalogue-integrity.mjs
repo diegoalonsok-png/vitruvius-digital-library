@@ -19,6 +19,8 @@ const app=read('assets/bibliotheca-graeca-latina.js');
 const index=read('index-codicum.html');
 assert(html.includes('id="classic-sort"'),'Missing academic ordering control');
 assert(app.includes('function matchingWitness(w,q)'),'Missing shelfmark matching');
+assert(app.includes('function render(){const data=filters(),t=terms(),q=$("classic-query").value.trim();'),'Catalogue query must be declared before list rendering');
+assert(!app.includes('const hit=q?matchingWitness(w,q):null;')||app.indexOf('function render(){const data=filters(),t=terms(),q=')<app.indexOf('const hit=q?matchingWitness(w,q):null;'),'Manuscript match must not reference an uninitialized query');
 assert(app.includes('function witnessYear(w)'),'Missing documented witness ordering');
 assert(index.includes('id="codex-query"'),'Missing dedicated codex index search');
 assert(index.includes('metadata_status'),'Missing provisional/documented status');
