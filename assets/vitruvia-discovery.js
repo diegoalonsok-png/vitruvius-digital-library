@@ -106,18 +106,21 @@
   return ["artwork","object","historic","book","portrait","sculpture","technical","context"];
  }
  function sortImages(items,topic){
+  // Dated reproductions precede undated ones. Never mistake an upload date for
+  // the creation, publication or filming date of a historical work.
   const order=groupOrder(topic);
-  return [...items].sort((a,b)=>order.indexOf(a.group)-order.indexOf(b.group)||b.score-a.score||a.name.localeCompare(b.name));
+  const validYear=x=>Number.isFinite(x)&&x>=-4000&&x<=new Date().getFullYear()+1;
+  return [...items].sort((a,b)=>{
+   const ay=validYear(a.year)?a.year:null,by=validYear(b.year)?b.year:null;
+   if(ay!==null&&by!==null&&ay!==by)return ay-by;
+   if(ay!==null&&by===null)return -1;
+   if(ay===null&&by!==null)return 1;
+   return order.indexOf(a.group)-order.indexOf(b.group)||b.score-a.score||a.name.localeCompare(b.name);
+  });
  }
  function previewImages(items,topic){
-  const chosen=[],seen=new Set();
-  const order=groupOrder(topic);
-  for(const group of order){
-   const limit=group==="sculpture"||group==="portrait"||group==="object"||group==="historic"?2:1;
-   for(const item of items.filter(x=>x.group===group).slice(0,limit))if(chosen.length<5){chosen.push(item);seen.add(item.page)}
-  }
-  for(const item of items)if(chosen.length<5&&!seen.has(item.page)){chosen.push(item);seen.add(item.page)}
-  return sortImages(chosen,topic);
+  // The first five images preserve the same chronological sequence as the gallery.
+  return sortImages(items,topic).slice(0,5);
  }
  /* Scholarly list entries must not be collapsed into an uninterrupted paragraph.
     Keep each source's punctuation and wording intact; only recover boundaries. */
