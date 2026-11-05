@@ -16,6 +16,19 @@ function classify(query,rows=[]){
  const broad=/^(?:(?:historia|evolucion|origen|tipos|estilos)\s+(?:de|la|los)\s+)?(?:arquitectura|arquitecturas|arquitectos|arquitectas|architecture|architects|architectural styles|estilos arquitectonicos|arquitectura antigua|arquitectura moderna|arquitectura gotica|arquitectura romana|arquitectura griega|arquitectura renacentista|arquitectura contemporanea)$/.test(q);
  if(broad)return{kind:'general',subject:short(query),identity:null};
  const qt=tokens(query);
+ // Resolve an actual identified building before reading architect names in its description.
+ const buildingWords=/\b(building|buildings|house|museum|temple|church|cathedral|bridge|tower|skyscraper|dam|stadium|palace|castle|station|library|viaduct|monument|edificio|casa|museo|templo|iglesia|catedral|puente|torre|rascacielos|represa|presa|estadio|palacio|castillo|estacion|biblioteca|viaducto|monumento|anfiteatro|acueducto|amphitheater)\b/i;
+ const building=rows.filter(x=>x.type==='wikipedia'&&x.link&&(
+  normalize(x.title||'')===q||
+  normalize(x.entityCanonical||'')===q||
+  (qt.length>=2&&qt.every(term=>tokens(x.title||'').includes(term)))
+ )).find(x=>{
+  if(x.entityKind==='person')return false;
+  const title=normalize(x.title||'');
+  const intro=normalize(String(x.entityDescription||x.fullExtract||x.excerpt||'').slice(0,280));
+  return buildingWords.test(title+' '+intro);
+ });
+ if(building)return{kind:'building',subject:short(building.title),identity:building};
  const wiki=rows.filter(x=>x.type==='wikipedia'&&x.link&&/architect|arquitect|architet|architecte/i.test(String(x.excerpt||'')+' '+String(x.entityDescription||'')+' '+String(x.fullExtract||'').slice(0,900)))
   .filter(x=>{
     const t=tokens(x.title||x.entityCanonical||'');
@@ -281,10 +294,28 @@ function render(panel,query,rows,stillCurrent){
  const area=el('section','architecture-sources');
  heading(area,subject.kind==='person'?
   localized('Arquitectura · trayectoria y obras','Architecture · career and works','Architecture · carrière et œuvres'):
+  subject.kind==='building'?
+  localized('Obra arquitectónica e ingeniería','Building and engineering work','Architecture et ingénierie'):
   localized('Arquitectura · planos y cortes','Architecture · drawings and sections','Architecture · plans et coupes'));
  panel.append(area);
  const apiId=subject.identity?.wikidataId;
  if(subject.kind==='person')listConstructedWorks(area,subject.subject,apiId,stillCurrent);
+ if(subject.kind==='building'&&subject.identity){
+  const identified=subject.identity,name=subject.subject;
+  const section=el('section','architecture-built-list');
+  heading(section,localized('Edificio · fotografía y documentación','Building · photographs and documentation','Édifice · photographies et documentation'));
+  area.append(section);
+  const list=el('ol','architecture-work-stack');section.append(list);
+  const card=el('li','architecture-work-item');
+  card.append(link(name+' ↗',identified.link));
+  const desc=short(identified.entityDescription||identified.fullExtract||identified.excerpt||'');
+  window.VitruviaArchitectVisuals?.enhance(card,{
+   title:name,photoTitle:identified.entityCanonical||name,url:identified.link,
+   description:desc.slice(0,230)+(desc.length>230?'…':'')
+  });
+  list.append(card);
+ }
+
  const summary=subject.kind==='person'?
   localized('Estilo y años de actividad según registros documentales, cuando constan. Los planos se atribuyen solo si la fuente permite relacionarlos con este arquitecto o sus obras.',
    'Style and working years are shown only when documented. Drawings are attributed only when their source links them to the architect or a known work.',
