@@ -90,3 +90,41 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-context .context-biblio-m
   max-height:none!important;overflow:visible!important;scrollbar-gutter:auto;padding-right:0;
  }
 }
+
+/* Architectural profiles / manuscript-like image plates. */
+body.vitruvia-reading #vitruvia-context .architecture-sources{width:100%;max-width:100%;min-width:0;overflow-wrap:anywhere}
+body.vitruvia-reading #vitruvia-context .architecture-facts{margin:8px 0 14px}
+body.vitruvia-reading #vitruvia-context .architecture-fact{
+ display:block;font:400 12px/1.65 Arial,Helvetica,sans-serif;
+ margin:0 0 8px;color:#d0c8b8;
+}
+body.vitruvia-reading #vitruvia-context .architecture-gallery{
+ display:flex;flex-direction:column;gap:17px;min-width:0;width:100%;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing{
+ display:block;box-sizing:border-box;width:100%;max-width:100%;min-width:0;
+ margin:0;padding:0 0 14px;border-bottom:1px solid #3a3c40;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing>a{
+ display:block;width:100%;background:#252629;border:1px solid #343638;
+ border-radius:5px;overflow:hidden;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing img{
+ display:block;width:100%;height:auto;max-height:390px;object-fit:contain;
+ background:#e6e2d8;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing figcaption{
+ display:flex;flex-direction:column;gap:3px;padding-top:8px;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing-type{
+ color:#d4c49f;font:600 10px/1.5 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.07em;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing-title{
+ color:#c5c4c0;font:400 12px/1.55 Arial,Helvetica,sans-serif;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing figcaption>a{
+ font:400 11px/1.55 Arial,Helvetica,sans-serif;overflow-wrap:anywhere;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-fact,
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-drawing-title{color:#444}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-drawing-type{color:#655738}
