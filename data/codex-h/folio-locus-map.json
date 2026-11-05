@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-folio-locus/1.0",
-  "updated": "2026-11-02",
+  "updated": "2026-11-05",
   "manuscript": {
     "siglum": "H",
     "name": "Harley MS 2767",
@@ -18,7 +18,10 @@
   },
   "status_labels": {
     "provisional": "Propuesta de correspondencia material por inspección; transcripción y límites sin verificar diplomáticamente.",
-    "not_verified": "El folio existe en el facsímil pero no hay aún mapeo textual cotejado."
+    "not_verified": "El folio existe en el facsímil pero no hay aún mapeo textual cotejado.",
+    "visual_rubric": "Límite de libro verificado visualmente en la fotografía del folio: rúbrica roja «Explicit / Incipit liber …» seguida del comienzo del prefacio.",
+    "catalogue": "Elemento descrito en el catálogo de la British Library (p. ej., diagrama), sin colación del texto.",
+    "estimated": "Posición estimada dentro del libro por proporción de texto entre dos límites verificados; orientativa, no material."
   },
   "entries": [
     {
@@ -51,11 +54,288 @@
       "transcription_source": null,
       "loci": [],
       "notes": "Imagen digital siguiente del mismo manuscrito. No hay loci asignados hasta cotejo del facsímil. Aunque la edición continúa en 1.praef.2, no se presume el límite físico de este folio."
+    },
+    {
+      "folio": "16v",
+      "image_number": 40,
+      "folio_status": "catalogue",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "1.6",
+          "extent": "within",
+          "status": "catalogue",
+          "note": "Diagrama de los vientos en tinta parda (catálogo BL), correspondiente a la doctrina de los vientos de I.6."
+        }
+      ],
+      "notes": "Catálogo de la British Library: «Diagram of the winds in brown ink (f. 16v)»."
+    },
+    {
+      "folio": "18r",
+      "image_number": 43,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "1.7.2",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro I: rúbrica «Vitruvii liber I explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "2.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber II» y comienzo del prefacio: «Dinocrates architectus cogitationibus et sollertia fretus…»."
+        }
+      ],
+      "notes": "Límite entre los libros I y II identificado en la fotografía local (imagen 43). Verificado 2026-11-05."
+    },
+    {
+      "folio": "36r",
+      "image_number": 79,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "2.10.3",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro II: rúbrica «Vitruvii liber II explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "3.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber III» y comienzo del prefacio: «Delphicus Apollo Socratem omnium sapientissimum…»."
+        }
+      ],
+      "notes": "Límite entre los libros II y III identificado en la fotografía local (imagen 79). Verificado 2026-11-05."
+    },
+    {
+      "folio": "47r",
+      "image_number": 101,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "3.5.15",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro III: rúbrica «Vitruvii liber III explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "4.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber IV» y comienzo del prefacio: «Cum animadvertissem, imperator, plures…»."
+        }
+      ],
+      "notes": "Límite entre los libros III y IV identificado en la fotografía local (imagen 101). Verificado 2026-11-05."
+    },
+    {
+      "folio": "58v",
+      "image_number": 124,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "4.9.1",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro IV: rúbrica «Vitruvii liber IV explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "5.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber V» y comienzo del prefacio: «Qui amplioribus voluminibus, imperator…»."
+        }
+      ],
+      "notes": "Límite entre los libros IV y V identificado en la fotografía local (imagen 124). Verificado 2026-11-05."
+    },
+    {
+      "folio": "75v",
+      "image_number": 158,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "5.12.7",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro V: rúbrica «Vitruvii liber V explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "6.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber VI» y comienzo del prefacio: «Aristippus philosophus Socraticus…»."
+        }
+      ],
+      "notes": "Límite entre los libros V y VI identificado en la fotografía local (imagen 158). Verificado 2026-11-05."
+    },
+    {
+      "folio": "90v",
+      "image_number": 188,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "6.8.10",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro VI: rúbrica «Vitruvii liber VI explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "7.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber VII» y comienzo del prefacio: «Maiores cum sapienter tum etiam utiliter…»."
+        }
+      ],
+      "notes": "Límite entre los libros VI y VII identificado en la fotografía local (imagen 188). Verificado 2026-11-05."
+    },
+    {
+      "folio": "107v",
+      "image_number": 222,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "7.14.3",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro VII: rúbrica «Vitruvii liber VII explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "8.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber VIII» y comienzo del prefacio: «De septem sapientibus Thales Milesius…»."
+        }
+      ],
+      "notes": "Límite entre los libros VII y VIII identificado en la fotografía local (imagen 222). Verificado 2026-11-05."
+    },
+    {
+      "folio": "123r",
+      "image_number": 253,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "8.6.15",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro VIII: rúbrica «Vitruvii liber VIII explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "9.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber IX» y comienzo del prefacio: «Nobilibus athletis, qui Olympia, Isthmia…»."
+        }
+      ],
+      "notes": "Límite entre los libros VIII y IX identificado en la fotografía local (imagen 253). Verificado 2026-11-05."
+    },
+    {
+      "folio": "139v",
+      "image_number": 286,
+      "folio_status": "visual_rubric",
+      "alignment_source": null,
+      "transcription_source": null,
+      "loci": [
+        {
+          "locus": "9.8.15",
+          "extent": "ends",
+          "status": "visual_rubric",
+          "note": "Fin del libro IX: rúbrica «Vitruvii liber IX explicit» (o equivalente) en el mismo folio."
+        },
+        {
+          "locus": "10.praef.1",
+          "extent": "starts",
+          "status": "visual_rubric",
+          "note": "Rúbrica roja «Incipit liber X» y comienzo del prefacio: «Nobili Graecorum et ampla civitate Ephesi…»."
+        }
+      ],
+      "notes": "Límite entre los libros IX y X identificado en la fotografía local (imagen 286). Verificado 2026-11-05."
     }
   ],
   "future_work": [
     "Extender mapa mediante lectura del facsímil y colación, sin inferir foliación a partir de la numeración moderna.",
     "Anotar límites de línea y abreviaturas por cada cara; documentar responsables, fechas y nivel de certeza.",
     "Comprobar variantes frente a otras ramas de la tradición y separar con claridad cambios editoriales de lecturas materiales."
-  ]
+  ],
+  "books": [
+    {
+      "book": 1,
+      "start": "1r",
+      "end": "18r",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 2,
+      "start": "18r",
+      "end": "36r",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 3,
+      "start": "36r",
+      "end": "47r",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 4,
+      "start": "47r",
+      "end": "58v",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 5,
+      "start": "58v",
+      "end": "75v",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 6,
+      "start": "75v",
+      "end": "90v",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 7,
+      "start": "90v",
+      "end": "107v",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 8,
+      "start": "107v",
+      "end": "123r",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 9,
+      "start": "123r",
+      "end": "139v",
+      "status": "visual_rubric"
+    },
+    {
+      "book": 10,
+      "start": "139v",
+      "end": "162v",
+      "status": "visual_rubric"
+    }
+  ],
+  "books_note": "Cada libro empieza en el folio de su rúbrica «Incipit» y termina en el de la rúbrica «Explicit» siguiente (el mismo folio). Fin del tratado: f. 162v (catálogo BL: ff. 1r–162v)."
 }
