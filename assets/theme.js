@@ -8,10 +8,11 @@
  if(!document.querySelector('script[data-pdf-assist]')){const pdf=document.createElement('script');pdf.src=base+'pdf-assist.js?v=20261102-visible';pdf.defer=true;pdf.dataset.pdfAssist='1';document.head.append(pdf)}
  if(location.pathname.split('/').pop()!=='metodologia-filologica.html'&&!document.querySelector('script[data-global-language]')){const lang=document.createElement('script');lang.src=base+'global-language.js?v=20261103-3lang3';lang.defer=true;lang.dataset.globalLanguage='1';document.head.append(lang)}
  const key='vitruvius-color-theme';
- /* La portada comienza en modo oscuro, sin cambiar los valores por defecto de los lectores. */
+ const frontKey='vitruvius-front-color-mode';
+ /* La portada tiene negro por defecto; el tema del resto del sitio queda independiente. */
  const isFront=!!document.querySelector('.hero-academic .hero-latin-title');
  let choice=isFront?'dark':'light';
- try{const saved=localStorage.getItem(key);if(saved==='dark'||saved==='light')choice=saved;}catch{}
+ try{const saved=localStorage.getItem(isFront?frontKey:key);if(saved==='dark'||saved==='light')choice=saved;}catch{}
  document.documentElement.dataset.theme=choice;
  function mount(){
   const target=document.querySelector('.research-nav-controls')||document.querySelector('.research-nav-inner')||document.querySelector('.header-inner')||document.querySelector('main')||document.body;if(!target)return;
@@ -30,7 +31,7 @@
    b.setAttribute('title',dark?'Activar modo claro':'Activar modo oscuro');
    b.setAttribute('aria-pressed',String(dark));
  }};
-  for(const b of buttons){b.type='button';b.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem(key,next);}catch{}paint();});}paint();
+  for(const b of buttons){b.type='button';b.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem(isFront?frontKey:key,next);}catch{}paint();});}paint();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
  /* Shared usability enhancements: keyboard navigation, semantics and reading comfort. */
