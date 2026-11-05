@@ -78,6 +78,14 @@ async function render(found,q,token){
  const pcPage=cid?"https://pubchem.ncbi.nlm.nih.gov/compound/"+cid:"https://pubchem.ncbi.nlm.nih.gov/#query="+encodeURIComponent(pubchemName);
  if(pcImg)figs.prepend(figure(pcImg,"Estructura 2D · PubChem (NCBI)",pcPage));
  card.append(figs);
+ const cat=claim(e,"P373");
+ if(cat){const strip=el("div","vs-figs");strip.setAttribute("aria-label","Imágenes de la categoría de Commons");card.append(el("p","vs-kicker","Más imágenes · Commons, categoría «"+cat+"»"),strip);
+  j("https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({action:"query",format:"json",origin:"*",generator:"categorymembers",gcmtitle:"Category:"+cat,gcmtype:"file",gcmlimit:"40",prop:"imageinfo",iiprop:"url|mime",iiurlwidth:"300"}),9000).then(d=>{
+   const files=Object.values(d?.query?.pages||{}).filter(p=>/^image\/(jpeg|png|svg\+xml|gif)$/.test(p.imageinfo?.[0]?.mime||"")).slice(0,12);
+   if(!files.length){strip.previousSibling?.remove();strip.remove();return}
+   for(const f of files)strip.append(figure(f.imageinfo[0].thumburl,f.title.replace(/^File:/,"").replace(/\.[a-z]+$/i,""),f.imageinfo[0].descriptionurl));
+  });
+ }
  const dl=el("dl","vs-dl");const row=(k,v)=>{if(!v)return;dl.append(el("dt",null,k),el("dd",null,v))};
  if(element){row("Símbolo",claim(e,"P246"));row("Número atómico",qty(claim(e,"P1086")).replace(/,0+$/,""));row("Masa atómica estándar",qty(claim(e,"P2067")));row("Configuración electrónica",claim(e,"P8000"))}
  row("Fórmula química",claim(e,"P274")||found.formula);row(element?"":"Masa molecular",element?"":qty(claim(e,"P2067")));
@@ -97,8 +105,10 @@ async function render(found,q,token){
 }
 let seq=0;
 async function run(q){const token=++seq;$("vitruvia-science")?.remove();if(!q||q.length<1)return;
- const found=await resolve(q).catch(()=>null);if(token!==seq||!found)return;await render(found,q,token)}
+ const found=await resolveCached(q);if(token!==seq||!found)return;await render(found,q,token)}
 window.addEventListener("vitruvia:search",e=>run(e.detail?.query));
 window.addEventListener("vitruvia:clear",()=>{seq++;$("vitruvia-science")?.remove()});
-window.VitruviaScience={resolve,subject};
+const cache=new Map();
+function resolveCached(q){const k=fold(q);if(!cache.has(k))cache.set(k,resolve(q).catch(()=>null));return cache.get(k)}
+window.VitruviaScience={resolve,resolveCached,subject};
 })();

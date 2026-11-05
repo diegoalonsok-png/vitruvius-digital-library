@@ -22,6 +22,7 @@ function translate(root=document.body){
    if(!el||el.closest("#atlas-language-toolbar,script,style,code,pre,[lang=la],[lang=grc],.latin-name,.greek-name,.passage-text,#vitruvian-map,.leaflet-container"))continue;
    const value=node.nodeValue; if(!value||!value.trim())continue;
    let base=bases.get(node);
+   if(base!==undefined&&mine.get(node)===value)continue; // texto que puso la traducción automática: la base sigue siendo la castellana
    if(base===undefined||!(Object.prototype.hasOwnProperty.call(DICT,base.trim()))&&base!==value){
      const translated=Object.entries(DICT).find(([,arr])=>arr.includes(value.trim()));
      base=translated?translated[0]:value;
@@ -34,12 +35,53 @@ function translate(root=document.body){
    if(node.nodeValue!==next)pending.push([node,next]);
   }
   for(const [node,value] of pending)node.nodeValue=value;
+  // Textos que no están en el diccionario (fichas, notas, descripciones): se guardan como base en castellano
+  // para restaurarlos y, si el navegador ofrece traducción en el dispositivo, se traducen completos.
+  const rest=[];const w2=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  while(w2.nextNode()){const node=w2.currentNode,el=node.parentElement;
+   if(!el||el.closest("#atlas-language-toolbar,#atlas-mt-note,script,style,code,pre,[lang=la],[lang=grc],.latin-name,.greek-name,.passage-text,.leaflet-container,input,select,option,textarea"))continue;
+   const v=node.nodeValue;if(!v||!/\p{L}{3}/u.test(v))continue;
+   let base=bases.get(node);if(base===undefined||(base!==v&&mine.get(node)!==v&&!Object.values(DICT).some(arr=>arr.includes(v.trim())))){base=v;bases.set(node,base)}
+   if(Object.prototype.hasOwnProperty.call(DICT,base.trim()))continue;
+   if(current==="es"){if(node.nodeValue!==base){mine.delete(node);node.nodeValue=base}continue}
+   rest.push(node);
+  }
+  if(rest.length&&current!=="es")machine(rest);
   for(const p of PARAGRAPHS){
     const el=document.getElementById(p[0]);
     if(el){const value=p[LANGS.indexOf(current)+1]||p[1];if(el.textContent!==value)el.textContent=value;}
   }
   if(document.documentElement.lang!==current)document.documentElement.lang=current; // evita un bucle con otros observadores de «lang»
  }finally{updating=false;}
+}
+/* Traducción automática en el dispositivo (API Translator del navegador, p. ej. Chrome 138+): no envía el texto a
+   ningún servidor. Sin esa API, se ofrece la página completa en el traductor de Google. */
+const mtCache=new Map(),mine=new WeakMap();let mtLang=null,mtTranslator=null,mtBusy=false,mtQueue=[];
+function note(msg,href){let n=document.getElementById("atlas-mt-note");
+ if(!msg){n?.remove();return}
+ if(!n){n=document.createElement("div");n.id="atlas-mt-note";n.setAttribute("role","status");n.style.cssText="position:fixed;bottom:64px;right:16px;z-index:10005;max-width:360px;padding:9px 12px;border:1px solid #b8955a;border-radius:8px;background:#fffaf0;color:#223;font:12.5px/1.45 system-ui,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.18)";document.body.append(n)}
+ n.textContent=msg;if(href){const a=document.createElement("a");a.href=href;a.target="_blank";a.rel="noopener";a.textContent=" Abrir traducción completa ↗";n.append(a)}}
+async function machine(nodes){
+ const lang=current;mtQueue=nodes;if(mtBusy)return;mtBusy=true;
+ try{
+  const T=self.Translator;
+  if(!T){note("Traducción completa de fichas y notas: tu navegador no ofrece traducción integrada.","https://translate.google.com/translate?sl=es&tl="+lang+"&u="+encodeURIComponent(location.href));return}
+  if(mtLang!==lang){
+   const av=await T.availability({sourceLanguage:"es",targetLanguage:lang}).catch(()=>"unavailable");
+   if(av==="unavailable"){note("No hay traducción integrada para este idioma.","https://translate.google.com/translate?sl=es&tl="+lang+"&u="+encodeURIComponent(location.href));return}
+   note("Traduciendo fichas y notas en tu dispositivo…");
+   mtTranslator=await T.create({sourceLanguage:"es",targetLanguage:lang});mtLang=lang;
+  }
+  while(mtQueue.length&&current===lang){
+   const batch=mtQueue.splice(0,40);
+   await Promise.all(batch.map(async node=>{const base=bases.get(node);if(!base||!node.isConnected)return;
+    const key=lang+"\u0000"+base;let out=mtCache.get(key);
+    if(out===undefined){try{const lead=base.match(/^\s*/)[0],tail=base.match(/\s*$/)[0];out=lead+(await mtTranslator.translate(base.trim()))+tail}catch{out=base}mtCache.set(key,out)}
+    if(current===lang&&node.nodeValue!==out){updating=true;mine.set(node,out);node.nodeValue=out;updating=false}}));
+  }
+  note("");
+ }catch{note("La traducción integrada no está disponible ahora.","https://translate.google.com/translate?sl=es&tl="+lang+"&u="+encodeURIComponent(location.href))}
+ finally{mtBusy=false}
 }
 let queued=false;
 const obs=new MutationObserver(()=>{
@@ -48,6 +90,6 @@ const obs=new MutationObserver(()=>{
  setTimeout(()=>{queued=false;translate();},0); // tarea, no microtarea: no bloquea la página aunque otro script reaccione
 });
 obs.observe(document.body,{childList:true,subtree:true});
-sel.addEventListener("change",()=>{current=sel.value;try{localStorage.setItem("vitruvius-atlas-lang",current);}catch{}translate();});
+sel.addEventListener("change",()=>{current=sel.value;try{localStorage.setItem("vitruvius-atlas-lang",current);}catch{}if(current==="es")note("");translate();});
 translate();
 })();
