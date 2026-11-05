@@ -68,13 +68,47 @@ async function lookupTitle(title,lang){
  if(!page)return null;
  return {canonical:page.title,description:page.extract?.slice(0,360)||"",extract:page.extract||"",pageid:page.pageid,wikidataId:/^Q\d+$/.test(page.pageprops?.wikibase_item||"")?page.pageprops.wikibase_item:null,language:lang,url:page.fullurl||"https://"+lang+".wikipedia.org/wiki/"+encodeURIComponent(page.title.replace(/ /g,"_")),aliases:(d.query?.redirects||[]).map(x=>x.from),type:"encyclopedia"};
 }
+/* Multiword names: each meaningful token must match an entire name token
+   with small typo tolerance; one shared first name is never sufficient. */
+function fullNameMatch(input,candidate){
+ const a=norm(input).split(" ").filter(Boolean),b=norm(candidate).replace(/\s*\([^)]*\)\s*$/,"").split(" ").filter(Boolean);
+ if(a.length<2)return nameSimilarity(input,candidate)>0;
+ const used=new Set();
+ let matched=0,errors=0;
+ for(const word of a){
+  let best=null;
+  b.forEach((target,i)=>{
+   if(used.has(i))return;
+   const d=distance(word,target);
+   const limit=word.length<4?0:word.length<=6?1:2;
+   if(d<=limit&&(!best||d<best.d))best={i,d};
+  });
+  if(!best)return false;
+  used.add(best.i);matched++;errors+=best.d;
+ }
+ // No partial match to another person; typo allowance scales with length.
+ return matched===a.length&&errors<=Math.max(2,Math.floor(norm(input).length/8));
+}
 async function searchTitle(q,lang,suggest=true){
  const d=await get(mediaWiki(lang,{action:"query",list:"search",srsearch:q,srlimit:"8",srprop:"snippet",srinfo:"suggestion|rewrittenquery",utf8:"1"}));
  const hits=d.query?.search||[];
- const matches=hits.filter(x=>!/(?:desambiguaci[oó]n|disambiguation)/i.test(x.title)).map((x,index)=>({x,index,score:nameSimilarity(q,x.title)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.index-b.index);
+ const matches=hits.filter(x=>!/(?:desambiguaci[oó]n|disambiguation)/i.test(x.title)).map((x,index)=>({x,index,score:nameSimilarity(q,x.title)})).filter(x=>x.score>0&&fullNameMatch(q,x.x.title)).sort((a,b)=>b.score-a.score||a.index-b.index);
  if(matches[0]){
   const page=await lookupTitle(matches[0].x.title,lang);
   return page?{...page,spellingMatch:norm(q)!==norm(page.canonical)?q:null}:null;
+ }
+ // Broad semantic fallback: Wikipedia fuzzy titles, but validate the full
+ // multiword identity before using the result as a person's name.
+ if(norm(q).split(" ").length>=2){
+  try{
+   const d2=await get(mediaWiki(lang,{action:"opensearch",search:q,limit:"12",namespace:"0",profile:"fuzzy"}));
+   const titles=Array.isArray(d2)?d2[1]||[]:[];
+   const candidate=titles.find(name=>fullNameMatch(q,name));
+   if(candidate){
+    const page=await lookupTitle(candidate,lang);
+    if(page)return {...page,spellingMatch:norm(q)===norm(page.canonical)?null:q};
+   }
+  }catch{}
  }
  const correction=d.query?.searchinfo?.suggestion||d.query?.searchinfo?.rewrittenquery;
  if(suggest&&typeof correction==='string'&&norm(correction)!==norm(q)&&nameSimilarity(q,correction)>0){
@@ -125,6 +159,8 @@ async function authorityCandidates(q,lang){
   const completeName=[...labels,...aliases].some(name=>queryTerms.every(term=>norm(name).split(" ").includes(term)));
   const similarity=Math.max(0,...labels.map(name=>nameSimilarity(q,name)));
   if(!exactLabel&&!exactAlias&&!searchMatch&&!completeName&&!similarity)return null;
+   if(norm(q).split(" ").length>=2&&!exactLabel&&!exactAlias&&!completeName&&
+     ![...labels,...aliases].some(name=>fullNameMatch(q,name)))return null;
   const coverage=Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length;
   // Prefer an exact primary name over an alias of a different, equally prominent entity.
   // Coverage can still disambiguate a little-known namesake from a major historical figure.
