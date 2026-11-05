@@ -110,6 +110,23 @@ async function searchTitle(q,lang,suggest=true){
    }
   }catch{}
  }
+ // If one component of a multiword name is misspelled, search the
+ // remaining components, but accept only an ENTIRE name that fits the input.
+ const parts=norm(q).split(" ").filter(Boolean);
+ if(parts.length>=2&&parts.length<=5){
+  const probes=parts.map((_,i)=>parts.filter((__,j)=>i!==j).join(" "))
+   .filter(x=>x.length>=4).slice(0,4);
+  const candidates=await Promise.allSettled(probes.map(term=>get(mediaWiki(lang,{
+   action:"query",list:"search",srsearch:term,srlimit:"7",srprop:"",utf8:"1"
+  }))));
+  const names=candidates.flatMap(result=>result.status==="fulfilled"?
+   (result.value.query?.search||[]).map(x=>x.title):[]);
+  const matched=[...new Set(names)].find(name=>fullNameMatch(q,name));
+  if(matched){
+   const page=await lookupTitle(matched,lang);
+   if(page)return {...page,spellingMatch:norm(q)===norm(page.canonical)?null:q};
+  }
+ }
  const correction=d.query?.searchinfo?.suggestion||d.query?.searchinfo?.rewrittenquery;
  if(suggest&&typeof correction==='string'&&norm(correction)!==norm(q)&&nameSimilarity(q,correction)>0){
   const page=await searchTitle(correction,lang,false);
