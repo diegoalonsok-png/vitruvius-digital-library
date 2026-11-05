@@ -358,7 +358,9 @@ function render(panel,query,rows,isCurrent){
   const architectural=window.VitruviaArchitecture?.classify(query,records);
   // Identified architects also need the architectural works panel; without it a
    // SPARQL timeout can leave a complete biography but no building photographs.
-   if(architectural&&(architectural.kind==='person'&&topic.kind==='architect'||
+   // Occupation/identity from the architectural authority takes precedence over
+   // any generic "works" query category. Never discard a verified architect.
+   if(architectural&&(architectural.kind==='person'||
      architectural.kind!=='person'&&topic.kind!=='architect'&&topic.person?.entityKind!=='person'))
     window.VitruviaArchitecture?.render(section,query,records,valid);
   const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
