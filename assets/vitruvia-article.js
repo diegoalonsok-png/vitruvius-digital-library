@@ -1516,11 +1516,68 @@ function renderVitruviusAuthority(rows){
  buildContents();
 }
 
+/* Exact references to Vitruvius are primary documents, not encyclopedia topics.
+   Passages remain attached to their specific structured editorial edition. */
+function renderPreface(rows,query,intent){
+ const roman=['','I','II','III','IV','V','VI','VII','VIII','IX','X'];
+ const book=intent?.book||rows.find(r=>r.type==='preface')?.book||null;
+ const wanted=intent?.section||null;
+ const title=book?'De architectura · Prefacio del Libro '+roman[book]:'De architectura · Prefacios de los diez libros';
+ reset(title,
+  phrase('Vitruvio · texto latino y traducciones editoriales','Vitruvius · Latin text and editorial translations','Vitruve · texte latin et traductions éditoriales'),
+  phrase('FUENTE PRIMARIA · PREFACIO','PRIMARY TEXT · PREFACE','SOURCE PRIMAIRE · PRÉFACE'));
+ const records=rows.filter(r=>r.type==='preface'&&!r.prefacePlaceholder&&Array.isArray(r.sections)&&r.sections.length);
+ if(!records.length){
+  paragraph(phrase('Consultando las ediciones estructuradas del tratado. El prefacio tiene prioridad sobre los resultados enciclopédicos.','Reading the structured editions. The preface takes priority over encyclopedia matches.','Consultation des éditions structurées. La préface prime sur les résultats encyclopédiques.'),'article-lead');
+  if(book){
+   const reader=href('lector-bilingue.html?edition=recensio-es&locus='+book+'.praef.'+(wanted||1),
+    phrase('Abrir el prefacio en el lector bilingüe →','Open preface in bilingual reader →','Ouvrir la préface dans le lecteur bilingue →'));
+   if(reader)$('article-body').append(reader);
+  }
+  return;
+ }
+ const preferred=document.documentElement.lang||'es';
+ records.sort((a,b)=>Number(b.language===preferred)-Number(a.language===preferred)||String(a.edition).localeCompare(String(b.edition)));
+ paragraph(phrase('La referencia se resuelve en el texto del tratado. Las lecturas latinas y sus traducciones se muestran por edición, sin atribuir a un códice las decisiones del editor.','The reference is resolved in the treatise. Latin readings and translations are grouped by edition; editorial choices are not attributed to a manuscript.','La référence est résolue dans le traité. Le latin et les traductions sont présentés par édition, sans attribuer les choix éditoriaux à un manuscrit.'),'article-lead');
+ for(const edition of records){
+  heading((edition.version||edition.edition||'Edición')+' · '+String(edition.language||'').toUpperCase());
+  const sections=edition.sections.filter(p=>!wanted||String(p.locus).endsWith('.'+wanted));
+  for(const p of sections){
+   heading('Vitr., De arch. '+p.locus);
+   if(p.latin){
+    const label=make('p','LATINE','article-note');$('article-body').append(label);
+    paragraph(p.latin,'vitruvian-text article-lead');
+   }
+   if(p.translation){
+    const lang=({es:'CASTELLANO',en:'ENGLISH',fr:'FRANÇAIS'})[edition.language]||edition.language;
+    $('article-body').append(make('p',lang,'article-note'));
+    paragraph(p.translation,'vitruvian-text');
+   }
+   const source=href('lector-bilingue.html?edition='+encodeURIComponent(edition.edition)+'&locus='+encodeURIComponent(p.locus),
+    phrase('Abrir en el lector bilingüe →','Open in bilingual reader →','Ouvrir dans le lecteur bilingue →'));
+   if(source)$('article-body').append(source);
+  }
+ }
+ aside(rows.filter(r=>r.type!=='wikipedia'&&r.type!=='wikidata'));
+ const sourceLinks=[
+  ['Índice de códices','index-codicum.html'],
+  ['Ediciones históricas','ediciones-historicas.html'],
+  ['Bibliografía especializada','bibliografia.html']
+ ];
+ const related=make('div',undefined,'article-index-links');
+ for(const [title,url] of sourceLinks){const a=href(url,title+' ↗');if(a)related.append(a)}
+ heading(phrase('Tradición manuscrita y estudios relacionados','Manuscript tradition and related scholarship','Tradition manuscrite et études connexes'));
+ $('article-body').append(related);
+ references(records,phrase('Texto latino y traducción procedentes de las ediciones estructuradas del sitio. La numeración de los loci no equivale a una foliación manuscrita.','Latin text and translations from the site’s structured editions. Passage numbering must not be confused with manuscript foliation.','Textes latins et traductions issus des éditions structurées du site. La numérotation des passages ne correspond pas aux folios manuscrits.'));
+}
+
 function render(rows,q,person=null){
  const token=++active;
  bibliographyContext={rows:rows||[],query:person?.name||q||""};
  if(!q){root.hidden=true;return}
  $("article-evidence")?.replaceChildren();
+ const referenceIntent=window.VitruviaResearchEngine?.classify(q);
+ if(referenceIntent?.preface){renderPreface(rows||[],q,referenceIntent.preface);return}
  if(isVitruviusAuthority(q)){renderVitruviusAuthority(rows||[]);return}
  const found=rows||[];
  const top=found.length?choose(found,q):{type:"topic",title:q};
@@ -1532,5 +1589,5 @@ function render(rows,q,person=null){
   if(token===active)highlightArticle(person?.id==="cicero"?"ciceron cicero ciceronis ciceronem cicerone":q);
  });
 }
-window.VitruviaArticles={render,version:"1.1-person-biography"};
+window.VitruviaArticles={render,version:"1.2-preface-primary"};
 })();
