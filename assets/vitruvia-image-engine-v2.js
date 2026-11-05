@@ -401,9 +401,10 @@ async function searchImages(query){
  controller=new AbortController();const signal=controller.signal;
  const timeout=setTimeout(()=>controller.abort(),18500);
  try{
-  const searchJobs=requests.map(term=>getJSON(imageParams({
+  // Fetch only two high-relevance query sets before showing the first images.
+  const queryImages=term=>getJSON(imageParams({
    action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"50"
-  }),signal));
+  }),signal);
   const entityImages=(identity?.imageFiles||[]).filter(x=>typeof x==="string").map(x=>"File:"+x);
   const representativeJob=entityImages.length&&topic.intent==="overview"?getJSON(imageParams({action:"query",titles:entityImages.join("|")}),signal).then(data=>{
    const pages=Object.values(data.query?.pages||{}).map(p=>({...p,fromEntityImage:true}));
@@ -414,15 +415,18 @@ async function searchImages(query){
   const categoryTerm=paintings?"paintings by "+categorySubject:photos?"photographs of "+categorySubject:categorySubject;
   const categoriesJob=getJSON({action:"query",list:"search",srnamespace:"14",srsearch:categoryTerm,srlimit:"12"},signal).catch(()=>null);
   const subcategoriesJob=identity?.commonsCategory?getJSON({action:"query",list:"categorymembers",cmtitle:"Category:"+identity.commonsCategory,cmtype:"subcat",cmlimit:"30"},signal).catch(()=>null):Promise.resolve(null);
-  const settled=await Promise.allSettled(searchJobs);
+  const firstSettled=await Promise.allSettled(requests.slice(0,2).map(queryImages));
   if(id!==active)return;
-  const pages=settled.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
-  // Primera tanda visible enseguida (sin esperar categorías). Para personas de nombre de una palabra,
-  // arquitectos y películas se espera el filtrado completo, que evita imágenes de homónimos.
+  const pages=firstSettled.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
+  // Show useful images while remaining sources and category searches are pending.
+  // Preserve strict identity filtering for ambiguous people, architects and films.
   if(!isArchitect&&!isFilm&&!(identity?.kind==="person"&&creatorRole)&&!grid.querySelector(".vitruvia-image-card")){
    const early=collectedImages(pages,topic).slice(0,24);
    if(early.length){displayGroups(early,topic);status.textContent=locale("Primeras imágenes; se siguen sumando las de las colecciones relacionadas…","First images; related collections are still loading…","Premières images ; chargement des collections liées…")}
   }
+  const remaining=await Promise.allSettled(requests.slice(2).map(queryImages));
+  if(id!==active)return;
+  pages.push(...remaining.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{})));
   pages.push(...await representativeJob);
   const categories=(await categoriesJob)?.query?.search||[];
   const children=(await subcategoriesJob)?.query?.categorymembers||[];
