@@ -3,7 +3,7 @@
 (()=>{
  'use strict';
  const KEY='vitruvius-ui-lang';
- const codes=['es','en','fr'];
+ const codes=['es','en','fr','it','de','pt'];
  const translations={
   'Inicio':['Home','Accueil'],
   'Biblioteca':['Library','Bibliothèque'],
@@ -150,7 +150,7 @@
  }
  function bindExisting(select){
   // Dedicated page control: delegate to its own localization engine, not a competing listener.
-  if([...select.options].some(o=>o.value===current)){
+  if([...select.options].some(o=>o.value===current)&&select.value!==current){
     select.value=current;
     select.dispatchEvent(new Event('change',{bubbles:true}));
   }
@@ -171,7 +171,8 @@
    const option=document.createElement('option');
    option.value=value;option.textContent=name;select.append(option);
   }
-  select.value=current;
+  select.value=['es','en','fr'].includes(current)?current:'es';
+  if(!['es','en','fr'].includes(current))current='es';
   label.append(sr,select);
   const controlHost=document.querySelector('.research-nav-controls,.header-actions,.header-controls,.classic-menu,.navtools');
   const header=document.querySelector('.header-inner');
