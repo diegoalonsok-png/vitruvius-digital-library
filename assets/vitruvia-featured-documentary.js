@@ -22,6 +22,10 @@
  const caption=visual.querySelector('.featured-documentary-caption'),credit=visual.querySelector('.featured-documentary-credit');
  const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
  const hasKind=(type,groups)=>groups.includes(type);
+
+ const childhood=/\b(baby|infant|infancy|childhood|as a child|as a baby|as a boy|as a girl|toddler|newborn|beb[eé]|niñ[oa]|infancia|infantil|enfant|bambin[oa]|kindheit|als kind)\b/i;
+ const isChildhood=item=>childhood.test([item?.caption,item?.name,item?.alt,item?.page].filter(Boolean).join(" ").normalize("NFD").replace(/\p{M}/gu,""));
+
  function validImage(url){
   try{
    const u=new URL(url);
@@ -35,14 +39,15 @@
   }catch{return false}
  }
  const locale=(es,en,fr)=>document.documentElement.lang?.startsWith('en')?en:document.documentElement.lang?.startsWith('fr')?fr:es;
- let query='',token=0,featured=null,gallery=[],selected='',rank=0,attempted=new Set(),ready=false;
+ let query='',token=0,featured=null,gallery=[],selected='',rank=0,attempted=new Set(),ready=false,childFallback=null,fallbackTimer=null;
  function setQuery(value){
-  query=fold(value);token++;featured=null;gallery=[];selected='';rank=0;ready=false;attempted.clear();
+  query=fold(value);token++;featured=null;gallery=[];selected='';rank=0;ready=false;childFallback=null;clearTimeout(fallbackTimer);fallbackTimer=null;attempted.clear();
   photo.removeAttribute('src');photo.alt='';visual.hidden=true;
  }
  function preferImage(item){
   const score=Number(item.score)||0;
-  if(item.verifiedIdentity)return score+1000;
+  if(isChildhood(item))return score-1500;
+   if(item.verifiedIdentity)return score+1000;
   const person=item.kind==='person',group=item.group||'';
   const boost=person?(group==='sculpture'?230:group==='portrait'?160:group==='book'?45:0):
    item.kind==='object'?(group==='object'?230:group==='historic'?195:group==='technical'?30:0):
@@ -85,7 +90,14 @@
   const item=fromRow(d.row);
   if(!item)return;
   featured=item;
-  if(!ready&&rank<26)show(item,25);
+  if(isChildhood(item)){
+    childFallback=item;
+    const current=token;
+    clearTimeout(fallbackTimer);
+    fallbackTimer=setTimeout(()=>{
+     if(token===current&&!ready&&!gallery.some(x=>!isChildhood(x)))show(item,25);
+    },9000);
+   }else if(!ready&&rank<26)show(item,25);
  }
  function onGallery(event){
   const d=event.detail||{};
