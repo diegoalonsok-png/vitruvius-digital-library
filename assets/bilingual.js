@@ -21,6 +21,16 @@ function highlight(text,lang='la',latin=''){
  text=String(text).replace(/\u00ad/g,'');
  const paired=parallelHighlight(text,{query,lang,latin});
  if(paired?.equivalent)return paired.html;
+ // Frases y párrafos: se resaltan los tramos contiguos de la consulta (dos palabras o más) en lugar de
+ // cada «et» o «in» suelto; si no hay tramos, solo las palabras significativas.
+ const qt=tokens(query).map(t=>t.value).filter(v=>!/^\d+$/.test(v));
+ if(qt.length>1&&$('find-mode').value!=='forms'){
+  const tt=tokens(text),runs=[];
+  for(let i=0;i<tt.length;){let best=0;for(let k=0;k<qt.length;k++){let n=0;while(i+n<tt.length&&k+n<qt.length&&tt[i+n].value===qt[k+n])n++;if(n>best)best=n}
+   if(best>=2){runs.push([tt[i].start,tt[i+best-1].end]);i+=best}else i++}
+  if(runs.length){let html='',at=0;for(const [a,b] of runs){html+=esc(text.slice(at,a))+'<mark>'+esc(text.slice(a,b))+'</mark>';at=b}return html+esc(text.slice(at))}
+  const strong=new Set(qt.filter(v=>v.length>=4));if(strong.size){let html='',at=0;for(const t of tokens(text)){if(!strong.has(t.value))continue;html+=esc(text.slice(at,t.start))+'<mark>'+esc(text.slice(t.start,t.end))+'</mark>';at=t.end}return html+esc(text.slice(at))}
+ }
  const wanted=new Set(($('find-mode').value==='forms'?lexicalForms(query,lexicon):[query]).flatMap(x=>tokens(x).map(t=>t.value)));if(!wanted.size)return esc(text);
  let html='',at=0;for(const t of tokens(text)){if(!wanted.has(t.value))continue;html+=esc(text.slice(at,t.start))+'<mark>'+esc(text.slice(t.start,t.end))+'</mark>';at=t.end;}return html+esc(text.slice(at));
 }
