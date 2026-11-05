@@ -236,13 +236,13 @@ async function authorityCandidates(q,lang,intent=""){
    Inspect occupation in Wikidata search descriptions before selecting a namesake. */
 async function qualifiedCreator(query,lang){
  const raw=String(query||"").trim();
- const roleMatch=raw.match(/^(?:obras?\s+(?:de|del)\s+)?(.+?)\s+(arquitectura|arquitecto|arquitecta|arquitecto\s+ingeniero|architecture|architect|arquitecte|filmografia|discografia|discography|peliculas|films|movies|libros|books|pinturas|paintings)$/i);
+ const roleMatch=raw.match(/^(?:obras?\s+(?:de|del)\s+)?(.+?)\s+(arquitectura|arquitecto|arquitecta|arquitecto\s+ingeniero|architecture|architect|arquitecte|filmografia|discografia|discography|peliculas|películas|films|movies|libros|books|pinturas|paintings|albumes|álbumes|albums|discos|musica|música)$/i);
  if(!roleMatch)return null;
  const name=roleMatch[1].trim(),discipline=norm(roleMatch[2]);
  if(name.length<3||name.length>90)return null;
  const fields=/arquitect|architect/.test(discipline)?/\b(architect\w*|arquitect\w*|ingenier\w*|engineer\w*|architet\w*|architecte\w*)\b/i:
   /film|pelicul|movie/.test(discipline)?/\b(director|filmmaker|cineasta|actor|actress|actriz|film)\b/i:
-  /disco/.test(discipline)?/\b(musician|music|singer|band|cantante|musico|grupo|composer)\b/i:
+  /disco|album|musica/.test(discipline)?/\b(musician|music|singer|band|cantante|musico|grupo|composer|vocalist|pop star)\b/i:
   /libro|book/.test(discipline)?/\b(writer|author|escritor|novelist|poet|poeta)\b/i:
   /\b(painter|artist|pintor|artista)\b/i;
  const languages=[...new Set([lang,"es","en"])];
@@ -310,7 +310,8 @@ async function completeIdentity(identity){
 }
 const cache=new Map();
 window.VitruviaEntityResolver={subject:clean,resolve(q,lang="es"){
- const key=norm(clean(q))+":"+lang;
+ // The same name with a requested discipline can denote a different entity.
+ const key=norm(q)+":"+lang;
  if(!cache.has(key)){
   const pending=resolve(q,lang).then(completeIdentity).then(value=>{if(value&&!value.spellingMatch&&norm(clean(q))!==norm(value.canonical)&&nameSimilarity(clean(q),value.canonical)>0)value={...value,spellingMatch:clean(q)};if(!value&&cache.get(key)===pending)cache.delete(key);return value},error=>{if(cache.get(key)===pending)cache.delete(key);throw error});
   cache.set(key,pending);
