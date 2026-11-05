@@ -52,7 +52,7 @@ html.lc-embed header,html.lc-embed footer,html.lc-embed .site-bar,html.lc-embed 
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script src="assets/vitruvia-fetch-cache.js?v=20261105-v1"></script><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261105-bar-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/lector-clasico.html">
 <script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
-<script defer src="assets/lector-clasico.js?v=20261105-extra-v2"></script>
+<script defer src="assets/lector-clasico.js?v=20261105-cite-v1"></script>
 <script defer src="assets/viewer-appearance.js?v=20261105-v3"></script>
 </head>
 <body>
@@ -69,7 +69,7 @@ html.lc-embed header,html.lc-embed footer,html.lc-embed .site-bar,html.lc-embed 
 <p class="sub"><a href="lector-clasico.html">← Catálogo</a></p>
 <h1 id="title"></h1><p class="sub" id="meta"></p>
 <form id="search" class="tools" role="search"><input id="q" type="search" placeholder="Palabra o frase en el original o en la traducción" aria-label="Buscar en la obra"><button type="submit">Buscar</button>
-<button type="button" id="prev">← Anterior</button><select id="toc" aria-label="Locus"></select><button type="button" id="next">Siguiente →</button><button type="button" id="print">Imprimir / PDF</button><a id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a id="mail" href="#">Correo</a><button type="button" id="copy">Copiar enlace</button></form>
+<button type="button" id="prev" aria-keyshortcuts="ArrowLeft" title="Atajo: flecha izquierda">← Anterior</button><select id="toc" aria-label="Locus"></select><button type="button" id="next" aria-keyshortcuts="ArrowRight" title="Atajo: flecha derecha">Siguiente →</button><button type="button" id="print">Imprimir / PDF</button><a id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a id="mail" href="#">Correo</a><button type="button" id="copy">Copiar enlace</button><button type="button" id="cite" title="Copia la cita del pasaje según Chicago 18">Citar (Chicago 18)</button></form><p id="cite-out" class="sub" hidden></p>
 <div id="hits"></div><p class="sub" id="status"></p><p class="sub" id="locus"></p>
 <div class="lc-grid">
 <div class="lc-pane"><div class="lc-tabs"><button type="button" id="tab-codex" aria-pressed="true">Códice más antiguo</button><button type="button" id="tab-original" aria-pressed="false">Texto original</button></div>

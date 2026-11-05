@@ -116,7 +116,7 @@ function render(){
  $("locus").textContent=work.title+" "+p.locus;
  $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p><div class="txt" lang="${work.language==="grc"?"grc":"la"}">${marked(p.text)}</div>`;
  const t=translationFor(p);
- $("translation").innerHTML=!work.translations.length?"<p class='muted'>Perseus no ofrece traducción para esta obra. Puedes leer el original a la izquierda.</p>":
+ $("translation").innerHTML=!work.translations.length?"<p class='muted'>No hay una traducción abierta disponible para esta obra en el repositorio de origen. Puedes leer el original a la izquierda.</p>":
   trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='muted'>Sin pasaje correspondiente en la traducción para este locus.</p>"):"<p class='muted'>Cargando la traducción…</p>";
  $("toc").value=String(cur);
  const u=new URL(location.href);u.searchParams.set("loc",p.locus);if(query)u.searchParams.set("q",query);else u.searchParams.delete("q");history.replaceState(null,"",u);
@@ -185,6 +185,24 @@ function renderIndex(){
  $("toc").onchange=e=>{cur=Number(e.target.value);render()};
  $("filter").oninput=renderIndex;
  $("print").onclick=()=>window.print(); // «Guardar como PDF» en el diálogo de impresión
+ $("cite").onclick=async()=>{
+  const p=orig[cur];if(!p)return;
+  const d=new Date().toLocaleDateString("es",{day:"numeric",month:"long",year:"numeric"});
+  const src=/latin_text_latin_library/.test(work.original)?"The Latin Library":/First1KGreek/.test(work.original)?"Open Greek and Latin, First1KGreek":"Perseus Digital Library";
+  const urn=/^urn:cts:/.test(work.urn||"")?work.urn+":"+p.locus:"";
+  const link=location.href.split("#")[0];
+  // Chicago 18 (14.142–14.147, obras clásicas): autor, título en cursiva y locus con números arábigos, sin coma.
+  const plain=`${work.author}, ${work.title} ${p.locus}. Texto: ${src}${urn?", "+urn:""}, ${link}, consultado el ${d}.`;
+  const html=`${esc(work.author)}, <i>${esc(work.title)}</i> ${esc(p.locus)}. Texto: ${esc(src)}${urn?", "+esc(urn):""}, ${esc(link)}, consultado el ${esc(d)}.`;
+  try{if(window.ClipboardItem&&navigator.clipboard?.write)await navigator.clipboard.write([new ClipboardItem({"text/plain":new Blob([plain],{type:"text/plain"}),"text/html":new Blob([html],{type:"text/html"})})]);else await navigator.clipboard.writeText(plain)}catch{}
+  $("cite-out").textContent=plain;$("cite-out").hidden=false;$("cite").textContent="Cita copiada ✓";setTimeout(()=>$("cite").textContent="Citar (Chicago 18)",1800);
+ };
+ // Atajos: ← y → cambian de pasaje; «/» lleva a la búsqueda.
+ document.addEventListener("keydown",e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey||$("reader").hidden)return;
+  const t=e.target;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;
+  if(e.key==="ArrowLeft"){e.preventDefault();$("prev").click()}else if(e.key==="ArrowRight"){e.preventDefault();$("next").click()}else if(e.key==="/"){e.preventDefault();$("q").focus()}
+ });
  $("copy").onclick=()=>navigator.clipboard?.writeText(location.href).then(()=>{$("copy").textContent="Enlace copiado ✓";setTimeout(()=>$("copy").textContent="Copiar enlace",1600)});
  const id=params.get("obra");if(id)openWork(id);else renderIndex();
 })().catch(e=>{$("status").textContent="No se pudo cargar el catálogo: "+e.message});
