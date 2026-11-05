@@ -352,11 +352,15 @@ function render(panel,query,rows,isCurrent){
   if(!topic.person&&topic.kind==='general'){section.remove();return}
   if(topic.person?.title||authority?.canonical){const title=panel.querySelector('.context-term');if(title)title.textContent=topic.person?.title||authority.canonical}
   if(sameIdentity&&authority?.spellingMatch)section.append(el('p','cultural-correction',L('Resultado para ','Showing ','Résultat pour ')+authority.canonical+L('. Escribiste «','. You entered “','. Vous avez saisi « ')+authority.spellingMatch+L('».','”.',' ».')));
-  if(topic.person)info(section,L('Obras propias con imágenes y fuentes. Orden inicial por importancia documental; también puedes consultar su cronología.',
-   'The subject’s own works with images and sources. Documentary prominence first; chronological order is also available.',
-   'Œuvres du sujet avec images et sources, classées par importance documentaire ; tri chronologique disponible.'));
+  if(topic.person)info(section,L('Obras propias con imágenes y fuentes, ordenadas de la más antigua a la más reciente.',
+   'The subject’s works with images and sources, from oldest to newest.',
+   'Œuvres du sujet avec images et sources, de la plus ancienne à la plus récente.'));
   const architectural=window.VitruviaArchitecture?.classify(query,records);
-  if(architectural&&architectural.kind!=='person'&&topic.kind!=='architect'&&topic.person?.entityKind!=='person')window.VitruviaArchitecture?.render(section,query,records,valid);
+  // Identified architects also need the architectural works panel; without it a
+   // SPARQL timeout can leave a complete biography but no building photographs.
+   if(architectural&&(architectural.kind==='person'&&topic.kind==='architect'||
+     architectural.kind!=='person'&&topic.kind!=='architect'&&topic.person?.entityKind!=='person'))
+    window.VitruviaArchitecture?.render(section,query,records,valid);
   const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
