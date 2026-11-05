@@ -1,0 +1,19 @@
+name: Miniaturas livianas y originales
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-image-engine-v2.js'
+      - 'scripts/test-lightweight-images.mjs'
+      - '.github/workflows/test-lightweight-images.yml'
+  workflow_dispatch:
+jobs:
+  thumbnails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-image-engine-v2.js
+      - run: node scripts/test-lightweight-images.mjs
+      - run: node scripts/test-image-fallback.mjs
