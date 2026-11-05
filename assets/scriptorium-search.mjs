@@ -174,6 +174,23 @@ function matchOCR(src,data,terms){
  }
  return results;
 }
+/* Página del PDF de Krohn o Rose para un pasaje de las ediciones: se compara el texto latino del locus con el
+   OCR página por página (palabras de seis letras o más, u/v e i/j unificadas). Se ofrece solo si coincide
+   una parte suficiente del pasaje; si no, no se inventa la página. */
+const ocrWords=new Map();
+async function ocrIndex(src){
+ if(ocrWords.has(src.id))return ocrWords.get(src.id);
+ const job=load(src).then(data=>(Array.isArray(data)?data:data.pages||[]).map(p=>({page:Number(p.page),words:new Set(fold(p.text||'').match(/[a-z]{6,}/g)||[])})));
+ ocrWords.set(src.id,job);return job;
+}
+async function ocrPageFor(src,latin,term){
+ const words=[...new Set(fold(latin||'').match(/[a-z]{6,}/g)||[])];if(words.length<3)return null;
+ const pages=await ocrIndex(src);let best=null;
+ for(const pg of pages){let n=0;for(const w of words)if(pg.words.has(w))n++;
+  const t=term&&pg.words.has(fold(term))?0.5:0;if(!best||n+t>best.n+best.t)best={page:pg.page,n,t}}
+ // Un pasaje suele partirse entre dos páginas: basta con el 35 % de sus palabras largas en una de ellas.
+ return best&&best.n>=Math.max(3,Math.ceil(words.length*0.35))?{page:best.page,share:Math.round(100*best.n/words.length)}:null;
+}
 function addButton(parent,label,onclick){
  const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',onclick);parent.append(button);
 }
@@ -186,13 +203,25 @@ function render(){
   if(r.field){const small=document.createElement('small');small.textContent=r.field==='latin'?'Coincidencia en el texto latino':'Coincidencia en la traducción';card.append(small);}
   card.append(excerpt(r.snippet,r.term));
   if(r.page){
-   addButton(card,'Abrir PDF · pág. '+r.page,()=>{
+   addButton(card,(r.kind==='ocr'?'Abrir PDF':r.source.label.split(' · ')[0]+' · PDF')+' pág. '+r.page,()=>{
     document.dispatchEvent(new CustomEvent('scriptorium:open-search-result',{detail:{source:r.source.pdf,page:r.page,term:r.term||'',locus:r.p?.locus||null}}));
     const step=document.getElementById('stage');if(step)setTimeout(()=>step.scrollIntoView({behavior:'smooth',block:'start'}),150);
    });
    const note=document.createElement('small');note.textContent=r.kind==='ocr'?'Referencia por página OCR: coteja la imagen.':'Página consignada por el índice del autor: coteja la coincidencia en el PDF.';card.append(note);
   }else{
    const p=document.createElement('small');p.textContent='No hay página PDF verificada para este resultado; no se inventa un salto de página.';card.append(p);
+  }
+  if(r.p&&r.kind!=='ocr'&&r.p.latin){
+   const box=document.createElement('p');box.className='script-ocr-pages';box.textContent='Buscando la página en Krohn 1912 y Rose 1899…';card.append(box);
+   const ocrs=sources.filter(x=>x.kind==='ocr'&&(!ocrFocus||ocrFocus===x.id));
+   Promise.all(ocrs.map(async src=>[src,await ocrPageFor(src,r.p.latin,r.term).catch(()=>null)])).then(found=>{
+    box.replaceChildren();const ok=found.filter(([,f])=>f);
+    if(!ok.length){box.textContent='No se localizó este pasaje en el OCR de Krohn ni de Rose con suficiente certeza.';return}
+    for(const [src,f] of ok)addButton(box,src.label.split(' · ')[0]+' · PDF pág. '+f.page,()=>{
+     document.dispatchEvent(new CustomEvent('scriptorium:open-search-result',{detail:{source:src.pdf,page:f.page,term:r.term||'',locus:r.p.locus}}));
+     const step=document.getElementById('stage');if(step)setTimeout(()=>step.scrollIntoView({behavior:'smooth',block:'start'}),150)});
+    const n=document.createElement('small');n.textContent=' Página localizada comparando el latín del locus con el OCR ('+ok.map(([s,f])=>s.label.split(' · ')[0]+': '+f.share+' % de coincidencia').join('; ')+'). Coteja la imagen.';box.append(n);
+   });
   }
   if(r.p){
    const a=document.createElement('a');a.href='lector-bilingue.html?locus='+encodeURIComponent(r.p.locus)+'&lang='+({recensio:'es','recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[r.id]||'es');a.textContent='Consultar locus con texto y traducción →';card.append(a);
@@ -202,17 +231,35 @@ function render(){
  }
  if(live.length>count){const last=document.createElement('p');last.textContent='Se muestran los primeros '+count+' resultados. Precisa el término o elige una edición para acotar la búsqueda.';out.append(last);}
 }
-let running=0;
+let running=0,ocrFocus=null;
+const EDITION_NAMES=[['krohn-1912',['krohn']],['rose-1899',['rose']],['recensio-es',['v514']],['recensio-fr',['v554']],['theory-en',['v297']]];
+function osa(a,b){const d=Array.from({length:a.length+1},(_,i)=>[i]);for(let j=1;j<=b.length;j++)d[0][j]=j;
+ for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++){d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d[i][j]=Math.min(d[i][j],d[i-2][j-2]+1)}return d[a.length][b.length]}
+function editionInQuery(q){
+ const words=q.split(/\s+/);
+ for(const [id,names] of EDITION_NAMES)for(let i=0;i<words.length;i++){
+  const w=fold(words[i]).replace(/[^a-z0-9]/g,'').replace(/(.)\1+/g,'$1');
+  if(names.some(n=>w===n||(n.length>=5&&w.length>=4&&osa(w,n)<=1))){
+   const rest=words.filter((_,k)=>k!==i&&!(k===i+1&&/^1[89]\d\d$/.test(words[k]))).join(' ').trim();
+   return {id,rest};
+  }}
+ return null;
+}
 $('script-search-form').addEventListener('submit',async event=>{
  event.preventDefault();
- const serial=++running,q=$('script-query').value.trim(),scope=$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
+ const named=editionInQuery($('script-query').value.trim());ocrFocus=named&&/krohn|rose/.test(named.id)?named.id:null;
+ const serial=++running,q=named?.rest||$('script-query').value.trim(),scope=named?named.id:$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
  if(!q){status.textContent='Ingresa un locus, palabra o frase.';return;}
  live=[];$('script-search-results').replaceChildren();
  const locus=locusQuery(q);
  status.textContent='Consultando índices del tratado y OCR histórico…';
- const target=scope==='selected'?selectedIndex():scope;
+ // Si la fuente elegida arriba no tiene índice de texto (p. ej., un manuscrito), se busca en todas las ediciones y OCR.
+ const target=scope==='selected'?(selectedIndex()||'all'):scope;
+ if(named)status.textContent='Edición indicada en la consulta: '+(sources.find(x=>x.id===named.id)?.label||named.id)+' · término: «'+q+'»';
  if(scope==='selected'&&!target){status.textContent='El PDF elegido no tiene un índice textual accesible. Elige Krohn 1912, Rose 1899 o una de tus tres ediciones; Budé solo puede consultarse bibliográficamente por ahora.';return;}
- const chosen=sources.filter(src=>target==='all'||target===src.id);
+ // Si se nombró Krohn o Rose: pasajes de V514 (con su página en ese PDF) y páginas OCR de ese PDF.
+ const chosen=ocrFocus&&named?sources.filter(src=>src.id==='recensio-es'||src.id===ocrFocus):sources.filter(src=>target==='all'||target===src.id);
  if(mode==='semantic'&&!locus){
   // Búsqueda por sentido con el motor compartido de Vitruvia sobre los mismos índices.
   status.textContent='Buscando por sentido en los índices del tratado y el OCR… la primera vez el navegador descarga el modelo multilingüe (~120 MB); si no puede, se usa BM25.';
