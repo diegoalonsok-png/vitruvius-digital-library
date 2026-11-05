@@ -364,6 +364,56 @@
       "viewer": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
       "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
       "verification": "Enlace HAB ya publicado en la portada del proyecto; ficha codicológica pendiente"
+    },
+    {
+      "id": "euclid-vat-gr-190",
+      "workIds": [
+        "euclid-elementa"
+      ],
+      "title": "Euclides · Elementa — Vaticanus graecus 190 (P)",
+      "library": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 190, pt. 1",
+      "date": "s. IX",
+      "coverage": "Elementa de Euclides en la recensión anterior a Teón; testimonio principal de la edición de Heiberg (sigla P). La parte 2 contiene el resto del códice.",
+      "language": "grc",
+      "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.190.pt.1",
+      "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.190.pt.1/manifest.json",
+      "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
+      "verification": "DigiVatLib (MSS_Vat.gr.190.pt.1); descripción por cotejar con el catálogo de la BAV"
+    },
+    {
+      "id": "agrimensores-arcerianus",
+      "workIds": [
+        "hyginus-gromaticus",
+        "frontinus-gromatica"
+      ],
+      "title": "Corpus agrimensorum Romanorum — Codex Arcerianus (A/B)",
+      "library": "Wolfenbüttel, Herzog August Bibliothek",
+      "shelfmark": "Cod. Guelf. 36.23 Aug. 2°",
+      "date": "s. VI (VI–VII según otras descripciones)",
+      "coverage": "Códice uncial ilustrado de los agrimensores; reúne dos códices (A y B) encuadernados juntos. El texto de Sículo Flaco no figura en él salvo un extracto.",
+      "language": "la",
+      "record": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
+      "viewer": "https://diglib.hab.de/mss/36-23-aug-2f/start.htm",
+      "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
+      "verification": "Digitalización HAB citada por Wikipedia y por R. Marshall, Mnemosyne 2022"
+    },
+    {
+      "id": "agrimensores-pal-lat-1564",
+      "workIds": [
+        "hyginus-gromaticus",
+        "frontinus-gromatica",
+        "siculus-flaccus"
+      ],
+      "title": "Corpus agrimensorum Romanorum — Palatinus latinus 1564 (P)",
+      "library": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 1564",
+      "date": "s. IX med.",
+      "coverage": "Agrimensores (ff. 9r–149v) con fragmentos jurídicos; testimonio de segunda clase en la edición de Thulin.",
+      "language": "la",
+      "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_1564",
+      "rights": "Bibliotheca Palatina digital (UB Heidelberg / BAV): consultar condiciones.",
+      "verification": "Heidelberg, Bibliotheca Palatina digital; contenidos según Leges (Univ. Köln)"
     }
   ],
   "editions": [
