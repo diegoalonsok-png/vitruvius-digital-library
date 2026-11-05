@@ -42,8 +42,56 @@ assert(cat.witnesses.some(r=>r.codexShelfmark==='MS. Canon. Class. Lat. 30'));
 assert(cat.translations.every(r=>r.fulltext===false));
 assert(source.includes('workIds:ms.workIds||[]'));
 const article=read('assets/vitruvia-article.js');
-assert(article.indexOf('appendBiographyExtract(data.extract,data.fullurl||wiki?.link);',article.indexOf('async function renderTopic'))<article.indexOf('window.VitruviaAuthorReading?.render'));
-assert(article.indexOf('window.VitruviaAuthorReading?.render')<article.indexOf('const body=$("article-body"),previousNodes='));
+// Exercise article assembly instead of depending on the position of functions
+// in the source file. A later source refresh must preserve the biography and
+// keep original-language readings outside the collapsed documentary sources.
+class ArticleNode{
+ constructor(tag,text=''){this.tagName=tag.toUpperCase();this.textContent=text;this.children=[];this.parentNode=null;this.id='';this.className=''}
+ get childNodes(){return this.children}
+ append(...nodes){for(const n of nodes){if(n.parentNode)n.parentNode.children.splice(n.parentNode.children.indexOf(n),1);n.parentNode=this;this.children.push(n)}}
+ replaceChildren(...nodes){for(const n of this.children)n.parentNode=null;this.children=[];this.append(...nodes)}
+ querySelector(selector){const match=n=>selector[0]==='#'?n.id===selector.slice(1):selector[0]==='.'?n.className.split(' ').includes(selector.slice(1)):n.tagName===selector.toUpperCase();for(const n of this.children){if(match(n))return n;const nested=n.querySelector(selector);if(nested)return nested}return null}
+ before(node){const p=this.parentNode;node.parentNode=p;p.children.splice(p.children.indexOf(this),0,node)}
+ replaceWith(node){const p=this.parentNode;node.parentNode=p;p.children.splice(p.children.indexOf(this),1,node);this.parentNode=null}
+}
+const articleBody=new ArticleNode('div'),articleTitle=new ArticleNode('h1');
+articleBody.id='article-body';articleTitle.id='article-title';
+const assemble=vm.createContext({
+ window:{},active:1,normalized:norm,relevance:()=>100,isDeityQuery:()=>false,
+ document:{documentElement:{lang:'en'},getElementById:id=>id==='article-body'?articleBody:id==='article-title'?articleTitle:articleBody.querySelector('#'+id)},
+ make:(tag,text='',className='')=>Object.assign(new ArticleNode(tag,text),{className}),
+ reset:()=>articleBody.replaceChildren(),phrase:(es,en)=>en||es,
+ appendObjectContext:async()=>[],aside:()=>{},references:()=>{},optionalManuscriptAccess:()=>{},appendPersonLoci:()=>{},appendVerifiedTopicPassages:()=>{},appendAcademicLinks:()=>{},buildContents:()=>{}
+});
+vm.runInContext(`
+ let articleBodyTarget=null;
+ const $=id=>id==='article-body'&&articleBodyTarget?articleBodyTarget:document.getElementById(id);
+ const paragraph=(text,className='')=>$('article-body').append(make('p',text,className));
+ const heading=text=>$('article-body').append(make('h2',text));
+ const href=(url,text)=>url?make('a',text):null;
+ function appendBiographyExtract(text){const node=make('p',text,'fixture-biography');$('article-body').append(node);return 1}
+ window.VitruviaAuthorReading={render(){const node=make('section','Original text and translations');node.id='fixture-readings';const prior=$('article-body').querySelector('#fixture-readings');if(prior)prior.replaceWith(node);else $('article-body').append(node)}};
+ const appendSource=()=>$('article-body').append(make('p','Documented source'));
+ const appendLocalRepositoryResources=appendSource,appendCuratedUniversities=appendSource,appendManuscriptHierarchy=appendSource,appendCuratedEvidence=appendSource,appendReferenceBooks=appendSource,appendOfficialHistoricalSources=appendSource,appendInstitutionalResearch=appendSource,addTopicBibliography=appendSource;
+`,assemble);
+const assemblyStart=article.indexOf('function refreshTopicSources('),assemblyEnd=article.indexOf('/* Separate verifiable article sections');
+assert(assemblyStart>=0&&assemblyEnd>assemblyStart,'Article assembly entry points missing');
+vm.runInContext(article.slice(assemblyStart,assemblyEnd),assemble);
+assemble.rows=[{type:'wikipedia',pageid:1,title:'Catullus',link:'https://en.wikipedia.org/wiki/Catullus',wikiLang:'en',fullExtract:'Documented biography fixture.'}];
+await vm.runInContext('renderTopic(null,rows,"Catullus",1)',assemble);
+const biography=articleBody.querySelector('.fixture-biography'),readings=articleBody.querySelector('#fixture-readings'),details=articleBody.querySelector('#article-academic-expansion');
+assert(biography&&readings&&details,'Biography, readings and documentary sources must all remain available');
+assert.equal(readings.parentNode,articleBody,'Original-language readings must remain directly accessible');
+assert.equal(details.tagName,'DETAILS');
+assert(details.querySelector('summary'),'Documentary sources must have an accessible summary');
+assert(articleBody.children.indexOf(biography)<articleBody.children.indexOf(readings),'Biography must precede author readings');
+assert(articleBody.children.indexOf(readings)<articleBody.children.indexOf(details),'Author readings must precede collapsed sources');
+details.open=true;
+vm.runInContext('refreshArticleSources(rows,"Catullus",null)',assemble);
+assert.equal(articleBody.querySelector('.fixture-biography'),biography,'A progressive source update must preserve the existing biography node');
+assert.equal(articleBody.querySelector('#article-academic-expansion'),details,'A source refresh must retain the disclosure state');
+assert.equal(details.open,true,'A source refresh must retain the user’s expanded sources');
+assert.equal(articleBody.querySelector('#fixture-readings').parentNode,articleBody,'Readings must remain outside collapsed sources after refresh');
 console.log('Author reading checks passed: Catulo, Cicerón, Marco Aurelio; oldest dated witnesses first, partial coverage, scholarly translations, and placement after biography outside collapsed sources.');
 // Internal author viewers retain the holding institution and jump to the actual work.
 const ms=catalogue.records.find(r=>r.id==='marcus-aurelius-vat1950');
