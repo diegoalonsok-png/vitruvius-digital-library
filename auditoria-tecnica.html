@@ -1,0 +1,67 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vitruvius · Auditoría técnica reproducible y 200 consultas de búsqueda</title>
+<meta name="description" content="Panel de comprobación reproducible del sitio y corpus Vitruvius Digital Library. Estado real de archivos, lectores, documentos y conjunto de 200 búsquedas de regresión, sin afirmar pruebas no ejecutadas.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/auditoria-tecnica.html">
+<meta name="robots" content="index,follow"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css">
+<style>
+.audit{max-width:1180px;margin:auto;padding:24px 20px 84px;line-height:1.65;color:var(--ink)}.audit h1,.audit h2{font-family:Georgia,serif;font-weight:400}.audit h1{font-size:clamp(31px,4vw,48px)}.audit .notice{padding:14px 18px;border-left:4px solid var(--gold,#a58c61);background:var(--white)}.audit button,.audit select,.audit input{padding:9px;border:1px solid var(--line);font:14px system-ui,sans-serif}.audit button{cursor:pointer;background:#29445a;color:white;border-radius:3px}.audit table{width:100%;border-collapse:collapse;margin:10px 0}.audit th,.audit td{text-align:left;border-bottom:1px solid var(--line);padding:10px;font:13px/1.5 system-ui,sans-serif;overflow-wrap:anywhere}.audit th{font-weight:650}.audit table td:nth-child(2){min-width:90px}.audit #checks-result{min-height:35px}.audit .qa-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}.audit .qa-tools input{flex:1 1 250px;min-width:140px;background:var(--white);color:var(--ink)}.audit .qa-tools select{background:var(--white);color:var(--ink)}.audit #qa-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:10px;padding:0;list-style:none}.audit #qa-list li{border:1px solid var(--line);padding:13px;background:var(--white)}.audit #qa-list small{color:var(--muted)}.audit #qa-list a{display:inline-block;margin-top:7px;text-decoration:underline}.audit .good{color:#24734c;font-weight:700}.audit .bad{color:#bd593f;font-weight:700}.audit .warn{color:#a47c39;font-weight:700}html[data-theme=dark] .audit .notice,html[data-theme=dark] .audit #qa-list li{background:#253949;color:#f4eee1}.audit .meta{font:12px/1.6 system-ui,sans-serif;color:var(--muted)}
+@media(max-width:550px){.audit{padding:14px 10px 90px}.audit td{padding:7px}}
+</style><script defer src="assets/theme.js"></script><script defer src="assets/site-bar.js?v=20261105-quality-v1"></script></head><body>
+<main class="audit"><nav><a href="index.html">← Biblioteca</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="docencia-clasica.html">Aula clásica</a></nav>
+<h1>Auditoría técnica reproducible</h1>
+<p class="notice"><strong>Qué mide:</strong> el botón ejecuta comprobaciones de accesibilidad HTTP básica y estructura de los archivos públicos desde el navegador del visitante. No simula la interacción real de todos los botones, no verifica por sí solo la calidad filológica ni mide concurrencia. El conjunto de 200 consultas es una <strong>batería preparada para revisión</strong>, no un certificado de que 200 búsquedas ya funcionan.</p>
+<section aria-labelledby="test-heading"><h2 id="test-heading">Estado de páginas y corpus</h2><p>Las pruebas se ejecutan al pulsar el botón; no se presenta como éxito lo que no se ha comprobado.</p>
+<button id="run-checks" type="button">Ejecutar comprobaciones</button><p id="checks-result" role="status" aria-live="polite">Sin ejecutar</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Recurso</th><th>Estado</th><th>Detalle</th></tr></thead><tbody id="checks"></tbody></table></div>
+<p class="meta">Los PDF/facsímiles externos pueden estar sujetos a restricciones de acceso, licencias y CORS; esta herramienta no los prueba. Las imágenes institucionales requieren atribución propia.</p>
+</section>
+<section aria-labelledby="search-heading"><h2 id="search-heading">Vitruvia · 200 consultas de regresión</h2>
+<p>Casos para comprobar identidad, errores ortográficos, disciplina y productos culturales. El vínculo de cada caso abre directamente la búsqueda de Vitruvia. Los resultados deben contrastarse manualmente con el referente esperado y la calidad de sus fuentes.</p>
+<div class="qa-tools"><label>Filtrar categoría <select id="qa-cat"><option value="">Todas</option><option value="person">Personas y autores</option><option value="architect">Arquitectura</option><option value="musician">Música</option><option value="object">Objetos</option><option value="science">Ciencias</option><option value="work">Obras</option></select></label><label for="qa-find">Buscar en las 200 consultas</label><input id="qa-find" type="search" placeholder="Ej.: Cicero, Maduro, 2001, Akenatón"></div>
+<p id="qa-status" role="status">Cargando conjunto de pruebas…</p><ol id="qa-list"></ol><button type="button" id="qa-more" hidden>Mostrar más casos</button>
+<p><a href="data/qa/vitruvia-regression-200.json">Archivo JSON de las 200 consultas</a> · <a href="metodologia.html">Metodología y límites</a> · <a href="modelo-critico-prefacio.html">Modelo de lectura crítica</a></p>
+</section><section><h2>Próximos indicadores de calidad</h2><p>Para evaluar la precisión del buscador se deben registrar, por caso, el referente elegido, la pertinencia de la primera respuesta, bibliografía atribuida, coincidencia de las imágenes, errores de red y tiempo de respuesta. La prueba de carga con numerosos usuarios y la auditoría de accesibilidad requieren herramientas independientes del navegador individual.</p></section>
+</main><script>
+(()=>{'use strict';const $=id=>document.getElementById(id);
+const checkList=[
+['Portada','index.html','html'],['Buscador académico','vitruvia.html','html'],['Bibliotheca Graeca et Latina','bibliotheca-graeca-latina.html','html'],['Aula interdisciplinaria','docencia-clasica.html','html'],['Aula de arquitectura romana','docencia-roma-antigua.html','html'],['Lector clásico','classics-text-reader.html','html'],['Lector bilingüe','lector-bilingue.html','html'],['Laboratorio H','laboratorio-h.html','html'],['Ficha crítica de referencia','modelo-critico-prefacio.html','html'],['Sitemap','sitemap.xml','xml'],['Cita del proyecto','CITATION.cff','text'],['Índice de manuscritos H','images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json','images'],['Locus 1r transcrito','data/codex-h/folio-1r.json','folio'],['Correspondencia H I.praef.1','data/codex-h/aligned-1r.json','aligned'],['Corpus Platón en griego','data/classics-corpus/plato-apology-grc.json','corpus'],['Corpus Aristóteles en griego','data/classics-corpus/aristotle-poetics-grc.json','corpus'],['Corpus Epicteto en griego','data/classics-corpus/epictetus-enchiridion-grc.json','corpus'],['Corpus César en latín','data/classics-corpus/caesar-gallico-la.json','corpus'],['Corpus Homero: Ilíada','data/classics-corpus/homer-iliad-grc.json','corpus'],['Corpus Homero: Odisea','data/classics-corpus/homer-odyssey-grc.json','corpus'],['Fotografía H f. 1r','images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_009_f-1r.jpg','image']
+];
+async function check([label,path,type]){
+ const started=performance.now();let info='';
+ try{
+  const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+  if(type==='image'){const blob=await r.blob();if(!blob.type.startsWith('image/')||blob.size<1024)throw Error('Imagen ausente o incompleta');info=Math.round(blob.size/1024)+' KB';}
+  else if(['corpus','folio','aligned','images'].includes(type)){
+   const j=await r.json();
+   if(type==='corpus'&&(!(j.passages?.length>=10)||!j.workId))throw Error('Corpus ausente o sin pasajes suficientes');
+   if(type==='images'&&(j.totalImagenes!==341||j.imagenes?.length!==341))throw Error('Índice de folios incoherente');
+   if(type==='folio'&&!(j.lines?.length>=10))throw Error('Faltan líneas de lectura');
+   if(type==='aligned'&&!j.loci?.some(x=>x.locus==='1.praef.1'))throw Error('Falta el locus I.praef.1');
+   info=type==='corpus'?j.passages.length+' pasajes':type==='images'?j.imagenes.length+' imágenes':'Estructura verificada';
+  }else if(type==='html'){const t=await r.text();if(!t.toLowerCase().includes('<!doctype html>'))throw Error('HTML no reconocido');info='Página HTML entregada';}
+  else {const t=await r.text();if(!t.trim())throw Error('Archivo vacío');info='Archivo entregado';}
+  return{label,ok:true,info:info+' · '+Math.round(performance.now()-started)+' ms'};
+ }catch(e){return{label,ok:false,info:e.message||String(e)}}
+}
+$('run-checks').addEventListener('click',async()=>{
+ const b=$('run-checks');b.disabled=true;$('checks-result').textContent='Comprobando recursos públicos…';$('checks').replaceChildren();let checked=0,passed=0;
+ for(let i=0;i<checkList.length;i+=4){const chunk=await Promise.all(checkList.slice(i,i+4).map(check));for(const r of chunk){
+  checked++;if(r.ok)passed++;const tr=document.createElement('tr'),title=document.createElement('td'),status=document.createElement('td'),detail=document.createElement('td');
+  title.textContent=r.label;status.textContent=r.ok?'OK':'REVISAR';status.className=r.ok?'good':'bad';detail.textContent=r.info;tr.append(title,status,detail);$('checks').append(tr);}
+  $('checks-result').textContent='Progreso: '+checked+'/'+checkList.length+' comprobaciones · '+passed+' correctas.';
+ }
+ $('checks-result').textContent='Resultados de esta ejecución: '+passed+'/'+checked+' comprobaciones correctas; '+(checked-passed)+' para revisar. No equivale a auditoría académica externa.';b.disabled=false;
+});
+let all=[],shown=0,filtered=[];
+function render(reset=true){const q=$('qa-find').value.trim().toLowerCase(),cat=$('qa-cat').value;
+ filtered=all.filter(x=>(!cat||x.category===cat)&&(!q||(x.query+' '+x.expectedEntity).toLowerCase().includes(q)));
+ if(reset){$('qa-list').replaceChildren();shown=0;}
+ const chunk=filtered.slice(shown,shown+25);for(const x of chunk){
+  const li=document.createElement('li'),name=document.createElement('strong'),sub=document.createElement('small'),a=document.createElement('a');
+  name.textContent=x.id+' · '+x.query;sub.textContent='Referente esperado: '+x.expectedEntity+' · '+x.category+' · pendiente de evaluación';a.href='vitruvia.html?'+new URLSearchParams({q:x.query});a.textContent='Abrir búsqueda →';a.target='_blank';a.rel='noopener noreferrer';li.append(name,document.createElement('br'),sub,document.createElement('br'),a);$('qa-list').append(li);}
+ shown+=chunk.length;$('qa-more').hidden=shown>=filtered.length;$('qa-status').textContent=filtered.length+' consultas seleccionadas · '+shown+' visibles · resultados pendientes de evaluación.';
+}
+$('qa-find').addEventListener('input',()=>render());$('qa-cat').addEventListener('change',()=>render());$('qa-more').addEventListener('click',()=>render(false));
+fetch('data/qa/vitruvia-regression-200.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(j=>{all=j.cases||[];if(all.length!==200)throw Error('Se esperaban 200 casos');render()}).catch(e=>{$('qa-status').textContent='No se pudo cargar la batería: '+e.message;});
+})();
+</script></body></html>
