@@ -38,7 +38,7 @@ Each of Diego A. Kurilo's three editorial works has a distinct, crawlable biblio
 - [Cesare Cesariano 1521 — C](cesariano-1521.html): 390 IIIF images copied for study with institutional attribution.
 - [Daniele Barbaro 1567 — B](barbaro-1567.html): 522 IIIF images served by e-rara.
 
-S, G, C and B are navigation labels for **printed editions**, not critical sigla for manuscript witnesses. Sulpizio and Cesariano images use local copies with source attribution and provenance, while the Giocondo and Barbaro viewers access the original services remotely.
+Sulp., Iuc., Caes. and Barb. are abbreviations for **printed editions**, chosen so as not to collide with the critical sigla of manuscript witnesses (H, G, E, S…). Sulpizio and Cesariano images use local copies with source attribution and provenance, while the Giocondo and Barbaro viewers access the original services remotely.
 
 **Discovery:** the site includes [sitemap.xml](sitemap.xml) and [robots.txt](robots.txt), with individual bibliographic records and scholarly search metadata.
 

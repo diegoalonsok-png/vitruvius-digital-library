@@ -1,4 +1,4 @@
-/** Scriptorium B: galería y buscador por libro, imagen y familias temáticas editoriales. IIIF remoto; OCR no disponible. */
+/** Scriptorium Barb.: galería y buscador por libro, imagen y familias temáticas editoriales. IIIF remoto; OCR no disponible. */
 const $ = id => document.getElementById(id);
 const ROOT = 'data/iiif/';
 const manifestPath = ROOT + 'barbaro-1567.json';
