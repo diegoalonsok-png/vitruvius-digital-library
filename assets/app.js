@@ -45,6 +45,22 @@ function resultSnippet(r){
  if(multi){
   addExact(query);
   if(!ranges.length && r.form && String(r.form).trim().split(/\s+/).length>1)addExact(r.form);
+  // Consultas con numeración o párrafos pegados («2. Praeterea praecingendi…»): sin los números,
+  // y si la frase no aparece entera, se resaltan los tramos contiguos de dos o más palabras de la consulta
+  // y, en último caso, cada palabra significativa (modo «todas las palabras»).
+  if(!ranges.length){
+   const qw=[...query.matchAll(/[\p{L}\p{M}]+/gu)].map(m=>fold(m[0])).filter(Boolean);
+   const tokens=[...snippet.matchAll(/[\p{L}\p{M}\p{N}]+/gu)];
+   if(qw.length>1){addExact(qw.join(' '));
+    if(!ranges.length){
+     for(let i=0;i<tokens.length;){let best=0;
+      for(let k=0;k<qw.length;k++){let n=0;while(i+n<tokens.length&&k+n<qw.length&&fold(tokens[i+n][0])===qw[k+n])n++;if(n>best)best=n}
+      if(best>=2){ranges.push([tokens[i].index,tokens[i+best-1].index+tokens[i+best-1][0].length]);i+=best}else i++}
+    }
+    if(!ranges.length){const want=new Set(qw.filter(w=>w.length>=4));
+     for(const t of tokens)if(want.has(fold(t[0])))ranges.push([t.index,t.index+t[0].length])}
+   }else if(qw.length===1)addExact(qw[0]);
+  }
  }else{
   const terms=[query,String(r.form||''),...String(r.semantic_term||'').split(/\s*·\s*/)].filter(x=>x.trim().length>=2);
   for(const term of terms)addExact(term);
