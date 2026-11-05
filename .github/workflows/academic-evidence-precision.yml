@@ -1,0 +1,22 @@
+name: Academic evidence precision
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-evidence.js'
+      - 'assets/vitruvia-search.js'
+      - 'vitruvia.html'
+      - 'scripts/test-academic-evidence.mjs'
+      - '.github/workflows/academic-evidence-precision.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-evidence.js
+      - run: node --check assets/vitruvia-search.js
+      - run: node scripts/test-academic-evidence.mjs
+      - run: node scripts/test-vitruvia-entity-priority.mjs
