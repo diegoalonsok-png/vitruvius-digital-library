@@ -191,22 +191,26 @@ async function addBookCovers(id,topic,identity,q){
 }
 async function verifiedLeadImage(identity,topic,id){
  if(!identity?.wikidataId)return [];
- const langs=[...new Set([identity.wikiLang,"en","es"].filter(x=>/^(en|es|fr|de|it|pt)$/.test(x)))].slice(0,3);
- const names=[identity.wikiTitle,identity.canonical,identity.originalCanonical,...(identity.aliases||[])].filter(Boolean).map(fold);
+ const langs=distinct([identity.language,identity.wikiLang,document.documentElement.lang,"en","es"])
+  .filter(x=>/^(en|es|fr|it|de|pt)$/.test(x)).slice(0,4);
+ const titles=distinct([identity.canonical,identity.originalCanonical,identity.wikiTitle,topic.subject]).slice(0,4);
  for(const lang of langs){
   if(id!==active)return [];
-  try{
-   const title=identity.wikiTitle||identity.canonical||topic.subject;
-   const args=new URLSearchParams({action:"query",titles:title,redirects:"1",prop:"pageimages",piprop:"thumbnail|name",pithumbsize:"900",format:"json",origin:"*"});
-   const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+args);
-   if(!r.ok)continue;
-   const d=await r.json(),page=Object.values(d.query?.pages||{}).find(p=>p.thumbnail?.source&&p.pageimage);
-   if(!page||!names.includes(fold(page.title))||!safeLink(page.thumbnail.source))continue;
-   const filename=page.pageimage.replace(/_/g," ");
-   return [{name:filename,caption:page.title,preview:page.thumbnail.source,original:page.thumbnail.source,
-    page:"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(filename),
-    license:"",credit:"Wikipedia · "+lang.toUpperCase()+" · archivo y derechos",score:150,group:"context"}];
-  }catch{}
+  for(const title of titles){
+   try{
+    const params=new URLSearchParams({action:"query",titles:title,redirects:"1",prop:"pageimages|pageprops",
+     piprop:"thumbnail|name",pithumbsize:"900",format:"json",origin:"*"});
+    const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),5000);
+    let d;try{const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});if(!r.ok)continue;d=await r.json()}finally{clearTimeout(timer)}
+    const page=Object.values(d.query?.pages||{}).find(p=>p.thumbnail?.source&&p.pageimage);
+    if(!page||!safeLink(page.thumbnail.source))continue;
+    if(page.pageprops?.wikibase_item!==identity.wikidataId)continue;
+    const filename=page.pageimage.replace(/_/g," ");
+    return [{name:filename,caption:page.title,preview:page.thumbnail.source,original:page.thumbnail.source,
+     page:"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(filename),
+     license:"",credit:"Wikipedia · "+lang.toUpperCase()+" · archivo y derechos",score:190,group:"context"}];
+   }catch{}
+  }
  }
  return [];
 }
@@ -237,6 +241,14 @@ async function searchImages(query){
  const subject=topic.subject,paintings=paintingWords.test(fold(q)),photos=photoWords.test(fold(q));
  const aliases=distinct([q,subject,identity?.originalCanonical,...(identity?.aliases||[])]);
  if(identity?.url)external(locale("Artículo enciclopédico","Encyclopedia article","Article encyclopédique"),identity.url);
+ // Start the verified article image lookup at once, instead of waiting for Commons.
+ let leadItems=[];
+ const leadPromise=verifiedLeadImage(identity,topic,id).then(items=>{
+  if(id!==active)return [];
+  leadItems=items;
+  if(items.length&&!grid.querySelector(".vitruvia-image-card"))displayGroups(items,topic);
+  return items;
+ }).catch(()=>[]);
  const requests=topic.queries;
  controller=new AbortController();const signal=controller.signal;
  const timeout=setTimeout(()=>controller.abort(),18500);
@@ -290,7 +302,7 @@ async function searchImages(query){
    if(topic.ancient)status.textContent+=" "+locale("Las representaciones posteriores no acreditan la apariencia real del personaje.","Later representations do not establish the person’s actual appearance.","Les représentations postérieures ne prouvent pas l’apparence réelle du personnage.");
   }else{
    grid.replaceChildren();
-   const lead=await verifiedLeadImage(identity,topic,id);
+   const lead=leadItems.length?leadItems:await leadPromise;
    if(id!==active)return;
    if(lead.length){
     displayGroups(lead,topic);
@@ -300,7 +312,7 @@ async function searchImages(query){
     "Aucune image suffisamment documentée. Consulter les collections externes.");
   }
   const covers=await addBookCovers(id,topic,identity,q);
-  if(covers&&!items.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
+  if(covers&&!items.length&&!leadItems.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){
   if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
    "The image service did not respond; use the linked archives.",
