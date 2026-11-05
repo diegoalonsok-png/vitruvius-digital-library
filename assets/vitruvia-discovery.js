@@ -20,7 +20,8 @@
   if(!family&&/\b(cafetera|coffee maker|coffeemaker|cafetiere)\b/.test(description))family=families[0];
   if(!family&&/\b(utensilio de cocina|cooking utensil|cookware|ustensile de cuisine)\b/.test(description))family=families[1];
   const person=identity.kind==="person"||identity.instanceOf?.includes("Q5")||(!identity.kind&&peopleWords.test(description));
-  const kind=family?"object":person?"person":objectWords.test(description)?"object":"topic";
+  const musicalGroup=!person&&(identity.instanceOf||[]).some(id=>["Q215380","Q5741069","Q2088357"].includes(id))||!person&&/\b(rock band|musical group|music group|musical ensemble|banda de rock|grupo musical|groupe de musique|groupe de rock|pop band|banda musical)\b/.test(description);
+  const kind=family?"object":person?"person":musicalGroup?"music-group":objectWords.test(description)?"object":"topic";
   const q=fold(query);
   const intent=/\b(pinturas|cuadros|paintings|artworks|tableaux)\b/.test(q)?"artworks":/\b(bustos|busts|esculturas|sculptures)\b/.test(q)?"sculptures":/\b(libros|books|manuscritos|manuscripts)\b/.test(q)?"books":"overview";
   const visualName=identity.commonsSearchName||identity.originalCanonical||subject;
@@ -29,6 +30,7 @@
    intent==="sculptures"?[visualName+" bust",visualName+" sculpture",query]:
    intent==="books"?[visualName+" book",visualName+" manuscript",query]:
    kind==="person"?(typeof identity.birthYear==="number"&&identity.birthYear>=1800?[visualName+" portrait photograph",visualName+" photographer",visualName+" at work",visualName,subject]:[visualName+" bust",visualName+" portrait painting",visualName+" book manuscript",visualName,subject]):
+   kind==="music-group"?[visualName+" band live concert",visualName+" band members",visualName+" performing",visualName+" group photograph",visualName]:
    kind==="object"?[visualName,visualName+" museum historic",visualName+" history book",subject]:[visualName,subject,query];
   return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),family:family?.id||null,
    contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0};
@@ -40,6 +42,7 @@
   object:{es:"El objeto y sus tipos",en:"The object and its types",fr:"L’objet et ses types"},
   historic:{es:"Ejemplares históricos y colecciones",en:"Historic examples and collections",fr:"Exemplaires historiques et collections"},
   technical:{es:"Funcionamiento, planos y diagramas",en:"Operation, plans and diagrams",fr:"Fonctionnement, plans et schémas"},
+  live:{es:"Fotografías de la banda y conciertos",en:"Band photographs and concerts",fr:"Photographies du groupe et concerts"},
   artwork:{es:"Obras y representaciones artísticas",en:"Artworks and artistic representations",fr:"Œuvres et représentations artistiques"},
   context:{es:"Otras imágenes relacionadas",en:"Other related images",fr:"Autres images liées"}
  };
@@ -48,6 +51,12 @@
  const book=/\b(book|books|libro|libros|manuscript|manuscripts|manuscrit|codex|codices|incunabul\w*|frontispiece|frontispicio|title page|treatise|scan|scanned|djvu|bibliotheca|de vita)\b/;
  const technical=/\b(theorem|teorema|diagram|diagrams|diagrama|triang\w*|geometry|geometria|geometric|formula|demonstration|patent|patente|schematic|section drawing)\b/;
  function imageGroup(page,topic){
+  if(topic.kind==="music-group"){
+   const filename=fold(page.title||"");
+   if(/\b(logo|wordmark|emblem|symbol|icon|vector|svg|cd single|disc|vinyl|album cover|album art|cover art|sleeve|poster|typography)\b/.test(filename))return "context";
+   if(/\b(concert|live|performing|performance|stage|band members|group photo|band photo|photograph|photo|festival|tour)\b/.test(filename+" "+fold(page.sourceCategory||"")))return "live";
+   return "historic";
+  }
   const info=page.imageinfo?.[0],meta=info?.extmetadata||{};
   const fileName=fold(page.title);
   const name=fold((page.title||"")+" "+(page.sourceCategory||""));
@@ -96,12 +105,18 @@
   if(/museum|museo|musee|british library|bibliotheque|metropolitan|hermitage|uffizi|louvre|capitolini/i.test(institution+" "+name))score+=25;
   if(/\b(surgical mask|face mask|mascarilla|meme|parody|parodia|souvenir)\b/.test(name))score-=180;
   if(page.fromTrustedCategory){matched=true;score+=65}
+  if(topic.kind==="music-group"){
+   const file=fold(page.title||"");
+   if(/\b(concert|live|performing|band members|group photo|band photo|festival|tour|photograph|photo)\b/.test(file))score+=130;
+   if(/\b(logo|wordmark|emblem|icon|vector|cd single|disc|album cover|cover art|sleeve|typography)\b/.test(file))score-=170;
+  }
   return {accepted:matched,score,group:imageGroup(page,topic)};
  }
  function groupOrder(topic){
   if(topic.intent==="books")return ["book","sculpture","portrait","historic","object","technical","artwork","context"];
   if(topic.intent==="artworks")return ["artwork","portrait","sculpture","book","context","historic","object","technical"];
   if(topic.kind==="person")return ["sculpture","portrait","book","context","artwork","historic","object","technical"];
+  if(topic.kind==="music-group")return ["live","historic","artwork","book","context","portrait","object","technical","sculpture"];
   if(topic.kind==="object")return ["object","historic","book","technical","artwork","context","sculpture","portrait"];
   return ["artwork","object","historic","book","portrait","sculpture","technical","context"];
  }
@@ -111,6 +126,7 @@
   const order=groupOrder(topic);
   const validYear=x=>Number.isFinite(x)&&x>=-4000&&x<=new Date().getFullYear()+1;
   return [...items].sort((a,b)=>{
+   if(topic.kind==="music-group")return order.indexOf(a.group)-order.indexOf(b.group)||b.score-a.score||a.name.localeCompare(b.name);
    const ay=validYear(a.year)?a.year:null,by=validYear(b.year)?b.year:null;
    if(ay!==null&&by!==null&&ay!==by)return ay-by;
    if(ay!==null&&by===null)return -1;
@@ -120,6 +136,11 @@
  }
  function previewImages(items,topic){
   // The first five images preserve the same chronological sequence as the gallery.
+  if(topic.kind==="music-group"){
+   const photos=sortImages(items.filter(item=>item.group==="live"||item.group==="historic"),topic);
+   const other=sortImages(items.filter(item=>item.group!=="live"&&item.group!=="historic"),topic);
+   return [...photos,...other].slice(0,5);
+  }
   return sortImages(items,topic).slice(0,5);
  }
  /* Scholarly list entries must not be collapsed into an uninterrupted paragraph.
