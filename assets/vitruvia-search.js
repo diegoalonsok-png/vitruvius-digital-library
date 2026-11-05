@@ -740,6 +740,13 @@ function display(rows,query,phase){
  const groupOrder=S.mode==="ai"?
   ["encyclopedia","semantic","universities","manuscripts","apparatus","fragments","editions","scholars","library","external-texts","research"]:
   ["encyclopedia","universities","manuscripts","apparatus","fragments","editions","scholars","library","external-texts","research"];
+ // Consulta sin intención codicológica (concepto, autor, lugar): los pasajes, obras y el
+ // aparato preceden a los códices. Con signatura, sigla o folio, los códices van primero.
+ const codexIntent=(()=>{try{const CQ=window.CodexQuery,cq=CQ&&CQ.parse(query);
+  if(cq&&(cq.folios.length||cq.range||cq.image))return true;
+  if(window.VitruviaResearchEngine?.classify(query)?.codex)return true;
+  return /\b(?:ms|mss|cod|codd|vat|pal|harl(?:ey)?|gud|voss|plut|lat\.|gr\.|grec|latin)\b|\b\d{2,4}\s*[rv]?\b/i.test(query)&&deduped.some(r=>r.type==="manuscript"&&norm(r.title).includes(norm(query).split(/\s+/).find(t=>t.length>2)||"\u0000"))}catch{return false}})();
+ if(!codexIntent){const i=groupOrder.indexOf("manuscripts");if(i>=0){groupOrder.splice(i,1);groupOrder.splice(groupOrder.indexOf("library")+1,0,"manuscripts")}}
  const grouped=new Map(groupOrder.map(g=>[g,[]]));
  for(const r of deduped){
   const group=byGroup(r);
@@ -748,7 +755,9 @@ function display(rows,query,phase){
  }
  // Para códices, primero el testimonio más antiguo INDEXADO; para ediciones,
  // año ascendente (no se confunde una edición impresa con un manuscrito).
+ const msExact=r=>{const t=norm([r.title,r.codexShelfmark].join(" ")),q=norm(query);return q.length>2&&(t.includes(q)||norm(r.codexShelfmark||"")===q)?1:0};
  grouped.get("manuscripts")?.sort((a,b)=>
+  msExact(b)-msExact(a)||
   Number(!!b.primaryWitness)-Number(!!a.primaryWitness)||
   (a.codexDate??9999)-(b.codexDate??9999)||b.rating-a.rating);
  grouped.get("editions")?.sort((a,b)=>
