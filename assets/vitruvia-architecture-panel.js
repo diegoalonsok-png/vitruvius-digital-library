@@ -314,8 +314,18 @@ function listConstructedWorks(root,name,id,valid){
   item.append(link(work.title+' ↗',work.url));
   if(work.date||work.place)item.append(el('p','architecture-work-meta',[work.date,work.place].filter(Boolean).join(' · ')));
   if(provenance)item.append(el('p','architecture-work-meta',provenance));
-  list.append(item);
-  window.VitruviaArchitectVisuals?.enhance(item,work);
+  // Insert every documented building by its earliest recorded construction year.
+  // Unknown dates belong after dated buildings; ties retain alphabetical order.
+  const y=String(work.date||"").match(/(?:1[5-9]\d{2}|20\d{2})/);
+  const year=y?Number(y[0]):99999;
+  item.dataset.workYear=String(year);
+  const following=[...list.children].find(node=>{
+   const other=Number(node.dataset.workYear||99999);
+   return other>year||(other===year&&String(node.dataset.workTitle||"").localeCompare(title)>0);
+  });
+  item.dataset.workTitle=title;
+  list.insertBefore(item,following||null);
+  window.VitruviaArchitectVisuals?.enhance(item,{...work,eagerPhoto:year!==99999&&year<1950});
  }
  if(certified){
   section.append(el('p','context-note',localized(
