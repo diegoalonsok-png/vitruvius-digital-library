@@ -41,10 +41,13 @@ function plan(query){
   .replace(/^(?:creador|inventor|inventora|autor|origenes|origen|historia|biografia|vida y obra|explicacion|informacion)\s+(?:de|del|de la|de los|sobre)\s+/,'').trim();
  let remainder=tokens(stripped);
  // Descriptive occupation and nationality adjectives are clues, not independent entities.
- const content=remainder.filter(w=>!attributes.has(w)&&!intentWords.has(w));
+ const descriptor=w=>attributes.has(w)||([...attributes].some(a=>a.length>=7&&w.length>=7&&dist(a,w)<=2));
+ const content=remainder.filter(w=>!descriptor(w)&&!intentWords.has(w));
  if(content.length>=2&&content.length<remainder.length)remainder=content;
  else if(content.length===1&&remainder.length>=3)remainder=content;
- const subject=remainder.length?remainder.join(' '):stripped||raw;
+ const changed=stripped!==raw||remainder.length!==tokens(stripped).length;
+ const subject=changed?(remainder.length?remainder.join(' '):stripped||raw):stripped||raw;
+ const hints=tokens(raw).filter(w=>descriptor(w));
  const alternatives=[subject];
  if(remainder.some(w=>synMap.get(w)?.includes('cartografia'))){
   const historic=remainder.some(w=>synMap.get(w)?.includes('antiguo')||w==='origenes');
@@ -54,7 +57,7 @@ function plan(query){
   alternatives.push('cupula geodesica');
  }
  const termList=remainder.filter(w=>!intentWords.has(w));
- return{subject,alternatives:[...new Set(alternatives)].filter(Boolean),terms:termList.length?termList:remainder,raw};
+ return{subject,alternatives:[...new Set(alternatives)].filter(Boolean),terms:termList.length?termList:remainder,hints,raw};
 }
 function assess(query,record){
  const v=plan(query),name=norm(record?.title||record?.canonical||''),text=norm(record?.description||record?.excerpt||record?.snippet||'');
@@ -64,10 +67,27 @@ function assess(query,record){
  const titleHits=terms.filter(t=>names.some(w=>equivalent(t,w))).length;
  const totalHits=terms.filter(t=>desc.some(w=>equivalent(t,w))).length;
  const exact=norm(name)===v.raw||norm(name)===v.subject||(record.aliases||[]).some(a=>norm(a)===v.raw);
+ const roleGroups=[
+  ['procer','heroe','libertador','militar','general','independencia','patriota'],
+  ['politico','politica','gobernante','presidente','militar','libertador','revolucionario'],
+  ['arquitecto','arquitecta','architect','architecture','arquitectura'],
+  ['cantante','musico','musica','singer','vocalist','musician'],
+  ['escritor','escritora','autor','author','writer','novelist'],
+  ['cientifico','cientifica','scientist','researcher','investigador'],
+  ['actor','actriz','actores','actrices','actor','actress']
+ ];
+ const descriptorHints=v.hints.filter(w=>roleGroups.some(g=>g.some(x=>equivalent(w,x))));
+ const roleSatisfied=descriptorHints.length===0||descriptorHints.some(w=>{
+  const group=roleGroups.find(g=>g.some(x=>equivalent(w,x)))||[w];
+  return group.some(x=>desc.some(d=>equivalent(x,d)));
+ });
  // At least two distinct thematic anchors for compound queries; single terms need one.
  const minimum=terms.length>1?Math.min(2,terms.length):1;
- const accepted=exact||titleHits>=minimum||(titleHits>=1&&totalHits>=minimum);
- const score=(exact?1500:0)+(titleHits*230)+(totalHits*60)-
+ const rareMatched=terms.some(t=>t.length>=9&&names.some(w=>equivalent(t,w)));
+ const personDesc=/\b(architect|arquitect|scientist|cientific|artist|artista|inventor|musician|musico|singer|cantante|writer|escritor|engineer|ingenier|politic|politic|militar)\b/i.test(text);
+ const partialPerson=terms.length===2&&titleHits>=1&&rareMatched&&personDesc;
+ const accepted=roleSatisfied&&(exact||titleHits>=minimum||(titleHits>=1&&totalHits>=minimum)||partialPerson);
+ const score=(exact?1500:0)+(roleSatisfied?0:-1800)+(descriptorHints.length&&roleSatisfied?250:0)+(titleHits*230)+(totalHits*60)-
   (terms.length-titleHits)*110;
  return{accepted,score,titleHits,totalHits,exact,subject:v.subject};
 }
