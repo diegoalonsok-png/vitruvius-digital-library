@@ -116,7 +116,7 @@ $("passages").addEventListener("dblclick",()=>{if(data?.language!=="la")return;c
 async function load(language){
  const path=base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
- const corpus=await response.json();
+ let corpus=await response.json();
  if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||corpus.passages.length<10)throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
   // Preserve every unit of the historical anthology: no text is discarded.
