@@ -4494,7 +4494,7 @@
         "editor": "James Adam · Cambridge University Press"
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: traducción histórica de Harold North Fowler (1914), TEI Perseus; lector original griego y traducción inglesa por unidad Stephanus general, cotejo fino pendiente. Castellano/francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -4520,7 +4520,8 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-apology-grc.json"
+        "grc": "data/classics-corpus/plato-apology-grc.json",
+        "en": "data/classics-corpus/plato-apology-en.json"
       },
       "localHtml": "classics-text-reader.html?work=plato-apology&lang=grc",
       "localEdition": {
