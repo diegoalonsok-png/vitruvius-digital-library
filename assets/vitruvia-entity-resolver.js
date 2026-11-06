@@ -81,6 +81,8 @@ async function lookupTitle(title,lang){
    with small typo tolerance; one shared first name is never sufficient. */
 function fullNameMatch(input,candidate){
  const a=norm(input).split(" ").filter(Boolean),b=norm(candidate).replace(/\s*\([^)]*\)\s*$/,"").split(" ").filter(Boolean);
+ // Un título mucho más largo que el nombre buscado (una obra sobre la persona) no es la persona.
+ if(b.length>a.length+2)return false;
  if(a.length<2)return nameSimilarity(input,candidate)>0;
  const used=new Set();
  let matched=0,errors=0;
@@ -99,6 +101,9 @@ function fullNameMatch(input,candidate){
  return matched===a.length&&errors<=Math.max(2,Math.floor(norm(input).length/8));
 }
 async function searchTitle(q,lang,suggest=true){
+ // 1) Título exacto o redirección de Wikipedia («Carlos Magno» → «Carlomagno») antes que la búsqueda de texto,
+ //    que puede devolver primero una obra cuyo título solo contiene el nombre.
+ try{const direct=await lookupTitle(q,lang);if(direct&&direct.wikidataId&&!/desambiguaci[oó]n|disambiguation/i.test(direct.canonical+' '+direct.description.slice(0,120)))return direct}catch{}
  const d=await get(mediaWiki(lang,{action:"query",list:"search",srsearch:q,srlimit:"8",srprop:"snippet",srinfo:"suggestion|rewrittenquery",utf8:"1"}));
  const hits=d.query?.search||[];
  const matches=hits.filter(x=>!/(?:desambiguaci[oó]n|disambiguation)/i.test(x.title)).map((x,index)=>({x,index,score:nameSimilarity(q,x.title)})).filter(x=>x.score>0&&fullNameMatch(q,x.x.title)).sort((a,b)=>b.score-a.score||a.index-b.index);

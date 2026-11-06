@@ -23,7 +23,7 @@
  ];
  const ES_STOP=new Set('de la el los las un una y o en que por para con del al se su sus es son como mas pero sin sobre entre desde hasta este esta estos estas lo le les ya muy tambien'.split(' '));
  // Palabras que describen pero no identifican (se ignoran al reconocer un autor u obra).
- const GENERIC=new Set('poeta poetas poesia romano romana romanos griego griega griegos latino latina latin filosofo filosofa historiador historiadora orador escritor autor autora obra obras libro libros texto textos leer lectura antiguo antigua antiguedad clasico clasica clasicos siglo vida biografia poema poemas tratado tratados arquitecto arquitectura dramaturgo tragedia comedia'.split(' '));
+ const GENERIC=new Set('poeta poetas poesia romano romana romanos griego griega griegos latino latina latin filosofo filosofa historiador historiadora orador escritor autor autora obra obras libro libros texto textos leer lectura antiguo antigua antiguedad clasico clasica clasicos siglo vida biografia poema poemas tratado tratados arquitecto arquitectura dramaturgo tragedia comedia historia historias parte segunda primera tercera libro imperador emperador rey reina papa santo santa'.split(' '));
 
  /* ---------- Interfaz ---------- */
  const panel=document.createElement('section');panel.id='vitruvia-term-panel';panel.hidden=true;panel.setAttribute('aria-label','Ficha de la búsqueda');
