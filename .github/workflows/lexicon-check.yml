@@ -1,0 +1,46 @@
+name: Verificar Vitruvia Lexicon
+on:
+  push:
+    branches: [main]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "sw.js"]
+  pull_request:
+    branches: [main]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "sw.js"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lexicon:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Sintaxis de JavaScript
+        run: |
+          node --check assets/vitruvia-lexicon.js
+          node --check assets/lectura-lexica.js
+          node --check assets/lector-clasico.js
+          node --check sw.js
+      - name: Datos JSON válidos
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          bad = []
+          for p in pathlib.Path("data/lexicon").rglob("*.json"):
+              try: json.loads(p.read_text())
+              except Exception as e: bad.append(f"{p}: {e}")
+          assert not bad, "\n".join(bad)
+          print("JSON del Lexicon válidos")
+          PY
+      - name: Citas de las fichas y sentencias verificadas en el corpus
+        run: python scripts/test-vitruvia-lexicon.py
+      - name: Pruebas en navegador (consultas de referencia, citas, grupos, sin errores de JavaScript)
+        run: |
+          pip install playwright==1.48.0
+          python -m http.server 8765 >/dev/null 2>&1 &
+          sleep 2
+          CHROME=$(which google-chrome || which chromium-browser) python scripts/smoke-vitruvia-lexicon.py --base http://localhost:8765

@@ -9,7 +9,8 @@ DIR_FUENTES contiene las descargas (no se copian al repositorio):
   celano/texts/<urn>.xml  lematización griega de G. Celano (Lemmatized Ancient Greek XML)
   lemmata.py              tabla forma→lema de CLTK (latin_lemmata_cltk)
 
-Escribe, por obra, data/classics-corpus/<obra>-<lengua>.json (pasajes) y
+Escribe, por obra, data/lexicon/fontes/<obra>-<lengua>.json (pasajes; fuentes propias del Lexicon,
+fuera del índice del buscador clásico) y
 data/classics-lexicon/<obra>-<lengua>.json (formas → lemas), que luego recoge
 scripts/build-vitruvia-lexicon.py.
 """
@@ -256,7 +257,7 @@ def main():
                   "source": url, "attribution": attrib,
                   "license": "CC BY-SA 4.0 (Perseus DL; conservar atribución)" if "Perseus" in attrib else "Dominio público (The Latin Library)",
                   "passages": [{"locus": l, "text": t} for l, t in ps]}
-        (ROOT / "data/classics-corpus" / f"{wid}-{lang}.json").write_text(json.dumps(corpus, ensure_ascii=False, separators=(",", ":")))
+        (ROOT / "data/lexicon/fontes" / f"{wid}-{lang}.json").write_text(json.dumps(corpus, ensure_ascii=False, separators=(",", ":")))
         toks = sum(len(re.findall(r"[\wͰ-Ͽἀ-῿]+", t)) for _, t in ps)
         if lang == "grc":
             forms, lemmas = greek_forms(celano)
