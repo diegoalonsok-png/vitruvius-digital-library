@@ -379,8 +379,8 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   </div>
  </div>
  <p id="lx-state" role="status">Preparando el Lexicon…</p>
-  <section id="lx-encyclopedia" class="lx-encyclopedia" hidden aria-label="Contexto enciclopédico complementario y enlaces a fuentes externas"></section>
  <article id="lx-entry" hidden></article>
+ <section id="lx-encyclopedia" class="lx-encyclopedia" hidden aria-label="Enciclopedia ampliada del término consultado y enlaces a fuentes externas"></section>
   <article id="lx-antiguedad-resultados" hidden aria-label="Fuentes documentales antiguas y límites de atestiguación"></article>
  <div class="results-grid">
   <div id="lx-results"></div>
@@ -642,12 +642,28 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 </div>
 <style>
 #lx-encyclopedia[hidden]{display:none!important}
-#lx-encyclopedia{margin:12px 0 18px;padding:12px 16px;border:1px solid var(--line,#474747);border-radius:8px;font-size:13px;line-height:1.5}
-#lx-encyclopedia .lx-encyclopedia-heading{display:block;font-weight:600;letter-spacing:.015em;margin-bottom:3px}
-#lx-encyclopedia .lx-encyclopedia-summary{margin:2px 0 5px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-#lx-encyclopedia .lx-encyclopedia-links{font-size:12px}
-#lx-encyclopedia .lx-encyclopedia-links a{text-decoration:underline;text-underline-offset:2px}
+#lx-encyclopedia{margin:20px 0 28px;padding:22px 24px;border:1px solid #363636;border-radius:9px;background:transparent;color:inherit}
+#lx-encyclopedia .lx-encyclopedia-kicker{display:block;font:600 11px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.12em;color:#9d9d9d;margin-bottom:7px}
+#lx-encyclopedia h3{font:400 clamp(23px,3vw,34px)/1.25 Georgia,serif;margin:0 0 10px}
+#lx-encyclopedia h4{font:400 21px/1.35 Georgia,serif;margin:0 0 10px}
+#lx-encyclopedia .lx-encyclopedia-summary{font-size:15px;line-height:1.6;color:#c9c9c9;margin:0 0 15px;max-width:100ch}
+#lx-encyclopedia .lx-encyclopedia-expanded{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,285px);gap:28px;border-top:1px solid #333;padding-top:19px;min-height:190px}
+#lx-encyclopedia .lx-encyclopedia-article{min-width:0;max-width:92ch}
+#lx-encyclopedia .lx-encyclopedia-article p{font-size:14px;line-height:1.7;color:#b7b7b7;margin:0 0 11px}
+#lx-encyclopedia .lx-encyclopedia-article .lx-encyclopedia-attr{font-size:11px;letter-spacing:.025em;color:#8f8f8f;margin-top:7px}
+#lx-encyclopedia .lx-encyclopedia-related{margin-top:14px!important}
+#lx-encyclopedia .lx-encyclopedia-sources{border-left:1px solid #373737;padding-left:18px}
+#lx-encyclopedia .lx-encyclopedia-sources p{font-size:12px;line-height:1.6;color:#a4a4a4}
+#lx-encyclopedia .lx-encyclopedia-ref-links{display:flex;flex-direction:column;align-items:start;gap:10px;margin:14px 0}
+#lx-encyclopedia a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+#lx-encyclopedia a:hover{color:#fff}
+html[data-theme=light] #lx-encyclopedia{border-color:#d4d2c9}
+html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-summary,html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-article p{color:#3b4440}
+html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-expanded{border-top-color:#d4d2c9}
+html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-sources{border-left-color:#d4d2c9}
+html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-kicker,html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-sources p{color:#5c6567}
+@media(max-width:750px){#lx-encyclopedia{padding:16px}#lx-encyclopedia .lx-encyclopedia-expanded{grid-template-columns:1fr;gap:15px}#lx-encyclopedia .lx-encyclopedia-sources{border-left:0;border-top:1px solid #373737;padding:14px 0 0}}
 </style>
-<script src="assets/lexicon-encyclopedia.js?v=20261106-context-v1" defer></script>
+<script src="assets/lexicon-encyclopedia.js?v=20261106-encyclopedia-expanded-v1" defer></script>
 <script src="assets/vitruvia-lexicon.js?v=20261106-encyc-context-v1" defer></script>
 </body></html>
