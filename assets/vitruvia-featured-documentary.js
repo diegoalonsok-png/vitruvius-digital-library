@@ -30,7 +30,7 @@
  function validImage(url){
   try{
    const u=new URL(url);
-   return u.protocol==='https:' && (u.hostname==='upload.wikimedia.org'||u.hostname==='commons.wikimedia.org'||/^[a-z-]+\.wikipedia\.org$/.test(u.hostname)||u.hostname==='pubchem.ncbi.nlm.nih.gov'||u.hostname==='covers.openlibrary.org');
+   return u.protocol==='https:' && (/(^|\.)wikimedia\.org$/.test(u.hostname)||/^[a-z-]+\.wikipedia\.org$/.test(u.hostname)||u.hostname==='pubchem.ncbi.nlm.nih.gov'||u.hostname==='covers.openlibrary.org');
   }catch{return false}
  }
  function validSource(url){

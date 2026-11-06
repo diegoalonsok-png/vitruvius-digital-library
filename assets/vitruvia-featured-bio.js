@@ -152,6 +152,56 @@
   box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
  }
 
+ /* ---------- Lugares, edificios, estructuras y objetos ---------- */
+ // Regla general por tipo (clase de Wikidata y su superclase): la ley física que sostiene ese tipo de obra.
+ const PHYSICS=[
+  [/\b(arch|arch bridge|bridge|viaduct|vault|aqueduct bridge)\b/,'H = w·L² / (8·f)','Estática del arco · empuje horizontal bajo carga uniforme (luz L, flecha f)','https://es.wikipedia.org/wiki/Arco_(arquitectura)'],
+  [/\b(aqueduct|canal|water supply)\b/,'v = (1/n) · R<sup>2/3</sup> · S<sup>1/2</sup>','Hidráulica · flujo por gravedad en conducto (pendiente S)','https://es.wikipedia.org/wiki/F%C3%B3rmula_de_Manning'],
+  [/\b(dome|cupola)\b/,'σ = p · R / (2t)','Estática de la cúpula · tensión de membrana','https://es.wikipedia.org/wiki/C%C3%BApula'],
+  [/\b(column|obelisk|pillar|minaret|chimney|mast)\b/,'P<sub>cr</sub> = π²·E·I / (K·L)²','Pandeo de Euler · carga crítica de un elemento esbelto','https://es.wikipedia.org/wiki/Pandeo'],
+  [/\b(tower|skyscraper|lighthouse)\b/,'M = Σ F<sub>i</sub> · h<sub>i</sub>','Estabilidad de torres · momento de vuelco por viento','https://es.wikipedia.org/wiki/Momento_de_fuerza'],
+  [/\b(beam|lintel|girder)\b/,'σ = M · y / I','Flexión de vigas (Navier)','https://es.wikipedia.org/wiki/Flexi%C3%B3n_mec%C3%A1nica'],
+  [/\b(dam|retaining wall|levee|dike|seawall|city wall|fortification|defensive wall)\b/,'p = ρ · g · h','Presión hidrostática y de empuje sobre muros','https://es.wikipedia.org/wiki/Presi%C3%B3n_hidrost%C3%A1tica'],
+  [/\b(ship|boat|vessel|galley|trireme)\b/,'E = ρ · g · V','Principio de Arquímedes · flotación','https://es.wikipedia.org/wiki/Principio_de_Arqu%C3%ADmedes'],
+  [/\b(crane|lever|pulley|winch|machine)\b/,'F₁ · d₁ = F₂ · d₂','Ley de la palanca (Arquímedes; Vitruvio X)','https://es.wikipedia.org/wiki/Palanca'],
+  [/\b(catapult|ballista|siege engine|artillery)\b/,'R = v² · sen 2θ / g','Alcance del proyectil','https://es.wikipedia.org/wiki/Tiro_parab%C3%B3lico'],
+  [/\b(sundial|gnomon)\b/,'tan h = L / s','Gnomónica · altura del sol a partir de la sombra (Vitruvio IX)','https://es.wikipedia.org/wiki/Reloj_de_sol'],
+  [/\b(theatre|theater|amphitheatre|amphitheater|odeon|concert hall)\b/,'f = v / λ','Acústica · resonancia (los echea de Vitruvio V.5)','https://es.wikipedia.org/wiki/Ac%C3%BAstica_arquitect%C3%B3nica'],
+  [/\b(pyramid)\b/,'V = ⅓ · B · h','Volumen de la pirámide','https://es.wikipedia.org/wiki/Pir%C3%A1mide_(geometr%C3%ADa)'],
+  [/\b(temple|church|cathedral|basilica|mosque|palace|building|house|villa|bath|thermae|structure)\b/,'ΣF = 0 · ΣM = 0','Estática · equilibrio de fuerzas y momentos (firmitas)','https://es.wikipedia.org/wiki/Est%C3%A1tica_(mec%C3%A1nica)'],
+  [/\b(planet|star|moon|natural satellite|comet|galaxy|asteroid)\b/,'F = G · m₁m₂ / r²','Gravitación universal','https://es.wikipedia.org/wiki/Ley_de_gravitaci%C3%B3n_universal'],
+  [/\b(musical instrument|string instrument|lyre|organ)\b/,'f = (1 / 2L) · √(T / μ)','Frecuencia de una cuerda vibrante','https://es.wikipedia.org/wiki/Cuerda_vibrante']
+ ];
+ async function classLabels(ent){
+  const ids=claims(ent,'P31').map(v=>v.id).filter(Boolean).slice(0,6);if(!ids.length)return '';
+  const r=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:ids.join('|'),props:'labels|claims',languages:'en',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+  const sup=[...new Set(Object.values(r?.entities||{}).flatMap(e=>claims(e,'P279').map(v=>v.id)).filter(Boolean))].slice(0,12);
+  const r2=sup.length?await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:sup.join('|'),props:'labels',languages:'en',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null):null;
+  const own=Object.values(r?.entities||{}).map(e=>e.labels?.en?.value||'');
+  const up=Object.values(r2?.entities||{}).map(e=>e.labels?.en?.value||'');
+  return {own:own.join(' | ').toLowerCase(),up:up.join(' | ').toLowerCase()};
+ }
+ async function renderThing(ent,row,my){
+  const copy=box.querySelector('.featured-copy')||box;const title=document.getElementById('featured-title');
+  const block=document.createElement('div');block.className='vfb';
+  const facts=[['P17',lang()==='en'?'Country':'País'],['P131',lang()==='en'?'Location':'Ubicación'],['P84',lang()==='en'?'Architect':'Arquitecto'],['P149',lang()==='en'?'Style':'Estilo'],['P186',lang()==='en'?'Material':'Material'],['P177',lang()==='en'?'Crosses':'Cruza'],['P1435',lang()==='en'?'Heritage':'Patrimonio']];
+  const ids=[...new Set(facts.flatMap(([p])=>claims(ent,p).map(v=>v.id).filter(Boolean)))];
+  const [lab,cls]=await Promise.all([labelsOf(ids),classLabels(ent)]);if(my!==token)return;
+  const dl=document.createElement('dl');dl.className='vfb-life';
+  for(const [p,name] of facts){const v=claims(ent,p).map(x=>lab[x.id]).filter(Boolean);if(v.length)dl.innerHTML+=`<dt>${esc(name)}</dt><dd>${esc(v.slice(0,3).join(', '))}</dd>`}
+  const start=claims(ent,'P571')[0];if(start)dl.innerHTML+=`<dt>${lang()==='en'?'Built / founded':'Construcción o fundación'}</dt><dd>${esc(dateText(start))}</dd>`;
+  const qty=(p,name,unit)=>{const v=claims(ent,p)[0];if(v?.amount){const n=Number(v.amount);dl.innerHTML+=`<dt>${esc(name)}</dt><dd>${esc(n.toLocaleString(lang()))}${unit?' '+unit:''}</dd>`}};
+  qty('P2043',lang()==='en'?'Length':'Longitud','m');qty('P2048',lang()==='en'?'Height':'Altura','m');qty('P1082',lang()==='en'?'Population':'Población','');
+  if(dl.children.length)block.append(dl);
+  const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`Datos: Wikidata · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
+  box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
+  // Fórmula de la ley física del tipo de obra: primero la clase propia, después la superclase.
+  const pick=t=>t&&PHYSICS.find(([re])=>re.test(t));
+  const law=pick(cls?.own)||pick(cls?.up);
+  if(law){const f=[[],law[1],law[2],law[3]];f.html=true;const fig=document.getElementById('featured-documentary-visual');renderFormula(fig&&!fig.hidden?fig:box,f);
+   if(fig&&fig.hidden){new MutationObserver((m,o)=>{if(!fig.hidden&&box.querySelector(':scope > .vfb-math')){fig.prepend(box.querySelector(':scope > .vfb-math'));o.disconnect()}}).observe(fig,{attributes:true,attributeFilter:['hidden']})}}
+ }
+
  /* ---------- Render ---------- */
  let token=0,query='';
  window.addEventListener('vitruvia:search',e=>{query=String(e.detail?.query||'');token++;box.querySelector('.vfb')?.remove();box.querySelector('.vfb-math')?.remove()});
@@ -160,7 +210,7 @@
   const my=++token;
   const ent=await wikidataFor(row).catch(()=>null);if(my!==token||!ent)return;
   const human=claims(ent,'P31').some(v=>v.id==='Q5');
-  if(!human){if(WORK_TYPES.has(claims(ent,'P31')[0]?.id)||claims(ent,'P31').some(v=>WORK_TYPES.has(v.id)))await renderWork(ent,row,my);return}
+  if(!human){if(claims(ent,'P31').some(v=>WORK_TYPES.has(v.id)))await renderWork(ent,row,my);else await renderThing(ent,row,my);return}
   const copy=box.querySelector('.featured-copy')||box;const title=document.getElementById('featured-title');
   const block=document.createElement('div');block.className='vfb';
   // Nombres en la lengua antigua: onomasticon del sitio y nombre nativo de Wikidata (griego antiguo o latín).
