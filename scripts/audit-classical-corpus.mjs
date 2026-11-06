@@ -57,7 +57,7 @@ for(const w of works)for(const p of Object.values(w.corpusFiles||{}))
 // cannot establish philological quality or historical copyright on their own.
 assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
 assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,"Search registry distinct work count is stale");
-const verifiedParallel=[];
+const verifiedParallel=[],explicitlyUnaligned=[];
 for(const w of works){
  const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
  for(const [lang,path] of Object.entries(w.corpusFiles||{})){
@@ -72,8 +72,13 @@ for(const w of works){
   const ol=new Set(original.passages.map(p=>String(p.locus)));
   const tl=new Set(target.passages.map(p=>String(p.locus)));
   const intersect=[...ol].filter(l=>tl.has(l)).length;
-  assert(intersect>0,"Original and translation have no shared locus: "+w.id+" / "+translation.language);
   assert(target.passages.every(p=>typeof p.text==="string"&&p.text.trim().length>0),"Empty translated passage: "+translation.path);
+  if(intersect===0){
+   assert.equal(target.alignmentStatus,"unaligned","Original and translation have no shared locus (undeclared): "+w.id+" / "+translation.language);
+   assert(typeof target.alignment==="string"&&/no equivalencias|no alinead/i.test(target.alignment),"Unaligned translation needs an explicit reader-facing warning: "+translation.path);
+   explicitlyUnaligned.push({work:w.id,translation:translation.language,reason:target.alignment});
+   continue;
+  }
   if(target.chicago18Bibliography)
    assert(target.citationStyle?.includes("Chicago"),"Chicago citation has no declared style: "+translation.path);
   verifiedParallel.push({work:w.id,original:originals[0].language,translation:translation.language,originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:intersect});
@@ -112,7 +117,7 @@ for(const w of works){
  assert.deepEqual([...p.indexedTextFiles].sort(),expected,"Public indexed-file list is stale: "+w.id);
 }
 
-const summary={parallelLocusCoverage:verifiedParallel,cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
+const summary={parallelLocusCoverage:verifiedParallel,explicitlyUnalignedTranslations:explicitlyUnaligned,cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
  localReadingRecords:localWorks.length,checkedFileReferences:checked.length,
  fulltextSearchWorks:new Set(registry.entries.map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
  languages,formats,unindexedHtml,classicPDF:classicPDF.length,vitruviusPageTextIndexes:vitruviusPageTexts.length,
