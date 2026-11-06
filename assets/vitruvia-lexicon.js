@@ -41,7 +41,7 @@ const cache=new Map();
 /* Los datos del Lexicon llevan la huella de versión de la página (meta lx-data-version): el service
    worker los guarda y no se vuelven a descargar mientras no cambien. */
 const DATA_VER=document.querySelector('meta[name="lx-data-version"]')?.content||"";
-function load(path){const url=ROOT+path+(DATA_VER&&path.startsWith("data/lexicon/")?(path.includes("?")?"&":"?")+"v="+DATA_VER:"");if(!cache.has(path))cache.set(path,fetch(url,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()}));return cache.get(path)}
+function load(path){const url=ROOT+path+(DATA_VER&&path.startsWith("data/lexicon/")?(path.includes("?")?"&":"?")+"v="+DATA_VER:"");if(!cache.has(path))cache.set(path,fetch(url,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()}).catch(err=>{cache.delete(path);throw err}));return cache.get(path)}
 const L={};
 async function lang(l,silent=false){
  if(l==="la")loadContext();
@@ -62,7 +62,7 @@ async function lang(l,silent=false){
   /* Formas del corpus sin análisis también se reconocen como formas. */
   const keys=[...post.keys()];
   return{l,corpus,forms,post,freq,workFreq,workTokens,tokens,lemmaForms,keys,_trans:null,_variant:null,_lemmaPost:null};
- })();
+ })().catch(err=>{delete L[l];throw err});
  return L[l];
 }
 function transIndex(D){if(!D._trans){D._trans=new Map();for(const k of D.keys){const t=transKeyFromGreek(k);let a=D._trans.get(t);if(!a){a=[];D._trans.set(t,a)}a.push(k)}}return D._trans}
@@ -504,6 +504,7 @@ function findCurated(words){
 }
 function etymCard(e){
  const sec=el("section",{class:"lx-etym",id:"etym-"+e.id},el("h3",{},"Etimología y equivalencias ",el("small",{},"· ficha editorial")));
+ if(e.editorial_status)sec.append(el("p",{class:"article-note"},"Estado de la ficha: "+e.editorial_status));
  const dl=el("dl",{class:"lx-dl"});const row=(k,v)=>{if(v&&(!Array.isArray(v)||v.length))dl.append(el("dt",{},k),el("dd",{},v))};
  row("Enunciado",el("span",{lang:e.l},e.head));row("Categoría",[e.pos,e.morph].filter(Boolean).join(" · "));if(e.tr)row("Transliteración",e.tr);
  if(e.sens?.length){const ol=el("ol",{});e.sens.forEach(s=>ol.append(el("li",{},s)));row("Acepciones",ol)}
@@ -513,7 +514,12 @@ function etymCard(e){
  if(e.gr?.length)row("Griego antiguo",eq(e.gr,"grc"));if(e.la?.length)row("Latín",eq(e.la,"la"));if(e.he?.length)row(e.he.some(x=>/préstamo/i.test(x.g+" "+(x.n||"")))?"Hebreo bíblico · equivalencia o préstamo (véase cada nota)":"Hebreo bíblico · equivalencia de traducción, no parentesco",eq(e.he,"he"));
  if(e.cog?.length)row("Cognados",e.cog.join(" · "));
  sec.append(dl);
- if(e.loci?.length){sec.append(el("h4",{},"Loci"));for(const L of e.loci){const b=el("blockquote",{class:"lx-locus"},el("p",{lang:L.lang||e.l,dir:L.lang==="he"?"rtl":null,class:L.lang==="he"?"lx-he":""},L.t),L.tr?el("p",{class:"lx-tr"},L.tr):null);(L.par||[]).forEach(x=>b.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.lang==="grc"?"LXX / griego: ":"Vulgata / latín: "),x.t)));b.append(el("cite",{},L.c));sec.append(b)}}
+ if(e.loci?.length){sec.append(el("h4",{},"Loci"));for(const L of e.loci){const b=el("blockquote",{class:"lx-locus"},el("p",{lang:L.lang||e.l,dir:L.lang==="he"?"rtl":null,class:L.lang==="he"?"lx-he":""},L.t),L.tr?el("p",{class:"lx-tr"},L.tr):null);(L.par||[]).forEach(x=>b.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.lang==="grc"?"LXX / griego: ":"Vulgata / latín: "),x.t)));b.append(el("cite",{},L.c));
+ const parsed=String(L.c||"").match(/(?:Vitr\.?|Vitruv\.?)[,\s]*(?:De\s*arch\.?)?\s*([IVX]+|[1-9]|10)\.([0-9]+)\.([0-9]+)/i);
+ if(parsed){const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+ const loc=(roman[parsed[1].toUpperCase()]||parsed[1])+"."+parsed[2]+"."+parsed[3];
+ const links=el("div",{class:"actions"});for(const [name,url] of vitruvianLinks(loc).slice(0,4))links.append(el("a",{href:url},name));b.append(links);}
+ sec.append(b)}}
  if(e.refs?.length)sec.append(el("p",{class:"article-note"},"Bibliografía: ",e.refs.join(" · ")));
  return sec;
 }
@@ -1436,7 +1442,7 @@ function sententiaCard(s){
  if(s.lang!=="he"){a.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=s.text;S.mode="analizar";renderTabs();run()}},"Analizar"),el("button",{type:"button",onclick:()=>{$("#lx-q").value=s.text;S.mode="paralelos";renderTabs();run()}},"Paralelos"))}
  a.append(el("button",{type:"button",onclick:e=>copy(`«${s.text}» (${s.cite}). Trad.: «${s.tr}».`,e.target)},"Copiar"));
  card.append(a);
- verifySententia(s).then(v=>{if(v){const p=v.D.corpus.passages[v.h.i];status.textContent=" · verificada en el corpus local: "+citeOf(v.D,p,v.h.spans[0][0]);const rl=readerLink(v.D,p);if(rl)a.prepend(el("a",{href:rl},"Ver en el texto"))}else if(s.lang!=="he")status.textContent=" · obra no incluida en el corpus local: consúltese la edición de referencia"}).catch(()=>{});
+ verifySententia(s).then(v=>{if(v){const p=v.D.corpus.passages[v.h.i];status.textContent=" · coincidencia de palabras en el corpus local (no revisión filológica): "+citeOf(v.D,p,v.h.spans[0][0]);const rl=readerLink(v.D,p);if(rl)a.prepend(el("a",{href:rl},"Ver en el texto"))}else if(s.lang!=="he")status.textContent=" · obra no incluida en el corpus local: consúltese la edición de referencia"}).catch(()=>{});
  return card;
 }
 function renderSententiae(q){
