@@ -221,6 +221,10 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Traducción":["Translation","Traduction"],"Lupa":["Magnifier","Loupe"],"Resaltado":["Highlight","Surlignage"],"Herramientas de lectura":["Reading tools","Outils de lecture"],"Agranda la línea bajo el cursor":["Enlarges the line under the cursor","Agrandit la ligne sous le curseur"],
+ "También en":["Also in","Aussi dans"],"obra":["work","œuvre"],"obras":["works","œuvres"],"pasaje":["passage","passage"],"pasajes":["passages","passages"],"Filtrar por esta obra":["Filter by this work","Filtrer par cette œuvre"],
+ "Cargando traducción…":["Loading translation…","Chargement de la traduction…"],"No hay traducción disponible para este pasaje en el sitio.":["No translation of this passage is available on the site.","Aucune traduction de ce passage n'est disponible sur le site."],"No se pudo cargar la traducción":["The translation could not be loaded","La traduction n'a pas pu être chargée"],
+ "Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0) · alineación aproximada":["English translation · Perseus Digital Library (CC BY-SA 4.0) · approximate alignment","Traduction anglaise · Perseus Digital Library (CC BY-SA 4.0) · alignement approximatif"],
 "← Buscador Vitruvia":["← Vitruvia search","← Recherche Vitruvia"],"Etymologicum":["Etymologicum","Etymologicum"],"Sententiae":["Sententiae","Sententiae"],"Taller ecdótico":["Textual-criticism workshop","Atelier d'ecdotique"],"Cuaderno exegético":["Exegetical notebook","Carnet exégétique"],"Instrumenta":["Instrumenta","Instrumenta"],"Método y fuentes":["Method and sources","Méthode et sources"],
 "Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables. Toda palabra latina, griega, castellana, inglesa, francesa o alemana recibe su árbol etimológico, y los personajes históricos se buscan por su nombre griego y latino.":["A search engine devoted to the vocabulary, syntax and phrases of the ancient world. Look up Greek and Latin words—with lemma, morphology, senses and etymology, Old Latin and Hebrew equivalents—and the passages of ancient authors where they occur, with verifiable canonical references. Every Latin, Greek, Spanish, English, French or German word gets its etymological tree, and historical figures are searched by their Greek and Latin names.","Moteur consacré au lexique, à la syntaxe et aux phrases du monde antique. Consultez les mots grecs et latins —lemme, morphologie, sens et étymologie, latin archaïque et équivalents hébreux— et les passages des auteurs anciens où ils apparaissent, avec des références canoniques vérifiables. Tout mot latin, grec, espagnol, anglais, français ou allemand reçoit son arbre étymologique, et les personnages historiques se cherchent par leur nom grec et latin."],
 "Buscar ↗":["Search ↗","Rechercher ↗"],"Palabra":["Word","Mot"],"Lema y flexión":["Lemma and inflection","Lemme et flexion"],"Etimología":["Etymology","Étymologie"],"Frase exacta":["Exact phrase","Phrase exacte"],"Sintaxis":["Syntax","Syntaxe"],"Paralelos":["Parallels","Parallèles"],"Analizar frase":["Analyse sentence","Analyser la phrase"],
@@ -272,7 +276,8 @@ async function run(push=true){
   let res=execute(D,parsed,opts);
   if(S.mode==="lema"&&!res.hits.length){/* el usuario escribió una forma: se resuelve su lema */parsed.steps.forEach(s=>{if(s.term.fallback)s.term={type:"form",v:s.term.v}});res=execute(D,parsed,{...opts,lemmatize:true})}
   if(!res.hits.length&&l==="la"&&S.lang==="auto"&&!/[\[@"]/.test(q)){const G=await lang("grc");const r2=execute(G,parseQuery(q,S.mode),opts);if(r2.hits.length){S.D=G;fillWorks(G);res=r2}}
-  S.result={...res,parsed};
+  S.allHits=S.work?execute(S.D,parsed,{...opts,work:""}).hits:res.hits;
+ S.result={...res,parsed};
   if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
   if(S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern")await renderEntry(S.D,parsed.steps[0].term,res);
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const qq=q;findConcept(q).then(c=>{if(!c||$("#lx-q").value.trim()!==qq)return;const body=$("#lx-entry .article-body");if(body)body.prepend(conceptCard(c,qq))})}
@@ -292,12 +297,13 @@ function renderHits(D,res){
  const works=new Set(res.hits.map(h=>D.corpus.passages[h.i][0]));
  setState(n?`${n.toLocaleString("es")}${res.capped?"+":""} coincidencia${n===1?"":"s"} en ${works.size} obra${works.size===1?"":"s"}${res.capped?" (límite de "+MAX_HITS+" alcanzado: filtre por obra o precise la consulta)":""} · corpus ${D.l==="grc"?"griego":"latino"} (${D.tokens.toLocaleString("es")} palabras).`:`Sin coincidencias en el corpus ${D.l==="grc"?"griego":"latino"} local.${res.sets?.some(s=>!s.size)?" Algún término no está atestiguado: pruebe ~aproximación, comodines (*) o la otra lengua.":""}`);
  $("#lx-head-title").textContent=S.mode==="frase"?"Concordancia de la frase":S.mode==="sintaxis"?"Construcciones halladas":"Concordancia";
- if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consulta. El corpus local comprende ",String(Object.keys(D.corpus.works).length)," obras; las ausencias no significan que la palabra no exista en la lengua."));return}
+if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consulta. El corpus local comprende ",String(Object.keys(D.corpus.works).length)," obras; las ausencias no significan que la palabra no exista en la lengua."));return}
  const ord=$("#lx-order").value;
  let hits=res.hits.slice();
  if(ord==="chrono")hits.sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i);
  S.sorted=hits;
  renderDistribution(D,hits);
+ list.append(readingToolbar());
  const page=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);
  for(const h of page)list.append(hitCard(D,h));
  if(hits.length>(S.page+1)*PAGE_SIZE){list.append(el("button",{type:"button",class:"lx-more",onclick:e=>{e.target.remove();S.page++;const more=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);for(const h of more)list.append(hitCard(D,h));if(hits.length>(S.page+1)*PAGE_SIZE)list.append(e.target)}},`Mostrar ${PAGE_SIZE} más`))}
@@ -314,6 +320,8 @@ function hitCard(D,h){
  const card=el("article",{class:"result-card lx-hit"},
   el("div",{class:"result-head"},el("div",{},el("div",{class:"kind"},`${w.author} · ${DATING[p[0]]||""}`),el("h3",{},el("i",{},w.title)," ",el("span",{class:"lx-cite"},cite))),el("span",{class:"meta-line"},D.l==="grc"?"griego":"latín")),
   snippet,full);
+ const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.append(trBox);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
+ const also=alsoIn(D,p);if(also)card.append(also);
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
  actions.append(el("button",{type:"button",class:"lx-primary",onclick:()=>openViewer(D,p,h.spans,S.q)},p[0]==="vitruvius"?"Leer con traducción (ES · FR · EN)":"Leer con traducción"));
@@ -757,6 +765,90 @@ async function openViewer(D,p,spans,q){
  body.append(el("p",{class:"lx-small"},T("Original y traducción en el lector clásico del sitio (Perseus Digital Library). Si el lector no encuentra el mismo locus, abre la obra al comienzo: el pasaje de esta búsqueda se muestra debajo.")),el("iframe",{class:"lx-viewer-frame",src:u,title:`${w.author}, ${w.title}`,loading:"lazy"}),el("details",{},el("summary",{},T("Pasaje de esta búsqueda")),(()=>{const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));return c})()),el("p",{},el("a",{href:u.replace("&embed=1",""),target:"_blank",rel:"noopener"},T("Abrir el lector en una pestaña")+" ↗")));
 }
 
+
+/* ---------- Traducción alineada en la concordancia ----------
+   Vitruvio: ediciones Kurilo (ES V514 · FR V554 · EN V297) por locus, en el idioma de la interfaz.
+   Demás obras: traducción inglesa de Perseus (TEI, CC BY-SA 4.0) leída desde GitHub y alineada por
+   libro y verso (poesía) o por capítulo / sección (prosa). */
+const TR_DOCS=new Map();
+async function perseusCatalog(){const [a,b]=await Promise.all([load("data/clasicos-perseus.json"),load("data/clasicos-perseus-extra.json").catch(()=>[])]);const arr=x=>Array.isArray(x)?x:(x.works||[]);return [...arr(a),...arr(b)]}
+function teiUnits(xml){
+ const doc=new DOMParser().parseFromString(xml,"text/xml");const body=doc.getElementsByTagNameNS("*","body")[0];if(!body)return [];
+ const SKIP=new Set(["note","bibl","del","head","foreign-note"]);const out=[];
+ const clean=t=>t.replace(/\s+/g," ").trim();
+ const isPart=d=>(d.localName==="div"&&d.getAttribute("type")==="textpart")||/^div\d$/.test(d.localName);
+ const textOf=n=>{let t="";const w=x=>{for(const c of x.childNodes){if(c.nodeType===3)t+=c.nodeValue;else if(c.nodeType===1&&!SKIP.has(c.localName))w(c)}};w(n);return clean(t)};
+ function leaf(node,path){
+  const book=path.length>1?path.slice(0,-1).join("."):path.join(".");
+  const ls=[...node.getElementsByTagNameNS("*","l")];
+  if(ls.length>2){let n=Number(path.at(-1))||1;const numbered=ls.some(l=>l.getAttribute("n"));if(!numbered&&path.length>1)n=Number(path.at(-1))||1;else if(!numbered)n=1;
+   for(const l of ls){const v=Number(String(l.getAttribute("n")||"").match(/\d+/)?.[0]);if(!isNaN(v))n=v;out.push({book:path.length>1?book:path.join("."),line:n,text:textOf(l)});n++}return}
+  const ms=[...node.getElementsByTagNameNS("*","milestone")];const unit=ms.some(m=>m.getAttribute("unit")==="section")?"section":ms.some(m=>m.getAttribute("unit")==="chapter")?"chapter":null;
+  if(unit){let cur=null,buf="";const flush=()=>{if(cur!=null&&clean(buf))out.push({locus:[...path,cur].filter(Boolean).join("."),text:clean(buf)});buf=""};
+   const w=x=>{for(const c of x.childNodes){if(c.nodeType===3)buf+=c.nodeValue;else if(c.nodeType===1){if(c.localName==="milestone"&&c.getAttribute("unit")===unit){flush();cur=c.getAttribute("n")}else if(!SKIP.has(c.localName))w(c)}}};w(node);flush();return}
+  const t=textOf(node);if(!t)return;
+  if(path.length>1&&/card/.test(node.getAttribute("subtype")||""))out.push({book,card:Number(path.at(-1)),text:t});else out.push({locus:path.join("."),text:t});
+ }
+ function walk(node,path){const kids=[...node.children].filter(isPart);if(!kids.length)return leaf(node,path);kids.forEach((k,i)=>walk(k,[...path,k.getAttribute("n")||String(i+1)]))}
+ const top=[...body.children].filter(d=>d.localName==="div"&&!isPart(d));
+ if(top.length)top.forEach(d=>walk(d,[]));else walk(body,[]);
+ return out;
+}
+async function perseusUnits(workId){
+ const id=LECTOR_IDS[workId];if(!id)return null;
+ if(!TR_DOCS.has(id))TR_DOCS.set(id,(async()=>{const c=(await perseusCatalog()).find(w=>w.id===id);const u=c?.translations?.find(t=>t.language==="en")?.url||c?.translations?.[0]?.url;if(!u)return null;const r=await fetch(u);if(!r.ok)throw new Error("HTTP "+r.status);return teiUnits(await r.text())})());
+ return TR_DOCS.get(id);
+}
+function alignTranslation(U,p){
+ if(!U?.length)return "";
+ const parts=p[1].split(".");
+ if(typeof p[3]==="number"){
+  const book=parts.length>1?parts.slice(0,-1).join("."):parts[0];const s=p[3],e=s+Math.max(0,String(p[2]).split("\n").length-1);
+  const ls=U.filter(u=>u.line!=null&&u.book===book&&u.line>=s&&u.line<=e);if(ls.length)return ls.map(u=>u.text).join(" / ");
+  const cs=U.filter(u=>u.card!=null&&u.book===book).sort((a,b)=>a.card-b.card);const hit=cs.filter((c,i)=>c.card<=e&&(cs[i+1]?cs[i+1].card-1:Infinity)>=s);if(hit.length)return hit.map(c=>c.text).join(" ");
+ }
+ const ex=U.find(u=>u.locus===p[1]);if(ex)return ex.text;
+ const kids=U.filter(u=>u.locus?.startsWith(p[1]+"."));if(kids.length)return kids.map(u=>u.text).join(" ");
+ for(let k=parts.length-1;k>0;k--){const pre=parts.slice(0,k).join(".");const c=U.filter(u=>u.locus===pre&&u.text.length<2500);if(c.length)return c[0].text}
+ return "";
+}
+async function translationOf(D,p){
+ if(p[0]==="vitruvius"){const ed=S.ui==="fr"?"fr":S.ui==="en"?"en":"es";const data=await load(VIT_ED[ed][0]);const x=data.passages.find(z=>z.locus===p[1]);if(x?.translation)return{text:x.translation,src:"Vitruvio · "+VIT_ED[ed][1]};if(p[4])return{text:p[4],src:"Vitruvio · Castellano · Kurilo V514"};return null}
+ const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);return t?{text:t,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0) · alineación aproximada")}:null;
+}
+async function fillTranslation(D,p,box){
+ if(box.dataset.done)return;box.dataset.done="1";box.replaceChildren(el("p",{class:"lx-small"},T("Cargando traducción…")));
+ try{const r=await translationOf(D,p);if(!r){box.replaceChildren(el("p",{class:"lx-small"},T("No hay traducción disponible para este pasaje en el sitio.")));return}
+  const t=r.text.length>1400?r.text.slice(0,1400)+" …":r.text;box.replaceChildren(el("p",{class:"lx-tr"},t),el("p",{class:"lx-small"},r.src))}
+ catch(err){box.dataset.done="";box.replaceChildren(el("p",{class:"lx-small"},T("No se pudo cargar la traducción")+" ("+err.message+")."))}
+}
+/* ---------- «También en…»: otras obras del corpus donde aparece la consulta ---------- */
+function alsoIn(D,p){
+ const all=S.allHits||[];const by=new Map();
+ for(const h of all){const q=D.corpus.passages[h.i];if(!q||q[0]===p[0])continue;if(!by.has(q[0]))by.set(q[0],[]);by.get(q[0]).push(h)}
+ if(!by.size)return null;
+ const ids=[...by.keys()].sort((a,b)=>(CHRONO[a]??0)-(CHRONO[b]??0));const n=ids.reduce((a,id)=>a+by.get(id).length,0);
+ const det=el("details",{class:"lx-also"},el("summary",{},`${T("También en")} ${ids.length} ${ids.length===1?T("obra"):T("obras")} · ${n} ${n===1?T("pasaje"):T("pasajes")}`));
+ det.addEventListener("toggle",()=>{if(!det.open||det.querySelector("ul"))return;const ul=el("ul",{});
+  for(const id of ids){const w=work(D,id);const hs=by.get(id);
+   const li=el("li",{},el("button",{type:"button",class:"lx-btn",title:T("Filtrar por esta obra"),onclick:()=>{S.work=id;$("#lx-work").value=id;run()}},`${w.author} · `,el("i",{},w.title),` (${hs.length})`)," ");
+   hs.slice(0,4).forEach(h=>{const q=D.corpus.passages[h.i];li.append(el("button",{type:"button",class:"lx-locus-btn",title:T("Leer con traducción"),onclick:()=>openViewer(D,q,h.spans,S.q)},citeOf(D,q,h.spans[0][0]).replace(w.cite+" ","")))});
+   if(hs.length>4)li.append(el("span",{class:"lx-small"}," …"));ul.append(li)}
+  det.append(ul)});
+ return det;
+}
+/* ---------- Herramientas de lectura: traducción, tamaño, color del resaltado, lupa ---------- */
+const READ=(()=>{try{return Object.assign({tr:false,fs:17,mark:"",lupa:false},JSON.parse(localStorage.getItem("vitruvia-lexicon-read")||"{}"))}catch{return{tr:false,fs:17,mark:"",lupa:false}}})();
+const MARKS=[["","Gris"],["#7a5c12","Oro"],["#6b1f1f","Rojo"],["#1f4f6b","Azul"],["#2f5d36","Verde"],["#5a2f6b","Violeta"]];
+function applyRead(){const r=$("#lx-results");if(!r)return;r.style.setProperty("--lx-fs",READ.fs+"px");if(READ.mark)r.style.setProperty("--lx-mark",READ.mark);else r.style.removeProperty("--lx-mark");r.classList.toggle("lx-lupa-on",!!READ.lupa);r.classList.toggle("lx-marked",!!READ.mark);try{localStorage.setItem("vitruvia-lexicon-read",JSON.stringify(READ))}catch{}}
+function readingToolbar(){
+ const bar=el("div",{class:"lx-readbar",role:"toolbar","aria-label":T("Herramientas de lectura")});
+ const trB=el("button",{type:"button","aria-pressed":String(READ.tr),onclick:()=>{READ.tr=!READ.tr;trB.setAttribute("aria-pressed",String(READ.tr));for(const c of document.querySelectorAll("#lx-results .lx-hit")){const b=c.querySelector(".lx-hit-tr");if(!b)continue;b.hidden=!READ.tr;if(READ.tr)c._tr?.()}applyRead()}},T("Traducción"));
+ const lupa=el("button",{type:"button","aria-pressed":String(READ.lupa),title:T("Agranda la línea bajo el cursor"),onclick:()=>{READ.lupa=!READ.lupa;lupa.setAttribute("aria-pressed",String(READ.lupa));applyRead()}},"🔍 "+T("Lupa"));
+ bar.append(trB,el("button",{type:"button",title:"A−",onclick:()=>{READ.fs=Math.max(13,READ.fs-1);applyRead()}},"A−"),el("button",{type:"button",title:"A+",onclick:()=>{READ.fs=Math.min(30,READ.fs+1);applyRead()}},"A+"),lupa,el("span",{class:"lx-small"},T("Resaltado")+":"));
+ for(const [c,n] of MARKS)bar.append(el("button",{type:"button",class:"lx-swatch",title:n,"aria-label":n,style:`background:${c||"#565656"}`,onclick:()=>{READ.mark=c;applyRead()}}));
+ setTimeout(applyRead,0);return bar;
+}
 /* ---------- Isopsefía griega y guematría hebrea (valores tradicionales) ---------- */
 const GR_NUM={α:1,β:2,γ:3,δ:4,ε:5,ϛ:6,ϝ:6,ζ:7,η:8,θ:9,ι:10,κ:20,λ:30,μ:40,ν:50,ξ:60,ο:70,π:80,ϙ:90,ϟ:90,ρ:100,σ:200,ς:200,ϲ:200,τ:300,υ:400,φ:500,χ:600,ψ:700,ω:800,ϡ:900};
 const HE_NUM={א:1,ב:2,ג:3,ד:4,ה:5,ו:6,ז:7,ח:8,ט:9,י:10,כ:20,ך:20,ל:30,מ:40,ם:40,נ:50,ן:50,ס:60,ע:70,פ:80,ף:80,צ:90,ץ:90,ק:100,ר:200,ש:300,ת:400};

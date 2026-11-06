@@ -229,6 +229,13 @@ html[data-theme=light] .lx-disamb,html[data-theme=light] .lx-person-banner{borde
 .lx-palette-panel label,.lx-palette-panel .lx-btn{grid-column:1/-1}.lx-swatch{width:34px;height:34px;border-radius:50%;border:1px solid #666;cursor:pointer}
 #lx-ui{background:#1a1a1b;color:#d7d7d7;border:1px solid #414141;border-radius:6px;padding:9px;height:44px}
 body{background:var(--lx-bg,var(--bg))}
+.lx-readbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 14px;padding:8px 10px;border:1px solid #333;border-radius:8px;background:rgba(255,255,255,.02)}.lx-readbar button{height:32px;padding:0 10px;border:1px solid #444;border-radius:6px;background:transparent;color:inherit;cursor:pointer;font-size:13px}.lx-readbar button[aria-pressed=true]{background:#3a3a3c;color:#fff}.lx-readbar .lx-swatch{width:24px;height:24px;padding:0;border-radius:50%}
+#lx-results .lx-kwic,#lx-results .lx-passage{font-size:var(--lx-fs,17px)!important}#lx-results .lx-tr{font-size:calc(var(--lx-fs,17px) - 2px)}
+#lx-results.lx-marked mark{background:var(--lx-mark)!important;color:#fff!important}
+#lx-results.lx-lupa-on .lx-kwic,#lx-results.lx-lupa-on .lx-tr{transition:transform .15s ease;transform-origin:left center}#lx-results.lx-lupa-on .lx-kwic:hover,#lx-results.lx-lupa-on .lx-tr:hover{transform:scale(1.35);position:relative;z-index:2;background:var(--lx-bg,#0d0d0e);box-shadow:0 0 0 8px var(--lx-bg,#0d0d0e)}
+.lx-hit-tr{margin:6px 0 8px;padding-left:12px;border-left:2px solid #3a3a3a}
+.lx-also{margin:6px 0;font-size:13px}.lx-also summary{cursor:pointer;color:#a8a8a5}.lx-also ul{margin:8px 0 0;padding-left:18px}.lx-also li{margin:4px 0}.lx-locus-btn{margin:0 3px;padding:1px 6px;border:1px solid #444;border-radius:4px;background:transparent;color:inherit;cursor:pointer;font-size:12px}
+html[data-theme=light] .lx-readbar{border-color:#d8d2c0}html[data-theme=light] .lx-readbar button{border-color:#c9c2ad}html[data-theme=light] .lx-readbar button[aria-pressed=true]{background:#e2dcc6;color:#111}html[data-theme=light] #lx-results.lx-lupa-on .lx-kwic:hover{background:var(--lx-bg,#fbfaf6);box-shadow:0 0 0 8px var(--lx-bg,#fbfaf6)}html[data-theme=light] .lx-hit-tr{border-left-color:#d8d2c0}
 .lx-gematria{font:400 12px/1.6 Arial,sans-serif;color:#8d8d8d;margin:4px 0 0;letter-spacing:.02em}.lx-gematria b{color:#bdbdbd;font-weight:400}
 .lx-primary{border-color:#8d8d8d!important;color:#fff!important}
 .lx-viewer{width:min(1200px,94vw);max-height:90vh;border:1px solid #444;border-radius:12px;background:#121213;color:#e6e6e3;padding:0}.lx-viewer::backdrop{background:#000a}
@@ -568,5 +575,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v8" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v9" defer></script>
 </body></html>
