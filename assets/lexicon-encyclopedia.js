@@ -115,17 +115,15 @@ function update(query,opts={}){
   // Resumen y párrafos son texto plano, nunca HTML remoto.
   lead.textContent=trim(opts.gloss)||note?.summary||result.body.slice(0,300).trim();
   const paragraphsFromWikipedia=result.body.split(/\n\s*\n/).map(trim).filter(Boolean).slice(0,4);
-  const header=el("p","Síntesis enciclopédica (Wikipedia, "+result.lang+"):","lx-encyclopedia-attr");
-  paragraphs.prepend(header);
-  for(const p of paragraphsFromWikipedia){paragraphs.insertBefore(el("p",p),note?.notes?.length?paragraphs.childNodes[1]||null:null)}
+  paragraphs.replaceChildren(el("p","Síntesis enciclopédica (Wikipedia, "+result.lang+")","lx-encyclopedia-attr"));
+  for(const p of paragraphsFromWikipedia)paragraphs.append(el("p",p));
   if(note?.notes?.length){
-   paragraphs.append(el("p","Nota contextual editorial de Vitruvia Lexicon; debe contrastarse con las fuentes:","lx-encyclopedia-attr"));
-   renderParagraphsAppendNotes(paragraphs,note.notes);
-  }else if(paragraphsFromWikipedia.length){const old=paragraphs.querySelectorAll("p");for(const item of old){if(item.textContent?.startsWith("Aún no hay"))item.remove()}}
+   paragraphs.append(el("p","Contexto editorial complementario (Vitruvia Lexicon):","lx-encyclopedia-attr"));
+   for(const p of note.notes)paragraphs.append(el("p",p));
+  }
   wp.href=result.url;wp.textContent="Wikipedia ("+result.lang+"; CC BY-SA)";
   if(result.wikidata)references.insertBefore(link("Wikidata "+result.wikidata,"https://www.wikidata.org/wiki/"+result.wikidata),groki);
  }).catch(()=>{});
 }
-function renderParagraphsAppendNotes(target,notes){for(const s of notes)target.append(el("p",s))}
 window.VitruviaEncyclopedia={update};
 })();
