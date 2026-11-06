@@ -1,0 +1,22 @@
+name: Verificar testimonios IIIF candidatos
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python scripts/verify-iiif-candidates.py
+      - name: Publicar en una rama de datos para revisión
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -b datos/testimonios-verificados
+          git add data/clasicos-testimonios.json
+          git commit -m "Datos: testimonios IIIF verificados" || echo "sin cambios"
+          git push -f origin datos/testimonios-verificados
