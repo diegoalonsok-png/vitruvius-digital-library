@@ -225,6 +225,7 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "En Vitruvia":["In Vitruvia","Dans Vitruvia"],"Buscar en Vitruvia sin perder este lugar de lectura":["Search in Vitruvia without losing your place","Chercher dans Vitruvia sans perdre la page"],
  "sección":["section","section"],
  "Cita reconocida":["Citation recognised","Citation reconnue"],"El locus comprende":["The locus comprises","Le locus comprend"],"Mostrarlos todos":["Show them all","Les afficher tous"],
  "corregido":["corrected","corrigé"],
@@ -355,6 +356,7 @@ function hitCard(D,h){
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
  actions.append(el("button",{type:"button",onclick:()=>addToNotebook({cite,text,lang:D.l,tr:p[4]||""})},"Al cuaderno exegético"));
  actions.append(el("button",{type:"button",onclick:e=>{const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(S.q)u.searchParams.set("q",S.q);copy(u.toString(),e.target)}},"Enlace al locus"));
+ actions.append(el("a",{href:`vitruvia.html?q=${encodeURIComponent((S.q||"").replace(/^[@=#√]|["\[\]]/g,"").trim()||text.slice(h.spans[0][0],h.spans[0][1]))}`,target:"_blank",rel:"noopener",title:T("Buscar en Vitruvia sin perder este lugar de lectura")},T("En Vitruvia")+" ↗"));
  actions.append(el("button",{type:"button",onclick:e=>copy(`${cite}: «${text.slice(k.a,k.b).replace(/\s+/g," ").trim()}» — ${w.author}, ${w.title}. ${w.edition||""}. Vitruvia Lexicon, ${PAGE}`,e.target)},"Copiar cita"));
  card.append(actions);
  if(p[0]==="vitruvius"){const v=el("p",{class:"lx-vlinks"},"Vitruvio "+p[1]+": ");vitruvianLinks(p[1]).forEach(([t,u],i)=>{if(i)v.append(" · ");v.append(el("a",{href:u},t))});card.append(v)}
@@ -1174,7 +1176,11 @@ async function renderEtymSearch(q){
  {const c=await findConcept(q);if(c&&Object.values(c.modern).flat().some(m=>fold(m)===fold(q.trim())))return renderModernWord(q.trim(),["es","en","fr","de"].includes(S.lang)?S.lang:null)}
  if(/^\*/.test(q.trim()))return renderPIE(q.trim());
  const k=fold(q);const he=HEBREW.test(q);if(he)return renderHebrew(q);
- const ents=(S.etym?.entries||[]).filter(e=>[e.lemma,e.head,e.tr,e.root,e.etym,...(e.gr||[]).map(x=>x.w),...(e.la||[]).map(x=>x.w),...(e.old||[]).map(x=>x.f),...(e.cog||[])].some(x=>x&&fold(x).includes(k))||(e.tr&&fold(e.tr).includes(k)));
+ /* Lemas, raíces y formas: coincidencia exacta o por comienzo; en la prosa de la etimología, solo palabras
+    enteras (que «canto» no encuentre «encanto» dentro de la ficha de venustas). */
+ const kk=k.trim().replace(/[.*+?^${}()|[\]\\]/g,"\\$&");const wordRe=new RegExp(`(^|[^\\p{L}*])${kk}([^\\p{L}]|$)`,"u");
+ const headOk=x=>{const f=fold(x).trim();return f===k.trim()||(k.trim().length>=3&&f.split(/[\s,;/·()-]+/).some(t=>t.replace(/^\*/,"").startsWith(k.trim())))};
+ const ents=(S.etym?.entries||[]).filter(e=>[e.lemma,e.head,e.tr,e.root,...(e.gr||[]).map(x=>x.w),...(e.la||[]).map(x=>x.w),...(e.old||[]).map(x=>x.f),...(e.cog||[])].some(x=>x&&headOk(x))||(e.etym&&wordRe.test(fold(e.etym))));
  setState(`${ents.length} ficha${ents.length===1?"":"s"} etimológica${ents.length===1?"":"s"} con «${q}» (lema, raíz, formas arcaicas, equivalentes o cognados).`);
  const list=$("#lx-results");
  if(ents.length===1){$("#lx-entry").hidden=false;$("#lx-entry").append(etymCard(ents[0]));}
