@@ -7,13 +7,18 @@
   .replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
  const stop=new Set("de del la las los el lo un una unos unas y e o a al en por para sobre con the of and or a an by from in on for to le les des du au aux et de da do dos das der die und von".split(" "));
  const ignore=new Set("quien quien fue quien es biografia vida historia history biography life obras obra works work imagen imagenes fotos fotografias image images sobre about".split(" "));
- const ancientSignals=new Set("antiguo antigua antiguos antiguas antiguedad grecorromano grecorromana grecolatino grecolatina griego griega griegos griegas latin latines latina latinas romano romana romanos romanas roma helenico helenica helenismo helenistica clasico clasica clasicos clasicas codex codice codices codice manuscrito manuscritos papiro papiros pergamino folio folios vitruvio vitruvius vitruve arquitectura antigua".split(" "));
+ const ancientSignals=new Set("antiguo antigua antiguos antiguas antiguedad grecorromano grecorromana grecolatino grecolatina griego griega griegos griegas latin latines latina latinas romano romana romanos romanas roma helenico helenica helenismo helenistica clasico clasica clasicos clasicas codex codice codices codice manuscrito manuscritos papiro papiros pergamino folio folios vitruvio vitruvius vitruve".split(" "));
  const ancientRecordTypes=new Set(["book","manuscript","edition","preface","passage","apparatus","fragment"]);
  const terms=value=>norm(value).split(" ").filter(t=>t.length>=3&&!stop.has(t));
  const meaningful=value=>terms(value).filter(t=>!ignore.has(t));
- function explicitAncientContext(query){
-  const t=terms(query);
-  return t.some(word=>ancientSignals.has(word))||/\b(?:de architectura|greek and latin|ancient (?:rome|greece|history)|roma antigua|grecia antigua|historia antigua)\b/.test(norm(query));
+ function explicitAncientContext(query,identity=null){
+  // A word that is part of the exact modern proper name (Romano Prodi,
+  // for example) is not an independent request to study Roman antiquity.
+  const identityWords=isModernIdentity(identity)?
+   new Set(terms(identity.canonical||identity.catalogName||"")):new Set();
+  const t=terms(query).filter(word=>!identityWords.has(word));
+  return t.some(word=>ancientSignals.has(word))||
+   /\b(?:de architectura|greek and latin|ancient (?:rome|greece|history)|roma antigua|grecia antigua|historia antigua)\b/.test(norm(query));
  }
  function exactSubjectMatch(query,row){
   const q=meaningful(query);if(!q.length)return false;
@@ -26,15 +31,24 @@
   return q.every(word=>combined.has(word));
  }
  function isModernIdentity(identity){
-  return !!(identity&&identity.kind==="person"&&Number.isFinite(Number(identity.birthYear))&&Number(identity.birthYear)>=1500);
+  return !!(identity&&[identity.birthYear,identity.inceptionYear,identity.publicationYear].some(year=>year!=null&&Number.isFinite(Number(year))&&Number(year)>=1500));
  }
  function allows(row,query,identity){
   if(!row||!ancientRecordTypes.has(row.type))return true;
   // Human biographical identity after 1500 overrides incidental ancient words.
   // Exception: an explicit query for antiquity is a comparative research intent.
-  if(isModernIdentity(identity)&&!explicitAncientContext(query))return false;
-  if(explicitAncientContext(query))return true;
-  if(row.type==="passage"&&row.exactTextMatch&&meaningful(query).length>=4)return true;
+  const ancientIntent=explicitAncientContext(query,identity);
+  if(isModernIdentity(identity)&&!ancientIntent)return false;
+  if(ancientIntent)return true;
+  // Actual source-text matches remain accessible for philological terms
+  // like Gallia even if the term is absent from the work's title.
+  if(row.type==="passage"&&row.exactTextMatch)return true;
+  if(["passage","apparatus","fragment"].includes(row.type)){
+   const q=meaningful(query),evidence=new Set(terms([
+    row.latin,row.greek,row.original,row.text,row.translation,row.excerpt,row.sourceText
+   ].filter(Boolean).join(" ")));
+   if(q.length&&q.every(word=>evidence.has(word)))return true;
+  }
   return exactSubjectMatch(query,row);
  }
  function filter(rows,query,identity){
