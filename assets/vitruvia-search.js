@@ -554,10 +554,18 @@ function considerFeatured(rows,query,fromFallback=false){
   // artículo y alguna en su título; con una sola, debe estar en el título.
   const covered=exact||(core.length<=1?inTitle>=1:(ratio>=0.75&&inTitle>=1));
   return {row:r,weight,covered}
- }).filter(x=>x.covered&&x.weight>=95&&x.row.type!=="openlibrary").sort((a,b)=>b.weight-a.weight);
+ // El Destacado presenta una entidad (artículo enciclopédico, entidad de Wikidata, códice, pasaje o página del
+ // sitio); los libros, artículos y objetos de museo tienen sus propias listas de resultados.
+ }).filter(x=>x.covered&&x.weight>=95&&!FEATURE_NOT_ENTITY.has(x.row.type)).sort((a,b)=>b.weight-a.weight);
  if(!picks.length)featureJoinedFallback(query,core);
  if(!picks.length||picks[0].weight<=(S.featureWeight??-Infinity))return;
- const {row,weight}=picks[0];S.featureWeight=weight;
+ // Lo que no es Wikipedia espera un momento: si llega el artículo de la entidad, gana sin parpadeo.
+ if(picks[0].row.type!=="wikipedia"&&picks[0].weight<300&&!fromFallback){const best=picks[0],key=featureCurrent;setTimeout(()=>{if(featureCurrent===key&&best.weight>(S.featureWeight??-Infinity))applyFeatured(best.row,best.weight,query,q)},2500);return}
+ applyFeatured(picks[0].row,picks[0].weight,query,q);
+}
+const FEATURE_NOT_ENTITY=new Set(["openlibrary","googlebook","article","museum","crossref","openalex","book","journal"]);
+function applyFeatured(row,weight,query,q){
+ S.featureWeight=weight;
  $("featured-label").textContent=row.type==="wikipedia"?"DESTACADO · WIKIPEDIA":row.type==="manuscript"?"DESTACADO · MANUSCRITO":"DESTACADO · DOCUMENTACIÓN";
  $("featured-title").textContent=row.title;
  $("featured-description").textContent=brief(row.excerpt||row.meta||"",230);
@@ -568,14 +576,23 @@ function considerFeatured(rows,query,fromFallback=false){
  window.dispatchEvent(new CustomEvent("vitruvia:featured-result",{detail:{query,row}}));
 }
 
-/* Si nada cubre la consulta y hay palabras que, unidas, forman un nombre («radio head» → Radiohead),
-   se consulta Wikipedia por esa forma unida y solo se acepta un título idéntico. */
+/* Si nada cubre la consulta: (1) palabras que, unidas, forman un nombre («radio head» → Radiohead), consultadas
+   por su forma unida y aceptadas solo con título idéntico; (2) la sugerencia ortográfica de Wikipedia
+   («arquiedes» → Arquímedes), aceptada solo si el artículo sugerido cubre la palabra corregida. */
 const featureJoinTried=new Set();
 async function featureJoinedFallback(query,core){
- const key=norm(query);if(featureJoinTried.has(key)||core.length<2)return;featureJoinTried.add(key);
+ const key=norm(query);if(featureJoinTried.has(key))return;featureJoinTried.add(key);
  for(let i=0;i<core.length-1;i++){const joined=core[i]+core[i+1];if(core[i].length<3||core[i+1].length<3||joined.length>16)continue;
   try{const rows=await wiki(joined,S.lang);if(featureCurrent!==key)return;const hit=rows.find(r=>norm(r.title).replace(/\s+/g,"")===joined||norm(r.title).replace(/\s+/g,"").startsWith(joined+" ")||norm(r.title).split(" (")[0].replace(/\s+/g,"")===joined);
    if(hit){considerFeatured([hit],hit.title,true);return}}catch{}}
+ if(featureCurrent!==key)return;
+ // Sugerencia ortográfica de Wikipedia (CirrusSearch «Did you mean»).
+ try{const lang=["es","en","fr"].includes(S.lang)?S.lang:"es";
+  const d=await fetchJSON("https://"+lang+".wikipedia.org/w/api.php?"+new URLSearchParams({action:"query",list:"search",srsearch:query,srinfo:"suggestion",srlimit:"1",format:"json",origin:"*"}),6000);
+  const sug=d?.query?.searchinfo?.suggestion;if(!sug||norm(sug)===key||featureCurrent!==key)return;
+  const rows=await wiki(sug,lang);if(featureCurrent!==key)return;const sc=featureTokens(sug).core;
+  const hit=rows.find(r=>{const c=featureCoverage(sc,r.title,r.excerpt||"");return c.inTitle>=1&&c.ratio>=0.75});
+  if(hit){hit.meta=(hit.meta?hit.meta+" · ":"")+"Búsqueda corregida: «"+sug+"»";considerFeatured([hit],sug,true)}}catch{}
 }
 /* Iconografía de autoridad para casos históricos homónimos.
    No convertir una semejanza de nombre en identidad del personaje. */
