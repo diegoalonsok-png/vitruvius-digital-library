@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 22,
+  "count": 23,
   "works": 14,
   "entries": [
     {
@@ -34,6 +34,16 @@
       "path": "data/classics-corpus/apuleius-metamorphoses-la.json",
       "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=la",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-poetics-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-poetics&lang=en",
+      "sourceDescription": "W. Hamilton Fyfe (1939), TEI Perseus CC BY-SA 4.0. 26 capítulos cotejables con griego, no línea por línea."
     },
     {
       "workId": "aristotle-poetics",
