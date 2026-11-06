@@ -1230,6 +1230,7 @@ function setupAutocomplete(){
    const translation=window.VitruviaHistoricalNames?.labels(person);
    const subtitle=[person.period,translation?.latin?"Lat. "+translation.latin:"",translation?.greek?"Gr. "+translation.greek:""].filter(Boolean).join(" · ");
    const hit=option("is-entity is-historical",[node("span","sg-main",person.name),node("small","sg-historical-names",subtitle)],()=>choose(person.name));
+   hit.dataset.historical=person.id;
    hit.addEventListener("pointerenter",()=>previewHistorical(person));list.append(hit);
   }
   const remoteEntities=[...rem.entities].filter(e=>!matchedHistorical.has(norm(e.label)));
@@ -1305,7 +1306,9 @@ function setupAutocomplete(){
   remote=r||{entities:[],completions:[]};remoteFor=raw;if(document.activeElement===input)build();
  }
  const paint=()=>{options.forEach((b,i)=>b.setAttribute("aria-selected",String(i===index)));if(index>=0){input.setAttribute("aria-activedescendant",options[index].id);options[index].scrollIntoView({block:"nearest"});
-  const id=options[index].dataset.entity;if(id){const e=remote.entities.find(x=>x.id===id);if(e)preview(e)}}else input.removeAttribute("aria-activedescendant")};
+  const selected=options[index],historic=selected.dataset.historical;
+  if(historic){const person=S.people.find(x=>x.id===historic);if(person)previewHistorical(person)}
+  const id=selected.dataset.entity;if(id){const e=remote.entities.find(x=>x.id===id);if(e)preview(e)}}else input.removeAttribute("aria-activedescendant")};
  input.addEventListener("input",()=>{build();clearTimeout(timer);timer=setTimeout(fetchRemote,230)});
  input.addEventListener("focus",()=>{if(input.value.trim().length>=2){build();if(remoteFor!==input.value.trim())fetchRemote()}});
  input.addEventListener("keydown",e=>{
