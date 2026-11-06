@@ -55,6 +55,31 @@ try{
    assert.match(await p.locator('#classic-detail').innerText(),/Po[eé]tica|Περὶ ποιητικῆς|Poetics/i);
   }finally{await p.close()}
  });
+ await check('Full-text registry searches Catullus poetry, Lucretius and English translations',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>!!window.ClassicsCorpusSearch&&!!document.querySelector('#classic-query'),{timeout:20000});
+   const check=await p.evaluate(async()=>{
+    const api=window.ClassicsCorpusSearch;
+    const manifest=await api.registry();
+    const catullus=await api.search('Viuamus',{limit:24});
+    const lucretius=await api.search('Aeneadum',{limit:24});
+    const translation=await api.search('William Adlington',{limit:24});
+    return {
+     total:manifest.length,
+     catullus:catullus.find(r=>r.workId==='catullus-carmina'&&r.language==='la')?.link||'',
+     lucretius:lucretius.find(r=>r.workId==='lucretius'&&r.language==='la')?.link||'',
+     translation:translation.find(r=>r.workId==='apuleius-metamorphoses'&&r.language==='en')?.link||'',
+     diagnostics:api.diagnostics()
+    };
+   });
+   assert.equal(check.total,20,'Expected 20 actual hosted text variants in registry');
+   assert.match(check.catullus,/corpus\/catullus-carmina-la\.html\?q=/,'Catullus verses are not indexed');
+   assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
+   assert.match(check.translation,/classics-text-reader\.html\?work=apuleius-metamorphoses&lang=en/,'English version not indexed');
+   assert.equal(check.diagnostics.failed,0,'A registered text failed to load');
+  }finally{await p.close()}
+ });
  await check('Aristotle Poetics defaults to verified 68-page Greek original',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   try{
