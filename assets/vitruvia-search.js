@@ -546,6 +546,8 @@ function considerFeatured(rows,query,fromFallback=false){
  const picks=(rows||[]).filter(r=>r.link&&r.title&&(!window.VitruviaContextGuard||window.VitruviaContextGuard.allows(r,query,S.identifiedSubject))).map(r=>{
   const title=norm(r.title),exact=title===q||title===core.join(" ")||title.replace(/\s+/g,"")===core.join("");
   const {ratio,inTitle}=featureCoverage(core,r.title,r.excerpt||"");
+  // A book or article with the person's name before a subtitle is not the person.
+  if(r.type==="wikipedia"&&!exact&&/\s:\s/.test(r.title))return {row:r,weight:-100,covered:false};
   // Wikipedia describes the subject; a same-titled Open Library book is NOT the subject.
   const originBoost=r.type==="wikipedia"?180:r.type==="manuscript"?90:r.type==="passage"?35:
     r.type==="openlibrary"?-180:r.type==="article"?-45:r.type==="museum"?-35:0;
@@ -805,7 +807,7 @@ function display(rows,query,phase){
  const cards=S.cardCache||(S.cardCache=new Map());
  const cardFor=d=>{const key=S.lang+JSON.stringify(d);if(cards.has(key))return cards.get(key);const card=renderCard(d);markTerms(card,query);cards.set(key,card);if(cards.size>200)cards.delete(cards.keys().next().value);return card};
  const selectedManuscript=["all","site","concept","ai"].includes(S.mode)&&
-  !(guard?.isModernIdentity(S.identifiedSubject)&&!guard.explicitAncientContext(query))?
+  !(guard?.isModernIdentity(S.identifiedSubject)&&!guard.explicitAncientContext(query,S.identifiedSubject))?
   primaryManuscriptFor(query):null;
  if(selectedManuscript){
   const witness=liveManuscripts(query).find(r=>r.codexShelfmark===selectedManuscript.shelfmark&&
@@ -1080,7 +1082,8 @@ async function search(){
     excerpt:identity.description,fullExtract:identity.extract,
     meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
     rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
-    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityBirthYear:identity.birthYear,entityDescription:identity.authorityDescription||identity.description,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
+    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityBirthYear:identity.birthYear,
+    entityInceptionYear:identity.inceptionYear,entityPublicationYear:identity.publicationYear,entityDescription:identity.authorityDescription||identity.description,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
    }],identity};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
@@ -1151,7 +1154,7 @@ async function search(){
   if(value.identity){
    S.identifiedSubject=value.identity;
    if(window.VitruviaContextGuard?.isModernIdentity(value.identity)&&
-      !window.VitruviaContextGuard.explicitAncientContext(q))restoreFeature();
+      !window.VitruviaContextGuard.explicitAncientContext(q,value.identity))restoreFeature();
   }
   if(intent?.preface&&incoming.some(r=>r.type==="preface"))rows=rows.filter(r=>!r.prefacePlaceholder);
   rows.push(...incoming);
