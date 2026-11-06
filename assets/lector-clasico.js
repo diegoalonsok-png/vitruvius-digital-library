@@ -137,7 +137,11 @@ function render(){
   $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p>${LL?`<p class="lw-hint muted">Clic en una palabra: lema, morfología y glosa.</p>`:""}<div class="txt" lang="${L_}">${LL?LL.wrap(p.text,L_,marked):marked(p.text)}</div>`;
   if(LL)LL.attach($("original"))}
  const t=translationFor(p);
- $("translation").innerHTML=!work.translations.length?"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción de esta obra.</b><br>Se muestra solo el texto original, a la izquierda. Cuando se incorpore una traducción abierta, aparecerá en este visor.</p>":
+ const partial=work.translationCoverage==="partial-selected-chapters";
+ const absentPartial=partial&&transState==="ok"&&!t;
+ $("translation").innerHTML=absentPartial?
+  "<p class='lc-notr'><b>Este capítulo no está incluido en la selección inglesa disponible.</b><br>La traducción histórica de Fairfax Harrison (1918) reúne fragmentos de Catón ordenados por temas; no es una versión íntegra de los 162 capítulos. No corresponde asignarle aquí un pasaje de otro capítulo.</p><p><a target='_blank' rel='noopener noreferrer' href='https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html'>Consultar traducción inglesa externa más completa en LacusCurtius ↗</a></p>":
+  !work.translations.length?"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción de esta obra.</b><br>Se muestra solo el texto original, a la izquierda. Cuando se incorpore una traducción abierta, aparecerá en este visor.</p>":
   trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='lc-notr'>La traducción de la biblioteca no tiene un pasaje correspondiente a este locus. Pruebe con el locus anterior o el siguiente.</p>"):transState==="loading"?"<p class='muted'>Cargando la traducción… (las obras extensas, como la Naturalis historia, pueden tardar unos segundos)</p>":transState==="error"?"<p class='muted'>No se pudo descargar la traducción desde el repositorio de origen. Puede abrirla directamente en <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>GitHub · Perseus ↗</a>.</p>":"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción alineada de esta obra.</b><br>El archivo de origen existe, pero no puede ponerse en correspondencia con el texto. <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>Abrir el archivo TEI ↗</a></p>";
  $("toc").value=String(cur);
  const u=new URL(location.href);u.searchParams.set("loc",p.locus);if(query)u.searchParams.set("q",query);else u.searchParams.delete("q");history.replaceState(null,"",u);
@@ -182,7 +186,7 @@ async function openWork(id){
  $("status").textContent=orig.length+" pasajes · texto: "+srcName(work.original)+(work.translations.length?" · cargando traducción…":"");render();
  if(work.translations.length){
   transState="loading";
-  try{trans=parseTEI(await fetchText(work.translations[0].url));transState=trans.length?"ok":"empty";$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · "+srcName(work.translations[0].url)}
+  try{trans=parseTEI(await fetchText(work.translations[0].url));transState=trans.length?"ok":"empty";$("status").textContent=orig.length+" pasajes · traducción inglesa"+(work.translationCoverage==="partial-selected-chapters"?" parcial (Harrison 1918)":"")+": "+trans.length+" secciones · "+(work.translations[0].source||srcName(work.translations[0].url))}
   catch(e){transState="error";$("status").textContent+=" · no se pudo leer la traducción ("+e.message+")"}
   if(query)search();else render();
  }
