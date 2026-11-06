@@ -93,7 +93,7 @@ function parsePattern(src){const conds=[];for(const part of src.split(/[\s,]+/).
 function tagMatches(tag,conds){const t=normTag(tag);return conds.every(([pos,vals])=>vals.includes(t[pos]))}
 
 /* ---------- Analizador de consultas ---------- */
-/* Gramática: palabra · "frase exacta" · @lema · comod*n · t?xis · ~fuzzy · raiz: · [pos=verb mood=ptc case=gen] · A ..3 B (orden, hasta 3 palabras) · A NEAR/5 B (sin orden) */
+/* Gramática: palabra · "frase exacta" · @lema · comod*n · t?xis · ~fuzzy · prefijo: · [pos=verb mood=ptc case=gen] · A ..3 B (orden, hasta 3 palabras) · A NEAR/5 B (sin orden) */
 function parseQuery(q,mode){
  q=String(q||"").trim();const steps=[];let near=null;
  const re=/"([^"]+)"|\[([^\]]+)\]|NEAR\/(\d+)|~(\d+)(?=\s)|\.\.(\d+)|(\S+)/g;let m;let gap=mode==="frase"||mode==="sintaxis"?0:null;
@@ -109,7 +109,7 @@ function parseQuery(q,mode){
 }
 function mkTerm(w){
  if(/^@/.test(w))return{type:"lemma",v:w.slice(1)};
- if(/^raiz:|^raíz:|^root:/i.test(w))return{type:"wild",v:w.replace(/^[^:]+:/,"")+"*"};
+ if(/^(prefijo|prefix|raiz|raíz|root):/i.test(w))return{type:"wild",v:w.replace(/^[^:]+:/,"")+"*"}; /* ortográfico: comienzo de palabra */
  if(/^~/.test(w))return{type:"fuzzy",v:w.slice(1)};
  if(/[*?]/.test(w))return{type:"wild",v:w};
  return{type:"form",v:w};
@@ -227,6 +227,8 @@ async function run(push=true){
  try{
   if(/^(=|sem:)/i.test(q))return renderSemantic(q.replace(/^(=|sem:)\s*/i,""));
   if(/^#/.test(q))return renderTheme(q.slice(1));
+  if(/^(pie|ie|ide):/i.test(q))return renderPIE(q.replace(/^[^:]+:\s*/,""));
+  if(/^(concepto|concept|sentido):/i.test(q))return renderConcept(q.replace(/^[^:]+:\s*/,""));
   if(/^(√|raiz_he:|raíz_he:)/i.test(q))return renderHebrewRoot(q.replace(/^(√|raiz_he:|raíz_he:)\s*/i,""));
   if(S.mode==="sententiae")return renderSententiae(q);
   if(S.mode==="etimologia")return renderEtymSearch(q);
@@ -289,6 +291,7 @@ function hitCard(D,h){
  if(p[0]==="vitruvius")actions.append(el("button",{type:"button",onclick:e=>showApparatus(p[1],full,e.target)},"Aparato y colación"));
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
  actions.append(el("button",{type:"button",onclick:()=>addToNotebook({cite,text,lang:D.l,tr:p[4]||""})},"Al cuaderno exegético"));
+ actions.append(el("button",{type:"button",onclick:e=>{const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(S.q)u.searchParams.set("q",S.q);copy(u.toString(),e.target)}},"Enlace al locus"));
  actions.append(el("button",{type:"button",onclick:e=>copy(`${cite}: «${text.slice(k.a,k.b).replace(/\s+/g," ").trim()}» — ${w.author}, ${w.title}. ${w.edition||""}. Vitruvia Lexicon, ${PAGE}`,e.target)},"Copiar cita"));
  card.append(actions);
  if(p[0]==="vitruvius"){const v=el("p",{class:"lx-vlinks"},"Vitruvio "+p[1]+": ");vitruvianLinks(p[1]).forEach(([t,u],i)=>{if(i)v.append(" · ");v.append(el("a",{href:u},t))});card.append(v)}
@@ -362,6 +365,7 @@ async function renderEntry(D,term,res){
  renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
  /* Aside: frecuencia, colocaciones, exportación */
  const total=lemmas.reduce((a,lem)=>a+[...(D.lemmaForms.get(lem)||[])].reduce((s,f)=>s+(D.freq.get(f)||0),0),0);
+ if(res.hits.length){const first=res.hits.slice().sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i)[0];const fp=D.corpus.passages[first.i];aside.append(el("h3",{},"Primera atestiguación hallada"),el("p",{},el("b",{},citeOf(D,fp,first.spans[0][0])),` · ${work(D,fp[0]).author}, ${DATING[fp[0]]||""}`),el("p",{class:"lx-small"},"Es la más antigua entre las obras del corpus local, no la primera aparición histórica absoluta de la palabra."))}
  aside.append(el("h3",{},"Datos del corpus"),el("p",{},`Ocurrencias de la forma: ${(D.freq.get(key)||0).toLocaleString("es")}`),el("p",{},`Ocurrencias del lema: ${total.toLocaleString("es")}`),el("p",{},`Frecuencia relativa: ${(total/D.tokens*10000).toFixed(2)} por 10 000 palabras`));
  if(res.hits.length){aside.append(el("h3",{},"Colocaciones"));aside.append(collocationList(D,res.hits,4,12))}
  const entry={lemma:lemmas.map(lemmaDisplay),form:term.v,lang:D.l,headword:lemmas.map(l=>lemmaInfo(D,l).h||"").filter(Boolean),senses:lemmas.map(l=>(lemmaInfo(D,l).g||"").split(/;\s*/).filter(Boolean)),morphology:an.filter(a=>a.length>2).map(a=>({lemma:lemmaDisplay(a[0]),tag:a[1],analysis:decodeTag(a[1])})),etymology:curated||null,frequency:{form:D.freq.get(key)||0,lemma:total,corpusTokens:D.tokens},citations:res.hits.slice(0,50).map(h=>{const p=D.corpus.passages[h.i];return{cite:citeOf(D,p,h.spans[0][0]),author:work(D,p[0]).author,work:work(D,p[0]).title,text:p[2].slice(kwic(p[2],h.spans).a,kwic(p[2],h.spans).b)}}),source:D.forms.sources,url:PAGE+"?q="+encodeURIComponent(term.v)};
@@ -381,7 +385,7 @@ function etymCard(e){
  row("Etimología",e.etym);row("Raíz",el("span",{class:"lx-root"},e.root||""));
  if(e.old?.length)row("Latín arcaico / formas antiguas",e.old.map(o=>el("span",{class:"lx-chip"},el("b",{},o.f)," — ",o.src)));
  const eq=(arr,l)=>arr.map(x=>el("span",{class:"lx-chip"},el("button",{type:"button",class:"lx-formlink",lang:l,onclick:()=>{$("#lx-q").value=x.w;S.mode=l==="he"?"etimologia":"palabra";S.lang=l==="he"?"auto":l;$("#lx-lang").value=S.lang;renderTabs();run()}},x.w),x.tr?el("i",{}," "+x.tr):null," — ",x.g,x.n?el("small",{}," ",x.n):null));
- if(e.gr?.length)row("Griego antiguo",eq(e.gr,"grc"));if(e.la?.length)row("Latín",eq(e.la,"la"));if(e.he?.length)row("Hebreo bíblico",eq(e.he,"he"));
+ if(e.gr?.length)row("Griego antiguo",eq(e.gr,"grc"));if(e.la?.length)row("Latín",eq(e.la,"la"));if(e.he?.length)row(e.he.some(x=>/préstamo/i.test(x.g+" "+(x.n||"")))?"Hebreo bíblico · equivalencia o préstamo (véase cada nota)":"Hebreo bíblico · equivalencia de traducción, no parentesco",eq(e.he,"he"));
  if(e.cog?.length)row("Cognados",e.cog.join(" · "));
  sec.append(dl);
  if(e.loci?.length){sec.append(el("h4",{},"Loci"));for(const L of e.loci){const b=el("blockquote",{class:"lx-locus"},el("p",{lang:L.lang||e.l,dir:L.lang==="he"?"rtl":null,class:L.lang==="he"?"lx-he":""},L.t),L.tr?el("p",{class:"lx-tr"},L.tr):null);(L.par||[]).forEach(x=>b.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.lang==="grc"?"LXX / griego: ":"Vulgata / latín: "),x.t)));b.append(el("cite",{},L.c));sec.append(b)}}
@@ -570,6 +574,54 @@ function renderQueryBuilder(){
  host.append(pre,el("p",{class:"explain"},"El análisis morfológico automático cubre el griego (Celano, AGDT). En latín el constructor combina palabras y lemas con distancias; los rasgos morfológicos latinos no están disponibles en el índice actual."));
  upd();
 }
+
+/* ---------- Fase I · raíz etimológica (pie:*dem-), concepto y locus directo ---------- */
+function rootKey(r){return fold(String(r||"").replace(/^\*/,"").replace(/[«(].*$/,"").trim()).replace(/[-‐]/g,"")}
+async function renderPIE(rootIn){
+ const rk=rootKey(rootIn);const E=S.etym?.entries||[];
+ const fam=E.filter(e=>e.root&&e.root.split(/\s*\+\s*|\s+y\s+/).some(r=>rootKey(r.replace(/^¿|\?.*$/g,""))===rk));
+ const box=$("#lx-entry");box.hidden=false;
+ box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · RADIX INDOEUROPAEA"),el("h2",{},"*"+rootIn.replace(/^\*/,"")),el("p",{class:"article-byline"},fam.length?`${fam.length} ficha${fam.length===1?"":"s"} del Etymologicum remiten a esta raíz reconstruida.`:"Ninguna ficha editorial remite a esta raíz.")));
+ const list=$("#lx-results");list.replaceChildren();$("#lx-side-extra").replaceChildren();
+ if(fam.length){const dl=el("dl",{class:"lx-dl"});for(const lg of ["la","grc"]){const xs=fam.filter(e=>e.l===lg);if(!xs.length)continue;const dd=el("dd",{});xs.forEach((e,i)=>{if(i)dd.append(" · ");dd.append(el("button",{type:"button",class:"lx-formlink",lang:lg,onclick:()=>{$("#lx-q").value=e.lemma;S.mode="palabra";S.lang=lg;$("#lx-lang").value=lg;renderTabs();run()}},e.lemma),el("small",{}," "+(e.sens?.[0]||"").slice(0,60)))});dl.append(el("dt",{},lg==="la"?"Latín":"Griego"),dd)}
+  const cogs=[...new Set(fam.flatMap(e=>e.cog||[]))];if(cogs.length)dl.append(el("dt",{},"Cognados en otras lenguas"),el("dd",{},cogs.join(" · ")));box.append(dl)}
+ box.append(el("p",{class:"article-note"},"Las raíces protoindoeuropeas son reconstrucciones comparativas, no formas atestiguadas. Se distinguen aquí de la búsqueda ortográfica por comienzo de palabra (prefijo:aedi)."));
+ const sec=el("section",{class:"lx-tree-wrap"},el("h3",{},"Descendientes de la raíz (Wiktionary)"));box.append(sec);
+ try{const title="Reconstruction:Proto-Indo-European/"+rootIn.replace(/^\*/,"");const d=await wkPage(title);const nodes=d&&wkSection(d,"Proto-Indo-European");
+  if(!nodes){sec.append(el("p",{class:"lx-small"},"Wiktionary no tiene página para esta reconstrucción."))}
+  else{const gl=wkGloss(nodes);if(gl)sec.append(el("p",{},"Significado reconstruido: «",gl,"»"));const ds=wkDescendants(nodes);sec.append(ds.length?el("ul",{class:"lx-tree-desc-list"},ds.map(x=>el("li",{},x))):el("p",{class:"lx-small"},"Sin lista de descendientes."));sec.append(el("p",{class:"article-note"},el("a",{href:"https://en.wiktionary.org/wiki/"+encodeURIComponent(title),target:"_blank",rel:"noopener noreferrer"},"Wiktionary, "+title)," · CC BY-SA 4.0"))}}
+ catch(err){sec.append(el("p",{class:"lx-small"},"No se pudo consultar Wiktionary ("+err.message+")."))}
+ setState(`Raíz *${rootIn.replace(/^\*/,"")}: ${fam.length} ficha${fam.length===1?"":"s"} editorial${fam.length===1?"":"es"} y descendientes de Wiktionary.`);
+}
+/* Búsqueda por concepto (multilingüe inversa): concepto:justicia · concepto:house */
+async function renderConcept(word){
+ const k=fold(word).trim();const E=S.etym?.entries||[];const re=new RegExp("(^|[^\\p{L}])"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?![\\p{L}])","u");
+ const cur=E.filter(e=>[...(e.sens||[]),...(e.gr||[]).map(x=>x.g),...(e.la||[]).map(x=>x.g),...(e.he||[]).map(x=>x.g)].some(t=>re.test(fold(t))));
+ const [La,G]=await Promise.all([lang("la",true),lang("grc",true)]);
+ const glossHits=D=>{const out=[];for(const [lem,info] of Object.entries(D.forms.lemmas)){if(!info.g)continue;const senses=info.g.split(/;\s*/);const i=senses.findIndex(s=>re.test(fold(s)));if(i<0)continue;const freq=[...(D.lemmaForms.get(lem)||[])].reduce((a,f)=>a+(D.freq.get(f)||0),0);if(!freq)continue;out.push({lem,sense:senses[i],rank:i,freq})}return out.sort((a,b)=>a.rank-b.rank||b.freq-a.freq).slice(0,24)};
+ const lh=glossHits(La),gh=glossHits(G);
+ const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · CONCEPTUS"),el("h2",{},word),el("p",{class:"article-byline"},"Lemas antiguos cuyo significado registrado incluye este concepto. Las acepciones del Etymologicum están en castellano; las del Lewis & Short y el LSJ, en inglés: para el diccionario conviene buscar también el término inglés (concepto:justice).")));
+ const list=$("#lx-results");list.replaceChildren();$("#lx-side-extra").replaceChildren();
+ if(cur.length){list.append(el("h3",{class:"lx-group-h"},`Etymologicum · ${cur.length} ficha${cur.length===1?"":"s"}`));cur.forEach(e=>list.append(etymResult(e)))}
+ for(const [D,arr,label] of [[La,lh,"Latín · Lewis & Short"],[G,gh,"Griego · LSJ"]]){
+  list.append(el("h3",{class:"lx-group-h"},`${label} · ${arr.length} lema${arr.length===1?"":"s"}`));
+  const tb=el("table",{class:"lx-table"},el("thead",{},el("tr",{},el("th",{},"Lema"),el("th",{},"Acepción"),el("th",{},"N.º de acepción"),el("th",{},"Frecuencia"))));const body=el("tbody");tb.append(body);
+  arr.forEach(x=>body.append(el("tr",{},el("td",{lang:D.l},el("button",{type:"button",class:"lx-formlink",onclick:()=>{$("#lx-q").value=lemmaDisplay(x.lem);S.mode="palabra";S.lang=D.l;$("#lx-lang").value=D.l;renderTabs();run()}},lemmaDisplay(x.lem))),el("td",{},x.sense),el("td",{},String(x.rank+1)),el("td",{},String(x.freq)))));
+  list.append(arr.length?tb:el("p",{class:"lx-small"},"Sin acepciones coincidentes."));
+ }
+ setState(`Concepto «${word}»: ${cur.length} fichas editoriales, ${lh.length} lemas latinos y ${gh.length} griegos. Ordenados por posición de la acepción en el diccionario y por frecuencia en el corpus: la coincidencia de significado no implica parentesco etimológico.`);
+}
+/* Enlace permanente a un locus: vitruvia-lexicon.html?work=vitruvius&locus=1.2.1&q=symmetria */
+async function openLocus(workId,locus,q){
+ const l=["homer-iliad","homer-odyssey","plato-apology","aristotle-poetics","theophrastus-characters","epictetus-enchiridion"].includes(workId)?"grc":"la";
+ const D=await lang(l,true);let i=D.corpus.passages.findIndex(p=>p[0]===workId&&p[1]===locus);
+ if(i<0){const [b,v]=locus.split(".");i=D.corpus.passages.findIndex((p,j)=>{if(p[0]!==workId)return false;const nx=D.corpus.passages[j+1];return p[1].split(".")[0]===b&&+p[1].split(".").pop()<=+v&&(!nx||nx[0]!==workId||nx[1].split(".")[0]!==b||+nx[1].split(".").pop()>+v)})}
+ if(i<0){setState(`No se encontró el locus ${locus} en el corpus local.`);return}
+ const p=D.corpus.passages[i];const spans=[];if(q){const ks=new Set(fold(q).split(/\s+/));for(const m of p[2].matchAll(TOKEN))if(ks.has(fold(m[0])))spans.push([m.index,m.index+m[0].length])}
+ const card=hitCard(D,{i,spans:spans.length?spans:[[0,0]],tok:0});card.classList.add("lx-locus-direct");const full=card.querySelector(".lx-full");full.hidden=false;
+ const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(p[2],spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));
+ $("#lx-results").prepend(el("h3",{class:"lx-group-h"},"Locus citado"),card);card.scrollIntoView({behavior:"smooth",block:"center"});
+}
 /* ---------- Árbol etimológico (Wiktionary, en el navegador del lector) ----------
    Para cualquier palabra latina, griega, castellana, inglesa, francesa o alemana:
    localiza la sección de la lengua, lee su párrafo «Etymology», separa ascendientes
@@ -709,6 +761,7 @@ function etymResult(e){
  const a=el("div",{class:"actions"},el("button",{type:"button",onclick:()=>{$("#lx-q").value=e.lemma;S.mode="palabra";S.lang=e.l;$("#lx-lang").value=e.l;renderTabs();run()}},"Abrir ficha completa"));card.append(a);return card;
 }
 async function renderEtymSearch(q){
+ if(/^\*/.test(q.trim()))return renderPIE(q.trim());
  const k=fold(q);const he=HEBREW.test(q);if(he)return renderHebrew(q);
  const ents=(S.etym?.entries||[]).filter(e=>[e.lemma,e.head,e.tr,e.root,e.etym,...(e.gr||[]).map(x=>x.w),...(e.la||[]).map(x=>x.w),...(e.old||[]).map(x=>x.f),...(e.cog||[])].some(x=>x&&fold(x).includes(k))||(e.tr&&fold(e.tr).includes(k)));
  setState(`${ents.length} ficha${ents.length===1?"":"s"} etimológica${ents.length===1?"":"s"} con «${q}» (lema, raíz, formas arcaicas, equivalentes o cognados).`);
@@ -1003,7 +1056,8 @@ async function init(){
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);
  if(p.get("mode")&&MODES[p.get("mode")])S.mode=p.get("mode");if(p.get("lang"))S.lang=p.get("lang");$("#lx-lang").value=S.lang;if(p.get("work"))S.work=p.get("work");renderTabs();
- if(p.get("q")){$("#lx-q").value=p.get("q");run(false)}else if(S.mode==="sententiae")run(false);else setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
+ if(p.get("work")&&p.get("locus")){if(p.get("q"))$("#lx-q").value=p.get("q");(p.get("q")?run(false):Promise.resolve()).then(()=>openLocus(p.get("work"),p.get("locus"),p.get("q")||""));}
+ else if(p.get("q")){$("#lx-q").value=p.get("q");run(false)}else if(S.mode==="sententiae")run(false);else setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
 }
 function renderDaily(){
  const s=S.sent?.sententiae;if(!s?.length)return;const d=new Date();const i=(d.getFullYear()*372+d.getMonth()*31+d.getDate())%s.length;const x=s[i];
