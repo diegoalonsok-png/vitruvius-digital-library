@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 26,
+    "indexedTextVersions": 27,
     "indexedDistinctWorks": 14,
     "manuscriptWitnesses": 23
   },
@@ -2021,9 +2021,11 @@
       "dating": "tradición arcaica; fijación y datación debatidas",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/homer-odyssey-en.json",
         "data/classics-corpus/homer-odyssey-grc.json"
       ],
       "localPDF": null,
