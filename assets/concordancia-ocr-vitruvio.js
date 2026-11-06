@@ -79,7 +79,7 @@ async function run(term){
 form.addEventListener("submit",e=>{
  e.preventDefault();
  const term=query.value.trim();
- if(term.length<3||term.length>90){status.textContent="Ingresá al menos tres caracteres (máximo 90).";return;}
+ if(term.length<3||term.length>90){status.textContent="Introduce al menos tres caracteres (máximo 90).";return;}
  const u=new URL(location.href);u.searchParams.set("q",term);history.replaceState(null,"",u);
  run(term);
 });
