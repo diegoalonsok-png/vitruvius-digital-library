@@ -282,3 +282,22 @@ document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
   showPage(n,record.text,hits);
  }catch(err){if(note)note.textContent=err.message;}
 });
+
+// Incoming bibliographic search results can open the exact OCR page.
+const historicalParams=new URLSearchParams(location.search);
+const deepEdition=historicalParams.get("ed");
+const deepQuery=historicalParams.get("q");
+const deepPage=Number(historicalParams.get("page"));
+if(deepEdition&&sources[deepEdition]){
+ document.querySelector("#ed").value=deepEdition;
+ source=sources[deepEdition];
+ selectHistoricalEdition();
+}
+if(deepQuery&&deepQuery.length<=180){
+ query.value=deepQuery;
+ form.requestSubmit();
+}else if(Number.isInteger(deepPage)&&deepPage>0&&deepPage<1000&&
+        deepEdition&&sources[deepEdition]){
+ const input=document.querySelector("#pdf-page-number");
+ if(input){input.value=String(deepPage);document.querySelector("#goto-page")?.requestSubmit();}
+}
