@@ -37,6 +37,18 @@ try{
    }finally{fs.closeSync(fd)}
   }
  });
+ await check('Apuleius full sources remain intact: 351 Latin, 114 English, 312 Spanish units; translations explicitly unaligned',async()=>{
+  const root='data/classics-corpus/apuleius-metamorphoses-';
+  const originals=JSON.parse(fs.readFileSync(root+'la.json','utf8'));
+  const english=JSON.parse(fs.readFileSync(root+'en.json','utf8'));
+  const spanish=JSON.parse(fs.readFileSync(root+'es.json','utf8'));
+  assert.equal(originals.passages.length,351);
+  assert.equal(english.passages.length,114);
+  assert.equal(spanish.passages.length,312);
+  assert.equal(english.alignmentStatus,'unaligned');
+  assert.equal(spanish.alignmentStatus,'unaligned');
+  assert.match(spanish.passages.at(-1).locus,/t312/);
+ });
  await check('Vitruvia loads the full classical catalogue (≥196 works) and searches Spanish aliases',async()=>{
   const p=await open('vitruvia.html?q=Po%C3%A9tica&mode=site');
   try{
