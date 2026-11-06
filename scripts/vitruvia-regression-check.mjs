@@ -9,6 +9,7 @@ const sourceFile=name=>readFileSync(new URL("../"+name,import.meta.url),"utf8");
 const modules=[
  "assets/vitruvia-image-engine-v2.js",
  "assets/vitruvia-entity-resolver.js",
+ "assets/vitruvia-context-guard.js",
  "assets/vitruvia-search.js",
  "assets/vitruvia-article.js",
  "assets/vitruvia-reading.js",
@@ -80,6 +81,45 @@ assert.match(images,/generator:"categorymembers"/,"Topic image collections not w
 assert.match(images,/dialog\.showModal\(\)/,"Large-image viewer absent");
 assert.match(images,/items\.slice\(0,150\)/,"Bulk gallery limit is missing");
 assert.match(images,/info\.extmetadata\?\.LicenseShortName/,"Image licensing metadata absent");
+const guardWindow={};
+new Function("window",sourceFile("assets/vitruvia-context-guard.js"))(guardWindow);
+const contextGuard=guardWindow.VitruviaContextGuard;
+const peron={kind:"person",canonical:"Juan Domingo Perón",birthYear:1895};
+const classicalRow={type:"book",title:"Hechos de Juan",author:"Tradición apócrifa",aliases:["Acts of John"]};
+const codexRow={type:"manuscript",title:"Codex de los Hechos de Juan",author:"Biblioteca antigua"};
+const modernBook={type:"openlibrary",title:"Juan Domingo Perón: A History"};
+const ordinaryWiki={type:"wikipedia",title:"Juan Domingo Perón"};
+assert.equal(contextGuard.exactSubjectMatch("Juan Domingo Perón",classicalRow),false,
+ "A shared first name is not a documentary identity match");
+assert.equal(contextGuard.allows(classicalRow,"Juan Domingo Peron"),false,
+ "Multiword modern name must not admit an unrelated ancient text");
+assert.deepEqual(contextGuard.filter([classicalRow,codexRow,modernBook,ordinaryWiki],"Juan Domingo Perón",peron),
+ [modernBook,ordinaryWiki],"Modern identity should retain modern books and encyclopedia, not ancient records");
+assert.equal(contextGuard.allows(classicalRow,"Juan Domingo Perón",null),false,
+ "Ancient records must be rejected before asynchronous Wikidata identity lookup");
+assert.equal(contextGuard.allows({type:"book",title:"Hechos de Juan",author:"Anónimo"},"Hechos de Juan"),true,
+ "An ancient work queried by its full title should remain findable");
+assert.equal(contextGuard.allows({type:"book",title:"De architectura",author:"Vitruvio"},"Vitruvio"),true,
+ "Classical authors must remain searchable");
+assert.equal(contextGuard.allows({type:"passage",title:"Caesar, De bello Gallico",exactTextMatch:true,latin:"Gallia est omnis divisa"},"Gallia"),true,
+ "Exact ancient-language passage matches must remain available");
+assert.equal(contextGuard.allows({type:"apparatus",title:"De bello Gallico",excerpt:"Gallia, variantes textuales"},"Gallia"),true,
+ "Real lexical evidence in a critical apparatus must remain findable");
+assert.equal(contextGuard.allows(classicalRow,"Isaac Newton",{kind:"person",canonical:"Isaac Newton",birthYear:1643}),false,
+ "A different modern historical figure must not inherit classical material");
+assert.equal(contextGuard.allows(classicalRow,"Romano Prodi",{kind:"person",canonical:"Romano Prodi",birthYear:1939}),false,
+ "A modern person's proper name must not count as an Ancient Rome query");
+assert.equal(contextGuard.allows(classicalRow,"Juan Domingo Perón y Roma antigua",peron),true,
+ "An explicit comparative historical query is allowed");
+assert.equal(contextGuard.allows(classicalRow,"iPhone 15",{kind:"topic",canonical:"iPhone 15",inceptionYear:2023}),false,
+ "Modern technology must not inherit ancient codices");
+assert.ok(vitruviaHTML.indexOf("assets/vitruvia-context-guard.js")>=0&&
+ vitruviaHTML.indexOf("assets/vitruvia-context-guard.js")<vitruviaHTML.indexOf("assets/vitruvia-search.js"),
+ "Classical-context gate must load before the search engine");
+assert.match(search,/guard\.filter\(rows,query,S\.identifiedSubject\)/,
+ "The ancient-context gate must run before search results reach article and documentary cards");
+console.log("✓ Modern/classical context gate: named people, modern works, original-language passages, comparison queries");
+
 assert.ok(vitruviaHTML.includes("id=\"featured-link\""));
 const css=sourceFile("assets/vitruvia-reading.css");
 assert.ok(css.includes("Fix: the feature CTA was dark-on-dark"));
