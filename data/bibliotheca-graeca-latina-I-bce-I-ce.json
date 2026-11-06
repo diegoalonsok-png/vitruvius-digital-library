@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-04",
+  "updated": "2026-11-06",
   "title": "Bibliotheca Graeca et Latina · Repertorium Antiquitatis",
   "scope": "Repertorio de obras griegas y latinas, de la Antigüedad arcaica a la tardía. Distingue la consulta local del descubrimiento externo, las traducciones y los testimonios manuscritos.",
   "method": "No equiparar ficha bibliográfica, transcripción original, edición, traducción, manuscrito o PDF. Las obras pendientes tienen enlaces de localización, no visores ficticios.",
@@ -8121,7 +8121,7 @@
         "Handbook of Epictetus"
       ],
       "translation": {
-        "status": "Esta ficha incorpora texto griego de la edición histórica de 1870. No hay una traducción española o inglesa cotejada en la plataforma."
+        "status": "Griego editado y traducción inglesa histórica de Thomas Wentworth Higginson (1890), 53 capítulos, ambos alojados y disponibles en lector; comparación por capítulo, no alineación frase a frase. Castellano/francés pendientes."
       },
       "manuscript": {
         "manifest": null,
@@ -8148,7 +8148,8 @@
         "perseus": "https://www.perseus.tufts.edu/hopper/"
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/epictetus-enchiridion-grc.json"
+        "grc": "data/classics-corpus/epictetus-enchiridion-grc.json",
+        "en": "data/classics-corpus/epictetus-enchiridion-en.json"
       },
       "localHtml": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc",
       "localEdition": {
