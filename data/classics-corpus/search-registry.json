@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 29,
+  "count": 30,
   "works": 14,
   "entries": [
     {
@@ -134,6 +134,16 @@
       "path": "data/classics-corpus/epictetus-enchiridion-grc.json",
       "reader": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/homer-iliad-en.json",
+      "reader": "classics-text-reader.html?work=homer-iliad&lang=en",
+      "sourceDescription": "Samuel Butler 1898, revisión Perseus; 24 cantos y 190 tarjetas. Cotejo solo por canto; subdivisiones de verso no equivalen automáticamente al original."
     },
     {
       "workId": "homer-iliad",

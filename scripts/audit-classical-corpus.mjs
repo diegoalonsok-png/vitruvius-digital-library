@@ -113,6 +113,22 @@ assert.equal(catullusEn.alignmentStatus,"work",
 assert(/Smithers/.test(catullusEn.attribution)&&/1894/.test(catullusEn.attribution),
  "Catullus translator and edition missing");
 
+// Iliad: preserve all 24 books and indexed English cards without false line alignment.
+const iliadGreek=read("data/classics-corpus/homer-iliad-grc.json");
+const iliadEnglish=read("data/classics-corpus/homer-iliad-en.json");
+const iliadEnglishBooks=new Set(iliadEnglish.passages.map(p=>Number(p.locus.split(".")[0])));
+const iliadGreekBooks=new Set(iliadGreek.passages.map(p=>Number(p.locus.split(".")[0])));
+assert.equal(iliadEnglish.passages.length,190,"Iliad expected 190 English TEI cards");
+assert.deepEqual([...iliadEnglishBooks].sort((a,b)=>a-b),
+ Array.from({length:24},(_,i)=>i+1),"Iliad English must cover books 1–24");
+assert.deepEqual([...iliadGreekBooks].sort((a,b)=>a-b),
+ Array.from({length:24},(_,i)=>i+1),"Greek Iliad must cover books 1–24");
+assert.equal(iliadEnglish.alignmentStatus,"book","Do not claim automatic verse alignment");
+assert(iliadEnglish.passages.every(p=>typeof p.text==="string"&&p.text.length>60),
+ "Iliad translation has empty/truncated card");
+assert(/Butler/.test(iliadEnglish.attribution)&&/Perseus/.test(iliadEnglish.attribution),
+ "Iliad translation lacks academic source attribution");
+
 const corpusJson=readdirSync(pathOf("data/classics-corpus")).filter(p=>/-(?:grc|la|es|en|fr|it|de|pt)\.json$/.test(p));
 for(const file of corpusJson)assert(unique.has("data/classics-corpus/"+file),"Unindexed classical corpus asset: "+file);
 const htmlFiles=readdirSync(pathOf("corpus")).filter(p=>p.endsWith(".html"));

@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 29,
+    "indexedTextVersions": 30,
     "indexedDistinctWorks": 14,
     "manuscriptWitnesses": 23
   },
@@ -1996,9 +1996,11 @@
       "dating": "tradición arcaica; fijación y datación debatidas",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/homer-iliad-en.json",
         "data/classics-corpus/homer-iliad-grc.json"
       ],
       "localPDF": null,
