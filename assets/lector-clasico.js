@@ -218,6 +218,19 @@ async function corpusSearch(){
  if($("corpus-search")){$("corpus-search").onsubmit=e=>{e.preventDefault();corpusSearch()};$("cstop").onclick=()=>{corpusRun++;$("cstop").hidden=true}}
  if(params.get("cq")&&$("cq")&&!params.get("obra")){if(params.get("extra")==="1")$("f-extra").checked=true;if(params.get("filter"))$("filter").value=params.get("filter");renderIndex();$("cq").value=params.get("cq");setTimeout(corpusSearch,50)}
  $("print").onclick=()=>window.print(); // «Guardar como PDF» en el diálogo de impresión
+ // Descarga de la obra completa generada en el navegador (no ocupa espacio en el repositorio):
+ // original y, si existe, traducción alineada por pasaje, con la fuente y la licencia.
+ const fileBase=()=>(work.author+" - "+work.title).normalize("NFD").replace(/\p{M}/gu,"").replace(/[^\w\- ]+/g,"").trim().replace(/\s+/g,"_").slice(0,80);
+ const srcLine=()=>{const s=/latin_text_latin_library/.test(work.original)?"The Latin Library (dominio público)":/First1KGreek/.test(work.original)?"Open Greek and Latin, First1KGreek (CC BY-SA 4.0)":"Perseus Digital Library (CC BY-SA 4.0)";return "Texto: "+s+(work.translations.length&&trans.length?" · Traducción inglesa: "+(/First1KGreek/.test(work.translations[0].url)?"Open Greek and Latin":"Perseus Digital Library")+" (CC BY-SA 4.0)":"")+" · "+(work.urn||"")+" · Generado en Vitruvius Digital Library el "+new Date().toLocaleDateString("es")};
+ const save=(name,text,type)=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},800)};
+ const dl=(id,label,fn)=>{if($(id))return;const b=document.createElement("button");b.type="button";b.id=id;b.textContent=label;b.onclick=fn;$("print").after(b)};
+ dl("dl-txt","Descargar TXT",()=>{if(!orig.length)return;const L=[work.author+" · "+work.title,srcLine(),""];
+  for(const p of orig){L.push("["+p.locus+"]",p.text);const t=trans.length?translationFor(p):null;if(t?.length)L.push("— "+t.map(x=>x.text).join(" "));L.push("")}
+  save(fileBase()+".txt",L.join("\n"),"text/plain;charset=utf-8")});
+ dl("dl-doc","Descargar Word",()=>{if(!orig.length)return;const lang=work.language==="grc"?"grc":"la";
+  const rows=orig.map(p=>{const t=trans.length?translationFor(p):null;return `<tr><td style="width:12%;vertical-align:top;font:bold 10pt Arial">${esc(p.locus)}</td><td lang="${lang}" style="width:44%;vertical-align:top;font:11pt Georgia">${esc(p.text).replace(/\n/g,"<br>")}</td><td lang="en" style="width:44%;vertical-align:top;font:11pt Georgia">${t?.length?esc(t.map(x=>x.text).join(" ")):""}</td></tr>`}).join("");
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>${esc(work.title)}</title></head><body><h1 style="font:20pt Georgia">${esc(work.author)} · <i>${esc(work.title)}</i></h1><p style="font:9pt Arial">${esc(srcLine())}</p><table border="1" cellpadding="6" style="border-collapse:collapse;width:100%"><tr><th>Locus</th><th>${lang==="grc"?"Griego":"Latín"}</th><th>${work.translations.length?"Traducción inglesa":""}</th></tr>${rows}</table></body></html>`;
+  save(fileBase()+".doc","﻿"+html,"application/msword")});
  $("cite").onclick=async()=>{
   const p=orig[cur];if(!p)return;
   const d=new Date().toLocaleDateString("es",{day:"numeric",month:"long",year:"numeric"});

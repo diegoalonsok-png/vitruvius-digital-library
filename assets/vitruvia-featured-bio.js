@@ -97,9 +97,19 @@
  }
 
  /* ---------- Datos ---------- */
- async function wikidataFor(row){
-  let u;try{u=new URL(row.link)}catch{return null}
-  if(!/\.wikipedia\.org$/.test(u.hostname)||!u.pathname.startsWith('/wiki/'))return null;
+ async function searchEntity(text){
+  if(!text||text.length<3)return null;
+  for(const l of [lang(),'en','es']){
+   const r=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbsearchentities',search:text,language:l,uselang:l,limit:'3',type:'item',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+   const id=r?.search?.[0]?.id;if(!id)continue;
+   const ent=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:id,props:'claims|labels',languages:'es|en|fr|la|grc|el',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+   if(ent?.entities?.[id])return ent.entities[id];
+  }
+  return null;
+ }
+ async function wikidataFor(row,q){
+  let u=null;try{u=new URL(row.link)}catch{}
+  if(!u||!/\.wikipedia\.org$/.test(u.hostname)||!u.pathname.startsWith('/wiki/'))return searchEntity(row.title||q).then(e=>e||searchEntity(q));
   const title=decodeURIComponent(u.pathname.slice(6));
   const pp=await fetch(`https://${u.hostname}/w/api.php?`+new URLSearchParams({action:'query',prop:'pageprops',ppprop:'wikibase_item',redirects:'1',titles:title,format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
   const id=Object.values(pp?.query?.pages||{})[0]?.pageprops?.wikibase_item;if(!id)return null;
@@ -129,6 +139,18 @@
   return people.find(p=>[p.name,...(p.aliases||[])].some(n=>fold(n)===k||fold(n).split(' de ')[0]===k||k.startsWith(fold(n).split(' de ')[0]+' ')))||null;
  };
 
+// Retrato de respaldo para personas sin imagen en Wikidata: busto, estatua, pintura, fresco, grabado o moneda en Commons.
+ async function commonsPortrait(ent,label){
+  const names=[...new Set([ent.labels?.en?.value,ent.labels?.la?.value,label].filter(Boolean))];
+  for(const n of names){
+   const q=`"${n}" (bust OR busto OR statue OR portrait OR painting OR fresco OR engraving OR mosaic OR coin OR herm) filetype:bitmap`;
+   const r=await fetch('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:q,srnamespace:'6',srlimit:'10',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+   const key=fold(n).split(/\s+/)[0];
+   const hit=(r?.query?.search||[]).map(x=>x.title.replace(/^File:/,'')).find(t=>fold(t).includes(key)&&!/\b(map|mapa|signature|firma|logo|diagram|coat of arms|stamp|sello)\b/i.test(t));
+   if(hit)return hit;
+  }
+  return null;
+ }
  /* ---------- Obras: libros, discos, películas, pinturas ---------- */
  const WORK_TYPES=new Set(['Q7725634','Q47461344','Q571','Q8261','Q49084','Q482994','Q134556','Q7366','Q105543609','Q11424','Q5398426','Q3305213','Q860861','Q838948','Q4502142','Q1004','Q725377','Q1259759','Q169930','Q208569','Q2188189']);
  async function renderWork(ent,row,my){
@@ -206,11 +228,11 @@
  let token=0,query='';
  window.addEventListener('vitruvia:search',e=>{query=String(e.detail?.query||'');token++;box.querySelector('.vfb')?.remove();box.querySelector('.vfb-math')?.remove()});
  window.addEventListener('vitruvia:featured-result',async e=>{
-  const d=e.detail||{};const row=d.row;if(!row||row.type!=='wikipedia')return;
+  const d=e.detail||{};const row=d.row;if(!row)return;
   const my=++token;
-  const ent=await wikidataFor(row).catch(()=>null);if(my!==token||!ent)return;
+  const ent=await wikidataFor(row,d.query||query).catch(()=>null);if(my!==token||!ent)return;
   const human=claims(ent,'P31').some(v=>v.id==='Q5');
-  if(!human){if(claims(ent,'P31').some(v=>WORK_TYPES.has(v.id)))await renderWork(ent,row,my);else await renderThing(ent,row,my);return}
+  if(!human){if(claims(ent,'P31').some(v=>WORK_TYPES.has(v.id)))await renderWork(ent,row,my);else if(row.type==='wikipedia')await renderThing(ent,row,my);return}
   const copy=box.querySelector('.featured-copy')||box;const title=document.getElementById('featured-title');
   const block=document.createElement('div');block.className='vfb';
   // Nombres en la lengua antigua: onomasticon del sitio y nombre nativo de Wikidata (griego antiguo o latín).
@@ -249,8 +271,10 @@
   const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`${esc(L('src'))} · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
   box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
   // Retrato oficial (Wikidata P18: fotografía, busto o pintura) en el espacio superior.
-  const img=claims(ent,'P18')[0];
-  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+' · retrato (Wikidata)',alt:label,group:'',kind:'',score:0,credit:'Wikimedia Commons · ficha, autor y licencia'}}}))}
+  let img=claims(ent,'P18')[0];
+  if(!img)img=await commonsPortrait(ent,label).catch(()=>null);
+  if(my!==token)return;
+  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(claims(ent,'P18')[0]?' · retrato (Wikidata)':' · busto o retrato (Wikimedia Commons)'),alt:label,group:'',kind:'',score:0,credit:'Wikimedia Commons · ficha, autor y licencia'}}}))}
   // Fórmula principal encima del retrato (matemáticos y científicos).
   const fig=document.getElementById('featured-documentary-visual');
   const target=fig&&!fig.hidden?fig:box;

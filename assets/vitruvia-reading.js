@@ -144,6 +144,8 @@
   options.addEventListener('toggle',()=>{if(options.open)palette.open=false});
  }
  document.getElementById('reading-font-reset').addEventListener('click',()=>{state={size:100,font:'original',italic:false,color:null,background:null};apply()});
+ // El botón de modo claro/oscuro manda: quita el fondo y el color de texto personalizados para que el tema se vea.
+ document.getElementById('theme')?.addEventListener('click',()=>{if(state.background||state.color){state.background=null;state.color=null;apply()}},true);
  document.addEventListener('click',event=>{
   if(options.open&&!options.contains(event.target))options.open=false;
   if(palette?.open&&!palette.contains(event.target))palette.open=false;
