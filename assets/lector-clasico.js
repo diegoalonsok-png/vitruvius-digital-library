@@ -237,7 +237,7 @@ async function corpusSearch(){
 }
 (async()=>{
  if(params.get("embed")==="1")document.documentElement.classList.add("lc-embed");
- [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261106-ampliado-v1").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
+ [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261106-en-translations-v1").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
  $("tab-codex").onclick=()=>setLeft("codex");$("tab-original").onclick=()=>setLeft("original");
  $("search").onsubmit=e=>{e.preventDefault();search()};
  $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};
