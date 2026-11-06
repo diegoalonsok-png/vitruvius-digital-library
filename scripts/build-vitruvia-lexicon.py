@@ -125,6 +125,10 @@ chunks = json.loads((ROOT / "data/vitruvius-chunks.json").read_text())["chunks"]
 for c in chunks:
     if c.get("edicion") == "V514" and c.get("texto"):
         add("vitruvius", c["locus"], c["texto"], None, c.get("traduccion") or None)
+# Las voces griegas que Vitruvio cita (τάξις, διάθεσις, οἰκονομία…) también se buscan desde el griego.
+GREEK_RE = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
+for row in [r for r in corpus["la"] if r[0] == "vitruvius" and GREEK_RE.search(r[2])]:
+    corpus["grc"].append(list(row))
 meta["vitruvius"] = {"edition": WORKS["vitruvius"][3], "license": "© Diego A. Kurilo, acceso abierto; cítese la edición V514 (DOI 10.5281/zenodo.23884757)",
                      "status": "Edición de lectura con aparato crítico selectivo"}
 
@@ -202,7 +206,7 @@ for lang in ("la", "grc"):
     rows = corpus[lang]
     data = {"schema": "vitruvia-lexicon-corpus-v1", "lang": lang,
             "note": "Pasajes de textos editados ya presentes en la Vitruvius Digital Library; no son transcripciones diplomáticas de códices.",
-            "works": {k: v for k, v in works_out.items() if v["lang"] == lang},
+            "works": {k: v for k, v in works_out.items() if v["lang"] == lang or (lang == "grc" and k == "vitruvius")},
             "passages": rows}
     (OUT / f"corpus-{lang}.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
     print(lang, len(rows), "pasajes", sum(len(r[2]) for r in rows), "caracteres")

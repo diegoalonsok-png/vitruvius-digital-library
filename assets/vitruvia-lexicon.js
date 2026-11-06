@@ -688,6 +688,16 @@ async function init(){
  $("#lx-order").addEventListener("change",()=>{if(S.result&&S.D){S.page=0;$("#lx-results").replaceChildren();$("#lx-side-extra").replaceChildren();if(S.mode==="sintaxis")renderCollocations(S.D,S.result);renderHits(S.D,S.result)}});
  ["#lx-variants","#lx-lemmatize"].forEach(id=>$(id).addEventListener("change",()=>{if(S.q)run()}));
  $("#lx-clear").addEventListener("click",()=>{$("#lx-q").value="";$("#lx-q").focus()});
+ /* Autocompletado de lemas y formas atestiguadas; atajo «/» para ir al buscador. */
+ {const dl=document.createElement("datalist");dl.id="lx-suggest";document.body.append(dl);$("#lx-q").setAttribute("list","lx-suggest");let timer=0;
+  $("#lx-q").addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(async()=>{const v=$("#lx-q").value.trim();if(v.length<2||/[\s"@\[*?~]/.test(v)){dl.replaceChildren();return}
+   const l=S.lang!=="auto"?S.lang:detectLang(v);if(l==="he"){dl.replaceChildren();return}const D=await lang(l,true);const k=fold(v);const out=new Set();
+   for(const e of (S.etym?.entries||[]))if(e.l===l&&fold(e.lemma).startsWith(k))out.add(e.lemma);
+   for(const lem of Object.keys(D.forms.lemmas)){if(out.size>=12)break;if(fold(lemmaDisplay(lem)).startsWith(k))out.add(lemmaDisplay(lem))}
+   if(out.size<4&&!GREEK.test(v)&&S.lang==="auto"){const G=await lang("grc",true);const tk=latinTranslitKey(v);for(const [t,fs] of transIndex(G)){if(out.size>=12)break;if(t.startsWith(tk))for(const f of fs){const a=analyses(G,f)[0];out.add(a?lemmaDisplay(a[0]):f)}}}
+   if(out.size<12&&D.l==="grc"&&!GREEK.test(v)){const tk=latinTranslitKey(v);for(const [t,fs] of transIndex(D)){if(out.size>=12)break;if(t.startsWith(tk))for(const f of fs){const a=analyses(D,f)[0];out.add(a?lemmaDisplay(a[0]):f)}}}
+   dl.replaceChildren(...[...out].slice(0,12).map(x=>el("option",{value:x})))},180)});
+  document.addEventListener("keydown",e=>{if(e.key==="/"&&!/input|textarea|select/i.test(document.activeElement?.tagName||"")){e.preventDefault();$("#lx-q").focus()}});}
  $("#lx-kb-toggle").addEventListener("click",e=>{const kb=$("#lx-kb");kb.hidden=!kb.hidden;e.currentTarget.setAttribute("aria-expanded",String(!kb.hidden));if(!kb.hidden&&!kb.childNodes.length)renderKeyboard(detectLang($("#lx-q").value)==="he"?"he":"grc")});
  $$(".suggestions [data-q]").forEach(b=>b.addEventListener("click",()=>{$("#lx-q").value=b.dataset.q;if(b.dataset.mode){S.mode=b.dataset.mode;renderTabs()}run();$("#results").scrollIntoView({behavior:"smooth",block:"start"})}));
  $$("[data-tool-mode]").forEach(a=>a.addEventListener("click",e=>{const m=a.dataset.toolMode;if(MODES[m]){e.preventDefault();S.mode=m;renderTabs();if(m==="sententiae")run();$("#lx-q").focus()}}));

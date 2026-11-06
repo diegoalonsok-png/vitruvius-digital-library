@@ -359,6 +359,8 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    panel.append(tr);
    if(l.forms.length>1){const f=document.createElement('p');f.className='vtp-note';f.textContent='Formas en Vitruvio: '+l.forms.slice(0,14).join(', ')+(l.forms.length>14?'…':'');panel.append(f)}
   }
+  /* Puente al Lexicon: etimología, morfología y pasajes en todo el corpus griego y latino. */
+  {const lx=document.createElement('div');lx.className='vtp-actions';const a=document.createElement('a');const w=lemmas[0].lemma||lemmas[0].token||q;a.href='vitruvia-lexicon.html?q='+encodeURIComponent(String(w).replace(/\d+$/,''))+'&mode=palabra';a.textContent='Vitruvia Lexicon · etimología, morfología y pasajes antiguos ↗';lx.append(a);panel.append(lx)}
   panel.hidden=false;
   const needles=[...new Set(lemmas.flatMap(l=>l.forms))];
   const passages=await lociFor(needles).catch(()=>[]);
