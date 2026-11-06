@@ -83,7 +83,7 @@ try{
    assert(matches.cicero.length>0,'Cicerón must remain a valid classical author search');
    await p.waitForTimeout(1400);
    const topPanel=await p.locator('#vitruvia-term-panel').innerText();
-   assert(!/autor u obra cl[aá]sica|hechos de juan|acts of john|per[oó]n:\\s*a history/i.test(topPanel),
+   assert(!/autor u obra cl[aá]sica|hechos de juan|acts of john|per[oó]n:\s*a history/i.test(topPanel),
     'The visible top dossier must not combine Perón with Acts of John or a modern book title');
   }finally{await p.close()}
  });
