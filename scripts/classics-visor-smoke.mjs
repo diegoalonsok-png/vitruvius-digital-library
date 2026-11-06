@@ -107,10 +107,11 @@ try{
    assert.match(await p.locator('#classic-frame-b').getAttribute('src'),/lang=es/);
    const spanishReader=p.frameLocator('#classic-frame-b');
    await spanishReader.locator('#toc button').first().waitFor({state:'attached',timeout:25000});
-   assert.equal(await spanishReader.locator('#toc button').count(),224,
-    'Metamorphoses must exclude the historical anthology preface, other writings and appendices');
-   assert.match(await spanishReader.locator('#toc button').first().innerText(),/t22/);
-   assert.match(await spanishReader.locator('#toc button').last().innerText(),/t245/);
+   assert.equal(await spanishReader.locator('#toc button').count(),312,
+    'All historical anthology segments must remain visible, even without locus alignment');
+   assert.match(await spanishReader.locator('#toc button').first().innerText(),/t1/);
+   assert.match(await spanishReader.locator('#toc button').last().innerText(),/t312/);
+   assert.match(await spanishReader.locator('#method-note').innerText(),/No hay alineación por loci/i);
    const before=await p.locator('#classic-frame-b').getAttribute('src');
    await p.locator('#classic-apuleius-book').selectOption('6');
    assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la.*locus=6\.1/);
