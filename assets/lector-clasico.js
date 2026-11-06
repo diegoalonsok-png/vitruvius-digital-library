@@ -88,6 +88,17 @@ function translationFor(p){
  return null;
 }
 
+/* ---------- Búsqueda de testimonios, ediciones antiguas y traducciones en catálogos de referencia ----------
+   Cuando la biblioteca no tiene un códice verificado, se ofrecen búsquedas (no enlaces directos no
+   comprobados) en los catálogos especializados, armadas con el autor y la obra. */
+function testimoniaSearch(w){
+ const a=String(w.authorLatin||w.author||""),t=String(w.titleLatin||w.title||"");const q=encodeURIComponent((a+" "+t).trim()),qt=encodeURIComponent(t);
+ const L=(href,label)=>`<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
+ const ms=[L(`https://portail.biblissima.fr/fr/search?q=${q}`,"Biblissima+ (manuscritos e impresos, IIIF)"),w.language==="grc"?L(`https://pinakes.irht.cnrs.fr/`,"Pinakes (manuscritos griegos; buscar la obra)"):"",L(`https://www.e-codices.unifr.ch/en/search/all?sQueryString=${q}`,"e-codices"),L(`https://digi.vatlib.it/`,"DigiVatLib (Vaticana; buscar la obra)"),L(`https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&query=${encodeURIComponent('(gallica all "'+(a+" "+t).trim()+'") and dc.type all "manuscrit"')}`,"Gallica · manuscritos")];
+ const ed=[L(`https://data.cerl.org/istc/_search?query=${q}`,"ISTC (incunables)"),L(`https://archive.org/search?query=${q}&sin=TXT`,"Internet Archive (ediciones antiguas)"),L(`https://catalog.hathitrust.org/Search/Home?lookfor=${q}&type=all&ft=ft`,"HathiTrust (texto completo)")];
+ const tr=[L(`https://es.wikisource.org/w/index.php?search=${q}`,"Wikisource ES"),L(`https://en.wikisource.org/w/index.php?search=${q}`,"Wikisource EN"),L(`https://fr.wikisource.org/w/index.php?search=${q}`,"Wikisource FR"),L(`https://remacle.org/bloodwolf/index.htm`,"Remacle (traducciones francesas)"),L(`https://www.perseus.tufts.edu/hopper/searchresults?q=${qt}`,"Perseus")];
+ const msOk=ms.filter(Boolean);return `<details class="lc-testimonia"><summary>Buscar testimonios, ediciones antiguas y traducciones de «${esc(t)}»</summary><p class="muted">Búsquedas en catálogos externos (no son enlaces verificados por la biblioteca): compruebe la signatura, la datación y la licencia en la institución.</p><p><b>Manuscritos</b>: ${msOk.join(" · ")}</p><p><b>Ediciones antiguas</b>: ${ed.join(" · ")}</p><p><b>Traducciones libres</b>: ${tr.join(" · ")}</p></details>`;
+}
 /* ---------- Marcado de la búsqueda ---------- */
 function marked(text){
  if(!query)return esc(text);
@@ -122,7 +133,9 @@ function showCanvas(){
 function render(){
  const p=orig[cur];if(!p)return;
  $("locus").textContent=work.title+" "+p.locus;
- $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p><div class="txt" lang="${work.language==="grc"?"grc":"la"}">${marked(p.text)}</div>`;
+ {const L_=work.language==="grc"?"grc":"la";const LL=window.VitruviaLecturaLexica;
+  $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p>${LL?`<p class="lw-hint muted">Clic en una palabra: lema, morfología y glosa.</p>`:""}<div class="txt" lang="${L_}">${LL?LL.wrap(p.text,L_,marked):marked(p.text)}</div>`;
+  if(LL)LL.attach($("original"))}
  const t=translationFor(p);
  $("translation").innerHTML=!work.translations.length?"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción de esta obra.</b><br>Se muestra solo el texto original, a la izquierda. Cuando se incorpore una traducción abierta, aparecerá en este visor.</p>":
   trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='lc-notr'>La traducción de la biblioteca no tiene un pasaje correspondiente a este locus. Pruebe con el locus anterior o el siguiente.</p>"):transState==="loading"?"<p class='muted'>Cargando la traducción… (las obras extensas, como la Naturalis historia, pueden tardar unos segundos)</p>":transState==="error"?"<p class='muted'>No se pudo descargar la traducción desde el repositorio de origen. Puede abrirla directamente en <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>GitHub · Perseus ↗</a>.</p>":"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción alineada de esta obra.</b><br>El archivo de origen existe, pero no puede ponerse en correspondencia con el texto. <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>Abrir el archivo TEI ↗</a></p>";
@@ -131,7 +144,9 @@ function render(){
  const share=work.author+" · "+work.title+" "+p.locus+" — "+location.href;
  $("wa").href="https://wa.me/?text="+encodeURIComponent(share);
  $("mail").href="mailto:?subject="+encodeURIComponent(work.author+" · "+work.title+" "+p.locus)+"&body="+encodeURIComponent(share);
- if(window.ClassicalLexicon?.attachClick&&!$("original").dataset.lex){$("original").dataset.lex="1";try{window.ClassicalLexicon.attachClick($("original"))}catch{}}
+ /* El diccionario por clic lo da assets/lectura-lexica.js (lema, morfología, glosa); el antiguo enganche
+    de classical-lexicon.js no tenía panel donde mostrarse y fallaba en cada clic. */
+ if(!window.VitruviaLecturaLexica&&window.ClassicalLexicon?.attachClick&&!$("original").dataset.lex){$("original").dataset.lex="1";try{const panel=document.createElement("div");$("original").after(panel);window.ClassicalLexicon.attachClick($("original"),panel)}catch{}}
 }
 function search(){
  query=$("q").value.trim();const out=$("hits");out.replaceChildren();
@@ -157,7 +172,7 @@ async function openWork(id){
   wbox.innerHTML=`<strong>${esc(w.name)}</strong> · ${esc(w.shelfmark)} · ${esc(w.date)} · ${esc(w.library)}<br><span class="muted">${w.oldest?"Testimonio conservado más antiguo con imágenes abiertas.":"No es el testimonio más antiguo: "}${esc(w.note||"")}</span>${(w.also||[]).map(a=>` · <button type="button" class="alt-ms" data-m="${esc(a.manifest)}" data-s="${esc(a.shelfmark)}">${esc(a.name+" ("+a.date+")")}</button>`).join("")}`;
   for(const b of wbox.querySelectorAll(".alt-ms"))b.onclick=()=>{work.witness={...work.witness,shelfmark:b.dataset.s,manifest:b.dataset.m};loadWitness(work.witness)};
   setLeft("codex");loadWitness(w);
- }else{wbox.innerHTML="<span class='muted'>No hay todavía un manuscrito o impreso antiguo de esta obra con imágenes IIIF verificadas; se muestra el texto original editado.</span>";$("tab-codex").disabled=true;setLeft("original")}
+ }else{wbox.innerHTML="<span class='muted'>No hay todavía un manuscrito o impreso antiguo de esta obra con imágenes IIIF verificadas en la biblioteca; se muestra el texto original editado.</span>"+testimoniaSearch(work);$("tab-codex").disabled=true;setLeft("original")}
  $("status").textContent="Cargando el texto original…";
  try{orig=work.parts?await loadPlain(work.parts):parseTEI(await fetchText(work.original))}catch(e){$("status").textContent="No se pudo leer el texto original ("+e.message+").";return}
  $("toc").replaceChildren(...orig.map((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;return o}));
