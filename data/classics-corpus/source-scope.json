@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-source-scope-v1",
-  "methodology": "Scope of passages is editorial metadata. It does not modify the primary transcription, establish book/chapter alignment or assert equivalence between translations.",
+  "methodology": "Contenido editorial de la edición histórica: TODAS las unidades se conservan visibles e indexadas, sin recorte ni supresión. Identificar el cuerpo de la novela no establece alineación fiable por libro, capítulo o locus entre latín y traducciones.",
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -9,25 +9,30 @@
       "includedLocusPrefix": "t",
       "first": 22,
       "last": 245,
-      "validation": "provisional editorial scope based on opening, closing and subsequent distinct contents in historical source; review against the source table of contents before chapter-level collation",
-      "excludedRanges": [
+      "validation": "Alcance editorial orientativo pendiente de cotejo de capítulos; NO usado para filtrar el texto ni sus búsquedas",
+      "noteEs": "Se conserva e indexa la edición castellana histórica COMPLETA (312 unidades): t1–t21 preliminares, t22–t245 narración de Metamorfosis (identificación provisional), t246–t308 otros escritos de Apuleyo y t309–t312 índices y apéndices. No hay alineación por loci con las 351 unidades latinas; utilizar los dos visores para contraste manual. Ninguna unidad se elimina ni se oculta.",
+      "descriptiveRanges": [
+        {
+          "first": 22,
+          "last": 245,
+          "description": "Narración principal de Metamorfosis, identificación provisional"
+        },
         {
           "first": 1,
           "last": 21,
-          "type": "paratext and scholarly introduction"
+          "description": "paratext and scholarly introduction (también conservado e indexado)"
         },
         {
           "first": 246,
           "last": 308,
-          "type": "other works of Apuleius included in the source anthology"
+          "description": "other works of Apuleius included in the source anthology (también conservado e indexado)"
         },
         {
           "first": 309,
           "last": 312,
-          "type": "table of contents and appendices"
+          "description": "table of contents and appendices (también conservado e indexado)"
         }
-      ],
-      "noteEs": "Solo t22–t245 se identifican aquí con la novela Metamorfosis. El PDF/libro histórico fuente también incluye paratextos y otros escritos de Apuleyo. La correspondencia con los 351 loci latinos sigue sin cotejarse. La fuente completa permanece intacta en el repositorio."
+      ]
     }
   ]
 }
