@@ -291,6 +291,7 @@ function applyUI(){
 async function run(push=true){
  syncSearchLanguageSelector();
  const q=$("#lx-q").value.trim();S.q=q;S.page=0;
+ window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""));
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
  if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
@@ -313,6 +314,7 @@ async function run(push=true){
   const l=resolveLang(q);
   if(l==="he")return renderHebrew(q);
   const D=await lang(l);S.D=D;fillWorks(D);if(l==="la")await loadContext();
+   if(S.mode==="palabra"||S.mode==="lema"){const info=lemmaInfo(D,fold(q).replace(/^@/,""));if(info.g)window.VitruviaEncyclopedia?.update(q.replace(/^@/,""),{gloss:"Glosa léxica del índice: "+info.g.split(/;\s*/)[0]});}
   const parsed=parseQuery(q,S.mode);
   const opts={lemmatize:S.mode==="lema"||S.mode==="palabra"&&$("#lx-lemmatize").checked,variants:$("#lx-variants").checked,work:S.work,defaultGap:S.mode==="frase"?0:6};
   if(S.mode==="lema")parsed.steps.forEach(s=>{if(s.term.type==="form")s.term={type:"lemma",v:s.term.v,fallback:true}});
@@ -682,6 +684,7 @@ const QB_FIELDS=[["pos","Categoría",[["","—"],["noun","sustantivo"],["verb","
    etiquetas flexivas latinas inexistentes en el índice. */
 async function qbLexicalSearch(input,filters={},scope="both",save=true){
  const term=String(input||"").trim().replace(/^@/,"");if(!term)return;
+ window.VitruviaEncyclopedia?.update(term);
  const concept=await findConcept(term);
  const map=concept?{la:concept.la||[],grc:concept.grc||[]}:
   {la:GREEK.test(term)?[]:[term],grc:GREEK.test(term)?[term]:[]};
