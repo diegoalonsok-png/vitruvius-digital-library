@@ -106,7 +106,22 @@ try{
    assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la/);
    assert.match(await p.locator('#classic-frame-b').getAttribute('src'),/lang=es/);
    const spanishReader=p.frameLocator('#classic-frame-b');
-   await spanishReader.locator('#toc button').first().waitFor({state:'attached',timeout:25000});
+   try {
+    await spanishReader.locator('#toc button').first().waitFor({state:'attached',timeout:12000});
+   } catch(error){
+    const diagnostics=await p.evaluate(()=>{
+     const el=document.querySelector('#classic-frame-b');
+     const doc=el?.contentDocument;
+     return {
+      src:el?.getAttribute('src'),url:doc?.URL,
+      title:doc?.querySelector('#source-title')?.textContent,
+      method:doc?.querySelector('#method-note')?.textContent,
+      tocCount:doc?.querySelectorAll('#toc button').length,
+      body:doc?.body?.textContent?.slice(0,380)
+     };
+    });
+    throw Error("Spanish reader did not build its table of contents: "+JSON.stringify(diagnostics)+"; "+error.message);
+   }
    assert.equal(await spanishReader.locator('#toc button').count(),312,
     'All historical anthology segments must remain visible, even without locus alignment');
    assert.match(await spanishReader.locator('#toc button').first().innerText(),/t1/);
