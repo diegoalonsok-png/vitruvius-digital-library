@@ -50,7 +50,13 @@ function inspect(w,origin){
   assert.ok(v.language,'Missing version language '+key);
   langs.add(v.language);
   if(v.path){localFiles++;if(!exists(v.path))errors.push(key+' missing local file: '+v.path);}
-  if(v.url&&!/^https:\/\//.test(v.url))errors.push(key+' invalid external URL: '+v.url);
+  if(v.url&&!/^https:\/\//.test(v.url)){
+   // Las traducciones TEI alojadas en el repositorio son recursos locales,
+   // no URLs externas: comprobar ruta segura y existencia real.
+   if(/^data\/translations\/[\w./-]+\.xml$/.test(v.url)&&!v.url.includes('..')){
+    localFiles++;if(!exists(v.url))errors.push(key+' missing local translation: '+v.url);
+   }else errors.push(key+' invalid external URL: '+v.url);
+  }
  }
  if(!langs.has('es'))withoutDeclaredSpanish++;
  if(['cicero-officiis','lucretius','homer-iliad','plato-republic','stoa0275.stoa009','stoa0079.stoa001','phi0836.phi002','ll.petronius-satyrica'].includes(w.id))
