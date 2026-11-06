@@ -113,8 +113,61 @@ async function search(q,{limit=8}={}){
  lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed};
  return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title)).slice(0,Math.max(1,Math.min(50,limit)));
 }
+
+/* Semantic retrieval uses ONLY editorial mappings already recorded in Conceptus.
+   It is not a vector embedding, proof of etymology or verified inflectional analysis. */
+let conceptTask=null;
+async function semanticConcept(q){
+ if(!conceptTask)conceptTask=fetch("data/lexicon/conceptus.json")
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(j=>Array.isArray(j.concepts)?j.concepts:[]).catch(()=>[]);
+ const concepts=await conceptTask,key=fold(q).trim();
+ if(!key||key.length<3)return null;
+ return concepts.find(c=>[c.id,...Object.values(c.modern||{}).flat(),
+   ...(c.la||[]),...(c.grc||[])].some(v=>typeof v==="string"&&fold(v)===key))||null;
+}
+async function semanticSearch(q,{limit=6}={}){
+ q=String(q||"").trim();
+ if(q.length<3||q.length>80||q.split(/\s+/).length>4)return[];
+ const concept=await semanticConcept(q);if(!concept)return[];
+ const entries=await registry(),rows=[];
+ const byLanguage={la:(concept.la||[]).filter(x=>typeof x==="string"),
+  grc:(concept.grc||[]).filter(x=>typeof x==="string")};
+ // Strictly bounded vocabulary, exact surface matching; never fabricate a locus.
+ for(let offset=0;offset<entries.length;offset+=4){
+  await Promise.all(entries.slice(offset,offset+4).map(async e=>{
+   const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
+   if(!terms.length)return;
+   const d=e.format==="html-text"?await loadHtml(e):await loadJson(e);
+   if(!d?.passages?.length)return;
+   let first=null,total=0;
+   for(const passage of d.passages){
+    if(typeof passage.text!=="string")continue;
+    for(const term of terms){
+     const hits=matches(passage.text,term);
+     total+=hits.length;
+     if(!first&&hits.length)first={passage,term,at:hits[0]};
+    }
+   }
+   if(!first)return;
+   const linkBase=e.reader||(e.format==="html-text"?e.path:
+      "classics-text-reader.html?work="+e.workId+"&lang="+e.language);
+   let link=linkBase+(linkBase.includes("?")?"&":"?")+"q="+encodeURIComponent(first.term);
+   if(e.format==="json-passages")link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
+   rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
+    title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language),
+    author:"Conceptus: "+concept.id+" · equivalente "+first.term,
+    excerpt:"Locus "+first.passage.locus+": "+snippet(first.passage.text,first.at),
+    meta:"CORRESPONDENCIA SEMÁNTICA EDITORIAL · COINCIDENCIA LITERAL EN TEXTO · NO LEMATIZACIÓN",
+    rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total});
+  }));
+ }
+ return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title))
+   .slice(0,Math.max(1,Math.min(20,limit)));
+}
 window.ClassicsCorpusSearch={
- search,
+ search,semanticSearch,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
  registry,diagnostics:()=>({...lastDiagnostics})
 };
