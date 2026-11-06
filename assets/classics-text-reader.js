@@ -118,6 +118,18 @@ async function load(language){
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
  const corpus=await response.json();
  if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||corpus.passages.length<10)throw Error("El documento no pasó validación de integridad");
+ if(work==="apuleius-metamorphoses"&&language==="es"){
+  // The Gutenberg source is an anthology. Filter the DISPLAYED work without
+  // changing the original transcription or assigning false Latin loci.
+  const response=await fetch("data/classics-corpus/source-scope.json");
+  if(!response.ok)throw Error("No se pudo comprobar el alcance de la edición histórica.");
+  const scopes=await response.json();
+  const scope=(scopes.entries||[]).find(x=>x.workId===work&&x.language===language&&x.sourcePath===path);
+  if(!scope)throw Error("Falta validar el alcance de la edición española de Apuleyo.");
+  const contained=corpus.passages.filter(x=>{const m=/^t(\d+)$/.exec(String(x.locus||""));return m&&Number(m[1])>=scope.first&&Number(m[1])<=scope.last});
+  if(!contained.length)throw Error("No hay unidades de Metamorfosis verificadas en la edición.");
+  corpus={...corpus,passages:contained,alignment:corpus.alignment+". "+scope.noteEs};
+ }
  data=corpus;active=0;
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
  $("method-note").textContent=corpus.editorialStatus+". "+corpus.alignment+". Fuente y atribución: "+corpus.attribution;
