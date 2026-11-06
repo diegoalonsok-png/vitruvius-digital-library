@@ -18,6 +18,20 @@ Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Air
 
 **Website:** https://diegoalonsok-png.github.io/vitruvius-digital-library/index.html
 
+## Vitruvia Lexicon (léxico, etimología, sintaxis y frases del mundo antiguo)
+
+[Vitruvia Lexicon](vitruvia-lexicon.html) is reached from the **Lexicon** category in Vitruvia's search bar. It searches only Greek and Latin vocabulary, syntax and phrases, entirely in the browser over structured JSON indexes (no server):
+
+- **Lexical entries**: form → lemma (CLTK for Latin; G. Celano's lemmatised Greek with AGDT morphology), Lewis & Short / LSJ senses (Perseus DL, CC BY-SA 4.0), attested forms, diachronic distribution by work, collocations and a KWIC concordance in which every word links to its own entry.
+- **Etymologicum** (`data/lexicon/etymologicum.json`, 108 editorial entries): PIE roots, Old Latin forms with their epigraphic source (Duenos, Lapis Niger, Scipionic epitaphs, SC de Bacchanalibus…), Greek/Latin/Biblical Hebrew equivalents (Hebrew Bible · LXX · Vulgate), cognates, bibliography (de Vaan, Ernout–Meillet, Beekes, Chantraine, BDB, HALOT) and loci; on-demand Wiktionary etymology.
+- **Search syntax**: `"exact phrase"`, `@lemma`, `aedi*`, `t?xis`, `~fuzzy`, `raíz:`, `A ..3 B`, `A NEAR/5 B`, Greek morphosyntactic patterns `[mood=ptc case=gen] [case=gen]`, Latin→Greek transliteration (`anthropos` → ἄνθρωπος) and phonetic/orthographic approximation (ae/e, ph/f, itacism).
+- **Phrase tools**: sentence analyser (interlinear gloss, lemma, morphology, frequency), parallel passages by shared lemmas (TF-IDF), and *Sententiae* (53 phrases with canonical references, syntax notes and automatic verification against the local corpus).
+- **Ecdotics and codicology**: collation workshop (LCS word alignment, negative and positive apparatus, variant-type classification, agreement matrix, TEI parallel-segmentation export); inline Kurilo apparatus and Rose/Krohn pages for every Vitruvian locus; *Instrumenta* (critical signs with TEI encoding, apparatus abbreviations, scribal-error typology, Lachmann–Maas–Pasquali–Bédier principles, codicology, medieval abbreviations).
+- **Hermeneutics and exegesis**: lemmatic exegetical notebook (eight levels, stored locally) exportable to Markdown, JSON and XML-TEI.
+- **Open data and citation**: every entry, concordance and analysis exports to CSV, JSON and XML-TEI; citations in Chicago, APA, MLA and BibTeX; Schema.org `DefinedTermSet` / `DefinedTerm` markup; virtual keyboards for polytonic Greek, Biblical Hebrew and Latin quantities; Gentium Book Plus / Cardo / Noto web fonts.
+
+Data build: `python3 scripts/build-vitruvia-lexicon.py && python3 scripts/render-vitruvia-lexicon-page.py`. Integrity test: `python3 scripts/test-vitruvia-lexicon.py` (all citations attributed to local works are verified literally in the corpus). Lemmatisation is automatic and must be checked in context; the editorial etymologies summarise the cited reference works.
+
 ## Research atlases
 
 - [Atlas Geographicus Vitruvianus — ancient Latin/Greek place names, modern equivalents, map and loci](atlas-geographicus.html)
