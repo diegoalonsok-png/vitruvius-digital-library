@@ -1,117 +1,1092 @@
 {
-"schema":"vitruvia-lexicon-philologia-v1",
-"title":"Instrumenta philologica · ecdótica, codicología, hermenéutica y exégesis",
-"method":"Repertorio de consulta para el trabajo con textos antiguos. Las definiciones son sintéticas y remiten a la bibliografía de referencia; no sustituyen los manuales.",
-"bibliography":[
- "P. Maas, Textkritik, 4.ª ed., Leipzig: Teubner, 1960 (trad. ingl. Textual Criticism, Oxford, 1958).",
- "G. Pasquali, Storia della tradizione e critica del testo, Florencia: Le Monnier, 1934; 2.ª ed. 1952.",
- "M. L. West, Textual Criticism and Editorial Technique, Stuttgart: Teubner, 1973.",
- "S. Timpanaro, La genesi del metodo del Lachmann, Florencia: Le Monnier, 1963.",
- "L. D. Reynolds y N. G. Wilson, Scribes and Scholars, 4.ª ed., Oxford: Oxford University Press, 2013.",
- "A. Blecua, Manual de crítica textual, Madrid: Castalia, 1983.",
- "B. Bischoff, Paläographie des römischen Altertums und des abendländischen Mittelalters, 4.ª ed., Berlín: E. Schmidt, 2009.",
- "J. Lemaire, Introduction à la codicologie, Lovaina la Nueva: Université catholique de Louvain, 1989.",
- "A. Cappelli, Lexicon abbreviaturarum. Dizionario di abbreviature latine ed italiane, 6.ª ed., Milán: Hoepli, 1961.",
- "H.-G. Gadamer, Wahrheit und Methode, Tubinga: Mohr, 1960.",
- "H. de Lubac, Exégèse médiévale. Les quatre sens de l'Écriture, París: Aubier, 1959–1964.",
- "Text Encoding Initiative, TEI P5: Guidelines for Electronic Text Encoding and Interchange, cap. 12 «Critical Apparatus»."
-],
-"signa":[
- {"s":"⟨ ⟩","n":"Adición del editor: letras o palabras que faltan en la tradición y el editor suple.","tei":"<supplied reason=\"omitted\">"},
- {"s":"[ ]","n":"En ediciones de textos literarios: secluido o suprimido por el editor (interpolación). En papirología y epigrafía (sistema de Leiden): laguna material restituida.","tei":"<surplus> / <supplied reason=\"lost\">"},
- {"s":"{ }","n":"Secluido: texto transmitido que el editor considera espurio (uso preferente en ediciones recientes y en epigrafía).","tei":"<surplus>"},
- {"s":"⟦ ⟧","n":"Texto borrado o tachado en el testimonio (Leiden).","tei":"<del rend=\"erasure\">"},
- {"s":"† †","n":"Crux desperationis: lugar corrupto que el editor no sabe sanar.","tei":"<sic> + <note type=\"crux\">"},
- {"s":"***","n":"Laguna en la tradición (falta texto sin restitución posible).","tei":"<gap reason=\"lacuna\"/>"},
- {"s":"( )","n":"Resolución de una abreviatura del testimonio (Leiden).","tei":"<choice><abbr/><expan/></choice>"},
- {"s":"α̣","n":"Letra con punto subscrito: lectura dudosa o incompleta (Leiden).","tei":"<unclear>"},
- {"s":"|","n":"Cambio de línea en el testimonio; || cambio de columna o de página.","tei":"<lb/> / <cb/> / <pb/>"},
- {"s":"]","n":"En el aparato, separa el lema (lectura aceptada) de las variantes.","tei":"<lem> … <rdg>"}
-],
-"abbreviationes":[
- {"a":"add.","n":"addidit — añadió"},{"a":"om.","n":"omisit — omitió"},{"a":"del.","n":"delevit — eliminó"},
- {"a":"secl.","n":"seclusit — secluyó como espurio"},{"a":"corr.","n":"correxit — corrigió"},{"a":"coni.","n":"coniecit — propuso por conjetura"},
- {"a":"em.","n":"emendavit — enmendó"},{"a":"transp.","n":"transposuit — cambió de lugar"},{"a":"suppl.","n":"supplevit — suplió"},
- {"a":"codd.","n":"codices — los códices (todos o la mayoría)"},{"a":"cett.","n":"ceteri — los demás testimonios"},{"a":"edd.","n":"editores — los editores"},
- {"a":"rec.","n":"recentiores — códices recientes"},{"a":"Ω / ω","n":"archetipo; consenso de la tradición"},{"a":"a.c. / p.c.","n":"ante / post correctionem — antes / después de la corrección"},
- {"a":"s.l.","n":"supra lineam — sobre la línea"},{"a":"in mg. / i.m.","n":"in margine — en el margen"},{"a":"in ras.","n":"in rasura — sobre raspado"},
- {"a":"m¹, m², H¹, H²","n":"primera, segunda mano (copista, corrector)"},{"a":"fort.","n":"fortasse — quizá"},{"a":"susp.","n":"suspicatus est — sospechó (corrupción)"},
- {"a":"lac. ind.","n":"lacunam indicavit — señaló una laguna"},{"a":"dub.","n":"dubitanter — con duda"},{"a":"v.l.","n":"varia lectio — variante"},
- {"a":"sic","n":"así (en el testimonio), señala una lectura anómala reproducida intencionadamente"}
-],
-"errores":[
- {"t":"Haplografía","n":"Se escribe una sola vez lo que debía escribirse dos (sílaba, letra o palabra repetida)."},
- {"t":"Ditografía","n":"Se repite indebidamente una letra, sílaba o palabra."},
- {"t":"Salto de igual a igual (saut du même au même)","n":"El ojo del copista salta de una palabra a otra idéntica o semejante, omitiendo lo intermedio; se produce por homeotéleuton (finales iguales) u homeoarcton (comienzos iguales)."},
- {"t":"Metátesis","n":"Inversión del orden de letras o palabras."},
- {"t":"Confusión paleográfica","n":"Lectura errónea de letras parecidas en el modelo: en minúscula carolingia u/n, c/t, cl/d, rn/m, ſ/f; en capital y uncial E/F, O/C/G, I/T, LI/U."},
- {"t":"Itacismo","n":"Confusión gráfica en griego de ι, η, υ, ει, οι, pronunciados /i/ desde época bizantina; también αι/ε."},
- {"t":"Error de abreviatura","n":"Resolución equivocada de una abreviatura del modelo (p. ej. per / pro / prae; nasal marcada con lineta)."},
- {"t":"Mala división de palabras","n":"Separación errónea de un texto copiado de un modelo en scriptio continua."},
- {"t":"Glosa intrusa","n":"Una anotación interlineal o marginal pasa al texto, sustituyéndolo o duplicándolo."},
- {"t":"Banalización (lectio facilior)","n":"El copista sustituye una palabra rara o difícil por otra más común."},
- {"t":"Error de dictado o de memoria","n":"Sustituciones por homofonía o por retener mal la frase leída; frecuentes en griego bizantino y en latín medieval."},
- {"t":"Interpolación","n":"Adición deliberada al texto (aclaración, armonización, censura o completamiento)."},
- {"t":"Contaminación","n":"Un copista combina lecturas de varios modelos: rompe la transmisión vertical y dificulta el estemma."}
-],
-"principia":[
- {"t":"Recensio","n":"Reunión y examen de todos los testimonios para reconstruir la relación entre ellos (estemma) y, a partir de ella, el arquetipo."},
- {"t":"Examinatio","n":"Juicio sobre si el texto reconstruido del arquetipo es el original o está corrupto."},
- {"t":"Emendatio / divinatio","n":"Corrección del texto corrupto por conjetura, apoyada en el usus scribendi, la lengua, la métrica y el sentido."},
- {"t":"Errores conjuntivos y separativos","n":"Errores comunes que prueban el parentesco de dos testimonios (conjuntivos) o su independencia (separativos). Base del método estemático (Lachmann, Maas)."},
- {"t":"Eliminatio codicum descriptorum","n":"Se descartan los códices copiados de otro conservado, porque no aportan testimonio independiente."},
- {"t":"Recentiores non deteriores","n":"Un códice reciente puede conservar lecturas genuinas de una rama perdida (Pasquali)."},
- {"t":"Lectio difficilior potior","n":"Entre variantes igualmente atestiguadas, la más difícil suele ser la original, porque los copistas tienden a simplificar."},
- {"t":"Usus scribendi","n":"Criterio que valora las variantes según el estilo, la lengua y la técnica del autor."},
- {"t":"Tradición abierta y cerrada","n":"Cerrada: estemma reconstruible sin contaminación; abierta: contaminación y transmisión horizontal (Pasquali)."},
- {"t":"Método del codex optimus (Bédier)","n":"Se edita el mejor testimonio corrigiendo solo los errores evidentes, como alternativa al estemma bífido."},
- {"t":"Aparato positivo y negativo","n":"Positivo: registra lema y testimonios que lo apoyan, y variantes con los suyos. Negativo: registra solo los testimonios que se apartan."}
-],
-"codicologia":[
- {"t":"Cuaderno (fascículo)","n":"Unidad de construcción del códice: binión (2 bifolios), ternión (3), cuaternión (4, el más común en la Edad Media), quinión (5)."},
- {"t":"Bifolio","n":"Hoja doblada que da dos folios (cuatro páginas)."},
- {"t":"Regla de Gregory","n":"En el pergamino, al abrir el cuaderno se enfrentan siempre lado carne con lado carne y lado pelo con lado pelo."},
- {"t":"Recto / verso","n":"Cara anterior (r) y posterior (v) de un folio; los códices se citan por folio (f. 12v), no por página."},
- {"t":"Reclamo y signatura","n":"Reclamo: palabra al pie del último folio que anuncia el comienzo del cuaderno siguiente. Signatura: letra o número que ordena los cuadernos."},
- {"t":"Pautado (ruling)","n":"Líneas trazadas a punta seca, plomo o tinta para guiar la escritura; su tipo ayuda a datar y localizar el códice."},
- {"t":"Palimpsesto","n":"Códice cuyo texto primitivo fue raspado para escribir otro encima (p. ej. el De re publica de Cicerón, Vat. lat. 5757)."},
- {"t":"Scriptio continua","n":"Escritura sin separación de palabras, normal en la Antigüedad; origen de errores de división."},
- {"t":"Incipit / explicit","n":"Fórmulas de comienzo y fin de obra o libro, a menudo en rúbrica (tinta roja)."},
- {"t":"Colofón","n":"Nota final del copista con su nombre, fecha, lugar o comitente."},
- {"t":"Escrituras latinas","n":"Capital cuadrada y rústica (s. I–V), uncial y semiuncial (s. IV–VIII), minúscula carolingia (s. VIII–XII; p. ej. el Harleianus 2767), gótica textual (s. XII–XV), humanística (s. XV)."},
- {"t":"Escrituras griegas","n":"Mayúscula bíblica y ojival, minúscula desde el s. IX (minúscula antigua, perlschrift), con espíritus y acentos sistemáticos solo en la minúscula."},
- {"t":"Materiales","n":"Papiro (rollo, volumen), pergamino (códice desde el s. IV generalizado), papel (en Occidente desde el s. XII–XIII; filigranas útiles para datar)."},
- {"t":"Arquetipo e hiparquetipo","n":"Arquetipo: ejemplar perdido del que deriva toda la tradición conservada. Hiparquetipo: cabeza perdida de una rama."}
-],
-"abbreviaturae":[
- {"s":"⁊","n":"et (nota tironiana)"},{"s":"ꝑ","n":"per / par"},{"s":"ꝓ","n":"pro"},{"s":"ꝯ","n":"con- / com-"},
- {"s":"ꝰ","n":"-us (desinencia)"},{"s":"ā, ē, ō…","n":"lineta sobre vocal: nasal omitida (m / n)"},{"s":"q̄","n":"que / quam (según contexto)"},
- {"s":"÷","n":"est (en manuscritos insulares y carolingios)"},{"s":"dñs","n":"dominus (nomen sacrum abreviado)"},{"s":"ds̄","n":"deus (nomen sacrum)"},
- {"s":"sps̄ / sp̄s","n":"spiritus"},{"s":"ihs / xps","n":"Iesus / Christus (con letras griegas: ΙΗΣ, ΧΡΣ)"}
-],
-"hermeneutica":[
- {"t":"Sentido literal (sensus litteralis / peshat)","n":"Lo que el texto dice según su lengua, su gramática y su contexto histórico."},
- {"t":"Cuatro sentidos de la Escritura","n":"Literal o histórico, alegórico, moral o tropológico y anagógico; sistematizados en el dístico de Agustín de Dacia (s. XIII)."},
- {"t":"PaRDeS","n":"Acrónimo de la exégesis judía medieval: peshat (literal), remez (alusivo), derash (homilético) y sod (místico)."},
- {"t":"Escuela alejandrina y antioquena","n":"Alejandría (Filón, Orígenes): lectura alegórica. Antioquía (Diodoro, Teodoro de Mopsuestia): primacía del sentido literal-histórico."},
- {"t":"Círculo hermenéutico","n":"El todo se comprende desde las partes y las partes desde el todo (Schleiermacher, Dilthey); Gadamer lo amplía a la relación entre intérprete y tradición."},
- {"t":"Fusión de horizontes","n":"Gadamer: la comprensión resulta del encuentro entre el horizonte del texto y el del intérprete."},
- {"t":"Historia de los efectos (Wirkungsgeschichte)","n":"El texto se comprende también por la historia de su recepción."},
- {"t":"Método histórico-crítico","n":"Conjunto de métodos que estudian el texto en su génesis: crítica textual, de fuentes, de formas y de redacción."},
- {"t":"Crítica de fuentes (Quellenforschung)","n":"Identificación de las fuentes escritas que el autor usó (p. ej. Varrón, Posidonio, Hermógenes y Pitio en Vitruvio)."},
- {"t":"Crítica de las formas (Formgeschichte) y Sitz im Leben","n":"Estudio de los géneros menores y del contexto vital en que se usaban (Gunkel, Dibelius, Bultmann)."},
- {"t":"Crítica de la redacción","n":"Estudio de cómo un autor o redactor organiza y modifica sus materiales."},
- {"t":"Intertextualidad y loci paralleli","n":"Relaciones verbales y temáticas entre textos; los pasajes paralelos son el instrumento básico del comentario (Lexicon: herramienta «Paralelos»)."},
- {"t":"Comentario lemático","n":"Forma clásica del comentario filológico: lema (palabra o frase del texto) seguido de explicación lingüística, real, literaria e histórica."}
-],
-"exegesis_template":[
- {"k":"textus","t":"Texto y crítica textual","h":"Establecimiento del texto, variantes significativas, testimonios y conjeturas."},
- {"k":"lingua","t":"Lengua, morfología y sintaxis","h":"Formas difíciles, construcciones, orden de palabras, métrica."},
- {"k":"lexis","t":"Léxico y semántica","h":"Términos técnicos, campo semántico, uso en el autor y en la época."},
- {"k":"litteralis","t":"Sentido literal","h":"Paráfrasis precisa de lo que el texto dice."},
- {"k":"contextus","t":"Contexto histórico y material","h":"Realia, arqueología, instituciones, fecha y lugar."},
- {"k":"fontes","t":"Fuentes y paralelos","h":"Fuentes del autor, loci paralleli, intertextualidad."},
- {"k":"interpretatio","t":"Interpretación","h":"Problemas de sentido, posiciones de la crítica, sentido figurado si procede."},
- {"k":"receptio","t":"Recepción","h":"Uso del pasaje en la tradición posterior (comentaristas, ediciones, arte, arquitectura)."}
-]
+  "schema": "vitruvia-lexicon-philologia-v1",
+  "title": "Instrumenta philologica · ecdótica, codicología, hermenéutica y exégesis",
+  "method": "Repertorio de consulta para el trabajo con textos antiguos. Las definiciones son sintéticas y remiten a la bibliografía de referencia; no sustituyen los manuales.",
+  "bibliography": [
+    "P. Maas, Textkritik, 4.ª ed., Leipzig: Teubner, 1960 (trad. ingl. Textual Criticism, Oxford, 1958).",
+    "G. Pasquali, Storia della tradizione e critica del testo, Florencia: Le Monnier, 1934; 2.ª ed. 1952.",
+    "M. L. West, Textual Criticism and Editorial Technique, Stuttgart: Teubner, 1973.",
+    "S. Timpanaro, La genesi del metodo del Lachmann, Florencia: Le Monnier, 1963.",
+    "L. D. Reynolds y N. G. Wilson, Scribes and Scholars, 4.ª ed., Oxford: Oxford University Press, 2013.",
+    "A. Blecua, Manual de crítica textual, Madrid: Castalia, 1983.",
+    "B. Bischoff, Paläographie des römischen Altertums und des abendländischen Mittelalters, 4.ª ed., Berlín: E. Schmidt, 2009.",
+    "J. Lemaire, Introduction à la codicologie, Lovaina la Nueva: Université catholique de Louvain, 1989.",
+    "A. Cappelli, Lexicon abbreviaturarum. Dizionario di abbreviature latine ed italiane, 6.ª ed., Milán: Hoepli, 1961.",
+    "H.-G. Gadamer, Wahrheit und Methode, Tubinga: Mohr, 1960.",
+    "H. de Lubac, Exégèse médiévale. Les quatre sens de l'Écriture, París: Aubier, 1959–1964.",
+    "Text Encoding Initiative, TEI P5: Guidelines for Electronic Text Encoding and Interchange, cap. 12 «Critical Apparatus»."
+  ],
+  "signa": [
+    {
+      "s": "⟨ ⟩",
+      "n": "Adición del editor: letras o palabras que faltan en la tradición y el editor suple.",
+      "tei": "<supplied reason=\"omitted\">"
+    },
+    {
+      "s": "[ ]",
+      "n": "En ediciones de textos literarios: secluido o suprimido por el editor (interpolación). En papirología y epigrafía (sistema de Leiden): laguna material restituida.",
+      "tei": "<surplus> / <supplied reason=\"lost\">"
+    },
+    {
+      "s": "{ }",
+      "n": "Secluido: texto transmitido que el editor considera espurio (uso preferente en ediciones recientes y en epigrafía).",
+      "tei": "<surplus>"
+    },
+    {
+      "s": "⟦ ⟧",
+      "n": "Texto borrado o tachado en el testimonio (Leiden).",
+      "tei": "<del rend=\"erasure\">"
+    },
+    {
+      "s": "† †",
+      "n": "Crux desperationis: lugar corrupto que el editor no sabe sanar.",
+      "tei": "<sic> + <note type=\"crux\">"
+    },
+    {
+      "s": "***",
+      "n": "Laguna en la tradición (falta texto sin restitución posible).",
+      "tei": "<gap reason=\"lacuna\"/>"
+    },
+    {
+      "s": "( )",
+      "n": "Resolución de una abreviatura del testimonio (Leiden).",
+      "tei": "<choice><abbr/><expan/></choice>"
+    },
+    {
+      "s": "α̣",
+      "n": "Letra con punto subscrito: lectura dudosa o incompleta (Leiden).",
+      "tei": "<unclear>"
+    },
+    {
+      "s": "|",
+      "n": "Cambio de línea en el testimonio; || cambio de columna o de página.",
+      "tei": "<lb/> / <cb/> / <pb/>"
+    },
+    {
+      "s": "]",
+      "n": "En el aparato, separa el lema (lectura aceptada) de las variantes.",
+      "tei": "<lem> … <rdg>"
+    }
+  ],
+  "abbreviationes": [
+    {
+      "a": "add.",
+      "n": "addidit — añadió"
+    },
+    {
+      "a": "om.",
+      "n": "omisit — omitió"
+    },
+    {
+      "a": "del.",
+      "n": "delevit — eliminó"
+    },
+    {
+      "a": "secl.",
+      "n": "seclusit — secluyó como espurio"
+    },
+    {
+      "a": "corr.",
+      "n": "correxit — corrigió"
+    },
+    {
+      "a": "coni.",
+      "n": "coniecit — propuso por conjetura"
+    },
+    {
+      "a": "em.",
+      "n": "emendavit — enmendó"
+    },
+    {
+      "a": "transp.",
+      "n": "transposuit — cambió de lugar"
+    },
+    {
+      "a": "suppl.",
+      "n": "supplevit — suplió"
+    },
+    {
+      "a": "codd.",
+      "n": "codices — los códices (todos o la mayoría)"
+    },
+    {
+      "a": "cett.",
+      "n": "ceteri — los demás testimonios"
+    },
+    {
+      "a": "edd.",
+      "n": "editores — los editores"
+    },
+    {
+      "a": "rec.",
+      "n": "recentiores — códices recientes"
+    },
+    {
+      "a": "Ω / ω",
+      "n": "archetipo; consenso de la tradición"
+    },
+    {
+      "a": "a.c. / p.c.",
+      "n": "ante / post correctionem — antes / después de la corrección"
+    },
+    {
+      "a": "s.l.",
+      "n": "supra lineam — sobre la línea"
+    },
+    {
+      "a": "in mg. / i.m.",
+      "n": "in margine — en el margen"
+    },
+    {
+      "a": "in ras.",
+      "n": "in rasura — sobre raspado"
+    },
+    {
+      "a": "m¹, m², H¹, H²",
+      "n": "primera, segunda mano (copista, corrector)"
+    },
+    {
+      "a": "fort.",
+      "n": "fortasse — quizá"
+    },
+    {
+      "a": "susp.",
+      "n": "suspicatus est — sospechó (corrupción)"
+    },
+    {
+      "a": "lac. ind.",
+      "n": "lacunam indicavit — señaló una laguna"
+    },
+    {
+      "a": "dub.",
+      "n": "dubitanter — con duda"
+    },
+    {
+      "a": "v.l.",
+      "n": "varia lectio — variante"
+    },
+    {
+      "a": "sic",
+      "n": "así (en el testimonio), señala una lectura anómala reproducida intencionadamente"
+    }
+  ],
+  "errores": [
+    {
+      "t": "Haplografía",
+      "n": "Se escribe una sola vez lo que debía escribirse dos (sílaba, letra o palabra repetida)."
+    },
+    {
+      "t": "Ditografía",
+      "n": "Se repite indebidamente una letra, sílaba o palabra."
+    },
+    {
+      "t": "Salto de igual a igual (saut du même au même)",
+      "n": "El ojo del copista salta de una palabra a otra idéntica o semejante, omitiendo lo intermedio; se produce por homeotéleuton (finales iguales) u homeoarcton (comienzos iguales)."
+    },
+    {
+      "t": "Metátesis",
+      "n": "Inversión del orden de letras o palabras."
+    },
+    {
+      "t": "Confusión paleográfica",
+      "n": "Lectura errónea de letras parecidas en el modelo: en minúscula carolingia u/n, c/t, cl/d, rn/m, ſ/f; en capital y uncial E/F, O/C/G, I/T, LI/U."
+    },
+    {
+      "t": "Itacismo",
+      "n": "Confusión gráfica en griego de ι, η, υ, ει, οι, pronunciados /i/ desde época bizantina; también αι/ε."
+    },
+    {
+      "t": "Error de abreviatura",
+      "n": "Resolución equivocada de una abreviatura del modelo (p. ej. per / pro / prae; nasal marcada con lineta)."
+    },
+    {
+      "t": "Mala división de palabras",
+      "n": "Separación errónea de un texto copiado de un modelo en scriptio continua."
+    },
+    {
+      "t": "Glosa intrusa",
+      "n": "Una anotación interlineal o marginal pasa al texto, sustituyéndolo o duplicándolo."
+    },
+    {
+      "t": "Banalización (lectio facilior)",
+      "n": "El copista sustituye una palabra rara o difícil por otra más común."
+    },
+    {
+      "t": "Error de dictado o de memoria",
+      "n": "Sustituciones por homofonía o por retener mal la frase leída; frecuentes en griego bizantino y en latín medieval."
+    },
+    {
+      "t": "Interpolación",
+      "n": "Adición deliberada al texto (aclaración, armonización, censura o completamiento)."
+    },
+    {
+      "t": "Contaminación",
+      "n": "Un copista combina lecturas de varios modelos: rompe la transmisión vertical y dificulta el estemma."
+    }
+  ],
+  "principia": [
+    {
+      "t": "Recensio",
+      "n": "Reunión y examen de todos los testimonios para reconstruir la relación entre ellos (estemma) y, a partir de ella, el arquetipo."
+    },
+    {
+      "t": "Examinatio",
+      "n": "Juicio sobre si el texto reconstruido del arquetipo es el original o está corrupto."
+    },
+    {
+      "t": "Emendatio / divinatio",
+      "n": "Corrección del texto corrupto por conjetura, apoyada en el usus scribendi, la lengua, la métrica y el sentido."
+    },
+    {
+      "t": "Errores conjuntivos y separativos",
+      "n": "Errores comunes que prueban el parentesco de dos testimonios (conjuntivos) o su independencia (separativos). Base del método estemático (Lachmann, Maas)."
+    },
+    {
+      "t": "Eliminatio codicum descriptorum",
+      "n": "Se descartan los códices copiados de otro conservado, porque no aportan testimonio independiente."
+    },
+    {
+      "t": "Recentiores non deteriores",
+      "n": "Un códice reciente puede conservar lecturas genuinas de una rama perdida (Pasquali)."
+    },
+    {
+      "t": "Lectio difficilior potior",
+      "n": "Entre variantes igualmente atestiguadas, la más difícil suele ser la original, porque los copistas tienden a simplificar."
+    },
+    {
+      "t": "Usus scribendi",
+      "n": "Criterio que valora las variantes según el estilo, la lengua y la técnica del autor."
+    },
+    {
+      "t": "Tradición abierta y cerrada",
+      "n": "Cerrada: estemma reconstruible sin contaminación; abierta: contaminación y transmisión horizontal (Pasquali)."
+    },
+    {
+      "t": "Método del codex optimus (Bédier)",
+      "n": "Se edita el mejor testimonio corrigiendo solo los errores evidentes, como alternativa al estemma bífido."
+    },
+    {
+      "t": "Aparato positivo y negativo",
+      "n": "Positivo: registra lema y testimonios que lo apoyan, y variantes con los suyos. Negativo: registra solo los testimonios que se apartan."
+    }
+  ],
+  "codicologia": [
+    {
+      "t": "Cuaderno (fascículo)",
+      "n": "Unidad de construcción del códice: binión (2 bifolios), ternión (3), cuaternión (4, el más común en la Edad Media), quinión (5)."
+    },
+    {
+      "t": "Bifolio",
+      "n": "Hoja doblada que da dos folios (cuatro páginas)."
+    },
+    {
+      "t": "Regla de Gregory",
+      "n": "En el pergamino, al abrir el cuaderno se enfrentan siempre lado carne con lado carne y lado pelo con lado pelo."
+    },
+    {
+      "t": "Recto / verso",
+      "n": "Cara anterior (r) y posterior (v) de un folio; los códices se citan por folio (f. 12v), no por página."
+    },
+    {
+      "t": "Reclamo y signatura",
+      "n": "Reclamo: palabra al pie del último folio que anuncia el comienzo del cuaderno siguiente. Signatura: letra o número que ordena los cuadernos."
+    },
+    {
+      "t": "Pautado (ruling)",
+      "n": "Líneas trazadas a punta seca, plomo o tinta para guiar la escritura; su tipo ayuda a datar y localizar el códice."
+    },
+    {
+      "t": "Palimpsesto",
+      "n": "Códice cuyo texto primitivo fue raspado para escribir otro encima (p. ej. el De re publica de Cicerón, Vat. lat. 5757)."
+    },
+    {
+      "t": "Scriptio continua",
+      "n": "Escritura sin separación de palabras, normal en la Antigüedad; origen de errores de división."
+    },
+    {
+      "t": "Incipit / explicit",
+      "n": "Fórmulas de comienzo y fin de obra o libro, a menudo en rúbrica (tinta roja)."
+    },
+    {
+      "t": "Colofón",
+      "n": "Nota final del copista con su nombre, fecha, lugar o comitente."
+    },
+    {
+      "t": "Escrituras latinas",
+      "n": "Capital cuadrada y rústica (s. I–V), uncial y semiuncial (s. IV–VIII), minúscula carolingia (s. VIII–XII; p. ej. el Harleianus 2767), gótica textual (s. XII–XV), humanística (s. XV)."
+    },
+    {
+      "t": "Escrituras griegas",
+      "n": "Mayúscula bíblica y ojival, minúscula desde el s. IX (minúscula antigua, perlschrift), con espíritus y acentos sistemáticos solo en la minúscula."
+    },
+    {
+      "t": "Materiales",
+      "n": "Papiro (rollo, volumen), pergamino (códice desde el s. IV generalizado), papel (en Occidente desde el s. XII–XIII; filigranas útiles para datar)."
+    },
+    {
+      "t": "Arquetipo e hiparquetipo",
+      "n": "Arquetipo: ejemplar perdido del que deriva toda la tradición conservada. Hiparquetipo: cabeza perdida de una rama."
+    }
+  ],
+  "abbreviaturae": [
+    {
+      "s": "⁊",
+      "n": "et (nota tironiana)"
+    },
+    {
+      "s": "ꝑ",
+      "n": "per / par"
+    },
+    {
+      "s": "ꝓ",
+      "n": "pro"
+    },
+    {
+      "s": "ꝯ",
+      "n": "con- / com-"
+    },
+    {
+      "s": "ꝰ",
+      "n": "-us (desinencia)"
+    },
+    {
+      "s": "ā, ē, ō…",
+      "n": "lineta sobre vocal: nasal omitida (m / n)"
+    },
+    {
+      "s": "q̄",
+      "n": "que / quam (según contexto)"
+    },
+    {
+      "s": "÷",
+      "n": "est (en manuscritos insulares y carolingios)"
+    },
+    {
+      "s": "dñs",
+      "n": "dominus (nomen sacrum abreviado)"
+    },
+    {
+      "s": "ds̄",
+      "n": "deus (nomen sacrum)"
+    },
+    {
+      "s": "sps̄ / sp̄s",
+      "n": "spiritus"
+    },
+    {
+      "s": "ihs / xps",
+      "n": "Iesus / Christus (con letras griegas: ΙΗΣ, ΧΡΣ)"
+    }
+  ],
+  "hermeneutica": [
+    {
+      "t": "Sentido literal (sensus litteralis / peshat)",
+      "n": "Lo que el texto dice según su lengua, su gramática y su contexto histórico."
+    },
+    {
+      "t": "Cuatro sentidos de la Escritura",
+      "n": "Literal o histórico, alegórico, moral o tropológico y anagógico; sistematizados en el dístico de Agustín de Dacia (s. XIII)."
+    },
+    {
+      "t": "PaRDeS",
+      "n": "Acrónimo de la exégesis judía medieval: peshat (literal), remez (alusivo), derash (homilético) y sod (místico)."
+    },
+    {
+      "t": "Escuela alejandrina y antioquena",
+      "n": "Alejandría (Filón, Orígenes): lectura alegórica. Antioquía (Diodoro, Teodoro de Mopsuestia): primacía del sentido literal-histórico."
+    },
+    {
+      "t": "Círculo hermenéutico",
+      "n": "El todo se comprende desde las partes y las partes desde el todo (Schleiermacher, Dilthey); Gadamer lo amplía a la relación entre intérprete y tradición."
+    },
+    {
+      "t": "Fusión de horizontes",
+      "n": "Gadamer: la comprensión resulta del encuentro entre el horizonte del texto y el del intérprete."
+    },
+    {
+      "t": "Historia de los efectos (Wirkungsgeschichte)",
+      "n": "El texto se comprende también por la historia de su recepción."
+    },
+    {
+      "t": "Método histórico-crítico",
+      "n": "Conjunto de métodos que estudian el texto en su génesis: crítica textual, de fuentes, de formas y de redacción."
+    },
+    {
+      "t": "Crítica de fuentes (Quellenforschung)",
+      "n": "Identificación de las fuentes escritas que el autor usó (p. ej. Varrón, Posidonio, Hermógenes y Pitio en Vitruvio)."
+    },
+    {
+      "t": "Crítica de las formas (Formgeschichte) y Sitz im Leben",
+      "n": "Estudio de los géneros menores y del contexto vital en que se usaban (Gunkel, Dibelius, Bultmann)."
+    },
+    {
+      "t": "Crítica de la redacción",
+      "n": "Estudio de cómo un autor o redactor organiza y modifica sus materiales."
+    },
+    {
+      "t": "Intertextualidad y loci paralleli",
+      "n": "Relaciones verbales y temáticas entre textos; los pasajes paralelos son el instrumento básico del comentario (Lexicon: herramienta «Paralelos»)."
+    },
+    {
+      "t": "Comentario lemático",
+      "n": "Forma clásica del comentario filológico: lema (palabra o frase del texto) seguido de explicación lingüística, real, literaria e histórica."
+    }
+  ],
+  "exegesis_template": [
+    {
+      "k": "textus",
+      "t": "Texto y crítica textual",
+      "h": "Establecimiento del texto, variantes significativas, testimonios y conjeturas."
+    },
+    {
+      "k": "lingua",
+      "t": "Lengua, morfología y sintaxis",
+      "h": "Formas difíciles, construcciones, orden de palabras, métrica."
+    },
+    {
+      "k": "lexis",
+      "t": "Léxico y semántica",
+      "h": "Términos técnicos, campo semántico, uso en el autor y en la época."
+    },
+    {
+      "k": "litteralis",
+      "t": "Sentido literal",
+      "h": "Paráfrasis precisa de lo que el texto dice."
+    },
+    {
+      "k": "contextus",
+      "t": "Contexto histórico y material",
+      "h": "Realia, arqueología, instituciones, fecha y lugar."
+    },
+    {
+      "k": "fontes",
+      "t": "Fuentes y paralelos",
+      "h": "Fuentes del autor, loci paralleli, intertextualidad."
+    },
+    {
+      "k": "interpretatio",
+      "t": "Interpretación",
+      "h": "Problemas de sentido, posiciones de la crítica, sentido figurado si procede."
+    },
+    {
+      "k": "receptio",
+      "t": "Recepción",
+      "h": "Uso del pasaje en la tradición posterior (comentaristas, ediciones, arte, arquitectura)."
+    }
+  ],
+  "escrituras": {
+    "version": "2026-11-06",
+    "title": "Historia de escrituras, testimonios materiales y signos egipcios",
+    "method": "El signo egipcio (fonograma, logograma o determinativo) no se equipara a una letra alfabética moderna. Los árboles son esquemas didácticos de transmisión paleográfica, no facsímiles de formas históricas concretas. Cuneiforme mesopotámico y jeroglífico egipcio son tradiciones de escritura distintas; el alfabeto cuneiforme de Ugarit es una rama alfabética particular, no el antepasado gráfico del fenicio. La datación de inscripciones alfabéticas tempranas es debatida. «Primera aparición en el corpus local» no equivale al testimonio físico más antiguo de una palabra.",
+    "sites_note": "Hierápolis (Hierapolis) no es un origen establecido del alfabeto; puede confundirse con Hieracómpolis/Hierakonpolis (Nejen, importante sitio egipcio temprano). Para el origen del alfabeto semítico, las fuentes relevantes señalan Serabit el-Jadim y Wadi el-Hol, con dataciones discutidas.",
+    "sources": [
+      {
+        "id": "met",
+        "name": "Metropolitan Museum of Art · Alphabet Origins: From Kipling to Sinai",
+        "url": "https://www.metmuseum.org/exhibitions/listings/2014/assyria-to-iberia/blog/posts/alphabet"
+      },
+      {
+        "id": "yale",
+        "name": "Yale · Darnell et al., Wadi el-Hol inscriptions",
+        "url": "https://nelc.yale.edu/publications/two-early-alphabetic-inscriptions-wadi-el-hol-new-evidence-origin-alphabet-western"
+      },
+      {
+        "id": "antiquity",
+        "name": "Antiquity (2021) · Tel Lachish y alfabetos tempranos",
+        "url": "https://www.cambridge.org/core/journals/antiquity/article/early-alphabetic-writing-in-the-ancient-near-east-the-missing-link-from-tel-lachish/C73F769B7CF3A7E4E2607958A096B7D8"
+      },
+      {
+        "id": "cam",
+        "name": "University of Cambridge · escritura ugarítica y alfabeto",
+        "url": "https://www.cam.ac.uk/research/news/easy-as-alep-bet-gimel-cambridge-research-explores-social-context-of-ancient-writing"
+      },
+      {
+        "id": "unicode",
+        "name": "Unicode Standard · Egyptian Hieroglyphs y categorías Gardiner",
+        "url": "https://www.unicode.org/versions/Unicode18.0.0/core-spec/chapter-11/"
+      },
+      {
+        "id": "ucl",
+        "name": "UCL · Egyptian Grammar y referencia de signos Gardiner",
+        "url": "https://www.ucl.ac.uk/archaeology/sites/archaeology/files/arcl0044_introduction_ancient_egyptian_language_handbook_20232024.pdf"
+      },
+      {
+        "id": "israel",
+        "name": "Israel Museum · The Invention of the Alphabet",
+        "url": "https://museum.imj.org.il/en/exhibitions/2016/pharaoh-in-canaan/page/?id=invention-of-the-alphabet"
+      }
+    ],
+    "branches": [
+      {
+        "title": "Línea semítica occidental (esquema)",
+        "nodes": [
+          "Jeroglíficos egipcios (influencias iconográficas)",
+          "Inscripciones alfabéticas tempranas: Serabit el-Jadim / Wadi el-Hol",
+          "Alfabeto cananeo temprano",
+          "Fenicio"
+        ],
+        "source": [
+          "met",
+          "antiquity",
+          "yale"
+        ]
+      },
+      {
+        "title": "Dos desarrollos desde el fenicio",
+        "nodes": [
+          "Fenicio → Arameo imperial → Escritura hebrea cuadrada",
+          "Fenicio → Griego → Etrusco / latín"
+        ],
+        "source": [
+          "cam",
+          "antiquity"
+        ]
+      },
+      {
+        "title": "Tradición cuneiforme (paralela)",
+        "nodes": [
+          "Cuneiforme mesopotámico: sistema independiente de signos",
+          "Alfabeto cuneiforme de Ugarit: escritura alfabética con cuñas, no antecesor gráfico del fenicio"
+        ],
+        "source": [
+          "cam"
+        ]
+      }
+    ],
+    "letters": [
+      {
+        "latin": "A",
+        "name": "aleph",
+        "motif": "cabeza de bóvido",
+        "phoenician": "𐤀",
+        "aramaic": "𐡀",
+        "hebrew": "א",
+        "greek": "Α",
+        "latinFrom": "A",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "B",
+        "name": "bet",
+        "motif": "casa",
+        "phoenician": "𐤁",
+        "aramaic": "𐡁",
+        "hebrew": "ב",
+        "greek": "Β",
+        "latinFrom": "B",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "G",
+        "name": "gimel",
+        "motif": "posible bastón o camello; interpretación discutida",
+        "phoenician": "𐤂",
+        "aramaic": "𐡂",
+        "hebrew": "ג",
+        "greek": "Γ",
+        "latinFrom": "C / G (vías posteriores)",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "D",
+        "name": "dalet",
+        "motif": "puerta",
+        "phoenician": "𐤃",
+        "aramaic": "𐡃",
+        "hebrew": "ד",
+        "greek": "Δ",
+        "latinFrom": "D",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "E",
+        "name": "he",
+        "motif": "figura o ventana; interpretación debatida",
+        "phoenician": "𐤄",
+        "aramaic": "𐡄",
+        "hebrew": "ה",
+        "greek": "Ε",
+        "latinFrom": "E",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "F",
+        "name": "waw",
+        "motif": "gancho o clavija",
+        "phoenician": "𐤅",
+        "aramaic": "𐡅",
+        "hebrew": "ו",
+        "greek": "Ϝ (digamma)",
+        "latinFrom": "F",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "I",
+        "name": "yod",
+        "motif": "mano",
+        "phoenician": "𐤉",
+        "aramaic": "𐡉",
+        "hebrew": "י",
+        "greek": "Ι",
+        "latinFrom": "I",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "K",
+        "name": "kaph",
+        "motif": "palma de la mano",
+        "phoenician": "𐤊",
+        "aramaic": "𐡊",
+        "hebrew": "כ",
+        "greek": "Κ",
+        "latinFrom": "K",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "L",
+        "name": "lamed",
+        "motif": "aguijada",
+        "phoenician": "𐤋",
+        "aramaic": "𐡋",
+        "hebrew": "ל",
+        "greek": "Λ",
+        "latinFrom": "L",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "M",
+        "name": "mem",
+        "motif": "agua",
+        "phoenician": "𐤌",
+        "aramaic": "𐡌",
+        "hebrew": "מ",
+        "greek": "Μ",
+        "latinFrom": "M",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "N",
+        "name": "nun",
+        "motif": "pez o serpiente; discutido",
+        "phoenician": "𐤍",
+        "aramaic": "𐡍",
+        "hebrew": "נ",
+        "greek": "Ν",
+        "latinFrom": "N",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "R",
+        "name": "resh",
+        "motif": "cabeza",
+        "phoenician": "𐤓",
+        "aramaic": "𐡓",
+        "hebrew": "ר",
+        "greek": "Ρ",
+        "latinFrom": "R",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      },
+      {
+        "latin": "T",
+        "name": "taw",
+        "motif": "marca o señal",
+        "phoenician": "𐤕",
+        "aramaic": "𐡕",
+        "hebrew": "ת",
+        "greek": "Τ",
+        "latinFrom": "T",
+        "note": "Correspondencias convencionales de la familia de letras; los valores y las formas cambiaron a lo largo del tiempo."
+      }
+    ],
+    "gardiner": [
+      {
+        "code": "G1",
+        "glyph": "𓄿",
+        "value": "ꜣ",
+        "depiction": "buitre",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "M17",
+        "glyph": "𓇋",
+        "value": "j / ỉ",
+        "depiction": "hoja de caña",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "M17a",
+        "glyph": "𓇌",
+        "value": "y",
+        "depiction": "dos hojas de caña",
+        "function": "fonograma"
+      },
+      {
+        "code": "D36",
+        "glyph": "𓂝",
+        "value": "ꜥ",
+        "depiction": "antebrazo",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "G43",
+        "glyph": "𓅱",
+        "value": "w",
+        "depiction": "polluelo de codorniz",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "D58",
+        "glyph": "𓃀",
+        "value": "b",
+        "depiction": "pie",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "Q3",
+        "glyph": "𓊪",
+        "value": "p",
+        "depiction": "asiento",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "I9",
+        "glyph": "𓆑",
+        "value": "f",
+        "depiction": "víbora cornuda",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "G17",
+        "glyph": "𓅓",
+        "value": "m",
+        "depiction": "búho",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "N35",
+        "glyph": "𓈖",
+        "value": "n",
+        "depiction": "ondulación de agua",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "D21",
+        "glyph": "𓂋",
+        "value": "r",
+        "depiction": "boca",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "O4",
+        "glyph": "𓉔",
+        "value": "h",
+        "depiction": "planta de refugio",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "V28",
+        "glyph": "𓎛",
+        "value": "ḥ",
+        "depiction": "mecha trenzada",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "Aa1",
+        "glyph": "𓐍",
+        "value": "ḫ",
+        "depiction": "tamiz o signo de interpretación debatida",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "F32",
+        "glyph": "𓄡",
+        "value": "ẖ",
+        "depiction": "vientre de animal",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "S29",
+        "glyph": "𓋴",
+        "value": "s",
+        "depiction": "tela plegada",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "O34",
+        "glyph": "𓊃",
+        "value": "z / s",
+        "depiction": "cerrojo",
+        "function": "fonograma; valor histórico variable"
+      },
+      {
+        "code": "N37",
+        "glyph": "𓈙",
+        "value": "š",
+        "depiction": "estanque",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "N29",
+        "glyph": "𓈎",
+        "value": "q",
+        "depiction": "colina",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "V31",
+        "glyph": "𓎡",
+        "value": "k",
+        "depiction": "cesta con asa",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "W11",
+        "glyph": "𓎼",
+        "value": "g",
+        "depiction": "soporte de vasija",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "X1",
+        "glyph": "𓏏",
+        "value": "t",
+        "depiction": "pan redondo",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "V13",
+        "glyph": "𓍿",
+        "value": "ṯ",
+        "depiction": "cuerda de amarre",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "D46",
+        "glyph": "𓂧",
+        "value": "d",
+        "depiction": "mano",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "I10",
+        "glyph": "𓆓",
+        "value": "ḏ",
+        "depiction": "cobra",
+        "function": "fonograma uniconsonántico"
+      },
+      {
+        "code": "A1",
+        "glyph": "𓀀",
+        "value": "—",
+        "depiction": "hombre sentado",
+        "function": "determinativo de persona; no signo de una sola letra"
+      },
+      {
+        "code": "B1",
+        "glyph": "𓁐",
+        "value": "—",
+        "depiction": "mujer sentada",
+        "function": "determinativo; no signo de una sola letra"
+      },
+      {
+        "code": "N1",
+        "glyph": "𓇯",
+        "value": "pt",
+        "depiction": "cielo",
+        "function": "signo logográfico/determinativo según contexto"
+      },
+      {
+        "code": "N5",
+        "glyph": "𓇳",
+        "value": "rꜥ",
+        "depiction": "disco solar",
+        "function": "logograma o determinativo según contexto"
+      },
+      {
+        "code": "N14",
+        "glyph": "𓇼",
+        "value": "sbꜣ / dwꜣ",
+        "depiction": "estrella",
+        "function": "signo con varios valores según contexto"
+      },
+      {
+        "code": "O1",
+        "glyph": "𓉐",
+        "value": "pr",
+        "depiction": "planta de casa",
+        "function": "logograma o determinativo; pr «casa»"
+      },
+      {
+        "code": "R8",
+        "glyph": "𓊹",
+        "value": "nṯr",
+        "depiction": "estandarte sagrado",
+        "function": "logograma/determinativo de divinidad"
+      },
+      {
+        "code": "S34",
+        "glyph": "𓋹",
+        "value": "ꜥnḫ",
+        "depiction": "cruz anj",
+        "function": "logograma «vida»"
+      }
+    ],
+    "witnesses": [
+      {
+        "id": "serabit",
+        "name": "Inscripciones protosinaíticas de Serabit el-Jadim",
+        "dating": "Segundo milenio a. C.; datación precisa debatida",
+        "medium": "Inscripciones sobre piedra",
+        "script": "Alfabeto semítico temprano",
+        "note": "Evidencia para historia del alfabeto; no atribuye aquí un primer uso de «regla» ni de otro lema.",
+        "sources": [
+          "met",
+          "israel"
+        ]
+      },
+      {
+        "id": "wadi",
+        "name": "Inscripciones alfabéticas de Wadi el-Hol",
+        "dating": "Probablemente finales del Reino Medio egipcio; cronología discutida",
+        "medium": "Inscripciones rupestres",
+        "script": "Alfabeto temprano",
+        "note": "Publicación epigráfica documentada; el problema del origen y la cronología permanece abierto.",
+        "sources": [
+          "yale"
+        ]
+      },
+      {
+        "id": "lachish",
+        "name": "Inscripción alfabética temprana de Tel Lachish",
+        "dating": "Siglo XV a. C. (según estudio publicado en 2021)",
+        "medium": "Fragmento cerámico inscrito",
+        "script": "Alfabeto temprano levantino",
+        "note": "Inscripción fechada, no un testimonio de todas las palabras modernas que puedan buscarse.",
+        "sources": [
+          "antiquity"
+        ]
+      },
+      {
+        "id": "ugarit",
+        "name": "Abecedarios ugaríticos en tablillas",
+        "dating": "Segundo milenio a. C., Edad del Bronce Final",
+        "medium": "Tablillas de arcilla",
+        "script": "Alfabeto cuneiforme ugarítico",
+        "note": "Tradición alfabética con grafía cuneiforme; no es una secuencia cuneiforme → fenicio.",
+        "sources": [
+          "cam"
+        ]
+      },
+      {
+        "id": "harley",
+        "name": "Harley MS 2767 (Codex H de Vitruvio)",
+        "dating": "Época carolingia",
+        "medium": "Códice medieval",
+        "script": "Latín manuscrito",
+        "note": "Testimonio de De architectura enlazado a la biblioteca; no se afirma presencia ni folio de una palabra sin colación.",
+        "localUrl": "codex-h-folios-local.html",
+        "sources": []
+      }
+    ],
+    "lookup": [
+      {
+        "queries": [
+          "regla",
+          "rule",
+          "ruler",
+          "regula",
+          "κανών",
+          "norma",
+          "règle",
+          "lineal"
+        ],
+        "title": "Regla: instrumento de medición y criterio normativo",
+        "equivalents": [
+          {
+            "lang": "la",
+            "word": "regula",
+            "label": "latín · regla recta / precepto"
+          },
+          {
+            "lang": "la",
+            "word": "norma",
+            "label": "latín · escuadra / norma"
+          },
+          {
+            "lang": "grc",
+            "word": "κανών",
+            "label": "griego · caña recta, medida, regla o canon"
+          }
+        ],
+        "note": "No se ha verificado todavía cuál es el papiro, tablilla o códice conservado más antiguo que contiene cada término concreto. Abra el lema para consultar su primera aparición dentro del corpus local; la fecha de composición no es la fecha del manuscrito conservado.",
+        "refs": [
+          "met",
+          "antiquity"
+        ]
+      },
+      {
+        "queries": [
+          "alfabeto",
+          "alphabet",
+          "alphabetic",
+          "letra",
+          "letter",
+          "escritura",
+          "writing",
+          "schrift"
+        ],
+        "title": "Historia de la escritura alfabética",
+        "equivalents": [
+          {
+            "lang": "la",
+            "word": "littera",
+            "label": "latín · letra"
+          },
+          {
+            "lang": "grc",
+            "word": "γράμμα",
+            "label": "griego · signo, letra"
+          }
+        ],
+        "note": "Los testimonios epigráficos de Serabit el-Jadim, Wadi el-Hol y Tel Lachish documentan alfabetos tempranos, no la primera aparición de todas las palabras relacionadas.",
+        "refs": [
+          "met",
+          "yale",
+          "antiquity"
+        ]
+      },
+      {
+        "queries": [
+          "casa",
+          "house",
+          "home",
+          "domus",
+          "οἶκος"
+        ],
+        "title": "Casa: vocabulario arquitectónico antiguo",
+        "equivalents": [
+          {
+            "lang": "la",
+            "word": "domus",
+            "label": "latín · casa"
+          },
+          {
+            "lang": "la",
+            "word": "aedes",
+            "label": "latín · edificio / templo"
+          },
+          {
+            "lang": "grc",
+            "word": "οἶκος",
+            "label": "griego · casa, hogar"
+          }
+        ],
+        "note": "Los signos jeroglíficos y los lemas latinos o griegos se presentan como sistemas lingüísticos distintos. El objeto material más antiguo con cada voz debe acreditarse por separado.",
+        "refs": [
+          "ucl",
+          "unicode"
+        ]
+      }
+    ]
+  }
 }
