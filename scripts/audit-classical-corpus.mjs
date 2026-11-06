@@ -99,6 +99,20 @@ assert(/Bennett/.test(characterEn.attribution)&&/1902/.test(characterEn.attribut
 assert(characterEn.passages.every(p=>p.text&&p.text.length>150),
  "Empty or truncated Theophrastus English chapter");
 
+// Catullus: do not index bibliographic placeholders as translated poems.
+const catullusEn=read("data/classics-corpus/catullus-carmina-en.json");
+const catullusPoemIds=catullusEn.passages.map(p=>Number(p.locus));
+assert.equal(catullusEn.passages.length,112,"Catullus must contain 112 substantive English poems");
+assert.equal(new Set(catullusPoemIds).size,112,"Duplicate numbered Catullus poem");
+assert([18,19,20,67].every(n=>!catullusPoemIds.includes(n)),
+ "Placeholder or missing Catullus poem must not be labelled as translated");
+assert(catullusEn.passages.every(p=>typeof p.text==="string"&&p.text.length>30),
+ "Catullus translation contains an empty or reference-only poem");
+assert.equal(catullusEn.alignmentStatus,"work",
+ "Different Latin and English editions must not claim line-by-line alignment");
+assert(/Smithers/.test(catullusEn.attribution)&&/1894/.test(catullusEn.attribution),
+ "Catullus translator and edition missing");
+
 const corpusJson=readdirSync(pathOf("data/classics-corpus")).filter(p=>/-(?:grc|la|es|en|fr|it|de|pt)\.json$/.test(p));
 for(const file of corpusJson)assert(unique.has("data/classics-corpus/"+file),"Unindexed classical corpus asset: "+file);
 const htmlFiles=readdirSync(pathOf("corpus")).filter(p=>p.endsWith(".html"));

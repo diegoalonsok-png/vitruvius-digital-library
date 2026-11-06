@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 28,
+    "indexedTextVersions": 29,
     "indexedDistinctWorks": 14,
     "manuscriptWitnesses": 23
   },
@@ -1318,10 +1318,12 @@
       "dating": "siglo I a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
-        "corpus/catullus-carmina-la.html"
+        "corpus/catullus-carmina-la.html",
+        "data/classics-corpus/catullus-carmina-en.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
