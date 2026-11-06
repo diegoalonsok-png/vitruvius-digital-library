@@ -379,6 +379,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   </div>
  </div>
  <p id="lx-state" role="status">Preparando el Lexicon…</p>
+  <section id="lx-encyclopedia" class="lx-encyclopedia" hidden aria-label="Contexto enciclopédico complementario y enlaces a fuentes externas"></section>
  <article id="lx-entry" hidden></article>
   <article id="lx-antiguedad-resultados" hidden aria-label="Fuentes documentales antiguas y límites de atestiguación"></article>
  <div class="results-grid">
@@ -639,5 +640,14 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lang-selector-v2" defer></script>
+<style>
+#lx-encyclopedia[hidden]{display:none!important}
+#lx-encyclopedia{margin:12px 0 18px;padding:12px 16px;border:1px solid var(--line,#474747);border-radius:8px;font-size:13px;line-height:1.5}
+#lx-encyclopedia .lx-encyclopedia-heading{display:block;font-weight:600;letter-spacing:.015em;margin-bottom:3px}
+#lx-encyclopedia .lx-encyclopedia-summary{margin:2px 0 5px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+#lx-encyclopedia .lx-encyclopedia-links{font-size:12px}
+#lx-encyclopedia .lx-encyclopedia-links a{text-decoration:underline;text-underline-offset:2px}
+</style>
+<script src="assets/lexicon-encyclopedia.js?v=20261106-context-v1" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-encyc-context-v1" defer></script>
 </body></html>
