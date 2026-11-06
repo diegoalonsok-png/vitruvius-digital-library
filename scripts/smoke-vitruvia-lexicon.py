@@ -30,6 +30,8 @@ CASES = [
     ("q=libro%20I,%20ii%20del%20libro%20de%20vitruvio&mode=palabra", 0, 0, "Vitr. 1.2.1"),
     ("q=vitruvius%20pref%20I,%20II&mode=palabra", 0, 0, "Vitr. 1.praef.2"),
     ("q=Her%C3%B3doto%20II%2035&mode=palabra", 0, 0, "Hdt. 2.35"),
+    # Paralelos de Vitruvio: el préstamo de Plinio sobre los ladrillos (Vitr. 2.3.1 ↔ Plin. Nat. 35.170)
+    ("work=vitruvius&locus=2.3.1&q=lateribus", 1, 200, "Posibles fuentes y paralelos"),
     # Etimología: «canto» no debe encontrar «encanto» dentro de la ficha de venustas
     ("q=canto&mode=etimologia&lang=es", 0, 0, "árbol etimológico de «canto»"),
 ]

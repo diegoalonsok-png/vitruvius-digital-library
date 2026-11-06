@@ -225,6 +225,8 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Posibles fuentes y paralelos":["Possible sources and parallels","Sources et parallèles possibles"],"afinidad":["affinity","affinité"],
+ "Afinidad léxica (coseno tf-idf entre lemas). Son candidatos para el estudio de fuentes y recepción: la coincidencia puede deberse al tema común y no a una relación textual.":["Lexical affinity (tf-idf cosine between lemmas). These are candidates for source and reception studies: the overlap may reflect a shared subject rather than a textual relationship.","Affinité lexicale (cosinus tf-idf entre lemmes). Ce sont des candidats pour l'étude des sources et de la réception : la coïncidence peut tenir au sujet commun et non à une relation textuelle."],
  "En Vitruvia":["In Vitruvia","Dans Vitruvia"],"Buscar en Vitruvia sin perder este lugar de lectura":["Search in Vitruvia without losing your place","Chercher dans Vitruvia sans perdre la page"],
  "sección":["section","section"],
  "Cita reconocida":["Citation recognised","Citation reconnue"],"El locus comprende":["The locus comprises","Le locus comprend"],"Mostrarlos todos":["Show them all","Les afficher tous"],
@@ -348,6 +350,7 @@ function hitCard(D,h){
  {const amb=ambiguity(D,text,h.spans,p);if(amb)card.append(amb)}
  const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.append(trBox);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
  const also=alsoIn(D,p);if(also)card.append(also);
+ if(p[0]==="vitruvius"&&D.l==="la"){const par=paralleliBox(D,p);if(par)card.append(par)}
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
  actions.append(el("button",{type:"button",class:"lx-primary",onclick:()=>openViewer(D,p,h.spans,S.q)},p[0]==="vitruvius"?"Leer con traducción (ES · FR · EN)":"Leer con traducción"));
@@ -989,6 +992,23 @@ function ambiguity(D,text,spans,p){
  parts.forEach((x,i)=>{if(i)line.append(" · ");line.append(x)});return line;
 }
 function ambiguityCount(D,hits){let n=0;for(const h of hits.slice(0,3000)){const p=D.corpus.passages[h.i];if(h.spans.some(([a,b])=>{const f=p[2].slice(a,b);return !verifiedLemma(D,p,f)&&new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0])).size>1}))n++}return n}
+/* ---------- Posibles fuentes y paralelos de Vitruvio (scripts/build-vitruvius-paralleli.py) ---------- */
+let PARALLELI=null;
+function paralleliBox(D,p){
+ const det=el("details",{class:"lx-also lx-par"},el("summary",{},T("Posibles fuentes y paralelos")+"…"));
+ PARALLELI=PARALLELI||load("data/lexicon/paralleli-vitruvius.json").catch(()=>null);
+ PARALLELI.then(P=>{const c=P?.loci?.[p[1]];if(!c?.length){det.remove();return}det.firstChild.textContent=`${T("Posibles fuentes y paralelos")} (${c.length})`;
+  det.addEventListener("toggle",()=>{if(!det.open||det.querySelector("ol"))return;
+   D._idx=D._idx||new Map(D.corpus.passages.map((q,i)=>[q[0]+"\u0000"+q[1],i]));
+   const ol=el("ol",{});
+   for(const [wid,loc,sc,shared] of c){const i=D._idx.get(wid+"\u0000"+loc);const q=i!=null?D.corpus.passages[i]:null;const w=work(D,wid);
+    const keys=new Set(shared.map(fold));const spans=[];if(q)for(const m of q[2].matchAll(TOKEN)){const an=analyses(D,fold(m[0]).replace(/'+$/,""));if((an.length?an.map(a=>fold(lemmaDisplay(a[0]))):[fold(m[0])]).some(x=>keys.has(x)))spans.push([m.index,m.index+m[0].length])}
+    const li=el("li",{},el("b",{},`${w.cite||w.author} ${loc}`)," ",el("small",{},`· ${T("afinidad")} ${sc.toFixed(2)} · `,el("span",{lang:"la"},shared.slice(0,6).join(", "))));
+    if(q){const k=kwic(q[2],spans.length?spans:[[0,0]],22);const snip=el("p",{class:"lx-kwic lx-par-snip",lang:"la"});snip.append(k.pre?"… ":"",linkWords(q[2].slice(k.a,k.b),spans.map(([a,b])=>[a-k.a,b-k.a])," / "),k.post?" …":"");li.append(snip,el("button",{type:"button",class:"lx-btn",onclick:()=>openViewer(D,q,spans,S.q)},T("Leer con traducción")))}
+    ol.append(li)}
+   det.append(el("p",{class:"lx-small"},T("Afinidad léxica (coseno tf-idf entre lemas). Son candidatos para el estudio de fuentes y recepción: la coincidencia puede deberse al tema común y no a una relación textual.")),ol)})});
+ return det;
+}
 /* ---------- «También en…»: otras obras del corpus donde aparece la consulta ---------- */
 function alsoIn(D,p){
  const all=S.allHits||[];const by=new Map();
