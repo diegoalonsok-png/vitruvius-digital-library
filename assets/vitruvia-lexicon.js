@@ -1176,7 +1176,11 @@ async function renderEtymSearch(q){
  {const c=await findConcept(q);if(c&&Object.values(c.modern).flat().some(m=>fold(m)===fold(q.trim())))return renderModernWord(q.trim(),["es","en","fr","de"].includes(S.lang)?S.lang:null)}
  if(/^\*/.test(q.trim()))return renderPIE(q.trim());
  const k=fold(q);const he=HEBREW.test(q);if(he)return renderHebrew(q);
- const ents=(S.etym?.entries||[]).filter(e=>[e.lemma,e.head,e.tr,e.root,e.etym,...(e.gr||[]).map(x=>x.w),...(e.la||[]).map(x=>x.w),...(e.old||[]).map(x=>x.f),...(e.cog||[])].some(x=>x&&fold(x).includes(k))||(e.tr&&fold(e.tr).includes(k)));
+ /* Lemas, raíces y formas: coincidencia exacta o por comienzo; en la prosa de la etimología, solo palabras
+    enteras (que «canto» no encuentre «encanto» dentro de la ficha de venustas). */
+ const kk=k.trim().replace(/[.*+?^${}()|[\]\\]/g,"\\$&");const wordRe=new RegExp(`(^|[^\\p{L}*])${kk}([^\\p{L}]|$)`,"u");
+ const headOk=x=>{const f=fold(x).trim();return f===k.trim()||(k.trim().length>=3&&f.split(/[\s,;/·()-]+/).some(t=>t.replace(/^\*/,"").startsWith(k.trim())))};
+ const ents=(S.etym?.entries||[]).filter(e=>[e.lemma,e.head,e.tr,e.root,...(e.gr||[]).map(x=>x.w),...(e.la||[]).map(x=>x.w),...(e.old||[]).map(x=>x.f),...(e.cog||[])].some(x=>x&&headOk(x))||(e.etym&&wordRe.test(fold(e.etym))));
  setState(`${ents.length} ficha${ents.length===1?"":"s"} etimológica${ents.length===1?"":"s"} con «${q}» (lema, raíz, formas arcaicas, equivalentes o cognados).`);
  const list=$("#lx-results");
  if(ents.length===1){$("#lx-entry").hidden=false;$("#lx-entry").append(etymCard(ents[0]));}

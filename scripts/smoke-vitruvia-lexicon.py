@@ -30,6 +30,8 @@ CASES = [
     ("q=libro%20I,%20ii%20del%20libro%20de%20vitruvio&mode=palabra", 0, 0, "Vitr. 1.2.1"),
     ("q=vitruvius%20pref%20I,%20II&mode=palabra", 0, 0, "Vitr. 1.praef.2"),
     ("q=Her%C3%B3doto%20II%2035&mode=palabra", 0, 0, "Hdt. 2.35"),
+    # Etimología: «canto» no debe encontrar «encanto» dentro de la ficha de venustas
+    ("q=canto&mode=etimologia&lang=es", 0, 0, "árbol etimológico de «canto»"),
 ]
 
 
@@ -53,7 +55,7 @@ async def main():
         for q, lo, hi, must in CASES:
             await pg.goto(f"{a.base}/vitruvia-lexicon.html?{q}")
             try:
-                await pg.wait_for_function("document.querySelector('.lx-hit')||/Sin coincid|No se pudo|Ningún término|Cita reconocida/.test(document.querySelector('#lx-state').textContent)", timeout=60000)
+                await pg.wait_for_function("document.querySelector('.lx-hit')||/Sin coincid|No se pudo|Ningún término|Cita reconocida|Etimología y árbol/.test(document.querySelector('#lx-state').textContent)", timeout=60000)
             except Exception:
                 pass
             st = await pg.locator("#lx-state").inner_text()
