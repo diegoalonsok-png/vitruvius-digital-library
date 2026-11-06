@@ -505,6 +505,7 @@ function findCurated(words){
 function etymCard(e){
  const sec=el("section",{class:"lx-etym",id:"etym-"+e.id},el("h3",{},"Etimología y equivalencias ",el("small",{},"· ficha editorial")));
  if(e.editorial_status)sec.append(el("p",{class:"article-note"},"Estado de la ficha: "+e.editorial_status));
+ if(e.loci?.length)sec.append(el("p",{class:"article-note"},"Las referencias de loci enlazan con la edición y el aparato digital. La coincidencia por lema no implica identidad de lectura entre los testimonios."));
  const dl=el("dl",{class:"lx-dl"});const row=(k,v)=>{if(v&&(!Array.isArray(v)||v.length))dl.append(el("dt",{},k),el("dd",{},v))};
  row("Enunciado",el("span",{lang:e.l},e.head));row("Categoría",[e.pos,e.morph].filter(Boolean).join(" · "));if(e.tr)row("Transliteración",e.tr);
  if(e.sens?.length){const ol=el("ol",{});e.sens.forEach(s=>ol.append(el("li",{},s)));row("Acepciones",ol)}
@@ -1435,6 +1436,7 @@ function sententiaCard(s){
  card.append(el("p",{class:"lx-tr"},s.tr));
  (s.par||[]).forEach(x=>card.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.cite+": "),x.t)));
  if(s.syn)card.append(el("p",{class:"lx-syn"},el("b",{},"Nota sintáctica: "),s.syn));
+ if(s.source_status)card.append(el("p",{class:"article-note"},"Procedencia: "+s.source_status));
  if(s.lang==="he"||s.lang==="grc"){const g=numericLine(s.text);if(g)card.append(g)}
  const status=el("span",{class:"meta-line"},"");
  card.append(el("p",{class:"author"},el("cite",{},s.cite)," ",status));
@@ -1816,13 +1818,18 @@ async function init(){
  $("#nb-add").addEventListener("click",()=>{const text=prompt("Texto del pasaje (latín, griego o hebreo):");if(!text)return;const cite=prompt("Referencia (p. ej. Vitr. 1.1.1):")||"Pasaje";addToNotebook({cite,text,lang:detectLang(text)})});
  $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
- try{[S.etym,S.sent,S.phil]=await Promise.all([load("data/lexicon/etymologicum.json"),load("data/lexicon/sententiae.json"),load("data/lexicon/philologia.json")])}catch(err){console.error(err)}
+ {
+  const t0=performance.now(),files=["etymologicum","sententiae","philologia"];
+  const results=await Promise.allSettled(files.map(n=>load("data/lexicon/"+n+".json")));
+  [S.etym,S.sent,S.phil]=results.map((r,i)=>{if(r.status==="fulfilled")return r.value;console.warn("Lexicon index unavailable: "+files[i],r.reason);return null});
+  console.info("Vitruvia Lexicon metadata ready in "+Math.round(performance.now()-t0)+" ms");
+}
  if($("#comp-go")){$("#comp-go").addEventListener("click",()=>renderComparatio().catch(e=>$("#comp-out").replaceChildren(el("p",{},e.message))));$("#comp-lang").addEventListener("change",()=>{$("#comp-a").dataset.l="";renderComparatio()})}
  /* Precarga silenciosa: mientras el lector mira la página se prepara el corpus latino (y el griego en
     conexiones rápidas), para que la primera búsqueda sea inmediata. No se hace con ahorro de datos ni
     en redes lentas; si ya hay una consulta en la dirección, la búsqueda misma carga lo que necesita. */
  {const c=navigator.connection||{};const slow=c.saveData||/(^|-)2g|3g/.test(c.effectiveType||"");
-  if(!slow&&!new URLSearchParams(location.search).get("q")){const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));idle(()=>lang("la",true).then(()=>{if((c.effectiveType||"4g")==="4g")idle(()=>lang("grc",true).catch(()=>{}))}).catch(()=>{}),{timeout:4000})}}
+  if(!slow&&!new URLSearchParams(location.search).get("q")){const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));idle(()=>lang("la",true).catch(()=>{}),{timeout:4000})}}
  renderInstrumenta();renderScriptoria().catch(err=>console.error('Escrituras:',err));renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);
