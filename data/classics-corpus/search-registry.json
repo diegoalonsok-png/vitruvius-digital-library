@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 28,
+  "count": 29,
   "works": 14,
   "entries": [
     {
@@ -74,6 +74,16 @@
       "path": "data/classics-corpus/caesar-gallico-la.json",
       "reader": "classics-text-reader.html?work=caesar-gallico&lang=la",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "catullus-carmina",
+      "author": "Catulo",
+      "title": "Carmina",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/catullus-carmina-en.json",
+      "reader": "classics-text-reader.html?work=catullus-carmina&lang=en",
+      "sourceDescription": "Smithers (1894), Perseus DL CC BY-SA 4.0, 112 poemas sustantivos; faltan 18–20 y 67; cotejo a nivel de poema, no verso."
     },
     {
       "workId": "catullus-carmina",
