@@ -138,7 +138,7 @@ async function search(q,{limit=8}={}){
     author:(languageName[e.language]||e.language)+" · "+(d.attribution||e.sourceDescription||"Texto alojado").slice(0,180),
     excerpt:(e.format==="historical-ocr-pages"?"Página OCR "+first.passage.page+": ":"Locus "+first.passage.locus+": ")+snippet(first.passage.text,first.at),
     meta:e.format==="historical-ocr-pages"?"OCR HISTÓRICO · PÁGINA DE PDF · NO TEXTO CRÍTICO NI LOCUS":"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
-    rating:58+Math.min(30,total),link,source:"Bibliotheca Graeca et Latina · "+e.path,
+    rating:e.format==="historical-ocr-pages"?22+Math.min(10,total):58+Math.min(30,total),link,source:"Bibliotheca Graeca et Latina · "+e.path,
     count:total,units});
   }));
  }
