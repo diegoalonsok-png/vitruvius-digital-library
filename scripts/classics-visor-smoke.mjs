@@ -94,6 +94,17 @@ try{
     'Every semantic result must refer to an actual source locus or text fragment');
   }finally{await p.close()}
  });
+ await check('Apuleius Spanish reader labels anthology scope without deleting text',async()=>{
+  const p=await open('classics-text-reader.html?work=apuleius-metamorphoses&lang=es');
+  try{
+   await p.waitForFunction(()=>document.querySelector('#method-note')?.textContent?.includes('antología'),{timeout:25000});
+   const text=await p.locator('#method-note').innerText();
+   assert.match(text,/t22.?t245|narración de Metamorfosis/,'Apuleius anthology must identify editorial core');
+   assert.match(text,/conserva|conservan/i,'Unrelated source sections must not be suppressed');
+   assert.match(text,/no hay alineación|No hay alineación|no existe correspondencia|No existe correspondencia/);
+   assert.match(await p.locator('#source-title').innerText(),/312 unidades textuales/);
+  }finally{await p.close()}
+ });
  await check('Full-text registry searches Catullus poetry, Lucretius and English translations',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
