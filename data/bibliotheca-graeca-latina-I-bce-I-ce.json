@@ -691,7 +691,10 @@
         "editor": "Arthur S. Walpole · Henry Clark Johnson"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Traducción inglesa histórica de Theodore C. Williams (1910), 327 fragmentos de la transcripción TEI Perseus. 324 loci iniciales coinciden con las divisiones latinas; alineación parcial, no verso a verso.",
+        "chicago18Bibliography": "Virgil. *The Aeneid of Virgil*. Translated by Theodore C. Williams. Boston: Houghton Mifflin, 1910. Digital transcription, Perseus Digital Library.",
+        "bibliographicStyle": "Chicago Manual of Style, 18th edition",
+        "translationLanguage": "en"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -710,7 +713,8 @@
         "Aeneidos"
       ],
       "corpusFiles": {
-        "la": "data/classics-corpus/virgil-aeneid-la.json"
+        "la": "data/classics-corpus/virgil-aeneid-la.json",
+        "en": "data/classics-corpus/virgil-aeneid-en.json"
       },
       "localHtml": "classics-text-reader.html?work=virgil-aeneid&lang=la",
       "localEdition": {
@@ -749,7 +753,10 @@
         "editor": "Albert Forbiger · Montreal, Armour"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Traducción inglesa histórica de James Rhoades (1921), 84 fragmentos de la transcripción TEI Perseus. 83 loci iniciales coinciden con las divisiones latinas; alineación parcial, no verso a verso.",
+        "chicago18Bibliography": "Virgil. *The Poems of Vergil*. Translated by James Rhoades. London: Oxford University Press, 1921. Digital transcription, Perseus Digital Library.",
+        "bibliographicStyle": "Chicago Manual of Style, 18th edition",
+        "translationLanguage": "en"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -783,7 +790,8 @@
         }
       ],
       "corpusFiles": {
-        "la": "data/classics-corpus/virgil-georgica-la.json"
+        "la": "data/classics-corpus/virgil-georgica-la.json",
+        "en": "data/classics-corpus/virgil-georgica-en.json"
       },
       "localHtml": "classics-text-reader.html?work=virgil-georgica&lang=la",
       "localEdition": {
