@@ -327,6 +327,12 @@ async function verifiedLeadImage(identity,topic,id){
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
+ // Screen colors and documented mathematical relations are available
+ // immediately, even if a remote image service is unreachable.
+ quick.replaceChildren();
+ const hasColor=window.VitruviaColors?.render(quick,q);
+ const hasFormula=window.VitruviaMathematics?.render(quick,q);
+ if(hasColor||hasFormula)quick.hidden=false;
  heading.textContent=locale("Imágenes y fuentes visuales","Images and visual sources","Images et sources visuelles");
  status.textContent=locale("Buscando obras y fotografías documentadas…","Searching documented artworks and photographs…","Recherche d’œuvres et de photographies documentées…");
  const isCodex=/\b(harleianus|harley(?:\s+ms)?\s*2767|codex\s*h\b|harleian(?:us)?)\b/i.test(q);
