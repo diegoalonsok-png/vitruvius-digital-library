@@ -87,6 +87,60 @@ try{
     'The visible top dossier must not combine Perón with Acts of John or a modern book title');
   }finally{await p.close()}
  });
+ await check('Bibliotheca monochrome Lexicon design preserves all catalogue dropdowns and filtering',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=190,{timeout:26000});
+   const before=await p.evaluate(()=>{
+    const options=id=>[...document.getElementById(id).options].map(o=>o.value);
+    const rgb=sel=>getComputedStyle(document.querySelector(sel)).backgroundColor;
+    return {
+     cssLoaded:!!document.querySelector('link[href*="bibliotheca-monochrome.css"]'),
+     body:rgb('body'),hero:rgb('.classic-head'),controls:rgb('.classic-controls'),
+     list:rgb('#classic-list'),detail:rgb('#classic-detail'),
+     options:{
+      'classic-ui-language':options('classic-ui-language'),
+      'classic-language':options('classic-language'),
+      'classic-genre':options('classic-genre'),
+      'classic-availability':options('classic-availability'),
+      'classic-period':options('classic-period'),
+      'classic-sort':options('classic-sort')
+     },
+     visible:document.querySelectorAll('#classic-list button').length
+    };
+   });
+   assert(before.cssLoaded,'Bibliotheca monochrome stylesheet must be loaded');
+   assert.equal(before.body,'rgb(13, 13, 14)','Page background must match Lexicon black');
+   assert.equal(before.controls,'rgb(21, 21, 22)','Filters must use dark charcoal');
+   assert.equal(before.list,'rgb(21, 21, 22)','Catalogue sidebar must use dark charcoal');
+   assert.equal(before.detail,'rgb(21, 21, 22)','Work detail must use dark charcoal');
+   assert.deepEqual(before.options['classic-ui-language'],['es','en','fr','it','de','pt']);
+   assert.deepEqual(before.options['classic-language'],['','la','grc']);
+   assert.deepEqual(before.options['classic-availability'],['','local','source','catalogue']);
+   assert.deepEqual(before.options['classic-period'],['','focus']);
+   assert.deepEqual(before.options['classic-sort'],['relevance','witness','author']);
+   assert(before.options['classic-genre'].length>=2,'Genre filter options must still be populated');
+   await p.evaluate(()=>document.documentElement.setAttribute('data-theme','dark'));
+   const afterTheme=await p.evaluate(()=>({
+    body:getComputedStyle(document.body).backgroundColor,
+    controls:getComputedStyle(document.querySelector('.classic-controls')).backgroundColor,
+    list:getComputedStyle(document.getElementById('classic-list')).backgroundColor,
+    detail:getComputedStyle(document.getElementById('classic-detail')).backgroundColor
+   }));
+   for(const [name,shade] of Object.entries(afterTheme))
+    assert.equal(shade,name==='body'?'rgb(13, 13, 14)':'rgb(21, 21, 22)',
+     'Saved dark-theme overrides must not restore navy on '+name);
+   await p.locator('#classic-language').selectOption('la');
+   await p.waitForFunction(n=>{
+    const count=document.querySelectorAll('#classic-list button').length;
+    return count>0&&count<n;
+   },before.visible,{timeout:14000});
+   assert.equal(await p.locator('#classic-language').inputValue(),'la');
+   await p.locator('#classic-language').selectOption('');
+   await p.waitForFunction(n=>document.querySelectorAll('#classic-list button').length===n,
+    before.visible,{timeout:14000});
+  }finally{await p.close()}
+ });
  await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   const errors=[];p.on('pageerror',e=>errors.push(e.message));
