@@ -19,7 +19,7 @@ Se registran **121 etiquetas de autor** distintas (no es una autoridad prosopogr
 
 Los archivos legibles que quedaron incorporados al buscador especializado de contenido comprenden **20 versiones textuales de 14 obras**, en latín (8), griego (6), inglés (4) y castellano (2): **14 archivos JSON con pasajes** y **6 archivos HTML**. El catálogo de obras y los textos indexados son capas distintas.
 
-En `documents/classics/` existen **10 PDF clásicos históricos**. Su presencia se ha verificado por rutas de repositorio y en el conjunto de pruebas de visores, pero **no se certifica que sus páginas dispongan de una capa OCR indexable o revisada**. Las transcripciones de otras ediciones no deben confundirse automáticamente con el contenido exacto del PDF.
+En `documents/classics/` existen **10 PDF clásicos históricos**, todos asociados al menos a una obra del catálogo; no se detectaron PDF huérfanos en esa carpeta. El [inventario individual](data/classics-corpus/pdf-inventory.json) registra archivo, tamaño y obras relacionadas. Su presencia se ha verificado por rutas de repositorio y en el conjunto de pruebas de visores, pero **no se certifica que sus páginas dispongan de una capa OCR indexable o revisada**. Las transcripciones de otras ediciones no deben confundirse automáticamente con el contenido exacto del PDF.
 
 El núcleo de Vitruvio, separado del pequeño buscador de clásicos, contiene **10 archivos de índices por página** en `data/text/` y **tres ediciones estructuradas por loci** en `data/structured/manifest.json`. Las lecturas de OCR y las alineaciones deben cotejarse; tener datos extraídos no equivale a edición crítica certificada.
 
