@@ -286,7 +286,7 @@ async function run(push=true){
  const q=$("#lx-q").value.trim();S.q=q;S.page=0;
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
- if(push){const u=new URL(location.href);u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
+ if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
  try{
   if(["palabra","frase","grupo","lema"].includes(S.mode)&&!/["\[@*?~#=√]/.test(q)){const c=parseCitation(q);if(c)return openCitation(c,q)}
@@ -669,27 +669,160 @@ const QB_FIELDS=[["pos","Categoría",[["","—"],["noun","sustantivo"],["verb","
  ["tense","Tiempo",[["","—"],["pres","presente"],["imperf","imperfecto"],["aor","aoristo"],["perf","perfecto"],["plup","pluscuamperfecto"],["fut","futuro"]]],
  ["mood","Modo",[["","—"],["ind","indicativo"],["subj","subjuntivo"],["opt","optativo"],["imp","imperativo"],["inf","infinitivo"],["ptc","participio"]]],
  ["voice","Voz",[["","—"],["act","activa"],["mid","media"],["pass","pasiva"],["mp","mediopasiva"]]]];
+
+/* Consulta léxica grecolatina del constructor. No se confunde
+   correspondencia semántica con parentesco etimológico ni se inventan
+   etiquetas flexivas latinas inexistentes en el índice. */
+async function qbLexicalSearch(input,filters={},scope="both",save=true){
+ const term=String(input||"").trim().replace(/^@/,"");if(!term)return;
+ const concept=await findConcept(term);
+ const map=concept?{la:concept.la||[],grc:concept.grc||[]}:
+  {la:GREEK.test(term)?[]:[term],grc:GREEK.test(term)?[term]:[]};
+ const languages=scope==="la"?["la"]:scope==="grc"?["grc"]:["la","grc"];
+ S.q=term;S.lang="auto";S.mode="palabra";S.work="";S.result=null;S.D=null;
+ $("#lx-q").value=term;$("#lx-lang").value="auto";renderTabs();
+ const list=$("#lx-results"),head=$("#lx-entry");
+ list.replaceChildren();head.replaceChildren();head.hidden=false;
+ $("#lx-side-extra").replaceChildren();$("#lx-head-title").textContent="Concordancias grecolatinas";
+ renderOldestEvidence(term);
+ if(save){
+  const url=new URL(location.href);
+  url.searchParams.set("q",term);url.searchParams.set("mode","palabra");
+  url.searchParams.set("qb","1");url.searchParams.set("qb_lang",scope);
+  url.searchParams.set("qb_filters",JSON.stringify(filters));
+  url.searchParams.delete("work");url.searchParams.delete("lang");
+  history.replaceState(null,"",url);
+ }
+ head.append(el("header",{class:"lx-entry-head"},
+  el("div",{class:"article-kicker"},"LEXICON · BÚSQUEDA COMPARADA"),
+  el("h2",{},term),
+  el("p",{class:"article-byline"},concept?
+   "Se buscan los equivalentes registrados en las obras griegas y latinas. Las coincidencias de significado no prueban parentesco etimológico.":
+   "Sin correspondencia moderna registrada en el glosario: se busca la forma exacta en las lenguas disponibles.")));
+ if(concept?.note)head.append(el("p",{class:"lx-small"},concept.note));
+ let sums={la:0,grc:0};
+ for(const l of languages){
+  const D=await lang(l,true),terms=map[l];
+  const title=l==="la"?"Latín":"Griego antiguo";
+  list.append(el("h3",{class:"lx-group-h"},title+" · "+terms.join(" · ")));
+  if(!terms.length){
+   list.append(el("p",{class:"lx-small"},"Sin equivalente registrado para esta lengua. No se atribuye una traducción sin fuentes."));
+   continue;
+  }
+  const conditions=Object.entries(filters).filter(([,v])=>v);
+  const conds=conditions.length?parsePattern(conditions.map(([k,v])=>k+"="+v).join(" ")):[];
+  const table=el("table",{class:"lx-table"},el("thead",{},el("tr",{},...["Lema","Glosa","Formas en el índice","Pasajes"].map(x=>el("th",{},x)))));
+  const tbody=el("tbody");table.append(tbody);
+  const hits=[],seen=new Set();
+  for(const lemma of terms){
+   const fs=lemmaFormsFor(D,lemma),all=groupHits(D,fs,"");
+   let kept=0;
+   for(const h of all){
+    const key=h.i+":"+h.spans[0][0];if(seen.has(key))continue;
+    if(l==="grc"&&conds.length){
+     const p=D.corpus.passages[h.i],form=p[2].slice(h.spans[0][0],h.spans[0][1]);
+     const analysesForForm=analyses(D,fold(form));
+     if(!analysesForForm.some(a=>a[1]&&tagMatches(a[1],conds)))continue;
+    }
+    seen.add(key);hits.push(h);kept++;
+   }
+   const lm=Object.entries(D.forms.lemmas).find(([k])=>fold(lemmaDisplay(k))===fold(lemma));
+   const gloss=lm?.[1]?.g||"Glosa no registrada";
+   tbody.append(el("tr",{},
+    el("td",{},el("button",{type:"button",class:"lx-formlink",lang:l,onclick:()=>{
+     $("#lx-q").value=lemma;S.lang=l;$("#lx-lang").value=l;S.mode="palabra";renderTabs();run();
+    }},lemma)),
+    el("td",{},String(gloss).split(";")[0]),el("td",{},String(fs.size)),el("td",{},String(kept))));
+  }
+  list.append(table);
+  sums[l]=hits.length;
+  if(l==="la"&&conditions.length)list.append(el("p",{class:"article-note"},
+    "El corpus latino permite consultar lemas y concordancias. No dispone todavía de todas las etiquetas morfológicas flexivas por ocurrencia: el filtro de categoría, caso, género o tiempo no se aplica al latín."));
+  if(l==="grc"&&conditions.length)list.append(el("p",{class:"article-note"},
+    "En griego, los rasgos seleccionados filtran las etiquetas morfológicas automáticas AGDT/Celano. Las formas ambiguas deben verificarse en contexto."));
+  if(!hits.length){
+   list.append(el("p",{class:"lx-small"},"No se hallaron coincidencias en el corpus local con estos criterios; no equivale a ausencia histórica de la palabra."));
+  }else{
+   hits.slice(0,12).forEach(h=>list.append(hitCard(D,h)));
+   if(hits.length>12)list.append(el("p",{class:"lx-small"},
+    "Se muestran 12 de "+hits.length+" ocurrencias. Pulse el lema para consultar la concordancia completa."));
+  }
+ }
+ setState("Consulta «"+term+"»: "+sums.la+" coincidencias latinas y "+sums.grc+" griegas en las obras indexadas.");
+}
 function renderQueryBuilder(){
  const host=$("#lx-qb");if(!host)return;host.replaceChildren();
- const sum=el("summary",{},"Constructor de consultas · morfología y sintaxis sin escribir códigos");host.append(sum);
- const row=el("div",{class:"lx-qb-row"});const sels={};
- for(const [k,label,opts] of QB_FIELDS){const s=el("select",{"aria-label":label});opts.forEach(([v,t])=>s.append(el("option",{value:v},t)));sels[k]=s;row.append(el("label",{},el("span",{},label),s))}
- const word=el("input",{type:"text",placeholder:"palabra o @lema (opcional)","aria-label":"Palabra o lema"});row.append(el("label",{},el("span",{},"Palabra / lema"),word));
- const gap=el("select",{"aria-label":"Distancia"});[["0","contigua"],["1","hasta 1 palabra"],["3","hasta 3 palabras"],["5","hasta 5 palabras"],["8","hasta 8 palabras"]].forEach(([v,t])=>gap.append(el("option",{value:v},t)));
- row.append(el("label",{},el("span",{},"Separación del anterior"),gap));host.append(row);
- const preview=el("code",{class:"lx-qb-preview"},"");
- const token=()=>{const parts=Object.entries(sels).filter(([,s])=>s.value).map(([k,s])=>`${k}=${s.value}`);const w=word.value.trim();if(w&&parts.length)return null;return w||(parts.length?`[${parts.join(" ")}]`:"")};
- const upd=()=>{const t=token();preview.textContent=t===null?"Elija palabra o rasgos morfológicos, no ambos en el mismo elemento.":t?`Añadirá: ${t}`:"Elija rasgos para construir un elemento."};
- Object.values(sels).forEach(s=>s.addEventListener("change",upd));word.addEventListener("input",upd);
- const acts=el("div",{class:"actions"},
-  el("button",{type:"button",onclick:()=>{const t=token();if(!t)return;const q=$("#lx-q").value.trim();$("#lx-q").value=q?`${q}${gap.value!=="0"?" .."+gap.value:""} ${t}`:t;S.mode="sintaxis";renderTabs();Object.values(sels).forEach(s=>s.value="");word.value="";upd()}},"Añadir elemento a la consulta"),
-  el("button",{type:"button",onclick:()=>{S.mode="sintaxis";renderTabs();run().then(()=>$("#results").scrollIntoView({behavior:"smooth"}))}},"Buscar"),
-  el("button",{type:"button",onclick:()=>{$("#lx-q").value="";upd()}},"Vaciar consulta"));
- host.append(preview,acts);
- const pre=el("p",{class:"suggestions"},el("span",{},"Construcciones"));
- [["genitivo absoluto","[mood=ptc case=gen] ..2 [case=gen]"],["infinitivo articular","[pos=art] [mood=inf]"],["μέν … δέ","μέν ..8 δέ"],["potencial (ἄν + optativo)","ἄν ..3 [mood=opt]"],["ἵνα + subjuntivo","ἵνα ..4 [mood=subj]"],["participio atributivo","[pos=art] [mood=ptc]"],["dativo instrumental + verbo","[case=dat pos=noun] [pos=verb]"]].forEach(([t,q])=>pre.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=q;S.mode="sintaxis";renderTabs();run().then(()=>$("#results").scrollIntoView({behavior:"smooth"}))}},t)));
- host.append(pre,el("p",{class:"explain"},"El análisis morfológico automático cubre el griego (Celano, AGDT). En latín el constructor combina palabras y lemas con distancias; los rasgos morfológicos latinos no están disponibles en el índice actual."));
- upd();
+ host.append(el("summary",{},"Constructor de consultas · morfología y sintaxis sin escribir códigos"));
+ const row=el("div",{class:"lx-qb-row"}),sels={};
+ for(const [k,label,opts] of QB_FIELDS){
+  const select=el("select",{"aria-label":label});
+  opts.forEach(([v,t])=>select.append(el("option",{value:v},t)));
+  sels[k]=select;row.append(el("label",{},el("span",{},label),select));
+ }
+ const word=el("input",{type:"text",placeholder:"arquitectura · arquitetura · architectura · τέχνη","aria-label":"Palabra o lema"});
+ row.append(el("label",{},el("span",{},"Palabra / lema"),word));
+ const gap=el("select",{"aria-label":"Separación del anterior"});
+ [["0","contigua"],["1","hasta 1 palabra"],["3","hasta 3 palabras"],["5","hasta 5 palabras"],["8","hasta 8 palabras"]].forEach(([v,t])=>gap.append(el("option",{value:v},t)));
+ row.append(el("label",{},el("span",{},"Separación del anterior"),gap));
+ const scope=el("select",{"aria-label":"Lengua para la búsqueda del constructor"});
+ [["both","Latín y griego"],["la","Solo latín"],["grc","Solo griego"]].forEach(([v,t])=>scope.append(el("option",{value:v},t)));
+ row.append(el("label",{},el("span",{},"Lenguas de búsqueda"),scope));
+ host.append(row);
+ const preview=el("p",{class:"lx-qb-preview",role:"status"});
+ const selected=()=>Object.fromEntries(Object.entries(sels).filter(([,s])=>s.value).map(([k,s])=>[k,s.value]));
+ const token=()=>{
+  const w=word.value.trim();if(w)return w;
+  const f=selected();const p=Object.entries(f).map(([k,v])=>k+"="+v);
+  return p.length?"["+p.join(" ")+"]":"";
+ };
+ const update=()=>{
+  const w=word.value.trim(),f=selected();
+  preview.textContent=w?
+   "Buscará «"+w+"» en "+(scope.value==="both"?"latín y griego":scope.value==="la"?"latín":"griego")+
+   (f.pos?" · categoría: "+(QB_FIELDS[0][2].find(x=>x[0]===f.pos)?.[1]||f.pos):"")+
+   ". Los rasgos se aplicarán solamente donde existan análisis morfológicos suficientes.":
+   token()?"Añadirá un patrón sintáctico griego: "+token():
+   "Escriba una palabra o seleccione rasgos morfológicos.";
+ };
+ for(const s of Object.values(sels))s.addEventListener("change",update);
+ word.addEventListener("input",update);scope.addEventListener("change",update);
+ const go=async()=>{
+  if(word.value.trim()){
+   await qbLexicalSearch(word.value,selected(),scope.value);
+  }else{
+   const q=$("#lx-q").value.trim()||token();
+   if(!q){update();return}
+   if(scope.value==="la"&&Object.keys(selected()).length){
+    setState("Los patrones flexivos latinos no están disponibles en el índice actual. Busque un lema o seleccione griego.");return;
+   }
+   $("#lx-q").value=q;S.mode="sintaxis";S.lang="grc";$("#lx-lang").value="grc";renderTabs();await run();
+  }
+  $("#results").scrollIntoView({behavior:"smooth",block:"start"});
+ };
+ const actions=el("div",{class:"actions"},
+  el("button",{type:"button",onclick:()=>{
+   const t=token();if(!t)return;
+   const old=$("#lx-q").value.trim();
+   $("#lx-q").value=old?old+(gap.value==="0"?" ":" .."+gap.value+" ")+t:t;
+   if(!word.value.trim()){
+    S.mode="sintaxis";S.lang="grc";$("#lx-lang").value="grc";renderTabs();
+   }update();
+  }},"Añadir elemento a la consulta"),
+  el("button",{type:"button",onclick:()=>go().catch(e=>{console.error(e);setState("Error de consulta: "+e.message)})},"Buscar"),
+  el("button",{type:"button",onclick:()=>{
+   word.value="";$("#lx-q").value="";Object.values(sels).forEach(s=>s.value="");update();
+  }},"Vaciar consulta"));
+ host.append(preview,actions);
+ const suggestions=el("p",{class:"suggestions"},el("span",{},"Construcciones"));
+ [["genitivo absoluto","[mood=ptc case=gen] ..2 [case=gen]"],["infinitivo articular","[pos=art] [mood=inf]"],["μέν … δέ","μέν ..8 δέ"],["potencial (ἄν + optativo)","ἄν ..3 [mood=opt]"],["ἵνα + subjuntivo","ἵνα ..4 [mood=subj]"],["participio atributivo","[pos=art] [mood=ptc]"],["dativo instrumental + verbo","[case=dat pos=noun] [pos=verb]"]].forEach(([t,q])=>{
+  suggestions.append(el("button",{type:"button",onclick:()=>{
+   $("#lx-q").value=q;word.value="";S.mode="sintaxis";S.lang="grc";$("#lx-lang").value="grc";
+   renderTabs();run().then(()=>$("#results").scrollIntoView({behavior:"smooth"}));
+  }},t));
+ });
+ host.append(suggestions,el("p",{class:"explain"},
+  "Las palabras modernas se resuelven mediante equivalencias documentadas en latín y griego. El griego permite filtros morfológicos automáticos; el latín muestra lemas, glosas y concordancias, sin inventar rasgos flexivos."));
+ update();
 }
 
 /* ---------- Fase I · raíz etimológica (pie:*dem-), concepto y locus directo ---------- */
@@ -1677,7 +1810,7 @@ async function init(){
  if(p.get("work")&&p.get("locus")){if(p.get("q"))$("#lx-q").value=p.get("q");(p.get("q")?run(false):Promise.resolve()).then(()=>openLocus(p.get("work"),p.get("locus"),p.get("q")||"")).then(()=>{
   /* Reproducibilidad: el enlace citado se creó con otra versión de los datos. */
   const dv=p.get("dv");if(dv&&DATA_VER&&dv!==DATA_VER)$("#lx-results").prepend(el("p",{class:"lx-person-banner"},`${T("Este enlace se citó con la versión de datos")} ${dv}; ${T("ahora se consulta la versión")} ${DATA_VER}. ${T("El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.")} `,el("a",{href:"https://github.com/diegoalonsok-png/vitruvius-digital-library/commits/main/data/lexicon",target:"_blank",rel:"noopener"},T("Historial de cambios")+" ↗")))});}
- else if(p.get("q")){$("#lx-q").value=p.get("q");run(false)}else if(S.mode==="sententiae")run(false);else setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
+ else if(p.get("qb")==="1"&&p.get("q")){let f={};try{f=JSON.parse(p.get("qb_filters")||"{}")}catch{}qbLexicalSearch(p.get("q"),f,p.get("qb_lang")||"both",false).catch(e=>setState(e.message))}else if(p.get("q")){$("#lx-q").value=p.get("q");run(false)}else if(S.mode==="sententiae")run(false);else setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
 }
 function renderDaily(){
  const s=S.sent?.sententiae;if(!s?.length)return;const d=new Date();const i=(d.getFullYear()*372+d.getMonth()*31+d.getDate())%s.length;const x=s[i];
