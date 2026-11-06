@@ -11,9 +11,11 @@ URL = "https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia-lex
 E = json.loads((ROOT / "data/lexicon/etymologicum.json").read_text())
 SENT = json.loads((ROOT / "data/lexicon/sententiae.json").read_text())
 stats = {}
+all_works = set()
 for l in ("la", "grc"):
     c = json.loads((ROOT / f"data/lexicon/corpus-{l}.json").read_text())
     f = json.loads((ROOT / f"data/lexicon/forms-{l}.json").read_text())
+    all_works |= set(c["works"])
     stats[l] = {"works": len(c["works"]), "passages": len(c["passages"]),
                 "words": sum(len(re.findall(r"[^\W\d_]+", p[2])) for p in c["passages"]),
                 "forms": len(f["forms"]), "lemmas": len(f["lemmas"])}
@@ -40,7 +42,7 @@ ld_html = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=Fa
 
 la, gr = stats["la"], stats["grc"]
 metrics = ('<div class="metrics" id="lx-metrics">'
-           f'<span><b>{la["works"] + gr["works"]}</b>obras</span>'
+           f'<span><b>{len(all_works)}</b>obras</span>'
            f'<span><b>{la["passages"] + gr["passages"]:,}</b>pasajes</span>'
            f'<span><b>{la["words"] + gr["words"]:,}</b>palabras indexadas</span>'
            f'<span><b>{la["forms"] + gr["forms"]:,}</b>formas lematizadas</span>'

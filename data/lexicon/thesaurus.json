@@ -1,0 +1,259 @@
+{
+ "schema": "vitruvia-lexicon-thesaurus-v1",
+ "title": "Thesaurus thematicus · campos conceptuales de la arquitectura clásica",
+ "method": "Agrupación editorial de lemas por campo conceptual. La búsqueda #campo recupera los pasajes que contienen cualquier forma de esos lemas; es una herramienta de exploración temática, no una clasificación semántica de cada ocurrencia.",
+ "themes": [
+  {
+   "id": "construccion",
+   "label": "Construcción y edificios",
+   "la": [
+    "aedificium",
+    "aedifico",
+    "aedes",
+    "templum",
+    "domus",
+    "murus",
+    "paries",
+    "fundamentum",
+    "columna",
+    "basis",
+    "capitulum",
+    "epistylium",
+    "trabs",
+    "tegula",
+    "fornix",
+    "porticus",
+    "moenia",
+    "turris",
+    "porta"
+   ],
+   "grc": [
+    "οἶκος",
+    "δόμος",
+    "τεῖχος",
+    "κίων",
+    "στῦλος",
+    "θεμέλιος",
+    "ναός",
+    "στοά",
+    "πύλη"
+   ]
+  },
+  {
+   "id": "materiales",
+   "label": "Materiales",
+   "la": [
+    "caementum",
+    "calx",
+    "harena",
+    "lapis",
+    "saxum",
+    "marmor",
+    "later",
+    "lignum",
+    "materia",
+    "abies",
+    "quercus",
+    "ferrum",
+    "plumbum",
+    "aes"
+   ],
+   "grc": [
+    "λίθος",
+    "ξύλον",
+    "ὕλη",
+    "χαλκός",
+    "σίδηρος"
+   ]
+  },
+  {
+   "id": "geometria",
+   "label": "Geometría y medida",
+   "la": [
+    "geometria",
+    "linea",
+    "circinus",
+    "norma",
+    "regula",
+    "circulus",
+    "angulus",
+    "centrum",
+    "mensura",
+    "numerus",
+    "pes",
+    "cubitum",
+    "digitus",
+    "palmus",
+    "passus"
+   ],
+   "grc": [
+    "γεωμετρία",
+    "γραμμή",
+    "κύκλος",
+    "γωνία",
+    "τρίγωνον",
+    "κέντρον",
+    "μέτρον",
+    "ἀριθμός",
+    "πούς",
+    "πῆχυς"
+   ]
+  },
+  {
+   "id": "proporcion",
+   "label": "Proporción y teoría (los seis principios)",
+   "la": [
+    "symmetria",
+    "proportio",
+    "modulus",
+    "ordo",
+    "ordinatio",
+    "dispositio",
+    "eurythmia",
+    "decor",
+    "distributio"
+   ],
+   "grc": [
+    "συμμετρία",
+    "ἀναλογία",
+    "τάξις",
+    "κόσμος",
+    "ἁρμονία",
+    "ῥυθμός"
+   ]
+  },
+  {
+   "id": "triada",
+   "label": "Firmitas, utilitas, venustas",
+   "la": [
+    "firmitas",
+    "utilitas",
+    "venustas"
+   ],
+   "grc": []
+  },
+  {
+   "id": "agua",
+   "label": "Agua e hidráulica",
+   "la": [
+    "aqua",
+    "fons",
+    "puteus",
+    "fistula",
+    "canalis"
+   ],
+   "grc": [
+    "ὕδωρ"
+   ]
+  },
+  {
+   "id": "maquinas",
+   "label": "Máquinas y mecánica",
+   "la": [
+    "machina",
+    "tympanum",
+    "rota",
+    "organum",
+    "ballista",
+    "catapulta",
+    "scorpio"
+   ],
+   "grc": [
+    "μηχανή"
+   ]
+  },
+  {
+   "id": "astronomia",
+   "label": "Astronomía y gnomónica",
+   "la": [
+    "sol",
+    "luna",
+    "stella",
+    "caelum",
+    "signum",
+    "gnomon",
+    "horologium",
+    "astrologia"
+   ],
+   "grc": [
+    "ἥλιος",
+    "σελήνη",
+    "ἀστήρ",
+    "οὐρανός",
+    "ζῴδιον"
+   ]
+  },
+  {
+   "id": "musica",
+   "label": "Música y acústica",
+   "la": [
+    "musica",
+    "harmonia",
+    "sonus",
+    "vox",
+    "chorda"
+   ],
+   "grc": [
+    "μουσική",
+    "ἁρμονία",
+    "φωνή",
+    "χορδή"
+   ]
+  },
+  {
+   "id": "cuerpo",
+   "label": "Cuerpo humano y canon",
+   "la": [
+    "corpus",
+    "umbilicus",
+    "caput",
+    "manus",
+    "brachium",
+    "membrum",
+    "homo"
+   ],
+   "grc": [
+    "σῶμα",
+    "κεφαλή",
+    "χείρ",
+    "ἄνθρωπος"
+   ]
+  },
+  {
+   "id": "ciudad",
+   "label": "Ciudad y espacio público",
+   "la": [
+    "urbs",
+    "civitas",
+    "oppidum",
+    "via",
+    "platea",
+    "regio",
+    "forum",
+    "basilica",
+    "theatrum"
+   ],
+   "grc": [
+    "πόλις",
+    "ἀγορά",
+    "θέατρον"
+   ]
+  },
+  {
+   "id": "saber",
+   "label": "Saber, arte y razón",
+   "la": [
+    "ratio",
+    "scientia",
+    "ars",
+    "natura"
+   ],
+   "grc": [
+    "λόγος",
+    "ἐπιστήμη",
+    "τέχνη",
+    "φύσις"
+   ]
+  }
+ ]
+}
