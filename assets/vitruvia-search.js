@@ -523,17 +523,39 @@ function restoreFeature(){
  highlightFeatured("");
 }
 function allowedFeaturedImage(){return false}
-function considerFeatured(rows,query){
- const q=norm(query||"");if(!q)return;
- const tokens=q.split(/\s+/).filter(t=>t.length>=4);
+/* Relevancia del «Destacado»: el artículo debe cubrir el tema de la consulta, no una sola palabra.
+   Las palabras de tipo («libros de», «obras de», «banda de música», «book», «band»…) son pistas, no
+   el tema; las palabras partidas por error («radio head») se comparan también unidas. */
+const FEATURE_STOP=new Set("de del la las el los lo un una unos unas y e o u en a al con por para sobre que the of and or a an in on for to by with le les des du et au aux dans sur pour par une un der die das und von zu im mit den dem".split(" "));
+const FEATURE_TYPE=new Set("libro libros obra obras book books work works livre livres oeuvre oeuvres buch bucher werk werke texto textos text texts escrito escritos tratado tratados banda bandas band bands grupo grupos group groups musica music musique musik musical cancion canciones song songs album albums disco discos pelicula peliculas film films movie movies serie series autor autores author authors biografia biography vida life historia history imagen imagenes image images foto fotos photo photos pintura pinturas painting cuadro edificio building ciudad city pueblo".split(" "));
+function featureTokens(q){const all=norm(q).replace(/\./g," ").split(/\s+/).filter(t=>t&&!FEATURE_STOP.has(t));const core=all.filter(t=>!FEATURE_TYPE.has(t));return{core:core.length?core:all,typed:all.length!==core.length}}
+function featureCoverage(core,title,excerpt){
+ const T=norm(title),X=norm(excerpt),Tc=T.replace(/\s+/g,""),Xc=X.replace(/\s+/g,"");let cov=0,inTitle=0;const done=new Set();
+ for(let i=0;i<core.length;i++){if(done.has(i))continue;const t=core[i],j=core[i+1];
+  if(j&&Tc.includes(t+j)&&!T.split(" ").includes(t)){done.add(i);done.add(i+1);cov+=2;inTitle+=2;continue}
+  // Tolerancia de género y número: «dorica» = «dórico», «libros» = «libro» (raíz común de 4+ letras).
+  const stem=t.length>=5?t.slice(0,Math.max(4,t.length-2)):null;const has=(S_,W)=>t.length<3?W.includes(t):(S_.includes(t)||(stem&&W.some(w=>w.startsWith(stem)&&Math.abs(w.length-t.length)<=3)));
+  const inT=has(T,T.split(" ")),inX=has(X,X.split(" "));
+  if(inT||inX){cov++;if(inT)inTitle++}}
+ return{ratio:core.length?cov/core.length:0,inTitle}
+}
+let featureCurrent="";
+function considerFeatured(rows,query,fromFallback=false){
+ const q=norm(query||"");if(!q)return;if(!fromFallback)featureCurrent=q;
+ const {core}=featureTokens(query);const tokens=core.filter(t=>t.length>=3);
  const picks=(rows||[]).filter(r=>r.link&&r.title).map(r=>{
-  const title=norm(r.title),matched=tokens.filter(t=>title.includes(t)).length,exact=title===q;
+  const title=norm(r.title),exact=title===q||title===core.join(" ")||title.replace(/\s+/g,"")===core.join("");
+  const {ratio,inTitle}=featureCoverage(core,r.title,r.excerpt||"");
   // Wikipedia describes the subject; a same-titled Open Library book is NOT the subject.
   const originBoost=r.type==="wikipedia"?180:r.type==="manuscript"?90:r.type==="passage"?35:
     r.type==="openlibrary"?-180:r.type==="article"?-45:r.type==="museum"?-35:0;
-  const weight=(exact?160:0)+(matched?60*matched/Math.max(1,tokens.length):0)+(title.includes(q)&&q.length>2?70:0)+originBoost;
-  return {row:r,weight}
- }).filter(x=>x.weight>=95 && x.row.type!=="openlibrary").sort((a,b)=>b.weight-a.weight);
+  const weight=(exact?160:0)+60*ratio+(inTitle?40*Math.min(1,inTitle/Math.max(1,core.length)):0)+(title.includes(q)&&q.length>2?70:0)+originBoost;
+  // Cobertura mínima: con varias palabras de tema, al menos tres cuartas partes deben estar en el
+  // artículo y alguna en su título; con una sola, debe estar en el título.
+  const covered=exact||(core.length<=1?inTitle>=1:(ratio>=0.75&&inTitle>=1));
+  return {row:r,weight,covered}
+ }).filter(x=>x.covered&&x.weight>=95&&x.row.type!=="openlibrary").sort((a,b)=>b.weight-a.weight);
+ if(!picks.length)featureJoinedFallback(query,core);
  if(!picks.length||picks[0].weight<=(S.featureWeight??-Infinity))return;
  const {row,weight}=picks[0];S.featureWeight=weight;
  $("featured-label").textContent=row.type==="wikipedia"?"DESTACADO · WIKIPEDIA":row.type==="manuscript"?"DESTACADO · MANUSCRITO":"DESTACADO · DOCUMENTACIÓN";
@@ -546,6 +568,15 @@ function considerFeatured(rows,query){
  window.dispatchEvent(new CustomEvent("vitruvia:featured-result",{detail:{query,row}}));
 }
 
+/* Si nada cubre la consulta y hay palabras que, unidas, forman un nombre («radio head» → Radiohead),
+   se consulta Wikipedia por esa forma unida y solo se acepta un título idéntico. */
+const featureJoinTried=new Set();
+async function featureJoinedFallback(query,core){
+ const key=norm(query);if(featureJoinTried.has(key)||core.length<2)return;featureJoinTried.add(key);
+ for(let i=0;i<core.length-1;i++){const joined=core[i]+core[i+1];if(core[i].length<3||core[i+1].length<3||joined.length>16)continue;
+  try{const rows=await wiki(joined,S.lang);if(featureCurrent!==key)return;const hit=rows.find(r=>norm(r.title).replace(/\s+/g,"")===joined||norm(r.title).replace(/\s+/g,"").startsWith(joined+" ")||norm(r.title).split(" (")[0].replace(/\s+/g,"")===joined);
+   if(hit){considerFeatured([hit],hit.title,true);return}}catch{}}
+}
 /* Iconografía de autoridad para casos históricos homónimos.
    No convertir una semejanza de nombre en identidad del personaje. */
 async function curatedHistoricalImage(query){

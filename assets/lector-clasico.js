@@ -7,7 +7,7 @@ const $=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
-let catalog=null,witnesses=[],extraWorks=[],work=null,orig=[],trans=[],cur=0,query="";
+let catalog=null,witnesses=[],extraWorks=[],work=null,orig=[],trans=[],cur=0,query="",transState="idle";
 
 /* ---------- TEI → pasajes ---------- */
 function textOf(node){
@@ -17,11 +17,19 @@ function textOf(node){
  if(lines.length)return lines.map(l=>(l.getAttribute("n")?l.getAttribute("n")+"  ":"")+l.textContent.replace(/\s+/g," ").trim()).join("\n");
  return c.textContent.replace(/\s+/g," ").trim();
 }
+/* Los TEI P4 antiguos (p. ej. la traducción de Plinio) usan entidades HTML (&mdash;, &dagger;…) declaradas
+   en un DTD externo: el analizador XML se detiene en la primera. Se convierten a caracteres antes de leer. */
+const entityBox=document.createElement("textarea");
+function decodeEntities(xml){
+ return String(xml).replace(/<!DOCTYPE[^>[]*(\[[^\]]*\])?>/i,"").replace(/&([a-zA-Z][a-zA-Z0-9]*);/g,(m,n)=>{if(/^(amp|lt|gt|quot|apos)$/.test(n))return m;entityBox.innerHTML=m;const c=entityBox.value;return c===m?"":c.replace(/&/g,"&amp;").replace(/</g,"&lt;")});
+}
 function parseTEI(xml){
- const doc=new DOMParser().parseFromString(xml,"text/xml");
+ const doc=new DOMParser().parseFromString(decodeEntities(xml),"text/xml");
  const body=doc.getElementsByTagNameNS("*","body")[0];if(!body)throw Error("TEI sin cuerpo");
  const out=[];
- const isPart=d=>d.localName==="div"&&d.getAttribute("type")==="textpart"&&!/commentary|translation/.test(d.getAttribute("subtype")||"");
+ // TEI P5 (div type=textpart) y TEI P4 (div1, div2, div3 numerados), como en la traducción de Plinio.
+ const isPart=d=>((d.localName==="div"&&d.getAttribute("type")==="textpart")||(/^div\d$/.test(d.localName)&&d.getAttribute("n")!=null))&&!/commentary|translation/.test(d.getAttribute("subtype")||"")&&!/commentary|translation/.test(d.getAttribute("type")||"");
+ const nOf=k=>{const n=k.getAttribute("n")||"";return /^(dedication|preface|praefatio|pr|prooemium)$/i.test(n)?"praef":n};
  function walk(node,path){
   const kids=[...node.children].filter(isPart);
   if(!kids.length){
@@ -37,10 +45,10 @@ function parseTEI(xml){
     range:lines.length?[num(lines[0].getAttribute("n")),num(lines.at(-1).getAttribute("n"))]:null});
    return;
   }
-  for(const k of kids)walk(k,[...path,k.getAttribute("n")||String(kids.indexOf(k)+1)]);
+  for(const k of kids)walk(k,[...path,nOf(k)||String(kids.indexOf(k)+1)]);
  }
- const top=[...body.children].filter(d=>d.localName==="div");
- for(const d of top){const kids=[...d.children].filter(isPart);if(kids.length)for(const k of kids)walk(k,[k.getAttribute("n")||"1"]);else walk(d,[])}
+ const top=[...body.children].filter(d=>d.localName==="div"||/^div\d$/.test(d.localName));
+ for(const d of top){if(isPart(d)){walk(d,[nOf(d)||"1"]);continue}const kids=[...d.children].filter(isPart);if(kids.length)for(const k of kids)walk(k,[nOf(k)||"1"]);else walk(d,[])}
  return out;
 }
 const num=s=>{const m=String(s||"").match(/\d+/);return m?Number(m[0]):NaN};
@@ -116,8 +124,8 @@ function render(){
  $("locus").textContent=work.title+" "+p.locus;
  $("original").innerHTML=`<p class="loc">${esc(p.locus)}</p><div class="txt" lang="${work.language==="grc"?"grc":"la"}">${marked(p.text)}</div>`;
  const t=translationFor(p);
- $("translation").innerHTML=!work.translations.length?"<p class='muted'>No hay una traducción abierta disponible para esta obra en el repositorio de origen. Puedes leer el original a la izquierda.</p>":
-  trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='muted'>Sin pasaje correspondiente en la traducción para este locus.</p>"):"<p class='muted'>Cargando la traducción…</p>";
+ $("translation").innerHTML=!work.translations.length?"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción de esta obra.</b><br>Se muestra solo el texto original, a la izquierda. Cuando se incorpore una traducción abierta, aparecerá en este visor.</p>":
+  trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='lc-notr'>La traducción de la biblioteca no tiene un pasaje correspondiente a este locus. Pruebe con el locus anterior o el siguiente.</p>"):transState==="loading"?"<p class='muted'>Cargando la traducción… (las obras extensas, como la Naturalis historia, pueden tardar unos segundos)</p>":transState==="error"?"<p class='muted'>No se pudo descargar la traducción desde el repositorio de origen. Puede abrirla directamente en <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>GitHub · Perseus ↗</a>.</p>":"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción alineada de esta obra.</b><br>El archivo de origen existe, pero no puede ponerse en correspondencia con el texto. <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>Abrir el archivo TEI ↗</a></p>";
  $("toc").value=String(cur);
  const u=new URL(location.href);u.searchParams.set("loc",p.locus);if(query)u.searchParams.set("q",query);else u.searchParams.delete("q");history.replaceState(null,"",u);
  const share=work.author+" · "+work.title+" "+p.locus+" — "+location.href;
@@ -158,8 +166,9 @@ async function openWork(id){
  const srcName=u=>/latin_text_latin_library/.test(u||"")?"The Latin Library (texto de dominio público; copia de CLTK en GitHub)":/First1KGreek/.test(u||"")?"Open Greek and Latin · First1KGreek (CC BY-SA 4.0)":"Perseus Digital Library (CC BY-SA 4.0)";
  $("status").textContent=orig.length+" pasajes · texto: "+srcName(work.original)+(work.translations.length?" · cargando traducción…":"");render();
  if(work.translations.length){
-  try{trans=parseTEI(await fetchText(work.translations[0].url));$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · "+srcName(work.translations[0].url)}
-  catch(e){$("status").textContent+=" · no se pudo leer la traducción ("+e.message+")"}
+  transState="loading";
+  try{trans=parseTEI(await fetchText(work.translations[0].url));transState=trans.length?"ok":"empty";$("status").textContent=orig.length+" pasajes · traducción inglesa: "+trans.length+" secciones · "+srcName(work.translations[0].url)}
+  catch(e){transState="error";$("status").textContent+=" · no se pudo leer la traducción ("+e.message+")"}
   if(query)search();else render();
  }
 }
