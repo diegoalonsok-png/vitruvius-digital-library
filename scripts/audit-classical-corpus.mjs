@@ -60,6 +60,20 @@ const unindexedHtml=htmlFiles.filter(p=>!unique.has("corpus/"+p));
 const classicPDF=readdirSync(pathOf("documents/classics")).filter(p=>p.endsWith(".pdf"));
 const vitruviusPageTexts=readdirSync(pathOf("data/text")).filter(p=>p.endsWith(".json"));
 const localWorks=works.filter(w=>w.publicStatus==="lectura-local-completa"||w.publicStatus==="lectura-local-parcial");
+const published=read("data/classics-corpus/coverage-audit.json");
+assert.equal(published.schema,"vitruvia-classics-coverage-audit-v1");
+assert.equal(published.works.length,works.length,"Public coverage report is stale (work count)");
+assert.equal(published.counts.indexedTextVersions,registry.entries.length,"Public coverage report is stale (indexed versions)");
+const publicMap=new Map(published.works.map(w=>[w.id,w]));
+assert.equal(publicMap.size,works.length,"Duplicate/missing entry in public coverage audit");
+for(const w of works){
+ const p=publicMap.get(w.id);
+ assert(p&&p.title===w.title&&p.catalogueStatus===w.publicStatus,
+  "Public coverage report differs from catalogue: "+w.id);
+ const expected=registry.entries.filter(e=>e.workId===w.id).map(e=>e.path).sort();
+ assert.deepEqual([...p.indexedTextFiles].sort(),expected,"Public indexed-file list is stale: "+w.id);
+}
+
 const summary={cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
  localReadingRecords:localWorks.length,checkedFileReferences:checked.length,
  fulltextSearchWorks:new Set(registry.entries.map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
