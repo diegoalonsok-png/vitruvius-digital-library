@@ -119,7 +119,10 @@ for work in ["virgil-aeneid", "virgil-georgica", "caesar-gallico", "petronius-sa
              "herodotus-histories", "euclid-elements", "cato-agricultura", "varro-rustica",
              "columella-rustica", "pliny-naturalis", "frontinus-aquaeductu"]:
     lang = WORKS[work][2]
-    d = json.loads((ROOT / f"data/classics-corpus/{work}-{lang}.json").read_text())
+    src = ROOT / f"data/classics-corpus/{work}-{lang}.json"
+    if not src.exists():  # obras incorporadas solo al Lexicon (scripts/import-lexicon-ampliacion.py)
+        src = ROOT / f"data/lexicon/fontes/{work}-{lang}.json"
+    d = json.loads(src.read_text())
     meta[work] = {"edition": d.get("attribution", ""), "license": d.get("license", ""),
                   "status": d.get("editorialStatus", "")}
     for p in d["passages"]:
