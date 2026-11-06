@@ -50,8 +50,40 @@ metrics = ('<div class="metrics" id="lx-metrics">'
            f'<span><b data-m="etym">{len(E["entries"])}</b>fichas etimológicas</span>'
            f'<span><b data-m="sent">{len(SENT["sententiae"])}</b>sententiae</span></div>').replace(",", ".")
 
+# Cobertura documentada del corpus: qué está completo, qué es parcial, cómo se lematiza y qué traducción hay.
+PARTIAL = {"pliny-naturalis": "Parcial: libros XXXIII–XXXVI de XXXVII (metales, pintura, escultura, piedras y arquitectura).",
+           "columella-rustica": "Parcial: libros I–IX de XII (la edición de base no incluye X–XII).",
+           "vitruvius@grc": "Selección: solo los pasajes de Vitruvio con voces griegas (el texto latino íntegro está en el corpus latino)."}
+TRANS = {"vitruvius": "Castellano, francés e inglés (ediciones Kurilo V514, V554, V297), alineadas por locus.",
+         "theophrastus-characters": "—", "cato-agricultura": "—", "varro-rustica": "—", "frontinus-aquaeductu": "—"}
+APPROX = {"pliny-naturalis": " Alineación proporcional (parágrafos de Mayhoff ↔ capítulos de Bostock): orientativa.",
+          "apuleius-metamorphoses": " Alineación proporcional dentro del libro: orientativa.",
+          "petronius-satyrica": " Alineación por sección.", "homer-iliad": " Alineación por tramo de versos.", "homer-odyssey": " Alineación por tramo de versos."}
+rows = []
+for l in ("la", "grc"):
+    c = json.loads((ROOT / f"data/lexicon/corpus-{l}.json").read_text())
+    words, passages = {}, {}
+    for p_ in c["passages"]:
+        words[p_[0]] = words.get(p_[0], 0) + len(re.findall(r"[^\W\d_]+", p_[2])); passages[p_[0]] = passages.get(p_[0], 0) + 1
+    for wid, w in c["works"].items():
+        if wid not in passages:
+            continue
+        key = wid + ("@grc" if l == "grc" and wid == "vitruvius" else "")
+        cov = PARTIAL.get(key, "Completa (texto conservado en la edición de base).")
+        lem = "CLTK: tabla forma → lema, sin desambiguación por contexto" if l == "la" else "G. Celano: lematización automática con categoría gramatical"
+        tr = TRANS.get(wid, "Inglés (Perseus DL, CC BY-SA 4.0)." + APPROX.get(wid, " Alineación por locus o capítulo."))
+        rows.append(f'<tr><td>{html.escape(w["author"])}, <i>{html.escape(w["title"])}</i></td><td>{"latín" if l == "la" else "griego"}</td>'
+                    f'<td>{f"{words[wid]:,}".replace(",", ".")}</td><td>{f"{passages[wid]:,}".replace(",", ".")}</td><td>{html.escape(cov)}</td><td>{html.escape(lem)}</td><td>{html.escape(tr)}</td>'
+                    f'<td class="lx-small">{html.escape((w.get("edition") or "")[:160])}{" · " + html.escape(w.get("license","")[:80]) if w.get("license") else ""}</td></tr>')
+coverage = ('<details class="lx-coverage"><summary>Cobertura del corpus: completitud, lematización y traducciones por obra</summary>'
+            '<p class="lx-small">Generado automáticamente a partir de los datos publicados (scripts/render-vitruvia-lexicon-page.py). '
+            'La lematización es automática: los lemas ambiguos se señalan en cada pasaje y las correcciones verificadas a mano se marcan con ✓.</p>'
+            '<div style="overflow-x:auto"><table class="lx-table"><thead><tr><th>Obra</th><th>Lengua</th><th>Palabras</th><th>Pasajes</th><th>Cobertura</th><th>Lematización</th><th>Traducción</th><th>Edición y licencia</th></tr></thead><tbody>'
+            + "".join(rows) + "</tbody></table></div></details>")
 s = PAGE.read_text()
-for name, content in (("ETYM-INDEX", index), ("ETYM-LD", ld_html), ("METRICS", metrics)):
+if "<!--COVERAGE-->" not in s:
+    s = s.replace('<h2 id="met-h" data-i18n>Método, sintaxis de búsqueda y fuentes</h2>', '<h2 id="met-h" data-i18n>Método, sintaxis de búsqueda y fuentes</h2>\n <!--COVERAGE-->', 1)
+for name, content in (("ETYM-INDEX", index), ("ETYM-LD", ld_html), ("METRICS", metrics), ("COVERAGE", coverage)):
     pat = re.compile(rf"<!--{name}-->.*?<!--/{name}-->|<!--{name}-->", re.S)
     s = pat.sub(lambda m: f"<!--{name}-->{content}<!--/{name}-->", s, count=1)
 PAGE.write_text(s)

@@ -225,6 +225,7 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "En Vitruvia":["In Vitruvia","Dans Vitruvia"],"Buscar en Vitruvia sin perder este lugar de lectura":["Search in Vitruvia without losing your place","Chercher dans Vitruvia sans perdre la page"],
  "sección":["section","section"],
  "Cita reconocida":["Citation recognised","Citation reconnue"],"El locus comprende":["The locus comprises","Le locus comprend"],"Mostrarlos todos":["Show them all","Les afficher tous"],
  "corregido":["corrected","corrigé"],
@@ -355,6 +356,7 @@ function hitCard(D,h){
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
  actions.append(el("button",{type:"button",onclick:()=>addToNotebook({cite,text,lang:D.l,tr:p[4]||""})},"Al cuaderno exegético"));
  actions.append(el("button",{type:"button",onclick:e=>{const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(S.q)u.searchParams.set("q",S.q);copy(u.toString(),e.target)}},"Enlace al locus"));
+ actions.append(el("a",{href:`vitruvia.html?q=${encodeURIComponent((S.q||"").replace(/^[@=#√]|["\[\]]/g,"").trim()||text.slice(h.spans[0][0],h.spans[0][1]))}`,target:"_blank",rel:"noopener",title:T("Buscar en Vitruvia sin perder este lugar de lectura")},T("En Vitruvia")+" ↗"));
  actions.append(el("button",{type:"button",onclick:e=>copy(`${cite}: «${text.slice(k.a,k.b).replace(/\s+/g," ").trim()}» — ${w.author}, ${w.title}. ${w.edition||""}. Vitruvia Lexicon, ${PAGE}`,e.target)},"Copiar cita"));
  card.append(actions);
  if(p[0]==="vitruvius"){const v=el("p",{class:"lx-vlinks"},"Vitruvio "+p[1]+": ");vitruvianLinks(p[1]).forEach(([t,u],i)=>{if(i)v.append(" · ");v.append(el("a",{href:u},t))});card.append(v)}
