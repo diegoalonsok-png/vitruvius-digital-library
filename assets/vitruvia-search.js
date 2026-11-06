@@ -525,15 +525,15 @@ function restoreFeature(){
 function allowedFeaturedImage(){return false}
 function considerFeatured(rows,query){
  const q=norm(query||"");if(!q)return;
- const tokens=q.split(/\s+/).filter(t=>t.length>=4);
+ // A featured item MUST identify the requested subject, not merely mention it.
+ // Encyclopedic provider status is never evidence of title/identity match.
+ const subject=window.VitruviaSubjectMatch?.subject(query,S.people,S.works)||norm(topicQuery(query));
  const picks=(rows||[]).filter(r=>r.link&&r.title).map(r=>{
-  const title=norm(r.title),matched=tokens.filter(t=>title.includes(t)).length,exact=title===q;
-  // Wikipedia describes the subject; a same-titled Open Library book is NOT the subject.
-  const originBoost=r.type==="wikipedia"?180:r.type==="manuscript"?90:r.type==="passage"?35:
-    r.type==="openlibrary"?-180:r.type==="article"?-45:r.type==="museum"?-35:0;
-  const weight=(exact?160:0)+(matched?60*matched/Math.max(1,tokens.length):0)+(title.includes(q)&&q.length>2?70:0)+originBoost;
-  return {row:r,weight}
- }).filter(x=>x.weight>=95 && x.row.type!=="openlibrary").sort((a,b)=>b.weight-a.weight);
+  const evaluation=window.VitruviaSubjectMatch?.evaluate(r,subject);
+  if(!evaluation?.eligible)return null;
+  const weight=evaluation.score;
+  return {row:r,weight};
+ }).filter(Boolean).sort((a,b)=>b.weight-a.weight);
  if(!picks.length||picks[0].weight<=(S.featureWeight??-Infinity))return;
  const {row,weight}=picks[0];S.featureWeight=weight;
  $("featured-label").textContent=row.type==="wikipedia"?"DESTACADO · WIKIPEDIA":row.type==="manuscript"?"DESTACADO · MANUSCRITO":"DESTACADO · DOCUMENTACIÓN";
@@ -947,7 +947,8 @@ async function search(){
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
- const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));
+ const subjectQuery=window.VitruviaSubjectMatch?.subject(q,S.people,S.works)||topicQuery(q);
+ const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(subjectQuery)||subjectQuery);
  document.body.classList.add("vitruvia-reading");
  window.VitruviaSearchSnapshot={query:q,rows:[]};
  window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
