@@ -71,7 +71,14 @@
         {
           "c": "Vitr. 1.1.1",
           "t": "Architecti est scientia pluribus disciplinis et variis eruditionibus ornata.",
-          "tr": "El saber del arquitecto está adornado de muchas disciplinas y de variada erudición."
+          "tr": "El saber del arquitecto está adornado de muchas disciplinas y de variada erudición.",
+          "v514_alignment": {
+            "status": "non_literal",
+            "locus": "1.1.1",
+            "latin_exact": false,
+            "spanish_exact": false,
+            "note": "La formulación latina no coincide literalmente con V514; podría ser abreviación, lectura editorial distinta o paráfrasis. Cotejar antes de citar entre comillas."
+          }
         }
       ],
       "rel": [
@@ -122,7 +129,14 @@
         {
           "c": "Vitr. 1.3.1",
           "t": "Partes ipsius architecturae sunt tres: aedificatio, gnomonice, machinatio.",
-          "tr": "Las partes de la arquitectura misma son tres: la construcción, la gnomónica y la mecánica."
+          "tr": "Las partes de la arquitectura misma son tres: la construcción, la gnomónica y la mecánica.",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.3.1",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -184,7 +198,11 @@
         {
           "c": "Hippoc. Aph. 1.1",
           "t": "ὁ βίος βραχύς, ἡ δὲ τέχνη μακρή",
-          "tr": "La vida es breve; el arte, largo."
+          "tr": "La vida es breve; el arte, largo.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -243,7 +261,11 @@
         {
           "c": "Sen. Brev. 1.1",
           "t": "vitam brevem esse, longam artem",
-          "tr": "que la vida es breve y el arte largo"
+          "tr": "que la vida es breve y el arte largo",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -296,7 +318,14 @@
         {
           "c": "Vitr. 5.4.1",
           "t": "Harmonice autem est musica litteratura obscura et difficilis, maxime quidem quibus graecae litterae non sunt notae.",
-          "tr": "La armónica es una disciplina musical oscura y difícil, sobre todo para quienes no conocen las letras griegas."
+          "tr": "La armónica es una disciplina musical oscura y difícil, sobre todo para quienes no conocen las letras griegas.",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "5.4.1",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -374,7 +403,11 @@
               "lang": "la",
               "t": "Nisi Dominus aedificaverit domum, in vanum laboraverunt qui aedificant eam."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -447,7 +480,11 @@
               "lang": "la",
               "t": "Sapientia aedificavit sibi domum, excidit columnas septem."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -495,7 +532,14 @@
         {
           "c": "Vitr. 1.2.1",
           "t": "et decore et distributione, quae graece οἰκονομία dicitur.",
-          "tr": "y del decoro y de la distribución, que en griego se llama oikonomía."
+          "tr": "y del decoro y de la distribución, que en griego se llama oikonomía.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.2.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -616,7 +660,11 @@
         {
           "c": "Lucr. 2.1039",
           "t": "suspicere in caeli dignatur lucida templa",
-          "tr": "se digna alzar la vista hacia los luminosos espacios del cielo"
+          "tr": "se digna alzar la vista hacia los luminosos espacios del cielo",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -727,12 +775,26 @@
         {
           "c": "Vitr. 1.2.4",
           "t": "Item symmetria est ex ipsius operis membris conveniens consensus.",
-          "tr": "Asimismo, la simetría es el acuerdo conveniente de los miembros de la obra misma."
+          "tr": "Asimismo, la simetría es el acuerdo conveniente de los miembros de la obra misma.",
+          "v514_alignment": {
+            "status": "non_literal",
+            "locus": "1.2.4",
+            "latin_exact": false,
+            "spanish_exact": false,
+            "note": "La formulación latina no coincide literalmente con V514; podría ser abreviación, lectura editorial distinta o paráfrasis. Cotejar antes de citar entre comillas."
+          }
         },
         {
           "c": "Vitr. 3.1.1",
           "t": "Aedium compositio constat ex symmetria, cuius rationem diligentissime architecti tenere debent.",
-          "tr": "La composición de los templos consta de simetría, cuya razón deben dominar con suma diligencia los arquitectos."
+          "tr": "La composición de los templos consta de simetría, cuya razón deben dominar con suma diligencia los arquitectos.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "3.1.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -795,7 +857,11 @@
         {
           "c": "Protágoras, DK 80 B1 (en Pl. Tht. 152a)",
           "t": "πάντων χρημάτων μέτρον ἐστὶν ἄνθρωπος",
-          "tr": "El hombre es la medida de todas las cosas."
+          "tr": "El hombre es la medida de todas las cosas.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -841,7 +907,14 @@
         {
           "c": "Vitr. 1.2.3",
           "t": "Eurythmia est venusta species commodusque in compositionibus membrorum aspectus.",
-          "tr": "La euritmia es la apariencia bella y el aspecto adecuado en la composición de los miembros."
+          "tr": "La euritmia es la apariencia bella y el aspecto adecuado en la composición de los miembros.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.2.3",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -887,12 +960,26 @@
         {
           "c": "Vitr. 1.2.1",
           "t": "Architectura autem constat ex ordinatione, quae graece τάξις dicitur, et ex dispositione, hanc autem Graeci διάθεσιν vocitant",
-          "tr": "La arquitectura consta de ordenación, que en griego se llama táxis, y de disposición, que los griegos llaman diáthesis"
+          "tr": "La arquitectura consta de ordenación, que en griego se llama táxis, y de disposición, que los griegos llaman diáthesis",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.2.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         },
         {
           "c": "Vitr. 1.2.2",
           "t": "Ordinatio est modica membrorum operis commoditas separatim universeque proportionis ad symmetriam comparatio.",
-          "tr": "La ordenación es la justa adecuación de los miembros de la obra, por separado, y en conjunto la correlación de la proporción con la simetría."
+          "tr": "La ordenación es la justa adecuación de los miembros de la obra, por separado, y en conjunto la correlación de la proporción con la simetría.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.2.2",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1025,7 +1112,14 @@
         {
           "c": "Vitr. 3.1.1",
           "t": "Proportio est ratae partis membrorum in omni opere totiusque commodulatio, ex qua ratio efficitur symmetriarum.",
-          "tr": "La proporción es la conmodulación de una parte fija de los miembros en toda la obra y en el conjunto, de la que resulta la razón de las simetrías."
+          "tr": "La proporción es la conmodulación de una parte fija de los miembros en toda la obra y en el conjunto, de la que resulta la razón de las simetrías.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "3.1.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1120,7 +1214,14 @@
         {
           "c": "Vitr. 4.3.3",
           "t": "Frons aedis Doricae in loco, quo columnae constituuntur, dividatur",
-          "tr": "El frente del templo dórico, en el lugar donde se levantan las columnas, divídase"
+          "tr": "El frente del templo dórico, en el lugar donde se levantan las columnas, divídase",
+          "v514_alignment": {
+            "status": "non_literal",
+            "locus": "4.3.3",
+            "latin_exact": false,
+            "spanish_exact": false,
+            "note": "La formulación latina no coincide literalmente con V514; podría ser abreviación, lectura editorial distinta o paráfrasis. Cotejar antes de citar entre comillas."
+          }
         }
       ],
       "rel": [
@@ -1177,7 +1278,14 @@
         {
           "c": "Vitr. 1.3.2",
           "t": "Haec autem ita fieri debent, ut habeatur ratio firmitatis, utilitatis, venustatis.",
-          "tr": "Todo ello debe hacerse de modo que se atienda a la solidez, la utilidad y la belleza."
+          "tr": "Todo ello debe hacerse de modo que se atienda a la solidez, la utilidad y la belleza.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.3.2",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1229,7 +1337,14 @@
         {
           "c": "Vitr. 1.3.2",
           "t": "ut habeatur ratio firmitatis, utilitatis, venustatis.",
-          "tr": "que se atienda a la solidez, la utilidad y la belleza."
+          "tr": "que se atienda a la solidez, la utilidad y la belleza.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.3.2",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1292,7 +1407,11 @@
         {
           "c": "Lucr. 1.1–2",
           "t": "Aeneadum genetrix, hominum divomque voluptas, / alma Venus",
-          "tr": "Madre de los Enéadas, deleite de hombres y dioses, nutricia Venus"
+          "tr": "Madre de los Enéadas, deleite de hombres y dioses, nutricia Venus",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -1348,7 +1467,14 @@
         {
           "c": "Vitr. 1.2.5",
           "t": "Decor autem est emendatus operis aspectus probatis rebus compositi cum auctoritate.",
-          "tr": "El decoro es el aspecto impecable de la obra, compuesta con autoridad a partir de elementos aprobados."
+          "tr": "El decoro es el aspecto impecable de la obra, compuesta con autoridad a partir de elementos aprobados.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.2.5",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1402,7 +1528,11 @@
         {
           "c": "Cic. Off. 1.23",
           "t": "Fundamentum autem est iustitiae fides, id est dictorum conventorumque constantia et veritas.",
-          "tr": "El fundamento de la justicia es la buena fe, es decir, la constancia y verdad en lo dicho y lo pactado."
+          "tr": "El fundamento de la justicia es la buena fe, es decir, la constancia y verdad en lo dicho y lo pactado.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -1464,7 +1594,14 @@
         {
           "c": "Vitr. 4.1.6",
           "t": "In ea aede cum voluissent columnas conlocare, non habentes symmetrias earum",
-          "tr": "Cuando quisieron colocar columnas en aquel templo, sin conocer sus simetrías"
+          "tr": "Cuando quisieron colocar columnas en aquel templo, sin conocer sus simetrías",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "4.1.6",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1526,7 +1663,11 @@
         {
           "c": "Verg. A. 10.24",
           "t": "aggeribus moerorum",
-          "tr": "en los terraplenes de las murallas"
+          "tr": "en los terraplenes de las murallas",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -1628,7 +1769,14 @@
         {
           "c": "Vitr. 5.1.1",
           "t": "Graeci in quadrato amplissimis et duplicibus porticibus fora constituunt",
-          "tr": "Los griegos disponen sus foros en cuadrado, con amplísimos pórticos dobles"
+          "tr": "Los griegos disponen sus foros en cuadrado, con amplísimos pórticos dobles",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "5.1.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1679,7 +1827,14 @@
         {
           "c": "Vitr. 5.1.6",
           "t": "Non minus summam dignitatem et venustatem possunt habere comparationes basilicarum, quo genere Coloniae Iuliae Fanestri conlocavi curavique faciendam",
-          "tr": "No menor dignidad y belleza pueden tener las composiciones de las basílicas, del tipo de la que dispuse y mandé construir en la Colonia Julia Fanestris"
+          "tr": "No menor dignidad y belleza pueden tener las composiciones de las basílicas, del tipo de la que dispuse y mandé construir en la Colonia Julia Fanestris",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "5.1.6",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1768,7 +1923,14 @@
         {
           "c": "Vitr. 1.1.1",
           "t": "Ea nascitur ex fabrica et ratiocinatione.",
-          "tr": "Nace de la práctica y del razonamiento."
+          "tr": "Nace de la práctica y del razonamiento.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.1.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1819,7 +1981,14 @@
         {
           "c": "Vitr. 10.1.1",
           "t": "Machina est continens e materia coniunctio maximas ad onerum motus habens virtutes.",
-          "tr": "La máquina es una conjunción continua de materia que tiene grandísima eficacia para mover cargas."
+          "tr": "La máquina es una conjunción continua de materia que tiene grandísima eficacia para mover cargas.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "10.1.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -1925,7 +2094,14 @@
         {
           "c": "Vitr. 3.1.5",
           "t": "Nec minus mensurarum rationes, quae in omnibus operibus videntur necessariae esse, ex corporis membris collegerunt, uti digitum, palmum, pedem, cubitum",
-          "tr": "Y no menos tomaron de los miembros del cuerpo las razones de las medidas que parecen necesarias en todas las obras, como el dedo, el palmo, el pie y el codo"
+          "tr": "Y no menos tomaron de los miembros del cuerpo las razones de las medidas que parecen necesarias en todas las obras, como el dedo, el palmo, el pie y el codo",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "3.1.5",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -2133,7 +2309,11 @@
         {
           "c": "Lucr. 1.21",
           "t": "quae quoniam rerum naturam sola gubernas",
-          "tr": "puesto que solo tú gobiernas la naturaleza de las cosas"
+          "tr": "puesto que solo tú gobiernas la naturaleza de las cosas",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -2225,7 +2405,14 @@
         {
           "c": "Vitr. 1.1.1",
           "t": "Ratiocinatio autem est, quae res fabricatas sollertiae ac rationis pro portione demonstrare atque explicare potest.",
-          "tr": "El razonamiento es lo que puede demostrar y explicar las cosas fabricadas según la proporción de la destreza y de la razón."
+          "tr": "El razonamiento es lo que puede demostrar y explicar las cosas fabricadas según la proporción de la destreza y de la razón.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.1.1",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -2295,12 +2482,20 @@
               "lang": "la",
               "t": "In principio erat Verbum, et Verbum erat apud Deum, et Deus erat Verbum."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         },
         {
           "c": "Heráclito, DK 22 B50",
           "t": "οὐκ ἐμοῦ, ἀλλὰ τοῦ λόγου ἀκούσαντας ὁμολογεῖν σοφόν ἐστιν ἓν πάντα εἶναι",
-          "tr": "Escuchando no a mí sino al lógos, es sabio convenir en que todo es uno."
+          "tr": "Escuchando no a mí sino al lógos, es sabio convenir en que todo es uno.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -2362,7 +2557,14 @@
         {
           "c": "Vitr. 1.1.3",
           "t": "Cum in omnibus enim rebus, tum maxime etiam in architectura haec duo insunt, quod significatur et quod significat.",
-          "tr": "En todas las cosas, y muy especialmente en la arquitectura, hay dos elementos: lo significado y lo que significa."
+          "tr": "En todas las cosas, y muy especialmente en la arquitectura, hay dos elementos: lo significado y lo que significa.",
+          "v514_alignment": {
+            "status": "non_literal",
+            "locus": "1.1.3",
+            "latin_exact": false,
+            "spanish_exact": false,
+            "note": "La formulación latina no coincide literalmente con V514; podría ser abreviación, lectura editorial distinta o paráfrasis. Cotejar antes de citar entre comillas."
+          }
         }
       ],
       "rel": [
@@ -2430,7 +2632,11 @@
               "lang": "la",
               "t": "In principio creavit Deus caelum et terram."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -2500,7 +2706,11 @@
               "lang": "la",
               "t": "Igitur perfecti sunt caeli et terra et omnis ornatus eorum."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -2776,7 +2986,11 @@
         {
           "c": "Pl. Ap. 18a",
           "t": "δικαστοῦ μὲν γὰρ αὕτη ἀρετή, ῥήτορος δὲ τἀληθῆ λέγειν",
-          "tr": "Esta es la virtud del juez; la del orador, decir la verdad."
+          "tr": "Esta es la virtud del juez; la del orador, decir la verdad.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -2842,7 +3056,11 @@
         {
           "c": "Hom. Od. 1.2–3",
           "t": "πλάγχθη, ἐπεὶ Τροίης ἱερὸν πτολίεθρον ἔπερσεν· / πολλῶν δʼ ἀνθρώπων ἴδεν ἄστεα καὶ νόον ἔγνω",
-          "tr": "anduvo errante tras arrasar la sagrada ciudadela de Troya; vio las ciudades de muchos hombres y conoció su pensamiento"
+          "tr": "anduvo errante tras arrasar la sagrada ciudadela de Troya; vio las ciudades de muchos hombres y conoció su pensamiento",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -2943,7 +3161,11 @@
         {
           "c": "Verg. A. 1.33",
           "t": "tantae molis erat Romanam condere gentem",
-          "tr": "tan gran esfuerzo costaba fundar la estirpe romana"
+          "tr": "tan gran esfuerzo costaba fundar la estirpe romana",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3078,7 +3300,11 @@
               "lang": "la",
               "t": "Audi, Israhel: Dominus Deus noster Dominus unus est."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3135,7 +3361,11 @@
         {
           "c": "Hom. Il. 1.1",
           "t": "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος",
-          "tr": "Canta, diosa, la cólera del Pelida Aquiles"
+          "tr": "Canta, diosa, la cólera del Pelida Aquiles",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3184,7 +3414,11 @@
         {
           "c": "Vitr. 1.praef.1",
           "t": "Cum divina tua mens et numen, imperator Caesar, imperio potiretur orbis terrarum",
-          "tr": "Cuando tu mente divina y tu numen, emperador César, se adueñaban del dominio del orbe"
+          "tr": "Cuando tu mente divina y tu numen, emperador César, se adueñaban del dominio del orbe",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3415,7 +3649,11 @@
         {
           "c": "Caes. Gal. 1.1",
           "t": "Gallia est omnis divisa in partes tres",
-          "tr": "La Galia en su conjunto está dividida en tres partes"
+          "tr": "La Galia en su conjunto está dividida en tres partes",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3474,7 +3712,11 @@
         {
           "c": "Cic. Off. 1.37",
           "t": "hostis enim apud maiores nostros is dicebatur, quem nunc peregrinum dicimus",
-          "tr": "pues entre nuestros antepasados se llamaba hostis al que ahora llamamos extranjero"
+          "tr": "pues entre nuestros antepasados se llamaba hostis al que ahora llamamos extranjero",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3695,7 +3937,11 @@
               "lang": "la",
               "t": "Dixitque Deus: Fiat lux. Et facta est lux."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3742,7 +3988,11 @@
         {
           "c": "Lucr. 1.5",
           "t": "concipitur visitque exortum lumina solis",
-          "tr": "es concebido y contempla, nacido, la luz del sol"
+          "tr": "es concebido y contempla, nacido, la luz del sol",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3813,7 +4063,11 @@
               "lang": "la",
               "t": "Omnia tempus habent, et suis spatiis transeunt universa sub caelo."
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -3982,12 +4236,23 @@
               "lang": "la",
               "t": "formavit igitur Dominus Deus hominem de limo terrae"
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         },
         {
           "c": "Vitr. 3.1.3",
           "t": "Item corporis centrum medium naturaliter est umbilicus.",
-          "tr": "Asimismo, el centro medio del cuerpo es por naturaleza el ombligo."
+          "tr": "Asimismo, el centro medio del cuerpo es por naturaleza el ombligo.",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "3.1.3",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -4035,7 +4300,11 @@
         {
           "c": "Pl. Ap. 38a",
           "t": "ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς ἀνθρώπῳ",
-          "tr": "Una vida sin examen no merece ser vivida por el hombre."
+          "tr": "Una vida sin examen no merece ser vivida por el hombre.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4147,7 +4416,11 @@
         {
           "c": "Hom. Il. 1.3",
           "t": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
-          "tr": "precipitó al Hades muchas almas valerosas"
+          "tr": "precipitó al Hades muchas almas valerosas",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4209,7 +4482,11 @@
         {
           "c": "Vitr. 1.praef.1",
           "t": "Cum divina tua mens et numen, imperator Caesar",
-          "tr": "Cuando tu mente divina y tu numen, emperador César"
+          "tr": "Cuando tu mente divina y tu numen, emperador César",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4263,7 +4540,11 @@
         {
           "c": "Cic. De or. 2.36",
           "t": "historia vero testis temporum, lux veritatis, vita memoriae, magistra vitae, nuntia vetustatis",
-          "tr": "la historia, testigo de los tiempos, luz de la verdad, vida de la memoria, maestra de la vida, mensajera de la antigüedad"
+          "tr": "la historia, testigo de los tiempos, luz de la verdad, vida de la memoria, maestra de la vida, mensajera de la antigüedad",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4372,7 +4653,11 @@
               "lang": "grc",
               "t": "καὶ ἐνέπλησα αὐτὸν πνεῦμα θεῖον σοφίας καὶ συνέσεως καὶ ἐπιστήμης ἐν παντὶ ἔργῳ"
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4428,7 +4713,11 @@
         {
           "c": "Prov 9,1 (Vulg.)",
           "t": "Sapientia aedificavit sibi domum, excidit columnas septem.",
-          "tr": "La Sabiduría edificó su casa, labró sus siete columnas."
+          "tr": "La Sabiduría edificó su casa, labró sus siete columnas.",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4473,7 +4762,14 @@
         {
           "c": "Vitr. 1.1.7",
           "t": "Philosophia vero perficit architectum animo magno",
-          "tr": "La filosofía perfecciona al arquitecto con grandeza de ánimo"
+          "tr": "La filosofía perfecciona al arquitecto con grandeza de ánimo",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.1.7",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -4582,7 +4878,11 @@
         {
           "c": "Cic. Off. 1.23",
           "t": "Fundamentum autem est iustitiae fides",
-          "tr": "El fundamento de la justicia es la buena fe"
+          "tr": "El fundamento de la justicia es la buena fe",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4643,7 +4943,11 @@
         {
           "c": "Catull. 1.1",
           "t": "Qui dono lepidum nouum libellum",
-          "tr": "¿A quién regalo este librito nuevo y gracioso?"
+          "tr": "¿A quién regalo este librito nuevo y gracioso?",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4754,7 +5058,14 @@
         {
           "c": "Vitr. 1.1.3",
           "t": "Et ut litteratus sit, peritus graphidos, eruditus geometria",
-          "tr": "Y que sea instruido en las letras, hábil en el dibujo, versado en geometría"
+          "tr": "Y que sea instruido en las letras, hábil en el dibujo, versado en geometría",
+          "v514_alignment": {
+            "status": "latin_only",
+            "locus": "1.1.3",
+            "latin_exact": true,
+            "spanish_exact": false,
+            "note": "El latín coincide con V514; el castellano es paráfrasis, traducción alternativa o fragmento no idéntico."
+          }
         }
       ],
       "rel": [
@@ -4898,7 +5209,11 @@
         {
           "c": "Vitr. 9.praef.6",
           "t": "Item Pythagoras normam sine artificis fabricationibus inventam ostendit",
-          "tr": "Asimismo, Pitágoras mostró la escuadra hallada sin los procedimientos del artesano"
+          "tr": "Asimismo, Pitágoras mostró la escuadra hallada sin los procedimientos del artesano",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -4965,7 +5280,11 @@
               "lang": "la",
               "t": "iuxta omnem similitudinem tabernaculi"
             }
-          ]
+          ],
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -5302,7 +5621,11 @@
         {
           "c": "Cic. De or. 2.36",
           "t": "historia vero testis temporum, lux veritatis",
-          "tr": "la historia, testigo de los tiempos, luz de la verdad"
+          "tr": "la historia, testigo de los tiempos, luz de la verdad",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -5348,7 +5671,11 @@
         {
           "c": "Arist. Po. 1449b24",
           "t": "ἔστιν οὖν τραγῳδία μίμησις πράξεως σπουδαίας καὶ τελείας μέγεθος ἐχούσης",
-          "tr": "La tragedia es, pues, imitación de una acción seria y completa, de cierta magnitud"
+          "tr": "La tragedia es, pues, imitación de una acción seria y completa, de cierta magnitud",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -5396,7 +5723,11 @@
         {
           "c": "Arist. Po. 1449b24",
           "t": "ἔστιν οὖν τραγῳδία μίμησις πράξεως σπουδαίας",
-          "tr": "La tragedia es imitación de una acción seria"
+          "tr": "La tragedia es imitación de una acción seria",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -5485,7 +5816,11 @@
         {
           "c": "Vitr. 1.praef.1",
           "t": "invictaque virtute cunctis hostibus stratis",
-          "tr": "abatidos todos los enemigos por tu virtud invencible"
+          "tr": "abatidos todos los enemigos por tu virtud invencible",
+          "v514_alignment": {
+            "status": "external_source",
+            "note": "Referencia externa o sin correspondencia canónica identificada en V514; requiere consulta a su fuente."
+          }
         }
       ],
       "rel": [
@@ -5845,7 +6180,14 @@
           "c": "Vitr. 1.2.2",
           "t": "Ichnographia est circini regulaeque modice continens usus, e qua capiuntur formarum in solis arearum descriptiones.",
           "tr": "La icnografía es el uso moderado del compás y de la regla, a partir del cual se obtienen los trazados de las formas en el suelo de los solares.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.2.2",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -5899,7 +6241,14 @@
           "c": "Vitr. 1.2.2",
           "t": "Item scaenographia est frontis et laterum abscedentium adumbratio ad circinique centrum omnium linearum responsus.",
           "tr": "Igualmente, la escenografía es el esbozo de la fachada y de los lados que se alejan, con la correspondencia de todas las líneas al centro del compás.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.2.2",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -5953,7 +6302,14 @@
           "c": "Vitr. 1.2.2",
           "t": "Orthographia autem est erecta frontis imago modiceque picta rationibus operis futuri figura.",
           "tr": "La ortografía (el alzado) es la imagen vertical de la fachada y la figura de la obra futura, dibujada con mesura —es decir, a escala— según sus proporciones.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.2.2",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -6002,7 +6358,14 @@
           "c": "Vitr. 1.2.2",
           "t": "Dispositio autem est rerum apta conlocatio elegansque compositionibus effectus operis cum qualitate.",
           "tr": "La disposición, en cambio, es la colocación adecuada de las cosas y el efecto elegante de la obra, mediante sus composiciones, con cualidad.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.2.2",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -6052,7 +6415,14 @@
           "c": "Vitr. 1.2.1",
           "t": "et distributione, quae graece οἰκονομία dicitur.",
           "tr": "y distribución, que en griego se llama οἰκονομία.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.2.1",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -6104,7 +6474,14 @@
           "c": "Vitr. 1.3.1",
           "t": "Partes ipsius architecturae sunt tres: aedificatio, gnomonice, machinatio.",
           "tr": "Las partes de la arquitectura misma son tres: la construcción, la gnomónica y la mecánica.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.3.1",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
@@ -6152,7 +6529,14 @@
           "c": "Vitr. 1.3.1",
           "t": "Partes ipsius architecturae sunt tres: aedificatio, gnomonice, machinatio.",
           "tr": "Las partes de la arquitectura misma son tres: la construcción, la gnomónica y la mecánica.",
-          "lang": "la"
+          "lang": "la",
+          "v514_alignment": {
+            "status": "literal_bilingual",
+            "locus": "1.3.1",
+            "latin_exact": true,
+            "spanish_exact": true,
+            "note": "Latín y castellano coinciden literalmente con los fragmentos indexados de V514; no acredita cotejo manuscrito."
+          }
         }
       ],
       "rel": [
