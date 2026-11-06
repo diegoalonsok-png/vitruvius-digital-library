@@ -8,6 +8,7 @@ for(const f of ['data/clasicos-perseus.json','data/clasicos-perseus-extra.json']
  for(const w of read(f).works){urls.add(w.original);for(const t of w.translations||[])urls.add(t.url);for(const p of w.parts||[])urls.add(p.url)}
 const missingPdf=[];
 for(const w of read('data/bibliotheca-graeca-latina-I-bce-I-ce.json').works){const u=w.pdf?.url;if(u&&!/^https?:/.test(u)&&!fs.existsSync(u.split(/[?#]/)[0]))missingPdf.push(w.id+' → '+u)}
+for(const w of Object.values(fs.existsSync('data/clasicos-descargas.json')?read('data/clasicos-descargas.json').works:{}))for(const f of [w.pdf,w.docx])if(!fs.existsSync(f))missingPdf.push('edición descargable → '+f);
 const list=[...urls].filter(Boolean),bad=[];let i=0;
 async function worker(){while(i<list.length){const u=list[i++];
  try{const r=await fetch(u,{method:'HEAD'});if(!r.ok)bad.push(r.status+' '+u)}catch(e){bad.push('ERR '+u)}}}

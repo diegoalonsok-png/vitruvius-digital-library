@@ -168,7 +168,7 @@ function setLeft(which){
 }
 function visibleWorks(){
  const f=fold($("filter").value),lang=$("f-lang")?.value||"",all=[...catalog.works,...($("f-extra")?.checked?extraWorks:[])];
- return all.filter(w=>(!f||fold(w.author+" "+w.title+" "+w.id).includes(f))&&(!lang||w.language===lang));
+ return all.filter(w=>(!f||fold(w.author+" "+(w.authorEn||"")+" "+w.title+" "+w.id).includes(f))&&(!lang||w.language===lang));
 }
 function renderIndex(){
  const box=$("index-list");box.replaceChildren();
@@ -209,7 +209,7 @@ async function corpusSearch(){
 }
 (async()=>{
  if(params.get("embed")==="1")document.documentElement.classList.add("lc-embed");
- [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261105-v1").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
+ [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261106-ampliado-v1").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
  $("tab-codex").onclick=()=>setLeft("codex");$("tab-original").onclick=()=>setLeft("original");
  $("search").onsubmit=e=>{e.preventDefault();search()};
  $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};
@@ -225,12 +225,20 @@ async function corpusSearch(){
  const save=(name,text,type)=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},800)};
  const dl=(id,label,fn)=>{if($(id))return;const b=document.createElement("button");b.type="button";b.id=id;b.textContent=label;b.onclick=fn;$("print").after(b)};
  dl("dl-txt","Descargar TXT",()=>{if(!orig.length)return;const L=[work.author+" · "+work.title,srcLine(),""];
-  for(const p of orig){L.push("["+p.locus+"]",p.text);const t=trans.length?translationFor(p):null;if(t?.length)L.push("— "+t.map(x=>x.text).join(" "));L.push("")}
+  const seen=new Set(); // cada sección de la traducción se escribe una sola vez, junto al primer pasaje que la cubre
+  for(const p of orig){L.push("["+p.locus+"]",p.text);const t=(trans.length?translationFor(p):null)?.filter(x=>!seen.has(x));t?.forEach(x=>seen.add(x));if(t?.length)L.push("— "+t.map(x=>x.text).join(" "));L.push("")}
   save(fileBase()+".txt",L.join("\n"),"text/plain;charset=utf-8")});
  dl("dl-doc","Descargar Word",()=>{if(!orig.length)return;const lang=work.language==="grc"?"grc":"la";
-  const rows=orig.map(p=>{const t=trans.length?translationFor(p):null;return `<tr><td style="width:12%;vertical-align:top;font:bold 10pt Arial">${esc(p.locus)}</td><td lang="${lang}" style="width:44%;vertical-align:top;font:11pt Georgia">${esc(p.text).replace(/\n/g,"<br>")}</td><td lang="en" style="width:44%;vertical-align:top;font:11pt Georgia">${t?.length?esc(t.map(x=>x.text).join(" ")):""}</td></tr>`}).join("");
+  const seen=new Set();
+  const rows=orig.map(p=>{const t=(trans.length?translationFor(p):null)?.filter(x=>!seen.has(x));t?.forEach(x=>seen.add(x));return `<tr><td style="width:12%;vertical-align:top;font:bold 10pt Arial">${esc(p.locus)}</td><td lang="${lang}" style="width:44%;vertical-align:top;font:11pt Georgia">${esc(p.text).replace(/\n/g,"<br>")}</td><td lang="en" style="width:44%;vertical-align:top;font:11pt Georgia">${t?.length?esc(t.map(x=>x.text).join(" ")):""}</td></tr>`}).join("");
   const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>${esc(work.title)}</title></head><body><h1 style="font:20pt Georgia">${esc(work.author)} · <i>${esc(work.title)}</i></h1><p style="font:9pt Arial">${esc(srcLine())}</p><table border="1" cellpadding="6" style="border-collapse:collapse;width:100%"><tr><th>Locus</th><th>${lang==="grc"?"Griego":"Latín"}</th><th>${work.translations.length?"Traducción inglesa":""}</th></tr>${rows}</table></body></html>`;
   save(fileBase()+".doc","﻿"+html,"application/msword")});
+ // Ediciones descargables ya publicadas en el sitio (PDF y DOCX bilingües, documents/clasicos/).
+ fetch("data/clasicos-descargas.json?v=20261106-v1").then(r=>r.ok?r.json():null).then(d=>{
+  const e=d?.works?.[params.get("obra")];if(!e||$("ed-pdf"))return;
+  const mk=(id,href,label,kb)=>{const a=document.createElement("a");a.id=id;a.href=href;a.setAttribute("download","");a.textContent=label;a.title=kb+" KB · original y traducción inglesa alineados (CC BY-SA 4.0)";return a};
+  ($("dl-doc")||$("print")).after(mk("ed-pdf",e.pdf,"Edición PDF",e.kb.pdf),mk("ed-docx",e.docx,"Edición DOCX",e.kb.docx));
+ }).catch(()=>{});
  $("cite").onclick=async()=>{
   const p=orig[cur];if(!p)return;
   const d=new Date().toLocaleDateString("es",{day:"numeric",month:"long",year:"numeric"});
