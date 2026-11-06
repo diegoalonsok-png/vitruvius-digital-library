@@ -3984,7 +3984,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Traducción inglesa histórica en prosa de Samuel Butler (1898), revisada por Timothy Power y Gregory Nagy para Perseus; 24 cantos, 190 segmentos de lectura indexados. Comparación comprobada por canto, no alineación automática por verso o frase. Licencia digital Perseus CC BY-SA 4.0 salvo excepciones (ver archivo de procedencia)."
       },
       "links": {
         "scaife": null,
@@ -4009,13 +4009,23 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/homer-iliad-grc.json"
+        "grc": "data/classics-corpus/homer-iliad-grc.json",
+        "en": "data/classics-corpus/homer-iliad-en.json"
       },
       "localHtml": "classics-text-reader.html?work=homer-iliad&lang=grc",
       "localEdition": {
         "original": "Griego · ed. D. B. Monro y T. W. Allen (Oxford)",
         "source": "Ilíada completa (24 cantos) de Perseus Digital Library (TEI, CC BY-SA 4.0), por pasajes con numeración de versos. Búsqueda con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
-      }
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Samuel Butler (1898), revisión Perseus · 24 cantos",
+          "path": "classics-text-reader.html?work=homer-iliad&lang=en",
+          "kind": "historical-translation",
+          "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0012/tlg001/tlg0012.tlg001.perseus-eng4.xml"
+        }
+      ]
     },
     {
       "id": "homer-odyssey",
