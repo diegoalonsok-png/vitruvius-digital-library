@@ -38,7 +38,10 @@ function lev(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;let prev=A
 
 /* ---------- Carga de datos ---------- */
 const cache=new Map();
-function load(path){if(!cache.has(path))cache.set(path,fetch(ROOT+path,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()}));return cache.get(path)}
+/* Los datos del Lexicon llevan la huella de versión de la página (meta lx-data-version): el service
+   worker los guarda y no se vuelven a descargar mientras no cambien. */
+const DATA_VER=document.querySelector('meta[name="lx-data-version"]')?.content||"";
+function load(path){const url=ROOT+path+(DATA_VER&&path.startsWith("data/lexicon/")?(path.includes("?")?"&":"?")+"v="+DATA_VER:"");if(!cache.has(path))cache.set(path,fetch(url,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()}));return cache.get(path)}
 const L={};
 async function lang(l,silent=false){
  if(L[l])return L[l];
@@ -127,7 +130,7 @@ function resolveTerm(D,t,opts={}){
   else{const rx=new RegExp("^"+pat.replace(/[.+^${}()|[\]\\]/g,"\\$&").replace(/\*/g,".*").replace(/\?/g,".")+"$","u");for(const k of D.keys)if(rx.test(k))out.add(k)}
  }else if(t.type==="fuzzy"){const k=fold(t.v);const max=k.length>7?2:1;for(const f of D.keys)if(f[0]===k[0]&&lev(f,k,max)<=max)out.add(f);
   if(D.l==="grc"&&!GREEK.test(t.v)){const tk=latinTranslitKey(t.v);for(const [x,fs] of transIndex(D))if(lev(x,tk,max)<=max)fs.forEach(add)}
- }else if(t.type==="pattern"){for(const [k,an] of Object.entries(D.forms.forms))if(an.some(a=>a.length>2&&tagMatches(a[1],t.conds)))add(k)}
+ }else if(t.type==="pattern"){for(const [k,an] of Object.entries(D.forms.forms))if(an.some(a=>typeof a[1]==="string"&&tagMatches(a[1],t.conds)))add(k)}
  return out;
 }
 /* Ejecuta la consulta: postings → verificación posicional → coincidencias con desplazamientos. */
@@ -436,7 +439,7 @@ async function renderEntry(D,term,res){
  /* Lema y morfología */
  for(const lem of lemmas.slice(0,4)){
   const info=lemmaInfo(D,lem);const forms=[...(D.lemmaForms.get(lem)||[])].filter(f=>D.freq.has(f)).sort((a,b)=>D.freq.get(b)-D.freq.get(a));
-  const tags=an.filter(a=>a[0]===lem&&a.length>2).map(a=>decodeTag(a[1])).filter(Boolean);
+  const tags=an.filter(a=>a[0]===lem&&typeof a[1]==="string").map(a=>decodeTag(a[1])).filter(Boolean);
   const sec=el("section",{class:"lx-lemma"},el("h3",{lang:D.l},lemmaDisplay(lem)," ",info.h?el("span",{class:"lx-headword"},info.h):null));
   if(tags.length)sec.append(el("p",{class:"lx-morph"},el("b",{},"Morfología de «"+term.v+"»: "),[...new Set(tags)].join(" — o bien — ")));
   else if(D.l==="la")sec.append(el("p",{class:"lx-morph"},el("b",{},"Morfología: "),info.h?`enunciado del Lewis & Short: ${info.h}`:"la lematización latina (CLTK) asigna el lema sin análisis flexivo; véase la ficha del diccionario."));
@@ -460,7 +463,7 @@ async function renderEntry(D,term,res){
  if(res.hits.length){const first=res.hits.slice().sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i)[0];const fp=D.corpus.passages[first.i];aside.append(el("h3",{},"Primera atestiguación hallada"),el("p",{},el("b",{},citeOf(D,fp,first.spans[0][0])),` · ${work(D,fp[0]).author}, ${DATING[fp[0]]||""}`),el("p",{class:"lx-small"},"Es la más antigua entre las obras del corpus local, no la primera aparición histórica absoluta de la palabra."))}
  aside.append(el("h3",{},"Datos del corpus"),el("p",{},`Ocurrencias de la forma: ${(D.freq.get(key)||0).toLocaleString("es")}`),el("p",{},`Ocurrencias del lema: ${total.toLocaleString("es")}`),el("p",{},`Frecuencia relativa: ${(total/D.tokens*10000).toFixed(2)} por 10 000 palabras`));
  if(res.hits.length){aside.append(el("h3",{},"Colocaciones"));aside.append(collocationList(D,res.hits,4,12))}
- const entry={lemma:lemmas.map(lemmaDisplay),form:term.v,lang:D.l,headword:lemmas.map(l=>lemmaInfo(D,l).h||"").filter(Boolean),senses:lemmas.map(l=>(lemmaInfo(D,l).g||"").split(/;\s*/).filter(Boolean)),morphology:an.filter(a=>a.length>2).map(a=>({lemma:lemmaDisplay(a[0]),tag:a[1],analysis:decodeTag(a[1])})),etymology:curated||null,frequency:{form:D.freq.get(key)||0,lemma:total,corpusTokens:D.tokens},citations:res.hits.slice(0,50).map(h=>{const p=D.corpus.passages[h.i];return{cite:citeOf(D,p,h.spans[0][0]),author:work(D,p[0]).author,work:work(D,p[0]).title,text:p[2].slice(kwic(p[2],h.spans).a,kwic(p[2],h.spans).b)}}),source:D.forms.sources,url:PAGE+"?q="+encodeURIComponent(term.v)};
+ const entry={lemma:lemmas.map(lemmaDisplay),form:term.v,lang:D.l,headword:lemmas.map(l=>lemmaInfo(D,l).h||"").filter(Boolean),senses:lemmas.map(l=>(lemmaInfo(D,l).g||"").split(/;\s*/).filter(Boolean)),morphology:an.filter(a=>typeof a[1]==="string").map(a=>({lemma:lemmaDisplay(a[0]),tag:a[1],analysis:decodeTag(a[1])})),etymology:curated||null,frequency:{form:D.freq.get(key)||0,lemma:total,corpusTokens:D.tokens},citations:res.hits.slice(0,50).map(h=>{const p=D.corpus.passages[h.i];return{cite:citeOf(D,p,h.spans[0][0]),author:work(D,p[0]).author,work:work(D,p[0]).title,text:p[2].slice(kwic(p[2],h.spans).a,kwic(p[2],h.spans).b)}}),source:D.forms.sources,url:PAGE+"?q="+encodeURIComponent(term.v)};
  S.lastEntry=entry;
  aside.append(el("h3",{},"Exportar la ficha"),exportButtons(entry),el("h3",{},"Citar la ficha"),citeBox(lemmas.length?lemmaDisplay(lemmas[0]):term.v,entry.url));
  injectJsonLd(entry);
@@ -1218,7 +1221,7 @@ async function analyzeSentence(q){
  const table=el("table",{class:"lx-table"},el("thead",{},el("tr",{},el("th",{},"#"),el("th",{},"Forma"),el("th",{},"Lema"),el("th",{},"Morfología"),el("th",{},"Glosa"),el("th",{},"Frec."))));
  const tb=el("tbody");table.append(tb);const inter=el("div",{class:"lx-interlinear",lang:l});const rows=[];
  words.forEach((w,i)=>{const k=fold(w).replace(/'+$/,"");let an=analyses(D,k);if(!an.length&&D.l==="grc"){const t=transIndex(D).get(latinTranslitKey(w));if(t)an=analyses(D,t[0])}
-  const lems=[...new Set(an.map(a=>a[0]))];const morph=[...new Set(an.filter(a=>a.length>2).map(a=>decodeTag(a[1])))];
+  const lems=[...new Set(an.map(a=>a[0]))];const morph=[...new Set(an.filter(a=>typeof a[1]==="string").map(a=>decodeTag(a[1])))];
   const gl=lems.map(x=>(lemmaInfo(D,x).g||"").split(/;\s*/).slice(0,3).join("; ")).filter(Boolean).join(" | ");
   rows.push({n:i+1,form:w,lemma:lems.map(lemmaDisplay),morph,gloss:gl,freq:D.freq.get(k)||0});
   tb.append(el("tr",{},el("td",{},String(i+1)),el("td",{lang:l},el("button",{type:"button",class:"lx-formlink",onclick:()=>{$("#lx-q").value=w;S.mode="palabra";renderTabs();run()}},w)),el("td",{lang:l},lems.map(lemmaDisplay).join(" / ")||"—"),el("td",{},morph.join(" — o — ")||(l==="la"&&lems.length?"(sin análisis flexivo)":"—")),el("td",{},gl||"—"),el("td",{},String(D.freq.get(k)||0))));
@@ -1476,6 +1479,11 @@ async function init(){
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
  try{[S.etym,S.sent,S.phil]=await Promise.all([load("data/lexicon/etymologicum.json"),load("data/lexicon/sententiae.json"),load("data/lexicon/philologia.json")])}catch(err){console.error(err)}
  if($("#comp-go")){$("#comp-go").addEventListener("click",()=>renderComparatio().catch(e=>$("#comp-out").replaceChildren(el("p",{},e.message))));$("#comp-lang").addEventListener("change",()=>{$("#comp-a").dataset.l="";renderComparatio()})}
+ /* Precarga silenciosa: mientras el lector mira la página se prepara el corpus latino (y el griego en
+    conexiones rápidas), para que la primera búsqueda sea inmediata. No se hace con ahorro de datos ni
+    en redes lentas; si ya hay una consulta en la dirección, la búsqueda misma carga lo que necesita. */
+ {const c=navigator.connection||{};const slow=c.saveData||/(^|-)2g|3g/.test(c.effectiveType||"");
+  if(!slow&&!new URLSearchParams(location.search).get("q")){const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));idle(()=>lang("la",true).then(()=>{if((c.effectiveType||"4g")==="4g")idle(()=>lang("grc",true).catch(()=>{}))}).catch(()=>{}),{timeout:4000})}}
  renderInstrumenta();renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);

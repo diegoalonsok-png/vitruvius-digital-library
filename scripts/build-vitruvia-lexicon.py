@@ -252,7 +252,9 @@ for lang in ("la", "grc"):
                 if f_ in forms and (lem, "") not in forms[f_]:
                     works_ = set().union(*forms[f_].values())
                     forms[f_] = {(lem, ""): works_, **forms[f_]}
-    out_forms = {k: [[l, t, sorted(ws)] if t else [l, sorted(ws)] for (l, t), ws in v.items()] for k, v in forms.items()}
+    # Índice compacto: [lema, etiqueta] o [lema]. Las obras de cada forma ya constan en el corpus;
+    # repetirlas aquí casi duplicaba el tamaño de la descarga.
+    out_forms = {k: [[l, t] if t else [l] for (l, t), ws in v.items()] for k, v in forms.items()}
     lem_out = {k: {kk: vv for kk, vv in v.items() if vv} for k, v in lemmas.items()}
     data = {"schema": "vitruvia-lexicon-forms-v1", "lang": lang,
             "sources": ("Lematización CLTK (forma→lema, sin desambiguación); glosas Lewis & Short (Perseus DL, CC BY-SA 4.0)" if lang == "la"
