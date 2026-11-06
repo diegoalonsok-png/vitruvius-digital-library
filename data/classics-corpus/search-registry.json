@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 23,
+  "count": 24,
   "works": 14,
   "entries": [
     {
@@ -54,6 +54,16 @@
       "path": "data/classics-corpus/aristotle-poetics-grc.json",
       "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "caesar-gallico",
+      "author": "Julio César (libro VIII: Aulo Hircio)",
+      "title": "De bello Gallico",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/caesar-gallico-en.json",
+      "reader": "classics-text-reader.html?work=caesar-gallico&lang=en",
+      "sourceDescription": "McDevitte y Bohn, 1870–72, TEI Perseus CC BY-SA 4.0; libro VIII de Hircio. Loci libro.capítulo."
     },
     {
       "workId": "caesar-gallico",
