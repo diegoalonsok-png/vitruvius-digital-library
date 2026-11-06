@@ -105,6 +105,12 @@ try{
    assert.match(await spanish.locator('option:checked').innerText(),/castellano/i);
    assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la/);
    assert.match(await p.locator('#classic-frame-b').getAttribute('src'),/lang=es/);
+   const spanishReader=p.frameLocator('#classic-frame-b');
+   await spanishReader.locator('#toc button').first().waitFor({state:'attached',timeout:25000});
+   assert.equal(await spanishReader.locator('#toc button').count(),224,
+    'Metamorphoses must exclude the historical anthology preface, other writings and appendices');
+   assert.match(await spanishReader.locator('#toc button').first().innerText(),/t22/);
+   assert.match(await spanishReader.locator('#toc button').last().innerText(),/t245/);
    const before=await p.locator('#classic-frame-b').getAttribute('src');
    await p.locator('#classic-apuleius-book').selectOption('6');
    assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la.*locus=6\.1/);
