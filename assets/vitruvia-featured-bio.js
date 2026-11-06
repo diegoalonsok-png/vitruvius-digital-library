@@ -53,6 +53,38 @@
   [['eudoxo','eudoxo de cnido','eudoxus'],'a/b > c/d  ⇔  ma > nb, nc ≤ md','Teoría de las proporciones (Elementos, V)','https://es.wikipedia.org/wiki/Eudoxo_de_Cnido'],
   [['hiparco','hiparco de nicea','hipparchus'],'crd θ = 2R sen(θ/2)','Tabla de cuerdas · trigonometría','https://es.wikipedia.org/wiki/Hiparco_de_Nicea']
  ];
+ // Regla general: fórmula de un elemento de Wikidata «nombrado en honor de» la persona (P138) o de sus
+ // obras destacadas (P800) que tenga «fórmula definitoria» (P2534). La lista anterior queda como respaldo.
+ const GREEK={alpha:'α',beta:'β',gamma:'γ',delta:'δ',epsilon:'ε',varepsilon:'ε',zeta:'ζ',eta:'η',theta:'θ',iota:'ι',kappa:'κ',lambda:'λ',mu:'μ',nu:'ν',xi:'ξ',pi:'π',rho:'ρ',sigma:'σ',tau:'τ',phi:'φ',varphi:'φ',chi:'χ',psi:'ψ',omega:'ω',Gamma:'Γ',Delta:'Δ',Theta:'Θ',Lambda:'Λ',Pi:'Π',Sigma:'Σ',Phi:'Φ',Psi:'Ψ',Omega:'Ω'};
+ const SYM={cdot:'·',times:'×',div:'÷',pm:'±',le:'≤',leq:'≤',ge:'≥',geq:'≥',neq:'≠',ne:'≠',approx:'≈',equiv:'≡',propto:'∝',infty:'∞',partial:'∂',nabla:'∇',sum:'Σ',prod:'Π',int:'∫',oint:'∮',hbar:'ħ',to:'→',rightarrow:'→',Rightarrow:'⇒',leftrightarrow:'↔',iff:'⇔',in:'∈',forall:'∀',exists:'∃',sqrt:'√',ldots:'…',cdots:'⋯',circ:'°',angle:'∠',perp:'⊥',parallel:'∥',quad:' ',qquad:'  ',ell:'ℓ'};
+ const SUP={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','+':'⁺','-':'⁻','n':'ⁿ','i':'ⁱ','(':'⁽',')':'⁾'};
+ const SUB={'0':'₀','1':'₁','2':'₂','3':'₃','4':'₄','5':'₅','6':'₆','7':'₇','8':'₈','9':'₉','+':'₊','-':'₋','n':'ₙ','i':'ᵢ','a':'ₐ','e':'ₑ','o':'ₒ','x':'ₓ'};
+ // TeX → texto Unicode con <sup>/<sub> cuando no hay carácter equivalente (salida HTML ya escapada).
+ function texToUnicode(tex){
+  let t=esc(String(tex||'')).replace(/\\(left|right|displaystyle|textstyle|,|;|!|:)/g,' ').replace(/\\(mathrm|mathbf|mathit|operatorname|text|vec|boldsymbol)\s*\{([^{}]*)\}/g,'$2');
+  t=t.replace(/\\hat\s*\{?([A-Za-z])\}?/g,'$1̂').replace(/\\bar\s*\{?([A-Za-z])\}?/g,'$1̄').replace(/\\dot\s*\{?([A-Za-z])\}?/g,'$1̇');
+  t=t.replace(/\\([A-Za-z]+)/g,(m,w)=>GREEK[w]||(w==='sqrt'||w==='frac'?m:SYM[w])||w);
+  for(let i=0;i<4;i++)t=t.replace(/\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g,(m,a,b)=>([...a].length>1?'('+a+')':a)+'/'+([...b].length>1?'('+b+')':b)).replace(/\\sqrt\s*\{([^{}]*)\}/g,'√($1)');
+  const conv=(str,map)=>[...str].every(c=>map[c])?[...str].map(c=>map[c]).join(''):null;
+  t=t.replace(/\^\{([^{}]*)\}|\^(.)/g,(m,a,b)=>{const x=a??b;return conv(x,SUP)??'<sup>'+x+'</sup>'}).replace(/_\{([^{}]*)\}|_(.)/g,(m,a,b)=>{const x=a??b;return conv(x,SUB)??'<sub>'+x+'</sub>'});
+  return t.replace(/[{}]/g,'').replace(/\s+/g,' ').replace(/\s*(=|\+|−|≤|≥|≈|&lt;|&gt;)\s*/g,' $1 ').trim();
+ }
+ async function wikidataFormula(ent){
+  const ids=new Set();
+  try{
+   const q=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:`haswbstatement:P138=${ent.id} haswbstatement:P2534`,srlimit:'5',format:'json',origin:'*'})).then(r=>r.json());
+   for(const h of q?.query?.search||[])ids.add(h.title);
+  }catch{}
+  for(const v of claims(ent,'P800'))if(v.id)ids.add(v.id);
+  if(!ids.size)return null;
+  const r=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:[...ids].slice(0,12).join('|'),props:'claims|labels|sitelinks',languages:lang()+'|es|en',sitefilter:lang()+'wiki|eswiki|enwiki',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+  const cands=Object.values(r?.entities||{}).filter(e=>claims(e,'P2534').length).sort((a,b)=>Object.keys(b.sitelinks||{}).length-Object.keys(a.sitelinks||{}).length);
+  const e=cands[0];if(!e)return null;
+  const label=e.labels?.[lang()]?.value||e.labels?.es?.value||e.labels?.en?.value||e.id;
+  const site=e.sitelinks?.[lang()+'wiki']||e.sitelinks?.eswiki||e.sitelinks?.enwiki;
+  const url=site?`https://${(site.site||'eswiki').replace('wiki','')}.wikipedia.org/wiki/`+encodeURIComponent(site.title.replace(/ /g,'_')):'https://www.wikidata.org/wiki/'+e.id;
+  const out=[[],texToUnicode(claims(e,'P2534')[0]),label.charAt(0).toUpperCase()+label.slice(1)+' · Wikidata',url];out.html=true;return out;
+ }
  function formulaFor(names){
   const keys=names.map(fold);
   return FORMULAS.find(([ns])=>ns.some(n=>keys.some(k=>k===n||k.startsWith(n+' ')||k.startsWith(n+',')||k===n.split(' ')[0]&&n.split(' ').length===1)))||null;
@@ -60,7 +92,7 @@
  function renderFormula(parent,f){
   parent.querySelector('.vfb-math')?.remove();
   const el=document.createElement('aside');el.className='vitruvia-math-context vfb-math';el.style.cssText='padding:12px 14px;border:1px solid currentColor;border-radius:8px;text-align:center';
-  el.innerHTML=`<div style="font:normal clamp(22px,2.6vw,32px)/1.35 Georgia,serif">${esc(f[1])}</div><div style="font:600 12px/1.5 Arial,Helvetica,sans-serif;margin-top:4px">${esc(f[2])}</div><a href="${esc(f[3])}" target="_blank" rel="noopener noreferrer" style="font:11px Arial,Helvetica,sans-serif;color:inherit">Fuente y contexto ↗</a>`;
+  el.innerHTML=`<div style="font:normal clamp(22px,2.6vw,32px)/1.35 Georgia,serif">${f.html?f[1]:esc(f[1])}</div><div style="font:600 12px/1.5 Arial,Helvetica,sans-serif;margin-top:4px">${esc(f[2])}</div><a href="${esc(f[3])}" target="_blank" rel="noopener noreferrer" style="font:11px Arial,Helvetica,sans-serif;color:inherit">Fuente y contexto ↗</a>`;
   parent.prepend(el);
  }
 
@@ -97,6 +129,79 @@
   return people.find(p=>[p.name,...(p.aliases||[])].some(n=>fold(n)===k||fold(n).split(' de ')[0]===k||k.startsWith(fold(n).split(' de ')[0]+' ')))||null;
  };
 
+ /* ---------- Obras: libros, discos, películas, pinturas ---------- */
+ const WORK_TYPES=new Set(['Q7725634','Q47461344','Q571','Q8261','Q49084','Q482994','Q134556','Q7366','Q105543609','Q11424','Q5398426','Q3305213','Q860861','Q838948','Q4502142','Q1004','Q725377','Q1259759','Q169930','Q208569','Q2188189']);
+ async function renderWork(ent,row,my){
+  const copy=box.querySelector('.featured-copy')||box;const title=document.getElementById('featured-title');
+  const block=document.createElement('div');block.className='vfb';
+  const orig=claims(ent,'P1476')[0];
+  if(orig?.text&&fold(orig.text)!==fold(row.title)){const p=document.createElement('p');p.className='vfb-names';p.innerHTML=`<span lang="${esc(orig.language)}">${esc(orig.text)}</span>`;block.append(p)}
+  const roles=[['P50',lang()==='en'?'Author':'Autor'],['P175',lang()==='en'?'Performer':'Intérprete'],['P57',lang()==='en'?'Director':'Dirección'],['P170',lang()==='en'?'Creator':'Creación'],['P86',lang()==='en'?'Composer':'Composición'],['P123',lang()==='en'?'Publisher':'Editorial'],['P264',lang()==='en'?'Label':'Sello'],['P136',lang()==='en'?'Genre':'Género'],['P407',lang()==='en'?'Language':'Lengua'],['P195',lang()==='en'?'Collection':'Colección']];
+  const ids=[...new Set(roles.flatMap(([p])=>claims(ent,p).map(v=>v.id).filter(Boolean)))];
+  const lab=await labelsOf(ids);if(my!==token)return;
+  const dl=document.createElement('dl');dl.className='vfb-life';
+  for(const [p,name] of roles){const v=claims(ent,p).map(x=>lab[x.id]).filter(Boolean);if(v.length)dl.innerHTML+=`<dt>${esc(name)}</dt><dd>${esc(v.slice(0,3).join(', '))}</dd>`}
+  const date=claims(ent,'P577')[0]||claims(ent,'P571')[0];if(date)dl.innerHTML+=`<dt>${lang()==='en'?'Date':'Fecha'}</dt><dd>${esc(dateText(date))}</dd>`;
+  if(dl.children.length)block.append(dl);
+  let works=[];try{works=window.VitruviaTermPanel?.classicalWorks?await window.VitruviaTermPanel.classicalWorks(row.title):[]}catch{}
+  if(my!==token)return;
+  const readable=works.filter(w=>w.obras?.length||w.readable);
+  if(readable.length){const a=document.createElement('a');a.className='vfb-read';a.textContent='📖 '+(lang()==='en'?'Read in the viewer':'Leer en el visor')+' · '+readable[0].w.title;const reader=document.getElementById('vitruvia-term-reader');
+   if(reader){a.href='#vitruvia-term-reader';a.onclick=ev=>{ev.preventDefault();reader.scrollIntoView({behavior:'smooth',block:'start'})}}else a.href=readable[0].w.id?'bibliotheca-graeca-latina.html?work='+encodeURIComponent(readable[0].w.id):'lector-clasico.html?obra='+encodeURIComponent(readable[0].obras[0]);block.append(a)}
+  const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`Datos: Wikidata · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
+  box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
+ }
+
+ /* ---------- Lugares, edificios, estructuras y objetos ---------- */
+ // Regla general por tipo (clase de Wikidata y su superclase): la ley física que sostiene ese tipo de obra.
+ const PHYSICS=[
+  [/\b(arch|arch bridge|bridge|viaduct|vault|aqueduct bridge)\b/,'H = w·L² / (8·f)','Estática del arco · empuje horizontal bajo carga uniforme (luz L, flecha f)','https://es.wikipedia.org/wiki/Arco_(arquitectura)'],
+  [/\b(aqueduct|canal|water supply)\b/,'v = (1/n) · R<sup>2/3</sup> · S<sup>1/2</sup>','Hidráulica · flujo por gravedad en conducto (pendiente S)','https://es.wikipedia.org/wiki/F%C3%B3rmula_de_Manning'],
+  [/\b(dome|cupola)\b/,'σ = p · R / (2t)','Estática de la cúpula · tensión de membrana','https://es.wikipedia.org/wiki/C%C3%BApula'],
+  [/\b(column|obelisk|pillar|minaret|chimney|mast)\b/,'P<sub>cr</sub> = π²·E·I / (K·L)²','Pandeo de Euler · carga crítica de un elemento esbelto','https://es.wikipedia.org/wiki/Pandeo'],
+  [/\b(tower|skyscraper|lighthouse)\b/,'M = Σ F<sub>i</sub> · h<sub>i</sub>','Estabilidad de torres · momento de vuelco por viento','https://es.wikipedia.org/wiki/Momento_de_fuerza'],
+  [/\b(beam|lintel|girder)\b/,'σ = M · y / I','Flexión de vigas (Navier)','https://es.wikipedia.org/wiki/Flexi%C3%B3n_mec%C3%A1nica'],
+  [/\b(dam|retaining wall|levee|dike|seawall|city wall|fortification|defensive wall)\b/,'p = ρ · g · h','Presión hidrostática y de empuje sobre muros','https://es.wikipedia.org/wiki/Presi%C3%B3n_hidrost%C3%A1tica'],
+  [/\b(ship|boat|vessel|galley|trireme)\b/,'E = ρ · g · V','Principio de Arquímedes · flotación','https://es.wikipedia.org/wiki/Principio_de_Arqu%C3%ADmedes'],
+  [/\b(crane|lever|pulley|winch|machine)\b/,'F₁ · d₁ = F₂ · d₂','Ley de la palanca (Arquímedes; Vitruvio X)','https://es.wikipedia.org/wiki/Palanca'],
+  [/\b(catapult|ballista|siege engine|artillery)\b/,'R = v² · sen 2θ / g','Alcance del proyectil','https://es.wikipedia.org/wiki/Tiro_parab%C3%B3lico'],
+  [/\b(sundial|gnomon)\b/,'tan h = L / s','Gnomónica · altura del sol a partir de la sombra (Vitruvio IX)','https://es.wikipedia.org/wiki/Reloj_de_sol'],
+  [/\b(theatre|theater|amphitheatre|amphitheater|odeon|concert hall)\b/,'f = v / λ','Acústica · resonancia (los echea de Vitruvio V.5)','https://es.wikipedia.org/wiki/Ac%C3%BAstica_arquitect%C3%B3nica'],
+  [/\b(pyramid)\b/,'V = ⅓ · B · h','Volumen de la pirámide','https://es.wikipedia.org/wiki/Pir%C3%A1mide_(geometr%C3%ADa)'],
+  [/\b(temple|church|cathedral|basilica|mosque|palace|building|house|villa|bath|thermae|structure)\b/,'ΣF = 0 · ΣM = 0','Estática · equilibrio de fuerzas y momentos (firmitas)','https://es.wikipedia.org/wiki/Est%C3%A1tica_(mec%C3%A1nica)'],
+  [/\b(planet|star|moon|natural satellite|comet|galaxy|asteroid)\b/,'F = G · m₁m₂ / r²','Gravitación universal','https://es.wikipedia.org/wiki/Ley_de_gravitaci%C3%B3n_universal'],
+  [/\b(musical instrument|string instrument|lyre|organ)\b/,'f = (1 / 2L) · √(T / μ)','Frecuencia de una cuerda vibrante','https://es.wikipedia.org/wiki/Cuerda_vibrante']
+ ];
+ async function classLabels(ent){
+  const ids=claims(ent,'P31').map(v=>v.id).filter(Boolean).slice(0,6);if(!ids.length)return '';
+  const r=await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:ids.join('|'),props:'labels|claims',languages:'en',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+  const sup=[...new Set(Object.values(r?.entities||{}).flatMap(e=>claims(e,'P279').map(v=>v.id)).filter(Boolean))].slice(0,12);
+  const r2=sup.length?await fetch('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:sup.join('|'),props:'labels',languages:'en',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null):null;
+  const own=Object.values(r?.entities||{}).map(e=>e.labels?.en?.value||'');
+  const up=Object.values(r2?.entities||{}).map(e=>e.labels?.en?.value||'');
+  return {own:own.join(' | ').toLowerCase(),up:up.join(' | ').toLowerCase()};
+ }
+ async function renderThing(ent,row,my){
+  const copy=box.querySelector('.featured-copy')||box;const title=document.getElementById('featured-title');
+  const block=document.createElement('div');block.className='vfb';
+  const facts=[['P17',lang()==='en'?'Country':'País'],['P131',lang()==='en'?'Location':'Ubicación'],['P84',lang()==='en'?'Architect':'Arquitecto'],['P149',lang()==='en'?'Style':'Estilo'],['P186',lang()==='en'?'Material':'Material'],['P177',lang()==='en'?'Crosses':'Cruza'],['P1435',lang()==='en'?'Heritage':'Patrimonio']];
+  const ids=[...new Set(facts.flatMap(([p])=>claims(ent,p).map(v=>v.id).filter(Boolean)))];
+  const [lab,cls]=await Promise.all([labelsOf(ids),classLabels(ent)]);if(my!==token)return;
+  const dl=document.createElement('dl');dl.className='vfb-life';
+  for(const [p,name] of facts){const v=claims(ent,p).map(x=>lab[x.id]).filter(Boolean);if(v.length)dl.innerHTML+=`<dt>${esc(name)}</dt><dd>${esc(v.slice(0,3).join(', '))}</dd>`}
+  const start=claims(ent,'P571')[0];if(start)dl.innerHTML+=`<dt>${lang()==='en'?'Built / founded':'Construcción o fundación'}</dt><dd>${esc(dateText(start))}</dd>`;
+  const qty=(p,name,unit)=>{const v=claims(ent,p)[0];if(v?.amount){const n=Number(v.amount);dl.innerHTML+=`<dt>${esc(name)}</dt><dd>${esc(n.toLocaleString(lang()))}${unit?' '+unit:''}</dd>`}};
+  qty('P2043',lang()==='en'?'Length':'Longitud','m');qty('P2048',lang()==='en'?'Height':'Altura','m');qty('P1082',lang()==='en'?'Population':'Población','');
+  if(dl.children.length)block.append(dl);
+  const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`Datos: Wikidata · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
+  box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
+  // Fórmula de la ley física del tipo de obra: primero la clase propia, después la superclase.
+  const pick=t=>t&&PHYSICS.find(([re])=>re.test(t));
+  const law=pick(cls?.own)||pick(cls?.up);
+  if(law){const f=[[],law[1],law[2],law[3]];f.html=true;const fig=document.getElementById('featured-documentary-visual');renderFormula(fig&&!fig.hidden?fig:box,f);
+   if(fig&&fig.hidden){new MutationObserver((m,o)=>{if(!fig.hidden&&box.querySelector(':scope > .vfb-math')){fig.prepend(box.querySelector(':scope > .vfb-math'));o.disconnect()}}).observe(fig,{attributes:true,attributeFilter:['hidden']})}}
+ }
+
  /* ---------- Render ---------- */
  let token=0,query='';
  window.addEventListener('vitruvia:search',e=>{query=String(e.detail?.query||'');token++;box.querySelector('.vfb')?.remove();box.querySelector('.vfb-math')?.remove()});
@@ -104,7 +209,8 @@
   const d=e.detail||{};const row=d.row;if(!row||row.type!=='wikipedia')return;
   const my=++token;
   const ent=await wikidataFor(row).catch(()=>null);if(my!==token||!ent)return;
-  const human=claims(ent,'P31').some(v=>v.id==='Q5');if(!human)return;
+  const human=claims(ent,'P31').some(v=>v.id==='Q5');
+  if(!human){if(claims(ent,'P31').some(v=>WORK_TYPES.has(v.id)))await renderWork(ent,row,my);else await renderThing(ent,row,my);return}
   const copy=box.querySelector('.featured-copy')||box;const title=document.getElementById('featured-title');
   const block=document.createElement('div');block.className='vfb';
   // Nombres en la lengua antigua: onomasticon del sitio y nombre nativo de Wikidata (griego antiguo o latín).
@@ -112,7 +218,8 @@
   const ono=await onomastic(label)||await onomastic(row.title)||await onomastic(query);if(my!==token)return;
   const names=[];
   if(ono?.greek_name)names.push(['grc',ono.greek_name]);
-  for(const v of claims(ent,'P1559'))if(['grc','la','el'].includes(v.language)&&!names.some(n=>n[1]===v.text))names.push([v.language,v.text]);
+  // Nombre en su lengua cuando aporta: lenguas antiguas o escrituras no latinas (griego, cirílico, árabe, hebreo, chino…).
+  for(const v of claims(ent,'P1559'))if((['grc','la','el','ar','he','fa','ru','uk','zh','ja','ko','hi','sa','egy','akk'].includes(v.language)||/[^\u0000-\u024f\s.'’-]/.test(v.text))&&!names.some(n=>n[1]===v.text))names.push([v.language,v.text]);
   // Forma latina en nominativo: etiqueta latina de Wikidata o el primer alias latino del onomasticon.
   const latin=ent.labels?.la?.value||(ono?.aliases||[]).find(x=>/^[A-Za-z\s]+$/.test(x)&&fold(x)!==fold(ono.name))||(ono?.latin_forms||[]).find(x=>/^[A-Za-z\s]+$/.test(x));
   if(latin&&!names.some(n=>n[1]===latin))names.push(['la',latin]);
@@ -145,12 +252,13 @@
   const img=claims(ent,'P18')[0];
   if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+' · retrato (Wikidata)',alt:label,group:'',kind:'',score:0,credit:'Wikimedia Commons · ficha, autor y licencia'}}}))}
   // Fórmula principal encima del retrato (matemáticos y científicos).
-  const f=formulaFor([label,row.title,query,...(ono?.aliases||[])]);
   const fig=document.getElementById('featured-documentary-visual');
-  const known=window.VitruviaMathematics?.find?.(label)||window.VitruviaMathematics?.find?.(query);
   const target=fig&&!fig.hidden?fig:box;
-  if(known&&window.VitruviaMathematics.render){window.VitruviaMathematics.render(target,known.names[0]);target.querySelector('.vitruvia-math-context')?.classList.add('vfb-math')}
-  else if(f)renderFormula(target,f);
+  const known=window.VitruviaMathematics?.find?.(label)||window.VitruviaMathematics?.find?.(query);
+  const f=await wikidataFormula(ent).catch(()=>null)||formulaFor([label,row.title,query,...(ono?.aliases||[])]);
+  if(my!==token)return;
+  if(f)renderFormula(target,f);
+  else if(known&&window.VitruviaMathematics.render){window.VitruviaMathematics.render(target,known.names[0]);target.querySelector('.vitruvia-math-context')?.classList.add('vfb-math')}
   if(fig){new MutationObserver((m,o)=>{if(!fig.hidden&&box.querySelector(':scope > .vfb-math')){fig.prepend(box.querySelector(':scope > .vfb-math'));o.disconnect()}}).observe(fig,{attributes:true,attributeFilter:['hidden']})}
  });
 })();

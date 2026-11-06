@@ -297,3 +297,5 @@ $('script-search-form').addEventListener('submit',async event=>{
  const suffix=locus?' · locus normalizado: '+locus.book+'.'+locus.chapter+(locus.section===null?'':'.'+locus.section):' · '+(mode==='concept'?'búsqueda conceptual multilingüe (índice de equivalencias controladas)':mode==='lexical'?'equivalencias léxicas orientativas':'coincidencias de texto')+' · Fuente: '+(target==='all'?'todas las ediciones y OCR':chosen[0]?.label);
  status.textContent=live.length+' resultados'+suffix+(missing?' · Sin acceso al índice: '+missing:'')+(locus&&chosen.some(x=>x.kind==='ocr')?' · Krohn y Rose no disponen de anclajes por locus verificados.':'')+(mode==='concept'&&terms.length===1?' · Concepto sin equivalencias en el índice: se realizó búsqueda literal.':'');
 });
+// Enlace directo desde Vitruvia y otras páginas: scriptorium.html?q=término lanza la búsqueda.
+{const q=new URLSearchParams(location.search).get('q');if(q&&$('script-query')){$('script-query').value=q.slice(0,180);$('script-search-form').requestSubmit()}}
