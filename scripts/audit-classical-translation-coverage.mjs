@@ -7,6 +7,23 @@ const catalogue=read("data/bibliotheca-graeca-latina-I-bce-I-ce.json").works;
 const extra=read("data/clasicos-perseus-extra.json").works;
 const registry=read("data/classics-corpus/search-registry.json");
 const concepts=read("data/lexicon/conceptus.json").concepts;
+const sourceScopes=read("data/classics-corpus/source-scope.json");
+assert.equal(sourceScopes.schema,"vitruvia-classics-source-scope-v1","Unknown editorial source-scope schema");
+for(const scope of sourceScopes.entries){
+ assert(existsSync(new URL("../"+scope.sourcePath,import.meta.url)),"Missing raw scoped source "+scope.sourcePath);
+ const source=read(scope.sourcePath);
+ assert.equal(source.workId,scope.workId,"Scope refers to a different ancient work");
+ assert.equal(source.language,scope.language,"Scope language differs from source");
+ assert(Number.isInteger(scope.first)&&Number.isInteger(scope.last)&&scope.first<=scope.last,"Invalid passage scope");
+ const included=source.passages.filter(p=>{
+  const m=/^t(\d+)$/.exec(String(p.locus));return m&&Number(m[1])>=scope.first&&Number(m[1])<=scope.last;
+ });
+ assert(included.length>0&&included[0].locus==="t"+scope.first&&included.at(-1).locus==="t"+scope.last,
+  "Source-scope limits are not extant passages: "+scope.sourcePath);
+ for(const excluded of scope.excludedRanges||[]){
+  assert(excluded.last<scope.first||excluded.first>scope.last,"Source-scope excludes part of the published work");
+ }
+}
 const originals=new Set(["la","grc"]);
 const targetLanguages=new Set(["en","es","fr"]);
 const entries=new Map();
@@ -49,6 +66,7 @@ const report={
  externalRecordsWithoutDeclaredEnEsFr:missingExternal.length,
  priorityExternalWithoutTranslation:missingExternal.slice(0,20).map(w=>({id:w.id,author:w.author,title:w.title})),
  semanticConcepts:concepts.length,ancientSemanticForms:ancientTerms,modernSemanticForms:modernTerms,
+ scopedHistoricSources:sourceScopes.entries.map(x=>({workId:x.workId,language:x.language,first:x.first,last:x.last})),
  limitations:"Links and translation metadata are not validation of file access, copyright, complete text, chapter-level alignment, or word-by-word equivalence."
 };
 console.log(JSON.stringify(report,null,2));
