@@ -1,0 +1,33 @@
+{
+  "schema": "vitruvia-classics-source-scope-v1",
+  "methodology": "Scope of passages is editorial metadata. It does not modify the primary transcription, establish book/chapter alignment or assert equivalence between translations.",
+  "entries": [
+    {
+      "workId": "apuleius-metamorphoses",
+      "language": "es",
+      "sourcePath": "data/classics-corpus/apuleius-metamorphoses-es.json",
+      "includedLocusPrefix": "t",
+      "first": 22,
+      "last": 245,
+      "validation": "provisional editorial scope based on opening, closing and subsequent distinct contents in historical source; review against the source table of contents before chapter-level collation",
+      "excludedRanges": [
+        {
+          "first": 1,
+          "last": 21,
+          "type": "paratext and scholarly introduction"
+        },
+        {
+          "first": 246,
+          "last": 308,
+          "type": "other works of Apuleius included in the source anthology"
+        },
+        {
+          "first": 309,
+          "last": 312,
+          "type": "table of contents and appendices"
+        }
+      ],
+      "noteEs": "Solo t22–t245 se identifican aquí con la novela Metamorfosis. El PDF/libro histórico fuente también incluye paratextos y otros escritos de Apuleyo. La correspondencia con los 351 loci latinos sigue sin cotejarse. La fuente completa permanece intacta en el repositorio."
+    }
+  ]
+}
