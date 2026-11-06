@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 21,
+  "count": 22,
   "works": 14,
   "entries": [
     {
@@ -174,6 +174,16 @@
       "path": "data/classics-corpus/petronius-satyrica-la.json",
       "reader": "classics-text-reader.html?work=petronius-satyrica&lang=la",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-apology-en.json",
+      "reader": "classics-text-reader.html?work=plato-apology&lang=en",
+      "sourceDescription": "Inglés: Harold North Fowler (1914), TEI Perseus; unidades Stephanus principales 17–42; cotejo por sección general, no frase por frase."
     },
     {
       "workId": "plato-apology",
