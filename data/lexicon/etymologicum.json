@@ -5962,6 +5962,204 @@
         "scaenographia"
       ],
       "editorial_status": "Locus I.2.2 cotejado con las transcripciones latina y castellana V514 del proyecto; no certifica una lectura manuscrita autóptica."
+    },
+    {
+      "id": "dispositio",
+      "l": "la",
+      "lemma": "dispositio",
+      "head": "dispositio, -ōnis",
+      "pos": "sustantivo femenino",
+      "morph": "3.ª declinación; nombre de acción",
+      "sens": [
+        "Disposición u ordenamiento de elementos de una obra con arreglo a un proyecto.",
+        "En I.2.2, coordinación y composición de las partes, con las especies ichnographia, orthographia y scaenographia."
+      ],
+      "etym": "Nombre de acción del verbo latino disponō, compuesto de dis- («separación, distribución») y pōnō («poner, colocar»). Es una formación latina; el griego διάθεσις sirve como equivalente técnico en Vitruvio, no como origen etimológico de la palabra latina.",
+      "root": "Formación latina dis- + pōnō; raíz indoeuropea de pōnō no propuesta aquí.",
+      "gr": [
+        {
+          "w": "διάθεσις",
+          "g": "disposición, organización (equivalente técnico citado por Vitruvio)"
+        }
+      ],
+      "la": [
+        {
+          "w": "ordinatio",
+          "g": "ordenación"
+        },
+        {
+          "w": "ichnographia",
+          "g": "representación en planta"
+        }
+      ],
+      "he": [],
+      "refs": [
+        "Vitruvio, De architectura I.2.1–2, texto latino y V514",
+        "Lewis & Short, s.v. dispositio y dispono"
+      ],
+      "loci": [
+        {
+          "c": "Vitr. 1.2.2",
+          "t": "Dispositio autem est rerum apta conlocatio elegansque compositionibus effectus operis cum qualitate.",
+          "tr": "La disposición, en cambio, es la colocación adecuada de las cosas y el efecto elegante de la obra, mediante sus composiciones, con cualidad.",
+          "lang": "la"
+        }
+      ],
+      "rel": [
+        "ordinatio",
+        "ichnographia",
+        "orthographia",
+        "scaenographia"
+      ],
+      "editorial_status": "Referencia latina y traducción cotejadas con el índice V514; la lectura manuscrita queda sin verificar."
+    },
+    {
+      "id": "distributio",
+      "l": "la",
+      "lemma": "distributio",
+      "head": "distributio, -ōnis",
+      "pos": "sustantivo femenino",
+      "morph": "3.ª declinación; nombre de acción",
+      "sens": [
+        "Distribución o reparto de recursos y elementos con atención a las necesidades.",
+        "Uno de los principios de arquitectura en I.2.1, identificado con el equivalente griego οἰκονομία."
+      ],
+      "etym": "Nombre de acción de distribuō («repartir»), compuesto de dis- y tribuō («asignar, distribuir»). En Vitruvio, οἰκονομία es equivalencia semántica, no fuente etimológica de distributio.",
+      "root": "Formación latina; no se asigna raíz indoeuropea específica sin estudio lingüístico adicional.",
+      "gr": [
+        {
+          "w": "οἰκονομία",
+          "g": "administración de recursos; economía doméstica, equivalencia vitruviana"
+        }
+      ],
+      "la": [
+        {
+          "w": "ordinatio",
+          "g": "ordenación"
+        },
+        {
+          "w": "dispositio",
+          "g": "disposición"
+        }
+      ],
+      "he": [],
+      "refs": [
+        "Vitruvio, De architectura I.2.1, texto latino y V514",
+        "Lewis & Short, s.v. distribuo, distributio"
+      ],
+      "loci": [
+        {
+          "c": "Vitr. 1.2.1",
+          "t": "et distributione, quae graece οἰκονομία dicitur.",
+          "tr": "y distribución, que en griego se llama οἰκονομία.",
+          "lang": "la"
+        }
+      ],
+      "rel": [
+        "dispositio",
+        "ordinatio"
+      ],
+      "editorial_status": "Cita abreviada dentro de I.2.1, fuente V514; no representa una colación autóptica."
+    },
+    {
+      "id": "gnomonice",
+      "l": "la",
+      "lemma": "gnomonice",
+      "head": "gnomonice (término técnico de origen griego)",
+      "pos": "sustantivo técnico helenizante",
+      "morph": "Denominación de disciplina; tratamiento morfológico según edición",
+      "sens": [
+        "Gnomónica: estudio y construcción de instrumentos basados en el gnomon, vinculados con sombras y medición del tiempo.",
+        "Una de las tres partes de la arquitectura enumeradas por Vitruvio en I.3.1."
+      ],
+      "etym": "Helenismo derivado de γνωμονική (τέχνη), relacionado con γνώμων («indicador, gnomon»). Debe distinguirse entre el nombre de la disciplina y la pieza o instrumento concreto.",
+      "root": "Formación griega vinculada con γνώμων; no se asigna reconstrucción PIE en esta ficha.",
+      "gr": [
+        {
+          "w": "γνώμων",
+          "g": "indicador, aguja o instrumento de medición"
+        },
+        {
+          "w": "γνωμονική",
+          "g": "disciplina relativa al gnomon"
+        }
+      ],
+      "la": [
+        {
+          "w": "machinatio",
+          "g": "mecánica"
+        },
+        {
+          "w": "aedificatio",
+          "g": "edificación"
+        }
+      ],
+      "he": [],
+      "refs": [
+        "Vitruvio, De architectura I.3.1, texto latino y V514",
+        "LSJ, s.v. γνώμων"
+      ],
+      "loci": [
+        {
+          "c": "Vitr. 1.3.1",
+          "t": "Partes ipsius architecturae sunt tres: aedificatio, gnomonice, machinatio.",
+          "tr": "Las partes de la arquitectura misma son tres: la construcción, la gnomónica y la mecánica.",
+          "lang": "la"
+        }
+      ],
+      "rel": [
+        "machinatio",
+        "architectura"
+      ],
+      "editorial_status": "Término y contexto confirmados en V514; semántica instrumental sujeta a exégesis específica."
+    },
+    {
+      "id": "machinatio",
+      "l": "la",
+      "lemma": "machinatio",
+      "head": "machinatio, -ōnis",
+      "pos": "sustantivo femenino",
+      "morph": "3.ª declinación; nombre de acción",
+      "sens": [
+        "Mecánica o arte de las máquinas en la división vitruviana de la arquitectura.",
+        "Actividad o diseño que implica artefactos, fuerzas, elevación o desplazamiento, según el pasaje correspondiente."
+      ],
+      "etym": "Derivado de māchinor y māchina; la voz māchina procede del griego μηχανή, referido a ingenio o dispositivo. No debe interpretarse como terminología de la ingeniería industrial moderna.",
+      "root": "Helenismo de base μηχανή; hipótesis indoeuropea no detallada en esta ficha.",
+      "gr": [
+        {
+          "w": "μηχανή",
+          "g": "recurso, artificio, máquina"
+        }
+      ],
+      "la": [
+        {
+          "w": "machina",
+          "g": "máquina"
+        },
+        {
+          "w": "gnomonice",
+          "g": "gnomónica"
+        }
+      ],
+      "he": [],
+      "refs": [
+        "Vitruvio, De architectura I.3.1, texto latino y V514",
+        "Lewis & Short, s.v. machinatio y machina"
+      ],
+      "loci": [
+        {
+          "c": "Vitr. 1.3.1",
+          "t": "Partes ipsius architecturae sunt tres: aedificatio, gnomonice, machinatio.",
+          "tr": "Las partes de la arquitectura misma son tres: la construcción, la gnomónica y la mecánica.",
+          "lang": "la"
+        }
+      ],
+      "rel": [
+        "architectura",
+        "gnomonice"
+      ],
+      "editorial_status": "Pasaje y traducción tomados de V514; ficha etimológica explicativa, no variante manuscrita."
     }
   ]
 }
