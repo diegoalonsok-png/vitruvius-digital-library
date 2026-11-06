@@ -88,8 +88,9 @@ try{
    await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.semanticSearch==='function',{timeout:15000});
    const results=await p.evaluate(()=>window.ClassicsCorpusSearch.semanticSearch('casa',{limit:8}));
    assert(results.length>0,'Conceptus casa should retrieve attested Latin vocabulary from existing indexed texts');
+   assert(results.some(row=>row.language==='la'),'Conceptus casa should recover at least one Latin witness');
    for(const row of results){
-    assert.equal(row.language,'la','Only documented Latin equivalents expected in this test');
+    assert(['la','grc'].includes(row.language),'Semantic mappings must cite documented Latin or Greek texts');
     assert.match(row.meta,/CORRESPONDENCIA SEMÁNTICA EDITORIAL/);
     assert.match(row.link,/locus=|#/,'Semantic hit must link to a real indexed passage');
     assert.match(row.excerpt,/Locus /,'Semantic hit must cite the local locus');
