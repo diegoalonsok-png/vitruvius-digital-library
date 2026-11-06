@@ -2110,7 +2110,11 @@
 "title": "Characters",
 "language": "grc",
 "original": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0093/tlg009/tlg0093.tlg009.perseus-grc2.xml",
-"translations": [],
+"translations": [
+{"language": "en", "url": "data/translations/theophrastus-characters-bennett-hammond-1902-en.xml", "translator": "Charles E. Bennett and William A. Hammond", "edition": "1902", "coverage": "30 chapters; omissions acknowledged in source", "source": "Project Gutenberg eBook 58242", "sourceUrl": "https://www.gutenberg.org/ebooks/58242"}
+],
+"translationCoverage": "chapter-level-reordered-historical",
+"translationNote": "Traducción inglesa de 1902, 30 caracteres alineados por tema al número del capítulo griego; no garantiza correspondencia de párrafos. Los traductores declaran omisiones e inserciones.",
 "bibliotheca": "theophrastus-characters"
 },
 {
