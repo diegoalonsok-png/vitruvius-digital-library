@@ -116,8 +116,22 @@ $("passages").addEventListener("dblclick",()=>{if(data?.language!=="la")return;c
 async function load(language){
  const path=base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
- const corpus=await response.json();
+ let corpus=await response.json();
  if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||corpus.passages.length<10)throw Error("El documento no pasó validación de integridad");
+ if(work==="apuleius-metamorphoses"&&language==="es"){
+  // Preserve every unit of the historical anthology: no text is discarded.
+  // The editorial scope describes contents, not a deletion or Latin alignment.
+  let note="Esta edición histórica contiene además introducciones, otros escritos y apéndices. Se conservan íntegramente sus segmentos; no hay correspondencia de loci latinos certificada. Comparar las versiones manualmente.";
+  try{
+   const response=await fetch("data/classics-corpus/source-scope.json");
+   if(response.ok){
+    const scopes=await response.json();
+    const scope=(scopes.entries||[]).find(x=>x.workId===work&&x.language===language&&x.sourcePath===path);
+    if(scope?.noteEs)note=scope.noteEs;
+   }
+  }catch{}
+  corpus={...corpus,alignment:corpus.alignment+". "+note};
+ }
  data=corpus;active=0;
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
  $("method-note").textContent=corpus.editorialStatus+". "+corpus.alignment+". Fuente y atribución: "+corpus.attribution;

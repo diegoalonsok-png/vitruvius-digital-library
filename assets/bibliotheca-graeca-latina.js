@@ -411,7 +411,29 @@ if(tab==="perseus"&&w.perseus?.length){
   }
   pane.append(box);
   const warning=document.createElement("p");warning.className="classic-ref";warning.textContent="Estos vínculos localizan materiales. No afirman que exista una transcripción íntegra o un códice concreto en el destino; cada documento deberá verificarse antes de presentarlo como edición incorporada.";pane.append(warning);
- }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
+ }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}// Prefer a local Spanish translation for comparison when available; keep English selectable.
+const spanish=w.localVersions.findIndex(v=>v.language==="es");
+b.value=String(spanish>=0?spanish:Math.min(1,w.localVersions.length-1));
+function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}
+a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();
+if(w.id==="apuleius-metamorphoses"){
+ const notice=document.createElement("p");notice.className="classic-ref";
+ notice.textContent="Cotejo exploratorio: el latín presenta loci de libro y sección (1.1–11.30); las traducciones históricas tienen otra segmentación (t1, t2…). El selector del libro mueve SOLO el original. No existe correspondencia de capítulos verificada ni sincronización automática.";
+ pane.querySelector(".classic-compare-toolbar").before(notice);
+ const navigator=document.createElement("label");navigator.textContent="Libro del original latino (I–XI, no sincroniza traducción) ";
+ const select=document.createElement("select");select.id="classic-apuleius-book";select.setAttribute("aria-label","Libro del original latino");
+ for(let book=1;book<=11;book++){const option=document.createElement("option");option.value=String(book);option.textContent="Libro "+book;navigator.appendChild(select);select.appendChild(option)}
+ navigator.appendChild(select);
+ select.addEventListener("change",()=>{
+  const latinIndex=w.localVersions.findIndex(v=>v.language==="la");
+  if(latinIndex<0)return;
+  a.value=String(latinIndex);
+  const url=new URL(w.localVersions[latinIndex].path,location.href);
+  url.searchParams.set("locus",select.value+".1");
+  pane.querySelector("#classic-frame-a").src=url.href;
+ });
+ pane.querySelector(".classic-compare-toolbar").appendChild(navigator);
+}}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
   // Readers are derived from hosted, registered corpus files: no missing-language placeholders.
   const versions=Object.entries(w.corpusFiles).filter(([lang,path])=>["la","grc","en","fr","es"].includes(lang)&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
   const labels={grc:"Griego original",la:"Latín original",en:"English · traducción",fr:"Français · traduction",es:"Castellano · traducción"};

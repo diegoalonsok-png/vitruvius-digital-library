@@ -1,0 +1,38 @@
+{
+  "schema": "vitruvia-classics-source-scope-v1",
+  "methodology": "Contenido editorial de la edición histórica: TODAS las unidades se conservan visibles e indexadas, sin recorte ni supresión. Identificar el cuerpo de la novela no establece alineación fiable por libro, capítulo o locus entre latín y traducciones.",
+  "entries": [
+    {
+      "workId": "apuleius-metamorphoses",
+      "language": "es",
+      "sourcePath": "data/classics-corpus/apuleius-metamorphoses-es.json",
+      "includedLocusPrefix": "t",
+      "first": 22,
+      "last": 245,
+      "validation": "Alcance editorial orientativo pendiente de cotejo de capítulos; NO usado para filtrar el texto ni sus búsquedas",
+      "noteEs": "Se conserva e indexa la edición castellana histórica COMPLETA (312 unidades): t1–t21 preliminares, t22–t245 narración de Metamorfosis (identificación provisional), t246–t308 otros escritos de Apuleyo y t309–t312 índices y apéndices. No hay alineación por loci con las 351 unidades latinas; utilizar los dos visores para contraste manual. Ninguna unidad se elimina ni se oculta.",
+      "descriptiveRanges": [
+        {
+          "first": 22,
+          "last": 245,
+          "description": "Narración principal de Metamorfosis, identificación provisional"
+        },
+        {
+          "first": 1,
+          "last": 21,
+          "description": "paratext and scholarly introduction (también conservado e indexado)"
+        },
+        {
+          "first": 246,
+          "last": 308,
+          "description": "other works of Apuleius included in the source anthology (también conservado e indexado)"
+        },
+        {
+          "first": 309,
+          "last": 312,
+          "description": "table of contents and appendices (también conservado e indexado)"
+        }
+      ]
+    }
+  ]
+}

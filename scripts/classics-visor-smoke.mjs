@@ -37,6 +37,18 @@ try{
    }finally{fs.closeSync(fd)}
   }
  });
+ await check('Apuleius full sources remain intact: 351 Latin, 114 English, 312 Spanish units; translations explicitly unaligned',async()=>{
+  const root='data/classics-corpus/apuleius-metamorphoses-';
+  const originals=JSON.parse(fs.readFileSync(root+'la.json','utf8'));
+  const english=JSON.parse(fs.readFileSync(root+'en.json','utf8'));
+  const spanish=JSON.parse(fs.readFileSync(root+'es.json','utf8'));
+  assert.equal(originals.passages.length,351);
+  assert.equal(english.passages.length,114);
+  assert.equal(spanish.passages.length,312);
+  assert.equal(english.alignmentStatus,'unaligned');
+  assert.equal(spanish.alignmentStatus,'unaligned');
+  assert.match(spanish.passages.at(-1).locus,/t312/);
+ });
  await check('Vitruvia loads the full classical catalogue (≥196 works) and searches Spanish aliases',async()=>{
   const p=await open('vitruvia.html?q=Po%C3%A9tica&mode=site');
   try{
@@ -80,6 +92,58 @@ try{
    assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
    assert.match(check.translation,/classics-text-reader\.html\?work=apuleius-metamorphoses&lang=en/,'English version not indexed');
    assert.equal(check.diagnostics.failed,0,'A registered text failed to load');
+  }finally{await p.close()}
+ });
+ await check('Semantic concept retrieval cites existing Latin passages and labels its method',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.semanticSearch==='function',{timeout:15000});
+   const results=await p.evaluate(()=>window.ClassicsCorpusSearch.semanticSearch('casa',{limit:8}));
+   assert(results.length>0,'Conceptus casa should retrieve attested Latin vocabulary from existing indexed texts');
+   assert(results.some(row=>row.language==='la'),'Conceptus casa should recover at least one Latin witness');
+   for(const row of results){
+    assert(['la','grc'].includes(row.language),'Semantic mappings must cite documented Latin or Greek texts');
+    assert.match(row.meta,/CORRESPONDENCIA SEMÁNTICA EDITORIAL/);
+    assert.match(row.link,/locus=|#/,'Semantic hit must link to a real indexed passage');
+    assert.match(row.excerpt,/Locus /,'Semantic hit must cite the local locus');
+   }
+  }finally{await p.close()}
+ });
+ await check('Apuleius opens independent Latin/Spanish readers and book navigation never claims translation alignment',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=apuleius-metamorphoses&view=text');
+  try{
+   const spanish=p.locator('#classic-version-b');
+   await spanish.waitFor({state:'visible',timeout:20000});
+   assert.match(await spanish.locator('option:checked').innerText(),/castellano/i);
+   assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la/);
+   assert.match(await p.locator('#classic-frame-b').getAttribute('src'),/lang=es/);
+   const spanishReader=p.frameLocator('#classic-frame-b');
+   try {
+    await spanishReader.locator('#toc button').first().waitFor({state:'attached',timeout:12000});
+   } catch(error){
+    const diagnostics=await p.evaluate(()=>{
+     const el=document.querySelector('#classic-frame-b');
+     const doc=el?.contentDocument;
+     return {
+      src:el?.getAttribute('src'),url:doc?.URL,
+      title:doc?.querySelector('#source-title')?.textContent,
+      method:doc?.querySelector('#method-note')?.textContent,
+      tocCount:doc?.querySelectorAll('#toc button').length,
+      body:doc?.body?.textContent?.slice(0,380)
+     };
+    });
+    throw Error("Spanish reader did not build its table of contents: "+JSON.stringify(diagnostics)+"; "+error.message);
+   }
+   assert.equal(await spanishReader.locator('#toc button').count(),312,
+    'All historical anthology segments must remain visible, even without locus alignment');
+   assert.match(await spanishReader.locator('#toc button').first().innerText(),/t1/);
+   assert.match(await spanishReader.locator('#toc button').last().innerText(),/t312/);
+   assert.match(await spanishReader.locator('#method-note').innerText(),/No hay alineación por loci/i);
+   const before=await p.locator('#classic-frame-b').getAttribute('src');
+   await p.locator('#classic-apuleius-book').selectOption('6');
+   assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la.*locus=6\.1/);
+   assert.equal(await p.locator('#classic-frame-b').getAttribute('src'),before,'The translation must not be falsely synchronized');
+   assert.match(await p.locator('#classic-panel').innerText(),/No existe correspondencia de capítulos verificada/);
   }finally{await p.close()}
  });
  await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
