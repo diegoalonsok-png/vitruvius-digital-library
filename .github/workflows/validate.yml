@@ -36,6 +36,9 @@ jobs:
           node scripts/test-vitruvia-author-reading.mjs
           node scripts/test-classical-catalogue-integrity.mjs
           node scripts/audit-classical-corpus.mjs
+          node scripts/audit-classical-translation-coverage.mjs
+          node --check assets/classics-corpus-search.js
+          node --check assets/vitruvia-search.js
           node --check assets/bibliotheca-graeca-latina.js
           node --check assets/vitruvia-selection-speech.js
           node scripts/test-vitruvia-selection-speech.mjs
