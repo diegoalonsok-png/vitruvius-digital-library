@@ -73,7 +73,9 @@ try{
      diagnostics:api.diagnostics()
     };
    });
-   assert.equal(check.total,20,'Expected 20 actual hosted text variants in registry');
+   const expected=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
+   assert.equal(check.total,expected.entries.length,'Indexed text count must match the actual corpus registry');
+   assert.equal(expected.count,expected.entries.length,'Registry declared count must match entries');
    assert.match(check.catullus,/corpus\/catullus-carmina-la\.html\?q=/,'Catullus verses are not indexed');
    assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
    assert.match(check.translation,/classics-text-reader\.html\?work=apuleius-metamorphoses&lang=en/,'English version not indexed');
