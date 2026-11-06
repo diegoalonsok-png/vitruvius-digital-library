@@ -1,0 +1,209 @@
+{
+  "schema": "vitruvia-classics-search-registry-v1",
+  "updated": "2026-11-05",
+  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
+  "count": 20,
+  "works": 14,
+  "entries": [
+    {
+      "workId": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apuleius-metamorphoses-en.json",
+      "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=en",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "language": "es",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apuleius-metamorphoses-es.json",
+      "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=es",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apuleius-metamorphoses-la.json",
+      "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=la",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-poetics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "catullus-carmina",
+      "author": "Catulo",
+      "title": "Carmina",
+      "language": "la",
+      "format": "html-text",
+      "path": "corpus/catullus-carmina-la.html",
+      "reader": "corpus/catullus-carmina-la.html",
+      "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "language": "en",
+      "format": "html-text",
+      "path": "corpus/cicero-de-officiis-en.html",
+      "reader": "corpus/cicero-de-officiis-en.html",
+      "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "language": "la",
+      "format": "html-text",
+      "path": "corpus/cicero-de-officiis-la.html",
+      "reader": "corpus/cicero-de-officiis-la.html",
+      "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/epictetus-enchiridion-grc.json",
+      "reader": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/homer-iliad-grc.json",
+      "reader": "classics-text-reader.html?work=homer-iliad&lang=grc",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "homer-odyssey",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ὀδύσσεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/homer-odyssey-grc.json",
+      "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/caesar-gallico-la.json",
+      "reader": "classics-text-reader.html?work=caesar-gallico&lang=la",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "language": "en",
+      "format": "html-text",
+      "path": "corpus/lucretius-de-rerum-natura-en.html",
+      "reader": "corpus/lucretius-de-rerum-natura-en.html",
+      "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "language": "es",
+      "format": "html-text",
+      "path": "corpus/lucretius-de-rerum-natura-es.html",
+      "reader": "corpus/lucretius-de-rerum-natura-es.html",
+      "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "language": "la",
+      "format": "html-text",
+      "path": "corpus/lucretius-de-rerum-natura-la.html",
+      "reader": "corpus/lucretius-de-rerum-natura-la.html",
+      "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "petronius-satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "title": "Satyrica",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/petronius-satyrica-en.json",
+      "reader": "classics-text-reader.html?work=petronius-satyrica&lang=en",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "petronius-satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "title": "Satyrica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/petronius-satyrica-la.json",
+      "reader": "classics-text-reader.html?work=petronius-satyrica&lang=la",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-apology-grc.json",
+      "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/theophrastus-characters-grc.json",
+      "reader": "classics-text-reader.html?work=theophrastus-characters&lang=grc",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/virgil-aeneid-la.json",
+      "reader": "classics-text-reader.html?work=virgil-aeneid&lang=la",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/virgil-georgica-la.json",
+      "reader": "classics-text-reader.html?work=virgil-georgica&lang=la",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    }
+  ]
+}
