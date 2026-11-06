@@ -286,6 +286,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <nav class="navlinks" aria-label="Navegación del Lexicon">
   <a href="vitruvia.html" data-i18n>← Buscador Vitruvia</a>
   <a href="#etymologicum" data-i18n>Etymologicum</a>
+   <a href="#scriptoria">Escrituras antiguas</a>
   <a href="#sententiae" data-tool-mode="sententiae">Sententiae</a>
   <a href="#collatio" data-i18n>Taller ecdótico</a>
   <a href="#exegesis" data-i18n>Cuaderno exegético</a>
@@ -371,6 +372,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  </div>
  <p id="lx-state" role="status">Preparando el Lexicon…</p>
  <article id="lx-entry" hidden></article>
+  <article id="lx-antiguedad-resultados" hidden aria-label="Fuentes documentales antiguas y límites de atestiguación"></article>
  <div class="results-grid">
   <div id="lx-results"></div>
   <aside class="sidebar" aria-label="Distribución, colocaciones y exportación"><div id="lx-side-extra"></div>
@@ -495,6 +497,33 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 <li><a href="vitruvia-lexicon.html?q=ψυχή&amp;mode=palabra" lang="grc">ψυχή</a> <small>gr. · incierta</small> <span lang="he" dir="rtl">נֶפֶשׁ</span></li></ul><!--/ETYM-INDEX-->
 </section>
 
+
+<section class="tool" id="scriptoria" aria-labelledby="scriptoria-h">
+  <div class="kicker">II · SCRIPTORIA ET ALPHABETA</div>
+  <h2 id="scriptoria-h">Historia de los alfabetos, signos egipcios y testimonios materiales</h2>
+  <p class="lead">Árboles de letras desde la tradición pictográfica egipcia hacia las primeras escrituras alfabéticas semíticas y sus desarrollos fenicio, arameo, hebreo y grecolatino. El cuneiforme mesopotámico se estudia como una tradición diferenciada. Las fechas, hipótesis paleográficas y fuentes se indican explícitamente.</p>
+  <div id="lx-script-tray" class="lx-script-tray"></div>
+  <div class="lx-script-tools">
+    <h3>Árbol paleográfico de una letra</h3>
+    <label class="lx-small" for="lx-alphabet-select">Familia de letra: <select id="lx-alphabet-select" class="lx-select" aria-label="Seleccionar familia de letra"></select></label>
+    <div id="lx-alphabet-chain" class="lx-script-scroll"></div>
+    <h3>Repertorio Gardiner y glosario egipcio</h3>
+    <p class="lx-small">Los códigos Gardiner identifican signos; un signo puede ser fonograma, logograma o determinativo. Las lecturas son contextuales y el repertorio es una selección original, no una reproducción íntegra de <i>Egyptian Grammar</i>.</p>
+    <label class="lx-small" for="lx-gardiner-filter">Buscar código, sonido, signo o término: <input id="lx-gardiner-filter" type="search" placeholder="G17 · casa · pr · 𓉐 · m" aria-label="Buscar signo Gardiner o término egipcio"></label>
+    <div id="lx-gardiner-out" class="lx-script-scroll"></div>
+    <div id="lx-egyptian-dictionary" class="lx-script-scroll"></div>
+    <div id="lx-inscription-out"></div>
+  </div>
+  <style>
+   #scriptoria .lx-script-tray{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:14px 0}
+   #scriptoria .lx-script-scroll{max-width:100%;overflow-x:auto;margin:12px 0 20px}
+   #scriptoria .lx-old-glyph{font-size:clamp(22px,2vw,34px);line-height:1.65;white-space:nowrap}
+   #scriptoria .lx-hiero{font-family:"Noto Sans Egyptian Hieroglyphs","Segoe UI Historic",serif}
+   #scriptoria input[type=search]{max-width:360px;padding:9px;margin:6px;border:1px solid var(--line);background:transparent;color:inherit;border-radius:6px}
+   #scriptoria .lx-script-scroll .lx-table{min-width:580px}
+  </style>
+</section>
+
 <section class="tool" id="sententiae" aria-labelledby="sent-h">
  <div class="kicker">II · SENTENTIAE</div>
  <h2 id="sent-h" data-i18n>Fraseario del mundo antiguo</h2>
@@ -602,5 +631,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v20" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-escrituras-v1" defer></script>
 </body></html>
