@@ -84,6 +84,21 @@ for(const w of works){
   verifiedParallel.push({work:w.id,original:originals[0].language,translation:translation.language,originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:intersect});
  }
 }
+// Teofrasto: capítulo traducido 1–30 cotejable en número con el griego, no en frases.
+const characterGr=read("data/classics-corpus/theophrastus-characters-grc.json");
+const characterEn=read("data/classics-corpus/theophrastus-characters-en.json");
+const characterLoci=Array.from({length:30},(_,i)=>String(i+1));
+assert.equal(characterEn.passages.length,30,"Theophrastus English must have 30 complete chapter units");
+assert.deepEqual(characterEn.passages.map(p=>p.locus),characterLoci,
+ "Theophrastus English chapters must be identified 1–30 in Greek order");
+assert(characterLoci.every(l=>characterGr.passages.some(p=>p.locus===l)),
+ "English chapter cannot refer to a nonexistent Greek chapter");
+assert.equal(characterEn.alignmentStatus,"chapter","Do not claim phrase or paragraph alignment");
+assert(/Bennett/.test(characterEn.attribution)&&/1902/.test(characterEn.attribution),
+ "Theophrastus English source attribution missing");
+assert(characterEn.passages.every(p=>p.text&&p.text.length>150),
+ "Empty or truncated Theophrastus English chapter");
+
 const corpusJson=readdirSync(pathOf("data/classics-corpus")).filter(p=>/-(?:grc|la|es|en|fr|it|de|pt)\.json$/.test(p));
 for(const file of corpusJson)assert(unique.has("data/classics-corpus/"+file),"Unindexed classical corpus asset: "+file);
 const htmlFiles=readdirSync(pathOf("corpus")).filter(p=>p.endsWith(".html"));

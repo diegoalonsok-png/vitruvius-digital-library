@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 27,
+  "count": 28,
   "works": 14,
   "entries": [
     {
@@ -224,6 +224,16 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/theophrastus-characters-en.json",
+      "reader": "classics-text-reader.html?work=theophrastus-characters&lang=en",
+      "sourceDescription": "Bennett y Hammond (1902); 30 capítulos, correspondencia general por capítulo con Diels 1909, no por párrafo."
     },
     {
       "workId": "theophrastus-characters",
