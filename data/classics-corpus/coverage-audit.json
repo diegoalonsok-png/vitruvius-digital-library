@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "scope": "se auditan exclusivamente los 221 registros de obras del catálogo local. No es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 20,
+    "indexedTextVersions": 24,
     "indexedDistinctWorks": 14,
     "manuscriptWitnesses": 23
   },
@@ -120,9 +120,11 @@
       "dating": "c. 58–50 a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/caesar-gallico-en.json",
         "data/classics-corpus/caesar-gallico-la.json"
       ],
       "localPDF": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
@@ -2222,9 +2224,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-apology-en.json",
         "data/classics-corpus/plato-apology-grc.json"
       ],
       "localPDF": "documents/classics/plato-apologia-socratis-adam-1891.pdf",
@@ -2244,9 +2248,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristotle-poetics-en.json",
         "data/classics-corpus/aristotle-poetics-grc.json"
       ],
       "localPDF": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
@@ -3702,9 +3708,11 @@
       "dating": "siglo II d. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/epictetus-enchiridion-en.json",
         "data/classics-corpus/epictetus-enchiridion-grc.json"
       ],
       "localPDF": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
