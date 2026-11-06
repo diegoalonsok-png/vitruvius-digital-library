@@ -225,6 +225,7 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "DOI de la edición":["Edition DOI","DOI de l'édition"],"DOI del proyecto":["Project DOI","DOI du projet"],
  "versión de datos":["data version","version des données"],"En":["In","Dans"],"ed.":["ed.","éd."],"consultado el":["accessed","consulté le"],"Consultado el":["Accessed","Consulté le"],"s. f.":["n.d.","s. d."],"editado por":["edited by","édité par"],
  "Este enlace se citó con la versión de datos":["This link was cited with data version","Ce lien a été cité avec la version de données"],"ahora se consulta la versión":["you are now viewing version","vous consultez maintenant la version"],"El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.":["The passage may have been corrected since; the full history is in the repository.","Le passage a pu être corrigé depuis ; l'historique complet est dans le dépôt."],"Historial de cambios":["Change history","Historique des modifications"],
  "Citar":["Cite","Citer"],"Copiar":["Copy","Copier"],"Enlace estable":["Stable link","Lien stable"],"Cita con texto":["Quotation with text","Citation avec texte"],"La versión de datos identifica el estado exacto del corpus consultado; el conector de Zotero detecta además cada pasaje de la página (COinS).":["The data version identifies the exact state of the corpus consulted; the Zotero connector also detects each passage on the page (COinS).","La version des données identifie l'état exact du corpus consulté ; le connecteur Zotero détecte aussi chaque passage de la page (COinS)."],
@@ -819,7 +820,7 @@ async function openViewer(D,p,spans,q){
    const data=await load(VIT_ED[ed][0]);const ps=data.passages;let i=ps.findIndex(x=>x.locus===locus);if(i<0)i=0;const x=ps[i];locus=x.locus;
    const ks=new Set(fold(q||"").split(/\s+/).filter(Boolean));const sp=[];for(const m of x.latin.matchAll(TOKEN))if(ks.has(fold(m[0])))sp.push([m.index,m.index+m[0].length]);
    const la=el("div",{class:"lx-viewer-col",lang:"la"},el("p",{class:"lx-small"},"Latín · V514 · Vitr. "+x.locus),el("p",{class:"lx-passage"}));la.lastChild.append(linkWords(x.latin,sp));
-   const tr=el("div",{class:"lx-viewer-col",lang:ed},el("p",{class:"lx-small"},VIT_ED[ed][1]),el("p",{class:"lx-tr"},x.translation||"—"));
+   const tr=el("div",{class:"lx-viewer-col",lang:ed},el("p",{class:"lx-small"},VIT_ED[ed][1]," · ",el("a",{href:"https://doi.org/"+EDITION_DOI[ed][0],target:"_blank",rel:"noopener"},"DOI "+EDITION_DOI[ed][0])),el("p",{class:"lx-tr"},x.translation||"—"));
    grid.replaceChildren(la,tr);
    bar.replaceChildren(el("button",{type:"button",disabled:i===0,onclick:()=>{locus=ps[i-1].locus;draw()}},"‹ "+(ps[i-1]?.locus||"")),...Object.entries(VIT_ED).map(([k,v])=>el("button",{type:"button","aria-pressed":String(k===ed),onclick:()=>{ed=k;draw()}},k.toUpperCase())),el("button",{type:"button",disabled:i>=ps.length-1,onclick:()=>{locus=ps[i+1].locus;draw()}},(ps[i+1]?.locus||"")+" ›"),...vitruvianLinks(x.locus).map(([t,u])=>el("a",{href:u},t)));
   };
@@ -971,7 +972,7 @@ function alignTranslation(U,p){
  return null;
 }
 async function translationOf(D,p){
- if(p[0]==="vitruvius"){const ed=S.ui==="fr"?"fr":S.ui==="en"?"en":"es";const data=await load(VIT_ED[ed][0]);const x=data.passages.find(z=>z.locus===p[1]);if(x?.translation)return{text:x.translation,src:"Vitruvio · "+VIT_ED[ed][1]};if(p[4])return{text:p[4],src:"Vitruvio · Castellano · Kurilo V514"};return null}
+ if(p[0]==="vitruvius"){const ed=S.ui==="fr"?"fr":S.ui==="en"?"en":"es";const data=await load(VIT_ED[ed][0]);const x=data.passages.find(z=>z.locus===p[1]);if(x?.translation)return{text:x.translation,src:"Vitruvio · "+VIT_ED[ed][1]+" · https://doi.org/"+EDITION_DOI[ed][0]};if(p[4])return{text:p[4],src:"Vitruvio · Castellano · Kurilo V514"};return null}
  const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);if(!t)return null;const G={exacta:T("alineación exacta por locus"),verso:T("alineación por número de verso"),tramo:T("alineación por tramo de versos (aproximada)"),"capítulo":T("alineación por capítulo (aproximada)"),proporcional:T("alineación proporcional dentro del libro (orientativa)")};return{text:t.text,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0)")+(t.locus?" · "+T("sección")+" "+t.locus:"")+" · "+G[t.grade],grade:t.grade};
 }
 async function fillTranslation(D,p,box){
@@ -1001,17 +1002,21 @@ function ambiguityCount(D,hits){let n=0;for(const h of hits.slice(0,3000)){const
    Open Greek and Latin), la edición de base y la versión de los datos del Lexicon con que se consultó. */
 const CTS_ID={vitruvius:"latinLit:phi1056.phi001","herodotus-histories":"greekLit:tlg0016.tlg001","euclid-elements":"greekLit:tlg1799.tlg001","columella-rustica":"latinLit:phi0845.phi002","pliny-naturalis":"latinLit:phi0978.phi001","cato-agricultura":"latinLit:stoa0079.stoa001"};
 function ctsUrn(p){let id=CTS_ID[p[0]];if(!id){const x=LECTOR_IDS[p[0]];if(x&&/^(phi|tlg|stoa)\d/.test(x))id=(x.startsWith("tlg")?"greekLit:":"latinLit:")+x}return id?`urn:cts:${id}:${p[1]}`:null}
+/* DOI del proyecto (CITATION.cff): Vitruvius Digital Library, Zenodo. */
+const SITE_DOI="10.5281/zenodo.23868911";
+/* DOI de las ediciones de Vitruvio de Diego A. Kurilo (auditoria.html): el latín del corpus es la recensio V514. */
+const EDITION_DOI={es:["10.5281/zenodo.23884757","V514, latín-castellano"],fr:["10.5281/zenodo.23885110","V554, latín-francés"],en:["10.5281/zenodo.23885404","V297, latín-inglés"]};
 function permalink(p){const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(DATA_VER)u.searchParams.set("dv",DATA_VER);return u.toString()}
 function citeData(D,p,cite){
  const w=work(D,p[0]);const today=new Date().toISOString().slice(0,10);const year=new Date().getFullYear();
- const ed=(w.edition||"").replace(/\s+/g," ").trim();const url=permalink(p);const urn=ctsUrn(p);const ver=DATA_VER?`${T("versión de datos")} ${DATA_VER}`:"";
- return{w,ed,url,urn,ver,today,year,
-  chicago:`${w.author}, ${w.title}, ${cite.replace(w.cite+" ","")}. ${ed?ed+". ":""}${T("En")} Vitruvia Lexicon, ${T("ed.")} Diego A. Kurilo${ver?", "+ver:""}. ${url}${urn?" ("+urn+")":""} (${T("consultado el")} ${today}).`,
-  apa:`${w.author}. (${T("s. f.")}). ${w.title} (${cite.replace(w.cite+" ","")})${ed?". "+ed:""}. ${T("En")} D. A. Kurilo (Ed.), Vitruvia Lexicon${ver?" ["+ver+"]":""}. ${url}`,
-  mla:`${w.author}. ${w.title}, ${cite.replace(w.cite+" ","")}. ${ed?ed+". ":""}Vitruvia Lexicon, ${T("editado por")} Diego A. Kurilo, ${year}, ${url}. ${T("Consultado el")} ${today}.`}
+ const edDoi=p[0]==="vitruvius"?EDITION_DOI.es[0]:null;const ed=(w.edition||"").replace(/\s+/g," ").trim()+(edDoi?`, https://doi.org/${edDoi}`:"");const url=permalink(p);const urn=ctsUrn(p);const ver=DATA_VER?`${T("versión de datos")} ${DATA_VER}`:"";
+ return{w,ed,edDoi,url,urn,ver,today,year,
+  chicago:`${w.author}, ${w.title}, ${cite.replace(w.cite+" ","")}. ${ed?ed+". ":""}${T("En")} Vitruvia Lexicon, ${T("ed.")} Diego A. Kurilo${ver?", "+ver:""}. Vitruvius Digital Library. https://doi.org/${SITE_DOI}. ${url}${urn?" ("+urn+")":""} (${T("consultado el")} ${today}).`,
+  apa:`${w.author}. (${T("s. f.")}). ${w.title} (${cite.replace(w.cite+" ","")})${ed?". "+ed:""}. ${T("En")} D. A. Kurilo (Ed.), Vitruvia Lexicon${ver?" ["+ver+"]":""}. Vitruvius Digital Library. https://doi.org/${SITE_DOI}. ${url}`,
+  mla:`${w.author}. ${w.title}, ${cite.replace(w.cite+" ","")}. ${ed?ed+". ":""}Vitruvia Lexicon, ${T("editado por")} Diego A. Kurilo, Vitruvius Digital Library, ${year}, https://doi.org/${SITE_DOI}, ${url}. ${T("Consultado el")} ${today}.`}
 }
-function bibtex(D,p,cite,c){const key=(p[0]+"_"+p[1]).replace(/[^A-Za-z0-9_]/g,"_");const e=s=>String(s).replace(/[{}\\]/g,"");return `@misc{${key},\n  author = {${e(c.w.author)}},\n  title = {${e(c.w.title)}, ${e(cite)}},\n  howpublished = {Vitruvia Lexicon, ed. Diego A. Kurilo},\n  note = {${e(c.ed)}${c.urn?"; "+c.urn:""}${c.ver?"; "+c.ver:""}},\n  url = {${c.url}},\n  urldate = {${c.today}}\n}\n`}
-function ris(D,p,cite,c){return ["TY  - GEN",`AU  - ${c.w.author}`,`TI  - ${c.w.title}, ${cite}`,`T2  - Vitruvia Lexicon`,`ED  - Kurilo, Diego A.`,`UR  - ${c.url}`,`Y2  - ${c.today}`,c.urn?`M1  - ${c.urn}`:"",`N1  - ${c.ed}${c.ver?"; "+c.ver:""}`,"ER  - ",""].filter(Boolean).join("\r\n")}
+function bibtex(D,p,cite,c){const key=(p[0]+"_"+p[1]).replace(/[^A-Za-z0-9_]/g,"_");const e=s=>String(s).replace(/[{}\\]/g,"");return `@misc{${key},\n  author = {${e(c.w.author)}},\n  title = {${e(c.w.title)}, ${e(cite)}},\n  howpublished = {Vitruvia Lexicon, ed. Diego A. Kurilo. Vitruvius Digital Library},\n  doi = {${c.edDoi||SITE_DOI}},\n  note = {${e(c.ed)}${c.urn?"; "+c.urn:""}${c.ver?"; "+c.ver:""}${c.edDoi?"; Vitruvius Digital Library, https://doi.org/"+SITE_DOI:""}},\n  url = {${c.url}},\n  urldate = {${c.today}}\n}\n`}
+function ris(D,p,cite,c){return ["TY  - GEN",`AU  - ${c.w.author}`,`TI  - ${c.w.title}, ${cite}`,`T2  - Vitruvia Lexicon`,`ED  - Kurilo, Diego A.`,`UR  - ${c.url}`,`DO  - ${c.edDoi||SITE_DOI}`,`Y2  - ${c.today}`,c.urn?`M1  - ${c.urn}`:"",`N1  - ${c.ed}${c.ver?"; "+c.ver:""}`,"ER  - ",""].filter(Boolean).join("\r\n")}
 function citeMenu(D,p,cite,snippet){
  const det=el("details",{class:"lx-cite-menu"},el("summary",{},T("Citar")));
  det.addEventListener("toggle",()=>{if(!det.open||det.querySelector(".lx-cite-box"))return;const c=citeData(D,p,cite);
@@ -1019,6 +1024,8 @@ function citeMenu(D,p,cite,snippet){
   const row=(label,txt)=>el("p",{},el("b",{},label+": "),el("span",{class:"lx-cite-txt"},txt)," ",el("button",{type:"button",class:"lx-btn",onclick:e=>copy(txt,e.target)},T("Copiar")));
   box.append(row("Chicago",c.chicago),row("APA",c.apa),row("MLA",c.mla));
   if(c.urn)box.append(row("URN CTS",c.urn));
+  if(c.edDoi)box.append(row(T("DOI de la edición")+" (V514)",`https://doi.org/${c.edDoi}`));
+  box.append(row(T("DOI del proyecto"),`https://doi.org/${SITE_DOI}`));
   box.append(row(T("Enlace estable"),c.url),row(T("Cita con texto"),`${cite}: «${snippet.replace(/\s+/g," ").trim()}» — ${c.w.author}, ${c.w.title}. ${c.ed}. Vitruvia Lexicon, ${c.url}`));
   box.append(el("p",{},el("button",{type:"button",class:"lx-btn",onclick:()=>download(`${p[0]}-${p[1]}.bib`,bibtex(D,p,cite,c),"application/x-bibtex")},"BibTeX (.bib)")," ",el("button",{type:"button",class:"lx-btn",onclick:()=>download(`${p[0]}-${p[1]}.ris`,ris(D,p,cite,c),"application/x-research-info-systems")},"RIS (.ris) · Zotero, EndNote, Mendeley")));
   box.append(el("p",{class:"lx-small"},T("La versión de datos identifica el estado exacto del corpus consultado; el conector de Zotero detecta además cada pasaje de la página (COinS).")));
@@ -1026,7 +1033,7 @@ function citeMenu(D,p,cite,snippet){
  return det;
 }
 /* COinS (OpenURL en un span): el conector de Zotero reconoce cada pasaje de la página como un registro. */
-function coins(D,p){const w=work(D,p[0]);const q=new URLSearchParams({ctx_ver:"Z39.88-2004",rft_val_fmt:"info:ofi/fmt:kev:mtx:book","rft.genre":"bookitem","rft.atitle":`${w.title} ${p[1]}`,"rft.btitle":"Vitruvia Lexicon","rft.au":w.author,"rft.pub":"Vitruvius Digital Library","rft_id":permalink(p)});const u=ctsUrn(p);if(u)q.append("rft_id",u);return el("span",{class:"Z3988",title:q.toString().replace(/\+/g,"%20"),"aria-hidden":"true"})}
+function coins(D,p){const w=work(D,p[0]);const q=new URLSearchParams({ctx_ver:"Z39.88-2004",rft_val_fmt:"info:ofi/fmt:kev:mtx:book","rft.genre":"bookitem","rft.atitle":`${w.title} ${p[1]}`,"rft.btitle":"Vitruvia Lexicon","rft.au":w.author,"rft.pub":"Vitruvius Digital Library","rft_id":permalink(p)});const u=ctsUrn(p);if(u)q.append("rft_id",u);q.append("rft_id","info:doi/"+SITE_DOI);return el("span",{class:"Z3988",title:q.toString().replace(/\+/g,"%20"),"aria-hidden":"true"})}
 /* ---------- Posibles fuentes y paralelos de Vitruvio (scripts/build-vitruvius-paralleli.py) ---------- */
 let PARALLELI=null;
 function paralleliBox(D,p){
