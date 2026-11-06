@@ -1,10 +1,40 @@
 /* Medición mínima y respetuosa de privacidad.
  * No registra términos buscados, contenido de PDFs, IDs personales ni cadenas URL.
- * Requiere Umami configurado, de lo contrario no realiza llamadas externas.
+ * Google Analytics 4 cuenta visitas; Umami sigue disponible como alternativa.
+ * Solo se activa en páginas principales del sitio de producción.
  */
 (()=>{
  "use strict";
  const config=window.VitruviusAnalyticsConfig||{};
+ const pathRoot="/vitruvius-digital-library/";
+ const preferences=window.navigator||{};
+ if(window.VitruviusAnalytics?.enabled||window.top!==window.self||
+    preferences.doNotTrack==="1"||preferences.globalPrivacyControl===true||
+    !location.pathname.startsWith(pathRoot))return;
+ const ga4Id=String(config.ga4MeasurementId||"").trim();
+ if(location.hostname==="diegoalonsok-png.github.io"&&/^G-[A-Z0-9]{6,}$/.test(ga4Id)){
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+  let referrer="";
+  try{if(document.referrer)referrer=new URL(document.referrer).origin+"/"}catch{}
+  window.gtag("js",new Date());
+  window.gtag("config",ga4Id,{
+   page_location:location.origin+location.pathname,
+   page_title:"Vitruvius Digital Library — "+(location.pathname.split("/").pop()||"Inicio").replace(/\.html$/,""),
+   page_referrer:referrer,
+   allow_google_signals:false,
+   allow_ad_personalization_signals:false,
+   cookie_path:pathRoot,
+   cookie_prefix:"vitruvius",
+   cookie_flags:"SameSite=Lax;Secure"
+  });
+  const googleTag=document.createElement("script");
+  googleTag.async=true;
+  googleTag.src="https://www.googletagmanager.com/gtag/js?id="+ga4Id;
+  document.head.append(googleTag);
+  window.VitruviusAnalytics={enabled:true,provider:"ga4"};
+  return;
+ }
  const id=String(config.websiteId||"").trim();
  const host=location.hostname;
  const production=host==="diegoalonsok-png.github.io";
