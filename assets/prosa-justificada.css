@@ -1,0 +1,13 @@
+/* Composición de lectura: las traducciones modernas (castellano, inglés, francés, alemán, italiano,
+   portugués) se justifican en ambos márgenes, sin bandera, con partición silábica según la lengua
+   del elemento. Los textos originales latinos, griegos y hebreos conservan su composición, y el
+   verso no se fuerza: cada línea que termina en salto de verso queda alineada a la izquierda. */
+.txt:is(:lang(en),:lang(es),:lang(fr),:lang(de),:lang(it),:lang(pt)),
+.classic-read-columns article p:not(:lang(la)):not(:lang(grc)):not(:lang(he)),
+.lx-tr,
+.lx-viewer-col:not(:lang(la)):not(:lang(grc)):not(:lang(he)) p,
+.compare-body p:not(:lang(la)):not(:lang(grc)):not(:lang(he)),
+.scholarly-text:not(:lang(la)):not(:lang(grc)):not(:lang(he)){
+ text-align:justify;text-justify:inter-word;text-align-last:left;
+ -webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 3;
+ overflow-wrap:break-word;word-break:normal}
