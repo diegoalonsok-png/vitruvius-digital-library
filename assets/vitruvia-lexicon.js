@@ -284,6 +284,7 @@ function applyUI(){
 /* ---------- Ejecución ---------- */
 async function run(push=true){
  const q=$("#lx-q").value.trim();S.q=q;S.page=0;
+ renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
  if(push){const u=new URL(location.href);u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
@@ -1509,6 +1510,101 @@ function nbExport(fmt){
 }
 
 /* ---------- Instrumenta philologica ---------- */
+
+/* ---------- Escrituras antiguas, Gardiner y testimonios materiales ----------
+   Todas las fichas proceden de data/lexicon/philologia.json (escrituras).
+   Nunca confundir primera coincidencia del corpus con primera atestiguación física. */
+function scriptoriaSource(d,id){
+ const s=(d.sources||[]).find(x=>x.id===id);
+ return s?el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer"},s.name):null;
+}
+function scriptoriaSources(d,ids){
+ const span=el("span",{class:"lx-small"});
+ for(const [i,id] of (ids||[]).entries()){if(i)span.append(" · ");const x=scriptoriaSource(d,id);if(x)span.append(x)}
+ return span;
+}
+function renderOldestEvidence(q){
+ const box=$("#lx-antiguedad-resultados"),D=S.phil?.escrituras;if(!box)return;
+ box.hidden=true;box.replaceChildren();if(!D||!q)return;
+ const k=fold(q).trim(),e=(D.lookup||[]).find(x=>x.queries.some(t=>fold(t)===k));
+ if(!e)return;
+ const wrap=el("section",{class:"lx-etym"},
+  el("h3",{},"Historia documental y testimonios de «"+q+"»"),
+  el("p",{class:"article-note"},"Correspondencias léxicas para seguir en el corpus. Una palabra moderna no tiene por qué existir con idéntica forma en un papiro o códice antiguo."));
+ const dl=el("dl",{class:"lx-dl"});
+ for(const x of e.equivalents){
+  const href="vitruvia-lexicon.html?q="+encodeURIComponent(x.word)+"&mode=palabra&lang="+x.lang;
+  dl.append(el("dt",{},x.label),el("dd",{},el("a",{href,lang:x.lang},x.word)," · ",el("small",{},"Abrir concordancia y primera aparición en el corpus local")));
+ }
+ wrap.append(dl,el("p",{class:"lx-syn"},e.note),
+  el("p",{class:"lx-small"},"Para afirmar «el códice o papiro más antiguo que contiene la palabra» se exige una lectura localizable del signo o lema, una signatura, el folio/línea y una datación material. Sin esos datos no se asigna falsamente una primera atestiguación."),
+  el("p",{class:"lx-small"},"Contexto y bibliografía: ",scriptoriaSources(D,e.refs||[])));
+ if(e.title)wrap.prepend(el("p",{class:"article-kicker"},e.title));
+ box.append(wrap);box.hidden=false;
+}
+async function renderScriptoria(){
+ const D=S.phil?.escrituras;if(!D)return;
+ const tray=$("#lx-script-tray"),family=$("#lx-alphabet-chain"),sel=$("#lx-alphabet-select"),
+       signSearch=$("#lx-gardiner-filter"),signOut=$("#lx-gardiner-out"),dictOut=$("#lx-egyptian-dictionary"),witOut=$("#lx-inscription-out");
+ if(!tray||!family||!sel||!signSearch||!signOut||!dictOut||!witOut)return;
+ tray.replaceChildren();
+ for(const b of D.branches){
+  const section=el("div",{class:"lx-side-block"},el("h3",{},b.title));
+  const ordered=el("ol",{class:"lx-small"});
+  b.nodes.forEach(n=>ordered.append(el("li",{},n)));
+  section.append(ordered,el("p",{class:"lx-small"},"Fuentes: ",scriptoriaSources(D,b.source)));
+  tray.append(section);
+ }
+ tray.append(el("p",{class:"lx-syn"},D.sites_note),el("p",{class:"article-note"},D.method));
+ sel.replaceChildren(...D.letters.map((a,i)=>el("option",{value:String(i)},a.latin+" · "+a.name)));
+ const drawLetter=()=>{
+  const L=D.letters[Number(sel.value)||0];if(!L)return;
+  const t=el("table",{class:"lx-table"},el("thead",{},el("tr",{},...["Origen pictográfico propuesto","Fenicio","Arameo imperial","Hebreo cuadrado","Griego","Latín"].map(x=>el("th",{},x)))));
+  t.append(el("tbody",{},el("tr",{},
+   el("td",{},L.motif),
+   el("td",{class:"lx-old-glyph"},L.phoenician),
+   el("td",{class:"lx-old-glyph"},L.aramaic),
+   el("td",{class:"lx-old-glyph",lang:"he"},L.hebrew),
+   el("td",{class:"lx-old-glyph",lang:"grc"},L.greek),
+   el("td",{class:"lx-old-glyph"},L.latinFrom))));
+  family.replaceChildren(el("h3",{},"Familia de letras · "+L.name),t,
+   el("p",{class:"lx-small"},"El hebreo cuadrado sigue la rama aramea; el griego y el latín pertenecen a otra rama. Los motivos pictográficos son hipótesis generales y no reproducciones de una inscripción concreta."));
+ };
+ sel.addEventListener("change",drawLetter);drawLetter();
+ const words=(await conceptus()).flatMap(c=>(c.egy||[]).map(e=>({concept:c.modern.es?.[0]||c.id,tr:e.tr,sign:e.h||"",gloss:e.g})));
+ const drawSigns=()=>{
+  const q=fold(signSearch.value.trim()),matches=D.gardiner.filter(s=>!q||fold([s.code,s.value,s.depiction,s.function,s.glyph].join(" ")).includes(q));
+  const table=el("table",{class:"lx-table"},el("thead",{},el("tr",{},...["Gardiner","Signo","Valor","Representación","Función"].map(v=>el("th",{},v)))));
+  const body=el("tbody");
+  matches.forEach(s=>body.append(el("tr",{},
+   el("td",{},el("code",{},s.code)),
+   el("td",{class:"lx-old-glyph lx-hiero",lang:"egy"},s.glyph),
+   el("td",{},s.value),
+   el("td",{},s.depiction),
+   el("td",{},s.function))));
+  table.append(body);
+  signOut.replaceChildren(el("p",{class:"lx-small"},matches.length+" signos de "+D.gardiner.length+" en este repertorio inicial. Los valores varían según contexto; no son traducciones literales."),table);
+  const matchedWords=words.filter(w=>!q||fold([w.concept,w.tr,w.gloss,w.sign].join(" ")).includes(q));
+  const wt=el("table",{class:"lx-table"},el("thead",{},el("tr",{},...["Concepto","Egipcio (transliteración)","Signo si consta","Significado registrado"].map(v=>el("th",{},v)))));
+  const wb=el("tbody");
+  matchedWords.forEach(w=>wb.append(el("tr",{},
+   el("td",{},w.concept),el("td",{},el("i",{},w.tr)),
+   el("td",{class:"lx-old-glyph lx-hiero",lang:"egy"},w.sign||"—"),
+   el("td",{},w.gloss))));
+  wt.append(wb);dictOut.replaceChildren(el("h3",{},"Vocabulario egipcio de conceptos documentados"),
+   el("p",{class:"lx-small"},matchedWords.length+" registros de "+words.length+" procedentes del glosario conceptual del Lexicon. La grafía completa de cada palabra NO se reconstruye cuando el corpus solo conoce su transliteración."),wt);
+ };
+ signSearch.addEventListener("input",drawSigns);drawSigns();
+ witOut.replaceChildren(el("h3",{},"Inscripciones, tablillas y códices de referencia"));
+ for(const w of D.witnesses){
+  witOut.append(el("article",{class:"result-card"},el("div",{class:"kind"},w.script+" · "+w.medium),
+   el("h4",{},w.name),el("p",{},el("b",{},"Cronología: "),w.dating),
+   el("p",{class:"lx-small"},w.note),
+   el("p",{class:"lx-small"},w.localUrl?el("a",{href:w.localUrl},"Abrir visor local · "):null,scriptoriaSources(D,w.sources))));
+ }
+}
+/* ---------- Fin del módulo de paleografía y escritura ---------- */
+
 function renderInstrumenta(){
  const P=S.phil;if(!P)return;const tabs=$("#inst-tabs"),out=$("#inst-out");
  const groups=[["signa","Signa critica"],["abbreviationes","Abreviaturas del aparato"],["errores","Tipología de errores"],["principia","Principios ecdóticos"],["codicologia","Codicología y paleografía"],["abbreviaturae","Abreviaturas medievales"],["hermeneutica","Hermenéutica y exégesis"],["bibliography","Bibliografía"]];
@@ -1574,7 +1670,7 @@ async function init(){
     en redes lentas; si ya hay una consulta en la dirección, la búsqueda misma carga lo que necesita. */
  {const c=navigator.connection||{};const slow=c.saveData||/(^|-)2g|3g/.test(c.effectiveType||"");
   if(!slow&&!new URLSearchParams(location.search).get("q")){const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));idle(()=>lang("la",true).then(()=>{if((c.effectiveType||"4g")==="4g")idle(()=>lang("grc",true).catch(()=>{}))}).catch(()=>{}),{timeout:4000})}}
- renderInstrumenta();renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
+ renderInstrumenta();renderScriptoria().catch(err=>console.error('Escrituras:',err));renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);
  if(p.get("mode")&&MODES[p.get("mode")])S.mode=p.get("mode");if(p.get("lang"))S.lang=p.get("lang");$("#lx-lang").value=S.lang;if(p.get("work"))S.work=p.get("work");renderTabs();
