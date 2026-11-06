@@ -1,7 +1,7 @@
 {
   "schema": "vitruvia-classics-index-manifest-v1",
-  "updated": "2026-11-04",
-  "description": "Sharded full-text indexes for locally hosted Greek and Latin editions. Each work has an attributed, individually inspectable reading source. Add one entry per verified text, not per catalogue card.",
+  "updated": "2026-11-05",
+  "description": "Índice granular por poemas de Catulo. No representa todo el corpus indexado: las 20 versiones locales buscables, en 14 obras, se enumeran en search-registry.json.",
   "works": [
     {
       "workId": "catullus-carmina",
@@ -12,5 +12,8 @@
       "edition": "Robinson Ellis 1904",
       "sections": 113
     }
-  ]
+  ],
+  "fullTextSearchRegistry": "data/classics-corpus/search-registry.json",
+  "coverageAudit": "data/classics-corpus/coverage-audit.json",
+  "pdfInventory": "data/classics-corpus/pdf-inventory.json"
 }
