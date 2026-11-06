@@ -59,6 +59,18 @@ const htmlFiles=readdirSync(pathOf("corpus")).filter(p=>p.endsWith(".html"));
 const unindexedHtml=htmlFiles.filter(p=>!unique.has("corpus/"+p));
 const classicPDF=readdirSync(pathOf("documents/classics")).filter(p=>p.endsWith(".pdf"));
 const vitruviusPageTexts=readdirSync(pathOf("data/text")).filter(p=>p.endsWith(".json"));
+const pdfInventory=read("data/classics-corpus/pdf-inventory.json");
+assert.equal(pdfInventory.schema,"vitruvia-classics-pdf-inventory-v1");
+assert.equal(pdfInventory.files.length,classicPDF.length,"PDF inventory count is stale");
+const inventoried=new Map(pdfInventory.files.map(x=>[x.path,x]));
+for(const filename of classicPDF){
+ const path="documents/classics/"+filename,entry=inventoried.get(path);
+ assert(entry&&entry.repositoryFilePresent,"Unlisted classical PDF: "+path);
+ assert(entry.linkedWorkIds?.length,"Uploaded PDF must link to at least one catalogue work: "+path);
+ assert.equal(statSync(pathOf(path)).size,entry.bytes,"PDF inventory size changed: "+path);
+ for(const id of entry.linkedWorkIds)assert(byId.has(id),"Unknown work for PDF: "+id);
+}
+
 const localWorks=works.filter(w=>w.publicStatus==="lectura-local-completa"||w.publicStatus==="lectura-local-parcial");
 const published=read("data/classics-corpus/coverage-audit.json");
 assert.equal(published.schema,"vitruvia-classics-coverage-audit-v1");
