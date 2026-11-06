@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 30,
-    "indexedDistinctWorks": 14,
+    "indexedTextVersions": 34,
+    "indexedDistinctWorks": 15,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -26,8 +26,17 @@
       "genre": "Arquitectura",
       "dating": "c. 30–20 a. C.",
       "catalogueStatus": "lectura-local-completa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": true,
       "hasDedicatedReader": false,
@@ -39,7 +48,7 @@
         }
       ],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. Se indexan ambos campos (latín y traducción) sin duplicar el archivo V514; el registro de versiones distingue cuatro lenguas en tres fuentes estructuradas. Diferencias de recensio no garantizan identidad textual."
     },
     {
       "id": "cicero-officiis",
