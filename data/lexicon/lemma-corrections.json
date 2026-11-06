@@ -1,0 +1,10 @@
+{
+ "schema": "vitruvia-lexicon-lemma-corrections-v1",
+ "note": "Asignaciones de lema verificadas a mano en un pasaje concreto. Clave: «obra locus»; valor: forma normalizada (minúsculas, sin diacríticos, v→u, j→i) → lema. Prevalecen sobre la tabla automática y se señalan con ✓. Añada solo correcciones comprobadas en el texto.",
+ "la": {
+  "vitruvius 1.1.1": {
+   "est": "sum1"
+  }
+ },
+ "grc": {}
+}
