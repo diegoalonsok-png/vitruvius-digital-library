@@ -423,6 +423,46 @@ html body .classic-read-columns article a {color:#e3e3e3}
 html body .classic-main mark {background:#6c6c70;color:#fff;border-radius:2px}
 html body .classic-main :is(button,select,input):disabled {opacity:.63;cursor:default}
 
+/* The shared theme sheet has high-specificity navy overrides.
+   Lock this PAGE to Lexicon charcoal in either saved theme mode. */
+html[data-theme] body .classic-main {
+  color:var(--bc-ink)!important;
+}
+html[data-theme] body :is(.classic-controls,.classic-list,.classic-detail) {
+  background:#151516!important;
+  color:var(--bc-ink)!important;
+  border-color:var(--bc-line)!important;
+}
+html[data-theme] body .classic-item {
+  color:#e2e2e2!important;
+  border-color:#303032!important;
+}
+html[data-theme] body .classic-item span {color:#aaa!important}
+html[data-theme] body .classic-item:hover,
+html[data-theme] body .classic-item[aria-current=true] {
+  background:#252527!important;
+}
+html[data-theme] body :is(.classic-status,.classic-viewer) {
+  background:#1f1f21!important;
+  color:#e7e7e7!important;
+  border-color:#464648!important;
+}
+html[data-theme] body .classic-linkline a {
+  background:#222224!important;
+  color:#dedede!important;
+  border-color:#555558!important;
+}
+html[data-theme] body .classic-linkline a:hover {background:#38383a!important;color:#fff!important}
+html[data-theme] body .classic-suggestions {background:#19191a!important;color:#ededed!important;border-color:#555!important}
+html[data-theme] body .classic-suggestions-heading {background:#242426!important;color:#eee!important;border-color:#444!important}
+html[data-theme] body .classic-suggestions-help {background:#202022!important;color:#ccc!important}
+html[data-theme] body .classic-suggestion {background:#1b1b1d!important;color:#eee!important;border-color:#37373a!important}
+html[data-theme] body .classic-suggestion:is(:hover,[aria-selected=true],:focus-visible) {background:#323235!important}
+html[data-theme] body .classic-edition-suggestion {background:#202022!important;border-left-color:#999!important}
+html[data-theme] body .classic-read-columns article {background:#1b1b1d!important;color:#e5e5e4!important;border-color:#444447!important}
+html[data-theme] body .classic-read-columns h4 {color:#b7b7b8!important}
+html[data-theme] body .classical-pdf-search-hit {background:#252527!important;color:#ddd!important;border-color:#414144!important}
+
 /* Preserve all catalogue sections in responsive layout. */
 @media(max-width:900px) {
   html body .classic-layout {grid-template-columns:1fr;gap:17px}
