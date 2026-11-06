@@ -300,7 +300,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  }
  // Visor de lectura dentro de la ficha: códice más antiguo cuando hay imágenes, original y traducción.
  function readerBlock(readable){
-  const box=document.createElement('div');const h=document.createElement('h4');h.textContent='Leer ahora · original y traducción';box.append(h);
+  const box=document.createElement('div');box.id='vitruvia-term-reader';const h=document.createElement('h4');h.textContent='Leer ahora · original y traducción';box.append(h);
   const bar=document.createElement('div');bar.className='vtp-chips';box.append(bar);
   const opts=readable.flatMap(x=>x.obras.slice(0,x.obras.length>12?1:x.obras.length).map(o=>({o,label:x.w.title+(x.obras.length>1&&x.obras.length<=12?' · '+o.split('.').pop():'')})));
   const sel=document.createElement('select');sel.className='vtp-chip';sel.setAttribute('aria-label','Obra');
@@ -382,5 +382,5 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   }catch(e){if(token===seq){panel.hidden=true}}
  }
  window.addEventListener('vitruvia:search',e=>run(e.detail?.query));
- window.VitruviaTermPanel={run,version:'1.0'};
+ window.VitruviaTermPanel={run,classicalWorks,version:'1.1'};
 })();
