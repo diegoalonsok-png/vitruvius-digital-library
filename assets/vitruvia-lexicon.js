@@ -448,6 +448,81 @@ async function renderComparatio(){
   table(rows,`${T("Sobrerrepresentadas en")} ${wa.author}, ${wa.title}`),table(neg,`${T("Sobrerrepresentadas en")} ${wb.author}${wb.title?", "+wb.title:""}`));
 }
 /* ---------- Ficha léxica ---------- */
+
+/* Atestiguaciones entre lenguas. Fecha del autor ≠ fecha del soporte.
+   Una equivalencia semántica no demuestra cognación etimológica. */
+function earliestLexicalHit(D,words){
+ const forms=new Set();
+ for(const w of words)for(const f of lemmaFormsFor(D,w))forms.add(f);
+ let best=null;
+ for(const form of forms)for(const i of D.post.get(form)||[]){
+  const p=D.corpus.passages[i],date=CHRONO[p[0]];
+  if(!Number.isFinite(date))continue;
+  if(!best||date<best.date||(date===best.date&&i<best.i))best={D,p,i,date,forms};
+ }
+ if(!best)return null;
+ best.at=0;best.match="";
+ for(const m of best.p[2].matchAll(TOKEN))
+  if(forms.has(fold(m[0]).replace(/'+$/,""))){best.at=m.index;best.match=m[0];break}
+ return best;
+}
+function renderComparativeAttestations(aside,term,D){
+ const q=String(term||"").trim();
+ if(!/^[\p{L}\p{M}'’-]{2,60}$/u.test(q))return;
+ const root=el("section",{class:"lx-attestations","aria-label":"Primeras coincidencias grecolatinas y testimonios físicos"});
+ const region=el("div",{class:"lx-attestation-results","aria-live":"polite"},el("p",{class:"lx-small"},"Consultando los pasajes griegos y latinos…"));
+ root.append(el("h3",{},"Primeros pasajes en griego y latín"),
+  el("p",{class:"lx-small"},"Fechas aproximadas de composición de las obras, no fechas de los papiros o códices conservados."),region);
+ const material=el("div",{class:"lx-attestation-material"},el("h3",{},"Objeto o manuscrito más antiguo"),
+  el("p",{class:"lx-small"},"Sin testimonio físico de esta voz cotejado aún. Para identificarlo se requieren signatura, folio o línea, lectura comprobada y fecha del objeto."));
+ root.append(material);aside.append(root);
+ const sought=q;
+ (async()=>{
+  const concept=await findConcept(q);
+  const refs=concept?{la:concept.la||[],grc:concept.grc||[]}:
+   {la:D.l==="la"?[q]:[],grc:D.l==="grc"?[q]:[]};
+  const [latin,greek]=await Promise.all([lang("la",true),lang("grc",true)]);
+  const rows=[earliestLexicalHit(latin,refs.la),earliestLexicalHit(greek,refs.grc)]
+   .filter(Boolean).sort((a,b)=>a.date-b.date||a.i-b.i);
+  if(!root.isConnected||String(S.q||"").trim()!==sought)return;
+  region.replaceChildren();
+  if(concept)region.append(el("p",{class:"lx-small"},
+   "Equivalentes semánticos registrados: latín "+refs.la.join(" · ")+"; griego "+refs.grc.join(" · ")+". No implica parentesco lingüístico."));
+  else region.append(el("p",{class:"lx-small"},
+   "No hay equivalencias entre ambas lenguas registradas para esta voz. Se muestra solamente la búsqueda directa."));
+  if(!rows.length)region.append(el("p",{class:"lx-small"},"No hay ocurrencias verificables en los índices cronológicos locales."));
+  for(const x of rows){
+   const langName=x.D.l==="grc"?"Griego":"Latín",w=work(x.D,x.p[0]),end=x.at+x.match.length;
+   const cite=citeOf(x.D,x.p,x.at);
+   region.append(el("div",{class:"lx-attestation-row"},
+    el("p",{class:"lx-small"},el("b",{},langName+" · "),el("span",{lang:x.D.l},x.match),
+     " · "+cite+" · "+w.author+" · "+(DATING[x.p[0]]||"fecha no especificada")),
+    el("button",{type:"button",class:"lx-btn",onclick:()=>openViewer(x.D,x.p,[[x.at,end]],x.match)},
+     "Ver pasaje y traducción")));
+  }
+  for(const l of ["grc","la"]){
+   if(rows.some(x=>x.D.l===l))continue;
+   const name=l==="grc"?"Griego":"Latín";
+   region.append(el("p",{class:"lx-small"},name+": "+(refs[l].length?
+    "sin coincidencias en las obras indexadas para los equivalentes registrados.":
+    "no hay equivalente seguro en el glosario.")));
+  }
+  const lookup=(S.phil?.escrituras?.lookup||[]).find(e=>(e.queries||[]).some(t=>fold(t)===fold(q)));
+  const verified=(lookup?.materialAttestations||[]).filter(w=>
+   w.shelfmark&&w.locus&&w.reading&&w.dating&&/^https:\/\//.test(w.sourceUrl||""));
+  if(verified.length){
+   material.replaceChildren(el("h3",{},"Testimonios físicos comprobados"));
+   for(const w of verified)material.append(el("p",{class:"lx-small"},
+    el("b",{},w.shelfmark+" · "+w.locus)," · "+w.reading+" · "+w.dating+" · ",
+    el("a",{href:w.sourceUrl,target:"_blank",rel:"noopener noreferrer"},"Registro de la institución")));
+   material.append(el("p",{class:"lx-small"},"La fecha del objeto se distingue de la composición literaria."));
+  }
+ })().catch(e=>{
+  if(root.isConnected&&String(S.q||"").trim()===sought)
+   region.replaceChildren(el("p",{class:"lx-small"},"La comparación no pudo completarse: "+e.message));
+ });
+}
+
 async function renderEntry(D,term,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
  const key=fold(term.v).replace(/[^\p{L}']/gu,"");
@@ -490,7 +565,7 @@ async function renderEntry(D,term,res){
  renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
  /* Aside: frecuencia, colocaciones, exportación */
  const total=lemmas.reduce((a,lem)=>a+[...(D.lemmaForms.get(lem)||[])].reduce((s,f)=>s+(D.freq.get(f)||0),0),0);
- if(res.hits.length){const first=res.hits.slice().sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i)[0];const fp=D.corpus.passages[first.i];aside.append(el("h3",{},"Primera atestiguación hallada"),el("p",{},el("b",{},citeOf(D,fp,first.spans[0][0])),` · ${work(D,fp[0]).author}, ${DATING[fp[0]]||""}`),el("p",{class:"lx-small"},"Es la más antigua entre las obras del corpus local, no la primera aparición histórica absoluta de la palabra."))}
+ renderComparativeAttestations(aside,term.v,D);
  aside.append(el("h3",{},"Datos del corpus"),el("p",{},`Ocurrencias de la forma: ${(D.freq.get(key)||0).toLocaleString("es")}`),el("p",{},`Ocurrencias del lema: ${total.toLocaleString("es")}`),el("p",{},`Frecuencia relativa: ${(total/D.tokens*10000).toFixed(2)} por 10 000 palabras`));
  if(res.hits.length){aside.append(el("h3",{},"Colocaciones"));aside.append(collocationList(D,res.hits,4,12))}
  const entry={lemma:lemmas.map(lemmaDisplay),form:term.v,lang:D.l,headword:lemmas.map(l=>lemmaInfo(D,l).h||"").filter(Boolean),senses:lemmas.map(l=>(lemmaInfo(D,l).g||"").split(/;\s*/).filter(Boolean)),morphology:an.filter(a=>typeof a[1]==="string").map(a=>({lemma:lemmaDisplay(a[0]),tag:a[1],analysis:decodeTag(a[1])})),etymology:curated||null,frequency:{form:D.freq.get(key)||0,lemma:total,corpusTokens:D.tokens},citations:res.hits.slice(0,50).map(h=>{const p=D.corpus.passages[h.i];return{cite:citeOf(D,p,h.spans[0][0]),author:work(D,p[0]).author,work:work(D,p[0]).title,text:p[2].slice(kwic(p[2],h.spans).a,kwic(p[2],h.spans).b)}}),source:D.forms.sources,url:PAGE+"?q="+encodeURIComponent(term.v)};
