@@ -192,6 +192,23 @@ html[data-theme=light] .lx-appbox{background:#fff;border-color:#d4d2c9}html[data
 .footer-columns h3{color:#ddd;font:400 22px Georgia,serif;margin:0 0 12px}
 .footer-columns a{display:block;color:#aaa;text-decoration:none;padding:4px 0}.footer-columns a:hover{color:#fff}
 .footer-legal{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#777;padding:15px 0;font-size:11px}
+.lx-tree-wrap{margin-top:22px}.lx-tree-wrap h3{font:400 26px/1.25 var(--lx-text);color:#eaeae7;margin:0 0 6px}html[data-theme=light] .lx-tree-wrap h3{color:#1a2320}
+.lx-tree-list{list-style:none;margin:10px 0 14px;padding:0 0 0 18px;border-left:2px solid #4a4a4a}
+.lx-tree-node{position:relative;margin:0 0 4px;padding:8px 0 4px 14px}
+.lx-tree-node::before{content:"";position:absolute;left:-19px;top:20px;width:24px;border-top:2px solid #4a4a4a}
+.lx-tree-leaf .lx-tree-head{border-color:#9a9a9a;background:#1b1b1c}
+.lx-tree-head{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding:7px 12px;border:1px solid #383838;border-radius:8px}
+.lx-tree-lang{font:400 10px/1.4 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#9a9a9a}
+.lx-tree-word{font:400 20px var(--lx-text)!important;text-decoration:none!important}
+.lx-tree-gloss{font:italic 14px var(--lx-text);color:#aaa}
+.lx-tree-rel{font:11px Arial,sans-serif;color:#7d7d7d;margin:6px 0 0 4px}
+.lx-tree-cog{margin:6px 0 0 4px;font:400 14px/1.7 var(--lx-text);color:#bbb}.lx-tree-cog small{font:10px Arial,sans-serif;color:#888;text-transform:uppercase;letter-spacing:.06em}
+.lx-tree-desc{margin:6px 0 0 4px;font-size:13px}.lx-tree-desc ul{columns:2 240px;font:400 14px/1.6 var(--lx-text)}
+.lx-person-banner{padding:10px 14px;border:1px solid #555;border-radius:8px;margin:0 0 16px;font-size:14px}.lx-person-banner [lang=grc]{font-size:17px}
+.lx-group-h{font:400 22px Georgia,serif;margin:24px 0 4px;color:#e5e5e5}
+html[data-theme=light] .lx-tree-list,html[data-theme=light] .lx-tree-node::before{border-color:#c9c5b8}
+html[data-theme=light] .lx-tree-head{border-color:#d4d0c4;background:#fff}html[data-theme=light] .lx-tree-leaf .lx-tree-head{background:#f1ede2;border-color:#9a937f}
+html[data-theme=light] .lx-tree-gloss,html[data-theme=light] .lx-tree-cog{color:#4a524e}html[data-theme=light] .lx-group-h{color:#1a2320}
 /* Tema claro (misma convención que Vitruvia) */
 html[data-theme=light]{--bg:#f7f5ef;--ink:#1d2421}
 html[data-theme=light] body{background:#f7f5ef;color:#1d2421}
@@ -228,7 +245,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <a href="#methodus">Método y fuentes</a>
  </nav>
  <div class="navtools">
-  <select id="lx-lang" aria-label="Lengua de búsqueda" title="Lengua de búsqueda"><option value="auto">Auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option></select>
+  <select id="lx-lang" aria-label="Lengua de búsqueda" title="Lengua de búsqueda"><option value="auto">Auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano (etimología)</option><option value="en">Inglés (etimología)</option><option value="fr">Francés (etimología)</option><option value="de">Alemán (etimología)</option></select>
   <button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button>
  </div>
 </header>
@@ -238,7 +255,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <div class="eyebrow">BIBLIOTHECA VITRUVII · LEXICON GRAECO-LATINUM · INSTRUMENTUM PHILOLOGICUM</div>
   <h1>Vitruvia</h1>
   <span class="lx-sub">Lexicon<span>beta 1.0</span></span>
-  <p class="lead">Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables.</p>
+  <p class="lead">Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables. Toda palabra latina, griega, castellana, inglesa, francesa o alemana recibe su árbol etimológico, y los personajes históricos se buscan por su nombre griego y latino.</p>
   <div class="search-wrap">
    <form class="searchform" id="lx-form" autocomplete="off" role="search">
     <span class="icon-search" aria-hidden="true">⌕</span>
@@ -504,5 +521,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v2" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v3" defer></script>
 </body></html>
