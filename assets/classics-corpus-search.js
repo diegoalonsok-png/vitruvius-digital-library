@@ -32,7 +32,9 @@ function valid(e){
   &&(e.format==="html-text"?/^corpus\/[a-z0-9-]+\.html$/.test(e.path||"")
     :e.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path||"")
      ||e.format==="structured-bilingual"&&e.workId==="vitruvius"&&
-      /^data\/structured\/(?:recensio-es|recensio-fr|theory-en)\.json$/.test(e.path||""));
+      /^data\/structured\/(?:recensio-es|recensio-fr|theory-en)\.json$/.test(e.path||"")
+     ||e.format==="historical-ocr-pages"&&e.workId==="krohn-1912-pdf"&&e.language==="la"&&
+      e.path==="data/text/krohn-1912.json");
 }
 async function registry(){
  if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
@@ -73,6 +75,18 @@ function loadStructured(e){
      .map(p=>({locus:p.locus,text:p[field]}))};
  });
 }
+function loadHistoricalOcr(e){
+ // Keep machine OCR separate from editorial Latin. Its locators are PDF pages only.
+ if(!cache.has(e.path))cache.set(e.path,fetch(e.path).then(r=>{
+  if(!r.ok)throw Error("HTTP "+r.status);return r.json();
+ }).then(rows=>Array.isArray(rows)&&rows.length>=200&&rows.every(p=>
+  Number.isInteger(p.page)&&typeof p.text==="string")
+   ?{attribution:"Fritz Krohn (1912) · OCR por página, lectura no cotejada",
+     passages:rows.filter(p=>p.text.trim().length>0).map(p=>({
+       locus:"p. "+p.page,page:p.page,text:p.text
+     }))}:null).catch(()=>null));
+ return cache.get(e.path);
+}
 function loadHtml(e){
  if(!cache.has(e.path))cache.set(e.path,fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.text()}).then(h=>{
   const doc=new DOMParser().parseFromString(h,"text/html");
@@ -104,7 +118,7 @@ async function search(q,{limit=8}={}){
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
-   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):await loadJson(e);
+   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
    if(!d?.passages?.length){failed++;return}loaded++;
    let total=0,units=0,first=null;
    for(const p of d.passages){
@@ -116,14 +130,15 @@ async function search(q,{limit=8}={}){
    if(!first)return;
    let link=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    link+=(link.includes("?")?"&":"?")+"q="+encodeURIComponent(q);
-   if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
+   if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
+   else if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",
     author:(languageName[e.language]||e.language)+" · "+(d.attribution||e.sourceDescription||"Texto alojado").slice(0,180),
-    excerpt:"Locus "+first.passage.locus+": "+snippet(first.passage.text,first.at),
-    meta:"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
-    rating:58+Math.min(30,total),link,source:"Bibliotheca Graeca et Latina · "+e.path,
+    excerpt:(e.format==="historical-ocr-pages"?"Página OCR "+first.passage.page+": ":"Locus "+first.passage.locus+": ")+snippet(first.passage.text,first.at),
+    meta:e.format==="historical-ocr-pages"?"OCR HISTÓRICO · PÁGINA DE PDF · NO TEXTO CRÍTICO NI LOCUS":"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
+    rating:e.format==="historical-ocr-pages"?22+Math.min(10,total):58+Math.min(30,total),link,source:"Bibliotheca Graeca et Latina · "+e.path,
     count:total,units});
   }));
  }
@@ -153,8 +168,8 @@ async function semanticSearch(q,{limit=6}={}){
  for(let offset=0;offset<entries.length;offset+=4){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
-   if(!terms.length)return;
-   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):await loadJson(e);
+   if(!terms.length||e.format==="historical-ocr-pages")return;
+   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
    if(!d?.passages?.length)return;
    let first=null,total=0;
    for(const passage of d.passages){
@@ -169,7 +184,8 @@ async function semanticSearch(q,{limit=6}={}){
    const linkBase=e.reader||(e.format==="html-text"?e.path:
       "classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    let link=linkBase+(linkBase.includes("?")?"&":"?")+"q="+encodeURIComponent(first.term);
-   if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
+   if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
+   else if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    else {
     // HTML text without an editorial anchor: point to a real matching

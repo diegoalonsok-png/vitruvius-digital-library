@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 34,
-    "indexedDistinctWorks": 15,
+    "indexedTextVersions": 35,
+    "indexedDistinctWorks": 16,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -1200,15 +1200,19 @@
       "genre": "Arquitectura · ediciones de Vitruvio",
       "dating": "Edición crítica impresa, 1912",
       "catalogueStatus": "lectura-local-completa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/text/krohn-1912.json"
+      ],
       "localPDF": "documents/krohn-1912.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. La transcripción indexada es OCR por páginas del PDF; NO equivale a texto crítico por loci ni cotejo con V514 u otras ediciones."
     },
     {
       "id": "plautus-amphitruo",

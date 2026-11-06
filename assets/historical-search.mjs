@@ -259,7 +259,9 @@ form.addEventListener('submit',async e=>{
   }
   const nav=document.querySelector('#page-results');
   if(nav){for(const item of pageHits){const b=document.createElement('button');b.type='button';b.textContent='p. '+item.page+' ('+item.hits.length+')';b.addEventListener('click',()=>showPage(item.page,item.text,item.hits));nav.append(b);}}
-  if(pageHits.length){const firstLiteral=pageHits.find(p=>historicMatches(p.text,q,prefix,edition).length>0);const selected=firstLiteral||pageHits[0];showPage(selected.page,selected.text,selected.hits);}
+  if(pageHits.length){const firstLiteral=pageHits.find(p=>historicMatches(p.text,q,prefix,edition).length>0);const requestedPage=Number(new URLSearchParams(location.search).get("page"));
+   const selected=(requestedPage>0?pageHits.find(p=>p.page===requestedPage):null)||firstLiteral||pageHits[0];
+   showPage(selected.page,selected.text,selected.hits);}
   status.textContent=(variants.length?'Consulta multilingüe: '+literal+' coincidencias literales; equivalencias lexicográficas exploradas ('+source.label+'): '+variants.slice(0,8).join(', ')+'. ':'')+(concept?'Equivalencias léxicas latinas de «'+q+'» ('+concept.label+'). Apariciones literales de la consulta: '+literal+'. ':'')+total+' coincidencias '+(concept?'latinas relacionadas':'OCR')+' en '+pages+' páginas de '+cache.length+' indexadas.'+(total>shown?' Mostrando las primeras '+shown+'.':'')+' El OCR puede contener errores: corroborar el facsímil.';
   if(!total){showTypoSuggestions(q,edition);showOcrAlternatives(cache,q);const p=document.createElement('p');p.textContent='No se encontraron coincidencias en el OCR disponible; esto no demuestra ausencia en el impreso.';out.append(p);}
  }catch(err){if(myRequest===requestSerial)status.textContent='No se pudo consultar '+source.label+': '+err.message+'. Comprueba que su índice OCR esté publicado.';}
@@ -282,3 +284,22 @@ document.querySelector('#goto-page')?.addEventListener('submit',async e=>{
   showPage(n,record.text,hits);
  }catch(err){if(note)note.textContent=err.message;}
 });
+
+// Incoming bibliographic search results can open the exact OCR page.
+const historicalParams=new URLSearchParams(location.search);
+const deepEdition=historicalParams.get("ed");
+const deepQuery=historicalParams.get("q");
+const deepPage=Number(historicalParams.get("page"));
+if(deepEdition&&sources[deepEdition]){
+ document.querySelector("#ed").value=deepEdition;
+ source=sources[deepEdition];
+ selectHistoricalEdition();
+}
+if(deepQuery&&deepQuery.length<=180){
+ query.value=deepQuery;
+ form.requestSubmit();
+}else if(Number.isInteger(deepPage)&&deepPage>0&&deepPage<1000&&
+        deepEdition&&sources[deepEdition]){
+ const input=document.querySelector("#pdf-page-number");
+ if(input){input.value=String(deepPage);document.querySelector("#goto-page")?.requestSubmit();}
+}
