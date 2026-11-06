@@ -59,6 +59,11 @@ TRANS = {"vitruvius": "Castellano, francés e inglés (ediciones Kurilo V514, V5
 APPROX = {"pliny-naturalis": " Alineación proporcional (parágrafos de Mayhoff ↔ capítulos de Bostock): orientativa.",
           "apuleius-metamorphoses": " Alineación proporcional dentro del libro: orientativa.",
           "petronius-satyrica": " Alineación por sección.", "homer-iliad": " Alineación por tramo de versos.", "homer-odyssey": " Alineación por tramo de versos."}
+CTXS = ""
+_ctx = ROOT / "data/lexicon/context-la.json"
+if _ctx.exists():
+    _c = json.loads(_ctx.read_text())["stats"]
+    CTXS = f"{_c['resolved'] / max(_c['ambiguous'], 1):.0%} de las formas ambiguas del corpus resueltas".replace("%", " %")
 rows = []
 for l in ("la", "grc"):
     c = json.loads((ROOT / f"data/lexicon/corpus-{l}.json").read_text())
@@ -70,7 +75,7 @@ for l in ("la", "grc"):
             continue
         key = wid + ("@grc" if l == "grc" and wid == "vitruvius" else "")
         cov = PARTIAL.get(key, "Completa (texto conservado en la edición de base).")
-        lem = "CLTK: tabla forma → lema, sin desambiguación por contexto" if l == "la" else "G. Celano: lematización automática con categoría gramatical"
+        lem = (f"CLTK (tabla forma → lema) + desambiguación por contexto con Stanza ({CTXS})" if CTXS else "CLTK: tabla forma → lema, sin desambiguación por contexto") if l == "la" else "G. Celano: lematización automática con categoría gramatical"
         tr = TRANS.get(wid, "Inglés (Perseus DL, CC BY-SA 4.0)." + APPROX.get(wid, " Alineación por locus o capítulo."))
         rows.append(f'<tr><td>{html.escape(w["author"])}, <i>{html.escape(w["title"])}</i></td><td>{"latín" if l == "la" else "griego"}</td>'
                     f'<td>{f"{words[wid]:,}".replace(",", ".")}</td><td>{f"{passages[wid]:,}".replace(",", ".")}</td><td>{html.escape(cov)}</td><td>{html.escape(lem)}</td><td>{html.escape(tr)}</td>'
