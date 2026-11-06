@@ -80,6 +80,19 @@ try{
    assert.equal(check.diagnostics.failed,0,'A registered text failed to load');
   }finally{await p.close()}
  });
+ await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
+  const p=await open('auditoria-textos-clasicos.html');
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#audit-rows tr').length>=221,{timeout:20000});
+   assert.equal(await p.locator('#audit-rows tr').count(),221,'Incomplete catalogue audit');
+   await p.locator('#audit-filter').selectOption('indexed');
+   assert.equal(await p.locator('#audit-rows tr').count(),14,'Indexed classical works should be distinct from language versions');
+   await p.locator('#audit-filter').selectOption('local');
+   assert.equal(await p.locator('#audit-rows tr').count(),20,'Local catalogue entries should remain distinguishable from PDF-only holdings');
+   await p.locator('#audit-query').fill('cicero-officiis');
+   assert.equal(await p.locator('#audit-rows tr').count(),1,'Direct work identifiers must be searchable');
+  }finally{await p.close()}
+ });
  await check('Aristotle Poetics defaults to verified 68-page Greek original',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   try{
