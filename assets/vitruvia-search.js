@@ -1221,12 +1221,19 @@ function setupAutocomplete(){
   if(q.length<2){hide();return}
   const list=node("div","search-suggestions-list");
   const rem=remoteFor===raw?remote:{entities:[],completions:[]};
-  const isPythagoras=/^(?:pitagoras|pythagoras)$/i.test(q);
-  const primaryPythagoras=isPythagoras&&rem.entities.find(e=>/^(?:pitagoras|pythagoras)$/i.test(norm(e.label)));
-  if(isPythagoras&&!primaryPythagoras){
-   list.append(option("is-entity is-local-primary",[node("span","sg-main","Pitágoras"),node("small",null,T3("Filósofo y matemático griego","Greek philosopher and mathematician","Philosophe et mathématicien grec"))],()=>choose("Pitágoras")));
+  // Consult the already loaded, source-attributed ancient onomasticon first.
+  // Homonyms returned by Wikidata follow the historical catalogue identity.
+  const historical=window.VitruviaHistoricalNames?.find(q,S.people)||[];
+  const matchedHistorical=new Set();
+  for(const person of historical.slice(0,3)){
+   matchedHistorical.add(norm(person.name));
+   const translation=window.VitruviaHistoricalNames?.labels(person);
+   const subtitle=[person.period,translation?.latin?"Lat. "+translation.latin:"",translation?.greek?"Gr. "+translation.greek:""].filter(Boolean).join(" · ");
+   const hit=option("is-entity is-historical",[node("span","sg-main",person.name),node("small","sg-historical-names",subtitle)],()=>choose(person.name));
+   hit.addEventListener("pointerenter",()=>previewHistorical(person));list.append(hit);
   }
-  for(const e of [...rem.entities].sort((a,b)=>Number(b===primaryPythagoras)-Number(a===primaryPythagoras))){
+  const remoteEntities=[...rem.entities].filter(e=>!matchedHistorical.has(norm(e.label)));
+  for(const e of remoteEntities){
    const row=option("is-entity",[node("span","sg-main",e.label),node("small",null,e.description)],()=>choose(e.label),e);
    list.append(row);
   }
@@ -1245,7 +1252,28 @@ function setupAutocomplete(){
   // El desplegable se abre justo debajo del campo de búsqueda, como en los buscadores generales.
   const form=$("search-form");if(form&&menu.offsetParent!==null||form){menu.style.top=(form.offsetTop+form.offsetHeight+6)+"px"}
   menu.hidden=false;input.setAttribute("aria-expanded","true");
-  if(rem.entities[0])preview(rem.entities[0]);else menu.classList.remove("has-preview");
+  if(historical[0])previewHistorical(historical[0]);
+  else if(remoteEntities[0])preview(remoteEntities[0]);else menu.classList.remove("has-preview");
+ }
+ // Ancient name forms from the site's onomasticon are historical references,
+ // not alleged readings from codex folios.
+ function previewHistorical(person){
+  const pv=menu.querySelector(".search-preview");if(!pv)return;
+  previewId="historical:"+person.id;menu.classList.add("has-preview");
+  const labels=window.VitruviaHistoricalNames?.labels(person)||{};
+  pv.replaceChildren(node("h3",null,person.name));
+  const forms=node("p","sp-ancient-names");
+  if(labels.latin)forms.append(node("span",null,"Latín: "+labels.latin));
+  if(labels.greek)forms.append(node("span",null,"Griego: "+labels.greek));
+  if(forms.childNodes.length)pv.append(forms);
+  if(person.period)pv.append(node("p","sp-dates",person.period));
+  if(person.summary)pv.append(node("p","sp-extract",person.summary));
+  const action=node("button","sp-more",T3("Ver más ›","See more ›","Voir plus ›"));action.type="button";
+  action.addEventListener("pointerdown",ev=>ev.preventDefault());action.addEventListener("click",()=>choose(person.name));pv.append(action);
+  if(person.source&&/^https:\/\//.test(person.source)){
+   const source=node("a","sp-source",person.sourceLabel||T3("Fuente biográfica","Biographical source","Source biographique"));
+   source.href=person.source;source.target="_blank";source.rel="noopener noreferrer";pv.append(source);
+  }
  }
  // Ficha de vista previa (columna derecha del desplegable): descripción, fechas y resumen enciclopédico.
  async function preview(e){
