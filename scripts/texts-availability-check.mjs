@@ -11,6 +11,12 @@ for(const w of read('data/bibliotheca-graeca-latina-I-bce-I-ce.json').works){con
 for(const w of Object.values(fs.existsSync('data/clasicos-descargas.json')?read('data/clasicos-descargas.json').works:{}))for(const f of [w.pdf,w.docx])if(!fs.existsSync(f))missingPdf.push('edición descargable → '+f);
 const list=[...urls].filter(Boolean),bad=[];let i=0;
 async function worker(){while(i<list.length){const u=list[i++];
+ if(!/^https?:\/\//.test(u)){
+  // Fuente TEI incluida en el repositorio. No es una URL remota:
+  // verificar extensión, ruta local segura y contenido no vacío.
+  if(!/^data\/translations\/[\w./-]+\.xml$/.test(u)||u.includes('..')||!fs.existsSync(u)||fs.statSync(u).size<200)bad.push('ERR local '+u);
+  continue;
+ }
  try{const r=await fetch(u,{method:'HEAD'});if(!r.ok)bad.push(r.status+' '+u)}catch(e){bad.push('ERR '+u)}}}
 await Promise.all(Array.from({length:16},worker));
 console.log(`${list.length} textos comprobados · ${bad.length} no disponibles · ${missingPdf.length} PDF locales ausentes`);

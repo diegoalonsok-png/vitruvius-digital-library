@@ -271,7 +271,12 @@
 "title": "De agricultura",
 "language": "la",
 "original": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0079/stoa001/stoa0079.stoa001.perseus-lat1.xml",
-"translations": [],
+"translations": [
+{"language": "en", "url": "data/translations/cato-de-agricultura-harrison-1918-en-selected.xml", "translator": "Fairfax Harrison", "edition": "1918", "coverage": "partial", "source": "Project Gutenberg eBook 12140", "sourceUrl": "https://www.gutenberg.org/ebooks/12140"}
+],
+"translationCoverage": "partial-selected-chapters",
+"translationAlignment": "exact-only",
+"englishReference": {"url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html", "label": "LacusCurtius · English translation (external, fuller edition)", "status": "external-reference-not-hosted"},
 "bibliotheca": "cato-agri-cultura"
 },
 {
