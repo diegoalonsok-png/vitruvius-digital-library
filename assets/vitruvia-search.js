@@ -476,7 +476,7 @@ async function openAlex(generalQuery){const providerSignal=S.searchController?.s
   const oa=x.open_access?.is_oa?" · acceso abierto":"";
   return {type:"article",title:x.title,author,excerpt:[venue,x.publication_year,x.type].filter(Boolean).join(" · ")+(x.cited_by_count?" · citado "+x.cited_by_count+" veces":"")+oa,
    meta:"OpenAlex · índice académico abierto"+(x.doi?" · DOI":""),rating:24-i+culturalWeight(x.title,venue),
-   link:x.doi||x.open_access?.oa_url||x.id,source:"OpenAlex",year:x.publication_year||null,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
+   link:x.doi||x.open_access?.oa_url||x.id,source:"OpenAlex",year:x.publication_year||null,cited:x.cited_by_count||0,journal:venue,doi:(x.doi||"").replace(/^https:\/\/doi.org\//,""),recordKind:x.type||"article"};
  });
 }
 /* Getty AAT: término normalizado del tesauro de arte y arquitectura (SPARQL público). */
@@ -619,6 +619,7 @@ function renderCard(d){
  const evidenceLabel=window.VitruviaEvidence?.label(d,S.lang)||"fuente enlazada";
  title.append(node("span","kind",(T()[d.type]||kindLabels[d.type]||d.type.toUpperCase())+" · "+evidenceLabel.toUpperCase()),node("h3",null,d.title));head.append(title);card.append(head);
  card.dataset.evidence=documented?.key||"source";
+ card._vitruviaRecord=d;card.dataset.year=d.year||"";card.dataset.cited=d.cited||0;
  if(d.author)card.append(node("div","author",d.author));
  if(d.excerpt)card.append(node("p",null,d.excerpt));
  if(d.type==="passage"&&d.latin&&d.translation){

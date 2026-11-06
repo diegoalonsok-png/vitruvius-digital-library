@@ -308,6 +308,26 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  }
  async function appendSiteBooks(q,token){
   const books=await kuriloBooks(q).catch(()=>[]);if(token!==seq)return;
+  // Capítulos de los libros del autor cuyo título trata lo buscado (en castellano, con su equivalente en inglés).
+  try{
+   const idx=await json('data/kurilo-libros/index.json');const toks=fold(q).split(/[^\p{L}\p{N}]+/u).filter(t=>t.length>=4&&!ES_STOP.has(t)&&!GENERIC.has(t));
+   const found=[];
+   if(toks.length)for(const b of idx.books||[]){const book=await json(b.file);const es=book.editions.es,en=book.editions.en;if(!es)continue;
+    const topEs=es.toc.filter(x=>x[0]===1),topEn=en?en.toc.filter(x=>x[0]===1):[];
+    for(const x of es.toc){if(x[0]>3)continue;const f=fold(x[1]);if(!toks.every(t=>f.includes(t)))continue;
+     let i=0;topEs.forEach((y,k)=>{if(y[2]<=x[2])i=k});
+     found.push({b,title:x[1],page:x[2],lvl:x[0],enPage:topEn[i]?.[2]||null})}}
+   if(token!==seq)return;
+   if(found.length){const box=document.createElement('div');const h=document.createElement('h4');h.textContent='Capítulos de los libros de Diego Kurilo sobre el tema';box.append(h);
+    const list=document.createElement('div');list.className='vtp-loci';box.append(list);
+    for(const c of found.slice(0,8)){const row=document.createElement('article');row.className='vtp-locus';
+     row.innerHTML=`<div class="vtp-ref">${esc(c.b.titles.es)}<small>p. ${c.page}</small></div><div class="vtp-es" style="grid-column:2/-1">${esc(c.title)}</div><div class="vtp-actions"></div>`;
+     const act=row.querySelector('.vtp-actions');
+     const a1=document.createElement('a');a1.href=`${c.b.page}?lang=es&page=${c.page}`;a1.textContent='Leer en castellano ↗';act.append(a1);
+     if(c.enPage){const a2=document.createElement('a');a2.href=`${c.b.page}?lang=en&page=${c.enPage}`;a2.textContent='Read in English (chapter) ↗';act.append(a2)}
+     list.append(row)}
+    panel.append(box);panel.hidden=false}
+  }catch{}
   if(books.length){
    const box=document.createElement('div');const h=document.createElement('h4');h.textContent='Libros de Diego Kurilo · castellano e inglés';box.append(h);
    const grid=document.createElement('div');grid.className='vtp-books';box.append(grid);
