@@ -121,7 +121,7 @@ async function load(language){
  data=corpus;active=0;
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
  $("method-note").textContent=corpus.editorialStatus+". "+corpus.alignment+". Fuente y atribución: "+corpus.attribution;
- $("attribution").textContent=corpus.source+" · "+corpus.license+" · La biblioteca no atribuye traducciones al códice; toda comparación requiere cotejo filológico.";
+ $("attribution").textContent=(corpus.chicago18Bibliography?"Referencia bibliográfica (Chicago, 18.ª ed.): "+corpus.chicago18Bibliography+" · ":"")+corpus.source+" · "+corpus.license+" · La biblioteca no atribuye traducciones al códice; toda comparación requiere cotejo filológico.";
  $("toc-help").textContent=corpus.alignment;
  const u=new URL(location.href);u.searchParams.set("lang",language);history.replaceState(null,"",u);
  renderToc();
