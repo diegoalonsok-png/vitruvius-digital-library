@@ -374,6 +374,8 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  async function renderVernacular(q,passages,token,works){
   panel.innerHTML=`<p class="vtp-kicker">Tema vitruviano · loci y libros del sitio</p><h3>${esc(q)}</h3><p class="vtp-head">El término aparece en la traducción castellana de De architectura (V514). Cada locus se abre en latín con su traducción castellana, francesa o inglesa.</p>`;
   panel.hidden=false;
+  /* Puente al Lexicon: raíz semántica griega y latina, árbol etimológico y frecuencia en los clásicos. */
+  if(!/\s/.test(q.trim())){const lx=document.createElement('div');lx.className='vtp-actions';const a=document.createElement('a');a.href='vitruvia-lexicon.html?q='+encodeURIComponent(q.trim());a.textContent='Vitruvia Lexicon · «'+q.trim()+'» en griego, latín, hebreo y egipcio, su etimología y su frecuencia en los clásicos ↗';lx.append(a);panel.append(lx)}
   panel.append(lociBlock(passages,[q],{title:`En Vitruvio · ${passages.length} loci`,field:'translation',term:q}));
   panel.append(await booksBlock(passages,[q],q));
   if(works?.length)panel.append(worksBlock(works));
