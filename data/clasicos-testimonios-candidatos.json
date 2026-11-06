@@ -1,0 +1,84 @@
+{
+ "schema": "vitruvia-testimonios-candidatos-v1",
+ "note": "Candidatos a testimonio IIIF. scripts/verify-iiif-candidates.py (en GitHub Actions) comprueba que el manifiesto responde, contiene imágenes y que su rótulo incluye la signatura; solo los verificados pasan a data/clasicos-testimonios.json. La identificación del contenido (obra y sigla) procede de la bibliografía ecdótica estándar y debe revisarse.",
+ "witnesses": [
+  {
+   "match": [
+    "tlg1799.tlg001"
+   ],
+   "shelfmark": "Vat. gr. 190",
+   "name": "Codex P de Euclides",
+   "date": "s. IX–X",
+   "library": "Biblioteca Apostolica Vaticana",
+   "manifests": [
+    "https://digi.vatlib.it/iiif/MSS_Vat.gr.190.pt.1/manifest.json",
+    "https://digi.vatlib.it/iiif/MSS_Vat.gr.190/manifest.json"
+   ],
+   "labelMustInclude": "190",
+   "oldest": false,
+   "note": "Testimonio principal del texto preteonino de los Elementos (sigla P); el Bodleianus D'Orville 301 (888) es anterior."
+  },
+  {
+   "match": [
+    "tlg0059.tlg034",
+    "tlg0059.tlg035",
+    "tlg0059.tlg036"
+   ],
+   "shelfmark": "Vat. gr. 1",
+   "name": "Codex O de Platón",
+   "date": "s. IX ex.–X",
+   "library": "Biblioteca Apostolica Vaticana",
+   "manifests": [
+    "https://digi.vatlib.it/iiif/MSS_Vat.gr.1/manifest.json"
+   ],
+   "labelMustInclude": "gr.1",
+   "oldest": false,
+   "note": "Testimonio principal (O) de las Leyes, el Epínomis y las Cartas."
+  },
+  {
+   "match": [
+    "tlg0003.tlg001"
+   ],
+   "shelfmark": "Vat. gr. 126",
+   "name": "Codex B de Tucídides",
+   "date": "s. XI",
+   "library": "Biblioteca Apostolica Vaticana",
+   "manifests": [
+    "https://digi.vatlib.it/iiif/MSS_Vat.gr.126/manifest.json"
+   ],
+   "labelMustInclude": "126",
+   "oldest": false,
+   "note": "Testimonio B; el Laurentianus 69.2 (C, s. X) es anterior y no figura aquí."
+  },
+  {
+   "match": [
+    "phi0448.phi001"
+   ],
+   "shelfmark": "Vat. lat. 3864",
+   "name": "Codex T de César",
+   "date": "s. IX",
+   "library": "Biblioteca Apostolica Vaticana",
+   "manifests": [
+    "https://digi.vatlib.it/iiif/MSS_Vat.lat.3864/manifest.json"
+   ],
+   "labelMustInclude": "3864",
+   "oldest": false,
+   "note": "Testimonio carolingio (T) del Bellum Gallicum; Amsterdam 73 y Paris lat. 5763, también del s. IX, encabezan la tradición."
+  },
+  {
+   "match": [
+    "phi0972.phi001"
+   ],
+   "shelfmark": "Bern, Burgerbibliothek, Cod. 357",
+   "name": "Codex B de Petronio",
+   "date": "s. IX",
+   "library": "Burgerbibliothek Bern (e-codices)",
+   "manifests": [
+    "https://www.e-codices.unifr.ch/metadata/iiif/bbb-0357/manifest.json"
+   ],
+   "labelMustInclude": "357",
+   "oldest": false,
+   "note": "Excerpta de los Satyrica (sigla B), entre los testimonios más antiguos."
+  }
+ ]
+}
