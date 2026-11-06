@@ -1,4 +1,4 @@
-/* Búsqueda de una palabra (griega o latina) dentro de los textos alojados, desde el buscador
+/* Búsqueda de palabras y frases en originales griegos y latinos y traducciones alojadas, desde el buscador
    de la Bibliotheca: lista las obras con coincidencias y abre el lector con la palabra resaltada. */
 (()=>{
 "use strict";
@@ -19,15 +19,16 @@ html[data-theme=dark] .classic-fulltext a{background:#263d50;border-color:#72839
   const q=input.value.trim(),me=++serial;
   if(q.replace(/[^\p{L}]/gu,"").length<3||q.split(/\s+/).length>4){box.replaceChildren();return}
   box.textContent="Buscando «"+q+"» en los textos griegos y latinos del sitio…";
-  const rows=await window.ClassicsCorpusSearch.search(q,{limit:12});if(me!==serial)return;
+  let rows=[];try{rows=await window.ClassicsCorpusSearch.search(q,{limit:24})}catch(err){if(me===serial)box.textContent="No se pudo consultar el índice textual: "+err.message;return}if(me!==serial)return;
+  const coverage=window.ClassicsCorpusSearch.diagnostics?.()||{failed:0,mode:"unknown"};
   box.replaceChildren();
-  if(!rows.length){box.textContent="«"+q+"» no aparece en los textos alojados en el sitio (búsqueda por palabra, sin diacríticos).";return}
+  if(!rows.length){box.textContent=coverage.failed?"Búsqueda incompleta: "+coverage.failed+" fuentes no pudieron cargarse. No se puede descartar que exista el término.":"«"+q+"» no aparece en las versiones textuales que fueron examinadas (búsqueda literal, sin diacríticos).";return}
   const head=document.createElement("p");head.style.margin="0";
-  head.append(document.createTextNode("Palabra en los textos: "),Object.assign(document.createElement("mark"),{textContent:q}),document.createTextNode(" · "+rows.reduce((n,r)=>n+(r.count||0),0)+" coincidencias. Abre una obra para verla resaltada y consultar el diccionario."));
+  head.append(document.createTextNode("Palabra en los textos: "),Object.assign(document.createElement("mark"),{textContent:q}),document.createTextNode(" · "+rows.reduce((n,r)=>n+(r.count||0),0)+" coincidencias en originales y traducciones locales. Abre la edición identificada para ver la frase. "+(coverage.failed?"Aviso: "+coverage.failed+" fuentes no se cargaron; resultados parciales.":"")));
   const ul=document.createElement("ul");
   for(const r of rows){const li=document.createElement("li"),a=document.createElement("a");
-   a.href=r.link.startsWith("corpus/")?r.link:"bibliotheca-graeca-latina.html?work="+encodeURIComponent(r.workId)+"&view=text&term="+encodeURIComponent(q);
-   a.textContent=r.title.replace(/ · (\d+)/," · $1");a.title=r.excerpt;li.append(a);ul.append(li)}
+   a.href=r.link;
+   a.textContent=r.title;a.title=r.excerpt;li.append(a);ul.append(li)}
   box.append(head,ul);
   // Sin obras por título o autor: se retira el aviso vacío del desplegable para dejar visibles los resultados del texto.
   const list=document.getElementById("classic-search-suggestions");
