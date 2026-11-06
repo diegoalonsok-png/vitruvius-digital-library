@@ -3,17 +3,18 @@
    - Datos JSON: copia de hasta cinco minutos, con revalidación en segundo plano.
      Los parámetros de versión forman parte de la clave; un índice nuevo no sustituye
      otro de distinta versión. Tras cinco minutos se espera a la red.
+   - Datos del Lexicon con huella (?v=): caché primero (inmutables hasta que cambia la huella).
    - JS/CSS versionados (?v=): caché primero. Imágenes y PDF: caché primero con límite.
    - Recursos de otros dominios: no se interceptan. */
-const VERSION="vdl-20261105-mobile-install-front-4";
-const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
+const VERSION="vdl-20261106-lexdata-1";
+const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,LEXDATA="lexdata-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
 const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html",
  "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
 const MEDIA_LIMIT=400;
 self.addEventListener("install",e=>{e.waitUntil(caches.open(SHELL).then(c=>Promise.allSettled(CORE.map(u=>c.add(new Request(u,{cache:"reload"}))))).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil((async()=>{
- const keep=new Set([SHELL,PAGES,DATA,STATIC,MEDIA]);
- for(const k of await caches.keys())if(/^(shell|pages|data|static|media)-vdl-/.test(k)&&!keep.has(k))await caches.delete(k);
+ const keep=new Set([SHELL,PAGES,DATA,LEXDATA,STATIC,MEDIA]);
+ for(const k of await caches.keys())if(/^(shell|pages|data|lexdata|static|media)-vdl-/.test(k)&&!keep.has(k))await caches.delete(k);
  await self.clients.claim();
 })())});
 async function trim(name,max){const c=await caches.open(name);const keys=await c.keys();for(let i=0;i<keys.length-max;i++)await c.delete(keys[i])}
@@ -80,6 +81,8 @@ self.addEventListener("fetch",e=>{
  if(req.headers.has("range"))return; // lectura parcial de PDF: la gestiona el navegador
  if(req.mode==="navigate"||req.destination==="document"||/\.html$/i.test(url.pathname)){e.respondWith(pageResponse(e));return}
  const p=url.pathname;
+ // Datos del Lexicon con huella de versión (?v=): inmutables, se sirven desde la caché del dispositivo.
+ if(/\/data\/lexicon\/[^/]+\.json$/i.test(p)&&url.searchParams.has("v")){e.respondWith(cacheFirst(req,LEXDATA,30));return}
  if(/\.json$/i.test(p)){e.respondWith(dataResponse(e));return}
  if(/\.(?:js|mjs|css|svg|woff2?|webmanifest)$/i.test(p)){e.respondWith(url.search?cacheFirst(req,STATIC):networkFirst(req,STATIC));return}
  if(/\.(?:png|jpe?g|webp|gif|pdf)$/i.test(p)){e.respondWith(cacheFirst(req,MEDIA,MEDIA_LIMIT));return}

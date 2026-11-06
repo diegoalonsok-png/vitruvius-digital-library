@@ -2,7 +2,7 @@
 """Inserta en vitruvia-lexicon.html el contenido estático rastreable:
 índice de voces del Etymologicum, JSON-LD DefinedTermSet / DefinedTerm y cifras del corpus.
 Idempotente: reemplaza lo que haya entre los marcadores <!--X--> … <!--/X-->."""
-import html, json, re, unicodedata
+import hashlib, html, json, re, unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,3 +56,15 @@ for name, content in (("ETYM-INDEX", index), ("ETYM-LD", ld_html), ("METRICS", m
     s = pat.sub(lambda m: f"<!--{name}-->{content}<!--/{name}-->", s, count=1)
 PAGE.write_text(s)
 print(stats)
+
+# Huella de versión de los datos: el navegador y el service worker guardan los JSON versionados
+# sin volver a descargarlos hasta que cambie el contenido.
+h = hashlib.sha1()
+for name in sorted((ROOT / "data/lexicon").glob("*.json")):
+    h.update(name.name.encode()); h.update(name.read_bytes())
+ver = h.hexdigest()[:12]
+page = PAGE.read_text()
+meta = f'<meta name="lx-data-version" content="{ver}">'
+page = re.sub(r'<meta name="lx-data-version" content="[^"]*">', meta, page) if 'name="lx-data-version"' in page else page.replace("</head>", meta + "\n</head>", 1)
+PAGE.write_text(page)
+print("versión de datos", ver)
