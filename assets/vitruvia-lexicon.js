@@ -63,8 +63,8 @@ async function lang(l,silent=false){
 }
 function transIndex(D){if(!D._trans){D._trans=new Map();for(const k of D.keys){const t=transKeyFromGreek(k);let a=D._trans.get(t);if(!a){a=[];D._trans.set(t,a)}a.push(k)}}return D._trans}
 function variantIndex(D){if(!D._variant){D._variant=new Map();for(const k of D.keys){const v=variantKey(k,D.l);let a=D._variant.get(v);if(!a){a=[];D._variant.set(v,a)}a.push(k)}}return D._variant}
-function analyses(D,k){return D.forms.forms[k]||[]}
-function lemmaInfo(D,lem){return D.forms.lemmas[lem]||{}}
+function analyses(D,k){const a=Object.hasOwn(D.forms.forms,k)?D.forms.forms[k]:null;return Array.isArray(a)?a:[]}
+function lemmaInfo(D,lem){return Object.hasOwn(D.forms.lemmas,lem)?D.forms.lemmas[lem]:{}}
 function lemmaDisplay(lem){return String(lem).replace(/\d+$/,"")}
 
 /* ---------- Morfología (etiquetas AGDT / Perseus del griego) ---------- */
@@ -187,6 +187,7 @@ const MODES={
  sintaxis:{label:"Sintaxis",help:"Patrones morfosintácticos (griego, con análisis automático): [mood=ptc case=gen] [case=gen] · @λέγω [mood=inf]. En latín: combinación de lemas y formas con distancia (@facio ..2 @opus). Incluye colocaciones."},
  paralelos:{label:"Paralelos",help:"Loci paralleli: pega una frase y Lexicon busca los pasajes que comparten más lemas significativos, ponderados por su rareza (IDF)."},
  analizar:{label:"Analizar frase",help:"Análisis palabra por palabra: lema, morfología, glosa y frecuencia en el corpus; vista interlineal y exportación TEI."},
+ grupo:{label:"Grupo de palabras",help:"Varias palabras a la vez, en cualquier lengua (latín, griego, castellano, inglés, francés, alemán): masonry mason constructor · faber structor τέκτων · columna capitel. Cada término se resuelve a sus lemas antiguos; el resultado da una tabla por término y una concordancia conjunta. +palabra: obligatoria en el pasaje; -palabra: excluida."},
  sententiae:{label:"Sententiae",help:"Fraseario del mundo antiguo: sentencias célebres con referencia canónica, traducción, notas sintácticas y verificación en el corpus local."}
 };
 
@@ -221,6 +222,18 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Cita reconocida":["Citation recognised","Citation reconnue"],"El locus comprende":["The locus comprises","Le locus comprend"],"Mostrarlos todos":["Show them all","Les afficher tous"],
+ "corregido":["corrected","corrigé"],
+ "Grupo de palabras":["Word group","Groupe de mots"],"glosario":["glossary","glossaire"],"forma latina":["Latin form","forme latine"],"transliteración":["transliteration","translittération"],"Resolviendo el grupo de palabras…":["Resolving the word group…","Résolution du groupe de mots…"],
+ "Término":["Term","Terme"],"Resolución":["Resolved via","Résolution"],"Lengua":["Language","Langue"],"Lema":["Lemma","Lemme"],"Pasajes":["Passages","Passages"],"Obras principales":["Main works","Œuvres principales"],"Concordancia conjunta":["Combined concordance","Concordance conjointe"],
+ "Cada término se busca por lema (todas sus formas) en el corpus latino y griego; la concordancia conjunta reúne los pasajes donde aparece cualquiera de ellos.":["Each term is searched by lemma (all its forms) in the Latin and Greek corpora; the combined concordance gathers the passages where any of them occurs.","Chaque terme est cherché par lemme (toutes ses formes) dans les corpus latin et grec ; la concordance conjointe réunit les passages où l'un d'eux apparaît."],
+ "Sin equivalente antiguo registrado ni forma atestiguada en el corpus. Pruebe con un sinónimo o con la palabra latina o griega.":["No ancient equivalent recorded and no attested form in the corpus. Try a synonym or the Latin or Greek word.","Aucun équivalent ancien enregistré ni forme attestée dans le corpus. Essayez un synonyme ou le mot latin ou grec."],
+ "Ningún término del grupo tiene pasajes en el corpus local.":["No term of the group has passages in the local corpus.","Aucun terme du groupe n'a de passages dans le corpus local."],
+ "Lema ambiguo":["Ambiguous lemma","Lemme ambigu"],"Lema verificado":["Verified lemma","Lemme vérifié"],"con lema ambiguo":["with ambiguous lemma","avec lemme ambigu"],
+ "Lema verificado a mano en este pasaje":["Lemma verified by hand in this passage","Lemme vérifié à la main dans ce passage"],"La forma admite más de un lema; la tabla automática no decide por el contexto. Verifíquese en el pasaje.":["The form admits more than one lemma; the automatic table does not decide by context. Check it in the passage.","La forme admet plus d'un lemme ; la table automatique ne tranche pas selon le contexte. À vérifier dans le passage."],
+ "Pasajes cuya forma hallada admite varios lemas en la tabla automática":["Passages whose matched form admits several lemmas in the automatic table","Passages dont la forme trouvée admet plusieurs lemmes dans la table automatique"],
+ "Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0)":["English translation · Perseus Digital Library (CC BY-SA 4.0)","Traduction anglaise · Perseus Digital Library (CC BY-SA 4.0)"],
+ "alineación exacta por locus":["exact alignment by locus","alignement exact par locus"],"alineación por número de verso":["alignment by line number","alignement par numéro de vers"],"alineación por tramo de versos (aproximada)":["alignment by block of lines (approximate)","alignement par bloc de vers (approximatif)"],"alineación por capítulo (aproximada)":["alignment by chapter (approximate)","alignement par chapitre (approximatif)"],"alineación proporcional dentro del libro (orientativa)":["proportional alignment within the book (indicative only)","alignement proportionnel dans le livre (indicatif)"],
  "Resto del corpus":["Rest of the corpus","Reste du corpus"],"Elija dos obras distintas.":["Choose two different works.","Choisissez deux œuvres différentes."],"palabras":["words","mots"],"Sobrerrepresentadas en":["Overrepresented in","Surreprésentées dans"],
  "Entre paréntesis, frecuencia por 10 000 palabras. G² de Dunning: * p < 0,05 · ** p < 0,01 · *** p < 0,001 · **** p < 0,0001. log₂ ratio: tamaño del efecto (1 = el doble).":["In brackets, frequency per 10,000 words. Dunning's G²: * p < 0.05 · ** p < 0.01 · *** p < 0.001 · **** p < 0.0001. log₂ ratio: effect size (1 = twice as frequent).","Entre parenthèses, fréquence pour 10 000 mots. G² de Dunning : * p < 0,05 · ** p < 0,01 · *** p < 0,001 · **** p < 0,0001. log₂ ratio : taille de l'effet (1 = deux fois plus fréquent)."],
  "Comparatio: palabras clave de una obra":["Comparatio: keywords of a work","Comparatio : mots-clés d'une œuvre"],"Comparar":["Compare","Comparer"],
@@ -242,7 +255,7 @@ const I18N={
 "Constructor de consultas · morfología y sintaxis sin escribir códigos":["Query builder · morphology and syntax without codes","Constructeur de requêtes · morphologie et syntaxe sans codes"],
 "Fondo":["Background","Fond"],"Lengua: auto":["Language: auto","Langue : auto"],"Latín":["Latin","Latin"],"Griego":["Greek","Grec"],"Hebreo":["Hebrew","Hébreu"],"Castellano (etimología)":["Spanish (etymology)","Espagnol (étymologie)"],"Inglés (etimología)":["English (etymology)","Anglais (étymologie)"],"Francés (etimología)":["French (etymology)","Français (étymologie)"],"Alemán (etimología)":["German (etymology)","Allemand (étymologie)"]
 };
-const MODE_I18N={palabra:["Word entry: lemma, morphology, senses, etymology, attested forms, distribution by author and concordance. Accepts inflected forms, transliteration (anthropos → ἄνθρωπος), wildcards (aedi*) and approximation (~simetria).","Fiche lexicale : lemme, morphologie, sens, étymologie, formes attestées, distribution par auteur et concordance. Accepte formes fléchies, translittération (anthropos → ἄνθρωπος), jokers (aedi*) et approximation (~simetria)."],lema:["All inflected forms of a lemma: @domus, @λόγος.","Toutes les formes fléchies d'un lemme : @domus, @λόγος."],etimologia:["Etymology and etymological tree; PIE roots, Old Latin, Greek, Hebrew and loanwords.","Étymologie et arbre étymologique ; racines indo-européennes, latin archaïque, grec, hébreu et emprunts."],frase:["Exact phrases and formulas: \"firmitatis utilitatis venustatis\". A ..3 B (B up to three words after A); A NEAR/5 B (any order).","Phrases et formules exactes : « firmitatis utilitatis venustatis ». A ..3 B ; A NEAR/5 B (ordre libre)."],sintaxis:["Morphosyntactic patterns (Greek, automatic analysis): [mood=ptc case=gen] [case=gen]. Latin: lemmas and forms with distance (@facio ..2 @opus).","Motifs morphosyntaxiques (grec, analyse automatique) : [mood=ptc case=gen] [case=gen]. Latin : lemmes et formes avec distance (@facio ..2 @opus)."],paralelos:["Loci paralleli: passages sharing the most significant lemmas, weighted by rarity (TF-IDF).","Loci paralleli : passages partageant le plus de lemmes significatifs, pondérés par leur rareté (TF-IDF)."],analizar:["Word-by-word analysis: lemma, morphology, gloss and corpus frequency; interlinear view and TEI export.","Analyse mot à mot : lemme, morphologie, glose et fréquence ; vue interlinéaire et export TEI."],sententiae:["Ancient phrasebook: famous sentences with canonical reference, translation, syntax notes and corpus verification.","Recueil antique : sentences célèbres avec référence canonique, traduction, notes syntaxiques et vérification dans le corpus."]};
+const MODE_I18N={grupo:["Several words at once, in any language (Latin, Greek, Spanish, English, French, German): masonry mason builder · faber structor τέκτων. Each term is resolved to its ancient lemmas; you get a table per term and a combined concordance. +word: required in the passage; -word: excluded.","Plusieurs mots à la fois, dans n'importe quelle langue (latin, grec, espagnol, anglais, français, allemand) : maçon bâtisseur · faber structor τέκτων. Chaque terme est ramené à ses lemmes anciens ; on obtient un tableau par terme et une concordance conjointe. +mot : obligatoire ; -mot : exclu."],palabra:["Word entry: lemma, morphology, senses, etymology, attested forms, distribution by author and concordance. Accepts inflected forms, transliteration (anthropos → ἄνθρωπος), wildcards (aedi*) and approximation (~simetria).","Fiche lexicale : lemme, morphologie, sens, étymologie, formes attestées, distribution par auteur et concordance. Accepte formes fléchies, translittération (anthropos → ἄνθρωπος), jokers (aedi*) et approximation (~simetria)."],lema:["All inflected forms of a lemma: @domus, @λόγος.","Toutes les formes fléchies d'un lemme : @domus, @λόγος."],etimologia:["Etymology and etymological tree; PIE roots, Old Latin, Greek, Hebrew and loanwords.","Étymologie et arbre étymologique ; racines indo-européennes, latin archaïque, grec, hébreu et emprunts."],frase:["Exact phrases and formulas: \"firmitatis utilitatis venustatis\". A ..3 B (B up to three words after A); A NEAR/5 B (any order).","Phrases et formules exactes : « firmitatis utilitatis venustatis ». A ..3 B ; A NEAR/5 B (ordre libre)."],sintaxis:["Morphosyntactic patterns (Greek, automatic analysis): [mood=ptc case=gen] [case=gen]. Latin: lemmas and forms with distance (@facio ..2 @opus).","Motifs morphosyntaxiques (grec, analyse automatique) : [mood=ptc case=gen] [case=gen]. Latin : lemmes et formes avec distance (@facio ..2 @opus)."],paralelos:["Loci paralleli: passages sharing the most significant lemmas, weighted by rarity (TF-IDF).","Loci paralleli : passages partageant le plus de lemmes significatifs, pondérés par leur rareté (TF-IDF)."],analizar:["Word-by-word analysis: lemma, morphology, gloss and corpus frequency; interlinear view and TEI export.","Analyse mot à mot : lemme, morphologie, glose et fréquence ; vue interlinéaire et export TEI."],sententiae:["Ancient phrasebook: famous sentences with canonical reference, translation, syntax notes and corpus verification.","Recueil antique : sentences célèbres avec référence canonique, traduction, notes syntaxiques et vérification dans le corpus."]};
 function T(es){const i=S.ui==="en"?0:S.ui==="fr"?1:-1;return i<0?es:(I18N[es]?.[i]??es)}
 function applyUI(){
  for(const e of document.querySelectorAll("[data-i18n]")){if(!e.dataset.es)e.dataset.es=e.textContent.trim();e.textContent=T(e.dataset.es)}
@@ -259,6 +272,9 @@ async function run(push=true){
  if(push){const u=new URL(location.href);u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
  try{
+  if(["palabra","frase","grupo","lema"].includes(S.mode)&&!/["\[@*?~#=√]/.test(q)){const c=parseCitation(q);if(c)return openCitation(c,q)}
+  if(S.mode==="grupo"||(S.mode==="palabra"&&/,/.test(q)&&!/["\[@*?~#=:√]/.test(q)))return renderGroupSearch(q);
+  if(S.mode==="palabra"&&S.lang==="auto"&&/^[\p{L}' -]+$/u.test(q)&&q.split(/\s+/).length>=2&&!GREEK.test(q)&&!HEBREW.test(q)){const ws=q.split(/\s+/);const cs=await Promise.all(ws.map(findConcept));if(cs.filter(Boolean).length>=1&&ws.some((w,i)=>cs[i]&&Object.values(cs[i].modern).flat().some(m=>fold(m)===fold(w))))return renderGroupSearch(q)}
   if(/^(=|sem:)/i.test(q))return renderSemantic(q.replace(/^(=|sem:)\s*/i,""));
   if(/^#/.test(q))return renderTheme(q.slice(1));
   if(/^(pie|ie|ide):/i.test(q))return renderPIE(q.replace(/^[^:]+:\s*/,""));
@@ -306,6 +322,7 @@ if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consu
  if(ord==="chrono")hits.sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i);
  S.sorted=hits;
  renderDistribution(D,hits);
+ {const amb=ambiguityCount(D,hits);if(amb)$("#lx-state").append(" ",el("span",{class:"lx-small",title:T("Pasajes cuya forma hallada admite varios lemas en la tabla automática")},`· ${amb.toLocaleString("es")} ${T("con lema ambiguo")} (${Math.round(amb/Math.min(hits.length,3000)*100)} %)`))}
  list.append(readingToolbar());
  const page=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);
  for(const h of page)list.append(hitCard(D,h));
@@ -323,6 +340,7 @@ function hitCard(D,h){
  const card=el("article",{class:"result-card lx-hit"},
   el("div",{class:"result-head"},el("div",{},el("div",{class:"kind"},`${w.author} · ${DATING[p[0]]||""}`),el("h3",{},el("i",{},w.title)," ",el("span",{class:"lx-cite"},cite))),el("span",{class:"meta-line"},D.l==="grc"?"griego":"latín")),
   snippet,full);
+ {const amb=ambiguity(D,text,h.spans,p);if(amb)card.append(amb)}
  const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.append(trBox);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
  const also=alsoIn(D,p);if(also)card.append(also);
  const actions=el("div",{class:"actions"});
@@ -690,6 +708,7 @@ async function renderConcept(word){
 async function openLocus(workId,locus,q){
  const l=["herodotus-histories","euclid-elements","homer-iliad","homer-odyssey","plato-apology","aristotle-poetics","theophrastus-characters","epictetus-enchiridion"].includes(workId)?"grc":"la";
  const D=await lang(l,true);let i=D.corpus.passages.findIndex(p=>p[0]===workId&&p[1]===locus);
+ if(i<0)i=D.corpus.passages.findIndex(p=>p[0]===workId&&String(p[1]).startsWith(locus+"."));
  if(i<0){const [b,v]=locus.split(".");i=D.corpus.passages.findIndex((p,j)=>{if(p[0]!==workId)return false;const nx=D.corpus.passages[j+1];return p[1].split(".")[0]===b&&+p[1].split(".").pop()<=+v&&(!nx||nx[0]!==workId||nx[1].split(".")[0]!==b||+nx[1].split(".").pop()>+v)})}
  if(i<0){setState(`No se encontró el locus ${locus} en el corpus local.`);return}
  const p=D.corpus.passages[i];const spans=[];if(q){const ks=new Set(fold(q).split(/\s+/));for(const m of p[2].matchAll(TOKEN))if(ks.has(fold(m[0])))spans.push([m.index,m.index+m[0].length])}
@@ -800,6 +819,88 @@ async function openViewer(D,p,spans,q){
 }
 
 
+
+
+/* ---------- Citas en lenguaje natural ----------
+   «libro I, ii de Vitruvio», «vitruvius pref I, II», «Vitr. 3.1.2», «Ilíada canto 6 verso 146»,
+   «Heródoto II 35», «Plinio 36 95»: se reconoce la obra (nombre en castellano, latín, inglés o
+   abreviatura canónica, con tolerancia a errores) y los números (arábigos o romanos). */
+const CITE_WORKS=[["vitruvius",/^(vitruvi[oou]s?|vitr|vitrubio|vitrubius|de ?architectura|architectura)$/],["homer-iliad",/^(iliad[ae]?|il|hom ?il|homero|homer|homerus)$/],["homer-odyssey",/^(odisea|odyssey|odyssea|od|hom ?od)$/],["herodotus-histories",/^(herodoto|herodotus|hdt|herod|historias|histories)$/],["euclid-elements",/^(euclides|euclid|euc|elementos|elements|elementa)$/],["columella-rustica",/^(columela|columella|col)$/],["pliny-naturalis",/^(plinio|pliny|plinius|plin|naturalis|nat)$/],["cato-agricultura",/^(caton|cato|agr)$/],["varro-rustica",/^(varron|varro)$/],["frontinus-aquaeductu",/^(frontino|frontinus|frontin|aq|aquaeductu)$/],["cicero-officiis",/^(ciceron|cicero|cic|officiis|off)$/],["caesar-gallico",/^(cesar|caesar|caes|gal|gallico)$/],["lucretius",/^(lucrecio|lucretius|lucr)$/],["catullus-carmina",/^(catulo|catullus|catull)$/],["virgil-aeneid",/^(eneida|aeneid|aeneis|aen|virgilio|vergilio|virgil|vergil|verg)$/],["virgil-georgica",/^(georgicas|georgics|georgica)$/],["petronius-satyrica",/^(petronio|petronius|petr|satyricon|satyrica)$/],["apuleius-metamorphoses",/^(apuleyo|apuleius|apul|metamorfosis|metamorphoses|met)$/],["plato-apology",/^(platon|plato|apologia|apology|ap)$/],["aristotle-poetics",/^(aristoteles|aristotle|arist|poetica|poetics|po)$/],["epictetus-enchiridion",/^(epicteto|epictetus|epict|enchiridion|ench|manual)$/],["theophrastus-characters",/^(teofrasto|theophrastus|thphr|caracteres|characters|char)$/]];
+const ROM={i:1,v:5,x:10,l:50,c:100};
+function romanVal(t){if(!/^[ivxlc]{1,7}$/.test(t))return null;let n=0;for(let k=0;k<t.length;k++){const v=ROM[t[k]],w=ROM[t[k+1]]||0;n+=v<w?-v:v}return n>0&&n<400?n:null}
+function parseCitation(q){
+ const toks=String(q).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[.,;:()«»"'·\-–]/g," ").split(/\s+/).filter(Boolean);if(toks.length<2)return null;
+ let wid=null,praef=false;const nums=[];const late={"virgil-georgica":1};
+ for(let k=0;k<toks.length;k++){const t=toks[k],t2=k+1<toks.length?t+" "+toks[k+1]:null;
+  const hit=CITE_WORKS.find(([,re])=>re.test(t)||(t2&&re.test(t2)));
+  if(hit&&(!wid||late[hit[0]]||(wid==="homer-iliad"&&hit[0]==="homer-odyssey")||(wid==="virgil-aeneid"&&hit[0]==="virgil-georgica"))){wid=hit[0];if(t2&&hit[1].test(t2)&&!hit[1].test(t))k++;continue}
+  if(/^(pr|pref|praef|praefatio|prefacio|proemio|prooemium|prologo|prologus|preface|proem)$/.test(t)){praef=true;continue}
+  if(/^\d+[a-e]?$/.test(t)){nums.push(t);continue}
+  const r=romanVal(t);if(r){nums.push(String(r));continue}
+ }
+ if(!wid||(!nums.length&&!praef))return null;
+ let locus;
+ if(praef)locus=wid==="vitruvius"?[nums[0]||"1","praef",...nums.slice(1)].join("."):["praef",...nums].join(".");
+ else locus=nums.join(".");
+ return{wid,locus};
+}
+async function openCitation(c,q){
+ const l=["herodotus-histories","euclid-elements","homer-iliad","homer-odyssey","plato-apology","aristotle-poetics","theophrastus-characters","epictetus-enchiridion"].includes(c.wid)?"grc":"la";
+ const D=await lang(l,true);S.D=D;fillWorks(D);const w=work(D,c.wid);
+ setState(`${T("Cita reconocida")}: «${q}» → ${w.cite||w.author} ${c.locus} (${w.author}, ${w.title}).`);
+ await openLocus(c.wid,c.locus,"");
+ const n=D.corpus.passages.filter(p=>p[0]===c.wid&&(p[1]===c.locus||String(p[1]).startsWith(c.locus+"."))).length;
+ if(n>1){const more=el("p",{class:"lx-small"},`${T("El locus comprende")} ${n} ${T("pasajes")}. `,el("button",{type:"button",class:"lx-btn",onclick:()=>{const list=$("#lx-results");list.replaceChildren();const hs=[];D.corpus.passages.forEach((p,i)=>{if(p[0]===c.wid&&(p[1]===c.locus||String(p[1]).startsWith(c.locus+".")))hs.push({i,spans:[[0,0]]})});S.allHits=hs;renderHits(D,{hits:hs})}},T("Mostrarlos todos")));$("#lx-results").prepend(more)}
+}
+/* ---------- Búsqueda por grupos de palabras ----------
+   Cada palabra (moderna o antigua) se resuelve a lemas latinos y griegos: por el glosario de
+   conceptos (data/lexicon/conceptus.json), por su presencia en el corpus o por transliteración.
+   +palabra = obligatoria en el pasaje; -palabra = excluida. */
+/* Tolerancia a errores de tipeo y a grafías vulgares: concepto más próximo por distancia de edición
+   (≤1 en palabras cortas, ≤2 en largas) y, en latín, la forma atestiguada más próxima. */
+async function findConceptFuzzy(w){
+ const C=await conceptus();const k=fold(w).replace(/[^a-z\u0370-\u03ff\u1f00-\u1fff]/g,"");if(k.length<4)return null;const tol=k.length>6?2:1;let best=null;
+ for(const c of C)for(const m of [...Object.values(c.modern).flat(),...c.la,...c.grc]){const f=fold(m);if(Math.abs(f.length-k.length)>tol)continue;const d=lev(k,f,tol);if(d<=tol&&(!best||d<best.d))best={c,d,m}}
+ return best;
+}
+function nearestForm(D,w){const k=fold(w);if(k.length<4)return null;const tol=k.length>6?2:1;let best=null;for(const x of D.keys){if(x[0]!==k[0]||Math.abs(x.length-k.length)>tol)continue;const d=lev(k,x,tol);if(d<=tol&&(!best||d<best.d||(d===best.d&&(D.freq.get(x)||0)>(D.freq.get(best.x)||0))))best={x,d}}return best?.x||null}
+async function resolveGroupWord(w){
+ const out={w,la:new Set(),grc:new Set(),via:[]};let c=await findConcept(w);
+ if(!c&&!GREEK.test(w)){const La0=await lang("la",true);const k0=fold(w);if(!La0.post.has(k0)&&!analyses(La0,k0).length){const f=await findConceptFuzzy(w);if(f){c=f.c;out.via.push(`${T("corregido")}: ${w} → ${f.m}`)}}}
+ if(c){c.la.forEach(x=>out.la.add(x));c.grc.forEach(x=>out.grc.add(x));out.via.push(T("glosario")+": "+(c.modern.es?.[0]||c.id))}
+ if(GREEK.test(w))out.grc.add(w);
+ else{const La=await lang("la",true);const k=fold(w);if(La.post.has(k)||analyses(La,k).length){out.la.add(w);out.via.push(T("forma latina"))}
+  else if(!c){const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(w));if(g?.length){out.grc.add(g[0]);out.via.push(T("transliteración"))}
+   else{const nf=nearestForm(La,w);if(nf){out.la.add(nf);out.via.push(`${T("corregido")}: ${w} → ${nf}`)}}}}
+ return out;
+}
+async function renderGroupSearch(q){
+ const raw=q.split(/[,;|\s]+/).map(x=>x.trim()).filter(Boolean);if(!raw.length)return;
+ const items=raw.map(x=>({sign:x[0]==="+"?"+":x[0]==="-"?"-":"",w:x.replace(/^[+-]/,"")})).filter(x=>x.w);
+ setState(T("Resolviendo el grupo de palabras…"));
+ const R=await Promise.all(items.map(async it=>({...it,...await resolveGroupWord(it.w)})));
+ const box=$("#lx-entry");box.hidden=false;
+ box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · GRUPO DE PALABRAS"),el("h2",{},items.map(x=>x.sign+x.w).join(" · ")),el("p",{class:"article-byline"},T("Cada término se busca por lema (todas sus formas) en el corpus latino y griego; la concordancia conjunta reúne los pasajes donde aparece cualquiera de ellos."))));
+ const table=el("table",{class:"lx-table"},el("thead",{},el("tr",{},...[T("Término"),T("Resolución"),T("Lengua"),T("Lema"),T("Pasajes"),T("Obras principales")].map(h=>el("th",{},h)))));const tb=el("tbody",{});table.append(tb);box.append(table);
+ const per={la:new Map(),grc:new Map()};const req={la:[],grc:[]},exc={la:[],grc:[]};const rows=new Map();
+ for(const r of R){let any=false;
+  for(const l of ["la","grc"]){const terms=[...r[l]];if(!terms.length)continue;const D=await lang(l,true);
+   for(const t of terms){const rk=l+"\u0000"+t+"\u0000"+r.sign;if(rows.has(rk)){const td=rows.get(rk);td.append(" · "+r.sign+r.w);any=true;continue}
+    const parsed=parseQuery(GREEK.test(t)||l==="la"?t:t,"palabra");if(parsed.steps.length===1&&parsed.steps[0].term.type==="form")parsed.steps[0].term={type:"lemma",v:t,fallback:true};
+    let res=execute(D,parsed,{lemmatize:true,variants:true,work:S.work,defaultGap:6});if(!res.hits.length)res=execute(D,parseQuery(t,"palabra"),{lemmatize:true,variants:true,work:S.work,defaultGap:6});
+    const set=new Set(res.hits.map(h=>h.i));if(r.sign==="+")req[l].push(set);if(r.sign==="-"){exc[l].push(set);continue}
+    for(const h of res.hits)if(!per[l].has(h.i))per[l].set(h.i,h);
+    const by={};for(const h of res.hits){const id=D.corpus.passages[h.i][0];by[id]=(by[id]||0)+1}
+    const top=Object.entries(by).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([id,n])=>`${work(D,id).cite||work(D,id).author} ${n}`).join(" · ");any=true;
+    const tdW=el("td",{},r.sign+r.w);rows.set(rk,tdW);
+    tb.append(el("tr",{},tdW,el("td",{class:"lx-small"},r.via.join(" · ")||"—"),el("td",{},l==="la"?"latín":"griego"),el("td",{},el("button",{type:"button",class:"lx-formlink",lang:l,onclick:()=>{$("#lx-q").value=t;S.lang=l;$("#lx-lang").value=l;S.mode="palabra";renderTabs();run()}},t)),el("td",{},String(set.size)),el("td",{class:"lx-small"},top||"—")))}}
+  if(!any)tb.append(el("tr",{},el("td",{},r.sign+r.w),el("td",{class:"lx-small",colspan:"5"},T("Sin equivalente antiguo registrado ni forma atestiguada en el corpus. Pruebe con un sinónimo o con la palabra latina o griega."))))}
+ const filt=l=>{let hs=[...per[l].values()];for(const s of req[l])hs=hs.filter(h=>s.has(h.i));for(const s of exc[l])hs=hs.filter(h=>!s.has(h.i));return hs.sort((a,b)=>a.i-b.i)};
+ const la=filt("la"),gr=filt("grc");
+ const show=async l=>{const D=await lang(l,true);S.D=D;fillWorks(D);const hs=l==="la"?la:gr;S.allHits=hs;S.result={hits:hs,parsed:{steps:[]}};$("#lx-results").replaceChildren();$("#lx-side-extra").replaceChildren();renderHits(D,{hits:hs});const sw=el("p",{class:"lx-small"},T("Concordancia conjunta")+": ",el("button",{type:"button",class:"lx-btn","aria-pressed":String(l==="la"),onclick:()=>show("la")},`latín (${la.length})`)," ",el("button",{type:"button",class:"lx-btn","aria-pressed":String(l==="grc"),onclick:()=>show("grc")},`griego (${gr.length})`));$("#lx-results").prepend(sw)};
+ if(!la.length&&!gr.length){setState(T("Ningún término del grupo tiene pasajes en el corpus local."));return}
+ await show(la.length>=gr.length?"la":"grc");
+}
 /* ---------- Traducción alineada en la concordancia ----------
    Vitruvio: ediciones Kurilo (ES V514 · FR V554 · EN V297) por locus, en el idioma de la interfaz.
    Demás obras: traducción inglesa de Perseus (TEI, CC BY-SA 4.0) leída desde GitHub y alineada por
@@ -838,24 +939,42 @@ function alignTranslation(U,p){
  const parts=p[1].split(".");
  if(typeof p[3]==="number"){
   const book=parts.length>1?parts.slice(0,-1).join("."):parts[0];const s=p[3],e=s+Math.max(0,String(p[2]).split("\n").length-1);
-  const ls=U.filter(u=>u.line!=null&&u.book===book&&u.line>=s&&u.line<=e);if(ls.length)return ls.map(u=>u.text).join(" / ");
-  const cs=U.filter(u=>u.card!=null&&u.book===book).sort((a,b)=>a.card-b.card);const hit=cs.filter((c,i)=>c.card<=e&&(cs[i+1]?cs[i+1].card-1:Infinity)>=s);if(hit.length)return hit.map(c=>c.text).join(" ");
+  const ls=U.filter(u=>u.line!=null&&u.book===book&&u.line>=s&&u.line<=e);if(ls.length)return{text:ls.map(u=>u.text).join(" / "),grade:"verso"};
+  const cs=U.filter(u=>u.card!=null&&u.book===book).sort((a,b)=>a.card-b.card);const hit=cs.filter((c,i)=>c.card<=e&&(cs[i+1]?cs[i+1].card-1:Infinity)>=s);if(hit.length)return{text:hit.map(c=>c.text).join(" "),grade:"tramo"};
  }
- const ex=U.find(u=>u.locus===p[1]);if(ex)return ex.text;
- const kids=U.filter(u=>u.locus?.startsWith(p[1]+"."));if(kids.length)return kids.map(u=>u.text).join(" ");
- for(let k=parts.length-1;k>0;k--){const pre=parts.slice(0,k).join(".");const c=U.filter(u=>u.locus===pre&&u.text.length<2500);if(c.length)return c[0].text}
- return "";
+ const ex=U.find(u=>u.locus===p[1]);if(ex)return{text:ex.text,grade:"exacta"};
+ const kids=U.filter(u=>u.locus?.startsWith(p[1]+"."));if(kids.length)return{text:kids.map(u=>u.text).join(" "),grade:"exacta"};
+ for(let k=parts.length-1;k>0;k--){const pre=parts.slice(0,k).join(".");const c=U.filter(u=>u.locus===pre&&u.text.length<2500);if(c.length)return{text:c[0].text,grade:"capítulo"}}
+ /* Prosa sin subdivisiones en la traducción (Apuleyo): reparto proporcional dentro del libro. */
+ const bk=U.filter(u=>u.locus===parts[0]);if(bk.length&&parts.length>1){const D_=S.D;const same=D_?D_.corpus.passages.filter(q=>q[0]===p[0]&&String(q[1]).split(".")[0]===parts[0]):[];const idx=same.findIndex(q=>q[1]===p[1]);if(idx>=0&&same.length){const t=bk[0].text;const a=Math.floor(idx/same.length*t.length),b=Math.floor((idx+1)/same.length*t.length);const cut=x=>{const m=t.slice(x).search(/[.;:!?]\s/);return m<0?x:x+m+2};return{text:(idx?"… ":"")+t.slice(idx?cut(a):0,cut(b)).trim()+" …",grade:"proporcional"}}}
+ return null;
 }
 async function translationOf(D,p){
  if(p[0]==="vitruvius"){const ed=S.ui==="fr"?"fr":S.ui==="en"?"en":"es";const data=await load(VIT_ED[ed][0]);const x=data.passages.find(z=>z.locus===p[1]);if(x?.translation)return{text:x.translation,src:"Vitruvio · "+VIT_ED[ed][1]};if(p[4])return{text:p[4],src:"Vitruvio · Castellano · Kurilo V514"};return null}
- const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);return t?{text:t,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0) · alineación aproximada")}:null;
+ const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);if(!t)return null;const G={exacta:T("alineación exacta por locus"),verso:T("alineación por número de verso"),tramo:T("alineación por tramo de versos (aproximada)"),"capítulo":T("alineación por capítulo (aproximada)"),proporcional:T("alineación proporcional dentro del libro (orientativa)")};return{text:t.text,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0)")+" · "+G[t.grade],grade:t.grade};
 }
 async function fillTranslation(D,p,box){
  if(box.dataset.done)return;box.dataset.done="1";box.replaceChildren(el("p",{class:"lx-small"},T("Cargando traducción…")));
  try{const r=await translationOf(D,p);if(!r){box.replaceChildren(el("p",{class:"lx-small"},T("No hay traducción disponible para este pasaje en el sitio.")));return}
-  const t=r.text.length>1400?r.text.slice(0,1400)+" …":r.text;box.replaceChildren(el("p",{class:"lx-tr"},t),el("p",{class:"lx-small"},r.src))}
+  const t=r.text.length>1400?r.text.slice(0,1400)+" …":r.text;box.replaceChildren(el("p",{class:"lx-tr",lang:p[0]==="vitruvius"?(S.ui==="fr"?"fr":S.ui==="en"?"en":"es"):"en"},t),el("p",{class:"lx-small"+(r.grade&&r.grade!=="exacta"&&r.grade!=="verso"?" lx-approx":"")},r.src))}
  catch(err){box.dataset.done="";box.replaceChildren(el("p",{class:"lx-small"},T("No se pudo cargar la traducción")+" ("+err.message+")."))}
 }
+/* ---------- Lemas ambiguos y correcciones verificadas ----------
+   La lematización es por tabla de formas (sin contexto): cuando una forma admite varios lemas se
+   avisa en el pasaje. data/lexicon/lemma-corrections.json guarda las asignaciones verificadas a
+   mano por pasaje (obra · locus · forma → lema), que prevalecen sobre la tabla. */
+let CORR=null;load("data/lexicon/lemma-corrections.json").then(j=>{CORR=j}).catch(()=>{CORR={}});
+function verifiedLemma(D,p,form){const own=(o,k)=>o&&Object.hasOwn(o,k)?o[k]:null;const c=own(own(CORR,D.l),`${p[0]} ${p[1]}`);const v=own(c,fold(form));return typeof v==="string"?v:null}
+function ambiguity(D,text,spans,p){
+ const parts=[];
+ for(const [a,b] of spans){const f=text.slice(a,b);const v=verifiedLemma(D,p,f);if(v){parts.push(el("span",{class:"lx-verified"},`${f} → ${lemmaDisplay(v)} ✓`));continue}
+  const lems=[...new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0]))];if(lems.length>1)parts.push(el("span",{},`${f} → ${lems.slice(0,4).map(lemmaDisplay).join(" / ")}`))}
+ if(!parts.length)return null;
+ const verified=parts.every(x=>x.classList?.contains("lx-verified"));
+ const line=el("p",{class:"lx-ambig",title:verified?T("Lema verificado a mano en este pasaje"):T("La forma admite más de un lema; la tabla automática no decide por el contexto. Verifíquese en el pasaje.")},verified?T("Lema verificado")+": ":T("Lema ambiguo")+": ");
+ parts.forEach((x,i)=>{if(i)line.append(" · ");line.append(x)});return line;
+}
+function ambiguityCount(D,hits){let n=0;for(const h of hits.slice(0,3000)){const p=D.corpus.passages[h.i];if(h.spans.some(([a,b])=>{const f=p[2].slice(a,b);return !verifiedLemma(D,p,f)&&new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0])).size>1}))n++}return n}
 /* ---------- «También en…»: otras obras del corpus donde aparece la consulta ---------- */
 function alsoIn(D,p){
  const all=S.allHits||[];const by=new Map();

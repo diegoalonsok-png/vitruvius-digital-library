@@ -40,10 +40,7 @@
     {
      "w": "בַּיִת",
      "tr": "bayit",
-     "g": "casa"
-    },
-    {
-     "w": " familia"
+     "g": "casa, familia"
     }
    ],
    "arc": [
@@ -744,10 +741,7 @@
     {
      "tr": "nswt",
      "h": "",
-     "g": "rey (del Alto Egipto)"
-    },
-    {
-     "tr": " ḥqꜣ «gobernante»"
+     "g": "rey (del Alto Egipto); ḥqꜣ «gobernante»"
     }
    ],
    "entries": [
@@ -862,10 +856,7 @@
     {
      "tr": "bꜣ",
      "h": "",
-     "g": "manifestación anímica"
-    },
-    {
-     "tr": " kꜣ «fuerza vital»"
+     "g": "manifestación anímica; kꜣ «fuerza vital»"
     }
    ],
    "entries": [
@@ -1810,10 +1801,7 @@
     {
      "tr": "ḥmw",
      "h": "",
-     "g": "oficio, arte"
-    },
-    {
-     "tr": " ḥmww «artesano»"
+     "g": "oficio, arte; ḥmww «artesano»"
     }
    ],
    "entries": [
@@ -1862,10 +1850,7 @@
     {
      "tr": "mḏḥ",
      "h": "",
-     "g": "carpintero, constructor"
-    },
-    {
-     "tr": " jmy-rꜣ kꜣt «director de obras»"
+     "g": "carpintero, constructor; jmy-rꜣ kꜣt «director de obras»"
     }
    ],
    "entries": [
@@ -1949,10 +1934,7 @@
     {
      "w": "עוֹלָם",
      "tr": "ʿôlām",
-     "g": "eternidad"
-    },
-    {
-     "w": " en hebreo tardío, mundo"
+     "g": "eternidad, en hebreo tardío, mundo"
     }
    ],
    "arc": [
@@ -2503,6 +2485,881 @@
    "egy": [],
    "entries": [],
    "note": ""
+  },
+  {
+   "id": "albanil",
+   "modern": {
+    "es": [
+     "albañil",
+     "constructor",
+     "obrero de la construcción",
+     "cantero",
+     "mampostero"
+    ],
+    "en": [
+     "mason",
+     "bricklayer",
+     "builder",
+     "stonemason",
+     "masonry"
+    ],
+    "fr": [
+     "maçon",
+     "bâtisseur",
+     "tailleur de pierre"
+    ],
+    "de": [
+     "Maurer",
+     "Steinmetz",
+     "Bauarbeiter"
+    ]
+   },
+   "la": [
+    "faber",
+    "structor",
+    "caementarius",
+    "lapicida",
+    "aedificator"
+   ],
+   "grc": [
+    "τέκτων",
+    "οἰκοδόμος",
+    "λιθοξόος",
+    "λατόμος"
+   ],
+   "he": [
+    {
+     "w": "בֹּנֶה",
+     "tr": "bōneh",
+     "g": "constructor"
+    },
+    {
+     "w": "חֹצֵב",
+     "tr": "ḥōṣēḇ",
+     "g": "cantero"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "faber",
+    "structor"
+   ],
+   "note": "Equivalencias de oficio; faber designa al artesano en general (faber tignarius, carpintero; faber ferrarius, herrero). Lat. structor y gr. οἰκοδόμος significan propiamente «el que construye»."
+  },
+  {
+   "id": "construir",
+   "modern": {
+    "es": [
+     "construir",
+     "edificar",
+     "levantar"
+    ],
+    "en": [
+     "build",
+     "construct",
+     "erect"
+    ],
+    "fr": [
+     "construire",
+     "bâtir",
+     "édifier"
+    ],
+    "de": [
+     "bauen",
+     "errichten"
+    ]
+   },
+   "la": [
+    "aedifico",
+    "struo",
+    "exstruo",
+    "construo",
+    "condo"
+   ],
+   "grc": [
+    "οἰκοδομέω",
+    "κτίζω",
+    "δέμω"
+   ],
+   "he": [
+    {
+     "w": "בָּנָה",
+     "tr": "bānāh",
+     "g": "construir"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "aedifico"
+   ],
+   "note": "Lat. aedificare = aedes + facere; gr. δέμω comparte la raíz *dem- de domus y δόμος."
+  },
+  {
+   "id": "ladrillo",
+   "modern": {
+    "es": [
+     "ladrillo",
+     "adobe"
+    ],
+    "en": [
+     "brick",
+     "mudbrick"
+    ],
+    "fr": [
+     "brique"
+    ],
+    "de": [
+     "Ziegel",
+     "Lehmziegel"
+    ]
+   },
+   "la": [
+    "later",
+    "tegula"
+   ],
+   "grc": [
+    "πλίνθος",
+    "κέραμος"
+   ],
+   "he": [
+    {
+     "w": "לְבֵנָה",
+     "tr": "ləḇēnāh",
+     "g": "ladrillo"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "later"
+   ],
+   "note": "Vitruvio trata los ladrillos en II 3 (lateres); tegula es la teja."
+  },
+  {
+   "id": "cal_mortero",
+   "modern": {
+    "es": [
+     "cal",
+     "mortero",
+     "argamasa",
+     "hormigón"
+    ],
+    "en": [
+     "lime",
+     "mortar",
+     "concrete"
+    ],
+    "fr": [
+     "chaux",
+     "mortier",
+     "béton"
+    ],
+    "de": [
+     "Kalk",
+     "Mörtel",
+     "Beton"
+    ]
+   },
+   "la": [
+    "calx",
+    "materia",
+    "harena",
+    "pulvis puteolanus",
+    "opus caementicium"
+   ],
+   "grc": [
+    "τίτανος",
+    "κονία",
+    "ἄσβεστος"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "calx"
+   ],
+   "note": "Vitruvio II 5–6 (cal y polvo de Puteoli). El castellano «cal» viene de calx; opus caementicium es el hormigón romano."
+  },
+  {
+   "id": "arco_boveda",
+   "modern": {
+    "es": [
+     "arco",
+     "bóveda",
+     "cúpula"
+    ],
+    "en": [
+     "arch",
+     "vault",
+     "dome"
+    ],
+    "fr": [
+     "arc",
+     "voûte",
+     "coupole"
+    ],
+    "de": [
+     "Bogen",
+     "Gewölbe",
+     "Kuppel"
+    ]
+   },
+   "la": [
+    "arcus",
+    "fornix",
+    "camara",
+    "testudo",
+    "tholus"
+   ],
+   "grc": [
+    "ἁψίς",
+    "θόλος",
+    "καμάρα"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "fornix"
+   ],
+   "note": "Lat. camara procede del gr. καμάρα; tholus del gr. θόλος."
+  },
+  {
+   "id": "acueducto",
+   "modern": {
+    "es": [
+     "acueducto",
+     "canal",
+     "conducción de agua",
+     "tubería"
+    ],
+    "en": [
+     "aqueduct",
+     "water conduit",
+     "pipe",
+     "channel"
+    ],
+    "fr": [
+     "aqueduc",
+     "conduite",
+     "canal"
+    ],
+    "de": [
+     "Aquädukt",
+     "Wasserleitung",
+     "Rohr"
+    ]
+   },
+   "la": [
+    "aquaeductus",
+    "ductus",
+    "fistula",
+    "specus",
+    "rivus",
+    "castellum"
+   ],
+   "grc": [
+    "ὀχετός",
+    "ὑδραγωγός",
+    "σωλήν"
+   ],
+   "he": [
+    {
+     "w": "תְּעָלָה",
+     "tr": "təʿālāh",
+     "g": "canal, acequia"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "aquaeductus"
+   ],
+   "note": "Vitruvio VIII 6 y Frontino, De aquaeductu: specus (canal), fistula (tubo de plomo), castellum (depósito de reparto)."
+  },
+  {
+   "id": "teatro",
+   "modern": {
+    "es": [
+     "teatro",
+     "escena",
+     "orquesta"
+    ],
+    "en": [
+     "theatre",
+     "theater",
+     "stage"
+    ],
+    "fr": [
+     "théâtre",
+     "scène"
+    ],
+    "de": [
+     "Theater",
+     "Bühne"
+    ]
+   },
+   "la": [
+    "theatrum",
+    "scaena",
+    "orchestra",
+    "cavea",
+    "pulpitum"
+   ],
+   "grc": [
+    "θέατρον",
+    "σκηνή",
+    "ὀρχήστρα",
+    "κοῖλον"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "theatrum"
+   ],
+   "note": "Préstamos griegos en latín (theatrum, scaena, orchestra); Vitruvio V 3–9."
+  },
+  {
+   "id": "proporcion",
+   "modern": {
+    "es": [
+     "proporción",
+     "simetría",
+     "armonía",
+     "módulo"
+    ],
+    "en": [
+     "proportion",
+     "symmetry",
+     "harmony",
+     "module"
+    ],
+    "fr": [
+     "proportion",
+     "symétrie",
+     "harmonie",
+     "module"
+    ],
+    "de": [
+     "Proportion",
+     "Symmetrie",
+     "Harmonie",
+     "Modul"
+    ]
+   },
+   "la": [
+    "proportio",
+    "symmetria",
+    "commodulatio",
+    "modulus",
+    "ratio"
+   ],
+   "grc": [
+    "ἀναλογία",
+    "συμμετρία",
+    "ἁρμονία",
+    "ἐμβάτης"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "symmetria"
+   ],
+   "note": "Vitruvio I 2 y III 1: symmetria (gr. συμμετρία) como acuerdo de las partes por un módulo común (gr. ἐμβάτης)."
+  },
+  {
+   "id": "orden_columnas",
+   "modern": {
+    "es": [
+     "capitel",
+     "basa",
+     "fuste",
+     "entablamento",
+     "arquitrabe",
+     "friso",
+     "cornisa"
+    ],
+    "en": [
+     "capital",
+     "base",
+     "shaft",
+     "entablature",
+     "architrave",
+     "frieze",
+     "cornice"
+    ],
+    "fr": [
+     "chapiteau",
+     "base",
+     "fût",
+     "entablement",
+     "architrave",
+     "frise",
+     "corniche"
+    ],
+    "de": [
+     "Kapitell",
+     "Basis",
+     "Schaft",
+     "Gebälk",
+     "Architrav",
+     "Fries",
+     "Gesims"
+    ]
+   },
+   "la": [
+    "capitulum",
+    "spira",
+    "scapus",
+    "epistylium",
+    "zophorus",
+    "corona",
+    "trabs"
+   ],
+   "grc": [
+    "κιονόκρανον",
+    "σπεῖρα",
+    "ἐπιστύλιον",
+    "ζωφόρος",
+    "γεῖσον"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "capitulum"
+   ],
+   "note": "Léxico técnico de Vitruvio III–IV; epistylium y zophorus son préstamos griegos."
+  },
+  {
+   "id": "geometria",
+   "modern": {
+    "es": [
+     "geometría",
+     "línea",
+     "ángulo",
+     "círculo",
+     "triángulo",
+     "cuadrado"
+    ],
+    "en": [
+     "geometry",
+     "line",
+     "angle",
+     "circle",
+     "triangle",
+     "square"
+    ],
+    "fr": [
+     "géométrie",
+     "ligne",
+     "angle",
+     "cercle",
+     "triangle",
+     "carré"
+    ],
+    "de": [
+     "Geometrie",
+     "Linie",
+     "Winkel",
+     "Kreis",
+     "Dreieck",
+     "Quadrat"
+    ]
+   },
+   "la": [
+    "geometria",
+    "linea",
+    "angulus",
+    "circinus",
+    "circulus",
+    "triangulum",
+    "quadratum",
+    "norma"
+   ],
+   "grc": [
+    "γεωμετρία",
+    "γραμμή",
+    "γωνία",
+    "κύκλος",
+    "τρίγωνον",
+    "τετράγωνον"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "geometria"
+   ],
+   "note": "El vocabulario de Euclides (Elementos) es la referencia griega; Vitruvio I 1,4 exige al arquitecto saber geometría."
+  },
+  {
+   "id": "maquina",
+   "modern": {
+    "es": [
+     "máquina",
+     "grúa",
+     "mecanismo",
+     "palanca",
+     "polea"
+    ],
+    "en": [
+     "machine",
+     "crane",
+     "mechanism",
+     "lever",
+     "pulley"
+    ],
+    "fr": [
+     "machine",
+     "grue",
+     "mécanisme",
+     "levier",
+     "poulie"
+    ],
+    "de": [
+     "Maschine",
+     "Kran",
+     "Mechanismus",
+     "Hebel",
+     "Flaschenzug"
+    ]
+   },
+   "la": [
+    "machina",
+    "machinatio",
+    "organum",
+    "vectis",
+    "trochlea",
+    "ergata"
+   ],
+   "grc": [
+    "μηχανή",
+    "ὄργανον",
+    "μοχλός",
+    "τροχιλία"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "machina"
+   ],
+   "note": "Vitruvio libro X; machina procede del gr. dórico μαχανά."
+  },
+  {
+   "id": "marmol_piedra",
+   "modern": {
+    "es": [
+     "mármol",
+     "sillar",
+     "cantera",
+     "roca"
+    ],
+    "en": [
+     "marble",
+     "ashlar",
+     "quarry",
+     "stone block"
+    ],
+    "fr": [
+     "marbre",
+     "pierre de taille",
+     "carrière"
+    ],
+    "de": [
+     "Marmor",
+     "Quader",
+     "Steinbruch"
+    ]
+   },
+   "la": [
+    "marmor",
+    "saxum",
+    "lapis",
+    "lapicidina",
+    "silex",
+    "tofus"
+   ],
+   "grc": [
+    "μάρμαρος",
+    "λίθος",
+    "λατομία",
+    "πέτρα"
+   ],
+   "he": [
+    {
+     "w": "אֶבֶן",
+     "tr": "ʾeḇen",
+     "g": "piedra"
+    },
+    {
+     "w": "שַׁיִשׁ",
+     "tr": "šayiš",
+     "g": "mármol"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "marmor"
+   ],
+   "note": "Plinio, Naturalis historia XXXVI, es la fuente principal sobre mármoles; Vitruvio II 7 sobre las piedras."
+  },
+  {
+   "id": "pintura",
+   "modern": {
+    "es": [
+     "pintura",
+     "color",
+     "pigmento",
+     "fresco"
+    ],
+    "en": [
+     "painting",
+     "colour",
+     "pigment",
+     "fresco"
+    ],
+    "fr": [
+     "peinture",
+     "couleur",
+     "pigment",
+     "fresque"
+    ],
+    "de": [
+     "Malerei",
+     "Farbe",
+     "Pigment",
+     "Fresko"
+    ]
+   },
+   "la": [
+    "pictura",
+    "color",
+    "pigmentum",
+    "tectorium",
+    "minium"
+   ],
+   "grc": [
+    "γραφή",
+    "ζωγραφία",
+    "χρῶμα",
+    "φάρμακον"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "pictura"
+   ],
+   "note": "Vitruvio VII y Plinio XXXV (pintores y pigmentos)."
+  },
+  {
+   "id": "metal",
+   "modern": {
+    "es": [
+     "metal",
+     "oro",
+     "plata",
+     "bronce",
+     "hierro",
+     "plomo"
+    ],
+    "en": [
+     "metal",
+     "gold",
+     "silver",
+     "bronze",
+     "iron",
+     "lead"
+    ],
+    "fr": [
+     "métal",
+     "or",
+     "argent",
+     "bronze",
+     "fer",
+     "plomb"
+    ],
+    "de": [
+     "Metall",
+     "Gold",
+     "Silber",
+     "Bronze",
+     "Eisen",
+     "Blei"
+    ]
+   },
+   "la": [
+    "metallum",
+    "aurum",
+    "argentum",
+    "aes",
+    "ferrum",
+    "plumbum"
+   ],
+   "grc": [
+    "μέταλλον",
+    "χρυσός",
+    "ἄργυρος",
+    "χαλκός",
+    "σίδηρος",
+    "μόλυβδος"
+   ],
+   "he": [
+    {
+     "w": "זָהָב",
+     "tr": "zāhāḇ",
+     "g": "oro"
+    },
+    {
+     "w": "כֶּסֶף",
+     "tr": "kesep̄",
+     "g": "plata"
+    },
+    {
+     "w": "נְחֹשֶׁת",
+     "tr": "nəḥōšeṯ",
+     "g": "bronce, cobre"
+    },
+    {
+     "w": "בַּרְזֶל",
+     "tr": "barzel",
+     "g": "hierro"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "metallum"
+   ],
+   "note": "Plinio XXXIII–XXXIV; lat. metallum es préstamo del gr. μέταλλον («mina»)."
+  },
+  {
+   "id": "agricultura",
+   "modern": {
+    "es": [
+     "agricultura",
+     "campo",
+     "granja",
+     "cultivo",
+     "labranza"
+    ],
+    "en": [
+     "agriculture",
+     "farm",
+     "field",
+     "farming",
+     "husbandry"
+    ],
+    "fr": [
+     "agriculture",
+     "ferme",
+     "champ",
+     "culture"
+    ],
+    "de": [
+     "Landwirtschaft",
+     "Feld",
+     "Bauernhof",
+     "Ackerbau"
+    ]
+   },
+   "la": [
+    "agricultura",
+    "ager",
+    "villa",
+    "fundus",
+    "cultura",
+    "rus"
+   ],
+   "grc": [
+    "γεωργία",
+    "ἀγρός",
+    "γῆ"
+   ],
+   "he": [
+    {
+     "w": "שָׂדֶה",
+     "tr": "śāḏeh",
+     "g": "campo"
+    },
+    {
+     "w": "אֲדָמָה",
+     "tr": "ʾăḏāmāh",
+     "g": "tierra cultivable"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "ager"
+   ],
+   "note": "Catón, Varrón y Columela son los autores de re rustica; villa designa la explotación rural."
+  },
+  {
+   "id": "ciencia",
+   "modern": {
+    "es": [
+     "ciencia",
+     "conocimiento",
+     "disciplina",
+     "teoría",
+     "práctica"
+    ],
+    "en": [
+     "science",
+     "knowledge",
+     "discipline",
+     "theory",
+     "practice"
+    ],
+    "fr": [
+     "science",
+     "connaissance",
+     "discipline",
+     "théorie",
+     "pratique"
+    ],
+    "de": [
+     "Wissenschaft",
+     "Wissen",
+     "Disziplin",
+     "Theorie",
+     "Praxis"
+    ]
+   },
+   "la": [
+    "scientia",
+    "disciplina",
+    "doctrina",
+    "ratiocinatio",
+    "fabrica"
+   ],
+   "grc": [
+    "ἐπιστήμη",
+    "θεωρία",
+    "τέχνη",
+    "πρᾶξις"
+   ],
+   "he": [
+    {
+     "w": "דַּעַת",
+     "tr": "daʿaṯ",
+     "g": "conocimiento"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "scientia"
+   ],
+   "note": "Vitruvio I 1,1: fabrica (práctica) y ratiocinatio (razonamiento) como las dos partes del saber del arquitecto."
   }
  ]
 }
