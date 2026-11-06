@@ -55,13 +55,16 @@ try{
    assert.match(await p.locator('#classic-detail').innerText(),/Po[eé]tica|Περὶ ποιητικῆς|Poetics/i);
   }finally{await p.close()}
  });
- await check('Documented semantic retrieval finds real Latin passages for the concept casa',async()=>{
+ await check('Documented semantic retrieval finds real Greek and Latin passages for the concept casa',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
    await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.semanticSearch==='function',{timeout:20000});
    const rows=await p.evaluate(()=>window.ClassicsCorpusSearch.semanticSearch('casa',{limit:12}));
-   assert(rows.length>0,'Conceptus casa must match attested indexed Latin forms');
-   assert(rows.every(x=>x.language==='la'),'Conceptus test must search the documented Latin equivalents');
+   assert(rows.length>0,'Conceptus casa must match attested indexed Greek or Latin forms');
+   assert(rows.every(x=>['la','grc'].includes(x.language)),
+    'Conceptus casa must return only attested Greek and Latin passages, not unindexed translations');
+   assert(rows.some(x=>x.language==='la'),'Latin equivalents of casa must be searchable');
+   assert(rows.some(x=>x.language==='grc'),'Greek equivalents of casa must be searchable');
    assert(rows.every(x=>/CORRESPONDENCIA SEMÁNTICA EDITORIAL/.test(x.meta)));
    assert(rows.every(x=>/Locus /.test(x.excerpt)&&/locus=|#/.test(x.link)),
     'Every semantic result must refer to an actual source locus or text fragment');
