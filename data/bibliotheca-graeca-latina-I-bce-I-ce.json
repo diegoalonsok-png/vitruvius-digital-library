@@ -4026,7 +4026,11 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: Samuel Butler, The Odyssey (1900, edición histórica de fecha aproximada), revisada por Timothy Power y Gregory Nagy en la transcripción TEI de Perseus. 24 libros, 267 secciones; correspondencia orientativa por comienzos de pasajes, sin afirmar equivalencia verso a verso.",
+        "chicago18Bibliography": "Homer. *The Odyssey: Rendered into English Prose for the Use of Those Who Cannot Read the Original*. Translated by Samuel Butler. London: A. C. Fifield, ca. 1900. Revised by Timothy Power and Gregory Nagy. Digital transcription, Perseus Digital Library.",
+        "bibliographicStyle": "Chicago Manual of Style, 18th edition",
+        "translationLanguage": "en",
+        "source": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0012/tlg002/tlg0012.tlg002.perseus-eng4.xml"
       },
       "links": {
         "scaife": null,
@@ -4050,7 +4054,8 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/homer-odyssey-grc.json"
+        "grc": "data/classics-corpus/homer-odyssey-grc.json",
+        "en": "data/classics-corpus/homer-odyssey-en.json"
       },
       "localHtml": "classics-text-reader.html?work=homer-odyssey&lang=grc",
       "localEdition": {
