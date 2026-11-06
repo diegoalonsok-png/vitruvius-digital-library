@@ -67,6 +67,24 @@ try{
     'A modern biography must not be mistaken for the identity of its subject');
    assert(!state.rows.some(r=>['book','manuscript','edition','preface','passage','apparatus','fragment'].includes(r.type)),
     'Unrelated ancient books or codices must not be listed for the modern person');
+   // The large top dossier is rendered by a DIFFERENT module from the
+   // result cards and article: previously it made this exact false match.
+   await p.waitForFunction(()=>!!window.VitruviaTermPanel?.classicalWorks,{timeout:10000});
+   const matches=await p.evaluate(async()=>({
+    peron:(await window.VitruviaTermPanel.classicalWorks('Juan Domingo Peron')).map(x=>x.w.title),
+    peronAccent:(await window.VitruviaTermPanel.classicalWorks('Juan Domingo Perón')).map(x=>x.w.title),
+    acts:(await window.VitruviaTermPanel.classicalWorks('Hechos de Juan')).map(x=>x.w.title),
+    cicero:(await window.VitruviaTermPanel.classicalWorks('Cicerón')).map(x=>x.w.title)
+   }));
+   assert.deepEqual(matches.peron,[],'Top dossier must not classify Perón as a classical author');
+   assert.deepEqual(matches.peronAccent,[],'Accented Perón must not classify as a classical author');
+   assert(matches.acts.some(t=>/acta joannis/i.test(t)),
+    'An intentional search for Acts of John must still find its ancient work');
+   assert(matches.cicero.length>0,'Cicerón must remain a valid classical author search');
+   await p.waitForTimeout(1400);
+   const topPanel=await p.locator('#vitruvia-term-panel').innerText();
+   assert(!/autor u obra cl[aá]sica|hechos de juan|acts of john|per[oó]n:\s*a history/i.test(topPanel),
+    'The visible top dossier must not combine Perón with Acts of John or a modern book title');
   }finally{await p.close()}
  });
  await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
