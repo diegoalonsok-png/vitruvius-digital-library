@@ -208,7 +208,15 @@ async function suggest(text,lang){
   const w2=await j("https://www.wikidata.org/w/api.php?"+p2,3500).catch(()=>null);ents=(w2?.search||[]).filter(x=>x.description&&!/desambiguaci|disambiguation|homonymie|Wikimedia/i.test(x.description))}
  // Homónimos: se priorizan coincidencias exactas del nombre y descripciones de personas, grupos u obras;
  // los usos religiosos o genéricos («Madonna» como advocación mariana) quedan después.
- const qf=fold(q),rank=x=>(fold(x.label)===qf?40:fold(x.label).startsWith(qf)?20:0)+(/cantante|music|músic|singer|actriz|actor|arquitect|architect|escritor|writer|poeta|pintor|painter|director|banda|band|compositor/i.test(x.description)?15:0)-(/advocaci|virgen|iconograf|representaci|t[ií]tulo|apellido|nombre de pila|given name|family name/i.test(x.description)?25:0);
+ const qf=fold(q),rank=x=>{
+  const d=fold(x.description),label=fold(x.label);
+  const exact=label===qf?80:label.startsWith(qf+" ")?22:0;
+  const intellectual=/filosof|philosoph|matematic|mathematic|cientific|scientist|astronom|geometr|pensador|thinker|historiador|historian/.test(d);
+  const ancient=/antigu|ancient|grec|grieg|roman|romano|hellen|helen|classical|clasico|siracus|syracus/.test(d);
+  const known=/poeta|poet|escritor|writer|cantante|music|singer|actriz|actor|arquitect|architect|pintor|painter|compositor/.test(d);
+  const generic=/advocaci|virgen|iconograf|representaci|titulo|apellido|nombre de pila|given name|family name|researcher|investigador/.test(d);
+  return exact+(intellectual?32:0)+(ancient?25:0)+(known?12:0)-(generic?35:0);
+ };
  ents=ents.map((x,i)=>({x,s:rank(x)-i})).sort((a,b)=>b.s-a.s).map(o=>o.x);
  const entities=ents.slice(0,3).map(x=>({id:x.id,label:x.label,description:x.description}));
  const seen=new Set(entities.map(e=>fold(e.label)));const completions=[];

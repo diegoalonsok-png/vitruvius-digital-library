@@ -1,0 +1,22 @@
+name: Historical names and suggestions
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-historical-names.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-understand.js'
+      - 'vitruvia.html'
+      - 'scripts/test-historical-names.mjs'
+      - '.github/workflows/historical-names.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-historical-names.mjs
+      - run: node scripts/test-vitruvia-entity-priority.mjs
+      - run: node scripts/test-vitruvian-local-priority.mjs

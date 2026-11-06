@@ -56,7 +56,7 @@ assert.equal(ms.window.VitruviaMathematics.find("Radiohead"),null);
 const imageEngine=read("assets/vitruvia-image-engine-v2.js");
 assert.match(imageEngine,/VitruviaColors\?\.render\(quick/);
 assert.match(imageEngine,/VitruviaMathematics\?\.render\(quick/);
-assert.match(main,/isPythagoras/);
+assert.match(main,/VitruviaHistoricalNames\?\.find\(q,S\.people\)/);
 assert.match(main,/sm\?\.thumbnail\?\.source/);
 assert.match(main,/sg-thumbnail/);
 assert.ok(html.indexOf("assets/vitruvia-colors.js")<html.indexOf("assets/vitruvia-image-engine-v2.js"));
