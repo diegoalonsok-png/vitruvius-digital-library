@@ -143,6 +143,11 @@ function render(){
   "<p class='lc-notr'><b>Este capítulo no está incluido en la selección inglesa disponible.</b><br>La traducción histórica de Fairfax Harrison (1918) reúne fragmentos de Catón ordenados por temas; no es una versión íntegra de los 162 capítulos. No corresponde asignarle aquí un pasaje de otro capítulo.</p><p><a target='_blank' rel='noopener noreferrer' href='https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html'>Consultar traducción inglesa externa más completa en LacusCurtius ↗</a></p>":
   !work.translations.length?"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción de esta obra.</b><br>Se muestra solo el texto original, a la izquierda. Cuando se incorpore una traducción abierta, aparecerá en este visor.</p>":
   trans.length?(t?t.map(x=>`<p class="loc">${esc(x.locus)}</p><div class="txt" lang="en">${marked(x.text)}</div>`).join(""):"<p class='lc-notr'>La traducción de la biblioteca no tiene un pasaje correspondiente a este locus. Pruebe con el locus anterior o el siguiente.</p>"):transState==="loading"?"<p class='muted'>Cargando la traducción… (las obras extensas, como la Naturalis historia, pueden tardar unos segundos)</p>":transState==="error"?"<p class='muted'>No se pudo descargar la traducción desde el repositorio de origen. Puede abrirla directamente en <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>GitHub · Perseus ↗</a>.</p>":"<p class='lc-notr'><b>Por el momento la biblioteca no posee una traducción alineada de esta obra.</b><br>El archivo de origen existe, pero no puede ponerse en correspondencia con el texto. <a href='"+esc(work.translations[0].url)+"' target='_blank' rel='noopener'>Abrir el archivo TEI ↗</a></p>";
+ if(work.translationCoverage==="chapter-level-reordered-historical"){
+  const note=document.createElement("p");note.className="muted";
+  note.textContent="Inglés: Bennett y Hammond (1902). Correspondencia por capítulo, no por párrafo. La traducción histórica presenta omisiones e inserciones reconocidas por sus editores.";
+  $("translation").prepend(note);
+ }
  $("toc").value=String(cur);
  const u=new URL(location.href);u.searchParams.set("loc",p.locus);if(query)u.searchParams.set("q",query);else u.searchParams.delete("q");history.replaceState(null,"",u);
  const share=work.author+" · "+work.title+" "+p.locus+" — "+location.href;
@@ -237,7 +242,7 @@ async function corpusSearch(){
 }
 (async()=>{
  if(params.get("embed")==="1")document.documentElement.classList.add("lc-embed");
- [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261106-en-translations-v1").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
+ [catalog,{witnesses},{works:extraWorks}]=await Promise.all([fetch("data/clasicos-perseus.json").then(r=>r.json()),fetch("data/clasicos-testimonios.json").then(r=>r.json()),fetch("data/clasicos-perseus-extra.json?v=20261106-en-theophrastus-v2").then(r=>r.ok?r.json():{works:[]}).catch(()=>({works:[]}))]);
  $("tab-codex").onclick=()=>setLeft("codex");$("tab-original").onclick=()=>setLeft("original");
  $("search").onsubmit=e=>{e.preventDefault();search()};
  $("prev").onclick=()=>{if(cur>0){cur--;render()}};$("next").onclick=()=>{if(cur<orig.length-1){cur++;render()}};
