@@ -46,13 +46,16 @@ function entityMetadata(entity){
  const values=property=>(entity.claims?.[property]||[]).filter(c=>c.rank!=="deprecated").map(c=>c.mainsnak?.datavalue?.value).filter(v=>v!==undefined);
  const instanceOf=values("P31").map(v=>v.id).filter(Boolean);
  const born=values("P569")[0]?.time?.match(/^([+-]\d+)/);
+ const founded=values("P571")[0]?.time?.match(/^([+-]\d+)/);
+ const published=values("P577")[0]?.time?.match(/^([+-]\d+)/);
  return {entityMetadata:!!entity.claims,instanceOf,kind:instanceOf.length?(instanceOf.includes("Q5")?"person":"topic"):null,
   aliases:[...new Set([...Object.values(entity.labels||{}).map(x=>x.value),...Object.values(entity.aliases||{}).flat().map(x=>x.value)])].slice(0,40),
   commonsSearchName:entity.labels?.en?.value||"",commonsCategory:values("P373")[0]||null,
   imageFiles:values("P18").filter(x=>typeof x==="string").slice(0,4),
   notableWorkIds:values("P800").map(v=>v.id).filter(Boolean).slice(0,50),
   occupationIds:values("P106").map(v=>v.id).filter(Boolean),
-  catalogName:entity.labels?.["en"]?.value||entity.labels?.["es"]?.value||"",birthYear:born?Number(born[1]):null};
+  catalogName:entity.labels?.["en"]?.value||entity.labels?.["es"]?.value||"",birthYear:born?Number(born[1]):null,
+  inceptionYear:founded?Number(founded[1]):null,publicationYear:published?Number(published[1]):null};
 }
 // Remove generic *intent* expressions but do not hard-code personalities.
 const clean=q=>{
