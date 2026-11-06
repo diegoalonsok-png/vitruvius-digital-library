@@ -7,9 +7,25 @@ let works=null,last="";
 const st=document.createElement("style");st.textContent=".intertexts{margin:14px 0 0;padding:10px 14px;border-left:2px solid #C9A84C;background:rgba(128,110,75,.07);font-size:14px}.intertexts:empty{display:none}.intertexts h3{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px}.intertexts ul{margin:0;padding-left:18px}.intertexts li{margin:3px 0}.intertexts small{opacity:.75}";
 document.head.append(st);
 async function load(){if(!works)works=fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>r.json()).then(d=>d.works||[]).catch(()=>[]);return works}
+/* Posibles fuentes y paralelos léxicos del locus (data/lexicon/paralleli-vitruvius.json): candidatos por
+   afinidad de vocabulario, no dependencias demostradas; cada uno se abre en Vitruvia Lexicon. */
+let par=null;
+async function paralleli(locus){
+ par=par||fetch("data/lexicon/paralleli-vitruvius.json").then(r=>r.json()).catch(()=>null);
+ const d=await par;const c=d?.loci?.[locus];if(!c?.length||last!==locus)return;
+ const sec=document.createElement("div");sec.className="intertexts-par";
+ const h=document.createElement("h3");h.textContent="Posibles fuentes y paralelos (afinidad léxica)";sec.append(h);
+ const ul=document.createElement("ul");
+ for(const [wid,loc,sc,shared,cite] of c){const li=document.createElement("li");const a=document.createElement("a");
+  a.href="vitruvia-lexicon.html?work="+encodeURIComponent(wid)+"&locus="+encodeURIComponent(loc);a.textContent=cite||(wid+" "+loc);li.append(a);
+  const s=document.createElement("small");s.textContent=" · afinidad "+Number(sc).toFixed(2)+" · ";const i=document.createElement("i");i.lang="la";i.textContent=shared.slice(0,6).join(", ");s.append(i);li.append(s);ul.append(li)}
+ const n=document.createElement("small");n.textContent="Coincidencia de vocabulario técnico (coseno tf-idf entre lemas): candidatos para el estudio de fuentes y recepción, no relaciones demostradas.";
+ sec.append(ul,n);box.append(sec);
+}
 async function update(){
  const locus=new URLSearchParams(location.search).get("locus")||"";if(locus===last)return;last=locus;box.replaceChildren();if(!locus)return;
- const list=(await load()).filter(w=>(w.vitruvianLoci?.loci||[]).includes(locus)&&w.id!=="vitruvius");if(!list.length)return;
+ const list=(await load()).filter(w=>(w.vitruvianLoci?.loci||[]).includes(locus)&&w.id!=="vitruvius");
+ paralleli(locus);if(!list.length)return;
  const h=document.createElement("h3");h.textContent="Autores y obras que Vitruvio nombra en este pasaje";box.append(h);
  const ul=document.createElement("ul");
  for(const w of list.slice(0,14)){const li=document.createElement("li");const a=document.createElement("a");
