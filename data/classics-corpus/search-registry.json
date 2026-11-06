@@ -1,8 +1,8 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 20,
+  "count": 21,
   "works": 14,
   "entries": [
     {
@@ -46,6 +46,16 @@
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
+      "workId": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/caesar-gallico-la.json",
+      "reader": "classics-text-reader.html?work=caesar-gallico&lang=la",
+      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
       "workId": "catullus-carmina",
       "author": "Catulo",
       "title": "Carmina",
@@ -79,6 +89,16 @@
       "workId": "epictetus-enchiridion",
       "author": "Epicteto (transmitido por Arriano)",
       "title": "Ἐγχειρίδιον · Enchiridion",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/epictetus-enchiridion-en.json",
+      "reader": "classics-text-reader.html?work=epictetus-enchiridion&lang=en",
+      "sourceDescription": "Traducción histórica Thomas Wentworth Higginson (1890), TEI Perseus; 53 capítulos cotejables por locus con griego, sin alineación frase a frase."
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
       "language": "grc",
       "format": "json-passages",
       "path": "data/classics-corpus/epictetus-enchiridion-grc.json",
@@ -103,16 +123,6 @@
       "format": "json-passages",
       "path": "data/classics-corpus/homer-odyssey-grc.json",
       "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc",
-      "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
-    },
-    {
-      "workId": "caesar-gallico",
-      "author": "Julio César",
-      "title": "Commentarii de bello Gallico",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/caesar-gallico-la.json",
-      "reader": "classics-text-reader.html?work=caesar-gallico&lang=la",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
