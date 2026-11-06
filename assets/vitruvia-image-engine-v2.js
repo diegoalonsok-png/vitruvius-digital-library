@@ -182,6 +182,7 @@ function displayGroups(items,topic){
  const quick=document.getElementById("vitruvia-quick-images");
  if(quick){
   quick.replaceChildren();
+  window.VitruviaMathematics?.render(quick,topic.subject);
   const bar=create(quick,"div","article-image-preview-heading");
   create(bar,"span","",locale("Imágenes del resultado: ","Result images: ","Images du résultat : ")+topic.subject);
   const jump=create(bar,"a","",locale("Todas las imágenes y fuentes","All images and sources","Toutes les images et sources"));
