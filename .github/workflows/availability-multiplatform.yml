@@ -1,0 +1,40 @@
+name: Disponibilidad externa en tres sistemas
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/availability-multiplatform.yml'
+permissions:
+  contents: read
+jobs:
+  measure:
+    name: HTTP externo / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Probar tiempos HTTP en servidores independientes
+        run: |
+          set -uo pipefail
+          root="https://diegoalonsok-png.github.io/vitruvius-digital-library"
+          printf 'Sistema=%s\nUTC=%s\n' "${{ matrix.os }}" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          failures=0
+          for path in index.html vitruvia.html vitruvia-lexicon.html bibliotheca-graeca-latina.html lector-bilingue.html como-citar.html; do
+            printf '\nPAGINA: %s\n' "$path"
+            for attempt in 1 2 3; do
+              # Never send credentials; -o discards content. Follow GitHub Pages redirects.
+              result=$(curl --location --silent --show-error --max-time 25 --connect-timeout 10 --output /dev/null --write-out 'status=%{http_code} dns=%{time_namelookup}s connect=%{time_connect}s tls=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download}' "$root/$path" 2>&1)
+              exit_code=$?
+              printf '  intento=%s curl_exit=%s %s\n' "$attempt" "$exit_code" "$result"
+              if [ "$exit_code" -ne 0 ] || ! printf '%s' "$result" | grep -q 'status=200'; then failures=$((failures+1)); fi
+              sleep 1
+            done
+          done
+          echo "fallos=$failures"
+          test "$failures" -eq 0
