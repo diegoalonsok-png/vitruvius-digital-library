@@ -182,6 +182,8 @@ function displayGroups(items,topic){
  const quick=document.getElementById("vitruvia-quick-images");
  if(quick){
   quick.replaceChildren();
+  window.VitruviaMathematics?.render(quick,topic.subject);
+  window.VitruviaColors?.render(quick,currentImageQuery||topic.subject);
   const bar=create(quick,"div","article-image-preview-heading");
   create(bar,"span","",locale("Imágenes del resultado: ","Result images: ","Images du résultat : ")+topic.subject);
   const jump=create(bar,"a","",locale("Todas las imágenes y fuentes","All images and sources","Toutes les images et sources"));
@@ -325,6 +327,12 @@ async function verifiedLeadImage(identity,topic,id){
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
+ // Screen colors and documented mathematical relations are available
+ // immediately, even if a remote image service is unreachable.
+ quick.replaceChildren();
+ const hasColor=window.VitruviaColors?.render(quick,q);
+ const hasFormula=window.VitruviaMathematics?.render(quick,q);
+ if(hasColor||hasFormula)quick.hidden=false;
  heading.textContent=locale("Imágenes y fuentes visuales","Images and visual sources","Images et sources visuelles");
  status.textContent=locale("Buscando obras y fotografías documentadas…","Searching documented artworks and photographs…","Recherche d’œuvres et de photographies documentées…");
  const isCodex=/\b(harleianus|harley(?:\s+ms)?\s*2767|codex\s*h\b|harleian(?:us)?)\b/i.test(q);

@@ -360,6 +360,7 @@ function liveBooks(q,concept){return S.works.map(w=>{
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   baseRating:rating,rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
   links:extras,readable:local,source:"Bibliotheca Graeca et Latina",
+  localReader:/^corpus\/[a-z0-9/_-]+\.html$/i.test(w.localHtml||"")?w.localHtml:null,
   citationText:w.bibliography?.editionCitation||"",
   localHosted:!!(w.localReader?.verified||w.localHtml||w.localVersions?.length||pdf||localWitness)};
  }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
@@ -630,6 +631,11 @@ function renderCard(d){
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
  const acts=node("div","actions");
+ if(d.type==="book"&&d.localReader&&window.VitruviaClassicsViewer){
+  const open=node("button","classics-local-open",S.lang==="en"?"Read original text here":S.lang==="fr"?"Lire le texte original ici":"Leer texto original aquí");
+  open.type="button";open.addEventListener("click",()=>window.VitruviaClassicsViewer.open(d.localReader,d.author+" · "+d.title));
+  acts.append(open);
+ }
  if(d.type==="manuscript"&&d.localViewer){
   const open=node("button","codex-local-open",S.lang==="en"?"Read codex here · "+d.localFolioCount+" images":S.lang==="fr"?"Lire le codex ici · "+d.localFolioCount+" images":"Leer códice aquí · "+d.localFolioCount+" imágenes");
   open.type="button";open.addEventListener("click",()=>window.VitruviaLocalManuscripts?.open(d.localViewer,d.title));
@@ -809,9 +815,10 @@ function display(rows,query,phase){
  const blockOf=r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
   (r.localViewer||(r.link&&!/^https?:\/\//i.test(r.link)))?"site":"web";
  const siteFirst=S.mode==="all";
- const ordered=siteFirst?
+ const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
+ const ordered=window.VitruviaLocalPriority?.promote(firstOrdered,query,S.lexicon)||firstOrdered;
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
  if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
   st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
@@ -1022,7 +1029,9 @@ async function search(){
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal&&window.VitruviaAgentic){
-  pending.push(later(()=>window.VitruviaAgentic.search(generalQuery)).then(value=>({
+  const corpusTask=()=>window.VitruviaAgentic.search(generalQuery);
+  const vital=window.VitruviaLocalPriority?.plan(q,S.lexicon)?.focused;
+  pending.push((vital?Promise.resolve().then(corpusTask):later(corpusTask)).then(value=>({
    name:"Corpus completo y bibliografía del sitio · "+value.stats.chunks+" pasajes indexados",
    rows:value.rows||[]
   })).catch(e=>({name:"Índice académico no disponible",rows:[],warnings:[e.message]})));
@@ -1030,9 +1039,10 @@ async function search(){
  if(internal){
   pending.push((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.ok?r.json():{entries:[]})).then(d=>{
    const f=x=>norm(String(x||"")).replace(/j/g,"i").replace(/v/g,"u"),q=f(generalQuery).trim();
-   const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[])].some(y=>f(y)===q));
+   S.lexicon=d.entries||[];
+   const e=(d.entries||[]).find(x=>[x.lemma,...(x.forms||[]),...(x.aliases||[]),x.greek].filter(Boolean).some(y=>f(y)===q));
    return {name:"Ficha de término",rows:e?[{type:"section",title:"Ficha del término «"+e.lemma+"» en Vitruvio",author:[e.es,e.fr,e.en].filter(Boolean).join(" · "),
-    excerpt:"Definición de Vitruvio con las traducciones V514 · V554 · V297, todas las apariciones por prefacio y capítulo con su folio en el Codex H, aparato crítico, láminas y estudios.",
+    excerpt:"Ficha del léxico enlazada a las ediciones estructuradas del tratado. La presencia de un término en las ediciones no acredita por sí sola su ubicación en un folio manuscrito.",
     meta:"FICHA DE TÉRMINO · BIBLIOTECA VITRUVIANA",rating:3200,link:"termino.html?t="+encodeURIComponent(e.lemma),source:"Biblioteca Vitruviana"}]:[]}}).catch(()=>({name:"Léxico no disponible",rows:[]})));
  }
  if(internal){
@@ -1171,6 +1181,7 @@ function setupAutocomplete(){
   ["Sulpizio · edición príncipe 1486","Sulpizio 1486",["sulpizio","sulpicio","1486"],"Edición"],
   ["Lucrecio · De rerum natura","Lucrecio",["lucrecio","lucretius","rerum natura"],"Libro"],
   ["Cicerón · De officiis","Cicerón De officiis",["ciceron","cicero","officiis"],"Libro"],
+  ["Pitágoras · filósofo y matemático","Pitágoras",["pitagoras","pitágoras","pythagoras"],"Filósofo · Matemático"],
   ["Vitruvio · De architectura","Vitruvio",["vitruvio","vitruvius","de architectura"],"Tratado"]
  ];
  const hide=()=>{menu.hidden=true;menu.classList.remove("has-preview");input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
@@ -1210,7 +1221,12 @@ function setupAutocomplete(){
   if(q.length<2){hide();return}
   const list=node("div","search-suggestions-list");
   const rem=remoteFor===raw?remote:{entities:[],completions:[]};
-  for(const e of rem.entities){
+  const isPythagoras=/^(?:pitagoras|pythagoras)$/i.test(q);
+  const primaryPythagoras=isPythagoras&&rem.entities.find(e=>/^(?:pitagoras|pythagoras)$/i.test(norm(e.label)));
+  if(isPythagoras&&!primaryPythagoras){
+   list.append(option("is-entity is-local-primary",[node("span","sg-main","Pitágoras"),node("small",null,T3("Filósofo y matemático griego","Greek philosopher and mathematician","Philosophe et mathématicien grec"))],()=>choose("Pitágoras")));
+  }
+  for(const e of [...rem.entities].sort((a,b)=>Number(b===primaryPythagoras)-Number(a===primaryPythagoras))){
    const row=option("is-entity",[node("span","sg-main",e.label),node("small",null,e.description)],()=>choose(e.label),e);
    list.append(row);
   }
@@ -1235,6 +1251,7 @@ function setupAutocomplete(){
  async function preview(e){
   const pv=menu.querySelector(".search-preview");if(!pv||!U())return;previewId=e.id;menu.classList.add("has-preview");
   pv.replaceChildren(node("h3",null,e.label),node("p","sp-desc",e.description||""));
+  window.VitruviaMathematics?.render(pv,e.label);
   const f=await U().facts(e.id,S.lang).catch(()=>null);if(previewId!==e.id||!f)return;
   const yrs=[f.birth?.year,f.death?.year].filter(Boolean).join(" – ");
   const where=[f.birthPlace?.label,f.deathPlace?.label].filter(Boolean).join(" · ");
@@ -1242,6 +1259,13 @@ function setupAutocomplete(){
   const tags=[...f.occupations.slice(0,2),...f.movements.slice(0,2),...f.genres.slice(0,2)].map(x=>x.label);
   if(tags.length)pv.append(node("p","sp-tags",tags.join(" · ")));
   if(f.wiki){const sm=await U().summary(f.wiki,f.wikiLang).catch(()=>null);if(previewId!==e.id)return;
+   const imgURL=sm?.thumbnail?.source;
+   if(typeof imgURL==="string"&&/^https:\/\//.test(imgURL)){
+    const img=node("img","sp-portrait");img.src=imgURL;img.alt=e.label;img.loading="lazy";img.decoding="async";img.style.cssText="width:100%;height:155px;object-fit:contain;border-radius:6px;margin:5px 0";
+    pv.append(img);
+    const row=[...menu.querySelectorAll(".search-suggestion.is-entity")].find(x=>x.dataset.entity===e.id);
+    if(row&&!row.querySelector("img")){const thumb=node("img","sg-thumbnail");thumb.src=imgURL;thumb.alt="";thumb.loading="lazy";thumb.decoding="async";thumb.style.cssText="width:40px;height:40px;object-fit:cover;flex-shrink:0;border-radius:4px";row.prepend(thumb)}
+   }
    if(sm?.extract)pv.append(node("p","sp-extract",sm.extract.length>300?sm.extract.slice(0,300).replace(/\s\S*$/,"")+"…":sm.extract))}
   const more=node("button","sp-more",T3("Ver más ›","See more ›","Voir plus ›"));more.type="button";
   more.addEventListener("pointerdown",ev=>ev.preventDefault());more.addEventListener("click",()=>choose(e.label));pv.append(more);

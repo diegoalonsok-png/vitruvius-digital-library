@@ -1,0 +1,65 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import vm from "node:vm";
+const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
+const catalog=JSON.parse(read("data/bibliotheca-graeca-latina-I-bce-I-ce.json"));
+const catullus=catalog.works.find(w=>w.id==="catullus-carmina");
+assert.ok(catullus,"Catullus must be in the general classics catalogue");
+assert.equal(catullus.publicStatus,"lectura-local-completa");
+assert.equal(catullus.localHtml,"corpus/catullus-carmina-la.html");
+const poems=read(catullus.localHtml);
+for(const feature of ['id="find"','id="jump"','id="smaller"','id="larger"','id="print"'])assert.ok(poems.includes(feature),"Local reader missing "+feature);
+const ctx={window:{}};vm.runInNewContext(read("assets/vitruvia-local-priority.js"),ctx);
+const P=ctx.window.VitruviaLocalPriority;
+for(const q of ["Vitruvio","prefacios de vitruvio","libro III capitulo 1","III.1.1"])
+ assert.equal(P.plan(q).focused,true,q+" should prefer Vitruvius database");
+const entries=[{lemma:"symmetria",forms:["symmetriae"]},{lemma:"eurythmia",greek:"εὐρυθμία"}];
+assert.equal(P.plan("symmetria",entries).reason,"lexicon");
+assert.equal(P.plan("symmetriae",entries).lemma,"symmetria");
+assert.equal(P.plan("εὐρυθμία",entries).lemma,"eurythmia");
+assert.equal(P.plan("cafetera",entries).focused,false);
+const sorted=P.promote([
+ {type:"wikipedia",title:"Catullus"},
+ {type:"book",workId:"catullus-carmina",title:"Carmina",author:"Catulo",localReader:catullus.localHtml},
+ {type:"article",title:"A paper"}
+],"Catulo",entries);
+assert.equal(sorted[0].workId,"catullus-carmina");
+const pref=P.promote([{type:"wikipedia"},{type:"preface",title:"De architectura",edition:"recensio-es"}],"prefacios de vitruvio",entries);
+assert.equal(pref[0].type,"preface");
+const corpus=P.promote([{type:"wikipedia"},{type:"passage",edition:"recensio-es",title:"Vitruvio 3.1.1"}],"symmetria",entries);
+assert.equal(corpus[0].type,"passage");
+const x={window:{},URL,location:{href:"https://library.test/vitruvia.html",origin:"https://library.test"}};
+vm.runInNewContext(read("assets/vitruvia-classics-viewer.js"),x);
+assert.equal(x.window.VitruviaClassicsViewer.locate("corpus/catullus-carmina-la.html"),"https://library.test/corpus/catullus-carmina-la.html");
+assert.equal(x.window.VitruviaClassicsViewer.locate("https://evil.test/inject.html"),null);
+assert.equal(x.window.VitruviaClassicsViewer.locate("../private.html"),null);
+const main=read("assets/vitruvia-search.js");
+const html=read("vitruvia.html");
+assert.match(main,/window\.VitruviaClassicsViewer\.open\(d\.localReader/);
+assert.match(main,/window\.VitruviaLocalPriority\?\.promote\(firstOrdered,query,S\.lexicon\)/);
+assert.match(main,/const corpusTask=\(\)=>window\.VitruviaAgentic\.search/);
+assert.ok(html.indexOf("assets/vitruvia-local-priority.js")<html.indexOf("assets/vitruvia-search.js"));
+assert.ok(html.indexOf("assets/vitruvia-classics-viewer.js")<html.indexOf("assets/vitruvia-search.js"));
+const cs={window:{},document:{},location:{href:"https://library.test/vitruvia.html",origin:"https://library.test"}};
+vm.runInNewContext(read("assets/vitruvia-colors.js"),cs);
+const C=cs.window.VitruviaColors;
+assert.equal(C.find("colores").length,12);
+assert.equal(C.find("color azul")[0][3],"#0000FF");
+assert.equal(C.codes("#FF0000").RGB,"255, 0, 0");
+assert.equal(C.codes("#FF0000").HSL,"0°, 100%, 50%");
+assert.equal(C.codes("#FF0000").CMYK,"0%, 100%, 100%, 0%");
+assert.equal(C.find("Pitagoras").length,0);
+const ms={window:{}};
+vm.runInNewContext(read("assets/vitruvia-mathematics.js"),ms);
+assert.equal(ms.window.VitruviaMathematics.find("Pitágoras").formula,"a² + b² = c²");
+assert.equal(ms.window.VitruviaMathematics.find("Radiohead"),null);
+const imageEngine=read("assets/vitruvia-image-engine-v2.js");
+assert.match(imageEngine,/VitruviaColors\?\.render\(quick/);
+assert.match(imageEngine,/VitruviaMathematics\?\.render\(quick/);
+assert.match(main,/isPythagoras/);
+assert.match(main,/sm\?\.thumbnail\?\.source/);
+assert.match(main,/sg-thumbnail/);
+assert.ok(html.indexOf("assets/vitruvia-colors.js")<html.indexOf("assets/vitruvia-image-engine-v2.js"));
+assert.ok(html.indexOf("assets/vitruvia-mathematics.js")<html.indexOf("assets/vitruvia-image-engine-v2.js"));
+new vm.Script(main);
+console.log("PASS: Vitruvius-first and Greek/Latin catalogue reader, Catullus search and verified local reader");
