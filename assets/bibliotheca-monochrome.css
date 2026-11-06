@@ -1,0 +1,456 @@
+/*
+ * Bibliotheca Graeca et Latina · visual system 2026-11-06
+ * Matches the monochrome Vitruvia Lexicon language without changing
+ * original controls, catalogue data, scripts, manuscript imagery or readers.
+ * Loaded ONLY on bibliotheca-graeca-latina.html, after its legacy styles.
+ */
+:root {
+  --bc-bg:#0d0d0e;
+  --bc-paper:#141415;
+  --bc-panel:#19191b;
+  --bc-raised:#202022;
+  --bc-ink:#e9e9e7;
+  --bc-muted:#a4a4a6;
+  --bc-subtle:#818184;
+  --bc-line:#343437;
+  --bc-line-strong:#525256;
+  --bc-accent:#c6c6c3;
+  --bc-font:"Gentium Book Plus","Cardo",Georgia,"Times New Roman",serif;
+}
+html {color-scheme:dark}
+html body {
+  background:var(--bc-bg)!important;
+  color:var(--bc-ink)!important;
+  font:400 15px/1.7 Arial,Helvetica,system-ui,sans-serif;
+  letter-spacing:-.008em;
+}
+html body .classic-main {
+  color:var(--bc-ink);
+  max-width:1540px;
+  padding:24px clamp(17px,3vw,42px) 88px;
+}
+html body .classic-main :is(h1,h2,h3,h4) {
+  color:var(--bc-ink);
+  font-family:var(--bc-font);
+  font-weight:400;
+}
+html body .classic-main :is(a,button,select,input):focus-visible,
+html body .classic-main summary:focus-visible {
+  outline:2px solid #d1d1d2;
+  outline-offset:3px;
+}
+html body .classic-main a {color:#dadada;text-decoration-color:#757577}
+html body .classic-main a:hover {color:#fff;text-decoration-color:#d0d0d0}
+html body .classic-main strong {font-weight:650}
+
+/* Navigation: same calm, monochrome hierarchy as Lexicon. */
+html body .classic-menu {
+  padding-top:11px;
+  padding-bottom:18px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--bc-line);
+  gap:11px 22px;
+}
+html body .classic-menu>a {
+  color:#a9a9ab;
+  font:500 12px/1.5 Arial,Helvetica,sans-serif;
+  text-decoration:none;
+  transition:color .15s ease;
+}
+html body .classic-menu>a:hover {color:#fff}
+html body .classic-menu>a:first-child {
+  color:#e4e4e2;
+  font:italic 400 19px/1.2 var(--bc-font);
+  letter-spacing:-.03em;
+}
+html body .classic-top-language {color:#aaa;font-weight:500}
+html body .classic-top-language select {
+  background:#1b1b1d;
+  color:#ededec;
+  border:1px solid #48484b;
+  border-radius:7px;
+  box-shadow:none;
+  color-scheme:dark;
+}
+
+/* Documentary preliminaries and large editorial title. */
+html body .classic-sigla-guide {
+  color:var(--bc-muted);
+  border-top-color:var(--bc-line)!important;
+  border-bottom:1px solid var(--bc-line);
+  padding:13px 0 15px!important;
+}
+html body .classic-sigla-guide summary {color:#c7c7c8}
+html body .classic-sigla-guide :is(abbr,a) {color:#e4e4e4}
+html body .classic-head {
+  background:transparent;
+  color:var(--bc-ink);
+  border:0;
+  border-bottom:1px solid var(--bc-line);
+  padding:clamp(36px,5vw,74px) 0 clamp(30px,4vw,48px);
+  margin-bottom:24px;
+}
+html body .classic-head .latin {
+  color:#939395;
+  font:500 10px/1.6 Arial,Helvetica,sans-serif;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+html body .classic-head h1 {
+  color:#f0f0ee;
+  font:italic 400 clamp(39px,5vw,75px)/1.03 var(--bc-font);
+  letter-spacing:-.055em;
+  max-width:980px;
+  margin:20px 0 21px;
+  text-wrap:balance;
+}
+html body .classic-head p {
+  color:#b3b3b4;
+  font:400 clamp(15px,1.4vw,18px)/1.77 Arial,Helvetica,sans-serif;
+  max-width:78ch;
+  margin:0;
+}
+html body .classic-note {
+  background:var(--bc-paper);
+  color:#bababc;
+  border:1px solid var(--bc-line);
+  border-left:2px solid #7e7e81;
+  border-radius:8px;
+  padding:17px 19px;
+  line-height:1.73;
+}
+html body .classic-note strong {color:#e1e1e0}
+html body .classic-ref,
+html body .classic-ref p {color:#a4a4a6}
+html body :is(#classic-count,#classic-witness-count) {
+  color:#c5c5c6;
+  font:500 12px/1.7 Arial,Helvetica,sans-serif;
+}
+html body #classic-count {
+  margin:16px 0 22px;
+  font-size:14px;
+  font-variant-numeric:tabular-nums;
+}
+
+/* Search and filters: DO NOT change options, ids, order or handlers. */
+html body .classic-controls {
+  background:#151516;
+  border:1px solid var(--bc-line);
+  border-radius:13px;
+  padding:19px;
+  gap:14px;
+  box-shadow:0 12px 28px #0002;
+}
+html body .classic-controls label {
+  color:#c1c1c2;
+  font:500 12px/1.5 Arial,Helvetica,sans-serif;
+  letter-spacing:.015em;
+  gap:8px;
+}
+html body .classic-controls :is(input,select),
+html body .classic-read-toolbar :is(input,select),
+html body .classic-compare-toolbar select,
+html body .classic-top-language select,
+html body :is(.classic-pdf-version-toolbar,.classic-triple-column,.triple-pane-head,.classical-ms-switch,.triple-folio-nav,.triple-gallery-filter) select,
+html body :is(.classic-view-colorbar,.classical-pdf-find,.triple-gallery-filter) input,
+html body .classical-pdf-number {
+  background:#222224!important;
+  color:#ededed!important;
+  border:1px solid #515154!important;
+  border-radius:7px;
+  box-shadow:none;
+  color-scheme:dark;
+}
+html body .classic-controls :is(input,select) {
+  min-height:46px;
+  padding:10px 12px;
+  font:400 14px/1.4 Arial,Helvetica,sans-serif;
+}
+html body .classic-controls :is(input,select):hover {border-color:#88888b!important}
+html body .classic-controls :is(input,select):focus-visible {
+  border-color:#c6c6c6!important;
+  outline:2px solid #838386;
+  outline-offset:2px;
+}
+html body .classic-controls input::placeholder,
+html body .classic-main :is(.classical-pdf-find,.triple-gallery-filter) input::placeholder {color:#8d8d8f}
+html body .classic-main select option,
+html body .classic-main select optgroup {
+  background:#222224!important;
+  color:#ededed!important;
+}
+html body .classic-clear {
+  color:#bfbfc0;
+  border:1px solid #4b4b4d;
+  background:#252527;
+}
+html body .classic-clear:hover {background:#373739;color:#fff}
+html body .classic-suggestions {
+  background:#19191a;
+  color:#e8e8e7;
+  border-color:#575759;
+  border-radius:0 0 10px 10px;
+  box-shadow:0 18px 40px #000a;
+}
+html body .classic-suggestions-heading {background:#242426;color:#e8e8e7;border-bottom-color:#454547}
+html body .classic-suggestions-help {background:#202022;color:#bdbdbe}
+html body .classic-suggestion,
+html[data-theme=dark] body .classic-suggestion {
+  background:#1b1b1d;
+  color:#e2e2e2;
+  border-color:#333336;
+}
+html body .classic-suggestion small {color:#aaa}
+html body .classic-suggestion:hover,
+html body .classic-suggestion[aria-selected=true],
+html body .classic-suggestion:focus-visible {background:#303032;color:#fff}
+html body .classic-edition-suggestion {border-left-color:#969699;background:#202022}
+html body .classic-suggestion-empty {color:#c0c0c0}
+
+/* Bibliographic results and current selection. */
+html body .classic-layout {gap:22px}
+html body .classic-layout aside {min-width:0}
+html body .classic-list {
+  background:#151516;
+  color:#ebebea;
+  border:1px solid var(--bc-line);
+  border-radius:10px;
+  scrollbar-color:#59595d #1c1c1e;
+  scrollbar-width:thin;
+}
+html body .classic-item {
+  background:transparent;
+  color:#dcdcdc;
+  border-bottom:1px solid #303032;
+  padding:17px 17px 18px;
+  transition:background .13s ease;
+}
+html body .classic-item:last-child {border-bottom:0}
+html body .classic-item strong {
+  color:#eee;
+  font:400 21px/1.25 var(--bc-font);
+  margin:6px 0;
+}
+html body .classic-item span {color:#a5a5a7;font:500 11px/1.6 Arial,Helvetica,sans-serif}
+html body .classic-item:hover,
+html body .classic-item[aria-current=true] {
+  background:#252527;
+  border-left:2px solid #c7c7c7;
+  padding-left:15px;
+}
+html body .classic-item[aria-current=true] strong {color:#fff}
+html body .classic-detail {
+  background:#151516;
+  color:#d5d5d5;
+  border:1px solid var(--bc-line);
+  border-radius:10px;
+  padding:clamp(18px,2.6vw,33px);
+  min-width:0;
+}
+html body .classic-detail h2 {
+  font:400 clamp(30px,3vw,48px)/1.15 var(--bc-font);
+  color:#f3f3f1;
+  letter-spacing:-.025em;
+}
+html body .classic-detail :is(p,li,dd,dt) {line-height:1.75}
+html body .classic-detail a {color:#d6d6d7}
+html body .classic-detail a:hover {color:#fff}
+html body .classic-tag,
+html body .classic-item-status,
+html body .classic-detail-status {
+  background:#212123;
+  color:#bebec0!important;
+  border:1px solid #555557;
+  border-radius:4px;
+  letter-spacing:.075em;
+}
+html body .classic-detail-status.is-local,
+html body .classic-item-status.is-local {border-color:#78978b;color:#c8d8d0!important}
+html body .classic-detail-status.is-external,
+html body .classic-item-status.is-external {border-color:#a99d87;color:#dfd4c2!important}
+html body .classic-detail-status.is-catalog,
+html body .classic-item-status.is-catalog {border-color:#707075;color:#cbcbcb!important}
+html body .classic-status {
+  background:#1f1f21;
+  color:#c7c7c8;
+  border-left:2px solid #8b8b8d;
+  border-radius:4px;
+  padding:17px 19px;
+}
+html body .classic-status dt {color:#dedede}
+html body .classic-tabstrip {gap:7px;border-bottom:1px solid var(--bc-line);padding-bottom:11px}
+html body .classic-tabstrip button {
+  background:#202022;
+  color:#c3c3c5;
+  border:1px solid #414143;
+  border-radius:7px;
+  min-height:39px;
+  padding:9px 13px;
+  font:500 12px/1.3 Arial,Helvetica,sans-serif;
+}
+html body .classic-tabstrip button:hover {background:#303032;border-color:#777779;color:#fff}
+html body .classic-tabstrip button[aria-pressed=true] {
+  background:#d9d9d8;
+  color:#151515;
+  border-color:#d9d9d8;
+}
+html body .classic-viewer {
+  background:#1b1b1d;
+  color:#d4d4d5;
+  border:1px solid #454548;
+  border-radius:8px;
+  padding:14px;
+}
+html body .classic-linkline a,
+html body .classic-search-via-vitruvia {
+  display:inline-flex;
+  align-items:center;
+  background:#212123;
+  color:#e1e1e1;
+  border:1px solid #4a4a4d;
+  border-radius:6px;
+  padding:9px 12px;
+  font:500 12px/1.4 Arial,Helvetica,sans-serif;
+  text-decoration:none;
+}
+html body .classic-linkline a:hover,
+html body .classic-search-via-vitruvia:hover {background:#343437;color:#fff;border-color:#939396}
+
+/* Historiography, editions and citations: preserve all contents. */
+html body .classical-evidence {border-color:#3c3c3e}
+html body .classical-evidence-record {border-color:#38383b}
+html body .classical-evidence-record :is(.classical-evidence-meta,small) {color:#a7a7a9}
+html body .classic-bibliographic-kicker {color:#bdbdbf}
+html body .classic-bibliographic-list,
+html body .classic-bibliographic-count,
+html body .classic-bibliographic-entry {border-color:#3c3c3f}
+html body .classic-bibliographic-entry h3 {color:#e7e7e7}
+html body .classic-bibliographic-note {color:#bebec0}
+html body .classic-bibliographic-open {
+  background:#252527;
+  color:#ededed;
+  border:1px solid #6a6a6e;
+  border-radius:6px;
+}
+html body .classic-bibliographic-open:hover {background:#363638;color:#fff}
+html body .classic-main footer.classic-ref {
+  border-top:1px solid var(--bc-line);
+  padding-top:26px;
+  margin-top:42px;
+}
+
+/* Reader toolbars, bilingual text, collation and facsimile controls. */
+html body .classic-read-toolbar,
+html body .classic-compare-toolbar,
+html body .classic-pdf-version-toolbar,
+html body .classic-view-colorbar,
+html body .classical-pdf-toolbar,
+html body .triple-pane-head,
+html body .triple-modal-top,
+html body .triple-modal-credit {
+  background:#202022;
+  color:#e7e7e7;
+  border:1px solid #414144;
+  border-radius:8px;
+}
+html body .classic-read-toolbar label,
+html body .classic-compare-toolbar label,
+html body .classic-pdf-version-toolbar label {color:#c9c9cb}
+html body .classic-read-columns article {
+  background:#1b1b1d;
+  color:#e5e5e4;
+  border:1px solid #444447;
+  border-radius:7px;
+}
+html body .classic-read-columns h4 {color:#b7b7b8}
+html body .classic-read-columns p {color:#e3e3e1}
+html body .classic-read-nav button,
+html body .classical-pdf-tool,
+html body .classical-pdf-find button,
+html body .classical-pdf-open,
+html body .triple-gallery-filter button,
+html body .triple-more {
+  background:#303032!important;
+  color:#ededed!important;
+  border:1px solid #646467!important;
+  border-radius:7px;
+}
+html body .classic-read-nav button:hover,
+html body .classical-pdf-tool:hover,
+html body .classical-pdf-find button:hover {background:#434347!important}
+html body .classical-pdf-tool[aria-pressed=true] {
+  background:#d5d5d4!important;
+  color:#131313!important;
+}
+html body .classical-pdf-link,
+html body .classical-ms-toolbar .classical-pdf-link {color:#ddd!important;border-color:#777!important}
+html body .classical-pdf-link:hover {color:#fff!important}
+html body .classic-compare-item,
+html body .classic-triple-column,
+html body .triple-pane {
+  background:#1a1a1b;
+  color:#e2e2e2;
+  border:1px solid #414144;
+  border-radius:8px;
+}
+html body .classic-compare-item h3,
+html body .classic-triple-column h3 {color:#ededed}
+html body .triple-pane-head small {color:#a7a7a7}
+html body .triple-warning,
+html body .classical-pdf-search-hit,
+html body .triple-ms-note,
+html body .classical-pdf-search-results {color:#dedede}
+html body .triple-warning {background:#232325;border:1px solid #49494c;border-radius:7px}
+html body .classical-pdf-search-hit {background:#252527;border-color:#414144}
+html body .classical-pdf-search-hit:hover {background:#3a3a3d}
+html body .triple-folio-nav {background:#202022}
+html body .triple-thumbs {background:#202022}
+html body .triple-thumbs button {background:#2d2d2f;border-color:#646466;color:#e3e3e3}
+html body .triple-thumbs :is(strong,small) {color:#d7d7d7}
+html body .triple-thumbs button[aria-current=true] {border-color:#d2d2d2;background:#363638}
+html body .triple-gallery {border-color:#515154}
+html body .triple-gallery h4 {color:#e7e7e7}
+html body .triple-ms {background:#1e1e20;color:#dfdfdf}
+html body .triple-ms-note a {color:#e7e7e7}
+html body .classical-pdf-viewport {background:#252527;border-color:#47474a}
+
+/* Never darken historical document pages or change facsimile rendering. */
+html body :is(.classic-viewer,.classic-compare-panes,.classic-compare-item,.classic-triple-column,.triple-pane) iframe,
+html body :is(.classical-pdf-canvas,.triple-ms img,.triple-modal-scroller img) {
+  color-scheme:light;
+}
+html body .classic-read-columns article a {color:#e3e3e3}
+html body .classic-main mark {background:#6c6c70;color:#fff;border-radius:2px}
+html body .classic-main :is(button,select,input):disabled {opacity:.63;cursor:default}
+
+/* Preserve all catalogue sections in responsive layout. */
+@media(max-width:900px) {
+  html body .classic-layout {grid-template-columns:1fr;gap:17px}
+  html body .classic-list {max-height:340px}
+  html body .classic-detail {padding:18px}
+  html body .classic-head {padding:45px 0 29px}
+}
+@media(max-width:620px) {
+  html body .classic-main {padding:14px 14px 66px}
+  html body .classic-menu {gap:11px 15px}
+  html body .classic-menu>a {font-size:11px}
+  html body .classic-head h1 {font-size:clamp(37px,10vw,56px)}
+  html body .classic-controls {padding:13px;gap:11px}
+  html body .classic-controls label {flex-basis:100%}
+  html body .classic-list {max-height:300px}
+  html body .classic-viewer {padding:8px}
+  html body .classic-read-columns {grid-template-columns:1fr}
+  html body .classic-suggestions {max-height:55vh}
+}
+@media print {
+  html {color-scheme:light}
+  html body {background:#fff!important;color:#161616!important}
+  html body .classic-head,
+  html body .classic-detail,
+  html body .classic-note,
+  html body .classic-read-columns article {
+    background:#fff!important;color:#161616!important;border-color:#888!important;
+  }
+  html body .classic-main :is(h1,h2,h3,h4,p,li,dd,dt) {color:#161616!important}
+  html body .classic-menu {display:none}
+}
