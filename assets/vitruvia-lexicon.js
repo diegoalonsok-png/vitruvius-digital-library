@@ -481,8 +481,12 @@ function renderComparativeAttestations(aside,term,D){
   const concept=await findConcept(q);
   const refs=concept?{la:concept.la||[],grc:concept.grc||[]}:
    {la:D.l==="la"?[q]:[],grc:D.l==="grc"?[q]:[]};
-  const [latin,greek]=await Promise.all([lang("la",true),lang("grc",true)]);
-  const rows=[earliestLexicalHit(latin,refs.la),earliestLexicalHit(greek,refs.grc)]
+  // Evitar descargar y analizar la otra lengua cuando no existe equivalencia verificada.
+  const [latin,greek]=await Promise.all([
+   refs.la.length?lang("la",true):Promise.resolve(null),
+   refs.grc.length?lang("grc",true):Promise.resolve(null)
+  ]);
+  const rows=[latin?earliestLexicalHit(latin,refs.la):null,greek?earliestLexicalHit(greek,refs.grc):null]
    .filter(Boolean).sort((a,b)=>a.date-b.date||a.i-b.i);
   if(!root.isConnected||String(S.q||"").trim()!==sought)return;
   region.replaceChildren();
