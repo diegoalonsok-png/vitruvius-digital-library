@@ -1,0 +1,33 @@
+name: Audit Vitruvia Lexicon editorial sources
+on:
+  push:
+    paths:
+      - 'data/lexicon/etymologicum.json'
+      - 'data/lexicon/sententiae.json'
+      - 'data/structured/recensio-es.json'
+      - 'vitruvia-lexicon.html'
+      - 'assets/vitruvia-lexicon.js'
+      - 'scripts/audit-vitruvia-lexicon.mjs'
+      - '.github/workflows/audit-vitruvia-lexicon.yml'
+  pull_request:
+    paths:
+      - 'data/lexicon/etymologicum.json'
+      - 'data/lexicon/sententiae.json'
+      - 'data/structured/recensio-es.json'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/audit-vitruvia-lexicon.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-audit:
+    name: Validate technical loci and published counts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit Lexicon source evidence
+        run: node scripts/audit-vitruvia-lexicon.mjs
