@@ -29,6 +29,14 @@ for(const path of htmlPaths){
  assert.equal(tags.filter(t=>/analytics\.js/.test(t[1])).length,1,path+' needs one analytics loader');
  assert(tags[0][1].includes('analytics-config.js'),path+' bad script order');
  for(const tag of tags)assert(/\bdefer\b/.test(tag[0]),path+' analytics must be deferred');
+ const documentUrl=new URL(path,'https://diegoalonsok-png.github.io/vitruvius-digital-library/');
+ const baseHref=html.match(/<base\b[^>]*\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
+ const documentBase=baseHref?new URL(baseHref,documentUrl):documentUrl;
+ for(const tag of tags){
+  const resolved=new URL(tag[1],documentBase);
+  assert.equal(resolved.pathname,'/vitruvius-digital-library/assets/'+(tag[1].includes('analytics-config.js')?'analytics-config.js':'analytics.js'),path+' analytics path does not resolve to shared assets');
+ }
+
 }
 
 function run({measurementId='G-TN23SX9Z69',host='diegoalonsok-png.github.io',path='/vitruvius-digital-library/vitruvia.html',dnt='0',gpc=false,embedded=false}={}){
