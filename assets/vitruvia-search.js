@@ -1106,7 +1106,11 @@ async function search(){
    return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
  }
  if(internal&&window.ClassicsCorpusSearch){
-  pending.push(later(()=>window.ClassicsCorpusSearch.search(generalQuery,{limit:6})).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
+  pending.push(later(async()=>{
+   const rows=await window.ClassicsCorpusSearch.search(generalQuery,{limit:6});
+   if(rows.length)return rows;
+   return window.ClassicsCorpusSearch.semanticSearch(generalQuery,{limit:6});
+  }).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
  }
  if(internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;

@@ -55,6 +55,18 @@ try{
    assert.match(await p.locator('#classic-detail').innerText(),/Po[eé]tica|Περὶ ποιητικῆς|Poetics/i);
   }finally{await p.close()}
  });
+ await check('Documented semantic retrieval finds real Latin passages for the concept casa',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.semanticSearch==='function',{timeout:20000});
+   const rows=await p.evaluate(()=>window.ClassicsCorpusSearch.semanticSearch('casa',{limit:12}));
+   assert(rows.length>0,'Conceptus casa must match attested indexed Latin forms');
+   assert(rows.every(x=>x.language==='la'),'Conceptus test must search the documented Latin equivalents');
+   assert(rows.every(x=>/CORRESPONDENCIA SEMÁNTICA EDITORIAL/.test(x.meta)));
+   assert(rows.every(x=>/Locus /.test(x.excerpt)&&/locus=|#/.test(x.link)),
+    'Every semantic result must refer to an actual source locus or text fragment');
+  }finally{await p.close()}
+ });
  await check('Full-text registry searches Catullus poetry, Lucretius and English translations',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
