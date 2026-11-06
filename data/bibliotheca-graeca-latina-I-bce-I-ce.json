@@ -2722,7 +2722,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducción inglesa de F. W. Cornish, revisión de G. P. Goold (Loeb, 1988): ficha institucional Folger vinculada en Edición y traducción; no se presenta como texto íntegro alojado."
+        "status": "Inglés histórico de Leonard C. Smithers (1894), TEI de Perseus DL (CC BY-SA 4.0), 112 poemas con texto legible e indexado; los números XVIII–XX remiten a Anthologia Latina y no contienen traducción, y falta el poema 67. Comparación por número de poema, no por versos, con el latín Ellis (1904) que conserva su propio aparato crítico. La edición de F. W. Cornish revisada por G. P. Goold se mantiene solo como referencia externa, no alojada."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/urn:cts:latinLit:phi0472.phi001.perseus-lat2",
@@ -2756,7 +2756,19 @@
         "rights": "Domino público de la edición histórica (donde proceda); respetar los términos del proveedor del ebook original.",
         "source": "https://www.gutenberg.org/ebooks/23294",
         "cts": "urn:cts:latinLit:phi0472.phi001"
-      }
+      },
+      "corpusFiles": {
+        "en": "data/classics-corpus/catullus-carmina-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Smithers (1894) · 112 poemas en prosa",
+          "path": "classics-text-reader.html?work=catullus-carmina&lang=en",
+          "kind": "historical-translation",
+          "source": "https://atlas.perseus.tufts.edu/library/urn:cts:latinLit:phi0472.phi001.perseus-eng4/"
+        }
+      ]
     },
     {
       "id": "horace-sermones",
