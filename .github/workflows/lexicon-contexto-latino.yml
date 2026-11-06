@@ -1,0 +1,29 @@
+name: Lexicon · lemas latinos por contexto (Stanza)
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Modelo de Stanza para latín (proiel, perseus, ittb, llct)"
+        default: "proiel"
+permissions:
+  contents: write
+jobs:
+  anotar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Instalar Stanza (CPU)
+        run: pip install --index-url https://download.pytorch.org/whl/cpu torch && pip install stanza regex
+      - name: Anotar el corpus latino
+        run: python scripts/annotate-latin-context.py --package "${{ inputs.package }}"
+      - name: Publicar el resultado en una rama de datos
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -b datos/contexto-latino
+          git add data/lexicon/context-la.json
+          git commit -m "Datos: lemas latinos por contexto (Stanza ${{ inputs.package }})"
+          git push -f origin datos/contexto-latino
