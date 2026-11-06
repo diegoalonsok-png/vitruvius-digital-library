@@ -1,3 +1,5 @@
+/* Hoja común de composición justificada para los visores de lectura. */
+(()=>{try{if(document.querySelector('link[data-prosa-justificada]'))return;const src=document.currentScript?.src||"";if(!src)return;const l=document.createElement("link");l.rel="stylesheet";l.href=new URL("prosa-justificada.css?v=20261106-1",src).href;l.dataset.prosaJustificada="";document.head.appendChild(l)}catch{}})();
 /* Barra común entre la biblioteca, sus lectores, la Bibliotheca clásica y Vitruvia.
    Escritorio: una línea fina de texto sobre la cabecera. Celular: línea fija inferior, estilo app.
    Toma los colores de la página (tema claro u oscuro) y no aparece dentro de visores incrustados. */
