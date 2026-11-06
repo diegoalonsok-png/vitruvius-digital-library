@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 24,
+    "indexedTextVersions": 26,
     "indexedDistinctWorks": 14,
     "manuscriptWitnesses": 23
   },
@@ -247,9 +247,11 @@
       "dating": "29–19 a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/virgil-aeneid-en.json",
         "data/classics-corpus/virgil-aeneid-la.json"
       ],
       "localPDF": "documents/classics/virgil-aeneid-book-i-walpole-1893.pdf",
@@ -278,9 +280,11 @@
       "dating": "c. 37–29 a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/virgil-georgica-en.json",
         "data/classics-corpus/virgil-georgica-la.json"
       ],
       "localPDF": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
