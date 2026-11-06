@@ -64,6 +64,19 @@ for bid,w in bib.items():
     o=pick(k,'orig');t=pick(k,'eng')
     extra[k]={'urn':'urn:cts:'+('greekLit' if k.startswith('tlg') else 'latinLit')+':'+k,'id':k,'authorId':k.split('.')[0],'author':w['author'],'dates':w.get('dating',''),
       'title':ext[k]['title'],'language':'grc' if '-grc' in o else 'la','original':url(k,o),'translations':[{'language':'en','url':url(k,f)} for f in t[-1:]],'bibliotheca':bid}
+# Obras completas de los autores ya vinculados (p. ej., el corpus griego de Galeno en First1KGreek):
+# todas sus obras con texto original pasan al catálogo ampliado del Lector clásico.
+author_es={}
+for bid,lst in links.items():
+  for o in lst:
+    a=o['obra'].split('.')[0]
+    if not a.startswith('ll'):author_es.setdefault(a,(bib[bid]['author'],bib[bid].get('dating','')))
+for k in sorted(ext):
+  a=k.split('.')[0]
+  if a not in author_es or k in incat or k in extra:continue
+  o=pick(k,'orig')
+  if not o:continue
+  extra[k]={'urn':'urn:cts:'+('greekLit' if k.startswith('tlg') else 'latinLit')+':'+k,'id':k,'authorId':a,'author':author_es[a][0],'dates':author_es[a][1],'title':ext[k]['title'],'language':'grc' if '-grc' in o else 'la','original':url(k,o),'translations':[{'language':'en','url':url(k,f)} for f in pick(k,'eng')[-1:]],'bibliotheca':None,'corpus':'obra completa del autor'}
 # Vitruvio (Perseus) en el catálogo ampliado para la búsqueda en el corpus; la Bibliotheca usa las ediciones propias.
 k='phi1056.phi001'
 if k in ext and k not in incat and pick(k,'orig'):
