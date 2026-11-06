@@ -4561,7 +4561,7 @@
         "editor": "Wilhelm von Christ · B. G. Teubner, Leipzig"
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Traducción inglesa W. Hamilton Fyfe (1939), codificación TEI Perseus CC BY-SA 4.0, lectura por 26 capítulos; cotejo por líneas Bekker pendiente. Castellano/francés pendientes."
       },
       "links": {
         "scaife": null,
@@ -4616,7 +4616,8 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aristotle-poetics-grc.json"
+        "grc": "data/classics-corpus/aristotle-poetics-grc.json",
+        "en": "data/classics-corpus/aristotle-poetics-en.json"
       },
       "localHtml": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
       "localEdition": {
