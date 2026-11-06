@@ -1,0 +1,78 @@
+{
+ "schema": "pages-index/1",
+ "normalization": "NFD sin diacríticos, minúsculas, ſ→s, j→i, v→u; 4–30 letras",
+ "sources": [
+  {
+   "id": "recensio-es",
+   "label": "V514 · Kurilo · latín y castellano",
+   "kind": "edition",
+   "url": "documents/kurilo-recensio-es.pdf#page={p}",
+   "pages": 1157
+  },
+  {
+   "id": "recensio-fr",
+   "label": "V554 · Kurilo · latín y francés",
+   "kind": "edition",
+   "url": "documents/kurilo-recensio-fr.pdf#page={p}",
+   "pages": 1166
+  },
+  {
+   "id": "theory-en",
+   "label": "V297 · Kurilo · latín e inglés",
+   "kind": "edition",
+   "url": "documents/kurilo-theory-en.pdf#page={p}",
+   "pages": 1056
+  },
+  {
+   "id": "krohn-1912",
+   "label": "Krohn 1912 · edición latina (OCR)",
+   "kind": "ocr",
+   "url": "documents/krohn-1912.pdf#page={p}",
+   "pages": 314
+  },
+  {
+   "id": "rose-1899",
+   "label": "Rose 1899 · edición latina (OCR)",
+   "kind": "ocr",
+   "url": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page={p}",
+   "pages": 358
+  },
+  {
+   "id": "barbaro-1567-la",
+   "label": "Barbaro 1567 · latín (OCR)",
+   "kind": "ocr",
+   "url": "barbaro-enfrentado-1567.html?q={q}",
+   "pages": 406
+  },
+  {
+   "id": "barbaro-1567-it",
+   "label": "Barbaro 1567 · italiano (OCR)",
+   "kind": "ocr",
+   "url": "barbaro-enfrentado-1567.html?q={q}",
+   "pages": 522
+  },
+  {
+   "id": "cesariano-1521",
+   "label": "Cesariano 1521 · italiano (OCR)",
+   "kind": "ocr",
+   "url": "cesariano-1521.html?image={p}",
+   "pages": 378
+  },
+  {
+   "id": "perrault-1673",
+   "label": "Perrault 1673 · francés (OCR)",
+   "kind": "ocr",
+   "url": "https://www.e-rara.ch/download/pdf/16797458.pdf#page={p}",
+   "pages": 370
+  },
+  {
+   "id": "ortiz-1787",
+   "label": "Ortiz y Sanz 1787 · castellano (OCR)",
+   "kind": "ocr",
+   "url": "https://archive.org/download/A065112/A065112.pdf#page={p}",
+   "pages": 370
+  }
+ ],
+ "tokens": 99994,
+ "shard": "tres primeras letras"
+}
