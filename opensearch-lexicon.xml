@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Vitruvia Lexicon</ShortName>
+  <Description>Vitruvia Lexicon · palabras griegas y latinas, etimología, sintaxis y frases del mundo antiguo</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Language>es</Language>
+  <Image width="16" height="16" type="image/svg+xml">https://diegoalonsok-png.github.io/vitruvius-digital-library/assets/favicon.svg</Image>
+  <Url type="text/html" method="get" template="https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia-lexicon.html?q={searchTerms}"/>
+  <moz:SearchForm>https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia-lexicon.html</moz:SearchForm>
+</OpenSearchDescription>
