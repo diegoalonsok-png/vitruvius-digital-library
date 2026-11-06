@@ -216,6 +216,7 @@ async function corpusSearch(){
  $("toc").onchange=e=>{cur=Number(e.target.value);render()};
  $("filter").oninput=renderIndex;if($("f-lang"))$("f-lang").onchange=renderIndex;if($("f-extra"))$("f-extra").onchange=renderIndex;
  if($("corpus-search")){$("corpus-search").onsubmit=e=>{e.preventDefault();corpusSearch()};$("cstop").onclick=()=>{corpusRun++;$("cstop").hidden=true}}
+ if(params.get("cq")&&$("cq")&&!params.get("obra")){if(params.get("extra")==="1")$("f-extra").checked=true;if(params.get("filter"))$("filter").value=params.get("filter");renderIndex();$("cq").value=params.get("cq");setTimeout(corpusSearch,50)}
  $("print").onclick=()=>window.print(); // «Guardar como PDF» en el diálogo de impresión
  $("cite").onclick=async()=>{
   const p=orig[cur];if(!p)return;
