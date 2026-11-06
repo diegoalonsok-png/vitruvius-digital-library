@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 26,
+  "count": 27,
   "works": 14,
   "entries": [
     {
@@ -134,6 +134,16 @@
       "path": "data/classics-corpus/homer-iliad-grc.json",
       "reader": "classics-text-reader.html?work=homer-iliad&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "homer-odyssey",
+      "author": "Homero",
+      "title": "Ὀδύσσεια",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/homer-odyssey-en.json",
+      "reader": "classics-text-reader.html?work=homer-odyssey&lang=en",
+      "sourceDescription": "Samuel Butler 1900, revised by Timothy Power and Gregory Nagy, Perseus TEI, 267 passage units, 24 books; segment-level references, not word-aligned."
     },
     {
       "workId": "homer-odyssey",
