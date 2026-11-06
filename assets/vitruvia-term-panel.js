@@ -238,6 +238,67 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   return box;
  }
 
+ /* ---------- Locus: «II.8.11», «Vitr. 3.1.2», «1 praef 3» ---------- */
+ const ROM={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
+ function parseLocus(q){
+  const m=fold(q).replace(/\b(vitr|vitruvio|vitruvius|de architectura|libro|liber|lib|cap|capitulo)\b\.?/g,' ').trim()
+   .match(/^([ivx]+|\d{1,2})[\s.,:]+(praef(?:atio)?|pr|\d{1,2})(?:[\s.,:]+(\d{1,2}))?$/);
+  if(!m)return null;
+  const b=ROM[m[1]]||+m[1];if(!b||b>10)return null;
+  const c=/^pr/.test(m[2])?'praef':String(+m[2]);
+  return m[3]?`${b}.${c}.${+m[3]}`:`${b}.${c}`;
+ }
+ function bilingualReader(locus,term){
+  const box=document.createElement('div');box.id='vitruvia-term-reader';
+  const h=document.createElement('h4');h.textContent='Leer · latín y traducción enfrentados';box.append(h);
+  const bar=document.createElement('div');bar.className='vtp-chips';box.append(bar);
+  const sel=document.createElement('select');sel.className='vtp-chip';sel.setAttribute('aria-label','Traducción');
+  for(const [id,txt] of [['recensio-es','Latín · castellano (V514)'],['theory-en','Latín · inglés (V297)'],['recensio-fr','Latín · francés (V554)']]){const o=document.createElement('option');o.value=id;o.textContent=txt;sel.append(o)}
+  try{const pref=localStorage.getItem('vitruvia-reader-edition');if(pref)sel.value=pref}catch{}
+  if(lang()==='en'&&!localStorage.getItem?.('vitruvia-reader-edition'))sel.value='theory-en';
+  const full=document.createElement('a');full.className='vtp-chip';full.target='_blank';full.rel='noopener';
+  bar.append(sel,full);
+  const frame=document.createElement('iframe');frame.title='Lector bilingüe de De architectura';frame.style.cssText='width:100%;height:min(80vh,860px);border:1px solid var(--line,#313b38);border-radius:10px;margin-top:10px;background:#fff';box.append(frame);
+  const load=()=>{const u=`lector-bilingue.html?edition=${sel.value}&locus=${encodeURIComponent(locus)}${term?'&q='+encodeURIComponent(term):''}`;frame.src=u+'&embed=1';full.href=u;full.textContent='Abrir en pantalla completa ↗';try{localStorage.setItem('vitruvia-reader-edition',sel.value)}catch{}};
+  sel.onchange=load;load();
+  return box;
+ }
+ /* ---------- Índice de páginas de todos los libros del sitio ---------- */
+ const pnorm=s=>String(s||'').replace(/ſ/g,'s').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/j/g,'i').replace(/v/g,'u');
+ async function pagesFor(groups){
+  // groups: [[formas de la palabra 1], [formas de la palabra 2], …] → OR dentro del grupo, AND entre grupos.
+  const meta=await json('data/pages-index/meta.json');
+  const words=groups.map(g=>[...new Set(g.map(pnorm).filter(t=>/^[a-z]{4,30}$/.test(t)))]).filter(g=>g.length);
+  if(!words.length)return null;
+  const shard=async t=>{try{return await json('data/pages-index/'+t.slice(0,3)+'.json')}catch{return {}}};
+  let acc=null;
+  for(const g of words){
+   const per={};
+   for(const t of g){const d=(await shard(t))[t];if(!d)continue;for(const [src,pages] of Object.entries(d))(per[src]??=new Set),pages.forEach(p=>per[src].add(p))}
+   if(!acc)acc=per;else{for(const src of Object.keys(acc)){if(!per[src]){delete acc[src];continue}acc[src]=new Set([...acc[src]].filter(p=>per[src].has(p)));if(!acc[src].size)delete acc[src]}}
+  }
+  return {meta,hits:acc||{}};
+ }
+ function pagesBlock(res,term){
+  if(!res||!Object.keys(res.hits).length)return null;
+  const box=document.createElement('div');const h=document.createElement('h4');h.textContent='En las páginas de los libros del sitio';box.append(h);
+  const note=document.createElement('p');note.className='vtp-note';note.textContent='Ediciones de Diego Kurilo y PDF históricos indexados. En las ediciones antiguas la coincidencia sale del OCR: es una pista de lectura, no un cotejo.';box.append(note);
+  const list=document.createElement('div');list.className='vtp-loci';box.append(list);
+  for(const m of res.meta.sources){const pages=[...(res.hits[m.id]||[])].sort((a,b)=>a-b);if(!pages.length)continue;
+   const row=document.createElement('article');row.className='vtp-locus';
+   row.innerHTML=`<div class="vtp-ref">${esc(m.label.split(' · ')[0])}<small>${esc(m.label.split(' · ').slice(1).join(' · '))}</small></div><div class="vtp-es" style="grid-column:2/-1">${pages.length} página${pages.length>1?'s':''}</div><div class="vtp-actions"></div>`;
+   const act=row.querySelector('.vtp-actions');
+   for(const p of pages.slice(0,12)){const a=document.createElement('a');a.href=m.url.replace('{p}',p).replace('{q}',encodeURIComponent(term));a.target='_blank';a.rel='noopener';a.textContent='p. '+p+' ↗';act.append(a)}
+   if(pages.length>12){const a=document.createElement('a');a.href='scriptorium.html?q='+encodeURIComponent(term);a.textContent=`+${pages.length-12} en el Scriptorium ↗`;act.append(a)}
+   list.append(row)}
+  return box;
+ }
+ async function appendPages(groups,term,token){
+  const res=await pagesFor(groups).catch(()=>null);if(token!==seq)return;
+  const b=pagesBlock(res,term);if(!b)return;
+  panel.append(b);
+ }
+
  /* ---------- Fichas ---------- */
  async function renderLatin(q,lemmas,token,asked){
   const greek=lemmas[0].greek;
@@ -259,6 +320,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   panel.append(lociBlock(passages,needles,{title:passages.length?`En Vitruvio · ${passages.length} loci de De architectura`:'En Vitruvio · sin loci con esta forma',term:q}));
   panel.append(await booksBlock(passages,needles,q));
   const ap=await apparatusBlock(q);if(token!==seq)return;if(ap)panel.append(ap);
+  await appendPages(lemmas.map(l=>l.forms),q,token);if(token!==seq)return;
   panel.append(corpusLink(q));
  }
  async function renderVernacular(q,passages,token,works){
@@ -268,6 +330,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   panel.append(await booksBlock(passages,[q],q));
   if(works?.length)panel.append(worksBlock(works));
   const ap=await apparatusBlock(q);if(token!==seq)return;if(ap)panel.append(ap);
+  await appendPages(q.split(/\s+/).filter(t=>t.length>=4).map(t=>[t]),q,token);if(token!==seq)return;
   panel.append(corpusLink(q));
  }
  function worksBlock(hits){
@@ -284,6 +347,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    const bio=document.createElement('div');bio.className='vtp-chips';
    for(const [href,txt] of [['#vitruvia-article','Biografía enciclopédica ↓'],['lector-bilingue.html?edition=recensio-es','Leer De architectura · latín y castellano'],['codex-h-folios-local.html','Codex Harleianus H · 341 folios'],['aparato-critico.html','Aparato crítico'],['concordancia-historica.html','Concordancia de ediciones históricas'],['scriptorium.html','Scriptorium · PDF históricos']]){const a=document.createElement('a');a.className='vtp-chip';a.href=href;a.textContent=txt;bio.append(a)}
    panel.append(bio);panel.hidden=false;
+   panel.append(bilingualReader('1.praef.1',''));
    panel.append(await booksBlock([],[],'Vitruvius'));
   }else{
    const top=hits[0]?.w;
@@ -356,6 +420,22 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   panel.append(webBlock(data));panel.hidden=false;
  }
 
+ async function renderLocus(locus,token){
+  const roman=['','I','II','III','IV','V','VI','VII','VIII','IX','X'];const [b,...r]=locus.split('.');
+  panel.innerHTML=`<p class="vtp-kicker">Locus de De architectura · latín y traducciones</p><h3>Vitr. ${esc(roman[+b]+'.'+r.join('.'))}</h3>`;
+  panel.hidden=false;
+  let p=null;try{const es=await json(EDITIONS[0].file);p=es.passages.find(x=>x.locus===locus)||es.passages.find(x=>x.locus.startsWith(locus+'.'))}catch{}
+  if(token!==seq)return;
+  if(p){const d=document.createElement('p');d.className='vtp-head';d.textContent=(p.translation||'').slice(0,320)+((p.translation||'').length>320?' …':'');panel.append(d)}
+  const chips=document.createElement('div');chips.className='vtp-chips';
+  const links=[['aparato-critico.html?locus='+encodeURIComponent(p?.locus||locus),'Aparato crítico ↗']];
+  const f=await folioFor(p?.locus||locus);if(token!==seq)return;
+  if(f)links.push(['codex-h-folios-local.html?folio='+encodeURIComponent('f. '+f),'Codex H · f. '+f+' ↗']);
+  if(p?.pdf_pages?.length)links.push(['documents/kurilo-recensio-es.pdf#page='+p.pdf_pages[0],'PDF V514 · p. '+p.pdf_pages[0]+' ↗']);
+  for(const [h,t] of links){const a=document.createElement('a');a.className='vtp-chip';a.href=h;a.textContent=t;chips.append(a)}
+  panel.append(chips);
+  panel.append(bilingualReader(p?.locus||locus,''));
+ }
  /* ---------- Orquestación ---------- */
  let seq=0;
  async function run(q){
@@ -363,6 +443,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   q=String(q||'').trim();if(!q)return;
   try{
    const fq=fold(q);
+   const locus=parseLocus(q);if(locus){await renderLocus(locus,token);return}
    const isV=VITRUVIUS.test(fq);
    if(!isV){
     const lat=await greekLemma(q)||await latinLemma(q);
