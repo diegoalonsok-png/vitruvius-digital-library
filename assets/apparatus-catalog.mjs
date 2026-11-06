@@ -90,13 +90,16 @@ function renderNext(){
  for(const e of rows){
   const article=document.createElement('article');article.className='critical-result';
   const location=e.page?'PDF, página '+e.page:'Nota DOCX '+(e.sourceParagraph===undefined?'':'· párrafo '+e.sourceParagraph);
-  const status=e.source==='nota'?'Nota al pie extraída del DOCX':'Encabezado o apartado localizado mediante texto del PDF';
+  const status=e.source==='nota'
+   ?(e.locusCertified?'Nivel A · Nota DOCX con locus explícito (no es variante manuscrita verificada)':e.locusMention?'Nivel B · Nota DOCX con locus candidato, pendiente de cotejo':'Nivel C · Nota DOCX sin locus comprobado')
+   :(e.locusCertified?'Bloque editorial con locus en el encabezado; lectura reportada desde PDF':'Bloque extraído de texto PDF; locus no certificado');
+
   const link=e.page?pdfURL(e,e.page):e.pdf;
   const locus=e.locusMention?' · locus '+e.locusMention+(e.locusCertified?' (en el rótulo)':e.source==='nota'?' (anclaje propuesto)':' (mencionado en el texto)'):'';const readLocus=e.locusMention&&/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(e.locusMention)?e.locusMention:(e.pageLoci||[])[0];
   article.innerHTML='<p class="meta">'+esc(e.editionName)+' · '+esc(location)+' · '+esc(status)+'</p>'+
    '<h3 style="font-family:var(--serif);font-weight:500">'+esc(e.title)+'</h3>'+
    '<p>'+excerpt(e.text,term)+'</p>'+
-   '<p class="source-note">Tipo: '+esc(e.type)+esc(locus)+' · El PDF es el testimonio editorial que debe consultarse antes de citar.</p>'+
+   '<p class="source-note">Tipo: '+esc(e.type)+esc(locus)+' · Procedencia: '+esc(e.source==='nota'?'DOCX de la edición del autor':'Texto extraído del PDF editorial')+' · <strong>Collatio autóptica: no acreditada por esta ficha.</strong> Verificar la variante en la fuente primaria antes de citar.</p>'+
    '<div class="actions"><a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(e.page?'Abrir la página '+e.page+' del PDF':'Consultar libro original PDF')+' ↗</a>'+(readLocus?' <a href="lector-bilingue.html?edition='+esc(e.edition)+'&amp;locus='+esc(encodeURIComponent(readLocus))+'">Leer el locus en el lector →</a>':'')+'</div>';
   area.append(article);
  }
