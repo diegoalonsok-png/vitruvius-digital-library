@@ -6876,7 +6876,7 @@
         "sha1": "5a431e1adf3e1e49867da5c3ff492e082ff255ad"
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Inglés histórico de Charles E. Bennett y William A. Hammond (1902): 30 capítulos indexados para consulta, con correspondencia por capítulo respecto al texto griego editado. No implica cotejo por párrafo o frase; los traductores reconocen omisiones e inserciones. Fuente: Project Gutenberg 58242."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -6900,13 +6900,23 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/theophrastus-characters-grc.json"
+        "grc": "data/classics-corpus/theophrastus-characters-grc.json",
+        "en": "data/classics-corpus/theophrastus-characters-en.json"
       },
       "localHtml": "classics-text-reader.html?work=theophrastus-characters&lang=grc",
       "localEdition": {
         "original": "Griego · ed. H. Diels (Oxford 1909)",
         "source": "Texto griego editado de Perseus Digital Library (TEI, CC BY-SA 4.0), 31 unidades (proemio y 30 caracteres) con secciones citables. Búsqueda por palabra con resaltado y diccionario griego (glosas LSJ, lematización Celano)."
-      }
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Bennett y Hammond (1902) · capítulos 1–30",
+          "path": "classics-text-reader.html?work=theophrastus-characters&lang=en",
+          "kind": "historical-translation",
+          "source": "https://www.gutenberg.org/ebooks/58242"
+        }
+      ]
     },
     {
       "id": "theophrastus-historia-plantarum",
