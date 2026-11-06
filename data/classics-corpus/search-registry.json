@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 34,
-  "works": 15,
+  "count": 35,
+  "works": 16,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -174,6 +174,16 @@
       "path": "data/classics-corpus/homer-odyssey-grc.json",
       "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "krohn-1912-pdf",
+      "author": "Marco Vitruvio Polión · edición Fritz Krohn",
+      "title": "De architectura (1912), OCR no corregido",
+      "language": "la",
+      "format": "historical-ocr-pages",
+      "path": "data/text/krohn-1912.json",
+      "reader": "concordancia-historica.html?ed=krohn-1912",
+      "sourceDescription": "OCR automatizado del facsímil PDF Krohn 1912. Cada referencia es una página del ejemplar escaneado, no un locus crítico; cotejar la imagen antes de citar."
     },
     {
       "workId": "lucretius",
