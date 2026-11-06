@@ -233,6 +233,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   const box=document.createElement('div');const h=document.createElement('h4');h.textContent='Más allá de Vitruvio';box.append(h);
   const c=document.createElement('div');c.className='vtp-chips';box.append(c);
   const a=document.createElement('a');a.className='vtp-chip';a.href='lector-clasico.html?cq='+encodeURIComponent(term)+'&extra=1';a.textContent='Buscar «'+term+'» en todo el corpus clásico (Perseus, First1KGreek, The Latin Library) ↗';c.append(a);
+  const g=document.createElement('a');g.className='vtp-chip';g.href='termino.html?t='+encodeURIComponent(term);g.textContent='Ficha del término y glosario ↗';c.append(g);
   const l=document.createElement('a');l.className='vtp-chip';l.href='https://logeion.uchicago.edu/'+encodeURIComponent(term);l.target='_blank';l.rel='noopener';l.textContent='Diccionarios (Logeion) ↗';c.append(l);
   return box;
  }
@@ -382,5 +383,13 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   }catch(e){if(token===seq){panel.hidden=true}}
  }
  window.addEventListener('vitruvia:search',e=>run(e.detail?.query));
- window.VitruviaTermPanel={run,classicalWorks,version:'1.1'};
+ // Métrica de lectura: además de las lecturas verificadas del sitio, las obras legibles en el visor clásico.
+ (async()=>{try{
+  const [links,bib]=await Promise.all([json('data/bibliotheca-perseus.json?v=20261105-v1'),json('data/bibliotheca-graeca-latina-I-bce-I-ce.json')]);
+  const n=(bib.works||[]).filter(w=>w.localVersions?.length||links.links?.[w.id]).length;
+  const holder=document.getElementById('metric-read')?.parentElement;if(!holder||!n)return;
+  const span=document.createElement('span');span.id='metric-viewer';span.title='Obras de la Bibliotheca Graeca Latina con texto original (y traducción cuando existe) en el visor: textos del sitio, Perseus, First1KGreek y The Latin Library';
+  span.innerHTML='<b>'+n+'</b> obras clásicas en el visor';holder.after(span);
+ }catch{}})();
+ window.VitruviaTermPanel={run,classicalWorks,version:'1.2'};
 })();
