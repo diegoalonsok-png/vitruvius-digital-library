@@ -85,9 +85,9 @@ const TAG=[
 /* Las etiquetas AGDT de 9 posiciones carecen del subtipo: se normalizan a 10. */
 function normTag(t){t=String(t||"");return t.length===9?t[0]+"-"+t.slice(1):t}
 function decodeTag(t){if(!t)return"";t=normTag(t);const out=[];for(const {i,v} of TAG){const c=t[i];if(c&&c!=="-"&&v[c])out.push(v[c])}return out.join(" · ")}
-const PATTERN_ALIASES={pos:{noun:"n",sust:"n",n:"n",verb:"v",verbo:"v",v:"v",adj:"a",a:"a",adv:"d",art:"l",particle:"g",part:"g",conj:"c",prep:"r",pron:"p",num:"m"},
- case:{nom:"n",gen:"g",dat:"d",acc:"a",ac:"a",voc:"v"},num:{sg:"s",pl:"p",du:"d"},tense:{pres:"p",imperf:"i",perf:"r",plup:"l",fut:"f",aor:"a"},
- mood:{ind:"i",subj:"s",opt:"o",inf:"n",imp:"m",ptc:"p",part:"p"},voice:{act:"a",pass:"p",mid:"m",mp:"e"},gender:{m:"m",masc:"m",f:"f",fem:"f",n:"n",neut:"n"}};
+const PATTERN_ALIASES={pos:{noun:"n",sust:"n",sustantivo:"n",n:"n",verb:"v",verbo:"v",v:"v",adj:"a",adjetivo:"a",a:"a",adv:"d",adverbio:"d",art:"l",articulo:"l",artículo:"l",particle:"g",part:"g",particula:"g",conj:"c",conjuncion:"c",prep:"r",preposicion:"r",pron:"p",pronombre:"p",num:"m"},
+ case:{nom:"n",gen:"g",dat:"d",acc:"a",ac:"a",voc:"v",nominativo:"n",genitivo:"g",dativo:"d",acusativo:"a",vocativo:"v"},num:{sg:"s",pl:"p",du:"d",singular:"s",plural:"p",dual:"d"},tense:{pres:"p",imperf:"i",perf:"r",plup:"l",fut:"f",aor:"a",presente:"p",imperfecto:"i",perfecto:"r",aoristo:"a",futuro:"f"},
+ mood:{ind:"i",subj:"s",opt:"o",inf:"n",imp:"m",ptc:"p",part:"p",indicativo:"i",subjuntivo:"s",optativo:"o",infinitivo:"n",imperativo:"m",participio:"p"},voice:{act:"a",pass:"p",mid:"m",mp:"e",activa:"a",pasiva:"p",media:"m"},gender:{m:"m",masc:"m",f:"f",fem:"f",n:"n",neut:"n"}};
 const PATTERN_POS={pos:0,person:2,num:3,tense:4,mood:5,voice:6,gender:7,case:8};
 function parsePattern(src){const conds=[];for(const part of src.split(/[\s,]+/).filter(Boolean)){const [kRaw,vRaw]=part.split("=");const k=({caso:"case",modo:"mood",tiempo:"tense",voz:"voice",genero:"gender",género:"gender",numero:"num",número:"num",persona:"person"})[kRaw]||kRaw;if(!(k in PATTERN_POS)||!vRaw)continue;const vals=vRaw.split("|").map(v=>(PATTERN_ALIASES[k]?.[v]??v));conds.push([PATTERN_POS[k],vals])}return conds}
 function tagMatches(tag,conds){const t=normTag(tag);return conds.every(([pos,vals])=>vals.includes(t[pos]))}
@@ -121,7 +121,7 @@ function resolveTerm(D,t,opts={}){
   if(opts.lemmatize){for(const a of analyses(D,k))for(const f of (D.lemmaForms.get(a[0])||[]))add(f)}
   if(opts.variants){for(const f of (variantIndex(D).get(variantKey(k,D.l))||[]))add(f)}
   if(!out.size&&D.l==="grc"&&!GREEK.test(t.v)){for(const f of (transIndex(D).get(latinTranslitKey(t.v))||[]))add(f)}
- }else if(t.type==="lemma"){const lk=fold(t.v);for(const [lem,fs] of D.lemmaForms){if(fold(lemmaDisplay(lem))===lk)for(const f of fs)add(f)}
+ }else if(t.type==="lemma"){const lk=fold(t.v);const exact=/\d$/.test(lk);for(const [lem,fs] of D.lemmaForms){if(exact?fold(lem)===lk:fold(lemmaDisplay(lem))===lk)for(const f of fs)add(f)}
   if(!out.size)add(lk);
  }else if(t.type==="wild"){let pat=fold(t.v);if(D.l==="grc"&&!GREEK.test(t.v)){/* comodín transliterado */const rx=new RegExp("^"+latinTranslitKey(t.v).replace(/[.+^${}()|[\]\\]/g,"\\$&").replace(/\*/g,".*").replace(/\?/g,".")+"$");for(const [tk,fs] of transIndex(D))if(rx.test(tk))fs.forEach(add)}
   else{const rx=new RegExp("^"+pat.replace(/[.+^${}()|[\]\\]/g,"\\$&").replace(/\*/g,".*").replace(/\?/g,".")+"$","u");for(const k of D.keys)if(rx.test(k))out.add(k)}
@@ -225,6 +225,9 @@ async function run(push=true){
  if(push){const u=new URL(location.href);u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
  try{
+  if(/^(=|sem:)/i.test(q))return renderSemantic(q.replace(/^(=|sem:)\s*/i,""));
+  if(/^#/.test(q))return renderTheme(q.slice(1));
+  if(/^(√|raiz_he:|raíz_he:)/i.test(q))return renderHebrewRoot(q.replace(/^(√|raiz_he:|raíz_he:)\s*/i,""));
   if(S.mode==="sententiae")return renderSententiae(q);
   if(S.mode==="etimologia")return renderEtymSearch(q);
   if(["es","en","fr","de"].includes(S.lang))return renderModernWord(q,S.lang);
@@ -240,7 +243,7 @@ async function run(push=true){
   if(S.mode==="lema"&&!res.hits.length){/* el usuario escribió una forma: se resuelve su lema */parsed.steps.forEach(s=>{if(s.term.fallback)s.term={type:"form",v:s.term.v}});res=execute(D,parsed,{...opts,lemmatize:true})}
   if(!res.hits.length&&l==="la"&&S.lang==="auto"&&!/[\[@"]/.test(q)){const G=await lang("grc");const r2=execute(G,parseQuery(q,S.mode),opts);if(r2.hits.length){S.D=G;fillWorks(G);res=r2}}
   S.result={...res,parsed};
-  if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length)setTimeout(async()=>{const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
+  if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
   if(S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern")await renderEntry(S.D,parsed.steps[0].term,res);
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
@@ -330,6 +333,11 @@ async function renderEntry(D,term,res){
   el("p",{class:"article-byline"},term.v!==title?`Forma buscada: ${term.v}. `:"",lemmas.length?`${lemmas.length>1?"Lemas posibles":"Lema"} según la lematización automática del corpus.`:"Forma sin lema en el índice local."));
  box.append(head);
  const grid=el("div",{class:"article-grid"});const body=el("div",{class:"article-body"});const aside=el("aside",{class:"article-aside"});grid.append(body,aside);box.append(grid);
+ /* Desambiguación interactiva: una forma, varios lemas posibles. */
+ if(lemmas.length>1){const ch=el("div",{class:"lx-disamb"},el("p",{},el("b",{},`«${term.v}» corresponde a ${lemmas.length} lemas posibles`)," en la lematización automática, que no desambigua por el contexto. Elija cuál desea rastrear (todas sus formas):"));const a=el("div",{class:"actions"});
+  lemmas.forEach(lem=>{const info=lemmaInfo(D,lem);a.append(el("button",{type:"button",lang:D.l,onclick:()=>{$("#lx-q").value="@"+lem;S.mode="lema";renderTabs();run()}},`${lemmaDisplay(lem)}${info.h?" · "+info.h:""}${info.g?" — "+info.g.split(/;\s*/)[0]:""}`))});ch.append(a);body.append(ch)}
+ /* Sugerencia interlingüística desde el Etymologicum. */
+ {const eq=findCurated(lemmas.concat([term.v]));if(eq&&((eq.gr||[]).length||(eq.he||[]).length)){const sg=el("p",{class:"lx-person-banner"},"Equivalentes registrados: ");(eq.l==="la"?(eq.gr||[]):(eq.la||[])).slice(0,3).forEach(x=>sg.append(el("span",{lang:eq.l==="la"?"grc":"la"},x.w)," · "));(eq.he||[]).slice(0,2).forEach(x=>sg.append(el("span",{lang:"he"},x.w)," · "));sg.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value="="+eq.lemma;run()}},`Incluir griego, latín y hebreo (=${eq.lemma})`));body.append(sg)}}
  /* Lema y morfología */
  for(const lem of lemmas.slice(0,4)){
   const info=lemmaInfo(D,lem);const forms=[...(D.lemmaForms.get(lem)||[])].filter(f=>D.freq.has(f)).sort((a,b)=>D.freq.get(b)-D.freq.get(a));
@@ -453,6 +461,114 @@ async function renderPerson(P,q){
   if(hits.length>30)list.append(el("button",{type:"button",class:"lx-more",onclick:()=>{$("#lx-q").value="@"+(label==="griego"?greekShown[0]:P.latin[0]);S.lang=label==="griego"?"grc":"la";$("#lx-lang").value=S.lang;S.mode="lema";renderTabs();run()}},`Ver los ${hits.length} pasajes en ${label}`));
  }
  setState(`${P.name}: ${total} pasaje${total===1?"":"s"} en los textos antiguos del corpus local (griego y latín).`);
+}
+
+/* ---------- Resultados agrupados por lengua (operadores =, # y personajes) ---------- */
+function lemmaFormsFor(D,word){
+ const out=new Set();const t={type:"lemma",v:word};for(const f of resolveTerm(D,t))out.add(f);
+ if(!out.size){const k=fold(word).replace(/^\*/,"");if(D.post.has(k))out.add(k);for(const a of analyses(D,k))for(const f of (D.lemmaForms.get(a[0])||[]))if(D.post.has(f))out.add(f)}
+ return out;
+}
+function groupHits(D,forms){const hits=[];for(const k of forms)for(const i of (D.post.get(k)||[])){const p=D.corpus.passages[i];for(const m of p[2].matchAll(TOKEN))if(fold(m[0]).replace(/'+$/,"")===k)hits.push({i,spans:[[m.index,m.index+m[0].length]],tok:0})}
+ const seen=new Set();return hits.filter(h=>{const id=h.i+":"+h.spans[0][0];if(seen.has(id))return false;seen.add(id);return true}).sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i)}
+function renderGroups(groups){
+ const list=$("#lx-results");list.replaceChildren();$("#lx-side-extra").replaceChildren();let total=0;
+ for(const g of groups){
+  if(!g.forms.size){list.append(el("p",{class:"lx-small"},`${g.label}: sin formas atestiguadas en el corpus local.`));continue}
+  const hits=groupHits(g.D,g.forms);total+=hits.length;
+  const h=el("h3",{class:"lx-group-h"},`${g.label} · ${hits.length} pasaje${hits.length===1?"":"s"}`);list.append(h);
+  if(g.words?.length)list.append(el("p",{class:"lx-small",lang:g.D.l},"Lemas: ",g.words.join(" · ")));
+  const box=el("div");list.append(box);let n=0;const more=()=>{hits.slice(n,n+20).forEach(x=>box.append(hitCard(g.D,x)));n+=20;btn.hidden=n>=hits.length};
+  const btn=el("button",{type:"button",class:"lx-more",onclick:more},"Mostrar 20 más");list.append(btn);more();
+ }
+ return total;
+}
+
+/* ---------- Operador de equivalencia semántica: =aedes · sem:λόγος ---------- */
+function findEquivalenceEntry(w){
+ const k=fold(w);const E=S.etym?.entries||[];
+ return E.find(e=>fold(e.lemma)===k)||E.find(e=>[...(e.gr||[]),...(e.la||[])].some(x=>fold(x.w)===k))||E.find(e=>(e.he||[]).some(h=>heKey(h.w)===heKey(w)));
+}
+async function renderSemantic(word){
+ const e=findEquivalenceEntry(word);
+ if(!e){setState(`«${word}» no tiene equivalencias registradas en el Etymologicum. Pruebe sin «=» para la búsqueda léxica.`);return}
+ const la=[...new Set([e.l==="la"?e.lemma:null,...(e.la||[]).map(x=>x.w)].filter(Boolean))];
+ const gr=[...new Set([e.l==="grc"?e.lemma:null,...(e.gr||[]).map(x=>x.w)].filter(Boolean))];
+ const [La,G]=await Promise.all([lang("la",true),lang("grc",true)]);
+ const lf=new Set(),gf=new Set();la.forEach(w=>lemmaFormsFor(La,w).forEach(f=>lf.add(f)));gr.forEach(w=>lemmaFormsFor(G,w).forEach(f=>gf.add(f)));
+ const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · AEQUIVALENTIA"),el("h2",{lang:e.l},e.lemma),el("p",{class:"article-byline"},"Búsqueda trilingüe por las equivalencias registradas en la ficha del Etymologicum (latín, griego, hebreo).")));
+ const dl=el("dl",{class:"lx-dl"});dl.append(el("dt",{},"Latín"),el("dd",{lang:"la",class:"lx-root"},la.join(" · ")||"—"),el("dt",{},"Griego"),el("dd",{lang:"grc",class:"lx-root"},gr.join(" · ")||"—"),el("dt",{},"Hebreo"),el("dd",{},(e.he||[]).map(h=>el("span",{class:"lx-chip"},el("span",{lang:"he"},h.w)," ",el("i",{},h.tr)," — ",h.g,heRootOf(h.w)?el("small",{}," · raíz ",el("button",{type:"button",class:"lx-formlink",lang:"he",onclick:()=>{$("#lx-q").value="√"+heRootOf(h.w);run()}},heRootOf(h.w))):null)).concat((e.he||[]).length?[]:["—"])));
+ box.append(dl,el("p",{class:"article-note"},"Las equivalencias son correspondencias de traducción y de campo semántico, no sinónimos estrictos; incluyen cognados y derivados declarados en la ficha."));
+ const total=renderGroups([{D:La,forms:lf,label:"Latín",words:la},{D:G,forms:gf,label:"Griego",words:gr}]);
+ setState(`=${word}: ${total} pasajes en latín y griego por ${la.length+gr.length} lemas equivalentes${(e.he||[]).length?"; equivalentes hebreos en la ficha":""}.`);
+}
+
+/* ---------- Tesauro temático: #geometria ---------- */
+let THES=null;
+async function thesaurus(){if(!THES){try{THES=await load("data/lexicon/thesaurus.json")}catch{THES={themes:[]}}}return THES}
+async function renderTheme(tag){
+ const T=await thesaurus();const k=fold(tag);
+ const t=T.themes.find(x=>x.id===k)||T.themes.find(x=>fold(x.label).includes(k))||T.themes.find(x=>x.id.startsWith(k));
+ const list=$("#lx-results");
+ if(!t){setState(`No hay un campo «#${tag}». Campos disponibles: ${T.themes.map(x=>"#"+x.id).join(" · ")}`);list.append(themeChips(T));return}
+ const [La,G]=await Promise.all([lang("la",true),lang("grc",true)]);
+ const lf=new Set(),gf=new Set();t.la.forEach(w=>lemmaFormsFor(La,w).forEach(f=>lf.add(f)));t.grc.forEach(w=>lemmaFormsFor(G,w).forEach(f=>gf.add(f)));
+ const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · THESAURUS THEMATICUS"),el("h2",{},t.label),el("p",{class:"article-byline"},T.method)),themeChips(T,t.id));
+ const total=renderGroups([{D:La,forms:lf,label:"Latín",words:t.la},{D:G,forms:gf,label:"Griego",words:t.grc}].filter(g=>g.words.length));
+ setState(`#${t.id}: ${total} pasajes para ${t.la.length+t.grc.length} lemas del campo «${t.label}».`);
+}
+function themeChips(T,cur){const p=el("p",{class:"suggestions lx-themes"},el("span",{},"Campos"));for(const x of T.themes)p.append(el("button",{type:"button","aria-pressed":String(x.id===cur),onclick:()=>{$("#lx-q").value="#"+x.id;run()}},"#"+x.id));return p}
+
+/* ---------- Raíces hebreas triconsonánticas: √בנה · raiz_he:בנה ---------- */
+let HER=null;
+async function heRoots(){if(!HER){try{HER=(await load("data/lexicon/hebrew-roots.json")).roots}catch{HER={}}}return HER}
+const FINAL={"ך":"כ","ם":"מ","ן":"נ","ף":"פ","ץ":"צ"};
+function heKey(w){return String(w||"").normalize("NFD").replace(/[֑-ׇ]/g,"").replace(/[^א-ת]/g,"").replace(/[ךםןףץ]/g,c=>FINAL[c])}
+function heRootOf(w){if(!HER)return"";const k=heKey(w);for(const [word,[root]] of Object.entries(HER))if(heKey(word)===k)return root;return""}
+async function renderHebrewRoot(rootIn){
+ const R=await heRoots();const rk=heKey(rootIn);
+ const words=Object.entries(R).filter(([,v])=>heKey(v[0])===rk);
+ const E=S.etym?.entries||[];const list=$("#lx-results");
+ const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · RADIX HEBRAICA"),el("h2",{lang:"he",dir:"rtl",class:"lx-he"},"√"+rootIn),el("p",{class:"article-byline"},words.length?`${words.length} palabra${words.length===1?"":"s"} de esta raíz entre las equivalencias del Etymologicum (BDB, HALOT).`:"Ninguna equivalencia registrada deriva de esta raíz.")));
+ for(const [w,[r,gl]] of words){
+  const ents=E.filter(e=>(e.he||[]).some(h=>heKey(h.w)===heKey(w)));
+  const card=el("article",{class:"result-card"},el("div",{class:"kind"},"raíz "+r+(gl?" · "+gl:"")),el("h3",{lang:"he",dir:"rtl",class:"lx-he"},w));
+  const a=el("div",{class:"actions"});ents.forEach(e=>{const h=e.he.find(x=>heKey(x.w)===heKey(w));a.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=e.lemma;S.mode="palabra";S.lang=e.l;$("#lx-lang").value=e.l;renderTabs();run()}},`${e.lemma} (${h?.tr||""})`),el("button",{type:"button",onclick:()=>{$("#lx-q").value="="+e.lemma;run()}},`=${e.lemma} · trilingüe`))});
+  card.append(a);list.append(card);
+ }
+ list.append(el("p",{class:"lx-ext"},"Raíz en léxicos en línea: ",el("a",{href:`https://www.sefaria.org/search?q=${encodeURIComponent(rootIn)}`,target:"_blank",rel:"noopener noreferrer"},"Sefaria")," · ",el("a",{href:`https://en.wiktionary.org/wiki/${encodeURIComponent([...heKey(rootIn)].join("־"))}`,target:"_blank",rel:"noopener noreferrer"},"Wiktionary (raíz)")));
+ setState(`Raíz √${rootIn}: ${words.length} derivado${words.length===1?"":"s"} registrado${words.length===1?"":"s"}. El corpus local aún no incluye texto hebreo continuo: la raíz se busca en las equivalencias de las fichas.`);
+}
+
+/* ---------- Constructor visual de consultas morfosintácticas ---------- */
+const QB_FIELDS=[["pos","Categoría",[["","—"],["noun","sustantivo"],["verb","verbo"],["adj","adjetivo"],["adv","adverbio"],["art","artículo"],["pron","pronombre"],["prep","preposición"],["conj","conjunción"],["part","partícula"]]],
+ ["case","Caso",[["","—"],["nom","nominativo"],["gen","genitivo"],["dat","dativo"],["acc","acusativo"],["voc","vocativo"]]],
+ ["num","Número",[["","—"],["sg","singular"],["pl","plural"],["du","dual"]]],
+ ["gender","Género",[["","—"],["m","masculino"],["f","femenino"],["n","neutro"]]],
+ ["tense","Tiempo",[["","—"],["pres","presente"],["imperf","imperfecto"],["aor","aoristo"],["perf","perfecto"],["plup","pluscuamperfecto"],["fut","futuro"]]],
+ ["mood","Modo",[["","—"],["ind","indicativo"],["subj","subjuntivo"],["opt","optativo"],["imp","imperativo"],["inf","infinitivo"],["ptc","participio"]]],
+ ["voice","Voz",[["","—"],["act","activa"],["mid","media"],["pass","pasiva"],["mp","mediopasiva"]]]];
+function renderQueryBuilder(){
+ const host=$("#lx-qb");if(!host)return;host.replaceChildren();
+ const sum=el("summary",{},"Constructor de consultas · morfología y sintaxis sin escribir códigos");host.append(sum);
+ const row=el("div",{class:"lx-qb-row"});const sels={};
+ for(const [k,label,opts] of QB_FIELDS){const s=el("select",{"aria-label":label});opts.forEach(([v,t])=>s.append(el("option",{value:v},t)));sels[k]=s;row.append(el("label",{},el("span",{},label),s))}
+ const word=el("input",{type:"text",placeholder:"palabra o @lema (opcional)","aria-label":"Palabra o lema"});row.append(el("label",{},el("span",{},"Palabra / lema"),word));
+ const gap=el("select",{"aria-label":"Distancia"});[["0","contigua"],["1","hasta 1 palabra"],["3","hasta 3 palabras"],["5","hasta 5 palabras"],["8","hasta 8 palabras"]].forEach(([v,t])=>gap.append(el("option",{value:v},t)));
+ row.append(el("label",{},el("span",{},"Separación del anterior"),gap));host.append(row);
+ const preview=el("code",{class:"lx-qb-preview"},"");
+ const token=()=>{const parts=Object.entries(sels).filter(([,s])=>s.value).map(([k,s])=>`${k}=${s.value}`);const w=word.value.trim();if(w&&parts.length)return null;return w||(parts.length?`[${parts.join(" ")}]`:"")};
+ const upd=()=>{const t=token();preview.textContent=t===null?"Elija palabra o rasgos morfológicos, no ambos en el mismo elemento.":t?`Añadirá: ${t}`:"Elija rasgos para construir un elemento."};
+ Object.values(sels).forEach(s=>s.addEventListener("change",upd));word.addEventListener("input",upd);
+ const acts=el("div",{class:"actions"},
+  el("button",{type:"button",onclick:()=>{const t=token();if(!t)return;const q=$("#lx-q").value.trim();$("#lx-q").value=q?`${q}${gap.value!=="0"?" .."+gap.value:""} ${t}`:t;S.mode="sintaxis";renderTabs();Object.values(sels).forEach(s=>s.value="");word.value="";upd()}},"Añadir elemento a la consulta"),
+  el("button",{type:"button",onclick:()=>{S.mode="sintaxis";renderTabs();run().then(()=>$("#results").scrollIntoView({behavior:"smooth"}))}},"Buscar"),
+  el("button",{type:"button",onclick:()=>{$("#lx-q").value="";upd()}},"Vaciar consulta"));
+ host.append(preview,acts);
+ const pre=el("p",{class:"suggestions"},el("span",{},"Construcciones"));
+ [["genitivo absoluto","[mood=ptc case=gen] ..2 [case=gen]"],["infinitivo articular","[pos=art] [mood=inf]"],["μέν … δέ","μέν ..8 δέ"],["potencial (ἄν + optativo)","ἄν ..3 [mood=opt]"],["ἵνα + subjuntivo","ἵνα ..4 [mood=subj]"],["participio atributivo","[pos=art] [mood=ptc]"],["dativo instrumental + verbo","[case=dat pos=noun] [pos=verb]"]].forEach(([t,q])=>pre.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=q;S.mode="sintaxis";renderTabs();run().then(()=>$("#results").scrollIntoView({behavior:"smooth"}))}},t)));
+ host.append(pre,el("p",{class:"explain"},"El análisis morfológico automático cubre el griego (Celano, AGDT). En latín el constructor combina palabras y lemas con distancias; los rasgos morfológicos latinos no están disponibles en el índice actual."));
+ upd();
 }
 /* ---------- Árbol etimológico (Wiktionary, en el navegador del lector) ----------
    Para cualquier palabra latina, griega, castellana, inglesa, francesa o alemana:
@@ -585,7 +701,7 @@ function renderHebrew(q){
  const ents=(S.etym?.entries||[]).filter(e=>(e.he||[]).some(h=>h.w.normalize("NFD").replace(/[֑-ׇ]/g,"").includes(k))||(e.loci||[]).some(L=>L.lang==="he"&&L.t.includes(k)));
  const sents=(S.sent?.sententiae||[]).filter(s=>s.lang==="he"&&s.text.includes(k));
  setState(`${ents.length} ficha${ents.length===1?"":"s"} y ${sents.length} sentencia${sents.length===1?"":"s"} con «${q}». El corpus local no incluye aún texto hebreo continuo: la búsqueda recorre las equivalencias LXX/Vulgata de las fichas.`);
- const list=$("#lx-results");for(const e of ents)list.append(etymResult(e));for(const s of sents)list.append(sententiaCard(s));
+ const list=$("#lx-results");heRoots().then(()=>{const r=heRootOf(q);if(r)list.prepend(el("p",{class:"lx-person-banner"},"Raíz: ",el("span",{lang:"he"},r)," ",el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value="√"+r;run()}},"Ver la familia de la raíz")))});for(const e of ents)list.append(etymResult(e));for(const s of sents)list.append(sententiaCard(s));
  list.append(el("p",{class:"lx-ext"},"Buscar en textos hebreos: ",el("a",{href:`https://www.sefaria.org/search?q=${encodeURIComponent(q)}`,target:"_blank",rel:"noopener noreferrer"},"Sefaria")," · ",el("a",{href:`https://www.blueletterbible.org/search/search.cfm?Criteria=${encodeURIComponent(q)}&t=WLC`,target:"_blank",rel:"noopener noreferrer"},"Westminster Leningrad Codex (Blue Letter Bible)")));
 }
 function etymResult(e){
@@ -883,7 +999,7 @@ async function init(){
  $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
  try{[S.etym,S.sent,S.phil]=await Promise.all([load("data/lexicon/etymologicum.json"),load("data/lexicon/sententiae.json"),load("data/lexicon/philologia.json")])}catch(err){console.error(err)}
- renderInstrumenta();renderNotebook();renderDaily();
+ renderInstrumenta();renderNotebook();renderDaily();renderQueryBuilder();heRoots();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);
  if(p.get("mode")&&MODES[p.get("mode")])S.mode=p.get("mode");if(p.get("lang"))S.lang=p.get("lang");$("#lx-lang").value=S.lang;if(p.get("work"))S.work=p.get("work");renderTabs();

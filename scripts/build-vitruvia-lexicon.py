@@ -233,12 +233,15 @@ for lang in ("la", "grc"):
                 ent = slot.setdefault((lem, tag), set())
                 ent.add(wid)
     if lang == "la":
-        # Correcciones manuales de la tabla CLTK, que asigna a «est», «es», «esse»… solo el lema edo
-        # («comer»): se antepone sum, que es la lectura normal, y se conserva edo como alternativa.
-        for f_ in ("est", "es", "esse", "estis", "este", "esto", "estote"):
-            if f_ in forms and ("sum1", "") not in forms[f_]:
-                works_ = set().union(*forms[f_].values())
-                forms[f_] = {("sum1", ""): works_, **forms[f_]}
+        # Correcciones manuales de la tabla CLTK (forma → lema sin contexto). Se ANTEPONE el lema
+        # normal y se conserva el de CLTK como alternativa: est/es/esse → sum (CLTK solo da edo,
+        # «comer»); uires → vis (CLTK solo da vireo); uis → vis además de volo.
+        OVERRIDES = {"sum1": ("est", "es", "esse", "estis", "este", "esto", "estote"), "vis": ("uires", "uis")}
+        for lem, flist in OVERRIDES.items():
+            for f_ in flist:
+                if f_ in forms and (lem, "") not in forms[f_]:
+                    works_ = set().union(*forms[f_].values())
+                    forms[f_] = {(lem, ""): works_, **forms[f_]}
     out_forms = {k: [[l, t, sorted(ws)] if t else [l, sorted(ws)] for (l, t), ws in v.items()] for k, v in forms.items()}
     lem_out = {k: {kk: vv for kk, vv in v.items() if vv} for k, v in lemmas.items()}
     data = {"schema": "vitruvia-lexicon-forms-v1", "lang": lang,

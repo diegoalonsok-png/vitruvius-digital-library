@@ -209,6 +209,17 @@ html[data-theme=light] .lx-appbox{background:#fff;border-color:#d4d2c9}html[data
 html[data-theme=light] .lx-tree-list,html[data-theme=light] .lx-tree-node::before{border-color:#c9c5b8}
 html[data-theme=light] .lx-tree-head{border-color:#d4d0c4;background:#fff}html[data-theme=light] .lx-tree-leaf .lx-tree-head{background:#f1ede2;border-color:#9a937f}
 html[data-theme=light] .lx-tree-gloss,html[data-theme=light] .lx-tree-cog{color:#4a524e}html[data-theme=light] .lx-group-h{color:#1a2320}
+.lx-qb{margin:12px 0 4px;border:1px solid #333;border-radius:12px;padding:8px 14px;background:#141415}
+.lx-qb summary{cursor:pointer;font-size:13px;color:#cfcfcf;padding:4px 0}
+.lx-qb-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.lx-qb-row label{display:grid;gap:3px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8f8f8f}
+.lx-qb-row select,.lx-qb-row input{background:#1a1a1b;color:#e3e3e1;border:1px solid #3d3d3f;border-radius:6px;padding:7px 8px;font:13px Arial,sans-serif;text-transform:none;letter-spacing:0}
+.lx-qb-preview{display:block;font:14px var(--lx-text);color:#bdbdbb;margin:4px 0}
+.lx-disamb{border:1px solid #555;border-radius:8px;padding:10px 14px;margin:0 0 16px;font-size:14px}
+.lx-themes button[aria-pressed=true]{background:#29292a;color:#fff;border-color:#636363}
+html[data-theme=light] .lx-qb{background:#fff;border-color:#d4d0c4}html[data-theme=light] .lx-qb summary{color:#28302c}
+html[data-theme=light] .lx-qb-row select,html[data-theme=light] .lx-qb-row input{background:#fff;color:#1d2421;border-color:#c5c3ba}
+html[data-theme=light] .lx-disamb,html[data-theme=light] .lx-person-banner{border-color:#c5c3ba}
 /* Tema claro (misma convención que Vitruvia) */
 html[data-theme=light]{--bg:#f7f5ef;--ink:#1d2421}
 html[data-theme=light] body{background:#f7f5ef;color:#1d2421}
@@ -272,6 +283,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
    <label><input type="checkbox" id="lx-lemmatize" checked> Incluir todas las formas del lema</label>
    <label><input type="checkbox" id="lx-variants"> Aproximación fonética y grafías (ae/e, ph/f, y/i; itacismo)</label>
   </div>
+  <details class="lx-qb" id="lx-qb"></details>
   <div class="suggestions"><span>Explorar</span>
    <button type="button" data-q="symmetria">symmetria</button>
    <button type="button" data-q="λόγος">λόγος</button>
@@ -281,7 +293,11 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
    <button type="button" data-q="@aedes" data-mode="lema">@aedes</button>
    <button type="button" data-q="בית" data-mode="etimologia">בית</button>
    <button type="button" data-q="*dem-" data-mode="etimologia">*dem-</button>
+   <button type="button" data-q="=aedes">=aedes</button>
+   <button type="button" data-q="#geometria">#geometria</button>
+   <button type="button" data-q="√בנה">√בנה</button>
   </div>
+  <div id="lx-themes-home"></div>
  </div>
  <aside class="featured" aria-label="Sententia del día y herramientas">
   <div class="featured-copy">
@@ -494,6 +510,10 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <dt><code>~simetria</code></dt><dd>Aproximación por distancia de edición (errores de transcripción y OCR).</dd>
   <dt><code>anthropos</code></dt><dd>Transliteración automática del alfabeto latino al griego: encuentra ἄνθρωπος, φύσις (physis), ψυχή (psyche).</dd>
   <dt><code>[mood=ptc case=gen]</code></dt><dd>Patrón morfosintáctico (griego): pos (noun, verb, adj, adv, art, prep, conj, part, pron), case (nom, gen, dat, acc, voc), num (sg, pl, du), tense (pres, imperf, aor, perf, plup, fut), mood (ind, subj, opt, inf, imp, ptc), voice (act, mid, pass, mp), gender (m, f, n). Valores alternativos con <code>|</code>.</dd>
+  <dt><code>=aedes</code> · <code>sem:λόγος</code></dt><dd>Equivalencia semántica trilingüe: busca el término y sus equivalentes latinos y griegos registrados en el Etymologicum, y muestra los hebreos.</dd>
+  <dt><code>#geometria</code></dt><dd>Tesauro temático: pasajes con cualquier lema de un campo conceptual (#construccion, #materiales, #geometria, #proporcion, #triada, #agua, #maquinas, #astronomia, #musica, #cuerpo, #ciudad, #saber).</dd>
+  <dt><code>√בנה</code> · <code>raiz_he:בנה</code></dt><dd>Raíz hebrea triconsonántica: derivados registrados entre las equivalencias (BDB, HALOT), con su correspondencia griega y latina.</dd>
+  <dt><code>@cum1</code></dt><dd>Lema exacto cuando una forma tiene varios lemas posibles (homógrafos numerados del índice).</dd>
   <dt>Ejemplos</dt><dd><code>[mood=ptc case=gen] [case=gen]</code> genitivo absoluto (candidatos) · <code>[pos=art case=gen] [mood=inf]</code> infinitivo articular · <code>μέν ..8 δέ</code> correlación · <code>ἄν ..3 [mood=opt]</code> potencial.</dd>
  </dl>
  <h3>Corpus y datos</h3>
@@ -521,5 +541,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v3" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v4" defer></script>
 </body></html>
