@@ -50,10 +50,32 @@ function snippet(text,[a,b]){
  const s=Math.max(0,a-90),e=Math.min(text.length,b+140);
  return (s?"…":"")+text.slice(s,a)+"«"+text.slice(a,b)+"»"+text.slice(b,e)+(e<text.length?"…":"");
 }
+// A separate, versioned scope registry prevents a multi-work historical anthology
+// from being treated as if every paragraph belonged to one ancient work.
+let sourceScopeTask=null;
+function sourceScopes(){
+ if(!sourceScopeTask)sourceScopeTask=fetch("data/classics-corpus/source-scope.json")
+  .then(r=>{if(!r.ok)throw Error("Scope HTTP "+r.status);return r.json()})
+  .then(j=>j?.schema==="vitruvia-classics-source-scope-v1"&&Array.isArray(j.entries)?j.entries:[])
+  .catch(()=>[]);
+ return sourceScopeTask;
+}
 function loadJson(e){
  if(!cache.has(e.path))cache.set(e.path,
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
-   .then(d=>d?.workId===e.workId&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
+   .then(async d=>{
+    if(d?.workId!==e.workId||d?.language!==e.language||!Array.isArray(d.passages))return null;
+    if(e.workId!=="apuleius-metamorphoses"||e.language!=="es")return d;
+    const scopes=await sourceScopes();
+    const scope=scopes.find(x=>x.workId===e.workId&&x.language===e.language&&x.sourcePath===e.path);
+    if(!scope)throw Error("Missing mandatory source-scope record for Apuleius Spanish anthology");
+    const passages=d.passages.filter(p=>{
+     const m=/^t(\d+)$/.exec(String(p.locus||""));
+     return m&&Number(m[1])>=scope.first&&Number(m[1])<=scope.last;
+    });
+    if(!passages.length)throw Error("Apuleius source-scope selected no passages");
+    return {...d,passages,sourceScopeNote:scope.noteEs};
+   }).catch(()=>null));
  return cache.get(e.path);
 }
 function loadHtml(e){
