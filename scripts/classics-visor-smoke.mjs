@@ -82,6 +82,20 @@ try{
    assert.equal(check.diagnostics.failed,0,'A registered text failed to load');
   }finally{await p.close()}
  });
+ await check('Semantic concept retrieval cites existing Latin passages and labels its method',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.semanticSearch==='function',{timeout:15000});
+   const results=await p.evaluate(()=>window.ClassicsCorpusSearch.semanticSearch('casa',{limit:8}));
+   assert(results.length>0,'Conceptus casa should retrieve attested Latin vocabulary from existing indexed texts');
+   for(const row of results){
+    assert.equal(row.language,'la','Only documented Latin equivalents expected in this test');
+    assert.match(row.meta,/CORRESPONDENCIA SEMÁNTICA EDITORIAL/);
+    assert.match(row.link,/locus=|#/,'Semantic hit must link to a real indexed passage');
+    assert.match(row.excerpt,/Locus /,'Semantic hit must cite the local locus');
+   }
+  }finally{await p.close()}
+ });
  await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
   const p=await open('auditoria-textos-clasicos.html');
   try{
