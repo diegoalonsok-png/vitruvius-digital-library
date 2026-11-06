@@ -1,5 +1,24 @@
 # Vitruvius Digital Library — registro de cambios
 
+## 6 de noviembre de 2026 — Hoja de ruta filológica: indexación del Codex H (Harley MS 2767) por folio y locus
+
+**Estado: proyecto futuro; NO está implementado como búsqueda textual o semántica fiable del manuscrito.** El visor de facsímiles y la concordancia folio ↔ locus existentes se conservan sin cambios.
+
+**Objetivo.** Construir un corpus documental del testimonio H con búsqueda de formas latinas, variantes gráficas, lemas y pasajes semánticamente próximos, capaz de devolver **folio, cara, región de imagen, transcripción y locus de De architectura**. El acceso IIIF al facsímil es infraestructura de imagen, **no** transcripción ni OCR.
+
+**Dificultad paleográfica y editorial.** H es un testimonio carolingio de transmisión del latín clásico: el texto de Vitruvio no debe confundirse con una nueva lengua «latín carolingio»; lo difícil es la **escritura minúscula carolina manuscrita**, las abreviaturas, ligaduras, signos diacríticos, grafías variantes, puntuación y separación de palabras, correcciones, marginalia, deterioros y variación de tinta o contraste. Los modelos OCR generalistas suelen fallar en manuscritos medievales; se requiere **HTR** (reconocimiento de texto manuscrito) adaptado y revisión paleográfica humana. La segmentación folio → columna/línea → palabra y la identificación de pasajes en imágenes institucionales añaden dificultad.
+
+**Fases y criterios para considerar el proyecto verificable:**
+1. Confirmar manifest IIIF institucional, signatura, licencia, disponibilidad de imágenes y metadatos estables; conservar los identificadores de canvas y, si es posible, regiones IIIF.
+2. Seleccionar primero una muestra de folios con textos arquitectónicos relevantes y preparar transcripción diplomática revisada, preservando abreviaturas y signos dudosos, con expansión editorial separada y marcas de incertidumbre.
+3. Entrenar/evaluar HTR con conjuntos de entrenamiento y prueba separados por folios; publicar tasas de error (CER/WER), límites de calidad y decisiones de lectura, sin confundir predicción de máquina con lectura autóptica.
+4. Alinear **H ↔ folio/canvas ↔ locus** mediante texto latino de referencia Krohn/Rose/V514 con correspondencia probable y control editorial de las diferencias (omisiones, saltos, inversiones, abreviaturas y divergencias).
+5. Crear dos índices diferenciados: **búsqueda literal/lematizada** sobre la transcripción diplomática y normalizada; **búsqueda semántica latina** solo después de una evaluación con consultas de prueba, resultados trazables y comprobación por investigadores. Toda respuesta deberá mostrar la fuente y su nivel de confianza; ningún modelo inventará una lectura ausente.
+6. Publicar registros con enlace a imagen IIIF, folio y locus, transcripción y aparato de variantes cuando haya evidencia suficiente, junto con un protocolo de corrección y versiones fechadas.
+
+**Principio metodológico.** El texto latino de ediciones modernas puede asistir la alineación, pero no reemplazar el reconocimiento y cotejo independiente de las grafías presentes en H. Mantener separadas «texto inferido por modelo», «transcripción revisada» y «variante certificada». No modificar el visor actual hasta disponer de un módulo de indexación estable.
+
+
 ## 3 de noviembre de 2026 — Atlas Geographicus: regiones, ríos, cartografía histórica y fuentes textuales
 
 - Se mantiene el mapa moderno OSM y se incorpora selector hacia el mapa base de la Antigüedad del **Consortium of Ancient World Mappers** (CAWM / University of Iowa, CC BY 4.0). Periodización general: **no es una restitución del mundo romano en un año exacto**.
