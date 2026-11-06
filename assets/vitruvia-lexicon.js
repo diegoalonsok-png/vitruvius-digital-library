@@ -44,6 +44,7 @@ const DATA_VER=document.querySelector('meta[name="lx-data-version"]')?.content||
 function load(path){const url=ROOT+path+(DATA_VER&&path.startsWith("data/lexicon/")?(path.includes("?")?"&":"?")+"v="+DATA_VER:"");if(!cache.has(path))cache.set(path,fetch(url,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()}));return cache.get(path)}
 const L={};
 async function lang(l,silent=false){
+ if(l==="la")loadContext();
  if(L[l])return L[l];
  L[l]=(async()=>{
   if(!silent)setState(l==="grc"?"Cargando el corpus griego y su índice léxico…":"Cargando el corpus latino y su índice léxico…");
@@ -225,6 +226,10 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Lema por contexto":["Lemma by context","Lemme selon le contexte"],"descartados":["ruled out","écartés"],
+ "Elegido por el analizador Stanza según el contexto, entre los lemas posibles de la forma. Análisis automático: verifíquese en el pasaje.":["Chosen by the Stanza analyser from the context, among the possible lemmas of the form. Automatic analysis: check it in the passage.","Choisi par l'analyseur Stanza selon le contexte, parmi les lemmes possibles de la forme. Analyse automatique : à vérifier dans le passage."],
+ "coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.":["matches ruled out: the contextual analysis (Stanza) assigns another lemma there.","occurrences écartées : l'analyse contextuelle (Stanza) y attribue un autre lemme."],
+ "Mostrarlas también":["Show them too","Les afficher aussi"],"Aplicar el filtro contextual":["Apply the contextual filter","Appliquer le filtre contextuel"],"Se muestran todas las coincidencias de la tabla, sin el filtro contextual. ":["All table matches are shown, without the contextual filter. ","Toutes les occurrences de la table sont affichées, sans le filtre contextuel. "],
  "DOI de la edición":["Edition DOI","DOI de l'édition"],"DOI del proyecto":["Project DOI","DOI du projet"],
  "versión de datos":["data version","version des données"],"En":["In","Dans"],"ed.":["ed.","éd."],"consultado el":["accessed","consulté le"],"Consultado el":["Accessed","Consulté le"],"s. f.":["n.d.","s. d."],"editado por":["edited by","édité par"],
  "Este enlace se citó con la versión de datos":["This link was cited with data version","Ce lien a été cité avec la version de données"],"ahora se consulta la versión":["you are now viewing version","vous consultez maintenant la version"],"El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.":["The passage may have been corrected since; the full history is in the repository.","Le passage a pu être corrigé depuis ; l'historique complet est dans le dépôt."],"Historial de cambios":["Change history","Historique des modifications"],
@@ -299,13 +304,17 @@ async function run(push=true){
   if(S.mode==="palabra"&&S.lang==="auto"&&!/[\s@"\[*?~#=:√]/.test(q)&&!GREEK.test(q)&&!HEBREW.test(q)){const c=await findConcept(q);if(c&&Object.values(c.modern).flat().some(m=>fold(m)===fold(q))){await renderModernWord(q,null);const b=el("p",{class:"lx-small"},el("button",{type:"button",class:"lx-btn",onclick:()=>{S.lang="la";$("#lx-lang").value="la";run()}},`Buscar «${q}» como palabra latina`)," ",el("button",{type:"button",class:"lx-btn",onclick:()=>{S.lang="grc";$("#lx-lang").value="grc";run()}},"como transliteración griega"));$("#lx-entry").append(b);return}}
   const l=resolveLang(q);
   if(l==="he")return renderHebrew(q);
-  const D=await lang(l);S.D=D;fillWorks(D);
+  const D=await lang(l);S.D=D;fillWorks(D);if(l==="la")await loadContext();
   const parsed=parseQuery(q,S.mode);
   const opts={lemmatize:S.mode==="lema"||S.mode==="palabra"&&$("#lx-lemmatize").checked,variants:$("#lx-variants").checked,work:S.work,defaultGap:S.mode==="frase"?0:6};
   if(S.mode==="lema")parsed.steps.forEach(s=>{if(s.term.type==="form")s.term={type:"lemma",v:s.term.v,fallback:true}});
   let res=execute(D,parsed,opts);
   if(S.mode==="lema"&&!res.hits.length){/* el usuario escribió una forma: se resuelve su lema */parsed.steps.forEach(s=>{if(s.term.fallback)s.term={type:"form",v:s.term.v}});res=execute(D,parsed,{...opts,lemmatize:true})}
   if(!res.hits.length&&l==="la"&&S.lang==="auto"&&!/[\[@"]/.test(q)){const G=await lang("grc");const r2=execute(G,parseQuery(q,S.mode),opts);if(r2.hits.length){S.D=G;fillWorks(G);res=r2}}
+  /* Búsqueda por lema en latín: se descartan las coincidencias en las que el análisis contextual eligió otro lema. */
+  let ctxDropped=0;
+  if(S.D.l==="la"&&parsed.steps.length===1&&parsed.steps[0].term.type==="lemma"){await loadContext();const want=fold(lemmaDisplay(parsed.steps[0].term.v)).replace(/^@/,"");
+   if(!S.ctxAll){const kept=[];for(const h of res.hits){const p=S.D.corpus.passages[h.i];const c=ctxLemma(S.D,p,h.spans[0][0]);if(c&&fold(lemmaDisplay(c))!==want){ctxDropped++;continue}kept.push(h)}if(ctxDropped)res={...res,hits:kept}}}
   S.allHits=S.work?execute(S.D,parsed,{...opts,work:""}).hits:res.hits;
  S.result={...res,parsed};
   if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
@@ -314,6 +323,7 @@ async function run(push=true){
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
   renderHits(S.D,res);
+  if(ctxDropped||S.ctxAll){const b=el("p",{class:"lx-small lx-ctx-note"},S.ctxAll?T("Se muestran todas las coincidencias de la tabla, sin el filtro contextual. "):`${ctxDropped} ${T("coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.")} `,el("button",{type:"button",class:"lx-btn",onclick:()=>{S.ctxAll=!S.ctxAll;run(false)}},S.ctxAll?T("Aplicar el filtro contextual"):T("Mostrarlas también")));$("#lx-results").prepend(b)}
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!/^\*/.test(q)){const P=await findPerson(q);if(P){await renderPerson(P,q);return}}
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · ETYMOLOGIA"),el("h2",{},q),el("p",{class:"article-byline"},"Sin pasajes en el corpus antiguo local: se ofrecen su etimología y su raíz semántica antigua.")));const cc=await findConcept(q);if(cc)box.append(conceptCard(cc,q));renderEtymTree(q,null,box)}
  }catch(err){console.error(err);setState("No se pudo completar la búsqueda: "+err.message)}
@@ -987,16 +997,28 @@ async function fillTranslation(D,p,box){
    mano por pasaje (obra · locus · forma → lema), que prevalecen sobre la tabla. */
 let CORR=null;load("data/lexicon/lemma-corrections.json").then(j=>{CORR=j}).catch(()=>{CORR={}});
 function verifiedLemma(D,p,form){const own=(o,k)=>o&&Object.hasOwn(o,k)?o[k]:null;const c=own(own(CORR,D.l),`${p[0]} ${p[1]}`);const v=own(c,fold(form));return typeof v==="string"?v:null}
+/* Lemas por contexto (data/lexicon/context-la.json, scripts/annotate-latin-context.py): para cada forma
+   ambigua, el lema que el analizador Stanza elige en ese pasaje, siempre entre los candidatos de la tabla. */
+let CTX=null,CTXP=null;
+function loadContext(){if(!CTXP)CTXP=load("data/lexicon/context-la.json").then(j=>{CTX={model:j.model,stats:j.stats,loci:j.loci};return CTX}).catch(()=>{CTX={loci:{}};return CTX});return CTXP}
+function ctxLemma(D,p,start){
+ if(D.l!=="la"||!CTX?.loci)return null;const key=`${p[0]} ${p[1]}`;const raw=CTX.loci[key];if(!raw)return null;
+ const m=(D._ctxm=D._ctxm||new Map());let mp=m.get(key);
+ if(!mp){mp=new Map();const picks=new Map(raw.split(",").map(x=>x.split(":").map(Number)));let i=0;for(const t of p[2].matchAll(TOKEN)){if(picks.has(i))mp.set(t.index,{k:picks.get(i),f:t[0]});i++}m.set(key,mp)}
+ const e=mp.get(start);if(!e)return null;const an=analyses(D,fold(e.f).replace(/'+$/,""));return an[e.k]?.[0]||null;
+}
 function ambiguity(D,text,spans,p){
- const parts=[];
+ const parts=[];let state="verified";
  for(const [a,b] of spans){const f=text.slice(a,b);const v=verifiedLemma(D,p,f);if(v){parts.push(el("span",{class:"lx-verified"},`${f} → ${lemmaDisplay(v)} ✓`));continue}
-  const lems=[...new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0]))];if(lems.length>1)parts.push(el("span",{},`${f} → ${lems.slice(0,4).map(lemmaDisplay).join(" / ")}`))}
+  const lems=[...new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0]))];if(lems.length<2)continue;
+  const c=ctxLemma(D,p,a);if(c){parts.push(el("span",{class:"lx-ctx"},`${f} → ${lemmaDisplay(c)}`,el("small",{}," ("+T("descartados")+": "+lems.filter(x=>x!==c).slice(0,3).map(lemmaDisplay).join(", ")+")")));if(state==="verified")state="ctx";continue}
+  state="amb";parts.push(el("span",{},`${f} → ${lems.slice(0,4).map(lemmaDisplay).join(" / ")}`))}
  if(!parts.length)return null;
- const verified=parts.every(x=>x.classList?.contains("lx-verified"));
- const line=el("p",{class:"lx-ambig",title:verified?T("Lema verificado a mano en este pasaje"):T("La forma admite más de un lema; la tabla automática no decide por el contexto. Verifíquese en el pasaje.")},verified?T("Lema verificado")+": ":T("Lema ambiguo")+": ");
+ const L={verified:[T("Lema verificado")+": ",T("Lema verificado a mano en este pasaje")],ctx:[T("Lema por contexto")+": ",T("Elegido por el analizador Stanza según el contexto, entre los lemas posibles de la forma. Análisis automático: verifíquese en el pasaje.")],amb:[T("Lema ambiguo")+": ",T("La forma admite más de un lema; la tabla automática no decide por el contexto. Verifíquese en el pasaje.")]}[state];
+ const line=el("p",{class:"lx-ambig"+(state==="ctx"?" lx-ambig-ctx":""),title:L[1]},L[0]);
  parts.forEach((x,i)=>{if(i)line.append(" · ");line.append(x)});return line;
 }
-function ambiguityCount(D,hits){let n=0;for(const h of hits.slice(0,3000)){const p=D.corpus.passages[h.i];if(h.spans.some(([a,b])=>{const f=p[2].slice(a,b);return !verifiedLemma(D,p,f)&&new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0])).size>1}))n++}return n}
+function ambiguityCount(D,hits){let n=0;for(const h of hits.slice(0,3000)){const p=D.corpus.passages[h.i];if(h.spans.some(([a,b])=>{const f=p[2].slice(a,b);return !verifiedLemma(D,p,f)&&!ctxLemma(D,p,a)&&new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0])).size>1}))n++}return n}
 /* ---------- Citabilidad: URN CTS, enlace estable versionado, estilos y formatos bibliográficos ----------
    Cada pasaje se cita con su referencia canónica, su identificador CTS (cuando la obra lo tiene en Perseus /
    Open Greek and Latin), la edición de base y la versión de los datos del Lexicon con que se consultó. */

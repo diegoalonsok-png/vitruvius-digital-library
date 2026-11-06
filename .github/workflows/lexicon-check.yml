@@ -2,10 +2,10 @@ name: Verificar Vitruvia Lexicon
 on:
   push:
     branches: [main]
-    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "sw.js"]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/annotate-latin-context.py", "sw.js"]
   pull_request:
     branches: [main]
-    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "sw.js"]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/annotate-latin-context.py", "sw.js"]
   workflow_dispatch:
 permissions:
   contents: read
