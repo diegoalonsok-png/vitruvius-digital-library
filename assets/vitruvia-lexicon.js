@@ -225,6 +225,9 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "versión de datos":["data version","version des données"],"En":["In","Dans"],"ed.":["ed.","éd."],"consultado el":["accessed","consulté le"],"Consultado el":["Accessed","Consulté le"],"s. f.":["n.d.","s. d."],"editado por":["edited by","édité par"],
+ "Este enlace se citó con la versión de datos":["This link was cited with data version","Ce lien a été cité avec la version de données"],"ahora se consulta la versión":["you are now viewing version","vous consultez maintenant la version"],"El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.":["The passage may have been corrected since; the full history is in the repository.","Le passage a pu être corrigé depuis ; l'historique complet est dans le dépôt."],"Historial de cambios":["Change history","Historique des modifications"],
+ "Citar":["Cite","Citer"],"Copiar":["Copy","Copier"],"Enlace estable":["Stable link","Lien stable"],"Cita con texto":["Quotation with text","Citation avec texte"],"La versión de datos identifica el estado exacto del corpus consultado; el conector de Zotero detecta además cada pasaje de la página (COinS).":["The data version identifies the exact state of the corpus consulted; the Zotero connector also detects each passage on the page (COinS).","La version des données identifie l'état exact du corpus consulté ; le connecteur Zotero détecte aussi chaque passage de la page (COinS)."],
  "Posibles fuentes y paralelos":["Possible sources and parallels","Sources et parallèles possibles"],"afinidad":["affinity","affinité"],
  "Afinidad léxica (coseno tf-idf entre lemas). Son candidatos para el estudio de fuentes y recepción: la coincidencia puede deberse al tema común y no a una relación textual.":["Lexical affinity (tf-idf cosine between lemmas). These are candidates for source and reception studies: the overlap may reflect a shared subject rather than a textual relationship.","Affinité lexicale (cosinus tf-idf entre lemmes). Ce sont des candidats pour l'étude des sources et de la réception : la coïncidence peut tenir au sujet commun et non à une relation textuelle."],
  "En Vitruvia":["In Vitruvia","Dans Vitruvia"],"Buscar en Vitruvia sin perder este lugar de lectura":["Search in Vitruvia without losing your place","Chercher dans Vitruvia sans perdre la page"],
@@ -360,7 +363,8 @@ function hitCard(D,h){
  actions.append(el("button",{type:"button",onclick:()=>addToNotebook({cite,text,lang:D.l,tr:p[4]||""})},"Al cuaderno exegético"));
  actions.append(el("button",{type:"button",onclick:e=>{const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(S.q)u.searchParams.set("q",S.q);copy(u.toString(),e.target)}},"Enlace al locus"));
  actions.append(el("a",{href:`vitruvia.html?q=${encodeURIComponent((S.q||"").replace(/^[@=#√]|["\[\]]/g,"").trim()||text.slice(h.spans[0][0],h.spans[0][1]))}`,target:"_blank",rel:"noopener",title:T("Buscar en Vitruvia sin perder este lugar de lectura")},T("En Vitruvia")+" ↗"));
- actions.append(el("button",{type:"button",onclick:e=>copy(`${cite}: «${text.slice(k.a,k.b).replace(/\s+/g," ").trim()}» — ${w.author}, ${w.title}. ${w.edition||""}. Vitruvia Lexicon, ${PAGE}`,e.target)},"Copiar cita"));
+ actions.append(citeMenu(D,p,cite,text.slice(k.a,k.b)));
+ card.append(coins(D,p));
  card.append(actions);
  if(p[0]==="vitruvius"){const v=el("p",{class:"lx-vlinks"},"Vitruvio "+p[1]+": ");vitruvianLinks(p[1]).forEach(([t,u],i)=>{if(i)v.append(" · ");v.append(el("a",{href:u},t))});card.append(v)}
  return card;
@@ -992,6 +996,37 @@ function ambiguity(D,text,spans,p){
  parts.forEach((x,i)=>{if(i)line.append(" · ");line.append(x)});return line;
 }
 function ambiguityCount(D,hits){let n=0;for(const h of hits.slice(0,3000)){const p=D.corpus.passages[h.i];if(h.spans.some(([a,b])=>{const f=p[2].slice(a,b);return !verifiedLemma(D,p,f)&&new Set(analyses(D,fold(f).replace(/'+$/,"")).map(x=>x[0])).size>1}))n++}return n}
+/* ---------- Citabilidad: URN CTS, enlace estable versionado, estilos y formatos bibliográficos ----------
+   Cada pasaje se cita con su referencia canónica, su identificador CTS (cuando la obra lo tiene en Perseus /
+   Open Greek and Latin), la edición de base y la versión de los datos del Lexicon con que se consultó. */
+const CTS_ID={vitruvius:"latinLit:phi1056.phi001","herodotus-histories":"greekLit:tlg0016.tlg001","euclid-elements":"greekLit:tlg1799.tlg001","columella-rustica":"latinLit:phi0845.phi002","pliny-naturalis":"latinLit:phi0978.phi001","cato-agricultura":"latinLit:stoa0079.stoa001"};
+function ctsUrn(p){let id=CTS_ID[p[0]];if(!id){const x=LECTOR_IDS[p[0]];if(x&&/^(phi|tlg|stoa)\d/.test(x))id=(x.startsWith("tlg")?"greekLit:":"latinLit:")+x}return id?`urn:cts:${id}:${p[1]}`:null}
+function permalink(p){const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(DATA_VER)u.searchParams.set("dv",DATA_VER);return u.toString()}
+function citeData(D,p,cite){
+ const w=work(D,p[0]);const today=new Date().toISOString().slice(0,10);const year=new Date().getFullYear();
+ const ed=(w.edition||"").replace(/\s+/g," ").trim();const url=permalink(p);const urn=ctsUrn(p);const ver=DATA_VER?`${T("versión de datos")} ${DATA_VER}`:"";
+ return{w,ed,url,urn,ver,today,year,
+  chicago:`${w.author}, ${w.title}, ${cite.replace(w.cite+" ","")}. ${ed?ed+". ":""}${T("En")} Vitruvia Lexicon, ${T("ed.")} Diego A. Kurilo${ver?", "+ver:""}. ${url}${urn?" ("+urn+")":""} (${T("consultado el")} ${today}).`,
+  apa:`${w.author}. (${T("s. f.")}). ${w.title} (${cite.replace(w.cite+" ","")})${ed?". "+ed:""}. ${T("En")} D. A. Kurilo (Ed.), Vitruvia Lexicon${ver?" ["+ver+"]":""}. ${url}`,
+  mla:`${w.author}. ${w.title}, ${cite.replace(w.cite+" ","")}. ${ed?ed+". ":""}Vitruvia Lexicon, ${T("editado por")} Diego A. Kurilo, ${year}, ${url}. ${T("Consultado el")} ${today}.`}
+}
+function bibtex(D,p,cite,c){const key=(p[0]+"_"+p[1]).replace(/[^A-Za-z0-9_]/g,"_");const e=s=>String(s).replace(/[{}\\]/g,"");return `@misc{${key},\n  author = {${e(c.w.author)}},\n  title = {${e(c.w.title)}, ${e(cite)}},\n  howpublished = {Vitruvia Lexicon, ed. Diego A. Kurilo},\n  note = {${e(c.ed)}${c.urn?"; "+c.urn:""}${c.ver?"; "+c.ver:""}},\n  url = {${c.url}},\n  urldate = {${c.today}}\n}\n`}
+function ris(D,p,cite,c){return ["TY  - GEN",`AU  - ${c.w.author}`,`TI  - ${c.w.title}, ${cite}`,`T2  - Vitruvia Lexicon`,`ED  - Kurilo, Diego A.`,`UR  - ${c.url}`,`Y2  - ${c.today}`,c.urn?`M1  - ${c.urn}`:"",`N1  - ${c.ed}${c.ver?"; "+c.ver:""}`,"ER  - ",""].filter(Boolean).join("\r\n")}
+function citeMenu(D,p,cite,snippet){
+ const det=el("details",{class:"lx-cite-menu"},el("summary",{},T("Citar")));
+ det.addEventListener("toggle",()=>{if(!det.open||det.querySelector(".lx-cite-box"))return;const c=citeData(D,p,cite);
+  const box=el("div",{class:"lx-cite-box"});
+  const row=(label,txt)=>el("p",{},el("b",{},label+": "),el("span",{class:"lx-cite-txt"},txt)," ",el("button",{type:"button",class:"lx-btn",onclick:e=>copy(txt,e.target)},T("Copiar")));
+  box.append(row("Chicago",c.chicago),row("APA",c.apa),row("MLA",c.mla));
+  if(c.urn)box.append(row("URN CTS",c.urn));
+  box.append(row(T("Enlace estable"),c.url),row(T("Cita con texto"),`${cite}: «${snippet.replace(/\s+/g," ").trim()}» — ${c.w.author}, ${c.w.title}. ${c.ed}. Vitruvia Lexicon, ${c.url}`));
+  box.append(el("p",{},el("button",{type:"button",class:"lx-btn",onclick:()=>download(`${p[0]}-${p[1]}.bib`,bibtex(D,p,cite,c),"application/x-bibtex")},"BibTeX (.bib)")," ",el("button",{type:"button",class:"lx-btn",onclick:()=>download(`${p[0]}-${p[1]}.ris`,ris(D,p,cite,c),"application/x-research-info-systems")},"RIS (.ris) · Zotero, EndNote, Mendeley")));
+  box.append(el("p",{class:"lx-small"},T("La versión de datos identifica el estado exacto del corpus consultado; el conector de Zotero detecta además cada pasaje de la página (COinS).")));
+  det.append(box)});
+ return det;
+}
+/* COinS (OpenURL en un span): el conector de Zotero reconoce cada pasaje de la página como un registro. */
+function coins(D,p){const w=work(D,p[0]);const q=new URLSearchParams({ctx_ver:"Z39.88-2004",rft_val_fmt:"info:ofi/fmt:kev:mtx:book","rft.genre":"bookitem","rft.atitle":`${w.title} ${p[1]}`,"rft.btitle":"Vitruvia Lexicon","rft.au":w.author,"rft.pub":"Vitruvius Digital Library","rft_id":permalink(p)});const u=ctsUrn(p);if(u)q.append("rft_id",u);return el("span",{class:"Z3988",title:q.toString().replace(/\+/g,"%20"),"aria-hidden":"true"})}
 /* ---------- Posibles fuentes y paralelos de Vitruvio (scripts/build-vitruvius-paralleli.py) ---------- */
 let PARALLELI=null;
 function paralleliBox(D,p){
@@ -1514,7 +1549,9 @@ async function init(){
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);
  if(p.get("mode")&&MODES[p.get("mode")])S.mode=p.get("mode");if(p.get("lang"))S.lang=p.get("lang");$("#lx-lang").value=S.lang;if(p.get("work"))S.work=p.get("work");renderTabs();
- if(p.get("work")&&p.get("locus")){if(p.get("q"))$("#lx-q").value=p.get("q");(p.get("q")?run(false):Promise.resolve()).then(()=>openLocus(p.get("work"),p.get("locus"),p.get("q")||""));}
+ if(p.get("work")&&p.get("locus")){if(p.get("q"))$("#lx-q").value=p.get("q");(p.get("q")?run(false):Promise.resolve()).then(()=>openLocus(p.get("work"),p.get("locus"),p.get("q")||"")).then(()=>{
+  /* Reproducibilidad: el enlace citado se creó con otra versión de los datos. */
+  const dv=p.get("dv");if(dv&&DATA_VER&&dv!==DATA_VER)$("#lx-results").prepend(el("p",{class:"lx-person-banner"},`${T("Este enlace se citó con la versión de datos")} ${dv}; ${T("ahora se consulta la versión")} ${DATA_VER}. ${T("El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.")} `,el("a",{href:"https://github.com/diegoalonsok-png/vitruvius-digital-library/commits/main/data/lexicon",target:"_blank",rel:"noopener"},T("Historial de cambios")+" ↗")))});}
  else if(p.get("q")){$("#lx-q").value=p.get("q");run(false)}else if(S.mode==="sententiae")run(false);else setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
 }
 function renderDaily(){
