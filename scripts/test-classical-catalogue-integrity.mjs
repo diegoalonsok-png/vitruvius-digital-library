@@ -30,5 +30,5 @@ const fold=v=>String(v??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase()
 const matches=q=>codices.filter(x=>fold(q).split(/\s+/).every(t=>fold([x.display_title,x.shelfmark,x.siglum,x.institution,x.place,x.date_display,x.date,...(x.aliases||[])].join(' ')).includes(t)));
 assert(matches('Harley MS 2767').length>=1,'Harley signatura not indexed');
 assert(matches('Gudianus').length>=2,'Gudianus manuscript variants not indexed');
-assert.equal(matches('unspecifiedimpossiblecode987'),0,'Unrelated query returned manuscript results');
+assert.equal(matches('unspecifiedimpossiblecode987').length,0,'Unrelated query returned manuscript results');
 console.log('PASS classical catalogue integrity:',works.length,'works,',witnesses.records.length,'manuscripts,',witnesses.editions.length,'editions,',codices.length,'codex inventory entries');
