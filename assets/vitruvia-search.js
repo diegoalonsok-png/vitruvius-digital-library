@@ -1181,6 +1181,7 @@ function setupAutocomplete(){
   ["Sulpizio · edición príncipe 1486","Sulpizio 1486",["sulpizio","sulpicio","1486"],"Edición"],
   ["Lucrecio · De rerum natura","Lucrecio",["lucrecio","lucretius","rerum natura"],"Libro"],
   ["Cicerón · De officiis","Cicerón De officiis",["ciceron","cicero","officiis"],"Libro"],
+  ["Pitágoras · filósofo y matemático","Pitágoras",["pitagoras","pitágoras","pythagoras"],"Filósofo · Matemático"],
   ["Vitruvio · De architectura","Vitruvio",["vitruvio","vitruvius","de architectura"],"Tratado"]
  ];
  const hide=()=>{menu.hidden=true;menu.classList.remove("has-preview");input.setAttribute("aria-expanded","false");input.removeAttribute("aria-activedescendant");index=-1;options=[]};
@@ -1220,7 +1221,12 @@ function setupAutocomplete(){
   if(q.length<2){hide();return}
   const list=node("div","search-suggestions-list");
   const rem=remoteFor===raw?remote:{entities:[],completions:[]};
-  for(const e of rem.entities){
+  const isPythagoras=/^(?:pitagoras|pythagoras)$/i.test(q);
+  const primaryPythagoras=isPythagoras&&rem.entities.find(e=>/^(?:pitagoras|pythagoras)$/i.test(norm(e.label)));
+  if(isPythagoras&&!primaryPythagoras){
+   list.append(option("is-entity is-local-primary",[node("span","sg-main","Pitágoras"),node("small",null,T3("Filósofo y matemático griego","Greek philosopher and mathematician","Philosophe et mathématicien grec"))],()=>choose("Pitágoras")));
+  }
+  for(const e of [...rem.entities].sort((a,b)=>Number(b===primaryPythagoras)-Number(a===primaryPythagoras))){
    const row=option("is-entity",[node("span","sg-main",e.label),node("small",null,e.description)],()=>choose(e.label),e);
    list.append(row);
   }
@@ -1245,6 +1251,7 @@ function setupAutocomplete(){
  async function preview(e){
   const pv=menu.querySelector(".search-preview");if(!pv||!U())return;previewId=e.id;menu.classList.add("has-preview");
   pv.replaceChildren(node("h3",null,e.label),node("p","sp-desc",e.description||""));
+  window.VitruviaMathematics?.render(pv,e.label);
   const f=await U().facts(e.id,S.lang).catch(()=>null);if(previewId!==e.id||!f)return;
   const yrs=[f.birth?.year,f.death?.year].filter(Boolean).join(" – ");
   const where=[f.birthPlace?.label,f.deathPlace?.label].filter(Boolean).join(" · ");
@@ -1252,6 +1259,13 @@ function setupAutocomplete(){
   const tags=[...f.occupations.slice(0,2),...f.movements.slice(0,2),...f.genres.slice(0,2)].map(x=>x.label);
   if(tags.length)pv.append(node("p","sp-tags",tags.join(" · ")));
   if(f.wiki){const sm=await U().summary(f.wiki,f.wikiLang).catch(()=>null);if(previewId!==e.id)return;
+   const imgURL=sm?.thumbnail?.source;
+   if(typeof imgURL==="string"&&/^https:\/\//.test(imgURL)){
+    const img=node("img","sp-portrait");img.src=imgURL;img.alt=e.label;img.loading="lazy";img.decoding="async";img.style.cssText="width:100%;height:155px;object-fit:contain;border-radius:6px;margin:5px 0";
+    pv.append(img);
+    const row=[...menu.querySelectorAll(".search-suggestion.is-entity")].find(x=>x.dataset.entity===e.id);
+    if(row&&!row.querySelector("img")){const thumb=node("img","sg-thumbnail");thumb.src=imgURL;thumb.alt="";thumb.loading="lazy";thumb.decoding="async";thumb.style.cssText="width:40px;height:40px;object-fit:cover;flex-shrink:0;border-radius:4px";row.prepend(thumb)}
+   }
    if(sm?.extract)pv.append(node("p","sp-extract",sm.extract.length>300?sm.extract.slice(0,300).replace(/\s\S*$/,"")+"…":sm.extract))}
   const more=node("button","sp-more",T3("Ver más ›","See more ›","Voir plus ›"));more.type="button";
   more.addEventListener("pointerdown",ev=>ev.preventDefault());more.addEventListener("click",()=>choose(e.label));pv.append(more);
