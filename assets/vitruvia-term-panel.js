@@ -135,19 +135,26 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    json('data/clasicos-perseus-extra.json?v=20261106-ampliado-v1').catch(()=>({works:[]}))]);
   const words=s=>new Set(fold(s).split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=4));
   const match=(set,t)=>set.has(t)||(t.length>=5&&[...set].some(x=>x.length>=5&&(x.startsWith(t)||t.startsWith(x))));
+  // Entity-level precision: all significant words must identify the SAME
+  // ancient author or work. «Juan» in Hechos de Juan does not identify
+  // «Juan Domingo Perón». For short single names require an exact work title.
+  const fullMatch=(A,T,exactNames)=>toks.every(t=>match(A,t)||match(T,t))&&
+   (toks.length>1||toks[0].length>=6||exactNames.some(name=>
+    fold(name).replace(/[^\p{L}\p{N} ]/gu,' ').replace(/\s+/g,' ').trim()===f));
   const hits=[],seen=new Set();
   for(const w of bib.works||[]){
    const A=words(w.author),T=words([w.title,...(w.aliases||[]),w.id.replace(/-/g,' ')].join(' '));
+   if(!fullMatch(A,T,[w.title,...(w.aliases||[])]))continue;
    const a=toks.filter(t=>match(A,t)).length,ti=toks.filter(t=>match(T,t)).length;
-   if(!a&&!ti)continue;if(a+ti<Math.min(toks.length,2)&&toks.length>1&&!a)continue;
    const obras=(perseus.links?.[w.id]||[]).map(x=>x.obra);
    hits.push({w,score:a*3+ti,readable:!!(w.localVersions?.length||obras.length),obras});obras.forEach(o=>seen.add(o));
   }
   // Obras del Lector clásico que la Bibliotheca no registra (mismo autor u obra).
   for(const x of [...(cat.works||[]),...(extra.works||[])]){
    if(seen.has(x.id))continue;
-   const A=words(x.author+' '+(x.authorEn||'')),T=words(x.title);const a=toks.filter(t=>match(A,t)).length,ti=toks.filter(t=>match(T,t)).length;
-   if(!a&&!ti)continue;
+   const A=words(x.author+' '+(x.authorEn||'')),T=words(x.title);
+   if(!fullMatch(A,T,[x.title]))continue;
+   const a=toks.filter(t=>match(A,t)).length,ti=toks.filter(t=>match(T,t)).length;
    hits.push({w:{id:null,title:x.title,author:x.author,dating:x.dates,lector:x.id},score:a*3+ti-0.5,readable:true,obras:[x.id]});seen.add(x.id);
   }
   return hits.sort((a,b)=>b.score-a.score||b.readable-a.readable).slice(0,12);
@@ -304,7 +311,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  async function kuriloBooks(q){
   let idx;try{idx=await json('data/kurilo-libros/index.json')}catch{return []}
   const toks=fold(q).split(/[^\p{L}\p{N}]+/u).filter(t=>t.length>=4&&!ES_STOP.has(t));if(!toks.length)return [];
-  return (idx.books||[]).filter(b=>{const hay=fold([...Object.values(b.titles||{}),...Object.values(b.subtitles||{}),...(b.subjects||[])].join(' '));return toks.some(t=>hay.split(/[^\p{L}\p{N}]+/u).some(w=>w===t||(t.length>=5&&w.startsWith(t))))});
+  return (idx.books||[]).filter(b=>{const hay=fold([...Object.values(b.titles||{}),...Object.values(b.subtitles||{}),...(b.subjects||[])].join(' '));return toks.every(t=>hay.split(/[^\p{L}\p{N}]+/u).some(w=>w===t||(t.length>=5&&w.startsWith(t))))});
  }
  async function appendSiteBooks(q,token){
   const books=await kuriloBooks(q).catch(()=>[]);if(token!==seq)return;
@@ -406,8 +413,9 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    const readable=hits.filter(h=>h.obras?.length);
    // Biografía desde la web (Wikipedia/Wikidata) del autor reconocido; el libro, en el visor del sitio.
    const bioSlot=document.createElement('div');panel.append(bioSlot);
-   const who=top?String(top.author).replace(/\(.*?\)/g,'').split(/[,·]/)[0].trim():q;
-   webSummary(who).then(d=>{if(token!==seq||!d)return;const h=document.createElement('h4');h.textContent='Biografía · información de la web';bioSlot.append(h,webBlock(d,{heading:false}))});
+   // Cite the subject the user actually requested, not a catalogue
+   // author inferred from an incidental name overlap.
+   webSummary(q).then(d=>{if(token!==seq||!d)return;const h=document.createElement('h4');h.textContent='Biografía · información de la web';bioSlot.append(h,webBlock(d,{heading:false}))});
    if(readable.length)panel.append(readerBlock(readable));
   }
   if(hits.length)panel.append(worksBlock(hits));
@@ -432,12 +440,22 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  }
  async function webSummary(q){
   const L=lang()==='en'?'en':'es';let page=null;
+  const subject=window.VitruviaEntityResolver?.subject(q)||q;
+  const identityKey=s=>fold(s).replace(/[^\p{L}\p{N}]+/gu,' ').replace(/\s+/g,' ').trim();
+  const key=identityKey(subject);
+  if(!key)return null;
   for(const wl of [L,L==='es'?'en':'es']){
    try{
-    const s=await fetch(`https://${wl}.wikipedia.org/w/api.php?`+new URLSearchParams({action:'query',list:'search',srsearch:q,srlimit:'1',format:'json',origin:'*'})).then(r=>r.json());
-    const t=s?.query?.search?.[0]?.title;if(!t)continue;
-    const sum=await fetch(`https://${wl}.wikipedia.org/api/rest_v1/page/summary/`+encodeURIComponent(t.replace(/ /g,'_'))).then(r=>r.ok?r.json():null);
-    if(sum&&sum.type!=='disambiguation'){page={...sum,wl};break}
+    const s=await fetch(`https://${wl}.wikipedia.org/w/api.php?`+
+     new URLSearchParams({action:'query',list:'search',srsearch:subject,srlimit:'10',format:'json',origin:'*'}))
+     .then(r=>r.json());
+    // Do not take the first search result: a biography/book with a
+    // colon or a shared name is NOT the same entity as the person's page.
+    const t=(s?.query?.search||[]).find(row=>identityKey(row.title)===key)?.title;
+    if(!t)continue;
+    const sum=await fetch(`https://${wl}.wikipedia.org/api/rest_v1/page/summary/`+
+     encodeURIComponent(t.replace(/ /g,'_'))).then(r=>r.ok?r.json():null);
+    if(sum&&sum.type!=='disambiguation'&&identityKey(sum.title)===key){page={...sum,wl};break}
    }catch{}
   }
   if(!page)return null;
