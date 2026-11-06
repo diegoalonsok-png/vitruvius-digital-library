@@ -543,7 +543,7 @@ let featureCurrent="";
 function considerFeatured(rows,query,fromFallback=false){
  const q=norm(query||"");if(!q)return;if(!fromFallback)featureCurrent=q;
  const {core}=featureTokens(query);const tokens=core.filter(t=>t.length>=3);
- const picks=(rows||[]).filter(r=>r.link&&r.title).map(r=>{
+ const picks=(rows||[]).filter(r=>r.link&&r.title&&(!window.VitruviaContextGuard||window.VitruviaContextGuard.allows(r,query,S.identifiedSubject))).map(r=>{
   const title=norm(r.title),exact=title===q||title===core.join(" ")||title.replace(/\s+/g,"")===core.join("");
   const {ratio,inTitle}=featureCoverage(core,r.title,r.excerpt||"");
   // Wikipedia describes the subject; a same-titled Open Library book is NOT the subject.
@@ -780,7 +780,12 @@ function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
  // los textos, alias, autores y metadatos documentales también cuentan.
- const scored=rows.filter(r=>r&&r.title).slice().sort((a,b)=>
+ const guard=window.VitruviaContextGuard;
+ const relevantRows=guard?guard.filter(rows,query,S.identifiedSubject):rows;
+ const scored=relevantRows.filter(r=>r&&r.title&&(
+  !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||
+  queryTokens(query).length<2||entityEvidence(r,query)
+ )).slice().sort((a,b)=>
   ((b.rating||0)+titleMatch(b,query)+(S.mode==="ai"&&b.aiEvidence?2800:0))-
   ((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0)));
  const deduped=[],seen=new Set();
@@ -799,7 +804,9 @@ function display(rows,query,phase){
  const liveList=$("result-list"),desired=[];const list={append:(...children)=>desired.push(...children)};
  const cards=S.cardCache||(S.cardCache=new Map());
  const cardFor=d=>{const key=S.lang+JSON.stringify(d);if(cards.has(key))return cards.get(key);const card=renderCard(d);markTerms(card,query);cards.set(key,card);if(cards.size>200)cards.delete(cards.keys().next().value);return card};
- const selectedManuscript=["all","site","concept","ai"].includes(S.mode)?primaryManuscriptFor(query):null;
+ const selectedManuscript=["all","site","concept","ai"].includes(S.mode)&&
+  !(guard?.isModernIdentity(S.identifiedSubject)&&!guard.explicitAncientContext(query))?
+  primaryManuscriptFor(query):null;
  if(selectedManuscript){
   const witness=liveManuscripts(query).find(r=>r.codexShelfmark===selectedManuscript.shelfmark&&
     r.codexRepository===selectedManuscript.library);
@@ -990,7 +997,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
 async function search(){
- let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:220}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:220}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
  if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexicon=S.lexicon||await fetch("data/latin-lexicon.json").then(r=>r.json()).then(d=>d.entries||[]);
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
@@ -1073,8 +1080,8 @@ async function search(){
     excerpt:identity.description,fullExtract:identity.extract,
     meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
     rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
-    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityDescription:identity.authorityDescription||identity.description,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
-   }]};
+    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityBirthYear:identity.birthYear,entityDescription:identity.authorityDescription||identity.description,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
+   }],identity};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal&&window.VitruviaAgentic){
@@ -1141,6 +1148,11 @@ async function search(){
  await Promise.all(pending.map(p=>p.then(value=>{
   if(id!==S.searchId)return;
   const incoming=value.rows||[];
+  if(value.identity){
+   S.identifiedSubject=value.identity;
+   if(window.VitruviaContextGuard?.isModernIdentity(value.identity)&&
+      !window.VitruviaContextGuard.explicitAncientContext(q))restoreFeature();
+  }
   if(intent?.preface&&incoming.some(r=>r.type==="preface"))rows=rows.filter(r=>!r.prefacePlaceholder);
   rows.push(...incoming);
   // If an exact quotation identifies an indexed work, retrieve its actual
