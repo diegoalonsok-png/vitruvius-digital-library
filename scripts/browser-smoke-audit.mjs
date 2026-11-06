@@ -152,13 +152,22 @@ try{
    await page.close();
  });
  await test('Scriptorium: selector abre Barbaro, Giocondo y Sulpizio',async()=>{
-   const list=[['print:barbaro-1567','barbaro-1567.html'],['print:giocondo-1511','giocondo-1511.html'],['print:sulpizio-1486','sulpizio-1486.html']];
-   for(const [source,path] of list){
+   const list=[
+     ['print:barbaro-1567','barbaro-1567.html','#bar-gallery-panel'],
+     ['print:giocondo-1511','giocondo-1511.html','#gio-gallery-panel'],
+     ['print:sulpizio-1486','sulpizio-1486.html','#su-grid button[data-page]']
+   ];
+   for(const [source,path,ready] of list){
      const page=await pageFor('scriptorium.html');
-     assert.equal(await page.locator('#source option[value="'+source+'"]').count(),1,'Falta opción '+source);
-     await page.locator('#source').selectOption(source);
-     await page.waitForURL(new RegExp(path.replace('.','\\.')), {timeout:12000});
-     await page.close();
+     try{
+       assert.equal(await page.locator('#source option[value="'+source+'"]').count(),1,'Falta opción '+source);
+       await page.locator('#source').selectOption(source);
+       // Check the destination and its usable gallery without waiting for every image.
+       await page.waitForURL(new RegExp(path.replace('.','\\.')), {waitUntil:'domcontentloaded',timeout:12000});
+       await page.locator(ready).first().waitFor({state:'visible',timeout:20000});
+     }finally{
+       await page.close();
+     }
    }
  });
  await test('Scriptorium Caes.: botón directo y selector abren Cesariano',async()=>{
@@ -166,7 +175,7 @@ try{
   assert.equal(await page.locator('a[href="cesariano-1521.html"]').count()>0,true,'No aparece botón C');
   assert.equal(await page.locator('#source option[value="print:cesariano-1521"]').count(),1,'No aparece Cesariano en el selector');
   await page.locator('#source').selectOption('print:cesariano-1521');
-  await page.waitForURL(/cesariano-1521\.html/, {timeout:12000});
+  await page.waitForURL(/cesariano-1521\.html/, {waitUntil:'domcontentloaded',timeout:12000});
   assert.match(await page.locator('h1').innerText(),/Scriptorium Caes./,'No aparece el título de Scriptorium Caes.');
   await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:18000});
   assert.equal(await page.locator('#ces-gallery-results [data-ces-image]').count(),24,'La galería C no muestra las primeras 24 imágenes');
