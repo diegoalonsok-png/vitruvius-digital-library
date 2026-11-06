@@ -53,6 +53,32 @@ for(const entry of registry.entries){
 }
 for(const w of works)for(const p of Object.values(w.corpusFiles||{}))
  assert(unique.has(p),"Local text exists but is not included in classical search: "+p);
+// Translation transparency: indexed languages and catalogue must agree. Checks
+// cannot establish philological quality or historical copyright on their own.
+assert.equal(registry.count,registry.entries.length,"Search registry count is stale");
+assert.equal(registry.works,new Set(registry.entries.map(e=>e.workId)).size,"Search registry distinct work count is stale");
+const verifiedParallel=[];
+for(const w of works){
+ const entries=registry.entries.filter(e=>e.workId===w.id&&e.format==="json-passages");
+ for(const [lang,path] of Object.entries(w.corpusFiles||{})){
+  assert(entries.some(e=>e.language===lang&&e.path===path),"Corpus language missing from search registry: "+w.id+":"+lang);
+ }
+ const originals=entries.filter(e=>["la","grc"].includes(e.language));
+ const translations=entries.filter(e=>["en","es","fr"].includes(e.language));
+ if(!originals.length||!translations.length)continue;
+ const original=read(originals[0].path);
+ for(const translation of translations){
+  const target=read(translation.path);
+  const ol=new Set(original.passages.map(p=>String(p.locus)));
+  const tl=new Set(target.passages.map(p=>String(p.locus)));
+  const intersect=[...ol].filter(l=>tl.has(l)).length;
+  assert(intersect>0,"Original and translation have no shared locus: "+w.id+" / "+translation.language);
+  assert(target.passages.every(p=>typeof p.text==="string"&&p.text.trim().length>0),"Empty translated passage: "+translation.path);
+  if(target.chicago18Bibliography)
+   assert(target.citationStyle?.includes("Chicago"),"Chicago citation has no declared style: "+translation.path);
+  verifiedParallel.push({work:w.id,original:originals[0].language,translation:translation.language,originalLoci:ol.size,translatedLoci:tl.size,sharedLoci:intersect});
+ }
+}
 const corpusJson=readdirSync(pathOf("data/classics-corpus")).filter(p=>/-(?:grc|la|es|en|fr|it|de|pt)\.json$/.test(p));
 for(const file of corpusJson)assert(unique.has("data/classics-corpus/"+file),"Unindexed classical corpus asset: "+file);
 const htmlFiles=readdirSync(pathOf("corpus")).filter(p=>p.endsWith(".html"));
@@ -86,7 +112,7 @@ for(const w of works){
  assert.deepEqual([...p.indexedTextFiles].sort(),expected,"Public indexed-file list is stale: "+w.id);
 }
 
-const summary={cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
+const summary={parallelLocusCoverage:verifiedParallel,cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
  localReadingRecords:localWorks.length,checkedFileReferences:checked.length,
  fulltextSearchWorks:new Set(registry.entries.map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
  languages,formats,unindexedHtml,classicPDF:classicPDF.length,vitruviusPageTextIndexes:vitruviusPageTexts.length,
