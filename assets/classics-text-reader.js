@@ -119,16 +119,18 @@ async function load(language){
  const corpus=await response.json();
  if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||corpus.passages.length<10)throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
-  // The Gutenberg source is an anthology. Filter the DISPLAYED work without
-  // changing the original transcription or assigning false Latin loci.
-  const response=await fetch("data/classics-corpus/source-scope.json");
-  if(!response.ok)throw Error("No se pudo comprobar el alcance de la edición histórica.");
-  const scopes=await response.json();
-  const scope=(scopes.entries||[]).find(x=>x.workId===work&&x.language===language&&x.sourcePath===path);
-  if(!scope)throw Error("Falta validar el alcance de la edición española de Apuleyo.");
-  const contained=corpus.passages.filter(x=>{const m=/^t(\d+)$/.exec(String(x.locus||""));return m&&Number(m[1])>=scope.first&&Number(m[1])<=scope.last});
-  if(!contained.length)throw Error("No hay unidades de Metamorfosis verificadas en la edición.");
-  corpus={...corpus,passages:contained,alignment:corpus.alignment+". "+scope.noteEs};
+  // Preserve every unit of the historical anthology: no text is discarded.
+  // The editorial scope describes contents, not a deletion or Latin alignment.
+  let note="Esta edición histórica contiene además introducciones, otros escritos y apéndices. Se conservan íntegramente sus segmentos; no hay correspondencia de loci latinos certificada. Comparar las versiones manualmente.";
+  try{
+   const response=await fetch("data/classics-corpus/source-scope.json");
+   if(response.ok){
+    const scopes=await response.json();
+    const scope=(scopes.entries||[]).find(x=>x.workId===work&&x.language===language&&x.sourcePath===path);
+    if(scope?.noteEs)note=scope.noteEs;
+   }
+  }catch{}
+  corpus={...corpus,alignment:corpus.alignment+". "+note};
  }
  data=corpus;active=0;
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
