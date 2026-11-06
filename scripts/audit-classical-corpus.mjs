@@ -37,13 +37,30 @@ const unique=new Set(),languages={},formats={};
 for(const entry of registry.entries){
  assert(byId.has(entry.workId),"Search record has unknown work "+entry.workId);
  assert(["la","grc","es","en","fr","it","de","pt"].includes(entry.language),"Invalid language");
- assert(["html-text","json-passages","structured-bilingual"].includes(entry.format),"Invalid index format");
+ assert(["html-text","json-passages","structured-bilingual","historical-ocr-pages"].includes(entry.format),"Invalid index format");
  if(unique.has(entry.path))assert(entry.format==="structured-bilingual"&&entry.workId==="vitruvius",
   "Duplicate indexed file "+entry.path);
  unique.add(entry.path);
  assert(existsSync(pathOf(entry.path)),"Missing indexed file "+entry.path);
  assert(statSync(pathOf(entry.path)).size>250,"Empty indexed file "+entry.path);
  languages[entry.language]=(languages[entry.language]||0)+1;formats[entry.format]=(formats[entry.format]||0)+1;
+ if(entry.format==="historical-ocr-pages"){
+  assert.equal(entry.workId,"krohn-1912-pdf","OCR must belong to the indexed facsimile record");
+  assert.equal(entry.path,"data/text/krohn-1912.json","OCR file route must be explicitly vetted");
+  assert.equal(entry.language,"la","Krohn 1912 OCR is Latin edition");
+  const pages=read(entry.path);
+  assert.equal(pages.length,314,"Krohn 1912 OCR must preserve 314 PDF page records");
+  let prev=0,totalChars=0;
+  for(const page of pages){
+   assert(Number.isInteger(page.page)&&page.page>prev,"OCR page numbering out of order");
+   assert.equal(typeof page.text,"string","OCR page must preserve raw extracted text");
+   totalChars+=page.text.length;
+   prev=page.page;
+  }
+  assert(totalChars>100000,"Krohn OCR is empty or truncated");
+  assert(/concordancia-historica\.html/.test(entry.reader),
+   "Page OCR must open a historical facsimile viewer, not a critical locus reader");
+ }
  if(entry.format==="structured-bilingual"){
   assert.equal(entry.workId,"vitruvius","Structured Vitruvius work ID mismatch");
   assert(["recensio-es","recensio-fr","theory-en"].includes(entry.edition),
