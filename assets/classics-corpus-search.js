@@ -30,7 +30,9 @@ const cache=new Map();
 function valid(e){
  return e&&/^[a-z0-9-]+$/.test(e.workId||"")&&["grc","la","en","es","fr","it","de","pt"].includes(e.language)
   &&(e.format==="html-text"?/^corpus\/[a-z0-9-]+\.html$/.test(e.path||"")
-    :e.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path||""));
+    :e.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path||"")
+     ||e.format==="structured-bilingual"&&e.workId==="vitruvius"&&
+      /^data\/structured\/(?:recensio-es|recensio-fr|theory-en)\.json$/.test(e.path||""));
 }
 async function registry(){
  if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
@@ -55,6 +57,21 @@ function loadJson(e){
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
    .then(d=>d?.workId===e.workId&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
  return cache.get(e.path);
+}
+function loadStructured(e){
+ // Reuse one immutable source JSON for multiple languages; index only its attested passages.
+ if(!cache.has(e.path))cache.set(e.path,
+  (window.VitruviaData?.json?window.VitruviaData.json(e.path):
+   fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
+   .then(d=>Array.isArray(d.passages)&&d.edition===e.edition?d:null).catch(()=>null));
+ return cache.get(e.path).then(d=>{
+  if(!d||!(e.language==="la"||d.language===e.language))return null;
+  const field=e.language==="la"?"latin":"translation";
+  return {attribution:"Edición "+d.version+" · "+d.edition+
+   " · texto estructurado de autoría editorial; fuente DOCX y SHA256 en el archivo",
+   passages:d.passages.filter(p=>typeof p[field]==="string"&&p[field].trim())
+     .map(p=>({locus:p.locus,text:p[field]}))};
+ });
 }
 function loadHtml(e){
  if(!cache.has(e.path))cache.set(e.path,fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.text()}).then(h=>{
@@ -87,7 +104,7 @@ async function search(q,{limit=8}={}){
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
-   const d=e.format==="html-text"?await loadHtml(e):await loadJson(e);
+   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):await loadJson(e);
    if(!d?.passages?.length){failed++;return}loaded++;
    let total=0,units=0,first=null;
    for(const p of d.passages){
@@ -99,7 +116,7 @@ async function search(q,{limit=8}={}){
    if(!first)return;
    let link=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    link+=(link.includes("?")?"&":"?")+"q="+encodeURIComponent(q);
-   if(e.format==="json-passages")link+="&locus="+encodeURIComponent(first.passage.locus);
+   if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",

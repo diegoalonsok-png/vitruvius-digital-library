@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 30,
-  "works": 14,
+  "count": 34,
+  "works": 15,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -304,6 +304,50 @@
       "path": "data/classics-corpus/virgil-georgica-la.json",
       "reader": "classics-text-reader.html?work=virgil-georgica&lang=la",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura · English V297",
+      "language": "en",
+      "format": "structured-bilingual",
+      "edition": "theory-en",
+      "path": "data/structured/theory-en.json",
+      "reader": "lector-bilingue.html?edition=theory-en",
+      "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
+    },
+    {
+      "workId": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura · castellano V514",
+      "language": "es",
+      "format": "structured-bilingual",
+      "edition": "recensio-es",
+      "path": "data/structured/recensio-es.json",
+      "reader": "lector-bilingue.html?edition=recensio-es",
+      "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
+    },
+    {
+      "workId": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura · français V554",
+      "language": "fr",
+      "format": "structured-bilingual",
+      "edition": "recensio-fr",
+      "path": "data/structured/recensio-fr.json",
+      "reader": "lector-bilingue.html?edition=recensio-fr",
+      "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
+    },
+    {
+      "workId": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura · latín V514",
+      "language": "la",
+      "format": "structured-bilingual",
+      "edition": "recensio-es",
+      "path": "data/structured/recensio-es.json",
+      "reader": "lector-bilingue.html?edition=recensio-es",
+      "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
     }
   ]
 }
