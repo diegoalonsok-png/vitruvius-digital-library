@@ -15,6 +15,21 @@ assert.equal(new Set(etym.map(e=>e.id)).size,etym.length,"Duplicate etymological
 assert.equal(new Set(etym.map(e=>e.lemma)).size,etym.length,"Duplicate lemma");
 assert.equal(new Set(sentences.map(e=>e.id)).size,sentences.length,"Duplicate sententia ID");
 const link=c=>{const m=String(c||"").match(/(?:Vitr\.?|Vitruv\.?)\s*([IVX]+|\d+)\.(\d+)\.(\d+)/i);if(!m)return null;const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};return (roman[m[1].toUpperCase()]||m[1])+"."+m[2]+"."+m[3]};
+const alignmentCounts={literal_bilingual:0,latin_only:0,non_literal:0,external_source:0};
+for(const e of etym)for(const x of e.loci||[]){
+ const a=x.v514_alignment;assert(a,"Every cited exemplum needs V514 alignment metadata: "+e.lemma);
+ assert(Object.hasOwn(alignmentCounts,a.status),"Unknown alignment status: "+a.status);
+ alignmentCounts[a.status]++;
+ const ref=link(x.c),source=ref&&byLocus.get(ref);
+ if(!source){assert.equal(a.status,"external_source","Unmatched reference must be labeled external");continue}
+ assert.equal(a.locus,ref,"Incorrect attached locus "+e.lemma);
+ const latin=normalized(source.latin).includes(normalized(x.t));
+ const spanish=!!x.tr&&normalized(source.translation).includes(normalized(x.tr));
+ assert.equal(a.latin_exact,latin,"Stale Latin alignment "+e.lemma);
+ assert.equal(a.spanish_exact,spanish,"Stale Spanish alignment "+e.lemma);
+ assert.equal(a.status,latin&&spanish?"literal_bilingual":latin?"latin_only":"non_literal","Stale classification "+e.lemma);
+}
+assert.equal(alignmentCounts.literal_bilingual+alignmentCounts.latin_only+alignmentCounts.non_literal+alignmentCounts.external_source,etym.reduce((n,e)=>n+(e.loci||[]).length,0));
 let matches=0,uncertain=0;
 const rigorouslyAligned=new Set(["ichnographia","orthographia","scaenographia","dispositio","distributio","gnomonice","machinatio"]);
 for(const e of etym)for(const example of e.loci||[]){
@@ -38,5 +53,5 @@ for(const name of ["ichnographia","orthographia","scaenographia","dispositio","d
  assert(html.includes("q="+name+"&amp;mode=palabra"),"Missing crawlable technical entry "+name);
  const entry=etym.find(e=>e.lemma===name);assert(entry?.loci?.length,"Missing technical locus "+name);
 }
-console.log(JSON.stringify({etymologicalEntries:etym.length,sententiae:sentences.length,matchedV514LocusExcerpts:matches,olderLociNotReviewedByThisAudit:uncertain,method:"Local transcription comparison only; not independent manuscript collation or lexical review"},null,2));
+console.log(JSON.stringify({etymologicalEntries:etym.length,sententiae:sentences.length,matchedV514LocusExcerpts:matches,alignmentCounts,olderLociNotReviewedByThisAudit:uncertain,method:"Local transcription comparison only; not independent manuscript collation or lexical review"},null,2));
 console.log("PASS: Lexicon editorial data, loci, translated excerpts and static catalogue counts match.");
