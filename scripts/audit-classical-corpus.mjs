@@ -37,12 +37,31 @@ const unique=new Set(),languages={},formats={};
 for(const entry of registry.entries){
  assert(byId.has(entry.workId),"Search record has unknown work "+entry.workId);
  assert(["la","grc","es","en","fr","it","de","pt"].includes(entry.language),"Invalid language");
- assert(["html-text","json-passages"].includes(entry.format),"Invalid index format");
- assert(!unique.has(entry.path),"Duplicate indexed file "+entry.path);
+ assert(["html-text","json-passages","structured-bilingual"].includes(entry.format),"Invalid index format");
+ if(unique.has(entry.path))assert(entry.format==="structured-bilingual"&&entry.workId==="vitruvius",
+  "Duplicate indexed file "+entry.path);
  unique.add(entry.path);
  assert(existsSync(pathOf(entry.path)),"Missing indexed file "+entry.path);
  assert(statSync(pathOf(entry.path)).size>250,"Empty indexed file "+entry.path);
  languages[entry.language]=(languages[entry.language]||0)+1;formats[entry.format]=(formats[entry.format]||0)+1;
+ if(entry.format==="structured-bilingual"){
+  assert.equal(entry.workId,"vitruvius","Structured Vitruvius work ID mismatch");
+  assert(["recensio-es","recensio-fr","theory-en"].includes(entry.edition),
+   "Unrecognized structured Vitruvius edition");
+  assert.equal(entry.path,"data/structured/"+entry.edition+".json",
+   "Structured index must point to the verified edition");
+  const d=read(entry.path);
+  assert.equal(d.edition,entry.edition,"Structured edition identifier mismatch");
+  assert(Array.isArray(d.passages)&&d.passages.length>100,
+   "Structured Vitruvius file has too few passages");
+  assert(entry.language==="la"||entry.language===d.language,
+   "Structured Vitruvius entry uses an unsupported translation");
+  const field=entry.language==="la"?"latin":"translation";
+  assert(d.passages.every(p=>typeof p.locus==="string"&&typeof p[field]==="string"&&p[field].trim().length),
+   "Missing locus or indexed text in "+entry.path+" "+entry.language);
+  assert(d.source?.sha256&&d.source?.filename,
+   "Structured Vitruvius source provenance incomplete");
+ }
  if(entry.format==="json-passages"){
   const text=read(entry.path);
   assert.equal(text.workId,entry.workId,"Mismatched work ID in "+entry.path);
