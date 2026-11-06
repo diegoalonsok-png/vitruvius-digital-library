@@ -96,6 +96,21 @@ try{
    }
   }finally{await p.close()}
  });
+ await check('Apuleius opens independent Latin/Spanish readers and book navigation never claims translation alignment',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=apuleius-metamorphoses&view=text');
+  try{
+   const spanish=p.locator('#classic-version-b');
+   await spanish.waitFor({state:'visible',timeout:20000});
+   assert.match(await spanish.locator('option:checked').innerText(),/castellano/i);
+   assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la/);
+   assert.match(await p.locator('#classic-frame-b').getAttribute('src'),/lang=es/);
+   const before=await p.locator('#classic-frame-b').getAttribute('src');
+   await p.locator('#classic-apuleius-book').selectOption('6');
+   assert.match(await p.locator('#classic-frame-a').getAttribute('src'),/lang=la.*locus=6\.1/);
+   assert.equal(await p.locator('#classic-frame-b').getAttribute('src'),before,'The translation must not be falsely synchronized');
+   assert.match(await p.locator('#classic-panel').innerText(),/No existe correspondencia de capítulos verificada/);
+  }finally{await p.close()}
+ });
  await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
   const p=await open('auditoria-textos-clasicos.html');
   try{
