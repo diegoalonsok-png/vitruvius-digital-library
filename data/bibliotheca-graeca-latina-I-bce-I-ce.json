@@ -298,7 +298,10 @@
         "editor": "Philip Smith · London: Simpkin"
       },
       "translation": {
-        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
+        "status": "Inglés: W. A. McDevitte y W. S. Bohn (1870–72), 8 libros, edición TEI Perseus. Libro VIII de Aulo Hircio; cotejo por capítulo, no palabra por palabra.",
+        "chicago18Bibliography": "Caesar, Julius, and Aulus Hirtius. *Caesar's Commentaries on the Gallic and Civil Wars*. Translated by W. A. McDevitte and W. S. Bohn. New York: Harper and Brothers, 1870–72. Digital transcription, Perseus Digital Library.",
+        "bibliographicStyle": "Chicago Manual of Style, 18th edition",
+        "translationLanguage": "en"
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -315,7 +318,8 @@
         "Gallic War"
       ],
       "corpusFiles": {
-        "la": "data/classics-corpus/caesar-gallico-la.json"
+        "la": "data/classics-corpus/caesar-gallico-la.json",
+        "en": "data/classics-corpus/caesar-gallico-en.json"
       },
       "localHtml": "classics-text-reader.html?work=caesar-gallico&lang=la",
       "localEdition": {
