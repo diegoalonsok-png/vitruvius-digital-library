@@ -45,6 +45,30 @@ try{
    assert.match(await p.locator('#result-list').innerText(),/Poética|Περὶ ποιητικῆς/);
   }finally{await p.close()}
  });
+ await check('Modern Juan Domingo Perón is not represented by ancient Acts of John or classical codices',async()=>{
+  const p=await open('vitruvia.html?q=Juan%20Domingo%20Peron&mode=all');
+  try{
+   await p.waitForFunction(()=>window.VitruviaSearchSnapshot?.query?.toLowerCase().includes('juan domingo peron')
+    &&document.querySelector('#result-list')?.getAttribute('aria-busy')==='false',{timeout:55000});
+   const state=await p.evaluate(()=>{
+    const rows=window.VitruviaSearchSnapshot?.rows||[];
+    return {
+     articleTitle:document.querySelector('#article-title')?.textContent||'',
+     featureTitle:document.querySelector('#featured-title')?.textContent||'',
+     articleText:document.querySelector('#vitruvia-article')?.innerText?.slice(0,10000)||'',
+     rows:rows.map(r=>({type:r.type,title:r.title,author:r.author})),
+     guardVersion:window.VitruviaContextGuard?.version||''
+    };
+   });
+   assert.equal(state.guardVersion,'1.0','Ancient-context provenance guard must be active');
+   assert(!/hechos de juan|acts of john/i.test(state.articleTitle+' '+state.featureTitle+' '+state.articleText),
+    'The encyclopedia must not replace Perón with Acts of John');
+   assert(!/per[oó]n:\s*a history/i.test(state.articleTitle+' '+state.featureTitle),
+    'A modern biography must not be mistaken for the identity of its subject');
+   assert(!state.rows.some(r=>['book','manuscript','edition','preface','passage','apparatus','fragment'].includes(r.type)),
+    'Unrelated ancient books or codices must not be listed for the modern person');
+  }finally{await p.close()}
+ });
  await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   const errors=[];p.on('pageerror',e=>errors.push(e.message));
