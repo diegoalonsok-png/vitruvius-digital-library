@@ -111,6 +111,20 @@ for bid,(title,files) in LLW.items():
   extra[k]={'urn':'thelatinlibrary:'+files[0],'id':k,'authorId':'ll-'+bid.split('-')[0],'author':w['author'],'dates':w.get('dating',''),'title':title,'language':'la',
     'original':LL+files[0],'parts':[{'n':str(i+1),'url':LL+f} for i,f in enumerate(files)],'translations':[],'source':'The Latin Library','bibliotheca':bid}
   links[bid]=[{'obra':k,'title':title,'translation':False}]
+# Corpus ampliado: el resto de las obras de Perseus y First1KGreek con texto original abierto
+# (Septuaginta, oradores áticos, Calímaco, Teócrito, Epicuro, Plotino, Historia Augusta, Amiano…).
+# Nombre castellano y datación en scripts/clasicos_autores_es.py; el nombre inglés queda en authorEn.
+sys.path.insert(0,'scripts')
+from clasicos_autores_es import A as AUT_ES,EXCLUIR,SIN_TRADUCCION,TITULOS_LXX
+for k in sorted(ext):
+  if k in incat or k in extra or k in EXCLUIR:continue
+  o=pick(k,'orig')
+  if not o:continue
+  a=k.split('.')[0];en=ext[k]['author'];es,dt=AUT_ES.get(a,(en,''))
+  greek=k.startswith('tlg') and '-lat' in o
+  extra[k]={'urn':'urn:cts:'+('latinLit' if k.startswith(('phi','stoa')) else 'greekLit')+':'+k,'id':k,'authorId':a,'author':es,'authorEn':en,'dates':dt,
+    'title':(TITULOS_LXX[k.split('.')[1]]+' ('+ext[k]['title']+')' if a=='tlg0527' and k.split('.')[1] in TITULOS_LXX else ext[k]['title'])+(' (versión latina)' if greek else ''),'language':'grc' if '-grc' in o else 'la','original':url(k,o),
+    'translations':[] if k in SIN_TRADUCCION else [{'language':'en','url':url(k,f)} for f in pick(k,'eng')[-1:]],'bibliotheca':None,'corpus':'corpus ampliado'}
 json.dump({'schema':'bibliotheca-perseus/1','note':'Obra de la Bibliotheca Graeca Latina → obras TEI de Perseus Digital Library (CC BY-SA 4.0), leídas en tiempo de ejecución.','links':links},open('data/bibliotheca-perseus.json','w'),ensure_ascii=False,indent=0)
 json.dump({'schema':cat.get('schema'),'scope':'Obras de la Bibliotheca Graeca Latina fuera del período del índice del Lector clásico; mismo formato, lectura en tiempo de ejecución desde Perseus.','license':cat.get('license'),'works':list(extra.values())},open('data/clasicos-perseus-extra.json','w'),ensure_ascii=False,indent=0)
 print(len(links),'obras vinculadas de',len(bib),'·',len(extra),'obras extra',file=sys.stderr)

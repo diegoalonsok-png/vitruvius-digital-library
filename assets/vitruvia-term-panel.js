@@ -132,7 +132,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    json('data/bibliotheca-graeca-latina-I-bce-I-ce.json').catch(()=>({works:[]})),
    json('data/bibliotheca-perseus.json?v=20261105-v1').catch(()=>({links:{}})),
    json('data/clasicos-perseus.json').catch(()=>({works:[]})),
-   json('data/clasicos-perseus-extra.json?v=20261105-v1').catch(()=>({works:[]}))]);
+   json('data/clasicos-perseus-extra.json?v=20261106-ampliado-v1').catch(()=>({works:[]}))]);
   const words=s=>new Set(fold(s).split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>=4));
   const match=(set,t)=>set.has(t)||(t.length>=5&&[...set].some(x=>x.length>=5&&(x.startsWith(t)||t.startsWith(x))));
   const hits=[],seen=new Set();
@@ -146,7 +146,7 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   // Obras del Lector clásico que la Bibliotheca no registra (mismo autor u obra).
   for(const x of [...(cat.works||[]),...(extra.works||[])]){
    if(seen.has(x.id))continue;
-   const A=words(x.author),T=words(x.title);const a=toks.filter(t=>match(A,t)).length,ti=toks.filter(t=>match(T,t)).length;
+   const A=words(x.author+' '+(x.authorEn||'')),T=words(x.title);const a=toks.filter(t=>match(A,t)).length,ti=toks.filter(t=>match(T,t)).length;
    if(!a&&!ti)continue;
    hits.push({w:{id:null,title:x.title,author:x.author,dating:x.dates,lector:x.id},score:a*3+ti-0.5,readable:true,obras:[x.id]});seen.add(x.id);
   }
@@ -421,9 +421,12 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   const sel=document.createElement('select');sel.className='vtp-chip';sel.setAttribute('aria-label','Obra');
   for(const {o,label} of opts){const op=document.createElement('option');op.value=o;op.textContent=label;sel.append(op)}
   const full=document.createElement('a');full.className='vtp-chip';full.target='_blank';full.rel='noopener';
-  bar.append(sel,full);
+  const edPdf=document.createElement('a'),edDoc=document.createElement('a');
+  for(const [a,l] of [[edPdf,'Edición PDF'],[edDoc,'Edición DOCX']]){a.className='vtp-chip';a.textContent=l;a.setAttribute('download','');a.hidden=true}
+  bar.append(sel,full,edPdf,edDoc);
   const frame=document.createElement('iframe');frame.title='Lector clásico';frame.style.cssText='width:100%;height:min(78vh,820px);border:1px solid var(--line,#313b38);border-radius:10px;margin-top:10px;background:#fff';box.append(frame);
-  const load=o=>{frame.src='lector-clasico.html?obra='+encodeURIComponent(o)+'&embed=1';full.href='lector-clasico.html?obra='+encodeURIComponent(o);full.textContent='Abrir en pantalla completa ↗'};
+  const load=o=>{frame.src='lector-clasico.html?obra='+encodeURIComponent(o)+'&embed=1';full.href='lector-clasico.html?obra='+encodeURIComponent(o);full.textContent='Abrir en pantalla completa ↗';
+   json('data/clasicos-descargas.json?v=20261106-v1').then(d=>{const e=d?.works?.[o];edPdf.hidden=edDoc.hidden=!e;if(e){edPdf.href=e.pdf;edDoc.href=e.docx;edPdf.title=e.kb.pdf+' KB';edDoc.title=e.kb.docx+' KB'}}).catch(()=>{edPdf.hidden=edDoc.hidden=true})};
   sel.onchange=()=>load(sel.value);if(opts.length<2)sel.hidden=true;load(opts[0].o);
   return box;
  }
