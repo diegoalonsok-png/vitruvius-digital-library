@@ -195,7 +195,13 @@ const MODES={
  sententiae:{label:"Sententiae",help:"Fraseario del mundo antiguo: sentencias célebres con referencia canónica, traducción, notas sintácticas y verificación en el corpus local."}
 };
 
+/* Selector junto al buscador sincronizado con la selección de cabecera. */
+function syncSearchLanguageSelector(){
+ const main=$("#lx-lang"),quick=$("#lx-lang-quick");
+ if(main&&quick&&quick.value!==main.value)quick.value=main.value;
+}
 function renderTabs(){
+ syncSearchLanguageSelector();
  const box=$("#lx-tabs");box.replaceChildren();
  for(const [k,m] of Object.entries(MODES)){const b=document.createElement("button");b.type="button";b.className="tab";b.dataset.mode=k;b.textContent=T(m.label);b.setAttribute("aria-pressed",String(S.mode===k));b.addEventListener("click",()=>{S.mode=k;renderTabs();if(S.q)run()});box.append(b)}
  const hi=S.ui==="en"?0:S.ui==="fr"?1:-1;$("#lx-mode-note").textContent=hi<0?MODES[S.mode].help:(MODE_I18N[S.mode]?.[hi]||MODES[S.mode].help);
@@ -283,6 +289,7 @@ function applyUI(){
 
 /* ---------- Ejecución ---------- */
 async function run(push=true){
+ syncSearchLanguageSelector();
  const q=$("#lx-q").value.trim();S.q=q;S.page=0;
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
@@ -1771,7 +1778,11 @@ async function init(){
  try{const th=localStorage.getItem("vitruvia-theme");if(th==="light")document.documentElement.dataset.theme="light"}catch{}
  $("#theme")?.addEventListener("click",()=>{const t=document.documentElement.dataset.theme==="light"?"dark":"light";document.documentElement.dataset.theme=t;try{localStorage.setItem("vitruvia-theme",t)}catch{}});
  $("#lx-form").addEventListener("submit",e=>{e.preventDefault();run().then(()=>$("#results").scrollIntoView({behavior:"smooth",block:"start"}))});
- $("#lx-lang").addEventListener("change",e=>{S.lang=e.target.value;if(S.q)run()});
+ $("#lx-lang").addEventListener("change",e=>{S.lang=e.target.value;syncSearchLanguageSelector();if(S.q)run()});
+ $("#lx-lang-quick")?.addEventListener("change",e=>{
+  const primary=$("#lx-lang");primary.value=e.target.value;
+  primary.dispatchEvent(new Event("change",{bubbles:true}));
+ });
  $("#lx-work").addEventListener("change",e=>{S.work=e.target.value;if(S.q)run()});
  $("#lx-order").addEventListener("change",()=>{if(S.result&&S.D){S.page=0;$("#lx-results").replaceChildren();$("#lx-side-extra").replaceChildren();if(S.mode==="sintaxis")renderCollocations(S.D,S.result);renderHits(S.D,S.result)}});
  ["#lx-variants","#lx-lemmatize"].forEach(id=>$(id).addEventListener("change",()=>{if(S.q)run()}));

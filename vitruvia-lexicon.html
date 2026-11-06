@@ -38,7 +38,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 .navlinks{display:flex;gap:21px;flex-wrap:wrap;font-size:12px;color:#aaa}.navlinks a{text-decoration:none}.navlinks a:hover{color:#fff}
 .navtools{display:flex;gap:9px;align-items:center}
 #theme{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #414141;border-radius:8px;background:#1a1a1b;color:#d7d7d7}
-#lx-lang,.lx-select{background:#1a1a1b;color:#d7d7d7;border:1px solid #414141;border-radius:6px;padding:9px}
+#lx-lang,#lx-lang-quick,.lx-select{background:#1a1a1b;color:#d7d7d7;border:1px solid #414141;border-radius:6px;padding:9px}
 .hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.76fr);gap:clamp(34px,4vw,78px);padding:62px 0 42px;align-items:center}
 .hero>div,.featured{min-width:0}
 .hero .eyebrow{letter-spacing:.16em;font-size:10px;font-weight:500;color:#969696;text-transform:uppercase}
@@ -46,6 +46,10 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 .hero .lx-sub{display:block;font:400 clamp(15px,1.6vw,24px)/1 Arial,Helvetica,sans-serif;letter-spacing:.46em;text-transform:uppercase;color:#a9a9a9;margin:0 0 26px 10px}
 .hero .lx-sub span{font-size:.55em;letter-spacing:.12em;color:#777;margin-left:10px;vertical-align:middle}
 .lead{color:#aaa;font-size:clamp(15px,1.4vw,18px);line-height:1.72;max-width:60ch;margin:0 0 28px}
+.lx-search-lang{display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap;margin:0 0 12px}
+.lx-search-lang label{color:#a9a9a9;font:12px Arial,Helvetica,sans-serif}
+.lx-search-lang select{max-width:100%;min-width:185px}
+@media(max-width:560px){.lx-search-lang{align-items:stretch;gap:8px}.lx-search-lang label{width:100%}.lx-search-lang select{flex:1;min-width:0}}
 .search-wrap{position:relative}
 .searchform{display:flex;align-items:center;gap:8px;border:1px solid #373737;border-radius:45px;padding:5px 7px 5px 18px;min-height:56px;background:#181818;color:#e8e8e6;box-shadow:0 7px 26px #0003}
 .searchform:focus-within{border-color:#666}
@@ -264,7 +268,7 @@ html[data-theme=light] .logo-small,html[data-theme=light] .hero h1,html[data-the
 html[data-theme=light] .lead,html[data-theme=light] .result-card p,html[data-theme=light] .featured p,html[data-theme=light] .article-body,html[data-theme=light] .lx-morph{color:#3b4440}
 html[data-theme=light] .lx-kwic,html[data-theme=light] .lx-passage,html[data-theme=light] .lx-forms,html[data-theme=light] .lx-locus p,html[data-theme=light] .lx-synopsis{color:#1e2522!important}
 html[data-theme=light] .searchform{background:#fff;border-color:#c8c6bd}html[data-theme=light] .searchform input{color:#1d2421}
-html[data-theme=light] .tab,html[data-theme=light] .suggestions button,html[data-theme=light] .actions a,html[data-theme=light] .actions button,html[data-theme=light] .lx-btn,html[data-theme=light] .lx-key,html[data-theme=light] #theme,html[data-theme=light] #lx-lang,html[data-theme=light] .lx-select,html[data-theme=light] .searchform button[type=submit],html[data-theme=light] .lx-more{background:#fff;color:#28302c;border-color:#c5c3ba}
+html[data-theme=light] .tab,html[data-theme=light] .suggestions button,html[data-theme=light] .actions a,html[data-theme=light] .actions button,html[data-theme=light] .lx-btn,html[data-theme=light] .lx-key,html[data-theme=light] #theme,html[data-theme=light] #lx-lang,html[data-theme=light] #lx-lang-quick,html[data-theme=light] .lx-select,html[data-theme=light] .searchform button[type=submit],html[data-theme=light] .lx-more{background:#fff;color:#28302c;border-color:#c5c3ba}
 html[data-theme=light] .tab[aria-pressed=true]{background:#2c2c2e;color:#fff}
 html[data-theme=light] .tool textarea,html[data-theme=light] .tool input[type=text],html[data-theme=light] #inst-filter,html[data-theme=light] .lx-cite-out,html[data-theme=light] .empty,html[data-theme=light] .lx-kb{background:#fff;color:#1d2421;border-color:#cfcdc4}
 html[data-theme=light] mark,html[data-theme=light] mark.w{background:#e2dcc6;color:#111}
@@ -308,7 +312,11 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <h1>Vitruvia</h1>
   <span class="lx-sub">Lexicon<span>beta 1.0</span></span>
   <p class="lead" data-i18n>Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables. Toda palabra latina, griega, castellana, inglesa, francesa o alemana recibe su árbol etimológico, y los personajes históricos se buscan por su nombre griego y latino.</p>
-  <div class="search-wrap">
+  <div class="lx-search-lang">
+    <label for="lx-lang-quick">Lengua de búsqueda</label>
+    <select id="lx-lang-quick" aria-label="Lengua de búsqueda sobre el buscador" title="Lengua de búsqueda"><option value="auto">Lengua: auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano (etimología)</option><option value="en">Inglés (etimología)</option><option value="fr">Francés (etimología)</option><option value="de">Alemán (etimología)</option></select>
+   </div>
+   <div class="search-wrap">
    <form class="searchform" id="lx-form" autocomplete="off" role="search">
     <span class="icon-search" aria-hidden="true">⌕</span>
     <input id="lx-q" type="search" spellcheck="false" placeholder="λόγος · symmetria · anthropos · &quot;arma virumque&quot; · @domus · aedi*" aria-label="Buscar palabra, frase o patrón">
@@ -631,5 +639,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-bilingual-querybuilder-v1" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lang-selector-v2" defer></script>
 </body></html>
