@@ -5837,16 +5837,23 @@
       "he": [],
       "cog": [],
       "refs": [
-        "Vitr., De arch. I.2 (definición y tres especies de disposición; verificar sección exacta en la edición consultada)",
+        "Vitruvio, De architectura I.2.2, texto latino y edición V514 del proyecto",
         "LSJ, s.v. ἴχνος y γράφω"
       ],
-      "loci": [],
+      "loci": [
+        {
+          "c": "Vitr. 1.2.2",
+          "t": "Ichnographia est circini regulaeque modice continens usus, e qua capiuntur formarum in solis arearum descriptiones.",
+          "tr": "La icnografía es el uso regulado de compás y regla, con el que se obtienen las trazas de las áreas en el suelo.",
+          "lang": "la"
+        }
+      ],
       "rel": [
         "dispositio",
         "orthographia",
         "scaenographia"
       ],
-      "editorial_status": "etimología explicativa; loci pendientes de cotejo por edición"
+      "editorial_status": "Locus I.2.2 identificado en la transcripción latina digital V514; equivalencia castellana de consulta. No constituye cotejo autóptico de Harley MS 2767."
     },
     {
       "id": "scaenographia",
@@ -5884,16 +5891,23 @@
       "he": [],
       "cog": [],
       "refs": [
-        "Vitr., De arch. I.2 (especies de dispositio; cotejar locus exacto en la edición utilizada)",
+        "Vitruvio, De architectura I.2.2, texto latino y edición V514 del proyecto",
         "LSJ, s.v. σκηνή y γράφω"
       ],
-      "loci": [],
+      "loci": [
+        {
+          "c": "Vitr. 1.2.2",
+          "t": "Item scaenographia est frontis et laterum abscedentium adumbratio ad circinique centrum omnium linearum responsus.",
+          "tr": "La escenografía representa de forma esbozada el frente y los lados que retroceden, con las líneas referidas a un centro.",
+          "lang": "la"
+        }
+      ],
       "rel": [
         "dispositio",
         "ichnographia",
         "orthographia"
       ],
-      "editorial_status": "ficha técnica provisional; loci pendientes de cotejo"
+      "editorial_status": "Locus I.2.2 identificado en la transcripción latina digital V514; equivalencia castellana de consulta. No constituye cotejo autóptico de Harley MS 2767."
     },
     {
       "id": "orthographia",
@@ -5931,16 +5945,23 @@
       "he": [],
       "cog": [],
       "refs": [
-        "Vitr., De arch. I.2 (categorías de dispositio; verificar división por sección)",
+        "Vitruvio, De architectura I.2.2, texto latino y edición V514 del proyecto",
         "LSJ, s.v. ὀρθός y γράφω"
       ],
-      "loci": [],
+      "loci": [
+        {
+          "c": "Vitr. 1.2.2",
+          "t": "Orthographia autem est erecta frontis imago modiceque picta rationibus operis futuri figura.",
+          "tr": "La ortografía es una imagen elevada del frente y una figura trazada según las proporciones de la obra futura.",
+          "lang": "la"
+        }
+      ],
       "rel": [
         "dispositio",
         "ichnographia",
         "scaenographia"
       ],
-      "editorial_status": "ficha técnica provisional; loci pendientes de cotejo"
+      "editorial_status": "Locus I.2.2 identificado en la transcripción latina digital V514; equivalencia castellana de consulta. No constituye cotejo autóptico de Harley MS 2767."
     }
   ]
 }
