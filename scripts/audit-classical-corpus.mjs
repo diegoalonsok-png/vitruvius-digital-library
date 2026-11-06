@@ -177,7 +177,7 @@ for(const w of works){
  const p=publicMap.get(w.id);
  assert(p&&p.title===w.title&&p.catalogueStatus===w.publicStatus,
   "Public coverage report differs from catalogue: "+w.id);
- const expected=registry.entries.filter(e=>e.workId===w.id).map(e=>e.path).sort();
+ const expected=[...new Set(registry.entries.filter(e=>e.workId===w.id).map(e=>e.path))].sort();
  assert.deepEqual([...p.indexedTextFiles].sort(),expected,"Public indexed-file list is stale: "+w.id);
 }
 
