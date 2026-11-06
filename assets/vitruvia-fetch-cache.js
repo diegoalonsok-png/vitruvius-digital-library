@@ -29,10 +29,21 @@
   try{const c=await open();if(!c)return;const body=await res.blob();const h=new Headers(res.headers);h.set(STAMP,String(Date.now()));
    await c.put(url,new Response(body,{status:res.status,statusText:res.statusText,headers:h}));}catch{}
  }
+ // Peticiones simultáneas al mismo JSON del sitio (varios módulos piden el mismo corpus): una sola descarga.
+ const inflight=new Map();
+ function shared(url,input,init){
+  let p=inflight.get(url);
+  if(!p){p=native(input,init);inflight.set(url,p);p.finally(()=>setTimeout(()=>inflight.delete(url),4000)).catch(()=>{})}
+  return p.then(r=>r.clone());
+ }
  window.fetch=async function(input,init){
   const req=input instanceof Request?input:null;
   const url=req?req.url:String(input);
   const method=String(init?.method||req?.method||'GET').toUpperCase();
+  if(method==='GET'&&!init?.body&&!init?.signal&&!req){
+   let abs;try{abs=new URL(url,location.href)}catch{}
+   if(abs&&abs.origin===location.origin&&/\.json$/i.test(abs.pathname))return shared(abs.href,input,init);
+  }
   const rule=method==='GET'&&!init?.body&&RULES.find(r=>r[0].test(url));
   if(!rule)return native(input,init);
   const hit=await lookup(url,rule[1]);

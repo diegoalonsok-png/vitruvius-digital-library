@@ -215,7 +215,7 @@ async function localCodex(id){
   for(const [i,f] of list.filter(x=>/^H_\d{3}_[a-z0-9-]+\.jpg$/i.test(x.archivo||"")).slice(0,30).entries()){
    const n=Number(f.numeroImagen)||i+1;
    const a=create(grid,"a","vitruvia-image-card");a.href="codex-h-folios-local.html#imagen="+n;
-   const img=create(a,"img");img.src=base+encodeURIComponent(f.archivo);img.loading="lazy";img.alt=f.etiquetaOriginal||"Harley MS 2767";
+   const img=create(a,"img");img.src="images/miniaturas/codex-h/"+encodeURIComponent(f.archivo);img.onerror=()=>{img.onerror=null;img.src=base+encodeURIComponent(f.archivo)};img.loading="lazy";img.alt=f.etiquetaOriginal||"Harley MS 2767";
    const cap=create(a,"div","image-caption","Harley MS 2767 · "+(f.etiquetaOriginal||n));
    create(cap,"span","image-origin","Archivo local · British Library");
   }

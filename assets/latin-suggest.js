@@ -81,7 +81,9 @@
   }catch(error){status.textContent='No se pudo consultar el corpus: '+error.message;}
  }
 
- try{const response=await fetch('data/latin-lexicon.json?v=20261030-dictionary-6');if(!response.ok)throw Error();entries=(await response.json()).entries;
+ // El léxico (≈90 KB) se pide cuando la persona va a escribir o, si no, unos segundos después de la carga.
+ await new Promise(r=>{if(document.activeElement===input||input.value)return r();input.addEventListener('focus',r,{once:true});input.addEventListener('pointerenter',r,{once:true});setTimeout(r,3500)});
+ try{const response=await fetch('data/latin-lexicon.json');if(!response.ok)throw Error();entries=(await response.json()).entries;
   // Todas las formas del texto latino (CLTK + Lewis & Short) para las sugerencias ortográficas y de grafía.
   const loadDerived=()=>fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(g=>{if(!g?.forms)return;const by=new Map();for(const [f,ls] of Object.entries(g.forms))for(const l of ls){if(!by.has(l))by.set(l,[]);by.get(l).push(f)}
    for(const [l,fs] of by)derivedForms.push({lemma:String(g.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'').replace(/\d+$/,''),forms:fs,derived:true})}).catch(()=>{});
