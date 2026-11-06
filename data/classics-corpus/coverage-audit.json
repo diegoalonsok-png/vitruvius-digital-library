@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 20,
-    "indexedTextVersions": 27,
+    "indexedTextVersions": 28,
     "indexedDistinctWorks": 14,
     "manuscriptWitnesses": 23
   },
@@ -3170,9 +3170,11 @@
       "dating": "siglo IV–III a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/theophrastus-characters-en.json",
         "data/classics-corpus/theophrastus-characters-grc.json"
       ],
       "localPDF": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
