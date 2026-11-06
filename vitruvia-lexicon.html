@@ -203,6 +203,7 @@ html[data-theme=light] .lx-appbox{background:#fff;border-color:#d4d2c9}html[data
 .lx-tree-gloss{font:italic 14px var(--lx-text);color:#aaa}
 .lx-tree-rel{font:11px Arial,sans-serif;color:#7d7d7d;margin:6px 0 0 4px}
 .lx-tree-cog{margin:6px 0 0 4px;font:400 14px/1.7 var(--lx-text);color:#bbb}.lx-tree-cog small{font:10px Arial,sans-serif;color:#888;text-transform:uppercase;letter-spacing:.06em}
+.lx-tree-desc-list{columns:2 260px;font:400 15px/1.7 var(--lx-text)}.lx-locus-direct{border:1px solid #6a6a6a;border-radius:8px;padding:16px}
 .lx-tree-desc{margin:6px 0 0 4px;font-size:13px}.lx-tree-desc ul{columns:2 240px;font:400 14px/1.6 var(--lx-text)}
 .lx-person-banner{padding:10px 14px;border:1px solid #555;border-radius:8px;margin:0 0 16px;font-size:14px}.lx-person-banner [lang=grc]{font-size:17px}
 .lx-group-h{font:400 22px Georgia,serif;margin:24px 0 4px;color:#e5e5e5}
@@ -295,6 +296,8 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
    <button type="button" data-q="*dem-" data-mode="etimologia">*dem-</button>
    <button type="button" data-q="=aedes">=aedes</button>
    <button type="button" data-q="#geometria">#geometria</button>
+   <button type="button" data-q="pie:*dem-">pie:*dem-</button>
+   <button type="button" data-q="concepto:justice">concepto:justice</button>
    <button type="button" data-q="√בנה">√בנה</button>
   </div>
   <div id="lx-themes-home"></div>
@@ -331,7 +334,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <div id="lx-results"></div>
   <aside class="sidebar" aria-label="Distribución, colocaciones y exportación"><div id="lx-side-extra"></div>
    <section class="lx-side-block"><h3>Sintaxis de búsqueda</h3>
-    <p class="lx-small"><code>"frase exacta"</code> · <code>@lema</code> · <code>aedi*</code> · <code>t?xis</code> · <code>~simetria</code> · <code>raíz:aedi</code> · <code>A ..3 B</code> · <code>A NEAR/5 B</code> · <code>[mood=ptc case=gen]</code>. Detalle en <a href="#methodus">Método</a>.</p>
+    <p class="lx-small"><code>"frase exacta"</code> · <code>@lema</code> · <code>aedi*</code> · <code>t?xis</code> · <code>~simetria</code> · <code>prefijo:aedi</code> · <code>pie:*dem-</code> · <code>concepto:justicia</code> · <code>A ..3 B</code> · <code>A NEAR/5 B</code> · <code>[mood=ptc case=gen]</code>. Detalle en <a href="#methodus">Método</a>.</p>
    </section>
   </aside>
  </div>
@@ -506,7 +509,9 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <dt><code>"frase exacta"</code></dt><dd>Secuencia contigua de palabras, en orden.</dd>
   <dt><code>A ..3 B</code></dt><dd>B aparece hasta tres palabras después de A (orden fijo).</dd>
   <dt><code>A NEAR/5 B</code></dt><dd>A y B a no más de cinco palabras, en cualquier orden.</dd>
-  <dt><code>aedi*</code> · <code>t?xis</code> · <code>raíz:aedi</code></dt><dd>Comodines: <code>*</code> cualquier secuencia, <code>?</code> una letra; raíz = todas las formas que empiezan por ella.</dd>
+  <dt><code>aedi*</code> · <code>t?xis</code> · <code>prefijo:aedi</code></dt><dd>Búsqueda ortográfica: <code>*</code> cualquier secuencia, <code>?</code> una letra; <code>prefijo:</code> todas las formas que empiezan por esa secuencia (no es una raíz etimológica).</dd>
+  <dt><code>pie:*dem-</code></dt><dd>Raíz etimológica reconstruida: fichas del Etymologicum que remiten a ella y sus descendientes en Wiktionary.</dd>
+  <dt><code>concepto:justicia</code> · <code>concepto:justice</code></dt><dd>Búsqueda multilingüe inversa: lemas latinos y griegos cuyo significado registrado incluye el concepto (fichas en castellano; Lewis &amp; Short y LSJ en inglés). Coincidir en el significado no implica parentesco.</dd>
   <dt><code>~simetria</code></dt><dd>Aproximación por distancia de edición (errores de transcripción y OCR).</dd>
   <dt><code>anthropos</code></dt><dd>Transliteración automática del alfabeto latino al griego: encuentra ἄνθρωπος, φύσις (physis), ψυχή (psyche).</dd>
   <dt><code>[mood=ptc case=gen]</code></dt><dd>Patrón morfosintáctico (griego): pos (noun, verb, adj, adv, art, prep, conj, part, pron), case (nom, gen, dat, acc, voc), num (sg, pl, du), tense (pres, imperf, aor, perf, plup, fut), mood (ind, subj, opt, inf, imp, ptc), voice (act, mid, pass, mp), gender (m, f, n). Valores alternativos con <code>|</code>.</dd>
@@ -541,5 +546,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v4" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v5" defer></script>
 </body></html>
