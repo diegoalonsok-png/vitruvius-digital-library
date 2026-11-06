@@ -52,7 +52,7 @@ for b in idx['books']:
 <p id="kb-cite-out" hidden></p>
 <div class="kb-grid"><aside class="kb-side"><form class="kb-search" id="kb-form" role="search"><label class="kb-h" id="kb-search-label" for="kb-q">Buscar en el libro</label><input id="kb-q" type="search" autocomplete="off"></form><div id="kb-hits" aria-live="polite"></div><div id="kb-highlights" hidden></div><h2 id="kb-contents">Índice</h2><nav id="kb-toc" aria-label="Índice del libro"></nav></aside>
 <iframe id="kb-frame" title="{e(es["title"])}"></iframe></div></main>
-<script src="assets/kurilo-libro.js?v=20261106-v1" defer></script></body></html>'''
+<script src="assets/kurilo-libro.js?v=20261106-isbn-v1" defer></script></body></html>'''
   open(b['id']+'.html','w').write(page)
   en=book['editions'].get('en')
   cards.append(f'<a class="lib-card" href="{b["id"]}.html"><b>{e(es["title"])}</b><span>{e(es["subtitle"])}</span><span>{"Castellano · " + e(en["title"])+" (inglés)" if en else "Castellano"} · {es["pages"]} págs.{" · ISBN "+book["isbn"] if book.get("isbn") else ""}</span></a>')

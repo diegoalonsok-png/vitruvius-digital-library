@@ -32,7 +32,7 @@
  function render(){
   const e=ed();document.documentElement.lang=lang;
   $('kb-title').textContent=e.title;$('kb-sub').textContent=e.subtitle||'';
-  $('kb-meta').textContent=['Diego Kurilo',book.publisher,book.year,book.edition,book.isbn?'ISBN '+book.isbn:'',e.pages+' '+t('pages')].filter(Boolean).join(' · ');
+  $('kb-meta').textContent=['Diego Kurilo',book.publisher,book.year,book.edition,book.isbn?'ISBN '+book.isbn+(Object.keys(book.editions).length>1?(lang==='en'?' (shared by the Spanish and English editions)':' (compartido por las ediciones castellana e inglesa)'):''):'',e.pages+' '+t('pages')].filter(Boolean).join(' · ');
   $('kb-lang').textContent=t('other');$('kb-lang').hidden=!book.editions[lang==='es'?'en':'es'];
   $('kb-dl').textContent=t('download');$('kb-dl').href=e.pdf;$('kb-dl').setAttribute('download','');
   $('kb-cite').textContent=t('cite');$('kb-q').placeholder=t('ph');$('kb-search-label').textContent=t('search');$('kb-contents').textContent=t('contents');
