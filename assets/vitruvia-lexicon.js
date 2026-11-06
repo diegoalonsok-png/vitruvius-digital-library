@@ -222,6 +222,7 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "sección":["section","section"],
  "Cita reconocida":["Citation recognised","Citation reconnue"],"El locus comprende":["The locus comprises","Le locus comprend"],"Mostrarlos todos":["Show them all","Les afficher tous"],
  "corregido":["corrected","corrigé"],
  "Grupo de palabras":["Word group","Groupe de mots"],"glosario":["glossary","glossaire"],"forma latina":["Latin form","forme latine"],"transliteración":["transliteration","translittération"],"Resolviendo el grupo de palabras…":["Resolving the word group…","Résolution du groupe de mots…"],
@@ -907,8 +908,10 @@ async function renderGroupSearch(q){
    libro y verso (poesía) o por capítulo / sección (prosa). */
 const TR_DOCS=new Map();
 async function perseusCatalog(){const [a,b]=await Promise.all([load("data/clasicos-perseus.json"),load("data/clasicos-perseus-extra.json").catch(()=>[])]);const arr=x=>Array.isArray(x)?x:(x.works||[]);return [...arr(a),...arr(b)]}
+const entityBox=document.createElement("textarea");
+function decodeEntities(xml){return String(xml).replace(/<!DOCTYPE[^>[]*(\[[^\]]*\])?>/i,"").replace(/&([a-zA-Z][a-zA-Z0-9]*);/g,(m,n)=>{if(/^(amp|lt|gt|quot|apos)$/.test(n))return m;entityBox.innerHTML=m;const c=entityBox.value;return c===m?"":c.replace(/&/g,"&amp;").replace(/</g,"&lt;")})}
 function teiUnits(xml){
- const doc=new DOMParser().parseFromString(xml,"text/xml");const body=doc.getElementsByTagNameNS("*","body")[0];if(!body)return [];
+ const doc=new DOMParser().parseFromString(decodeEntities(xml),"text/xml");const body=doc.getElementsByTagNameNS("*","body")[0];if(!body)return [];
  const SKIP=new Set(["note","bibl","del","head","foreign-note"]);const out=[];
  const clean=t=>t.replace(/\s+/g," ").trim();
  const isPart=d=>(d.localName==="div"&&d.getAttribute("type")==="textpart")||/^div\d$/.test(d.localName);
@@ -927,6 +930,7 @@ function teiUnits(xml){
  function walk(node,path){const kids=[...node.children].filter(isPart);if(!kids.length)return leaf(node,path);kids.forEach((k,i)=>walk(k,[...path,k.getAttribute("n")||String(i+1)]))}
  const top=[...body.children].filter(d=>d.localName==="div"&&!isPart(d));
  if(top.length)top.forEach(d=>walk(d,[]));else walk(body,[]);
+ for(const u of out)if(u.locus)u.locus=u.locus.replace(/(^|\.)(dedication|preface|pr)(?=\.|$)/i,"$1praef");
  return out;
 }
 async function perseusUnits(workId){
@@ -947,11 +951,16 @@ function alignTranslation(U,p){
  for(let k=parts.length-1;k>0;k--){const pre=parts.slice(0,k).join(".");const c=U.filter(u=>u.locus===pre&&u.text.length<2500);if(c.length)return{text:c[0].text,grade:"capítulo"}}
  /* Prosa sin subdivisiones en la traducción (Apuleyo): reparto proporcional dentro del libro. */
  const bk=U.filter(u=>u.locus===parts[0]);if(bk.length&&parts.length>1){const D_=S.D;const same=D_?D_.corpus.passages.filter(q=>q[0]===p[0]&&String(q[1]).split(".")[0]===parts[0]):[];const idx=same.findIndex(q=>q[1]===p[1]);if(idx>=0&&same.length){const t=bk[0].text;const a=Math.floor(idx/same.length*t.length),b=Math.floor((idx+1)/same.length*t.length);const cut=x=>{const m=t.slice(x).search(/[.;:!?]\s/);return m<0?x:x+m+2};return{text:(idx?"… ":"")+t.slice(idx?cut(a):0,cut(b)).trim()+" …",grade:"proporcional"}}}
+ /* Numeraciones distintas (Plinio: parágrafos de Mayhoff en el latín, capítulos de Bostock en la traducción):
+    se elige el capítulo que ocupa la misma posición relativa dentro del libro, según la extensión del texto. */
+ const chs=U.filter(u=>u.locus&&u.locus.split(".")[0]===parts[0]&&u.locus.includes("."));
+ if(chs.length&&parts.length>1&&S.D){const same=S.D.corpus.passages.filter(q=>q[0]===p[0]&&String(q[1]).split(".")[0]===parts[0]);const idx=same.findIndex(q=>q[1]===p[1]);
+  if(idx>=0){let tot=0;const cum=chs.map(u=>tot+=u.text.length);let pre=0;for(let k=0;k<idx;k++)pre+=same[k][2].length;const all=same.reduce((a,q)=>a+q[2].length,0)||1;const target=(pre+same[idx][2].length/2)/all*tot;const k=Math.max(0,cum.findIndex(c=>c>=target));const u=chs[k];return{text:u.text,grade:"proporcional",locus:u.locus}}}
  return null;
 }
 async function translationOf(D,p){
  if(p[0]==="vitruvius"){const ed=S.ui==="fr"?"fr":S.ui==="en"?"en":"es";const data=await load(VIT_ED[ed][0]);const x=data.passages.find(z=>z.locus===p[1]);if(x?.translation)return{text:x.translation,src:"Vitruvio · "+VIT_ED[ed][1]};if(p[4])return{text:p[4],src:"Vitruvio · Castellano · Kurilo V514"};return null}
- const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);if(!t)return null;const G={exacta:T("alineación exacta por locus"),verso:T("alineación por número de verso"),tramo:T("alineación por tramo de versos (aproximada)"),"capítulo":T("alineación por capítulo (aproximada)"),proporcional:T("alineación proporcional dentro del libro (orientativa)")};return{text:t.text,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0)")+" · "+G[t.grade],grade:t.grade};
+ const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);if(!t)return null;const G={exacta:T("alineación exacta por locus"),verso:T("alineación por número de verso"),tramo:T("alineación por tramo de versos (aproximada)"),"capítulo":T("alineación por capítulo (aproximada)"),proporcional:T("alineación proporcional dentro del libro (orientativa)")};return{text:t.text,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0)")+(t.locus?" · "+T("sección")+" "+t.locus:"")+" · "+G[t.grade],grade:t.grade};
 }
 async function fillTranslation(D,p,box){
  if(box.dataset.done)return;box.dataset.done="1";box.replaceChildren(el("p",{class:"lx-small"},T("Cargando traducción…")));
