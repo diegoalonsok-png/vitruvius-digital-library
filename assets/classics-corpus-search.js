@@ -155,6 +155,15 @@ async function semanticSearch(q,{limit=6}={}){
    let link=linkBase+(linkBase.includes("?")?"&":"?")+"q="+encodeURIComponent(first.term);
    if(e.format==="json-passages")link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
+   else {
+    // HTML text without an editorial anchor: point to a real matching
+    // passage using a browser text-fragment, never a fabricated locus.
+    // This preserves the source HTML unchanged.
+    const raw=String(first.passage.text).replace(/\s+/g," ").trim();
+    const start=Math.max(0,first.at[0]-24),end=Math.min(raw.length,first.at[1]+36);
+    const quote=raw.slice(start,end).trim();
+    if(quote)link+="#:~:text="+encodeURIComponent(quote);
+   }
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language),
     author:"Conceptus: "+concept.id+" · equivalente "+first.term,
