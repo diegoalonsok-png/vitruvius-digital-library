@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comparación OCR de ediciones históricas · Vitruvius Digital Library</title>
+<meta name="description" content="Consulta textual por páginas OCR de Krohn (1912), Rose (1899) y Perrault (1673), con enlaces a facsímiles y límites de citación explícitos.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/concordancia-ocr-vitruvio.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+main{max-width:1100px;margin:30px auto;padding:0 20px 70px}h1{font:normal clamp(29px,4vw,46px)/1.2 Georgia,serif}
+form{display:flex;flex-wrap:wrap;align-items:end;gap:12px;padding:20px 0;border-top:1px solid #b4a990;border-bottom:1px solid #b4a990}
+label{display:grid;gap:6px;flex:1;min-width:220px}input,button{font:inherit;padding:11px;border:1px solid #908575;border-radius:4px}button{cursor:pointer}
+#historical-ocr-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:24px}
+.ocr-edition{border:1px solid #a99d89;border-radius:6px;padding:19px;min-width:0}.ocr-edition h2{font:normal 25px Georgia,serif;margin:0 0 12px}
+.ocr-pages{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.ocr-pages a{padding:7px 9px;border:1px solid #998b70;border-radius:4px}
+.ocr-note{font-size:14px;line-height:1.7;opacity:.9}.ocr-excerpt{white-space:pre-wrap;word-break:break-word;font-size:13px;max-height:115px;overflow:hidden}
+</style>
+<script defer src="assets/site-bar.js"></script><script defer src="assets/concordancia-ocr-vitruvio.js?v=20261106-historical1"></script>
+</head><body><main>
+<p><a href="concordancia-historica.html">← Concordancia histórica</a> · <a href="index.html">Biblioteca</a></p>
+<p>INVESTIGACIÓN FILOLÓGICA · EDICIONES HISTÓRICAS</p>
+<h1>Búsqueda paralela de ediciones históricas de Vitruvio</h1>
+<p>Permite encontrar palabras en el <strong>OCR por página</strong> de Krohn (1912), Rose (1899) y Perrault (1673). Cada fuente se mantiene separada y enlazada a su facsímil o visor. Esta herramienta no establece equivalencias por libro, capítulo, sección, variante ni códice.</p>
+<form id="historical-ocr-form"><label for="historical-ocr-query">Palabra o frase<input id="historical-ocr-query" required minlength="3" maxlength="90" placeholder="architectura · symmetria · proportions"></label><button type="submit">Buscar en tres ediciones</button></form>
+<p id="historical-ocr-status" role="status" aria-live="polite">Los índices se consultarán cuando inicies una búsqueda.</p>
+<div id="historical-ocr-results" aria-label="Coincidencias por edición histórica"></div>
+<p class="ocr-note"><strong>Criterio de lectura:</strong> una coincidencia en OCR no prueba la grafía original ni permite citar una variante textual. La página es la posición del archivo digital, que puede diferir de la paginación impresa. Confirmar siempre la imagen antes de citar. La ausencia de un término en OCR tampoco prueba su ausencia en el impreso.</p>
+</main></body></html>
