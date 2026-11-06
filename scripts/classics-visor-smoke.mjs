@@ -45,6 +45,16 @@ try{
    assert.match(await p.locator('#result-list').innerText(),/Poética|Περὶ ποιητικῆς/);
   }finally{await p.close()}
  });
+ await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
+  const errors=[];p.on('pageerror',e=>errors.push(e.message));
+  try{
+   await p.waitForFunction(()=>{const counter=document.querySelector('#classic-count');return Number.parseInt(counter?.textContent||'',10)>=190&&document.querySelectorAll('#classic-list button').length>=190;},{timeout:20000});
+   assert.equal(errors.length,0,'Runtime JavaScript error: '+errors.join('; '));
+   await p.locator('.classic-tabstrip').waitFor({timeout:15000});
+   assert.match(await p.locator('#classic-detail').innerText(),/Po[eé]tica|Περὶ ποιητικῆς|Poetics/i);
+  }finally{await p.close()}
+ });
  await check('Aristotle Poetics defaults to verified 68-page Greek original',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   try{
