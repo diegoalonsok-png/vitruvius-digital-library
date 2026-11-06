@@ -55,6 +55,14 @@ Los índices indican **idioma, procedencia del archivo y locus/bloque recuperado
 
 **Evidencia:** [ejecución de visores y búsqueda aprobada](https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/runs/42137049222). La aprobación es funcional, no un cotejo filológico.
 
+## 3 bis. Advertencias sobre textos históricamente alterados
+
+- **Petronio, versión inglesa de W. C. Firebaugh:** el propio documento publicado señala la inclusión de interpolaciones y falsificaciones históricas de Nodot y Marchena. Debe utilizarse como **testimonio de traducción y recepción editorial**, no como una transcripción íntegra y críticamente depurada del texto antiguo.
+- **Apuleyo, versión castellana:** el archivo de origen declara una modernización ortográfica; no debe presentarse como reproducción diplomática de la edición histórica.
+- **Lucrecio, versión castellana de Manuel Rodríguez-Navas:** es una versión histórica **en prosa**, no un texto latino ni una traducción verso a verso alineada automáticamente.
+
+Estas diferencias deben conservarse en la ficha de lectura y en toda exportación bibliográfica.
+
 ## 4. Ausencias y prioridades académicas
 
 No existe un universo cerrado de «todos los clásicos»: hay obras perdidas, fragmentarias, de atribución dudosa, ediciones con distintos títulos y catálogos que siguen incorporando testigos. Por tanto **no se puede afirmar que no falte ningún autor o texto de la tradición grecolatina**.
