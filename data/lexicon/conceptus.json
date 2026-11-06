@@ -1,0 +1,2508 @@
+{
+ "schema": "vitruvia-lexicon-conceptus-v1",
+ "title": "Conceptus · raíz semántica del castellano, el inglés, el francés y el alemán en las lenguas antiguas",
+ "method": "Correspondencias de significado entre las palabras modernas y sus equivalentes en latín, griego, hebreo bíblico, arameo (bíblico e imperial) y egipcio medio. Una equivalencia de significado no implica parentesco etimológico: los cognados y los préstamos se declaran en la nota de cada concepto y en el árbol etimológico. Egipcio en transliteración convencional (Allen, Middle Egyptian, 3.ª ed. 2014; Erman–Grapow, Wörterbuch der ägyptischen Sprache); hebreo y arameo según BDB y HALOT.",
+ "concepts": [
+  {
+   "id": "casa",
+   "modern": {
+    "es": [
+     "casa",
+     "hogar",
+     "vivienda",
+     "morada"
+    ],
+    "en": [
+     "house",
+     "home",
+     "dwelling"
+    ],
+    "fr": [
+     "maison",
+     "demeure",
+     "foyer"
+    ],
+    "de": [
+     "Haus",
+     "Heim",
+     "Wohnung"
+    ]
+   },
+   "la": [
+    "domus",
+    "aedes"
+   ],
+   "grc": [
+    "οἶκος",
+    "δόμος"
+   ],
+   "he": [
+    {
+     "w": "בַּיִת",
+     "tr": "bayit",
+     "g": "casa"
+    },
+    {
+     "w": " familia"
+    }
+   ],
+   "arc": [
+    {
+     "w": "ביתא",
+     "tr": "baytā",
+     "g": "casa"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "pr",
+     "h": "𓉐",
+     "g": "casa"
+    }
+   ],
+   "entries": [
+    "domus",
+    "oikos",
+    "aedes"
+   ],
+   "note": "El latín domus y el griego δόμος son cognados (*dem- «construir»); οἶκος es cognado del latín vicus. El hebreo, el arameo y el egipcio son equivalencias de significado, sin parentesco con ellos."
+  },
+  {
+   "id": "templo",
+   "modern": {
+    "es": [
+     "templo",
+     "santuario"
+    ],
+    "en": [
+     "temple",
+     "sanctuary"
+    ],
+    "fr": [
+     "temple",
+     "sanctuaire"
+    ],
+    "de": [
+     "Tempel",
+     "Heiligtum"
+    ]
+   },
+   "la": [
+    "templum",
+    "aedes",
+    "fanum"
+   ],
+   "grc": [
+    "ναός",
+    "ἱερόν"
+   ],
+   "he": [
+    {
+     "w": "הֵיכָל",
+     "tr": "hêḵāl",
+     "g": "palacio, templo"
+    },
+    {
+     "w": " מִקְדָּשׁ",
+     "tr": "miqdāš",
+     "g": "santuario"
+    }
+   ],
+   "arc": [
+    {
+     "w": "היכלא",
+     "tr": "hêḵlā",
+     "g": "templo, palacio"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "ḥwt-nṯr",
+     "h": "",
+     "g": "«casa del dios», templo"
+    }
+   ],
+   "entries": [
+    "templum",
+    "naos",
+    "aedes"
+   ],
+   "note": "הֵיכָל y el arameo היכלא son préstamos del sumerio é-gal «casa grande» vía acadio ekallu."
+  },
+  {
+   "id": "ciudad",
+   "modern": {
+    "es": [
+     "ciudad",
+     "urbe"
+    ],
+    "en": [
+     "city",
+     "town"
+    ],
+    "fr": [
+     "ville",
+     "cité"
+    ],
+    "de": [
+     "Stadt"
+    ]
+   },
+   "la": [
+    "urbs",
+    "civitas",
+    "oppidum"
+   ],
+   "grc": [
+    "πόλις",
+    "ἄστυ"
+   ],
+   "he": [
+    {
+     "w": "עִיר",
+     "tr": "ʿîr",
+     "g": "ciudad"
+    }
+   ],
+   "arc": [
+    {
+     "w": "קריתא",
+     "tr": "qiryəṯā",
+     "g": "ciudad"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "njwt",
+     "h": "𓊖",
+     "g": "ciudad, poblado"
+    }
+   ],
+   "entries": [
+    "urbs",
+    "civitas",
+    "polis"
+   ],
+   "note": ""
+  },
+  {
+   "id": "muro",
+   "modern": {
+    "es": [
+     "muro",
+     "muralla",
+     "pared"
+    ],
+    "en": [
+     "wall"
+    ],
+    "fr": [
+     "mur",
+     "muraille"
+    ],
+    "de": [
+     "Mauer",
+     "Wand"
+    ]
+   },
+   "la": [
+    "murus",
+    "moenia",
+    "paries"
+   ],
+   "grc": [
+    "τεῖχος"
+   ],
+   "he": [
+    {
+     "w": "חוֹמָה",
+     "tr": "ḥômāh",
+     "g": "muralla"
+    }
+   ],
+   "arc": [],
+   "egy": [
+    {
+     "tr": "jnb",
+     "h": "",
+     "g": "muro"
+    }
+   ],
+   "entries": [
+    "murus"
+   ],
+   "note": ""
+  },
+  {
+   "id": "puerta",
+   "modern": {
+    "es": [
+     "puerta",
+     "portal"
+    ],
+    "en": [
+     "door",
+     "gate"
+    ],
+    "fr": [
+     "porte"
+    ],
+    "de": [
+     "Tür",
+     "Tor"
+    ]
+   },
+   "la": [
+    "porta",
+    "ianua",
+    "foris"
+   ],
+   "grc": [
+    "πύλη",
+    "θύρα"
+   ],
+   "he": [
+    {
+     "w": "שַׁעַר",
+     "tr": "šaʿar",
+     "g": "puerta de la ciudad"
+    },
+    {
+     "w": " דֶּלֶת",
+     "tr": "deleṯ",
+     "g": "hoja de la puerta"
+    }
+   ],
+   "arc": [
+    {
+     "w": "תרעא",
+     "tr": "tarʿā",
+     "g": "puerta"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "sbꜣ",
+     "h": "",
+     "g": "puerta"
+    }
+   ],
+   "entries": [
+    "porta",
+    "forum"
+   ],
+   "note": "Latín foris y griego θύρα son cognados (*dʰwer-)."
+  },
+  {
+   "id": "columna",
+   "modern": {
+    "es": [
+     "columna",
+     "pilar"
+    ],
+    "en": [
+     "column",
+     "pillar"
+    ],
+    "fr": [
+     "colonne",
+     "pilier"
+    ],
+    "de": [
+     "Säule",
+     "Pfeiler"
+    ]
+   },
+   "la": [
+    "columna"
+   ],
+   "grc": [
+    "κίων",
+    "στῦλος"
+   ],
+   "he": [
+    {
+     "w": "עַמּוּד",
+     "tr": "ʿammûḏ",
+     "g": "columna"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "columna"
+   ],
+   "note": ""
+  },
+  {
+   "id": "cimiento",
+   "modern": {
+    "es": [
+     "cimiento",
+     "fundamento",
+     "base"
+    ],
+    "en": [
+     "foundation"
+    ],
+    "fr": [
+     "fondation"
+    ],
+    "de": [
+     "Fundament",
+     "Grundlage"
+    ]
+   },
+   "la": [
+    "fundamentum"
+   ],
+   "grc": [
+    "θεμέλιος"
+   ],
+   "he": [
+    {
+     "w": "יְסוֹד",
+     "tr": "yəsôḏ",
+     "g": "fundamento"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [
+    "fundamentum"
+   ],
+   "note": ""
+  },
+  {
+   "id": "ley",
+   "modern": {
+    "es": [
+     "ley",
+     "norma"
+    ],
+    "en": [
+     "law"
+    ],
+    "fr": [
+     "loi"
+    ],
+    "de": [
+     "Gesetz"
+    ]
+   },
+   "la": [
+    "lex"
+   ],
+   "grc": [
+    "νόμος"
+   ],
+   "he": [
+    {
+     "w": "תּוֹרָה",
+     "tr": "tôrāh",
+     "g": "instrucción, Ley"
+    }
+   ],
+   "arc": [
+    {
+     "w": "דתא",
+     "tr": "dāṯā",
+     "g": "ley (préstamo del persa)"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "hp",
+     "h": "",
+     "g": "ley, ordenanza"
+    }
+   ],
+   "entries": [
+    "lex",
+    "nomos"
+   ],
+   "note": ""
+  },
+  {
+   "id": "justicia",
+   "modern": {
+    "es": [
+     "justicia",
+     "derecho",
+     "justo"
+    ],
+    "en": [
+     "justice",
+     "right",
+     "law"
+    ],
+    "fr": [
+     "justice",
+     "droit"
+    ],
+    "de": [
+     "Gerechtigkeit",
+     "Recht"
+    ]
+   },
+   "la": [
+    "ius",
+    "iustitia"
+   ],
+   "grc": [
+    "δίκη",
+    "δικαιοσύνη"
+   ],
+   "he": [
+    {
+     "w": "צֶדֶק",
+     "tr": "ṣeḏeq",
+     "g": "justicia"
+    },
+    {
+     "w": " מִשְׁפָּט",
+     "tr": "mišpāṭ",
+     "g": "juicio"
+    }
+   ],
+   "arc": [],
+   "egy": [
+    {
+     "tr": "mꜣꜥt",
+     "h": "",
+     "g": "orden justo, verdad, justicia"
+    }
+   ],
+   "entries": [
+    "ius",
+    "dike"
+   ],
+   "note": ""
+  },
+  {
+   "id": "verdad",
+   "modern": {
+    "es": [
+     "verdad"
+    ],
+    "en": [
+     "truth"
+    ],
+    "fr": [
+     "vérité"
+    ],
+    "de": [
+     "Wahrheit"
+    ]
+   },
+   "la": [
+    "veritas"
+   ],
+   "grc": [
+    "ἀλήθεια"
+   ],
+   "he": [
+    {
+     "w": "אֱמֶת",
+     "tr": "ʾĕmet",
+     "g": "verdad, fidelidad"
+    }
+   ],
+   "arc": [
+    {
+     "w": "קשוט",
+     "tr": "qəšôṭ",
+     "g": "verdad"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mꜣꜥt",
+     "h": "",
+     "g": "verdad, orden"
+    }
+   ],
+   "entries": [
+    "aletheia"
+   ],
+   "note": ""
+  },
+  {
+   "id": "palabra",
+   "modern": {
+    "es": [
+     "palabra",
+     "verbo",
+     "discurso"
+    ],
+    "en": [
+     "word",
+     "speech"
+    ],
+    "fr": [
+     "mot",
+     "parole",
+     "verbe"
+    ],
+    "de": [
+     "Wort",
+     "Rede"
+    ]
+   },
+   "la": [
+    "verbum",
+    "sermo"
+   ],
+   "grc": [
+    "λόγος",
+    "ῥῆμα"
+   ],
+   "he": [
+    {
+     "w": "דָּבָר",
+     "tr": "dāḇār",
+     "g": "palabra, asunto"
+    }
+   ],
+   "arc": [
+    {
+     "w": "מלתא",
+     "tr": "millṯā",
+     "g": "palabra, asunto"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mdw",
+     "h": "",
+     "g": "palabra, habla (mdw-nṯr «palabras del dios», los jeroglíficos)"
+    }
+   ],
+   "entries": [
+    "logos",
+    "verbum"
+   ],
+   "note": ""
+  },
+  {
+   "id": "sabiduria",
+   "modern": {
+    "es": [
+     "sabiduría",
+     "sabio",
+     "saber"
+    ],
+    "en": [
+     "wisdom",
+     "wise"
+    ],
+    "fr": [
+     "sagesse",
+     "sage"
+    ],
+    "de": [
+     "Weisheit",
+     "weise"
+    ]
+   },
+   "la": [
+    "sapientia"
+   ],
+   "grc": [
+    "σοφία"
+   ],
+   "he": [
+    {
+     "w": "חָכְמָה",
+     "tr": "ḥoḵmāh",
+     "g": "sabiduría, pericia"
+    }
+   ],
+   "arc": [
+    {
+     "w": "חכמתא",
+     "tr": "ḥoḵmṯā",
+     "g": "sabiduría"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "sbꜣyt",
+     "h": "",
+     "g": "enseñanza, instrucción (género sapiencial)"
+    }
+   ],
+   "entries": [
+    "sophia",
+    "sapientia"
+   ],
+   "note": ""
+  },
+  {
+   "id": "dios",
+   "modern": {
+    "es": [
+     "dios",
+     "divinidad",
+     "deidad"
+    ],
+    "en": [
+     "god",
+     "deity"
+    ],
+    "fr": [
+     "dieu",
+     "divinité"
+    ],
+    "de": [
+     "Gott"
+    ]
+   },
+   "la": [
+    "deus",
+    "numen"
+   ],
+   "grc": [
+    "θεός"
+   ],
+   "he": [
+    {
+     "w": "אֱלֹהִים",
+     "tr": "ʾĕlōhîm",
+     "g": "Dios"
+    },
+    {
+     "w": " אֵל",
+     "tr": "ʾēl",
+     "g": "dios"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אלהא",
+     "tr": "ʾĕlāhā",
+     "g": "Dios"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "nṯr",
+     "h": "𓊹",
+     "g": "dios"
+    }
+   ],
+   "entries": [
+    "deus",
+    "theos",
+    "numen"
+   ],
+   "note": "Latín deus y griego Ζεύς son cognados (*dyew-); θεός no lo es."
+  },
+  {
+   "id": "rey",
+   "modern": {
+    "es": [
+     "rey",
+     "monarca",
+     "reino"
+    ],
+    "en": [
+     "king",
+     "kingdom"
+    ],
+    "fr": [
+     "roi",
+     "royaume"
+    ],
+    "de": [
+     "König",
+     "Reich"
+    ]
+   },
+   "la": [
+    "rex",
+    "regnum"
+   ],
+   "grc": [
+    "βασιλεύς"
+   ],
+   "he": [
+    {
+     "w": "מֶלֶךְ",
+     "tr": "meleḵ",
+     "g": "rey"
+    }
+   ],
+   "arc": [
+    {
+     "w": "מלכא",
+     "tr": "malkā",
+     "g": "rey"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "nswt",
+     "h": "",
+     "g": "rey (del Alto Egipto)"
+    },
+    {
+     "tr": " ḥqꜣ «gobernante»"
+    }
+   ],
+   "entries": [
+    "rex",
+    "basilica"
+   ],
+   "note": ""
+  },
+  {
+   "id": "hombre",
+   "modern": {
+    "es": [
+     "hombre",
+     "ser humano",
+     "persona",
+     "humano"
+    ],
+    "en": [
+     "man",
+     "human",
+     "person"
+    ],
+    "fr": [
+     "homme",
+     "humain"
+    ],
+    "de": [
+     "Mensch",
+     "Mann"
+    ]
+   },
+   "la": [
+    "homo",
+    "vir"
+   ],
+   "grc": [
+    "ἄνθρωπος",
+    "ἀνήρ"
+   ],
+   "he": [
+    {
+     "w": "אָדָם",
+     "tr": "ʾāḏām",
+     "g": "ser humano"
+    },
+    {
+     "w": " אִישׁ",
+     "tr": "ʾîš",
+     "g": "varón"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אנש",
+     "tr": "ʾĕnāš",
+     "g": "ser humano"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "rmṯ",
+     "h": "",
+     "g": "personas, gente"
+    }
+   ],
+   "entries": [
+    "homo",
+    "anthropos"
+   ],
+   "note": ""
+  },
+  {
+   "id": "alma",
+   "modern": {
+    "es": [
+     "alma",
+     "ánima",
+     "vida interior"
+    ],
+    "en": [
+     "soul"
+    ],
+    "fr": [
+     "âme"
+    ],
+    "de": [
+     "Seele"
+    ]
+   },
+   "la": [
+    "anima",
+    "animus"
+   ],
+   "grc": [
+    "ψυχή"
+   ],
+   "he": [
+    {
+     "w": "נֶפֶשׁ",
+     "tr": "nep̄eš",
+     "g": "aliento, ser vivo"
+    }
+   ],
+   "arc": [
+    {
+     "w": "נפשא",
+     "tr": "nap̄šā",
+     "g": "alma, persona"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "bꜣ",
+     "h": "",
+     "g": "manifestación anímica"
+    },
+    {
+     "tr": " kꜣ «fuerza vital»"
+    }
+   ],
+   "entries": [
+    "anima",
+    "psyche"
+   ],
+   "note": ""
+  },
+  {
+   "id": "espiritu",
+   "modern": {
+    "es": [
+     "espíritu",
+     "viento",
+     "soplo",
+     "aliento"
+    ],
+    "en": [
+     "spirit",
+     "wind",
+     "breath"
+    ],
+    "fr": [
+     "esprit",
+     "vent",
+     "souffle"
+    ],
+    "de": [
+     "Geist",
+     "Wind",
+     "Atem"
+    ]
+   },
+   "la": [
+    "spiritus",
+    "anima",
+    "ventus"
+   ],
+   "grc": [
+    "πνεῦμα",
+    "ἄνεμος"
+   ],
+   "he": [
+    {
+     "w": "רוּחַ",
+     "tr": "rûaḥ",
+     "g": "viento, espíritu"
+    }
+   ],
+   "arc": [
+    {
+     "w": "רוחא",
+     "tr": "rûḥā",
+     "g": "viento, espíritu"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "ṯꜣw",
+     "h": "",
+     "g": "aliento, aire"
+    }
+   ],
+   "entries": [
+    "pneuma",
+    "anima"
+   ],
+   "note": ""
+  },
+  {
+   "id": "corazon",
+   "modern": {
+    "es": [
+     "corazón",
+     "mente",
+     "pensamiento"
+    ],
+    "en": [
+     "heart",
+     "mind"
+    ],
+    "fr": [
+     "cœur",
+     "esprit",
+     "pensée"
+    ],
+    "de": [
+     "Herz",
+     "Verstand"
+    ]
+   },
+   "la": [
+    "cor",
+    "mens",
+    "animus"
+   ],
+   "grc": [
+    "καρδία",
+    "νοῦς"
+   ],
+   "he": [
+    {
+     "w": "לֵב",
+     "tr": "lēḇ",
+     "g": "corazón, mente"
+    }
+   ],
+   "arc": [
+    {
+     "w": "לבב",
+     "tr": "ləḇaḇ",
+     "g": "corazón"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "jb",
+     "h": "𓄣",
+     "g": "corazón, mente"
+    }
+   ],
+   "entries": [
+    "mens"
+   ],
+   "note": "Para los egipcios y los hebreos el corazón es sede del pensamiento."
+  },
+  {
+   "id": "nombre",
+   "modern": {
+    "es": [
+     "nombre"
+    ],
+    "en": [
+     "name"
+    ],
+    "fr": [
+     "nom"
+    ],
+    "de": [
+     "Name"
+    ]
+   },
+   "la": [
+    "nomen"
+   ],
+   "grc": [
+    "ὄνομα"
+   ],
+   "he": [
+    {
+     "w": "שֵׁם",
+     "tr": "šēm",
+     "g": "nombre"
+    }
+   ],
+   "arc": [
+    {
+     "w": "שמא",
+     "tr": "šəmā",
+     "g": "nombre"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "rn",
+     "h": "",
+     "g": "nombre"
+    }
+   ],
+   "entries": [],
+   "note": "Latín nomen y griego ὄνομα son cognados (*h₁nómn̥)."
+  },
+  {
+   "id": "vida",
+   "modern": {
+    "es": [
+     "vida",
+     "vivir"
+    ],
+    "en": [
+     "life",
+     "live"
+    ],
+    "fr": [
+     "vie",
+     "vivre"
+    ],
+    "de": [
+     "Leben"
+    ]
+   },
+   "la": [
+    "vita"
+   ],
+   "grc": [
+    "ζωή",
+    "βίος"
+   ],
+   "he": [
+    {
+     "w": "חַיִּים",
+     "tr": "ḥayyîm",
+     "g": "vida"
+    }
+   ],
+   "arc": [
+    {
+     "w": "חיין",
+     "tr": "ḥayyîn",
+     "g": "vida"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "ꜥnḫ",
+     "h": "𓋹",
+     "g": "vida"
+    }
+   ],
+   "entries": [],
+   "note": "Latín vivus, griego βίος y ζωή remiten a *gʷeyh₃- «vivir»."
+  },
+  {
+   "id": "muerte",
+   "modern": {
+    "es": [
+     "muerte",
+     "morir"
+    ],
+    "en": [
+     "death",
+     "die"
+    ],
+    "fr": [
+     "mort",
+     "mourir"
+    ],
+    "de": [
+     "Tod",
+     "sterben"
+    ]
+   },
+   "la": [
+    "mors"
+   ],
+   "grc": [
+    "θάνατος"
+   ],
+   "he": [
+    {
+     "w": "מָוֶת",
+     "tr": "māweṯ",
+     "g": "muerte"
+    }
+   ],
+   "arc": [
+    {
+     "w": "מותא",
+     "tr": "môṯā",
+     "g": "muerte"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mwt",
+     "h": "",
+     "g": "muerte, morir"
+    }
+   ],
+   "entries": [],
+   "note": ""
+  },
+  {
+   "id": "luz",
+   "modern": {
+    "es": [
+     "luz",
+     "claridad"
+    ],
+    "en": [
+     "light"
+    ],
+    "fr": [
+     "lumière"
+    ],
+    "de": [
+     "Licht"
+    ]
+   },
+   "la": [
+    "lux",
+    "lumen"
+   ],
+   "grc": [
+    "φῶς"
+   ],
+   "he": [
+    {
+     "w": "אוֹר",
+     "tr": "ʾôr",
+     "g": "luz"
+    }
+   ],
+   "arc": [
+    {
+     "w": "נהורא",
+     "tr": "nəhôrā",
+     "g": "luz"
+    }
+   ],
+   "egy": [],
+   "entries": [
+    "lux"
+   ],
+   "note": ""
+  },
+  {
+   "id": "sol",
+   "modern": {
+    "es": [
+     "sol"
+    ],
+    "en": [
+     "sun"
+    ],
+    "fr": [
+     "soleil"
+    ],
+    "de": [
+     "Sonne"
+    ]
+   },
+   "la": [
+    "sol"
+   ],
+   "grc": [
+    "ἥλιος"
+   ],
+   "he": [
+    {
+     "w": "שֶׁמֶשׁ",
+     "tr": "šemeš",
+     "g": "sol"
+    }
+   ],
+   "arc": [
+    {
+     "w": "שמשא",
+     "tr": "šimšā",
+     "g": "sol"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "rꜥ",
+     "h": "𓇳",
+     "g": "sol, el dios Ra"
+    }
+   ],
+   "entries": [
+    "sol"
+   ],
+   "note": "Latín sol y griego ἥλιος son cognados (*sóh₂wl̥)."
+  },
+  {
+   "id": "luna",
+   "modern": {
+    "es": [
+     "luna"
+    ],
+    "en": [
+     "moon"
+    ],
+    "fr": [
+     "lune"
+    ],
+    "de": [
+     "Mond"
+    ]
+   },
+   "la": [
+    "luna"
+   ],
+   "grc": [
+    "σελήνη"
+   ],
+   "he": [
+    {
+     "w": "יָרֵחַ",
+     "tr": "yārēaḥ",
+     "g": "luna"
+    }
+   ],
+   "arc": [
+    {
+     "w": "סהרא",
+     "tr": "sahrā",
+     "g": "luna"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "jꜥḥ",
+     "h": "",
+     "g": "luna"
+    }
+   ],
+   "entries": [
+    "luna"
+   ],
+   "note": ""
+  },
+  {
+   "id": "cielo",
+   "modern": {
+    "es": [
+     "cielo",
+     "firmamento"
+    ],
+    "en": [
+     "sky",
+     "heaven"
+    ],
+    "fr": [
+     "ciel"
+    ],
+    "de": [
+     "Himmel"
+    ]
+   },
+   "la": [
+    "caelum"
+   ],
+   "grc": [
+    "οὐρανός"
+   ],
+   "he": [
+    {
+     "w": "שָׁמַיִם",
+     "tr": "šāmayim",
+     "g": "cielos"
+    }
+   ],
+   "arc": [
+    {
+     "w": "שמיא",
+     "tr": "šəmayyā",
+     "g": "cielos"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "pt",
+     "h": "𓇯",
+     "g": "cielo"
+    }
+   ],
+   "entries": [
+    "kosmos"
+   ],
+   "note": ""
+  },
+  {
+   "id": "tierra",
+   "modern": {
+    "es": [
+     "tierra",
+     "suelo",
+     "país"
+    ],
+    "en": [
+     "earth",
+     "land",
+     "ground"
+    ],
+    "fr": [
+     "terre",
+     "sol"
+    ],
+    "de": [
+     "Erde",
+     "Land"
+    ]
+   },
+   "la": [
+    "terra",
+    "humus"
+   ],
+   "grc": [
+    "γῆ",
+    "χθών"
+   ],
+   "he": [
+    {
+     "w": "אֶרֶץ",
+     "tr": "ʾereṣ",
+     "g": "tierra"
+    },
+    {
+     "w": " אֲדָמָה",
+     "tr": "ʾăḏāmāh",
+     "g": "suelo"
+    }
+   ],
+   "arc": [
+    {
+     "w": "ארעא",
+     "tr": "ʾarʿā",
+     "g": "tierra"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "tꜣ",
+     "h": "𓇾",
+     "g": "tierra"
+    }
+   ],
+   "entries": [
+    "homo"
+   ],
+   "note": "Latín humus y griego χθών son cognados (*dʰéǵʰōm)."
+  },
+  {
+   "id": "agua",
+   "modern": {
+    "es": [
+     "agua"
+    ],
+    "en": [
+     "water"
+    ],
+    "fr": [
+     "eau"
+    ],
+    "de": [
+     "Wasser"
+    ]
+   },
+   "la": [
+    "aqua"
+   ],
+   "grc": [
+    "ὕδωρ"
+   ],
+   "he": [
+    {
+     "w": "מַיִם",
+     "tr": "mayim",
+     "g": "aguas"
+    }
+   ],
+   "arc": [
+    {
+     "w": "מיא",
+     "tr": "mayyā",
+     "g": "agua"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mw",
+     "h": "𓈗",
+     "g": "agua"
+    }
+   ],
+   "entries": [],
+   "note": ""
+  },
+  {
+   "id": "fuego",
+   "modern": {
+    "es": [
+     "fuego"
+    ],
+    "en": [
+     "fire"
+    ],
+    "fr": [
+     "feu"
+    ],
+    "de": [
+     "Feuer"
+    ]
+   },
+   "la": [
+    "ignis"
+   ],
+   "grc": [
+    "πῦρ"
+   ],
+   "he": [
+    {
+     "w": "אֵשׁ",
+     "tr": "ʾēš",
+     "g": "fuego"
+    }
+   ],
+   "arc": [
+    {
+     "w": "נורא",
+     "tr": "nûrā",
+     "g": "fuego"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "ḫt",
+     "h": "",
+     "g": "fuego"
+    }
+   ],
+   "entries": [
+    "aedes"
+   ],
+   "note": "El latín aedes conserva la raíz *h₂eydʰ- «arder» (el hogar)."
+  },
+  {
+   "id": "tiempo",
+   "modern": {
+    "es": [
+     "tiempo",
+     "momento",
+     "época"
+    ],
+    "en": [
+     "time",
+     "moment",
+     "season"
+    ],
+    "fr": [
+     "temps",
+     "moment"
+    ],
+    "de": [
+     "Zeit"
+    ]
+   },
+   "la": [
+    "tempus",
+    "aetas"
+   ],
+   "grc": [
+    "χρόνος",
+    "καιρός"
+   ],
+   "he": [
+    {
+     "w": "עֵת",
+     "tr": "ʿēt",
+     "g": "tiempo, momento"
+    },
+    {
+     "w": " זְמַן",
+     "tr": "zəmān",
+     "g": "tiempo fijado"
+    }
+   ],
+   "arc": [
+    {
+     "w": "זמנא",
+     "tr": "zimnā",
+     "g": "tiempo, plazo"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "nw",
+     "h": "",
+     "g": "tiempo, momento"
+    }
+   ],
+   "entries": [
+    "tempus",
+    "chronos",
+    "kairos"
+   ],
+   "note": ""
+  },
+  {
+   "id": "medida",
+   "modern": {
+    "es": [
+     "medida",
+     "medir",
+     "proporción"
+    ],
+    "en": [
+     "measure",
+     "proportion"
+    ],
+    "fr": [
+     "mesure",
+     "proportion"
+    ],
+    "de": [
+     "Maß",
+     "messen"
+    ]
+   },
+   "la": [
+    "mensura",
+    "modulus",
+    "proportio",
+    "symmetria"
+   ],
+   "grc": [
+    "μέτρον",
+    "συμμετρία",
+    "ἀναλογία"
+   ],
+   "he": [
+    {
+     "w": "מִדָּה",
+     "tr": "middāh",
+     "g": "medida"
+    }
+   ],
+   "arc": [
+    {
+     "w": "משחתא",
+     "tr": "mišḥəṯā",
+     "g": "medida"
+    }
+   ],
+   "egy": [],
+   "entries": [
+    "metron",
+    "symmetria",
+    "modulus",
+    "proportio"
+   ],
+   "note": ""
+  },
+  {
+   "id": "numero",
+   "modern": {
+    "es": [
+     "número",
+     "contar"
+    ],
+    "en": [
+     "number",
+     "count"
+    ],
+    "fr": [
+     "nombre",
+     "compter"
+    ],
+    "de": [
+     "Zahl"
+    ]
+   },
+   "la": [
+    "numerus"
+   ],
+   "grc": [
+    "ἀριθμός"
+   ],
+   "he": [
+    {
+     "w": "מִסְפָּר",
+     "tr": "mispār",
+     "g": "número"
+    }
+   ],
+   "arc": [
+    {
+     "w": "מנין",
+     "tr": "minyān",
+     "g": "cuenta"
+    }
+   ],
+   "egy": [],
+   "entries": [
+    "numerus"
+   ],
+   "note": ""
+  },
+  {
+   "id": "libro",
+   "modern": {
+    "es": [
+     "libro",
+     "escrito",
+     "rollo"
+    ],
+    "en": [
+     "book",
+     "scroll"
+    ],
+    "fr": [
+     "livre",
+     "rouleau"
+    ],
+    "de": [
+     "Buch",
+     "Schriftrolle"
+    ]
+   },
+   "la": [
+    "liber",
+    "volumen"
+   ],
+   "grc": [
+    "βίβλος",
+    "βιβλίον"
+   ],
+   "he": [
+    {
+     "w": "סֵפֶר",
+     "tr": "sēp̄er",
+     "g": "libro, escrito"
+    }
+   ],
+   "arc": [
+    {
+     "w": "ספרא",
+     "tr": "sip̄rā",
+     "g": "libro"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mḏꜣt",
+     "h": "",
+     "g": "rollo de papiro, libro"
+    }
+   ],
+   "entries": [
+    "liber",
+    "biblos"
+   ],
+   "note": ""
+  },
+  {
+   "id": "escritura",
+   "modern": {
+    "es": [
+     "escritura",
+     "letra",
+     "escribir"
+    ],
+    "en": [
+     "writing",
+     "letter",
+     "script"
+    ],
+    "fr": [
+     "écriture",
+     "lettre"
+    ],
+    "de": [
+     "Schrift",
+     "Buchstabe"
+    ]
+   },
+   "la": [
+    "littera"
+   ],
+   "grc": [
+    "γράμμα"
+   ],
+   "he": [
+    {
+     "w": "אוֹת",
+     "tr": "ʾôṯ",
+     "g": "señal, letra"
+    },
+    {
+     "w": " כְּתָב",
+     "tr": "kəṯāḇ",
+     "g": "escrito"
+    }
+   ],
+   "arc": [
+    {
+     "w": "כתבא",
+     "tr": "kəṯāḇā",
+     "g": "escrito"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "sš",
+     "h": "",
+     "g": "escritura, escriba"
+    }
+   ],
+   "entries": [
+    "littera",
+    "gramma"
+   ],
+   "note": ""
+  },
+  {
+   "id": "arte",
+   "modern": {
+    "es": [
+     "arte",
+     "técnica",
+     "oficio",
+     "artesano"
+    ],
+    "en": [
+     "art",
+     "craft",
+     "skill",
+     "technique"
+    ],
+    "fr": [
+     "art",
+     "technique",
+     "métier"
+    ],
+    "de": [
+     "Kunst",
+     "Handwerk",
+     "Technik"
+    ]
+   },
+   "la": [
+    "ars"
+   ],
+   "grc": [
+    "τέχνη"
+   ],
+   "he": [
+    {
+     "w": "מְלָאכָה",
+     "tr": "məlāʾḵāh",
+     "g": "obra artesanal"
+    },
+    {
+     "w": " חָרָשׁ",
+     "tr": "ḥārāš",
+     "g": "artesano"
+    }
+   ],
+   "arc": [],
+   "egy": [
+    {
+     "tr": "ḥmw",
+     "h": "",
+     "g": "oficio, arte"
+    },
+    {
+     "tr": " ḥmww «artesano»"
+    }
+   ],
+   "entries": [
+    "ars",
+    "techne",
+    "architectus"
+   ],
+   "note": ""
+  },
+  {
+   "id": "arquitecto",
+   "modern": {
+    "es": [
+     "arquitecto",
+     "constructor"
+    ],
+    "en": [
+     "architect",
+     "builder"
+    ],
+    "fr": [
+     "architecte",
+     "bâtisseur"
+    ],
+    "de": [
+     "Architekt",
+     "Baumeister"
+    ]
+   },
+   "la": [
+    "architectus"
+   ],
+   "grc": [
+    "ἀρχιτέκτων",
+    "τέκτων"
+   ],
+   "he": [
+    {
+     "w": "חָרָשׁ",
+     "tr": "ḥārāš",
+     "g": "artesano, constructor"
+    }
+   ],
+   "arc": [],
+   "egy": [
+    {
+     "tr": "mḏḥ",
+     "h": "",
+     "g": "carpintero, constructor"
+    },
+    {
+     "tr": " jmy-rꜣ kꜣt «director de obras»"
+    }
+   ],
+   "entries": [
+    "architectus",
+    "architectura"
+   ],
+   "note": ""
+  },
+  {
+   "id": "orden",
+   "modern": {
+    "es": [
+     "orden",
+     "disposición"
+    ],
+    "en": [
+     "order",
+     "arrangement"
+    ],
+    "fr": [
+     "ordre",
+     "disposition"
+    ],
+    "de": [
+     "Ordnung"
+    ]
+   },
+   "la": [
+    "ordo",
+    "ordinatio"
+   ],
+   "grc": [
+    "τάξις",
+    "κόσμος"
+   ],
+   "he": [],
+   "arc": [],
+   "egy": [
+    {
+     "tr": "mꜣꜥt",
+     "h": "",
+     "g": "orden cósmico"
+    }
+   ],
+   "entries": [
+    "ordinatio",
+    "taxis",
+    "kosmos"
+   ],
+   "note": ""
+  },
+  {
+   "id": "mundo",
+   "modern": {
+    "es": [
+     "mundo",
+     "universo",
+     "cosmos"
+    ],
+    "en": [
+     "world",
+     "universe",
+     "cosmos"
+    ],
+    "fr": [
+     "monde",
+     "univers"
+    ],
+    "de": [
+     "Welt",
+     "Universum"
+    ]
+   },
+   "la": [
+    "mundus"
+   ],
+   "grc": [
+    "κόσμος"
+   ],
+   "he": [
+    {
+     "w": "עוֹלָם",
+     "tr": "ʿôlām",
+     "g": "eternidad"
+    },
+    {
+     "w": " en hebreo tardío, mundo"
+    }
+   ],
+   "arc": [
+    {
+     "w": "עלמא",
+     "tr": "ʿālmā",
+     "g": "mundo, eternidad"
+    }
+   ],
+   "egy": [],
+   "entries": [
+    "kosmos",
+    "mundus"
+   ],
+   "note": ""
+  },
+  {
+   "id": "belleza",
+   "modern": {
+    "es": [
+     "belleza",
+     "hermosura",
+     "gracia"
+    ],
+    "en": [
+     "beauty",
+     "grace"
+    ],
+    "fr": [
+     "beauté",
+     "grâce"
+    ],
+    "de": [
+     "Schönheit",
+     "Anmut"
+    ]
+   },
+   "la": [
+    "venustas",
+    "pulchritudo"
+   ],
+   "grc": [
+    "κάλλος",
+    "χάρις"
+   ],
+   "he": [
+    {
+     "w": "יֹפִי",
+     "tr": "yōp̄î",
+     "g": "belleza"
+    },
+    {
+     "w": " חֵן",
+     "tr": "ḥēn",
+     "g": "gracia"
+    }
+   ],
+   "arc": [],
+   "egy": [
+    {
+     "tr": "nfr",
+     "h": "",
+     "g": "bello, bueno, perfecto"
+    }
+   ],
+   "entries": [
+    "venustas",
+    "charis"
+   ],
+   "note": ""
+  },
+  {
+   "id": "fe",
+   "modern": {
+    "es": [
+     "fe",
+     "confianza",
+     "fidelidad"
+    ],
+    "en": [
+     "faith",
+     "trust"
+    ],
+    "fr": [
+     "foi",
+     "confiance"
+    ],
+    "de": [
+     "Glaube",
+     "Vertrauen"
+    ]
+   },
+   "la": [
+    "fides"
+   ],
+   "grc": [
+    "πίστις"
+   ],
+   "he": [
+    {
+     "w": "אֱמוּנָה",
+     "tr": "ʾĕmûnāh",
+     "g": "firmeza, fidelidad"
+    }
+   ],
+   "arc": [
+    {
+     "w": "הימנותא",
+     "tr": "haymānûṯā",
+     "g": "fe"
+    }
+   ],
+   "egy": [],
+   "entries": [
+    "fides"
+   ],
+   "note": "Latín fides y griego πίστις son cognados (*bʰeydʰ-)."
+  },
+  {
+   "id": "paz",
+   "modern": {
+    "es": [
+     "paz"
+    ],
+    "en": [
+     "peace"
+    ],
+    "fr": [
+     "paix"
+    ],
+    "de": [
+     "Frieden"
+    ]
+   },
+   "la": [
+    "pax"
+   ],
+   "grc": [
+    "εἰρήνη"
+   ],
+   "he": [
+    {
+     "w": "שָׁלוֹם",
+     "tr": "šālôm",
+     "g": "paz, integridad"
+    }
+   ],
+   "arc": [
+    {
+     "w": "שלמא",
+     "tr": "šəlāmā",
+     "g": "paz"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "ḥtp",
+     "h": "",
+     "g": "paz, ofrenda, estar satisfecho"
+    }
+   ],
+   "entries": [],
+   "note": ""
+  },
+  {
+   "id": "guerra",
+   "modern": {
+    "es": [
+     "guerra",
+     "batalla"
+    ],
+    "en": [
+     "war",
+     "battle"
+    ],
+    "fr": [
+     "guerre",
+     "bataille"
+    ],
+    "de": [
+     "Krieg",
+     "Schlacht"
+    ]
+   },
+   "la": [
+    "bellum"
+   ],
+   "grc": [
+    "πόλεμος"
+   ],
+   "he": [
+    {
+     "w": "מִלְחָמָה",
+     "tr": "milḥāmāh",
+     "g": "guerra"
+    }
+   ],
+   "arc": [
+    {
+     "w": "קרבא",
+     "tr": "qərāḇā",
+     "g": "batalla"
+    }
+   ],
+   "egy": [],
+   "entries": [
+    "bellum"
+   ],
+   "note": ""
+  },
+  {
+   "id": "padre",
+   "modern": {
+    "es": [
+     "padre"
+    ],
+    "en": [
+     "father"
+    ],
+    "fr": [
+     "père"
+    ],
+    "de": [
+     "Vater"
+    ]
+   },
+   "la": [
+    "pater"
+   ],
+   "grc": [
+    "πατήρ"
+   ],
+   "he": [
+    {
+     "w": "אָב",
+     "tr": "ʾāḇ",
+     "g": "padre"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אבא",
+     "tr": "ʾabbā",
+     "g": "padre"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "jt",
+     "h": "",
+     "g": "padre"
+    }
+   ],
+   "entries": [],
+   "note": "Latín pater y griego πατήρ son cognados (*ph₂tḗr)."
+  },
+  {
+   "id": "madre",
+   "modern": {
+    "es": [
+     "madre"
+    ],
+    "en": [
+     "mother"
+    ],
+    "fr": [
+     "mère"
+    ],
+    "de": [
+     "Mutter"
+    ]
+   },
+   "la": [
+    "mater"
+   ],
+   "grc": [
+    "μήτηρ"
+   ],
+   "he": [
+    {
+     "w": "אֵם",
+     "tr": "ʾēm",
+     "g": "madre"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אמא",
+     "tr": "ʾimmā",
+     "g": "madre"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mwt",
+     "h": "",
+     "g": "madre"
+    }
+   ],
+   "entries": [],
+   "note": ""
+  },
+  {
+   "id": "piedra",
+   "modern": {
+    "es": [
+     "piedra",
+     "roca"
+    ],
+    "en": [
+     "stone",
+     "rock"
+    ],
+    "fr": [
+     "pierre",
+     "roche"
+    ],
+    "de": [
+     "Stein",
+     "Fels"
+    ]
+   },
+   "la": [
+    "lapis",
+    "saxum"
+   ],
+   "grc": [
+    "λίθος"
+   ],
+   "he": [
+    {
+     "w": "אֶבֶן",
+     "tr": "ʾeḇen",
+     "g": "piedra"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אבנא",
+     "tr": "ʾaḇnā",
+     "g": "piedra"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "jnr",
+     "h": "",
+     "g": "piedra"
+    }
+   ],
+   "entries": [],
+   "note": ""
+  },
+  {
+   "id": "madera",
+   "modern": {
+    "es": [
+     "madera",
+     "árbol",
+     "leño"
+    ],
+    "en": [
+     "wood",
+     "tree",
+     "timber"
+    ],
+    "fr": [
+     "bois",
+     "arbre"
+    ],
+    "de": [
+     "Holz",
+     "Baum"
+    ]
+   },
+   "la": [
+    "lignum",
+    "materia",
+    "arbor"
+   ],
+   "grc": [
+    "ξύλον",
+    "ὕλη"
+   ],
+   "he": [
+    {
+     "w": "עֵץ",
+     "tr": "ʿēṣ",
+     "g": "árbol, madera"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אע",
+     "tr": "ʾāʿ",
+     "g": "madera"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "ḫt",
+     "h": "",
+     "g": "madera, árbol"
+    }
+   ],
+   "entries": [],
+   "note": "El latín materia («madera de construcción») y el griego ὕλη pasan a significar «materia» en la filosofía."
+  },
+  {
+   "id": "pie",
+   "modern": {
+    "es": [
+     "pie"
+    ],
+    "en": [
+     "foot"
+    ],
+    "fr": [
+     "pied"
+    ],
+    "de": [
+     "Fuß"
+    ]
+   },
+   "la": [
+    "pes"
+   ],
+   "grc": [
+    "πούς"
+   ],
+   "he": [
+    {
+     "w": "רֶגֶל",
+     "tr": "regel",
+     "g": "pie"
+    }
+   ],
+   "arc": [
+    {
+     "w": "רגלא",
+     "tr": "riḡlā",
+     "g": "pie"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "rd",
+     "h": "",
+     "g": "pie"
+    }
+   ],
+   "entries": [
+    "pes"
+   ],
+   "note": "Latín pes y griego πούς son cognados (*pṓds)."
+  },
+  {
+   "id": "codo",
+   "modern": {
+    "es": [
+     "codo",
+     "antebrazo"
+    ],
+    "en": [
+     "cubit",
+     "elbow"
+    ],
+    "fr": [
+     "coudée",
+     "coude"
+    ],
+    "de": [
+     "Elle",
+     "Ellenbogen"
+    ]
+   },
+   "la": [
+    "cubitum",
+    "ulna"
+   ],
+   "grc": [
+    "πῆχυς"
+   ],
+   "he": [
+    {
+     "w": "אַמָּה",
+     "tr": "ʾammāh",
+     "g": "codo"
+    }
+   ],
+   "arc": [
+    {
+     "w": "אמה",
+     "tr": "ʾammāh",
+     "g": "codo"
+    }
+   ],
+   "egy": [
+    {
+     "tr": "mḥ",
+     "h": "",
+     "g": "codo (mḥ-nswt «codo real», c. 0,524 m)"
+    }
+   ],
+   "entries": [
+    "cubitum"
+   ],
+   "note": ""
+  },
+  {
+   "id": "agua_canal",
+   "modern": {
+    "es": [
+     "acueducto",
+     "canal",
+     "tubería"
+    ],
+    "en": [
+     "aqueduct",
+     "channel",
+     "pipe"
+    ],
+    "fr": [
+     "aqueduc",
+     "canal"
+    ],
+    "de": [
+     "Aquädukt",
+     "Kanal"
+    ]
+   },
+   "la": [
+    "aquaeductus",
+    "canalis",
+    "fistula"
+   ],
+   "grc": [
+    "ὀχετός"
+   ],
+   "he": [
+    {
+     "w": "תְּעָלָה",
+     "tr": "təʿālāh",
+     "g": "canal, acequia"
+    }
+   ],
+   "arc": [],
+   "egy": [],
+   "entries": [],
+   "note": ""
+  }
+ ]
+}
