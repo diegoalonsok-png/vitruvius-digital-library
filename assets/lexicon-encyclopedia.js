@@ -12,6 +12,11 @@ const cache=new Map(), alias={
  "gallia transalpina":"Galia Transalpina",
  "gallia narbonensis":"Galia Narbonense"
 };
+const editorial={
+ gallia:"Gallia es el nombre latino de la Galia, conjunto de territorios de Europa occidental. Los romanos distinguían regiones como la Galia Cisalpina, Narbonense y Comata.",
+ galliae:"Galliae es una forma flexionada de Gallia, nombre latino de la Galia y de sus regiones históricas.",
+ galliam:"Galliam es una forma flexionada de Gallia, nombre latino de la Galia y de sus regiones históricas."
+};
 const trim=s=>String(s||"").trim().replace(/\s+/g," ");
 const key=s=>trim(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 const valid=s=>/^[\p{L}\p{M}\p{N}\-'\s.]{2,80}$/u.test(s)&&trim(s).split(" ").length<=4;
@@ -47,7 +52,7 @@ async function update(value,options={}){
  const wikipediaSearch="https://es.wikipedia.org/w/index.php?search="+encodeURIComponent(subject);
  const grokiSearch="https://grokipedia.com/search?q="+encodeURIComponent(subject);
  const heading=text("span","Contexto enciclopédico · "+term,"lx-encyclopedia-heading");
- const preview=text("p",trim(options.gloss)||"Ver contexto enciclopédico y otras acepciones del término; no sustituye el texto clásico ni el aparato crítico.","lx-encyclopedia-summary");
+ const preview=text("p",trim(options.gloss)||editorial[key(term)]||"Ver contexto enciclopédico y otras acepciones del término; no sustituye el texto clásico ni el aparato crítico.","lx-encyclopedia-summary");
  const sources=document.createElement("span");sources.className="lx-encyclopedia-links";
  const wp=link("Wikipedia",wikipediaSearch);
  sources.append(wp,document.createTextNode(" · "),link("Grokipedia (buscar)",grokiSearch));
