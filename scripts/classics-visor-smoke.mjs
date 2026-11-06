@@ -82,13 +82,31 @@ try{
    assert.equal(check.diagnostics.failed,0,'A registered text failed to load');
   }finally{await p.close()}
  });
+ await check('Vitruvius original and three translations are searchable by structured locus',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.search==='function',{timeout:20000});
+   const result=await p.evaluate(async()=>{
+    const registry=await window.ClassicsCorpusSearch.registry();
+    const structured=registry.filter(e=>e.workId==='vitruvius'&&e.format==='structured-bilingual');
+    const italian=await window.ClassicsCorpusSearch.search('imperator Caesar',{limit:40});
+    return {structured:structured.map(e=>e.language),latin:italian.find(x=>x.workId==='vitruvius'&&x.language==='la')?.link||'',
+     indexStatus:window.ClassicsCorpusSearch.diagnostics()};
+   });
+   assert.deepEqual(result.structured.sort(),['en','es','fr','la']);
+   assert.match(result.latin,/lector-bilingue\.html\?edition=recensio-es.*locus=/,
+     'Vitruvius Latin locus must open its existing bilingual reader');
+   assert.equal(result.indexStatus.failed,0,'All structured classical texts should load');
+  }finally{await p.close()}
+ });
  await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
   const p=await open('auditoria-textos-clasicos.html');
   try{
    await p.waitForFunction(()=>document.querySelectorAll('#audit-rows tr').length>=221,{timeout:20000});
    assert.equal(await p.locator('#audit-rows tr').count(),221,'Incomplete catalogue audit');
    await p.locator('#audit-filter').selectOption('indexed');
-   assert.equal(await p.locator('#audit-rows tr').count(),14,'Indexed classical works should be distinct from language versions');
+   const expectedIndex=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
+   assert.equal(await p.locator('#audit-rows tr').count(),expectedIndex.works,'Indexed classical works should be distinct from language versions');
    await p.locator('#audit-filter').selectOption('local');
    assert.equal(await p.locator('#audit-rows tr').count(),20,'Local catalogue entries should remain distinguishable from PDF-only holdings');
    await p.locator('#audit-query').fill('cicero-officiis');
