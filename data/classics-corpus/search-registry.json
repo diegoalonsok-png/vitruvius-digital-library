@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 24,
+  "count": 26,
   "works": 14,
   "entries": [
     {
@@ -229,11 +229,31 @@
       "workId": "virgil-aeneid",
       "author": "Virgilio",
       "title": "Aeneis",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/virgil-aeneid-en.json",
+      "reader": "classics-text-reader.html?work=virgil-aeneid&lang=en",
+      "sourceDescription": "Theodore C. Williams 1910, TEI Perseus, estrofas por sección original de traducción; alineación por locus inicial parcial."
+    },
+    {
+      "workId": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
       "language": "la",
       "format": "json-passages",
       "path": "data/classics-corpus/virgil-aeneid-la.json",
       "reader": "classics-text-reader.html?work=virgil-aeneid&lang=la",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/virgil-georgica-en.json",
+      "reader": "classics-text-reader.html?work=virgil-georgica&lang=en",
+      "sourceDescription": "James Rhoades 1921, TEI Perseus, estrofas por sección original de traducción; alineación por locus inicial parcial."
     },
     {
       "workId": "virgil-georgica",
