@@ -1,0 +1,65 @@
+{
+ "schema": "kurilo-libros/1",
+ "books": [
+  {
+   "id": "cristianismo-primitivo",
+   "page": "cristianismo-primitivo.html",
+   "titles": {
+    "es": "Cristianismo primitivo",
+    "en": "Early Christianity"
+   },
+   "subtitles": {
+    "es": "Historia, textos y cultura material de los orígenes cristianos",
+    "en": "History, Texts and Material Culture of Christian Origins"
+   },
+   "subjects": [
+    "cristianismo primitivo",
+    "early christianity",
+    "Pablo",
+    "Paul",
+    "Marción",
+    "Marcion",
+    "canon",
+    "papirología",
+    "epigrafía",
+    "arqueología",
+    "siglos I–IV"
+   ],
+   "file": "data/kurilo-libros/cristianismo-primitivo.json"
+  },
+  {
+   "id": "persia-judaismo-antiguo",
+   "page": "persia-judaismo-antiguo.html",
+   "titles": {
+    "es": "Persia y el judaísmo antiguo",
+    "en": "Persia and Ancient Judaism"
+   },
+   "subtitles": {
+    "es": "Tradiciones religiosas, textos y transformaciones del período persa",
+    "en": "Religious Traditions, Texts and Transformations of the Persian Period"
+   },
+   "subjects": [
+    "Persia",
+    "judaísmo",
+    "zoroastrismo",
+    "Zoroastrianism",
+    "Avesta",
+    "Yasna",
+    "Gāthās",
+    "Vendīdād",
+    "Esdras",
+    "Ezra",
+    "Daniel",
+    "Elefantina",
+    "Elephantine",
+    "Mitra",
+    "Mithras",
+    "arameo",
+    "Aramaic",
+    "Behistún",
+    "Behistun"
+   ],
+   "file": "data/kurilo-libros/persia-judaismo-antiguo.json"
+  }
+ ]
+}

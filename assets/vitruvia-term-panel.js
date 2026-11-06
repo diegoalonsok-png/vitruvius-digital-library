@@ -281,10 +281,11 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  }
  function pagesBlock(res,term){
   if(!res||!Object.keys(res.hits).length)return null;
-  const box=document.createElement('div');const h=document.createElement('h4');h.textContent='En las páginas de los libros del sitio';box.append(h);
+  const box=document.createElement('div');box.id='vtp-pages';const h=document.createElement('h4');h.textContent='En las páginas de los libros del sitio';box.append(h);
   const note=document.createElement('p');note.className='vtp-note';note.textContent='Ediciones de Diego Kurilo y PDF históricos indexados. En las ediciones antiguas la coincidencia sale del OCR: es una pista de lectura, no un cotejo.';box.append(note);
   const list=document.createElement('div');list.className='vtp-loci';box.append(list);
-  for(const m of res.meta.sources){const pages=[...(res.hits[m.id]||[])].sort((a,b)=>a-b);if(!pages.length)continue;
+  const order=[...res.meta.sources].sort((a,b)=>(res.hits[b.id]?.size||0)-(res.hits[a.id]?.size||0));
+  for(const m of order){const pages=[...(res.hits[m.id]||[])].sort((a,b)=>a-b);if(!pages.length)continue;
    const row=document.createElement('article');row.className='vtp-locus';
    row.innerHTML=`<div class="vtp-ref">${esc(m.label.split(' · ')[0])}<small>${esc(m.label.split(' · ').slice(1).join(' · '))}</small></div><div class="vtp-es" style="grid-column:2/-1">${pages.length} página${pages.length>1?'s':''}</div><div class="vtp-actions"></div>`;
    const act=row.querySelector('.vtp-actions');
@@ -297,6 +298,31 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
   const res=await pagesFor(groups).catch(()=>null);if(token!==seq)return;
   const b=pagesBlock(res,term);if(!b)return;
   panel.append(b);
+ }
+
+ /* ---------- Libros de Diego Kurilo y páginas, para cualquier búsqueda ---------- */
+ async function kuriloBooks(q){
+  let idx;try{idx=await json('data/kurilo-libros/index.json')}catch{return []}
+  const toks=fold(q).split(/[^\p{L}\p{N}]+/u).filter(t=>t.length>=4&&!ES_STOP.has(t));if(!toks.length)return [];
+  return (idx.books||[]).filter(b=>{const hay=fold([...Object.values(b.titles||{}),...Object.values(b.subtitles||{}),...(b.subjects||[])].join(' '));return toks.some(t=>hay.split(/[^\p{L}\p{N}]+/u).some(w=>w===t||(t.length>=5&&w.startsWith(t))))});
+ }
+ async function appendSiteBooks(q,token){
+  const books=await kuriloBooks(q).catch(()=>[]);if(token!==seq)return;
+  if(books.length){
+   const box=document.createElement('div');const h=document.createElement('h4');h.textContent='Libros de Diego Kurilo · castellano e inglés';box.append(h);
+   const grid=document.createElement('div');grid.className='vtp-books';box.append(grid);
+   for(const b of books){const a=document.createElement('div');a.className='vtp-book';
+    a.innerHTML=`<b>${esc(b.titles.es||b.titles.en)}</b><span>${esc(b.subtitles?.es||'')}</span><div class="vtp-actions" style="margin-top:8px"></div>`;
+    const act=a.querySelector('.vtp-actions');
+    for(const [l,txt] of [['es','Leer en castellano'],['en','Read in English']])if(b.titles[l]){const x=document.createElement('a');x.href=`${b.page}?lang=${l}&q=${encodeURIComponent(q)}`;x.textContent=txt+' ↗';act.append(x)}
+    grid.append(a)}
+   panel.append(box);panel.hidden=false;
+  }
+  if(!panel.querySelector('#vtp-pages')){
+   const res=await pagesFor(q.split(/\s+/).filter(t=>t.length>=4).map(t=>[t])).catch(()=>null);if(token!==seq||!res)return;
+   const kinds=Object.fromEntries(res.meta.sources.map(m=>[m.id,m.kind]));
+   if(Object.keys(res.hits).some(k=>kinds[k]==='edition')){const b=pagesBlock(res,q);if(b){panel.append(b);panel.hidden=false}}
+  }
  }
 
  /* ---------- Fichas ---------- */
@@ -461,7 +487,8 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
     if(passages.length>=2){await renderVernacular(q,passages,token,works);return}
    }
    await renderWeb(q,token);
-  }catch(e){if(token===seq){panel.hidden=true}}
+  }catch(e){if(token===seq&&!panel.childElementCount){panel.hidden=true}}
+  finally{if(token===seq&&!parseLocus(q))appendSiteBooks(q,token).catch(()=>{})}
  }
  window.addEventListener('vitruvia:search',e=>run(e.detail?.query));
  // Métrica de lectura: además de las lecturas verificadas del sitio, las obras legibles en el visor clásico.

@@ -16,6 +16,10 @@ SRC=[
  ('barbaro-1567-it','Barbaro 1567 · italiano (OCR)','ocr','barbaro-enfrentado-1567.html?q={q}'),
  ('cesariano-1521','Cesariano 1521 · italiano (OCR)','ocr','cesariano-1521.html?image={p}'),
  ('perrault-1673','Perrault 1673 · francés (OCR)','ocr','https://www.e-rara.ch/download/pdf/16797458.pdf#page={p}'),
+ ('cristianismo-primitivo-es','Kurilo · Cristianismo primitivo (castellano)','edition','cristianismo-primitivo.html?lang=es&page={p}&q={q}'),
+ ('cristianismo-primitivo-en','Kurilo · Early Christianity (inglés)','edition','cristianismo-primitivo.html?lang=en&page={p}&q={q}'),
+ ('persia-judaismo-antiguo-es','Kurilo · Persia y el judaísmo antiguo (castellano)','edition','persia-judaismo-antiguo.html?lang=es&page={p}&q={q}'),
+ ('persia-judaismo-antiguo-en','Kurilo · Persia and Ancient Judaism (inglés)','edition','persia-judaismo-antiguo.html?lang=en&page={p}&q={q}'),
  ('ortiz-1787','Ortiz y Sanz 1787 · castellano (OCR)','ocr','https://archive.org/download/A065112/A065112.pdf#page={p}'),
 ]
 def norm(s):
