@@ -236,6 +236,10 @@ body{background:var(--lx-bg,var(--bg))}
 .lx-hit-tr{margin:6px 0 8px;padding-left:12px;border-left:2px solid #3a3a3a}
 .lx-also{margin:6px 0;font-size:13px}.lx-also summary{cursor:pointer;color:#a8a8a5}.lx-also ul{margin:8px 0 0;padding-left:18px}.lx-also li{margin:4px 0}.lx-locus-btn{margin:0 3px;padding:1px 6px;border:1px solid #444;border-radius:4px;background:transparent;color:inherit;cursor:pointer;font-size:12px}
 html[data-theme=light] .lx-readbar{border-color:#d8d2c0}html[data-theme=light] .lx-readbar button{border-color:#c9c2ad}html[data-theme=light] .lx-readbar button[aria-pressed=true]{background:#e2dcc6;color:#111}html[data-theme=light] #lx-results.lx-lupa-on .lx-kwic:hover{background:var(--lx-bg,#fbfaf6);box-shadow:0 0 0 8px var(--lx-bg,#fbfaf6)}html[data-theme=light] .lx-hit-tr{border-left-color:#d8d2c0}
+.lx-disp{position:relative;display:block;grid-column:1/-1;height:10px;margin:4px 0 2px;border-bottom:1px solid #3a3a3a}.lx-disp i{position:absolute;bottom:0;width:1px;height:9px;background:#9a9a96}
+.lx-table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:14px}.lx-table caption{text-align:left;font-weight:600;margin-bottom:6px}.lx-table th,.lx-table td{padding:5px 8px;border-bottom:1px solid #2e2e2e;text-align:left}.lx-table td:nth-child(n+3){font-variant-numeric:tabular-nums}
+.lx-comp-form{align-items:center;gap:10px;flex-wrap:wrap}.lx-comp-form label{display:inline-flex;align-items:center;gap:6px;font-size:14px}
+html[data-theme=light] .lx-disp i{background:#6b6656}html[data-theme=light] .lx-table th,html[data-theme=light] .lx-table td{border-bottom-color:#e2dcc6}
 .lx-gematria{font:400 12px/1.6 Arial,sans-serif;color:#8d8d8d;margin:4px 0 0;letter-spacing:.02em}.lx-gematria b{color:#bdbdbd;font-weight:400}
 .lx-primary{border-color:#8d8d8d!important;color:#fff!important}
 .lx-viewer{width:min(1200px,94vw);max-height:90vh;border:1px solid #444;border-radius:12px;background:#121213;color:#e6e6e3;padding:0}.lx-viewer::backdrop{background:#000a}
@@ -278,6 +282,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <a href="#sententiae" data-tool-mode="sententiae">Sententiae</a>
   <a href="#collatio" data-i18n>Taller ecdótico</a>
   <a href="#exegesis" data-i18n>Cuaderno exegético</a>
+  <a href="#comparatio" data-i18n>Comparatio</a>
   <a href="#instrumenta" data-i18n>Instrumenta</a>
   <a href="#methodus" data-i18n>Método y fuentes</a>
  </nav>
@@ -348,7 +353,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   </nav>
  </aside>
 </section>
-<!--METRICS--><div class="metrics" id="lx-metrics"><span><b>15</b>obras</span><span><b>3.825</b>pasajes</span><span><b>604.112</b>palabras indexadas</span><span><b>84.904</b>formas lematizadas</span><span><b>21.501</b>lemas con glosa LSJ / Lewis &amp; Short</span><span><b data-m="etym">108</b>fichas etimológicas</span><span><b data-m="sent">53</b>sententiae</span></div><!--/METRICS-->
+<!--METRICS--><div class="metrics" id="lx-metrics"><span><b>22</b>obras</span><span><b>7.322</b>pasajes</span><span><b>1.120.648</b>palabras indexadas</span><span><b>121.435</b>formas lematizadas</span><span><b>29.828</b>lemas con glosa LSJ / Lewis &amp; Short</span><span><b data-m="etym">108</b>fichas etimológicas</span><span><b data-m="sent">53</b>sententiae</span></div><!--/METRICS-->
 
 <section class="results" id="results" aria-live="polite">
  <div class="section-head"><h2 id="lx-head-title" data-i18n>Resultados</h2>
@@ -519,6 +524,20 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div id="nb-list" style="margin-top:16px"></div>
 </section>
 
+<section class="tool" id="comparatio" aria-labelledby="comp-h">
+ <div class="kicker">V bis · COMPARATIO · STATISTICA</div>
+ <h2 id="comp-h" data-i18n>Comparatio: palabras clave de una obra</h2>
+ <p class="lead">Palabras clave (<i>keyness</i>) de una obra frente a otra o frente al resto del corpus de la misma lengua: log-likelihood de Dunning (G²) con su nivel de significación y log₂ ratio como tamaño del efecto. Por ejemplo: Vitruvio frente a Columela, Plinio o Frontino; Euclides frente a Heródoto. Cada palabra abre su concordancia en la obra.</p>
+ <div class="actions lx-comp-form">
+  <label>Lengua <select id="comp-lang" class="lx-select"><option value="la">Latín</option><option value="grc">Griego</option></select></label>
+  <label>Obra <select id="comp-a" class="lx-select"></select></label>
+  <label>frente a <select id="comp-b" class="lx-select"></select></label>
+  <label><input type="checkbox" id="comp-lemma" checked> por lema</label>
+  <button type="button" id="comp-go" class="lx-primary" data-i18n>Comparar</button>
+ </div>
+ <div id="comp-out"></div>
+</section>
+
 <section class="tool" id="instrumenta" aria-labelledby="inst-h">
  <div class="kicker">V · INSTRUMENTA PHILOLOGICA</div>
  <h2 id="inst-h" data-i18n>Signos críticos, abreviaturas, codicología y hermenéutica</h2>
@@ -575,5 +594,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v9" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v10" defer></script>
 </body></html>

@@ -14,8 +14,8 @@ const PAGE=SITE+"vitruvia-lexicon.html";
 const GREEK=/[Ͱ-Ͽἀ-῿]/, HEBREW=/[֐-׿]/;
 const TOKEN=/[\p{L}\p{M}][\p{L}\p{M}'ʼ’]*/gu;
 const PAGE_SIZE=25, MAX_HITS=4000;
-const CHRONO={"homer-iliad":-750,"homer-odyssey":-720,"plato-apology":-399,"aristotle-poetics":-335,"theophrastus-characters":-319,"lucretius":-55,"catullus-carmina":-54,"caesar-gallico":-50,"cicero-officiis":-44,"virgil-georgica":-29,"virgil-aeneid":-19,"vitruvius":-25,"petronius-satyrica":60,"epictetus-enchiridion":125,"apuleius-metamorphoses":170};
-const DATING={"homer-iliad":"s. VIII a. C.","homer-odyssey":"s. VIII–VII a. C.","plato-apology":"c. 399–390 a. C.","aristotle-poetics":"c. 335 a. C.","theophrastus-characters":"c. 319 a. C.","lucretius":"c. 55 a. C.","catullus-carmina":"c. 60–54 a. C.","caesar-gallico":"58–50 a. C.","cicero-officiis":"44 a. C.","virgil-georgica":"29 a. C.","virgil-aeneid":"29–19 a. C.","vitruvius":"c. 30–20 a. C.","petronius-satyrica":"s. I d. C.","epictetus-enchiridion":"s. II d. C. (Arriano)","apuleius-metamorphoses":"s. II d. C."};
+const CHRONO={"herodotus-histories":-430,"euclid-elements":-300,"cato-agricultura":-160,"varro-rustica":-37,"columella-rustica":60,"pliny-naturalis":77,"frontinus-aquaeductu":97,"homer-iliad":-750,"homer-odyssey":-720,"plato-apology":-399,"aristotle-poetics":-335,"theophrastus-characters":-319,"lucretius":-55,"catullus-carmina":-54,"caesar-gallico":-50,"cicero-officiis":-44,"virgil-georgica":-29,"virgil-aeneid":-19,"vitruvius":-25,"petronius-satyrica":60,"epictetus-enchiridion":125,"apuleius-metamorphoses":170};
+const DATING={"herodotus-histories":"c. 430 a. C.","euclid-elements":"c. 300 a. C.","cato-agricultura":"c. 160 a. C.","varro-rustica":"37 a. C.","columella-rustica":"c. 60–65 d. C.","pliny-naturalis":"77–79 d. C.","frontinus-aquaeductu":"c. 97–98 d. C.","homer-iliad":"s. VIII a. C.","homer-odyssey":"s. VIII–VII a. C.","plato-apology":"c. 399–390 a. C.","aristotle-poetics":"c. 335 a. C.","theophrastus-characters":"c. 319 a. C.","lucretius":"c. 55 a. C.","catullus-carmina":"c. 60–54 a. C.","caesar-gallico":"58–50 a. C.","cicero-officiis":"44 a. C.","virgil-georgica":"29 a. C.","virgil-aeneid":"29–19 a. C.","vitruvius":"c. 30–20 a. C.","petronius-satyrica":"s. I d. C.","epictetus-enchiridion":"s. II d. C. (Arriano)","apuleius-metamorphoses":"s. II d. C."};
 const STOP={la:new Set("et in est non ad cum ut quae qui quod sed ex e a ab de per si autem enim etiam aut uel nec neque quam sunt esse sit se sic item ita eius eorum ea eo id hic haec hoc is ille illa atque ac ne nam quo qua quia tum tam sibi suis sua suo suam suum quoque uti erit erunt fuit eis iis his quibus quorum quem quas quos eam eum ipse ipsa ipsum iam inter sub pro ob post ante tamen uero".split(" ")),
  grc:new Set("και δε ο η το του τησ των τον την τα τω τοισ ταισ τουσ τασ γαρ μεν τε ουκ ου ουχ εν εισ εσ εκ εξ επι προσ κατα δια μη ωσ αλλα αλλ αν οτι περι παρα απο υπο ουδε ουτε ειναι εστι εστιν αυτοσ αυτου αυτω αυτον αυτη αυτων αυτοισ τισ τι οσ ην ησ ων οι αι δ τ γ ουν δη μοι σοι με σε εγω συ ημεισ υμεισ αλλ απ αφ επ εφ κατ καθ μετ μεθ παρ υπ υφ ουδ μηδ δι ενθαδ ποτ τοτ οτ αμ ουτ μητ".split(" "))};
 
@@ -221,6 +221,9 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Resto del corpus":["Rest of the corpus","Reste du corpus"],"Elija dos obras distintas.":["Choose two different works.","Choisissez deux œuvres différentes."],"palabras":["words","mots"],"Sobrerrepresentadas en":["Overrepresented in","Surreprésentées dans"],
+ "Entre paréntesis, frecuencia por 10 000 palabras. G² de Dunning: * p < 0,05 · ** p < 0,01 · *** p < 0,001 · **** p < 0,0001. log₂ ratio: tamaño del efecto (1 = el doble).":["In brackets, frequency per 10,000 words. Dunning's G²: * p < 0.05 · ** p < 0.01 · *** p < 0.001 · **** p < 0.0001. log₂ ratio: effect size (1 = twice as frequent).","Entre parenthèses, fréquence pour 10 000 mots. G² de Dunning : * p < 0,05 · ** p < 0,01 · *** p < 0,001 · **** p < 0,0001. log₂ ratio : taille de l'effet (1 = deux fois plus fréquent)."],
+ "Comparatio: palabras clave de una obra":["Comparatio: keywords of a work","Comparatio : mots-clés d'une œuvre"],"Comparar":["Compare","Comparer"],
  "Traducción":["Translation","Traduction"],"Lupa":["Magnifier","Loupe"],"Resaltado":["Highlight","Surlignage"],"Herramientas de lectura":["Reading tools","Outils de lecture"],"Agranda la línea bajo el cursor":["Enlarges the line under the cursor","Agrandit la ligne sous le curseur"],
  "También en":["Also in","Aussi dans"],"obra":["work","œuvre"],"obras":["works","œuvres"],"pasaje":["passage","passage"],"pasajes":["passages","passages"],"Filtrar por esta obra":["Filter by this work","Filtrer par cette œuvre"],
  "Cargando traducción…":["Loading translation…","Chargement de la traduction…"],"No hay traducción disponible para este pasaje en el sitio.":["No translation of this passage is available on the site.","Aucune traduction de ce passage n'est disponible sur le site."],"No se pudo cargar la traducción":["The translation could not be loaded","La traduction n'a pas pu être chargée"],
@@ -352,15 +355,46 @@ async function showApparatus(locus,box,btn){
  btn.disabled=false;btn.textContent=old;
 }
 function renderDistribution(D,hits){
- const box=$("#lx-side-extra");const by={};for(const h of hits){const id=D.corpus.passages[h.i][0];by[id]=(by[id]||0)+1}
+ const box=$("#lx-side-extra");const by={};for(const h of hits){const id=D.corpus.passages[h.i][0];(by[id]=by[id]||[]).push(h)}
  const ids=Object.keys(by).sort((a,b)=>(CHRONO[a]??0)-(CHRONO[b]??0));if(!ids.length)return;
- const max=Math.max(...Object.values(by));
- const sec=el("section",{class:"lx-side-block"},el("h3",{},"Distribución diacrónica"),el("p",{class:"lx-small"},"Coincidencias por obra, en orden cronológico aproximado. Valores absolutos del corpus local."));
- for(const id of ids){const w=work(D,id);const tot=D.workTokens[id]||1;
-  sec.append(el("button",{type:"button",class:"lx-bar",title:`Filtrar: ${w.author}, ${w.title}`,onclick:()=>{S.work=id;$("#lx-work").value=id;run()}},el("span",{class:"lx-bar-label"},`${w.author} · ${w.title}`,el("small",{}," ",DATING[id]||"")),el("span",{class:"lx-bar-track"},el("span",{class:"lx-bar-fill",style:`width:${Math.max(3,by[id]/max*100)}%`})),el("span",{class:"lx-bar-n"},String(by[id]),el("small",{}," · ",(by[id]/tot*10000).toFixed(1)," por 10 000 palabras"))))}
+ const max=Math.max(...ids.map(id=>by[id].length));
+ const sec=el("section",{class:"lx-side-block"},el("h3",{},"Distribución diacrónica"),el("p",{class:"lx-small"},"Coincidencias por obra en orden cronológico aproximado: valor absoluto, frecuencia por 10 000 palabras con su intervalo de confianza del 95 % (Wilson), dispersión a lo largo de la obra y DP de Gries por libro (0 = repartida de modo uniforme; 1 = concentrada)."));
+ for(const id of ids){const w=work(D,id);const tot=D.workTokens[id]||1;const k=by[id].length;const [lo,hi]=wilson(k,tot);
+  const st=workStats(D,id);const strip=el("span",{class:"lx-disp",title:"Posición de cada coincidencia en la obra"});
+  for(const h of by[id].slice(0,400)){const x=(st.offset[h.i]??0)/st.total;strip.append(el("i",{style:`left:${(x*100).toFixed(2)}%`}))}
+  const dp=griesDP(D,st,by[id]);
+  sec.append(el("button",{type:"button",class:"lx-bar",title:`Filtrar: ${w.author}, ${w.title}`,onclick:()=>{S.work=id;$("#lx-work").value=id;run()}},el("span",{class:"lx-bar-label"},`${w.author} · ${w.title}`,el("small",{}," ",DATING[id]||"")),el("span",{class:"lx-bar-track"},el("span",{class:"lx-bar-fill",style:`width:${Math.max(3,k/max*100)}%`})),el("span",{class:"lx-bar-n"},String(k),el("small",{}," · ",(k/tot*10000).toFixed(1)," por 10 000 (IC 95 %: ",(lo*10000).toFixed(1),"–",(hi*10000).toFixed(1),")",dp!=null?` · DP ${dp.toFixed(2)}`:"")),strip))}
  box.prepend(sec);
 }
-
+/* ---------- Estadística léxica ---------- */
+function wilson(k,n,z=1.96){if(!n)return[0,0];const p=k/n,d=1+z*z/n,c=p+z*z/(2*n),m=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n));return[Math.max(0,(c-m)/d),(c+m)/d]}
+function logLik(a,b,c,d){/* a: frec. en el corpus 1 (tamaño c); b: frec. en el corpus 2 (tamaño d) */const E1=c*(a+b)/(c+d),E2=d*(a+b)/(c+d);let g=0;if(a>0)g+=a*Math.log(a/E1);if(b>0)g+=b*Math.log(b/E2);return 2*g}
+/* Posición acumulada de cada pasaje en su obra y tamaño de cada libro (primer segmento del locus). */
+function workStats(D,id){
+ D._ws=D._ws||{};if(D._ws[id])return D._ws[id];
+ const offset={},books={};let total=0;
+ D.corpus.passages.forEach((p,i)=>{if(p[0]!==id)return;offset[i]=total;let n=0;for(const _ of p[2].matchAll(TOKEN))n++;total+=n;const b=String(p[1]).split(".")[0];books[b]=(books[b]||0)+n});
+ return D._ws[id]={offset,books,total:Math.max(total,1)};
+}
+function griesDP(D,st,hs){const parts=Object.keys(st.books);if(parts.length<2||hs.length<2)return null;const obs={};for(const h of hs){const b=String(D.corpus.passages[h.i][1]).split(".")[0];obs[b]=(obs[b]||0)+1}return .5*parts.reduce((a,b)=>a+Math.abs((obs[b]||0)/hs.length-st.books[b]/st.total),0)}
+/* Comparación de dos obras o de una obra frente al resto del corpus (palabras clave, keyness). */
+async function renderComparatio(){
+ const box=$("#comp-out");if(!box)return;const l=$("#comp-lang").value;const D=await lang(l,true);
+ const sa=$("#comp-a"),sb=$("#comp-b");
+ if(sa.dataset.l!==l){const opts=Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0));sa.replaceChildren(...opts.map(([id,w])=>el("option",{value:id},`${w.author} · ${w.title}`)));sb.replaceChildren(el("option",{value:""},T("Resto del corpus")),...opts.map(([id,w])=>el("option",{value:id},`${w.author} · ${w.title}`)));sa.dataset.l=l;if(l==="la")sa.value="vitruvius";if(l==="grc")sa.value="euclid-elements"}
+ const A=sa.value,B=sb.value;if(!A||A===B){box.replaceChildren(el("p",{class:"lx-small"},T("Elija dos obras distintas.")));return}
+ const lem=$("#comp-lemma").checked;const c1=new Map(),c2=new Map();let n1=0,n2=0;const stop=STOP[l];
+ const keyOf=k=>lem?(analyses(D,k)[0]?.[0]||k):k;
+ for(const [k,wf] of D.workFreq){if(stop.has(k)||k.length<3)continue;for(const [id,n] of Object.entries(wf)){if(id===A){c1.set(keyOf(k),(c1.get(keyOf(k))||0)+n)}else if(!B||id===B){c2.set(keyOf(k),(c2.get(keyOf(k))||0)+n)}}}
+ n1=D.workTokens[A]||1;n2=B?(D.workTokens[B]||1):Object.entries(D.workTokens).reduce((a,[id,n])=>id===A?a:a+n,0);
+ const rows=[];for(const [k,a] of c1){const b=c2.get(k)||0;if(a<3)continue;const g=logLik(a,b,n1,n2);if(a/n1>b/n2)rows.push([k,a,b,g,Math.log2(((a+.5)/n1)/((b+.5)/n2))])}
+ const neg=[];for(const [k,b] of c2){const a=c1.get(k)||0;if(b<3)continue;const g=logLik(a,b,n1,n2);if(b/n2>a/n1)neg.push([k,a,b,g,Math.log2(((a+.5)/n1)/((b+.5)/n2))])}
+ rows.sort((x,y)=>y[3]-x[3]);neg.sort((x,y)=>y[3]-x[3]);
+ const wa=work(D,A),wb=B?work(D,B):{author:T("Resto del corpus"),title:""};
+ const table=(rs,title)=>{const t=el("table",{class:"lx-table"},el("caption",{},title),el("thead",{},el("tr",{},...["",lem?"Lema":"Forma",`${wa.author}`,`${wb.author}`,"G²","log₂ ratio"].map(h=>el("th",{},h)))));const tb=el("tbody",{});rs.slice(0,30).forEach((r,i)=>tb.append(el("tr",{},el("td",{},String(i+1)),el("td",{},el("button",{type:"button",class:"lx-formlink",lang:l,onclick:()=>{$("#lx-q").value=lem?"@"+lemmaDisplay(r[0]):r[0];S.lang=l;$("#lx-lang").value=l;S.work=A;S.mode="palabra";renderTabs();run();$("#results")?.scrollIntoView({behavior:"smooth"})}},lem?lemmaDisplay(r[0]):r[0])),el("td",{},`${r[1]} (${(r[1]/n1*10000).toFixed(1)})`),el("td",{},`${r[2]} (${(r[2]/n2*10000).toFixed(1)})`),el("td",{},r[3].toFixed(1)+(r[3]>=15.13?" ****":r[3]>=10.83?" ***":r[3]>=6.63?" **":r[3]>=3.84?" *":"")),el("td",{},r[4].toFixed(2)))));t.append(tb);return t};
+ box.replaceChildren(el("p",{class:"lx-small"},`${wa.author}, ${wa.title}: ${n1.toLocaleString("es")} ${T("palabras")} · ${wb.author}${wb.title?", "+wb.title:""}: ${n2.toLocaleString("es")} ${T("palabras")}. ${T("Entre paréntesis, frecuencia por 10 000 palabras. G² de Dunning: * p < 0,05 · ** p < 0,01 · *** p < 0,001 · **** p < 0,0001. log₂ ratio: tamaño del efecto (1 = el doble).")}`),
+  table(rows,`${T("Sobrerrepresentadas en")} ${wa.author}, ${wa.title}`),table(neg,`${T("Sobrerrepresentadas en")} ${wb.author}${wb.title?", "+wb.title:""}`));
+}
 /* ---------- Ficha léxica ---------- */
 async function renderEntry(D,term,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
@@ -654,7 +688,7 @@ async function renderConcept(word){
 }
 /* Enlace permanente a un locus: vitruvia-lexicon.html?work=vitruvius&locus=1.2.1&q=symmetria */
 async function openLocus(workId,locus,q){
- const l=["homer-iliad","homer-odyssey","plato-apology","aristotle-poetics","theophrastus-characters","epictetus-enchiridion"].includes(workId)?"grc":"la";
+ const l=["herodotus-histories","euclid-elements","homer-iliad","homer-odyssey","plato-apology","aristotle-poetics","theophrastus-characters","epictetus-enchiridion"].includes(workId)?"grc":"la";
  const D=await lang(l,true);let i=D.corpus.passages.findIndex(p=>p[0]===workId&&p[1]===locus);
  if(i<0){const [b,v]=locus.split(".");i=D.corpus.passages.findIndex((p,j)=>{if(p[0]!==workId)return false;const nx=D.corpus.passages[j+1];return p[1].split(".")[0]===b&&+p[1].split(".").pop()<=+v&&(!nx||nx[0]!==workId||nx[1].split(".")[0]!==b||+nx[1].split(".").pop()>+v)})}
  if(i<0){setState(`No se encontró el locus ${locus} en el corpus local.`);return}
@@ -732,7 +766,7 @@ async function showTranslationHits(words){
 }
 
 /* ---------- Visor bilingüe del pasaje ---------- */
-const LECTOR_IDS={"cicero-officiis":"phi0474.phi055","caesar-gallico":"phi0448.phi001","lucretius":"phi0550.phi001","virgil-georgica":"phi0690.phi002","virgil-aeneid":"phi0690.phi003","apuleius-metamorphoses":"phi1212.phi002","catullus-carmina":"phi0472.phi001","petronius-satyrica":"phi0972.phi001","homer-iliad":"tlg0012.tlg001","homer-odyssey":"tlg0012.tlg002","plato-apology":"tlg0059.tlg002","aristotle-poetics":"tlg0086.tlg034","epictetus-enchiridion":"tlg0557.tlg002","theophrastus-characters":"tlg0093.tlg009"};
+const LECTOR_IDS={"herodotus-histories":"tlg0016.tlg001","euclid-elements":"tlg1799.tlg001","columella-rustica":"phi0845.phi002","pliny-naturalis":"phi0978.phi001","cato-agricultura":"stoa0079.stoa001","varro-rustica":"ll.varro-rustica","frontinus-aquaeductu":"ll.frontinus","cicero-officiis":"phi0474.phi055","caesar-gallico":"phi0448.phi001","lucretius":"phi0550.phi001","virgil-georgica":"phi0690.phi002","virgil-aeneid":"phi0690.phi003","apuleius-metamorphoses":"phi1212.phi002","catullus-carmina":"phi0472.phi001","petronius-satyrica":"phi0972.phi001","homer-iliad":"tlg0012.tlg001","homer-odyssey":"tlg0012.tlg002","plato-apology":"tlg0059.tlg002","aristotle-poetics":"tlg0086.tlg034","epictetus-enchiridion":"tlg0557.tlg002","theophrastus-characters":"tlg0093.tlg009"};
 const VIT_ED={es:["data/structured/recensio-es.json","Castellano · Kurilo V514"],fr:["data/structured/recensio-fr.json","Français · Kurilo V554"],en:["data/structured/theory-en.json","English · Kurilo V297"]};
 function viewerShell(title){
  document.getElementById("lx-viewer")?.remove();
@@ -976,17 +1010,20 @@ async function renderModernWord(q,l){
  await renderEtymTree(q,l,box);
 }
 function collocationList(D,hits,win=4,top=12){
- const c=new Map();const stop=STOP[D.l];
+ const c=new Map();const stop=STOP[D.l];let span=0;
  for(const h of hits.slice(0,1500)){const p=D.corpus.passages[h.i];const toks=[...p[2].matchAll(TOKEN)].map(m=>({k:fold(m[0]).replace(/'+$/,""),s:m.index}));const at=toks.findIndex(t=>t.s===h.spans[0][0]);if(at<0)continue;const own=new Set(h.spans.map(s=>s[0]));
-  for(let j=Math.max(0,at-win);j<=Math.min(toks.length-1,at+win+h.spans.length-1);j++){const t=toks[j];if(own.has(t.s)||stop.has(t.k)||t.k.length<3)continue;const lem=analyses(D,t.k)[0]?.[0]||t.k;c.set(lem,(c.get(lem)||0)+1)}}
- /* Ponderación: frecuencia observada frente a la esperada (información mutua simplificada). */
- const scored=[...c.entries()].map(([lem,n])=>{const fs=D.lemmaForms.get(lem);const f=fs?[...fs].reduce((a,k)=>a+(D.freq.get(k)||0),0):(D.freq.get(lem)||1);return[lem,n,n*Math.log(1+D.tokens/(f*hits.length*win*2+1)+1)]}).filter(x=>x[1]>1).sort((a,b)=>b[2]-a[2]).slice(0,top);
+  const a0=Math.max(0,at-win),a1=Math.min(toks.length-1,at+win+h.spans.length-1);span+=a1-a0+1-h.spans.length;
+  for(let j=a0;j<=a1;j++){const t=toks[j];if(own.has(t.s)||stop.has(t.k)||t.k.length<3)continue;const lem=analyses(D,t.k)[0]?.[0]||t.k;c.set(lem,(c.get(lem)||0)+1)}}
+ /* Asociación: log-likelihood de Dunning (G²) sobre la tabla 2×2 ventana/resto del corpus e
+    información mutua puntual (MI = log2 O/E). Se ordena por G² y se exige O ≥ 2. */
+ const N=D.tokens;
+ const scored=[...c.entries()].map(([lem,O])=>{const fs=D.lemmaForms.get(lem);const f=Math.max(O,fs?[...fs].reduce((a,k)=>a+(D.freq.get(k)||0),0):(D.freq.get(lem)||O));const E=f*span/N;return[lem,O,logLik(O,f-O,span,N-span),Math.log2(O/Math.max(E,1e-9)),f]}).filter(x=>x[1]>1&&x[3]>0).sort((a,b)=>b[2]-a[2]).slice(0,top);
  const ul=el("ol",{class:"lx-colloc"});
  if(!scored.length)ul.append(el("li",{},"Sin colocaciones recurrentes."));
- for(const [lem,n] of scored)ul.append(el("li",{},el("button",{type:"button",class:"lx-formlink",lang:D.l,onclick:()=>{$("#lx-q").value=`${S.q} NEAR/${win} @${lemmaDisplay(lem)}`;S.mode="frase";renderTabs();run()}},lemmaDisplay(lem)),el("small",{}," ×"+n)));
+ for(const [lem,n,g,mi,f] of scored)ul.append(el("li",{title:`O = ${n} en la ventana · frecuencia total ${f} · G² ${g.toFixed(1)}${g>=10.83?" (p < 0,001)":g>=6.63?" (p < 0,01)":g>=3.84?" (p < 0,05)":" (no significativo)"} · MI ${mi.toFixed(2)}`},el("button",{type:"button",class:"lx-formlink",lang:D.l,onclick:()=>{$("#lx-q").value=`${S.q} NEAR/${win} @${lemmaDisplay(lem)}`;S.mode="frase";renderTabs();run()}},lemmaDisplay(lem)),el("small",{}," ×"+n+" · G² "+g.toFixed(1)+" · MI "+mi.toFixed(1)+(g>=10.83?" ***":g>=6.63?" **":g>=3.84?" *":""))));
  return ul;
 }
-function renderCollocations(D,res){const box=$("#lx-side-extra");if(!res.hits.length)return;box.append(el("section",{class:"lx-side-block"},el("h3",{},"Colocaciones (±4)"),el("p",{class:"lx-small"},"Lemas que acompañan a la construcción con frecuencia superior a la esperable."),collocationList(D,res.hits,4,15)))}
+function renderCollocations(D,res){const box=$("#lx-side-extra");if(!res.hits.length)return;box.append(el("section",{class:"lx-side-block"},el("h3",{},"Colocaciones (±4)"),el("p",{class:"lx-small"},"Lemas en una ventana de ±4 palabras, ordenados por log-likelihood de Dunning (G²); MI = información mutua. * p < 0,05 · ** p < 0,01 · *** p < 0,001."),collocationList(D,res.hits,4,15)))}
 
 /* ---------- Búsqueda hebrea y etimológica ---------- */
 function renderHebrew(q){
@@ -1310,6 +1347,7 @@ async function init(){
  $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
  try{[S.etym,S.sent,S.phil]=await Promise.all([load("data/lexicon/etymologicum.json"),load("data/lexicon/sententiae.json"),load("data/lexicon/philologia.json")])}catch(err){console.error(err)}
+ if($("#comp-go")){$("#comp-go").addEventListener("click",()=>renderComparatio().catch(e=>$("#comp-out").replaceChildren(el("p",{},e.message))));$("#comp-lang").addEventListener("change",()=>{$("#comp-a").dataset.l="";renderComparatio()})}
  renderInstrumenta();renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);

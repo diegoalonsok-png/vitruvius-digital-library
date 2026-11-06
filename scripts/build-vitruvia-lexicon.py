@@ -61,6 +61,13 @@ WORKS = {
                               "classics-text-reader.html?work=epictetus-enchiridion&lang=grc", "Epict. Ench."),
     "theophrastus-characters": ("Teofrasto", "Caracteres", "grc", None,
                                 "classics-text-reader.html?work=theophrastus-characters&lang=grc", "Thphr. Char."),
+    "herodotus-histories": ("Heródoto", "Historias", "grc", None, "lector-clasico.html?obra=tlg0016.tlg001&loc={locus}", "Hdt."),
+    "euclid-elements": ("Euclides", "Elementos", "grc", None, "lector-clasico.html?obra=tlg1799.tlg001&loc={locus}", "Euc."),
+    "cato-agricultura": ("Catón", "De agri cultura", "la", None, "lector-clasico.html?obra=stoa0079.stoa001&loc={locus}", "Cato Agr."),
+    "varro-rustica": ("Varrón", "Res rusticae", "la", None, "lector-clasico.html?obra=ll.varro-rustica&loc={locus}", "Varro R."),
+    "columella-rustica": ("Columela", "De re rustica (I–IX)", "la", None, "lector-clasico.html?obra=phi0845.phi002&loc={locus}", "Col."),
+    "pliny-naturalis": ("Plinio el Viejo", "Naturalis historia (XXXIII–XXXVI)", "la", None, "lector-clasico.html?obra=phi0978.phi001&loc={locus}", "Plin. Nat."),
+    "frontinus-aquaeductu": ("Frontino", "De aquaeductu", "la", None, "lector-clasico.html?obra=ll.frontinus&loc={locus}", "Frontin. Aq."),
 }
 
 ROMAN = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"),
@@ -107,7 +114,10 @@ def add(work, locus, text, verse_start=None, tr=None):
 # 1. Obras JSON ya alineadas por pasajes (Perseus DL)
 for work in ["virgil-aeneid", "virgil-georgica", "caesar-gallico", "petronius-satyrica",
              "apuleius-metamorphoses", "homer-iliad", "homer-odyssey", "plato-apology",
-             "aristotle-poetics", "epictetus-enchiridion", "theophrastus-characters"]:
+             "aristotle-poetics", "epictetus-enchiridion", "theophrastus-characters",
+             # Ampliación (scripts/import-lexicon-ampliacion.py): autores técnicos e historiadores
+             "herodotus-histories", "euclid-elements", "cato-agricultura", "varro-rustica",
+             "columella-rustica", "pliny-naturalis", "frontinus-aquaeductu"]:
     lang = WORKS[work][2]
     d = json.loads((ROOT / f"data/classics-corpus/{work}-{lang}.json").read_text())
     meta[work] = {"edition": d.get("attribution", ""), "license": d.get("license", ""),
