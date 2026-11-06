@@ -192,8 +192,8 @@ const MODES={
 
 function renderTabs(){
  const box=$("#lx-tabs");box.replaceChildren();
- for(const [k,m] of Object.entries(MODES)){const b=document.createElement("button");b.type="button";b.className="tab";b.dataset.mode=k;b.textContent=m.label;b.setAttribute("aria-pressed",String(S.mode===k));b.addEventListener("click",()=>{S.mode=k;renderTabs();$("#lx-mode-note").textContent=m.help;if(S.q)run()});box.append(b)}
- $("#lx-mode-note").textContent=MODES[S.mode].help;
+ for(const [k,m] of Object.entries(MODES)){const b=document.createElement("button");b.type="button";b.className="tab";b.dataset.mode=k;b.textContent=T(m.label);b.setAttribute("aria-pressed",String(S.mode===k));b.addEventListener("click",()=>{S.mode=k;renderTabs();if(S.q)run()});box.append(b)}
+ const hi=S.ui==="en"?0:S.ui==="fr"?1:-1;$("#lx-mode-note").textContent=hi<0?MODES[S.mode].help:(MODE_I18N[S.mode]?.[hi]||MODES[S.mode].help);
 }
 
 /* Tokeniza un texto en <span class="w"> enlazables (interconexión de todas las palabras). */
@@ -217,6 +217,33 @@ function kwic(text,spans,ctx=14){
 }
 
 function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const [k,v] of Object.entries(attrs)){if(v==null||v===false)continue;if(k==="class")e.className=v;else if(k==="html")e.innerHTML=v;else if(k.startsWith("on"))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v===true?"":v)}for(const c of kids.flat()){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(String(c)))}return e}
+
+
+/* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
+const I18N={
+"← Buscador Vitruvia":["← Vitruvia search","← Recherche Vitruvia"],"Etymologicum":["Etymologicum","Etymologicum"],"Sententiae":["Sententiae","Sententiae"],"Taller ecdótico":["Textual-criticism workshop","Atelier d'ecdotique"],"Cuaderno exegético":["Exegetical notebook","Carnet exégétique"],"Instrumenta":["Instrumenta","Instrumenta"],"Método y fuentes":["Method and sources","Méthode et sources"],
+"Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables. Toda palabra latina, griega, castellana, inglesa, francesa o alemana recibe su árbol etimológico, y los personajes históricos se buscan por su nombre griego y latino.":["A search engine devoted to the vocabulary, syntax and phrases of the ancient world. Look up Greek and Latin words—with lemma, morphology, senses and etymology, Old Latin and Hebrew equivalents—and the passages of ancient authors where they occur, with verifiable canonical references. Every Latin, Greek, Spanish, English, French or German word gets its etymological tree, and historical figures are searched by their Greek and Latin names.","Moteur consacré au lexique, à la syntaxe et aux phrases du monde antique. Consultez les mots grecs et latins —lemme, morphologie, sens et étymologie, latin archaïque et équivalents hébreux— et les passages des auteurs anciens où ils apparaissent, avec des références canoniques vérifiables. Tout mot latin, grec, espagnol, anglais, français ou allemand reçoit son arbre étymologique, et les personnages historiques se cherchent par leur nom grec et latin."],
+"Buscar ↗":["Search ↗","Rechercher ↗"],"Palabra":["Word","Mot"],"Lema y flexión":["Lemma and inflection","Lemme et flexion"],"Etimología":["Etymology","Étymologie"],"Frase exacta":["Exact phrase","Phrase exacte"],"Sintaxis":["Syntax","Syntaxe"],"Paralelos":["Parallels","Parallèles"],"Analizar frase":["Analyse sentence","Analyser la phrase"],
+"Incluir todas las formas del lema":["Include all forms of the lemma","Inclure toutes les formes du lemme"],"Aproximación fonética y grafías (ae/e, ph/f, y/i; itacismo)":["Phonetic and spelling approximation (ae/e, ph/f, y/i; itacism)","Approximation phonétique et graphique (ae/e, ph/f, y/i ; iotacisme)"],
+"Explorar":["Explore","Explorer"],"Campos":["Fields","Champs"],"Resultados":["Results","Résultats"],"Todas las obras":["All works","Toutes les œuvres"],"Orden del corpus":["Corpus order","Ordre du corpus"],"Orden cronológico":["Chronological order","Ordre chronologique"],
+"Sintaxis de búsqueda":["Search syntax","Syntaxe de recherche"],"SENTENTIA DEL DÍA · FRASEARIO ANTIGUO":["SENTENTIA OF THE DAY · ANCIENT PHRASEBOOK","SENTENTIA DU JOUR · RECUEIL DE PHRASES ANTIQUES"],"Analizar la frase ›":["Analyse the sentence ›","Analyser la phrase ›"],
+"Etymologicum · raíces, latín arcaico, hebreo":["Etymologicum · roots, Old Latin, Hebrew","Etymologicum · racines, latin archaïque, hébreu"],"Sententiae · fraseario del mundo antiguo":["Sententiae · phrasebook of the ancient world","Sententiae · phrases du monde antique"],"Taller ecdótico · colación y aparato":["Textual criticism · collation and apparatus","Ecdotique · collation et apparat"],"Cuaderno exegético · comentario lemático":["Exegetical notebook · lemmatic commentary","Carnet exégétique · commentaire lemmatique"],"Instrumenta · signos críticos y codicología":["Instrumenta · critical signs and codicology","Instrumenta · signes critiques et codicologie"],
+"Índice de voces con ficha etimológica":["Index of words with an etymological entry","Index des mots avec fiche étymologique"],"Fraseario del mundo antiguo":["Phrasebook of the ancient world","Recueil de phrases du monde antique"],"Taller ecdótico: colación de testimonios y aparato crítico":["Workshop: collation of witnesses and critical apparatus","Atelier : collation des témoins et apparat critique"],"Signos críticos, abreviaturas, codicología y hermenéutica":["Critical signs, abbreviations, codicology and hermeneutics","Signes critiques, abréviations, codicologie et herméneutique"],"Método, sintaxis de búsqueda y fuentes":["Method, search syntax and sources","Méthode, syntaxe de recherche et sources"],
+"Colacionar":["Collate","Collationner"],"Añadir testimonio":["Add witness","Ajouter un témoin"],"Cargar ejemplo vitruviano":["Load a Vitruvian example","Charger un exemple vitruvien"],"Añadir pasaje manualmente":["Add a passage manually","Ajouter un passage"],"Exportar Markdown":["Export Markdown","Exporter Markdown"],"Exportar JSON":["Export JSON","Exporter JSON"],"Exportar XML-TEI":["Export XML-TEI","Exporter XML-TEI"],
+"Cerrar":["Close","Fermer"],"Pasaje de esta búsqueda":["Passage from this search","Passage de cette recherche"],"Abrir el lector en una pestaña":["Open the reader in a new tab","Ouvrir le lecteur dans un onglet"],
+"Original y traducción en el lector clásico del sitio (Perseus Digital Library). Si el lector no encuentra el mismo locus, abre la obra al comienzo: el pasaje de esta búsqueda se muestra debajo.":["Original and translation in the site's classical reader (Perseus Digital Library). If the reader cannot find the same locus, it opens the work at the beginning; the passage from this search is shown below.","Original et traduction dans le lecteur classique du site (Perseus Digital Library). Si le lecteur ne trouve pas le même locus, il ouvre l'œuvre au début ; le passage de cette recherche figure ci-dessous."],
+"Constructor de consultas · morfología y sintaxis sin escribir códigos":["Query builder · morphology and syntax without codes","Constructeur de requêtes · morphologie et syntaxe sans codes"],
+"Fondo":["Background","Fond"],"Lengua: auto":["Language: auto","Langue : auto"],"Latín":["Latin","Latin"],"Griego":["Greek","Grec"],"Hebreo":["Hebrew","Hébreu"],"Castellano (etimología)":["Spanish (etymology)","Espagnol (étymologie)"],"Inglés (etimología)":["English (etymology)","Anglais (étymologie)"],"Francés (etimología)":["French (etymology)","Français (étymologie)"],"Alemán (etimología)":["German (etymology)","Allemand (étymologie)"]
+};
+const MODE_I18N={palabra:["Word entry: lemma, morphology, senses, etymology, attested forms, distribution by author and concordance. Accepts inflected forms, transliteration (anthropos → ἄνθρωπος), wildcards (aedi*) and approximation (~simetria).","Fiche lexicale : lemme, morphologie, sens, étymologie, formes attestées, distribution par auteur et concordance. Accepte formes fléchies, translittération (anthropos → ἄνθρωπος), jokers (aedi*) et approximation (~simetria)."],lema:["All inflected forms of a lemma: @domus, @λόγος.","Toutes les formes fléchies d'un lemme : @domus, @λόγος."],etimologia:["Etymology and etymological tree; PIE roots, Old Latin, Greek, Hebrew and loanwords.","Étymologie et arbre étymologique ; racines indo-européennes, latin archaïque, grec, hébreu et emprunts."],frase:["Exact phrases and formulas: \"firmitatis utilitatis venustatis\". A ..3 B (B up to three words after A); A NEAR/5 B (any order).","Phrases et formules exactes : « firmitatis utilitatis venustatis ». A ..3 B ; A NEAR/5 B (ordre libre)."],sintaxis:["Morphosyntactic patterns (Greek, automatic analysis): [mood=ptc case=gen] [case=gen]. Latin: lemmas and forms with distance (@facio ..2 @opus).","Motifs morphosyntaxiques (grec, analyse automatique) : [mood=ptc case=gen] [case=gen]. Latin : lemmes et formes avec distance (@facio ..2 @opus)."],paralelos:["Loci paralleli: passages sharing the most significant lemmas, weighted by rarity (TF-IDF).","Loci paralleli : passages partageant le plus de lemmes significatifs, pondérés par leur rareté (TF-IDF)."],analizar:["Word-by-word analysis: lemma, morphology, gloss and corpus frequency; interlinear view and TEI export.","Analyse mot à mot : lemme, morphologie, glose et fréquence ; vue interlinéaire et export TEI."],sententiae:["Ancient phrasebook: famous sentences with canonical reference, translation, syntax notes and corpus verification.","Recueil antique : sentences célèbres avec référence canonique, traduction, notes syntaxiques et vérification dans le corpus."]};
+function T(es){const i=S.ui==="en"?0:S.ui==="fr"?1:-1;return i<0?es:(I18N[es]?.[i]??es)}
+function applyUI(){
+ for(const e of document.querySelectorAll("[data-i18n]")){if(!e.dataset.es)e.dataset.es=e.textContent.trim();e.textContent=T(e.dataset.es)}
+ for(const e of document.querySelectorAll("#lx-lang option,#lx-work option[value=''],#lx-order option,#lx-tabs .tab,.lx-options label")){/* textos con nodos mixtos */
+  const tn=[...e.childNodes].find(n=>n.nodeType===3&&n.textContent.trim());if(!tn)continue;if(!e.dataset.es)e.dataset.es=tn.textContent.trim();tn.textContent=(e.matches(".lx-options label")?" ":"")+T(e.dataset.es)}
+ document.documentElement.setAttribute("data-ui-lang",S.ui);
+ renderTabs();
+}
 
 /* ---------- Ejecución ---------- */
 async function run(push=true){
@@ -289,6 +316,7 @@ function hitCard(D,h){
   snippet,full);
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
+ actions.append(el("button",{type:"button",class:"lx-primary",onclick:()=>openViewer(D,p,h.spans,S.q)},p[0]==="vitruvius"?"Leer con traducción (ES · FR · EN)":"Leer con traducción"));
  const rl=readerLink(D,p);if(rl)actions.append(el("a",{href:rl},"Leer en el visor"));
  if(p[0]==="vitruvius")actions.append(el("button",{type:"button",onclick:e=>showApparatus(p[1],full,e.target)},"Aparato y colación"));
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
@@ -336,6 +364,7 @@ async function renderEntry(D,term,res){
  const title=lemmas.length?lemmas.map(lemmaDisplay).join(" / "):term.v;
  const head=el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},`LEXICON · ${D.l==="grc"?"GRAECE":"LATINE"}`),el("h2",{lang:D.l},title),
   el("p",{class:"article-byline"},term.v!==title?`Forma buscada: ${term.v}. `:"",lemmas.length?`${lemmas.length>1?"Lemas posibles":"Lema"} según la lematización automática del corpus.`:"Forma sin lema en el índice local."));
+ if(D.l==="grc"){const g=numericLine(lemmas[0]?lemmaDisplay(lemmas[0]):term.v);if(g)head.append(g)}
  box.append(head);
  const grid=el("div",{class:"article-grid"});const body=el("div",{class:"article-body"});const aside=el("aside",{class:"article-aside"});grid.append(body,aside);box.append(grid);
  /* Desambiguación interactiva: una forma, varios lemas posibles. */
@@ -452,6 +481,7 @@ async function renderPerson(P,q){
   el("p",{class:"article-byline"},P.typo?`Interpretado como «${P.name}» a partir de «${q}». `:"",P.period||"",P.period&&P.summary?" · ":"",P.summary||"")));
  const dl=el("dl",{class:"lx-dl"});
  dl.append(el("dt",{},"Griego"),el("dd",{lang:"grc",class:"lx-root"},greekShown.join(", ")||(P.modernGreek?P.modernGreek+" (etiqueta en griego moderno)":"sin forma griega registrada")));
+ if(greekShown[0]){const g=numericLine(greekShown[0]);if(g)dl.append(el("dt",{},""),el("dd",{},g))}
  dl.append(el("dt",{},"Latín"),el("dd",{lang:"la",class:"lx-root"},P.latin.join(", ")||"sin forma latina registrada"));
  if(P.loci?.length){const dd=el("dd",{});P.loci.forEach((l,i)=>{if(i)dd.append(" · ");dd.append(el("a",{href:`lector-bilingue.html?edition=recensio-es&locus=${encodeURIComponent(l)}`},"Vitr. "+l))});dl.append(el("dt",{},"Loci vitruvianos"),dd)}
  dl.append(el("dt",{},"Fuente"),el("dd",{},P.source==="onomasticon"?"Onomasticon Vitruvianum (V514)":el("a",{href:"https://www.wikidata.org/wiki/"+P.id,target:"_blank",rel:"noopener noreferrer"},"Wikidata "+P.id)));
@@ -692,6 +722,54 @@ async function showTranslationHits(words){
   const a=el("div",{class:"actions"});vitruvianLinks(p[1]).forEach(([t,u])=>a.append(el("a",{href:u},t)));card.append(a);list.append(card);if(n>=200)break}
  setState(`${n} pasajes de la traducción castellana de Vitruvio con ${words.join(", ")}.`);$("#results").scrollIntoView({behavior:"smooth"});
 }
+
+/* ---------- Visor bilingüe del pasaje ---------- */
+const LECTOR_IDS={"cicero-officiis":"phi0474.phi055","caesar-gallico":"phi0448.phi001","lucretius":"phi0550.phi001","virgil-georgica":"phi0690.phi002","virgil-aeneid":"phi0690.phi003","apuleius-metamorphoses":"phi1212.phi002","catullus-carmina":"phi0472.phi001","petronius-satyrica":"phi0972.phi001","homer-iliad":"tlg0012.tlg001","homer-odyssey":"tlg0012.tlg002","plato-apology":"tlg0059.tlg002","aristotle-poetics":"tlg0086.tlg034","epictetus-enchiridion":"tlg0557.tlg002","theophrastus-characters":"tlg0093.tlg009"};
+const VIT_ED={es:["data/structured/recensio-es.json","Castellano · Kurilo V514"],fr:["data/structured/recensio-fr.json","Français · Kurilo V554"],en:["data/structured/theory-en.json","English · Kurilo V297"]};
+function viewerShell(title){
+ document.getElementById("lx-viewer")?.remove();
+ const dlg=el("dialog",{id:"lx-viewer",class:"lx-viewer","aria-label":title});
+ const head=el("header",{class:"lx-viewer-head"},el("h3",{},title),el("button",{type:"button",class:"lx-btn",onclick:()=>{dlg.close();dlg.remove()}},T("Cerrar")+" ×"));
+ const body=el("div",{class:"lx-viewer-body"});dlg.append(head,body);document.body.append(dlg);
+ dlg.addEventListener("close",()=>dlg.remove());
+ try{dlg.showModal()}catch{dlg.setAttribute("open","")}
+ return body;
+}
+async function openViewer(D,p,spans,q){
+ const w=work(D,p[0]);
+ if(p[0]==="vitruvius"){
+  const body=viewerShell(`Vitruvio, De architectura · ${p[1]}`);
+  let ed=(S.ui==="fr"?"fr":S.ui==="en"?"en":"es"),locus=p[1];
+  const bar=el("div",{class:"actions"});const grid=el("div",{class:"lx-viewer-grid"});body.append(bar,grid);
+  const draw=async()=>{
+   const data=await load(VIT_ED[ed][0]);const ps=data.passages;let i=ps.findIndex(x=>x.locus===locus);if(i<0)i=0;const x=ps[i];locus=x.locus;
+   const ks=new Set(fold(q||"").split(/\s+/).filter(Boolean));const sp=[];for(const m of x.latin.matchAll(TOKEN))if(ks.has(fold(m[0])))sp.push([m.index,m.index+m[0].length]);
+   const la=el("div",{class:"lx-viewer-col",lang:"la"},el("p",{class:"lx-small"},"Latín · V514 · Vitr. "+x.locus),el("p",{class:"lx-passage"}));la.lastChild.append(linkWords(x.latin,sp));
+   const tr=el("div",{class:"lx-viewer-col",lang:ed},el("p",{class:"lx-small"},VIT_ED[ed][1]),el("p",{class:"lx-tr"},x.translation||"—"));
+   grid.replaceChildren(la,tr);
+   bar.replaceChildren(el("button",{type:"button",disabled:i===0,onclick:()=>{locus=ps[i-1].locus;draw()}},"‹ "+(ps[i-1]?.locus||"")),...Object.entries(VIT_ED).map(([k,v])=>el("button",{type:"button","aria-pressed":String(k===ed),onclick:()=>{ed=k;draw()}},k.toUpperCase())),el("button",{type:"button",disabled:i>=ps.length-1,onclick:()=>{locus=ps[i+1].locus;draw()}},(ps[i+1]?.locus||"")+" ›"),...vitruvianLinks(x.locus).map(([t,u])=>el("a",{href:u},t)));
+  };
+  draw().catch(err=>body.append(el("p",{},err.message)));return;
+ }
+ const id=LECTOR_IDS[p[0]];const body=viewerShell(`${w.author}, ${w.title} · ${p[1]}`);
+ if(!id){const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));body.append(c);return}
+ const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${q?"&q="+encodeURIComponent(q):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
+ body.append(el("p",{class:"lx-small"},T("Original y traducción en el lector clásico del sitio (Perseus Digital Library). Si el lector no encuentra el mismo locus, abre la obra al comienzo: el pasaje de esta búsqueda se muestra debajo.")),el("iframe",{class:"lx-viewer-frame",src:u,title:`${w.author}, ${w.title}`,loading:"lazy"}),el("details",{},el("summary",{},T("Pasaje de esta búsqueda")),(()=>{const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));return c})()),el("p",{},el("a",{href:u.replace("&embed=1",""),target:"_blank",rel:"noopener"},T("Abrir el lector en una pestaña")+" ↗")));
+}
+
+/* ---------- Isopsefía griega y guematría hebrea (valores tradicionales) ---------- */
+const GR_NUM={α:1,β:2,γ:3,δ:4,ε:5,ϛ:6,ϝ:6,ζ:7,η:8,θ:9,ι:10,κ:20,λ:30,μ:40,ν:50,ξ:60,ο:70,π:80,ϙ:90,ϟ:90,ρ:100,σ:200,ς:200,ϲ:200,τ:300,υ:400,φ:500,χ:600,ψ:700,ω:800,ϡ:900};
+const HE_NUM={א:1,ב:2,ג:3,ד:4,ה:5,ו:6,ז:7,ח:8,ט:9,י:10,כ:20,ך:20,ל:30,מ:40,ם:40,נ:50,ן:50,ס:60,ע:70,פ:80,ף:80,צ:90,ץ:90,ק:100,ר:200,ש:300,ת:400};
+function numericValue(word){
+ const s=String(word||"").normalize("NFD").replace(/[̀-֑ͯ-ׇ]/g,"").toLowerCase();let g=0,h=0,ng=0,nh=0;
+ for(const c of s){if(GR_NUM[c]){g+=GR_NUM[c];ng++}else if(HE_NUM[c]){h+=HE_NUM[c];nh++}}
+ return nh>ng?{sys:"he",v:h}:ng?{sys:"grc",v:g}:null;
+}
+function numericLine(text){
+ const words=String(text||"").match(/[\p{L}\p{M}]+/gu)||[];const vals=words.map(w=>({w,n:numericValue(w)})).filter(x=>x.n);if(!vals.length)return null;
+ const sys=vals[0].n.sys;const total=vals.reduce((a,x)=>a+x.n.v,0);
+ return el("p",{class:"lx-gematria",title:sys==="he"?"Guematría estándar (mispar hechrají): letras finales con el mismo valor que las ordinarias":"Isopsefía griega con los valores alfabéticos milesios (ϛ 6, ϙ 90, ϡ 900)"},sys==="he"?"Guematría (valores estándar): ":"Isopsefía (valores milesios): ",vals.length>1?vals.map(x=>`${x.w} ${x.n.v}`).join(" + ")+" = ":"",el("b",{},String(total)));
+}
 /* ---------- Árbol etimológico (Wiktionary, en el navegador del lector) ----------
    Para cualquier palabra latina, griega, castellana, inglesa, francesa o alemana:
    localiza la sección de la lengua, lee su párrafo «Etymology», separa ascendientes
@@ -823,6 +901,7 @@ function renderHebrew(q){
  const k=q.normalize("NFD").replace(/[֑-ׇ]/g,"");
  const ents=(S.etym?.entries||[]).filter(e=>(e.he||[]).some(h=>h.w.normalize("NFD").replace(/[֑-ׇ]/g,"").includes(k))||(e.loci||[]).some(L=>L.lang==="he"&&L.t.includes(k)));
  const sents=(S.sent?.sententiae||[]).filter(s=>s.lang==="he"&&s.text.includes(k));
+ {const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · HEBRAICE"),el("h2",{lang:"he",dir:"rtl",class:"lx-he"},q)));const g=numericLine(q);if(g)box.firstChild.append(g)}
  setState(`${ents.length} ficha${ents.length===1?"":"s"} y ${sents.length} sentencia${sents.length===1?"":"s"} con «${q}». El corpus local no incluye aún texto hebreo continuo: la búsqueda recorre las equivalencias LXX/Vulgata de las fichas.`);
  const list=$("#lx-results");heRoots().then(()=>{const r=heRootOf(q);if(r)list.prepend(el("p",{class:"lx-person-banner"},"Raíz: ",el("span",{lang:"he"},r)," ",el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value="√"+r;run()}},"Ver la familia de la raíz")))});for(const e of ents)list.append(etymResult(e));for(const s of sents)list.append(sententiaCard(s));
  list.append(el("p",{class:"lx-ext"},"Buscar en textos hebreos: ",el("a",{href:`https://www.sefaria.org/search?q=${encodeURIComponent(q)}`,target:"_blank",rel:"noopener noreferrer"},"Sefaria")," · ",el("a",{href:`https://www.blueletterbible.org/search/search.cfm?Criteria=${encodeURIComponent(q)}&t=WLC`,target:"_blank",rel:"noopener noreferrer"},"Westminster Leningrad Codex (Blue Letter Bible)")));
@@ -856,6 +935,7 @@ function sententiaCard(s){
  card.append(el("p",{class:"lx-tr"},s.tr));
  (s.par||[]).forEach(x=>card.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.cite+": "),x.t)));
  if(s.syn)card.append(el("p",{class:"lx-syn"},el("b",{},"Nota sintáctica: "),s.syn));
+ if(s.lang==="he"||s.lang==="grc"){const g=numericLine(s.text);if(g)card.append(g)}
  const status=el("span",{class:"meta-line"},"");
  card.append(el("p",{class:"author"},el("cite",{},s.cite)," ",status));
  const a=el("div",{class:"actions"});
@@ -1092,8 +1172,22 @@ function renderInstrumenta(){
  filter.addEventListener("input",draw);draw();
 }
 
+
+/* ---------- Paleta de fondo (como en Vitruvia) ---------- */
+const PALETTE=[["Negro","#0d0d0e","dark"],["Grafito","#17191c","dark"],["Pizarra","#222a32","dark"],["Azul noche","#101b2c","dark"],["Sepia","#292019","dark"],["Verde tinta","#182720","dark"],["Marfil","#f7f5ef","light"],["Papel","#fbfaf6","light"],["Pergamino","#efe6d2","light"]];
+function applyBg(hex,mode){const r=document.documentElement;if(!hex){r.style.removeProperty("--lx-bg");document.body.style.background="";return}r.style.setProperty("--lx-bg",hex);document.body.style.background=hex;if(mode){r.dataset.theme=mode==="light"?"light":"dark";try{localStorage.setItem("vitruvia-theme",r.dataset.theme)}catch{}}}
+function setupPalette(){
+ const box=$("#lx-palette");if(!box)return;const panel=box.querySelector(".lx-palette-panel");
+ PALETTE.forEach(([n,hex,mode])=>panel.append(el("button",{type:"button",class:"lx-swatch",title:n,"aria-label":n,style:`background:${hex}`,onclick:()=>{applyBg(hex,mode);try{localStorage.setItem("vitruvia-lexicon-bg",JSON.stringify([hex,mode]))}catch{}}})));
+ const custom=el("input",{type:"color",value:"#0d0d0e","aria-label":"Color personalizado"});custom.addEventListener("input",()=>{const h=custom.value;const lum=parseInt(h.slice(1,3),16)*.299+parseInt(h.slice(3,5),16)*.587+parseInt(h.slice(5,7),16)*.114;const mode=lum>150?"light":"dark";applyBg(h,mode);try{localStorage.setItem("vitruvia-lexicon-bg",JSON.stringify([h,mode]))}catch{}});
+ panel.append(el("label",{class:"lx-small"},"Personalizado ",custom),el("button",{type:"button",class:"lx-btn",onclick:()=>{applyBg(null);try{localStorage.removeItem("vitruvia-lexicon-bg")}catch{}}},"Restablecer"));
+ try{const v=JSON.parse(localStorage.getItem("vitruvia-lexicon-bg")||"null");if(v)applyBg(v[0],v[1])}catch{}
+}
 /* ---------- Arranque ---------- */
 async function init(){
+ try{const u=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(u))S.ui=u}catch{}
+ const uiSel=$("#lx-ui");if(uiSel){uiSel.value=S.ui;uiSel.addEventListener("change",()=>{S.ui=uiSel.value;try{localStorage.setItem("vitruvius-ui-lang",S.ui)}catch{};applyUI()})}
+ setupPalette();
  renderTabs();
  try{const th=localStorage.getItem("vitruvia-theme");if(th==="light")document.documentElement.dataset.theme="light"}catch{}
  $("#theme")?.addEventListener("click",()=>{const t=document.documentElement.dataset.theme==="light"?"dark":"light";document.documentElement.dataset.theme=t;try{localStorage.setItem("vitruvia-theme",t)}catch{}});
@@ -1124,7 +1218,7 @@ async function init(){
  $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
  try{[S.etym,S.sent,S.phil]=await Promise.all([load("data/lexicon/etymologicum.json"),load("data/lexicon/sententiae.json"),load("data/lexicon/philologia.json")])}catch(err){console.error(err)}
- renderInstrumenta();renderNotebook();renderDaily();renderQueryBuilder();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
+ renderInstrumenta();renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
  const p=new URLSearchParams(location.search);
  if(p.get("mode")&&MODES[p.get("mode")])S.mode=p.get("mode");if(p.get("lang"))S.lang=p.get("lang");$("#lx-lang").value=S.lang;if(p.get("work"))S.work=p.get("work");renderTabs();

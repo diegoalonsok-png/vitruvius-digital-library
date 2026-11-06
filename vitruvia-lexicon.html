@@ -224,6 +224,21 @@ html[data-theme=light] .lx-tree-gloss,html[data-theme=light] .lx-tree-cog{color:
 html[data-theme=light] .lx-qb{background:#fff;border-color:#d4d0c4}html[data-theme=light] .lx-qb summary{color:#28302c}
 html[data-theme=light] .lx-qb-row select,html[data-theme=light] .lx-qb-row input{background:#fff;color:#1d2421;border-color:#c5c3ba}
 html[data-theme=light] .lx-disamb,html[data-theme=light] .lx-person-banner{border-color:#c5c3ba}
+.lx-palette{position:relative}.lx-palette summary{list-style:none;display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 12px;border:1px solid #414141;border-radius:8px;background:#1a1a1b;color:#d7d7d7;cursor:pointer;font-size:13px}.lx-palette summary::-webkit-details-marker{display:none}
+.lx-palette-panel{position:absolute;right:0;top:50px;z-index:40;display:grid;grid-template-columns:repeat(3,34px);gap:8px;padding:12px;border:1px solid #414141;border-radius:10px;background:#161617;box-shadow:0 10px 30px #0008}
+.lx-palette-panel label,.lx-palette-panel .lx-btn{grid-column:1/-1}.lx-swatch{width:34px;height:34px;border-radius:50%;border:1px solid #666;cursor:pointer}
+#lx-ui{background:#1a1a1b;color:#d7d7d7;border:1px solid #414141;border-radius:6px;padding:9px;height:44px}
+body{background:var(--lx-bg,var(--bg))}
+.lx-gematria{font:400 12px/1.6 Arial,sans-serif;color:#8d8d8d;margin:4px 0 0;letter-spacing:.02em}.lx-gematria b{color:#bdbdbd;font-weight:400}
+.lx-primary{border-color:#8d8d8d!important;color:#fff!important}
+.lx-viewer{width:min(1200px,94vw);max-height:90vh;border:1px solid #444;border-radius:12px;background:#121213;color:#e6e6e3;padding:0}.lx-viewer::backdrop{background:#000a}
+.lx-viewer-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #333;position:sticky;top:0;background:inherit}.lx-viewer-head h3{margin:0;font:400 20px Georgia,serif}
+.lx-viewer-body{padding:14px 18px 20px;overflow:auto;max-height:calc(90vh - 60px)}
+.lx-viewer-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px}.lx-viewer-col{min-width:0}
+.lx-viewer-frame{width:100%;height:65vh;border:1px solid #333;border-radius:8px;background:#fff}
+.lx-viewer .actions button[aria-pressed=true]{background:#3a3a3c;color:#fff}
+@media(max-width:800px){.lx-viewer-grid{grid-template-columns:1fr}}
+html[data-theme=light] .lx-palette summary,html[data-theme=light] #lx-ui{background:#fff;color:#28302c;border-color:#c5c3ba}html[data-theme=light] .lx-palette-panel,html[data-theme=light] .lx-viewer{background:#fff;color:#1d2421;border-color:#d4d0c4}
 /* Tema claro (misma convención que Vitruvia) */
 html[data-theme=light]{--bg:#f7f5ef;--ink:#1d2421}
 html[data-theme=light] body{background:#f7f5ef;color:#1d2421}
@@ -251,16 +266,18 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 <header class="nav">
  <a class="logo-small" href="vitruvia-lexicon.html" aria-label="Vitruvia Lexicon — inicio">Vitruvia<small>Lexicon</small></a>
  <nav class="navlinks" aria-label="Navegación del Lexicon">
-  <a href="vitruvia.html">← Buscador Vitruvia</a>
-  <a href="#etymologicum">Etymologicum</a>
+  <a href="vitruvia.html" data-i18n>← Buscador Vitruvia</a>
+  <a href="#etymologicum" data-i18n>Etymologicum</a>
   <a href="#sententiae" data-tool-mode="sententiae">Sententiae</a>
-  <a href="#collatio">Taller ecdótico</a>
-  <a href="#exegesis">Cuaderno exegético</a>
-  <a href="#instrumenta">Instrumenta</a>
-  <a href="#methodus">Método y fuentes</a>
+  <a href="#collatio" data-i18n>Taller ecdótico</a>
+  <a href="#exegesis" data-i18n>Cuaderno exegético</a>
+  <a href="#instrumenta" data-i18n>Instrumenta</a>
+  <a href="#methodus" data-i18n>Método y fuentes</a>
  </nav>
  <div class="navtools">
-  <select id="lx-lang" aria-label="Lengua de búsqueda" title="Lengua de búsqueda"><option value="auto">Auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano (etimología)</option><option value="en">Inglés (etimología)</option><option value="fr">Francés (etimología)</option><option value="de">Alemán (etimología)</option></select>
+  <select id="lx-lang" aria-label="Lengua de búsqueda" title="Lengua de búsqueda"><option value="auto">Lengua: auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano (etimología)</option><option value="en">Inglés (etimología)</option><option value="fr">Francés (etimología)</option><option value="de">Alemán (etimología)</option></select>
+  <details class="lx-palette" id="lx-palette"><summary aria-label="Color de fondo" title="Color de fondo"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7.2" r="1.2"/><circle cx="15" cy="7.4" r="1.2"/></svg><span data-i18n>Fondo</span></summary><div class="lx-palette-panel"></div></details>
+  <select id="lx-ui" aria-label="Idioma de la interfaz" title="Idioma de la interfaz / Interface language"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
   <button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button>
  </div>
 </header>
@@ -270,14 +287,14 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <div class="eyebrow">BIBLIOTHECA VITRUVII · LEXICON GRAECO-LATINUM · INSTRUMENTUM PHILOLOGICUM</div>
   <h1>Vitruvia</h1>
   <span class="lx-sub">Lexicon<span>beta 1.0</span></span>
-  <p class="lead">Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables. Toda palabra latina, griega, castellana, inglesa, francesa o alemana recibe su árbol etimológico, y los personajes históricos se buscan por su nombre griego y latino.</p>
+  <p class="lead" data-i18n>Buscador exclusivo de léxico, sintaxis y frases del mundo antiguo. Consulta palabras griegas y latinas —con su lema, morfología, acepciones y etimología, el latín arcaico y los equivalentes hebreos— y los pasajes de los autores antiguos donde se usan, con referencias canónicas verificables. Toda palabra latina, griega, castellana, inglesa, francesa o alemana recibe su árbol etimológico, y los personajes históricos se buscan por su nombre griego y latino.</p>
   <div class="search-wrap">
    <form class="searchform" id="lx-form" autocomplete="off" role="search">
     <span class="icon-search" aria-hidden="true">⌕</span>
     <input id="lx-q" type="search" spellcheck="false" placeholder="λόγος · symmetria · anthropos · &quot;arma virumque&quot; · @domus · aedi*" aria-label="Buscar palabra, frase o patrón">
     <button type="button" class="icon-btn" id="lx-clear" aria-label="Limpiar" title="Limpiar">✕</button>
     <button type="button" class="icon-btn" id="lx-kb-toggle" aria-label="Teclado griego, hebreo y latino" title="Teclado virtual" aria-expanded="false" aria-controls="lx-kb">⌨︎ αβ</button>
-    <button type="submit">Buscar ↗</button>
+    <button type="submit" data-i18n>Buscar ↗</button>
    </form>
   </div>
   <div class="lx-kb" id="lx-kb" hidden></div>
@@ -288,7 +305,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
    <label><input type="checkbox" id="lx-variants"> Aproximación fonética y grafías (ae/e, ph/f, y/i; itacismo)</label>
   </div>
   <details class="lx-qb" id="lx-qb"></details>
-  <div class="suggestions"><span>Explorar</span>
+  <div class="suggestions"><span data-i18n>Explorar</span>
    <button type="button" data-q="symmetria">symmetria</button>
    <button type="button" data-q="λόγος">λόγος</button>
    <button type="button" data-q="anthropos">anthropos</button>
@@ -309,25 +326,25 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  </div>
  <aside class="featured" aria-label="Sententia del día y herramientas">
   <div class="featured-copy">
-   <div class="meta">SENTENTIA DEL DÍA · FRASEARIO ANTIGUO</div>
+   <div class="meta" data-i18n>SENTENTIA DEL DÍA · FRASEARIO ANTIGUO</div>
    <h2 id="featured-title" lang="la">Architecti est scientia pluribus disciplinis et variis eruditionibus ornata</h2>
    <p id="featured-description">El saber del arquitecto está adornado de muchas disciplinas y de variada erudición.</p>
-   <a id="featured-link" href="#results">Analizar la frase ›</a>
+   <a id="featured-link" href="#results" data-i18n>Analizar la frase ›</a>
    <div class="featured-credit" id="featured-credit">Vitr. 1.1.1</div>
   </div>
   <nav class="featured-reading-list" aria-label="Herramientas del Lexicon">
-   <a href="#etymologicum" class="featured-reading-item"><span class="featured-number">01</span><span>Etymologicum · raíces, latín arcaico, hebreo</span><span aria-hidden="true">›</span></a>
-   <a href="#sententiae" class="featured-reading-item" data-tool-mode="sententiae"><span class="featured-number">02</span><span>Sententiae · fraseario del mundo antiguo</span><span aria-hidden="true">›</span></a>
-   <a href="#collatio" class="featured-reading-item"><span class="featured-number">03</span><span>Taller ecdótico · colación y aparato</span><span aria-hidden="true">›</span></a>
-   <a href="#exegesis" class="featured-reading-item"><span class="featured-number">04</span><span>Cuaderno exegético · comentario lemático</span><span aria-hidden="true">›</span></a>
-   <a href="#instrumenta" class="featured-reading-item"><span class="featured-number">05</span><span>Instrumenta · signos críticos y codicología</span><span aria-hidden="true">›</span></a>
+   <a href="#etymologicum" class="featured-reading-item"><span class="featured-number">01</span><span data-i18n>Etymologicum · raíces, latín arcaico, hebreo</span><span aria-hidden="true">›</span></a>
+   <a href="#sententiae" class="featured-reading-item" data-tool-mode="sententiae"><span class="featured-number">02</span><span data-i18n>Sententiae · fraseario del mundo antiguo</span><span aria-hidden="true">›</span></a>
+   <a href="#collatio" class="featured-reading-item"><span class="featured-number">03</span><span data-i18n>Taller ecdótico · colación y aparato</span><span aria-hidden="true">›</span></a>
+   <a href="#exegesis" class="featured-reading-item"><span class="featured-number">04</span><span data-i18n>Cuaderno exegético · comentario lemático</span><span aria-hidden="true">›</span></a>
+   <a href="#instrumenta" class="featured-reading-item"><span class="featured-number">05</span><span data-i18n>Instrumenta · signos críticos y codicología</span><span aria-hidden="true">›</span></a>
   </nav>
  </aside>
 </section>
 <!--METRICS--><div class="metrics" id="lx-metrics"><span><b>15</b>obras</span><span><b>3.825</b>pasajes</span><span><b>604.112</b>palabras indexadas</span><span><b>84.904</b>formas lematizadas</span><span><b>21.501</b>lemas con glosa LSJ / Lewis &amp; Short</span><span><b data-m="etym">108</b>fichas etimológicas</span><span><b data-m="sent">53</b>sententiae</span></div><!--/METRICS-->
 
 <section class="results" id="results" aria-live="polite">
- <div class="section-head"><h2 id="lx-head-title">Resultados</h2>
+ <div class="section-head"><h2 id="lx-head-title" data-i18n>Resultados</h2>
   <div class="lx-controls">
    <select id="lx-work" class="lx-select" aria-label="Filtrar por obra"><option value="">Todas las obras</option></select>
    <select id="lx-order" class="lx-select" aria-label="Orden"><option value="corpus">Orden del corpus</option><option value="chrono">Orden cronológico</option></select>
@@ -338,7 +355,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="results-grid">
   <div id="lx-results"></div>
   <aside class="sidebar" aria-label="Distribución, colocaciones y exportación"><div id="lx-side-extra"></div>
-   <section class="lx-side-block"><h3>Sintaxis de búsqueda</h3>
+   <section class="lx-side-block"><h3 data-i18n>Sintaxis de búsqueda</h3>
     <p class="lx-small"><code>"frase exacta"</code> · <code>@lema</code> · <code>aedi*</code> · <code>t?xis</code> · <code>~simetria</code> · <code>prefijo:aedi</code> · <code>pie:*dem-</code> · <code>concepto:justicia</code> · <code>A ..3 B</code> · <code>A NEAR/5 B</code> · <code>[mood=ptc case=gen]</code>. Detalle en <a href="#methodus">Método</a>.</p>
    </section>
   </aside>
@@ -347,7 +364,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 
 <section class="tool" id="etymologicum" aria-labelledby="etym-h">
  <div class="kicker">I · ETYMOLOGICUM</div>
- <h2 id="etym-h">Índice de voces con ficha etimológica</h2>
+ <h2 id="etym-h" data-i18n>Índice de voces con ficha etimológica</h2>
  <p class="lead">Fichas editoriales con lema y morfología, acepciones, etimología y raíz indoeuropea, formas del latín arcaico con su fuente epigráfica, equivalencias griegas, latinas y hebreas (Biblia hebrea, Septuaginta y Vulgata), cognados, bibliografía y loci. Cada voz abre su ficha completa con la concordancia del corpus.</p>
  <!--ETYM-INDEX--><ul class="lx-index" style="list-style:none;padding:0"><li><a href="vitruvia-lexicon.html?q=aedes&amp;mode=palabra" lang="la">aedes</a> <small>lat. · *h₂eydʰ- «arder»</small> <span lang="he" dir="rtl">הֵיכָל</span></li>
 <li><a href="vitruvia-lexicon.html?q=anima&amp;mode=palabra" lang="la">anima</a> <small>lat. · *h₂enh₁- «respirar»</small> <span lang="he" dir="rtl">נֶפֶשׁ</span></li>
@@ -461,14 +478,14 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 
 <section class="tool" id="sententiae" aria-labelledby="sent-h">
  <div class="kicker">II · SENTENTIAE</div>
- <h2 id="sent-h">Fraseario del mundo antiguo</h2>
+ <h2 id="sent-h" data-i18n>Fraseario del mundo antiguo</h2>
  <p class="lead">Sentencias, fórmulas y loci célebres en griego, latín y hebreo, con referencia canónica, traducción, nota sintáctica y paralelos LXX/Vulgata. Las que pertenecen a obras del corpus se verifican y enlazan al pasaje; las atribuciones tardías se declaran.</p>
  <p><button type="button" class="lx-btn" data-tool-mode="sententiae" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})">Abrir todas las sententiae en los resultados</button></p>
 </section>
 
 <section class="tool" id="collatio" aria-labelledby="col-h">
  <div class="kicker">III · ECDOTICA · COLLATIO CODICUM</div>
- <h2 id="col-h">Taller ecdótico: colación de testimonios y aparato crítico</h2>
+ <h2 id="col-h" data-i18n>Taller ecdótico: colación de testimonios y aparato crítico</h2>
  <p class="lead">Pegue el texto base y los testimonios (códices, ediciones, transcripciones) con sus siglas. El taller alinea palabra por palabra, genera el aparato negativo y el positivo, clasifica de modo orientativo el tipo de variante (omisión por homeotéleuton, haplografía, ditografía, transposición, variante ortográfica, error paleográfico) y calcula la concordancia en variantes como indicio de agrupamiento estemático. Exporta en XML-TEI (segmentación paralela) y CSV.</p>
  <div class="tool-grid">
   <div class="col-base"><label>Texto base · sigla <input type="text" id="col-base-sig" value="A"></label><textarea id="col-base" rows="7" lang="la" placeholder="Texto base (lema del aparato)"></textarea></div>
@@ -482,22 +499,22 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <label><input type="checkbox" id="col-uv" checked> Normalizar u/v, i/j y diacríticos</label>
   <label><input type="checkbox" id="col-ortho"> Ignorar variantes ortográficas (ae/e, ph/f…)</label>
  </div>
- <div class="actions"><button type="button" id="col-run">Colacionar</button><button type="button" id="col-add">Añadir testimonio</button><label class="lx-small">Locus vitruviano <input type="text" id="col-locus" value="1.1.1" size="8" style="width:90px"></label><button type="button" id="col-example">Cargar ejemplo vitruviano</button></div>
+ <div class="actions"><button type="button" id="col-run" data-i18n>Colacionar</button><button type="button" id="col-add" data-i18n>Añadir testimonio</button><label class="lx-small">Locus vitruviano <input type="text" id="col-locus" value="1.1.1" size="8" style="width:90px"></label><button type="button" id="col-example" data-i18n>Cargar ejemplo vitruviano</button></div>
  <p class="explain" id="col-note"></p>
  <div id="col-out"></div>
 </section>
 
 <section class="tool" id="exegesis" aria-labelledby="ex-h">
  <div class="kicker">IV · HERMENEUTICA · EXEGESIS</div>
- <h2 id="ex-h">Cuaderno exegético</h2>
+ <h2 id="ex-h" data-i18n>Cuaderno exegético</h2>
  <p class="lead">Comentario lemático por niveles: texto y crítica textual, lengua y sintaxis, léxico, sentido literal, contexto histórico y material, fuentes y paralelos, interpretación y recepción. Las notas se guardan solo en este navegador y se exportan en Markdown, JSON o XML-TEI.</p>
- <div class="actions"><button type="button" id="nb-add">Añadir pasaje manualmente</button><button type="button" data-nb-export="md">Exportar Markdown</button><button type="button" data-nb-export="json">Exportar JSON</button><button type="button" data-nb-export="tei">Exportar XML-TEI</button></div>
+ <div class="actions"><button type="button" id="nb-add" data-i18n>Añadir pasaje manualmente</button><button type="button" data-nb-export="md" data-i18n>Exportar Markdown</button><button type="button" data-nb-export="json" data-i18n>Exportar JSON</button><button type="button" data-nb-export="tei" data-i18n>Exportar XML-TEI</button></div>
  <div id="nb-list" style="margin-top:16px"></div>
 </section>
 
 <section class="tool" id="instrumenta" aria-labelledby="inst-h">
  <div class="kicker">V · INSTRUMENTA PHILOLOGICA</div>
- <h2 id="inst-h">Signos críticos, abreviaturas, codicología y hermenéutica</h2>
+ <h2 id="inst-h" data-i18n>Signos críticos, abreviaturas, codicología y hermenéutica</h2>
  <p class="lead">Repertorio de consulta para leer aparatos críticos y códices: signa critica (con su codificación TEI), abreviaturas latinas del aparato, tipología de errores de copia, principios ecdóticos (Lachmann, Maas, Pasquali, Bédier), codicología y paleografía, abreviaturas medievales y métodos hermenéuticos y exegéticos.</p>
  <div class="tabs" id="inst-tabs" role="group" aria-label="Secciones de los instrumenta"></div>
  <input type="search" id="inst-filter" placeholder="Filtrar: om., homeotéleuton, cuaternión, PaRDeS…" aria-label="Filtrar instrumenta">
@@ -506,7 +523,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 
 <section class="tool lx-syntax-help" id="methodus" aria-labelledby="met-h">
  <div class="kicker">VI · METHODUS ET FONTES</div>
- <h2 id="met-h">Método, sintaxis de búsqueda y fuentes</h2>
+ <h2 id="met-h" data-i18n>Método, sintaxis de búsqueda y fuentes</h2>
  <p class="lead">Vitruvia Lexicon funciona íntegramente en el navegador sobre índices estructurados en JSON: un índice invertido de formas con sus pasajes, un índice forma → lema con análisis morfológico y una tabla de lemas con sus glosas. No hay servidor ni base de datos remota: los resultados son reproducibles y los datos pueden descargarse.</p>
  <dl>
   <dt><code>palabra</code></dt><dd>Forma exacta (sin distinguir diacríticos, mayúsculas, u/v ni i/j). Con la opción de lema, todas las formas flexionadas.</dd>
@@ -551,5 +568,5 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <div class="footer-legal"><span>Datos léxicos de terceros bajo sus licencias (Perseus DL CC BY-SA 4.0; Celano CC BY-NC 4.0; CLTK MIT; Wiktionary CC BY-SA 4.0).</span><a href="como-citar.html">Cómo citar el proyecto</a></div>
 </footer>
 </div>
-<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v7" defer></script>
+<script src="assets/vitruvia-lexicon.js?v=20261106-lexicon-v8" defer></script>
 </body></html>
