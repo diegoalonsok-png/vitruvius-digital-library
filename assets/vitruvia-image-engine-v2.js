@@ -371,7 +371,7 @@ function documentedLexicalVisual(query){
    topics when entity resolution or Wikimedia Commons search returns nothing.
    Deliberately exclude unidentified people and historical likenesses. */
 async function exactArticleLeadImage(topic,query,id){
- if(topic.kind==="person"||topic.kind==="music-group"||topic.historical||topic.ancient)return [];
+ if(topic.kind==="person"||topic.kind==="music-group")return []; // Topic images are contextual, never likenesses of people.
  const names=distinct([topic.subject,query]).filter(x=>x.length>2).slice(0,2);
  if(!names.length)return [];
  const normalized=new Set(names.map(fold));
