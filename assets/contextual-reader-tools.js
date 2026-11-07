@@ -33,6 +33,17 @@ toolbar.innerHTML=[
 dialog.querySelector(".ctx-heading").after(toolbar);
 const status=toolbar.querySelector("#ctx-tools-status"),synth=window.speechSynthesis;
 let savedRange=null,lastMarkedText="",lastMarkedLang="",fontSize=15,speechId=0;
+let activeMark="underline";
+function setActiveMark(color){
+ activeMark=color;
+ for(const b of toolbar.querySelectorAll("[data-mark]")){
+  const selected=b.dataset.mark===color;
+  b.setAttribute("aria-pressed",String(selected));
+  b.title=(selected?"Herramienta activa · ":"Activar herramienta · ")+(color==="underline"?"Subrayar":"Resaltar");
+ }
+}
+setActiveMark(activeMark);
+
 function notice(message){status.textContent=message}
 function title(){return (layer.querySelector("#ctx-heading")?.textContent||"").trim()}
 function source(){return new URL("index.html?q="+encodeURIComponent(title()),location.href).href}
@@ -58,6 +69,43 @@ function showSelection(){
   notice("Texto seleccionado ("+text.length+" caracteres): «"+text.slice(0,110)+(text.length>110?"…":"")+"». Elija un color, Subrayar o ▶ Leer.");
  }
 }
+// En modo anotación, un clic sobre una palabra la subraya/resalta.
+// La selección manual por arrastre sigue funcionando para frases completas.
+function wordAtPointer(event){
+ const target=event.target;
+ if(!(target instanceof Element)||!body.contains(target))return null;
+ if(target.closest("a,button,input,select,textarea,[contenteditable],mark.ctx-mark"))return null;
+ let node=null,offset=-1;
+ if(document.caretPositionFromPoint){
+  const p=document.caretPositionFromPoint(event.clientX,event.clientY);
+  if(p){node=p.offsetNode;offset=p.offset}
+ }else if(document.caretRangeFromPoint){
+  const p=document.caretRangeFromPoint(event.clientX,event.clientY);
+  if(p){node=p.startContainer;offset=p.startOffset}
+ }
+ if(!node||node.nodeType!==Node.TEXT_NODE||!body.contains(node)||offset<0)return null;
+ const value=node.textContent||"";
+ const letter=char=>!!char&&/[\\p{L}\\p{M}0-9ʼ’'-]/u.test(char);
+ // Do not mark a neighboring word when clicking whitespace.
+ if(!letter(value[offset])&&!letter(value[offset-1]))return null;
+ let start=offset,end=offset;
+ while(start>0&&letter(value[start-1]))start--;
+ while(end<value.length&&letter(value[end]))end++;
+ if(start>=end)return null;
+ const range=document.createRange();
+ range.setStart(node,start);range.setEnd(node,end);
+ return range;
+}
+body.addEventListener("click",event=>{
+ if(event.detail!==1||event.button!==0||event.altKey||event.metaKey||event.ctrlKey)return;
+ const selection=window.getSelection();
+ // Drag-selected text is annotated with the toolbar, not overwritten by word click.
+ if(selection?.rangeCount&&!selection.isCollapsed&&rangeInBody(selection.getRangeAt(0)))return;
+ const range=wordAtPointer(event);
+ if(!range)return;
+ savedRange=range;
+ mark(activeMark);
+});
 body.addEventListener("pointerup",showSelection);
 body.addEventListener("keyup",showSelection);
 document.addEventListener("selectionchange",()=>{
@@ -142,7 +190,7 @@ function speak(){
 toolbar.addEventListener("click",async e=>{
  const btn=e.target.closest("button");if(!btn)return;
  const color=btn.dataset.mark,action=btn.dataset.action;
- if(color){mark(color);return}
+ if(color){setActiveMark(color);mark(color);return}
  if(action==="clear")clear();
  if(action==="speak")speak();
  if(action==="pause"){
