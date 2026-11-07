@@ -1,0 +1,62 @@
+name: Indexar facsimiles clasicos y concordancias
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/index-classical-historical-pdfs.py'
+      - 'scripts/build-classical-navigation.py'
+      - '.github/workflows/index-classical-historical-pdfs.yml'
+permissions:
+  contents: write
+concurrency:
+  group: index-classics-historical
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar extractor y OCR griego-latino
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-lat tesseract-ocr-ell
+          python -m pip install --disable-pip-version-check pymupdf
+      - name: Construir enlaces conservadores entre originales y traducciones
+        run: python scripts/build-classical-navigation.py
+      - name: Recuperar capas textuales y OCR de folios escaneados
+        run: python scripts/index-classical-historical-pdfs.py --ocr
+      - name: Verificar integridad de indices
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("data/classics-historical-pages")
+          coverage=json.loads((root/"coverage.json").read_text(encoding="utf8"))
+          assert len(coverage["records"])==10
+          assert all(r["status"] in ("unchanged","page-index-created") for r in coverage["records"])
+          for r in coverage["records"]:
+              index=root/(Path(r["path"]).stem+".json")
+              data=json.loads(index.read_text(encoding="utf8"))
+              pages=data["pages"]
+              assert pages and [p["page"] for p in pages]==list(range(1,len(pages)+1))
+              assert all(isinstance(p["text"],str) for p in pages)
+          m=json.loads(Path("data/classics-alignment/manifest.json").read_text(encoding="utf8"))
+          assert m["count"] == len(m["pairs"])
+          print("Validated PDF coverage:",len(coverage["records"]),"parallel pairs:",m["count"])
+          PY
+      - name: Publicar solo nuevos indices y reportes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/classics-historical-pages/ data/classics-alignment/
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish page-level historical OCR and conservative classical navigation indexes"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
