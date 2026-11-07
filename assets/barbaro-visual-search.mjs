@@ -78,9 +78,9 @@ function galleryCard(p){
 }
 function renderMore(){
  const frag=document.createDocumentFragment();
- for(const p of filtered.slice(shown,shown+24))frag.append(galleryCard(p));
+ for(const p of filtered.slice(shown,shown+12))frag.append(galleryCard(p));
  $('bar-gallery-results').append(frag);
- shown=Math.min(filtered.length,shown+24);
+ shown=Math.min(filtered.length,shown+12);
  $('bar-gallery-more').hidden=shown>=filtered.length;
  $('bar-gallery-more').textContent='Mostrar más imágenes ('+shown+' de '+filtered.length+')';
 }
