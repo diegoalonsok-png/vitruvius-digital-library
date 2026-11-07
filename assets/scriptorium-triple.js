@@ -26,6 +26,16 @@ async function loadEdition(id){
  return cache.get(id);
 }
 const states=[];
+let candidatePromise=null;
+function candidateIndex(){
+ if(!candidatePromise)candidatePromise=fetch("data/text/krohn-rose-locus-candidates.json")
+  .then(r=>{if(!r.ok)throw Error("Concordancias HTTP "+r.status);return r.json()})
+  .then(data=>{
+   if(data.schema!=="vitruvia-ocr-locus-candidates-v1"||!Array.isArray(data.entries))throw Error("Formato de concordancia inválido");
+   return new Map(data.entries.map(e=>[e.edition+"|"+e.locus,e]));
+  }).catch(err=>{candidatePromise=null;throw err});
+ return candidatePromise;
+}
 const wordPattern=/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu;
 const termsOf=t=>String(t||"").match(wordPattern)||[];
 const normalizeToken=t=>fold(t).replace(/j/g,"i").replace(/v/g,"u").replace(/ς/g,"σ");
@@ -56,23 +66,46 @@ const syncToggle=document.createElement("input");syncToggle.type="checkbox";sync
 const syncLabel=document.createElement("label");syncLabel.append(syncToggle,document.createTextNode(" Sincronizar ediciones por locus idéntico"));
 const syncStatus=document.createElement("span");syncStatus.setAttribute("role","status");
 syncStatus.textContent="Krohn y Rose: solo OCR por página; no se presume alineación con Kurilo.";
-toolbar.append(syncLabel,syncStatus);grid.before(toolbar);
+const candidateToggle=document.createElement("input");candidateToggle.type="checkbox";
+const candidateLabel=document.createElement("label");candidateLabel.append(candidateToggle,document.createTextNode(" Permitir saltos provisionales a páginas OCR (no cotejados)"));
+toolbar.append(syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
 let syncActive=false;
 function synchronize(source){
  if(!syncToggle.checked||syncActive||!source.data)return;
  const current=source.data.pages[source.index],from=source.data.ed;
- let exact=0,unable=0;
+ const requestedLocus=current.locus,structured=from.format==="structured";
+ let exact=0,unmapped=0,ocrTargets=[];
  for(const target of states){
   if(target===source||!target.data)continue;
-  // OCR pagination must never be equated with a canonical chapter / locus.
-  if(from.format!=="structured"||target.data.ed.format!=="structured"){unable++;continue}
-  const i=target.data.pages.findIndex(p=>p.locus===current.locus);
-  if(i<0){unable++;continue}
-  syncActive=true;target.seek(i);syncActive=false;exact++;
+  if(structured&&target.data.ed.format==="ocr"){
+   if(candidateToggle.checked)ocrTargets.push(target);
+   else unmapped++;
+   continue;
+  }
+  if(!structured||target.data.ed.format!=="structured"){unmapped++;continue}
+  const pos=target.data.pages.findIndex(p=>p.locus===requestedLocus);
+  if(pos<0){unmapped++;continue}
+  syncActive=true;target.seek(pos);syncActive=false;exact++;
  }
  syncStatus.textContent=exact
-  ?("Locus "+current.locus+" sincronizado en "+exact+" edición(es) estructuradas. Identificador coincidente; cotejo textual pendiente.")
-  :("Sin locus compartido verificable para sincronizar. "+unable+" visor(es) conservan su posición; OCR por páginas no equivale a loci.");
+   ?("Locus "+requestedLocus+" compartido por "+exact+" edición(es) textuales. Cotejo editorial pendiente.")
+   :("Sin vínculo de locus verificado. Los visores no se desplazan por semejanza de número.");
+ if(!ocrTargets.length)return;
+ // A concordance candidate is NOT a verified collation; it is an opt-in navigation shortcut.
+ candidateIndex().then(map=>{
+  if(!source.data||source.data.pages[source.index]?.locus!==requestedLocus)return;
+  let hits=0;
+  for(const target of ocrTargets){
+   if(!target.data)continue;
+   const edition=target.editionId();
+   const hit=map.get(edition+"|"+requestedLocus);
+   if(!hit||hit.status!=="machine-candidate-not-verified")continue;
+   const pos=target.data.pages.findIndex(p=>p.page===hit.page);
+   if(pos<0)continue;
+   syncActive=true;target.seek(pos);syncActive=false;hits++;
+  }
+  syncStatus.textContent="Locus "+requestedLocus+": "+hits+" salto(s) tentativos por frases latinas OCR coincidentes. NO son equivalencias filológicas verificadas; "+unmapped+" visor(es) sin ajuste.";
+ }).catch(err=>{syncStatus.textContent="Concordancias provisionales no disponibles: "+err.message;});
 }
 
 for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
@@ -106,12 +139,15 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const state={
   get data(){return data},
   get index(){return index},
+  editionId(){return edition.value},
   seek(i){index=i;show()}
  };
  function content(p){return translated?p.translation:p.text}
  function recount(){
   if(!data){tally.textContent="";return}
-  const total=data.pages.reduce((n,p)=>n+termsOf(content(p)).length,0);
+  const cacheKey=translated?"translation":"latin";
+  if(data[cacheKey+"WordCount"]==null)data[cacheKey+"WordCount"]=data.pages.reduce((n,p)=>n+termsOf(translated?p.translation:p.text).length,0);
+  const total=data[cacheKey+"WordCount"];
   const here=termsOf(content(data.pages[index])).length;
   tally.textContent=total.toLocaleString("es-AR")+" palabras en esta versión · "+here.toLocaleString("es-AR")+" en el pasaje actual.";
  }
