@@ -46,6 +46,7 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 <div class="panes"><section class="pane"><strong>Visor izquierdo · navegación independiente</strong><div class="appearance" role="group" aria-label="Estilo del visor izquierdo">
 <button type="button" id="left-ivory" aria-label="Tema marfil en visor left" title="Marfil">◧ Marfil</button>
 <button type="button" id="left-sepia" aria-label="Tema sepia en visor left" title="Sepia">◩ Sepia</button>
+<button type="button" id="left-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor left">◐ Invertir</button>
 <button type="button" id="left-night" aria-label="Tema nocturno en visor left" title="Nocturno">◼ Noche</button>
 <label title="Color del fondo">Fondo <input type="color" id="left-bg" value="#fffdf7" aria-label="Color de fondo del visor left"></label>
 <label title="Color de las letras">Texto <input type="color" id="left-fg" value="#202b35" aria-label="Color del texto del visor left"></label>
@@ -57,6 +58,7 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 </div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>Visor derecho · navegación independiente</strong><div class="appearance" role="group" aria-label="Estilo del visor derecho">
 <button type="button" id="right-ivory" aria-label="Tema marfil en visor right" title="Marfil">◧ Marfil</button>
 <button type="button" id="right-sepia" aria-label="Tema sepia en visor right" title="Sepia">◩ Sepia</button>
+<button type="button" id="right-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor right">◐ Invertir</button>
 <button type="button" id="right-night" aria-label="Tema nocturno en visor right" title="Nocturno">◼ Noche</button>
 <label title="Color del fondo">Fondo <input type="color" id="right-bg" value="#fffdf7" aria-label="Color de fondo del visor right"></label>
 <label title="Color de las letras">Texto <input type="color" id="right-fg" value="#202b35" aria-label="Color del texto del visor right"></label>
@@ -113,6 +115,14 @@ function sendAppearance(side){
 }
 for(const side of ["left","right"]){
  const state=palettes[side];
+
+ $(side+"-invert").addEventListener("click",()=>{
+  const bg=state.background,fg=state.foreground;
+  const inverse=hex=>"#"+[1,3,5].map(i=>(255-parseInt(hex.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");
+  state.background=inverse(bg);state.foreground=inverse(fg);
+  $(side+"-bg").value=state.background;$(side+"-fg").value=state.foreground;
+  sendAppearance(side);
+ });
  for(const [name,background,foreground] of [
   ["ivory","#fffdf7","#202b35"],["sepia","#e6d5b7","#463526"],["night","#172633","#f4ead7"]
  ]){
