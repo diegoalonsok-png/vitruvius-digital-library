@@ -1,0 +1,68 @@
+name: Indexar corpus clásico por lotes e integrar tres buscadores
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/classics-mass-index.yml'
+  schedule:
+    - cron: '26 5 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: classics-mass-index
+  cancel-in-progress: false
+
+jobs:
+  index-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ingestar originales verificables y publicar sólo tras pruebas
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/mass-index-classics.py --max-new 6
+            if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard data/classics-corpus)" ]; then
+              echo 'No hay nuevos originales TEI incorporables en este lote.'
+              exit 0
+            fi
+            node scripts/audit-classical-corpus.mjs
+            python scripts/audit-classics-coverage.py --strict
+            node scripts/test-classics-integration.mjs
+            python scripts/build_classics_semantic_index.py
+            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
+            git add data/classics-corpus
+            if git diff --cached --quiet; then
+              echo 'Sin cambios registrables.'
+              exit 0
+            fi
+            git commit -m 'Indexar textos clásicos verificados e integrarlos en Vitruvia, Lexicon y Bibliotheca'
+            if git push origin HEAD:main; then
+              echo 'Lote publicado después de auditoría técnica.'
+              exit 0
+            fi
+            echo "::warning::main cambió durante el proceso; reconstruyendo desde la última versión ($attempt/3)"
+            sleep "$((attempt * 2))"
+          done
+          echo '::error::No fue posible publicar sin conflicto tras tres intentos.'
+          exit 1
