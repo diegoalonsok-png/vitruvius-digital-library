@@ -8,6 +8,8 @@ const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="";
+// Deep links from documented concordances require literal evidence, not heuristic synonyms.
+const exactConcordance=p.get("literal")==="1";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
    Does not infer lexical/critical alignment across editions. */
 window.addEventListener("message",event=>{
@@ -108,9 +110,9 @@ function select(i){
 function renderSearch(){
  const target=$("results");target.replaceChildren();
  if(!search){target.textContent="Ingresa una palabra o frase para localizar coincidencias en esta edición.";return}
- results=data.passages.map((r,i)=>({i,r})).filter(x=>match(x.r.text,search,true));
+ results=data.passages.map((r,i)=>({i,r})).filter(x=>match(x.r.text,search,!exactConcordance));
  const lead=document.createElement("strong");
- lead.textContent=results.length+" coincidencias de sección · búsqueda literal + expansión léxica experimental";
+ lead.textContent=results.length+" secciones coincidentes · "+(exactConcordance?"concordancia literal documentada":"búsqueda literal + expansión léxica experimental");
  target.append(lead);
  results.slice(0,45).forEach(({i,r})=>{
   const a=document.createElement("a");a.href="#passages";const n=LEX?LEX.find(r.text,search).length:0;a.textContent="§ "+r.locus+(n?" ("+n+")":"");
@@ -173,7 +175,7 @@ async function load(language){
  const locus=p.get("locus")||new URLSearchParams(location.search).get("locus");
  const at=data.passages.findIndex(x=>x.locus===locus);
  const chosen=at>=0?at:0;setQuery(p.get("q")||input.value||"");
- if(search){renderSearch();const first=data.passages.findIndex(x=>match(x.text,search,true));select(at>=0?at:first>=0?first:chosen)}
+ if(search){renderSearch();const first=data.passages.findIndex(x=>match(x.text,search,!exactConcordance));select(at>=0?at:first>=0?first:chosen)}
  else{renderSearch();select(chosen)}
  if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
