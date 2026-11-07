@@ -4,7 +4,7 @@
   "snapshot": "2026-11-07",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 186,
+  "missingOriginals": 180,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -450,12 +450,13 @@
     {
       "id": "barnabas",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -549,34 +550,37 @@
     {
       "id": "eusebio",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "columella",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "celsus",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -693,23 +697,25 @@
     {
       "id": "plautus-amphitruo",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "plautus-aulularia",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {

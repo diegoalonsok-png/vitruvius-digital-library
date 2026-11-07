@@ -2,59 +2,61 @@
   "updated": "2026-11-07",
   "newWorks": 6,
   "newTextVersions": 6,
-  "indexedDistinctWorks": 36,
-  "registeredTextVersions": 62,
-  "missingOriginals": 186,
+  "indexedDistinctWorks": 42,
+  "registeredTextVersions": 68,
+  "missingOriginals": 180,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "lucan",
-      "lang": "la",
-      "path": "data/classics-corpus/lucan-la.json",
-      "passages": 1008,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0917/phi001/phi0917.phi001.perseus-lat2.xml",
-      "sha256": "19cc0df789097cff3293f32d47c4b31a2ecee214f416b092248a5a86a89e34c3"
-    },
-    {
-      "workId": "josephus-war",
+      "workId": "barnabas",
       "lang": "grc",
-      "path": "data/classics-corpus/josephus-war-grc.json",
-      "passages": 4001,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0526/tlg004/tlg0526.tlg004.perseus-grc2.xml",
-      "sha256": "011c690837e035376c8e12ce0d63e06c92f97bb688d44c8c4d96b193a65b6523"
+      "path": "data/classics-corpus/barnabas-grc.json",
+      "passages": 194,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1216/tlg001/tlg1216.tlg001.perseus-grc2.xml",
+      "sha256": "d9b463de2ad45c75795f9ccd5eb53f205490e670bdf84a331dbb07609fa1c8f2"
     },
     {
-      "workId": "martial",
-      "lang": "la",
-      "path": "data/classics-corpus/martial-la.json",
-      "passages": 1827,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1294/phi002/phi1294.phi002.perseus-lat2.xml",
-      "sha256": "ed25741b55fb4d7ded9fd6b1429b355db28396d963abf6e342d4e8d948268b71"
-    },
-    {
-      "workId": "tacitus-agricola",
-      "lang": "la",
-      "path": "data/classics-corpus/tacitus-agricola-la.json",
-      "passages": 213,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi001/phi1351.phi001.perseus-lat2.xml",
-      "sha256": "c6ed0dbc08ef63e3291468445fa3e489356b66faf3dfa9018ee5471228210676"
-    },
-    {
-      "workId": "tacitus-germania",
-      "lang": "la",
-      "path": "data/classics-corpus/tacitus-germania-la.json",
-      "passages": 187,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi002/phi1351.phi002.perseus-lat2.xml",
-      "sha256": "ecc70d87e3f8d6ef00ed30e8bf41ecd85841fcc8852b8e1884cb979b7f9f74a1"
-    },
-    {
-      "workId": "mark",
+      "workId": "eusebio",
       "lang": "grc",
-      "path": "data/classics-corpus/mark-grc.json",
-      "passages": 10,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0031/tlg002/tlg0031.tlg002.perseus-grc2.xml",
-      "sha256": "169fb135508b4abe01c0ea7fb129ac09e2f1d43f37d5d64ab538710fffc09a87"
+      "path": "data/classics-corpus/eusebio-grc.json",
+      "passages": 1876,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2018/tlg002/tlg2018.tlg002.perseus-grc2.xml",
+      "sha256": "b06e76db1fcd9f756c546a9e6225d1313152d7ae208e3d9305baab8cd526aa97"
+    },
+    {
+      "workId": "columella",
+      "lang": "la",
+      "path": "data/classics-corpus/columella-la.json",
+      "passages": 1406,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0845/phi002/phi0845.phi002.perseus-lat3.xml",
+      "sha256": "73f4d1e0f41ba6b20a276699a444ae2d5a49d54f388f4af0727a5350d4ea3ff4"
+    },
+    {
+      "workId": "celsus",
+      "lang": "la",
+      "path": "data/classics-corpus/celsus-la.json",
+      "passages": 440,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0836/phi002/phi0836.phi002.perseus-lat6.xml",
+      "sha256": "5a0d5e3f85f635abe2292d7d5c5defb429ee82ff58c7280acf3f8802e750a89a"
+    },
+    {
+      "workId": "plautus-amphitruo",
+      "lang": "la",
+      "path": "data/classics-corpus/plautus-amphitruo-la.json",
+      "passages": 179,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0119/phi001/phi0119.phi001.perseus-lat2.xml",
+      "sha256": "5b1140542ef8de3829344c62a6d8aa28de45d29210455d3c191cefce14f3eaa9"
+    },
+    {
+      "workId": "plautus-aulularia",
+      "lang": "la",
+      "path": "data/classics-corpus/plautus-aulularia-la.json",
+      "passages": 135,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0119/phi003/phi0119.phi003.perseus-lat2.xml",
+      "sha256": "e54209827093e98686764ac931f44c9b5a4943d1cd891268ad2da593171bbd6f"
     }
   ],
-  "errors": []
+  "errors": [
+    "tertullian: TEI has no searchable text"
+  ]
 }

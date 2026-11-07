@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 62,
-  "works": 36,
+  "count": 68,
+  "works": 42,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -627,6 +627,66 @@
       "format": "json-passages",
       "path": "data/classics-corpus/mark-grc.json",
       "reader": "classics-text-reader.html?work=mark&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/barnabas-grc.json",
+      "reader": "classics-text-reader.html?work=barnabas&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/eusebio-grc.json",
+      "reader": "classics-text-reader.html?work=eusebio&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "columella",
+      "author": "Columela",
+      "title": "De re rustica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/columella-la.json",
+      "reader": "classics-text-reader.html?work=columella&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "celsus",
+      "author": "Aulo Cornelio Celso",
+      "title": "De medicina",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/celsus-la.json",
+      "reader": "classics-text-reader.html?work=celsus&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plautus-amphitruo",
+      "author": "Plauto",
+      "title": "Amphitruo",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plautus-amphitruo-la.json",
+      "reader": "classics-text-reader.html?work=plautus-amphitruo&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plautus-aulularia",
+      "author": "Plauto",
+      "title": "Aulularia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plautus-aulularia-la.json",
+      "reader": "classics-text-reader.html?work=plautus-aulularia&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]

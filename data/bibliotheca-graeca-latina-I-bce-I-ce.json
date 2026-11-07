@@ -1877,7 +1877,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%98%CF%80%CE%B9%CF%83%CF%84%CE%BF%CE%BB%E1%BD%B4%20%CE%92%CE%B1%CF%81%CE%BD%CE%AC%CE%B2%CE%B1%20%C2%B7%20Epistula%20Barnabae"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/barnabas-grc.json"
+      }
     },
     {
       "id": "ignatius",
@@ -2189,7 +2192,10 @@
         "Eusebius",
         "Historia eclesiástica",
         "Ecclesiastical History"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/eusebio-grc.json"
+      }
     },
     {
       "id": "columella",
@@ -2223,7 +2229,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20rustica"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/columella-la.json"
+      }
     },
     {
       "id": "celsus",
@@ -2257,7 +2266,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20medicina"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/celsus-la.json"
+      }
     },
     {
       "id": "frontinus-strategemata",
@@ -2638,6 +2650,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/plautus-amphitruo-la.json"
       }
     },
     {
@@ -2668,6 +2683,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/plautus-aulularia-la.json"
       }
     },
     {
