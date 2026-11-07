@@ -89,7 +89,7 @@ function exportTsv(){
 
 let literalSerial=0;
 function lexicalTerms(raw){
- const parts=String(raw||"").match(/[\\p{L}\\p{M}]+(?:[-'][\\p{L}\\p{M}]+)*/gu)||[];
+ const parts=String(raw||"").match(/[\p{L}\p{M}]+(?:[-'][\p{L}\p{M}]+)*/gu)||[];
  const qs=[...new Set(parts.map(s=>s.trim()).filter(s=>fold(s).length>=3))].slice(0,5);
  const matched=concepts.filter(c=>qs.some(q=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(x=>typeof x==="string"&&fold(x)===fold(q))));
  const forms=new Set(qs);
