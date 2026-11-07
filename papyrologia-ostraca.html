@@ -37,6 +37,11 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 .privacy{border-left:4px solid #a67e41;background:#f0e7d5;padding:10px 13px;font-size:13px;margin-top:13px}
 #pap-file:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a67e41;outline-offset:2px}
 @media(max-width:950px){.workspace{grid-template-columns:1fr}.stage{min-height:350px;max-height:70vh}}
+.pap-external{display:inline-flex;align-items:center;min-height:40px;padding:9px 12px;background:#25485f;color:#fff!important;text-decoration:none;border-radius:4px;font:600 13px system-ui}
+#pap-experimental-ocr{border:1px solid #c6b69c;margin:16px 0;padding:12px;background:#f7f2e8}
+#pap-experimental-ocr summary{cursor:pointer;font-weight:650}
+#pap-google-method ol{padding-left:20px;margin:8px 0 15px}
+#pap-google-method li{margin:5px 0}
 </style>
 </head>
 <body>
@@ -85,7 +90,24 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
 </section>
 <section class="panel transcript">
-<h2>4 · Lectura paleográfica asistida</h2>
+<h2>4 · Análisis visual con Google y cotejo paleográfico</h2>
+<div class="privacy" id="pap-google-method">
+<strong>Google Lens / búsqueda visual: método recomendado para explorar coincidencias de imágenes, inscripciones y objetos.</strong>
+<ol>
+<li>Examina y mejora la imagen con las lupas y filtros de este visor.</li>
+<li>Selecciona «Guardar imagen procesada» o exporta el detalle ampliado.</li>
+<li>Abre Google Lens y sube manualmente la imagen guardada. Para una lectura tentativa signo por signo, también puedes subirla a Gemini y pedir que indique letras inseguras, alternativas y lagunas.</li>
+<li>Trae la hipótesis al editor de transcripción y coteja cada signo con el original.</li>
+</ol>
+<div class="toolbar">
+<a href="https://lens.google.com/" target="_blank" rel="noopener noreferrer" class="pap-external">Abrir Google Lens · buscar imagen ↗</a>
+<a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="pap-external">Abrir Gemini · análisis de imagen ↗</a>
+<button id="pap-export-detail" type="button">Guardar detalle ampliado para Google</button>
+<button id="pap-copy-prompt" type="button">Copiar instrucciones de lectura paleográfica</button>
+</div>
+<p class="caption">La conexión es mediante apertura externa y carga manual: el sitio no transmite tus fotografías a Google ni integra su API. Los resultados de Lens son pistas para investigación, no una transcripción paleográfica certificada.</p>
+</div>
+<details id="pap-experimental-ocr"><summary>OCR clásico alternativo (Tesseract, opcional y menos adecuado para escrituras antiguas)</summary>
 <div class="toolbar">
 <label>Escritura a reconocer<select id="pap-ocr-lang"><option value="grc">Griego antiguo · grc</option><option value="lat">Latín · lat</option><option value="heb">Hebreo · escritura cuadrada (heb)</option><option value="arc-heb">Arameo en alfabeto hebreo · aproximación (heb)</option><option value="syr">Arameo siríaco · syr</option><option value="eng">Alfabeto latino moderno · eng</option></select></label>
 <button id="pap-ocr" type="button" disabled>Reconocer texto (OCR experimental)</button>
@@ -93,6 +115,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <button id="pap-cancel" type="button" disabled>Cancelar OCR</button>
 </div>
 <p class="caption">Tesseract.js se descarga solamente al solicitar OCR. El reconocimiento se ejecuta localmente mediante WebAssembly; los modelos griego, latino, hebreo y siríaco pueden fallar con abreviaturas, grafías cursivas, tintas tenues o inscripciones incisas. La opción de arameo en alfabeto hebreo emplea heb y no identifica por sí sola palabras arameas; la opción siríaca utiliza syr. Ninguna de las dos permite reconocer de manera fiable todas las escrituras arameas antiguas. No es un modelo paleográfico especializado ni identifica la datación de un manuscrito. <a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener noreferrer">Motor y documentación</a>.</p>
+</details>
 <p id="pap-status" role="status" aria-live="polite">Sube una imagen para comenzar.</p>
 <label for="pap-transcription">Transcripción editable · propuesta automática no verificada</label>
 <textarea id="pap-transcription" lang="grc" spellcheck="false" placeholder="Aquí aparecerá la hipótesis OCR. Corrige letras, signos, lagunas y abreviaturas manualmente."></textarea>
