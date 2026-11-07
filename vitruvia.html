@@ -1457,12 +1457,14 @@ else{voice.disabled=true;status.textContent="No se pudo cargar el dictado. Recar
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
 </script>
-<script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.getElementById("search-form");const c=document.createElement("div");c.style.cssText="max-width:980px;margin:0 auto";f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const q=document.getElementById("query");q.value=t;f.requestSubmit()}});});</script><script src="assets/research-folder.js?v=20261106-share-v1" defer></script><link rel="stylesheet" href="assets/vitruvia-right-panel.css?v=20261105-v2">
+<script src="assets/research-folder.js?v=20261106-share-v1" defer></script><link rel="stylesheet" href="assets/vitruvia-right-panel.css?v=20261105-v2">
 <link rel="stylesheet" href="assets/vitruvia-reading-layout-repair.css?v=20261107-singlecolumn-2">
 
 <script src="assets/vitruvian-world.js?v=20261105-v1" defer></script>
 <!-- Consulta filológica multilingüe: módulo experimental temporalmente desactivado en Vitruvia. Se conserva el archivo para una futura integración validada. -->
-<script defer src="assets/critical-note-bridge.js?v=20261107-v1"></script>
-<script defer src="assets/research-crosslinks.js?v=20261107-graphite-v1"></script></body></html>
+
+<style id="vitruvia-search-only-panels">/* Presentación simplificada: conservar únicamente el buscador principal. */
+#multilingual-academic-search, #notes-critical-bridge, #research-crosslinks, .vk-panel {display:none!important}
+</style></body></html>
 
 
