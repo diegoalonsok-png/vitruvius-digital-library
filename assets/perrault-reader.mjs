@@ -74,7 +74,7 @@ async function loadLocalIndex(){
   throw Error("El índice local no corresponde al ejemplar "+year);
  if(!saved.pages.every(x=>/^\d+$/.test(String(x.id))&&
    typeof x.fallback==="string"&&
-   /^https:\/\/www\.e-rara\.ch\/download\/webcache\/1000\/\\d+$/.test(x.fallback)&&
+   /^https:\/\/www\.e-rara\.ch\/download\/webcache\/1000\/\d+$/.test(x.fallback)&&
    x.fallback.endsWith("/"+x.id)))
   throw Error("Índice local contiene identificadores de imagen no válidos");
  const folios=saved.pages.map((x,i)=>({
@@ -90,8 +90,9 @@ function renderFolioGrid(){
  // One folio catalogue only: the revised 1684 edition.
  
  const grid=$("pr-folio-grid");
- $("pr-folios").hidden=false;
+ $("pr-folios").hidden=year!=="1684";
  grid.replaceChildren();
+ if(year!=="1684")return;
  const frag=document.createDocumentFragment();
  for(let i=0;i<pages.length;i++){
   const b=document.createElement("button");
