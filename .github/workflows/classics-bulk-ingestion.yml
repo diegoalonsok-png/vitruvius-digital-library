@@ -1,5 +1,11 @@
 name: Indexación masiva TEI · Bibliotheca/Vitruvia/Lexicon
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import-classics-perseus-batch.py'
+      - 'scripts/test-classics-perseus-batch.py'
+      - '.github/workflows/classics-bulk-ingestion.yml'
   pull_request:
     paths:
       - 'scripts/import-classics-perseus-batch.py'
@@ -71,7 +77,7 @@ jobs:
 
   ingest-batch:
     name: Importar originales verificados y actualizar los tres índices
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name != 'pull_request'
     needs: test-offline
     runs-on: ubuntu-latest
     timeout-minutes: 28
