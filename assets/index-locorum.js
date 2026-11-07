@@ -86,6 +86,30 @@ function exportTsv(){
  a.href=u;a.download="index-locorum-concordancias.tsv";document.body.append(a);a.click();a.remove();
  setTimeout(()=>URL.revokeObjectURL(u),1500);
 }
+
+let literalSerial=0;
+async function searchLiteral(){
+ const raw=$("query").value.trim(),token=++literalSerial;
+ const status=$("literal-status"),target=$("literal-results");target.replaceChildren();
+ if(raw.length<2){status.textContent="Escribí al menos dos letras en el campo de búsqueda.";return}
+ if(!window.ClassicsCorpusSearch){status.textContent="El índice textual no está disponible. Verificá la carga del buscador.";return}
+ status.textContent="Consultando las ediciones alojadas para «"+raw+"»…";
+ $("literal-search").disabled=true;
+ try{
+  const rows=await window.ClassicsCorpusSearch.search(raw,{limit:75});
+  if(token!==literalSerial)return;
+  const diagnostics=window.ClassicsCorpusSearch.diagnostics?.()||{};
+  status.textContent=rows.length?
+   rows.length+" ediciones con coincidencias literales de «"+raw+"». "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles; resultados parciales.":"Seleccioná una edición para ver su pasaje y procedencia."):
+   "Sin coincidencias literales en las "+(diagnostics.loaded||0)+" ediciones examinadas. "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles. ":"")+"Esto no demuestra ausencia en obras sin texto indexado.";
+  for(const row of rows){
+   const card=el("article",null,"entry"),a=link(row.link||"bibliotheca-graeca-latina.html",row.title||"Texto clásico");
+   const meta=el("p",(row.meta||"")+" · "+(row.units||0)+" pasajes","muted");
+   const excerpt=el("p",row.excerpt||"");card.append(a,meta,excerpt);target.append(card);
+  }
+ }catch(err){if(token===literalSerial)status.textContent="Error de búsqueda: "+err.message}
+ finally{if(token===literalSerial)$("literal-search").disabled=false}
+}
 async function init(){
  try{
  const [r,p,d]=await Promise.all([
@@ -103,6 +127,7 @@ async function init(){
  if(concepts.some(c=>c.id===params.get("concept")))$("concept").value=params.get("concept");
  if(params.has("q"))$("query").value=params.get("q");
  render();
+ if(params.get("q")?.trim())searchLiteral();
  }catch(err){$("summary").textContent="Índice no disponible: "+err.message+". Las transcripciones originales siguen disponibles en Bibliotheca."}
 }
 $("work").addEventListener("change",()=>{refillEditions();render()});
@@ -112,5 +137,6 @@ $("query").addEventListener("input",()=>{clearTimeout(filterTimer);filterTimer=s
 $("query").addEventListener("keydown",event=>{if(event.key==="Enter"){clearTimeout(filterTimer);render()}});
 $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
+$("literal-search").addEventListener("click",searchLiteral);
 init();
 })();
