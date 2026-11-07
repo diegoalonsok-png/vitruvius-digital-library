@@ -394,7 +394,7 @@ async function searchImages(query){
  // Consulta con errores o en otro idioma («2001 odisea en el espacio», «A Pace Odyssey»): si el resolvedor
  // directo no identifica nada, se usa la entidad que identificó la ficha de Vitruvia (Wikidata) y se
  // resuelve por su título; así llegan sus nombres en todos los idiomas y su categoría de Commons.
- if(!identity){
+ if(!identity&&!historicalSubject){
   const ce=await entityFor(q,2500);
   if(id!==active)return;
   if(ce){const again=await window.VitruviaEntityResolver?.resolve(ce.wiki||ce.label,ce.wikiLang||language).catch(()=>null);
@@ -576,9 +576,9 @@ async function searchImages(query){
     "Aucune image suffisamment documentée. Consulter les collections externes.");
   }
   const seen=new Set([...grid.querySelectorAll("img")].map(i=>String(i.src).replace(/\/\d+px-.*$/,"")));
-  const fromArticle=await addArticleImages(id,identity,seen);
+  const fromArticle=historicalSubject?0:await addArticleImages(id,identity,seen);
   if(fromArticle&&!items.length&&!leadItems.length)status.textContent=locale(fromArticle+" imágenes del artículo de Wikipedia (algunas con derechos de autor).",fromArticle+" images from the Wikipedia article (some copyrighted).",fromArticle+" images de l’article Wikipédia.");
-  const covers=await addBookCovers(id,topic,identity,q);
+  const covers=historicalSubject?0:await addBookCovers(id,topic,identity,q);
   if(covers&&!items.length&&!leadItems.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){
   if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
