@@ -2,7 +2,13 @@ name: Indexar corpus clásico por lotes e integrar tres buscadores
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/mass-index-classics.py'
+      - 'scripts/test-mass-index-completeness.py'
+      - '.github/workflows/classics-mass-index.yml'
   push:
+    branches: [main]
     paths:
       - '.github/workflows/classics-mass-index.yml'
       - 'scripts/mass-index-classics.py'
@@ -13,11 +19,24 @@ permissions:
   contents: write
 
 concurrency:
-  group: classics-mass-index
+  group: classics-mass-index-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
+  integrity-test:
+    name: Pruebas de integridad del extractor TEI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m py_compile scripts/ingest_texts.py scripts/mass-index-classics.py scripts/test-mass-index-completeness.py
+      - run: python scripts/test-mass-index-completeness.py
   index-and-validate:
+    if: github.event_name != 'pull_request'
+    needs: integrity-test
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
