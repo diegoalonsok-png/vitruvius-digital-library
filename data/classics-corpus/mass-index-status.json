@@ -2,58 +2,58 @@
   "updated": "2026-11-07",
   "newWorks": 6,
   "newTextVersions": 6,
-  "indexedDistinctWorks": 30,
-  "registeredTextVersions": 56,
-  "missingOriginals": 193,
+  "indexedDistinctWorks": 36,
+  "registeredTextVersions": 62,
+  "missingOriginals": 186,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "cicero-oratore",
+      "workId": "lucan",
       "lang": "la",
-      "path": "data/classics-corpus/cicero-oratore-la.json",
-      "passages": 27,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
-      "sha256": "057aef5553eeb2f3e30eb17b57466d5195599e5204158df1a54ea3a10322fc6a"
+      "path": "data/classics-corpus/lucan-la.json",
+      "passages": 1008,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0917/phi001/phi0917.phi001.perseus-lat2.xml",
+      "sha256": "19cc0df789097cff3293f32d47c4b31a2ecee214f416b092248a5a86a89e34c3"
     },
     {
-      "workId": "cicero-republica",
-      "lang": "la",
-      "path": "data/classics-corpus/cicero-republica-la.json",
-      "passages": 8,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi043/phi0474.phi043.perseus-lat2.xml",
-      "sha256": "c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad"
-    },
-    {
-      "workId": "horace-odes",
-      "lang": "la",
-      "path": "data/classics-corpus/horace-odes-la.json",
-      "passages": 401,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml",
-      "sha256": "ddac1805d6120b78db476ac94c4d88b066b1fcd7676cd520e6abd927360655dc"
-    },
-    {
-      "workId": "ovid-fasti",
-      "lang": "la",
-      "path": "data/classics-corpus/ovid-fasti-la.json",
-      "passages": 623,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml",
-      "sha256": "5e1de37b36682fde85fc99cd1005029611d083d61d3d62264a73e5791f0db567"
-    },
-    {
-      "workId": "diodorus",
+      "workId": "josephus-war",
       "lang": "grc",
-      "path": "data/classics-corpus/diodorus-grc.json",
-      "passages": 1705,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0060/tlg001/tlg0060.tlg001.perseus-grc6.xml",
-      "sha256": "388ab57d77d4c4c0601468d16538e2c2c3bfb4a9825214f28591467ba3b9db91"
+      "path": "data/classics-corpus/josephus-war-grc.json",
+      "passages": 4001,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0526/tlg004/tlg0526.tlg004.perseus-grc2.xml",
+      "sha256": "011c690837e035376c8e12ce0d63e06c92f97bb688d44c8c4d96b193a65b6523"
     },
     {
-      "workId": "seneca-epistulae",
+      "workId": "martial",
       "lang": "la",
-      "path": "data/classics-corpus/seneca-epistulae-la.json",
-      "passages": 94,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi015/phi1017.phi015.perseus-lat2.xml",
-      "sha256": "079db8ee6c09bd08233441a06d7fc5a1c15331f28d868257dcc97910dd7fb74d"
+      "path": "data/classics-corpus/martial-la.json",
+      "passages": 1827,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1294/phi002/phi1294.phi002.perseus-lat2.xml",
+      "sha256": "ed25741b55fb4d7ded9fd6b1429b355db28396d963abf6e342d4e8d948268b71"
+    },
+    {
+      "workId": "tacitus-agricola",
+      "lang": "la",
+      "path": "data/classics-corpus/tacitus-agricola-la.json",
+      "passages": 213,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi001/phi1351.phi001.perseus-lat2.xml",
+      "sha256": "c6ed0dbc08ef63e3291468445fa3e489356b66faf3dfa9018ee5471228210676"
+    },
+    {
+      "workId": "tacitus-germania",
+      "lang": "la",
+      "path": "data/classics-corpus/tacitus-germania-la.json",
+      "passages": 187,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi002/phi1351.phi002.perseus-lat2.xml",
+      "sha256": "ecc70d87e3f8d6ef00ed30e8bf41ecd85841fcc8852b8e1884cb979b7f9f74a1"
+    },
+    {
+      "workId": "mark",
+      "lang": "grc",
+      "path": "data/classics-corpus/mark-grc.json",
+      "passages": 10,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0031/tlg002/tlg0031.tlg002.perseus-grc2.xml",
+      "sha256": "169fb135508b4abe01c0ea7fb129ac09e2f1d43f37d5d64ab538710fffc09a87"
     }
   ],
   "errors": []

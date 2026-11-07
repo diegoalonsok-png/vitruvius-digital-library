@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 56,
-  "works": 30,
+  "count": 62,
+  "works": 36,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -567,6 +567,66 @@
       "format": "json-passages",
       "path": "data/classics-corpus/seneca-epistulae-la.json",
       "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "lucan",
+      "author": "Lucano",
+      "title": "Bellum civile",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucan-la.json",
+      "reader": "classics-text-reader.html?work=lucan&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/josephus-war-grc.json",
+      "reader": "classics-text-reader.html?work=josephus-war&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "martial",
+      "author": "Marcial",
+      "title": "Epigrammata",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/martial-la.json",
+      "reader": "classics-text-reader.html?work=martial&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tacitus-agricola",
+      "author": "Tácito",
+      "title": "Agricola",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tacitus-agricola-la.json",
+      "reader": "classics-text-reader.html?work=tacitus-agricola&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tacitus-germania",
+      "author": "Tácito",
+      "title": "Germania",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tacitus-germania-la.json",
+      "reader": "classics-text-reader.html?work=tacitus-germania&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/mark-grc.json",
+      "reader": "classics-text-reader.html?work=mark&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]

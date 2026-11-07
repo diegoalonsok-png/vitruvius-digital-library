@@ -4,7 +4,7 @@
   "snapshot": "2026-11-07",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 193,
+  "missingOriginals": 186,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -37,8 +37,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -49,8 +49,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -70,8 +70,8 @@
       "id": "caesar-civili",
       "original": "la",
       "indexed": [
-        "la",
-        "en"
+        "en",
+        "la"
       ],
       "missing": [
         "es",
@@ -82,11 +82,11 @@
       "id": "sallust-catiline",
       "original": "la",
       "indexed": [
+        "en",
         "la"
       ],
       "missing": [
         "es",
-        "en",
         "fr"
       ]
     },
@@ -94,8 +94,8 @@
       "id": "sallust-iugurtha",
       "original": "la",
       "indexed": [
-        "la",
-        "en"
+        "en",
+        "la"
       ],
       "missing": [
         "es",
@@ -107,10 +107,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -156,8 +156,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -166,20 +166,21 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
       "id": "ovid",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
-        "la",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -190,8 +191,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -200,10 +201,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -213,8 +214,8 @@
         "grc"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -223,10 +224,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -234,10 +235,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -245,10 +246,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -258,8 +259,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -268,20 +269,21 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
       "id": "lucan",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
-        "la",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -290,10 +292,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -301,20 +303,21 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
       "id": "josephus-war",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
-        "grc",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -323,10 +326,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -334,42 +337,45 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
       "id": "martial",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
-        "la",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
     {
       "id": "tacitus-agricola",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
-        "la",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
     {
       "id": "tacitus-germania",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
-        "la",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -378,20 +384,21 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
       "id": "mark",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
-        "grc",
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -400,10 +407,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -423,10 +430,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -434,10 +441,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -445,10 +452,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -456,10 +463,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -467,10 +474,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -478,10 +485,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -489,10 +496,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -500,10 +507,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -511,10 +518,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -522,10 +529,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -533,10 +540,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -544,10 +551,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -555,10 +562,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -566,10 +573,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -577,10 +584,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -588,10 +595,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -599,10 +606,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -610,10 +617,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -621,10 +628,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -632,10 +639,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -643,10 +650,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -654,10 +661,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -665,10 +672,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -678,8 +685,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -688,10 +695,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -699,10 +706,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -710,10 +717,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -721,10 +728,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -732,10 +739,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -743,10 +750,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -766,10 +773,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -777,10 +784,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -788,10 +795,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -799,10 +806,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -822,10 +829,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -833,10 +840,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -844,10 +851,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -855,10 +862,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -878,10 +885,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -889,10 +896,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -900,10 +907,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -911,10 +918,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -922,10 +929,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -933,10 +940,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -944,10 +951,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -955,10 +962,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -966,10 +973,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -977,10 +984,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -988,10 +995,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -999,10 +1006,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1010,10 +1017,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1021,10 +1028,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1032,10 +1039,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1043,10 +1050,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1054,10 +1061,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1065,10 +1072,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1076,10 +1083,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1087,10 +1094,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1098,10 +1105,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1109,10 +1116,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1120,10 +1127,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1131,10 +1138,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1166,10 +1173,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1177,10 +1184,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1188,10 +1195,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1199,10 +1206,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1210,10 +1217,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1221,10 +1228,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1232,10 +1239,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1243,10 +1250,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1254,10 +1261,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1265,10 +1272,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1300,10 +1307,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1311,10 +1318,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1322,10 +1329,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1333,10 +1340,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1344,10 +1351,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1355,10 +1362,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1366,10 +1373,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1377,10 +1384,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1388,10 +1395,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1399,10 +1406,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1410,10 +1417,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1421,10 +1428,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1432,10 +1439,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1443,10 +1450,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1454,10 +1461,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1465,10 +1472,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1476,10 +1483,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1487,10 +1494,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1498,10 +1505,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1509,10 +1516,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1520,10 +1527,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1531,10 +1538,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1542,10 +1549,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1553,10 +1560,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1564,10 +1571,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1575,10 +1582,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1586,10 +1593,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1597,10 +1604,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1608,10 +1615,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1619,10 +1626,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1630,10 +1637,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1641,10 +1648,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1652,10 +1659,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1663,10 +1670,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1674,10 +1681,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1685,10 +1692,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1696,10 +1703,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1707,10 +1714,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1718,10 +1725,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1729,10 +1736,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1740,10 +1747,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1751,10 +1758,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1762,10 +1769,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1773,10 +1780,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1784,10 +1791,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1795,10 +1802,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1806,10 +1813,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1817,10 +1824,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1828,10 +1835,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1851,10 +1858,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1862,10 +1869,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -1873,10 +1880,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1884,10 +1891,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1895,10 +1902,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1906,10 +1913,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1917,10 +1924,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1928,10 +1935,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1939,10 +1946,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1950,10 +1957,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1961,10 +1968,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1984,10 +1991,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -1995,10 +2002,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2006,10 +2013,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2017,10 +2024,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2028,10 +2035,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2039,10 +2046,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2050,10 +2057,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2061,10 +2068,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2072,10 +2079,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2083,10 +2090,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2094,10 +2101,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2105,10 +2112,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2116,10 +2123,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2127,10 +2134,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2138,10 +2145,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2149,10 +2156,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2160,10 +2167,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2183,10 +2190,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2194,10 +2201,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2205,10 +2212,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2216,10 +2223,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2227,10 +2234,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2238,10 +2245,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2249,10 +2256,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2260,10 +2267,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2271,10 +2278,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2282,10 +2289,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2293,10 +2300,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2306,8 +2313,8 @@
         "la"
       ],
       "missing": [
-        "es",
         "en",
+        "es",
         "fr"
       ]
     },
@@ -2316,10 +2323,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2327,10 +2334,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2338,10 +2345,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2349,10 +2356,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2360,10 +2367,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2371,10 +2378,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2382,10 +2389,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2393,10 +2400,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2404,10 +2411,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2415,10 +2422,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2426,10 +2433,10 @@
       "original": "grc",
       "indexed": [],
       "missing": [
-        "grc",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "grc"
       ]
     },
     {
@@ -2437,10 +2444,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2448,10 +2455,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {
@@ -2459,10 +2466,10 @@
       "original": "la",
       "indexed": [],
       "missing": [
-        "la",
-        "es",
         "en",
-        "fr"
+        "es",
+        "fr",
+        "la"
       ]
     },
     {

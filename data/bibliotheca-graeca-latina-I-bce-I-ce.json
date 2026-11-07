@@ -1286,7 +1286,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20civile"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/lucan-la.json"
+      }
     },
     {
       "id": "pliny",
@@ -1401,7 +1404,10 @@
         "La guerra judía",
         "Jewish War",
         "Bellum Iudaicum"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/josephus-war-grc.json"
+      }
     },
     {
       "id": "josephus-antiquities",
@@ -1501,7 +1507,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epigrammata"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/martial-la.json"
+      }
     },
     {
       "id": "tacitus-agricola",
@@ -1532,7 +1541,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Agricola"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/tacitus-agricola-la.json"
+      }
     },
     {
       "id": "tacitus-germania",
@@ -1563,7 +1575,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Germania"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/tacitus-germania-la.json"
+      }
     },
     {
       "id": "frontinus",
@@ -1636,7 +1651,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%95%E1%BD%90%CE%B1%CE%B3%CE%B3%CE%AD%CE%BB%CE%B9%CE%BF%CE%BD%20%CE%BA%CE%B1%CF%84%E1%BD%B0%20%CE%9C%E1%BE%B6%CF%81%CE%BA%CE%BF%CE%BD"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/mark-grc.json"
+      }
     },
     {
       "id": "clement",
