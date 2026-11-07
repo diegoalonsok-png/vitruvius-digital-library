@@ -46,9 +46,10 @@ async function registry(){
 }
 const fold=s=>window.ClassicalLexicon?window.ClassicalLexicon.fold(s):String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").replace(/j/g,"i").replace(/v/g,"u");
 function matches(text,q){
- if(window.ClassicalLexicon)return window.ClassicalLexicon.find(text,q);
+ if(window.ClassicalLexicon)return window.ClassicalLexicon.find(text,q,{prefix:false}); // Concordancia literal: palabra/frase completa, no prefijo accidental.
  const t=fold(text),k=fold(q),out=[];if(!k)return out;
- let i=t.indexOf(k);while(i>=0&&out.length<80){out.push([i,i+k.length]);i=t.indexOf(k,i+1)}return out;
+ const isLetter=c=>!!c&&/[\p{L}]/u.test(c);
+ let i=t.indexOf(k);while(i>=0&&out.length<80){if(!isLetter(t[i-1])&&!isLetter(t[i+k.length]))out.push([i,i+k.length]);i=t.indexOf(k,i+Math.max(1,k.length))}return out;
 }
 function snippet(text,[a,b]){
  const s=Math.max(0,a-90),e=Math.min(text.length,b+140);
