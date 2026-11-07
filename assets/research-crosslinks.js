@@ -17,7 +17,7 @@ const start=()=>{if(document.getElementById("research-crosslinks"))return;
  const ctx=()=>{const qs=new URLSearchParams(location.search),typed=(input?.value||"").trim().slice(0,180);return {q:typed||qs.get("q")||qs.get("term")||"",work:(page==="index-locorum.html"?document.getElementById("work")?.value:"")||qs.get("work")||"",locus:qs.get("locus")||"",lang:qs.get("lang")||""}};
  function refresh(){const {q,work,locus,lang}=ctx();
   anchors.forEach((a,i)=>{const u=new URL(links[i][1],location.href);
-   if(i===0){if(work)u.searchParams.set("work",work);else if(q)u.searchParams.set("term",q)}
+   if(i===0){if(work)u.searchParams.set("work",work);if(q)u.searchParams.set("term",q)}
    if(i===1&&q)u.searchParams.set("q",q);
    if(i===2&&q){u.searchParams.set("q",q);u.searchParams.set("mode","palabra")}
    if(i===3){if(work)u.searchParams.set("work",work);if(q)u.searchParams.set("q",q)}
@@ -29,6 +29,7 @@ const start=()=>{if(document.getElementById("research-crosslinks"))return;
  input?.addEventListener("input",refresh);
  input?.addEventListener("change",refresh);
  document.getElementById("work")?.addEventListener("change",refresh);
+ section.addEventListener("click",refresh);
  section.addEventListener("pointerdown",refresh);
  section.addEventListener("focusin",refresh);
  refresh();
