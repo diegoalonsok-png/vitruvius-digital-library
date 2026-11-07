@@ -60,6 +60,7 @@ class SourceHTMLPassages(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.in_main = 0
+        self.section_mode = False
         self.stack = []
         self.reading = None
         self.parts = []
@@ -71,6 +72,10 @@ class SourceHTMLPassages(HTMLParser):
         attrs = dict(attrs)
         if tag == "main":
             self.in_main += 1
+        elif tag == "section" and attrs.get("id") and not self.in_main:
+            # Some Latin poetry witnesses organise real book anchors as sections, without a <main>.
+            self.in_main = 1
+            self.section_mode = True
         if not self.in_main:
             return
         if tag in self.IGNORE:
@@ -98,8 +103,11 @@ class SourceHTMLPassages(HTMLParser):
             self.parts = []
         if self.in_main and tag in self.IGNORE and self.ignore_depth:
             self.ignore_depth -= 1
-        if tag == "main" and self.in_main:
+        if tag == "main" and self.in_main and not self.section_mode:
             self.in_main -= 1
+        elif tag == "section" and self.section_mode:
+            self.in_main = 0
+            self.section_mode = False
 
 def read(entry: dict):
     path = entry["path"]
@@ -130,11 +138,19 @@ def build():
     lexicon = dictionary(concepts)
     indexed = []
     errors = []
+    unanchored_html = []
     for entry in registry["entries"]:
         if entry["format"] not in ELIGIBLE:
             continue
         try:
-            passages = read(entry)
+            try:
+                passages = read(entry)
+            except ValueError as exc:
+                if entry["format"] == "html-text" and "No anchored text passages" in str(exc):
+                    unanchored_html.append({"path": entry["path"], "format": entry["format"],
+                                            "reason": "Hosted translation has no stable passage anchor; search literal text directly, not as a verified locus."})
+                    continue
+                raise
             if not passages:
                 raise ValueError("No passages")
             by_concept = defaultdict(lambda: {"count": 0, "loci": []})
@@ -172,7 +188,7 @@ def build():
              "Indexed only attested Conceptus terms in local Greek/Latin/translation JSON, structured bilingual and anchored HTML texts. "
             "Accent/case and Latin i/j u/v normalized. No invented synonyms, embeddings, "
             "morphological lemmatization or verified textual collation. "
-            "Historical OCR remains separate from verified transcriptions."
+            "Historical OCR and unanchored translations remain separate from source-anchored semantic loci."
         ),
         "dictionaryConcepts": len(concepts),
         "registryEditionCount": len(registry["entries"]),
@@ -180,9 +196,9 @@ def build():
         "indexedEditions": len(indexed),
         "errors": errors,
         "notIndexedFormats": [
-            {"path": e["path"], "format": e["format"]}
+            {"path": e["path"], "format": e["format"], "reason": "OCR unverified or format not supported for static concept postings"}
             for e in registry["entries"] if e["format"] not in ELIGIBLE
-        ],
+        ] + unanchored_html,
         "versions": indexed,
     }
     if errors:
