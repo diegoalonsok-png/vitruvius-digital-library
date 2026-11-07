@@ -1,7 +1,5 @@
 name: Perrault - espejar imagenes por pagina
 on:
-  schedule:
-    - cron: '37 4 * * 0'
   workflow_dispatch:
     inputs:
       year:
