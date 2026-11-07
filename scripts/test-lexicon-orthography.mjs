@@ -1,0 +1,26 @@
+/* Philological orthography regression tests; no network requests. */
+import {createRequire} from "node:module";
+import assert from "node:assert/strict";
+const require=createRequire(import.meta.url);
+const o=require("../assets/lexicon-orthography-core.js");
+assert.equal(o.norm("Ἀθῆναι","diacritics","grc"),"αθηναι");
+assert.equal(o.norm("Ἀθῆναι","editorial","grc"),"αθηναι");
+assert.equal(o.norm("λόγος","editorial","grc"),"λογοσ");
+assert.equal(o.norm("λόγοϲ","editorial","grc"),"λογοσ");
+assert.equal(o.norm("uirtus","editorial","la"),"uirtus");
+assert.equal(o.norm("virtus","editorial","la"),"uirtus");
+assert.equal(o.norm("Iulius","editorial","la"),"iulius");
+const t="Ἀθῆναι καὶ Ῥώμη. Ἀθηνῶν.";
+const exact=o.attestations(t,"Ἀθῆναι","exact","grc");
+assert.equal(exact.length,1);
+assert.equal(t.slice(exact[0].start,exact[0].end),"Ἀθῆναι");
+const folded=o.attestations(t,"Αθηναι","diacritics","grc");
+assert.equal(folded.length,1);
+assert.equal(t.slice(folded[0].start,folded[0].end),"Ἀθῆναι");
+const latin=o.attestations("VIRTUS, uirtus, virtutibus","uirtus","editorial","la");
+assert.equal(latin.length,2);
+assert.equal(o.attestations("domusticus","domus","editorial","la").length,0);
+assert.equal(o.attestations("Ἀθηνῶν","Αθηναι","editorial","grc").length,0);
+assert.equal(o.diagnosis("Ἀθῆναι").language,"grc");
+assert.ok(o.suggestedVariants("λόγος").some(v=>v.label.includes("Sigma")));
+console.log("Orthography tests passed: polytonic Greek, sigma, source offsets, Latin u/v, word boundaries.");
