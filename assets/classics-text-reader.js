@@ -117,7 +117,7 @@ async function load(language){
  const path=base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
  let corpus=await response.json();
- if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||corpus.passages.length<10)throw Error("El documento no pasó validación de integridad");
+ if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||(corpus.passages.length<(work==="sulpicia-elegiae"?6:10)))throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
   // The historical anthology includes other works and paratext; every unit remains accessible.
   // Editorial scope does not create a false book/section alignment to the Latin original.
