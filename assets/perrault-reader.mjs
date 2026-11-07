@@ -104,7 +104,7 @@ function renderVisualGallery(start=0){
   const thumb=document.createElement("img");
   thumb.loading="lazy";thumb.decoding="async";
   thumb.alt="Miniatura de Perrault, imagen digital "+(index+1);
-  thumb.src=p.url?p.url.replace(/\/full\/[^/]+\/0\/default\.jpg(?:\?.*)?$/,"/full/240,/0/default.jpg"):(p.backup||"");
+  thumb.src=year==="1673"&&localMirror.has(index+1)?"images/perrault/1673/thumb-"+String(index+1).padStart(4,"0")+".webp":(p.url?p.url.replace(/\/full\/[^/]+\/0\/default\.jpg(?:\?.*)?$/,"/full/240,/0/default.jpg"):(p.backup||""));
   if(p.backup)thumb.addEventListener("error",()=>{
    if(thumb.src!==p.backup)thumb.src=p.backup;
   },{once:true});
@@ -242,7 +242,7 @@ function findPage(){
  status.textContent=partial.length?"Hay "+partial.length+" páginas con esa etiqueta; precisá la búsqueda.":"Etiqueta inexistente en el manifiesto. Prueba «imagen 50».";
 }
 async function load(){
- await readLocalMirror();
+ if(year==="1673")await readLocalMirror();
  $("pr-year").value=year;
  $("pr-title").textContent="Scriptorium Perrault · "+year;
  $("pr-edition").textContent=copy.description;
@@ -332,6 +332,31 @@ $("pr-year").addEventListener("change",e=>{
  url.searchParams.set("year",next);
  url.searchParams.set("image","1");
  location.assign(url.href);
+});
+const loupe=$("pr-loupe"),stage=$("pr-stage"),toggle=$("pr-loupe-toggle");
+function positionLoupe(e){
+ if(!toggle.checked||image.hidden||!image.complete||!image.naturalWidth){loupe.style.display="none";return}
+ const rect=image.getBoundingClientRect();
+ if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom){loupe.style.display="none";return}
+ const x=(e.clientX-rect.left)/rect.width,y=(e.clientY-rect.top)/rect.height;
+ const st=stage.getBoundingClientRect();
+ loupe.style.left=(e.clientX-st.left+stage.scrollLeft-105)+"px";
+ loupe.style.top=(e.clientY-st.top+stage.scrollTop-105)+"px";
+ loupe.style.backgroundImage="url("+JSON.stringify(image.currentSrc||image.src)+")";
+ loupe.style.backgroundRepeat="no-repeat";
+ loupe.style.backgroundSize=(rect.width*3)+"px "+(rect.height*3)+"px";
+ loupe.style.backgroundPosition=(-x*rect.width*3+105)+"px "+(-y*rect.height*3+105)+"px";
+ loupe.style.filter=image.style.filter;
+ loupe.style.display="block";
+}
+stage.addEventListener("pointermove",positionLoupe);
+stage.addEventListener("pointerleave",()=>{loupe.style.display="none"});
+toggle.addEventListener("change",()=>{stage.classList.toggle("loupe-on",toggle.checked);loupe.style.display="none"});
+$("pr-reset").addEventListener("click",()=>{
+ $("pr-zoom").value="100";$("pr-brightness").value="100";$("pr-contrast").value="100";
+ $("pr-grayscale").checked=false;$("pr-negative").checked=false;
+ toggle.checked=false;stage.classList.remove("loupe-on");loupe.style.display="none";
+ applyImageStyle();
 });
 $("pr-prev").addEventListener("click",()=>navigate(-1));
 $("pr-next").addEventListener("click",()=>navigate(1));
