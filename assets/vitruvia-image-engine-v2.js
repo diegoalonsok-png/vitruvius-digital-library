@@ -199,6 +199,7 @@ function displayGroups(items,topic){
  // actual source-attributed results, not an empty placeholder.
  section.hidden=false;
  grid.hidden=false;
+ grid.hidden=false;section.hidden=false;
  grid.replaceChildren();let previous=null;
  for(const item of items){
   if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
@@ -463,7 +464,7 @@ async function searchImages(query){
   if(items.length&&!grid.querySelector(".vitruvia-image-card")&&!(topic.kind==="person"&&items.every(isChildhoodPhoto)))displayGroups(items,topic);
   return items;
  }).catch(()=>[]);
- const requests=topic.queries;
+ const requests=fold(q)==="logos"?distinct(["λόγος", "logos Greek philosophy", "logos ancient Greek manuscript", ...topic.queries]):topic.queries;
  controller=new AbortController();const signal=controller.signal;
  const timeout=setTimeout(()=>controller.abort(),18500);
  try{
@@ -585,14 +586,20 @@ async function searchImages(query){
   }
   const seen=new Set([...grid.querySelectorAll("img")].map(i=>String(i.src).replace(/\/\d+px-.*$/,"")));
   const fromArticle=historicalSubject?0:await addArticleImages(id,identity,seen);
+  if(fromArticle&&!items.length&&!leadItems.length){grid.hidden=false;section.hidden=false;}
   if(fromArticle&&!items.length&&!leadItems.length)status.textContent=locale(fromArticle+" imágenes del artículo de Wikipedia (algunas con derechos de autor).",fromArticle+" images from the Wikipedia article (some copyrighted).",fromArticle+" images de l’article Wikipédia.");
   const covers=historicalSubject?0:await addBookCovers(id,topic,identity,q);
+  if(covers&&!items.length&&!leadItems.length){grid.hidden=false;section.hidden=false;}
   if(covers&&!items.length&&!leadItems.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){
   if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
    "The image service did not respond; use the linked archives.",
    "Le service d’images ne répond pas ; consulter les archives.");
- }finally{clearTimeout(timeout)}
+ }finally{
+  clearTimeout(timeout);
+  // The source-backed gallery must not remain hidden after real image results load.
+  if(id===active&&grid.querySelector(".vitruvia-image-card")){grid.hidden=false;section.hidden=false;}
+ }
 }
 window.addEventListener("vitruvia:search",event=>{void searchImages(event.detail?.query)});
 window.addEventListener("vitruvia:clear",reset);
