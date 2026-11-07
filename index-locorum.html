@@ -19,7 +19,35 @@ h1,h2{font-family:Georgia,serif}h1{font-size:clamp(32px,4vw,48px)}
 small,.muted{opacity:.8}#more{margin:18px 0;padding:10px 16px;cursor:pointer;border:1px solid #a38a65;background:#233d51;color:#fff}
 html[data-theme=dark] .panel,html[data-theme=dark] .entry{background:#23384a;color:#f8f0e5;border-color:#806f5a}
 </style><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="assets/critical-note-bridge.css?v=20261107-v1">
-</head><body>
+<style id="index-locorum-vitruvia-ui">
+/* Misma identidad visual del buscador Vitruvia: negro neutro, gris y blanco. */
+:root{color-scheme:dark}
+html,body{background:#0d0d0e!important;color:#e9e9e7!important}
+main{max-width:1580px;margin:auto;padding:30px clamp(18px,3vw,48px) 100px!important;color:#e9e9e7!important;font:15px/1.65 Arial,Helvetica,system-ui,sans-serif}
+main h1{font:italic 400 clamp(36px,5vw,64px)/1.12 Georgia,serif;letter-spacing:-.055em;color:#f2f2f2;margin:22px 0}
+main h2{font:400 24px/1.3 Georgia,serif;color:#f0f0f0}
+main a{color:#e8e8e8}
+main .intro{color:#aaa;max-width:1100px}
+main .panel,main .entry,html[data-theme=dark] main .panel,html[data-theme=dark] main .entry{background:#171719!important;border:1px solid #39393d!important;color:#e9e9e9!important;border-radius:13px;box-shadow:none;padding:20px}
+main .controls{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+main .controls label{font:500 13px/1.5 system-ui;color:#bdbdc0}
+main .controls select,main .controls input{border:1px solid #55565c;background:#252528;color:#fff;border-radius:9px;min-height:46px;font:15px system-ui;padding:11px 13px;box-sizing:border-box}
+main .controls input:focus-visible,main .controls select:focus-visible,main button:focus-visible,main a:focus-visible{outline:2px solid #ddd;outline-offset:2px}
+main button,main #more,main #export-tsv,main #literal-search{font:500 14px system-ui;background:#29292d!important;color:#eee!important;border:1px solid #606064!important;border-radius:9px!important;min-height:42px;padding:10px 16px;cursor:pointer}
+main button:hover,main .locilist a:hover{background:#3a3a40!important;color:white!important}
+main button:disabled{opacity:.55;cursor:wait}
+main .locilist a{border:1px solid #49494c;border-radius:7px;background:#242426;color:#eee}
+main .entry{margin:0}
+main .entry p,main .entry blockquote{font:14px/1.7 system-ui}
+main .entry .passage-meta{color:#aaa;margin:8px 0}
+main .entry .passage-quote{border-left:3px solid #78787e;background:#222225;border-radius:0 7px 7px 0;padding:12px 15px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+main .passage-card h2 a{text-decoration:none}
+main .passage-card h2 a:hover{text-decoration:underline}
+main #literal-results{grid-template-columns:repeat(auto-fit,minmax(min(100%,410px),1fr));align-items:start}
+main #literal-panel{border-color:#626268!important}
+main #literal-status,main #summary{color:#c6c6c8}
+@media(max-width:750px){main .panel,main .entry{padding:14px!important}main #literal-results{grid-template-columns:1fr}main .controls{grid-template-columns:1fr}}
+</style></head><body>
 <main>
 <p><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="cobertura-traducciones-clasicas.html">Cobertura</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></p>
 <h1>Index locorum · Concordancias semánticas</h1>
@@ -28,15 +56,15 @@ html[data-theme=dark] .panel,html[data-theme=dark] .entry{background:#23384a;col
 <label>Obra<select id="work"><option value="">Todas las obras</option></select></label>
 <label>Edición / idioma<select id="edition"><option value="">Todas las ediciones</option></select></label>
 <label>Conceptus documentado<select id="concept"><option value="">Todos los conceptos</option></select></label>
-<label>Buscar forma o locus<input id="query" type="search" placeholder="domus, οἶκος, 1.3, 35…"></label>
+<label>Buscar palabra o concepto en los textos<input id="query" type="search" autocomplete="off" placeholder="domus, casa, οἶκος…"></label>
 </div>
 <p><button id="export-tsv" type="button" style="padding:9px 14px;border:1px solid #998469;background:#243d50;color:white;cursor:pointer">Exportar concordancias filtradas · TSV</button></p>
-<section class="panel" id="literal-panel" aria-label="Búsqueda literal en corpus"><div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between"><div><strong>Concordancia literal en todos los textos</strong><p style="margin:5px 0;font:13px/1.5 system-ui">Encuentra formas como «loci» aunque no figuren en Conceptus. Distingue traducciones, ediciones y OCR histórico.</p></div><button id="literal-search" type="button" style="padding:10px 15px;background:#29445b;color:white;border:1px solid #ae9670;border-radius:6px;cursor:pointer">Buscar palabra en los textos</button></div><p id="literal-status" role="status" style="font:13px/1.5 system-ui"></p><div id="literal-results" style="display:grid;gap:10px"></div></section>
+<section class="panel" id="literal-panel" aria-label="Búsqueda literal en corpus"><div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between"><div><strong>Pasajes encontrados en las obras clásicas</strong><p style="margin:5px 0;font:13px/1.5 system-ui">Escribí domus o casa: busca formas documentadas, muestra los pasajes y permite abrirlos en su edición. Las equivalencias de Conceptus se identifican como tales.</p></div><button id="literal-search" type="button" style="padding:10px 15px;background:#29445b;color:white;border:1px solid #ae9670;border-radius:6px;cursor:pointer">Buscar pasajes</button></div><p id="literal-status" role="status" style="font:13px/1.5 system-ui"></p><div id="literal-results" style="display:grid;gap:10px"></div></section>
 <div class="panel" id="academic-coverage" role="status" style="font:13px/1.65 system-ui">Verificando cobertura y procedencia de las ediciones…</div>
 <div class="panel" id="summary" role="status" aria-live="polite">Consultando índice documentado…</div>
 <div id="results"></div><button id="more" type="button" hidden>Mostrar más referencias</button>
 <p class="intro muted">Metodología: concordancias de formas de Conceptus conservadas en el índice precomputado de la biblioteca. La presencia de una forma no valida por sí sola una acepción. Las ediciones HTML no cubiertas por este índice deben consultarse con búsqueda textual, y cualquier original/traducción sin alineación verificable permanece independiente. Los loci solo se atribuyen a versiones con registro de fuente.</p>
-</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-whole-word-v3"></script><script defer src="assets/index-locorum.js?v=20261107-academic-v7"></script>
+</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-passages-v1"></script><script defer src="assets/index-locorum.js?v=20261107-passages-v1"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script>
 <script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
