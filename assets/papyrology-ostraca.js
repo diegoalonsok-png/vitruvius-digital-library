@@ -211,6 +211,52 @@ async function openImage(f){
  }catch(e){status.textContent=e.message||"Imagen no válida."}finally{URL.revokeObjectURL(url)}
 }
 file.addEventListener("change",()=>{void openImage(file.files?.[0])});
+
+/* Local drop zone. The same file input and validation are reused, so
+   extraction, masks, and OCR operate identically for dropped and picked images. */
+let dropDepth=0;
+const imagePayload=e=>Array.from(e.dataTransfer?.items||[]).some(item=>item.kind==="file")||
+ Array.from(e.dataTransfer?.types||[]).includes("Files");
+const setDragMode=active=>{
+ stage.classList.toggle("pap-drag-over",active);
+ $("pap-drop-hint").setAttribute("aria-hidden",String(!active));
+};
+stage.addEventListener("dragenter",e=>{
+ if(!imagePayload(e))return;
+ e.preventDefault();dropDepth++;setDragMode(true);
+});
+stage.addEventListener("dragover",e=>{
+ if(!imagePayload(e))return;
+ e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect="copy";setDragMode(true);
+});
+stage.addEventListener("dragleave",e=>{
+ if(!imagePayload(e))return;
+ e.preventDefault();dropDepth=Math.max(0,dropDepth-1);
+ if(!dropDepth)setDragMode(false);
+});
+stage.addEventListener("drop",e=>{
+ e.preventDefault();dropDepth=0;setDragMode(false);
+ const dropped=Array.from(e.dataTransfer?.files||[]);
+ if(dropped.length!==1){
+  status.textContent=dropped.length?"Soltá una sola imagen por vez.":"No se detectó un archivo de imagen.";
+  return;
+ }
+ const selected=dropped[0];
+ // file.files is writable with an explicit user drop, in supported browsers.
+ // The in-memory shared input is used by the independent ink extraction module.
+ try{
+  const transfer=new DataTransfer();transfer.items.add(selected);file.files=transfer.files;
+ }catch{
+  status.textContent="No se pudo sincronizar el selector de archivos con la imagen arrastrada.";
+  return;
+ }
+ void openImage(selected);
+});
+stage.addEventListener("keydown",e=>{
+ if(e.key!=="Enter"&&e.key!==" ")return;
+ e.preventDefault();file.click();
+});
+
 for(const key of ["invert","gray","sepia","edge"])$("pap-"+key).addEventListener("click",()=>{
  state[key]=!state[key];$("pap-"+key).setAttribute("aria-pressed",String(state[key]));show();
 });
