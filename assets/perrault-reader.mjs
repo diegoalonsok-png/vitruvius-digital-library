@@ -26,9 +26,20 @@ const COPIES={
  }
 };
 const requested=new URLSearchParams(location.search);
-const year=Object.hasOwn(COPIES,requested.get("year"))?requested.get("year"):"1673";
+const year="1673";
 const copy=COPIES[year];let pages=[],current=0,stamp=0,baseWidth=1000;
 const image=$("pr-image"),status=$("pr-status");
+let localMirror=new Set();
+async function readLocalMirror(){
+ try{
+  const r=await fetch("data/perrault-local-1673.json",{cache:"no-cache"});
+  if(!r.ok)return;
+  const d=await r.json();
+  if(d.year==="1673"&&d.source===COPIES["1673"].manifest&&d.image_count===370)
+   localMirror=new Set((d.available||[]).filter(n=>Number.isInteger(n)&&n>=1&&n<=370));
+ }catch{}
+}
+function localPage(n){return "images/perrault/1673/page-"+String(n).padStart(4,"0")+".webp";}
 // Cache only the exact verified copy's IIIF page index (not page images).
 // This avoids re-downloading large manifests on repeat visits.
 const indexCacheKey="vitruvia-perrault-iiif-index-v2-"+year;
@@ -77,7 +88,7 @@ async function loadLocalIndex(){
 }
 function renderFolioGrid(){
  // One folio catalogue only: the revised 1684 edition.
- if(year!=="1684")return;
+ 
  const grid=$("pr-folio-grid");
  $("pr-folios").hidden=false;
  grid.replaceChildren();
@@ -135,15 +146,16 @@ function show(n){
  $("pr-number").value=String(current+1);
  $("pr-counter").textContent=(current+1)+" / "+pages.length;
  $("pr-label").textContent=page.label;
- const currentButton=year==="1684"?$("pr-folio-grid").querySelector(".is-current"):null;
+ const currentButton=$("pr-folio-grid").querySelector(".is-current"):null;
  if(currentButton){currentButton.classList.remove("is-current");currentButton.removeAttribute("aria-current")}
- const targetButton=year==="1684"?$("pr-folio-grid").querySelector('button[data-index="'+current+'"]'):null;
+ const targetButton=$("pr-folio-grid").querySelector('button[data-index="'+current+'"]'):null;
  if(targetButton){targetButton.classList.add("is-current");targetButton.setAttribute("aria-current","page")}
  $("pr-prev").disabled=current===0;$("pr-next").disabled=current===pages.length-1;
  $("pr-stage").scrollTop=0;$("pr-stage").scrollLeft=0;
  status.textContent="Cargando imagen "+(current+1)+" de "+pages.length+"…";
  image.hidden=true;
  let alternative=false;
+ const isLocal=localMirror.has(current+1);
  image.onload=()=>{
   if(serial!==stamp)return;
   baseWidth=Math.min(image.naturalWidth||1000,1200);
@@ -152,10 +164,10 @@ function show(n){
  };
  image.onerror=()=>{
   if(serial!==stamp)return;
-  if(!alternative&&page.backup){alternative=true;image.src=page.backup;return}
+  if(!alternative){alternative=true;image.src=isLocal?page.url:(page.backup||page.url);return}
   status.textContent="El servidor institucional no permitió cargar esta imagen. Consulta el visor oficial de e-rara.";
  };
- if(page.url)image.src=page.url;
+ if(page.url)image.src=isLocal?localPage(current+1):page.url;
  else status.textContent="Esta imagen no tiene una URL IIIF verificable; consulta e-rara.";
  const url=new URL(location.href);
  url.searchParams.set("year",year);url.searchParams.set("image",String(current+1));
@@ -174,6 +186,7 @@ function findPage(){
  status.textContent=partial.length?"Hay "+partial.length+" páginas con esa etiqueta; precisá la búsqueda.":"Etiqueta inexistente en el manifiesto. Prueba «imagen 50».";
 }
 async function load(){
+ await readLocalMirror();
  $("pr-year").value=year;
  $("pr-title").textContent="Scriptorium Perrault · "+year;
  $("pr-edition").textContent=copy.description;
@@ -255,7 +268,7 @@ async function load(){
   status.textContent="No se pudo abrir el índice IIIF ("+err.message+"). La edición sigue disponible en el visor oficial de ETH-Bibliothek / e-rara.";
  }
 }
-$("pr-year").addEventListener("change",()=>{location.href="perrault-1673.html?year="+encodeURIComponent($("pr-year").value)});
+
 $("pr-prev").addEventListener("click",()=>navigate(-1));
 $("pr-next").addEventListener("click",()=>navigate(1));
 $("pr-go").addEventListener("click",()=>show(Number($("pr-number").value)-1));
