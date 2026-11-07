@@ -157,11 +157,30 @@ async function semanticConcept(q){
  return concepts.find(c=>[c.id,...Object.values(c.modern||{}).flat(),
    ...(c.la||[]),...(c.grc||[])].some(v=>typeof v==="string"&&fold(v)===key))||null;
 }
+let semanticPostingTask=null;
+async function semanticPostings(){
+ if(!semanticPostingTask)semanticPostingTask=fetch("data/classics-corpus/semantic-conceptus-postings.json")
+  .then(r=>{if(!r.ok)throw Error("Not generated yet");return r.json()})
+  .then(j=>j?.schema==="vitruvia-classics-semantic-postings-v1"&&Array.isArray(j.versions)?j:null)
+  .catch(()=>null);
+ return semanticPostingTask;
+}
 async function semanticSearch(q,{limit=6}={}){
  q=String(q||"").trim();
  if(q.length<3||q.length>80||q.split(/\s+/).length>4)return[];
  const concept=await semanticConcept(q);if(!concept)return[];
  const entries=await registry(),rows=[];
+ const staticIndex=await semanticPostings();
+ // Optional static inverted index: skip JSON editions with no attested hit,
+ // but search original HTML sources live. If the index is absent or stale,
+ // keep the existing live search fully operational.
+ const indexValid=staticIndex?.registryEditionCount===entries.length&&
+   staticIndex?.indexedEditions===staticIndex?.eligibleEditions&&
+   !staticIndex?.errors?.length;
+ const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
+  [v.workId,v.language,v.source,v.edition||""].join("|"),v
+ ]):[]);
+ let skippedNoHit=0;
  const byLanguage={};
  for(const language of ["la","grc","es","en","fr","it","de","pt"]){
   const candidates=(language==="la"||language==="grc")?(concept[language]||[]):(concept.modern?.[language]||[]);
@@ -176,6 +195,10 @@ async function semanticSearch(q,{limit=6}={}){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
    if(!terms.length||e.format==="historical-ocr-pages")return;
+   if(indexValid&&["json-passages","structured-bilingual"].includes(e.format)){
+    const version=indexed.get([e.workId,e.language,e.path,e.edition||""].join("|"));
+    if(version&&!version.concepts.some(c=>c.concept===concept.id)){skippedNoHit++;return}
+   }
    examined++;
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
    if(!d?.passages?.length){failed++;return}
@@ -215,7 +238,7 @@ async function semanticSearch(q,{limit=6}={}){
     rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total,units,conceptId:concept.id,matchedTerm:first.term});
   }));
  }
- lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,matchedEditions:rows.length};
+ lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
  return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title))
    .slice(0,Math.max(1,Math.min(100,limit)));
 }
