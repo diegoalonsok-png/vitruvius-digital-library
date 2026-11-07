@@ -182,7 +182,10 @@ async function semanticSearch(q,{limit=6}={}){
  ]):[]);
  let skippedNoHit=0;
  const byLanguage={};
- for(const language of ["la","grc","es","en","fr","it","de","pt"]){
+ // Conceptus concordances are documentary matches in the indexed source languages.
+ // Translations remain searchable with literal search(), but are not presented
+ // as verified Greek/Latin semantic attestations or aligned loci.
+ for(const language of ["la","grc"]){
   const candidates=(language==="la"||language==="grc")?(concept[language]||[]):(concept.modern?.[language]||[]);
   byLanguage[language]=candidates.filter(v=>typeof v==="string"&&v.trim().length>1);
  }
