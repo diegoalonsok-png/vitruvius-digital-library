@@ -7,7 +7,11 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from import_classics_perseus_batch import choose_edition
+import importlib.util
+spec = importlib.util.spec_from_file_location("perseus_bulk", ROOT / "scripts/import-classics-perseus-batch.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+choose_edition = module.choose_edition
 
 def read(path):
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
