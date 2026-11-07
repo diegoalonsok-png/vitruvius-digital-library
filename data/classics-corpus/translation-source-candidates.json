@@ -1,0 +1,39 @@
+{
+  "schema": "vitruvius-classics-translation-sources-v1",
+  "updated": "2026-11-07",
+  "principle": "Fuentes identificadas, no cuenta como texto local indexado hasta verificar transcripción íntegra, derechos y localizadores.",
+  "entries": [
+    {
+      "workId": "ovid",
+      "language": "en",
+      "translator": "Brookes More",
+      "editionYear": 1922,
+      "sourceTitle": "Metamorphoses",
+      "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AlatinLit%3Aphi0959.phi006.perseus-eng1",
+      "availability": "bibliographic_record",
+      "status": "identified_not_ingested",
+      "notes": "Edición de Brookes More (1922); verificar texto completo y cotejar su segmentación con los versos latinos registrados."
+    },
+    {
+      "workId": "augustus-res-gestae",
+      "language": "en",
+      "editor": "William Fairley",
+      "sourceTitle": "Monumentum Ancyranum: The Deeds of Augustus",
+      "url": "https://www.gutenberg.org/ebooks/66595",
+      "availability": "public_domain_usa_multilingual_edition",
+      "status": "identified_not_ingested",
+      "notes": "Fuente multilingüe inglés, latín y griego. Verificar íntegramente los 35 capítulos y apéndices; licencias y reutilización internacional antes de alojar nuevas capas."
+    },
+    {
+      "workId": "sallust-catiline",
+      "language": "en",
+      "translator": "John Selby Watson",
+      "editionYear": 1899,
+      "sourceTitle": "Conspiracy of Catiline",
+      "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AlatinLit%3Aphi0631.phi001.perseus-eng1",
+      "availability": "partial_local_source",
+      "status": "missing_loci_35_57",
+      "notes": "59 de 61 capítulos alojados; recuperar capítulos 35 y 57 del ejemplar histórico, cotejar contra Latin 61/61 y mantener versión anterior para comparación."
+    }
+  ]
+}
