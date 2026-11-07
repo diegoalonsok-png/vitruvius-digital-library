@@ -25,7 +25,13 @@ html[data-theme=dark] .classic-fulltext a{background:#263d50;border-color:#72839
   const option=document.createElement("option");option.value=value;option.textContent=name;mode.append(option);
  }
  mode.style.cssText="min-height:44px;padding:8px;background:#fff;color:#203548;border:1px solid #a7a395";
- selector.append(mode);controls.append(selector);
+ selector.append(mode);
+ const lexicon=document.createElement("a");
+ lexicon.href="vitruvia-lexicon.html";
+ lexicon.textContent="Ampliar en Vitruvia Lexicon ↗";
+ lexicon.style.cssText="display:inline-flex;align-self:flex-end;align-items:center;min-height:42px;padding:8px 12px;border:1px solid #b39a73;border-radius:4px;color:inherit;text-decoration:underline;font:600 13px system-ui";
+ lexicon.addEventListener("click",()=>{const q=input.value.trim();if(q)lexicon.href="vitruvia-lexicon.html?q="+encodeURIComponent(q)+"&mode=palabra";});
+ controls.append(selector,lexicon);
  let timer=0,serial=0;
  async function run(){
   const q=input.value.trim(),me=++serial;
