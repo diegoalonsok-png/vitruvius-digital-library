@@ -1,0 +1,29 @@
+name: Vitruvia historical identity regression
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'assets/vitruvia-discovery.js'
+      - 'assets/vitruvia-image-engine-v2.js'
+      - 'assets/vitruvia-search.js'
+      - 'data/onomasticon-vitruvianum.json'
+      - 'scripts/test-vitruvia-historical-identity.mjs'
+      - '.github/workflows/vitruvia-historical-identity.yml'
+permissions:
+  contents: read
+jobs:
+  historical-person-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check assets/vitruvia-discovery.js
+          node --check assets/vitruvia-image-engine-v2.js
+          node --check assets/vitruvia-search.js
+      - name: Prevent historical-person misidentification
+        run: node scripts/test-vitruvia-historical-identity.mjs
