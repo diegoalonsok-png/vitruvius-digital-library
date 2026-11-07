@@ -96,14 +96,14 @@ for(const side of ["left","right"]){
 
 function fill(sel,langs){sel.replaceChildren();for(const l of langs){const o=document.createElement("option");o.value=l;o.textContent=LANG[l]||l;sel.append(o);}}
 function pair(){return [versions[left.value],versions[right.value]];}
-function count(){const [a,b]=pair();return Math.min(a?.passages?.length||0,b?.passages?.length||0);}
-function destination(){const [a,b]=pair(),index=Math.max(0,Math.min(position,Math.max(0,count()-1)));let second=index;
+function count(){const [a,b]=pair();return Math.max(a?.passages?.length||0,b?.passages?.length||0);}
+function destination(){const [a,b]=pair(),index=Math.max(0,Math.min(position,Math.max(0,(a?.passages?.length||1)-1)));let second=Math.max(0,Math.min(position,Math.max(0,(b?.passages?.length||1)-1)));
  if($("same-locus").checked){const wanted=a?.passages?.[index]?.locus;const match=b?.passages?.findIndex(p=>p.locus===wanted);if(match>=0)second=match;}
  return [index,second];
 }
 function buttons(){const n=count(),ok=Boolean(n&&ready.left&&ready.right);
  $("sync-start").disabled=!ok;$("sync-prev").disabled=!ok||position===0;$("sync-next").disabled=!ok||position>=n-1;
- $("sync-position").textContent=n?(position+1)+" / "+n+" unidades conjuntas":"Sin datos comparables";
+ $("sync-position").textContent=n?(position+1)+" / "+n+" pasos de lectura":"Sin datos comparables";
 }
 function goto(){const [a,b]=pair();if(!a||!b)return;const [i,j]=destination();
  if(ready.left)$("pane-left").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:left.value,index:i},location.origin);
@@ -144,7 +144,7 @@ fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw 
  right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(l=>l!==left.value)||ordered[0]);
  await versionsFor([left.value,right.value]);position=0;
  $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
- status.textContent=rec.author+" · "+rec.title+". "+(count()?"Navegación conjunta por unidades; la equivalencia exacta exige cotejo filológico.":"Alguna versión no admite todavía sincronización; ambos lectores siguen independientes.");
+ status.textContent=rec.author+" · "+rec.title+". "+(count()?"Navegación conjunta orientativa. Si las versiones tienen distinta cantidad de unidades, cada una conserva el último capítulo alcanzado y nunca se recorta su contenido.":"Alguna versión no admite todavía sincronización; ambos lectores siguen independientes.");
  frame("left",left.value);frame("right",right.value);
  left.addEventListener("change",()=>changed("left",left.value));
  right.addEventListener("change",()=>changed("right",right.value));
