@@ -524,6 +524,7 @@ try{
    await p.locator('#pap-image').hover();
    assert.equal(await p.locator('#pap-loupe').evaluate(el=>getComputedStyle(el).display),'block','Magnifier does not open');
    assert.equal(await p.locator('#pap-ocr-detail').isEnabled(),true,'Detail OCR is unavailable after upload');
+   await p.locator('#pap-experimental-ocr').evaluate(el=>{el.open=true});
    await p.locator('#pap-ocr-lang').selectOption('heb');
    assert.equal(await p.locator('#pap-transcription').getAttribute('dir'),'rtl','Hebrew requires RTL transcription');
    assert.equal(await p.locator('#pap-transcription').getAttribute('lang'),'he');
