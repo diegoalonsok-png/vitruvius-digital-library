@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");
 const langs={la:"Latín",grc:"Griego",es:"Castellano",en:"Inglés",fr:"Francés",de:"Alemán",it:"Italiano",pt:"Portugués"};
 const params=new URLSearchParams(location.search);
-const MAX_LOCUS_RESULTS=20000; // The complete matching concordance remains accessible; no arbitrary 180-item truncation.
+const MAX_LOCUS_RESULTS=20000; // Guardrail only for exceptionally large entries; filter remains available.
 let versions=[],entries=[],concepts=[],shown=0,filtered=[];
 function el(tag,text,cls){const n=document.createElement(tag);if(text!=null)n.textContent=String(text);if(cls)n.className=cls;return n}
 function link(href,label){const a=el("a",label);a.href=href;return a}
@@ -16,7 +16,7 @@ function reader(v,locus,term){
  const base=e?.reader||("classics-text-reader.html?work="+encodeURIComponent(v.workId)+"&lang="+encodeURIComponent(v.language));
  if(e?.format==="html-text"){const p=new URL(base,location.href);p.searchParams.set("q",term);return relativePath(p)+p.search+(locus&&/^[-a-zA-Z0-9_]+$/.test(locus)?"#"+encodeURIComponent(locus):"")}
  if(e?.format==="historical-ocr-pages")return url(base,{q:term,page:locus});
- return url(base,{q:term,locus});
+ return url(base,e?.format==="json-passages"?{q:term,locus,literal:1}:{q:term,locus});
 }
 function refillEditions(){
  const work=$("work").value,prev=$("edition").value;const e=$("edition");e.replaceChildren();option(e,"","Todas las ediciones");
@@ -53,7 +53,7 @@ function append(){
   article.append(el("p",(langs[v.language]||v.language)+" · "+(v.edition||v.source)+" · Conceptus: "+c.concept));
   article.append(el("p",loci.length+" registros de forma por locus · "+c.count+" apariciones contabilizadas en la edición (total del concepto; no necesariamente del filtro). Los loci pertenecen a esta edición y no garantizan alineación entre lenguas."));
   if(meta?.note){const n=el("p",meta.note);n.className="muted";article.append(n)}
-  const details=el("details");details.open=loci.length<=30;details.append(el("summary","Consultar "+loci.length+" registros documentados (locus · forma · frecuencia)"));
+  const details=el("details");details.open=loci.length<=12;details.append(el("summary","Consultar "+loci.length+" registros documentados (locus · forma · frecuencia)"));
   const ol=el("ol",null,"locilist");
   for(const item of loci.slice(0,MAX_LOCUS_RESULTS)){
    const [locus,form,count]=item,li=el("li");
