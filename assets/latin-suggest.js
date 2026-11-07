@@ -30,6 +30,16 @@
   }
   return found;
  }
+ // Display both sides of the SAME indexed locus, never a guessed translation.
+ function contextualSnippet(text,forms,max=280){
+  const raw=String(text||'').replace(/\s+/g,' ').trim();
+  if(raw.length<=max)return raw;
+  const match=[...raw.matchAll(/[\p{L}\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
+  const start=match?Math.max(0,match.index-65):0;
+  const end=Math.min(raw.length,start+max);
+  return (start?'… ':'')+raw.slice(start,end)+(end<raw.length?' …':'');
+ }
+ const translationLanguage={'recensio-es':'Castellano','recensio-fr':'Français','theory-en':'English'};
  async function showOccurrences(){
   const searched=input.value.trim(),token=normalizeWord(searched);
   occurrences.replaceChildren();occurrences.hidden=true;
@@ -64,10 +74,21 @@
       a.href='lector-bilingue.html?edition='+encodeURIComponent(edition.id)+'&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(searched);
       a.textContent='Vitr., De arch. '+p.locus;li.append(a);
       const details=['latín: '+hit.latin.length,'traducción: '+hit.translation.length].join(' · ');
-      const source=hit.translation.length&&!hit.latin.length?p.translation:p.latin;
-      const tokenMatch=[...String(source||'').matchAll(/[\p{L}\p{M}]+/gu)].find(m=>forms.has(normalizeWord(m[0])));
-      const at=tokenMatch?.index||0;
-      li.append(document.createTextNode(' ('+details+') — '+String(source||'').slice(Math.max(0,at-55),at+125)));
+      const counts=document.createElement('span');counts.className='lexical-locus-count';counts.textContent=' · '+details;li.append(counts);
+      const latin=document.createElement('p');latin.className='lexical-locus-latin';latin.lang='la';
+      const latLabel=document.createElement('strong');latLabel.textContent='Latín · '+edition.label.split(' · ')[0]+'. ';
+      latin.append(latLabel,document.createTextNode(contextualSnippet(p.latin,forms)));
+      li.append(latin);
+      const translated=document.createElement('p');translated.className='lexical-locus-translation';
+      translated.lang={'recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[edition.id]||'es';
+      const trLabel=document.createElement('strong');trLabel.textContent=(translationLanguage[edition.id]||'Traducción')+' · '+edition.label.split(' · ')[0]+'. ';
+      translated.append(trLabel,document.createTextNode(String(p.translation||'').trim()
+       ?contextualSnippet(p.translation,forms)
+       :'Traducción no disponible en este registro; consultar el lector bilingüe para comprobar el locus.'));
+      li.append(translated);
+      const source=document.createElement('p');source.className='lexical-locus-provenance';
+      source.textContent='Fuente: edición '+edition.label.split(' · ')[0]+' · '+(p.pdf_pages?.latin?'latín PDF p. '+p.pdf_pages.latin:'página latina sin identificar')+' · '+(p.pdf_pages?.translation?'traducción PDF p. '+p.pdf_pages.translation:'página de traducción sin identificar')+'.';
+      li.append(source);
       list.append(li);
      }
      group.append(list);
