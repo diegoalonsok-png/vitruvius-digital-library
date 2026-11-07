@@ -1,0 +1,113 @@
+/* Vitruvia · 2026-11-07. Layout repair for live encyclopedia search results.
+   Preserve all documentary sections; remove conflicting inherited column and
+   paragraph-width constraints. This file is deliberately loaded last. */
+@media screen {
+  body.vitruvia-reading .site-shell,
+  body.vitruvia-reading main,
+  body.vitruvia-reading .results,
+  body.vitruvia-reading #results,
+  body.vitruvia-reading #vitruvia-article {
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+  }
+  body.vitruvia-reading #vitruvia-article {
+    clear:both!important;
+    float:none!important;
+    margin-inline:0!important;
+  }
+  body.vitruvia-reading #vitruvia-article .scholar-article-header {
+    width:100%!important;
+    max-width:none!important;
+    padding-inline:0!important;
+    margin-inline:0!important;
+  }
+  body.vitruvia-reading #vitruvia-article .article-grid {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-auto-flow:row!important;
+    gap:22px!important;
+    width:100%!important;
+    max-width:none!important;
+    margin-inline:0!important;
+    padding-inline:0!important;
+    align-items:start!important;
+  }
+  body.vitruvia-reading #vitruvia-article #article-body {
+    display:block!important;
+    grid-column:1!important;
+    grid-row:1!important;
+    min-width:0!important;
+    width:100%!important;
+    max-width:none!important;
+    margin-inline:0!important;
+    padding-inline:0!important;
+    float:none!important;
+    columns:auto!important;
+    column-count:1!important;
+  }
+  body.vitruvia-reading #vitruvia-article #article-body :is(p,blockquote,ul,ol,pre,table,section,div) {
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  body.vitruvia-reading #vitruvia-article #article-body > p,
+  body.vitruvia-reading #vitruvia-article #article-body .article-academic-expansion p {
+    width:100%!important;
+    max-width:none!important;
+    margin-inline:0!important;
+    text-align:justify!important;
+    text-align-last:start!important;
+    hyphens:auto!important;
+  }
+  body.vitruvia-reading #vitruvia-article .article-aside {
+    grid-column:1!important;
+    grid-row:2!important;
+    position:static!important;
+    width:100%!important;
+    max-width:none!important;
+    padding-inline:0!important;
+    margin-inline:0!important;
+    border-right:0!important;
+    border-left:0!important;
+  }
+  body.vitruvia-reading #vitruvia-article #vitruvia-context {
+    grid-column:1!important;
+    grid-row:3!important;
+    width:100%!important;
+    max-width:none!important;
+    margin-inline:0!important;
+    padding-inline:0!important;
+    position:static!important;
+  }
+  body.vitruvia-reading #vitruvia-article :is(.article-sources,.article-evidence) {
+    width:100%!important;
+    max-width:none!important;
+  }
+  body.vitruvia-reading .results-grid {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  body.vitruvia-reading #vitruvia-images,
+  body.vitruvia-reading #vitruvia-quick-images {
+    clear:both!important;
+    float:none!important;
+    min-width:0!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  body.vitruvia-reading #vitruvia-image-grid {
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));
+    width:100%!important;
+  }
+  #vitruvia-image-grid[hidden],#vitruvia-images[hidden],
+  #vitruvia-quick-images[hidden] {display:none!important}
+}
+@media screen and (max-width:700px) {
+  body.vitruvia-reading #vitruvia-article #article-body > p {
+    text-align:left!important;
+    hyphens:auto!important;
+  }
+}
