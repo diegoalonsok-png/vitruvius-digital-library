@@ -103,3 +103,14 @@ html[data-theme="dark"] #search-results .result-parallel .result-actions a{color
  #search-results .parallel-latin,#search-results .parallel-translation{padding:13px 14px}
  #search-results .parallel-heading{min-height:0}
 }
+
+/* Aligned lexical concordance: Latin and its edition's translation stay together. */
+#lexical-occurrences ol{padding-left:1.45rem}
+#lexical-occurrences li{padding:10px 0 12px;border-bottom:1px solid rgba(128,138,145,.22)}
+#lexical-occurrences .lexical-locus-count{font:400 11px/1.5 system-ui,sans-serif;opacity:.73}
+#lexical-occurrences .lexical-locus-latin,
+#lexical-occurrences .lexical-locus-translation{margin:6px 0 3px;font:400 14px/1.65 Georgia,"Times New Roman",serif;overflow-wrap:anywhere}
+#lexical-occurrences .lexical-locus-translation{padding-left:12px;border-left:2px solid rgba(132,145,157,.32)}
+#lexical-occurrences .lexical-locus-latin strong,
+#lexical-occurrences .lexical-locus-translation strong{font:600 11px/1.45 system-ui,sans-serif;letter-spacing:.01em}
+#lexical-occurrences .lexical-locus-provenance{margin:3px 0 2px;font:400 10.5px/1.5 system-ui,sans-serif;opacity:.7}
