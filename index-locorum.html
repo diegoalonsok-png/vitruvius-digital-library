@@ -47,6 +47,37 @@ main #literal-results{grid-template-columns:repeat(auto-fit,minmax(min(100%,410p
 main #literal-panel{border-color:#626268!important}
 main #literal-status,main #summary{color:#c6c6c8}
 @media(max-width:750px){main .panel,main .entry{padding:14px!important}main #literal-results{grid-template-columns:1fr}main .controls{grid-template-columns:1fr}}
+</style><style id="locorum-interactive-editions">
+main #literal-results{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+main #literal-results>.edition-group{background:#101012;color:#eee;border:1px solid #39393d;border-radius:12px;overflow:hidden;min-width:0}
+main .edition-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 21px;font:15px/1.5 system-ui,sans-serif}
+main .edition-group>summary::-webkit-details-marker{display:none}
+main .edition-group>summary::after{content:"▾";font-size:20px;color:#aaa}
+main .edition-group[open]>summary::after{transform:rotate(180deg)}
+main .edition-group>summary strong{color:#eee;font-weight:650}
+main .edition-group>summary span{font-size:13px;color:#b7b7b9}
+main .edition-group[open]>summary{border-bottom:1px solid #37373a}
+main .edition-passages{padding:12px;display:grid;gap:10px}
+main .passage-unit{--unit-bg:#101012;--unit-ink:#f2f2f2;background:var(--unit-bg);color:var(--unit-ink);border:1px solid #474747;border-radius:9px;padding:16px;min-width:0}
+main .passage-unit-heading{display:flex;gap:15px;align-items:center;flex-wrap:wrap;font:13px/1.5 system-ui}
+main .passage-unit-heading span{opacity:.8}
+main .passage-quote{color:inherit!important;background:transparent!important;line-height:1.85!important}
+main .passage-quote mark{background:#ffdf75;color:#171717;border-radius:3px;padding:1px 2px}
+main .passage-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+main .passage-actions button,main .passage-actions a{padding:8px 12px;background:#252528;color:#f2f2f2;border:1px solid #5d5d60;border-radius:8px;text-decoration:none;font:13px/1.4 system-ui;cursor:pointer}
+main .passage-actions label{display:inline-flex;align-items:center;gap:7px;font:13px system-ui}
+main .passage-actions input[type=color]{height:33px;width:42px;padding:2px;border:1px solid #646464;border-radius:7px;background:#272729;cursor:pointer}
+main .passage-word{display:inline;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer;border-bottom:1px dotted #aaa;min-height:0}
+main .passage-word:hover{background:#454545;border-radius:3px}
+main .passage-word:focus-visible{outline:2px solid #ddd}
+main .passage-word mark{pointer-events:none}
+main #locorum-word-dialog{border:1px solid #777;border-radius:14px;background:#171719;color:#eee;padding:22px;width:min(510px,90vw);max-height:80vh;overflow:auto;box-shadow:0 20px 80px #000a}
+main #locorum-word-dialog::backdrop{background:#000b}
+main #locorum-word-dialog h2{margin:6px 0 12px;font:italic 32px Georgia,serif}
+main #locorum-word-dialog .links{margin-top:18px}
+main .locorum-language{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0;font:13px system-ui}
+main .locorum-language select{background:#252528;color:#eee;border:1px solid #5c5c60;border-radius:8px;padding:9px;min-width:120px}
+@media(max-width:700px){main .edition-group>summary{padding:12px}main .edition-passages{padding:8px}main .passage-unit{padding:11px}}
 </style></head><body>
 <main>
 <p><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="cobertura-traducciones-clasicas.html">Cobertura</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></p>
@@ -64,7 +95,7 @@ main #literal-status,main #summary{color:#c6c6c8}
 <div class="panel" id="summary" role="status" aria-live="polite">Consultando índice documentado…</div>
 <div id="results"></div><button id="more" type="button" hidden>Mostrar más referencias</button>
 <p class="intro muted">Metodología: concordancias de formas de Conceptus conservadas en el índice precomputado de la biblioteca. La presencia de una forma no valida por sí sola una acepción. Las ediciones HTML no cubiertas por este índice deben consultarse con búsqueda textual, y cualquier original/traducción sin alineación verificable permanece independiente. Los loci solo se atribuyen a versiones con registro de fuente.</p>
-</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-passages-v1"></script><script defer src="assets/index-locorum.js?v=20261107-passages-v1"></script>
+</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-interactive-v2"></script><script defer src="assets/index-locorum.js?v=20261107-interactive-v3"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script>
 <script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
