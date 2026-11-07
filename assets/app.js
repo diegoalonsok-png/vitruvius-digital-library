@@ -476,9 +476,10 @@ function renderMore(){
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
-       '<div class="parallel-heading"><span>LATÍN · TEXTO DE CONSULTA</span><strong>'+escapeHTML(e.version)+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):'')+'</strong></div>'+
+       '<div class="parallel-heading"><span>LATÍN · EDICIÓN '+escapeHTML(e.version)+'</span><strong>'+escapeHTML(e.version)+' · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · PDF: página no identificada')+'</strong></div>'+
        '<p class="parallel-passage">'+(parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
-       '<p class="parallel-small">Edición latina: '+escapeHTML(e.version)+'. Verifica las variantes en el aparato crítico.</p>'+
+       '<div class="parallel-latin-source"><span class="parallel-source-label">'+escapeHTML(e.version)+' · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF por identificar')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
+       '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
        '<div class="parallel-heading"><label>TRADUCCIÓN · IDIOMA <select class="parallel-language" aria-label="Elegir idioma de la traducción del pasaje">'+
