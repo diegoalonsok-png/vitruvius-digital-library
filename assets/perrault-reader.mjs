@@ -270,6 +270,14 @@ async function load(){
  }
 }
 
+$("pr-year").addEventListener("change",e=>{
+ const next=e.target.value;
+ if(!Object.hasOwn(COPIES,next)||next===year)return;
+ const url=new URL(location.href);
+ url.searchParams.set("year",next);
+ url.searchParams.set("image","1");
+ location.assign(url.href);
+});
 $("pr-prev").addEventListener("click",()=>navigate(-1));
 $("pr-next").addEventListener("click",()=>navigate(1));
 $("pr-go").addEventListener("click",()=>show(Number($("pr-number").value)-1));
