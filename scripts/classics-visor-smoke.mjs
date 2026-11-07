@@ -118,8 +118,13 @@ try{
    assert.deepEqual(before.options['classic-language'],['','la','grc']);
    assert.deepEqual(before.options['classic-availability'],['','local','source','catalogue']);
    assert.deepEqual(before.options['classic-period'],['','focus']);
-   assert.deepEqual(before.options['classic-sort'],['relevance','witness','author']);
+   assert.deepEqual(before.options['classic-sort'],['author','composition','relevance','witness'],
+    'The four academic catalogue sort modes must remain available');
    assert(before.options['classic-genre'].length>=2,'Genre filter options must still be populated');
+   await p.locator('#classic-sort').selectOption('composition');
+   assert.equal(await p.locator('#classic-sort').inputValue(),'composition',
+    'Sorting by estimated composition date must be selectable');
+   await p.locator('#classic-sort').selectOption('author');
    await p.evaluate(()=>document.documentElement.setAttribute('data-theme','dark'));
    const afterTheme=await p.evaluate(()=>({
     body:getComputedStyle(document.body).backgroundColor,
