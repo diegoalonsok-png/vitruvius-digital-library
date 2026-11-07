@@ -500,6 +500,21 @@ try{
    const initial=await p.locator('#pap-zoom-value').innerText();
    await p.locator('#pap-zoom-in').click();
    assert.notEqual(await p.locator('#pap-zoom-value').innerText(),initial,'Zoom button is inert');
+
+   await p.locator('#pap-ink-papyrus').click();
+   await p.locator('#pap-ink-run').click();
+   await p.waitForFunction(()=>document.getElementById('pap-ink-canvas')?.width>100&&
+    document.getElementById('pap-ink-status')?.textContent.includes('Máscara creada'),null,{timeout:12000});
+   const blackOnWhite=await p.locator('#pap-ink-canvas').evaluate(c=>{
+    const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
+    let white=0,black=0;
+    for(let i=0;i<d.length;i+=4){if(d[i]===255&&d[i+1]===255&&d[i+2]===255)white++;if(d[i]===0&&d[i+1]===0&&d[i+2]===0)black++}
+    return {white,black};
+   });
+   assert(blackOnWhite.white>0&&blackOnWhite.black>0,'Ink extraction did not create black pixels on white');
+   await p.locator('#pap-ink-alphabet').selectOption('grc');
+   await p.locator('#pap-ink-segment').click();
+   assert.match(await p.locator('#pap-ink-status').innerText(),/regiones oscuras aisladas/i);
    await p.locator('#pap-invert').click();
    assert.equal(await p.locator('#pap-invert').getAttribute('aria-pressed'),'true','Invert button is inert');
    await p.locator('#pap-saturation').evaluate(el=>{el.value='180';el.dispatchEvent(new Event('input',{bubbles:true}))});
