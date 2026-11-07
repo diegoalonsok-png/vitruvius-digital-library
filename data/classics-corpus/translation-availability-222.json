@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 42,
+    "locallyIndexedWorks": 48,
     "translatedWorksLocal": 21,
     "worksWithoutHostedTranslation": 201,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 19,
       "fr": 2
     },
-    "originalTextIndexed": 42,
-    "originalTextNotIndexed": 180
+    "originalTextIndexed": 48,
+    "originalTextNotIndexed": 174
   },
   "works": [
     {
@@ -1001,28 +1001,32 @@
       "author": "Terencio",
       "title": "Andria",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "terentius-heautontimorumenos",
       "author": "Terencio",
       "title": "Heautontimorumenos",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cato-agri-cultura",
@@ -1043,14 +1047,16 @@
       "author": "Cicerón",
       "title": "In Catilinam (Orationes Catilinariae)",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "catullus-carmina",
@@ -1076,42 +1082,48 @@
       "author": "Horacio",
       "title": "Sermones (Satirae)",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "horace-ars-poetica",
       "author": "Horacio",
       "title": "Ars poetica",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid-ars-amatoria",
       "author": "Ovidio",
       "title": "Ars amatoria",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "seneca-tragoediae",

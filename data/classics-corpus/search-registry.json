@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 68,
-  "works": 42,
+  "count": 74,
+  "works": 48,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -687,6 +687,66 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plautus-aulularia-la.json",
       "reader": "classics-text-reader.html?work=plautus-aulularia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "terentius-andria",
+      "author": "Terencio",
+      "title": "Andria",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/terentius-andria-la.json",
+      "reader": "classics-text-reader.html?work=terentius-andria&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "terentius-heautontimorumenos",
+      "author": "Terencio",
+      "title": "Heautontimorumenos",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/terentius-heautontimorumenos-la.json",
+      "reader": "classics-text-reader.html?work=terentius-heautontimorumenos&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-catilinariae-la.json",
+      "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-sermones",
+      "author": "Horacio",
+      "title": "Sermones (Satirae)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-sermones-la.json",
+      "reader": "classics-text-reader.html?work=horace-sermones&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-ars-poetica",
+      "author": "Horacio",
+      "title": "Ars poetica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-ars-poetica-la.json",
+      "reader": "classics-text-reader.html?work=horace-ars-poetica&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-ars-amatoria",
+      "author": "Ovidio",
+      "title": "Ars amatoria",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-ars-amatoria-la.json",
+      "reader": "classics-text-reader.html?work=ovid-ars-amatoria&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]

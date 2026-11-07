@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 68,
-    "indexedDistinctWorks": 42,
+    "indexedTextVersions": 74,
+    "indexedDistinctWorks": 48,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -1358,11 +1358,15 @@
       "genre": "Comedia",
       "dating": "166 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/terentius-andria-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1376,11 +1380,15 @@
       "genre": "Comedia",
       "dating": "163 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/terentius-heautontimorumenos-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1412,11 +1420,15 @@
       "genre": "Oratoria",
       "dating": "63 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-catilinariae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1463,11 +1475,15 @@
       "genre": "Sátira",
       "dating": "siglo I a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/horace-sermones-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1481,11 +1497,15 @@
       "genre": "Poética",
       "dating": "siglo I a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/horace-ars-poetica-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1499,11 +1519,15 @@
       "genre": "Poesía didáctica",
       "dating": "siglo I a. C.–siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ovid-ars-amatoria-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
