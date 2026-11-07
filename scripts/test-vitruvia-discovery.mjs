@@ -225,7 +225,7 @@ test('Jewish Christian image search preserves historical scope and excludes unre
  assert.equal(isEarly('Judeo-Christian values'),false,'Modern interfaith terminology is distinct from the first-century movement');
  assert.ok(imageEngine.includes('topic.subject="Jewish Christianity"'));
  assert.ok(imageEngine.includes('topic.queries=["Jewish Christianity"'));
- assert.ok(imageEngine.includes('addJewishChristianContextImages(id,seen)'));
+ assert.ok(imageEngine.includes('addJewishChristianContextImages(id,seen'), 'Historical-context images must be requested with their subject-scoped filter');
  assert.ok(imageEngine.includes('CONTEXTO histórico'));
  assert.ok(imageEngine.includes('VitruviaMathematics?.render(quick,currentImageQuery)'));
  assert.ok(!imageEngine.includes('VitruviaMathematics?.render(quick,topic.subject)'));
