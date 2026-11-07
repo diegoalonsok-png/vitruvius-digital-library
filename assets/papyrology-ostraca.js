@@ -52,7 +52,7 @@ $("pap-ocr-lang").addEventListener("change",updateScript);
 
 let available=false,zoom=1,rotation=0,worker=null,running=false,objectUrl=null;
 updateScript();
-const state={invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30",exposure:0,shadows:0,highlights:0,gamma:100,clarity:0,sharpness:0,originalPreview:false};
+const state={invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30",exposure:0,shadows:0,highlights:0,gamma:100,clarity:0,sharpness:0,originalPreview:false,levelLight:false,extractBlack:false,lightStrength:75,blackLimit:115};
 const cap=clamp=>(Number.isFinite(clamp)?Math.max(0,Math.min(255,clamp)):0);
 function filterText(){return [
  state.invert?"invert(1)":"",
@@ -122,6 +122,56 @@ $("pap-tone-original").addEventListener("click",()=>{
  state.originalPreview=!state.originalPreview;updateTonalUI();show();
 });
 
+/* Local uneven-illumination correction; prefix sums estimate the diffuse support
+ * brightness, while the source document remains unchanged. */
+function applyLightLevelAndBlack(){
+ if(state.originalPreview||(!state.levelLight&&!state.extractBlack))return;
+ const w=canvas.width,h=canvas.height,N=w*h;
+ const im=ctx.getImageData(0,0,w,h),p=im.data;
+ const lum=new Uint8Array(N),stride=w+1,integral=new Float64Array((w+1)*(h+1));
+ for(let y=0;y<h;y++){
+  let row=0;
+  for(let x=0;x<w;x++){
+   const i=y*w+x,k=i*4;
+   const v=.2126*p[k]+.7152*p[k+1]+.0722*p[k+2];
+   lum[i]=v;row+=v;integral[(y+1)*stride+x+1]=integral[y*stride+x+1]+row;
+  }
+ }
+ const radius=Math.max(15,Math.round(Math.min(w,h)/15));
+ const strength=state.levelLight?state.lightStrength/100:0;
+ const limitBlack=state.blackLimit;
+ for(let y=0;y<h;y++){
+  const y0=Math.max(0,y-radius),y1=Math.min(h,y+radius+1);
+  for(let x=0;x<w;x++){
+   const x0=Math.max(0,x-radius),x1=Math.min(w,x+radius+1),i=y*w+x,k=i*4;
+   const mean=(integral[y1*stride+x1]-integral[y0*stride+x1]-integral[y1*stride+x0]+integral[y0*stride+x0])/((x1-x0)*(y1-y0));
+   // Local shading removal targets a consistent paper brightness.
+   const normalized=cap(lum[i]+(185-mean)*strength);
+   if(state.extractBlack){
+    const ink=normalized<limitBlack?0:255;
+    p[k]=ink;p[k+1]=ink;p[k+2]=ink;p[k+3]=255;
+   }else if(state.levelLight){
+    const delta=normalized-lum[i];
+    p[k]=cap(p[k]+delta);p[k+1]=cap(p[k+1]+delta);p[k+2]=cap(p[k+2]+delta);
+   }
+  }
+ }
+ ctx.putImageData(im,0,0);
+}
+function updateLightUI(){
+ $("pap-light-level").setAttribute("aria-pressed",String(state.levelLight));
+ $("pap-black-extract").setAttribute("aria-pressed",String(state.extractBlack));
+ $("pap-light-strength").value=state.lightStrength;
+ $("pap-light-strength-value").textContent=state.lightStrength+" %";
+ $("pap-black-limit").value=state.blackLimit;
+ $("pap-black-limit-value").textContent=String(state.blackLimit);
+}
+$("pap-light-level").addEventListener("click",()=>{state.levelLight=!state.levelLight;state.originalPreview=false;updateTonalUI();updateLightUI();show()});
+$("pap-black-extract").addEventListener("click",()=>{state.extractBlack=!state.extractBlack;state.originalPreview=false;updateTonalUI();updateLightUI();show()});
+$("pap-black-level-reset").addEventListener("click",()=>{Object.assign(state,{levelLight:false,extractBlack:false,lightStrength:75,blackLimit:115});updateLightUI();show()});
+$("pap-light-strength").addEventListener("input",e=>{state.lightStrength=Number(e.target.value);updateLightUI();show()});
+$("pap-black-limit").addEventListener("input",e=>{state.blackLimit=Number(e.target.value);updateLightUI();show()});
+
 function show(){
  if(!available)return;
  canvas.width=rotation%180?original.height:original.width;
@@ -144,6 +194,7 @@ function show(){
   ctx.putImageData(image,0,0);
  }
  applyTonalControls();
+ applyLightLevelAndBlack();
  canvas.style.width=Math.round(canvas.width*zoom)+"px";
  canvas.style.height=Math.round(canvas.height*zoom)+"px";
  stage.style.background=state.bg;
@@ -185,7 +236,8 @@ canvas.addEventListener("pointerleave",()=>{loupe.style.display="none"});
 stage.addEventListener("scroll",()=>{loupe.style.display="none"},{passive:true});
 function reset(){
  Object.assign(state,{invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30",exposure:0,shadows:0,highlights:0,gamma:100,clarity:0,sharpness:0,originalPreview:false});
- updateTonalUI();
+ Object.assign(state,{levelLight:false,extractBlack:false,lightStrength:75,blackLimit:115});
+ updateTonalUI();updateLightUI();
  rotation=0;zoom=1;
  for(const key of ["saturation","contrast","brightness","hue"])$("pap-"+key).value=state[key];
  $("pap-bg").value=state.bg;
