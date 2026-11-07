@@ -1,7 +1,7 @@
 /* Columna derecha de Vitruvia: más ancha, legible y sin desplazamiento interno (se lee con la página). */
+/* The legacy three-column rule was removed: the full-width reader stylesheet owns geometry. */
 @media (min-width:981px){
- body.vitruvia-reading #vitruvia-article .article-grid{grid-template-columns:180px minmax(0,1fr) clamp(380px,31vw,540px)!important}
- body.vitruvia-reading #vitruvia-article #vitruvia-context{position:static!important;max-height:none!important;overflow:visible!important;font-size:14px!important;line-height:1.65!important}
+ body.vitruvia-reading #vitruvia-article #vitruvia-context{font-size:14px!important;line-height:1.65!important}
 }
 body.vitruvia-reading #vitruvia-context .context-note,body.vitruvia-reading #vitruvia-context .context-translation{font-size:13.5px!important;line-height:1.65!important}
 body.vitruvia-reading #vitruvia-context .context-bibliography-item>a{font-size:14px!important}
@@ -17,38 +17,4 @@ body.vitruvia-reading #vitruvia-context .architecture-work-plan{display:block;wi
 body.vitruvia-reading #vitruvia-context .architecture-work-photo{width:100%;height:auto;max-height:340px;object-fit:cover;border-radius:4px}
 body.vitruvia-reading #vitruvia-context .architecture-work-review{font-size:13.5px!important;line-height:1.6!important}
 
-/* Encyclopedia and bibliography must occupy the full available width below
-   the source essay. No squeezed right column or independent scroll area. */
-@media(min-width:1021px){
- body.vitruvia-reading #vitruvia-article .article-grid{
-   display:grid!important;grid-template-columns:190px minmax(0,1fr)!important;
-   gap:clamp(16px,2.5vw,36px)!important;align-items:start!important
- }
- body.vitruvia-reading #vitruvia-article .article-aside{grid-column:1!important;grid-row:1!important}
- body.vitruvia-reading #vitruvia-article .article-body{grid-column:2!important;grid-row:1!important;max-width:none!important}
- body.vitruvia-reading #vitruvia-article #vitruvia-context{
-   display:block!important;grid-column:1 / -1!important;grid-row:2!important;
-   width:100%!important;max-width:none!important;min-width:0!important;
-   position:static!important;max-height:none!important;overflow:visible!important;
-   margin:32px 0 0!important;padding:24px 0 6px!important;
-   border-left:0!important;border-top:1px solid #454b51!important;
-   font-size:14px!important;line-height:1.75!important;
- }
- body.vitruvia-reading #vitruvia-context .context-bibliography-list{
-   display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));
-   column-gap:clamp(20px,4vw,64px);row-gap:0
- }
- body.vitruvia-reading #vitruvia-context .context-bibliography-item{
-   min-width:0!important;max-width:none!important
- }
-}
-@media(min-width:1021px) and (max-width:1150px){
- body.vitruvia-reading #vitruvia-context .context-bibliography-list{grid-template-columns:minmax(0,1fr)}
-}
-@media(max-width:1020px){
- body.vitruvia-reading #vitruvia-article #vitruvia-context{
-   width:100%!important;max-width:100%!important;margin:20px 0 0!important;
-   padding:20px 0!important;border-left:0!important;border-top:1px solid #454b51!important;
-   max-height:none!important;overflow:visible!important
- }
-}
+/* Layout is defined in vitruvia-full-width-reading.css. Context content stays naturally scrollable. */

@@ -78,6 +78,33 @@
    grid-template-columns:minmax(0,1fr)!important;
  }
 }
+
+/* The highlighted encyclopaedic text is a full-width reading section,
+   not an embedded narrow sidebar card. */
+@media screen {
+ body.vitruvia-reading #vitruvia-article,
+ body.vitruvia-reading #vitruvia-article .article-grid,
+ body.vitruvia-reading #vitruvia-article :is(.article-body,.article-aside,#vitruvia-context){
+   box-sizing:border-box!important;justify-self:stretch!important;
+   min-width:0!important;max-width:100%!important;
+ }
+ body.vitruvia-reading #vitruvia-context > :is(h2,h3,h4,p,section,article,div),
+ body.vitruvia-reading #vitruvia-context :is(.context-term,.context-latin,.context-translation,.context-note,.web-dossier,.context-loci,.context-bibliography-list,.context-bibliography-item){
+   width:100%!important;max-width:none!important;min-width:0!important;
+   box-sizing:border-box!important;overflow-wrap:anywhere;
+ }
+ body.vitruvia-reading #vitruvia-context :is(.context-term,h3){
+   line-height:1.2!important;
+ }
+ body.vitruvia-reading #vitruvia-context :is(.context-latin,.context-translation,.context-note){
+   font-size:clamp(14px,1.1vw,18px)!important;
+   line-height:1.75!important;
+ }
+ body.vitruvia-reading #vitruvia-context mark,
+ body.vitruvia-reading #vitruvia-context .context-match{
+   box-decoration-break:clone;-webkit-box-decoration-break:clone;
+ }
+}
 @media print {
  body.vitruvia-reading #vitruvia-article .article-grid {
    display:block!important;
