@@ -78,6 +78,18 @@ assert.ok(search.includes("pending.push(wiki("),"Encyclopedia discovery not wire
 assert.ok(search.includes("pending.push(crossref("),"Academic publications not wired");
 const images=sourceFile("assets/vitruvia-image-engine-v2.js");
 assert.match(images,/generator:"categorymembers"/,"Topic image collections not wired");
+
+assert.match(images,/function displayGroups\([\s\S]*?section\.hidden=false;[\s\S]*?grid\.hidden=false;[\s\S]*?displayItem\(item\)/,
+ "Search image results must unhide the source gallery rather than render an empty dark region");
+const readerLayout=sourceFile("assets/vitruvia-full-width-reading.css");
+assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article \.article-grid\s*\{\s*display:flex!important;\s*flex-direction:column!important;/,
+ "Encyclopedia text and research panels must share the entire content width");
+assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article #article-body\s*,[\s\S]*?width:100%!important;[\s\S]*?max-width:none!important;/,
+ "Article width must override legacy narrow reader styles");
+assert.match(vitruviaHTML,/vitruvia-image-engine-v2\.js\?v=20261107-gallery-v4/,
+ "New image gallery must invalidate the old cached engine");
+assert.match(vitruviaHTML,/vitruvia-full-width-reading\.css\?v=20261107-wide-v3/,
+ "Layout repair must invalidate the old cached stylesheet");
 assert.match(images,/dialog\.showModal\(\)/,"Large-image viewer absent");
 assert.match(images,/items\.slice\(0,150\)/,"Bulk gallery limit is missing");
 assert.match(images,/info\.extmetadata\?\.LicenseShortName/,"Image licensing metadata absent");
