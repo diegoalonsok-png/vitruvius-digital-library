@@ -174,6 +174,57 @@
   candidates.sort((a,b)=>b.rank-a.rank||a.file.localeCompare(b.file));
   return candidates[0]?.file||null;
  }
+
+ /* Only registered and institutionally documented Latin manuscripts. */
+ let manuscriptRecordsTask=null;
+ async function authorManuscripts(label){
+  if(!manuscriptRecordsTask)manuscriptRecordsTask=Promise.all([
+   fetch("data/bibliotheca-testimonia-verified.json").then(r=>{if(!r.ok)throw Error("testimonia");return r.json()}),
+   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("catalogue");return r.json()})
+  ]).then(([a,b])=>({records:a.records||[],works:b.works||[]})).catch(e=>{manuscriptRecordsTask=null;throw e});
+  const data=await manuscriptRecordsTask,term=fold(label),isCicero=/(?:cicero|ciceron|marco tulio|marcus tullius)/.test(term);
+  const workIds=new Set(data.works.filter(w=>isCicero?String(w.id).startsWith("cicero-"):fold(w.author||"")===term).map(w=>w.id));
+  return data.records.filter(r=>r.language==="la"&&(r.workIds||[]).some(id=>workIds.has(id))&&/^https:\/\//.test(r.viewer||r.record||"")).sort((a,b)=>(a.dateStart||9999)-(b.dateStart||9999)).slice(0,6);
+ }
+ function manuscriptThumbnail(manifest){
+  const t=manifest.thumbnail;
+  let uri=typeof t==="string"?t:Array.isArray(t)?(t[0]?.id||t[0]?.["@id"]):t?.id||t?.["@id"];
+  if(uri&&/^https:\/\//.test(uri))return uri;
+  const canvas=manifest.items?.[0]||manifest.sequences?.[0]?.canvases?.[0];
+  const annotation=canvas?.items?.[0]?.items?.[0]||canvas?.images?.[0],body=annotation?.body||annotation?.resource;
+  const service=Array.isArray(body?.service)?body.service[0]:body?.service;
+  uri=service?.id||service?.["@id"];
+  return uri&&/^https:\/\//.test(uri)?uri.replace(/\/$/,"")+"/full/240,/0/default.jpg":null;
+ }
+ async function renderAuthorCodices(block,label,my){
+  let records;try{records=await authorManuscripts(label)}catch{return}
+  if(my!==token||!records.length)return;
+  const section=document.createElement("section");section.className="vfb-codices";
+  section.style.cssText="margin:14px 0;padding:12px;border:1px solid #b29b79;border-radius:7px";
+  const heading=document.createElement("h3");heading.textContent="Códices latinos · bibliotecas";
+  heading.style.cssText="font:700 15px system-ui;margin:0 0 10px";
+  const grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px";
+  section.append(heading,grid);
+  for(const record of records){
+   const a=document.createElement("a");a.href=record.viewer||record.record;a.target="_blank";a.rel="noopener noreferrer";
+   a.style.cssText="border:1px solid #958468;border-radius:5px;padding:9px;display:flex;flex-direction:column;gap:7px;color:inherit;text-decoration:none;overflow-wrap:anywhere";
+   const placeholder=document.createElement("div");placeholder.textContent="FACSÍMIL · IIIF";placeholder.style.cssText="height:115px;background:#151515;color:#e4d4b4;display:grid;place-items:center;font:600 12px system-ui";
+   const title=document.createElement("strong");title.textContent=record.title+" · "+record.shelfmark;
+   const meta=document.createElement("small");meta.textContent=record.library+" · "+record.date;
+   const open=document.createElement("small");open.textContent="Abrir digitalización institucional";
+   a.append(placeholder,title,meta,open);grid.append(a);
+   if(record.manifest&&/^https:\/\//.test(record.manifest)){
+    fetch(record.manifest).then(r=>{if(!r.ok)throw Error("IIIF unavailable");return r.json()}).then(manifest=>{
+     if(my!==token||!a.isConnected)return;const src=manuscriptThumbnail(manifest);if(!src)return;
+     const img=document.createElement("img");img.src=src;img.alt="Folio de "+record.shelfmark;img.loading="lazy";
+     img.style.cssText="width:100%;height:115px;object-fit:contain;background:#151515";
+     img.onerror=()=>img.replaceWith(placeholder);placeholder.replaceWith(img);
+    }).catch(()=>{});
+   }
+  }
+  block.append(section);
+ }
+
  /* ---------- Obras: libros, discos, películas, pinturas ---------- */
  const WORK_TYPES=new Set(['Q7725634','Q47461344','Q571','Q8261','Q49084','Q482994','Q134556','Q7366','Q105543609','Q11424','Q5398426','Q3305213','Q860861','Q838948','Q4502142','Q1004','Q725377','Q1259759','Q169930','Q208569','Q2188189']);
  async function renderWork(ent,row,my){
@@ -291,6 +342,7 @@
    if(reader){a.href='#vitruvia-term-reader';a.onclick=ev=>{ev.preventDefault();reader.scrollIntoView({behavior:'smooth',block:'start'})}}
    else a.href=readable[0].w.id?'bibliotheca-graeca-latina.html?work='+encodeURIComponent(readable[0].w.id):'lector-clasico.html?obra='+encodeURIComponent(readable[0].obras[0]);
    block.append(a)}
+  await renderAuthorCodices(block,label,my);if(my!==token)return;
   const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`${esc(L('src'))} · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
   box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
   // Retrato oficial (Wikidata P18: fotografía, busto o pintura) en el espacio superior.
