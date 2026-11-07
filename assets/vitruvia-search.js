@@ -543,7 +543,14 @@ let featureCurrent="";
 function considerFeatured(rows,query,fromFallback=false){
  const q=norm(query||"");if(!q)return;if(!fromFallback)featureCurrent=q;
  const {core}=featureTokens(query);const tokens=core.filter(t=>t.length>=3);
- const picks=(rows||[]).filter(r=>r.link&&r.title&&(!window.VitruviaContextGuard||window.VitruviaContextGuard.allows(r,query,S.identifiedSubject))).map(r=>{
+ // En consultas con forma de nombre, los artículos que devuelve la búsqueda
+ // textual de Wikipedia no bastan para acreditar la identidad. Solo la entidad
+ // resuelta por Wikidata/Wikipedia (preferredWiki) puede ser la ficha destacada.
+ const nameLike=core.length>=2&&core.length<=5&&!featureTokens(query).typed&&
+  !/\\b(que|como|cuando|donde|porque|why|what|how|where|historia de|history of)\\b/i.test(q);
+ const picks=(rows||[]).filter(r=>r.link&&r.title&&
+  !(nameLike&&r.type==="wikipedia"&&!r.preferredWiki)&&
+  (!window.VitruviaContextGuard||window.VitruviaContextGuard.allows(r,query,S.identifiedSubject))).map(r=>{
   const title=norm(r.title),exact=title===q||title===core.join(" ")||title.replace(/\s+/g,"")===core.join("");
   const {ratio,inTitle}=featureCoverage(core,r.title,r.excerpt||"");
   // A book or article with the person's name before a subtitle is not the person.
@@ -558,8 +565,8 @@ function considerFeatured(rows,query,fromFallback=false){
   const genericNamedEntity=/\\b(liceo|escuela|colegio|universidad|instituto|hospital|aeropuerto|estacion|estadio|avenida|calle|plaza|museo|biblioteca|teatro|monumento|school|college|university|airport|museum|hospital|street|square)\\b/;
   const nameOnlyQuery=core.length>=2&&core.length<=4&&!FEATURE_TYPE.has(core[0]);
   const namedAfterPenalty=!exact&&nameOnlyQuery&&genericNamedEntity.test(title)?-180:0;
-  const verifiedHumanBoost=r.entityKind==="person"&&r.wikidataId?220:0;
-  const authorityBoost=r.preferredWiki&&r.wikidataId?120:0;
+  const verifiedHumanBoost=r.entityKind==="person"&&r.wikidataId?450:0;
+  const authorityBoost=r.preferredWiki&&r.wikidataId?300:0;
   const extraTitlePenalty=!exact&&nameOnlyQuery?Math.min(60,Math.max(0,titleTokens.length-core.length)*8):0;
   const weight=(exact?160:0)+60*ratio+(inTitle?40*Math.min(1,inTitle/Math.max(1,core.length)):0)+(title.includes(q)&&q.length>2?70:0)+originBoost+namedAfterPenalty+verifiedHumanBoost+authorityBoost-extraTitlePenalty;
   // Cobertura mínima: con varias palabras de tema, al menos tres cuartas partes deben estar en el
@@ -569,7 +576,7 @@ function considerFeatured(rows,query,fromFallback=false){
  // El Destacado presenta una entidad (artículo enciclopédico, entidad de Wikidata, códice, pasaje o página del
  // sitio); los libros, artículos y objetos de museo tienen sus propias listas de resultados.
  }).filter(x=>x.covered&&x.weight>=95&&!FEATURE_NOT_ENTITY.has(x.row.type)).sort((a,b)=>b.weight-a.weight);
- if(!picks.length)featureJoinedFallback(query,core);
+ if(!picks.length&&!nameLike)featureJoinedFallback(query,core);
  if(!picks.length||picks[0].weight<=(S.featureWeight??-Infinity))return;
  // Lo que no es Wikipedia espera un momento: si llega el artículo de la entidad, gana sin parpadeo.
  if(picks[0].row.type!=="wikipedia"&&picks[0].weight<300&&!fromFallback){const best=picks[0],key=featureCurrent;setTimeout(()=>{if(featureCurrent===key&&best.weight>(S.featureWeight??-Infinity))applyFeatured(best.row,best.weight,query,q)},2500);return}
