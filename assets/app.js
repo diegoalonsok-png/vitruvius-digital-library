@@ -440,7 +440,7 @@ async function renderRightTranslation(article,group){
   }
   const page=p.pdf_pages?.translation;
   const ref=p.locus!==group.locus?' · bloque que abarca el locus solicitado':'';
-  source.innerHTML='<span class="parallel-source-label">'+escapeHTML(ed.version)+' · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):'')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
+  source.innerHTML='<span class="parallel-source-label">Fuente de la traducción: '+escapeHTML(ed.version)+' · Diego Kurilo · '+escapeHTML(languages[lang])+(page?' · PDF p. '+escapeHTML(page):' · página PDF no registrada')+escapeHTML(ref)+'</span><p class="parallel-biblio">'+bibliographyHTML(ed)+'</p>';
   const link=$('.parallel-open-translation',article);
   if(link)link.href=readerURL(ed.id,group.locus);
  }catch(e){
@@ -478,7 +478,7 @@ function renderMore(){
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
        '<div class="parallel-heading"><span>LATÍN · EDICIÓN '+escapeHTML(e.version)+'</span><strong>'+escapeHTML(e.version)+' · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · PDF: página no identificada')+'</strong></div>'+
        '<p class="parallel-passage">'+(parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
-       '<div class="parallel-latin-source"><span class="parallel-source-label">'+escapeHTML(e.version)+' · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF por identificar')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
+       '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(e.version)+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
      '<section class="parallel-translation" aria-label="Traducción del mismo locus">'+
