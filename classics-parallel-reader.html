@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lectura paralela · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Lectura comparativa independiente de originales griegos y latinos y traducciones, sin exigir alineación léxica.">
+<style>
+:root{color-scheme:light;--bg:#eeeae2;--panel:#fffdf7;--ink:#1d3448;--line:#c4b49c}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:16px clamp(12px,2vw,30px);background:#203b50;color:#fff;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+a{color:inherit}header a{margin-right:14px}h1{font:normal clamp(22px,3vw,31px) Georgia,serif;margin:0}
+main{padding:14px clamp(10px,2vw,30px)}.note{border-left:4px solid #9b8055;background:var(--panel);padding:10px 14px;margin:0 0 12px;font-size:13px}
+.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 10px}.controls label{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:9px;font-weight:600;font-size:13px}
+.controls select{width:100%;min-width:0;font:14px system-ui;padding:9px;background:#fff;color:#20364c;border:1px solid var(--line)}
+.panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pane{min-width:0;background:#fff;border:1px solid var(--line)}.pane strong{display:block;background:#d8ccba;padding:7px 12px;font-size:12px}
+iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:480px;background:white}
+#status{font-size:13px;min-height:20px;margin:5px 0 10px}
+@media(max-width:700px){.controls,.panes{grid-template-columns:1fr}iframe{height:65dvh;min-height:360px}}
+</style></head>
+<body>
+<header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a></nav></header>
+<main>
+<p class="note">Cada columna permite leer, buscar y navegar independientemente. No se presupone alineación entre palabras, párrafos, capítulos o folios. Si una traducción usa divisiones distintas, se conservan íntegramente sus unidades; la comparación es manual.</p>
+<div class="controls"><label>Original / primera edición <select id="left" aria-label="Lengua del visor izquierdo"></select></label><label>Traducción / segunda edición <select id="right" aria-label="Lengua del visor derecho"></select></label></div>
+<p id="status" role="status" aria-live="polite">Cargando las versiones documentadas…</p>
+<div class="panes"><section class="pane"><strong>Visor izquierdo · navegación independiente</strong><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>Visor derecho · navegación independiente</strong><iframe id="pane-right" title="Traducción o segunda edición"></iframe></section></div>
+</main>
+<script>
+(()=>{"use strict";
+const params=new URLSearchParams(location.search),work=params.get("work")||"didache",status=document.getElementById("status"),left=document.getElementById("left"),right=document.getElementById("right");
+if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
+const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português"};
+function frame(side,language){if(!language)return;const u=new URL("classics-text-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("lang",language);document.getElementById("pane-"+side).src=u.href;params.set(side,language);history.replaceState(null,"",location.pathname+"?"+params.toString());}
+function fill(select,languages){select.replaceChildren();for(const lang of languages){const opt=document.createElement("option");opt.value=lang;opt.textContent=LANG[lang]||lang;select.appendChild(opt);}}
+fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("No se pudo consultar el catálogo.");return r.json();}).then(c=>{
+ const rec=(c.works||[]).find(w=>w.id===work);if(!rec?.corpusFiles)throw Error("Esta obra todavía no tiene versiones textuales locales verificadas.");
+ const langs=Object.keys(rec.corpusFiles).filter(l=>Object.hasOwn(LANG,l)),ordered=["grc","la","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
+ if(!ordered.length)throw Error("No hay versiones disponibles para comparar.");
+ fill(left,ordered);fill(right,ordered);
+ left.value=ordered.includes(params.get("left"))?params.get("left"):ordered[0];
+ right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(x=>x!==left.value)||ordered[0]);
+ document.getElementById("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
+ status.textContent=rec.author+" · "+rec.title+" — "+ordered.length+" versión(es) local(es). "+(ordered.length<2?"Todavía no hay una segunda versión textual alojada para esta obra.":"Elegí una lengua distinta en cada visor para comparar.");
+ frame("left",left.value);frame("right",right.value);
+ for(const [side,sel] of [["left",left],["right",right]])sel.addEventListener("change",()=>frame(side,sel.value));
+ }).catch(e=>{status.textContent=e.message;});
+})();
+</script></body></html>
