@@ -191,7 +191,7 @@ function makeWordsClickable(block){
 function updateLanguage(){
  $("literal-search").textContent=ui("search");
  const translations={
-  es:{title:"Index locorum · Concordancias semánticas",fields:["Obra","Edición / idioma","Conceptus documentado","Buscar palabra o concepto en los textos"],export:"Exportar concordancias filtradas · TSV",panel:"Pasajes encontrados en las obras clásicas",description:"Escribí domus o casa: busca formas documentadas, muestra los pasajes y permite abrirlos en su edición.",more:"Mostrar más referencias"},
+  es:{title:"Index locorum · Concordancias semánticas",fields:["Obra","Edición / idioma","Conceptus documentado","Buscar palabra o concepto en los textos"],export:"Exportar concordancias filtradas · TSV",panel:"Pasajes encontrados en las obras clásicas",description:"Escribe domus o casa: busca formas documentadas, muestra los pasajes y permite abrirlos en su edición.",more:"Mostrar más referencias"},
   en:{title:"Index locorum · Semantic concordances",fields:["Work","Edition / language","Documented concept","Find a word or concept in the texts"],export:"Export filtered concordances · TSV",panel:"Passages found in classical works",description:"Type domus or casa to find documented terms and passages in their original editions.",more:"Show more references"},
   fr:{title:"Index locorum · Concordances sémantiques",fields:["Œuvre","Édition / langue","Concept documenté","Rechercher un mot ou concept dans les textes"],export:"Exporter les concordances filtrées · TSV",panel:"Passages trouvés dans les œuvres classiques",description:"Saisissez domus ou casa pour trouver les formes et passages attestés dans leurs éditions.",more:"Afficher plus de références"}
  };
@@ -234,7 +234,7 @@ function renderPassage(row){
 }
 async function searchLiteral(){
  const raw=$("query").value.trim(),token=++literalSerial,status=$("literal-status"),target=$("literal-results");target.replaceChildren();
- if(fold(raw).length<3){status.textContent="Escribí al menos tres letras.";return}
+ if(fold(raw).length<3){status.textContent="Escribe al menos tres letras.";return}
  if(!window.ClassicsCorpusSearch?.searchPassages){status.textContent="Índice de pasajes no disponible.";return}
  const {matched,forms}=lexicalTerms(raw),work=$("work").value,edition=$("edition").value;
  const selected=versions.find(v=>[v.workId,v.language,v.source,v.edition||""].join("|")===edition);
