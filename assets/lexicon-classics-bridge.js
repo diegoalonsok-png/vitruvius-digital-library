@@ -13,9 +13,10 @@ const note=document.createElement("p");note.textContent="Buscar la forma exacta 
 note.style.cssText="font:13px/1.5 system-ui;margin:0 0 9px;color:#ccc";
 const button=document.createElement("button");button.type="button";button.textContent="Buscar término en el corpus completo";
 button.style.cssText="background:#223b50;color:#fff;border:1px solid #b5a177;border-radius:4px;padding:9px 12px;cursor:pointer";
+const semantic=document.createElement("button");semantic.type="button";semantic.textContent="Buscar conceptos documentados";semantic.style.cssText="background:#263a31;color:#fff;border:1px solid #b5a177;border-radius:4px;padding:9px 12px;cursor:pointer;margin-left:8px";
 const status=document.createElement("p");status.setAttribute("role","status");status.style.cssText="font:12px/1.5 system-ui;color:#c9c0ad;margin:10px 0";
 const list=document.createElement("div");list.style.cssText="display:grid;gap:9px";
-parent.append(title,note,button,status,list);
+parent.append(title,note,button,semantic,status,list);
 const grid=results.closest(".results-grid");
 if(grid)grid.parentNode.insertBefore(parent,grid);else results.parentNode.insertBefore(parent,results);
 let serial=0;
@@ -27,20 +28,21 @@ function addResult(row){
  const excerpt=document.createElement("p");excerpt.textContent=row.excerpt||"";excerpt.style.cssText="font:14px/1.55 Georgia,serif;margin:5px 0";
  card.append(link,meta,excerpt);list.append(card);
 }
-async function execute(){
+async function execute(mode="literal"){
  const q=input.value.trim();const token=++serial;list.replaceChildren();
  if(q.length<3){status.textContent="Escriba al menos tres caracteres para consultar los textos indexados.";return}
  if(!window.ClassicsCorpusSearch){status.textContent="El motor de textos clásicos no está disponible.";return}
- button.disabled=true;status.textContent="Buscando testimonios textuales registrados…";
+ button.disabled=true;semantic.disabled=true;status.textContent="Buscando testimonios textuales registrados…";
  try{
-  const rows=await window.ClassicsCorpusSearch.search(q,{limit:32});
+  const rows=mode==="semantic"?await window.ClassicsCorpusSearch.semanticSearch(q,{limit:32}):await window.ClassicsCorpusSearch.search(q,{limit:32});
   if(token!==serial)return;
   rows.forEach(addResult);
-  status.textContent=rows.length?rows.length+" ediciones con coincidencias documentadas. Abra cada ficha para consultar su locus y procedencia.":"No se encontraron coincidencias literales en las ediciones actualmente indexadas; no implica ausencia en obras aún no transcritas.";
+  status.textContent=rows.length?rows.length+" ediciones con "+(mode==="semantic"?"correspondencias conceptuales editoriales":"coincidencias literales")+" comprobables. Consulte cada locus y su procedencia.":mode==="semantic"?"No hay correspondencias conceptuales registradas para esta consulta. No implica que el concepto esté ausente de los textos.":"No se encontraron coincidencias literales en las ediciones actualmente indexadas; no implica ausencia en obras aún no transcritas.";
  }catch(error){if(token===serial)status.textContent="No se pudo completar la búsqueda: "+String(error.message||error)}
- finally{if(token===serial)button.disabled=false}
+ finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
 }
-button.addEventListener("click",execute);
-input.addEventListener("input",()=>{serial++;button.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
+button.addEventListener("click",()=>execute("literal"));
+semantic.addEventListener("click",()=>execute("semantic"));
+input.addEventListener("input",()=>{serial++;button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 })();
