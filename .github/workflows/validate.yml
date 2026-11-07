@@ -61,6 +61,7 @@ jobs:
           node --check assets/vitruvia-search.js
           node --check assets/vitruvia-entity-resolver.js
           node --check assets/research-folder.js
+          node --check assets/papyrology-ostraca.js
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'
