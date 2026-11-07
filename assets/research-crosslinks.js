@@ -14,7 +14,7 @@ const start=()=>{if(document.getElementById("research-crosslinks"))return;
  const links=[["Vitruvius · Biblioteca","bibliotheca-graeca-latina.html"],["Vitruvia · Buscador","vitruvia.html"],["Lexicon · Lengua","vitruvia-lexicon.html"],["Index locorum","index-locorum.html"]];
  const anchors=links.map(([name,href])=>{const a=document.createElement("a");a.textContent=name;a.href=href;a.style.cssText="color:inherit;text-decoration:underline;text-underline-offset:3px";if(page===href)a.setAttribute("aria-current","page");section.append(a);return a});
  const info=document.createElement("span");info.style.opacity=".78";info.textContent="Se conserva la consulta; no se presupone correspondencia entre ediciones.";section.append(info);
- const ctx=()=>{const qs=new URLSearchParams(location.search),typed=(input?.value||"").trim().slice(0,180);return {q:typed||qs.get("q")||qs.get("term")||"",work:qs.get("work")||"",locus:qs.get("locus")||"",lang:qs.get("lang")||""}};
+ const ctx=()=>{const qs=new URLSearchParams(location.search),typed=(input?.value||"").trim().slice(0,180);return {q:typed||qs.get("q")||qs.get("term")||"",work:(page==="index-locorum.html"?document.getElementById("work")?.value:"")||qs.get("work")||"",locus:qs.get("locus")||"",lang:qs.get("lang")||""}};
  function refresh(){const {q,work,locus,lang}=ctx();
   anchors.forEach((a,i)=>{const u=new URL(links[i][1],location.href);
    if(i===0){if(work)u.searchParams.set("work",work);else if(q)u.searchParams.set("term",q)}
@@ -28,6 +28,7 @@ const start=()=>{if(document.getElementById("research-crosslinks"))return;
  if(anchor&&main?.contains(anchor))anchor.after(section);else if(main)main.prepend(section);else document.body.append(section);
  input?.addEventListener("input",refresh);
  input?.addEventListener("change",refresh);
+ document.getElementById("work")?.addEventListener("change",refresh);
  section.addEventListener("pointerdown",refresh);
  section.addEventListener("focusin",refresh);
  refresh();
