@@ -15,7 +15,7 @@
     "locallyReadableClaims": 24,
     "indexedTextVersions": 43,
     "indexedDistinctWorks": 20,
-    "manuscriptWitnesses": 0
+    "manuscriptWitnesses": 23
   },
   "works": [
     {
@@ -41,7 +41,12 @@
       "hasStructuredVitruviusReader": true,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [],
+      "manuscriptRecords": [
+        {
+          "id": "vitruvius-h",
+          "shelfmark": "Harley MS 2767"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. Se indexan ambos campos (latín y traducción) sin duplicar el archivo V514; el registro de versiones distingue cuatro lenguas en tres fuentes estructuradas. Diferencias de recensio no garantizan identidad textual."
     },
@@ -65,7 +70,12 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [],
+      "manuscriptRecords": [
+        {
+          "id": "cicero-officiis-geneva",
+          "shelfmark": "Ms. lat. 88"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -101,7 +111,12 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [],
+      "manuscriptRecords": [
+        {
+          "id": "cicero-republica-vat5757",
+          "shelfmark": "Vat. lat. 5757"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -223,7 +238,12 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [],
+      "manuscriptRecords": [
+        {
+          "id": "lucretius-oblongus",
+          "shelfmark": "VLF 30 (Voss. lat. F. 30)"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -246,8 +266,17 @@
       "localPDF": "documents/classics/virgil-aeneid-book-i-walpole-1893.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "vergil-vaticanus-aeneid",
+          "shelfmark": "Vat. lat. 3225"
+        },
+        {
+          "id": "vergil-romanus",
+          "shelfmark": "Vat. lat. 3867"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -270,8 +299,17 @@
       "localPDF": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "vergil-vaticanus-georgica",
+          "shelfmark": "Vat. lat. 3225, ff. 1r–10v"
+        },
+        {
+          "id": "vergil-romanus",
+          "shelfmark": "Vat. lat. 3867"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -324,8 +362,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "ovid-metamorphoses-vat-lat-2781",
+          "shelfmark": "Vat. lat. 2781"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -522,8 +565,17 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "dioscorides-vienna",
+          "shelfmark": "Cod. med. gr. 1"
+        },
+        {
+          "id": "dioscorides-paris",
+          "shelfmark": "Grec 2179"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -540,8 +592,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "josephus-vat-gr-984",
+          "shelfmark": "Vat. gr. 984"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -558,8 +615,17 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "josephus-pal-gr-14",
+          "shelfmark": "Pal. gr. 14"
+        },
+        {
+          "id": "josephus-vat-gr-984",
+          "shelfmark": "Vat. gr. 984"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -744,8 +810,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "faventinus-gudianus-132",
+          "shelfmark": "Cod. Guelf. 132 Gud. lat."
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1277,7 +1348,16 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [],
+      "manuscriptRecords": [
+        {
+          "id": "catullus-thuaneus-8071",
+          "shelfmark": "Latin 8071"
+        },
+        {
+          "id": "catullus-oxford-o",
+          "shelfmark": "MS. Canon. Class. Lat. 30"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1390,8 +1470,17 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "tacitus-mediceus-1",
+          "shelfmark": "Plut. 68.1"
+        },
+        {
+          "id": "tacitus-mediceus-2",
+          "shelfmark": "Plut. 68.2"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1408,8 +1497,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "tacitus-mediceus-2",
+          "shelfmark": "Plut. 68.2"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1903,7 +1997,12 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [],
+      "manuscriptRecords": [
+        {
+          "id": "marcus-aurelius-vat1950",
+          "shelfmark": "Vat. gr. 1950, parte 2"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1926,8 +2025,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "homer-iliad-venetus-a",
+          "shelfmark": "Marc. gr. Z. 454 (= 822)"
+        }
+      ],
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2130,8 +2234,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "plato-parisinus-graecus-1807",
+          "shelfmark": "Grec 1807"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2772,8 +2881,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "plato-parisinus-graecus-1807",
+          "shelfmark": "Grec 1807"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2826,8 +2940,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "plato-parisinus-graecus-1807",
+          "shelfmark": "Grec 1807"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3876,8 +3995,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "euclid-vat-gr-190",
+          "shelfmark": "Vat. gr. 190, pt. 1"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4074,8 +4198,17 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "agrimensores-arcerianus",
+          "shelfmark": "Cod. Guelf. 36.23 Aug. 2°"
+        },
+        {
+          "id": "agrimensores-pal-lat-1564",
+          "shelfmark": "Pal. lat. 1564"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4092,8 +4225,17 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "agrimensores-arcerianus",
+          "shelfmark": "Cod. Guelf. 36.23 Aug. 2°"
+        },
+        {
+          "id": "agrimensores-pal-lat-1564",
+          "shelfmark": "Pal. lat. 1564"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4110,8 +4252,13 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": [
+        {
+          "id": "agrimensores-pal-lat-1564",
+          "shelfmark": "Pal. lat. 1564"
+        }
+      ],
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
