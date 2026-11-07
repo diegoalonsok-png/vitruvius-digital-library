@@ -26,10 +26,30 @@ jobs:
           python-version: '3.12'
       - name: Construir índice por obras y loci
         run: python scripts/build_classics_semantic_index.py
-      - name: Guardar índice reproducible
+      - name: Guardar índice reproducible sin sobrescribir commits concurrentes
+        shell: bash
         run: |
-          git add data/classics-corpus/semantic-conceptus-postings.json
-          if ! git diff --cached --quiet; then
-            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Actualizar índice semántico Conceptus"
-            git push
-          fi
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Rebuild after fetching the latest main on each attempt: never push
+          # an index calculated from a stale snapshot or force-push over work.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/build_classics_semantic_index.py
+            git add data/classics-corpus/semantic-conceptus-postings.json
+            if git diff --cached --quiet; then
+              echo "Índice actualizado; no hay cambios pendientes."
+              exit 0
+            fi
+            git commit -m "Actualizar índice semántico Conceptus"
+            if git push origin HEAD:main; then
+              echo "Índice publicado correctamente."
+              exit 0
+            fi
+            echo "La rama main cambió durante la publicación; reintentando desde la versión actual ($attempt/5)."
+            sleep "$((attempt * 2))"
+          done
+          echo "::error::No fue posible publicar el índice tras cinco intentos concurrentes."
+          exit 1
