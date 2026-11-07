@@ -8,6 +8,7 @@ on:
       - 'scripts/test-mass-index-completeness.py'
       - '.github/workflows/classics-mass-index.yml'
   push:
+    branches: [main]
     paths:
       - '.github/workflows/classics-mass-index.yml'
       - 'scripts/mass-index-classics.py'
