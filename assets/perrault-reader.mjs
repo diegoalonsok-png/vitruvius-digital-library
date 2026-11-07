@@ -139,7 +139,7 @@ async function load(){
     if(!response.ok)throw Error("índice local HTTP "+response.status);
     const saved=await response.json();
     if(saved.source!==copy.manifest||!Array.isArray(saved.pages)||saved.pages.length!==370||
-      !saved.pages.every(p=>/^\\d+$/.test(String(p.id))&&validHttps(p.fallback)))
+      !saved.pages.every(p=>/^\d+$/.test(String(p.id))&&validHttps(p.fallback)))
       throw Error("el índice alternativo no pasó validación");
     pages=saved.pages.map(p=>({
      url:"https://www.e-rara.ch/i3f/v20/"+p.id+"/full/1100,/0/default.jpg",
