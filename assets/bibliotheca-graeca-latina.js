@@ -639,6 +639,7 @@ if(tab==="study"&&hasStudyPair(w)){
    state.text.lang=state.language.value;
    state.message.textContent="Locus "+p.locus+" · "+(state.index+1)+" / "+state.data.passages.length;
    state.previous.disabled=state.index===0;state.following.disabled=state.index>=state.data.passages.length-1;
+   state.tools?.render();
   }
   function navigate(){
    if(!states[0]?.data||!states[1]?.data)return;
@@ -685,6 +686,12 @@ if(tab==="study"&&hasStudyPair(w)){
    const source=document.createElement("small");const link=document.createElement("a");link.textContent="Abrir lector completo ↗";link.target="_blank";link.rel="noopener noreferrer";
    col.append(language,row,query,message,text,source,link);
    const state={options,language,previous,chapter,following,query,message,text,source,link,index:0,data:null,token:0};states.push(state);
+   state.tools=window.ClassicsStudyTools?.attach({
+    work:w.id,side,root:text,column:col,
+    getLanguage:()=>language.value,
+    getLocus:()=>state.data?.passages[state.index]?.locus||"",
+    getSourceText:()=>state.data?.passages[state.index]?.text||""
+   });
    language.addEventListener("change",()=>{step=0;change(side)});
    chapter.addEventListener("change",()=>{draw(side,Number(chapter.value)||0);if(side===0){step=Number(chapter.value)||0;if(checkbox.checked)navigate()}});
    previous.addEventListener("click",()=>{if(side===0&&checkbox.checked){step=Math.max(0,step-1);navigate()}else draw(side,state.index-1)});
