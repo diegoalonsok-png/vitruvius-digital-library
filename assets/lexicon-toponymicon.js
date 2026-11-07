@@ -12,7 +12,6 @@ p.innerHTML='<details id="lx-topo-details"><summary>Toponymicon · lugares del m
 form.parentElement?.after(p);
 const $=id=>document.getElementById(id),status=$("lx-topo-state"),result=$("lx-topo-result");
 const modeExact=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase().replace(/[ςϲ]/g,"σ").trim();
-const boundary=/[\p{L}\p{M}\p{N}]/u;
 const placeIndex=fetch("data/lexicon/toponymicon.json").then(r=>{if(!r.ok)throw Error("Registro de lugares HTTP "+r.status);return r.json()});
 let registryPromise=null,active=0;
 function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=String(text);if(cls)n.className=cls;return n}
@@ -21,14 +20,13 @@ function firstMatch(places,query){
  const key=modeExact(query);if(key.length<2)return null;
  return places.find(place=>[place.label,place.nameAncient,...place.aliases].some(alias=>modeExact(alias)===key))||null;
 }
-function wholeMatches(text,form){
- const src=String(text||""),a=modeExact(src),q=modeExact(form);
- if(!q||q.length<3)return null;
- let i=a.indexOf(q);while(i>=0){
-  if(!boundary.test(a[i-1]||"")&&!boundary.test(a[i+q.length]||""))return {index:i,form:src.slice(i,i+q.length)};
-  i=a.indexOf(q,i+q.length);
- }
- return null;
+function wholeMatches(text,form,language){
+ // Use grapheme-aware source offsets: Greek accents and breathing marks must
+ // not shift the snippet or fabricate an editorial reading.
+ const engine=window.VitruviaOrthography;
+ if(!engine)return null;
+ const found=engine.attestations(String(text||""),form,"editorial",language,1)[0];
+ return found?{index:found.start,form:found.form}:null;
 }
 function sourceTexts(e,documentContent){
  if(e.format==="json-passages")return (documentContent.passages||[]).map(p=>({locus:p.locus||p.id||"",text:p.text||""}));
@@ -105,7 +103,7 @@ async function searchToponym(query,automatic=false){
     const matches=[];
     for(const passage of item.passages){
      // Only listed variant forms count, never broad semantic or phonetic guesses.
-     const found=forms.map(form=>({form,match:wholeMatches(passage.text,form)})).find(x=>x.match);
+     const found=forms.map(form=>({form,match:wholeMatches(passage.text,form,item.entry.language)})).find(x=>x.match);
      if(found)matches.push({...found,passage});
     }
     if(!matches.length)continue;
