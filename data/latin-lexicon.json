@@ -762,14 +762,26 @@
         "architectum",
         "architectus"
       ],
-      "es": "arquitecto",
+      "es": "arquitecto; maestro de obras; responsable del proyecto y de la dirección de una construcción; en usos figurados, artífice o autor de una obra",
       "headword": "archĭtectus i m.",
-      "pos": "",
+      "pos": "Sustantivo masculino · 2.ª declinación (architectus, -ī)",
       "en": "A master-builder; architect; an inventor; deviser; contriver; author; maker; a female architect",
-      "fr": "",
-      "senses": [],
+      "fr": "architecte; maître d'œuvre; concepteur, auteur (sens figuré)",
+      "senses": [
+        "Maestro de obras o arquitecto: persona que proyecta, organiza y supervisa la ejecución de edificios u otras construcciones.",
+        "En el contexto de Vitruvio, técnico cuya formación abarca tanto la práctica constructiva (fabrica) como el razonamiento y conocimiento de las disciplinas (ratiocinatio).",
+        "Por extensión o en uso figurado, artífice, inventor, organizador o autor de una obra o proyecto."
+      ],
       "verified": false,
-      "source": "Equivalencia castellana orientativa redactada para el sitio; glosa inglesa del Lewis & Short. Verificar con la traducción V514."
+      "source": "Equivalencia castellana orientativa redactada para el sitio; glosa inglesa del Lewis & Short. Verificar con la traducción V514.",
+      "vitruvian": "En De architectura I.1.1–2, architecti aparece en la exposición de la scientia del arquitecto y de la necesidad de unir experiencia práctica con formación teórica. La forma architecti puede ser genitivo singular o nominativo plural según el contexto; no se debe imponer una sola interpretación morfológica fuera del pasaje.",
+      "references": [
+        "Vitr., De arch. I.1.1–2",
+        "Lewis & Short (1879), s. v. architectus"
+      ],
+      "morphology": {
+        "architecti": "Genitivo singular («del arquitecto») o nominativo plural («los arquitectos»), según el contexto."
+      }
     },
     {
       "lemma": "aries",
