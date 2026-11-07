@@ -20,7 +20,8 @@ test('Pythagoras queries use the Commons name and deliberately seek busts, portr
  assert.match(queries,/Pythagoras bust/);assert.match(queries,/Pythagoras portrait painting/);assert.match(queries,/Pythagoras book manuscript/);
 });
 test('busts and portraits outrank diagrams even if diagrams have a higher lexical score',()=>{
- const fixtures=[page('Pythagoras theorem diagram.jpg','',{fromTrustedCategory:true}),page('Bust of Pythagoras, marble.jpg'),page('Pythagoras portrait engraving.jpg'),page('Pythagoras book frontispiece.jpg')];
+ const provenance={fromTrustedCategory:true,sourceCategory:'Category:Ancient Greek philosophers – Pythagoras'};
+ const fixtures=[page('Pythagoras theorem diagram.jpg','',provenance),page('Bust of Pythagoras, marble.jpg','',provenance),page('Pythagoras portrait engraving.jpg','',provenance),page('Pythagoras book frontispiece.jpg','',provenance)];
  const items=fixtures.map(p=>({...D.imageRank(p,pythagoras),name:p.title}));
  assert.deepEqual(Array.from(D.sortImages(items,pythagoras),x=>x.group),['sculpture','portrait','book','context']);
 });
