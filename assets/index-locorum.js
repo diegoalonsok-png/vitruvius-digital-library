@@ -69,7 +69,7 @@ function append(){
  }
  $("results").append(frag);shown+=slice.length;
  $("more").hidden=shown>=filtered.length;
- $("summary").textContent=versions.length+" ediciones registradas · "+filtered.length+" entradas concepto/edición con referencias. Mostrando "+shown+". El índice es una concordancia semántica editorial basada en formas; no verifica sentidos individuales.";
+ $("summary").textContent=versions.length+" ediciones registradas · "+filtered.length+" entradas concepto/edición con referencias. Mostrando "+shown+". "+(filtered.length===0&&$("query").value.trim()?"Sin coincidencia en Conceptus: consultá la concordancia literal de los textos, disponible más arriba. ":"")+"El índice conceptual no sustituye la concordancia literal ni verifica sentidos individuales.";
 }
 function exportTsv(){
  const clean=x=>String(x??"").replace(/[\t\r\n]+/g," ").trim();
@@ -133,8 +133,8 @@ async function init(){
 $("work").addEventListener("change",()=>{refillEditions();render()});
 ["edition","concept"].forEach(id=>$(id).addEventListener("change",render));
 let filterTimer=null;
-$("query").addEventListener("input",()=>{clearTimeout(filterTimer);filterTimer=setTimeout(render,130)});
-$("query").addEventListener("keydown",event=>{if(event.key==="Enter"){clearTimeout(filterTimer);render()}});
+$("query").addEventListener("input",()=>{clearTimeout(filterTimer);literalSerial++;$("literal-results").replaceChildren();$("literal-status").textContent="Presioná Enter o «Buscar palabra en los textos» para consultar coincidencias literales.";filterTimer=setTimeout(render,130)});
+$("query").addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();clearTimeout(filterTimer);render();searchLiteral()}});
 $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
 $("literal-search").addEventListener("click",searchLiteral);
