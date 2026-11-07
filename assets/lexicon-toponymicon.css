@@ -1,0 +1,31 @@
+/* Toponymicon: scholarly ancient-place evidence and cartographic provenance */
+#lx-toponymicon{max-width:1200px;margin:15px auto 22px;padding:0 18px;font:14px/1.65 system-ui,sans-serif}
+#lx-toponymicon details{border:1px solid #aa9473;border-radius:13px;background:var(--panel,#172027);color:inherit;box-shadow:0 3px 16px rgba(0,0,0,.10)}
+#lx-toponymicon summary{padding:14px 18px;font:700 15px/1.5 system-ui,sans-serif;cursor:pointer;list-style-position:inside}
+#lx-toponymicon summary:focus-visible{outline:2px solid #c2a271;outline-offset:2px}
+.lx-topo-kicker{display:inline-block;margin-left:10px;padding:4px 10px;border:1px solid #a99372;border-radius:99px;font:600 11px system-ui,sans-serif}
+.lx-topo-inner{padding:18px 22px 23px;border-top:1px solid #aa947377}
+.lx-topo-inner>p{max-width:950px;margin:0 0 14px}
+.lx-topo-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 13px}
+.lx-topo-row label{font-weight:700}
+.lx-topo-row input{flex:1 1 230px;background:#fffdf8;color:#253748;border:1px solid #aa9473;border-radius:8px;padding:11px;font:16px Georgia,serif;min-width:180px}
+.lx-topo-row button{padding:11px 14px;border:1px solid #aa9473;border-radius:8px;background:#2a4960;color:white;font:650 13px system-ui,sans-serif;cursor:pointer}
+#lx-topo-state{min-height:22px;margin:14px 0;font-size:13px;opacity:.84}
+.lx-topo-card{border-top:1px solid #aa947366;padding-top:13px}
+.lx-topo-card h3{margin:5px 0 10px;font:normal 27px Georgia,serif}
+.lx-topo-card h4{font:700 16px system-ui,sans-serif;margin:23px 0 12px}
+.lx-topo-card p{line-height:1.6}
+.lx-topo-forms{font-size:13px;overflow-wrap:anywhere}
+.lx-topo-method,.lx-topo-citation{font:12px/1.6 system-ui,sans-serif;opacity:.8}
+.lx-topo-links{display:flex;flex-wrap:wrap;gap:8px 11px;margin:16px 0}
+.lx-topo-links a{border:1px solid #aa9473;border-radius:9px;padding:9px 13px;color:inherit;text-decoration:none;font:600 13px system-ui,sans-serif}
+.lx-topo-links a:hover{background:rgba(148,132,104,.14)}
+.lx-topo-attestations{display:grid;gap:13px}
+.lx-topo-edition{border:1px solid #aa947377;border-radius:11px;padding:15px;margin:12px 0}
+.lx-topo-edition h5{font:700 15px system-ui,sans-serif;margin:0 0 7px}
+.lx-topo-locus{border-top:1px solid #aa947355;margin:10px 0 0;padding:10px 0 0}
+.lx-topo-locus a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.lx-topo-locus p{margin:6px 0}
+.lx-topo-locus small{opacity:.77}
+html[data-theme=light] #lx-toponymicon details{background:#fffcf6;color:#263747}
+@media(max-width:700px){#lx-toponymicon{padding:0 9px}.lx-topo-inner{padding:12px}.lx-topo-kicker{margin-top:5px}.lx-topo-row button,.lx-topo-row input{width:100%}}
