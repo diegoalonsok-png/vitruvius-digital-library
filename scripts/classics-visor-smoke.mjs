@@ -479,7 +479,7 @@ try{
  await check('Classical catalogue exposes real parallel-reading link for translated works',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=didache');
   try{
-   await p.locator('#classic-list button[data-id="didache"]').waitFor({timeout:25000});
+   await p.locator('#classic-list button[data-id="didache"]').waitFor({state:'attached',timeout:25000});
    const detail=p.locator('#classic-detail');
    await detail.locator('a[href*="classics-parallel-reader.html?work=didache"]').first().waitFor({timeout:12000});
    assert.match(await detail.innerText(),/leer original y traducción lado a lado/i);
