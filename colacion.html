@@ -25,6 +25,17 @@
 .coll-lem{font-style:normal}.coll-var{font-style:italic}.coll-sig{font:11px Arial,sans-serif;opacity:.7}
 .coll-note{margin:8px 0 12px}.coll-note p{margin:3px 0}
 .coll-base{background:rgba(201,168,76,.06);padding:14px 12px}
+.coll-row{border:1px solid rgba(150,130,95,.32);border-radius:14px;padding:18px;margin:14px 0;background:rgba(128,110,75,.035);min-width:0}
+.coll-base{background:rgba(201,168,76,.065)}
+.coll-translation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin:16px 0}
+.coll-translation{border:1px solid rgba(150,130,95,.32);border-radius:12px;padding:16px;background:rgba(128,110,75,.045);min-width:0}
+.coll-translation h3{font:600 12px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase;margin:0 0 10px}
+.coll-translation p{font:16px/1.65 Georgia,serif;margin:0;overflow-wrap:anywhere}
+.coll-translation a{display:inline-block;margin-top:12px;font:13px Arial,sans-serif}
+.coll-witnesses{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px}
+.coll-witnesses>.coll-row{margin:0}
+.coll-warning{font:13px/1.5 Arial,sans-serif;opacity:.82}
+@media(max-width:680px){.coll-row{padding:13px}.coll-translation{padding:13px}.coll-text{font-size:16px}}
 </style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html"><meta name="citation_title" content="Colación por locus de De architectura: V514, Rose (1899) y Krohn (1912)"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html">
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body>
@@ -32,7 +43,7 @@
 <main class="coll-main" id="contenido">
 <p class="coll-eyebrow">Instrumenta philologica · Collatio</p>
 <h1>Colación por locus</h1>
-<p>Para cada pasaje, el texto latino de la edición de Diego Kurilo (V514) frente a las ediciones críticas de Rose (1899) y Krohn (1912), con las lecturas divergentes en forma de aparato, las notas del aparato crítico de las ediciones Kurilo y el folio correspondiente del Codex Harleianus.</p>
+<p>Para cada pasaje, el texto latino de la edición de Diego Kurilo (V514) frente a las ediciones críticas de Rose (1899) y Krohn (1912), con cuadros de texto y traducciones por locus, lecturas divergentes, aparato crítico y el folio correspondiente del Codex Harleianus. Se reutilizan las fuentes existentes, sin crear nuevos visores.</p>
 <form id="coll-form" role="search"><label for="coll-locus">Locus</label><input id="coll-locus" list="coll-list" placeholder="I.2.4 · 3.1.1 · 5.praef.1" autocomplete="off"><datalist id="coll-list"></datalist><button type="submit">Ir</button><button id="coll-prev" type="button" aria-label="Locus anterior">←</button><button id="coll-next" type="button" aria-label="Locus siguiente">→</button></form>
 <p id="coll-status" role="status">Cargando…</p>
 <div id="coll-body" aria-live="polite"></div>
@@ -41,6 +52,6 @@
 <script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-apparatus-v2"></script>
 <script src="assets/research-folder.js?v=20261105-v1"></script>
-<script src="assets/collation-page.js?v=20261105-v2"></script>
+<script src="assets/collation-page.js?v=20261106-cuadros-v1"></script>
 <script src="assets/theme.js?v=20261105-merge-v1" defer></script>
 </body></html>
