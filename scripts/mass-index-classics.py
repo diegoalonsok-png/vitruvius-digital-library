@@ -206,11 +206,16 @@ def run():
         audit["counts"]["indexedTextVersions"] = reg["count"]
         audit["counts"]["indexedDistinctWorks"] = reg["works"]
         save(AUDIT, audit)
+        indexed_by_work = {}
+        for record in reg["entries"]:
+            indexed_by_work.setdefault(record["workId"], set()).add(record["language"])
         for entry in backlog.get("entries", []):
-            added = {row["lang"] for row in created if row["workId"] == entry["id"]}
-            if added:
-                entry["indexed"] = sorted(set(entry.get("indexed", [])) | added)
-                entry["missing"] = [lang for lang in entry.get("missing", []) if lang not in added]
+            registered = indexed_by_work.get(entry["id"], set())
+            expected = set(entry.get("missing", [])) | set(entry.get("indexed", []))
+            if entry.get("original"):
+                expected.add(entry["original"])
+            entry["indexed"] = sorted(registered)
+            entry["missing"] = sorted(expected - registered)
         backlog["snapshot"] = today
         backlog["missingOriginals"] = sum(
             bool(e.get("original") and e["original"] not in e.get("indexed", []))
