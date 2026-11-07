@@ -168,6 +168,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
   return Array.isArray(list)?list.filter(a=>Number.isInteger(a.start)&&Number.isInteger(a.end)&&a.end>a.start&&a.start>=0&&a.end<200000):[];
  }
  function render(){
+  stopSpeech();
   hideLens();
   const source=String(getSourceText()||"");
   root.replaceChildren();
