@@ -143,7 +143,7 @@ async function load(language){
  const path=base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
  let corpus=await response.json();
- if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||(corpus.passages.length<(work==="sulpicia-elegiae"?6:10)))throw Error("El documento no pasó validación de integridad");
+ if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<350)throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
   // Never block access to any of the 312 original anthology units on optional metadata.
   // The note is visible immediately; the provenance file may refine it asynchronously.
