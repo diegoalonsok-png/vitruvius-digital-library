@@ -546,10 +546,10 @@ function considerFeatured(rows,query,fromFallback=false){
  // En consultas con forma de nombre, los artículos que devuelve la búsqueda
  // textual de Wikipedia no bastan para acreditar la identidad. Solo la entidad
  // resuelta por Wikidata/Wikipedia (preferredWiki) puede ser la ficha destacada.
- const nameLike=core.length>=2&&core.length<=5&&!featureTokens(query).typed&&
+ const nameLike=core.length>=2&&core.length<=5&&
   !/\\b(que|como|cuando|donde|porque|why|what|how|where|historia de|history of)\\b/i.test(q);
  const picks=(rows||[]).filter(r=>r.link&&r.title&&
-  !(nameLike&&r.type==="wikipedia"&&!r.preferredWiki)&&
+  !(nameLike&&r.type!=="manuscript"&&!(r.preferredWiki&&r.wikidataId))&&
   (!window.VitruviaContextGuard||window.VitruviaContextGuard.allows(r,query,S.identifiedSubject))).map(r=>{
   const title=norm(r.title),exact=title===q||title===core.join(" ")||title.replace(/\s+/g,"")===core.join("");
   const {ratio,inTitle}=featureCoverage(core,r.title,r.excerpt||"");
