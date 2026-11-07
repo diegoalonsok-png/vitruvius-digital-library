@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 37,
-  "works": 18,
+  "count": 38,
+  "works": 19,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -54,6 +54,16 @@
       "path": "data/classics-corpus/aristotle-poetics-grc.json",
       "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "augustus-res-gestae",
+      "author": "Augusto",
+      "title": "Res gestae divi Augusti",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/augustus-res-gestae-la.json",
+      "reader": "classics-text-reader.html?work=augustus-res-gestae&lang=la",
+      "sourceDescription": "Texto latino en 35 secciones y cuatro apéndices, Wikisource CC BY-SA; sin revisión epigráfica de lagunas; traducciones pendientes."
     },
     {
       "workId": "caesar-gallico",
