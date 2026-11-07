@@ -75,7 +75,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 <p><strong>Imagen:</strong> <span id="pr-counter">— / —</span> · <strong>Etiqueta del ejemplar:</strong> <span id="pr-label">—</span></p>
 <p id="pr-status" role="status" aria-live="polite">Preparando índice IIIF…</p>
 <div id="pr-stage" tabindex="0" aria-label="Imagen del ejemplar impreso de Perrault"><img id="pr-image" alt="Página digitalizada del ejemplar histórico de Perrault" hidden></div>
-<p class="note">Los controles permiten recorrer todas las imágenes del ejemplar institucional en su orden IIIF. Las páginas se cargan de una en una para no descargar el volumen entero. La opción «Buscar etiqueta» solo busca las etiquetas documentales del manifiesto; no equivale a una búsqueda textual por OCR.</p>
+<p class="note">Los controles permiten recorrer todas las imágenes del ejemplar institucional en su orden IIIF. Las páginas se cargan de una en una para no descargar el volumen entero. Cuando el servidor permite acceder al índice IIIF, el navegador conserva una copia local del índice para acelerar las visitas siguientes; no guarda las imágenes. La opción «Buscar etiqueta» solo busca las etiquetas documentales del manifiesto; no equivale a una búsqueda textual por OCR.</p>
 <div class="sources">
 <a id="pr-source" href="https://www.e-rara.ch/zut/content/titleinfo/16797458" target="_blank" rel="noopener noreferrer">Ejemplar y visor oficial de e-rara ↗</a>
 <a id="pr-doi" href="https://doi.org/10.3931/e-rara-61952" target="_blank" rel="noopener noreferrer">DOI y condiciones de uso ↗</a>
@@ -83,5 +83,5 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 </div>
 <footer>Fuente: <span id="pr-shelfmark">ETH-Bibliothek Zürich</span>. Digitalización: e-rara / ETH-Bibliothek Zürich. Public Domain Mark conforme a su ficha institucional; se mantiene el DOI, la signatura y la atribución. El lector no aloja imágenes del volumen en GitHub.</footer>
 </main>
-<script type="module" src="assets/perrault-reader.mjs?v=20261106-folios-v1"></script>
+<script type="module" src="assets/perrault-reader.mjs?v=20261106-index-cache-v2"></script>
 </body></html>
