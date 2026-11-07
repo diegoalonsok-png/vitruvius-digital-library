@@ -60,11 +60,12 @@ function presentation(place){
  links.setAttribute("aria-label","Atlas históricos y referencias externas");
  links.append(
   anchor(place.source,"Pleiades · lugar identificado y mapa"),
-  anchor("https://isaw.nyu.edu/exhibitions/space/alacarte.html","Antiquity À-la-carte · mapas históricos reconstruidos"),
+  anchor("https://isaw.nyu.edu/exhibitions/space/alacarte.html","Antiquity À-la-carte · cartografía académica reconstruida"),
+  anchor("https://peutinger.atlantides.org/map-a/","Tabula Peutingeriana · facsímil de mapa histórico"),
   anchor("https://pleiades.stoa.org/places","Pleiades · explorar topónimos antiguos")
  );
  card.append(links);
- card.append(node("p","Precisión: el mapa de Pleiades y las capas AWMC son cartografía moderna de reconstrucción histórica, no mapas dibujados en la propia Antigüedad. La localización es representativa, no el perímetro arqueológico.","lx-topo-method"));
+ card.append(node("p","Precisión: el mapa de Pleiades y las capas AWMC son cartografía moderna de reconstrucción histórica, no mapas dibujados en la propia Antigüedad. La localización es representativa, no el perímetro arqueológico. La Tabula Peutingeriana es una copia medieval de un itinerario de tradición tardoantigua: no todos los lugares aparecen representados.","lx-topo-method"));
  const subtitle=node("h4","Index locorum geográfico · testimonios locales");card.append(subtitle);
  const hits=node("div",undefined,"lx-topo-attestations");card.append(hits);result.append(card);
  return hits;
