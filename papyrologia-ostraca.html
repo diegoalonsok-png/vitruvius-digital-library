@@ -46,6 +46,14 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 .pap-ancient-signs button{font-size:25px;min-height:64px;background:white;border:1px solid #baa378;border-radius:4px;cursor:pointer;color:#283d4b}
 .pap-ancient-signs small{display:block;font-size:11px;direction:ltr;unicode-bidi:isolate}
 #pap-ancient-alphabet{margin-top:14px}
+
+.pap-glyph-layout{display:grid;grid-template-columns:minmax(240px,360px) minmax(240px,1fr);gap:14px}
+#pap-glyph-canvas{max-width:100%;height:auto;background:#fffdf8;border:2px solid #aa9778;touch-action:none;cursor:crosshair;border-radius:6px}
+.pap-glyph-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(142px,1fr));gap:8px;margin:12px 0}
+.pap-glyph-results button{cursor:pointer;background:#f5eedf;border:1px solid #b6a27f;border-radius:6px;padding:10px;text-align:left;color:#223c52}
+.pap-glyph-results button strong{font-size:29px;display:block;line-height:1.4}
+.pap-glyph-results button small{display:block;font-size:11px}
+@media(max-width:700px){.pap-glyph-layout{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -126,6 +134,26 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <p id="pap-script-note" class="caption">Griego antiguo: lectura OCR experimental; revisar trazos y signos.</p>
 <p class="caption">Desglose por carácter Unicode (no implica identificación paleográfica individual ni confianza estadística por letra). Selecciona un carácter para insertarlo en la transcripción.</p>
 <div id="pap-graphemes" aria-label="Caracteres propuestos por OCR"></div>
+<section class="panel" id="pap-glyph-lab" aria-labelledby="pap-glyph-h">
+<h2 id="pap-glyph-h">5 · Laboratorio de signos dibujados · Paleohebreo y fenicio</h2>
+<p class="caption">Dibuja un signo visto en el óstracon o en el papiro (ratón, lápiz o dedo), o copia al lienzo el detalle ampliado. Un comparador geométrico local propone signos parecidos de repertorios Unicode. <strong>No reconoce de forma validada el idioma ni reemplaza la paleografía:</strong> primero compara formas de escritura; una letra aislada no permite distinguir hebreo antiguo, fenicio ni arameo con seguridad.</p>
+<div class="toolbar">
+<label>Repertorio de comparación<select id="pap-glyph-script"><option value="auto">Comparar varios alfabetos</option><option value="phn">Fenicio</option><option value="paleoheb">Paleohebreo (referencia aproximada)</option><option value="heb">Hebreo cuadrado</option><option value="grc">Griego</option><option value="lat">Latín</option></select></label>
+<button id="pap-glyph-detail" type="button">Copiar detalle de la lupa al lienzo</button>
+<button id="pap-glyph-clear" type="button">Borrar dibujo</button>
+<button id="pap-glyph-match" type="button">Comparar trazos</button>
+</div>
+<div class="pap-glyph-layout">
+<div>
+<canvas id="pap-glyph-canvas" width="320" height="320" aria-label="Lienzo para dibujar manualmente una letra antigua" role="img"></canvas>
+<p class="caption">Dibuja una sola letra en grande. Para una incisión incompleta, señala el trazo conservado y registra las alternativas.</p>
+</div>
+<div>
+<p id="pap-glyph-status" role="status" aria-live="polite">Dibuja un carácter y pulsa «Comparar trazos».</p>
+<div id="pap-glyph-results" class="pap-glyph-results" aria-label="Hipótesis de signos visualmente parecidos"></div>
+<p class="caption">Las puntuaciones son semejanzas visuales de glifos tipográficos, no probabilidades de lectura paleográfica. La tipografía del dispositivo puede diferir mucho de inscripciones históricas.</p>
+</div></div>
+</section>
 <div id="pap-ancient-alphabet" hidden>
 <h3>Repertorio comparativo de signos · inserción manual</h3>
 <p class="caption">Equivalencias convencionales para orientar el cotejo: el glifo Unicode fenicio es una representación tipográfica normalizada, no una reproducción de un trazo arqueológico real. El paleohebreo varía según época y soporte. Ninguna elección implica reconocimiento automático de la fotografía.</p>
@@ -141,4 +169,5 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 </div>
 </main>
 <script defer src="assets/papyrology-ostraca.js?v=20261106-semitic-ocr-v2"></script>
+<script defer src="assets/papyrology-glyphs.js?v=20261106-glyph-lab-v1"></script>
 </body></html>
