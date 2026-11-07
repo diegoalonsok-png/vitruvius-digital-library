@@ -1,0 +1,89 @@
+/* Vitruvia: full-page reading and search results.
+   Avoid a narrow right rail and the large unused empty left region.
+   Keep all sources, controls and editorial material; only relocate layout. */
+@media screen {
+ body.vitruvia-reading .site-shell {
+   width:100%!important;max-width:none!important;
+   padding-inline:clamp(16px,2.4vw,52px)!important;
+ }
+ body.vitruvia-reading .results,
+ body.vitruvia-reading #results,
+ body.vitruvia-reading #result-list,
+ body.vitruvia-reading #vitruvia-article {
+   width:100%;max-width:none;min-width:0;
+ }
+ body.vitruvia-reading .results-grid {
+   display:grid!important;
+   grid-template-columns:minmax(0,1fr)!important;
+   gap:28px!important;align-items:start;
+ }
+ body.vitruvia-reading .results-grid > #result-list {
+   grid-column:1!important;width:100%!important;
+   max-width:none!important;min-width:0;
+ }
+ body.vitruvia-reading .results-grid > .sidebar {
+   grid-column:1!important;width:100%!important;max-width:none!important;
+   border-left:0!important;border-top:1px solid #454b51!important;
+   padding:20px 0 0!important;margin-top:14px!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid {
+   display:grid!important;
+   grid-template-columns:minmax(0,1fr)!important;
+   gap:22px!important;align-items:start!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-body {
+   grid-column:1!important;grid-row:1!important;
+   width:100%!important;max-width:none!important;min-width:0!important;
+   padding:0!important;overflow-wrap:anywhere;
+ }
+ body.vitruvia-reading #vitruvia-article .article-body :is(p,blockquote,ul,ol,table,pre) {
+   max-width:none;
+ }
+ body.vitruvia-reading #vitruvia-article .article-aside {
+   grid-column:1!important;grid-row:2!important;
+   position:static!important;top:auto!important;
+   width:100%!important;max-width:none!important;
+   max-height:none!important;overflow:visible!important;
+   border-left:0!important;border-right:0!important;
+   border-top:1px solid #454b51!important;
+   padding:17px 0!important;margin:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   grid-column:1!important;grid-row:3!important;
+   position:static!important;top:auto!important;
+   display:block!important;width:100%!important;max-width:none!important;
+   max-height:none!important;overflow:visible!important;
+   border-left:0!important;border-right:0!important;
+   border-top:1px solid #454b51!important;
+   padding:20px 0!important;margin:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context[hidden],
+ body.vitruvia-reading #vitruvia-article .article-aside[hidden] {display:none!important}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header {
+   padding-left:0!important;width:100%!important;max-width:none!important;
+ }
+ body.vitruvia-reading #vitruvia-article :is(.article-sources,.article-evidence) {
+   width:100%!important;max-width:none!important;
+ }
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list {
+   display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   column-gap:clamp(18px,3vw,50px)!important;
+ }
+ body.vitruvia-reading #vitruvia-context :is(.context-bibliography-item,.context-section,.vu-card) {
+   min-width:0!important;max-width:none!important;
+ }
+}
+@media screen and (max-width:900px){
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list {
+   grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+@media print {
+ body.vitruvia-reading #vitruvia-article .article-grid {
+   display:block!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   width:100%!important;max-width:none!important;
+   position:static!important;overflow:visible!important;
+ }
+}
