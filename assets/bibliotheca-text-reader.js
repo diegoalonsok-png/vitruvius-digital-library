@@ -105,7 +105,7 @@ try{
  function drawMatches(hits){
   matches.replaceChildren();matches.hidden=!hits;
   if(!hits)return;
-  const heading=document.createElement("p");heading.textContent=hits.length+" pasajes coincidentes en "+(activeBook===0?"todos los libros (I–X)":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+". Seleccioná un resultado para abrirlo.";
+  const heading=document.createElement("p");heading.textContent=hits.length+" pasajes coincidentes en "+(activeBook===0?"todos los libros (I–X)":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+". Selecciona un resultado para abrirlo.";
   matches.append(heading);
   const container=document.createElement("div");container.className="classic-read-match-list";
   const ordered=hits.map((hit,index)=>({...hit,index})).sort((a,b)=>Number(a.passage.book)-Number(b.passage.book)||String(a.passage.locus).localeCompare(String(b.passage.locus),undefined,{numeric:true}));
