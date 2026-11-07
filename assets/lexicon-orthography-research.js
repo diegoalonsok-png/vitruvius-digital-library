@@ -9,9 +9,9 @@ const panel=document.createElement("section");
 panel.id="lx-orthography";panel.className="lx-orth-panel";
 panel.setAttribute("aria-label","Laboratorio de variantes gráficas y atestiguaciones documentales");
 panel.innerHTML=[
-'<details id="lx-orth-details"><summary>Grafías y testimonios · griego politónico / koiné y latín histórico <span class="lx-orth-chip">Análisis reproducible</span></summary>',
+'<details id="lx-orth-details"><summary>Comprobar grafías en textos griegos y latinos</summary>',
 '<div class="lx-orth-inner">',
-'<p>Compare <strong>forma exacta</strong>, búsqueda <strong>sin diacríticos</strong> y <strong>normalización editorial</strong>. La escritura no determina dialecto, período ni pronunciación. Las normalizaciones recuperan candidatos y nunca sustituyen la lectura del testimonio.</p>',
+'<p>Herramienta complementaria de búsqueda de ocurrencias literales en corpus con transcripción; no es una definición de la palabra ni acredita grafías paleográficas de manuscritos sin transcripción. Compare <strong>forma exacta</strong>, búsqueda <strong>sin diacríticos</strong> y <strong>normalización editorial</strong>. La escritura no determina dialecto, período ni pronunciación. Las normalizaciones recuperan candidatos y nunca sustituyen la lectura del testimonio.</p>',
 '<div class="lx-orth-form"><label>Modalidad <select id="lx-orth-mode"><option value="exact">Exacta · conservar diacríticos</option><option value="diacritics">Flexible · omitir diacríticos</option><option value="editorial">Editorial · sigma / u-v / i-j</option></select></label>',
 '<label>Corpus <select id="lx-orth-lang"><option value="auto">Detectar escritura</option><option value="grc">Griego antiguo</option><option value="la">Latín</option></select></label>',
 '<button type="button" id="lx-orth-go">Consultar ediciones registradas</button></div>',
@@ -20,7 +20,7 @@ panel.innerHTML=[
 '<p class="lx-orth-method">Método: la forma original se conserva en cada resultado. La búsqueda compara cadenas Unicode con límites de palabra. La equivalencia editorial no implica lematización, etimología, filiación textual ni identidad de variantes paleográficas. Los PDF sin transcripción verificada quedan fuera.</p>',
 '</div></details>'
 ].join("");
-form.parentElement?.after(panel);
+(document.getElementById('instrumenta')||document.getElementById('methodus')||form.parentElement)?.after(panel);
 const $=id=>document.getElementById(id),status=$("lx-orth-status"),variants=$("lx-orth-variants"),results=$("lx-orth-results");
 const langNames={la:"Latín",grc:"Griego antiguo"};
 let registryTask=null,sourceCache=new Map(),serial=0;
