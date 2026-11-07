@@ -1,5 +1,5 @@
 {
-  "schema": "vitruvius-latin-collation-audit-v1",
+  "schema": "vitruvius-latin-collation-audit-v2",
   "date": "2026-11-07",
   "method": "Automated comparison of V514, V554 and V297 Latin by identical editorial locus, with NFD, case, i/j u/v and punctuation folded. Similarity is a heuristic weighted multiset-token overlap (75%) and ±5-position token overlap (25%), not a critical apparatus.",
   "thresholds": {
@@ -12,7 +12,6 @@
     "near": 41,
     "moderate": 14,
     "alert": 37,
-    "missing": 3,
     "ocr": {
       "krohn": {
         "totalCandidates": 327,
@@ -28,12 +27,16 @@
         "mediumCoverage": 28,
         "lowCoverage": 2
       }
-    }
+    },
+    "missingLocusIdentifiers": 3,
+    "lowOverlapChapterCount": 1,
+    "moderateOverlapChapterCount": 8,
+    "highOverlapChapterCount": 96
   },
   "warnings": [
     "Texts and translations are unchanged. A short/long passage may indicate segmentation, truncation, edition difference or editorial numbering issue, not necessarily an error.",
     "OCR coverage counts shared normalized three-token sequences within a whole candidate page. It does not verify exact locus boundaries or editions.",
-    "When a locus is absent in V297, preserve it in V514/V554; never invent or fill a passage."
+    "Absent locus ID in V297 DOES NOT imply missing text: its content may be merged in neighboring loci. Compare entire Latin chapter and corresponding translation before claiming omissions. V297 is a complete English edition with a different apparatus."
   ],
   "latinDiscrepancies": [
     {
@@ -59,7 +62,8 @@
       "preview": {
         "v514": "Cum in omnibus enim rebus, tum maxime etiam in architectura haec duo insunt: quod significatur et quod significat. Significatur proposita res, de qua dicitur; hanc autem significat",
         "v297": "Cum in omnibus enim rebus, tum maxime etiam in architectura, haec duo insunt: quod significatur et quod significat. Significatur proposita res, de qua dicitur; hanc autem significa"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "1.1.5",
@@ -84,7 +88,8 @@
       "preview": {
         "v514": "Historias autem plures novisse oportet, quod multa ornamenta saepe in operibus architecti designant, de quibus argumenti rationem, cur fecerint, quaerentibus reddere debent. Quemad",
         "v297": "Historias autem plures novisse oportet, quod multa ornamenta saepe in operibus architecti designant, de quibus argumenti rationem, cur fecerint, quaerentibus reddere debent. Quemad"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "1.1.7",
@@ -109,7 +114,8 @@
       "preview": {
         "v514": "Philosophia vero perficit architectum animo magno et uti non sit adrogans, sed potius facilis, aequus et fidelis, sine avaritia, quod est maximum; nullum enim opus vere sine fide e",
         "v297": "Philosophia vero perficit architectum animo magno et uti non sit adrogans, sed potius facilis, aequus et fidelis, sine avaritia; quod est maximum. Nullum enim opus vere sine fide e"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "1.1.10",
@@ -284,7 +290,8 @@
       "preview": {
         "v514": "Ergo quibus locis non sunt terrosi montes sed genere materiae, ignis vis per eius venas egrediens adurit eam. Quod est molle et tenerum, exurit, quod autem asperum, relinquit. Itaq",
         "v297": "ergo quibus locis non sunt terrosi montes sed genere materiae, est autem materiae potestas mollior quam tofus, solidior quam terra ignis vis per eius venas egrediens adurit eam. qu"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "2.8.13",
@@ -334,7 +341,8 @@
       "preview": {
         "v514": "Itaque post mortem Mausoli Artemisia uxore eius regnante Rhodii indignantes mulierem imperare civitatibus Cariae totius, armata classe profecti sunt, uti id regnum occuparent. Tum ",
         "v297": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret. itaque post mortem Mausoli Artemisia uxore eius regnante Rhodii indignantes mulierem im"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "2.8.15",
@@ -384,7 +392,8 @@
       "preview": {
         "v514": "Item carpinus, quod est minima ignis et terreni mixtione, aeris autem et umoris summa continetur temperatura, non est fragilis, sed habet utilissimam tractabilitatem. Itaque Graeci",
         "v297": "item carpinus quod est minima ignis et terreni mixtione, aeris autem et umoris summa continetur temperatura, non est fragilis sed habet utilissimam tractabilitatem. itaque Graeci q"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "2.9.15",
@@ -459,7 +468,8 @@
       "preview": {
         "v514": "Similiter vero sacrarum aedium membra ad universam totius magnitudinis summam ex partibus singulis convenientissimum debent habere commensus responsum. Item corporis centrum medium",
         "v297": "similiter vero sacrarum aedium membra ad universam totius magnitudinis summam ex partibus singulis convenientissimum debent habere commensus responsum."
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "3.3.8",
@@ -584,7 +594,8 @@
       "preview": {
         "v514": "subtilitate et ornatu symmetriaque sunt mutuati. Posteri vero elegantia subtilitateque iudiciorum progressi et gracilioribus modulis delectati septem crassitudinis diametros in alt",
         "v297": "posteri vero elegantia subtilitateque iudiciorum progressi et gracilioribus modulis delectati septem crassitudinis diametros in altitudinem columnae doricae, ionicae novem constitu"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "4.1.9",
@@ -709,7 +720,8 @@
       "preview": {
         "v514": "Ex his ternae partes dextra ac sinistra cellis minoribus, sive ibi alae futurae sunt, dentur; reliquae quattuor mediae aedi attribuantur. Spatium, quod erit ante cellas in pronao, ",
         "v297": "item latitudo dividatur in partes X. ex his ternae partes dextra ac sinistra cellis minoribus sive ibi alae futurae sunt dentur, reliquae quattuor mediae aedi attribuantur. spatium"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "4.8.3",
@@ -784,7 +796,8 @@
       "preview": {
         "v514": "ita uti in minore theatro supra scriptum est. In mediana autem prima in extremis cornibus ad chromaticen hyperbolaeon habentia sonitum ponantur, in secundis ab his diatessaron ad c",
         "v297": "in mediana autem prima in extremis cornibus ad chromaticen hyperbolaeon habentia sonitum ponantur, in secundis ab his diatessaron ad chromaticen diezeugmenon, in tertiis ad chromat"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "5.6.3",
@@ -859,7 +872,8 @@
       "preview": {
         "v514": "aut ionico aut corinthio genere deformentur. Columnarum autem proportiones et symmetriae non erunt isdem rationibus, quibus in aedibus sacris scripsi; aliam enim in deorum templis ",
         "v297": "columnarum autem proportiones et symmetriae non erunt isdem rationibus quibus in aedibus sacris scripsi. aliam enim in deorum templis debent habere gravitatem, aliam in porticibus "
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "5.10.1",
@@ -1034,7 +1048,8 @@
       "preview": {
         "v514": "Quibus vero felicitas maximum summumque contulit munus; quorum enim artes aevo perpetuo nobilissimas laudes et sempiterno florentes habere iudicantur, ei cogitatis egregias operas ",
         "v297": "quorum enim artes aevo perpetuo nobilissimas laudes et sempiterno florentes habere iudicantur, ei cogitatis egregias operas praestiterunt. namque singulis frontibus singuli artific"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "7.3.1",
@@ -1059,7 +1074,8 @@
       "preview": {
         "v514": "Cum ergo camerarum postulabitur ratio, sic erit faciundum. Asseres directi disponantur inter se ne plus spatium habentes pedes binos, et hi maxime cupressei, quod abiegnei ab carie",
         "v297": "Cum ergo camerarum postulabitur ratio, sic erit faciundum. asseres directi disponantur inter se ne plus spatium habentes pedes binos, et hi maxime cupressei, quod abiegnei ab carie"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "7.5.5",
@@ -1109,7 +1125,8 @@
       "preview": {
         "v514": "'Alabandis satis acutos ad omnes res civiles haberi, sed propter non magnum vitium indecentiae insipientes eos esse iudicatos, quod in gymnasio eorum quae sunt statuae omnes sunt c",
         "v297": "tum Licymnius mathematicus prodiit et ait Alabandis satis acutos ad omnes res civiles haberi, sed propter non magnum vitium indecentiae insipientes eos esse iudicatos, quod in gymn"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "7.5.8",
@@ -1134,7 +1151,8 @@
       "preview": {
         "v514": "Quis enim antiquorum non uti medicamento minio parce videtur usus esse? At nunc passim plerumque toti parietes inducuntur. Accedit huc chrysocolla, ostrum, armenium. Haec vero cum ",
         "v297": "quis enim antiquorum non uti medicamento minio parce videtur usus esse? at nunc passim plerumque toti parietes inducuntur. accedit huc chrysocolla, ostrum, armenium. haec vero cum "
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "7.6.1",
@@ -1159,7 +1177,8 @@
       "preview": {
         "v514": "Marmor non eodem genere omnibus regionibus procreatur, sed quibusdam locis glaebae ut salis micas perlucidas habentes nascuntur, quae contusae et molitae praestant operibus utilita",
         "v297": "Quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui, nunc de apparitionibus ut succurrere potuerit dicam, et primum quoniam de calce initio est dictum,"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "7.7.1",
@@ -1184,11 +1203,12 @@
       "preview": {
         "v514": "Primum autem exponemus, quae per se nascentia fodiuntur, uti sil, quod graece ὤχρα dicitur. Haec vero multis locis, ut etiam in Italia, invenitur; sed quae fuerat optima, attica, i",
         "v297": "Colores vero alii sunt qui per se certis locis procreantur et inde fodiuntur, nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur, uti praesten"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "7.7.2",
-      "severity": "missing",
+      "severity": "different-segmentation",
       "comparedTo": "v514",
       "v554": {
         "similarity": 1,
@@ -1202,11 +1222,12 @@
       "preview": {
         "v514": "Item rubricae copiosae multis locis eximuntur, sed optimae paucis, uti Ponto Sinope, et Aegypto, in Hispania Balearibus, non minus etiam Lemno, cuius insulae vectigalia Atheniensib",
         "v297": ""
-      }
+      },
+      "reviewNote": "Locus identifier absent, but Latin and translation may be included in a neighboring V297 segment. V297 is not an incomplete work."
     },
     {
       "locus": "7.7.3",
-      "severity": "missing",
+      "severity": "different-segmentation",
       "comparedTo": "v514",
       "v554": {
         "similarity": 1,
@@ -1220,7 +1241,8 @@
       "preview": {
         "v514": "Paraetonium vero ex ipsis locis, unde foditur, habet nomen. Eadem ratione melinum, quod eius metallum in sola cycladi Melo dicitur esse.",
         "v297": ""
-      }
+      },
+      "reviewNote": "Locus identifier absent, but Latin and translation may be included in a neighboring V297 segment. V297 is not an incomplete work."
     },
     {
       "locus": "7.7.4",
@@ -1249,7 +1271,7 @@
     },
     {
       "locus": "7.7.5",
-      "severity": "missing",
+      "severity": "different-segmentation",
       "comparedTo": "v514",
       "v554": {
         "similarity": 1,
@@ -1263,7 +1285,8 @@
       "preview": {
         "v514": "Auripigmentum, quod ἀρσενικόν graece dicitur, foditur Ponto. Sandaraca item pluribus locis, sed optima Ponto proxime flumen Hypanim habet metallum.",
         "v297": ""
-      }
+      },
+      "reviewNote": "Locus identifier absent, but Latin and translation may be included in a neighboring V297 segment. V297 is not an incomplete work."
     },
     {
       "locus": "7.9.3",
@@ -1338,7 +1361,8 @@
       "preview": {
         "v514": "Non minus si faex vini arefacta et cocta in fornace fuerit et ea contrita cum glutino in opere inducetur, atramenti suavitatis superque efficiet colorem; et quo magis ex meliore vi",
         "v297": "ita erit atramentum tectoribus non invenustum. non minus si faex vini arefacta et cocta in fornace fuerit et ea contrita cum glutino in opere inducetur, atramenti suavitatis superq"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "8.praef.4",
@@ -1363,7 +1387,8 @@
       "preview": {
         "v514": "Ex eo etiam qui sacerdotia gerunt moribus Aegyptiorum, ostendunt omnes res e liquoris potestate consistere. Itaque cum hydria aqua ad templum aedemque casta religione refertur, tun",
         "v297": "Ex eo etiam qui sacerdotia gerunt moribus Aegyptiorum, ostendunt omnes res e liquoris potestate consistere. Itaque cum hydria aqua ad templum aedemque casta religione refertur, tun"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "8.1.6",
@@ -1388,7 +1413,8 @@
       "preview": {
         "v514": "Cum haec ita erunt pertemptata et, qua supra scripta sunt, signa inventa, tum deprimendus est puteus in eo loco, et si erit caput aquae inventum, plures circa sunt fodiendi et per ",
         "v297": "Cum haec ita erunt pertemptata et, qua supra scripta sunt, signa inventa, tum deprimendus est puteus in eo loco, et si erit caput aquae inventum, plures circa sunt fodiendi et per "
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "8.3.11",
@@ -1488,7 +1514,8 @@
       "preview": {
         "v514": "Item Alpibus in Cottii regno est aqua, ex qua qui gustant, statim concidunt. Agro autem Falisco via Campana in campo Corneto est lucus, in quo fons oritur, ibique avium et lacertar",
         "v297": "Item Alpibus in Cottii regno est aqua; ex qua qui gustant, statim concidunt. Agro autem Falisco via Campana in campo Corneto est lucus, in quo fons oritur; ibique avium et lacertar"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "8.6.1",
@@ -1563,7 +1590,8 @@
       "preview": {
         "v514": "Parietibus calcatis, in medio quod erit terrenum, exinaniatur ad libramentum infimum parietum. Hoc exaequato solum calcetur ad crassitudinem, quae constituta fuerit. Ea autem si du",
         "v297": "Parietibus calcatis, in medio quod erit terrenum, exinaniatur ad libramentum infimum parietum. Hoc exaequato solum calcetur ad crassitudinem, quae constituta fuerit. Ea autem si du"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "9.praef.3",
@@ -1588,7 +1616,8 @@
       "preview": {
         "v514": "Cum ergo tanta munera ab scriptorum prudentia privatim publiceque fuerint hominibus praeparata, non solum arbitror palmas et coronas his tribui oportere, sed etiam decerni triumpho",
         "v297": "Cum ergo tanta munera ab scriptorum prudentia privatim publiceque fuerint hominibus praeparata, non solum arbitror palmas et coronas his tribui oportere, sed etiam decerni triumpho"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "9.1.14",
@@ -1613,7 +1642,8 @@
       "preview": {
         "v514": "Si ergo res et ratio et testimonium poetae veteris id ostendit, non puto aliter oportere iudicari, nisi quemadmodum de ea re supra scriptum habemus. Iovis autem inter Martis et Sat",
         "v297": "Si ergo res et ratio et testimonium poetae veteris id ostendit, non puto aliter oportere iudicari, nisi quemadmodum de ea re supra scriptum habemus."
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "9.1.16",
@@ -1638,7 +1668,8 @@
       "preview": {
         "v514": "Esse autem alias stellas temperatas, alias ferventes, etiamque frigidas haec esse causa videtur, quod omnis ignis in superiora loca habet scandentem flammam. Ergo sol aethera, qui ",
         "v297": "Esse autem alias stellas temperatas, alias ferventes, etiamque frigidas haec esse causa videtur, quod omnis ignis in superiora loca habet scandentem flammam. Ergo sol aethera, qui "
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "9.2.1",
@@ -1663,7 +1694,8 @@
       "preview": {
         "v514": "Berosus, qui ab Chaldaeorum civitate sive natione progressus in Asia etiam disciplinam Chaldaicam patefecit, ita est professus: pilam esse ex dimidia parte candentem, reliqua haber",
         "v297": "Berosus, qui ab Chaldaeorum civitate sive natione progressus in Asia etiam disciplinam Chaldaicam patefecit, ita est professus:"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "9.2.4",
@@ -1813,7 +1845,8 @@
       "preview": {
         "v514": "Post frontem horologii intra conlocetur castellum in idque per fistulam saliat aqua et in imo habeat cavum. Ad id autem adfixum sit ex aere tympanum habens foramen, per quod ex cas",
         "v297": "De administratione autem aquae, quemadmodum se temperet ad rationem, sic erit faciendum. Post frontem horologii intra conlocetur castellum in idque per fistulam saliat aqua et in i"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "9.8.15",
@@ -1838,7 +1871,8 @@
       "preview": {
         "v514": "Per scorpionis vero spatia et sagittarii proclivius deprimens se foramen rediensque circumactione ad capricorni partem VIII, restituit celeritate salientis brumales horarum brevita",
         "v297": "Per scorpionis vero spatia et sagittarii proclivius deprimens se foramen rediensque circumactione ad capricorni partem VII, restituit celeritate salientis brumales horarum brevitat"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.2.10",
@@ -1863,7 +1897,8 @@
       "preview": {
         "v514": "Hoc genus machinae polyspaston appellatur, quod multis orbiculorum circumitionibus et facilitatem summam praestat et celeritatem. Una autem statutio tigni hanc habet utilitatem, qu",
         "v297": "Hoc genus machinae polyspaston appellatur, quod multis orbiculorum circumitionibus et facilitatem summam praestat et celeritatem. una autem statutio tigni hanc habet utilitatem, qu"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.4.3",
@@ -1888,7 +1923,8 @@
       "preview": {
         "v514": "Cum autem altius extollendum erit, eadem ratio communicabitur sic. Rota fiet circum axem eadem magnitudine, ut ad altitudinem, quae opus fuerit, convenire possit. Circum extremum l",
         "v297": "Sic rota fiet circum axem eadem magnitudine, ut ad altitudinem, quae opus fuerit, convenire possit. Circum extremum latus rotae figentur modioli quadrati pice et cera solidati. Ita"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.6.4",
@@ -1913,7 +1949,8 @@
       "preview": {
         "v514": "Erectio autem eius ad inclinationem sic erit conlocanda, uti, quemadmodum Pythagoricum trigonum orthogonium describitur, sic id habeat responsum, id est uti dividatur longitudo in ",
         "v297": "Erectio autem eius ad inclinationem sic erit conlocanda, uti, quemadmodum Pythagoricum trigonum orthogonium describitur, sic id habeat responsum, id est uti dividatur longitudo in "
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.8.6",
@@ -1938,7 +1975,8 @@
       "preview": {
         "v514": "Itaque cum pinnae manibus tactae propellunt et reducunt continenter regulas alternis obturando foramina alternis aperiundo, e musicis artibus multiplicibus modulorum varietatibus s",
         "v297": "Itaque cum pinnae manibus tactae propellunt et reducunt continenter regulas alternis obturando foramina alternis aperiundo, e musicis artibus multiplicibus modulorum varietatibus s"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.9.7",
@@ -1988,7 +2026,8 @@
       "preview": {
         "v514": "Nunc vero quae ad praesidia periculi et necessitatem salutis sunt inventa, id est scorpionum et ballistarum rationes, quibus symmetriis comparari possint, exponam. Omnes proportion",
         "v297": "Nunc vero quae ad praesidia periculi et necessitatem salutis sunt inventa, id est scorpionum et ballistarum rationes, quibus symmetriis comparari possint, exponam."
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.10.2",
@@ -2213,7 +2252,8 @@
       "preview": {
         "v514": "Anteridon longitudo foraminum †eius, latitudo in imo foraminis Γ̅, in summo crassitudo ΓK. Basis, quae appellatur ἐσχάρα, longitudo foraminum::::, antibasis foraminum IIII, utriusq",
         "v297": "Anteridon longitudo foraminum †eius, latitudo in imo foraminis, in summo crassitudo. Basis, quae appellatur ἐσχάρα, longitudo foraminum::::, antibasis foraminum IIII, utriusque cra"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.12.2",
@@ -2263,7 +2303,8 @@
       "preview": {
         "v514": "His tunc primis gradibus positis ad id genus machinationis, postea cum Philippus, Amyntae filius, Byzantios oppugnaret, Polyidos Thettalos pluribus generibus et facilioribus explic",
         "v297": "His tunc primis gradibus positis ad id genus machinationis, postea cum Philippus, Amyntae filius, Byzantios oppugnaret, Polyidos Thettalos pluribus generibus et facilioribus explic"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.13.8",
@@ -2363,7 +2404,8 @@
       "preview": {
         "v514": "Is autem aries habuerat de ferro duro rostrum, ita uti naves longae solent habere, et ex ipso rostro lamminae ferreae IIII circiter pedum XV fixae fuerant in materia. A capite aute",
         "v297": "Is autem aries habuerat de ferro duro rostrum, ita uti naves longae solent habere, et ex ipso rostro lamminae ferreae IIII circiter pedum XV fixae fuerant in materia."
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     },
     {
       "locus": "10.16.12",
@@ -2388,7 +2430,8 @@
       "preview": {
         "v514": "Etiam cum agger ad murum contra eos compararetur et arboribus excisis eoque conlocatis locus operibus exaggeraretur, ballistis vectes ferreos candentes in id mittendo totam munitio",
         "v297": "Etiam cum agger ad murum contra eos compararetur et arboribus excisis eoque conlocatis locus operibus exaggeraretur, ballistis vectes ferreos candentes in id mittendo totam munitio"
-      }
+      },
+      "reviewNote": "Locus-level text differs; check whether neighboring V297 loci include this material and compare entire chapter before concluding an omission."
     }
   ],
   "ocrAlerts": [
@@ -2842,5 +2885,7 @@
       "label": "OCR page candidate; textual coverage not equivalence",
       "reviewStatus": "requires-editorial-review"
     }
-  ]
+  ],
+  "authorialClarification": "La edición inglesa V297 es completa como obra; posee aparato crítico y segmentación diferentes. La auditoría se refiere al latín y su traducción, nunca al volumen del aparato crítico.",
+  "chapterComparison": "data/structured/latin-chapter-comparison-v514-v297.json"
 }
