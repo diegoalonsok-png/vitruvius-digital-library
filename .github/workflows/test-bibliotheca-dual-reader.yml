@@ -1,0 +1,29 @@
+name: Bibliotheca dual reader regression
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'assets/bibliotheca-graeca-latina.js'
+      - 'assets/classics-study-tools.js'
+      - 'bibliotheca-graeca-latina.html'
+      - 'lector-textual-rapido.html'
+      - 'data/classics-corpus/caesar-gallico-*.json'
+      - 'scripts/test-bibliotheca-dual-reader.mjs'
+      - '.github/workflows/test-bibliotheca-dual-reader.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/classics-study-tools.js
+          node --check assets/bibliotheca-graeca-latina.js
+      - name: Validate Latin-English loci, black defaults and source wiring
+        run: node scripts/test-bibliotheca-dual-reader.mjs
