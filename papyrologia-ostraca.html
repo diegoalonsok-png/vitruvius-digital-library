@@ -54,6 +54,11 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 .pap-glyph-results button strong{font-size:29px;display:block;line-height:1.4}
 .pap-glyph-results button small{display:block;font-size:11px}
 @media(max-width:700px){.pap-glyph-layout{grid-template-columns:1fr}}
+
+.pap-builder{border-top:1px solid #bda886;margin-top:22px;padding-top:16px}
+.pap-build-output{font:25px/1.7 "Noto Sans Phoenician","Noto Serif Hebrew",Georgia,serif;padding:12px;min-height:60px;background:#fffdf6;border:1px solid #b5a280;unicode-bidi:plaintext;white-space:pre-wrap;overflow-wrap:anywhere}
+.pap-build-sentences{padding-inline-start:30px;font:22px/1.6 Georgia,serif}.pap-build-sentences li{padding:6px;border-bottom:1px solid #ddd0b6;unicode-bidi:plaintext}
+#pap-build-letter{max-width:120px}
 </style>
 </head>
 <body>
@@ -153,6 +158,31 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <div id="pap-glyph-results" class="pap-glyph-results" aria-label="Hipótesis de signos visualmente parecidos"></div>
 <p class="caption">Las puntuaciones son semejanzas visuales de glifos tipográficos, no probabilidades de lectura paleográfica. La tipografía del dispositivo puede diferir mucho de inscripciones históricas.</p>
 </div></div>
+<div class="pap-builder" id="pap-builder">
+<h3>6 · Composición progresiva: letra → palabra → frase</h3>
+<p class="caption">Selecciona las letras propuestas o escribe la transcripción diplomática. Conserva el orden de los signos sin completar automáticamente las lagunas. Cada palabra se registra en el orden de lectura del soporte.</p>
+<div class="toolbar">
+<label>Escritura de la transcripción<select id="pap-build-script"><option value="phn">Fenicio · derecha a izquierda</option><option value="paleoheb">Paleohebreo · derecha a izquierda</option><option value="heb">Hebreo · derecha a izquierda</option><option value="arc">Arameo · derecha a izquierda</option><option value="grc">Griego · izquierda a derecha</option><option value="lat">Latín · izquierda a derecha</option></select></label>
+<label>Letra / signo observado<input id="pap-build-letter" type="text" maxlength="12" placeholder="𐤀 / א / Α" autocomplete="off" spellcheck="false"></label>
+<label>Lectura del signo<select id="pap-build-certainty"><option value="clear">Visible</option><option value="uncertain">Dudoso [?]</option><option value="lost">Laguna […]</option></select></label>
+<button type="button" id="pap-build-add">Añadir letra</button>
+<button type="button" id="pap-build-undo">Deshacer letra</button>
+</div>
+<p class="caption">Palabra actual (signos en secuencia de lectura):</p>
+<div id="pap-build-word" class="pap-build-output" dir="rtl" aria-live="polite">—</div>
+<div class="toolbar">
+<button type="button" id="pap-build-word-end">Cerrar palabra</button>
+<button type="button" id="pap-build-word-undo">Retirar última palabra</button>
+<button type="button" id="pap-build-phrase-end">Cerrar frase</button>
+<button type="button" id="pap-build-reset">Borrar composición</button>
+</div>
+<p class="caption">Frase actual:</p>
+<div id="pap-build-phrase" class="pap-build-output" dir="rtl" aria-live="polite">—</div>
+<p class="caption">Frases documentadas:</p>
+<ol id="pap-build-sentences" class="pap-build-sentences"></ol>
+<div class="toolbar"><button type="button" id="pap-build-transcribe">Pasar al editor principal</button><button type="button" id="pap-build-export">Exportar lectura y estado de signos (JSON)</button></div>
+<p class="caption">El sistema organiza una lectura propuesta. La segmentación de palabras y frases es una hipótesis editorial, especialmente en escrituras antiguas sin separación gráfica.</p>
+</div>
 </section>
 <div id="pap-ancient-alphabet" hidden>
 <h3>Repertorio comparativo de signos · inserción manual</h3>
