@@ -36,6 +36,19 @@
 .coll-witnesses>.coll-row{margin:0}
 .coll-warning{font:13px/1.5 Arial,sans-serif;opacity:.82}
 @media(max-width:680px){.coll-row{padding:13px}.coll-translation{padding:13px}.coll-text{font-size:16px}}
+
+/* Controles independientes de cada cuadro, sin modificar los textos fuente */
+.coll-cardtools{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 12px;font:12px Arial,sans-serif}
+.coll-cardtools button,.coll-cardtools select{border:1px solid rgba(150,130,95,.5);background:transparent;color:inherit;border-radius:7px;padding:5px 8px;cursor:pointer;max-width:100%}
+.coll-cardtools button[aria-pressed="true"]{outline:2px solid #b19a63;outline-offset:1px}
+.coll-cardtools label{display:inline-flex;align-items:center;gap:3px}
+.coll-cardtools input[type=color]{width:29px;height:27px;border:1px solid rgba(150,130,95,.5);border-radius:5px;padding:2px;background:transparent;cursor:pointer}
+.coll-readable{font-family:var(--card-font,Georgia,serif)!important;font-size:var(--card-size,17px)!important;color:var(--card-ink,inherit)!important;line-height:1.75!important;overflow-wrap:anywhere}
+.coll-readable,.coll-readable *{font-family:inherit}
+.coll-row:has(>.coll-cardtools),.coll-translation:has(>.coll-cardtools){background:var(--card-paper,rgba(128,110,75,.045))}
+.coll-read-lupa .coll-readable{font-size:calc(var(--card-size,17px) + 5px)!important;line-height:1.9!important}
+.coll-underline{text-decoration:underline 2px var(--underline-ink,#c48a1b);text-underline-offset:3px}
+.coll-cardtools .coll-help{font-size:11px;opacity:.75}
 </style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html"><meta name="citation_title" content="Colación por locus de De architectura: V514, Rose (1899) y Krohn (1912)"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html">
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body>
@@ -52,6 +65,6 @@
 <script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-apparatus-v2"></script>
 <script src="assets/research-folder.js?v=20261105-v1"></script>
-<script src="assets/collation-page.js?v=20261106-cuadros-v1"></script>
+<script src="assets/collation-page.js?v=20261106-cuadros-v2"></script>
 <script src="assets/theme.js?v=20261105-merge-v1" defer></script>
 </body></html>
