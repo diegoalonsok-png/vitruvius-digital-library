@@ -42,7 +42,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
  size.className="classic-study-size";bar.append(smaller,size,larger);
  const magnify=$("⌕ Lupa");
  magnify.type="button";magnify.setAttribute("aria-pressed","false");
- magnify.title="Lupa de pasajes como en Vitruvia Lexicon; activá y pasá el puntero por el texto";
+ magnify.title="Lupa de pasajes como en Vitruvia Lexicon; activa y pasá el puntero por el texto";
  bar.append(magnify);
  const lens=document.createElement("div");lens.className="classic-study-magnifying-lens";
  lens.setAttribute("aria-hidden","true");
@@ -78,18 +78,18 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
  magnify.addEventListener("click",()=>{
   magnifierOn=!magnifierOn;magnify.setAttribute("aria-pressed",String(magnifierOn));
   if(!magnifierOn)hideLens();
-  help.textContent=magnifierOn?"Lupa activa: mové el cursor sobre las palabras del texto.":"Lupa desactivada.";
+  help.textContent=magnifierOn?"Lupa activa: mueve el cursor sobre las palabras del texto.":"Lupa desactivada.";
  });
  root.addEventListener("pointermove",showLens);root.addEventListener("pointerleave",hideLens);
  root.addEventListener("scroll",hideLens,{passive:true});
  window.addEventListener("blur",hideLens);
  const highlight=$("▧ Resaltar"),underline=$("U̲ Subrayar"),remove=$("Borrar marcas"),reset=$("Restablecer estilo");
- highlight.title="Seleccioná un fragmento del texto y presioná Resaltar";
- underline.title="Seleccioná un fragmento del texto y presioná Subrayar";
+ highlight.title="Selecciona un fragmento del texto y presioná Resaltar";
+ underline.title="Selecciona un fragmento del texto y presioná Subrayar";
  remove.title="Quitar las marcas del pasaje actual";
  reset.title="Restablecer colores, tipografía y tamaño de este visor";
  bar.append(highlight,underline,remove,reset);
- const help=$("Seleccioná palabras del texto; las marcas se guardan en este navegador.","small");
+ const help=$("Selecciona palabras del texto; las marcas se guardan en este navegador.","small");
  help.className="classic-study-tools-help";
  column.insertBefore(bar,root);column.insertBefore(help,root);
  function appearance(){
@@ -158,7 +158,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
  function annotate(kind){
   const pick=selectionOffsets()||selected;
   if(!pick||pick.language!==getLanguage()||pick.locus!==getLocus()){
-   help.textContent="Seleccioná primero una palabra o frase en el texto de este visor.";return;
+   help.textContent="Selecciona primero una palabra o frase en el texto de este visor.";return;
   }
   const key=own(pick.language,pick.locus);
   const list=Array.isArray(annotations[key])?annotations[key]:[];
