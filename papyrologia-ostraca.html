@@ -70,6 +70,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 .pap-ink-sign button{font:16px Georgia,serif;min-width:35px;min-height:34px;border:1px solid #b6a27f;background:#f1e8d7;cursor:pointer;margin:2px}
 .pap-ink-sign small{display:block;font-size:11px}
 @media(max-width:900px){.pap-extraction-grid{grid-template-columns:1fr}}
+.pap-gemini-report{white-space:pre-wrap;background:#fff9ec;border:1px solid #bda987;padding:12px;margin:12px 0;font:13px/1.55 system-ui,sans-serif;overflow-wrap:anywhere;max-height:360px;overflow:auto}
 </style>
 </head>
 <body>
@@ -168,8 +169,12 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="pap-external">Abrir Gemini · análisis de imagen ↗</a>
 <button id="pap-export-detail" type="button">Guardar detalle ampliado para Google</button>
 <button id="pap-copy-prompt" type="button">Copiar instrucciones de lectura paleográfica</button>
+<a href="tools/papyrology/README.md" target="_blank" rel="noopener noreferrer" class="pap-external">Configurar Gemini seguro (Python) ↗</a>
+<label>Importar lectura Gemini (.json)<input id="pap-gemini-json" type="file" accept=".json,application/json"></label>
+<button id="pap-gemini-clear" type="button">Limpiar análisis importado</button>
 </div>
-<p class="caption">La conexión es mediante apertura externa y carga manual: el sitio no transmite tus fotografías a Google ni integra su API. Los resultados de Lens son pistas para investigación, no una transcripción paleográfica certificada.</p>
+<div id="pap-gemini-import-report" class="pap-gemini-report" aria-live="polite" role="status">No se ha importado una lectura de Gemini. Las hipótesis se incorporarán como texto editable y conservarán sus dudas.</div>
+<p class="caption">Google Lens y Gemini web se abren externamente; no hay transmisión de imágenes desde este sitio. La alternativa Python usa Gemini API solo cuando el investigador la ejecuta localmente y envía voluntariamente su imagen. El JSON se importa en este navegador para revisión manual. Los resultados de Lens son pistas para investigación, no una transcripción paleográfica certificada.</p>
 </div>
 <details id="pap-experimental-ocr"><summary>OCR clásico alternativo (Tesseract, opcional y menos adecuado para escrituras antiguas)</summary>
 <div class="toolbar">
