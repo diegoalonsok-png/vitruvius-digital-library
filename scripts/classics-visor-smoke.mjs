@@ -524,6 +524,19 @@ try{
    await p.locator('#pap-tone-original').click();
    await p.locator('#pap-tone-reset').click();
    assert.equal(await p.locator('#pap-tone-gamma-value').innerText(),'1,00','Tonal reset did not reset gamma');
+   await p.locator('#pap-light-level').click();
+   assert.equal(await p.locator('#pap-light-level').getAttribute('aria-pressed'),'true','Light normalization button failed');
+   await p.locator('#pap-black-extract').click();
+   assert.equal(await p.locator('#pap-black-extract').getAttribute('aria-pressed'),'true','Black extraction button failed');
+   const inkPixels=await p.locator('#pap-image').evaluate(c=>{
+    const a=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
+    let black=0,white=0,other=0;
+    for(let k=0;k<a.length;k+=4){if(a[k]===0&&a[k+1]===0&&a[k+2]===0)black++;else if(a[k]===255&&a[k+1]===255&&a[k+2]===255)white++;else other++}
+    return {black,white,other};
+   });
+   assert(inkPixels.black>0&&inkPixels.white>0&&inkPixels.other===0,'Black-only result must contain black and white pixels');
+   await p.locator('#pap-black-level-reset').click();
+   assert.equal(await p.locator('#pap-black-extract').getAttribute('aria-pressed'),'false');
    const initial=await p.locator('#pap-zoom-value').innerText();
    await p.locator('#pap-zoom-in').click();
    assert.notEqual(await p.locator('#pap-zoom-value').innerText(),initial,'Zoom button is inert');
