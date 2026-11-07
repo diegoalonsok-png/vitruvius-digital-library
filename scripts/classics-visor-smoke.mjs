@@ -547,6 +547,20 @@ try{
    assert((await p.locator('#pap-build-sentences li').count())===1,'Word was not committed to a sentence');
    await p.locator('#pap-build-transcribe').click();
    assert.match(await p.locator('#pap-transcription').inputValue(),/𐤀𐤁/,'Sentence was not transferred to transcription');
+   const geminiFixture={
+    schema:'vitruvia-papyrology-multimodal-draft-v1',verified:false,model:'test-offline',
+    analysis:{writing_system_candidates:[{name:'Greek'}],language_candidates:[{name:'Ancient Greek'}],
+     lines:[{line_number:1,diplomatic_text:'ΑΒΓ',reading_direction:'ltr',
+       signs:[{visible:'Α',suggested:'Α',status:'clear',alternatives:[]},
+              {visible:'Β',suggested:'Β',status:'uncertain',alternatives:['Ρ']}]}]}
+   };
+   await p.locator('#pap-gemini-json').setInputFiles({
+    name:'hypothesis.json',mimeType:'application/json',
+    buffer:Buffer.from(JSON.stringify(geminiFixture),'utf8')
+   });
+   await p.waitForFunction(()=>document.getElementById('pap-gemini-import-report')?.textContent.includes('NO VERIFICADA'));
+   assert.match(await p.locator('#pap-transcription').inputValue(),/ΑΒΓ/,'Gemini JSON reader did not populate transcript');
+   assert.match(await p.locator('#pap-gemini-import-report').innerText(),/dudosos o perdidos: 1/i);
    await p.locator('#pap-transcription').fill('ΑΒΓ');
    assert.equal(await p.locator('#pap-graphemes button').count(),3,'Individual character editor failed');
    await p.locator('#pap-clear').click();
