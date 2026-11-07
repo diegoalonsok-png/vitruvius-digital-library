@@ -459,7 +459,7 @@ try{
    await p.locator('#sync-start').click();
    assert.match(await p.locator('#sync-position').innerText(),/^1 \\/ /);
    await p.locator('#left-night').click();
-   await p.waitForFunction(()=>document.getElementById('pane-left')?.contentDocument?.querySelector('.reader')?.style.background==='#172633',{timeout:7000});
+   await p.waitForFunction(()=>document.getElementById('pane-left')?.contentDocument?.querySelector('.reader')?.style.backgroundColor==='rgb(23, 38, 51)',{timeout:7000});
    await p.locator('#left-invert').click();
    assert.notEqual(await p.locator('#left-bg').inputValue(),'#172633','Invert colors button does not change the background');
    await p.locator('#right-larger').click();
