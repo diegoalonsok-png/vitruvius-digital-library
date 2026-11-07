@@ -231,9 +231,29 @@ async function searchLiteral(){
   status.textContent=rows.length?rows.length+" pasajes en "+groups.size+" ediciones."+(diagnostics.failed?" "+diagnostics.failed+" fuentes no disponibles.":"")+(rows.length>=600?" Límite de 600 pasajes; refiná la búsqueda.":""):
    "No se encontraron pasajes en las ediciones examinadas."+(diagnostics.failed?" "+diagnostics.failed+" fuentes no disponibles.":"");
   if(matched.length)target.append(el("p","Conceptus: "+matched.map(c=>c.id).join(", ")+". Equivalencias semánticas editoriales; no se presupone alineación de traducciones.","muted"));
+  if(groups.size){
+   const works=new Map();
+   for(const group of groups.values()){
+    const first=group[0],key=first.workId;
+    if(!works.has(key))works.set(key,{author:first.author,title:first.title,passages:0,editions:0});
+    const item=works.get(key);item.passages+=group.length;item.editions++;
+   }
+   const overview=el("section",null,"locorum-works-overview");
+   overview.append(el("h2","Obras que contienen «"+raw+"» ("+works.size+")"));
+   overview.append(el("p","Obras con pasajes recuperados en los textos indexados. Cada edición se despliega debajo; no se atribuye presencia a un manuscrito sin transcripción consultable.","muted"));
+   const chips=el("div",null,"locorum-work-chips");
+   let index=0;
+   for(const [id,item] of works){
+    const btn=action(item.author+" · "+item.title+" · "+item.passages+" pasajes",()=>{
+      const group=document.querySelector('[data-locorum-work="'+id+'"]');if(group){group.open=true;group.scrollIntoView({behavior:"smooth",block:"center"})}
+    });
+    chips.append(btn);index++;
+   }
+   overview.append(chips);target.append(overview);
+  }
   for(const group of groups.values()){
    const first=group[0],total=group.reduce((n,r)=>n+(r.hitsInPassage||1),0);
-   const details=el("details",null,"edition-group"),summary=el("summary");
+   const details=el("details",null,"edition-group"),summary=el("summary");details.dataset.locorumWork=first.workId;
    summary.append(el("strong",first.author+" · "+first.title),el("span",(langs[first.language]||first.language)+" · "+group.length+" pasajes · "+total+" apariciones"));
    details.append(summary);
    const contents=el("div",null,"edition-passages");for(const row of group)contents.append(renderPassage(row));
