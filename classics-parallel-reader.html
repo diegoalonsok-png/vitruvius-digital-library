@@ -154,7 +154,7 @@ function count(){const [a,b]=pair();return Math.max(a?.passages?.length||0,b?.pa
    Exact equality is an editorial identifier match, not proof of semantic alignment.
    For a verse range or a paragraph within a book, use only the same higher-level
    book/chapter, then disclose that this is approximate. */
-function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\\s+/g,"");}
+function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\s+/g,"");}
 function destination(){
  const [a,b]=pair();
  const index=Math.max(0,Math.min(position,Math.max(0,(a?.passages?.length||1)-1)));
@@ -165,9 +165,9 @@ function destination(){
   const exact=wanted?b.passages.findIndex(p=>locusKey(p.locus)===wanted):-1;
   if(exact>=0){second=exact;quality="locus";}
   else{
-   const book=/^(\\d+)[.:-](\\d+)/.exec(wanted);
+   const book=/^(\d+)[.:-](\d+)/.exec(wanted);
    if(book){
-    const candidates=b.passages.map((p,i)=>({i,m:/^(\\d+)[.:-](\\d+)/.exec(locusKey(p.locus))}))
+    const candidates=b.passages.map((p,i)=>({i,m:/^(\d+)[.:-](\d+)/.exec(locusKey(p.locus))}))
      .filter(x=>x.m&&x.m[1]===book[1]);
     if(candidates.length){
      const target=Number(book[2]);
