@@ -87,7 +87,7 @@ function extract(){
  }
  output.width=w;output.height=h;const image=out.createImageData(w,h);
  for(let i=0;i<N;i++){const n=pixels[i]?0:255,k=i*4;image.data[k]=image.data[k+1]=image.data[k+2]=n;image.data[k+3]=255}
- out.putImageData(image,0,0);mask=pixels;ready=true;segments=[];items.replaceChildren();
+ out.putImageData(image,0,0);output.hidden=false;$("pap-ink-placeholder").hidden=true;mask=pixels;ready=true;segments=[];items.replaceChildren();
  status.textContent="Máscara creada: "+w+" × "+h+" píxeles. Fondo blanco, regiones oscuras en negro. Ajusta filtros y compara con la fotografía original.";
 }
 $("pap-ink-run").addEventListener("click",extract);
