@@ -21,7 +21,7 @@ try{
  const $=id=>target.querySelector("#"+id), e=$("cr-edition"),b=$("cr-book"),l=$("cr-locus"),q=$("cr-search"),out=$("cr-lines"),summary=$("cr-summary"),matches=$("cr-matches");
  e.value=lang; let activeBook=0,activeIdx=0,filtered=[];
  const bookList=()=>[...new Set(list.map(p=>Number(p.book)).filter(Number.isFinite))].sort((a,b)=>a-b);
- const prefaceBooks=()=>new Set(list.filter(p=>/\\.praef\\./.test(String(p.locus||""))).map(p=>Number(p.book)));
+ const prefaceBooks=()=>new Set(list.filter(p=>/\.praef\./.test(String(p.locus||""))).map(p=>Number(p.book)));
  function prefaceStatus(){const books=prefaceBooks();return books.size===10?"Prefacios de los diez libros disponibles":books.size+" de 10 prefacios con pasajes registrados";}
 
  function populateBooks(){b.innerHTML='<option value="0">Todos los libros (I–X)</option><option value="-1">Todos los prefacios (I–X)</option>'+bookList().map(n=>'<option value="'+n+'">Libro '+n+'</option>').join("");if(activeBook>0&&!bookList().includes(activeBook))activeBook=0;b.value=String(activeBook);}
@@ -29,7 +29,7 @@ try{
  function searchHits(){const query=text(q.value).trim();if(!query)return null;
   const matches=[];for(const p of list){
    if(activeBook>0&&Number(p.book)!==activeBook)continue;
-   if(activeBook===-1&&!/\\.praef\\./.test(String(p.locus||"")))continue;
+   if(activeBook===-1&&!/\.praef\./.test(String(p.locus||"")))continue;
    const original=String(p.latin||""),translated=String(p.translation||"");
    // Unicode word boundary: "loci" must not be mistaken for a fragment of another word.
    const found=[["Latín",original],["Traducción",translated]].filter(([,v])=>{
@@ -44,7 +44,7 @@ try{
    if(found.length)matches.push({passage:p,fields:found.map(x=>x[0])});
   }return matches;
  }
- function filteredPassages(){const hits=searchHits();return hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||(activeBook===-1?/\\.praef\\./.test(String(p.locus||"")):Number(p.book)===activeBook));}
+ function filteredPassages(){const hits=searchHits();return hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||(activeBook===-1?/\.praef\./.test(String(p.locus||"")):Number(p.book)===activeBook));}
  function drawMatches(hits){
   matches.replaceChildren();matches.hidden=!hits;
   if(!hits)return;
@@ -61,7 +61,7 @@ try{
   });
   matches.append(container);
  }
- function drawPassages(){const hits=searchHits();filtered=hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||(activeBook===-1?/\\.praef\\./.test(String(p.locus||"")):Number(p.book)===activeBook));
+ function drawPassages(){const hits=searchHits();filtered=hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||(activeBook===-1?/\.praef\./.test(String(p.locus||"")):Number(p.book)===activeBook));
   l.replaceChildren();filtered.forEach((p,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=(activeBook<=0?"Libro "+p.book+" · ":"")+p.locus;l.append(opt)});
   if(activeIdx>=filtered.length||activeIdx<0)activeIdx=0;drawMatches(hits);show();
  }
