@@ -38,6 +38,37 @@ jobs:
       - run: node scripts/audit-classical-corpus.mjs
       - run: node scripts/test-classics-integration.mjs
 
+  probe-import:
+    name: Ensayo real de un original TEI sin publicarlo
+    if: github.event_name == 'pull_request'
+    needs: test-offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Probar una fuente TEI real y toda la cadena de indexación
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/import-classics-perseus-batch.py --max-new 1
+      - name: Rechazar un ensayo sin incorporación verificable
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("data/classics-corpus/search-registry.json",encoding="utf-8"))
+          assert d["count"]>50, "No se pudo indexar ninguna fuente TEI del inventario"
+          print("Ensayo satisfactorio con",d["count"]-50,"versión adicional")
+          PY
+      - run: python scripts/build_classics_semantic_index.py
+      - run: node scripts/audit-classical-corpus.mjs
+      - run: node scripts/test-classics-integration.mjs
+      - run: python scripts/audit-classics-coverage.py --strict
+
   ingest-batch:
     name: Importar originales verificados y actualizar los tres índices
     if: github.event_name == 'workflow_dispatch'
