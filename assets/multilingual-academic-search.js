@@ -11,10 +11,10 @@ ready(()=>{
  const form=document.getElementById(page==="vitruvia.html"?"search-form":"lx-form");
  if(!input||!form)return;
  const panel=document.createElement("section");panel.id="multilingual-academic-search";
- panel.style.cssText="margin:12px 0;padding:15px 18px;border:1px solid #998667;border-radius:14px;background:var(--surface,#1c252e);color:inherit;font:13px/1.6 system-ui,sans-serif;max-width:1100px;box-shadow:0 3px 16px rgba(0,0,0,.08)";
+ panel.style.cssText="margin:12px 0;padding:15px 18px;border:1px solid #40454a;border-radius:9px;background:#181b1e;color:inherit;font:13px/1.6 system-ui,sans-serif;max-width:1100px;box-shadow:0 3px 16px rgba(0,0,0,.08)";
  const head=document.createElement("div");head.style.cssText="display:flex;gap:10px;flex-wrap:wrap;align-items:center";
  const label=document.createElement("strong");label.textContent="Consulta filológica multilingüe";label.style.cssText="font:700 15px/1.5 system-ui,sans-serif";
- const button=document.createElement("button");button.type="button";button.textContent="Buscar equivalencias documentadas";button.style.cssText="padding:10px 14px;border:1px solid #b59a6e;border-radius:9px;background:#29475e;color:white;cursor:pointer;font:650 13px system-ui,sans-serif;min-height:40px";
+ const button=document.createElement("button");button.type="button";button.textContent="Buscar equivalencias documentadas";button.style.cssText="padding:10px 14px;border:1px solid #565d63;border-radius:6px;background:#30353a;color:#efefee;cursor:pointer;font:650 13px system-ui,sans-serif;min-height:40px";
  const note=document.createElement("span");note.textContent="Griego antiguo · latín · hebreo · arameo";note.style.cssText="opacity:.77;font:12px/1.5 system-ui,sans-serif";
  head.append(label,button,note);
  const status=document.createElement("p");status.setAttribute("role","status");status.style.margin="8px 0 0";
@@ -57,7 +57,7 @@ ready(()=>{
    if(!matched.length){status.textContent="No hay equivalencia registrada en Conceptus para esta forma. Esto no implica que la palabra no exista; el corpus multilingüe todavía es parcial.";return}
    status.textContent=matched.length+" ficha(s) de concepto documentado. Griego moderno, hebreo y arameo: consulta lexicográfica, no concordancia textual certificada.";
    for(const c of matched){
-    const card=document.createElement("article");card.style.cssText="padding:13px 15px;border:1px solid #a69476;border-radius:10px;background:rgba(127,137,147,.06)";
+    const card=document.createElement("article");card.style.cssText="padding:13px 15px;border:1px solid #41464b;border-radius:8px;background:#202326";
     const h=document.createElement("strong");h.textContent="Conceptus · "+c.id;card.append(h);
     field(card,"Latín",c.la,"la");field(card,"Griego antiguo",c.grc,"grc");
     field(card,"Hebreo",c.he,"he");field(card,"Arameo",c.arc,"arc");
