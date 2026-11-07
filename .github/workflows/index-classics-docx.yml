@@ -1,0 +1,51 @@
+name: Indexar textos clasicos DOCX existentes
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/index-classics-docx.py'
+      - '.github/workflows/index-classics-docx.yml'
+      - 'documents/clasicos/*.docx'
+permissions:
+  contents: write
+concurrency:
+  group: classics-docx-index
+  cancel-in-progress: false
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Indexar solo documentos existentes
+        run: python scripts/index-classics-docx.py
+      - name: Validar manifiesto y cobertura
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('data/classics-documents')
+          m=json.loads((root/'manifest.json').read_text(encoding='utf8'))
+          assert m['count'] == len(list(Path('documents/clasicos').glob('*.docx')))
+          assert m['count'] == len(m['records'])
+          for r in m['records']:
+              data=json.loads(Path(r['index']).read_text(encoding='utf8'))
+              assert len(data['paragraphs']) == r['paragraphs']
+              assert data['sha256'] == r['sha256']
+              assert all(p['text'] and p['id'] for p in data['paragraphs'])
+          print('Verified',m['count'],'document indices')
+          PY
+      - name: Publicar indices, nunca documentos originales
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/classics-documents/
+          if ! git diff --cached --quiet; then
+            git commit -m "Index existing classical DOCX sources by paragraph"
+            git push
+          fi
