@@ -107,7 +107,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSea
  function speakSelection(){
   const pick=selectionOffsets()||selected;
   if(!pick||pick.language!==getLanguage()||pick.locus!==getLocus()||!pick.quote.trim()){
-   help.textContent="Primero selecciona con el mouse o teclado el párrafo o fragmento que querés escuchar.";return;
+   help.textContent="Primero selecciona con el mouse o teclado el párrafo o fragmento que deseas escuchar.";return;
   }
   if(!synth||typeof window.SpeechSynthesisUtterance!=="function"){
    help.textContent="Tu navegador no dispone de síntesis de voz. Prueba Chrome, Edge o Safari.";return;
