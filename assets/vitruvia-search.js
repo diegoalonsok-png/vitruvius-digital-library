@@ -543,10 +543,17 @@ let featureCurrent="";
 function considerFeatured(rows,query,fromFallback=false){
  const q=norm(query||"");if(!q)return;if(!fromFallback)featureCurrent=q;
  const {core}=featureTokens(query);const tokens=core.filter(t=>t.length>=3);
+ // The best Wikidata-resolved identity must replace a text-search headline
+ // in the featured slot, even if the latter arrived first.
+ if(S.identifiedSubject?.wikidataId){
+  const resolvedHit=(rows||[]).find(r=>r.preferredWiki&&r.wikidataId===S.identifiedSubject.wikidataId);
+  if(resolvedHit){const authoritativeWeight=10000;if(authoritativeWeight>(S.featureWeight??-Infinity))applyFeatured(resolvedHit,authoritativeWeight,query,q);return;}
+ }
+
  // En consultas con forma de nombre, los artículos que devuelve la búsqueda
  // textual de Wikipedia no bastan para acreditar la identidad. Solo la entidad
  // resuelta por Wikidata/Wikipedia (preferredWiki) puede ser la ficha destacada.
- const nameLike=core.length>=2&&core.length<=5&&
+ const nameLike=core.length>=1&&core.length<=5&&
   !/\\b(que|como|cuando|donde|porque|why|what|how|where|historia de|history of)\\b/i.test(q);
  const picks=(rows||[]).filter(r=>r.link&&r.title&&
   !(nameLike&&r.type!=="manuscript"&&!(r.preferredWiki&&r.wikidataId))&&
@@ -1074,7 +1081,15 @@ function display(rows,query,phase){
  const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
- const ordered=window.VitruviaLocalPriority?.promote(firstOrdered,query,S.lexicon)||firstOrdered;
+ let ordered=window.VitruviaLocalPriority?.promote(firstOrdered,query,S.lexicon)||firstOrdered;
+ // An identity established by Wikidata must precede title coincidences in books,
+ // songs, streets or businesses. The original rows remain available below.
+ const resolved=S.identifiedSubject;
+ const authorityId=resolved?.wikidataId;
+ if(/^Q[0-9]+$/.test(authorityId||"")){
+  const index=ordered.findIndex(r=>r.preferredWiki&&r.wikidataId===authorityId&&r.type==="wikipedia");
+  if(index>0){ordered=[ordered[index],...ordered.slice(0,index),...ordered.slice(index+1)];}
+ }
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
  if(!document.getElementById("vitruvia-facet-style")){const st=document.createElement("style");st.id="vitruvia-facet-style";
   st.textContent=".result-facets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.result-facet{font:12px/1.3 system-ui,-apple-system,sans-serif;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;opacity:.72;padding:5px 11px;cursor:pointer}.result-facet:hover{opacity:1}.result-facet.active{opacity:1;background:#1B2A4A;color:#fff;border-color:#1B2A4A}html[data-theme=dark] .result-facet.active{background:#C9A84C;color:#14120e;border-color:#C9A84C}";
