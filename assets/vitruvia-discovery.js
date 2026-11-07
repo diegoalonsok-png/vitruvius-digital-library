@@ -43,6 +43,9 @@
  const peopleWords=/\b(filosofo|filosofa|matematico|matematica|escritor|escritora|emperador|pintor|pintora|philosopher|mathematician|writer|emperor|painter|historian|politician|actor|actress|philosophe|ecrivain|empereur|peintre)\b/;
  function plan(query,identity={}){
   const qRaw=fold(query);
+  // Thematic variants of the same historical subject: these names expand
+  // documentary retrieval, never assert that a later artwork is a primary witness.
+  const jewishChristianity=/^(?:jewish christians?|jewish christianity|judaeo christians?|judaeo christianity|judeo christians?|judeo christianity|judeo cristianismo|judeocristianismo|cristianismo judio|cristianos judios)$/.test(qRaw);
   const colorRequested=/\b(?:a color|en color|colores|colour|color|coloured|colored|couleur|couleurs)\b/.test(qRaw)
    && !/\b(?:sin color|no color|blanco y negro|black and white|monochrome|monocromo)\b/.test(qRaw);
   const genericColor=/^(?:(?:ejemplo|ejemplos|mostrar|ver|buscar)\s+)?(?:(?:imagenes|fotos|fotografias|images|photos|pictures)(?:\s+(?:a|en|de))?\s+)?(?:color|colores|colour|colored|coloured|couleur)(?:\s+(?:imagenes|images|fotos|photos))?$/.test(qRaw);
@@ -76,6 +79,12 @@
   }else if(colorRequested&&kind==="topic"){
    queries=unique([visualName+" color photograph",visualName+" colour photography",...queries]);
   }
+  if(jewishChristianity&&kind==="topic"){
+   aliases=unique([...aliases,"Jewish Christianity","Jewish Christians","Judaeo-Christianity","Judeo-Christianity",
+    "Judeo-Christians","Jewish Christian","cristianismo judío","judeocristianismo"]);
+   queries=unique(["Jewish Christianity","Jewish Christians","Judaeo-Christianity",
+    "Jewish Christian archaeology","Jewish Christian early Christianity",...queries]);
+  }
   const visualStyle=colorRequested||genericColor?"color":brutalism?"prefer-color":"any";
   return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,family:family?.id||null,
    contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0,
@@ -92,6 +101,7 @@
   technical:{es:"Funcionamiento, planos y diagramas",en:"Operation, plans and diagrams",fr:"Fonctionnement, plans et schémas"},
   live:{es:"Fotografías de la banda y conciertos",en:"Band photographs and concerts",fr:"Photographies du groupe et concerts"},
   artwork:{es:"Obras y representaciones artísticas",en:"Artworks and artistic representations",fr:"Œuvres et représentations artistiques"},
+  article:{es:"Imágenes del artículo enciclopédico · contexto",en:"Encyclopedia article images · context",fr:"Images de l’article encyclopédique · contexte"},
   context:{es:"Otras imágenes relacionadas",en:"Other related images",fr:"Autres images liées"}
  };
  const bust=/\b(bust|busts|busto|bustos|buste|bustes|sculpture|sculptures|scultura|escultura|esculturas|statue|statues|estatua|herm|herma|marble head|portrait head)\b/;
