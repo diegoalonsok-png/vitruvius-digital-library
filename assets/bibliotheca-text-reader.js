@@ -21,11 +21,15 @@ try{
  const $=id=>target.querySelector("#"+id), e=$("cr-edition"),b=$("cr-book"),l=$("cr-locus"),q=$("cr-search"),out=$("cr-lines"),summary=$("cr-summary"),matches=$("cr-matches");
  e.value=lang; let activeBook=0,activeIdx=0,filtered=[];
  const bookList=()=>[...new Set(list.map(p=>Number(p.book)).filter(Number.isFinite))].sort((a,b)=>a-b);
- function populateBooks(){b.innerHTML='<option value="0">Todos los libros (I–X)</option>'+bookList().map(n=>'<option value="'+n+'">Libro '+n+'</option>').join("");if(activeBook!==0&&!bookList().includes(activeBook))activeBook=0;b.value=String(activeBook);}
+ const prefaceBooks=()=>new Set(list.filter(p=>/\\.praef\\./.test(String(p.locus||""))).map(p=>Number(p.book)));
+ function prefaceStatus(){const books=prefaceBooks();return books.size===10?"Prefacios de los diez libros disponibles":books.size+" de 10 prefacios con pasajes registrados";}
+
+ function populateBooks(){b.innerHTML='<option value="0">Todos los libros (I–X)</option><option value="-1">Todos los prefacios (I–X)</option>'+bookList().map(n=>'<option value="'+n+'">Libro '+n+'</option>').join("");if(activeBook>0&&!bookList().includes(activeBook))activeBook=0;b.value=String(activeBook);}
  // Navigation respects the selected book; searching ignores it and examines all ten books.
  function searchHits(){const query=text(q.value).trim();if(!query)return null;
   const matches=[];for(const p of list){
-   if(activeBook!==0&&Number(p.book)!==activeBook)continue;
+   if(activeBook>0&&Number(p.book)!==activeBook)continue;
+   if(activeBook===-1&&!/\\.praef\\./.test(String(p.locus||"")))continue;
    const original=String(p.latin||""),translated=String(p.translation||"");
    // Unicode word boundary: "loci" must not be mistaken for a fragment of another word.
    const found=[["Latín",original],["Traducción",translated]].filter(([,v])=>{
@@ -40,11 +44,11 @@ try{
    if(found.length)matches.push({passage:p,fields:found.map(x=>x[0])});
   }return matches;
  }
- function filteredPassages(){const hits=searchHits();return hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||Number(p.book)===activeBook);}
+ function filteredPassages(){const hits=searchHits();return hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||(activeBook===-1?/\\.praef\\./.test(String(p.locus||"")):Number(p.book)===activeBook));}
  function drawMatches(hits){
   matches.replaceChildren();matches.hidden=!hits;
   if(!hits)return;
-  const heading=document.createElement("p");heading.textContent=hits.length+" pasajes coincidentes en "+(activeBook===0?"todos los libros (I–X)":"el Libro "+activeBook)+". Seleccioná un resultado para abrirlo.";
+  const heading=document.createElement("p");heading.textContent=hits.length+" pasajes coincidentes en "+(activeBook===0?"todos los libros (I–X)":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+". Seleccioná un resultado para abrirlo.";
   matches.append(heading);
   const container=document.createElement("div");container.className="classic-read-match-list";
   const ordered=hits.map((hit,index)=>({...hit,index})).sort((a,b)=>Number(a.passage.book)-Number(b.passage.book)||String(a.passage.locus).localeCompare(String(b.passage.locus),undefined,{numeric:true}));
@@ -57,18 +61,20 @@ try{
   });
   matches.append(container);
  }
- function drawPassages(){const hits=searchHits();filtered=hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||Number(p.book)===activeBook);
-  l.replaceChildren();filtered.forEach((p,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=(activeBook===0?"Libro "+p.book+" · ":"")+p.locus;l.append(opt)});
+ function drawPassages(){const hits=searchHits();filtered=hits?hits.map(x=>x.passage):list.filter(p=>activeBook===0||(activeBook===-1?/\\.praef\\./.test(String(p.locus||"")):Number(p.book)===activeBook));
+  l.replaceChildren();filtered.forEach((p,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=(activeBook<=0?"Libro "+p.book+" · ":"")+p.locus;l.append(opt)});
   if(activeIdx>=filtered.length||activeIdx<0)activeIdx=0;drawMatches(hits);show();
  }
  function show(){const p=filtered[activeIdx];l.value=String(activeIdx);
   // Keep selected search scope even when the displayed locus belongs to another book.
   const searching=Boolean(q.value.trim());
-  summary.textContent=p?(filtered.length+(searching?" pasajes encontrados en "+(activeBook===0?"los diez libros":"el Libro "+activeBook):(activeBook===0?" loci de los diez libros":" loci del Libro "+activeBook))+" · "+p.locus+" · "+datasets[e.value].name):
-   searching?"Sin resultados para «"+q.value+"» en "+(activeBook===0?"los diez libros":"el Libro "+activeBook)+" de esta edición.":"No hay pasajes para la selección";
+  const prefNotice=activeBook===-1?" · "+prefaceStatus():"";
+  summary.textContent=p?(filtered.length+(searching?" pasajes encontrados en "+(activeBook===0?"los diez libros":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook):(activeBook===0?" loci de los diez libros":activeBook===-1?" loci de los prefacios I–X":" loci del Libro "+activeBook))+" · "+p.locus+" · "+datasets[e.value].name):
+   searching?"Sin resultados para «"+q.value+"» en "+(activeBook===0?"los diez libros":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+" de esta edición.":"No hay pasajes para la selección";
+  if(activeBook===-1)summary.textContent+=prefNotice;
   if(!p){out.innerHTML='<p>No hay pasajes que coincidan con la búsqueda.</p>';return;}
   out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+safe(p.latin||"")+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+safe(p.translation||"Traducción no disponible para este pasaje.")+'</p></article>';
-  q.setAttribute("aria-label","Buscar en "+(activeBook===0?"todos los libros":"Libro "+activeBook)+" de la edición "+datasets[e.value].name);
+  q.setAttribute("aria-label","Buscar en "+(activeBook===0?"todos los libros":activeBook===-1?"todos los prefacios":"Libro "+activeBook)+" de la edición "+datasets[e.value].name);
  }
  populateBooks();drawPassages();
  b.addEventListener("change",()=>{activeBook=Number(b.value);activeIdx=0;drawPassages()});
