@@ -48,7 +48,12 @@ function ensureTypography(){
  const style=document.createElement('style');style.id='site-typeface-styles';
  style.textContent=[
   '.site-typeface-tool{position:relative;display:inline-flex;align-items:center;vertical-align:middle}',
-  '.site-typeface-button{display:inline-flex;justify-content:center;align-items:center;min-width:36px;min-height:35px;padding:6px 9px;border:1px solid #515960;border-radius:4px;background:transparent;color:inherit;font:italic 600 19px Georgia,serif;cursor:pointer}',
+  '.site-typeface-button{display:inline-flex;justify-content:center;align-items:center;min-width:36px;min-height:35px;padding:6px 9px;border:1px solid #6e7278;border-radius:8px;background:#2d2d31;color:#f4f3f1;font:italic 600 19px Georgia,serif;cursor:pointer;transition:background .15s ease,border-color .15s ease}',
+  '.site-typeface-button:hover{background:#3a3b40;border-color:#a4a5aa}',
+  '.site-typeface-button:focus-visible{outline:2px solid #c9ced4;outline-offset:3px}',
+  '.research-nav-controls .site-typeface-tool{flex:0 0 auto;align-self:center}',
+  '.research-nav-controls .site-typeface-button{min-width:46px;min-height:42px;padding:7px 10px;border:1px solid #8b8d93;border-radius:10px;background:#2d2d31;color:#f4f3f1;box-shadow:none;font:italic 600 21px Georgia,serif}',
+  '.research-nav-controls .site-typeface-button[aria-expanded="true"]{border-color:#b9bbc1;background:#424248}',
   '.site-typeface-panel{position:fixed;z-index:15015;top:76px;right:clamp(12px,2vw,30px);left:auto;width:min(260px,calc(100vw - 30px));max-height:calc(100dvh - 92px);overflow-y:auto;box-sizing:border-box;padding:14px;background:#25282a;border:1px solid #68727b;border-radius:8px;color:#f7f3ee;box-shadow:0 10px 32px #0006;font:13px/1.5 system-ui,sans-serif}',
   '.site-typeface-panel[hidden]{display:none!important}',
   '.site-typeface-panel label{display:block;margin:7px 0;color:inherit}',
