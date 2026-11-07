@@ -59,6 +59,17 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 .pap-build-output{font:25px/1.7 "Noto Sans Phoenician","Noto Serif Hebrew",Georgia,serif;padding:12px;min-height:60px;background:#fffdf6;border:1px solid #b5a280;unicode-bidi:plaintext;white-space:pre-wrap;overflow-wrap:anywhere}
 .pap-build-sentences{padding-inline-start:30px;font:22px/1.6 Georgia,serif}.pap-build-sentences li{padding:6px;border-bottom:1px solid #ddd0b6;unicode-bidi:plaintext}
 #pap-build-letter{max-width:120px}
+
+.pap-extraction-grid{display:grid;grid-template-columns:minmax(260px,1fr) minmax(290px,1fr);gap:16px;margin-top:16px}
+.pap-extraction-grid h3{font:600 19px Georgia,serif}
+.pap-ink-scroll{overflow:auto;max-height:420px;background:#f4f4f4;border:1px solid #ae9e84}
+#pap-ink-canvas{display:block;max-width:100%;height:auto;image-rendering:auto;background:#fff}
+.pap-ink-signs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:9px;max-height:400px;overflow:auto}
+.pap-ink-sign{padding:6px;border:1px solid #b8a17d;background:#fffefa;border-radius:5px}
+.pap-ink-sign canvas{display:block;width:100%;height:68px;object-fit:contain;background:white}
+.pap-ink-sign button{font:16px Georgia,serif;min-width:35px;min-height:34px;border:1px solid #b6a27f;background:#f1e8d7;cursor:pointer;margin:2px}
+.pap-ink-sign small{display:block;font-size:11px}
+@media(max-width:900px){.pap-extraction-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -96,6 +107,40 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <button id="pap-export" type="button">Guardar imagen procesada</button>
 </div>
 </section>
+<section class="panel" id="pap-extraction" aria-labelledby="pap-extraction-h">
+<h2 id="pap-extraction-h">3 · Extraer tinta y reconstruir los trazos · blanco y negro</h2>
+<p class="caption">Primero se genera una imagen de píxeles negros sobre fondo blanco. El sistema detecta regiones oscuras; también puede confundir grietas, manchas o textura con letras. La segmentación y la propuesta de signos necesitan cotejo humano con la fotografía original.</p>
+<div class="toolbar">
+<label>Modo de extracción<select id="pap-ink-mode"><option value="adaptive">Umbral local · soportes irregulares</option><option value="global">Umbral global · tinta negra</option><option value="edge">Contornos · incisiones</option></select></label>
+<label>Umbral <input id="pap-ink-threshold" type="range" min="35" max="245" value="135"><output id="pap-ink-threshold-value">135</output></label>
+<label>Sensibilidad local <input id="pap-ink-sensitivity" type="range" min="-40" max="40" value="12"><output id="pap-ink-sensitivity-value">12</output></label>
+<label>Ruido mínimo (píxeles) <input id="pap-ink-noise" type="range" min="0" max="70" value="6"><output id="pap-ink-noise-value">6</output></label>
+<label>Contraste local <input id="pap-ink-clarity" type="range" min="0" max="100" value="30"><output id="pap-ink-clarity-value">30</output></label>
+<label>Gamma <input id="pap-ink-gamma" type="range" min="30" max="250" value="100"><output id="pap-ink-gamma-value">1,00</output></label>
+<label>Altas luces <input id="pap-ink-highlights" type="range" min="-100" max="100" value="0"><output id="pap-ink-highlights-value">0</output></label>
+<label>Sombras <input id="pap-ink-shadows" type="range" min="-100" max="100" value="0"><output id="pap-ink-shadows-value">0</output></label>
+<label>Exposición <input id="pap-ink-exposure" type="range" min="-100" max="100" value="0"><output id="pap-ink-exposure-value">0</output></label>
+<label>Nitidez <input id="pap-ink-sharpness" type="range" min="0" max="100" value="0"><output id="pap-ink-sharpness-value">0</output></label>
+<button type="button" id="pap-ink-papyrus">Papiro · tinta tenue</button>
+<button type="button" id="pap-ink-ostracon">Óstracon · incisión</button>
+<button type="button" id="pap-ink-clean">Restaurar extracción</button>
+<button type="button" id="pap-ink-run">Extraer trazos negros</button>
+<button type="button" id="pap-ink-export">Guardar máscara PNG</button>
+</div>
+<div class="pap-extraction-grid">
+<div><h3>Imagen extraída</h3><div class="pap-ink-scroll"><canvas id="pap-ink-canvas" width="560" height="280" aria-label="Máscara de tinta en negro sobre blanco"></canvas></div></div>
+<div><h3>Segmentación por signos</h3>
+<div class="toolbar">
+<label>Alfabeto comparativo<select id="pap-ink-alphabet"><option value="grc">Griego antiguo · formas tipográficas</option><option value="lat">Latín</option><option value="heb">Hebreo cuadrado</option><option value="phn">Fenicio Unicode</option></select></label>
+<button id="pap-ink-segment" type="button">Segmentar signos</button>
+<button id="pap-ink-ocr" type="button">Enviar máscara al OCR opcional</button>
+</div>
+<p id="pap-ink-status" class="caption" role="status" aria-live="polite">Carga una fotografía y pulsa «Extraer trazos negros».</p>
+<div id="pap-ink-signs" class="pap-ink-signs" aria-label="Recortes y posibles equivalencias de cada signo"></div>
+</div></div>
+<p class="caption">El análisis usa la imagen procesada, sin subirla al servidor. La máscara es una hipótesis de tinta, no una restauración diplomática; la segmentación agrupa componentes oscuros y puede dividir una misma letra o unir letras cercanas. Las coincidencias gráficas no son una identificación automática del idioma.</p>
+</section>
+
 <div class="workspace">
 <section class="panel">
 <h2>3 · Examinar el soporte</h2>
@@ -200,4 +245,5 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 </main>
 <script defer src="assets/papyrology-ostraca.js?v=20261106-semitic-ocr-v2"></script>
 <script defer src="assets/papyrology-glyphs.js?v=20261106-glyph-lab-v1"></script>
+<script defer src="assets/papyrology-ink.js?v=20261106-ink-extraction-v1"></script>
 </body></html>
