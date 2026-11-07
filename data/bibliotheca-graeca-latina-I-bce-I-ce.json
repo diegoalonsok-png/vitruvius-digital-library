@@ -226,6 +226,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-oratore-la.json"
       }
     },
     {
@@ -268,6 +271,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-republica-la.json"
       }
     },
     {
@@ -861,7 +867,10 @@
         "Horatius",
         "Horace",
         "Horacio"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/horace-odes-la.json"
+      }
     },
     {
       "id": "livy",
@@ -978,7 +987,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Fasti"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/ovid-fasti-la.json"
+      }
     },
     {
       "id": "nepos",
@@ -1046,7 +1058,10 @@
         "Biblioteca histórica",
         "Bibliotheca historica",
         "Diodorus Siculus"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/diodorus-grc.json"
+      }
     },
     {
       "id": "dionysius",
@@ -1200,6 +1215,9 @@
       "bibliography": {
         "editionCitation": "Seneca. Ad Lucilium epistulae morales. Translated by Richard M. Gummere. 3 vols. Loeb Classical Library 75–77. London: William Heinemann; New York: G. P. Putnam's Sons, 1917–1925.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/seneca-epistulae-la.json"
       }
     },
     {

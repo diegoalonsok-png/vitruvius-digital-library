@@ -1,0 +1,60 @@
+{
+  "updated": "2026-11-07",
+  "newWorks": 6,
+  "newTextVersions": 6,
+  "indexedDistinctWorks": 30,
+  "registeredTextVersions": 56,
+  "missingOriginals": 193,
+  "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
+  "created": [
+    {
+      "workId": "cicero-oratore",
+      "lang": "la",
+      "path": "data/classics-corpus/cicero-oratore-la.json",
+      "passages": 27,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
+      "sha256": "057aef5553eeb2f3e30eb17b57466d5195599e5204158df1a54ea3a10322fc6a"
+    },
+    {
+      "workId": "cicero-republica",
+      "lang": "la",
+      "path": "data/classics-corpus/cicero-republica-la.json",
+      "passages": 8,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi043/phi0474.phi043.perseus-lat2.xml",
+      "sha256": "c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad"
+    },
+    {
+      "workId": "horace-odes",
+      "lang": "la",
+      "path": "data/classics-corpus/horace-odes-la.json",
+      "passages": 401,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi001/phi0893.phi001.perseus-lat2.xml",
+      "sha256": "ddac1805d6120b78db476ac94c4d88b066b1fcd7676cd520e6abd927360655dc"
+    },
+    {
+      "workId": "ovid-fasti",
+      "lang": "la",
+      "path": "data/classics-corpus/ovid-fasti-la.json",
+      "passages": 623,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi007/phi0959.phi007.perseus-lat2.xml",
+      "sha256": "5e1de37b36682fde85fc99cd1005029611d083d61d3d62264a73e5791f0db567"
+    },
+    {
+      "workId": "diodorus",
+      "lang": "grc",
+      "path": "data/classics-corpus/diodorus-grc.json",
+      "passages": 1705,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0060/tlg001/tlg0060.tlg001.perseus-grc6.xml",
+      "sha256": "388ab57d77d4c4c0601468d16538e2c2c3bfb4a9825214f28591467ba3b9db91"
+    },
+    {
+      "workId": "seneca-epistulae",
+      "lang": "la",
+      "path": "data/classics-corpus/seneca-epistulae-la.json",
+      "passages": 94,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi015/phi1017.phi015.perseus-lat2.xml",
+      "sha256": "079db8ee6c09bd08233441a06d7fc5a1c15331f28d868257dcc97910dd7fb74d"
+    }
+  ],
+  "errors": []
+}

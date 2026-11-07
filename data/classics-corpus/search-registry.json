@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 50,
-  "works": 24,
+  "count": 56,
+  "works": 30,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -508,6 +508,66 @@
       "path": "data/structured/recensio-es.json",
       "reader": "lector-bilingue.html?edition=recensio-es",
       "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
+    },
+    {
+      "workId": "cicero-oratore",
+      "author": "Cicerón",
+      "title": "De oratore",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-oratore-la.json",
+      "reader": "classics-text-reader.html?work=cicero-oratore&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-republica",
+      "author": "Cicerón",
+      "title": "De re publica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-republica-la.json",
+      "reader": "classics-text-reader.html?work=cicero-republica&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-odes",
+      "author": "Horacio",
+      "title": "Carmina",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-odes-la.json",
+      "reader": "classics-text-reader.html?work=horace-odes&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-fasti",
+      "author": "Ovidio",
+      "title": "Fasti",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-fasti-la.json",
+      "reader": "classics-text-reader.html?work=ovid-fasti&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/diodorus-grc.json",
+      "reader": "classics-text-reader.html?work=diodorus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "seneca-epistulae",
+      "author": "Séneca",
+      "title": "Epistulae morales ad Lucilium",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-epistulae-la.json",
+      "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

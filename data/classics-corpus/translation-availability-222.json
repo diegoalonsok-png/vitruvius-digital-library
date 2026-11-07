@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 24,
+    "locallyIndexedWorks": 30,
     "translatedWorksLocal": 21,
     "worksWithoutHostedTranslation": 201,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 19,
       "fr": 2
     },
-    "originalTextIndexed": 24,
-    "originalTextNotIndexed": 198
+    "originalTextIndexed": 30,
+    "originalTextNotIndexed": 192
   },
   "works": [
     {
@@ -64,28 +64,32 @@
       "author": "Cicerón",
       "title": "De oratore",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-republica",
       "author": "Cicerón",
       "title": "De re publica",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "caesar-gallico",
@@ -253,14 +257,16 @@
       "author": "Horacio",
       "title": "Carmina",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "livy",
@@ -297,14 +303,16 @@
       "author": "Ovidio",
       "title": "Fasti",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "nepos",
@@ -325,14 +333,16 @@
       "author": "Diodoro Sículo",
       "title": "Βιβλιοθήκη ἱστορική",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "dionysius",
@@ -381,14 +391,16 @@
       "author": "Séneca",
       "title": "Epistulae morales ad Lucilium",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "seneca-naturales",
