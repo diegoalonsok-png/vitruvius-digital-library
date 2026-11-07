@@ -73,6 +73,7 @@ ready(()=>{
   }catch(e){if(id===serial)status.textContent="No se pudo cargar Conceptus: "+e.message}
  }
  button.addEventListener("click",run);
+ form.addEventListener("submit",()=>{if(oldScripts.test(input.value)||greek.test(input.value))run()});
  input.addEventListener("input",()=>{serial++;status.textContent="";results.replaceChildren()});
  if(oldScripts.test(new URLSearchParams(location.search).get("q")||"")||greek.test(new URLSearchParams(location.search).get("q")||"")){
   // No carga masiva: la consulta sigue siendo bajo demanda.
