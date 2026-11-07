@@ -6,7 +6,7 @@ const status=document.getElementById("image-results-status"),heading=document.ge
 // Only the compact strip is visible by default; the full gallery is opt-in.
 grid.hidden=true;
 if(!section||!grid||!actions||!status||!heading)return;
-let active=0,controller=null,currentImageQuery="";
+let active=0,controller=null,currentImageQuery="",lastGalleryItems=[];
 
 /* Local onomasticon takes precedence over a surname-only web match.
  * Use its catalogued historical portrait, not a namesake's photograph.
@@ -66,7 +66,7 @@ const safeLink=u=>{try{const x=new URL(u,location.href);return x.protocol==="htt
 const locale=(es,en,fr)=>document.documentElement.lang==="en"?en:document.documentElement.lang==="fr"?fr:es;
 const groupLabel=group=>window.VitruviaDiscovery?.groups[group]?.[document.documentElement.lang||"es"]||window.VitruviaDiscovery?.groups[group]?.es||group;
 function external(label,url){const a=create(actions,"a","",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer"}
-function reset(){active++;if(controller)controller.abort();controller=null;section.hidden=true;grid.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";quick.replaceChildren();quick.hidden=true;const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
+function reset(){active++;lastGalleryItems=[];if(controller)controller.abort();controller=null;section.hidden=true;grid.hidden=true;grid.replaceChildren();actions.replaceChildren();status.textContent="";quick.replaceChildren();quick.hidden=true;const preview=document.getElementById("article-image-preview");if(preview){preview.replaceChildren();preview.hidden=true}}
 async function getJSON(params,signal){
  const url="https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({...params,format:"json",origin:"*"});
  // Centralize Commons requests: the shared transport deduplicates identical
@@ -195,6 +195,7 @@ function displayGroups(items,topic){
   const key=String(item.page||item.original||item.preview||item.name||"").toLowerCase().replace(/[#?].*$/,"");
   if(seen.has(key))return false;seen.add(key);return true;
  });
+ lastGalleryItems=items;
  // The gallery was kept hidden after every normal search; expose only
  // actual source-attributed results, not an empty placeholder.
  section.hidden=false;
@@ -260,7 +261,7 @@ function entityFor(q,ms){
    (afiches, tapas, fotogramas) que Wikipedia publica como cita. Se muestra como referencia, enlazado a su
    ficha, sin filtrar por licencia y con el aviso de que no es reutilizable sin permiso. */
 const ICONISH=/(icon|logo|symbol|flag|commons-|wiki|question|ambox|disambig|edit|padlock|ooui|portal|stub|star|crystal|nuvola|gnome|pictogram|semi-protection|red pencil|folder|speaker|sound|audio)/i;
-async function addArticleImages(id,identity,seen){
+async function addArticleImages(id,identity,seen,topic){
  if(!identity?.canonical)return 0;
  const pairs=[[identity.language||"es",identity.canonical]];
  const en=identity.originalCanonical&&identity.originalCanonical!==identity.canonical?identity.originalCanonical:identity.commonsSearchName;
@@ -282,8 +283,12 @@ async function addArticleImages(id,identity,seen){
   }
  }));
  if(id!==active||!out.length)return 0;
- groupTitle(locale("Imágenes del artículo de Wikipedia · con y sin derechos de autor","Images used in the Wikipedia article · free and copyrighted","Images de l’article Wikipédia · libres et protégées"));
- for(const item of out.slice(0,40))displayItem(item);
+ // Preserve article images in the compact preview as well as the full gallery.
+ if(topic)displayGroups([...lastGalleryItems,...out.slice(0,40)],topic);
+ else{
+  groupTitle(locale("Imágenes del artículo de Wikipedia · con y sin derechos de autor","Images used in the Wikipedia article · free and copyrighted","Images de l’article Wikipédia · libres et protégées"));
+  for(const item of out.slice(0,40))displayItem(item);
+ }
  return out.length;
 }
 /* Libros: tapas de ediciones (Open Library), del primer año de publicación en adelante.
@@ -384,8 +389,11 @@ async function exactArticleLeadImage(topic,query,id){
    const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});
    if(!r.ok)return null;
    const data=await r.json();
+   const canonicalTitles=new Set([...normalized,...(data.query?.redirects||[])
+    .filter(r=>normalized.has(fold(r.from||""))).map(r=>fold(r.to||""))]);
    const page=Object.values(data.query?.pages||{}).find(p=>
-    normalized.has(fold(p.title||""))&&p.pageimage&&safeLink(p.thumbnail?.source));
+    canonicalTitles.has(fold(p.title||""))&&p.pageimage&&safeLink(p.thumbnail?.source)
+    &&p.pageprops?.disambiguation===undefined);
    if(!page)return null;
    const filename=page.pageimage.replace(/_/g," ");
    return {name:filename,caption:page.title,preview:page.thumbnail.source,
@@ -406,7 +414,7 @@ function isEarlyJewishChristianity(query){
 }
 /* Historical context thumbnails from genuinely related encyclopedia articles.
    These are labeled as CONTEXT, not as depictions of the first communities. */
-async function addJewishChristianContextImages(id,seen){
+async function addJewishChristianContextImages(id,seen,topic){
  const sources=["Early Christianity","Second Temple Judaism"];
  const accepted=/\b(jerusalem|temple|synagogue|catacomb|early christian|christianity|scroll|manuscript|codex|papyrus|papyri|judaea|judea|roman|apostle|james|peter|paul|galilee|nazareth|church)\b/i;
  const results=await Promise.all(sources.map(async source=>{
@@ -439,10 +447,13 @@ async function addJewishChristianContextImages(id,seen){
   if(seen.has(key))return false;seen.add(key);return true;
  }).slice(0,16);
  if(!items.length)return 0;
- groupTitle(locale("Contexto histórico relacionado · no imágenes directas",
-  "Related historical context · not direct depictions",
-  "Contexte historique lié · pas de représentations directes"));
- for(const item of items)displayItem(item);
+ if(topic)displayGroups([...lastGalleryItems,...items],topic);
+ else{
+  groupTitle(locale("Contexto histórico relacionado · no imágenes directas",
+   "Related historical context · not direct depictions",
+   "Contexte historique lié · pas de représentations directes"));
+  for(const item of items)displayItem(item);
+ }
  return items.length;
 }
 async function searchImages(query){
@@ -704,10 +715,10 @@ async function searchImages(query){
     "Aucune image suffisamment documentée. Consulter les collections externes.");
   }
   const seen=new Set([...grid.querySelectorAll("img")].map(i=>String(i.src).replace(/\/\d+px-.*$/,"")));
-  const fromArticle=historicalSubject?0:await addArticleImages(id,identity,seen);
+  const fromArticle=historicalSubject?0:await addArticleImages(id,identity,seen,topic);
   if(fromArticle&&!items.length&&!leadItems.length){grid.hidden=false;section.hidden=false;}
   if(fromArticle&&!items.length&&!leadItems.length)status.textContent=locale(fromArticle+" imágenes del artículo de Wikipedia (algunas con derechos de autor).",fromArticle+" images from the Wikipedia article (some copyrighted).",fromArticle+" images de l’article Wikipédia.");
-  const fromContext=earlyJewishChristianity?await addJewishChristianContextImages(id,seen):0;
+  const fromContext=earlyJewishChristianity?await addJewishChristianContextImages(id,seen,topic):0;
   if(id!==active)return;
   if(fromContext){
    grid.hidden=false;section.hidden=false;
