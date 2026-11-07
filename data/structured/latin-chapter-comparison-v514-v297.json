@@ -1,0 +1,1488 @@
+{
+  "schema": "vitruvia-latin-chapter-comparison-v1",
+  "scope": "Comparison of full Latin chapters of V514 and V297; translations in Spanish and English remain independent and intact.",
+  "method": "Concatenate all passages belonging to the same book.chapter (including praef.), compare Latin normalized token multiplicities independent of passage subdivision. Bag-of-words Dice coefficient. Does not verify exact textual sequence, editorial apparatus or translation quality.",
+  "warning": "V297 is considered a complete English edition by the author; its editorial apparatus and locus segmentation differ. Missing locus IDs do NOT mean absent Latin or English text. Chapters with low similarity need philological review, not automatic corrections.",
+  "summary": {
+    "chapters": 105,
+    "high": 96,
+    "review": 1,
+    "editorial": 8
+  },
+  "chapters": [
+    {
+      "chapter": "1.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 260,
+        "v297": 260
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "1.1",
+      "latinWordSimilarity": 0.93,
+      "latinWordCounts": {
+        "v514": 1607,
+        "v297": 1396
+      },
+      "loci": {
+        "v514": 18,
+        "v297": 18
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "1.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 711,
+        "v297": 711
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "1.3",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 151,
+        "v297": 151
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "1.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 1048,
+        "v297": 1048
+      },
+      "loci": {
+        "v514": 12,
+        "v297": 12
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "1.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 607,
+        "v297": 607
+      },
+      "loci": {
+        "v514": 8,
+        "v297": 8
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "1.6",
+      "latinWordSimilarity": 0.999,
+      "latinWordCounts": {
+        "v514": 1364,
+        "v297": 1364
+      },
+      "loci": {
+        "v514": 13,
+        "v297": 13
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "1.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 261,
+        "v297": 261
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.praef",
+      "latinWordSimilarity": 0.991,
+      "latinWordCounts": {
+        "v514": 464,
+        "v297": 464
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.1",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 891,
+        "v297": 891
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 133,
+        "v297": 133
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.3",
+      "latinWordSimilarity": 0.996,
+      "latinWordCounts": {
+        "v514": 423,
+        "v297": 422
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 222,
+        "v297": 222
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 279,
+        "v297": 279
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.6",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 557,
+        "v297": 557
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 463,
+        "v297": 463
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.8",
+      "latinWordSimilarity": 0.999,
+      "latinWordCounts": {
+        "v514": 1738,
+        "v297": 1738
+      },
+      "loci": {
+        "v514": 20,
+        "v297": 20
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.9",
+      "latinWordSimilarity": 0.976,
+      "latinWordCounts": {
+        "v514": 1470,
+        "v297": 1400
+      },
+      "loci": {
+        "v514": 17,
+        "v297": 17
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "2.10",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 271,
+        "v297": 271
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "3.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 498,
+        "v297": 498
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "3.1",
+      "latinWordSimilarity": 0.947,
+      "latinWordCounts": {
+        "v514": 746,
+        "v297": 671
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "3.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 326,
+        "v297": 326
+      },
+      "loci": {
+        "v514": 8,
+        "v297": 8
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "3.3",
+      "latinWordSimilarity": 0.999,
+      "latinWordCounts": {
+        "v514": 886,
+        "v297": 886
+      },
+      "loci": {
+        "v514": 13,
+        "v297": 13
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "3.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 333,
+        "v297": 333
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "3.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 1239,
+        "v297": 1239
+      },
+      "loci": {
+        "v514": 15,
+        "v297": 15
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 114,
+        "v297": 114
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.1",
+      "latinWordSimilarity": 0.999,
+      "latinWordCounts": {
+        "v514": 864,
+        "v297": 864
+      },
+      "loci": {
+        "v514": 12,
+        "v297": 12
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 570,
+        "v297": 570
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.3",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 750,
+        "v297": 750
+      },
+      "loci": {
+        "v514": 10,
+        "v297": 10
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 343,
+        "v297": 343
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 136,
+        "v297": 136
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.6",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 523,
+        "v297": 523
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 278,
+        "v297": 278
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.8",
+      "latinWordSimilarity": 0.997,
+      "latinWordCounts": {
+        "v514": 390,
+        "v297": 390
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "4.9",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 70,
+        "v297": 70
+      },
+      "loci": {
+        "v514": 1,
+        "v297": 1
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 379,
+        "v297": 379
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.1",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 661,
+        "v297": 661
+      },
+      "loci": {
+        "v514": 10,
+        "v297": 10
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 104,
+        "v297": 104
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.3",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 471,
+        "v297": 471
+      },
+      "loci": {
+        "v514": 8,
+        "v297": 8
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 659,
+        "v297": 659
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 560,
+        "v297": 560
+      },
+      "loci": {
+        "v514": 8,
+        "v297": 8
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.6",
+      "latinWordSimilarity": 0.999,
+      "latinWordCounts": {
+        "v514": 658,
+        "v297": 657
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 193,
+        "v297": 193
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.8",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 179,
+        "v297": 179
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.9",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 706,
+        "v297": 706
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.10",
+      "latinWordSimilarity": 0.983,
+      "latinWordCounts": {
+        "v514": 412,
+        "v297": 400
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.11",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 355,
+        "v297": 355
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "5.12",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 554,
+        "v297": 554
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 643,
+        "v297": 643
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.1",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 947,
+        "v297": 947
+      },
+      "loci": {
+        "v514": 12,
+        "v297": 12
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 308,
+        "v297": 308
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.3",
+      "latinWordSimilarity": 0.998,
+      "latinWordCounts": {
+        "v514": 853,
+        "v297": 853
+      },
+      "loci": {
+        "v514": 11,
+        "v297": 11
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 166,
+        "v297": 166
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 298,
+        "v297": 298
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.6",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 582,
+        "v297": 582
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 577,
+        "v297": 577
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "6.8",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 650,
+        "v297": 650
+      },
+      "loci": {
+        "v514": 10,
+        "v297": 10
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 1343,
+        "v297": 1343
+      },
+      "loci": {
+        "v514": 18,
+        "v297": 18
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.1",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 607,
+        "v297": 607
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 151,
+        "v297": 151
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.3",
+      "latinWordSimilarity": 0.983,
+      "latinWordCounts": {
+        "v514": 821,
+        "v297": 793
+      },
+      "loci": {
+        "v514": 11,
+        "v297": 11
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 430,
+        "v297": 430
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.5",
+      "latinWordSimilarity": 0.977,
+      "latinWordCounts": {
+        "v514": 690,
+        "v297": 659
+      },
+      "loci": {
+        "v514": 8,
+        "v297": 8
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.6",
+      "latinWordSimilarity": 0.754,
+      "latinWordCounts": {
+        "v514": 113,
+        "v297": 115
+      },
+      "loci": {
+        "v514": 1,
+        "v297": 1
+      },
+      "idsOnlyInV514": [],
+      "status": "chapter-review-priority"
+    },
+    {
+      "chapter": "7.7",
+      "latinWordSimilarity": 0.916,
+      "latinWordCounts": {
+        "v514": 159,
+        "v297": 188
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 2
+      },
+      "idsOnlyInV514": [
+        "7.7.2",
+        "7.7.3",
+        "7.7.5"
+      ],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "7.8",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 274,
+        "v297": 274
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.9",
+      "latinWordSimilarity": 0.997,
+      "latinWordCounts": {
+        "v514": 340,
+        "v297": 340
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.10",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 184,
+        "v297": 184
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.11",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 121,
+        "v297": 121
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.12",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 87,
+        "v297": 87
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.13",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 152,
+        "v297": 152
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "7.14",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 178,
+        "v297": 178
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "8.praef",
+      "latinWordSimilarity": 0.936,
+      "latinWordCounts": {
+        "v514": 388,
+        "v297": 341
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "8.1",
+      "latinWordSimilarity": 0.962,
+      "latinWordCounts": {
+        "v514": 707,
+        "v297": 655
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "8.2",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 677,
+        "v297": 677
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "8.3",
+      "latinWordSimilarity": 0.992,
+      "latinWordCounts": {
+        "v514": 2355,
+        "v297": 2326
+      },
+      "loci": {
+        "v514": 28,
+        "v297": 28
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "8.4",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 162,
+        "v297": 162
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "8.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 265,
+        "v297": 265
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "8.6",
+      "latinWordSimilarity": 0.986,
+      "latinWordCounts": {
+        "v514": 1123,
+        "v297": 1096
+      },
+      "loci": {
+        "v514": 15,
+        "v297": 15
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.praef",
+      "latinWordSimilarity": 0.991,
+      "latinWordCounts": {
+        "v514": 1317,
+        "v297": 1293
+      },
+      "loci": {
+        "v514": 18,
+        "v297": 18
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.1",
+      "latinWordSimilarity": 0.966,
+      "latinWordCounts": {
+        "v514": 1304,
+        "v297": 1221
+      },
+      "loci": {
+        "v514": 16,
+        "v297": 16
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.2",
+      "latinWordSimilarity": 0.886,
+      "latinWordCounts": {
+        "v514": 448,
+        "v297": 356
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "9.3",
+      "latinWordSimilarity": 0.965,
+      "latinWordCounts": {
+        "v514": 278,
+        "v297": 259
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.4",
+      "latinWordSimilarity": 0.969,
+      "latinWordCounts": {
+        "v514": 459,
+        "v297": 431
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 309,
+        "v297": 309
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.6",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 200,
+        "v297": 200
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 644,
+        "v297": 644
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "9.8",
+      "latinWordSimilarity": 0.98,
+      "latinWordCounts": {
+        "v514": 1089,
+        "v297": 1051
+      },
+      "loci": {
+        "v514": 15,
+        "v297": 15
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.praef",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 332,
+        "v297": 332
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.1",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 414,
+        "v297": 414
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.2",
+      "latinWordSimilarity": 0.981,
+      "latinWordCounts": {
+        "v514": 1263,
+        "v297": 1215
+      },
+      "loci": {
+        "v514": 15,
+        "v297": 15
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.3",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 745,
+        "v297": 745
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.4",
+      "latinWordSimilarity": 0.984,
+      "latinWordCounts": {
+        "v514": 255,
+        "v297": 247
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.5",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 120,
+        "v297": 120
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.6",
+      "latinWordSimilarity": 0.961,
+      "latinWordCounts": {
+        "v514": 397,
+        "v297": 367
+      },
+      "loci": {
+        "v514": 4,
+        "v297": 4
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.7",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 257,
+        "v297": 257
+      },
+      "loci": {
+        "v514": 5,
+        "v297": 5
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.8",
+      "latinWordSimilarity": 0.944,
+      "latinWordCounts": {
+        "v514": 443,
+        "v297": 396
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "10.9",
+      "latinWordSimilarity": 0.985,
+      "latinWordCounts": {
+        "v514": 584,
+        "v297": 567
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.10",
+      "latinWordSimilarity": 0.95,
+      "latinWordCounts": {
+        "v514": 467,
+        "v297": 428
+      },
+      "loci": {
+        "v514": 6,
+        "v297": 6
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.11",
+      "latinWordSimilarity": 0.962,
+      "latinWordCounts": {
+        "v514": 641,
+        "v297": 596
+      },
+      "loci": {
+        "v514": 9,
+        "v297": 9
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.12",
+      "latinWordSimilarity": 0.917,
+      "latinWordCounts": {
+        "v514": 137,
+        "v297": 116
+      },
+      "loci": {
+        "v514": 2,
+        "v297": 2
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "10.13",
+      "latinWordSimilarity": 0.963,
+      "latinWordCounts": {
+        "v514": 536,
+        "v297": 500
+      },
+      "loci": {
+        "v514": 8,
+        "v297": 8
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.14",
+      "latinWordSimilarity": 1,
+      "latinWordCounts": {
+        "v514": 250,
+        "v297": 250
+      },
+      "loci": {
+        "v514": 3,
+        "v297": 3
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    },
+    {
+      "chapter": "10.15",
+      "latinWordSimilarity": 0.94,
+      "latinWordCounts": {
+        "v514": 561,
+        "v297": 497
+      },
+      "loci": {
+        "v514": 7,
+        "v297": 7
+      },
+      "idsOnlyInV514": [],
+      "status": "editorial-divergence-check"
+    },
+    {
+      "chapter": "10.16",
+      "latinWordSimilarity": 0.98,
+      "latinWordCounts": {
+        "v514": 961,
+        "v297": 924
+      },
+      "loci": {
+        "v514": 12,
+        "v297": 12
+      },
+      "idsOnlyInV514": [],
+      "status": "high-lexical-overlap"
+    }
+  ]
+}
