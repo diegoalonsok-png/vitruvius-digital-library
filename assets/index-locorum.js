@@ -90,15 +90,31 @@ function exportTsv(){
 let literalSerial=0;
 function lexicalTerms(raw){
  const parts=String(raw||"").match(/[\p{L}\p{M}]+(?:[-'][\p{L}\p{M}]+)*/gu)||[];
- const qs=[...new Set(parts.map(s=>s.trim()).filter(s=>fold(s).length>=3))].slice(0,5);
- const matched=concepts.filter(c=>qs.some(q=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(x=>typeof x==="string"&&fold(x)===fold(q))));
- const forms=new Set(qs);
+ const qs=[...new Set(parts.map(x=>x.trim()).filter(x=>fold(x).length>=3))].slice(0,5);
+ // Greek terms can be entered in a Latin keyboard, including unaccented romanization.
+ // Only documented graphic forms are searched; no guessed locus or automatic inflection.
+ const greekForms={
+  logos:["λόγος","λόγου","λόγον","λόγῳ","λόγε","λόγοι","λόγων","λόγοις","λόγους","λόγοις","λόγω"],
+  oikos:["οἶκος","οἴκου","οἶκον","οἴκῳ","οἶκοι","οἴκων","οἴκοις","οἴκους"],
+  techne:["τέχνη","τέχνης","τέχνῃ","τέχνην","τέχναι","τεχνῶν","τέχναις","τέχνας"],
+  physis:["φύσις","φύσεως","φύσει","φύσιν","φύσεις","φύσεων"],
+  polis:["πόλις","πόλεως","πόλει","πόλιν","πόλεις","πόλεων"],
+  anthropos:["ἄνθρωπος","ἀνθρώπου","ἄνθρωπον","ἀνθρώπῳ","ἄνθρωποι","ἀνθρώπων","ἀνθρώπους"],
+  topos:["τόπος","τόπου","τόπον","τόπῳ","τόποι","τόπων","τόπους"]
+ };
+ const normalizedGreek=s=>fold(s).replace(/ου/g,"ou").replace(/αι/g,"ai").replace(/ει/g,"ei").replace(/οι/g,"oi").replace(/αυ/g,"au").replace(/ευ/g,"eu").replace(/θ/g,"th").replace(/φ/g,"ph").replace(/χ/g,"ch").replace(/ψ/g,"ps").replace(/ξ/g,"x").replace(/[α-ω]/g,c=>({α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",υ:"y",ω:"o"}[c]||c));
+ const matched=concepts.filter(c=>qs.some(q=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(x=>typeof x==="string"&&(fold(x)===fold(q)||normalizedGreek(x)===fold(q)))));
+ const forms=new Set();
+ for(const q of qs){
+  const key=fold(q);const candidates=greekForms[key]||[];
+  for(const term of candidates)forms.add(term);
+  if(!candidates.length)forms.add(q);
+ }
  for(const c of matched){
-  for(const lang of ["la","grc","es","en","fr","de","it","pt"]){
-   for(const w of (lang==="la"||lang==="grc"?c[lang]:c.modern?.[lang])||[]){
-    if(typeof w==="string"&&fold(w).length>=3)forms.add(w);
+  for(const lang of ["la","grc","es","en","fr","de","it","pt"])
+   for(const term of (lang==="la"||lang==="grc"?c[lang]:c.modern?.[lang])||[]){
+    if(typeof term==="string"&&fold(term).length>=3)forms.add(term);
    }
-  }
  }
  return {qs,matched,forms:[...forms].slice(0,12)};
 }
