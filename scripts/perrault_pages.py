@@ -59,8 +59,8 @@ def main():
     parser.add_argument("--year", choices=["1673"], default="1673")
     parser.add_argument("--batch", type=int, default=24,
                         help="Maximum new pages per edition per run")
-    parser.add_argument("--width", type=int, default=1450)
-    parser.add_argument("--quality", type=int, default=78)
+    parser.add_argument("--width", type=int, default=1200)
+    parser.add_argument("--quality", type=int, default=66)
     args = parser.parse_args()
     if not (1 <= args.batch <= 370 and 500 <= args.width <= 2500
             and 45 <= args.quality <= 95):
