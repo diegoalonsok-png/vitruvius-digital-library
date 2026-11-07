@@ -41,7 +41,7 @@ h1{font:italic 400 clamp(42px,5vw,80px)/1.05 Georgia,serif;letter-spacing:-.065e
 label:has(#pr-zoom) output{font-variant-numeric:tabular-nums}
 #pr-status{font-size:13px;color:#bbb;min-height:22px;margin:12px 0}
 #pr-stage{width:100%;height:min(75vh,950px);min-height:360px;overflow:auto;text-align:center;background:#272729;border:1px solid #4a4a4d;border-radius:8px;overscroll-behavior:contain}
-#pr-image{display:block;width:auto;height:auto;max-width:none;margin:16px auto;box-shadow:0 5px 24px #000a}
+#pr-loupe{position:absolute;display:none;pointer-events:none;width:210px;height:210px;border:3px solid #eee;border-radius:50%;box-shadow:0 4px 20px #000b;background-color:#fff;z-index:3}#pr-stage{position:relative}#pr-stage.loupe-on{cursor:crosshair}#pr-image{display:block;width:auto;height:auto;max-width:none;margin:16px auto;box-shadow:0 5px 24px #000a}
 #pr-counter{font:600 14px/1.5 Arial,sans-serif;font-variant-numeric:tabular-nums}
 #pr-label{color:#aaa;font-size:13px}
 .sources{margin:26px 0;padding:17px 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 22px}
@@ -78,7 +78,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 <p class="eyebrow">VITRVVIVS · EDITIONES IMPRESSAE · IIIF · ETH-BIBLIOTHEK</p>
 <h1 id="pr-title">Scriptorium Perrault</h1>
 <p id="pr-edition" class="subtitle">Les Dix Livres d'Architecture de Vitruve · traducción y comentarios de Claude Perrault.</p>
-<p class="note">Edición histórica impresa en francés, no códice manuscrito. Las imágenes se recuperan bajo demanda del manifiesto IIIF de e-rara; esta biblioteca no afirma haber transcrito ni indexado la totalidad del francés antiguo. El número de imagen digital y la paginación impresa pueden diferir.</p>
+<p class="note">Edición histórica impresa en francés, no códice manuscrito. La edición de 1673 prioriza imágenes locales cuando estén disponibles y utiliza e-rara como respaldo; esta biblioteca no afirma haber transcrito ni indexado la totalidad del francés antiguo. El número de imagen digital y la paginación impresa pueden diferir.</p>
 <div class="controlbar" role="group" aria-label="Navegación del ejemplar digitalizado">
 <label>Edición<select id="pr-year" aria-label="Edición de Perrault"><option value="1673">Perrault 1673</option><option value="1684">Perrault 1684</option></select></label>
 <label>Imagen digital<input id="pr-number" type="number" min="1" value="1" disabled></label>
@@ -91,11 +91,11 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 <label>Contraste<input id="pr-contrast" type="range" min="60" max="220" value="100"></label>
 <label>Brillo<input id="pr-brightness" type="range" min="50" max="180" value="100"></label>
 <label class="toggle"><input id="pr-grayscale" type="checkbox"> Blanco y negro</label>
-<label class="toggle"><input id="pr-negative" type="checkbox"> Negativo</label>
+<label class="toggle"><input id="pr-negative" type="checkbox"> Negativo</label><label class="toggle"><input id="pr-loupe-toggle" type="checkbox"> Lupa ×3</label><button id="pr-reset" type="button">Restablecer imagen</button>
 </div>
 <p><strong>Imagen:</strong> <span id="pr-counter">— / —</span> · <strong>Etiqueta del ejemplar:</strong> <span id="pr-label">—</span></p>
 <p id="pr-status" role="status" aria-live="polite">Preparando índice IIIF…</p>
-<div id="pr-stage" tabindex="0" aria-label="Imagen del ejemplar impreso de Perrault"><img id="pr-image" alt="Página digitalizada del ejemplar histórico de Perrault" hidden></div>
+<div id="pr-stage" tabindex="0" aria-label="Imagen del ejemplar impreso de Perrault"><img id="pr-image" alt="Página digitalizada del ejemplar histórico de Perrault" hidden><div id="pr-loupe" aria-hidden="true"></div></div>
 <section class="pr-visual-gallery" id="pr-visual-gallery" aria-labelledby="pr-visual-title" hidden>
 <h2 id="pr-visual-title">Galería de folios · seleccionar una imagen</h2>
 <p class="note">Miniaturas de 12 imágenes por tanda, sin precargar el libro completo. Hacé clic en una imagen para abrir el folio en el lector. Las miniaturas también se solicitan a e-rara.</p>
