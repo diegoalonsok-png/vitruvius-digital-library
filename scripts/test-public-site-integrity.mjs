@@ -12,8 +12,8 @@ const json=p=>JSON.parse(read(p));
 const mainPages=["index.html","vitruvia.html","bibliotheca-graeca-latina.html","classics-text-reader.html","classics-parallel-reader.html"];
 for(const page of mainPages){
  const html=read(page);
- assert.match(html,/<meta\\s+name="referrer"\\s+content="strict-origin-when-cross-origin">/i,"Missing referrer policy: "+page);
- assert.equal((html.match(/<meta\\s+name="referrer"/gi)||[]).length,1,"Duplicate referrer policy: "+page);
+ assert.match(html,/<meta\s+name="referrer"\s+content="strict-origin-when-cross-origin">/i,"Missing referrer policy: "+page);
+ assert.equal((html.match(/<meta\s+name="referrer"/gi)||[]).length,1,"Duplicate referrer policy: "+page);
 }
 const catalogue=json("data/bibliotheca-graeca-latina-I-bce-I-ce.json");
 const registry=json("data/classics-corpus/search-registry.json");
@@ -29,7 +29,7 @@ for(const entry of registry.entries){
  assert(typeof entry.path==="string"&&!entry.path.startsWith("/")&&!entry.path.includes(".."),"Unsafe corpus path");
  assert(existsSync(resolve(root,entry.path)),"Missing indexed text "+entry.path);
  if(entry.format==="json-passages"){
-  assert(/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(entry.path),"Unexpected corpus pathname");
+  assert(/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(entry.path),"Unexpected corpus pathname");
   const source=json(entry.path);
   assert.equal(source.workId,entry.workId,"Work ID differs: "+entry.path);
   assert.equal(source.language,entry.language,"Wrong translation language: "+entry.path);
@@ -40,7 +40,7 @@ for(const entry of registry.entries){
 for(const work of catalogue.works){
  for(const [language,path] of Object.entries(work.corpusFiles||{})){
   assert(languages.has(language),"Unsupported language for "+work.id);
-  assert(new RegExp("^data/classics-corpus/[a-z0-9-]+-"+language+"\\\\.json$").test(path),"Unexpected work text path "+path);
+  assert(new RegExp("^data/classics-corpus/[a-z0-9-]+-"+language+"\\.json$").test(path),"Unexpected work text path "+path);
   assert(registry.entries.some(e=>e.workId===work.id&&e.language===language&&e.path===path),
    "Unregistered reader text "+path);
  }
@@ -53,7 +53,7 @@ const source=read("assets/bibliotheca-graeca-latina.js");
 const begin=source.indexOf("function safePublicHref(value){");
 const end=source.indexOf("function navLink(url,txt)",begin);
 assert(begin!==-1&&end>begin,"Safe URL guard not present");
-const sandbox={URL};vm.runInNewContext(source.slice(begin,end)+"\\nthis.check=safePublicHref;",sandbox);
+const sandbox={URL};vm.runInNewContext(source.slice(begin,end)+"\nthis.check=safePublicHref;",sandbox);
 for(const unsafe of ["javascript:alert(1)","data:text/html,foo","http://example.org/","//evil.example/p","../secret.html","https://user:pass@example.org/x"]){
  assert.equal(sandbox.check(unsafe),"","Unsafe destination was allowed: "+unsafe);
 }
