@@ -219,6 +219,10 @@ main{max-width:1540px}
 .pap-drop-zone.pap-drag-over .pap-drop-hint{display:flex}
 .pap-drop-hint strong{font:600 clamp(16px,2.6vw,24px)/1.3 Georgia,serif}
 .pap-drop-hint span{font:12px/1.5 Arial,system-ui,sans-serif;color:#ccc}
+.pap-ink-level-panel{margin-top:6px!important;padding:10px!important}
+.pap-ink-level-panel .pap-tone-grid{margin-top:10px}
+.pap-ink-level-panel .pap-tonal-actions button[aria-pressed=true]{background:#e1e1dc;color:#101011}
+.pap-ink-level-panel .caption{margin:5px 0;font-size:11px}
 </style>
 </head>
 <body>
@@ -295,7 +299,22 @@ main{max-width:1540px}
  </div>
  <p class="caption">Son filtros digitales de contraste, no una reconstrucción material verificada. Comprobá siempre el trazo original.</p>
  </section>
- <p class="pap-controls-note">Los ajustes se aplican a la fotografía de la izquierda; el archivo original permanece intacto.</p>
+ <section class="panel pap-ink-level-panel" id="pap-ink-level-panel" aria-labelledby="pap-ink-level-title">
+ <div class="pap-panel-kicker">IV · AEQVATIO LVMINIS</div>
+ <h2 id="pap-ink-level-title">Nivelar luz y extraer negro</h2>
+ <p class="caption">Compensá luces desiguales del soporte; después aislá los trazos negros sobre fondo blanco.</p>
+ <div class="pap-tonal-actions">
+  <button type="button" id="pap-light-level" aria-pressed="false">Nivelar luz</button>
+  <button type="button" id="pap-black-extract" aria-pressed="false">Extraer negro</button>
+  <button type="button" id="pap-black-level-reset">Restaurar</button>
+ </div>
+ <div class="pap-tone-grid">
+  <label>Fuerza de nivelación <input id="pap-light-strength" type="range" min="0" max="100" value="75"><output id="pap-light-strength-value">75 %</output></label>
+  <label>Umbral negro <input id="pap-black-limit" type="range" min="0" max="255" value="115"><output id="pap-black-limit-value">115</output></label>
+ </div>
+ <p class="caption">La extracción puede confundir grietas y manchas con escritura. Compará siempre con el original.</p>
+</section>
+<p class="pap-controls-note">Los ajustes se aplican a la fotografía de la izquierda; el archivo original permanece intacto.</p>
 </aside>
 </div>
 <section class="panel transcript">
