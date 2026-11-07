@@ -67,7 +67,7 @@ const clean=q=>{
  // Search intent at the end belongs to a creator, not to the title of a
  // similarly named UNESCO collection, book or other subject.
  // Los cargos y oficios califican a la persona; no forman parte de su nombre.
- const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical)$/i;
+ const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical|futbolista|footballer|soccer player|football player|deportista|arquero|goalkeeper|atleta|athlete|cantante|singer|musico|músico|musician|compositor|composer)$/i;
  let subject=cleaned;
  for(let i=0;i<2;i++){
   const next=subject.replace(suffix,"").trim();
@@ -175,7 +175,8 @@ async function localize(identity,lang){
    shared name refers to different cultural subjects. */
 function creatorIntent(raw){
  const q=norm(raw);
- if(/\b(albumes|albums|album|discos|discografia|discography|canciones|songs|musica|music|conciertos)\b/.test(q))return "music";
+ if(/\b(futbolista|footballer|deportista|arquero|goalkeeper|atleta|athlete|soccer player|football player)\b/.test(q))return "sports";
+ if(/\b(albumes|albums|album|discos|discografia|discography|canciones|songs|musica|music|conciertos|cantante|singer|musico|musician|compositor|composer)\b/.test(q))return "music";
  if(/\b(peliculas|films|movies|filmografia|filmography|cine)\b/.test(q))return "cinema";
  if(/\b(arquitectura|arquitecto|architecture|architect|edificios|buildings|planos|fachadas)\b/.test(q))return "architect";
  if(/\b(libros|books|bibliografia|novelas|novels|poemas|poems)\b/.test(q))return "author";
@@ -187,6 +188,7 @@ function occupationFit(description,intent){
  const d=norm(description);
  const patterns={
   music:/\b(singer|cantante|musician|musico|songwriter|compositor|rapper|band|banda|grupo musical|recording artist|pop star)\b/,
+  sports:/\b(footballer|football player|soccer player|futbolista|goalkeeper|arquero|deportista|athlete|atleta|soccer|futbol)\b/,
   cinema:/\b(film director|filmmaker|cineasta|director de cine|directora de cine|screenwriter|guionista|actor|actriz)\b/,
   architect:/\b(architect|arquitecto|arquitecta|engineer|ingeniero|ingeniera|urbanista)\b/,
   author:/\b(writer|escritor|escritora|author|novelist|poet|poeta|philosopher|filosofo)\b/,
