@@ -290,7 +290,13 @@ function applyUI(){
 /* ---------- Ejecución ---------- */
 async function run(push=true){
  syncSearchLanguageSelector();
- const q=$("#lx-q").value.trim();S.q=q;S.page=0;
+ let q=$("#lx-q").value.trim();
+ // Canonical Greek headword for the common Latin-letter transliteration.
+ // Preserve normal Latin searches when the user explicitly selected Latin.
+ if(S.lang==="auto"&&/^logos$/i.test(q)&&["palabra","lema","etimologia"].includes(S.mode)){
+  q="λόγος";$("#lx-q").value=q;S.lang="grc";$("#lx-lang").value="grc";
+ }
+ S.q=q;S.page=0;
  window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""));
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
@@ -526,6 +532,35 @@ function renderComparativeAttestations(aside,term,D){
  });
 }
 
+/* Editorially grounded word-formation and syntactic example for λόγος.
+ * Do not present historical derivation as a syntactic parse; the two trees are distinct.
+ * The syntactic example is Jn 1:1 (already attested in the editorial Etymologicum).
+ */
+function renderLogosGrammar(){
+ const sec=el("section",{class:"lx-logos-grammar",lang:"grc"},
+  el("h3",{},"λόγος · árboles lingüísticos"),
+  el("p",{class:"article-note"},"Análisis editorial de la forma y ejemplo sintáctico atestiguado. No equivale a un análisis automático certificado de todos los pasajes."));
+ const morph=el("div",{class:"lx-tree",style:"margin:12px 0"},
+  el("h4",{},"Árbol de formación de palabra"),
+  el("ol",{class:"lx-tree-list"},
+   el("li",{},el("b",{},"*leǵ-")," · raíz indoeuropea reconstruida: reunir, recoger"),
+   el("li",{},el("b",{},"λέγω")," · verbo griego: reunir, decir"),
+   el("li",{},el("b",{},"λόγ- + -ος")," · base nominal y terminación del nominativo singular masculino"),
+   el("li",{},el("b",{},"λόγος, -ου, ὁ")," · sustantivo masculino de segunda declinación")));
+ const syntax=el("div",{class:"lx-tree",style:"margin:12px 0"},
+  el("h4",{},"Árbol sintáctico · Juan 1:1"),
+  el("p",{},"Ἐν ἀρχῇ ἦν ὁ λόγος"),
+  el("ol",{class:"lx-tree-list"},
+   el("li",{},"Oración",el("ul",{},
+    el("li",{},"Complemento preposicional: ἐν ἀρχῇ (ἐν + dativo)"),
+    el("li",{},"Predicado verbal: ἦν (imperfecto de εἰμί)"),
+    el("li",{},"Sujeto, sintagma nominal: ὁ λόγος",el("ul",{},
+     el("li",{},"ὁ · artículo masculino, nominativo singular"),
+     el("li",{},"λόγος · núcleo nominal, nominativo singular")))))));
+ sec.append(morph,syntax,
+  el("p",{class:"article-note"},"Etimología: Etymologicum editorial, ficha logos; referencia sintáctica: prólogo del Evangelio de Juan (Jn 1:1)."));
+ return sec;
+}
 async function renderEntry(D,term,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
  const key=fold(term.v).replace(/[^\p{L}']/gu,"");
@@ -539,6 +574,7 @@ async function renderEntry(D,term,res){
  if(D.l==="grc"){const g=numericLine(lemmas[0]?lemmaDisplay(lemmas[0]):term.v);if(g)head.append(g)}
  box.append(head);
  const grid=el("div",{class:"article-grid"});const body=el("div",{class:"article-body"});const aside=el("aside",{class:"article-aside"});grid.append(body,aside);box.append(grid);
+ if(D.l==="grc"&&(fold(term.v)==="λογοσ"||lemmas.some(l=>fold(lemmaDisplay(l))==="λογοσ")))body.append(renderLogosGrammar());
  /* Desambiguación interactiva: una forma, varios lemas posibles. */
  if(lemmas.length>1){const ch=el("div",{class:"lx-disamb"},el("p",{},el("b",{},`«${term.v}» corresponde a ${lemmas.length} lemas posibles`)," en la lematización automática, que no desambigua por el contexto. Elija cuál desea rastrear (todas sus formas):"));const a=el("div",{class:"actions"});
   lemmas.forEach(lem=>{const info=lemmaInfo(D,lem);a.append(el("button",{type:"button",lang:D.l,onclick:()=>{$("#lx-q").value="@"+lem;S.mode="lema";renderTabs();run()}},`${lemmaDisplay(lem)}${info.h?" · "+info.h:""}${info.g?" — "+info.g.split(/;\s*/)[0]:""}`))});ch.append(a);body.append(ch)}
@@ -1496,7 +1532,7 @@ async function renderEtymSearch(q){
  const ents=(S.etym?.entries||[]).filter(e=>[e.lemma,e.head,e.tr,e.root,...(e.gr||[]).map(x=>x.w),...(e.la||[]).map(x=>x.w),...(e.old||[]).map(x=>x.f),...(e.cog||[])].some(x=>x&&headOk(x))||(e.etym&&wordRe.test(fold(e.etym))));
  setState(`${ents.length} ficha${ents.length===1?"":"s"} etimológica${ents.length===1?"":"s"} con «${q}» (lema, raíz, formas arcaicas, equivalentes o cognados).`);
  const list=$("#lx-results");
- if(ents.length===1){$("#lx-entry").hidden=false;$("#lx-entry").append(etymCard(ents[0]));}
+ if(ents.length===1){$("#lx-entry").hidden=false;$("#lx-entry").append(etymCard(ents[0]));if(ents[0].id==="logos")$("#lx-entry").append(renderLogosGrammar());}
  for(const e of ents)list.append(etymResult(e));
  if(!ents.length&&!/^\*/.test(q)){const P=await findPerson(q);if(P)return renderPerson(P,q);return renderModernWord(q,null)}
  if(ents.length===1)renderEtymTree(ents[0].lemma,ents[0].l,$("#lx-entry"));
