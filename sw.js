@@ -63,6 +63,17 @@ async function pageResponse(event){
  if(new URL(event.request.url).searchParams.get("source")==="install"){
   try{return await updatePage(event.request,cache)}catch{return hit||(await caches.match("offline.html"))||Response.error()}
  }
+ // Vitruvia is an actively edited search interface. Returning a cached HTML
+ // document after only 1.2 seconds made repaired layouts look unchanged.
+ // Always await a fresh navigation when online, even for query-string URLs.
+ if(new URL(event.request.url).pathname.endsWith("/vitruvia.html")){
+  try{
+   const fresh=await updatePage(new Request(event.request,{cache:"no-store"}),cache);
+   return fresh.ok?fresh:hit||fresh;
+  }catch{
+   return hit||(await caches.match("offline.html"))||Response.error();
+  }
+ }
  // Navigate with network-first semantics: returning a fresh-looking cached
  // document during its former two-minute grace period can keep a fixed
  // search bug visible even after its JavaScript has been updated.
