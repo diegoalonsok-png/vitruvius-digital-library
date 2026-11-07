@@ -275,7 +275,18 @@ self.onmessage=async({data:m})=>{
     const candidates=[...vocab].map(([word,count])=>({word,count,d:distance(needle,word)}))
       .filter(x=>x.d>0&&x.d<=threshold)
       .sort((a,b)=>a.d-b.d||b.count-a.count||a.word.localeCompare(b.word)).slice(0,5);
-    if(candidates.length)warnings.push('Posibles grafías documentadas en el corpus (sugerencias, no citas): '+candidates.map(x=>x.word).join(' · ')+'. Vuelve a buscar la forma deseada.');
+    // Reuse the search engine, never fabricate a passage or silent exact match.
+    // Auto-recover only a unique one-edit candidate from an attested word.
+    const best=candidates[0],runnerUp=candidates[1];
+    if(best&&best.d===1&&best.count>=2&&(!runnerUp||runnerUp.d>best.d)){
+      const recovered=searchCorpus(datasets,{...effective,kind:'words',query:best.word,mode:'words'});
+      if(recovered.results.length){
+        output.results=recovered.results.map(hit=>({...hit,partial_match:true,
+          match_type:'spelling_correction',corrected_query:best.word,original_query:requested}));
+        warnings.push('No hay coincidencia literal para «'+requested+'». Se muestran pasajes reales de la grafía documentada «'+best.word+'» (corrección sugerida; verificar antes de citar).');
+      }
+    }
+    if(!output.results.length&&candidates.length)warnings.push('Posibles grafías documentadas en el corpus (sugerencias, no citas): '+candidates.map(x=>x.word).join(' · ')+'. Vuelve a buscar la forma deseada.');
   }
   // Automatic cross-language concordance by canonical locus. No fixed term list:
   // every indexed word can bring up its aligned Latin/ES/FR/EN passage.
