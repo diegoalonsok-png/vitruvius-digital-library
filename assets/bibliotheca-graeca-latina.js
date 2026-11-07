@@ -631,6 +631,43 @@ if(tab==="study"&&hasStudyPair(w)){
   const progress=document.createElement("span");progress.style.cssText="font:12px system-ui";
   bar.append(begin,prev,next,align,progress);pane.append(bar);
   const grid=document.createElement("div");grid.className="classic-compare-panes";pane.append(grid);
+  // Conservative bilingual vocabulary: these are search hints, not word-by-word collation.
+  const terms=[
+   {la:["locus","loci","locum","loco","locis","locorum","loca"],en:["place","places","location","locations","site","sites"],es:["lugar","lugares","sitio","sitios","emplazamiento"],fr:["lieu","lieux","endroit","endroits","emplacement"]},
+   {la:["aquitani","aquitanis","aquitanos"],en:["aquitani","aquitanians"],es:["aquitanos","aquitani"],fr:["aquitains","aquitani"]},
+   {la:["celtae","celtas","celta"],en:["celts","celt"],es:["celtas","celta"],fr:["celtes","celte"]},
+   {la:["gallia","galli","gallos"],en:["gaul","gauls"],es:["galia","galos"],fr:["gaule","gaulois"]},
+   {la:["symmetria","symmetriarum","symmetriae"],en:["symmetry","commensurability"],es:["simetría","conmensurabilidad","conmensurabilidades"],fr:["symétrie","commensurabilité"]},
+   {la:["geometria","geometriae"],en:["geometry"],es:["geometría"],fr:["géométrie"]},
+   {la:["architectura","architecturae"],en:["architecture"],es:["arquitectura"],fr:["architecture"]}
+  ];
+  const foldWord=v=>String(v||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim();
+  const editDistance=(a,b)=>{if(Math.abs(a.length-b.length)>1)return 2;let previous=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,previous[j]+1,previous[j-1]+(a[i-1]===b[j-1]?0:1));previous=next;}return previous[b.length];};
+  function resolveSearch(q){
+   const token=foldWord(q);if(!token)return null;
+   let concept=terms.find(t=>Object.values(t).some(words=>words.some(w=>foldWord(w)===token)));
+   let corrected="";
+   if(!concept&&token.length>=4&&/^[\p{L}]+$/u.test(token)){
+    const candidates=terms.flatMap(entry=>entry.la.map(w=>({entry,w,d:editDistance(token,foldWord(w))}))).filter(x=>x.d===1);
+    const unique=[...new Set(candidates.map(x=>x.entry))];
+    if(unique.length===1){concept=unique[0];corrected=candidates[0].w;}
+   }
+   return {input:q,concept,corrected};
+  }
+  let searchContext=null;
+  function searchWords(language){
+   if(!searchContext)return [];
+   return searchContext.concept?.[language]||[searchContext.input];
+  }
+  function wholeWordHit(source,needle){
+   const text=foldWord(source),query=foldWord(needle);if(!query)return false;
+   let index=text.indexOf(query);
+   while(index>=0){const end=index+query.length;
+    if((index===0||!/[\p{L}\p{N}]/u.test(text[index-1]))&&(end===text.length||!/[\p{L}\p{N}]/u.test(text[end])))return true;
+    index=text.indexOf(query,index+1);
+   }return false;
+  }
+  function passageHit(p,language){return searchWords(language).some(word=>wholeWordHit(p.text,word));}
   const cache=new Map(),states=[];
   let step=0;
   function key(v){return String(v??"").trim().toLocaleLowerCase().replace(/\s+/g,"")}
@@ -659,6 +696,7 @@ if(tab==="study"&&hasStudyPair(w)){
    state.message.textContent="Locus "+p.locus+" · "+(state.index+1)+" / "+state.data.passages.length;
    state.previous.disabled=state.index===0;state.following.disabled=state.index>=state.data.passages.length-1;
    state.tools?.render();
+   state.text.querySelector("mark.classic-study-query-hit")?.scrollIntoView({block:"nearest",inline:"nearest"});
   }
   function navigate(){
    if(!states[0]?.data||!states[1]?.data)return;
@@ -709,19 +747,38 @@ if(tab==="study"&&hasStudyPair(w)){
     work:w.id,side,root:text,column:col,
     getLanguage:()=>language.value,
     getLocus:()=>state.data?.passages[state.index]?.locus||"",
-    getSourceText:()=>state.data?.passages[state.index]?.text||""
+    getSourceText:()=>state.data?.passages[state.index]?.text||"",
+    getSearchTerms:()=>searchWords(language.value)
    });
    language.addEventListener("change",()=>{step=0;change(side)});
    chapter.addEventListener("change",()=>{draw(side,Number(chapter.value)||0);if(side===0){step=Number(chapter.value)||0;if(checkbox.checked)navigate()}});
    previous.addEventListener("click",()=>{if(side===0&&checkbox.checked){step=Math.max(0,step-1);navigate()}else draw(side,state.index-1)});
    following.addEventListener("click",()=>{if(side===0&&checkbox.checked){step=Math.min((state.data?.passages.length||1)-1,step+1);navigate()}else draw(side,state.index+1)});
-   query.addEventListener("keydown",event=>{
-    if(event.key!=="Enter"||!state.data)return;
-    const q=query.value.trim().toLocaleLowerCase();if(!q)return;
-    const index=state.data.passages.findIndex(p=>String(p.text).toLocaleLowerCase().includes(q));
-    if(index<0){state.message.textContent="No hay coincidencia literal";return}
-    draw(side,index);state.message.textContent+=" · búsqueda literal";
-   });
+   function runLinkedSearch(){
+    const q=query.value.trim();if(!q||!state.data)return;
+    searchContext=resolveSearch(q);
+    const index=state.data.passages.findIndex(p=>passageHit(p,language.value));
+    if(index<0){state.message.textContent="No se encontró «"+q+"» en esta versión. No se inventan equivalencias.";return}
+    if(checkbox.checked&&states[0]?.data&&states[1]?.data){
+     const targetLocus=key(state.data.passages[index].locus);
+     const original=states[0].data.passages;
+     const originalIndex=original.findIndex(p=>key(p.locus)===targetLocus);
+     if(originalIndex>=0){step=originalIndex;navigate();}
+     else{
+      draw(side,index);
+      states[1-side].tools?.render();
+      progress.textContent="Sin locus equivalente exacto: el otro panel no se ha desplazado";
+     }
+    }else{
+     draw(side,index);
+     states[1-side]?.tools?.render();
+    }
+    const correction=searchContext.corrected?" · interpretado como «"+searchContext.corrected+"»":"";
+    state.message.textContent+=" · búsqueda sincronizada"+correction;
+   }
+   query.addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();runLinkedSearch()}});
+   query.addEventListener("input",()=>{if(!query.value.trim()){searchContext=null;states.forEach(x=>x.tools?.render());}});
+
   }
   begin.addEventListener("click",()=>{step=0;navigate()});
   prev.addEventListener("click",()=>{step=Math.max(0,step-1);navigate()});
