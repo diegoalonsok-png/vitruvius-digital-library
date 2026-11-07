@@ -61,9 +61,9 @@ async function loadLocalIndex(){
  const saved=await response.json();
  if(saved.source!==copy.manifest||!Array.isArray(saved.pages)||saved.pages.length!==index.count)
   throw Error("El índice local no corresponde al ejemplar "+year);
- if(!saved.pages.every(x=>/^\\d+$/.test(String(x.id))&&
+ if(!saved.pages.every(x=>/^\d+$/.test(String(x.id))&&
    typeof x.fallback==="string"&&
-   /^https:\/\/www\\.e-rara\\.ch\/download\/webcache\/1000\/\\d+$/.test(x.fallback)&&
+   /^https:\/\/www\.e-rara\.ch\/download\/webcache\/1000\/\\d+$/.test(x.fallback)&&
    x.fallback.endsWith("/"+x.id)))
   throw Error("Índice local contiene identificadores de imagen no válidos");
  const folios=saved.pages.map((x,i)=>({
