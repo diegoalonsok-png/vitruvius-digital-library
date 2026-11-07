@@ -37,6 +37,80 @@ function marked(text,toks,flag){
  toks.forEach((t,k)=>{if(t.i>last)p.append(text.slice(last,t.i));if(flag.has(k)){p.append(el("mark",null,t.w))}else p.append(t.w);last=t.j});
  if(last<text.length)p.append(text.slice(last));return p;
 }
+
+/* Herramientas de lectura independientes: preferencias y anotaciones en el navegador. */
+const COLORS={paper:"#faf7ee",ink:"#222222",underline:"#bc8019"};
+function storeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
+function storePut(key,data){try{localStorage.setItem(key,JSON.stringify(data))}catch{}}
+function annotationKey(locus,id){return "vitruvius:subrayados:v1:"+locus+":"+id}
+function nodesIn(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const list=[];while(w.nextNode())list.push(w.currentNode);return list}
+function offsetOf(root,node,offset){
+ let total=0;
+ for(const n of nodesIn(root)){
+  if(n===node)return total+offset;
+  if(n.parentNode?.contains(node)){
+   const r=document.createRange();r.selectNodeContents(n.parentNode);r.setEnd(node,offset);
+   return total+r.toString().length;
+  }
+  total+=n.textContent.length;
+ }
+ return null;
+}
+function applyUnderline(root,start,end){
+ const text=root.textContent||"";
+ if(start<0||end>text.length||end<=start)return false;
+ let pos=0,first=null,last=null;
+ for(const n of nodesIn(root)){
+  const next=pos+n.textContent.length;
+  if(!first&&start<next)first={node:n,at:start-pos};
+  if(first&&end<=next){last={node:n,at:end-pos};break}
+  pos=next;
+ }
+ if(!first||!last)return false;
+ const range=document.createRange();range.setStart(first.node,first.at);range.setEnd(last.node,last.at);
+ const span=el("span","coll-underline");
+ try{span.append(range.extractContents());range.insertNode(span);return true}catch{return false}
+}
+function addReadTools(card,readable,locus,id){
+ readable.classList.add("coll-readable");
+ const key="vitruvius:card:v1:"+id;
+ const pref=Object.assign({font:"Georgia,serif",size:17,paper:COLORS.paper,ink:COLORS.ink,lupa:false},storeGet(key,{}));
+ const bar=el("div","coll-cardtools");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label","Lectura independiente "+id);
+ const persist=()=>storePut(key,pref);
+ function apply(){card.style.setProperty("--card-font",pref.font);card.style.setProperty("--card-size",pref.size+"px");card.style.setProperty("--card-paper",pref.paper);card.style.setProperty("--card-ink",pref.ink);card.classList.toggle("coll-read-lupa",pref.lupa);persist()}
+ const font=el("select");font.setAttribute("aria-label","Tipografía");
+ for(const [name,value] of [["Serif","Georgia,serif"],["Clásica","Garamond,Georgia,serif"],["Sans","Arial,sans-serif"],["Monoespaciada","monospace"]]){const op=el("option",null,name);op.value=value;font.append(op)}
+ font.value=pref.font;font.addEventListener("change",()=>{pref.font=font.value;apply()});
+ const pick=(name,val,onChange)=>{const lbl=el("label",null,name);const input=document.createElement("input");input.type="color";input.value=val;input.setAttribute("aria-label",name);input.addEventListener("input",()=>{onChange(input.value);apply()});lbl.append(input);return lbl};
+ const smaller=el("button",null,"A−");smaller.type="button";smaller.title="Reducir letra";smaller.addEventListener("click",()=>{pref.size=Math.max(12,pref.size-1);apply()});
+ const bigger=el("button",null,"A+");bigger.type="button";bigger.title="Agrandar letra";bigger.addEventListener("click",()=>{pref.size=Math.min(34,pref.size+1);apply()});
+ const lupa=el("button",null,"🔍 Lupa");lupa.type="button";lupa.setAttribute("aria-pressed",String(pref.lupa));lupa.addEventListener("click",()=>{pref.lupa=!pref.lupa;lupa.setAttribute("aria-pressed",String(pref.lupa));apply()});
+ const underline=el("button",null,"S̲ Subrayar");underline.type="button";underline.title="Seleccioná texto del cuadro y pulsá Subrayar";
+ underline.addEventListener("mousedown",ev=>ev.preventDefault());
+ underline.addEventListener("click",()=>{
+  const sel=window.getSelection();if(!sel||sel.isCollapsed||sel.rangeCount===0)return;
+  const range=sel.getRangeAt(0);
+  if(!readable.contains(range.startContainer)||!readable.contains(range.endContainer))return;
+  const start=offsetOf(readable,range.startContainer,range.startOffset),end=offsetOf(readable,range.endContainer,range.endOffset);
+  if(start===null||end===null||end<=start)return;
+  const annotations=storeGet(annotationKey(locus,id),[]);
+  if(annotations.some(a=>a[0]===start&&a[1]===end))return;
+  if(applyUnderline(readable,start,end)){annotations.push([start,end]);storePut(annotationKey(locus,id),annotations);sel.removeAllRanges()}
+ });
+ const clear=el("button",null,"Borrar subrayados");clear.type="button";clear.addEventListener("click",()=>{
+  localStorage.removeItem(annotationKey(locus,id));
+  // Reconstruir el contenido de forma segura manteniendo los marcadores filológicos.
+  const marks=[...readable.querySelectorAll(".coll-underline")];
+  for(const mark of marks){mark.replaceWith(...mark.childNodes)}readable.normalize();
+ });
+ bar.append(font,smaller,bigger,lupa,pick("Fondo",pref.paper,v=>pref.paper=v),pick("Texto",pref.ink,v=>pref.ink=v),underline,clear);
+ const help=el("span","coll-help","Seleccioná una frase y pulsá Subrayar");bar.append(help);
+ const heading=card.querySelector("h3");if(heading)heading.after(bar);else card.prepend(bar);
+ apply();
+ const ranges=storeGet(annotationKey(locus,id),[]);
+ for(const [start,end] of ranges.slice().sort((a,b)=>b[0]-a[0]))applyUnderline(readable,start,end);
+}
+
 let corpus=[],coll=null,idx=-1,translations=[];
 async function show(locus){
  idx=corpus.findIndex(p=>p.locus===locus);if(idx<0)idx=0;const P=corpus[idx];locus=P.locus;
@@ -54,7 +128,7 @@ async function show(locus){
   const flagW=new Set(ops.filter(o=>o.t==="+").map(o=>o.b));ops.filter(o=>o.t==="-").forEach(o=>baseFlags.add(o.a));
   rows.push({w,rec,wt,ops,flagW});
  }
- baseBox.append(marked(P.latin,base,baseFlags));
+ const baseText=marked(P.latin,base,baseFlags);baseBox.append(baseText);addReadTools(baseBox,baseText,locus,"recensio-es-latin");
  const links=el("p","coll-links");
  const a1=el("a",null,"Leer en el lector bilingüe →");a1.href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);links.append(a1);
  baseBox.append(links);root.append(baseBox);
@@ -65,7 +139,7 @@ async function show(locus){
   if(!passage?.translation)continue;
   const card=el("article","coll-translation");
   card.lang=spec.lang;
-  card.append(el("h3",null,spec.label),el("p",null,passage.translation));
+  const passageText=el("p",null,passage.translation);card.append(el("h3",null,spec.label),passageText);addReadTools(card,passageText,locus,spec.id);
   const a=el("a",null,"Abrir en el lector existente →");
   a.href="lector-bilingue.html?edition="+encodeURIComponent(spec.id)+"&locus="+encodeURIComponent(locus);
   card.append(a);grid.append(card);
@@ -76,7 +150,7 @@ async function show(locus){
   const box=el("section","coll-row");
   const h=el("h3",null,w.label+" · p. "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · semejanza "+Math.round(rec.score*100)+" %");box.append(h);
   box.append(el("p","coll-cite",w.citation));
-  box.append(marked(rec.text,wt,flagW));
+  const witnessText=marked(rec.text,wt,flagW);box.append(witnessText);addReadTools(box,witnessText,locus,w.id);
   const rd=readings(base,wt,ops);
   if(rd.length){
    const det=el("details","coll-readings");det.open=rd.length<=14;
