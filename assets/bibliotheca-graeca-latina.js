@@ -421,6 +421,14 @@ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||
 const origin=sourceType(w);
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag" title="'+safe(origin.title)+'">'+safe(origin.label)+'</div><div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"Traducción sin cotejar.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
+if(w.corpusFiles&&Object.keys(w.corpusFiles).some(l=>["la","grc"].includes(l))&&Object.keys(w.corpusFiles).some(l=>["es","en","fr","it","pt","de"].includes(l))){
+ const bar=document.createElement("p");bar.className="classic-linkline";
+ const link=document.createElement("a");
+ link.href="classics-parallel-reader.html?work="+encodeURIComponent(w.id);
+ link.textContent="📖 Leer original y traducción lado a lado · controles de lectura y sincronización";
+ link.title="Abre dos visores independientes. Los capítulos se pueden avanzar juntos, sin suponer equivalencia textual exacta.";
+ bar.append(link);box.querySelector(".classic-tabstrip")?.before(bar);
+}
 if(w.encyclopedia?.url&&/^https:\/\/[a-z-]+\.wikipedia\.org\/wiki\//i.test(w.encyclopedia.url)){
   const study=document.createElement('section');study.className='classic-encyclopedia-study';
   const heading=document.createElement('h3');heading.textContent='Estudio enciclopédico · contextualización de la obra';
