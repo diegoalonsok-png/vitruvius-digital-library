@@ -114,3 +114,48 @@ html[data-theme="dark"] #search-results .result-parallel .result-actions a{color
 #lexical-occurrences .lexical-locus-latin strong,
 #lexical-occurrences .lexical-locus-translation strong{font:600 11px/1.45 system-ui,sans-serif;letter-spacing:.01em}
 #lexical-occurrences .lexical-locus-provenance{margin:3px 0 2px;font:400 10.5px/1.5 system-ui,sans-serif;opacity:.7}
+
+/* Academic parallel reader: two restrained dark panels regardless of page theme. */
+#search-results .result-parallel .parallel-columns>section.parallel-latin,
+#search-results .result-parallel .parallel-columns>section.parallel-translation,
+html[data-theme="dark"] #search-results .result-parallel .parallel-columns>section.parallel-latin,
+html[data-theme="dark"] #search-results .result-parallel .parallel-columns>section.parallel-translation{
+ background:#171b20!important;color:#f1eee6!important;
+ border:1px solid #454b52!important;border-radius:6px;
+ box-shadow:none!important;display:flex;flex-direction:column;min-width:0;
+}
+#search-results .result-parallel .parallel-columns .parallel-heading,
+html[data-theme="dark"] #search-results .result-parallel .parallel-columns .parallel-heading{
+ color:#f1eee6!important;border-bottom:1px solid #444c54!important;
+}
+#search-results .result-parallel .parallel-columns .parallel-heading select,
+html[data-theme="dark"] #search-results .result-parallel .parallel-columns .parallel-heading select{
+ background:#252c34!important;color:#faf7f0!important;border:1px solid #555f69!important;
+ border-radius:5px;color-scheme:dark;
+}
+#search-results .result-parallel .parallel-columns .parallel-passage{color:#f1eee6!important}
+#search-results .result-parallel .parallel-latin-source,
+#search-results .result-parallel .parallel-translation-source{
+ margin-top:auto!important;padding-top:12px!important;border-top:1px solid #434b53!important;
+ font:400 11px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ color:#cbd2d7!important;overflow-wrap:anywhere;
+}
+#search-results .result-parallel :is(.parallel-latin-source,.parallel-translation-source) .parallel-source-label{
+ display:block;color:#f0eee7!important;font-weight:650;letter-spacing:.015em;
+}
+#search-results .result-parallel :is(.parallel-latin-source,.parallel-translation-source) .parallel-biblio{
+ margin:6px 0 0;color:#cbd2d7!important;font:400 11px/1.65 system-ui,sans-serif!important;
+}
+#search-results .result-parallel :is(.parallel-latin-source,.parallel-translation-source) a{
+ color:#d5e3ef!important;text-underline-offset:3px;
+}
+#search-results .result-parallel .parallel-columns :is(p,span,strong,label){color:inherit}
+#search-results .result-parallel .parallel-small{color:#b9c1c9!important}
+#search-results .result-parallel .parallel-match-note{color:#d7e0e8!important}
+#search-results .result-parallel .parallel-equivalent-toggle{
+ background:transparent!important;color:#d8e2ea!important;border:1px solid #59636d!important;
+ border-radius:4px;box-shadow:none!important;
+}
+@media(max-width:750px){
+ #search-results .result-parallel .parallel-columns{gap:12px}
+}
