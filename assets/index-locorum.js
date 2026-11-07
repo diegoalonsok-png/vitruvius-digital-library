@@ -130,15 +130,79 @@ function emailPassage(row){
  const body=[subject,row.excerpt,"Referencia: "+new URL(row.link,location.href).href].join("\n\n");
  location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
 }
+
+const localUi={
+ es:{language:"Idioma de la interfaz",search:"Buscar pasajes",pdf:"Imprimir / PDF",mail:"Enviar por mail",open:"Abrir pasaje",background:"Fondo",meaning:"Significado y equivalencias",noMeaning:"No hay ficha semántica local verificada para esta forma.",dictionary:"Consultar en Lexicon",close:"Cerrar",passages:"pasajes",occurrences:"apariciones"},
+ en:{language:"Interface language",search:"Find passages",pdf:"Print / PDF",mail:"Email",open:"Open passage",background:"Background",meaning:"Meaning and equivalents",noMeaning:"No verified local semantic entry for this form.",dictionary:"Explore in Lexicon",close:"Close",passages:"passages",occurrences:"occurrences"},
+ fr:{language:"Langue de l'interface",search:"Chercher des passages",pdf:"Imprimer / PDF",mail:"Envoyer par e-mail",open:"Ouvrir le passage",background:"Fond",meaning:"Sens et équivalents",noMeaning:"Aucune fiche sémantique locale vérifiée pour cette forme.",dictionary:"Consulter Lexicon",close:"Fermer",passages:"passages",occurrences:"occurrences"}
+};
+let uiLanguage="es";
+function ui(k){return (localUi[uiLanguage]||localUi.es)[k]||localUi.es[k]}
+function lookupWord(word){
+ const clean=String(word||"").replace(/^[^\\p{L}]+|[^\\p{L}]+$/gu,"").trim();if(!clean)return;
+ let dialog=$("locorum-word-dialog");
+ if(!dialog){dialog=document.createElement("dialog");dialog.id="locorum-word-dialog";document.querySelector("main").append(dialog)}
+ dialog.replaceChildren();
+ const heading=el("h2",clean);dialog.append(el("p",ui("meaning"),"muted"),heading);
+ const matchesConcept=concepts.filter(c=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(x=>typeof x==="string"&&fold(x)===fold(clean)));
+ if(matchesConcept.length){
+  for(const c of matchesConcept.slice(0,5)){
+   const box=el("section",null,"word-meaning");
+   box.append(el("p","Conceptus: "+c.id+" · "+(c.modern?.es||[]).join(", ")));
+   box.append(el("p","Latín: "+(c.la||[]).join(", ")+" · Griego: "+(c.grc||[]).join(", "),"muted"));
+   if(c.note)box.append(el("p",c.note,"muted"));dialog.append(box);
+  }
+ }else dialog.append(el("p",ui("noMeaning"),"muted"));
+ const nav=el("div",null,"links");nav.append(link("vitruvia-lexicon.html?q="+encodeURIComponent(clean),ui("dictionary")));
+ nav.append(link("index-locorum.html?q="+encodeURIComponent(clean),"Index locorum"));
+ nav.append(action(ui("close"),()=>dialog.close()));dialog.append(nav);
+ if(!dialog.open)dialog.showModal();
+}
+function makeWordsClickable(block){
+ // Only word tokens become buttons; punctuation remains selectable text.
+ const text=block.textContent||"",container=document.createDocumentFragment();
+ const re=/[\\p{L}\\p{M}]+/gu;let last=0;
+ for(const m of text.matchAll(re)){
+  container.append(document.createTextNode(text.slice(last,m.index)));
+  const button=el("button",m[0],"passage-word");button.type="button";
+  button.title="Estudiar «"+m[0]+"» en Lexicon";
+  button.addEventListener("click",()=>lookupWord(m[0]));
+  container.append(button);last=m.index+m[0].length;
+ }
+ container.append(document.createTextNode(text.slice(last)));
+ block.replaceChildren(container);
+}
+function updateLanguage(){
+ $("literal-search").textContent=ui("search");
+ const label=$("locorum-language-label");if(label)label.textContent=ui("language");
+ document.querySelectorAll(".passage-actions").forEach(node=>{
+  const buttons=node.querySelectorAll("button");
+  if(buttons[0])buttons[0].textContent=ui("pdf");
+  if(buttons[1])buttons[1].textContent=ui("mail");
+  const links=node.querySelectorAll("a");if(links[0])links[0].textContent=ui("open");
+  const label=node.querySelector("label");if(label.firstChild?.nodeType===Node.TEXT_NODE)label.firstChild.textContent=ui("background")+": ";
+ });
+ document.documentElement.lang=uiLanguage;
+ document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:uiLanguage}}));
+}
+function languageControl(){
+ const wrapper=el("label",null,"locorum-language");
+ const label=el("span",ui("language"));label.id="locorum-language-label";
+ const select=el("select");select.id="locorum-language";
+ for(const [code,text] of [["es","ES · Español"],["en","EN · English"],["fr","FR · Français"]]){const opt=el("option",text);opt.value=code;select.append(opt)}
+ select.addEventListener("change",()=>{uiLanguage=select.value;updateLanguage()});
+ wrapper.append(label,select);
+ const controls=document.querySelector(".controls");if(controls)controls.before(wrapper);
+}
 function renderPassage(row){
  const item=el("article",null,"passage-unit");
  const heading=el("div",null,"passage-unit-heading");heading.append(el("strong",(row.ocr?"Página ":"Locus ")+row.locus),el("span",(row.hitsInPassage||1)+" "+((row.hitsInPassage||1)===1?"aparición":"apariciones")+" · "+row.term));item.append(heading);
- const excerpt=el("blockquote",null,"passage-quote");excerpt.append(markedExcerpt(row.excerpt,row.term));item.append(excerpt);
+ const excerpt=el("blockquote",null,"passage-quote");excerpt.textContent=row.excerpt;makeWordsClickable(excerpt);for(const word of excerpt.querySelectorAll(".passage-word"))if(fold(word.textContent)===fold(row.term)){const mark=el("mark",word.textContent);word.replaceChildren(mark)}item.append(excerpt);
  const tools=el("div",null,"passage-actions"),palette=el("label","Fondo: ");
  const picker=el("input");picker.type="color";picker.value="#101012";picker.setAttribute("aria-label","Elegir fondo del pasaje");
  picker.addEventListener("input",()=>{item.style.setProperty("--unit-bg",picker.value);const rgb=[1,3,5].map(i=>parseInt(picker.value.slice(i,i+2),16));item.style.setProperty("--unit-ink",(.2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2])>145?"#111":"#f5f5f5")});
  palette.append(picker);tools.append(palette);
- tools.append(action("Imprimir / PDF",()=>printPassage(row)),action("Enviar por mail",()=>emailPassage(row)),link(row.link,"Abrir pasaje"),link("vitruvia-lexicon.html?q="+encodeURIComponent(row.term),"Lexicon"));
+ tools.append(action(ui("pdf"),()=>printPassage(row)),action(ui("mail"),()=>emailPassage(row)),link(row.link,ui("open")),link("vitruvia-lexicon.html?q="+encodeURIComponent(row.term),"Lexicon"));
  item.append(tools);return item;
 }
 async function searchLiteral(){
@@ -206,5 +270,6 @@ $("query").addEventListener("keydown",event=>{if(event.key==="Enter"){event.prev
 $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
 $("literal-search").addEventListener("click",searchLiteral);
+languageControl();
 init();
 })();
