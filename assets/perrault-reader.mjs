@@ -29,6 +29,34 @@ const requested=new URLSearchParams(location.search);
 const year=Object.hasOwn(COPIES,requested.get("year"))?requested.get("year"):"1673";
 const copy=COPIES[year];let pages=[],current=0,stamp=0,baseWidth=1000;
 const image=$("pr-image"),status=$("pr-status");
+// Cache only the exact verified copy's IIIF page index (not page images).
+// This avoids re-downloading large manifests on repeat visits.
+const indexCacheKey="vitruvia-perrault-iiif-index-v2-"+year;
+function readCachedIndex(){
+ try{
+  const c=JSON.parse(localStorage.getItem(indexCacheKey)||"null");
+  if(c?.manifest!==copy.manifest||c?.year!==year||!Array.isArray(c.pages)||
+     c.pages.length<30||c.pages.length>1800)return null;
+  if(!c.pages.every(p=>p&&validHttps(p.url)&&typeof p.label==="string"&&p.label.length<400))return null;
+  return c.pages;
+ }catch{return null}
+}
+function storeCachedIndex(pagesToCache){
+ try{
+  localStorage.setItem(indexCacheKey,JSON.stringify({
+   manifest:copy.manifest,year,pages:pagesToCache,created:new Date().toISOString()
+  }));
+ }catch{/* Private browsing and quota restrictions should not block reading. */}
+}
+function activatePages(nextPages){
+ pages=nextPages;
+ $("pr-number").max=String(pages.length);
+ $("pr-number").disabled=false;
+ $("pr-next").disabled=false;
+ $("pr-find").disabled=false;
+ const number=Number(requested.get("image"))||1;
+ show(Math.max(0,Math.min(pages.length-1,number-1)));
+}
 const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/\s+/g," ").trim();
 const readLabel=label=>typeof label==="string"?label:(label?.none?.[0]||label?.fr?.[0]||label?.en?.[0]||Object.values(label||{}).flat()[0]||"");
 const validHttps=url=>{try{return new URL(url).protocol==="https:"}catch{return false}};
@@ -103,6 +131,13 @@ async function load(){
   const option=document.querySelector('option[value="'+y+'"]');if(option)option.textContent="Perrault "+y;
  }
  try{
+  const cached=readCachedIndex();
+  if(cached){
+   activatePages(cached);
+   status.textContent="Índice IIIF guardado en este navegador. La imagen se solicita al servidor institucional.";
+   return;
+  }
+  status.textContent="Solicitando índice IIIF de "+year+" a e-rara… Puedes usar mientras tanto el enlace al visor oficial.";
   // A second public-domain 1673 copy is available from Werner Oechslin.
   // Probe both authenticated institutional manifests, but load only one
   // image per page. Record which institution actually supplied the copy.
@@ -125,10 +160,9 @@ async function load(){
    $("pr-manifest").href=source.manifest;
   }
   pages=canvases.map((c,i)=>({...canvasImage(c),label:readLabel(c.label)||"Imagen "+(i+1)}));
-  $("pr-number").max=String(pages.length);$("pr-number").disabled=false;
-  $("pr-next").disabled=false;$("pr-find").disabled=false;
-  const number=Number(requested.get("image"))||1;
-  show(Math.max(0,Math.min(pages.length-1,number-1)));
+  // Do not cache an alternate 1673 institution under the primary source key.
+  if(source===copy&&pages.every(p=>validHttps(p.url)))storeCachedIndex(pages);
+  activatePages(pages);
  }catch(err){
   // The official IIIF host may temporarily reject cross-origin requests or time out.
   // The 1673 copy has an independently documented local index of real IIIF image IDs.
