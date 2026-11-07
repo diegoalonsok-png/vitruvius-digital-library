@@ -520,6 +520,17 @@ try{
    assert.equal(await p.locator('#pap-transcription').getAttribute('lang'),'syr');
    await p.locator('#pap-ocr-lang').selectOption('grc');
    assert.equal(await p.locator('#pap-transcription').getAttribute('dir'),'ltr');
+   await p.locator('#pap-build-script').selectOption('phn');
+   await p.locator('#pap-build-letter').fill('𐤀');
+   await p.locator('#pap-build-add').click();
+   await p.locator('#pap-build-letter').fill('𐤁');
+   await p.locator('#pap-build-add').click();
+   assert.match(await p.locator('#pap-build-word').innerText(),/𐤀𐤁/,'Letters were not assembled into a word');
+   await p.locator('#pap-build-word-end').click();
+   await p.locator('#pap-build-phrase-end').click();
+   assert((await p.locator('#pap-build-sentences li').count())===1,'Word was not committed to a sentence');
+   await p.locator('#pap-build-transcribe').click();
+   assert.match(await p.locator('#pap-transcription').inputValue(),/𐤀𐤁/,'Sentence was not transferred to transcription');
    await p.locator('#pap-transcription').fill('ΑΒΓ');
    assert.equal(await p.locator('#pap-graphemes button').count(),3,'Individual character editor failed');
    await p.locator('#pap-clear').click();
