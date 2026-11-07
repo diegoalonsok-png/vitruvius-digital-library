@@ -486,6 +486,35 @@ try{
    assert((await p.locator('#classic-list button').count())>190,'Clear search did not restore the catalogue');
   }finally{await p.close()}
  });
+ await check('Papyrology image upload, magnifiers, colors, contrast and character editor',async()=>{
+  const p=await open('papyrologia-ostraca.html');
+  try{
+   const image=await p.evaluate(()=>{
+    const c=document.createElement('canvas');c.width=320;c.height=140;
+    const ctx=c.getContext('2d');ctx.fillStyle='#e8d6ae';ctx.fillRect(0,0,320,140);
+    ctx.fillStyle='#343026';ctx.font='34px Georgia';ctx.fillText('ΑΒΓ LAT',22,72);
+    return c.toDataURL('image/png').split(',')[1];
+   });
+   await p.locator('#pap-file').setInputFiles({name:'fragment.png',mimeType:'image/png',buffer:Buffer.from(image,'base64')});
+   await p.waitForFunction(()=>!document.getElementById('pap-ocr').disabled,{timeout:8000});
+   const initial=await p.locator('#pap-zoom-value').innerText();
+   await p.locator('#pap-zoom-in').click();
+   assert.notEqual(await p.locator('#pap-zoom-value').innerText(),initial,'Zoom button is inert');
+   await p.locator('#pap-invert').click();
+   assert.equal(await p.locator('#pap-invert').getAttribute('aria-pressed'),'true','Invert button is inert');
+   await p.locator('#pap-saturation').fill('180');
+   assert.equal(await p.locator('#pap-saturation-value').innerText(),'180 %','Saturation control is inert');
+   await p.locator('#pap-loupe-mode').selectOption('rect');
+   await p.locator('#pap-loupe-power').selectOption('8');
+   await p.locator('#pap-image').hover();
+   assert.equal(await p.locator('#pap-loupe').evaluate(el=>getComputedStyle(el).display),'block','Magnifier does not open');
+   assert.equal(await p.locator('#pap-ocr-detail').isEnabled(),true,'Detail OCR is unavailable after upload');
+   await p.locator('#pap-transcription').fill('ΑΒΓ');
+   assert.equal(await p.locator('#pap-graphemes button').count(),3,'Individual character editor failed');
+   await p.locator('#pap-clear').click();
+   assert.equal(await p.locator('#pap-transcription').inputValue(),'','Clear transcription button is inert');
+  }finally{await p.close()}
+ });
 }finally{if(browser)await browser.close();server.kill()}
 if(failed){console.error('CLASSICAL VIEWER CHECK FAILURES',failed);process.exitCode=1}
 else console.log('CLASSICAL VIEWER CHECKS: ALL PASS');
