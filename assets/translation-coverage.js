@@ -23,7 +23,11 @@ function update(){
   const tr=document.createElement("tr");
   function td(text){const cell=document.createElement("td");cell.textContent=text;tr.append(cell);return cell}
   td(w.author);td(w.title);td(w.originalIndexed?"Indexado · "+w.originalLanguage:"Pendiente · "+w.originalLanguage);
-  td(w.translationLanguages.length?w.translationLanguages.map(x=>({es:"Castellano",en:"Inglés",fr:"Francés"}[x])).join(", "):"Sin traducción textual alojada");
+  td(w.translationLanguages.length?w.translationLanguages.map(x=>{
+   const lang=({es:"Castellano",en:"Inglés",fr:"Francés"})[x]||x;
+   const complete=w.localTranslationCompleteness?.[x];
+   return complete?.status==="partial"?lang+" (PARCIAL · "+complete.availableChapters+"/"+complete.expectedChapters+" capítulos; faltan "+(complete.missingLoci||[]).join(", ")+")":lang;
+  }).join(", "):"Sin traducción textual alojada");
   const cell=document.createElement("td"),a=document.createElement("a");
   a.href="bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id);
   a.textContent="Abrir ficha";cell.append(a);tr.append(cell);
