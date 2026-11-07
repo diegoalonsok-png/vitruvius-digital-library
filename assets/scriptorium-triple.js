@@ -26,6 +26,55 @@ async function loadEdition(id){
  return cache.get(id);
 }
 const states=[];
+const wordPattern=/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu;
+const termsOf=t=>String(t||"").match(wordPattern)||[];
+const normalizeToken=t=>fold(t).replace(/j/g,"i").replace(/v/g,"u").replace(/ς/g,"σ");
+function countMatches(text,term,lexical=false){
+ const words=termsOf(text),target=termsOf(term);
+ if(!target.length)return 0;
+ const source=words.map(x=>lexical?normalizeToken(x):fold(x));
+ const sought=target.map(x=>lexical?normalizeToken(x):fold(x));
+ let count=0;
+ for(let i=0;i<=source.length-sought.length;i++){
+  if(sought.every((w,k)=>source[i+k]===w))count++;
+ }
+ return count;
+}
+let conceptCache=null;
+async function conceptTerms(q,language){
+ if(!conceptCache)conceptCache=fetch("data/lexicon/conceptus.json")
+ .then(r=>{if(!r.ok)throw Error("Conceptus HTTP "+r.status);return r.json()})
+ .then(j=>Array.isArray(j.concepts)?j.concepts:[]);
+ const concepts=await conceptCache,needle=fold(q.trim());
+ const concept=concepts.find(c=>
+  [c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])]
+  .some(v=>typeof v==="string"&&fold(v)===needle));
+ return concept?{id:concept.id,terms:(concept[language]||[]).filter(t=>typeof t==="string"&&t.length>1)}:null;
+}
+const toolbar=document.createElement("div");toolbar.className="script-triple-sync";
+const syncToggle=document.createElement("input");syncToggle.type="checkbox";syncToggle.checked=true;
+const syncLabel=document.createElement("label");syncLabel.append(syncToggle,document.createTextNode(" Sincronizar ediciones por locus idéntico"));
+const syncStatus=document.createElement("span");syncStatus.setAttribute("role","status");
+syncStatus.textContent="Krohn y Rose: solo OCR por página; no se presume alineación con Kurilo.";
+toolbar.append(syncLabel,syncStatus);grid.before(toolbar);
+let syncActive=false;
+function synchronize(source){
+ if(!syncToggle.checked||syncActive||!source.data)return;
+ const current=source.data.pages[source.index],from=source.data.ed;
+ let exact=0,unable=0;
+ for(const target of states){
+  if(target===source||!target.data)continue;
+  // OCR pagination must never be equated with a canonical chapter / locus.
+  if(from.format!=="structured"||target.data.ed.format!=="structured"){unable++;continue}
+  const i=target.data.pages.findIndex(p=>p.locus===current.locus);
+  if(i<0){unable++;continue}
+  syncActive=true;target.seek(i);syncActive=false;exact++;
+ }
+ syncStatus.textContent=exact
+  ?("Locus "+current.locus+" sincronizado en "+exact+" edición(es) estructuradas. Identificador coincidente; cotejo textual pendiente.")
+  :("Sin locus compartido verificable para sincronizar. "+unable+" visor(es) conservan su posición; OCR por páginas no equivale a loci.");
+}
+
 for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const panel=document.createElement("section");panel.className="script-triple-pane";grid.append(panel);
  const title=document.createElement("h3");title.textContent=["I · Krohn","II · Kurilo","III · Rose"][slot];
@@ -40,7 +89,13 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const minus=document.createElement("button");minus.type="button";minus.textContent="A−";
  const plus=document.createElement("button");plus.type="button";plus.textContent="A+";
  bar.append(prev,locus,next,minus,plus);panel.append(bar);
- const search=document.createElement("input");search.type="search";search.placeholder="Buscar palabra o frase · Enter";search.setAttribute("aria-label","Buscar en este libro");panel.append(search);
+ const mode=document.createElement("select");mode.setAttribute("aria-label","Tipo de búsqueda en este visor");
+ for(const [value,label] of [["literal","Palabra o frase · exacta"],["lexical","Variantes gráficas latinas"],["semantic","Conceptus · semántica documentada"]]){
+  const o=document.createElement("option");o.value=value;o.textContent=label;mode.append(o);
+ }
+ mode.className="script-triple-search-mode";panel.append(mode);
+ const search=document.createElement("input");search.type="search";search.placeholder="Buscar término o frase · Enter";search.setAttribute("aria-label","Buscar en este libro");panel.append(search);
+ const tally=document.createElement("p");tally.className="script-triple-count";tally.setAttribute("role","status");panel.append(tally);
  const message=document.createElement("p");message.className="script-triple-status";message.setAttribute("role","status");panel.append(message);
  const body=document.createElement("div");body.className="script-triple-text";panel.append(body);
  const foot=document.createElement("div");foot.className="script-triple-footer";
@@ -48,6 +103,19 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF histórico ↗";
  foot.append(translation,pdf);panel.append(foot);
  let data=null,index=0,token=0,translated=false,size=18;
+ const state={
+  get data(){return data},
+  get index(){return index},
+  seek(i){index=i;show()}
+ };
+ function content(p){return translated?p.translation:p.text}
+ function recount(){
+  if(!data){tally.textContent="";return}
+  const total=data.pages.reduce((n,p)=>n+termsOf(content(p)).length,0);
+  const here=termsOf(content(data.pages[index])).length;
+  tally.textContent=total.toLocaleString("es-AR")+" palabras en esta versión · "+here.toLocaleString("es-AR")+" en el pasaje actual.";
+ }
+
  function show(){
   if(!data)return;
   const item=data.pages[index];locus.value=String(index);
@@ -59,6 +127,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   translation.hidden=data.ed.format!=="structured";
   translation.textContent=translated?"Mostrar latín":"Mostrar traducción";
   body.scrollTop=0;
+  recount();
  }
  async function load(){
   const current=++token;data=null;index=0;translated=false;
@@ -71,19 +140,33 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   }catch(err){if(current!==token)return;message.textContent="No se pudo cargar esta edición: "+err.message;body.textContent="Probá otra edición en el selector."}
  }
  edition.addEventListener("change",load);
- prev.addEventListener("click",()=>{index=Math.max(0,index-1);show()});
- next.addEventListener("click",()=>{index=Math.min(data.pages.length-1,index+1);show()});
- locus.addEventListener("change",()=>{index=Number(locus.value)||0;show()});
+ prev.addEventListener("click",()=>{index=Math.max(0,index-1);show();synchronize(state)});
+ next.addEventListener("click",()=>{index=Math.min(data.pages.length-1,index+1);show();synchronize(state)});
+ locus.addEventListener("change",()=>{index=Number(locus.value)||0;show();synchronize(state)});
  minus.addEventListener("click",()=>{size=Math.max(13,size-2);body.style.fontSize=size+"px"});
  plus.addEventListener("click",()=>{size=Math.min(32,size+2);body.style.fontSize=size+"px"});
  translation.addEventListener("click",()=>{translated=!translated;show()});
- search.addEventListener("keydown",ev=>{
-  if(ev.key!=="Enter"||!data)return;ev.preventDefault();
-  const q=fold(search.value.trim());if(!q)return;
-  const found=data.pages.findIndex(p=>fold(p.text+" "+p.translation).includes(q));
-  if(found<0){message.textContent="Sin coincidencias en esta edición.";return}
-  index=found;show();message.textContent+=" · coincidencia encontrada";
+ search.addEventListener("keydown",async ev=>{
+  if(ev.key!=="Enter"||!data)return;
+  ev.preventDefault();
+  const q=search.value.trim();if(!q)return;
+  const selectedEdition=edition.value;
+  let terms=[q],concept=null;
+  if(mode.value==="semantic"){
+   message.textContent="Consultando Conceptus…";
+   try{concept=await conceptTerms(q,"la");terms=concept?.terms||[]}
+   catch(err){message.textContent="No se pudo consultar Conceptus: "+err.message;return}
+   if(!terms.length){message.textContent="Concepto no documentado en Conceptus o sin equivalente latino. No se inventan términos.";return}
+  }
+  if(!data||edition.value!==selectedEdition)return;
+  const counts=data.pages.map(p=>terms.reduce((n,t)=>n+countMatches(content(p),t,mode.value==="lexical"),0));
+  const total=counts.reduce((a,b)=>a+b,0),found=counts.findIndex(n=>n>0);
+  if(found<0){message.textContent="Sin coincidencias en esta edición y lengua. "+(mode.value==="semantic"?"La búsqueda semántica usa equivalencias editoriales, no IA vectorial.":"");return}
+  index=found;show();synchronize(state);
+  const passages=counts.filter(n=>n>0).length;
+  message.textContent+=" · "+total+" coincidencia(s) en "+passages+" pasaje(s). "+
+    (concept?"Conceptus: "+concept.id+" · términos "+terms.join(", ")+" (equivalencia editorial, no lematización certificada).":"");
  });
- states.push({load});load();
+ states.push(state);load();
 }
 })();
