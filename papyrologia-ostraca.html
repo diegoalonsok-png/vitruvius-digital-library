@@ -42,6 +42,10 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 #pap-experimental-ocr summary{cursor:pointer;font-weight:650}
 #pap-google-method ol{padding-left:20px;margin:8px 0 15px}
 #pap-google-method li{margin:5px 0}
+.pap-ancient-signs{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:6px;padding:12px;background:#f4ead5;border:1px solid #baa378}
+.pap-ancient-signs button{font-size:25px;min-height:64px;background:white;border:1px solid #baa378;border-radius:4px;cursor:pointer;color:#283d4b}
+.pap-ancient-signs small{display:block;font-size:11px;direction:ltr;unicode-bidi:isolate}
+#pap-ancient-alphabet{margin-top:14px}
 </style>
 </head>
 <body>
@@ -109,7 +113,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 </div>
 <details id="pap-experimental-ocr"><summary>OCR clásico alternativo (Tesseract, opcional y menos adecuado para escrituras antiguas)</summary>
 <div class="toolbar">
-<label>Escritura a reconocer<select id="pap-ocr-lang"><option value="grc">Griego antiguo · grc</option><option value="lat">Latín · lat</option><option value="heb">Hebreo · escritura cuadrada (heb)</option><option value="arc-heb">Arameo en alfabeto hebreo · aproximación (heb)</option><option value="syr">Arameo siríaco · syr</option><option value="eng">Alfabeto latino moderno · eng</option></select></label>
+<label>Escritura a reconocer<select id="pap-ocr-lang"><option value="grc">Griego antiguo · grc</option><option value="lat">Latín · lat</option><option value="heb">Hebreo · escritura cuadrada (heb)</option><option value="paleoheb">Paleohebreo · cotejo visual Google, sin OCR específico</option><option value="phn">Fenicio · cotejo visual Google, sin OCR específico</option><option value="arc-heb">Arameo en alfabeto hebreo · aproximación (heb)</option><option value="syr">Arameo siríaco · syr</option><option value="eng">Alfabeto latino moderno · eng</option></select></label>
 <button id="pap-ocr" type="button" disabled>Reconocer texto (OCR experimental)</button>
 <button id="pap-ocr-detail" type="button" disabled>Reconocer solo el detalle de la lupa</button>
 <button id="pap-cancel" type="button" disabled>Cancelar OCR</button>
@@ -122,6 +126,11 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <p id="pap-script-note" class="caption">Griego antiguo: lectura OCR experimental; revisar trazos y signos.</p>
 <p class="caption">Desglose por carácter Unicode (no implica identificación paleográfica individual ni confianza estadística por letra). Selecciona un carácter para insertarlo en la transcripción.</p>
 <div id="pap-graphemes" aria-label="Caracteres propuestos por OCR"></div>
+<div id="pap-ancient-alphabet" hidden>
+<h3>Repertorio comparativo de signos · inserción manual</h3>
+<p class="caption">Equivalencias convencionales para orientar el cotejo: el glifo Unicode fenicio es una representación tipográfica normalizada, no una reproducción de un trazo arqueológico real. El paleohebreo varía según época y soporte. Ninguna elección implica reconocimiento automático de la fotografía.</p>
+<div id="pap-ancient-signs" class="pap-ancient-signs" dir="rtl"></div>
+</div>
 <div class="toolbar">
 <button id="pap-copy" type="button">Copiar transcripción</button>
 <button id="pap-txt" type="button">Descargar transcripción .txt</button>
