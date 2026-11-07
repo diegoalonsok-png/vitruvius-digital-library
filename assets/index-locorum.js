@@ -139,7 +139,7 @@ const localUi={
 let uiLanguage="es";
 function ui(k){return (localUi[uiLanguage]||localUi.es)[k]||localUi.es[k]}
 function lookupWord(word){
- const clean=String(word||"").replace(/^[^\\p{L}]+|[^\\p{L}]+$/gu,"").trim();if(!clean)return;
+ const clean=String(word||"").replace(/^[^\p{L}]+|[^\p{L}]+$/gu,"").trim();if(!clean)return;
  let dialog=$("locorum-word-dialog");
  if(!dialog){dialog=document.createElement("dialog");dialog.id="locorum-word-dialog";document.querySelector("main").append(dialog)}
  dialog.replaceChildren();
@@ -161,7 +161,7 @@ function lookupWord(word){
 function makeWordsClickable(block){
  // Only word tokens become buttons; punctuation remains selectable text.
  const text=block.textContent||"",container=document.createDocumentFragment();
- const re=/[\\p{L}\\p{M}]+/gu;let last=0;
+ const re=/[\p{L}\p{M}]+/gu;let last=0;
  for(const m of text.matchAll(re)){
   container.append(document.createTextNode(text.slice(last,m.index)));
   const button=el("button",m[0],"passage-word");button.type="button";
