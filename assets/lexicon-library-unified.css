@@ -1,0 +1,38 @@
+/* Lexicon · Bibliotheca: sombre editorial design, no colored or gilded controls. */
+#lx-classics-bridge.lx-library-bridge{
+  box-sizing:border-box;width:100%;max-width:none;margin:18px 0 26px;padding:18px 0 10px;
+  background:transparent;color:inherit;border:0;border-top:1px solid rgba(148,153,158,.3);
+  border-radius:0;box-shadow:none;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+#lx-classics-bridge .lx-library-heading{margin:0 0 8px;font:500 clamp(19px,1.7vw,25px)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0;color:inherit}
+#lx-classics-bridge .lx-library-note{margin:0 0 14px;font:400 13px/1.65 system-ui,sans-serif;color:inherit;opacity:.74;max-width:105ch}
+#lx-classics-bridge .lx-library-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+#lx-classics-bridge .lx-library-button{
+  appearance:none;min-height:36px;padding:7px 13px;border:1px solid #757b82;border-radius:7px;
+  background:#292c31;color:#ecebe8;box-shadow:none;text-decoration:none;
+  font:500 12px/1.4 system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s;
+}
+#lx-classics-bridge .lx-library-button:hover{background:#383c41;border-color:#a2a8af}
+#lx-classics-bridge .lx-library-button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+#lx-classics-bridge .lx-library-button:disabled{opacity:.5;cursor:wait}
+#lx-classics-bridge .lx-library-status{margin:10px 0 12px;color:inherit;opacity:.72;font:400 12px/1.5 system-ui,sans-serif}
+#lx-classics-bridge .lx-library-list{display:grid;gap:0}
+#lx-classics-bridge .lx-library-result{
+  display:block;box-sizing:border-box;min-width:0;margin:0;padding:13px 0 15px;
+  background:transparent;border:0;border-bottom:1px solid rgba(145,150,155,.23);
+  border-radius:0;box-shadow:none;color:inherit;
+}
+#lx-classics-bridge .lx-library-result-link{
+  color:inherit;text-decoration:underline;text-decoration-color:rgba(170,176,180,.55);
+  text-underline-offset:3px;font:600 15px/1.5 Georgia,"Times New Roman",serif;
+}
+#lx-classics-bridge .lx-library-result-link:hover{text-decoration-color:currentColor}
+#lx-classics-bridge .lx-library-meta{margin:5px 0;color:inherit;opacity:.65;font:400 11px/1.5 system-ui,sans-serif}
+#lx-classics-bridge .lx-library-excerpt{margin:5px 0;font:400 14px/1.7 Georgia,"Times New Roman",serif;color:inherit;overflow-wrap:anywhere}
+#lx-classics-bridge mark,#lx-classics-bridge .query-hit{
+  background:rgba(170,175,180,.18)!important;color:inherit!important;
+  padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+html[data-theme=light] #lx-classics-bridge .lx-library-button{background:#eeece7;color:#25292d;border-color:#969da2}
+html[data-theme=light] #lx-classics-bridge .lx-library-button:hover{background:#dededc}
+@media(max-width:600px){#lx-classics-bridge .lx-library-actions{align-items:stretch}#lx-classics-bridge .lx-library-button{flex:1 1 180px}}
