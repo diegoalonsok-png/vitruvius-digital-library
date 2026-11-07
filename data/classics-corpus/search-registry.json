@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 40,
-  "works": 19,
+  "count": 43,
+  "works": 20,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -284,6 +284,36 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "language": "es",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-brevitate-es.json",
+      "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=es",
+      "sourceDescription": "Texto histórico de lectura (21 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa."
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "language": "fr",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-brevitate-fr.json",
+      "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=fr",
+      "sourceDescription": "Texto histórico de lectura (20 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa."
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-brevitate-la.json",
+      "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=la",
+      "sourceDescription": "Texto histórico de lectura (20 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa."
     },
     {
       "workId": "sulpicia-elegiae",
