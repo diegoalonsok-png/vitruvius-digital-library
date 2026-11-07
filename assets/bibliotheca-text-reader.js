@@ -26,8 +26,8 @@ function marked(raw,queries){
   while(cursor<folded.length){
    const at=folded.indexOf(needle,cursor);if(at<0)break;
    const after=at+needle.length;
-   if((at===0||!/[\\p{L}\\p{N}]/u.test(folded[at-1]))&&
-      (after===folded.length||!/[\\p{L}\\p{N}]/u.test(folded[after])))
+   if((at===0||!/[\p{L}\p{N}]/u.test(folded[at-1]))&&
+      (after===folded.length||!/[\p{L}\p{N}]/u.test(folded[after])))
     positions.push([starts[at],ends[after-1]]);
    cursor=at+Math.max(needle.length,1);
   }
