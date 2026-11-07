@@ -28,6 +28,7 @@ MAP = DATA / "bibliotheca-perseus.json"
 REGISTRY = DATA / "classics-corpus/search-registry.json"
 COVERAGE = DATA / "classics-corpus/translation-availability-222.json"
 BACKLOG = DATA / "classics-corpus/indexation-backlog.json"
+PUBLIC_AUDIT = DATA / "classics-corpus/coverage-audit.json"
 SOURCE_DIR = DATA / "classics-tei"
 INDEX_DIR = DATA / "classics-corpus"
 MAX_XML_BYTES = 1_800_000
@@ -107,6 +108,25 @@ def recalc_coverage(registry):
     totals["worksWithoutHostedTranslation"] = sum(not row["translationLanguages"] for row in data["works"])
     totals["localTranslationLanguages"] = {language: sum(language in row["translationLanguages"] for row in data["works"]) for language in ("es", "en", "fr")}
     write(COVERAGE, data)
+
+
+def recalc_public_audit(registry):
+    if not PUBLIC_AUDIT.exists():
+        return
+    report = read(PUBLIC_AUDIT)
+    sources = {}
+    for entry in registry["entries"]:
+        sources.setdefault(entry["workId"], []).append(entry)
+    for row in report["works"]:
+        rows = sources.get(row["id"], [])
+        row["indexedTextLanguages"] = sorted({e["language"] for e in rows})
+        row["indexedTextFiles"] = sorted({e["path"] for e in rows})
+        if any(str(e.get("reader", "")).startswith("classics-text-reader.html?") for e in rows):
+            row["hasDedicatedReader"] = True
+    report["counts"]["indexedTextVersions"] = len(registry["entries"])
+    report["counts"]["indexedDistinctWorks"] = len(sources)
+    report["date"] = date.today().isoformat()
+    write(PUBLIC_AUDIT, report)
 
 
 def recalc_backlog(registry):
@@ -227,6 +247,7 @@ def run():
         write(CATALOG, catalogue)
         write(REGISTRY, registry)
         recalc_coverage(registry)
+        recalc_public_audit(registry)
         recalc_backlog(registry)
     result = {"added": len(added), "works": added, "errors": errors[:25],
               "status": "Ediciones TEI originales indexadas sin cotejo filológico; no se alteró la interfaz"}
