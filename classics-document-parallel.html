@@ -32,4 +32,6 @@ $("previous").addEventListener("click",()=>{page.a=Math.max(1,page.a-1);page.b=M
 $("next").addEventListener("click",()=>{page.a++;page.b++;renderAll()});
 for(const side of ["a","b"]){$("prev-"+side).addEventListener("click",()=>step(side,-1));$("next-"+side).addEventListener("click",()=>step(side,1));$("page-"+side).addEventListener("change",()=>{const v=Number($("page-"+side).value);page[side]=Number.isSafeInteger(v)?Math.max(1,Math.min(9999,v)):1;renderAll()})}
 renderAll();
-</script></body></html>
+</script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+</body></html>
