@@ -797,7 +797,13 @@ if(tab==="study"&&hasStudyPair(w)){
   prev.addEventListener("click",()=>{step=Math.max(0,step-1);navigate()});
   next.addEventListener("click",()=>{step++;navigate()});
   checkbox.addEventListener("change",navigate);
-  void Promise.all([change(0),change(1)]);
+  void Promise.all([change(0),change(1)]).then(()=>{
+   const initialTerm=new URLSearchParams(location.search).get("term");
+   if(initialTerm&&initialTerm.length<=200&&states[0]?.data&&states[1]?.data){
+    states[0].query.value=initialTerm;
+    states[0].searchButton.click();
+   }
+  });
  }
 }else if(tab==="perseus"&&w.perseus?.length){
   pane.replaceChildren();
