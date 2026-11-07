@@ -33,7 +33,10 @@
       "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AlatinLit%3Aphi0631.phi001.perseus-eng1",
       "availability": "partial_local_source",
       "status": "missing_loci_35_57",
-      "notes": "59 de 61 capítulos alojados; recuperar capítulos 35 y 57 del ejemplar histórico, cotejar contra Latin 61/61 y mantener versión anterior para comparación."
+      "notes": "La edición histórica completa de Watson también está disponible en Project Gutenberg #7990 (dominio público en EE. UU.). Faltan en el JSON local los loci 35 y 57; cotejar ambos con la edición Watson/Perseus y con el latín, conservar procedencia y verificar derechos territoriales antes de publicar. No declarar traducción completa hasta que se integren y validen ambos capítulos.",
+      "alternateSource": "https://www.gutenberg.org/ebooks/7990",
+      "alternateSourceTitle": "Conspiracy of Catiline and the Jugurthine War (John Selby Watson), Project Gutenberg #7990",
+      "alternateSourceStatus": "full_historical_edition_identified_pending_chapter_extraction_and_comparison"
     }
   ]
 }
