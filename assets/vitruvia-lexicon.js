@@ -1458,7 +1458,8 @@ function curatedTree(e){
  return{chain,code:e.l,title:e.lemma,curated:true};
 }
 async function renderEtymTree(word,langCode,box,{auto=true}={}){
- const sec=el("section",{class:"lx-tree-wrap"},el("h3",{},"Árbol etimológico"),el("p",{class:"article-note"},"Generado en su navegador a partir de Wiktionary (CC BY-SA 4.0): ascendientes, componentes, cognados y, en las raíces indoeuropeas, descendientes. Es una síntesis automática: verifíquese en de Vaan, Ernout–Meillet, Beekes, Chantraine, Corominas, OED, TLFi o Kluge."));
+ const sec=el("section",{class:"lx-tree-wrap"},el("h3",{},"Árbol etimológico"),el("p",{class:"article-note"},"Árbol exploratorio generado a partir de Wiktionary (CC BY-SA 4.0). No es una etimología críticamente certificada: cada vínculo de herencia, préstamo, cognación o reconstrucción requiere comprobación fonológica, cronológica y bibliográfica individual. Los cognados sugeridos no son necesariamente derivados; los paralelos semánticos no prueban parentesco."));
+ sec.append(el("p",{class:"article-note"},el("a",{href:"protocolo-academico-lexicon.html",target:"_blank",rel:"noopener noreferrer"},"Ver protocolo académico: fuentes, hipótesis, testimonios y control ecdótico")));
  const out=el("div",{class:"lx-tree"},el("p",{class:"lx-small"},"Construyendo el árbol…"));sec.append(out);box.append(sec);
  let t;try{t=await buildEtymTree(word,langCode)}catch(err){t={error:"No se pudo consultar Wiktionary ("+err.message+")."}}
  out.replaceChildren();
