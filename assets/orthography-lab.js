@@ -46,6 +46,19 @@ function show(){
   ["Buscar concordancias","index-locorum.html?q="+encodeURIComponent(input)]
  ];
  for(const [label,url] of options){const a=document.createElement("a");a.href=url;a.textContent=label;controls.append(a)}
+ const exportBtn=document.createElement("button");exportBtn.type="button";
+ exportBtn.textContent="Exportar tabla · TSV";
+ exportBtn.style.cssText="border:1px solid #a18d6e;border-radius:9px;padding:10px 14px;background:transparent;color:inherit;cursor:pointer";
+ exportBtn.addEventListener("click",()=>{
+  const clean=x=>String(x??"").replace(/[\t\r\n]+/g," ").trim();
+  const rows=[["Representación","Forma","Criterio","Procedencia"],...variants.map(([label,form,criterion])=>[label,form,criterion,"Transformación Unicode local; sin alterar el original"])];
+  const content="\uFEFF"+rows.map(row=>row.map(clean).join("\t")).join("\r\n");
+  const blob=new Blob([content],{type:"text/tab-separated-values;charset=utf-8"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download="comparacion-ortografica.tsv";document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+ });
+ controls.append(exportBtn);
  output.append(controls);
  note.textContent="Escritura detectada: "+scriptOf(input)+". Los resultados son transformaciones de Unicode y claves de consulta, no análisis morfológico ni resultados de OCR.";
 }
