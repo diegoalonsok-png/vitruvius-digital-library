@@ -39,7 +39,7 @@ function marked(text,toks,flag){
 }
 
 /* Herramientas de lectura independientes: preferencias y anotaciones en el navegador. */
-const COLORS={paper:"#faf7ee",ink:"#222222",underline:"#bc8019"};
+const COLORS={paper:"#19191b",ink:"#e7e7e5",underline:"#bf9a52"};
 function storeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
 function storePut(key,data){try{localStorage.setItem(key,JSON.stringify(data))}catch{}}
 function annotationKey(locus,id){return "vitruvius:subrayados:v1:"+locus+":"+id}
