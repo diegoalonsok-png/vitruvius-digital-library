@@ -500,6 +500,17 @@ try{
    assert.equal(await p.locator('#pap-extraction-fold').evaluate(el=>el.open),false,'Advanced extraction must start collapsed');
    await p.locator('#pap-file').setInputFiles({name:'fragment.png',mimeType:'image/png',buffer:Buffer.from(image,'base64')});
    await p.waitForFunction(()=>!document.getElementById('pap-ocr').disabled,{timeout:8000});
+   await p.locator('#pap-tone-exposure').evaluate(el=>{el.value='30';el.dispatchEvent(new Event('input',{bubbles:true}))});
+   assert.equal(await p.locator('#pap-tone-exposure-value').innerText(),'30','Exposure slider is inert');
+   await p.locator('#pap-tone-highlights').evaluate(el=>{el.value='-25';el.dispatchEvent(new Event('input',{bubbles:true}))});
+   assert.equal(await p.locator('#pap-tone-highlights-value').innerText(),'-25','Highlights slider is inert');
+   await p.locator('#pap-tone-papyrus').click();
+   assert.equal(await p.locator('#pap-tone-shadows-value').innerText(),'35','Ink preset did not update shadows');
+   await p.locator('#pap-tone-original').click();
+   assert.equal(await p.locator('#pap-tone-original').getAttribute('aria-pressed'),'true','Original comparison is inert');
+   await p.locator('#pap-tone-original').click();
+   await p.locator('#pap-tone-reset').click();
+   assert.equal(await p.locator('#pap-tone-gamma-value').innerText(),'1,00','Tonal reset did not reset gamma');
    const initial=await p.locator('#pap-zoom-value').innerText();
    await p.locator('#pap-zoom-in').click();
    assert.notEqual(await p.locator('#pap-zoom-value').innerText(),initial,'Zoom button is inert');
