@@ -774,6 +774,26 @@ function onomasticonSubjectRows(query){
   curatedAcademic:true,links:loci.length?[{label:"Consultar loci del tratado",url:link}]:[]
  }];
 }
+/* Textos asociados: la tradición y la autoría comprobada son categorías distintas.
+ * Vínculos a registros reales, no se finge un texto original del filósofo.
+ */
+function associatedClassicalWorks(query){
+ const person=identifyHistoricalPerson(query);
+ if(person?.id!=="pythagoras")return [];
+ return [{
+  type:"edition",title:"Versos áureos de Pitágoras · Χρυσᾶ Ἔπη · Carmen Aureum",
+  author:"Tradición pitagórica · griego antiguo",
+  excerpt:"Poema de 71 hexámetros tradicionalmente atribuido a Pitágoras. Su autoría directa no está comprobada; pertenece a la transmisión de enseñanzas pitagóricas.",
+  meta:"TEXTO ASOCIADO · ATRIBUCIÓN TRADICIONAL, NO AUTORÍA DEMOSTRADA",
+  rating:14000,curatedAcademic:true,
+  source:"Eton College Collections · edición griega y latina de 1523",
+  link:"https://catalog.etoncollege.com/B13691",
+  links:[
+   {label:"Edición histórica griega y latina (1523)",url:"https://catalog.etoncollege.com/B13691"},
+   {label:"Comentario de Hierocles (1709)",url:"https://catalog.etoncollege.com/B11798"}
+  ]
+ }];
+}
 function classicalSubjectRows(query){
  const q=norm(topicQuery(query));
  const subjects=[
@@ -1087,7 +1107,7 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
- let rows=[...onomasticonSubjectRows(q),...classicalSubjectRows(q)];
+ let rows=[...onomasticonSubjectRows(q),...associatedClassicalWorks(q),...classicalSubjectRows(q)];
  if(rows.length)display(rows,q,T().searching);
  if(internal){
   rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
