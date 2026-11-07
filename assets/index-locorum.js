@@ -107,7 +107,9 @@ async function init(){
 }
 $("work").addEventListener("change",()=>{refillEditions();render()});
 ["edition","concept"].forEach(id=>$(id).addEventListener("change",render));
-$("query").addEventListener("input",render);
+let filterTimer=null;
+$("query").addEventListener("input",()=>{clearTimeout(filterTimer);filterTimer=setTimeout(render,130)});
+$("query").addEventListener("keydown",event=>{if(event.key==="Enter"){clearTimeout(filterTimer);render()}});
 $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
 init();
