@@ -211,3 +211,26 @@ test('exact Wikipedia article image fallback supplies source-linked pictures wit
  assert.equal((await find({kind:'topic',subject:'Logos'},'logos',41)).length,0,'Discard stale image lookups');
  assert.match(engine,/combined=\[\.\.\.trustedLead,\.\.\.selected\]/,'Verified initial images must not be erased by later Commons results');
 });
+
+test('Jewish Christian image search preserves historical scope and excludes unrelated formulas',()=>{
+ const imageEngine=source('assets/vitruvia-image-engine-v2.js');
+ const start=imageEngine.indexOf('function isEarlyJewishChristianity(');
+ const stop=imageEngine.indexOf('/* Historical context thumbnails',start);
+ assert.ok(start>0&&stop>start);
+ const fold=value=>String(value||'').normalize('NFD').replace(/[^a-z0-9 ]/gi,'').toLowerCase().trim();
+ const isEarly=new Function('fold',imageEngine.slice(start,stop)+';return isEarlyJewishChristianity;')(fold);
+ for(const term of ['Jewish Christian','Jewish Christians','Jewish Christianity','judeocristianos','cristianos judios']){
+  assert.equal(isEarly(term),true,term);
+ }
+ assert.equal(isEarly('Judeo-Christian values'),false,'Modern interfaith terminology is distinct from the first-century movement');
+ assert.ok(imageEngine.includes('topic.subject="Jewish Christianity"'));
+ assert.ok(imageEngine.includes('topic.queries=["Jewish Christianity"'));
+ assert.ok(imageEngine.includes('addJewishChristianContextImages(id,seen)'));
+ assert.ok(imageEngine.includes('CONTEXTO histórico'));
+ assert.ok(imageEngine.includes('VitruviaMathematics?.render(quick,currentImageQuery)'));
+ assert.ok(!imageEngine.includes('VitruviaMathematics?.render(quick,topic.subject)'));
+ const mathWindow={};
+ runInNewContext(source('assets/vitruvia-mathematics.js'),{window:mathWindow});
+ assert.equal(mathWindow.VitruviaMathematics.find('Jewish Christian'),null);
+ assert.ok(mathWindow.VitruviaMathematics.find('Euclides'));
+});
