@@ -89,6 +89,41 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
  remove.title="Quitar las marcas del pasaje actual";
  reset.title="Restablecer colores, tipografía y tamaño de este visor";
  bar.append(highlight,underline,remove,reset);
+ const readSelected=$("▶ Leer selección"),stopReading=$("■ Detener lectura");
+ readSelected.title="Seleccioná una palabra, oración o párrafo del texto para escucharlo; también admite selección con teclado";
+ stopReading.title="Detener lectura de voz del navegador";stopReading.disabled=true;
+ bar.append(readSelected,stopReading);
+ let activeUtterance=null;
+ const synth=window.speechSynthesis;
+ function stopSpeech(){
+  if(activeUtterance&&synth)synth.cancel();
+  activeUtterance=null;stopReading.disabled=true;
+ }
+ function speakSelection(){
+  const pick=selectionOffsets()||selected;
+  if(!pick||pick.language!==getLanguage()||pick.locus!==getLocus()||!pick.quote.trim()){
+   help.textContent="Primero seleccioná con el mouse o teclado el párrafo o fragmento que querés escuchar.";return;
+  }
+  if(!synth||typeof window.SpeechSynthesisUtterance!=="function"){
+   help.textContent="Tu navegador no dispone de síntesis de voz. Probá Chrome, Edge o Safari.";return;
+  }
+  stopSpeech();
+  const utterance=new SpeechSynthesisUtterance(pick.quote);
+  const lang=getLanguage();
+  utterance.lang=({la:"la",grc:"el-GR",el:"el-GR",es:"es-ES",en:"en-GB",fr:"fr-FR",it:"it-IT",de:"de-DE",pt:"pt-PT"})[lang]||lang||"es-ES";
+  utterance.rate=.88;
+  const voices=synth.getVoices();
+  const locale=utterance.lang.toLowerCase();
+  const voice=voices.find(v=>v.lang.toLowerCase()===locale)||
+   voices.find(v=>v.lang.toLowerCase().split("-")[0]===locale.split("-")[0]);
+  if(voice)utterance.voice=voice;
+  utterance.onend=utterance.onerror=()=>{if(activeUtterance===utterance){activeUtterance=null;stopReading.disabled=true}};
+  activeUtterance=utterance;stopReading.disabled=false;
+  help.textContent="Leyendo selección · "+lang+" · "+pick.quote.length+" caracteres.";
+  synth.speak(utterance);
+ }
+ readSelected.addEventListener("click",speakSelection);
+ stopReading.addEventListener("click",()=>{stopSpeech();help.textContent="Lectura detenida."});
  const help=$("Selecciona palabras del texto; las marcas se guardan en este navegador.","small");
  help.className="classic-study-tools-help";
  column.insertBefore(bar,root);column.insertBefore(help,root);
@@ -182,7 +217,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
   render();help.textContent=saved?"Marcas del pasaje borradas.":"Marcas borradas de esta vista, sin guardar.";
  });
  appearance();
- return {render};
+ return {render,stopReading:stopSpeech};
 }
 window.ClassicsStudyTools={attach};
 })();
