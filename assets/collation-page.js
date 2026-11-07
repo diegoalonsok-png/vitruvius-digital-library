@@ -37,7 +37,7 @@ function marked(text,toks,flag){
  toks.forEach((t,k)=>{if(t.i>last)p.append(text.slice(last,t.i));if(flag.has(k)){p.append(el("mark",null,t.w))}else p.append(t.w);last=t.j});
  if(last<text.length)p.append(text.slice(last));return p;
 }
-let corpus=[],coll=null,idx=-1;
+let corpus=[],coll=null,idx=-1,translations=[];
 async function show(locus){
  idx=corpus.findIndex(p=>p.locus===locus);if(idx<0)idx=0;const P=corpus[idx];locus=P.locus;
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
@@ -58,6 +58,20 @@ async function show(locus){
  const links=el("p","coll-links");
  const a1=el("a",null,"Leer en el lector bilingüe →");a1.href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);links.append(a1);
  baseBox.append(links);root.append(baseBox);
+ // Cuadros de lectura sin nuevos visores: reutilizan los mismos JSON por locus.
+ const grid=el("section","coll-translation-grid");grid.setAttribute("aria-label","Traducciones disponibles del pasaje");
+ for(const spec of translations){
+  const passage=spec.byLocus.get(locus);
+  if(!passage?.translation)continue;
+  const card=el("article","coll-translation");
+  card.lang=spec.lang;
+  card.append(el("h3",null,spec.label),el("p",null,passage.translation));
+  const a=el("a",null,"Abrir en el lector existente →");
+  a.href="lector-bilingue.html?edition="+encodeURIComponent(spec.id)+"&locus="+encodeURIComponent(locus);
+  card.append(a);grid.append(card);
+ }
+ if(grid.childElementCount)root.append(grid);
+ const witnesses=el("section","coll-witnesses");witnesses.setAttribute("aria-label","Ediciones históricas");
  for(const {w,rec,wt,ops,flagW} of rows){
   const box=el("section","coll-row");
   const h=el("h3",null,w.label+" · p. "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · semejanza "+Math.round(rec.score*100)+" %");box.append(h);
@@ -72,8 +86,9 @@ async function show(locus){
    det.append(ol);box.append(det);
   }else box.append(el("p","coll-meta","Sin diferencias de palabras respecto de V514."));
   if(w.id==="krohn-1912"){const a=el("a",null,"Abrir la página en el PDF de Krohn ↗");a.href="documents/krohn-1912.pdf#page="+rec.page;a.target="_blank";a.rel="noopener";box.append(a)}
-  root.append(box);
+  witnesses.append(box);
  }
+ if(witnesses.childElementCount)root.append(witnesses);
  // Codex Harleianus
  const hBox=el("section","coll-row");hBox.append(el("h3",null,"Codex Harleianus (H) · British Library, Harley MS 2767"));
  try{const c=await window.CodexHConcordance?.locate(locus);
@@ -103,6 +118,18 @@ function parse(v){
 async function boot(){
  const [c,d]=await Promise.all([fetch("data/structured/recensio-es.json").then(r=>r.json()),fetch("data/collation-loci.json").then(r=>r.json())]);
  corpus=c.passages;coll=d;
+ const editions=[
+  {id:"recensio-es",lang:"es",label:"Castellano · V514",data:c},
+  {id:"recensio-fr",lang:"fr",label:"Français · V554"},
+  {id:"theory-en",lang:"en",label:"English · V297"}
+ ];
+ translations=(await Promise.all(editions.map(async spec=>{
+  try{
+   const data=spec.data||await fetch("data/structured/"+spec.id+".json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()});
+   return {...spec,byLocus:new Map((data.passages||[]).map(p=>[p.locus,p]))};
+  }catch{return {...spec,byLocus:new Map()}}
+ })));
+ 
  const list=$("#coll-list");for(const p of corpus){const o=el("option");o.value=label(p.locus);list.append(o)}
  $("#coll-form").addEventListener("submit",e=>{e.preventDefault();const l=parse($("#coll-locus").value);if(l)show(l);else $("#coll-status").textContent="Locus no reconocido. Ejemplos: I.2.4 · 3.1.1 · 5.praef.1"});
  $("#coll-prev").addEventListener("click",()=>show(corpus[idx-1].locus));$("#coll-next").addEventListener("click",()=>show(corpus[idx+1].locus));
