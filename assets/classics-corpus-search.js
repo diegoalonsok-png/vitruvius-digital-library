@@ -281,7 +281,7 @@ function cached(kind,fn){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=240,workId="",language="",maxPerEdition=24}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=3))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language));
@@ -290,12 +290,12 @@ async function searchPassages(terms,{limit=240,workId="",language="",maxPerEditi
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
    if(!d?.passages?.length){failed++;return}loaded++;
-   let editionUnits=0;
+   let editionUnits=0,editionMatches=0;
    for(const p of d.passages){
     if(typeof p?.text!=="string")continue;
-    let hit=null,term=null;
+    let hit=null,term=null,hitsInPassage=0;
     for(const q of queries){
-     const m=matches(p.text,q);
+     const m=matches(p.text,q);hitsInPassage+=m.length;
      if(m.length&&(!hit||m[0][0]<hit[0])){hit=m[0];term=q}
     }
     if(!hit)continue;
@@ -307,8 +307,9 @@ async function searchPassages(terms,{limit=240,workId="",language="",maxPerEditi
     else {const quote=p.text.slice(Math.max(0,hit[0]-24),Math.min(p.text.length,hit[1]+36)).trim();
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
     rows.push({workId:e.workId,author:e.author,title:e.title,language:e.language,edition:e.edition||"",
-      source:e.path,locus:String(p.locus||""),term,excerpt:snippet(p.text,hit),link:href,
+      source:e.path,locus:String(p.locus||""),term,hitsInPassage,excerpt:snippet(p.text,hit),link:href,
       ocr:e.format==="historical-ocr-pages",attribution:d.attribution||e.sourceDescription||""});
+    editionMatches+=hitsInPassage;
     if(++editionUnits>=maxPerEdition)break;
    }
   }));
