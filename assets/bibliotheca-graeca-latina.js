@@ -591,29 +591,116 @@ const pane=$("classic-panel");
 if(tab==="study"&&hasStudyPair(w)){
  pane.replaceChildren();
  const intro=document.createElement("p");intro.className="classic-ref";
- intro.textContent="Lectura de trabajo: a la izquierda el texto editado en su lengua original; a la derecha una traducción existente. Los códices antiguos y PDF históricos se consultan por separado. La sincronización por loci es orientativa hasta que se coteje.";
+ intro.textContent="Lectura académica directa: texto original griego o latino a la izquierda; traducción a la derecha. No se necesita PDF histórico. Los textos se conservan íntegros y cada vínculo por capítulo es orientativo.";
  pane.append(intro);
- if(w.corpusFiles&&Object.keys(w.corpusFiles).some(l=>["la","grc"].includes(l))&&Object.keys(w.corpusFiles).some(l=>["en","es","fr"].includes(l))){
-  const frame=document.createElement("iframe");frame.title="Lector de estudio · original y traducción · "+w.title;
-  frame.loading="eager";frame.style.cssText="display:block;width:100%;height:min(1100px,85vh);min-height:680px;border:1px solid #bba98c;background:#fff";
-  frame.src="classics-parallel-reader.html?work="+encodeURIComponent(w.id)+"&embed=1";
-  pane.append(frame);
-  const open=document.createElement("a");open.href=frame.src;open.target="_blank";open.rel="noopener noreferrer";
-  open.textContent="Abrir los dos visores en pantalla completa ↗";pane.append(open);
+ const originals=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["la","grc"].includes(lang)&&/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(path));
+ const translations=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["en","es","fr"].includes(lang)&&/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(path));
+ if(!originals.length||!translations.length){
+  const note=document.createElement("p");note.className="classic-ref";
+  note.textContent="No se dispone todavía de una pareja de textos JSON para lectura sincronizada. Consultá las versiones HTML existentes desde la pestaña «Texto»; no se presenta un códice como sustituto de la edición.";
+  pane.append(note);
  }else{
-  const originals=(w.localVersions||[]).filter(v=>["la","grc"].includes(v.language));
-  const translations=(w.localVersions||[]).filter(v=>["en","es","fr"].includes(v.language));
+  const labels={la:"Latín original",grc:"Griego original",en:"English · traducción",es:"Castellano · traducción",fr:"Français · traduction"};
+  const bar=document.createElement("div");bar.className="classic-linkline";
+  bar.style.cssText="display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:10px 0";
+  const begin=document.createElement("button");begin.type="button";begin.textContent="⟲ Inicio de ambos";
+  const prev=document.createElement("button");prev.type="button";prev.textContent="← Anteriores";
+  const next=document.createElement("button");next.type="button";next.textContent="Siguientes →";
+  const align=document.createElement("label");align.style.cssText="display:flex;align-items:center;gap:5px;font:12px system-ui";
+  const checkbox=document.createElement("input");checkbox.type="checkbox";checkbox.checked=true;align.append(checkbox,"Comparar por locus");
+  const progress=document.createElement("span");progress.style.cssText="font:12px system-ui";
+  bar.append(begin,prev,next,align,progress);pane.append(bar);
   const grid=document.createElement("div");grid.className="classic-compare-panes";pane.append(grid);
-  for(const [index,options] of [[0,originals],[1,translations]]){
-   const col=document.createElement("section");col.className="classic-fast-text-pane";grid.append(col);
-   const title=document.createElement("h3");title.textContent=index?"Traducción":"Texto original";col.append(title);
-   const selector=document.createElement("select");selector.setAttribute("aria-label",index?"Idioma de traducción":"Edición original");
-   const frame=document.createElement("iframe");frame.title=(index?"Traducción":"Original")+" · "+w.title;frame.style.cssText="width:100%;min-height:700px;border:1px solid #bba98c";
-   for(const [i,v] of options.entries()){const o=document.createElement("option");o.value=String(i);o.textContent=v.label||v.language;selector.append(o)}
-   selector.addEventListener("change",()=>{frame.src=options[Number(selector.value)].path});
-   col.append(selector,frame);if(options.length)frame.src=options[0].path;
+  const cache=new Map(),states=[];
+  let step=0;
+  function key(v){return String(v??"").trim().toLocaleLowerCase().replace(/\\s+/g,"")}
+  function matchSecond(first,second){
+   const pos=Math.min(step,Math.max(0,second.length-1)),wanted=key(first[Math.min(step,first.length-1)]?.locus);
+   if(!checkbox.checked||!wanted)return {i:pos,grade:"posición aproximada"};
+   const found=second.findIndex(p=>key(p.locus)===wanted);
+   if(found>=0)return {i:found,grade:"mismo locus editorial"};
+   const m=/^(\\d+)[.:-](\\d+)/.exec(wanted);
+   if(m){
+    const candidates=second.map((p,i)=>({i,m:/^(\\d+)[.:-](\\d+)/.exec(key(p.locus))})).filter(x=>x.m&&x.m[1]===m[1]);
+    if(candidates.length){
+     const earlier=candidates.filter(x=>Number(x.m[2])<=Number(m[2]));
+     return {i:(earlier.at(-1)||candidates[0]).i,grade:"mismo libro · aproximado"};
+    }
+   }
+   return {i:pos,grade:"posición aproximada"};
   }
-  const note=document.createElement("p");note.className="classic-ref";note.textContent="Estas versiones HTML se consultan en paralelo de manera independiente; aún no tienen una concordancia automatizada verificada.";pane.append(note);
+  function draw(side,index){
+   const state=states[side];if(!state?.data)return;
+   state.index=Math.max(0,Math.min(index,state.data.passages.length-1));
+   const p=state.data.passages[state.index];
+   state.chapter.value=String(state.index);
+   state.text.textContent=p.text||"";
+   state.text.lang=state.language.value;
+   state.message.textContent="Locus "+p.locus+" · "+(state.index+1)+" / "+state.data.passages.length;
+   state.previous.disabled=state.index===0;state.following.disabled=state.index>=state.data.passages.length-1;
+  }
+  function navigate(){
+   if(!states[0]?.data||!states[1]?.data)return;
+   const a=states[0].data.passages,b=states[1].data.passages;
+   step=Math.max(0,Math.min(step,Math.max(a.length,b.length)-1));
+   draw(0,Math.min(step,a.length-1));
+   const dest=matchSecond(a,b);draw(1,dest.i);
+   progress.textContent=(step+1)+" / "+Math.max(a.length,b.length)+" · "+dest.grade+" (sin cotejo semántico certificado)";
+   prev.disabled=step===0;next.disabled=step>=Math.max(a.length,b.length)-1;
+  }
+  async function change(side){
+   const state=states[side],lang=state.language.value,entry=state.options.find(x=>x[0]===lang);
+   const token=++state.token;
+   state.message.textContent="Cargando "+labels[lang]+"…";state.text.textContent="";
+   try{
+    if(!cache.has(lang)){
+     cache.set(lang,fetch(entry[1]).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+      if(data.workId!==w.id||data.language!==lang||!Array.isArray(data.passages)||!data.passages.length)throw Error("Versión inválida");
+      return data;
+     }));
+    }
+    const data=await cache.get(lang);if(state.token!==token)return;
+    state.data=data;state.chapter.replaceChildren();
+    data.passages.forEach((p,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=p.locus||String(i+1);state.chapter.append(opt)});
+    state.source.textContent=(data.attribution||"Fuente editorial consignada en el archivo")+" · "+(data.alignment||"Sin alineación certificada");
+    state.link.href="classics-text-reader.html?work="+encodeURIComponent(w.id)+"&lang="+encodeURIComponent(lang);
+    navigate();
+   }catch(err){if(state.token===token){state.data=null;state.message.textContent="Error al cargar la edición: "+err.message;state.text.textContent="Podés consultar la fuente en la ficha bibliográfica.";cache.delete(lang)}}
+  }
+  for(const [side,options] of [[0,originals],[1,translations]]){
+   const col=document.createElement("section");col.className="classic-fast-text-pane";
+   col.style.cssText="min-width:0;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #bba98c;background:#fffdf8;color:#203548";grid.append(col);
+   const title=document.createElement("h3");title.textContent=side?"02 · Traducción":"01 · Texto original";col.append(title);
+   const language=document.createElement("select");language.setAttribute("aria-label",side?"Idioma de traducción":"Lengua original");
+   for(const [lang] of options){const opt=document.createElement("option");opt.value=lang;opt.textContent=labels[lang];language.append(opt)}
+   const row=document.createElement("div");row.style.cssText="display:flex;gap:6px";
+   const previous=document.createElement("button");previous.type="button";previous.textContent="←";
+   const chapter=document.createElement("select");chapter.setAttribute("aria-label","Seleccionar locus");chapter.style.cssText="flex:1;min-width:0";
+   const following=document.createElement("button");following.type="button";following.textContent="→";
+   row.append(previous,chapter,following);
+   const query=document.createElement("input");query.type="search";query.placeholder="Buscar en este idioma";query.setAttribute("aria-label","Buscar término en el texto");
+   const message=document.createElement("p");message.setAttribute("role","status");message.style.cssText="font:12px system-ui;margin:0";
+   const text=document.createElement("div");text.style.cssText="min-height:320px;max-height:65vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:19px/1.7 Georgia,serif;padding:12px;border:1px solid #e1d6c4";
+   const source=document.createElement("small");const link=document.createElement("a");link.textContent="Abrir lector completo ↗";link.target="_blank";link.rel="noopener noreferrer";
+   col.append(language,row,query,message,text,source,link);
+   const state={options,language,previous,chapter,following,query,message,text,source,link,index:0,data:null,token:0};states.push(state);
+   language.addEventListener("change",()=>{step=0;change(side)});
+   chapter.addEventListener("change",()=>{draw(side,Number(chapter.value)||0);if(side===0){step=Number(chapter.value)||0;if(checkbox.checked)navigate()}});
+   previous.addEventListener("click",()=>{if(side===0&&checkbox.checked){step=Math.max(0,step-1);navigate()}else draw(side,state.index-1)});
+   following.addEventListener("click",()=>{if(side===0&&checkbox.checked){step=Math.min((state.data?.passages.length||1)-1,step+1);navigate()}else draw(side,state.index+1)});
+   query.addEventListener("keydown",event=>{
+    if(event.key!=="Enter"||!state.data)return;
+    const q=query.value.trim().toLocaleLowerCase();if(!q)return;
+    const index=state.data.passages.findIndex(p=>String(p.text).toLocaleLowerCase().includes(q));
+    if(index<0){state.message.textContent="No hay coincidencia literal";return}
+    draw(side,index);state.message.textContent+=" · búsqueda literal";
+   });
+  }
+  begin.addEventListener("click",()=>{step=0;navigate()});
+  prev.addEventListener("click",()=>{step=Math.max(0,step-1);navigate()});
+  next.addEventListener("click",()=>{step++;navigate()});
+  checkbox.addEventListener("change",navigate);
+  void Promise.all([change(0),change(1)]);
  }
 }else if(tab==="perseus"&&w.perseus?.length){
   pane.replaceChildren();
