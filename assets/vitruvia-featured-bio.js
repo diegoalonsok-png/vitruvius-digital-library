@@ -140,20 +140,39 @@
  };
 
 // Retrato de respaldo para personas sin imagen en Wikidata: busto, estatua, pintura, fresco, grabado o moneda en Commons.
+ /* Retratos: para personajes anteriores a la fotografía, busto > retrato > grabado.
+    Monedas/medallas, escudos, representaciones generadas por IA o identidades dudosas
+    nunca se presentan como retrato principal. No se clasifica por nombre parcial.
+ */
+ const historicalImageExcluded=/\\b(?:coin|coins|moneda|monedas|denarius|denario|denarius|sestertius|sesterce|medallion|medal|medalla|banknote|billete|stamp|sello|signature|firma|map|mapa|logo|coat.of.arms|escudo|ai.generated|artificial.intelligence|midjourney|dall.e|stable.diffusion|reconstruction)\\b/i;
+ const historicArtRank=name=>{
+  const title=fold(name);
+  if(historicalImageExcluded.test(title))return -1000;
+  if(/\\b(bust|busto|buste|busts|herm|herma|sculpture|escultura|statue|statua|statue)\\b/i.test(title))return 400;
+  if(/\\b(portrait|retrato|ritratto|painting|pintura|tableau|fresco|mosaic|mosaico)\\b/i.test(title))return 300;
+  if(/\\b(engraving|engravure|grabado|woodcut|drawing|dibujo)\\b/i.test(title))return 200;
+  if(/\\b(manuscript|codex|manuscrito|book|libro)\\b/i.test(title))return 100;
+  return 0;
+ };
  async function commonsPortrait(ent,label){
-  const names=[...new Set([ent.labels?.en?.value,ent.labels?.la?.value,label].filter(Boolean))];
-  for(const n of names){
-   const q=`"${n}" (bust OR busto OR statue OR portrait OR painting OR fresco OR engraving OR mosaic OR coin OR herm) filetype:bitmap`;
-   const r=await fetch('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:q,srnamespace:'6',srlimit:'10',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
-   // Avoid identifying a portrait by a shared first name or surname alone.
-   const key=fold(n).replace(/[^\p{L}\p{N} ]/gu,' ').replace(/\s+/g,' ').trim();
-   const hit=(r?.query?.search||[]).map(x=>x.title.replace(/^File:/,'')).find(t=>{
-    const title=fold(t).replace(/[^\p{L}\p{N} ]/gu,' ').replace(/\s+/g,' ');
-    return key.length>=8&&title.includes(key)&&!/(?:^|\s)(map|mapa|signature|firma|logo|diagram|coat of arms|stamp|sello)(?:\s|$)/i.test(title);
-   });
-   if(hit)return hit;
+  const labels=[ent.labels?.en?.value,ent.labels?.la?.value,ent.labels?.es?.value,label];
+  const names=[...new Set(labels.filter(Boolean).flatMap(n=>[n,...(fold(n).match(/\\b(?:cicero|ciceron|caesar|cesar)\\b/) ? [fold(n).match(/\\b(?:cicero|ciceron|caesar|cesar)\\b/)[0]]:[])]))];
+  const candidates=[];
+  for(const n of names.slice(0,4)){
+   // Un archivo histórico explícitamente clasificado; nunca la primera coincidencia aleatoria.
+   const q='"'+n+'" (bust OR busto OR buste OR sculpture OR portrait OR painting OR engraving)';
+   const result=await fetch('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:q,srnamespace:'6',srlimit:'25',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
+   const key=fold(n).replace(/[^\\p{L}\\p{N} ]/gu,' ').trim();
+   for(const hit of result?.query?.search||[]){
+    const file=hit.title.replace(/^File:/,'');
+    const name=fold(file).replace(/[^\\p{L}\\p{N} ]/gu,' ');
+    if(!key||!name.includes(key))continue;
+    const rank=historicArtRank(file);
+    if(rank>0)candidates.push({file,rank});
+   }
   }
-  return null;
+  candidates.sort((a,b)=>b.rank-a.rank||a.file.localeCompare(b.file));
+  return candidates[0]?.file||null;
  }
  /* ---------- Obras: libros, discos, películas, pinturas ---------- */
  const WORK_TYPES=new Set(['Q7725634','Q47461344','Q571','Q8261','Q49084','Q482994','Q134556','Q7366','Q105543609','Q11424','Q5398426','Q3305213','Q860861','Q838948','Q4502142','Q1004','Q725377','Q1259759','Q169930','Q208569','Q2188189']);
@@ -275,10 +294,17 @@
   const src=document.createElement('p');src.className='vfb-src';src.innerHTML=`${esc(L('src'))} · <a href="https://www.wikidata.org/wiki/${esc(ent.id)}" target="_blank" rel="noopener" style="color:inherit">${esc(ent.id)}</a>`;block.append(src);
   box.querySelector('.vfb')?.remove();(title||copy.firstChild)?.after(block);
   // Retrato oficial (Wikidata P18: fotografía, busto o pintura) en el espacio superior.
-  let img=claims(ent,'P18')[0];
-  if(!img)img=await commonsPortrait(ent,label).catch(()=>null);
+  const bce=claims(ent,'P570')[0]?.time?.startsWith('-');
+  const deathYear=Number(String(claims(ent,'P570')[0]?.time||'').match(/^\\+?(\\d{4})/)?.[1]);
+  const historic=Boolean(bce||(Number.isFinite(deathYear)&&deathYear>0&&deathYear<1900)||row.entityHistorical);
+  const wikidataImage=claims(ent,'P18')[0];
+  // P18 may itself point to a coin, even when the Wikidata entity is correct.
+  // For ancient figures, search for a classified artwork before using a P18 fallback.
+  let img=historic?await commonsPortrait(ent,label).catch(()=>null):null;
+  if(!img&&wikidataImage&&(!historic||historicArtRank(String(wikidataImage))>=0))img=wikidataImage;
+  if(!img&&!historic)img=await commonsPortrait(ent,label).catch(()=>null);
   if(my!==token)return;
-  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(claims(ent,'P18')[0]?' · representación vinculada en Wikidata':' · representación en Wikimedia Commons'),alt:label,group:'',kind:'',score:0,verifiedHistoricalPortrait:!!(row.entityHistorical&&claims(ent,'P18')[0]),entityId:ent.id,credit:'Wikimedia Commons · consultar autor, obra y licencia en la ficha'}}}))}
+  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(img===wikidataImage?' · imagen vinculada en Wikidata':' · obra identificada en Wikimedia Commons'),alt:label,group:'',kind:'',score:0,verifiedHistoricalPortrait:!!(historic&&historicArtRank(file)>0),entityId:ent.id,credit:'Wikimedia Commons · consultar autor, obra y licencia en la ficha'}}}))}
   // Fórmula principal encima del retrato (matemáticos y científicos).
   const fig=document.getElementById('featured-documentary-visual');
   const target=fig&&!fig.hidden?fig:box;
