@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '.github/workflows/classics-mass-index.yml'
+      - 'scripts/mass-index-classics.py'
   schedule:
     - cron: '26 5 * * *'
 
