@@ -408,6 +408,91 @@ function render(){const data=filters(),t=terms(),q=$("classic-query").value.trim
  $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=data[0].pdf?.url?"pdf":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(q&&data.length>1&&!showSelectedDetail)bibliographicSummary(data,q);else detail();}
 function choose(id){selected=id;showSelectedDetail=true;tab=works.find(x=>x.id===id)?.pdf?.url?"pdf":"text";render();
  const u=new URL(location.href);u.searchParams.set("work",id);u.searchParams.delete("view");u.searchParams.delete("ms");u.searchParams.delete("pdf");history.replaceState(null,"",u);}
+
+/* Shared, conservative codicological dossier for every catalogued work.
+ * A chronology of surviving witnesses is NOT a reconstructed textual stemma. */
+function showTextualTransmission(work,container){
+ const records=(work.witnessRecords||[]).filter(r=>r&&r.shelfmark&&r.date);
+ const dated=records.filter(r=>Number.isFinite(r.dateStart)).sort((a,b)=>a.dateStart-b.dateStart);
+ const earliest=dated[0]||null;
+ const section=document.createElement("section");section.className="classic-transmission";
+ section.id="tradicion-textual";section.setAttribute("aria-label","Historia del texto y testimonios codicológicos");
+ const h=document.createElement("h3");h.textContent="Historia del texto · Codicología · Transmisión";
+ section.append(h);
+ const method=document.createElement("p");method.className="classic-transmission-method";
+ method.textContent="Obra antigua ≠ testimonio material ≠ edición impresa ≠ traducción. Los datos codicológicos describen ejemplares concretos; una cronología de códices no demuestra relaciones de copia. Un stemma codicum crítico exige cotejo de variantes.";
+ section.append(method);
+ const fields=document.createElement("dl");fields.className="classic-transmission-fields";
+ const field=(name,value)=>{const dt=document.createElement("dt");dt.textContent=name;const dd=document.createElement("dd");dd.textContent=value||"Pendiente de documentar con fuente primaria.";fields.append(dt,dd)};
+ field("Autor / atribución",work.author);
+ field("Título de referencia",work.bibliography?.uniformTitle||work.title);
+ field("Lengua de composición",work.language==="la"?"Latín":work.language==="grc"?"Griego antiguo":work.language);
+ field("Datación de la obra (no del códice)",work.dating);
+ field("Identificador estable de catálogo",work.id);
+ field("Localización canónica",work.bibliography?.canonicalReference||"Loci y equivalencias pendientes de cotejo editorial.");
+ field("Estado del estudio de transmisión",records.length?"Testimonios individualizados en el registro institucional; recensio completa y relaciones genealógicas no certificadas.":"Sin testimonio físico individualizado y datado en el registro verificado actual.");
+ section.append(fields);
+ const oldest=document.createElement("div");oldest.className="classic-earliest-witness";oldest.setAttribute("role","note");
+ const big=document.createElement("strong");big.className="classic-earliest-title";
+ big.textContent=earliest?"TESTIMONIO MÁS TEMPRANO ENTRE LOS DOCUMENTADOS":"TESTIMONIO MÁS ANTIGUO · TODAVÍA SIN IDENTIFICAR";
+ oldest.append(big);
+ const description=document.createElement("p");
+ description.textContent=earliest?
+  [earliest.title,earliest.library,earliest.shelfmark,earliest.date].filter(Boolean).join(" · "):
+  "No existe todavía un manuscrito datado e identificado para esta obra dentro del catálogo verificable. No se atribuye arbitrariamente el primer lugar al más antiguo conservado.";
+ oldest.append(description);
+ if(earliest){
+  const linkTarget=localManuscriptUrl(earliest)||safePublicHref(earliest.viewer)||safePublicHref(earliest.record)||safePublicHref(earliest.manifest);
+  if(linkTarget){const a=document.createElement("a");a.className="classic-oldest-link";a.href=linkTarget;
+   a.textContent=localManuscriptUrl(earliest)?"Abrir los folios de este testimonio en nuestro visor ↗":"Abrir este testimonio en el visor o catálogo institucional ↗";
+   if(/^https:\/\//.test(linkTarget)){a.target="_blank";a.rel="noopener noreferrer";a.referrerPolicy="strict-origin-when-cross-origin";}
+   oldest.append(a);
+  }
+  const caution=document.createElement("small");
+  caution.textContent="«Más temprano» significa únicamente el de datación más antigua entre los testigos registrados aquí; no se afirma que sea el manuscrito superviviente más antiguo de toda la tradición.";
+  oldest.append(caution);
+ }else{
+  const urls=[work.reading?.url,work.manuscript?.record,work.manuscript?.viewer,work.manuscript?.manifest];
+  const destination=urls.map(safePublicHref).find(Boolean);
+  if(destination){const a=document.createElement("a");a.href=destination;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Consultar fuente externa identificada (no acreditada como códice más antiguo) ↗";oldest.append(a);}
+ }
+ section.append(oldest);
+ const tree=document.createElement("div");tree.className="classic-witness-tree";
+ const treeTitle=document.createElement("h4");treeTitle.textContent="Árbol documental de testimonios conservados";tree.append(treeTitle);
+ const parent=document.createElement("div");parent.className="classic-witness-root";
+ parent.textContent=(work.bibliography?.uniformTitle||work.title)+" · composición: "+(work.dating||"datación por estudiar");tree.append(parent);
+ const note=document.createElement("p");note.className="classic-transmission-method";
+ note.textContent="Esquema de inventario, NO stemma genealógico. Las líneas agrupan testigos de una misma obra, pero no presuponen dependencia textual ni arquetipo reconstruido.";tree.append(note);
+ if(records.length){
+  const ul=document.createElement("ul");ul.className="classic-witness-branches";
+  for(const r of [...records].sort((a,b)=>(a.dateStart??9999)-(b.dateStart??9999))){
+   const li=document.createElement("li");
+   const label=document.createElement("strong");label.textContent=[r.shelfmark,r.date].filter(Boolean).join(" · ");li.append(label);
+   const institution=document.createElement("span");institution.textContent=" · "+(r.library||"Institución no indicada");li.append(institution);
+   const link=localManuscriptUrl(r)||safePublicHref(r.viewer)||safePublicHref(r.record);
+   if(link){li.append(" · ");const a=document.createElement("a");a.href=link;a.textContent=localManuscriptUrl(r)?"Ver folios propios":"Ver testimonio";if(link.startsWith("https://")){a.target="_blank";a.rel="noopener noreferrer"}li.append(a);}
+   const detail=document.createElement("small");detail.textContent="Signatura institucional; siglum crítico y filiación textual sin atribuir salvo documentación explícita.";li.append(detail);
+   ul.append(li);
+  }
+  tree.append(ul);
+ }else{
+  const p=document.createElement("p");p.textContent="Ramas manuscritas pendientes de identificar y documentar. No se genera un árbol ficticio.";tree.append(p);
+ }
+ section.append(tree);
+ const hist=document.createElement("div");hist.className="classic-transmission-history";
+ const hh=document.createElement("h4");hh.textContent="Historia documental del texto";hist.append(hh);
+ const historic=document.createElement("p");
+ historic.textContent=records.length?
+  "La obra fue compuesta en "+(work.dating||"fecha objeto de investigación")+". El catálogo distingue "+records.length+" testimonio(s) individualizados con fechas de copia y enlaces documentales. Su preservación y relaciones de dependencia deberán estudiarse con los aparatos críticos de las ediciones.":
+  "La obra está registrada con datación de composición "+(work.dating||"pendiente")+". Su historia material de transmisión aún no se encuentra documentada con manuscritos individuales en esta ficha.";
+ hist.append(historic);
+ if(work.codicology?.earlierWitnessNote){const p=document.createElement("p");p.textContent="Nota sobre testimonios anteriores: "+work.codicology.earlierWitnessNote;hist.append(p);}
+ const edition=document.createElement("p");edition.textContent="Acceso editorial: "+(work.translation?.status||work.reading?.status||"No se ha registrado edición y traducción individualmente cotejadas.");hist.append(edition);
+ section.append(hist);
+ const tabs=container.querySelector(".classic-tabstrip");
+ if(tabs)tabs.before(section);else container.append(section);
+}
+
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=additionalInterfaceWords[language()]["no-results"];return}
 const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||w.manuscript?.manifest);
  const hasPdf=!!w.pdf?.url;
@@ -456,6 +541,7 @@ if(w.encyclopedia?.url&&/^https:\/\/[a-z-]+\.wikipedia\.org\/wiki\//i.test(w.enc
   const tabs=box.querySelector('.classic-tabstrip');
   if(tabs)tabs.before(study);else box.append(study);
  }
+showTextualTransmission(w,box);
 const back=document.createElement("a");back.href="vitruvia.html?q="+encodeURIComponent((w.aliases||[])[0]||w.title)+"&mode=site";
  back.className="classic-search-via-vitruvia";back.textContent="⌕ Buscar esta obra, sus códices y ediciones en Vitruvia";box.append(back);
  pubLinks(w.witnessRecords,"Testimonios manuscritos verificados · códices",box);
