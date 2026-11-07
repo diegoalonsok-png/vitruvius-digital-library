@@ -97,9 +97,26 @@ def main():
         "warning": (
             "Machine candidate for navigation only: identical normalized text "
             "fragments are not proof of an aligned locus or equivalent edition. "
-            "Do not silently synchronize pages without an explicit opt-in."
+            "Only show navigation suggestions with at least two distinct exact anchors and explicit opt-in. Preserve single-anchor candidates for manual review."
         ),
         "counts": counts,
+        "navigationPolicy": {
+            "minimumDistinctAnchors": 2,
+            "scope": "user-opt-in-only",
+            "manualReview": "Single-anchor matches remain candidates for manual inspection, never automatic navigation.",
+            "verification": "No machine candidate is a verified philological alignment."
+        },
+        "quality": {
+            edition: {
+                "navigationCandidates": sum(
+                    e["edition"] == edition and e["anchorsMatched"] >= 2 for e in entries
+                ),
+                "manualReviewOnly": sum(
+                    e["edition"] == edition and e["anchorsMatched"] < 2 for e in entries
+                )
+            }
+            for edition in SOURCES
+        },
         "entries": entries,
     }
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
