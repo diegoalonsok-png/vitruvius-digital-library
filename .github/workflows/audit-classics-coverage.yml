@@ -8,6 +8,11 @@ on:
       - 'data/structured/**'
       - 'corpus/**'
       - 'scripts/audit-classics-coverage.py'
+      - 'scripts/test-classics-integration.mjs'
+      - 'assets/lexicon-classics-bridge.js'
+      - 'assets/classics-corpus-search.js'
+      - 'vitruvia-lexicon.html'
+      - 'cobertura-traducciones-clasicas.html'
       - '.github/workflows/audit-classics-coverage.yml'
 
 permissions:
@@ -22,8 +27,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Audit registered sources, reader URLs and locus overlaps
         run: python scripts/audit-classics-coverage.py
+      - name: Verify integration of Bibliotheca Vitruvia and Lexicon
+        run: |
+          node --check assets/lexicon-classics-bridge.js
+          node --check assets/translation-coverage.js
+          node scripts/test-classics-integration.mjs
       - name: Upload reproducible coverage report
         if: always()
         uses: actions/upload-artifact@v4
