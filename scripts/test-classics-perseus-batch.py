@@ -28,7 +28,6 @@ def main():
     single = [w for w in catalogue if len(mapping.get(w["id"], [])) == 1 and
               w.get("language") in ("la", "grc") and
               (w["id"], w["language"]) not in indexed]
-    assert len(single) >= 150, "Too few candidate works left for bulk TEI import"
     candidates = [
        "data/phi0474/phi037/phi0474.phi037.perseus-lat1.xml",
        "data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
@@ -41,7 +40,7 @@ def main():
         cwd=ROOT, capture_output=True, text=True, check=True,
     )
     plan = json.loads(result.stdout)
-    assert plan["eligibleSingleCTS"] >= 150
+    assert plan["eligibleSingleCTS"] == len(single)
     assert plan["indexedVersions"] == len(registry)
     assert plan["catalogued"] == len(catalogue)
     print("PASS: Perseus candidate inventory", plan["eligibleSingleCTS"],
