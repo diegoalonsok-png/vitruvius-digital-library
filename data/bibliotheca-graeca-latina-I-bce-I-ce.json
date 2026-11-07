@@ -1631,8 +1631,8 @@
       "century": "I–II",
       "period": "I–II",
       "reading": {
-        "url": "https://www.earlychristianwritings.com/didache.html",
-        "status": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+        "url": "classics-text-reader.html?work=didache&lang=grc",
+        "status": "Texto griego completo de lectura en dieciséis capítulos, indexado por capítulos; no cotejado con el Codex Hierosolymitanus."
       },
       "manuscript": {
         "manifest": null,
@@ -1644,7 +1644,7 @@
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducción no vinculada aún; identificar traductor y edición"
+        "status": "Traducciones española, inglesa y francesa pendientes de incorporar con traductor, edición y licencia comprobados."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1652,14 +1652,36 @@
         "archive": "https://archive.org/search?query=%CE%94%CE%B9%CE%B4%CE%B1%CF%87%CE%AE%20%C2%B7%20Didach%C3%A9%20An%C3%B3nimo",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%94%CE%B9%CE%B4%CE%B1%CF%87%CE%AE%20%C2%B7%20Didach%C3%A9"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null,
+      "publicStatus": "lectura-local-completa",
+      "localReader": {
+        "original": "data/classics-corpus/didache-grc.json",
+        "translations": [],
+        "verified": true
+      },
       "aliases": [
         "Didaché",
         "Didache",
         "Doctrina de los doce apóstoles",
         "Teaching of the Twelve Apostles"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/didache-grc.json"
+      },
+      "localVersions": [
+        {
+          "language": "grc",
+          "label": "Griego · 16 capítulos · Wikisource (edición de lectura)",
+          "path": "classics-text-reader.html?work=didache&lang=grc",
+          "kind": "edition"
+        }
+      ],
+      "bibliography": {
+        "uniformTitle": "Διδαχὴ τῶν δώδεκα ἀποστόλων",
+        "originalLanguage": "griego antiguo",
+        "source": "https://el.wikisource.org/wiki/Διδαχή_των_Δώδεκα_Αποστόλων",
+        "accessed": "2026-11-06",
+        "method": "Transcripción de lectura procedente de Wikisource, licencia CC BY-SA. No reproducción ni colación del manuscrito Hierosolymitanus 54."
+      }
     },
     {
       "id": "pastor-hermas",
