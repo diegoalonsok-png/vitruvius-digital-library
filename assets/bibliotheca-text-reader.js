@@ -46,7 +46,7 @@ function marked(raw,queries){
 const EQUIVALENTS={
  geometria:{la:["geometria"],en:["geometry"],es:["geometría"],fr:["géométrie"]},
  architectura:{la:["architectura"],en:["architecture"],es:["arquitectura"],fr:["architecture"]},
- symmetria:{la:["symmetria"],en:["symmetry"],es:["simetría"],fr:["symétrie"]},
+ symmetria:{la:["symmetria","symmetriae","symmetriam","symmetriarum"],en:["symmetry","symmetries","commensurability"],es:["simetría","simetrías","conmensurabilidad","conmensurabilidades"],fr:["symétrie","symétries","commensurabilité"]},
  proportio:{la:["proportio"],en:["proportion"],es:["proporción"],fr:["proportion"]}
 };
 function queryTerms(query,language){
