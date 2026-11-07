@@ -755,7 +755,21 @@ if(tab==="study"&&hasStudyPair(w)){
   }
   pane.append(box);
   const warning=document.createElement("p");warning.className="classic-ref";warning.textContent="Estos vínculos localizan materiales. No afirman que exista una transcripción íntegra o un códice concreto en el destino; cada documento deberá verificarse antes de presentarlo como edición incorporada.";pane.append(warning);
- }else if(tab==="text"&&isTriple&&!(w.corpusFiles&&Object.keys(w.corpusFiles).length)){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length&&!(w.corpusFiles&&Object.keys(w.corpusFiles).length)){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
+ }else if(tab==="text"&&isTriple&&!(w.corpusFiles&&Object.keys(w.corpusFiles).length)){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length&&!w.corpusFiles){
+  // The historical iframe-based comparator has been retired.
+  // A record with no accredited original cannot show two translations as a bilingual edition.
+  pane.replaceChildren();
+  const note=document.createElement("p");
+  note.className="classic-ref";
+  note.textContent="No hay texto original indexado en esta ficha. Se ofrecen las ediciones históricas disponibles por separado, sin duplicarlas ni mostrar un panel vacío.";
+  pane.append(note);
+  const list=document.createElement("ul");pane.append(list);
+  for(const v of w.localVersions){
+    const li=document.createElement("li"),a=document.createElement("a");
+    a.href=v.path;a.textContent=v.label||"Consultar edición";a.target="_blank";a.rel="noopener noreferrer";
+    li.append(a);list.append(li);
+  }
+}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
   const toggle=document.createElement("button");
   toggle.type="button";toggle.className="classic-study-index-toggle";
   toggle.textContent="☰ Mostrar listado de obras";
