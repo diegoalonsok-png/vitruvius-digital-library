@@ -64,6 +64,7 @@ jobs:
           node --check assets/papyrology-ostraca.js
           node --check assets/papyrology-ink.js
           node --check assets/papyrology-glyphs.js
+          python -m py_compile tools/papyrology/lector_antiguo_gemini.py
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'
