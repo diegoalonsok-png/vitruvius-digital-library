@@ -7,6 +7,27 @@ const status=document.getElementById("image-results-status"),heading=document.ge
 grid.hidden=true;
 if(!section||!grid||!actions||!status||!heading)return;
 let active=0,controller=null,currentImageQuery="";
+
+/* Local onomasticon takes precedence over a surname-only web match.
+ * Use its catalogued historical portrait, not a namesake's photograph.
+ */
+let historicalPeoplePromise=null;
+async function verifiedHistoricalSubject(query){
+ const q=fold(query);
+ if(!historicalPeoplePromise)historicalPeoplePromise=fetch("data/onomasticon-vitruvianum.json")
+  .then(r=>{if(!r.ok)throw Error("onomasticon");return r.json()})
+  .then(d=>(d.entities||[]).filter(x=>x.kind==="person")).catch(()=>[]);
+ const people=await historicalPeoplePromise;
+ return people.find(p=>[p.name,...(p.aliases||[]),...(p.latin_forms||[])].some(n=>fold(n)===q))||null;
+}
+function cataloguedPortrait(subject){
+ const p=subject?.portrait;if(!p||!p.image||!p.source)return null;
+ return {name:p.title||subject.name,caption:p.description||p.title||subject.name,
+ preview:p.localImage||p.image,original:p.image,page:p.imageSource||p.source,
+ license:p.rights||"",credit:p.credit||p.museum||"",
+ score:10000,group:"sculpture",verifiedIdentity:true};
+}
+
 const quick=document.createElement("section");
 quick.id="vitruvia-quick-images";
 quick.className="article-image-preview";
@@ -327,6 +348,17 @@ async function verifiedLeadImage(identity,topic,id){
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
+ const historicalSubject=await verifiedHistoricalSubject(q);
+ if(id!==active)return;
+ if(historicalSubject){
+  const portrait=cataloguedPortrait(historicalSubject);
+  if(portrait){
+   const historicalTopic={kind:"person",ancient:true,historical:true,subject:historicalSubject.name};
+   displayGroups([portrait],historicalTopic);
+   status.textContent="Fuente histórica identificada: "+historicalSubject.name+" · "+(historicalSubject.portrait?.museum||"catálogo académico")+".";
+  }
+ }
+
  // Screen colors and documented mathematical relations are available
  // immediately, even if a remote image service is unreachable.
  quick.replaceChildren();
@@ -350,6 +382,13 @@ async function searchImages(query){
  external("Europeana","https://www.europeana.eu/es/search?query="+encodeURIComponent(q));
  const language=document.documentElement.lang||"es";
  let identity=await window.VitruviaEntityResolver?.resolve(chemName||q,chemName?"en":language).catch(()=>null);
+ // Do not let a current namesake override an onomasticon historical subject.
+ if(historicalSubject&&identity){
+  const identified=fold(identity.originalCanonical||identity.commonsSearchName||identity.canonical||"");
+  const valid=[historicalSubject.name,...(historicalSubject.aliases||[])].some(n=>fold(n)===identified);
+  const modern=typeof identity.birthYear==="number"&&identity.birthYear>=1800;
+  if(!valid||modern)identity=null;
+ }
  if(chemName&&identity&&!identity.commonsCategory&&chem.entity.claims?.P373?.[0])identity.commonsCategory=chem.entity.claims.P373[0].mainsnak?.datavalue?.value;
  if(id!==active)return;
  // Consulta con errores o en otro idioma («2001 odisea en el espacio», «A Pace Odyssey»): si el resolvedor
@@ -362,6 +401,13 @@ async function searchImages(query){
    if(id!==active)return;if(again)identity=again}
  }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
+ if(historicalSubject){
+  topic.kind="person";topic.ancient=true;topic.historical=true;
+  topic.subject=historicalSubject.name;topic.authorityName=historicalSubject.name;
+  topic.identityNames=[historicalSubject.name,...(historicalSubject.aliases||[])];
+  topic.aliases=topic.identityNames;
+  topic.queries=[historicalSubject.name+" bust",historicalSubject.name+" sculpture",historicalSubject.name+" portrait"];
+ }
  // A one-word stage name can also denote religious figures or unrelated art.
  // Search the verified person's profession, never an ambiguous bare keyword.
  const occupation=fold(identity?.authorityDescription||identity?.description||"");
@@ -403,7 +449,7 @@ async function searchImages(query){
  if(identity?.url)external(locale("Artículo enciclopédico","Encyclopedia article","Article encyclopédique"),identity.url);
  // Start the verified article image lookup at once, instead of waiting for Commons.
  let leadItems=[];
- const leadPromise=verifiedLeadImage(identity,topic,id).then(items=>{
+ const leadPromise=(historicalSubject?Promise.resolve([]):verifiedLeadImage(identity,topic,id)).then(items=>{
   if(id!==active)return [];
   leadItems=items;
   if(items.length&&!grid.querySelector(".vitruvia-image-card")&&!(topic.kind==="person"&&items.every(isChildhoodPhoto)))displayGroups(items,topic);
@@ -418,7 +464,7 @@ async function searchImages(query){
    action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"50"
   }),signal);
   const entityImages=(identity?.imageFiles||[]).filter(x=>typeof x==="string").map(x=>"File:"+x);
-  const representativeJob=entityImages.length&&topic.intent==="overview"?getJSON(imageParams({action:"query",titles:entityImages.join("|")}),signal).then(data=>{
+  const representativeJob=!historicalSubject&&entityImages.length&&topic.intent==="overview"?getJSON(imageParams({action:"query",titles:entityImages.join("|")}),signal).then(data=>{
    const pages=Object.values(data.query?.pages||{}).map(p=>({...p,fromEntityImage:true}));
    if(id===active){const first=collectedImages(pages,topic);if(first.length)displayGroups(first,topic)}
    return pages;
@@ -432,7 +478,7 @@ async function searchImages(query){
   const pages=firstSettled.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
   // Show useful images while remaining sources and category searches are pending.
   // Preserve strict identity filtering for ambiguous people, architects and films.
-  if(!isArchitect&&!isFilm&&!(identity?.kind==="person"&&creatorRole)&&!grid.querySelector(".vitruvia-image-card")){
+  if(!historicalSubject&&!isArchitect&&!isFilm&&!(identity?.kind==="person"&&creatorRole)&&!grid.querySelector(".vitruvia-image-card")){
    const early=collectedImages(pages,topic).slice(0,24);
    if(early.length){displayGroups(early,topic);status.textContent=locale("Primeras imágenes; se siguen sumando las de las colecciones relacionadas…","First images; related collections are still loading…","Premières images ; chargement des collections liées…")}
   }
@@ -508,7 +554,7 @@ async function searchImages(query){
    }
    const items=collectedImages(candidatePages,topic);
   if(items.length){
-   const selected=items.slice(0,150);
+   const selected=historicalSubject&&cataloguedPortrait(historicalSubject)?[cataloguedPortrait(historicalSubject),...items.filter(x=>x.page!==historicalSubject.portrait.imageSource)].slice(0,150):items.slice(0,150);
    // Show the verified film image first; Commons matches may be incomplete.
    const exactLead=isFilm?(leadItems.length?leadItems:await leadPromise):[];
    if(id!==active)return;
