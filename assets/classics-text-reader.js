@@ -143,19 +143,26 @@ async function load(language){
  let corpus=await response.json();
  if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||(corpus.passages.length<(work==="sulpicia-elegiae"?6:10)))throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
-  // The historical anthology includes other works and paratext; every unit remains accessible.
-  // Editorial scope does not create a false book/section alignment to the Latin original.
-  let note="Esta edición histórica es una antología que incluye materiales ajenos a Metamorfosis. Se conservan todos sus segmentos; no existe correspondencia de loci latinos certificada.";
-  try{
-   const scopeResponse=await fetch("data/classics-corpus/source-scope.json");
-   if(scopeResponse.ok){
-    const scopes=await scopeResponse.json();
-    const scope=(scopes.entries||[]).find(x=>x.workId===work&&x.language===language&&x.sourcePath===path);
-    if(scope?.noteEs)note=scope.noteEs;
-   }
-  }catch{}
-  corpus={...corpus,alignment:(corpus.alignment||"")+" "+note};
+  // Never block access to any of the 312 original anthology units on optional metadata.
+  // The note is visible immediately; the provenance file may refine it asynchronously.
+  const fallback="Esta antología histórica conserva sus 312 unidades textuales sin recortar. t22–t245 corresponden provisionalmente a la narración de Metamorfosis; las restantes unidades y paratextos se conservan íntegros. No hay alineación certificada por loci con el latín.";
+  corpus={...corpus,alignment:(corpus.alignment||"")+" "+fallback};
+  const savedCorpus=corpus;
+  const abort=new AbortController();
+  const timeout=setTimeout(()=>abort.abort(),4000);
+  fetch("data/classics-corpus/source-scope.json",{signal:abort.signal})
+   .then(r=>r.ok?r.json():null)
+   .then(scopes=>{
+    const scope=(scopes?.entries||[]).find(x=>x.workId===work&&x.language===language&&x.sourcePath===path);
+    if(!scope?.noteEs||data!==savedCorpus)return;
+    data={...data,alignment:(savedCorpus.alignment||"").replace(fallback,scope.noteEs)};
+    $("method-note").textContent=data.editorialStatus+". "+data.alignment+". Fuente y atribución: "+data.attribution;
+    $("toc-help").textContent=data.alignment;
+   })
+   .catch(()=>{})
+   .finally(()=>clearTimeout(timeout));
  }
+
  data=corpus;active=0;
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
  $("method-note").textContent=corpus.editorialStatus+". "+corpus.alignment+". Fuente y atribución: "+corpus.attribution;
@@ -170,7 +177,7 @@ async function load(language){
  else{renderSearch();select(chosen)}
  if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
-async function swap(lang){try{await load(lang)}catch(err){$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado."}}
+async function swap(lang){try{await load(lang)}catch(err){console.error("Classics reader failed to load",work,lang,err);$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado."}}
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
 $("language").addEventListener("change",e=>swap(e.target.value));
 $("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);renderSearch();if(results.length)select(results[0].i)});
