@@ -112,8 +112,10 @@ const languageName={grc:"Griego antiguo",la:"Latín",en:"Inglés",es:"Castellano
 async function search(q,{limit=8}={}){
  q=String(q||"").trim();
  if(fold(q).replace(/[^\p{L}]/gu,"").length<3||q.length>180||q.split(/\s+/).length>14)return[];
- const grec=/[Ͱ-Ͽἀ-῿]/.test(q),all=await registry();
- const targets=all.filter(e=>grec?e.language==="grc":e.language!=="grc");
+ const grec=/[Ͱ-Ͽἀ-῿]/.test(q),semitic=/[\u0590-\u05ff]/u.test(q),all=await registry();
+ // The hosted corpus presently has no Hebrew or Aramaic passage editions.
+ // Do not fetch Latin/English texts and misreport absence in an unindexed language.
+ const targets=all.filter(e=>semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc");
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
@@ -155,7 +157,9 @@ async function semanticConcept(q){
  const concepts=await conceptTask,key=fold(q).trim();
  if(!key||key.length<3)return null;
  return concepts.find(c=>[c.id,...Object.values(c.modern||{}).flat(),
-   ...(c.la||[]),...(c.grc||[])].some(v=>typeof v==="string"&&fold(v)===key))||null;
+   ...(c.la||[]),...(c.grc||[]),
+   ...(c.he||[]).flatMap(x=>typeof x==="string"?[x]:[x.w,x.tr]),
+   ...(c.arc||[]).flatMap(x=>typeof x==="string"?[x]:[x.w,x.tr])].some(v=>typeof v==="string"&&fold(v)===key))||null;
 }
 let semanticPostingTask=null;
 async function semanticPostings(){
