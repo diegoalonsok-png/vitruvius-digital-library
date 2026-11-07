@@ -509,6 +509,17 @@ try{
    await p.locator('#pap-image').hover();
    assert.equal(await p.locator('#pap-loupe').evaluate(el=>getComputedStyle(el).display),'block','Magnifier does not open');
    assert.equal(await p.locator('#pap-ocr-detail').isEnabled(),true,'Detail OCR is unavailable after upload');
+   await p.locator('#pap-ocr-lang').selectOption('heb');
+   assert.equal(await p.locator('#pap-transcription').getAttribute('dir'),'rtl','Hebrew requires RTL transcription');
+   assert.equal(await p.locator('#pap-transcription').getAttribute('lang'),'he');
+   await p.locator('#pap-ocr-lang').selectOption('arc-heb');
+   assert.equal(await p.locator('#pap-transcription').getAttribute('lang'),'arc','Aramaic metadata was not applied');
+   assert.match(await p.locator('#pap-script-note').innerText(),/modelo heb/i);
+   await p.locator('#pap-ocr-lang').selectOption('syr');
+   assert.equal(await p.locator('#pap-transcription').getAttribute('dir'),'rtl');
+   assert.equal(await p.locator('#pap-transcription').getAttribute('lang'),'syr');
+   await p.locator('#pap-ocr-lang').selectOption('grc');
+   assert.equal(await p.locator('#pap-transcription').getAttribute('dir'),'ltr');
    await p.locator('#pap-transcription').fill('ΑΒΓ');
    assert.equal(await p.locator('#pap-graphemes button').count(),3,'Individual character editor failed');
    await p.locator('#pap-clear').click();
