@@ -1,0 +1,31 @@
+/* Contextual philological study toolbar and printable annotated dossier */
+.ctx-dialog{--ctx-paper:#fffdf9;--ctx-ink:#252a2f;--ctx-stroke:#bca684;background:var(--ctx-paper)!important;color:var(--ctx-ink)!important}
+.ctx-dialog .ctx-heading{background:var(--ctx-paper)!important;color:var(--ctx-ink)!important}
+.ctx-dialog.ctx-inverted{--ctx-paper:#14212c;--ctx-ink:#f7f0e5;--ctx-stroke:#738594}
+.ctx-dialog.ctx-inverted .ctx-edition{background:#20303d;border-color:#7a8993}
+.ctx-dialog.ctx-inverted .ctx-links a,.ctx-dialog.ctx-inverted .ctx-excerpt a{color:#c7e6fd}
+.ctx-dialog.ctx-inverted .ctx-translation{opacity:1;color:#e1e4e8}
+.ctx-tools{position:sticky;top:96px;z-index:3;display:flex;gap:7px 16px;flex-wrap:wrap;padding:12px 22px;background:var(--ctx-paper);color:var(--ctx-ink);border-bottom:1px solid var(--ctx-stroke);font:12px/1.5 system-ui,sans-serif}
+.ctx-tools-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.ctx-tools-row>span{font-weight:700;margin-right:5px}
+.ctx-tools button,.ctx-tools select{background:#fffdf8;color:#1c3449;border:1px solid #bda784;border-radius:7px;padding:6px 9px;font:600 12px system-ui;min-height:33px;cursor:pointer}
+.ctx-dialog.ctx-inverted .ctx-tools button,.ctx-dialog.ctx-inverted .ctx-tools select{background:#293d4f;color:white;border-color:#8d9dac}
+.ctx-tools button:focus-visible{outline:2px solid #d09c42;outline-offset:2px}
+.ctx-tools button:disabled{opacity:.5;cursor:not-allowed}
+.ctx-tools [data-mark]{font-weight:750}.ctx-tools [data-mark="yellow"]{background:#ffef8a;color:#715800}.ctx-tools [data-mark="green"]{background:#b5edb5;color:#255b2c}.ctx-tools [data-mark="blue"]{background:#bee2ff;color:#144c7d}.ctx-tools [data-mark="pink"]{background:#ffd1e1;color:#8b355b}
+#ctx-tools-status{margin:0;flex-basis:100%;opacity:.85;font:12px/1.5 system-ui,sans-serif}
+.ctx-body mark.ctx-mark{padding:0 .03em;border-radius:2px;color:#15202b!important;box-decoration-break:clone}
+.ctx-mark-yellow{background:#ffec73!important}.ctx-mark-green{background:#b4f0a9!important}.ctx-mark-blue{background:#b4dfff!important}.ctx-mark-pink{background:#ffc0da!important}
+.ctx-body mark.ctx-mark-underline{background:transparent!important;color:inherit!important;text-decoration:underline 3px #d28f35;text-underline-offset:3px}
+@media(max-width:760px){.ctx-tools{position:relative;top:auto;padding:10px 12px}.ctx-tools-row{width:100%}}
+@media print{
+ body>*:not(#contextual-lexicon){display:none!important}
+ body{background:white!important;color:#111!important;overflow:visible!important}
+ .ctx-layer{position:static!important;display:block!important;padding:0!important;background:#fff!important}
+ .ctx-shade,.ctx-close,.ctx-tools,.ctx-links{display:none!important}
+ .ctx-dialog,.ctx-dialog.ctx-inverted{position:static!important;width:100%!important;max-width:none!important;max-height:none!important;overflow:visible!important;border:0!important;box-shadow:none!important;background:white!important;color:#111!important}
+ .ctx-heading,.ctx-dialog.ctx-inverted .ctx-heading{position:static!important;background:white!important;color:#111!important}
+ .ctx-body{padding:12px 0!important}.ctx-edition,.ctx-excerpt{break-inside:avoid}
+ .ctx-figure img{max-height:230px}.ctx-body mark{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ @page{size:A4;margin:16mm}
+}
