@@ -11,8 +11,8 @@ const text=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
 /* Render only exact matches, keeping original spelling and diacritics intact.
  * Match boundaries are Unicode-aware; mark spans are HTML escaped.
  */
-function marked(raw,query){
- const value=String(raw??""),needle=text(query).trim();if(!needle)return safe(value);
+function marked(raw,queries){
+ const value=String(raw??""),needles=[...new Set((Array.isArray(queries)?queries:[queries]).map(q=>text(q).trim()).filter(Boolean))];if(!needles.length)return safe(value);
  let folded="",starts=[],ends=[];
  for(let offset=0;offset<value.length;){
   const cp=String.fromCodePoint(value.codePointAt(offset)),end=offset+cp.length;
@@ -20,20 +20,39 @@ function marked(raw,query){
   for(let k=0;k<norm.length;k++){folded+=norm[k];starts.push(offset);ends.push(end)}
   offset=end;
  }
- const parts=[];let from=0,cursor=0;
- while(cursor<folded.length){
-  const at=folded.indexOf(needle,cursor);if(at<0)break;
-  const after=at+needle.length;
-  if((at===0||!/[\p{L}\p{N}]/u.test(folded[at-1]))&&
-     (after===folded.length||!/[\p{L}\p{N}]/u.test(folded[after]))){
-   const a=starts[at],b=ends[after-1];if(a>=from){
-    parts.push(safe(value.slice(from,a)),'<mark class="cr-hit">'+safe(value.slice(a,b))+'</mark>');
-    from=b;
-   }
+ const positions=[];
+ for(const needle of needles){
+  let cursor=0;
+  while(cursor<folded.length){
+   const at=folded.indexOf(needle,cursor);if(at<0)break;
+   const after=at+needle.length;
+   if((at===0||!/[\\p{L}\\p{N}]/u.test(folded[at-1]))&&
+      (after===folded.length||!/[\\p{L}\\p{N}]/u.test(folded[after])))
+    positions.push([starts[at],ends[after-1]]);
+   cursor=at+Math.max(needle.length,1);
   }
-  cursor=after;
+ }
+ positions.sort((x,y)=>x[0]-y[0]||y[1]-x[1]);
+ const parts=[];let from=0;
+ for(const [a,b] of positions){if(a<from)continue;
+  parts.push(safe(value.slice(from,a)),'<mark class="cr-hit">'+safe(value.slice(a,b))+'</mark>');
+  from=b;
  }
  parts.push(safe(value.slice(from)));return parts.join("");
+}
+/* Equivalencias editoriales de búsqueda bilingüe: solo términos documentados.
+ * No traducir de manera automática otros lemas ni presentar dos formas como idénticas.
+ */
+const EQUIVALENTS={
+ geometria:{la:["geometria"],en:["geometry"],es:["geometría"],fr:["géométrie"]},
+ architectura:{la:["architectura"],en:["architecture"],es:["arquitectura"],fr:["architecture"]},
+ symmetria:{la:["symmetria"],en:["symmetry"],es:["simetría"],fr:["symétrie"]},
+ proportio:{la:["proportio"],en:["proportion"],es:["proporción"],fr:["proportion"]}
+};
+function queryTerms(query,language){
+ const term=text(query).trim();
+ const record=Object.values(EQUIVALENTS).find(e=>Object.values(e).flat().some(w=>text(w)===term));
+ return record?[...new Set([query,...(record[language]||[])])]:[query];
 }
 let seq=0;
 async function load(lang){if(!cache[lang])cache[lang]=fetch(datasets[lang].url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>j.passages.filter(p=>p.latin||p.translation)).catch(err=>{delete cache[lang];throw err});return cache[lang]}
@@ -68,14 +87,16 @@ try{
    if(activeBook===-1&&!/\.praef\./.test(String(p.locus||"")))continue;
    const original=String(p.latin||""),translated=String(p.translation||"");
    // Unicode word boundary: "loci" must not be mistaken for a fragment of another word.
-   const found=[["Latín",original],["Traducción",translated]].filter(([,v])=>{
-    const folded=text(v),at=folded.indexOf(query);
-    if(at<0)return false;
-    let pos=at;while(pos>=0){
-     const before=folded[pos-1]||"",after=folded[pos+query.length]||"";
-     if(!/[\p{L}\p{N}]/u.test(before)&&!/[\p{L}\p{N}]/u.test(after))return true;
-     pos=folded.indexOf(query,pos+1);
-    }return false;
+   const found=[["Latín",original,"la"],["Traducción",translated,e.value]].filter(([,v,language])=>{
+    const folded=text(v);
+    return queryTerms(query,language).some(raw=>{
+     const needle=text(raw);let pos=folded.indexOf(needle);
+     while(pos>=0){const before=folded[pos-1]||"",after=folded[pos+needle.length]||"";
+      if(!/[\p{L}\p{N}]/u.test(before)&&!/[\p{L}\p{N}]/u.test(after))return true;
+      pos=folded.indexOf(needle,pos+1);
+     }
+     return false;
+    });
    });
    if(found.length)matches.push({passage:p,fields:found.map(x=>x[0])});
   }return matches;
@@ -109,7 +130,7 @@ try{
    searching?"Sin resultados para «"+q.value+"» en "+(activeBook===0?"los diez libros":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+" de esta edición.":"No hay pasajes para la selección";
   if(activeBook===-1)summary.textContent+=prefNotice;
   if(!p){out.innerHTML='<p>No hay pasajes que coincidan con la búsqueda.</p>';return;}
-  out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+marked(p.latin||"",q.value)+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+marked(p.translation||"Traducción no disponible para este pasaje.",q.value)+'</p></article>';
+  out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+marked(p.latin||"",queryTerms(q.value,"la"))+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+marked(p.translation||"Traducción no disponible para este pasaje.",queryTerms(q.value,e.value))+'</p></article>';
   q.setAttribute("aria-label","Buscar en "+(activeBook===0?"todos los libros":activeBook===-1?"todos los prefacios":"Libro "+activeBook)+" de la edición "+datasets[e.value].name);
  }
  populateBooks();drawPassages();
