@@ -301,10 +301,10 @@
   // P18 may itself point to a coin, even when the Wikidata entity is correct.
   // For ancient figures, search for a classified artwork before using a P18 fallback.
   let img=historic?await commonsPortrait(ent,label).catch(()=>null):null;
-  if(!img&&wikidataImage&&(!historic||historicArtRank(String(wikidataImage))>=0))img=wikidataImage;
+  if(!img&&wikidataImage&&(!historic||historicArtRank(String(wikidataImage))>0))img=wikidataImage;
   if(!img&&!historic)img=await commonsPortrait(ent,label).catch(()=>null);
   if(my!==token)return;
-  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(img===wikidataImage?' · imagen vinculada en Wikidata':' · obra identificada en Wikimedia Commons'),alt:label,group:'',kind:'',score:0,verifiedHistoricalPortrait:!!(historic&&historicArtRank(file)>0),entityId:ent.id,credit:'Wikimedia Commons · consultar autor, obra y licencia en la ficha'}}}))}
+  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(img===wikidataImage?' · imagen vinculada en Wikidata':' · obra identificada en Wikimedia Commons'),alt:label,group:'',kind:'',score:0,verifiedHistoricalPortrait:!!(historic&&img===wikidataImage&&historicArtRank(file)>0),entityId:ent.id,credit:'Wikimedia Commons · consultar autor, obra y licencia en la ficha'}}}))}
   // Fórmula principal encima del retrato (matemáticos y científicos).
   const fig=document.getElementById('featured-documentary-visual');
   const target=fig&&!fig.hidden?fig:box;
