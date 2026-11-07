@@ -1,0 +1,29 @@
+/* Academic orthographic evidence panel; respects Lexicon's theme */
+#lx-orthography{max-width:1200px;margin:16px auto 22px;padding:0 18px;color:var(--text,inherit);font:14px/1.6 system-ui,sans-serif}
+#lx-orthography details{border:1px solid #a88f6d;border-radius:13px;background:var(--panel,#161e23);box-shadow:0 3px 16px rgba(0,0,0,.10)}
+#lx-orthography summary{padding:14px 18px;cursor:pointer;font:700 15px/1.5 system-ui,sans-serif;list-style-position:inside}
+#lx-orthography summary:focus-visible{outline:3px solid #bc985c;outline-offset:2px}
+.lx-orth-chip{font:600 11px/1.3 system-ui,sans-serif;border:1px solid #9a8a70;border-radius:999px;padding:5px 9px;margin-left:10px;white-space:nowrap}
+.lx-orth-inner{padding:16px 20px 23px;border-top:1px solid #a88f6d75}
+.lx-orth-inner>p{margin:0 0 14px;max-width:1050px}
+.lx-orth-form{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-bottom:13px}
+.lx-orth-form label{display:grid;gap:5px;font:600 13px system-ui,sans-serif}
+.lx-orth-form select,.lx-orth-form button{min-height:39px;box-sizing:border-box;padding:8px 11px;border:1px solid #a88f6d;border-radius:8px;font:600 13px system-ui,sans-serif}
+.lx-orth-form select{color:#233b4b;background:#fffdf8}
+.lx-orth-form button{color:#fff;background:#2b4b61;cursor:pointer}
+.lx-orth-form button:disabled{opacity:.5;cursor:wait}
+.lx-orth-table{width:100%;border-collapse:collapse;margin:13px 0 18px}
+.lx-orth-table th,.lx-orth-table td{padding:9px 12px;border-bottom:1px solid #a88f6d55;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.lx-orth-table th:nth-child(1){width:27%}.lx-orth-table th:nth-child(2){width:33%}
+.lx-orth-warning{font-style:italic;opacity:.85}
+.lx-orth-attestations{display:grid;gap:13px}
+.lx-orth-edition{padding:14px;border:1px solid #a88f6d77;border-radius:10px}
+.lx-orth-edition h4{font-size:15px;margin:0 0 8px}
+.lx-orth-excerpt{border-top:1px solid #a88f6d66;margin-top:10px;padding-top:9px}
+.lx-orth-excerpt a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.lx-orth-excerpt p{margin:7px 0}
+.lx-orth-excerpt p[lang=grc]{font-size:17px;line-height:1.75}
+.lx-orth-meta,.lx-orth-method{font-size:12px;opacity:.8}
+#lx-orth-status{min-height:23px;font-size:13px}
+html[data-theme=light] #lx-orthography details{background:#fffdf8;color:#243846}
+@media(max-width:680px){#lx-orthography{padding:0 10px}.lx-orth-inner{padding:12px}.lx-orth-chip{display:inline-block;margin-top:7px}.lx-orth-table{font-size:12px}.lx-orth-table th,.lx-orth-table td{padding:7px 5px}.lx-orth-form label,.lx-orth-form button{width:100%}}
