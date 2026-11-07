@@ -174,13 +174,24 @@ function makeWordsClickable(block){
 }
 function updateLanguage(){
  $("literal-search").textContent=ui("search");
+ const translations={
+  es:{title:"Index locorum · Concordancias semánticas",fields:["Obra","Edición / idioma","Conceptus documentado","Buscar palabra o concepto en los textos"],export:"Exportar concordancias filtradas · TSV",panel:"Pasajes encontrados en las obras clásicas",description:"Escribí domus o casa: busca formas documentadas, muestra los pasajes y permite abrirlos en su edición.",more:"Mostrar más referencias"},
+  en:{title:"Index locorum · Semantic concordances",fields:["Work","Edition / language","Documented concept","Find a word or concept in the texts"],export:"Export filtered concordances · TSV",panel:"Passages found in classical works",description:"Type domus or casa to find documented terms and passages in their original editions.",more:"Show more references"},
+  fr:{title:"Index locorum · Concordances sémantiques",fields:["Œuvre","Édition / langue","Concept documenté","Rechercher un mot ou concept dans les textes"],export:"Exporter les concordances filtrées · TSV",panel:"Passages trouvés dans les œuvres classiques",description:"Saisissez domus ou casa pour trouver les formes et passages attestés dans leurs éditions.",more:"Afficher plus de références"}
+ };
+ const t=translations[uiLanguage]||translations.es;
+ const h=document.querySelector("main h1");if(h)h.textContent=t.title;
+ document.querySelectorAll("main .controls>label").forEach((node,i)=>{if(node.firstChild?.nodeType===Node.TEXT_NODE)node.firstChild.textContent=t.fields[i]||node.firstChild.textContent});
+ const exp=$("export-tsv");if(exp)exp.textContent=t.export;
+ const panel=$("literal-panel");if(panel){const strong=panel.querySelector("strong");if(strong)strong.textContent=t.panel;const description=panel.querySelector("div p");if(description)description.textContent=t.description}
+ const more=$("more");if(more)more.textContent=t.more;
  const label=$("locorum-language-label");if(label)label.textContent=ui("language");
  document.querySelectorAll(".passage-actions").forEach(node=>{
   const buttons=node.querySelectorAll("button");
   if(buttons[0])buttons[0].textContent=ui("pdf");
   if(buttons[1])buttons[1].textContent=ui("mail");
   const links=node.querySelectorAll("a");if(links[0])links[0].textContent=ui("open");
-  const label=node.querySelector("label");if(label.firstChild?.nodeType===Node.TEXT_NODE)label.firstChild.textContent=ui("background")+": ";
+  const label=node.querySelector("label");if(label?.firstChild?.nodeType===Node.TEXT_NODE)label.firstChild.textContent=ui("background")+": ";
  });
  document.documentElement.lang=uiLanguage;
  document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:uiLanguage}}));
@@ -271,5 +282,6 @@ $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
 $("literal-search").addEventListener("click",searchLiteral);
 languageControl();
+updateLanguage();
 init();
 })();
