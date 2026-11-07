@@ -86,6 +86,59 @@ async function loadLocalIndex(){
  status.textContent="Índice local verificado: "+folios.length+" imágenes. Selecciona una y solo se descargará esa página.";
  return true;
 }
+
+const GALLERY_BATCH=12;
+let galleryStart=0;
+function renderVisualGallery(start=0){
+ if(!pages.length)return;
+ const maxStart=Math.floor((pages.length-1)/GALLERY_BATCH)*GALLERY_BATCH;
+ galleryStart=Math.max(0,Math.min(maxStart,Math.floor(start/GALLERY_BATCH)*GALLERY_BATCH));
+ const grid=$("pr-thumbnails");
+ grid.replaceChildren();
+ const fragment=document.createDocumentFragment();
+ for(let index=galleryStart;index<Math.min(galleryStart+GALLERY_BATCH,pages.length);index++){
+  const p=pages[index],button=document.createElement("button");
+  button.type="button";button.className="pr-thumb";
+  button.dataset.index=String(index);
+  button.setAttribute("aria-label","Abrir imagen digital "+(index+1));
+  const thumb=document.createElement("img");
+  thumb.loading="lazy";thumb.decoding="async";
+  thumb.alt="Miniatura de Perrault, imagen digital "+(index+1);
+  thumb.src=p.url?p.url.replace(/\/full\/[^/]+\/0\/default\.jpg(?:\?.*)?$/,"/full/240,/0/default.jpg"):(p.backup||"");
+  if(p.backup)thumb.addEventListener("error",()=>{
+   if(thumb.src!==p.backup)thumb.src=p.backup;
+  },{once:true});
+  const caption=document.createElement("span");
+  caption.textContent="Imagen "+(index+1);
+  button.append(thumb,caption);
+  if(index===current){button.classList.add("is-current");button.setAttribute("aria-current","page")}
+  button.addEventListener("click",()=>{
+   show(index);
+   $("pr-stage").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  fragment.append(button);
+ }
+ grid.append(fragment);
+ $("pr-visual-gallery").hidden=false;
+ $("pr-gallery-range").textContent=(galleryStart+1)+"–"+Math.min(galleryStart+GALLERY_BATCH,pages.length)+" de "+pages.length;
+ $("pr-gallery-prev").disabled=galleryStart===0;
+ $("pr-gallery-next").disabled=galleryStart+GALLERY_BATCH>=pages.length;
+}
+$("pr-gallery-prev").addEventListener("click",()=>renderVisualGallery(galleryStart-GALLERY_BATCH));
+$("pr-gallery-next").addEventListener("click",()=>renderVisualGallery(galleryStart+GALLERY_BATCH));
+function markVisualCurrent(){
+ if(!$("pr-thumbnails").children.length)return;
+ if(current<galleryStart||current>=galleryStart+GALLERY_BATCH){
+  renderVisualGallery(current);
+  return;
+ }
+ $("pr-thumbnails").querySelectorAll(".pr-thumb").forEach(button=>{
+  const selected=Number(button.dataset.index)===current;
+  button.classList.toggle("is-current",selected);
+  if(selected)button.setAttribute("aria-current","page");else button.removeAttribute("aria-current");
+ });
+}
+
 function renderFolioGrid(){
  // One folio catalogue only: the revised 1684 edition.
  
@@ -112,6 +165,7 @@ $("pr-folio-grid").addEventListener("click",e=>{
 function activatePages(nextPages){
  pages=nextPages;
  renderFolioGrid();
+ renderVisualGallery(Number(requested.get("image")||1)-1);
  $("pr-number").max=String(pages.length);
  $("pr-number").disabled=false;
  $("pr-next").disabled=false;
@@ -151,6 +205,7 @@ function show(n){
  if(currentButton){currentButton.classList.remove("is-current");currentButton.removeAttribute("aria-current")}
  const targetButton=$("pr-folio-grid").querySelector(`button[data-index="${current}"]`);
  if(targetButton){targetButton.classList.add("is-current");targetButton.setAttribute("aria-current","page")}
+ markVisualCurrent();
  $("pr-prev").disabled=current===0;$("pr-next").disabled=current===pages.length-1;
  $("pr-stage").scrollTop=0;$("pr-stage").scrollLeft=0;
  status.textContent="Cargando imagen "+(current+1)+" de "+pages.length+"…";
