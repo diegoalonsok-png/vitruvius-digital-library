@@ -67,7 +67,7 @@ const syncLabel=document.createElement("label");syncLabel.append(syncToggle,docu
 const syncStatus=document.createElement("span");syncStatus.setAttribute("role","status");
 syncStatus.textContent="Krohn y Rose: solo OCR por página; no se presume alineación con Kurilo.";
 const candidateToggle=document.createElement("input");candidateToggle.type="checkbox";
-const candidateLabel=document.createElement("label");candidateLabel.append(candidateToggle,document.createTextNode(" Permitir saltos provisionales a páginas OCR (no cotejados)"));
+const candidateLabel=document.createElement("label");candidateLabel.append(candidateToggle,document.createTextNode(" Saltar por ≥2 frases latinas coincidentes (provisional)"));
 toolbar.append(syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
 let syncActive=false;
 function synchronize(source){
@@ -99,12 +99,12 @@ function synchronize(source){
    if(!target.data)continue;
    const edition=target.editionId();
    const hit=map.get(edition+"|"+requestedLocus);
-   if(!hit||hit.status!=="machine-candidate-not-verified")continue;
+   if(!hit||hit.status!=="machine-candidate-not-verified"||hit.anchorsMatched<2)continue;
    const pos=target.data.pages.findIndex(p=>p.page===hit.page);
    if(pos<0)continue;
    syncActive=true;target.seek(pos);syncActive=false;hits++;
   }
-  syncStatus.textContent="Locus "+requestedLocus+": "+hits+" salto(s) tentativos por frases latinas OCR coincidentes. NO son equivalencias filológicas verificadas; "+unmapped+" visor(es) sin ajuste.";
+  syncStatus.textContent="Locus "+requestedLocus+": "+hits+" salto(s) con al menos dos fragmentos latinos coincidentes. NO son equivalencias filológicas verificadas; "+unmapped+" visor(es) sin ajuste.";
  }).catch(err=>{syncStatus.textContent="Concordancias provisionales no disponibles: "+err.message;});
 }
 
