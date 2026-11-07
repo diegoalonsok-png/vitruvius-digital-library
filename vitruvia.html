@@ -1362,6 +1362,67 @@ html[data-theme="light"] #vitruvia-article .article-toolbar button:hover{
  #vitruvia-article .article-toolbar button{min-height:40px}
 }
 @media print{#vitruvia-article .article-toolbar{display:none!important}}
+/* 2026-11-07: definitive article flow repair.
+   The article has three siblings (body, aside, context); never let grid
+   placement or inherited narrow-track rules collapse the reading text. */
+@media screen {
+  body.vitruvia-reading #vitruvia-article .article-grid {
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    grid-template-columns:none!important;
+    columns:auto!important;
+  }
+  body.vitruvia-reading #vitruvia-article #article-body {
+    display:block!important;
+    position:static!important;
+    float:none!important;
+    clear:both!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    column-count:1!important;
+    columns:auto!important;
+    box-sizing:border-box!important;
+  }
+  body.vitruvia-reading #vitruvia-article #article-body > :is(p,h3,h4,div,section,article,ul,ol,blockquote,table) {
+    max-width:100%!important;
+    min-width:0;
+    box-sizing:border-box;
+  }
+  body.vitruvia-reading #vitruvia-article #article-body :is(p,li,blockquote) {
+    width:auto!important;
+    max-width:100%!important;
+    text-align:left!important;
+    text-align-last:auto!important;
+    hyphens:auto;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+  body.vitruvia-reading #vitruvia-article :is(#article-aside,#vitruvia-context) {
+    display:block!important;
+    position:static!important;
+    float:none!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:26px 0 0!important;
+    padding:20px 0 0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-top:1px solid #454b51!important;
+    clear:both!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  body.vitruvia-reading #vitruvia-article :is(#article-aside,#vitruvia-context)[hidden] {
+    display:none!important;
+  }
+}
 </style>
 <script>
 (function(){
