@@ -593,8 +593,8 @@ if(tab==="study"&&hasStudyPair(w)){
  const intro=document.createElement("p");intro.className="classic-ref";
  intro.textContent="Lectura académica directa: texto original griego o latino a la izquierda; traducción a la derecha. No se necesita PDF histórico. Los textos se conservan íntegros y cada vínculo por capítulo es orientativo.";
  pane.append(intro);
- const originals=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["la","grc"].includes(lang)&&/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(path));
- const translations=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["en","es","fr"].includes(lang)&&/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(path));
+ const originals=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["la","grc"].includes(lang)&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
+ const translations=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["en","es","fr"].includes(lang)&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
  if(!originals.length||!translations.length){
   const note=document.createElement("p");note.className="classic-ref";
   note.textContent="No se dispone todavía de una pareja de textos JSON para lectura sincronizada. Consultá las versiones HTML existentes desde la pestaña «Texto»; no se presenta un códice como sustituto de la edición.";
@@ -613,15 +613,15 @@ if(tab==="study"&&hasStudyPair(w)){
   const grid=document.createElement("div");grid.className="classic-compare-panes";pane.append(grid);
   const cache=new Map(),states=[];
   let step=0;
-  function key(v){return String(v??"").trim().toLocaleLowerCase().replace(/\\s+/g,"")}
+  function key(v){return String(v??"").trim().toLocaleLowerCase().replace(/\s+/g,"")}
   function matchSecond(first,second){
    const pos=Math.min(step,Math.max(0,second.length-1)),wanted=key(first[Math.min(step,first.length-1)]?.locus);
    if(!checkbox.checked||!wanted)return {i:pos,grade:"posición aproximada"};
    const found=second.findIndex(p=>key(p.locus)===wanted);
    if(found>=0)return {i:found,grade:"mismo locus editorial"};
-   const m=/^(\\d+)[.:-](\\d+)/.exec(wanted);
+   const m=/^(\d+)[.:-](\d+)/.exec(wanted);
    if(m){
-    const candidates=second.map((p,i)=>({i,m:/^(\\d+)[.:-](\\d+)/.exec(key(p.locus))})).filter(x=>x.m&&x.m[1]===m[1]);
+    const candidates=second.map((p,i)=>({i,m:/^(\d+)[.:-](\d+)/.exec(key(p.locus))})).filter(x=>x.m&&x.m[1]===m[1]);
     if(candidates.length){
      const earlier=candidates.filter(x=>Number(x.m[2])<=Number(m[2]));
      return {i:(earlier.at(-1)||candidates[0]).i,grade:"mismo libro · aproximado"};
