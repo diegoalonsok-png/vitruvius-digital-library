@@ -13,6 +13,23 @@ const q=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fold=s=>String(s??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
 const pdfURL=(e,n)=>e.pdf+'#page='+n;
+/* Exact lexical matches. "logos" must not match "astrólogos". */
+function lexicalTerms(value){
+ return fold(value).match(/[\p{L}\p{N}]+/gu)||[];
+}
+function containsWholeTerms(value,terms){
+ if(!terms.length)return true;
+ const words=new Set(lexicalTerms(value));
+ return terms.every(t=>words.has(t));
+}
+function exactPosition(value,term){
+ const wanted=fold(term);
+ for(const m of String(value||'').matchAll(/[\p{L}\p{M}\p{N}]+/gu)){
+  if(fold(m[0])===wanted)return {start:m.index,end:m.index+m[0].length};
+ }
+ return null;
+}
+
 let entries=[],visible=[],shown=0,loaded=false,promise=null;
 function category(label){
  const v=fold(label);
@@ -68,16 +85,17 @@ function excerpt(text,term){
  const raw=String(text||'').replace(/\s+/g,' ').trim(),query=String(term||'').trim();
  if(!query)return esc(raw.slice(0,580))+(raw.length>580?'…':'');
  // Resaltar únicamente coincidencias literales; las normalizadas siguen siendo localizables.
- const i=raw.toLocaleLowerCase().indexOf(query.toLocaleLowerCase());
- const start=i<0?0:Math.max(0,i-130),end=Math.min(raw.length,Math.max(i,0)+Math.max(query.length,1)+430);
- if(i<0)return esc(raw.slice(0,580))+(raw.length>580?'…':'');
- return (start?'… ':'')+esc(raw.slice(start,i))+'<mark>'+esc(raw.slice(i,i+query.length))+'</mark>'+esc(raw.slice(i+query.length,end))+(end<raw.length?'…':'');
+ const first=lexicalTerms(query)[0];
+ const match=first?exactPosition(raw,first):null;
+ if(!match)return esc(raw.slice(0,580))+(raw.length>580?'…':'');
+ const start=Math.max(0,match.start-130),end=Math.min(raw.length,match.end+430);
+ return (start?'… ':'')+esc(raw.slice(start,match.start))+'<mark>'+esc(raw.slice(match.start,match.end))+'</mark>'+esc(raw.slice(match.end,end))+(end<raw.length?'…':'');
 }
 function apply(){
  if(!loaded)return;
  const term=fold(q('apparatus-catalog-query').value),edition=q('apparatus-catalog-edition').value,type=q('apparatus-catalog-type').value;
- const terms=term.split(' ').filter(Boolean);
- visible=entries.filter(e=>(!edition||edition===e.edition)&&(!type||type===e.type)&&(!terms.length||terms.every(t=>fold([e.title,e.text,e.anchor,e.locusMention,(e.pageLoci||[]).join(' '),e.editionName].join(' ')).includes(t))));
+ const terms=lexicalTerms(term);
+ visible=entries.filter(e=>(!edition||edition===e.edition)&&(!type||type===e.type)&&containsWholeTerms([e.title,e.text,e.anchor,e.locusMention,(e.pageLoci||[]).join(' '),e.editionName].join(' '),terms));
  // Los bloques críticos del propio libro primero; ordenar por edición y página.
  visible.sort((a,b)=>(a.source==='nota')-(b.source==='nota')||ED.findIndex(e=>e.id===a.edition)-ED.findIndex(e=>e.id===b.edition)||(a.page??0)-(b.page??0));
  shown=0;q('apparatus-catalog-results').replaceChildren();
