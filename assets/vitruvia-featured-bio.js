@@ -274,7 +274,7 @@
   let img=claims(ent,'P18')[0];
   if(!img)img=await commonsPortrait(ent,label).catch(()=>null);
   if(my!==token)return;
-  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(claims(ent,'P18')[0]?' · retrato (Wikidata)':' · busto o retrato (Wikimedia Commons)'),alt:label,group:'',kind:'',score:0,credit:'Wikimedia Commons · ficha, autor y licencia'}}}))}
+  if(img){const file=String(img).replace(/ /g,'_');window.dispatchEvent(new CustomEvent('vitruvia:hero-visual',{detail:{query,weight:6000,item:{preview:'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=640',page:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file),caption:label+(claims(ent,'P18')[0]?' · representación vinculada en Wikidata':' · representación en Wikimedia Commons'),alt:label,group:'',kind:'',score:0,verifiedHistoricalPortrait:!!(row.entityHistorical&&claims(ent,'P18')[0]),entityId:ent.id,credit:'Wikimedia Commons · consultar autor, obra y licencia en la ficha'}}}))}
   // Fórmula principal encima del retrato (matemáticos y científicos).
   const fig=document.getElementById('featured-documentary-visual');
   const target=fig&&!fig.hidden?fig:box;
