@@ -617,7 +617,7 @@ if(tab==="study"&&hasStudyPair(w)){
  const translations=Object.entries(w.corpusFiles||{}).filter(([lang,path])=>["en","es","fr"].includes(lang)&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
  if(!originals.length||!translations.length){
   const note=document.createElement("p");note.className="classic-ref";
-  note.textContent="No se dispone todavía de una pareja de textos JSON para lectura sincronizada. Consultá las versiones HTML existentes desde la pestaña «Texto»; no se presenta un códice como sustituto de la edición.";
+  note.textContent="No se dispone todavía de una pareja de textos JSON para lectura sincronizada. Consulta las versiones HTML existentes desde la pestaña «Texto»; no se presenta un códice como sustituto de la edición.";
   pane.append(note);
  }else{
   const labels={la:"Latín original",grc:"Griego original",en:"English · traducción",es:"Castellano · traducción",fr:"Français · traduction"};
@@ -686,7 +686,7 @@ if(tab==="study"&&hasStudyPair(w)){
     state.source.textContent=(data.attribution||"Fuente editorial consignada en el archivo")+" · "+(data.alignment||"Sin alineación certificada");
     state.link.href="classics-text-reader.html?work="+encodeURIComponent(w.id)+"&lang="+encodeURIComponent(lang);
     navigate();
-   }catch(err){if(state.token===token){state.data=null;state.message.textContent="Error al cargar la edición: "+err.message;state.text.textContent="Podés consultar la fuente en la ficha bibliográfica.";cache.delete(lang)}}
+   }catch(err){if(state.token===token){state.data=null;state.message.textContent="Error al cargar la edición: "+err.message;state.text.textContent="Puedes consultar la fuente en la ficha bibliográfica.";cache.delete(lang)}}
   }
   for(const [side,options] of [[0,originals],[1,translations]]){
    const col=document.createElement("section");col.className="classic-fast-text-pane";
