@@ -27,3 +27,13 @@
 #lx-orth-status{min-height:23px;font-size:13px}
 html[data-theme=light] #lx-orthography details{background:#fffdf8;color:#243846}
 @media(max-width:680px){#lx-orthography{padding:0 10px}.lx-orth-inner{padding:12px}.lx-orth-chip{display:inline-block;margin-top:7px}.lx-orth-table{font-size:12px}.lx-orth-table th,.lx-orth-table td{padding:7px 5px}.lx-orth-form label,.lx-orth-form button{width:100%}}
+
+/* Optional research instruments: neutral academic styling, no ornate CTA. */
+#lx-orthography{max-width:none;margin:8px auto 16px;padding:0 6px}
+#lx-orthography details{background:transparent!important;border:0!important;border-top:1px solid rgba(140,146,150,.25)!important;border-radius:0!important;box-shadow:none!important}
+#lx-orthography summary{padding:10px 4px!important;font:500 12px/1.55 system-ui,sans-serif!important;color:inherit;opacity:.83}
+#lx-orthography summary:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+#lx-orthography :is(.lx-topo-inner,.lx-orth-inner){border-top:1px solid rgba(140,146,150,.18)!important}
+#lx-orthography :is(button,input,select){border-color:rgba(135,143,150,.55)!important;box-shadow:none!important}
+#lx-orthography button{background:#2c3035!important;color:#f2f2f0!important}
+html[data-theme=light] #lx-orthography button{background:#e7e8e7!important;color:#25292c!important}
