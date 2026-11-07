@@ -111,6 +111,37 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 .transcript{margin-top:6px}
 @media(max-width:950px){.workspace{grid-template-columns:1fr}.stage{min-height:250px;max-height:55vh}}
 @media(max-width:580px){.panel{padding:8px}.toolbar label{flex-basis:auto}.stage{min-height:220px;max-height:47vh}#pap-detail{height:112px}.pap-compact-filters .toolbar label{flex:1 1 145px}.pap-compact-filters .toolbar label input[type=range]{flex:1;min-width:45px}}
+
+/* Lexicon-style workbench: source image beside compact optical controls. */
+.pap-lab-heading{margin:8px 0 10px;padding:9px 14px;background:#ece4d3;border-left:4px solid #a87b3e;color:#23394d}
+.pap-lab-heading span,.pap-panel-kicker{display:block;font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a663b}
+.pap-lab-heading p{font-size:12px;margin:3px 0 0;color:#52606a}
+.pap-workbench{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(320px,.9fr);gap:12px;align-items:start}
+.pap-workbench .panel{margin:0}
+.pap-primary-viewer{min-width:0;border:1px solid #b8aa90;background:#fffdfa;padding:12px}
+.pap-primary-viewer h2{font:normal 23px/1.2 Georgia,serif;color:#243c50;margin:4px 0 9px}
+.pap-primary-viewer .stage{min-height:320px;max-height:68vh;overflow:auto;border:1px solid #9a855e}
+.pap-primary-viewer>.caption{font-size:11px;margin:5px 0 7px}
+.pap-primary-viewer #pap-detail{height:130px;max-height:130px;object-fit:contain}
+.pap-image-controls{position:sticky;top:8px;max-height:calc(100vh - 16px);overflow:auto;padding:10px 10px 8px;border:1px solid #bfae8f;background:#f4efe5;scrollbar-width:thin}
+.pap-image-controls>.pap-panel-kicker{margin:0 0 8px}
+.pap-image-controls .panel{background:#fffdfa;border-color:#d5c4a8;margin:0 0 8px;padding:9px}
+.pap-image-controls h2{font:normal 18px/1.2 Georgia,serif;margin:1px 0 7px}
+.pap-image-controls .toolbar{display:flex;gap:6px;align-items:center}
+.pap-image-controls .toolbar label{flex:1 1 105px;font-size:11px}
+.pap-image-controls .toolbar button{flex:0 0 auto}
+.pap-image-controls .toolbar input[type=file]{max-width:230px;width:100%}
+.pap-image-controls .pap-compact-filters .toolbar label{flex:1 1 155px}
+.pap-image-controls .pap-compact-filters .toolbar label input[type=range]{width:75px;flex:1}
+.pap-image-controls .toolbar output{min-width:30px;text-align:right}
+.pap-controls-note{font-size:11px;line-height:1.45;margin:5px 0 0;color:#536273}
+.pap-extraction-fold{margin:16px 0;border:1px solid #bdab8d;background:#faf7ee}
+.pap-extraction-fold>summary{cursor:pointer;padding:12px 15px;font:600 15px/1.4 Georgia,serif;background:#ebe2cf;color:#253e53}
+.pap-extraction-fold[open]>summary{border-bottom:1px solid #c9b99e}
+.pap-extraction-fold>#pap-extraction{border:0;margin:0;background:#fffdfa}
+.pap-workbench + .transcript{margin-top:12px}
+@media(max-width:1050px){.pap-workbench{grid-template-columns:minmax(0,1.25fr) minmax(285px,.8fr)}.pap-primary-viewer .stage{max-height:55vh;min-height:280px}}
+@media(max-width:760px){.pap-workbench{grid-template-columns:1fr}.pap-image-controls{position:static;max-height:none;overflow:visible}.pap-primary-viewer .stage{min-height:280px;max-height:55vh}}
 </style>
 </head>
 <body>
@@ -121,8 +152,23 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 </header>
 <main>
 <p class="intro">Examina la imagen ampliada, combina tratamientos ópticos y realiza un reconocimiento experimental de signos griegos o latinos. La imagen queda en tu navegador: no se publica en el sitio ni en GitHub. Una lectura automática requiere revisión paleográfica y contraste con el testimonio.</p>
-<section class="panel" aria-labelledby="filehead">
-<h2 id="filehead">1 · Imagen y lupas</h2>
+
+<div class="pap-lab-heading"><span>INSTRUMENTA · PAPYROLOGIA ET OSTRACA</span><p>Imagen original y filtros juntos. El taller de extracción y OCR está disponible más abajo.</p></div>
+<div class="pap-workbench" id="pap-workbench">
+<section class="panel pap-primary-viewer" aria-labelledby="pap-viewer-title">
+ <div class="pap-panel-kicker">I · TESTIMONIVM</div>
+ <h2 id="pap-viewer-title">Imagen original · visor paleográfico</h2>
+ <div id="pap-stage" class="stage" aria-label="Visor de papiro u óstracon, acercar el puntero para lupa" tabindex="0">
+<canvas id="pap-image" width="720" height="420" aria-label="Imagen cargada del testimonio"></canvas>
+</div>
+<canvas id="pap-loupe" width="240" height="240" aria-hidden="true"></canvas>
+<p class="caption">En computadora: mover el cursor para la lupa y usar zoom. En celular: tocar el punto de interés para actualizar el detalle. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
+<canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
+</section>
+<aside class="pap-image-controls" aria-label="Controles ópticos del visor">
+ <div class="pap-panel-kicker">II · INSTRUMENTA OPTICA</div>
+ <section class="panel" aria-labelledby="filehead">
+<h2 id="filehead">Controles de imagen y lupa</h2>
 <div class="toolbar">
 <label>Imagen local<input id="pap-file" type="file" accept="image/png,image/jpeg,image/webp,image/bmp,image/gif"></label>
 <label>Modo de lupa<select id="pap-loupe-mode"><option value="round">Lupa circular</option><option value="rect">Lupa rectangular</option><option value="off">Sin lupa</option></select></label>
@@ -133,11 +179,8 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 <button id="pap-reset" type="button">Restaurar</button>
 </div>
 </section>
-<div class="workspace">
-<section class="panel">
-<h2>2 · Imagen original y lupas</h2>
-<section class="panel pap-compact-filters" aria-label="Filtros visuales inmediatos">
-<h2>Filtros de lectura · junto a la imagen</h2>
+ <section class="panel pap-compact-filters" aria-label="Filtros visuales inmediatos">
+<h2>Luz, color y lectura</h2>
 <div class="toolbar">
 <button type="button" id="pap-invert" aria-pressed="false">◐ Invertir colores</button>
 <button type="button" id="pap-gray" aria-pressed="false">Blanco y negro</button>
@@ -151,49 +194,9 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 <button id="pap-export" type="button">Guardar imagen procesada</button>
 </div>
 </section>
-<div id="pap-stage" class="stage" aria-label="Visor de papiro u óstracon, acercar el puntero para lupa" tabindex="0">
-<canvas id="pap-image" width="720" height="420" aria-label="Imagen cargada del testimonio"></canvas>
+ <p class="pap-controls-note">Los ajustes se aplican a la fotografía de la izquierda; el archivo original permanece intacto.</p>
+</aside>
 </div>
-<canvas id="pap-loupe" width="240" height="240" aria-hidden="true"></canvas>
-<p class="caption">En computadora: mover el cursor para la lupa y usar zoom. En celular: tocar el punto de interés para actualizar el detalle. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
-<canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
-<section class="panel" id="pap-extraction" aria-labelledby="pap-extraction-h">
-<h2 id="pap-extraction-h">Extraer tinta · negro sobre blanco</h2>
-<p class="caption">Primero se genera una imagen de píxeles negros sobre fondo blanco. El sistema detecta regiones oscuras; también puede confundir grietas, manchas o textura con letras. La segmentación y la propuesta de signos necesitan cotejo humano con la fotografía original.</p>
-<div class="toolbar">
-<label>Modo de extracción<select id="pap-ink-mode"><option value="adaptive">Umbral local · soportes irregulares</option><option value="global">Umbral global · tinta negra</option><option value="edge">Contornos · incisiones</option></select></label>
-<details class="pap-advanced-filters"><summary>Ajustes avanzados de iluminación y limpieza</summary><div class="toolbar"><label>Umbral <input id="pap-ink-threshold" type="range" min="35" max="245" value="135"><output id="pap-ink-threshold-value">135</output></label>
-<label>Sensibilidad local <input id="pap-ink-sensitivity" type="range" min="-40" max="40" value="12"><output id="pap-ink-sensitivity-value">12</output></label>
-<label>Ruido mínimo (píxeles) <input id="pap-ink-noise" type="range" min="0" max="70" value="6"><output id="pap-ink-noise-value">6</output></label>
-<label>Contraste local <input id="pap-ink-clarity" type="range" min="0" max="100" value="30"><output id="pap-ink-clarity-value">30</output></label>
-<label>Gamma <input id="pap-ink-gamma" type="range" min="30" max="250" value="100"><output id="pap-ink-gamma-value">1,00</output></label>
-<label>Altas luces <input id="pap-ink-highlights" type="range" min="-100" max="100" value="0"><output id="pap-ink-highlights-value">0</output></label>
-<label>Sombras <input id="pap-ink-shadows" type="range" min="-100" max="100" value="0"><output id="pap-ink-shadows-value">0</output></label>
-<label>Exposición <input id="pap-ink-exposure" type="range" min="-100" max="100" value="0"><output id="pap-ink-exposure-value">0</output></label>
-<label>Nitidez <input id="pap-ink-sharpness" type="range" min="0" max="100" value="0"><output id="pap-ink-sharpness-value">0</output></label>
-<label>Grosor de trazo<select id="pap-ink-stroke"><option value="0">Original</option><option value="1">Engrosar 1 píxel</option><option value="2">Engrosar 2 píxeles</option><option value="-1">Afinar 1 píxel</option></select></label>
-<label>Unir trazos<select id="pap-ink-join"><option value="0">Sin unir</option><option value="1">Unir huecos pequeños</option><option value="2">Unir huecos medianos</option></select></label>
-</div></details>
-<button type="button" id="pap-ink-papyrus">Papiro · tinta tenue</button>
-<button type="button" id="pap-ink-ostracon">Óstracon · incisión</button>
-<button type="button" id="pap-ink-clean">Restaurar extracción</button>
-<button type="button" id="pap-ink-run">Extraer trazos negros</button>
-<button type="button" id="pap-ink-export">Guardar máscara PNG</button>
-</div>
-<div class="pap-extraction-grid">
-<div><h3>Imagen extraída</h3><div class="pap-ink-scroll"><canvas id="pap-ink-canvas" width="560" height="280" aria-label="Máscara de tinta en negro sobre blanco"></canvas></div></div>
-<div><h3>Segmentación por signos</h3>
-<div class="toolbar">
-<label>Alfabeto comparativo<select id="pap-ink-alphabet"><option value="grc">Griego antiguo · formas tipográficas</option><option value="lat">Latín</option><option value="heb">Hebreo cuadrado</option><option value="phn">Fenicio Unicode</option></select></label>
-<button id="pap-ink-segment" type="button">Segmentar signos</button>
-<button id="pap-ink-ocr" type="button">Enviar máscara al OCR opcional</button>
-</div>
-<p id="pap-ink-status" class="caption" role="status" aria-live="polite">Carga una fotografía y pulsa «Extraer trazos negros».</p>
-<div id="pap-ink-signs" class="pap-ink-signs" aria-label="Recortes y posibles equivalencias de cada signo"></div>
-</div></div>
-<p class="caption">El análisis usa la imagen procesada, sin subirla al servidor. La máscara es una hipótesis de tinta, no una restauración diplomática; la segmentación agrupa componentes oscuros y puede dividir una misma letra o unir letras cercanas. Las coincidencias gráficas no son una identificación automática del idioma.</p>
-</section>
-</section>
 <section class="panel transcript">
 <h2>4 · Análisis visual con Google y cotejo paleográfico</h2>
 <div class="privacy" id="pap-google-method">
@@ -288,7 +291,46 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 </div>
 <div class="privacy"><strong>Aviso filológico:</strong> texto reconocido, lectura editorial, restitución conjetural y texto efectivamente visible deben distinguirse. No se establece automáticamente un locus, fecha, procedencia ni relación genealógica con otros códices.</div>
 </section>
+<details class="pap-extraction-fold" id="pap-extraction-fold">
+<summary>III · Extraer tinta y segmentar signos · abrir taller avanzado</summary>
+<section class="panel pap-extraction-lower" id="pap-extraction" aria-labelledby="pap-extraction-h">
+<h2 id="pap-extraction-h">III · Extracción de tinta y segmentación</h2>
+<p class="caption">Primero se genera una imagen de píxeles negros sobre fondo blanco. El sistema detecta regiones oscuras; también puede confundir grietas, manchas o textura con letras. La segmentación y la propuesta de signos necesitan cotejo humano con la fotografía original.</p>
+<div class="toolbar">
+<label>Modo de extracción<select id="pap-ink-mode"><option value="adaptive">Umbral local · soportes irregulares</option><option value="global">Umbral global · tinta negra</option><option value="edge">Contornos · incisiones</option></select></label>
+<details class="pap-advanced-filters"><summary>Ajustes avanzados de iluminación y limpieza</summary><div class="toolbar"><label>Umbral <input id="pap-ink-threshold" type="range" min="35" max="245" value="135"><output id="pap-ink-threshold-value">135</output></label>
+<label>Sensibilidad local <input id="pap-ink-sensitivity" type="range" min="-40" max="40" value="12"><output id="pap-ink-sensitivity-value">12</output></label>
+<label>Ruido mínimo (píxeles) <input id="pap-ink-noise" type="range" min="0" max="70" value="6"><output id="pap-ink-noise-value">6</output></label>
+<label>Contraste local <input id="pap-ink-clarity" type="range" min="0" max="100" value="30"><output id="pap-ink-clarity-value">30</output></label>
+<label>Gamma <input id="pap-ink-gamma" type="range" min="30" max="250" value="100"><output id="pap-ink-gamma-value">1,00</output></label>
+<label>Altas luces <input id="pap-ink-highlights" type="range" min="-100" max="100" value="0"><output id="pap-ink-highlights-value">0</output></label>
+<label>Sombras <input id="pap-ink-shadows" type="range" min="-100" max="100" value="0"><output id="pap-ink-shadows-value">0</output></label>
+<label>Exposición <input id="pap-ink-exposure" type="range" min="-100" max="100" value="0"><output id="pap-ink-exposure-value">0</output></label>
+<label>Nitidez <input id="pap-ink-sharpness" type="range" min="0" max="100" value="0"><output id="pap-ink-sharpness-value">0</output></label>
+<label>Grosor de trazo<select id="pap-ink-stroke"><option value="0">Original</option><option value="1">Engrosar 1 píxel</option><option value="2">Engrosar 2 píxeles</option><option value="-1">Afinar 1 píxel</option></select></label>
+<label>Unir trazos<select id="pap-ink-join"><option value="0">Sin unir</option><option value="1">Unir huecos pequeños</option><option value="2">Unir huecos medianos</option></select></label>
+</div></details>
+<button type="button" id="pap-ink-papyrus">Papiro · tinta tenue</button>
+<button type="button" id="pap-ink-ostracon">Óstracon · incisión</button>
+<button type="button" id="pap-ink-clean">Restaurar extracción</button>
+<button type="button" id="pap-ink-run">Extraer trazos negros</button>
+<button type="button" id="pap-ink-export">Guardar máscara PNG</button>
 </div>
+<div class="pap-extraction-grid">
+<div><h3>Imagen extraída</h3><div class="pap-ink-scroll"><canvas id="pap-ink-canvas" width="560" height="280" aria-label="Máscara de tinta en negro sobre blanco"></canvas></div></div>
+<div><h3>Segmentación por signos</h3>
+<div class="toolbar">
+<label>Alfabeto comparativo<select id="pap-ink-alphabet"><option value="grc">Griego antiguo · formas tipográficas</option><option value="lat">Latín</option><option value="heb">Hebreo cuadrado</option><option value="phn">Fenicio Unicode</option></select></label>
+<button id="pap-ink-segment" type="button">Segmentar signos</button>
+<button id="pap-ink-ocr" type="button">Enviar máscara al OCR opcional</button>
+</div>
+<p id="pap-ink-status" class="caption" role="status" aria-live="polite">Carga una fotografía y pulsa «Extraer trazos negros».</p>
+<div id="pap-ink-signs" class="pap-ink-signs" aria-label="Recortes y posibles equivalencias de cada signo"></div>
+</div></div>
+<p class="caption">El análisis usa la imagen procesada, sin subirla al servidor. La máscara es una hipótesis de tinta, no una restauración diplomática; la segmentación agrupa componentes oscuros y puede dividir una misma letra o unir letras cercanas. Las coincidencias gráficas no son una identificación automática del idioma.</p>
+</section>
+</details>
+
 </main>
 <script defer src="assets/papyrology-ostraca.js?v=20261106-gemini-json-v3"></script>
 <script defer src="assets/papyrology-glyphs.js?v=20261106-glyph-lab-v1"></script>
