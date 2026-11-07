@@ -10,6 +10,21 @@ function show(){
  if(!audit)return;
  const term=search.value.trim().toLowerCase();
  const kind=type.value;
+ if(kind==="ocr-krohn"||kind==="ocr-rose"){
+  const edition=kind.replace("ocr-","");
+  const alerts=audit.ocrAlerts.filter(p=>p.edition===edition&&(!term||p.locus.toLowerCase().includes(term)));
+  result.replaceChildren();
+  for(const item of alerts.slice(0,100)){
+   const row=document.createElement("div");row.className="script-audit-row";
+   const title=document.createElement("h4");title.textContent=edition.toUpperCase()+" · página "+item.page+" · locus candidato "+item.locus;
+   const note=document.createElement("p");note.textContent="Cobertura aproximada de fragmentos de tres palabras: "+Math.round(item.coverage*100)+"%. Aún requiere cotejo humano del texto y del folio.";
+   const link=document.createElement("a");link.href=edition==="krohn"?"documents/krohn-1912.pdf#page="+item.page:"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+item.page;
+   link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir página del facsímil ↗";
+   row.append(title,note,link);result.append(row);
+  }
+  status.textContent=alerts.length+" alertas OCR de "+edition+"; se muestran como máximo 100. Estos resultados no certifican diferencias editoriales.";
+  return;
+ }
  let items=audit.latinDiscrepancies.filter(p=>(!term||p.locus.toLowerCase().includes(term))&&(kind==="all"||kind===p.severity));
  items=items.sort((a,b)=>({missing:0,alert:1,moderate:2,near:3}[a.severity]??4)-({missing:0,alert:1,moderate:2,near:3}[b.severity]??4));
  const count=items.length;
