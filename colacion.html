@@ -49,22 +49,48 @@
 .coll-read-lupa .coll-readable{font-size:calc(var(--card-size,17px) + 5px)!important;line-height:1.9!important}
 .coll-underline{text-decoration:underline 2px var(--underline-ink,#c48a1b);text-underline-offset:3px}
 .coll-cardtools .coll-help{font-size:11px;opacity:.75}
+
+/* Apariencia Lexicon: panel académico de alto contraste. Los colores individuales siguen teniendo prioridad. */
+body.coll-lexicon{background:#111112;color:#e7e7e5}
+.coll-lexicon .site-header{background:#111112;border-bottom:1px solid #303034}
+.coll-lexicon .coll-main{max-width:1160px}
+.coll-lexicon .coll-eyebrow{color:#aaa;letter-spacing:.2em}
+.coll-lexicon .coll-main h1{font:italic 400 clamp(42px,6vw,76px)/1.06 Georgia,serif;letter-spacing:-.045em;color:#f0f0ee}
+.coll-lexicon .coll-main h2{font:400 clamp(25px,3vw,37px)/1.25 Georgia,serif;color:#ededeb}
+.coll-lexicon .coll-main>p:not(.coll-eyebrow){color:#aaa;line-height:1.75}
+.coll-lexicon #coll-form{border:1px solid #3b3b3e;border-radius:26px;background:#19191b;padding:8px 12px;gap:9px}
+.coll-lexicon #coll-form input{flex:1;min-width:150px;border:0;outline:0;background:transparent;color:#f1f1ef}
+.coll-lexicon #coll-form button,.coll-lexicon .coll-cardtools button,.coll-lexicon .coll-cardtools select{background:#222225;color:#ddd;border:1px solid #414144;border-radius:18px}
+.coll-lexicon #coll-form button:hover,.coll-lexicon .coll-cardtools button:hover{background:#333337}
+.coll-lexicon .coll-row,.coll-lexicon .coll-translation{border:1px solid #343438;border-radius:12px;background:var(--card-paper,#18181a);box-shadow:none}
+.coll-lexicon .coll-base{border-color:#55555a}
+.coll-lexicon .coll-row h3,.coll-lexicon .coll-translation h3{color:#a6a6aa;font:500 11px/1.5 Arial,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.coll-lexicon .coll-cite,.coll-lexicon .coll-meta,.coll-lexicon .coll-method,.coll-lexicon #coll-status{color:#aaa;opacity:1}
+.coll-lexicon .coll-readings{background:#202023;border-left:2px solid #89898e;border-radius:6px}
+.coll-lexicon .coll-cardtools{border-top:1px solid #343437;padding-top:10px}
+.coll-lexicon .coll-cardtools input[type=color]{border-color:#555}
+.coll-lexicon .coll-readbar-description{color:#999;font:12px/1.6 Arial,sans-serif}
+.coll-lexicon .coll-translation-grid,.coll-lexicon .coll-witnesses{gap:14px}
+.coll-lexicon .coll-main a{color:#c9c9cf;text-underline-offset:3px}
+.coll-lexicon .coll-main a:hover{color:#fff}
+.coll-lexicon .coll-text mark{background:#56565a;color:#fff}
+@media(max-width:640px){.coll-lexicon #coll-form{border-radius:14px}.coll-lexicon .coll-main{padding:16px 12px 60px}}
 </style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html"><meta name="citation_title" content="Colación por locus de De architectura: V514, Rose (1899) y Krohn (1912)"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html">
-<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body>
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body class="coll-lexicon">
 <header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="index.html"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a><nav aria-label="Navegación"><a href="index.html#buscar">Buscador de textos</a><a href="lector-bilingue.html">Lector bilingüe</a><a href="aparato-critico.html">Aparato crítico</a><a href="indices-locorum.html">Indices locorum</a></nav><button class="theme-switch" type="button">Oscuro</button></div></header>
 <main class="coll-main" id="contenido">
 <p class="coll-eyebrow">Instrumenta philologica · Collatio</p>
 <h1>Colación por locus</h1>
 <p>Para cada pasaje, el texto latino de la edición de Diego Kurilo (V514) frente a las ediciones críticas de Rose (1899) y Krohn (1912), con cuadros de texto y traducciones por locus, lecturas divergentes, aparato crítico y el folio correspondiente del Codex Harleianus. Se reutilizan las fuentes existentes, sin crear nuevos visores.</p>
 <form id="coll-form" role="search"><label for="coll-locus">Locus</label><input id="coll-locus" list="coll-list" placeholder="I.2.4 · 3.1.1 · 5.praef.1" autocomplete="off"><datalist id="coll-list"></datalist><button type="submit">Ir</button><button id="coll-prev" type="button" aria-label="Locus anterior">←</button><button id="coll-next" type="button" aria-label="Locus siguiente">→</button></form>
-<p id="coll-status" role="status">Cargando…</p>
+<p id="coll-status" role="status">Cargando…</p><p class="coll-readbar-description">Seleccioná un pasaje para subrayarlo. Cada cuadro conserva su propia tipografía, tamaño y colores.</p>
 <div id="coll-body" aria-live="polite"></div>
 </main>
 <script src="assets/codicological-query.js?v=20261105-cq-v1"></script>
 <script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-apparatus-v2"></script>
 <script src="assets/research-folder.js?v=20261105-v1"></script>
-<script src="assets/collation-page.js?v=20261106-cuadros-v2"></script>
+<script src="assets/collation-page.js?v=20261106-lexicon-v1"></script>
 <script src="assets/theme.js?v=20261105-merge-v1" defer></script>
 </body></html>
