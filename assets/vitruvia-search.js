@@ -527,7 +527,7 @@ function allowedFeaturedImage(){return false}
    Las palabras de tipo («libros de», «obras de», «banda de música», «book», «band»…) son pistas, no
    el tema; las palabras partidas por error («radio head») se comparan también unidas. */
 const FEATURE_STOP=new Set("de del la las el los lo un una unos unas y e o u en a al con por para sobre que the of and or a an in on for to by with le les des du et au aux dans sur pour par une un der die das und von zu im mit den dem".split(" "));
-const FEATURE_TYPE=new Set("libro libros obra obras book books work works livre livres oeuvre oeuvres buch bucher werk werke texto textos text texts escrito escritos tratado tratados banda bandas band bands grupo grupos group groups musica music musique musik musical cancion canciones song songs album albums disco discos pelicula peliculas film films movie movies serie series autor autores author authors biografia biography vida life historia history imagen imagenes image images foto fotos photo photos pintura pinturas painting cuadro edificio building ciudad city pueblo".split(" "));
+const FEATURE_TYPE=new Set("libro libros obra obras book books work works livre livres oeuvre oeuvres buch bucher werk werke texto textos text texts escrito escritos tratado tratados banda bandas band bands grupo grupos group groups musica music musique musik musical cancion canciones song songs album albums disco discos pelicula peliculas film films movie movies serie series autor autores author authors biografia biography vida life historia history imagen imagenes image images foto fotos photo photos pintura pinturas painting cuadro edificio building ciudad city pueblo politico politica político política militar general libertador libertadora emperor emperador emperatriz santo santa saint military politician politicos politicos president presidente estadista statesman revolucionario revolutionary".split(" "));
 function featureTokens(q){const all=norm(q).replace(/\./g," ").split(/\s+/).filter(t=>t&&!FEATURE_STOP.has(t));const core=all.filter(t=>!FEATURE_TYPE.has(t));return{core:core.length?core:all,typed:all.length!==core.length}}
 function featureCoverage(core,title,excerpt){
  const T=norm(title),X=norm(excerpt),Tc=T.replace(/\s+/g,""),Xc=X.replace(/\s+/g,"");let cov=0,inTitle=0;const done=new Set();
@@ -1098,9 +1098,9 @@ async function search(){
     type:"wikipedia",title:identity.canonical,author:"Wikipedia · "+identity.language.toUpperCase(),
     excerpt:identity.description,fullExtract:identity.extract,
     meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
-    rating:280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
+    rating:identity.kind==="person"?(Number.isFinite(identity.birthYear)&&identity.birthYear<1900?5200:2100):280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
     pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityBirthYear:identity.birthYear,
-    entityInceptionYear:identity.inceptionYear,entityPublicationYear:identity.publicationYear,entityDescription:identity.authorityDescription||identity.description,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
+    entityInceptionYear:identity.inceptionYear,entityPublicationYear:identity.publicationYear,entityDescription:identity.authorityDescription||identity.description,entityHistorical:identity.kind==="person"&&Number.isFinite(identity.birthYear)&&identity.birthYear<1900,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
    }],identity};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
