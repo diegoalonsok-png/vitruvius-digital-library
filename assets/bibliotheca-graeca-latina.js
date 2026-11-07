@@ -654,7 +654,7 @@ if(tab==="study"&&hasStudyPair(w)){
    }
    return {input:q,concept,corrected};
   }
-  let searchContext=null;
+  let searchContext=null,searchLocus="";
   function searchWords(language){
    if(!searchContext)return [];
    return searchContext.concept?.[language]||[searchContext.input];
@@ -728,7 +728,7 @@ if(tab==="study"&&hasStudyPair(w)){
   }
   for(const [side,options] of [[0,originals],[1,translations]]){
    const col=document.createElement("section");col.className="classic-fast-text-pane";
-   col.style.cssText="min-width:0;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #bba98c;background:#fffdf8;color:#203548";grid.append(col);
+   col.style.cssText="min-width:0;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #7e6b54;background:#000;color:#f3f3f3";grid.append(col);
    const title=document.createElement("h3");title.textContent=side?"02 · Traducción":"01 · Texto original";col.append(title);
    const language=document.createElement("select");language.setAttribute("aria-label",side?"Idioma de traducción":"Lengua original");
    for(const [lang] of options){const opt=document.createElement("option");opt.value=lang;opt.textContent=labels[lang];language.append(opt)}
@@ -737,18 +737,25 @@ if(tab==="study"&&hasStudyPair(w)){
    const chapter=document.createElement("select");chapter.setAttribute("aria-label","Seleccionar locus");chapter.style.cssText="flex:1;min-width:0";
    const following=document.createElement("button");following.type="button";following.textContent="→";
    row.append(previous,chapter,following);
-   const query=document.createElement("input");query.type="search";query.placeholder="Buscar en este idioma";query.setAttribute("aria-label","Buscar término en el texto");
+   const query=document.createElement("input");query.type="search";query.placeholder="Buscar en los 404 loci; Enter";query.setAttribute("aria-label","Buscar término en el texto");
+   const searchButton=document.createElement("button");searchButton.type="button";searchButton.textContent="Buscar en ambos textos";
+   searchButton.title="Buscar en el texto y resaltar el locus en ambas columnas";
+   searchButton.style.cssText="min-height:38px;padding:7px 12px;cursor:pointer;background:#263c4d;color:#fff;border:1px solid #b49a71;border-radius:4px";
+   const searchRow=document.createElement("div");searchRow.style.cssText="display:flex;gap:7px;flex-wrap:wrap";
+   query.style.flex="1 1 180px";searchRow.append(query,searchButton);
+   const searchResults=document.createElement("div");searchResults.className="classic-inline-search-results";
+   searchResults.style.cssText="display:flex;gap:6px;flex-wrap:wrap;max-height:160px;overflow:auto";
    const message=document.createElement("p");message.setAttribute("role","status");message.style.cssText="font:12px system-ui;margin:0";
    const text=document.createElement("div");text.style.cssText="min-height:320px;max-height:65vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:19px/1.7 Georgia,serif;padding:12px;border:1px solid #e1d6c4";
    const source=document.createElement("small");const link=document.createElement("a");link.textContent="Abrir lector completo ↗";link.target="_blank";link.rel="noopener noreferrer";
-   col.append(language,row,query,message,text,source,link);
-   const state={options,language,previous,chapter,following,query,message,text,source,link,index:0,data:null,token:0};states.push(state);
+   col.append(language,row,searchRow,message,searchResults,text,source,link);
+   const state={options,language,previous,chapter,following,query,searchButton,searchResults,message,text,source,link,index:0,data:null,token:0};states.push(state);
    state.tools=window.ClassicsStudyTools?.attach({
     work:w.id,side,root:text,column:col,
     getLanguage:()=>language.value,
     getLocus:()=>state.data?.passages[state.index]?.locus||"",
     getSourceText:()=>state.data?.passages[state.index]?.text||"",
-    getSearchTerms:()=>searchWords(language.value)
+    getSearchTerms:()=>!searchLocus||key(state.data?.passages[state.index]?.locus)!==searchLocus?[]:searchWords(language.value)
    });
    language.addEventListener("change",()=>{step=0;change(side)});
    chapter.addEventListener("change",()=>{draw(side,Number(chapter.value)||0);if(side===0){step=Number(chapter.value)||0;if(checkbox.checked)navigate()}});
@@ -757,27 +764,33 @@ if(tab==="study"&&hasStudyPair(w)){
    function runLinkedSearch(){
     const q=query.value.trim();if(!q||!state.data)return;
     searchContext=resolveSearch(q);
-    const index=state.data.passages.findIndex(p=>passageHit(p,language.value));
-    if(index<0){state.message.textContent="No se encontró «"+q+"» en esta versión. No se inventan equivalencias.";return}
-    if(checkbox.checked&&states[0]?.data&&states[1]?.data){
-     const targetLocus=key(state.data.passages[index].locus);
-     const original=states[0].data.passages;
-     const originalIndex=original.findIndex(p=>key(p.locus)===targetLocus);
-     if(originalIndex>=0){step=originalIndex;navigate();}
-     else{
-      draw(side,index);
-      states[1-side].tools?.render();
-      progress.textContent="Sin locus equivalente exacto: el otro panel no se ha desplazado";
-     }
-    }else{
-     draw(side,index);
-     states[1-side]?.tools?.render();
+    const found=state.data.passages.map((p,i)=>({p,i})).filter(({p})=>passageHit(p,language.value));
+    state.searchResults.replaceChildren();
+    if(!found.length){
+     searchLocus="";states.forEach(x=>x.tools?.render());
+     state.message.textContent="Sin coincidencias para «"+q+"» en la edición seleccionada. Probá otra grafía o un equivalente.";
+     return;
     }
-    const correction=searchContext.corrected?" · interpretado como «"+searchContext.corrected+"»":"";
-    state.message.textContent+=" · búsqueda sincronizada"+correction;
+    function open(index){
+     const entry=state.data.passages[index];searchLocus=key(entry.locus);
+     if(checkbox.checked&&states[0]?.data&&states[1]?.data){
+      const origIndex=states[0].data.passages.findIndex(p=>key(p.locus)===searchLocus);
+      if(origIndex>=0){step=origIndex;navigate();}
+      else{draw(side,index);states[1-side].tools?.render();progress.textContent="No existe el mismo locus en el original: alineación manual";}
+     }else{draw(side,index);states[1-side]?.tools?.render()}
+    }
+    found.forEach(({p,i})=>{
+     const btn=document.createElement("button");btn.type="button";btn.textContent=p.locus;
+     btn.title="Abrir el pasaje "+p.locus+" en los dos visores";
+     btn.style.cssText="padding:5px 9px;border:1px solid #a98c61;border-radius:3px;background:#152837;color:#fff;cursor:pointer";
+     btn.addEventListener("click",()=>open(i));state.searchResults.append(btn);
+    });
+    open(found[0].i);
+    state.message.textContent=found.length+" loci encontrados · búsqueda sincronizada"+(searchContext.corrected?" · corrección propuesta: «"+searchContext.corrected+"»":"")+".";
    }
+   searchButton.addEventListener("click",runLinkedSearch);
    query.addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();runLinkedSearch()}});
-   query.addEventListener("input",()=>{if(!query.value.trim()){searchContext=null;states.forEach(x=>x.tools?.render());}});
+   query.addEventListener("input",()=>{if(!query.value.trim()){searchContext=null;searchLocus="";state.searchResults.replaceChildren();states.forEach(x=>x.tools?.render())}});
 
   }
   begin.addEventListener("click",()=>{step=0;navigate()});
