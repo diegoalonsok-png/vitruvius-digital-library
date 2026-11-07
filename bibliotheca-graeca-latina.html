@@ -352,6 +352,29 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
 @media(max-width:700px){.classic-view-colorbar{gap:9px;padding:10px}.classic-view-colorbar label{flex:1 1 140px}}
 @media print{.classic-view-colorbar{display:none!important}}
 
+
+/* Shared codicological dossier: evidence first, genealogical uncertainty explicit. */
+.classic-transmission{margin:20px 0 24px;padding:20px;border:1px solid #a8a099;border-left:5px solid #8e6b35;background:#fbf8f0;color:#283d4b;scroll-margin-top:65px}
+.classic-transmission h3{font-size:clamp(19px,2.2vw,28px);margin:0 0 12px}
+.classic-transmission h4{font:600 17px/1.4 Georgia,serif;margin:20px 0 9px}
+.classic-transmission-method{font-size:13px;color:#5a5960;line-height:1.55}
+.classic-transmission-fields{display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr);gap:5px 15px;margin:14px 0;font-size:13px}
+.classic-transmission-fields dt{font-weight:700;color:#46505e}
+.classic-transmission-fields dd{margin:0;overflow-wrap:anywhere}
+.classic-earliest-witness{margin:22px 0;padding:18px;background:#e9dec8;border:2px solid #987845}
+.classic-earliest-title{display:block;font:700 15px/1.45 system-ui,sans-serif;letter-spacing:.025em;color:#312e2b}
+.classic-earliest-witness p{font-size:16px;line-height:1.5;margin:8px 0 13px}
+.classic-oldest-link{display:inline-block;font:700 14px system-ui,sans-serif;background:#25465b;color:white!important;text-decoration:none;padding:10px 14px;border-radius:4px;margin-bottom:8px}
+.classic-earliest-witness small{display:block;font-size:12px;color:#4b4641;line-height:1.45}
+.classic-witness-tree{padding:13px 18px;border:1px solid #c8beae;background:#fffdf8}
+.classic-witness-root{display:inline-block;border:1px solid #827660;background:#eae4d9;padding:9px 12px;font:650 14px system-ui,sans-serif}
+.classic-witness-branches{list-style:none;margin:6px 0 0 18px;padding:8px 0 0 18px;border-left:2px solid #ab9678}
+.classic-witness-branches li{position:relative;margin:0 0 12px;padding:9px 10px;background:#f2eee6;border:1px solid #dad0bd;font-size:13px}
+.classic-witness-branches li:before{content:"";position:absolute;top:18px;left:-18px;width:18px;border-top:2px solid #ab9678}
+.classic-witness-branches li small{display:block;font-size:11px;color:#595b5f;margin-top:4px}
+.classic-transmission-history{font-size:13px;line-height:1.6}
+.classic-transmission a:focus-visible{outline:3px solid #c28c45;outline-offset:3px}
+@media(max-width:700px){.classic-transmission{padding:14px}.classic-transmission-fields{grid-template-columns:1fr;gap:3px}.classic-transmission-fields dd{margin:0 0 9px}.classic-earliest-witness{padding:14px}}
 </style>
 <link rel="stylesheet" href="assets/bibliotheca-monochrome.css?v=20261106-unified-index-v2">
 <link rel="stylesheet" href="assets/vitruvia-paragraph-magnifier.css?v=20261104-paragraph-loupe-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
@@ -359,7 +382,7 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 </head><body>
 <main class="classic-main">
-<nav class="classic-menu"><a href="index.html" data-bi="nav-home">← Vitruvius Digital Library</a><a href="ediciones-historicas.html" data-bi="nav-editions">Ediciones históricas</a><a href="index-codicum.html">Index codicum</a><a href="auditoria-textos-clasicos.html">Cobertura de textos</a><a href="vitruvia.html">Buscador Vitruvia</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="lector-clasico.html">Lector clásico · códice y traducción</a><a href="docencia-clasica.html">Aula interdisciplinaria</a><a href="como-citar.html" data-bi="nav-cite">Cómo citar</a><a href="https://scaife.perseus.org/library/" rel="noopener noreferrer" target="_blank">Scaife · Perseus ↗</a><label class="classic-top-language" for="classic-ui-language"><span aria-hidden="true">🌐</span><span data-bi="lang-label">Idiomas</span><select id="classic-ui-language" aria-label="Idioma de la interfaz"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label></nav>
+<nav class="classic-menu"><a href="index.html" data-bi="nav-home">← Vitruvius Digital Library</a><a href="ediciones-historicas.html" data-bi="nav-editions">Ediciones históricas</a><a href="index-codicum.html">Index codicum</a><a href="auditoria-textos-clasicos.html">Cobertura de textos</a><a href="#tradicion-textual">Historia del texto y códices</a><a href="vitruvia.html">Buscador Vitruvia</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="lector-clasico.html">Lector clásico · códice y traducción</a><a href="docencia-clasica.html">Aula interdisciplinaria</a><a href="como-citar.html" data-bi="nav-cite">Cómo citar</a><a href="https://scaife.perseus.org/library/" rel="noopener noreferrer" target="_blank">Scaife · Perseus ↗</a><label class="classic-top-language" for="classic-ui-language"><span aria-hidden="true">🌐</span><span data-bi="lang-label">Idiomas</span><select id="classic-ui-language" aria-label="Idioma de la interfaz"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label></nav>
 <details class="classic-sigla-guide" style="font:13px/1.65 system-ui,sans-serif;margin:12px auto 20px;max-width:1100px;border-top:1px solid var(--line,#999);padding:10px 0">
 <summary style="cursor:pointer">Glosario de siglas · manuscritos y ediciones históricas</summary>
 <p>Las siglas identifican testimonios y ediciones en una referencia concreta; verificar siempre la signatura y el aparato del autor consultado. <abbr title="Harley MS 2767, British Library: testimonio manuscrito">H</abbr> · <abbr title="Sigla de testimonio manuscrito en determinados aparatos; confirmar signatura en cada edición">G</abbr> · <abbr title="Sigla de testimonio manuscrito según aparato consultado; no es universal">E</abbr> · <abbr title="Sigla editorial de manuscrito: resolver contra el índice de códices">S</abbr>. Impresos: <abbr title="Giovanni Sulpizio, edición príncipe, ca. 1486–1487">Sulp.</abbr> · <abbr title="Fra Giovanni Giocondo, edición de 1511">Iuc.</abbr> · <abbr title="Cesare Cesariano, edición de 1521">Caes.</abbr> · <abbr title="Daniele Barbaro, edición de 1567">Barb.</abbr>.</p>
