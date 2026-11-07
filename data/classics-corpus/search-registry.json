@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 43,
-  "works": 20,
+  "count": 46,
+  "works": 22,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -284,6 +284,36 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sallust-catiline-la.json",
+      "reader": "classics-text-reader.html?work=sallust-catiline&lang=la",
+      "sourceDescription": "PerseusDL, edición TEI bajo CC BY-SA 4.0; división por capítulos, no OCR ni alineación frase a frase."
+    },
+    {
+      "workId": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sallust-iugurtha-en.json",
+      "reader": "classics-text-reader.html?work=sallust-iugurtha&lang=en",
+      "sourceDescription": "PerseusDL, edición TEI bajo CC BY-SA 4.0; división por capítulos, no OCR ni alineación frase a frase."
+    },
+    {
+      "workId": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sallust-iugurtha-la.json",
+      "reader": "classics-text-reader.html?work=sallust-iugurtha&lang=la",
+      "sourceDescription": "PerseusDL, edición TEI bajo CC BY-SA 4.0; división por capítulos, no OCR ni alineación frase a frase."
     },
     {
       "workId": "seneca-de-brevitate",
