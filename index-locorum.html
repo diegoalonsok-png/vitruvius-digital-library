@@ -1,128 +1,118 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Index locorum · Bibliotheca Graeca et Latina</title>
-<meta name="description" content="Índice locorum semántico por obra, edición, idioma y concepto documentado de la Bibliotheca Graeca et Latina.">
-<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css">
+<title>Index locorum · Vitruvia</title>
+<meta name="description" content="Concordancia de pasajes clásicos. Busca términos latinos, griegos, transliteraciones y conceptos documentados.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/index-locorum.html">
 <style>
-main{max-width:1480px;margin:auto;padding:25px clamp(14px,3vw,40px) 90px;color:var(--ink,#243849)}
-h1,h2{font-family:Georgia,serif}h1{font-size:clamp(32px,4vw,48px)}
-.intro{max-width:1050px;line-height:1.7}.panel{background:var(--surface,#fffdf7);color:var(--ink,#26394a);border:1px solid #bba88a;padding:18px;margin:18px 0}
-.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px}
-.controls label{display:grid;gap:6px;font:650 13px system-ui}.controls select,.controls input{padding:11px;width:100%;font:15px system-ui;color:#1b3549;background:white;border:1px solid #a69678}
-#summary{font:14px/1.7 system-ui;overflow-wrap:anywhere}#results{display:grid;gap:14px}
-.entry{border:1px solid #baa78a;padding:15px;background:var(--surface,#fffdf7);color:var(--ink,#243849)}
-.entry h2{font-size:23px;margin:0 0 6px}.entry p{font:13px/1.6 system-ui;margin:6px 0}
-.locilist{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 0;padding:0;list-style:none;max-height:330px;overflow:auto}
-.locilist a{display:inline-block;border:1px solid #bba88a;border-radius:3px;padding:6px 9px;color:inherit;text-decoration:none;font:13px system-ui}
-.locilist a:hover,.locilist a:focus{background:#ead9b7;color:#152a3b}
-.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font:13px system-ui}.links a{color:inherit;text-decoration:underline}
-small,.muted{opacity:.8}#more{margin:18px 0;padding:10px 16px;cursor:pointer;border:1px solid #a38a65;background:#233d51;color:#fff}
-html[data-theme=dark] .panel,html[data-theme=dark] .entry{background:#23384a;color:#f8f0e5;border-color:#806f5a}
-</style><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="assets/critical-note-bridge.css?v=20261107-v1">
-<style id="index-locorum-vitruvia-ui">
-/* Misma identidad visual del buscador Vitruvia: negro neutro, gris y blanco. */
-:root{color-scheme:dark}
-html,body{background:#0d0d0e!important;color:#e9e9e7!important}
-main{max-width:1580px;margin:auto;padding:30px clamp(18px,3vw,48px) 100px!important;color:#e9e9e7!important;font:15px/1.65 Arial,Helvetica,system-ui,sans-serif}
-main h1{font:italic 400 clamp(36px,5vw,64px)/1.12 Georgia,serif;letter-spacing:-.055em;color:#f2f2f2;margin:22px 0}
-main h2{font:400 24px/1.3 Georgia,serif;color:#f0f0f0}
-main a{color:#e8e8e8}
-main .intro{color:#aaa;max-width:1100px}
-main .panel,main .entry,html[data-theme=dark] main .panel,html[data-theme=dark] main .entry{background:#171719!important;border:1px solid #39393d!important;color:#e9e9e9!important;border-radius:13px;box-shadow:none;padding:20px}
-main .controls{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
-main .controls label{font:500 13px/1.5 system-ui;color:#bdbdc0}
-main .controls select,main .controls input{border:1px solid #55565c;background:#252528;color:#fff;border-radius:9px;min-height:46px;font:15px system-ui;padding:11px 13px;box-sizing:border-box}
-main .controls input:focus-visible,main .controls select:focus-visible,main button:focus-visible,main a:focus-visible{outline:2px solid #ddd;outline-offset:2px}
-main button,main #more,main #export-tsv,main #literal-search{font:500 14px system-ui;background:#29292d!important;color:#eee!important;border:1px solid #606064!important;border-radius:9px!important;min-height:42px;padding:10px 16px;cursor:pointer}
-main button:hover,main .locilist a:hover{background:#3a3a40!important;color:white!important}
-main button:disabled{opacity:.55;cursor:wait}
-main .locilist a{border:1px solid #49494c;border-radius:7px;background:#242426;color:#eee}
-main .entry{margin:0}
-main .entry p,main .entry blockquote{font:14px/1.7 system-ui}
-main .entry .passage-meta{color:#aaa;margin:8px 0}
-main .entry .passage-quote{border-left:3px solid #78787e;background:#222225;border-radius:0 7px 7px 0;padding:12px 15px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-main .passage-card h2 a{text-decoration:none}
-main .passage-card h2 a:hover{text-decoration:underline}
-main #literal-results{grid-template-columns:repeat(auto-fit,minmax(min(100%,410px),1fr));align-items:start}
-main #literal-panel{border-color:#626268!important}
-main #literal-status,main #summary{color:#c6c6c8}
-@media(max-width:750px){main .panel,main .entry{padding:14px!important}main #literal-results{grid-template-columns:1fr}main .controls{grid-template-columns:1fr}}
-</style><style id="locorum-interactive-editions">
-main #literal-results{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
-main #literal-results>.edition-group{background:#101012;color:#eee;border:1px solid #39393d;border-radius:12px;overflow:hidden;min-width:0}
-main .edition-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 21px;font:15px/1.5 system-ui,sans-serif}
-main .edition-group>summary::-webkit-details-marker{display:none}
-main .edition-group>summary::after{content:"▾";font-size:20px;color:#aaa}
-main .edition-group[open]>summary::after{transform:rotate(180deg)}
-main .edition-group>summary strong{color:#eee;font-weight:650}
-main .edition-group>summary span{font-size:13px;color:#b7b7b9}
-main .edition-group[open]>summary{border-bottom:1px solid #37373a}
-main .edition-passages{padding:12px;display:grid;gap:10px}
-main .passage-unit{--unit-bg:#101012;--unit-ink:#f2f2f2;background:var(--unit-bg);color:var(--unit-ink);border:1px solid #474747;border-radius:9px;padding:16px;min-width:0}
-main .passage-unit-heading{display:flex;gap:15px;align-items:center;flex-wrap:wrap;font:13px/1.5 system-ui}
-main .passage-unit-heading span{opacity:.8}
-main .passage-quote{color:inherit!important;background:transparent!important;line-height:1.85!important}
-main .passage-quote mark{background:#ffdf75;color:#171717;border-radius:3px;padding:1px 2px}
-main .passage-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-main .passage-actions button,main .passage-actions a{padding:8px 12px;background:#252528;color:#f2f2f2;border:1px solid #5d5d60;border-radius:8px;text-decoration:none;font:13px/1.4 system-ui;cursor:pointer}
-main .passage-actions label{display:inline-flex;align-items:center;gap:7px;font:13px system-ui}
-main .passage-actions input[type=color]{height:33px;width:42px;padding:2px;border:1px solid #646464;border-radius:7px;background:#272729;cursor:pointer}
-main .passage-word{display:inline;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer;border-bottom:1px dotted #aaa;min-height:0}
-main .passage-word:hover{background:#454545;border-radius:3px}
-main .passage-word:focus-visible{outline:2px solid #ddd}
-main .passage-word mark{pointer-events:none}
-main #locorum-word-dialog{border:1px solid #777;border-radius:14px;background:#171719;color:#eee;padding:22px;width:min(510px,90vw);max-height:80vh;overflow:auto;box-shadow:0 20px 80px #000a}
-main #locorum-word-dialog::backdrop{background:#000b}
-main #locorum-word-dialog h2{margin:6px 0 12px;font:italic 32px Georgia,serif}
-main #locorum-word-dialog .links{margin-top:18px}
-main .locorum-language{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0;font:13px system-ui}
-main .locorum-language select{background:#252528;color:#eee;border:1px solid #5c5c60;border-radius:8px;padding:9px;min-width:120px}
-@media(max-width:700px){main .edition-group>summary{padding:12px}main .edition-passages{padding:8px}main .passage-unit{padding:11px}}
-</style><style id="locorum-strict-black">
-/* Prioridad sobre theme.css, estilos heredados y paneles agregados dinámicamente. */
-html body,html[data-theme] body,body main,body main .panel,body main .entry,
-body main #literal-panel,body main #academic-coverage,body main #summary,
-body main #results .entry,body main #literal-results .edition-group,
-body main #literal-results .passage-unit,body main .locorum-works-overview{
- background:#0d0d0e!important;color:#f0f0f0!important;border-color:#404045!important;box-shadow:none!important;
+:root{color-scheme:dark;font-family:Arial,Helvetica,system-ui,sans-serif;background:#0d0d0e;color:#e8e8e9}
+*{box-sizing:border-box}body{margin:0;background:#0d0d0e;color:#e8e8e9;font:15px/1.65 Arial,Helvetica,sans-serif}
+a{color:inherit}button,select,input{font:inherit}button,a,select,input{touch-action:manipulation}
+.site{max-width:1460px;padding:0 30px;margin:auto}header{border-bottom:1px solid #323236;background:#0d0d0e}
+.top{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:82px;flex-wrap:wrap}
+.brand{font:italic 29px Georgia,serif;letter-spacing:-.06em;text-decoration:none;color:#fff}.brand small{font:12px/1.4 system-ui;letter-spacing:.11em;color:#aaa;margin-left:12px}
+nav{display:flex;align-items:center;gap:17px;flex-wrap:wrap;font-size:13px;color:#bbb}nav a{text-decoration:none}nav a:hover{color:#fff}
+main{padding-top:38px!important;padding-bottom:100px!important}h1{font:italic clamp(40px,5vw,70px)/1.08 Georgia,serif;letter-spacing:-.055em;margin:0 0 10px;color:#f7f7f7}
+.subtitle{color:#aeaeaf;max-width:960px;margin:0 0 28px;line-height:1.7}
+.toolbar{display:grid;grid-template-columns:minmax(240px,2.5fr) minmax(150px,1fr) minmax(140px,1fr) auto;align-items:end;gap:12px;padding:18px;background:#171719;border:1px solid #3a3a3e;border-radius:12px}
+label{display:grid;gap:7px;font-size:12px;color:#bdbdbf;font-weight:600}
+input[type=search],select{background:#242427;border:1px solid #57575a;color:#f8f8f8;border-radius:8px;padding:12px 13px;min-width:0;width:100%;min-height:48px}
+input::placeholder{color:#858589}.button,.actions a,.actions button,.chips button{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;cursor:pointer;border:1px solid #58585d;background:#2a2a2e;color:#f5f5f5;border-radius:8px;padding:11px 15px;min-height:45px;font:500 13px system-ui}
+.button:hover,.actions a:hover,.actions button:hover,.chips button:hover{background:#3a3a40}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #e6e6e8;outline-offset:2px}
+.checkline{display:flex;gap:9px;align-items:center;margin:14px 0 4px;color:#bbb;font:13px system-ui}.checkline input{accent-color:#aaa;width:17px;height:17px}
+.meta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:22px 0;color:#aaa;font-size:13px}
+#status{color:#ddd}#coverage{font-size:12px;color:#9e9ea0}
+h2{font:normal 26px Georgia,serif;margin:0 0 12px}.results{display:grid;gap:12px}
+.overview{background:#151517;border:1px solid #3c3c40;border-radius:12px;padding:21px}
+.chips{display:flex;gap:9px;flex-wrap:wrap}.chips button{justify-content:flex-start;text-align:left}
+.edition{background:#111113;border:1px solid #3b3b3f;border-radius:11px;overflow:hidden}
+.edition summary{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;padding:17px 20px;cursor:pointer;list-style:none}
+.edition summary::-webkit-details-marker{display:none}.edition summary::after{content:"⌄";font-size:20px;color:#aaa}.edition[open] summary::after{content:"⌃"}
+.edition summary:hover{background:#1e1e21}.edition summary strong{font-size:15px;font-weight:600}.edition summary span{font-size:13px;color:#adadaf}
+.passage-list{border-top:1px solid #38383b;padding:12px;display:grid;gap:10px}
+.passage{--panel:#121214;--ink:#eee;background:var(--panel);color:var(--ink);border:1px solid #49494b;border-radius:9px;padding:16px}
+.passmeta{font-size:12px;opacity:.8;margin:0 0 10px}.excerpt{border-left:3px solid #666;padding:10px 14px;margin:8px 0 16px;font:17px/1.85 Georgia,serif;overflow-wrap:anywhere}
+.word{font:inherit;color:inherit;border:0;border-bottom:1px dotted #8c8c8c;background:transparent;cursor:pointer;padding:0 1px}.word.hit{background:#ffe083;color:#111;border-radius:2px;border-bottom:0}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.color{display:inline-flex;align-items:center;gap:7px;font-size:12px}.color input{width:45px;height:37px;background:#222;border:1px solid #555;border-radius:6px}
+.empty,.notice{padding:20px;background:#161618;border:1px solid #39393e;border-radius:10px;color:#bdbdc0}
+.notice{padding:12px 16px;font-size:13px}.method{border-top:1px solid #333;margin-top:35px;padding-top:18px;color:#999;font-size:13px;max-width:1100px}
+dialog{width:min(600px,94vw);max-height:83vh;overflow:auto;background:#171719;color:#eee;border:1px solid #6d6d70;border-radius:14px;padding:25px;box-shadow:0 20px 80px #0009}dialog::backdrop{background:#000b}
+dialog h2{font:italic 38px Georgia,serif}.definition{padding:12px 0;border-top:1px solid #444;line-height:1.6}.definition p{margin:7px 0}
+@media(max-width:880px){.toolbar{grid-template-columns:1fr 1fr}.querybox{grid-column:1/-1}.site{padding:0 16px}main{padding-top:25px!important}}
+@media(max-width:520px){.toolbar{grid-template-columns:1fr}.querybox{grid-column:1}.edition summary{padding:13px}.passage{padding:12px}h1{font-size:42px}}
+@media print{header,.toolbar,.meta,.overview,.actions,.method{display:none!important}body,:root{background:#fff!important;color:#111!important}.edition,.passage{color:#111;border-color:#bbb;break-inside:avoid}.edition{display:block}.passage-list{display:block}.excerpt{color:#111}.word{color:#111}}
+</style>
+<script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
+<script defer src="assets/classics-corpus-search.js?v=20261107-rebuild-v1"></script>
+</head><body>
+<header><div class="site top"><a class="brand" href="vitruvia.html">Vitruvia <small>INDEX LOCORUM</small></a><nav><a href="vitruvia.html">Buscador</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="index.html">Biblioteca</a></nav></div></header>
+<main class="site">
+<h1>Index locorum</h1>
+<p class="subtitle">Buscador de pasajes de textos clásicos griegos y latinos, versiones y traducciones disponibles. Probá <strong>logos</strong>, <strong>λόγος</strong>, <strong>domus</strong> o <strong>casa</strong>. Los resultados se agrupan por obra y edición.</p>
+<form id="form" class="toolbar">
+<label class="querybox"><span>Palabra, transliteración o concepto</span><input id="query" type="search" placeholder="logos · λόγος · domus · casa" autocomplete="off" spellcheck="false"></label>
+<label><span>Obra</span><select id="work"><option value="">Todas las obras</option></select></label>
+<label><span>Idioma del texto</span><select id="lang"><option value="">Todos los idiomas</option></select></label>
+<button class="button" id="go" type="submit">Buscar pasajes</button>
+</form>
+<label class="checkline"><input type="checkbox" id="equiv" checked> Ampliar mediante equivalencias documentadas en Conceptus (sin presumir traducción alineada)</label>
+<div class="meta"><span id="status" role="status" aria-live="polite">Preparando buscador…</span><span id="coverage"></span></div>
+<section id="results" class="results" aria-label="Obras y loci"></section>
+<p class="method">Metodología: se presentan únicamente pasajes recuperados de transcripciones indexadas y alojadas. La búsqueda reconoce algunas transliteraciones y flexiones griegas documentadas; no constituye una lematización universal. Los textos no indexados no se declaran ausentes y los pasajes de ediciones distintas no se consideran automáticamente alineados.</p>
+<dialog id="dictionary" aria-label="Estudio léxico"></dialog>
+</main>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id),langs={la:"Latín",grc:"Griego",es:"Castellano",en:"Inglés",fr:"Francés",de:"Alemán",it:"Italiano",pt:"Portugués"};
+const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");
+const forms={logos:["λόγος","λόγου","λόγον","λόγῳ","λόγοι","λόγων","λόγοις","λόγους"],oikos:["οἶκος","οἴκου","οἶκον","οἴκῳ","οἶκοι","οἴκων","οἴκοις","οἴκους"],techne:["τέχνη","τέχνης","τέχνῃ","τέχνην","τέχναι","τεχνῶν"],physis:["φύσις","φύσεως","φύσει","φύσιν"],polis:["πόλις","πόλεως","πόλει","πόλιν","πόλεις","πόλεων"],anthropos:["ἄνθρωπος","ἀνθρώπου","ἄνθρωπον","ἀνθρώπῳ","ἄνθρωποι","ἀνθρώπων"],topos:["τόπος","τόπου","τόπον","τόπῳ","τόποι","τόπων","τόπους"]};
+let index=[],concepts=[],serial=0,timer=null;
+function el(tag,cls,content){const n=document.createElement(tag);if(cls)n.className=cls;if(content!==undefined)n.textContent=String(content);return n}
+function btn(label,callback){const b=el("button","button",label);b.type="button";b.addEventListener("click",callback);return b}
+function link(href,label){const a=el("a",null,label);a.href=href;a.className="ui-button";return a}
+function roman(s){return fold(s).replace(/ου/g,"ou").replace(/αι/g,"ai").replace(/ει/g,"ei").replace(/οι/g,"oi").replace(/θ/g,"th").replace(/φ/g,"ph").replace(/χ/g,"ch").replace(/ψ/g,"ps").replace(/ξ/g,"x").replace(/υ/g,"y").replace(/[α-ω]/g,c=>({α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",ω:"o"}[c]||c))}
+function associated(q){return concepts.filter(c=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(v=>typeof v==="string"&&(fold(v)===fold(q)||roman(v)===fold(q))))}
+function expansions(q){const out=new Set([q]),related=associated(q);for(const x of forms[fold(q)]||[])out.add(x);
+ for(const c of related){for(const x of c.grc||[])if(roman(x)===fold(q))out.add(x);
+ if($("equiv").checked){for(const lang of ["la","grc"])for(const x of c[lang]||[])if(typeof x==="string")out.add(x);
+ for(const values of Object.values(c.modern||{}))for(const x of values)if(typeof x==="string")out.add(x)}}
+ return {terms:[...out].slice(0,18),related};}
+function lexical(word){const dlg=$("dictionary");dlg.replaceChildren(el("p",null,"Estudio filológico"),el("h2",null,word));
+ const found=associated(word);if(!found.length)dlg.append(el("p",null,"No hay ficha documentada para esta forma en Conceptus. Podés ampliar la búsqueda en Lexicon."));
+ for(const c of found.slice(0,5)){const box=el("section","definition");box.append(el("strong",null,c.id),el("p",null,"Latín: "+(c.la||[]).join(", ")+" · Griego: "+(c.grc||[]).join(", ")),el("p",null,Object.values(c.modern||{}).flat().join(" · ")));if(c.note)box.append(el("p",null,c.note));dlg.append(box)}
+ const actions=el("div","actions");actions.append(link("vitruvia-lexicon.html?q="+encodeURIComponent(word),"Estudiar en Lexicon"),btn("Cerrar",()=>dlg.close()));dlg.append(actions);dlg.showModal()}
+function words(where,text,term){let offset=0;for(const match of String(text).matchAll(/[\p{L}\p{M}]+/gu)){where.append(document.createTextNode(text.slice(offset,match.index)));const b=el("button","word",match[0]);b.type="button";if(fold(match[0])===fold(term))b.classList.add("hit");b.addEventListener("click",()=>lexical(match[0]));where.append(b);offset=match.index+match[0].length}where.append(document.createTextNode(text.slice(offset)))}
+function printPassage(r){const w=window.open("","_blank","width=850,height=700");if(!w){$("status").textContent="Habilitá las ventanas emergentes para imprimir.";return}const d=w.document;d.title=r.author+" · "+r.title;const style=d.createElement("style");style.textContent="@page{size:A4;margin:20mm}body{font:17px/1.65 Georgia,serif}blockquote{border-left:3px solid #aaa;padding:15px}";d.head.append(style);d.body.append(el("h1",null,r.author+" · "+r.title),el("p",null,(langs[r.language]||r.language)+" · "+r.locus),el("blockquote",null,r.excerpt),el("small",null,new URL(r.link,location.href).href));w.focus();w.print()}
+function email(r){location.href="mailto:?subject="+encodeURIComponent(r.author+" · "+r.title+" · "+r.locus)+"&body="+encodeURIComponent(r.excerpt+"\n\n"+new URL(r.link,location.href).href)}
+function passage(r){const card=el("article","passage");card.append(el("p","passmeta",(r.ocr?"Página OCR ":"Locus ")+r.locus+" · "+(r.hitsInPassage||1)+" apariciones · forma "+r.term));const quote=el("blockquote","excerpt");words(quote,r.excerpt,r.term);card.append(quote);
+ const actions=el("div","actions"),label=el("label","color","Fondo"),picker=document.createElement("input");picker.type="color";picker.value="#121214";picker.addEventListener("input",()=>{card.style.setProperty("--panel",picker.value);const z=[1,3,5].map(i=>parseInt(picker.value.slice(i,i+2),16));card.style.setProperty("--ink",(.2126*z[0]+.7152*z[1]+.0722*z[2])>145?"#111":"#f7f7f7")});label.append(picker);actions.append(label,btn("Imprimir / PDF",()=>printPassage(r)),btn("Enviar por mail",()=>email(r)),link(r.link,"Abrir fuente"),link("vitruvia-lexicon.html?q="+encodeURIComponent(r.term),"Lexicon"));card.append(actions);return card}
+function render(rows,related){const view=$("results");view.replaceChildren();const groups=new Map(),works=new Map();
+ for(const r of rows){const key=r.workId+"|"+r.language+"|"+r.source;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(r);
+ if(!works.has(r.workId))works.set(r.workId,{name:r.author+" · "+r.title,n:0});works.get(r.workId).n++}
+ $("status").textContent=works.size+" obras · "+groups.size+" ediciones · "+rows.length+" pasajes encontrados";
+ if(related.length)view.append(el("p","notice","Conceptus: "+related.map(x=>x.id).join(", ")+". Equivalencia de significado, no traducción alineada."));
+ if(!rows.length){view.append(el("p","empty","No se encontraron pasajes en los textos indexados consultados. Esto no demuestra ausencia en manuscritos u obras sin texto procesado."));return}
+ const overview=el("section","overview");overview.append(el("h2",null,"Obras que contienen el término ("+works.size+")"));const chips=el("div","chips");
+ for(const [work,w] of works)chips.append(btn(w.name+" · "+w.n+" pasajes",()=>{const item=[...document.querySelectorAll(".edition")].find(x=>x.dataset.work===work);if(item){item.open=true;item.scrollIntoView({behavior:"smooth",block:"center"})}}));
+ overview.append(chips);view.append(overview);
+ for(const group of groups.values()){const r=group[0],details=el("details","edition");details.dataset.work=r.workId;const summary=el("summary");const count=group.reduce((n,x)=>n+(x.hitsInPassage||1),0);summary.append(el("strong",null,r.author+" · "+r.title),el("span",null,(langs[r.language]||r.language)+" · "+group.length+" pasajes · "+count+" apariciones"));details.append(summary);const body=el("div","passage-list");for(const item of group)body.append(passage(item));details.append(body);view.append(details)}
 }
-body main .panel{background:#141416!important}
-body main .locorum-works-overview{padding:18px;border:1px solid #404045;border-radius:12px;margin-bottom:8px}
-body main .locorum-works-overview h2{margin:0 0 8px;font:500 23px Georgia,serif}
-body main .locorum-work-chips{display:flex;flex-wrap:wrap;gap:8px}
-body main .locorum-work-chips button,body main #export-tsv,body main #literal-search,
-body main .passage-actions button,body main .passage-actions a{background:#222225!important;color:#f3f3f3!important;border:1px solid #57575b!important;border-radius:9px!important}
-body main #literal-results{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
-body main #literal-results .edition-group{border-radius:11px!important;overflow:hidden}
-body main #literal-results .edition-group>summary{background:#141416!important;color:#fff!important}
-body main #literal-results .edition-group>summary:hover{background:#252527!important}
-body main #literal-results .passage-unit{background:var(--unit-bg,#0d0d0e)!important;color:var(--unit-ink,#eee)!important}
-body main .passage-quote{background:transparent!important;color:inherit!important}
-body main .passage-word{background:transparent!important;border:0!important;border-bottom:1px dotted #999!important;color:inherit!important;min-height:0!important;padding:0 1px!important}
-body main .passage-word mark{background:#ffe082!important;color:#111!important}
-body main .locorum-work-chips button:hover,body main .passage-word:hover{background:#343438!important}
-body main .locorum-language{margin:12px 0 16px}
-body main .locorum-language select{background:#222225;color:#fff;border:1px solid #555}
-</style></head><body>
-<main>
-<p><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="cobertura-traducciones-clasicas.html">Cobertura</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></p>
-<h1>Index locorum · Concordancias semánticas</h1>
-<p class="intro">Índice documental de lugares textuales en ediciones alojadas. Cada entrada refiere a una forma efectivamente registrada en el índice de una edición. <strong>No equivale a lematización morfológica verificada, traducción alineada, equivalencia etimológica ni atribución automática de sentido por contexto.</strong> Los rótulos de pasaje son los de la edición de origen; no representan necesariamente folios de manuscrito. Las traducciones se muestran por separado.</p>
-<div class="panel controls">
-<label>Obra<select id="work"><option value="">Todas las obras</option></select></label>
-<label>Edición / idioma<select id="edition"><option value="">Todas las ediciones</option></select></label>
-<label>Conceptus documentado<select id="concept"><option value="">Todos los conceptos</option></select></label>
-<label>Buscar palabra o concepto en los textos<input id="query" type="search" autocomplete="off" placeholder="domus, casa, οἶκος…"></label>
-</div>
-<p><button id="export-tsv" type="button" style="padding:9px 14px;border:1px solid #998469;background:#243d50;color:white;cursor:pointer">Exportar concordancias filtradas · TSV</button></p>
-<section class="panel" id="literal-panel" aria-label="Búsqueda literal en corpus"><div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between"><div><strong>Pasajes encontrados en las obras clásicas</strong><p style="margin:5px 0;font:13px/1.5 system-ui">Escribí domus o casa: busca formas documentadas, muestra los pasajes y permite abrirlos en su edición. Las equivalencias de Conceptus se identifican como tales.</p></div><button id="literal-search" type="button" style="padding:10px 15px;background:#29445b;color:white;border:1px solid #ae9670;border-radius:6px;cursor:pointer">Buscar pasajes</button></div><p id="literal-status" role="status" style="font:13px/1.5 system-ui"></p><div id="literal-results" style="display:grid;gap:10px"></div></section>
-<div class="panel" id="academic-coverage" role="status" style="font:13px/1.65 system-ui">Verificando cobertura y procedencia de las ediciones…</div>
-<div class="panel" id="summary" role="status" aria-live="polite">Consultando índice documentado…</div>
-<div id="results"></div><button id="more" type="button" hidden>Mostrar más referencias</button>
-<p class="intro muted">Metodología: concordancias de formas de Conceptus conservadas en el índice precomputado de la biblioteca. La presencia de una forma no valida por sí sola una acepción. Las ediciones HTML no cubiertas por este índice deben consultarse con búsqueda textual, y cualquier original/traducción sin alineación verificable permanece independiente. Los loci solo se atribuyen a versiones con registro de fuente.</p>
-</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-works-black-v7"></script><script defer src="assets/index-locorum.js?v=20261107-works-black-v7"></script>
-<script defer src="assets/site-bar.js?v=20261107-academic-v4"></script>
-<script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
-<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
-<script defer src="assets/critical-note-bridge.js?v=20261107-v1"></script>
-</body></html>
+async function run(){const q=$("query").value.trim(),token=++serial;if(fold(q).replace(/[^\p{L}]/gu,"").length<3){$("results").replaceChildren();$("status").textContent="Escribí al menos tres letras.";return}
+ const engine=window.ClassicsCorpusSearch;if(!engine?.searchPassages){$("status").textContent="El motor de búsqueda no pudo cargarse.";return}
+ $("go").disabled=true;$("status").textContent="Consultando las transcripciones disponibles…";
+ try{const {terms,related}=expansions(q);const rows=await engine.searchPassages(terms,{limit:600,maxPerEdition:200,workId:$("work").value,language:$("lang").value});if(token!==serial)return;render(rows,related);
+ const d=engine.diagnostics?.()||{};if(d.failed)$("status").textContent+=" · "+d.failed+" fuentes no disponibles: resultados parciales";if(rows.length>=600)$("status").textContent+=" · Límite de 600 pasajes: refiná los filtros."}
+ catch(err){if(token===serial)$("status").textContent="Error de búsqueda: "+err.message}
+ finally{if(token===serial)$("go").disabled=false}}
+async function init(){try{const [reg,c]=await Promise.all([fetch("data/classics-corpus/search-registry.json").then(r=>r.json()),fetch("data/lexicon/conceptus.json").then(r=>r.json())]);if(!Array.isArray(reg.entries)||!Array.isArray(c.concepts))throw Error("Registro incompleto");index=reg.entries;concepts=c.concepts;
+ const works=new Map();for(const e of index)if(!works.has(e.workId))works.set(e.workId,(e.author||e.workId)+" · "+(e.title||e.workId));for(const [id,name] of [...works].sort((a,b)=>a[1].localeCompare(b[1]))){const op=el("option",null,name);op.value=id;$("work").append(op)}
+ for(const lang of [...new Set(index.map(x=>x.language))].sort()){const op=el("option",null,langs[lang]||lang);op.value=lang;$("lang").append(op)}
+ $("coverage").textContent=index.length+" ediciones textuales indexadas · "+works.size+" obras con búsqueda disponible";
+ const q=new URLSearchParams(location.search).get("q");if(q){$("query").value=q;run()}else $("status").textContent="Escribí un término para consultar los textos.";
+ }catch(err){$("status").textContent="No se pudo cargar el registro: "+err.message}}
+$("form").addEventListener("submit",e=>{e.preventDefault();clearTimeout(timer);run()});
+$("query").addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(run,500)});
+$("work").addEventListener("change",run);$("lang").addEventListener("change",run);$("equiv").addEventListener("change",run);
+init();
+})();
+</script></body></html>
