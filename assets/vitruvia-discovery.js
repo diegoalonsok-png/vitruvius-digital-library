@@ -31,7 +31,11 @@
   if(!variants.some(v=>title.includes(v)))return false;
   // A one-word ancient name can be the surname of a contemporary person.
   // Generic Commons search alone is insufficient for identity verification.
-  if(variants.every(v=>!v.includes(" "))&&!page.fromTrustedCategory&&!page.fromEntityImage)return false;
+  if(variants.every(v=>!v.includes(" "))&&!page.fromEntityImage){
+   const category=fold(page.sourceCategory||"");
+   if(!page.fromTrustedCategory||!variants.some(v=>category.includes(v))||
+      !/\b(philosoph|philosopher|philosophers|filosofo|filosofia|ancient|antiguo|antigua|greek|griego|roman|romano|historical|historic|sculpture|sculptures|busts|statues|museum|museo)\b/.test(category))return false;
+  }
   // Reject a photo caption masquerading as historical iconography.
   if(/\b(portrait of a singer|singer portrait|photo of|photograph of)\b/.test(description))return false;
   return true;
