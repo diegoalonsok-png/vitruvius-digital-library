@@ -14,14 +14,19 @@ const cases=[
  ["File:Paola Pitagoras singer portrait photograph.jpg",false],
  ["File:Paola Pythagoras concert bust portrait.jpg",false],
  ["File:Pythagoras coin denarius.jpg",false],
- ["File:Pythagoras Bust Capitoline Museum.jpg",true],
- ["File:Pythagoras engraving in early modern edition.jpg",true],
+ ["File:Pythagoras Bust Capitoline Museum.jpg",false],
+ ["File:Pythagoras engraving in early modern edition.jpg",false],
  ["File:AI generated Pythagoras bust.jpg",false]
 ];
 for(const [title,expected] of cases){
  const actual=discovery.imageRank({title,imageinfo:[{extmetadata:{}}]},topic).accepted;
  assert.equal(actual,expected,"Unexpected historical image verdict for "+title);
 }
+assert.equal(discovery.imageRank({
+ title:"File:Pythagoras Bust Capitoline Museum.jpg",
+ sourceCategory:"Category:Ancient Greek philosophers – Pythagoras",
+ fromTrustedCategory:true,imageinfo:[{extmetadata:{}}]
+},topic).accepted,true,"Verified ancient philosopher collection bust should be accepted");
 const visual=fs.readFileSync("assets/vitruvia-image-engine-v2.js","utf8");
 assert.match(visual,/verifiedHistoricalSubject/);
 assert.match(visual,/cataloguedPortrait/);
