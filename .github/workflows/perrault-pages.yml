@@ -11,8 +11,6 @@ on:
         description: Imagenes nuevas por edicion
         default: '24'
         type: string
-  schedule:
-    - cron: '17 */6 * * *'
 permissions:
   contents: write
 concurrency:
