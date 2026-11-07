@@ -6,7 +6,7 @@
 const $=id=>document.getElementById(id);
 const form=$("search-form"),search=$("query");
 if(!form||!search)return;
-const SCHEMA="data/lexicon/conceptus.json",REGISTRY="data/classics-corpus/search-registry.json";
+const SCHEMA="data/lexicon/conceptus.json",LATIN_DICTIONARY="data/latin-lexicon.json",REGISTRY="data/classics-corpus/search-registry.json";
 const romePhoto={
  src:"https://commons.wikimedia.org/wiki/Special:FilePath/Atrium%20with%20impluvium%20in%20the%20House%20of%20the%20Vetti%20Pompeii.jpg?width=760",
  source:"https://commons.wikimedia.org/wiki/File:Atrium_with_impluvium_in_the_House_of_the_Vetti_Pompeii.jpg",
@@ -23,7 +23,7 @@ const layer=document.createElement("div");layer.id="contextual-lexicon";layer.cl
 layer.innerHTML='<div class="ctx-shade" data-close></div><section class="ctx-dialog" role="dialog" aria-modal="true" aria-labelledby="ctx-heading"><header class="ctx-heading"><div><p class="ctx-eyebrow">VITRUVIUS · DOSSIER FILOLÓGICO</p><h2 id="ctx-heading">Ficha de palabra</h2></div><button type="button" class="ctx-close" aria-label="Cerrar visor" data-close>×</button></header><div id="ctx-body" class="ctx-body"></div></section>';
 document.body.append(layer);
 const body=$("ctx-body"),title=$("ctx-heading");
-let lastFocus=null,serial=0,corpusPromise=null,conceptPromise=null;
+let lastFocus=null,serial=0,corpusPromise=null,conceptPromise=null,latinPromise=null;
 function el(tag,txt,cls){const n=document.createElement(tag);if(txt!==undefined)n.textContent=String(txt);if(cls)n.className=cls;return n}
 function link(url,label){const a=el("a",label);a.href=url;a.target="_self";return a}
 function partHeading(text){return el("h3",text,"ctx-subtitle")}
@@ -39,6 +39,15 @@ document.addEventListener("keydown",e=>{if(layer.hidden)return;if(e.key==="Escap
 function getConcepts(){
  if(!conceptPromise)conceptPromise=fetch(SCHEMA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
   .then(j=>j.concepts||[]).catch(err=>{conceptPromise=null;throw err});return conceptPromise;
+}
+function getLatinEntries(){
+ if(!latinPromise)latinPromise=fetch(LATIN_DICTIONARY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(d=>Array.isArray(d.entries)?d.entries:[]).catch(()=>[]);
+ return latinPromise;
+}
+function latinEntry(term,entries){
+ const key=normalized(term);
+ return entries.find(e=>[e.lemma,...(e.forms||[]),...(e.aliases||[])].some(form=>normalized(form)===key));
 }
 function data(){
  if(!corpusPromise)corpusPromise=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async registry=>{
@@ -88,18 +97,37 @@ async function show(term){
  body.replaceChildren(paragraph("Consultando repertorios y pasajes documentados…"));
  layer.querySelector(".ctx-close").focus();
  try{
-  const [concepts,documents]=await Promise.all([getConcepts(),data()]);if(id!==serial)return;
+  const [concepts,documents,latinEntries]=await Promise.all([getConcepts(),data(),getLatinEntries()]);if(id!==serial)return;
   body.replaceChildren();
   const match=concepts.find(c=>[...(c.la||[]),...(c.grc||[]),...Object.values(c.modern||{}).flat()].some(w=>normalized(w)===normalized(term)));
+  const lexical=latinEntry(term,latinEntries);
   const header=el("div",undefined,"ctx-intro");
   const text=el("div");text.append(partHeading("Definición y correspondencias documentadas"));
+  if(lexical){
+   const label=lexical.headword||lexical.lemma;
+   text.append(paragraph("Lema latino: "+label+(lexical.pos?" · "+lexical.pos:"")+"."));
+   if(lexical.es)text.append(paragraph("Definición en castellano: "+lexical.es+"."));
+   for(const sense of (lexical.senses||[]).slice(0,3))text.append(paragraph("Acepción: "+sense));
+   if(lexical.vitruvian)text.append(paragraph("Uso técnico en Vitruvio: "+lexical.vitruvian));
+   text.append(paragraph(lexical.verified?
+    "Entrada registrada como verificada en el léxico del proyecto. Confirme la acepción precisa en el pasaje.":
+    "Glosa de orientación lexicográfica del repertorio del proyecto; requiere cotejo de su acepción en el contexto y con diccionarios de referencia."));
+  }
   if(match){
-   const defs=match.modern?.es||[];text.append(paragraph(defs.length?"Campo semántico en castellano: "+defs.join(" · ")+".":"Concepto editorial: "+match.id+"."));
-   const latin=match.la||[];if(latin.length)text.append(paragraph("Latín: "+latin.join(" · ")+"."));
-   const greek=match.grc||[];if(greek.length)text.append(paragraph("Griego antiguo: "+greek.join(" · ")+"."));
+   const defs=match.modern?.es||[];
+   if(!lexical)text.append(paragraph("Campo semántico en castellano: "+(defs.length?defs.join(" · "):match.id)+"."));
+   const latin=match.la||[];
+   if(latin.length)text.append(paragraph("Correspondencias latinas: "+latin.join(" · ")+"."));
+   const greek=match.grc||[];
+   if(greek.length)text.append(paragraph("Correspondencias en griego antiguo: "+greek.join(" · ")+"."));
    if(match.note)text.append(paragraph("Nota filológica: "+match.note));
-   text.append(paragraph("Estas correspondencias son lexicográficas: no garantizan equivalencia exacta en todos los contextos."));
-  }else text.append(paragraph("Sin ficha editorial específica para esta forma en Conceptus. Se ofrece la búsqueda literal del corpus, sin asignar significado no documentado."));
+   text.append(paragraph("Estas correspondencias son lexicográficas, no equivalencias exactas en todos los contextos."));
+  }
+  if(!lexical&&!match){
+   text.append(paragraph("Esta forma no tiene todavía una entrada individualizada en los repertorios conectados. Consulte la concordancia y el lector para determinar su uso contextual; la ausencia de ficha no significa que la palabra carezca de significado."));
+   const a=link("vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra","Buscar lema, flexión y acepciones en Lexicon");
+   text.append(a);
+  }
   if(normalized(term)==="domus"){
    text.append(paragraph("Arquitectura romana: domus designa habitualmente una vivienda o casa, y puede referirse también al hogar o al grupo doméstico según el contexto. Atrium e impluvium son elementos de determinadas tipologías, no de todas las viviendas."));
    header.append(text,addImage());
