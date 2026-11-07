@@ -15,14 +15,37 @@ const languageOptions={
  lat:{model:"lat",dir:"ltr",lang:"la",label:"Latín: reconocimiento orientativo; abreviaturas y cursivas requieren lectura especializada."},
  eng:{model:"eng",dir:"ltr",lang:"en",label:"Alfabeto latino moderno: modelo comparativo, no paleográfico."},
  heb:{model:"heb",dir:"rtl",lang:"he",label:"Hebreo (heb): reconoce principalmente escritura hebrea impresa; manuscritos y óstraca antiguos requieren cotejo."},
+ paleoheb:{model:null,dir:"rtl",lang:"hbo",label:"Paleohebreo: comparación manual de glifos; no hay reconocimiento OCR especializado verificado."},
+ phn:{model:null,dir:"rtl",lang:"phn",label:"Fenicio: comparación manual de glifos; no hay reconocimiento OCR especializado verificado."},
  "arc-heb":{model:"heb",dir:"rtl",lang:"arc",label:"Arameo en grafía hebrea: se prueba el modelo heb, que NO reconoce el idioma arameo como tal. Escritos paleoarameos y otras grafías requieren modelos especializados."},
  syr:{model:"syr",dir:"rtl",lang:"syr",label:"Arameo siríaco (syr): modelo para escritura siríaca. No sirve para todas las escrituras arameas antiguas."}
 };
+const phoenicianSigns=Array.from({length:22},(_,i)=>String.fromCodePoint(0x10900+i));
+const hebrewSigns=Array.from("אבגדהוזחטיכלמנסעפצקרשת");
+const signNames="alef bet gimel dalet he waw zayin het tet yod kaf lamed mem nun samekh ayin pe tsade qof resh shin taw".split(" ");
+function renderAncientSigns(mode){
+ const panel=$("pap-ancient-alphabet"),list=$("pap-ancient-signs");
+ panel.hidden=!["phn","paleoheb"].includes(mode);list.replaceChildren();
+ if(panel.hidden)return;
+ for(let i=0;i<22;i++){
+  const b=document.createElement("button"),big=document.createElement("span"),small=document.createElement("small");
+  b.type="button";big.textContent=phoenicianSigns[i];small.textContent=signNames[i]+" · "+hebrewSigns[i];
+  b.append(big,small);b.title="Glifo Unicode de comparación; verificar variantes arqueológicas";
+  b.addEventListener("click",()=>{
+   const letter=$("pap-build-letter");letter.value=phoenicianSigns[i];
+   $("pap-build-script").value=mode;$("pap-build-script").dispatchEvent(new Event("change",{bubbles:true}));
+   letter.focus();
+  });list.append(b);
+ }
+}
 function updateScript(){
  const choice=languageOptions[$("pap-ocr-lang").value]||languageOptions.grc;
  text.dir=choice.dir;text.lang=choice.lang;
  $("pap-graphemes").dir=choice.dir;
  $("pap-script-note").textContent=choice.label;
+ renderAncientSigns($("pap-ocr-lang").value);
+ $("pap-ocr").disabled=!available||!choice.model||running;
+ $("pap-ocr-detail").disabled=!available||!choice.model||running;
  return choice;
 }
 $("pap-ocr-lang").addEventListener("change",updateScript);
@@ -122,7 +145,7 @@ async function openImage(f){
   base.clearRect(0,0,original.width,original.height);base.drawImage(img,0,0,original.width,original.height);
   available=true;reset();
   zoom=Math.max(.25,Math.min(1,Math.round((stage.clientWidth-22)/original.width*100)/100));show();
-  $("pap-ocr").disabled=false;$("pap-ocr-detail").disabled=false;
+  updateScript();
   status.textContent="Imagen abierta localmente: "+f.name+" · "+img.naturalWidth+" × "+img.naturalHeight+" píxeles. Usa las lupas o solicita OCR experimental.";
  }catch(e){status.textContent=e.message||"Imagen no válida."}finally{URL.revokeObjectURL(url)}
 }
@@ -191,6 +214,7 @@ async function recognize(target){
  if(!available||running)return;
  running=true;$("pap-ocr").disabled=true;$("pap-ocr-detail").disabled=true;$("pap-cancel").disabled=false;
  const selected=updateScript(),lang=selected.model;
+ if(!lang){running=false;$("pap-cancel").disabled=true;status.textContent="No hay OCR validado para esta escritura. Usa el comparador de glifos.";return}
  status.textContent="Descargando OCR "+lang+" ("+$("pap-ocr-lang").selectedOptions[0].textContent+"); procesamiento local en curso…";
  try{
   const engine=await loadTesseract();
@@ -206,12 +230,12 @@ async function recognize(target){
    "Hipótesis OCR ("+lang+") generada localmente; revisa signo por signo y confirma sobre la imagen original.":
    "OCR terminado, pero no identificó signos fiables. Prueba inversión, contraste, otra región o transcripción manual.";
  }catch(e){status.textContent="OCR no disponible: "+(e.message||e)}
- finally{running=false;$("pap-ocr").disabled=!available;$("pap-ocr-detail").disabled=!available;$("pap-cancel").disabled=true;if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}}
+ finally{running=false;$("pap-cancel").disabled=true;updateScript();if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}}
 }
 $("pap-ocr").addEventListener("click",()=>{void recognize(canvas)});
 $("pap-ocr-detail").addEventListener("click",()=>{void recognize(detail)});
 $("pap-cancel").addEventListener("click",()=>{
- running=false;$("pap-cancel").disabled=true;$("pap-ocr").disabled=!available;$("pap-ocr-detail").disabled=!available;
+ running=false;$("pap-cancel").disabled=true;updateScript();
  if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}
  status.textContent="OCR cancelado. La imagen local y la transcripción manual se conservan.";
 });
