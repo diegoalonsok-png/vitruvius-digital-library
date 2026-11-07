@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 38,
+  "count": 40,
   "works": 19,
   "entries": [
     {
@@ -124,6 +124,16 @@
       "path": "corpus/cicero-de-officiis-la.html",
       "reader": "corpus/cicero-de-officiis-la.html",
       "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "didache",
+      "author": "Anónimo",
+      "title": "Didache",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/didache-en.json",
+      "reader": "classics-text-reader.html?work=didache&lang=en",
+      "sourceDescription": "Joseph Barber Lightfoot, 1891; traducción inglesa histórica, transcrita desde Wikisource, capítulos 1–16."
     },
     {
       "workId": "didache",
@@ -274,6 +284,16 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae",
+      "language": "es",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sulpicia-elegiae-es.json",
+      "reader": "classics-text-reader.html?work=sulpicia-elegiae&lang=es",
+      "sourceDescription": "Joaquín Demetrio Casasús (1904–1905); transcripción modernizada por AcademiaLatin.com bajo CC BY, seis poemas."
     },
     {
       "workId": "sulpicia-elegiae",
