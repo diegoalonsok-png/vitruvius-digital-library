@@ -174,7 +174,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
    data=resolved;locus.replaceChildren();
    data.pages.forEach((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;locus.append(o)});
    show();
-  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar esta edición: "+err.message;body.textContent="Probá otra edición en el selector."}
+  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar esta edición: "+err.message;body.textContent="Prueba otra edición en el selector."}
  }
  edition.addEventListener("change",load);
  prev.addEventListener("click",()=>{index=Math.max(0,index-1);show();synchronize(state)});
