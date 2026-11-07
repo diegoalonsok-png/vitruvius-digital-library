@@ -8728,8 +8728,8 @@
         "Augustus"
       ],
       "reading": {
-        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Augustus/Res_Gestae/home.html",
-        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+        "url": "classics-text-reader.html?work=augustus-res-gestae&lang=la",
+        "status": "Latín de lectura en 35 secciones más cuatro apéndices; conservar lagunas entre corchetes y cotejar con testigos epigráficos."
       },
       "manuscript": {
         "manifest": null,
@@ -8740,7 +8740,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes."
+        "status": "Castellano, inglés y francés pendientes de traducciones históricas de autor conocido, derechos y segmentación verificados."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -8748,12 +8748,31 @@
         "archive": "https://archive.org/search?query=Augusto%20Monumentum%20Ancyranum",
         "gallica": "https://gallica.bnf.fr/Search?q=Augusto%20Monumentum%20Ancyranum"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null,
+      "publicStatus": "lectura-local-completa",
+      "localReader": {
+        "original": "data/classics-corpus/augustus-res-gestae-la.json",
+        "translations": [],
+        "verified": true
+      },
       "bibliography": {
-        "editionCitation": "Velleius Paterculus. Compendium of Roman History; Res Gestae Divi Augusti. Translated by Frederick W. Shipley. Loeb Classical Library 152. London: William Heinemann, 1924.",
-        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
-      }
+        "uniformTitle": "Res gestae divi Augusti",
+        "originalAuthor": "Augustus",
+        "originalLanguage": "latín",
+        "source": "https://la.wikisource.org/wiki/Res_gestae",
+        "accessed": "2026-11-06",
+        "method": "Transcripción pública latina desde Wikisource; la fuente no explicita edición de referencia. No se presenta como colación epigráfica."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/augustus-res-gestae-la.json"
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "label": "Latín · 35 secciones y 4 apéndices (Wikisource)",
+          "path": "classics-text-reader.html?work=augustus-res-gestae&lang=la",
+          "kind": "edition"
+        }
+      ]
     },
     {
       "id": "euclid-elementa",
