@@ -6,6 +6,17 @@ const datasets={
  en:{url:"data/structured/theory-en.json",name:"V297 · Latín / Inglés"}
 };
 const cache={};
+/* Reuse Vitruvius' documented multilingual lemma vocabulary. */
+const sharedHighlight=import("./parallel-highlights.mjs?v=20261107-bibliotheca-v1").catch(()=>null);
+let historicalPeoplePromise=null;
+function historicalPeople(){
+ if(!historicalPeoplePromise)historicalPeoplePromise=fetch("data/onomasticon-vitruvianum.json")
+  .then(r=>r.ok?r.json():{entities:[]})
+  .then(d=>(d.entities||[]).filter(e=>e.kind==="person"))
+  .catch(()=>[]);
+ return historicalPeoplePromise;
+}
+
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const text=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 /* Render only exact matches, keeping original spelling and diacritics intact.
@@ -49,10 +60,32 @@ const EQUIVALENTS={
  symmetria:{la:["symmetria","symmetriae","symmetriam","symmetriarum"],en:["symmetry","symmetries","commensurability"],es:["simetría","simetrías","conmensurabilidad","conmensurabilidades"],fr:["symétrie","symétries","commensurabilité"]},
  proportio:{la:["proportio"],en:["proportion"],es:["proporción"],fr:["proportion"]}
 };
-function queryTerms(query,language){
+function queryTerms(query,language,latin="",shared=null,people=[]){
  const term=text(query).trim();
- const record=Object.values(EQUIVALENTS).find(e=>Object.values(e).flat().some(w=>text(w)===term));
- return record?[...new Set([query,...(record[language]||[])])]:[query];
+ if(!term)return [];
+ let words=shared?.equivalentTerms?.(query,language,latin)||null;
+ if(!words){
+  const record=Object.values(EQUIVALENTS).find(e=>Object.values(e).flat().some(w=>text(w)===term));
+  words=record?[query,...(record[language]||[])]:[query];
+ }
+ const person=people.find(p=>[p.name,...(p.aliases||[]),...(p.latin_forms||[])].some(n=>text(n)===term));
+ if(person){
+  const names=[person.name,...(person.aliases||[]),...(person.latin_forms||[])];
+  // A documented personal name is eligible only when this locus contains
+  // one of its source-language forms, not because it is vaguely related.
+  const latinNames=names.filter(n=>containsWord(latin,n));
+  if(language==="la"||latinNames.length)words=[...words,...names];
+ }
+ return [...new Set(words.filter(Boolean))];
+}
+function containsWord(source,word){
+ const fold=text(source),needle=text(word).trim();if(!needle)return false;
+ let pos=fold.indexOf(needle);
+ while(pos>=0){const before=fold[pos-1]||"",after=fold[pos+needle.length]||"";
+  if(!/[\\p{L}\\p{N}]/u.test(before)&&!/[\\p{L}\\p{N}]/u.test(after))return true;
+  pos=fold.indexOf(needle,pos+1);
+ }
+ return false;
 }
 let seq=0;
 async function load(lang){if(!cache[lang])cache[lang]=fetch(datasets[lang].url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>j.passages.filter(p=>p.latin||p.translation)).catch(err=>{delete cache[lang];throw err});return cache[lang]}
@@ -61,6 +94,7 @@ const id=++seq;
 target.innerHTML='<p role="status">Cargando texto latino y edición bilingüe alojados en GitHub…</p>';
 try{
  let list=await load(lang);
+ const [shared,people]=await Promise.all([sharedHighlight,historicalPeople()]);
  if(id!==seq||!target.isConnected)return;
  target.innerHTML='<div class="classic-read-toolbar"><label>Edición<select id="cr-edition"><option value="es">V514 · Castellano</option><option value="fr">V554 · Français</option><option value="en">V297 · English</option></select></label><label>Libro<select id="cr-book"></select></label><label>Pasaje / locus<select id="cr-locus"></select></label><label>Buscar en el libro<input id="cr-search" type="search" placeholder="loci · symmetria · architectura" aria-label="Buscar en toda la edición, todos los libros y pasajes"></label></div><p id="cr-summary" role="status"></p><div id="cr-lines" class="classic-read-columns"></div><div class="classic-read-nav"><button id="cr-prev" type="button">← Locus anterior</button><button id="cr-next" type="button">Siguiente locus →</button></div><div id="cr-matches" class="classic-read-matches" aria-label="Pasajes encontrados ordenados por libro y locus" hidden></div><p class="classic-ref">Fuente: ediciones editoriales independientes de Diego A. Kurilo, V514 (latín-castellano) y V297 (latín-inglés). Los pasajes no son transcripciones diplomáticas de un manuscrito. Las divisiones de locus dependen de las ediciones utilizadas.</p>';
  const darkStyle=document.createElement("style");darkStyle.textContent=`
@@ -69,6 +103,7 @@ try{
 .classic-read-columns article p{color:#f3f3f3!important}
 .classic-read-columns mark.cr-hit,.classic-read-columns article mark.cr-hit{background:#ffe34f!important;color:#111!important;border-radius:2px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .classic-read-columns{scroll-margin-top:32px}
+.classic-read-columns .cr-alignment-note{font:12px/1.6 system-ui,sans-serif!important;color:#dfc692!important;margin:15px 0 0;padding:9px 11px;border-left:2px solid #baa06b;background:#191714}
 .classic-main.classic-user-colored .classic-read-columns article{background:var(--classic-user-view-bg)!important;color:var(--classic-user-view-ink)!important}
 .classic-main.classic-user-colored .classic-read-columns article p{color:var(--classic-user-view-ink)!important}
 `;target.prepend(darkStyle);
@@ -89,7 +124,7 @@ try{
    // Unicode word boundary: "loci" must not be mistaken for a fragment of another word.
    const found=[["Latín",original,"la"],["Traducción",translated,e.value]].filter(([,v,language])=>{
     const folded=text(v);
-    return queryTerms(query,language).some(raw=>{
+    return queryTerms(query,language,original,shared,people).some(raw=>{
      const needle=text(raw);let pos=folded.indexOf(needle);
      while(pos>=0){const before=folded[pos-1]||"",after=folded[pos+needle.length]||"";
       if(!/[\p{L}\p{N}]/u.test(before)&&!/[\p{L}\p{N}]/u.test(after))return true;
@@ -130,7 +165,15 @@ try{
    searching?"Sin resultados para «"+q.value+"» en "+(activeBook===0?"los diez libros":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+" de esta edición.":"No hay pasajes para la selección";
   if(activeBook===-1)summary.textContent+=prefNotice;
   if(!p){out.innerHTML='<p>No hay pasajes que coincidan con la búsqueda.</p>';return;}
-  out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+marked(p.latin||"",queryTerms(q.value,"la"))+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+marked(p.translation||"Traducción no disponible para este pasaje.",queryTerms(q.value,e.value))+'</p></article>';
+  const latinTerms=queryTerms(q.value,"la",p.latin||"",shared,people);
+  const translationTerms=queryTerms(q.value,e.value,p.latin||"",shared,people);
+  const original=marked(p.latin||"",latinTerms);
+  const translated=marked(p.translation||"Traducción no disponible para este pasaje.",translationTerms);
+  const hasLatinMark=original.includes('<mark class="cr-hit">');
+  const hasTranslationMark=translated.includes('<mark class="cr-hit">');
+  const note=searching&&hasLatinMark&&!hasTranslationMark
+   ?'<p class="cr-alignment-note">Este locus está alineado, pero su traducción no contiene una equivalencia léxica documentada como palabra independiente. Se conserva el texto íntegro; no se marca una traducción inventada.</p>':"";
+  out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+original+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+translated+'</p>'+note+'</article>';
   q.setAttribute("aria-label","Buscar en "+(activeBook===0?"todos los libros":activeBook===-1?"todos los prefacios":"Libro "+activeBook)+" de la edición "+datasets[e.value].name);
  }
  populateBooks();drawPassages();
