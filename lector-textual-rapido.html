@@ -26,6 +26,7 @@ input.search{width:100%;margin-bottom:12px}
 <h1>Lector textual rápido</h1><p id="work-title">Cargando obra…</p></header>
 <main><p class="notice">Se muestran exclusivamente textos completos o unidades textuales efectivamente registradas en el corpus. No se cargan PDF, OCR ni facsímiles. Los identificadores compartidos permiten cotejo orientativo por capítulo, no certifican alineación filológica.</p>
 <p class="status" id="global-status" role="status">Consultando el catálogo…</p>
+<div class="notice" id="sync-note"><label><input type="checkbox" id="sync-locus" checked> Sincronizar por locus idéntico</label> <span id="sync-status" role="status">La equivalencia es estructural, no una alineación textual certificada.</span></div>
 <div class="columns">
 <section class="panel" data-side="left"><h2>Texto original / primera versión</h2>
 <label>Idioma<select class="language" aria-label="Idioma del visor izquierdo"></select></label>
@@ -69,6 +70,17 @@ async function init(){
   /^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
  if(!files.length)throw Error("Esta obra es una ficha bibliográfica, sin texto completo local registrado.");
  const indexed=Object.fromEntries(files);
+ const controllers=[];
+ let changing=false;
+ const syncCheckbox=$("#sync-locus"),syncStatus=$("#sync-status");
+ function align(active){
+  if(!syncCheckbox.checked||changing||controllers.length!==2)return;
+  const other=controllers.find(c=>c!==active),locus=active.currentLocus();
+  if(!locus||!other)return;
+  if(other.seek(locus))syncStatus.textContent="Locus "+locus+" en ambas versiones (solo identificación editorial compartida).";
+  else syncStatus.textContent="No existe el mismo locus en ambas versiones. La otra columna permanece intacta para comparación manual.";
+ }
+
  const originals=files.map(x=>x[0]).filter(l=>["grc","la"].includes(l));
  const translations=files.map(x=>x[0]).filter(l=>!["grc","la"].includes(l));
  for(const side of ["left","right"]){
@@ -78,6 +90,31 @@ async function init(){
   search=root.querySelector(".search"),status=root.querySelector(".status"),
   page=root.querySelector(".page"),source=root.querySelector(".source");
   let list=[],position=0,token=0;
+  const controller={currentLocus:()=>list[position]?.locus||"",seek:locus=>{
+   const at=list.findIndex(p=>String(p.locus||"").trim()===String(locus).trim());
+   if(at<0)return false;
+   changing=true;position=at;show();changing=false;return true;
+  }};
+  controllers.push(controller);
+  function moved(){show();align(controller);}
+  const mode=document.createElement("select");mode.setAttribute("aria-label","Modalidad de búsqueda");
+  for(const [value,label] of [["literal","Literal: palabra o frase"],["lexical","Léxica: variantes gráficas"],["semantic","Semántica: Conceptus editorial"]]){
+   const option=document.createElement("option");option.value=value;option.textContent=label;mode.append(option);
+  }
+  mode.style.cssText="width:100%;margin-bottom:8px";
+  search.before(mode);
+  let conceptPromise=null;
+  async function semanticTerms(q,lang){
+   if(!conceptPromise)conceptPromise=fetch("data/lexicon/conceptus.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>j.concepts||[]);
+   const concepts=await conceptPromise;
+   const found=concepts.find(c=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(x=>typeof x==="string"&&fold(x)===fold(q)));
+   return (found?.[lang]||[]).filter(x=>typeof x==="string"&&x.length>2);
+  }
+  function contains(text,term){const a=fold(text),b=fold(term);
+   const normalize=t=>t.replace(/j/g,"i").replace(/v/g,"u").replace(/ς/g,"σ");
+   return mode.value==="lexical"?normalize(a).includes(normalize(b)):a.includes(b);
+  }
+
   for(const [lang] of files){const opt=document.createElement("option");opt.value=lang;opt.textContent=knownLanguages[lang];select.append(opt)}
   const requested=params.get(side);
   const fallback=side==="left"?(originals[0]||files[0][0]):(translations[0]||originals[0]||files[0][0]);
@@ -100,14 +137,21 @@ async function init(){
    }catch(e){if(ticket!==token)return;status.textContent="Error: "+e.message;status.classList.add("error");page.textContent="No se pudo mostrar la versión textual. Prueba otro idioma."}
   }
   select.addEventListener("change",()=>{status.classList.remove("error");load()});
-  chapters.addEventListener("change",()=>{position=Number(chapters.value)||0;show()});
-  previous.addEventListener("click",()=>{position=Math.max(0,position-1);show()});
-  next.addEventListener("click",()=>{position=Math.min(list.length-1,position+1);show()});
-  search.addEventListener("keydown",e=>{
-   if(e.key!=="Enter")return;const q=fold(search.value.trim());if(!q)return;
-   const at=list.findIndex(p=>fold(p.text).includes(q));
-   if(at<0){status.textContent="El término no aparece en los pasajes de esta versión.";return}
-   position=at;show();status.textContent+=" · coincidencia encontrada";
+  chapters.addEventListener("change",()=>{position=Number(chapters.value)||0;moved()});
+  previous.addEventListener("click",()=>{position=Math.max(0,position-1);moved()});
+  next.addEventListener("click",()=>{position=Math.min(list.length-1,position+1);moved()});
+  search.addEventListener("keydown",async e=>{
+   if(e.key!=="Enter")return;e.preventDefault();
+   const q=search.value.trim();if(!q)return;
+   let terms=[q];
+   if(mode.value==="semantic"){
+    status.textContent="Consultando Conceptus…";
+    try{terms=await semanticTerms(q,select.value)}catch(err){status.textContent="Conceptus no disponible: "+err.message;return}
+    if(!terms.length){status.textContent="No hay equivalencia editorial registrada para esta búsqueda.";return}
+   }
+   const at=list.findIndex(p=>terms.some(t=>contains(p.text,t)));
+   if(at<0){status.textContent="Sin coincidencias para "+mode.value+" en esta versión.";return}
+   position=at;moved();status.textContent+=" · "+(mode.value==="semantic"?"equivalencia documentada":"coincidencia textual");
   });
   load();
  }
