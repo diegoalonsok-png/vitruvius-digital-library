@@ -76,7 +76,10 @@ def main():
         # Request a readable, bounded source image, never an original multi-MB master.
         url = f"https://www.e-rara.ch/i3f/v20/{image_id}/full/1400,/0/default.jpg"
         try:
-            data = fetch(url)
+            try:
+                data = fetch(url)
+            except RuntimeError:
+                data = fetch(entry["fallback"])
             image_webp(data, folio, 1400, 76)
             image_webp(data, thumb, 240, 62)
             available.append(n)
