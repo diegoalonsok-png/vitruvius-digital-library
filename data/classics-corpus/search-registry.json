@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 46,
-  "works": 22,
+  "count": 48,
+  "works": 23,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -64,6 +64,26 @@
       "path": "data/classics-corpus/augustus-res-gestae-la.json",
       "reader": "classics-text-reader.html?work=augustus-res-gestae&lang=la",
       "sourceDescription": "Texto latino en 35 secciones y cuatro apéndices, Wikisource CC BY-SA; sin revisión epigráfica de lagunas; traducciones pendientes."
+    },
+    {
+      "workId": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/caesar-civili-en.json",
+      "reader": "classics-text-reader.html?work=caesar-civili&lang=en",
+      "sourceDescription": "PerseusDL TEI CC BY-SA 4.0, tres libros, 243 capítulos; cotejo por locus editorial, no alineación automática."
+    },
+    {
+      "workId": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/caesar-civili-la.json",
+      "reader": "classics-text-reader.html?work=caesar-civili&lang=la",
+      "sourceDescription": "PerseusDL TEI CC BY-SA 4.0, tres libros, 243 capítulos; cotejo por locus editorial, no alineación automática."
     },
     {
       "workId": "caesar-gallico",
