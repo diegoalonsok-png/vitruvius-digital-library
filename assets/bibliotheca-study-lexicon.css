@@ -84,3 +84,39 @@
  .classic-study-viewer .classic-compare-panes{grid-template-columns:1fr!important}
  .classic-study-viewer .classic-fast-text-pane>div[lang]{min-height:250px;max-height:52vh}
 }
+
+/* Independent Lexicon reading tools in every text panel. */
+.classic-study-viewer .classic-study-tools{
+ display:flex;flex-wrap:wrap;gap:5px;align-items:center;
+ margin:8px 10px 0;padding:7px;
+ background:#29292b;border:1px solid #454549;border-radius:6px;
+}
+.classic-study-viewer .classic-study-tools button,
+.classic-study-viewer .classic-study-tools select{
+ border:1px solid #535357;color:#f5f4f1;background:#353537;
+ border-radius:4px;padding:5px 7px;min-height:31px;
+ font:600 11px system-ui,sans-serif;cursor:pointer;
+}
+.classic-study-viewer .classic-study-tools button:hover,
+.classic-study-viewer .classic-study-tools button[aria-pressed=true]{background:#5a5549;color:#fff}
+.classic-study-viewer .classic-study-tools .classic-study-color{
+ display:inline-flex;gap:4px;align-items:center;color:#ddd;
+ font:600 10px system-ui,sans-serif
+}
+.classic-study-viewer .classic-study-color input{
+ width:27px;height:28px;padding:1px;border:1px solid #888;
+ background:transparent;border-radius:3px;cursor:pointer
+}
+.classic-study-viewer .classic-study-size{font:600 11px system-ui;color:#ddd;min-width:33px}
+.classic-study-viewer .classic-study-tools-help{
+ display:block;margin:5px 12px 3px;color:#bbb;font:11px/1.5 system-ui
+}
+.classic-study-viewer .classic-study-annotation{box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.classic-study-magnifying-lens{
+ position:fixed;z-index:2147483000;pointer-events:none;
+ padding:13px 17px;min-width:190px;max-height:170px;overflow:hidden;
+ white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55;
+ border:2px solid #bbaf97;border-radius:10px;
+ box-shadow:0 15px 45px #0008,0 0 0 4px #fff5;
+}
+.classic-study-magnifying-lens[hidden]{display:none!important}
