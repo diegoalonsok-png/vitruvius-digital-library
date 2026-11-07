@@ -1,0 +1,307 @@
+{
+  "schema": "vitruvia-classical-document-index-v1",
+  "method": "Full local DOCX text, paragraphs in source order; no OCR or semantic alignment",
+  "count": 30,
+  "records": [
+    {
+      "id": "aristofanes-nubes",
+      "title": "aristofanes nubes",
+      "source": "documents/clasicos/aristofanes-nubes.docx",
+      "index": "data/classics-documents/aristofanes-nubes.json",
+      "sha256": "72a8706d0f2c4a0fa10050bf27b6b0574f969cb128bbba06d9867740c0a79678",
+      "paragraphs": 193,
+      "pdf": "documents/clasicos/aristofanes-nubes.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "aristoteles-etica-nicomaquea",
+      "title": "aristoteles etica nicomaquea",
+      "source": "documents/clasicos/aristoteles-etica-nicomaquea.docx",
+      "index": "data/classics-documents/aristoteles-etica-nicomaquea.json",
+      "sha256": "62c8adc6e39d5edb4d2df99e3607b9b7704456c1849dbac5d39ad69de61025dd",
+      "paragraphs": 247,
+      "pdf": "documents/clasicos/aristoteles-etica-nicomaquea.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "aristoteles-poetica",
+      "title": "aristoteles poetica",
+      "source": "documents/clasicos/aristoteles-poetica.docx",
+      "index": "data/classics-documents/aristoteles-poetica.json",
+      "sha256": "c638a460f0863aef2736a3666ea3acb79515843546c815d9e608c736ae4caa57",
+      "paragraphs": 1148,
+      "pdf": "documents/clasicos/aristoteles-poetica.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "catulo-poemas",
+      "title": "catulo poemas",
+      "source": "documents/clasicos/catulo-poemas.docx",
+      "index": "data/classics-documents/catulo-poemas.json",
+      "sha256": "80d07cd55ac3f060fdbbd38cd8f163e235e537e76aeda05309a5f016d1450800",
+      "paragraphs": 303,
+      "pdf": "documents/clasicos/catulo-poemas.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "cesar-guerra-de-las-galias",
+      "title": "cesar guerra de las galias",
+      "source": "documents/clasicos/cesar-guerra-de-las-galias.docx",
+      "index": "data/classics-documents/cesar-guerra-de-las-galias.json",
+      "sha256": "101cea047e6390935988609cdbfb5cfe7b947a0e40449c1f8e3fb9f40061247a",
+      "paragraphs": 4711,
+      "pdf": "documents/clasicos/cesar-guerra-de-las-galias.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "ciceron-de-officiis",
+      "title": "ciceron de officiis",
+      "source": "documents/clasicos/ciceron-de-officiis.docx",
+      "index": "data/classics-documents/ciceron-de-officiis.json",
+      "sha256": "3a16bda222fef9d2958668e8cda44d08e8515715a9a55bc6124bf857b7938523",
+      "paragraphs": 749,
+      "pdf": "documents/clasicos/ciceron-de-officiis.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "esquilo-agamenon",
+      "title": "esquilo agamenon",
+      "source": "documents/clasicos/esquilo-agamenon.docx",
+      "index": "data/classics-documents/esquilo-agamenon.json",
+      "sha256": "365f5961f617b0bfaa316285926db225090c5d1ca4727da16a37fc9a3ce9853a",
+      "paragraphs": 225,
+      "pdf": "documents/clasicos/esquilo-agamenon.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "euripides-medea",
+      "title": "euripides medea",
+      "source": "documents/clasicos/euripides-medea.docx",
+      "index": "data/classics-documents/euripides-medea.json",
+      "sha256": "53b0c00fcd89a1b429248f960cd119f6cbe81d676362b17b60c0ac5409916732",
+      "paragraphs": 139,
+      "pdf": "documents/clasicos/euripides-medea.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "hesiodo-teogonia",
+      "title": "hesiodo teogonia",
+      "source": "documents/clasicos/hesiodo-teogonia.docx",
+      "index": "data/classics-documents/hesiodo-teogonia.json",
+      "sha256": "fd717bdae5d35f6d2ae681a75bef7b6019a523a7b738aeaf4a622c4afae9a723",
+      "paragraphs": 83,
+      "pdf": "documents/clasicos/hesiodo-teogonia.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "hesiodo-trabajos-y-dias",
+      "title": "hesiodo trabajos y dias",
+      "source": "documents/clasicos/hesiodo-trabajos-y-dias.docx",
+      "index": "data/classics-documents/hesiodo-trabajos-y-dias.json",
+      "sha256": "f91231dc20b2b6f2232c919ac24623c65f1f79b9cc3d966b50e6851d5cae5017",
+      "paragraphs": 67,
+      "pdf": "documents/clasicos/hesiodo-trabajos-y-dias.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "homero-iliada",
+      "title": "homero iliada",
+      "source": "documents/clasicos/homero-iliada.docx",
+      "index": "data/classics-documents/homero-iliada.json",
+      "sha256": "3b16fb57504cfff76d0c17dd3030bce31b4012623e760faebde2d2551d69cde8",
+      "paragraphs": 1265,
+      "pdf": "documents/clasicos/homero-iliada.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "homero-odisea",
+      "title": "homero odisea",
+      "source": "documents/clasicos/homero-odisea.docx",
+      "index": "data/classics-documents/homero-odisea.json",
+      "sha256": "054884276cd49c79bd38128c4ca81dc24afa86cde7cceef2d9081383a56c6252",
+      "paragraphs": 1105,
+      "pdf": "documents/clasicos/homero-odisea.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "horacio-odas",
+      "title": "horacio odas",
+      "source": "documents/clasicos/horacio-odas.docx",
+      "index": "data/classics-documents/horacio-odas.json",
+      "sha256": "3c33baf0e0199e962b822f62699fe7255ea0856779bcebed3308334bf2040e9d",
+      "paragraphs": 373,
+      "pdf": "documents/clasicos/horacio-odas.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "lucrecio-de-rerum-natura",
+      "title": "lucrecio de rerum natura",
+      "source": "documents/clasicos/lucrecio-de-rerum-natura.docx",
+      "index": "data/classics-documents/lucrecio-de-rerum-natura.json",
+      "sha256": "e7390aa7226e5e9833194b6148568bdcf0d2a010448a1c0c7fbe42971cccc30d",
+      "paragraphs": 588,
+      "pdf": "documents/clasicos/lucrecio-de-rerum-natura.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "marco-aurelio-meditaciones",
+      "title": "marco aurelio meditaciones",
+      "source": "documents/clasicos/marco-aurelio-meditaciones.docx",
+      "index": "data/classics-documents/marco-aurelio-meditaciones.json",
+      "sha256": "63eca7ecbe5e4fa0c67d185f8f4f4a8de8fcc4dfb7dbb0a19030bb756c99a17b",
+      "paragraphs": 1161,
+      "pdf": "documents/clasicos/marco-aurelio-meditaciones.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "ovidio-metamorfosis",
+      "title": "ovidio metamorfosis",
+      "source": "documents/clasicos/ovidio-metamorfosis.docx",
+      "index": "data/classics-documents/ovidio-metamorfosis.json",
+      "sha256": "2507f78fa2892a492ed52124c8844870ce9742dcaef0746399ada57d3ee2d9e5",
+      "paragraphs": 1221,
+      "pdf": "documents/clasicos/ovidio-metamorfosis.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "pindaro-olimpicas",
+      "title": "pindaro olimpicas",
+      "source": "documents/clasicos/pindaro-olimpicas.docx",
+      "index": "data/classics-documents/pindaro-olimpicas.json",
+      "sha256": "83e008adc52990b1dfebfd07244f619609216d5da71f6619c15351a4736c9a6f",
+      "paragraphs": 97,
+      "pdf": "documents/clasicos/pindaro-olimpicas.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "platon-apologia",
+      "title": "platon apologia",
+      "source": "documents/clasicos/platon-apologia.docx",
+      "index": "data/classics-documents/platon-apologia.json",
+      "sha256": "ab3f3138810df3e97c8a71b720d2d27f05f067827a33fc7d542962d97acce0d6",
+      "paragraphs": 85,
+      "pdf": "documents/clasicos/platon-apologia.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "platon-republica",
+      "title": "platon republica",
+      "source": "documents/clasicos/platon-republica.docx",
+      "index": "data/classics-documents/platon-republica.json",
+      "sha256": "cda9a7e4b4d0d9c8466ec7a6cd26b2c0f48b80c4b4a85e06f59a29b0dc2671fc",
+      "paragraphs": 841,
+      "pdf": "documents/clasicos/platon-republica.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "plauto-anfitrion",
+      "title": "plauto anfitrion",
+      "source": "documents/clasicos/plauto-anfitrion.docx",
+      "index": "data/classics-documents/plauto-anfitrion.json",
+      "sha256": "c1eb45e44d131aaaf7bbf0c14278277087c1b97aa22c679da43bf573ea965666",
+      "paragraphs": 143,
+      "pdf": "documents/clasicos/plauto-anfitrion.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "seneca-epistulae-morales",
+      "title": "seneca epistulae morales",
+      "source": "documents/clasicos/seneca-epistulae-morales.docx",
+      "index": "data/classics-documents/seneca-epistulae-morales.json",
+      "sha256": "a14dfeba6d93ab0607b4c17b0625a3a167c7ebdc2fcc89761811653816300ac1",
+      "paragraphs": 4289,
+      "pdf": "documents/clasicos/seneca-epistulae-morales.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "sofocles-antigona",
+      "title": "sofocles antigona",
+      "source": "documents/clasicos/sofocles-antigona.docx",
+      "index": "data/classics-documents/sofocles-antigona.json",
+      "sha256": "1ca7186c5fe65b5034da1ceb45d02c082c8f38964aae4ead039462508169d424",
+      "paragraphs": 166,
+      "pdf": "documents/clasicos/sofocles-antigona.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "sofocles-edipo-rey",
+      "title": "sofocles edipo rey",
+      "source": "documents/clasicos/sofocles-edipo-rey.docx",
+      "index": "data/classics-documents/sofocles-edipo-rey.json",
+      "sha256": "a9bc2bc25116ee1d9c18f532b9b3cea3672672d90f637ed9b47613b31160478e",
+      "paragraphs": 156,
+      "pdf": "documents/clasicos/sofocles-edipo-rey.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "suetonio-divus-augustus",
+      "title": "suetonio divus augustus",
+      "source": "documents/clasicos/suetonio-divus-augustus.docx",
+      "index": "data/classics-documents/suetonio-divus-augustus.json",
+      "sha256": "0db06805a48c191e063c388f97417b78c2e8f63a5fe8821cc8ae9ba3c32ba2ce",
+      "paragraphs": 590,
+      "pdf": "documents/clasicos/suetonio-divus-augustus.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "tacito-anales",
+      "title": "tacito anales",
+      "source": "documents/clasicos/tacito-anales.docx",
+      "index": "data/classics-documents/tacito-anales.json",
+      "sha256": "2ee77876c7944ebbae0bb5a33008cb7475c6da134dbfff6bd4cbe424e978aedf",
+      "paragraphs": 2170,
+      "pdf": "documents/clasicos/tacito-anales.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "terencio-andria",
+      "title": "terencio andria",
+      "source": "documents/clasicos/terencio-andria.docx",
+      "index": "data/classics-documents/terencio-andria.json",
+      "sha256": "7db4a359b221298b3f6744dd0499f232379c34ee4dee4b22bd47186b765973f9",
+      "paragraphs": 161,
+      "pdf": "documents/clasicos/terencio-andria.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "virgilio-bucolicas",
+      "title": "virgilio bucolicas",
+      "source": "documents/clasicos/virgilio-bucolicas.docx",
+      "index": "data/classics-documents/virgilio-bucolicas.json",
+      "sha256": "36dd6ab8fac392b5ed5d3c702103ce107e1ab7f9db0073a15908da40926d32da",
+      "paragraphs": 103,
+      "pdf": "documents/clasicos/virgilio-bucolicas.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "virgilio-eneida",
+      "title": "virgilio eneida",
+      "source": "documents/clasicos/virgilio-eneida.docx",
+      "index": "data/classics-documents/virgilio-eneida.json",
+      "sha256": "2663790c961c18a7abd6a91cd00748bfd117d79149b7c44954bb77ab666073eb",
+      "paragraphs": 999,
+      "pdf": "documents/clasicos/virgilio-eneida.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "virgilio-georgicas",
+      "title": "virgilio georgicas",
+      "source": "documents/clasicos/virgilio-georgicas.docx",
+      "index": "data/classics-documents/virgilio-georgicas.json",
+      "sha256": "2d90eb43803fa66b0b760c1d57cf16512098bd50c6105a9b5e97e1c9544923a6",
+      "paragraphs": 228,
+      "pdf": "documents/clasicos/virgilio-georgicas.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    },
+    {
+      "id": "vitruvio-de-architectura-perseus",
+      "title": "vitruvio de architectura perseus",
+      "source": "documents/clasicos/vitruvio-de-architectura-perseus.docx",
+      "index": "data/classics-documents/vitruvio-de-architectura-perseus.json",
+      "sha256": "9bbadf4d4fa025e5ce194479dfe6193e03d036d25afa468dadfcb97803932b30",
+      "paragraphs": 2188,
+      "pdf": "documents/clasicos/vitruvio-de-architectura-perseus.pdf",
+      "status": "literal-docx-index; language and alignment unverified"
+    }
+  ]
+}
