@@ -254,19 +254,24 @@ async function semanticSearch(q,{limit=6}={}){
 }
 // Bounded result cache: repeated queries should not rescan all hosted editions.
 // A partial scan is never cached, so missing sources can be retried.
-const queryCache=new Map(),MAX_QUERY_CACHE=16;
+const queryCache=new Map(),inflightQueries=new Map(),MAX_QUERY_CACHE=16;
 function cached(kind,fn){
  return async (q,options={})=>{
   const limit=Math.max(1,Math.min(100,Number(options.limit)||8));
   const key=kind+"|"+fold(String(q||"").trim())+"|"+limit;
   const hit=queryCache.get(key);
   if(hit){lastDiagnostics={...hit.diagnostics,reused:true};return hit.rows.map(x=>({...x}))}
-  const rows=await fn(q,{...options,limit});
-  if(lastDiagnostics.failed===0&&lastDiagnostics.mode!=="not-searched"){
-   queryCache.set(key,{rows:rows.map(x=>({...x})),diagnostics:{...lastDiagnostics}});
-   if(queryCache.size>MAX_QUERY_CACHE)queryCache.delete(queryCache.keys().next().value);
-  }
-  return rows;
+  // Deduplicate concurrent identical requests from Vitruvia and the bridge UI.
+  if(inflightQueries.has(key))return inflightQueries.get(key).then(x=>x.map(r=>({...r})));
+  const running=fn(q,{...options,limit}).then(rows=>{
+   if(lastDiagnostics.failed===0&&lastDiagnostics.mode!=="not-searched"){
+    queryCache.set(key,{rows:rows.map(x=>({...x})),diagnostics:{...lastDiagnostics}});
+    if(queryCache.size>MAX_QUERY_CACHE)queryCache.delete(queryCache.keys().next().value);
+   }
+   return rows;
+  }).finally(()=>inflightQueries.delete(key));
+  inflightQueries.set(key,running);
+  return running.then(rows=>rows.map(x=>({...x})));
  };
 }
 window.ClassicsCorpusSearch={
