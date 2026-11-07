@@ -498,7 +498,20 @@ try{
    assert.equal(await p.locator('#pap-ink-canvas').isVisible(),false,'Blank extracted image should not occupy page space');
    assert.equal(await p.locator('#pap-detail').isVisible(),false,'Detail should stay collapsed below the ostracon until opened');
    assert.equal(await p.locator('#pap-extraction-fold').evaluate(el=>el.open),false,'Advanced extraction must start collapsed');
-   await p.locator('#pap-file').setInputFiles({name:'fragment.png',mimeType:'image/png',buffer:Buffer.from(image,'base64')});
+   // User drop populates the same file input used by extraction.
+   await p.evaluate(base64=>{
+    const bytes=Uint8Array.from(atob(base64),c=>c.charCodeAt(0)),dt=new DataTransfer();
+    dt.items.add(new File([bytes],'fragment.png',{type:'image/png'}));
+    const target=document.getElementById('pap-stage');
+    target.dispatchEvent(new DragEvent('dragenter',{bubbles:true,cancelable:true,dataTransfer:dt}));
+    if(!target.classList.contains('pap-drag-over'))throw new Error('Drop highlight missing');
+    target.dispatchEvent(new DragEvent('dragover',{bubbles:true,cancelable:true,dataTransfer:dt}));
+    target.dispatchEvent(new DragEvent('drop',{bubbles:true,cancelable:true,dataTransfer:dt}));
+   },image);
+   await p.waitForFunction(()=>document.getElementById('pap-status')?.textContent.includes('fragment.png'),null,{timeout:8000});
+   assert.equal(await p.locator('#pap-file').evaluate(el=>el.files?.[0]?.name),'fragment.png','Drop upload missing in file input');
+   assert.equal(await p.locator('#pap-stage').evaluate(el=>el.classList.contains('pap-drag-over')),false,'Drop overlay persisted');
+
    await p.waitForFunction(()=>!document.getElementById('pap-ocr').disabled,{timeout:8000});
    await p.locator('#pap-tone-exposure').evaluate(el=>{el.value='30';el.dispatchEvent(new Event('input',{bubbles:true}))});
    assert.equal(await p.locator('#pap-tone-exposure-value').innerText(),'30','Exposure slider is inert');
