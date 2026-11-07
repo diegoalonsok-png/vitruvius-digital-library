@@ -14,7 +14,7 @@
  const objectWords=/\b(aparato|dispositivo|utensilio|herramienta|recipiente|maquina|electrodomestico|instrumento|appliance|device|utensil|tool|machine|cookware|appareil|ustensile|outil)\b/;
  // Identity-safe image ranking: name overlap is not proof of the depicted person.
  // Historical figures prioritize historical artworks; coins/photos of homonyms do not.
- const historicImageTerms=/\b(bust|busto|buste|busts|sculpture|escultura|statue|statua|estatua|herm|herma|portrait|retrato|ritratto|painting|pintura|fresco|engraving|grabado|mosaic|mosaico|woodcut|manuscript|manuscrito|codex|folio|book|libro)\b/;
+ const historicImageTerms=/\b(bust|busto|buste|busts|sculpture|escultura|statue|statua|estatua|herm|herma|marble head|sculpted head|portrait|retrato|ritratto|painting|pintura|fresco|engraving|grabado|mosaic|mosaico|woodcut|manuscript|manuscrito|codex|folio|book|libro)\b/;
  const excludedLeadTerms=/\b(coin|coins|moneda|monedas|denarius|denario|sestertius|sesterce|medal|medalla|stamp|sello|signature|firma|logo|map|mapa|banknote|billete|ai generated|midjourney|stable diffusion|dall e|deepfake)\b/;
  const modernPhotoTerms=/\b(photo|photograph|fotografia|foto|selfie|concert|concierto|singer|cantante|musician|musico|actress|actor|performance|performing|festival|interview|television|tv)\b/;
  function historicalVisualGuard(page,topic,metadata=""){
@@ -28,7 +28,7 @@
   // independently confirmed by the provider.
   const subject=fold(topic.authorityName||topic.subject||"");
   const variants=[subject,...(topic.identityNames||[])].map(fold).filter(v=>v.length>=5);
-  if(!variants.some(v=>title.includes(v)))return false;
+  if(!variants.some(v=>title.includes(v))&&!page.fromEntityImage)return false;
   // A one-word ancient name can be the surname of a contemporary person.
   // Generic Commons search alone is insufficient for identity verification.
   if(variants.every(v=>!v.includes(" "))&&!page.fromEntityImage){
