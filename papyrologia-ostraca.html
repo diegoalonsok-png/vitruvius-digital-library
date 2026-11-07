@@ -199,6 +199,18 @@ main{max-width:1540px}
 .pap-ink-signs:empty{display:none}
 .pap-primary-viewer #pap-detail{height:140px;max-height:140px}
 @media(max-width:760px){.pap-workbench{display:flex;flex-direction:column}.pap-primary-viewer,.pap-image-controls{width:100%}}
+
+.pap-tonal-panel{margin-top:6px!important;padding:10px!important}
+.pap-tonal-panel .pap-panel-kicker{margin-bottom:4px}
+.pap-tonal-panel .caption{margin:3px 0 10px;font-size:11px}
+.pap-tone-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+.pap-tone-grid label{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:1px 5px;color:#d0d0ce;font:600 11px/1.35 Arial,system-ui,sans-serif}
+.pap-tone-grid input[type=range]{grid-column:1;width:100%;height:19px;min-width:0;accent-color:#bcbcbc;cursor:pointer}
+.pap-tone-grid output{grid-column:2;grid-row:2;text-align:right;align-self:center;color:#e5e5e3;font:12px Arial,sans-serif}
+.pap-tonal-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.pap-tonal-actions button{background:#242426;border:1px solid #535355;color:#eaeaea;padding:7px 9px;border-radius:4px;font:12px Arial,sans-serif;cursor:pointer}
+.pap-tonal-actions button:hover,.pap-tonal-actions button[aria-pressed=true]{background:#414146;color:#fff}
+@media(max-width:500px){.pap-tone-grid{gap:8px}.pap-tonal-actions button{flex:1 1 130px}}
 </style>
 </head>
 <body>
@@ -254,6 +266,26 @@ main{max-width:1540px}
 <button id="pap-export" type="button">Guardar imagen procesada</button>
 </div>
 </section>
+ <section class="panel pap-tonal-panel" id="pap-tonal-panel" aria-labelledby="pap-tonal-title">
+ <div class="pap-panel-kicker">III · REVELATIO IMAGINIS</div>
+ <h2 id="pap-tonal-title">Revelado de tinta e incisiones</h2>
+ <p class="caption">Ajustá la luz y el detalle sin modificar la fotografía original.</p>
+ <div class="pap-tone-grid">
+ <label>Exposición <input id="pap-tone-exposure" type="range" min="-100" max="100" value="0"><output id="pap-tone-exposure-value">0</output></label>
+ <label>Sombras <input id="pap-tone-shadows" type="range" min="-100" max="100" value="0"><output id="pap-tone-shadows-value">0</output></label>
+ <label>Altas luces <input id="pap-tone-highlights" type="range" min="-100" max="100" value="0"><output id="pap-tone-highlights-value">0</output></label>
+ <label>Gamma <input id="pap-tone-gamma" type="range" min="30" max="250" value="100"><output id="pap-tone-gamma-value">1,00</output></label>
+ <label>Claridad local <input id="pap-tone-clarity" type="range" min="0" max="100" value="0"><output id="pap-tone-clarity-value">0</output></label>
+ <label>Nitidez <input id="pap-tone-sharpness" type="range" min="0" max="100" value="0"><output id="pap-tone-sharpness-value">0</output></label>
+ </div>
+ <div class="pap-tonal-actions">
+ <button type="button" id="pap-tone-papyrus">Tinta desvaída</button>
+ <button type="button" id="pap-tone-engraved">Incisión tenue</button>
+ <button type="button" id="pap-tone-reset">Restaurar revelado</button>
+ <button type="button" id="pap-tone-original" aria-pressed="false">Comparar original</button>
+ </div>
+ <p class="caption">Son filtros digitales de contraste, no una reconstrucción material verificada. Comprobá siempre el trazo original.</p>
+ </section>
  <p class="pap-controls-note">Los ajustes se aplican a la fotografía de la izquierda; el archivo original permanece intacto.</p>
 </aside>
 </div>
