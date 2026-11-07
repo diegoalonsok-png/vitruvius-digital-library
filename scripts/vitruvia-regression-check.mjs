@@ -21,6 +21,28 @@ for(const name of modules){
 }
 const vitruviaHTML=sourceFile("vitruvia.html");
 const bibliothecaHTML=sourceFile("bibliotheca-graeca-latina.html");
+
+// Search layout regression: generic multiword searches (for example
+// "Cristos negros de Centroamérica") must not reserve an empty right rail.
+const liveLayout=sourceFile("assets/vitruvia-reading-layout-repair.css");
+const originalContextStyles=sourceFile("assets/vitruvia-context-panel.css");
+const editorialStyles=sourceFile("assets/vitruvia-discovery.css");
+const serviceWorker=sourceFile("sw.js");
+assert.ok(vitruviaHTML.includes("assets/vitruvia-reading-layout-repair.css?v=20261107-singlecolumn-2"),
+ "Final single-column search stylesheet must be loaded and cache-busted");
+assert.ok(!/<script\b[^>]*src=["'][^"']*multilingual-academic-search\.js/i.test(vitruviaHTML),
+ "Unfinished multilingual philology panel must not be mounted in Vitruvia");
+assert.ok(liveLayout.includes("body.vitruvia-reading #results .results-grid"),
+ "Result container must be a full-width single flow");
+assert.ok(liveLayout.includes("body.vitruvia-reading #vitruvia-article .article-grid"),
+ "Encyclopaedia and supporting panels must be displayed in one column");
+assert.ok(!originalContextStyles.includes("grid-template-columns:190px"),
+ "Legacy three-column context stylesheet must not reappear");
+assert.ok(!editorialStyles.includes("max-width:77ch!important"),
+ "A narrow encyclopaedia-width cap must not return");
+assert.ok(serviceWorker.includes('pathname.endsWith("/vitruvia.html")'),
+ "Vitruvia navigations should fetch current HTML rather than stale cached markup");
+
 for(const [label,html] of [["Vitruvia",vitruviaHTML],["Bibliotheca",bibliothecaHTML]]){
  // Solo JavaScript ejecutable: se excluyen JSON-LD y otros tipos de datos.
  const scripts=[...html.matchAll(/<script(\s[^>]*)?>([\s\S]*?)<\/script>/gi)].filter(m=>!/type\s*=\s*["']?(application\/(ld\+)?json|module|text\/template)/i.test(m[1]||"")).map(m=>m[2]).filter(x=>x.trim());
