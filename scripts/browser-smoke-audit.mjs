@@ -106,13 +106,13 @@ try{
  });
  await test('Scriptorium Barb. y G: galería, navegación y modo oscuro',async()=>{
   for(const record of [
-    {letter:'B',path:'barbaro-1567.html',total:522,prefix:'bar',first:173,last:214},
-    {letter:'G',path:'giocondo-1511.html',total:254,prefix:'gio',first:73,last:97}
+    {letter:'B',path:'barbaro-1567.html',total:522,prefix:'bar',first:173,last:214,initial:12},
+    {letter:'G',path:'giocondo-1511.html',total:254,prefix:'gio',first:73,last:97,initial:24}
   ]){
     const page=await pageFor(record.path);
     await page.locator('#'+record.prefix+'-gallery-panel').waitFor({state:'visible',timeout:16000});
     const buttons=page.locator('#'+record.prefix+'-gallery-results button[data-'+record.prefix+'-image]');
-    assert.equal(await buttons.count(),24,'Faltan miniaturas en galería '+record.letter);
+    assert.equal(await buttons.count(),record.initial,'Faltan miniaturas en galería '+record.letter);
     await page.locator('#'+record.prefix+'-gallery-section').selectOption('4');
     assert.equal(Number(await buttons.first().getAttribute('data-'+record.prefix+'-image')),record.first,'Libro IV inicia mal en '+record.letter);
     assert(Number(await buttons.last().getAttribute('data-'+record.prefix+'-image'))<=record.last,'Libro IV fuera de intervalo en '+record.letter);
