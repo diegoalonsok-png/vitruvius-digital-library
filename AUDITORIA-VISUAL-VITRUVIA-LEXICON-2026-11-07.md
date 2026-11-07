@@ -44,7 +44,7 @@
 ## Riesgos confirmados en la arquitectura visual
 
 - **Cascada fragmentada:** el CSS embebido de Vitruvia más numerosas hojas externas multiplica las oportunidades de colisiones.
-- **Identidad inconsistentes:** varias páginas usan aún azules marinos, marcos dorados, fondos crema y tipografías de controles diferentes a los buscadores canónicos.
+- **Identidad inconsistente:** varias páginas usan aún azules marinos, marcos dorados, fondos crema y tipografías de controles diferentes a los buscadores canónicos.
 - **Regresiones recurrentes:** los `grid-template-columns`, `max-width`, `position:sticky` y `display` heredados pueden recrear columnas vacías.
 - **Peligro de “arreglo global”:** una sobreescritura CSS universal sin inspeccionar cada lector puede romper imágenes, paneles de cotejo, colores personalizados y edición crítica.
 
