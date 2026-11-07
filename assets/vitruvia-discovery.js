@@ -21,7 +21,7 @@
   if(topic.kind!=="person"||!topic.ancient&&!topic.historical)return true;
   const title=fold(page.title||page.name||""),description=fold(metadata);
   if(excludedLeadTerms.test(title))return false;
-  if(modernPhotoTerms.test(title)&&!/(?:\b(?:statue|statua|sculpture|escultura|bust|busto|buste|herma|herm|marble|marmol|engraving|grabado|painting|pintura|fresco)\b)/.test(title))return false;
+  if(modernPhotoTerms.test(title))return false;
   if(!historicImageTerms.test(title))return false;
   // A title must identify the subject by a meaningful full name, not only
   // a surname shared with a modern person; authorized category must be
