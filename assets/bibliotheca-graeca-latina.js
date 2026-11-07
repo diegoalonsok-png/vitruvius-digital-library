@@ -245,7 +245,7 @@ function suggestedWorks(){
 }
 function suggestionLabel(key){
  const dict={
-  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Seleccioná un título para consultar su lector, ficha o fuente documentada. El listado completo aparece al abrir este campo.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
+  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Selecciona un título para consultar su lector, ficha o fuente documentada. El listado completo aparece al abrir este campo.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
   en:{count:"matching works",local:"readable here",external:"with external sources",all:"Choose any title to open its record and available reader.",edition:"Identified edition",none:"No matching works under the current filters."},
   fr:{count:"œuvres trouvées",local:"à lire ici",external:"avec source externe",all:"Choisissez un titre pour consulter sa notice et son lecteur disponible.",edition:"Édition identifiée",none:"Aucune œuvre correspondante avec ces filtres."}
  };
