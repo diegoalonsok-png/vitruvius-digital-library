@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 49,
+  "count": 50,
   "works": 24,
   "entries": [
     {
@@ -314,6 +314,16 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae / Conspiracy of Catiline",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sallust-catiline-en.json",
+      "reader": "classics-text-reader.html?work=sallust-catiline&lang=en",
+      "sourceDescription": "John Selby Watson, 1899; PerseusDL TEI CC BY-SA 4.0. Partial: 59/61 chapters, missing 35 and 57; alignment only by matching chapter number."
     },
     {
       "workId": "sallust-catiline",
