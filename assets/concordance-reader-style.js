@@ -1,50 +1,34 @@
-/* Preferencias independientes del diccionario-concordancia, sin modificar el texto fuente. */
-(()=>{
-'use strict';
-const KEY='vitruvius-concordance-reader-v1';
-const defaults={bg:'#faf8f2',fg:'#182b3b',font:'Georgia, serif',size:17};
-const fonts={'Georgia':'Georgia, serif','Garamond':'Garamond, "Times New Roman", serif','Palatino':'Palatino, "Palatino Linotype", serif','Times New Roman':'"Times New Roman", serif','Arial':'Arial, sans-serif','Verdana':'Verdana, sans-serif','OpenDyslexic':'OpenDyslexic, Arial, sans-serif'};
+/* Independent page personalization, with permanently dark textual viewers. */
+(()=>{'use strict';
+const KEY='vitruvius-concordance-page-v2';
+const defaults={bg:'#111820',fg:'#f0ece2',font:'Georgia, serif',size:17};
+const fonts={'Georgia':'Georgia, serif','Garamond':'Garamond, "Times New Roman", serif','Palatino':'Palatino, "Palatino Linotype", serif','Times New Roman':'"Times New Roman", serif','Cardo':'Cardo, Georgia, serif','Gentium Book Plus':'"Gentium Book Plus", Georgia, serif','Arial':'Arial, sans-serif','Verdana':'Verdana, sans-serif'};
+const presets=[['Negro','#111820','#f0ece2'],['Azul noche','#172c44','#f7f2ea'],['Sepia','#efe0c6','#302519'],['Blanco','#ffffff','#1b2835'],['Verde tinta','#16332c','#f3f0df'],['Granate','#3d1e31','#fff2df']];
 const valid=c=>/^#[0-9a-f]{6}$/i.test(c);
-let preferences={...defaults};
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');if(valid(saved.bg))preferences.bg=saved.bg;if(valid(saved.fg))preferences.fg=saved.fg;if(Object.values(fonts).includes(saved.font))preferences.font=saved.font;if(Number.isFinite(saved.size)&&saved.size>=13&&saved.size<=28)preferences.size=saved.size;}catch{}
-function apply(){
- const root=document.documentElement;
- root.style.setProperty('--concordance-background',preferences.bg);
- root.style.setProperty('--concordance-foreground',preferences.fg);
- root.style.setProperty('--concordance-font',preferences.font);
- root.style.setProperty('--concordance-size',preferences.size+'px');
- try{localStorage.setItem(KEY,JSON.stringify(preferences))}catch{}
-}
+const root=document.documentElement;root.classList.add('lexicon-concordance-page');
+let state={...defaults};try{let d=JSON.parse(localStorage.getItem(KEY)||'{}');if(valid(d.bg))state.bg=d.bg;if(valid(d.fg))state.fg=d.fg;if(Object.values(fonts).includes(d.font))state.font=d.font;if(Number.isFinite(d.size)&&d.size>=13&&d.size<=28)state.size=d.size;}catch{}
+const apply=()=>{root.style.setProperty('--lc-page-bg',state.bg);root.style.setProperty('--lc-page-ink',state.fg);root.style.setProperty('--lc-font',state.font);root.style.setProperty('--lc-font-size',state.size+'px');try{localStorage.setItem(KEY,JSON.stringify(state))}catch{}};
 apply();
 function mount(){
- const filters=document.querySelector('.filters');if(!filters||document.getElementById('concordance-personalize'))return;
- const panel=document.createElement('details');panel.id='concordance-personalize';panel.className='concordance-personalize';
- const head=document.createElement('summary');head.textContent='🎨 Personalizar fondo y tipografía';panel.append(head);
- const controls=document.createElement('div');controls.className='concordance-personalize-controls';panel.append(controls);
- function color(label,field){
-  const wrap=document.createElement('label');wrap.textContent=label;
-  const input=document.createElement('input');input.type='color';input.value=preferences[field];input.setAttribute('aria-label',label);
-  input.addEventListener('input',()=>{preferences[field]=input.value;apply()});
-  wrap.append(input);controls.append(wrap);return input;
- }
- const bg=color('Color de fondo', 'bg'),fg=color('Color de las letras','fg');
- const fontLabel=document.createElement('label');fontLabel.textContent='Tipografía';
- const select=document.createElement('select');select.setAttribute('aria-label','Tipografía de lectura');
- for(const [label,value] of Object.entries(fonts)){const option=document.createElement('option');option.value=value;option.textContent=label;select.append(option)}
- select.value=preferences.font;select.addEventListener('change',()=>{preferences.font=select.value;apply()});fontLabel.append(select);controls.append(fontLabel);
- const sizeLabel=document.createElement('label');sizeLabel.textContent='Tamaño de letra';
- const size=document.createElement('input');size.type='range';size.min='13';size.max='28';size.step='1';size.value=String(preferences.size);
- const sizeValue=document.createElement('output');sizeValue.textContent=preferences.size+' px';
- size.addEventListener('input',()=>{preferences.size=Number(size.value);sizeValue.textContent=size.value+' px';apply()});
- sizeLabel.append(size,sizeValue);controls.append(sizeLabel);
- const preset=document.createElement('div');preset.className='concordance-presets';
- for(const [label,bgColor,fgColor] of [['Papel','#faf8f2','#182b3b'],['Blanco','#ffffff','#141414'],['Sepia','#efe1c4','#382b20'],['Azul noche','#152638','#f5eddf'],['Negro','#101114','#f2f2f2']]){
-  const b=document.createElement('button');b.type='button';b.textContent=label;b.title='Fondo '+label;b.style.borderBottom='3px solid '+bgColor;
-  b.addEventListener('click',()=>{preferences.bg=bgColor;preferences.fg=fgColor;bg.value=bgColor;fg.value=fgColor;apply()});preset.append(b);
- }
- controls.append(preset);
- const reset=document.createElement('button');reset.type='button';reset.textContent='Restaurar diseño original';reset.addEventListener('click',()=>{preferences={...defaults};bg.value=preferences.bg;fg.value=preferences.fg;select.value=preferences.font;size.value=String(preferences.size);sizeValue.textContent=preferences.size+' px';apply()});controls.append(reset);
- filters.before(panel);
+const main=document.querySelector('main'),filters=main?.querySelector('.filters');if(!filters||document.querySelector('#concordance-personalize'))return;
+const panel=document.createElement('section');panel.id='concordance-personalize';panel.setAttribute('aria-label','Personalización de página y tipografía');
+const title=document.createElement('div');title.className='concordance-personalize-heading';panel.append(title);
+const strong=document.createElement('strong');strong.textContent='◈ APARIENCIA · VITRVVIVS';title.append(strong);
+const toggle=document.createElement('button');toggle.type='button';toggle.textContent='🎨 Color y tipografía';toggle.setAttribute('aria-expanded','true');title.append(toggle);
+const controls=document.createElement('div');controls.className='concordance-personalize-controls';panel.append(controls);
+function selectColor(name,k){const label=document.createElement('label');label.textContent=name;const x=document.createElement('input');x.type='color';x.value=state[k];x.setAttribute('aria-label',name);x.addEventListener('input',()=>{state[k]=x.value;apply()});label.append(x);controls.append(label);return x}
+const bg=selectColor('Fondo de toda la página','bg'),fg=selectColor('Color de los títulos y textos','fg');
+const fontLabel=document.createElement('label');fontLabel.textContent='Tipografía';
+const select=document.createElement('select');for(const [name,value] of Object.entries(fonts)){let o=document.createElement('option');o.value=value;o.textContent=name;select.append(o)}select.value=state.font;select.addEventListener('change',()=>{state.font=select.value;apply()});fontLabel.append(select);controls.append(fontLabel);
+const sizeLabel=document.createElement('label');sizeLabel.textContent='Tamaño de los textos';
+const size=document.createElement('input');size.type='range';size.min=13;size.max=28;size.value=state.size;
+const output=document.createElement('output');output.textContent=state.size+' px';size.addEventListener('input',()=>{state.size=Number(size.value);output.textContent=size.value+' px';apply()});sizeLabel.append(size,output);controls.append(sizeLabel);
+const buttons=document.createElement('div');buttons.className='concordance-presets';controls.append(buttons);
+function redraw(){bg.value=state.bg;fg.value=state.fg;select.value=state.font;size.value=state.size;output.textContent=state.size+' px';apply()}
+for(const [label,bgc,fgc] of presets){const b=document.createElement('button');b.type='button';b.textContent=label;b.title='Aplicar '+label;b.style.borderBottom='3px solid '+bgc;b.addEventListener('click',()=>{state.bg=bgc;state.fg=fgc;redraw()});buttons.append(b)}
+const reset=document.createElement('button');reset.type='button';reset.textContent='Restablecer';reset.addEventListener('click',()=>{state={...defaults};redraw()});controls.append(reset);
+toggle.addEventListener('click',()=>{controls.hidden=!controls.hidden;toggle.setAttribute('aria-expanded',String(!controls.hidden))});
+main.insertBefore(panel,main.querySelector('.eyebrow')||main.firstChild);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
