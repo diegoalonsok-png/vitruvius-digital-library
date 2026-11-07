@@ -101,7 +101,7 @@ async function openImage(f){
   original.width=Math.max(1,Math.round(img.naturalWidth*shrink));
   original.height=Math.max(1,Math.round(img.naturalHeight*shrink));
   base.clearRect(0,0,original.width,original.height);base.drawImage(img,0,0,original.width,original.height);
-  available=true;reset();$("pap-ocr").disabled=false;
+  available=true;reset();$("pap-ocr").disabled=false;$("pap-ocr-detail").disabled=false;
   status.textContent="Imagen abierta localmente: "+f.name+" · "+img.naturalWidth+" × "+img.naturalHeight+" píxeles. Usa las lupas o solicita OCR experimental.";
  }catch(e){status.textContent=e.message||"Imagen no válida."}finally{URL.revokeObjectURL(url)}
 }
@@ -142,6 +142,7 @@ $("pap-copy").addEventListener("click",async()=>{try{await navigator.clipboard.w
 $("pap-txt").addEventListener("click",()=>save(new Blob([text.value],{type:"text/plain;charset=utf-8"}),"transcripcion-papyrologia.txt"));
 $("pap-clear").addEventListener("click",()=>{text.value="";graphemes("");text.focus()});
 let tesseractPromise=null;
+
 function loadTesseract(){
  if(window.Tesseract?.createWorker)return Promise.resolve(window.Tesseract);
  if(!tesseractPromise)tesseractPromise=new Promise((resolve,reject)=>{
@@ -153,9 +154,9 @@ function loadTesseract(){
  }).catch(e=>{tesseractPromise=null;throw e});
  return tesseractPromise;
 }
-$("pap-ocr").addEventListener("click",async()=>{
+async function recognize(target){
  if(!available||running)return;
- running=true;$("pap-ocr").disabled=true;$("pap-cancel").disabled=false;
+ running=true;$("pap-ocr").disabled=true;$("pap-ocr-detail").disabled=true;$("pap-cancel").disabled=false;
  const lang=$("pap-ocr-lang").value;
  status.textContent="Descargando OCR y modelo "+lang+"; procesamiento de la imagen local en curso…";
  try{
@@ -163,18 +164,21 @@ $("pap-ocr").addEventListener("click",async()=>{
   if(!running)return;
   worker=await engine.createWorker(lang,1,{logger:m=>{if(running&&m.status)status.textContent="OCR local: "+m.status+" "+(m.progress?Math.round(m.progress*100)+" %":"")}});
   if(!running){await worker.terminate();worker=null;return}
-  const output=await worker.recognize(canvas);
+  const output=await worker.recognize(target);
   if(!running)return;
   const hypothesis=String(output.data?.text||"").trim();
-  text.value=hypothesis;graphemes(hypothesis);
+  if(target===detail&&text.value.trim())text.value+="\n"+hypothesis;else text.value=hypothesis;
+  graphemes(text.value);
   status.textContent=hypothesis?
    "Hipótesis OCR generada localmente; revisa signo por signo y confirma sobre la imagen original.":
    "OCR terminado, pero no identificó signos fiables. Prueba inversión, contraste, otra región o transcripción manual.";
  }catch(e){status.textContent="OCR no disponible: "+(e.message||e)}
- finally{running=false;$("pap-ocr").disabled=!available;$("pap-cancel").disabled=true;if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}}
-});
+ finally{running=false;$("pap-ocr").disabled=!available;$("pap-ocr-detail").disabled=!available;$("pap-cancel").disabled=true;if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}}
+}
+$("pap-ocr").addEventListener("click",()=>{void recognize(canvas)});
+$("pap-ocr-detail").addEventListener("click",()=>{void recognize(detail)});
 $("pap-cancel").addEventListener("click",()=>{
- running=false;$("pap-cancel").disabled=true;$("pap-ocr").disabled=!available;
+ running=false;$("pap-cancel").disabled=true;$("pap-ocr").disabled=!available;$("pap-ocr-detail").disabled=!available;
  if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}
  status.textContent="OCR cancelado. La imagen local y la transcripción manual se conservan.";
 });
