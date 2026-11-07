@@ -455,9 +455,9 @@ try{
     const r=document.getElementById('pane-right')?.contentDocument?.getElementById('current-locus')?.textContent;
     return l&&r&&l!==previous&&/^Capítulo|^Unidad|^Chapter|^Locus/i.test(l)?true:!!(l&&r&&l!==previous&&document.getElementById('sync-position')?.textContent?.startsWith('2 /'));
    },old,{timeout:12000});
-   assert.match(await p.locator('#sync-position').innerText(),/^2 \\/ /);
+   assert((await p.locator('#sync-position').innerText()).startsWith('2 / '),'Forward sync did not advance');
    await p.locator('#sync-start').click();
-   assert.match(await p.locator('#sync-position').innerText(),/^1 \\/ /);
+   assert((await p.locator('#sync-position').innerText()).startsWith('1 / '),'Return to beginning failed');
    await p.locator('#left-night').click();
    await p.waitForFunction(()=>document.getElementById('pane-left')?.contentDocument?.querySelector('.reader')?.style.backgroundColor==='rgb(23, 38, 51)',{timeout:7000});
    await p.locator('#left-invert').click();
