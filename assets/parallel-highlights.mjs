@@ -4,6 +4,7 @@
  * No modification of the underlying Latin or translations.
  */
 const VOCABULARY=[
+ {id:"geometria",la:["geometria","geometriae","geometriam","geometriae","geometricis","geometricus","geometrici"],es:["geometría","geometrico","geométrico","geométrica","geométricos","geométricas"],fr:["géométrie","géométrique","géométriques"],en:["geometry","geometric","geometrical"]},
  {id:"locus",la:["locus","loci","locum","loco","locis","locorum","loca","locorum"],es:["lugar","lugares","sitio","sitios","emplazamiento","emplazamientos","ubicación","ubicaciones"],fr:["lieu","lieux","endroit","endroits","emplacement","emplacements","site","sites"],en:["place","places","location","locations","site","sites","position","positions"]},
  {id:"symmetria",la:["symmetria","symmetriae","symmetriam","symmetrias","symmetriarum","symmetriis","symmetriae"],es:["simetría","simetrías","proporción","proporciones","proporcionalidad"],fr:["symétrie","symétries","proportion","proportions"],en:["symmetry","symmetries","proportion","proportions","proportionality"]},
  {id:"templum",la:["templum","templi","templo","templis","templa","templorum","templorum","templos"],es:["templo","templos","santuario","santuarios"],fr:["temple","temples","sanctuaire","sanctuaires"],en:["temple","temples","sanctuary","sanctuaries"]},
