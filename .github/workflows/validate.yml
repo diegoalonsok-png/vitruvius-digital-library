@@ -42,6 +42,7 @@ jobs:
           node scripts/test-vitruvia-author-reading.mjs
           node scripts/test-classical-catalogue-integrity.mjs
           node scripts/audit-classical-corpus.mjs
+          node scripts/test-public-site-integrity.mjs
           node --check assets/concordancia-ocr-vitruvio.js
           node scripts/test-historical-parallel-ocr.mjs
           node scripts/test-krohn-ocr-index.mjs
