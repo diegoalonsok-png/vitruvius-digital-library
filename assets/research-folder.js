@@ -43,7 +43,7 @@ function sharePreview(){
   if(!Array.isArray(values)||values.length>30)return;
   const safe=values.filter(x=>x&&typeof x.id==="string"&&typeof x.title==="string"&&(!x.url||/^https?:\/\//.test(x.url))).map(x=>({id:x.id.slice(0,160),kind:String(x.kind||"work").slice(0,40),title:x.title.slice(0,260),ref:String(x.ref||"").slice(0,260),url:String(x.url||"").slice(0,550),locus:String(x.locus||"").slice(0,60),added:new Date().toISOString().slice(0,10)}));
   if(!safe.length)return;
-  const banner=document.createElement("div");banner.style.cssText="position:fixed;z-index:9001;right:12px;bottom:65px;max-width:360px;border:1px solid #aa9256;background:#faf8f2;color:#273747;padding:12px;font:13px/1.5 system-ui;box-shadow:0 2px 14px #0003";
+  const banner=document.createElement("div");banner.style.cssText="position:fixed;z-index:9001;right:12px;bottom:65px;max-width:360px;border:1px solid #59616b;background:#252b31;color:#f0f1f2;padding:12px;font:13px/1.5 system-ui;box-shadow:0 2px 14px #0003";
   const note=document.createElement("p");note.textContent="Antología compartida: "+safe.length+" elementos. Puede incorporarlos a tu carpeta local (sin cuenta).";
   const accept=document.createElement("button");accept.textContent="Agregar a mi carpeta";accept.type="button";
   const close=document.createElement("button");close.textContent="Cerrar";close.type="button";close.style.marginLeft="8px";
@@ -56,22 +56,22 @@ function ui(){
  if(fab)return;
  if(window.self!==window.top){fab=document.createElement("span");return} // incrustado en otro lector: sin botón flotante
  fab=document.createElement("button");fab.type="button";fab.className="research-folder-fab";fab.setAttribute("aria-haspopup","dialog");
- fab.style.cssText="position:fixed;left:14px;bottom:14px;z-index:9000;font:600 13px system-ui,sans-serif;padding:9px 13px;border-radius:20px;border:1px solid #C9A84C;background:#1f3446;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer";
+ fab.style.cssText="position:fixed;left:14px;bottom:14px;z-index:9000;font:600 13px system-ui,sans-serif;padding:9px 13px;border-radius:20px;border:1px solid #555d64;background:#23282d;color:#eceeed;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer";
  fab.addEventListener("click",open);document.body.append(fab);
  dlg=document.createElement("dialog");dlg.className="research-folder-dialog";dlg.setAttribute("aria-label","Carpeta de investigación");
- dlg.style.cssText="max-width:760px;width:92vw;max-height:84vh;border:1px solid #C9A84C;padding:18px 20px;font:15px/1.5 system-ui,sans-serif;color:#1d2a35;background:#fbf8f2";
+ dlg.style.cssText="max-width:760px;width:92vw;max-height:84vh;border:1px solid #636a72;border-radius:10px;padding:18px 20px;font:15px/1.5 system-ui,sans-serif;color:#e9eaeb;background:#1d2227";
  dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});document.body.append(dlg);render()}
 function render(){
- if(!fab||!fab.isConnected)return;const v=read();fab.textContent="▤ Carpeta"+(v.length?" ("+v.length+")":"");fab.title="Carpeta de investigación: pasajes, folios, láminas y obras guardados";
+ if(!fab||!fab.isConnected)return;const v=read();fab.textContent="▤ Guardados"+(v.length?" ("+v.length+")":"");fab.setAttribute("aria-label","Abrir carpeta de investigación: "+v.length+" elementos guardados");fab.title="Carpeta de investigación: pasajes, folios, láminas y obras guardados";
  if(!dlg)return;dlg.replaceChildren();
  const head=document.createElement("div");head.style.cssText="display:flex;justify-content:space-between;align-items:center;gap:10px";
  const h=document.createElement("h2");h.textContent="Carpeta de investigación";h.style.margin="0";
  const x=document.createElement("button");x.type="button";x.textContent="×";x.setAttribute("aria-label","Cerrar");x.style.cssText="font-size:22px;background:none;border:0;cursor:pointer";x.onclick=()=>dlg.close();head.append(h,x);
- const p=document.createElement("p");p.style.cssText="font-size:.88em;margin:6px 0 12px;opacity:.85";p.textContent="Se guarda en este navegador y es común a la Biblioteca y a Vitruvia. "+v.length+" elementos.";
+ const p=document.createElement("p");p.style.cssText="font-size:.88em;margin:6px 0 12px;opacity:.85";p.textContent="Guarda pasajes, obras y referencias para volver a consultarlos, citarlos o exportarlos. Solo en este navegador, sin cuenta. "+v.length+" elementos.";
  dlg.append(head,p);
- if(!v.length){const e=document.createElement("p");e.textContent="Todavía no hay elementos. Usa «☆ Guardar» en un pasaje, un folio, una lámina, una obra o un término.";dlg.append(e);return}
+ if(!v.length){const e=document.createElement("p");e.textContent="La carpeta está vacía. Para agregar un resultado, pulsa «☆ Guardar» junto a una obra, pasaje o ficha. Los elementos guardados aparecerán aquí con enlaces y opciones de exportación.";dlg.append(e);const query=document.getElementById("query")?.value?.trim();if(query){const b=document.createElement("button");b.type="button";b.textContent="Guardar la búsqueda actual: "+query.slice(0,50);b.style.cssText="padding:8px 11px;background:#343a41;color:#f4f4f4;border:1px solid #626b74;border-radius:5px;cursor:pointer";b.addEventListener("click",()=>add({id:"query:"+location.pathname+":"+query.toLowerCase(),kind:"term",title:"Búsqueda: "+query,ref:"Consulta de Vitruvia",url:location.origin+location.pathname+"?q="+encodeURIComponent(query)}));dlg.append(b)}return}
  const tools=document.createElement("div");tools.style.cssText="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px";
- const mk=(t,f)=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.style.cssText="font:inherit;font-size:.88em;padding:5px 10px;border:1px solid #8a7550;background:#fff;cursor:pointer";b.onclick=f;tools.append(b);return b};
+ const mk=(t,f)=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.style.cssText="font:inherit;font-size:.88em;padding:5px 10px;border:1px solid #626a72;background:#303740;color:#f2f2f2;border-radius:5px;cursor:pointer";b.onclick=f;tools.append(b);return b};
  const cp=mk("Copiar bibliografía (Chicago)",()=>{const t=v.map(chicago).join("\n\n");navigator.clipboard?.writeText(t).then(()=>{cp.textContent="Copiada ✓";setTimeout(()=>cp.textContent="Copiar bibliografía (Chicago)",1500)})});
  mk("Descargar BibTeX",()=>download("carpeta-vitruvius.bib",v.map(bib).join("\n\n")+"\n","application/x-bibtex"));
  mk("Descargar RIS (Zotero)",()=>download("carpeta-vitruvius.ris",v.map(ris).join("\r\n\r\n")+"\r\n","application/x-research-info-systems"));
