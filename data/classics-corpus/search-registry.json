@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 36,
-  "works": 17,
+  "count": 37,
+  "works": 18,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -114,6 +114,16 @@
       "path": "corpus/cicero-de-officiis-la.html",
       "reader": "corpus/cicero-de-officiis-la.html",
       "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχὴ τῶν δώδεκα ἀποστόλων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/didache-grc.json",
+      "reader": "classics-text-reader.html?work=didache&lang=grc",
+      "sourceDescription": "Dieciséis capítulos griegos según Wikisource; transcripción no cotejada con manuscrito; CC BY-SA, traducciones pendientes."
     },
     {
       "workId": "epictetus-enchiridion",
