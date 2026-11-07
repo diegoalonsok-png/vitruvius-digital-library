@@ -1298,6 +1298,40 @@ document.addEventListener('click',function(event){
   word-break:normal;
  }
 }
+
+/* Editorial action bar · compact, restrained, responsive. */
+#vitruvia-article .article-toolbar{
+  display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;
+  gap:6px;margin:0 0 14px;padding:0;
+}
+#vitruvia-article .article-toolbar .article-print,
+#vitruvia-article .article-toolbar .article-share{
+  appearance:none;display:inline-flex;align-items:center;justify-content:center;
+  min-height:36px;padding:7px 12px!important;
+  border:1px solid rgba(195,190,177,.32);border-radius:6px;
+  background:rgba(255,255,255,.035);color:#e5e2da;
+  font:500 12px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  letter-spacing:0!important;text-transform:none!important;
+  box-shadow:none!important;transition:background .18s,border-color .18s;
+}
+#vitruvia-article .article-toolbar .article-print:hover,
+#vitruvia-article .article-toolbar .article-share:hover{
+  background:rgba(255,255,255,.09);border-color:rgba(205,196,171,.66);
+}
+#vitruvia-article .article-toolbar button:focus-visible{
+  outline:2px solid #d3bd85;outline-offset:3px;
+}
+html[data-theme="light"] #vitruvia-article .article-toolbar button{
+  background:#f7f5f0;color:#303338;border-color:#d9d4ca;
+}
+html[data-theme="light"] #vitruvia-article .article-toolbar button:hover{
+  background:#ece8de;border-color:#aaa18e;
+}
+@media(max-width:620px){
+ #vitruvia-article .article-toolbar{justify-content:flex-start;gap:6px}
+ #vitruvia-article .article-toolbar button{min-height:40px}
+}
+@media print{#vitruvia-article .article-toolbar{display:none!important}}
 </style>
 <script>
 (function(){
