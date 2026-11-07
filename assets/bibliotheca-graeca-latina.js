@@ -503,7 +503,13 @@ function showTextualTransmission(work,container){
 }
 
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=additionalInterfaceWords[language()]["no-results"];return}
-const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||w.manuscript?.manifest);
+// Reserve the full page for the two working texts, not an empty catalogue column.
+ const wide=tab==="study"&&hasStudyPair(w);
+ const layout=document.querySelector(".classic-layout");
+ layout?.classList.toggle("classic-study-wide",wide);
+ document.querySelector(".classic-main")?.classList.toggle("classic-study-main",wide);
+ if(!wide)layout?.classList.remove("classic-study-show-index");
+ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||w.manuscript?.manifest);
  const hasPdf=!!w.pdf?.url;
  const pdfEditions=Array.isArray(w.pdfEditions)&&w.pdfEditions.length?
   w.pdfEditions.filter(x=>window.ClassicsFacsimileViewer?.isLocalPDF(x.url)):hasPdf?[w.pdf]:[];
@@ -589,6 +595,16 @@ box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
  }));
 const pane=$("classic-panel");
 if(tab==="study"&&hasStudyPair(w)){
+ const toggle=document.createElement("button");
+ toggle.type="button";toggle.className="classic-study-index-toggle";
+ toggle.textContent="☰ Mostrar listado de obras";
+ toggle.setAttribute("aria-expanded",String(layout?.classList.contains("classic-study-show-index")));
+ toggle.addEventListener("click",()=>{
+  const open=layout?.classList.toggle("classic-study-show-index");
+  toggle.textContent=open?"✕ Ocultar listado · ampliar visores":"☰ Mostrar listado de obras";
+  toggle.setAttribute("aria-expanded",String(Boolean(open)));
+ });
+ pane.before(toggle);
  pane.classList.add("classic-study-viewer");
  pane.replaceChildren();
  const intro=document.createElement("p");intro.className="classic-ref";
