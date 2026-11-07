@@ -27,7 +27,19 @@ assert.equal(names.honorificVariant('San Martín de Porres'),'martin de porres',
 assert.equal(names.honorificVariant('San Martín'),null,'Ambiguous short surname must not be discarded');
 assert.equal(names.honorificVariant('Santa Teresa de Jesús'),'teresa de jesus');
 const rankingSource=readFileSync(new URL('../assets/vitruvia-search.js',import.meta.url),'utf8');
-assert.match(rankingSource,/r\.entityKind==="person"&&r\.wikidataId\?220/,'Verified human must get precedence in Featured');
+assert.match(rankingSource,/r\.entityKind==="person"&&r\.wikidataId\?450/,'Verified human must get precedence in Featured');
 assert.match(rankingSource,/namedAfterPenalty/,'Named institutions must not automatically displace the original person');
 assert.match(resolverSource,/value\?\.id==="Q5"/,'Wikidata P31=Q5 person classification is required');
 console.log('Historical entity checks passed: San Martín, Martín de Porres and institutional namesakes.');
+
+const cleanCode=resolverSource.slice(resolverSource.indexOf('const clean=q=>'),resolverSource.indexOf('const invalid=p=>'));
+vm.runInContext(cleanCode+';globalThis.clean=clean',names);
+assert.equal(names.clean('San Martín político'),'San Martín','Person qualifiers must be separated from the name');
+assert.equal(names.clean('Julio César militar'),'Julio César','Historical military role must be a qualifier, not the entity title');
+assert.equal(names.clean('Lionel Messi'),'Lionel Messi','Modern unambiguous names must remain searchable');
+assert.equal(names.clean('Taylor Swift'),'Taylor Swift','Musicians must remain searchable');
+assert.match(resolverSource,/historicBonus=historicalHuman\?660/,'Historical humans must receive a documented precedence boost');
+assert.match(resolverSource,/resolved&&resolved\.wikidataId===best\.id/,'Authority must verify page and Wikidata ID agree');
+assert.match(rankingSource,/rating:identity\.kind==="person"\?/,'Humanities-first ordering must rank resolved biographies');
+assert.match(rankingSource,/nameLike&&r\.type!=="manuscript"&&!\(r\.preferredWiki&&r\.wikidataId\)/,'Unverified namesakes must not occupy Featured');
+console.log('Humanities-first checks passed: historical figures precede namesakes, while Messi and musicians remain searchable.');
