@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pruebas offline del importador Perseus; no se consulta la red ni se escribe corpus."""
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -27,7 +28,9 @@ def main():
     assert all(w in ids for w in mapping), "CTS points to unknown catalogue work"
     single = [w for w in catalogue if len(mapping.get(w["id"], [])) == 1 and
               w.get("language") in ("la", "grc") and
-              (w["id"], w["language"]) not in indexed]
+              (w["id"], w["language"]) not in indexed and
+              re.fullmatch(r"(?:tlg|phi)\\d+\\.(?:tlg|phi|abo)\\w+",
+                           mapping[w["id"]][0].get("obra", ""))]
     candidates = [
        "data/phi0474/phi037/phi0474.phi037.perseus-lat1.xml",
        "data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
