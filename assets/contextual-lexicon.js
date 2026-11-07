@@ -137,5 +137,22 @@ document.addEventListener("dblclick",e=>{
  const selected=selectedWord();
  if(termRe.test(selected))show(selected);
 });
+// A single click on a Latin reading passage opens the selected word dossier.
+// Other page controls, links and editable areas remain unaffected.
+document.addEventListener("click",e=>{
+ if(!layer.hidden||e.detail!==1||e.target.closest("button,a,input,textarea,select,nav,header,footer,[contenteditable],.ctx-layer"))return;
+ const region=e.target.closest('[lang="la"],.latin-text,.passage-latin,.latin-paragraph');
+ if(!region)return;
+ let node=null,offset=-1;
+ if(document.caretPositionFromPoint){const pos=document.caretPositionFromPoint(e.clientX,e.clientY);if(pos){node=pos.offsetNode;offset=pos.offset}}
+ else if(document.caretRangeFromPoint){const range=document.caretRangeFromPoint(e.clientX,e.clientY);if(range){node=range.startContainer;offset=range.startOffset}}
+ if(node?.nodeType!==Node.TEXT_NODE||offset<0)return;
+ const content=node.textContent||"",allowedChar=ch=>!!ch&&/[\p{L}\p{M}'ʼ’-]/u.test(ch);
+ let start=offset,end=offset;
+ while(start>0&&allowedChar(content[start-1]))start--;
+ while(end<content.length&&allowedChar(content[end]))end++;
+ const word=content.slice(start,end).replace(/^[-'ʼ’]+|[-'ʼ’]+$/g,"");
+ if(termRe.test(word))show(word);
+});
 const example=el("button","Ejemplo: domus","ctx-example");example.type="button";example.addEventListener("click",()=>show("domus"));ui.append(example);
 })();
