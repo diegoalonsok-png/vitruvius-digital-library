@@ -22,11 +22,13 @@ for(const dir of ['','corpus','documents','escritorio-h']){
   }
  }
 }
+const missingAnalytics=[];
 for(const path of htmlPaths){
  const html=load(path);
  const tags=[...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']*analytics(?:-config)?\.js[^"']*)["'][^>]*>/g)];
- assert.equal(tags.filter(t=>t[1].includes('analytics-config.js')).length,1,path+' needs one analytics config');
- assert.equal(tags.filter(t=>/analytics\.js/.test(t[1])).length,1,path+' needs one analytics loader');
+ const configCount=tags.filter(t=>t[1].includes('analytics-config.js')).length;
+ const loaderCount=tags.filter(t=>/analytics\.js/.test(t[1])).length;
+ if(configCount!==1||loaderCount!==1){missingAnalytics.push({path,configCount,loaderCount});continue;}
  assert(tags[0][1].includes('analytics-config.js'),path+' bad script order');
  for(const tag of tags)assert(/\bdefer\b/.test(tag[0]),path+' analytics must be deferred');
  const documentUrl=new URL(path,'https://diegoalonsok-png.github.io/vitruvius-digital-library/');
@@ -38,6 +40,8 @@ for(const path of htmlPaths){
  }
 
 }
+
+assert.deepEqual(missingAnalytics,[], 'Every public HTML page must include one shared privacy-aware analytics configuration and loader');
 
 function run({measurementId='G-TN23SX9Z69',host='diegoalonsok-png.github.io',path='/vitruvius-digital-library/vitruvia.html',dnt='0',gpc=false,embedded=false}={}){
  const appended=[];

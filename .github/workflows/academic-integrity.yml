@@ -1,0 +1,41 @@
+name: Academic integrity and editorial backlog
+on:
+  push:
+    paths:
+      - 'scripts/audit-academic-readiness.mjs'
+      - 'data/classics-corpus/coverage-audit.json'
+      - 'data/classics-alignment/**'
+      - 'data/structured/latin-collation-audit.json'
+      - 'data/lexicon/etymologicum.json'
+      - 'auditoria-academica.html'
+      - '.github/workflows/academic-integrity.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit-academic-readiness.mjs'
+      - 'data/classics-corpus/coverage-audit.json'
+      - 'data/classics-alignment/**'
+      - 'data/structured/latin-collation-audit.json'
+      - 'data/lexicon/etymologicum.json'
+      - 'auditoria-academica.html'
+      - '.github/workflows/academic-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scholarly-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate scholarly metadata and generate the backlog
+        run: node scripts/audit-academic-readiness.mjs
+      - name: Publish reproducible audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: academic-readiness-report
+          path: reports/academic-readiness.json
+          if-no-files-found: warn

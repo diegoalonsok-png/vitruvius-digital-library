@@ -25,4 +25,6 @@ if(record.pdf){const a=document.createElement("a");a.href=record.pdf;a.textConte
 }catch(err){text($("status"),"Error: "+err.message)}}
 $("search").addEventListener("click",search);$("query").addEventListener("keydown",e=>{if(e.key==="Enter")search()});$("work").addEventListener("change",()=>{$("results").replaceChildren();text($("status"),"Obra seleccionada: "+$("work").selectedOptions[0]?.textContent)});
 })();
-</script></body></html>
+</script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+</body></html>
