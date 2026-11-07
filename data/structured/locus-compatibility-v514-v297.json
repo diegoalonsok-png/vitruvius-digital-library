@@ -1,16 +1,30 @@
 {
-  "schema": "vitruvius-structured-locus-audit-v1",
+  "schema": "vitruvius-structured-locus-audit-v2",
   "scope": "Validación mecánica de correspondencia por identificadores de locus, no cotejo filológico.",
   "editions": [
     {
       "name": "Kurilo V514 · Latín–Castellano",
       "path": "data/structured/recensio-es.json",
-      "passages": 731
+      "passages": 731,
+      "duplicateLoci": 0,
+      "emptyLatin": 0,
+      "emptyTranslation": 0
+    },
+    {
+      "name": "Kurilo V554 · Latín–Francés",
+      "path": "data/structured/recensio-fr.json",
+      "passages": 731,
+      "duplicateLoci": 0,
+      "emptyLatin": 0,
+      "emptyTranslation": 0
     },
     {
       "name": "Kurilo V297 · Latín–Inglés",
       "path": "data/structured/theory-en.json",
-      "passages": 728
+      "passages": 728,
+      "duplicateLoci": 0,
+      "emptyLatin": 0,
+      "emptyTranslation": 0
     }
   ],
   "sharedLoci": 728,
@@ -20,6 +34,12 @@
     "7.7.5"
   ],
   "onlyV297": [],
-  "warning": "La coincidencia de locus permite navegación sincrónica por ID, pero no garantiza identidad de segmentación, traducción o lectura. Conservar íntegramente los pasajes divergentes.",
-  "v554Status": "Pendiente: la lectura del archivo data/structured/recensio-fr.json no devolvió contenido para esta auditoría; no se certifica ni niega su disponibilidad desde este resultado."
+  "warning": "Coincidencia de locus no acredita traducción o lecturas filológicamente iguales. Los tres pasajes 7.7.2, 7.7.3 y 7.7.5 se conservan intactos en V514 y V554; no interpolarlos en V297.",
+  "v554Status": "Comprobado: recuperado por SHA GitHub; 731 pasajes no vacíos, sin loci duplicados. Completo respecto del esquema local V514.",
+  "onlyV554": [
+    "7.7.2",
+    "7.7.3",
+    "7.7.5"
+  ],
+  "method": "Comparación de los identificadores de las tres versiones JSON; recuento de loci únicos y campos latín/traducción no vacíos. No equivale a colación textual."
 }
