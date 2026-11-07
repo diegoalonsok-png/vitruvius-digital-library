@@ -141,6 +141,67 @@ try{
     before.visible,{timeout:14000});
   }finally{await p.close()}
  });
+ await check('Unified Bibliotheca book index is fast, grouped, searchable and includes both Perrault editions',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=190,{timeout:29000});
+   await p.locator('#classic-query').focus();
+   await p.waitForFunction(()=>!document.querySelector('#classic-search-suggestions').hidden,{timeout:9000});
+   const overview=await p.evaluate(()=>{
+    const options=[...document.querySelectorAll('#classic-search-suggestions button[role=option]')];
+    return {
+     number:options.length,groupCount:document.querySelectorAll('.classic-suggestion-group').length,
+     more:document.querySelectorAll('.classic-suggestion-more:not([hidden])').length,
+     summary:document.querySelector('.classic-suggestions-heading')?.textContent||'',
+     perrault:[...options].filter(x=>x.textContent.includes('Perrault')).length
+    };
+   });
+   assert(overview.number<=80,'Index must not render hundreds of entries on first focus');
+   assert(overview.groupCount>=4,'Index must distinguish author, historical, classical and codex groups');
+   assert(overview.more>=1,'A show-more control must retain access to the rest of the catalogue');
+   assert(/títulos y testimonios/.test(overview.summary),'Index must disclose total match count');
+   await p.locator('#classic-query').fill('Perrault');
+   await p.waitForFunction(()=>[...document.querySelectorAll('#classic-search-suggestions button[role=option]')].filter(x=>x.textContent.includes('Perrault')).length>=2,{timeout:15000});
+   const perrault=await p.evaluate(()=>[...document.querySelectorAll('#classic-search-suggestions button[role=option]')].filter(x=>x.textContent.includes('Perrault')).map(x=>x.textContent));
+   assert(perrault.some(x=>x.includes('1673')),'Perrault first edition must appear');
+   assert(perrault.some(x=>x.includes('1684')),'Perrault second edition must appear');
+   await p.locator('#classic-query').fill('Krohn');
+   await p.waitForFunction(()=>document.querySelector('#classic-search-suggestions')?.textContent?.includes('Krohn'),{timeout:10000});
+   assert(await p.locator('#classic-search-suggestions').innerText().then(x=>x.includes('1912')),'Krohn historical edition must remain findable');
+  }finally{await p.close()}
+ });
+ await check('Perrault 1673 navigates actual numbered IIIF canvases without bulk image loading',async()=>{
+  const p=await open('perrault-1673.html?year=1673');
+  try{
+   await p.waitForFunction(()=>Number(document.getElementById('pr-number').max)>30,{timeout:40000});
+   const initial=await p.evaluate(()=>({
+    max:Number(document.getElementById('pr-number').max),
+    src:document.getElementById('pr-image').src,
+    label:document.getElementById('pr-label').textContent,
+    counter:document.getElementById('pr-counter').textContent
+   }));
+   assert(initial.src.includes('https://'),'First facsimile image must be obtained from e-rara');
+   assert(initial.counter.startsWith('1 / '),'Initial digital page must be image 1');
+   await p.locator('#pr-next').click();
+   await p.waitForFunction(()=>document.getElementById('pr-counter').textContent.startsWith('2 /'),{timeout:12000});
+   const second=await p.locator('#pr-image').getAttribute('src');
+   assert.notEqual(second,initial.src,'Next must request a different actual IIIF canvas');
+   await p.locator('#pr-prev').click();
+   assert((await p.locator('#pr-counter').innerText()).startsWith('1 /'),'Previous must return to image 1');
+   await p.locator('#pr-number').fill('25');
+   await p.locator('#pr-go').click();
+   assert((await p.locator('#pr-counter').innerText()).startsWith('25 /'),'Numeric go-to must navigate to image 25');
+  }finally{await p.close()}
+ });
+ await check('Perrault 1684 opens the distinct verified IIIF copy',async()=>{
+  const p=await open('perrault-1673.html?year=1684');
+  try{
+   await p.waitForFunction(()=>Number(document.getElementById('pr-number').max)>30,{timeout:40000});
+   assert.equal(await p.locator('#pr-year').inputValue(),'1684');
+   assert.match(await p.locator('#pr-shelfmark').innerText(),/Rar 9852/);
+   assert.match(await p.locator('#pr-manifest').getAttribute('href'),/14701133/);
+  }finally{await p.close()}
+ });
  await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
   const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
   const errors=[];p.on('pageerror',e=>errors.push(e.message));
