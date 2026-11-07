@@ -29,6 +29,9 @@
   const subject=fold(topic.authorityName||topic.subject||"");
   const variants=[subject,...(topic.identityNames||[])].map(fold).filter(v=>v.length>=5);
   if(!variants.some(v=>title.includes(v)))return false;
+  // A one-word ancient name can be the surname of a contemporary person.
+  // Generic Commons search alone is insufficient for identity verification.
+  if(variants.every(v=>!v.includes(" "))&&!page.fromTrustedCategory&&!page.fromEntityImage)return false;
   // Reject a photo caption masquerading as historical iconography.
   if(/\b(portrait of a singer|singer portrait|photo of|photograph of)\b/.test(description))return false;
   return true;
