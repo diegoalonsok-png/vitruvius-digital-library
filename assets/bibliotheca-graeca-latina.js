@@ -768,7 +768,7 @@ if(tab==="study"&&hasStudyPair(w)){
     state.searchResults.replaceChildren();
     if(!found.length){
      searchLocus="";states.forEach(x=>x.tools?.render());
-     state.message.textContent="Sin coincidencias para «"+q+"» en la edición seleccionada. Probá otra grafía o un equivalente.";
+     state.message.textContent="Sin coincidencias para «"+q+"» en la edición seleccionada. Prueba otra grafía o un equivalente.";
      return;
     }
     function open(index){
