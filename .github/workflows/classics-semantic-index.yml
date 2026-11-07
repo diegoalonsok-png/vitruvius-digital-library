@@ -1,0 +1,35 @@
+name: Indexación semántica de clásicos
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/classics-corpus/*.json'
+      - 'data/structured/*.json'
+      - 'data/lexicon/conceptus.json'
+      - 'scripts/build_classics_semantic_index.py'
+      - '!data/classics-corpus/semantic-conceptus-postings.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: classics-semantic-index
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Construir índice por obras y loci
+        run: python scripts/build_classics_semantic_index.py
+      - name: Guardar índice reproducible
+        run: |
+          git add data/classics-corpus/semantic-conceptus-postings.json
+          if ! git diff --cached --quiet; then
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Actualizar índice semántico Conceptus"
+            git push
+          fi
