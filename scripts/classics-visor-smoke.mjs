@@ -502,7 +502,7 @@ try{
    assert.notEqual(await p.locator('#pap-zoom-value').innerText(),initial,'Zoom button is inert');
    await p.locator('#pap-invert').click();
    assert.equal(await p.locator('#pap-invert').getAttribute('aria-pressed'),'true','Invert button is inert');
-   await p.locator('#pap-saturation').fill('180');
+   await p.locator('#pap-saturation').evaluate(el=>{el.value='180';el.dispatchEvent(new Event('input',{bubbles:true}))});
    assert.equal(await p.locator('#pap-saturation-value').innerText(),'180 %','Saturation control is inert');
    await p.locator('#pap-loupe-mode').selectOption('rect');
    await p.locator('#pap-loupe-power').selectOption('8');
