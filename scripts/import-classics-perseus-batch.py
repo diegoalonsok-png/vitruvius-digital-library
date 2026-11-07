@@ -16,6 +16,7 @@ import os
 from pathlib import Path
 import re
 import sys
+from xml.etree import ElementTree as ET
 from urllib.request import Request, urlopen
 
 from ingest_texts import tei_extract
@@ -165,6 +166,11 @@ def run():
             continue
         try:
             raw = remote(source_url, MAX_XML_BYTES)
+            root = ET.fromstring(raw)
+            licenses = [node.attrib.get("target", "") for node in root.iter()
+                        if node.tag.rsplit("}", 1)[-1] in ("licence", "license")]
+            if not any("creativecommons.org/licenses/by-sa/4.0" in value for value in licenses):
+                raise ValueError("La TEI no declara licencia CC BY-SA 4.0 verificable")
             title, author, found_language, extracted = tei_extract(raw, work["title"])
             if found_language and not found_language.lower().startswith(language[:2]):
                 raise ValueError("Lengua de TEI no corresponde a la lengua del original")
