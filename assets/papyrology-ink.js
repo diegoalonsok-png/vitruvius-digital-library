@@ -52,6 +52,25 @@ function extract(){
   const sharpen=limit(local+(local-mean)*sharp*.9);
   pixels[i]=(mode==="edge"?outline>value("threshold")*.38:mode==="adaptive"?sharpen<mean-value("sensitivity"):sharpen<value("threshold"))?1:0;
  }
+ // Explicit, reversible morphology on the binary mask; never alters the uploaded original.
+ const morph=(input,dilate)=>{
+  const next=new Uint8Array(input.length);
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+   let hit=dilate?0:1;
+   for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){
+    const xx=x+dx,yy=y+dy,v=(xx>=0&&yy>=0&&xx<w&&yy<h)?input[yy*w+xx]:0;
+    if(dilate)hit|=v;else hit&=v;
+   }
+   next[y*w+x]=hit;
+  }
+  return next;
+ };
+ const join=Number($("pap-ink-join").value),stroke=Number($("pap-ink-stroke").value);
+ let corrected=pixels;
+ if(join){for(let i=0;i<join;i++)corrected=morph(corrected,true);for(let i=0;i<join;i++)corrected=morph(corrected,false)}
+ if(stroke>0){for(let i=0;i<stroke;i++)corrected=morph(corrected,true)}
+ if(stroke<0){for(let i=0;i<-stroke;i++)corrected=morph(corrected,false)}
+ pixels.set(corrected);
  // Remove small connected blobs (noise), preserving outlines and larger characters.
  const noise=value("noise"),visited=new Uint8Array(N),queue=new Int32Array(N);
  if(noise>0){
