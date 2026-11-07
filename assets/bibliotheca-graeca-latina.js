@@ -38,6 +38,81 @@ try{localStorage.setItem("vitruvius-ui-lang",lang)}catch{}
 }
 
 let works=[],selected="",tab="text",witnessData={records:[],editions:[]},showSelectedDetail=false;
+let extraBookIndex={author:[],historical:[],manuscripts:[]};
+// These entries supplement autocomplete ONLY: classical corpus, other filters,
+// manuscript records, published texts and source provenance remain untouched.
+function buildExtraBookIndex(catalogue,complete,kuriloBooks){
+ const own=[],history=[],manuscripts=[];
+ const localEditions=new Set(["recensio-es","recensio-fr","theory-en"]);
+ const readableEdition=id=>"lector-bilingue.html?edition="+encodeURIComponent(id);
+ for(const e of catalogue?.editions||[]){
+  if(!/kurilo/i.test(e.author||"")&& !/kurilo/i.test(e.bibliographic_author||""))continue;
+  own.push({
+   id:"modern-"+e.id,
+   title:e.title,
+   author:e.author||"Diego Kurilo",
+   subtitle:[e.subtitle,e.version,e.year].filter(Boolean).join(" · "),
+   aliases:[e.version,e.bibliographic_title,"Vitruvio","Vitruvius","De architectura"],
+   url:localEditions.has(e.id)?readableEdition(e.id):"catalogo-estatico.html",
+   external:false,
+   status:localEditions.has(e.id)?"Edición con lector local":"Ficha bibliográfica; lector no acreditado"
+  });
+ }
+ for(const b of kuriloBooks?.books||[]){
+  if(!b.page||!b.titles?.es)continue;
+  own.push({
+   id:"own-"+b.id,title:b.titles.es,author:"Diego Kurilo",
+   subtitle:b.subtitles?.es||"",
+   aliases:[b.titles.en,b.subtitles?.en,...(b.subjects||[])],
+   url:b.page,external:false,status:"Libro del sitio"
+  });
+ }
+ for(const e of Array.isArray(complete)?complete:[]){
+  if(e.category==="manuscripts"){
+   manuscripts.push({
+    id:"witness-"+e.id,title:e.title,author:e.author||"",
+    subtitle:[e.subtitle,e.year].filter(Boolean).join(" · "),
+    aliases:["Vitruvio","Vitruvius","De architectura"],
+    url:e.read_url||e.source_url||"index-codicum.html",external:!!(e.read_url||e.source_url),
+    status:"Testimonio manuscrito · consultar signatura y custodia"
+   });
+  }
+  if(e.category!=="historical")continue;
+  const direct=e.pdf_url||e.read_url||e.source_url;
+  history.push({
+   id:"historic-"+e.id,title:e.title,author:e.author||"",
+   subtitle:[e.subtitle,e.year].filter(Boolean).join(" · "),
+   aliases:["Vitruvio","Vitruvius","De architectura",e.version],
+   url:direct||"ediciones-historicas.html",
+   external:/^https:\/\//.test(direct||""),
+   status:direct?"Edición histórica · fuente identificada":"Ficha histórica sin facsímil verificado"
+  });
+ }
+ const byTitle=(a,b)=>fold(a.title).localeCompare(fold(b.title),"es");
+ return {
+  author:own.sort(byTitle),
+  historical:history.sort((a,b)=>Number(a.subtitle.match(/\b(?:1[45-9]\d\d|20\d\d)\b/)?.[0]||9999)-Number(b.subtitle.match(/\b(?:1[45-9]\d\d|20\d\d)\b/)?.[0]||9999)||byTitle(a,b)),
+  manuscripts:manuscripts.sort(byTitle)
+ };
+}
+function extraBookMatches(rows,query){
+ const tokens=searchFold(query).split(/\s+/).filter(Boolean);
+ if(!tokens.length)return rows;
+ return rows.filter(r=>{
+  const text=searchFold([r.title,r.author,r.subtitle,...(r.aliases||[])].join(" "));
+  return tokens.every(t=>text.includes(t));
+ });
+}
+function openExtraBook(row){
+ hideBookSuggestions();
+ if(!row?.url)return;
+ const url=new URL(row.url,location.href);
+ // Only catalogue URLs read from this site's own JSON; never synthesize a
+ // facsimile link nor embed an external publisher as if we hosted the book.
+ if(!/^https?:$/.test(url.protocol))return;
+ if(row.external){window.open(url.href,"_blank","noopener,noreferrer")}
+ else{location.assign(url.href)}
+}
 const bcFocusIds=new Set(("vitruvius cicero-officiis cicero-oratore cicero-republica cicero-catilinariae cicero-de-finibus cicero-tusculanae cicero-de-natura-deorum cicero-de-amicitia cicero-de-senectute cicero-de-divinatione cicero-brutus cicero-philippicae caesar-gallico caesar-civili sallust-catiline sallust-iugurtha varro-rustica varro-de-lingua-latina lucretius virgil-aeneid virgil-georgica horace-odes horace-sermones horace-ars-poetica horace-epodi horace-epistulae catullus-carmina plautus-amphitruo plautus-aulularia terentius-andria terentius-heautontimorumenos cato-agri-cultura polybius-historiae").split(" "));
 const adFocusIds=new Set(("diodorus dionysius strabo philo philo-legum-allegoriae philo-de-vita-mosis seneca-epistulae seneca-naturales seneca-de-brevitate seneca-de-ira seneca-de-clementia seneca-de-tranquillitate lucan pliny dioscorides josephus-war josephus-antiquities quintilian martial tacitus-agricola tacitus-germania tacitus-annales tacitus-historiae tacitus-dialogus frontinus frontinus-strategemata celsus columella juvenal suetonius-caesares petronius-satyrica pliny-younger-epistulae apuleius-metamorphoses apuleius-apologia apuleius-de-deo-socratis plutarch-lives plutarch-moralia galen-ars-medica galen-de-usu-partium ptolemy-almagest ptolemy-geographia marcus-aurelius-meditations epictetus-discourses arrian-anabasis-alexandri pausanias-periegesis").split(" "));
 function periodFocus(w){return bcFocusIds.has(w.id)||adFocusIds.has(w.id)||!!w.witnessRecords?.length}
@@ -168,7 +243,7 @@ function suggestedWorks(){
 }
 function suggestionLabel(key){
  const dict={
-  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Elige cualquier título para abrir su ficha y su lector disponible.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
+  es:{count:"obras coincidentes",local:"para leer aquí",external:"con fuente externa",all:"Seleccioná un título para consultar su lector, ficha o fuente documentada. El listado completo aparece al abrir este campo.",edition:"Edición identificada",none:"No hay obras que coincidan con la consulta o los filtros."},
   en:{count:"matching works",local:"readable here",external:"with external sources",all:"Choose any title to open its record and available reader.",edition:"Identified edition",none:"No matching works under the current filters."},
   fr:{count:"œuvres trouvées",local:"à lire ici",external:"avec source externe",all:"Choisissez un titre pour consulter sa notice et son lecteur disponible.",edition:"Édition identifiée",none:"Aucune œuvre correspondante avec ces filtres."}
  };
@@ -176,49 +251,44 @@ function suggestionLabel(key){
 }
 function showBookSuggestions(){
  const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
- const query=field.value.trim();
- if(query.length<2){hideBookSuggestions();return}
- const matches=suggestedWorks(),exact=fold(query);
+ const query=field.value.trim(),matches=suggestedWorks();
+ const extras=[
+  {name:"Libros y ediciones de Diego Kurilo",rows:extraBookMatches(extraBookIndex.author,query)},
+  {name:"Ediciones históricas de Vitruvio",rows:extraBookMatches(extraBookIndex.historical,query)},
+  {name:"Obras griegas y latinas",rows:matches,type:"classic"},
+  {name:"Códices y testimonios de Vitruvio",rows:extraBookMatches(extraBookIndex.manuscripts,query)}
+ ];
+ const count=extras.reduce((n,group)=>n+group.rows.length,0);
  list.replaceChildren();suggestionIndex=-1;
- if(!matches.length){
+ const heading=document.createElement("div");heading.className="classic-suggestions-heading";
+ heading.textContent=count+" títulos y testimonios"+(query?" · «"+query+"»":" · índice completo");
+ list.append(heading);
+ const hint=document.createElement("p");hint.className="classic-suggestions-help";
+ hint.textContent=suggestionLabel("all");list.append(hint);
+ if(!count){
   const empty=document.createElement("div");empty.className="classic-suggestion-empty";
   empty.textContent=suggestionLabel("none");list.append(empty);
- }else{
-  const heading=document.createElement("div");heading.className="classic-suggestions-heading";
-  heading.textContent=matches.length+" "+suggestionLabel("count")+" · "+
-   matches.filter(isLocal).length+" "+suggestionLabel("local")+" · "+
-   matches.filter(w=>hasSource(w)&&!isLocal(w)).length+" "+suggestionLabel("external");
-  list.append(heading);
-  const hint=document.createElement("p");hint.className="classic-suggestions-help";
-  hint.textContent=suggestionLabel("all");list.append(hint);
-  // Every work appears as a selectable row. Large lists scroll without being truncated.
-  for(const w of matches){
+ }
+ for(const group of extras){
+  if(!group.rows.length)continue;
+  const title=document.createElement("h4");title.className="classic-suggestion-group";
+  title.textContent=group.name+" · "+group.rows.length;
+  list.append(title);
+  for(const r of group.rows){
    const item=document.createElement("button");item.type="button";
-   item.className="classic-suggestion";item.setAttribute("role","option");
-   item.dataset.work=w.id;item.setAttribute("aria-selected","false");
-   const title=document.createElement("strong");title.textContent=w.title;
+   item.className="classic-suggestion"+(group.type==="classic"?"":" classic-suggestion-extended");
+   item.setAttribute("role","option");item.setAttribute("aria-selected","false");
+   item.dataset.record=group.type==="classic"?"classic":"extended";
+   item.dataset.work=r.id;
+   const primary=document.createElement("strong");primary.textContent=r.title;
    const meta=document.createElement("small");
-   meta.textContent=w.author+" · "+(w.language==="grc"?"Griego / Greek":"Latín / Latin")+" · "+statusLabel(w);
-   item.append(title,meta);
+   meta.textContent=group.type==="classic"?
+    r.author+" · "+(r.language==="grc"?"Griego / Greek":"Latín / Latin")+" · "+statusLabel(r):
+    [r.author,r.subtitle,r.status,r.external?"Enlace a fuente externa":"Lectura o ficha del sitio"].filter(Boolean).join(" · ");
+   item.append(primary,meta);
    item.addEventListener("mousedown",event=>event.preventDefault());
-   item.addEventListener("click",()=>selectSuggestion(w.id));
+   item.addEventListener("click",()=>group.type==="classic"?selectSuggestion(r.id):openExtraBook(r));
    list.append(item);
-   // Edition queries should expose the matching edition without pretending it is a
-   // second literary work. Selecting it opens the containing work's editions.
-   const editions=(w.historicEditions||[]).filter(ed=>
-    [ed.title,ed.editor,ed.year,ed.provider].some(value=>fold(value).includes(exact)));
-   for(const ed of editions){
-    const entry=document.createElement("button");entry.type="button";
-    entry.className="classic-suggestion classic-edition-suggestion";
-    entry.setAttribute("role","option");entry.dataset.work=w.id;entry.dataset.edition="true";
-    entry.setAttribute("aria-selected","false");
-    const label=document.createElement("strong");label.textContent=suggestionLabel("edition")+": "+ed.title;
-    const desc=document.createElement("small");desc.textContent=[w.title,ed.editor,ed.year,ed.provider].filter(Boolean).join(" · ");
-    entry.append(label,desc);
-    entry.addEventListener("mousedown",event=>event.preventDefault());
-    entry.addEventListener("click",()=>selectSuggestion(w.id,"edition"));
-    list.append(entry);
-   }
   }
  }
  list.hidden=false;field.setAttribute("aria-expanded","true");
@@ -262,7 +332,7 @@ function initBookSuggestions(){
   }
   if(event.key==="Enter"&&!list.hidden){
    const options=[...list.querySelectorAll("button[role=option]")];
-   const option=options[suggestionIndex]||options[0];if(option){event.preventDefault();selectSuggestion(option.dataset.work)}
+   const option=options[suggestionIndex]||options[0];if(option){event.preventDefault();option.click()}
   }
  });
  document.addEventListener("pointerdown",event=>{if(!event.target.closest(".classic-search-wrap"))hideBookSuggestions()});
@@ -538,11 +608,16 @@ if(tab==="pdf"){
  }
 }
 async function boot(){
- const [res,reference,perseusLinks]=await Promise.all([
+ const getJson=(path,fallback)=>fetch(path).then(r=>r.ok?r.json():fallback).catch(()=>fallback);
+ const [res,reference,perseusLinks,modernCatalogue,fullInventory,kuriloBooks]=await Promise.all([
   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1"),
-  fetch("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1").then(r=>r.ok?r.json():{records:[],editions:[]}).catch(()=>({records:[],editions:[]})),
-  fetch("data/bibliotheca-perseus.json?v=20261105-v1").then(r=>r.ok?r.json():{links:{}}).catch(()=>({links:{}}))
+  getJson("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1",{records:[],editions:[]}),
+  getJson("data/bibliotheca-perseus.json?v=20261105-v1",{links:{}}),
+  getJson("data/catalog.json?v=20261106-unified-books-v1",{editions:[]}),
+  getJson("data/catalog-completo.json?v=20261106-unified-books-v1",[]),
+  getJson("data/kurilo-libros/index.json?v=20261106-unified-books-v1",{books:[]})
  ]);
+ extraBookIndex=buildExtraBookIndex(modernCatalogue,fullInventory,kuriloBooks);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;
  works=((await res.json()).works||[]).filter(w=>w&&w.id&&w.title&&(w.language==="la"||w.language==="grc"));
