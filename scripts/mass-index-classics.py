@@ -129,7 +129,7 @@ def run():
     indexed = {(e["workId"], e["language"]) for e in reg["entries"]}
     eligible = []
     for w in catalog["works"]:
-        wid, lang = w["id"], w.get("originalLanguage")
+        wid, lang = w["id"], w.get("language")
         links = mapping.get(wid, [])
         if lang in ORIG and len(links) == 1 and (wid, lang) not in indexed:
             eligible.append((w, lang, links[0]["obra"]))
