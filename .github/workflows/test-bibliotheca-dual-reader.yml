@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - 'assets/bibliotheca-graeca-latina.js'
+      - 'assets/bibliotheca-text-reader.js'
+      - 'assets/parallel-highlights.mjs'
+      - 'data/structured/*.json'
+      - 'scripts/test-bibliotheca-parallel-highlights.mjs'
       - 'assets/classics-study-tools.js'
       - 'bibliotheca-graeca-latina.html'
       - 'lector-textual-rapido.html'
@@ -25,5 +29,9 @@ jobs:
         run: |
           node --check assets/classics-study-tools.js
           node --check assets/bibliotheca-graeca-latina.js
+          node --check assets/bibliotheca-text-reader.js
+          node --check assets/parallel-highlights.mjs
       - name: Validate Latin-English loci, black defaults and source wiring
-        run: node scripts/test-bibliotheca-dual-reader.mjs
+        run: |
+          node scripts/test-bibliotheca-dual-reader.mjs
+          node scripts/test-bibliotheca-parallel-highlights.mjs
