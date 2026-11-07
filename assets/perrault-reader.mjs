@@ -26,7 +26,7 @@ const COPIES={
  }
 };
 const requested=new URLSearchParams(location.search);
-const year="1673";
+const year=Object.hasOwn(COPIES,requested.get("year"))?requested.get("year"):"1673";
 const copy=COPIES[year];let pages=[],current=0,stamp=0,baseWidth=1000;
 const image=$("pr-image"),status=$("pr-status");
 let localMirror=new Set();
