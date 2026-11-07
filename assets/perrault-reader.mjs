@@ -130,6 +130,33 @@ async function load(){
   const number=Number(requested.get("image"))||1;
   show(Math.max(0,Math.min(pages.length-1,number-1)));
  }catch(err){
+  // The official IIIF host may temporarily reject cross-origin requests or time out.
+  // The 1673 copy has an independently documented local index of real IIIF image IDs.
+  // Only use it for its exact verified source, never for the distinct 1684 edition.
+  if(year==="1673"){
+   try{
+    const response=await fetch("data/perrault-iiif-pages.json");
+    if(!response.ok)throw Error("índice local HTTP "+response.status);
+    const saved=await response.json();
+    if(saved.source!==copy.manifest||!Array.isArray(saved.pages)||saved.pages.length!==370||
+      !saved.pages.every(p=>/^\\d+$/.test(String(p.id))&&validHttps(p.fallback)))
+      throw Error("el índice alternativo no pasó validación");
+    pages=saved.pages.map(p=>({
+     url:"https://www.e-rara.ch/i3f/v20/"+p.id+"/full/1100,/0/default.jpg",
+     backup:p.fallback,
+     label:"Imagen IIIF "+p.folio+" · referencia PDF provisional "+p.page
+    }));
+    $("pr-number").max=String(pages.length);$("pr-number").disabled=false;
+    $("pr-next").disabled=false;$("pr-find").disabled=false;
+    const number=Number(requested.get("image"))||1;
+    show(Math.max(0,Math.min(pages.length-1,number-1)));
+    status.textContent="Índice IIIF de contingencia (370 imágenes verificadas). La fuente institucional no respondió; se conservan el enlace y la atribución.";
+    return;
+   }catch(localErr){
+    status.textContent="El manifiesto y el índice alternativo no están disponibles ("+localErr.message+"). Consulta el ejemplar oficial en e-rara.";
+    return;
+   }
+  }
   status.textContent="No se pudo abrir el índice IIIF ("+err.message+"). La edición sigue disponible en el visor oficial de ETH-Bibliothek / e-rara.";
  }
 }
