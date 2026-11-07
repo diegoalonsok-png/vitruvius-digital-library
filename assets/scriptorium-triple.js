@@ -140,7 +140,8 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   get data(){return data},
   get index(){return index},
   editionId(){return edition.value},
-  seek(i){index=i;show()}
+  seek(i){index=i;show()},
+  seekLocus(locus){if(!data||data.ed.format!=="structured")return false;const i=data.pages.findIndex(p=>p.locus===locus);if(i<0)return false;index=i;show();return true}
  };
  function content(p){return translated?p.translation:p.text}
  function recount(){
@@ -208,4 +209,14 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  });
  states.push(state);load();
 }
+window.ScriptTripleCompare={
+ jumpToLocus(locus){
+  const matches=states.filter(st=>st.data?.ed.format==="structured");
+  if(!matches.length)return {ok:false,reason:"No hay un visor estructurado cargado."};
+  const moved=matches.filter(st=>st.seekLocus(locus));
+  if(!moved.length)return {ok:false,reason:"Ese locus no aparece en las versiones estructuradas actualmente seleccionadas."};
+  synchronize(moved[0]);
+  return {ok:true,count:moved.length};
+ }
+};
 })();
