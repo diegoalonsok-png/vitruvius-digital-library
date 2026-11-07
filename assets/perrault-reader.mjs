@@ -48,8 +48,55 @@ function storeCachedIndex(pagesToCache){
   }));
  }catch{/* Private browsing and quota restrictions should not block reading. */}
 }
+const LOCAL_INDEXES={
+ "1673":{path:"data/perrault-iiif-pages.json",count:370},
+ "1684":{path:"data/perrault-1684-iiif-pages.json",count:390}
+};
+// These files contain verified IIIF image IDs, not a fabricated printed foliation.
+// Only one image is requested when its numbered button is selected.
+async function loadLocalIndex(){
+ const index=LOCAL_INDEXES[year];
+ const response=await fetch(index.path,{cache:"force-cache"});
+ if(!response.ok)throw Error("Índice local HTTP "+response.status);
+ const saved=await response.json();
+ if(saved.source!==copy.manifest||!Array.isArray(saved.pages)||saved.pages.length!==index.count)
+  throw Error("El índice local no corresponde al ejemplar "+year);
+ if(!saved.pages.every(x=>/^\\d+$/.test(String(x.id))&&
+   typeof x.fallback==="string"&&
+   /^https:\/\/www\\.e-rara\\.ch\/download\/webcache\/1000\/\\d+$/.test(x.fallback)&&
+   x.fallback.endsWith("/"+x.id)))
+  throw Error("Índice local contiene identificadores de imagen no válidos");
+ const folios=saved.pages.map((x,i)=>({
+  url:"https://www.e-rara.ch/i3f/v20/"+x.id+"/full/1100,/0/default.jpg",
+  backup:x.fallback,
+  label:"Imagen digital "+(i+1)+(x.folio?" · etiqueta "+String(x.folio).slice(0,80):"")
+ }));
+ activatePages(folios);
+ status.textContent="Índice local verificado: "+folios.length+" imágenes. Selecciona una y solo se descargará esa página.";
+ return true;
+}
+function renderFolioGrid(){
+ const grid=$("pr-folio-grid");
+ grid.replaceChildren();
+ const frag=document.createDocumentFragment();
+ for(let i=0;i<pages.length;i++){
+  const b=document.createElement("button");
+  b.type="button";b.className="pr-folio-button";b.dataset.index=String(i);
+  b.textContent=String(i+1);b.title=pages[i].label;
+  b.setAttribute("aria-label","Abrir "+pages[i].label);
+  if(i===current){b.classList.add("is-current");b.setAttribute("aria-current","page")}
+  frag.appendChild(b);
+ }
+ grid.appendChild(frag);
+ $("pr-folio-total").textContent=pages.length+" imágenes digitales disponibles · índice completo sin precargar las fotografías.";
+}
+$("pr-folio-grid").addEventListener("click",e=>{
+ const button=e.target.closest("button[data-index]");
+ if(button)show(Number(button.dataset.index));
+});
 function activatePages(nextPages){
  pages=nextPages;
+ renderFolioGrid();
  $("pr-number").max=String(pages.length);
  $("pr-number").disabled=false;
  $("pr-next").disabled=false;
@@ -85,6 +132,10 @@ function show(n){
  $("pr-number").value=String(current+1);
  $("pr-counter").textContent=(current+1)+" / "+pages.length;
  $("pr-label").textContent=page.label;
+ const currentButton=$("pr-folio-grid").querySelector(".is-current");
+ if(currentButton){currentButton.classList.remove("is-current");currentButton.removeAttribute("aria-current")}
+ const targetButton=$("pr-folio-grid").querySelector('button[data-index="'+current+'"]');
+ if(targetButton){targetButton.classList.add("is-current");targetButton.setAttribute("aria-current","page")}
  $("pr-prev").disabled=current===0;$("pr-next").disabled=current===pages.length-1;
  $("pr-stage").scrollTop=0;$("pr-stage").scrollLeft=0;
  status.textContent="Cargando imagen "+(current+1)+" de "+pages.length+"…";
@@ -131,6 +182,13 @@ async function load(){
   const option=document.querySelector('option[value="'+y+'"]');if(option)option.textContent="Perrault "+y;
  }
  try{
+  // Fast path: the complete, edition-specific folio index ships with GitHub Pages.
+  // No large external manifest is requested for the two verified copies.
+  try{
+   if(await loadLocalIndex())return;
+  }catch(localError){
+   status.textContent="Índice local no disponible ("+localError.message+"); intentando índice institucional…";
+  }
   const cached=readCachedIndex();
   if(cached){
    activatePages(cached);
