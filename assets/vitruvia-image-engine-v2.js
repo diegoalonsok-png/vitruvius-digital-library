@@ -366,6 +366,37 @@ function documentedLexicalVisual(query){
   score:10000,group:"context",verifiedIdentity:true
  };
 }
+/* Exact article thumbnails provide a secondary documented source for ordinary
+   topics when entity resolution or Wikimedia Commons search returns nothing.
+   Deliberately exclude unidentified people and historical likenesses. */
+async function exactArticleLeadImage(topic,query,id){
+ if(topic.kind==="person"||topic.kind==="music-group"||topic.historical||topic.ancient)return [];
+ const names=distinct([topic.subject,query]).filter(x=>x.length>2).slice(0,2);
+ if(!names.length)return [];
+ const normalized=new Set(names.map(fold));
+ const languages=distinct([document.documentElement.lang||"es","en","es"]).filter(x=>/^(es|en|fr|de|it|pt)$/.test(x)).slice(0,3);
+ const lookups=languages.map(async lang=>{
+  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),5000);
+  try{
+   const params=new URLSearchParams({action:"query",format:"json",origin:"*",redirects:"1",
+    titles:names.join("|"),prop:"pageimages",piprop:"thumbnail|name",pithumbsize:"480"});
+   const r=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{signal:ctl.signal});
+   if(!r.ok)return null;
+   const data=await r.json();
+   const page=Object.values(data.query?.pages||{}).find(p=>
+    normalized.has(fold(p.title||""))&&p.pageimage&&safeLink(p.thumbnail?.source));
+   if(!page)return null;
+   const filename=page.pageimage.replace(/_/g," ");
+   return {name:filename,caption:page.title,preview:page.thumbnail.source,
+    original:page.thumbnail.source,
+    page:"https://"+lang+".wikipedia.org/wiki/File:"+encodeURIComponent(filename),
+    license:"",credit:"Wikipedia · "+lang.toUpperCase()+" · derechos en la ficha",
+    score:240,group:"context",verifiedIdentity:false};
+  }catch{return null}finally{clearTimeout(timer)}
+ });
+ const results=await Promise.all(lookups);
+ return id===active?results.filter(Boolean).slice(0,1):[];
+}
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
@@ -476,7 +507,8 @@ async function searchImages(query){
  if(identity?.url)external(locale("Artículo enciclopédico","Encyclopedia article","Article encyclopédique"),identity.url);
  // Start the verified article image lookup at once, instead of waiting for Commons.
  let leadItems=[];
- const leadPromise=(historicalSubject?Promise.resolve([]):verifiedLeadImage(identity,topic,id)).then(items=>{
+ const leadPromise=(historicalSubject?Promise.resolve([]):verifiedLeadImage(identity,topic,id)
+  .then(items=>items.length?items:exactArticleLeadImage(topic,q,id))).then(items=>{
   if(id!==active)return [];
   leadItems=items;
   if(items.length&&!grid.querySelector(".vitruvia-image-card")&&!(topic.kind==="person"&&items.every(isChildhoodPhoto)))displayGroups(items,topic);
@@ -587,7 +619,15 @@ async function searchImages(query){
    if(id!==active)return;
    if(exactLead.length){
     displayGroups([...exactLead,...selected.filter(x=>x.preview!==exactLead[0].preview)].slice(0,150),topic);
-   }else displayGroups(selected,topic);
+   }else{
+    // Do not erase an earlier encyclopedic image when generic Commons
+    // thumbnails arrive; keep exact-source attribution and deduplicate.
+    const trustedLead=leadItems.length?leadItems:await leadPromise;
+    if(id!==active)return;
+    const combined=[...trustedLead,...selected].filter((x,i,a)=>
+     a.findIndex(y=>y.page===x.page||y.preview===x.preview)===i);
+    displayGroups(combined.slice(0,150),topic);
+   }
    status.textContent=locale(selected.length+" imágenes con ficha de origen. Abre una para ampliar; confirma los derechos antes de reutilizarla.",
     selected.length+" source-linked images. Select one to enlarge; check rights before reuse.",
     selected.length+" images avec notice. Agrandissez-les et vérifiez les droits avant réutilisation.");
@@ -611,9 +651,14 @@ async function searchImages(query){
   if(covers&&!items.length&&!leadItems.length){grid.hidden=false;section.hidden=false;}
   if(covers&&!items.length&&!leadItems.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
  }catch(error){
-  if(id===active)status.textContent=locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
-   "The image service did not respond; use the linked archives.",
-   "Le service d’images ne répond pas ; consulter les archives.");
+  if(id===active){
+   const existing=grid.querySelector(".vitruvia-image-card");
+   status.textContent=existing?
+    locale("Se muestran imágenes documentadas; otras fuentes no respondieron.","Documented images are available; some sources did not respond.","Images documentées disponibles ; certaines sources ne répondent pas."):
+    locale("El servicio de imágenes no respondió; usa los enlaces a los archivos.",
+     "The image service did not respond; use the linked archives.",
+     "Le service d’images ne répond pas ; consulter les archives.");
+  }
  }finally{
   clearTimeout(timeout);
   // The source-backed gallery must not remain hidden after real image results load.
