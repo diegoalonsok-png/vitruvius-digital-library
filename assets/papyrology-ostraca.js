@@ -52,7 +52,7 @@ $("pap-ocr-lang").addEventListener("change",updateScript);
 
 let available=false,zoom=1,rotation=0,worker=null,running=false,objectUrl=null;
 updateScript();
-const state={invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30"};
+const state={invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30",exposure:0,shadows:0,highlights:0,gamma:100,clarity:0,sharpness:0,originalPreview:false};
 const cap=clamp=>(Number.isFinite(clamp)?Math.max(0,Math.min(255,clamp)):0);
 function filterText(){return [
  state.invert?"invert(1)":"",
@@ -63,6 +63,65 @@ function filterText(){return [
  "brightness("+state.brightness+"%)",
  "hue-rotate("+state.hue+"deg)"
 ].filter(Boolean).join(" ")}
+const tonalKeys=["exposure","shadows","highlights","gamma","clarity","sharpness"];
+function tonalDisplay(k,value){return k==="gamma"?(value/100).toFixed(2).replace(".",","):String(value)}
+function updateTonalUI(){
+ for(const k of tonalKeys){$("pap-tone-"+k).value=state[k];$("pap-tone-"+k+"-value").textContent=tonalDisplay(k,state[k])}
+ $("pap-tone-original").setAttribute("aria-pressed",String(state.originalPreview));
+}
+function applyTonalControls(){
+ if(state.originalPreview)return;
+ const hasTone=state.exposure!==0||state.shadows!==0||state.highlights!==0||state.gamma!==100;
+ const hasDetail=state.clarity>0||state.sharpness>0;
+ if(!hasTone&&!hasDetail)return;
+ const w=canvas.width,h=canvas.height,im=ctx.getImageData(0,0,w,h),data=im.data;
+ // Look-up table applied to R,G,B equally, preserving the original channel ratios.
+ if(hasTone){
+  const lut=new Uint8ClampedArray(256),exposure=Math.pow(2,state.exposure/100),
+    gamma=state.gamma/100,shadow=state.shadows/100,highlight=state.highlights/100;
+  for(let i=0;i<256;i++){
+   let v=Math.min(1,i/255*exposure);
+   v=Math.pow(v,1/gamma);
+   v+=shadow*.40*Math.pow(1-v,2)+highlight*.40*v*v;
+   lut[i]=cap(v*255);
+  }
+  for(let i=0;i<data.length;i+=4){data[i]=lut[data[i]];data[i+1]=lut[data[i+1]];data[i+2]=lut[data[i+2]]}
+ }
+ // Optional light local sharpening. Use only a 4-neighbour unsharp mask,
+ // so the work is bounded to one canvas and the input remains unchanged.
+ if(hasDetail&&w>2&&h>2){
+  const originalData=new Uint8ClampedArray(data),amount=.8*state.sharpness/100+.45*state.clarity/100;
+  for(let y=1;y<h-1;y++){
+   for(let x=1;x<w-1;x++){
+    const i=(y*w+x)*4;
+    for(let k=0;k<3;k++){
+     const local=(originalData[i-4+k]+originalData[i+4+k]+originalData[i-w*4+k]+originalData[i+w*4+k])/4;
+     data[i+k]=cap(originalData[i+k]+(originalData[i+k]-local)*amount);
+    }
+   }
+  }
+ }
+ ctx.putImageData(im,0,0);
+}
+for(const k of tonalKeys)$("pap-tone-"+k).addEventListener("input",e=>{
+ state[k]=Number(e.target.value);$("pap-tone-"+k+"-value").textContent=tonalDisplay(k,state[k]);show();
+});
+$("pap-tone-papyrus").addEventListener("click",()=>{
+ Object.assign(state,{exposure:16,shadows:35,highlights:-30,gamma:110,clarity:30,sharpness:12,originalPreview:false});
+ updateTonalUI();show();
+});
+$("pap-tone-engraved").addEventListener("click",()=>{
+ Object.assign(state,{exposure:-5,shadows:22,highlights:-34,gamma:95,clarity:65,sharpness:48,originalPreview:false});
+ updateTonalUI();show();
+});
+$("pap-tone-reset").addEventListener("click",()=>{
+ Object.assign(state,{exposure:0,shadows:0,highlights:0,gamma:100,clarity:0,sharpness:0,originalPreview:false});
+ updateTonalUI();show();
+});
+$("pap-tone-original").addEventListener("click",()=>{
+ state.originalPreview=!state.originalPreview;updateTonalUI();show();
+});
+
 function show(){
  if(!available)return;
  canvas.width=rotation%180?original.height:original.width;
@@ -70,10 +129,10 @@ function show(){
  ctx.save();ctx.clearRect(0,0,canvas.width,canvas.height);
  ctx.translate(canvas.width/2,canvas.height/2);
  ctx.rotate(rotation*Math.PI/180);
- ctx.filter=filterText();
+ ctx.filter=state.originalPreview?"none":filterText();
  ctx.drawImage(original,-original.width/2,-original.height/2);
  ctx.restore();
- if(state.edge){
+ if(!state.originalPreview&&state.edge){
   // Local edge-enhancement kernel for faint incisions; original bitmap untouched.
   const image=ctx.getImageData(0,0,canvas.width,canvas.height);
   const pixels=image.data,w=canvas.width,h=canvas.height;
@@ -84,6 +143,7 @@ function show(){
   }
   ctx.putImageData(image,0,0);
  }
+ applyTonalControls();
  canvas.style.width=Math.round(canvas.width*zoom)+"px";
  canvas.style.height=Math.round(canvas.height*zoom)+"px";
  stage.style.background=state.bg;
@@ -124,7 +184,8 @@ canvas.addEventListener("pointerdown",inspect);
 canvas.addEventListener("pointerleave",()=>{loupe.style.display="none"});
 stage.addEventListener("scroll",()=>{loupe.style.display="none"},{passive:true});
 function reset(){
- Object.assign(state,{invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30"});
+ Object.assign(state,{invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30",exposure:0,shadows:0,highlights:0,gamma:100,clarity:0,sharpness:0,originalPreview:false});
+ updateTonalUI();
  rotation=0;zoom=1;
  for(const key of ["saturation","contrast","brightness","hue"])$("pap-"+key).value=state[key];
  $("pap-bg").value=state.bg;
