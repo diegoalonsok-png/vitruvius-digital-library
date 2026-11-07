@@ -685,10 +685,9 @@ function installCatalogueFrameTools(){
    let inverted=false;
    invert.addEventListener("click",()=>{
     inverted=!inverted;
-    if(isText()&&!frame.src.includes("example.invalid")){
+    if(isText()){
      const fg=inverted?"#f4efdf":"#202b35",bg=inverted?"#1b2833":"#fffdfa";
-     frame.addEventListener("load",()=>{}, {once:true});
-     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:url()?.searchParams.get("work"),lang:url()?.searchParams.get("lang"),background:bg,foreground:fg},"*");
+     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:url()?.searchParams.get("work"),lang:url()?.searchParams.get("lang"),background:bg,foreground:fg},location.origin);
     }else frame.style.filter=inverted?"invert(1)":"none";
     invert.setAttribute("aria-pressed",String(inverted));
    });
@@ -701,7 +700,7 @@ function installCatalogueFrameTools(){
     }
     const update=()=>{
      const u=url();if(!u)return;
-     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:u.searchParams.get("work"),lang:u.searchParams.get("lang"),background:bg.value,foreground:fg.value},"*");
+     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:u.searchParams.get("work"),lang:u.searchParams.get("lang"),background:bg.value,foreground:fg.value},location.origin);
     };
     bg.addEventListener("input",update);fg.addEventListener("input",update);frame.addEventListener("load",update);
    }
