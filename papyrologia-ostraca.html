@@ -29,7 +29,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 #pap-loupe.rect{border-radius:6px;width:240px;height:155px}
 #pap-detail{width:100%;aspect-ratio:4/3;object-fit:contain;background:#222}
 .caption{font-size:12px;color:#5b6770}
-.transcript textarea{width:100%;min-height:180px;resize:vertical;border:1px solid #ad9b79;border-radius:4px;padding:12px;font:19px/1.6 "Gentium Plus",Georgia,serif;direction:auto;background:#fff}
+.transcript textarea{width:100%;min-height:180px;resize:vertical;border:1px solid #ad9b79;border-radius:4px;padding:12px;font:19px/1.6 "Noto Serif Hebrew","Noto Sans Syriac","Gentium Plus",Georgia,serif;direction:auto;unicode-bidi:plaintext;background:#fff}
 #pap-graphemes{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0;min-height:48px}
 #pap-graphemes button{font:21px Georgia,serif;min-width:38px;padding:7px 9px;background:#f9f3e6;border:1px solid #c3b193;border-radius:4px;cursor:pointer}
 #pap-graphemes button:focus-visible{outline:3px solid #96733c}
@@ -87,15 +87,16 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <section class="panel transcript">
 <h2>4 · Lectura paleográfica asistida</h2>
 <div class="toolbar">
-<label>Escritura a reconocer<select id="pap-ocr-lang"><option value="grc">Griego (modelo OCR)</option><option value="lat">Latín (modelo OCR)</option><option value="eng">Alfabeto latino moderno (comparativo)</option></select></label>
+<label>Escritura a reconocer<select id="pap-ocr-lang"><option value="grc">Griego antiguo · grc</option><option value="lat">Latín · lat</option><option value="heb">Hebreo · escritura cuadrada (heb)</option><option value="arc-heb">Arameo en alfabeto hebreo · aproximación (heb)</option><option value="syr">Arameo siríaco · syr</option><option value="eng">Alfabeto latino moderno · eng</option></select></label>
 <button id="pap-ocr" type="button" disabled>Reconocer texto (OCR experimental)</button>
 <button id="pap-ocr-detail" type="button" disabled>Reconocer solo el detalle de la lupa</button>
 <button id="pap-cancel" type="button" disabled>Cancelar OCR</button>
 </div>
-<p class="caption">Tesseract.js se descarga solamente al solicitar OCR. El reconocimiento se ejecuta localmente mediante WebAssembly; los modelos griego y latino pueden fallar con abreviaturas, grafías cursivas, tintas tenues o inscripciones incisas. No es un modelo paleográfico especializado ni identifica la datación de un manuscrito. <a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener noreferrer">Motor y documentación</a>.</p>
+<p class="caption">Tesseract.js se descarga solamente al solicitar OCR. El reconocimiento se ejecuta localmente mediante WebAssembly; los modelos griego, latino, hebreo y siríaco pueden fallar con abreviaturas, grafías cursivas, tintas tenues o inscripciones incisas. La opción de arameo en alfabeto hebreo emplea heb y no identifica por sí sola palabras arameas; la opción siríaca utiliza syr. Ninguna de las dos permite reconocer de manera fiable todas las escrituras arameas antiguas. No es un modelo paleográfico especializado ni identifica la datación de un manuscrito. <a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener noreferrer">Motor y documentación</a>.</p>
 <p id="pap-status" role="status" aria-live="polite">Sube una imagen para comenzar.</p>
 <label for="pap-transcription">Transcripción editable · propuesta automática no verificada</label>
 <textarea id="pap-transcription" lang="grc" spellcheck="false" placeholder="Aquí aparecerá la hipótesis OCR. Corrige letras, signos, lagunas y abreviaturas manualmente."></textarea>
+<p id="pap-script-note" class="caption">Griego antiguo: lectura OCR experimental; revisar trazos y signos.</p>
 <p class="caption">Desglose por carácter Unicode (no implica identificación paleográfica individual ni confianza estadística por letra). Selecciona un carácter para insertarlo en la transcripción.</p>
 <div id="pap-graphemes" aria-label="Caracteres propuestos por OCR"></div>
 <div class="toolbar">
