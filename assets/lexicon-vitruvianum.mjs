@@ -69,7 +69,7 @@ function enrich(item,root){
  const e=item.e,first=e.equivalence||[...e.forms.keys()][0];
  const tools=el('div',null,root);tools.className='lexicon-tools';
  addSharing(tools,item,first);
- appendScholarlyWorkbench(item,root);
+ queueMicrotask(()=>{if(root.isConnected&&root.dataset.entryKey===e.key)appendScholarlyWorkbench(item,root)});
  const csv=el('button','Descargar concordancia (CSV)',tools);csv.type='button';
  csv.addEventListener('click',()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"';const rows=[['forma','locus','apariciones','pasaje latino','fuente']];
   for(const site of item.sites)rows.push([first,site.p.locus,site.count,site.p.latin,'Vitruvio, De architectura, texto latino V514 (D. Kurilo)']);
