@@ -234,6 +234,14 @@ async function recognize(target){
 }
 $("pap-ocr").addEventListener("click",()=>{void recognize(canvas)});
 $("pap-ocr-detail").addEventListener("click",()=>{void recognize(detail)});
+/* Only a deliberate click in the extraction panel starts OCR on its local black-on-white mask. */
+document.addEventListener("vitruvia:ocr-extracted-mask",event=>{
+ const mask=event.detail?.canvas;
+ if(!(mask instanceof HTMLCanvasElement)||!mask.width||!mask.height)return;
+ if(!available||running){status.textContent="Carga una imagen y finaliza el proceso anterior antes de iniciar OCR.";return}
+ void recognize(mask);
+});
+
 $("pap-cancel").addEventListener("click",()=>{
  running=false;$("pap-cancel").disabled=true;updateScript();
  if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}
