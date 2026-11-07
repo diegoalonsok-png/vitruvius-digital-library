@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Miguel de Urrea · De architectura (1582) | Vitruvius Digital Library</title>
+<meta name="description" content="Lectura integrada de la primera traducción impresa castellana del tratado de Vitruvio, Miguel de Urrea, Alcalá de Henares, Juan Gracián, 1582.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:dark;--bg:#090909;--panel:#000;--ink:#f4f2ed;--line:#817253;--muted:#b9b9b9;--gold:#c5ac79}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,sans-serif}
+main{max-width:1540px;margin:auto;padding:22px clamp(12px,3vw,42px) 50px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:13px}
+a{color:#e0c89d}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #f5d170;outline-offset:2px}
+h1{font:normal clamp(29px,3.8vw,49px)/1.17 Georgia,serif;margin:22px 0 8px}
+.subtitle{color:var(--muted);margin:0 0 18px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#161616;border:1px solid var(--line);padding:12px;border-radius:7px;margin-bottom:12px}
+button,select{background:#25394b;color:#fff;border:1px solid #b59c75;border-radius:4px;padding:10px 14px;cursor:pointer;font:600 13px system-ui}
+button:disabled{opacity:.5;cursor:default}
+.viewer{background:#000;border:1px solid var(--line);border-radius:5px;min-height:65vh;overflow:hidden}
+.viewer iframe{width:100%;height:78vh;min-height:480px;display:block;border:0;background:#000}
+.viewer-empty{display:grid;place-content:center;min-height:65vh;text-align:center;padding:28px;color:#c5c2ba}
+.note{max-width:105ch;margin:15px 0;color:#c7c3ba;font:13px/1.7 system-ui}
+.sources{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid #554f46;margin-top:20px;padding-top:15px;font-size:13px}
+@media(max-width:760px){.viewer iframe{height:70vh;min-height:400px}}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="index.html#coleccion">← Colección de Vitruvius</a><a href="bibliotheca-graeca-latina.html?work=vitruvius">Bibliotheca</a><a href="ediciones-historicas.html">Ediciones históricas</a></nav>
+<p style="color:var(--gold);letter-spacing:.12em;margin:20px 0 0;font-size:12px">EDICIÓN HISTÓRICA CASTELLANA · ALCALÁ DE HENARES · 1582</p>
+<h1>Miguel de Urrea · <i>De architectura</i></h1>
+<p class="subtitle"><i>M. Vitruuio Pollion de Architectura, diuidido en diez libros</i> · traducción de Miguel de Urrea · impreso por Juan Gracián, 1582.</p>
+<div class="controls" role="group" aria-label="Controles de lectura de Urrea">
+<label for="urrea-copy">Ejemplar digitalizado</label>
+<select id="urrea-copy"><option value="sevilla">Universidad de Sevilla · H Arte R.13.T.27</option><option value="getty">Getty Research Institute · ejemplar de 1582</option></select>
+<button id="urrea-open" type="button">Abrir visor de folios</button>
+<button id="urrea-pdf" type="button">Ver PDF en esta página</button>
+<button id="urrea-reset" type="button">Cerrar visor</button>
+</div>
+<p class="note" id="urrea-status" role="status">Selecciona «Abrir visor de folios» para leer esta digitalización histórica sin abandonar Vitruvius. El archivo digital es servido por la institución de origen a través de Internet Archive; no se afirma que exista una copia idéntica en GitHub.</p>
+<div class="viewer" id="urrea-stage"><div class="viewer-empty" id="urrea-empty"><p>Urrea · 1582</p><p>Folio a folio o PDF completo, a elección.</p></div></div>
+<p class="note">Edición de Urrea, no de Sáez. Las digitalizaciones corresponden a ejemplares históricos catalogados de la traducción de 1582. El visor de folios depende del servicio remoto y puede no permitir su inserción en determinados navegadores. No se declara indexación OCR ni correspondencia automática por loci.</p>
+<div class="sources">
+<a id="urrea-source" href="https://archive.org/details/HArteR13T27" target="_blank" rel="noopener noreferrer">Registro del ejemplar · Universidad de Sevilla</a>
+<a href="https://www.bvpb.mcu.es/es/consulta/registro.do?id=452427" target="_blank" rel="noopener noreferrer">Biblioteca Virtual del Patrimonio Bibliográfico</a>
+<a href="https://www.bibliotecadigitaldeandalucia.es/catalogo/es/consulta/registro.do?id=1002005" target="_blank" rel="noopener noreferrer">Biblioteca Virtual de Andalucía</a>
+<a href="https://www.cervantesvirtual.com/obra/m-vitruuio-pollion-de-architectura--diuidido-en-diez-libros/" target="_blank" rel="noopener noreferrer">Ficha bibliográfica · Cervantes Virtual</a>
+</div>
+</main>
+<script>
+(()=>{
+ "use strict";
+ const copies={
+  sevilla:{id:"HArteR13T27",label:"Universidad de Sevilla"},
+  getty:{id:"mvitruuiopollion00vitr",label:"Getty Research Institute"}
+ };
+ const $=id=>document.getElementById(id),stage=$("urrea-stage"),status=$("urrea-status");
+ function show(mode){
+  stage.replaceChildren();
+  const copy=copies[$("urrea-copy").value];
+  const iframe=document.createElement("iframe");
+  iframe.title="Miguel de Urrea · De architectura · "+copy.label+" · "+(mode==="pdf"?"PDF":"folios");
+  iframe.loading="lazy";iframe.referrerPolicy="strict-origin-when-cross-origin";
+  iframe.src=mode==="pdf"
+   ?"https://archive.org/download/"+copy.id+"/"+copy.id+".pdf#page=1&view=FitH"
+   :"https://archive.org/embed/"+copy.id+"/page/n1/mode/1up";
+  stage.append(iframe);
+  $("urrea-source").href="https://archive.org/details/"+copy.id;
+  $("urrea-source").textContent="Registro del ejemplar · "+copy.label;
+  status.textContent="Leyendo "+copy.label+" · "+(mode==="pdf"?"PDF":"visor de folios")+". Si no carga, usa el registro institucional situado al pie.";
+ }
+ $("urrea-open").addEventListener("click",()=>show("folios"));
+ $("urrea-pdf").addEventListener("click",()=>show("pdf"));
+ $("urrea-reset").addEventListener("click",()=>{stage.replaceChildren();const msg=document.createElement("div");msg.className="viewer-empty";msg.textContent="Visor cerrado. Selecciona una modalidad de lectura.";stage.append(msg);status.textContent="Visor detenido."});
+ $("urrea-copy").addEventListener("change",()=>{const copy=copies[$("urrea-copy").value];$("urrea-source").href="https://archive.org/details/"+copy.id;$("urrea-source").textContent="Registro del ejemplar · "+copy.label;});
+ const query=new URLSearchParams(location.search);
+ if(query.get("open")==="folios"||query.get("open")==="pdf")show(query.get("open"));
+})();
+</script>
+</body></html>
