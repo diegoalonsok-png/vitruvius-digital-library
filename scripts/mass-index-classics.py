@@ -84,9 +84,43 @@ def choose_file(tree, urn, suffix):
     return sorted(found, reverse=True)[0][1] if found else None
 
 
+def extract_complete_tei(raw, fallback_title):
+    """No indexar únicamente versos citados cuando el original es prosa TEI.
+
+    El extractor común prioriza <l> si el documento contiene alguna línea.
+    En textos mixtos eso puede descartar casi toda la prosa: se determina el
+    cuerpo principal y se comprueba el volumen efectivamente extraído.
+    El XML externo y los textos editoriales originales permanecen intactos.
+    """
+    root = ET.fromstring(raw)
+    ns = "{http://www.tei-c.org/ns/1.0}"
+    body = root.find(".//" + ns + "body")
+    if body is None:
+        raise ValueError("TEI no contiene body")
+    verses = body.findall(".//" + ns + "l")
+    prose = body.findall(".//" + ns + "p")
+    verse_chars = sum(len(" ".join(e.itertext())) for e in verses)
+    prose_chars = sum(len(" ".join(e.itertext())) for e in prose)
+    if verses and prose and prose_chars > 2 * verse_chars:
+        # Solo copia XML en memoria: preservar los versos dentro de sus párrafos.
+        for line in verses:
+            line.tag = ns + "seg"
+        normalized = ET.tostring(root, encoding="utf-8")
+    else:
+        normalized = raw
+    title, author, detected, passages = tei_extract(normalized, fallback_title)
+    extracted_chars = sum(len(p.get("original", "")) for p in passages)
+    main_chars = max(verse_chars, prose_chars)
+    if main_chars and extracted_chars < 0.75 * main_chars:
+        raise ValueError(
+            f"TEI incompleta: sólo {extracted_chars}/{main_chars} caracteres del texto principal"
+        )
+    return title, author, detected, passages
+
+
 def edition_document(work, original, source_url, raw, urn):
-    # Reutilizar el extractor TEI actual; no inferir equivalencias con traducciones.
-    title, author, detected, passages = tei_extract(raw, work.get("title", urn))
+    # Extraer el cuerpo sin descartar prosa si contiene versos citados.
+    title, author, detected, passages = extract_complete_tei(raw, work.get("title", urn))
     if detected and detected.lower() not in {original, "lat" if original == "la" else "grc"}:
         raise ValueError("Idioma TEI discrepante: " + detected)
     if len(passages) < 1:
