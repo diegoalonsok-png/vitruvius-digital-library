@@ -88,26 +88,54 @@ function exportTsv(){
 }
 
 let literalSerial=0;
+function lexicalTerms(raw){
+ const parts=String(raw||"").match(/[\\p{L}\\p{M}]+(?:[-'][\\p{L}\\p{M}]+)*/gu)||[];
+ const qs=[...new Set(parts.map(s=>s.trim()).filter(s=>fold(s).length>=3))].slice(0,5);
+ const matched=concepts.filter(c=>qs.some(q=>[c.id,...Object.values(c.modern||{}).flat(),...(c.la||[]),...(c.grc||[])].some(x=>typeof x==="string"&&fold(x)===fold(q))));
+ const forms=new Set(qs);
+ for(const c of matched){
+  for(const lang of ["la","grc","es","en","fr","de","it","pt"]){
+   for(const w of (lang==="la"||lang==="grc"?c[lang]:c.modern?.[lang])||[]){
+    if(typeof w==="string"&&fold(w).length>=3)forms.add(w);
+   }
+  }
+ }
+ return {qs,matched,forms:[...forms].slice(0,12)};
+}
 async function searchLiteral(){
  const raw=$("query").value.trim(),token=++literalSerial;
  const status=$("literal-status"),target=$("literal-results");target.replaceChildren();
- if(raw.length<2){status.textContent="Escriba al menos dos letras en el campo de búsqueda.";return}
- if(!window.ClassicsCorpusSearch){status.textContent="El índice textual no está disponible. Verifique la carga del buscador.";return}
- status.textContent="Consultando las ediciones alojadas para «"+raw+"»…";
+ if(fold(raw).length<3){status.textContent="Escriba una palabra de tres letras o más.";return}
+ if(!window.ClassicsCorpusSearch?.searchPassages){status.textContent="El índice de pasajes todavía no está disponible.";return}
+ const {qs,matched,forms}=lexicalTerms(raw);
+ const work=$("work").value,edition=$("edition").value;
+ const selectedEdition=versions.find(v=>[v.workId,v.language,v.source,v.edition||""].join("|")===edition);
+ // Only directly attested surface terms are searched. No automatic inflectional claims.
+ status.textContent="Buscando pasajes documentados para «"+raw+"» en los textos disponibles…";
  $("literal-search").disabled=true;
  try{
-  const rows=await window.ClassicsCorpusSearch.search(raw,{limit:75});
+  const all=await window.ClassicsCorpusSearch.searchPassages(forms,{limit:360,workId:work,language:selectedEdition?.language||"",maxPerEdition:24});
   if(token!==literalSerial)return;
-  const diagnostics=window.ClassicsCorpusSearch.diagnostics?.()||{};
+  const rows=selectedEdition?all.filter(r=>r.source===selectedEdition.source):all;
+  const diag=window.ClassicsCorpusSearch.diagnostics?.()||{};
   status.textContent=rows.length?
-   rows.length+" ediciones con coincidencias literales de «"+raw+"». "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles; resultados parciales.":"Seleccione una edición para ver su pasaje y procedencia."):
-   "Sin coincidencias literales en las "+(diagnostics.loaded||0)+" ediciones examinadas. "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles. ":"")+"Esto no demuestra ausencia en obras sin texto indexado.";
-  for(const row of rows){
-   const card=el("article",null,"entry"),a=link(row.link||"bibliotheca-graeca-latina.html",row.title||"Texto clásico");
-   const meta=el("p",(row.meta||"")+" · "+(row.units||0)+" pasajes","muted");
-   const excerpt=el("p",row.excerpt||"");card.append(a,meta,excerpt);target.append(card);
+    rows.length+" pasajes localizados en "+new Set(rows.map(r=>r.workId+"|"+r.source)).size+" ediciones para «"+raw+"». "+(diag.failed?diag.failed+" fuentes sin cargar; resultados parciales. ":"")+"Máximo 24 pasajes por edición en esta vista.":
+    "Sin pasajes recuperados en los textos disponibles. "+(diag.failed?diag.failed+" fuentes sin cargar. ":"")+"No significa que el término falte en otros manuscritos o ediciones.";
+  if(matched.length){
+   const notice=el("p","Conceptus relacionado: "+matched.map(c=>c.id).join(", ")+". Se buscaron formas equivalentes documentadas (no traducciones alineadas ni lemas flexionados verificados).","muted");
+   target.append(notice);
   }
- }catch(err){if(token===literalSerial)status.textContent="Error de búsqueda: "+err.message}
+  if(!rows.length&&qs.length)target.append(el("p","Probá buscar «"+qs[0]+"» en Lexicon para explorar flexiones y testimonios fuera de este corpus.","muted"));
+  for(const row of rows){
+   const card=el("article",null,"entry passage-card");
+   const h=el("h2");h.append(link(row.link,row.author+" · "+row.title));card.append(h);
+   card.append(el("p",(langs[row.language]||row.language)+" · "+(row.ocr?"página OCR ":"locus ")+row.locus+" · forma: "+row.term+(row.edition?" · "+row.edition:""),"passage-meta"));
+   const quote=el("blockquote",row.excerpt,"passage-quote");card.append(quote);
+   card.append(el("p",row.ocr?"OCR histórico sin colación: referencia a página, no a locus crítico.":"Pasaje del texto alojado; sin alineación automática con traducciones.","muted"));
+   const actions=el("div",null,"links");actions.append(link(row.link,"Abrir pasaje y resaltar término"),link("vitruvia-lexicon.html?q="+encodeURIComponent(row.term),"Estudiar palabra en Lexicon"));card.append(actions);
+   target.append(card);
+  }
+ }catch(err){if(token===literalSerial)status.textContent="Error al recuperar pasajes: "+err.message}
  finally{if(token===literalSerial)$("literal-search").disabled=false}
 }
 async function init(){
@@ -144,7 +172,7 @@ async function init(){
 $("work").addEventListener("change",()=>{refillEditions();render()});
 ["edition","concept"].forEach(id=>$(id).addEventListener("change",render));
 let filterTimer=null;
-$("query").addEventListener("input",()=>{clearTimeout(filterTimer);literalSerial++;$("literal-results").replaceChildren();$("literal-status").textContent="Presione Enter o «Buscar palabra en los textos» para consultar coincidencias literales.";filterTimer=setTimeout(render,130)});
+$("query").addEventListener("input",()=>{clearTimeout(filterTimer);literalSerial++;$("literal-results").replaceChildren();$("literal-status").textContent="Preparando consulta de pasajes…";render();filterTimer=setTimeout(()=>{if(fold($("query").value.trim()).length>=3)searchLiteral();else $("literal-status").textContent="Escriba al menos tres letras."},750)});
 $("query").addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();clearTimeout(filterTimer);render();searchLiteral()}});
 $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
