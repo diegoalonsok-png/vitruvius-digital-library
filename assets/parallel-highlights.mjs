@@ -67,4 +67,17 @@ export function parallelExcerpt(text,{query="",lang="es",latin="",max=1700}={}){
  const begin=Math.max(0,Math.min(alt.start-250,t.length-max)),end=Math.min(t.length,begin+max);
  return (begin?"… ":"")+t.slice(begin,end)+(end<t.length?" …":"")
 }
+/** Documented variants for a query, in a particular language.
+ * Return query alone for unknown terms: never invent a bilingual equivalent.
+ * Only match translations when the Latin source attests that concept.
+ */
+export function equivalentTerms(query,lang="la",latin=""){
+ const c=conceptFor(query);
+ if(!c)return [String(query??"")];
+ if(lang!=="la"&&!sourceAnchored(c,latin))return [String(query??"")];
+ return [...new Set([String(query??""),...(c[lang]||[])])];
+}
+export function hasLatinConcept(query,latin=""){
+ return sourceAnchored(conceptFor(query),latin);
+}
 export const documentedVocabulary=VOCABULARY.map(x=>x.id);
