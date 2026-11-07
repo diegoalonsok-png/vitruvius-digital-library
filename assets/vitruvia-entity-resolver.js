@@ -41,6 +41,9 @@ const get=async(url)=>{
  try{const r=await fetch(url,{signal:controller.signal,headers:{Accept:"application/json"}});if(!r.ok)throw Error("HTTP "+r.status);return await r.json()}
  finally{clearTimeout(timer)}
 };
+// Los santos pueden figurar como «Martín de Porres» aunque se busquen como «San Martín de Porres».
+// Solo se quita un tratamiento si quedan por lo menos dos componentes distintivos.
+const honorificVariant=q=>{const parts=norm(q).split(" ").filter(Boolean);return parts.length>=4&&/^(san|santa|santo|saint|st)$/.test(parts[0])?parts.slice(1).join(" "):null};
 const mediaWiki=(lang,parameters)=>"https://"+lang+".wikipedia.org/w/api.php?"+new URLSearchParams({...parameters,format:"json",origin:"*"});
 function entityMetadata(entity){
  const values=property=>(entity.claims?.[property]||[]).filter(c=>c.rank!=="deprecated").map(c=>c.mainsnak?.datavalue?.value).filter(v=>v!==undefined);
@@ -192,15 +195,18 @@ function occupationFit(description,intent){
 }
 async function authorityCandidates(q,lang,intent=""){
  const languages=[...new Set([lang,"es","en"])];
- const hits=(await Promise.allSettled(languages.map(language=>
+ const shortName=honorificVariant(q);
+ const variants=shortName?[q,shortName]:[q];
+ const probes=languages.flatMap(language=>variants.map(term=>({language,term})));
+ const hits=(await Promise.allSettled(probes.map(({language,term})=>
   get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
-   action:"wbsearchentities",search:q,language,type:"item",limit:"9",format:"json",origin:"*"
+   action:"wbsearchentities",search:term,language,type:"item",limit:"12",format:"json",origin:"*"
   }))
- ))).flatMap((v,i)=>v.status==="fulfilled"?(v.value.search||[]).map((x,j)=>({...x,rank:j,searchLang:languages[i]})):[]);
- const ids=[...new Set(hits.map(x=>x.id).filter(x=>/^Q\d+$/.test(x)))].slice(0,14);
+ ))).flatMap((v,i)=>v.status==="fulfilled"?(v.value.search||[]).map((x,j)=>({...x,rank:j,searchLang:probes[i].language})):[]);
+ const ids=[...new Set(hits.map(x=>x.id).filter(x=>/^Q\d+$/.test(x)))].slice(0,24);
  if(!ids.length)return null;
  const d=await get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
-  action:"wbgetentities",ids:ids.join("|"),props:"labels|aliases|descriptions|sitelinks",
+  action:"wbgetentities",ids:ids.join("|"),props:"labels|aliases|descriptions|sitelinks|claims",
   languages:"es|en|fr",format:"json",origin:"*"
  }));
  const ranked=ids.map(id=>{
@@ -209,20 +215,26 @@ async function authorityCandidates(q,lang,intent=""){
   const aliases=Object.values(entity.aliases||{}).flat().map(x=>x.value);
   const site=entity.sitelinks?.[lang+"wiki"]||entity.sitelinks?.eswiki||entity.sitelinks?.enwiki;
   if(!site?.title)return null;
-  const exactLabel=labels.some(x=>norm(x)===norm(q)),exactAlias=aliases.some(x=>norm(x)===norm(q));
+  const exactLabel=labels.some(x=>variants.some(v=>norm(x)===norm(v))),exactAlias=aliases.some(x=>variants.some(v=>norm(x)===norm(v)));
   const searches=hits.filter(x=>x.id===id);
-  const searchMatch=searches.some(x=>norm(x.label)===norm(q)||norm(x.match?.text)===norm(q));
-  const queryTerms=norm(q).split(" ").filter(Boolean);
+  const searchMatch=searches.some(x=>variants.some(v=>norm(x.label)===norm(v)||norm(x.match?.text)===norm(v)));
+  const queryTerms=norm(shortName||q).split(" ").filter(Boolean);
   const completeName=[...labels,...aliases].some(name=>queryTerms.every(term=>norm(name).split(" ").includes(term)));
-  const similarity=Math.max(0,...labels.map(name=>nameSimilarity(q,name)));
+  const similarity=Math.max(0,...labels.flatMap(name=>variants.map(v=>nameSimilarity(v,name))));
   if(!exactLabel&&!exactAlias&&!searchMatch&&!completeName&&!similarity)return null;
    if(norm(q).split(" ").length>=2&&!exactLabel&&!exactAlias&&!completeName&&
-     ![...labels,...aliases].some(name=>fullNameMatch(q,name)))return null;
+     ![...labels,...aliases].some(name=>variants.some(v=>fullNameMatch(v,name))))return null;
   const coverage=Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length;
   // Prefer an exact primary name over an alias of a different, equally prominent entity.
   // Coverage can still disambiguate a little-known namesake from a major historical figure.
   const occupation=entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||"";
-  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+
+  // El tipo Wikidata P31=Q5 permite separar a una persona de colegios,
+  // edificios, calles y organizaciones bautizados con su nombre.
+  const human=(entity.claims?.P31||[]).some(c=>c.rank!=="deprecated"&&c.mainsnak?.datavalue?.value?.id==="Q5");
+  const personBonus=human&&norm(q).split(" ").length>=2?430:0;
+  const namedInstitution=!human&&/\\b(liceo|escuela|colegio|instituto|universidad|hospital|school|college|university|church|iglesia|distrito|district|estacion|calle)\\b/.test(norm([...labels.slice(0,3),occupation].join(" ")));
+  const institutionPenalty=namedInstitution&&!exactLabel?-160:0;
+  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+institutionPenalty+
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
