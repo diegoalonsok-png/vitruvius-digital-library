@@ -9314,6 +9314,62 @@
       "publicStatus": "fuente-externa-identificada",
       "localReader": null,
       "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+    },
+    {
+      "id": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "language": "la",
+      "genre": "Poesía elegíaca",
+      "dating": "Finales del siglo I a. C.",
+      "reading": {
+        "url": "classics-text-reader.html?work=sulpicia-elegiae&lang=la",
+        "status": "Seis elegías latinas disponibles en el lector local, con loci 3.13–3.18."
+      },
+      "manuscript": {
+        "status": "Testigos manuscritos del Corpus Tibullianum pendientes de identificación y validación institucional; no se atribuye un códice específico."
+      },
+      "pdf": {
+        "url": null,
+        "status": "No se ha incorporado un PDF verificable."
+      },
+      "translation": {
+        "status": "Pendientes las traducciones castellana, inglesa y francesa con edición y derechos comprobados; no hay alineación automática."
+      },
+      "links": {
+        "scaife": "https://scaife.perseus.org/library/",
+        "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
+        "archive": "https://archive.org/search?query=Sulpicia%20elegiae",
+        "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Sulpicia%20elegiae"
+      },
+      "publicStatus": "lectura-local-completa",
+      "localReader": {
+        "original": "data/classics-corpus/sulpicia-elegiae-la.json",
+        "translations": [],
+        "verified": true
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "label": "Latín · seis elegías (Corpus Tibullianum 3.13–18)",
+          "path": "data/classics-corpus/sulpicia-elegiae-la.json",
+          "kind": "edition"
+        }
+      ],
+      "bibliography": {
+        "uniformTitle": "Elegiae (Corpus Tibullianum 3.13–18)",
+        "originalAuthor": "Sulpicia",
+        "originalLanguage": "latín",
+        "method": "Texto antiguo de dominio público; transcripción normalizada para lectura y búsqueda. No equivale a edición crítica ni transcripción diplomática.",
+        "source": "https://litgloss.buffalo.edu/sulpicia/text.php",
+        "comparativeSource": "https://dcc.dickinson.edu/sulpicia/13"
+      },
+      "aliases": [
+        "Sulpicia",
+        "Elegías de Sulpicia",
+        "Sulpiciae Elegidia",
+        "Corpus Tibullianum III 13-18"
+      ]
     }
   ],
   "pdfPolicy": {
