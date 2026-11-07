@@ -154,6 +154,7 @@ async function load(language){
  const chosen=at>=0?at:0;setQuery(p.get("q")||input.value||"");
  if(search){renderSearch();const first=data.passages.findIndex(x=>match(x.text,search,true));select(at>=0?at:first>=0?first:chosen)}
  else{renderSearch();select(chosen)}
+ if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
 async function swap(lang){try{await load(lang)}catch(err){$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado."}}
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
