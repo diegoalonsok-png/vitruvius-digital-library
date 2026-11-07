@@ -71,6 +71,46 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 .pap-ink-sign small{display:block;font-size:11px}
 @media(max-width:900px){.pap-extraction-grid{grid-template-columns:1fr}}
 .pap-gemini-report{white-space:pre-wrap;background:#fff9ec;border:1px solid #bda987;padding:12px;margin:12px 0;font:13px/1.55 system-ui,sans-serif;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+
+/* Compact image-first study layout. Keep existing control IDs and event wiring intact. */
+header{padding:10px clamp(12px,2vw,26px)}
+header h1{font-size:clamp(23px,2.8vw,32px);margin:5px 0 2px}
+header p{margin:3px 0;font-size:12px}
+main{padding:8px clamp(9px,1.6vw,22px) 38px}
+.intro{font-size:12px;line-height:1.35;margin:4px 0 8px}
+.panel{padding:10px 12px;margin:6px 0}
+.panel h2{font-size:20px;margin:0 0 6px}
+.panel h3{font-size:16px;margin:8px 0 5px}
+.toolbar{gap:5px 8px;align-items:center}
+.toolbar label{font-size:11px;gap:1px;min-width:0}
+.toolbar button,.toolbar select,.toolbar input,.transcript button{min-height:31px;padding:4px 7px;font-size:12px}
+.toolbar input[type=range]{width:96px;min-height:18px}
+.toolbar input[type=color]{width:38px;height:31px}
+.toolbar input[type=file]{max-width:210px;font-size:11px}
+.toolbar select{max-width:180px}
+.toolbar output{font-size:11px}
+.workspace{gap:10px;align-items:start}
+.stage{min-height:260px;max-height:62vh}
+#pap-detail{height:145px;aspect-ratio:auto}
+.pap-compact-filters{margin:5px 0 8px;background:#f7f1e5;padding:8px 9px}
+.pap-compact-filters h2{font-size:15px}
+.pap-compact-filters .toolbar{gap:5px 9px}
+.pap-compact-filters .toolbar label{flex-direction:row;align-items:center;gap:5px}
+.pap-compact-filters .toolbar label input[type=range]{width:80px}
+#pap-extraction{padding:10px;margin:10px 0 0;border-color:#ad9b7b}
+#pap-extraction .caption{margin:5px 0;font-size:11px;line-height:1.35}
+#pap-extraction .toolbar{gap:5px 7px}
+.pap-advanced-filters{order:1;width:100%;padding:5px 8px;border:1px solid #c5b69a;background:#f8f3e8}
+.pap-advanced-filters summary{font-size:12px;font-weight:700;cursor:pointer}
+.pap-advanced-filters .toolbar{padding-top:7px}
+.pap-advanced-filters .toolbar label{flex-direction:row;align-items:center;gap:4px}
+.pap-extraction-grid{grid-template-columns:1fr;gap:6px;margin-top:8px}
+.pap-extraction-grid h3{font-size:15px}
+.pap-ink-scroll{max-height:280px}
+#pap-ink-canvas{width:auto;max-width:100%;max-height:270px}
+.transcript{margin-top:6px}
+@media(max-width:950px){.workspace{grid-template-columns:1fr}.stage{min-height:250px;max-height:55vh}}
+@media(max-width:580px){.panel{padding:8px}.toolbar label{flex-basis:auto}.stage{min-height:220px;max-height:47vh}#pap-detail{height:112px}.pap-compact-filters .toolbar label{flex:1 1 145px}.pap-compact-filters .toolbar label input[type=range]{flex:1;min-width:45px}}
 </style>
 </head>
 <body>
@@ -93,8 +133,11 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <button id="pap-reset" type="button">Restaurar</button>
 </div>
 </section>
+<div class="workspace">
 <section class="panel">
-<h2>2 · Filtros para leer trazos difíciles</h2>
+<h2>2 · Imagen original y lupas</h2>
+<section class="panel pap-compact-filters" aria-label="Filtros visuales inmediatos">
+<h2>Filtros de lectura · junto a la imagen</h2>
 <div class="toolbar">
 <button type="button" id="pap-invert" aria-pressed="false">◐ Invertir colores</button>
 <button type="button" id="pap-gray" aria-pressed="false">Blanco y negro</button>
@@ -108,12 +151,18 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <button id="pap-export" type="button">Guardar imagen procesada</button>
 </div>
 </section>
+<div id="pap-stage" class="stage" aria-label="Visor de papiro u óstracon, acercar el puntero para lupa" tabindex="0">
+<canvas id="pap-image" width="720" height="420" aria-label="Imagen cargada del testimonio"></canvas>
+</div>
+<canvas id="pap-loupe" width="240" height="240" aria-hidden="true"></canvas>
+<p class="caption">En computadora: mover el cursor para la lupa y usar zoom. En celular: tocar el punto de interés para actualizar el detalle. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
+<canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
 <section class="panel" id="pap-extraction" aria-labelledby="pap-extraction-h">
-<h2 id="pap-extraction-h">3 · Extraer tinta y reconstruir los trazos · blanco y negro</h2>
+<h2 id="pap-extraction-h">Extraer tinta · negro sobre blanco</h2>
 <p class="caption">Primero se genera una imagen de píxeles negros sobre fondo blanco. El sistema detecta regiones oscuras; también puede confundir grietas, manchas o textura con letras. La segmentación y la propuesta de signos necesitan cotejo humano con la fotografía original.</p>
 <div class="toolbar">
 <label>Modo de extracción<select id="pap-ink-mode"><option value="adaptive">Umbral local · soportes irregulares</option><option value="global">Umbral global · tinta negra</option><option value="edge">Contornos · incisiones</option></select></label>
-<label>Umbral <input id="pap-ink-threshold" type="range" min="35" max="245" value="135"><output id="pap-ink-threshold-value">135</output></label>
+<details class="pap-advanced-filters"><summary>Ajustes avanzados de iluminación y limpieza</summary><div class="toolbar"><label>Umbral <input id="pap-ink-threshold" type="range" min="35" max="245" value="135"><output id="pap-ink-threshold-value">135</output></label>
 <label>Sensibilidad local <input id="pap-ink-sensitivity" type="range" min="-40" max="40" value="12"><output id="pap-ink-sensitivity-value">12</output></label>
 <label>Ruido mínimo (píxeles) <input id="pap-ink-noise" type="range" min="0" max="70" value="6"><output id="pap-ink-noise-value">6</output></label>
 <label>Contraste local <input id="pap-ink-clarity" type="range" min="0" max="100" value="30"><output id="pap-ink-clarity-value">30</output></label>
@@ -124,6 +173,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <label>Nitidez <input id="pap-ink-sharpness" type="range" min="0" max="100" value="0"><output id="pap-ink-sharpness-value">0</output></label>
 <label>Grosor de trazo<select id="pap-ink-stroke"><option value="0">Original</option><option value="1">Engrosar 1 píxel</option><option value="2">Engrosar 2 píxeles</option><option value="-1">Afinar 1 píxel</option></select></label>
 <label>Unir trazos<select id="pap-ink-join"><option value="0">Sin unir</option><option value="1">Unir huecos pequeños</option><option value="2">Unir huecos medianos</option></select></label>
+</div></details>
 <button type="button" id="pap-ink-papyrus">Papiro · tinta tenue</button>
 <button type="button" id="pap-ink-ostracon">Óstracon · incisión</button>
 <button type="button" id="pap-ink-clean">Restaurar extracción</button>
@@ -143,16 +193,6 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 </div></div>
 <p class="caption">El análisis usa la imagen procesada, sin subirla al servidor. La máscara es una hipótesis de tinta, no una restauración diplomática; la segmentación agrupa componentes oscuros y puede dividir una misma letra o unir letras cercanas. Las coincidencias gráficas no son una identificación automática del idioma.</p>
 </section>
-
-<div class="workspace">
-<section class="panel">
-<h2>3 · Examinar el soporte</h2>
-<div id="pap-stage" class="stage" aria-label="Visor de papiro u óstracon, acercar el puntero para lupa" tabindex="0">
-<canvas id="pap-image" width="720" height="420" aria-label="Imagen cargada del testimonio"></canvas>
-</div>
-<canvas id="pap-loupe" width="240" height="240" aria-hidden="true"></canvas>
-<p class="caption">En computadora: mover el cursor para la lupa y usar zoom. En celular: tocar el punto de interés para actualizar el detalle. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
-<canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
 </section>
 <section class="panel transcript">
 <h2>4 · Análisis visual con Google y cotejo paleográfico</h2>
