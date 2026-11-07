@@ -48,7 +48,7 @@ dialog h2{font:italic 38px Georgia,serif}.definition{padding:12px 0;border-top:1
 <header><div class="site top"><a class="brand" href="vitruvia.html">Vitruvia <small>INDEX LOCORUM</small></a><nav><a href="vitruvia.html">Buscador</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="index.html">Biblioteca</a></nav></div></header>
 <main class="site">
 <h1>Index locorum</h1>
-<p class="subtitle">Buscador de pasajes de textos clásicos griegos y latinos, versiones y traducciones disponibles. Probá <strong>logos</strong>, <strong>λόγος</strong>, <strong>domus</strong> o <strong>casa</strong>. Los resultados se agrupan por obra y edición.</p>
+<p class="subtitle">Buscador de pasajes de textos clásicos griegos y latinos, versiones y traducciones disponibles. Prueba <strong>logos</strong>, <strong>λόγος</strong>, <strong>domus</strong> o <strong>casa</strong>. Los resultados se agrupan por obra y edición.</p>
 <form id="form" class="toolbar">
 <label class="querybox"><span>Palabra, transliteración o concepto</span><input id="query" type="search" placeholder="logos · λόγος · domus · casa" autocomplete="off" spellcheck="false"></label>
 <label><span>Obra</span><select id="work"><option value="">Todas las obras</option></select></label>
@@ -78,7 +78,7 @@ function expansions(q){const out=new Set([q]),related=associated(q);for(const x 
  for(const values of Object.values(c.modern||{}))for(const x of values)if(typeof x==="string")out.add(x)}}
  return {terms:[...out].slice(0,18),related};}
 function lexical(word){const dlg=$("dictionary");dlg.replaceChildren(el("p",null,"Estudio filológico"),el("h2",null,word));
- const found=associated(word);if(!found.length)dlg.append(el("p",null,"No hay ficha documentada para esta forma en Conceptus. Podés ampliar la búsqueda en Lexicon."));
+ const found=associated(word);if(!found.length)dlg.append(el("p",null,"No hay ficha documentada para esta forma en Conceptus. Puedes ampliar la búsqueda en Lexicon."));
  for(const c of found.slice(0,5)){const box=el("section","definition");box.append(el("strong",null,c.id),el("p",null,"Latín: "+(c.la||[]).join(", ")+" · Griego: "+(c.grc||[]).join(", ")),el("p",null,Object.values(c.modern||{}).flat().join(" · ")));if(c.note)box.append(el("p",null,c.note));dlg.append(box)}
  const actions=el("div","actions");actions.append(link("vitruvia-lexicon.html?q="+encodeURIComponent(word),"Estudiar en Lexicon"),btn("Cerrar",()=>dlg.close()));dlg.append(actions);dlg.showModal()}
 function words(where,text,term){let offset=0;for(const match of String(text).matchAll(/[\p{L}\p{M}]+/gu)){where.append(document.createTextNode(text.slice(offset,match.index)));const b=el("button","word",match[0]);b.type="button";if(fold(match[0])===fold(term))b.classList.add("hit");b.addEventListener("click",()=>lexical(match[0]));where.append(b);offset=match.index+match[0].length}where.append(document.createTextNode(text.slice(offset)))}
