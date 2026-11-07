@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Estado de ediciones · Bibliotheca Graeca et Latina</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f2eee5;color:#243949;font:14px/1.55 system-ui,sans-serif}header{background:#21394d;color:#fff;padding:20px clamp(16px,3vw,40px)}h1{margin:0;font:normal clamp(25px,3vw,38px) Georgia,serif}header a{color:#f4d9a9}main{max-width:1500px;margin:auto;padding:16px}.intro{background:#fff9ea;border-left:4px solid #ad8a54;padding:12px 16px}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:16px 0}.controls label{display:flex;flex-direction:column;gap:4px;font-weight:600}input,select{padding:9px;border:1px solid #aa9b82;border-radius:3px;background:#fff;color:#20394d;min-width:190px}input{min-width:min(400px,90vw)}.summary{font-weight:600;padding:7px 0}table{width:100%;border-collapse:collapse;background:#fffdf8}th,td{border-bottom:1px solid #dfd5c5;text-align:left;padding:11px;vertical-align:top}th{position:sticky;top:0;background:#ded0b8}td:first-child{min-width:190px}small,.muted{color:#61717b}a{color:#174e71}code{font-size:12px} .yes{color:#205d3b;font-weight:bold}.missing{color:#9b4937}.pending{color:#76633a} .lang{display:inline-block;border:1px solid #b8a88e;padding:2px 6px;margin:2px;border-radius:3px} .row-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:5px}@media(max-width:900px){table,tbody,tr,td{display:block}thead{display:none}tr{border:1px solid #cabca6;margin:10px 0}td{border:0;padding:6px 12px}td:before{content:attr(data-label) " · ";font-weight:700}}
+</style></head><body><header><h1>Estado documental de cada obra</h1><p><a href="bibliotheca-graeca-latina.html">← Volver a Bibliotheca Graeca et Latina</a></p></header>
+<main><p class="intro">Auditoría dinámica: distingue <strong>el testimonio más temprano documentado</strong> (que no necesariamente es el más antiguo conocido por la filología), el original local, las traducciones efectivamente registradas y la sincronización. Las traducciones ausentes no se inventan; los PDF o DOCX escaneados <strong>no se declaran indexados</strong> por el mero hecho de existir. La alineación de capítulos del lector no constituye cotejo automático por OCR.</p>
+<div class="controls"><label>Buscar obra o autor<input id="query" type="search" placeholder="Homero, Aristóteles, Vitruvio…"></label><label>Filtrar<select id="filter"><option value="all">Todas las obras</option><option value="original">Sin original textual indexado</option><option value="translations">Sin traducciones indexadas EN/ES/FR</option><option value="witness">Sin testimonio antiguo documentado y datado</option><option value="parallel">Con original y traducción registradas</option></select></label></div>
+<p class="summary" id="summary">Cargando catálogo…</p><table><thead><tr><th>Obra</th><th>Testimonio más antiguo documentado</th><th>Original griego/latín</th><th>Traducciones con texto local registrado</th><th>Sincronización e indexación</th></tr></thead><tbody id="rows"></tbody></table></main>
+<script>
+(async()=>{
+"use strict";
+const $=id=>document.getElementById(id),fmt={la:"Latín",grc:"Griego",en:"Inglés",es:"Castellano",fr:"Francés"};
+try{
+const [catalog,registry]=await Promise.all(["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/classics-corpus/search-registry.json"].map(async p=>{const r=await fetch(p);if(!r.ok)throw Error(p+" "+r.status);return r.json()}));
+const byId=new Map;for(const e of registry.entries||[]){if(!byId.has(e.workId))byId.set(e.workId,[]);byId.get(e.workId).push(e)}
+function witnesses(w){
+ const known=(w.witnessRecords||[]).filter(x=>x&&x.shelfmark&&Number.isFinite(Number(x.dateStart))&&x.dateStart!==null).sort((a,b)=>Number(a.dateStart)-Number(b.dateStart));
+ if(known.length){const x=known[0];return {text:[x.title,x.library,x.shelfmark,x.date].filter(Boolean).join(" · "),url:x.viewer||x.record||x.manifest||"",partial:true}}
+ const older=w.manuscript?.earliestWitness;
+ if(older?.name&&older?.shelfmark)return{text:[older.name,older.shelfmark].join(" · ")+ " · datación por verificar en ficha",url:older.manifest||"",partial:true};
+ return{text:"No establecido con evidencia suficiente",url:"",partial:false};
+}
+function link(label,url){const a=document.createElement("a");a.textContent=label;a.href=url;return a}
+const works=catalog.works||[];
+function draw(){
+ const q=$("query").value.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""),filter=$("filter").value;
+ const rows=$("rows");rows.replaceChildren();let shown=0,originals=0,paired=0;
+ for(const w of works){
+  const entries=byId.get(w.id)||[],langs=new Set(entries.map(x=>x.language));
+  const original=langs.has("la")||langs.has("grc"),trans=["en","es","fr"].filter(l=>langs.has(l)),wit=witnesses(w);
+  if(original)originals++;if(original&&trans.length)paired++;
+  const name=(w.author+" "+w.title+" "+(w.aliases||[]).join(" ")).toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  if(!name.includes(q))continue;
+  if(filter==="original"&&original||filter==="translations"&&trans.length||filter==="witness"&&wit.partial||filter==="parallel"&&!(original&&trans.length))continue;
+  shown++;
+  const tr=document.createElement("tr");const cells=["Obra","Testimonio","Original","Traducciones","Índices"];for(const s of cells){const td=document.createElement("td");td.dataset.label=s;tr.append(td)}const [nameTd,witTd,originalTd,transTd,indexTd]=tr.children;
+  nameTd.append(link(w.title,"bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id)));const sub=document.createElement("div");sub.className="muted";sub.textContent=w.author+" · "+(w.dating||"Fecha pendiente");nameTd.append(sub);
+  witTd.textContent=wit.text;if(wit.url&&/^https:\/\//.test(wit.url)){witTd.append(document.createTextNode(" · "));const a=link("Ver fuente",wit.url);a.target="_blank";a.rel="noopener noreferrer";witTd.append(a)}
+  originalTd.textContent=original?"Texto registrado: "+[...langs].filter(l=>["la","grc"].includes(l)).map(l=>fmt[l]).join(", "):"Sin transcripción original en registro de búsqueda";
+  originalTd.className=original?"yes":"missing";
+  if(trans.length){trans.forEach(l=>{const span=document.createElement("span");span.className="lang";span.textContent=fmt[l];transTd.append(span)})}else{transTd.textContent="EN / ES / FR no indexados";transTd.className="pending"}
+  if(original&&trans.length){indexTd.append(link("Leer versiones lado a lado","classics-parallel-reader.html?work="+encodeURIComponent(w.id)));indexTd.append(document.createElement("br"))}else{indexTd.append(document.createTextNode("Comparación textual: pendiente"))}
+  const note=document.createElement("small");note.textContent="Índice literal por pasajes registrados; sincronía por locus solo orientativa. OCR del facsímil y alineación semántica certificada: sin verificar.";indexTd.append(note);
+  rows.append(tr);
+ }
+ $("summary").textContent=shown+" de "+works.length+" fichas · "+originals+" obras con original textual registrado · "+paired+" con original y alguna traducción EN/ES/FR. Conteos del registro: no incluyen automáticamente PDF/DOCX ni enlaces externos.";
+}
+$("query").addEventListener("input",draw);$("filter").addEventListener("change",draw);draw();
+}catch(err){$("summary").textContent="No se pudo cargar el catálogo: "+err.message}
+})();
+</script></body></html>
