@@ -7505,8 +7505,8 @@
         "Sobre la brevedad de la vida"
       ],
       "reading": {
-        "url": "https://thelatinlibrary.com/sen.html",
-        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+        "url": "classics-parallel-reader.html?work=seneca-de-brevitate",
+        "status": "Latín y traducciones históricas española y francesa disponibles; la edición española usa 21 capítulos frente a los 20 latinos y franceses."
       },
       "manuscript": {
         "manifest": null,
@@ -7517,7 +7517,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducción no incorporada ni alineada con una edición identificada."
+        "status": "Traducciones española histórica y francesa de Joseph Baillard (1914) alojadas; división castellana distinta (21 unidades). Alineación filológica entre capítulos no certificada."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -7530,8 +7530,50 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=S%C3%A9neca%20Sobre%20la%20brevedad%20de%20la%20vida&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "publicStatus": "lectura-local-completa",
+      "localReader": {
+        "original": "data/classics-corpus/seneca-de-brevitate-la.json",
+        "translations": [
+          "data/classics-corpus/seneca-de-brevitate-es.json",
+          "data/classics-corpus/seneca-de-brevitate-fr.json"
+        ],
+        "verified": true
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/seneca-de-brevitate-la.json",
+        "es": "data/classics-corpus/seneca-de-brevitate-es.json",
+        "fr": "data/classics-corpus/seneca-de-brevitate-fr.json"
+      },
+      "localVersions": [
+        {
+          "language": "la",
+          "label": "Latín · 20 capítulos",
+          "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=la",
+          "kind": "edition"
+        },
+        {
+          "language": "es",
+          "label": "Castellano histórico · 21 capítulos",
+          "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=es",
+          "kind": "historical-translation"
+        },
+        {
+          "language": "fr",
+          "label": "Français · Joseph Baillard (1914) · 20 chapitres",
+          "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=fr",
+          "kind": "historical-translation"
+        }
+      ],
+      "bibliography": {
+        "uniformTitle": "De brevitate vitae",
+        "originalLanguage": "Latín",
+        "sources": [
+          "https://la.wikisource.org/wiki/De_brevitate_vitae",
+          "https://es.wikisource.org/wiki/De_la_brevedad_de_la_vida",
+          "https://fr.wikisource.org/wiki/De_la_brièveté_de_la_vie/Traduction_Baillard"
+        ],
+        "note": "Wikisource, textos históricos en dominio público con atribución CC BY-SA. El cotejo exhaustivo de fuentes y traducción española queda pendiente."
+      }
     },
     {
       "id": "seneca-de-ira",
