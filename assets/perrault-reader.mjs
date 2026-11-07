@@ -146,9 +146,9 @@ function show(n){
  $("pr-number").value=String(current+1);
  $("pr-counter").textContent=(current+1)+" / "+pages.length;
  $("pr-label").textContent=page.label;
- const currentButton=$("pr-folio-grid").querySelector(".is-current"):null;
+ const currentButton=$("pr-folio-grid").querySelector(".is-current");
  if(currentButton){currentButton.classList.remove("is-current");currentButton.removeAttribute("aria-current")}
- const targetButton=$("pr-folio-grid").querySelector('button[data-index="'+current+'"]'):null;
+ const targetButton=$("pr-folio-grid").querySelector(`button[data-index="${current}"]`);
  if(targetButton){targetButton.classList.add("is-current");targetButton.setAttribute("aria-current","page")}
  $("pr-prev").disabled=current===0;$("pr-next").disabled=current===pages.length-1;
  $("pr-stage").scrollTop=0;$("pr-stage").scrollLeft=0;
