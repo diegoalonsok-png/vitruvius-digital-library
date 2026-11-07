@@ -606,6 +606,32 @@ if(tab==="study"&&hasStudyPair(w)){
  });
  pane.before(toggle);
  pane.classList.add("classic-study-viewer");
+ // Break the study desk out of the catalogue column even when external
+ // layout/theme CSS leaves an offset or max-width on ancestor containers.
+ // Recompute on resize while this specific reader remains mounted.
+ const fullWidth=()=>{
+  if(!pane.isConnected)return;
+  pane.style.removeProperty("left");
+  pane.style.removeProperty("width");
+  const leftEdge=pane.getBoundingClientRect().left;
+  pane.style.left=(12-leftEdge)+"px";
+  pane.style.width="calc(100vw - 24px)";
+  pane.style.maxWidth="none";
+ };
+ requestAnimationFrame(fullWidth);
+ // A single global resize handler checks the currently mounted study desk.
+ if(!window.__classicsStudyWideResize){
+  window.__classicsStudyWideResize=()=>{
+   const active=document.querySelector(".classic-study-viewer");
+   if(!active)return;
+   active.style.removeProperty("left");
+   active.style.removeProperty("width");
+   const offset=active.getBoundingClientRect().left;
+   active.style.left=(12-offset)+"px";
+   active.style.width="calc(100vw - 24px)";
+  };
+  window.addEventListener("resize",window.__classicsStudyWideResize,{passive:true});
+ }
  pane.replaceChildren();
  const intro=document.createElement("p");intro.className="classic-ref";
  intro.textContent="Lectura académica directa: texto original griego o latino a la izquierda; traducción a la derecha. No se necesita PDF histórico. Los textos se conservan íntegros y cada vínculo por capítulo es orientativo.";
