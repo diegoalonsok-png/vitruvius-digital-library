@@ -29,3 +29,13 @@
 .lx-topo-locus small{opacity:.77}
 html[data-theme=light] #lx-toponymicon details{background:#fffcf6;color:#263747}
 @media(max-width:700px){#lx-toponymicon{padding:0 9px}.lx-topo-inner{padding:12px}.lx-topo-kicker{margin-top:5px}.lx-topo-row button,.lx-topo-row input{width:100%}}
+
+/* Optional research instruments: neutral academic styling, no ornate CTA. */
+#lx-toponymicon{max-width:none;margin:8px auto 16px;padding:0 6px}
+#lx-toponymicon details{background:transparent!important;border:0!important;border-top:1px solid rgba(140,146,150,.25)!important;border-radius:0!important;box-shadow:none!important}
+#lx-toponymicon summary{padding:10px 4px!important;font:500 12px/1.55 system-ui,sans-serif!important;color:inherit;opacity:.83}
+#lx-toponymicon summary:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+#lx-toponymicon :is(.lx-topo-inner,.lx-orth-inner){border-top:1px solid rgba(140,146,150,.18)!important}
+#lx-toponymicon :is(button,input,select){border-color:rgba(135,143,150,.55)!important;box-shadow:none!important}
+#lx-toponymicon button{background:#2c3035!important;color:#f2f2f0!important}
+html[data-theme=light] #lx-toponymicon button{background:#e7e8e7!important;color:#25292c!important}
