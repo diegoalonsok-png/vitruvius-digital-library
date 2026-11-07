@@ -24,8 +24,8 @@ function marked(raw,query){
  while(cursor<folded.length){
   const at=folded.indexOf(needle,cursor);if(at<0)break;
   const after=at+needle.length;
-  if((at===0||!/[\\p{L}\\p{N}]/u.test(folded[at-1]))&&
-     (after===folded.length||!/[\\p{L}\\p{N}]/u.test(folded[after]))){
+  if((at===0||!/[\p{L}\p{N}]/u.test(folded[at-1]))&&
+     (after===folded.length||!/[\p{L}\p{N}]/u.test(folded[after]))){
    const a=starts[at],b=ends[after-1];if(a>=from){
     parts.push(safe(value.slice(from,a)),'<mark class="cr-hit">'+safe(value.slice(a,b))+'</mark>');
     from=b;
