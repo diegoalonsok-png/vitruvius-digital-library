@@ -418,7 +418,7 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Selecciona una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261107-black-highlight-v6"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-lens-annotations-v1"></script>
+</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261107-bilingual-highlight-v7"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-lens-annotations-v1"></script>
 <script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-no-legacy-frames-v5"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261107-semantic-index-v5" defer></script><script src="assets/bibliotheca-fulltext.js?v=20261107-lexicon-shared-search-v6" defer></script>
 <script>
 /* Local reader preferences.  No cross-origin PDF or IIIF content is modified. */
@@ -432,8 +432,8 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
   '<option value="original">Original</option><option value="black">Negro · blanco</option>'+
   '<option value="ivory">Marfil · negro</option><option value="sepia">Sepia</option>'+
   '<option value="custom">Personalizado</option></select></label>'+
-  '<label>Fondo <input id="classic-view-bg" type="color" value="#fbf8f0" aria-label="Color de fondo del visor"></label>'+
-  '<label>Texto <input id="classic-view-fg" type="color" value="#253b49" aria-label="Color del texto del visor"></label>'+
+  '<label>Fondo <input id="classic-view-bg" type="color" value="#000000" aria-label="Color de fondo del visor"></label>'+
+  '<label>Texto <input id="classic-view-fg" type="color" value="#ffffff" aria-label="Color del texto del visor"></label>'+
   '<button type="button" id="classic-view-reset">Restablecer</button>'+
   '<p class="classic-view-note">Se aplica a los textos editables y al fondo del visor. En PDF o facsímiles escaneados usa «Invertir» para la página; los visores externos conservan sus propios colores.</p>';
  head.after(wrapper);
@@ -456,9 +456,10 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
  }
  preset.addEventListener('change',()=>{const p=palettes[preset.value];if(p)apply(preset.value,...p)});
  for(const el of [bg,fg])el.addEventListener('input',()=>apply('custom',bg.value,fg.value));
- wrapper.querySelector('#classic-view-reset').addEventListener('click',()=>{try{localStorage.removeItem(key)}catch{};apply('original',...palettes.original)});
+ wrapper.querySelector('#classic-view-reset').addEventListener('click',()=>{try{localStorage.removeItem(key)}catch{};apply('black',...palettes.black)});
  let stored=null;try{stored=JSON.parse(localStorage.getItem(key)||'null')}catch{}
- if(stored&&valid(stored.bg)&&valid(stored.fg))apply(stored.mode,stored.bg,stored.fg);
+ if(stored&&valid(stored.bg)&&valid(stored.fg)&&stored.mode!=='original')apply(stored.mode,stored.bg,stored.fg);
+ else apply('black',...palettes.black);
 })();
 </script>
 </body></html>
