@@ -232,15 +232,22 @@ async function authorityCandidates(q,lang,intent=""){
   // El tipo Wikidata P31=Q5 permite separar a una persona de colegios,
   // edificios, calles y organizaciones bautizados con su nombre.
   const human=(entity.claims?.P31||[]).some(c=>c.rank!=="deprecated"&&c.mainsnak?.datavalue?.value?.id==="Q5");
+  const birth=(entity.claims?.P569||[]).find(c=>c.rank!=="deprecated"&&c.mainsnak?.datavalue?.value?.time)?.mainsnak?.datavalue?.value?.time;
+  const bornYear=typeof birth==="string"?Number(birth.match(/^([+-]\\d+)/)?.[1]):null;
+  // Humanidades: ante dos personas homónimas, preferir la figura histórica
+  // identificada y con amplia documentación. Un nombre moderno explícito sigue válido.
+  const historicalHuman=human&&Number.isFinite(bornYear)&&bornYear<1900;
+  const historicallyAttested=human&&/\\b(ancient roman|roman general|roman statesman|roman dictator|military leader|independence|libertador|procer|historian|filosofo|philosopher|saint|santo|santa|religious figure|revolutionary|revolucionario|politico argentino|militar argentino)\\b/.test(norm(occupation));
+  const historicBonus=historicalHuman?660:historicallyAttested?280:0;
   const personBonus=human&&norm(q).split(" ").length>=2?430:0;
-  const namedInstitution=!human&&/\\b(liceo|escuela|colegio|instituto|universidad|hospital|school|college|university|church|iglesia|distrito|district|estacion|calle)\\b/.test(norm([...labels.slice(0,3),occupation].join(" ")));
+  const namedInstitution=!human&&/\b(liceo|escuela|colegio|instituto|universidad|hospital|school|college|university|church|iglesia|distrito|district|estacion|calle)\b/.test(norm([...labels.slice(0,3),occupation].join(" ")));
   const institutionPenalty=namedInstitution&&!exactLabel?-160:0;
-  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+institutionPenalty+
+  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+historicBonus+institutionPenalty+
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
   return {id,entity,title:site.title,lang:site.site?.replace(/wiki$/,"")||lang,
-   score,coverage,spellingMatch:!exactLabel&&!exactAlias&&similarity?q:null,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
+   score,coverage,bornYear,historicalHuman,spellingMatch:!exactLabel&&!exactAlias&&similarity?q:null,description:entity.descriptions?.[lang]?.value||entity.descriptions?.es?.value||entity.descriptions?.en?.value||""};
  }).filter(Boolean).sort((a,b)=>b.score-a.score);
  // A work-type query must not resolve to a homonym of an unrelated profession.
  // A missing occupational match remains unresolved rather than presenting false works.
@@ -253,7 +260,7 @@ async function authorityCandidates(q,lang,intent=""){
  ]);
  const resolved=page.status==="fulfilled"?page.value:null;
  const entity={...best.entity,claims:details.status==="fulfilled"?details.value.entities?.[best.id]?.claims:undefined};
- return resolved?{...resolved,...entityMetadata(entity),wikidataId:best.id,authorityDescription:best.description,
+ return resolved&&resolved.wikidataId===best.id?{...resolved,...entityMetadata(entity),wikidataId:best.id,authorityDescription:best.description,
   authorityCoverage:best.coverage,spellingMatch:best.spellingMatch,disambiguated:true}:null;
 }
 /* A surname + cultural discipline denotes a creator, not a dictionary topic.
