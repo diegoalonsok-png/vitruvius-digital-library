@@ -74,9 +74,35 @@ let files={},versions={},position=0,ready={left:false,right:false},generation=0;
 const defaults={background:"#fffdf7",foreground:"#202b35",font:"serif",size:20};
 const palettes={left:{...defaults},right:{...defaults}};
 const validHex=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
+
+/* Reader-only preferences: saved locally, never modify the source texts. */
+const PREF_KEY="vitruvia.parallel.preferences.v2."+work;
+try{
+ const saved=JSON.parse(localStorage.getItem(PREF_KEY)||"null");
+ if(saved&&typeof saved==="object"){
+  for(const side of ["left","right"]){
+   const v=saved[side];if(!v||typeof v!=="object")continue;
+   if(validHex(v.background))palettes[side].background=v.background;
+   if(validHex(v.foreground))palettes[side].foreground=v.foreground;
+   if(["serif","classic","sans","mono"].includes(v.font))palettes[side].font=v.font;
+   if(Number.isInteger(v.size)&&v.size>=14&&v.size<=38)palettes[side].size=v.size;
+  }
+  if(Number.isInteger(saved.position)&&saved.position>=0)position=saved.position;
+ }
+}catch{}
+function store(){
+ try{localStorage.setItem(PREF_KEY,JSON.stringify({left:palettes.left,right:palettes.right,position}));}catch{}
+}
+for(const side of ["left","right"]){
+ const p=palettes[side];
+ $(side+"-bg").value=p.background;$(side+"-fg").value=p.foreground;
+ $(side+"-font").value=p.font;$(side+"-size").textContent=p.size+" px";
+}
+
 function sendAppearance(side){
  if(!ready[side])return;
  const lang=$(side).value;
+ store();
  $("pane-"+side).contentWindow?.postMessage({type:"vitruvia-parallel-style",work,lang,...palettes[side]},location.origin);
 }
 for(const side of ["left","right"]){
@@ -108,7 +134,7 @@ function buttons(){const n=count(),ok=Boolean(n&&ready.left&&ready.right);
 function goto(){const [a,b]=pair();if(!a||!b)return;const [i,j]=destination();
  if(ready.left)$("pane-left").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:left.value,index:i},location.origin);
  if(ready.right)$("pane-right").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:right.value,index:j},location.origin);
- buttons();
+ buttons();store();
 }
 function frame(side,lang){const u=new URL("classics-text-reader.html",location.href);
  u.searchParams.set("work",work);u.searchParams.set("lang",lang);
@@ -120,7 +146,7 @@ function versionsFor(languages){return Promise.all(languages.map(async lang=>{
  try{const response=await fetch(path);if(!response.ok)return;const data=await response.json();
  if(data.workId===work&&data.language===lang&&Array.isArray(data.passages)&&data.passages.length)versions[lang]=data;}catch{}
 }));}
-async function changed(side,lang){const current=++generation;await versionsFor([lang]);if(current!==generation)return;position=0;frame(side,lang);buttons();}
+async function changed(side,lang){const current=++generation;await versionsFor([lang]);if(current!==generation)return;position=Math.min(position,Math.max(0,count()-1));frame(side,lang);buttons();store();}
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||![ $("pane-left").contentWindow,$("pane-right").contentWindow ].includes(event.source))return;
  const msg=event.data;if(!msg||msg.type!=="vitruvia-parallel-ready"||msg.work!==work)return;
@@ -142,7 +168,7 @@ fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw 
  fill(left,ordered);fill(right,ordered);
  left.value=ordered.includes(params.get("left"))?params.get("left"):ordered[0];
  right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(l=>l!==left.value)||ordered[0]);
- await versionsFor([left.value,right.value]);position=0;
+ await versionsFor([left.value,right.value]);position=Math.min(position,Math.max(0,count()-1));
  $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
  status.textContent=rec.author+" · "+rec.title+". "+(count()?"Navegación conjunta orientativa. Si las versiones tienen distinta cantidad de unidades, cada una conserva el último capítulo alcanzado y nunca se recorta su contenido.":"Alguna versión no admite todavía sincronización; ambos lectores siguen independientes.");
  frame("left",left.value);frame("right",right.value);
