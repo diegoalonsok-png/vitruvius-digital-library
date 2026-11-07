@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobertura de originales y traducciones · Bibliotheca Graeca et Latina</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+main{max-width:1500px;margin:0 auto;padding:24px clamp(12px,3vw,38px) 90px}
+h1{font:normal clamp(30px,4vw,48px)/1.15 Georgia,serif}h2{font:normal 25px Georgia,serif}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:16px 0}
+.metric{border:1px solid #b9aa8f;background:#fffdf8;color:#23374a;padding:18px;min-width:0}
+.metric strong{display:block;font:700 32px Georgia,serif}.metric span{font:13px/1.5 system-ui}
+.filters{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0;padding:15px;border:1px solid #af9d80}
+.filters label{display:grid;gap:6px;flex:1 1 180px}
+.filters select,.filters input{padding:10px;border:1px solid #b3a48d;background:#fff;color:#20374a;max-width:100%}
+.scroll{overflow:auto;max-height:70vh;border:1px solid #ae9d81}
+table{border-collapse:collapse;width:100%;font:13px/1.6 system-ui;min-width:780px}
+thead{position:sticky;top:0;background:#243f52;color:white}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #c8bda9;vertical-align:top}
+tbody tr:nth-child(odd){background:#faf5ed}tbody tr:nth-child(even){background:#fffdf8}
+tbody td{color:#26394a}a{color:#2e5e80}
+.note{max-width:1100px;line-height:1.7;font-size:14px}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+</head><body><main>
+<p><a href="bibliotheca-graeca-latina.html">← Bibliotheca Graeca et Latina</a> · <a href="scriptorium.html">Scriptorium</a></p>
+<p class="eyebrow">INDEX · TRANSLATIONES · STATUS OPERIS</p>
+<h1>Cobertura de originales y traducciones</h1>
+<p class="note">Inventario de las 222 obras del catálogo. «Indexado» significa que hay una transcripción textual local registrada para búsqueda. «Traducción alojada» significa que se ha registrado una edición textual local en castellano, inglés o francés. Un PDF, una ficha o un enlace externo no cuentan como texto indexado. La disponibilidad de una traducción no demuestra alineación por loci ni equivalencia filológica.</p>
+<div class="metrics" id="metrics"><p>Consultando inventario…</p></div>
+<h2>Consultar las obras</h2>
+<div class="filters">
+<label>Autor u obra<input type="search" id="q" placeholder="Ovidio, Aristóteles, Vitruvio…"></label>
+<label>Estado<select id="state"><option value="all">Todas las obras</option><option value="original">Original indexado</option><option value="unindexed">Original sin indexación local</option><option value="translated">Traducción alojada</option><option value="no-translation">Sin traducción alojada</option></select></label>
+<label>Traducción<select id="lang"><option value="all">Cualquier idioma</option><option value="en">Inglés</option><option value="fr">Francés</option><option value="es">Castellano</option></select></label>
+</div>
+<p id="count" role="status"></p>
+<div class="scroll"><table><thead><tr><th>Autor</th><th>Obra</th><th>Original</th><th>Traducción alojada</th><th>Consultar</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="note">Las referencias bibliográficas a traducciones externas se conservan en la ficha de cada obra, pero no se suman a las traducciones alojadas. Para incorporar más textos se exige identificación de edición, atribución, condiciones de reutilización, transcripción íntegra y comprobación de los identificadores de pasaje.</p>
+</main>
+<script defer src="assets/translation-coverage.js?v=20261107-v1"></script>
+<script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script>
+<script defer src="assets/theme.js?v=20261105-merge-v1"></script>
+</body></html>
