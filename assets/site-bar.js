@@ -14,7 +14,7 @@ if(!document.querySelector('script[data-fast-navigation]')){
 // Common query-preserving research links across the three scholarly interfaces.
 if(!document.querySelector('script[data-research-crosslinks]')){
  const bridge=document.createElement("script");
- bridge.src=root+"assets/research-crosslinks.js?v=20261107-v2";
+ bridge.src=root+"assets/research-crosslinks.js?v=20261107-ui-v3";
  bridge.defer=true;bridge.dataset.researchCrosslinks="";
  document.head.append(bridge);
 }
