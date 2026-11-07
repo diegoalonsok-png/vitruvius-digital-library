@@ -1,0 +1,14 @@
+/* Small, non-modal glossary: no scroll trap and no gold accents. */
+#vitruvius-lexical-card{position:fixed;z-index:12000;max-height:min(73dvh,520px);overflow:auto;background:#f5f2eb;color:#252b31;border:1px solid #9ea4a8;border-radius:8px;box-shadow:0 12px 35px #0006;padding:15px 17px;font:13px/1.6 system-ui,sans-serif}
+#vitruvius-lexical-card[hidden]{display:none!important}
+#vitruvius-lexical-card .vlc-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;border-bottom:1px solid #c7cacf;margin-bottom:10px;padding-bottom:7px}
+#vitruvius-lexical-card .vlc-heading h3{margin:2px 0;font:500 23px/1.2 Georgia,serif;color:#24282d}
+#vitruvius-lexical-card .vlc-heading small{font-size:9px;letter-spacing:.13em;color:#697079}
+#vitruvius-lexical-card .vlc-close{background:transparent;border:1px solid #a5aaae;border-radius:4px;color:#24282d;font:22px/1 system-ui;padding:4px 11px;cursor:pointer}
+#vitruvius-lexical-card .vlc-content p{margin:7px 0;overflow-wrap:anywhere}
+#vitruvius-lexical-card .vlc-content strong{color:#2c3540}
+#vitruvius-lexical-card .vlc-content figure{margin:12px 0 4px}
+#vitruvius-lexical-card .vlc-content img{max-width:100%;max-height:175px;object-fit:cover;border-radius:3px}
+#vitruvius-lexical-card figcaption{font:10px/1.45 system-ui,sans-serif;color:#5b626b}
+#vitruvius-lexical-card .vlc-links{display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid #c9cdd0;margin-top:10px;padding-top:10px}
+#vitruvius-lexical-card a{color:#263f55;text-underline-offset:3px}

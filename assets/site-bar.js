@@ -48,7 +48,7 @@ function ensureTypography(){
  const style=document.createElement('style');style.id='site-typeface-styles';
  style.textContent=[
   '.site-typeface-tool{position:relative;display:inline-flex;align-items:center;vertical-align:middle}',
-  '.site-typeface-button{display:inline-flex;justify-content:center;align-items:center;min-width:36px;min-height:35px;padding:6px 9px;border:1px solid #99896d;border-radius:4px;background:transparent;color:inherit;font:italic 600 19px Georgia,serif;cursor:pointer}',
+  '.site-typeface-button{display:inline-flex;justify-content:center;align-items:center;min-width:36px;min-height:35px;padding:6px 9px;border:1px solid #515960;border-radius:4px;background:transparent;color:inherit;font:italic 600 19px Georgia,serif;cursor:pointer}',
   '.site-typeface-panel{position:fixed;z-index:15015;top:76px;right:clamp(12px,2vw,30px);left:auto;width:min(260px,calc(100vw - 30px));max-height:calc(100dvh - 92px);overflow-y:auto;box-sizing:border-box;padding:14px;background:#25282a;border:1px solid #68727b;border-radius:8px;color:#f7f3ee;box-shadow:0 10px 32px #0006;font:13px/1.5 system-ui,sans-serif}',
   '.site-typeface-panel[hidden]{display:none!important}',
   '.site-typeface-panel label{display:block;margin:7px 0;color:inherit}',
