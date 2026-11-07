@@ -350,6 +350,22 @@ async function verifiedLeadImage(identity,topic,id){
  }
  return [];
 }
+/* A word-form illustration, not an invented ancient manuscript.
+   Wikimedia Commons File:Logos.svg is a CC0 transcription of λόγος. */
+function documentedLexicalVisual(query){
+ const term=fold(query).replace(/ς/g,"σ");
+ if(term!=="logos"&&term!=="λογοσ")return null;
+ return {
+  name:"λόγος · grafía griega",
+  caption:"λόγος · representación tipográfica moderna (no facsímil)",
+  preview:"https://upload.wikimedia.org/wikipedia/commons/9/98/Logos.svg",
+  original:"https://upload.wikimedia.org/wikipedia/commons/9/98/Logos.svg",
+  page:"https://commons.wikimedia.org/wiki/File:Logos.svg",
+  license:"CC0 1.0",
+  credit:"Aristeas · Wikimedia Commons · CC0 1.0",
+  score:10000,group:"context",verifiedIdentity:true
+ };
+}
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const id=++active;section.hidden=false;
@@ -371,6 +387,8 @@ async function searchImages(query){
  // Screen colors and documented mathematical relations are available
  // immediately, even if a remote image service is unreachable.
  quick.replaceChildren();
+ const lexicalVisual=documentedLexicalVisual(q);
+ if(lexicalVisual)displayGroups([lexicalVisual],{kind:"topic",subject:"λόγος",aliases:["λόγος","logos"]});
  const hasColor=window.VitruviaColors?.render(quick,q);
  const hasFormula=window.VitruviaMathematics?.render(quick,q);
  if(hasColor||hasFormula)quick.hidden=false;
@@ -580,7 +598,8 @@ async function searchImages(query){
    if(lead.length){
     displayGroups(lead,topic);
     status.textContent=locale("Imagen enciclopédica identificada; consulta su archivo para verificar autoría y derechos.","Identified encyclopedia image; check its source for attribution and rights.","Image encyclopédique identifiée ; vérifiez sa source.");
-   }else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
+   }else if(lexicalVisual)status.textContent=locale("Grafía griega documentada en Wikimedia Commons; no es un facsímil antiguo.","Greek lettering documented on Wikimedia Commons; not an ancient facsimile.","Graphie grecque documentée sur Wikimedia Commons, non un fac-similé ancien.");
+   else status.textContent=locale("No se recuperaron imágenes pertinentes con ficha de origen. Prueba los catálogos externos.",
     "No sufficiently identified images were retrieved. Try the external collections.",
     "Aucune image suffisamment documentée. Consulter les collections externes.");
   }
