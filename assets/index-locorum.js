@@ -4,15 +4,17 @@ const $=id=>document.getElementById(id);
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");
 const langs={la:"Latín",grc:"Griego",es:"Castellano",en:"Inglés",fr:"Francés",de:"Alemán",it:"Italiano",pt:"Portugués"};
 const params=new URLSearchParams(location.search);
+const MAX_LOCUS_RESULTS=20000; // The complete matching concordance remains accessible; no arbitrary 180-item truncation.
 let versions=[],entries=[],concepts=[],shown=0,filtered=[];
 function el(tag,text,cls){const n=document.createElement(tag);if(text!=null)n.textContent=String(text);if(cls)n.className=cls;return n}
 function link(href,label){const a=el("a",label);a.href=href;return a}
 function option(parent,value,text){const o=el("option",text);o.value=value;parent.append(o)}
-function url(base,opts){const u=new URL(base,location.href);Object.entries(opts).forEach(([k,v])=>{if(v!==undefined&&v!==null&&v!=="")u.searchParams.set(k,String(v))});return u.pathname.split("/").pop()+u.search+u.hash}
+function url(base,opts){const u=new URL(base,location.href);Object.entries(opts).forEach(([k,v])=>{if(v!==undefined&&v!==null&&v!=="")u.searchParams.set(k,String(v))});return u.pathname.replace(/^\\/[^/]+\\/vitruvius-digital-library\\//,"")+u.search+u.hash}
 function reader(v,locus,term){
  const e=entries.find(x=>x.workId===v.workId&&x.language===v.language&&x.path===v.source);
  const base=e?.reader||("classics-text-reader.html?work="+encodeURIComponent(v.workId)+"&lang="+encodeURIComponent(v.language));
- if(e?.format==="html-text"){const p=new URL(base,location.href);p.searchParams.set("q",term);return p.pathname.split("/").pop()+p.search+(locus&&/^[-a-zA-Z0-9_]+$/.test(locus)?"#"+locus:"")}
+ if(e?.format==="html-text"){const p=new URL(base,location.href);p.searchParams.set("q",term);return p.pathname.replace(/^\\/[^/]+\\/vitruvius-digital-library\\//,"")+p.search+(locus&&/^[-a-zA-Z0-9_]+$/.test(locus)?"#"+encodeURIComponent(locus):"")}
+ if(e?.format==="historical-ocr-pages")return url(base,{q:term,page:locus});
  return url(base,{q:term,locus});
 }
 function refillEditions(){
@@ -48,18 +50,19 @@ function append(){
   const article=el("article",null,"entry");
   article.append(el("h2",(v.author||v.workId)+" · "+(v.title||v.workId)));
   article.append(el("p",(langs[v.language]||v.language)+" · "+(v.edition||v.source)+" · Conceptus: "+c.concept));
-  article.append(el("p",loci.length+" registros de forma por locus · "+c.count+" apariciones contabilizadas en la edición (total del concepto, no necesariamente del filtro)."));
+  article.append(el("p",loci.length+" registros de forma por locus · "+c.count+" apariciones contabilizadas en la edición (total del concepto; no necesariamente del filtro). Los loci pertenecen a esta edición y no garantizan alineación entre lenguas."));
   if(meta?.note){const n=el("p",meta.note);n.className="muted";article.append(n)}
+  const details=el("details");details.open=loci.length<=30;details.append(el("summary","Consultar "+loci.length+" registros documentados (locus · forma · frecuencia)"));
   const ol=el("ol",null,"locilist");
-  for(const item of loci.slice(0,180)){
+  for(const item of loci.slice(0,MAX_LOCUS_RESULTS)){
    const [locus,form,count]=item,li=el("li");
    li.append(link(reader(v,locus,form),String(locus)+" · "+String(form)+" ("+count+")"));ol.append(li);
   }
-  article.append(ol);
-  if(loci.length>180)article.append(el("p","Se muestran los primeros 180 loci de esta entrada; refine por obra, forma o concepto.","muted"));
+  details.append(ol);article.append(details);
+  if(loci.length>MAX_LOCUS_RESULTS)article.append(el("p","Hay más de "+MAX_LOCUS_RESULTS+" referencias; refine la búsqueda para consultar las restantes.","muted"));
   const nav=el("div",null,"links");
   nav.append(link("bibliotheca-graeca-latina.html?work="+encodeURIComponent(v.workId),"Ficha de la obra"));
-  nav.append(link("vitruvia.html?q="+encodeURIComponent(c.concept)+"&mode=all","Buscar en Vitruvia"));
+  nav.append(link("vitruvia.html?q="+encodeURIComponent(loci[0]?.[1]||c.concept)+"&mode=all","Buscar forma en Vitruvia"));
   nav.append(link("vitruvia-lexicon.html?q="+encodeURIComponent(loci[0]?.[1]||c.concept)+"&mode=palabra","Estudiar en Lexicon"));
   article.append(nav);frag.append(article);
  }
