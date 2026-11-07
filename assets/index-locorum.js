@@ -144,7 +144,7 @@ async function init(){
 $("work").addEventListener("change",()=>{refillEditions();render()});
 ["edition","concept"].forEach(id=>$(id).addEventListener("change",render));
 let filterTimer=null;
-$("query").addEventListener("input",()=>{clearTimeout(filterTimer);literalSerial++;$("literal-results").replaceChildren();$("literal-status").textContent="Presioná Enter o «Buscar palabra en los textos» para consultar coincidencias literales.";filterTimer=setTimeout(render,130)});
+$("query").addEventListener("input",()=>{clearTimeout(filterTimer);literalSerial++;$("literal-results").replaceChildren();$("literal-status").textContent="Presione Enter o «Buscar palabra en los textos» para consultar coincidencias literales.";filterTimer=setTimeout(render,130)});
 $("query").addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();clearTimeout(filterTimer);render();searchLiteral()}});
 $("more").addEventListener("click",append);
 $("export-tsv").addEventListener("click",exportTsv);
