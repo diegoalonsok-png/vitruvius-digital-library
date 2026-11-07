@@ -46,7 +46,7 @@ ready(()=>{
  let serial=0;
  async function run(){
   const q=input.value.trim(),id=++serial;results.replaceChildren();
-  if(!q){status.textContent="Escribí una palabra en el buscador principal.";return}
+  if(!q){status.textContent="Escriba una palabra en el buscador principal.";return}
   status.textContent="Consultando las equivalencias registradas…";
   try{
    const records=await getDictionary();if(id!==serial)return;
@@ -77,7 +77,7 @@ ready(()=>{
  input.addEventListener("input",()=>{serial++;status.textContent="";results.replaceChildren()});
  if(oldScripts.test(new URLSearchParams(location.search).get("q")||"")||greek.test(new URLSearchParams(location.search).get("q")||"")){
   // No carga masiva: la consulta sigue siendo bajo demanda.
-  status.textContent="Podés consultar también equivalencias griegas, hebreas y arameas documentadas.";
+  status.textContent="Puede consultar también equivalencias griegas, hebreas y arameas documentadas.";
  }
 });
 })();
