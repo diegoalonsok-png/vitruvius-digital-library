@@ -779,6 +779,33 @@ function onomasticonSubjectRows(query){
  */
 function associatedClassicalWorks(query){
  const person=identifyHistoricalPerson(query);
+ // The hosted Walter Miller (1913) edition has all three books in Latin and English.
+ // These are verified entry points into the actual files, not fabricated passages or inferred alignments.
+ if(person?.id==="cicero"){
+  const edition="Cicerón · De officiis · Walter Miller (1913)";
+  const books=[
+   ["I","Quamquam te, Marce fili, annum iam audientem Cratippum","book1"],
+   ["II","Quem ad modum officia ducerentur ab honestate, Marce fili","book2"],
+   ["III","P. Scipionem, M. fili, eum, qui primus Africanus appellatus est","book3"]
+  ];
+  const latin="corpus/cicero-de-officiis-la.html",english="corpus/cicero-de-officiis-en.html";
+  return [{
+   type:"edition",title:edition,author:"Marco Tulio Cicerón · edición bilingüe histórica",
+   excerpt:"Tratado latino de 44 a. C. Los tres libros están disponibles para lectura íntegra en latín y traducción inglesa de Walter Miller (1913).",
+   meta:"EDICIÓN DOCUMENTADA · TEXTO LATINO E INGLÉS ALOJADO",rating:14950,curatedAcademic:true,
+   source:"Bibliotheca Graeca et Latina · Walter Miller, 1913",
+   link:"bibliotheca-graeca-latina.html?work=cicero-officiis",
+   links:[{label:"Latín completo",url:latin},{label:"Inglés completo",url:english},
+    {label:"Visor bilingüe",url:"corpus/cicero-de-officiis-la-en.html"}]
+  },...books.map(([book,excerpt,anchor],i)=>({
+   type:"passage",title:"Cicerón · De officiis · Libro "+book+" · inicio",
+   author:"Texto latino · Walter Miller (1913)",excerpt:excerpt+"…",
+   meta:"PASAJE REAL · APERTURA DEL LIBRO "+book+" · EDICIÓN LATINA",rating:14890-i,curatedAcademic:true,
+   source:"corpus/cicero-de-officiis-la.html#"+anchor,link:latin+"#"+anchor,
+   links:[{label:"Leer pasaje latino",url:latin+"#"+anchor},
+    {label:"Consultar libro en inglés",url:english+"#"+anchor}]
+  }))];
+ }
  if(person?.id!=="pythagoras")return [];
  return [{
   type:"edition",title:"Versos áureos de Pitágoras · Χρυσᾶ Ἔπη · Carmen Aureum",
@@ -804,7 +831,11 @@ function classicalSubjectRows(query){
   {queries:["julio cesar","cayo julio cesar","julius caesar","gaius julius caesar"],
    title:"Cayo Julio César",period:"100–44 a. C.",
    description:"General, político y escritor romano de la República tardía; dictador, no emperador romano.",
-   url:"https://es.wikipedia.org/wiki/Julio_C%C3%A9sar"}
+   url:"https://es.wikipedia.org/wiki/Julio_C%C3%A9sar"},
+  {queries:["ciceron","cicero","marco tulio ciceron","marcus tullius cicero","ciceron romano","ciceron orador"],
+   title:"Marco Tulio Cicerón",period:"106–43 a. C.",
+   description:"Orador, escritor, filósofo y político romano. Están disponibles sus tres libros de De officiis, en latín y traducción inglesa.",
+   url:"https://es.wikipedia.org/wiki/Cicer%C3%B3n"}
  ];
  return subjects.filter(x=>x.queries.some(n=>norm(n)===q)).map(x=>({
   type:"section",title:x.title,author:"Referencia histórica · "+x.period,
