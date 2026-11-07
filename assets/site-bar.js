@@ -75,7 +75,8 @@ function ensureTypography(){
  const palette=document.getElementById('home-palette-toggle')||document.getElementById('front-background-toggle');
  const theme=document.querySelector('.research-nav-controls .theme-switch, .nav .theme-switch, .theme-switch');
  const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
- if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
+ if(location.pathname.split('/').pop()==='vitruvia-lexicon.html'&&document.querySelector('.site-shell>.nav .navtools'))document.querySelector('.site-shell>.nav .navtools').append(tool);
+ else if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
  else if(anchor?.parentElement)anchor.after(tool);
  else(document.querySelector('.research-nav-controls')||document.querySelector('.site-header .header-inner')||document.querySelector('header')||document.body).append(tool);
  const button=tool.querySelector('#site-typeface-toggle'),panel=tool.querySelector('#site-typeface-panel'),select=tool.querySelector('#site-typeface-select'),italic=tool.querySelector('#site-typeface-italic');
