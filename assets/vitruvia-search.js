@@ -751,6 +751,30 @@ function topicQuery(q){
 /* Entity-focused ranking for EVERY query, independent of any list of famous names.
    Full title and all query tokens outrank incidental text matches. */
 function queryTokens(value){return [...new Set(words(value).filter(w=>w.length>=3))]}
+/* Historical subject anchors: reference records, not images or unverified AI identities.
+ * Exact/surname queries receive the canonical humanist subject first.
+ * Other homonyms remain discoverable below the primary result.
+ */
+function classicalSubjectRows(query){
+ const q=norm(topicQuery(query));
+ const subjects=[
+  {queries:["san martin","jose de san martin","general san martin","general jose de san martin"],
+   title:"José de San Martín",period:"1778–1850",
+   description:"Militar y libertador rioplatense; figura central de las independencias de Argentina, Chile y Perú.",
+   url:"https://es.wikipedia.org/wiki/Jos%C3%A9_de_San_Mart%C3%ADn"},
+  {queries:["julio cesar","cayo julio cesar","julius caesar","gaius julius caesar"],
+   title:"Cayo Julio César",period:"100–44 a. C.",
+   description:"General, político y escritor romano de la República tardía; dictador, no emperador romano.",
+   url:"https://es.wikipedia.org/wiki/Julio_C%C3%A9sar"}
+ ];
+ return subjects.filter(x=>x.queries.some(n=>norm(n)===q)).map(x=>({
+  type:"section",title:x.title,author:"Referencia histórica · "+x.period,
+  excerpt:x.description,meta:"PERSONA HISTÓRICA · DESAMBIGUACIÓN ACADÉMICA",
+  rating:12000,link:x.url,source:"Wikipedia · ficha biográfica de referencia",
+  entityKind:"person",entityCanonical:x.title,aliases:x.queries,curatedAcademic:true,
+  links:[{label:"Consultar biografía y fuentes",url:x.url}]
+ }));
+}
 function rankedTitle(row,query){
  const q=norm(topicQuery(query)).replace(/^(?:biografia de|vida de|quien fue|quien es|who was|what is) /,"").trim();
  const title=norm(row.title||"");
@@ -1044,9 +1068,10 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
- let rows=[];
+ let rows=classicalSubjectRows(q);
+ if(rows.length)display(rows,q,T().searching);
  if(internal){
-  rows=focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)];
+  rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
   if(intent?.preface){
    const book=intent.preface.book;
    const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
