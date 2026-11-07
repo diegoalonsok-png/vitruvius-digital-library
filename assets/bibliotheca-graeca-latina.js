@@ -83,9 +83,11 @@ function buildExtraBookIndex(catalogue,complete,kuriloBooks){
    id:"historic-"+e.id,title:e.title,author:e.author||"",
    subtitle:[e.subtitle,e.year].filter(Boolean).join(" · "),
    aliases:["Vitruvio","Vitruvius","De architectura",e.version],
-   url:direct||"ediciones-historicas.html",
-   external:/^https:\/\//.test(direct||""),
-   status:direct?"Edición histórica · fuente identificada":"Ficha histórica sin facsímil verificado"
+   url:/perrault/i.test(e.author||"")&&["1673","1684"].includes(String(e.year))?
+    "perrault-1673.html?year="+e.year:(direct||"ediciones-historicas.html"),
+   external:!( /perrault/i.test(e.author||"")&&["1673","1684"].includes(String(e.year)) )&&/^https:\/\//.test(direct||""),
+   status:/perrault/i.test(e.author||"")&&["1673","1684"].includes(String(e.year))?
+    "Visor IIIF por página · texto francés histórico":direct?"Edición histórica · fuente identificada":"Ficha histórica sin facsímil verificado"
   });
  }
  const byTitle=(a,b)=>fold(a.title).localeCompare(fold(b.title),"es");
@@ -274,22 +276,39 @@ function showBookSuggestions(){
   const title=document.createElement("h4");title.className="classic-suggestion-group";
   title.textContent=group.name+" · "+group.rows.length;
   list.append(title);
-  for(const r of group.rows){
-   const item=document.createElement("button");item.type="button";
-   item.className="classic-suggestion"+(group.type==="classic"?"":" classic-suggestion-extended");
-   item.setAttribute("role","option");item.setAttribute("aria-selected","false");
-   item.dataset.record=group.type==="classic"?"classic":"extended";
-   item.dataset.work=r.id;
-   const primary=document.createElement("strong");primary.textContent=r.title;
-   const meta=document.createElement("small");
-   meta.textContent=group.type==="classic"?
-    r.author+" · "+(r.language==="grc"?"Griego / Greek":"Latín / Latin")+" · "+statusLabel(r):
-    [r.author,r.subtitle,r.status,r.external?"Enlace a fuente externa":"Lectura o ficha del sitio"].filter(Boolean).join(" · ");
-   item.append(primary,meta);
-   item.addEventListener("mousedown",event=>event.preventDefault());
-   item.addEventListener("click",()=>group.type==="classic"?selectSuggestion(r.id):openExtraBook(r));
-   list.append(item);
-  }
+  let shown=0;
+  const batch=query?32:14;
+  const more=document.createElement("button");more.type="button";
+  more.className="classic-suggestion-more";
+  const append=()=>{
+   const frag=document.createDocumentFragment();
+   const end=Math.min(group.rows.length,shown+batch);
+   for(const r of group.rows.slice(shown,end)){
+    const item=document.createElement("button");item.type="button";
+    item.className="classic-suggestion"+(group.type==="classic"?"":" classic-suggestion-extended");
+    item.setAttribute("role","option");item.setAttribute("aria-selected","false");
+    item.dataset.record=group.type==="classic"?"classic":"extended";
+    item.dataset.work=r.id;
+    const primary=document.createElement("strong");primary.textContent=r.title;
+    const meta=document.createElement("small");
+    meta.textContent=group.type==="classic"?
+     r.author+" · "+(r.language==="grc"?"Griego / Greek":"Latín / Latin")+" · "+statusLabel(r):
+     [r.author,r.subtitle,r.status,r.external?"Enlace a fuente externa":"Lectura o ficha del sitio"].filter(Boolean).join(" · ");
+    item.append(primary,meta);
+    item.addEventListener("mousedown",event=>event.preventDefault());
+    item.addEventListener("click",()=>group.type==="classic"?selectSuggestion(r.id):openExtraBook(r));
+    frag.append(item);
+   }
+   // Append before the 'show more' control: preserve tab and reading order.
+   list.insertBefore(frag,more);
+   shown=end;
+   more.hidden=shown>=group.rows.length;
+   more.textContent="Mostrar más · "+shown+" de "+group.rows.length+" en esta sección";
+  };
+  more.addEventListener("mousedown",event=>event.preventDefault());
+  more.addEventListener("click",append);
+  list.append(more);
+  append();
  }
  list.hidden=false;field.setAttribute("aria-expanded","true");
 }
