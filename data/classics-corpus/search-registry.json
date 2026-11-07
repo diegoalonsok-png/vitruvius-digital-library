@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 48,
-  "works": 23,
+  "count": 49,
+  "works": 24,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -264,6 +264,16 @@
       "path": "corpus/lucretius-de-rerum-natura-la.html",
       "reader": "corpus/lucretius-de-rerum-natura-la.html",
       "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
+    },
+    {
+      "workId": "ovid",
+      "author": "Ovidio",
+      "title": "Metamorphoses",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-la.json",
+      "reader": "classics-text-reader.html?work=ovid&lang=la",
+      "sourceDescription": "Texto latino íntegro de los 15 libros, ed. Hugo Magnus (1892–1919), TEI Perseus (Tufts), CC BY-SA 4.0. Agrupado en rangos de 40 versos; traducciones externas aún no alojadas."
     },
     {
       "workId": "petronius-satyrica",
