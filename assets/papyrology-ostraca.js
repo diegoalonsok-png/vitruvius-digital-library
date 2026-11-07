@@ -49,9 +49,9 @@ function updateScript(){
  return choice;
 }
 $("pap-ocr-lang").addEventListener("change",updateScript);
-updateScript();
 
 let available=false,zoom=1,rotation=0,worker=null,running=false,objectUrl=null;
+updateScript();
 const state={invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30"};
 const cap=clamp=>(Number.isFinite(clamp)?Math.max(0,Math.min(255,clamp)):0);
 function filterText(){return [
