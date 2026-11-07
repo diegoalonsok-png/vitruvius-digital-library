@@ -207,6 +207,28 @@ html body .classic-suggestion:focus-visible {background:#303032;color:#fff}
 html body .classic-edition-suggestion {border-left-color:#969699;background:#202022}
 html body .classic-suggestion-empty {color:#c0c0c0}
 
+/* Unified book picker: groups are indexed in full, rendered progressively. */
+html body .classic-suggestion-group {
+  position:sticky;top:43px;z-index:2;margin:0;
+  background:#262628;color:#e1e1e2;
+  border-top:1px solid #505053;border-bottom:1px solid #3c3c3f;
+  padding:9px 14px;
+  font:600 11px/1.5 Arial,Helvetica,sans-serif;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+html body .classic-suggestion-extended {padding-left:17px}
+html body .classic-suggestion-more {
+  display:block;width:100%;min-height:42px;
+  background:#272729;color:#dfdfdf;border:0;
+  border-bottom:1px solid #47474a;text-align:left;
+  padding:10px 17px;font:600 12px/1.4 Arial,Helvetica,sans-serif;
+  cursor:pointer;
+}
+html body .classic-suggestion-more:hover,
+html body .classic-suggestion-more:focus-visible {background:#37373a;color:#fff}
+html body .classic-suggestion-more[hidden] {display:none!important}
+html body .classic-suggestions {scrollbar-width:thin;overscroll-behavior:contain}
+
 /* Bibliographic results and current selection. */
 html body .classic-layout {gap:22px}
 html body .classic-layout aside {min-width:0}
