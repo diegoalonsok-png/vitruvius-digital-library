@@ -9,6 +9,25 @@ const loupe=$("pap-loupe"),loupeCtx=loupe.getContext("2d");
 const detail=$("pap-detail"),detailCtx=detail.getContext("2d");
 const stage=$("pap-stage");
 const status=$("pap-status"),file=$("pap-file"),text=$("pap-transcription");
+
+const languageOptions={
+ grc:{model:"grc",dir:"ltr",lang:"grc",label:"Griego antiguo: reconocimiento orientativo; confirmar cada signo."},
+ lat:{model:"lat",dir:"ltr",lang:"la",label:"Latín: reconocimiento orientativo; abreviaturas y cursivas requieren lectura especializada."},
+ eng:{model:"eng",dir:"ltr",lang:"en",label:"Alfabeto latino moderno: modelo comparativo, no paleográfico."},
+ heb:{model:"heb",dir:"rtl",lang:"he",label:"Hebreo (heb): reconoce principalmente escritura hebrea impresa; manuscritos y óstraca antiguos requieren cotejo."},
+ "arc-heb":{model:"heb",dir:"rtl",lang:"arc",label:"Arameo en grafía hebrea: se prueba el modelo heb, que NO reconoce el idioma arameo como tal. Escritos paleoarameos y otras grafías requieren modelos especializados."},
+ syr:{model:"syr",dir:"rtl",lang:"syr",label:"Arameo siríaco (syr): modelo para escritura siríaca. No sirve para todas las escrituras arameas antiguas."}
+};
+function updateScript(){
+ const choice=languageOptions[$("pap-ocr-lang").value]||languageOptions.grc;
+ text.dir=choice.dir;text.lang=choice.lang;
+ $("pap-graphemes").dir=choice.dir;
+ $("pap-script-note").textContent=choice.label;
+ return choice;
+}
+$("pap-ocr-lang").addEventListener("change",updateScript);
+updateScript();
+
 let available=false,zoom=1,rotation=0,worker=null,running=false,objectUrl=null;
 const state={invert:false,gray:false,sepia:false,edge:false,saturation:100,contrast:100,brightness:100,hue:0,bg:"#282c30"};
 const cap=clamp=>(Number.isFinite(clamp)?Math.max(0,Math.min(255,clamp)):0);
@@ -159,8 +178,8 @@ function loadTesseract(){
 async function recognize(target){
  if(!available||running)return;
  running=true;$("pap-ocr").disabled=true;$("pap-ocr-detail").disabled=true;$("pap-cancel").disabled=false;
- const lang=$("pap-ocr-lang").value;
- status.textContent="Descargando OCR y modelo "+lang+"; procesamiento de la imagen local en curso…";
+ const selected=updateScript(),lang=selected.model;
+ status.textContent="Descargando OCR "+lang+" ("+$("pap-ocr-lang").selectedOptions[0].textContent+"); procesamiento local en curso…";
  try{
   const engine=await loadTesseract();
   if(!running)return;
@@ -172,7 +191,7 @@ async function recognize(target){
   if(target===detail&&text.value.trim())text.value+="\n"+hypothesis;else text.value=hypothesis;
   graphemes(text.value);
   status.textContent=hypothesis?
-   "Hipótesis OCR generada localmente; revisa signo por signo y confirma sobre la imagen original.":
+   "Hipótesis OCR ("+lang+") generada localmente; revisa signo por signo y confirma sobre la imagen original.":
    "OCR terminado, pero no identificó signos fiables. Prueba inversión, contraste, otra región o transcripción manual.";
  }catch(e){status.textContent="OCR no disponible: "+(e.message||e)}
  finally{running=false;$("pap-ocr").disabled=!available;$("pap-ocr-detail").disabled=!available;$("pap-cancel").disabled=true;if(worker){const old=worker;worker=null;void old.terminate().catch(()=>{})}}
