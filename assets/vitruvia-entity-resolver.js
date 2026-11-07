@@ -66,7 +66,8 @@ const clean=q=>{
  const cleaned=full.replace(/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:biograf[ií]a|historia|vida|vida y obra|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|pel[ií]culas|filmograf[ií]a|libros|tratados|[aá]lbumes|discos|discograf[ií]a|planos|plantas|cortes|fachadas)\s+(?:de|del|sobre)\s+|(?:paintings|artworks|pictures|photographs|photos|images|films|movies|works|biography|history|albums|discography|plans)\s+(?:of|by|about)\s+)/i,"").trim();
  // Search intent at the end belongs to a creator, not to the title of a
  // similarly named UNESCO collection, book or other subject.
- const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía)$/i;
+ // Los cargos y oficios califican a la persona; no forman parte de su nombre.
+ const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical)$/i;
  let subject=cleaned;
  for(let i=0;i<2;i++){
   const next=subject.replace(suffix,"").trim();
@@ -294,6 +295,9 @@ async function resolve(query,preferredLang="es"){
  const q=clean(query);
  if(!q||q.length>130)return null;
  const lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
+ // Consultas sobre una persona histórica: el sujeto y el atributo se separan.
+ // La provincia, el liceo o el municipio homónimo no son respuestas a "político/militar".
+ const personRole=/\b(politic[oa]|politician|militar|general|libertador|liberator|estadista|statesman|emperador|emperor|revolucionario|revolutionary|santo|saint|presidente|president)\b/i.test(norm(query));
  try{const creator=await qualifiedCreator(query,lang);if(creator)return await localize(creator,lang)}catch{}
  // Common, strongly identifiable shorthand for the 1968 film, not a generic year search.
  // Keep date-only queries ambiguous; 2001 film specifically refers to the title in this catalogue.
@@ -308,13 +312,13 @@ async function resolve(query,preferredLang="es"){
  // Direct page-title matching on another language can instead return a DJ.
  try{
   const authority=await authorityCandidates(q,lang,creatorIntent(query));
-  if(authority)return await localize(authority,lang);
+  if(authority&&(!personRole||authority.kind==="person"))return await localize(authority,lang);
  }catch{}
  const langs=[...new Set([lang,"es","en"])];
  for(const language of langs){
   try{
    const exact=await lookupTitle(q,language);
-   if(exact&&(norm(exact.canonical)===norm(q)||exact.aliases.some(x=>norm(x)===norm(q))))
+   if(exact&&(!personRole||((await completeIdentity(exact)).kind==="person"))&&(norm(exact.canonical)===norm(q)||exact.aliases.some(x=>norm(x)===norm(q))))
     return await localize(exact,lang);
   }catch{}
   // Search the preferred language BEFORE accepting an exact English homonym.
