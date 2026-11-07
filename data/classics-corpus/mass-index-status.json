@@ -2,62 +2,61 @@
   "updated": "2026-11-07",
   "newWorks": 6,
   "newTextVersions": 6,
-  "indexedDistinctWorks": 48,
-  "registeredTextVersions": 74,
-  "missingOriginals": 174,
+  "indexedDistinctWorks": 54,
+  "registeredTextVersions": 80,
+  "missingOriginals": 168,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "terentius-andria",
+      "workId": "tertullian",
       "lang": "la",
-      "path": "data/classics-corpus/terentius-andria-la.json",
-      "passages": 187,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0134/phi001/phi0134.phi001.perseus-lat2.xml",
-      "sha256": "3899939756b4df773ace40c870a3e9ff139971f08ecf2d2c42f05819e510935a"
+      "path": "data/classics-corpus/tertullian-la.json",
+      "passages": 506,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa009/stoa0275.stoa009.perseus-lat2.xml",
+      "sha256": "af87b4023e542638edb49bb93a0345e75a15f6ee323ab4c804748dc445511fbf"
     },
     {
-      "workId": "terentius-heautontimorumenos",
+      "workId": "tacitus-annales",
       "lang": "la",
-      "path": "data/classics-corpus/terentius-heautontimorumenos-la.json",
-      "passages": 198,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0134/phi002/phi0134.phi002.perseus-lat2.xml",
-      "sha256": "f606ae6e891594514effeb9f2bb8d3514bddcc3579483760a73b9e6ca17d202d"
+      "path": "data/classics-corpus/tacitus-annales-la.json",
+      "passages": 721,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi005/phi1351.phi005.perseus-lat2.xml",
+      "sha256": "667f319b16fb24f3ce529679917d865b68f1763db82e54b2675c6d7187fdc0af"
     },
     {
-      "workId": "cicero-catilinariae",
+      "workId": "tacitus-historiae",
       "lang": "la",
-      "path": "data/classics-corpus/cicero-catilinariae-la.json",
-      "passages": 115,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi013/phi0474.phi013.perseus-lat2.xml",
-      "sha256": "3e0f7f8d3d12c1bb43b2b27838a51bc81c32427e71dcc207ef7c8c8b2e5e91aa"
+      "path": "data/classics-corpus/tacitus-historiae-la.json",
+      "passages": 389,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi004/phi1351.phi004.perseus-lat2.xml",
+      "sha256": "a1aaf3ad531abe5c517b6de03aefc1348cd142a0580fd17899f8313b609c6ceb"
     },
     {
-      "workId": "horace-sermones",
+      "workId": "juvenal-saturae",
       "lang": "la",
-      "path": "data/classics-corpus/horace-sermones-la.json",
-      "passages": 268,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi004/phi0893.phi004.perseus-lat2.xml",
-      "sha256": "7c5273536472bb9226caae8927ad873513cb75cbc6916721152e5b96528964dd"
+      "path": "data/classics-corpus/juvenal-saturae-la.json",
+      "passages": 488,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1276/phi001/phi1276.phi001.perseus-lat2.xml",
+      "sha256": "7539945f88afb4c33b121c5a1b43e572d5a12a67b5ef68b297b6c8b43c287e3a"
     },
     {
-      "workId": "horace-ars-poetica",
+      "workId": "tibullus-elegiae",
       "lang": "la",
-      "path": "data/classics-corpus/horace-ars-poetica-la.json",
-      "passages": 60,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0893/phi006/phi0893.phi006.perseus-lat2.xml",
-      "sha256": "bb1648af0ec8a8a64dee8a26c74defee9226eeac62edfc1a3397f6fad2e447d5"
+      "path": "data/classics-corpus/tibullus-elegiae-la.json",
+      "passages": 249,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0660/phi001/phi0660.phi001.perseus-lat2.xml",
+      "sha256": "bcbec6571f86a3f34717cb88f039432af72495d1270ac39fcf239a1ed39b97b8"
     },
     {
-      "workId": "ovid-ars-amatoria",
+      "workId": "propertius-elegiae",
       "lang": "la",
-      "path": "data/classics-corpus/ovid-ars-amatoria-la.json",
-      "passages": 292,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0959/phi004/phi0959.phi004.perseus-lat2.xml",
-      "sha256": "5df7213234bc78b78020614e47b956b5da57f9a493378e16e2a9c5b2f64149f3"
+      "path": "data/classics-corpus/propertius-elegiae-la.json",
+      "passages": 512,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0620/phi001/phi0620.phi001.perseus-lat3.xml",
+      "sha256": "36db8975bad90a5ce73967b54025dad7fa2811f1dd71ad7a14c44e7121188a10"
     }
   ],
   "errors": [
-    "tertullian: TEI has no searchable text",
     "cato-agri-cultura: undefined entity &dagger;: line 317, column 6"
   ]
 }

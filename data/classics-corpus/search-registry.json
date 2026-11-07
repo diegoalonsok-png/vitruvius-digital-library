@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 74,
-  "works": 48,
+  "count": 80,
+  "works": 54,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -747,6 +747,66 @@
       "format": "json-passages",
       "path": "data/classics-corpus/ovid-ars-amatoria-la.json",
       "reader": "classics-text-reader.html?work=ovid-ars-amatoria&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tertullian",
+      "author": "Tertuliano",
+      "title": "Apologeticum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tertullian-la.json",
+      "reader": "classics-text-reader.html?work=tertullian&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tacitus-annales",
+      "author": "Tácito",
+      "title": "Annales",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tacitus-annales-la.json",
+      "reader": "classics-text-reader.html?work=tacitus-annales&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tacitus-historiae",
+      "author": "Tácito",
+      "title": "Historiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tacitus-historiae-la.json",
+      "reader": "classics-text-reader.html?work=tacitus-historiae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "juvenal-saturae",
+      "author": "Juvenal",
+      "title": "Saturae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/juvenal-saturae-la.json",
+      "reader": "classics-text-reader.html?work=juvenal-saturae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tibullus-elegiae",
+      "author": "Tibulo",
+      "title": "Elegiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tibullus-elegiae-la.json",
+      "reader": "classics-text-reader.html?work=tibullus-elegiae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "propertius-elegiae",
+      "author": "Propercio",
+      "title": "Elegiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/propertius-elegiae-la.json",
+      "reader": "classics-text-reader.html?work=propertius-elegiae&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]

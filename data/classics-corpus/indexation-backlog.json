@@ -4,7 +4,7 @@
   "snapshot": "2026-11-07",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 174,
+  "missingOriginals": 168,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -528,12 +528,13 @@
     {
       "id": "tertullian",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -839,23 +840,25 @@
     {
       "id": "tacitus-annales",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "tacitus-historiae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -872,12 +875,13 @@
     {
       "id": "juvenal-saturae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -906,23 +910,25 @@
     {
       "id": "tibullus-elegiae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "propertius-elegiae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
