@@ -4,4 +4,6 @@ const response=await fetch("data/classics-historical-pages/coverage.json");if(!r
 async function search(){try{const r=records.find(r=>r.path===$("edition").value);if(!r)return;const src="data/classics-historical-pages/"+r.path.split("/").pop().replace(/\.pdf$/,".json");if(!cache.has(src)){const response=await fetch(src);if(!response.ok)throw Error("Índice no disponible");cache.set(src,await response.json())}const data=cache.get(src),needle=$("term").value.trim().toLocaleLowerCase();if(!needle){$("status").textContent="Ingresa un término para buscar";return}const hits=data.pages.filter(p=>p.text.toLocaleLowerCase().includes(needle));$("results").replaceChildren();$("status").textContent=hits.length+" páginas coincidentes de "+data.pages.length;for(const p of hits.slice(0,80)){const a=document.createElement("article"),h=document.createElement("strong"),excerpt=document.createElement("p"),link=document.createElement("a");h.textContent="Página digital "+p.page+" · "+p.method;excerpt.textContent=p.text.slice(0,2200);link.href=r.path+"#page="+p.page;link.target="_blank";link.rel="noopener";link.textContent="Ver página original del PDF";a.append(h,excerpt,link);$("results").append(a)}}catch(e){$("status").textContent=e.message}}
 $("go").addEventListener("click",search);$("term").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
 })();
-</script></body></html>
+</script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+</body></html>
