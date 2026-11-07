@@ -30,6 +30,8 @@ REG = ROOT / "data/classics-corpus/search-registry.json"
 AUDIT = ROOT / "data/classics-corpus/coverage-audit.json"
 BACKLOG = ROOT / "data/classics-corpus/indexation-backlog.json"
 STATUS = ROOT / "data/classics-corpus/mass-index-status.json"
+TRANSLATIONS = ROOT / "data/classics-corpus/translation-availability-222.json"
+MAX_PAGES_BYTES = 970_000_000  # Dejar margen bajo el límite oficial de 1 GB de GitHub Pages
 ORIG = {"la": ("PerseusDL/canonical-latinLit", "lat"),
         "grc": ("PerseusDL/canonical-greekLit", "grc")}
 MAX_XML = 2_200_000
@@ -126,6 +128,15 @@ def run():
     limit = max(1, min(args.max_new, 12))
     catalog, mapping, reg = load(CAT), load(MAP)["links"], load(REG)
     audit, backlog = load(AUDIT), load(BACKLOG)
+    translations = load(TRANSLATIONS)
+    site_bytes = sum(p.stat().st_size for p in ROOT.rglob("*")
+                     if p.is_file() and ".git" not in p.relative_to(ROOT).parts)
+    capacity = max(0, min(MAX_BATCH_BYTES, MAX_PAGES_BYTES - site_bytes))
+    if capacity <= 0:
+        print(json.dumps({"indexedInThisRun": 0, "siteBytes": site_bytes,
+                          "warning": "No hay margen seguro en GitHub Pages; requiere separar archivos grandes del despliegue."},
+                         ensure_ascii=False))
+        return
     indexed = {(e["workId"], e["language"]) for e in reg["entries"]}
     eligible = []
     for w in catalog["works"]:
@@ -150,7 +161,7 @@ def run():
             raw = get(url)
             data = edition_document(w, lang, url, raw, urn)
             encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-            if len(encoded) > MAX_JSON or total_bytes + len(encoded) > MAX_BATCH_BYTES:
+            if len(encoded) > MAX_JSON or total_bytes + len(encoded) > capacity:
                 errors.append(w["id"] + ": excede el límite de lote")
                 continue
             target = f"data/classics-corpus/{w['id']}-{lang}.json"
@@ -205,6 +216,18 @@ def run():
             bool(e.get("original") and e["original"] not in e.get("indexed", []))
             for e in backlog.get("entries", []))
         save(BACKLOG, backlog)
+        by_id_translation = {row["id"]: row for row in translations["works"]}
+        for item in created:
+            entry = by_id_translation.get(item["workId"])
+            if entry:
+                entry["localEditionLanguages"] = sorted(set(entry.get("localEditionLanguages", [])) | {item["lang"]})
+                entry["originalIndexed"] = True
+                entry["indexed"] = True
+        translations["generated"] = today
+        translations["totals"]["locallyIndexedWorks"] = reg["works"]
+        translations["totals"]["originalTextIndexed"] = sum(bool(row.get("originalIndexed")) for row in translations["works"])
+        translations["totals"]["originalTextNotIndexed"] = len(translations["works"]) - translations["totals"]["originalTextIndexed"]
+        save(TRANSLATIONS, translations)
         save(STATUS, {
             "updated": today, "newWorks": len(created), "newTextVersions": len(created),
             "indexedDistinctWorks": reg["works"], "registeredTextVersions": reg["count"],
@@ -214,7 +237,8 @@ def run():
         })
     print(json.dumps({
         "eligibleSingleSourceWorks": len(eligible), "indexedInThisRun": len(created),
-        "bytes": total_bytes, "newTitles": [e["workId"] for e in created],
+        "bytes": total_bytes, "siteBytesBefore": site_bytes, "availableBytes": capacity,
+        "newTitles": [e["workId"] for e in created],
         "errors": errors[:20], "dryRun": args.dry_run,
     }, ensure_ascii=False))
     if not created and errors:
