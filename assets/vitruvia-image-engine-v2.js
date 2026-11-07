@@ -208,7 +208,8 @@ function displayGroups(items,topic){
  const quick=document.getElementById("vitruvia-quick-images");
  if(quick){
   quick.replaceChildren();
-  window.VitruviaMathematics?.render(quick,topic.subject);
+  // The user query, not a potentially misidentified entity, controls mathematical extras.
+  window.VitruviaMathematics?.render(quick,currentImageQuery);
   window.VitruviaColors?.render(quick,currentImageQuery||topic.subject);
   const bar=create(quick,"div","article-image-preview-heading");
   create(bar,"span","",locale("Imágenes del resultado: ","Result images: ","Images du résultat : ")+topic.subject);
@@ -397,8 +398,56 @@ async function exactArticleLeadImage(topic,query,id){
  const results=await Promise.all(lookups);
  return id===active?results.filter(Boolean).slice(0,1):[];
 }
+/* Strictly distinguish the early Jewish-Christian movement from modern
+   Jewish–Christian relations and from generic religious iconography. */
+function isEarlyJewishChristianity(query){
+ const key=fold(query);
+ return /^(?:jewish christians?|jewish christianity|early jewish christians?|judeocristianos?|judeocristianas?|cristianos judios|cristianos judias|cristianismo judio)$/.test(key);
+}
+/* Historical context thumbnails from genuinely related encyclopedia articles.
+   These are labeled as CONTEXT, not as depictions of the first communities. */
+async function addJewishChristianContextImages(id,seen){
+ const sources=["Early Christianity","Second Temple Judaism"];
+ const accepted=/\b(jerusalem|temple|synagogue|catacomb|early christian|christianity|scroll|manuscript|codex|papyrus|papyri|judaea|judea|roman|apostle|james|peter|paul|galilee|nazareth|church)\b/i;
+ const results=await Promise.all(sources.map(async source=>{
+  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),6000);
+  try{
+   const params=new URLSearchParams({action:"query",format:"json",origin:"*",
+    titles:source,generator:"images",gimlimit:"50",prop:"imageinfo",
+    iiprop:"url|mime|size|extmetadata",iiurlwidth:"360"});
+   const response=await fetch("https://en.wikipedia.org/w/api.php?"+params,{signal:ctl.signal});
+   if(!response.ok)return [];
+   const data=await response.json();
+   return Object.values(data.query?.pages||{}).flatMap(page=>{
+    const info=page.imageinfo?.[0];
+    const name=String(page.title||"").replace(/^File:/,"").replace(/_/g," ");
+    if(!info?.thumburl||!safeLink(info.thumburl)||!safeLink(info.descriptionurl))return [];
+    if(!/^image\/(?:jpeg|png|webp|gif)$/i.test(info.mime||""))return [];
+    if(ICONISH.test(name)||!accepted.test(fold(name)))return [];
+    if((info.width||0)<220||(info.height||0)<160)return [];
+    return [{name,caption:source+" · "+name.replace(/\.(?:jpe?g|png|webp|gif)$/i,""),
+     preview:info.thumburl,original:safeLink(info.url)||info.thumburl,
+     page:info.descriptionurl,license:"",
+     credit:"Wikipedia · "+source+" · contexto, NO representación directa de los judeocristianos",
+     group:"context",score:20}];
+   });
+  }catch{return []}finally{clearTimeout(timer)}
+ }));
+ if(id!==active)return 0;
+ const items=results.flat().filter(item=>{
+  const key=String(item.preview).replace(/\/\d+px-.*$/,"");
+  if(seen.has(key))return false;seen.add(key);return true;
+ }).slice(0,16);
+ if(!items.length)return 0;
+ groupTitle(locale("Contexto histórico relacionado · no imágenes directas",
+  "Related historical context · not direct depictions",
+  "Contexte historique lié · pas de représentations directes"));
+ for(const item of items)displayItem(item);
+ return items.length;
+}
 async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
+ const earlyJewishChristianity=isEarlyJewishChristianity(q);
  const id=++active;section.hidden=false;
  const historicalSubject=await verifiedHistoricalSubject(q);
  if(id!==active)return;
@@ -458,7 +507,18 @@ async function searchImages(query){
   if(ce){const again=await window.VitruviaEntityResolver?.resolve(ce.wiki||ce.label,ce.wikiLang||language).catch(()=>null);
    if(id!==active)return;if(again)identity=again}
  }
+ if(earlyJewishChristianity&&identity){
+  const names=fold([identity.canonical,identity.originalCanonical,identity.commonsSearchName].filter(Boolean).join(" "));
+  if(!/jewish christian|judeocristian|cristianos judios/.test(names))identity=null;
+ }
  const topic=window.VitruviaDiscovery?.plan(q,identity||{})||{kind:"topic",subject:identity?.canonical||q,aliases:distinct([q,identity?.canonical]),queries:[q]};
+ if(earlyJewishChristianity){
+  topic.kind="topic";topic.intent="overview";topic.ancient=false;topic.historical=true;
+  topic.subject="Jewish Christianity";
+  topic.aliases=distinct([q,"Jewish Christianity","Jewish Christians","Judeocristianos","Early Jewish Christians"]);
+  topic.queries=["Jewish Christianity","Jewish Christians Jerusalem",
+   "Jewish Christian manuscripts","Early Jewish Christianity","Judeocristianos"];
+ }
  if(historicalSubject){
   topic.kind="person";topic.ancient=true;topic.historical=true;
   topic.subject=historicalSubject.name;topic.authorityName=historicalSubject.name;
@@ -647,6 +707,14 @@ async function searchImages(query){
   const fromArticle=historicalSubject?0:await addArticleImages(id,identity,seen);
   if(fromArticle&&!items.length&&!leadItems.length){grid.hidden=false;section.hidden=false;}
   if(fromArticle&&!items.length&&!leadItems.length)status.textContent=locale(fromArticle+" imágenes del artículo de Wikipedia (algunas con derechos de autor).",fromArticle+" images from the Wikipedia article (some copyrighted).",fromArticle+" images de l’article Wikipédia.");
+  const fromContext=earlyJewishChristianity?await addJewishChristianContextImages(id,seen):0;
+  if(id!==active)return;
+  if(fromContext){
+   grid.hidden=false;section.hidden=false;
+   status.textContent+=" "+locale("Se añaden "+fromContext+" imágenes de CONTEXTO histórico, no retratos documentales de la comunidad.",
+    "Added "+fromContext+" historical CONTEXT images, not documentary portraits of the community.",
+    fromContext+" images de CONTEXTE historique ajoutées, pas de portraits documentaires de la communauté.");
+  }
   const covers=historicalSubject?0:await addBookCovers(id,topic,identity,q);
   if(covers&&!items.length&&!leadItems.length){grid.hidden=false;section.hidden=false;}
   if(covers&&!items.length&&!leadItems.length)status.textContent=locale(covers+" tapas de ediciones en Open Library.",covers+" edition covers from Open Library.",covers+" couvertures d’éditions (Open Library).");
