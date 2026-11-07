@@ -495,6 +495,9 @@ try{
     ctx.fillStyle='#343026';ctx.font='34px Georgia';ctx.fillText('ΑΒΓ LAT',22,72);
     return c.toDataURL('image/png').split(',')[1];
    });
+   assert.equal(await p.locator('#pap-ink-canvas').isVisible(),false,'Blank extracted image should not occupy page space');
+   assert.equal(await p.locator('#pap-detail').isVisible(),false,'Detail should stay collapsed below the ostracon until opened');
+   assert.equal(await p.locator('#pap-extraction-fold').evaluate(el=>el.open),false,'Advanced extraction must start collapsed');
    await p.locator('#pap-file').setInputFiles({name:'fragment.png',mimeType:'image/png',buffer:Buffer.from(image,'base64')});
    await p.waitForFunction(()=>!document.getElementById('pap-ocr').disabled,{timeout:8000});
    const initial=await p.locator('#pap-zoom-value').innerText();
@@ -507,6 +510,8 @@ try{
    await p.locator('#pap-ink-run').click();
    await p.waitForFunction(()=>document.getElementById('pap-ink-canvas')?.width>100&&
     document.getElementById('pap-ink-status')?.textContent.includes('Máscara creada'),null,{timeout:12000});
+   assert.equal(await p.locator('#pap-ink-canvas').isVisible(),true,'Extracted mask must appear after generation');
+   assert.equal(await p.locator('#pap-ink-placeholder').isVisible(),false,'Initial ink placeholder must disappear after extraction');
    const blackOnWhite=await p.locator('#pap-ink-canvas').evaluate(c=>{
     const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
     let white=0,black=0;
