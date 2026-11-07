@@ -43,6 +43,8 @@ async function execute(mode="literal"){
 }
 button.addEventListener("click",()=>execute("literal"));
 semantic.addEventListener("click",()=>execute("semantic"));
+// A Lexicon search must also retrieve literal attestations; a missing dictionary headword is not absence from the corpus.
+document.getElementById("lx-form")?.addEventListener("submit",()=>{if(input.value.trim().length>=3)execute("literal")});
 input.addEventListener("input",()=>{serial++;button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 })();
