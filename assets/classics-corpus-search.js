@@ -162,23 +162,34 @@ async function semanticSearch(q,{limit=6}={}){
  if(q.length<3||q.length>80||q.split(/\s+/).length>4)return[];
  const concept=await semanticConcept(q);if(!concept)return[];
  const entries=await registry(),rows=[];
- const byLanguage={la:(concept.la||[]).filter(x=>typeof x==="string"),
-  grc:(concept.grc||[]).filter(x=>typeof x==="string")};
+ const byLanguage={};
+ for(const language of ["la","grc","es","en","fr","it","de","pt"]){
+  const candidates=(language==="la"||language==="grc")?(concept[language]||[]):(concept.modern?.[language]||[]);
+  byLanguage[language]=candidates.filter(v=>typeof v==="string"&&v.trim().length>1);
+ }
+ let loaded=0,failed=0,examined=0;
+ // A semantic result must always be supported by an actual textual match,
+ // not merely the presence of a concept in the editorial dictionary.
+
  // Strictly bounded vocabulary, exact surface matching; never fabricate a locus.
  for(let offset=0;offset<entries.length;offset+=4){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
    if(!terms.length||e.format==="historical-ocr-pages")return;
+   examined++;
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
-   if(!d?.passages?.length)return;
-   let first=null,total=0;
+   if(!d?.passages?.length){failed++;return}
+   loaded++;
+   let first=null,total=0,units=0;
    for(const passage of d.passages){
+    let passageHits=0;
     if(typeof passage.text!=="string")continue;
     for(const term of terms){
      const hits=matches(passage.text,term);
-     total+=hits.length;
+     total+=hits.length;passageHits+=hits.length;
      if(!first&&hits.length)first={passage,term,at:hits[0]};
     }
+    if(passageHits)units++;
    }
    if(!first)return;
    const linkBase=e.reader||(e.format==="html-text"?e.path:
@@ -200,12 +211,13 @@ async function semanticSearch(q,{limit=6}={}){
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language),
     author:"Conceptus: "+concept.id+" · equivalente "+first.term,
     excerpt:"Locus "+first.passage.locus+": "+snippet(first.passage.text,first.at),
-    meta:"CORRESPONDENCIA SEMÁNTICA EDITORIAL · COINCIDENCIA LITERAL EN TEXTO · NO LEMATIZACIÓN",
-    rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total});
+    meta:"CORRESPONDENCIA CONCEPTUS DOCUMENTADA · COINCIDENCIAS EN "+units+" PASAJE(S) · NO LEMATIZACIÓN",
+    rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total,units,conceptId:concept.id,matchedTerm:first.term});
   }));
  }
+ lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,matchedEditions:rows.length};
  return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title))
-   .slice(0,Math.max(1,Math.min(20,limit)));
+   .slice(0,Math.max(1,Math.min(100,limit)));
 }
 window.ClassicsCorpusSearch={
  search,semanticSearch,
