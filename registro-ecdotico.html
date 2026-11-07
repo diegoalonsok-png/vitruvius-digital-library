@@ -1,0 +1,58 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registro ecdótico y grados de evidencia · Vitruvius Digital Library</title>
+<meta name="description" content="Registro versionado de decisiones ecdóticas de De architectura, trazabilidad de testimonios, niveles de certeza y pendientes de validación.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/registro-ecdotico.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+.ec-main{max-width:1140px;margin:auto;padding:36px 20px 95px;color:var(--ink,#263845)}
+.ec-main h1{font:normal clamp(30px,4vw,45px)/1.2 Georgia,serif;margin:15px 0}
+.ec-main h2{font:normal 27px/1.3 Georgia,serif;margin:30px 0 12px}
+.ec-main p{max-width:950px;line-height:1.7}
+.ec-muted{font:13px/1.6 system-ui,sans-serif;opacity:.8}
+.ec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:24px 0}
+.ec-cell{padding:17px;border:1px solid #a89473;border-radius:11px;background:rgba(146,127,94,.05)}
+.ec-number{font:normal 30px/1.2 Georgia,serif;display:block}
+.ec-panel{border:1px solid #a89473;border-radius:12px;margin:18px 0;padding:20px;background:rgba(146,127,94,.045)}
+.ec-table{width:100%;border-collapse:collapse;margin:14px 0}
+.ec-table th,.ec-table td{border-bottom:1px solid #a8947380;text-align:left;vertical-align:top;padding:11px}
+.ec-controls{display:flex;gap:12px;align-items:end;flex-wrap:wrap}
+.ec-controls label{display:grid;gap:5px;flex:1 1 200px}
+.ec-controls select,.ec-controls input{padding:10px;border-radius:7px;border:1px solid #a89473;background:#fffdf8;color:#223747}
+.ec-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:15px}
+.ec-links a{color:inherit;border:1px solid #a89473;padding:9px 12px;border-radius:7px;text-decoration:none}
+@media(max-width:680px){.ec-table{font-size:12px}.ec-table th,.ec-table td{padding:7px}}
+</style><script defer src="assets/site-bar.js?v=20261107-academic-v4"></script>
+<script defer src="assets/ecdotic-decisions.js?v=20261107-v1"></script></head><body>
+<a class="skip" href="#contenido">Saltar al contenido</a><main class="ec-main" id="contenido">
+<nav aria-label="Navegación académica"><a href="index.html">Vitruvius</a> · <a href="status-textus.html">Status textus</a> · <a href="aparato-critico.html">Aparato crítico</a> · <a href="control-academico.html">Control académico</a></nav>
+<p class="ec-muted">DIPLOMÁTICA · ECDÓTICA · FILOLOGÍA TEXTUAL · TRAZABILIDAD</p>
+<h1>Registro de decisiones ecdóticas</h1>
+<p>Este registro distingue el <strong>anclaje de una nota</strong>, la <strong>procedencia de una lectura</strong> y su <strong>estado de verificación</strong>. Identificar un locus no acredita una colación autóptica. Ninguna variante ni traducción se corrige automáticamente por coincidencia de OCR o de índices.</p>
+<section class="ec-grid" aria-label="Estado del aparato extraído">
+<div class="ec-cell"><strong class="ec-number" id="ec-total">—</strong>Notas extraídas</div>
+<div class="ec-cell"><strong class="ec-number" id="ec-explicit">—</strong>Locus explícito (sin prueba de autopsia)</div>
+<div class="ec-cell"><strong class="ec-number" id="ec-candidate">—</strong>Anclaje candidato pendiente</div>
+<div class="ec-cell"><strong class="ec-number" id="ec-unlocated">—</strong>Sin localización precisa</div></section>
+<p id="ec-baseline" class="ec-muted" role="status">Cargando instantánea de cobertura…</p>
+<section class="ec-panel"><h2>Jerarquía de evidencia</h2>
+<table class="ec-table"><thead><tr><th>Nivel</th><th>Qué acredita</th><th>Qué no acredita</th></tr></thead><tbody>
+<tr><td>Autóptica</td><td>Lectura comprobada en folio/imagen institucional identificados y documentados</td><td>Que otros testimonios tengan la misma lectura</td></tr>
+<tr><td>Reportada</td><td>Lectura atribuida explícitamente a edición crítica o estudio de referencia</td><td>Acceso directo al manuscrito</td></tr>
+<tr><td><em>Emendatio</em> editorial</td><td>Intervención argumentada y vinculada al texto base</td><td>Presencia de la forma en un testimonio manuscrito</td></tr>
+<tr><td>Interpretación de traducción</td><td>Decisión interpretativa del editor o traductor</td><td>Identidad palabra por palabra entre lenguas</td></tr>
+<tr><td>Sin verificar</td><td>Hipótesis o candidato localizable</td><td>Lectura crítica certificada</td></tr></tbody></table>
+<p class="ec-muted">Las categorías de verificación documental son independientes del grado de localización de una nota (explícito, candidato, sin localizar).</p></section>
+<section class="ec-panel"><h2>Decisiones registradas individualmente</h2>
+<div class="ec-controls"><label for="ec-edition">Edición<select id="ec-edition"><option value="">Todas</option><option>V514</option><option>V554</option><option>V297</option></select></label>
+<label for="ec-review">Estado de revisión<select id="ec-review"><option value="">Todos</option><option value="proposed">Propuesta</option><option value="under_review">En revisión</option><option value="verified_with_source">Cotejada con fuente identificada</option><option value="rejected">Rechazada</option><option value="superseded">Reemplazada</option></select></label>
+<label for="ec-query">Locus / término<input id="ec-query" type="search" placeholder="III.1.2 · X.10"></label></div>
+<p id="ec-count" role="status">Cargando decisiones registradas…</p><div id="ec-records"></div>
+<div class="ec-links"><a href="data/ecdotic-decisions.json" download>Descargar registro JSON</a>
+<a href="aparato-critico.html">Examinar notas del aparato</a>
+<a href="status-textus.html">Criterios editoriales</a>
+<a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/commits/main/data/ecdotic-decisions.json">Historial verificable de cambios</a></div>
+</section>
+<section><h2>Prioridades para la verificación</h2>
+<p>Revisar de forma individual las 519 asociaciones candidatas y las 251 sin anclaje; documentar antes las 91 unidades con griego y los numerales, fracciones y símbolos del libro X.10–X.16. Cualquier cambio posterior deberá conservar lectura anterior, fuente, justificación, fecha, responsable y revisión en Git.</p>
+<p><strong>Limitación actual:</strong> el registro contiene una estructura editorial para registrar decisiones; no transforma automáticamente las notas extraídas en decisiones verificadas. Las cifras reflejan una instantánea documentada, no el estado de una nueva colación autóptica.</p></section>
+</main></body></html>
