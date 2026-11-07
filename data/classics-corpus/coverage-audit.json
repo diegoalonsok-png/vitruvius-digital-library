@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 49,
+    "indexedTextVersions": 50,
     "indexedDistinctWorks": 24,
     "manuscriptWitnesses": 23
   },
@@ -177,9 +177,11 @@
       "dating": "c. 43–40 a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
-        "la"
+        "la",
+        "en"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/sallust-catiline-en.json",
         "data/classics-corpus/sallust-catiline-la.json"
       ],
       "localPDF": null,
@@ -188,7 +190,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "Original latino TEI de Perseus indexado en 61 capítulos. Traducción inglesa aún no incorporada por falta de dos capítulos delimitados en la fuente; no se declara cotejo automático."
+      "notes": "Original latino indexado en 61 capítulos. Traducción inglesa de John Selby Watson (1899), 59 de 61 capítulos disponibles; faltan los capítulos 35 y 57 de la fuente TEI. Correspondencia solamente por número de capítulo existente, sin alineación palabra por palabra."
     },
     {
       "id": "sallust-iugurtha",
