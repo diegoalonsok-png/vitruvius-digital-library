@@ -23,6 +23,15 @@
  const caption=visual.querySelector('.featured-documentary-caption'),credit=visual.querySelector('.featured-documentary-credit');
  const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
  const hasKind=(type,groups)=>groups.includes(type);
+ // Regla de seguridad patrimonial: para personas históricas no se permiten
+ // imágenes improvisadas procedentes de búsquedas por texto o coincidencias
+ // de nombre. Una imagen ilustrativa no es una identidad documentada.
+ const historicalBiographyQuery=q=>{
+  const t=fold(q);
+  return /\b(san martin|martin de porres|julio cesar|julius caesar|jose de san martin)\b/.test(t)||
+   /\b(libertador|procer|politico|militar|emperador|emperatriz|santo|santa|philosopher|filosofo|general romano|politician|revolutionary)\b/.test(t);
+ };
+
 
  const childhood=/\b(baby|infant|infancy|childhood|as a child|as a baby|as a boy|as a girl|toddler|newborn|beb[eé]|niñ[oa]|infancia|infantil|enfant|bambin[oa]|kindheit|als kind)\b/i;
  const isChildhood=item=>childhood.test([item?.caption,item?.name,item?.alt,item?.page].filter(Boolean).map(value=>{try{return decodeURIComponent(value)}catch{return value}}).join(" ").normalize("NFD").replace(/\p{M}/gu,""));
@@ -56,6 +65,8 @@
   return score+boost;
  }
  function show(item,weight){
+  // Cuarentena de imágenes históricas sin certificación de identidad/obra.
+  if(historicalBiographyQuery(query)&&!item?.verifiedHistoricalPortrait)return false;
   if(!validImage(item.preview)||!validSource(item.page))return false;
   if(weight<rank||attempted.has(item.preview))return false;
   attempted.add(item.preview);selected=item.preview;rank=weight;
@@ -107,11 +118,13 @@
  function onHero(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query||!d.item)return;
+  if(historicalBiographyQuery(query))return;
   show(d.item,Number(d.weight)||5000);
  }
  function onFeatured(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query)return;
+  if(historicalBiographyQuery(query))return;
   if(d.row?.type==='wikipedia')leadImage(d.row,query);
   const item=fromRow(d.row);
   if(!item)return;
@@ -128,6 +141,7 @@
  function onGallery(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query)return;
+  if(historicalBiographyQuery(query))return;
   const results=(d.items||[]).filter(x=>validImage(x.preview)&&validSource(x.page));
   if(!results.length)return;
   const safeKind=['person','object','topic'].includes(d.kind)?d.kind:'topic';
