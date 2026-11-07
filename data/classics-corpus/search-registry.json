@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-06",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 35,
-  "works": 16,
+  "count": 36,
+  "works": 17,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -254,6 +254,16 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae (Corpus Tibullianum 3.13–18)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sulpicia-elegiae-la.json",
+      "reader": "classics-text-reader.html?work=sulpicia-elegiae&lang=la",
+      "sourceDescription": "Seis elegías latinas antiguas de dominio público; textos normalizados y loci 3.13–3.18; traducciones pendientes."
     },
     {
       "workId": "theophrastus-characters",
