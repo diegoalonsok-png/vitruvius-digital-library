@@ -14,17 +14,29 @@ ready(()=>{
 .classic-fulltext a:hover{border-color:#8c6c39}.classic-fulltext mark{background:#ffe45c;color:#14120e;padding:0 2px;border-radius:2px}
 html[data-theme=dark] .classic-fulltext a{background:#263d50;border-color:#728396}`;
  document.head.append(st);controls.after(box);
+ const selector=document.createElement("label");selector.textContent="Búsqueda dentro de los textos";
+ selector.style.cssText="font:600 12px system-ui;display:flex;flex-direction:column;gap:5px;min-width:200px";
+ const mode=document.createElement("select");mode.id="classic-fulltext-mode";mode.setAttribute("aria-label","Búsqueda léxica o semántica del corpus");
+ for(const [value,name] of [["literal","Palabra o frase · búsqueda textual"],["semantic","Conceptus · equivalencias semánticas documentadas"]]){
+  const option=document.createElement("option");option.value=value;option.textContent=name;mode.append(option);
+ }
+ mode.style.cssText="min-height:44px;padding:8px;background:#fff;color:#203548;border:1px solid #a7a395";
+ selector.append(mode);controls.append(selector);
  let timer=0,serial=0;
  async function run(){
   const q=input.value.trim(),me=++serial;
   if(q.replace(/[^\p{L}]/gu,"").length<3||q.split(/\s+/).length>4){box.replaceChildren();return}
-  box.textContent="Buscando «"+q+"» en los textos griegos y latinos del sitio…";
-  let rows=[];try{rows=await window.ClassicsCorpusSearch.search(q,{limit:24})}catch(err){if(me===serial)box.textContent="No se pudo consultar el índice textual: "+err.message;return}if(me!==serial)return;
+  box.textContent="Buscando «"+q+"» en las versiones textuales indexadas…";
+  const semantic=mode.value==="semantic";
+  let rows=[];
+  try{rows=semantic?await window.ClassicsCorpusSearch.semanticSearch(q,{limit:24}):await window.ClassicsCorpusSearch.search(q,{limit:24})}catch(err){if(me===serial)box.textContent="No se pudo consultar el índice textual: "+err.message;return}if(me!==serial)return;
   const coverage=window.ClassicsCorpusSearch.diagnostics?.()||{failed:0,mode:"unknown"};
   box.replaceChildren();
+  if(!rows.length&&semantic){box.textContent="No se encontró equivalencia editorial documentada en Conceptus con coincidencia en los textos indexados. Esto no demuestra ausencia del concepto en la obra.";return}
   if(!rows.length){box.textContent=coverage.failed?"Búsqueda incompleta: "+coverage.failed+" fuentes no pudieron cargarse. No se puede descartar que exista el término.":"«"+q+"» no aparece en las versiones textuales que fueron examinadas (búsqueda literal, sin diacríticos).";return}
   const head=document.createElement("p");head.style.margin="0";
-  head.append(document.createTextNode("Palabra en los textos: "),Object.assign(document.createElement("mark"),{textContent:q}),document.createTextNode(" · "+rows.reduce((n,r)=>n+(r.count||0),0)+" coincidencias en originales y traducciones locales. Abre la edición identificada para ver la frase. "+(coverage.failed?"Aviso: "+coverage.failed+" fuentes no se cargaron; resultados parciales.":"")));
+  head.append(document.createTextNode(semantic?"Concepto documentado: ":"Palabra o frase en los textos: "),Object.assign(document.createElement("mark"),{textContent:q}),document.createTextNode(" · "+rows.reduce((n,r)=>n+(r.count||0),0)+" coincidencias en originales y traducciones locales. Abre la edición identificada para ver la frase. "+(coverage.failed?"Aviso: "+coverage.failed+" fuentes no se cargaron; resultados parciales.":"")));
+  if(semantic)head.append(document.createTextNode(" · Mapeo de Conceptus con coincidencias textuales; no es IA vectorial ni lematización certificada."));
   const ul=document.createElement("ul");
   for(const r of rows){const li=document.createElement("li"),a=document.createElement("a");
    a.href=r.link;
@@ -34,6 +46,7 @@ html[data-theme=dark] .classic-fulltext a{background:#263d50;border-color:#72839
   const list=document.getElementById("classic-search-suggestions");
   if(list&&!list.hidden&&list.querySelector(".classic-suggestion-empty")&&!list.querySelector(".classic-suggestion")){list.hidden=true;input.setAttribute("aria-expanded","false")}
  }
+ mode.addEventListener("change",()=>{if(input.value.trim())run()});
  input.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(run,650)});
  input.addEventListener("keydown",e=>{if(e.key==="Enter"){clearTimeout(timer);run()}});
  const sp=new URLSearchParams(location.search),t=sp.get("term");
