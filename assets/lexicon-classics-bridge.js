@@ -47,4 +47,11 @@ semantic.addEventListener("click",()=>execute("semantic"));
 document.getElementById("lx-form")?.addEventListener("submit",()=>{if(input.value.trim().length>=3)execute("literal")});
 input.addEventListener("input",()=>{serial++;button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
+// Deep links with an actual term should produce attested corpus results automatically.
+// Delay until the parent Lexicon has populated its search control.
+const initial=new URLSearchParams(location.search).get("q");
+if(initial&&initial.trim().length>=3){
+ if(!input.value.trim())input.value=initial;
+ execute("literal");
+}
 })();
