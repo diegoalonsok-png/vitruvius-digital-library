@@ -9352,7 +9352,7 @@
         {
           "language": "la",
           "label": "Latín · seis elegías (Corpus Tibullianum 3.13–18)",
-          "path": "data/classics-corpus/sulpicia-elegiae-la.json",
+          "path": "classics-text-reader.html?work=sulpicia-elegiae&lang=la",
           "kind": "edition"
         }
       ],
@@ -9369,7 +9369,10 @@
         "Elegías de Sulpicia",
         "Sulpiciae Elegidia",
         "Corpus Tibullianum III 13-18"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/classics-corpus/sulpicia-elegiae-la.json"
+      }
     }
   ],
   "pdfPolicy": {
