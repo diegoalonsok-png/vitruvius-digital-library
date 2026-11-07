@@ -35,7 +35,8 @@ function update(){
   const bibliotheca=document.createElement("a");bibliotheca.href=a.href;bibliotheca.textContent="Bibliotheca";
   const vitruvia=document.createElement("a");vitruvia.href="vitruvia.html?q="+encodeURIComponent(w.author+" "+w.title)+"&mode=all";vitruvia.textContent="Vitruvia";
   const lexicon=document.createElement("a");lexicon.href="vitruvia-lexicon.html";lexicon.textContent="Lexicon";
-  tools.append(bibliotheca,document.createTextNode(" · "),vitruvia,document.createTextNode(" · "),lexicon);
+  const locorum=document.createElement("a");locorum.href="index-locorum.html?work="+encodeURIComponent(w.id);locorum.textContent="Index locorum";
+  tools.append(bibliotheca,document.createTextNode(" · "),locorum,document.createTextNode(" · "),vitruvia,document.createTextNode(" · "),lexicon);
   tr.append(tools);
   const candidateCell=document.createElement("td");
   const related=candidateSources.filter(x=>x.workId===w.id);
