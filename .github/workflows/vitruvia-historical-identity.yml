@@ -8,6 +8,7 @@ on:
       - 'assets/vitruvia-search.js'
       - 'data/onomasticon-vitruvianum.json'
       - 'scripts/test-vitruvia-historical-identity.mjs'
+      - 'scripts/test-vitruvia-authority-first.mjs'
       - '.github/workflows/vitruvia-historical-identity.yml'
 permissions:
   contents: read
@@ -27,3 +28,5 @@ jobs:
           node --check assets/vitruvia-search.js
       - name: Prevent historical-person misidentification
         run: node scripts/test-vitruvia-historical-identity.mjs
+      - name: Historical figure before namesake song or business
+        run: node scripts/test-vitruvia-authority-first.mjs
