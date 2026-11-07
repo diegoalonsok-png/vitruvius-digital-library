@@ -286,12 +286,22 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 <link rel="stylesheet" href="assets/lexicon-orthography-research.css?v=20261107-v1">
 <link rel="stylesheet" href="assets/lexicon-toponymicon.css?v=20261107-v1">
 <link rel="stylesheet" href="assets/critical-note-bridge.css?v=20261107-v1">
-</head><body>
+<style id="lx-writing-lab-placement">
+/* Acceso bajo el selector de lengua: aspecto negro neutro y moderno. */
+.navtools{display:grid!important;grid-template-columns:auto auto auto auto;align-items:center;gap:9px!important}
+.navtools #lx-lang{grid-column:1;grid-row:1;min-width:190px}
+.navtools .lx-writing-lab-link{grid-column:1;grid-row:2;display:block;padding:9px 12px;box-sizing:border-box;text-align:center;text-decoration:none;font:500 13px/1.35 system-ui,-apple-system,sans-serif;white-space:normal;color:#e6e6e6;background:#191919;border:1px solid #565656;border-radius:8px;transition:background .15s,border-color .15s}
+.navtools .lx-writing-lab-link:hover,.navtools .lx-writing-lab-link:focus-visible{background:#2a2a2a;border-color:#a0a0a0;color:#fff}
+.navtools #lx-palette{grid-column:2;grid-row:1}
+.navtools #lx-ui{grid-column:3;grid-row:1}
+.navtools #theme{grid-column:4;grid-row:1}
+@media(max-width:950px){.navtools{grid-template-columns:repeat(4,minmax(0,auto));max-width:100%}.navtools #lx-lang{min-width:0}.navtools .lx-writing-lab-link{font-size:12px}}
+</style></head><body>
 <div class="site-shell">
 <header class="nav">
  <a class="logo-small" href="vitruvia-lexicon.html" aria-label="Vitruvia Lexicon — inicio">Vitruvia<small>Lexicon</small></a>
  <nav class="navlinks" aria-label="Navegación del Lexicon">
-  <a href="vitruvia.html" data-i18n>← Buscador Vitruvia</a><a href="laboratorio-escrituras.html" title="Griego politónico, variantes de grafía y normalización filológica" style="display:inline-block;margin:5px 8px;padding:8px 12px;border:1px solid #aa9778;border-radius:8px;color:inherit;text-decoration:none">Laboratorio de escrituras</a><a href="bibliotheca-graeca-latina.html">Biblioteca de clásicos</a>
+  <a href="vitruvia.html" data-i18n>← Buscador Vitruvia</a><a href="bibliotheca-graeca-latina.html">Biblioteca de clásicos</a>
   <a href="#etymologicum" data-i18n>Etymologicum</a>
    <a href="#scriptoria">Escrituras antiguas</a><a href="papyrologia-ostraca.html">Papiros y óstraca · Lupas e IA</a>
   <a href="#sententiae" data-tool-mode="sententiae">Sententiae</a>
@@ -306,6 +316,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  </nav>
  <div class="navtools">
   <select id="lx-lang" aria-label="Lengua de búsqueda" title="Lengua de búsqueda"><option value="auto">Lengua: auto</option><option value="la">Latín</option><option value="grc">Griego</option><option value="he">Hebreo</option><option value="es">Castellano (etimología)</option><option value="en">Inglés (etimología)</option><option value="fr">Francés (etimología)</option><option value="de">Alemán (etimología)</option></select>
+  <a class="lx-writing-lab-link" href="laboratorio-escrituras.html" title="Griego politónico, variantes de grafía y normalización filológica">Laboratorio de escrituras</a>
   <details class="lx-palette" id="lx-palette"><summary aria-label="Color de fondo" title="Color de fondo"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7.2" r="1.2"/><circle cx="15" cy="7.4" r="1.2"/></svg><span data-i18n>Fondo</span></summary><div class="lx-palette-panel"></div></details>
   <select id="lx-ui" aria-label="Idioma de la interfaz" title="Idioma de la interfaz / Interface language"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
   <button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button>
