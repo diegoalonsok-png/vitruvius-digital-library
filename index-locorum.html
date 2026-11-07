@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Index locorum · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Índice locorum semántico por obra, edición, idioma y concepto documentado de la Bibliotheca Graeca et Latina.">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css">
+<style>
+main{max-width:1480px;margin:auto;padding:25px clamp(14px,3vw,40px) 90px;color:var(--ink,#243849)}
+h1,h2{font-family:Georgia,serif}h1{font-size:clamp(32px,4vw,48px)}
+.intro{max-width:1050px;line-height:1.7}.panel{background:var(--surface,#fffdf7);color:var(--ink,#26394a);border:1px solid #bba88a;padding:18px;margin:18px 0}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px}
+.controls label{display:grid;gap:6px;font:650 13px system-ui}.controls select,.controls input{padding:11px;width:100%;font:15px system-ui;color:#1b3549;background:white;border:1px solid #a69678}
+#summary{font:14px/1.7 system-ui;overflow-wrap:anywhere}#results{display:grid;gap:14px}
+.entry{border:1px solid #baa78a;padding:15px;background:var(--surface,#fffdf7);color:var(--ink,#243849)}
+.entry h2{font-size:23px;margin:0 0 6px}.entry p{font:13px/1.6 system-ui;margin:6px 0}
+.locilist{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 0;padding:0;list-style:none;max-height:330px;overflow:auto}
+.locilist a{display:inline-block;border:1px solid #bba88a;border-radius:3px;padding:6px 9px;color:inherit;text-decoration:none;font:13px system-ui}
+.locilist a:hover,.locilist a:focus{background:#ead9b7;color:#152a3b}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font:13px system-ui}.links a{color:inherit;text-decoration:underline}
+small,.muted{opacity:.8}#more{margin:18px 0;padding:10px 16px;cursor:pointer;border:1px solid #a38a65;background:#233d51;color:#fff}
+html[data-theme=dark] .panel,html[data-theme=dark] .entry{background:#23384a;color:#f8f0e5;border-color:#806f5a}
+</style><link rel="manifest" href="manifest.webmanifest"></head><body>
+<main>
+<p><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="cobertura-traducciones-clasicas.html">Cobertura</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></p>
+<h1>Index locorum · Concordancias semánticas</h1>
+<p class="intro">Índice documental de lugares textuales en ediciones alojadas. Cada entrada refiere a una forma efectivamente registrada en el índice de una edición. <strong>No equivale a lematización morfológica verificada, traducción alineada, equivalencia etimológica ni atribución automática de sentido por contexto.</strong> Los rótulos de pasaje son los de la edición de origen; no representan necesariamente folios de manuscrito. Las traducciones se muestran por separado.</p>
+<div class="panel controls">
+<label>Obra<select id="work"><option value="">Todas las obras</option></select></label>
+<label>Edición / idioma<select id="edition"><option value="">Todas las ediciones</option></select></label>
+<label>Conceptus documentado<select id="concept"><option value="">Todos los conceptos</option></select></label>
+<label>Buscar forma o locus<input id="query" type="search" placeholder="domus, οἶκος, 1.3, 35…"></label>
+</div>
+<div class="panel" id="summary" role="status" aria-live="polite">Consultando índice documentado…</div>
+<div id="results"></div><button id="more" type="button" hidden>Mostrar más referencias</button>
+<p class="intro muted">Metodología: concordancias de formas de Conceptus conservadas en el índice precomputado de la biblioteca. La presencia de una forma no valida por sí sola una acepción. Las ediciones HTML no cubiertas por este índice deben consultarse con búsqueda textual, y cualquier original/traducción sin alineación verificable permanece independiente. Los loci solo se atribuyen a versiones con registro de fuente.</p>
+</main><script defer src="assets/index-locorum.js?v=20261107-v1"></script>
+<script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script>
+<script defer src="assets/theme.js?v=20261105-merge-v1"></script></body></html>
