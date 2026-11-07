@@ -834,7 +834,7 @@ async function hostedAuthorPassages(query){
     if(e.format==="html-text"){
      const doc=new DOMParser().parseFromString(await res.text(),"text/html");
      const main=doc.querySelector("main")||doc.body;
-     const p=main.querySelector("p");if(!p)return null;
+     const p=[...main.querySelectorAll("p")].find(node=>!node.closest("nav,header,footer,.provenance,.apparatus")&&node.textContent.trim().length>=90);if(!p)return null;
      const section=p.previousElementSibling?.id||main.querySelector("[id]")?.id||"";
      passage={text:p.textContent||"",locus:section};
      attribution=doc.querySelector(".provenance")?.textContent?.trim().slice(0,180)||attribution;
