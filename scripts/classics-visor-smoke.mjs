@@ -188,6 +188,7 @@ try{
    assert.notEqual(second,initial.src,'Next must request a different actual IIIF canvas');
    await p.locator('#pr-prev').click();
    assert((await p.locator('#pr-counter').innerText()).startsWith('1 /'),'Previous must return to image 1');
+   assert.equal(await p.locator('#pr-folios').isVisible(),false,'1673 must not duplicate the 1684 folio catalogue');
    await p.locator('#pr-number').fill('25');
    await p.locator('#pr-go').click();
    assert((await p.locator('#pr-counter').innerText()).startsWith('25 /'),'Numeric go-to must navigate to image 25');
@@ -200,6 +201,10 @@ try{
    assert.equal(await p.locator('#pr-year').inputValue(),'1684');
    assert.match(await p.locator('#pr-shelfmark').innerText(),/Rar 9852/);
    assert.match(await p.locator('#pr-manifest').getAttribute('href'),/14701133/);
+   assert.equal(await p.locator('#pr-folio-grid button').count(),390,'1684 must present exactly 390 verified image entries');
+   assert.equal(await p.locator('#pr-folios').isVisible(),true,'1684 folio catalogue not visible');
+   await p.locator('#pr-folio-grid button[data-index="24"]').click();
+   assert.match(await p.locator('#pr-counter').innerText(),/^25 \/ 390$/,'Folio 25 must navigate by image number');
   }finally{await p.close()}
  });
  await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
