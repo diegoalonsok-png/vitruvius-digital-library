@@ -142,6 +142,63 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 .pap-workbench + .transcript{margin-top:12px}
 @media(max-width:1050px){.pap-workbench{grid-template-columns:minmax(0,1.25fr) minmax(285px,.8fr)}.pap-primary-viewer .stage{max-height:55vh;min-height:280px}}
 @media(max-width:760px){.pap-workbench{grid-template-columns:1fr}.pap-image-controls{position:static;max-height:none;overflow:visible}.pap-primary-viewer .stage{min-height:280px;max-height:55vh}}
+
+/* Lexicon visual language: charcoal interfaces, discreet lines, compact scholarly typography. */
+:root{color-scheme:dark;--dark:#0d0d0e;--paper:#0d0d0e;--ink:#e9e9e7;--gold:#b8b8b7}
+body{background:#0d0d0e;color:#e9e9e7;font:14px/1.55 Arial,Helvetica,system-ui,sans-serif}
+header{background:#0d0d0e;border-bottom:1px solid #333;color:#e9e9e7}
+header h1{font:italic 400 clamp(29px,3vw,38px)/1.15 Georgia,serif;letter-spacing:-.025em}
+header p,main>.intro{color:#a7a7a7}
+header a{color:#c5c5c5;text-decoration:none;font-size:12px}
+header a:hover{color:#fff}
+main{max-width:1540px}
+.panel,.pap-primary-viewer,.pap-image-controls .panel,.pap-extraction-fold>#pap-extraction{background:#141415;color:#e8e8e6;border:1px solid #363638}
+.panel h2,.panel h3,.pap-primary-viewer h2,.pap-image-controls h2{color:#e9e9e7;font-family:Georgia,serif}
+.caption,.pap-controls-note,.pap-extraction-fold .caption{color:#a3a3a3!important}
+.pap-lab-heading{background:#141415;border:1px solid #333;border-left:3px solid #b8b8b7;color:#e9e9e7}
+.pap-lab-heading p{color:#a3a3a3}
+.pap-lab-heading span,.pap-panel-kicker{color:#b8b8b7}
+.pap-primary-viewer{border-color:#373738}
+.pap-image-controls{background:#111112;border:1px solid #373738;scrollbar-color:#555 #141415}
+.pap-image-controls .panel{background:#171718;border-color:#343435}
+.pap-compact-filters,.pap-image-controls .pap-compact-filters{background:#171718}
+.toolbar button,.toolbar select,.toolbar input:not([type=range]):not([type=color]),.transcript button{
+ background:#202021;color:#eaeae8;border:1px solid #494949}
+.toolbar button[aria-pressed=true],.toolbar button:hover,.transcript button:hover{background:#333337;color:#fff}
+.toolbar button:focus-visible,.toolbar select:focus-visible{outline:2px solid #dedede}
+.toolbar label{color:#bfbfbd}
+.toolbar input[type=range]{accent-color:#a9a9a9}
+.toolbar input[type=color]{border-color:#575757;background:#202021}
+.toolbar output{color:#e2e2e0}
+.pap-external,.classic-oldest-link{background:#29292c;color:#f1f1ee!important;border:1px solid #535353}
+.pap-external:hover{background:#404043}
+.pap-controls-note{color:#a5a5a5}
+.stage,.pap-primary-viewer .stage{background:#202022;border:1px solid #505050}
+.pap-extraction-fold{background:#101011;border-color:#393939}
+.pap-extraction-fold>summary{background:#19191a;color:#e4e4e2;border-bottom-color:#363638}
+.pap-extraction-fold[open]>summary{border-bottom-color:#363638}
+.pap-advanced-filters,.pap-glyph-results button,#pap-experimental-ocr{background:#202021;color:#e8e8e6;border-color:#444}
+.pap-ink-scroll{border-color:#393939}
+.privacy,#pap-google-method{background:#1d1d1e;color:#dededc;border-left-color:#9b9b9b}
+#pap-google-method .caption,.pap-gemini-report{color:#c8c8c7}
+.pap-gemini-report{background:#19191b;border-color:#494949}
+.transcript textarea{background:#161618;color:#f1f1ee;border-color:#555}
+#pap-graphemes button,.pap-ink-sign{background:#202021;color:#eaeae9;border-color:#555}
+#pap-ancient-alphabet,#pap-ancient-signs{background:#181819;color:#f0f0ee;border-color:#444}
+.pap-ancient-signs button{background:#272729;color:#e5e5e5;border-color:#555}
+.pap-builder,.pap-glyph-layout{color:#dededc}
+.pap-build-output{background:#171719;color:#eaeaea;border-color:#515151}
+.pap-detail-drawer{margin:6px 0 0;border:1px solid #3a3a3b;background:#181819}
+.pap-detail-drawer>summary{font:12px/1.3 Arial,system-ui,sans-serif;cursor:pointer;padding:7px 9px;color:#cececb}
+.pap-detail-drawer[open]>summary{border-bottom:1px solid #3a3a3b}
+.pap-detail-drawer #pap-detail{display:block;width:100%;height:140px;max-height:140px;margin:0;background:#1a1a1b}
+#pap-ink-canvas[hidden]{display:none!important}
+.pap-ink-placeholder{font-size:12px;line-height:1.45;padding:10px 12px;border:1px dashed #515151;color:#bdbdbd;background:#19191a;margin:6px 0}
+#pap-ink-placeholder[hidden]{display:none!important}
+.pap-ink-scroll:has(#pap-ink-canvas[hidden]){display:none}
+.pap-ink-signs:empty{display:none}
+.pap-primary-viewer #pap-detail{height:140px;max-height:140px}
+@media(max-width:760px){.pap-workbench{display:flex;flex-direction:column}.pap-primary-viewer,.pap-image-controls{width:100%}}
 </style>
 </head>
 <body>
@@ -163,7 +220,10 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 </div>
 <canvas id="pap-loupe" width="240" height="240" aria-hidden="true"></canvas>
 <p class="caption">En computadora: mover el cursor para la lupa y usar zoom. En celular: tocar el punto de interés para actualizar el detalle. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
+<details class="pap-detail-drawer" id="pap-detail-drawer">
+<summary>Ver detalle ampliado de la lupa (opcional)</summary>
 <canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
+</details>
 </section>
 <aside class="pap-image-controls" aria-label="Controles ópticos del visor">
  <div class="pap-panel-kicker">II · INSTRUMENTA OPTICA</div>
@@ -317,7 +377,7 @@ main{padding:8px clamp(9px,1.6vw,22px) 38px}
 <button type="button" id="pap-ink-export">Guardar máscara PNG</button>
 </div>
 <div class="pap-extraction-grid">
-<div><h3>Imagen extraída</h3><div class="pap-ink-scroll"><canvas id="pap-ink-canvas" width="560" height="280" aria-label="Máscara de tinta en negro sobre blanco"></canvas></div></div>
+<div><h3>Imagen extraída</h3><p id="pap-ink-placeholder" class="pap-ink-placeholder">La máscara aparecerá aquí después de pulsar «Extraer trazos negros». No se reserva un visor vacío.</p><div class="pap-ink-scroll"><canvas id="pap-ink-canvas" hidden width="560" height="280" aria-label="Máscara de tinta en negro sobre blanco"></canvas></div></div>
 <div><h3>Segmentación por signos</h3>
 <div class="toolbar">
 <label>Alfabeto comparativo<select id="pap-ink-alphabet"><option value="grc">Griego antiguo · formas tipográficas</option><option value="lat">Latín</option><option value="heb">Hebreo cuadrado</option><option value="phn">Fenicio Unicode</option></select></label>
