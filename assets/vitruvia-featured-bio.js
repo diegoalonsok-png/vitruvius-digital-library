@@ -145,8 +145,12 @@
   for(const n of names){
    const q=`"${n}" (bust OR busto OR statue OR portrait OR painting OR fresco OR engraving OR mosaic OR coin OR herm) filetype:bitmap`;
    const r=await fetch('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:q,srnamespace:'6',srlimit:'10',format:'json',origin:'*'})).then(r=>r.json()).catch(()=>null);
-   const key=fold(n).split(/\s+/)[0];
-   const hit=(r?.query?.search||[]).map(x=>x.title.replace(/^File:/,'')).find(t=>fold(t).includes(key)&&!/\b(map|mapa|signature|firma|logo|diagram|coat of arms|stamp|sello)\b/i.test(t));
+   // Avoid identifying a portrait by a shared first name or surname alone.
+   const key=fold(n).replace(/[^\p{L}\p{N} ]/gu,' ').replace(/\s+/g,' ').trim();
+   const hit=(r?.query?.search||[]).map(x=>x.title.replace(/^File:/,'')).find(t=>{
+    const title=fold(t).replace(/[^\p{L}\p{N} ]/gu,' ').replace(/\s+/g,' ');
+    return key.length>=8&&title.includes(key)&&!/(?:^|\s)(map|mapa|signature|firma|logo|diagram|coat of arms|stamp|sello)(?:\s|$)/i.test(title);
+   });
    if(hit)return hit;
   }
   return null;
