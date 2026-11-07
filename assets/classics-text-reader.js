@@ -209,10 +209,16 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
 (async()=>{
  try{
   const catalog=await(await fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json")).json();
-  const record=(catalog.works||[]).find(x=>x.id===work);if(!record?.corpusFiles)throw Error("La incorporación de los textos editados aún no está publicada.");
-  if(!allowed[work])setTitle(record.author+" · "+record.title);
-  for(const o of [...langSelect.options])if(!record.corpusFiles[o.value])o.remove();
-  if(![...langSelect.options].some(o=>o.value===p.get("lang")))langSelect.value=record.corpusFiles.grc?"grc":langSelect.options[0]?.value||"la";
+  const record=(catalog.works||[]).find(x=>x.id===work);
+  // The search registry is the canonical list of hosted, searchable JSON editions.
+  // The bibliographic catalogue may lag behind, notably with partial translations.
+  const registry=await fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial no disponible");return r.json()});
+  const hosted=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="json-passages"&&e.path==="data/classics-corpus/"+work+"-"+e.language+".json");
+  if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
+  if(!allowed[work])setTitle((record?.author||hosted[0].author)+" · "+(record?.title||hosted[0].title));
+  const available=new Set(hosted.map(e=>e.language));
+  for(const o of [...langSelect.options])if(!available.has(o.value))o.remove();
+  if(![...langSelect.options].some(o=>o.value===p.get("lang")))langSelect.value=available.has("grc")?"grc":available.has("la")?"la":langSelect.options[0]?.value||"en";
   else langSelect.value=p.get("lang");
   await swap(langSelect.value);
  }catch(err){$("source-title").textContent=err.message;$("method-note").textContent="Se conserva el acceso al códice de la institución; no se publica aquí un texto latino incompleto."}
