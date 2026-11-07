@@ -551,7 +551,17 @@ function considerFeatured(rows,query,fromFallback=false){
   // Wikipedia describes the subject; a same-titled Open Library book is NOT the subject.
   const originBoost=r.type==="wikipedia"?180:r.type==="manuscript"?90:r.type==="passage"?35:
     r.type==="openlibrary"?-180:r.type==="article"?-45:r.type==="museum"?-35:0;
-  const weight=(exact?160:0)+60*ratio+(inTitle?40*Math.min(1,inTitle/Math.max(1,core.length)):0)+(title.includes(q)&&q.length>2?70:0)+originBoost;
+  // Una institución, un monumento o una obra que lleva el nombre consultado
+  // no debe desplazar al individuo acreditado cuando el usuario busca solo el nombre.
+  // Las consultas explícitas ("Liceo Militar General San Martín") siguen ganando por título exacto.
+  const titleTokens=title.split(" ").filter(Boolean);
+  const genericNamedEntity=/\\b(liceo|escuela|colegio|universidad|instituto|hospital|aeropuerto|estacion|estadio|avenida|calle|plaza|museo|biblioteca|teatro|monumento|school|college|university|airport|museum|hospital|street|square)\\b/;
+  const nameOnlyQuery=core.length>=2&&core.length<=4&&!FEATURE_TYPE.has(core[0]);
+  const namedAfterPenalty=!exact&&nameOnlyQuery&&genericNamedEntity.test(title)?-180:0;
+  const verifiedHumanBoost=r.entityKind==="person"&&r.wikidataId?220:0;
+  const authorityBoost=r.preferredWiki&&r.wikidataId?120:0;
+  const extraTitlePenalty=!exact&&nameOnlyQuery?Math.min(60,Math.max(0,titleTokens.length-core.length)*8):0;
+  const weight=(exact?160:0)+60*ratio+(inTitle?40*Math.min(1,inTitle/Math.max(1,core.length)):0)+(title.includes(q)&&q.length>2?70:0)+originBoost+namedAfterPenalty+verifiedHumanBoost+authorityBoost-extraTitlePenalty;
   // Cobertura mínima: con varias palabras de tema, al menos tres cuartas partes deben estar en el
   // artículo y alguna en su título; con una sola, debe estar en el título.
   const covered=exact||(core.length<=1?inTitle>=1:(ratio>=0.75&&inTitle>=1));
