@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratorio de escrituras y variantes · Vitruvius Digital Library</title>
+<meta name="description" content="Laboratorio filológico para comparar grafías originales, Unicode NFC/NFD, griego politónico y normalización de consulta, sin alterar los textos fuente.">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css">
+<style>
+.orth-main{max-width:1140px;margin:0 auto;padding:clamp(20px,4vw,54px) 20px 90px;color:var(--ink,#223c50)}
+.orth-title{font:normal clamp(29px,4vw,46px)/1.15 Georgia,serif;margin:0 0 12px}
+.orth-lead{max-width:900px;font:17px/1.7 Georgia,serif}
+.orth-card{border:1px solid #a18d6e;border-radius:14px;padding:clamp(16px,3vw,28px);margin:22px 0;background:var(--surface,rgba(145,125,96,.06));box-shadow:0 5px 20px rgba(0,0,0,.06)}
+.orth-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.orth-controls label{flex:1 1 380px;display:grid;gap:8px;font-weight:600}
+.orth-controls input{width:100%;box-sizing:border-box;font:20px/1.3 Georgia,serif;border:1px solid #9d8b6b;border-radius:8px;padding:13px;background:#fff;color:#152e41}
+.orth-controls button,.orth-examples button{border:1px solid #a18d6e;border-radius:8px;background:#29465d;color:#fff;padding:13px 16px;cursor:pointer}
+.orth-examples{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.orth-examples button{padding:7px 12px;background:transparent;color:inherit}
+.orth-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:15px 0}
+.orth-table td,.orth-table th{text-align:left;border-bottom:1px solid #98866b77;padding:12px 9px;overflow-wrap:anywhere}
+.orth-table th:first-child{width:23%}.orth-table th:nth-child(2){width:32%}
+.orth-actions{display:flex;flex-wrap:wrap;gap:10px}
+.orth-actions a{border:1px solid #a18d6e;border-radius:9px;padding:10px 14px;color:inherit;text-decoration:none}
+.orth-actions a:hover{background:rgba(127,127,127,.14)}
+.orth-note{font-size:13px;line-height:1.6;opacity:.8}
+@media(max-width:600px){.orth-table{table-layout:auto;font-size:12px}.orth-table td,.orth-table th{padding:7px 4px}.orth-main{padding:18px 12px 65px}}
+</style>
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script><script defer src="assets/orthography-lab.js?v=20261107-v1"></script>
+</head><body><main class="orth-main">
+<nav aria-label="Espacios de investigación"><a href="index.html">Vitruvius Digital Library</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></nav>
+<h1 class="orth-title">Laboratorio de escrituras y variantes textuales</h1>
+<p class="orth-lead">Compare formas griegas politónicas, formas sin diacríticos y grafías latinas mediante operaciones explícitas. El laboratorio no altera los textos originales, no convierte ático en koiné y no certifica equivalencias lingüísticas.</p>
+<section class="orth-card" aria-label="Comparación ortográfica">
+<div class="orth-controls"><label for="orth-source">Palabra o frase documentada<input id="orth-source" type="search" autocomplete="off" dir="auto" placeholder="Por ejemplo: ἄνθρωπος, λόγος, οἶκος, ecclesia"></label><button type="button" id="orth-run">Comparar grafías</button></div>
+<div class="orth-examples" aria-label="Ejemplos de escritura"><button type="button" data-example="ἄνθρωπος">ἄνθρωπος</button><button type="button" data-example="λόγος">λόγος</button><button type="button" data-example="οἶκος">οἶκος</button><button type="button" data-example="ἐκκλησία">ἐκκλησία</button><button type="button" data-example="uirtus">uirtus</button><button type="button" data-example="בַּיִת">בַּיִת</button></div>
+<p id="orth-note" class="orth-note" role="status">Introduzca un término y seleccione «Comparar grafías».</p><div id="orth-results" aria-live="polite"></div>
+</section>
+<section class="orth-card"><h2>Protocolo editorial</h2><p><strong>Transcripción diplomática:</strong> conservar lo que figura en el testimonio o edición fuente, incluidos signos, abreviaturas y lecturas dudosas. <strong>Normalización Unicode:</strong> agrupar grafías técnicamente equivalentes para la recuperación. <strong>Lematización:</strong> registrar una hipótesis morfológica separada, con el grado de certeza y el modelo o criterio usado. <strong>Colación:</strong> comparar testimonios y ediciones sin sustituir sus lecturas.</p><p><strong>Griego antiguo y koiné:</strong> el politónico representa convenciones de acentos y espíritus que no determinan por sí solas el período o dialecto. El monotónico es una convención ortográfica posterior y no constituye una edición alternativa del griego antiguo. Las grafías con sigma lunada requieren comprobación del contexto epigráfico o editorial.</p><p><strong>OCR y HTR:</strong> una transcripción obtenida por reconocimiento automático debe señalar motor, versión, fecha, imagen fuente y estado de revisión humana; una imagen escaneada no debe contarse como texto indexado.</p></section>
+</main></body></html>
