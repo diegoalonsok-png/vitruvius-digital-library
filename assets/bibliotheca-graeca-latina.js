@@ -636,15 +636,21 @@ if(tab==="pdf"){
 }
 async function boot(){
  const getJson=(path,fallback)=>fetch(path).then(r=>r.ok?r.json():fallback).catch(()=>fallback);
- const [res,reference,perseusLinks,modernCatalogue,fullInventory,kuriloBooks]=await Promise.all([
-  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1"),
-  getJson("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1",{records:[],editions:[]}),
-  getJson("data/bibliotheca-perseus.json?v=20261105-v1",{links:{}}),
+ // Main classical catalogue should not wait for unrelated modern book inventories.
+ // Launch the optional autocomplete sources in parallel and reveal the catalogue first.
+ const extraIndexTask=Promise.all([
   getJson("data/catalog.json?v=20261106-unified-books-v1",{editions:[]}),
   getJson("data/catalog-completo.json?v=20261106-unified-books-v1",[]),
   getJson("data/kurilo-libros/index.json?v=20261106-unified-books-v1",{books:[]})
+ ]).then(([modernCatalogue,fullInventory,kuriloBooks])=>{
+  extraBookIndex=buildExtraBookIndex(modernCatalogue,fullInventory,kuriloBooks);
+  if(document.activeElement===$("classic-query"))showBookSuggestions();
+ });
+ const [res,reference,perseusLinks]=await Promise.all([
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1"),
+  getJson("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1",{records:[],editions:[]}),
+  getJson("data/bibliotheca-perseus.json?v=20261105-v1",{links:{}})
  ]);
- extraBookIndex=buildExtraBookIndex(modernCatalogue,fullInventory,kuriloBooks);
  if(!res.ok)throw Error("HTTP "+res.status);
  witnessData=reference;
  works=((await res.json()).works||[]).filter(w=>w&&w.id&&w.title&&(w.language==="la"||w.language==="grc"));
@@ -678,7 +684,7 @@ async function boot(){
    if(name==="classic-ui-language")translateInterface();
    showSelectedDetail=false;render();
   });
- translateInterface();render();initBookSuggestions();}
+ translateInterface();render();initBookSuggestions();void extraIndexTask;}
 
 /* Visual accessibility controls for every embedded frame in the classics catalogue.
    Exact color changes only apply to locally controlled HTML readers; PDF and external
