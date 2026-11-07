@@ -138,6 +138,7 @@ def build():
     lexicon = dictionary(concepts)
     indexed = []
     errors = []
+    # HTML without genuine passage anchors must not be assigned invented loci.
     unanchored_html = []
     for entry in registry["entries"]:
         if entry["format"] not in ELIGIBLE:
