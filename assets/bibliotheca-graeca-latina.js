@@ -737,12 +737,15 @@ if(tab==="study"&&hasStudyPair(w)){
   pane.append(box);
   const warning=document.createElement("p");warning.className="classic-ref";warning.textContent="Estos vínculos localizan materiales. No afirman que exista una transcripción íntegra o un códice concreto en el destino; cada documento deberá verificarse antes de presentarlo como edición incorporada.";pane.append(warning);
  }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
-  pane.replaceChildren();
-  const url="lector-textual-rapido.html?work="+encodeURIComponent(w.id);
-  const p=document.createElement("p");p.className="classic-ref";p.textContent="Texto original y traducciones en visores ligeros. Lectura directa, sin PDF ni imagen.";
-  const link=document.createElement("a");link.href=url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir lector textual en pantalla completa";link.style.cssText="display:inline-block;padding:10px;margin-bottom:12px;border:1px solid #a78f69";
-  const frame=document.createElement("iframe");frame.title="Texto original y traducciones: "+w.title;frame.src=url;frame.loading="eager";frame.style.cssText="width:100%;height:80vh;min-height:550px;border:1px solid #b5a38d;background:#fffdf7";
-  pane.append(p,link,frame);
+  if(window.BibliothecaInlineReader?.mount){
+    window.BibliothecaInlineReader.mount(pane,w);
+  }else{
+    pane.replaceChildren();
+    const notice=document.createElement("p");notice.textContent="El lector integrado no terminó de cargar. Puede abrir el lector independiente:";
+    const link=document.createElement("a");link.href="lector-textual-rapido.html?work="+encodeURIComponent(w.id);
+    link.textContent="Leer original y traducciones";
+    pane.append(notice,link);
+  }
 }else if(tab==="text"&&w.localHtml){pane.innerHTML="<h3>"+safe(t.source)+" · "+safe(w.localEdition?.original||"")+(w.localEdition?.translation?" / "+safe(w.localEdition.translation):"")+"</h3><p>"+safe(w.localEdition?.source||"")+"</p>";const frame=document.createElement("iframe");const term=new URLSearchParams(location.search).get("term");frame.src=w.localHtml+(term?(w.localHtml.includes("?")?"&":"?")+"q="+encodeURIComponent(term):"");frame.title="Lectura íntegra · "+w.author+" · "+w.title;frame.loading="lazy";frame.style.minHeight="72vh";frame.style.background="#fbf8f0";pane.append(frame);const p=document.createElement("p");p.className="classic-linkline";p.innerHTML=navLink(w.localHtml,"Abrir texto completo alojado en GitHub");pane.append(p);}else if(tab==="text"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,w.defaultLanguage||"es");}else if(tab==="text"){pane.innerHTML="<h3>"+safe(t.source)+"</h3>"+(w.reading.url?'<p>'+safe(w.reading.status)+'</p><div class="classic-linkline">'+navLink(w.reading.url,t.visit)+'</div><p>'+safe(t.notHosted)+'</p>':'<p>'+safe(t.notKnown)+'</p><p>'+safe(t.notHosted)+'</p><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+'</div>');}
 if(tab==="manuscript"){
   const witnesses=w.witnessRecords||[];
