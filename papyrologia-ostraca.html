@@ -211,6 +211,14 @@ main{max-width:1540px}
 .pap-tonal-actions button{background:#242426;border:1px solid #535355;color:#eaeaea;padding:7px 9px;border-radius:4px;font:12px Arial,sans-serif;cursor:pointer}
 .pap-tonal-actions button:hover,.pap-tonal-actions button[aria-pressed=true]{background:#414146;color:#fff}
 @media(max-width:500px){.pap-tone-grid{gap:8px}.pap-tonal-actions button{flex:1 1 130px}}
+
+/* The drag target is the image itself, never a second oversized upload panel. */
+.pap-drop-zone{position:relative;outline-offset:3px}
+.pap-drop-zone.pap-drag-over{outline:3px dashed #dedede;outline-offset:-7px}
+.pap-drop-hint{position:absolute;inset:9px;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;pointer-events:none;background:rgba(9,11,14,.87);border:2px dashed #c4c4c4;color:#f7f7f5}
+.pap-drop-zone.pap-drag-over .pap-drop-hint{display:flex}
+.pap-drop-hint strong{font:600 clamp(16px,2.6vw,24px)/1.3 Georgia,serif}
+.pap-drop-hint span{font:12px/1.5 Arial,system-ui,sans-serif;color:#ccc}
 </style>
 </head>
 <body>
@@ -227,11 +235,12 @@ main{max-width:1540px}
 <section class="panel pap-primary-viewer" aria-labelledby="pap-viewer-title">
  <div class="pap-panel-kicker">I · TESTIMONIVM</div>
  <h2 id="pap-viewer-title">Imagen original · visor paleográfico</h2>
- <div id="pap-stage" class="stage" aria-label="Visor de papiro u óstracon, acercar el puntero para lupa" tabindex="0">
+ <div id="pap-stage" class="stage pap-drop-zone" aria-label="Visor paleográfico: arrastrar y soltar una imagen aquí o pulsar Enter para elegir un archivo" tabindex="0">
 <canvas id="pap-image" width="720" height="420" aria-label="Imagen cargada del testimonio"></canvas>
+<div id="pap-drop-hint" class="pap-drop-hint" aria-hidden="true"><strong>Soltá la imagen para examinarla</strong><span>JPG · PNG · WebP · BMP · GIF, hasta 30 MB</span></div>
 </div>
 <canvas id="pap-loupe" width="240" height="240" aria-hidden="true"></canvas>
-<p class="caption">En computadora: mover el cursor para la lupa y usar zoom. En celular: tocar el punto de interés para actualizar el detalle. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
+<p class="caption">Arrastrá una fotografía desde tu computadora y soltala sobre la imagen, o usá «Seleccionar archivo». Enter sobre el visor también permite abrir el selector. Luego mové el cursor para usar la lupa; en el celular, tocá el punto de interés. La imagen procesada puede guardarse sin cambiar el archivo original.</p>
 <details class="pap-detail-drawer" id="pap-detail-drawer">
 <summary>Ver detalle ampliado de la lupa (opcional)</summary>
 <canvas id="pap-detail" width="480" height="360" aria-label="Detalle ampliado para estudio"></canvas>
