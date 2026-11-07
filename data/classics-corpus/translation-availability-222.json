@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 24,
-    "translatedWorksLocal": 20,
-    "worksWithoutHostedTranslation": 202,
+    "translatedWorksLocal": 21,
+    "worksWithoutHostedTranslation": 201,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 18,
+      "en": 19,
       "fr": 2
     },
     "originalTextIndexed": 24,
@@ -131,15 +131,30 @@
       "title": "Bellum Catilinae",
       "originalLanguage": "la",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
-        "la"
+        "la",
+        "en"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-completa",
-      "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
-      "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "translationSourceDescription": "Inglés: John Selby Watson (1899), texto local parcial: 59 de 61 capítulos (faltan 35 y 57 en el TEI fuente), licencia PerseusDL CC BY-SA 4.0. Castellano y francés aún pendientes.",
+      "translationRegisteredButNotHosted": false,
+      "indexed": true,
+      "localTranslationCompleteness": {
+        "en": {
+          "status": "partial",
+          "availableChapters": 59,
+          "expectedChapters": 61,
+          "missingLoci": [
+            "35",
+            "57"
+          ],
+          "attribution": "J. S. Watson (1899), PerseusDL TEI"
+        }
+      }
     },
     {
       "id": "sallust-iugurtha",
