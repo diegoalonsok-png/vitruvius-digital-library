@@ -1,5 +1,7 @@
 name: Perrault - espejar imagenes por pagina
 on:
+  schedule:
+    - cron: '37 4 * * 0'
   workflow_dispatch:
     inputs:
       year:
@@ -9,7 +11,7 @@ on:
         default: '1673'
       batch:
         description: Imagenes nuevas por edicion
-        default: '24'
+        default: '12'
         type: string
 permissions:
   contents: write
@@ -29,7 +31,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install Pillow==11.3.0
       - name: Extract optimized independent pages
-        run: python scripts/perrault_pages.py --year "${{ inputs.year || '1673' }}" --batch "${{ inputs.batch || '24' }}"
+        run: python scripts/perrault_pages.py --year "${{ inputs.year || '1673' }}" --batch "${{ inputs.batch || '12' }}"
       - name: Commit extracted pages and availability catalogs
         run: |
           git config user.name 'github-actions[bot]'
