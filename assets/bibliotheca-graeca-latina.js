@@ -605,28 +605,80 @@ if(tab==="perseus"&&w.perseus?.length){
   pane.append(box);
   const warning=document.createElement("p");warning.className="classic-ref";warning.textContent="Estos vínculos localizan materiales. No afirman que exista una transcripción íntegra o un códice concreto en el destino; cada documento deberá verificarse antes de presentarlo como edición incorporada.";pane.append(warning);
  }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
-  // Readers are derived from hosted, registered corpus files: no missing-language placeholders.
-  const versions=Object.entries(w.corpusFiles).filter(([lang,path])=>["la","grc","en","fr","es"].includes(lang)&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
+  // Direct, light text rendering: no nested iframe, PDF, OCR task or delayed load.
+  // Every version remains complete in its own document; never infer matching loci.
+  const versions=Object.entries(w.corpusFiles).filter(([lang,path])=>["la","grc","en","fr","es"].includes(lang)&&/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(path));
   const labels={grc:"Griego original",la:"Latín original",en:"English · traducción",fr:"Français · traduction",es:"Castellano · traducción"};
   pane.replaceChildren();
-  const h=document.createElement("h3");h.textContent="Textos incorporados · original y traducciones";pane.append(h);
-  if(!versions.length){const note=document.createElement("p");note.textContent="No hay versiones de lectura local acreditadas para mostrar.";pane.append(note);}
+  const h=document.createElement("h3");h.textContent="Original y traducciones · lectura rápida";pane.append(h);
+  if(!versions.length){const note=document.createElement("p");note.textContent="No hay transcripciones locales verificadas para mostrar.";pane.append(note);}
   else{
-    const note=document.createElement("p");note.className="classic-ref";note.textContent="Cada panel ofrece búsqueda y navegación independientes. La correspondencia editorial por loci requiere cotejo; no se afirma sincronización palabra por palabra.";pane.append(note);
-    if(w.translation?.chicago18Bibliography){const bib=document.createElement("p");bib.className="classic-ref";bib.textContent="Referencia de la traducción (Chicago 18): "+w.translation.chicago18Bibliography;pane.append(bib);}
-    const toolbar=document.createElement("div");toolbar.className="classic-compare-toolbar";pane.append(toolbar);
+    const note=document.createElement("p");note.className="classic-ref";note.textContent="Los textos se cargan por separado desde archivos ligeros. Cada columna conserva todos sus capítulos; compartir un número de capítulo no certifica una traducción exacta.";pane.append(note);
     const grid=document.createElement("div");grid.className="classic-compare-panes";pane.append(grid);
-    const panelCount=versions.length>1?2:1;
-    for(let i=0;i<panelCount;i++){
-      const label=document.createElement("label");label.textContent=i===0?"Original / primera versión ":"Traducción / segunda versión ";
-      const select=document.createElement("select");
-      versions.forEach(([lang],j)=>{const option=document.createElement("option");option.value=lang;option.textContent=labels[lang]||lang;select.append(option);});
-      const initial=i===0?(versions.some(([lang])=>lang==="grc")?"grc":versions.some(([lang])=>lang==="la")?"la":versions[0][0]):(versions.some(([lang])=>lang==="en")?"en":versions.some(([lang])=>lang==="es")?"es":versions[1][0]);
-      select.value=initial;label.append(select);toolbar.append(label);
-      const frame=document.createElement("iframe");frame.title=(i===0?"Texto original: ":"Traducción: ")+w.author+" · "+w.title;frame.loading="lazy";frame.style.minHeight="72vh";frame.style.background="#fbf8f0";grid.append(frame);
-      const open=document.createElement("a");open.textContent="Abrir este texto en pantalla completa ↗";open.target="_blank";open.rel="noopener noreferrer";label.append(open);
-      function update(){const lang=select.value;const url="classics-text-reader.html?work="+encodeURIComponent(w.id)+"&lang="+encodeURIComponent(lang);frame.src=url;open.href=url;}
-      select.addEventListener("change",update);update();
+    const versionCache=new Map();
+    async function getVersion(lang){
+      if(!versionCache.has(lang)){
+        const path=versions.find(v=>v[0]===lang)?.[1];
+        versionCache.set(lang,fetch(path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
+          if(j.workId!==w.id||j.language!==lang||!Array.isArray(j.passages)||!j.passages.length)throw Error("Archivo de texto no validado");
+          return j;
+        }).catch(err=>{versionCache.delete(lang);throw err}));
+      }
+      return versionCache.get(lang);
+    }
+    for(let i=0;i<Math.min(2,versions.length);i++){
+      const side=document.createElement("section");side.className="classic-fast-text-pane";
+      side.style.cssText="min-width:0;background:var(--white,#fffdf8);color:var(--ink,#203548);border:1px solid #b9a98e;padding:12px;display:flex;flex-direction:column;gap:9px";
+      const select=document.createElement("select");select.setAttribute("aria-label",i?"Idioma del texto derecho":"Idioma del texto izquierdo");
+      for(const [lang] of versions){const option=document.createElement("option");option.value=lang;option.textContent=labels[lang]||lang;select.append(option);}
+      const original=versions.find(v=>["grc","la"].includes(v[0]))?.[0]||versions[0][0];
+      const translated=versions.find(v=>["en","es","fr"].includes(v[0]))?.[0]||versions[Math.min(1,versions.length-1)][0];
+      select.value=i===0?original:translated;
+      select.style.cssText="width:100%;background:#fff;color:#203548;border:1px solid #928572;padding:10px;font:14px system-ui";
+      const row=document.createElement("div");row.style.cssText="display:flex;flex-wrap:wrap;gap:6px;align-items:center";
+      const prev=document.createElement("button");prev.type="button";prev.textContent="←";
+      const next=document.createElement("button");next.type="button";next.textContent="→";
+      const chapter=document.createElement("select");chapter.setAttribute("aria-label","Capítulo o locus");
+      chapter.style.cssText="flex:1;min-width:100px;padding:7px;background:#fff;color:#203548";
+      const search=document.createElement("input");search.type="search";search.placeholder="Buscar dentro de la versión";search.setAttribute("aria-label","Buscar en el texto");
+      search.style.cssText="width:100%;min-width:0;padding:9px;background:#fff;color:#203548;border:1px solid #928572";
+      const message=document.createElement("p");message.setAttribute("role","status");message.style.cssText="font:12px/1.4 system-ui;margin:0";
+      const text=document.createElement("div");text.style.cssText="overflow:auto;max-height:65vh;min-height:250px;font:19px/1.7 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;background:var(--white,#fffdf8);color:var(--ink,#203548)";
+      const source=document.createElement("p");source.style.cssText="font:12px/1.5 system-ui;margin:0;overflow-wrap:anywhere";
+      const open=document.createElement("a");open.textContent="Abrir lector completo";open.target="_blank";open.rel="noopener noreferrer";
+      row.append(prev,chapter,next);side.append(select,row,search,message,text,source,open);grid.append(side);
+      let passages=[],current=0,serial=0;
+      function draw(){
+        const p=passages[current];if(!p)return;
+        chapter.value=String(current);prev.disabled=current===0;next.disabled=current===passages.length-1;
+        text.textContent=p.text||"";text.lang=select.value==="grc"?"grc":select.value;
+        message.textContent="Capítulo / locus "+p.locus+" · "+(current+1)+" de "+passages.length;
+        text.scrollTop=0;
+      }
+      async function load(){
+        const ticket=++serial,lang=select.value;
+        message.textContent="Cargando texto "+(labels[lang]||lang)+"…";text.textContent="";search.value="";
+        try{
+          const d=await getVersion(lang);if(ticket!==serial)return;
+          passages=d.passages;current=0;chapter.replaceChildren();
+          passages.forEach((p,j)=>{const opt=document.createElement("option");opt.value=String(j);opt.textContent=p.locus||String(j+1);chapter.append(opt);});
+          source.textContent=(d.attribution||"Fuente editorial indicada en el corpus")+" · "+(d.alignment||"Sin alineación certificada");
+          open.href="classics-text-reader.html?work="+encodeURIComponent(w.id)+"&lang="+encodeURIComponent(lang);
+          draw();
+        }catch(err){if(ticket===serial){message.textContent="No se pudo cargar el texto: "+err.message;text.textContent="Consulta el enlace institucional de la ficha.";}}
+      }
+      select.addEventListener("change",load);
+      chapter.addEventListener("change",()=>{current=Number(chapter.value)||0;draw()});
+      prev.addEventListener("click",()=>{current=Math.max(0,current-1);draw()});
+      next.addEventListener("click",()=>{current=Math.min(passages.length-1,current+1);draw()});
+      search.addEventListener("keydown",e=>{
+        if(e.key!=="Enter")return;
+        const q=search.value.trim().normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase();if(!q)return;
+        const at=passages.findIndex(p=>String(p.text||"").normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase().includes(q));
+        if(at<0){message.textContent="Sin coincidencias en esta versión textual.";return}
+        current=at;draw();message.textContent+=" · primera coincidencia de «"+search.value.trim()+"»";
+      });
+      load();
     }
   }
 }else if(tab==="text"&&w.localHtml){pane.innerHTML="<h3>"+safe(t.source)+" · "+safe(w.localEdition?.original||"")+(w.localEdition?.translation?" / "+safe(w.localEdition.translation):"")+"</h3><p>"+safe(w.localEdition?.source||"")+"</p>";const frame=document.createElement("iframe");const term=new URLSearchParams(location.search).get("term");frame.src=w.localHtml+(term?(w.localHtml.includes("?")?"&":"?")+"q="+encodeURIComponent(term):"");frame.title="Lectura íntegra · "+w.author+" · "+w.title;frame.loading="lazy";frame.style.minHeight="72vh";frame.style.background="#fbf8f0";pane.append(frame);const p=document.createElement("p");p.className="classic-linkline";p.innerHTML=navLink(w.localHtml,"Abrir texto completo alojado en GitHub");pane.append(p);}else if(tab==="text"&&w.localReader?.verified){window.BibliothecaTextReader.mount(pane,w.defaultLanguage||"es");}else if(tab==="text"){pane.innerHTML="<h3>"+safe(t.source)+"</h3>"+(w.reading.url?'<p>'+safe(w.reading.status)+'</p><div class="classic-linkline">'+navLink(w.reading.url,t.visit)+'</div><p>'+safe(t.notHosted)+'</p>':'<p>'+safe(t.notKnown)+'</p><p>'+safe(t.notHosted)+'</p><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+'</div>');}
