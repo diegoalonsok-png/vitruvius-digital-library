@@ -1,0 +1,101 @@
+{
+  "schema": "vitruvia-toponymicon-v1",
+  "updated": "2026-11-07",
+  "method": "Repertorio inicial de topónimos con identidades históricas ancladas en Pleiades. Cada alias identifica un lugar editorialmente; las ocurrencias se verifican en las transcripciones locales. Las coordenadas modernas de referencia no representan límites urbanos antiguos. Los mapas académicos son reconstrucciones, no mapas originales de la Antigüedad.",
+  "places": [
+    {
+      "id": "athenae",
+      "label": "Atenas",
+      "nameAncient": "Ἀθῆναι",
+      "period": "Ciudad de Ática; polis griega clásica y centro urbano de larga duración",
+      "aliases": [
+        "Atenas",
+        "Athens",
+        "Athenae",
+        "Ἀθῆναι",
+        "Αθηναι",
+        "Ἀθήνη",
+        "Ἀθήνας",
+        "Ἀθηνῶν",
+        "Αθήνα",
+        "Athenai"
+      ],
+      "searchForms": [
+        "Ἀθῆναι",
+        "Ἀθήνη",
+        "Ἀθηνῶν",
+        "Ἀθήνας",
+        "Athenae",
+        "Athenis",
+        "Athenarum",
+        "Athens",
+        "Atenas"
+      ],
+      "pleiades": "579885",
+      "lat": 37.971661,
+      "long": 23.723974,
+      "source": "https://pleiades.stoa.org/places/579885",
+      "description": "Principal polis de Ática. Las formas griegas y latinas dependen de período, caso y edición. La localización es un punto representativo del registro histórico-geográfico."
+    },
+    {
+      "id": "roma",
+      "label": "Roma",
+      "nameAncient": "Roma",
+      "period": "Ciudad del Lacio; capital de la República y del Imperio romanos",
+      "aliases": [
+        "Roma",
+        "Rome",
+        "Ῥώμη",
+        "Ρωμη",
+        "Romae",
+        "Romam",
+        "Roman",
+        "Roma urbs"
+      ],
+      "searchForms": [
+        "Roma",
+        "Romae",
+        "Romam",
+        "Romae",
+        "Ῥώμη",
+        "Ῥώμης",
+        "Ῥώμῃ",
+        "Rome"
+      ],
+      "pleiades": "423025",
+      "lat": 41.891775,
+      "long": 12.486137,
+      "source": "https://pleiades.stoa.org/places/423025",
+      "description": "Ciudad del Lacio, estudiada en su continuidad topográfica e histórica. Diferenciar Roma (topónimo) de Romanus y otras formas derivadas."
+    },
+    {
+      "id": "corinthus",
+      "label": "Corinto",
+      "nameAncient": "Κόρινθος",
+      "period": "Polis del istmo de Corinto en Grecia",
+      "aliases": [
+        "Corinto",
+        "Corinth",
+        "Corinthus",
+        "Corinthos",
+        "Κόρινθος",
+        "Κορινθος"
+      ],
+      "searchForms": [
+        "Κόρινθος",
+        "Κορίνθου",
+        "Κόρινθον",
+        "Corinthus",
+        "Corinthi",
+        "Corinthum",
+        "Corinto",
+        "Corinth"
+      ],
+      "pleiades": "570182",
+      "lat": 37.904,
+      "long": 22.879,
+      "source": "https://pleiades.stoa.org/places/570182",
+      "description": "Centro griego antiguo próximo al istmo; no confundir ciudad, territorio y referencias a comunidades cristianas posteriores."
+    }
+  ]
+}
