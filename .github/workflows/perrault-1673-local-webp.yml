@@ -33,5 +33,7 @@ jobs:
           git add images/perrault/1673 data/perrault-local-1673.json
           if ! git diff --cached --quiet; then
             git commit -m "assets(perrault): publish verified lightweight 1673 WebP folios and thumbnails"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
