@@ -30,7 +30,7 @@ function update(){
   const tools=document.createElement("td");
   const bibliotheca=document.createElement("a");bibliotheca.href=a.href;bibliotheca.textContent="Bibliotheca";
   const vitruvia=document.createElement("a");vitruvia.href="vitruvia.html?q="+encodeURIComponent(w.author+" "+w.title)+"&mode=all";vitruvia.textContent="Vitruvia";
-  const lexicon=document.createElement("a");lexicon.href="vitruvia-lexicon.html?q="+encodeURIComponent(w.originalLanguage==="grc"?"λόγος":"locus")+"&mode=palabra";lexicon.textContent="Lexicon";
+  const lexicon=document.createElement("a");lexicon.href="vitruvia-lexicon.html";lexicon.textContent="Lexicon";
   tools.append(bibliotheca,document.createTextNode(" · "),vitruvia,document.createTextNode(" · "),lexicon);
   tr.append(tools);tbody.append(tr);
  }
