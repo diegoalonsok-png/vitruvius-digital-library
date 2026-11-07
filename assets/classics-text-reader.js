@@ -179,6 +179,25 @@ $("hit-prev")?.addEventListener("click",()=>focusHit(-1));$("hit-next")?.addEven
 $("clear").addEventListener("click",()=>{setQuery("");renderSearch();if(data)select(active)});
 $("print").addEventListener("click",()=>window.print());
 $("theme").addEventListener("click",()=>{const html=document.documentElement;html.dataset.theme=html.dataset.theme==="dark"?"light":"dark"});
+
+const COLOR_KEY="vitruvia.classic.colors."+work;
+const invertHex=hex=>"#"+[1,3,5].map(i=>(255-parseInt(hex.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");
+function colors(bg,fg){
+ const valid=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
+ if(!valid(bg)||!valid(fg))return;
+ $("reader-bg").value=bg;$("reader-fg").value=fg;
+ const pane=document.querySelector(".reader"),text=$("passages");
+ if(pane)pane.style.background=bg;
+ if(text){text.style.background=bg;text.style.color=fg;}
+ try{localStorage.setItem(COLOR_KEY,JSON.stringify({bg,fg}));}catch{}
+}
+try{
+ const saved=JSON.parse(localStorage.getItem(COLOR_KEY)||"null");
+ if(saved)colors(saved.bg,saved.fg);
+}catch{}
+for(const id of ["reader-bg","reader-fg"])$(id)?.addEventListener("input",()=>colors($("reader-bg").value,$("reader-fg").value));
+$("reader-invert")?.addEventListener("click",()=>colors(invertHex($("reader-bg").value),invertHex($("reader-fg").value)));
+
 $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListener("click",()=>select(active+1));
 (async()=>{
  try{
