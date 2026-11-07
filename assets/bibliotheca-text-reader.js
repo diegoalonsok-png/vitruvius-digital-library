@@ -8,6 +8,33 @@ const datasets={
 const cache={};
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const text=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+/* Render only exact matches, keeping original spelling and diacritics intact.
+ * Match boundaries are Unicode-aware; mark spans are HTML escaped.
+ */
+function marked(raw,query){
+ const value=String(raw??""),needle=text(query).trim();if(!needle)return safe(value);
+ let folded="",starts=[],ends=[];
+ for(let offset=0;offset<value.length;){
+  const cp=String.fromCodePoint(value.codePointAt(offset)),end=offset+cp.length;
+  const norm=text(cp);
+  for(let k=0;k<norm.length;k++){folded+=norm[k];starts.push(offset);ends.push(end)}
+  offset=end;
+ }
+ const parts=[];let from=0,cursor=0;
+ while(cursor<folded.length){
+  const at=folded.indexOf(needle,cursor);if(at<0)break;
+  const after=at+needle.length;
+  if((at===0||!/[\\p{L}\\p{N}]/u.test(folded[at-1]))&&
+     (after===folded.length||!/[\\p{L}\\p{N}]/u.test(folded[after]))){
+   const a=starts[at],b=ends[after-1];if(a>=from){
+    parts.push(safe(value.slice(from,a)),'<mark class="cr-hit">'+safe(value.slice(a,b))+'</mark>');
+    from=b;
+   }
+  }
+  cursor=after;
+ }
+ parts.push(safe(value.slice(from)));return parts.join("");
+}
 let seq=0;
 async function load(lang){if(!cache[lang])cache[lang]=fetch(datasets[lang].url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>j.passages.filter(p=>p.latin||p.translation)).catch(err=>{delete cache[lang];throw err});return cache[lang]}
 async function mount(target,lang="es"){
@@ -17,6 +44,15 @@ try{
  let list=await load(lang);
  if(id!==seq||!target.isConnected)return;
  target.innerHTML='<div class="classic-read-toolbar"><label>Edición<select id="cr-edition"><option value="es">V514 · Castellano</option><option value="fr">V554 · Français</option><option value="en">V297 · English</option></select></label><label>Libro<select id="cr-book"></select></label><label>Pasaje / locus<select id="cr-locus"></select></label><label>Buscar en el libro<input id="cr-search" type="search" placeholder="loci · symmetria · architectura" aria-label="Buscar en toda la edición, todos los libros y pasajes"></label></div><p id="cr-summary" role="status"></p><div id="cr-lines" class="classic-read-columns"></div><div class="classic-read-nav"><button id="cr-prev" type="button">← Locus anterior</button><button id="cr-next" type="button">Siguiente locus →</button></div><div id="cr-matches" class="classic-read-matches" aria-label="Pasajes encontrados ordenados por libro y locus" hidden></div><p class="classic-ref">Fuente: ediciones editoriales independientes de Diego A. Kurilo, V514 (latín-castellano) y V297 (latín-inglés). Los pasajes no son transcripciones diplomáticas de un manuscrito. Las divisiones de locus dependen de las ediciones utilizadas.</p>';
+ const darkStyle=document.createElement("style");darkStyle.textContent=`
+.classic-read-columns article{background:#000!important;color:#f3f3f3!important;border-color:#665e52!important}
+.classic-read-columns article h4{color:#c9b68f!important}
+.classic-read-columns article p{color:#f3f3f3!important}
+.classic-read-columns mark.cr-hit,.classic-read-columns article mark.cr-hit{background:#ffe34f!important;color:#111!important;border-radius:2px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.classic-read-columns{scroll-margin-top:32px}
+.classic-main.classic-user-colored .classic-read-columns article{background:var(--classic-user-view-bg)!important;color:var(--classic-user-view-ink)!important}
+.classic-main.classic-user-colored .classic-read-columns article p{color:var(--classic-user-view-ink)!important}
+`;target.prepend(darkStyle);
  const style=document.createElement("style");style.textContent=".classic-read-matches{margin:12px 0 18px;border:1px solid #a38f72;border-radius:5px;padding:12px;background:rgba(152,128,93,.08);color:inherit;font:13px/1.55 system-ui,sans-serif}.classic-read-matches[hidden]{display:none}.classic-read-matches p{margin:0 0 9px}.classic-read-match-list{display:flex;flex-wrap:wrap;gap:7px;max-height:240px;overflow-y:auto}.classic-read-match-button{padding:7px 10px;border:1px solid #a38f72;border-radius:4px;color:inherit;background:transparent;cursor:pointer;font:12px system-ui,sans-serif}.classic-read-match-button:hover,.classic-read-match-button:focus-visible{background:rgba(165,139,95,.25);outline:1px solid #a38f72}";target.prepend(style);
  const $=id=>target.querySelector("#"+id), e=$("cr-edition"),b=$("cr-book"),l=$("cr-locus"),q=$("cr-search"),out=$("cr-lines"),summary=$("cr-summary"),matches=$("cr-matches");
  e.value=lang; let activeBook=0,activeIdx=0,filtered=[];
@@ -73,7 +109,7 @@ try{
    searching?"Sin resultados para «"+q.value+"» en "+(activeBook===0?"los diez libros":activeBook===-1?"los prefacios I–X":"el Libro "+activeBook)+" de esta edición.":"No hay pasajes para la selección";
   if(activeBook===-1)summary.textContent+=prefNotice;
   if(!p){out.innerHTML='<p>No hay pasajes que coincidan con la búsqueda.</p>';return;}
-  out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+safe(p.latin||"")+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+safe(p.translation||"Traducción no disponible para este pasaje.")+'</p></article>';
+  out.innerHTML='<article><h4>LATINE · '+safe(p.locus)+'</h4><p lang="la">'+marked(p.latin||"",q.value)+'</p></article><article><h4>'+(e.value==="es"?"CASTELLANO":e.value==="fr"?"FRANÇAIS":"ENGLISH")+' · '+safe(p.locus)+'</h4><p lang="'+e.value+'">'+marked(p.translation||"Traducción no disponible para este pasaje.",q.value)+'</p></article>';
   q.setAttribute("aria-label","Buscar en "+(activeBook===0?"todos los libros":activeBook===-1?"todos los prefacios":"Libro "+activeBook)+" de la edición "+datasets[e.value].name);
  }
  populateBooks();drawPassages();
