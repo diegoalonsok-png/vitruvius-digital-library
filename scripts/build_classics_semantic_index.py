@@ -4,6 +4,7 @@
 Only original JSON passages and structured bilingual files are indexed here.
 HTML texts and OCR pages stay in the live search, with their status disclosed.
 This never changes editions, translations, or manuscript images.
+The automated workflow regenerates only the derived index, never source files.
 """
 from __future__ import annotations
 from collections import Counter, defaultdict
