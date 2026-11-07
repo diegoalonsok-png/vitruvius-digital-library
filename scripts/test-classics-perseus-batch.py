@@ -31,6 +31,17 @@ def main():
               (w["id"], w["language"]) not in indexed and
               re.fullmatch(r"(?:tlg|phi)\d+\.(?:tlg|phi|abo)\w+",
                            mapping[w["id"]][0].get("obra", ""))]
+    # TEI mixta: un poema citado no puede reemplazar 20 párrafos de prosa.
+    prose = "Cicero disputat de ratione dicendi atque de arte oratoria. " * 36
+    mixed = ('<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader>'
+             '<fileDesc><titleStmt><title>De oratore</title><author>Cicero</author>'
+             '</titleStmt></fileDesc></teiHeader><text xml:lang="lat"><body>'
+             '<div n="1"><p>' + prose + '<l n="1">versus insertus</l>'
+             '</p></div></body></text></TEI>')
+    title, author, language, passages = module.extract_tei_safely(mixed.encode(), "De oratore")
+    assert title == "De oratore" and author == "Cicero"
+    assert len(passages) >= 1
+    assert sum(len(p["original"]) for p in passages) > 1500, "Prose was silently discarded"
     candidates = [
        "data/phi0474/phi037/phi0474.phi037.perseus-lat1.xml",
        "data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
