@@ -49,7 +49,9 @@ footer{border-top:1px solid var(--line);margin-top:35px;padding-top:16px;font:12
 <button id="find" type="button">Buscar en esta edición</button>
 <button id="clear" type="button">Borrar</button>
 <button id="print" type="button">Imprimir</button>
-<button id="theme" type="button">Claro / oscuro</button>
+<button id="theme" type="button">Claro / oscuro</button><label for="reader-bg">Fondo</label><input id="reader-bg" type="color" value="#fffdfa" title="Elegir cualquier color de fondo" aria-label="Elegir color de fondo" style="flex:0 0 42px;min-width:42px;padding:3px">
+<label for="reader-fg">Texto</label><input id="reader-fg" type="color" value="#202b35" title="Elegir cualquier color de texto" aria-label="Elegir color de texto" style="flex:0 0 42px;min-width:42px;padding:3px">
+<button id="reader-invert" type="button" title="Invertir los colores de lectura">◐ Invertir colores</button>
 </div>
 <div class="reader-grid">
 <aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc"></ol></aside>
