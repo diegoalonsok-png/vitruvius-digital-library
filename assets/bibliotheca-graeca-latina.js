@@ -405,8 +405,17 @@ function bibliographicSummary(data,query){
 }
 
 function render(){const data=filters(),t=terms(),q=$("classic-query").value.trim();const total=works.length,local=works.filter(isLocal).length,withSource=works.filter(w=>hasSource(w)&&!isLocal(w)).length;
- $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=data[0].pdf?.url?"pdf":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(q&&data.length>1&&!showSelectedDetail)bibliographicSummary(data,q);else detail();}
-function choose(id){selected=id;showSelectedDetail=true;tab=works.find(x=>x.id===id)?.pdf?.url?"pdf":"text";render();
+ $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=hasStudyPair(data[0])?"study":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(q&&data.length>1&&!showSelectedDetail)bibliographicSummary(data,q);else detail();}
+/* The two study readers are editions of the text, not historical PDF facsimiles.
+   A codex and its material history remain accessible under Manuscrito / PDF. */
+function hasStudyPair(w){
+ const corpus=Object.keys(w.corpusFiles||{});
+ const versions=w.localVersions||[];
+ const original=corpus.some(l=>l==="grc"||l==="la")||versions.some(v=>v.language==="grc"||v.language==="la");
+ const translated=corpus.some(l=>["en","es","fr"].includes(l))||versions.some(v=>["en","es","fr"].includes(v.language));
+ return original&&translated;
+}
+function choose(id){selected=id;showSelectedDetail=true;tab=hasStudyPair(works.find(x=>x.id===id)||{})?"study":"text";render();
  const u=new URL(location.href);u.searchParams.set("work",id);u.searchParams.delete("view");u.searchParams.delete("ms");u.searchParams.delete("pdf");history.replaceState(null,"",u);}
 
 /* Shared, conservative codicological dossier for every catalogued work.
@@ -505,11 +514,12 @@ const isTriple=w.id==="cicero-officiis",hasWitness=!!(w.witnessRecords?.length||
  const compareTab=multiplePdf?[["comparepdf","Comparar dos PDF · original / traducción"]]:[];
  const tripleTab=hasThreePanels?[["parallel","Tres visores · facsímil / latín / traducción"]]:[];
  const transcriptionTab=(w.localVersions?.length||w.localHtml||w.localReader?.verified)?[["text",t.source+" · transcripción"]]:[];
- const labels=isTriple?[["text","Tres visores · Códice / latín / traducción"],...pdfTab,...compareTab,...manuscriptTab]:
-  !isLocal(w)?[["external",w.reading?.url?"Fuente externa y ficha":"Localizar ediciones"],...pdfTab,...manuscriptTab]:
-  hasPdf?[...pdfTab,...tripleTab,...compareTab,...transcriptionTab,...manuscriptTab]:
-  w.localHtml?[["text",t.source],...manuscriptTab]:
-  [["text",t.source],...manuscriptTab,["edition",t.edition]];
+ const studyTab=hasStudyPair(w)?[["study","01 · Estudio · Original / traducción"]]:[];
+ const labels=isTriple?[...studyTab,["text","Tres visores · Códice / latín / traducción"],...pdfTab,...compareTab,...manuscriptTab]:
+  !isLocal(w)?[...studyTab,["external",w.reading?.url?"Fuente externa y ficha":"Localizar ediciones"],...pdfTab,...manuscriptTab]:
+  hasPdf?[...studyTab,...pdfTab,...tripleTab,...compareTab,...transcriptionTab,...manuscriptTab]:
+  w.localHtml?[...studyTab,["text",t.source],...manuscriptTab]:
+  [...studyTab,["text",t.source],...manuscriptTab,["edition",t.edition]];
  if(w.historicEditions?.length&&!labels.some(x=>x[0]==="edition"))labels.push(["edition",t.edition]);
  if(w.perseus?.length)(isLocal(w)?labels.push.bind(labels):labels.unshift.bind(labels))(["perseus",w.perseus.some(x=>x.translation)?"Leer original y traducción":"Leer texto original"]);
  if(!labels.some(x=>x[0]===tab))tab=labels[0][0];
@@ -578,7 +588,34 @@ box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
   if(tab!=="manuscript")u.searchParams.delete("ms");if(tab!=="pdf")u.searchParams.delete("pdf");history.replaceState(null,"",u);detail();
  }));
 const pane=$("classic-panel");
-if(tab==="perseus"&&w.perseus?.length){
+if(tab==="study"&&hasStudyPair(w)){
+ pane.replaceChildren();
+ const intro=document.createElement("p");intro.className="classic-ref";
+ intro.textContent="Lectura de trabajo: a la izquierda el texto editado en su lengua original; a la derecha una traducción existente. Los códices antiguos y PDF históricos se consultan por separado. La sincronización por loci es orientativa hasta que se coteje.";
+ pane.append(intro);
+ if(w.corpusFiles&&Object.keys(w.corpusFiles).some(l=>["la","grc"].includes(l))&&Object.keys(w.corpusFiles).some(l=>["en","es","fr"].includes(l))){
+  const frame=document.createElement("iframe");frame.title="Lector de estudio · original y traducción · "+w.title;
+  frame.loading="eager";frame.style.cssText="display:block;width:100%;height:min(1100px,85vh);min-height:680px;border:1px solid #bba98c;background:#fff";
+  frame.src="classics-parallel-reader.html?work="+encodeURIComponent(w.id)+"&embed=1";
+  pane.append(frame);
+  const open=document.createElement("a");open.href=frame.src;open.target="_blank";open.rel="noopener noreferrer";
+  open.textContent="Abrir los dos visores en pantalla completa ↗";pane.append(open);
+ }else{
+  const originals=(w.localVersions||[]).filter(v=>["la","grc"].includes(v.language));
+  const translations=(w.localVersions||[]).filter(v=>["en","es","fr"].includes(v.language));
+  const grid=document.createElement("div");grid.className="classic-compare-panes";pane.append(grid);
+  for(const [index,options] of [[0,originals],[1,translations]]){
+   const col=document.createElement("section");col.className="classic-fast-text-pane";grid.append(col);
+   const title=document.createElement("h3");title.textContent=index?"Traducción":"Texto original";col.append(title);
+   const selector=document.createElement("select");selector.setAttribute("aria-label",index?"Idioma de traducción":"Edición original");
+   const frame=document.createElement("iframe");frame.title=(index?"Traducción":"Original")+" · "+w.title;frame.style.cssText="width:100%;min-height:700px;border:1px solid #bba98c";
+   for(const [i,v] of options.entries()){const o=document.createElement("option");o.value=String(i);o.textContent=v.label||v.language;selector.append(o)}
+   selector.addEventListener("change",()=>{frame.src=options[Number(selector.value)].path});
+   col.append(selector,frame);if(options.length)frame.src=options[0].path;
+  }
+  const note=document.createElement("p");note.className="classic-ref";note.textContent="Estas versiones HTML se consultan en paralelo de manera independiente; aún no tienen una concordancia automatizada verificada.";pane.append(note);
+ }
+}else if(tab==="perseus"&&w.perseus?.length){
   pane.replaceChildren();
   const h=document.createElement("h3");h.textContent=w.perseus.some(x=>x.translation)?"Texto original y traducción inglesa · Perseus / Open Greek and Latin":"Texto original · Perseus / Open Greek and Latin";pane.append(h);
   const note=document.createElement("p");note.className="classic-ref";note.textContent="Edición TEI de Perseus Digital Library u Open Greek and Latin (First1KGreek), CC BY-SA 4.0, leída en el momento desde su repositorio público; no se copia en este sitio. Cuando hay imágenes verificadas del códice más antiguo, el visor las muestra primero.";pane.append(note);
@@ -818,7 +855,7 @@ async function boot(){
  if(initialQuery)$("classic-query").value=initialQuery;
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
- tab=["pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&sw?.localHtml?"text":sw?.pdf?.url?"pdf":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}let pendingFilter=0;
+ tab=["study","pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return hasStudyPair(sw||{})?"study":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}let pendingFilter=0;
  const searchInput=$("classic-query");
  searchInput.addEventListener("input",()=>{
   // Typing does not need to reconstruct hundreds of book cards and PDF frames
