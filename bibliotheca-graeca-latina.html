@@ -375,6 +375,25 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
 .classic-transmission-history{font-size:13px;line-height:1.6}
 .classic-transmission a:focus-visible{outline:3px solid #c28c45;outline-offset:3px}
 @media(max-width:700px){.classic-transmission{padding:14px}.classic-transmission-fields{grid-template-columns:1fr;gap:3px}.classic-transmission-fields dd{margin:0 0 9px}.classic-earliest-witness{padding:14px}}
+
+/* Reading mode: use the whole Bibliotheca width, not the catalogue's right-hand column.
+   The catalogue remains accessible by the explicit show/hide control. */
+.classic-main:has(.classic-layout.classic-study-wide){max-width:none!important;width:100%!important;padding-left:clamp(12px,2vw,32px)!important;padding-right:clamp(12px,2vw,32px)!important}
+.classic-layout.classic-study-wide{display:block!important;width:100%!important;max-width:none!important}
+.classic-layout.classic-study-wide>aside{display:none!important}
+.classic-layout.classic-study-wide>.classic-detail{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;grid-column:1/-1!important;padding:clamp(12px,2vw,24px)}
+.classic-layout.classic-study-wide .classic-viewer,.classic-layout.classic-study-wide .classic-study-viewer{position:static!important;left:auto!important;right:auto!important;transform:none!important;max-width:none!important;width:100%!important;margin-left:0!important;margin-right:0!important}
+.classic-layout.classic-study-wide .classic-compare-panes{width:100%!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vw,22px)}
+.classic-layout.classic-study-wide .classic-inline-text,.classic-layout.classic-study-wide .classic-fast-text-pane{min-width:0!important;max-width:none!important}
+.classic-study-index-toggle{display:inline-flex;align-items:center;border:1px solid #a98d62;background:#243f53;color:#fff;padding:10px 14px;border-radius:4px;cursor:pointer;margin:8px 0 14px;font:600 13px system-ui,sans-serif}
+.classic-layout.classic-study-wide.classic-study-show-index{display:grid!important;grid-template-columns:minmax(220px,300px) minmax(0,1fr)!important;gap:16px}
+.classic-layout.classic-study-wide.classic-study-show-index>aside{display:block!important;min-width:0}
+.classic-layout.classic-study-wide.classic-study-show-index>.classic-detail{grid-column:2!important}
+@media(max-width:900px){
+ .classic-layout.classic-study-wide .classic-compare-panes{grid-template-columns:1fr}
+ .classic-layout.classic-study-wide.classic-study-show-index{display:block!important}
+ .classic-layout.classic-study-wide.classic-study-show-index>aside{display:block!important;margin-bottom:14px}
+}
 </style>
 <link rel="stylesheet" href="assets/bibliotheca-monochrome.css?v=20261106-unified-index-v2">
 <link rel="stylesheet" href="assets/vitruvia-paragraph-magnifier.css?v=20261104-paragraph-loupe-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
@@ -400,7 +419,7 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
 <section class="classic-detail" id="classic-detail"><p>Selecciona una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
 </main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261103-02"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-lens-annotations-v1"></script>
-<script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-viewport-v4"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261105-fulltext-audit-v2" defer></script><script src="assets/bibliotheca-fulltext.js?v=20261107-conceptus-v2" defer></script>
+<script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-reading-full-width-v1"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261105-fulltext-audit-v2" defer></script><script src="assets/bibliotheca-fulltext.js?v=20261107-conceptus-v2" defer></script>
 <script>
 /* Local reader preferences.  No cross-origin PDF or IIIF content is modified. */
 (()=>{'use strict';
