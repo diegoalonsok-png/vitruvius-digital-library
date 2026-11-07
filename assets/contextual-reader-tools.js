@@ -85,7 +85,7 @@ function wordAtPointer(event){
  }
  if(!node||node.nodeType!==Node.TEXT_NODE||!body.contains(node)||offset<0)return null;
  const value=node.textContent||"";
- const letter=char=>!!char&&/[\\p{L}\\p{M}0-9ʼ’'-]/u.test(char);
+ const letter=char=>!!char&&/[\p{L}\p{M}0-9ʼ’'-]/u.test(char);
  // Do not mark a neighboring word when clicking whitespace.
  if(!letter(value[offset])&&!letter(value[offset-1]))return null;
  let start=offset,end=offset;
