@@ -2,7 +2,7 @@
 "use strict";
 const $=id=>document.getElementById(id),tbody=$("rows"),counter=$("count"),metrics=$("metrics");
 const fold=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
-let works=[];
+let works=[],candidateSources=[];
 function metric(value,label){
  const div=document.createElement("div"),n=document.createElement("strong"),p=document.createElement("span");
  div.className="metric";n.textContent=String(value);p.textContent=label;div.append(n,p);return div;
@@ -36,10 +36,24 @@ function update(){
   const vitruvia=document.createElement("a");vitruvia.href="vitruvia.html?q="+encodeURIComponent(w.author+" "+w.title)+"&mode=all";vitruvia.textContent="Vitruvia";
   const lexicon=document.createElement("a");lexicon.href="vitruvia-lexicon.html";lexicon.textContent="Lexicon";
   tools.append(bibliotheca,document.createTextNode(" · "),vitruvia,document.createTextNode(" · "),lexicon);
-  tr.append(tools);tbody.append(tr);
+  tr.append(tools);
+  const candidateCell=document.createElement("td");
+  const related=candidateSources.filter(x=>x.workId===w.id);
+  for(const candidate of related){
+   const a=document.createElement("a");a.href=candidate.url;a.target="_blank";a.rel="noopener noreferrer";
+   a.textContent=({en:"Inglés",fr:"Francés",es:"Castellano"})[candidate.language]||candidate.language;
+   a.title=candidate.notes||"Edición externa por comprobar";
+   candidateCell.append(a,document.createTextNode(" · "+(candidate.status==="missing_loci_35_57"?"Faltan capítulos":"Fuente para incorporar")+" · "));
+  }
+  if(!related.length)candidateCell.textContent="Fuente pendiente de identificar";
+  tr.append(candidateCell);tbody.append(tr);
  }
 }
-fetch("data/classics-corpus/translation-availability-222.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+Promise.all([
+ fetch("data/classics-corpus/translation-availability-222.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}),
+ fetch("data/classics-corpus/translation-source-candidates.json").then(r=>r.ok?r.json():{entries:[]}).catch(()=>({entries:[]}))
+]).then(([data,sources])=>{
+ candidateSources=Array.isArray(sources.entries)?sources.entries:[];
  if(data.schema!=="vitruvius-classics-translation-availability-v1"||!Array.isArray(data.works))throw Error("Formato del inventario inválido");
  works=data.works;metrics.replaceChildren();
  const t=data.totals;
