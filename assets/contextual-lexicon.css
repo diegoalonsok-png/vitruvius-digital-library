@@ -14,3 +14,12 @@
 .ctx-edition{margin:16px 0;border:1px solid #a894736b;border-radius:10px;padding:15px}.ctx-edition h4{font:650 15px system-ui,sans-serif;margin:0 0 10px}
 .ctx-excerpt{border-top:1px solid #a894734d;padding:12px 0}.ctx-excerpt a{font:600 13px system-ui,sans-serif;color:inherit;text-decoration:underline}.ctx-excerpt p{margin:8px 0}.ctx-translation,.ctx-note{opacity:.8;font-size:14px}.ctx-lock{overflow:hidden}
 @media(max-width:650px){.ctx-intro{grid-template-columns:1fr}.ctx-heading{padding:14px 16px}.ctx-dialog{max-height:94vh}}
+
+/* Compact voluntary entry; no oversized callout under the search form. */
+.ctx-launch{display:inline-flex;align-items:center;margin:4px 0 5px}
+.ctx-launch .ctx-open{padding:4px 0;border:0;border-radius:0;background:transparent;color:inherit;text-decoration:underline;text-underline-offset:3px;font:500 12px/1.4 system-ui,sans-serif}
+.ctx-launch .ctx-open:hover{opacity:.8}
+.ctx-dialog .ctx-body{user-select:text;-webkit-user-select:text}
+.ctx-dialog .ctx-heading{z-index:5}
+.ctx-dialog .ctx-close{position:relative;z-index:6;min-width:44px;min-height:44px}
+.ctx-dialog .ctx-close:focus-visible{outline:2px solid currentColor;outline-offset:3px}
