@@ -293,7 +293,7 @@ async function run(push=true){
  let q=$("#lx-q").value.trim();
  // Canonical Greek headword for the common Latin-letter transliteration.
  // Preserve normal Latin searches when the user explicitly selected Latin.
- if(S.lang==="auto"&&/^logos$/i.test(q)&&["palabra","lema","etimologia"].includes(S.mode)){
+ if(["auto","grc"].includes(S.lang)&&/^logos$/i.test(q)&&["palabra","lema","etimologia"].includes(S.mode)){
   q="λόγος";$("#lx-q").value=q;S.lang="grc";$("#lx-lang").value="grc";
  }
  S.q=q;S.page=0;
