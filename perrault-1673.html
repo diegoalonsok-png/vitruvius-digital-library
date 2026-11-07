@@ -58,6 +58,18 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 .pr-folio-button:hover,.pr-folio-button:focus-visible{border-color:#b2b2b2;background:#3e3e40}
 .pr-folio-button.is-current{background:#e7e7e2;color:#101012;border-color:#e7e7e2;font-weight:700}
 @media(max-width:620px){.pr-folios{padding:11px}.pr-folio-grid{grid-template-columns:repeat(auto-fill,minmax(46px,1fr));max-height:300px}}
+
+.pr-visual-gallery{margin:18px 0 22px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:9px}
+.pr-visual-gallery[hidden]{display:none}
+.pr-visual-gallery h2{font:normal 23px/1.35 Georgia,serif;margin:0 0 7px}
+.pr-visual-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0}
+.pr-visual-controls button{background:var(--panel2);color:#eee;border:1px solid #67676a;border-radius:5px;padding:9px 14px;cursor:pointer}
+.pr-visual-controls button:disabled{opacity:.45;cursor:default}
+.pr-thumbnails{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.pr-thumb{min-width:0;padding:7px;border:1px solid #505054;border-radius:6px;background:#242427;color:#f0f0ee;cursor:pointer;text-align:center}
+.pr-thumb img{width:100%;height:145px;object-fit:contain;background:#343437;display:block;margin-bottom:6px}
+.pr-thumb.is-current{border:2px solid #f2dfab;background:#38332b}
+.pr-thumb span{font:13px Arial,sans-serif}
 </style>
 </head>
 <body>
@@ -84,11 +96,17 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 <p><strong>Imagen:</strong> <span id="pr-counter">— / —</span> · <strong>Etiqueta del ejemplar:</strong> <span id="pr-label">—</span></p>
 <p id="pr-status" role="status" aria-live="polite">Preparando índice IIIF…</p>
 <div id="pr-stage" tabindex="0" aria-label="Imagen del ejemplar impreso de Perrault"><img id="pr-image" alt="Página digitalizada del ejemplar histórico de Perrault" hidden></div>
+<section class="pr-visual-gallery" id="pr-visual-gallery" aria-labelledby="pr-visual-title" hidden>
+<h2 id="pr-visual-title">Galería de folios · seleccionar una imagen</h2>
+<p class="note">Miniaturas de 12 imágenes por tanda, sin precargar el libro completo. Hacé clic en una imagen para abrir el folio en el lector. Las miniaturas también se solicitan a e-rara.</p>
+<div class="pr-visual-controls"><button type="button" id="pr-gallery-prev">← 12 anteriores</button><strong id="pr-gallery-range" aria-live="polite">—</strong><button type="button" id="pr-gallery-next">12 siguientes →</button></div>
+<div class="pr-thumbnails" id="pr-thumbnails" role="group" aria-label="Miniaturas de folios digitales de Perrault"></div>
+</section>
 <section id="pr-folios" class="pr-folios" aria-labelledby="pr-folios-title" hidden>
 <h2 id="pr-folios-title">Perrault 1684 · catálogo completo de imágenes</h2>
 <p class="note" id="pr-folio-total">Preparando índice local de 1684…</p>
 <div id="pr-folio-grid" class="pr-folio-grid" role="group" aria-label="Elegir imagen digital de Perrault 1684"></div>
-<p class="note">Los números indican imágenes digitales, no una foliación impresa comprobada. Al seleccionar una, se solicita únicamente esa fotografía al servidor de e-rara. La edición de 1673 continúa disponible en su lector habitual.</p>
+<p class="note">Los números indican imágenes digitales, no una foliación impresa comprobada. Al seleccionar una, se solicita únicamente esa fotografía al servidor de e-rara. Ambas ediciones disponen de una galería visual por tandas.</p>
 </section>
 <p class="note">Los controles permiten recorrer todas las imágenes del ejemplar institucional en su orden IIIF. Las páginas se cargan de una en una para no descargar el volumen entero. Cuando el servidor permite acceder al índice IIIF, el navegador conserva una copia local del índice para acelerar las visitas siguientes; no guarda las imágenes. La opción «Buscar etiqueta» solo busca las etiquetas documentales del manifiesto; no equivale a una búsqueda textual por OCR.</p>
 <div class="sources">
@@ -98,5 +116,5 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 </div>
 <footer>Fuente: <span id="pr-shelfmark">ETH-Bibliothek Zürich</span>. Digitalización: e-rara / ETH-Bibliothek Zürich. Public Domain Mark conforme a su ficha institucional; se mantiene el DOI, la signatura y la atribución. El lector no aloja imágenes del volumen en GitHub.</footer>
 </main>
-<script type="module" src="assets/perrault-reader.mjs?v=20261107-folio1684-v3"></script>
+<script type="module" src="assets/perrault-reader.mjs?v=20261107-gallery-v4"></script>
 </body></html>
