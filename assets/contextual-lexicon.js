@@ -16,9 +16,9 @@ const normalized=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLower
 const langTitle={es:"Castellano · V514",fr:"Francés · V554",en:"Inglés · V297"};
 const termRe=/^[\p{L}\p{M}ʼ’'-]{2,70}$/u;
 const ui=document.createElement("section");ui.className="ctx-launch";
-const launch=document.createElement("button");launch.type="button";launch.textContent="Consultar palabra · ficha académica";launch.className="ctx-open";
+const launch=document.createElement("button");launch.type="button";launch.textContent="Abrir ficha de palabra";launch.className="ctx-open";
 const info=document.createElement("span");info.textContent="Seleccione una palabra en la página o escriba un término y abra su ficha.";
-ui.append(launch,info);form.insertAdjacentElement("afterend",ui);
+ui.append(launch);form.insertAdjacentElement("afterend",ui);
 const layer=document.createElement("div");layer.id="contextual-lexicon";layer.className="ctx-layer";layer.hidden=true;
 layer.innerHTML='<div class="ctx-shade" data-close></div><section class="ctx-dialog" role="dialog" aria-modal="true" aria-labelledby="ctx-heading"><header class="ctx-heading"><div><p class="ctx-eyebrow">VITRUVIUS · DOSSIER FILOLÓGICO</p><h2 id="ctx-heading">Ficha de palabra</h2></div><button type="button" class="ctx-close" aria-label="Cerrar visor" data-close>×</button></header><div id="ctx-body" class="ctx-body"></div></section>';
 document.body.append(layer);
@@ -35,6 +35,7 @@ function selectedWord(){
 }
 function close(){serial++;layer.hidden=true;document.body.classList.remove("ctx-lock");lastFocus?.focus()}
 layer.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",close));
+layer.addEventListener("click",e=>{if(e.target===layer)close()});
 document.addEventListener("keydown",e=>{if(layer.hidden)return;if(e.key==="Escape")close()});
 function getConcepts(){
  if(!conceptPromise)conceptPromise=fetch(SCHEMA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
@@ -93,7 +94,7 @@ async function show(term){
  term=String(term||"").trim().slice(0,70);
  if(!termRe.test(term)){search.focus();return}
  const id=++serial;lastFocus=document.activeElement;
- layer.hidden=false;document.body.classList.add("ctx-lock");title.textContent=term;
+ layer.hidden=false;title.textContent=term;
  body.replaceChildren(paragraph("Consultando repertorios y pasajes documentados…"));
  layer.querySelector(".ctx-close").focus();
  try{
@@ -182,5 +183,5 @@ document.addEventListener("click",e=>{
  const word=content.slice(start,end).replace(/^[-'ʼ’]+|[-'ʼ’]+$/g,"");
  if(termRe.test(word))show(word);
 });
-const example=el("button","Ejemplo: domus","ctx-example");example.type="button";example.addEventListener("click",()=>show("domus"));ui.append(example);
+
 })();
