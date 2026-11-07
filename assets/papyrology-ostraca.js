@@ -97,11 +97,13 @@ async function openImage(f){
  try{
   await new Promise((ok,fail)=>{img.onload=ok;img.onerror=()=>fail(Error("No se pudo decodificar la imagen."));img.src=url});
   if(!img.naturalWidth||!img.naturalHeight||img.naturalWidth*img.naturalHeight>35000000)throw Error("Imagen demasiado grande: máximo 35 megapíxeles.");
-  const shrink=Math.min(1,3600/Math.max(img.naturalWidth,img.naturalHeight));
+  const shrink=Math.min(1,2400/Math.max(img.naturalWidth,img.naturalHeight));
   original.width=Math.max(1,Math.round(img.naturalWidth*shrink));
   original.height=Math.max(1,Math.round(img.naturalHeight*shrink));
   base.clearRect(0,0,original.width,original.height);base.drawImage(img,0,0,original.width,original.height);
-  available=true;reset();$("pap-ocr").disabled=false;$("pap-ocr-detail").disabled=false;
+  available=true;reset();
+  zoom=Math.max(.25,Math.min(1,Math.round((stage.clientWidth-22)/original.width*100)/100));show();
+  $("pap-ocr").disabled=false;$("pap-ocr-detail").disabled=false;
   status.textContent="Imagen abierta localmente: "+f.name+" · "+img.naturalWidth+" × "+img.naturalHeight+" píxeles. Usa las lupas o solicita OCR experimental.";
  }catch(e){status.textContent=e.message||"Imagen no válida."}finally{URL.revokeObjectURL(url)}
 }
