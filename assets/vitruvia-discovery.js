@@ -12,6 +12,27 @@
    topics:{es:["Historia de la gastronomía","Utensilio de cocina"],en:["Cookware and bakeware","Cooking"],fr:["Histoire de la cuisine","Ustensile de cuisine"]}}
  ];
  const objectWords=/\b(aparato|dispositivo|utensilio|herramienta|recipiente|maquina|electrodomestico|instrumento|appliance|device|utensil|tool|machine|cookware|appareil|ustensile|outil)\b/;
+ // Identity-safe image ranking: name overlap is not proof of the depicted person.
+ // Historical figures prioritize historical artworks; coins/photos of homonyms do not.
+ const historicImageTerms=/\b(bust|busto|buste|busts|sculpture|escultura|statue|statua|estatua|herm|herma|portrait|retrato|ritratto|painting|pintura|fresco|engraving|grabado|mosaic|mosaico|woodcut|manuscript|manuscrito|codex|folio|book|libro)\b/;
+ const excludedLeadTerms=/\b(coin|coins|moneda|monedas|denarius|denario|sestertius|sesterce|medal|medalla|stamp|sello|signature|firma|logo|map|mapa|banknote|billete|ai generated|midjourney|stable diffusion|dall e|deepfake)\b/;
+ const modernPhotoTerms=/\b(photo|photograph|fotografia|foto|selfie|concert|concierto|singer|cantante|musician|musico|actress|actor|performance|performing|festival|interview|television|tv)\b/;
+ function historicalVisualGuard(page,topic,metadata=""){
+  if(topic.kind!=="person"||!topic.ancient&&!topic.historical)return true;
+  const title=fold(page.title||page.name||""),description=fold(metadata);
+  if(excludedLeadTerms.test(title))return false;
+  if(modernPhotoTerms.test(title)&&!historicImageTerms.test(title))return false;
+  if(!historicImageTerms.test(title))return false;
+  // A title must identify the subject by a meaningful full name, not only
+  // a surname shared with a modern person; authorized category must be
+  // independently confirmed by the provider.
+  const subject=fold(topic.authorityName||topic.subject||"");
+  const variants=[subject,...(topic.identityNames||[])].map(fold).filter(v=>v.length>=5);
+  if(!variants.some(v=>title.includes(v)))return false;
+  // Reject a photo caption masquerading as historical iconography.
+  if(/\b(portrait of a singer|singer portrait|photo of|photograph of)\b/.test(description))return false;
+  return true;
+ }
  const peopleWords=/\b(filosofo|filosofa|matematico|matematica|escritor|escritora|emperador|pintor|pintora|philosopher|mathematician|writer|emperor|painter|historian|politician|actor|actress|philosophe|ecrivain|empereur|peintre)\b/;
  function plan(query,identity={}){
   const qRaw=fold(query);
@@ -50,7 +71,10 @@
   }
   const visualStyle=colorRequested||genericColor?"color":brutalism?"prefer-color":"any";
   return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,family:family?.id||null,
-   contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0};
+   contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0,
+   historical:kind==="person"&&((typeof identity.birthYear==="number"&&identity.birthYear<1850)||/\b(ancient|antiguo|antigua|greek philosopher|filosofo griego|roman philosopher|roman statesman|siglo|bce|a c)\b/.test(description)),
+   authorityName:identity.originalCanonical||identity.commonsSearchName||identity.canonical||"",
+   identityNames:unique([identity.originalCanonical,identity.commonsSearchName,identity.canonical].filter(Boolean))};
  }
  const groups={
   sculpture:{es:"Bustos y esculturas",en:"Busts and sculptures",fr:"Bustes et sculptures"},
@@ -116,6 +140,7 @@
    const complete=words.length>1&&near(name);
    if(inName||inDescription||complete){matched=true;score=Math.max(score,(inName?120:0)+(complete?70:0)+(inDescription?25:0))}
   }
+  if(!historicalVisualGuard(page,topic,description))return {accepted:false,score:-9999,group:"context"};
   // Only entity images and subject-specific collections may bypass a title match.
   if(page.fromEntityImage){matched=true;score+=160}
   const institution=plain(meta.Institution?.value||meta.Credit?.value||"");
@@ -210,5 +235,5 @@
   }
   flush();return blocks;
  }
- window.VitruviaDiscovery={plan,imageRank,sortImages,previewImages,groupOrder,groups,parseExtract,plain};
+ window.VitruviaDiscovery={plan,imageRank,sortImages,previewImages,groupOrder,groups,parseExtract,plain,historicalVisualGuard};
 })();
