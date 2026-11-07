@@ -28,7 +28,7 @@
  // de nombre. Una imagen ilustrativa no es una identidad documentada.
  const historicalBiographyQuery=q=>{
   const t=fold(q);
-  return /\b(san martin|martin de porres|julio cesar|julius caesar|jose de san martin)\b/.test(t)||
+  return !!historicalEntityId||/\b(san martin|martin de porres|julio cesar|julius caesar|jose de san martin)\b/.test(t)||
    /\b(libertador|procer|politico|militar|emperador|emperatriz|santo|santa|philosopher|filosofo|general romano|politician|revolutionary)\b/.test(t);
  };
 
@@ -124,7 +124,10 @@
  function onFeatured(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query)return;
-  if(d.row?.entityHistorical&&d.row?.wikidataId)historicalEntityId=d.row.wikidataId;
+  if(d.row?.entityHistorical&&d.row?.wikidataId){
+   historicalEntityId=d.row.wikidataId;
+   visual.hidden=true;photo.removeAttribute('src');rank=0;ready=false;
+  }
   if(historicalBiographyQuery(query))return;
   if(d.row?.type==='wikipedia')leadImage(d.row,query);
   const item=fromRow(d.row);
