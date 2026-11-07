@@ -17,7 +17,7 @@ function safeSave(key,value){try{localStorage.setItem(key,JSON.stringify(value))
 function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSearchTerms}){
  if(!root||!column||typeof getLocus!=="function")return {render(){}};
  const prefKey="vitruvia.study.appearance.v1."+work+"."+side;
- const defaults={background:"#f9f6ec",foreground:"#202b33",font:"classic",size:20,mark:"#ffe27a"};
+ const defaults={background:"#000000",foreground:"#f3f3f3",font:"classic",size:20,mark:"#ffe27a"};
  const candidate=safeRead(prefKey,{});
  const pref={...defaults};
  for(const field of ["background","foreground","mark"])if(safeColor(candidate[field]))pref[field]=candidate[field];
@@ -155,11 +155,17 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSea
   const start=first.toString().length,end=start+range.toString().length;
   const source=String(getSourceText()||"");
   if(start>=0&&end>start&&end<=source.length&&source.slice(start,end)===range.toString())return {start,end,quote:source.slice(start,end),locus:getLocus(),language:getLanguage()};
+  // DOM selection may cross annotation/mark nodes. Re-locate exact text without
+  // altering the source; only accept a unique occurrence to prevent wrong highlights.
+  const quote=range.toString(),at=source.indexOf(quote);
+  if(quote&&at>=0&&source.indexOf(quote,at+quote.length)<0)
+   return {start:at,end:at+quote.length,quote,locus:getLocus(),language:getLanguage()};
   return null;
  }
  const capture=()=>{const candidate=selectionOffsets();if(candidate)selected=candidate};
  root.addEventListener("mouseup",capture);
  root.addEventListener("keyup",capture);
+ root.addEventListener("pointerup",capture);
  // The browser can collapse a selection on toolbar click; capture before focus changes.
  bar.addEventListener("pointerdown",capture,{capture:true});
  function records(){
