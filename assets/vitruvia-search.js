@@ -755,6 +755,25 @@ function queryTokens(value){return [...new Set(words(value).filter(w=>w.length>=
  * Exact/surname queries receive the canonical humanist subject first.
  * Other homonyms remain discoverable below the primary result.
  */
+/* Onomasticon identities are the academic default for exact historical names.
+ * This works for every indexed person, not just a small hand-written list.
+ */
+function onomasticonSubjectRows(query){
+ const person=identifyHistoricalPerson(query);
+ if(!person||!person.name)return [];
+ const excerpt=person.summary||person.description||"Figura documentada en el Onomasticon Vitruvianum.";
+ const loci=(person.loci||[]).slice(0,8);
+ const link=loci.length?"bibliotheca-graeca-latina.html?work=vitruvius":"data/onomasticon-vitruvianum.json";
+ return [{
+  type:"section",title:person.name,author:"Onomasticon Vitruvianum · "+(person.period||"fuente académica"),
+  excerpt:excerpt+(loci.length?" · Loci de referencia: "+loci.join(", "):""),
+  meta:"PERSONA HISTÓRICA IDENTIFICADA · fuentes y loci documentados",
+  rating:16000,link,source:"Vitruvius Digital Library · Onomasticon",
+  entityKind:"person",entityHistorical:true,entityCanonical:person.name,
+  aliases:[person.name,...(person.aliases||[]),...(person.latin_forms||[])],
+  curatedAcademic:true,links:loci.length?[{label:"Consultar loci del tratado",url:link}]:[]
+ }];
+}
 function classicalSubjectRows(query){
  const q=norm(topicQuery(query));
  const subjects=[
@@ -1068,7 +1087,7 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
- let rows=classicalSubjectRows(q);
+ let rows=[...onomasticonSubjectRows(q),...classicalSubjectRows(q)];
  if(rows.length)display(rows,q,T().searching);
  if(internal){
   rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
