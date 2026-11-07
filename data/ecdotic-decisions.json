@@ -1,0 +1,63 @@
+{
+  "schema": "vitruvius-ecdotic-decisions-v1",
+  "updated": "2026-11-07",
+  "title": "Registro reproducible de decisiones ecdóticas · De architectura",
+  "scope": "V514 y V554 como recensiones provisionales; V297 como edición de lectura y estudio",
+  "methodology": {
+    "rule": "Nunca inferir una lectura autóptica de un PDF, OCR, alineación automática, referencia bibliográfica o de la mera presencia de locus en el índice.",
+    "locationStates": [
+      "explicit_locus",
+      "candidate_locus",
+      "unlocated"
+    ],
+    "evidenceTypes": [
+      "autoptic",
+      "reported",
+      "editorial_emendation",
+      "translation_interpretation",
+      "unverified"
+    ],
+    "reviewStates": [
+      "proposed",
+      "under_review",
+      "verified_with_source",
+      "rejected",
+      "superseded"
+    ],
+    "sourceRequirement": "Toda decisión verificable documenta edición, locus, lectura original y adoptada, signatura institucional o referencia bibliográfica, página/folio y URL fuente, fecha de registro, responsable y justificación.",
+    "uncertainty": "Los datos no verificados se publican como candidatos y no se convierten en lecturas certificadas."
+  },
+  "baseline": {
+    "source": "status-textus.html",
+    "snapshotDate": "2026-11-02",
+    "extractedNotes": 811,
+    "explicitLocus": 41,
+    "candidateLocus": 519,
+    "unlocated": 251,
+    "warning": "Las 41 notas de locus explícito no equivalen a 41 decisiones autópticas verificadas. Este balance es una instantánea publicada y debe cotejarse con el índice del aparato regenerado."
+  },
+  "schemaExample": {
+    "id": "DEC-III.1.2-V514-001",
+    "edition": "V514",
+    "locus": "3.1.2",
+    "recordStatus": "proposed",
+    "locationState": "candidate_locus",
+    "evidenceType": "unverified",
+    "baseReading": null,
+    "adoptedReading": null,
+    "witnesses": [],
+    "primarySourceUri": null,
+    "institution": null,
+    "shelfmark": null,
+    "folio": null,
+    "secondaryReference": null,
+    "noteIds": [],
+    "responsibleEditor": null,
+    "recordedOn": null,
+    "reviewedOn": null,
+    "justification": null,
+    "revisionHistory": []
+  },
+  "decisions": [],
+  "editorialNotice": "Registro inicial de formato y metodología: no se incorporaron decisiones ficticias ni se certificaron variantes a partir de los recuentos del índice."
+}
