@@ -44,9 +44,9 @@ async function search(q,{lang="es",limit=8,locus=null}={}){
  const phrase=fold(q).trim(),pref={es:"recensio-es",fr:"recensio-fr",en:"theory-en"}[lang]||"recensio-es";
  const scored=[];
  for(const e of d.entries){
-  let hit=0;for(const t of ts)if(e._hay.includes(t))hit++;
+  let hit=0;const words=new Set(e._hay.match(/[\p{L}\p{N}]+/gu)||[]);for(const t of ts)if(words.has(t))hit++;
   if(hit<ts.length&&!(ts.length>2&&hit>=ts.length-1))continue;
-  let s=hit*10+(e._hay.includes(phrase)?25:0)+(e.edition===pref?6:0)+(e.source==="bloque"?5:0)+(e.locusMention?3:0);
+  let s=hit*10+(ts.length&&ts.every(t=>words.has(t))?25:0)+(e.edition===pref?6:0)+(e.source==="bloque"?5:0)+(e.locusMention?3:0);
   scored.push({e,s})
  }
  return scored.sort((a,b)=>b.s-a.s).slice(0,limit).map(x=>Object.assign({},x.e,{relation:locus?null:"lexical"}))
