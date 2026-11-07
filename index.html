@@ -353,8 +353,12 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <link rel="stylesheet" href="assets/contextual-lexicon.css?v=20261107-v1">
 <link rel="stylesheet" href="assets/contextual-reader-tools.css?v=20261107-v1">
-<link rel="stylesheet" href="assets/critical-note-bridge.css?v=20261107-v1">
-</head>
+
+<style>
+.apparatus-inline-link{margin:7px 0 10px!important;font:400 12px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif!important}
+.apparatus-inline-link a{display:inline;color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;border:0!important;border-radius:0!important;padding:0!important;background:transparent!important;box-shadow:none!important}
+.apparatus-inline-link a:hover,.apparatus-inline-link a:focus-visible{text-decoration-thickness:2px;outline-offset:3px}
+</style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="institution-bar"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Una biblioteca de acceso abierto</span></div></div>
@@ -500,6 +504,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         <div class="search-input-row"><label class="sr-only" for="query">Palabra o frase en latín, castellano, francés o inglés</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.6"/><path d="m15 15 6 6"/></svg><input id="query" name="query" type="search" placeholder="symmetria · architecti est scientia · III.1.2…" required maxlength="2000" autocomplete="off"><button class="button primary" type="submit" id="search-button">Buscar <span aria-hidden="true">→</span></button></div>
         <div class="search-options"><label>Buscar en<select id="scope"><option value="recensio-es">Diego Kurilo · V514 (2026) · Latín–Castellano</option><option value="principal">Tres ediciones de Diego Kurilo</option><option value="all" selected>Todos mis libros (3 ediciones)</option><option value="recensio-fr">Diego Kurilo · V554 (2026) · Latín–Francés</option><option value="theory-en">Diego Kurilo · V297 (2026) · Latín–Inglés</option><option value="krohn-1912">Vitruvio · Fritz Krohn (editor, 1912) · Latín</option></select></label><label>Coincidencia<select id="search-mode"><option value="words">Todas las palabras</option><option value="phrase">Frase exacta</option></select></label><span class="search-language-note">LATÍN · CASTELLANO · FRANÇAIS · ENGLISH</span></div>
       </form>
+      <p class="apparatus-inline-link"><a href="aparato-critico.html">Consultar aparato crítico y notas de V514, V554 y V297</a></p>
       <p class="search-examples" aria-label="Ejemplos de búsqueda" style="font-size:13px;line-height:1.8">Ejemplos clicables: <button type="button" data-example-query="III.1.2">III.1.2</button> · <button type="button" data-example-query="VIII.1">VIII.1</button> · <button type="button" data-example-query="symmetria">symmetria</button> · <button type="button" data-example-query="architecti est scientia">architecti est scientia</button>. <span>Para compartir un locus, utiliza el enlace permanente del resultado.</span></p><div class="search-destinations"><span>Ampliar la misma consulta:</span><a id="search-in-vitruvia" class="button outline vitruvia-query-link" href="vitruvia.html" target="_blank" rel="noopener">Buscar en Vitruvia ↗</a><button type="button" data-search-web="web">PDF + Google <span aria-hidden="true">↗</span></button><button type="button" data-search-web="scholar">PDF + Google Académico <span aria-hidden="true">↗</span></button><small>Internet se abre en otra pestaña.</small></div>
       <div class="examples"><span>Probar:</span><button type="button" data-query="symmetria" data-scope="all">symmetria · latín</button><button type="button" data-query="architectura" data-scope="all">architectura · latín</button><button type="button" data-query="machina" data-scope="all">machina · latín</button><button type="button" data-query="dispositio" data-scope="all">dispositio · latín</button></div>
       <p class="search-note">Consulta los diez libros por palabra, frase latina, capítulo o locus (por ejemplo, III.1.2 o VIII.1). El índice procede de los DOCX de Diego Kurilo: V514, V554 y V297. El latín y su traducción se muestran con la referencia del tratado; el estudio preliminar y las notas quedan fuera del recuento. La versión inglesa conserva algunas secciones agrupadas y lo indica en el lector.</p>
@@ -616,7 +621,7 @@ document.getElementById('print-home')?.addEventListener('click',()=>window.print
 <script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const c=document.createElement("div");const ex=document.querySelector(".examples");ex&&ex.before(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const q=document.getElementById("query");q.value=t;const sc=document.getElementById("scope");if(sc)sc.value="all";document.getElementById("search-form").requestSubmit()}});});</script><script src="assets/research-folder.js?v=20261106-share-v1" defer></script><script src="assets/vitruvia-understand.js?v=20261105-v6" defer></script><script src="assets/front-spelling.js?v=20261105-v1" defer></script>
 <script src="assets/vitruvian-world.js?v=20261105-v1" defer></script>
 <script defer src="assets/academic-entry.js?v=20261106-v1"></script>
-<script defer src="assets/critical-note-bridge.js?v=20261107-v1"></script>
+
 </body>
 </html>
 
