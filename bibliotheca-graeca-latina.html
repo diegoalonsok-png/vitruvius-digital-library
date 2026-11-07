@@ -394,6 +394,23 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
  .classic-layout.classic-study-wide.classic-study-show-index{display:block!important}
  .classic-layout.classic-study-wide.classic-study-show-index>aside{display:block!important;margin-bottom:14px}
 }
+
+/* Reader surfaces default to black, irrespective of the site's light/dark theme.
+   Individual personal customization on text content has priority via inline style. */
+.classic-main .classic-fast-text-pane,
+html[data-theme=dark] .classic-main .classic-fast-text-pane,
+.classic-main .classic-inline-text,
+.classic-main .classic-read-columns article,
+html[data-theme=dark] .classic-main .classic-read-columns article{
+ background:#000!important;color:#f3f3f3!important;border-color:#756d62!important;
+}
+.classic-main .classic-fast-text-pane :is(h3,p,small),
+html[data-theme=dark] .classic-main .classic-fast-text-pane :is(h3,p,small){color:inherit}
+.classic-main .classic-study-tools,
+.classic-main .classic-study-tools-help{background:#111;color:#f3f3f3}
+.classic-main .classic-fast-text-pane input[type=search]{background:#141414;color:#fff;border:1px solid #a38b61}
+.classic-main .classic-fast-text-pane .classic-study-query-hit{background:#ffe34f!important;color:#000!important}
+.classic-main .classic-fast-text-pane ::selection{background:#ffcf57;color:#111}
 </style>
 <link rel="stylesheet" href="assets/bibliotheca-monochrome.css?v=20261106-unified-index-v2">
 <link rel="stylesheet" href="assets/vitruvia-paragraph-magnifier.css?v=20261104-paragraph-loupe-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
@@ -418,8 +435,8 @@ html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;bo
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Selecciona una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261107-bilingual-highlight-v7"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-speech-search-highlights-v3"></script>
-<script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-linked-loci-highlights-v6"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261107-semantic-index-v5" defer></script><script src="assets/bibliotheca-fulltext.js?v=20261107-lexicon-shared-search-v6" defer></script>
+</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261107-bilingual-highlight-v7"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-stable-selection-black-v4"></script>
+<script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-linked-search-black-v7"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261107-semantic-index-v5" defer></script><script src="assets/bibliotheca-fulltext.js?v=20261107-lexicon-shared-search-v6" defer></script>
 <script>
 /* Local reader preferences.  No cross-origin PDF or IIIF content is modified. */
 (()=>{'use strict';
