@@ -85,6 +85,33 @@ def choose_edition(paths, language):
     return editions[0] if editions else None
 
 
+def extract_tei_safely(raw, fallback_title):
+    """Evitar perder prosa cuando una TEI contiene versos insertos como citas."""
+    root = ET.fromstring(raw)
+    ns = "{http://www.tei-c.org/ns/1.0}"
+    body = root.find(".//" + ns + "body")
+    if body is None:
+        raise ValueError("TEI sin body")
+    verses = body.findall(".//" + ns + "l")
+    paragraphs = body.findall(".//" + ns + "p")
+    size_verses = sum(len(" ".join(el.itertext())) for el in verses)
+    size_prose = sum(len(" ".join(el.itertext())) for el in paragraphs)
+    source_for_extraction = raw
+    # La cabecera puede contener versos citados dentro del discurso, pero el
+    # texto principal continúa siendo prosa. Renombrar etiquetas en memoria
+    # preserva las palabras dentro de cada <p>, sin tocar el XML archivado.
+    if size_prose > size_verses * 2 and paragraphs and verses:
+        for line in verses:
+            line.tag = ns + "seg"
+        source_for_extraction = ET.tostring(root, encoding="utf-8")
+    title, author, language, passages = tei_extract(source_for_extraction, fallback_title)
+    indexed_chars = sum(len(item.get("original", "")) for item in passages)
+    reference_chars = max(size_prose, size_verses)
+    if reference_chars > 0 and indexed_chars < reference_chars * 0.75:
+        raise ValueError("Extracción TEI incompleta: menos del 75% del texto principal")
+    return title, author, language, passages
+
+
 def recalc_coverage(registry):
     if not COVERAGE.exists():
         return
@@ -191,7 +218,7 @@ def run():
                         if node.tag.rsplit("}", 1)[-1] in ("licence", "license")]
             if not any("creativecommons.org/licenses/by-sa/4.0" in value for value in licenses):
                 raise ValueError("La TEI no declara licencia CC BY-SA 4.0 verificable")
-            title, author, found_language, extracted = tei_extract(raw, work["title"])
+            title, author, found_language, extracted = extract_tei_safely(raw, work["title"])
             if found_language and not found_language.lower().startswith(language[:2]):
                 raise ValueError("Lengua de TEI no corresponde a la lengua del original")
             passages, seen = [], set()
