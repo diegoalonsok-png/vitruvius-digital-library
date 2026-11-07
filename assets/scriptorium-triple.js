@@ -154,9 +154,12 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   let terms=[q],concept=null;
   if(mode.value==="semantic"){
    message.textContent="Consultando Conceptus…";
-   try{concept=await conceptTerms(q,"la");terms=concept?.terms||[]}
+   try{
+    const language=translated?(selectedEdition==="fr"?"fr":selectedEdition==="en"?"en":"es"):"la";
+    concept=await conceptTerms(q,language);terms=concept?.terms||[];
+   }
    catch(err){message.textContent="No se pudo consultar Conceptus: "+err.message;return}
-   if(!terms.length){message.textContent="Concepto no documentado en Conceptus o sin equivalente latino. No se inventan términos.";return}
+   if(!terms.length){message.textContent="Concepto no documentado en Conceptus o sin equivalente para la lengua seleccionada. No se inventan términos.";return}
   }
   if(!data||edition.value!==selectedEdition)return;
   const counts=data.pages.map(p=>terms.reduce((n,t)=>n+countMatches(content(p),t,mode.value==="lexical"),0));
