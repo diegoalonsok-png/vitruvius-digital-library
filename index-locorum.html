@@ -97,7 +97,7 @@ function render(rows,related){const view=$("results");view.replaceChildren();con
  overview.append(chips);view.append(overview);
  for(const group of groups.values()){const r=group[0],details=el("details","edition");details.dataset.work=r.workId;const summary=el("summary");const count=group.reduce((n,x)=>n+(x.hitsInPassage||1),0);summary.append(el("strong",null,r.author+" · "+r.title),el("span",null,(langs[r.language]||r.language)+" · "+group.length+" pasajes · "+count+" apariciones"));details.append(summary);const body=el("div","passage-list");for(const item of group)body.append(passage(item));details.append(body);view.append(details)}
 }
-async function run(){const q=$("query").value.trim(),token=++serial;if(fold(q).replace(/[^\p{L}]/gu,"").length<3){$("results").replaceChildren();$("status").textContent="Escribí al menos tres letras.";return}
+async function run(){const q=$("query").value.trim(),token=++serial;if(fold(q).replace(/[^\p{L}]/gu,"").length<3){$("results").replaceChildren();$("status").textContent="Escribe al menos tres letras.";return}
  const engine=window.ClassicsCorpusSearch;if(!engine?.searchPassages){$("status").textContent="El motor de búsqueda no pudo cargarse.";return}
  $("go").disabled=true;$("status").textContent="Consultando las transcripciones disponibles…";
  try{const {terms,related}=expansions(q);const rows=await engine.searchPassages(terms,{limit:600,maxPerEdition:200,workId:$("work").value,language:$("lang").value});if(token!==serial)return;render(rows,related);
@@ -108,7 +108,7 @@ async function init(){try{const [reg,c]=await Promise.all([fetch("data/classics-
  const works=new Map();for(const e of index)if(!works.has(e.workId))works.set(e.workId,(e.author||e.workId)+" · "+(e.title||e.workId));for(const [id,name] of [...works].sort((a,b)=>a[1].localeCompare(b[1]))){const op=el("option",null,name);op.value=id;$("work").append(op)}
  for(const lang of [...new Set(index.map(x=>x.language))].sort()){const op=el("option",null,langs[lang]||lang);op.value=lang;$("lang").append(op)}
  $("coverage").textContent=index.length+" ediciones textuales indexadas · "+works.size+" obras con búsqueda disponible";
- const q=new URLSearchParams(location.search).get("q");if(q){$("query").value=q;run()}else $("status").textContent="Escribí un término para consultar los textos.";
+ const q=new URLSearchParams(location.search).get("q");if(q){$("query").value=q;run()}else $("status").textContent="Escribe un término para consultar los textos.";
  }catch(err){$("status").textContent="No se pudo cargar el registro: "+err.message}}
 $("form").addEventListener("submit",e=>{e.preventDefault();clearTimeout(timer);run()});
 $("query").addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(run,500)});
