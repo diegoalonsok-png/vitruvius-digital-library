@@ -178,7 +178,7 @@ def run():
                     raise ValueError("Locus ausente o duplicado en la segmentación TEI")
                 seen.add(locus)
                 passages.append({"locus": locus, "text": value})
-            if len(passages) < 1 or sum(len(p["text"]) for p in passages) < 700:
+            if len(passages) < 10 or sum(len(p["text"]) for p in passages) < 3000:
                 raise ValueError("Transcripción demasiado corta o vacía")
             document = {
                 "workId": wid, "language": language,
