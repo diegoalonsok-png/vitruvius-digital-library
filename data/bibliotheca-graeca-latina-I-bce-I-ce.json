@@ -1644,7 +1644,10 @@
         "status": "PDF pendiente de seleccionar y validar; copiar a GitHub únicamente si el tamaño y los derechos lo permiten"
       },
       "translation": {
-        "status": "Traducciones española, inglesa y francesa pendientes de incorporar con traductor, edición y licencia comprobados."
+        "status": "Traducción inglesa de Lightfoot (1891) disponible e indexada. Las otras lenguas continúan pendientes de una edición reutilizable acreditada.",
+        "verifiedLanguages": [
+          "en"
+        ]
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1655,7 +1658,9 @@
       "publicStatus": "lectura-local-completa",
       "localReader": {
         "original": "data/classics-corpus/didache-grc.json",
-        "translations": [],
+        "translations": [
+          "data/classics-corpus/didache-en.json"
+        ],
         "verified": true
       },
       "aliases": [
@@ -1665,7 +1670,8 @@
         "Teaching of the Twelve Apostles"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/didache-grc.json"
+        "grc": "data/classics-corpus/didache-grc.json",
+        "en": "data/classics-corpus/didache-en.json"
       },
       "localVersions": [
         {
@@ -1673,6 +1679,12 @@
           "label": "Griego · 16 capítulos · Wikisource (edición de lectura)",
           "path": "classics-text-reader.html?work=didache&lang=grc",
           "kind": "edition"
+        },
+        {
+          "language": "en",
+          "label": "English · Joseph Barber Lightfoot (1891)",
+          "path": "classics-text-reader.html?work=didache&lang=en",
+          "kind": "historical-translation"
         }
       ],
       "bibliography": {
@@ -9375,7 +9387,10 @@
         "status": "No se ha incorporado un PDF verificable."
       },
       "translation": {
-        "status": "Pendientes las traducciones castellana, inglesa y francesa con edición y derechos comprobados; no hay alineación automática."
+        "status": "Traducción castellana de Casasús (1904–1905) disponible e indexada. Las otras lenguas continúan pendientes de una edición reutilizable acreditada.",
+        "verifiedLanguages": [
+          "es"
+        ]
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -9386,7 +9401,9 @@
       "publicStatus": "lectura-local-completa",
       "localReader": {
         "original": "data/classics-corpus/sulpicia-elegiae-la.json",
-        "translations": [],
+        "translations": [
+          "data/classics-corpus/sulpicia-elegiae-es.json"
+        ],
         "verified": true
       },
       "localVersions": [
@@ -9395,6 +9412,12 @@
           "label": "Latín · seis elegías (Corpus Tibullianum 3.13–18)",
           "path": "classics-text-reader.html?work=sulpicia-elegiae&lang=la",
           "kind": "edition"
+        },
+        {
+          "language": "es",
+          "label": "Castellano · Joaquín D. Casasús (1904–1905)",
+          "path": "classics-text-reader.html?work=sulpicia-elegiae&lang=es",
+          "kind": "historical-translation"
         }
       ],
       "bibliography": {
@@ -9412,7 +9435,8 @@
         "Corpus Tibullianum III 13-18"
       ],
       "corpusFiles": {
-        "la": "data/classics-corpus/sulpicia-elegiae-la.json"
+        "la": "data/classics-corpus/sulpicia-elegiae-la.json",
+        "es": "data/classics-corpus/sulpicia-elegiae-es.json"
       }
     }
   ],
