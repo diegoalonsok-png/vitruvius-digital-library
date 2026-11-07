@@ -1081,7 +1081,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
- if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexicon=S.lexicon||await (window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.json())).then(d=>d.entries||[]);
+ if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexiconPromise=S.lexiconPromise||((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.json())).then(d=>d.entries||[]).catch(e=>{S.lexiconPromise=null;throw e}));S.lexicon=S.lexicon||await S.lexiconPromise;if(searchSignal.aborted||id!==S.searchId)return;
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
