@@ -14,7 +14,7 @@ function safeRead(key,fallback){
  try{const value=JSON.parse(localStorage.getItem(key)||"null");return value&&typeof value==="object"?value:fallback;}catch{return fallback;}
 }
 function safeSave(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}}
-function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
+function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSearchTerms}){
  if(!root||!column||typeof getLocus!=="function")return {render(){}};
  const prefKey="vitruvia.study.appearance.v1."+work+"."+side;
  const defaults={background:"#f9f6ec",foreground:"#202b33",font:"classic",size:20,mark:"#ffe27a"};
@@ -167,13 +167,45 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
   const list=annotations[k];
   return Array.isArray(list)?list.filter(a=>Number.isInteger(a.start)&&Number.isInteger(a.end)&&a.end>a.start&&a.start>=0&&a.end<200000):[];
  }
+ // Search marks are transient and separate from personally saved annotations.
+ function paintSearchMatches(){
+  const wanted=typeof getSearchTerms==="function"?getSearchTerms():[];
+  const terms=[...new Set((Array.isArray(wanted)?wanted:[]).map(x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim()).filter(Boolean))];
+  root.querySelectorAll("mark.classic-study-query-hit").forEach(mark=>mark.replaceWith(document.createTextNode(mark.textContent)));
+  if(!terms.length)return;
+  const normal=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];while(walker.nextNode()){if(walker.currentNode.textContent?.trim())nodes.push(walker.currentNode)}
+  for(const node of nodes){
+   const original=node.textContent,folded=normal(original),hits=[];
+   for(const term of terms){
+    let cursor=0;
+    while(cursor<folded.length){
+     const index=folded.indexOf(term,cursor);if(index<0)break;
+     const end=index+term.length;
+     if((index===0||! /[\p{L}\p{N}]/u.test(folded[index-1]))&&(end===folded.length||! /[\p{L}\p{N}]/u.test(folded[end])))hits.push([index,end]);
+     cursor=end;
+    }
+   }
+   if(!hits.length)continue;
+   hits.sort((a,b)=>a[0]-b[0]||b[1]-a[1]);
+   const fragment=document.createDocumentFragment();let end=0;
+   for(const [a,b] of hits){if(a<end)continue;
+    fragment.append(document.createTextNode(original.slice(end,a)));
+    const mark=document.createElement("mark");mark.className="classic-study-query-hit";mark.textContent=original.slice(a,b);
+    mark.style.cssText="background:#ffdf4f!important;color:#111!important;border-radius:2px;padding:0 1px";
+    mark.title="Coincidencia textual o equivalencia léxica orientativa";fragment.append(mark);end=b;
+   }
+   fragment.append(document.createTextNode(original.slice(end)));node.replaceWith(fragment);
+  }
+ }
  function render(){
   stopSpeech();
   hideLens();
   const source=String(getSourceText()||"");
   root.replaceChildren();
   const valid=records().filter(a=>a.end<=source.length&&source.slice(a.start,a.end)===a.quote);
-  if(!valid.length){root.textContent=source;appearance();selected=null;return}
+  if(!valid.length){root.textContent=source;appearance();paintSearchMatches();selected=null;return}
   const boundaries=new Set([0,source.length]);
   valid.forEach(a=>{boundaries.add(a.start);boundaries.add(a.end)});
   const cuts=[...boundaries].sort((a,b)=>a-b);
@@ -189,7 +221,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
    if(covering.some(a=>a.kind==="underline")){span.style.textDecoration="underline";span.style.textUnderlineOffset="3px"}
    span.className="classic-study-annotation";fragment.append(span);
   }
-  root.append(fragment);appearance();selected=null;
+  root.append(fragment);appearance();paintSearchMatches();selected=null;
  }
  function annotate(kind){
   const pick=selectionOffsets()||selected;
