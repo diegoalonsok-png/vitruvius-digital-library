@@ -230,7 +230,7 @@ try{
  await check('Apuleius Spanish reader labels anthology scope without deleting text',async()=>{
   const p=await open('classics-text-reader.html?work=apuleius-metamorphoses&lang=es');
   try{
-   await p.waitForFunction(()=>document.querySelector('#method-note')?.textContent?.includes('antología'),{timeout:25000});
+   await p.waitForFunction(()=>document.querySelector('#method-note')?.textContent?.includes('antología'),null,{timeout:25000});
    const text=await p.locator('#method-note').innerText();
    assert.match(text,/t22.?t245|narración de Metamorfosis/,'Apuleius anthology must identify editorial core');
    assert.match(text,/conserva|conservan/i,'Unrelated source sections must not be suppressed');
@@ -285,13 +285,13 @@ try{
  await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
   const p=await open('auditoria-textos-clasicos.html');
   try{
-   await p.waitForFunction(()=>document.querySelectorAll('#audit-rows tr').length>=221,{timeout:20000});
-   assert.equal(await p.locator('#audit-rows tr').count(),221,'Incomplete catalogue audit');
+   await p.waitForFunction(()=>document.querySelectorAll('#audit-rows tr').length>=221,null,{timeout:20000});
+   assert.equal(await p.locator('#audit-rows tr').count(),JSON.parse(fs.readFileSync('data/bibliotheca-graeca-latina-I-bce-I-ce.json','utf8')).works.length,'Incomplete catalogue audit');
    await p.locator('#audit-filter').selectOption('indexed');
    const expectedIndex=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
    assert.equal(await p.locator('#audit-rows tr').count(),expectedIndex.works,'Indexed classical works should be distinct from language versions');
    await p.locator('#audit-filter').selectOption('local');
-   assert.equal(await p.locator('#audit-rows tr').count(),20,'Local catalogue entries should remain distinguishable from PDF-only holdings');
+   assert.equal(await p.locator('#audit-rows tr').count(),JSON.parse(fs.readFileSync('data/classics-corpus/coverage-audit.json','utf8')).counts.locallyReadableClaims,'Local catalogue entries should remain distinguishable from PDF-only holdings');
    await p.locator('#audit-query').fill('cicero-officiis');
    assert.equal(await p.locator('#audit-rows tr').count(),1,'Direct work identifiers must be searchable');
   }finally{await p.close()}
