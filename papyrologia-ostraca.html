@@ -121,6 +121,8 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <label>Sombras <input id="pap-ink-shadows" type="range" min="-100" max="100" value="0"><output id="pap-ink-shadows-value">0</output></label>
 <label>Exposición <input id="pap-ink-exposure" type="range" min="-100" max="100" value="0"><output id="pap-ink-exposure-value">0</output></label>
 <label>Nitidez <input id="pap-ink-sharpness" type="range" min="0" max="100" value="0"><output id="pap-ink-sharpness-value">0</output></label>
+<label>Grosor de trazo<select id="pap-ink-stroke"><option value="0">Original</option><option value="1">Engrosar 1 píxel</option><option value="2">Engrosar 2 píxeles</option><option value="-1">Afinar 1 píxel</option></select></label>
+<label>Unir trazos<select id="pap-ink-join"><option value="0">Sin unir</option><option value="1">Unir huecos pequeños</option><option value="2">Unir huecos medianos</option></select></label>
 <button type="button" id="pap-ink-papyrus">Papiro · tinta tenue</button>
 <button type="button" id="pap-ink-ostracon">Óstracon · incisión</button>
 <button type="button" id="pap-ink-clean">Restaurar extracción</button>
@@ -245,5 +247,5 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 </main>
 <script defer src="assets/papyrology-ostraca.js?v=20261106-semitic-ocr-v2"></script>
 <script defer src="assets/papyrology-glyphs.js?v=20261106-glyph-lab-v1"></script>
-<script defer src="assets/papyrology-ink.js?v=20261106-ink-extraction-v1"></script>
+<script defer src="assets/papyrology-ink.js?v=20261106-ink-extraction-v2"></script>
 </body></html>
