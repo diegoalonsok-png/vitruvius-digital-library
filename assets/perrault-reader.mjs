@@ -9,6 +9,12 @@ const COPIES={
   catalogue:"https://www.e-rara.ch/zut/content/titleinfo/16797458",
   doi:"https://doi.org/10.3931/e-rara-61952",
   shelfmark:"ETH-Bibliothek Zürich, Rar 264",
+  backups:[{
+   manifest:"https://www.e-rara.ch/i3f/v20/6152828/manifest",
+   catalogue:"https://www.e-rara.ch/oec/content/titleinfo/6152828",
+   doi:"https://doi.org/10.3931/e-rara-19627",
+   shelfmark:"Stiftung Bibliothek Werner Oechslin, A05c; app. 47"
+  }],
   description:"Les Dix Livres d'Architecture de Vitruve · première édition française commentée · Paris, Jean Baptiste Coignard, 1673"
  },
  "1684":{
@@ -96,13 +102,28 @@ async function load(){
  for(const y of Object.keys(COPIES)){
   const option=document.querySelector('option[value="'+y+'"]');if(option)option.textContent="Perrault "+y;
  }
- const timer=AbortSignal.timeout(22000);
  try{
-  const response=await fetch(copy.manifest,{headers:{Accept:"application/json,application/ld+json"},signal:timer});
-  if(!response.ok)throw new Error("HTTP "+response.status);
-  const body=await response.json();
-  const canvases=body.sequences?.[0]?.canvases||body.items||body.canvases||[];
-  if(!Array.isArray(canvases)||!canvases.length)throw new Error("Manifiesto sin imágenes");
+  // A second public-domain 1673 copy is available from Werner Oechslin.
+  // Probe both authenticated institutional manifests, but load only one
+  // image per page. Record which institution actually supplied the copy.
+  const sources=[copy,...(copy.backups||[])];
+  const {source,canvases}=await Promise.any(sources.map(async source=>{
+   const response=await fetch(source.manifest,{
+    headers:{Accept:"application/json,application/ld+json"},
+    signal:AbortSignal.timeout(16000)
+   });
+   if(!response.ok)throw new Error("IIIF "+response.status);
+   const body=await response.json();
+   const canvases=body.sequences?.[0]?.canvases||body.items||body.canvases||[];
+   if(!Array.isArray(canvases)||canvases.length<2)throw new Error("Manifiesto sin imágenes");
+   return {source,canvases};
+  }));
+  if(source!==copy){
+   $("pr-shelfmark").textContent=source.shelfmark;
+   $("pr-source").href=source.catalogue;
+   $("pr-doi").href=source.doi;
+   $("pr-manifest").href=source.manifest;
+  }
   pages=canvases.map((c,i)=>({...canvasImage(c),label:readLabel(c.label)||"Imagen "+(i+1)}));
   $("pr-number").max=String(pages.length);$("pr-number").disabled=false;
   $("pr-next").disabled=false;$("pr-find").disabled=false;
