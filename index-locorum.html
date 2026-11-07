@@ -78,6 +78,31 @@ main #locorum-word-dialog .links{margin-top:18px}
 main .locorum-language{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0;font:13px system-ui}
 main .locorum-language select{background:#252528;color:#eee;border:1px solid #5c5c60;border-radius:8px;padding:9px;min-width:120px}
 @media(max-width:700px){main .edition-group>summary{padding:12px}main .edition-passages{padding:8px}main .passage-unit{padding:11px}}
+</style><style id="locorum-strict-black">
+/* Prioridad sobre theme.css, estilos heredados y paneles agregados dinámicamente. */
+html body,html[data-theme] body,body main,body main .panel,body main .entry,
+body main #literal-panel,body main #academic-coverage,body main #summary,
+body main #results .entry,body main #literal-results .edition-group,
+body main #literal-results .passage-unit,body main .locorum-works-overview{
+ background:#0d0d0e!important;color:#f0f0f0!important;border-color:#404045!important;box-shadow:none!important;
+}
+body main .panel{background:#141416!important}
+body main .locorum-works-overview{padding:18px;border:1px solid #404045;border-radius:12px;margin-bottom:8px}
+body main .locorum-works-overview h2{margin:0 0 8px;font:500 23px Georgia,serif}
+body main .locorum-work-chips{display:flex;flex-wrap:wrap;gap:8px}
+body main .locorum-work-chips button,body main #export-tsv,body main #literal-search,
+body main .passage-actions button,body main .passage-actions a{background:#222225!important;color:#f3f3f3!important;border:1px solid #57575b!important;border-radius:9px!important}
+body main #literal-results{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
+body main #literal-results .edition-group{border-radius:11px!important;overflow:hidden}
+body main #literal-results .edition-group>summary{background:#141416!important;color:#fff!important}
+body main #literal-results .edition-group>summary:hover{background:#252527!important}
+body main #literal-results .passage-unit{background:var(--unit-bg,#0d0d0e)!important;color:var(--unit-ink,#eee)!important}
+body main .passage-quote{background:transparent!important;color:inherit!important}
+body main .passage-word{background:transparent!important;border:0!important;border-bottom:1px dotted #999!important;color:inherit!important;min-height:0!important;padding:0 1px!important}
+body main .passage-word mark{background:#ffe082!important;color:#111!important}
+body main .locorum-work-chips button:hover,body main .passage-word:hover{background:#343438!important}
+body main .locorum-language{margin:12px 0 16px}
+body main .locorum-language select{background:#222225;color:#fff;border:1px solid #555}
 </style></head><body>
 <main>
 <p><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="cobertura-traducciones-clasicas.html">Cobertura</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></p>
@@ -95,7 +120,7 @@ main .locorum-language select{background:#252528;color:#eee;border:1px solid #5c
 <div class="panel" id="summary" role="status" aria-live="polite">Consultando índice documentado…</div>
 <div id="results"></div><button id="more" type="button" hidden>Mostrar más referencias</button>
 <p class="intro muted">Metodología: concordancias de formas de Conceptus conservadas en el índice precomputado de la biblioteca. La presencia de una forma no valida por sí sola una acepción. Las ediciones HTML no cubiertas por este índice deben consultarse con búsqueda textual, y cualquier original/traducción sin alineación verificable permanece independiente. Los loci solo se atribuyen a versiones con registro de fuente.</p>
-</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-fusion-v4"></script><script defer src="assets/index-locorum.js?v=20261107-fusion-v5"></script>
+</main><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classics-corpus-search.js?v=20261107-works-black-v7"></script><script defer src="assets/index-locorum.js?v=20261107-works-black-v7"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script>
 <script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
