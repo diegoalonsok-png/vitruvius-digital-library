@@ -777,6 +777,93 @@ function onomasticonSubjectRows(query){
 /* Textos asociados: la tradición y la autoría comprobada son categorías distintas.
  * Vínculos a registros reales, no se finge un texto original del filósofo.
  */
+/* Scholarly author search across the complete 222-work catalogue.
+   Exact author identity -> all catalogued works; passages only from hosted editions.
+   Unverified OCR is explicitly labelled and is never treated as a critical text. */
+function matchingAuthorWorks(query){
+ const q=norm(topicQuery(query));
+ if(q.length<3)return[];
+ const people=S.people||[],named=people.find(p=>[p.name,...(p.aliases||[]),...(p.latin_forms||[])].some(a=>norm(a)===q));
+ const names=new Set([q]);
+ if(named)for(const n of [named.name,...(named.aliases||[]),...(named.latin_forms||[])])names.add(norm(n));
+ return S.works.filter(w=>{
+  const author=norm(w.author||"");
+  if(!author)return false;
+  return [...names].some(n=>n.length>=3&&(author===n||author.startsWith(n+" ")||author.endsWith(" "+n)||
+   (n.length>=5&&n.split(" ").length===1&&author.split(" ").includes(n))));
+ });
+}
+function authorCatalogueRows(query){
+ const works=matchingAuthorWorks(query);
+ return works.slice(0,80).map((w,i)=>({
+  type:"book",title:(w.author||"Autor")+" · "+w.title,author:"Bibliotheca Graeca et Latina · obra catalogada",
+  excerpt:w.localHtml||w.localVersions?.length||w.localReader?.verified?
+   "Edición alojada en la biblioteca; consultar fuente y estado editorial en la ficha.":
+   "Ficha bibliográfica del catálogo: consultar disponibilidad y estado de transcripción.",
+  meta:"CATÁLOGO ACADÉMICO · "+(w.publicStatus||"verificar disponibilidad"),rating:14500-i,
+  curatedAcademic:true,workId:w.id,link:libraryURL(w.id),
+  links:(w.localVersions||[]).filter(v=>/^(?:corpus|documents)\/[a-z0-9/_-]+\.html$/i.test(v.path||"")).slice(0,4).map(v=>({
+   label:v.label||("Lectura · "+v.language),url:v.path
+  })),
+  source:"Bibliotheca Graeca et Latina · catálogo editorial"
+ }));
+}
+let authorRegistryTask=null;
+async function hostedAuthorPassages(query){
+ const works=matchingAuthorWorks(query);
+ if(!works.length)return[];
+ const ids=new Set(works.map(w=>w.id));
+ if(!authorRegistryTask)authorRegistryTask=(window.VitruviaData?.json?
+  window.VitruviaData.json("data/classics-corpus/search-registry.json"):
+  fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
+  .catch(e=>{authorRegistryTask=null;throw e});
+ const reg=await authorRegistryTask;
+ const entries=(reg.entries||[]).filter(e=>ids.has(e.workId)&&
+   ["json-passages","html-text","structured-bilingual"].includes(e.format)).slice(0,12);
+ // Bounded concurrent fetches; no excerpt is displayed without reading its source.
+ const batches=[];
+ for(let i=0;i<entries.length;i+=4)batches.push(entries.slice(i,i+4));
+ const rows=[];
+ for(const batch of batches){
+  const found=await Promise.all(batch.map(async e=>{
+   try{
+    const validPath=/^(?:data\/(?:classics-corpus|structured)\/[a-z0-9_-]+\.json|corpus\/[a-z0-9-]+\.html)$/i.test(e.path||"");
+    if(!validPath)return null;
+    const res=await fetch(e.path);if(!res.ok)return null;
+    let passage=null,attribution=e.sourceDescription||"Ver ficha bibliográfica";
+    if(e.format==="html-text"){
+     const doc=new DOMParser().parseFromString(await res.text(),"text/html");
+     const main=doc.querySelector("main")||doc.body;
+     const p=main.querySelector("p");if(!p)return null;
+     const section=p.previousElementSibling?.id||main.querySelector("[id]")?.id||"";
+     passage={text:p.textContent||"",locus:section};
+     attribution=doc.querySelector(".provenance")?.textContent?.trim().slice(0,180)||attribution;
+    }else{
+     const d=await res.json(),raw=(d.passages||[]).find(p=>p&&
+      ((e.format==="structured-bilingual"?
+       (e.language==="la"?p.latin:p.translation):p.text)||"").trim());
+     if(!raw)return null;
+     passage={text:e.format==="structured-bilingual"?(e.language==="la"?raw.latin:raw.translation):raw.text,
+      locus:raw.locus||""};
+     attribution=d.attribution||d.source||d.edition||attribution;
+    }
+    if(!passage?.text?.trim())return null;
+    let href=e.reader||e.path;
+    if(e.format==="html-text"&&passage.locus)href+="#"+encodeURIComponent(passage.locus);
+    else if(e.format!=="html-text")href+=(href.includes("?")?"&":"?")+"locus="+encodeURIComponent(passage.locus);
+    return {type:"passage",title:e.author+" · "+e.title+" · "+(e.language||"").toUpperCase()+
+     (passage.locus?" · "+passage.locus:""),
+     author:"Pasaje de apertura · "+(e.language||"").toUpperCase(),
+     excerpt:passage.text.trim().replace(/\s+/g," ").slice(0,400)+"…",
+     meta:"PASAJE REAL DE EDICIÓN ALOJADA · REVISAR FUENTE Y ALINEACIÓN",
+     rating:14300,curatedAcademic:true,source:String(attribution).slice(0,180),link:href,
+     workId:e.workId,language:e.language};
+   }catch{return null}
+  }));
+  rows.push(...found.filter(Boolean));
+ }
+ return rows;
+}
 function associatedClassicalWorks(query){
  const person=identifyHistoricalPerson(query);
  // The hosted Walter Miller (1913) edition has all three books in Latin and English.
@@ -1138,7 +1225,7 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
- let rows=[...onomasticonSubjectRows(q),...associatedClassicalWorks(q),...classicalSubjectRows(q)];
+ let rows=[...onomasticonSubjectRows(q),...authorCatalogueRows(q),...associatedClassicalWorks(q),...classicalSubjectRows(q)];
  if(rows.length)display(rows,q,T().searching);
  if(internal){
   rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
@@ -1158,6 +1245,10 @@ async function search(){
  const official=authorityRows(q);
  if(official.length){rows.push(...official);display(rows,q,T().searching)}
  const pending=[];
+ if(internal&&matchingAuthorWorks(q).length)pending.push(
+  hostedAuthorPassages(q).then(rows=>({name:"Pasajes documentados de obras del autor",rows}))
+   .catch(e=>({name:"Lecturas de autor no disponibles",rows:[],warnings:[e.message]}))
+ );
  if(["all","external","ai"].includes(mode)&&window.VitruviaExternalTexts){
   pending.push(window.VitruviaExternalTexts.search(generalQuery).then(result=>({
    name:"Búsqueda dentro de textos · Wikisource "+result.sources.join("/"),
