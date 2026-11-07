@@ -17,6 +17,7 @@ try{
  let list=await load(lang);
  if(id!==seq||!target.isConnected)return;
  target.innerHTML='<div class="classic-read-toolbar"><label>Edición<select id="cr-edition"><option value="es">V514 · Castellano</option><option value="fr">V554 · Français</option><option value="en">V297 · English</option></select></label><label>Libro<select id="cr-book"></select></label><label>Pasaje / locus<select id="cr-locus"></select></label><label>Buscar en el libro<input id="cr-search" type="search" placeholder="loci · symmetria · architectura" aria-label="Buscar en toda la edición, todos los libros y pasajes"></label></div><p id="cr-summary" role="status"></p><div id="cr-matches" class="classic-read-matches" aria-label="Pasajes encontrados" hidden></div><div id="cr-lines" class="classic-read-columns"></div><div class="classic-read-nav"><button id="cr-prev" type="button">← Locus anterior</button><button id="cr-next" type="button">Siguiente locus →</button></div><p class="classic-ref">Fuente: ediciones editoriales independientes de Diego A. Kurilo, V514 (latín-castellano) y V297 (latín-inglés). Los pasajes no son transcripciones diplomáticas de un manuscrito. Las divisiones de locus dependen de las ediciones utilizadas.</p>';
+ const style=document.createElement("style");style.textContent=".classic-read-matches{margin:12px 0 18px;border:1px solid #a38f72;border-radius:5px;padding:12px;background:rgba(152,128,93,.08);color:inherit;font:13px/1.55 system-ui,sans-serif}.classic-read-matches[hidden]{display:none}.classic-read-matches p{margin:0 0 9px}.classic-read-match-list{display:flex;flex-wrap:wrap;gap:7px;max-height:240px;overflow-y:auto}.classic-read-match-button{padding:7px 10px;border:1px solid #a38f72;border-radius:4px;color:inherit;background:transparent;cursor:pointer;font:12px system-ui,sans-serif}.classic-read-match-button:hover,.classic-read-match-button:focus-visible{background:rgba(165,139,95,.25);outline:1px solid #a38f72}";target.prepend(style);
  const $=id=>target.querySelector("#"+id), e=$("cr-edition"),b=$("cr-book"),l=$("cr-locus"),q=$("cr-search"),out=$("cr-lines"),summary=$("cr-summary"),matches=$("cr-matches");
  e.value=lang; let activeBook=1,activeIdx=0,filtered=[];
  const bookList=()=>[...new Set(list.map(p=>Number(p.book)).filter(Number.isFinite))].sort((a,b)=>a-b);
@@ -31,7 +32,7 @@ try{
     if(at<0)return false;
     let pos=at;while(pos>=0){
      const before=folded[pos-1]||"",after=folded[pos+query.length]||"";
-     if(!/[\\p{L}\\p{N}]/u.test(before)&&!/[\\p{L}\\p{N}]/u.test(after))return true;
+     if(!/[\p{L}\p{N}]/u.test(before)&&!/[\p{L}\p{N}]/u.test(after))return true;
      pos=folded.indexOf(query,pos+1);
     }return false;
    });
