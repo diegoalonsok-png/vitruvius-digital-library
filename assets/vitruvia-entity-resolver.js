@@ -233,11 +233,11 @@ async function authorityCandidates(q,lang,intent=""){
   // edificios, calles y organizaciones bautizados con su nombre.
   const human=(entity.claims?.P31||[]).some(c=>c.rank!=="deprecated"&&c.mainsnak?.datavalue?.value?.id==="Q5");
   const birth=(entity.claims?.P569||[]).find(c=>c.rank!=="deprecated"&&c.mainsnak?.datavalue?.value?.time)?.mainsnak?.datavalue?.value?.time;
-  const bornYear=typeof birth==="string"?Number(birth.match(/^([+-]\\d+)/)?.[1]):null;
+  const bornYear=typeof birth==="string"?Number(birth.match(/^([+-]\d+)/)?.[1]):null;
   // Humanidades: ante dos personas homónimas, preferir la figura histórica
   // identificada y con amplia documentación. Un nombre moderno explícito sigue válido.
   const historicalHuman=human&&Number.isFinite(bornYear)&&bornYear<1900;
-  const historicallyAttested=human&&/\\b(ancient roman|roman general|roman statesman|roman dictator|military leader|independence|libertador|procer|historian|filosofo|philosopher|saint|santo|santa|religious figure|revolutionary|revolucionario|politico argentino|militar argentino)\\b/.test(norm(occupation));
+  const historicallyAttested=human&&/\b(ancient roman|roman general|roman statesman|roman dictator|military leader|independence|libertador|procer|historian|filosofo|philosopher|saint|santo|santa|religious figure|revolutionary|revolucionario|politico argentino|militar argentino)\b/.test(norm(occupation));
   const historicBonus=historicalHuman?660:historicallyAttested?280:0;
   const personBonus=human&&norm(q).split(" ").length>=2?430:0;
   const namedInstitution=!human&&/\b(liceo|escuela|colegio|instituto|universidad|hospital|school|college|university|church|iglesia|distrito|district|estacion|calle)\b/.test(norm([...labels.slice(0,3),occupation].join(" ")));
