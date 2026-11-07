@@ -1,0 +1,147 @@
+[
+  {
+    "id": "H_Harley_MS_2767",
+    "tipo": "codex_manuscrito",
+    "sigla": "H",
+    "signatura": "British Library, Harley MS 2767, ff.1r-162v",
+    "siglo": "800-824 - Primer cuarto s.IX",
+    "nota": "Copia conservada mas antigua conocida de De architectura - oldest known extant copy",
+    "biblioteca": "British Library",
+    "viewer": "http://access.bl.uk/item/viewer/ark:/81055/vdc_100056038850.0x000001",
+    "iiif_manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+    "pdf_directo": "Generar via IIIF (ver script)",
+    "idioma": "Latin",
+    "folios": "162 ff",
+    "licencia": "Public Domain ms / Images © British Library Board"
+  },
+  {
+    "id": "Cotton_Cleopatra_D_I",
+    "tipo": "codex_manuscrito",
+    "sigla": "Cotton",
+    "signatura": "British Library, Cotton MS Cleopatra D I, ff.3r-82r",
+    "siglo": "1st half 11th century",
+    "biblioteca": "British Library - Polonsky Pre-1200",
+    "viewer": "https://www.bl.uk/manuscripts/Viewer.aspx?ref=Cotton_MS_Cleopatra_D_I",
+    "idioma": "Latin"
+  },
+  {
+    "id": "Gudianus_69",
+    "tipo": "codex_manuscrito",
+    "sigla": "G",
+    "signatura": "Cod. Guelf. 69 Gud. lat.",
+    "siglo": "11th (ff1-85) + 12th Jh",
+    "contenido": "Vitruvius De architectura lib X + Theophilus Schedula",
+    "biblioteca": "Herzog August Bibliothek Wolfenbüttel",
+    "viewer": "https://diglib.hab.de/?db=mss&list=ms&id=69-gud-lat",
+    "soporte": "Pergament 115 Bl, 29x21 cm"
+  },
+  {
+    "id": "Gudianus_132",
+    "tipo": "codex_manuscrito",
+    "sigla": "E",
+    "signatura": "Cod. Guelf. 132 Gud. lat.",
+    "siglo": "9th century, Mitte",
+    "contenido": "Faventinus Liber artis architectonicae mit Einfuegungen aus Vitruvius",
+    "biblioteca": "Herzog August Bibliothek Wolfenbüttel",
+    "viewer": "https://diglib.hab.de/?db=mss&list=ms&id=132-gud-lat",
+    "soporte": "Pergament 108 Bl, 25.5x19.5 cm"
+  },
+  {
+    "id": "Oxford_Auct_F_5_7",
+    "tipo": "codex_manuscrito",
+    "signatura": "Bodleian Library MS. Auct. F. 5. 7",
+    "siglo": "ca.1390 Bologna - late 14th century",
+    "nota": "Anotaciones Petrarca/Boccaccio - Rino Modonutti 2024",
+    "biblioteca": "Bodleian Libraries, Oxford",
+    "viewer": "https://digital.bodleian.ox.ac.uk/objects/2b79c8ae-67d9-49a5-9a64-4f4973faf035/",
+    "iiif_manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2b79c8ae-67d9-49a5-9a64-4f4973faf035.json"
+  },
+  {
+    "id": "Cesariano_1521",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "Di Lucio Vitruvio Pollione de architectura libri dece traducti de latino in vulgare",
+    "autor_trad": "Cesare Cesariano",
+    "ano": 1521,
+    "lugar": "Como: Gotardus de Ponte",
+    "idioma": "Italiano vulgar",
+    "biblioteca_digital": "ETH-Bibliothek Zuerich / e-rara.ch",
+    "pdf_directo": "https://www.e-rara.ch/download/pdf/1810844.pdf",
+    "doi": "https://doi.org/10.3931/e-rara-152",
+    "notas": "Primera traduccion a lengua viva, comentada"
+  },
+  {
+    "id": "Barbaro_1556",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "I dieci libri dell'architettura di M. Vitruvio tradutti et commentati da Monsignor Barbaro",
+    "autor_trad": "Daniele Barbaro con dibujos de Palladio",
+    "ano": 1556,
+    "lugar": "Vinegia: Francesco Marcolini",
+    "idioma": "Italiano",
+    "pdf_directo": "https://www.e-rara.ch/download/pdf/1993175.pdf",
+    "doi": "https://doi.org/10.3931/e-rara-7582"
+  },
+  {
+    "id": "Martin_1547",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "Architecture Ou Art De Bien Bastir, De Marc Vitruve Pollion - Mis de Latin en Francoys, par Ian Martin",
+    "autor_trad": "Jean Martin, ill. Jean Goujon",
+    "ano": 1547,
+    "lugar": "Paris: Jacques Gazeau",
+    "idioma": "Frances medio",
+    "viewer_pdf": "https://gallica.bnf.fr/ark:/12148/btv1b21000411.r=architecture%2C%20ou%2C%20art%20de%20bien%20bastir",
+    "biblioteca": "BnF Gallica"
+  },
+  {
+    "id": "Urrea_1582",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "M. Vitruvio Pollion. De Architectura, dividido en diez libros, traducidos del Latin en Castellano por Miguel de Urrea",
+    "ano": 1582,
+    "lugar": "Alcala de Henares: Juan Gracian",
+    "idioma": "Castellano",
+    "nota": "Primera edicion espanola",
+    "biblioteca": "Biblioteca Nacional de Espana BNE - Biblioteca Digital Hispanica",
+    "viewer": "https://bdh.bne.es - bdh0000012956",
+    "licencia": "CC BY 4.0 BNE"
+  },
+  {
+    "id": "Perrault_1673",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "Les dix livres d'architecture de Vitruve, corrigez et traduits nouvellement en Français, avec des notes et des figures, par Claude Perrault",
+    "ano": 1673,
+    "lugar": "Paris: J.-B. Coignard",
+    "idioma": "Frances",
+    "pdf_directo": "https://www.e-rara.ch/download/pdf/16934061.pdf",
+    "doi": "https://doi.org/10.3931/e-rara-61952",
+    "biblioteca": "ETH-Bibliothek / Werner Oechslin"
+  },
+  {
+    "id": "Galiani_1758",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "L' architettura di M. Vitruvio Pollione colla traduzione italiana e comento del Marchese Berardo Galiani",
+    "ano": 1758,
+    "lugar": "Napoli: Stamperia Simoniana",
+    "idioma": "Latin-Italiano bilingue",
+    "pdf_directo": "https://www.e-rara.ch/download/pdf/14507727.pdf",
+    "doi": "https://doi.org/10.3931/e-rara-52711"
+  },
+  {
+    "id": "Ortiz_y_Sanz_1787",
+    "tipo": "traduccion_historica_impresa",
+    "titulo": "Los diez libros de architectura de M. Vitruvio Polion traducidos del latin, y comentados por Don Joseph Ortiz y Sanz",
+    "ano": 1787,
+    "lugar": "Madrid: Imprenta Real",
+    "idioma": "Castellano",
+    "biblioteca": "BNE BDH U/6280",
+    "folios": "[4], XXVIII, 277 p. + LVI lam.",
+    "nota": "56 laminas calcograficas"
+  },
+  {
+    "id": "Giocondo_1511",
+    "tipo": "edicion_latina_impresa",
+    "titulo": "M. Vitruvius per Iocundum solito castigatior factus cum figuris et tabula",
+    "ano": 1511,
+    "lugar": "Venecia: Joannes Tacuinus",
+    "idioma": "Latin",
+    "nota": "Primera edicion ilustrada - 136 xilografias"
+  }
+]
