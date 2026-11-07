@@ -504,7 +504,7 @@ function showTextualTransmission(work,container){
 
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=additionalInterfaceWords[language()]["no-results"];return}
 // Reserve the full page for the two working texts, not an empty catalogue column.
- const wide=tab==="study"&&hasStudyPair(w);
+ const wide=(tab==="study"&&hasStudyPair(w))||(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length>0);
  const layout=document.querySelector(".classic-layout");
  layout?.classList.toggle("classic-study-wide",wide);
  document.querySelector(".classic-main")?.classList.toggle("classic-study-main",wide);
@@ -606,32 +606,6 @@ if(tab==="study"&&hasStudyPair(w)){
  });
  pane.before(toggle);
  pane.classList.add("classic-study-viewer");
- // Break the study desk out of the catalogue column even when external
- // layout/theme CSS leaves an offset or max-width on ancestor containers.
- // Recompute on resize while this specific reader remains mounted.
- const fullWidth=()=>{
-  if(!pane.isConnected)return;
-  pane.style.removeProperty("left");
-  pane.style.removeProperty("width");
-  const leftEdge=pane.getBoundingClientRect().left;
-  pane.style.left=(12-leftEdge)+"px";
-  pane.style.width="calc(100vw - 24px)";
-  pane.style.maxWidth="none";
- };
- requestAnimationFrame(fullWidth);
- // A single global resize handler checks the currently mounted study desk.
- if(!window.__classicsStudyWideResize){
-  window.__classicsStudyWideResize=()=>{
-   const active=document.querySelector(".classic-study-viewer");
-   if(!active)return;
-   active.style.removeProperty("left");
-   active.style.removeProperty("width");
-   const offset=active.getBoundingClientRect().left;
-   active.style.left=(12-offset)+"px";
-   active.style.width="calc(100vw - 24px)";
-  };
-  window.addEventListener("resize",window.__classicsStudyWideResize,{passive:true});
- }
  pane.replaceChildren();
  const intro=document.createElement("p");intro.className="classic-ref";
  intro.textContent="Lectura académica directa: texto original griego o latino a la izquierda; traducción a la derecha. No se necesita PDF histórico. Los textos se conservan íntegros y cada vínculo por capítulo es orientativo.";
@@ -779,6 +753,17 @@ if(tab==="study"&&hasStudyPair(w)){
   pane.append(box);
   const warning=document.createElement("p");warning.className="classic-ref";warning.textContent="Estos vínculos localizan materiales. No afirman que exista una transcripción íntegra o un códice concreto en el destino; cada documento deberá verificarse antes de presentarlo como edición incorporada.";pane.append(warning);
  }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
+  const toggle=document.createElement("button");
+  toggle.type="button";toggle.className="classic-study-index-toggle";
+  toggle.textContent="☰ Mostrar listado de obras";
+  toggle.setAttribute("aria-expanded","false");
+  toggle.addEventListener("click",()=>{
+    const expanded=layout?.classList.toggle("classic-study-show-index");
+    toggle.setAttribute("aria-expanded",String(Boolean(expanded)));
+    toggle.textContent=expanded?"✕ Ocultar listado · ampliar visores":"☰ Mostrar listado de obras";
+  });
+  pane.before(toggle);
+  pane.classList.add("classic-study-viewer");
   if(window.BibliothecaInlineReader?.mount){
     window.BibliothecaInlineReader.mount(pane,w);
   }else{
