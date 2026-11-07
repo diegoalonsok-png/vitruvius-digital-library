@@ -19,6 +19,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 SOURCES = {"1673": "data/perrault-iiif-pages.json"}
 USER_AGENT = "VitruviusDigitalLibrary/1.0 (public-domain scholarly facsimile mirror)"
 Image.MAX_IMAGE_PIXELS = 100_000_000
+MAX_TOTAL_BYTES = 25 * 1024 * 1024  # Hard limit: 25 MiB for the entire local Perrault cache
+MAX_PAGE_BYTES = 150 * 1024  # Reject unusually large individual pages
+
 
 
 def download(url: str, attempts: int = 3) -> bytes:
@@ -42,7 +45,7 @@ def download(url: str, attempts: int = 3) -> bytes:
     raise RuntimeError(str(last))
 
 
-def convert(raw: bytes, output: pathlib.Path, max_width: int, quality: int):
+def convert(raw: bytes, output: pathlib.Path, max_width: int, quality: int) -> int:
     with Image.open(io.BytesIO(raw)) as original:
         image = ImageOps.exif_transpose(original).convert("RGB")
         if image.width > max_width:
@@ -51,16 +54,21 @@ def convert(raw: bytes, output: pathlib.Path, max_width: int, quality: int):
         output.parent.mkdir(parents=True, exist_ok=True)
         temp = output.with_suffix(".tmp")
         image.save(temp, format="WEBP", quality=quality, method=5)
+        size = temp.stat().st_size
+        if size > MAX_PAGE_BYTES:
+            temp.unlink(missing_ok=True)
+            raise ValueError(f"Optimized image is {size:,} bytes, exceeds {MAX_PAGE_BYTES:,} page limit")
         os.replace(temp, output)
+        return size
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", choices=["1673"], default="1673")
-    parser.add_argument("--batch", type=int, default=24,
+    parser.add_argument("--batch", type=int, default=12,
                         help="Maximum new pages per edition per run")
-    parser.add_argument("--width", type=int, default=1200)
-    parser.add_argument("--quality", type=int, default=66)
+    parser.add_argument("--width", type=int, default=1000)
+    parser.add_argument("--quality", type=int, default=58)
     args = parser.parse_args()
     if not (1 <= args.batch <= 370 and 500 <= args.width <= 2500
             and 45 <= args.quality <= 95):
@@ -72,11 +80,13 @@ def main():
         pages = source["pages"]
         dest = ROOT / "images" / "perrault" / year
         count = 0
+        total_size = sum(p.stat().st_size for p in dest.glob("page-*.webp")) if dest.exists() else 0
         for pos, page in enumerate(pages, 1):
             path = dest / f"page-{pos:04d}.webp"
             if path.exists() and path.stat().st_size > 2000:
                 continue
-            if count >= args.batch:
+            if count >= args.batch or total_size >= MAX_TOTAL_BYTES:
+                print(f"STOP {year}: batch or 25 MiB storage cap reached", flush=True)
                 break
             image_id = str(page["id"])
             if not image_id.isdigit():
@@ -89,12 +99,20 @@ def main():
                 last_error = None
                 for url in urls:
                     try:
-                        convert(download(url), path, args.width, args.quality)
+                        new_size = convert(download(url), path, args.width, args.quality)
+                        if total_size + new_size > MAX_TOTAL_BYTES:
+                            path.unlink(missing_ok=True)
+                            print(f"STOP {year}: next image exceeds 25 MiB storage cap", flush=True)
+                            count = args.batch
+                            break
+                        total_size += new_size
                         break
                     except (OSError, ValueError, RuntimeError, UnidentifiedImageError) as exc:
                         last_error = exc
                 else:
                     raise RuntimeError(str(last_error))
+                if not path.exists():
+                    break
                 count += 1
                 total_downloaded += 1
                 print(f"OK {year} digital image {pos}/{len(pages)} -> {path.relative_to(ROOT)}", flush=True)
@@ -116,7 +134,7 @@ def main():
         }
         index_path = ROOT / "data" / f"perrault-local-{year}.json"
         index_path.write_text(json.dumps(catalog, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-        print(f"{year}: {len(available)}/{len(pages)} mirrored; {count} new", flush=True)
+        print(f"{year}: {len(available)}/{len(pages)} mirrored; {count} new; {total_size / 1024 / 1024:.2f} MiB / 25 MiB maximum", flush=True)
     if total_errors and total_downloaded == 0:
         raise SystemExit("No image could be downloaded; see institutional access errors.")
 
