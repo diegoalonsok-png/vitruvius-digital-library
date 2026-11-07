@@ -4,7 +4,7 @@
   "snapshot": "2026-11-07",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 168,
+  "missingOriginals": 158,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -945,45 +945,49 @@
     {
       "id": "statius-thebais",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "pliny-younger-epistulae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "aulus-gellius-noctes",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "valerius-maximus-facta",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -1000,12 +1004,13 @@
     {
       "id": "silius-punica",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -1066,23 +1071,25 @@
     {
       "id": "lucian-dialogi-mortuorum",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "lucian-verae-historiae",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -1154,12 +1161,13 @@
     {
       "id": "marcus-aurelius-meditations",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -1189,23 +1197,25 @@
     {
       "id": "hesiod-theogony",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "hesiod-works-days",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {

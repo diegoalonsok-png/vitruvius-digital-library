@@ -1,59 +1,91 @@
 {
   "updated": "2026-11-07",
-  "newWorks": 6,
-  "newTextVersions": 6,
-  "indexedDistinctWorks": 54,
-  "registeredTextVersions": 80,
-  "missingOriginals": 168,
+  "newWorks": 10,
+  "newTextVersions": 10,
+  "indexedDistinctWorks": 64,
+  "registeredTextVersions": 90,
+  "missingOriginals": 158,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "tertullian",
+      "workId": "statius-thebais",
       "lang": "la",
-      "path": "data/classics-corpus/tertullian-la.json",
-      "passages": 506,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0275/stoa009/stoa0275.stoa009.perseus-lat2.xml",
-      "sha256": "af87b4023e542638edb49bb93a0345e75a15f6ee323ab4c804748dc445511fbf"
+      "path": "data/classics-corpus/statius-thebais-la.json",
+      "passages": 1220,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1020/phi001/phi1020.phi001.perseus-lat2.xml",
+      "sha256": "4e1606ad870fabd24c87f47179fb9bac538f43275ee76850c32ff493e063e679"
     },
     {
-      "workId": "tacitus-annales",
+      "workId": "pliny-younger-epistulae",
       "lang": "la",
-      "path": "data/classics-corpus/tacitus-annales-la.json",
-      "passages": 721,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi005/phi1351.phi005.perseus-lat2.xml",
-      "sha256": "667f319b16fb24f3ce529679917d865b68f1763db82e54b2675c6d7187fdc0af"
+      "path": "data/classics-corpus/pliny-younger-epistulae-la.json",
+      "passages": 1979,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1318/phi001/phi1318.phi001.perseus-lat1.xml",
+      "sha256": "530b450161dab7d8e2bd7a319ef9e03d5198e1a68f77a295b28a7de05577afa6"
     },
     {
-      "workId": "tacitus-historiae",
+      "workId": "aulus-gellius-noctes",
       "lang": "la",
-      "path": "data/classics-corpus/tacitus-historiae-la.json",
-      "passages": 389,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1351/phi004/phi1351.phi004.perseus-lat2.xml",
-      "sha256": "a1aaf3ad531abe5c517b6de03aefc1348cd142a0580fd17899f8313b609c6ceb"
+      "path": "data/classics-corpus/aulus-gellius-noctes-la.json",
+      "passages": 3973,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1254/phi001/phi1254.phi001.perseus-lat2.xml",
+      "sha256": "7d3e5ce510df0ca330018a5ca333a24e7cb74ad6ee7bd875c795c10d1869ce61"
     },
     {
-      "workId": "juvenal-saturae",
+      "workId": "valerius-maximus-facta",
       "lang": "la",
-      "path": "data/classics-corpus/juvenal-saturae-la.json",
-      "passages": 488,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1276/phi001/phi1276.phi001.perseus-lat2.xml",
-      "sha256": "7539945f88afb4c33b121c5a1b43e572d5a12a67b5ef68b297b6c8b43c287e3a"
+      "path": "data/classics-corpus/valerius-maximus-facta-la.json",
+      "passages": 1027,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1038/phi001/phi1038.phi001.perseus-lat1.xml",
+      "sha256": "41029b45593ca6e24b11b240051dcaeb33e03af2962201c01ad116f1f44f4b7d"
     },
     {
-      "workId": "tibullus-elegiae",
+      "workId": "silius-punica",
       "lang": "la",
-      "path": "data/classics-corpus/tibullus-elegiae-la.json",
-      "passages": 249,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0660/phi001/phi0660.phi001.perseus-lat2.xml",
-      "sha256": "bcbec6571f86a3f34717cb88f039432af72495d1270ac39fcf239a1ed39b97b8"
+      "path": "data/classics-corpus/silius-punica-la.json",
+      "passages": 1529,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1345/phi001/phi1345.phi001.perseus-lat2.xml",
+      "sha256": "18f4c9c01231a83cceaa57dd6fb7e61b652cb6d0ac779dd16f18139c52460fad"
     },
     {
-      "workId": "propertius-elegiae",
-      "lang": "la",
-      "path": "data/classics-corpus/propertius-elegiae-la.json",
-      "passages": 512,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0620/phi001/phi0620.phi001.perseus-lat3.xml",
-      "sha256": "36db8975bad90a5ce73967b54025dad7fa2811f1dd71ad7a14c44e7121188a10"
+      "workId": "lucian-dialogi-mortuorum",
+      "lang": "grc",
+      "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+      "passages": 113,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg066/tlg0062.tlg066.perseus-grc3.xml",
+      "sha256": "c142fd9922ff70df6d0aa9c2d73b90948056421352fe46ff77a21c42cac1a198"
+    },
+    {
+      "workId": "lucian-verae-historiae",
+      "lang": "grc",
+      "path": "data/classics-corpus/lucian-verae-historiae-grc.json",
+      "passages": 89,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg012/tlg0062.tlg012.perseus-grc2.xml",
+      "sha256": "fbb92decef4abacfaf46668c84b05ab4201e57ea8fed6c0787a8af7ba1429fcf"
+    },
+    {
+      "workId": "marcus-aurelius-meditations",
+      "lang": "grc",
+      "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+      "passages": 577,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0562/tlg001/tlg0562.tlg001.perseus-grc2.xml",
+      "sha256": "9752103971dbbfcee8d483e926c4e926f78e8304abdff795f88e9f8766c178dc"
+    },
+    {
+      "workId": "hesiod-theogony",
+      "lang": "grc",
+      "path": "data/classics-corpus/hesiod-theogony-grc.json",
+      "passages": 130,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg001/tlg0020.tlg001.perseus-grc2.xml",
+      "sha256": "550bd27b82d0c1720d7592b9b170c18b6c0bf88d54318ab71a28eb2b17728826"
+    },
+    {
+      "workId": "hesiod-works-days",
+      "lang": "grc",
+      "path": "data/classics-corpus/hesiod-works-days-grc.json",
+      "passages": 104,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg002/tlg0020.tlg002.perseus-grc2.xml",
+      "sha256": "db0b7dd2b2ab59017e3342cdf8e397e81a654bd7ace2840d24112ac97869690f"
     }
   ],
   "errors": [

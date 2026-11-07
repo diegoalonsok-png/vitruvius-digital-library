@@ -1,0 +1,55 @@
+{
+  "workId": "cicero-republica",
+  "language": "la",
+  "title": "De Re Publica",
+  "sourceType": "edited-latin-tei",
+  "editorialStatus": "Texto TEI de edición; NO facsímil, OCR manuscrito ni cotejo filológico propio",
+  "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi043/phi0474.phi043.perseus-lat2.xml",
+  "sourceUrn": "phi0474.phi043",
+  "sourceSha256": "c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad",
+  "attribution": "M. Tullius Cicero · De Re Publica · Perseus Digital Library (TEI; ver edición y atribuciones en la fuente)",
+  "license": "CC BY-SA 4.0 · PerseusDL; conservar atribución y condiciones de reutilización",
+  "alignment": "Unidades TEI del archivo seleccionado; los segmentos técnicos no son loci críticos; sin alineación automática con traducciones o folios.",
+  "passages": [
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.1.25.1-1",
+      "text": "Nonis Iunis soli luna obstitit et nox.",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.1.30.1-4",
+      "text": "Egregie cordatus homo, catus Aelius Sextus, Ástrologorum sígna in caelo quíd fit observátionis, Cúm capra aut nepa aút exoritur nómen aliquod béluarum! Quód est ante pedes némo spectat, caéli scrutanúr plagas.",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.1.64.1-5",
+      "text": "simul inter Sese sic memorant: o Romule, Romule die, Qualem te patriae custodem di genuerunt! O pater, o genitor, o sanguen dis oriundum! Tu produxisti nos intra luminis oras.",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.1fr.1.1-2",
+      "text": "nec doctíssimis. †Manium Persium haec légere nolo, Iúnium Congúm volo.",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.3.6.1-1",
+      "text": "Quem nemo ferro potuit superare nec auro,",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.5.1.1-1",
+      "text": "Moribus antiquis res stat Romana virisque,",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.fr.6.1-2",
+      "text": "Si fas endo plagas caelestum ascendere cuiquam est, Mi soli caeli maxima porta patet,",
+      "locusKind": "TEI verse numbers"
+    },
+    {
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.fr.7.1-2",
+      "text": "cui nemo civis neque hostis Quivit pro factis reddere par pretium.",
+      "locusKind": "TEI verse numbers"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "vitruvia-tei-index-repair-v1",
+  "repairs": [
+    {
+      "workId": "cicero-oratore",
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi037/phi0474.phi037.perseus-lat2.xml",
+      "sourceSha256": "057aef5553eeb2f3e30eb17b57466d5195599e5204158df1a54ea3a10322fc6a",
+      "previousPassages": 27,
+      "recoveredPassages": 862,
+      "previousCharacters": 3554,
+      "recoveredCharacters": 416919,
+      "backup": "data/classics-corpus/repairs/cicero-oratore-la-ANTES-REPARACION.json",
+      "status": "Index recuperado; requiere control filológico para certificar edición crítica"
+    },
+    {
+      "workId": "cicero-republica",
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi043/phi0474.phi043.perseus-lat2.xml",
+      "sourceSha256": "c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad",
+      "previousPassages": 8,
+      "recoveredPassages": 251,
+      "previousCharacters": 726,
+      "recoveredCharacters": 149892,
+      "backup": "data/classics-corpus/repairs/cicero-republica-la-ANTES-REPARACION.json",
+      "status": "Index recuperado; requiere control filológico para certificar edición crítica"
+    }
+  ],
+  "updated": "2026-11-07"
+}

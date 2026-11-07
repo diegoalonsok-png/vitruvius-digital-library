@@ -3477,6 +3477,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/statius-thebais-la.json"
       }
     },
     {
@@ -3507,6 +3510,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/pliny-younger-epistulae-la.json"
       }
     },
     {
@@ -3537,6 +3543,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/aulus-gellius-noctes-la.json"
       }
     },
     {
@@ -3567,6 +3576,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/valerius-maximus-facta-la.json"
       }
     },
     {
@@ -3631,6 +3643,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/silius-punica-la.json"
       }
     },
     {
@@ -3841,7 +3856,10 @@
         "Lucian",
         "Diálogos de los muertos",
         "Dialogues of the Dead"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+      }
     },
     {
       "id": "lucian-verae-historiae",
@@ -3877,7 +3895,10 @@
         "Lucian",
         "Historia verdadera",
         "True History"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/lucian-verae-historiae-grc.json"
+      }
     },
     {
       "id": "pausanias-periegesis",
@@ -4115,7 +4136,10 @@
         "Meditaciones",
         "Meditations",
         "Pensamientos"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/marcus-aurelius-meditations-grc.json"
+      }
     },
     {
       "id": "homer-iliad",
@@ -4273,7 +4297,10 @@
         "Hesiod",
         "Teogonía",
         "Theogony"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/hesiod-theogony-grc.json"
+      }
     },
     {
       "id": "hesiod-works-days",
@@ -4309,7 +4336,10 @@
         "Hesiod",
         "Los trabajos y los días",
         "Works and Days"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/hesiod-works-days-grc.json"
+      }
     },
     {
       "id": "aeschylus-oresteia",

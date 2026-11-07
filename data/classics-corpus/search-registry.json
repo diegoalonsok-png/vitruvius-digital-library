@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 80,
-  "works": 54,
+  "count": 90,
+  "works": 64,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -807,6 +807,106 @@
       "format": "json-passages",
       "path": "data/classics-corpus/propertius-elegiae-la.json",
       "reader": "classics-text-reader.html?work=propertius-elegiae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "statius-thebais",
+      "author": "Estacio",
+      "title": "Thebais",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/statius-thebais-la.json",
+      "reader": "classics-text-reader.html?work=statius-thebais&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pliny-younger-epistulae",
+      "author": "Plinio el Joven",
+      "title": "Epistulae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pliny-younger-epistulae-la.json",
+      "reader": "classics-text-reader.html?work=pliny-younger-epistulae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aulus-gellius-noctes",
+      "author": "Aulo Gelio",
+      "title": "Noctes Atticae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aulus-gellius-noctes-la.json",
+      "reader": "classics-text-reader.html?work=aulus-gellius-noctes&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "valerius-maximus-facta",
+      "author": "Valerio Máximo",
+      "title": "Facta et dicta memorabilia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/valerius-maximus-facta-la.json",
+      "reader": "classics-text-reader.html?work=valerius-maximus-facta&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "silius-punica",
+      "author": "Silio Itálico",
+      "title": "Punica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/silius-punica-la.json",
+      "reader": "classics-text-reader.html?work=silius-punica&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-verae-historiae-grc.json",
+      "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+      "reader": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Θεογονία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hesiod-theogony-grc.json",
+      "reader": "classics-text-reader.html?work=hesiod-theogony&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hesiod-works-days-grc.json",
+      "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
