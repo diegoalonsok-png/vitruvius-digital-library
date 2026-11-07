@@ -1,0 +1,167 @@
+{
+  "schema": "vitruvia-classics-navigation-manifest-v1",
+  "pairs": [
+    {
+      "workId": "apuleius-metamorphoses",
+      "original": "la",
+      "translation": "en",
+      "path": "data/classics-alignment/apuleius-metamorphoses-la-en.json",
+      "sharedLoci": 0,
+      "originalPassages": 351,
+      "translationPassages": 114,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "original": "la",
+      "translation": "es",
+      "path": "data/classics-alignment/apuleius-metamorphoses-la-es.json",
+      "sharedLoci": 0,
+      "originalPassages": 351,
+      "translationPassages": 312,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "aristotle-poetics",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/aristotle-poetics-grc-en.json",
+      "sharedLoci": 26,
+      "originalPassages": 26,
+      "translationPassages": 26,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "caesar-gallico",
+      "original": "la",
+      "translation": "en",
+      "path": "data/classics-alignment/caesar-gallico-la-en.json",
+      "sharedLoci": 404,
+      "originalPassages": 404,
+      "translationPassages": 404,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "didache",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/didache-grc-en.json",
+      "sharedLoci": 16,
+      "originalPassages": 16,
+      "translationPassages": 16,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/epictetus-enchiridion-grc-en.json",
+      "sharedLoci": 53,
+      "originalPassages": 53,
+      "translationPassages": 53,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "homer-iliad",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/homer-iliad-grc-en.json",
+      "sharedLoci": 59,
+      "originalPassages": 425,
+      "translationPassages": 190,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "homer-odyssey",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/homer-odyssey-grc-en.json",
+      "sharedLoci": 72,
+      "originalPassages": 288,
+      "translationPassages": 267,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "petronius-satyrica",
+      "original": "la",
+      "translation": "en",
+      "path": "data/classics-alignment/petronius-satyrica-la-en.json",
+      "sharedLoci": 0,
+      "originalPassages": 141,
+      "translationPassages": 231,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "plato-apology",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/plato-apology-grc-en.json",
+      "sharedLoci": 26,
+      "originalPassages": 26,
+      "translationPassages": 26,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "original": "la",
+      "translation": "es",
+      "path": "data/classics-alignment/seneca-de-brevitate-la-es.json",
+      "sharedLoci": 20,
+      "originalPassages": 20,
+      "translationPassages": 21,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "original": "la",
+      "translation": "fr",
+      "path": "data/classics-alignment/seneca-de-brevitate-la-fr.json",
+      "sharedLoci": 20,
+      "originalPassages": 20,
+      "translationPassages": 20,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "sulpicia-elegiae",
+      "original": "la",
+      "translation": "es",
+      "path": "data/classics-alignment/sulpicia-elegiae-la-es.json",
+      "sharedLoci": 6,
+      "originalPassages": 6,
+      "translationPassages": 6,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "theophrastus-characters",
+      "original": "grc",
+      "translation": "en",
+      "path": "data/classics-alignment/theophrastus-characters-grc-en.json",
+      "sharedLoci": 30,
+      "originalPassages": 31,
+      "translationPassages": 30,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "virgil-aeneid",
+      "original": "la",
+      "translation": "en",
+      "path": "data/classics-alignment/virgil-aeneid-la-en.json",
+      "sharedLoci": 324,
+      "originalPassages": 392,
+      "translationPassages": 327,
+      "status": "editorial-locus-only"
+    },
+    {
+      "workId": "virgil-georgica",
+      "original": "la",
+      "translation": "en",
+      "path": "data/classics-alignment/virgil-georgica-la-en.json",
+      "sharedLoci": 83,
+      "originalPassages": 84,
+      "translationPassages": 84,
+      "status": "editorial-locus-only"
+    }
+  ],
+  "count": 16,
+  "caution": "Shared chapter labels are not semantic collation; mismatches stay available for manual consultation."
+}

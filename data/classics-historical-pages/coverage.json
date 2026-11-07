@@ -1,0 +1,97 @@
+{
+  "schema": "vitruvia-classics-historical-ocr-coverage-v1",
+  "note": "Raw per-page text; OCR is provisional and not proof of editorial correspondence.",
+  "ocrRequested": true,
+  "records": [
+    {
+      "path": "documents/classics/aristotle-poetics-english-1819.pdf",
+      "index": "data/classics-historical-pages/aristotle-poetics-english-1819.json",
+      "status": "page-index-created",
+      "pages": 102,
+      "textLayerPages": 93,
+      "ocrPages": 2,
+      "shortOrFailed": 7
+    },
+    {
+      "path": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
+      "index": "data/classics-historical-pages/aristotle-poetics-greek-christ-1893.json",
+      "status": "page-index-created",
+      "pages": 68,
+      "textLayerPages": 60,
+      "ocrPages": 4,
+      "shortOrFailed": 4
+    },
+    {
+      "path": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
+      "index": "data/classics-historical-pages/caesar-de-bello-gallico-smith-1842.json",
+      "status": "page-index-created",
+      "pages": 236,
+      "textLayerPages": 233,
+      "ocrPages": 0,
+      "shortOrFailed": 3
+    },
+    {
+      "path": "documents/classics/cicero-de-officiis-miller-1913.pdf",
+      "index": "data/classics-historical-pages/cicero-de-officiis-miller-1913.json",
+      "status": "page-index-created",
+      "pages": 450,
+      "textLayerPages": 430,
+      "ocrPages": 1,
+      "shortOrFailed": 19
+    },
+    {
+      "path": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
+      "index": "data/classics-historical-pages/epictetus-theophrastus-greek-1870.json",
+      "status": "page-index-created",
+      "pages": 102,
+      "textLayerPages": 88,
+      "ocrPages": 3,
+      "shortOrFailed": 11
+    },
+    {
+      "path": "documents/classics/lucretius-de-rerum-natura-latin-1813.pdf",
+      "index": "data/classics-historical-pages/lucretius-de-rerum-natura-latin-1813.json",
+      "status": "page-index-created",
+      "pages": 330,
+      "textLayerPages": 296,
+      "ocrPages": 3,
+      "shortOrFailed": 31
+    },
+    {
+      "path": "documents/classics/lucretius-on-nature-things-1880.pdf",
+      "index": "data/classics-historical-pages/lucretius-on-nature-things-1880.json",
+      "status": "page-index-created",
+      "pages": 312,
+      "textLayerPages": 300,
+      "ocrPages": 1,
+      "shortOrFailed": 11
+    },
+    {
+      "path": "documents/classics/plato-apologia-socratis-adam-1891.pdf",
+      "index": "data/classics-historical-pages/plato-apologia-socratis-adam-1891.json",
+      "status": "page-index-created",
+      "pages": 188,
+      "textLayerPages": 178,
+      "ocrPages": 2,
+      "shortOrFailed": 8
+    },
+    {
+      "path": "documents/classics/virgil-aeneid-book-i-walpole-1893.pdf",
+      "index": "data/classics-historical-pages/virgil-aeneid-book-i-walpole-1893.json",
+      "status": "page-index-created",
+      "pages": 172,
+      "textLayerPages": 157,
+      "ocrPages": 1,
+      "shortOrFailed": 14
+    },
+    {
+      "path": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
+      "index": "data/classics-historical-pages/virgil-georgica-latin-forbiger-1849.json",
+      "status": "page-index-created",
+      "pages": 76,
+      "textLayerPages": 66,
+      "ocrPages": 1,
+      "shortOrFailed": 9
+    }
+  ]
+}
