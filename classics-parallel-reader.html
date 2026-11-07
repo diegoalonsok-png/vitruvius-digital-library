@@ -14,33 +14,89 @@ main{padding:14px clamp(10px,2vw,30px)}.note{border-left:4px solid #9b8055;backg
 iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:480px;background:white}
 #status{font-size:13px;min-height:20px;margin:5px 0 10px}
 @media(max-width:700px){.controls,.panes{grid-template-columns:1fr}iframe{height:65dvh;min-height:360px}}
+
+.syncbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:10px;margin:0 0 10px}
+.syncbar button{border:1px solid #937c5b;background:#213c52;color:#fff;padding:10px 14px;cursor:pointer;border-radius:3px}
+.syncbar button:disabled{opacity:.4;cursor:not-allowed}.syncbar label{display:flex;gap:7px;align-items:center;font-size:13px}
+.syncbar output{font-size:13px;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.syncbar{position:sticky;top:0;z-index:5}}
 </style></head>
 <body>
 <header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a></nav></header>
 <main>
-<p class="note">Cada columna permite leer, buscar y navegar independientemente. No se presupone alineación entre palabras, párrafos, capítulos o folios. Si una traducción usa divisiones distintas, se conservan íntegramente sus unidades; la comparación es manual.</p>
+<p class="note">La navegación conjunta parte del inicio de ambas versiones y avanza por unidades editoriales o por número de capítulo coincidente. Es una sincronización orientativa, no una alineación filológica de párrafos o folios. Ambos lectores también conservan navegación y búsqueda independientes.</p>
 <div class="controls"><label>Original / primera edición <select id="left" aria-label="Lengua del visor izquierdo"></select></label><label>Traducción / segunda edición <select id="right" aria-label="Lengua del visor derecho"></select></label></div>
+<div class="syncbar" aria-label="Navegación conjunta">
+<button type="button" id="sync-start">⟲ Inicio de ambas</button><button type="button" id="sync-prev">← Ambas anteriores</button><button type="button" id="sync-next">Ambas siguientes →</button>
+<label><input type="checkbox" id="same-locus" checked> Coincidir por capítulo cuando sea posible</label>
+<output id="sync-position">Sin sincronizar</output>
+</div>
 <p id="status" role="status" aria-live="polite">Cargando las versiones documentadas…</p>
 <div class="panes"><section class="pane"><strong>Visor izquierdo · navegación independiente</strong><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>Visor derecho · navegación independiente</strong><iframe id="pane-right" title="Traducción o segunda edición"></iframe></section></div>
 </main>
 <script>
-(()=>{"use strict";
-const params=new URLSearchParams(location.search),work=params.get("work")||"didache",status=document.getElementById("status"),left=document.getElementById("left"),right=document.getElementById("right");
-if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
+
+(()=>{
+"use strict";
+const params=new URLSearchParams(location.search),work=params.get("work")||"didache";
+const $=id=>document.getElementById(id),status=$("status"),left=$("left"),right=$("right");
 const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português"};
-function frame(side,language){if(!language)return;const u=new URL("classics-text-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("lang",language);document.getElementById("pane-"+side).src=u.href;params.set(side,language);history.replaceState(null,"",location.pathname+"?"+params.toString());}
-function fill(select,languages){select.replaceChildren();for(const lang of languages){const opt=document.createElement("option");opt.value=lang;opt.textContent=LANG[lang]||lang;select.appendChild(opt);}}
-fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("No se pudo consultar el catálogo.");return r.json();}).then(c=>{
- const rec=(c.works||[]).find(w=>w.id===work);if(!rec?.corpusFiles)throw Error("Esta obra todavía no tiene versiones textuales locales verificadas.");
- const langs=Object.keys(rec.corpusFiles).filter(l=>Object.hasOwn(LANG,l)),ordered=["grc","la","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
- if(!ordered.length)throw Error("No hay versiones disponibles para comparar.");
+if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
+let files={},versions={},position=0,ready={left:false,right:false},generation=0;
+function fill(sel,langs){sel.replaceChildren();for(const l of langs){const o=document.createElement("option");o.value=l;o.textContent=LANG[l]||l;sel.append(o);}}
+function pair(){return [versions[left.value],versions[right.value]];}
+function count(){const [a,b]=pair();return Math.min(a?.passages?.length||0,b?.passages?.length||0);}
+function destination(){const [a,b]=pair(),index=Math.max(0,Math.min(position,Math.max(0,count()-1)));let second=index;
+ if($("same-locus").checked){const wanted=a?.passages?.[index]?.locus;const match=b?.passages?.findIndex(p=>p.locus===wanted);if(match>=0)second=match;}
+ return [index,second];
+}
+function buttons(){const n=count(),ok=Boolean(n&&ready.left&&ready.right);
+ $("sync-start").disabled=!ok;$("sync-prev").disabled=!ok||position===0;$("sync-next").disabled=!ok||position>=n-1;
+ $("sync-position").textContent=n?(position+1)+" / "+n+" unidades conjuntas":"Sin datos comparables";
+}
+function goto(){const [a,b]=pair();if(!a||!b)return;const [i,j]=destination();
+ if(ready.left)$("pane-left").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:left.value,index:i},location.origin);
+ if(ready.right)$("pane-right").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:right.value,index:j},location.origin);
+ buttons();
+}
+function frame(side,lang){const u=new URL("classics-text-reader.html",location.href);
+ u.searchParams.set("work",work);u.searchParams.set("lang",lang);
+ ready[side]=false;$("pane-"+side).src=u.href;
+ params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());buttons();
+}
+function versionsFor(languages){return Promise.all(languages.map(async lang=>{
+ const path=files[lang];if(!/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path))return;
+ try{const response=await fetch(path);if(!response.ok)return;const data=await response.json();
+ if(data.workId===work&&data.language===lang&&Array.isArray(data.passages)&&data.passages.length)versions[lang]=data;}catch{}
+}));}
+async function changed(side,lang){const current=++generation;await versionsFor([lang]);if(current!==generation)return;position=0;frame(side,lang);buttons();}
+window.addEventListener("message",event=>{
+ if(event.origin!==location.origin||![ $("pane-left").contentWindow,$("pane-right").contentWindow ].includes(event.source))return;
+ const msg=event.data;if(!msg||msg.type!=="vitruvia-parallel-ready"||msg.work!==work)return;
+ const side=event.source===$("pane-left").contentWindow?"left":"right";
+ if(msg.lang!==$(side).value)return;ready[side]=true;buttons();
+ if(ready.left&&ready.right)goto();
+});
+$("sync-start").addEventListener("click",()=>{position=0;goto();});
+$("sync-prev").addEventListener("click",()=>{position=Math.max(0,position-1);goto();});
+$("sync-next").addEventListener("click",()=>{position=Math.min(Math.max(0,count()-1),position+1);goto();});
+$("same-locus").addEventListener("change",goto);
+fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("No se pudo consultar el catálogo");return r.json();}).then(async c=>{
+ const rec=(c.works||[]).find(w=>w.id===work);
+ if(!rec?.corpusFiles)throw Error("Esta obra todavía no tiene textos locales registrados.");
+ files=rec.corpusFiles;const langs=Object.keys(files).filter(l=>Object.hasOwn(LANG,l));
+ const ordered=["grc","la","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
+ if(!ordered.length)throw Error("No hay versiones textuales disponibles.");
  fill(left,ordered);fill(right,ordered);
  left.value=ordered.includes(params.get("left"))?params.get("left"):ordered[0];
- right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(x=>x!==left.value)||ordered[0]);
- document.getElementById("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
- status.textContent=rec.author+" · "+rec.title+" — "+ordered.length+" versión(es) local(es). "+(ordered.length<2?"Todavía no hay una segunda versión textual alojada para esta obra.":"Elegí una lengua distinta en cada visor para comparar.");
+ right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(l=>l!==left.value)||ordered[0]);
+ await versionsFor([left.value,right.value]);position=0;
+ $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
+ status.textContent=rec.author+" · "+rec.title+". "+(count()?"Navegación conjunta por unidades; la equivalencia exacta exige cotejo filológico.":"Alguna versión no admite todavía sincronización; ambos lectores siguen independientes.");
  frame("left",left.value);frame("right",right.value);
- for(const [side,sel] of [["left",left],["right",right]])sel.addEventListener("change",()=>frame(side,sel.value));
- }).catch(e=>{status.textContent=e.message;});
+ left.addEventListener("change",()=>changed("left",left.value));
+ right.addEventListener("change",()=>changed("right",right.value));
+}).catch(err=>{status.textContent=err.message;buttons();});
+buttons();
 })();
 </script></body></html>
