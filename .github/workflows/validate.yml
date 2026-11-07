@@ -48,6 +48,11 @@ jobs:
           node scripts/test-krohn-ocr-index.mjs
           node scripts/audit-classical-translation-coverage.mjs
           node --check assets/classics-corpus-search.js
+          node --check assets/lexicon-orthography-core.js
+          node --check assets/lexicon-orthography-research.js
+          node --check assets/lexicon-toponymicon.js
+          node scripts/test-lexicon-orthography.mjs
+          node scripts/test-lexicon-toponymicon.mjs
           node --check assets/vitruvia-search.js
           node --check assets/bibliotheca-graeca-latina.js
           node --check assets/vitruvia-selection-speech.js
