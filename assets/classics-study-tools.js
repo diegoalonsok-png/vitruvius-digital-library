@@ -95,7 +95,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSea
  reset.title="Restablecer colores, tipografía y tamaño de este visor";
  bar.append(highlight,underline,remove,reset);
  const readSelected=$("▶ Leer selección"),stopReading=$("■ Detener lectura");
- readSelected.title="Seleccioná una palabra, oración o párrafo del texto para escucharlo; también admite selección con teclado";
+ readSelected.title="Selecciona una palabra, oración o párrafo del texto para escucharlo; también admite selección con teclado";
  stopReading.title="Detener lectura de voz del navegador";stopReading.disabled=true;
  bar.append(readSelected,stopReading);
  let activeUtterance=null;
@@ -107,10 +107,10 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSea
  function speakSelection(){
   const pick=selectionOffsets()||selected;
   if(!pick||pick.language!==getLanguage()||pick.locus!==getLocus()||!pick.quote.trim()){
-   help.textContent="Primero seleccioná con el mouse o teclado el párrafo o fragmento que querés escuchar.";return;
+   help.textContent="Primero selecciona con el mouse o teclado el párrafo o fragmento que querés escuchar.";return;
   }
   if(!synth||typeof window.SpeechSynthesisUtterance!=="function"){
-   help.textContent="Tu navegador no dispone de síntesis de voz. Probá Chrome, Edge o Safari.";return;
+   help.textContent="Tu navegador no dispone de síntesis de voz. Prueba Chrome, Edge o Safari.";return;
   }
   stopSpeech();
   const utterance=new SpeechSynthesisUtterance(pick.quote);
