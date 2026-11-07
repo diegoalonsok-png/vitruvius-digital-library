@@ -11,6 +11,13 @@ if(!document.querySelector('script[data-fast-navigation]')){
  const navigation=document.createElement("script");navigation.src=root+"assets/fast-navigation.js?v=20261105-academic-navigation-2";
  navigation.dataset.fastNavigation="";navigation.defer=true;document.head.append(navigation);
 }
+// Common query-preserving research links across the three scholarly interfaces.
+if(!document.querySelector('script[data-research-crosslinks]')){
+ const bridge=document.createElement("script");
+ bridge.src=root+"assets/research-crosslinks.js?v=20261107-v1";
+ bridge.defer=true;bridge.dataset.researchCrosslinks="";
+ document.head.append(bridge);
+}
 const LINKS=[
  ["Biblioteca","Inicio","index.html"],
  ["Lector bilingüe","Lector","lector-bilingue.html"],
