@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const html=readFileSync('vitruvia.html','utf8');
+const css=readFileSync('assets/vitruvia-full-width-reading.css','utf8');
+assert(html.includes('assets/vitruvia-full-width-reading.css?v=20261107-wide-v1'));
+assert(html.indexOf('assets/vitruvia-full-width-reading.css')>html.indexOf('assets/vitruvia-right-panel.css'));
+assert(css.includes('.results-grid > #result-list'));
+assert(css.includes('.results-grid > .sidebar'));
+assert(css.includes('grid-template-columns:minmax(0,1fr)!important'));
+assert(css.includes('#vitruvia-article .article-body'));
+assert(css.includes('#vitruvia-article #vitruvia-context'));
+assert(css.includes('#vitruvia-context[hidden]'));
+assert(css.includes('@media screen and (max-width:900px)'));
+console.log('Full-width reading layout integrity: PASS');
