@@ -415,7 +415,7 @@ function hasStudyPair(w){
  const translated=corpus.some(l=>["en","es","fr"].includes(l))||versions.some(v=>["en","es","fr"].includes(v.language));
  return original&&translated;
 }
-function choose(id){selected=id;showSelectedDetail=true;tab=hasStudyPair(works.find(x=>x.id===id)||{})?"study":"text";render();
+function choose(id){selected=id;showSelectedDetail=true;tab=(works.find(x=>x.id===id)?.corpusFiles?"text":hasStudyPair(works.find(x=>x.id===id)||{})?"study":"text");render();
  const u=new URL(location.href);u.searchParams.set("work",id);u.searchParams.delete("view");u.searchParams.delete("ms");u.searchParams.delete("pdf");history.replaceState(null,"",u);}
 
 /* Shared, conservative codicological dossier for every catalogued work.
@@ -883,7 +883,7 @@ async function boot(){
  if(initialQuery)$("classic-query").value=initialQuery;
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
- tab=["study","pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return hasStudyPair(sw||{})?"study":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}let pendingFilter=0;
+ tab=["study","pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&Object.keys(sw.corpusFiles).length?"text":hasStudyPair(sw||{})?"study":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}let pendingFilter=0;
  const searchInput=$("classic-query");
  searchInput.addEventListener("input",()=>{
   // Typing does not need to reconstruct hundreds of book cards and PDF frames
