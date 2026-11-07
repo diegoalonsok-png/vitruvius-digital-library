@@ -40,6 +40,49 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
  const smaller=$("A−"),size=$("","output"),larger=$("A+");
  smaller.title="Reducir tamaño de letra";larger.title="Aumentar tamaño de letra";
  size.className="classic-study-size";bar.append(smaller,size,larger);
+ const magnify=$("⌕ Lupa");
+ magnify.type="button";magnify.setAttribute("aria-pressed","false");
+ magnify.title="Lupa de pasajes como en Vitruvia Lexicon; activá y pasá el puntero por el texto";
+ bar.append(magnify);
+ const lens=document.createElement("div");lens.className="classic-study-magnifying-lens";
+ lens.setAttribute("aria-hidden","true");
+ lens.hidden=true;document.body.append(lens);
+ let magnifierOn=false;
+ const hideLens=()=>{lens.hidden=true};
+ function showLens(event){
+  if(!magnifierOn||!root.isConnected||!root.textContent){hideLens();return}
+  // Prefer the browser caret hit test to show text near the pointer, without
+  // changing or reflowing the source or the stored passage annotation offsets.
+  const hit=document.caretPositionFromPoint?.(event.clientX,event.clientY);
+  const legacy=!hit?document.caretRangeFromPoint?.(event.clientX,event.clientY):null;
+  const node=hit?.offsetNode||legacy?.startContainer;
+  const offset=hit?.offset??legacy?.startOffset??0;
+  const source=String(getSourceText()||"");
+  let center=Math.max(0,Math.min(source.length,Math.round((event.clientY-root.getBoundingClientRect().top)/Math.max(1,root.scrollHeight)*source.length)));
+  if(node&&root.contains(node)){
+   const pre=document.createRange();pre.selectNodeContents(root);
+   try{pre.setEnd(node,offset);center=pre.toString().length}catch{}
+  }
+  const start=Math.max(0,center-75),end=Math.min(source.length,center+100);
+  lens.textContent=source.slice(start,end);
+  lens.style.backgroundColor=pref.background;
+  lens.style.color=pref.foreground;
+  lens.style.fontFamily=fonts[pref.font];
+  lens.style.fontSize=Math.min(44,Math.round(pref.size*1.65))+"px";
+  lens.hidden=false;
+  const width=Math.min(440,window.innerWidth-26);
+  lens.style.maxWidth=width+"px";
+  lens.style.left=Math.min(window.innerWidth-width-12,Math.max(10,event.clientX+18))+"px";
+  lens.style.top=Math.max(10,Math.min(window.innerHeight-180,event.clientY+20))+"px";
+ }
+ magnify.addEventListener("click",()=>{
+  magnifierOn=!magnifierOn;magnify.setAttribute("aria-pressed",String(magnifierOn));
+  if(!magnifierOn)hideLens();
+  help.textContent=magnifierOn?"Lupa activa: mové el cursor sobre las palabras del texto.":"Lupa desactivada.";
+ });
+ root.addEventListener("pointermove",showLens);root.addEventListener("pointerleave",hideLens);
+ root.addEventListener("scroll",hideLens,{passive:true});
+ window.addEventListener("blur",hideLens);
  const highlight=$("▧ Resaltar"),underline=$("U̲ Subrayar"),remove=$("Borrar marcas"),reset=$("Restablecer estilo");
  highlight.title="Seleccioná un fragmento del texto y presioná Resaltar";
  underline.title="Seleccioná un fragmento del texto y presioná Subrayar";
@@ -90,6 +133,7 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText}){
   return Array.isArray(list)?list.filter(a=>Number.isInteger(a.start)&&Number.isInteger(a.end)&&a.end>a.start&&a.start>=0&&a.end<200000):[];
  }
  function render(){
+  hideLens();
   const source=String(getSourceText()||"");
   root.replaceChildren();
   const valid=records().filter(a=>a.end<=source.length&&source.slice(a.start,a.end)===a.quote);
