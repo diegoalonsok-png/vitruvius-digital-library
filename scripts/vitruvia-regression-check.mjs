@@ -108,8 +108,9 @@ assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article \.article-gr
  "Encyclopedia text and research panels must share the entire content width");
 assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article #article-body\s*,[\s\S]*?width:100%!important;[\s\S]*?max-width:none!important;/,
  "Article width must override legacy narrow reader styles");
-assert.match(vitruviaHTML,/vitruvia-image-engine-v2\.js\?v=20261107-gallery-v4/,
- "New image gallery must invalidate the old cached engine");
+const imageEngineBundle=vitruviaHTML.match(/vitruvia-image-engine-v2\\.js\\?v=([^"']+)/)?.[1]||"";
+assert.ok(imageEngineBundle.startsWith("20261107-")&&imageEngineBundle!=="20261107-gallery-v4",
+ "Image gallery must load an updated cache-busted engine after the latest repair");
 assert.match(vitruviaHTML,/vitruvia-full-width-reading\.css\?v=20261107-wide-v3/,
  "Layout repair must invalidate the old cached stylesheet");
 assert.match(images,/dialog\.showModal\(\)/,"Large-image viewer absent");
