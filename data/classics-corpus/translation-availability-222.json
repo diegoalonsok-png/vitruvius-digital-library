@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 23,
+    "locallyIndexedWorks": 24,
     "translatedWorksLocal": 20,
     "worksWithoutHostedTranslation": 202,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 18,
       "fr": 2
     },
-    "originalTextIndexed": 23,
-    "originalTextNotIndexed": 199
+    "originalTextIndexed": 24,
+    "originalTextNotIndexed": 198
   },
   "works": [
     {
@@ -266,14 +266,16 @@
       "author": "Ovidio",
       "title": "Metamorphoses",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Brookes More (inglés; Perseus/Scaife), con otros recursos de la University of Virginia. Enlaces en «Edición y traducción». No son traducciones alojadas aquí.",
+      "readingStatus": "lectura-local-completa",
+      "translationSourceDescription": "Traducción inglesa Brookes More enlazada externamente; no alojada. Latín completo alojado: Hugo Magnus, TEI Perseus CC BY-SA 4.0.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid-fasti",
