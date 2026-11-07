@@ -1887,7 +1887,25 @@ function renderInstrumenta(){
 
 /* ---------- Paleta de fondo (como en Vitruvia) ---------- */
 const PALETTE=[["Negro","#0d0d0e","dark"],["Grafito","#17191c","dark"],["Pizarra","#222a32","dark"],["Azul noche","#101b2c","dark"],["Sepia","#292019","dark"],["Verde tinta","#182720","dark"],["Marfil","#f7f5ef","light"],["Papel","#fbfaf6","light"],["Pergamino","#efe6d2","light"]];
-function applyBg(hex,mode){const r=document.documentElement;if(!hex){r.style.removeProperty("--lx-bg");document.body.style.background="";return}r.style.setProperty("--lx-bg",hex);document.body.style.background=hex;if(mode){r.dataset.theme=mode==="light"?"light":"dark";try{localStorage.setItem("vitruvia-theme",r.dataset.theme)}catch{}}}
+function themeIcon(){
+ const button=$("#theme");if(!button)return;
+ const light=document.documentElement.dataset.theme==="light";
+ // Moon in light mode indicates the next action (switch to dark); sun otherwise.
+ const svg=button.querySelector("svg");if(svg)svg.innerHTML=light
+  ?'<path d="M20.8 15.4A9 9 0 0 1 8.6 3.2 9 9 0 1 0 20.8 15.4Z"/>'
+  :'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>';
+ button.setAttribute("aria-label",light?"Activar modo oscuro":"Activar modo claro");
+ button.setAttribute("title",light?"Modo oscuro":"Modo claro");
+ button.setAttribute("aria-pressed",String(!light));
+}
+function applyBg(hex,mode){
+ const r=document.documentElement;
+ if(!hex){r.style.removeProperty("--lx-bg");document.body.style.removeProperty("background");themeIcon();return}
+ r.style.setProperty("--lx-bg",hex);
+ document.body.style.removeProperty("background");
+ if(mode){r.dataset.theme=mode==="light"?"light":"dark";try{localStorage.setItem("vitruvia-theme",r.dataset.theme)}catch{}}
+ themeIcon();
+}
 function setupPalette(){
  const box=$("#lx-palette");if(!box)return;const panel=box.querySelector(".lx-palette-panel");
  PALETTE.forEach(([n,hex,mode])=>panel.append(el("button",{type:"button",class:"lx-swatch",title:n,"aria-label":n,style:`background:${hex}`,onclick:()=>{applyBg(hex,mode);try{localStorage.setItem("vitruvia-lexicon-bg",JSON.stringify([hex,mode]))}catch{}}})));
@@ -1899,10 +1917,19 @@ function setupPalette(){
 async function init(){
  try{const u=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(u))S.ui=u}catch{}
  const uiSel=$("#lx-ui");if(uiSel){uiSel.value=S.ui;uiSel.addEventListener("change",()=>{S.ui=uiSel.value;try{localStorage.setItem("vitruvius-ui-lang",S.ui)}catch{};applyUI()})}
+ try{const th=localStorage.getItem("vitruvia-theme");if(["light","dark"].includes(th))document.documentElement.dataset.theme=th}catch{}
  setupPalette();
  renderTabs();
- try{const th=localStorage.getItem("vitruvia-theme");if(th==="light")document.documentElement.dataset.theme="light"}catch{}
- $("#theme")?.addEventListener("click",()=>{const t=document.documentElement.dataset.theme==="light"?"dark":"light";document.documentElement.dataset.theme=t;try{localStorage.setItem("vitruvia-theme",t)}catch{}});
+ themeIcon();
+ $("#theme")?.addEventListener("click",()=>{
+  const t=document.documentElement.dataset.theme==="light"?"dark":"light";
+  // An explicitly selected color must not override later theme changes.
+  document.documentElement.style.removeProperty("--lx-bg");
+  document.body.style.removeProperty("background");
+  document.documentElement.dataset.theme=t;
+  try{localStorage.setItem("vitruvia-theme",t);localStorage.removeItem("vitruvia-lexicon-bg")}catch{}
+  themeIcon();
+ });
  $("#lx-form").addEventListener("submit",e=>{e.preventDefault();run().then(()=>$("#results").scrollIntoView({behavior:"smooth",block:"start"}))});
  $("#lx-lang").addEventListener("change",e=>{S.lang=e.target.value;syncSearchLanguageSelector();if(S.q)run()});
  $("#lx-lang-quick")?.addEventListener("change",e=>{
