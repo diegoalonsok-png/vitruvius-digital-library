@@ -4,7 +4,7 @@
 const root=document.getElementById("script-collation-audit");if(!root)return;
 const status=root.querySelector("#script-audit-status"),summary=root.querySelector("#script-audit-summary"),result=root.querySelector("#script-audit-results");
 const type=root.querySelector("#script-audit-filter"),search=root.querySelector("#script-audit-query");
-const LABELS={alert:"Alerta: diferencia fuerte",moderate:"Revisar: diferencia moderada",near:"Variación menor",missing:"Falta ese locus en V297"};
+const LABELS={alert:"Alerta: diferencia fuerte",moderate:"Revisar: diferencia moderada",near:"Variación menor","different-segmentation":"Identificador de locus diferente en V297"};
 let audit=null;
 function show(){
  if(!audit)return;
@@ -26,7 +26,7 @@ function show(){
   return;
  }
  let items=audit.latinDiscrepancies.filter(p=>(!term||p.locus.toLowerCase().includes(term))&&(kind==="all"||kind===p.severity));
- items=items.sort((a,b)=>({missing:0,alert:1,moderate:2,near:3}[a.severity]??4)-({missing:0,alert:1,moderate:2,near:3}[b.severity]??4));
+ items=items.sort((a,b)=>({"different-segmentation":0,alert:1,moderate:2,near:3}[a.severity]??4)-({missing:0,alert:1,moderate:2,near:3}[b.severity]??4));
  const count=items.length;
  result.replaceChildren();
  for(const item of items.slice(0,100)){
@@ -34,7 +34,7 @@ function show(){
   const h=document.createElement("h4");h.textContent=item.locus+" · "+LABELS[item.severity];
   const score=document.createElement("span");score.textContent=item.v297?
    ("Semejanza heurística V514/V297: "+Math.round(item.v297.similarity*100)+"% · palabras "+item.v297.wordLengths.join(" / ")):
-   "Sin pasaje equivalente en V297";
+   "Identificador no presente en V297; texto posiblemente integrado en otro locus del capítulo";
   const btn=document.createElement("button");btn.type="button";btn.textContent="Abrir locus en visores";
   const excerpt=document.createElement("details"),description=document.createElement("summary");
   description.textContent="Ver comienzo de los textos cotejados";
@@ -51,9 +51,9 @@ function show(){
  status.textContent=count+" registros con el filtro seleccionado."+(count>100?" Se muestran los primeros 100.":"");
 }
 fetch("data/structured/latin-collation-audit.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
- if(data.schema!=="vitruvius-latin-collation-audit-v1")throw Error("Informe incompatible");
+ if(data.schema!=="vitruvius-latin-collation-audit-v2")throw Error("Informe incompatible");
  audit=data;const s=data.summary;
- summary.textContent="V514 y V554: 731 pasajes latinos coincidentes. V297: "+s.identical+" iguales normalizados; "+s.near+" muy similares; "+s.moderate+" con diferencias moderadas; "+s.alert+" con diferencias importantes; "+s.missing+" loci ausentes. Krohn: "+s.ocr.krohn.highCoverage+" candidatos OCR de cobertura alta; Rose: "+s.ocr.rose.highCoverage+".";
+ summary.textContent="V514 y V554: 731 segmentos latinos equivalentes. V297: edición inglesa completa con segmentación diferente; "+s.identical+" loci idénticos normalizados, "+s.near+" muy similares, "+s.moderate+" por revisar y "+s.alert+" diferencias de extensión o vocabulario por locus (no necesariamente omisiones). "+s.missingLocusIdentifiers+" identificadores solo presentes en V514/V554. Comparación por capítulos: "+s.highOverlapChapterCount+" de solapamiento alto, "+s.moderateOverlapChapterCount+" de revisión editorial y "+s.lowOverlapChapterCount+" prioritario. Krohn: "+s.ocr.krohn.highCoverage+" páginas OCR candidatas con cobertura alta; Rose: "+s.ocr.rose.highCoverage+".";
  show();
 }).catch(err=>{status.textContent="No se pudo cargar la auditoría: "+err.message});
 type.addEventListener("change",show);search.addEventListener("input",show);
