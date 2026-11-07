@@ -16,62 +16,314 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Comprobar sintaxis de JavaScript
+      - name: Sintaxis JavaScript · errores identificados por archivo
+        shell: bash
         run: |
+          set +e
+          failures=0
+          echo "::group::[1/28] node --check assets/app.js"
           node --check assets/app.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/app.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[2/28] node --check assets/search-worker.js"
           node --check assets/search-worker.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/search-worker.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[3/28] node --check assets/historical-search.mjs"
           node --check assets/historical-search.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/historical-search.mjs (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[4/28] node --check assets/indices-locorum.mjs"
           node --check assets/indices-locorum.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/indices-locorum.mjs (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[5/28] node --check assets/bilingual.js"
           node --check assets/bilingual.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/bilingual.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[6/28] node --check assets/latin-suggest.js"
           node --check assets/latin-suggest.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/latin-suggest.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[7/28] node --check assets/theme.js"
           node --check assets/theme.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/theme.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[8/28] node --check assets/studies.js"
           node --check assets/studies.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/studies.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[9/28] node --check assets/bibliography.js"
           node --check assets/bibliography.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/bibliography.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[10/28] node --check assets/history-core.mjs"
           node --check assets/history-core.mjs
-          node scripts/test-history.mjs
-          node scripts/test-citations.mjs
-          node scripts/test-no-voseo.mjs
-          node scripts/test-search.mjs
-          node --test scripts/test-query-discovery.mjs
-          node scripts/test-vitruvia-discovery.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/history-core.mjs (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[11/28] node --check assets/vitruvia-academic-reader.js"
           node --check assets/vitruvia-academic-reader.js
-          node scripts/test-vitruvia-academic-reader.mjs
-          node scripts/test-vitruvia-dictation.mjs
-          node scripts/test-vitruvia-resilience.mjs
-          node scripts/test-vitruvia-entity-priority.mjs
-          node scripts/test-vitruvia-author-reading.mjs
-          node scripts/test-classical-catalogue-integrity.mjs
-          node scripts/audit-classical-corpus.mjs
-          node scripts/test-public-site-integrity.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-academic-reader.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[12/28] node --check assets/concordancia-ocr-vitruvio.js"
           node --check assets/concordancia-ocr-vitruvio.js
-          node scripts/test-historical-parallel-ocr.mjs
-          node scripts/test-krohn-ocr-index.mjs
-          node scripts/audit-classical-translation-coverage.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/concordancia-ocr-vitruvio.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[13/28] node --check assets/classics-corpus-search.js"
           node --check assets/classics-corpus-search.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/classics-corpus-search.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[14/28] node --check assets/lexicon-orthography-core.js"
           node --check assets/lexicon-orthography-core.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/lexicon-orthography-core.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[15/28] node --check assets/lexicon-orthography-research.js"
           node --check assets/lexicon-orthography-research.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/lexicon-orthography-research.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[16/28] node --check assets/lexicon-toponymicon.js"
           node --check assets/lexicon-toponymicon.js
-          node scripts/test-lexicon-orthography.mjs
-          node scripts/test-lexicon-toponymicon.mjs
-          node scripts/test-ecdotic-decisions.mjs
-          python scripts/test-classics-html-semantic.py
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/lexicon-toponymicon.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[17/28] node --check assets/vitruvia-search.js"
           node --check assets/vitruvia-search.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-search.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[18/28] node --check assets/bibliotheca-graeca-latina.js"
           node --check assets/bibliotheca-graeca-latina.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/bibliotheca-graeca-latina.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[19/28] node --check assets/vitruvia-selection-speech.js"
           node --check assets/vitruvia-selection-speech.js
-          node scripts/test-vitruvia-selection-speech.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-selection-speech.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[20/28] node --check assets/vitruvia-photo-background.js"
           node --check assets/vitruvia-photo-background.js
-          node scripts/test-vitruvia-photo-background.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-photo-background.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[21/28] node --check assets/vitruvia-visual-import.js"
           node --check assets/vitruvia-visual-import.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-visual-import.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[22/28] node --check assets/vitruvia-pdf-local.js"
           node --check assets/vitruvia-pdf-local.js
-          node scripts/test-vitruvia-visual-import.mjs
-          node scripts/test-vitruvia-pdf-local.mjs
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-pdf-local.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[23/28] node --check assets/vitruvia-search.js"
           node --check assets/vitruvia-search.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-search.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[24/28] node --check assets/vitruvia-entity-resolver.js"
           node --check assets/vitruvia-entity-resolver.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/vitruvia-entity-resolver.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[25/28] node --check assets/research-folder.js"
           node --check assets/research-folder.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/research-folder.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[26/28] node --check assets/papyrology-ostraca.js"
           node --check assets/papyrology-ostraca.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/papyrology-ostraca.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[27/28] node --check assets/papyrology-ink.js"
           node --check assets/papyrology-ink.js
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/papyrology-ink.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          echo "::group::[28/28] node --check assets/papyrology-glyphs.js"
           node --check assets/papyrology-glyphs.js
-          python -m py_compile tools/papyrology/lector_antiguo_gemini.py
+          code=$?
+          echo "::endgroup::"
+          if [ "$code" -ne 0 ]; then
+            echo "::error title=Vitruvio CI falló::node --check assets/papyrology-glyphs.js (exit $code)"
+            failures=$((failures+1))
+          fi
+          if [ "$failures" -ne 0 ]; then echo "$failures controles fallaron"; exit 1; fi
+      - name: Test 1 · node scripts/test-history.mjs
+        if: always()
+        run: node scripts/test-history.mjs
+      - name: Test 2 · node scripts/test-citations.mjs
+        if: always()
+        run: node scripts/test-citations.mjs
+      - name: Test 3 · node scripts/test-no-voseo.mjs
+        if: always()
+        run: node scripts/test-no-voseo.mjs
+      - name: Test 4 · node scripts/test-search.mjs
+        if: always()
+        run: node scripts/test-search.mjs
+      - name: Test 5 · node --test scripts/test-query-discovery.mjs
+        if: always()
+        run: node --test scripts/test-query-discovery.mjs
+      - name: Test 6 · node scripts/test-vitruvia-discovery.mjs
+        if: always()
+        run: node scripts/test-vitruvia-discovery.mjs
+      - name: Test 7 · node scripts/test-vitruvia-academic-reader.mjs
+        if: always()
+        run: node scripts/test-vitruvia-academic-reader.mjs
+      - name: Test 8 · node scripts/test-vitruvia-dictation.mjs
+        if: always()
+        run: node scripts/test-vitruvia-dictation.mjs
+      - name: Test 9 · node scripts/test-vitruvia-resilience.mjs
+        if: always()
+        run: node scripts/test-vitruvia-resilience.mjs
+      - name: Test 10 · node scripts/test-vitruvia-entity-priority.mjs
+        if: always()
+        run: node scripts/test-vitruvia-entity-priority.mjs
+      - name: Test 11 · node scripts/test-vitruvia-author-reading.mjs
+        if: always()
+        run: node scripts/test-vitruvia-author-reading.mjs
+      - name: Test 12 · node scripts/test-classical-catalogue-integrity.mjs
+        if: always()
+        run: node scripts/test-classical-catalogue-integrity.mjs
+      - name: Test 13 · node scripts/audit-classical-corpus.mjs
+        if: always()
+        run: node scripts/audit-classical-corpus.mjs
+      - name: Test 14 · node scripts/test-public-site-integrity.mjs
+        if: always()
+        run: node scripts/test-public-site-integrity.mjs
+      - name: Test 15 · node scripts/test-historical-parallel-ocr.mjs
+        if: always()
+        run: node scripts/test-historical-parallel-ocr.mjs
+      - name: Test 16 · node scripts/test-krohn-ocr-index.mjs
+        if: always()
+        run: node scripts/test-krohn-ocr-index.mjs
+      - name: Test 17 · node scripts/audit-classical-translation-coverage.mjs
+        if: always()
+        run: node scripts/audit-classical-translation-coverage.mjs
+      - name: Test 18 · node scripts/test-lexicon-orthography.mjs
+        if: always()
+        run: node scripts/test-lexicon-orthography.mjs
+      - name: Test 19 · node scripts/test-lexicon-toponymicon.mjs
+        if: always()
+        run: node scripts/test-lexicon-toponymicon.mjs
+      - name: Test 20 · node scripts/test-ecdotic-decisions.mjs
+        if: always()
+        run: node scripts/test-ecdotic-decisions.mjs
+      - name: Test 21 · python scripts/test-classics-html-semantic.py
+        if: always()
+        run: python scripts/test-classics-html-semantic.py
+      - name: Test 22 · node scripts/test-vitruvia-selection-speech.mjs
+        if: always()
+        run: node scripts/test-vitruvia-selection-speech.mjs
+      - name: Test 23 · node scripts/test-vitruvia-photo-background.mjs
+        if: always()
+        run: node scripts/test-vitruvia-photo-background.mjs
+      - name: Test 24 · node scripts/test-vitruvia-visual-import.mjs
+        if: always()
+        run: node scripts/test-vitruvia-visual-import.mjs
+      - name: Test 25 · node scripts/test-vitruvia-pdf-local.mjs
+        if: always()
+        run: node scripts/test-vitruvia-pdf-local.mjs
+      - name: Test 26 · python -m py_compile tools/papyrology/lector_antiguo_gemini.py
+        if: always()
+        run: python -m py_compile tools/papyrology/lector_antiguo_gemini.py
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'
