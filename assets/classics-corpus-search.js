@@ -234,13 +234,20 @@ async function semanticSearch(q,{limit=6}={}){
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language),
     author:"Conceptus: "+concept.id+" · equivalente "+first.term,
     excerpt:"Locus "+first.passage.locus+": "+snippet(first.passage.text,first.at),
-    meta:"CORRESPONDENCIA CONCEPTUS DOCUMENTADA · COINCIDENCIAS EN "+units+" PASAJE(S) · NO LEMATIZACIÓN",
+    meta:"CORRESPONDENCIA SEMÁNTICA EDITORIAL · CONCEPTUS DOCUMENTADO · COINCIDENCIAS EN "+units+" PASAJE(S) · NO LEMATIZACIÓN",
     rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total,units,conceptId:concept.id,matchedTerm:first.term});
   }));
  }
  lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
- return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title))
-   .slice(0,Math.max(1,Math.min(100,limit)));
+ const sorted=rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title));
+ // Preserve at least one attested result from each ancient source language,
+ // when available, before ranking the rest by match strength.
+ const head=[],remaining=[...sorted];
+ for(const language of ["la","grc"]){
+  const i=remaining.findIndex(x=>x.language===language);
+  if(i>=0)head.push(...remaining.splice(i,1));
+ }
+ return [...head,...remaining].slice(0,Math.max(1,Math.min(100,limit)));
 }
 window.ClassicsCorpusSearch={
  search,semanticSearch,
