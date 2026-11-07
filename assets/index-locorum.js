@@ -75,7 +75,7 @@ async function init(){
   fetch("data/lexicon/conceptus.json").then(r=>{if(!r.ok)throw Error("Conceptus HTTP "+r.status);return r.json()})
  ]);
  if(r.schema!=="vitruvia-classics-search-registry-v1"||p.schema!=="vitruvia-classics-semantic-postings-v1"||!Array.isArray(p.versions)||p.registryEditionCount!==r.entries.length||p.errors?.length)throw Error("Índice no compatible con el registro actual: regenerar y validar antes de consultarlo");
- entries=r.entries;versions=p.versions;concepts=d.concepts||[];
+ entries=r.entries;versions=p.versions.map(v=>{const source=entries.find(e=>e.workId===v.workId&&e.language===v.language&&e.path===v.source);return {...v,author:source?.author||v.workId,title:source?.title||v.workId}});concepts=d.concepts||[];
  const byWork=new Map();for(const v of versions){if(!byWork.has(v.workId))byWork.set(v.workId,v.author+" · "+v.title)}
  for(const [key,label] of [...byWork].sort((a,b)=>a[1].localeCompare(b[1])))option($("work"),key,label);
  for(const c of concepts.slice().sort((a,b)=>a.id.localeCompare(b.id)))option($("concept"),c.id,c.id);
