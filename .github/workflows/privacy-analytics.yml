@@ -1,5 +1,17 @@
 name: Analytics privacy and integration
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/analytics.js'
+      - 'assets/analytics-config.js'
+      - 'index.html'
+      - 'vitruvia.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'index-locorum.html'
+      - 'registro-ecdotico.html'
+      - 'scripts/test-privacy-analytics.mjs'
+      - '.github/workflows/privacy-analytics.yml'
   pull_request:
     paths:
       - 'assets/analytics.js'
@@ -7,6 +19,8 @@ on:
       - 'index.html'
       - 'vitruvia.html'
       - 'bibliotheca-graeca-latina.html'
+      - 'index-locorum.html'
+      - 'registro-ecdotico.html'
       - 'scripts/test-privacy-analytics.mjs'
       - '.github/workflows/privacy-analytics.yml'
   workflow_dispatch:
