@@ -22,10 +22,10 @@
 
 .article-author-reading{border-top:1px solid var(--line,#777);border-bottom:1px solid var(--line,#777);margin:30px 0;padding:16px 0}.article-author-reading li{margin:14px 0}.article-author-reading li>a{font-weight:600}.article-author-reading small{display:block;line-height:1.6}.article-author-reading h4{margin-top:22px}
 
-/* Editorial typesetting · universal encyclopedia results (not source rewriting).
-   A book-like measure and separate bibliographic records replace full-width walls of text. */
+/* Editorial typesetting · source-backed universal encyclopedia.
+   Use the available article width; do not cap the whole page at 77ch. */
 body.vitruvia-reading #vitruvia-article .article-body{
- max-width:77ch!important;
+ max-width:none!important;
  width:100%;
 }
 body.vitruvia-reading #vitruvia-article .article-body p:not(.article-note){
