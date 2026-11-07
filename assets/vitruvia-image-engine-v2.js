@@ -14,7 +14,7 @@ let active=0,controller=null,currentImageQuery="";
 let historicalPeoplePromise=null;
 async function verifiedHistoricalSubject(query){
  const q=fold(query);
- if(!historicalPeoplePromise)historicalPeoplePromise=fetch("data/onomasticon-vitruvianum.json")
+ if(!historicalPeoplePromise)historicalPeoplePromise=fetch("data/onomasticon-vitruvianum.json?v=20261107-cicero-portrait")
   .then(r=>{if(!r.ok)throw Error("onomasticon");return r.json()})
   .then(d=>(d.entities||[]).filter(x=>x.kind==="person")).catch(()=>[]);
  const people=await historicalPeoplePromise;
@@ -355,7 +355,11 @@ async function searchImages(query){
   if(portrait){
    const historicalTopic={kind:"person",ancient:true,historical:true,subject:historicalSubject.name};
    displayGroups([portrait],historicalTopic);
-   status.textContent="Fuente histórica identificada: "+historicalSubject.name+" · "+(historicalSubject.portrait?.museum||"catálogo académico")+".";
+   status.textContent="Retrato escultórico catalogado: "+historicalSubject.name+" · "+(historicalSubject.portrait?.museum||"catálogo académico")+". La identificación iconográfica está sujeta a la evidencia histórica.";
+   // A source-attributed bust is preferable to waiting for ambiguous remote image searches.
+   // Avoid overwriting the verified historical artwork with images of unrelated namesakes.
+   external("Ficha de la escultura y derechos",historicalSubject.portrait?.imageSource||historicalSubject.portrait.source);
+   return;
   }
  }
 
