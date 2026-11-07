@@ -29,25 +29,73 @@ if(q&&!filtered.length&&!indirect&&q.length>=4){
 }
 for(const item of filtered)item.count=item.sites.reduce((n,s)=>n+s.count,0);filtered.sort($('#order').value==='freq'?(a,b)=>b.count-a.count||a.e.key.localeCompare(b.e.key):(a,b)=>a.e.key.localeCompare(b.e.key));visible=0;$('#words').replaceChildren();showMore();$('#summary').textContent=total.toLocaleString('es-AR')+' palabras gráficas · '+idx.size.toLocaleString('es-AR')+' formas distintas · '+passages.length+' pasajes · '+filtered.length+' formas con el filtro actual.';if(filtered.length)detail(filtered[0]);else $('#detail').textContent='No se documenta esa forma en el texto indexado. La búsqueda de equivalencias griego-latín se ofrece para términos seleccionados y no reemplaza las concordancias literales.';if(indirect)$('#summary').textContent+=' Coincidencias por equivalencia griego–latín (no apariciones literales griegas).';if(filtered.some(x=>x.approximate))$('#summary').textContent+=' Sugerencias aproximadas por error de escritura; selecciona una forma para su concordancia exacta.';showSuggestions(q,script,book);showStatistics(q,book,script);}
 function showMore(){const area=$('#words');for(const item of filtered.slice(visible,visible+120)){const button=el('button',null,area);const form=[...item.e.forms].sort((a,b)=>b[1]-a[1])[0][0];el('span',form,button);el('span',String(item.count),button);button.addEventListener('click',()=>{if(item.approximate){$('#q').value=item.e.key;refresh();}else detail(item);});}visible=Math.min(visible+120,filtered.length);$('#more').hidden=visible>=filtered.length;}
-function detail(item){const e=item.e,root=$('#detail');root.replaceChildren();const forms=[...e.forms].map(([k,n])=>k+' ('+n+')').join(' · ');el('h3',e.equivalence||[...e.forms.keys()][0],root);if(e.equivalence)el('p','Equivalencia griego–latín: se muestran formas latinas realmente documentadas; el término griego solicitado no se cuenta como una aparición literal.',root);el('p',item.count+' apariciones en '+item.sites.length+' loci.',root);el('p','Grafías originales: '+forms,root);el('p',meanings[e.key]?'Glosa orientativa: '+meanings[e.key]:'Definición: véase el diccionario a continuación (lema, glosa y enlaces).',root);const dict=el('a','Consultar Logeion ↗',root);dict.href='https://logeion.uchicago.edu/'+encodeURIComponent(e.equivalence||[...e.forms.keys()][0]);dict.target='_blank';dict.rel='noopener noreferrer';enrich(item,root);for(const site of item.sites){const p=site.p,box=el('div',null,root);box.className='passage';const a=el('a','Vitr., De arch. '+roman(p.book)+'.'+p.chapter+'.'+p.section+' — '+site.count+' apariciones',box);a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent([...e.forms.keys()][0]);const para=el('p',null,box);para.lang='la';for(const part of String(p.latin||'').split(/([\p{L}\p{M}]+)/u)){if(key(part)===e.key||Boolean(e.equivalence&&[...e.forms.keys()].some(f=>key(f)===key(part)))){const mark=el('mark',part,para);mark.style.setProperty('background-color','#ffe15a','important');mark.style.setProperty('color','#162a40','important');mark.style.setProperty('font-weight','700');mark.style.setProperty('padding','0 2px');}else para.append(document.createTextNode(part));}}}
+function detail(item){const e=item.e,root=$('#detail');root.replaceChildren();root.dataset.entryKey=e.key;const forms=[...e.forms].map(([k,n])=>k+' ('+n+')').join(' · ');el('h3',e.equivalence||[...e.forms.keys()][0],root);if(e.equivalence)el('p','Equivalencia griego–latín: se muestran formas latinas realmente documentadas; el término griego solicitado no se cuenta como una aparición literal.',root);el('p',item.count+' apariciones en '+item.sites.length+' loci.',root);el('p','Grafías originales: '+forms,root);el('p',meanings[e.key]?'Glosa orientativa: '+meanings[e.key]:'Definición: véase el diccionario a continuación (lema, glosa y enlaces).',root);const dict=el('a','Consultar Logeion ↗',root);dict.href='https://logeion.uchicago.edu/'+encodeURIComponent(e.equivalence||[...e.forms.keys()][0]);dict.target='_blank';dict.rel='noopener noreferrer';enrich(item,root);for(const site of item.sites){const p=site.p,box=el('div',null,root);box.className='passage';const a=el('a','Vitr., De arch. '+roman(p.book)+'.'+p.chapter+'.'+p.section+' — '+site.count+' apariciones',box);a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent([...e.forms.keys()][0]);const para=el('p',null,box);para.lang='la';for(const part of String(p.latin||'').split(/([\p{L}\p{M}]+)/u)){if(key(part)===e.key||Boolean(e.equivalence&&[...e.forms.keys()].some(f=>key(f)===key(part)))){const mark=el('mark',part,para);mark.style.setProperty('background-color','#ffe15a','important');mark.style.setProperty('color','#162a40','important');mark.style.setProperty('font-weight','700');mark.style.setProperty('padding','0 2px');}else para.append(document.createTextNode(part));}}}
 for(const id of ['q','book','script','order'])$('#'+id).addEventListener(id==='q'?'input':'change',refresh);
 $('#more').addEventListener('click',showMore);
 fetch('data/structured/recensio-es.json').then(r=>{if(!r.ok)throw Error('No se pudo cargar el corpus');return r.json()}).then(data=>{build(data);refresh();$('#status').textContent='Índice preparado a partir de V514.';}).catch(e=>$('#status').textContent='Error: '+e.message);
 /* Diccionario (Lewis & Short / LSJ), otras formas del mismo lema y exportación CSV de la concordancia. */
 let latGloss=null;const lg=()=>latGloss||(latGloss=fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).catch(()=>null));
 const fold=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
+const occurrenceCount=e=>[...e.sites.values()].reduce((n,x)=>n+x.count,0);
+function lexiconLink(word,mode='etimologia'){
+ return 'vitruvia-lexicon.html?q='+encodeURIComponent(word)+'&mode='+encodeURIComponent(mode);
+}
+function relatedPassages(host,entry){
+ for(const site of entry.sites.values()){
+  const p=site.p,box=el('div',null,host);box.className='passage';
+  const form=[...entry.forms.keys()][0];
+  const a=el('a','De architectura '+roman(p.book)+'.'+p.chapter+'.'+p.section+' — '+site.count+' apariciones',box);
+  a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(form);
+  const para=el('p',null,box),wanted=new Set([...entry.forms.keys()].map(key));para.lang='la';
+  for(const part of String(p.latin||'').split(/([\\p{L}\\p{M}]+)/u)){
+   if(wanted.has(key(part)))el('mark',part,para);
+   else para.append(document.createTextNode(part));
+  }
+ }
+}
+function addSharing(tools,item,word){
+ const url=new URL(location.href);url.searchParams.set('q',word);
+ const title='Lexicon Vitruvianum — '+word+' ('+item.count+' apariciones)';
+ const message=title+'\\n'+url.href;
+ const add=(label,fn)=>{const b=el('button',label,tools);b.type='button';b.addEventListener('click',fn)};
+ add('Imprimir / guardar PDF',()=>window.print());
+ add('Enviar por correo',()=>{window.location.href='mailto:?subject='+encodeURIComponent(title)+'&body='+encodeURIComponent(message)});
+ add('WhatsApp',()=>window.open('https://wa.me/?text='+encodeURIComponent(message),'_blank','noopener,noreferrer'));
+ const a=el('a','Estudiar en Vitruvia Lexicon ↗',tools);a.href=lexiconLink(word);a.className='lexicon-study-link';
+}
 function enrich(item,root){
  const e=item.e,first=e.equivalence||[...e.forms.keys()][0];
  const tools=el('div',null,root);tools.className='lexicon-tools';
+ addSharing(tools,item,first);
  const csv=el('button','Descargar concordancia (CSV)',tools);csv.type='button';
  csv.addEventListener('click',()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"';const rows=[['forma','locus','apariciones','pasaje latino','fuente']];
   for(const site of item.sites)rows.push([first,site.p.locus,site.count,site.p.latin,'Vitruvio, De architectura, texto latino V514 (D. Kurilo)']);
   const blob=new Blob(['\ufeff'+rows.map(r=>r.map(q).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lexicon-'+fold(first).replace(/[^\p{L}\p{N}]+/gu,'-')+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)});
  const panel=el('div',null,root);panel.className='lexicon-dictionary';
  if(window.ClassicalLexicon)window.ClassicalLexicon.renderPanel(panel,first,{lang:e.script==='greek'?'grc':'la',work:'vitruvius'});
- if(e.script!=='greek')lg().then(d=>{if(!d)return;const lem=d.forms[fold(first)];if(!lem?.length)return;
-  const same=[...idx.values()].filter(x=>x.script==='latin'&&x!==e&&(d.forms[fold([...x.forms.keys()][0])]||[]).some(l=>lem.includes(l)));
-  if(!same.length)return;const p=el('p',null,root);p.className='lexicon-family';p.append('Otras formas del mismo lema ('+(d.lemmas[lem[0]]?.h||lem[0]).split(' ')[0]+'): ');
-  same.sort((a,b)=>b.sites.size-a.sites.size).slice(0,30).forEach((x,i)=>{if(i)p.append(' · ');const b=el('button',[...x.forms.keys()][0]+' ('+x.sites.size+')',p);b.type='button';b.addEventListener('click',()=>{$('#q').value=x.key;refresh();const hit=filtered.find(f=>f.e===x);if(hit)detail(hit)})});
-  tools.after(p)});
+ if(e.script!=='greek')lg().then(d=>{
+  if(!d||!root.isConnected||root.dataset.entryKey!==e.key)return;
+  const lem=d.forms[fold(first)];if(!lem?.length)return;
+  const family=[...idx.values()].filter(x=>x.script==='latin'&&(d.forms[fold([...x.forms.keys()][0])]||[]).some(l=>lem.includes(l)));
+  if(!family.length)return;
+  family.sort((a,b)=>occurrenceCount(b)-occurrenceCount(a)||a.key.localeCompare(b.key));
+  const lemma=(d.lemmas[lem[0]]?.h||lem[0]).split(' ')[0];
+  const p=el('p',null,root);p.className='lexicon-family';p.append('Otras formas del mismo lema ('+lemma+'): ');
+  family.filter(x=>x!==e).forEach((x,i)=>{
+   if(i)p.append(' · ');
+   const word=[...x.forms.keys()][0],b=el('button',word+' ('+occurrenceCount(x)+')',p);
+   b.type='button';b.addEventListener('click',()=>{$('#q').value=x.key;refresh()});
+  });
+  tools.after(p);
+  const section=el('section',null,root);section.className='lexicon-related-concordance';
+  el('h4','Todas las concordancias del lema '+lemma,section);
+  el('p','Cada variante muestra sus apariciones literales en V514. Abrí una variante para desplegar todos los pasajes; los enlaces llevan al lector bilingüe.',section);
+  for(const x of family){
+   const details=el('details',null,section),word=[...x.forms.keys()][0];
+   el('summary',word+' — '+occurrenceCount(x)+' apariciones en '+x.sites.size+' loci',details);
+   const link=el('a','Estudiar «'+word+'» en Vitruvia Lexicon ↗',details);
+   link.href=lexiconLink(word);
+   details.addEventListener('toggle',()=>{if(details.open&&!details.dataset.loaded){details.dataset.loaded='1';relatedPassages(details,x)}});
+  }
+ });
 }
