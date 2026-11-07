@@ -501,6 +501,8 @@ try{
    await p.locator('#pap-zoom-in').click();
    assert.notEqual(await p.locator('#pap-zoom-value').innerText(),initial,'Zoom button is inert');
 
+   // The advanced extraction workshop is intentionally collapsed below the image.
+   await p.locator('#pap-extraction-fold').evaluate(el=>{el.open=true});
    await p.locator('#pap-ink-papyrus').click();
    await p.locator('#pap-ink-run').click();
    await p.waitForFunction(()=>document.getElementById('pap-ink-canvas')?.width>100&&
