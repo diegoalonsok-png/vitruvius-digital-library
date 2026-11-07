@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/classics-viewer-check.yml'
       - 'scripts/classics-visor-smoke.mjs'
+      - 'assets/classics-text-reader.js'
+      - 'data/classics-corpus/source-scope.json'
+      - 'data/classics-corpus/coverage-audit.json'
+      - 'data/classics-corpus/search-registry.json'
       - 'assets/classical-facsimile-viewer.js'
       - 'assets/bibliotheca-graeca-latina.js'
       - 'assets/vitruvia-search.js'
@@ -13,6 +17,9 @@ on:
       - 'documents/classics/**'
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-24.04
