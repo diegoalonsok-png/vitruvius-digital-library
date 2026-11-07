@@ -1,4 +1,5 @@
 import {normalize,roman} from './search-core.mjs';
+import {appendScholarlyWorkbench} from './concordance-academic.mjs';
 const $=x=>document.querySelector(x),idx=new Map();let passages=[],total=0,filtered=[],visible=0,indirect=false,latinTotal=0,greekTotal=0,specialTotal=0,specialKinds=new Set();
 const greekLatin={ 'γεωμετρια':['geometria','geometriae','geometriam','geometricus','geometrica','geometricam','geometrici','geometricis','geometricorum','geometri'], 'γεωμετρικη':['geometria','geometric'], 'συμμετρια':['symmetria','symmetriae','symmetriam','symmetriarum'], 'αρχιτεκτονικη':['architectura','architecturae','architecturam','architecti','architectus'], 'ευρυθμια':['eurythmia','eurythmiae','eurythmiam']};
 const greekAliases={ 'γεωμετρια':'γεωμετρία','γεωμετρικη':'γεωμετρική','συμμετρια':'συμμετρία','αρχιτεκτονικη':'ἀρχιτεκτονική','ευρυθμια':'εὐρυθμία'};
@@ -68,6 +69,7 @@ function enrich(item,root){
  const e=item.e,first=e.equivalence||[...e.forms.keys()][0];
  const tools=el('div',null,root);tools.className='lexicon-tools';
  addSharing(tools,item,first);
+ appendScholarlyWorkbench(item,root);
  const csv=el('button','Descargar concordancia (CSV)',tools);csv.type='button';
  csv.addEventListener('click',()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"';const rows=[['forma','locus','apariciones','pasaje latino','fuente']];
   for(const site of item.sites)rows.push([first,site.p.locus,site.count,site.p.latin,'Vitruvio, De architectura, texto latino V514 (D. Kurilo)']);
