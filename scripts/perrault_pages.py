@@ -16,10 +16,7 @@ import urllib.request
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SOURCES = {
-    "1673": "data/perrault-iiif-pages.json",
-    "1684": "data/perrault-1684-iiif-pages.json",
-}
+SOURCES = {"1673": "data/perrault-iiif-pages.json"}
 USER_AGENT = "VitruviusDigitalLibrary/1.0 (public-domain scholarly facsimile mirror)"
 Image.MAX_IMAGE_PIXELS = 100_000_000
 
@@ -59,18 +56,18 @@ def convert(raw: bytes, output: pathlib.Path, max_width: int, quality: int):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--year", choices=["1673", "1684", "both"], default="both")
+    parser.add_argument("--year", choices=["1673"], default="1673")
     parser.add_argument("--batch", type=int, default=24,
                         help="Maximum new pages per edition per run")
     parser.add_argument("--width", type=int, default=1450)
     parser.add_argument("--quality", type=int, default=78)
     args = parser.parse_args()
-    if not (1 <= args.batch <= 390 and 500 <= args.width <= 2500
+    if not (1 <= args.batch <= 370 and 500 <= args.width <= 2500
             and 45 <= args.quality <= 95):
         parser.error("Batch, width or quality outside expected range")
     total_downloaded = 0
     total_errors = 0
-    for year in SOURCES if args.year == "both" else [args.year]:
+    for year in [args.year]:
         source = json.loads((ROOT / SOURCES[year]).read_text(encoding="utf-8"))
         pages = source["pages"]
         dest = ROOT / "images" / "perrault" / year
