@@ -43,3 +43,12 @@ assert.match(resolverSource,/resolved&&resolved\.wikidataId===best\.id/,'Authori
 assert.match(rankingSource,/rating:identity\.kind==="person"\?/,'Humanities-first ordering must rank resolved biographies');
 assert.match(rankingSource,/nameLike&&r\.type!=="manuscript"&&!\(r\.preferredWiki&&r\.wikidataId\)/,'Unverified namesakes must not occupy Featured');
 console.log('Humanities-first checks passed: historical figures precede namesakes, while Messi and musicians remain searchable.');
+
+const intentCode=resolverSource.slice(resolverSource.indexOf('function creatorIntent('),resolverSource.indexOf('async function authorityCandidates('));
+vm.runInContext(intentCode+';globalThis.creatorIntent=creatorIntent',names);
+assert.equal(names.creatorIntent('Julio César futbolista'),'sports');
+assert.equal(names.creatorIntent('Taylor Swift cantante'),'music');
+assert.equal(names.creatorIntent('José de San Martín'),'');
+assert.equal(names.clean('Julio César futbolista'),'Julio César');
+assert.equal(names.clean('Taylor Swift cantante'),'Taylor Swift');
+console.log('Qualified modern intent checks passed without overriding humanities-first defaults.');
