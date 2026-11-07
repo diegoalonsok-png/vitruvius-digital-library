@@ -369,6 +369,22 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 #search-form .search-input-row #query:focus{outline:1px solid rgba(179,183,186,.65)!important;outline-offset:2px!important;box-shadow:none!important}
 #search-form .search-input-row:focus-within{box-shadow:none!important;outline:none!important}
 #search-form .search-input-row{min-height:0}
+</style><style>
+/* Quiet, icon-sized utility controls: never use ornate gold-outline buttons. */
+.research-nav-controls>.research-print-button{
+  display:inline-flex!important;align-items:center;justify-content:center;
+  width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;
+  padding:0!important;border:1px solid rgba(132,146,151,.35)!important;border-radius:5px!important;
+  background:transparent!important;color:inherit!important;box-shadow:none!important;
+  font:400 18px/1 system-ui,sans-serif!important;
+}
+.research-nav-controls>.research-print-button:hover{background:rgba(122,136,145,.12)!important;border-color:rgba(122,136,145,.6)!important}
+.research-nav-controls>.research-print-button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+#search-results .result-actions :is(a,button){border-color:rgba(132,146,151,.35)!important;box-shadow:none!important}
+#search-results .result-actions :is(a,button):hover{border-color:rgba(132,146,151,.6)!important}
+#search-results .parallel-latin-source{margin:11px 0 8px;padding-top:9px;border-top:1px solid rgba(136,148,155,.25);font:400 12px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}
+#search-results .parallel-latin-source .parallel-source-label{font-weight:600}
+#search-results .parallel-latin-source .parallel-biblio{margin:4px 0 0;font-weight:400}
 </style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -403,7 +419,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         </div>
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
-          <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir esta página" title="Abrir vista de impresión de la biblioteca">⎙ Imprimir</button>
+          <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir esta página" title="Abrir vista de impresión de la biblioteca"><span aria-hidden="true">⎙</span><span class="sr-only">Imprimir</span></button>
           <span class="vitruvia-top-stack"><a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a><a class="vitruvia-top-link lexicon-top-link" href="vitruvia-lexicon.html" aria-labelledby="lexicon-entry-name lexicon-entry-description"><span class="lexicon-glyph" aria-hidden="true">Λ</span><span class="vitruvia-top-copy"><strong id="lexicon-entry-name">Lexicon</strong><small id="lexicon-entry-description">Griego y latín · etimología y frases</small></span></a></span>
           <span class="header-languages" aria-label="Seleccionar idioma de interfaz" title="Seleccionar idioma / Select language"></span>
         </div>
