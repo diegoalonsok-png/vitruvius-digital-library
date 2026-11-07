@@ -665,5 +665,53 @@ async function boot(){
  selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
  const requestedView=startParams.get("view");
  tab=["pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&sw?.localHtml?"text":sw?.pdf?.url?"pdf":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}for(const name of ["classic-query","classic-language","classic-genre","classic-ui-language"])$(name).addEventListener(name==="classic-query"?"input":"change",()=>{if(name==="classic-ui-language")translateInterface();showSelectedDetail=false;render();});translateInterface();render();initBookSuggestions();}
+
+/* Visual accessibility controls for every embedded frame in the classics catalogue.
+   Exact color changes only apply to locally controlled HTML readers; PDF and external
+   facsimiles can be visually inverted but their original pixels remain unchanged. */
+function installCatalogueFrameTools(){
+ const root=$("classic-detail");if(!root)return;
+ function scan(){
+  for(const frame of root.querySelectorAll("iframe:not([data-color-tools])")){
+   frame.dataset.colorTools="1";
+   const toolbar=document.createElement("div");toolbar.className="classic-frame-colors";
+   toolbar.style.cssText="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px;background:#e6ddcd;border:1px solid #bda988;margin:9px 0 0";
+   const invert=document.createElement("button");invert.type="button";invert.textContent="◐ Invertir visor";
+   invert.title="Invertir visualmente cualquier visor, incluido PDF o facsímil";
+   const url=()=>{try{return new URL(frame.src,location.href)}catch{return null}};
+   const isText=()=>url()?.pathname.endsWith("/classics-text-reader.html");
+   const text=document.createElement("span");text.textContent=isText()?"Paleta de texto:":"PDF o facsímil: inversión visual";
+   text.style.fontSize="12px";toolbar.append(invert,text);
+   let inverted=false;
+   invert.addEventListener("click",()=>{
+    inverted=!inverted;
+    if(isText()&&!frame.src.includes("example.invalid")){
+     const fg=inverted?"#f4efdf":"#202b35",bg=inverted?"#1b2833":"#fffdfa";
+     frame.addEventListener("load",()=>{}, {once:true});
+     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:url()?.searchParams.get("work"),lang:url()?.searchParams.get("lang"),background:bg,foreground:fg},"*");
+    }else frame.style.filter=inverted?"invert(1)":"none";
+    invert.setAttribute("aria-pressed",String(inverted));
+   });
+   if(isText()){
+    const bg=document.createElement("input"),fg=document.createElement("input");
+    bg.type=fg.type="color";bg.value="#fffdfa";fg.value="#202b35";
+    for(const [el,label] of [[bg,"Fondo libre"],[fg,"Texto libre"]]){
+     el.setAttribute("aria-label",label);el.title=label;el.style.cssText="width:34px;height:32px;padding:2px";
+     toolbar.append(el);
+    }
+    const update=()=>{
+     const u=url();if(!u)return;
+     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:u.searchParams.get("work"),lang:u.searchParams.get("lang"),background:bg.value,foreground:fg.value},"*");
+    };
+    bg.addEventListener("input",update);fg.addEventListener("input",update);frame.addEventListener("load",update);
+   }
+   frame.before(toolbar);
+  }
+ }
+ let scheduled=false;const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;queueMicrotask(()=>{scheduled=false;scan();});});
+ observer.observe(root,{childList:true,subtree:true});scan();
+}
+installCatalogueFrameTools();
+
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
 })();
