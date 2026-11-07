@@ -22,7 +22,10 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 .syncbar output{font-size:13px;font-variant-numeric:tabular-nums}
 @media(max-width:700px){.syncbar{position:sticky;top:0;z-index:5}}
 
-/* Per-panel Lexicon-inspired tools. They never alter the stored text. */
+.pane-version{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#f7f0e3;border-bottom:1px solid var(--line);padding:9px 12px;color:#20364c;font:600 13px system-ui}
+.pane-version select{flex:1;max-width:240px;min-width:0;padding:9px;border:1px solid #a38d6c;background:#fff;color:#18364c;font:14px system-ui}
+.pane-version select:focus-visible{outline:3px solid #b78d44}
+ /* Per-panel Lexicon-inspired tools. They never alter the stored text. */
 .appearance{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:9px;background:#e8dcc8;border-bottom:1px solid var(--line)}
 .appearance button,.appearance select{min-height:34px;border:1px solid #a38d6c;border-radius:4px;background:#fffdf6;color:#253c4b;padding:5px 8px;font:600 12px system-ui;cursor:pointer}
 .appearance button:focus-visible,.appearance select:focus-visible,.appearance input:focus-visible{outline:3px solid #b78d44;outline-offset:2px}
@@ -46,7 +49,7 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 <output id="sync-position">Sin sincronizar</output>
 </div>
 <p id="status" role="status" aria-live="polite">Cargando las versiones documentadas…</p>
-<div class="panes"><section class="pane"><strong>Visor izquierdo · navegación independiente</strong><div class="appearance" role="group" aria-label="Estilo del visor izquierdo">
+<div class="panes"><section class="pane"><strong>Visor izquierdo · navegación independiente</strong><label class="pane-version">Versión del visor izquierdo <select id="left-pane-language" aria-label="Cambiar versión del visor izquierdo"></select></label><div class="appearance" role="group" aria-label="Estilo del visor izquierdo">
 <button type="button" id="left-ivory" aria-label="Tema marfil en visor left" title="Marfil">◧ Marfil</button>
 <button type="button" id="left-sepia" aria-label="Tema sepia en visor left" title="Sepia">◩ Sepia</button>
 <button type="button" id="left-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor left">◐ Invertir</button>
@@ -58,7 +61,7 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 <span class="zoom-level" id="left-size">20 px</span>
 <button type="button" id="left-larger" aria-label="Aumentar texto del visor left" title="Lupa más">⌕+</button>
 <button type="button" id="left-reset" aria-label="Restablecer colores y tipografía del visor left">↺</button>
-</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>Visor derecho · navegación independiente</strong><div class="appearance" role="group" aria-label="Estilo del visor derecho">
+</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>Visor derecho · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" role="group" aria-label="Estilo del visor derecho">
 <button type="button" id="right-ivory" aria-label="Tema marfil en visor right" title="Marfil">◧ Marfil</button>
 <button type="button" id="right-sepia" aria-label="Tema sepia en visor right" title="Sepia">◩ Sepia</button>
 <button type="button" id="right-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor right">◐ Invertir</button>
@@ -80,7 +83,7 @@ const params=new URLSearchParams(location.search),work=params.get("work")||"dida
 const $=id=>document.getElementById(id),status=$("status"),left=$("left"),right=$("right");
 const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português"};
 if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
-let files={},versions={},position=0,ready={left:false,right:false},generation=0;
+let files={},versions={},position=0,ready={left:false,right:false},generation={left:0,right:0};
 
 const defaults={background:"#fffdf7",foreground:"#202b35",font:"serif",size:20};
 const palettes={left:{...defaults},right:{...defaults}};
@@ -202,7 +205,21 @@ function versionsFor(languages){return Promise.all(languages.map(async lang=>{
  try{const response=await fetch(path);if(!response.ok)return;const data=await response.json();
  if(data.workId===work&&data.language===lang&&Array.isArray(data.passages)&&data.passages.length)versions[lang]=data;}catch{}
 }));}
-async function changed(side,lang){const current=++generation;await versionsFor([lang]);if(current!==generation)return;position=Math.min(position,Math.max(0,count()-1));frame(side,lang);buttons();store();}
+async function changed(side,lang){
+ const current=++generation[side];
+ const panel=$(side+"-pane-language");
+ if(panel)panel.value=lang;
+ status.textContent="Cargando "+(LANG[lang]||lang)+" en el visor "+(side==="left"?"izquierdo":"derecho")+"…";
+ await versionsFor([lang]);
+ if(current!==generation[side]||$(side).value!==lang)return;
+ if(!versions[lang]){
+  status.textContent="Esta versión no tiene texto completo legible. Se conserva la versión anterior.";
+  return;
+ }
+ position=Math.min(position,Math.max(0,count()-1));
+ frame(side,lang);buttons();store();
+ status.textContent="Versión "+(LANG[lang]||lang)+" seleccionada. El texto se carga de forma independiente.";
+}
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||![ $("pane-left").contentWindow,$("pane-right").contentWindow ].includes(event.source))return;
  const msg=event.data;if(!msg||msg.type!=="vitruvia-parallel-ready"||msg.work!==work)return;
@@ -221,15 +238,21 @@ fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw 
  files=rec.corpusFiles;const langs=Object.keys(files).filter(l=>Object.hasOwn(LANG,l));
  const ordered=["grc","la","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
  if(!ordered.length)throw Error("No hay versiones textuales disponibles.");
- fill(left,ordered);fill(right,ordered);
+ fill(left,ordered);fill(right,ordered);fill($("left-pane-language"),ordered);fill($("right-pane-language"),ordered);
  left.value=ordered.includes(params.get("left"))?params.get("left"):ordered[0];
  right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(l=>l!==left.value)||ordered[0]);
+ $("left-pane-language").value=left.value;$("right-pane-language").value=right.value;
  await versionsFor([left.value,right.value]);position=Math.min(position,Math.max(0,count()-1));
  $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
  status.textContent=rec.author+" · "+rec.title+". "+(count()?"Navegación conjunta orientativa. Si las versiones tienen distinta cantidad de unidades, cada una conserva el último capítulo alcanzado y nunca se recorta su contenido.":"Alguna versión no admite todavía sincronización; ambos lectores siguen independientes.");
  frame("left",left.value);frame("right",right.value);
- left.addEventListener("change",()=>changed("left",left.value));
- right.addEventListener("change",()=>changed("right",right.value));
+ for(const side of ["left","right"]){
+  $(side).addEventListener("change",()=>changed(side,$(side).value));
+  $(side+"-pane-language").addEventListener("change",()=>{
+   $(side).value=$(side+"-pane-language").value;
+   changed(side,$(side).value);
+  });
+ }
 }).catch(err=>{status.textContent=err.message;buttons();});
 buttons();
 })();
