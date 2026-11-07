@@ -30,9 +30,36 @@
 #lx-classics-bridge .lx-library-meta{margin:5px 0;color:inherit;opacity:.65;font:400 11px/1.5 system-ui,sans-serif}
 #lx-classics-bridge .lx-library-excerpt{margin:5px 0;font:400 14px/1.7 Georgia,"Times New Roman",serif;color:inherit;overflow-wrap:anywhere}
 #lx-classics-bridge mark,#lx-classics-bridge .query-hit{
-  background:rgba(170,175,180,.18)!important;color:inherit!important;
+  background:#ffe25b!important;color:#171717!important;
   padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone;
 }
 html[data-theme=light] #lx-classics-bridge .lx-library-button{background:#eeece7;color:#25292d;border-color:#969da2}
 html[data-theme=light] #lx-classics-bridge .lx-library-button:hover{background:#dededc}
 @media(max-width:600px){#lx-classics-bridge .lx-library-actions{align-items:stretch}#lx-classics-bridge .lx-library-button{flex:1 1 180px}}
+
+/* Automatic lexical attestations: yellow across Latin, Greek and translations.
+   Explicit researcher-selected highlight color (--lx-mark) has precedence. */
+#lx-results:not(.lx-marked) mark,
+#lx-results:not(.lx-marked) mark.w,
+#lx-classics-bridge mark,
+#lx-orthography mark,
+#lx-toponymicon mark,
+#lx-encyclopedia mark,
+#lx-classics-bridge .query-hit {
+  background:#ffe25b!important;
+  color:#171717!important;
+  text-decoration:none!important;
+  border-radius:2px;
+  padding:0 .12em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+#lx-results.lx-marked mark,
+#lx-results.lx-marked mark.w {
+  background:var(--lx-mark,#ffe25b)!important;
+  color:#fff!important;
+}
+#lx-results.lx-marked[style*="#7a5c12"] mark,
+#lx-results.lx-marked[style*="#7a5c12"] mark.w {
+  color:#fff!important;
+}
