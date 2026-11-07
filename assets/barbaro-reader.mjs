@@ -3,23 +3,33 @@ const REMOTE='https://www.e-rara.ch/i3f/v20/6125674/manifest';
 const LOCAL='data/iiif/barbaro-1567.json';
 const status=$('bar-status'),view=$('bar-image'),mag=$('bar-magnified'),bubble=$('bar-loupe');
 let pages=[],currentSerial=0;
-const text=s=>String(s??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
+// Keep a small in-memory browser preload only for the immediate next page;
+ // do not fetch all 522 folios and do not store heavy facsimiles in the repo.
+ let preload=null;
+ function warmNext(page){
+  if(!pages.length||page>=pages.length)return;
+  const next=getPageImage(pages[page])[0];
+  if(!next)return;
+  preload=new Image();
+  preload.decoding='async';
+  preload.src=next;
+ }
+ const text=s=>String(s??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
 function label(c){
  const value=c.label||c.iiif_label||'';
  return typeof value==='string'?value:Object.values(value||{}).flat().join(' · ');
 }
 function getPageImage(c){
- // Prefer facsimiles archived in GitHub Pages. If the local image is not yet
- // present, the IIIF source remains a documented fallback (not an empty card).
- if(c.local_url&&c.image_url)return [c.local_url,c.image_url];
- if(c.local_url)return [c.local_url,null];
- if(c.image_url)return [c.image_url,null];
+ // The catalogue includes 522 "local_url" placeholders, but they are NOT
+ // necessarily mirrored files. Request the real IIIF service first to avoid
+ // a slow 404 request for every folio before the usable image appears.
  const body=c.images?.[0]?.resource||c.items?.[0]?.items?.[0]?.body;
  const service=body?.service||body?.services;
  const srv=Array.isArray(service)?service[0]:service;
  const id=typeof srv==='string'?srv:srv?.id||srv?.['@id'];
- const src=id?String(id).replace(/\/$/,'')+'/full/1200,/0/default.jpg':body?.id||body?.['@id'];
- return [src,null];
+ const src=c.image_url||(id?String(id).replace(/\/$/,'')+'/full/1200,/0/default.jpg':body?.id||body?.['@id']);
+ const compact=src?String(src).replace(/\/full\/[^/]+\/0\/default\.jpg(?:\?.*)?$/,'/full/900,/0/default.jpg'):null;
+ return [compact||src,c.image_url&&compact!==c.image_url?c.image_url:null];
 }
 async function readIndex(url){
  const r=await fetch(url,{headers:{'Accept':'application/json,application/ld+json'}});
@@ -62,9 +72,17 @@ function openPage(){
  if(!urls[0]){status.textContent='La imagen '+page+' carece de servicio IIIF.';return;}
  let index=0;
  status.textContent='Abriendo imagen '+page+' de '+pages.length+'…';
- view.onload=()=>{if(serial!==currentSerial)return;mag.src=view.src;filters();status.textContent='Imagen '+page+' de '+pages.length+' cargada.'};
+ view.onload=()=>{
+  if(serial!==currentSerial)return;
+  // Use the same decoded source; avoid assigning a separate remote request
+  // to the loupe until magnification is explicitly enabled.
+  if($('bar-magnify').checked)mag.src=view.src;
+  filters();
+  status.textContent='Imagen '+page+' de '+pages.length+' cargada desde IIIF ('+view.naturalWidth+' px).';
+  warmNext(page);
+ };
  view.onerror=()=>{if(serial!==currentSerial)return;if(index===0&&urls[1]){index=1;view.src=urls[1];return;}status.textContent='La imagen no se pudo cargar. Consulta el original institucional en e-rara.'};
- view.src=urls[0];
+ view.decoding='async';view.fetchPriority='high';view.src=urls[0];
 }
 function step(n){if(!pages.length)return;$('bar-page').value=String(Math.max(1,Math.min(pages.length,Number($('bar-page').value)+n)));openPage();}
 $('bar-open').addEventListener('click',openPage);
@@ -80,6 +98,7 @@ $('bar-find').addEventListener('click',()=>{
  $('bar-page').value=String(positions[0].i+1);openPage();
 });
 $('bar-folio-search').addEventListener('keydown',e=>{if(e.key==='Enter'){$('bar-find').click();}});
+$('bar-magnify').addEventListener('change',()=>{if($('bar-magnify').checked&&view.complete&&view.naturalWidth)mag.src=view.src;else {bubble.style.display='none';mag.removeAttribute('src')}});
 for(const id of ['bar-zoom','bar-contrast','bar-brightness','bar-gray','bar-negative'])$(id).addEventListener('input',filters);
 $('bar-stage').addEventListener('pointermove',ev=>{
  if(!$('bar-magnify').checked||!view.naturalWidth)return;
