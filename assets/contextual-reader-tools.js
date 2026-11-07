@@ -70,7 +70,10 @@ function chosenText(){return capture()?.toString()?.trim()||""}
 function citation(){
  const selection=chosenText();
  const text=selection||body.innerText.slice(0,1700);
- return "Vitruvius Digital Library · "+title()+"\n"+text+"\n\nFuente para verificar edición y locus: "+source()+"\nLa cita debe comprobarse en el lector de la edición.";
+ const excerpt=savedRange?.startContainer?.parentElement?.closest(".ctx-excerpt");
+ const passageUrl=excerpt?.querySelector("a[href]")?.href||source();
+ const passageTitle=excerpt?.querySelector("a")?.textContent?.trim()||"Dossier contextual; verificar locus en el lector";
+ return "Vitruvius Digital Library · "+title()+"\n"+passageTitle+"\n"+text+"\n\nEdición y pasaje: "+passageUrl+"\nFicha de consulta: "+source()+"\nLa cita debe comprobarse en el lector de la edición.";
 }
 function stop(){speechId++;synth?.cancel()}
 function speak(){
