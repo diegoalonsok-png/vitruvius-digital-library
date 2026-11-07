@@ -9,11 +9,12 @@ let versions=[],entries=[],concepts=[],shown=0,filtered=[];
 function el(tag,text,cls){const n=document.createElement(tag);if(text!=null)n.textContent=String(text);if(cls)n.className=cls;return n}
 function link(href,label){const a=el("a",label);a.href=href;return a}
 function option(parent,value,text){const o=el("option",text);o.value=value;parent.append(o)}
-function url(base,opts){const u=new URL(base,location.href);Object.entries(opts).forEach(([k,v])=>{if(v!==undefined&&v!==null&&v!=="")u.searchParams.set(k,String(v))});return u.pathname.replace(/^\\/[^/]+\\/vitruvius-digital-library\\//,"")+u.search+u.hash}
+function relativePath(u){const root=new URL(".",location.href).pathname;return u.pathname.startsWith(root)?u.pathname.slice(root.length):u.pathname}
+function url(base,opts){const u=new URL(base,location.href);Object.entries(opts).forEach(([k,v])=>{if(v!==undefined&&v!==null&&v!=="")u.searchParams.set(k,String(v))});return relativePath(u)+u.search+u.hash}
 function reader(v,locus,term){
  const e=entries.find(x=>x.workId===v.workId&&x.language===v.language&&x.path===v.source);
  const base=e?.reader||("classics-text-reader.html?work="+encodeURIComponent(v.workId)+"&lang="+encodeURIComponent(v.language));
- if(e?.format==="html-text"){const p=new URL(base,location.href);p.searchParams.set("q",term);return p.pathname.replace(/^\\/[^/]+\\/vitruvius-digital-library\\//,"")+p.search+(locus&&/^[-a-zA-Z0-9_]+$/.test(locus)?"#"+encodeURIComponent(locus):"")}
+ if(e?.format==="html-text"){const p=new URL(base,location.href);p.searchParams.set("q",term);return relativePath(p)+p.search+(locus&&/^[-a-zA-Z0-9_]+$/.test(locus)?"#"+encodeURIComponent(locus):"")}
  if(e?.format==="historical-ocr-pages")return url(base,{q:term,page:locus});
  return url(base,{q:term,locus});
 }
