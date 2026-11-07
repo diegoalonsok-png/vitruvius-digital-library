@@ -19,6 +19,11 @@ function attach({work,side,root,column,getLocus,getLanguage,getSourceText,getSea
  const prefKey="vitruvia.study.appearance.v1."+work+"."+side;
  const defaults={background:"#000000",foreground:"#f3f3f3",font:"classic",size:20,mark:"#ffe27a"};
  const candidate=safeRead(prefKey,{});
+ // Earlier versions saved their pale default automatically on every render.
+ // Migrate that implicit default to black; retain explicitly customized colors.
+ if(candidate.background==="#f9f6ec"&&candidate.foreground==="#202b33"){
+  candidate.background=defaults.background;candidate.foreground=defaults.foreground;
+ }
  const pref={...defaults};
  for(const field of ["background","foreground","mark"])if(safeColor(candidate[field]))pref[field]=candidate[field];
  if(Object.hasOwn(fonts,candidate.font))pref.font=candidate.font;
