@@ -1,0 +1,310 @@
+{
+  "schema": "vitruvia-bibliographia-architectonica-v1",
+  "title": "Bibliographia Architectonica Graeca et Latina (siglos II a. C.–XIX)",
+  "method": "Catálogo selectivo para investigación: distingue composición original, edición, traducción y tratados modernos en lenguas vernáculas. Las fechas antiguas son aproximadas; 'en catálogo' no significa texto digitalizado ni disponibilidad de PDF. No se inventan enlaces a ejemplares.",
+  "references": [
+    {
+      "label": "Université de Tours · Architectura (colección de libros de arquitectura)",
+      "url": "https://architectura.univ-tours.fr/en/livres-auteur/vitruvec490/"
+    },
+    {
+      "label": "University of Chicago Library · Architectural Treatises pre-1900",
+      "url": "https://www.lib.uchicago.edu/collex/exhibits/firmness-commodity-and-delight/pre-1900/"
+    },
+    {
+      "label": "Universidad Politécnica de Madrid · Biblioteca Digital Vitruvio",
+      "url": "https://biblioteca.aq.upm.es/biblioteca_digital/vitruvio.html"
+    }
+  ],
+  "entries": [
+    {
+      "id": "philo-belopoeica",
+      "year": -200,
+      "when": "siglos III–II a. C. (datación aproximada)",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά (Belopoeica)",
+      "language": "grc",
+      "kind": "technical",
+      "topic": "máquinas de guerra e ingeniería",
+      "status": "obra técnica; no tratado general de arquitectura",
+      "note": "Se incluye por la transmisión de la ingeniería y la mecánica aplicadas; datación de composición aproximada."
+    },
+    {
+      "id": "vitruvius",
+      "year": -25,
+      "when": "c. 30–20 a. C.",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem",
+      "language": "la",
+      "kind": "original",
+      "topic": "arquitectura, máquinas, hidráulica, urbanismo",
+      "link": "bibliotheca-graeca-latina.html?work=vitruvius",
+      "note": "Tratado antiguo de referencia. La transmisión depende de manuscritos medievales y ediciones modernas."
+    },
+    {
+      "id": "hero-pneumatica",
+      "year": 60,
+      "when": "siglo I d. C.",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά (Pneumatica)",
+      "language": "grc",
+      "kind": "technical",
+      "topic": "autómatas y mecanismos neumáticos",
+      "note": "Obra técnica griega relevante para dispositivos y sistemas hidráulicos."
+    },
+    {
+      "id": "hero-dioptra",
+      "year": 60,
+      "when": "siglo I d. C. (atribución tradicional)",
+      "author": "Herón de Alejandría",
+      "title": "Διόπτρα (Dioptra)",
+      "language": "grc",
+      "kind": "technical",
+      "topic": "mensura y agrimensura",
+      "note": "Instrumentos de medición; la cronología y la constitución del corpus heroniano requieren examen."
+    },
+    {
+      "id": "hero-automata",
+      "year": 60,
+      "when": "siglo I d. C. (atribución tradicional)",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική (Automata)",
+      "language": "grc",
+      "kind": "technical",
+      "topic": "mecánica y teatro de autómatas"
+    },
+    {
+      "id": "frontinus",
+      "year": 98,
+      "when": "c. 97–98 d. C.",
+      "author": "Sexto Julio Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "language": "la",
+      "kind": "original",
+      "topic": "acueductos, infraestructura y administración del agua",
+      "link": "bibliotheca-graeca-latina.html?work=frontinus-aquaeductu"
+    },
+    {
+      "id": "faventinus",
+      "year": 300,
+      "when": "época imperial tardía (datación discutida)",
+      "author": "Marco Cetio Faventino",
+      "title": "De diversis fabricis architectonicae",
+      "language": "la",
+      "kind": "original",
+      "topic": "compendio de técnicas constructivas",
+      "note": "Compendio asociado a la tradición vitruviana; la cronología no se fija con seguridad."
+    },
+    {
+      "id": "palladius",
+      "year": 400,
+      "when": "siglos IV–V d. C.",
+      "author": "Rutilio Tauro Emiliano Paladio",
+      "title": "Opus agriculturae",
+      "language": "la",
+      "kind": "technical",
+      "topic": "arquitectura rural y edificaciones agrícolas",
+      "note": "Tratado agrícola que incluye recomendaciones constructivas; no exclusivamente arquitectónico."
+    },
+    {
+      "id": "procopius",
+      "year": 555,
+      "when": "siglo VI d. C.",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων (De aedificiis)",
+      "language": "grc",
+      "kind": "original",
+      "topic": "edificios y obras de Justiniano",
+      "note": "Descripción y panegírico de construcciones, no manual constructivo."
+    },
+    {
+      "id": "alberti",
+      "year": 1485,
+      "when": "redactado hacia mediados del siglo XV; impreso en 1485",
+      "author": "Leon Battista Alberti",
+      "title": "De re aedificatoria",
+      "language": "la",
+      "kind": "original",
+      "topic": "teoría y práctica arquitectónica",
+      "external": "https://architectura.univ-tours.fr/en/livres-notice/ensba_20a4c490/"
+    },
+    {
+      "id": "sulpizio",
+      "year": 1486,
+      "when": "c. 1486",
+      "author": "Giovanni Sulpizio da Veroli",
+      "title": "Vitruvius · De architectura (editio princeps)",
+      "language": "la",
+      "kind": "edition",
+      "topic": "primera edición impresa del tratado",
+      "external": "https://architectura.univ-tours.fr/en/livres-auteur/vitruvec490/"
+    },
+    {
+      "id": "giocondo",
+      "year": 1511,
+      "when": "1511",
+      "author": "Fra Giovanni Giocondo",
+      "title": "Vitruvius · De architectura (edición ilustrada)",
+      "language": "la",
+      "kind": "edition",
+      "topic": "edición humanística de Vitruvio",
+      "external": "https://architectura.univ-tours.fr/en/livres-auteur/vitruvec490/"
+    },
+    {
+      "id": "cesariano",
+      "year": 1521,
+      "when": "1521",
+      "author": "Cesare Cesariano",
+      "title": "Di Lucio Vitruvio Pollione de architectura libri dece",
+      "language": "it",
+      "kind": "translation",
+      "topic": "traducción y comentario de Vitruvio",
+      "link": "cesariano-1521.html",
+      "note": "Italiano renacentista, no texto original latino."
+    },
+    {
+      "id": "serlio",
+      "year": 1537,
+      "when": "a partir de 1537",
+      "author": "Sebastiano Serlio",
+      "title": "Tutte l'opere d'architettura et prospetiva",
+      "language": "it",
+      "kind": "modern",
+      "topic": "órdenes, perspectiva y tipologías",
+      "note": "Publicación escalonada de libros en distintas fechas."
+    },
+    {
+      "id": "barbaro",
+      "year": 1567,
+      "when": "1556; edición de 1567",
+      "author": "Daniele Barbaro",
+      "title": "I dieci libri dell'architettura di Vitruvio",
+      "language": "it",
+      "kind": "translation",
+      "topic": "comentario, traducción e ilustración",
+      "link": "barbaro-1567.html"
+    },
+    {
+      "id": "vignola",
+      "year": 1562,
+      "when": "1562",
+      "author": "Giacomo Barozzi da Vignola",
+      "title": "Regola delli cinque ordini d'architettura",
+      "language": "it",
+      "kind": "modern",
+      "topic": "órdenes arquitectónicos"
+    },
+    {
+      "id": "palladio",
+      "year": 1570,
+      "when": "1570",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "language": "it",
+      "kind": "modern",
+      "topic": "teoría, órdenes y villas"
+    },
+    {
+      "id": "scamozzi",
+      "year": 1615,
+      "when": "1615",
+      "author": "Vincenzo Scamozzi",
+      "title": "L'idea della architettura universale",
+      "language": "it",
+      "kind": "modern",
+      "topic": "teoría arquitectónica y construcción"
+    },
+    {
+      "id": "perrault",
+      "year": 1673,
+      "when": "1673",
+      "author": "Claude Perrault",
+      "title": "Les dix livres d'architecture de Vitruve",
+      "language": "fr",
+      "kind": "translation",
+      "topic": "traducción comentada del tratado latino",
+      "link": "perrault-1673.html",
+      "external": "https://architectura.univ-tours.fr/livres-notice/ensba_01665a0013/"
+    },
+    {
+      "id": "fischer",
+      "year": 1721,
+      "when": "1721",
+      "author": "Johann Bernhard Fischer von Erlach",
+      "title": "Entwurff einer historischen Architectur",
+      "language": "de",
+      "kind": "modern",
+      "topic": "historia arquitectónica comparada"
+    },
+    {
+      "id": "laugier",
+      "year": 1753,
+      "when": "1753",
+      "author": "Marc-Antoine Laugier",
+      "title": "Essai sur l'architecture",
+      "language": "fr",
+      "kind": "modern",
+      "topic": "teoría y estética arquitectónica"
+    },
+    {
+      "id": "chambers",
+      "year": 1759,
+      "when": "1759",
+      "author": "William Chambers",
+      "title": "A Treatise on Civil Architecture",
+      "language": "en",
+      "kind": "modern",
+      "topic": "arquitectura civil y órdenes"
+    },
+    {
+      "id": "ortiz",
+      "year": 1787,
+      "when": "1787",
+      "author": "José Ortiz y Sanz",
+      "title": "Los diez libros de arquitectura de M. Vitruvio Polión",
+      "language": "es",
+      "kind": "translation",
+      "topic": "traducción castellana comentada"
+    },
+    {
+      "id": "durand",
+      "year": 1802,
+      "when": "1802–1805",
+      "author": "Jean-Nicolas-Louis Durand",
+      "title": "Précis des leçons d'architecture",
+      "language": "fr",
+      "kind": "modern",
+      "topic": "composición y enseñanza arquitectónica"
+    },
+    {
+      "id": "viollet",
+      "year": 1854,
+      "when": "1854–1868",
+      "author": "Eugène Viollet-le-Duc",
+      "title": "Dictionnaire raisonné de l'architecture française du XIe au XVIe siècle",
+      "language": "fr",
+      "kind": "modern",
+      "topic": "historia, construcción y patrimonio"
+    },
+    {
+      "id": "semper",
+      "year": 1860,
+      "when": "1860–1863",
+      "author": "Gottfried Semper",
+      "title": "Der Stil in den technischen und tektonischen Künsten",
+      "language": "de",
+      "kind": "modern",
+      "topic": "teoría de la forma y técnica"
+    },
+    {
+      "id": "choisy",
+      "year": 1899,
+      "when": "1899",
+      "author": "Auguste Choisy",
+      "title": "Histoire de l'architecture",
+      "language": "fr",
+      "kind": "modern",
+      "topic": "historia analítica de la arquitectura"
+    }
+  ]
+}

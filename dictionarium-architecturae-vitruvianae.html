@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dictionarium Architecturae Vitruvianae · Diccionario arquitectónico de Vitruvio</title>
+<meta name="description" content="Diccionario especializado de terminología arquitectónica de Vitruvio: lemas latinos, grafías griegas, acepciones técnicas, etimología documentada y concordancias de De architectura.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/dictionarium-architecturae-vitruvianae.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+main{max-width:1420px;margin:auto;padding:28px clamp(14px,3vw,40px) 96px;color:var(--ink,#223745)}
+h1{font:normal clamp(31px,4vw,53px)/1.15 Georgia,serif;margin:10px 0}
+h2,h3{font-family:Georgia,serif;font-weight:normal}
+.intro{max-width:100ch;line-height:1.65}
+.controls{display:grid;grid-template-columns:minmax(220px,2fr) minmax(150px,1fr) minmax(170px,1fr);gap:12px;margin:20px 0;padding:17px;border:1px solid #9a8c76;background:var(--surface,#fffdf8)}
+.controls label{display:grid;gap:6px;font:600 13px/1.4 system-ui,sans-serif}
+.controls input,.controls select{padding:12px;width:100%;box-sizing:border-box;border:1px solid #9a8c76;border-radius:3px;background:var(--surface,#fff);color:var(--ink,#283c46);font:17px Georgia,serif}
+.layout{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,2fr);gap:20px}
+.panel{border:1px solid #9a8c76;background:var(--surface,#fffdf8);color:var(--ink,#223745);padding:20px;min-width:0}
+#headwords{max-height:730px;overflow:auto}
+.item{display:block;width:100%;margin:0 0 5px;padding:9px 11px;text-align:left;border:1px solid #a79b87;background:transparent;color:inherit;cursor:pointer;font:16px/1.4 Georgia,serif}
+.item[aria-current=true]{border-left:4px solid #b28c4c;font-weight:bold}
+.item small{display:block;opacity:.7;font:12px/1.4 system-ui}
+.lemma{font:normal clamp(28px,3vw,39px)/1.2 Georgia,serif;margin:0 0 9px}
+.grc{font-size:22px;line-height:1.7}
+.meta{font:13px/1.6 system-ui;opacity:.84}
+.note{padding:11px 15px;border-left:3px solid #a2895a;background:rgba(135,120,100,.08);line-height:1.6}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}
+.links a{border:1px solid #9a8c76;border-radius:4px;padding:8px 11px;color:inherit;text-decoration:none;font:13px/1.5 system-ui}
+.links a:hover,.item:hover{background:rgba(142,120,82,.13)}
+.locus{padding:12px 0;border-top:1px solid #b1a592;max-width:96ch}
+.locus blockquote{margin:8px 0;font:16px/1.65 Georgia,serif}
+.locus .translation{opacity:.85}
+.small{font:13px/1.6 system-ui;opacity:.83}
+#count{font:13px system-ui}
+@media(max-width:780px){.layout{grid-template-columns:1fr}#headwords{max-height:245px}.controls{grid-template-columns:1fr}}
+</style>
+<script defer src="assets/site-bar.js?v=20261107-academic-v4"></script><script defer src="assets/theme.js?v=20261105-merge-v1"></script>
+</head><body><main>
+<p class="small"><a href="index.html">← Vitruvius Digital Library</a> · <a href="vitruvia-lexicon.html">Lexicon</a> · <a href="lexicon-vitruvianum.html">Concordancia V514</a> · <a href="bibliotheca-lexicographica.html">Diccionarios generales</a> · <a href="bibliographia-architectonica.html">Bibliografía de arquitectura, s. II a. C.–XIX</a></p>
+<p class="small">LEXICOGRAPHIA ARCHITECTONICA · DE ARCHITECTURA · LIBRI I–X</p>
+<h1>Dictionarium Architecturae Vitruvianae</h1>
+<p class="intro">Diccionario de voces técnicas de la arquitectura, construcción, materiales, órdenes, geometría, urbanismo, hidráulica, máquinas y teoría de Vitruvio. Reutiliza <strong>el léxico latino y el Etymologicum existentes</strong>: no altera las transcripciones ni genera definiciones ficticias. Cada voz conecta con las concordancias del texto latino y el análisis etimológico. Se conservan las grafías griegas originales cuando figuran en la ficha.</p>
+<p class="note">Distinción editorial: <strong>revisada</strong> significa que el registro está marcado como cotejado en los datos de origen; <strong>provisional</strong> significa que la glosa aún requiere revisión individual. Las citas de la ficha etimológica son editoriales y deben verificarse en el locus. No confundir similitud de vocabulario con identidad etimológica ni una coincidencia de forma con una acepción contextual demostrada.</p>
+<div class="controls">
+<label>Buscar lema, grafía griega o significado<input id="query" type="search" spellcheck="false" placeholder="symmetria · τάξις · columna · proporción"></label>
+<label>Campo arquitectónico<select id="field"><option value="">Todos los campos</option></select></label>
+<label>Estado de ficha<select id="review"><option value="">Todas las fichas</option><option value="verified">Revisadas</option><option value="draft">Provisionales</option></select></label>
+</div>
+<p id="count" role="status">Cargando el diccionario...</p>
+<div class="layout"><section class="panel" aria-label="Índice de voces"><h2>Voces latinas</h2><div id="headwords"></div></section><article class="panel" id="detail" aria-live="polite"><p>Seleccione una palabra del índice.</p></article></div>
+<section class="panel" style="margin-top:20px"><h2>Alcance y fuentes</h2><p>Corpus del proyecto: <a href="data/latin-lexicon.json">Léxico latino</a>, <a href="data/lexicon/etymologicum.json">Etymologicum</a>, <a href="data/lexicon/thesaurus.json">Thesaurus thematicus</a> y <a href="lexicon-vitruvianum.html">concordancia de la Recensio V514</a>. La clasificación temática es una herramienta de navegación, no la interpretación automática de cada ocurrencia. La obra de referencia puede consultarse por libro y locus a partir del lector de la biblioteca.</p><p class="small">Edición digital a cargo de Diego A. Kurilo. Las citas de diccionarios como Lewis &amp; Short o LSJ se atribuyen por entrada cuando están identificadas. Los diccionarios modernos protegidos no se reproducen sin autorización. El protocolo de crítica y fuentes se describe en el <a href="protocolo-academico-lexicon.html">protocolo académico del Lexicon</a>.</p></section>
+</main>
+<script>
+(()=>{"use strict";const $=id=>document.getElementById(id);const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!=null)n.textContent=String(text);if(cls)n.className=cls;return n};const fields={};let entries=[],byId=new Map(),etym=new Map(),filtered=[],selected=null;
+function a(url,text){const n=el("a",text);n.href=url;return n}
+function links(box,e){const nav=el("nav",null,"links");const term=e.lemma;nav.append(a("lexicon-vitruvianum.html?q="+encodeURIComponent(term),"Concordancia de Vitruvio"));nav.append(a("vitruvia-lexicon.html?q="+encodeURIComponent(term)+"&mode=palabra","Estudio en Lexicon"));nav.append(a("bibliotheca-lexicographica.html?q="+encodeURIComponent(term)+"&lang=la","Lewis & Short / diccionarios"));nav.append(a("index-locorum.html?q="+encodeURIComponent(term),"Index locorum"));box.append(nav)}
+function renderDetail(e){selected=e.lemma;const b=$("detail");b.replaceChildren();b.append(el("p",e.verified?"FICHA REVISADA · según datos de origen":"GLOSA PROVISIONAL · requiere cotejo","meta"));b.append(el("h2",e.lemma,"lemma"));const desc=[e.headword,e.pos].filter(Boolean).join(" · ");if(desc)b.append(el("p",desc,"meta"));if(e.es)b.append(el("p","Castellano: "+e.es));const trans=el("p",null,"meta");trans.textContent=[e.en?"Inglés: "+e.en:"",e.fr?"Francés: "+e.fr:""].filter(Boolean).join(" · ");if(trans.textContent)b.append(trans);
+if(e.greek){const p=el("p","Equivalencia griega registrada: ","meta");const gr=el("span",e.greek,"grc");gr.lang="grc";p.append(gr);b.append(p)}
+if(e.senses?.length){b.append(el("h3","Acepciones de la ficha"));const ul=el("ul");for(const x of e.senses)ul.append(el("li",x));b.append(ul)}
+if(e.vitruvian){b.append(el("h3","Nota arquitectónica"));b.append(el("p",e.vitruvian))}
+const et=etym.get(fold(e.lemma));if(et){b.append(el("h3","Etymologicum"));if(et.etym)b.append(el("p",et.etym));if(et.root)b.append(el("p","Raíz propuesta: "+et.root,"small"));if(et.gr?.length){const p=el("p","Griego relacionado: ","small");for(let i=0;i<et.gr.length;i++){if(i)p.append(" · ");const w=el("span",et.gr[i].w||"","grc");w.lang="grc";p.append(w)}b.append(p)}
+if(et.refs?.length){const p=el("p","Bibliografía de la ficha: "+et.refs.join(" · "),"small");b.append(p)}
+if(et.loci?.length){b.append(el("h3","Pasajes citados en la ficha"));for(const l of et.loci.slice(0,4)){const sec=el("div",null,"locus");sec.append(el("strong",l.c||"Locus"));if(l.t)sec.append(el("blockquote",l.t));if(l.tr)sec.append(el("p",l.tr,"translation"));b.append(sec)}}}
+if(e.references?.length)b.append(el("p","Referencias del léxico: "+e.references.join(" · "),"small"));if(e.source)b.append(el("p","Fuente declarada: "+e.source,"small"));if(e.source_url)b.append(a(e.source_url,"Consultar referencia externa"));if(e.forms?.length)b.append(el("p","Formas registradas en el índice: "+[...new Set(e.forms)].join(" · "),"small"));links(b,e);document.querySelectorAll(".item").forEach(x=>x.setAttribute("aria-current",x.dataset.lemma===selected?"true":"false"))}
+function filter(){const q=fold($("query").value.trim()),field=$("field").value,review=$("review").value;filtered=entries.filter(e=>(!field||fields[field]?.has(fold(e.lemma)))&&(!review||(review==="verified"?!!e.verified:!e.verified))&&(!q||[e.lemma,e.es,e.en,e.fr,e.greek,e.vitruvian,e.headword,...(e.senses||[])].some(v=>fold(v).includes(q))));$("count").textContent=filtered.length+" voces del léxico registradas · "+(entries.length-filtered.length)+" fuera del filtro. Clasificación temática no exhaustiva.";$("headwords").replaceChildren();const frag=document.createDocumentFragment();for(const e of filtered){const bt=el("button",null,"item");bt.type="button";bt.dataset.lemma=e.lemma;bt.setAttribute("aria-current",e.lemma===selected?"true":"false");bt.append(el("span",e.lemma));bt.append(el("small",e.es||e.headword||""));bt.addEventListener("click",()=>{renderDetail(e);history.replaceState(null,"","#"+encodeURIComponent(e.lemma))});frag.append(bt)}$("headwords").append(frag);let hit=filtered.find(x=>x.lemma===selected)||filtered[0];if(hit)renderDetail(hit);else $("detail").replaceChildren(el("p","No hay entradas que coincidan con los filtros."))}
+async function init(){try{const [l,e,t]=await Promise.all(["data/latin-lexicon.json","data/lexicon/etymologicum.json","data/lexicon/thesaurus.json"].map(p=>fetch(p).then(r=>{if(!r.ok)throw Error(p+" HTTP "+r.status);return r.json()})));if(!Array.isArray(l.entries)||!Array.isArray(e.entries)||!Array.isArray(t.themes))throw Error("Esquema del léxico no compatible");entries=l.entries.filter(x=>x.lemma).sort((x,y)=>fold(x.lemma).localeCompare(fold(y.lemma)));etym=new Map(e.entries.map(x=>[fold(x.lemma),x]));for(const theme of t.themes){const terms=new Set((theme.la||[]).map(fold));fields[theme.id]=terms;const opt=el("option",theme.label||theme.id);opt.value=theme.id;$("field").append(opt)}selected=decodeURIComponent(location.hash.slice(1))||new URLSearchParams(location.search).get("q")||null;$("query").addEventListener("input",filter);$("field").addEventListener("change",filter);$("review").addEventListener("change",filter);filter()}catch(err){$("count").textContent="Diccionario no disponible: "+err.message+"; permanecen disponibles el glosario y la concordancia."}}
+init()})();
+</script></body></html>
