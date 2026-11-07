@@ -180,7 +180,7 @@ try{
     label:document.getElementById('pr-label').textContent,
     counter:document.getElementById('pr-counter').textContent
    }));
-   assert(initial.src.includes('https://'),'First facsimile image must be obtained from e-rara');
+   assert(/https:\/\/www\.e-rara\.ch\//.test(initial.src)||/\/images\/perrault\/1673\/page-0001\.webp(?:$|[?#])/.test(initial.src),'First facsimile must be the documented e-rara page or its verified local 1673 mirror');
    assert(initial.counter.startsWith('1 / '),'Initial digital page must be image 1');
    await p.locator('#pr-next').click();
    await p.waitForFunction(()=>document.getElementById('pr-counter').textContent.startsWith('2 /'),{timeout:12000});
