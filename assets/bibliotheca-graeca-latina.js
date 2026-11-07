@@ -607,7 +607,7 @@ if(tab==="perseus"&&w.perseus?.length){
  }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
   // Direct, light text rendering: no nested iframe, PDF, OCR task or delayed load.
   // Every version remains complete in its own document; never infer matching loci.
-  const versions=Object.entries(w.corpusFiles).filter(([lang,path])=>["la","grc","en","fr","es"].includes(lang)&&/^data\\/classics-corpus\\/[a-z0-9-]+\\.json$/.test(path));
+  const versions=Object.entries(w.corpusFiles).filter(([lang,path])=>["la","grc","en","fr","es"].includes(lang)&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path));
   const labels={grc:"Griego original",la:"Latín original",en:"English · traducción",fr:"Français · traduction",es:"Castellano · traducción"};
   pane.replaceChildren();
   const h=document.createElement("h3");h.textContent="Original y traducciones · lectura rápida";pane.append(h);
@@ -673,8 +673,8 @@ if(tab==="perseus"&&w.perseus?.length){
       next.addEventListener("click",()=>{current=Math.min(passages.length-1,current+1);draw()});
       search.addEventListener("keydown",e=>{
         if(e.key!=="Enter")return;
-        const q=search.value.trim().normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase();if(!q)return;
-        const at=passages.findIndex(p=>String(p.text||"").normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase().includes(q));
+        const q=search.value.trim().normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();if(!q)return;
+        const at=passages.findIndex(p=>String(p.text||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().includes(q));
         if(at<0){message.textContent="Sin coincidencias en esta versión textual.";return}
         current=at;draw();message.textContent+=" · primera coincidencia de «"+search.value.trim()+"»";
       });
