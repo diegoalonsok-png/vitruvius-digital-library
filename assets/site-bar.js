@@ -49,7 +49,7 @@ function ensureTypography(){
  style.textContent=[
   '.site-typeface-tool{position:relative;display:inline-flex;align-items:center;vertical-align:middle}',
   '.site-typeface-button{display:inline-flex;justify-content:center;align-items:center;min-width:36px;min-height:35px;padding:6px 9px;border:1px solid #99896d;border-radius:4px;background:transparent;color:inherit;font:italic 600 19px Georgia,serif;cursor:pointer}',
-  '.site-typeface-panel{position:absolute;z-index:15015;top:calc(100% + 6px);right:0;width:min(260px,calc(100vw - 30px));box-sizing:border-box;padding:14px;background:#25282a;border:1px solid #9b927e;color:#f7f3ee;box-shadow:0 10px 32px #0006;font:13px/1.5 system-ui,sans-serif}',
+  '.site-typeface-panel{position:fixed;z-index:15015;top:76px;right:clamp(12px,2vw,30px);left:auto;width:min(260px,calc(100vw - 30px));max-height:calc(100dvh - 92px);overflow-y:auto;box-sizing:border-box;padding:14px;background:#25282a;border:1px solid #68727b;border-radius:8px;color:#f7f3ee;box-shadow:0 10px 32px #0006;font:13px/1.5 system-ui,sans-serif}',
   '.site-typeface-panel[hidden]{display:none!important}',
   '.site-typeface-panel label{display:block;margin:7px 0;color:inherit}',
   '.site-typeface-panel select{display:block;width:100%;margin-top:4px;padding:8px;background:#fff;color:#242424;border:1px solid #999}',
@@ -72,7 +72,7 @@ function ensureTypography(){
  const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
  if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
  else if(anchor?.parentElement)anchor.after(tool);
- else(document.querySelector('.research-nav-controls')||document.querySelector('header')||document.body).append(tool);
+ else(document.querySelector('.research-nav-controls')||document.querySelector('.site-header .header-inner')||document.querySelector('header')||document.body).append(tool);
  const button=tool.querySelector('#site-typeface-toggle'),panel=tool.querySelector('#site-typeface-panel'),select=tool.querySelector('#site-typeface-select'),italic=tool.querySelector('#site-typeface-italic');
  function apply(){
   document.documentElement.dataset.siteReadingFont=saved.font;
@@ -82,7 +82,7 @@ function ensureTypography(){
   select.value=saved.font;italic.checked=saved.italic;
   try{localStorage.setItem(key,JSON.stringify(saved))}catch{}
  }
- button.addEventListener('click',()=>{panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden))});
+ button.addEventListener('click',()=>{panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden){const b=button.getBoundingClientRect(),w=Math.min(260,innerWidth-30);panel.style.top=Math.max(12,Math.min(innerHeight-210,b.bottom+7))+'px';panel.style.left=Math.max(12,Math.min(innerWidth-w-12,b.right-w))+'px';panel.style.right='auto';}});
  select.addEventListener('change',()=>{saved.font=families[select.value]!==undefined?select.value:'original';apply()});
  italic.addEventListener('change',()=>{saved.italic=italic.checked;apply()});
  tool.querySelector('#site-typeface-reset').addEventListener('click',()=>{saved={font:'original',italic:false};apply()});
