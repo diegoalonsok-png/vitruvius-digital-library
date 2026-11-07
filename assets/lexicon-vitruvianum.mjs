@@ -90,7 +90,7 @@ function enrich(item,root){
   tools.after(p);
   const section=el('section',null,root);section.className='lexicon-related-concordance';
   el('h4','Todas las concordancias del lema '+lemma,section);
-  el('p','Cada variante muestra sus apariciones literales en V514. Abrí una variante para desplegar todos los pasajes; los enlaces llevan al lector bilingüe.',section);
+  el('p','Cada variante muestra sus apariciones literales en V514. Abre una variante para desplegar todos los pasajes; los enlaces llevan al lector bilingüe.',section);
   for(const x of family){
    const details=el('details',null,section),word=[...x.forms.keys()][0];
    el('summary',word+' — '+occurrenceCount(x)+' apariciones en '+x.sites.size+' loci',details);
