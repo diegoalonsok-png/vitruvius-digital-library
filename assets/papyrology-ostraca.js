@@ -145,6 +145,18 @@ function save(blob,filename){
  document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 $("pap-export").addEventListener("click",()=>{if(!available){status.textContent="Primero carga una imagen.";return}canvas.toBlob(blob=>save(blob,"papyrologia-procesada.png"),"image/png")});
+
+$("pap-export-detail").addEventListener("click",()=>{
+ if(!available){status.textContent="Primero carga una imagen y selecciona el detalle que deseas estudiar.";return}
+ detail.toBlob(blob=>save(blob,"papyrologia-detalle-ampliado.png"),"image/png");
+ status.textContent="Detalle guardado en tu dispositivo. Abre Google Lens o Gemini y adjunta el archivo manualmente.";
+});
+$("pap-copy-prompt").addEventListener("click",async()=>{
+ const prompt="Actúa como asistente de paleografía, no como transcriptor infalible. Estudia este fragmento de papiro u óstracon. Determina si la escritura podría ser griega, latina, hebrea, aramea, paleohebrea o fenicia. Lee signo por signo y por renglón. Distingue lo visible de restituciones conjeturales, señala caracteres dudosos con [?], lagunas con […], propone alternativas para signos ambiguos y evita completar palabras por contexto sin indicarlo. Proporciona transcripción diplomática tentativa, transliteración y grado de incertidumbre por signo. No inventes fecha, autor, procedencia ni stemma; explica qué evidencia adicional se requiere.";
+ try{await navigator.clipboard.writeText(prompt);status.textContent="Instrucciones de análisis visual copiadas para pegar en Gemini junto con la imagen."}
+ catch{status.textContent="No se pudo copiar automáticamente; utiliza una conexión HTTPS y permite el portapapeles."}
+});
+
 function graphemes(value){
  const container=$("pap-graphemes");container.replaceChildren();
  const segmenter=typeof Intl.Segmenter==="function"?new Intl.Segmenter("und",{granularity:"grapheme"}):null;
