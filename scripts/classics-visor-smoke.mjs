@@ -438,6 +438,54 @@ try{
    assert(passages>=1,'No verified Vitruvian passage was recovered for Cicero');
   }finally{await page.close()}
  });
+
+ await check('Parallel reader buttons, independent colors, zoom and synchronized chapter navigation',async()=>{
+  const p=await open('classics-parallel-reader.html?work=didache&left=grc&right=en');
+  try{
+   await p.waitForFunction(()=>{
+    const l=document.getElementById('pane-left'),r=document.getElementById('pane-right');
+    return l?.contentDocument?.getElementById('current-locus')?.textContent?.includes('1') &&
+      r?.contentDocument?.getElementById('current-locus')?.textContent?.includes('1') &&
+      !document.getElementById('sync-next')?.disabled;
+   },null,{timeout:30000});
+   const old=await p.frameLocator('#pane-left').locator('#current-locus').innerText();
+   await p.locator('#sync-next').click();
+   await p.waitForFunction((previous)=>{
+    const l=document.getElementById('pane-left')?.contentDocument?.getElementById('current-locus')?.textContent;
+    const r=document.getElementById('pane-right')?.contentDocument?.getElementById('current-locus')?.textContent;
+    return l&&r&&l!==previous&&/^Capítulo|^Unidad|^Chapter|^Locus/i.test(l)?true:!!(l&&r&&l!==previous&&document.getElementById('sync-position')?.textContent?.startsWith('2 /'));
+   },old,{timeout:12000});
+   assert.match(await p.locator('#sync-position').innerText(),/^2 \\/ /);
+   await p.locator('#sync-start').click();
+   assert.match(await p.locator('#sync-position').innerText(),/^1 \\/ /);
+   await p.locator('#left-night').click();
+   await p.waitForFunction(()=>document.getElementById('pane-left')?.contentDocument?.querySelector('.reader')?.style.background==='#172633',{timeout:7000});
+   await p.locator('#left-invert').click();
+   assert.notEqual(await p.locator('#left-bg').inputValue(),'#172633','Invert colors button does not change the background');
+   await p.locator('#right-larger').click();
+   assert.equal(await p.locator('#right-size').innerText(),'22 px','Right zoom button did not update');
+   await p.locator('#left-font').selectOption('sans');
+   assert.equal(await p.locator('#left-font').inputValue(),'sans');
+   await p.locator('#right-sepia').click();
+   assert.equal(await p.locator('#right-bg').inputValue(),'#e6d5b7','Right palette did not update independently');
+   await p.locator('#sync-prev').count();
+  }finally{await p.close()}
+ });
+ await check('Classical catalogue exposes real parallel-reading link for translated works',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html?work=didache');
+  try{
+   await p.locator('#classic-list button[data-id="didache"]').waitFor({timeout:25000});
+   const detail=p.locator('#classic-detail');
+   await detail.locator('a[href*="classics-parallel-reader.html?work=didache"]').first().waitFor({timeout:12000});
+   assert.match(await detail.innerText(),/leer original y traducción lado a lado/i);
+   await p.locator('#classic-query').fill('Séneca');
+   await p.waitForTimeout(260);
+   assert((await p.locator('#classic-list button').count())>0,'Debounced filter did not yield results');
+   await p.locator('#classic-clear').click();
+   await p.waitForTimeout(260);
+   assert((await p.locator('#classic-list button').count())>190,'Clear search did not restore the catalogue');
+  }finally{await p.close()}
+ });
 }finally{if(browser)await browser.close();server.kill()}
 if(failed){console.error('CLASSICAL VIEWER CHECK FAILURES',failed);process.exitCode=1}
 else console.log('CLASSICAL VIEWER CHECKS: ALL PASS');
