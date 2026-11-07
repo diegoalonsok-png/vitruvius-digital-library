@@ -188,16 +188,17 @@
  function sortImages(items,topic){
   // Dated reproductions precede undated ones. Never mistake an upload date for
   // the creation, publication or filming date of a historical work.
-  const order=groupOrder(topic);
+  const order=[...groupOrder(topic),"article"];
+  const groupPriority=group=>{const i=order.indexOf(group);return i<0?order.length:i};
   const validYear=x=>Number.isFinite(x)&&x>=-4000&&x<=new Date().getFullYear()+1;
   return [...items].sort((a,b)=>{
    if(topic.kind==="music-group"||topic.visualStyle==="color"||topic.visualStyle==="prefer-color")
-    return b.score-a.score||order.indexOf(a.group)-order.indexOf(b.group)||a.name.localeCompare(b.name);
+    return b.score-a.score||groupPriority(a.group)-groupPriority(b.group)||a.name.localeCompare(b.name);
    const ay=validYear(a.year)?a.year:null,by=validYear(b.year)?b.year:null;
    if(ay!==null&&by!==null&&ay!==by)return ay-by;
    if(ay!==null&&by===null)return -1;
    if(ay===null&&by!==null)return 1;
-   return order.indexOf(a.group)-order.indexOf(b.group)||b.score-a.score||a.name.localeCompare(b.name);
+   return groupPriority(a.group)-groupPriority(b.group)||b.score-a.score||a.name.localeCompare(b.name);
   });
  }
  function previewImages(items,topic){
