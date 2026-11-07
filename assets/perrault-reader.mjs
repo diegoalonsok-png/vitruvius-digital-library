@@ -71,10 +71,10 @@ function show(n){
  image.onerror=()=>{
   if(serial!==stamp)return;
   if(!alternative&&page.backup){alternative=true;image.src=page.backup;return}
-  status.textContent="El servidor institucional no permitió cargar esta imagen. Consultá el visor oficial de e-rara.";
+  status.textContent="El servidor institucional no permitió cargar esta imagen. Consulta el visor oficial de e-rara.";
  };
  if(page.url)image.src=page.url;
- else status.textContent="Esta imagen no tiene una URL IIIF verificable; consultá e-rara.";
+ else status.textContent="Esta imagen no tiene una URL IIIF verificable; consulta e-rara.";
  const url=new URL(location.href);
  url.searchParams.set("year",year);url.searchParams.set("image",String(current+1));
  history.replaceState(null,"",url);
@@ -82,14 +82,14 @@ function show(n){
 function navigate(delta){show(current+delta)}
 function findPage(){
  const term=normalize($("pr-find").value);
- if(!term){status.textContent="Escribí una etiqueta o número de imagen.";return}
+ if(!term){status.textContent="Escribe una etiqueta o número de imagen.";return}
  const direct=term.match(/^(?:imagen|image|pagina|página|page)\s*(\d+)$/);
  if(direct){const n=Number(direct[1]);if(n>=1&&n<=pages.length){show(n-1);return}}
  const hits=pages.map((p,i)=>({i,label:normalize(p.label)})).filter(p=>p.label===term);
  if(hits.length===1){show(hits[0].i);return}
  const partial=pages.map((p,i)=>({i,label:normalize(p.label)})).filter(p=>p.label.includes(term));
  if(partial.length===1){show(partial[0].i);return}
- status.textContent=partial.length?"Hay "+partial.length+" páginas con esa etiqueta; precisá la búsqueda.":"Etiqueta inexistente en el manifiesto. Probá «imagen 50».";
+ status.textContent=partial.length?"Hay "+partial.length+" páginas con esa etiqueta; precisá la búsqueda.":"Etiqueta inexistente en el manifiesto. Prueba «imagen 50».";
 }
 async function load(){
  $("pr-year").value=year;
