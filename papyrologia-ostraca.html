@@ -89,6 +89,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <div class="toolbar">
 <label>Escritura a reconocer<select id="pap-ocr-lang"><option value="grc">Griego (modelo OCR)</option><option value="lat">Latín (modelo OCR)</option><option value="eng">Alfabeto latino moderno (comparativo)</option></select></label>
 <button id="pap-ocr" type="button" disabled>Reconocer texto (OCR experimental)</button>
+<button id="pap-ocr-detail" type="button" disabled>Reconocer solo el detalle de la lupa</button>
 <button id="pap-cancel" type="button" disabled>Cancelar OCR</button>
 </div>
 <p class="caption">Tesseract.js se descarga solamente al solicitar OCR. El reconocimiento se ejecuta localmente mediante WebAssembly; los modelos griego y latino pueden fallar con abreviaturas, grafías cursivas, tintas tenues o inscripciones incisas. No es un modelo paleográfico especializado ni identifica la datación de un manuscrito. <a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener noreferrer">Motor y documentación</a>.</p>
@@ -102,7 +103,7 @@ main{max-width:1640px;margin:auto;padding:18px clamp(12px,2.5vw,36px) 70px}
 <button id="pap-txt" type="button">Descargar transcripción .txt</button>
 <button id="pap-clear" type="button">Limpiar transcripción</button>
 </div>
-<div class="privacy">**Aviso filológico:** texto reconocido, lectura editorial, restitución conjetural y texto efectivamente visible deben distinguirse. No se establece automáticamente un locus, fecha, procedencia ni relación genealógica con otros códices.</div>
+<div class="privacy"><strong>Aviso filológico:</strong> texto reconocido, lectura editorial, restitución conjetural y texto efectivamente visible deben distinguirse. No se establece automáticamente un locus, fecha, procedencia ni relación genealógica con otros códices.</div>
 </section>
 </div>
 </main>
