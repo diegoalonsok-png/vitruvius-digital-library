@@ -196,6 +196,55 @@ function graphemes(value){
 text.addEventListener("input",()=>graphemes(text.value));
 $("pap-copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(text.value);status.textContent="Transcripción copiada."}catch{status.textContent="No fue posible copiar: selecciona el texto manualmente."}});
 $("pap-txt").addEventListener("click",()=>save(new Blob([text.value],{type:"text/plain;charset=utf-8"}),"transcripcion-papyrologia.txt"));
+
+/* Review a JSON hypothesis generated locally: no credentials, no uploads.
+   Never render untrusted model output using innerHTML. */
+const geminiInput=$("pap-gemini-json"),geminiReport=$("pap-gemini-import-report");
+function displayGeminiHypothesis(payload){
+ if(payload?.schema!=="vitruvia-papyrology-multimodal-draft-v1"||payload.verified!==false)
+  throw Error("Formato inesperado: se requiere una hipótesis multimodal sin verificar.");
+ const a=payload.analysis;
+ if(!a||!Array.isArray(a.lines)||a.lines.length>150||a.lines.some(l=>!l||!Array.isArray(l.signs)||l.signs.length>250))
+  throw Error("El JSON no tiene líneas y signos de lectura válidos.");
+ const lines=a.lines.map((line,i)=>({
+  number:Number.isInteger(line.line_number)?line.line_number:i+1,
+  reading:String(line.diplomatic_text||"").slice(0,10000),
+  signs:line.signs.map(g=>({
+   sign:String(g.suggested||g.visible||"").slice(0,40),
+   status:["clear","uncertain","lost"].includes(g.status)?g.status:"uncertain",
+   alternatives:Array.isArray(g.alternatives)?g.alternatives.slice(0,3).map(x=>String(x).slice(0,40)):[]
+  }))
+ }));
+ const formatSign=g=>g.status==="lost"?"[…]":g.status==="uncertain"?(g.sign||"?")+"[?]":g.sign;
+ const diplomatic=lines.map(l=>l.reading||l.signs.map(formatSign).join("")).join("\n");
+ if(!diplomatic.trim())throw Error("No se encontraron caracteres para importar.");
+ if(text.value.trim()&&!window.confirm("¿Agregar la lectura automática al editor existente? Se conservará la transcripción anterior."))return;
+ text.value=(text.value.trim()?text.value+"\n\n":"")+diplomatic;
+ const dir=lines.find(l=>["rtl","ltr"].includes(a.lines.find(x=>x.line_number===l.number)?.reading_direction));
+ if(dir)text.dir=a.lines.find(x=>x.line_number===dir.number).reading_direction;
+ text.dispatchEvent(new Event("input",{bubbles:true}));
+ const scripts=Array.isArray(a.writing_system_candidates)?a.writing_system_candidates.slice(0,3).map(x=>String(x.name||"").slice(0,70)).join(", "):"sin determinar";
+ const languages=Array.isArray(a.language_candidates)?a.language_candidates.slice(0,3).map(x=>String(x.name||"").slice(0,70)).join(", "):"sin determinar";
+ const uncertain=lines.reduce((sum,l)=>sum+l.signs.filter(x=>x.status!=="clear").length,0);
+ geminiReport.textContent="LECTURA AUTOMÁTICA · NO VERIFICADA\n"+
+  "Modelo: "+String(payload.model||"Gemini")+"\n"+
+  "Escritura posible: "+scripts+"\n"+
+  "Idioma posible: "+languages+"\n"+
+  "Líneas: "+lines.length+" · signos marcados dudosos o perdidos: "+uncertain+"\n"+
+  "Revisar manualmente cada trazo y la segmentación de palabras antes de citar.";
+ status.textContent="Hipótesis Gemini importada al editor. No se ha certificado la lectura.";
+}
+geminiInput.addEventListener("change",async()=>{
+ const file=geminiInput.files?.[0];if(!file)return;
+ if(file.size>2_000_000){geminiReport.textContent="JSON demasiado grande (máximo 2 MB).";return}
+ try{displayGeminiHypothesis(JSON.parse(await file.text()))}
+ catch(err){geminiReport.textContent="No se pudo importar la lectura: "+err.message}
+ finally{geminiInput.value=""}
+});
+$("pap-gemini-clear").addEventListener("click",()=>{
+ geminiReport.textContent="Análisis importado limpiado de la vista. La transcripción manual se conserva.";
+});
+
 $("pap-clear").addEventListener("click",()=>{text.value="";graphemes("");text.focus()});
 let tesseractPromise=null;
 
