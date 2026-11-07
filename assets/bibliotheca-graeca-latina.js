@@ -589,6 +589,7 @@ box.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
  }));
 const pane=$("classic-panel");
 if(tab==="study"&&hasStudyPair(w)){
+ pane.classList.add("classic-study-viewer");
  pane.replaceChildren();
  const intro=document.createElement("p");intro.className="classic-ref";
  intro.textContent="Lectura académica directa: texto original griego o latino a la izquierda; traducción a la derecha. No se necesita PDF histórico. Los textos se conservan íntegros y cada vínculo por capítulo es orientativo.";
