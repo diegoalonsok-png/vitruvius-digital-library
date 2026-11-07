@@ -71,6 +71,21 @@ function append(){
  $("more").hidden=shown>=filtered.length;
  $("summary").textContent=versions.length+" ediciones registradas · "+filtered.length+" entradas concepto/edición con referencias. Mostrando "+shown+". El índice es una concordancia semántica editorial basada en formas; no verifica sentidos individuales.";
 }
+function exportTsv(){
+ const clean=x=>String(x??"").replace(/[\\t\\r\\n]+/g," ").trim();
+ const rows=[["Autor","Obra","ID obra","Idioma","Edición","Fuente","Conceptus","Locus","Forma atestiguada","Frecuencia","Enlace al pasaje"]];
+ for(const {v,c,loci} of filtered){
+  for(const [locus,form,count] of loci){
+   const href=new URL(reader(v,locus,form),location.href).href;
+   rows.push([v.author,v.title,v.workId,v.language,v.edition||"",v.source,c.concept,locus,form,count,href]);
+  }
+ }
+ const tsv="\\uFEFF"+rows.map(row=>row.map(clean).join("\\t")).join("\\r\\n");
+ const blob=new Blob([tsv],{type:"text/tab-separated-values;charset=utf-8"});
+ const u=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=u;a.download="index-locorum-concordancias.tsv";document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(u),1500);
+}
 async function init(){
  try{
  const [r,p,d]=await Promise.all([
@@ -94,5 +109,6 @@ $("work").addEventListener("change",()=>{refillEditions();render()});
 ["edition","concept"].forEach(id=>$(id).addEventListener("change",render));
 $("query").addEventListener("input",render);
 $("more").addEventListener("click",append);
+$("export-tsv").addEventListener("click",exportTsv);
 init();
 })();
