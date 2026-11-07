@@ -29,7 +29,7 @@ def main():
     single = [w for w in catalogue if len(mapping.get(w["id"], [])) == 1 and
               w.get("language") in ("la", "grc") and
               (w["id"], w["language"]) not in indexed and
-              re.fullmatch(r"(?:tlg|phi)\\d+\\.(?:tlg|phi|abo)\\w+",
+              re.fullmatch(r"(?:tlg|phi)\d+\.(?:tlg|phi|abo)\w+",
                            mapping[w["id"]][0].get("obra", ""))]
     candidates = [
        "data/phi0474/phi037/phi0474.phi037.perseus-lat1.xml",
