@@ -18,6 +18,20 @@ window.addEventListener("message",event=>{
  select(cmd.index);
 });
 
+/* Appearance controls supplied by the same-origin twin reader; editorial text is unchanged. */
+const PARALLEL_FONTS={serif:'Georgia, "Times New Roman", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',classic:'"Palatino Linotype", "Book Antiqua", Palatino, serif'};
+window.addEventListener("message",event=>{
+ if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
+ const cmd=event.data;
+ if(!cmd||cmd.type!=="vitruvia-parallel-style"||cmd.work!==work||cmd.lang!==data?.language)return;
+ const validColor=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
+ const reader=document.querySelector(".reader"),passages=$("passages");
+ if(!reader||!passages)return;
+ if(validColor(cmd.background)){reader.style.background=cmd.background;passages.style.background=cmd.background;}
+ if(validColor(cmd.foreground)){reader.style.color=cmd.foreground;passages.style.color=cmd.foreground;}
+ if(Object.hasOwn(PARALLEL_FONTS,cmd.font))passages.style.fontFamily=PARALLEL_FONTS[cmd.font];
+ if(Number.isFinite(cmd.size)&&cmd.size>=14&&cmd.size<=38)passages.style.fontSize=cmd.size+"px";
+});
 const fold=s=>LEX?LEX.fold(s):String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replaceAll("j","i");
 const tokenize=s=>fold(s).match(/[\p{L}]{3,}/gu)||[];
 const equivalences=[
