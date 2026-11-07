@@ -503,6 +503,9 @@ function showTextualTransmission(work,container){
 }
 
 function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail"),t=terms();if(!w){box.textContent=additionalInterfaceWords[language()]["no-results"];return}
+ // All editions with an accredited indexed original use the SAME text reader,
+ // regardless of legacy "study", "localVersions" or HTML edition metadata.
+ if(tab==="study"&&w.corpusFiles&&Object.keys(w.corpusFiles).length)tab="text";
 // Reserve the full page for the two working texts, not an empty catalogue column.
  const wide=(tab==="study"&&hasStudyPair(w))||(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length>0);
  const layout=document.querySelector(".classic-layout");
@@ -752,7 +755,7 @@ if(tab==="study"&&hasStudyPair(w)){
   }
   pane.append(box);
   const warning=document.createElement("p");warning.className="classic-ref";warning.textContent="Estos vínculos localizan materiales. No afirman que exista una transcripción íntegra o un códice concreto en el destino; cada documento deberá verificarse antes de presentarlo como edición incorporada.";pane.append(warning);
- }else if(tab==="text"&&isTriple){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
+ }else if(tab==="text"&&isTriple&&!(w.corpusFiles&&Object.keys(w.corpusFiles).length)){window.BibliothecaTripleReader.mount(pane,w);}else if(tab==="text"&&w.localVersions?.length&&!(w.corpusFiles&&Object.keys(w.corpusFiles).length)){pane.innerHTML="<h3>Ediciones incorporadas al sitio</h3><p>"+safe(w.reading.status)+"</p><div class=\"classic-compare-toolbar\"><label>Primera versión<select id=\"classic-version-a\"></select></label><label>Segunda versión<select id=\"classic-version-b\"></select></label></div><div class=\"classic-compare-panes\"><iframe id=\"classic-frame-a\" title=\"Edición primera\"></iframe><iframe id=\"classic-frame-b\" title=\"Edición segunda\"></iframe></div>";const a=pane.querySelector("#classic-version-a"),b=pane.querySelector("#classic-version-b");for(const [i,ver] of w.localVersions.entries()){for(const sel of [a,b]){const opt=document.createElement("option");opt.value=String(i);opt.textContent=ver.label;sel.append(opt)}}b.value=String(Math.min(1,w.localVersions.length-1));function updateFrames(){pane.querySelector("#classic-frame-a").src=w.localVersions[Number(a.value)].path;pane.querySelector("#classic-frame-b").src=w.localVersions[Number(b.value)].path}a.addEventListener("change",updateFrames);b.addEventListener("change",updateFrames);updateFrames();}else if(tab==="text"&&w.corpusFiles&&Object.keys(w.corpusFiles).length){
   const toggle=document.createElement("button");
   toggle.type="button";toggle.className="classic-study-index-toggle";
   toggle.textContent="☰ Mostrar listado de obras";
@@ -929,48 +932,9 @@ async function boot(){
 /* Visual accessibility controls for every embedded frame in the classics catalogue.
    Exact color changes only apply to locally controlled HTML readers; PDF and external
    facsimiles can be visually inverted but their original pixels remain unchanged. */
-function installCatalogueFrameTools(){
- const root=$("classic-detail");if(!root)return;
- function scan(){
-  for(const frame of root.querySelectorAll("iframe:not([data-color-tools])")){
-   frame.dataset.colorTools="1";
-   const toolbar=document.createElement("div");toolbar.className="classic-frame-colors";
-   toolbar.style.cssText="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px;background:#e6ddcd;border:1px solid #bda988;margin:9px 0 0";
-   const invert=document.createElement("button");invert.type="button";invert.textContent="◐ Invertir visor";
-   invert.title="Invertir visualmente cualquier visor, incluido PDF o facsímil";
-   const url=()=>{try{return new URL(frame.src,location.href)}catch{return null}};
-   const isText=()=>url()?.pathname.endsWith("/classics-text-reader.html");
-   const text=document.createElement("span");text.textContent=isText()?"Paleta de texto:":"PDF o facsímil: inversión visual";
-   text.style.fontSize="12px";toolbar.append(invert,text);
-   let inverted=false;
-   invert.addEventListener("click",()=>{
-    inverted=!inverted;
-    if(isText()){
-     const fg=inverted?"#f4efdf":"#202b35",bg=inverted?"#1b2833":"#fffdfa";
-     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:url()?.searchParams.get("work"),lang:url()?.searchParams.get("lang"),background:bg,foreground:fg},location.origin);
-    }else frame.style.filter=inverted?"invert(1)":"none";
-    invert.setAttribute("aria-pressed",String(inverted));
-   });
-   if(isText()){
-    const bg=document.createElement("input"),fg=document.createElement("input");
-    bg.type=fg.type="color";bg.value="#fffdfa";fg.value="#202b35";
-    for(const [el,label] of [[bg,"Fondo libre"],[fg,"Texto libre"]]){
-     el.setAttribute("aria-label",label);el.title=label;el.style.cssText="width:34px;height:32px;padding:2px";
-     toolbar.append(el);
-    }
-    const update=()=>{
-     const u=url();if(!u)return;
-     frame.contentWindow?.postMessage({type:"vitruvia-parallel-style",work:u.searchParams.get("work"),lang:u.searchParams.get("lang"),background:bg.value,foreground:fg.value},location.origin);
-    };
-    bg.addEventListener("input",update);fg.addEventListener("input",update);frame.addEventListener("load",update);
-   }
-   frame.before(toolbar);
-  }
- }
- let scheduled=false;const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;queueMicrotask(()=>{scheduled=false;scan();});});
- observer.observe(root,{childList:true,subtree:true});scan();
-}
-installCatalogueFrameTools();
+/* No automatic frame overlays: color tools must belong to the selected viewer.
+   Generic MutationObserver controls had obscured the original left-hand text pane. */
+
 
 boot().catch(err=>{$("classic-count").textContent="No se pudo abrir el catálogo: "+err.message;});
 })();
