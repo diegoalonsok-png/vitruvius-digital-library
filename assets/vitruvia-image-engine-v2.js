@@ -195,6 +195,10 @@ function displayGroups(items,topic){
   const key=String(item.page||item.original||item.preview||item.name||"").toLowerCase().replace(/[#?].*$/,"");
   if(seen.has(key))return false;seen.add(key);return true;
  });
+ // The gallery was kept hidden after every normal search; expose only
+ // actual source-attributed results, not an empty placeholder.
+ section.hidden=false;
+ grid.hidden=false;
  grid.replaceChildren();let previous=null;
  for(const item of items){
   if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
