@@ -174,7 +174,17 @@ function pubLinks(entries,title,container){
 }
 function language(){return $("classic-ui-language").value||"es";}
 function terms(){return L[language()];}
-function navLink(url,txt){return '<a target="_blank" rel="noopener noreferrer" href="'+safe(url)+'">'+safe(txt)+' ↗</a>';}
+/* Treat catalogue URLs as untrusted input: HTML escaping alone cannot stop javascript: URLs. */
+function safePublicHref(value){
+ if(typeof value!=="string")return "";
+ const href=value.trim();
+ if(/^https:\/\//i.test(href)){
+  try{const url=new URL(href);return url.protocol==="https:"&&url.username===""&&url.password===""?url.href:""}catch{return ""}
+ }
+ if(/^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(?:html|pdf)(?:[?#][a-z0-9_=&.%+\-#/]*)?$/i.test(href)&&!href.includes(".."))return href;
+ return "";
+}
+function navLink(url,txt){const href=safePublicHref(url);return href?'<a target="_blank" rel="noopener noreferrer" referrerpolicy="strict-origin-when-cross-origin" href="'+safe(href)+'">'+safe(txt)+' ↗</a>':"";}
 function isLocal(w){return ["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)&&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length)}
 function hasSource(w){return !!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest||w.witnessRecords?.length||w.historicEditions?.length)}
 function statusLabel(w){const d=summaryWords[language()]||summaryWords.es;if(!isLocal(w)&&w.perseus?.length)return ({es:"TEXTO EN VISOR",en:"TEXT IN VIEWER",fr:"TEXTE DANS LA VISIONNEUSE",it:"TESTO NEL VISORE",de:"TEXT IM BETRACHTER",pt:"TEXTO NO VISUALIZADOR"})[language()]||"TEXTO EN VISOR";return isLocal(w)?(w.publicStatus==="lectura-local-parcial"?d.statusLocal+" · PDF PARCIAL":d.statusLocal):hasSource(w)?d.statusExternal:d.statusCatalogue}
