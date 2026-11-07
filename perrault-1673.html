@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scriptorium Perrault · Les dix livres d'architecture · ediciones 1673 y 1684</title>
+<meta name="description" content="Lectura página por página de las dos ediciones de Claude Perrault (1673 y 1684) del tratado de Vitruvio, con imágenes IIIF de ETH-Bibliothek Zürich / e-rara y procedencia bibliográfica documentada.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/perrault-1673.html">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="citation_title" content="Scriptorium Perrault · 1673 y 1684">
+<meta name="citation_author" content="Kurilo, Diego">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_publisher" content="Vitruvius Digital Library">
+<meta name="citation_language" content="fr">
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<style>
+:root{color-scheme:dark;--bg:#0d0d0e;--panel:#171719;--panel2:#212123;--ink:#eaeae8;--muted:#a6a6a7;--line:#404043}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 Arial,Helvetica,sans-serif}
+a{color:#e8e8e7;text-decoration-color:#858585}
+a:hover{color:#fff}
+main{max-width:1480px;margin:auto;padding:24px clamp(14px,3.4vw,52px) 75px}
+nav{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:9px 0 22px;font:500 12px/1.5 Arial,sans-serif}
+.eyebrow{font:500 10px/1.7 Arial,sans-serif;letter-spacing:.16em;color:#969699;margin-top:45px}
+h1{font:italic 400 clamp(42px,5vw,80px)/1.05 Georgia,serif;letter-spacing:-.065em;margin:12px 0 18px}
+.subtitle{font:400 clamp(17px,2vw,22px)/1.55 Georgia,serif;color:#cfcfce;max-width:90ch}
+.note{color:var(--muted);max-width:100ch;font-size:13px}
+.controlbar{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:24px 0 13px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.controlbar label{display:flex;flex-direction:column;gap:5px;color:#bdbdbd;font-size:12px;font-weight:500}
+.controlbar :is(button,input,select){background:var(--panel2);color:#eee;border:1px solid #555558;border-radius:6px;padding:10px 11px;min-height:42px;font:14px Arial,sans-serif}
+.controlbar :is(input[type=number],input[type=search]){width:116px}
+.controlbar input[type=search]{width:176px}
+.controlbar button{cursor:pointer}
+.controlbar button:hover{background:#3a3a3d}
+.controlbar button:disabled{opacity:.45;cursor:default}
+.controlbar input[type=range]{width:112px;min-height:25px;padding:0;accent-color:#ccc}
+.controlbar input[type=checkbox]{min-height:auto}
+.controlbar .toggle{flex-direction:row;align-items:center;gap:7px;min-height:42px}
+label:has(#pr-zoom) output{font-variant-numeric:tabular-nums}
+#pr-status{font-size:13px;color:#bbb;min-height:22px;margin:12px 0}
+#pr-stage{width:100%;height:min(75vh,950px);min-height:360px;overflow:auto;text-align:center;background:#272729;border:1px solid #4a4a4d;border-radius:8px;overscroll-behavior:contain}
+#pr-image{display:block;width:auto;height:auto;max-width:none;margin:16px auto;box-shadow:0 5px 24px #000a}
+#pr-counter{font:600 14px/1.5 Arial,sans-serif;font-variant-numeric:tabular-nums}
+#pr-label{color:#aaa;font-size:13px}
+.sources{margin:26px 0;padding:17px 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 22px}
+.sources a{font-size:13px}
+footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px}
+:focus-visible{outline:2px solid #ccc;outline-offset:2px}
+@media(max-width:620px){.controlbar label{flex:1 1 130px}.controlbar :is(input[type=number],input[type=search],select){width:100%}#pr-stage{min-height:300px;height:63vh}}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="bibliotheca-graeca-latina.html">← Bibliotheca Graeca et Latina</a><a href="ediciones-historicas.html">Ediciones históricas</a><a href="barbaro-1567.html">Barbaro · 1567</a><a href="cesariano-1521.html">Cesariano · 1521</a></nav>
+<p class="eyebrow">VITRVVIVS · EDITIONES IMPRESSAE · IIIF · ETH-BIBLIOTHEK</p>
+<h1 id="pr-title">Scriptorium Perrault</h1>
+<p id="pr-edition" class="subtitle">Les Dix Livres d'Architecture de Vitruve · traducción y comentarios de Claude Perrault.</p>
+<p class="note">Edición histórica impresa en francés, no códice manuscrito. Las imágenes se recuperan bajo demanda del manifiesto IIIF de e-rara; esta biblioteca no afirma haber transcrito ni indexado la totalidad del francés antiguo. El número de imagen digital y la paginación impresa pueden diferir.</p>
+<div class="controlbar" role="group" aria-label="Navegación del ejemplar digitalizado">
+<label>Edición<select id="pr-year" aria-label="Edición de Perrault"><option value="1673">Perrault 1673</option><option value="1684">Perrault 1684</option></select></label>
+<label>Imagen digital<input id="pr-number" type="number" min="1" value="1" disabled></label>
+<button id="pr-go" type="button">Ir a imagen</button>
+<button id="pr-prev" type="button" disabled>← Anterior</button>
+<button id="pr-next" type="button" disabled>Siguiente →</button>
+<label>Etiqueta IIIF<input id="pr-find" type="search" placeholder="imagen 50 · p. 25" disabled></label>
+<button id="pr-find-button" type="button">Buscar etiqueta</button>
+<label>Zoom<input id="pr-zoom" type="range" min="50" max="260" value="100" step="10"><output id="pr-zoom-value">100 %</output></label>
+<label>Contraste<input id="pr-contrast" type="range" min="60" max="220" value="100"></label>
+<label>Brillo<input id="pr-brightness" type="range" min="50" max="180" value="100"></label>
+<label class="toggle"><input id="pr-grayscale" type="checkbox"> Blanco y negro</label>
+<label class="toggle"><input id="pr-negative" type="checkbox"> Negativo</label>
+</div>
+<p><strong>Imagen:</strong> <span id="pr-counter">— / —</span> · <strong>Etiqueta del ejemplar:</strong> <span id="pr-label">—</span></p>
+<p id="pr-status" role="status" aria-live="polite">Preparando índice IIIF…</p>
+<div id="pr-stage" tabindex="0" aria-label="Imagen del ejemplar impreso de Perrault"><img id="pr-image" alt="Página digitalizada del ejemplar histórico de Perrault" hidden></div>
+<p class="note">Los controles permiten recorrer todas las imágenes del ejemplar institucional en su orden IIIF. Las páginas se cargan de una en una para no descargar el volumen entero. La opción «Buscar etiqueta» solo busca las etiquetas documentales del manifiesto; no equivale a una búsqueda textual por OCR.</p>
+<div class="sources">
+<a id="pr-source" href="https://www.e-rara.ch/zut/content/titleinfo/16797458" target="_blank" rel="noopener noreferrer">Ejemplar y visor oficial de e-rara ↗</a>
+<a id="pr-doi" href="https://doi.org/10.3931/e-rara-61952" target="_blank" rel="noopener noreferrer">DOI y condiciones de uso ↗</a>
+<a id="pr-manifest" href="https://www.e-rara.ch/i3f/v20/16797458/manifest" target="_blank" rel="noopener noreferrer">Manifiesto IIIF ↗</a>
+</div>
+<footer>Fuente: <span id="pr-shelfmark">ETH-Bibliothek Zürich</span>. Digitalización: e-rara / ETH-Bibliothek Zürich. Public Domain Mark conforme a su ficha institucional; se mantiene el DOI, la signatura y la atribución. El lector no aloja imágenes del volumen en GitHub.</footer>
+</main>
+<script type="module" src="assets/perrault-reader.mjs?v=20261106-folios-v1"></script>
+</body></html>
