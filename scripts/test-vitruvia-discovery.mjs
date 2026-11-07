@@ -180,12 +180,12 @@ test('exact Wikipedia article image fallback supplies source-linked pictures wit
  const end=engine.indexOf('async function searchImages(',start);
  assert(start>0&&end>start,'Exact-article fallback must exist in the image engine');
  const functionCode=engine.slice(start,end);
- const normalize=s=>String(s||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/[^\\p{L}\\p{N}]+/gu,' ').trim();
+ const normalize=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
  const unique=a=>[...new Set(a.map(x=>String(x||'').trim()).filter(Boolean))];
  let requests=0,providedTitle='Logos';
  const request=async url=>{
   requests++;
-  assert.match(String(url),/wikipedia\\.org\\/w\\/api\\.php/);
+  assert.match(String(url),/wikipedia\.org\/w\/api\.php/);
   return {ok:true,json:async()=>({query:{pages:{1:{
    title:providedTitle,pageimage:'Logos.svg',
    thumbnail:{source:'https://upload.wikimedia.org/wikipedia/commons/9/98/Logos.svg'}
@@ -200,8 +200,8 @@ test('exact Wikipedia article image fallback supplies source-linked pictures wit
  const find=make(42);
  const found=await find({kind:'topic',subject:'Logos'},'logos',42);
  assert.equal(found.length,1,'An exact encyclopedia article must yield one picture');
- assert.match(found[0].preview,/upload\\.wikimedia\\.org/);
- assert.match(found[0].page,/wikipedia\\.org\\/wiki\\/File:/);
+ assert.match(found[0].preview,/upload\.wikimedia\.org/);
+ assert.match(found[0].page,/wikipedia\.org\/wiki\/File:/);
  assert.equal(found[0].verifiedIdentity,false,'Generic article pictures must not claim verified human identity');
  providedTitle='Logos (band)';
  assert.equal((await find({kind:'topic',subject:'Logos'},'logos',42)).length,0,'Never accept an unrelated namesake');
@@ -209,5 +209,5 @@ test('exact Wikipedia article image fallback supplies source-linked pictures wit
  assert.equal((await find({kind:'person',subject:'San Martín'},'San Martín',42)).length,0);
  assert.equal(requests,before,'Unidentified people must not be assigned arbitrary encyclopedia pictures');
  assert.equal((await find({kind:'topic',subject:'Logos'},'logos',41)).length,0,'Discard stale image lookups');
- assert.match(engine,/combined=\\[\\.\\.\\.trustedLead,\\.\\.\\.selected\\]/,'Verified initial images must not be erased by later Commons results');
+ assert.match(engine,/combined=\[\.\.\.trustedLead,\.\.\.selected\]/,'Verified initial images must not be erased by later Commons results');
 });
