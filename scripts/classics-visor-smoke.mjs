@@ -547,6 +547,7 @@ try{
    assert((await p.locator('#pap-build-sentences li').count())===1,'Word was not committed to a sentence');
    await p.locator('#pap-build-transcribe').click();
    assert.match(await p.locator('#pap-transcription').inputValue(),/𐤀𐤁/,'Sentence was not transferred to transcription');
+   await p.locator('#pap-transcription').fill('');
    const geminiFixture={
     schema:'vitruvia-papyrology-multimodal-draft-v1',verified:false,model:'test-offline',
     analysis:{writing_system_candidates:[{name:'Greek'}],language_candidates:[{name:'Ancient Greek'}],
