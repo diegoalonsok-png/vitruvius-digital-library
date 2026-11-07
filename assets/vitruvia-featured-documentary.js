@@ -49,9 +49,9 @@
   }catch{return false}
  }
  const locale=(es,en,fr)=>document.documentElement.lang?.startsWith('en')?en:document.documentElement.lang?.startsWith('fr')?fr:es;
- let query='',token=0,featured=null,gallery=[],selected='',rank=0,attempted=new Set(),ready=false,childFallback=null,fallbackTimer=null;
+ let historicalEntityId='',query='',token=0,featured=null,gallery=[],selected='',rank=0,attempted=new Set(),ready=false,childFallback=null,fallbackTimer=null;
  function setQuery(value){
-  query=fold(value);token++;featured=null;gallery=[];selected='';rank=0;ready=false;childFallback=null;clearTimeout(fallbackTimer);fallbackTimer=null;attempted.clear();
+  query=fold(value);historicalEntityId='';token++;featured=null;gallery=[];selected='';rank=0;ready=false;childFallback=null;clearTimeout(fallbackTimer);fallbackTimer=null;attempted.clear();
   photo.removeAttribute('src');photo.alt='';visual.hidden=true;
  }
  function preferImage(item){
@@ -118,12 +118,13 @@
  function onHero(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query||!d.item)return;
-  if(historicalBiographyQuery(query))return;
+  if(historicalBiographyQuery(query)&&!(historicalEntityId&&d.item.verifiedHistoricalPortrait&&d.item.entityId===historicalEntityId))return;
   show(d.item,Number(d.weight)||5000);
  }
  function onFeatured(event){
   const d=event.detail||{};
   if(!query||fold(d.query)!==query)return;
+  if(d.row?.entityHistorical&&d.row?.wikidataId)historicalEntityId=d.row.wikidataId;
   if(historicalBiographyQuery(query))return;
   if(d.row?.type==='wikipedia')leadImage(d.row,query);
   const item=fromRow(d.row);
