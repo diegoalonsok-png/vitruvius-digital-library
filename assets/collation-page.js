@@ -85,7 +85,7 @@ function addReadTools(card,readable,locus,id){
  const smaller=el("button",null,"A−");smaller.type="button";smaller.title="Reducir letra";smaller.addEventListener("click",()=>{pref.size=Math.max(12,pref.size-1);apply()});
  const bigger=el("button",null,"A+");bigger.type="button";bigger.title="Agrandar letra";bigger.addEventListener("click",()=>{pref.size=Math.min(34,pref.size+1);apply()});
  const lupa=el("button",null,"🔍 Lupa");lupa.type="button";lupa.setAttribute("aria-pressed",String(pref.lupa));lupa.addEventListener("click",()=>{pref.lupa=!pref.lupa;lupa.setAttribute("aria-pressed",String(pref.lupa));apply()});
- const underline=el("button",null,"S̲ Subrayar");underline.type="button";underline.title="Selecciona texto del cuadro y pulsá Subrayar";
+ const underline=el("button",null,"S̲ Subrayar");underline.type="button";underline.title="Selecciona texto del cuadro y pulsa Subrayar";
  underline.addEventListener("mousedown",ev=>ev.preventDefault());
  underline.addEventListener("click",()=>{
   const sel=window.getSelection();if(!sel||sel.isCollapsed||sel.rangeCount===0)return;
@@ -104,7 +104,7 @@ function addReadTools(card,readable,locus,id){
   for(const mark of marks){mark.replaceWith(...mark.childNodes)}readable.normalize();
  });
  bar.append(font,smaller,bigger,lupa,pick("Fondo",pref.paper,v=>pref.paper=v),pick("Texto",pref.ink,v=>pref.ink=v),underline,clear);
- const help=el("span","coll-help","Selecciona una frase y pulsá Subrayar");bar.append(help);
+ const help=el("span","coll-help","Selecciona una frase y pulsa Subrayar");bar.append(help);
  const heading=card.querySelector("h3");if(heading)heading.after(bar);else card.prepend(bar);
  apply();
  const ranges=storeGet(annotationKey(locus,id),[]);
