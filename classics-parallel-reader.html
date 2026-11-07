@@ -41,15 +41,15 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 <body>
 <header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a><a href="classics-document-parallel.html">PDF enfrentados</a></nav></header>
 <main>
-<p class="note">La navegación conjunta parte del inicio de ambas versiones y avanza por unidades editoriales o por número de capítulo coincidente. Es una sincronización orientativa, no una alineación filológica de párrafos o folios. Ambos lectores también conservan navegación y búsqueda independientes.</p>
-<div class="controls"><label>Original / primera edición <select id="left" aria-label="Lengua del visor izquierdo"></select></label><label>Traducción / segunda edición <select id="right" aria-label="Lengua del visor derecho"></select></label></div>
+<p class="note">Lectura de estudio: texto original griego o latino a la izquierda; traducción disponible a la derecha. No se exige PDF antiguo para estudiar la obra. Los facsímiles tienen su propio acceso. Las coincidencias por locus son editoriales y la alineación semántica aún no está certificada.</p>
+<div class="controls"><label>Visor 1 · texto original (griego o latín) <select id="left" aria-label="Lengua original del primer visor"></select></label><label>Visor 2 · traducción <select id="right" aria-label="Idioma de la traducción del segundo visor"></select></label></div>
 <div class="syncbar" aria-label="Navegación conjunta">
 <button type="button" id="sync-start">⟲ Inicio de ambas</button><button type="button" id="sync-prev">← Ambas anteriores</button><button type="button" id="sync-next">Ambas siguientes →</button>
 <label><input type="checkbox" id="same-locus" checked> Coincidir por capítulo cuando sea posible</label>
 <output id="sync-position">Sin sincronizar</output>
 </div>
 <p id="status" role="status" aria-live="polite">Cargando las versiones documentadas…</p>
-<div class="panes"><section class="pane"><strong>Visor izquierdo · navegación independiente</strong><label class="pane-version">Versión del visor izquierdo <select id="left-pane-language" aria-label="Cambiar versión del visor izquierdo"></select></label><div class="appearance" role="group" aria-label="Estilo del visor izquierdo">
+<div class="panes"><section class="pane"><strong>01 · Texto original · navegación independiente</strong><label class="pane-version">Versión del visor izquierdo <select id="left-pane-language" aria-label="Cambiar versión del visor izquierdo"></select></label><div class="appearance" role="group" aria-label="Estilo del visor izquierdo">
 <button type="button" id="left-ivory" aria-label="Tema marfil en visor left" title="Marfil">◧ Marfil</button>
 <button type="button" id="left-sepia" aria-label="Tema sepia en visor left" title="Sepia">◩ Sepia</button>
 <button type="button" id="left-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor left">◐ Invertir</button>
@@ -61,7 +61,7 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 <span class="zoom-level" id="left-size">20 px</span>
 <button type="button" id="left-larger" aria-label="Aumentar texto del visor left" title="Lupa más">⌕+</button>
 <button type="button" id="left-reset" aria-label="Restablecer colores y tipografía del visor left">↺</button>
-</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>Visor derecho · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" role="group" aria-label="Estilo del visor derecho">
+</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>02 · Traducción · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" role="group" aria-label="Estilo del visor derecho">
 <button type="button" id="right-ivory" aria-label="Tema marfil en visor right" title="Marfil">◧ Marfil</button>
 <button type="button" id="right-sepia" aria-label="Tema sepia en visor right" title="Sepia">◩ Sepia</button>
 <button type="button" id="right-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor right">◐ Invertir</button>
@@ -195,7 +195,7 @@ function goto(){const [a,b]=pair();if(!a||!b)return;const target=destination();
  $("sync-position").textContent=(position+1)+" / "+count()+" · "+labels[target.quality];
  store();
 }
-function frame(side,lang){const u=new URL("classics-text-reader.html",location.href);
+function frame(side,lang){if(side==="left"&&!["grc","la"].includes(lang)||side==="right"&&["grc","la"].includes(lang))return;const u=new URL("classics-text-reader.html",location.href);
  u.searchParams.set("work",work);u.searchParams.set("lang",lang);
  ready[side]=false;$("pane-"+side).src=u.href;
  params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());buttons();
@@ -206,6 +206,7 @@ function versionsFor(languages){return Promise.all(languages.map(async lang=>{
  if(data.workId===work&&data.language===lang&&Array.isArray(data.passages)&&data.passages.length)versions[lang]=data;}catch{}
 }));}
 async function changed(side,lang){
+ if(side==="left"&&!["grc","la"].includes(lang)||side==="right"&&["grc","la"].includes(lang))return;
  const current=++generation[side];
  const panel=$(side+"-pane-language");
  if(panel)panel.value=lang;
@@ -236,11 +237,14 @@ fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw 
  const rec=(c.works||[]).find(w=>w.id===work);
  if(!rec?.corpusFiles)throw Error("Esta obra todavía no tiene textos locales registrados.");
  files=rec.corpusFiles;const langs=Object.keys(files).filter(l=>Object.hasOwn(LANG,l));
- const ordered=["grc","la","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
- if(!ordered.length)throw Error("No hay versiones textuales disponibles.");
- fill(left,ordered);fill(right,ordered);fill($("left-pane-language"),ordered);fill($("right-pane-language"),ordered);
- left.value=ordered.includes(params.get("left"))?params.get("left"):ordered[0];
- right.value=ordered.includes(params.get("right"))?params.get("right"):(ordered.find(l=>l!==left.value)||ordered[0]);
+ const originalLanguages=["grc","la"].filter(l=>langs.includes(l));
+ const translationLanguages=["es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
+ if(!originalLanguages.length)throw Error("No hay texto griego o latino registrado para esta obra.");
+ if(!translationLanguages.length)throw Error("Aún falta incorporar una traducción completa. No se duplicará el texto original en el segundo visor.");
+ fill(left,originalLanguages);fill(right,translationLanguages);
+ fill($("left-pane-language"),originalLanguages);fill($("right-pane-language"),translationLanguages);
+ left.value=originalLanguages.includes(params.get("left"))?params.get("left"):originalLanguages[0];
+ right.value=translationLanguages.includes(params.get("right"))?params.get("right"):translationLanguages[0];
  $("left-pane-language").value=left.value;$("right-pane-language").value=right.value;
  await versionsFor([left.value,right.value]);position=Math.min(position,Math.max(0,count()-1));
  $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
