@@ -102,40 +102,69 @@ function lexicalTerms(raw){
  }
  return {qs,matched,forms:[...forms].slice(0,12)};
 }
+
+function action(label,callback){const b=el("button",label);b.type="button";b.addEventListener("click",callback);return b}
+function markedExcerpt(text,term){
+ const container=el("span"),s=String(text||""),needle=String(term||"").toLocaleLowerCase();
+ let at=0,n=0;
+ while(needle&&n<50){
+  const pos=s.toLocaleLowerCase().indexOf(needle,at);if(pos<0)break;
+  container.append(document.createTextNode(s.slice(at,pos)),el("mark",s.slice(pos,pos+term.length)));
+  at=pos+term.length;n++;
+ }
+ container.append(document.createTextNode(s.slice(at)));return container;
+}
+function printPassage(row){
+ const w=window.open("","_blank","width=850,height=700");if(!w){alert("Permití abrir ventanas para imprimir o guardar en PDF.");return}
+ const d=w.document,style=d.createElement("style");
+ d.title=row.author+" — "+row.title+" · "+row.locus;
+ style.textContent="@page{size:A4;margin:20mm}body{font:17px/1.6 Georgia,serif;color:#111}blockquote{border-left:3px solid #888;padding:14px}mark{background:#ffe99c}small{overflow-wrap:anywhere}";
+ d.head.append(style);
+ d.body.append(el("h1",row.author+" · "+row.title),el("p",(langs[row.language]||row.language)+" · "+(row.ocr?"Página ":"Locus ")+row.locus));
+ const block=el("blockquote");block.append(markedExcerpt(row.excerpt,row.term));d.body.append(block);
+ d.body.append(el("small","Procedencia: "+row.source+" · "+new URL(row.link,location.href).href));
+ w.focus();w.print();
+}
+function emailPassage(row){
+ const subject="Pasaje de "+row.author+" · "+row.title+" · "+row.locus;
+ const body=[subject,row.excerpt,"Referencia: "+new URL(row.link,location.href).href].join("\n\n");
+ location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+}
+function renderPassage(row){
+ const item=el("article",null,"passage-unit");
+ const heading=el("div",null,"passage-unit-heading");heading.append(el("strong",(row.ocr?"Página ":"Locus ")+row.locus),el("span",(row.hitsInPassage||1)+" "+((row.hitsInPassage||1)===1?"aparición":"apariciones")+" · "+row.term));item.append(heading);
+ const excerpt=el("blockquote",null,"passage-quote");excerpt.append(markedExcerpt(row.excerpt,row.term));item.append(excerpt);
+ const tools=el("div",null,"passage-actions"),palette=el("label","Fondo: ");
+ const picker=el("input");picker.type="color";picker.value="#101012";picker.setAttribute("aria-label","Elegir fondo del pasaje");
+ picker.addEventListener("input",()=>{item.style.setProperty("--unit-bg",picker.value);const rgb=[1,3,5].map(i=>parseInt(picker.value.slice(i,i+2),16));item.style.setProperty("--unit-ink",(.2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2])>145?"#111":"#f5f5f5")});
+ palette.append(picker);tools.append(palette);
+ tools.append(action("Imprimir / PDF",()=>printPassage(row)),action("Enviar por mail",()=>emailPassage(row)),link(row.link,"Abrir pasaje"),link("vitruvia-lexicon.html?q="+encodeURIComponent(row.term),"Lexicon"));
+ item.append(tools);return item;
+}
 async function searchLiteral(){
- const raw=$("query").value.trim(),token=++literalSerial;
- const status=$("literal-status"),target=$("literal-results");target.replaceChildren();
- if(fold(raw).length<3){status.textContent="Escriba una palabra de tres letras o más.";return}
- if(!window.ClassicsCorpusSearch?.searchPassages){status.textContent="El índice de pasajes todavía no está disponible.";return}
- const {qs,matched,forms}=lexicalTerms(raw);
- const work=$("work").value,edition=$("edition").value;
- const selectedEdition=versions.find(v=>[v.workId,v.language,v.source,v.edition||""].join("|")===edition);
- // Only directly attested surface terms are searched. No automatic inflectional claims.
- status.textContent="Buscando pasajes documentados para «"+raw+"» en los textos disponibles…";
- $("literal-search").disabled=true;
+ const raw=$("query").value.trim(),token=++literalSerial,status=$("literal-status"),target=$("literal-results");target.replaceChildren();
+ if(fold(raw).length<3){status.textContent="Escribí al menos tres letras.";return}
+ if(!window.ClassicsCorpusSearch?.searchPassages){status.textContent="Índice de pasajes no disponible.";return}
+ const {matched,forms}=lexicalTerms(raw),work=$("work").value,edition=$("edition").value;
+ const selected=versions.find(v=>[v.workId,v.language,v.source,v.edition||""].join("|")===edition);
+ status.textContent="Buscando pasajes de «"+raw+"»…";$("literal-search").disabled=true;
  try{
-  const all=await window.ClassicsCorpusSearch.searchPassages(forms,{limit:360,workId:work,language:selectedEdition?.language||"",maxPerEdition:24});
+  const all=await window.ClassicsCorpusSearch.searchPassages(forms,{limit:600,workId:work,language:selected?.language||"",maxPerEdition:200});
   if(token!==literalSerial)return;
-  const rows=selectedEdition?all.filter(r=>r.source===selectedEdition.source):all;
-  const diag=window.ClassicsCorpusSearch.diagnostics?.()||{};
-  status.textContent=rows.length?
-    rows.length+" pasajes localizados en "+new Set(rows.map(r=>r.workId+"|"+r.source)).size+" ediciones para «"+raw+"». "+(diag.failed?diag.failed+" fuentes sin cargar; resultados parciales. ":"")+"Máximo 24 pasajes por edición en esta vista.":
-    "Sin pasajes recuperados en los textos disponibles. "+(diag.failed?diag.failed+" fuentes sin cargar. ":"")+"No significa que el término falte en otros manuscritos o ediciones.";
-  if(matched.length){
-   const notice=el("p","Conceptus relacionado: "+matched.map(c=>c.id).join(", ")+". Se buscaron formas equivalentes documentadas (no traducciones alineadas ni lemas flexionados verificados).","muted");
-   target.append(notice);
+  const rows=selected?all.filter(r=>r.source===selected.source):all,groups=new Map(),diagnostics=window.ClassicsCorpusSearch.diagnostics?.()||{};
+  for(const row of rows){const key=row.workId+"|"+row.source+"|"+row.language;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(row)}
+  status.textContent=rows.length?rows.length+" pasajes en "+groups.size+" ediciones."+(diagnostics.failed?" "+diagnostics.failed+" fuentes no disponibles.":"")+(rows.length>=600?" Límite de 600 pasajes; refiná la búsqueda.":""):
+   "No se encontraron pasajes en las ediciones examinadas."+(diagnostics.failed?" "+diagnostics.failed+" fuentes no disponibles.":"");
+  if(matched.length)target.append(el("p","Conceptus: "+matched.map(c=>c.id).join(", ")+". Equivalencias semánticas editoriales; no se presupone alineación de traducciones.","muted"));
+  for(const group of groups.values()){
+   const first=group[0],total=group.reduce((n,r)=>n+(r.hitsInPassage||1),0);
+   const details=el("details",null,"edition-group"),summary=el("summary");
+   summary.append(el("strong",first.author+" · "+first.title),el("span",(langs[first.language]||first.language)+" · "+group.length+" pasajes · "+total+" apariciones"));
+   details.append(summary);
+   const contents=el("div",null,"edition-passages");for(const row of group)contents.append(renderPassage(row));
+   details.append(contents);target.append(details);
   }
-  if(!rows.length&&qs.length)target.append(el("p","Probá buscar «"+qs[0]+"» en Lexicon para explorar flexiones y testimonios fuera de este corpus.","muted"));
-  for(const row of rows){
-   const card=el("article",null,"entry passage-card");
-   const h=el("h2");h.append(link(row.link,row.author+" · "+row.title));card.append(h);
-   card.append(el("p",(langs[row.language]||row.language)+" · "+(row.ocr?"página OCR ":"locus ")+row.locus+" · forma: "+row.term+(row.edition?" · "+row.edition:""),"passage-meta"));
-   const quote=el("blockquote",row.excerpt,"passage-quote");card.append(quote);
-   card.append(el("p",row.ocr?"OCR histórico sin colación: referencia a página, no a locus crítico.":"Pasaje del texto alojado; sin alineación automática con traducciones.","muted"));
-   const actions=el("div",null,"links");actions.append(link(row.link,"Abrir pasaje y resaltar término"),link("vitruvia-lexicon.html?q="+encodeURIComponent(row.term),"Estudiar palabra en Lexicon"));card.append(actions);
-   target.append(card);
-  }
- }catch(err){if(token===literalSerial)status.textContent="Error al recuperar pasajes: "+err.message}
+ }catch(err){if(token===literalSerial)status.textContent="Error de búsqueda: "+err.message}
  finally{if(token===literalSerial)$("literal-search").disabled=false}
 }
 async function init(){
