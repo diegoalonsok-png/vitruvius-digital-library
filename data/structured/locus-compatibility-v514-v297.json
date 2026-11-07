@@ -1,5 +1,5 @@
 {
-  "schema": "vitruvius-structured-locus-audit-v2",
+  "schema": "vitruvius-structured-locus-audit-v3",
   "scope": "Validación mecánica de correspondencia por identificadores de locus, no cotejo filológico.",
   "editions": [
     {
@@ -34,12 +34,15 @@
     "7.7.5"
   ],
   "onlyV297": [],
-  "warning": "Coincidencia de locus no acredita traducción o lecturas filológicamente iguales. Los tres pasajes 7.7.2, 7.7.3 y 7.7.5 se conservan intactos en V514 y V554; no interpolarlos en V297.",
+  "warning": "No completar artificialmente V297. La coincidencia de IDs no certifica traducción literal; la ausencia de IDs tampoco implica que falte texto, que puede estar reunido en un pasaje contiguo.",
   "v554Status": "Comprobado: recuperado por SHA GitHub; 731 pasajes no vacíos, sin loci duplicados. Completo respecto del esquema local V514.",
   "onlyV554": [
     "7.7.2",
     "7.7.3",
     "7.7.5"
   ],
-  "method": "Comparación de los identificadores de las tres versiones JSON; recuento de loci únicos y campos latín/traducción no vacíos. No equivale a colación textual."
+  "method": "Comparación de los identificadores de las tres versiones JSON; recuento de loci únicos y campos latín/traducción no vacíos. No equivale a colación textual. Comparar capítulo íntegro para verificar contenido de V297 cuando un identificador no coincide.",
+  "editorialNote": "La versión inglesa V297 es una edición completa. Su latín y traducción inglesa están distribuidos en algunos loci con segmentación diferente, y el aparato crítico es más breve. No interpretar tres IDs ausentes como omisiones de texto.",
+  "onlyV514Label": "Identificadores solo presentes en V514/V554, no necesariamente texto exclusivo.",
+  "latinChapterAudit": "data/structured/latin-chapter-comparison-v514-v297.json"
 }
