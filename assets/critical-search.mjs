@@ -150,7 +150,7 @@ function renderNotes(notes,q,ref){
   const queryWords=[...new Set(norm(q).match(/[\p{L}\p{N}]{3,}/gu)||[])];
   if(!queryWords.length)return norm(hay).includes(norm(q));
   const words=new Set(norm(hay).match(/[\p{L}\p{N}]{3,}/gu)||[]);
-  return queryWords.every(word=>words.has(word)||[...words].some(token=>token.startsWith(word)&&word.length>=4));
+  return queryWords.every(word=>words.has(word));
 
  });
  // Rank commentary and editorial analysis ahead of raw passage references.
@@ -160,8 +160,9 @@ function renderNotes(notes,q,ref){
     const terms=[...new Set(norm(q).match(/[\p{L}\p{N}]{3,}/gu)||[])];
     const exact=norm(q);
     return (n.locus?12:n.candidate_locus?6:0)
-      +(body.includes(exact)?30:0)+(anchor.includes(exact)?18:0)
-      +terms.reduce((sum,t)=>sum+(body.includes(t)?4:0)+(anchor.includes(t)?2:0),0);
+      +(new Set(body.match(/[\p{L}\p{N}]+/gu)||[]).has(exact)?30:0)
+      +(new Set(anchor.match(/[\p{L}\p{N}]+/gu)||[]).has(exact)?18:0)
+      +terms.reduce((sum,t)=>sum+(new Set(body.match(/[\p{L}\p{N}]+/gu)||[]).has(t)?4:0)+(new Set(anchor.match(/[\p{L}\p{N}]+/gu)||[]).has(t)?2:0),0);
   };
   return score(b)-score(a);
  });
