@@ -8,6 +8,16 @@ const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="";
+/* A trusted same-origin parallel reader may request ordinal passage navigation.
+   Does not infer lexical/critical alignment across editions. */
+window.addEventListener("message",event=>{
+ if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
+ const cmd=event.data;
+ if(!cmd||cmd.type!=="vitruvia-parallel-goto"||cmd.work!==work||cmd.lang!==data?.language)return;
+ if(!Number.isInteger(cmd.index)||cmd.index<0||cmd.index>=data.passages.length)return;
+ select(cmd.index);
+});
+
 const fold=s=>LEX?LEX.fold(s):String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replaceAll("j","i");
 const tokenize=s=>fold(s).match(/[\p{L}]{3,}/gu)||[];
 const equivalences=[
