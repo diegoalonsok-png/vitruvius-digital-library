@@ -69,7 +69,7 @@ function append(){
  }
  $("results").append(frag);shown+=slice.length;
  $("more").hidden=shown>=filtered.length;
- $("summary").textContent=versions.length+" ediciones registradas · "+filtered.length+" entradas concepto/edición con referencias. Mostrando "+shown+". "+(filtered.length===0&&$("query").value.trim()?"Sin coincidencia en Conceptus: consultá la concordancia literal de los textos, disponible más arriba. ":"")+"El índice conceptual no sustituye la concordancia literal ni verifica sentidos individuales.";
+ $("summary").textContent=versions.length+" ediciones registradas · "+filtered.length+" entradas concepto/edición con referencias. Mostrando "+shown+". "+(filtered.length===0&&$("query").value.trim()?"Sin coincidencia en Conceptus: consulte la concordancia literal de los textos, disponible más arriba. ":"")+"El índice conceptual no sustituye la concordancia literal ni verifica sentidos individuales.";
 }
 function exportTsv(){
  const clean=x=>String(x??"").replace(/[\t\r\n]+/g," ").trim();
@@ -91,8 +91,8 @@ let literalSerial=0;
 async function searchLiteral(){
  const raw=$("query").value.trim(),token=++literalSerial;
  const status=$("literal-status"),target=$("literal-results");target.replaceChildren();
- if(raw.length<2){status.textContent="Escribí al menos dos letras en el campo de búsqueda.";return}
- if(!window.ClassicsCorpusSearch){status.textContent="El índice textual no está disponible. Verificá la carga del buscador.";return}
+ if(raw.length<2){status.textContent="Escriba al menos dos letras en el campo de búsqueda.";return}
+ if(!window.ClassicsCorpusSearch){status.textContent="El índice textual no está disponible. Verifique la carga del buscador.";return}
  status.textContent="Consultando las ediciones alojadas para «"+raw+"»…";
  $("literal-search").disabled=true;
  try{
@@ -100,7 +100,7 @@ async function searchLiteral(){
   if(token!==literalSerial)return;
   const diagnostics=window.ClassicsCorpusSearch.diagnostics?.()||{};
   status.textContent=rows.length?
-   rows.length+" ediciones con coincidencias literales de «"+raw+"». "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles; resultados parciales.":"Seleccioná una edición para ver su pasaje y procedencia."):
+   rows.length+" ediciones con coincidencias literales de «"+raw+"». "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles; resultados parciales.":"Seleccione una edición para ver su pasaje y procedencia."):
    "Sin coincidencias literales en las "+(diagnostics.loaded||0)+" ediciones examinadas. "+(diagnostics.failed?diagnostics.failed+" fuentes no disponibles. ":"")+"Esto no demuestra ausencia en obras sin texto indexado.";
   for(const row of rows){
    const card=el("article",null,"entry"),a=link(row.link||"bibliotheca-graeca-latina.html",row.title||"Texto clásico");
