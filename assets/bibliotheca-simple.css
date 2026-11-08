@@ -177,3 +177,10 @@ h1,.group h3,.hit p{color:#fff!important}
  }
 }
 @media print {.passage-actions{display:none!important}}
+
+/* Auditoría 2026-11-08: el borde enfocado prevalece sobre el estilo base. */
+html body .toplinks #language-toggle:focus,
+html body .toplinks #language-toggle:focus-visible {
+  border-color:#929295!important;
+  box-shadow:0 0 0 2px rgba(145,145,149,.17);
+}
