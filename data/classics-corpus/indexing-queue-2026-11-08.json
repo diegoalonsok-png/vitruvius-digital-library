@@ -1,0 +1,449 @@
+{
+  "schema": "vitruvius-classics-indexing-queue-v1",
+  "catalogueCount": 222,
+  "indexedWorkIds": 178,
+  "pendingCount": 44,
+  "method": "A URL or PDF catalogue reference is not proof of full-text indexation. Existing content must be verified, transcribed/parsed and indexed before changing its state.",
+  "pending": [
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "sourceUrl": "https://thelatinlibrary.com/sen.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+    },
+    {
+      "id": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Edición textual aún no cotejada"
+    },
+    {
+      "id": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "language": "grc",
+      "sourceUrl": "https://www.earlychristianwritings.com/origen.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Portal de acceso e introducción; comprobar edición y licencia antes de reproducir el texto íntegro."
+    },
+    {
+      "id": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "language": "la",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Edición textual aún no cotejada"
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/poliorktikakaip00petegoog",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de C. Wescher, Poliorcétique des Grecs (París: Imprimerie impériale, 1867). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Atribución a Apolodoro de Damasco discutida (cf. P. H. Blyth, GRBS 33, 1992)."
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/poliorktikakaip00petegoog",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de C. Wescher, Poliorcétique des Grecs (París: Imprimerie impériale, 1867). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Texto paralelo a Vitruvio X.13–16 (máquinas de asedio)."
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Lectura integral disponible en PDF dentro del visor."
+    },
+    {
+      "id": "varro-de-lingua-latina",
+      "author": "Varrón",
+      "title": "De lingua Latina",
+      "language": "la",
+      "sourceUrl": "https://thelatinlibrary.com/varro.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+    },
+    {
+      "id": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae",
+      "language": "la",
+      "sourceUrl": "https://thelatinlibrary.com/phaedrus.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "language": "la",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "language": "la",
+      "sourceUrl": "https://thelatinlibrary.com/sen.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "language": "la",
+      "sourceUrl": "https://thelatinlibrary.com/sen.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "language": "la",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Macrobius/Saturnalia/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "language": "grc",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "language": "la",
+      "sourceUrl": "https://thelatinlibrary.com/enn.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "language": "la",
+      "sourceUrl": null,
+      "sourceType": "unidentified",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "language": "grc",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aristotle/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "language": "grc",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "language": "la",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Isidore/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Censorinus/home.html",
+      "sourceType": "external-reference",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Texto original transcrito en LacusCurtius, Universidad de Chicago; la página de la fuente indica la edición de base. Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/euclidisoperaomn07eucluoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de J. L. Heiberg, Euclidis Opera omnia VII: Optica, Opticorum recensio Theonis, Catoptrica (Leipzig: Teubner, 1895). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/euclidisoperaomn08eucl",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de H. Menge, Euclidis Opera omnia VIII: Phaenomena et scripta musica (Leipzig: Teubner, 1916). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El volumen incluye la Sectio canonis y la Introductio harmonica transmitida bajo el nombre de Euclides (hoy atribuida a Cleónides)."
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/euclidisoperaomn08eucl",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de H. Menge, Euclidis Opera omnia VIII (Leipzig: Teubner, 1916). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Edición crítica alternativa: C. Jan, Musici scriptores Graeci (Leipzig: Teubner, 1895). Pertinente para la armonía de Vitruvio V.4 (doctrina aristoxénica)."
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/heronsbelopoiika00hero",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de H. Diels y E. Schramm, Herons Belopoiika (Berlín: Abh. Preuß. Akad. Wiss., 1918), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para las catapultas y ballestas de Vitruvio X.10–12."
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/philonsbelopoiik00philuoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de H. Diels y E. Schramm, Philons Belopoiika (viertes Buch der Mechanik) (Berlín: Abh. Preuß. Akad. Wiss., 1919), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la proporción de las máquinas de tiro en Vitruvio X."
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/poliorktikakaip00petegoog",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de C. Wescher, Poliorcétique des Grecs (París: Imprimerie impériale, 1867). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El volumen de Wescher reúne también a Ateneo Mecánico, Herón, Apolodoro y Filón."
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/geminoueisagoget00gemi",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de K. Manitius (Leipzig: Teubner, 1898), griego y alemán. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la astronomía de Vitruvio IX."
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/aristarchusofsam00heatuoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de T. L. Heath, Aristarchus of Samos, the Ancient Copernicus (Oxford: Clarendon Press, 1913), texto griego con traducción inglesa. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Vitruvio nombra a Aristarco de Samos en I.1.17, IX.2.3 y IX.8.1."
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/apolloniipergaei01apoluoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de J. L. Heiberg, Apollonii Pergaei quae graece exstant I (Leipzig: Teubner, 1891), libros I–III. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "language": "grc",
+      "sourceUrl": "https://archive.org/details/pappialexandrin04pappgoog",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de F. Hultsch, Pappi Alexandrini collectionis quae supersunt III.1 (Berlín: Weidmann, 1878). Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. El libro VIII trata de la mecánica y de los mecánicos de la escuela de Herón. Volumen I (libros II–V): https://archive.org/details/pappialexandrin00hultgoog."
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "language": "la",
+      "sourceUrl": "https://archive.org/details/corpusagrimensor01thuluoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de C. Thulin, Corpus agrimensorum Romanorum I.1 (Leipzig: Teubner, 1913), pp. 131–171. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio. Pertinente para la orientación y el trazado urbano (Vitruvio I.6)."
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "language": "la",
+      "sourceUrl": "https://archive.org/details/corpusagrimensor01thuluoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de C. Thulin, Corpus agrimensorum Romanorum I.1 (Leipzig: Teubner, 1913), pp. 1–19. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "language": "la",
+      "sourceUrl": "https://archive.org/details/corpusagrimensor01thuluoft",
+      "sourceType": "facsimile",
+      "indexStatus": "pending-verified-searchable-text",
+      "sourceNote": "Facsímil de la edición de C. Thulin, Corpus agrimensorum Romanorum I.1 (Leipzig: Teubner, 1913), pp. 98–130. Repositorio institucional (Internet Archive o biblioteca digital). Fuente externa de lectura; no alojada en este sitio."
+    }
+  ]
+}
