@@ -390,7 +390,13 @@ async function literaryEditions(root,topic,valid){
     const publicRecord='https://openlibrary.org'+item.key;
     const cover=bookCoverFromEdition(item);
     const annotation=L('Edición registrada en un catálogo bibliográfico. Consulta la ficha para verificar traductor, editorial y disponibilidad.','Edition recorded in a bibliographic catalogue. Consult the record for translator, publisher and availability.','Édition inscrite dans un catalogue bibliographique. Consultez la notice pour traducteur, éditeur et disponibilité.');
-    card(stack,editionName,publicRecord,annotation,cover,[date,publisher,'Open Library'].filter(Boolean).join(' · '));
+    const itemCard=card(stack,editionName,publicRecord,annotation,cover,[date,publisher,'Open Library'].filter(Boolean).join(' · '));
+    itemCard.classList.add('cultural-book');
+    const isbn=editionIsbn(item);
+    const shop=link(L('Buscar esta edición en librería','Find this edition at a bookstore','Chercher cette édition en librairie'),
+     bookstoreSearch(editionName,(work.author_name||[])[0],isbn));
+    shop.className='web-dossier-buy-search';
+    itemCard.querySelector('.web-dossier-card-body')?.append(shop);
     shown++;if(shown>=50)break;
    }
    if(!shown)info(stack,L('No hay fichas de edición identificables en la muestra consultada.','No identifiable edition records in the retrieved sample.','Aucune notice d’édition identifiable dans l’échantillon consulté.'));
