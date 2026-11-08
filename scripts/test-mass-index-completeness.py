@@ -88,6 +88,31 @@ def main():
             assert module.choose_file([{"path": expected, "size": 9000}], urn, suffix) == expected
             assert module.choose_file([], urn, suffix) is None
 
+    # Ninguna ficha compuesta debe contabilizarse completa si falta una unidad
+    # TEI o si el archivo final sólo contiene una fracción de las URN esperadas.
+    import json
+    catalog = json.loads((ROOT / "data/bibliotheca-perseus.json").read_text(encoding="utf-8"))["links"]
+    for work_id, urns in module.COMPOSITE_WORKS.items():
+        mapped = tuple(item["obra"] for item in catalog[work_id])
+        assert mapped == urns, f"{work_id}: fuentes cambiadas, revisión manual"
+        assert len(urns) > 1 and len(urns) == len(set(urns))
+        original = "la" if work_id in {"nepos", "seneca-tragoediae", "suetonius-caesares"} else "grc"
+        target = ROOT / f"data/classics-corpus/{work_id}-{original}.json"
+        if target.exists():
+            item = json.loads(target.read_text(encoding="utf-8"))
+            assert item["sourceType"] == "verified-multi-TEI-edition", work_id
+            assert item["sourceUrn"] == list(urns), work_id
+            parts = item["sourceParts"]
+            assert [v["urn"] for v in parts] == list(urns), work_id
+            assert all(p["passages"] > 0 and len(p["sha256"]) == 64 for p in parts)
+            seen = {urn: 0 for urn in urns}
+            for passage in item["passages"]:
+                urn = passage["sourceUrn"]
+                assert urn in seen and passage["locus"].startswith(urn + ":"), work_id
+                seen[urn] += 1
+            assert all(seen.values()), f"{work_id}: alguno de los textos fuente no fue indexado"
+            assert sum(seen.values()) == len(item["passages"])
+
     print("PASS: prosa mixta íntegra, versos preservados, XML P4 y P5 sin modificación")
 
 if __name__ == "__main__":
