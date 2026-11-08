@@ -3539,10 +3539,11 @@
       "language": "la",
       "genre": "Fábulas",
       "dating": "siglo I d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://thelatinlibrary.com/phaedrus.html",
-        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+        "url": "classics-text-reader.html?work=phraedrus-fabulae&lang=la",
+        "status": "Texto latino indexado a partir de Perseus TEI, L. Müller (1876), libros I–V y apéndice; no colación propia.",
+        "externalUrl": "https://thelatinlibrary.com/phaedrus.html"
       },
       "manuscript": {
         "manifest": null,
@@ -3553,11 +3554,11 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés histórico de Christopher Smart (1913): 91 pasajes traducidos locales; 10 omisiones explícitas del TEI. Sin alineación verso a verso; ES/FR pendientes."
       },
       "links": {
         "scaife": null,
-        "perseus": null,
+        "perseus": "https://github.com/PerseusDL/canonical-latinLit/tree/master/data/phi0975/phi001",
         "archive": null,
         "gallica": null
       }
