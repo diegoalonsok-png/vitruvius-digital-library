@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "data/classics-corpus"
 WORKS = {
-    "hesiod-theogony": {"original": "grc", "units": 216, "notes": 32, "translator": "Evelyn-White", "last": "translation-tei-line-1020-1020"},
-    "hesiod-works-days": {"original": "grc", "units": 179, "notes": 41, "translator": "Evelyn-White", "last": "translation-tei-line-825-825"},
+    "hesiod-theogony": {"original": "grc", "units": 216, "notes": 32, "translator": "Evelyn-White", "last": "translation-tei-line-985-1020"},
+    "hesiod-works-days": {"original": "grc", "units": 179, "notes": 41, "translator": "Evelyn-White", "last": "translation-tei-line-815-825"},
     "tacitus-agricola": {"original": "la", "units": 46, "notes": 1, "translator": "Church", "last": "translation-tei-chapter-46"},
 }
 
@@ -53,7 +53,7 @@ def verify():
         assert doc["coverage"]["unitsVerified"] == criterion["units"]
         assert doc["coverage"]["editorialNotesPreserved"] == criterion["notes"]
         assert doc["coverage"]["characters"] == sum(len(p["text"]) for p in doc["passages"])
-        assert doc["passages"][-1]["locus"].endswith(criterion["last"].split("translation-tei-")[-1])
+        assert doc["passages"][-1]["locus"] == criterion["last"]
         assert len({p["locus"] for p in doc["passages"]}) == len(doc["passages"])
         assert all(p["text"].strip() for p in doc["passages"])
         assert sum(len(p.get("editorialNotes", [])) for p in doc["passages"]) == criterion["notes"]
