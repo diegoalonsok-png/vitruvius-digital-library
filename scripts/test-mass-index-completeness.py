@@ -62,8 +62,8 @@ def main():
               '<teiHeader><fileDesc><titleStmt><title>Phaedo</title>'
               '<author>Plato</author></titleStmt></fileDesc></teiHeader>'
               '<text xml:lang="grc"><body><div n="57"><p>'
-              + ('      \\n             ' * 450)
-              + '<said>Ο λόγος περὶ ψυχῆς καὶ ἀληθείας λέγεται. ' * 35
+              + (('      ' + chr(10) + '             ') * 450)
+              + '<said>' + ('Ο λόγος περὶ ψυχῆς καὶ ἀληθείας λέγεται. ' * 35)
               + '<l n="1">λόγος ἀρχαῖος</l></said></p></div></body></text></TEI>').encode("utf-8")
     title, author, lang, passages = module.extract_complete_tei(spaced, "Phaedo")
     assert title == "Phaedo" and author == "Plato" and lang == "grc"
