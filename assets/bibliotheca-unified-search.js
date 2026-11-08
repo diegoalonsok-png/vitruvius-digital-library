@@ -94,7 +94,10 @@ function init(){
  async function semanticVariants(q){
   const response=await fetch("data/lexicon/conceptus.json");
   if(!response.ok)throw Error("No se pudo abrir Conceptus ("+response.status+")");
-  const data=await response.json(),key=fold(q).trim();
+  const data=await response.json(),initial=fold(q).trim();
+  // Explicit scholarly transliterations; not a claim of etymological identity.
+  const aliases={logos:"λόγος",oikos:"οἶκος",domos:"δόμος"};
+  const key=fold(aliases[initial]||q).trim();
   const concepts=Array.isArray(data.concepts)?data.concepts:[];
   const c=concepts.find(x=>[
    x.id,...Object.values(x.modern||{}).flat(),...(x.la||[]),...(x.grc||[])
@@ -201,8 +204,12 @@ function init(){
     if(!concept)throw Error("El término no tiene una equivalencia semántica registrada en Conceptus. Utiliza el modo literal.");
     semanticLabel=concept.name;
     const sets=[["la",concept.la],["grc",concept.grc]].filter(x=>x[1].length);
-    const results=await Promise.all(sets.map(([language,terms])=>window.ClassicsCorpusSearch.searchPassages(terms,{allMatches:true,workId,language})));
-    hits=results.flat();diagnostics={failed:0};
+    let failures=0;const results=[];
+    for(const [language,terms] of sets){
+     results.push(await window.ClassicsCorpusSearch.searchPassages(terms,{allMatches:true,workId,language}));
+     failures+=(window.ClassicsCorpusSearch.diagnostics?.().failed||0);
+    }
+    hits=results.flat();diagnostics={failed:failures};
    }else{
     hits=await window.ClassicsCorpusSearch.searchPassages([q],{allMatches:true,workId});
    }
