@@ -1,0 +1,30 @@
+name: Auditar tamaño de facsímiles y documentos
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/audit-heavy-assets.mjs'
+      - '.github/workflows/heavy-assets-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis
+        run: node --check scripts/audit-heavy-assets.mjs
+      - name: Inventariar imágenes, folios y documentos
+        run: node scripts/audit-heavy-assets.mjs
+      - name: Guardar auditoría, sin borrar originales
+        uses: actions/upload-artifact@v4
+        with:
+          name: inventario-materiales-pesados
+          path: |
+            reports/heavy-assets-audit.md
+            reports/heavy-assets-audit.json
+          retention-days: 30
