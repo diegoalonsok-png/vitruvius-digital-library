@@ -55,14 +55,14 @@ let fab,dlg;
 function ui(){
  if(fab)return;
  if(window.self!==window.top){fab=document.createElement("span");return} // incrustado en otro lector: sin botón flotante
- fab=document.createElement("button");fab.type="button";fab.className="research-folder-fab";fab.setAttribute("aria-haspopup","dialog");
+ fab=document.createElement("button");fab.type="button";fab.className="research-folder-fab";fab.setAttribute("aria-haspopup","dialog");fab.setAttribute("aria-label","Abrir carpeta de investigación guardada");
  fab.style.cssText="position:fixed;left:14px;bottom:14px;z-index:9000;font:600 13px system-ui,sans-serif;padding:9px 13px;border-radius:20px;border:1px solid #555d64;background:#23282d;color:#eceeed;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer";
  fab.addEventListener("click",open);document.body.append(fab);
  dlg=document.createElement("dialog");dlg.className="research-folder-dialog";dlg.setAttribute("aria-label","Carpeta de investigación");
  dlg.style.cssText="max-width:760px;width:92vw;max-height:84vh;border:1px solid #636a72;border-radius:10px;padding:18px 20px;font:15px/1.5 system-ui,sans-serif;color:#e9eaeb;background:#1d2227";
  dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});document.body.append(dlg);render()}
 function render(){
- if(!fab||!fab.isConnected)return;const v=read();fab.textContent="▤ Guardados"+(v.length?" ("+v.length+")":"");fab.setAttribute("aria-label","Abrir carpeta de investigación: "+v.length+" elementos guardados");fab.title="Carpeta de investigación: pasajes, folios, láminas y obras guardados";
+ if(!fab||!fab.isConnected)return;const v=read();fab.hidden=v.length===0;fab.style.display=v.length?"":"none";fab.textContent="▤ Guardados"+(v.length?" ("+v.length+")":"");fab.setAttribute("aria-label","Abrir carpeta de investigación: "+v.length+" elementos guardados");fab.title="Carpeta de investigación: pasajes, folios, láminas y obras guardados";
  if(!dlg)return;dlg.replaceChildren();
  const head=document.createElement("div");head.style.cssText="display:flex;justify-content:space-between;align-items:center;gap:10px";
  const h=document.createElement("h2");h.textContent="Carpeta de investigación";h.style.margin="0";
