@@ -1,0 +1,41 @@
+name: Bibliotheca · traducciones y fuentes externas
+on:
+  pull_request:
+    paths:
+      - 'bibliotheca-traducciones-pendientes.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'assets/bibliotheca-simple.js'
+      - 'assets/bibliotheca-translations-ledger.js'
+      - 'data/classics-corpus/remote-translations.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'scripts/test-bibliotheca-translation-ledger.mjs'
+      - '.github/workflows/bibliotheca-translation-ledger.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'bibliotheca-traducciones-pendientes.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'assets/bibliotheca-simple.js'
+      - 'assets/bibliotheca-translations-ledger.js'
+      - 'data/classics-corpus/remote-translations.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'scripts/test-bibliotheca-translation-ledger.mjs'
+      - '.github/workflows/bibliotheca-translation-ledger.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  academic-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JS syntax
+        run: |
+          node --check assets/bibliotheca-simple.js
+          node --check assets/bibliotheca-translations-ledger.js
+      - name: Verify 222 works, missing translations and scholarly provenance
+        run: node scripts/test-bibliotheca-translation-ledger.mjs
