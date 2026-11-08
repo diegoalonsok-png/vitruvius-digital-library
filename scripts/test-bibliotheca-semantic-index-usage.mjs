@@ -63,6 +63,7 @@ function run(index){
  const {engine,requests}=run(postings);
  const rows=await engine.semanticSearch("casa",{limit:10});
  const d=engine.diagnostics();
+ console.log("Semantic test diagnostic:",JSON.stringify({rows,diagnostics:d,requests}));
  assert.equal(rows.length,1,"Attested Latin source must remain searchable");
  assert.equal(rows[0].workId,"house");
  assert.equal(d.staticIndexUsed,true,"Full-registry index should be recognized");
