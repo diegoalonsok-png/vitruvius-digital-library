@@ -68,7 +68,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python scripts/repair-classics-mixed-tei.py
-            python scripts/mass-index-classics.py --max-new 10
+            python scripts/mass-index-classics.py --max-new 12
             if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard data/classics-corpus)" ]; then
               echo 'No hay nuevos originales TEI incorporables en este lote.'
               exit 0
