@@ -58,5 +58,30 @@ h1{font:400 clamp(42px,6vw,78px)/1.09 "Gentium Book Plus","Cardo",Georgia,serif;
 .more{background:#202021;border:1px solid #444;color:#ccc;width:100%;padding:12px 16px;border-radius:7px;margin:18px 0}
 .more:hover{background:#292929;color:#fff}
 footer{margin:45px 0 0;padding-top:15px;border-top:1px solid #303030;color:#929293;font-size:11px}
+/* Retroalimentación perceptible sin cambiar la estética de Lexicon.
+   Un clic aclara levemente la superficie, deja un halo gris de foco
+   y al presionar desplaza 1 px; nunca se usa dorado. */
+.language-toggle,.searchform button,.workrow select,.more{
+ transition:background-color .13s ease,border-color .13s ease,box-shadow .13s ease,transform .08s ease;
+}
+.language-toggle:hover,.searchform button:hover,.workrow select:hover,.more:hover{
+ border-color:#676769!important;
+}
+.language-toggle:focus,.searchform button:focus,.workrow select:focus,.more:focus{
+ border-color:#929295!important;
+ box-shadow:0 0 0 2px rgba(145,145,149,.17);
+}
+.searchform:focus-within{
+ border-color:#666!important;
+ box-shadow:0 0 0 1px rgba(145,145,149,.12);
+}
+.language-toggle:active,.searchform button:active,.more:active{
+ background:#414143!important;
+ transform:translateY(1px);
+}
+.workrow select:active{background:#2f2f31!important}
+@media(prefers-reduced-motion:reduce){
+ .language-toggle,.searchform button,.workrow select,.more{transition:none;transform:none!important}
+}
 @media(max-width:600px){.library{width:calc(100% - 28px)}header.hero{padding:38px 0 23px}.top{padding:14px 0}.searchform{padding-left:13px;min-height:53px}.searchform input{font-size:15px}.searchform button{padding:8px 12px;min-height:40px}.workrow{align-items:stretch}.workrow label{width:100%}.workrow select{width:100%}}
 @media print{html,body{background:#fff!important;color:#111!important;color-scheme:light}.library{width:100%;padding:0}.top,.searcharea,.coverage,.more,footer{display:none!important}header.hero{padding:12px 0;border-color:#999}.intro,.eyebrow,.search-status,.group h3,.group .meta,.group .bibliography,.hit .locus,.hit .label,.hit p,.results-heading{color:#111!important}.hit mark{background:#ddd!important;color:#111!important}.group,.hit{border-color:#aaa!important}}
