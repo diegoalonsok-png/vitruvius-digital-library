@@ -36,3 +36,39 @@ body.critical-lexicon-theme .examples{display:flex;flex-wrap:wrap;align-items:ce
 body.critical-lexicon-theme .examples span{color:#aeb0b6;font:12px Arial,sans-serif}
 @media(max-width:780px){body.critical-lexicon-theme .critical-wrap{width:calc(100% - 26px)}body.critical-lexicon-theme .critical-parallel{grid-template-columns:1fr}body.critical-lexicon-theme .critical-form{padding:15px}body.critical-lexicon-theme .critical-controls{align-items:stretch}body.critical-lexicon-theme .critical-controls label{flex-wrap:wrap}}
 @media print{body.critical-lexicon-theme{background:white!important;color:#111!important}body.critical-lexicon-theme .critical-wrap :is(p,h1,h2,h3){color:#111!important}body.critical-lexicon-theme :is(.critical-form,.critical-controls,.critical-unified-form,.examples,.critical-pdf-tools){display:none!important}body.critical-lexicon-theme :is(.critical-unified,.critical-result,.critical-unified-card){background:white!important;color:#111!important}body.critical-lexicon-theme mark{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+/* Concordancia extendida: la página PDF íntegra se abre solo cuando se solicita. */
+body.critical-lexicon-theme .critical-unified-pdf{
+ margin-top:22px;padding:17px 0 4px;border-top:1px solid #45454a;
+ background:transparent!important;color:#e3e3e5!important
+}
+body.critical-lexicon-theme .critical-unified-pdf[hidden]{display:none!important}
+body.critical-lexicon-theme .critical-unified-pdf h3{
+ font:normal 22px/1.35 Georgia,serif;color:#ededed;margin:5px 0 10px
+}
+body.critical-lexicon-theme :is(#critical-unified-pdf-search,#critical-unified-pdf-more){
+ background:#242528!important;color:#e7e7e9!important;border:1px solid #66676b!important;
+ padding:8px 11px!important;min-height:32px;border-radius:6px;
+ font:500 12px/1.4 Arial,sans-serif!important;box-shadow:none!important;
+ text-transform:none!important;letter-spacing:0!important
+}
+body.critical-lexicon-theme :is(#critical-unified-pdf-search,#critical-unified-pdf-more):hover{
+ background:#35363a!important;border-color:#96979b!important
+}
+body.critical-lexicon-theme .critical-unified-page{
+ margin:12px 0;padding:9px 12px;border:1px solid #44464a;
+ background:#1a1b1e;color:#e2e2e3;border-radius:5px
+}
+body.critical-lexicon-theme .critical-unified-page>summary{
+ font:500 12px/1.6 Arial,sans-serif;cursor:pointer;color:#e7e7e7
+}
+body.critical-lexicon-theme .critical-unified-page .critical-unified-full{
+ max-height:65vh;overflow:auto;padding:10px 0
+}
+body.critical-lexicon-theme .critical-unified-page .critical-unified-text{
+ white-space:pre-wrap;text-align:justify;line-height:1.7
+}
+@media(max-width:650px){
+ body.critical-lexicon-theme .critical-unified-pdf{padding:12px 0}
+ body.critical-lexicon-theme .critical-unified-page .critical-unified-text{text-align:left}
+}
