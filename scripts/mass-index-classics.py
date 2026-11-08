@@ -229,6 +229,7 @@ def edition_document(work, original, source_url, raw, urn, min_original_chars=35
 def run():
     p = argparse.ArgumentParser()
     p.add_argument("--max-new", type=int, default=5)
+    p.add_argument("--only-work-id", action="append", default=[], help="Restringir a identificadores existentes, sin cambiar comportamiento por defecto")
     p.add_argument("--dry-run", action="store_true")
     args = p.parse_args()
     limit = max(1, min(args.max_new, 16))
@@ -247,6 +248,8 @@ def run():
     eligible = []
     for w in catalog["works"]:
         wid, lang = w["id"], w.get("language")
+        if args.only_work_id and wid not in set(args.only_work_id):
+            continue
         links = mapping.get(wid, [])
         if lang not in ORIG or (wid, lang) in indexed:
             continue
