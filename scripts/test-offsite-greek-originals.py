@@ -28,6 +28,14 @@ assert [p["locus"] for p in x["passages"]]==["1.2~p1","1.2~p2"]
 assert all("ENGLISH NOTE" not in p["text"] for p in x["passages"])
 assert all(p["editorialLocus"]=="1.2" for p in x["passages"])
 assert all(len(p["text"])>600 for p in x["passages"])
+# A normalized surface selects ONE editor's reading; it never concatenates variants.
+choice = module.ET.fromstring('<choice xmlns="http://www.tei-c.org/ns/1.0"><sic>σφάλα</sic><corr>σῶμα</corr></choice>')
+apparatus = module.ET.fromstring('<app xmlns="http://www.tei-c.org/ns/1.0"><lem>λόγος</lem><rdg>νόμος</rdg></app>')
+assert module.surface(choice)=="σῶμα"
+assert module.surface(apparatus)=="λόγος"
+bloom = module.bloom_filter(x["passages"])
+assert bloom["bits"]==262144 and bloom["tokens"]>=3
+assert len(module.base64.b64decode(bloom["data"]))==32768
 assert len(module.SOURCES)==13
 try:
  module.convert("ps-aristotle-mechanica",xml.replace(b"creativecommons.org/licenses/by-sa/4.0/",b"invalid.example/"),"x",source)
