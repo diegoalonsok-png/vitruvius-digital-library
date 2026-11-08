@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 105,
+  "count": 108,
   "works": 74,
   "entries": [
     {
@@ -1058,6 +1058,36 @@
       "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
       "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-catilinariae-en.json",
+      "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1856); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-clouds-en.json",
+      "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=en",
+      "sourceDescription": "Traducción histórica de William James Hickie (1853); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1887); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

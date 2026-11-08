@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 105,
+    "indexedTextVersions": 108,
     "indexedDistinctWorks": 74,
     "manuscriptWitnesses": 23
   },
@@ -1431,9 +1431,11 @@
       "dating": "63 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/cicero-catilinariae-en.json",
         "data/classics-corpus/cicero-catilinariae-la.json"
       ],
       "localPDF": null,
@@ -2316,9 +2318,11 @@
       "dating": "siglo V a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/sophocles-oedipus-en.json",
         "data/classics-corpus/sophocles-oedipus-grc.json"
       ],
       "localPDF": null,
@@ -2360,9 +2364,11 @@
       "dating": "siglo V a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristophanes-clouds-en.json",
         "data/classics-corpus/aristophanes-clouds-grc.json"
       ],
       "localPDF": null,

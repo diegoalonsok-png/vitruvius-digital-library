@@ -2845,8 +2845,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "la": "data/classics-corpus/cicero-catilinariae-la.json"
-      }
+        "la": "data/classics-corpus/cicero-catilinariae-la.json",
+        "en": "data/classics-corpus/cicero-catilinariae-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Charles Duke Yonge (1856)",
+          "path": "classics-text-reader.html?work=cicero-catilinariae&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Cicerón. In Catilinam (Orationes Catilinariae). Translated by Charles Duke Yonge. Henry G. Bohn, London, 1856. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "catullus-carmina",
@@ -4507,8 +4517,18 @@
         "Oedipus the King"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/sophocles-oedipus-grc.json"
-      }
+        "grc": "data/classics-corpus/sophocles-oedipus-grc.json",
+        "en": "data/classics-corpus/sophocles-oedipus-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Richard Jebb (1887)",
+          "path": "classics-text-reader.html?work=sophocles-oedipus&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Sófocles. Οἰδίπους Τύραννος. Translated by Richard Jebb. Cambridge University Press, 1887. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "euripides-medea",
@@ -4603,8 +4623,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aristophanes-clouds-grc.json"
-      }
+        "grc": "data/classics-corpus/aristophanes-clouds-grc.json",
+        "en": "data/classics-corpus/aristophanes-clouds-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · William James Hickie (1853)",
+          "path": "classics-text-reader.html?work=aristophanes-clouds&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Aristófanes. Νεφέλαι. Translated by William James Hickie. Bohn, London, 1853. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "herodotus-historiae",
