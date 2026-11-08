@@ -54,7 +54,7 @@ assert.ok(requests.includes(path));
 const bogus={...entry,sourceSha256:"2".repeat(64)};
 assert.equal(await window.ClassicsOffsiteGreek.load(bogus),null,"Do not silently use an unverified TEI digest");
 const html=fs.readFileSync("classics-remote-text-reader.html","utf8");
-const inline=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
+const inline=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(inline.length,1);
 new vm.Script(inline[0][1],{filename:"classics-remote-text-reader.inline.js"});
 for(const id of ["work-title","work-meta","provenance","passages","next","previous"])
