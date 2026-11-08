@@ -93,8 +93,10 @@ jobs:
             node scripts/test-classics-integration.mjs
             python scripts/test-classics-historical-translations.py
             python scripts/build_classics_semantic_index.py
+            python scripts/audit-classics-222-roadmap.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
             git add data/classics-corpus
+            git add data/classics-corpus/indexation-roadmap-222.json
             if git diff --cached --quiet; then
               echo 'Sin cambios registrables.'
               exit 0
