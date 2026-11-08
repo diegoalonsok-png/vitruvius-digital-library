@@ -150,7 +150,17 @@ try{
    assert.equal(state.languageButtons,1,'There must be exactly one functional language button');
    assert.equal(state.languageLabel,'Idioma · ES','Default language button should show Spanish');
    assert.equal(state.body,'rgb(13, 13, 14)','Use Lexicon black');
-   assert.equal(state.button,'rgb(73, 73, 76)','Gray border; no gold');
+   assert.equal(state.button,'rgb(70, 70, 73)','Gray border; no gold');
+   const controlAppearance=await p.evaluate(()=>Object.fromEntries(
+    ['.searchform','.searchform button','#language-toggle','#classic-work'].map(selector=>{
+     const style=getComputedStyle(document.querySelector(selector));
+     return [selector,{radius:style.borderRadius,stroke:style.borderColor}];
+    })
+   ));
+   for(const [selector,style] of Object.entries(controlAppearance)){
+    assert.equal(style.radius,'0px','Rounded control is prohibited: '+selector);
+    assert.equal(style.stroke,'rgb(70, 70, 73)','Only neutral grey border allowed: '+selector);
+   }
    assert.match(state.coverage,/222|obras catalogadas/);
    await p.locator('#language-toggle').click();
    assert.equal(await p.locator('#search-submit').innerText(),'Search');
