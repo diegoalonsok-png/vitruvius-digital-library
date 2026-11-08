@@ -297,6 +297,7 @@ async function run(push=true){
   q="λόγος";$("#lx-q").value=q;S.lang="grc";$("#lx-lang").value="grc";
  }
  S.q=q;S.page=0;
+ if(["palabra","lema"].includes(S.mode))window.dispatchEvent(new CustomEvent("vitruvia:lexicon-search",{detail:{query:q,mode:S.mode,language:S.lang}}));
  window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["palabra","lema","etimologia"].includes(S.mode)});
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
@@ -361,7 +362,9 @@ async function run(push=true){
   S.allHits=S.work?execute(S.D,parsed,{...opts,work:""}).hits:res.hits;
  S.result={...res,parsed};
   if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
-  if(S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern")await renderEntry(S.D,parsed.steps[0].term,res);
+  // Para toda palabra o lema, en latín o griego, mostrar siempre la ficha
+  // y su frecuencia. No depender de una ficha Conceptus preexistente.
+  if(["palabra","lema"].includes(S.mode)&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern")await renderEntry(S.D,parsed.steps[0].term,res);
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const qq=q;findConcept(q).then(c=>{if(!c||$("#lx-q").value.trim()!==qq)return;const body=$("#lx-entry .article-body");if(body)body.prepend(conceptCard(c,qq))})}
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
@@ -612,6 +615,28 @@ function renderLogosGrammar(){
   el("p",{class:"article-note"},"Etimología: Etymologicum editorial, ficha logos; referencia sintáctica: prólogo del Evangelio de Juan (Jn 1:1)."));
  return sec;
 }
+/* Frecuencia morfológica complementaria: siempre desglosar por obra de la
+   lengua consultada, independientemente de la búsqueda literal de Bibliotheca.
+   No contar OCR o traducciones como testimonios manuscritos. */
+function morphologyFrequency(D,term,lemmas){
+ const root=fold(term.v||"").replace(/^@/,"");
+ const unique=[...new Set(lemmas.map(x=>lemmaDisplay(x)))];
+ const per=unique.map(w=>({w,forms:lemmaFormsFor(D,w)}));
+ if(!per.length)per.push({w:term.v,forms:new Set(D.workFreq.has(root)?[root]:[])});
+ const distinctForms=new Set(per.flatMap(p=>[...p.forms]));
+ const rows=[];
+ for(const id of Object.keys(D.corpus.works)){
+  const counts=per.map(x=>[...x.forms].reduce((sum,f)=>sum+(D.workFreq.get(f)?.[id]||0),0));
+  const total=[...distinctForms].reduce((sum,f)=>sum+(D.workFreq.get(f)?.[id]||0),0);
+  if(!total)continue;
+  rows.push({D,id,lang:D.l,lemmas:per,counts,total,per10k:total/(D.workTokens[id]||1)*10000});
+ }
+ rows.sort((a,b)=>(CHRONO[a.id]??0)-(CHRONO[b.id]??0));
+ const section=frequencyTable(null,{rows,trN:0});
+ section.insertBefore(el("p",{class:"article-note"},
+  "Frecuencia morfológica en la lengua consultada: se suman las formas documentadas de cada lema en el índice. Si hay lemas ambiguos, una misma forma puede pertenecer a más de uno; el total por obra deduplica las formas. La búsqueda literal en Bibliotheca se presenta por separado."),section.querySelector("table")||section.lastChild);
+ return section;
+}
 async function renderEntry(D,term,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
  const key=fold(term.v).replace(/[^\p{L}']/gu,"");
@@ -651,6 +676,9 @@ async function renderEntry(D,term,res){
  if(!lemmas.length&&res.sets?.[0]?.size>1){body.append(el("p",{},"Formas que satisfacen la consulta: ",[...res.sets[0]].slice(0,80).join(" · ")))}
  /* Etimología editorial */
  if(curated)body.append(etymCard(curated));
+ /* Frecuencia propia de cualquier lema griego o latino, con o sin Conceptus.
+    Si aparece además Conceptus, su frecuencia semántica es una sección distinta. */
+ body.append(morphologyFrequency(D,term,lemmas));
  /* Etimología en línea */
  renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
  /* Aside: frecuencia, colocaciones, exportación */
