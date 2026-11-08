@@ -1,0 +1,56 @@
+name: Compactar índices derivados sin pérdida (espacio Pages)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/compact-derived-indexes.py'
+      - '.github/workflows/compact-derived-indexes.yml'
+permissions:
+  contents: write
+concurrency:
+  group: classics-corpus-publication-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  compact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compactación sin pérdida y verificación de búsqueda
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/compact-derived-indexes.py
+            node scripts/test-classics-integration.mjs
+            git diff --check
+            git add data/classical-dictionary.json
+            git add data/lexicon/dictionary-la.json data/lexicon/dictionary-grc.json
+            git add data/lexicon/forms-la.json data/lexicon/forms-grc.json
+            if git diff --cached --quiet; then
+              echo 'Sin ahorro adicional de bytes; fuentes intactas.'
+              exit 0
+            fi
+            git commit -m 'Compactar índices lexicográficos derivados sin pérdida de contenido'
+            if git push origin HEAD:main; then
+              echo 'Índices derivados reducidos; originales, traducciones, imágenes y PDF intactos.'
+              exit 0
+            fi
+            echo "La rama cambió; recalculando desde su último estado ($attempt/3)"
+          done
+          echo 'No se fuerza ningún push; no se perdieron archivos.'
+          exit 1
