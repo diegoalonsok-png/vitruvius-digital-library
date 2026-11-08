@@ -65,7 +65,7 @@ const articleBody=new ArticleNode('div'),articleTitle=new ArticleNode('h1');
 articleBody.id='article-body';articleTitle.id='article-title';
 const assemble=vm.createContext({
  window:{},active:1,normalized:norm,relevance:()=>100,isDeityQuery:()=>false,
- document:{documentElement:{lang:'en'},getElementById:id=>id==='article-body'?articleBody:id==='article-title'?articleTitle:articleBody.querySelector('#'+id)},
+ document:{documentElement:{lang:'en'},createTextNode:text=>new ArticleNode('#text',String(text)),getElementById:id=>id==='article-body'?articleBody:id==='article-title'?articleTitle:articleBody.querySelector('#'+id)},
  make:(tag,text='',className='')=>Object.assign(new ArticleNode(tag,text),{className}),
  reset:()=>articleBody.replaceChildren(),phrase:(es,en)=>en||es,
  appendObjectContext:async()=>[],aside:()=>{},references:()=>{},optionalManuscriptAccess:()=>{},appendPersonLoci:()=>{},appendVerifiedTopicPassages:()=>{},appendAcademicLinks:()=>{},buildContents:()=>{}
