@@ -140,7 +140,7 @@ async function authoredBooks(name){
  // Direct author identifier + paginated works. Avoid truncated text searches
  // falsely presented as a complete oeuvre.
  const found=await json('https://openlibrary.org/search/authors.json?'+new URLSearchParams({q:name,limit:'20'}));
- const author=(found?.docs||[]).find(a=>norm(a.name)===norm(name)&&/^OL\\d+A$/.test(a.key||''));
+ const author=(found?.docs||[]).find(a=>norm(a.name)===norm(name)&&/^OL\d+A$/.test(a.key||''));
  if(!author)return {items:[],complete:false,source:'https://openlibrary.org/search/authors?'+new URLSearchParams({q:name})};
  const items=[],PAGE=100,MAX=3000;let offset=0,total=Infinity;
  while(offset<total&&offset<MAX){
@@ -149,7 +149,7 @@ async function authoredBooks(name){
   total=Number(data.size)||data.entries.length;
   const batch=data.entries;if(!batch.length)break;
   for(const w of batch){
-   if(!/^\/works\/OL\\d+W$/.test(w.key||'')||!w.title)continue;
+   if(!/^\/works\/OL\d+W$/.test(w.key||'')||!w.title)continue;
    const cover=(w.covers||[]).find(x=>Number.isInteger(x)&&x>0);
    const year=String(w.first_publish_date||'').match(/(?:1[0-9]{3}|20[0-9]{2})/);
    items.push({title:w.title,kind:'book',sortDate:year?.[0]||'',date:year?.[0]||'',image:cover?'https://covers.openlibrary.org/b/id/'+cover+'-M.jpg?default=false':'',
@@ -185,12 +185,34 @@ async function render(name,entity,rows){
  if(kind==='author'||kind==='general')block(container,L('Testimonios manuscritos del catálogo','Manuscript witnesses in the catalogue','Témoins manuscrits du catalogue'),manuscripts(rows));
  const tasks=[];
  if(kind==='athlete'&&qid)tasks.push(awards(qid).then(items=>({label:L('Distinciones documentadas','Documented awards','Distinctions documentées'),items,note:L('Las distinciones individuales registradas no constituyen una lista completa de copas o títulos de equipo.','Individual awards are not an exhaustive list of team trophies.','Les distinctions individuelles ne représentent pas tous les titres collectifs.')})));
- if(kind==='music')tasks.push(albums(name).then(items=>({label:L('Discografía y portadas','Discography and album covers','Discographie et pochettes'),items})));
- if(qid&&kind!=='athlete'&&kind!=='music')tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
+ if(kind==='music')tasks.push(albums(name).then(result=>({kind:'music',label:L('Discografía y portadas','Discography and album covers','Discographie et pochettes'),...result})));
+ if(kind==='author')tasks.push(authoredBooks(name).then(result=>({kind:'books',label:L('Bibliografía documentada','Documented bibliography','Bibliographie documentée'),...result})));
+ if(qid&&!['athlete','music','author'].includes(kind))tasks.push(works(qid,kind).then(items=>({label:kind==='visual'?L('Pinturas y obras atribuidas','Attributed artworks','Œuvres attribuées'):kind==='composer'?L('Composiciones documentadas','Documented compositions','Compositions documentées'):L('Obras de la persona','Works by this person','Œuvres de la personne'),items})));
  if(!tasks.length&&!container.children.length){gallery.hidden=true;return}
  const loaded=await Promise.allSettled(tasks);
  if(id!==sequence)return;
- for(const entry of loaded)if(entry.status==='fulfilled')block(container,entry.value.label,entry.value.items,entry.value.note);
+ for(const entry of loaded){
+  if(entry.status!=='fulfilled')continue;
+  const result=entry.value;
+  if(result.kind==='music'){
+   const note=result.complete?L('Catálogo paginado de MusicBrainz: ', 'Paged MusicBrainz catalogue: ', 'Catalogue MusicBrainz paginé : ')+result.items.length+
+    L(' publicaciones registradas. Fechas de primeras ediciones catalogadas.', ' documented release groups. Dates refer to first catalogued release.', ' publications documentées. Dates de première parution.') :
+    L('Catálogo parcial recuperado; consultar la fuente para posibles obras adicionales.', 'Partial catalogue returned; consult the source for further works.', 'Catalogue partiel ; consulter la source pour d’autres œuvres.');
+   container.append(el('p','vhg-caption',note));
+   for(const type of ['album','soundtrack','live','compilation','ep','single','remix','other']){
+    const group=result.items.filter(r=>r.category===type);
+    if(group.length)block(container,L(...musicTitles[type])+' ('+group.length+')',group);
+   }
+  }else if(result.kind==='books'){
+   block(container,result.label+' ('+result.items.length+')',result.items,result.complete?
+    L('Obras recuperadas mediante el índice paginado del autor.','Works retrieved from the author’s paginated catalogue.','Œuvres issues du catalogue paginé de l’auteur.'):
+    L('Resultados parciales. El catálogo de origen puede contener más obras.','Partial results. The source catalogue may contain further works.','Résultats partiels ; le catalogue peut contenir davantage d’œuvres.'));
+  }else block(container,result.label,result.items,result.note);
+  if(result.source&&['music','books'].includes(result.kind)){
+   const source=link(L('Consultar catálogo completo ↗','Browse source catalogue ↗','Consulter le catalogue complet ↗'),result.source);
+   source.className='vhg-catalogue-link';container.append(source);
+  }
+ }
  if(!container.children.length)gallery.hidden=true;
 }
 function schedule(q,rows){
