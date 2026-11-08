@@ -14,7 +14,7 @@
   "license": "CC BY-SA 4.0 · PerseusDL canonical text repository; attribution and share-alike required",
   "bibliographyChicago18": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877. Digitized by Perseus Digital Library; TEI XML: https://github.com/PerseusDL/canonical-latinLit/blob/95be52ad68c8b4b7c6c9962db092d2e7ec726271/data/phi1351/phi001/phi1351.phi001.perseus-eng4.xml.",
   "isbn": null,
-  "alignment": "Translation-specific TEI units only. No automatic alignment with original text, editorial loci or manuscript folios.",
+  "alignment": "No alineado con el original: las unidades de traducción corresponden exclusivamente al TEI en inglés; no equivalencias por locus, folio, capítulo o verso certificadas.",
   "coverage": {
     "status": "All text units in this identified TEI source captured; beyond-source completeness not independently collated",
     "unitsVerified": 46,
@@ -259,5 +259,8 @@
       "text": "If there is any dwelling-place for the spirits of the just; if, as the wise believe, noble souls do not perish with the body, rest thou in peace; and call us, thy family, from weak regrets and womanish laments to the contemplation of thy virtues, for which we must not weep nor beat the breast. Let us honour thee not so much with transitory praises as with our reverence, and, if our powers permit us, with our emulation. That will be true respect, that the true affection of thy nearest kin. This, too, is what I would enjoin on daughter and wife, to honour the memory of that father, that husband, by pondering in their hearts all his words and acts, by cherishing the features and lineaments of his character rather than those of his person. It is not that I would forbid the likenesses which are wrought in marble or in bronze; but as the faces of men, so all similitudes of the face are weak and perishable things, while the fashion of the soul is everlasting, such as may be expressed not in some foreign substance, or by the help of art, but in our own lives. Whatever we loved, whatever we admired in Agricola, survives, and will survive in the hearts of men, in the succession of the ages, in the fame that waits on noble deeds. Over many indeed, of those who have gone before, as over the inglorious and ignoble, the waves of oblivion will roll; Agricola, made known to posterity by history and tradition, will live for ever.",
       "locusKind": "TEI translation chapter; no certified phrase- or word-level alignment to Latin"
     }
-  ]
+  ],
+  "alignmentStatus": "unaligned",
+  "citationStyle": "Chicago Manual of Style, 18th ed. (2024), notes and bibliography",
+  "chicago18Bibliography": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877. Digitized by Perseus Digital Library; TEI XML: https://github.com/PerseusDL/canonical-latinLit/blob/95be52ad68c8b4b7c6c9962db092d2e7ec726271/data/phi1351/phi001/phi1351.phi001.perseus-eng4.xml."
 }
