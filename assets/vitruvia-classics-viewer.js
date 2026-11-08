@@ -3,10 +3,37 @@
  */
 (()=>{
  "use strict";
- const allowed=/^corpus\/[a-z0-9/_-]+\.html$/i;
+ // Only local, known readers may appear in the embedded dialog. Institutional
+ // IIIF/CSP viewers remain external links; no cross-origin iframe is promised.
+ const allowedCorpus=/^corpus\/[a-z0-9/_-]+\.html$/i;
+ const allowedLanguage=/^(?:grc|la|en|es|fr|it|de|pt)$/;
  function locate(path){
-  if(typeof path!=="string"||!allowed.test(path))return null;
-  try{const url=new URL(path,location.href);return url.origin===location.origin?url.href:null}catch{return null}
+  if(typeof path!=="string"||path.startsWith("/")||path.includes(".."))return null;
+  try{
+   const url=new URL(path,location.href);
+   if(url.origin!==location.origin)return null;
+   const clean=path.split(/[?#]/)[0];
+   if(allowedCorpus.test(clean))return url.href;
+   const keys=[...url.searchParams.keys()];
+   if(clean==="classics-text-reader.html"){
+    if(!keys.every(k=>["work","lang","locus"].includes(k)))return null;
+    if(!/^[a-z0-9-]+$/.test(url.searchParams.get("work")||""))return null;
+    if(!allowedLanguage.test(url.searchParams.get("lang")||""))return null;
+    return url.href;
+   }
+   if(clean==="codex-h-folios-local.html"){
+    if(!keys.every(k=>["folio","image"].includes(k)))return null;
+    if(!/^[a-z0-9. -]{0,40}$/i.test(url.searchParams.get("folio")||""))return null;
+    if(!/^\d{0,4}$/.test(url.searchParams.get("image")||""))return null;
+    return url.href;
+   }
+   if(clean==="lector-bilingue.html"){
+    if(!keys.every(k=>["edition","locus"].includes(k)))return null;
+    if(!/^(?:recensio-es|recensio-fr|theory-en)$/.test(url.searchParams.get("edition")||""))return null;
+    return url.href;
+   }
+   return null;
+  }catch{return null}
  }
  function dialog(){
   let root=document.getElementById("vitruvia-classics-dialog");
