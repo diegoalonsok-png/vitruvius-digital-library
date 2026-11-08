@@ -55,7 +55,10 @@ for(const needle of [
  "assets/vitruvia-search.js",
  "assets/vitruvia-reading.css"
 ])assert.ok(vitruviaHTML.includes(needle),"Missing main asset: "+needle);
-assert.ok(bibliothecaHTML.includes("assets/bibliotheca-graeca-latina.js"));
+assert.ok(bibliothecaHTML.includes("assets/bibliotheca-simple.js"),
+ "Bibliotheca must use its minimal word/phrase concordance script");
+assert.ok(bibliothecaHTML.includes('id="classic-query"')&&bibliothecaHTML.includes('id="classic-work"'),
+ "Minimal Bibliotheca must expose only query and work selection");
 const resolverWindow={};
 new Function("window",sourceFile("assets/vitruvia-entity-resolver.js"))(resolverWindow);
 const subject=resolverWindow.VitruviaEntityResolver.subject;
@@ -72,33 +75,23 @@ for(const [q,wanted] of Object.entries(examples)){
 }
 const works=JSON.parse(sourceFile("data/bibliotheca-graeca-latina-I-bce-I-ce.json")).works;
 assert.ok(works.length>=190,"Unexpected classical catalogue shrinkage");
-const classical=sourceFile("assets/bibliotheca-graeca-latina.js");
-const first=classical.indexOf("function workSearchText(");
-const last=classical.indexOf("let suggestionIndex=",first);
-assert.ok(first>=0&&last>first,"Missing classical search implementation");
-const field=id=>({value:id==="classic-sort"?"composition":""});
-const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
-const isLocal=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)
- &&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
-const hasSource=w=>!!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest
- ||w.witnessRecords?.length||w.historicEditions?.length);
-const searchFold=s=>fold(s).replace(/[^\p{L}\p{N}]+/gu," ").trim();
-const api=new Function("works","$","fold","searchFold","isLocal","hasSource","periodFocus",
- classical.slice(first,last)+";return {filters,relevanceForWork};")(works,field,fold,searchFold,isLocal,hasSource,()=>true);
-assert.equal(api.filters().length,works.length,
- "New Bibliotheca must list all works independently of a full-text search");
-for(const [q,min] of [["Cicerón",10],["Homero",3],["Platón",7],["tratados clásicos",25],["odisea",1]]){
- const results=works.filter(w=>api.relevanceForWork(w,q)>=0);
- assert.ok(results.length>=min,q+" matched only "+results.length+" metadata records");
- console.log("✓ Classical catalogue metadata:",q,results.length,"records");
-}
-assert.equal(works.filter(w=>api.relevanceForWork(w,"Penélope Cruz")>=0).length,0,
- "Classical metadata must not invent a modern actress");
-assert.ok(bibliothecaHTML.includes('assets/bibliotheca-unified-search.js'),
- "The only visible search must query indexed text passages");
-const unified=sourceFile("assets/bibliotheca-unified-search.js");
-assert.ok(unified.includes("searchPassages([q],{allMatches:true,workId})")&&unified.includes("semanticVariants(q)"),
- "The new search must retrieve all attested loci, not just catalogue-title matches");
+const classical=sourceFile("assets/bibliotheca-simple.js");
+const corpus=sourceFile("assets/bibliotheca-corpus-search.js");
+new Script(classical,{filename:"assets/bibliotheca-simple.js"});
+assert.ok(classical.includes("searchPassages([q]")&&classical.includes("allMatches:true,includeFullText:true"),
+ "Bibliotheca must display all matching paragraphs without truncation");
+assert.ok(classical.includes("vitruvia-lexicon.html"),
+ "Lexicon navigation must include the requested word");
+assert.ok(classical.includes("dating("),
+ "Concordances must be listed by ancient composition period");
+assert.ok(corpus.includes("completeMatches(p.text,q)"),
+ "Corpus engine must count all phrase/word occurrences");
+assert.ok(!bibliothecaHTML.includes("classics-study-tools.js")&&!bibliothecaHTML.includes("<iframe"),
+ "No reader control or embedded viewer is allowed in the simplified Bibliotheca");
+assert.equal((bibliothecaHTML.match(/id="language-toggle"/g)||[]).length,1,
+ "Bibliotheca must expose exactly one working ES/EN/FR language switch");
+assert.ok(classical.includes('es:"en",en:"fr",fr:"es"'),
+ "The language switch must translate the interface in the three supported languages");
 const search=sourceFile("assets/vitruvia-search.js");
 assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
 assert.ok(search.includes("window.VitruviaEntityResolver?.subject(topicQuery(q))"),"Universal subject not connected");
