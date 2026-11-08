@@ -285,6 +285,7 @@ try{
     const translation=await api.search('William Adlington',{limit:24});
     return {
      total:manifest.length,
+     offsite:manifest.filter(e=>e.format==='remote-json-passages').map(e=>e.workId),
      catullus:catullus.find(r=>r.workId==='catullus-carmina'&&r.language==='la')?.link||'',
      lucretius:lucretius.find(r=>r.workId==='lucretius'&&r.language==='la')?.link||'',
      translation:translation.find(r=>r.workId==='apuleius-metamorphoses'&&r.language==='en')?.link||'',
@@ -296,7 +297,9 @@ try{
    // except Vitruvius, whose Spanish/French editions remain visible.
    // The shared source registry remains complete for Vitruvia and Lexicon.
    const publicEditions=expected.entries.filter(e=>e.workId==='vitruvius'||['la','grc','en'].includes(e.language));
-   assert.equal(check.total,publicEditions.length,'Bibliotheca edition count must follow the public language policy');
+   assert.equal(check.total,publicEditions.length+check.offsite.length,
+    'The public edition count must include separately verified remote Greek originals');
+   assert.equal(check.offsite.length,13,'Expected 13 verified Greek TEI originals outside Pages');
    assert.equal(expected.count,expected.entries.length,'Registry declared count must match entries');
    assert.match(check.catullus,/corpus\/catullus-carmina-la\.html\?q=/,'Catullus verses are not indexed');
    assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
