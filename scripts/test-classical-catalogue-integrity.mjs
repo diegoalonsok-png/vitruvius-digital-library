@@ -23,6 +23,13 @@ assert(html.includes('id="classic-work"')&&html.includes('option value=""'),'The
 assert(html.includes('id="classic-lexicon"'),'The actual query must open Lexicon directly');
 assert(html.includes('assets/bibliotheca-simple.js'),'Minimal reader must be mounted');
 assert(html.includes('assets/bibliotheca-simple.css'),'Lexicon black/ivory theme must load');
+const minimalCss=read('assets/bibliotheca-simple.css');
+assert(minimalCss.includes('border-radius:6px')&&minimalCss.includes('border:1px solid #393939'),
+ 'Buttons must match discreet rounded Lexicon grey-border style');
+assert(minimalCss.includes('.language-button:active')&&minimalCss.includes('transform:translateY(1px)')&&minimalCss.includes('border-color:#888'),
+ 'Button clicks must have a subtle visible active state');
+assert(!/<input[^>]+type="color"|<button[^>]+(?:theme|palette|color)/i.test(html),
+ 'Bibliotheca must not mount obsolete background-colour controls');
 assert(!/<iframe|<dialog|id="classic-sort"|id="classic-detail"/.test(html),'No old viewer, panels or duplicate sorting');
 assert(html.includes('<button class="language-button" type="button" id="classic-ui-language"'),
  'The new language control must be one accessible button, not an inactive dropdown');
