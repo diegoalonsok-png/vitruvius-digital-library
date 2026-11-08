@@ -206,7 +206,7 @@ if(pdfButton&&pdfMore){
 async function run(){
  const query=q.value.trim();if(!query)return;
  const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;
- if(pdfArea){pdfArea.hidden=false;pdfTarget.replaceChildren();pdfStatus.textContent='Para incluir introducciones, notas y apéndices completos, consultá los PDF originales.';pdfMore.hidden=true;pdfButton.disabled=false;}
+ if(pdfArea){pdfArea.hidden=false;pdfTarget.replaceChildren();pdfStatus.textContent='Para incluir introducciones, notas y apéndices completos, consulte los PDF originales.';pdfMore.hidden=true;pdfButton.disabled=false;}
 
  status.textContent='Leyendo textos, notas y comentarios de las ediciones seleccionadas…';
  const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
