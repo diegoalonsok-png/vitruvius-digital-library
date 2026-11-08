@@ -1,0 +1,29 @@
+name: Protección de folios y ediciones madre
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  library-invariants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxis y reglas no destructivas
+        run: |
+          node --check scripts/guard-library-assets.mjs
+          node scripts/test-guard-library-assets.mjs
+      - name: Comparar PR o push contra su base; prohibir borrados y documentos nuevos
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          node scripts/guard-library-assets.mjs "$BASE_SHA" HEAD
