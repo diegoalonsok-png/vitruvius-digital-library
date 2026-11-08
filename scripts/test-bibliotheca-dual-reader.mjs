@@ -47,7 +47,13 @@ assert.match(reader,/searchLocus/);
 assert.match(reader,/getSearchTerms:/);
 assert.match(reader,/Aquitani/i);
 assert.match(reader,/celtae/i);
-assert.match(html,/assets\/classics-study-tools\.js\?v=/);
-assert.match(html,/assets\/bibliotheca-graeca-latina\.js\?v=/);
+// The bilingual reader remains in its independent tools and legacy source.
+ // The Bibliotheca index has deliberately become a simple catalog/concordance
+ // and must not mount those heavy reader controls on first load.
+assert.match(html,/assets\/bibliotheca-simple\.js\?v=/);
+assert.match(html,/assets\/classics-corpus-search\.js\?v=/);
+assert.doesNotMatch(html,/assets\/classics-study-tools\.js\?v=/);
+assert.doesNotMatch(html,/assets\/bibliotheca-graeca-latina\.js\?v=/);
+assert.match(read("assets/bibliotheca-simple.js"),/includeFullText:true/);
 assert.match(old,/location\.replace\(dest\.href\)/);
-console.log("PASS · Caesar: 404 Latin and English loci; bilingual queries; study controls; integrated reader; black defaults.");
+console.log("PASS · Caesar: 404 Latin and English loci; independent bilingual reader preserved; simple Bibliotheca loads no heavy viewer.");
