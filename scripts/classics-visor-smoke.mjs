@@ -144,7 +144,7 @@ try{
    assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').count(),0,'Close unloads reader');
    for(const label of ['PDF / imprimir','Correo','WhatsApp','Lexicon · selección','Pronunciar selección'])
     assert(await p.getByRole('button',{name:label,exact:true}).count()>0,'Missing academic action '+label);
-   await p.locator('.bibliotheca-color').fill('#aaaaaa');
+   await p.locator('.bibliotheca-color').evaluate(e=>{e.value='#aaaaaa';e.dispatchEvent(new Event('input',{bubbles:true}))});
    await p.getByRole('button',{name:'A+'}).click();
   }finally{await p.close()}
  });
