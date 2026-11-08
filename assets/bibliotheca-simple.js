@@ -97,7 +97,11 @@ function switchLanguage(k){
  $("home").textContent=t.home;$("search-submit").textContent=t.search;
  input.placeholder=t.placeholder;$("intro").textContent=t.intro;$("work-label").textContent=t.work;
  $("results-heading").textContent=t.label;$("method-note").textContent=t.method;lex.textContent=t.lexicon;
- document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===locale)));
+ const button=$("language-toggle");if(button){
+  button.textContent=({es:"Idioma · ES",en:"Language · EN",fr:"Langue · FR"})[locale];
+  button.setAttribute("aria-label",({es:"Cambiar idioma: español, inglés o francés",en:"Switch language: English, French or Spanish",fr:"Changer de langue : français, espagnol ou anglais"})[locale]);
+  button.title=({es:"Cambiar idioma: ES → EN → FR",en:"Switch language: ES → EN → FR",fr:"Changer de langue : ES → EN → FR"})[locale];
+ }
  if(works.length)refresh();else coverage.textContent=t.wait;
  if(current)render(previous,current,diag);
  try{localStorage.setItem("vitruvius-ui-lang",locale)}catch{}
@@ -172,7 +176,10 @@ async function search(){
 $("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search()});
 work.addEventListener("change",()=>{if(input.value.trim())void search()});
 input.addEventListener("input",updateLexicon);
-document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>switchLanguage(b.dataset.lang)));
+$("language-toggle").addEventListener("click",()=>{
+ const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";
+ switchLanguage(next);
+});
 const params=new URLSearchParams(location.search),initial=(params.get("q")||params.get("term")||"").trim();
 if(initial)input.value=initial;
 let stored="es";try{stored=localStorage.getItem("vitruvius-ui-lang")||"es"}catch{}
