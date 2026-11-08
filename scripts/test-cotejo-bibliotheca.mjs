@@ -42,8 +42,19 @@ function inspect(w,origin){
  const versions=origin==='external'? [{language:w.language,url:w.original},...(w.translations||[])] : [...(w.localVersions||[])];
  if(origin==='catalogue'&&w.localReader?.original)versions.push({language:w.language,path:w.localReader.original});
  if(origin==='catalogue')for(const path of (w.localReader?.translations||[])){
-  const tag=path.includes('recensio-es')?'es':path.includes('recensio-fr')?'fr':path.includes('theory-en')?'en':null;
+  // Verificar traducciones efectivamente alojadas por su sufijo lingüístico
+  // y por metadatos del documento; no limitarse a tres archivos Vitruvianus.
+  const known=path.includes('recensio-es')?'es':path.includes('recensio-fr')?'fr':path.includes('theory-en')?'en':null;
+  const corpus=/^data\/classics-corpus\/[a-z0-9-]+-(en|es|fr|it|de|pt)\.json$/.exec(path);
+  const tag=known||corpus?.[1]||null;
   if(!tag){errors.push(key+' translation language unknown: '+path);continue;}
+  if(corpus&&exists(path)){
+   const source=read(path);
+   if(source.language!==tag||source.workId!==w.id){
+    errors.push(key+' translation metadata mismatch: '+path);
+    continue;
+   }
+  }
   versions.push({language:tag,path});
  }
  for(const v of versions){
