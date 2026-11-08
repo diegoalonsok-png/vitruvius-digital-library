@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 64,
-    "translatedWorksLocal": 21,
-    "worksWithoutHostedTranslation": 201,
+    "translatedWorksLocal": 22,
+    "worksWithoutHostedTranslation": 200,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 19,
+      "en": 20,
       "fr": 2
     },
     "originalTextIndexed": 64,
@@ -1589,16 +1589,17 @@
       "title": "Τὰ εἰς ἑαυτόν",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
-      "localEditionLanguages": [
-        "grc"
-      ],
-      "externalTranslationUnverified": [
+      "translationLanguages": [
         "en"
       ],
-      "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Griego e inglés: C. R. Haines (Loeb, 1916), edición y traducción documentadas en catálogo Folger; acceso al texto íntegro según la institución.",
-      "translationRegisteredButNotHosted": true,
+      "localEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "externalTranslationUnverified": [],
+      "readingStatus": "texto griego indexado; inglés histórico indexado; cotejo y alineación pendientes",
+      "translationSourceDescription": "EN: George Long (1862), transcripción digital Standard Ebooks indexada localmente; Haines/Loeb (1916) solo referencia bibliográfica externa. ES/FR pendientes de fuentes verificadas.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
