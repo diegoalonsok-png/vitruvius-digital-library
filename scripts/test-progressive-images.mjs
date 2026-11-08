@@ -9,8 +9,12 @@ const rest=source.indexOf('Promise.allSettled(requests.slice(2).map(queryImages)
 const category=source.indexOf('const categories=(await categoriesJob)');
 assert.ok(first>=0&&early>first&&rest>early&&category>rest,'First images must render before supplemental searches and categories');
 assert.match(source,/if\(id!==active\)return;\s*pages\.push\(\.\.\.remaining/,'Stale searches must not repaint');
-assert.match(source,/if\(!isArchitect&&!isFilm&&!\(identity\?\.kind==="person"&&creatorRole\)/,'Identity gate must remain');
+assert.match(source,/if\(!historicalSubject&&!isArchitect&&!isFilm&&!\(identity\?\.kind==="person"&&creatorRole\)/,'Historical identity gate must remain');
 assert.match(source,/pages\.push\(\.\.\.remaining\.filter/,'Supplemental results must be included');
 assert.match(source,/img\.loading=parent===grid\?"lazy":"eager"/,'Preserve light thumbnails');
 assert.match(source,/vitruvia-image-unavailable/,'Preserve failed-image source links');
 console.log('Progressive image search: first batch, identity filtering and full coverage validated');
+
+const discovery=readFileSync(new URL('../assets/vitruvia-discovery.js',import.meta.url),'utf8');
+assert.match(discovery,/formulaImageAllowed\(page,topic\)/,'Formula image policy must be part of image ranking');
+assert.match(source,/VitruviaDiscovery\.formulaImageAllowed\(p,topic\)/,'Wikipedia article images must obey formula image policy');
