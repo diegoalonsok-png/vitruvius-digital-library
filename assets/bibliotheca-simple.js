@@ -6,6 +6,13 @@ const REGISTRY="data/classics-corpus/search-registry.json";
 /* No borrar fuentes: Bibliotheca expone originales y traducciones inglesas.
    Vitruvio conserva sus ediciones castellana y francesa. */
 const bibliothecaLanguagePolicy=e=>e.workId==="vitruvius"||["la","grc","en"].includes(e.language);
+/* Fichas de ediciones existentes: el índice ya utiliza el identificador común vitruvius.
+   Conservar ficha individual, pero consultar sólo la edición realmente disponible. */
+const editionAliases={
+ "vitruvio-v514-pdf":{workId:"vitruvius",edition:"recensio-es"},
+ "vitruvio-v554-pdf":{workId:"vitruvius",edition:"recensio-fr"},
+ "theory-v297-pdf":{workId:"vitruvius",edition:"theory-en"}
+};
 const $=id=>document.getElementById(id);
 const dict={
  es:{home:"Inicio",search:"Buscar",placeholder:"Una palabra o frase, por ejemplo: domus",
@@ -192,6 +199,8 @@ const metadata=Promise.all([
  !Array.isArray(registry.entries)||registry.entries.length!==registry.count)throw Error("inconsistent registry");
  works=catalog.works;entries=registry.entries.filter(bibliothecaLanguagePolicy);byId=new Map(works.map(w=>[w.id,w]));
  indexed=new Set(entries.filter(e=>e.format!=="historical-ocr-pages"&&byId.has(e.workId)).map(e=>e.workId));
+  for(const [alias,target] of Object.entries(editionAliases))
+   if(entries.some(e=>e.workId===target.workId&&e.edition===target.edition))indexed.add(alias);
  refresh();
 }).catch(error=>{coverage.textContent=dict[locale].unavailable;throw error});
 function provenance(w,r){
@@ -271,8 +280,10 @@ async function search(){
  status.textContent=dict[locale].loading;$("search-submit").disabled=true;
  try{
   await metadata;if(id!==serial)return;
-  const workId=work.value;
-  if(workId&&!indexed.has(workId)){status.textContent=dict[locale].wrong;return}
+  const selectedWork=work.value;
+  const alias=editionAliases[selectedWork];
+  const workId=alias?.workId||selectedWork;
+  if(selectedWork&&!indexed.has(selectedWork)){status.textContent=dict[locale].wrong;return}
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
   const transliterations=await attestedGreekForms(q);
   if(id!==serial)return;
@@ -284,7 +295,7 @@ async function search(){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allMatches:true,includeFullText:true,includeOCR:false,onProgress});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
