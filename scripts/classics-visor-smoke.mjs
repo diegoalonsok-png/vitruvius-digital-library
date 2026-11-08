@@ -274,7 +274,11 @@ try{
     };
    });
    const expected=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
-   assert.equal(check.total,expected.entries.length,'Indexed text count must match the actual corpus registry');
+   // Bibliotheca intentionally shows Greek/Latin originals and English,
+   // except Vitruvius, whose Spanish/French editions remain visible.
+   // The shared source registry remains complete for Vitruvia and Lexicon.
+   const publicEditions=expected.entries.filter(e=>e.workId==='vitruvius'||['la','grc','en'].includes(e.language));
+   assert.equal(check.total,publicEditions.length,'Bibliotheca edition count must follow the public language policy');
    assert.equal(expected.count,expected.entries.length,'Registry declared count must match entries');
    assert.match(check.catullus,/corpus\/catullus-carmina-la\.html\?q=/,'Catullus verses are not indexed');
    assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
