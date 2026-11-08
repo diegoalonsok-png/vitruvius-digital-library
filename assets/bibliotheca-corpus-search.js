@@ -128,7 +128,8 @@ async function search(q,{limit=8}={}){
  const grec=/[Ͱ-Ͽἀ-῿]/.test(q),semitic=/[\u0590-\u05ff]/u.test(q),all=await registry();
  // The hosted corpus presently has no Hebrew or Aramaic passage editions.
  // Do not fetch Latin/English texts and misreport absence in an unindexed language.
- const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc"));
+ const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc")&&
+   (e.format!=="remote-json-passages"||grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q])));
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=8){
@@ -146,7 +147,7 @@ async function search(q,{limit=8}={}){
    let link=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    link+=(link.includes("?")?"&":"?")+"q="+encodeURIComponent(q);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",
@@ -214,7 +215,8 @@ async function semanticSearch(q,{limit=6}={}){
  for(let offset=0;offset<entries.length;offset+=4){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
-   if(!terms.length||e.format==="historical-ocr-pages")return;
+   if(!terms.length||e.format==="historical-ocr-pages"||
+    e.format==="remote-json-passages"&&!window.ClassicsOffsiteGreek?.mightContain(e,terms))return;
    if(indexValid&&["json-passages","structured-bilingual"].includes(e.format)){
     const version=indexed.get([e.workId,e.language,e.path,e.edition||""].join("|"));
     if(version&&!version.concepts.some(c=>c.concept===concept.id)){skippedNoHit++;return}
@@ -320,7 +322,9 @@ function completeMatches(text,term){
 async function searchPassages(terms,{limit=600,workId="",language="",edition="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
- const all=await registry(),targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(!edition||e.edition===edition)&&(includeOCR||e.format!=="historical-ocr-pages"))
+ const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
+ const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(!edition||e.edition===edition)&&(includeOCR||e.format!=="historical-ocr-pages")&&
+  (e.format!=="remote-json-passages"||(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries)))
   .sort((a,b)=>(a.workId==="vitruvius"?0:a.language==="la"?1:a.language==="grc"?2:3)-(b.workId==="vitruvius"?0:b.language==="la"?1:b.language==="grc"?2:3));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
@@ -342,7 +346,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",edition="",
     const base=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
     let href=base+(base.includes("?")?"&":"?")+"q="+encodeURIComponent(term);
     if(e.format==="historical-ocr-pages")href+="&page="+encodeURIComponent(p.page);
-    else if(["json-passages","structured-bilingual"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
+    else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
     else if(p.anchor)href+="#"+encodeURIComponent(p.anchor);
     else {const quote=p.text.slice(Math.max(0,hit[0]-24),Math.min(p.text.length,hit[1]+36)).trim();
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
