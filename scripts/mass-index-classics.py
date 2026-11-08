@@ -35,6 +35,8 @@ TRANSLATIONS = ROOT / "data/classics-corpus/translation-availability-222.json"
 MAX_PAGES_BYTES = 970_000_000  # Dejar margen bajo el límite oficial de 1 GB de GitHub Pages
 ORIG = {"la": ("PerseusDL/canonical-latinLit", "lat"),
         "grc": ("PerseusDL/canonical-greekLit", "grc")}
+# Ediciones griegas verificadas que faltan en Perseus; mismo URN CTS.
+GREEK_FALLBACK_REPO = "OpenGreekAndLatin/First1KGreek"
 # Sólo agrupar obras explícitamente comprobadas en sus unidades TEI completas.
 COMPOSITE_WORKS = {
     "aeschylus-oresteia": ("tlg0085.tlg005", "tlg0085.tlg006", "tlg0085.tlg007"),
@@ -90,14 +92,16 @@ def remote_tree(repo):
     return [item for item in data.get("tree", []) if item.get("type") == "blob"]
 
 
-def choose_file(tree, urn, suffix):
+def choose_file(tree, urn, suffix, corpus="perseus"):
     # Una correspondencia bibliográfica no garantiza un TEI descargable.
     if not re.fullmatch(r"(?:phi\d{4}|tlg\d{4}|stoa\d{4})\.(?:phi\d{3}|tlg\d{3}|stoa\d{3}|abo\d{3})", urn):
         return None
     author, work = urn.split(".")
     directory = f"data/{author}/{work}/"
+    if corpus not in {"perseus", "1st1K"}:
+        raise ValueError("Repositorio TEI no aprobado")
     pattern = re.compile(r"^" + re.escape(directory + urn) +
-                         r"\.perseus-" + re.escape(suffix) + r"(\d+)\.xml$")
+                         r"\." + re.escape(corpus) + "-" + re.escape(suffix) + r"(\d+)\.xml$")
     found = []
     for item in tree:
         match = pattern.fullmatch(item.get("path", ""))
@@ -204,15 +208,19 @@ def edition_document(work, original, source_url, raw, urn):
     if not clean or sum(len(p["text"]) for p in clean) < 350:
         raise ValueError("No se recuperó suficiente texto original")
     source_hash = hashlib.sha256(raw).hexdigest()
+    from_first1k = "/OpenGreekAndLatin/First1KGreek/" in source_url
     return {
         "workId": work["id"], "language": original, "title": title,
         "sourceType": "edited-latin-tei" if original == "la" else "edited-greek-tei",
-        "editorialStatus": "Texto TEI de edición; NO facsímil, OCR manuscrito ni cotejo filológico propio",
+        "editorialStatus": ("Edición TEI First1KGreek, con posible origen en transcripción u OCR corregido; sin colación independiente"
+                            if from_first1k else "Texto TEI de edición; NO facsímil, OCR manuscrito ni cotejo filológico propio"),
         "source": source_url,
         "sourceUrn": urn,
         "sourceSha256": source_hash,
-        "attribution": f"{author} · {title} · Perseus Digital Library (TEI; ver edición y atribuciones en la fuente)",
-        "license": "CC BY-SA 4.0 · PerseusDL; conservar atribución y condiciones de reutilización",
+        "attribution": (f"{author} · {title} · OpenGreekAndLatin First1KGreek (TEI; edición y correcciones según fuente)"
+                        if from_first1k else f"{author} · {title} · Perseus Digital Library (TEI; ver edición y atribuciones en la fuente)"),
+        "license": ("CC BY-SA 4.0 · OpenGreekAndLatin First1KGreek; conservar atribución de edición y digitalización"
+                    if from_first1k else "CC BY-SA 4.0 · PerseusDL; conservar atribución y condiciones de reutilización"),
         "alignment": "Unidades TEI del archivo seleccionado; los segmentos técnicos no son loci críticos; sin alineación automática con traducciones o folios.",
         "passages": clean,
     }
@@ -261,7 +269,13 @@ def run():
                 trees[repo] = remote_tree(repo)
             component_files = []
             for urn in urns:
-                path = choose_file(trees[repo], urn, suffix)
+                source_repo = repo
+                path = choose_file(trees[source_repo], urn, suffix)
+                if not path and lang == "grc" and len(urns) == 1:
+                    source_repo = GREEK_FALLBACK_REPO
+                    if source_repo not in trees:
+                        trees[source_repo] = remote_tree(source_repo)
+                    path = choose_file(trees[source_repo], urn, suffix, corpus="1st1K")
                 if not path:
                     # El vínculo bibliográfico existe, pero el repositorio remoto
                     # no ofrece aquí un TEI compatible con idioma y tamaño.
@@ -273,8 +287,12 @@ def run():
                     })
                     component_files = []
                     break
-                url = f"https://raw.githubusercontent.com/{repo}/master/{quote(path, safe='/')}"
+                url = f"https://raw.githubusercontent.com/{source_repo}/master/{quote(path, safe='/')}"
                 raw = get(url)
+                if source_repo == GREEK_FALLBACK_REPO and (
+                    b"creativecommons.org/licenses/by-sa/4.0/" not in raw or b"<licence" not in raw
+                ):
+                    raise ValueError("TEI First1KGreek no contiene licencia CC BY-SA identificada")
                 doc = edition_document(w, lang, url, raw, urn)
                 component_files.append((urn, doc))
             if not component_files or len(component_files) != len(urns):
