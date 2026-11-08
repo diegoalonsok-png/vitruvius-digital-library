@@ -51,8 +51,8 @@
   <title>Vitruvius Digital Library — De architectura</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css?v=20261102-latin-traduccion-1">
-  <script src="assets/app.js?v=20261107-typo-and-geometry-v3" type="module"></script><script src="assets/codicological-query.js?v=20261105-cq-v1" defer></script><script src="assets/kurilo-apparatus.js?v=20261105-academic-navigation-2" defer></script><script src="assets/apparatus-front.js?v=20261105-term-v1" defer></script><script src="assets/cite-locus.js?v=20261105-urn-v1" defer></script>
-<script src="assets/i18n.js?v=20261106-lexicon-v1" defer></script><script src="assets/latin-suggest.js?v=20261108-bilingual-loci-v2" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script src="assets/front-palette.js?v=20261104-extended-v2" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
+  <script src="assets/app.js?v=20261108-reader-share-loupe-v1" type="module"></script><script src="assets/codicological-query.js?v=20261105-cq-v1" defer></script><script src="assets/kurilo-apparatus.js?v=20261105-academic-navigation-2" defer></script><script src="assets/apparatus-front.js?v=20261105-term-v1" defer></script><script src="assets/cite-locus.js?v=20261105-urn-v1" defer></script>
+<script src="assets/i18n.js?v=20261106-lexicon-v1" defer></script><script src="assets/latin-suggest.js?v=20261108-etymologicum-domus-v1" defer></script><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261103-shared-icons-fix2"><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script src="assets/front-palette.js?v=20261104-extended-v2" defer></script><link rel="stylesheet" href="assets/academic.css?v=20261103-parallel2"><style>
 /* Jerarquía clara de acciones y crédito editorial separado. */
 .hero-actions-academic{display:flex;align-items:center;gap:12px 15px;flex-wrap:wrap;margin-top:24px}
 .hero-actions-academic .button{display:inline-flex;align-items:center;gap:8px;padding:12px 19px;min-height:46px;text-decoration:none;white-space:normal}
@@ -385,6 +385,17 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 #search-results .parallel-latin-source{margin:11px 0 8px;padding-top:9px;border-top:1px solid rgba(136,148,155,.25);font:400 12px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}
 #search-results .parallel-latin-source .parallel-source-label{font-weight:600}
 #search-results .parallel-latin-source .parallel-biblio{margin:4px 0 0;font-weight:400}
+
+/* Herramientas de lectura con estética Lexicon: sobrias, negras y sin dorados. */
+#search-results .parallel-reading-tools{display:flex;gap:7px;flex-wrap:wrap;align-items:center;width:100%;margin-top:10px}
+#search-results .parallel-reading-tools .parallel-tool{display:inline-flex;align-items:center;justify-content:center;min-height:33px;padding:7px 11px;border:1px solid #5a5a60!important;border-radius:6px;background:#1c1c20!important;color:#eee!important;font:500 12px/1.2 Arial,Helvetica,sans-serif!important;text-decoration:none!important;cursor:pointer;box-shadow:none!important}
+#search-results .parallel-reading-tools .parallel-tool:hover,#search-results .parallel-reading-tools .parallel-tool:focus-visible{background:#333338!important;border-color:#a7a7ac!important}
+#search-results .result-parallel .parallel-passage{font-size:calc(1em * var(--parallel-reader-scale,1));line-height:1.65}
+#search-results .result-parallel mark.search-hit,
+#search-results .result-parallel mark.search-hit-equivalent,
+#search-results .result-parallel mark.search-hit-literal{background:#ffe34f!important;background-color:#ffe34f!important;color:#171409!important;text-decoration:none!important;box-shadow:none!important;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#vitruvia-term-panel mark{background:#ffe34f!important;color:#171409!important;text-decoration:none!important}
+@media print{#search-results .parallel-reading-tools{display:none!important}#search-results .result-parallel mark.search-hit{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style><link rel="stylesheet" href="assets/inline-lexical-card.css?v=20261107-dblclick-v1"><style id="front-neutral-accent-controls">
 :root{--gold:#707780}
 .hero-actions-academic .button,.research-nav-controls :is(button,a),#search-results .result-actions a,
