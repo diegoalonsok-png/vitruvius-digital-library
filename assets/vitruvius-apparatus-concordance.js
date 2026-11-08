@@ -29,7 +29,7 @@ function occurrences(text,query){
 }
 function canonicalLocus(value){
  const str=String(value||"").trim().toLowerCase().replace(/\s+/g,"");
- const m=str.match(/^([ivx]+|10|[1-9])\.(praef\.)?(\d+)(?:\.(\d+))?$/);
+ const m=str.replace(/\.pr\./,".praef.").match(/^([ivx]+|10|[1-9])\.(praef\.)?(\d+)(?:\.(\d+))?$/);
  if(!m)return null;
  const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
  const book=roman[m[1]]||Number(m[1]);
@@ -68,6 +68,31 @@ function paragraphLinks(locus,edition,term){
  const url=new URL("lector-bilingue.html",location.href);url.searchParams.set("locus",locus);url.searchParams.set("edition",edition);if(term)url.searchParams.set("q",term);
  return url.pathname.replace(/^.*\/(?=[^/]+$)/,"")+url.search;
 }
+/* Los bloques estáticos suelen contener un extracto de 1400 caracteres.
+   Abrir bajo demanda la página íntegra de la edición, sin alterar el PDF. */
+function fullEditorialPage(root,e){
+ if(!e.page||!ED.some(x=>x.id===e.edition))return;
+ const section=element("details","critical-integrated-fullpage");
+ const summary=element("summary","","Leer la página editorial completa · p. "+e.page);
+ const body=element("div","critical-integrated-fullbody");
+ body.append(element("p","critical-integrated-meta","El texto que sigue reproduce la extracción íntegra de esta página del PDF. Puede incluir otros comentarios o pasajes. Es un testimonio de la edición impresa, no una alineación automática ni una variante manuscrita."));
+ section.append(summary,body);
+ let started=false;
+ section.addEventListener("toggle",async()=>{
+  if(!section.open||started)return;started=true;
+  const label=element("p","critical-integrated-meta","Consultando página del libro…");body.append(label);
+  try{
+   const pages=await source("data/"+e.edition+"-pages.json");
+   const found=pages.find(p=>Number(p.page)===Number(e.page));
+   label.remove();
+   if(!found||!found.text){body.append(element("p","critical-integrated-meta","Página sin texto extraíble; consultar el PDF original."));return}
+   const full=element("p","critical-integrated-prose");full.lang=ED.find(x=>x.id===e.edition)?.language||"es";
+   excerpt(full,found.text,[],{full:true});body.append(full);
+  }catch(error){label.textContent="No se pudo cargar esta página completa: "+error.message}
+ });
+ root.append(section);
+}
+
 function printCommentary(root,e,relation){
  const ed=ED.find(v=>v.id===e.edition);
  const line=element("div","critical-integrated-comment");
@@ -79,6 +104,7 @@ function printCommentary(root,e,relation){
  summary.append(title);
  const para=element("p","critical-integrated-prose");excerpt(para,e.text,[],{full:true});summary.append(para);
  if(e.pdf)summary.append(anchor("Abrir página de la edición (PDF) ↗",e.pdf));
+ fullEditorialPage(summary,e);
  line.append(summary);root.append(line);
 }
 function groupedComments(index,nearby,locus){
@@ -97,7 +123,7 @@ function groupedComments(index,nearby,locus){
 }
 function recordLink(e,locus){
  const a=element("a","","Consultar el locus en el lector →");
- a.href=paragraphLinks(locus,e.edition,currentQuery);return a;
+ a.href=paragraphLinks(locus,e.edition?.id||e.edition,currentQuery);return a;
 }
 function renderPassageGroup(parent,group,index,nearby,i){
  const row=element("article","critical-integrated-passage");
@@ -133,8 +159,9 @@ function renderLexicalComment(parent,e,i){
  details.append(element("p","critical-integrated-meta","Coincidencia literal en una explicación del autor. NO demuestra que el comentario se refiera a todos los pasajes donde aparece el término."));
  const prose=element("p","critical-integrated-prose");excerpt(prose,e.text,[],{max:950});details.append(prose);
  if(e.pdf)details.append(anchor("Abrir edición fuente (PDF) ↗",e.pdf));
+ fullEditorialPage(details,e);
  const loc=e.locusMention||(e.loci||[])[0];
- if(loc&&canonicalLocus(loc))details.append(recordLink({edition:{id:e.edition}},canonicalLocus(loc)));
+ if(loc&&canonicalLocus(loc))details.append(recordLink({edition:e.edition},canonicalLocus(loc)));
  parent.append(details);
 }
 function lazyList(root,items,renderer){
@@ -213,7 +240,7 @@ async function search(){
  else comments.append(element("p","critical-integrated-meta",locusQuery?"Consulta por locus: el aparato se muestra dentro de cada pasaje.":"Sin coincidencias literales en el índice de comentarios disponible."));
  sections.append(comments);results.append(sections);
 }
-form.addEventListener("submit",()=>{void search()});
+form.addEventListener("submit",e=>{e.preventDefault();void search()});
 document.querySelectorAll("[data-example]").forEach(button=>button.addEventListener("click",()=>{queueMicrotask(()=>void search())}));
 const existing=new URLSearchParams(location.search).get("locus")||new URLSearchParams(location.search).get("q");
 if(existing){setTimeout(()=>{if(input.value.trim())void search()},170)}
