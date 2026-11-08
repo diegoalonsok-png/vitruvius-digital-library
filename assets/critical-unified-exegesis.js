@@ -32,6 +32,8 @@ function annotated(text,search){
  p.append(document.createTextNode(s.slice(0,i)),el('mark','critical-unified-hit',s.slice(i,i+n.length)),document.createTextNode(s.slice(i+n.length)));return p;
 }
 let rows=[],shown=0,rev=0,term='',byLocus=null;
+const conceptTerms=/^symmetria(?:e|m|rum|is)?$/i;
+function appendReadingSense(section,row){const d=el('details','critical-unified-notes');d.append(el('summary','','Sentido del pasaje · orientación de lectura'));const latin=row.versions[0]?.p.latin||'';const conceptual=conceptTerms.test(term)&&/symmetri/iu.test(latin);d.append(el('p','critical-unified-text',conceptual?'En Vitruvio, symmetria designa la correspondencia proporcional de los miembros de una obra entre sí y respecto del conjunto. Se interpreta junto a proportio y el principio modular, no como mera simetría especular.':'Para establecer el sentido, confrontá el texto latino con las traducciones disponibles inmediatamente anteriores. No se ha incorporado una paráfrasis específica verificada de este locus.'));d.append(el('p','critical-unified-meta','Orientación de lectura separada de las notas críticas del autor; no equivale a una variante manuscrita ni a un comentario atribuido a Kurilo.'));section.append(d)}
 function details(container,heading,records,kind){
  if(!records.length)return;
  const d=el('details','critical-unified-notes');d.append(el('summary','',heading+' ('+records.length+')'));
@@ -62,7 +64,8 @@ function render(){
   }
   card.append(translations);
   const commentary=el('div','critical-unified-counterpart');
-  commentary.append(el('h4','','Análisis y aparato crítico del pasaje'));
+  commentary.append(el('h4','','Sentido y aparato crítico del pasaje'));
+  appendReadingSense(commentary,row);
   details(commentary,'Notas del autor vinculadas mediante locus explícito',row.notes,'docx');
   details(commentary,'Comentarios del PDF con locus en encabezado',row.pdfNotes,'pdf');
   if(!row.notes.length&&!row.pdfNotes.length)commentary.append(el('p','critical-unified-meta','Sin comentario crítico registrado con vínculo explícito a este locus. No implica que el autor no haya tratado el tema en otra parte de sus libros.'));
@@ -87,7 +90,7 @@ async function run(){
  const grouped=new Map();
  for(const e of chosen){
   for(const p of data.get('data/structured/'+e.id+'.json')?.passages||[]){
-   const matches=byLocus?exactMatch(p.locus,byLocus):contains(p.latin,term);
+   const matches=byLocus?exactMatch(p.locus,byLocus):conceptTerms.test(term)?/symmetri/iu.test(p.latin):contains(p.latin,term);
    if(!matches)continue;
    const key=locusKey(p.locus);let row=grouped.get(key);
    if(!row){row={locus:p.locus,versions:[],notes:[],pdfNotes:[]};grouped.set(key,row)}
