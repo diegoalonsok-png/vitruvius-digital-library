@@ -3,7 +3,7 @@
   "language": "en",
   "title": "The Life of Cnaeus Julius Agricola",
   "sourceType": "historical-edited-english-translation-tei",
-  "editorialStatus": "Historical scholarly translation digitized in Perseus TEI. Not a critical edition produced by Vitruvia; collation and original-to-translation alignment not certified.",
+  "editorialStatus": "Historical scholarly translation digitized in Perseus TEI. Not a critical edition produced by Vitruvia; collation and original-to-translation alignment not certified. Editorial notes from TEI are retained separately by source line/chapter.",
   "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/95be52ad68c8b4b7c6c9962db092d2e7ec726271/data/phi1351/phi001/phi1351.phi001.perseus-eng4.xml",
   "sourceUrn": "phi1351.phi001.perseus-eng4",
   "sourceGitBlobSha": "61231e4626b6bde549e44db98fdaf8042b96e55c",
@@ -19,7 +19,8 @@
     "status": "All text units in this identified TEI source captured; beyond-source completeness not independently collated",
     "unitsVerified": 46,
     "segmentedPassages": 46,
-    "characters": 67831
+    "characters": 67831,
+    "editorialNotesPreserved": 1
   },
   "passages": [
     {
@@ -215,7 +216,13 @@
     {
       "locus": "translation-tei-chapter-39",
       "text": "Of this series of events, though not exaggerated in the despatches of Agricola by any boastfulness of language, Domitian heard, as was his wont, with joy in his face but anxiety in his heart. He felt conscious that all men laughed at his late mock triumph over Germany , for which there had been purchased from traders people whose dress and hair might be made to resemble those of captives, whereas now a real and splendid victory, with the destruction of thousands of the enemy, was being celebrated with just applause. It was, he thought, a very alarming thing for him that the name of a subject should be raised above that of the Emperor; it was to no purpose that he had driven into obscurity the pursuit of forensic eloquence and the graceful accomplishments of civil life, if another were to forestall the distinctions of war. To other glories he could more easily shut his eyes, but the greatness of a good general was a truly imperial quality. Harassed by these anxieties, and absorbed in an incommunicable trouble, a sure prognostic of some cruel purpose, he decided that it was best for the present to suspend his hatred until the freshness of Agricola’s renown and his popularity with the army should begin to pass away. For Agricola was still the governor of Britain .",
-      "locusKind": "TEI translation chapter; no certified phrase- or word-level alignment to Latin"
+      "locusKind": "TEI translation chapter; no certified phrase- or word-level alignment to Latin",
+      "editorialNotes": [
+        {
+          "atTranslationChapter": "39",
+          "text": "Print chapter 40 begins here. Text moved to align with most Latin texts."
+        }
+      ]
     },
     {
       "locus": "translation-tei-chapter-40",
