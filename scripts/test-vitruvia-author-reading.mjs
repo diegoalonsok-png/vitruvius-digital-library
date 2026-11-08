@@ -59,6 +59,7 @@ class ArticleNode{
  replaceChildren(...nodes){for(const n of this.children)n.parentNode=null;this.children=[];this.append(...nodes)}
  querySelector(selector){const match=n=>selector[0]==='#'?n.id===selector.slice(1):selector[0]==='.'?n.className.split(' ').includes(selector.slice(1)):n.tagName===selector.toUpperCase();for(const n of this.children){if(match(n))return n;const nested=n.querySelector(selector);if(nested)return nested}return null}
  before(node){const p=this.parentNode;node.parentNode=p;p.children.splice(p.children.indexOf(this),0,node)}
+ after(node){const p=this.parentNode;node.parentNode=p;p.children.splice(p.children.indexOf(this)+1,0,node)}
  replaceWith(node){const p=this.parentNode;node.parentNode=p;p.children.splice(p.children.indexOf(this),1,node);this.parentNode=null}
 }
 const articleBody=new ArticleNode('div'),articleTitle=new ArticleNode('h1');
@@ -77,7 +78,7 @@ vm.runInContext(`
  const heading=text=>$('article-body').append(make('h2',text));
  const href=(url,text)=>url?make('a',text):null;
  function appendBiographyExtract(text){const node=make('p',text,'fixture-biography');$('article-body').append(node);return 1}
- window.VitruviaAuthorReading={render(){const node=make('section','Original text and translations');node.id='fixture-readings';const prior=$('article-body').querySelector('#fixture-readings');if(prior)prior.replaceWith(node);else $('article-body').append(node)}};
+ window.VitruviaAuthorReading={render(){const node=make('section','Original text and translations');node.id='fixture-readings';node.className='article-author-reading';const prior=$('article-body').querySelector('#fixture-readings');if(prior)prior.replaceWith(node);else $('article-body').append(node)}};
  const appendSource=()=>$('article-body').append(make('p','Documented source'));
  const appendLocalRepositoryResources=appendSource,appendCuratedUniversities=appendSource,appendManuscriptHierarchy=appendSource,appendCuratedEvidence=appendSource,appendReferenceBooks=appendSource,appendOfficialHistoricalSources=appendSource,appendInstitutionalResearch=appendSource,addTopicBibliography=appendSource;
 `,assemble);
