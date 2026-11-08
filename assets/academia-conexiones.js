@@ -35,13 +35,22 @@ function witnessCard(ms,isOldest){
  return section;
 }
 const year=e=>{const m=String(e.year??"").match(/(?:1[4-9]|20)\d{2}/);return m?Number(m[0]):Infinity};
+const ROMAN_BOOKS={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+function normalizeLocus(raw){
+ const m=/^([IVX]+|10|[1-9])\.(praef|[1-9]\d?)\.([1-9]\d{0,2})$/i.exec(String(raw||"").trim());
+ if(!m)return "";
+ const roman=ROMAN_BOOKS[m[1].toUpperCase()];
+ const book=roman||Number(m[1]);
+ if(!Number.isInteger(book)||book<1||book>10)return "";
+ return book+"."+m[2].toLowerCase()+"."+Number(m[3]);
+}
 let works=[],data=null;
 function render(){
  if(!data)return;
  const work=works.find(w=>w.id===workSelect.value);
  if(!work){status.textContent="Selecciona una obra del catálogo.";results.hidden=true;return}
  const query=termInput.value.trim(),rawLocus=locusInput.value.trim();
- const locus=/^(?:(?:[IVX]{1,6})|(?:10|[1-9]))\.(?:(?:praef)|(?:[1-9]\d?))\.(?:[1-9]\d{0,2})$/i.test(rawLocus)?rawLocus:"";
+ const locus=normalizeLocus(rawLocus);
  results.hidden=false;links.replaceChildren();witnesses.replaceChildren();editions.replaceChildren();
  links.append(make("h3",work.title||"Obra clásica"));
  links.append(make("p",[work.author,work.dating,work.language==="grc"?"Griego antiguo":work.language==="la"?"Latín":work.language].filter(Boolean).join(" · "),"meta"));
