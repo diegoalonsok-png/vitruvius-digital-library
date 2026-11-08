@@ -85,13 +85,17 @@ def verify():
         if edition.get("language") != "en" or edition.get("format") != "json-passages":
             continue
         document = read(edition["path"])
-        if document.get("sourceType") != "historical-english-perseus-tei":
+        source_type = document.get("sourceType")
+        if source_type not in {"historical-english-perseus-tei", "historical-english-first1k-tei"}:
             continue
         work_id = edition["workId"]
         assert document["workId"] == work_id and document["language"] == "en"
         assert document["originalLanguage"] in {"grc", "la"}
         assert document.get("translator") and document.get("editionYear")
-        assert document["source"].startswith("https://raw.githubusercontent.com/PerseusDL/")
+        prefix = ("https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/"
+                  if source_type == "historical-english-first1k-tei" else
+                  "https://raw.githubusercontent.com/PerseusDL/")
+        assert document["source"].startswith(prefix), "Traducción sin procedencia válida: " + work_id
         assert len(document["sourceGitBlobSha"]) == 40
         assert len(document["sourceSha256"]) == 64
         assert document["license"].startswith("CC BY-SA 4.0")
@@ -109,7 +113,7 @@ def verify():
         assert edition["path"] in audit_by_id[work_id]["indexedTextFiles"]
         automated += 1
     print("PASS historical translations: 3 pioneering texts with editorial notes; "
-          f"{automated} verified Perseus historical versions, originals preserved, "
+          f"{automated} verified Perseus/First1K historical versions, originals preserved, "
           "reproducible loci and provenance, registries coherent.")
 
 
