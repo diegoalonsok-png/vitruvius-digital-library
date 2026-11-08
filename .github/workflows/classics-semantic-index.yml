@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'data/classics-corpus/*.json'
+      - 'data/lexicon/fontes/*.json'
+      - 'scripts/test-reused-classical-sources.mjs'
       - 'data/structured/*.json'
       - 'data/lexicon/conceptus.json'
       - 'scripts/build_classics_semantic_index.py'
@@ -24,6 +26,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar reutilización de textos sin copias
+        run: node scripts/test-reused-classical-sources.mjs
       - name: Construir índice por obras y loci
         run: python scripts/build_classics_semantic_index.py
       - name: Guardar índice reproducible sin sobrescribir commits concurrentes

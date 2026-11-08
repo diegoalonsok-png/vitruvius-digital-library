@@ -25,7 +25,7 @@ for(const e of registry.entries){
  if(!work){errors.push("Missing catalogue record for "+e.workId);continue}
  if(!work.localEditionLanguages.includes(e.language))
   errors.push("Unreported local language "+e.workId+"/"+e.language);
- if(!/^(data\/(?:classics-corpus|structured|text)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html)$/.test(e.path||""))
+ if(!/^(data\/(?:classics-corpus|structured|text|lexicon\/fontes)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html)$/.test(e.path||""))
   {errors.push("Unsafe registry path "+e.path);continue}
  if(!fs.existsSync(path.join(root,e.path))){errors.push("Missing source: "+e.path);continue}
  if(!fileCache.has(e.path)){

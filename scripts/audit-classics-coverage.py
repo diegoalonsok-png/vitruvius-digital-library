@@ -73,7 +73,7 @@ def main():
                     errors.append(f"Edition mismatch: {e['path']}")
             else:
                 field = "text"
-                if data.get("workId") != work or data.get("language") != language:
+                if data.get("workId") != e.get("sourceWorkId", work) or data.get("language") != language:
                     errors.append(f"Identity mismatch: {e['path']}")
             loci = [str(p.get("locus","")).strip() for p in passages]
             duplicates = [loc for loc,n in Counter(loci).items() if n>1]

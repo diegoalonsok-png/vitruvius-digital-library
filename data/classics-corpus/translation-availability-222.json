@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 173,
+    "locallyIndexedWorks": 176,
     "translatedWorksLocal": 58,
     "worksWithoutHostedTranslation": 164,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 57,
       "fr": 2
     },
-    "originalTextIndexed": 173,
-    "originalTextNotIndexed": 49
+    "originalTextIndexed": 176,
+    "originalTextNotIndexed": 46
   },
   "works": [
     {
@@ -184,14 +184,16 @@
       "author": "Varrón",
       "title": "Rerum rusticarum libri tres",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "lucretius",
@@ -450,14 +452,16 @@
       "author": "Plinio el Viejo",
       "title": "Naturalis historia",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "dioscorides",
@@ -579,14 +583,16 @@
       "author": "Frontino",
       "title": "De aquaeductu urbis Romae",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "mark",

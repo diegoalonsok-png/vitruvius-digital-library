@@ -7,7 +7,7 @@ const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus
 const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
-const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="";
+const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[];
 // Deep links from documented concordances require literal evidence, not heuristic synonyms.
 const exactConcordance=p.get("literal")==="1";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
@@ -140,10 +140,11 @@ else{
 $("passages").addEventListener("dblclick",()=>{if(data?.language!=="la")return;const selection=window.getSelection()?.toString()?.trim();if(selection&&/^[A-Za-zÀ-ž]{3,40}$/.test(selection))morphology(selection)});
 }
 async function load(language){
- const path=base+language+".json",response=await fetch(path);
+ const indexed=hostedEditions.find(e=>e.language===language);
+  const path=indexed?.path||base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
  let corpus=await response.json();
- if(corpus.workId!==work||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<350)throw Error("El documento no pasó validación de integridad");
+ if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<350)throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
   // Never block access to any of the 312 original anthology units on optional metadata.
   // The note is visible immediately; the provenance file may refine it asynchronously.
@@ -215,8 +216,12 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   // The search registry is the canonical list of hosted, searchable JSON editions.
   // The bibliographic catalogue may lag behind, notably with partial translations.
   const registry=await fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial no disponible");return r.json()});
-  const hosted=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="json-passages"&&e.path==="data/classics-corpus/"+work+"-"+e.language+".json");
+  const shared={"varro-rustica":["varro-rustica","data/lexicon/fontes/varro-rustica-la.json"],"frontinus":["frontinus-aquaeductu","data/lexicon/fontes/frontinus-aquaeductu-la.json"],"pliny":["pliny-naturalis","data/lexicon/fontes/pliny-naturalis-la.json"]};
+   const hosted=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="json-passages"&&(
+     e.path==="data/classics-corpus/"+work+"-"+e.language+".json"||
+     (e.language==="la"&&shared[work]?.[0]===e.sourceWorkId&&shared[work]?.[1]===e.path)));
   if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
+   hostedEditions=hosted;
   if(!allowed[work])setTitle((record?.author||hosted[0].author)+" · "+(record?.title||hosted[0].title));
   const available=new Set(hosted.map(e=>e.language));
   for(const o of [...langSelect.options])if(!available.has(o.value))o.remove();

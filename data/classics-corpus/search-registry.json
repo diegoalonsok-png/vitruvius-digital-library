@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 237,
-  "works": 173,
+  "count": 240,
+  "works": 176,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -2378,6 +2378,39 @@
       "path": "data/classics-corpus/philo-de-vita-mosis-en.json",
       "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=en",
       "sourceDescription": "Traducción histórica de Charles Duke Yonge (1855); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "varro-rustica",
+      "sourceWorkId": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/lexicon/fontes/varro-rustica-la.json",
+      "reader": "classics-text-reader.html?work=varro-rustica&lang=la",
+      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente."
+    },
+    {
+      "workId": "frontinus",
+      "sourceWorkId": "frontinus-aquaeductu",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json",
+      "reader": "classics-text-reader.html?work=frontinus&lang=la",
+      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
+    },
+    {
+      "workId": "pliny",
+      "sourceWorkId": "pliny-naturalis",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/lexicon/fontes/pliny-naturalis-la.json",
+      "reader": "classics-text-reader.html?work=pliny&lang=la",
+      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra."
     }
   ]
 }

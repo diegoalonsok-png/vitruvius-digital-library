@@ -5,6 +5,8 @@
 "use strict";
 if(window.ClassicsCorpusSearch)return;
 const REGISTRY="data/classics-corpus/search-registry.json";
+/* Shared Latin sources use existing Lexicon JSON; no text duplicates. */
+const SHARED_LATIN_SOURCES={"varro-rustica":"data/lexicon/fontes/varro-rustica-la.json","frontinus":"data/lexicon/fontes/frontinus-aquaeductu-la.json","pliny":"data/lexicon/fontes/pliny-naturalis-la.json"};
 const LEGACY=[
  ["theophrastus-characters","grc","Teofrasto","Caracteres"],
  ["plato-apology","grc","Platón","Apología de Sócrates"],
@@ -30,7 +32,8 @@ const cache=new Map();
 function valid(e){
  return e&&/^[a-z0-9-]+$/.test(e.workId||"")&&["grc","la","en","es","fr","it","de","pt"].includes(e.language)
   &&(e.format==="html-text"?/^corpus\/[a-z0-9-]+\.html$/.test(e.path||"")
-    :e.format==="json-passages"&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path||"")
+    :e.format==="json-passages"&&(/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path||"")||
+       (e.language==="la"&&e.path===SHARED_LATIN_SOURCES[e.workId]&&Boolean(e.sourceWorkId)))
      ||e.format==="structured-bilingual"&&e.workId==="vitruvius"&&
       /^data\/structured\/(?:recensio-es|recensio-fr|theory-en)\.json$/.test(e.path||"")
      ||e.format==="historical-ocr-pages"&&e.workId==="krohn-1912-pdf"&&e.language==="la"&&
@@ -58,7 +61,7 @@ function snippet(text,[a,b]){
 function loadJson(e){
  if(!cache.has(e.path))cache.set(e.path,
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
-   .then(d=>d?.workId===e.workId&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
+   .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
  return cache.get(e.path);
 }
 function loadStructured(e){

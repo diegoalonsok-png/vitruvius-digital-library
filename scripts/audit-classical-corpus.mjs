@@ -81,7 +81,9 @@ for(const entry of registry.entries){
  }
  if(entry.format==="json-passages"){
   const text=read(entry.path);
-  assert.equal(text.workId,entry.workId,"Mismatched work ID in "+entry.path);
+  const shared={"varro-rustica":["varro-rustica","data/lexicon/fontes/varro-rustica-la.json"],"frontinus":["frontinus-aquaeductu","data/lexicon/fontes/frontinus-aquaeductu-la.json"],"pliny":["pliny-naturalis","data/lexicon/fontes/pliny-naturalis-la.json"]};
+  if(entry.sourceWorkId)assert(entry.language==="la"&&shared[entry.workId]?.[0]===entry.sourceWorkId&&shared[entry.workId]?.[1]===entry.path,"Shared source not whitelisted: "+entry.path);
+  assert.equal(text.workId,entry.sourceWorkId||entry.workId,"Mismatched work ID in "+entry.path);
   assert.equal(text.language,entry.language,"Mismatched text language in "+entry.path);
   assert(Array.isArray(text.passages)&&text.passages.length>0,"No searchable passages in "+entry.path);
   assert(text.attribution&&text.source,"Missing attribution/source in "+entry.path);

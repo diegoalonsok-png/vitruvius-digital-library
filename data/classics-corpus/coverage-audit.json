@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 237,
-    "indexedDistinctWorks": 173,
+    "indexedTextVersions": 240,
+    "indexedDistinctWorks": 176,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -232,15 +232,19 @@
       "genre": "Agronomía",
       "dating": "37 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/lexicon/fontes/varro-rustica-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente. Archivo fuente ya presente en data/lexicon/fontes/varro-rustica-la.json; sin copia ni cotejo independiente."
     },
     {
       "id": "lucretius",
@@ -614,15 +618,19 @@
       "genre": "Historia natural",
       "dating": "77 d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/lexicon/fontes/pliny-naturalis-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra. Archivo fuente ya presente en data/lexicon/fontes/pliny-naturalis-la.json; sin copia ni cotejo independiente."
     },
     {
       "id": "dioscorides",
@@ -811,15 +819,19 @@
       "genre": "Ingeniería hidráulica",
       "dating": "c. 97–100 d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/lexicon/fontes/frontinus-aquaeductu-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio. Archivo fuente ya presente en data/lexicon/fontes/frontinus-aquaeductu-la.json; sin copia ni cotejo independiente."
     },
     {
       "id": "mark",

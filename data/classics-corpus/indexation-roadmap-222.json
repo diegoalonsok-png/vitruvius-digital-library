@@ -4,21 +4,21 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 173,
-    "originalsMissing": 49,
+    "originalsIndexed": 176,
+    "originalsMissing": 46,
     "worksWithHostedTranslation": 58,
     "worksMissingTranslation": 164,
-    "textVersions": 237,
+    "textVersions": 240,
     "states": {
-      "original_pendiente": 49,
-      "original_sin_traduccion_local": 115,
+      "original_pendiente": 46,
+      "original_sin_traduccion_local": 118,
       "original_y_traduccion_local": 58
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
-      "requiere_fuente_no_canonica_o_edicion_especifica": 16,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 14,
       "sin_fuente_en_mapa_perseus": 16,
-      "tei_perseus_candidato_por_verificar": 14
+      "tei_perseus_candidato_por_verificar": 13
     }
   },
   "items": [
@@ -178,11 +178,13 @@
       "title": "Rerum rusticarum libri tres",
       "originalLanguage": "la",
       "dating": "37 a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.varro-rustica"
       ],
@@ -491,11 +493,13 @@
       "title": "Naturalis historia",
       "originalLanguage": "la",
       "dating": "77 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "phi0978.phi001"
       ],
@@ -634,11 +638,13 @@
       "title": "De aquaeductu urbis Romae",
       "originalLanguage": "la",
       "dating": "c. 97–100 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.frontinus"
       ],

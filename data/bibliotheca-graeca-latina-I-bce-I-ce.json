@@ -496,7 +496,11 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
-      }
+      },
+      "corpusFiles": {
+        "la": "data/lexicon/fontes/varro-rustica-la.json"
+      },
+      "localOriginalCoverage": "Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente."
     },
     {
       "id": "lucretius",
@@ -1352,7 +1356,11 @@
         "Historia natural",
         "Natural History",
         "Plinius"
-      ]
+      ],
+      "corpusFiles": {
+        "la": "data/lexicon/fontes/pliny-naturalis-la.json"
+      },
+      "localOriginalCoverage": "TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra."
     },
     {
       "id": "dioscorides",
@@ -1672,7 +1680,11 @@
       "bibliography": {
         "editionCitation": "Frontinus. The Stratagems and The Aqueducts of Rome. Translated by Charles E. Bennett; edited by Mary B. McElwain. Loeb Classical Library 174. London: William Heinemann; New York: G. P. Putnam's Sons, 1925.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
-      }
+      },
+      "corpusFiles": {
+        "la": "data/lexicon/fontes/frontinus-aquaeductu-la.json"
+      },
+      "localOriginalCoverage": "130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
     },
     {
       "id": "mark",

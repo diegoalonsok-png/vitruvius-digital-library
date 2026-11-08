@@ -119,11 +119,15 @@ def read(entry: dict):
         if not parser.passages:
             raise ValueError("No anchored text passages in HTML: " + path)
         return parser.passages
-    if not re.fullmatch(r"data/(?:classics-corpus/[a-z0-9-]+|structured/(?:recensio-es|recensio-fr|theory-en))\.json", path):
+    shared = {"varro-rustica": ("varro-rustica", "data/lexicon/fontes/varro-rustica-la.json"),
+              "frontinus": ("frontinus-aquaeductu", "data/lexicon/fontes/frontinus-aquaeductu-la.json"),
+              "pliny": ("pliny-naturalis", "data/lexicon/fontes/pliny-naturalis-la.json")}
+    is_shared = entry.get("language") == "la" and shared.get(entry["workId"]) == (entry.get("sourceWorkId"), path)
+    if not is_shared and not re.fullmatch(r"data/(?:classics-corpus/[a-z0-9-]+|structured/(?:recensio-es|recensio-fr|theory-en))\.json", path):
         raise ValueError("Unexpected file path " + path)
     doc = json.loads((ROOT / path).read_text(encoding="utf-8"))
     if entry["format"] == "json-passages":
-        if doc.get("workId") != entry["workId"] or doc.get("language") != entry["language"]:
+        if doc.get("workId") != entry.get("sourceWorkId", entry["workId"]) or doc.get("language") != entry["language"]:
             raise ValueError("Metadata mismatch " + path)
         return [(str(p.get("locus", "")), p.get("text", "")) for p in doc["passages"]]
     if doc.get("edition") != entry.get("edition"):
