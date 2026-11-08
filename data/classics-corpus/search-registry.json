@@ -2,9 +2,129 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 240,
-  "works": 176,
+  "count": 242,
+  "works": 177,
   "entries": [
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+      "reader": "classics-text-reader.html?work=aeneas-tacticus-poliorketika&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-persae-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-persae&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-persae-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-persae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-prometheus-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-seven-thebes-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-suppliants-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/appian-romaika-grc.json",
+      "reader": "classics-text-reader.html?work=appian-romaika&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apuleius-apologia-la.json",
+      "reader": "classics-text-reader.html?work=apuleius-apologia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
     {
       "workId": "apuleius-metamorphoses",
       "author": "Apuleyo",
@@ -36,6 +156,146 @@
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
+      "workId": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aratus-phaenomena-grc.json",
+      "reader": "classics-text-reader.html?work=aratus-phaenomena&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-aves-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-aves&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-clouds-en.json",
+      "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=en",
+      "sourceDescription": "Traducción histórica de William James Hickie (1853); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-lysistrata&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-pax-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-pax&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en",
+      "sourceDescription": "Traducción histórica de Harris Rackham (1926); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-physics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
       "workId": "aristotle-poetics",
       "author": "Aristóteles",
       "title": "Περὶ ποιητικῆς",
@@ -54,6 +314,56 @@
       "path": "data/classics-corpus/aristotle-poetics-grc.json",
       "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-politics-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-politics&lang=en",
+      "sourceDescription": "Traducción histórica de Harris Rackham (1944); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-politics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+      "reader": "classics-text-reader.html?work=aristoxenus-harmonica&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+      "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
       "workId": "augustus-res-gestae",
@@ -83,6 +393,16 @@
       "format": "json-passages",
       "path": "data/classics-corpus/barnabas-grc.json",
       "reader": "classics-text-reader.html?work=barnabas&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/boethius-consolatio-la.json",
+      "reader": "classics-text-reader.html?work=boethius-consolatio&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -126,6 +446,16 @@
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
+      "workId": "cato-agri-cultura",
+      "author": "Catón el Viejo",
+      "title": "De agri cultura",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cato-agri-cultura-la.json",
+      "reader": "classics-text-reader.html?work=cato-agri-cultura&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "catullus-carmina",
       "author": "Catulo",
       "title": "Carmina",
@@ -146,6 +476,16 @@
       "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil."
     },
     {
+      "workId": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cebes-tabula-grc.json",
+      "reader": "classics-text-reader.html?work=cebes-tabula&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
       "workId": "celsus",
       "author": "Aulo Cornelio Celso",
       "title": "De medicina",
@@ -156,6 +496,26 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-brutus-la.json",
+      "reader": "classics-text-reader.html?work=cicero-brutus&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-catilinariae-en.json",
+      "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1856); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
       "workId": "cicero-catilinariae",
       "author": "Cicerón",
       "title": "In Catilinam (Orationes Catilinariae)",
@@ -163,6 +523,56 @@
       "format": "json-passages",
       "path": "data/classics-corpus/cicero-catilinariae-la.json",
       "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-amicitia-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-divinatione-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-divinatione&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-finibus-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-natura-deorum-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-natura-deorum&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-senectute-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -196,6 +606,26 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-philippicae-la.json",
+      "reader": "classics-text-reader.html?work=cicero-philippicae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-pro-archia-la.json",
+      "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "cicero-republica",
       "author": "Cicerón",
       "title": "De re publica",
@@ -206,6 +636,36 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-tusculanae-la.json",
+      "reader": "classics-text-reader.html?work=cicero-tusculanae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/clement-grc.json",
+      "reader": "classics-text-reader.html?work=clement&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/clement-2-grc.json",
+      "reader": "classics-text-reader.html?work=clement-2&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
       "workId": "columella",
       "author": "Columela",
       "title": "De re rustica",
@@ -213,6 +673,26 @@
       "format": "json-passages",
       "path": "data/classics-corpus/columella-la.json",
       "reader": "classics-text-reader.html?work=columella&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
+      "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+      "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -246,6 +726,56 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
+      "reader": "classics-text-reader.html?work=diogenes-laertius-vitae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/diognetus-grc.json",
+      "reader": "classics-text-reader.html?work=diognetus&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/dionysius-grc.json",
+      "reader": "classics-text-reader.html?work=dionysius&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/dioscorides-grc.json",
+      "reader": "classics-text-reader.html?work=dioscorides&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+    },
+    {
+      "workId": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/epictetus-discourses-grc.json",
+      "reader": "classics-text-reader.html?work=epictetus-discourses&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "epictetus-enchiridion",
       "author": "Epicteto (transmitido por Arriano)",
       "title": "Ἐγχειρίδιον · Enchiridion",
@@ -266,6 +796,176 @@
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
+      "workId": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euclid-elementa-grc.json",
+      "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-alcestis-en.json",
+      "reader": "classics-text-reader.html?work=euripides-alcestis&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-alcestis-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-alcestis&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-bacchae-en.json",
+      "reader": "classics-text-reader.html?work=euripides-bacchae&lang=en",
+      "sourceDescription": "Traducción histórica de T. A. Buckley (1850); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-bacchae-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-electra-en.json",
+      "reader": "classics-text-reader.html?work=euripides-electra&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-electra-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-electra&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hecuba-en.json",
+      "reader": "classics-text-reader.html?work=euripides-hecuba&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hecuba-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hippolytus-en.json",
+      "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hippolytus-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json",
+      "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-medea-en.json",
+      "reader": "classics-text-reader.html?work=euripides-medea&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-medea-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-medea&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-troades-en.json",
+      "reader": "classics-text-reader.html?work=euripides-troades&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-troades-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-troades&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "eusebio",
       "author": "Eusebio de Cesarea",
       "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
@@ -274,6 +974,67 @@
       "path": "data/classics-corpus/eusebio-grc.json",
       "reader": "classics-text-reader.html?work=eusebio&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "frontinus",
+      "sourceWorkId": "frontinus-aquaeductu",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json",
+      "reader": "classics-text-reader.html?work=frontinus&lang=la",
+      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
+    },
+    {
+      "workId": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/galen-ars-medica-grc.json",
+      "reader": "classics-text-reader.html?work=galen-ars-medica&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
+      "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hero-automata-grc.json",
+      "reader": "classics-text-reader.html?work=hero-automata&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hero-pneumatica-grc.json",
+      "reader": "classics-text-reader.html?work=hero-pneumatica&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/herodotus-historiae-grc.json",
+      "reader": "classics-text-reader.html?work=herodotus-historiae&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
     },
     {
       "workId": "hesiod-theogony",
@@ -313,6 +1074,26 @@
       "format": "json-passages",
       "path": "data/classics-corpus/hesiod-works-days-grc.json",
       "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hippocrates-aphorisms-en.json",
+      "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=en",
+      "sourceDescription": "Traducción histórica de Francis Adams (1886); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
+      "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -356,6 +1137,16 @@
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
+      "workId": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/homeric-hymns-grc.json",
+      "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
       "workId": "horace-ars-poetica",
       "author": "Horacio",
       "title": "Ars poetica",
@@ -363,6 +1154,26 @@
       "format": "json-passages",
       "path": "data/classics-corpus/horace-ars-poetica-la.json",
       "reader": "classics-text-reader.html?work=horace-ars-poetica&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-epistulae-la.json",
+      "reader": "classics-text-reader.html?work=horace-epistulae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-epodi-la.json",
+      "reader": "classics-text-reader.html?work=horace-epodi&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -386,6 +1197,36 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ignatius-grc.json",
+      "reader": "classics-text-reader.html?work=ignatius&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+    },
+    {
+      "workId": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/irenaeus-grc.json",
+      "reader": "classics-text-reader.html?work=irenaeus&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/josephus-antiquities-grc.json",
+      "reader": "classics-text-reader.html?work=josephus-antiquities&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "josephus-war",
       "author": "Flavio Josefo",
       "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
@@ -394,6 +1235,16 @@
       "path": "data/classics-corpus/josephus-war-grc.json",
       "reader": "classics-text-reader.html?work=josephus-war&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/justin-grc.json",
+      "reader": "classics-text-reader.html?work=justin&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
     },
     {
       "workId": "juvenal-saturae",
@@ -416,6 +1267,16 @@
       "sourceDescription": "OCR automatizado del facsímil PDF Krohn 1912. Cada referencia es una página del ejemplar escaneado, no un locus crítico; cotejar la imagen antes de citar."
     },
     {
+      "workId": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/livy-la.json",
+      "reader": "classics-text-reader.html?work=livy&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "lucan",
       "author": "Lucano",
       "title": "Bellum civile",
@@ -434,6 +1295,16 @@
       "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
       "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-verae-historiae-en.json",
+      "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=en",
+      "sourceDescription": "Traducción histórica de Austin Morris Harmon (1913); TEI Perseus verificado por SHA; sin cotejo automático"
     },
     {
       "workId": "lucian-verae-historiae",
@@ -516,6 +1387,16 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/nepos-la.json",
+      "reader": "classics-text-reader.html?work=nepos&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "ovid",
       "author": "Ovidio",
       "title": "Metamorphoses",
@@ -536,6 +1417,16 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-ex-ponto-la.json",
+      "reader": "classics-text-reader.html?work=ovid-ex-ponto&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "ovid-fasti",
       "author": "Ovidio",
       "title": "Fasti",
@@ -544,6 +1435,56 @@
       "path": "data/classics-corpus/ovid-fasti-la.json",
       "reader": "classics-text-reader.html?work=ovid-fasti&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-heroides-la.json",
+      "reader": "classics-text-reader.html?work=ovid-heroides&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-remedia-amoris-la.json",
+      "reader": "classics-text-reader.html?work=ovid-remedia-amoris&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-tristia-la.json",
+      "reader": "classics-text-reader.html?work=ovid-tristia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pastor-hermas-grc.json",
+      "reader": "classics-text-reader.html?work=pastor-hermas&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pausanias-periegesis-grc.json",
+      "reader": "classics-text-reader.html?work=pausanias-periegesis&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
     },
     {
       "workId": "petronius-satyrica",
@@ -566,6 +1507,106 @@
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
     },
     {
+      "workId": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-en.json",
+      "reader": "classics-text-reader.html?work=philo&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-grc.json",
+      "reader": "classics-text-reader.html?work=philo&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-de-vita-mosis-en.json",
+      "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1855); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-de-vita-mosis-grc.json",
+      "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-legum-allegoriae-en.json",
+      "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-legum-allegoriae-grc.json",
+      "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae Aesopiae",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/phraedrus-fabulae-en.json",
+      "reader": "classics-text-reader.html?work=phraedrus-fabulae&lang=en",
+      "sourceDescription": "Perseus TEI: traducción inglesa de Christopher Smart (1913), 91 loci efectivos y 10 declarados no traducidos; sin alineación automática."
+    },
+    {
+      "workId": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae Aesopiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/phraedrus-fabulae-la.json",
+      "reader": "classics-text-reader.html?work=phraedrus-fabulae&lang=la",
+      "sourceDescription": "Perseus TEI: edición de L. Müller (1876), 132 loci incluyendo Appendix; sin colación propia."
+    },
+    {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-olympian-grc.json",
+      "reader": "classics-text-reader.html?work=pindar-olympian&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-pythian-grc.json",
+      "reader": "classics-text-reader.html?work=pindar-pythian&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "plato-apology",
       "author": "Platón",
       "title": "Ἀπολογία Σωκράτους",
@@ -584,6 +1625,166 @@
       "path": "data/classics-corpus/plato-apology-grc.json",
       "reader": "classics-text-reader.html?work=plato-apology&lang=grc",
       "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+    },
+    {
+      "workId": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-crito-en.json",
+      "reader": "classics-text-reader.html?work=plato-crito&lang=en",
+      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-crito-grc.json",
+      "reader": "classics-text-reader.html?work=plato-crito&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-gorgias-en.json",
+      "reader": "classics-text-reader.html?work=plato-gorgias&lang=en",
+      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-gorgias-grc.json",
+      "reader": "classics-text-reader.html?work=plato-gorgias&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-laws-grc.json",
+      "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-meno-en.json",
+      "reader": "classics-text-reader.html?work=plato-meno&lang=en",
+      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1924); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-meno-grc.json",
+      "reader": "classics-text-reader.html?work=plato-meno&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedo-en.json",
+      "reader": "classics-text-reader.html?work=plato-phaedo&lang=en",
+      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedo-grc.json",
+      "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedrus-en.json",
+      "reader": "classics-text-reader.html?work=plato-phaedrus&lang=en",
+      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedrus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-republic-grc.json",
+      "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-symposium-en.json",
+      "reader": "classics-text-reader.html?work=plato-symposium&lang=en",
+      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-symposium-grc.json",
+      "reader": "classics-text-reader.html?work=plato-symposium&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-timaeus-en.json",
+      "reader": "classics-text-reader.html?work=plato-timaeus&lang=en",
+      "sourceDescription": "Traducción histórica de Robert Gregg Bury (1929); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-timaeus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
       "workId": "plautus-amphitruo",
@@ -606,6 +1807,17 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "pliny",
+      "sourceWorkId": "pliny-naturalis",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/lexicon/fontes/pliny-naturalis-la.json",
+      "reader": "classics-text-reader.html?work=pliny&lang=la",
+      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra."
+    },
+    {
       "workId": "pliny-younger-epistulae",
       "author": "Plinio el Joven",
       "title": "Epistulae",
@@ -616,6 +1828,26 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/polybius-historiae-grc.json",
+      "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/polycarp-grc.json",
+      "reader": "classics-text-reader.html?work=polycarp&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
+    },
+    {
       "workId": "propertius-elegiae",
       "author": "Propercio",
       "title": "Elegiae",
@@ -624,6 +1856,36 @@
       "path": "data/classics-corpus/propertius-elegiae-la.json",
       "reader": "classics-text-reader.html?work=propertius-elegiae&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
+      "reader": "classics-text-reader.html?work=pseudo-apollodorus-bibliotheca&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ptolemy-almagest-grc.json",
+      "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/quintilian-la.json",
+      "reader": "classics-text-reader.html?work=quintilian&lang=la",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
     },
     {
       "workId": "sallust-catiline",
@@ -669,6 +1931,16 @@
       "workId": "seneca-de-brevitate",
       "author": "Séneca",
       "title": "De brevitate vitae",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-brevitate-en.json",
+      "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=en",
+      "sourceDescription": "Aubrey Stewart, 1889 (Bohn's Classical Library); edición digital Standard Ebooks, CC0; XX capítulos, sin cotejo ni equivalencia automática entre traducciones."
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
       "language": "es",
       "format": "json-passages",
       "path": "data/classics-corpus/seneca-de-brevitate-es.json",
@@ -696,6 +1968,16 @@
       "sourceDescription": "Texto histórico de lectura (20 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa."
     },
     {
+      "workId": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-clementia-la.json",
+      "reader": "classics-text-reader.html?work=seneca-de-clementia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "seneca-epistulae",
       "author": "Séneca",
       "title": "Epistulae morales ad Lucilium",
@@ -703,6 +1985,16 @@
       "format": "json-passages",
       "path": "data/classics-corpus/seneca-epistulae-la.json",
       "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "seneca-tragoediae",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "title": "Tragoediae (colección)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-tragoediae-la.json",
+      "reader": "classics-text-reader.html?work=seneca-tragoediae&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -716,6 +2008,126 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-ajax-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-ajax&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-antigone-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-antigone&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-antigone-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-electra-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-electra&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1894); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-electra-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-electra&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1887); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-colonus-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1889); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-philoctetes-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1898); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
       "workId": "statius-thebais",
       "author": "Estacio",
       "title": "Thebais",
@@ -723,6 +2135,26 @@
       "format": "json-passages",
       "path": "data/classics-corpus/statius-thebais-la.json",
       "reader": "classics-text-reader.html?work=statius-thebais&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/strabo-grc.json",
+      "reader": "classics-text-reader.html?work=strabo&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "suetonius-caesares",
+      "author": "Suetonio",
+      "title": "De vita Caesarum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/suetonius-caesares-la.json",
+      "reader": "classics-text-reader.html?work=suetonius-caesares&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -773,6 +2205,16 @@
       "format": "json-passages",
       "path": "data/classics-corpus/tacitus-annales-la.json",
       "reader": "classics-text-reader.html?work=tacitus-annales&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tacitus-dialogus-la.json",
+      "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -866,6 +2308,17 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
+      "workId": "varro-rustica",
+      "sourceWorkId": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/lexicon/fontes/varro-rustica-la.json",
+      "reader": "classics-text-reader.html?work=varro-rustica&lang=la",
+      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente."
+    },
+    {
       "workId": "virgil-aeneid",
       "author": "Virgilio",
       "title": "Aeneis",
@@ -950,56 +2403,6 @@
       "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
     },
     {
-      "workId": "seneca-de-brevitate",
-      "author": "Séneca",
-      "title": "De brevitate vitae",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/seneca-de-brevitate-en.json",
-      "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=en",
-      "sourceDescription": "Aubrey Stewart, 1889 (Bohn's Classical Library); edición digital Standard Ebooks, CC0; XX capítulos, sin cotejo ni equivalencia automática entre traducciones."
-    },
-    {
-      "workId": "cato-agri-cultura",
-      "author": "Catón el Viejo",
-      "title": "De agri cultura",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cato-agri-cultura-la.json",
-      "reader": "classics-text-reader.html?work=cato-agri-cultura&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-oedipus",
-      "author": "Sófocles",
-      "title": "Οἰδίπους Τύραννος",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-oedipus-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-medea",
-      "author": "Eurípides",
-      "title": "Μήδεια",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-medea-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-medea&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-clouds",
-      "author": "Aristófanes",
-      "title": "Νεφέλαι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-clouds-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
       "workId": "xenophon-anabasis",
       "author": "Jenofonte",
       "title": "Ἀνάβασις",
@@ -1007,546 +2410,6 @@
       "format": "json-passages",
       "path": "data/classics-corpus/xenophon-anabasis-grc.json",
       "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-republic",
-      "author": "Platón",
-      "title": "Πολιτεία",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-republic-grc.json",
-      "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristotle-politics",
-      "author": "Aristóteles",
-      "title": "Πολιτικά",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-politics-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "hippocrates-aphorisms",
-      "author": "Corpus hipocrático",
-      "title": "Ἀφορισμοί",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
-      "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "epictetus-discourses",
-      "author": "Epicteto (recopilación de Arriano)",
-      "title": "Διατριβαί",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/epictetus-discourses-grc.json",
-      "reader": "classics-text-reader.html?work=epictetus-discourses&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "arrian-anabasis-alexandri",
-      "author": "Arriano",
-      "title": "Ἀλεξάνδρου Ἀνάβασις",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
-      "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-catilinariae",
-      "author": "Cicerón",
-      "title": "In Catilinam (Orationes Catilinariae)",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-catilinariae-en.json",
-      "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en",
-      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1856); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aristophanes-clouds",
-      "author": "Aristófanes",
-      "title": "Νεφέλαι",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-clouds-en.json",
-      "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=en",
-      "sourceDescription": "Traducción histórica de William James Hickie (1853); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "sophocles-oedipus",
-      "author": "Sófocles",
-      "title": "Οἰδίπους Τύραννος",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-oedipus-en.json",
-      "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=en",
-      "sourceDescription": "Traducción histórica de Richard Jebb (1887); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "lucian-verae-historiae",
-      "author": "Luciano de Samósata",
-      "title": "Ἀληθῆ διηγήματα",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/lucian-verae-historiae-en.json",
-      "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=en",
-      "sourceDescription": "Traducción histórica de Austin Morris Harmon (1913); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-medea",
-      "author": "Eurípides",
-      "title": "Μήδεια",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-medea-en.json",
-      "reader": "classics-text-reader.html?work=euripides-medea&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aristotle-politics",
-      "author": "Aristóteles",
-      "title": "Πολιτικά",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-politics-en.json",
-      "reader": "classics-text-reader.html?work=aristotle-politics&lang=en",
-      "sourceDescription": "Traducción histórica de Harris Rackham (1944); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aeschylus-persae",
-      "author": "Esquilo",
-      "title": "Πέρσαι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-persae-grc.json",
-      "reader": "classics-text-reader.html?work=aeschylus-persae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aeschylus-seven-thebes",
-      "author": "Esquilo",
-      "title": "Ἑπτὰ ἐπὶ Θήβας",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
-      "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aeschylus-suppliants",
-      "author": "Esquilo",
-      "title": "Ἱκέτιδες",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
-      "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aeschylus-prometheus",
-      "author": "Esquilo (atribución debatida)",
-      "title": "Προμηθεὺς Δεσμώτης",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
-      "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-antigone",
-      "author": "Sófocles",
-      "title": "Ἀντιγόνη",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-antigone-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-ajax",
-      "author": "Sófocles",
-      "title": "Αἴας",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-ajax-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-ajax&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-electra",
-      "author": "Sófocles",
-      "title": "Ἠλέκτρα",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-electra-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-electra&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-philoctetes",
-      "author": "Sófocles",
-      "title": "Φιλοκτήτης",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-oedipus-colonus",
-      "author": "Sófocles",
-      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-trachiniae",
-      "author": "Sófocles",
-      "title": "Τραχίνιαι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
-      "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-bacchae",
-      "author": "Eurípides",
-      "title": "Βάκχαι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-bacchae-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-hippolytus",
-      "author": "Eurípides",
-      "title": "Ἱππόλυτος",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-hippolytus-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "hippocrates-aphorisms",
-      "author": "Corpus hipocrático",
-      "title": "Ἀφορισμοί",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/hippocrates-aphorisms-en.json",
-      "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=en",
-      "sourceDescription": "Traducción histórica de Francis Adams (1886); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aeschylus-persae",
-      "author": "Esquilo",
-      "title": "Πέρσαι",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-persae-en.json",
-      "reader": "classics-text-reader.html?work=aeschylus-persae&lang=en",
-      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aeschylus-seven-thebes",
-      "author": "Esquilo",
-      "title": "Ἑπτὰ ἐπὶ Θήβας",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-seven-thebes-en.json",
-      "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en",
-      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aeschylus-prometheus",
-      "author": "Esquilo (atribución debatida)",
-      "title": "Προμηθεὺς Δεσμώτης",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-prometheus-en.json",
-      "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=en",
-      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "sophocles-antigone",
-      "author": "Sófocles",
-      "title": "Ἀντιγόνη",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-antigone-en.json",
-      "reader": "classics-text-reader.html?work=sophocles-antigone&lang=en",
-      "sourceDescription": "Traducción histórica de Richard Jebb (1891); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "sophocles-oedipus-colonus",
-      "author": "Sófocles",
-      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-oedipus-colonus-en.json",
-      "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=en",
-      "sourceDescription": "Traducción histórica de Richard Jebb (1889); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "sophocles-electra",
-      "author": "Sófocles",
-      "title": "Ἠλέκτρα",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-electra-en.json",
-      "reader": "classics-text-reader.html?work=sophocles-electra&lang=en",
-      "sourceDescription": "Traducción histórica de Richard Jebb (1894); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-bacchae",
-      "author": "Eurípides",
-      "title": "Βάκχαι",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-bacchae-en.json",
-      "reader": "classics-text-reader.html?work=euripides-bacchae&lang=en",
-      "sourceDescription": "Traducción histórica de T. A. Buckley (1850); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-hippolytus",
-      "author": "Eurípides",
-      "title": "Ἱππόλυτος",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-hippolytus-en.json",
-      "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-alcestis",
-      "author": "Eurípides",
-      "title": "Ἄλκηστις",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-alcestis-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-alcestis&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-electra",
-      "author": "Eurípides",
-      "title": "Ἠλέκτρα",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-electra-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-electra&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-troades",
-      "author": "Eurípides",
-      "title": "Τρῳάδες",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-troades-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-troades&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-hecuba",
-      "author": "Eurípides",
-      "title": "Ἑκάβη",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-hecuba-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-iphigenia-aulid",
-      "author": "Eurípides",
-      "title": "Ἰφιγένεια ἐν Αὐλίδι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
-      "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-aves",
-      "author": "Aristófanes",
-      "title": "Ὄρνιθες",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-aves-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-aves&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-ranae",
-      "author": "Aristófanes",
-      "title": "Βάτραχοι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-ranae-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-lysistrata",
-      "author": "Aristófanes",
-      "title": "Λυσιστράτη",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-lysistrata&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-vespae",
-      "author": "Aristófanes",
-      "title": "Σφῆκες",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-vespae-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-pax",
-      "author": "Aristófanes",
-      "title": "Εἰρήνη",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-pax-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-pax&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristophanes-acharnenses",
-      "author": "Aristófanes",
-      "title": "Ἀχαρνῆς",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
-      "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-symposium",
-      "author": "Platón",
-      "title": "Συμπόσιον",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-symposium-grc.json",
-      "reader": "classics-text-reader.html?work=plato-symposium&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-gorgias",
-      "author": "Platón",
-      "title": "Γοργίας",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-gorgias-grc.json",
-      "reader": "classics-text-reader.html?work=plato-gorgias&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-timaeus",
-      "author": "Platón",
-      "title": "Τίμαιος",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-timaeus-grc.json",
-      "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-meno",
-      "author": "Platón",
-      "title": "Μένων",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-meno-grc.json",
-      "reader": "classics-text-reader.html?work=plato-meno&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-phaedrus",
-      "author": "Platón",
-      "title": "Φαῖδρος",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-phaedrus-grc.json",
-      "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-laws",
-      "author": "Platón",
-      "title": "Νόμοι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-laws-grc.json",
-      "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-crito",
-      "author": "Platón",
-      "title": "Κρίτων",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-crito-grc.json",
-      "reader": "classics-text-reader.html?work=plato-crito&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristotle-nicomachean-ethics",
-      "author": "Aristóteles",
-      "title": "Ἠθικὰ Νικομάχεια",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristotle-metaphysics",
-      "author": "Aristóteles",
-      "title": "Τὰ μετὰ τὰ φυσικά",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aristotle-rhetoric",
-      "author": "Aristóteles",
-      "title": "Ῥητορική",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "xenophon-memorabilia",
-      "author": "Jenofonte",
-      "title": "Ἀπομνημονεύματα",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
-      "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
@@ -1560,857 +2423,14 @@
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     },
     {
-      "workId": "demosthenes-de-corona",
-      "author": "Demóstenes",
-      "title": "Περὶ τοῦ στεφάνου",
+      "workId": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
       "language": "grc",
       "format": "json-passages",
-      "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
-      "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc",
+      "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "pindar-olympian",
-      "author": "Píndaro",
-      "title": "Ὀλυμπιόνικοι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/pindar-olympian-grc.json",
-      "reader": "classics-text-reader.html?work=pindar-olympian&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "pindar-pythian",
-      "author": "Píndaro",
-      "title": "Πυθιόνικοι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/pindar-pythian-grc.json",
-      "reader": "classics-text-reader.html?work=pindar-pythian&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "diogenes-laertius-vitae",
-      "author": "Diógenes Laercio",
-      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
-      "reader": "classics-text-reader.html?work=diogenes-laertius-vitae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-pro-archia",
-      "author": "Cicerón",
-      "title": "Pro Archia poeta",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-pro-archia-la.json",
-      "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "sophocles-philoctetes",
-      "author": "Sófocles",
-      "title": "Φιλοκτήτης",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/sophocles-philoctetes-en.json",
-      "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=en",
-      "sourceDescription": "Traducción histórica de Richard Jebb (1898); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "cicero-de-finibus",
-      "author": "Cicerón",
-      "title": "De finibus bonorum et malorum",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-de-finibus-la.json",
-      "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-tusculanae",
-      "author": "Cicerón",
-      "title": "Tusculanae disputationes",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-tusculanae-la.json",
-      "reader": "classics-text-reader.html?work=cicero-tusculanae&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-de-natura-deorum",
-      "author": "Cicerón",
-      "title": "De natura deorum",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-de-natura-deorum-la.json",
-      "reader": "classics-text-reader.html?work=cicero-de-natura-deorum&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-de-amicitia",
-      "author": "Cicerón",
-      "title": "Laelius de amicitia",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-de-amicitia-la.json",
-      "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-de-senectute",
-      "author": "Cicerón",
-      "title": "Cato Maior de senectute",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-de-senectute-la.json",
-      "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-de-divinatione",
-      "author": "Cicerón",
-      "title": "De divinatione",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-de-divinatione-la.json",
-      "reader": "classics-text-reader.html?work=cicero-de-divinatione&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-brutus",
-      "author": "Cicerón",
-      "title": "Brutus",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-brutus-la.json",
-      "reader": "classics-text-reader.html?work=cicero-brutus&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "cicero-philippicae",
-      "author": "Cicerón",
-      "title": "Philippicae",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cicero-philippicae-la.json",
-      "reader": "classics-text-reader.html?work=cicero-philippicae&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "seneca-de-clementia",
-      "author": "Séneca",
-      "title": "De clementia",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/seneca-de-clementia-la.json",
-      "reader": "classics-text-reader.html?work=seneca-de-clementia&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "horace-epodi",
-      "author": "Horacio",
-      "title": "Epodi",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/horace-epodi-la.json",
-      "reader": "classics-text-reader.html?work=horace-epodi&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "horace-epistulae",
-      "author": "Horacio",
-      "title": "Epistulae",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/horace-epistulae-la.json",
-      "reader": "classics-text-reader.html?work=horace-epistulae&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "ovid-tristia",
-      "author": "Ovidio",
-      "title": "Tristia",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/ovid-tristia-la.json",
-      "reader": "classics-text-reader.html?work=ovid-tristia&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "ovid-heroides",
-      "author": "Ovidio",
-      "title": "Heroides",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/ovid-heroides-la.json",
-      "reader": "classics-text-reader.html?work=ovid-heroides&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "ovid-remedia-amoris",
-      "author": "Ovidio",
-      "title": "Remedia amoris",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/ovid-remedia-amoris-la.json",
-      "reader": "classics-text-reader.html?work=ovid-remedia-amoris&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "ovid-ex-ponto",
-      "author": "Ovidio",
-      "title": "Epistulae ex Ponto",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/ovid-ex-ponto-la.json",
-      "reader": "classics-text-reader.html?work=ovid-ex-ponto&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "tacitus-dialogus",
-      "author": "Tácito (atribución tradicional)",
-      "title": "Dialogus de oratoribus",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/tacitus-dialogus-la.json",
-      "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "apuleius-apologia",
-      "author": "Apuleyo",
-      "title": "Apologia",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/apuleius-apologia-la.json",
-      "reader": "classics-text-reader.html?work=apuleius-apologia&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "boethius-consolatio",
-      "author": "Boecio",
-      "title": "De consolatione philosophiae",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/boethius-consolatio-la.json",
-      "reader": "classics-text-reader.html?work=boethius-consolatio&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aratus-phaenomena",
-      "author": "Arato de Solos",
-      "title": "Φαινόμενα",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aratus-phaenomena-grc.json",
-      "reader": "classics-text-reader.html?work=aratus-phaenomena&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aeneas-tacticus-poliorketika",
-      "author": "Eneas el Táctico",
-      "title": "Πολιορκητικά",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
-      "reader": "classics-text-reader.html?work=aeneas-tacticus-poliorketika&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euclid-elementa",
-      "author": "Euclides",
-      "title": "Στοιχεῖα · Elementa",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euclid-elementa-grc.json",
-      "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "euripides-alcestis",
-      "author": "Eurípides",
-      "title": "Ἄλκηστις",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-alcestis-en.json",
-      "reader": "classics-text-reader.html?work=euripides-alcestis&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-electra",
-      "author": "Eurípides",
-      "title": "Ἠλέκτρα",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-electra-en.json",
-      "reader": "classics-text-reader.html?work=euripides-electra&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-troades",
-      "author": "Eurípides",
-      "title": "Τρῳάδες",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-troades-en.json",
-      "reader": "classics-text-reader.html?work=euripides-troades&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-hecuba",
-      "author": "Eurípides",
-      "title": "Ἑκάβη",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-hecuba-en.json",
-      "reader": "classics-text-reader.html?work=euripides-hecuba&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "euripides-iphigenia-aulid",
-      "author": "Eurípides",
-      "title": "Ἰφιγένεια ἐν Αὐλίδι",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json",
-      "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=en",
-      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "demosthenes-philippicae",
-      "author": "Demóstenes",
-      "title": "Φιλιππικοί",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
-      "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aeschylus-oresteia",
-      "author": "Esquilo",
-      "title": "Ὀρέστεια",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
-      "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "pseudo-apollodorus-bibliotheca",
-      "author": "Pseudo-Apolodoro",
-      "title": "Βιβλιοθήκη (Bibliotheca)",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
-      "reader": "classics-text-reader.html?work=pseudo-apollodorus-bibliotheca&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "plato-phaedo",
-      "author": "Platón",
-      "title": "Φαίδων",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-phaedo-grc.json",
-      "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "aeschylus-suppliants",
-      "author": "Esquilo",
-      "title": "Ἱκέτιδες",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aeschylus-suppliants-en.json",
-      "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=en",
-      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-crito",
-      "author": "Platón",
-      "title": "Κρίτων",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-crito-en.json",
-      "reader": "classics-text-reader.html?work=plato-crito&lang=en",
-      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-phaedo",
-      "author": "Platón",
-      "title": "Φαίδων",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-phaedo-en.json",
-      "reader": "classics-text-reader.html?work=plato-phaedo&lang=en",
-      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-meno",
-      "author": "Platón",
-      "title": "Μένων",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-meno-en.json",
-      "reader": "classics-text-reader.html?work=plato-meno&lang=en",
-      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1924); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-symposium",
-      "author": "Platón",
-      "title": "Συμπόσιον",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-symposium-en.json",
-      "reader": "classics-text-reader.html?work=plato-symposium&lang=en",
-      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-gorgias",
-      "author": "Platón",
-      "title": "Γοργίας",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-gorgias-en.json",
-      "reader": "classics-text-reader.html?work=plato-gorgias&lang=en",
-      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-timaeus",
-      "author": "Platón",
-      "title": "Τίμαιος",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-timaeus-en.json",
-      "reader": "classics-text-reader.html?work=plato-timaeus&lang=en",
-      "sourceDescription": "Traducción histórica de Robert Gregg Bury (1929); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "plato-phaedrus",
-      "author": "Platón",
-      "title": "Φαῖδρος",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/plato-phaedrus-en.json",
-      "reader": "classics-text-reader.html?work=plato-phaedrus&lang=en",
-      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "aristotle-nicomachean-ethics",
-      "author": "Aristóteles",
-      "title": "Ἠθικὰ Νικομάχεια",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
-      "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en",
-      "sourceDescription": "Traducción histórica de Harris Rackham (1926); TEI Perseus verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "nepos",
-      "author": "Cornelio Nepote",
-      "title": "De viris illustribus",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/nepos-la.json",
-      "reader": "classics-text-reader.html?work=nepos&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "appian-romaika",
-      "author": "Apiano",
-      "title": "Ῥωμαϊκά",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/appian-romaika-grc.json",
-      "reader": "classics-text-reader.html?work=appian-romaika&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "suetonius-caesares",
-      "author": "Suetonio",
-      "title": "De vita Caesarum",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/suetonius-caesares-la.json",
-      "reader": "classics-text-reader.html?work=suetonius-caesares&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "seneca-tragoediae",
-      "author": "Séneca (atribuciones individuales por cotejar)",
-      "title": "Tragoediae (colección)",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/seneca-tragoediae-la.json",
-      "reader": "classics-text-reader.html?work=seneca-tragoediae&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "livy",
-      "author": "Tito Livio",
-      "title": "Ab urbe condita",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/livy-la.json",
-      "reader": "classics-text-reader.html?work=livy&lang=la",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "dionysius",
-      "author": "Dionisio de Halicarnaso",
-      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/dionysius-grc.json",
-      "reader": "classics-text-reader.html?work=dionysius&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "strabo",
-      "author": "Estrabón",
-      "title": "Γεωγραφικά",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/strabo-grc.json",
-      "reader": "classics-text-reader.html?work=strabo&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "philo",
-      "author": "Filón de Alejandría",
-      "title": "De opificio mundi",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/philo-grc.json",
-      "reader": "classics-text-reader.html?work=philo&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
-    },
-    {
-      "workId": "dioscorides",
-      "author": "Dioscórides",
-      "title": "Περὶ ὕλης ἰατρικῆς",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/dioscorides-grc.json",
-      "reader": "classics-text-reader.html?work=dioscorides&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
-    },
-    {
-      "workId": "josephus-antiquities",
-      "author": "Flavio Josefo",
-      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/josephus-antiquities-grc.json",
-      "reader": "classics-text-reader.html?work=josephus-antiquities&lang=grc",
-      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
-    },
-    {
-      "workId": "ignatius",
-      "author": "Ignacio de Antioquía",
-      "title": "Ἐπιστολαί · Cartas de Ignacio",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/ignatius-grc.json",
-      "reader": "classics-text-reader.html?work=ignatius&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
-    },
-    {
-      "workId": "polycarp",
-      "author": "Policarpo de Esmirna",
-      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/polycarp-grc.json",
-      "reader": "classics-text-reader.html?work=polycarp&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente"
-    },
-    {
-      "workId": "philo",
-      "author": "Filón de Alejandría",
-      "title": "De opificio mundi",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/philo-en.json",
-      "reader": "classics-text-reader.html?work=philo&lang=en",
-      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "homeric-hymns",
-      "author": "Anónimo (atribución antigua a Homero)",
-      "title": "Ὁμηρικοὶ ὕμνοι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/homeric-hymns-grc.json",
-      "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc",
-      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "quintilian",
-      "author": "Quintiliano",
-      "title": "Institutio oratoria",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/classics-corpus/quintilian-la.json",
-      "reader": "classics-text-reader.html?work=quintilian&lang=la",
-      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "clement",
-      "author": "Primera carta de Clemente",
-      "title": "Πρὸς Κορινθίους Αʹ",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/clement-grc.json",
-      "reader": "classics-text-reader.html?work=clement&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "pastor-hermas",
-      "author": "Hermas",
-      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/pastor-hermas-grc.json",
-      "reader": "classics-text-reader.html?work=pastor-hermas&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "clement-2",
-      "author": "Anónimo",
-      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/clement-2-grc.json",
-      "reader": "classics-text-reader.html?work=clement-2&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "diognetus",
-      "author": "Anónimo",
-      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/diognetus-grc.json",
-      "reader": "classics-text-reader.html?work=diognetus&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "justin",
-      "author": "Justino Mártir",
-      "title": "Ἀπολογία πρώτη · Primera Apología",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/justin-grc.json",
-      "reader": "classics-text-reader.html?work=justin&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "irenaeus",
-      "author": "Ireneo de Lyon",
-      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/irenaeus-grc.json",
-      "reader": "classics-text-reader.html?work=irenaeus&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "hero-pneumatica",
-      "author": "Herón de Alejandría",
-      "title": "Πνευματικά · Pneumatica",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/hero-pneumatica-grc.json",
-      "reader": "classics-text-reader.html?work=hero-pneumatica&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "hero-automata",
-      "author": "Herón de Alejandría",
-      "title": "Αὐτοματοποιητική · Automata",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/hero-automata-grc.json",
-      "reader": "classics-text-reader.html?work=hero-automata&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "polybius-historiae",
-      "author": "Polibio",
-      "title": "Ἱστορίαι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/polybius-historiae-grc.json",
-      "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc",
-      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "philo-legum-allegoriae",
-      "author": "Filón de Alejandría",
-      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/philo-legum-allegoriae-grc.json",
-      "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "philo-de-vita-mosis",
-      "author": "Filón de Alejandría",
-      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/philo-de-vita-mosis-grc.json",
-      "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "pausanias-periegesis",
-      "author": "Pausanias",
-      "title": "Ἑλλάδος περιήγησις",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/pausanias-periegesis-grc.json",
-      "reader": "classics-text-reader.html?work=pausanias-periegesis&lang=grc",
-      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "galen-ars-medica",
-      "author": "Galeno",
-      "title": "Τέχνη ἰατρική",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/galen-ars-medica-grc.json",
-      "reader": "classics-text-reader.html?work=galen-ars-medica&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "galen-de-usu-partium",
-      "author": "Galeno",
-      "title": "Περὶ χρείας μορίων",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
-      "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "ptolemy-almagest",
-      "author": "Claudio Ptolomeo",
-      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/ptolemy-almagest-grc.json",
-      "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "herodotus-historiae",
-      "author": "Heródoto",
-      "title": "Ἱστορίαι",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/herodotus-historiae-grc.json",
-      "reader": "classics-text-reader.html?work=herodotus-historiae&lang=grc",
-      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "aristotle-physics",
-      "author": "Aristóteles",
-      "title": "Φυσικὴ ἀκρόασις",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-physics-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "aristotle-de-anima",
-      "author": "Aristóteles",
-      "title": "Περὶ ψυχῆς",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristotle-de-anima-grc.json",
-      "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "cebes-tabula",
-      "author": "Pseudo-Cebes (atribución tradicional)",
-      "title": "Πίναξ · Tabula Cebetis",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/cebes-tabula-grc.json",
-      "reader": "classics-text-reader.html?work=cebes-tabula&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "aristoxenus-harmonica",
-      "author": "Aristóxeno de Tarento",
-      "title": "Ἁρμονικὰ στοιχεῖα",
-      "language": "grc",
-      "format": "json-passages",
-      "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
-      "reader": "classics-text-reader.html?work=aristoxenus-harmonica&lang=grc",
-      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
-    },
-    {
-      "workId": "philo-legum-allegoriae",
-      "author": "Filón de Alejandría",
-      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/philo-legum-allegoriae-en.json",
-      "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=en",
-      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "philo-de-vita-mosis",
-      "author": "Filón de Alejandría",
-      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
-      "language": "en",
-      "format": "json-passages",
-      "path": "data/classics-corpus/philo-de-vita-mosis-en.json",
-      "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=en",
-      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1855); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
-    },
-    {
-      "workId": "varro-rustica",
-      "sourceWorkId": "varro-rustica",
-      "author": "Varrón",
-      "title": "Rerum rusticarum libri tres",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/lexicon/fontes/varro-rustica-la.json",
-      "reader": "classics-text-reader.html?work=varro-rustica&lang=la",
-      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente."
-    },
-    {
-      "workId": "frontinus",
-      "sourceWorkId": "frontinus-aquaeductu",
-      "author": "Frontino",
-      "title": "De aquaeductu urbis Romae",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json",
-      "reader": "classics-text-reader.html?work=frontinus&lang=la",
-      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
-    },
-    {
-      "workId": "pliny",
-      "sourceWorkId": "pliny-naturalis",
-      "author": "Plinio el Viejo",
-      "title": "Naturalis historia",
-      "language": "la",
-      "format": "json-passages",
-      "path": "data/lexicon/fontes/pliny-naturalis-la.json",
-      "reader": "classics-text-reader.html?work=pliny&lang=la",
-      "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra."
     }
   ]
 }
