@@ -194,6 +194,21 @@ CANDIDATES = [
          blob="16b6cf05d7f5b7493e64d429f6cd6095d4854ec8", translator="Harris Rackham", year=1926,
          publisher="William Heinemann Ltd. / G. P. Putnam's Sons",
          mode="book-sections", min_units=110, min_chars=160000),
+    dict(id="philo", original="grc", owner="OpenGreekAndLatin", repo="First1KGreek",
+         path="data/tlg0018/tlg001/tlg0018.tlg001.1st1K-eng1.xml",
+         blob="f6fa0377cfe8a5b8a30d6568a99420ffcb7f9936", translator="Charles Duke Yonge", year=1854,
+         publisher="Henry G. Bohn, London", mode="hierarchical-sections",
+         min_units=170, min_chars=90000),
+    dict(id="philo-legum-allegoriae", original="grc", owner="OpenGreekAndLatin", repo="First1KGreek",
+         path="data/tlg0018/tlg002/tlg0018.tlg002.1st1K-eng1.xml",
+         blob="bc3190c9259edeb4474ebe7025e990cf224293f7", translator="Charles Duke Yonge", year=1854,
+         publisher="Henry G. Bohn, London", mode="hierarchical-sections",
+         min_units=450, min_chars=210000),
+    dict(id="philo-de-vita-mosis", original="grc", owner="OpenGreekAndLatin", repo="First1KGreek",
+         path="data/tlg0018/tlg022/tlg0018.tlg022.1st1K-eng1.xml",
+         blob="f93c43182be0a148df79a0d8d20e0da9e81a0ac3", translator="Charles Duke Yonge", year=1855,
+         publisher="Henry G. Bohn, London", mode="hierarchical-sections",
+         min_units=610, min_chars=260000),
 ]
 
 
@@ -337,6 +352,23 @@ def extract(raw, candidate):
             raise ValueError("Aforismos traducidos insuficientes: " + str(unit_count))
         if len({p["locus"] for p in passages}) != unit_count:
             raise ValueError("Aforismos traducidos con loci duplicados")
+    elif candidate["mode"] == "hierarchical-sections":
+        passages = []
+        for div in body.iter(NS + "div"):
+            if div.get("subtype") != "section" or not div.get("n"):
+                continue
+            book = next((a for a in ancestors(div)
+                         if a.tag == NS + "div" and a.get("subtype") == "book"), None)
+            locus = (book.get("n") + "." if book is not None and book.get("n") else "") + div.get("n")
+            value = " ".join(text_without_notes(p) for p in div.iter(NS + "p")).strip()
+            if len(value) >= 25:
+                passages.append(dict(locus=locus, text=value,
+                    locusKind="sección TEI inglesa First1K; sin alineación filológica certificada"))
+        unit_count = len(passages)
+        if unit_count < candidate["min_units"]:
+            raise ValueError("Faltan secciones de traducción: " + str(unit_count))
+        if len({p["locus"] for p in passages}) != unit_count:
+            raise ValueError("Loci repetidos; revisar jerarquía TEI")
     elif candidate["mode"] == "book-bekker-pages":
         passages = []
         for div in body.iter(NS + "div"):
@@ -387,13 +419,24 @@ def extract(raw, candidate):
 
 
 def fetch(candidate):
-    url = ("https://raw.githubusercontent.com/PerseusDL/" +
+    owner = candidate.get("owner", "PerseusDL")
+    if (owner, candidate["repo"]) not in {
+        ("PerseusDL", "canonical-greekLit"),
+        ("PerseusDL", "canonical-latinLit"),
+        ("OpenGreekAndLatin", "First1KGreek"),
+    }:
+        raise ValueError("Repositorio TEI no aprobado")
+    url = ("https://raw.githubusercontent.com/" + owner + "/" +
            candidate["repo"] + "/master/" + candidate["path"])
     req = Request(url, headers={"User-Agent": "VitruviusAcademicTranslations/1.0"})
     with urlopen(req, timeout=60) as response:
         raw = response.read(MAX_SOURCE + 1)
     if not raw or len(raw) > MAX_SOURCE:
         raise ValueError("Fuente ausente o demasiado grande")
+    if owner == "OpenGreekAndLatin" and (
+        b"creativecommons.org/licenses/by-sa/4.0/" not in raw or b"<licence" not in raw
+    ):
+        raise ValueError("Fuente First1K sin licencia verificable")
     blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + bytes([0]) + raw).hexdigest()
     if blob != candidate["blob"]:
         raise ValueError("El SHA del TEI remoto cambió: requiere nueva revisión")
@@ -410,6 +453,8 @@ def update_derived(catalog, registry, audit, backlog, coverage, new):
         wid = c["id"]
         filename = item["path"]
         w = by_cat[wid]
+        source_name = ("OpenGreekAndLatin First1KGreek" if c.get("owner") == "OpenGreekAndLatin"
+                       else "Perseus Digital Library")
         w.setdefault("corpusFiles", {})["en"] = filename
         versions = w.setdefault("localVersions", [])
         if not any(v.get("language") == "en" and v.get("path") == filename for v in versions):
@@ -420,13 +465,13 @@ def update_derived(catalog, registry, audit, backlog, coverage, new):
                                  citationChicago18=(w.get("author", "") + ". " +
                                     w.get("title", "") + ". Translated by " +
                                     c["translator"] + ". " + c["publisher"] +
-                                    ", " + str(c["year"]) + ". Perseus Digital Library, TEI.")))
+                                    ", " + str(c["year"]) + ". " + source_name + ", TEI.")))
         registry["entries"].append(dict(
             workId=wid, author=w.get("author", ""), title=w.get("title", ""),
             language="en", format="json-passages", path=filename,
             reader="classics-text-reader.html?work=" + wid + "&lang=en",
             sourceDescription="Traducción histórica de " + c["translator"] +
-                              " (" + str(c["year"]) + "); TEI Perseus verificado por SHA; sin cotejo automático"))
+                              " (" + str(c["year"]) + "); TEI " + source_name + " verificado por SHA; sin cotejo automático"))
         a = by_aud[wid]
         a["indexedTextLanguages"] = sorted(set(a.get("indexedTextLanguages", [])) | {"en"})
         a["indexedTextFiles"] = sorted(set(a.get("indexedTextFiles", [])) | {filename})
@@ -441,8 +486,8 @@ def update_derived(catalog, registry, audit, backlog, coverage, new):
         cov["localEditionLanguages"] = sorted(set(cov.get("localEditionLanguages", [])) | {"en"})
         cov["translationRegisteredButNotHosted"] = False
         cov["translationSourceDescription"] = "Inglés histórico: " + c["translator"] + (
-             " (" + str(c["year"]) + "), texto completo de la fuente TEI Perseus "
-             "con procedencia por SHA; sin alineación textual certificada.")
+             " (" + str(c["year"]) + "), texto completo de la fuente TEI " + source_name +
+             " con procedencia por SHA; sin alineación textual certificada.")
 
     langs_by_work = {}
     for e in registry["entries"]:
@@ -503,13 +548,15 @@ def run():
                 originalLanguage=candidate["original"],
                 translator=candidate["translator"], editionYear=candidate["year"],
                 translationEdition=candidate["publisher"] + " (" + str(candidate["year"]) + ")",
-                sourceType="historical-english-perseus-tei",
+                sourceType=("historical-english-first1k-tei" if candidate.get("owner") == "OpenGreekAndLatin"
+                             else "historical-english-perseus-tei"),
                 source=url,
                 sourceGitBlobSha=candidate["blob"], sourceSha256=hashlib.sha256(raw).hexdigest(),
-                license="CC BY-SA 4.0 · Perseus Digital Library TEI",
+                license=("CC BY-SA 4.0 · " + ("OpenGreekAndLatin First1KGreek" if candidate.get("owner") == "OpenGreekAndLatin"
+                                                   else "Perseus Digital Library") + " TEI"),
                 attribution=(by_id[wid]["author"] + ". " + by_id[wid]["title"] +
                              ". English translation by " + candidate["translator"] +
-                             " (" + str(candidate["year"]) + "), TEI PerseusDL."),
+                             " (" + str(candidate["year"]) + "), TEI " + ("OpenGreekAndLatin First1KGreek" if candidate.get("owner") == "OpenGreekAndLatin" else "PerseusDL") + "."),
                 editorialStatus=("Traducción histórica; fuente TEI cotejada estructuralmente, no colación filológica independiente. "+candidate.get("editorialNote", "")).strip(),
                 alignmentStatus="unaligned",
                 alignment="No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI.",
@@ -534,7 +581,7 @@ def run():
                           (BACK, backlog), (COVER, coverage)]:
             save(path, obj)
     save(REPORT, dict(
-        updated=date.today().isoformat(), sources="PerseusDL TEI con SHA fijado",
+        updated=date.today().isoformat(), sources="PerseusDL / OpenGreekAndLatin First1KGreek, TEI con SHA fijado",
         newTranslations=len(additions), titles=[a["candidate"]["id"] for a in additions],
         indexedWorks=registry["works"], indexedVersions=registry["count"],
         translatedWorks=coverage["totals"]["translatedWorksLocal"],
