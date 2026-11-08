@@ -313,10 +313,11 @@ function completeMatches(text,term){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
- const all=await registry(),targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(includeOCR||e.format!=="historical-ocr-pages"));
+ const all=await registry(),targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(includeOCR||e.format!=="historical-ocr-pages"))
+  .sort((a,b)=>(a.workId==="vitruvius"?0:a.language==="la"?1:a.language==="grc"?2:3)-(b.workId==="vitruvius"?0:b.language==="la"?1:b.language==="grc"?2:3));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
@@ -348,6 +349,10 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
     if(++editionUnits>=maxPerEdition&&!allMatches)break;
    }
   }));
+  // Reveal attested passages as editions finish; do not wait for the entire corpus.
+  if(typeof onProgress==="function"){
+   try{onProgress(rows.slice(),{targeted:targets.length,examined:Math.min(offset+4,targets.length),loaded,failed,complete:offset+4>=targets.length})}catch(error){console.warn("Bibliotheca progress callback",error)}
+  }
  }
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
   targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
