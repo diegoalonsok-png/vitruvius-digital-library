@@ -236,11 +236,12 @@ function relevanceForWork(w,q){
    is never dated as if it were the original composition. Uncertain records sort last. */
 function compositionYear(work){
  const original=String(work.dating||"").toLowerCase().trim();
- if(!original||/^(?:edici[oó]n|composici[oó]n y atribuciones|tradici[oó]n|[eé]poca)/.test(original))return Infinity;
+ if(!original||/^(?:edici[oó]n|composici[oó]n y atribuciones)/.test(original))return Infinity;
+ if(/^(?:tradici[oó]n arcaica|[eé]poca arcaica)/.test(original))return -750;
  const years=[...original.matchAll(/\b(\d{1,4})\s*(a\.\s*c\.|d\.\s*c\.)/g)];
  if(years.length)return Math.min(...years.map(m=>(m[2].startsWith("a")?-1:1)*Number(m[1])));
  const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10,xi:11,xii:12};
- const centuries=[...original.matchAll(/siglos?\s+([ivx]+)(?:\s*[–-]\s*([ivx]+))?/g)];
+ const centuries=[...original.matchAll(/(?:siglos?|s\.)\s+([ivx]+)(?:\s*[–-]\s*([ivx]+))?/g)];
  if(centuries.length){
   const years=centuries.flatMap(m=>[m[1],m[2]].filter(Boolean).map(c=>roman[c]).filter(Boolean));
   if(!years.length)return Infinity;
@@ -252,9 +253,9 @@ function compositionYear(work){
 const compareAuthorTitle=(a,b)=>a.author.localeCompare(b.author,"es",{sensitivity:"base"})||
  a.title.localeCompare(b.title,"es",{sensitivity:"base"});
 function filters(){
- const q=$("classic-query").value.trim(),lang=$("classic-language").value,genre=$("classic-genre").value,
+ const q="",lang=$("classic-language").value,genre=$("classic-genre").value,
        availability=$("classic-availability")?.value||"",period=$("classic-period")?.value||"";
- const selectedSort=$("classic-sort")?.value||"author";
+ const selectedSort=$("classic-sort")?.value||"composition";
  return works.filter(w=>(period!=="focus"||periodFocus(w))&&(!lang||w.language===lang)&&(!genre||w.genre===genre)
   &&(!availability||(availability==="local"?isLocal(w):availability==="source"?hasSource(w)&&!isLocal(w):!hasSource(w)))
   &&(!q||relevanceForWork(w,q)>=0))
@@ -424,8 +425,8 @@ function bibliographicSummary(data,query){
  box.append(list);
 }
 
-function render(){const data=filters(),t=terms(),q=$("classic-query").value.trim();const total=works.length,local=works.filter(isLocal).length,withSource=works.filter(w=>hasSource(w)&&!isLocal(w)).length;
- $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(!data.some(x=>x.id===selected)){if(data.length){selected=data[0].id;tab=hasStudyPair(data[0])?"study":"text"}else selected=""}target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(q&&data.length>1&&!showSelectedDetail)bibliographicSummary(data,q);else detail();}
+function render(){const data=filters(),t=terms(),q="";const total=works.length,local=works.filter(isLocal).length,withSource=works.filter(w=>hasSource(w)&&!isLocal(w)).length;
+ $("classic-count").textContent=data.length+" / "+total+" "+t.search+" · "+local+" "+additionalInterfaceWords[language()]["count-local"]+" · "+withSource+" "+additionalInterfaceWords[language()]["count-source"];const target=$("classic-list"),fragment=document.createDocumentFragment();for(const w of data){const b=document.createElement("button");b.className="classic-item";b.type="button";b.dataset.id=w.id;b.setAttribute("aria-current",String(w.id===selected));b.innerHTML="<span>"+safe(w.author)+" · "+safe(w.dating)+"</span><strong lang='"+safe(w.language)+"'>"+safe(w.title)+"</strong><span>"+safe(w.genre)+"</span>";const availabilityMarker=document.createElement("small");availabilityMarker.className="classic-item-status "+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog");availabilityMarker.textContent=statusLabel(w);b.append(availabilityMarker);const origin=sourceType(w),type=document.createElement("small");type.className="classic-origin-kind";type.textContent=origin.label;type.title=origin.title;b.append(type);const hit=q?matchingWitness(w,q):null;if(hit){const provenance=document.createElement("small");provenance.className="classic-witness-match";provenance.textContent=(language()==="en"?"Manuscript match: ":"Coincidencia en códice: ")+[hit.shelfmark,hit.library,hit.date].filter(Boolean).join(" · ");b.append(provenance)}b.addEventListener("click",()=>choose(w.id));fragment.append(b)}target.replaceChildren(fragment);if(selected&&!data.some(x=>x.id===selected))selected="";target.querySelectorAll("button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.id===selected)));if(!selected){const pane=$("classic-detail");pane.replaceChildren();const intro=document.createElement("p");intro.textContent="Selecciona una obra del catálogo para consultar su ficha, manuscritos y visores. No se carga ningún libro sin tu elección.";pane.append(intro);document.querySelector(".classic-layout")?.classList.remove("classic-study-wide");}else detail();}
 /* The two study readers are editions of the text, not historical PDF facsimiles.
    A codex and its material history remain accessible under Manuscrito / PDF. */
 function hasStudyPair(w){
@@ -991,14 +992,8 @@ async function boot(){
  const getJson=(path,fallback)=>fetch(path).then(r=>r.ok?r.json():fallback).catch(()=>fallback);
  // Main classical catalogue should not wait for unrelated modern book inventories.
  // Launch the optional autocomplete sources in parallel and reveal the catalogue first.
- const extraIndexTask=Promise.all([
-  getJson("data/catalog.json?v=20261106-unified-books-v1",{editions:[]}),
-  getJson("data/catalog-completo.json?v=20261106-unified-books-v1",[]),
-  getJson("data/kurilo-libros/index.json?v=20261106-unified-books-v1",{books:[]})
- ]).then(([modernCatalogue,fullInventory,kuriloBooks])=>{
-  extraBookIndex=buildExtraBookIndex(modernCatalogue,fullInventory,kuriloBooks);
-  if(document.activeElement===$("classic-query"))showBookSuggestions();
- });
+ // El buscador único no requiere descargar catálogos modernos de sugerencias.
+ const extraIndexTask=Promise.resolve();
  const [res,reference,perseusLinks]=await Promise.all([
   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1"),
   getJson("data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1",{records:[],editions:[]}),
@@ -1021,23 +1016,17 @@ async function boot(){
  const startParams=new URLSearchParams(location.search),wanted=startParams.get("work");
  const initialQuery=(startParams.get("q")||"").trim().slice(0,180);
  if(initialQuery)$("classic-query").value=initialQuery;
- selected=works.find(w=>w.id===wanted)?.id||works[0]?.id||"";
+ selected=works.find(w=>w.id===wanted)?.id||"";
  const requestedView=startParams.get("view");
  tab=["study","pdf","manuscript","external","text","edition","comparepdf","parallel","perseus"].includes(requestedView)?requestedView:((()=>{const sw=works.find(w=>w.id===selected);return sw?.corpusFiles&&Object.keys(sw.corpusFiles).length?"text":hasStudyPair(sw||{})?"study":"text"})());try{const saved=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr","it","de","pt"].includes(saved))$("classic-ui-language").value=saved;}catch{}let pendingFilter=0;
- const searchInput=$("classic-query");
- searchInput.addEventListener("input",()=>{
-  // Typing does not need to reconstruct hundreds of book cards and PDF frames
-  // on every key press. Explicit selections and dropdown changes stay immediate.
-  clearTimeout(pendingFilter);
-  pendingFilter=setTimeout(()=>{pendingFilter=0;showSelectedDetail=false;render()},110);
- });
+ // Una sola búsqueda documental, sin sugerencias duplicadas ni visores precargados.
  for(const name of ["classic-language","classic-genre","classic-ui-language"])
   $(name).addEventListener("change",()=>{
    clearTimeout(pendingFilter);pendingFilter=0;
    if(name==="classic-ui-language")translateInterface();
    showSelectedDetail=false;render();
   });
- translateInterface();render();initBookSuggestions();void extraIndexTask;}
+ translateInterface();render();void extraIndexTask;}
 
 /* Visual accessibility controls for every embedded frame in the classics catalogue.
    Exact color changes only apply to locally controlled HTML readers; PDF and external

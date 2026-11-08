@@ -281,15 +281,18 @@ function cached(kind,fn){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200}={}){
- const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=3))].slice(0,12);
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false}={}){
+ const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language));
- const rows=[];let loaded=0,failed=0;
+ const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
-   const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
-   if(!d?.passages?.length){failed++;return}loaded++;
+   let d;
+   try {d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e)}
+   catch(err){failed++;failures.push({workId:e.workId,language:e.language,path:e.path});return}
+   if(!d?.passages?.length){failed++;failures.push({workId:e.workId,language:e.language,path:e.path});return}
+   loaded++;
    let editionUnits=0,editionMatches=0;
    for(const p of d.passages){
     if(typeof p?.text!=="string")continue;
@@ -310,12 +313,14 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
       source:e.path,locus:String(p.locus||""),term,hitsInPassage,excerpt:snippet(p.text,hit),link:href,
       ocr:e.format==="historical-ocr-pages",attribution:d.attribution||e.sourceDescription||""});
     editionMatches+=hitsInPassage;
-    if(++editionUnits>=maxPerEdition)break;
+    if(++editionUnits>=maxPerEdition&&!allMatches)break;
    }
   }));
  }
- lastDiagnostics={mode:"passages",targeted:targets.length,loaded,failed};
- return rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||a.locus.localeCompare(b.locus,undefined,{numeric:true})).slice(0,Math.max(1,Math.min(600,limit)));
+ lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
+  targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
+ rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||a.locus.localeCompare(b.locus,undefined,{numeric:true}));
+ return allMatches?rows:rows.slice(0,Math.max(1,Math.min(600,limit)));
 }
 window.ClassicsCorpusSearch={
  search:cached("literal",search),semanticSearch:cached("semantic",semanticSearch),searchPassages,
