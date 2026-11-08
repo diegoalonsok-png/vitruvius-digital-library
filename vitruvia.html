@@ -1465,6 +1465,61 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 
 <style id="vitruvia-search-only-panels">/* Presentación simplificada: conservar únicamente el buscador principal. */
 #multilingual-academic-search, #notes-critical-bridge, #research-crosslinks, .vk-panel {display:none!important}
+</style>
+<style id="vitruvia-cultural-right-rail">
+/* Restore the documentary cultural rail without recreating the old empty-column bug.
+   Desktop: article left; catalogued albums/books and supporting works on the right.
+   Small screens or an empty/hidden dossier: single flowing column. */
+@media screen and (min-width:1100px){
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)){
+   display:grid!important;
+   grid-template-columns:minmax(0,1fr) minmax(285px,29%)!important;
+   grid-auto-flow:row!important;
+   column-gap:clamp(24px,2.5vw,44px)!important;
+   row-gap:18px!important;
+   align-items:start!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)) > #article-body{
+   display:block!important;
+   grid-column:1!important;grid-row:1!important;
+   width:100%!important;min-width:0!important;max-width:none!important;
+   margin:0!important;float:none!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)) > #vitruvia-context{
+   display:block!important;
+   grid-column:2!important;grid-row:1 / span 2!important;
+   align-self:start!important;justify-self:stretch!important;
+   width:100%!important;min-width:0!important;max-width:none!important;
+   margin:0!important;padding:0 0 0 18px!important;
+   border-left:1px solid #3b4146!important;border-top:0!important;
+   position:static!important;float:none!important;clear:none!important;
+   max-height:none!important;overflow:visible!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)) > #article-aside:not([hidden]){
+   grid-column:1!important;grid-row:2!important;
+   width:100%!important;max-width:none!important;
+   margin:18px 0 0!important;padding:18px 0 0!important;
+   border-top:1px solid #454b51!important;border-left:0!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card{
+   min-width:0;max-width:100%;overflow-wrap:anywhere;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-cover{
+   max-width:100%;height:auto;object-fit:contain;
+ }
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list{
+   grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+@media screen and (max-width:1099px){
+ body.vitruvia-reading #vitruvia-article .article-grid{
+   display:block!important;
+   grid-template-columns:none!important;
+ }
+}
+@media print{
+ body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}
+}
 </style></body></html>
 
 
