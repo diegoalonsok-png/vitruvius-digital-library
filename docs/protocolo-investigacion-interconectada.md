@@ -15,7 +15,7 @@ Este documento regula la integración de **Vitruvia, Lexicon, Bibliotheca Graeca
 | Traducción alineada | Relación de pasajes cotejada explícitamente | Equivalencia palabra por palabra |
 | Imagen/facsímil | Signatura, institución, folio y permisos o enlace institucional | Identidad entre folio y número de imagen digital |
 
-**Regla lógica:** `coincidencia lexical` ⇒ candidato para examen, **no** prueba de `mismo lema`, `mismo sentido`, `misma genealogía` ni `dependencia documental`. Una interpretación debe distinguir premisas, citas, inferencias y conclusiones.
+**Vocabulario de evidencia:** «atestiguado» significa localizado en una fuente identificada, no autenticado como manuscrito originario ni probado como étimo.\n\n**Regla lógica:** `coincidencia lexical` ⇒ candidato para examen, **no** prueba de `mismo lema`, `mismo sentido`, `misma genealogía` ni `dependencia documental`. Una interpretación debe distinguir premisas, citas, inferencias y conclusiones.
 
 ## 2. Ecdótica y colación de variantes
 Emplear **TEI P5** para variantes realmente colacionadas: `<app>`, `<lem>`, `<rdg wit="#...">`, identidad de los testigos y responsabilidad editorial. El signo `wit` se reserva a un testimonio efectivamente examinado o a una edición crítica explícitamente citada. Una diferencia entre los latines de las recensiones V514, V554 y V297 se marca inicialmente **candidato al cotejo editorial**, no `<rdg>` atribuible al Codex H.
