@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 200,
-  "works": 139,
+  "count": 212,
+  "works": 151,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -2008,6 +2008,126 @@
       "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
       "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en",
       "sourceDescription": "Traducción histórica de Harris Rackham (1926); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/nepos-la.json",
+      "reader": "classics-text-reader.html?work=nepos&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/appian-romaika-grc.json",
+      "reader": "classics-text-reader.html?work=appian-romaika&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "suetonius-caesares",
+      "author": "Suetonio",
+      "title": "De vita Caesarum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/suetonius-caesares-la.json",
+      "reader": "classics-text-reader.html?work=suetonius-caesares&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "seneca-tragoediae",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "title": "Tragoediae (colección)",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-tragoediae-la.json",
+      "reader": "classics-text-reader.html?work=seneca-tragoediae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/livy-la.json",
+      "reader": "classics-text-reader.html?work=livy&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/dionysius-grc.json",
+      "reader": "classics-text-reader.html?work=dionysius&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/strabo-grc.json",
+      "reader": "classics-text-reader.html?work=strabo&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-grc.json",
+      "reader": "classics-text-reader.html?work=philo&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/dioscorides-grc.json",
+      "reader": "classics-text-reader.html?work=dioscorides&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/josephus-antiquities-grc.json",
+      "reader": "classics-text-reader.html?work=josephus-antiquities&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ignatius-grc.json",
+      "reader": "classics-text-reader.html?work=ignatius&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/polycarp-grc.json",
+      "reader": "classics-text-reader.html?work=polycarp&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

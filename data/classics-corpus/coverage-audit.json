@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 200,
-    "indexedDistinctWorks": 139,
+    "indexedTextVersions": 212,
+    "indexedDistinctWorks": 151,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -369,11 +369,15 @@
       "genre": "Historia de Roma",
       "dating": "desde c. 27 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/livy-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -436,11 +440,15 @@
       "genre": "Biografía",
       "dating": "siglo I a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/nepos-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -476,11 +484,15 @@
       "genre": "Historia de Roma",
       "dating": "c. 7 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/dionysius-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -494,11 +506,15 @@
       "genre": "Geografía",
       "dating": "c. 20 a. C.–23 d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/strabo-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -512,11 +528,15 @@
       "genre": "Filosofía religiosa",
       "dating": "siglo I d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/philo-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -610,11 +630,15 @@
       "genre": "Farmacología",
       "dating": "c. 50–70 d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/dioscorides-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
       "manuscriptRecords": [
         {
@@ -664,11 +688,15 @@
       "genre": "Historia y religión",
       "dating": "93–94 d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/josephus-antiquities-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
       "manuscriptRecords": [
         {
@@ -922,11 +950,15 @@
       "genre": "Cristianismo primitivo",
       "dating": "Siglo II d. C. (cronología debatida)",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ignatius-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -940,11 +972,15 @@
       "genre": "Cristianismo primitivo",
       "dating": "Primera mitad del siglo II d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/polycarp-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1553,11 +1589,15 @@
       "genre": "Tragedia",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/seneca-tragoediae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -1653,11 +1693,15 @@
       "genre": "Biografía",
       "dating": "siglo II d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/suetonius-caesares-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -2157,11 +2201,15 @@
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/appian-romaika-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,

@@ -4,7 +4,7 @@
   "snapshot": "2026-11-08",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 83,
+  "missingOriginals": 71,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -164,12 +164,13 @@
     {
       "id": "livy",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -199,12 +200,13 @@
     {
       "id": "nepos",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -222,34 +224,37 @@
     {
       "id": "dionysius",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "strabo",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "philo",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -301,12 +306,13 @@
     {
       "id": "dioscorides",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -324,12 +330,13 @@
     {
       "id": "josephus-antiquities",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -462,23 +469,25 @@
     {
       "id": "ignatius",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "polycarp",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -818,12 +827,13 @@
     {
       "id": "seneca-tragoediae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -865,12 +875,13 @@
     {
       "id": "suetonius-caesares",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -1152,12 +1163,13 @@
     {
       "id": "appian-romaika",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {

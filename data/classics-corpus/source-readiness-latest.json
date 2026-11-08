@@ -1,0 +1,166 @@
+{
+  "updated": "2026-11-08",
+  "scope": "Inspección de fuentes TEI originales; no confundir candidatos bibliográficos con textos indexados",
+  "eligibleMappedWorksScanned": 64,
+  "newWorksInThisScan": 12,
+  "indexedDistinctWorksNow": 151,
+  "sourceMissingOrIncompatible": [
+    {
+      "workId": "varro-rustica",
+      "urn": "ll.varro-rustica",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "seneca-naturales",
+      "urn": "ll.seneca-naturales",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "pliny",
+      "urn": "phi0978.phi001",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "frontinus",
+      "urn": "ll.frontinus",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "frontinus-strategemata",
+      "urn": "ll.frontinus-strategemata",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "varro-de-lingua-latina",
+      "urn": "ll.varro-de-lingua-latina",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "phraedrus-fabulae",
+      "urn": "ll.phraedrus-fabulae",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "velleius-historia",
+      "urn": "ll.velleius-historia",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "seneca-de-ira",
+      "urn": "ll.seneca-de-ira",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "seneca-de-tranquillitate",
+      "urn": "ll.seneca-de-tranquillitate",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "apuleius-de-deo-socratis",
+      "urn": "ll.apuleius-de-deo-socratis",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "vegetius-epitoma",
+      "urn": "ll.vegetius-epitoma",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "augustine-confessiones",
+      "urn": "ll.augustine-confessiones",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "augustine-civitate-dei",
+      "urn": "ll.augustine-civitate-dei",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "isidore-etymologiae",
+      "urn": "ll.isidore-etymologiae",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "urn": "ll.censorinus-die-natali",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    },
+    {
+      "workId": "frontinus-gromatica",
+      "urn": "ll.frontinus-gromatica",
+      "language": "la",
+      "repository": "PerseusDL/canonical-latinLit",
+      "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites"
+    }
+  ],
+  "extractionAndCapacityErrors": [
+    "homeric-hymns: No se recuperó suficiente texto original",
+    "quintilian: excede el límite de lote",
+    "clement: excede el límite de lote",
+    "pastor-hermas: excede el límite de lote",
+    "clement-2: excede el límite de lote",
+    "diognetus: excede el límite de lote",
+    "justin: excede el límite de lote",
+    "irenaeus: excede el límite de lote",
+    "hero-pneumatica: excede el límite de lote",
+    "hero-automata: excede el límite de lote",
+    "polybius-historiae: excede el límite de lote",
+    "philo-legum-allegoriae: excede el límite de lote",
+    "philo-de-vita-mosis: excede el límite de lote",
+    "pausanias-periegesis: excede el límite de lote",
+    "galen-ars-medica: excede el límite de lote",
+    "galen-de-usu-partium: excede el límite de lote",
+    "ptolemy-almagest: excede el límite de lote",
+    "herodotus-historiae: excede el límite de lote",
+    "thucydides-war: excede el límite de lote",
+    "cassius-dio-historia: excede el límite de lote",
+    "athenaeus-deipnosophistae: excede el límite de lote",
+    "aristotle-physics: excede el límite de lote",
+    "aristotle-de-anima: excede el límite de lote",
+    "theophrastus-historia-plantarum: excede el límite de lote",
+    "cebes-tabula: excede el límite de lote",
+    "aristoxenus-harmonica: excede el límite de lote",
+    "archimedes-fluitantibus: excede el límite de lote",
+    "ps-aristotle-mechanica: excede el límite de lote",
+    "euclid-optica: excede el límite de lote",
+    "cleonides-harmonica: excede el límite de lote",
+    "hero-belopoeica: excede el límite de lote",
+    "geminus-isagoge: excede el límite de lote",
+    "aristarchus-magnitudines: excede el límite de lote",
+    "apollonius-conica: excede el límite de lote",
+    "pappus-synagoge: excede el límite de lote"
+  ],
+  "policy": "No publicar TEI incompleto, traducciones inventadas, OCR sin validar ni colaciones inferidas."
+}

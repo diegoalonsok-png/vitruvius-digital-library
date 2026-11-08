@@ -4,21 +4,21 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 139,
-    "originalsMissing": 83,
+    "originalsIndexed": 151,
+    "originalsMissing": 71,
     "worksWithHostedTranslation": 55,
     "worksMissingTranslation": 167,
-    "textVersions": 200,
+    "textVersions": 212,
     "states": {
-      "original_pendiente": 83,
-      "original_sin_traduccion_local": 84,
+      "original_pendiente": 71,
+      "original_sin_traduccion_local": 96,
       "original_y_traduccion_local": 55
     },
     "sourceReadinessForMissingOriginals": {
-      "correspondencia_bibliografica_ambigua": 8,
+      "correspondencia_bibliografica_ambigua": 4,
       "requiere_fuente_no_canonica_o_edicion_especifica": 16,
       "sin_fuente_en_mapa_perseus": 16,
-      "tei_perseus_candidato_por_verificar": 43
+      "tei_perseus_candidato_por_verificar": 35
     }
   },
   "items": [
@@ -270,11 +270,13 @@
       "title": "Ab urbe condita",
       "originalLanguage": "la",
       "dating": "desde c. 27 a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "phi0914.phi001"
       ],
@@ -322,11 +324,13 @@
       "title": "De viris illustribus",
       "originalLanguage": "la",
       "dating": "siglo I a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "phi0588.abo001",
         "phi0588.abo002",
@@ -380,11 +384,13 @@
       "title": "Ῥωμαϊκὴ ἀρχαιολογία",
       "originalLanguage": "grc",
       "dating": "c. 7 a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0081.tlg001"
       ],
@@ -396,11 +402,13 @@
       "title": "Γεωγραφικά",
       "originalLanguage": "grc",
       "dating": "c. 20 a. C.–23 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0099.tlg001"
       ],
@@ -412,11 +420,13 @@
       "title": "De opificio mundi",
       "originalLanguage": "grc",
       "dating": "siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0018.tlg001"
       ],
@@ -496,11 +506,13 @@
       "title": "Περὶ ὕλης ἰατρικῆς",
       "originalLanguage": "grc",
       "dating": "c. 50–70 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0656.tlg001"
       ],
@@ -530,11 +542,13 @@
       "title": "Ἰουδαϊκὴ ἀρχαιολογία",
       "originalLanguage": "grc",
       "dating": "93–94 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0526.tlg001"
       ],
@@ -734,11 +748,13 @@
       "title": "Ἐπιστολαί · Cartas de Ignacio",
       "originalLanguage": "grc",
       "dating": "Siglo II d. C. (cronología debatida)",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1443.tlg001"
       ],
@@ -750,11 +766,13 @@
       "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
       "originalLanguage": "grc",
       "dating": "Primera mitad del siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1622.tlg001"
       ],
@@ -1313,11 +1331,13 @@
       "title": "Tragoediae (colección)",
       "originalLanguage": "la",
       "dating": "siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "phi1017.phi001",
         "phi1017.phi002",
@@ -1393,11 +1413,13 @@
       "title": "De vita Caesarum",
       "originalLanguage": "la",
       "dating": "siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "phi1348.abo011",
         "phi1348.abo012",
@@ -1908,11 +1930,13 @@
       "title": "Ῥωμαϊκά",
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0551.tlg002",
         "tlg0551.tlg003",

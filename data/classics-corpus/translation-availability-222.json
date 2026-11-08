@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 139,
+    "locallyIndexedWorks": 151,
     "translatedWorksLocal": 55,
     "worksWithoutHostedTranslation": 167,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 54,
       "fr": 2
     },
-    "originalTextIndexed": 139,
-    "originalTextNotIndexed": 83
+    "originalTextIndexed": 151,
+    "originalTextNotIndexed": 71
   },
   "works": [
     {
@@ -273,14 +273,16 @@
       "author": "Tito Livio",
       "title": "Ab urbe condita",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid",
@@ -319,14 +321,16 @@
       "author": "Cornelio Nepote",
       "title": "De viris illustribus",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "diodorus",
@@ -349,42 +353,48 @@
       "author": "Dionisio de Halicarnaso",
       "title": "Ῥωμαϊκὴ ἀρχαιολογία",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "strabo",
       "author": "Estrabón",
       "title": "Γεωγραφικά",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "philo",
       "author": "Filón de Alejandría",
       "title": "De opificio mundi",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "seneca-epistulae",
@@ -451,14 +461,16 @@
       "author": "Dioscórides",
       "title": "Περὶ ὕλης ἰατρικῆς",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "josephus-war",
@@ -481,14 +493,16 @@
       "author": "Flavio Josefo",
       "title": "Ἰουδαϊκὴ ἀρχαιολογία",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "quintilian",
@@ -670,28 +684,32 @@
       "author": "Ignacio de Antioquía",
       "title": "Ἐπιστολαί · Cartas de Ignacio",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "polycarp",
       "author": "Policarpo de Esmirna",
       "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "clement-2",
@@ -1140,14 +1158,16 @@
       "author": "Séneca (atribuciones individuales por cotejar)",
       "title": "Tragoediae (colección)",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "petronius-satyrica",
@@ -1205,14 +1225,16 @@
       "author": "Suetonio",
       "title": "De vita Caesarum",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "juvenal-saturae",
@@ -1587,14 +1609,16 @@
       "author": "Apiano",
       "title": "Ῥωμαϊκά",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "marcus-aurelius-meditations",
