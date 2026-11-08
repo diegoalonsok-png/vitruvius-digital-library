@@ -58,14 +58,10 @@ function matchEntries(doc,q,lang){
    if(found.size>=8)break;
   }
  }
- if(found.size)return [...found.values()].slice(0,8);
- if(k.length<3)return [];
- for(const [token,entry] of Object.entries(doc.entries)){
-  if(token.startsWith(k)){
-   add(entry);if(found.size>=8)break;
-  }
- }
- return [...found.values()];
+ // Una coincidencia de prefijo no es una acepción. Los diccionarios
+ // filológicos solo muestran lemas o formas flexionadas documentadas.
+ // Para sugerencias aproximadas debe utilizarse el buscador de lemas.
+ return [...found.values()].slice(0,8);
 }
 function external(entry,lang){
  const heading=entry.lemma;
@@ -102,8 +98,8 @@ async function search(forced=false){
   if(id!==sequence)return;
   const list=matchEntries(doc,q,lang);
   status.textContent=list.length
-   ?list.length+" entrada(s) del repertorio local de "+names[lang]+". Las glosas son orientativas; consultar la fuente completa."
-   :"No hay una entrada local para esa forma en "+names[lang]+". El enlace externo permite seguir investigando.";
+   ?list.length+" entrada(s) identificadas por lema o forma documentada del repertorio de "+names[lang]+". Glosas históricas abreviadas: comprobar el uso y la fuente."
+   :"No existe una correspondencia exacta de lema o forma documentada para «"+q+"» en "+names[lang]+". No se muestran definiciones de palabras parecidas.";
   for(const e of list)output.append(card(e,lang));
   if(!list.length){
    output.append(link(lang==="he"?"Buscar en Sefaria":"Buscar en Logeion",
