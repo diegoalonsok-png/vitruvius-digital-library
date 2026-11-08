@@ -32,7 +32,7 @@ AUDIT = ROOT / "data/classics-corpus/coverage-audit.json"
 BACKLOG = ROOT / "data/classics-corpus/indexation-backlog.json"
 STATUS = ROOT / "data/classics-corpus/mass-index-status.json"
 TRANSLATIONS = ROOT / "data/classics-corpus/translation-availability-222.json"
-MAX_PAGES_BYTES = 970_000_000  # Dejar margen bajo el límite oficial de 1 GB de GitHub Pages
+MAX_PAGES_BYTES = 995_000_000  # GitHub Pages: máximo publicado 1 GB; 5 MB de reserva para índices y metadatos
 ORIG = {"la": ("PerseusDL/canonical-latinLit", "lat"),
         "grc": ("PerseusDL/canonical-greekLit", "grc")}
 # Ediciones griegas verificadas que faltan en Perseus; mismo URN CTS.
