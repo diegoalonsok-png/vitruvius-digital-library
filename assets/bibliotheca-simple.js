@@ -298,7 +298,7 @@ async function openDictionary(term,language){
    for(const sense of entry.sens||[])definition.append(el("p","",sense));
    if(entry.etym)definition.append(el("p","", "Etimología: "+entry.etym));
    if(entry.refs?.length)definition.append(el("p","dictionary-meta","Fuentes: "+entry.refs.join("; ")));
-  }else definition.append(el("p","","No hay una ficha lexicográfica verificada para esta forma exacta en el repertorio local. Consultá Lexicon para analizar variantes, lemas y diccionarios adicionales."));
+  }else definition.append(el("p","","No hay una ficha lexicográfica verificada para esta forma exacta en el repertorio local. Consulta Lexicon para analizar variantes, lemas y diccionarios adicionales."));
  }catch(err){definition.append(el("p","","No se pudo cargar el diccionario: "+err.message+". Puede abrir Lexicon mediante el enlace."))}
  dictionaryPanel.querySelector(".dictionary-status")?.remove();
 }
