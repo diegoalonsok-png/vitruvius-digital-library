@@ -79,12 +79,18 @@
       const latLabel=document.createElement('strong');latLabel.textContent='Latín · '+edition.label.split(' · ')[0]+'. ';
       latin.append(latLabel,document.createTextNode(contextualSnippet(p.latin,forms)));
       li.append(latin);
-      const translated=document.createElement('p');translated.className='lexical-locus-translation';
+      const translated=document.createElement('div');
+      translated.className='lexical-locus-translation';
       translated.lang={'recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[edition.id]||'es';
-      const trLabel=document.createElement('strong');trLabel.textContent=(translationLanguage[edition.id]||'Traducción')+' · '+edition.label.split(' · ')[0]+'. ';
-      translated.append(trLabel,document.createTextNode(String(p.translation||'').trim()
-       ?contextualSnippet(p.translation,forms)
-       :'Traducción no disponible en este registro; consultar el lector bilingüe para comprobar el locus.'));
+      translated.style.cssText='display:block!important;visibility:visible!important;opacity:1!important;margin:9px 0 12px;padding:9px 0 8px 15px;border-left:2px solid #858b91';
+      const trLabel=document.createElement('strong');
+      trLabel.textContent=(translationLanguage[edition.id]||'Traducción')+' · '+edition.label.split(' · ')[0];
+      trLabel.style.cssText='display:block;margin:0 0 6px;font:600 12px/1.4 system-ui,sans-serif';
+      const trText=document.createElement('p');
+      trText.style.cssText='display:block!important;visibility:visible!important;margin:0;line-height:1.7;text-align:justify;text-align-last:left;white-space:normal;overflow-wrap:break-word';
+      const sourceTranslation=String(p.translation||'').trim();
+      trText.textContent=sourceTranslation||'Esta edición no aporta traducción textual comprobable para este locus.';
+      translated.append(trLabel,trText);
       li.append(translated);
       const source=document.createElement('p');source.className='lexical-locus-provenance';
       source.textContent='Fuente: edición '+edition.label.split(' · ')[0]+' · '+(p.pdf_pages?.latin?'latín PDF p. '+p.pdf_pages.latin:'página latina sin identificar')+' · '+(p.pdf_pages?.translation?'traducción PDF p. '+p.pdf_pages.translation:'página de traducción sin identificar')+'.';
