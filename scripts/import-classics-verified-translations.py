@@ -72,6 +72,12 @@ CANDIDATES = [
          translator="Francis Adams", year=1886,
          publisher="William Wood and Company, New York",
          mode="section-aphorisms", min_units=410, min_chars=28000),
+    dict(id="plato-phaedo", original="grc", repo="canonical-greekLit",
+         path="data/tlg0059/tlg004/tlg0059.tlg004.perseus-eng2.xml",
+         blob="1742b19ee9808128c471de37127069d8bd8e6183",
+         translator="Harold North Fowler", year=1914,
+         publisher="Harvard University Press / William Heinemann",
+         mode="stephanus-sections", min_units=62, min_chars=85000),
     dict(id="aeschylus-suppliants", original="grc", repo="canonical-greekLit",
          path="data/tlg0085/tlg001/tlg0085.tlg001.perseus-eng2.xml",
          blob="8114a610a69b70b0bebd234e56a65603e7c6d3ea",
@@ -254,6 +260,24 @@ def extract(raw, candidate):
             raise ValueError("Cobertura insuficiente de secciones: " + str(unit_count))
         if len({p["locus"] for p in passages}) != unit_count:
             raise ValueError("Loci de secciones duplicados")
+    elif candidate["mode"] == "stephanus-sections":
+        # Unidades Stephanus de la TEI: 57–118, sin atribuir letras
+        # ni equivalencias palabra a palabra que el marcado no certifique.
+        passages = []
+        for div in body.iter(NS + "div"):
+            if div.get("subtype") != "section" or not div.get("n"):
+                continue
+            numbered = str(div.get("n")).strip()
+            value = " ".join(text_without_notes(p) for p in div.iter(NS + "p")).strip()
+            if len(value) >= 25:
+                passages.append(dict(
+                    locus=numbered, text=value,
+                    locusKind="página Stephanus de traducción inglesa TEI; sin colación palabra a palabra"))
+        unit_count = len(passages)
+        if unit_count < candidate["min_units"]:
+            raise ValueError("Secciones Stephanus incompletas: " + str(unit_count))
+        if len({p["locus"] for p in passages}) != unit_count:
+            raise ValueError("Secciones Stephanus duplicadas")
     elif candidate["mode"] == "section-aphorisms":
         passages = []
         for div in body.iter(NS + "div"):
