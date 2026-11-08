@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 244,
-  "works": 179,
+  "count": 245,
+  "works": 180,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -1005,6 +1005,16 @@
       "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json",
       "reader": "classics-text-reader.html?work=frontinus&lang=la",
       "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
+    },
+    {
+      "workId": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/frontinus-strategemata-la.json",
+      "reader": "classics-text-reader.html?work=frontinus-strategemata&lang=la",
+      "sourceDescription": "Frontinus, Strategemata, texto latino Loeb (1925), basado en Gundermann (1887). Transcripción TEI Corpus Corporum / Universidad de Zúrich (2013), 4 libros, 50 capítulos, 595 unidades. Libro IV de atribución disputada; identificadores TEI corregidos/documentados sin pretensión de aparato crítico."
     },
     {
       "workId": "galen-ars-medica",

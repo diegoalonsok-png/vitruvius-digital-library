@@ -4,19 +4,19 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 179,
-    "originalsMissing": 43,
+    "originalsIndexed": 180,
+    "originalsMissing": 42,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
-    "textVersions": 244,
+    "textVersions": 245,
     "states": {
-      "original_pendiente": 43,
-      "original_sin_traduccion_local": 120,
+      "original_pendiente": 42,
+      "original_sin_traduccion_local": 121,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
-      "requiere_fuente_no_canonica_o_edicion_especifica": 11,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 10,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 13
     }
@@ -955,11 +955,13 @@
       "title": "Strategemata",
       "originalLanguage": "la",
       "dating": "Finales del siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.frontinus-strategemata"
       ],
