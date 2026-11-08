@@ -619,7 +619,7 @@ function renderLogosGrammar(){
    lengua consultada, independientemente de la búsqueda literal de Bibliotheca.
    No contar OCR o traducciones como testimonios manuscritos. */
 function morphologyFrequency(D,term,lemmas){
- const searched=fold(term.v||"").replace(/^@/,"").replace(/[^\\p{L}']/gu,"");
+ const searched=fold(term.v||"").replace(/^@/,"").replace(/[^\p{L}']/gu,"");
  // Keep numbered homograph IDs (locus1, locus2), not just their display
  // spelling. Dropping the ID can silently erase all of their inflections.
  const ids=[...new Set(lemmas)];
