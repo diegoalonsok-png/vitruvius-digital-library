@@ -54,7 +54,7 @@ function addSummaryResult(row){
 }
 async function execute(mode="literal"){
  const q=input.value.trim(),token=++serial;list.replaceChildren();
- if(q.length<2){status.textContent="Escriba al menos dos caracteres para consultar los textos indexados.";return}
+ if(!/[\p{L}]/u.test(q)){status.textContent="Escriba una palabra griega o latina para consultar los textos indexados.";return}
  if(!window.ClassicsCorpusSearch){status.textContent="El motor de textos clásicos no está disponible.";return}
  button.disabled=true;semantic.disabled=true;status.textContent="Buscando pasajes en las ediciones indexadas…";
  try{
@@ -85,16 +85,16 @@ button.addEventListener("click",()=>execute("literal"));
 semantic.addEventListener("click",()=>execute("semantic"));
 window.addEventListener("vitruvia:lexicon-search",event=>{
  const q=String(event.detail?.query||"").trim();
- if(q.length>=2&&q===input.value.trim())execute("literal");
+ if(/[\p{L}]/u.test(q)&&q===input.value.trim())execute("literal");
 });
 // A Lexicon search must also retrieve literal attestations; a missing dictionary headword is not absence from the corpus.
-document.getElementById("lx-form")?.addEventListener("submit",()=>{if(input.value.trim().length>=2)execute("literal")});
+document.getElementById("lx-form")?.addEventListener("submit",()=>{if(/[\p{L}]/u.test(input.value.trim()))execute("literal")});
 input.addEventListener("input",()=>{serial++;button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
 const initial=new URLSearchParams(location.search).get("q");
-if(initial&&initial.trim().length>=2){
+if(initial&&/[\p{L}]/u.test(initial.trim())){
  if(!input.value.trim())input.value=initial;
  execute("literal");
 }
