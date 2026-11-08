@@ -30,6 +30,7 @@ const requests=[];
 const fetch=async url=>{
  requests.push(url);
  const obj=url==="data/classics-corpus/search-registry.json"?registry:
+   url==="data/lexicon/conceptus.json"?{concepts:[{id:"logos",modern:{es:["razón"]},la:[],grc:["λόγος"]}]}:
    url===root+"manifest.json"?manifest:url===path?text:null;
  return {ok:!!obj,status:obj?200:404,json:async()=>obj};
 };
@@ -51,6 +52,10 @@ assert.ok(matches[0].link.includes("classics-remote-text-reader.html"));
 assert.ok(matches[0].link.includes("locus=0.1"));
 assert.ok(matches[0].passageText.includes("λόγος"));
 assert.ok(requests.includes(path));
+const conceptual=await window.ClassicsCorpusSearch.semanticSearch("razón",{limit:10});
+assert.equal(conceptual.length,1,"Bibliotheca conceptual search must include remote Greek originals");
+assert.equal(conceptual[0].workId,entry.workId);
+assert.ok(conceptual[0].link.includes("locus=0.1"),"Conceptus link must open the attested passage");
 const bogus={...entry,sourceSha256:"2".repeat(64)};
 assert.equal(await window.ClassicsOffsiteGreek.load(bogus),null,"Do not silently use an unverified TEI digest");
 const html=fs.readFileSync("classics-remote-text-reader.html","utf8");
