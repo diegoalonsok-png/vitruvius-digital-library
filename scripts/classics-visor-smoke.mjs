@@ -94,7 +94,10 @@ try{
    const result=await p.evaluate(()=>({
     search:document.querySelectorAll('input[type="search"]').length,
     works:document.getElementById('classic-work').options.length-1,
-    languages:[...document.getElementById('classic-ui-language').options].map(x=>x.value),
+    languageButton:document.getElementById('classic-ui-language').tagName,
+    languagesLabel:document.getElementById('classic-ui-language').textContent.trim(),
+    languageDropdowns:document.querySelectorAll('select#classic-ui-language').length,
+    colorInputs:document.querySelectorAll('input[type="color"]').length,
     background:getComputedStyle(document.body).backgroundColor,
     iframes:document.querySelectorAll('iframe,dialog,.classic-view-colorbar').length,
     notice:document.getElementById('classic-coverage').textContent,
@@ -103,17 +106,24 @@ try{
    }));
    assert.equal(result.search,1,'Exactly one search input');
    assert(result.works>=200,'Full classical catalogue is preserved in one selector');
-   assert.deepEqual(result.languages,['es','en','fr'],'Only the three actual interface languages');
+   assert.equal(result.languageButton,'BUTTON','The language control is a button, not an inactive dropdown');
+   assert.equal(result.languagesLabel,'ES · Idioma','Spanish must be the default locale');
+   assert.equal(result.languageDropdowns,0,'Unsupported language dropdowns are removed');
+   assert.equal(result.colorInputs,0,'No non-functional page-color control');
    assert.equal(result.background,'rgb(12, 12, 13)','Lexicon black background');
    assert.equal(result.iframes,0,'No PDFs, color palettes, or embedded viewers');
    assert(/no se examinaron/.test(result.notice),'Non-indexed works must be called out');
    assert(result.scripts.some(s=>s.includes('bibliotheca-simple.js')),'Lightweight search installed');
    assert(!result.scripts.some(s=>s.includes('bibliotheca-graeca-latina.js')),'Obsolete viewer bundle must not be loaded');
-   await p.locator('#classic-ui-language').selectOption('fr');
-   assert.match(await p.locator('#classic-intro').innerText(),/Recherchez/);
-   await p.locator('#classic-ui-language').selectOption('en');
+   await p.locator('#classic-ui-language').click();
    assert.match(await p.locator('#classic-intro').innerText(),/Search a word/);
-   await p.locator('#classic-ui-language').selectOption('es');
+   assert.equal(await p.locator('#classic-ui-language').innerText(),'EN · Language');
+   await p.locator('#classic-ui-language').click();
+   assert.match(await p.locator('#classic-intro').innerText(),/Recherchez/);
+   assert.equal(await p.locator('#classic-ui-language').innerText(),'FR · Langue');
+   await p.locator('#classic-ui-language').click();
+   assert.equal(await p.locator('#classic-ui-language').innerText(),'ES · Idioma');
+   assert.match(await p.locator('#classic-intro').innerText(),/Busca una palabra/);
   }finally{await p.close()}
  });
  await check('Bibliotheca: phrase searches one work, full paragraphs, chronological order and Lexicon deep link',async()=>{
