@@ -70,6 +70,24 @@ def main():
     assert sum(len(p["original"]) for p in passages) > 500
     assert any("λόγος" in p["original"] for p in passages)
 
+    # Una ficha compuesta debe corresponder a TODAS las URN bibliográficas;
+    # nunca publicar un único volumen como si cubriera la colección.
+    import json
+    links = json.loads((ROOT / "data/bibliotheca-perseus.json").read_text(encoding="utf-8"))["links"]
+    for work, urns in module.COMPOSITE_WORKS.items():
+        catalog_urns = tuple(item["obra"] for item in links[work])
+        assert catalog_urns == urns, "Los componentes TEI no coinciden con el catálogo: " + work
+        assert len(urns) == len(set(urns)), "URN repetida en " + work
+        assert len(urns) > 1, "Obra simple marcada como compuesta: " + work
+        # Falta una fuente: el selector no puede inventarla a partir de otras.
+        repository, suffix = module.ORIG["la" if work in {
+            "nepos", "suetonius-caesares", "seneca-tragoediae"} else "grc"]
+        for urn in (urns[0], urns[-1]):
+            author, title = urn.split(".")
+            expected = f"data/{author}/{title}/{urn}.perseus-{suffix}2.xml"
+            assert module.choose_file([{"path": expected, "size": 9000}], urn, suffix) == expected
+            assert module.choose_file([], urn, suffix) is None
+
     print("PASS: prosa mixta íntegra, versos preservados, XML P4 y P5 sin modificación")
 
 if __name__ == "__main__":
