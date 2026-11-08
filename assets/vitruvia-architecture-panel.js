@@ -170,7 +170,9 @@ function constructedWorks(id){
  // el servicio SPARQL a veces tarda más de seis segundos y antes eso se leía como «sin obras».
  const sparql='SELECT ?work ?workLabel ?workDescription (SAMPLE(?d) AS ?date) (SAMPLE(?loc) AS ?locationLabel) (SAMPLE(?img) AS ?image) (SAMPLE(?pl) AS ?plan) (SAMPLE(?en) AS ?enTitle) WHERE {'+
   ' ?work wdt:P84 wd:'+id+' .'+
-  ' OPTIONAL { ?work wdt:P571 ?d . }'+
+  ' OPTIONAL { ?work wdt:P571 ?inception . }'+
+  ' OPTIONAL { ?work wdt:P1619 ?opening . }'+
+  ' BIND(COALESCE(?inception,?opening) AS ?d)'+
   ' OPTIONAL { ?work wdt:P131 ?l . ?l rdfs:label ?loc . FILTER(LANG(?loc)="es") }'+
   ' OPTIONAL { ?work wdt:P18 ?img . }'+
   ' OPTIONAL { ?work wdt:P3311 ?pl . }'+
@@ -197,7 +199,7 @@ function constructedWorks(id){
     image:commons(entry.image?.value),plan:commons(entry.plan?.value),photoTitle:entry.enTitle?.value||'',
     url:uri.replace('/entity/','/wiki/')});
   }
-  return[...found.values()].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title)).slice(0,40);
+  return [...found.values()].sort((a,b)=>architectureDateYear(a.date)-architectureDateYear(b.date)||a.title.localeCompare(b.title)).slice(0,40);
  })();
  cache.set(key,job);job.catch(()=>cache.delete(key)); // solo se recuerdan las respuestas buenas
  return job;
@@ -298,9 +300,25 @@ async function commonsBuildings(root,name,valid){
  host.append(link(localized('Ver colección completa ↗','View full collection ↗','Voir toute la collection ↗'),
   'https://commons.wikimedia.org/wiki/'+encodeURIComponent(category.replace(/ /g,'_'))));
 }
+// Use the first *recorded* year (inception/opening), never infer completion.
+// Early historical/BCE dates are valid and undated works sort last.
+function architectureDateYear(value){
+ const s=String(value||"").trim();
+ const iso=s.match(/^(-?\d{1,6})(?:-|$)/);
+ if(iso)return Number(iso[1]);
+ const historical=s.match(/\b(\d{1,4})\s*(?:bce|bc|a\.?\s*c\.?)\b/i);
+ if(historical)return -Number(historical[1]);
+ const m=s.match(/(?:^|[^\d])(\d{3,4})(?!\d)/);
+ return m?Number(m[1]):999999;
+}
 function listConstructedWorks(root,name,id,valid){
  const section=el('section','architecture-built-list');
  heading(section,localized('Obras de arquitectura','Architectural works','Œuvres architecturales'));
+ section.append(el('p','context-note',localized(
+  'Edificios y proyectos documentados de la fecha más antigua a la más reciente. La fecha puede ser de inicio o apertura, según la fuente; los no fechados se muestran al final.',
+  'Documented works ordered earliest to latest. Dates may mark inception or opening, depending on the source; undated works follow.',
+  'Œuvres documentées de la plus ancienne à la plus récente. La date peut être celle du début ou de l’ouverture; les œuvres sans date suivent.'
+ )));
  root.append(section);
  const list=el('ol','architecture-work-stack');section.append(list);
  void commonsBuildings(section,name,valid).catch(()=>{});
@@ -314,13 +332,11 @@ function listConstructedWorks(root,name,id,valid){
   item.append(link(work.title+' ↗',work.url));
   if(work.date||work.place)item.append(el('p','architecture-work-meta',[work.date,work.place].filter(Boolean).join(' · ')));
   if(provenance)item.append(el('p','architecture-work-meta',provenance));
-  // Insert every documented building by its earliest recorded construction year.
-  // Unknown dates belong after dated buildings; ties retain alphabetical order.
-  const y=String(work.date||"").match(/(?:1[5-9]\d{2}|20\d{2})/);
-  const year=y?Number(y[0]):99999;
+  // Sort by the recorded date (possibly inception or opening).
+  const year=architectureDateYear(work.date);
   item.dataset.workYear=String(year);
   const following=[...list.children].find(node=>{
-   const other=Number(node.dataset.workYear||99999);
+   const other=Number(node.dataset.workYear||999999);
    return other>year||(other===year&&String(node.dataset.workTitle||"").localeCompare(title)>0);
   });
   item.dataset.workTitle=title;
@@ -436,5 +452,5 @@ function render(panel,query,rows,stillCurrent){
   gallery.replaceChildren(el('p','context-note',localized('La fuente de imágenes no está disponible ahora.','Image source temporarily unavailable.','Source d’images temporairement indisponible.')));
  });
 }
-window.VitruviaArchitecture={classify,render};
+window.VitruviaArchitecture={classify,render,architectureDateYear};
 })();
