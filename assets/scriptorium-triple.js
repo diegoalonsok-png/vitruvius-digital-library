@@ -25,6 +25,21 @@ async function loadEdition(id){
  }
  return cache.get(id);
 }
+/* Los OCR históricos incluyen guardas en blanco y ruido del escáner.
+   Para la primera apertura se prefiere una página realmente legible;
+   todas las páginas se conservan en el selector, sin descartar testimonio. */
+function openingPageIndex(pages,format){
+ if(format!=="ocr")return 0;
+ const score=p=>{
+  const value=String(p.text||"");
+  const latinWords=value.match(/[A-Za-zÀ-ÿ]{4,}/g)||[];
+  const letters=(value.match(/[A-Za-zÀ-ÿ]/g)||[]).length;
+  const visible=value.replace(/\s/g,"").length;
+  return latinWords.length>=35&&letters>=220&&letters/Math.max(visible,1)>.72;
+ };
+ const first=pages.findIndex(score);
+ return first>=0?first:Math.max(0,pages.findIndex(p=>String(p.text||"").trim().length>150));
+}
 const states=[];
 let candidatePromise=null;
 function candidateIndex(){
@@ -168,13 +183,13 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  }
  async function load(){
   const current=++token;data=null;index=0;translated=false;
-  message.textContent="Cargando texto indexado…";body.textContent="";
+  message.textContent="Cargando texto indexado de "+editions[edition.value].name+"…";body.textContent="";pdf.href=new URL(editions[edition.value].pdf,location.href).href;
   try{
    const resolved=await loadEdition(edition.value);if(current!==token||!panel.isConnected)return;
-   data=resolved;locus.replaceChildren();
+   data=resolved;index=openingPageIndex(data.pages,data.ed.format);locus.replaceChildren();
    data.pages.forEach((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;locus.append(o)});
    show();
-  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar esta edición: "+err.message;body.textContent="Prueba otra edición en el selector."}
+  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar el OCR de "+editions[edition.value].name+": "+err.message;body.textContent="El índice OCR no está disponible en este momento. No significa que falte el libro: usá «Abrir PDF histórico» para consultar el facsímil o cambiá de edición.";pdf.href=new URL(editions[edition.value].pdf,location.href).href;pdf.textContent="Abrir PDF histórico ↗";}
  }
  edition.addEventListener("change",load);
  prev.addEventListener("click",()=>{index=Math.max(0,index-1);show();synchronize(state)});
