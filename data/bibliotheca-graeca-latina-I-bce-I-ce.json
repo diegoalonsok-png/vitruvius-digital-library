@@ -4107,7 +4107,7 @@
       "publicStatus": "pendiente-de-incorporar",
       "reading": {
         "url": "https://el.wikisource.org/wiki/%CE%A4%CE%B1_%CE%B5%CE%B9%CF%82_%CE%B5%CE%B1%CF%85%CF%84%CF%8C%CE%BD",
-        "status": "Texto griego de los doce libros disponible en Wikisource en griego (ed. A. S. L. Farquharson, 1944). Enlace externo identificado; edición completa aún no alojada ni cotejada dentro de Vitruvia."
+        "status": "Griego original indexado por pasajes de Perseus TEI y accesible en lector local; Wikisource como testimonio editorial externo. La indexación no certifica cotejo filológico ni facsímil manuscrito."
       },
       "manuscript": {
         "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.1950.pt.2/manifest.json",
@@ -4122,7 +4122,8 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Griego e inglés: C. R. Haines (Loeb, 1916), edición y traducción documentadas en catálogo Folger; acceso al texto íntegro según la institución."
+        "status": "Inglés: George Long (1862), traducción histórica de renombre, texto íntegro indexado y disponible en lector local (12 libros). C. R. Haines (Loeb, 1916) permanece como referencia académica externa, no alojada. Castellano y francés: textos completos reutilizables pendientes de verificar.",
+        "cautions": "No implica correspondencia automática con los loci de la edición griega."
       },
       "links": {
         "scaife": null,
@@ -4138,7 +4139,35 @@
         "Pensamientos"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/marcus-aurelius-meditations-grc.json"
+        "grc": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+        "en": "data/classics-corpus/marcus-aurelius-meditations-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · George Long, 1862 · edición digital Standard Ebooks",
+          "path": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=en",
+          "kind": "translation",
+          "edition": "George Long (1862)",
+          "source": "Standard Ebooks",
+          "rights": "Dominio público (traducción); CC0 en contribuciones de Standard Ebooks",
+          "alignment": "Loci editoriales no alineados con el griego"
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "The Chicago Manual of Style, 18th ed. (2024), sistema de notas y bibliografía",
+        "uniformTitle": "Meditations (Τὰ εἰς ἑαυτόν)",
+        "originalAuthor": "Marcus Aurelius",
+        "workDate": "siglo II d. C.",
+        "originalLanguage": "griego",
+        "editionCitation": "Marcus Aurelius. The Thoughts of the Emperor M. Aurelius Antoninus. Translated by George Long. London: Bell and Daldy, 1862. Transcripción digital editada por Standard Ebooks. https://standardebooks.org/ebooks/marcus-aurelius/meditations/george-long.",
+        "manuscriptCitation": "Biblioteca Apostolica Vaticana, Vat. gr. 1950, parte 2, ff. 341r–392v, siglo XIV. Digitalización: DigiVatLib, https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2.",
+        "otherScholarlyEditions": [
+          "C. R. Haines, ed. y trad., Marcus Aurelius, Loeb Classical Library, 1916 (ficha bibliográfica; texto no alojado).",
+          "A. S. L. Farquharson, The Meditations of the Emperor Marcus Antoninus, Oxford, 1944 (referencia académica; texto no alojado)."
+        ],
+        "isbn": null,
+        "method": "Los manuscritos no tienen ISBN; la traducción de 1862 precede al sistema ISBN. No se asigna un ISBN de una reedición moderna a la edición histórica."
       }
     },
     {
