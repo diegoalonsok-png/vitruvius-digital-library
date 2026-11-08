@@ -18,7 +18,7 @@ on:
       - 'scripts/repair-classics-mixed-tei.py'
       - 'scripts/test-classics-historical-translations.py'
   schedule:
-    - cron: '26 5 * * *'
+    - cron: '26 2,8,14,20 * * *'
 
 permissions:
   contents: write
