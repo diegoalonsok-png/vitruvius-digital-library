@@ -88,7 +88,7 @@
   "rights": "Traducción original de 1862 en dominio público; contribuciones editoriales de Standard Ebooks dedicadas CC0 1.0. Respetar la procedencia.",
   "chicago18": "Marcus Aurelius. The Thoughts of the Emperor M. Aurelius Antoninus. Translated by George Long. Bell and Daldy, 1862. Digital text, Standard Ebooks.",
   "isbn": null,
-  "alignment": "Loci de lectura editoriales libro.segmento-N; no se afirma equivalencia por locus, párrafo o frase con la edición original griega; conservar ambas versiones completas e independientes.",
+  "alignment": "No alineado con la edición griega: los loci de lectura libro.segmento-N son unidades editoriales propias de la traducción de George Long; no hay equivalencias certificadas por locus, párrafo, frase o folio. Ambas versiones se conservan íntegramente y se consultan de forma independiente.",
   "passages": [
     {
       "locus": "1.segmento-1",
@@ -2710,5 +2710,8 @@
       "text": "Man, thou hast been a citizen in this great state [the world]; what difference does it make to thee whether for five years [or three]? for that which is conformable to the laws is just for all. Where is the hardship then, if no tyrant nor yet an unjust judge sends thee away from the state, but nature who brought thee into it? the same as if a prætor who has employed an actor dismisses him from the stage.⁠—“But I have not finished the five acts, but only three of them.”⁠—Thou sayest well, but in life the three acts are the whole drama; for what shall be a complete drama is determined by him who was once the cause of its composition, and now of its dissolution: but thou art the cause of neither. Depart then satisfied, for he also who releases thee is satisfied.",
       "locusKind": "unidad editorial de lectura derivada de párrafos XHTML; NO equivale al locus del original griego ni certifica alineación"
     }
-  ]
+  ],
+  "alignmentStatus": "unaligned",
+  "citationStyle": "Chicago Manual of Style, 18th ed. (2024), notes and bibliography",
+  "chicago18Bibliography": "Marcus Aurelius. The Thoughts of the Emperor M. Aurelius Antoninus. Translated by George Long. Bell and Daldy, 1862. Digital text, Standard Ebooks."
 }
