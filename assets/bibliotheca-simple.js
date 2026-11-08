@@ -213,6 +213,39 @@ function provenance(w,r){
  return {citation:partial||label+" Fuente digital: "+(r.source||"sin identificar"),chicago:false};
 }
 
+/* Exportar el pasaje documentado, sin generar un PDF inexistente.
+   El navegador ofrece "Guardar como PDF" desde su diálogo de impresión. */
+const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function printPassage(record,workInfo,passageNode){
+ const page=window.open("","_blank");
+ if(!page){window.alert("El navegador bloqueó la ventana de impresión. Permití ventanas emergentes para guardar el pasaje como PDF.");return}
+ const title=workInfo.title||record.title||"Bibliotheca";
+ const credit=workInfo.author||record.author||"";
+ const locus=record.locus||"—";
+ const source=provenance(workInfo,record).citation;
+ const url=typeof record.link==="string"?new URL(record.link,location.href).href:location.href;
+ const html='<!doctype html><html lang="'+escapeHtml(record.language==="grc"?"el":record.language||"es")+'"><head><meta charset="utf-8"><title>'+
+  escapeHtml(title+' · '+locus)+'</title><style>@page{size:A4;margin:20mm}body{font:12pt/1.65 Georgia,serif;color:#171717}header{padding-bottom:10mm;border-bottom:1px solid #aaa;margin-bottom:10mm}h1{font-size:20pt;margin:0 0 3mm}small{font:10pt/1.6 Arial,sans-serif;color:#444}main{text-align:justify;text-align-last:left;white-space:normal;overflow-wrap:break-word}mark{color:inherit;background:transparent;text-decoration:underline;text-decoration-color:#d0a800;text-decoration-thickness:2px}footer{font:9pt/1.5 Arial,sans-serif;border-top:1px solid #bbb;padding-top:5mm;margin-top:13mm;overflow-wrap:anywhere}</style></head><body><header><h1>'+
+  escapeHtml(title)+'</h1><small>'+escapeHtml([credit,locus,languages[record.language]||record.language].filter(Boolean).join(" · "))+
+  '</small></header><main>'+passageNode.innerHTML+'</main><footer>'+escapeHtml(source)+'<p>'+escapeHtml(url)+'</p></footer></body></html>';
+ page.document.open();page.document.write(html);page.document.close();
+ page.addEventListener("load",()=>{page.focus();page.print()},{once:true});
+}
+function passageActions(record,workInfo,passageNode){
+ const actions=el("div","passage-actions");
+ const pdf=el("button","passage-action",locale==="en"?"PDF":locale==="fr"?"PDF":"PDF");
+ pdf.type="button";pdf.title=locale==="es"?"Imprimir o guardar este pasaje como PDF":"Print or save passage as PDF";
+ pdf.setAttribute("aria-label",pdf.title);
+ pdf.addEventListener("click",()=>printPassage(record,workInfo,passageNode));
+ const mail=el("a","passage-action","Mail");
+ mail.title=locale==="es"?"Enviar este pasaje por correo":"Email this passage";
+ mail.setAttribute("aria-label",mail.title);
+ const title=workInfo.title||record.title||"Bibliotheca";
+ const origin=typeof record.link==="string"?new URL(record.link,location.href).href:location.href;
+ const message=[title,[workInfo.author||record.author,record.locus,languages[record.language]||record.language].filter(Boolean).join(" · "),passageNode.textContent,provenance(workInfo,record).citation,origin].filter(Boolean).join("\n\n");
+ mail.href="mailto:?subject="+encodeURIComponent(title+" · "+(record.locus||"pasaje"))+"&body="+encodeURIComponent(message);
+ actions.append(pdf,mail);return actions;
+}
 function render(rows,q,details){
  previous=rows;current=q;diag=details||{};
  const t=dict[locale],sorted=rows.slice().sort((a,b)=>{
@@ -269,6 +302,7 @@ function render(rows,q,details){
     }
    }catch{}
   }
+  li.append(passageActions(r,byId.get(r.workId)||{},p));
   passages.append(li);
  }
  list.append(frag);
