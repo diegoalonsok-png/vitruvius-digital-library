@@ -1256,7 +1256,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-local-manuscripts.js?v=20261105-merge2-v1" defer></script>
 <script src="assets/vitruvia-author-reading.js?v=20261107-oldest-witness-v4" defer></script>
 <script src="assets/documentary-relevance.js?v=20261104-precision-1" defer></script>
-<script src="assets/vitruvia-article.js?v=20261105-academic-navigation-2" defer></script>
+<script src="assets/vitruvia-article.js?v=20261108-source-priority-1" defer></script>
 <script src="assets/vitruvia-entity-resolver.js?v=20261107-humanidades-v4" defer></script>
 <script src="assets/search-agentic.js?v=20261105-academic-navigation-2" defer></script>
 <script src="assets/vitruvia-archives.js?v=20261104-linked-authorities-v1" defer></script>
@@ -1712,7 +1712,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     const article=document.getElementById('vitruvia-article');
     if(!body||!gallery||!article||article.hidden)return;
     const paragraphs=[...body.querySelectorAll(':scope > p')].filter(p=>p.textContent.trim().length>100);
-    if(paragraphs.length<5)return;
+    if(paragraphs.length<1)return;
     const figures=[...gallery.querySelectorAll('img')].filter(img=>img.getAttribute('src')&&img.getAttribute('alt')&&img.closest('a[href]')).slice(0,3);
     const signature=paragraphs.map(p=>p.textContent.slice(0,80)).join('|')+'::'+figures.map(i=>i.src).join('|');
     if(signature===lastSignature)return;
@@ -1726,7 +1726,9 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
       const link=document.createElement('a');link.href=href;link.target='_blank';link.rel='noopener noreferrer';
       const copy=document.createElement('img');copy.src=img.currentSrc||img.src;copy.alt=img.alt;copy.loading='lazy';
       link.append(copy);fig.append(link);
-      const cap=document.createElement('figcaption');cap.textContent=img.alt+' · Imagen documental; consultar fuente original';
+      const cap=document.createElement('figcaption');
+      const sourceLabel=img.closest('figure, .image-card, .image-result, .vitruvia-image-card')?.querySelector('figcaption, .image-credit, .image-source, small')?.textContent?.trim();
+      cap.textContent=img.alt+(sourceLabel?' · '+sourceLabel.slice(0,150):' · Origen y licencia: consultar ficha enlazada');
       fig.append(cap);
       const after=paragraphs[Math.min(paragraphs.length-1,2+i*4)];
       after.after(fig);
@@ -1819,6 +1821,57 @@ html[data-theme=light] .vitruvia-academic-links .academic-links-list a{color:#22
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+
+<style id="vitruvia-source-led-editorial-20261108">
+body.vitruvia-reading #vitruvia-article .article-wikipedia-optional{
+ border:1px solid #444;border-radius:7px;background:#131313;
+ margin:30px 0;padding:0!important;max-width:100%!important;overflow:hidden;
+}
+body.vitruvia-reading #vitruvia-article .article-wikipedia-optional>summary{
+ display:list-item;padding:16px 20px;cursor:pointer;color:#e6e6e6;
+ font:600 14px/1.6 Arial,Helvetica,sans-serif;letter-spacing:.01em;
+}
+body.vitruvia-reading #vitruvia-article .article-wikipedia-optional:not([open])>summary{
+ border-bottom:0;
+}
+body.vitruvia-reading #vitruvia-article .article-wikipedia-content{
+ border-top:1px solid #414141;padding:20px;
+ font:400 15px/1.78 Arial,Helvetica,sans-serif;
+}
+body.vitruvia-reading #vitruvia-article .article-editorial-sources,
+body.vitruvia-reading #vitruvia-article .article-editorial-legacy{
+ padding:0 0 0 22px!important;margin:12px 0 27px;
+ max-width:78ch!important;
+}
+body.vitruvia-reading #vitruvia-article .article-editorial-sources li,
+body.vitruvia-reading #vitruvia-article .article-editorial-legacy li{
+ padding:8px 0;line-height:1.55;border-bottom:1px solid #2f2f2f;
+}
+body.vitruvia-reading #vitruvia-article .article-editorial-sources li small,
+body.vitruvia-reading #vitruvia-article .article-editorial-legacy li small{
+ display:block;color:#a8a8a8;font:12px/1.6 Arial,sans-serif;margin-top:3px;
+}
+body.vitruvia-reading #vitruvia-article .article-editorial-sources a,
+body.vitruvia-reading #vitruvia-article .article-editorial-legacy a{
+ color:#e6e6e6;text-underline-offset:3px;
+}
+body.vitruvia-reading #vitruvia-article .editorial-figure{
+ max-width:min(100%,660px);margin:24px 0;padding-bottom:16px;
+}
+body.vitruvia-reading #vitruvia-article .editorial-figure figcaption{
+ color:#bdbdbd;font:12px/1.55 Arial,sans-serif;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-wikipedia-optional{
+ background:#f6f6f6;border-color:#bbb;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-wikipedia-optional>summary,
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editorial-sources a,
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editorial-legacy a{color:#242424}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-wikipedia-content{border-color:#ccc}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editorial-sources li small,
+html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editorial-legacy li small{color:#555}
+@media print{body.vitruvia-reading #vitruvia-article .article-wikipedia-optional:not([open]){display:none!important}}
+</style>
 </body></html>
 
 
