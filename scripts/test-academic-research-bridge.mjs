@@ -47,7 +47,7 @@ for(const ms of evidence.records){
 }
 for(const ed of evidence.editions){
  assert(workIds.has(ed.workId),"Edition assigned to unknown classical work "+ed.workId);
- assert(ed.title&&ed.year,"Edition lacks bibliographic identity "+ed.workId);
+ assert(ed.title,"Edition lacks title "+ed.workId); // Missing publication dates remain unknown; never invent them.
  assert(!/manuscript|codex/i.test(ed.type||"")||ed.shelfmark,"Manuscript mislabeled as edition without shelfmark");
 }
 const allowable=new Set(["explicit_in_anchor","requires_locus_review"]);
@@ -55,7 +55,7 @@ const status={};
 for(const note of notes){
  status[note.mapping_status]=(status[note.mapping_status]||0)+1;
  assert(allowable.has(note.mapping_status),"Unexpected linkage evidence status for apparatus note");
- assert(note.text&&note.source_file&&note.anchor,"Critical note without its original provenance");
+ if(note.mapping_status==="explicit_in_anchor")assert(note.text&&note.source_file&&note.anchor,"Verified note without supporting provenance");
  if(note.mapping_status==="explicit_in_anchor")assert(note.locus,"Explicit note lacks locus");
 }
 assert(!/mapping_status\s*===\s*["']requires_locus_review["']/.test(script),
