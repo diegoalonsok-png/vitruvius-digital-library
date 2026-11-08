@@ -14,482 +14,56 @@
 <meta name="DC.identifier" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/bibliotheca-graeca-latina.html">
 <meta name="description" content="Biblioteca académica interdisciplinaria de fuentes griegas y latinas desde la Antigüedad arcaica a la tardía: filosofía, historia, literatura, ciencia, manuscritos, traducciones y ediciones con procedencia documentada.">
 <link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/bibliotheca-graeca-latina.html">
-<script src="assets/vitruvia-fetch-cache.js?v=20261105-v2"></script><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/bibliotheca-study-lexicon.css?v=20261107-viewport-v4">
-<style>
-.classic-main{max-width:1560px;margin:0 auto;padding:26px clamp(16px,3vw,44px) 80px;color:var(--ink,#203548)}
-.classic-main h1,.classic-main h2,.classic-main h3{font-family:Georgia,serif;letter-spacing:normal;line-height:1.18}
-.classic-head{background:#20384c;color:#f8f1e5;padding:36px clamp(18px,3vw,46px);border-top:5px solid #c4a576}
-.classic-head h1{color:#fff;font-size:clamp(34px,4vw,58px);margin:10px 0}
-.classic-head p{max-width:950px;line-height:1.7}.classic-head .latin{font-size:12px;letter-spacing:.15em;color:#e4cca0}
-.classic-menu{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 18px}
-.classic-menu a{font:600 13px system-ui,sans-serif}
-.classic-note{padding:15px 20px;background:#ebe1cf;color:#28394a;border-left:4px solid #b39258;line-height:1.55;margin:18px 0}
-.classic-controls{display:flex;gap:13px;flex-wrap:wrap;background:#fffdf8;border:1px solid #d4c5ab;padding:18px;margin:20px 0}
-.classic-controls label{font:650 12px system-ui,sans-serif;display:flex;flex:1 1 200px;flex-direction:column;gap:8px}
-.classic-controls input,.classic-controls select{width:100%;padding:10px;border:1px solid #a7a395;background:white;color:#172f40;font-size:15px;min-height:44px}
-.classic-layout{display:grid;grid-template-columns:minmax(260px,370px) minmax(0,1fr);gap:18px;align-items:start}
-.classic-list{max-height:78vh;overflow:auto;background:#fffdf8;border:1px solid #c7bba8}
-.classic-item{display:block;width:100%;text-align:left;padding:15px 16px;background:transparent;border:0;border-bottom:1px solid #ddd1c0;cursor:pointer;color:#233a4c}
-.classic-item:hover,.classic-item[aria-current=true]{background:#eee3d0;border-left:4px solid #ab8554;padding-left:12px}
-.classic-item strong{display:block;font:400 21px Georgia,serif;margin:3px 0 6px}.classic-item span{font:600 12px system-ui,sans-serif;color:#6f6049}
-.classic-detail{min-width:0;background:#fffdf8;border:1px solid #c7bba8;padding:22px}
-.classic-detail h2{font-size:clamp(29px,3vw,41px);margin:5px 0 12px}
-.classic-tag{display:inline-block;border:1px solid #c0a572;padding:5px 10px;font:700 11px system-ui,sans-serif;letter-spacing:.05em;margin:3px 5px 3px 0}
-.classic-status{margin:18px 0;padding:14px;background:#f1e9dc;border-left:3px solid #b49463;font:13px/1.7 system-ui,sans-serif}
-.classic-status dt{font-weight:750}.classic-status dd{margin:0 0 9px}
-.classic-tabstrip{display:flex;flex-wrap:wrap;gap:6px;margin:17px 0 12px}
-.classic-tabstrip button{padding:11px 13px;border:1px solid #ad936d;background:#fff;color:#19364a;cursor:pointer;font:650 13px system-ui,sans-serif}
-.classic-tabstrip button[aria-pressed=true]{background:#203d53;color:#fff}
-.classic-viewer{border:1px solid #ae9b7c;min-height:430px;background:#f5eee2;color:#253b49;padding:13px;overflow:hidden}
-.classic-viewer iframe{width:100%;height:min(74vh,780px);min-height:440px;border:0;background:white}
-.classic-linkline{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.classic-linkline a{display:inline-block;border:1px solid #b49a6e;color:#203b52;background:#fbf6ec;padding:10px 12px;text-decoration:none;font:600 13px system-ui,sans-serif;overflow-wrap:anywhere}
-.classic-linkline a:hover{background:#eee2cc}
-.classic-ref{font:12px/1.6 system-ui,sans-serif;margin-top:25px;color:inherit}
-@media(max-width:900px){.classic-layout{grid-template-columns:1fr}.classic-list{max-height:300px}}
-@media print{.classic-menu,.classic-controls,.classic-list,.classic-tabstrip{display:none}.classic-layout{display:block}}
-html[data-theme=dark] .classic-main{color:#f1e9da}
-html[data-theme=dark] .classic-controls,html[data-theme=dark] .classic-list,html[data-theme=dark] .classic-detail{background:#263d50;color:#f1ebdf;border-color:#728396}
-html[data-theme=dark] .classic-item{color:#f1ebdf;border-color:#526b7c}
-html[data-theme=dark] .classic-item span{color:#d8c8ab}
-html[data-theme=dark] .classic-item:hover,html[data-theme=dark] .classic-item[aria-current=true]{background:#344f64}
-html[data-theme=dark] .classic-status,html[data-theme=dark] .classic-viewer{background:#344e60;color:#f7eee1;border-color:#99a2aa}
-html[data-theme=dark] .classic-linkline a{color:#f7ead0;background:#22384a;border-color:#b49a6e}html[data-theme=dark] .classic-linkline a:hover,html[data-theme=dark] .classic-linkline a:focus-visible{background:#2e4b63;color:#fff}
-.classic-read-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px;padding:12px;background:rgba(135,117,80,.12);border:1px solid #aa977b}
-.classic-read-toolbar label{flex:1 1 150px;min-width:145px;display:flex;flex-direction:column;gap:5px;font:700 12px system-ui,sans-serif}
-.classic-read-toolbar select,.classic-read-toolbar input{min-height:39px;padding:6px 8px;width:100%;background:#fffdf7;color:#23384b;border:1px solid #968368}
-.classic-read-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-.classic-read-columns article{padding:14px 19px;background:#fbf8f0;border:1px solid #cbbca3;min-width:0}
-.classic-read-columns h4{font:700 12px system-ui,sans-serif;letter-spacing:.08em;color:#746341;margin:0 0 12px}
-.classic-read-columns p{font:400 19px/1.75 Georgia,serif;white-space:pre-line;overflow-wrap:anywhere;margin:0}
-.classic-read-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.classic-read-nav button{background:#243e52;color:white;border:1px solid #bca376;padding:10px 15px;cursor:pointer}
-html[data-theme=dark] .classic-read-columns article{background:#203748;color:#f6eee2;border-color:#7990a0}
-html[data-theme=dark] .classic-read-columns h4{color:#e2c68c}
-html[data-theme=dark] .classic-read-toolbar :is(select,input){background:#20384a;color:#fff;border-color:#9d9b90}
-@media(max-width:650px){.classic-read-columns{grid-template-columns:1fr}}
-.classic-compare-toolbar{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0;padding:12px;background:#e8ddc9;color:#21394b;border:1px solid #b29b78}
-.classic-compare-toolbar label{font:600 13px system-ui,sans-serif;flex:1 1 240px}
-.classic-compare-toolbar select{display:block;width:100%;padding:10px;margin-top:6px;background:white;color:#243649}
-.classic-compare-panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.classic-compare-panes iframe{width:100%;min-height:76vh;background:white;border:1px solid #9f9076}
-@media(max-width:700px){.classic-compare-panes{grid-template-columns:1fr}}
-.classic-menu{padding-right:106px;position:relative}.classic-top-language{margin-left:auto;display:flex;align-items:center;gap:7px;font:700 12px system-ui,sans-serif;color:inherit}.classic-top-language select{width:auto;min-width:118px;max-width:140px;border:1px solid #91a6b6;border-radius:5px;padding:10px 22px 10px 9px;font:600 13px system-ui,sans-serif;background:#28445a;color:#fff;cursor:pointer}.classic-top-language select:focus-visible{outline:2px solid #d9bd83;outline-offset:2px} .classic-top-language select{min-width:128px;max-width:150px}.classic-top-language{white-space:nowrap}@media(max-width:750px){.classic-menu{padding-right:0;padding-top:52px}.classic-top-language{margin-left:0;position:absolute;right:116px;top:0}.classic-top-language select{max-width:114px;min-width:100px}}
-.classic-search-wrap{position:relative;min-width:260px;z-index:30}
-.classic-search-wrap #classic-query{width:100%}
-.classic-suggestions{position:absolute;z-index:60;top:100%;left:0;right:0;max-height:340px;overflow-y:auto;background:#fffdf7;color:#203747;border:1px solid #bba77f;box-shadow:0 11px 28px rgba(0,0,0,.22);border-radius:0 0 6px 6px;padding:4px 0}
-.classic-suggestions[hidden]{display:none}
-
-/* Author, work and edition discovery: every matching title is accessible. */
-.classic-suggestions{
- max-height:min(70vh,640px);
- overscroll-behavior:contain;
- scrollbar-width:thin;
-}
-.classic-suggestions-heading{
- position:sticky;top:0;z-index:2;
- padding:12px 14px;
- font:700 12px/1.5 system-ui,sans-serif;
- background:#eee6d8;color:#172b37;
- border-bottom:1px solid #c6b89e;
-}
-.classic-suggestions-help{margin:0;padding:8px 14px 10px;background:#f6f2e9;color:#36454c;font:12px/1.6 system-ui,sans-serif}
-.classic-suggestion-empty{padding:18px 14px;color:#485a61;font:13px/1.6 system-ui,sans-serif}
-.classic-suggestion{min-height:59px;line-height:1.45}
-.classic-suggestion:focus-visible{outline:2px solid #b18d52;outline-offset:-3px;background:#e4d8c2}
-.classic-edition-suggestion{padding-left:32px;border-left:4px solid #a88a5f;background:#f9f3e7}
-.classic-edition-suggestion strong{font:600 13px/1.45 system-ui,sans-serif}
-html[data-theme=dark] .classic-suggestions-heading{background:#304c60;color:#f6eedb;border-color:#668296}
-html[data-theme=dark] .classic-suggestions-help{background:#293f52;color:#e2e4e3}
-html[data-theme=dark] .classic-suggestion-empty{color:#e1e4e4}
-html[data-theme=dark] .classic-edition-suggestion{background:#2c485c;border-left-color:#c0ac80}
-html[data-theme=dark] .classic-edition-suggestion:hover,html[data-theme=dark] .classic-edition-suggestion:focus-visible{background:#406078}
-@media(max-width:720px){.classic-suggestions{max-height:min(64vh,500px)}.classic-suggestion{padding:12px;min-height:56px}}
-
-.classic-suggestion{display:block;width:100%;border:0;border-bottom:1px solid #e4dac8;text-align:left;background:transparent;color:#203747;cursor:pointer;padding:12px 14px;font:15px Georgia,serif}
-.classic-suggestion strong{display:block;font-weight:700;line-height:1.3}
-.classic-suggestion small{display:block;margin-top:5px;font:12px system-ui,sans-serif;color:#5b6060}
-.classic-suggestion:hover,.classic-suggestion[aria-selected=true]{background:#e7dbbf;color:#122c40}
-html[data-theme=dark] .classic-suggestions{background:#233e52;border-color:#a89c88;color:#fff}
-html[data-theme=dark] .classic-suggestion{color:#f5eee0;border-color:#526a78}
-html[data-theme=dark] .classic-suggestion small{color:#c4c4bf}
-html[data-theme=dark] .classic-suggestion:hover,html[data-theme=dark] .classic-suggestion[aria-selected=true]{background:#385a71;color:#fff}
-
-.triple-panes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.triple-pane{min-width:0;background:#fffdf7;border:1px solid #b6a58a;display:flex;flex-direction:column}
-.triple-pane-head{background:#213d51;color:#f7ecdb;padding:12px;min-height:78px;display:flex;flex-direction:column;gap:6px;font:13px/1.4 system-ui,sans-serif}
-.triple-pane-head strong{font:700 13px system-ui,sans-serif;letter-spacing:.04em}
-.triple-pane-head small{color:#dfd1bd}
-.triple-pane-head select{padding:5px;width:100%;max-width:100%;background:#fff;color:#213d51}
-.triple-pane>iframe,.triple-ms>iframe{width:100%;height:70vh;min-height:460px;border:0;background:#fff}
-.triple-ms{height:70vh;min-height:460px;overflow-y:auto;text-align:center;padding:7px;background:#f1eadc;color:#253f50}
-.triple-ms img{max-width:100%;width:auto;height:auto;display:block;margin:8px auto}
-.triple-ms-note{font:12px/1.6 system-ui,sans-serif;text-align:left;overflow-wrap:anywhere}
-.triple-ms-note a{color:#174e82}
-.triple-folio-nav{position:sticky;top:0;display:flex;gap:4px;flex-wrap:wrap;justify-content:center;padding:8px;background:#e7ddc8;z-index:1}
-.triple-folio-nav button,.triple-folio-nav select{font:12px system-ui,sans-serif;padding:7px;border:1px solid #998767;max-width:100%}
-.triple-ms-status{font:12px system-ui,sans-serif;margin:8px}
-.triple-warning{margin:10px 0;font:13px/1.6 system-ui,sans-serif;background:#e7dfcf;padding:13px;color:#253c49}
-html[data-theme=dark] .triple-warning{background:#395063;color:#fff}
-@media(max-width:1100px){.triple-panes{grid-template-columns:1fr}.triple-ms,.triple-pane>iframe{min-height:440px;height:55vh}}
-
-/* Codex manuscript gallery & large independent reading surface — isolated from other viewers. */
-.triple-ms-main-image{cursor:zoom-in;max-width:100%;height:auto;display:block;margin:10px auto;box-shadow:0 2px 9px #0003}
-.triple-ms-open{background:#23445c!important;color:#fff!important;border:1px solid #b99760!important;padding:9px 12px!important;font:650 12px system-ui,sans-serif;cursor:pointer}
-.triple-gallery{border-top:2px solid #ab9879;margin-top:17px;padding:14px 3px 4px;text-align:left}
-.triple-gallery h4{font:600 18px/1.3 Georgia,serif;color:#213c50;margin:0 0 5px}
-.triple-gallery p{font:12px/1.6 system-ui,sans-serif;margin:0 0 9px}
-.triple-gallery-filter{display:flex;gap:6px;margin:7px 0;align-items:center}
-.triple-gallery-filter input{flex:1 1 110px;min-width:0;padding:9px;background:white;color:#213747;border:1px solid #a39176;font:13px system-ui,sans-serif}
-.triple-gallery-filter button,.triple-more{padding:9px 12px;cursor:pointer;background:#27475d!important;color:#fff!important;border:1px solid #ad936b!important;font:600 12px system-ui,sans-serif}
-.triple-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:6px;max-height:420px;overflow:auto;background:#ddd1bf;padding:7px}
-.triple-thumbs button{background:#fffaf0;border:2px solid #ac9a7e;padding:4px;color:#23394d;cursor:pointer;min-width:0;text-align:center}
-.triple-thumbs button[aria-current=true]{border:3px solid #bb841c;background:#fbeac7}
-.triple-thumbs img{display:block;max-width:100%;width:100%;height:108px;object-fit:contain;margin:0 auto 4px;background:#d1c5b1}
-.triple-thumbs strong,.triple-thumbs small{display:block;font:11px/1.4 system-ui,sans-serif;overflow-wrap:anywhere;color:#203b4c}
-.triple-thumbs button:focus-visible,.triple-ms-open:focus-visible{outline:3px solid #c39136;outline-offset:2px}
-.triple-more{width:100%;margin-top:8px}
-.triple-more[hidden]{display:none}
-.triple-codex-modal{width:min(1560px,97vw);height:min(980px,94dvh);max-width:97vw;max-height:94dvh;border:2px solid #c4a370;padding:0;background:#1b3043;color:#fff;overflow:hidden}
-.triple-codex-modal::backdrop{background:rgba(0,0,0,.84)}
-.triple-modal-layout{height:100%;display:flex;flex-direction:column;min-height:0}
-.triple-modal-top{background:#223c50;color:#f9f2e3;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 14px;font:13px system-ui,sans-serif}
-.triple-modal-top strong{flex:1 1 200px;font:600 16px Georgia,serif}
-.triple-modal-top button{background:#f6eddf!important;color:#213949!important;border:1px solid #ac9679!important;padding:9px 12px;cursor:pointer;font:650 13px system-ui,sans-serif}
-.triple-modal-top output{min-width:45px;font-variant-numeric:tabular-nums}
-.triple-modal-scroller{flex:1;min-height:0;overflow:auto;background:#d8d0c3;overscroll-behavior:contain}
-.triple-modal-scroller img{display:block;max-width:none!important;width:auto;height:auto;margin:0 auto;cursor:zoom-in}
-.triple-modal-credit{background:#223c50;color:#f9f2e3;padding:9px 14px;font:12px/1.5 system-ui,sans-serif;margin:0}
-.triple-modal-credit a{color:#f8db9e;text-decoration:underline}
-@media(max-width:700px){.triple-modal-top{padding:7px;gap:5px}.triple-modal-top button{padding:7px 8px}.triple-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}}
-
-/* Scholarly repertory and genuine-source availability cues. */
-.classic-search-wrap{position:relative}
-.classic-search-wrap input{padding-right:44px!important}
-.classic-clear{position:absolute;right:8px;bottom:6px;min-width:34px;height:34px;border:1px solid #c4b8a2;border-radius:50%;background:transparent;color:#565c61;font:400 24px/1 system-ui;cursor:pointer}
-.classic-clear[hidden]{display:none!important}
-.classic-clear:hover,.classic-clear:focus-visible{background:#e4d6bd;color:#193447}
-html[data-theme=dark] .classic-clear{color:#dbd1bf;border-color:#7d8992}
-html[data-theme=dark] .classic-clear:hover{background:#40586a}
-.classic-item-status{display:inline-flex!important;max-width:max-content;margin-top:9px;padding:3px 7px;border:1px solid #b1ada5;border-radius:3px;letter-spacing:.07em;font:600 9px/1.4 system-ui!important}
-.classic-item-status.is-local,.classic-detail-status.is-local{border-color:#8b9e8d;color:#345c47}
-.classic-item-status.is-external,.classic-detail-status.is-external{border-color:#b69f78;color:#74552a}
-.classic-item-status.is-catalog,.classic-detail-status.is-catalog{border-color:#989da3;color:#6c7377}
-.classic-detail-status{display:inline-flex;align-items:center;max-width:max-content;padding:6px 12px;border:1px solid;margin:2px 0 14px;font:650 11px/1.5 system-ui;letter-spacing:.09em}
-html[data-theme=dark] .classic-item-status,html[data-theme=dark] .classic-detail-status{color:#e5dcca}
-.classic-controls label{min-width:0}
-.classic-list{scrollbar-width:thin}
-@media(max-width:900px){.classic-layout{gap:12px}.classic-list{max-height:360px}}
-@media print{.classic-detail-status{color:#111!important}}
-/* Institutional manuscript references and editions. */
-.classical-evidence{margin:28px 0 15px;padding-top:14px;border-top:1px solid #b2a48a}
-.classical-evidence h3{font:400 23px Georgia,serif;letter-spacing:-.01em;margin:4px 0 15px}
-.classical-evidence-record{padding:15px 0;border-bottom:1px solid #cbbda6;break-inside:avoid-page}
-.classical-evidence-record strong{display:block;font:600 16px/1.4 Georgia,serif}
-.classical-evidence-record p{font:400 13px/1.7 system-ui,sans-serif;margin:6px 0}
-.classical-evidence-record .classical-evidence-meta{font-size:12px;font-weight:600;color:#66583d}
-.classical-evidence-record small{display:block;color:#75664d;font:400 11px/1.65 system-ui;margin:5px 0}
-html[data-theme=dark] .classical-evidence{border-color:#7c8892}
-html[data-theme=dark] .classical-evidence-record{border-color:#60788a}
-html[data-theme=dark] .classical-evidence-record .classical-evidence-meta,html[data-theme=dark] .classical-evidence-record small{color:#cbbfa5}
-
-/* Academic scanned-PDF reader and custody-library IIIF viewer. */
-.classical-pdf-toolbar{position:sticky;top:6px;z-index:4;display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:11px;background:#21384a;color:#fff;border:1px solid #9d927d;border-radius:6px;margin-bottom:9px}
-.classical-pdf-toolbar .classical-pdf-tool,.classical-ms-toolbar .classical-pdf-tool,.classical-pdf-find button,.classical-pdf-open{background:#354f62;color:#fff;border:1px solid #a99c81;border-radius:4px;padding:9px 12px;min-height:36px;cursor:pointer;font:600 12px/1.3 system-ui,sans-serif}
-.classical-pdf-tool:hover,.classical-pdf-tool:focus-visible,.classical-pdf-open:hover{background:#456981!important;border-color:#e0c692!important}
-.classical-pdf-tool:disabled{opacity:.45;cursor:default}
-.classical-pdf-tool[aria-pressed=true]{background:#7a6340!important;color:#fff!important}
-.classical-pdf-zoom,.classical-pdf-total{font:600 12px system-ui,sans-serif;white-space:nowrap;color:#e9e2d7;min-width:46px;text-align:center}
-.classical-pdf-pager{display:flex;gap:5px;align-items:center;border-left:1px solid #70808b;padding-left:10px;margin:0 4px}
-.classical-pdf-number{width:65px!important;min-width:65px!important;max-width:65px!important;height:35px!important;min-height:35px!important;border:1px solid #9c9e9c!important;background:#f8f3e8!important;color:#152f40!important;text-align:center;padding:4px!important;font:600 13px system-ui,sans-serif}
-.classical-pdf-external{margin-left:auto;display:flex;gap:9px;flex-wrap:wrap}
-.classical-pdf-link{display:inline-flex;align-items:center;min-height:34px;padding:6px 8px;border-bottom:1px solid #cbb987!important;color:#f3e4c3!important;font:600 12px system-ui,sans-serif;text-decoration:none}
-.classical-pdf-link:hover{text-decoration:underline;color:white!important}
-.classical-pdf-find{display:flex;gap:8px;margin:12px 0}
-.classical-pdf-find input{flex:1;min-width:0;border:1px solid #b2a58b;background:#fffdf7;color:#243748;padding:10px 12px;font:400 13px system-ui,sans-serif}
-.classical-pdf-find button{color:#fff}
-.classical-pdf-search-results{max-height:240px;overflow:auto;margin:7px 0;font:400 12px/1.6 system-ui,sans-serif}
-.classical-pdf-search-results[aria-busy=true]{opacity:.8}
-.classical-pdf-search-hit{display:block;width:100%;text-align:left;background:#f7f0e2;color:#1e3a4c;border:0;border-bottom:1px solid #c2b39e;padding:10px;cursor:pointer;font:400 12px/1.55 system-ui,sans-serif}
-.classical-pdf-search-hit:hover{background:#e9dcc5}
-.classical-pdf-search-hit mark{background:#f8dd69;color:#202020}
-.classical-pdf-viewport{height:min(76vh,820px);min-height:360px;max-width:100%;overflow:auto;overscroll-behavior:contain;background:#b5b3ae;border:1px solid #a19c91;padding:10px;text-align:center;scrollbar-width:thin}
-.classical-pdf-canvas{max-width:none!important;display:block;margin:0 auto;background:white;box-shadow:0 4px 15px #0005}
-.classical-pdf-status{font:400 12px/1.6 system-ui,sans-serif;margin:7px 0;min-height:20px}
-.classical-native-pdf{width:100%!important;min-height:75vh!important;height:75vh!important}
-#classic-panel:fullscreen{display:flex;flex-direction:column;padding:15px;background:#202a33!important;color:#f8f0e1!important;overflow:hidden}
-#classic-panel:fullscreen .classical-pdf-toolbar{top:0}
-#classic-panel:fullscreen .classical-pdf-viewport{flex:1;min-height:100px;height:auto}
-.classical-ms-switch{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
-.classical-ms-switch label{display:flex;flex-direction:column;gap:7px;font:600 12px/1.5 system-ui,sans-serif;width:100%}
-.classical-ms-switch select{max-width:100%;padding:11px;background:#fffdf8;color:#173448;border:1px solid #a99777}
-.classical-ms-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
-.classical-ms-toolbar .classical-pdf-link{color:#2e4b5c!important;border-color:#b09d77!important}
-.classical-ms-container{height:min(77vh,870px);min-height:420px;border:1px solid #a59d8e;background:#1d2835}
-.classical-ms-frame{width:100%!important;height:100%!important;min-height:0!important;border:0!important}
-.classical-ms-container:fullscreen{height:100vh;max-height:none}
-.classical-ms-container:fullscreen .classical-ms-frame{height:100vh!important}
-.classical-pdf-open{margin:8px 0}
-html[data-theme=dark] .classical-pdf-viewport{background:#161b20;border-color:#8093a2}
-html[data-theme=dark] .classical-pdf-find input{background:#263b4e;color:#fff}
-html[data-theme=dark] .classical-pdf-search-hit{background:#2d495d;color:#f8eeda;border-color:#526b7d}
-html[data-theme=dark] .classical-pdf-search-hit:hover{background:#3a596e}
-html[data-theme=dark] .classical-ms-toolbar .classical-pdf-link{color:#e7d5ab!important}
-@media(max-width:700px){.classical-pdf-toolbar{position:static;padding:8px;gap:4px}.classical-pdf-toolbar .classical-pdf-tool{padding:7px 8px}.classical-pdf-external{margin-left:0;flex-basis:100%}.classical-pdf-viewport{height:60vh;min-height:320px}.classical-ms-container{height:66vh;min-height:360px}}
-@media print{.classical-pdf-toolbar,.classical-pdf-find,.classical-pdf-external,.classical-pdf-search-results,.classical-ms-toolbar{display:none!important}.classical-pdf-viewport{border:0;height:auto;overflow:visible}.classical-pdf-canvas{width:100%!important;height:auto!important}}
-
-.classic-search-via-vitruvia{display:inline-block;margin:8px 0 12px;border-bottom:1px solid #a58c5e;padding:6px 2px;color:#365367;font:600 13px/1.6 system-ui,sans-serif;text-decoration:none}
-.classic-search-via-vitruvia:hover,.classic-search-via-vitruvia:focus-visible{text-decoration:underline;border-color:#bb965a}
-html[data-theme=dark] .classic-search-via-vitruvia{color:#e3d5aa;border-color:#b39d70}
-@media print{.classic-search-via-vitruvia{display:none!important}}
-/* Nuevos visores filológicos, sin cambios en la estética general del sitio. */
-.classic-pdf-version-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:10px 12px;margin:3px 0 12px;border:1px solid var(--line,#a3a3a3);border-radius:4px}
-.classic-pdf-version-toolbar label{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font:600 12px/1.5 system-ui}
-.classic-pdf-version-toolbar select{max-width:min(100%,510px);min-height:37px;border-radius:4px}
-.classic-pdf-version-toolbar .classic-ref{flex:1 1 260px;font:11px/1.5 system-ui;margin:0}
-.classic-double-pdf,.classic-triple-reading{display:grid;gap:12px;align-items:stretch;grid-template-columns:repeat(2,minmax(0,1fr))}
-.classic-triple-reading{grid-template-columns:repeat(3,minmax(0,1fr))}
-.classic-compare-item,.classic-triple-column{min-width:0;padding:10px;border:1px solid #8b9197;border-radius:4px;background:transparent}
-.classic-compare-item h3,.classic-triple-column h3{font:600 13px/1.5 Georgia,serif;margin:0 0 10px}
-.classic-compare-item iframe,.classic-triple-column iframe{display:block;width:100%;height:65vh;min-height:430px;border:1px solid #7a838a;background:#f5f0e8}
-.classic-compare-item a{display:inline-block;margin-top:8px;font:12px/1.5 system-ui}
-.classic-triple-column select{display:block;margin:0 0 10px;max-width:100%;width:100%;min-height:34px}
-@media(max-width:1050px){.classic-triple-reading{grid-template-columns:1fr}.classic-triple-column iframe{height:50vh;min-height:350px}}
-@media(max-width:680px){.classic-double-pdf{grid-template-columns:1fr}.classic-compare-item iframe{height:60vh;min-height:360px}}
-@media print{.classic-pdf-version-toolbar select{display:none}.classic-double-pdf,.classic-triple-reading{grid-template-columns:1fr}}
-
-/* Scholarly result overview for ANY author or topic with multiple catalogue records. */
-.classic-bibliographic-kicker{font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.14em;color:#86704d;margin:0 0 9px}
-.classic-bibliographic-count{font:700 13px/1.7 system-ui,sans-serif;border-top:1px solid #c8bda7;padding-top:11px}
-.classic-bibliographic-note{font:14px/1.8 system-ui,sans-serif;max-width:75ch;margin:15px 0}
-.classic-bibliographic-list{list-style:decimal;padding:0 0 0 25px;margin:20px 0;max-height:75vh;overflow:auto;scrollbar-width:thin;border-top:1px solid #b8a98e}
-.classic-bibliographic-entry{padding:20px 12px 21px;border-bottom:1px solid #c8baa0;overflow-wrap:anywhere}
-.classic-bibliographic-entry h3{font:400 clamp(21px,2vw,27px)/1.32 Georgia,serif;margin:0 0 8px}
-.classic-bibliographic-entry p{font:13px/1.7 system-ui,sans-serif;margin:0 0 9px}
-.classic-bibliographic-entry .classic-item-status{margin:4px 9px 9px 0}
-.classic-bibliographic-open{display:inline-block;padding:9px 14px;border:1px solid #786c5c;border-radius:5px;background:#274156;color:white;cursor:pointer;font:600 12px/1.4 system-ui,sans-serif}
-.classic-bibliographic-open:hover,.classic-bibliographic-open:focus-visible{background:#44627a;outline:2px solid #af966c;outline-offset:2px}
-html[data-theme=dark] .classic-bibliographic-kicker{color:#e3c99c}
-html[data-theme=dark] .classic-bibliographic-count,html[data-theme=dark] .classic-bibliographic-list,html[data-theme=dark] .classic-bibliographic-entry{border-color:#667d8f}
-html[data-theme=dark] .classic-bibliographic-open{background:#e4ddcf;color:#1c3040;border-color:#b5a88e}
-html[data-theme=dark] .classic-bibliographic-open:hover{background:#f3ead6}
-@media(max-width:900px){.classic-bibliographic-list{max-height:none}}
-@media print{.classic-bibliographic-open{display:none}}
-
-
-/* Local facsimiles are readable within the bibliographic catalogue. */
-.classical-local-manuscript-feature{
- display:flex;align-items:flex-start;flex-wrap:wrap;gap:10px 12px;
- border:1px solid #b79b6e;border-left:4px solid #b79b6e;
- padding:18px 19px;margin:16px 0;background:#f5eddc;color:#223340;
-}
-.classical-local-manuscript-feature h3{font:400 clamp(19px,2vw,25px)/1.3 Georgia,serif;flex-basis:100%;margin:0;color:#243f54}
-.classical-local-manuscript-feature p{flex-basis:100%;margin:0 0 3px;font:13px/1.7 system-ui,sans-serif}
-.classical-local-manuscript-feature a,.classical-local-manuscript-cta,
-.classical-local-manuscript-toolbar a{
- display:inline-block;padding:10px 14px;border-radius:5px;
- font:600 12px/1.5 system-ui,sans-serif;cursor:pointer;text-decoration:none;
- border:1px solid #7d838a;background:#24445b;color:#fff;
-}
-.classical-local-manuscript-feature a:hover,.classical-local-manuscript-cta:hover,
-.classical-local-manuscript-toolbar a:hover{background:#42647e;color:white}
-.classical-local-manuscript-feature :is(button,a):focus-visible,
-.classical-local-manuscript-toolbar a:focus-visible{outline:3px solid #bd9d57;outline-offset:3px}
-.classical-local-manuscript-note{
- font:13px/1.7 system-ui,sans-serif;padding:12px;margin:0;
- border:1px solid #a99b86;background:#eee5d6;color:#273e4e;
-}
-.classical-local-manuscript-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
-.classical-local-manuscript-iframe{
- display:block;width:100%;height:74vh;min-height:500px;max-width:100%;
- border:1px solid #7d7e80;background:#f4f1eb;
-}
-html[data-theme=dark] .classical-local-manuscript-feature{
- background:#30495c;color:#f2ead9;border-color:#c4ab7e;
-}
-html[data-theme=dark] .classical-local-manuscript-feature h3{color:#f5ebdc}
-html[data-theme=dark] .classical-local-manuscript-feature a,
-html[data-theme=dark] .classical-local-manuscript-cta,
-html[data-theme=dark] .classical-local-manuscript-toolbar a{
- background:#f2e7d2;color:#27394a;border-color:#c3ac84;
-}
-html[data-theme=dark] .classical-local-manuscript-note{
- background:#273e50;color:#f2ede3;border-color:#64788b;
-}
-@media(max-width:750px){.classical-local-manuscript-iframe{height:68vh;min-height:400px}.classical-local-manuscript-feature{padding:13px}}
-@media print{.classical-local-manuscript-cta,.classical-local-manuscript-iframe{display:none!important}}
-
-
-/* Colores propios de los visores, sin cambiar la apariencia del catálogo. */
-.classic-main{--classic-user-view-bg:#fbf8f0;--classic-user-view-ink:#253b49;--classic-user-view-border:#b8ac99}
-.classic-view-colorbar{display:flex;align-items:center;gap:9px 13px;flex-wrap:wrap;margin:13px 0 20px;padding:12px 16px;border:1px solid #b5a482;background:#f2ebdf;color:#203647;font:600 12px/1.5 system-ui,sans-serif}
-.classic-view-colorbar label{display:flex;align-items:center;gap:8px}
-.classic-view-colorbar select{min-height:36px;border:1px solid #8c8e8c;background:#fff;color:#233849;padding:5px 9px}
-.classic-view-colorbar input[type=color]{width:38px;height:36px;padding:2px;background:#fff;border:1px solid #8d8d8d;cursor:pointer}
-.classic-view-colorbar button{background:#293f50;color:#fff;border:1px solid #847454;padding:8px 12px;min-height:35px;cursor:pointer}
-.classic-view-colorbar .classic-view-note{flex:1 1 320px;margin:0;font:400 11px/1.5 system-ui,sans-serif}
-html[data-theme=dark] .classic-view-colorbar{background:#263d50;color:#f0e9dd;border-color:#647587}
-.classic-main.classic-user-colored .classic-viewer,
-.classic-main.classic-user-colored .classic-read-columns article,
-.classic-main.classic-user-colored .classic-compare-item,
-.classic-main.classic-user-colored .classic-triple-column,
-.classic-main.classic-user-colored .triple-pane,
-.classic-main.classic-user-colored .triple-ms,
-.classic-main.classic-user-colored .classical-pdf-viewport,
-.classic-main.classic-user-colored .classical-ms-container,
-.classic-main.classic-user-colored .classical-local-manuscript-iframe{
- background:var(--classic-user-view-bg)!important;
- color:var(--classic-user-view-ink)!important;
- border-color:var(--classic-user-view-border)!important;
-}
-.classic-main.classic-user-colored .classic-read-columns article :is(h4,p,span,strong,em),
-.classic-main.classic-user-colored .classic-viewer :is(h1,h2,h3,h4,p,span,blockquote,pre,code){
- color:var(--classic-user-view-ink)!important;
-}
-.classic-main.classic-user-colored .classic-read-columns h4{color:var(--classic-user-view-ink)!important;opacity:.8}
-.classic-main.classic-user-colored .classic-read-columns article a{color:var(--classic-user-view-ink)!important;text-decoration:underline}
-.classic-main.classic-user-colored .classical-pdf-canvas.classic-page-inverted{filter:invert(1) hue-rotate(180deg)}
-@media(max-width:700px){.classic-view-colorbar{gap:9px;padding:10px}.classic-view-colorbar label{flex:1 1 140px}}
-@media print{.classic-view-colorbar{display:none!important}}
-
-
-/* Shared codicological dossier: evidence first, genealogical uncertainty explicit. */
-.classic-transmission{margin:20px 0 24px;padding:20px;border:1px solid #a8a099;border-left:5px solid #8e6b35;background:#fbf8f0;color:#283d4b;scroll-margin-top:65px}
-.classic-transmission h3{font-size:clamp(19px,2.2vw,28px);margin:0 0 12px}
-.classic-transmission h4{font:600 17px/1.4 Georgia,serif;margin:20px 0 9px}
-.classic-transmission-method{font-size:13px;color:#5a5960;line-height:1.55}
-.classic-transmission-fields{display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr);gap:5px 15px;margin:14px 0;font-size:13px}
-.classic-transmission-fields dt{font-weight:700;color:#46505e}
-.classic-transmission-fields dd{margin:0;overflow-wrap:anywhere}
-.classic-earliest-witness{margin:22px 0;padding:18px;background:#e9dec8;border:2px solid #987845}
-.classic-earliest-title{display:block;font:700 15px/1.45 system-ui,sans-serif;letter-spacing:.025em;color:#312e2b}
-.classic-earliest-witness p{font-size:16px;line-height:1.5;margin:8px 0 13px}
-.classic-oldest-link{display:inline-block;font:700 14px system-ui,sans-serif;background:#25465b;color:white!important;text-decoration:none;padding:10px 14px;border-radius:4px;margin-bottom:8px}
-.classic-earliest-witness small{display:block;font-size:12px;color:#4b4641;line-height:1.45}
-.classic-witness-tree{padding:13px 18px;border:1px solid #c8beae;background:#fffdf8}
-.classic-witness-root{display:inline-block;border:1px solid #827660;background:#eae4d9;padding:9px 12px;font:650 14px system-ui,sans-serif}
-.classic-witness-branches{list-style:none;margin:6px 0 0 18px;padding:8px 0 0 18px;border-left:2px solid #ab9678}
-.classic-witness-branches li{position:relative;margin:0 0 12px;padding:9px 10px;background:#f2eee6;border:1px solid #dad0bd;font-size:13px}
-.classic-witness-branches li:before{content:"";position:absolute;top:18px;left:-18px;width:18px;border-top:2px solid #ab9678}
-.classic-witness-branches li small{display:block;font-size:11px;color:#595b5f;margin-top:4px}
-.classic-transmission-history{font-size:13px;line-height:1.6}
-.classic-transmission a:focus-visible{outline:3px solid #c28c45;outline-offset:3px}
-@media(max-width:700px){.classic-transmission{padding:14px}.classic-transmission-fields{grid-template-columns:1fr;gap:3px}.classic-transmission-fields dd{margin:0 0 9px}.classic-earliest-witness{padding:14px}}
-
-/* Reading mode: use the whole Bibliotheca width, not the catalogue's right-hand column.
-   The catalogue remains accessible by the explicit show/hide control. */
-.classic-main:has(.classic-layout.classic-study-wide){max-width:none!important;width:100%!important;padding-left:clamp(12px,2vw,32px)!important;padding-right:clamp(12px,2vw,32px)!important}
-.classic-layout.classic-study-wide{display:block!important;width:100%!important;max-width:none!important}
-.classic-layout.classic-study-wide>aside{display:none!important}
-.classic-layout.classic-study-wide>.classic-detail{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;grid-column:1/-1!important;padding:clamp(12px,2vw,24px)}
-.classic-layout.classic-study-wide .classic-viewer,.classic-layout.classic-study-wide .classic-study-viewer{position:static!important;left:auto!important;right:auto!important;transform:none!important;max-width:none!important;width:100%!important;margin-left:0!important;margin-right:0!important}
-.classic-layout.classic-study-wide .classic-compare-panes{width:100%!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vw,22px)}
-.classic-layout.classic-study-wide .classic-inline-text,.classic-layout.classic-study-wide .classic-fast-text-pane{min-width:0!important;max-width:none!important}
-.classic-study-index-toggle{display:inline-flex;align-items:center;border:1px solid #a98d62;background:#243f53;color:#fff;padding:10px 14px;border-radius:4px;cursor:pointer;margin:8px 0 14px;font:600 13px system-ui,sans-serif}
-.classic-layout.classic-study-wide.classic-study-show-index{display:grid!important;grid-template-columns:minmax(220px,300px) minmax(0,1fr)!important;gap:16px}
-.classic-layout.classic-study-wide.classic-study-show-index>aside{display:block!important;min-width:0}
-.classic-layout.classic-study-wide.classic-study-show-index>.classic-detail{grid-column:2!important}
-@media(max-width:900px){
- .classic-layout.classic-study-wide .classic-compare-panes{grid-template-columns:1fr}
- .classic-layout.classic-study-wide.classic-study-show-index{display:block!important}
- .classic-layout.classic-study-wide.classic-study-show-index>aside{display:block!important;margin-bottom:14px}
-}
-
-/* Reader surfaces default to black, irrespective of the site's light/dark theme.
-   Individual personal customization on text content has priority via inline style. */
-.classic-main .classic-fast-text-pane,
-html[data-theme=dark] .classic-main .classic-fast-text-pane,
-.classic-main .classic-inline-text,
-.classic-main .classic-read-columns article,
-html[data-theme=dark] .classic-main .classic-read-columns article{
- background:#000!important;color:#f3f3f3!important;border-color:#756d62!important;
-}
-.classic-main .classic-fast-text-pane :is(h3,p,small),
-html[data-theme=dark] .classic-main .classic-fast-text-pane :is(h3,p,small){color:inherit}
-.classic-main .classic-study-tools,
-.classic-main .classic-study-tools-help{background:#111;color:#f3f3f3}
-.classic-main .classic-fast-text-pane input[type=search]{background:#141414;color:#fff;border:1px solid #a38b61}
-.classic-main .classic-fast-text-pane .classic-study-query-hit{background:#a8a8ad!important;color:#000!important}
-.classic-main .classic-fast-text-pane ::selection{background:#ffcf57;color:#111}
-</style>
-<link rel="stylesheet" href="assets/bibliotheca-monochrome.css?v=20261106-unified-index-v2">
-<link rel="stylesheet" href="assets/bibliotheca-unified.css?v=20261107-1">
-<style media="screen">
-/* This must follow monochrome.css: its high-specificity theme rules otherwise restore grey. */
-html body .classic-main .classic-read-columns article,
-html[data-theme] body .classic-main .classic-read-columns article,
-html body .classic-main .classic-fast-text-pane,
-html[data-theme] body .classic-main .classic-fast-text-pane{
-  background:#000!important;color:#f3f3f3!important;border-color:#565659!important;
-}
-html body .classic-main .classic-fast-text-pane .classic-study-query-hit{
-  background:#a8a8ad!important;color:#0c0c0c!important;
-}
-</style>
-<link rel="stylesheet" href="assets/vitruvia-paragraph-magnifier.css?v=20261104-paragraph-loupe-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
-<script defer src="assets/site-bar.js?v=20261107-academic-v4"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
-<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<meta name="theme-color" content="#0c0c0d">
+<link rel="stylesheet" href="assets/bibliotheca-simple.css?v=20261108-minimal-v2">
 </head><body>
-<main class="classic-main"><p class="classic-reference" style="margin:12px 0;display:flex;flex-wrap:wrap;gap:10px"><a href="cobertura-traducciones-clasicas.html" style="display:inline-block;padding:9px 14px;border:1px solid #a78d67">Cobertura de las 222 obras · originales y traducciones indexadas</a><a href="laboratorio-escrituras.html" title="Griego politónico, variantes de grafía y normalización filológica" style="display:inline-block;margin:5px 8px;padding:8px 12px;border:1px solid #aa9778;border-radius:8px;color:inherit;text-decoration:none">Laboratorio de escrituras</a><a href="index-locorum.html" style="display:inline-block;padding:9px 14px;border:1px solid #a78d67">Index locorum · Concordancias semánticas</a></p>
-<nav class="classic-menu"><a href="index.html" data-bi="nav-home">← Vitruvius Digital Library</a><a href="ediciones-historicas.html" data-bi="nav-editions">Ediciones históricas</a><a href="index-codicum.html">Index codicum</a><a href="auditoria-textos-clasicos.html">Cobertura de textos</a><a href="estado-ediciones-clasicas.html">Estado por obra · originales y traducciones</a><a href="buscador-documental-clasicos.html">Buscar dentro de los DOCX clásicos</a><a href="buscador-facsimiles-clasicos.html">OCR de facsímiles clásicos</a><a href="#tradicion-textual">Historia del texto y códices</a><a href="vitruvia.html">Buscador Vitruvia</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="lector-clasico.html">Lector clásico · códice y traducción</a><a href="docencia-clasica.html">Aula interdisciplinaria</a><a href="como-citar.html" data-bi="nav-cite">Cómo citar</a><a href="https://scaife.perseus.org/library/" rel="noopener noreferrer" target="_blank">Scaife · Perseus ↗</a><label class="classic-top-language" for="classic-ui-language"><span aria-hidden="true">🌐</span><span data-bi="lang-label">Idiomas</span><select id="classic-ui-language" aria-label="Idioma de la interfaz · ES / EN / FR" title="Idioma de la interfaz (no cambia la lengua de los originales)"><option value="es">ES · Español</option><option value="en">EN · English</option><option value="fr">FR · Français</option></select></label></nav>
-<details class="classic-sigla-guide" style="font:13px/1.65 system-ui,sans-serif;margin:12px auto 20px;max-width:1100px;border-top:1px solid var(--line,#999);padding:10px 0">
-<summary style="cursor:pointer">Glosario de siglas · manuscritos y ediciones históricas</summary>
-<p>Las siglas identifican testimonios y ediciones en una referencia concreta; verificar siempre la signatura y el aparato del autor consultado. <abbr title="Harley MS 2767, British Library: testimonio manuscrito">H</abbr> · <abbr title="Sigla de testimonio manuscrito en determinados aparatos; confirmar signatura en cada edición">G</abbr> · <abbr title="Sigla de testimonio manuscrito según aparato consultado; no es universal">E</abbr> · <abbr title="Sigla editorial de manuscrito: resolver contra el índice de códices">S</abbr>. Impresos: <abbr title="Giovanni Sulpizio, edición príncipe, ca. 1486–1487">Sulp.</abbr> · <abbr title="Fra Giovanni Giocondo, edición de 1511">Iuc.</abbr> · <abbr title="Cesare Cesariano, edición de 1521">Caes.</abbr> · <abbr title="Daniele Barbaro, edición de 1567">Barb.</abbr>.</p>
-<p><a href="index-codicum.html">Índice de códices y testimonios</a> · <a href="metodologia.html">Método de atribución y cotejo</a></p>
-</details><header class="classic-head"><div class="latin">BIBLIOTHECA GRAECA ET LATINA · REPERTORIVM ANTIQVITATIS</div>
-<h1 data-bi="page-title">Biblioteca bibliográfica griega y latina</h1><p data-bi="intro">Repertorio académico de obras griegas y latinas, desde la época arcaica hasta la Antigüedad tardía. Consulta textos originales, traducciones documentadas y testimonios manuscritos. El estado de cada ficha indica qué puede leerse aquí y qué requiere consultar una institución externa.</p></header>
-<div class="classic-note"><strong data-bi="note-title">Nota filológica.</strong> <span data-bi="note-body">Una obra compuesta en el siglo I no implica que conservemos un manuscrito de ese siglo. Las copias suelen ser medievales o posteriores. Los vínculos a Perseus, Scaife, Gallica e Internet Archive son repertorios de consulta; no equivalen a identificar una edición, una traducción o un PDF concreto. Solo se activa un visor de facsímil cuando contamos con un testimonio identificado. No se mostrarán fichas vacías ni pestañas PDF sin un archivo realmente disponible. El repertorio de trabajo no equivale al inventario de obras publicadas.</span></div>
-<div class="classic-controls" role="search"><label class="classic-search-wrap"><span data-bi="search-label">Buscar una palabra o frase en todos los libros indexados</span><input id="classic-query" type="search" placeholder="Palabra o frase en griego, latín, castellano, inglés o francés…" aria-label="Búsqueda literal en textos indexados" enterkeyhint="search" autocomplete="off"><button type="button" id="classic-clear" class="classic-clear" aria-label="Borrar búsqueda" title="Borrar búsqueda" hidden>×</button></label>
-<label><span data-bi="original-label">Idioma del original</span><select id="classic-language"><option value="" data-bi="all-language">Griego y latín</option><option value="la" data-bi="latin">Latín</option><option value="grc" data-bi="greek">Griego antiguo</option></select></label>
-<label><span data-bi="genre-label">Área de estudio</span><select id="classic-genre"><option value="" data-bi="all-genres">Todas las áreas</option></select></label><label><span data-bi="availability-label">Disponibilidad de lectura</span><select id="classic-availability"><option value="" data-bi="availability-all">Todas las obras catalogadas</option><option value="local" data-bi="availability-local">Lectura en Vitruvia</option><option value="source" data-bi="availability-source">Fuente externa identificada</option><option value="catalogue" data-bi="availability-catalogue">Localización pendiente</option></select></label><label><span data-bi="period-label">Época de composición</span><select id="classic-period"><option value="" data-bi="period-all">Toda la Antigüedad</option><option value="focus" data-bi="period-focus">Siglos II–I a. C. / I–II d. C. (selección)</option></select></label><label class="bibliotheca-sort"><span data-bi="sort-label">Orden de las obras</span><select id="classic-sort" aria-label="Ordenar catálogo de obras"><option value="author" data-bi="sort-author">Alfabético A–Z</option><option value="composition" data-bi="sort-composition" selected>Antigüedad de la obra</option><option value="relevance" data-bi="sort-relevance" hidden disabled>Pertinencia y disponibilidad</option><option value="witness" data-bi="sort-witness" hidden disabled>Testimonio manuscrito</option></select></label>
-</div>
-<p id="classic-codices-hint" class="classic-ref" style="margin:10px 0 14px"><strong>Cómo buscar códices:</strong> escriba la signatura (p. ej. «Harley MS 2767»), el nombre del autor o el título de la obra. Cuando la coincidencia procede de un manuscrito identificado, el resultado señala su signatura y biblioteca. La ordenación por antigüedad se refiere a la <em>copia conservada</em>, no a la fecha de composición. Para buscar únicamente entre fichas de manuscritos, consulte el <a href="index-codicum.html">Index codicum</a>.</p>
-<p id="classic-witness-count" class="classic-ref" role="status">Cargando testimonios codicológicos…</p><p id="classic-count" role="status" aria-live="polite">Cargando el repertorio académico…</p><p class="classic-note"><strong data-bi="available-title">Obras y estados editoriales.</strong> <strong data-bi="read-local-label">Lectura en Vitruvia:</strong> <span data-bi="read-local-body">texto o PDF realmente alojado y disponible aquí.</span> <strong data-bi="identified-label">Fuente identificada:</strong> <span data-bi="identified-body">vínculo a un recurso institucional externo que requiere lectura en origen.</span> <strong data-bi="pending-label">Localización pendiente:</strong> <span data-bi="pending-body">obra bibliográficamente identificada con búsquedas en repertorios como Perseus, Scaife, Wikisource y bibliotecas.</span> <span data-bi="academic-warning">Ninguna ficha pendiente se presenta como un manuscrito digitalizado, una traducción cotejada ni un PDF disponible. Las primeras ediciones completas incluyen las V514, V554, V297 y Krohn 1912.</span></p>
-<div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
-<section class="classic-detail" id="classic-detail"><p>Selecciona una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
-<footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261107-shared-multilingual-loci-v8"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-black-migration-v5"></script>
-<script defer src="assets/bibliotheca-graeca-latina.js?v=20261108-3ui-v1"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261107-unlimited-loci-v1" defer></script><script src="assets/bibliotheca-unified-search.js?v=20261108-3ui-v1" defer></script>
-<script>
-/* Local reader preferences.  No cross-origin PDF or IIIF content is modified. */
-(()=>{'use strict';
- const root=document.querySelector('.classic-main'),head=root?.querySelector('.classic-head');
- if(!root||!head)return;
- const wrapper=document.createElement('section');wrapper.className='classic-view-colorbar';
- wrapper.setAttribute('aria-label','Colores de los visores de lectura');
- wrapper.innerHTML='<strong>Colores del visor</strong>'+
-  '<label>Combinación <select id="classic-view-preset" aria-label="Combinación de colores">'+
-  '<option value="original">Original</option><option value="black">Negro · blanco</option>'+
-  '<option value="ivory">Marfil · negro</option><option value="sepia">Sepia</option>'+
-  '<option value="custom">Personalizado</option></select></label>'+
-  '<label>Fondo <input id="classic-view-bg" type="color" value="#000000" aria-label="Color de fondo del visor"></label>'+
-  '<label>Texto <input id="classic-view-fg" type="color" value="#ffffff" aria-label="Color del texto del visor"></label>'+
-  '<button type="button" id="classic-view-reset">Restablecer</button>'+
-  '<p class="classic-view-note">Se aplica a los textos editables y al fondo del visor. En PDF o facsímiles escaneados usa «Invertir» para la página; los visores externos conservan sus propios colores.</p>';
- head.after(wrapper);
- const preset=wrapper.querySelector('#classic-view-preset'),bg=wrapper.querySelector('#classic-view-bg'),fg=wrapper.querySelector('#classic-view-fg');
- const palettes={original:['#fbf8f0','#253b49'],black:['#000000','#ffffff'],ivory:['#fffff0','#171717'],sepia:['#e8dcc6','#382b21']};
- const key='vitruvius.classics.reader.palette.v1';
- function valid(x){return /^#[0-9a-f]{6}$/i.test(x)}
- function contrast(x,y){const lum=h=>{const rgb=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4));return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722};const a=lum(x),b=lum(y);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)}
- function apply(mode,background,foreground){
-  if(!valid(background)||!valid(foreground))return;
-  preset.value=mode in palettes?mode:'custom';
-  bg.value=background;fg.value=foreground;
-  root.classList.toggle('classic-user-colored',preset.value!=='original');
-  root.style.setProperty('--classic-user-view-bg',background);
-  root.style.setProperty('--classic-user-view-ink',foreground);
-  const note=wrapper.querySelector('.classic-view-note');
-  if(contrast(background,foreground)<4.5)note.textContent='Aviso: estos colores tienen poco contraste. Para leer mejor, elige tonos más diferentes.';
-  else note.textContent='Textos y fondos de visores propios. Los PDF y manuscritos escaneados pueden invertirse con su botón de lectura; los visores externos no permiten recolorear sus páginas.';
-  try{localStorage.setItem(key,JSON.stringify({mode:preset.value,bg:background,fg:foreground}))}catch{}
- }
- preset.addEventListener('change',()=>{const p=palettes[preset.value];if(p)apply(preset.value,...p)});
- for(const el of [bg,fg])el.addEventListener('input',()=>apply('custom',bg.value,fg.value));
- wrapper.querySelector('#classic-view-reset').addEventListener('click',()=>{try{localStorage.removeItem(key)}catch{};apply('black',...palettes.black)});
- let stored=null;try{stored=JSON.parse(localStorage.getItem(key)||'null')}catch{}
- if(stored&&valid(stored.bg)&&valid(stored.fg)&&stored.mode!=='original')apply(stored.mode,stored.bg,stored.fg);
- else apply('black',...palettes.black);
-})();
-</script>
+<header class="minimal-bar">
+ <div class="minimal-bar-inner">
+  <a class="minimal-brand" href="index.html">VITRUVIUS DIGITAL LIBRARY</a>
+  <nav class="minimal-links" aria-label="Navegación académica">
+   <a href="vitruvia.html">Vitruvia</a>
+   <a href="vitruvia-lexicon.html">Lexicon</a>
+  </nav>
+  <label class="language-label" for="classic-ui-language">
+   <span data-text="language">Idioma</span>
+   <select id="classic-ui-language" aria-label="Idioma de la interfaz" title="Idioma de interfaz, igual que Lexicon">
+    <option value="es">ES</option>
+    <option value="en">EN</option>
+    <option value="fr">FR</option>
+   </select>
+  </label>
+ </div>
+</header>
+<main>
+ <p class="eyebrow">BIBLIOTHECA GRAECA ET LATINA</p>
+ <h1>Bibliotheca Graeca et Latina</h1>
+ <p class="intro" id="classic-intro">Busca una palabra o frase en los textos originales y traducciones indexados. Selecciona una obra o busca en todas.</p>
+ <form id="classic-form" role="search" autocomplete="off">
+  <div class="search-form">
+   <input id="classic-query" name="q" type="search" spellcheck="false"
+    aria-label="Buscar palabra o frase" placeholder="Escribí una palabra o frase, por ejemplo domus…"
+    maxlength="180" enterkeyhint="search" required>
+   <button type="submit" id="classic-submit" data-text="search">Buscar</button>
+  </div>
+  <div class="search-options">
+   <label class="work-label" for="classic-work"><span data-text="workLabel">Obra</span>
+    <select id="classic-work" aria-label="Seleccionar una obra o todas las obras">
+     <option value="">Todas las obras</option>
+    </select>
+   </label>
+   <a href="vitruvia-lexicon.html" id="classic-lexicon" class="lexicon-link" target="_blank"
+    rel="noopener noreferrer">Buscar en Lexicon</a>
+  </div>
+ </form>
+ <p id="classic-coverage" role="status" aria-live="polite">Cargando catálogo e índices…</p>
+ <section id="classic-results" hidden aria-label="Resultados de concordancias">
+  <h2 id="classic-result-title" data-text="results">Resultados</h2>
+  <p id="classic-summary" role="status" aria-live="polite"></p>
+  <ol id="classic-result-list"></ol>
+  <p id="classic-unindexed"></p>
+ </section>
+ <p class="footer-note">Perseus Digital Library · Textos indexados de obras clásicas. La fecha ordena la composición estimada, no la antigüedad de los manuscritos conservados. Los originales y traducciones no se consideran alineados automáticamente.</p>
+</main>
+<script defer src="assets/classics-corpus-search.js?v=20261108-full-paragraphs-v1"></script>
+<script defer src="assets/bibliotheca-simple.js?v=20261108-minimal-v1"></script>
 </body></html>
