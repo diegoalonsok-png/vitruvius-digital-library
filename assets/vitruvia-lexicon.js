@@ -311,6 +311,33 @@ async function run(push=true){
   if(/^(pie|ie|ide):/i.test(q))return renderPIE(q.replace(/^[^:]+:\s*/,""));
   if(/^(concepto|concept|sentido):/i.test(q))return renderConcept(q.replace(/^[^:]+:\s*/,""));
   if(/^(√|raiz_he:|raíz_he:)/i.test(q))return renderHebrewRoot(q.replace(/^(√|raiz_he:|raíz_he:)\s*/i,""));
+  /* Remisión ortográfica: eclesia/ekklesia no son lemas distintos de
+     gr. ἐκκλησία y lat. ecclesia. Mantener la grafía consultada visible. */
+  if(S.mode==="palabra"&&S.lang==="auto"&&["eclesia","ekklesia","ekklesía","ekklesia"].includes(fold(q))){
+   const entry=(S.etym?.entries||[]).find(e=>e.id==="ecclesia"&&e.l==="grc");
+   if(entry){
+    const box=$("#lx-entry");box.hidden=false;
+    box.append(el("header",{class:"lx-entry-head"},
+     el("div",{class:"article-kicker"},"LEXICON · REMISIÓN ORTOGRÁFICA"),
+     el("h2",{},"eclesia → ἐκκλησία / ecclesia"),
+     el("p",{class:"article-byline"},"Grafía consultada: «"+q+"». Remite al griego ἐκκλησία (ekklēsía) y al préstamo latino ecclesia.")));
+    box.append(etymCard(entry));
+    const actions=el("div",{class:"actions"});
+    for(const [label,word,langCode] of [
+     ["Buscar ἐκκλησία en textos griegos","ἐκκλησία","grc"],
+     ["Buscar ecclesia en textos latinos","ecclesia","la"],
+     ["Examinar todas las formas del lema griego","@ἐκκλησία","grc"]
+    ]){
+     actions.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{
+      $("#lx-q").value=word;S.lang=langCode;$("#lx-lang").value=langCode;
+      S.mode=word.startsWith("@")?"lema":"palabra";renderTabs();run();
+     }},label));
+    }
+    box.append(actions);
+    setState("Remisión eclesia: ficha editorial documentada de ἐκκλησία; consulte las concordancias griegas y latinas por separado. Una forma de consulta no implica ocurrencias literales.");
+    return;
+   }
+  }
   if(S.mode==="sententiae")return renderSententiae(q);
   if(S.mode==="etimologia")return renderEtymSearch(q);
   if(["es","en","fr","de"].includes(S.lang))return renderModernWord(q,S.lang);
