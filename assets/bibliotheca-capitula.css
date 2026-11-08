@@ -1,0 +1,35 @@
+:root{color-scheme:dark;--bg:#0d0d0e;--ink:#f1f1f1;--muted:#aaa;--line:#383839;--panel:#141414}
+*{box-sizing:border-box}html,body{background:var(--bg);color:var(--ink)}body{margin:0;font:14px/1.65 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#dfdfdf;text-decoration-color:#777;text-underline-offset:4px}a:hover{color:#fff}
+button,select{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid #b4b4b5;outline-offset:2px}
+.shell{width:min(1440px,calc(100% - 36px));margin:auto;padding-bottom:60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 0;border-bottom:1px solid var(--line)}
+.brand{text-decoration:none;font:20px/1.2 "Cardo",Georgia,serif;letter-spacing:.05em}.brand span{color:#999}.links{display:flex;gap:18px;flex-wrap:wrap;font-size:12px}
+.hero{padding:38px 0 27px;border-bottom:1px solid var(--line)}
+.hero small{color:#aaa;font-size:10px;letter-spacing:.18em}
+h1{font:400 clamp(33px,5vw,60px)/1.12 "Gentium Book Plus","Cardo",Georgia,serif;margin:9px 0}
+.hero p{color:#aaa;max-width:840px;font-size:14px;margin:0}
+.toolbar{padding:20px 0 14px}.toolbar label,.panehead label{display:flex;align-items:center;gap:10px;font-size:12px;color:#c4c4c5}
+.toolbar>label{justify-content:flex-start;max-width:900px}.toolbar>label select{flex:1}
+.versionrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:15px 0}
+.versionrow label{min-width:0;display:flex;align-items:stretch;flex-direction:column;gap:6px}
+select,button{background:#202021;border:1px solid #414141;border-radius:4px;color:#e9e9e9;padding:10px 12px;min-height:39px;max-width:100%}
+button:hover:not(:disabled),select:hover:not(:disabled){border-color:#777;background:#2c2c2e}
+button:disabled,select:disabled{opacity:.48;cursor:not-allowed}
+.chapterbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0;border-top:1px solid #333}
+.chapterbar[hidden]{display:none}.chapterbar label{flex:1;min-width:160px}.chapterbar select{flex:1}
+#status{color:#c8c8c8;font-size:13px;min-height:22px;margin:10px 0}
+.panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.pane{min-width:0;border:1px solid var(--line);background:#080808}
+.panehead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);background:#171717;flex-wrap:wrap}
+.panehead strong{font:400 18px/1.3 "Cardo",Georgia,serif}.panehead label{flex:1;max-width:290px;justify-content:flex-end}
+.panehead select{width:min(200px,100%)}
+.provenance{color:#aaa;padding:10px 16px;border-bottom:1px solid #303030;font-size:11px;overflow-wrap:anywhere}
+.passages{min-height:320px;max-height:76vh;overflow:auto;padding:19px 22px;font:400 clamp(17px,1.5vw,21px)/1.82 "Gentium Book Plus","Cardo",Georgia,serif;white-space:normal;overflow-wrap:anywhere;scrollbar-color:#666 #111}
+.passages p{margin:0 0 24px}.passages .locus{display:block;font:11px/1.4 Arial,Helvetica,sans-serif;color:#b5b5b5;margin-bottom:7px;letter-spacing:.02em}
+.passages p[lang=grc]{font-family:"Gentium Book Plus","Cardo",Georgia,serif}.passages p[lang=he]{font-family:"Noto Serif Hebrew",Georgia,serif;direction:rtl}
+.method{max-width:1050px;color:#aaa;margin:22px 0;border-top:1px solid #333;padding-top:15px;font-size:12px}
+footer{border-top:1px solid #333;margin-top:28px;padding-top:15px;font-size:12px;color:#888}
+@media(max-width:760px){.shell{width:calc(100% - 22px)}.top{padding:14px 0}.hero{padding:30px 0 20px}.panes,.versionrow{grid-template-columns:1fr}.passages{max-height:55vh;min-height:220px;padding:15px}.toolbar>label{flex-wrap:wrap}.chapterbar{gap:8px}.chapterbar label{order:-1;flex-basis:100%}.panehead{padding:10px}}
+@media print{html,body,.pane,.panehead{background:#fff!important;color:#111!important}nav,.toolbar,.method,footer{display:none!important}.passages{max-height:none;overflow:visible}.panes{gap:9px}.provenance,.passages .locus{color:#333!important}}
