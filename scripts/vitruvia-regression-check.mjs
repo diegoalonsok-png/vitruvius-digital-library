@@ -88,8 +88,10 @@ assert.ok(corpus.includes("completeMatches(p.text,q)"),
  "Corpus engine must count all phrase/word occurrences");
 assert.ok(!bibliothecaHTML.includes("classics-study-tools.js")&&!bibliothecaHTML.includes("<iframe"),
  "No reader control or embedded viewer is allowed in the simplified Bibliotheca");
-assert.equal((bibliothecaHTML.match(/data-lang="(?:es|en|fr)"/g)||[]).length,3,
- "The three UI languages ES EN FR must match Lexicon");
+assert.equal((bibliothecaHTML.match(/id="language-toggle"/g)||[]).length,1,
+ "Bibliotheca must expose exactly one working ES/EN/FR language switch");
+assert.ok(classical.includes('es:"en",en:"fr",fr:"es"'),
+ "The language switch must translate the interface in the three supported languages");
 const search=sourceFile("assets/vitruvia-search.js");
 assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
 assert.ok(search.includes("window.VitruviaEntityResolver?.subject(topicQuery(q))"),"Universal subject not connected");
