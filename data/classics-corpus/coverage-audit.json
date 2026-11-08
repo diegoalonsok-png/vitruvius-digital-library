@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 110,
+    "indexedTextVersions": 111,
     "indexedDistinctWorks": 74,
     "manuscriptWitnesses": 23
   },
@@ -2525,9 +2525,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristotle-politics-en.json",
         "data/classics-corpus/aristotle-politics-grc.json"
       ],
       "localPDF": null,

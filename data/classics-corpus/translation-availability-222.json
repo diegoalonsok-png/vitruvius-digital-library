@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 74,
-    "translatedWorksLocal": 30,
-    "worksWithoutHostedTranslation": 192,
+    "translatedWorksLocal": 31,
+    "worksWithoutHostedTranslation": 191,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 29,
+      "en": 30,
       "fr": 2
     },
     "originalTextIndexed": 74,
@@ -1866,14 +1866,17 @@
       "title": "Πολιτικά",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Harris Rackham (1944), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

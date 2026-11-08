@@ -5049,8 +5049,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aristotle-politics-grc.json"
-      }
+        "grc": "data/classics-corpus/aristotle-politics-grc.json",
+        "en": "data/classics-corpus/aristotle-politics-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Harris Rackham (1944)",
+          "path": "classics-text-reader.html?work=aristotle-politics&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Aristóteles. Πολιτικά. Translated by Harris Rackham. William Heinemann / Harvard University Press, 1944. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "hippocrates-aphorisms",

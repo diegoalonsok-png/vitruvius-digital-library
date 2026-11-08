@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 110,
+  "count": 111,
   "works": 74,
   "entries": [
     {
@@ -1108,6 +1108,16 @@
       "path": "data/classics-corpus/euripides-medea-en.json",
       "reader": "classics-text-reader.html?work=euripides-medea&lang=en",
       "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-politics-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-politics&lang=en",
+      "sourceDescription": "Traducción histórica de Harris Rackham (1944); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }
