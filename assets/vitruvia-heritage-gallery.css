@@ -24,3 +24,11 @@ html[data-theme=light] .vhg-caption,html[data-theme=light] .vhg-detail{color:#55
 @media(max-width:650px){.vhg-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.vhg-image-link{height:128px}.vhg-info{padding:9px}.vhg-name{font-size:14px}}
 @media(max-width:370px){.vhg-cards{grid-template-columns:minmax(0,1fr)}}
 @media print{#vitruvia-heritage-gallery .vhg-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.vhg-card{break-inside:avoid}}
+
+/* Impedir superposición de portadas y rótulos heredada del diseño general. */
+#vitruvia-heritage-gallery .vhg-card{position:relative;isolation:isolate;overflow:hidden;min-width:0}
+#vitruvia-heritage-gallery .vhg-image-link{position:relative;display:flex!important;flex:0 0 auto;width:100%;height:172px;overflow:hidden;min-width:0}
+#vitruvia-heritage-gallery .vhg-image-link .vhg-image{display:block!important;position:static!important;width:100%!important;max-width:100%!important;height:100%!important;object-fit:contain!important;float:none!important;margin:0!important}
+#vitruvia-heritage-gallery .vhg-info{position:relative;z-index:1;background:#171719;min-width:0}
+#vitruvia-heritage-gallery .vhg-catalogue-link{display:inline-block;color:#e6e6e6;text-decoration:underline;text-underline-offset:3px;font:13px/1.5 Arial,sans-serif;margin:5px 0 20px}
+@media(max-width:650px){#vitruvia-heritage-gallery .vhg-image-link{height:138px}}
