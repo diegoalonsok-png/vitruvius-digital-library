@@ -408,7 +408,7 @@ async function search(){
   const workId=alias?.workId||selectedWork;
   if(selectedWork&&!indexed.has(selectedWork)){status.textContent=dict[locale].wrong;return}
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
-  const transliterations=/^gr:/i.test(q)?await attestedGreekForms(q.slice(3).trim()):[];
+  const transliterations=await attestedGreekForms(/^gr:/i.test(q)?q.slice(3).trim():q);
   if(id!==serial)return;
   let lastPaint=0;
   const onProgress=(partial,progress)=>{
