@@ -6585,8 +6585,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-symposium-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-symposium-grc.json",
+        "en": "data/classics-corpus/plato-symposium-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Walter Rangeley Maitland Lamb (1925)",
+          "path": "classics-text-reader.html?work=plato-symposium&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Συμπόσιον. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1925. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "plato-phaedo",
@@ -6701,8 +6711,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-gorgias-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-gorgias-grc.json",
+        "en": "data/classics-corpus/plato-gorgias-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Walter Rangeley Maitland Lamb (1925)",
+          "path": "classics-text-reader.html?work=plato-gorgias&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Γοργίας. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1925. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "plato-timaeus",
@@ -6815,8 +6835,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-meno-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-meno-grc.json",
+        "en": "data/classics-corpus/plato-meno-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Walter Rangeley Maitland Lamb (1924)",
+          "path": "classics-text-reader.html?work=plato-meno&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Μένων. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1924. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "plato-phaedrus",

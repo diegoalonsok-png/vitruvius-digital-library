@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 194,
+  "count": 197,
   "works": 139,
   "entries": [
     {
@@ -1948,6 +1948,36 @@
       "path": "data/classics-corpus/plato-phaedo-en.json",
       "reader": "classics-text-reader.html?work=plato-phaedo&lang=en",
       "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-meno-en.json",
+      "reader": "classics-text-reader.html?work=plato-meno&lang=en",
+      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1924); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-symposium-en.json",
+      "reader": "classics-text-reader.html?work=plato-symposium&lang=en",
+      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-gorgias-en.json",
+      "reader": "classics-text-reader.html?work=plato-gorgias&lang=en",
+      "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

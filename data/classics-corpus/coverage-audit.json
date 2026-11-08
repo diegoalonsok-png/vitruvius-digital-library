@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 194,
+    "indexedTextVersions": 197,
     "indexedDistinctWorks": 139,
     "manuscriptWitnesses": 23
   },
@@ -3197,9 +3197,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-symposium-en.json",
         "data/classics-corpus/plato-symposium-grc.json"
       ],
       "localPDF": null,
@@ -3243,9 +3245,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-gorgias-en.json",
         "data/classics-corpus/plato-gorgias-grc.json"
       ],
       "localPDF": null,
@@ -3292,9 +3296,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-meno-en.json",
         "data/classics-corpus/plato-meno-grc.json"
       ],
       "localPDF": null,

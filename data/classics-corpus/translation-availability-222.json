@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 139,
-    "translatedWorksLocal": 49,
-    "worksWithoutHostedTranslation": 173,
+    "translatedWorksLocal": 52,
+    "worksWithoutHostedTranslation": 170,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 48,
+      "en": 51,
       "fr": 2
     },
     "originalTextIndexed": 139,
@@ -2381,14 +2381,17 @@
       "title": "Συμπόσιον",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2416,14 +2419,17 @@
       "title": "Γοργίας",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2450,14 +2456,17 @@
       "title": "Μένων",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1924), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
