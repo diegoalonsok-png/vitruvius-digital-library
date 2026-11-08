@@ -1,0 +1,29 @@
+name: Bibliotheca · regresión índice semántico
+on:
+  pull_request:
+    paths:
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'scripts/test-bibliotheca-semantic-index-usage.mjs'
+      - '.github/workflows/bibliotheca-semantic-index-usage.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'scripts/test-bibliotheca-semantic-index-usage.mjs'
+      - '.github/workflows/bibliotheca-semantic-index-usage.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index-consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: node --check assets/bibliotheca-corpus-search.js
+      - name: Verify filtered registry and safe fallback
+        run: node scripts/test-bibliotheca-semantic-index-usage.mjs
