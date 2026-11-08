@@ -14,7 +14,7 @@
   "license": "CC BY-SA 4.0 · PerseusDL canonical text repository; attribution and share-alike required",
   "bibliographyChicago18": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914. Digitized by Perseus Digital Library; TEI XML: https://github.com/PerseusDL/canonical-greekLit/blob/282e6f5a3ec12e6ca67e44cd4fa3487526e3b421/data/tlg0020/tlg002/tlg0020.tlg002.perseus-eng2.xml.",
   "isbn": null,
-  "alignment": "Translation-specific TEI units only. No automatic alignment with original text, editorial loci or manuscript folios.",
+  "alignment": "No alineado con el original: las unidades de traducción corresponden exclusivamente al TEI en inglés; no equivalencias por locus, folio, capítulo o verso certificadas.",
   "coverage": {
     "status": "All text units in this identified TEI source captured; beyond-source completeness not independently collated",
     "unitsVerified": 179,
@@ -336,5 +336,8 @@
       "text": "for opening a wine jar, and putting yokes on the necks of oxen and mules and swift-footed horses, and for hauling a swift ship of many thwarts down to the sparkling sea; few call it by its right name. On the fourth day open a jar. The fourth of the mid-month is a day holy above all. And again, few men know that the fourth day after the twentieth is best while it is morning: towards evening it is less good. These days are a great blessing to men on earth; but the rest are changeable, luckless, and bring nothing. Everyone praises a different day but few know their nature. Sometimes a day is a stepmother, sometimes a mother. That man is happy and lucky in them who knows all these things and does his work without offending the deathless gods, who discerns the omens of birds and avoids transgression.",
       "locusKind": "Translation TEI line labels (including editorial letter suffixes); not verified alignment to Greek witness"
     }
-  ]
+  ],
+  "alignmentStatus": "unaligned",
+  "citationStyle": "Chicago Manual of Style, 18th ed. (2024), notes and bibliography",
+  "chicago18Bibliography": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914. Digitized by Perseus Digital Library; TEI XML: https://github.com/PerseusDL/canonical-greekLit/blob/282e6f5a3ec12e6ca67e44cd4fa3487526e3b421/data/tlg0020/tlg002/tlg0020.tlg002.perseus-eng2.xml."
 }
