@@ -24,8 +24,14 @@ assert(html.includes('id="classic-lexicon"'),'The actual query must open Lexicon
 assert(html.includes('assets/bibliotheca-simple.js'),'Minimal reader must be mounted');
 assert(html.includes('assets/bibliotheca-simple.css'),'Lexicon black/ivory theme must load');
 assert(!/<iframe|<dialog|id="classic-sort"|id="classic-detail"/.test(html),'No old viewer, panels or duplicate sorting');
-assert((html.match(/<option value="(?:es|en|fr)">/g)||[]).length===3,'Interface language must match ES EN FR');
-assert(!html.includes('<option value="it">'),'Unsupported interface language must not reappear');
+assert(html.includes('<button class="language-button" type="button" id="classic-ui-language"'),
+ 'The new language control must be one accessible button, not an inactive dropdown');
+assert(!html.includes('<select id="classic-ui-language"')&&!html.includes('type="color"'),
+ 'No language dropdown or nonworking page color button may be present');
+assert(minimal.includes('const cycle=["es","en","fr"]')&&minimal.includes('language.addEventListener("click"'),
+ 'Language button must cycle through the three supported real interface translations');
+assert(minimal.includes('localStorage.setItem("vitruvius-ui-lang",lang)'),
+ 'Language preference must be shared with compatible pages');
 assert(minimal.includes('allMatches:true,includeFullText:true'),'Every matching paragraph must be preserved, with no 600-result cutoff');
 assert(minimal.includes('workId:works.value||""'),'Single selected work must scope the search');
 assert(minimal.includes('compareWork('),'Results must be sorted by approximate work composition age');
