@@ -64,6 +64,30 @@ function countAndList(){
  EDITIONS.map(e=>{const es=[...counts].filter(([key])=>key.startsWith(e.id+'|'));return e.version+': '+es.reduce((n,[,v])=>n+v.count,0)+' coincidencias'}).join(' · ')+
  '. Cifras de las fuentes digitalizadas, no de manuscritos ni de variantes cotejadas.';
 }
+/* Consultar el texto extraído de la página íntegra, no solo el
+   extracto recortado del índice de comentarios. Siempre bajo demanda. */
+function fullPageControl(full,r){
+ if(r.source!=='apparatus'||!Number.isFinite(Number(r.page)))return;
+ const originalQuery=currentQuery;
+ const d=el('details','critical-unified-page');
+ d.append(el('summary','','Ver el texto íntegro de la página editorial '+r.page));
+ const body=el('div','critical-unified-full');
+ body.append(el('p','critical-unified-meta','Extracción de la página completa del PDF. Puede incluir otros pasajes o comentarios y no certifica una variante manuscrita.'));
+ d.append(body);let started=false;
+ d.addEventListener('toggle',async()=>{
+  if(!d.open||started)return;started=true;
+  const waiting=el('p','critical-unified-meta','Abriendo texto completo de la página…');body.append(waiting);
+  try{
+   const pages=await getJson('data/'+r.edition.id+'-pages.json');
+   const pg=pages.find(x=>Number(x.page)===Number(r.page));
+   waiting.remove();
+   if(!pg?.text){body.append(el('p','critical-unified-meta','No se dispone del texto íntegro de esta página. Consulte el PDF.'));return}
+   const para=el('p','critical-unified-text');para.lang=r.edition.lang;
+   highlight(para,pg.text,positions(pg.text,originalQuery,phrase.checked));body.append(para);
+  }catch(error){waiting.textContent='No se pudo abrir la página: '+error.message}
+ });
+ full.append(d);
+}
 function renderNext(){
  const batch=visible.slice(shown,shown+20);
  for(const r of batch){
@@ -113,6 +137,7 @@ function renderNext(){
    }
    full.append(section);
   }
+  fullPageControl(full,r);
   details.append(full);card.append(head,h,counts,details,actions);target.append(card);
  }
  shown+=batch.length;more.hidden=shown>=visible.length;
