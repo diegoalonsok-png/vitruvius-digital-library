@@ -235,7 +235,7 @@ function attachEditionList(bookCard,work,valid){
    }catch{
     if(valid()&&bookCard.isConnected){
      content.replaceChildren();
-     info(content,L('No se pudo consultar el listado de ediciones. Abrí la ficha externa para verificarlo.',
+     info(content,L('No se pudo consultar el listado de ediciones. Abre la ficha externa para verificarlo.',
       'The edition catalogue is temporarily unavailable. Check the external record.',
       'La liste des éditions est indisponible. Consulter la notice externe.'));
      loaded=false;
@@ -271,7 +271,7 @@ async function books(root,topic,valid){
   }else{
    const note=el('p','web-dossier-count',
     L('Obras catalogadas: ','Catalogue works: ','Œuvres cataloguées : ')+books.length+
-    L(' · ordenadas inicialmente por primera edición catalogada; desplegá cada obra para ver sus ediciones fechadas.',
+    L(' · ordenadas inicialmente por primera edición catalogada; despliega cada obra para ver sus ediciones fechadas.',
       ' · sorted by first catalogued publication; expand each work for its dated editions.',
       ' · classées par première publication répertoriée ; ouvrir chaque œuvre pour ses éditions datées.'));section.append(note);
    const stack=el('div','web-dossier-stack');section.append(stack);
