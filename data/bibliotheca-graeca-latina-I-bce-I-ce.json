@@ -1521,7 +1521,7 @@
       "dating": "98 d. C.",
       "reading": {
         "url": "https://thelatinlibrary.com/tac.html",
-        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+        "status": "Original TEI indexado y lector de traducción histórica inglesa disponibles localmente por pasajes; cotejo de traducción/original pendiente. No es facsímil manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -1532,7 +1532,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: Alfred John Church y William Jackson Brodribb (1877), traducción histórica completa de la TEI publicada e indexada localmente. Castellano y francés pendientes; cotejo de equivalencias con el original no realizado."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1543,7 +1543,25 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "la": "data/classics-corpus/tacitus-agricola-la.json"
+        "la": "data/classics-corpus/tacitus-agricola-la.json",
+        "en": "data/classics-corpus/tacitus-agricola-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Alfred John Church y William Jackson Brodribb (1877)",
+          "path": "classics-text-reader.html?work=tacitus-agricola&lang=en",
+          "kind": "translation",
+          "edition": "Traducción histórica 1877 · Perseus TEI",
+          "citationChicago18": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877."
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "Chicago Manual of Style, 18th ed. (2024)",
+        "translationCitation": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877.",
+        "translationSource": "data/classics-corpus/tacitus-agricola-en.json",
+        "isbn": null,
+        "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
       }
     },
     {
@@ -4302,7 +4320,7 @@
       "publicStatus": "pendiente-de-incorporar",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Original TEI indexado y lector de traducción histórica inglesa disponibles localmente por pasajes; cotejo de traducción/original pendiente. No es facsímil manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -4313,7 +4331,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: Hugh G. Evelyn-White (1914), traducción histórica completa de la TEI publicada e indexada localmente. Castellano y francés pendientes; cotejo de equivalencias con el original no realizado."
       },
       "links": {
         "scaife": null,
@@ -4328,7 +4346,25 @@
         "Theogony"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/hesiod-theogony-grc.json"
+        "grc": "data/classics-corpus/hesiod-theogony-grc.json",
+        "en": "data/classics-corpus/hesiod-theogony-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Hugh G. Evelyn-White (1914)",
+          "path": "classics-text-reader.html?work=hesiod-theogony&lang=en",
+          "kind": "translation",
+          "edition": "Traducción histórica 1914 · Perseus TEI",
+          "citationChicago18": "Hesiod. Theogony. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914."
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "Chicago Manual of Style, 18th ed. (2024)",
+        "translationCitation": "Hesiod. Theogony. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914.",
+        "translationSource": "data/classics-corpus/hesiod-theogony-en.json",
+        "isbn": null,
+        "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
       }
     },
     {
@@ -4341,7 +4377,7 @@
       "publicStatus": "pendiente-de-incorporar",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Original TEI indexado y lector de traducción histórica inglesa disponibles localmente por pasajes; cotejo de traducción/original pendiente. No es facsímil manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -4352,7 +4388,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: Hugh G. Evelyn-White (1914), traducción histórica completa de la TEI publicada e indexada localmente. Castellano y francés pendientes; cotejo de equivalencias con el original no realizado."
       },
       "links": {
         "scaife": null,
@@ -4367,7 +4403,25 @@
         "Works and Days"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/hesiod-works-days-grc.json"
+        "grc": "data/classics-corpus/hesiod-works-days-grc.json",
+        "en": "data/classics-corpus/hesiod-works-days-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Hugh G. Evelyn-White (1914)",
+          "path": "classics-text-reader.html?work=hesiod-works-days&lang=en",
+          "kind": "translation",
+          "edition": "Traducción histórica 1914 · Perseus TEI",
+          "citationChicago18": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914."
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "Chicago Manual of Style, 18th ed. (2024)",
+        "translationCitation": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914.",
+        "translationSource": "data/classics-corpus/hesiod-works-days-en.json",
+        "isbn": null,
+        "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
       }
     },
     {
