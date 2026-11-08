@@ -216,6 +216,11 @@ async function search(){
  const query=input.value.trim();if(!query)return;
  currentQuery=query;const run=++generation;
  const edition=$("critical-edition")?.value||"all",mode=$("critical-mode")?.value||"all";
+ if(edition==="krohn-1912"){
+  container.hidden=false;results.replaceChildren();
+  runMessage("Krohn 1912 es OCR histórico. Sus coincidencias se muestran en el buscador de pasajes inferior, no como aparato crítico de las ediciones Kurilo. Seleccione V514, V554, V297 o las tres para examinar sus comentarios.");
+  return;
+ }
  const eds=ED.filter(e=>edition==="all"||edition===e.id);
  container.hidden=false;results.replaceChildren();runMessage("Buscando en los textos y el aparato de las ediciones seleccionadas…");
  const request=[
