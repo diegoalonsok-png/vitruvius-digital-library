@@ -44,10 +44,12 @@ function valid(e){
       e.path==="data/text/krohn-1912.json");
 }
 async function registry(){
- if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
+ if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async j=>{
   if(j.schema!=="vitruvia-classics-search-registry-v1"||!Array.isArray(j.entries)||j.entries.length<14)throw Error("Registro de búsqueda incompleto");
   registered=j.entries.filter(valid);if(registered.length!==j.entries.length)throw Error("Registro con rutas o metadatos inválidos");
   registered=registered.filter(bibliothecaLanguagePolicy);
+  // A validated offsite branch does not count as local hosting.
+  if(window.ClassicsOffsiteGreek)registered=registered.concat(await window.ClassicsOffsiteGreek.entries());
   return registered;
  }).catch(()=>{registered=LEGACY;return LEGACY});
  return registryTask;
@@ -64,6 +66,8 @@ function snippet(text,[a,b]){
  return (s?"…":"")+text.slice(s,a)+"«"+text.slice(a,b)+"»"+text.slice(b,e)+(e<text.length?"…":"");
 }
 function loadJson(e){
+ if(e.format==="remote-json-passages")
+  return window.ClassicsOffsiteGreek?.load(e)||Promise.resolve(null);
  if(!cache.has(e.path))cache.set(e.path,
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
    .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
