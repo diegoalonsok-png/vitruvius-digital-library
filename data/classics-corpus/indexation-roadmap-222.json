@@ -4,19 +4,19 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 180,
-    "originalsMissing": 42,
+    "originalsIndexed": 181,
+    "originalsMissing": 41,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
-    "textVersions": 245,
+    "textVersions": 246,
     "states": {
-      "original_pendiente": 42,
-      "original_sin_traduccion_local": 121,
+      "original_pendiente": 41,
+      "original_sin_traduccion_local": 122,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
-      "requiere_fuente_no_canonica_o_edicion_especifica": 10,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 9,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 13
     }
@@ -1507,11 +1507,13 @@
       "title": "De lingua Latina",
       "originalLanguage": "la",
       "dating": "siglo I a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.varro-de-lingua-latina"
       ],
