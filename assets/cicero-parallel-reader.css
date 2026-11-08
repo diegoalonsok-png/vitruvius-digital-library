@@ -1,0 +1,14 @@
+/* Lectura Cicerón: justificación editorial y comparación bilingüe opcional */
+main p{text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.cicero-parallel-tools{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:17px 0;padding:12px 0;border-block:1px solid #c6beb0;font:13px/1.5 system-ui,sans-serif}
+.cicero-parallel-tools button,.cicero-parallel-tools a{background:#eae5d9;border:1px solid #aea596;border-radius:6px;color:#243747;padding:8px 12px;text-decoration:none;cursor:pointer}
+.cicero-parallel-tools button[aria-pressed=true]{background:#253947;color:#fff;border-color:#253947}
+.cicero-parallel-tools small{flex-basis:100%;color:#565f66}
+.cicero-parallel-grid{display:block}
+body.cicero-parallel-on{max-width:min(1640px,96vw)}
+body.cicero-parallel-on .cicero-parallel-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.cicero-parallel-grid>main{min-width:0}
+.cicero-parallel-frame{border:1px solid #bdb4a4;background:#fffdf7;min-width:0;width:100%;height:min(83vh,1020px);position:sticky;top:10px}
+.cicero-parallel-frame[hidden]{display:none!important}
+@media(max-width:850px){body.cicero-parallel-on .cicero-parallel-grid{grid-template-columns:minmax(0,1fr)}.cicero-parallel-frame{position:static;height:68vh}}
+@media print{.cicero-parallel-tools{display:none!important}body.cicero-parallel-on .cicero-parallel-grid{display:block}.cicero-parallel-frame{display:none!important}}
