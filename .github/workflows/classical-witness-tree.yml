@@ -1,0 +1,36 @@
+name: Integridad de árboles codicológicos
+on:
+  pull_request:
+    paths:
+      - 'tradicion-textual-clasica.html'
+      - 'assets/classical-witness-tree.js'
+      - 'assets/classical-witness-tree.css'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'scripts/test-classical-witness-tree.mjs'
+      - '.github/workflows/classical-witness-tree.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tradicion-textual-clasica.html'
+      - 'assets/classical-witness-tree.js'
+      - 'assets/classical-witness-tree.css'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'scripts/test-classical-witness-tree.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sintaxis del visor documental
+        run: node --check assets/classical-witness-tree.js
+      - name: Integridad de testigos, fechas y enlaces
+        run: node scripts/test-classical-witness-tree.mjs
