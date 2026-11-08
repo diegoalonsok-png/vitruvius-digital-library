@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 111,
-  "works": 74,
+  "count": 123,
+  "works": 86,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -1118,6 +1118,126 @@
       "path": "data/classics-corpus/aristotle-politics-en.json",
       "reader": "classics-text-reader.html?work=aristotle-politics&lang=en",
       "sourceDescription": "Traducción histórica de Harris Rackham (1944); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-persae-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-persae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-antigone-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-ajax-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-ajax&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-electra-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-electra&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-bacchae-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hippolytus-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

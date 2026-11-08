@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 74,
+    "locallyIndexedWorks": 86,
     "translatedWorksLocal": 31,
     "worksWithoutHostedTranslation": 191,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 30,
       "fr": 2
     },
-    "originalTextIndexed": 74,
-    "originalTextNotIndexed": 148
+    "originalTextIndexed": 86,
+    "originalTextNotIndexed": 136
   },
   "works": [
     {
@@ -1960,168 +1960,192 @@
       "author": "Esquilo",
       "title": "Πέρσαι",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "aeschylus-seven-thebes",
       "author": "Esquilo",
       "title": "Ἑπτὰ ἐπὶ Θήβας",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "aeschylus-suppliants",
       "author": "Esquilo",
       "title": "Ἱκέτιδες",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "aeschylus-prometheus",
       "author": "Esquilo (atribución debatida)",
       "title": "Προμηθεὺς Δεσμώτης",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-antigone",
       "author": "Sófocles",
       "title": "Ἀντιγόνη",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-ajax",
       "author": "Sófocles",
       "title": "Αἴας",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-electra",
       "author": "Sófocles",
       "title": "Ἠλέκτρα",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-philoctetes",
       "author": "Sófocles",
       "title": "Φιλοκτήτης",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-oedipus-colonus",
       "author": "Sófocles",
       "title": "Οἰδίπους ἐπὶ Κολωνῷ",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-trachiniae",
       "author": "Sófocles",
       "title": "Τραχίνιαι",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "euripides-bacchae",
       "author": "Eurípides",
       "title": "Βάκχαι",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "euripides-hippolytus",
       "author": "Eurípides",
       "title": "Ἱππόλυτος",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "euripides-alcestis",

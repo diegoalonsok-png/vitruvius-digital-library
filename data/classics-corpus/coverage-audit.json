@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 111,
-    "indexedDistinctWorks": 74,
+    "indexedTextVersions": 123,
+    "indexedDistinctWorks": 86,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -2650,11 +2650,15 @@
       "genre": "Tragedia",
       "dating": "472 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-persae-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2668,11 +2672,15 @@
       "genre": "Tragedia",
       "dating": "467 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-seven-thebes-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2686,11 +2694,15 @@
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-suppliants-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2704,11 +2716,15 @@
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-prometheus-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2722,11 +2738,15 @@
       "genre": "Tragedia",
       "dating": "c. 441 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-antigone-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2740,11 +2760,15 @@
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-ajax-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2758,11 +2782,15 @@
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-electra-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2776,11 +2804,15 @@
       "genre": "Tragedia",
       "dating": "409 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-philoctetes-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2794,11 +2826,15 @@
       "genre": "Tragedia",
       "dating": "401 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-oedipus-colonus-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2812,11 +2848,15 @@
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-trachiniae-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2830,11 +2870,15 @@
       "genre": "Tragedia",
       "dating": "405 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/euripides-bacchae-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2848,11 +2892,15 @@
       "genre": "Tragedia",
       "dating": "428 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/euripides-hippolytus-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
