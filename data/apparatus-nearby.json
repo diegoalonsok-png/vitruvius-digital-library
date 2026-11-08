@@ -1,0 +1,423 @@
+{
+  "schema": "vitruvius-apparatus-nearby-v1",
+  "method": "Relaciones editoriales sugeridas por distancia absoluta 0–1 entre párrafos fuente de notas DOCX y párrafos del texto digitalizado, solo si existe un locus más cercano único y no hay locus explícito ni candidato previo. Proximidad documental NO significa identidad textual cotejada, locus verificado ni variante manuscrita.",
+  "sources": [
+    "data/critical-notes.json",
+    "data/structured/recensio-es.json",
+    "data/structured/recensio-fr.json",
+    "data/structured/theory-en.json"
+  ],
+  "counts": {
+    "recensio-es": 25,
+    "recensio-fr": 25,
+    "theory-en": 8
+  },
+  "entries": [
+    {
+      "edition": "recensio-es",
+      "footnote_id": "46",
+      "locus": "1.praef.2",
+      "source_paragraph": 1429,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "47",
+      "locus": "1.praef.3",
+      "source_paragraph": 1431,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "49",
+      "locus": "1.1.2",
+      "source_paragraph": 1435,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "107",
+      "locus": "2.praef.2",
+      "source_paragraph": 2021,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "108",
+      "locus": "2.praef.2",
+      "source_paragraph": 2021,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "109",
+      "locus": "2.praef.3",
+      "source_paragraph": 2024,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "110",
+      "locus": "2.praef.3",
+      "source_paragraph": 2024,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "111",
+      "locus": "2.praef.4",
+      "source_paragraph": 2025,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "112",
+      "locus": "2.praef.5",
+      "source_paragraph": 2027,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "113",
+      "locus": "2.praef.5",
+      "source_paragraph": 2029,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "152",
+      "locus": "3.praef.2",
+      "source_paragraph": 2418,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "177",
+      "locus": "4.praef.2",
+      "source_paragraph": 2592,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "242",
+      "locus": "7.praef.6",
+      "source_paragraph": 3168,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "243",
+      "locus": "7.praef.9",
+      "source_paragraph": 3173,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "244",
+      "locus": "7.praef.16",
+      "source_paragraph": 3187,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "245",
+      "locus": "7.praef.17",
+      "source_paragraph": 3190,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "267",
+      "locus": "8.praef.2",
+      "source_paragraph": 3379,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "276",
+      "locus": "9.praef.7",
+      "source_paragraph": 3573,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "277",
+      "locus": "9.praef.11",
+      "source_paragraph": 3577,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "278",
+      "locus": "9.praef.11",
+      "source_paragraph": 3580,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "279",
+      "locus": "9.praef.13",
+      "source_paragraph": 3584,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "280",
+      "locus": "9.praef.15",
+      "source_paragraph": 3589,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "281",
+      "locus": "9.praef.18",
+      "source_paragraph": 3595,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "282",
+      "locus": "9.1.2",
+      "source_paragraph": 3604,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-es",
+      "footnote_id": "294",
+      "locus": "10.1.2",
+      "source_paragraph": 3776,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "46",
+      "locus": "1.praef.2",
+      "source_paragraph": 1433,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "47",
+      "locus": "1.praef.3",
+      "source_paragraph": 1435,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "48",
+      "locus": "1.praef.3",
+      "source_paragraph": 1437,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "49",
+      "locus": "1.1.2",
+      "source_paragraph": 1444,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "106",
+      "locus": "2.praef.2",
+      "source_paragraph": 2043,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "107",
+      "locus": "2.praef.2",
+      "source_paragraph": 2043,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "108",
+      "locus": "2.praef.3",
+      "source_paragraph": 2046,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "109",
+      "locus": "2.praef.3",
+      "source_paragraph": 2046,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "110",
+      "locus": "2.praef.4",
+      "source_paragraph": 2047,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "111",
+      "locus": "2.praef.5",
+      "source_paragraph": 2049,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "112",
+      "locus": "2.praef.5",
+      "source_paragraph": 2051,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "150",
+      "locus": "3.praef.2",
+      "source_paragraph": 2426,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "234",
+      "locus": "7.praef.6",
+      "source_paragraph": 3177,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "235",
+      "locus": "7.praef.9",
+      "source_paragraph": 3182,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "236",
+      "locus": "7.praef.16",
+      "source_paragraph": 3196,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "237",
+      "locus": "7.praef.17",
+      "source_paragraph": 3199,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "238",
+      "locus": "7.praef.18",
+      "source_paragraph": 3202,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "259",
+      "locus": "8.praef.2",
+      "source_paragraph": 3389,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "268",
+      "locus": "9.praef.7",
+      "source_paragraph": 3585,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "269",
+      "locus": "9.praef.11",
+      "source_paragraph": 3589,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "270",
+      "locus": "9.praef.11",
+      "source_paragraph": 3592,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "271",
+      "locus": "9.praef.15",
+      "source_paragraph": 3601,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "272",
+      "locus": "9.praef.18",
+      "source_paragraph": 3607,
+      "distance": 1
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "273",
+      "locus": "9.1.2",
+      "source_paragraph": 3620,
+      "distance": 0
+    },
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "287",
+      "locus": "10.1.2",
+      "source_paragraph": 3791,
+      "distance": 0
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "106",
+      "locus": "1.1.1",
+      "source_paragraph": 1538,
+      "distance": 0
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "110",
+      "locus": "1.1.12",
+      "source_paragraph": 1809,
+      "distance": 1
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "111",
+      "locus": "1.1.12",
+      "source_paragraph": 1809,
+      "distance": 1
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "112",
+      "locus": "1.1.12",
+      "source_paragraph": 1809,
+      "distance": 1
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "117",
+      "locus": "1.2.2",
+      "source_paragraph": 1909,
+      "distance": 1
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "118",
+      "locus": "1.2.3",
+      "source_paragraph": 1928,
+      "distance": 1
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "137",
+      "locus": "2.2.1",
+      "source_paragraph": 2801,
+      "distance": 1
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "138",
+      "locus": "2.2.1",
+      "source_paragraph": 2801,
+      "distance": 1
+    }
+  ]
+}
