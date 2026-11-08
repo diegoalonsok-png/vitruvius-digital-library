@@ -40,6 +40,62 @@
   return (start?'… ':'')+raw.slice(start,end)+(end<raw.length?' …':'');
  }
  const translationLanguage={'recensio-es':'Castellano','recensio-fr':'Français','theory-en':'English'};
+
+ // El resaltado conserva la grafía original y no altera el texto del corpus.
+ function markedText(element,text,forms){
+  const raw=String(text||'');
+  for(const match of raw.matchAll(/[\p{L}\p{M}]+/gu)){
+   if(!forms.has(normalizeWord(match[0])))continue;
+   const start=match.index;
+   if(start>markedText.last)element.append(document.createTextNode(raw.slice(markedText.last,start)));
+   const mark=document.createElement('mark');mark.className='lexical-query-hit';mark.textContent=match[0];
+   element.append(mark);markedText.last=start+match[0].length;
+  }
+  if(markedText.last<raw.length)element.append(document.createTextNode(raw.slice(markedText.last)));
+  markedText.last=0;
+ }
+ markedText.last=0;
+ function exportText(){
+  const selected=window.getSelection()?.toString().trim()||'';
+  if(selected&&occurrences.contains(window.getSelection()?.anchorNode))return selected;
+  return [...occurrences.querySelectorAll('details > ol > li')].map(li=>li.innerText).join('\n\n');
+ }
+ function exportPayload(){
+  return 'Vitruvius Digital Library · Concordancias · '+input.value.trim()+'\n\n'+exportText()+'\n\n'+location.href;
+ }
+ function exportPDF(){
+  const text=exportText();
+  if(!text){window.alert('Realice primero una búsqueda con resultados.');return}
+  const escape=v=>String(v).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const popup=window.open('','_blank');
+  if(!popup){window.alert('El navegador bloqueó la ventana de impresión.');return}
+  popup.document.open();
+  popup.document.write('<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Concordancias</title><style>@page{size:A4;margin:18mm}body{font:12pt/1.6 Georgia,serif;color:#111;background:#fff}h1{font:22pt Georgia,serif}main{white-space:pre-wrap;overflow-wrap:anywhere}small{font:10pt Arial,sans-serif}</style></head><body><h1>Concordancias · '+escape(input.value.trim())+'</h1><small>Vitruvius Digital Library · '+escape(location.href)+'</small><main>'+escape(text)+'</main></body></html>');
+  popup.document.close();popup.focus();popup.print();
+ }
+ function concordanceControls(){
+  const bar=document.createElement('div');bar.className='lexical-export-toolbar';bar.setAttribute('role','toolbar');bar.setAttribute('aria-label','Herramientas de concordancia');
+  const control=(name,label,callback)=>{
+   const b=document.createElement('button');b.type='button';b.textContent=name;b.title=label;b.setAttribute('aria-label',label);b.addEventListener('click',callback);bar.append(b);return b;
+  };
+  control('PDF','Imprimir o guardar las concordancias en PDF',exportPDF);
+  const email=document.createElement('a');email.textContent='Mail';email.title='Enviar concordancias por correo';
+  const whatsapp=document.createElement('a');whatsapp.textContent='WhatsApp';whatsapp.title='Compartir concordancias por WhatsApp';whatsapp.target='_blank';whatsapp.rel='noopener noreferrer';
+  function share(){
+   const content=exportPayload().slice(0,12000);
+   email.href='mailto:?subject='+encodeURIComponent('Vitruvius · concordancias de '+input.value.trim())+'&body='+encodeURIComponent(content);
+   whatsapp.href='https://wa.me/?text='+encodeURIComponent(content);
+  }
+  email.addEventListener('click',share);whatsapp.addEventListener('click',share);share();
+  bar.append(email,whatsapp);
+  let size=1;
+  function resize(){occurrences.style.setProperty('--lexical-reader-scale',String(size));}
+  control('−','Reducir tamaño de los pasajes',()=>{size=Math.max(.8,Math.round((size-.1)*10)/10);resize()});
+  control('⌕+','Ampliar los pasajes con lupa',()=>{size=Math.min(1.8,Math.round((size+.1)*10)/10);resize()});
+  control('1:1','Restablecer tamaño de lectura',()=>{size=1;resize()});
+  return bar;
+ }
+
  async function showOccurrences(){
   const searched=input.value.trim(),token=normalizeWord(searched);
   occurrences.replaceChildren();occurrences.hidden=true;
@@ -48,7 +104,7 @@
   if(queryWords.length!==1)return;
   const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
   const forms=new Set([searched,...(entry?[entry.lemma,...(entry.forms||[]),entry.transliteration,entry.greek]:[])].filter(Boolean).map(normalizeWord));
-  const title=document.createElement('h3');title.textContent='Concordancia de las ediciones · '+searched;occurrences.append(title);occurrences.hidden=false;
+  const title=document.createElement('h3');title.textContent='Concordancia de las ediciones · '+searched;occurrences.append(title,concordanceControls());occurrences.hidden=false;
   const status=document.createElement('p');status.textContent='Consultando latín y traducciones en las tres ediciones…';occurrences.append(status);
   try{
    const loaded=await loadCorpora();if(input.value.trim()!==searched)return;
@@ -77,7 +133,7 @@
       const counts=document.createElement('span');counts.className='lexical-locus-count';counts.textContent=' · '+details;li.append(counts);
       const latin=document.createElement('p');latin.className='lexical-locus-latin';latin.lang='la';
       const latLabel=document.createElement('strong');latLabel.textContent='Latín · '+edition.label.split(' · ')[0]+'. ';
-      latin.append(latLabel,document.createTextNode(contextualSnippet(p.latin,forms)));
+      latin.append(latLabel);markedText(latin,contextualSnippet(p.latin,forms),forms);
       li.append(latin);
       const translated=document.createElement('div');
       translated.className='lexical-locus-translation';
@@ -89,7 +145,7 @@
       const trText=document.createElement('p');
       trText.style.cssText='display:block!important;visibility:visible!important;margin:0;line-height:1.7;text-align:justify;text-align-last:left;white-space:normal;overflow-wrap:break-word';
       const sourceTranslation=String(p.translation||'').trim();
-      trText.textContent=sourceTranslation||'Esta edición no aporta traducción textual comprobable para este locus.';
+      markedText(trText,sourceTranslation||'Esta edición no aporta traducción textual comprobable para este locus.',forms);
       translated.append(trLabel,trText);
       li.append(translated);
       const source=document.createElement('p');source.className='lexical-locus-provenance';
@@ -111,6 +167,22 @@
  // El léxico (≈90 KB) se pide cuando la persona va a escribir o, si no, unos segundos después de la carga.
  await new Promise(r=>{if(document.activeElement===input||input.value)return r();input.addEventListener('focus',r,{once:true});input.addEventListener('pointerenter',r,{once:true});setTimeout(r,3500)});
  try{const response=await fetch('data/latin-lexicon.json');if(!response.ok)throw Error();entries=(await response.json()).entries;
+   // Completar glosas castellanas con fichas editoriales documentadas de Etymologicum.
+   // Nunca reemplazar entradas del léxico existente ni inventar sentidos para formas desconocidas.
+   try{
+    const er=await fetch('data/lexicon/etymologicum.json');
+    if(er.ok){
+     const etym=await er.json();
+     for(const e of etym.entries||[]){
+      if(e.l!=='la'||!e.lemma||!Array.isArray(e.sens)||!e.sens.length)continue;
+      const key=String(e.lemma).normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+      if(entries.some(x=>String(x.lemma||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase()===key))continue;
+      entries.push({lemma:e.lemma,headword:e.head||e.lemma,pos:[e.pos,e.morph].filter(Boolean).join(' · '),
+       es:e.sens[0],senses:e.sens,forms:[e.lemma],source:'Etymologicum Vitruvianum · síntesis editorial',
+       references:e.refs||[],vitruvian:e.etym?'Etimología documentada: '+e.etym:''});
+     }
+    }
+   }catch{};
   // Todas las formas del texto latino (CLTK + Lewis & Short) para las sugerencias ortográficas y de grafía.
   const loadDerived=()=>fetch('data/classics-lexicon/vitruvius-la.json').then(r=>r.ok?r.json():null).then(g=>{if(!g?.forms)return;const by=new Map();for(const [f,ls] of Object.entries(g.forms))for(const l of ls){if(!by.has(l))by.set(l,[]);by.get(l).push(f)}
    for(const [l,fs] of by)derivedForms.push({lemma:String(g.lemmas?.[l]?.h||l).split(/[\s,]/)[0].replace(/-/g,'').normalize('NFD').replace(/\p{M}/gu,'').replace(/\d+$/,''),forms:fs,derived:true})}).catch(()=>{});

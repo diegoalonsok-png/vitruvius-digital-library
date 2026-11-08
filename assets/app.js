@@ -457,6 +457,28 @@ function refreshRightTranslations(){
   if(group)renderRightTranslation(article,group);
  }
 }
+/* Acciones por pasaje: PDF, correo, WhatsApp y lupa, sin servicios externos. */
+function passageTools(article,group){
+ const actions=article.querySelector('.result-actions');if(!actions)return;
+ const bar=document.createElement('div');bar.className='parallel-reading-tools';
+ const text=()=>[article.querySelector('h3')?.textContent||'Vitruvio',article.querySelector('.parallel-latin .parallel-passage')?.innerText||'',article.querySelector('.parallel-translation-text')?.innerText||'','Vitruvius Digital Library · '+location.href].join('\n\n');
+ const make=(label,title,fn)=>{const button=document.createElement('button');button.type='button';button.className='parallel-tool';button.textContent=label;button.title=title;button.setAttribute('aria-label',title);button.addEventListener('click',fn);bar.append(button);return button};
+ make('PDF','Imprimir este pasaje o guardarlo como PDF',()=>{
+  const popup=window.open('','_blank');if(!popup){window.alert('Permite las ventanas emergentes para generar el PDF.');return}
+  const escape=s=>String(s||'').replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
+  popup.document.write('<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · '+escape(group.locus)+'</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif}main{white-space:pre-wrap}small{font:10pt Arial,sans-serif}</style></head><body><h1>Vitruvius · '+escape(group.locus)+'</h1><main>'+escape(text())+'</main><small>Texto y traducción procedentes de las ediciones indicadas; verificar referencias.</small></body></html>');
+  popup.document.close();popup.focus();popup.print();
+ });
+ const mail=document.createElement('a');mail.className='parallel-tool';mail.textContent='Mail';mail.href='mailto:?subject='+encodeURIComponent('Vitruvio · '+group.locus)+'&body='+encodeURIComponent(text());bar.append(mail);
+ const whats=document.createElement('a');whats.className='parallel-tool';whats.textContent='WhatsApp';whats.href='https://wa.me/?text='+encodeURIComponent(text());whats.target='_blank';whats.rel='noopener noreferrer';bar.append(whats);
+ let scale=1;
+ const resize=step=>{scale=Math.max(.85,Math.min(1.6,Math.round((scale+step)*100)/100));article.style.setProperty('--parallel-reader-scale',String(scale));};
+ make('−','Reducir tamaño del texto',()=>resize(-.1));
+ make('⌕ +','Ampliar texto con lupa',()=>resize(.1));
+ make('1:1','Restablecer ampliación del texto',()=>{scale=1;article.style.setProperty('--parallel-reader-scale','1')});
+ actions.append(bar);
+}
+
 function renderMore(){
  const container=$('#search-results');
  container.classList.add('parallel-results');
@@ -507,6 +529,7 @@ function renderMore(){
    toggle.textContent=hidden?'Mostrar equivalencias':'Ocultar equivalencias';
   });
   container.append(article);
+  passageTools(article,group);
   renderRightTranslation(article,group);
  }
  shown+=next.length;
