@@ -162,7 +162,8 @@ function refresh(){
  const t=dict[locale],selected=work.value||new URLSearchParams(location.search).get("work")||"";
  work.replaceChildren(new Option(t.all,""));
  for(const w of works.slice().sort((a,b)=>dating(a)-dating(b)||String(a.title).localeCompare(String(b.title),"es"))){
-  const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing);
+  const docxAvailable=window.ClassicsUploadedDocuments?.workIds?.has(w.id);
+  const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing)+(docxAvailable?" · DOCX":"");
   work.append(new Option(name,w.id));
  }
  for(const document of window.ClassicsUploadedDocuments?.uncataloguedDocs||[])
@@ -421,8 +422,18 @@ async function search(){
    const docUrl=new URL(location.href);docUrl.searchParams.set("q",q);docUrl.searchParams.set("work",selectedWork);
    history.replaceState(null,"",docUrl);return;
   }
-  if(selectedWork&&!indexed.has(selectedWork)){status.textContent=dict[locale].wrong;return}
-  if(added)void added.search(q,selectedWork,()=>id===serial);
+  if(selectedWork&&!indexed.has(selectedWork)){
+   if(added?.workIds?.has(workId)){
+    root.hidden=false;
+    status.textContent=locale==="en"?"Original edition not yet indexed. Searching the already uploaded DOCX separately.":
+     locale==="fr"?"Édition originale non encore indexée. Recherche séparée dans le DOCX disponible.":
+     "Edición original aún no indexada. Buscando por separado en el DOCX ya alojado.";
+    void added.search(q,workId,()=>id===serial);
+    return;
+   }
+   status.textContent=dict[locale].wrong;return;
+  }
+  if(added)void added.search(q,workId,()=>id===serial);
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
   const transliterations=await attestedGreekForms(/^gr:/i.test(q)?q.slice(3).trim():q);
   if(id!==serial)return;
