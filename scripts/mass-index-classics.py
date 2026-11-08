@@ -40,6 +40,12 @@ COMPOSITE_WORKS = {
     "aeschylus-oresteia": ("tlg0085.tlg005", "tlg0085.tlg006", "tlg0085.tlg007"),
     "demosthenes-philippicae": ("tlg0014.tlg004", "tlg0014.tlg006", "tlg0014.tlg009", "tlg0014.tlg010"),
     "pseudo-apollodorus-bibliotheca": ("tlg0548.tlg001", "tlg0548.tlg002"),
+    # Secuencias documentadas en data/bibliotheca-perseus.json; si una pieza
+    # falta, NO se publica una ficha supuestamente completa.
+    "nepos": tuple(f"phi0588.abo{n:03d}" for n in range(1, 26)),
+    "suetonius-caesares": tuple(f"phi1348.abo{n:03d}" for n in range(11, 23)),
+    "seneca-tragoediae": tuple(f"phi1017.phi{n:03d}" for n in range(1, 11)),
+    "appian-romaika": tuple([f"tlg0551.tlg{n:03d}" for n in range(2, 15)] + ["tlg0551.tlg017"]),
 }
 MAX_XML = 2_200_000
 MAX_JSON = 4_000_000
