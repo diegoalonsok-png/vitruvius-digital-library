@@ -10,7 +10,7 @@
     "worksWithoutHostedTranslation": 197,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 23,
+      "en": 24,
       "fr": 2
     },
     "originalTextIndexed": 64,
@@ -2703,17 +2703,19 @@
       "originalLanguage": "la",
       "originalIndexed": true,
       "translationLanguages": [
+        "en",
         "es",
         "fr"
       ],
       "localEditionLanguages": [
+        "en",
         "es",
         "fr",
         "la"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-completa",
-      "translationSourceDescription": "Traducciones española histórica y francesa de Joseph Baillard (1914) alojadas; división castellana distinta (21 unidades). Alineación filológica entre capítulos no certificada.",
+      "translationSourceDescription": "ES histórica (21 unidades); FR Joseph Baillard (20 capítulos); EN Aubrey Stewart (1889, XX capítulos) desde Standard Ebooks, indexadas. Sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
       "indexed": true
     },
