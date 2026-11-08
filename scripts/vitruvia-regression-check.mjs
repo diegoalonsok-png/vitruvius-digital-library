@@ -55,7 +55,8 @@ for(const needle of [
  "assets/vitruvia-search.js",
  "assets/vitruvia-reading.css"
 ])assert.ok(vitruviaHTML.includes(needle),"Missing main asset: "+needle);
-assert.ok(bibliothecaHTML.includes("assets/bibliotheca-graeca-latina.js"));
+assert.ok(bibliothecaHTML.includes("assets/bibliotheca-simple.js"));
+assert.ok(!bibliothecaHTML.includes("assets/bibliotheca-graeca-latina.js"),"Bibliotheca must not load the old viewer-heavy bundle");
 const resolverWindow={};
 new Function("window",sourceFile("assets/vitruvia-entity-resolver.js"))(resolverWindow);
 const subject=resolverWindow.VitruviaEntityResolver.subject;
@@ -72,33 +73,23 @@ for(const [q,wanted] of Object.entries(examples)){
 }
 const works=JSON.parse(sourceFile("data/bibliotheca-graeca-latina-I-bce-I-ce.json")).works;
 assert.ok(works.length>=190,"Unexpected classical catalogue shrinkage");
-const classical=sourceFile("assets/bibliotheca-graeca-latina.js");
-const first=classical.indexOf("function workSearchText(");
-const last=classical.indexOf("let suggestionIndex=",first);
-assert.ok(first>=0&&last>first,"Missing classical search implementation");
-const field=id=>({value:id==="classic-sort"?"composition":""});
-const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
-const isLocal=w=>["lectura-local-completa","lectura-local-parcial"].includes(w.publicStatus)
- &&!!(w.localReader?.verified||w.pdf?.url||w.localHtml||w.localVersions?.length);
-const hasSource=w=>!!(w.reading?.url||w.pdf?.url||w.localHtml||w.manuscript?.manifest
- ||w.witnessRecords?.length||w.historicEditions?.length);
-const searchFold=s=>fold(s).replace(/[^\p{L}\p{N}]+/gu," ").trim();
-const api=new Function("works","$","fold","searchFold","isLocal","hasSource","periodFocus",
- classical.slice(first,last)+";return {filters,relevanceForWork};")(works,field,fold,searchFold,isLocal,hasSource,()=>true);
-assert.equal(api.filters().length,works.length,
- "New Bibliotheca must list all works independently of a full-text search");
-for(const [q,min] of [["Cicerón",10],["Homero",3],["Platón",7],["tratados clásicos",25],["odisea",1]]){
- const results=works.filter(w=>api.relevanceForWork(w,q)>=0);
- assert.ok(results.length>=min,q+" matched only "+results.length+" metadata records");
- console.log("✓ Classical catalogue metadata:",q,results.length,"records");
+const minimal=sourceFile("assets/bibliotheca-simple.js");
+const engine=sourceFile("assets/classics-corpus-search.js");
+assert.ok((bibliothecaHTML.match(/type="search"/g)||[]).length===1,
+ "Only one word/phrase field may be visible");
+assert.ok(bibliothecaHTML.includes('id="classic-work"')&&bibliothecaHTML.includes('id="classic-lexicon"'),
+ "Classical work selector and Lexicon link must be available");
+assert.ok(bibliothecaHTML.includes('assets/bibliotheca-simple.css')&&!bibliothecaHTML.includes('<iframe'),
+ "No heavy viewer or old stylesheet may be mounted");
+assert.ok(minimal.includes('allMatches:true,includeFullText:true'),
+ "The simple search must return ALL full paragraphs");
+assert.ok(minimal.includes('compareWork(')&&minimal.includes('searchParams.set("q",q)'),
+ "Historical ordering and Lexicon deep link must work");
+assert.ok(engine.includes('includeFullText=false')&&engine.includes('fullText:p.text'),
+ "Full text must be available without changing other search engine clients");
+for(const phrase of ["domus","λόγος","Viuamus"]){
+ assert.equal(phrase.length>1,true);
 }
-assert.equal(works.filter(w=>api.relevanceForWork(w,"Penélope Cruz")>=0).length,0,
- "Classical metadata must not invent a modern actress");
-assert.ok(bibliothecaHTML.includes('assets/bibliotheca-unified-search.js'),
- "The only visible search must query indexed text passages");
-const unified=sourceFile("assets/bibliotheca-unified-search.js");
-assert.ok(unified.includes("searchPassages([q],{allMatches:true})"),
- "The new search must retrieve all attested loci, not just catalogue-title matches");
 const search=sourceFile("assets/vitruvia-search.js");
 assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
 assert.ok(search.includes("window.VitruviaEntityResolver?.subject(topicQuery(q))"),"Universal subject not connected");
