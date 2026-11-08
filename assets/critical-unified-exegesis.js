@@ -47,20 +47,22 @@ async function getJson(path){
 }
 const q=by('critical-unified-query'),edition=by('critical-unified-edition'),field=by('critical-unified-field'),
  phrase=by('critical-unified-phrase'),status=by('critical-unified-status'),more=by('critical-unified-more');
-let visible=[],shown=0,revision=0,currentQuery='';
+let visible=[],shown=0,revision=0,currentQuery='',currentLocus='';
+const parseRequestedLocus=value=>{const m=String(value||'').trim().match(/^(?:locus\s*:?\s*)?((?:[IVX]+|10|[1-9])\.(?:praef|pr|[0-9]+)(?:\.[0-9]+)?)$/i);return m?m[1].replace(/\.pr(?=\.)/i,'.praef').toLowerCase():''};
+const matchingLocus=v=>!!currentLocus&&String(v||'').toLowerCase().replace(/\.pr(?=\.)/i,'.praef')===currentLocus;
 const locusKey=v=>String(v||'').toLowerCase().replace(/^0+/,'').replace(/\s+/g,'');
 function pdfLink(e,page){
  const n=Number(page);return e.pdf+(Number.isFinite(n)&&n>0?'#page='+Math.floor(n):'');
 }
 function sourceTitle(e){return e.version+' · '+e.label+' · Diego A. Kurilo'}
 function record(source,e,content,opts){
- const matches=positions(content,currentQuery,phrase.checked);if(!matches.length)return null;
+ const matches=positions(content,currentQuery,phrase.checked);if(!matches.length&&!(opts.verified&&matchingLocus(opts.locus))&&!(source==='passage'&&matchingLocus(opts.locus)))return null;
  return {source,edition:e,content,matches,...opts};
 }
 function countAndList(){
  const counts=new Map(),freq=visible.reduce((n,x)=>n+x.matches.length,0);
  for(const x of visible){const key=x.edition.id+'|'+x.source;const c=counts.get(key)||{passages:0,count:0};c.passages++;c.count+=x.matches.length;counts.set(key,c)}
- status.textContent=visible.length+' unidades textuales y '+freq+' apariciones documentadas de «'+currentQuery+'». '+
+ status.textContent=visible.length+' unidades textuales y '+freq+' coincidencias literales de «'+currentQuery+'»'+(currentLocus?' (incluye pasajes y notas de locus explícito)':'')+'. '+
  EDITIONS.map(e=>{const es=[...counts].filter(([key])=>key.startsWith(e.id+'|'));return e.version+': '+es.reduce((n,[,v])=>n+v.count,0)+' coincidencias'}).join(' · ')+
  '. Cifras de las fuentes digitalizadas, no de manuscritos ni de variantes cotejadas.';
 }
@@ -116,7 +118,7 @@ function renderNext(){
 }
 async function run(){
  const query=q.value.trim();if(!query)return;
- const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;
+ const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;currentLocus=parseRequestedLocus(query);
  status.textContent='Leyendo textos, notas y comentarios de las ediciones seleccionadas…';
  const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
  const paths=chosen.map(e=>'data/structured/'+e.id+'.json');
