@@ -324,7 +324,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <a href="#sententiae" data-tool-mode="sententiae">Sententiae</a>
   <a href="#collatio" data-i18n>Taller ecdótico</a>
   <a href="protocolo-academico-lexicon.html">Protocolo académico y fuentes</a>
-  <a href="bibliotheca-lexicographica.html">Diccionarios latinos y griegos</a>
+  <a href="#lx-dictionaries">Diccionarios integrados</a><a href="bibliotheca-lexicographica.html">Diccionarios extensos</a>
   <a href="dialectologia-graeca.html">Grafías áticas, laconias y macedonias</a>
   <a href="#exegesis" data-i18n>Cuaderno exegético</a>
   <a href="#comparatio" data-i18n>Comparatio</a>
@@ -414,6 +414,20 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  </div>
  <p id="lx-state" role="status">Preparando el Lexicon…</p>
  <article id="lx-entry" hidden></article>
+<section id="lx-dictionaries" aria-label="Diccionarios integrados de latín, griego antiguo y hebreo bíblico">
+ <div class="lx-dict-heading"><div><h2>Diccionarios integrados</h2>
+ <p class="lx-dict-description">Consulta la palabra del buscador de Lexicon en glosarios latinos, griegos y hebreos. Grafías originales y procedencia de cada glosa, sin traducciones inventadas.</p></div></div>
+ <div class="lx-dict-tabs" role="group" aria-label="Idioma del diccionario">
+  <button type="button" data-ld-lang="la" aria-pressed="true">Latín · Lewis &amp; Short</button>
+  <button type="button" data-ld-lang="grc" aria-pressed="false">Griego antiguo · LSJ</button>
+  <button type="button" data-ld-lang="he" aria-pressed="false">Hebreo bíblico · raíces</button>
+  <button type="button" id="lx-dict-refresh" title="Buscar el término escrito arriba">Consultar palabra</button>
+ </div>
+ <p id="lx-dict-status" role="status" aria-live="polite">Busca una palabra arriba para ver sus entradas en los diccionarios locales.</p>
+ <div id="lx-dict-results" class="lx-dict-list"></div>
+ <p class="lx-dict-source-note">Glosas breves indexadas de fuentes atribuidas; no son las reproducciones íntegras de LSJ, Lewis &amp; Short, BDB ni HALOT. Las equivalencias hebreas y las lematizaciones automáticas requieren revisión en contexto. Los enlaces abren las fuentes extensas.</p>
+</section>
+
  <section id="lx-encyclopedia" class="lx-encyclopedia" hidden aria-label="Enciclopedia ampliada del término consultado y enlaces a fuentes externas"></section>
   <article id="lx-antiguedad-resultados" hidden aria-label="Fuentes documentales antiguas y límites de atestiguación"></article>
  <div class="results-grid">
@@ -721,6 +735,8 @@ html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-sources{border-left-col
 html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-kicker,html[data-theme=light] #lx-encyclopedia .lx-encyclopedia-sources p{color:#5c6567}
 @media(max-width:750px){#lx-encyclopedia{padding:16px}#lx-encyclopedia .lx-encyclopedia-expanded{grid-template-columns:1fr;gap:15px}#lx-encyclopedia .lx-encyclopedia-sources{border-left:0;border-top:1px solid #373737;padding:14px 0 0}}
 </style>
+<link rel="stylesheet" href="assets/lexicon-dictionaries-integrated.css?v=20261108-trilingual-v1">
+<script src="assets/lexicon-dictionaries-integrated.js?v=20261108-trilingual-v1" defer></script>
 <script src="assets/lexicon-encyclopedia.js?v=20261106-encyclopedia-expanded-v1" defer></script>
 <style>
 .lx-attestations .lx-attestation-row{margin:11px 0 14px;padding:10px 0;border-bottom:1px solid #343434}
