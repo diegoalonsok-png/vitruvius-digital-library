@@ -1,0 +1,38 @@
+/* Aparato crítico completo · lenguaje visual sobrio de Vitruvia Lexicon */
+html:has(body.critical-lexicon-theme){background:#0d0e10!important;color-scheme:dark}
+body.critical-lexicon-theme{--ink:#e8e8e9;--line:#45464b;--gold:#88898d;background:#0d0e10!important;color:#e4e5e7!important;font-family:Arial,Helvetica,sans-serif}
+body.critical-lexicon-theme .institution-bar,body.critical-lexicon-theme .site-header,body.critical-lexicon-theme .site-header .wrap{background:#141517!important;color:#d0d0d2!important;border-color:#3d3e42!important}
+body.critical-lexicon-theme .wordmark-name{color:#f4f4f4!important}
+body.critical-lexicon-theme .wordmark-sub,body.critical-lexicon-theme .header-languages{color:#b2b2b7!important}
+body.critical-lexicon-theme .site-header nav a{color:#dadadd!important}
+body.critical-lexicon-theme .critical-wrap{width:calc(100% - 44px);max-width:1420px;padding:42px 0 75px}
+body.critical-lexicon-theme .critical-wrap :is(h1,h2,h3,h4){color:#eeeef0!important;font-weight:400}
+body.critical-lexicon-theme .critical-wrap h1{font-size:clamp(32px,4.5vw,56px)}
+body.critical-lexicon-theme .critical-wrap :is(p,li,label,summary){color:#d6d7da}
+body.critical-lexicon-theme .critical-intro,body.critical-lexicon-theme .critical-wrap .source-note,body.critical-lexicon-theme .critical-wrap .meta,body.critical-lexicon-theme .critical-status{color:#b6b7bc!important}
+body.critical-lexicon-theme :is(.critical-form,.critical-parallel-edition,#apparatus-catalog,.critical-caution){background:#161719!important;border:1px solid #393b40!important;border-radius:7px!important;color:#e6e6e8!important;box-shadow:none!important}
+body.critical-lexicon-theme .critical-caution{border-left:2px solid #62636a!important;padding:17px 20px}
+body.critical-lexicon-theme :is(.critical-form,.critical-parallel-edition){padding:17px}
+body.critical-lexicon-theme :is(.critical-form input,.critical-form select,.critical-unified-form input,.critical-unified-form select,#apparatus-catalog input,#apparatus-catalog select,.critical-version-head select,.critical-pdf-tools input){box-sizing:border-box;background:#222326!important;color:#f0f0f1!important;border:1px solid #66676d!important;border-radius:5px!important;box-shadow:none!important}
+body.critical-lexicon-theme :is(input,select,button,a):focus-visible{outline:2px solid #c5c5cc!important;outline-offset:2px}
+body.critical-lexicon-theme input::placeholder{color:#9d9fa5!important}
+/* Mismo patrón compacto para todos los controles, incluidos selectores PDF y mostrar más */
+body.critical-lexicon-theme :is(.critical-controls button,.critical-wrap .button,.critical-pdf-tools button,.critical-unified-options button,#critical-unified-more,#critical-more,#apparatus-catalog-more,.critical-result .actions button,.critical-version-head select,.examples button){background:#242528!important;color:#e9e9ec!important;border:1px solid #62636a!important;border-radius:6px!important;font:500 12px/1.4 Arial,Helvetica,sans-serif!important;text-transform:none!important;letter-spacing:0!important;padding:8px 11px!important;min-height:32px;box-shadow:none!important;cursor:pointer!important;text-decoration:none!important}
+body.critical-lexicon-theme :is(.critical-controls button,.critical-wrap .button,.critical-pdf-tools button,.critical-unified-options button,#critical-unified-more,#critical-more,#apparatus-catalog-more,.critical-result .actions button,.examples button):hover{background:#33353a!important;border-color:#a8aab2!important}
+body.critical-lexicon-theme :is(.critical-controls button,.critical-wrap .button,.critical-pdf-tools button,.critical-unified-options button,#critical-unified-more,#critical-more,#apparatus-catalog-more,.critical-result .actions button,.examples button):disabled{opacity:.5;cursor:not-allowed!important}
+body.critical-lexicon-theme .critical-wrap a{color:#dbdce0!important;text-decoration:underline;text-decoration-color:#777981;text-underline-offset:3px}
+body.critical-lexicon-theme .critical-result{border-top:1px solid #45474d!important;background:transparent;padding:20px 0}
+body.critical-lexicon-theme .critical-result p,body.critical-lexicon-theme .critical-parallel-edition p{color:#e2e3e5!important}
+body.critical-lexicon-theme .critical-parallel{gap:13px}
+body.critical-lexicon-theme .critical-parallel-edition{min-width:0}
+body.critical-lexicon-theme .critical-pdf-frame{border:1px solid #52535b!important;background:#17181a!important}
+body.critical-lexicon-theme :is(.critical-result mark,.critical-unified-card mark,.critical-unified-hit){background:#ffe34f!important;color:#191919!important;text-decoration:none!important;border-radius:2px;padding:0 2px}
+body.critical-lexicon-theme .critical-unified{background:#111215!important;border:1px solid #3b3d42!important}
+body.critical-lexicon-theme .critical-unified-detail{background:#1e1f22!important}
+body.critical-lexicon-theme .critical-unified-card{border-color:#44464b!important}
+body.critical-lexicon-theme #apparatus-catalog-results .critical-result{border-top:1px solid #43454a}
+body.critical-lexicon-theme footer,body.critical-lexicon-theme .footer-main{background:#111214!important;color:#c1c2c6!important;border-color:#424348!important}
+body.critical-lexicon-theme .examples{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+body.critical-lexicon-theme .examples span{color:#aeb0b6;font:12px Arial,sans-serif}
+@media(max-width:780px){body.critical-lexicon-theme .critical-wrap{width:calc(100% - 26px)}body.critical-lexicon-theme .critical-parallel{grid-template-columns:1fr}body.critical-lexicon-theme .critical-form{padding:15px}body.critical-lexicon-theme .critical-controls{align-items:stretch}body.critical-lexicon-theme .critical-controls label{flex-wrap:wrap}}
+@media print{body.critical-lexicon-theme{background:white!important;color:#111!important}body.critical-lexicon-theme .critical-wrap :is(p,h1,h2,h3){color:#111!important}body.critical-lexicon-theme :is(.critical-form,.critical-controls,.critical-unified-form,.examples,.critical-pdf-tools){display:none!important}body.critical-lexicon-theme :is(.critical-unified,.critical-result,.critical-unified-card){background:white!important;color:#111!important}body.critical-lexicon-theme mark{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
