@@ -57,3 +57,14 @@ h1{font:400 clamp(32px,5vw,55px)/1.13 Georgia,"Times New Roman",serif;letter-spa
 .footer-note{margin-top:28px;color:#858588;font:11px/1.7 system-ui,Arial,sans-serif}
 @media(max-width:650px){.minimal-bar-inner{gap:10px 14px}.minimal-brand{flex:1}.language-label{margin-left:0}.minimal-links{order:2;width:100%;gap:20px}main{padding-top:28px}.search-form button{min-width:78px;padding:0 12px}.catalogue-head{display:block}#classic-list>li{flex-wrap:wrap;gap:3px 8px}#classic-list>li .work-ident{flex-basis:100%}#classic-list>li .work-author{display:inline;margin-left:5px}.hit-paragraph{padding:13px 14px}}
 @media print{html,body{background:white!important;color:#111!important}.minimal-bar,.search-form,#classic-coverage,#classic-catalogue,#classic-more{display:none!important}main{max-width:none;padding:10mm!important}.hit-paragraph,.work-hit{background:white!important;color:#111!important;border-color:#aaa!important;break-inside:avoid}.hit-text,.work-hit h3,h1{color:#111!important}.hit-locus,.byline,.cite-note{color:#333!important}}
+/* Único selector académico de obra; nunca añade un segundo buscador. */
+.search-options{display:flex;gap:13px;align-items:end;justify-content:space-between;flex-wrap:wrap;margin-top:11px}
+.work-label{display:flex;flex:1 1 340px;max-width:750px;min-width:180px;flex-direction:column;gap:4px;color:#a9a9ab;font:500 12px/1.5 system-ui,Arial,sans-serif}
+#classic-work{width:100%;min-height:43px;max-width:100%;background:#19191b;color:#e4e0da;border:1px solid #444448;border-radius:8px;padding:8px 12px;font:400 13px/1.4 system-ui,Arial,sans-serif}
+#classic-work:focus{outline:2px solid #999;outline-offset:2px}
+.lexicon-link{display:inline-flex;align-items:center;justify-content:center;min-height:43px;background:#202022;color:#dfdedb;border:1px solid #444448;border-radius:8px;padding:7px 16px;white-space:nowrap;text-decoration:none;font:500 12px/1.5 system-ui,Arial,sans-serif}
+.lexicon-link:hover,.lexicon-link:focus-visible{background:#333337;color:#fff}
+.passages{margin:0}
+#classic-unindexed{font:400 12px/1.65 system-ui,Arial,sans-serif;color:#a0a0a4;margin-top:18px;border-top:1px solid #333337;padding-top:13px}
+@media(max-width:600px){.search-options{align-items:stretch}.work-label{max-width:none;flex-basis:100%}.lexicon-link{width:100%}}
+@media print{.search-options,#classic-unindexed{display:none!important}}
