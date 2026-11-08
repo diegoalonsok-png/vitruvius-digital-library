@@ -79,7 +79,15 @@ function addResult(row,editions){
  markedExcerpt(excerpt,row.excerpt);
  const source=document.createElement("p");source.className="lx-library-meta";
  source.textContent="Fuente digital: "+(row.attribution||row.source||"Registro sin atribución detallada");
- card.append(passage,count,top,excerpt,source,editionConnections(row,editions));list.append(card);
+ const copy=document.createElement("button");copy.type="button";copy.className="lx-library-cite-button";
+ copy.textContent="Copiar referencia y pasaje";
+ copy.addEventListener("click",async()=>{
+  const citation=[row.author,row.title,row.locus,row.language,row.edition].filter(Boolean).join(" · ");
+  const text=[citation,row.excerpt,"Fuente digital: "+(row.source||"sin ruta"),safeUrl(row.link)].filter(Boolean).join("\\n");
+  try{if(!navigator.clipboard?.writeText)throw Error("Clipboard unavailable");await navigator.clipboard.writeText(text);copy.textContent="Referencia copiada";}
+  catch{window.prompt("Copiar referencia y pasaje:",text)}
+ });
+ card.append(passage,count,top,excerpt,source,copy,editionConnections(row,editions));list.append(card);
 }
 function addSummaryResult(row){
  const card=document.createElement("article");card.className="lx-library-result";
