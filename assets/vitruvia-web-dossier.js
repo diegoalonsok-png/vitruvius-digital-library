@@ -104,7 +104,7 @@ function catalogOrder(section,cards,compare,stack){
  const select=el('select');select.setAttribute('aria-label',L('Orden del catálogo','Catalogue order','Ordre du catalogue'));
  for(const [value,text] of [['year',L('Más antiguos primero','Oldest first','Plus anciens d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  select.addEventListener('change',()=>{for(const entry of [...cards].sort((a,b)=>compare(a.record,b.record,select.value)))stack.append(entry.item)});
- control.append(select);section.insertBefore(control,stack);
+ control.append(select);section.insertBefore(control,stack);return select;
 }
 function libraryAuthor(name){
  const url='https://openlibrary.org/search.json?'+new URLSearchParams({
@@ -165,6 +165,85 @@ async function enrichWorkSynopsis(cardNode,record,valid){
   synopsis.split(/\s+/).slice(0,24).join(' ')+(synopsis.split(/\s+/).length>24?'…':'');
 }
 function normalizedWorkTitle(s){return normalized(s).replace(/\b(the|a|an|la|el|le|les)\b/g,'').trim()}
+/* Open Library groups works and editions separately. Never treat a work's
+ * first-publication year or cover as the year/cover of every later edition.
+ * Fetch editions ONLY when the visitor expands that work: faster initial search.
+ */
+function datedEditionYear(item){
+ const raw=String(item.publish_date||'');
+ const match=raw.match(/(?:^|[^\d])((?:1[4-9]|20)\d{2})(?!\d)/);
+ return match?Number(match[1]):null;
+}
+function attachEditionList(bookCard,work,valid){
+ if(!/^\/works\/OL\d+W$/.test(work.key||''))return;
+ const body=bookCard.querySelector('.web-dossier-card-body');if(!body)return;
+ const details=el('details','web-dossier-editions');
+ const summary=el('summary',null,L('Ver ediciones por año (más antiguas primero)','View editions by year (oldest first)','Voir les éditions par année (anciennes d’abord)'));
+ details.append(summary);body.append(details);
+ let loaded=false;
+ details.addEventListener('toggle',()=>{
+  if(!details.open||loaded)return;
+  loaded=true;
+  const content=el('div','web-dossier-list');details.append(content);
+  info(content,L('Consultando ediciones documentadas…','Loading documented editions…','Chargement des éditions documentées…'));
+  void (async()=>{
+   try{
+    // Open Library currently pages editions; this is a bounded set, not a
+    // guarantee of the globally earliest surviving physical edition.
+    const url='https://openlibrary.org'+work.key+'/editions.json?limit=100';
+    const data=await cached(url);
+    if(!valid()||!bookCard.isConnected)return;
+    content.replaceChildren();
+    const seen=new Set(),editions=(data?.entries||[]).filter(e=>{
+     if(!/^\/books\/OL\d+M$/.test(e.key||'')||seen.has(e.key))return false;
+     seen.add(e.key);return true;
+    }).sort((a,b)=>(datedEditionYear(a)??99999)-(datedEditionYear(b)??99999)||
+     String(a.publish_date||'').localeCompare(String(b.publish_date||''))||
+     String(a.key).localeCompare(String(b.key)));
+    if(!editions.length){
+     info(content,L('No se recuperaron ediciones verificables para esta ficha.','No verifiable editions retrieved for this work.','Aucune édition vérifiable retrouvée.'));return;
+    }
+    info(content,L('Ediciones recuperadas ordenadas por fecha; las sin año se muestran al final. La lista puede ser parcial.',
+      'Retrieved editions sorted by date; undated editions follow. This list may be incomplete.',
+      'Éditions trouvées classées par date ; celles sans date suivent. Liste possiblement partielle.'));
+    const stack=el('div','web-dossier-stack');content.append(stack);
+    for(const item of editions.slice(0,35)){
+     const url='https://openlibrary.org'+item.key;
+     const isbn=[...(item.isbn_13||[]),...(item.isbn_10||[])].find(x=>/^(?:97[89])?[0-9Xx]{10,13}$/.test(String(x).replace(/[- ]/g,'')));
+     const coverId=(item.covers||[]).find(id=>Number(id)>0);
+     const cover=coverId?'https://covers.openlibrary.org/b/id/'+coverId+'-M.jpg?default=false':
+      isbn?'https://covers.openlibrary.org/b/isbn/'+encodeURIComponent(isbn)+'-M.jpg?default=false':'';
+     const year=datedEditionYear(item);
+     const publisher=(item.publishers||[]).filter(x=>typeof x==='string').slice(0,2).join(', ');
+     const metadata=[year?L('Edición: ','Edition: ','Édition : ')+year:
+        L('Edición sin fecha acreditada','Edition date unknown','Édition sans date'),
+       publisher,item.languages?.map(x=>x.key?.split('/').pop()).filter(Boolean).join(', '),'Open Library'].filter(Boolean).join(' · ');
+     const cardNode=card(stack,String(item.title||work.title),url,'',cover,metadata,
+      L('Consultar esta edición y su ficha ↗','View this edition record ↗','Consulter cette édition ↗'));
+     cardNode.classList.add('cultural-book');
+     const bookshop='https://www.google.com/search?'+new URLSearchParams({
+      q:'site:buscalibre.com.ar '+[isbn||item.title||work.title,publisher].filter(Boolean).join(' ')
+     });
+     const shop=link(L('Buscar esta edición en librerías · verificar stock','Search bookstores for this edition · check stock','Chercher cette édition en librairie · vérifier la disponibilité'),bookshop);
+     shop.className='web-dossier-purchase-link';cardNode.querySelector('.web-dossier-card-body')?.append(shop);
+    }
+    if(editions.length>35)info(content,L('Se muestran 35 de '+editions.length+' ediciones recuperadas; consulta Open Library para seguir.',
+      'Showing 35 of '+editions.length+' retrieved editions; continue in Open Library.',
+      '35 éditions sur '+editions.length+' affichées ; poursuivre sur Open Library.'));
+    content.append(link(L('Todas las ediciones catalogadas ↗','All catalogued editions ↗','Toutes les éditions répertoriées ↗'),
+     'https://openlibrary.org'+work.key+'/editions'));
+   }catch{
+    if(valid()&&bookCard.isConnected){
+     content.replaceChildren();
+     info(content,L('No se pudo consultar el listado de ediciones. Abre la ficha externa para verificarlo.',
+      'The edition catalogue is temporarily unavailable. Check the external record.',
+      'La liste des éditions est indisponible. Consulter la notice externe.'));
+     loaded=false;
+    }
+   }
+  })();
+ });
+}
 async function books(root,topic,valid){
  const heading=header(root,L('Libros y publicaciones','Books and publications','Livres et publications'));
  const section=el('div','web-dossier-list');root.append(section);
@@ -192,23 +271,49 @@ async function books(root,topic,valid){
   }else{
    const note=el('p','web-dossier-count',
     L('Obras catalogadas: ','Catalogue works: ','Œuvres cataloguées : ')+books.length+
-    L(' · por presencia documental (cantidad de ediciones). Puedes elegir el año de aparición.',
-      ' · ordered by first catalogued publication.',
-      ' · classées par nombre d’éditions. Le tri chronologique est disponible.'));section.append(note);
+    L(' · ordenadas inicialmente por primera edición catalogada; despliega cada obra para ver sus ediciones fechadas.',
+      ' · sorted by first catalogued publication; expand each work for its dated editions.',
+      ' · classées par première publication répertoriée ; ouvrir chaque œuvre pour ses éditions datées.'));section.append(note);
    const stack=el('div','web-dossier-stack');section.append(stack);
-   const bookCards=[];
-   for(const book of books.slice(0,50)){
-    const url='https://openlibrary.org'+book.key;
-    const isbn=(Array.isArray(book.isbn)?book.isbn:[]).find(x=>/^(?:97[89])?[0-9Xx]{10,13}$/.test(String(x).replace(/[- ]/g,'')));
-    const cover=Number(book.cover_i)>0?'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg?default=false':
-     isbn?'https://covers.openlibrary.org/b/isbn/'+encodeURIComponent(isbn)+'-M.jpg?default=false':'';
-    const metadata=[book.first_publish_year?L('Primera publicación catalogada: ','First catalogued publication: ','Première publication cataloguée : ')+book.first_publish_year:'',
-      (book.author_name||[])[0],'Open Library'].filter(Boolean).join(' · ');
-    const recordCard=card(stack,book.title,url,bookDescription(book),cover,metadata);
-    recordCard.classList.add('cultural-book');bookCards.push({item:recordCard,record:book});
-    if(books.indexOf(book)<10)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
+   // Keep right-hand book lists responsive. Show 12 covers first and reveal
+   // further documented editions on demand, without issuing new API calls.
+   const maxCards=Math.min(50,books.length),bookCards=[];
+   let shown=0;
+   function appendBatch(){
+    const target=Math.min(maxCards,shown+12);
+    for(;shown<target;shown++){
+     const book=books[shown],url='https://openlibrary.org'+book.key;
+     const isbn=(Array.isArray(book.isbn)?book.isbn:[]).find(x=>/^(?:97[89])?[0-9Xx]{10,13}$/.test(String(x).replace(/[- ]/g,'')));
+     const cover=Number(book.cover_i)>0?'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg?default=false':
+      isbn?'https://covers.openlibrary.org/b/isbn/'+encodeURIComponent(isbn)+'-M.jpg?default=false':'';
+     const metadata=[book.first_publish_year?L('Primera publicación catalogada: ','First catalogued publication: ','Première publication cataloguée : ')+book.first_publish_year:'',
+       (book.author_name||[])[0],'Open Library'].filter(Boolean).join(' · ');
+     const recordCard=card(stack,book.title,url,bookDescription(book),cover,metadata);
+     recordCard.classList.add('cultural-book');
+     attachEditionList(recordCard,book,valid);
+     // Retailer search is not a claim of an in-stock book or a verified edition.
+     const buyTerm=[isbn||book.title,(book.author_name||[])[0]].filter(Boolean).join(' ');
+     const buyLink='https://www.google.com/search?'+new URLSearchParams({q:'site:buscalibre.com.ar '+buyTerm});
+     const purchase=link(L('Buscar para comprar en librería · verificar edición y stock','Search bookstore availability · verify edition and stock','Chercher en librairie · vérifier édition et stock'),buyLink);
+     purchase.className='web-dossier-purchase-link';
+     recordCard.querySelector('.web-dossier-card-body')?.append(purchase);
+     bookCards.push({item:recordCard,record:book});
+     if(shown<3)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
+    }
    }
-   catalogOrder(section,bookCards,(a,b,order)=>order==='year'?(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999):(Number(b.edition_count)||0)-(Number(a.edition_count)||0),stack);
+   appendBatch();
+   const compare=(a,b,order)=>order==='year'?(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999):(Number(b.edition_count)||0)-(Number(a.edition_count)||0);
+   const sortControl=catalogOrder(section,bookCards,compare,stack);
+   if(maxCards>shown){
+    const more=el('button','web-dossier-more',L('Mostrar más portadas','Show more book covers','Afficher plus de couvertures'));
+    more.type='button';
+    more.addEventListener('click',()=>{
+     appendBatch();
+     for(const entry of [...bookCards].sort((a,b)=>compare(a.record,b.record,sortControl.value)))stack.append(entry.item);
+     if(shown>=maxCards)more.remove();
+    });
+    section.append(more);
+   }
    if(books.length>50)info(section,L('Se presentan 50 registros; consulta el catálogo para continuar.','Showing 50 records; continue in the catalogue.','50 notices affichées ; poursuivre dans le catalogue.'));
   }
   section.append(link(L('Buscar más obras del autor en Open Library ↗','Search more works in Open Library ↗','Chercher d’autres œuvres dans Open Library ↗'),
@@ -235,8 +340,10 @@ async function albums(root,topic,valid){
    const key=baseTitle(x.collectionName);
    if(seen.has(key))continue;seen.add(key);records.push(x);
   }
-  // Retain the catalogue's relevance ordering by default; chronology is selectable.
+  // Catalogued edition release date, earliest first. Reissues may have their
+  // own dates; do not label them as a work's first-ever publication.
   records.forEach((x,index)=>{x.catalogRank=index});
+  records.sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999'))||a.catalogRank-b.catalogRank);
   if(!records.length){info(section,L('No hay álbumes atribuibles con certeza a este artista en el catálogo consultado.','No confidently attributed albums were found in the consulted catalogue.','Aucun album attribuable avec certitude dans le catalogue interrogé.'))}
   else{
    info(section,L('Catálogo de Apple Music/iTunes. Disponibilidad de compra según país y edición.','Apple Music/iTunes catalogue. Purchase availability varies by country and edition.','Catalogue Apple Music/iTunes. Disponibilité variable selon le pays et l’édition.'));

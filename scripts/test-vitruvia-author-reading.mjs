@@ -41,6 +41,13 @@ assert.match(cat.witnesses[0].excerpt,/únicamente carmen 62/);
 assert(cat.witnesses.some(r=>r.codexShelfmark==='MS. Canon. Class. Lat. 30'));
 assert(cat.translations.every(r=>r.fulltext===false));
 assert(source.includes('workIds:ms.workIds||[]'));
+assert(!source.includes('S.autoCodexOpened!==query'), 'Searching for a codex must not auto-open its viewer');
+assert.match(source,/window\.VitruviaOldestSource=\{forWork:earliestSourceFor\}/,'Earliest catalogued witness link must be available');
+const mediaDossier=read('assets/vitruvia-web-dossier.js');
+assert(mediaDossier.includes("records.sort((a,b)=>String(a.releaseDate||'9999')"), 'Music albums must initially render in release-date order');
+assert(mediaDossier.includes("if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid)"), 'Bands must retain their right-side album section');
+assert(mediaDossier.includes("if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid)"), 'Writers must retain their right-side book-cover section');
+
 const article=read('assets/vitruvia-article.js');
 // Exercise article assembly instead of depending on the position of functions
 // in the source file. A later source refresh must preserve the biography and

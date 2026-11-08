@@ -272,6 +272,7 @@ async function addArticleImages(id,identity,seen,topic){
   const d=await fetch("https://"+lang+".wikipedia.org/w/api.php?"+params,{headers:{Accept:"application/json"}}).then(r=>r.ok?r.json():null).catch(()=>null);
   for(const p of Object.values(d?.query?.pages||{})){
    const info=p.imageinfo?.[0];if(!info?.thumburl||!/^image\/(jpeg|png|webp|gif)$/.test(info.mime||""))continue;
+   if(topic&&window.VitruviaDiscovery&&!window.VitruviaDiscovery.formulaImageAllowed(p,topic))continue;
    if(ICONISH.test(p.title)||(info.width&&info.width<160)||(info.height&&info.height<160))continue;
    const key=info.thumburl.replace(/\/\d+px-.*$/,"");if(seen.has(key))continue;seen.add(key);
    const meta=info.extmetadata||{},nonfree=/true/i.test(meta.NonFree?.value||"")||!/commons\.wikimedia\.org/.test(info.descriptionurl||"");
@@ -591,7 +592,7 @@ async function searchImages(query){
  try{
   // Fetch only two high-relevance query sets before showing the first images.
   const queryImages=term=>getJSON(imageParams({
-   action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"50"
+   action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"35"
   }),signal);
   const entityImages=(identity?.imageFiles||[]).filter(x=>typeof x==="string").map(x=>"File:"+x);
   const representativeJob=!historicalSubject&&entityImages.length&&topic.intent==="overview"?getJSON(imageParams({action:"query",titles:entityImages.join("|")}),signal).then(data=>{
@@ -629,10 +630,10 @@ async function searchImages(query){
   });
   const priority=title=>/bust|sculpture|statue/.test(fold(title))?0:/portrait|painting|engraving/.test(fold(title))?1:/book|manuscript/.test(fold(title))?2:3;
   children.sort((a,b)=>priority(a.title)-priority(b.title));
-  const categoryTitles=distinct(exactCategory?[exactCategory,...children.slice(0,8).map(c=>c.title)]:accepted.map(c=>c.title)).slice(0,9);
+  const categoryTitles=distinct(exactCategory?[exactCategory,...children.slice(0,5).map(c=>c.title)]:accepted.map(c=>c.title)).slice(0,6);
   if(categoryTitles.length){
    const records=await Promise.allSettled(categoryTitles.map(title=>getJSON(imageParams({
-    action:"query",generator:"categorymembers",gcmtitle:title,gcmtype:"file",gcmlimit:"50"
+    action:"query",generator:"categorymembers",gcmtitle:title,gcmtype:"file",gcmlimit:"35"
    }),signal).then(data=>({data,title}))));
    if(id!==active)return;
    for(const record of records)if(record.status==="fulfilled")
