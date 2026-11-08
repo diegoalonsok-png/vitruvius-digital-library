@@ -1507,7 +1507,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Institutio%20oratoria"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/quintilian-la.json"
+      }
     },
     {
       "id": "martial",
@@ -1734,7 +1737,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%9A%CE%BF%CF%81%CE%B9%CE%BD%CE%B8%CE%AF%CE%BF%CF%85%CF%82%20%CE%91%CA%B9"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/clement-grc.json"
+      }
     },
     {
       "id": "didache",
@@ -1847,7 +1853,10 @@
         "Hermas",
         "Shepherd of Hermas",
         "Pastor de Hermas"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/pastor-hermas-grc.json"
+      }
     },
     {
       "id": "faventinus",
@@ -2037,7 +2046,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%94%CE%B5%CF%85%CF%84%CE%AD%CF%81%CE%B1%20%CE%9A%CE%BB%CE%AE%CE%BC%CE%B5%CE%BD%CF%84%CE%BF%CF%82%20%C2%B7%20Segunda%20carta%20de%20Clemente"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/clement-2-grc.json"
+      }
     },
     {
       "id": "diognetus",
@@ -2071,7 +2083,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CF%81%E1%BD%B8%CF%82%20%CE%94%CE%B9%CF%8C%CE%B3%CE%BD%CE%B7%CF%84%CE%BF%CE%BD%20%C2%B7%20Carta%20a%20Diogneto"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/diognetus-grc.json"
+      }
     },
     {
       "id": "justin",
@@ -2105,7 +2120,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%88%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20%CF%80%CF%81%CF%8E%CF%84%CE%B7%20%C2%B7%20Primera%20Apolog%C3%ADa"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/justin-grc.json"
+      }
     },
     {
       "id": "irenaeus",
@@ -2139,7 +2157,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BC%9C%CE%BB%CE%B5%CE%B3%CF%87%CE%BF%CF%82%20%CE%BA%CE%B1%E1%BD%B6%20%E1%BC%80%CE%BD%CE%B1%CF%84%CF%81%CE%BF%CF%80%E1%BD%B4%20%CF%84%E1%BF%86%CF%82%20%CF%88%CE%B5%CF%85%CE%B4%CF%89%CE%BD%CF%8D%CE%BC%CE%BF%CF%85%20%CE%B3%CE%BD%CF%8E%CF%83%CE%B5%CF%89%CF%82%20%C2%B7%20Adversus%20haereses"
       },
       "publicStatus": "pendiente-de-incorporar",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/irenaeus-grc.json"
+      }
     },
     {
       "id": "tertullian",
@@ -2473,7 +2494,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BD%CE%B5%CF%85%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Pneumatica"
       },
       "publicStatus": "fuente-externa-identificada",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/hero-pneumatica-grc.json"
+      }
     },
     {
       "id": "hero-automata",
@@ -2507,7 +2531,10 @@
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%91%E1%BD%90%CF%84%CE%BF%CE%BC%CE%B1%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CF%84%CE%B9%CE%BA%CE%AE%20%C2%B7%20Automata"
       },
       "publicStatus": "fuente-externa-identificada",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/hero-automata-grc.json"
+      }
     },
     {
       "id": "athenaeus-mechanicus",
@@ -3756,7 +3783,10 @@
         "Polybius",
         "Historias",
         "Histories"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/polybius-historiae-grc.json"
+      }
     },
     {
       "id": "pseudo-apollodorus-bibliotheca",
@@ -3825,7 +3855,10 @@
         "Philo",
         "Alegorías de las leyes",
         "Legum allegoriae"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/philo-legum-allegoriae-grc.json"
+      }
     },
     {
       "id": "philo-de-vita-mosis",
@@ -3861,7 +3894,10 @@
         "Philo",
         "Vida de Moisés",
         "Life of Moses"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/philo-de-vita-mosis-grc.json"
+      }
     },
     {
       "id": "plutarch-moralia",
@@ -4020,7 +4056,10 @@
         "Pausanias",
         "Descripción de Grecia",
         "Description of Greece"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/pausanias-periegesis-grc.json"
+      }
     },
     {
       "id": "galen-ars-medica",
@@ -4050,6 +4089,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/galen-ars-medica-grc.json"
       }
     },
     {
@@ -4080,6 +4122,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/galen-de-usu-partium-grc.json"
       }
     },
     {
@@ -4116,7 +4161,10 @@
         "Ptolemy",
         "Almagesto",
         "Almagest"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/ptolemy-almagest-grc.json"
+      }
     },
     {
       "id": "ptolemy-geographia",
@@ -4753,6 +4801,9 @@
       "bibliography": {
         "editionCitation": "Herodotus. Herodotus. Translated by A. D. Godley. 4 vols. Loeb Classical Library 117–120. London: William Heinemann; New York: G. P. Putnam's Sons, 1920–1925.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/herodotus-historiae-grc.json"
       }
     },
     {
@@ -7246,6 +7297,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristotle-physics-grc.json"
       }
     },
     {
@@ -7343,6 +7397,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristotle-de-anima-grc.json"
       }
     },
     {
@@ -7634,7 +7691,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/homeric-hymns-grc.json"
+      }
     },
     {
       "id": "theophrastus-characters",
@@ -9150,6 +9210,9 @@
         "gallica": "https://gallica.bnf.fr/",
         "archive": "https://archive.org/",
         "perseus": "https://www.perseus.tufts.edu/hopper/"
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/cebes-tabula-grc.json"
       }
     },
     {
@@ -9204,6 +9267,9 @@
       "bibliography": {
         "editionCitation": "Aristoxenus. The Harmonics of Aristoxenus. Edited with translation, notes, introduction and index of words by Henry S. Macran. Oxford: Clarendon Press, 1902.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristoxenus-harmonica-grc.json"
       }
     },
     {

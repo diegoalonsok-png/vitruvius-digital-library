@@ -4,21 +4,21 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 151,
-    "originalsMissing": 71,
+    "originalsIndexed": 173,
+    "originalsMissing": 49,
     "worksWithHostedTranslation": 56,
     "worksMissingTranslation": 166,
-    "textVersions": 213,
+    "textVersions": 235,
     "states": {
-      "original_pendiente": 71,
-      "original_sin_traduccion_local": 95,
+      "original_pendiente": 49,
+      "original_sin_traduccion_local": 117,
       "original_y_traduccion_local": 56
     },
     "sourceReadinessForMissingOriginals": {
-      "correspondencia_bibliografica_ambigua": 4,
+      "correspondencia_bibliografica_ambigua": 3,
       "requiere_fuente_no_canonica_o_edicion_especifica": 16,
       "sin_fuente_en_mapa_perseus": 16,
-      "tei_perseus_candidato_por_verificar": 35
+      "tei_perseus_candidato_por_verificar": 14
     }
   },
   "items": [
@@ -561,11 +561,13 @@
       "title": "Institutio oratoria",
       "originalLanguage": "la",
       "dating": "c. 95 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "phi1002.phi001"
       ],
@@ -666,11 +668,13 @@
       "title": "Πρὸς Κορινθίους Αʹ",
       "originalLanguage": "grc",
       "dating": "c. 95–100 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1271.tlg001"
       ],
@@ -701,11 +705,13 @@
       "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
       "originalLanguage": "grc",
       "dating": "Siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1419.tlg001"
       ],
@@ -785,11 +791,13 @@
       "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
       "originalLanguage": "grc",
       "dating": "Siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1271.tlg002"
       ],
@@ -801,11 +809,13 @@
       "title": "Πρὸς Διόγνητον · Carta a Diogneto",
       "originalLanguage": "grc",
       "dating": "Siglo II–III d. C. (discutido)",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0646.tlg004"
       ],
@@ -817,11 +827,13 @@
       "title": "Ἀπολογία πρώτη · Primera Apología",
       "originalLanguage": "grc",
       "dating": "Mediados del siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0645.tlg001"
       ],
@@ -833,11 +845,13 @@
       "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
       "originalLanguage": "grc",
       "dating": "Finales del siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1447.tlg001"
       ],
@@ -1046,11 +1060,13 @@
       "title": "Πνευματικά · Pneumatica",
       "originalLanguage": "grc",
       "dating": "Siglo I d. C. (datación del autor debatida)",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0559.tlg001"
       ],
@@ -1062,11 +1078,13 @@
       "title": "Αὐτοματοποιητική · Automata",
       "originalLanguage": "grc",
       "dating": "Siglo I d. C. (datación debatida)",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0559.tlg002"
       ],
@@ -1655,11 +1673,13 @@
       "title": "Ἱστορίαι",
       "originalLanguage": "grc",
       "dating": "siglo II a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0543.tlg001"
       ],
@@ -1690,11 +1710,13 @@
       "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
       "originalLanguage": "grc",
       "dating": "siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0018.tlg002"
       ],
@@ -1706,11 +1728,13 @@
       "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
       "originalLanguage": "grc",
       "dating": "siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0018.tlg022"
       ],
@@ -1853,11 +1877,13 @@
       "title": "Ἑλλάδος περιήγησις",
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0525.tlg001"
       ],
@@ -1869,11 +1895,13 @@
       "title": "Τέχνη ἰατρική",
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0057.tlg007"
       ],
@@ -1885,11 +1913,13 @@
       "title": "Περὶ χρείας μορίων",
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0057.tlg017"
       ],
@@ -1901,11 +1931,13 @@
       "title": "Μαθηματικὴ σύνταξις (Almagestum)",
       "originalLanguage": "grc",
       "dating": "siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0363.tlg001"
       ],
@@ -2134,11 +2166,13 @@
       "title": "Ἱστορίαι",
       "originalLanguage": "grc",
       "dating": "siglo V a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0016.tlg001"
       ],
@@ -2963,11 +2997,13 @@
       "title": "Φυσικὴ ἀκρόασις",
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0086.tlg031"
       ],
@@ -2997,11 +3033,13 @@
       "title": "Περὶ ψυχῆς",
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0086.tlg002"
       ],
@@ -3124,11 +3162,13 @@
       "title": "Ὁμηρικοὶ ὕμνοι",
       "originalLanguage": "grc",
       "dating": "época arcaica y helenística",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0013.tlg001",
         "tlg0013.tlg002",
@@ -3717,11 +3757,13 @@
       "title": "Πίναξ · Tabula Cebetis",
       "originalLanguage": "grc",
       "dating": "siglo I–II d. C. (datación debatida)",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg1247.tlg001"
       ],
@@ -3733,11 +3775,13 @@
       "title": "Ἁρμονικὰ στοιχεῖα",
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0088.tlg001"
       ],

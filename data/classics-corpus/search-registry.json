@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 213,
-  "works": 151,
+  "count": 235,
+  "works": 173,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -2138,6 +2138,226 @@
       "path": "data/classics-corpus/philo-en.json",
       "reader": "classics-text-reader.html?work=philo&lang=en",
       "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/homeric-hymns-grc.json",
+      "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/quintilian-la.json",
+      "reader": "classics-text-reader.html?work=quintilian&lang=la",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/clement-grc.json",
+      "reader": "classics-text-reader.html?work=clement&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pastor-hermas-grc.json",
+      "reader": "classics-text-reader.html?work=pastor-hermas&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/clement-2-grc.json",
+      "reader": "classics-text-reader.html?work=clement-2&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/diognetus-grc.json",
+      "reader": "classics-text-reader.html?work=diognetus&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/justin-grc.json",
+      "reader": "classics-text-reader.html?work=justin&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/irenaeus-grc.json",
+      "reader": "classics-text-reader.html?work=irenaeus&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hero-pneumatica-grc.json",
+      "reader": "classics-text-reader.html?work=hero-pneumatica&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hero-automata-grc.json",
+      "reader": "classics-text-reader.html?work=hero-automata&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/polybius-historiae-grc.json",
+      "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-legum-allegoriae-grc.json",
+      "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-de-vita-mosis-grc.json",
+      "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pausanias-periegesis-grc.json",
+      "reader": "classics-text-reader.html?work=pausanias-periegesis&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/galen-ars-medica-grc.json",
+      "reader": "classics-text-reader.html?work=galen-ars-medica&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
+      "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ptolemy-almagest-grc.json",
+      "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/herodotus-historiae-grc.json",
+      "reader": "classics-text-reader.html?work=herodotus-historiae&lang=grc",
+      "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-physics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cebes-tabula-grc.json",
+      "reader": "classics-text-reader.html?work=cebes-tabula&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+      "reader": "classics-text-reader.html?work=aristoxenus-harmonica&lang=grc",
+      "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
     }
   ]
 }

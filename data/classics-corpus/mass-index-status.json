@@ -1,239 +1,96 @@
 {
   "updated": "2026-11-08",
-  "newWorks": 12,
-  "newTextVersions": 12,
-  "indexedDistinctWorks": 151,
-  "registeredTextVersions": 212,
-  "missingOriginals": 71,
+  "newWorks": 6,
+  "newTextVersions": 6,
+  "indexedDistinctWorks": 173,
+  "registeredTextVersions": 235,
+  "missingOriginals": 49,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "nepos",
-      "lang": "la",
-      "path": "data/classics-corpus/nepos-la.json",
-      "passages": 176,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0588/abo001/phi0588.abo001.perseus-lat2.xml",
-      "sha256": "cad2fe7a69410c5db6bdfbb1cbb981cd62b9dc2001e05f365c2c4e640d79df74",
-      "componentUrns": [
-        "phi0588.abo001",
-        "phi0588.abo002",
-        "phi0588.abo003",
-        "phi0588.abo004",
-        "phi0588.abo005",
-        "phi0588.abo006",
-        "phi0588.abo007",
-        "phi0588.abo008",
-        "phi0588.abo009",
-        "phi0588.abo010",
-        "phi0588.abo011",
-        "phi0588.abo012",
-        "phi0588.abo013",
-        "phi0588.abo014",
-        "phi0588.abo015",
-        "phi0588.abo016",
-        "phi0588.abo017",
-        "phi0588.abo018",
-        "phi0588.abo019",
-        "phi0588.abo020",
-        "phi0588.abo021",
-        "phi0588.abo022",
-        "phi0588.abo023",
-        "phi0588.abo024",
-        "phi0588.abo025"
-      ]
-    },
-    {
-      "workId": "appian-romaika",
+      "workId": "ptolemy-almagest",
       "lang": "grc",
-      "path": "data/classics-corpus/appian-romaika-grc.json",
-      "passages": 1279,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0551/tlg002/tlg0551.tlg002.perseus-grc2.xml",
-      "sha256": "e297d0dfb18a0ec6823bc5f75043ff12878692aaf3ec63c2450690eb652b538a",
+      "path": "data/classics-corpus/ptolemy-almagest-grc.json",
+      "passages": 898,
+      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0363/tlg001/tlg0363.tlg001.1st1K-grc1.xml",
+      "sha256": "3a5736d0922b99b81044be8be0c233f05f53e5b45bdcb922df386feffbe8cee2",
       "componentUrns": [
-        "tlg0551.tlg002",
-        "tlg0551.tlg003",
-        "tlg0551.tlg004",
-        "tlg0551.tlg005",
-        "tlg0551.tlg006",
-        "tlg0551.tlg007",
-        "tlg0551.tlg008",
-        "tlg0551.tlg009",
-        "tlg0551.tlg010",
-        "tlg0551.tlg011",
-        "tlg0551.tlg012",
-        "tlg0551.tlg013",
-        "tlg0551.tlg014",
-        "tlg0551.tlg017"
+        "tlg0363.tlg001"
       ]
     },
     {
-      "workId": "suetonius-caesares",
-      "lang": "la",
-      "path": "data/classics-corpus/suetonius-caesares-la.json",
-      "passages": 1227,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1348/abo011/phi1348.abo011.perseus-lat2.xml",
-      "sha256": "e981583b84d9b9e4b3bfa320345c2abc6c458846cc96eea1071131b3bcef0699",
-      "componentUrns": [
-        "phi1348.abo011",
-        "phi1348.abo012",
-        "phi1348.abo013",
-        "phi1348.abo014",
-        "phi1348.abo015",
-        "phi1348.abo016",
-        "phi1348.abo017",
-        "phi1348.abo018",
-        "phi1348.abo019",
-        "phi1348.abo020",
-        "phi1348.abo021",
-        "phi1348.abo022"
-      ]
-    },
-    {
-      "workId": "seneca-tragoediae",
-      "lang": "la",
-      "path": "data/classics-corpus/seneca-tragoediae-la.json",
-      "passages": 1503,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1017/phi001/phi1017.phi001.perseus-lat2.xml",
-      "sha256": "e106389bbbcf014aefe47057231851012fa3945b286967cf73fba15b6c587fa4",
-      "componentUrns": [
-        "phi1017.phi001",
-        "phi1017.phi002",
-        "phi1017.phi003",
-        "phi1017.phi004",
-        "phi1017.phi005",
-        "phi1017.phi006",
-        "phi1017.phi007",
-        "phi1017.phi008",
-        "phi1017.phi009",
-        "phi1017.phi010"
-      ]
-    },
-    {
-      "workId": "livy",
-      "lang": "la",
-      "path": "data/classics-corpus/livy-la.json",
-      "passages": 8105,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0914/phi001/phi0914.phi001.perseus-lat5.xml",
-      "sha256": "c5f0922a96df71f27486052c9718ec3713e5ac785b266c37049da5a0efd9382d",
-      "componentUrns": [
-        "phi0914.phi001"
-      ]
-    },
-    {
-      "workId": "dionysius",
+      "workId": "herodotus-historiae",
       "lang": "grc",
-      "path": "data/classics-corpus/dionysius-grc.json",
-      "passages": 4256,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0081/tlg001/tlg0081.tlg001.perseus-grc2.xml",
-      "sha256": "d8e56f96bd07254b8e62867093fa946d2fd4cc9962ed1052f655dd257110fb54",
+      "path": "data/classics-corpus/herodotus-historiae-grc.json",
+      "passages": 4338,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0016/tlg001/tlg0016.tlg001.perseus-grc2.xml",
+      "sha256": "7fd6034abe6b90ce1d0b844ed7a24d5c19f85ccc6c2baa3e4aa30ef294b0bc2e",
       "componentUrns": [
-        "tlg0081.tlg001"
+        "tlg0016.tlg001"
       ]
     },
     {
-      "workId": "strabo",
+      "workId": "aristotle-physics",
       "lang": "grc",
-      "path": "data/classics-corpus/strabo-grc.json",
-      "passages": 1709,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0099/tlg001/tlg0099.tlg001.perseus-grc2.xml",
-      "sha256": "9bd4f8a520b71002a3a0a18c8823ba225c9ab82af83b8caf086d7b3732468d34",
+      "path": "data/classics-corpus/aristotle-physics-grc.json",
+      "passages": 201,
+      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg031/tlg0086.tlg031.1st1K-grc1.xml",
+      "sha256": "bf5ed935bb5ee53cd3461e9cb1aa2adc70bb7d8c6959a752a487b8582126d8df",
       "componentUrns": [
-        "tlg0099.tlg001"
+        "tlg0086.tlg031"
       ]
     },
     {
-      "workId": "philo",
+      "workId": "aristotle-de-anima",
       "lang": "grc",
-      "path": "data/classics-corpus/philo-grc.json",
-      "passages": 178,
-      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0018/tlg001/tlg0018.tlg001.1st1K-grc1.xml",
-      "sha256": "93dcbd16b852ef66753ddaa56a2b27a0c2bfde82860d1cfecdcd9b58ea57cd6b",
+      "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+      "passages": 79,
+      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg002/tlg0086.tlg002.1st1K-grc2.xml",
+      "sha256": "ed8e8daed9f9d5139952052574cd8de06631ffeb648253b080ee5e08c595d8fa",
       "componentUrns": [
-        "tlg0018.tlg001"
+        "tlg0086.tlg002"
       ]
     },
     {
-      "workId": "dioscorides",
+      "workId": "cebes-tabula",
       "lang": "grc",
-      "path": "data/classics-corpus/dioscorides-grc.json",
-      "passages": 1865,
-      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0656/tlg001/tlg0656.tlg001.1st1K-grc1.xml",
-      "sha256": "e2a2175c5ca1c1a2313c5816bc79c7fa1c9103766fcad193356d0c13ce6746bc",
+      "path": "data/classics-corpus/cebes-tabula-grc.json",
+      "passages": 150,
+      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1247/tlg001/tlg1247.tlg001.1st1K-grc1.xml",
+      "sha256": "175583b652576c87987caf9220fb732d7d0d156cbb2e22fd982bad78a3b11da6",
       "componentUrns": [
-        "tlg0656.tlg001"
+        "tlg1247.tlg001"
       ]
     },
     {
-      "workId": "josephus-antiquities",
+      "workId": "aristoxenus-harmonica",
       "lang": "grc",
-      "path": "data/classics-corpus/josephus-antiquities-grc.json",
-      "passages": 7403,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0526/tlg001/tlg0526.tlg001.perseus-grc2.xml",
-      "sha256": "982de49721b1ef7df4e6967895cab75359da6aada0ffc673b044f533c5cdc406",
+      "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+      "passages": 95,
+      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0088/tlg001/tlg0088.tlg001.1st1K-grc1.xml",
+      "sha256": "8006feeb3ac1365ef6603d2998c7a3199002c7250582612cd9b4e265e4e7eaa7",
       "componentUrns": [
-        "tlg0526.tlg001"
-      ]
-    },
-    {
-      "workId": "ignatius",
-      "lang": "grc",
-      "path": "data/classics-corpus/ignatius-grc.json",
-      "passages": 205,
-      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1443/tlg001/tlg1443.tlg001.1st1K-grc1.xml",
-      "sha256": "407480ff3171bc805d165869aa317d54b51818a47f42f8fe30a09db7ba9f585d",
-      "componentUrns": [
-        "tlg1443.tlg001"
-      ]
-    },
-    {
-      "workId": "polycarp",
-      "lang": "grc",
-      "path": "data/classics-corpus/polycarp-grc.json",
-      "passages": 38,
-      "source": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg1622/tlg001/tlg1622.tlg001.1st1K-grc1.xml",
-      "sha256": "3e4115e6c7026136ccede52edbab85fefc4b90cf4096b7cb008fa07613e0a317",
-      "componentUrns": [
-        "tlg1622.tlg001"
+        "tlg0088.tlg001"
       ]
     }
   ],
-  "errors": [
-    "homeric-hymns: No se recuperó suficiente texto original",
-    "quintilian: excede el límite de lote",
-    "clement: excede el límite de lote",
-    "pastor-hermas: excede el límite de lote",
-    "clement-2: excede el límite de lote",
-    "diognetus: excede el límite de lote",
-    "justin: excede el límite de lote",
-    "irenaeus: excede el límite de lote",
-    "hero-pneumatica: excede el límite de lote",
-    "hero-automata: excede el límite de lote",
-    "polybius-historiae: excede el límite de lote",
-    "philo-legum-allegoriae: excede el límite de lote",
-    "philo-de-vita-mosis: excede el límite de lote",
-    "pausanias-periegesis: excede el límite de lote",
-    "galen-ars-medica: excede el límite de lote",
-    "galen-de-usu-partium: excede el límite de lote",
-    "ptolemy-almagest: excede el límite de lote",
-    "herodotus-historiae: excede el límite de lote",
-    "thucydides-war: excede el límite de lote",
-    "cassius-dio-historia: excede el límite de lote",
-    "athenaeus-deipnosophistae: excede el límite de lote",
-    "aristotle-physics: excede el límite de lote",
-    "aristotle-de-anima: excede el límite de lote",
-    "theophrastus-historia-plantarum: excede el límite de lote",
-    "cebes-tabula: excede el límite de lote",
-    "aristoxenus-harmonica: excede el límite de lote",
-    "archimedes-fluitantibus: excede el límite de lote",
-    "ps-aristotle-mechanica: excede el límite de lote",
-    "euclid-optica: excede el límite de lote",
-    "cleonides-harmonica: excede el límite de lote",
-    "hero-belopoeica: excede el límite de lote",
-    "geminus-isagoge: excede el límite de lote",
-    "aristarchus-magnitudines: excede el límite de lote",
-    "apollonius-conica: excede el límite de lote",
-    "pappus-synagoge: excede el límite de lote"
+  "errors": [],
+  "deferredForBatch": [
+    "thucydides-war",
+    "cassius-dio-historia",
+    "athenaeus-deipnosophistae",
+    "theophrastus-historia-plantarum",
+    "archimedes-fluitantibus",
+    "ps-aristotle-mechanica",
+    "euclid-optica",
+    "cleonides-harmonica",
+    "hero-belopoeica",
+    "geminus-isagoge",
+    "aristarchus-magnitudines",
+    "apollonius-conica",
+    "pappus-synagoge"
   ],
+  "requiresSharding": [],
   "unavailableSourceMappings": [
     {
       "workId": "varro-rustica",
