@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 160,
+  "count": 161,
   "works": 114,
   "entries": [
     {
@@ -1608,6 +1608,16 @@
       "path": "data/classics-corpus/cicero-pro-archia-la.json",
       "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-philoctetes-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1898); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

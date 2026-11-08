@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 114,
-    "translatedWorksLocal": 40,
-    "worksWithoutHostedTranslation": 182,
+    "translatedWorksLocal": 41,
+    "worksWithoutHostedTranslation": 181,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 39,
+      "en": 40,
       "fr": 2
     },
     "originalTextIndexed": 114,
@@ -2091,14 +2091,17 @@
       "title": "Φιλοκτήτης",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Richard Jebb (1898), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

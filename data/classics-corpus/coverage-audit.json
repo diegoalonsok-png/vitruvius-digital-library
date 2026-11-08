@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 160,
+    "indexedTextVersions": 161,
     "indexedDistinctWorks": 114,
     "manuscriptWitnesses": 23
   },
@@ -2817,9 +2817,11 @@
       "dating": "409 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/sophocles-philoctetes-en.json",
         "data/classics-corpus/sophocles-philoctetes-grc.json"
       ],
       "localPDF": null,

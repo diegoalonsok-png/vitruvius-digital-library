@@ -5673,8 +5673,18 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "grc": "data/classics-corpus/sophocles-philoctetes-grc.json"
-      }
+        "grc": "data/classics-corpus/sophocles-philoctetes-grc.json",
+        "en": "data/classics-corpus/sophocles-philoctetes-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Richard Jebb (1898)",
+          "path": "classics-text-reader.html?work=sophocles-philoctetes&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Sófocles. Φιλοκτήτης. Translated by Richard Jebb. Cambridge University Press, 1898. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "sophocles-oedipus-colonus",
