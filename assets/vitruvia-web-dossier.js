@@ -369,6 +369,8 @@ async function albums(root,topic,valid){
   for(const x of matches){const key=baseTitle(x.collectionName);if(seen.has(key))continue;seen.add(key);records.push(x)}
   // Dates refer to catalogued editions, not necessarily original first releases.
   records.forEach((x,index)=>{x.catalogRank=index});
+  // Keep chronological order explicit after deduplication; catalogued edition dates only.
+  records.sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999'))||a.catalogRank-b.catalogRank);
   if(!records.length){info(section,L('No hay álbumes atribuibles con certeza a este artista en el catálogo consultado.','No confidently attributed albums were found in the consulted catalogue.','Aucun album attribuable avec certitude dans le catalogue interrogé.'))}
   else{
    info(section,L('Catálogo de Apple Music/iTunes. Disponibilidad de compra según país y edición.','Apple Music/iTunes catalogue. Purchase availability varies by country and edition.','Catalogue Apple Music/iTunes. Disponibilité variable selon le pays et l’édition.'));
