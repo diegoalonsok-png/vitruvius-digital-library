@@ -6,13 +6,13 @@
   "counts": {
     "originalsIndexed": 151,
     "originalsMissing": 71,
-    "worksWithHostedTranslation": 55,
-    "worksMissingTranslation": 167,
-    "textVersions": 212,
+    "worksWithHostedTranslation": 56,
+    "worksMissingTranslation": 166,
+    "textVersions": 213,
     "states": {
       "original_pendiente": 71,
-      "original_sin_traduccion_local": 96,
-      "original_y_traduccion_local": 55
+      "original_sin_traduccion_local": 95,
+      "original_y_traduccion_local": 56
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 4,
@@ -421,11 +421,12 @@
       "originalLanguage": "grc",
       "dating": "siglo I d. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0018.tlg001"

@@ -1187,8 +1187,18 @@
         "De opificio mundi"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/philo-grc.json"
-      }
+        "grc": "data/classics-corpus/philo-grc.json",
+        "en": "data/classics-corpus/philo-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Charles Duke Yonge (1854)",
+          "path": "classics-text-reader.html?work=philo&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Filón de Alejandría. De opificio mundi. Translated by Charles Duke Yonge. Henry G. Bohn, London, 1854. OpenGreekAndLatin First1KGreek, TEI."
+        }
+      ]
     },
     {
       "id": "seneca-epistulae",

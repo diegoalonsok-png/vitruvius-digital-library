@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 212,
+    "indexedTextVersions": 213,
     "indexedDistinctWorks": 151,
     "manuscriptWitnesses": 23
   },
@@ -529,9 +529,11 @@
       "dating": "siglo I d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/philo-en.json",
         "data/classics-corpus/philo-grc.json"
       ],
       "localPDF": null,

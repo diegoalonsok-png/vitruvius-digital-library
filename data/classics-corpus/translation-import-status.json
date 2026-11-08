@@ -1,11 +1,17 @@
 {
   "updated": "2026-11-08",
-  "sources": "PerseusDL TEI con SHA fijado",
-  "newTranslations": 0,
-  "titles": [],
-  "indexedWorks": 139,
-  "indexedVersions": 200,
-  "translatedWorks": 55,
+  "sources": "PerseusDL / OpenGreekAndLatin First1KGreek, TEI con SHA fijado",
+  "newTranslations": 1,
+  "titles": [
+    "philo"
+  ],
+  "indexedWorks": 151,
+  "indexedVersions": 213,
+  "translatedWorks": 56,
   "failures": [],
+  "pendingOriginals": [
+    "philo-legum-allegoriae",
+    "philo-de-vita-mosis"
+  ],
   "policy": "Nada de traducciones automáticas presentadas como históricas. Mantener obras originales y versiones sin alineación forzada."
 }

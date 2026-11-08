@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 212,
+  "count": 213,
   "works": 151,
   "entries": [
     {
@@ -2128,6 +2128,16 @@
       "path": "data/classics-corpus/polycarp-grc.json",
       "reader": "classics-text-reader.html?work=polycarp&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-en.json",
+      "reader": "classics-text-reader.html?work=philo&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
     }
   ]
 }
