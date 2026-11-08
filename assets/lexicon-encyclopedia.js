@@ -87,7 +87,7 @@ function update(query,opts={}){
  const subject=alias[key(term)]||term;
  const note=special(term);
  const ancient=opts.ancient===true||(!opts.modernContext&&/^(palabra|lema|etimologia)$/.test(new URLSearchParams(location.search).get("mode")||"palabra")&&
-  /^[\\p{L}\\p{M}-]{2,50}$/u.test(term));
+  /^[\p{L}\p{M}-]{2,50}$/u.test(term));
  const short=trim(opts.gloss)||note?.summary||(ancient?"No hay una acepción clásica verificada en esta ficha editorial. Consulte el diccionario antiguo y los pasajes del corpus.":"El contexto enciclopédico moderno es complementario; no sustituye los testimonios antiguos.");
  const shell=el("div",null,"lx-encyclopedia-layout");
  const top=el("header",null,"lx-encyclopedia-top");
