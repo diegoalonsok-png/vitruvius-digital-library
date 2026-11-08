@@ -12,7 +12,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: classics-semantic-index
+  group: classics-corpus-publication-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   build:
