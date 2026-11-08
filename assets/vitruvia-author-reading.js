@@ -18,6 +18,8 @@ function select(rows,query,person){
 function render(rows,query,person){
  const data=select(rows,query,person);if(!data.books.length)return false;
  const body=document.getElementById('article-body');if(!body)return false;
+ // Progressive source updates must replace, never duplicate, the reading dossier.
+ body.querySelector('#article-author-reading')?.remove();
  const lang=document.documentElement.lang||'es';
  const text=(es,en,fr)=>lang==='en'?en:lang==='fr'?fr:es;
  const section=document.createElement('section');section.className='article-author-reading';section.id='article-author-reading';
@@ -50,6 +52,8 @@ function render(rows,query,person){
     text('Edición o fragmento parcial; consultar cobertura.','Partial edition or excerpt; check coverage.','Édition ou extrait partiel ; vérifier la couverture.'):
     reading.kind==='external'?
     text('Lectura en institución externa; comprobar edición y cobertura.','Read at external institution; check edition and coverage.','Lecture à une institution externe ; vérifier édition et couverture.'):
+    b.originalEditionStatus==='pendiente-de-incorporar'?
+    text('Texto original indexado por pasajes; cotejo editorial y cobertura pendientes de verificar.','Original text indexed by passage; editorial collation and coverage not yet verified.','Texte original indexé par passages ; collation et couverture à vérifier.'):
     text('Acceso al texto en la biblioteca.','Text available through the library.','Accès au texte dans la bibliothèque.')):
    text('Texto original no disponible en el catálogo; consultar la ficha y los testimonios.','Original text not available in this catalogue; consult the work record and witnesses.','Texte original indisponible dans le catalogue ; consulter la notice et les témoins.');
   add(details,'small',note,'article-original-reading-note');
@@ -65,6 +69,11 @@ function render(rows,query,person){
   }else linkTitle=text('Consultar ficha y códices →','View record and manuscripts →','Consulter notice et manuscrits →');
   const primary=link(controls,linkTitle,reading?.url||b.link);
   if(primary)primary.className='article-original-reading-cta';
+  const oldest=window.VitruviaOldestSource?.forWork(b.workId);
+  if(oldest){
+   const a=link(controls,oldest.label,oldest.url);
+   if(a)a.className='article-original-reading-record';
+  }
   if(reading&&b.link&&b.link!==reading.url){
    const record=link(controls,text('Ficha de la obra','Work record','Notice de l’œuvre'),b.link);
    if(record)record.className='article-original-reading-record';
