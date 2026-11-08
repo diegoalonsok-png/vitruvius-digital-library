@@ -1,0 +1,38 @@
+name: Verificar concordancia y aparato de Vitruvio
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'aparato-critico.html'
+      - 'assets/apparatus-lexicon-theme.css'
+      - 'assets/vitruvius-apparatus-concordance.js'
+      - 'data/apparatus-nearby.json'
+      - 'data/critical-notes.json'
+      - 'data/apparatus-index.json'
+      - 'scripts/test-apparatus-concordance.mjs'
+      - '.github/workflows/apparatus-concordance.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'aparato-critico.html'
+      - 'assets/apparatus-lexicon-theme.css'
+      - 'assets/vitruvius-apparatus-concordance.js'
+      - 'data/apparatus-nearby.json'
+      - 'data/critical-notes.json'
+      - 'data/apparatus-index.json'
+      - 'scripts/test-apparatus-concordance.mjs'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sintaxis JS del lector integrado
+        run: node --check assets/vitruvius-apparatus-concordance.js
+      - name: Confirmar concordancias y fuentes sin referencias inventadas
+        run: node scripts/test-apparatus-concordance.mjs
