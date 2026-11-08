@@ -273,6 +273,7 @@ async function addArticleImages(id,identity,seen,topic){
   for(const p of Object.values(d?.query?.pages||{})){
    const info=p.imageinfo?.[0];if(!info?.thumburl||!/^image\/(jpeg|png|webp|gif)$/.test(info.mime||""))continue;
    if(ICONISH.test(p.title)||(info.width&&info.width<160)||(info.height&&info.height<160))continue;
+   if(window.VitruviaDiscovery?.allowFormulaImage&&!window.VitruviaDiscovery.allowFormulaImage(p,topic))continue;
    const key=info.thumburl.replace(/\/\d+px-.*$/,"");if(seen.has(key))continue;seen.add(key);
    const meta=info.extmetadata||{},nonfree=/true/i.test(meta.NonFree?.value||"")||!/commons\.wikimedia\.org/.test(info.descriptionurl||"");
    const lic=String(meta.LicenseShortName?.value||"").replace(/<[^>]*>/g,"");
@@ -587,7 +588,7 @@ async function searchImages(query){
  }).catch(()=>[]);
  const requests=fold(q)==="logos"?distinct(["λόγος", "logos Greek philosophy", "logos ancient Greek manuscript", ...topic.queries]):topic.queries;
  controller=new AbortController();const signal=controller.signal;
- const timeout=setTimeout(()=>controller.abort(),18500);
+ const timeout=setTimeout(()=>controller.abort(),14000);
  try{
   // Fetch only two high-relevance query sets before showing the first images.
   const queryImages=term=>getJSON(imageParams({
@@ -603,6 +604,8 @@ async function searchImages(query){
   const categoryTerm=paintings?"paintings by "+categorySubject:photos?"photographs of "+categorySubject:categorySubject;
   const categoriesJob=getJSON({action:"query",list:"search",srnamespace:"14",srsearch:categoryTerm,srlimit:"12"},signal).catch(()=>null);
   const subcategoriesJob=identity?.commonsCategory?getJSON({action:"query",list:"categorymembers",cmtitle:"Category:"+identity.commonsCategory,cmtype:"subcat",cmlimit:"30"},signal).catch(()=>null):Promise.resolve(null);
+  // Start other queries concurrently while the first two give an early preview.
+  const remainingTask=Promise.allSettled(requests.slice(2,5).map(queryImages));
   const firstSettled=await Promise.allSettled(requests.slice(0,2).map(queryImages));
   if(id!==active)return;
   const pages=firstSettled.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{}));
@@ -612,7 +615,7 @@ async function searchImages(query){
    const early=collectedImages(pages,topic).slice(0,24);
    if(early.length){displayGroups(early,topic);status.textContent=locale("Primeras imágenes; se siguen sumando las de las colecciones relacionadas…","First images; related collections are still loading…","Premières images ; chargement des collections liées…")}
   }
-  const remaining=await Promise.allSettled(requests.slice(2).map(queryImages));
+  const remaining=await remainingTask;
   if(id!==active)return;
   pages.push(...remaining.filter(v=>v.status==="fulfilled").flatMap(v=>Object.values(v.value.query?.pages||{})));
   pages.push(...await representativeJob);
