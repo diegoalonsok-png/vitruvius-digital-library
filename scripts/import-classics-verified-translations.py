@@ -66,6 +66,12 @@ CANDIDATES = [
          translator="Harris Rackham", year=1944,
          publisher="William Heinemann / Harvard University Press",
          mode="book-bekker-pages", min_units=160, min_chars=55000),
+    dict(id="hippocrates-aphorisms", original="grc", repo="canonical-greekLit",
+         path="data/tlg0627/tlg012/tlg0627.tlg012.perseus-eng2.xml",
+         blob="d4a9d7434955eede6a1624c0c24a2adb45953b22",
+         translator="Francis Adams", year=1886,
+         publisher="William Wood and Company, New York",
+         mode="section-aphorisms", min_units=410, min_chars=28000),
 ]
 
 
@@ -164,6 +170,26 @@ def extract(raw, candidate):
             raise ValueError("Cobertura insuficiente de secciones: " + str(unit_count))
         if len({p["locus"] for p in passages}) != unit_count:
             raise ValueError("Loci de secciones duplicados")
+    elif candidate["mode"] == "section-aphorisms":
+        passages = []
+        for div in body.iter(NS + "div"):
+            if div.get("subtype") != "aphorism":
+                continue
+            section = next((a for a in ancestors(div)
+                            if a.tag == NS + "div" and a.get("subtype") == "section"), None)
+            if section is None or not section.get("n") or not div.get("n"):
+                continue
+            # Cada sentencia mantiene su sección y número, sin notas ni encabezados.
+            value = " ".join(text_without_notes(p) for p in div.iter(NS + "p")).strip()
+            if value:
+                passages.append(dict(
+                    locus=section.get("n") + "." + div.get("n"), text=value,
+                    locusKind="sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"))
+        unit_count = len(passages)
+        if unit_count < candidate["min_units"]:
+            raise ValueError("Aforismos traducidos insuficientes: " + str(unit_count))
+        if len({p["locus"] for p in passages}) != unit_count:
+            raise ValueError("Aforismos traducidos con loci duplicados")
     elif candidate["mode"] == "book-bekker-pages":
         passages = []
         for div in body.iter(NS + "div"):
