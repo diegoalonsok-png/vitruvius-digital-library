@@ -58,7 +58,17 @@ try{
     assert.equal(report.philologyPresent,false,"Experimental philological panel must not appear");
     assert.ok(report.results.width>width*0.75,"Results main container is too narrow");
     assert.ok(report.article.width>=report.results.width*0.94,"Encyclopedia article is too narrow");
-    assert.ok(report.articleBody.width>=report.article.width*0.92,"Encyclopedia body is restricted to a side column");
+    // The academic catalogue legitimately occupies the right quarter on wide
+    // screens; the reading column should remain ~70–80%, not 92–100%.
+    if(width>=1100){
+      assert.ok(report.articleBody.width>=report.article.width*0.68,
+        "Encyclopedia text became too narrow beside the academic right rail");
+      assert.ok(report.culturalRail.width>=report.article.width*0.20,
+        "Academic right rail is missing from encyclopedia reading mode");
+    }else{
+      assert.ok(report.articleBody.width>=report.article.width*0.90,
+        "Encyclopedia body must stack and use nearly full width on smaller screens");
+    }
     assert.ok(Math.abs(report.articleBody.x-report.article.x)<28,"Encyclopedia body has a blank left rail");
     // On wide desktop, the requested cultural catalogue occupies a real right rail.
     // On tablet/mobile, both reading and results remain full-width in a stacked layout.

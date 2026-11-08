@@ -1,0 +1,33 @@
+name: Vitruvia y Lexicon · originales griegos TEI
+on:
+  pull_request:
+    paths:
+      - 'assets/classics-corpus-search.js'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-connected-greek-originals.mjs'
+      - '.github/workflows/connected-greek-originals.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/classics-corpus-search.js'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-connected-greek-originals.mjs'
+      - '.github/workflows/connected-greek-originals.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  interconnection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax
+        run: node --check assets/classics-corpus-search.js
+      - name: Verify documentary connections
+        run: node scripts/test-connected-greek-originals.mjs
