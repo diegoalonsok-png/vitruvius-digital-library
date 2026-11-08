@@ -3442,10 +3442,11 @@
       "language": "la",
       "genre": "Lingüística",
       "dating": "siglo I a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-completa",
       "reading": {
-        "url": "https://thelatinlibrary.com/varro.html",
-        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+        "url": "classics-text-reader.html?work=varro-de-lingua-latina&lang=la",
+        "status": "Lectura local del texto latino, edición Müller (Teubner 1833), transcripción TEI Corpus Corporum / Universidad de Zúrich (2013). Libros conservados V–X, 666 unidades documentadas; sin los libros perdidos, sin aparato crítico codificado ni cotejo manuscrito. 11 numeraciones duplicadas del TEI con marcas locales explícitas.",
+        "sourceUrl": "https://github.com/alexanderboxer/voynich-attack/blob/255bd632e45459230eaf2a994e0557ed6c682869/corpora/latin/CorpusCorporum/auctores_scientiarum_varii/varro/de_lingua_latina/de_lingua_latina.TEI-P5.xml"
       },
       "manuscript": {
         "manifest": null,
@@ -3471,6 +3472,14 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "localReader": "classics-text-reader.html?work=varro-de-lingua-latina&lang=la",
+      "corpusFiles": {
+        "la": "data/classics-corpus/varro-de-lingua-latina-la.json"
+      },
+      "bibliography": {
+        "editionCitation": "Varro, Marcus Terentius. De lingua Latina librorum quae supersunt. Edited by Karl Otfried Müller. Leipzig: B. G. Teubner, 1833. Digital transcription: Philipp Roelli, Corpus Corporum (University of Zurich, 2013).",
+        "method": "Se conservan y buscan los seis libros V–X con numeración por sección del TEI. Identificadores repetidos marcados como claves locales no canónicas. El aparato crítico de la edición no está codificado en el XML."
       }
     },
     {
