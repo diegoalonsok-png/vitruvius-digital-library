@@ -1,11 +1,11 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-07",
+  "generated": "2026-11-08",
   "basis": "Registro de archivos textuales localmente indexados en coverage-audit.json (construido desde search-registry.json). A translation.status external is bibliographic only and is not verified as locally readable. HTML/JSON count only if registered as indexed. Counts are works, not files. A book can count in multiple languages.",
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 64,
+    "locallyIndexedWorks": 74,
     "translatedWorksLocal": 25,
     "worksWithoutHostedTranslation": 197,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 24,
       "fr": 2
     },
-    "originalTextIndexed": 64,
-    "originalTextNotIndexed": 158
+    "originalTextIndexed": 74,
+    "originalTextNotIndexed": 148
   },
   "works": [
     {
@@ -1038,14 +1038,16 @@
       "author": "Catón el Viejo",
       "title": "De agri cultura",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-catilinariae",
@@ -1700,42 +1702,48 @@
       "author": "Sófocles",
       "title": "Οἰδίπους Τύραννος",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "euripides-medea",
       "author": "Eurípides",
       "title": "Μήδεια",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "aristophanes-clouds",
       "author": "Aristófanes",
       "title": "Νεφέλαι",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "herodotus-historiae",
@@ -1770,30 +1778,34 @@
       "author": "Jenofonte",
       "title": "Ἀνάβασις",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "plato-republic",
       "author": "Platón",
       "title": "Πολιτεία",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [
         "en"
       ],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Paul Shorey (inglés; Perseus/Scaife). Enlace documentado en la pestaña «Edición y traducción». No está alojada ni cotejada localmente.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "plato-apology",
@@ -1838,56 +1850,64 @@
       "author": "Aristóteles",
       "title": "Πολιτικά",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "hippocrates-aphorisms",
       "author": "Corpus hipocrático",
       "title": "Ἀφορισμοί",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "epictetus-discourses",
       "author": "Epicteto (recopilación de Arriano)",
       "title": "Διατριβαί",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "arrian-anabasis-alexandri",
       "author": "Arriano",
       "title": "Ἀλεξάνδρου Ἀνάβασις",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cassius-dio-historia",

@@ -1,94 +1,92 @@
 {
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "newWorks": 10,
   "newTextVersions": 10,
-  "indexedDistinctWorks": 64,
-  "registeredTextVersions": 90,
-  "missingOriginals": 158,
+  "indexedDistinctWorks": 74,
+  "registeredTextVersions": 105,
+  "missingOriginals": 148,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "statius-thebais",
+      "workId": "cato-agri-cultura",
       "lang": "la",
-      "path": "data/classics-corpus/statius-thebais-la.json",
-      "passages": 1220,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1020/phi001/phi1020.phi001.perseus-lat2.xml",
-      "sha256": "4e1606ad870fabd24c87f47179fb9bac538f43275ee76850c32ff493e063e679"
+      "path": "data/classics-corpus/cato-agri-cultura-la.json",
+      "passages": 168,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0079/stoa001/stoa0079.stoa001.perseus-lat1.xml",
+      "sha256": "b7bc1a8fd2a20beb2da99e9ea42fcfefd5f6abde72d96c8d83e96510fc34c2ec"
     },
     {
-      "workId": "pliny-younger-epistulae",
-      "lang": "la",
-      "path": "data/classics-corpus/pliny-younger-epistulae-la.json",
-      "passages": 1979,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1318/phi001/phi1318.phi001.perseus-lat1.xml",
-      "sha256": "530b450161dab7d8e2bd7a319ef9e03d5198e1a68f77a295b28a7de05577afa6"
-    },
-    {
-      "workId": "aulus-gellius-noctes",
-      "lang": "la",
-      "path": "data/classics-corpus/aulus-gellius-noctes-la.json",
-      "passages": 3973,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1254/phi001/phi1254.phi001.perseus-lat2.xml",
-      "sha256": "7d3e5ce510df0ca330018a5ca333a24e7cb74ad6ee7bd875c795c10d1869ce61"
-    },
-    {
-      "workId": "valerius-maximus-facta",
-      "lang": "la",
-      "path": "data/classics-corpus/valerius-maximus-facta-la.json",
-      "passages": 1027,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1038/phi001/phi1038.phi001.perseus-lat1.xml",
-      "sha256": "41029b45593ca6e24b11b240051dcaeb33e03af2962201c01ad116f1f44f4b7d"
-    },
-    {
-      "workId": "silius-punica",
-      "lang": "la",
-      "path": "data/classics-corpus/silius-punica-la.json",
-      "passages": 1529,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1345/phi001/phi1345.phi001.perseus-lat2.xml",
-      "sha256": "18f4c9c01231a83cceaa57dd6fb7e61b652cb6d0ac779dd16f18139c52460fad"
-    },
-    {
-      "workId": "lucian-dialogi-mortuorum",
+      "workId": "sophocles-oedipus",
       "lang": "grc",
-      "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
-      "passages": 113,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg066/tlg0062.tlg066.perseus-grc3.xml",
-      "sha256": "c142fd9922ff70df6d0aa9c2d73b90948056421352fe46ff77a21c42cac1a198"
+      "path": "data/classics-corpus/sophocles-oedipus-grc.json",
+      "passages": 188,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg004/tlg0011.tlg004.perseus-grc2.xml",
+      "sha256": "e414e50310aa3155e7ab80cd4e6944734c00055fbe2a702542705a69730bfc4f"
     },
     {
-      "workId": "lucian-verae-historiae",
+      "workId": "euripides-medea",
       "lang": "grc",
-      "path": "data/classics-corpus/lucian-verae-historiae-grc.json",
-      "passages": 89,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0062/tlg012/tlg0062.tlg012.perseus-grc2.xml",
-      "sha256": "fbb92decef4abacfaf46668c84b05ab4201e57ea8fed6c0787a8af7ba1429fcf"
+      "path": "data/classics-corpus/euripides-medea-grc.json",
+      "passages": 181,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg003/tlg0006.tlg003.perseus-grc2.xml",
+      "sha256": "21d271089872427297cd060864a7a177e0ca28f951f96d0f88a400f9116e07e0"
     },
     {
-      "workId": "marcus-aurelius-meditations",
+      "workId": "aristophanes-clouds",
       "lang": "grc",
-      "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
-      "passages": 577,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0562/tlg001/tlg0562.tlg001.perseus-grc2.xml",
-      "sha256": "9752103971dbbfcee8d483e926c4e926f78e8304abdff795f88e9f8766c178dc"
+      "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+      "passages": 208,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg003/tlg0019.tlg003.perseus-grc2.xml",
+      "sha256": "8ab36387fe494955b423c9aebcf9eae5233d8a72cf14f98a6f7a0ccef836fea5"
     },
     {
-      "workId": "hesiod-theogony",
+      "workId": "xenophon-anabasis",
       "lang": "grc",
-      "path": "data/classics-corpus/hesiod-theogony-grc.json",
-      "passages": 130,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg001/tlg0020.tlg001.perseus-grc2.xml",
-      "sha256": "550bd27b82d0c1720d7592b9b170c18b6c0bf88d54318ab71a28eb2b17728826"
+      "path": "data/classics-corpus/xenophon-anabasis-grc.json",
+      "passages": 1469,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg006/tlg0032.tlg006.perseus-grc2.xml",
+      "sha256": "5bf59352cab3dec763ecff9f4061385b8307146d2501432a5f5b178d6f31a4c2"
     },
     {
-      "workId": "hesiod-works-days",
+      "workId": "plato-republic",
       "lang": "grc",
-      "path": "data/classics-corpus/hesiod-works-days-grc.json",
-      "passages": 104,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg002/tlg0020.tlg002.perseus-grc2.xml",
-      "sha256": "db0b7dd2b2ab59017e3342cdf8e397e81a654bd7ace2840d24112ac97869690f"
+      "path": "data/classics-corpus/plato-republic-grc.json",
+      "passages": 310,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg030/tlg0059.tlg030.perseus-grc2.xml",
+      "sha256": "5f9f8ad62cdbfb0446223cc93a52215614c10e66c4ffd53a99d497ded855edfd"
+    },
+    {
+      "workId": "aristotle-politics",
+      "lang": "grc",
+      "path": "data/classics-corpus/aristotle-politics-grc.json",
+      "passages": 289,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg035/tlg0086.tlg035.perseus-grc2.xml",
+      "sha256": "8f75cf5319d89f9330c4b65ebb3ed8f2e0f2e36873fcea3d5237c674cd5ff878"
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "lang": "grc",
+      "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
+      "passages": 413,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg012/tlg0627.tlg012.perseus-grc2.xml",
+      "sha256": "f1bdbc2b3fc7af68b2f5bc7ab7ad41d6afa0813cb24b0f7df9c2b44af2aeb85f"
+    },
+    {
+      "workId": "epictetus-discourses",
+      "lang": "grc",
+      "path": "data/classics-corpus/epictetus-discourses-grc.json",
+      "passages": 2640,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0557/tlg001/tlg0557.tlg001.perseus-grc2.xml",
+      "sha256": "8b4749107af1c96221c5fdb95341627c035e67b32498baf86cea9a9b694239d8"
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "lang": "grc",
+      "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+      "passages": 1406,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0074/tlg001/tlg0074.tlg001.perseus-grc2.xml",
+      "sha256": "d2c38397168edb4c65b43feb6a3004922ed99d0112ec180a0f31b8e1e3d49d7b"
     }
   ],
-  "errors": [
-    "cato-agri-cultura: undefined entity &dagger;: line 317, column 6"
-  ]
+  "errors": []
 }

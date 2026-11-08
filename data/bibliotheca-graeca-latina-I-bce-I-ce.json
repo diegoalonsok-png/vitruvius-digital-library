@@ -2803,6 +2803,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cato-agri-cultura-la.json"
       }
     },
     {
@@ -4502,7 +4505,10 @@
         "Edipo rey",
         "Oedipus Rex",
         "Oedipus the King"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/sophocles-oedipus-grc.json"
+      }
     },
     {
       "id": "euripides-medea",
@@ -4546,6 +4552,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euripides-medea-grc.json"
       }
     },
     {
@@ -4592,6 +4601,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristophanes-clouds-grc.json"
       }
     },
     {
@@ -4712,7 +4724,10 @@
         "Anábasis",
         "Anabasis",
         "Expedición de los diez mil"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/xenophon-anabasis-grc.json"
+      }
     },
     {
       "id": "plato-republic",
@@ -4769,6 +4784,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/plato-republic-grc.json"
       }
     },
     {
@@ -4979,6 +4997,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aristotle-politics-grc.json"
       }
     },
     {
@@ -5022,6 +5043,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/hippocrates-aphorisms-grc.json"
       }
     },
     {
@@ -5059,7 +5083,10 @@
         "Disertaciones",
         "Discursos",
         "Discourses"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/epictetus-discourses-grc.json"
+      }
     },
     {
       "id": "arrian-anabasis-alexandri",
@@ -5095,7 +5122,10 @@
         "Arrian",
         "Anábasis de Alejandro",
         "Anabasis of Alexander"
-      ]
+      ],
+      "corpusFiles": {
+        "grc": "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
+      }
     },
     {
       "id": "cassius-dio-historia",

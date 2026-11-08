@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "scope": "Se auditan exclusivamente 222 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 95,
-    "indexedDistinctWorks": 64,
+    "indexedTextVersions": 105,
+    "indexedDistinctWorks": 74,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -1408,11 +1408,15 @@
       "genre": "Agricultura",
       "dating": "siglo II a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cato-agri-cultura-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -2311,11 +2315,15 @@
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/sophocles-oedipus-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2329,11 +2337,15 @@
       "genre": "Tragedia",
       "dating": "431 a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/euripides-medea-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2347,11 +2359,15 @@
       "genre": "Comedia",
       "dating": "siglo V a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aristophanes-clouds-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2401,11 +2417,15 @@
       "genre": "Historia",
       "dating": "siglo IV a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/xenophon-anabasis-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2419,11 +2439,15 @@
       "genre": "Filosofía",
       "dating": "siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/plato-republic-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
       "manuscriptRecords": [
         {
@@ -2490,11 +2514,15 @@
       "genre": "Filosofía política",
       "dating": "siglo IV a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aristotle-politics-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2508,11 +2536,15 @@
       "genre": "Medicina",
       "dating": "composición y atribuciones debatidas",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/hippocrates-aphorisms-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2526,11 +2558,15 @@
       "genre": "Filosofía estoica",
       "dating": "siglo II d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/epictetus-discourses-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -2544,11 +2580,15 @@
       "genre": "Historia",
       "dating": "siglo II d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,

@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 95,
-  "works": 64,
+  "count": 105,
+  "works": 74,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -958,6 +958,106 @@
       "path": "data/classics-corpus/seneca-de-brevitate-en.json",
       "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=en",
       "sourceDescription": "Aubrey Stewart, 1889 (Bohn's Classical Library); edición digital Standard Ebooks, CC0; XX capítulos, sin cotejo ni equivalencia automática entre traducciones."
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "author": "Catón el Viejo",
+      "title": "De agri cultura",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cato-agri-cultura-la.json",
+      "reader": "classics-text-reader.html?work=cato-agri-cultura&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-grc.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-medea-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-medea&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-anabasis-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-republic-grc.json",
+      "reader": "classics-text-reader.html?work=plato-republic&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-politics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
+      "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/epictetus-discourses-grc.json",
+      "reader": "classics-text-reader.html?work=epictetus-discourses&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+      "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

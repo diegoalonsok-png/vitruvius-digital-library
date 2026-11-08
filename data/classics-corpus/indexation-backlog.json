@@ -1,10 +1,10 @@
 {
   "schema": "vitruvia-indexation-backlog-v1",
   "derivedFrom": "data/classics-corpus/coverage-audit.json",
-  "snapshot": "2026-11-07",
+  "snapshot": "2026-11-08",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 158,
+  "missingOriginals": 148,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -746,12 +746,13 @@
     {
       "id": "cato-agri-cultura",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -1232,34 +1233,37 @@
     {
       "id": "sophocles-oedipus",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "euripides-medea",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "aristophanes-clouds",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -1287,23 +1291,25 @@
     {
       "id": "xenophon-anabasis",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "plato-republic",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -1333,45 +1339,49 @@
     {
       "id": "aristotle-politics",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "hippocrates-aphorisms",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "epictetus-discourses",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
       "id": "arrian-anabasis-alexandri",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
