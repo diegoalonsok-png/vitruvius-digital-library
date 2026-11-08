@@ -85,8 +85,9 @@
    queries=unique(["Jewish Christianity","Jewish Christians","Judaeo-Christianity",
     "Jewish Christian archaeology","Jewish Christian early Christianity",...queries]);
   }
+  const mathContext=/\b(matematic\w*|mathemat\w*|ingenier\w*|engineer\w*|ecuacion\w*|equation\w*|formula\w*|teorem\w*|theorem\w*|geometr\w*|algebr\w*|calculo|calculus)\b/.test(qRaw+" "+description);
   const visualStyle=colorRequested||genericColor?"color":brutalism?"prefer-color":"any";
-  return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,family:family?.id||null,
+  return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,mathContext,family:family?.id||null,
    contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0,
    historical:kind==="person"&&((typeof identity.birthYear==="number"&&identity.birthYear<1850)||/\b(ancient|antiguo|antigua|greek philosopher|filosofo griego|roman philosopher|roman statesman|siglo|bce|a c)\b/.test(description)),
    authorityName:identity.originalCanonical||identity.commonsSearchName||identity.canonical||"",
@@ -141,9 +142,19 @@
   if(portrait.test(name)||bust.test(name))return "artwork";
   return "context";
  }
+ const formulaTerms=/\b(formula|formulae|formulas|formule|equation|equations|ecuacion|ecuaciones|mathematical expression|mathematical notation|identity of euler|identidad de euler|algebraic identity|physics equation)\b/;
+ function allowFormulaImage(page,topic){
+  const meta=page?.imageinfo?.[0]?.extmetadata||{};
+  const title=fold(page?.title||page?.name||"");
+  const desc=fold(plain(meta.ImageDescription?.value||"").slice(0,700));
+  return !formulaTerms.test(title+" "+desc)||topic?.mathContext===true;
+ }
  function imageRank(page,topic){
   const info=page.imageinfo?.[0],meta=info?.extmetadata||{};
   const name=fold(page.title),description=fold(plain(meta.ImageDescription?.value).slice(0,3500));
+   // Equations and formula graphics belong to mathematical/engineering searches,
+   // not to unrelated religious, historical or philosophical image galleries.
+   if(!allowFormulaImage(page,topic))return {accepted:false,score:-9999,group:"context"};
   let score=0,matched=false;
   for(const alias of topic.aliases){
    const term=fold(alias);if(term.length<3)continue;
@@ -253,5 +264,5 @@
   }
   flush();return blocks;
  }
- window.VitruviaDiscovery={plan,imageRank,sortImages,previewImages,groupOrder,groups,parseExtract,plain,historicalVisualGuard};
+ window.VitruviaDiscovery={plan,imageRank,allowFormulaImage,sortImages,previewImages,groupOrder,groups,parseExtract,plain,historicalVisualGuard};
 })();
