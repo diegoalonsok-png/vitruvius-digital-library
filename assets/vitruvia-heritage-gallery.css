@@ -1,0 +1,26 @@
+/* Galería contextual: tarjetas discretas, fondo negro tipo Lexicon. */
+#vitruvia-heritage-gallery{margin:20px 0 27px;padding:19px 0 15px;border-top:1px solid #454547;border-bottom:1px solid #373739;color:#e9e9e9}
+#vitruvia-heritage-gallery[hidden]{display:none!important}
+.vhg-header{margin:0 0 18px}
+.vhg-header h3{font:normal clamp(23px,2.3vw,30px)/1.3 Georgia,serif;letter-spacing:-.02em;margin:0 0 9px;color:#f0f0ee}
+.vhg-caption{font:12px/1.6 Arial,Helvetica,sans-serif;color:#a6a6a8;margin:0 0 12px;max-width:100ch}
+.vhg-block{margin:18px 0}
+.vhg-block h4{font:normal 19px/1.4 Georgia,serif;color:#e8e7e6;margin:0 0 12px}
+.vhg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.vhg-card{display:flex;flex-direction:column;min-width:0;border:1px solid #3d3d41;border-radius:7px;background:#171719;overflow:hidden}
+.vhg-image-link{display:flex;align-items:center;justify-content:center;height:156px;background:#101011;border-bottom:1px solid #3d3d41;text-decoration:none;overflow:hidden}
+.vhg-image{display:block;width:100%;height:100%;object-fit:contain}
+.vhg-placeholder{font:normal 50px/1 Georgia,serif;color:#a5a6a8}
+.vhg-info{padding:12px 12px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+.vhg-name{font:normal 16px/1.35 Georgia,serif;color:#efefef!important;text-decoration:none;overflow-wrap:anywhere}
+.vhg-name:hover,.vhg-source:hover{text-decoration:underline}
+.vhg-detail{font:12px/1.5 Arial,sans-serif;color:#aaa;margin:0;overflow-wrap:anywhere}
+.vhg-source{font:11px/1.5 Arial,sans-serif;color:#d2d2d2!important;text-decoration:none;margin-top:auto}
+html[data-theme=light] #vitruvia-heritage-gallery{color:#222;border-color:#bbb}
+html[data-theme=light] .vhg-header h3,html[data-theme=light] .vhg-block h4{color:#252525}
+html[data-theme=light] .vhg-card{background:#f6f5f1;border-color:#c5c5c5}
+html[data-theme=light] .vhg-name,html[data-theme=light] .vhg-source{color:#242424!important}
+html[data-theme=light] .vhg-caption,html[data-theme=light] .vhg-detail{color:#555}
+@media(max-width:650px){.vhg-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.vhg-image-link{height:128px}.vhg-info{padding:9px}.vhg-name{font-size:14px}}
+@media(max-width:370px){.vhg-cards{grid-template-columns:minmax(0,1fr)}}
+@media print{#vitruvia-heritage-gallery .vhg-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.vhg-card{break-inside:avoid}}
