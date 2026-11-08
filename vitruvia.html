@@ -1520,6 +1520,76 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 @media print{
  body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}
 }
+</style>
+<style id="vitruvia-chronological-cultural-list">
+/* Un catálogo vertical, en la columna documental derecha:
+   cuadro, álbum, libro u obra en orden cronológico dentro de su sección. */
+@media screen {
+ body.vitruvia-reading #vitruvia-context .web-dossier-stack,
+ body.vitruvia-reading #vitruvia-context .cultural-work-stack,
+ body.vitruvia-reading #vitruvia-context .web-dossier-list,
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list {
+   display:flex!important;
+   flex-direction:column!important;
+   flex-wrap:nowrap!important;
+   grid-template-columns:none!important;
+   align-items:stretch!important;
+   width:100%!important;
+   max-width:100%!important;
+   gap:0!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-stack > *,
+ body.vitruvia-reading #vitruvia-context .cultural-work-stack > *,
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list > * {
+   display:block;
+   flex:0 0 auto!important;
+   width:100%!important;
+   max-width:100%!important;
+   min-width:0!important;
+   margin:0!important;
+   padding:16px 0!important;
+   border-bottom:1px solid rgba(155,160,165,.24)!important;
+   box-sizing:border-box!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card,
+ body.vitruvia-reading #vitruvia-context .cultural-work {
+   grid-template-columns:none!important;
+   columns:auto!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-cover-link {
+   display:block!important;
+   width:min(100%,240px)!important;
+   max-width:100%!important;
+   margin:0 0 10px!important;
+   float:none!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-cover {
+   display:block!important;
+   width:auto!important;
+   height:auto!important;
+   max-width:100%!important;
+   max-height:260px!important;
+   object-fit:contain!important;
+   object-position:left top!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card-body {
+   display:block!important;
+   width:100%!important;
+   min-width:0!important;
+   max-width:100%!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card-body > a:first-child {
+   display:block;
+   font-weight:600;
+   margin:0 0 5px;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-meta {
+   display:block;
+   font-variant-numeric:tabular-nums;
+   opacity:.82;
+ }
+ body.vitruvia-reading #vitruvia-context [hidden] {display:none!important}
+}
 </style></body></html>
 
 
