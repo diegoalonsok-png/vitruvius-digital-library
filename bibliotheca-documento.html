@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0d0d0e">
+<title>Lectura documental · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Lectura textual de documentos clásicos DOCX ya publicados, por párrafo y con acceso al PDF original, sin alterar los documentos ni sus foliaciones.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/bibliotheca-simple.css?v=20261108-dictionary-yellow-v1">
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<script defer src="assets/bibliotheca-documento.js?v=20261108-v1"></script>
+</head>
+<body>
+<main class="library">
+<nav class="top" aria-label="Navegación de Bibliotheca">
+<a class="brand" href="index.html">VITRVVIVS <span style="color:#888">/ Bibliotheca</span></a>
+<div class="toplinks">
+<a href="bibliotheca-graeca-latina.html">Concordancias</a>
+<a href="vitruvia-lexicon.html">Lexicon</a>
+<a href="bibliotheca-capitula.html">Lectura por capítulos</a>
+</div>
+</nav>
+<header class="hero">
+<span class="eyebrow">BIBLIOTHECA GRAECA ET LATINA · LECTURA DOCUMENTAL</span>
+<h1 id="reader-title">Textos clásicos subidos</h1>
+<p class="intro">Transcripción íntegra de los párrafos conservados en el archivo DOCX alojado en la biblioteca, con acceso al PDF correspondiente. Es una lectura documental: no equivale a un manuscrito autógrafo, edición crítica cotejada ni alineación de traducciones certificada.</p>
+</header>
+<section class="searcharea" aria-label="Seleccionar documento y buscar">
+<div class="workrow"><label for="reader-work">Documento</label><select id="reader-work" aria-label="Elegir documento clásico"></select></div>
+<form id="reader-form" class="searchform" role="search">
+<input id="reader-query" type="search" autocomplete="off" placeholder="Buscar una palabra o frase en el documento" aria-label="Palabra o frase">
+<button type="submit">Buscar</button>
+</form>
+<p class="coverage" id="reader-status" role="status" aria-live="polite">Cargando índice documental…</p>
+<p class="coverage" id="reader-source"></p>
+</section>
+<section id="reader-results" class="result" hidden>
+<h2 class="results-heading">Lectura por párrafos</h2>
+<p id="reader-summary" class="meta"></p>
+<div id="reader-controls" class="bibliotheca-export-actions"></div>
+<div id="reader-paragraphs"></div>
+<div id="reader-bottom-controls" class="bibliotheca-export-actions"></div>
+</section>
+<footer>Fuente documental: se indican archivo original, SHA-256 en el registro de extracción y posición del párrafo. No se infieren loci clásicos ni lengua de una sección por coincidencia textual.</footer>
+</main>
+</body>
+</html>
