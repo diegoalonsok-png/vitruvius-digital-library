@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 from datetime import date
 import hashlib
+from html.entities import name2codepoint
 import json
 import os
 from pathlib import Path
@@ -84,6 +85,44 @@ def choose_file(tree, urn, suffix):
     return sorted(found, reverse=True)[0][1] if found else None
 
 
+def normalize_legacy_perseus_tei(raw):
+    """Accept Perseus P4 TEI.2 without loading its network DTD.
+
+    Some valid legacy Perseus witnesses (e.g. Cato) use HTML4 named entities
+    and <div1> chapters. Python's XML parser does not fetch the external DTD.
+    Convert a TEMPORARY in-memory representation only; retain the raw
+    downloaded bytes and SHA-256 for provenance and restoration. Unknown
+    entities or malformed declarations fail closed, never silently delete text.
+    """
+    if b"<TEI.2" not in raw:
+        return raw
+    value = raw.decode("utf-8-sig")
+    marker = re.search(r"<!DOCTYPE\s+TEI\.2\b", value)
+    if marker:
+        end = value.find("]>", marker.end())
+        if end < 0 or "[" not in value[marker.start():end]:
+            raise ValueError("DTD TEI.2 no reconocida; revisión manual necesaria")
+        value = value[:marker.start()] + value[end + 2:]
+    if not re.search(r"<TEI\.2(?=\s|>)", value):
+        raise ValueError("Raíz P4 TEI.2 no reconocida")
+    def named_entity(match):
+        name = match.group(1)
+        if name in {"amp", "lt", "gt", "apos", "quot"}:
+            return match.group(0)
+        number = name2codepoint.get(name)
+        if number is None:
+            raise ValueError("Entidad TEI P4 desconocida: &" + name + ";")
+        return chr(number)
+    value = re.sub(r"&([A-Za-z][A-Za-z0-9]+);", named_entity, value)
+    value = re.sub(r"<TEI\.2(?=\s|>)",
+                   '<TEI xmlns="http://www.tei-c.org/ns/1.0"', value, count=1)
+    value = value.replace("</TEI.2>", "</TEI>")
+    value = re.sub(r"(<\/?)div[1-9](?=[\s/>])", r"\1div", value)
+    # Validate immediately; invalid P4 files must not enter the corpus.
+    ET.fromstring(value.encode("utf-8"))
+    return value.encode("utf-8")
+
+
 def extract_complete_tei(raw, fallback_title):
     """No indexar únicamente versos citados cuando el original es prosa TEI.
 
@@ -92,6 +131,7 @@ def extract_complete_tei(raw, fallback_title):
     cuerpo principal y se comprueba el volumen efectivamente extraído.
     El XML externo y los textos editoriales originales permanecen intactos.
     """
+    raw = normalize_legacy_perseus_tei(raw)
     root = ET.fromstring(raw)
     ns = "{http://www.tei-c.org/ns/1.0}"
     body = root.find(".//" + ns + "body")
