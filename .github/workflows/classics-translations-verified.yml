@@ -7,7 +7,7 @@ on:
       - '.github/workflows/classics-translations-verified.yml'
       - 'scripts/import-classics-verified-translations.py'
   schedule:
-    - cron: '41 6 * * *'
+    - cron: '41 1,7,13,19 * * *'
 
 permissions:
   contents: write
@@ -46,7 +46,7 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
-            python scripts/import-classics-verified-translations.py --max-new 3
+            python scripts/import-classics-verified-translations.py --max-new 12
             python scripts/build_classics_semantic_index.py
             node scripts/audit-classical-corpus.mjs
             python scripts/audit-classics-coverage.py --strict
