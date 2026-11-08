@@ -35,6 +35,12 @@ TRANSLATIONS = ROOT / "data/classics-corpus/translation-availability-222.json"
 MAX_PAGES_BYTES = 970_000_000  # Dejar margen bajo el límite oficial de 1 GB de GitHub Pages
 ORIG = {"la": ("PerseusDL/canonical-latinLit", "lat"),
         "grc": ("PerseusDL/canonical-greekLit", "grc")}
+# Sólo agrupar obras explícitamente comprobadas en sus unidades TEI completas.
+COMPOSITE_WORKS = {
+    "aeschylus-oresteia": ("tlg0085.tlg005", "tlg0085.tlg006", "tlg0085.tlg007"),
+    "demosthenes-philippicae": ("tlg0014.tlg004", "tlg0014.tlg006", "tlg0014.tlg009", "tlg0014.tlg010"),
+    "pseudo-apollodorus-bibliotheca": ("tlg0548.tlg001", "tlg0548.tlg002"),
+}
 MAX_XML = 2_200_000
 MAX_JSON = 4_000_000
 MAX_BATCH_BYTES = 12_000_000
@@ -216,24 +222,59 @@ def run():
     for w in catalog["works"]:
         wid, lang = w["id"], w.get("language")
         links = mapping.get(wid, [])
-        if lang in ORIG and len(links) == 1 and (wid, lang) not in indexed:
-            eligible.append((w, lang, links[0]["obra"]))
+        if lang not in ORIG or (wid, lang) in indexed:
+            continue
+        urns = tuple(link["obra"] for link in links)
+        if len(urns) == 1 or (wid in COMPOSITE_WORKS and urns == COMPOSITE_WORKS[wid]):
+            eligible.append((w, lang, urns))
+    # Los títulos compuestos son una sola ficha, pero deben incorporar
+    # TODAS sus fuentes, no presentar un primer volumen como edición completa.
+    eligible.sort(key=lambda entry: -len(entry[2]))
     trees = {}
     errors, created = [], []
     total_bytes = 0
-    for w, lang, urn in eligible:
+    for w, lang, urns in eligible:
         if len(created) >= limit:
             break
         repo, suffix = ORIG[lang]
         try:
             if repo not in trees:
                 trees[repo] = remote_tree(repo)
-            path = choose_file(trees[repo], urn, suffix)
-            if not path:
+            component_files = []
+            for urn in urns:
+                path = choose_file(trees[repo], urn, suffix)
+                if not path:
+                    component_files = []
+                    break
+                url = f"https://raw.githubusercontent.com/{repo}/master/{quote(path, safe='/')}"
+                raw = get(url)
+                doc = edition_document(w, lang, url, raw, urn)
+                component_files.append((urn, doc))
+            if not component_files or len(component_files) != len(urns):
                 continue
-            url = f"https://raw.githubusercontent.com/{repo}/master/{quote(path, safe='/')}"
-            raw = get(url)
-            data = edition_document(w, lang, url, raw, urn)
+            if len(urns) == 1:
+                data = component_files[0][1]
+            else:
+                first = component_files[0][1]
+                parts = []
+                passages = []
+                for urn, doc in component_files:
+                    parts.append({"urn": urn, "title": doc["title"],
+                                  "source": doc["source"], "sha256": doc["sourceSha256"],
+                                  "passages": len(doc["passages"])})
+                    for passage in doc["passages"]:
+                        passages.append({**passage,
+                                         "locus": urn + ":" + passage["locus"],
+                                         "sourceUrn": urn})
+                if len(passages) < len(urns):
+                    raise ValueError("Compilación con unidades vacías")
+                data = {**first, "title": w.get("title") or first["title"],
+                        "sourceType": "verified-multi-TEI-edition",
+                        "editorialStatus": "Compilación técnica íntegra de los TEI documentados; no recensio nueva ni colación crítica",
+                        "sourceUrn": list(urns), "sourceParts": parts,
+                        "sourceSha256": hashlib.sha256("|".join(p["sha256"] for p in parts).encode()).hexdigest(),
+                        "alignment": "Cada locus incluye su URN; sin equivalencias inferidas entre fuentes, traducciones ni manuscritos.",
+                        "passages": passages}
             encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
             if len(encoded) > MAX_JSON or total_bytes + len(encoded) > capacity:
                 errors.append(w["id"] + ": excede el límite de lote")
@@ -254,7 +295,8 @@ def run():
                 })
             created.append({"workId": w["id"], "lang": lang,
                             "path": target, "passages": len(data["passages"]),
-                            "source": url, "sha256": data["sourceSha256"]})
+                            "source": data["source"], "sha256": data["sourceSha256"],
+                            "componentUrns": list(urns)})
             total_bytes += len(encoded)
         except (ValueError, ET.ParseError, OSError, KeyError) as error:
             errors.append(w["id"] + ": " + str(error)[:180])
