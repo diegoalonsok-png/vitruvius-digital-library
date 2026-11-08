@@ -51,7 +51,8 @@ h1{font:400 clamp(42px,6vw,78px)/1.09 "Gentium Book Plus","Cardo",Georgia,serif;
 .hit{padding:14px 0;border-top:1px solid #29292b;break-inside:avoid-page}
 .hit .locus{font:500 11px/1.5 Arial,sans-serif;letter-spacing:.025em;color:#9b9b9c}
 .hit p{font:400 clamp(17px,1.9vw,20px)/1.83 "Gentium Book Plus","Cardo",Georgia,serif;color:#e2e2e0;margin:6px 0;overflow-wrap:anywhere;white-space:normal}
-.hit mark{background:#57575a;color:#fff;border-radius:0;padding:0 1px}
+/* Coincidencias en contexto: subrayado blanco, sin pastillas ni rellenos de color. */
+.hit mark{background:transparent!important;color:inherit!important;border-radius:0;padding:0;text-decoration-line:underline;text-decoration-color:#fff;text-decoration-style:solid;text-decoration-thickness:2px;text-underline-offset:.2em;text-decoration-skip-ink:none}
 .hit .label{font:400 11px/1.6 Arial,sans-serif;color:#aaa}
 .footnote{border-top:1px solid #343436;color:#aaa;padding:20px 0;margin-top:22px;font:400 12px/1.75 Arial,sans-serif}
 .footnote[hidden],.more[hidden]{display:none}
