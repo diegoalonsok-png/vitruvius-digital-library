@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 94,
+    "indexedTextVersions": 95,
     "indexedDistinctWorks": 64,
     "manuscriptWitnesses": 23
   },
@@ -3605,11 +3605,13 @@
       "dating": "siglo I d. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "es",
         "fr",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/seneca-de-brevitate-en.json",
         "data/classics-corpus/seneca-de-brevitate-es.json",
         "data/classics-corpus/seneca-de-brevitate-fr.json",
         "data/classics-corpus/seneca-de-brevitate-la.json"
@@ -3620,7 +3622,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "20 capítulos en inglés (Aubrey Stewart, 1889) añadidos a los 20 latinos, 20 franceses y 21 castellanos. Sin presumir cotejo ni equivalencia textual de pasajes."
     },
     {
       "id": "seneca-de-ira",
