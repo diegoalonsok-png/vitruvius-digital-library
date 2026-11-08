@@ -6,15 +6,15 @@
   "counts": {
     "cataloguedWorks": 222,
     "catalogueStatuses": {
-      "lectura-local-completa": 31,
-      "repertoriado-busqueda-externa": 125,
+      "lectura-local-completa": 32,
+      "repertoriado-busqueda-externa": 124,
       "pendiente-de-incorporar": 44,
       "fuente-externa-identificada": 21,
       "lectura-local-parcial": 1
     },
-    "locallyReadableClaims": 32,
-    "indexedTextVersions": 245,
-    "indexedDistinctWorks": 180,
+    "locallyReadableClaims": 33,
+    "indexedTextVersions": 246,
+    "indexedDistinctWorks": 181,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -1816,16 +1816,20 @@
       "originalLanguage": "la",
       "genre": "Lingüística",
       "dating": "siglo I a. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-completa",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/varro-de-lingua-latina-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Original latino V–X, Müller 1833, Corpus Corporum UZH TEI 2013: 666 secciones; fuente con algunos errores de etiquetas y 11 hitos repetidos. Sin edición crítica propia/cotejo, no se afirman libros perdidos ni traducciones alojadas."
     },
     {
       "id": "tibullus-elegiae",

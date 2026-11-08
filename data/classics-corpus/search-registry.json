@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 245,
-  "works": 180,
+  "count": 246,
+  "works": 181,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -2336,6 +2336,16 @@
       "path": "data/classics-corpus/valerius-maximus-facta-la.json",
       "reader": "classics-text-reader.html?work=valerius-maximus-facta&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "varro-de-lingua-latina",
+      "author": "Varrón",
+      "title": "De lingua Latina",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/varro-de-lingua-latina-la.json",
+      "reader": "classics-text-reader.html?work=varro-de-lingua-latina&lang=la",
+      "sourceDescription": "Varrón, De lingua Latina V–X, ed. Karl Otfried Müller (Teubner 1833), Corpus Corporum/Universidad de Zúrich TEI Philipp Roelli (2013). 666 unidades numeradas, 11 duplicaciones TEI documentadas; aparato de variantes no codificado en fuente, sin cotejo manuscrito ni alineación."
     },
     {
       "workId": "varro-rustica",

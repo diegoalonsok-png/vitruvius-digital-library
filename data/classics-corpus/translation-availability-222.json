@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 180,
+    "locallyIndexedWorks": 181,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 163,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 180,
-    "originalTextNotIndexed": 42
+    "originalTextIndexed": 181,
+    "originalTextNotIndexed": 41
   },
   "works": [
     {
@@ -1307,14 +1307,16 @@
       "author": "Varrón",
       "title": "De lingua Latina",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "tibullus-elegiae",
