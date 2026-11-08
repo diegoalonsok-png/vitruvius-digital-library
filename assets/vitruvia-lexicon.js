@@ -297,6 +297,7 @@ async function run(push=true){
   q="λόγος";$("#lx-q").value=q;S.lang="grc";$("#lx-lang").value="grc";
  }
  S.q=q;S.page=0;
+ if(["palabra","lema"].includes(S.mode))window.dispatchEvent(new CustomEvent("vitruvia:lexicon-search",{detail:{query:q,mode:S.mode,language:S.lang}}));
  window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["palabra","lema","etimologia"].includes(S.mode)});
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
@@ -612,6 +613,28 @@ function renderLogosGrammar(){
   el("p",{class:"article-note"},"Etimología: Etymologicum editorial, ficha logos; referencia sintáctica: prólogo del Evangelio de Juan (Jn 1:1)."));
  return sec;
 }
+/* Frecuencia morfológica complementaria: siempre desglosar por obra de la
+   lengua consultada, independientemente de la búsqueda literal de Bibliotheca.
+   No contar OCR o traducciones como testimonios manuscritos. */
+function morphologyFrequency(D,term,lemmas){
+ const root=fold(term.v||"").replace(/^@/,"");
+ const unique=[...new Set(lemmas.map(x=>lemmaDisplay(x)))];
+ const per=unique.map(w=>({w,forms:lemmaFormsFor(D,w)}));
+ if(!per.length)per.push({w:term.v,forms:new Set(D.workFreq.has(root)?[root]:[])});
+ const distinctForms=new Set(per.flatMap(p=>[...p.forms]));
+ const rows=[];
+ for(const id of Object.keys(D.corpus.works)){
+  const counts=per.map(x=>[...x.forms].reduce((sum,f)=>sum+(D.workFreq.get(f)?.[id]||0),0));
+  const total=[...distinctForms].reduce((sum,f)=>sum+(D.workFreq.get(f)?.[id]||0),0);
+  if(!total)continue;
+  rows.push({D,id,lang:D.l,lemmas:per,counts,total,per10k:total/(D.workTokens[id]||1)*10000});
+ }
+ rows.sort((a,b)=>(CHRONO[a.id]??0)-(CHRONO[b.id]??0));
+ const section=frequencyTable(null,{rows,trN:0});
+ section.insertBefore(el("p",{class:"article-note"},
+  "Frecuencia morfológica en la lengua consultada: se suman las formas documentadas de cada lema en el índice. Si hay lemas ambiguos, una misma forma puede pertenecer a más de uno; el total por obra deduplica las formas. La búsqueda literal en Bibliotheca se presenta por separado."),section.querySelector("table")||section.lastChild);
+ return section;
+}
 async function renderEntry(D,term,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
  const key=fold(term.v).replace(/[^\p{L}']/gu,"");
@@ -651,6 +674,11 @@ async function renderEntry(D,term,res){
  if(!lemmas.length&&res.sets?.[0]?.size>1){body.append(el("p",{},"Formas que satisfacen la consulta: ",[...res.sets[0]].slice(0,80).join(" · ")))}
  /* Etimología editorial */
  if(curated)body.append(etymCard(curated));
+ /* La búsqueda morfológica aparece también sin ficha de Conceptus (p. ej. loci).
+    Si Conceptus sí existe, su tabla multilingüe ya ofrece esta frecuencia. */
+ if(!await findConcept(term.v)){
+  body.append(morphologyFrequency(D,term,lemmas));
+ }
  /* Etimología en línea */
  renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
  /* Aside: frecuencia, colocaciones, exportación */
