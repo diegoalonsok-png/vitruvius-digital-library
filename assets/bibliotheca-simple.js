@@ -285,9 +285,12 @@ async function search(){
   const workId=alias?.workId||selectedWork;
   if(selectedWork&&!indexed.has(selectedWork)){status.textContent=dict[locale].wrong;return}
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
-  const transliterations=await attestedGreekForms(q);
+  const transliterations=/^gr:/i.test(q)?await attestedGreekForms(q.slice(3).trim()):[];
   if(id!==serial)return;
+  let lastPaint=0;
   const onProgress=(partial,progress)=>{
+   const now=Date.now();if(!progress.complete&&progress.examined>4&&now-lastPaint<600)return;
+   lastPaint=now;
    if(id!==serial)return;
    render(partial,q,{...progress,partial:true,transliterations});
    status.textContent=dict[locale].stats(partial.reduce((n,row)=>n+(row.hitsInPassage||1),0),partial.length,new Set(partial.map(row=>row.workId)).size)+
@@ -299,7 +302,7 @@ async function search(){
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
-  if(workId)url.searchParams.set("work",workId);else url.searchParams.delete("work");
+  if(selectedWork)url.searchParams.set("work",selectedWork);else url.searchParams.delete("work");
   history.replaceState(null,"",url);
  }catch{if(id===serial)status.textContent=dict[locale].unavailable}
  finally{if(id===serial)$("search-submit").disabled=false}
