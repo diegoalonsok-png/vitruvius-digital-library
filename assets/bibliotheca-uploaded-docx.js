@@ -29,8 +29,8 @@ const CORRESPONDENCE={
  "sofocles-edipo-rey":"sophocles-oedipus",
  "suetonio-divus-augustus":"suetonius-caesares",
  "tacito-anales":"tacitus-annales",
- "terencio-andria":"terence-andria",
- "virgilio-bucolicas":"virgil-bucolica",
+ "terencio-andria":"terentius-andria",
+ "virgilio-bucolicas":null,
  "virgilio-eneida":"virgil-aeneid",
  "virgilio-georgicas":"virgil-georgica",
  "vitruvio-de-architectura-perseus":"vitruvius"
@@ -53,7 +53,7 @@ const PDF_PATH=/^documents\/clasicos\/[a-z0-9-]+\.pdf$/;
 function manifest(){
  if(!manifestTask)manifestTask=fetch(PATH).then(r=>{if(!r.ok)throw Error("Manifest HTTP "+r.status);return r.json()}).then(j=>{
   if(j.schema!=="vitruvia-classical-document-index-v1"||!Array.isArray(j.records)||j.records.length!==j.count)throw Error("Índice de documentos incongruente");
-  for(const rec of j.records)if(!MANIFEST_PATH.test(rec.index||"")||!SOURCE_PATH.test(rec.source||"")||!rec.sha256||!Number.isInteger(rec.paragraphs)||rec.paragraphs<1||!CORRESPONDENCE[rec.id])throw Error("Documento no validado: "+rec.id);
+  for(const rec of j.records)if(!MANIFEST_PATH.test(rec.index||"")||!SOURCE_PATH.test(rec.source||"")||!rec.sha256||!Number.isInteger(rec.paragraphs)||rec.paragraphs<1||!Object.hasOwn(CORRESPONDENCE,rec.id))throw Error("Documento no validado: "+rec.id);
   return j.records;
  }).catch(e=>{manifestTask=null;throw e});
  return manifestTask;
@@ -110,7 +110,7 @@ function show(){
  const {matches,occurrences,examined,errors,query}=last;
  panel.replaceChildren();
  panel.hidden=false;
- const title=newEl("h3","",label("Documentos clásicos originales subidos (DOCX)","Additional uploaded classical DOCX documents","Documents classiques DOCX déposés"));
+ const title=newEl("h3","",label("Documentos clásicos ya subidos (DOCX)","Additional uploaded classical DOCX documents","Documents classiques DOCX déposés"));
  panel.append(title);
  panel.append(newEl("p","meta",
   label("Búsqueda literal independiente: ","Independent literal-document search: ","Recherche documentaire littérale indépendante : ")+
@@ -159,7 +159,8 @@ function clear(){serial++;last=null;panel.hidden=true;panel.replaceChildren()}
 async function search(query,workId,isCurrent){
  const id=++serial;panel.hidden=false;panel.replaceChildren(newEl("p","meta",label("Comprobando los DOCX ya subidos…","Checking existing DOCX files…","Vérification des DOCX déposés…")));
  try{
-  const docs=(await manifest()).filter(rec=>!workId||CORRESPONDENCE[rec.id]===workId);
+  const explicitDocument=String(workId||"").startsWith("docx:")?String(workId).slice(5):"";
+  const docs=(await manifest()).filter(rec=>explicitDocument?rec.id===explicitDocument:!workId||CORRESPONDENCE[rec.id]===workId);
   if(id!==serial||isCurrent&& !isCurrent())return;
   if(!docs.length){panel.hidden=true;return}
   let errors=0,examined=0,occurrences=0;
@@ -189,5 +190,5 @@ async function search(query,workId,isCurrent){
   panel.replaceChildren(newEl("p","meta",label("Los documentos DOCX adicionales no pudieron comprobarse.","Additional DOCX files could not be checked.","Impossible de vérifier les DOCX complémentaires.")));
  }
 }
-window.ClassicsUploadedDocuments={search,clear,refresh:()=>{if(last)show()},workIds:new Set(Object.values(CORRESPONDENCE))};
+window.ClassicsUploadedDocuments={search,clear,refresh:()=>{if(last)show()},workIds:new Set(Object.values(CORRESPONDENCE).filter(Boolean)),documentIds:new Set(Object.keys(CORRESPONDENCE)),uncataloguedDocs:[{id:"virgilio-bucolicas",label:"Virgilio · Bucólicas · DOCX adicional"}]};
 })();
