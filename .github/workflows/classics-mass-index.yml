@@ -44,7 +44,7 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: integrity-test
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 80
     steps:
       - uses: actions/checkout@v4
         with:
@@ -68,7 +68,18 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python scripts/repair-classics-mixed-tei.py
-            python scripts/mass-index-classics.py --max-new 16
+            # Completar hasta 4 lotes sobre el mismo árbol verificado. Cada lote
+            # refresca el registro; sin avances salimos, sin fabricar registros.
+            for batch in 1 2 3 4; do
+              echo "Indexación de originales: lote $batch/4"
+              result="$(python scripts/mass-index-classics.py --max-new 16)"
+              printf '%s\n' "$result"
+              count="$(printf '%s' "$result" | python -c 'import json,sys; print(json.load(sys.stdin)["indexedInThisRun"])')"
+              if [ "$count" -eq 0 ]; then
+                echo "Sin más originales TEI disponibles para incorporar automáticamente."
+                break
+              fi
+            done
             if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard data/classics-corpus)" ]; then
               echo 'No hay nuevos originales TEI incorporables en este lote.'
               exit 0
