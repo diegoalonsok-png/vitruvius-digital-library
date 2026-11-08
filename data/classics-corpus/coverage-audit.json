@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 91,
+    "indexedTextVersions": 94,
     "indexedDistinctWorks": 64,
     "manuscriptWitnesses": 23
   },
@@ -732,9 +732,11 @@
       "dating": "98 d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/tacitus-agricola-en.json",
         "data/classics-corpus/tacitus-agricola-la.json"
       ],
       "localPDF": null,
@@ -743,7 +745,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Traducción histórica inglesa Alfred John Church y William Jackson Brodribb (1877), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
     {
       "id": "tacitus-germania",
@@ -2244,9 +2246,11 @@
       "dating": "época arcaica",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/hesiod-theogony-en.json",
         "data/classics-corpus/hesiod-theogony-grc.json"
       ],
       "localPDF": null,
@@ -2255,7 +2259,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Traducción histórica inglesa Hugh G. Evelyn-White (1914), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
     {
       "id": "hesiod-works-days",
@@ -2266,9 +2270,11 @@
       "dating": "época arcaica",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/hesiod-works-days-en.json",
         "data/classics-corpus/hesiod-works-days-grc.json"
       ],
       "localPDF": null,
@@ -2277,7 +2283,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Traducción histórica inglesa Hugh G. Evelyn-White (1914), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
     {
       "id": "aeschylus-oresteia",
