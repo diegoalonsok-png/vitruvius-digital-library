@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 177,
+    "locallyIndexedWorks": 179,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 163,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 177,
-    "originalTextNotIndexed": 45
+    "originalTextIndexed": 179,
+    "originalTextNotIndexed": 43
   },
   "works": [
     {
@@ -3222,28 +3222,32 @@
       "author": "Agustín de Hipona",
       "title": "Confessiones",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "augustine-civitate-dei",
       "author": "Agustín de Hipona",
       "title": "De civitate Dei",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "boethius-consolatio",
