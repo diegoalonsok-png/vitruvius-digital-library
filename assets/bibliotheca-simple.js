@@ -6,12 +6,12 @@ const REGISTRY="data/classics-corpus/search-registry.json";
 const $=id=>document.getElementById(id);
 const dict={
  es:{home:"Inicio",search:"Buscar",placeholder:"Una palabra o frase, por ejemplo: domus",
- intro:"Buscá una palabra o frase en todos los textos clásicos indexados, o elegí una obra. Los párrafos aparecen de las obras más antiguas a las más recientes, con su locus y sin inventar equivalencias entre traducciones.",
+ intro:"Busca una palabra o frase en todos los textos clásicos indexados, o elige una obra. Los párrafos aparecen de las obras más antiguas a las más recientes, con su locus y sin inventar equivalencias entre traducciones.",
  work:"Obra",all:"Todos los libros indexados",wait:"Cargando el catálogo de obras…",
  ready:(c,v,n)=>c+" obras catalogadas · "+v+" versiones indexadas · "+n+" obras sin texto indexado.",
  missing:"(no indexada)",label:"Párrafos encontrados",lexicon:"Consultar esta palabra en Lexicon",
  method:"Búsqueda literal en textos realmente indexados. Las obras sin texto no se examinan; fechas y loci según las fuentes.",
- short:"Escribí al menos dos letras o cifras.",loading:"Buscando en las versiones indexadas…",
+ short:"Escribe al menos dos letras o cifras.",loading:"Buscando en las versiones indexadas…",
  unavailable:"No fue posible verificar el índice: búsqueda no disponible.",failed:"Búsqueda parcial: algunas versiones fallaron.",
  none:"No se hallaron coincidencias en los textos examinados.",
  stats:(n,p,w)=>n+" coincidencias · "+p+" párrafos · "+w+" obras",
