@@ -1,0 +1,38 @@
+name: Bibliotheca · originales griegos remotos
+on:
+  pull_request:
+    paths:
+      - 'assets/bibliotheca-offsite-greek.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'bibliotheca-graeca-latina.html'
+      - 'classics-remote-text-reader.html'
+      - 'scripts/test-bibliotheca-offsite-greek.mjs'
+      - '.github/workflows/bibliotheca-offsite-greek.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/bibliotheca-offsite-greek.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'bibliotheca-graeca-latina.html'
+      - 'classics-remote-text-reader.html'
+      - 'scripts/test-bibliotheca-offsite-greek.mjs'
+      - '.github/workflows/bibliotheca-offsite-greek.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-greek-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check assets/bibliotheca-offsite-greek.js
+          node --check assets/bibliotheca-corpus-search.js
+          node --check assets/bibliotheca-simple.js
+      - run: node scripts/test-bibliotheca-offsite-greek.mjs
