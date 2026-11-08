@@ -409,7 +409,7 @@ html[data-theme=dark] .classic-main .classic-fast-text-pane :is(h3,p,small){colo
 .classic-main .classic-study-tools,
 .classic-main .classic-study-tools-help{background:#111;color:#f3f3f3}
 .classic-main .classic-fast-text-pane input[type=search]{background:#141414;color:#fff;border:1px solid #a38b61}
-.classic-main .classic-fast-text-pane .classic-study-query-hit{background:#ffe34f!important;color:#000!important}
+.classic-main .classic-fast-text-pane .classic-study-query-hit{background:#a8a8ad!important;color:#000!important}
 .classic-main .classic-fast-text-pane ::selection{background:#ffcf57;color:#111}
 </style>
 <link rel="stylesheet" href="assets/bibliotheca-monochrome.css?v=20261106-unified-index-v2">
@@ -420,10 +420,10 @@ html body .classic-main .classic-read-columns article,
 html[data-theme] body .classic-main .classic-read-columns article,
 html body .classic-main .classic-fast-text-pane,
 html[data-theme] body .classic-main .classic-fast-text-pane{
-  background:#000!important;color:#f3f3f3!important;border-color:#716458!important;
+  background:#000!important;color:#f3f3f3!important;border-color:#565659!important;
 }
 html body .classic-main .classic-fast-text-pane .classic-study-query-hit{
-  background:#ffe34f!important;color:#0c0c0c!important;
+  background:#a8a8ad!important;color:#0c0c0c!important;
 }
 </style>
 <link rel="stylesheet" href="assets/vitruvia-paragraph-magnifier.css?v=20261104-paragraph-loupe-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
@@ -443,7 +443,7 @@ html body .classic-main .classic-fast-text-pane .classic-study-query-hit{
 <label><span data-bi="original-label">Idioma del original</span><select id="classic-language"><option value="" data-bi="all-language">Griego y latín</option><option value="la" data-bi="latin">Latín</option><option value="grc" data-bi="greek">Griego antiguo</option></select></label>
 <label><span data-bi="genre-label">Área de estudio</span><select id="classic-genre"><option value="" data-bi="all-genres">Todas las áreas</option></select></label><label><span data-bi="availability-label">Disponibilidad de lectura</span><select id="classic-availability"><option value="" data-bi="availability-all">Todas las obras catalogadas</option><option value="local" data-bi="availability-local">Lectura en Vitruvia</option><option value="source" data-bi="availability-source">Fuente externa identificada</option><option value="catalogue" data-bi="availability-catalogue">Localización pendiente</option></select></label><label><span data-bi="period-label">Época de composición</span><select id="classic-period"><option value="" data-bi="period-all">Toda la Antigüedad</option><option value="focus" data-bi="period-focus">Siglos II–I a. C. / I–II d. C. (selección)</option></select></label><label class="bibliotheca-sort"><span data-bi="sort-label">Orden de las obras</span><select id="classic-sort" aria-label="Ordenar catálogo de obras"><option value="author" data-bi="sort-author">Alfabético A–Z</option><option value="composition" data-bi="sort-composition" selected>Antigüedad de la obra</option><option value="relevance" data-bi="sort-relevance" hidden disabled>Pertinencia y disponibilidad</option><option value="witness" data-bi="sort-witness" hidden disabled>Testimonio manuscrito</option></select></label>
 </div>
-<p class="classic-ref" style="margin:10px 0 14px"><strong>Cómo buscar códices:</strong> escriba la signatura (p. ej. «Harley MS 2767»), el nombre del autor o el título de la obra. Cuando la coincidencia procede de un manuscrito identificado, el resultado señala su signatura y biblioteca. La ordenación por antigüedad se refiere a la <em>copia conservada</em>, no a la fecha de composición. Para buscar únicamente entre fichas de manuscritos, consulte el <a href="index-codicum.html">Index codicum</a>.</p>
+<p id="classic-codices-hint" class="classic-ref" style="margin:10px 0 14px"><strong>Cómo buscar códices:</strong> escriba la signatura (p. ej. «Harley MS 2767»), el nombre del autor o el título de la obra. Cuando la coincidencia procede de un manuscrito identificado, el resultado señala su signatura y biblioteca. La ordenación por antigüedad se refiere a la <em>copia conservada</em>, no a la fecha de composición. Para buscar únicamente entre fichas de manuscritos, consulte el <a href="index-codicum.html">Index codicum</a>.</p>
 <p id="classic-witness-count" class="classic-ref" role="status">Cargando testimonios codicológicos…</p><p id="classic-count" role="status" aria-live="polite">Cargando el repertorio académico…</p><p class="classic-note"><strong data-bi="available-title">Obras y estados editoriales.</strong> <strong data-bi="read-local-label">Lectura en Vitruvia:</strong> <span data-bi="read-local-body">texto o PDF realmente alojado y disponible aquí.</span> <strong data-bi="identified-label">Fuente identificada:</strong> <span data-bi="identified-body">vínculo a un recurso institucional externo que requiere lectura en origen.</span> <strong data-bi="pending-label">Localización pendiente:</strong> <span data-bi="pending-body">obra bibliográficamente identificada con búsquedas en repertorios como Perseus, Scaife, Wikisource y bibliotecas.</span> <span data-bi="academic-warning">Ninguna ficha pendiente se presenta como un manuscrito digitalizado, una traducción cotejada ni un PDF disponible. Las primeras ediciones completas incluyen las V514, V554, V297 y Krohn 1912.</span></p>
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Selecciona una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
