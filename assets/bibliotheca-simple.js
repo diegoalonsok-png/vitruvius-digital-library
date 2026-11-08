@@ -218,7 +218,7 @@ function provenance(w,r){
 const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function printPassage(record,workInfo,passageNode){
  const page=window.open("","_blank");
- if(!page){window.alert("El navegador bloqueó la ventana de impresión. Permití ventanas emergentes para guardar el pasaje como PDF.");return}
+ if(!page){window.alert("El navegador bloqueó la ventana de impresión. Permite ventanas emergentes para guardar el pasaje como PDF.");return}
  const title=workInfo.title||record.title||"Bibliotheca";
  const credit=workInfo.author||record.author||"";
  const locus=record.locus||"—";
@@ -273,7 +273,7 @@ async function openDictionary(term,language){
  const link=el("a","passage-action","Estudiar en Lexicon");link.href=dictLink(term);
  actions.append(link);
  const text=()=>dictionaryPanel.querySelector(".dictionary-definition")?.innerText||("Consulta léxica: "+term);
- const makePrint=()=>{const popup=window.open("","_blank");if(!popup){window.alert("Permití ventanas emergentes para guardar como PDF.");return}
+ const makePrint=()=>{const popup=window.open("","_blank");if(!popup){window.alert("Permite ventanas emergentes para guardar como PDF.");return}
   popup.document.write('<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Diccionario · '+escapeHtml(term)+'</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.6 Georgia,serif}main{white-space:pre-wrap}</style></head><body><h1>'+escapeHtml(term)+'</h1><main>'+escapeHtml(text())+'</main><p>Vitruvius Digital Library · Lexicon</p></body></html>');
   popup.document.close();popup.focus();popup.print()};
  const p=el("button","passage-action","PDF");p.type="button";p.addEventListener("click",makePrint);
@@ -299,7 +299,7 @@ async function openDictionary(term,language){
    if(entry.etym)definition.append(el("p","", "Etimología: "+entry.etym));
    if(entry.refs?.length)definition.append(el("p","dictionary-meta","Fuentes: "+entry.refs.join("; ")));
   }else definition.append(el("p","","No hay una ficha lexicográfica verificada para esta forma exacta en el repertorio local. Consultá Lexicon para analizar variantes, lemas y diccionarios adicionales."));
- }catch(err){definition.append(el("p","","No se pudo cargar el diccionario: "+err.message+". Podés abrir Lexicon mediante el enlace."))}
+ }catch(err){definition.append(el("p","","No se pudo cargar el diccionario: "+err.message+". Puede abrir Lexicon mediante el enlace."))}
  dictionaryPanel.querySelector(".dictionary-status")?.remove();
 }
 list.addEventListener("click",event=>{
@@ -326,7 +326,7 @@ function bibliographyShare(){
 }
 printAll?.addEventListener("click",()=>{
  const text=bibliographyExport();
- if(text==="No hay resultados para exportar."){window.alert("Buscá primero una palabra o frase.");return}
+ if(text==="No hay resultados para exportar."){window.alert("Busca primero una palabra o frase.");return}
  const pop=window.open("","_blank");
  if(!pop){window.alert("El navegador bloqueó la ventana de impresión.");return}
  pop.document.write('<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Bibliotheca · Resultados</title><style>@page{size:A4;margin:18mm}body{font:12pt/1.6 Georgia,serif;color:#151515}h1{font:22pt Georgia,serif}main{white-space:pre-wrap;overflow-wrap:anywhere}small{font:10pt Arial,sans-serif}</style></head><body><h1>Bibliotheca Graeca et Latina</h1><small>Consulta: '+escapeHtml(input.value.trim())+' · '+escapeHtml(location.href)+'</small><main>'+escapeHtml(text)+'</main></body></html>');
