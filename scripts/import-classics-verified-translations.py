@@ -520,19 +520,21 @@ def run():
     p = argparse.ArgumentParser()
     p.add_argument("--max-new", type=int, default=3)
     args = p.parse_args()
-    limit = max(1, min(args.max_new, 6))
+    limit = max(1, min(args.max_new, 12))
     catalog, registry, audit, backlog, coverage = (
         read(CAT), read(REG), read(AUD), read(BACK), read(COVER))
     already = {(e["workId"], e["language"]) for e in registry["entries"]}
     by_id = {w["id"]: w for w in catalog["works"]}
-    additions, failures, size = [], [], 0
+    additions, failures, pending_originals, size = [], [], [], 0
     for candidate in CANDIDATES:
         wid = candidate["id"]
         filename = "data/classics-corpus/" + wid + "-en.json"
         if (wid, "en") in already:
             continue
         if (wid, candidate["original"]) not in already:
-            failures.append(wid + ": el original todavía no está indexado")
+            # Dependencia académica real, no error de código: la traducción queda
+            # pendiente sin inventar un original y se reintentará en otros lotes.
+            pending_originals.append(wid)
             continue
         if (ROOT / filename).exists():
             failures.append(wid + ": archivo preexistente sin registrar; revisión manual")
@@ -585,7 +587,7 @@ def run():
         newTranslations=len(additions), titles=[a["candidate"]["id"] for a in additions],
         indexedWorks=registry["works"], indexedVersions=registry["count"],
         translatedWorks=coverage["totals"]["translatedWorksLocal"],
-        failures=failures,
+        failures=failures, pendingOriginals=pending_originals,
         policy=("Nada de traducciones automáticas presentadas como históricas. "
                 "Mantener obras originales y versiones sin alineación forzada.")))
     print(json.dumps(dict(added=len(additions),
