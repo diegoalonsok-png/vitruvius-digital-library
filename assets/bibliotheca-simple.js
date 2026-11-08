@@ -136,9 +136,9 @@ function drawRemote(){
  remoteBox.hidden=!rows.length;
  if(!rows.length)return;
  const labels={
-  es:{head:"Traducciones consultables sin ocupar espacio",open:"Consultar traducción",note:"El texto permanece en la biblioteca externa: no se incluye en el recuento de concordancias ni está alineado automáticamente."},
-  en:{head:"Translations available without local storage",open:"Read translation",note:"The text remains on the external library: it is not counted in local concordances or automatically aligned."},
-  fr:{head:"Traductions sans stockage local",open:"Consulter la traduction",note:"Le texte reste hébergé par la bibliothèque externe : il n'est pas compté ni aligné automatiquement."}
+  es:{head:"Traducciones externas con lectura identificada",open:"Consultar traducción",note:"El enlace lleva a un índice de lectura externo comprobado. No implica búsqueda dentro de Bibliotheca, cotejo de loci ni un inventario exhaustivo de traducciones existentes."},
+  en:{head:"External translations with identified reading access",open:"Read translation",note:"This links to a checked external reading index; it is neither indexed by Bibliotheca nor collated by locus, and the list is not exhaustive."},
+  fr:{head:"Traductions externes avec accès identifié",open:"Consulter la traduction",note:"Accès à un index externe vérifié, sans recherche locale ni collation par locus. La liste n'est pas exhaustive."}
  }[locale]||{head:"Traducciones externas",open:"Consultar",note:""};
  remoteBox.append(el("p","remote-title",labels.head));
  for(const e of rows){
@@ -148,7 +148,7 @@ function drawRemote(){
   const line=el("p","remote-row");
   const a=el("a","remote-link",labels.open+" · "+(languages[e.language]||e.language));
   a.href=target.href;a.target="_blank";a.rel="noopener noreferrer";
-  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host));
+  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host+(e.verifiedIndexOn?" · "+(locale==="es"?"índice consultado":locale==="fr"?"index consulté":"index checked")+" "+e.verifiedIndexOn:"")));
   remoteBox.append(line);
  }
  remoteBox.append(el("p","remote-note",labels.note));
