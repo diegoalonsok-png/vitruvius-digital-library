@@ -108,12 +108,38 @@ try{
    assert(state.css,'Unified monochrome CSS must load');
    assert(state.count>=200,'All catalogued works must be rendered even when text is not indexed');
    assert.equal(state.search,1,'Only one search field is allowed');
-   assert.equal(state.visibleFilters.length,2,'Only search and sort controls should be visible');
+   assert.equal(state.visibleFilters.length,4,'One search field with work scope, semantic/literal mode and sort controls');
+   assert.equal(await p.locator('#bibliotheca-work-scope').count(),1,'Work-scoped search selector must exist');
+   assert.equal(await p.locator('#bibliotheca-search-mode').count(),1,'Conceptus-backed semantic mode selector must exist');
+   assert.equal(await p.locator('.classic-view-colorbar').count(),0,'Removed inoperative page-text/background palette must not be injected');
+   const visual=await p.locator('#bibliotheca-language-toggle').evaluate(el=>({
+    radius:getComputedStyle(el).borderRadius,
+    border:getComputedStyle(el).borderColor,
+    background:getComputedStyle(el).backgroundColor
+   }));
+   assert.equal(visual.radius,'4px','Lexicon subtle buttons have softly rounded corners');
+   assert.equal(visual.border,'rgb(57, 57, 57)','No gold button borders');
+   assert.equal(visual.background,'rgb(32, 32, 33)','Lexicon charcoal button background');
+   await p.locator('#bibliotheca-language-toggle').click();
+   assert.equal(await p.locator('#bibliotheca-language-toggle').getAttribute('aria-expanded'),'true','Language button must signal active state');
+   await p.locator('#bibliotheca-language-menu button[data-interface-lang="en"]').click();
+   assert.equal(await p.locator('#classic-ui-language').inputValue(),'en','Language button must actually switch interface');
+   assert.equal(await p.locator('#bibliotheca-language-menu button[data-interface-lang="en"]').getAttribute('aria-pressed'),'true','Active language remains subtly selected');
+   assert.match(await p.locator('[data-bi="page-title"]').innerText(),/Greek and Latin Bibliographic Library/);
+   await p.locator('#bibliotheca-language-toggle').click();
+   await p.locator('#bibliotheca-language-menu button[data-interface-lang="es"]').click();
    assert.equal(state.sort,'composition','Oldest works must be listed first');
    assert.equal(state.body,'rgb(11, 11, 12)','Bibliotheca must use monochrome black');
    assert.equal(state.list,'rgb(21, 21, 22)','Catalogue uses the existing Lexicon charcoal #151516');
    assert(/obras no indexadas/.test(state.summary),'Missing originals must be identified as unsearched');
    assert(!state.iframe,'No codex or reader must load before explicit selection');
+   await p.locator('#classic-query').fill('domus');
+   await p.locator('#bibliotheca-work-scope').selectOption('vitruvius');
+   assert.equal(await p.locator('#bibliotheca-work-scope').inputValue(),'vitruvius');
+   await p.locator('#bibliotheca-search-mode').selectOption('semantic');
+   await p.locator('#bibliotheca-search-mode').selectOption('literal');
+   await p.locator('#bibliotheca-work-scope').selectOption('');
+   await p.locator('#classic-query').fill('');
    await p.locator('#classic-sort').selectOption('author');
    assert.equal(await p.locator('#classic-sort').inputValue(),'author','Alphabetical ordering must work');
    await p.locator('#classic-sort').selectOption('composition');
