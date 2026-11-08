@@ -6,15 +6,15 @@
   "counts": {
     "cataloguedWorks": 222,
     "catalogueStatuses": {
-      "lectura-local-completa": 30,
-      "repertoriado-busqueda-externa": 126,
+      "lectura-local-completa": 31,
+      "repertoriado-busqueda-externa": 125,
       "pendiente-de-incorporar": 44,
       "fuente-externa-identificada": 21,
       "lectura-local-parcial": 1
     },
-    "locallyReadableClaims": 31,
-    "indexedTextVersions": 244,
-    "indexedDistinctWorks": 179,
+    "locallyReadableClaims": 32,
+    "indexedTextVersions": 245,
+    "indexedDistinctWorks": 180,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -1213,16 +1213,20 @@
       "originalLanguage": "la",
       "genre": "Ingeniería y arte militar",
       "dating": "Finales del siglo I d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-completa",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/frontinus-strategemata-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Edición histórica latina académica TEI Corpus Corporum / UZH, 595 loci de 4 libros; libro IV de autoría debatida y anomalías numerales documentadas. Sin cotejo de testigos manuscritos ni traducciones alojadas."
     },
     {
       "id": "plutarch-lives",
