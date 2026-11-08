@@ -81,6 +81,11 @@ function render(rows,query,person){
    const a=link(controls,oldest.label,oldest.url);
    if(a)a.className='article-original-reading-record';
   }
+  // Historial codicológico documentado, independiente del enlace al texto editado.
+  if(b.workId){
+   const tree=link(controls,text('Árbol de códices y ediciones','Manuscript and edition timeline','Arbre des manuscrits et éditions'),'tradicion-textual-clasica.html?work='+encodeURIComponent(b.workId));
+   if(tree)tree.className='article-original-reading-record';
+  }
   if(reading&&b.link&&b.link!==reading.url){
    const record=link(controls,text('Ficha de la obra','Work record','Notice de l’œuvre'),b.link);
    if(record)record.className='article-original-reading-record';
