@@ -2372,8 +2372,9 @@
       "century": "I",
       "period": "I",
       "reading": {
-        "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html",
-        "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
+        "url": "classics-text-reader.html?work=frontinus-strategemata&lang=la",
+        "status": "Original latino indexado desde TEI académico de Corpus Corporum / Universidad de Zúrich (Loeb 1925, texto latino basado en Gundermann 1887). 595 unidades recuperables en 4 libros y 50 capítulos; libro IV de atribución discutida, numeración corregida solo en lector, sin cotejo autóptico de manuscritos.",
+        "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html"
       },
       "manuscript": {
         "manifest": null,
@@ -2393,11 +2394,17 @@
         "archive": "https://archive.org/search?query=Strategemata%20Frontino",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Strategemata"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null,
+      "publicStatus": "lectura-local-completa",
+      "localReader": "classics-text-reader.html?work=frontinus-strategemata&lang=la",
       "bibliography": {
         "editionCitation": "Frontinus. The Stratagems and The Aqueducts of Rome. Translated by Charles E. Bennett; edited by Mary B. McElwain. Loeb Classical Library 174. London: William Heinemann; New York: G. P. Putnam's Sons, 1925.",
-        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+        "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes.",
+        "digitalSource": "Corpus Corporum, Universidad de Zúrich (Philipp Roelli, 2013), XML TEI de Strategemata; texto histórico Loeb 1925 de C. E. Bennett preparado por M. B. McElwain; cuatro libros, libro IV de atribución disputada.",
+        "digitalSourceUrl": "https://github.com/alexanderboxer/voynich-attack/blob/255bd632e45459230eaf2a994e0557ed6c682869/corpora/latin/CorpusCorporum/auctores_scientiarum_varii/frontinus_sextus_iulius/strategemata/strategemata.TEI-P5.xml",
+        "access": "Texto académico indexado para búsqueda; no equivale a cotejo manuscrito ni edición crítica propia; reutilización no comercial y con atribución."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/frontinus-strategemata-la.json"
       }
     },
     {
