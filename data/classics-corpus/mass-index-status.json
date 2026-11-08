@@ -1,51 +1,50 @@
 {
   "updated": "2026-11-08",
-  "newWorks": 5,
-  "newTextVersions": 5,
-  "indexedDistinctWorks": 135,
-  "registeredTextVersions": 182,
-  "missingOriginals": 87,
+  "newWorks": 3,
+  "newTextVersions": 3,
+  "indexedDistinctWorks": 138,
+  "registeredTextVersions": 190,
+  "missingOriginals": 84,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "apuleius-apologia",
-      "lang": "la",
-      "path": "data/classics-corpus/apuleius-apologia-la.json",
-      "passages": 103,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1212/phi001/phi1212.phi001.perseus-lat1.xml",
-      "sha256": "c870b4f14dc190a60cf67bc87a9ee2f5672ddc7521a7265da56b5704e7844375"
-    },
-    {
-      "workId": "boethius-consolatio",
-      "lang": "la",
-      "path": "data/classics-corpus/boethius-consolatio-la.json",
-      "passages": 98,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0058/stoa001/stoa0058.stoa001.perseus-lat2.xml",
-      "sha256": "2e43b9833fbf0a467d0f8f1d7958830512c040d830f7fba549db3a551f91399b"
-    },
-    {
-      "workId": "aratus-phaenomena",
+      "workId": "demosthenes-philippicae",
       "lang": "grc",
-      "path": "data/classics-corpus/aratus-phaenomena-grc.json",
-      "passages": 144,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0653/tlg001/tlg0653.tlg001.perseus-grc2.xml",
-      "sha256": "b4a08a5af96a8715da697ad30dbe535fbfe7bce37f8d2ee5dd584a95f2630d2d"
+      "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+      "passages": 240,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg004/tlg0014.tlg004.perseus-grc2.xml",
+      "sha256": "b863100ddf872445d94ea7a5d4491ffb8954974bac5199a11ef674c32f273246",
+      "componentUrns": [
+        "tlg0014.tlg004",
+        "tlg0014.tlg006",
+        "tlg0014.tlg009",
+        "tlg0014.tlg010"
+      ]
     },
     {
-      "workId": "aeneas-tacticus-poliorketika",
+      "workId": "aeschylus-oresteia",
       "lang": "grc",
-      "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
-      "passages": 386,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0058/tlg001/tlg0058.tlg001.perseus-grc2.xml",
-      "sha256": "94fdfc671058ab075e4257ca923c71e09badc06dea175baca08a0ef1e6d7dfc8"
+      "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+      "passages": 482,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg005/tlg0085.tlg005.perseus-grc2.xml",
+      "sha256": "6b14c6a4114eace72e103074d16b2c5d5a920fa8b74ebf4fc72035eb0b8a2cc1",
+      "componentUrns": [
+        "tlg0085.tlg005",
+        "tlg0085.tlg006",
+        "tlg0085.tlg007"
+      ]
     },
     {
-      "workId": "euclid-elementa",
+      "workId": "pseudo-apollodorus-bibliotheca",
       "lang": "grc",
-      "path": "data/classics-corpus/euclid-elementa-grc.json",
-      "passages": 829,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1799/tlg001/tlg1799.tlg001.perseus-grc2.xml",
-      "sha256": "d7ed22ae72e277bfd39c53f0e35ac046307b4133d179039001074ccf6ce06613"
+      "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
+      "passages": 393,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0548/tlg001/tlg0548.tlg001.perseus-grc2.xml",
+      "sha256": "f848299edc62430698ce209f8f1b7154999c15ee5103ad189d91d5384878ed5e",
+      "componentUrns": [
+        "tlg0548.tlg001",
+        "tlg0548.tlg002"
+      ]
     }
   ],
   "errors": [

@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 187,
-  "works": 135,
+  "count": 190,
+  "works": 138,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -1878,6 +1878,36 @@
       "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json",
       "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=en",
       "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+      "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+      "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
+      "reader": "classics-text-reader.html?work=pseudo-apollodorus-bibliotheca&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

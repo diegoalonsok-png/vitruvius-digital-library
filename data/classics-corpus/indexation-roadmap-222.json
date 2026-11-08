@@ -4,18 +4,18 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 135,
-    "originalsMissing": 87,
+    "originalsIndexed": 138,
+    "originalsMissing": 84,
     "worksWithHostedTranslation": 46,
     "worksMissingTranslation": 176,
-    "textVersions": 187,
+    "textVersions": 190,
     "states": {
-      "original_pendiente": 87,
-      "original_sin_traduccion_local": 89,
+      "original_pendiente": 84,
+      "original_sin_traduccion_local": 92,
       "original_y_traduccion_local": 46
     },
     "sourceReadinessForMissingOriginals": {
-      "correspondencia_bibliografica_ambigua": 11,
+      "correspondencia_bibliografica_ambigua": 8,
       "requiere_fuente_no_canonica_o_edicion_especifica": 16,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 44
@@ -1648,11 +1648,13 @@
       "title": "Βιβλιοθήκη (Bibliotheca)",
       "originalLanguage": "grc",
       "dating": "datación discutida, posiblemente siglos I–II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0548.tlg001",
         "tlg0548.tlg002"
@@ -2030,11 +2032,13 @@
       "title": "Ὀρέστεια",
       "originalLanguage": "grc",
       "dating": "458 a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0085.tlg005",
         "tlg0085.tlg006",
@@ -3027,11 +3031,13 @@
       "title": "Φιλιππικοί",
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0014.tlg004",
         "tlg0014.tlg006",

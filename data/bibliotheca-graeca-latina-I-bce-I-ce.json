@@ -3743,6 +3743,9 @@
         "perseus": null,
         "archive": null,
         "gallica": null
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json"
       }
     },
     {
@@ -4488,6 +4491,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aeschylus-oresteia-grc.json"
       }
     },
     {
@@ -7363,7 +7369,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/demosthenes-philippicae-grc.json"
+      }
     },
     {
       "id": "pindar-olympian",

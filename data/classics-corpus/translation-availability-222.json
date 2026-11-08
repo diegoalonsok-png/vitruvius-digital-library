@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 135,
+    "locallyIndexedWorks": 138,
     "translatedWorksLocal": 46,
     "worksWithoutHostedTranslation": 176,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 45,
       "fr": 2
     },
-    "originalTextIndexed": 135,
-    "originalTextNotIndexed": 87
+    "originalTextIndexed": 138,
+    "originalTextNotIndexed": 84
   },
   "works": [
     {
@@ -1424,14 +1424,16 @@
       "author": "Pseudo-Apolodoro",
       "title": "Βιβλιοθήκη (Bibliotheca)",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "philo-legum-allegoriae",
@@ -1694,14 +1696,16 @@
       "author": "Esquilo",
       "title": "Ὀρέστεια",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "sophocles-oedipus",
@@ -2627,14 +2631,16 @@
       "author": "Demóstenes",
       "title": "Φιλιππικοί",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "pindar-olympian",
