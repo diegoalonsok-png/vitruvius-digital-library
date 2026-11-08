@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: classics-translations-verified
+  group: classics-corpus-publication-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
