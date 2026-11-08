@@ -78,3 +78,40 @@ body.critical-lexicon-theme input[type="checkbox"]{accent-color:#b8bdc5;width:16
  body.critical-lexicon-theme :is(.critical-controls label,.critical-unified-options label){flex:1 1 100%}
  body.critical-lexicon-theme :is(.critical-controls button,.critical-unified-options button){width:100%}
 }
+
+
+/* Compact header specific to critical apparatus. Avoid the orphaned Aa row. */
+body.critical-lexicon-theme .site-header .header-inner{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;
+ column-gap:22px!important;row-gap:12px!important;min-height:0!important;
+ padding:20px 0!important;
+}
+body.critical-lexicon-theme .site-header .wordmark{flex:0 0 auto!important}
+body.critical-lexicon-theme .site-header .wordmark-name{font-size:clamp(27px,2.3vw,35px)!important}
+body.critical-lexicon-theme .site-header .header-inner nav{
+ display:flex!important;flex:1 1 480px!important;flex-wrap:wrap!important;
+ gap:5px 19px!important;min-width:0!important;align-items:center!important}
+body.critical-lexicon-theme .site-header .header-inner nav a{white-space:normal!important;line-height:1.3!important}
+body.critical-lexicon-theme .site-header .site-typeface-tool{
+ position:static!important;display:inline-flex!important;flex:0 0 auto!important;
+ align-self:center!important;margin:0!important;order:5!important}
+body.critical-lexicon-theme .site-header .theme-switch{
+ position:static!important;display:inline-flex!important;flex:0 0 auto!important;
+ min-width:0!important;margin:0!important;order:4!important;
+ background:#202227!important;color:#e8e9eb!important;border:1px solid #474a52!important;
+ min-height:42px!important;border-radius:4px!important}
+body.critical-lexicon-theme .site-header .site-typeface-button{
+ min-width:42px!important;min-height:42px!important;margin:0!important;
+ background:#202227!important;border:1px solid #474a52!important;border-radius:4px!important;
+ box-shadow:none!important}
+body.critical-lexicon-theme .site-header .header-languages{display:none!important}
+@media(max-width:950px){
+ body.critical-lexicon-theme .site-header .header-inner nav{flex-basis:100%!important;order:8!important}
+ body.critical-lexicon-theme .site-header .theme-switch{margin-left:auto!important}
+}
+@media(max-width:550px){
+ body.critical-lexicon-theme .site-header .header-inner{padding:13px 0!important;column-gap:10px!important}
+ body.critical-lexicon-theme .site-header .wordmark-name{font-size:25px!important}
+ body.critical-lexicon-theme .site-header .header-inner nav{gap:3px 11px!important}
+ body.critical-lexicon-theme .site-header .header-inner nav a{font-size:11px!important}
+}
