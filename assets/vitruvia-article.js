@@ -1174,7 +1174,7 @@ function appendDocumentedLegacy(rows,query){
  const accepted=new Set(["manuscript","edition","article","book","googlebook","openlibrary","museum","passage","fragment","scholar"]);
  const ranked=(rows||[]).filter(r=>r?.link&&r.title&&accepted.has(r.type))
  .filter(r=>(!window.VitruviaDocumentaryRelevance||window.VitruviaDocumentaryRelevance.accepts(r,query))
-   &&(relevance(r,query)>=45||r.exactTextMatch||r.curatedAcademic||r.primaryWitness))
+   &&(relevance({...r,title:[r.title,r.author,...(r.aliases||[])].filter(Boolean).join(" ")},query)>=45||r.exactTextMatch||r.curatedAcademic||r.primaryWitness))
  .sort((a,b)=>{
   const priority=x=>x.type==="passage"||x.type==="manuscript"||x.type==="edition"||x.type==="fragment"?0:
    x.type==="article"&&(x.doi||x.journal||x.curatedAcademic)?1:
@@ -1490,7 +1490,7 @@ function buildContents(){
  const box=$("article-aside");if(!box)return;
  const body=$("article-body");
  box.querySelector(".article-contents")?.remove();body.querySelector(".article-inline-contents")?.remove();
- const sections=[...body.querySelectorAll("h3,h4")].filter(h=>!h.closest(".article-wikipedia-optional"));
+ const sections=[...body.querySelectorAll(":scope > h3, :scope > h4")];
  if(!sections.length)return;
  const nav=document.createElement("nav");nav.className="article-contents";nav.setAttribute("aria-label",phrase("Índice de contenidos","Table of contents","Sommaire"));
  nav.append(make("h3",phrase("Contenido","Contents","Sommaire")));
