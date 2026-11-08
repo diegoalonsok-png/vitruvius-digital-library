@@ -170,6 +170,13 @@ try{
    assert.equal(await p.locator('#language-toggle').evaluate(e=>getComputedStyle(e).borderColor),
     'rgb(146, 146, 149)','The focused language control must visibly acknowledge the interaction');
    assert.match(state.coverage,/222|obras catalogadas/);
+   const chronology=await p.locator('#classic-work option').evaluateAll(els=>els.map(e=>e.value));
+   const positions=['homer-iliad','sophocles-oedipus','cicero-catilinariae','vitruvius']
+    .map(id=>chronology.indexOf(id));
+   assert(positions.every(x=>x>=0),'All four known ancient works must be in the catalogue');
+   assert(positions.every((x,i)=>i===0||positions[i-1]<x),
+    'Bibliotheca must order works by ancient composition, not modern editions');
+   assert.equal(await p.locator('#capitula-nav').getAttribute('href'),'bibliotheca-capitula.html');
    await p.locator('#language-toggle').click();
    assert.equal(await p.locator('#search-submit').innerText(),'Search');
    assert.equal(await p.locator('#language-toggle').innerText(),'Language · EN');
@@ -194,6 +201,13 @@ try{
    assert.match(await p.locator('#search-status').innerText(),/Transliteración griega documentada: λόγος/);
    assert.equal(await p.locator('#classic-results .hit[lang="el"]').count()>0,true,
     'Romanized logos must recover Greek textual loci, not invented semantic matches');
+   const visual=await p.locator('#classic-results .hit mark').first().evaluate(el=>{
+    const css=getComputedStyle(el);return {decoration:css.textDecorationLine,background:css.backgroundColor};
+   });
+   assert.match(visual.decoration,/underline/,'Searched word must be underlined');
+   assert.equal(visual.background,'rgba(0, 0, 0, 0)','Searched word must have no colored block');
+   assert.match(await p.locator('.hit .passage-link').first().getAttribute('href'),
+    /classics-text-reader\.html\?work=aristotle-poetics/,'Concordance must open its real cited reader');
   }finally{await p.close()}
  });
  await check('Bibliotheca concordance: actual Latin term, full black-background paragraph and Lexicon query link',async()=>{
