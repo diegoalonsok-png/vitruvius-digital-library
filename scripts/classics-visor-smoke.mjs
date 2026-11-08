@@ -87,92 +87,65 @@ try{
     'The visible top dossier must not combine Perón with Acts of John or a modern book title');
   }finally{await p.close()}
  });
- await check('Bibliotheca monochrome Lexicon design preserves all catalogue dropdowns and filtering',async()=>{
+ await check('Bibliotheca Lexicon: one black/grey search field, chronological and alphabetic catalogue, no initial viewer',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
-   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=190,{timeout:26000});
-   const before=await p.evaluate(()=>{
-    const options=id=>[...document.getElementById(id).options].map(o=>o.value);
-    const rgb=sel=>getComputedStyle(document.querySelector(sel)).backgroundColor;
-    return {
-     cssLoaded:!!document.querySelector('link[href*="bibliotheca-monochrome.css"]'),
-     body:rgb('body'),hero:rgb('.classic-head'),controls:rgb('.classic-controls'),
-     list:rgb('#classic-list'),detail:rgb('#classic-detail'),
-     options:{
-      'classic-ui-language':options('classic-ui-language'),
-      'classic-language':options('classic-language'),
-      'classic-genre':options('classic-genre'),
-      'classic-availability':options('classic-availability'),
-      'classic-period':options('classic-period'),
-      'classic-sort':options('classic-sort')
-     },
-     visible:document.querySelectorAll('#classic-list button').length
-    };
-   });
-   assert(before.cssLoaded,'Bibliotheca monochrome stylesheet must be loaded');
-   assert.equal(before.body,'rgb(13, 13, 14)','Page background must match Lexicon black');
-   assert.equal(before.controls,'rgb(21, 21, 22)','Filters must use dark charcoal');
-   assert.equal(before.list,'rgb(21, 21, 22)','Catalogue sidebar must use dark charcoal');
-   assert.equal(before.detail,'rgb(21, 21, 22)','Work detail must use dark charcoal');
-   assert.deepEqual(before.options['classic-ui-language'],['es','en','fr','it','de','pt']);
-   assert.deepEqual(before.options['classic-language'],['','la','grc']);
-   assert.deepEqual(before.options['classic-availability'],['','local','source','catalogue']);
-   assert.deepEqual(before.options['classic-period'],['','focus']);
-   assert.deepEqual(before.options['classic-sort'],['author','composition','relevance','witness'],
-    'The four academic catalogue sort modes must remain available');
-   assert(before.options['classic-genre'].length>=2,'Genre filter options must still be populated');
-   await p.locator('#classic-sort').selectOption('composition');
-   assert.equal(await p.locator('#classic-sort').inputValue(),'composition',
-    'Sorting by estimated composition date must be selectable');
-   await p.locator('#classic-sort').selectOption('author');
-   await p.evaluate(()=>document.documentElement.setAttribute('data-theme','dark'));
-   const afterTheme=await p.evaluate(()=>({
+   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=200,{timeout:26000});
+   await p.waitForFunction(()=>document.getElementById('bibliotheca-coverage-status')||document.querySelector('.bibliotheca-coverage'),{timeout:14000});
+   const state=await p.evaluate(()=>({
+    count:document.querySelectorAll('#classic-list button').length,
+    search:document.querySelectorAll('.classic-controls input[type=search]').length,
+    visibleFilters:[...document.querySelectorAll('.classic-controls>label')].filter(e=>getComputedStyle(e).display!=='none').map(e=>e.className),
+    sort:document.getElementById('classic-sort').value,
     body:getComputedStyle(document.body).backgroundColor,
-    controls:getComputedStyle(document.querySelector('.classic-controls')).backgroundColor,
     list:getComputedStyle(document.getElementById('classic-list')).backgroundColor,
-    detail:getComputedStyle(document.getElementById('classic-detail')).backgroundColor
+    controls:getComputedStyle(document.querySelector('.classic-controls')).backgroundColor,
+    summary:document.querySelector('.bibliotheca-coverage')?.textContent,
+    iframe:document.querySelector('#classic-detail iframe')?.getAttribute('src')||'',
+    css:!!document.querySelector('link[href*="bibliotheca-unified.css"]'),
+    autocomplete:document.querySelector('#classic-search-suggestions')
    }));
-   for(const [name,shade] of Object.entries(afterTheme))
-    assert.equal(shade,name==='body'?'rgb(13, 13, 14)':'rgb(21, 21, 22)',
-     'Saved dark-theme overrides must not restore navy on '+name);
-   await p.locator('#classic-language').selectOption('la');
-   await p.waitForFunction(n=>{
-    const count=document.querySelectorAll('#classic-list button').length;
-    return count>0&&count<n;
-   },before.visible,{timeout:14000});
-   assert.equal(await p.locator('#classic-language').inputValue(),'la');
-   await p.locator('#classic-language').selectOption('');
-   await p.waitForFunction(n=>document.querySelectorAll('#classic-list button').length===n,
-    before.visible,{timeout:14000});
+   assert(state.css,'Unified monochrome CSS must load');
+   assert(state.count>=200,'All catalogued works must be rendered even when text is not indexed');
+   assert.equal(state.search,1,'Only one search field is allowed');
+   assert.equal(state.visibleFilters.length,2,'Only search and sort controls should be visible');
+   assert.equal(state.sort,'composition','Oldest works must be listed first');
+   assert.equal(state.body,'rgb(11, 11, 12)','Bibliotheca must use monochrome black');
+   assert.equal(state.list,'rgb(20, 20, 21)','Catalogue uses Lexicon charcoal');
+   assert(/obras no indexadas/.test(state.summary),'Missing originals must be identified as unsearched');
+   assert(!state.iframe,'No codex or reader must load before explicit selection');
+   await p.locator('#classic-sort').selectOption('author');
+   assert.equal(await p.locator('#classic-sort').inputValue(),'author','Alphabetical ordering must work');
+   await p.locator('#classic-sort').selectOption('composition');
+   await p.evaluate(()=>document.documentElement.setAttribute('data-theme','dark'));
+   assert.equal(await p.locator('.classic-controls').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)');
   }finally{await p.close()}
  });
- await check('Unified Bibliotheca book index is fast, grouped, searchable and includes both Perrault editions',async()=>{
+ await check('Bibliotheca: literal phrase or word yields all source-locus links and only click opens viewer',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
-   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=190,{timeout:29000});
-   await p.locator('#classic-query').focus();
-   await p.waitForFunction(()=>!document.querySelector('#classic-search-suggestions').hidden,{timeout:9000});
-   const overview=await p.evaluate(()=>{
-    const options=[...document.querySelectorAll('#classic-search-suggestions button[role=option]')];
-    return {
-     number:options.length,groupCount:document.querySelectorAll('.classic-suggestion-group').length,
-     more:document.querySelectorAll('.classic-suggestion-more:not([hidden])').length,
-     summary:document.querySelector('.classic-suggestions-heading')?.textContent||'',
-     perrault:[...options].filter(x=>x.textContent.includes('Perrault')).length
-    };
-   });
-   assert(overview.number<=80,'Index must not render hundreds of entries on first focus');
-   assert(overview.groupCount>=4,'Index must distinguish author, historical, classical and codex groups');
-   assert(overview.more>=1,'A show-more control must retain access to the rest of the catalogue');
-   assert(/títulos y testimonios/.test(overview.summary),'Index must disclose total match count');
-   await p.locator('#classic-query').fill('Perrault');
-   await p.waitForFunction(()=>[...document.querySelectorAll('#classic-search-suggestions button[role=option]')].filter(x=>x.textContent.includes('Perrault')).length>=2,{timeout:15000});
-   const perrault=await p.evaluate(()=>[...document.querySelectorAll('#classic-search-suggestions button[role=option]')].filter(x=>x.textContent.includes('Perrault')).map(x=>x.textContent));
-   assert(perrault.some(x=>x.includes('1673')),'Perrault first edition must appear');
-   assert(perrault.some(x=>x.includes('1684')),'Perrault second edition must appear');
-   await p.locator('#classic-query').fill('Krohn');
-   await p.waitForFunction(()=>document.querySelector('#classic-search-suggestions')?.textContent?.includes('Krohn'),{timeout:10000});
-   assert(await p.locator('#classic-search-suggestions').innerText().then(x=>x.includes('1912')),'Krohn historical edition must remain findable');
+   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=200,{timeout:26000});
+   const countBefore=await p.locator('#classic-list button').count();
+   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),0,'Reader must not open on page load');
+   await p.locator('#classic-query').fill('Viuamus');
+   await p.locator('.bibliotheca-search-submit').click();
+   await p.waitForFunction(()=>document.querySelectorAll('.bibliotheca-passage').length>0,{timeout:65000});
+   const hits=await p.locator('.bibliotheca-passage').count();
+   assert(hits>0,'An actual Latin passage should be returned');
+   assert.match(await p.locator('.bibliotheca-group-title').first().innerText(),/Carmina/i);
+   assert((await p.locator('.bibliotheca-citation').first().innerText()).includes('Chicago 18'));
+   assert((await p.locator('.bibliotheca-unindexed-warning').innerText()).includes('No examinadas'));
+   assert.equal(await p.locator('#classic-list button').count(),countBefore,'Search must not hide unindexed catalogue works');
+   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),0,'No auto-viewer after a text search');
+   await p.locator('.bibliotheca-passage-actions button').first().click();
+   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),1,'Viewer opens only on explicit click');
+   assert.match(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').getAttribute('src'),/classics-text-reader\.html\?/);
+   await p.locator('dialog.bibliotheca-on-demand-viewer button:has-text("Cerrar")').click();
+   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').count(),0,'Close unloads reader');
+   for(const label of ['PDF / imprimir','Correo','WhatsApp','Lexicon · selección','Pronunciar selección'])
+    assert(await p.getByRole('button',{name:label,exact:true}).count()>0,'Missing academic action '+label);
+   await p.locator('.bibliotheca-color').fill('#aaaaaa');
+   await p.getByRole('button',{name:'A+'}).click();
   }finally{await p.close()}
  });
  await check('Perrault 1673 navigates actual numbered IIIF canvases without bulk image loading',async()=>{
