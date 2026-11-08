@@ -145,8 +145,11 @@ def extract_complete_tei(raw, fallback_title):
         raise ValueError("TEI no contiene body")
     verses = body.findall(".//" + ns + "l")
     prose = body.findall(".//" + ns + "p")
-    verse_chars = sum(len(" ".join(e.itertext())) for e in verses)
-    prose_chars = sum(len(" ".join(e.itertext())) for e in prose)
+    # La TEI contiene indentación y saltos editoriales que NO son caracteres del texto.
+    # Comparar cobertura frente a texto normalizado, como hace el extractor,
+    # evita rechazar obras extensas (p. ej. Fedón) por espacios del marcado XML.
+    verse_chars = sum(len(" ".join(" ".join(e.itertext()).split())) for e in verses)
+    prose_chars = sum(len(" ".join(" ".join(e.itertext()).split())) for e in prose)
     if verses and prose and prose_chars > 2 * verse_chars:
         # Solo copia XML en memoria: preservar los versos dentro de sus párrafos.
         for line in verses:
