@@ -72,6 +72,13 @@ CANDIDATES = [
          translator="Francis Adams", year=1886,
          publisher="William Wood and Company, New York",
          mode="section-aphorisms", min_units=410, min_chars=28000),
+    dict(id="aeschylus-suppliants", original="grc", repo="canonical-greekLit",
+         path="data/tlg0085/tlg001/tlg0085.tlg001.perseus-eng2.xml",
+         blob="8114a610a69b70b0bebd234e56a65603e7c6d3ea",
+         translator="Herbert Weir Smyth", year=1922,
+         publisher="William Heinemann / G. P. Putnam's Sons",
+         mode="verse-lines", min_units=380, min_chars=35000,
+         editorialNote="Texto digital modernizado por Perseus; no reproducción diplomática de Smyth (1922)."),
     dict(id="aeschylus-persae", original="grc", repo="canonical-greekLit",
          path="data/tlg0085/tlg002/tlg0085.tlg002.perseus-eng2.xml",
          blob="adc9811e3c04d97ac1ce34d653eda61395066e9b",
@@ -440,7 +447,7 @@ def run():
                 attribution=(by_id[wid]["author"] + ". " + by_id[wid]["title"] +
                              ". English translation by " + candidate["translator"] +
                              " (" + str(candidate["year"]) + "), TEI PerseusDL."),
-                editorialStatus="Traducción histórica; fuente TEI cotejada estructuralmente, no colación filológica independiente",
+                editorialStatus=("Traducción histórica; fuente TEI cotejada estructuralmente, no colación filológica independiente. "+candidate.get("editorialNote", "")).strip(),
                 alignmentStatus="unaligned",
                 alignment="No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI.",
                 coverage=dict(sourceUnitsVerified=units, passages=len(passages), chars=chars,
