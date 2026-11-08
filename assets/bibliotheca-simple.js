@@ -276,7 +276,15 @@ async function search(){
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
   const transliterations=await attestedGreekForms(q);
   if(id!==serial)return;
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allMatches:true,includeFullText:true,includeOCR:false});
+  const onProgress=(partial,progress)=>{
+   if(id!==serial)return;
+   render(partial,q,{...progress,partial:true,transliterations});
+   status.textContent=dict[locale].stats(partial.reduce((n,row)=>n+(row.hitsInPassage||1),0),partial.length,new Set(partial.map(row=>row.workId)).size)+
+    " · "+progress.examined+"/"+progress.targeted+" versiones examinadas"+
+    (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
+    (!progress.complete?" · buscando…":"");
+  };
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allMatches:true,includeFullText:true,includeOCR:false,onProgress});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
