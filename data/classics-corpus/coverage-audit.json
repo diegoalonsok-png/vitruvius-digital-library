@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 123,
+    "indexedTextVersions": 124,
     "indexedDistinctWorks": 86,
     "manuscriptWitnesses": 23
   },
@@ -2549,9 +2549,11 @@
       "dating": "composición y atribuciones debatidas",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/hippocrates-aphorisms-en.json",
         "data/classics-corpus/hippocrates-aphorisms-grc.json"
       ],
       "localPDF": null,

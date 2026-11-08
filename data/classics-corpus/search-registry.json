@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 123,
+  "count": 124,
   "works": 86,
   "entries": [
     {
@@ -1238,6 +1238,16 @@
       "path": "data/classics-corpus/euripides-hippolytus-grc.json",
       "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/hippocrates-aphorisms-en.json",
+      "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=en",
+      "sourceDescription": "Traducción histórica de Francis Adams (1886); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

@@ -5105,8 +5105,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/hippocrates-aphorisms-grc.json"
-      }
+        "grc": "data/classics-corpus/hippocrates-aphorisms-grc.json",
+        "en": "data/classics-corpus/hippocrates-aphorisms-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Francis Adams (1886)",
+          "path": "classics-text-reader.html?work=hippocrates-aphorisms&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Corpus hipocrático. Ἀφορισμοί. Translated by Francis Adams. William Wood and Company, New York, 1886. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "epictetus-discourses",

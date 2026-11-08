@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 86,
-    "translatedWorksLocal": 31,
-    "worksWithoutHostedTranslation": 191,
+    "translatedWorksLocal": 32,
+    "worksWithoutHostedTranslation": 190,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 30,
+      "en": 31,
       "fr": 2
     },
     "originalTextIndexed": 86,
@@ -1885,14 +1885,17 @@
       "title": "Ἀφορισμοί",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Francis Adams (1886), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

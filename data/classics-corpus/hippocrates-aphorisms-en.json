@@ -1,0 +1,2091 @@
+{
+  "workId": "hippocrates-aphorisms",
+  "language": "en",
+  "title": "Ἀφορισμοί",
+  "originalLanguage": "grc",
+  "translator": "Francis Adams",
+  "editionYear": 1886,
+  "translationEdition": "William Wood and Company, New York (1886)",
+  "sourceType": "historical-english-perseus-tei",
+  "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg012/tlg0627.tlg012.perseus-eng2.xml",
+  "sourceGitBlobSha": "d4a9d7434955eede6a1624c0c24a2adb45953b22",
+  "sourceSha256": "6dbe044dfbf4a6554bc3e1514ffef2e08e5c171586cb15d96be80fda5cb58850",
+  "license": "CC BY-SA 4.0 · Perseus Digital Library TEI",
+  "attribution": "Corpus hipocrático. Ἀφορισμοί. English translation by Francis Adams (1886), TEI PerseusDL.",
+  "editorialStatus": "Traducción histórica; fuente TEI cotejada estructuralmente, no colación filológica independiente",
+  "alignmentStatus": "unaligned",
+  "alignment": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI.",
+  "coverage": {
+    "sourceUnitsVerified": 413,
+    "passages": 413,
+    "chars": 57509,
+    "unitType": "section-aphorisms"
+  },
+  "passages": [
+    {
+      "locus": "1.1",
+      "text": "Life is short, and Art long; the crisis fleeting; experience perilous, and decision difficult. The physician must not only be prepared to do what is right himself, but also to make the patient, the attendants, and externals cooperate.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.2",
+      "text": "In disorders of the bowels and vomitings, occurring spontaneously, if the matters purged be such as ought to be purged, they do good, and are well borne; but if not, the contrary. And so artificial evacuations, if they consist of such matters as should be evacuated, do good, and are well borne; but if not, the contrary. One, then, ought to look to the country, the season, the age, and the diseases in which they are proper or not.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.3",
+      "text": "In the athletae, embonpoint, if carried to its utmost limit, is dangerous, for they cannot remain in the same state nor be stationary; and since, then, they can neither remain stationary nor improve, it only remains for them to get worse; for these reasons the embonpoint should be reduced without delay, that the body may again have a commencement of reparation. Neither should the evacuations, in their case, be carried to an extreme, for this also is dangerous, but only to such a point as the person’s constitution can endure. In like manner, medicinal evacuations, if carried to an extreme, are dangerous; and again, a restorative course, if in the extreme, is dangerous.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.4",
+      "text": "A slender restricted diet is always dangerous in chronic diseases, and also in acute diseases, where it is not requisite. And again, a diet brought to the extreme point of attenuation is dangerous; and repletion, when in the extreme, is also dangerous.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.5",
+      "text": "In a restricted diet, patients who transgress are thereby more hurt (than in any other?); for every such transgression, whatever it may be, is followed by greater consequences than in a diet somewhat more generous. On this account, a very slender, regulated, and restricted diet is dangerous to persons in health, because they bear transgressions of it more difficultly. For this reason, a slender and restricted diet is generally more dangerous than one a little more liberal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.6",
+      "text": "For extreme diseases, extreme methods of cure, as to restriction, are most suitable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.7",
+      "text": "When the disease is very acute, it is attended with extremely severe symptoms in its first stage; and therefore an extremely attenuating diet must be used. When this is not the case, but it is allowable to give a more generous diet, we may depart as far from the severity of regimen as the disease, by its mildness, is removed from the extreme.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.8",
+      "text": "When the disease is at its height, it will then be necessary to use the most slender diet.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.9",
+      "text": "We must form a particular judgment of the patient, whether he will support the diet until the acme of the disease, and whether he will sink previously and not support the diet, or the disease will give way previously, and become less acute.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.10",
+      "text": "In those cases, then, which attain their acme speedily, a restricted diet should be enjoined at first; but in those cases which reach their acme later, we must retrench at that period or a little before it; but previously we must allow a more generous diet to support the patient.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.11",
+      "text": "We must retrench during paroxysms, for to exhibit food would be injurious. And in all diseases having periodical paroxysms, we must restrict during the paroxysms.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.12",
+      "text": "The exacerbations and remissions will be indicated by the diseases, the seasons of the year, the reciprocation of the periods, whether they occur every day, every alternate day, or after a longer period, and by the supervening symptoms; as, for example, in pleuritic cases, expectoration, if it occur at the commencement, shortens the attack, but if it appear later, it prolongs the same; and in the same manner the urine, and alvine discharges, and sweats, according as they appear along with favorable or unfavorable symptoms, indicate diseases of a short or long duration.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.13",
+      "text": "Old persons endure fasting most easily; next, adults; young persons not nearly so well; and most especially infants, and of them such as are of a particularly lively spirit.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.14",
+      "text": "Growing bodies have the most innate heat; they therefore require the most food, for otherwise their bodies are wasted. In old persons the heat is feeble, and therefore they require little fuel, as it were, to the flame, for it would be extinguished by much. On this account, also, fevers in old persons are not equally acute, because their bodies are cold.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.15",
+      "text": "In winter and spring the bowels are naturally the hottest, and the sleep most prolonged; at these seasons, then, the most sustenance is to be administered; for as the belly has then most innate heat, it stands in need of most food. The well-known facts with regard to young persons and the athletae prove this.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.16",
+      "text": "A humid regimen is befitting in all febrile diseases, and particularly in children, and others accustomed to live on such a diet.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.17",
+      "text": "We must consider, also, in which cases food is to be given once or twice a day, and in greater or smaller quantities, and at intervals. Something must be conceded to habit, to season, to country, and to age.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.18",
+      "text": "Invalids bear food worst during summer and autumn, most easily in winter, and next in spring.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.19",
+      "text": "Neither give nor enjoin anything to persons during periodical paroxysms, but abstract from the accustomed allowance before the crisis.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.20",
+      "text": "When things are at the crisis, or when they have just passed it, neither move the bowels, nor make any innovation in the treatment, either as regards purgatives or any other such stimulants, but let things alone.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.21",
+      "text": "Those things which require to be evacuated should be evacuated, wherever they most tend, by the proper outlets.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.22",
+      "text": "We must purge and move such humors as are concocted, not such as are unconcocted, unless they are struggling to get out, which is mostly not the case.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.23",
+      "text": "The evacuations are to be judged of not by their quantity, but whether they be such as they should be, and how they are borne. And when proper to carry the evacuation to deliquium animi , this also should be done, provided the patient can support it.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.24",
+      "text": "Use purgative medicines sparingly in acute diseases, and at the commencement, and not without proper circumspection.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "1.25",
+      "text": "If the matters which are purged be such as should be purged, the evacuation is beneficial, and easily borne; but, not withstanding, if otherwise, with difficulty.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.1",
+      "text": "In whatever disease sleep is laborious, it is a deadly symptom; but if sleep does good, it is not deadly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.2",
+      "text": "When sleep puts an end to delirium, it is a good symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.3",
+      "text": "Both sleep and insomnolency, when immoderate, are bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.4",
+      "text": "Neither repletion, nor fasting, nor anything else, is good when more than natural.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.5",
+      "text": "Spontaneous lassitude indicates disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.6",
+      "text": "Persons who have a painful affection in any part of the body, and are in a great measure sensible of the pain, are disordered in intellect.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.7",
+      "text": "Those bodies which have been slowly emaciated should be slowly recruited; and those which have been quickly emaciated should be quickly recruited.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.8",
+      "text": "When a person after a disease takes food, but does not improve in strength, it indicates that the body uses more food than is proper; but if this happen when he does not take food, it is to be understood evacuation is required.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.9",
+      "text": "When one wishes to purge, he should put the body into a fluent state.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.10",
+      "text": "Bodies not properly cleansed, the more you nourish the more you injure.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.11",
+      "text": "It is easier to fill up with drink than with food.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.12",
+      "text": "What remains in diseases after the crisis is apt to produce relapses.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.13",
+      "text": "Persons in whom a crisis takes place pass the night preced- ing the paroxysm uncomfortably, but the succeeding night generally more comfortably.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.14",
+      "text": "In fluxes of the bowels, a change of the dejections does good, unless the change be of a bad character.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.15",
+      "text": "When the throat is diseased, or tubercles ( phymata ) form on the body, attention must paid to the secretions; for if they be bilious, the disease affects the general system; but if they resemble those of a healthy person, it is safe to give nourishing food.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.16",
+      "text": "When in a state of hunger, one ought not to undertake labor.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.17",
+      "text": "When more food than is proper has been taken, it occasions disease; this is shown by the treatment.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.18",
+      "text": "From food which proves nourishing to the body either immediately or shortly, the dejections also are immediate.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.19",
+      "text": "In acute diseases it is not quite safe to prognosticate either death or recovery.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.20",
+      "text": "Those who have watery discharges from their bowels when young have dry when they are old; and those who have dry discharges when they are young will have watery when they are old.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.21",
+      "text": "Drinking strong wine cures hunger.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.22",
+      "text": "Diseases which arise from repletion are cured by depletion; and those that arise from depletion are cured by repletion; and in general, diseases are cured by their contraries.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.23",
+      "text": "Acute disease come to a crisis in fourteen days.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.24",
+      "text": "The fourth day is indicative of the seventh; the eighth is the commencement of the second week; and hence, the eleventh being the fourth of the second week, is also indicative; and again, the seventeenth is indicative, as being the fourth from the fourteenth, and the seventh from the eleventh.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.25",
+      "text": "The summer quartans are, for the most part, of short duration; but the autumnal are protracted, especially those occurring near the approach of winter.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.26",
+      "text": "It is better that a fever succeed to a convulsion, than a convulsion to a fever.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.27",
+      "text": "We should not trust ameliorations in diseases when they are not regular, nor be much afraid of bad symptoms which occur in an irregular form; for such are commonly inconstant, and do not usually continue, nor have any duration.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.28",
+      "text": "In fevers which are not altogether slight, it is a bad symptom for the body to remain without any diminution of bulk, or to be wasted beyond measure; for the one state indicates a protracted disease, and the other weakness of body.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.29",
+      "text": "If it appear that evacuations are required, they should be made at the commencement of diseases; at the acme it is better to be quiet.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.30",
+      "text": "Toward the commencement and end of diseases all the symptoms are weaker, and toward the acme they are stronger.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.31",
+      "text": "When a person who is recovering from a disease has a good appetite, but his body does not improve in condition, it is a bad symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.32",
+      "text": "For the most part, all persons in ill health, who have a good appetite at the commencement, but do not improve, have a bad appetite again toward the end; whereas, those who have a very bad appetite at the commencement, and afterward acquire a good appetite, get better off.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.33",
+      "text": "In every disease it is a good sign when the patient’s intellect is sound, and he is disposed to take whatever food is offered to him; but the contrary is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.34",
+      "text": "In diseases, there is less danger when the disease is one to which the patient’s constitution, habit, age, and the season are allied, than when it is one to which they are not allied.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.35",
+      "text": "In all diseases it is better that the umbilical and hypogastric regions preserve their fullness; and it is a bad sign when they are very slender and emaciated; in the latter case it is dangerous to administer purgatives.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.36",
+      "text": "Persons in good health quickly lose their strength by taking purgative medicines, or using bad food.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.37",
+      "text": "Purgative medicines agree ill with persons in good health.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.38",
+      "text": "An article of food or drink which is slightly worse, but more palatable, is to be preferred to such as are better but less palatable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.39",
+      "text": "Old have fewer complaints than young; but those chronic diseases which do befall them generally never leave them.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.40",
+      "text": "Catarrhs and coryza in very old people are not concocted.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.41",
+      "text": "Persons who have had frequent and severe attacks of swooning, without any manifest cause, die suddenly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.42",
+      "text": "It is impossible to remove a strong attack of apoplexy, and not easy to remove a weak attack.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.43",
+      "text": "Of persons who have been suspended by the neck, and are in a state of insensibility, but not quite dead, those do not recover who have foam at the mouth.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.44",
+      "text": "Persons who are naturally very fat are apt to die earlier than those who are slender.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.45",
+      "text": "Epilepsy in young persons is most frequently removed by changes of air, of country, and of modes of life.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.46",
+      "text": "Of two pains occurring together, not in the same part of the body, the stronger weakens the other.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.47",
+      "text": "Pains and fevers occur rather at the formation of pus than when it is already formed.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.48",
+      "text": "In every movement of the body, whenever one begins to endure pain, it will be relieved by rest.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.49",
+      "text": "Those who are accustomed to endure habitual labors, although they be weak or old, bear them better than strong and young persons who have not been so accustomed.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.50",
+      "text": "Those things which one has been accustomed to for a long time, although worse than things which one is not accustomed to, usually give less disturbance; but a change must sometimes be made to things one is not accustomed to.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.51",
+      "text": "To evacuate, fill up, heat, cool, or otherwise, move the body in any way much and suddenly, is dangerous; and whatever is excessive is inimical to nature; but whatever is done by little and little is safe, more especially when a transition is made from one thing to another.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.52",
+      "text": "When doing everything according to indications, although things may not turn out agreeably to indication, we should not change to another while the original appearances remain.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.53",
+      "text": "Those persons who have watery discharges from the bowels when they are young, come off better than those who have dry; but in old age they come off worse, for the bowels in aged persons are usually dried up.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "2.54",
+      "text": "Largeness of person in youth is noble and not unbecoming; but in old age it is inconvenient, and worse than a smaller structure.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.1",
+      "text": "The changes of the season mostly engender diseases, and in the seasons great changes either of heat or of cold, and the rest agreeably to the same rule.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.2",
+      "text": "Of natures ( temperaments? ), some are well- or ill-adapted for summer, and some for winter.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.3",
+      "text": "Of diseases and ages, certain of them are well- or ill-adapted to different seasons, places, and kinds of diet.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.4",
+      "text": "In the seasons, when during the same day there is at one time heat and at another time cold, the diseases of autumn may be expected.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.5",
+      "text": "South winds induce dullness of hearing, dimness of visions, heaviness of the head, torpor, and languor; when these prevail, such symptoms occur in diseases. But if the north wind prevail, coughs, affections of the throat, hardness of the bowels, dysuria attended with rigors, and pains of the sides and breast occur. When this wind prevails, all such symptoms may be expected in diseases.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.6",
+      "text": "When summer is like spring, much sweating may be expected in fevers.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.7",
+      "text": "Acute diseases occur in droughts; and if the summer be particularly such, according to the constitution which it has given to the year, for the most part such diseases maybe expected.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.8",
+      "text": "In seasons which are regular, and furnish the productions of the season at the seasonable time, the diseases are regular, and come readily to a crisis; but in inconstant seasons, the diseases are irregular, and come to a crisis with difficulty.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.9",
+      "text": "In autumn, diseases are most acute, and most mortal, on the whole. The spring is most healthy, and least mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.10",
+      "text": "Autumn is a bad season for persons in consumption.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.11",
+      "text": "With regard to the seasons, if the winter be of a dry and northerly character, and the spring rainy and southerly, in summer there will necessarily be acute fevers, ophthalmies, and dysenteries, especially in women, and in men of a humid temperament.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.12",
+      "text": "If the but the spring dry and northerly, women whose term of delivery should be in spring, have abortions from any slight cause; and those who reach their full time, bring forth children who are feeble, and diseased, so that they either die presently, or, if they live, are puny and unhealthy. Other people are subject to dysenteries and ophthalmies, and old men to catarrhs, which quickly cut them off.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.13",
+      "text": "If the summer be dry and northerly and the autumn rainy and southerly, headaches occur in winter, with coughs, hoarsenesses, coryzae, and in some cases consumptions.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.14",
+      "text": "But if the autumn be northerly and dry, it agrees well with persons of a humid temperament, and with women; but others will be subject to dry ophthalmies, acute fevers, coryzae, and in some cases melancholy.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.15",
+      "text": "Of the constitutions of the year, the dry, upon the whole, are more healthy than the rainy, and attended with less mortality.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.16",
+      "text": "The diseases which occur most frequently in rainy seasons are, protracted fevers, fluxes of the bowels, mortifications, epilepsies, apoplexies, and quinsies; and in dry, consumptive diseases, ophthalmies, arthritic diseases, stranguries, and dysenteries.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.17",
+      "text": "With regard to the states of the weather which continue but for a day, that which is northerly, braces the body, giving it tone, agility, and color, improves the sense of hearing, dries up the bowels, pinches the eyes, and aggravates any previous pain which may have been seated in the chest. But the southerly relaxes the body, and renders it humid, brings on dullness of hearing, heaviness of the head, and vertigo, impairs the movements of the eyes and the whole body, and renders the alvine discharges watery.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.18",
+      "text": "With regard to the seasons, in spring and in the commencement of summer, children and those next to them in age are most comfortable, and enjoy best health; in summer and during a certain portion of autumn, old people; during the remainder of the autumn and in winter, those of the intermediate ages.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.19",
+      "text": "All diseases occur at all seasons of the year, but certain of them are more apt to occur and be exacerbated at certain seasons.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.20",
+      "text": "The diseases of spring are, maniacal, melancholic, and epileptic disorders, bloody flux, quinsy, coryza, hoarseness, cough, leprosy, lichen alphos, exanthemata mostly ending in ulcerations, tubercles, and arthritic diseases.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.21",
+      "text": "Of summer, certain of these, and continued, ardent, and tertian fevers, most especially vomiting, diarrhoea, ophthalmy, pains of the ears, ulcerations of the mouth, mortifications of the privy parts, and the sudamina.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.22",
+      "text": "Of autumn, most of the summer, quartan, and irregular fevers, enlarged spleen, dropsy, phthisis, strangury, lientery, dysentery, sciatica, quinsy, asthma, ileus, epilepsy, maniacal and melancholic disorders.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.23",
+      "text": "Of winter, pleurisy, pneumonia, coryza, hoarseness, cough, pains of the chest, pains of the ribs and loins, headache, vertigo, and apoplexy.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.24",
+      "text": "In the different ages the following complaints occur: to little and new-born children, aphthae, vomiting, coughs, sleeplessness, frights inflammation of the navel, watery discharges from the ears.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.25",
+      "text": "At the approach of dentition, pruritus of the gums, fevers, convulsions, diarrhoea, especially when cutting the canine teeth, and in those who are particularly fat, and have constipated bowels.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.26",
+      "text": "To persons somewhat older, affections of the tonsils, incurvation of the spine at the vertebra next the occiput, asthma, calculus, round worms, ascarides, acrochordon, satyriasmus, struma, and other tubercles (phymata), but especially the aforesaid.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.27",
+      "text": "To persons of a more advanced age, and now on the verge of manhood, the most of these diseases, and, moreover, more chronic fevers, and epistaxis.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.28",
+      "text": "Young people for the most part have a crisis in their complaints, some in forty days, some in seven months, some in seven years, some at the approach to puberty; and such complaints of children as remain, and do not pass away about puberty, or in females about the commencement of menstruation, usually become chronic.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.29",
+      "text": "To persons past boyhood, haemoptysis, phthisis, acute fevers, epilepsy, and other diseases, but especially the aforementioned.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.30",
+      "text": "To persons beyond that age, asthma, pleurisy, pneumonia, lethargy, phrenitis, ardent fevers, chronic diarrhoea, cholera, dysentery, lientery, hemorrhoids.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "3.31",
+      "text": "To old people dyspnoea, catarrhs accompanied with coughs, dysuria, pains of the joints, nephritis, vertigo, apoplexy, cachexia, pruritus of the whole body, insomnolency, defluxions of the bowels, of the eyes, and of the nose, dimness of sight, cataract (glaucoma), and dullness of hearing.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.1",
+      "text": "We must purge pregnant women, if matters be turgid (in a state of orgasm?), from the fourth to the seventh month, but less freely in the latter; in the first and last stages of pregnancy it should be avoided.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.2",
+      "text": "In purging we should bring away such matters from the body as it would be advantageous had they come away spontaneously; but those of an opposite character should be stopped.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.3",
+      "text": "If the matters which are purged be such as should be purged, it is beneficial and well borne; but if the contrary, with difficulty.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.4",
+      "text": "We should rather purge upward in summer, and downward in winter.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.5",
+      "text": "About the time of the dog-days, and before it, the administration of purgatives is unsuitable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.6",
+      "text": "Lean persons who are easily made to vomit should be purged upward, avoiding the winter season.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.7",
+      "text": "Persons who are difficult to vomit, and are moderately fat, should be purged downward, avoiding the summer season.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.8",
+      "text": "We must be guarded in purging phthisical persons upward.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.9",
+      "text": "And from the same mode of reasoning, applying the opposite rule to melancholic persons, we must purge them freely downward.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.10",
+      "text": "In very acute diseases, if matters be in a state of orgasm, we may purge on the first day, for it is a bad thing to procrastinate in such cases.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.11",
+      "text": "Those cases in which there are tormina, pains about the umbilicus, and pains about the loins, not removed either by purgative medicines or otherwise, usually terminate in dry dropsy.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.12",
+      "text": "It is a bad thing to purge upward in winter persons whose bowels are in a state of lientery.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.13",
+      "text": "Persons who are not easily purged upward by the hellebores, should have their bodies moistened by plenty of food and rest before taking the draught.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.14",
+      "text": "When one takes a draught of hellebore, one should be made to move more about, and indulge less in sleep and repose. Sailing on the sea shows that motion disorders the body.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.15",
+      "text": "When you wish the hellebore to act more, move the body, and when to stop, let the patient get sleep and rest.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.16",
+      "text": "Hellebore is dangerous to persons whose flesh is sound, for it induces convulsion.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.17",
+      "text": "Anorexia, heartburn, vertigo, and a bitter taste of the mouth, in a person free from fever, indicate the want of purging upward.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.18",
+      "text": "Pains seated above the diaphragm indicate purging upward, and those below it, downward.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.19",
+      "text": "Persons who have no thirst while under the action of a purgative medicine, do not cease from being purged until they become thirsty.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.20",
+      "text": "If persons free from fever be seized with tormina, heaviness of the knees, and pains of the loins, this indicates that purging downward is required.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.21",
+      "text": "Alvine dejections which are black, like blood, taking place spontaneously, either with or without fever, are very bad; and the more numerous and unfavorable the colors, so much the worse; when with medicine it is better, and a variety of colors in this case is not bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.22",
+      "text": "When black bile is evacuated in the beginning of any disease whatever, either upward or downward, it is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.23",
+      "text": "In persons attenuated from any disease, whether acute or chronic, or from wounds, or any other cause, if there be a discharge either of black bile, or resembling black blood, they die on the following day.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.24",
+      "text": "Dysentery, if it commence with black bile, is mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.25",
+      "text": "Blood discharged upward, whatever be its character, is a bad symptom, but downward it is (more?) favorable, and so also black dejections.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.26",
+      "text": "If in a person ill of dysentery, substances resembling flesh be discharged from the bowels, it is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.27",
+      "text": "In whatever cases of fever there is a copious hemorrhage from whatever channel, the bowels are in a loose state during convalescence.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.28",
+      "text": "In all cases whatever, bilious discharges cease if deafness supervenes, and in all cases deafness ceases when bilious discharges supervene.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.29",
+      "text": "Rigors which occur on the sixth day have a difficult crisis.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.30",
+      "text": "Diseases attended with paroxysms, if at the same hour that the fever leaves it return again next day, are of difficult crisis.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.31",
+      "text": "In febrile diseases attended with a sense of lassitude, deposits form about the joints, and especially those of the jaws.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.32",
+      "text": "In convalescents from diseases, if any part be pained, there deposits are formed.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.33",
+      "text": "But if any part be in a painful state previous to the illness, there the disease fixes.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.34",
+      "text": "If a person laboring under a fever, without any swelling in the fauces, be seized with a sense of suffocation suddenly, it is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.35",
+      "text": "If in a person with fever, the become suddenly distorted, and he cannot swallow unless with difficulty, although no swelling be present, it is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.36",
+      "text": "Sweats, in febrile diseases, are favorable, if they set in on the third, fifth, seventh, ninth, eleventh, fourteenth, seventeenth, twenty-first, twenty-seventh, and thirty-fourth day, for these sweats prove a crisis to the disease; but sweats not occurring thus, indicate pain, a protracted disease, and relapses.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.37",
+      "text": "Cold sweats occurring with an acute fever, indicate death; and along with a milder one, a protracted disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.38",
+      "text": "And in whatever part of the body there is a sweat, it shows that the disease is seated there.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.39",
+      "text": "And in whatever part of the body heat or cold is seated, there is disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.40",
+      "text": "And wherever there are changes in the whole body, and if the body be alternately cold and hot, or if one color succeed another, this indicates a protracted disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.41",
+      "text": "A copious sweat after sleep occuring without any manifest cause, indicates that the body is using too much food. But if it occur when one is not taking food, it indicates that evacuation is required.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.42",
+      "text": "A copious sweat, whether hot or cold, flowing continuously, indicates, the cold a greater, and the hot a lesser disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.43",
+      "text": "Fevers, not of the intermittent type, which are exacerbated on the third day, are dangerous; but if they intermit in any form, this indicates that they are not dangerous.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.44",
+      "text": "In cases attended with protracted fevers, tubercles ( phymata ) or pains occur about the joints.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.45",
+      "text": "When tubercles ( phymata ) or pains attack the joints after fevers, such persons are using too much food.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.46",
+      "text": "If in a fever not of the intermittent type a rigor seize a person already much debilitated, it is mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.47",
+      "text": "In fevers not of the intermittent type, expectorations which are livid bloody, fetid and bilious, are all bad; but if evacuated properly, they are favorable. So it is with the alvine evacuations and the urine. But if none of the proper excretions take place by these channels, it is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.48",
+      "text": "In fevers not of the intermittent type, if the external parts be cold, but the internal be burnt up, and if there be thirst, it is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.49",
+      "text": "In a fever not of the intermittent type, if a lip, an eye-brow, an eye, or the nose, be distorted; or if there be loss of sight or of hearing, and the patient be in a weak state-whatever of these symptoms occur, death is at hand.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.50",
+      "text": "Apostemes in fevers which are not resolved at the first crisis, indicate a protracted disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.51",
+      "text": "When in a fever not of the intermittent type dyspnoea and delirium come on, the case is mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.52",
+      "text": "When persons in fevers, or in other illnesses, shed tears voluntarily, it is nothing out of place; but when they shed tears involuntarily, it is more so.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.53",
+      "text": "In whatever cases of fever very viscid concretions form about the teeth, the fevers turn out to be particularly strong.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.54",
+      "text": "In whatever case of ardent fever dry coughs of a tickling nature with slight expectoration are long protracted, there is usually not much thirst.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.55",
+      "text": "All fevers complicated with buboes are bad, except ephemerals.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.56",
+      "text": "Sweat supervening in a case of the fever ceasing, is bad, for the disease is protracted, and it indicates more copious humors.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.57",
+      "text": "Fever supervening in a case of confirmed spasm, or of tetanus, removes the disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.58",
+      "text": "A rigor supervening in a case of ardent fever, produces resolution of it.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.59",
+      "text": "A true tertian comes to a crisis in seven periods at furthest.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.60",
+      "text": "When in fevers there is deafness, if blood run from the nostrils, or the bowels become disordered, it carries off the disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.61",
+      "text": "In a febrile complaint, if the fever do not leave on the odd days, it relapses.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.62",
+      "text": "When jaundice supervenes in fevers before the seventh day, it a bad symptom, unless there be watery discharges from the bowels.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.63",
+      "text": "In whatever cases of fever rigors occur during the day, the fevers come to a resolution during the day.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.64",
+      "text": "When in cases of fever jaundice occurs on the seventh, the ninth, the eleventh, or the fourteenth day, it is a good symp- tom, provided the hypochondriac region be not hard. Otherwise it is not a good symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.65",
+      "text": "A strong heat about the stomach and cardialgia are bad symptoms in fevers.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.66",
+      "text": "In acute fevers, spasms, and strong pains about the bowels are bad symptoms.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.67",
+      "text": "In fevers, frights after sleep, or convulsions, are a bad symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.68",
+      "text": "In fevers, a stoppage of the respiration is a bad symptom, for it indicates convulsions.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.69",
+      "text": "When the urine is thick, grumoss, and scanty in cases not free from fever a copious discharge of thinner urine proves beneficial. Such a discharge more commonly takes place when the urine has had a sediment from the first, or soon after the commencement.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.70",
+      "text": "When in fevers the urine is turbid, like that of a beast of burden, in such a case there either is or will be headache.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.71",
+      "text": "In cases which come to a crisis on the seventh day, the urine has a red nubecula on the fourth day, and the other symptoms accordingly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.72",
+      "text": "When the urine is transparent and white, it is bad; it appears principally in cases of phrenitis.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.73",
+      "text": "When the hypochondriac region is affected with meteorism and borborygmi, should pain of the loins supervene, the bowels get into a loose and watery state, unless there be an eruption of flatus or a copious evacuation of urine. These things occur in fevers.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.74",
+      "text": "When there is reason to expect that an abscess will form in joints, the abscess is carried off by a copious discharge of urine, which is thick, and becomes white, like what begins to form in certain cases of quartan fever, attended with a sense of lassitude. It is also speedily carried off by a hemorrhage from the nose.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.75",
+      "text": "Blood or pus in the urine indicates ulceration either of the kidneys or of the bladder.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.76",
+      "text": "When small fleshy substances like hairs are discharged along with thick urine, these substances come from the kidneys.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.77",
+      "text": "In those cases where there are furfuraceous particles discharged along with thick urine, there is scabies of the bladder.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.78",
+      "text": "In those cases where there is a spontaneous discharge of bloody urine, it indicates rupture of a small vein in the kidneys.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.79",
+      "text": "In those cases where there is a sandy sediment in the urine, there is calculus in the bladder (or kidneys).",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.80",
+      "text": "If a patient pass blood and clots in his urine, and have strangury, and if a pain seize the hypogastric region and perineum, the parts about the bladder are affected.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.81",
+      "text": "If a patient pass blood, pus, and scales, in the urine, and if it have a heavy smell, ulceration of the bladder is indicated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.82",
+      "text": "When tubercles form in the urethra, if these suppurate and burst, there is relief.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "4.83",
+      "text": "When much urine is passed during the night, it indicates that the alvine evacuations are scanty.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.1",
+      "text": "A spasm from taking hellebore is of a fatal nature.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.2",
+      "text": "Spasm supervening on a wound is fatal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.3",
+      "text": "A convulsion, or hiccup, supervening on a copious discharge of blood is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.4",
+      "text": "A convulsion, or hiccup, supervening upon hypercatharsis is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.5",
+      "text": "If a drunken person suddenly lose his speech, he will die convulsed, unless fever come on, or he recover his speech at the time when the consequences of a debauch pass off.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.6",
+      "text": "Such persons as are seized with tetanus die within four days, or if they pass these they recover.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.7",
+      "text": "Those cases of epilepsy which come on before puberty may undergo a change; but those which come on after twenty-five years of age, for the most part terminate in death.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.8",
+      "text": "In pleuritic affections, when the disease is not purged off in fourteen days, it usually terminates in empyema.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.9",
+      "text": "Phthisis most commonly occurs between the ages of eighteen and thirty-five years.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.10",
+      "text": "Persons who escape an attack of quinsy, and when the disease is turned upon the lungs, die in seven days; or if they pass these they become affected with empyema.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.11",
+      "text": "In persons affected with phthisis, if the sputa which they cough up have a heavy smell when poured upon coals, and if the hairs of the head fall off, the case will prove fatal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.12",
+      "text": "Phthisical persons, the hairs of whose head fall off, die if diarrhoea set in.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.13",
+      "text": "In persons who cough up frothy blood, the discharge of it comes from the lungs.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.14",
+      "text": "Diarrhoea attacking a person affected with phthisis is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.15",
+      "text": "Persons who become affected with empyema after pleurisy, if they get clear of it in forty days from the breaking of it, escape the disease; but if not, it passes into phthisis.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.16",
+      "text": "Heat produces the following bad effects on those who use it frequently: enervation of the fleshy parts, impotence of the nerves, torpor of the understanding, hemorrhages, deliquia, and, along with these, death.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.17",
+      "text": "Cold induces convulsions, tetanus, mortification, and febrile rigors.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.18",
+      "text": "Cold is inimical to the bones, the teeth, the nerves, the brain, and the spinal marrow, but heat is beneficial.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.19",
+      "text": "Such parts as have been congealed should be heated, except where there either is a hemorrhage, or one is expected.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.20",
+      "text": "Cold pinches ulcers, hardens the skin, occasions pain which does not end in suppuration, blackens, produces febrile rigors, convulsions, and tetanus.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.21",
+      "text": "In the case of a muscular youth having tetanus without a wound, during the midst of summer, it sometimes happens that the allusion of a large quantity of cold water recalls the heat. Heat relieves these diseases.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.22",
+      "text": "Heat is suppurative, but not in all kinds of sores, but when it is, it furnishes the greatest test of their being free from danger. It softens the skin, makes it thin, removes pain, soothes rigor, convulsions, and tetanus. It removes affections of the head, and heaviness of it. It is particularly efficacious in fractures of the bones, especially of those which have been exposed, and most especially in wounds of the head, and in mortifications and ulcers from cold; in herpes exedens, of the anus, the privy parts, the womb, the bladder, in all these cases heat is agreeable, and brings matters to a crisis; but cold is prejudicial, and does mischief.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.23",
+      "text": "Cold water is to be applied in the following cases; when there is a hemorrhage, or when it is expected, but not applied to the spot, but around the spot whence the blood flows; and in inflammations and inflammatory affections, inclining to a red and subsaguineous color, and consisting of fresh blood, in these cases it is to be applied but it occasions mortification in old cases; and in erysipelas not attended with ulceration, as it proves injurious to erysipelas when ulcerated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.24",
+      "text": "Cold things, such as snow and ice, are inimical to the chest, being provocative of coughs, of discharges of blood, and of catarrhs.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.25",
+      "text": "Swellings and pains in the joints, ulceration, those of a gouty nature, and sprains, are generally improved by a copious affusion of cold water, which reduces the swelling, and removes the pain; for a moderate degree of numbness removes pain.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.26",
+      "text": "The lightest water is that which is quickly heated and quickly cooled.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.27",
+      "text": "When persons have intense thirst, it is a good thing if they can sleep off the desire of drinking.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.28",
+      "text": "Fumigation with aromatics promotes menstruation, and would be useful in many other cases, if it did not occasion heaviness of the head.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.29",
+      "text": "Women in a state of pregnancy may be purged, if there be any urgent necessity ( or , if the humors be in a state of orgasm?), from the fourth to the seventh month, but less so in the latter case. In the first and last periods it must be avoided.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.30",
+      "text": "It proves fatal to a woman in a state of pregnancy, if she be seized with any of the acute diseases.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.31",
+      "text": "If a woman with child be bled, she will have an abortion, and this will be the more likely to happen, the larger the foetus.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.32",
+      "text": "Haemoptysis in a woman is removed by an eruption of the menses.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.33",
+      "text": "In a woman when there is a stoppage the menses, a discharge of blood from the nose is good.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.34",
+      "text": "When a pregnant woman has a violent diarrhoea, there is danger of her miscarrying.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.35",
+      "text": "Sneezing occurring to a woman affected with hysterics, and in difficult labor, is a good symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.36",
+      "text": "When the menstrual discharge is of a bad color and irregular, it indicates that the woman stands in need of purging.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.37",
+      "text": "In a pregnant woman, if the breasts suddenly lose their fullness, she has a miscarriage.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.38",
+      "text": "If, in a woman pregnant with twins, either of her breasts lose its fullness, she will part with one of her children; and if it be the right breast which becomes slender, it will be the male child, or if the left, the female.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.39",
+      "text": "If a woman who is not with child, nor has brought forth, have milk, her menses are obstructed.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.40",
+      "text": "In women, blood collected in the breasts indicates madness.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.41",
+      "text": "If you wish to ascertain if a woman be with child, give her hydromel to drink when she is going to sleep, and has not taken supper, and if she be seized with tormina in the belly, she is with child, but otherwise she is not pregnant.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.42",
+      "text": "A woman with child, if it be a male, has a good color, but if a female, she has a bad color.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.43",
+      "text": "If erysipelas of the womb seize a woman with child, it will probably prove fatal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.44",
+      "text": "Women who are very lean, have miscarriages when they prove with child, until they get into better condition.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.45",
+      "text": "When women, in a moderate condition of body, miscarry in the second or third month, without any obvious cause, their cotyledones are filled with mucosity, and cannot support the weight of the foetus, but are broken asunder.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.46",
+      "text": "Such women as are immoderately fat, and do not prove with child, in them it is because the epiploon ( fat? ) blocks up the mouth of the womb, and until it be reduced, they do not conceive.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.47",
+      "text": "If the portion of the uterus seated near the hip-joint suppurate, it gets into a state requiring to be treated with tents.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.48",
+      "text": "The male foetus is usually seated in the right, and the female in the left side.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.49",
+      "text": "To procure the expulsion of the secundines, apply a sternutatory, and shut the nostrils and mouth.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.50",
+      "text": "If you wish to stop the menses in a woman, apply as large a cupping instrument as possible to the breasts.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.51",
+      "text": "When women are with child, the mouth of their womb is closed.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.52",
+      "text": "If in a woman with child, much milk flow from the breasts, it indicates that the foetus is weak; but if the breasts be firm, it indicates that the foetus is in a more healthy state.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.53",
+      "text": "In women that are about to miscarry, the breasts become slender; but if again they become hard, there will be pain, either in the breasts, or in the hip-joints, or in the eyes, or in the knees, and they will not miscarry.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.54",
+      "text": "When the mouth of the uterus is hard, it is also necessarily shut.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.55",
+      "text": "Women with child who are seized with fevers, and who are greatly emaciated, without any (other?) obvious cause, have difficult and dangerous labors, and if they miscarry, they are in danger.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.56",
+      "text": "In the female flux ( immoderate menstruation? ), if convulsion and deliquium come on, it is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.57",
+      "text": "When the menses are excessive, diseases take place, and when the menses are stopped, diseases from the uterus take place.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.58",
+      "text": "Strangury supervenes upon inflammation of the rectum, and of the womb, and strangury supervenes upon suppuration of the kidney, and hiccup upon inflammation of the liver.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.59",
+      "text": "If a woman do not conceive, and wish to ascertain whether she can conceive, having wrapped her up in blankets, fumigate below, and if it appear that the scent passes through the body to the nostrils and mouth, know that of herself she is not unfruitful.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.60",
+      "text": "If woman with a child have her courses, it is impossible that the child can be healthy.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.61",
+      "text": "If a woman’s courses be suppressed, and neither rigor nor fever has followed, but she has been affected with nausea, you may reckon her to be with child.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.62",
+      "text": "Women who have the uterus cold and dense ( compact? ) do not conceive; and those also who have the uterus humid, do not conceive, for the semen is extinguished, and in women whose uterus is very dry, and very hot, the semen is lost from the want of food; but women whose uterus is in an intermediate state between these temperaments prove fertile.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.63",
+      "text": "And in like manner with respect to males; for either, owing to the laxity of the body, the pneuma is dissipated outwardly, so as not to propel the semen, or, owing to its density, the fluid ( semen? ) does not pass outwardly; or, owing to coldness, it is not heated so as to collect in its proper place ( seminal vessels? ), or, owing to its heat, the very same thing happens.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.64",
+      "text": "It is a bad thing to give milk to persons having headache, and it is also bad to give it in fevers, and to persons whose hypochondria are swelled up, and troubled with borborygmi, and to thirsty persons; it is bad also, when given to those who have bilious discharges in acute fevers, and to those who have copious discharges of blood; but it is suitable in phthisical cases, when not attended with very much fever; it is also to be given in fevers of a chronic and weak nature, when none of the aforementioned symptoms are present, and the patients are excessively emaciated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.65",
+      "text": "When swellings appear on wounds, such cases are not likely to be attacked either with convulsions, or delirium, but when these disappear suddenly, if situated behind, spasms and tetanus supervene, and if before, mania, acute pains of the sides, or suppurations, or dysentery, if the swellings be rather red.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.66",
+      "text": "When no swelling appears on severe and bad wounds, it is a great evil.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.67",
+      "text": "In such cases, the soft are favorable; and crude, unfavorable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.68",
+      "text": "When a person is pained in the back part of the head, he is benefited by having the straight vein in the forehead opened.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.69",
+      "text": "Rigors commence in women, especially at the loins, and spread by the back to the head; and in men also, rather in the posterior than the anterior side of the body, as from the arms and thighs; the skin there is rare, as is obvious from the growth of hair on them.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.70",
+      "text": "Persons attacked with quartans are not readily attacked with convulsions, or if previously attacked with convulsions, they cease if a quartan supervene.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.71",
+      "text": "In those persons in whom the skin is stretched, and parched and hard, the disease terminates without sweats; but in those in whom the skin is loose and rare, it terminates with sweats.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "5.72",
+      "text": "Persons disposed to jaundice are not very subject to flatulence.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.1",
+      "text": "In cases of chronic lientery, acid eructations supervening when there were none previously, is a good symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.2",
+      "text": "Persons whose noses are naturally watery, and their seed watery, have rather a deranged state of health; but those in the opposite state, a more favorable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.3",
+      "text": "In protracted cases of dysentery, loathing of food is a bad symptom, and still worse, if along with fever.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.4",
+      "text": "Ulcers, attended with a falling off of the hair, are mali moris.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.5",
+      "text": "It deserves to be considered whether the pains in the sides, and in the breasts, and in the other parts, differ much from one another.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.6",
+      "text": "Diseases about the kidneys and bladder are cured with difficulty in old men.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.7",
+      "text": "Pains occurring about the stomach, the more superficial they are, the more slight are they; and the less superficial, the more severe.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.8",
+      "text": "In dropsical persons, ulcers forming on the body are not easily healed.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.9",
+      "text": "Broad exanthemata are not very itchy.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.10",
+      "text": "In a person having a painful spot in the head, with intense cephalalgia, pus or water running from the nose, or by the mouth, or at the ears, removes the disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.11",
+      "text": "Hemorrhoids appearing in melancholic and nephritic affections are favorable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.12",
+      "text": "When a person has been cured of chronic hemorrhoids, unless one be left, there is danger of dropsy or phthisis supervening.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.13",
+      "text": "Sneezing coming on, in the case of a person afflicted with hiccup, removes the hiccup.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.14",
+      "text": "In a case of dropsy, when the water runs by the veins into the belly, it removes the disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.15",
+      "text": "In confirmed diarrhoea, vomiting, when it comes on spontaneously, removes the diarrhoea.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.16",
+      "text": "A diarrhoea supervening in a confirmed case of pleurisy or pneumonia is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.17",
+      "text": "It is a good thing in ophthalmy for the patient to be seized with diarrhoea.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.18",
+      "text": "A severe wound of the bladder, of the brain, of the heart, of the diaphragm, of the small intestines, of the stomach, and of the liver, is deadly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.19",
+      "text": "When a bone, cartilage, nerve, the slender part of the jaw, or prepuce, are cut out, the part is neither restored, nor does it unite.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.20",
+      "text": "If blood be poured out preternaturally into a cavity, it must necessarily become corrupted.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.21",
+      "text": "In maniacal affections, if varices or hemorrhoids come on, they remove the mania.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.22",
+      "text": "Those ruptures in the back which spread down to the elbows are removed by venesection.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.23",
+      "text": "If a fright or despondency lasts for a long time, it is a melancholic affection.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.24",
+      "text": "If any of the intestines be transfixed, it does not unite.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.25",
+      "text": "It is not a good sign for an erysipelas spreading outwardly to be determined inward; but for it to be determined outward from within is good.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.26",
+      "text": "In whatever cases of ardent fever tremors occur, they are carried off by a delirium.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.27",
+      "text": "Those cases of empyema or dropsy which are treated by incision or the cautery, if the water or pus flow rapidly all at once, certainly prove fatal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.28",
+      "text": "Eunuchs do not take the gout, nor become bald.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.29",
+      "text": "A woman does not take the gout, unless her menses be stopped.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.30",
+      "text": "A young man does not take the gout until he indulges in coition.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.31",
+      "text": "Pains of the eyes are removed by drinking pure wine, or the bath, or a fomentation, or venesection, or purging.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.32",
+      "text": "Persons whose speech has become impaired are likely to be seized with chronic diarrhoea.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.33",
+      "text": "Persons having acid eructations are not very apt to be seized with pleurisy.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.34",
+      "text": "Persons who have become bald are not subject to large varices; but should varices supervene upon persons who are bald, their hair again grows thick.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.35",
+      "text": "Hiccup supervening in dropsical cases is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.36",
+      "text": "Venesection cures dysuria; open the internal veins of the arm.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.37",
+      "text": "It is a good symptom when swelling on the outside of the neck seizes a person very ill of quinsy, for the disease is turned outwardly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.38",
+      "text": "It is better not to apply any treatment in cases of occult cancer; for, if treated, the patients die quickly; but if not treated, they hold out for a long time.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.39",
+      "text": "Convulsions take place either from repletion or depletion; and so it is with hiccup.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.40",
+      "text": "When pains, without inflammation, occur about the hypochondria, in such cases, fever supervening removes the pain.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.41",
+      "text": "When pus formed anywhere in the body does not point, this is owing to the thickness of the part.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.42",
+      "text": "In cases of jaundice, it is a bad symptom when the liver becomes indurated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.43",
+      "text": "When persons having large spleens are seized with dysentery, and if the dysentery pass into a chronic state, either dropsy or lientery supervenes, and they die.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.44",
+      "text": "When ileus comes on in a case of strangury, they prove fatal in seven days, unless, fever supervening, there be a copious discharge of urine.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.45",
+      "text": "When ulcers continue open for a year or upward, there must necessarily be exfoliation of bone, and the cicatrices are hollow.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.46",
+      "text": "Such persons as become hump-backed from asthma or cough before puberty, die.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.47",
+      "text": "Persons who are benefited by venesection or purging, should be bled or purged in spring.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.48",
+      "text": "In enlargement of the spleen, it is a good symptom when dysentery comes on.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.49",
+      "text": "In gouty affections, the inflammation subsides in the course of forty days.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.50",
+      "text": "When the brain is severely wounded, fever and vomiting of bile necessarily supervene.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.51",
+      "text": "When persons in good health are suddenly seized with pains in the head, and straightway are laid down speechless, and breathe with stertor, they die in seven days, unless fever come on.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.52",
+      "text": "We must attend to the appearances of the eyes in sleep, as presented from below; for if a portion of the white be seen between the closed eyelids, and if this be not connected with diarrhaea or severe purging, it is a very bad and mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.53",
+      "text": "Delirium attended with laughter is less dangerous than delirium attended with a serious mood.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.54",
+      "text": "In acute diseases, complicated with fever, a moaning respiration is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.55",
+      "text": "For the most part, gouty affections rankle in spring and in autumn.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.56",
+      "text": "In melancholic affections, determinations of the humor which occasions them produce the following diseases; either apoplexy of the whole body, or convulsion, or madness, or blindness.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.57",
+      "text": "Persons are most subject to apoplexy between the ages of forty and sixty.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.58",
+      "text": "If the omentum protrude, it necessarily mortifies and drops off.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.59",
+      "text": "In chronic diseases of the hip-joint, if the bone protrude and return again into its socket, there is mucosity in the place.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "6.60",
+      "text": "In persons affected with chronic disease of the hip-joint, if the bone protrude from its socket, the limb becomes wasted and maimed, unless the part be cauterized.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.1",
+      "text": "In acute diseases, coldness of the extremities is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.2",
+      "text": "Livid flesh on a diseased bone is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.3",
+      "text": "Hiccup and redness of the eyes, when they supervene on vomiting, are bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.4",
+      "text": "A chill supervening on a sweat is not good.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.5",
+      "text": "Dysentery, or dropsy, or ecstacy coming on madness is good.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.6",
+      "text": "In a very protracted disease, loss of appetite and unmixed discharges from the bowels are bad symptoms.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.7",
+      "text": "A rigor and delirium from excessive drinking are bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.8",
+      "text": "From the rupture of an internal abscess, prostration of strength, vomiting, and deliquium animi result.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.9",
+      "text": "Delirium or convulsion from a flow of blood is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.10",
+      "text": "Vomiting, or hiccup, or convulsion, or delirium, in ileus, is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.11",
+      "text": "Pneumonia coming on pleurisy is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.12",
+      "text": "Phrenitis along with pneumonia is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.13",
+      "text": "Convulsion or tetanus, coming upon severe burning, is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.14",
+      "text": "Stupor or delirium from a blow on the head is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.15",
+      "text": "From a spitting of blood there is a spitting of pus.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.16",
+      "text": "From spitting of pus arise phthisis and a flux; and when the sputa are stopped, they die.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.17",
+      "text": "Hiccup in inflammation of the liver bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.18",
+      "text": "Convulsion or delirium supervening upon insomnolency is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.18a",
+      "text": "Trembling upon lethargus is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.19",
+      "text": "Erysipelas upon exposure of a bone (is bad?).",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.20",
+      "text": "Mortification or suppuration upon erysipelas is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.21",
+      "text": "Hemorrhage upon a strong pulsation in wounds is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.22",
+      "text": "Suppuration upon a protracted pain of the parts about the bowels is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.23",
+      "text": "Dysentery upon unmixed alvine discharges is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.24",
+      "text": "Delirium upon division of the cranium, if it penetrate into the cavity of the head, is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.25",
+      "text": "Convulsion upon severe purging is mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.26",
+      "text": "Upon severe pain of the parts about the bowels, coldness of the extremities coming on is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.27",
+      "text": "Tenesmus coming on in a case of pregnancy causes abortion.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.28",
+      "text": "Whatever piece of bone, cartilage, or nerve ( tendon? ) is cut off, it neither grows nor unites.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.29",
+      "text": "When strong diarrhoea supervenes in a case of leucophlegmatia, it removes the disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.30",
+      "text": "In those cases in which frothy discharges occur in diarrhoea there are defluxions from the head.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.31",
+      "text": "When there is a farinaceous sediment in the urine during fever, it indicates a protracted illness.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.32",
+      "text": "In those cases in which the urine is thin at first, and the sediments become bilious, an acute disease is indicated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.33",
+      "text": "In those cases in which the urine becomes divided there is great disorder in the body.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.34",
+      "text": "When bubbles settle on the surface of the urine, they indicate disease of the kidneys, and that the complaint will be protracted.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.35",
+      "text": "When the scum on the surface is fatty and copious, it indicates acute diseases of the kidneys.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.36",
+      "text": "Whenever the aforementioned symptoms occur in nephritic diseases, and along with them acute pains about the muscles of the back, provided these be seated about the external parts, you may expect that there will be an abscess; but if the pains be rather about the internal parts, you may also rather expect that the abscess will be seated internally.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.37",
+      "text": "Haematemesis, without fever, does not prove fatal, but with fever it is bad; it is to be treated with refrigerant and styptic things.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.38",
+      "text": "Defluxions into the cavity of the chest suppurate in twenty days.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.39",
+      "text": "When a patient passes blood and clots, and is seized with strangury and pain in the perineum and pubes, disease about the bladder is indicated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.40",
+      "text": "If the tongue suddenly lose its powers, or a part of the body become apoplectic, the affection is of a melancholic nature.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.41",
+      "text": "In hypercatharsis, of old persons, hiccup supervening is not a good symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.42",
+      "text": "In a fever, is not of a bilious nature, a copious allusion of hot water upon the head removes the fever.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.43",
+      "text": "A woman does not become ambidexterous.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.44",
+      "text": "When empyema is treated either by the cautery or incision, if pure and white pus flow from the wound, the patients recover; but if mixed with blood, slimy and fetid, they die.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.45",
+      "text": "When abscess of the liver is treated by the cautery or incision, if the pus which is discharged be pure and white, the patients recover, (for in this case it is situated in the coats of the liver;) but if it resemble the lees of oil as it flows, they die.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.46",
+      "text": "Pains of the eyes are removed by drinking undiluted wine, plenteous bathing with hot water, and venesection.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.47",
+      "text": "If a dropsical patient be seized with hiccup the case is hopeless.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.48",
+      "text": "Strangury and dysuria are cured by drinking pure wine, and venesection; open the vein on the inside.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.49",
+      "text": "It is a good sign when swelling and redness on the breast seize a person very ill of quinsy, for in this case the disease is diverted outwardly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.50",
+      "text": "When the brain is attacked with sphacelus, the patients die in three days; or if they escape these, they recover.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.51",
+      "text": "Sneezing arises from the head, owing to the brain being heated, or the cavity ( ventricle ) in the head being filled with humors; the air confined in it then is discharged, and makes a noise, because it comes through a narrow passage.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.52",
+      "text": "Fever supervening on painful affections of the liver removes the pain.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.53",
+      "text": "Those persons to whom it is beneficial to have blood taken from their veins, should have it done in spring.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.54",
+      "text": "In those cases where phlegm is collected between the diaphragm and the stomach, and occasions pain, as not finding a passage into either of the cavities, the disease will be carried off if the phlegm be diverted to the bladder by the veins.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.55",
+      "text": "When the liver is filled with water and bursts into the epiploon, in this case the belly is filled with water and the patient dies.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.56",
+      "text": "Anxiety, yawning, rigor,-wine drunk with an equal proportion of water, removes these complaints.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.57",
+      "text": "When tubercles ( phymata ) form in the urethra, if they suppurate and burst, the pain is carried off.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.58",
+      "text": "In cases of concussion of the brain produced by any cause, the patients necessarily lose their speech.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.59",
+      "text": "In a person affected with fever, when there is no swelling in the fauces, should suffocation suddenly come on, and the patient not be able to swallow, except with difficulty, it is a mortal symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.59a",
+      "text": "In the case of a person oppressed by fever, if the neck be turned aside, and the patient cannot swallow, while there is no swelling in the neck, it is a mortal sign.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.60",
+      "text": "Fasting should be prescribed the those persons who have humid flesh; for fasting dries bodies.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.61",
+      "text": "When there are changes in the whole body, and the body becomes sometimes cold and sometimes hot, and the color changes, a protracted disease is indicated.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.62",
+      "text": "A copious sweat, hot or cold, constantly flowing, indicates a superabundance of humidity; we must evacuate then, in a strong person upward, and in a weak, downward.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.63",
+      "text": "Fevers, not of the intermittent type, if they become exacerbated every third day are dangerous; but if they intermit in any form whatever, this shows that they are not dangerous.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.64",
+      "text": "In cases of protracted fever, either chronic abscesses or pains in the joints come on.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.65",
+      "text": "When chronic abscesses ( phymata ) or pains in the joints take place after fevers, the patients are using too much food.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.66",
+      "text": "If one give to a person in fever the same food which is given to a person in good health, what is strength to the one is disease to the other.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.67",
+      "text": "We must look to the urinary evacuations, whether they resemble those of persons in health; if not at all so, they are particularly morbid, but if they are like those of healthy persons, they are not at all morbid.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.68",
+      "text": "When the dejections are allowed to stand and not shaken, and a sediment is formed like scrapings (of the bowels), in such a case it is proper to purge the bowels; and if you give ptisans before purging, the more you give the more harm you will do.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.69",
+      "text": "Crude dejections are the product of black bile; if abundant, of more copious, and if deficient, of less copious collections of it.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.70",
+      "text": "The sputa in fevers, not of an intermittent type, which are livid, streaked with blood, and fetid, are all bad, it is favorable when this evacuation, like the urinary and alvine, passes freely; and whenever any discharge is suppressed and not purged off it is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.71",
+      "text": "When you wish to purge the body, you must bring it into a state favorable to evacuations; and if you wish to dispose it to evacuations upward, you must bind the belly; and if you wish to dispose it to evacuations downward, you must moisten the belly.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.72",
+      "text": "Sleep and watchfulness, both of them, when immoderate, constitute disease.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.73",
+      "text": "In fevers which do not intermit, if the external parts be cold, and the internal burning hot, and fever prevail, it is a mortal sign.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.74",
+      "text": "In a fever which does not intermit, if a lip, the nose, or an eye be distorted, if the patient lose his sense of sight or of hearing, while now in a weak state,-whatever of these symptoms occurs it is mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.75",
+      "text": "Upon leucophlegmatia dropsy supervenes.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.76",
+      "text": "Upon diarrhoea dysentery.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.77",
+      "text": "Upon dysentery lientery.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.78",
+      "text": "Upon sphacelus exfoliation of the bone.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.79_80",
+      "text": "Upon vomiting of blood consumption, and a purging of pus upward; upon consumption a defluxion from the head; upon a defluxion diarrhoea; upon diarrhoea a stoppage of the purging upward; upon the stoppage of it death.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.81",
+      "text": "In the discharges by the bladder, the belly, and the flesh ( the skin? ) if the body has departed slightly from its natural condition, the disease is slight; if much, it is great; if very much, it is mortal.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.82",
+      "text": "Persons above forty years of age who are affected with frenzy, do not readily recover; the danger is less when the disease is cognate to the constitution and age.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.83",
+      "text": "In whatever diseases the eyes weep voluntarily, it is a good symptom, but when involuntarily, it is a bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.84",
+      "text": "When in quartan fevers blood flows from the nostrils it is a bad symptom.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.85",
+      "text": "Sweats are dangerous when they do not occur on critical days, when they are strong, and quickly forced out of the forehead, either in the form of drops or in streams, and if excessively cold and copious; for such a sweat must proceed from violence, excess of pain, and prolonged squeezing ( affliction? ).",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.86",
+      "text": "In a chronic disease an excessive flux from the bowels is bad.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    },
+    {
+      "locus": "7.87",
+      "text": "Those diseases which medicines do not cure, iron ( the knife? ) cures; those which iron cannot cure, fire cures; and those which fire cannot cure, are to be reckoned wholly incurable.",
+      "locusKind": "sección y aforismo CTS de traducción inglesa; no colación de griego-inglés"
+    }
+  ]
+}
