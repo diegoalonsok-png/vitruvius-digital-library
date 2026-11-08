@@ -5315,8 +5315,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aeschylus-persae-grc.json"
-      }
+        "grc": "data/classics-corpus/aeschylus-persae-grc.json",
+        "en": "data/classics-corpus/aeschylus-persae-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Herbert Weir Smyth (1922)",
+          "path": "classics-text-reader.html?work=aeschylus-persae&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Esquilo. Πέρσαι. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "aeschylus-seven-thebes",
@@ -5364,8 +5374,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aeschylus-seven-thebes-grc.json"
-      }
+        "grc": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+        "en": "data/classics-corpus/aeschylus-seven-thebes-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Herbert Weir Smyth (1922)",
+          "path": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Esquilo. Ἑπτὰ ἐπὶ Θήβας. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "aeschylus-suppliants",
@@ -5455,8 +5475,18 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "grc": "data/classics-corpus/aeschylus-prometheus-grc.json"
-      }
+        "grc": "data/classics-corpus/aeschylus-prometheus-grc.json",
+        "en": "data/classics-corpus/aeschylus-prometheus-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Herbert Weir Smyth (1922)",
+          "path": "classics-text-reader.html?work=aeschylus-prometheus&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Esquilo (atribución debatida). Προμηθεὺς Δεσμώτης. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "sophocles-antigone",

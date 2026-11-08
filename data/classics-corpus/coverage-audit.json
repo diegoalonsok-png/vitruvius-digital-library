@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 124,
+    "indexedTextVersions": 127,
     "indexedDistinctWorks": 86,
     "manuscriptWitnesses": 23
   },
@@ -2653,9 +2653,11 @@
       "dating": "472 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-persae-en.json",
         "data/classics-corpus/aeschylus-persae-grc.json"
       ],
       "localPDF": null,
@@ -2675,9 +2677,11 @@
       "dating": "467 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-seven-thebes-en.json",
         "data/classics-corpus/aeschylus-seven-thebes-grc.json"
       ],
       "localPDF": null,
@@ -2719,9 +2723,11 @@
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-prometheus-en.json",
         "data/classics-corpus/aeschylus-prometheus-grc.json"
       ],
       "localPDF": null,

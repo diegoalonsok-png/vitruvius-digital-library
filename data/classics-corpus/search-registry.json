@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 124,
+  "count": 127,
   "works": 86,
   "entries": [
     {
@@ -1248,6 +1248,36 @@
       "path": "data/classics-corpus/hippocrates-aphorisms-en.json",
       "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=en",
       "sourceDescription": "Traducción histórica de Francis Adams (1886); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-persae-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-persae&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-seven-thebes-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-prometheus-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }
