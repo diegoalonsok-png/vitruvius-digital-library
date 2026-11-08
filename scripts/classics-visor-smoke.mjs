@@ -87,67 +87,55 @@ try{
     'The visible top dossier must not combine Perón with Acts of John or a modern book title');
   }finally{await p.close()}
  });
- await check('Bibliotheca Lexicon: one black/grey search field, chronological and alphabetic catalogue, no initial viewer',async()=>{
+ await check('Bibliotheca minimal: a single field, one work selector, ES EN FR and no viewers',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
-   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=200,{timeout:26000});
-   await p.waitForFunction(()=>document.getElementById('bibliotheca-coverage-status')||document.querySelector('.bibliotheca-coverage'),{timeout:14000});
-   const state=await p.evaluate(()=>({
-    count:document.querySelectorAll('#classic-list button').length,
-    search:document.querySelectorAll('.classic-controls input[type=search]').length,
-    visibleFilters:[...document.querySelectorAll('.classic-controls>label')].filter(e=>getComputedStyle(e).display!=='none').map(e=>e.className),
-    sort:document.getElementById('classic-sort').value,
-    body:getComputedStyle(document.body).backgroundColor,
-    list:getComputedStyle(document.getElementById('classic-list')).backgroundColor,
-    controls:getComputedStyle(document.querySelector('.classic-controls')).backgroundColor,
-    summary:document.querySelector('.bibliotheca-coverage')?.textContent,
-    iframe:document.querySelector('#classic-detail iframe')?.getAttribute('src')||'',
-    css:!!document.querySelector('link[href*="bibliotheca-unified.css"]'),
-    autocomplete:document.querySelector('#classic-search-suggestions')
+   await p.waitForFunction(()=>document.getElementById('classic-work')?.options.length>=200,{timeout:30000});
+   const result=await p.evaluate(()=>({
+    search:document.querySelectorAll('input[type="search"]').length,
+    works:document.getElementById('classic-work').options.length-1,
+    languages:[...document.getElementById('classic-ui-language').options].map(x=>x.value),
+    background:getComputedStyle(document.body).backgroundColor,
+    iframes:document.querySelectorAll('iframe,dialog,.classic-view-colorbar').length,
+    notice:document.getElementById('classic-coverage').textContent,
+    link:document.getElementById('classic-lexicon').getAttribute('href'),
+    scripts:[...document.scripts].map(x=>x.src)
    }));
-   assert(state.css,'Unified monochrome CSS must load');
-   assert(state.count>=200,'All catalogued works must be rendered even when text is not indexed');
-   assert.equal(state.search,1,'Only one search field is allowed');
-   assert.equal(state.visibleFilters.length,2,'Only search and sort controls should be visible');
-   assert.equal(state.sort,'composition','Oldest works must be listed first');
-   assert.equal(state.body,'rgb(11, 11, 12)','Bibliotheca must use monochrome black');
-   assert.equal(state.list,'rgb(21, 21, 22)','Catalogue uses the existing Lexicon charcoal #151516');
-   assert(/obras no indexadas/.test(state.summary),'Missing originals must be identified as unsearched');
-   assert(!state.iframe,'No codex or reader must load before explicit selection');
-   await p.locator('#classic-sort').selectOption('author');
-   assert.equal(await p.locator('#classic-sort').inputValue(),'author','Alphabetical ordering must work');
-   await p.locator('#classic-sort').selectOption('composition');
-   await p.evaluate(()=>document.documentElement.setAttribute('data-theme','dark'));
-   assert.equal(await p.locator('.classic-controls').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)');
+   assert.equal(result.search,1,'Exactly one search input');
+   assert(result.works>=200,'Full classical catalogue is preserved in one selector');
+   assert.deepEqual(result.languages,['es','en','fr'],'Only the three actual interface languages');
+   assert.equal(result.background,'rgb(12, 12, 13)','Lexicon black background');
+   assert.equal(result.iframes,0,'No PDFs, color palettes, or embedded viewers');
+   assert(/no se examinaron/.test(result.notice),'Non-indexed works must be called out');
+   assert(result.scripts.some(s=>s.includes('bibliotheca-simple.js')),'Lightweight search installed');
+   assert(!result.scripts.some(s=>s.includes('bibliotheca-graeca-latina.js')),'Obsolete viewer bundle must not be loaded');
+   await p.locator('#classic-ui-language').selectOption('fr');
+   assert.match(await p.locator('#classic-intro').innerText(),/Recherchez/);
+   await p.locator('#classic-ui-language').selectOption('en');
+   assert.match(await p.locator('#classic-intro').innerText(),/Search a word/);
+   await p.locator('#classic-ui-language').selectOption('es');
   }finally{await p.close()}
  });
- await check('Bibliotheca: literal phrase or word yields all source-locus links and only click opens viewer',async()=>{
+ await check('Bibliotheca: phrase searches one work, full paragraphs, chronological order and Lexicon deep link',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
-   await p.waitForFunction(()=>document.querySelectorAll('#classic-list button').length>=200,{timeout:26000});
-   const countBefore=await p.locator('#classic-list button').count();
-   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),0,'Reader must not open on page load');
+   await p.locator('#classic-work option[value="catullus-carmina"]').waitFor({state:'attached',timeout:30000});
+   await p.locator('#classic-work').selectOption('catullus-carmina');
    await p.locator('#classic-query').fill('Viuamus');
-   await p.locator('.bibliotheca-search-submit').click();
-   await p.waitForFunction(()=>document.querySelectorAll('.bibliotheca-passage').length>0,{timeout:65000});
-   const hits=await p.locator('.bibliotheca-passage').count();
-   assert(hits>0,'An actual Latin passage should be returned');
-   assert.match(await p.locator('.bibliotheca-group-title').first().innerText(),/Carmina/i);
-   assert((await p.locator('.bibliotheca-citation').first().innerText()).includes('Chicago 18'));
-   assert((await p.locator('.bibliotheca-unindexed-warning').innerText()).includes('No examinadas'));
-   assert.equal(await p.locator('#classic-list button').count(),countBefore,'Search must not hide unindexed catalogue works');
-   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),0,'No auto-viewer after a text search');
-   await p.locator('.bibliotheca-passage-actions button').first().click();
-   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),1,'Viewer opens only on explicit click');
-   assert.match(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').getAttribute('src'),
-    /(?:classics-text-reader\.html\?|corpus\/catullus-carmina-la\.html\?q=Viuamus)/,
-    'The viewer must open a real linked reader (indexed text OR existing Catullus source HTML)');
-   await p.locator('dialog.bibliotheca-on-demand-viewer button:has-text("Cerrar")').click();
-   assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').count(),0,'Close unloads reader');
-   for(const label of ['PDF / imprimir','Correo','WhatsApp','Lexicon · selección','Pronunciar selección'])
-    assert(await p.getByRole('button',{name:label,exact:true}).count()>0,'Missing academic action '+label);
-   await p.locator('.bibliotheca-color').evaluate(e=>{e.value='#aaaaaa';e.dispatchEvent(new Event('input',{bubbles:true}))});
-   await p.getByRole('button',{name:'A+'}).click();
+   await p.locator('#classic-submit').click();
+   await p.waitForFunction(()=>document.querySelectorAll('article.hit-paragraph').length>0,{timeout:60000});
+   assert((await p.locator('article.hit-paragraph').count())>=1,'Latin concordance must be displayed');
+   const hit=await p.locator('.hit-text').first().innerText();
+   assert.match(hit,/Viuamus/i);
+   assert(hit.length>=60,'Must show complete paragraph, not tiny keyword snippet');
+   assert.match(await p.locator('#classic-summary').innerText(),/párrafos/);
+   const href=await p.locator('#classic-lexicon').getAttribute('href');
+   assert(href.includes('q=Viuamus'),'Lexicon should receive the searched term');
+   assert.equal(await p.locator('iframe').count(),0,'Search may not start a viewer');
+   await p.locator('#classic-work').selectOption('');
+   await p.locator('#classic-query').fill('Viuamus');
+   await p.locator('#classic-submit').click();
+   await p.waitForFunction(()=>/párrafos/.test(document.getElementById('classic-summary')?.textContent||''),{timeout:60000});
   }finally{await p.close()}
  });
  await check('Perrault 1673 navigates actual numbered IIIF canvases without bulk image loading',async()=>{
@@ -185,16 +173,6 @@ try{
    assert.equal(await p.locator('#pr-folios').isVisible(),true,'1684 folio catalogue not visible');
    await p.locator('#pr-folio-grid button[data-index="24"]').click();
    assert.match(await p.locator('#pr-counter').innerText(),/^25 \/ 390$/,'Folio 25 must navigate by image number');
-  }finally{await p.close()}
- });
- await check('Classical catalogue renders its list and the requested work before viewer tests',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
-  const errors=[];p.on('pageerror',e=>errors.push(e.message));
-  try{
-   await p.waitForFunction(()=>{const counter=document.querySelector('#classic-count');return Number.parseInt(counter?.textContent||'',10)>=190&&document.querySelectorAll('#classic-list button').length>=190;},{timeout:20000});
-   assert.equal(errors.length,0,'Runtime JavaScript error: '+errors.join('; '));
-   await p.locator('.classic-tabstrip').waitFor({timeout:15000});
-   assert.match(await p.locator('#classic-detail').innerText(),/Po[eé]tica|Περὶ ποιητικῆς|Poetics/i);
   }finally{await p.close()}
  });
  await check('Documented semantic retrieval finds real Greek and Latin passages for the concept casa',async()=>{
@@ -281,64 +259,6 @@ try{
    assert.equal(await p.locator('#audit-rows tr').count(),1,'Direct work identifiers must be searchable');
   }finally{await p.close()}
  });
- await check('Aristotle Poetics defaults to verified 68-page Greek original',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
-  try{
-   await p.locator('#classic-panel .classical-pdf-toolbar, #classic-panel .classical-native-pdf').first().waitFor({timeout:25000});
-   await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent?.includes('68')||
-    !!document.querySelector('iframe.classical-native-pdf'),{timeout:25000});
-   assert.match(await p.locator('#classic-detail').innerText(),/1893/);
-   if(await p.locator('.classical-pdf-total').count() && await p.locator('.classical-pdf-total').innerText()!=='/ —'){
-    await p.locator('.classical-pdf-pager button').last().click();
-    assert.equal(await p.locator('.classical-pdf-number').inputValue(),'2');
-   }
-  }finally{await p.close()}
- });
- await check('Virgil Aeneid PDF states Book I is partial; full text available in the reader',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=virgil-aeneid&view=pdf');
-  try{
-   await p.waitForFunction(()=>document.querySelector('#classic-detail')?.textContent?.includes('Solo libro I'),{timeout:20000});
-   await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent?.includes('172')||
-    !!document.querySelector('iframe.classical-native-pdf'),{timeout:30000});
-   // El PDF histórico sigue declarado como parcial (solo libro I); la Eneida completa se lee en la transcripción del sitio.
-   assert.match(await p.locator('#classic-detail').innerText(),/Solo libro I/);
-   assert.ok(await p.locator('[data-tab="text"], button:has-text("transcripción")').count()>0,'falta la pestaña de transcripción completa');
-  }finally{await p.close()}
- });
- await check('Virgil manuscript deep link selects Romanus Vat. lat. 3867',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=virgil-aeneid&view=manuscript&ms=vergil-romanus');
-  try{
-   await p.locator('.classical-ms-switch select').waitFor({timeout:15000});
-   const ms=await p.locator('.classical-ms-switch select option:checked').innerText();
-   assert.match(ms,/3867/);
-   assert.match(await p.locator('.classical-manuscript-panel').innerText(),/Vat. lat. 3867/);
-   assert((await p.locator('.classical-ms-frame').count())===1,'IIIF iframe missing');
-  }finally{await p.close()}
- });
- await check('Cicero De officiis exposes 3-panel reader and historical PDF',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=cicero-officiis');
-  try{
-   await p.locator('.classic-tabstrip').waitFor({timeout:15000});
-   const tabs=await p.locator('.classic-tabstrip').innerText();
-   assert.match(tabs,/Tres visores/);
-   assert.match(tabs,/PDF histórico/);
-  }finally{await p.close()}
- });
- await check('Aristotle offers Greek original and historical English translation',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=aristotle-poetics&view=pdf');
-  try{
-   const select=p.locator('.classic-pdf-version-toolbar select');
-   await select.waitFor({timeout:15000});
-   assert.equal(await select.locator('option').count(),2);
-   const labels=await select.locator('option').allInnerTexts();
-   assert(labels.some(x=>x.includes('GRIEGO ORIGINAL')),'Greek original PDF missing');
-   assert(labels.some(x=>x.includes('traducción inglesa')),'English PDF missing');
-   await select.selectOption('1');
-   assert((await p.url()).includes('aristotle-poetics-english-1819.pdf'),'Edition selection not reflected in URL');
-   await p.locator('[data-tab="comparepdf"]').click();
-   assert.equal(await p.locator('.classic-double-pdf iframe').count(),2);
-  }finally{await p.close()}
- });
  await check('Theophrastus Greek text: word search highlights in yellow and the dictionary answers',async()=>{
   const p=await open('classics-text-reader.html?work=theophrastus-characters&q='+encodeURIComponent('κολακ'));
   try{
@@ -365,29 +285,6 @@ try{
   const p=await open('indices-locorum.html?q=symmetri');
   try{await p.waitForFunction(()=>{const h=[...document.querySelectorAll('.index-row h3')].map(x=>x.textContent);return h.length===1&&h[0]==='symmetria'},{timeout:20000})}finally{await p.close()}
  });
- await check('Lucretius compares Latin original and translations with three independent readers',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=lucretius&view=pdf');
-  try{
-   const select=p.locator('.classic-pdf-version-toolbar select');
-   await select.waitFor({timeout:15000});
-   assert.equal(await select.locator('option').count(),2);
-   assert((await select.locator('option').first().innerText()).includes('LATÍN ORIGINAL'));
-   await p.locator('[data-tab="parallel"]').click();
-   assert.equal(await p.locator('.classic-triple-reading iframe').count(),3);
-   assert.equal(await p.locator('.classic-triple-reading select option').count(),2,'English and Spanish translation options are missing');
-   assert.equal(await p.locator('[data-tab="text"]').count(),1,'Latin transcription tab is hidden');
-  }finally{await p.close()}
- });
- await check('Virgil Georgics original Latin PDF is available locally',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=virgil-georgica&view=pdf');
-  try{
-   await p.waitForFunction(()=>document.querySelector('.classical-pdf-total')?.textContent.includes('76')||
-    !!document.querySelector('.classical-native-pdf'),{timeout:25000});
-   assert.match(await p.locator('#classic-detail').innerText(),/1849/);
-   assert.match(await p.locator('.classic-detail-status').innerText(),/LECTURA EN VITRUVIA/);
-  }finally{await p.close()}
- });
-
  await check('Vitruvia: Cicero biography first, Latin Vitruvius passages second',async()=>{
   const page=await browser.newPage({viewport:{width:1280,height:900}});
   await page.route(/https:\/\/(?:es|en)\.wikipedia\.org\/w\/api\.php/,async route=>{
@@ -454,21 +351,6 @@ try{
    await p.locator('#right-sepia').click();
    assert.equal(await p.locator('#right-bg').inputValue(),'#e6d5b7','Right palette did not update independently');
    await p.locator('#sync-prev').count();
-  }finally{await p.close()}
- });
- await check('Classical catalogue exposes real parallel-reading link for translated works',async()=>{
-  const p=await open('bibliotheca-graeca-latina.html?work=didache');
-  try{
-   await p.locator('#classic-list button[data-id="didache"]').waitFor({state:'attached',timeout:25000});
-   const detail=p.locator('#classic-detail');
-   await detail.locator('a[href*="classics-parallel-reader.html?work=didache"]').first().waitFor({timeout:12000});
-   assert.match(await detail.innerText(),/leer original y traducción lado a lado/i);
-   await p.locator('#classic-query').fill('Séneca');
-   await p.waitForTimeout(260);
-   assert((await p.locator('#classic-list button').count())>0,'Debounced filter did not yield results');
-   await p.locator('#classic-clear').click();
-   await p.waitForTimeout(260);
-   assert((await p.locator('#classic-list button').count())>190,'Clear search did not restore the catalogue');
   }finally{await p.close()}
  });
  await check('Papyrology image upload, magnifiers, colors, contrast and character editor',async()=>{
