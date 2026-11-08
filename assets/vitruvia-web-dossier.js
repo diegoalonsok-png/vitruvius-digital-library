@@ -238,16 +238,21 @@ async function albums(root,topic,valid){
   section.replaceChildren();
   const matches=(d?.results||[]).filter(x=>x.wrapperType==='collection'&&x.collectionName&&!/\b(?:Single|EP)\s*$/i.test(x.collectionName)&&x.collectionViewUrl&&x.artistName&&
     artistNames.has(normalized(x.artistName).replace(/^(the|los|las|el|la) /,'')));
+  // Start chronologically, BEFORE deduplicating editions. Otherwise an
+  // anniversary/remaster returned first can conceal an older catalogued issue.
+  // iTunes dates belong to the listed edition, not necessarily the original
+  // release of the musical work.
+  const chronology=rec=>/^\d{4}-\d{2}-\d{2}/.test(rec.releaseDate||'')?rec.releaseDate:'9999';
+  const ranked=matches.map((rec,index)=>({...rec,catalogRank:index}));
+  ranked.sort((a,b)=>chronology(a).localeCompare(chronology(b))||a.catalogRank-b.catalogRank);
   const seen=new Set(),records=[];
-  for(const x of matches){
+  for(const x of ranked){
    const key=baseTitle(x.collectionName);
    if(seen.has(key))continue;seen.add(key);records.push(x);
   }
-  // Retain the catalogue's relevance ordering by default; chronology is selectable.
-  records.forEach((x,index)=>{x.catalogRank=index});
   if(!records.length){info(section,L('No hay álbumes atribuibles con certeza a este artista en el catálogo consultado.','No confidently attributed albums were found in the consulted catalogue.','Aucun album attribuable avec certitude dans le catalogue interrogé.'))}
   else{
-   info(section,L('Catálogo de Apple Music/iTunes. Disponibilidad de compra según país y edición.','Apple Music/iTunes catalogue. Purchase availability varies by country and edition.','Catalogue Apple Music/iTunes. Disponibilité variable selon le pays et l’édition.'));
+   info(section,L('Álbumes del más antiguo al más reciente según la fecha de la edición catalogada en Apple Music/iTunes; una reedición puede ser posterior al lanzamiento original. Disponibilidad según país.','Albums from earliest to latest by the catalogued edition date in Apple Music/iTunes; reissues may postdate original releases. Availability varies by country.','Albums de la plus ancienne à la plus récente date d’édition dans Apple Music/iTunes ; les rééditions peuvent être ultérieures. Disponibilité selon le pays.'));
    const stack=el('div','web-dossier-stack');section.append(stack);
    const albumCards=[];
    for(const rec of records.slice(0,45)){
