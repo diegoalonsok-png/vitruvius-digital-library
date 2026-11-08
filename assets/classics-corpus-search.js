@@ -279,12 +279,36 @@ function cached(kind,fn){
   return running.then(rows=>rows.map(x=>({...x})));
  };
 }
+/* Complete word/phrase offsets for a documentary concordance. The usual
+   search() API retains its bounded snippets; only full-concordance mode counts
+   all occurrences in a passage. Normalized Unicode maps back to raw offsets. */
+function completeMatches(text,term){
+ const wanted=fold(term);if(!wanted)return[];
+ let content="",offsets=[];
+ for(let i=0;i<text.length;){
+  const char=String.fromCodePoint(text.codePointAt(i)),f=fold(char);
+  for(let j=0;j<f.length;j++){content+=f[j];offsets.push(i)}
+  i+=char.length;
+ }
+ const letter=c=>!!c&&/[\p{L}\p{N}]/u.test(c);
+ const hits=[];let at=content.indexOf(wanted);
+ while(at>=0){
+  const last=at+wanted.length-1;
+  if(!letter(content[at-1])&&!letter(content[last+1])){
+   const start=offsets[at],end=offsets[last];
+   if(start!==undefined&&end!==undefined)
+    hits.push([start,end+(text.codePointAt(end)>0xffff?2:1)]);
+  }
+  at=content.indexOf(wanted,at+Math.max(1,wanted.length));
+ }
+ return hits;
+}
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
- const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language));
+ const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language)&&(includeOCR||e.format!=="historical-ocr-pages"));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
@@ -298,7 +322,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
     if(typeof p?.text!=="string")continue;
     let hit=null,term=null,hitsInPassage=0;
     for(const q of queries){
-     const m=matches(p.text,q);hitsInPassage+=m.length;
+     const m=allMatches?completeMatches(p.text,q):matches(p.text,q);hitsInPassage+=m.length;
      if(m.length&&(!hit||m[0][0]<hit[0])){hit=m[0];term=q}
     }
     if(!hit)continue;
@@ -311,7 +335,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
     rows.push({workId:e.workId,author:e.author,title:e.title,language:e.language,edition:e.edition||"",
       source:e.path,locus:String(p.locus||""),term,hitsInPassage,excerpt:snippet(p.text,hit),link:href,
-      ocr:e.format==="historical-ocr-pages",attribution:d.attribution||e.sourceDescription||""});
+      ocr:e.format==="historical-ocr-pages",attribution:d.attribution||e.sourceDescription||"",...(includeFullText?{passageText:p.text}:{})});
     editionMatches+=hitsInPassage;
     if(++editionUnits>=maxPerEdition&&!allMatches)break;
    }
