@@ -89,7 +89,7 @@ async function search(forced=false){
  const q=query.value.trim();
  const id=++sequence;output.replaceChildren();
  if(!q||q.length>90||q.split(/\s+/).length>3){
-  status.textContent=forced?"Escribí una palabra o forma breve en el buscador superior.":"Consulta un término en Lexicon para ver su entrada.";
+  status.textContent=forced?"Escribe una palabra o forma breve en el buscador superior.":"Consulta un término en Lexicon para ver su entrada.";
   return;
  }
  if(!forced&&(/[\u0590-\u05ff]/.test(q)&&active!=="he"||/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&active!=="grc")){
