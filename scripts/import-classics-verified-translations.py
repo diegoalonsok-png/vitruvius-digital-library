@@ -60,6 +60,12 @@ CANDIDATES = [
          translator="Edward P. Coleridge", year=1906,
          publisher="George Bell and Sons, London",
          mode="verse-lines", min_units=400, min_chars=15000),
+    dict(id="aristotle-politics", original="grc", repo="canonical-greekLit",
+         path="data/tlg0086/tlg035/tlg0086.tlg035.perseus-eng2.xml",
+         blob="0a8143122a35118da8ab8421746ca8eca5011482",
+         translator="Harris Rackham", year=1944,
+         publisher="William Heinemann / Harvard University Press",
+         mode="book-bekker-pages", min_units=160, min_chars=55000),
 ]
 
 
@@ -158,6 +164,26 @@ def extract(raw, candidate):
             raise ValueError("Cobertura insuficiente de secciones: " + str(unit_count))
         if len({p["locus"] for p in passages}) != unit_count:
             raise ValueError("Loci de secciones duplicados")
+    elif candidate["mode"] == "book-bekker-pages":
+        passages = []
+        for div in body.iter(NS + "div"):
+            if div.get("subtype") != "bekker_page":
+                continue
+            book = next((a for a in ancestors(div)
+                         if a.tag == NS + "div" and a.get("subtype") == "book"), None)
+            if book is None or not book.get("n") or not div.get("n"):
+                continue
+            paragraphs = [p for p in div.iter(NS + "p")]
+            value = " ".join(text_without_notes(p) for p in paragraphs).strip()
+            if len(value) >= 25:
+                passages.append(dict(
+                    locus=book.get("n") + "." + div.get("n"), text=value,
+                    locusKind="libro y página Bekker de traducción inglesa; sin colación automática"))
+        unit_count = len(passages)
+        if unit_count < candidate["min_units"]:
+            raise ValueError("Cobertura insuficiente de páginas Bekker: " + str(unit_count))
+        if len({p["locus"] for p in passages}) != unit_count:
+            raise ValueError("Páginas Bekker de traducción repetidas")
     else:
         verses = []
         for line in body.iter(NS + "l"):
