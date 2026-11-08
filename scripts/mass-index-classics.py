@@ -186,7 +186,7 @@ def extract_complete_tei(raw, fallback_title):
     return title, author, detected, passages
 
 
-def edition_document(work, original, source_url, raw, urn):
+def edition_document(work, original, source_url, raw, urn, min_original_chars=350):
     # Extraer el cuerpo sin descartar prosa si contiene versos citados.
     title, author, detected, passages = extract_complete_tei(raw, work.get("title", urn))
     if detected and detected.lower() not in {original, "lat" if original == "la" else "grc"}:
@@ -205,7 +205,7 @@ def edition_document(work, original, source_url, raw, urn):
             locus += "~segmento-" + str(seen[locus])
         clean.append({"locus": locus, "text": value,
                       "locusKind": passage.get("locusKind", "localización editorial orientativa")})
-    if not clean or sum(len(p["text"]) for p in clean) < 350:
+    if not clean or sum(len(p["text"]) for p in clean) < min_original_chars:
         raise ValueError("No se recuperó suficiente texto original")
     source_hash = hashlib.sha256(raw).hexdigest()
     from_first1k = "/OpenGreekAndLatin/First1KGreek/" in source_url
@@ -257,7 +257,7 @@ def run():
     # TODAS sus fuentes, no presentar un primer volumen como edición completa.
     eligible.sort(key=lambda entry: -len(entry[2]))
     trees = {}
-    errors, created = [], []
+    errors, created, deferred_for_batch, oversized_files = [], [], [], []
     unavailable_tei = []
     total_bytes = 0
     for w, lang, urns in eligible:
@@ -293,7 +293,10 @@ def run():
                     b"creativecommons.org/licenses/by-sa/4.0/" not in raw or b"<licence" not in raw
                 ):
                     raise ValueError("TEI First1KGreek no contiene licencia CC BY-SA identificada")
-                doc = edition_document(w, lang, url, raw, urn)
+                # Los himnos y fragmentos auténticos pueden medir menos de 350
+                # caracteres. Exigir un pasaje real, no recortar la colección.
+                doc = edition_document(w, lang, url, raw, urn,
+                                       min_original_chars=12 if len(urns)>1 else 350)
                 component_files.append((urn, doc))
             if not component_files or len(component_files) != len(urns):
                 continue
@@ -321,8 +324,12 @@ def run():
                         "alignment": "Cada locus incluye su URN; sin equivalencias inferidas entre fuentes, traducciones ni manuscritos.",
                         "passages": passages}
             encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-            if len(encoded) > MAX_JSON or total_bytes + len(encoded) > capacity:
-                errors.append(w["id"] + ": excede el límite de lote")
+            if len(encoded) > MAX_JSON:
+                oversized_files.append(w["id"])
+                continue
+            if total_bytes + len(encoded) > capacity:
+                # No es un fallo filológico: pasar al siguiente lote.
+                deferred_for_batch.append(w["id"])
                 continue
             target = f"data/classics-corpus/{w['id']}-{lang}.json"
             if (ROOT / target).exists():
@@ -336,7 +343,8 @@ def run():
                     "title": w.get("title", data["title"]), "language": lang,
                     "format": "json-passages", "path": target,
                     "reader": f"classics-text-reader.html?work={w['id']}&lang={lang}",
-                    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+                    "sourceDescription": ("OpenGreekAndLatin First1KGreek TEI" if "First1KGreek/" in data["source"]
+                                          else "Perseus TEI") + " · fuente editada documentada, sin colación automática",
                 })
             created.append({"workId": w["id"], "lang": lang,
                             "path": target, "passages": len(data["passages"]),
@@ -400,6 +408,8 @@ def run():
             "missingOriginals": backlog["missingOriginals"],
             "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
             "created": created, "errors": errors[:40],
+            "deferredForBatch": deferred_for_batch,
+            "requiresSharding": oversized_files,
             "unavailableSourceMappings": unavailable_tei,
         })
     if not args.dry_run:
