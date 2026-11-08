@@ -1105,12 +1105,47 @@ async function conceptFrequency(c){
  return{rows,trN,es:c.modern.es||[]};
 }
 function frequencyTable(c,F){
- const sec=el("section",{class:"lx-freq"},el("h4",{},"Frecuencia en los clásicos de la biblioteca"),el("p",{class:"article-note"},"Ocurrencias de todas las formas flexionadas de los lemas equivalentes en cada obra indexada del sitio, en orden cronológico; la tasa por 10 000 palabras permite comparar obras de distinta extensión."));
- const tb=el("table",{class:"lx-table"},el("thead",{},el("tr",{},el("th",{},"Obra"),el("th",{},"Fecha"),el("th",{},"Por lema"),el("th",{},"Total"),el("th",{},"‱"),el("th",{},""))));const body=el("tbody");tb.append(body);
- for(const r of F.rows){const w=work(r.D,r.id);
-  body.append(el("tr",{},el("td",{},`${w.author}, `,el("i",{},w.title)),el("td",{},DATING[r.id]||""),el("td",{lang:r.lang},r.lemmas.map((x,i)=>r.counts[i]?`${x.w} ${r.counts[i]}`:"").filter(Boolean).join(" · ")),el("td",{},el("b",{},String(r.total))),el("td",{},r.per10k.toFixed(1)),
-   el("td",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{const forms=new Set(r.lemmas.flatMap(x=>[...x.forms]));renderGroups([{D:r.D,forms,label:`${w.author}, ${w.title}`,words:r.lemmas.map(x=>x.w),work:r.id}]);$("#results").scrollIntoView({behavior:"smooth"})}},"Ver pasajes"))))}
- if(F.trN)body.append(el("tr",{},el("td",{},"Vitruvio, ",el("i",{},"De architectura")," · traducción castellana V514"),el("td",{},"2026"),el("td",{},F.es.join(" · ")),el("td",{},el("b",{},String(F.trN))),el("td",{},"—"),el("td",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value=F.es[0];S.lang="la";$("#lx-lang").value="la";S.work="vitruvius";showTranslationHits(F.es)}},"Ver pasajes"))));
+ const sec=el("section",{class:"lx-freq"},el("h4",{},"Frecuencia en los clásicos de la biblioteca"),
+  el("p",{class:"article-note"},"Coincidencias de los lemas equivalentes en el texto latino o griego editado, agrupadas por obra y fecha de composición. Las traducciones modernas se cuentan por separado; no representan lecturas del manuscrito original."));
+ const tb=el("table",{class:"lx-table"},el("thead",{},el("tr",{},el("th",{},"Obra y testimonio"),el("th",{},"Fecha"),el("th",{},"Por lema / fuente"),el("th",{},"Total"),el("th",{},"‱"),el("th",{},""))));
+ const body=el("tbody");tb.append(body);
+ const original=F.rows.find(r=>r.id==="vitruvius"&&r.lang==="la");
+ for(const r of F.rows){
+  const w=work(r.D,r.id),vitruvius=r.id==="vitruvius";
+  const title=el("td",{},vitruvius?"Vitruvio, ":w.author+", ",el("i",{},vitruvius?"De architectura · diez libros":w.title));
+  if(vitruvius)title.append(el("small",{class:"lx-small"}," · texto latino digitalizado, edición moderna (no transcripción diplomática del Codex H)"));
+  body.append(el("tr",{},title,el("td",{},vitruvius?"siglo I a. C.":DATING[r.id]||""),
+   el("td",{lang:r.lang},r.lemmas.map((x,i)=>r.counts[i]?`${x.w} ${r.counts[i]}`:"").filter(Boolean).join(" · ")),
+   el("td",{},el("b",{},String(r.total))),el("td",{},r.per10k.toFixed(1)),
+   el("td",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{
+    const forms=new Set(r.lemmas.flatMap(x=>[...x.forms]));
+    renderGroups([{D:r.D,forms,label:vitruvius?"Vitruvio, De architectura (latín digitalizado)":w.author+", "+w.title,words:r.lemmas.map(x=>x.w),work:r.id}]);
+    $("#results").scrollIntoView({behavior:"smooth"});
+   }},"Ver pasajes"))));
+ }
+ // La transcripción de un testimonio medieval no se puede reconstruir
+ // a partir de los tokens de una edición latina o su traducción castellana.
+ if(F.trN&&!original){
+  body.append(el("tr",{},el("td",{},"Vitruvio, ",el("i",{},"De architectura · diez libros")," · latín de la edición digital"),
+   el("td",{},"siglo I a. C. · obra original"),el("td",{lang:"la"},"Los lemas latinos equivalentes de esta consulta no tienen coincidencias en el índice latino."),
+   el("td",{},el("b",{},"0")),el("td",{},"0.0"),
+   el("td",{},el("a",{href:"lector-bilingue.html?edition=recensio-es"},"Consultar latín"))));
+ }
+ if(original||F.trN){
+  const codex=el("td",{},"Vitruvio, ",el("i",{},"De architectura")," · Codex H / Harley MS 2767");
+  codex.append(el("small",{class:"lx-small"}," · facsímil manuscrito, no OCR indexado"));
+  body.append(el("tr",{class:"lx-manuscript-unindexed"},codex,el("td",{},"siglo IX d. C. · copia"),el("td",{},"341 imágenes digitales. No existe una transcripción íntegra verificada del códice para contar las palabras del manuscrito."),
+   el("td",{},el("span",{title:"No calculable sin transcripción OCR/diplomática de Codex H"},"Sin dato")),el("td",{},"—"),
+   el("td",{},el("a",{href:"codex-h-folios-local.html"},"Consultar códice H"))));
+ }
+ if(F.trN){
+  const modern=el("td",{},"Vitruvio, ",el("i",{},"De architectura")," · traducción castellana de Diego A. Kurilo, V514 (ed. 2026)");
+  body.append(el("tr",{},modern,el("td",{},"siglo I a. C. · original"),el("td",{},"Castellano moderno · "+F.es.join(" · ")),
+   el("td",{},el("b",{},String(F.trN))),el("td",{},"—"),
+   el("td",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{
+    $("#lx-q").value=F.es[0];S.lang="la";$("#lx-lang").value="la";S.work="vitruvius";showTranslationHits(F.es);
+   }},"Ver pasajes"))));
+ }
  sec.append(F.rows.length||F.trN?tb:el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
  return sec;
 }
