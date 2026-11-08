@@ -103,9 +103,13 @@ function renderNext(){
    actions.append(link);
   }
   if(r.source==='passage'&&r.notes?.length){
-   const section=el('details','critical-unified-notes'),sum=el('summary','','Notas con locus explícito en esta edición ('+r.notes.length+')');section.append(sum);
+   const section=el('details','critical-unified-notes'),sum=el('summary','','Notas del autor vinculadas o próximas al pasaje ('+r.notes.length+')');section.append(sum);
    for(const n of r.notes){
-    const para=el('p','critical-unified-text','Nota '+(n.footnote_id||'')+': '+n.text);section.append(para);
+    const source=el('p','critical-unified-meta',n.proximity!==null&&n.proximity!==undefined?
+      'Vínculo propuesto por proximidad del párrafo DOCX ('+n.proximity+' de distancia). NO verificado por cotejo.':
+      'Locus explícito en la nota original; no equivale a una variante manuscrita cotejada.');
+    const para=el('p','critical-unified-text','Nota '+(n.footnote_id||'')+': '+n.text);
+    section.append(source,para);
    }
    full.append(section);
   }
@@ -120,16 +124,28 @@ async function run(){
  status.textContent='Leyendo textos, notas y comentarios de las ediciones seleccionadas…';
  const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
  const paths=chosen.map(e=>'data/structured/'+e.id+'.json');
- const tasks=[...paths,'data/critical-notes.json','data/apparatus-index.json'];
+ const tasks=[...paths,'data/critical-notes.json','data/apparatus-index.json','data/apparatus-nearby.json'];
  const settled=await Promise.allSettled(tasks.map(getJson));
  if(id!==revision)return;
  const data=new Map(tasks.map((p,i)=>[p,settled[i].status==='fulfilled'?settled[i].value:null]));
  const failures=tasks.filter((p,i)=>settled[i].status!=='fulfilled');
  const notes=data.get('data/critical-notes.json')?.entries||[];
+ const nearby=data.get('data/apparatus-nearby.json')?.entries||[];
  const notesByLocus=new Map();
  for(const n of notes){
   if(!n.locus||n.mapping_status!=='explicit_in_anchor')continue;
-  const k=n.edition+'|'+locusKey(n.locus);const list=notesByLocus.get(k)||[];list.push(n);notesByLocus.set(k,list);
+  const k=n.edition+'|'+locusKey(n.locus);const list=notesByLocus.get(k)||[];
+  list.push({...n,proximity:null});notesByLocus.set(k,list);
+ }
+ // Secondary layer: unique nearest source paragraph, strictly descriptive.
+ // Not a verified relation, not a collatio, not a manuscript reading.
+ const byFootnote=new Map(notes.map(n=>[n.edition+'|'+String(n.footnote_id),n]));
+ for(const link of nearby){
+  if(![0,1].includes(link.distance))continue;
+  const n=byFootnote.get(link.edition+'|'+String(link.footnote_id));
+  if(!n||n.locus||n.candidate_locus)continue;
+  const k=link.edition+'|'+locusKey(link.locus),list=notesByLocus.get(k)||[];
+  list.push({...n,proximity:link.distance});notesByLocus.set(k,list);
  }
  for(const e of chosen){
   const corpus=data.get('data/structured/'+e.id+'.json');
