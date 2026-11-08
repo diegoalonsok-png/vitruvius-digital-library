@@ -22,6 +22,7 @@ export function violation(status, input) {
   if (!/^[AMDRTCU]$/.test(code) || !path || path.includes("..") || path.startsWith("/"))
     return "Cambio no identificable; requiere inspección manual.";
   if (code === "D") return "No se eliminan archivos existentes del sitio.";
+  if (code !== "A" && code !== "M") return "Renombrado, cambio de tipo o conflicto: requiere revisión manual antes de publicar.";
   if (lockedDirectory.test(path)) return "Los folios, imágenes y documentos existentes son inmutables; se prohíben también altas en esas carpetas.";
   if (heavyDocument.test(path)) return "Se suspenden nuevas cargas y modificaciones de PDF, DOC, DOCX y ODT por capacidad.";
   if (immutableText.has(path)) return "Las tres ediciones madre y su manifiesto no se modifican en una incorporación de corpus.";
