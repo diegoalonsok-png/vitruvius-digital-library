@@ -16,7 +16,7 @@ const dict={
  none:"No se hallaron coincidencias en los textos examinados.",
  stats:(n,p,w)=>n+" apariciones en versiones indexadas · "+p+" pasajes · "+w+" obras",groupCount:n=>n+" apariciones",
  outside:n=>n+" obras catalogadas sin texto indexado; no examinadas.",
- wrong:"Esta obra no tiene texto indexado; no se buscó.",citation:"Edición y procedencia",loc:"Locus",noDate:"Datación no determinada"},
+ wrong:"Esta obra no tiene texto indexado; no se buscó.",citation:"Edición y procedencia",loc:"Locus",noDate:"Datación no determinada",translit:forms=>"Transliteración griega documentada: "+forms.join(", ")},
  en:{home:"Home",search:"Search",placeholder:"One word or phrase, for example: domus",
  intro:"Search a word or phrase across all indexed classical texts or one work. Paragraphs appear in classical chronological order, with source loci and no invented translation alignments.",
  work:"Work",all:"All indexed books",wait:"Loading the work catalogue…",
@@ -28,7 +28,7 @@ const dict={
  none:"No matches in the texts examined.",
  stats:(n,p,w)=>n+" occurrences in indexed versions · "+p+" passages · "+w+" works",groupCount:n=>n+" occurrences",
  outside:n=>n+" catalogued works without indexed text, not searched.",
- wrong:"This work has no indexed text; it was not searched.",citation:"Edition and provenance",loc:"Locus",noDate:"Undated"},
+ wrong:"This work has no indexed text; it was not searched.",citation:"Edition and provenance",loc:"Locus",noDate:"Undated",translit:forms=>"Documented Greek transliteration: "+forms.join(", ")},
  fr:{home:"Accueil",search:"Chercher",placeholder:"Un mot ou une expression, par exemple : domus",
  intro:"Cherchez un mot ou une expression dans tous les textes classiques indexés, ou dans une seule œuvre. Les paragraphes apparaissent par ancienneté avec leur locus, sans alignements inventés.",
  work:"Œuvre",all:"Tous les livres indexés",wait:"Chargement du catalogue…",
@@ -40,10 +40,26 @@ const dict={
  none:"Aucune correspondance dans les textes consultés.",
  stats:(n,p,w)=>n+" occurrences dans les versions indexées · "+p+" passages · "+w+" œuvres",groupCount:n=>n+" occurrences",
  outside:n=>n+" œuvres cataloguées sans texte indexé, non examinées.",
- wrong:"Cette œuvre n'a pas de texte indexé ; aucune recherche.",citation:"Édition et provenance",loc:"Locus",noDate:"Datation inconnue"}
+ wrong:"Cette œuvre n'a pas de texte indexé ; aucune recherche.",citation:"Édition et provenance",loc:"Locus",noDate:"Datation inconnue",translit:forms=>"Translittération grecque documentée : "+forms.join(", ")}
 };
 const languages={la:"Latín",grc:"Griego",es:"Castellano",en:"English",fr:"Français"};
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").replace(/j/g,"i").replace(/v/g,"u");
+/* Equivalencia ortográfica griego ↔ transliteración, solo con lemas documentados
+   en Conceptus; no sustituye una traducción ni una alineación por locus. */
+const greekRoman={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",υ:"y",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
+const romanizeGreek=s=>[...String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ")].map(c=>greekRoman[c]||c).join("");
+let greekFormsTask=null;
+async function attestedGreekForms(query){
+ if(!/^[a-z]{3,35}$/i.test(query))return [];
+ if(!greekFormsTask)greekFormsTask=fetch("data/lexicon/conceptus.json")
+  .then(r=>{if(!r.ok)throw Error("Conceptus unavailable");return r.json()})
+  .then(j=>Array.isArray(j?.concepts)?j.concepts:[]).catch(()=>[]);
+ const concepts=await greekFormsTask,found=new Set(),key=fold(query);
+ for(const c of concepts)for(const g of (Array.isArray(c.grc)?c.grc:[])){
+  if(typeof g==="string"&&/^[\p{Script=Greek}\p{M}]+$/u.test(g)&&fold(romanizeGreek(g))===key)found.add(g);
+ }
+ return [...found].slice(0,8);
+}
 const roman=x=>{let n=0,last=0;for(const c of [...String(x).toUpperCase()].reverse()){const z={I:1,V:5,X:10,L:50,C:100}[c]||0;n+=z<last?-z:z;last=z}return n};
 function dating(w){
  const s=fold(w?.dating);
@@ -144,6 +160,7 @@ function render(rows,q,details){
  for(const r of sorted)groupCounts.set(r.workId,(groupCounts.get(r.workId)||0)+(r.hitsInPassage||1));
  const total=[...groupCounts.values()].reduce((sum,n)=>sum+n,0);
  status.textContent=t.stats(total,sorted.length,new Set(sorted.map(r=>r.workId)).size)+
+  (details?.transliterations?.length?" · "+t.translit(details.transliterations):"")+
   (details?.failed?" · "+t.failed:"");
  if(!sorted.length)list.append(el("p","",t.none));
  let last="",section=null,passages=null;const frag=document.createDocumentFragment();
@@ -176,7 +193,7 @@ function render(rows,q,details){
   }
   const li=el("li","hit");li.lang=r.language==="grc"?"el":r.language||"es";
   li.append(el("span","locus",t.loc+" "+(r.locus||"—")+" · "+(languages[r.language]||r.language)+" · "+(r.hitsInPassage||1)));
-  const p=el("p","");decorate(p,r.passageText||r.excerpt||"",q);li.append(p);passages.append(li);
+  const p=el("p","");decorate(p,r.passageText||r.excerpt||"",r.term||q);li.append(p);passages.append(li);
  }
  list.append(frag);
  $("unindexed").textContent=t.outside(works.length-indexed.size)+(details?.failed?" "+t.failed:"");
@@ -190,9 +207,11 @@ async function search(){
   const workId=work.value;
   if(workId&&!indexed.has(workId)){status.textContent=dict[locale].wrong;return}
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q],{workId,allMatches:true,includeFullText:true,includeOCR:false});
+  const transliterations=await attestedGreekForms(q);
   if(id!==serial)return;
-  const details=window.ClassicsCorpusSearch.diagnostics?.()||{};render(hits,q,details);
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allMatches:true,includeFullText:true,includeOCR:false});
+  if(id!==serial)return;
+  const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
   if(workId)url.searchParams.set("work",workId);else url.searchParams.delete("work");
   history.replaceState(null,"",url);
