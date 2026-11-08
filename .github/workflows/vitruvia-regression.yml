@@ -1,9 +1,9 @@
 name: Vitruvia performance and reference integrity
 on:
   push:
-    paths: ["assets/**", "vitruvia.html", "lector-bilingue.html", "sw.js", "scripts/test-vitruvia-performance.mjs", "data/structured/**"]
+    paths: ["assets/**", "vitruvia.html", "lector-bilingue.html", "sw.js", "scripts/test-vitruvia-performance.mjs", "scripts/vitruvia-regression-check.mjs", "bibliotheca-graeca-latina.html", "data/structured/**"]
   pull_request:
-    paths: ["assets/**", "vitruvia.html", "lector-bilingue.html", "sw.js", "scripts/test-vitruvia-performance.mjs", "data/structured/**"]
+    paths: ["assets/**", "vitruvia.html", "lector-bilingue.html", "sw.js", "scripts/test-vitruvia-performance.mjs", "scripts/vitruvia-regression-check.mjs", "bibliotheca-graeca-latina.html", "data/structured/**"]
   workflow_dispatch:
 permissions:
   contents: read
