@@ -171,11 +171,11 @@ function normalizedWorkTitle(s){return normalized(s).replace(/\b(the|a|an|la|el|
  */
 function datedEditionYear(item){
  const raw=String(item.publish_date||'');
- const match=raw.match(/(?:^|[^\\d])((?:1[4-9]|20)\\d{2})(?!\\d)/);
+ const match=raw.match(/(?:^|[^\d])((?:1[4-9]|20)\d{2})(?!\d)/);
  return match?Number(match[1]):null;
 }
 function attachEditionList(bookCard,work,valid){
- if(!/^\\/works\\/OL\\d+W$/.test(work.key||''))return;
+ if(!/^\/works\/OL\d+W$/.test(work.key||''))return;
  const body=bookCard.querySelector('.web-dossier-card-body');if(!body)return;
  const details=el('details','web-dossier-editions');
  const summary=el('summary',null,L('Ver ediciones por año (más antiguas primero)','View editions by year (oldest first)','Voir les éditions par année (anciennes d’abord)'));
@@ -195,7 +195,7 @@ function attachEditionList(bookCard,work,valid){
     if(!valid()||!bookCard.isConnected)return;
     content.replaceChildren();
     const seen=new Set(),editions=(data?.entries||[]).filter(e=>{
-     if(!/^\\/books\\/OL\\d+M$/.test(e.key||'')||seen.has(e.key))return false;
+     if(!/^\/books\/OL\d+M$/.test(e.key||'')||seen.has(e.key))return false;
      seen.add(e.key);return true;
     }).sort((a,b)=>(datedEditionYear(a)??99999)-(datedEditionYear(b)??99999)||
      String(a.publish_date||'').localeCompare(String(b.publish_date||''))||
