@@ -49,7 +49,7 @@ function editionConnections(row,editions){
  const workUrl=new URL("bibliotheca-graeca-latina.html",location.href);
  workUrl.searchParams.set("work",row.workId);workUrl.searchParams.set("q",input.value.trim());
  const bibliotheca=document.createElement("a");bibliotheca.href=workUrl.href;bibliotheca.textContent="Buscar esta palabra en todas las ediciones de la obra";actions.append(bibliotheca);
- if(row.workId==="vitruvius"&&/^\\d+\\.\\d+(?:\\.\\d+)?$/.test(row.locus)){
+ if(row.workId==="vitruvius"&&/^\d+\.\d+(?:\.\d+)?$/.test(row.locus)){
   const apparatus=new URL("aparato-critico.html",location.href);apparatus.searchParams.set("locus",row.locus);
   const a=document.createElement("a");a.href=apparatus.href;a.textContent="Aparato crítico · Vitr. "+row.locus;actions.append(a);
  }
