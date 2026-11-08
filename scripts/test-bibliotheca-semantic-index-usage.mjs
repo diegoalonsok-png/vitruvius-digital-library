@@ -13,7 +13,8 @@ const entry=(workId,language,format="json-passages")=>({
 });
 const entries=[
  entry("house","la"),entry("wolf","la"),entry("people","grc"),
- entry("demo","en","html-text"),entry("spanish","es")
+ entry("demo","en","html-text"),entry("spanish","es"),
+ ...Array.from({length:9},(_,i)=>entry("extra-"+i,"es"))
 ];
 const posting=(e,concepts=[])=>({
  workId:e.workId,language:e.language,format:e.format,source:e.path,
@@ -21,14 +22,15 @@ const posting=(e,concepts=[])=>({
 });
 const postings={
  schema:"vitruvia-classics-semantic-postings-v1",
- registryEditionCount:5,eligibleEditions:5,indexedEditions:4,errors:[],
+ registryEditionCount:entries.length,eligibleEditions:entries.length,indexedEditions:entries.length-1,errors:[],
  notIndexedFormats:[{
   path:"corpus/demo-en.html",format:"html-text",
   reason:"Hosted translation has no stable passage anchor; search literal text directly, not as a verified locus."
  }],
  versions:[
   posting(entries[0],[{concept:"home",count:1,loci:[["1","domus",1]]}]),
-  posting(entries[1]),posting(entries[2]),posting(entries[4])
+  posting(entries[1]),posting(entries[2]),posting(entries[4]),
+  ...entries.slice(5).map(posting)
  ]
 };
 const data={
@@ -63,7 +65,6 @@ function run(index){
  const {engine,requests}=run(postings);
  const rows=await engine.semanticSearch("casa",{limit:10});
  const d=engine.diagnostics();
- console.log("Semantic test diagnostic:",JSON.stringify({rows,diagnostics:d,requests}));
  assert.equal(rows.length,1,"Attested Latin source must remain searchable");
  assert.equal(rows[0].workId,"house");
  assert.equal(d.staticIndexUsed,true,"Full-registry index should be recognized");
