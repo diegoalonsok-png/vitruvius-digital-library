@@ -182,6 +182,20 @@ try{
    assert.equal(await p.locator('#classic-work option').count(),state.books);
   }finally{await p.close()}
  });
+ await check('Bibliotheca: logos in Latin characters finds documented Greek λόγος',async()=>{
+  const p=await open('bibliotheca-graeca-latina.html');
+  try{
+   await p.waitForFunction(()=>document.querySelectorAll('#classic-work option').length>=223,{timeout:28000});
+   await p.locator('#classic-work').selectOption('aristotle-poetics');
+   await p.locator('#classic-query').fill('logos');
+   await p.locator('#search-submit').click();
+   await p.waitForFunction(()=>[...document.querySelectorAll('#classic-results .hit mark')]
+    .some(m=>/λόγο[ςσ]/u.test(m.textContent||'')),{timeout:20000});
+   assert.match(await p.locator('#search-status').innerText(),/Transliteración griega documentada: λόγος/);
+   assert.equal(await p.locator('#classic-results .hit[lang="el"]').count()>0,true,
+    'Romanized logos must recover Greek textual loci, not invented semantic matches');
+  }finally{await p.close()}
+ });
  await check('Bibliotheca concordance: actual Latin term, full black-background paragraph and Lexicon query link',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
   try{
