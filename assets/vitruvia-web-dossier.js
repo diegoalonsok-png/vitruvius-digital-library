@@ -320,6 +320,35 @@ async function books(root,topic,valid){
    'https://openlibrary.org/search?'+new URLSearchParams({author:topic.name})));
  }catch(err){if(valid()){section.replaceChildren();info(section,L('Catálogo temporalmente no disponible.','Catalogue temporarily unavailable.','Catalogue temporairement indisponible.'));}}
 }
+function manuscriptWitnesses(root,topic,rows){
+ if(!topic.person||!['author','literature'].includes(topic.kind))return;
+ const author=normalized(topic.name),workIds=new Set(rows.filter(r=>r.type==='book'&&r.workId&&normalized(r.author||'')===author).map(r=>r.workId));
+ const seen=new Set();
+ const oldest=bookRows.map(b=>({book:b,witness:window.VitruviaOldestSource?.forWork?.(b.workId)})).filter(x=>x.witness?.url);
+ const manuscripts=rows.filter(r=>r.type==='manuscript'&&Array.isArray(r.workIds)&&r.workIds.some(id=>workIds.has(id))&&(r.codexViewer||r.viewerUrl||r.link))
+ .filter(r=>{const url=r.codexViewer||r.viewerUrl||r.link;if(seen.has(url))return false;seen.add(url);return true})
+ .sort((a,b)=>(Number(a.codexDate)||99999)-(Number(b.codexDate)||99999));
+ if(!manuscripts.length&&!oldest.length)return;
+ header(root,L('Manuscritos más antiguos identificados','Earliest identified manuscripts','Manuscrits les plus anciens identifiés'));
+ const box=el('div','web-dossier-list cultural-manuscripts');root.append(box);
+ const visited=new Set();
+ for(const {book,witness} of oldest){
+  if(!witness?.url||visited.has(witness.url))continue;visited.add(witness.url);
+  const card=el('article','web-dossier-card cultural-witness'),body=el('div','web-dossier-card-body');
+  body.append(el('p','web-dossier-meta',book.title||'Obra clásica'));
+  body.append(link(witness.label||'Testimonio antiguo',witness.url));
+  body.append(el('p','context-note',L('Testimonio más antiguo identificado en la ficha de esta obra; verificar datación y procedencia.','Earliest identified witness for this work; verify dating and provenance.','Plus ancien témoin identifié pour cette œuvre ; vérifier la datation et la provenance.')));
+  card.append(body);box.append(card);
+ }
+ for(const r of manuscripts.slice(0,12)){
+  const url=r.codexViewer||r.viewerUrl||r.link,card=el('article','web-dossier-card cultural-witness'),body=el('div','web-dossier-card-body');
+  body.append(link(r.title||r.codexRepository||'Manuscrito',url));
+  body.append(el('p','web-dossier-meta',[r.codexDate||'',r.codexRepository||'',r.meta||''].filter(Boolean).join(' · ')));
+  body.append(link(L('Abrir códice ↗','Open manuscript ↗','Ouvrir le codex ↗'),url));
+  card.append(body);box.append(card);
+ }
+}
+
 async function albums(root,topic,valid){
  if(topic.kind!=='music'&&!/^(musica|music|musicos|cantantes|musicians|singers)$/.test(normalized(topic.name)))return;
  header(root,L('Álbumes y discografía','Albums and discography','Albums et discographie'));
@@ -334,15 +363,13 @@ async function albums(root,topic,valid){
   if(!valid()||!root.isConnected)return;
   section.replaceChildren();
   const matches=(d?.results||[]).filter(x=>x.wrapperType==='collection'&&x.collectionName&&!/\b(?:Single|EP)\s*$/i.test(x.collectionName)&&x.collectionViewUrl&&x.artistName&&
-    artistNames.has(normalized(x.artistName).replace(/^(the|los|las|el|la) /,'')));
+    artistNames.has(normalized(x.artistName).replace(/^(the|los|las|el|la) /,'')))
+   .sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')));
   const seen=new Set(),records=[];
-  for(const x of matches){
-   const key=baseTitle(x.collectionName);
-   if(seen.has(key))continue;seen.add(key);records.push(x);
-  }
-  // Catalogued edition release date, earliest first. Reissues may have their
-  // own dates; do not label them as a work's first-ever publication.
+  for(const x of matches){const key=baseTitle(x.collectionName);if(seen.has(key))continue;seen.add(key);records.push(x)}
+  // Dates refer to catalogued editions, not necessarily original first releases.
   records.forEach((x,index)=>{x.catalogRank=index});
+  // Keep chronological order explicit after deduplication; catalogued edition dates only.
   records.sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999'))||a.catalogRank-b.catalogRank);
   if(!records.length){info(section,L('No hay álbumes atribuibles con certeza a este artista en el catálogo consultado.','No confidently attributed albums were found in the consulted catalogue.','Aucun album attribuable avec certitude dans le catalogue interrogé.'))}
   else{
@@ -351,10 +378,14 @@ async function albums(root,topic,valid){
    const albumCards=[];
    for(const rec of records.slice(0,45)){
     const cover=String(rec.artworkUrl100||'').replace(/100x100bb/,'200x200bb');
-    const meta=[rec.releaseDate?.slice(0,4),rec.primaryGenreName,rec.trackCount?String(rec.trackCount)+' '+L('temas','tracks','titres'):''].filter(Boolean).join(' · ');
+    const meta=[rec.releaseDate?L('Edición: ','Edition: ','Édition : ')+rec.releaseDate.slice(0,4):'',rec.primaryGenreName,rec.trackCount?String(rec.trackCount)+' '+L('temas','tracks','titres'):''].filter(Boolean).join(' · ');
     const descr=L('Álbum de ','Album by ','Album de ')+rec.artistName+'. '+[rec.primaryGenreName,rec.trackCount?rec.trackCount+' '+L('pistas en esta edición','tracks in this edition','titres dans cette édition'):''].filter(Boolean).join(' · ')+'.';
     const item=card(stack,rec.collectionName,rec.collectionViewUrl,descr,cover,meta,L('Ver álbum y opciones disponibles ↗','View album and available options ↗','Voir l’album et les options disponibles ↗'));
-    item.classList.add('cultural-album');albumCards.push({item,record:rec});
+    item.classList.add('cultural-album');
+    const buy=link(L('Buscar CD o vinilo · verificar edición y stock','Find CD or vinyl · verify edition and stock','Chercher CD ou vinyle · vérifier édition et stock'),
+     'https://www.google.com/search?'+new URLSearchParams({q:rec.artistName+' '+rec.collectionName+' CD vinilo comprar'}));
+    buy.className='web-dossier-purchase-link';item.querySelector('.web-dossier-card-body')?.append(buy);
+    albumCards.push({item,record:rec});
    }
    catalogOrder(section,albumCards,(a,b,order)=>order==='year'?String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')):a.catalogRank-b.catalogRank,stack);
   }
@@ -495,6 +526,7 @@ function render(panel,query,rows,isCurrent){
   const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
+  if(topic.person&&['author','literature'].includes(topic.kind))manuscriptWitnesses(section,topic,records);
   if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
   const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
