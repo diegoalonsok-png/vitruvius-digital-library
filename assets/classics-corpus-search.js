@@ -40,9 +40,11 @@ function valid(e){
       e.path==="data/text/krohn-1912.json");
 }
 async function registry(){
- if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
+ if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async j=>{
   if(j.schema!=="vitruvia-classics-search-registry-v1"||!Array.isArray(j.entries)||j.entries.length<14)throw Error("Registro de búsqueda incompleto");
   registered=j.entries.filter(valid);if(registered.length!==j.entries.length)throw Error("Registro con rutas o metadatos inválidos");
+  // Greek textual editions are separately attested and served outside Pages.
+  if(window.ClassicsOffsiteGreek)registered=registered.concat(await window.ClassicsOffsiteGreek.entries());
   return registered;
  }).catch(()=>{registered=LEGACY;return LEGACY});
  return registryTask;
@@ -59,6 +61,8 @@ function snippet(text,[a,b]){
  return (s?"…":"")+text.slice(s,a)+"«"+text.slice(a,b)+"»"+text.slice(b,e)+(e<text.length?"…":"");
 }
 function loadJson(e){
+ if(e.format==="remote-json-passages")
+  return window.ClassicsOffsiteGreek?.load(e)||Promise.resolve(null);
  if(!cache.has(e.path))cache.set(e.path,
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
    .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
@@ -119,7 +123,8 @@ async function search(q,{limit=8}={}){
  const grec=/[Ͱ-Ͽἀ-῿]/.test(q),semitic=/[\u0590-\u05ff]/u.test(q),all=await registry();
  // The hosted corpus presently has no Hebrew or Aramaic passage editions.
  // Do not fetch Latin/English texts and misreport absence in an unindexed language.
- const targets=all.filter(e=>semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc");
+ const targets=all.filter(e=>(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc")&&
+  (e.format!=="remote-json-passages"||grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q])));
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
@@ -137,7 +142,7 @@ async function search(q,{limit=8}={}){
    let link=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    link+=(link.includes("?")?"&":"?")+"q="+encodeURIComponent(q);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",
@@ -205,7 +210,8 @@ async function semanticSearch(q,{limit=6}={}){
  for(let offset=0;offset<entries.length;offset+=4){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
-   if(!terms.length||e.format==="historical-ocr-pages")return;
+   if(!terms.length||e.format==="historical-ocr-pages"||
+    e.format==="remote-json-passages"&&!window.ClassicsOffsiteGreek?.mightContain(e,terms))return;
    if(indexValid&&["json-passages","structured-bilingual"].includes(e.format)){
     const version=indexed.get([e.workId,e.language,e.path,e.edition||""].join("|"));
     if(version&&!version.concepts.some(c=>c.concept===concept.id)){skippedNoHit++;return}
@@ -287,7 +293,9 @@ function cached(kind,fn){
 async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>/\p{L}/u.test(q)&&fold(q).length>=1))].slice(0,12);
  if(!queries.length)return [];
- const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language));
+ const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
+ const targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language)&&
+  (e.format!=="remote-json-passages"||(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries)));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
@@ -308,7 +316,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
     const base=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
     let href=base+(base.includes("?")?"&":"?")+"q="+encodeURIComponent(term);
     if(e.format==="historical-ocr-pages")href+="&page="+encodeURIComponent(p.page);
-    else if(["json-passages","structured-bilingual"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
+    else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
     else if(p.anchor)href+="#"+encodeURIComponent(p.anchor);
     else {const quote=p.text.slice(Math.max(0,hit[0]-24),Math.min(p.text.length,hit[1]+36)).trim();
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
