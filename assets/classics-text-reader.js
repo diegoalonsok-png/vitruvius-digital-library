@@ -187,7 +187,7 @@ input.addEventListener("keydown",e=>{if(e.key==="Enter"){$("find").click()}});
 $("hit-prev")?.addEventListener("click",()=>focusHit(-1));$("hit-next")?.addEventListener("click",()=>focusHit(1));
 $("clear").addEventListener("click",()=>{setQuery("");renderSearch();if(data)select(active)});
 $("print").addEventListener("click",()=>window.print());
-$("theme").addEventListener("click",()=>{const html=document.documentElement;html.dataset.theme=html.dataset.theme==="dark"?"light":"dark"});
+// Reader stays dark like Lexicon; independent per-text palettes still work.
 
 const COLOR_KEY="vitruvia.classic.colors."+work;
 const invertHex=hex=>"#"+[1,3,5].map(i=>(255-parseInt(hex.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");

@@ -35,6 +35,35 @@ iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:
 .appearance .zoom-level{font:700 12px system-ui;min-width:38px;text-align:center;color:#31465b}
 .pane>strong{background:#203b50;color:#f8edda;font-size:13px}
 @media(max-width:700px){.appearance{gap:5px}.appearance select{max-width:120px}}
+
+/* Lexicon monochrome controls, retaining independent functional reader styles. */
+:root{--line:#414144}
+html body header{background:#151516;color:#e3e3e4;border-color:#414144}
+html body :is(.controls label,.pane,.pane>strong,.pane-version,.appearance,.syncbar,.note){
+ background:#141415!important;color:#dedee0!important;border-color:#414144!important;
+}
+html body :is(.controls select,.pane-version select,.appearance select){
+ background:#1a1a1b!important;color:#e2e2e4!important;border:1px solid #414141!important;border-radius:4px!important;
+}
+html body :is(.syncbar button,.appearance button){
+ background:#202021!important;color:#dadada!important;border:1px solid #393939!important;
+ border-radius:4px!important;box-shadow:none!important;
+ transition:background-color 120ms ease,border-color 120ms ease,transform 100ms ease!important;
+}
+html body :is(.syncbar button,.appearance button):hover{
+ background:#303032!important;color:#eee!important;border-color:#555!important;
+}
+html body :is(.syncbar button,.appearance button):active{
+ background:#424246!important;color:#fff!important;border-color:#818185!important;transform:translateY(1px);
+}
+html body :is(.syncbar button,.appearance button)[aria-pressed=true]{
+ background:#363638!important;border-color:#8b8b8e!important;
+}
+html body .appearance :is(label,.zoom-level){color:#c9c9cb!important}
+html body .appearance input[type=color]{background:#1a1a1b;border-color:#55555a!important;border-radius:4px!important}
+html body :is(button,a,input,select):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
+@media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
+
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 </head>

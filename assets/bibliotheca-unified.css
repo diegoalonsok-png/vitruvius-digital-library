@@ -12,17 +12,21 @@ html body #classic-witness-count,
 html body #classic-count,
 html body #classic-count+.classic-note{display:none!important}
 html body .classic-controls{
-  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(170px,245px) auto!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(170px,255px) minmax(160px,230px) auto!important;
   align-items:end!important;gap:12px!important;
   padding:16px 0 19px!important;margin:26px 0 9px!important;
   background:transparent!important;border:0!important;box-shadow:none!important;
 }
-html body .classic-controls>label:not(.classic-search-wrap):not(.bibliotheca-sort){display:none!important}
-html body .classic-controls>.classic-search-wrap{display:flex!important;flex:1 1 auto!important;min-width:0!important;gap:7px!important;margin:0!important}
-html body .classic-controls>.bibliotheca-sort{min-width:0!important;margin:0!important}
+html body .classic-controls>label:not(.classic-search-wrap):not(.bibliotheca-sort):not(.bibliotheca-work-filter):not(.bibliotheca-mode-filter){display:none!important}
+html body .classic-controls>.classic-search-wrap{display:flex!important;flex:1 1 auto!important;min-width:0!important;gap:7px!important;margin:0!important;grid-column:1/-1!important}
+html body .classic-controls>.bibliotheca-sort,
+html body .classic-controls>.bibliotheca-work-filter,
+html body .classic-controls>.bibliotheca-mode-filter{display:flex!important;min-width:0!important;margin:0!important}
 html body .classic-controls label{color:#b7b7b8!important;font:500 12px/1.5 Arial,Helvetica,sans-serif!important}
 html body .classic-controls input#classic-query,
-html body .classic-controls select#classic-sort{
+html body .classic-controls select#classic-sort,
+html body .classic-controls select#bibliotheca-work-scope,
+html body .classic-controls select#bibliotheca-search-mode{
   min-height:54px!important;width:100%!important;
   border:1px solid #4c4c50!important;border-radius:12px!important;
   background:#171719!important;color:#e5e5e6!important;
@@ -30,7 +34,9 @@ html body .classic-controls select#classic-sort{
   outline:none!important;box-shadow:none!important;
 }
 html body .classic-controls input#classic-query:focus,
-html body .classic-controls select#classic-sort:focus{border-color:#a0a0a3!important;box-shadow:0 0 0 2px #3c3c3e!important}
+html body .classic-controls select#classic-sort:focus,
+html body .classic-controls select#bibliotheca-work-scope:focus,
+html body .classic-controls select#bibliotheca-search-mode:focus{border-color:#a0a0a3!important;box-shadow:0 0 0 2px #3c3c3e!important}
 html body .classic-controls input#classic-query::placeholder{color:#87878a!important}
 html body .classic-controls button,
 html body .bibliotheca-unified-results button{
@@ -175,4 +181,102 @@ html body .bibliotheca-reader-frame{display:block;width:100%;height:calc(100% - 
  html body .bibliotheca-group-count,
  html body .bibliotheca-unindexed-warning{color:#111!important;background:white!important}
  html body .bibliotheca-passage{break-inside:avoid}
+}
+
+
+/* One document search; other dropdowns only select scope, mode and order. */
+html body .classic-controls .bibliotheca-work-filter{grid-column:1!important}
+html body .classic-controls .bibliotheca-mode-filter{grid-column:2!important}
+html body .classic-controls .bibliotheca-sort{grid-column:3!important}
+html body .classic-controls .bibliotheca-search-submit{grid-column:4!important}
+html body .classic-top-language.bibliotheca-language-tool{
+  position:relative;display:inline-flex;flex:0 0 auto;align-items:center;margin-left:auto!important;
+}
+html body .classic-top-language select#classic-ui-language[hidden]{display:none!important}
+html body .classic-menu #bibliotheca-language-toggle{
+  display:inline-flex;align-items:center;gap:9px;min-height:43px;
+  padding:10px 15px;border:1px solid #646468!important;border-radius:4px!important;
+  color:#e4e4e6!important;background:#212124!important;cursor:pointer;font:600 13px/1.3 Arial,Helvetica,sans-serif!important
+}
+html body .classic-menu #bibliotheca-language-toggle:hover,
+html body .classic-menu #bibliotheca-language-toggle[aria-expanded=true]{
+  border-color:#a0a0a3!important;background:#343437!important;color:#fff!important
+}
+html body .classic-menu .bibliotheca-language-menu{
+  position:absolute;z-index:500;right:0;top:calc(100% + 7px);
+  width:174px;padding:5px;background:#151517;border:1px solid #56565a;
+  border-radius:4px;box-shadow:0 18px 36px #000b;
+}
+html body .classic-menu .bibliotheca-language-menu[hidden]{display:none!important}
+html body .classic-menu .bibliotheca-language-menu button{
+  width:100%;min-height:36px;margin:1px 0;text-align:left;border:1px solid #55555a!important;
+  border-radius:4px!important;background:#1e1e21!important;color:#d5d5d7!important;
+  padding:8px 12px;font:500 12px/1.5 Arial,Helvetica,sans-serif!important;cursor:pointer
+}
+html body .classic-menu .bibliotheca-language-menu button:hover,
+html body .classic-menu .bibliotheca-language-menu button[aria-pressed=true]{
+  background:#353538!important;color:#fff!important
+}
+html body .classic-main :is(#classic-view-preset,#classic-view-bg,#classic-view-fg,#classic-view-reset),
+html body .classic-main .classic-view-colorbar{display:none!important}
+html body .classic-main .classic-reference a{
+  border:1px solid #55555a!important;background:#222225!important;color:#dedee1!important;
+}
+html body .classic-menu button,
+html body .classic-controls button,
+html body .bibliotheca-unified-results button,
+html body .classic-main button,
+html body .classic-main select,
+html body .classic-main input[type=search],
+html body .classic-main input[type=text]{
+  border-radius:4px!important;
+}
+html body .classic-menu button,
+html body .classic-controls button,
+html body .bibliotheca-unified-results button,
+html body .classic-main button{
+  border-color:#606065!important;background:#252527!important;color:#e5e5e7!important;
+}
+@media(max-width:1120px){
+ html body .classic-controls{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ html body .classic-controls>.classic-search-wrap{grid-column:1/-1!important}
+ html body .classic-controls .bibliotheca-work-filter{grid-column:1!important}
+ html body .classic-controls .bibliotheca-mode-filter{grid-column:2!important}
+ html body .classic-controls .bibliotheca-sort{grid-column:1!important}
+ html body .classic-controls .bibliotheca-search-submit{grid-column:2!important}
+}
+@media(max-width:560px){
+ html body .classic-controls{grid-template-columns:minmax(0,1fr)!important}
+ html body .classic-controls>.classic-search-wrap,
+ html body .classic-controls .bibliotheca-work-filter,
+ html body .classic-controls .bibliotheca-mode-filter,
+ html body .classic-controls .bibliotheca-sort,
+ html body .classic-controls .bibliotheca-search-submit{grid-column:1!important}
+ html body .classic-menu .bibliotheca-language-menu{right:0;left:auto}
+}
+
+
+/* Final visual contract copied from Lexicon .actions/.lx-btn:
+   gentle rounded rectangle, hairline grey border, quiet charcoal. */
+html body .classic-menu :is(button,.bibliotheca-language-menu button),
+html body .classic-controls button,
+html body .bibliotheca-unified-results button,
+html body .classic-main button:not(.classic-item){
+ border:1px solid #393939!important;
+ background:#202021!important;color:#dadada!important;
+ border-radius:4px!important;box-shadow:none!important;text-shadow:none!important;
+}
+html body .classic-menu :is(button,.bibliotheca-language-menu button):hover,
+html body .classic-controls button:hover,
+html body .bibliotheca-unified-results button:hover,
+html body .classic-main button:not(.classic-item):hover{
+ background:#333!important;border-color:#555!important;color:#eee!important;
+}
+html body .classic-main :is(input[type=search],input[type=text],select){
+ border-radius:6px!important;
+ border-color:#414141!important;background:#1a1a1b!important;color:#d7d7d7!important;
+}
+html body .classic-main :is(.classic-menu button,.classic-controls button,
+.bibliotheca-unified-results button,.classic-detail button):focus-visible{
+ outline:2px solid #999!important;outline-offset:2px!important;
 }

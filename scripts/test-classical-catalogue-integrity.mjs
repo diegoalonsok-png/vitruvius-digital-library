@@ -26,7 +26,7 @@ assert(!app.includes('const hit=q?matchingWitness(w,q):null;')||app.indexOf('fun
 assert(html.includes('assets/bibliotheca-unified-search.js'),'Single textual search must be mounted');
 assert(html.includes('assets/bibliotheca-unified.css'),'Lexicon dark theme must be mounted');
 const indexEngine=read('assets/bibliotheca-unified-search.js');
-assert(indexEngine.includes('searchPassages([q],{allMatches:true})'),
+assert(indexEngine.includes("searchPassages([q],{allMatches:true,workId})")&&indexEngine.includes("semanticVariants(q)"),
  'Full-text search must examine the index without a fixed results cap');
 assert(indexEngine.includes('catalog.length-indexed().size'),
  'Search must disclose precisely how many catalogue works were not indexed');

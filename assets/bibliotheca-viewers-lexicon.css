@@ -1,0 +1,204 @@
+/* Bibliotheca / Lexicon monochrome. Visual chrome only; editorial texts,
+   PDF canvases, historical scans, manuscript images and source pixels untouched.
+   Loaded after legacy and unified styles; applies with either saved theme. */
+html body .classic-main,
+html[data-theme] body .classic-main{
+  --bc-paper:#0b0b0c;--bc-panel:#141415;--bc-ink:#dfdfe1;
+  --bc-line:#46464a;--bc-muted:#a7a7aa;
+  background:#0b0b0c!important;color:#dfdfe1!important;
+}
+html body .classic-main :is(.classic-head,.classic-detail,.classic-status,.classic-note,
+  .classic-viewer,.classic-panel,.classic-read-toolbar,.classic-compare-toolbar,.classic-read-columns article,
+  .classic-compare-panes,.classic-inline-text,.classic-fast-text-pane,.classic-study-viewer,
+  .classic-read-matches,.classic-bibliography,.classical-evidence,.classical-local-manuscript-feature,
+  .classic-encyclopedia-study,.triple-pane,.triple-ms,.triple-pane-head,.triple-folio-nav,
+  .triple-warning,.triple-gallery,.triple-gallery-filter,.triple-thumbs,.triple-thumbs button,
+  .triple-codex-modal,.triple-modal-top,.triple-modal-scroller,.triple-modal-credit,
+  .classical-pdf-toolbar,.classical-ms-toolbar,.classical-pdf-find,.classical-pdf-surface,
+  .classical-pdf-search-hit,.classical-pdf-version-toolbar,.classic-study-tools,
+  .classic-study-toolbar,.classic-read-nav,.classic-sync-bar){
+  background:#141415!important;color:#d9d9db!important;border-color:#47474b!important;
+  box-shadow:none!important;
+}
+html body .classic-main :is(.classic-head,.triple-modal-top,.triple-modal-credit,
+  .triple-pane-head,.classical-pdf-toolbar,.classical-ms-toolbar,.classic-read-toolbar){
+  background:#19191b!important;
+}
+html body .classic-main :is(.classic-head h1,.classic-head h2,.classic-head h3,
+  .classic-detail h2,.classic-detail h3,.classic-read-columns h4,.triple-pane-head strong,
+  .triple-gallery h4,.classic-bibliography h3){
+  color:#ededee!important;border-color:#56565a!important;
+}
+html body .classic-main .classic-head{
+  border-top:2px solid #5c5c60!important;
+}
+html body .classic-main .classic-head .latin,
+html body .classic-main :is(.classic-ref,.classic-note,.classic-status,.classic-read-columns .cr-alignment-note,
+  .triple-ms-note,.triple-warning,.classical-evidence-meta,.classic-encyclopedia-study small){
+  color:#b4b4b8!important;border-color:#555559!important;
+}
+html body .classic-main :is(.classic-read-columns .cr-alignment-note,.classic-sync-bar,
+  .classic-read-matches,.triple-warning,.triple-ms-note,.triple-gallery-filter,.classic-status){
+  background:#202022!important;
+}
+html body .classic-main :is(.classic-read-columns article p,.classic-inline-text p,.classic-fast-text-pane p,
+  .classic-study-viewer p,.triple-ms p,.classic-detail p){
+  color:#d0d0d3!important;
+}
+html body .classic-main :is(button:not([disabled]),.classic-tabstrip button,
+  .classic-study-index-toggle,.triple-thumbs button,.triple-folio-nav button,.triple-more,
+  .triple-ms-open,.classical-pdf-tool,.classical-pdf-find button,.classical-pdf-open,
+  .classical-local-manuscript-cta,.classic-read-nav button,.classic-read-match-button,
+  .classic-study-tools button,.classic-study-toolbar button){
+  background:#242426!important;color:#dedee0!important;
+  border:1px solid #59595d!important;border-radius:7px!important;
+  box-shadow:none!important;text-shadow:none!important;
+}
+html body .classic-main :is(button:not([disabled]),.classic-study-index-toggle,
+  .triple-more,.triple-ms-open,.classical-pdf-tool,.classical-pdf-open):hover{
+  background:#363638!important;color:#fff!important;border-color:#9a9a9e!important;
+}
+html body .classic-main :is(button[aria-pressed=true],button[aria-current=true],
+  .classic-item[aria-current=true],.triple-thumbs button[aria-current=true]){
+  background:#303033!important;color:#f7f7f8!important;
+  border-color:#b5b5b8!important;
+}
+html body .classic-main :is(input:not([type=color]),select,textarea){
+  background:#202022!important;color:#e6e6e7!important;
+  border:1px solid #5a5a5e!important;box-shadow:none!important;
+  color-scheme:dark;
+}
+html body .classic-main :is(input:not([type=color]),select,textarea):focus-visible,
+html body .classic-main :is(button,a):focus-visible{
+  outline:2px solid #bcbcc0!important;outline-offset:2px!important;
+}
+html body .classic-main :is(.classic-linkline a,.classic-bibliographic-open,
+  .classic-search-via-vitruvia,.classic-read-link,.triple-gallery a,
+  .classic-reference a,.classic-menu a,.triple-ms-note a){
+  color:#dddddf!important;border-color:#5f5f63!important;
+  background:#212123!important;
+}
+html body .classic-main :is(a,.triple-modal-credit a,.triple-ms-note a){
+  color:#cfcfd1;
+}
+html body .classic-main :is(.classic-linkline a,.classic-bibliographic-open,
+  .classic-search-via-vitruvia):hover{background:#343436!important;color:white!important}
+html body .classic-main :is(.triple-ms,.triple-modal-scroller,.classical-pdf-page,
+  .classical-ms-image,.triple-gallery,.triple-thumbs){
+  background:#101011!important;
+}
+/* The original images are real evidence: no forced filters or inversion. */
+html body .classic-main :is(.triple-ms,.triple-modal-scroller,.classical-ms-image) img{
+  filter:none!important;mix-blend-mode:normal!important;
+}
+html body .classic-main :is(.triple-codex-modal,.bibliotheca-on-demand-viewer){
+  border-color:#66666a!important;background:#09090b!important;color:#e5e5e7!important;
+}
+html body .classic-main :is(.classic-viewer iframe,.triple-pane iframe,
+  .classic-compare-panes iframe,.triple-ms iframe){
+  border-color:#414145!important;background:#0c0c0e!important;
+}
+/* Override dynamically generated inline style= backgrounds in lightweight
+   bilingual readers; the reading data and each reader's search remain intact. */
+html body .classic-main .classic-inline-text,
+html body .classic-main .classic-inline-text>div,
+html body .classic-main .classic-inline-text>div:not(.classic-inline-locus),
+html body .classic-main .classic-inline-text select,
+html body .classic-main .classic-inline-text input{
+  background:#0e0e10!important;color:#e7e7e8!important;
+  border-color:#48484c!important;
+}
+html body .classic-main .classic-inline-text [style*="overflow:auto"]{
+  background:#000!important;color:#e8e8ea!important;border-color:#56565a!important;
+}
+html body .classic-main [style*="background:#f0e6d3"],
+html body .classic-main [style*="background:#e8ddc9"]{
+  background:#19191a!important;color:#dededf!important;border-color:#545459!important;
+}
+/* Never show the removed global palette even from an outdated cached script. */
+html body .classic-view-colorbar{display:none!important}
+/* Keep academic highlights readable: existing mark colors stay independently adjustable. */
+html body .classic-main mark:not(.bibliotheca-found-word){
+  background:#a9a9ad!important;color:#101011!important;
+}
+html body .classic-main .classic-study-color input[type=color],
+html body .classic-main .bibliotheca-color{
+  background:#202022!important;border-color:#66666a!important;
+}
+@media (max-width:850px){
+ html body .classic-main :is(.classic-viewer,.classic-panel,.classic-detail){padding:12px!important}
+ html body .classic-main :is(.classic-read-toolbar,.classical-pdf-toolbar){gap:7px}
+}
+@media print{
+ html body .classic-main :is(.classic-viewer,.classic-detail,.classic-read-columns article){
+  background:white!important;color:#111!important;border-color:#777!important;
+ }
+ html body .classic-main :is(.classic-read-columns article p,.classic-detail p){color:#111!important}
+}
+
+/* Lexicon's quiet interactive states: immediate feedback on mouse/touch,
+   persistent selection for active tabs; keyboard focus stays visible. */
+html body .classic-main button,
+html body .classic-menu button,
+html body .bibliotheca-unified-results button,
+html body .bibliotheca-on-demand-viewer button{
+  border:1px solid #393939!important;
+  border-radius:4px!important;
+  background:#202021!important;
+  color:#dadada!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  transition:background-color 120ms ease,border-color 120ms ease,transform 100ms ease!important;
+}
+html body .classic-main button:hover:not(:disabled),
+html body .classic-menu button:hover:not(:disabled),
+html body .bibliotheca-unified-results button:hover:not(:disabled),
+html body .bibliotheca-on-demand-viewer button:hover:not(:disabled){
+  background:#303032!important;border-color:#555!important;color:#eee!important;
+}
+html body .classic-main button:active:not(:disabled),
+html body .classic-menu button:active:not(:disabled),
+html body .bibliotheca-unified-results button:active:not(:disabled),
+html body .bibliotheca-on-demand-viewer button:active:not(:disabled){
+  background:#424246!important;border-color:#818185!important;
+  transform:translateY(1px);
+}
+html body .classic-main :is(button[aria-pressed=true],button[aria-current=true],
+  .classic-tabstrip button[aria-pressed=true],.triple-thumbs button[aria-current=true]),
+html body .classic-menu .bibliotheca-language-menu button[aria-pressed=true]{
+  background:#363638!important;border-color:#8b8b8e!important;
+  color:#f3f3f4!important;
+}
+html body .classic-main :is(button,a,select):focus-visible,
+html body .classic-menu button:focus-visible,
+html body .bibliotheca-unified-results button:focus-visible{
+  outline:2px solid #999!important;outline-offset:2px!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html body .classic-main button,html body .classic-menu button,
+ html body .bibliotheca-unified-results button,html body .bibliotheca-on-demand-viewer button{
+  transition:none!important;transform:none!important;
+ }
+}
+
+/* The explicit Lexicon language button has ID-level legacy overrides;
+   neutralize these so idle, press and open states are perceptibly distinct. */
+html body .classic-main .classic-menu #bibliotheca-language-toggle{
+ background:#202021!important;color:#dadada!important;border:1px solid #393939!important;
+ border-radius:4px!important;
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle:hover{
+ background:#303032!important;border-color:#555!important;color:#eee!important;
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle:active{
+ background:#424246!important;border-color:#818185!important;transform:translateY(1px);
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle[aria-expanded=true]{
+ background:#363638!important;border-color:#8b8b8e!important;color:#f3f3f4!important;
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle[aria-expanded=true]:active{
+ background:#424246!important;
+}
+body:has(.classic-main) .site-bar a[aria-current=page]{
+ border-bottom-color:#777!important;border-top-color:#777!important;
+}

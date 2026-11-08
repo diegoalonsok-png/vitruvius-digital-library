@@ -33,7 +33,11 @@
  }};
   for(const b of buttons){b.type='button';b.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem(isFront?frontKey:key,next);}catch{}paint();});}paint();
  }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+ // Bibliotheca has a fixed Lexicon monochrome interface. Do not inject a
+ // light/dark page button that visibly has no effect under its locked dark CSS.
+ if(location.pathname.split('/').pop()!=='bibliotheca-graeca-latina.html'){
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+ }
  /* Shared usability enhancements: keyboard navigation, semantics and reading comfort. */
  function enhance(){
   const main=document.querySelector('main');

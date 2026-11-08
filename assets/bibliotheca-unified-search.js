@@ -42,7 +42,7 @@ function markText(parent,text,query,color){
  parent.append(document.createTextNode(text.slice(cursor)));
 }
 function init(){
- const input=document.getElementById("classic-query"),controls=document.querySelector(".classic-controls");
+ const input=document.getElementById("classic-query"),controls=document.querySelector(".classic-controls"),scope=document.getElementById("bibliotheca-work-scope"),mode=document.getElementById("bibliotheca-search-mode");
  if(!input||!controls)return;
  for(const key of ["role","aria-autocomplete","aria-controls","aria-expanded"])input.removeAttribute(key);
  const submit=E("button","bibliotheca-search-submit","Buscar en los libros");submit.type="button";controls.append(submit);
@@ -67,13 +67,22 @@ function init(){
  const disclaimer=E("p","bibliotheca-unindexed-warning");
  root.append(summary,list,more,disclaimer);controls.after(root);
  let catalog=[],registry=[],map=new Map(),verified=false,serial=0,query="",rows=[],shown=0,currentGroups=new Map(),counts=new Map();
- let fontSize=15,highlight=color.value,selected="",diagnostics={};
+ let fontSize=15,highlight=color.value,selected="",diagnostics={},semanticLabel="";
  const meta=Promise.allSettled([
   fetch(CATALOG).then(r=>{if(!r.ok)throw Error("Catálogo inaccesible");return r.json()}),
   fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("Índice inaccesible");return r.json()})
  ]).then(([cat,idx])=>{
   if(cat.status==="fulfilled"&&Array.isArray(cat.value.works)){catalog=cat.value.works;map=new Map(catalog.map(w=>[w.id,w]))}
   if(idx.status==="fulfilled"&&idx.value.schema==="vitruvia-classics-search-registry-v1"&&Array.isArray(idx.value.entries)){registry=idx.value.entries;verified=true}
+  if(scope&&catalog.length&&registry.length){
+   const existing=scope.value;scope.replaceChildren();
+   const all=E("option","","Todos los libros indexados");all.value="";scope.append(all);
+   for(const id of [...indexed()].sort((a,b)=>(map.get(a)?.author||a).localeCompare(map.get(b)?.author||b,"es")||
+    (map.get(a)?.title||a).localeCompare(map.get(b)?.title||b,"es"))){
+    const w=map.get(id);const option=E("option","",(w?.author||"Autor")+" · "+(w?.title||id));option.value=id;scope.append(option);
+   }
+   scope.value=[...indexed()].includes(existing)?existing:"";
+  }
   updateCoverage();
  });
  const indexed=()=>new Set(registry.filter(r=>map.has(r.workId)&&r.format!=="historical-ocr-pages").map(r=>r.workId));
@@ -81,6 +90,21 @@ function init(){
   if(!catalog.length||!verified){coverage.textContent="No fue posible verificar todo el catálogo y los índices; no se atribuirá ausencia de coincidencias a las obras sin consultar.";return}
   coverage.textContent=catalog.length+" obras catalogadas · "+indexed().size+" con texto indexado · "+registry.length+
    " versiones buscables · "+(catalog.length-indexed().size)+" obras no indexadas (no examinadas).";
+ }
+ async function semanticVariants(q){
+  const response=await fetch("data/lexicon/conceptus.json");
+  if(!response.ok)throw Error("No se pudo abrir Conceptus ("+response.status+")");
+  const data=await response.json(),initial=fold(q).trim();
+  // Explicit scholarly transliterations; not a claim of etymological identity.
+  const aliases={logos:"λόγος",oikos:"οἶκος",domos:"δόμος"};
+  const key=fold(aliases[initial]||q).trim();
+  const concepts=Array.isArray(data.concepts)?data.concepts:[];
+  const c=concepts.find(x=>[
+   x.id,...Object.values(x.modern||{}).flat(),...(x.la||[]),...(x.grc||[])
+  ].some(v=>typeof v==="string"&&fold(v)===key));
+  if(!c)return null;
+  return {name:c.id,la:(c.la||[]).filter(v=>typeof v==="string"&&v.length>=2).slice(0,12),
+   grc:(c.grc||[]).filter(v=>typeof v==="string"&&v.length>=2).slice(0,12)};
  }
  function footer(){
   if(!catalog.length||!verified){disclaimer.textContent="Cobertura no verificable: no se puede determinar cuántas obras quedaron fuera.";return}
@@ -158,7 +182,7 @@ function init(){
   toolbar.hidden=false;
   const occurrences=rows.reduce((n,r)=>n+(r.hitsInPassage||1),0);
   summary.textContent=rows.length?rows.length+" pasajes documentados · "+occurrences+" ocurrencias · "+counts.size+
-   " obras. Los resultados están agrupados por obra y muestran su locus, idioma y referencia bibliográfica.":
+   " obras. Los resultados están agrupados por obra y muestran su locus, idioma y referencia bibliográfica."+(semanticLabel?" Concepto editorial: "+semanticLabel+"; equivalencias de significado, NO alineación textual ni lematización acreditada.":""):
    "No se encontraron coincidencias literales en las versiones examinadas. Las obras sin indexar no fueron buscadas.";
   if(rows.length)next();else more.hidden=true;
   footer();
@@ -169,13 +193,29 @@ function init(){
   if(q.length>180||fold(q).replace(/[^\p{L}\p{N}]/gu,"").length<2){
    summary.textContent="Introduce al menos dos letras o cifras (máximo 180 caracteres).";return
   }
-  await meta;submit.disabled=true;summary.textContent="Buscando la palabra o frase en todas las versiones realmente indexadas…";
+  await meta;submit.disabled=true;summary.textContent="Buscando coincidencias documentadas en "+(scope?.value?"la obra seleccionada":"todas las obras indexadas")+"…";
   list.replaceChildren();toolbar.hidden=true;disclaimer.textContent="";
   try{
    if(!window.ClassicsCorpusSearch?.searchPassages)throw Error("No se cargó el motor de concordancias");
-   const hits=await window.ClassicsCorpusSearch.searchPassages([q],{allMatches:true});
+   const workId=scope?.value||"";let hits=[];semanticLabel="";
+   if(mode?.value==="semantic"){
+    if(q.includes(" "))throw Error("La consulta semántica de Conceptus admite un lema; para frases utiliza la búsqueda literal.");
+    const concept=await semanticVariants(q);
+    if(!concept)throw Error("El término no tiene una equivalencia semántica registrada en Conceptus. Utiliza el modo literal.");
+    semanticLabel=concept.name;
+    const sets=[["la",concept.la],["grc",concept.grc]].filter(x=>x[1].length);
+    let failures=0;const results=[];
+    for(const [language,terms] of sets){
+     results.push(await window.ClassicsCorpusSearch.searchPassages(terms,{allMatches:true,workId,language}));
+     failures+=(window.ClassicsCorpusSearch.diagnostics?.().failed||0);
+    }
+    hits=results.flat();diagnostics={failed:failures};
+   }else{
+    hits=await window.ClassicsCorpusSearch.searchPassages([q],{allMatches:true,workId});
+   }
    if(token!==serial)return;
-   diagnostics=window.ClassicsCorpusSearch.diagnostics?.()||{};
+   const probe=window.ClassicsCorpusSearch.diagnostics?.()||{};
+   diagnostics=mode?.value==="semantic"?{...probe,failed:diagnostics.failed||probe.failed}:probe;
    show(hits,q);
   }catch(error){if(token===serial){summary.textContent="La búsqueda no se completó: "+String(error.message||error);disclaimer.textContent="No se emitió un resultado negativo sobre archivos que no pudieron consultarse."}}
   finally{if(token===serial)submit.disabled=false}
@@ -185,6 +225,7 @@ function init(){
  input.addEventListener("input",()=>{if(!input.value.trim()){serial++;void run()}});
  document.getElementById("classic-clear")?.addEventListener("click",()=>{serial++;void run()});
  document.getElementById("classic-sort")?.addEventListener("change",()=>{if(rows.length)show(rows,query)});
+ for(const filter of [scope,mode])filter?.addEventListener("change",()=>{if(input.value.trim())void run()});
  color.addEventListener("input",()=>{highlight=color.value;list.querySelectorAll("mark.bibliotheca-found-word").forEach(e=>e.style.backgroundColor=highlight)});
  larger.addEventListener("click",()=>{fontSize=Math.min(26,fontSize+2);list.querySelectorAll(".bibliotheca-passage-text").forEach(e=>e.style.fontSize=fontSize+"px")});
  smaller.addEventListener("click",()=>{fontSize=Math.max(12,fontSize-2);list.querySelectorAll(".bibliotheca-passage-text").forEach(e=>e.style.fontSize=fontSize+"px")});
