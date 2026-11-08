@@ -1,0 +1,61 @@
+{
+  "schema": "vitruvius-classics-remote-translations-v1",
+  "updated": "2026-11-08",
+  "method": "Sólo registros de orientación a traducciones efectivamente publicadas en el alojamiento externo. Enlaces verificados a páginas de índice; sin copia local, búsqueda integrada, alineación ni certificación de equivalencias por locus. No suma a los contadores de versiones indexadas.",
+  "entries": [
+    {
+      "workId": "vitruvius",
+      "language": "en",
+      "translator": "Joseph Gwilt (1826)",
+      "edition": "The Ten Books on Architecture, traducción de Gwilt",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/home.html",
+      "host": "LacusCurtius",
+      "status": "external-only"
+    },
+    {
+      "workId": "varro-rustica",
+      "language": "en",
+      "translator": "W. D. Hooper y H. B. Ash",
+      "edition": "Loeb Classical Library (1934)",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Varro/de_Re_Rustica/home.html",
+      "host": "LacusCurtius",
+      "status": "external-only"
+    },
+    {
+      "workId": "frontinus",
+      "language": "en",
+      "translator": "Charles E. Bennett",
+      "edition": "Loeb Classical Library (1925)",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/home.html",
+      "host": "LacusCurtius",
+      "status": "external-only"
+    },
+    {
+      "workId": "frontinus-strategemata",
+      "language": "en",
+      "translator": "Charles E. Bennett",
+      "edition": "Loeb Classical Library (1925)",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html",
+      "host": "LacusCurtius",
+      "status": "external-only"
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "language": "en",
+      "translator": "W. D. Hooper y H. B. Ash",
+      "edition": "Loeb Classical Library (1934)",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html",
+      "host": "LacusCurtius",
+      "status": "external-only"
+    },
+    {
+      "workId": "velleius-historia",
+      "language": "en",
+      "translator": "Frederick W. Shipley",
+      "edition": "Loeb Classical Library (1924)",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
+      "host": "LacusCurtius",
+      "status": "external-only"
+    }
+  ]
+}

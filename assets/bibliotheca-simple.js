@@ -112,6 +112,42 @@ function decorate(parent,text,query){
 let works=[],entries=[],byId=new Map(),indexed=new Set(),locale="es",previous=[],current="",diag={},serial=0;
 const input=$("classic-query"),work=$("classic-work"),coverage=$("catalogue-status"),status=$("search-status"),
  root=$("result"),list=$("classic-results"),lex=$("lexicon-link"),bar=$("lexicon-bar");
+
+/* Traducciones remotas: sólo vínculos y metadatos de ediciones verificadas.
+   Jamás contar como corpus local ni intentar descargar indiscriminadamente textos. */
+const remoteBox=el("aside","remote-translations");
+remoteBox.hidden=true;
+document.querySelector(".searcharea")?.append(remoteBox);
+let remoteEntries=[];
+function drawRemote(){
+ remoteBox.replaceChildren();
+ const id=work.value||new URLSearchParams(location.search).get("work")||"";
+ const rows=remoteEntries.filter(e=>e.workId===id);
+ remoteBox.hidden=!rows.length;
+ if(!rows.length)return;
+ const labels={
+  es:{head:"Traducciones consultables sin ocupar espacio",open:"Consultar traducción",note:"El texto permanece en la biblioteca externa: no se incluye en el recuento de concordancias ni está alineado automáticamente."},
+  en:{head:"Translations available without local storage",open:"Read translation",note:"The text remains on the external library: it is not counted in local concordances or automatically aligned."},
+  fr:{head:"Traductions sans stockage local",open:"Consulter la traduction",note:"Le texte reste hébergé par la bibliothèque externe : il n'est pas compté ni aligné automatiquement."}
+ }[locale]||{head:"Traducciones externas",open:"Consultar",note:""};
+ remoteBox.append(el("p","remote-title",labels.head));
+ for(const e of rows){
+  let target;
+  try{target=new URL(e.url)}catch{continue}
+  if(target.protocol!=="https:"||target.hostname!=="penelope.uchicago.edu")continue;
+  const line=el("p","remote-row");
+  const a=el("a","remote-link",labels.open+" · "+(languages[e.language]||e.language));
+  a.href=target.href;a.target="_blank";a.rel="noopener noreferrer";
+  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host));
+  remoteBox.append(line);
+ }
+ remoteBox.append(el("p","remote-note",labels.note));
+}
+fetch("data/classics-corpus/remote-translations.json")
+ .then(r=>{if(!r.ok)throw Error("remote catalogue");return r.json()})
+ .then(d=>{if(d.schema!=="vitruvius-classics-remote-translations-v1"||!Array.isArray(d.entries))throw Error("registry malformed");remoteEntries=d.entries;drawRemote()})
+ .catch(()=>{remoteEntries=[];remoteBox.hidden=true});
+
 function refresh(){
  const t=dict[locale],selected=work.value||new URLSearchParams(location.search).get("work")||"";
  work.replaceChildren(new Option(t.all,""));
@@ -121,6 +157,7 @@ function refresh(){
  }
  if(byId.has(selected))work.value=selected;
  coverage.textContent=t.ready(works.length,entries.length,works.length-indexed.size);
+ drawRemote();
 }
 function switchLanguage(k){
  locale=Object.hasOwn(dict,k)?k:"es";
@@ -135,6 +172,7 @@ function switchLanguage(k){
   button.title=({es:"Cambiar idioma: ES → EN → FR",en:"Switch language: ES → EN → FR",fr:"Changer de langue : ES → EN → FR"})[locale];
  }
  if(works.length)refresh();else coverage.textContent=t.wait;
+ drawRemote();
  if(current)render(previous,current,diag);
  updateLexicon();
  try{localStorage.setItem("vitruvius-ui-lang",locale)}catch{}
@@ -245,7 +283,7 @@ async function search(){
  finally{if(id===serial)$("search-submit").disabled=false}
 }
 $("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search()});
-work.addEventListener("change",()=>{if(input.value.trim())void search()});
+work.addEventListener("change",()=>{drawRemote();if(input.value.trim())void search()});
 input.addEventListener("input",updateLexicon);
 $("language-toggle").addEventListener("click",()=>{
  const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";

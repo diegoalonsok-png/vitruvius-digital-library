@@ -6,6 +6,8 @@ on:
       - '.github/workflows/classics-viewer-check.yml'
       - 'scripts/classics-visor-smoke.mjs'
       - 'scripts/test-bibliotheca-chronology.mjs'
+      - 'scripts/test-remote-translation-registry.mjs'
+      - 'data/classics-corpus/remote-translations.json'
       - 'bibliotheca-graeca-latina.html'
       - 'classics-text-reader.html'
       - 'assets/bibliotheca-simple.css'
@@ -42,8 +44,11 @@ jobs:
           node --check assets/bibliotheca-graeca-latina.js
           node --check assets/classical-facsimile-viewer.js
           node --check assets/vitruvia-search.js
+          node --check assets/bibliotheca-simple.js
       - name: Verificar que los siglos latinos y griegos se ordenan correctamente
-        run: node scripts/test-bibliotheca-chronology.mjs
+        run: |
+          node scripts/test-bibliotheca-chronology.mjs
+          node scripts/test-remote-translation-registry.mjs
       - name: Install headless Chromium
         run: |
           npm install --no-save playwright@1.56.1

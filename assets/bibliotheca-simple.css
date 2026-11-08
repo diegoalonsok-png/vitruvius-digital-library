@@ -101,3 +101,14 @@ h1,.group h3,.hit p{color:#fff!important}
 .lexicon-bar{margin:4px 0 20px}
 .lexicon-bar a{display:inline-block;padding:7px 0;color:#fff;text-decoration:underline;text-decoration-color:#777;font-size:13px;overflow-wrap:anywhere}
 .lexicon-bar a:hover,.lexicon-bar a:focus-visible{color:#fff;text-decoration-color:#fff}
+
+
+/* Registro externo: enlaces simples, misma estética en negro de Lexicon. */
+.remote-translations[hidden]{display:none}
+.remote-translations{padding:10px 3px 4px;border-top:1px solid #313133;margin:16px 0 0;color:#c8c8ca}
+.remote-title{color:#f1f1f1;font:500 12px/1.6 Arial,sans-serif;margin:3px 0 7px}
+.remote-row{font:400 12px/1.7 Arial,sans-serif;margin:8px 0;overflow-wrap:anywhere}
+.remote-link{color:#fff;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#858586}
+.remote-link:hover,.remote-link:focus-visible{text-decoration-color:#fff}
+.remote-note{font:400 11px/1.65 Arial,sans-serif;color:#98989a;margin:8px 0}
+@media print{.remote-translations{display:none!important}}
