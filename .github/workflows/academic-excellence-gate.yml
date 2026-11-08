@@ -1,0 +1,49 @@
+name: Academic evidence gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/academic-excellence-gate.yml'
+      - 'scripts/audit-academic-excellence.mjs'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/coverage-audit.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/classics-documents/manifest.json'
+      - 'CITATION.cff'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/academic-excellence-gate.yml'
+      - 'scripts/audit-academic-excellence.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Descargar el repositorio sin cambiar documentos
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis
+        run: node --check scripts/audit-academic-excellence.mjs
+      - name: Comprobar corpus, procedencia y notas académicas
+        run: node scripts/audit-academic-excellence.mjs
+      - name: Conservar informe como evidencia de la ejecución
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: academic-evidence-gate
+          path: reports/academic-evidence-gate.json
+          if-no-files-found: warn
+          retention-days: 30
