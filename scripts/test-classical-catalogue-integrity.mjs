@@ -49,7 +49,7 @@ assert(html.includes('assets/bibliotheca-uploaded-docx.js'),'Uploaded-document b
 assert(html.indexOf('assets/bibliotheca-uploaded-docx.js')<html.indexOf('assets/bibliotheca-simple.js'),
  'Bridge must be initialized before the existing search handler');
 assert(engine.includes('ClassicsUploadedDocuments'),'Existing Bibliotheca search must consult the uploaded documents');
-assert(docxBridge.includes('DOCX')&&docxBridge.includes('unverified'),
+assert(docxBridge.includes('DOCX')&&docxBridge.includes('su alineamiento no están verificados')&&docxBridge.includes('not certified'),
  'Uploaded-document results must disclose unverified language or alignment');
 const correspondence=docxBridge.split('const CORRESPONDENCE=')[1]?.split(';')[0];
 assert(correspondence,'Document-to-catalogue correspondence missing');
