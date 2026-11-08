@@ -1175,37 +1175,8 @@ function display(rows,query,phase){
    list.append(cardFor(r))
   }
  }
- // Consulta que nombra un códice con visor local (p. ej. «Codex H», «Harley 2767»):
- // abrir una vez el mismo lector de folios, con sus comandos; se cierra con × o Esc.
- if(window.VitruviaLocalManuscripts&&S.autoCodexOpened!==query){
-  const normText=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-  // Consulta codicológica: «Harley MS 2767, f. 12r», «H f. 45v», «Codex H ff. 12r–14v», «London, BL, Harl. 2767, fol. 3r».
-  const CQ=window.CodexQuery,cq=CQ?CQ.parse(query):null,hasFolio=!!(cq&&(cq.range||cq.folios.length||cq.image));
-  const folioParam=!hasFolio?"":cq.range?"ff. "+cq.range.from+"-"+cq.range.to:cq.image?"imagen "+cq.image:cq.folios.length===1?CQ.display(cq.folios[0]):"f. "+parseInt(cq.folios[0]);
-  const withFolio=(url)=>{if(!folioParam||!url)return url;try{const u=new URL(url,location.href);u.searchParams.delete("image");u.searchParams.set("folio",folioParam);return u.pathname.split("/").pop()+u.search}catch(e){return url}};
-  const residual=hasFolio?cq.rest:query;
-  const qTokens=normText(residual).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
-  const exactTokens=r=>{const hay=normText([r.title,r.codexShelfmark,...(r.aliases||[])].join(" ")).split(/[^\p{L}\p{N}]+/u);
-   return qTokens.length&&qTokens.every(t=>hay.some(h=>h===t||t.length>2&&h.startsWith(t)))};
-  let codex=deduped.find(r=>r.type==="manuscript"&&(r.localViewer||hasFolio&&r.codexViewer)&&exactTokens(r));
-  if(!codex&&hasFolio&&CQ&&residual){
-   // Signatura académica con abreviaturas institucionales (BL, HAB, BAV, Harl., Gud. lat.).
-   let best=null,bestScore=0;
-   for(const r of deduped.filter(x=>x.type==="manuscript"&&(x.localViewer||x.codexViewer))){
-    const sc=CQ.shelfmarkScore(residual,[r.title,r.codexShelfmark,r.codexRepository,...(r.aliases||[])].join(" "));if(sc>bestScore){best=r;bestScore=sc}}
-   if(best&&bestScore>=.75)codex=best;
-   if(!codex){ // el testimonio puede no figurar entre los resultados mostrados: se consulta el fichero de testimonios
-    for(const ms of S.witnesses||[]){if(!ms.localViewer&&!ms.manifest)continue;
-     const hay=[ms.title,ms.shelfmark,ms.library,ms.siglum,...(ms.aliases||[])].join(" ");
-     const sc=Math.max(CQ.shelfmarkScore(residual,hay),exactTokens({title:hay})?1:0);
-     if(sc>bestScore){bestScore=sc;best={title:ms.title+" · "+ms.shelfmark,localViewer:ms.localViewer||null,
-      codexViewer:ms.localViewer||"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record}).toString()}}}
-    if(best&&bestScore>=.75)codex=best;
-   }
-  }
-  if(codex){S.autoCodexOpened=query;const url=withFolio(codex.localViewer||codex.codexViewer);
-   setTimeout(()=>window.VitruviaLocalManuscripts.open(url,codex.title+(folioParam?" · "+folioParam:"")),350)}
- }
+ // Never open a codex, PDF or classical-text viewer as a side effect of search.
+ // Viewer links and explicit user-click actions remain available in result cards.
  if(deduped.length>S.visibleResultCount){
   const left=deduped.length-S.visibleResultCount;
   const label=S.lang==="en"?"View "+Math.min(left,50)+" more results":S.lang==="fr"?"Voir "+Math.min(left,50)+" résultats supplémentaires":"Ver "+Math.min(left,50)+" resultados más";
