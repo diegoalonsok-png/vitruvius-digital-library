@@ -1,6 +1,7 @@
 // Reproducible catalogue integrity checks; run: node scripts/test-classical-catalogue-integrity.mjs
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const works=JSON.parse(read('data/bibliotheca-graeca-latina-I-bce-I-ce.json')).works;
 const witnesses=JSON.parse(read('data/bibliotheca-testimonia-verified.json'));
@@ -38,6 +39,43 @@ assert(html.includes('id="language-toggle"')&&!html.includes('data-lang='),
  'Bibliotheca must expose one language switch, not three separate selectors');
 assert(engine.includes('es:"en",en:"fr",fr:"es"'),
  'The single language switch must cycle only ES EN FR');
+/* Uploaded bilingual classical DOCX are independently searchable, but never
+ * counted as collated original-language editions or aligned manuscripts. */
+const docxBridge=read('assets/bibliotheca-uploaded-docx.js');
+const docxManifest=JSON.parse(read('data/classics-documents/manifest.json'));
+assert.equal(docxManifest.schema,'vitruvia-classical-document-index-v1');
+assert.equal(docxManifest.count,30,'Every already uploaded classical DOCX must remain discoverable');
+assert(html.includes('assets/bibliotheca-uploaded-docx.js'),'Uploaded-document bridge is not mounted');
+assert(html.indexOf('assets/bibliotheca-uploaded-docx.js')<html.indexOf('assets/bibliotheca-simple.js'),
+ 'Bridge must be initialized before the existing search handler');
+assert(engine.includes('ClassicsUploadedDocuments'),'Existing Bibliotheca search must consult the uploaded documents');
+assert(docxBridge.includes('DOCX')&&docxBridge.includes('unverified'),
+ 'Uploaded-document results must disclose unverified language or alignment');
+const correspondence=docxBridge.match(/const CORRESPONDENCE=(\\{[\\s\\S]*?\\});/);
+assert(correspondence,'Document-to-catalogue correspondence missing');
+const documentMap=JSON.parse(correspondence[1]);
+let uploadedParagraphs=0;
+for(const rec of docxManifest.records){
+ assert(Object.hasOwn(documentMap,rec.id),'Unmapped existing DOCX: '+rec.id);
+ assert(documentMap[rec.id]===null||ids.has(documentMap[rec.id]),
+  'DOCX assigned to a non-existent classical work: '+rec.id);
+ assert(existsSync(new URL('../'+rec.source,import.meta.url)),
+  'Original DOCX not found: '+rec.source);
+ assert(existsSync(new URL('../'+rec.index,import.meta.url)),
+  'Extracted paragraph index not found: '+rec.index);
+ if(rec.pdf)assert(existsSync(new URL('../'+rec.pdf,import.meta.url)),'PDF missing: '+rec.pdf);
+ const original=readFileSync(new URL('../'+rec.source,import.meta.url));
+ assert.equal(createHash('sha256').update(original).digest('hex'),rec.sha256,
+  'DOCX has changed since extraction: '+rec.id);
+ const extracted=JSON.parse(read(rec.index));
+ assert.equal(extracted.sha256,rec.sha256,'DOCX extraction hash mismatch: '+rec.id);
+ assert.equal(extracted.source,rec.source,'DOCX extraction source mismatch: '+rec.id);
+ assert.equal(extracted.paragraphs.length,rec.paragraphs,
+  'DOCX paragraph count mismatch: '+rec.id);
+ assert.equal(extracted.language,'unverified','Do not assert unverified original/translation language: '+rec.id);
+ uploadedParagraphs+=rec.paragraphs;
+}
+assert.equal(uploadedParagraphs,25794,'Extracted classical paragraphs changed unexpectedly');
 const separateReader=read('assets/bibliotheca-graeca-latina.js');
 assert(separateReader.includes('function witnessYear(w)'),
  'Documented manuscript witness date logic should remain preserved in its archival module');
