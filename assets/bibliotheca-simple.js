@@ -225,7 +225,7 @@ function printPassage(record,workInfo,passageNode){
  const source=provenance(workInfo,record).citation;
  const url=typeof record.link==="string"?new URL(record.link,location.href).href:location.href;
  const html='<!doctype html><html lang="'+escapeHtml(record.language==="grc"?"el":record.language||"es")+'"><head><meta charset="utf-8"><title>'+
-  escapeHtml(title+' · '+locus)+'</title><style>@page{size:A4;margin:20mm}body{font:12pt/1.65 Georgia,serif;color:#171717}header{padding-bottom:10mm;border-bottom:1px solid #aaa;margin-bottom:10mm}h1{font-size:20pt;margin:0 0 3mm}small{font:10pt/1.6 Arial,sans-serif;color:#444}main{text-align:justify;text-align-last:left;white-space:normal;overflow-wrap:break-word}mark{color:inherit;background:transparent;text-decoration:underline;text-decoration-color:#d0a800;text-decoration-thickness:2px}footer{font:9pt/1.5 Arial,sans-serif;border-top:1px solid #bbb;padding-top:5mm;margin-top:13mm;overflow-wrap:anywhere}</style></head><body><header><h1>'+
+  escapeHtml(title+' · '+locus)+'</title><style>@page{size:A4;margin:20mm}body{font:12pt/1.65 Georgia,serif;color:#171717}header{padding-bottom:10mm;border-bottom:1px solid #aaa;margin-bottom:10mm}h1{font-size:20pt;margin:0 0 3mm}small{font:10pt/1.6 Arial,sans-serif;color:#444}main{text-align:justify;text-align-last:left;white-space:normal;overflow-wrap:break-word}mark{color:#111;background:#ffe34f;text-decoration:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}footer{font:9pt/1.5 Arial,sans-serif;border-top:1px solid #bbb;padding-top:5mm;margin-top:13mm;overflow-wrap:anywhere}</style></head><body><header><h1>'+
   escapeHtml(title)+'</h1><small>'+escapeHtml([credit,locus,languages[record.language]||record.language].filter(Boolean).join(" · "))+
   '</small></header><main>'+passageNode.innerHTML+'</main><footer>'+escapeHtml(source)+'<p>'+escapeHtml(url)+'</p></footer></body></html>';
  page.document.open();page.document.write(html);page.document.close();
@@ -310,6 +310,30 @@ list.addEventListener("keydown",event=>{
  if((event.key==="Enter"||event.key===" ")&&event.target.matches("mark.lexical-hit")){event.preventDefault();openDictionary(event.target.textContent,event.target.closest("[lang]")?.getAttribute("lang")||"")}
 });
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!dictionaryPanel.hidden)dictionaryPanel.hidden=true});
+
+/* Acciones de la biblioteca: exportan únicamente las coincidencias visibles. */
+const printAll=$("bibliotheca-print"),mailAll=$("bibliotheca-mail"),whatsappAll=$("bibliotheca-whatsapp");
+function bibliographyExport(){
+ const selection=window.getSelection()?.toString().trim();
+ const text=selection||Array.from(list.querySelectorAll(".hit")).map(hit=>hit.innerText).join("\n\n");
+ return text||"No hay resultados para exportar.";
+}
+function bibliographyShare(){
+ const q=input.value.trim(),text=bibliographyExport().slice(0,12000);
+ const payload="Bibliotheca Graeca et Latina · "+q+"\n"+text+"\n"+location.href;
+ mailAll.href="mailto:?subject="+encodeURIComponent("Bibliotheca · "+q)+"&body="+encodeURIComponent(payload);
+ whatsappAll.href="https://wa.me/?text="+encodeURIComponent(payload);
+}
+printAll?.addEventListener("click",()=>{
+ const text=bibliographyExport();
+ if(text==="No hay resultados para exportar."){window.alert("Buscá primero una palabra o frase.");return}
+ const pop=window.open("","_blank");
+ if(!pop){window.alert("El navegador bloqueó la ventana de impresión.");return}
+ pop.document.write('<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Bibliotheca · Resultados</title><style>@page{size:A4;margin:18mm}body{font:12pt/1.6 Georgia,serif;color:#151515}h1{font:22pt Georgia,serif}main{white-space:pre-wrap;overflow-wrap:anywhere}small{font:10pt Arial,sans-serif}</style></head><body><h1>Bibliotheca Graeca et Latina</h1><small>Consulta: '+escapeHtml(input.value.trim())+' · '+escapeHtml(location.href)+'</small><main>'+escapeHtml(text)+'</main></body></html>');
+ pop.document.close();pop.focus();pop.print();
+});
+mailAll?.addEventListener("click",bibliographyShare);
+whatsappAll?.addEventListener("click",bibliographyShare);
 
 function render(rows,q,details){
  previous=rows;current=q;diag=details||{};
