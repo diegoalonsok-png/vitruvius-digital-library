@@ -1,0 +1,44 @@
+name: Auditoría filológica y ecdótica
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/audit-scholarly-integrity.mjs'
+      - 'data/structured/recensio-es.json'
+      - 'data/structured/recensio-fr.json'
+      - 'data/structured/theory-en.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+      - 'docs/protocolo-filologico-ecdotico.md'
+      - '.github/workflows/academic-philology-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-scholarly-integrity.mjs'
+      - 'data/structured/recensio-es.json'
+      - 'data/structured/recensio-fr.json'
+      - 'data/structured/theory-en.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Validar sintaxis del control académico
+        run: node --check scripts/audit-scholarly-integrity.mjs
+      - name: Verificar loci, fuentes y estados de evidencia
+        run: node scripts/audit-scholarly-integrity.mjs
+      - name: Conservar informe reproducible
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scholarly-integrity
+          path: reports/scholarly-integrity.json
+          if-no-files-found: warn
