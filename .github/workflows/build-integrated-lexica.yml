@@ -1,0 +1,70 @@
+name: Construir diccionarios integrados de Lexicon
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-integrated-lexica.yml'
+      - 'scripts/build-integrated-lexica.py'
+      - 'data/classics-lexicon/**'
+      - 'data/latin-lexicon.json'
+      - 'data/lexicon/etymologicum.json'
+      - 'data/lexicon/hebrew-roots.json'
+permissions:
+  contents: write
+concurrency:
+  group: lexicon-integrated-lexica
+  cancel-in-progress: false
+jobs:
+  dictionaries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Crear y validar sin modificar fuentes filológicas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/build-integrated-lexica.py
+          python scripts/build-integrated-lexica.py
+          python - <<'PY'
+          import json, pathlib
+          base=pathlib.Path('data/lexicon')
+          for code in ('la','grc','he'):
+              path=base/f'dictionary-{code}.json'
+              d=json.loads(path.read_text(encoding='utf-8'))
+              assert d['schema']=='vitruvia-integrated-dictionary-v1'
+              assert d['language']==code and len(d['entries'])>=15
+              assert all(k and v.get('lemma') and v.get('source') for k,v in d['entries'].items())
+              assert path.stat().st_size<9_000_000,'El diccionario excede el presupuesto de descarga'
+              print(code, len(d['entries']), path.stat().st_size)
+          PY
+      - name: Publicar índices derivados con control de concurrencia
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/build-integrated-lexica.py
+            git add data/lexicon/dictionary-la.json data/lexicon/dictionary-grc.json data/lexicon/dictionary-he.json data/lexicon/dictionary-integrity.json
+            if git diff --cached --quiet; then
+              echo 'Los diccionarios ya están actualizados.'
+              exit 0
+            fi
+            git commit -m 'Actualizar diccionarios integrados documentados de Lexicon'
+            if git push origin HEAD:main; then
+              echo 'Diccionarios derivados publicados y versionados.'
+              exit 0
+            fi
+            echo "La rama main cambió; reconstruyendo diccionarios ($attempt/3)"
+          done
+          exit 1
