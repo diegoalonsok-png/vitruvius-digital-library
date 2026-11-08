@@ -70,6 +70,12 @@ jobs:
           for attempt in 1 2 3 4 5 6; do
             git fetch origin main
             git reset --hard origin/main
+            # Si Pages está casi lleno, no ejecutar ni siquiera reparaciones que
+            # puedan aumentar el peso. Salida correcta, sin commits ni correos de error.
+            if ! python -c 'from pathlib import Path; root=Path("."); size=sum(f.stat().st_size for f in root.rglob("*") if f.is_file() and ".git" not in f.parts); limit=950_000_000; print(f"Contenido actual: {size:,} bytes; límite preventivo: {limit:,} bytes"); raise SystemExit(1 if size >= limit else 0)'; then
+              echo "::warning::Indexación pausada por capacidad de GitHub Pages. No se han modificado originales, traducciones ni PDF."
+              exit 0
+            fi
             python scripts/repair-classics-mixed-tei.py
             # Completar hasta 4 lotes sobre el mismo árbol verificado. Cada lote
             # refresca el registro; sin avances salimos, sin fabricar registros.
