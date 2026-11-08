@@ -97,7 +97,7 @@ assert.equal(works.filter(w=>api.relevanceForWork(w,"Penélope Cruz")>=0).length
 assert.ok(bibliothecaHTML.includes('assets/bibliotheca-unified-search.js'),
  "The only visible search must query indexed text passages");
 const unified=sourceFile("assets/bibliotheca-unified-search.js");
-assert.ok(unified.includes("searchPassages([q],{allMatches:true})"),
+assert.ok(unified.includes("searchPassages([q],{allMatches:true,workId})")&&unified.includes("semanticVariants(q)"),
  "The new search must retrieve all attested loci, not just catalogue-title matches");
 const search=sourceFile("assets/vitruvia-search.js");
 assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
