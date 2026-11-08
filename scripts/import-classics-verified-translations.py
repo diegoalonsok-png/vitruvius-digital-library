@@ -179,6 +179,21 @@ CANDIDATES = [
          blob="8cdeca29747c66e9e9b18aff71ab21e5a7674612", translator="Edward P. Coleridge",
          year=1891, publisher="George Bell and Sons, London",
          mode="verse-lines", min_units=680, min_chars=45000),
+    dict(id="plato-timaeus", original="grc", repo="canonical-greekLit",
+         path="data/tlg0059/tlg031/tlg0059.tlg031.perseus-eng2.xml",
+         blob="125e21ce37e085963ad9130a0d893301097b5d3e", translator="Robert Gregg Bury", year=1929,
+         publisher="Harvard University Press / William Heinemann Ltd.",
+         mode="stephanus-sections", min_units=74, min_chars=65000),
+    dict(id="plato-phaedrus", original="grc", repo="canonical-greekLit",
+         path="data/tlg0059/tlg012/tlg0059.tlg012.perseus-eng2.xml",
+         blob="5ee72b32f700d41ef8b9f18b59813744f465d4e3", translator="Harold North Fowler", year=1914,
+         publisher="Harvard University Press / William Heinemann Ltd.",
+         mode="stephanus-sections", min_units=52, min_chars=45000),
+    dict(id="aristotle-nicomachean-ethics", original="grc", repo="canonical-greekLit",
+         path="data/tlg0086/tlg010/tlg0086.tlg010.perseus-eng2.xml",
+         blob="16b6cf05d7f5b7493e64d429f6cd6095d4854ec8", translator="Harris Rackham", year=1926,
+         publisher="William Heinemann Ltd. / G. P. Putnam's Sons",
+         mode="book-sections", min_units=110, min_chars=160000),
 ]
 
 
