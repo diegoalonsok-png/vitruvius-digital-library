@@ -94,6 +94,12 @@ async function run(){
    row.versions.push({e,p});
   }
  }
+ // Tras identificar el locus en latín, recuperar sus otras ediciones aunque la frase difiera.
+ for(const e of chosen){
+  for(const p of data.get('data/structured/'+e.id+'.json')?.passages||[]){
+   const row=grouped.get(locusKey(p.locus));if(row&&!row.versions.some(v=>v.e.id===e.id))row.versions.push({e,p});
+  }
+ }
  for(const [key,row] of grouped){
   const editionsForRow=new Set(row.versions.map(v=>v.e.id));
   row.notes=notes.filter(n=>editionsForRow.has(n.edition)&&n.mapping_status==='explicit_in_anchor'&&n.locus&&locusKey(n.locus)===key).map(n=>({...n,editionName:editions.find(e=>e.id===n.edition)?.name||n.edition}));
