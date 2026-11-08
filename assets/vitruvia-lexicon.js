@@ -627,7 +627,7 @@ function morphologyFrequency(D,term,lemmas){
  // For an unanalysed form, report the actual attested corpus token, not zero
  // merely because CLTK/AGDT has no morphological mapping for it.
  const literalFound=D.workFreq.has(searched);
- if(!per.length)per.push({w:term.v,forms:new Set()});
+ if(!per.length)per.push({w:term.v,forms:new Set(literalFound?[searched]:[])});
  if(term.type!=="lemma"&&literalFound){
   if(!per.some(p=>p.forms.has(searched)))per.push({w:term.v+" · forma literal",forms:new Set([searched])});
  }
