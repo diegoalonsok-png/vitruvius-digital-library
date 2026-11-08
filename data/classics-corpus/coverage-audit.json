@@ -6,15 +6,15 @@
   "counts": {
     "cataloguedWorks": 222,
     "catalogueStatuses": {
-      "lectura-local-completa": 27,
-      "repertoriado-busqueda-externa": 129,
+      "lectura-local-completa": 28,
+      "repertoriado-busqueda-externa": 128,
       "pendiente-de-incorporar": 44,
       "fuente-externa-identificada": 21,
       "lectura-local-parcial": 1
     },
-    "locallyReadableClaims": 28,
-    "indexedTextVersions": 240,
-    "indexedDistinctWorks": 176,
+    "locallyReadableClaims": 29,
+    "indexedTextVersions": 242,
+    "indexedDistinctWorks": 177,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -1874,16 +1874,22 @@
       "originalLanguage": "la",
       "genre": "Fábulas",
       "dating": "siglo I d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-completa",
+      "indexedTextLanguages": [
+        "en",
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/phraedrus-fabulae-en.json",
+        "data/classics-corpus/phraedrus-fabulae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Perseus TEI: 132 loci latinos de Müller (1876), 91 pasajes ingleses efectivos de Smart (1913); 10 omisiones explícitas; sin colación ni alineación automática."
     },
     {
       "id": "statius-thebais",

@@ -4,19 +4,19 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 176,
-    "originalsMissing": 46,
-    "worksWithHostedTranslation": 58,
-    "worksMissingTranslation": 164,
-    "textVersions": 240,
+    "originalsIndexed": 177,
+    "originalsMissing": 45,
+    "worksWithHostedTranslation": 59,
+    "worksMissingTranslation": 163,
+    "textVersions": 242,
     "states": {
-      "original_pendiente": 46,
+      "original_pendiente": 45,
       "original_sin_traduccion_local": 118,
-      "original_y_traduccion_local": 58
+      "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
-      "requiere_fuente_no_canonica_o_edicion_especifica": 14,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 13,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 13
     }
@@ -1557,11 +1557,14 @@
       "title": "Fabulae",
       "originalLanguage": "la",
       "dating": "siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
-      "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.phraedrus-fabulae"
       ],
