@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 114,
+    "locallyIndexedWorks": 135,
     "translatedWorksLocal": 41,
     "worksWithoutHostedTranslation": 181,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 40,
       "fr": 2
     },
-    "originalTextIndexed": 114,
-    "originalTextNotIndexed": 108
+    "originalTextIndexed": 135,
+    "originalTextNotIndexed": 87
   },
   "works": [
     {
@@ -2737,112 +2737,128 @@
       "author": "Cicerón",
       "title": "De finibus bonorum et malorum",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-tusculanae",
       "author": "Cicerón",
       "title": "Tusculanae disputationes",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-de-natura-deorum",
       "author": "Cicerón",
       "title": "De natura deorum",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-de-amicitia",
       "author": "Cicerón",
       "title": "Laelius de amicitia",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-de-senectute",
       "author": "Cicerón",
       "title": "Cato Maior de senectute",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-de-divinatione",
       "author": "Cicerón",
       "title": "De divinatione",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-brutus",
       "author": "Cicerón",
       "title": "Brutus",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "cicero-philippicae",
       "author": "Cicerón",
       "title": "Philippicae",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "seneca-de-brevitate",
@@ -2886,14 +2902,16 @@
       "author": "Séneca",
       "title": "De clementia",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "seneca-de-tranquillitate",
@@ -2914,112 +2932,128 @@
       "author": "Horacio",
       "title": "Epodi",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "horace-epistulae",
       "author": "Horacio",
       "title": "Epistulae",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid-tristia",
       "author": "Ovidio",
       "title": "Tristia",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid-heroides",
       "author": "Ovidio",
       "title": "Heroides",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid-remedia-amoris",
       "author": "Ovidio",
       "title": "Remedia amoris",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ovid-ex-ponto",
       "author": "Ovidio",
       "title": "Epistulae ex Ponto",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "tacitus-dialogus",
       "author": "Tácito (atribución tradicional)",
       "title": "Dialogus de oratoribus",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "apuleius-apologia",
       "author": "Apuleyo",
       "title": "Apologia",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "apuleius-de-deo-socratis",
@@ -3082,14 +3116,16 @@
       "author": "Boecio",
       "title": "De consolatione philosophiae",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "macrobius-saturnalia",
@@ -3171,14 +3207,16 @@
       "author": "Arato de Solos",
       "title": "Φαινόμενα",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "ennius-annales",
@@ -3227,14 +3265,16 @@
       "author": "Eneas el Táctico",
       "title": "Πολιορκητικά",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "procopius-aedificiis",
@@ -3299,14 +3339,16 @@
       "author": "Euclides",
       "title": "Στοιχεῖα · Elementa",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición (página enfrentada).",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "euclid-optica",

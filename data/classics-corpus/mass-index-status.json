@@ -1,139 +1,51 @@
 {
   "updated": "2026-11-08",
-  "newWorks": 16,
-  "newTextVersions": 16,
-  "indexedDistinctWorks": 114,
-  "registeredTextVersions": 160,
-  "missingOriginals": 108,
+  "newWorks": 5,
+  "newTextVersions": 5,
+  "indexedDistinctWorks": 135,
+  "registeredTextVersions": 182,
+  "missingOriginals": 87,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "plato-gorgias",
-      "lang": "grc",
-      "path": "data/classics-corpus/plato-gorgias-grc.json",
-      "passages": 98,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg023/tlg0059.tlg023.perseus-grc2.xml",
-      "sha256": "c0d1fc4fd562d2ed3c3378a04c1965c4883b28d50a745320f9ea91be9b601f9f"
-    },
-    {
-      "workId": "plato-timaeus",
-      "lang": "grc",
-      "path": "data/classics-corpus/plato-timaeus-grc.json",
-      "passages": 82,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg031/tlg0059.tlg031.perseus-grc2.xml",
-      "sha256": "f3362749372e5d3c14fa9663b9718f9264735a5e7671935bd558765acd1d870e"
-    },
-    {
-      "workId": "plato-meno",
-      "lang": "grc",
-      "path": "data/classics-corpus/plato-meno-grc.json",
-      "passages": 39,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg024/tlg0059.tlg024.perseus-grc2.xml",
-      "sha256": "789e95e17b74af5d740a77edab9a888f94a606e191d2b9d7d7e8e5cb2bf5f585"
-    },
-    {
-      "workId": "plato-phaedrus",
-      "lang": "grc",
-      "path": "data/classics-corpus/plato-phaedrus-grc.json",
-      "passages": 58,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg012/tlg0059.tlg012.perseus-grc2.xml",
-      "sha256": "15eb5b0c09bc32f39c1aca7e60e6d80a98c12c6b9a59f68e28b2f3061a476756"
-    },
-    {
-      "workId": "plato-laws",
-      "lang": "grc",
-      "path": "data/classics-corpus/plato-laws-grc.json",
-      "passages": 366,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg034/tlg0059.tlg034.perseus-grc2.xml",
-      "sha256": "d04a58a42557c3f738414981fecb73e8e3995da43c41fdfdaa5880c7364dfeaa"
-    },
-    {
-      "workId": "plato-crito",
-      "lang": "grc",
-      "path": "data/classics-corpus/plato-crito-grc.json",
-      "passages": 19,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg003/tlg0059.tlg003.perseus-grc2.xml",
-      "sha256": "c75911f867c2ffcc9ebfffeaacdbcc0c558256dd135e0209ac17c06cd7fc97f9"
-    },
-    {
-      "workId": "aristotle-nicomachean-ethics",
-      "lang": "grc",
-      "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
-      "passages": 225,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg010/tlg0086.tlg010.perseus-grc2.xml",
-      "sha256": "a203a8d2e793b06884b135c23a5726ce36fc4796a6651589becb7cdf86ee42ae"
-    },
-    {
-      "workId": "aristotle-metaphysics",
-      "lang": "grc",
-      "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
-      "passages": 300,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg025/tlg0086.tlg025.perseus-grc2.xml",
-      "sha256": "d643d407fae3e39884c31a1c38d5a386fa8ed7ceeb3e14f98231ea2c4f9c8050"
-    },
-    {
-      "workId": "aristotle-rhetoric",
-      "lang": "grc",
-      "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
-      "passages": 883,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0086/tlg038/tlg0086.tlg038.perseus-grc2.xml",
-      "sha256": "029229b79ad748470b3e857ce5756c38adc931e75972a8836a27d7aed75863c3"
-    },
-    {
-      "workId": "xenophon-memorabilia",
-      "lang": "grc",
-      "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
-      "passages": 608,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg002/tlg0032.tlg002.perseus-grc2.xml",
-      "sha256": "c13f629736b60929fcb0910065edf23221b2c030ffd28eea07721bf67ae21629"
-    },
-    {
-      "workId": "xenophon-hellenica",
-      "lang": "grc",
-      "path": "data/classics-corpus/xenophon-hellenica-grc.json",
-      "passages": 1146,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg001/tlg0032.tlg001.perseus-grc2.xml",
-      "sha256": "690fc6545396f37b7419c7da09b0ec0ae70f319dce0d8aa8b9dce39ca95f4a9c"
-    },
-    {
-      "workId": "demosthenes-de-corona",
-      "lang": "grc",
-      "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
-      "passages": 324,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg018/tlg0014.tlg018.perseus-grc2.xml",
-      "sha256": "e90d85ec007e5f7d4078736b27510a909b2ebe4fed0ab92ceecbe966adb49109"
-    },
-    {
-      "workId": "pindar-olympian",
-      "lang": "grc",
-      "path": "data/classics-corpus/pindar-olympian-grc.json",
-      "passages": 128,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0033/tlg001/tlg0033.tlg001.perseus-grc2.xml",
-      "sha256": "e05e1672dfdc19a9b3c6feb018fcb971bd6e65b27e0efc1c7798ac563f0e0b07"
-    },
-    {
-      "workId": "pindar-pythian",
-      "lang": "grc",
-      "path": "data/classics-corpus/pindar-pythian-grc.json",
-      "passages": 153,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0033/tlg002/tlg0033.tlg002.perseus-grc2.xml",
-      "sha256": "b1fd63e8775a39eb4185db5f3e02faaa1b8b85d850b050669354d6c8ca8fc30c"
-    },
-    {
-      "workId": "diogenes-laertius-vitae",
-      "lang": "grc",
-      "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
-      "passages": 1211,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0004/tlg001/tlg0004.tlg001.perseus-grc2.xml",
-      "sha256": "0e2d2c8f873c11d6121331d3d3dcee7ca680424912a2aabcd963ed4af7ff0f1d"
-    },
-    {
-      "workId": "cicero-pro-archia",
+      "workId": "apuleius-apologia",
       "lang": "la",
-      "path": "data/classics-corpus/cicero-pro-archia-la.json",
-      "passages": 32,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi0474/phi016/phi0474.phi016.perseus-lat2.xml",
-      "sha256": "c8228e4af1de60d366f11be5ee8739e45358ab1bd6bea9e4fc02d62043050e1a"
+      "path": "data/classics-corpus/apuleius-apologia-la.json",
+      "passages": 103,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1212/phi001/phi1212.phi001.perseus-lat1.xml",
+      "sha256": "c870b4f14dc190a60cf67bc87a9ee2f5672ddc7521a7265da56b5704e7844375"
+    },
+    {
+      "workId": "boethius-consolatio",
+      "lang": "la",
+      "path": "data/classics-corpus/boethius-consolatio-la.json",
+      "passages": 98,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0058/stoa001/stoa0058.stoa001.perseus-lat2.xml",
+      "sha256": "2e43b9833fbf0a467d0f8f1d7958830512c040d830f7fba549db3a551f91399b"
+    },
+    {
+      "workId": "aratus-phaenomena",
+      "lang": "grc",
+      "path": "data/classics-corpus/aratus-phaenomena-grc.json",
+      "passages": 144,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0653/tlg001/tlg0653.tlg001.perseus-grc2.xml",
+      "sha256": "b4a08a5af96a8715da697ad30dbe535fbfe7bce37f8d2ee5dd584a95f2630d2d"
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "lang": "grc",
+      "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+      "passages": 386,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0058/tlg001/tlg0058.tlg001.perseus-grc2.xml",
+      "sha256": "94fdfc671058ab075e4257ca923c71e09badc06dea175baca08a0ef1e6d7dfc8"
+    },
+    {
+      "workId": "euclid-elementa",
+      "lang": "grc",
+      "path": "data/classics-corpus/euclid-elementa-grc.json",
+      "passages": 829,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg1799/tlg001/tlg1799.tlg001.perseus-grc2.xml",
+      "sha256": "d7ed22ae72e277bfd39c53f0e35ac046307b4133d179039001074ccf6ce06613"
     }
   ],
   "errors": [

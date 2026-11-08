@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 161,
-  "works": 114,
+  "count": 182,
+  "works": 135,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -1618,6 +1618,216 @@
       "path": "data/classics-corpus/sophocles-philoctetes-en.json",
       "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=en",
       "sourceDescription": "Traducción histórica de Richard Jebb (1898); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-finibus-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-tusculanae-la.json",
+      "reader": "classics-text-reader.html?work=cicero-tusculanae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-natura-deorum-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-natura-deorum&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-amicitia-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-senectute-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-de-divinatione-la.json",
+      "reader": "classics-text-reader.html?work=cicero-de-divinatione&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-brutus-la.json",
+      "reader": "classics-text-reader.html?work=cicero-brutus&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-philippicae-la.json",
+      "reader": "classics-text-reader.html?work=cicero-philippicae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-clementia-la.json",
+      "reader": "classics-text-reader.html?work=seneca-de-clementia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-epodi-la.json",
+      "reader": "classics-text-reader.html?work=horace-epodi&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/horace-epistulae-la.json",
+      "reader": "classics-text-reader.html?work=horace-epistulae&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-tristia-la.json",
+      "reader": "classics-text-reader.html?work=ovid-tristia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-heroides-la.json",
+      "reader": "classics-text-reader.html?work=ovid-heroides&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-remedia-amoris-la.json",
+      "reader": "classics-text-reader.html?work=ovid-remedia-amoris&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/ovid-ex-ponto-la.json",
+      "reader": "classics-text-reader.html?work=ovid-ex-ponto&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/tacitus-dialogus-la.json",
+      "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/apuleius-apologia-la.json",
+      "reader": "classics-text-reader.html?work=apuleius-apologia&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/boethius-consolatio-la.json",
+      "reader": "classics-text-reader.html?work=boethius-consolatio&lang=la",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aratus-phaenomena-grc.json",
+      "reader": "classics-text-reader.html?work=aratus-phaenomena&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+      "reader": "classics-text-reader.html?work=aeneas-tacticus-poliorketika&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euclid-elementa-grc.json",
+      "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

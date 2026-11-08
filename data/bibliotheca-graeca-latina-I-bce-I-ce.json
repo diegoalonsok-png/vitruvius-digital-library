@@ -7701,6 +7701,9 @@
       "bibliography": {
         "editionCitation": "Cicero. De finibus bonorum et malorum. Translated by H. Rackham. 2nd ed. Loeb Classical Library 40. London: William Heinemann; Cambridge, MA: Harvard University Press, 1931.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-de-finibus-la.json"
       }
     },
     {
@@ -7747,6 +7750,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-tusculanae-la.json"
       }
     },
     {
@@ -7793,6 +7799,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-de-natura-deorum-la.json"
       }
     },
     {
@@ -7843,6 +7852,9 @@
       "bibliography": {
         "editionCitation": "Cicero. De senectute; De amicitia; De divinatione. Translated by William Armistead Falconer. Loeb Classical Library 154. London: William Heinemann, 1923.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-de-amicitia-la.json"
       }
     },
     {
@@ -7893,6 +7905,9 @@
       "bibliography": {
         "editionCitation": "Cicero. De senectute; De amicitia; De divinatione. Translated by William Armistead Falconer. Loeb Classical Library 154. London: William Heinemann, 1923.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-de-senectute-la.json"
       }
     },
     {
@@ -7943,6 +7958,9 @@
       "bibliography": {
         "editionCitation": "Cicero. De senectute; De amicitia; De divinatione. Translated by William Armistead Falconer. Loeb Classical Library 154. London: William Heinemann, 1923.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-de-divinatione-la.json"
       }
     },
     {
@@ -7989,6 +8007,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-brutus-la.json"
       }
     },
     {
@@ -8035,6 +8056,9 @@
         ],
         "edition": "recensio-es",
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/cicero-philippicae-la.json"
       }
     },
     {
@@ -8216,7 +8240,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/seneca-de-clementia-la.json"
+      }
     },
     {
       "id": "seneca-de-tranquillitate",
@@ -8294,7 +8321,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/horace-epodi-la.json"
+      }
     },
     {
       "id": "horace-epistulae",
@@ -8333,7 +8363,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/horace-epistulae-la.json"
+      }
     },
     {
       "id": "ovid-tristia",
@@ -8372,7 +8405,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/ovid-tristia-la.json"
+      }
     },
     {
       "id": "ovid-heroides",
@@ -8411,7 +8447,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/ovid-heroides-la.json"
+      }
     },
     {
       "id": "ovid-remedia-amoris",
@@ -8450,7 +8489,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/ovid-remedia-amoris-la.json"
+      }
     },
     {
       "id": "ovid-ex-ponto",
@@ -8489,7 +8531,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/ovid-ex-ponto-la.json"
+      }
     },
     {
       "id": "tacitus-dialogus",
@@ -8528,7 +8573,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/tacitus-dialogus-la.json"
+      }
     },
     {
       "id": "apuleius-apologia",
@@ -8567,7 +8615,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/apuleius-apologia-la.json"
+      }
     },
     {
       "id": "apuleius-de-deo-socratis",
@@ -8762,7 +8813,10 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "la": "data/classics-corpus/boethius-consolatio-la.json"
+      }
     },
     {
       "id": "macrobius-saturnalia",
@@ -9057,6 +9111,9 @@
       "bibliography": {
         "editionCitation": "Callimachus and Lycophron, translated by A. W. Mair; Aratus, translated by G. R. Mair. Loeb Classical Library 129. London: William Heinemann; New York: G. P. Putnam's Sons, 1921.",
         "method": "Edición del texto enlazado o alojado en esta ficha (dominio público). No sustituye la edición crítica más reciente, que debe consultarse para citar variantes."
+      },
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aratus-phaenomena-grc.json"
       }
     },
     {
@@ -9225,7 +9282,10 @@
         "gallica": "https://gallica.bnf.fr/Search?q=Eneas%20el%20T%C3%A1ctico%20Poliorcetica"
       },
       "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "localReader": null,
+      "corpusFiles": {
+        "grc": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+      }
     },
     {
       "id": "procopius-aedificiis",
@@ -9432,7 +9492,10 @@
       },
       "publicStatus": "fuente-externa-identificada",
       "localReader": null,
-      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos"
+      "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos",
+      "corpusFiles": {
+        "grc": "data/classics-corpus/euclid-elementa-grc.json"
+      }
     },
     {
       "id": "euclid-optica",

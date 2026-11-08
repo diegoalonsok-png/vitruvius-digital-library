@@ -4,7 +4,7 @@
   "snapshot": "2026-11-08",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 108,
+  "missingOriginals": 87,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -1967,89 +1967,97 @@
     {
       "id": "cicero-de-finibus",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-tusculanae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-de-natura-deorum",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-de-amicitia",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-de-senectute",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-de-divinatione",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-brutus",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "cicero-philippicae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -2077,12 +2085,13 @@
     {
       "id": "seneca-de-clementia",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -2099,89 +2108,97 @@
     {
       "id": "horace-epodi",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "horace-epistulae",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "ovid-tristia",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "ovid-heroides",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "ovid-remedia-amoris",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "ovid-ex-ponto",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "tacitus-dialogus",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
       "id": "apuleius-apologia",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -2231,12 +2248,13 @@
     {
       "id": "boethius-consolatio",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
@@ -2298,12 +2316,13 @@
     {
       "id": "aratus-phaenomena",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -2342,12 +2361,13 @@
     {
       "id": "aeneas-tacticus-poliorketika",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {
@@ -2398,12 +2418,13 @@
     {
       "id": "euclid-elementa",
       "original": "grc",
-      "indexed": [],
+      "indexed": [
+        "grc"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "grc"
+        "fr"
       ]
     },
     {

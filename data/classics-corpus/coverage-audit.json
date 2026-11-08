@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 161,
-    "indexedDistinctWorks": 114,
+    "indexedTextVersions": 182,
+    "indexedDistinctWorks": 135,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -3692,11 +3692,15 @@
       "genre": "Filosofía",
       "dating": "45 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-de-finibus-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3710,11 +3714,15 @@
       "genre": "Filosofía",
       "dating": "45 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-tusculanae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3728,11 +3736,15 @@
       "genre": "Filosofía religiosa",
       "dating": "45 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-de-natura-deorum-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3746,11 +3758,15 @@
       "genre": "Filosofía moral",
       "dating": "44 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-de-amicitia-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3764,11 +3780,15 @@
       "genre": "Filosofía moral",
       "dating": "44 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-de-senectute-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3782,11 +3802,15 @@
       "genre": "Filosofía religiosa",
       "dating": "44 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-de-divinatione-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3800,11 +3824,15 @@
       "genre": "Retórica",
       "dating": "46 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-brutus-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3818,11 +3846,15 @@
       "genre": "Oratoria",
       "dating": "44–43 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/cicero-philippicae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3882,11 +3914,15 @@
       "genre": "Filosofía estoica",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/seneca-de-clementia-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3918,11 +3954,15 @@
       "genre": "Poesía",
       "dating": "c. 30 a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/horace-epodi-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3936,11 +3976,15 @@
       "genre": "Poesía",
       "dating": "siglo I a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/horace-epistulae-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3954,11 +3998,15 @@
       "genre": "Poesía",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ovid-tristia-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3972,11 +4020,15 @@
       "genre": "Poesía",
       "dating": "siglo I a. C.–I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ovid-heroides-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -3990,11 +4042,15 @@
       "genre": "Poesía didáctica",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ovid-remedia-amoris-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -4008,11 +4064,15 @@
       "genre": "Epistolografía",
       "dating": "siglo I d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/ovid-ex-ponto-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -4026,11 +4086,15 @@
       "genre": "Retórica",
       "dating": "siglo I–II d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/tacitus-dialogus-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -4044,11 +4108,15 @@
       "genre": "Oratoria",
       "dating": "siglo II d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/apuleius-apologia-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -4134,11 +4202,15 @@
       "genre": "Filosofía",
       "dating": "c. 524 d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/boethius-consolatio-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -4248,11 +4320,15 @@
       "genre": "Poesía didáctica",
       "dating": "siglo III a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aratus-phaenomena-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
@@ -4320,11 +4396,15 @@
       "genre": "Ingeniería y arte militar",
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
@@ -4414,11 +4494,15 @@
       "genre": "Matemáticas y mecánica",
       "dating": "c. 300 a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/euclid-elementa-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
       "manuscriptRecords": [
         {
