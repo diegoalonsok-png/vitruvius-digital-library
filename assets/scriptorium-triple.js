@@ -155,6 +155,8 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   get data(){return data},
   get index(){return index},
   editionId(){return edition.value},
+  selectEdition(id){if(!editions[id])return;edition.value=id;load()},
+  focusReader(){panel.scrollIntoView({behavior:"smooth",block:"start"})},
   seek(i){index=i;show()},
   seekLocus(locus){if(!data||data.ed.format!=="structured")return false;const i=data.pages.findIndex(p=>p.locus===locus);if(i<0)return false;index=i;show();return true}
  };
@@ -224,6 +226,15 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  });
  states.push(state);load();
 }
+/* Vincula selección superior de PDF con los visores OCR por página. */
+const mainSource=document.getElementById("source");
+if(mainSource)mainSource.addEventListener("change",()=>{
+ const key={"pdf:krohn":"krohn","pdf:rose-1899":"rose"}[mainSource.value];
+ if(!key)return;
+ const slot=key==="krohn"?0:2;
+ states[slot]?.selectEdition(key);
+ states[slot]?.focusReader();
+});
 window.ScriptTripleCompare={
  jumpToLocus(locus){
   const matches=states.filter(st=>st.data?.ed.format==="structured");
