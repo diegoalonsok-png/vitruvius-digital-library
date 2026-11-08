@@ -1044,7 +1044,7 @@ function initLanguageButton(){
  }));
  document.addEventListener("pointerdown",event=>{if(!button.contains(event.target)&&!menu.contains(event.target))close()});
  document.addEventListener("keydown",event=>{if(event.key==="Escape")close()});
- selector.addEventListener("change",sync);sync();
+ selector.addEventListener("change",sync);document.addEventListener("bibliotheca:language-changed",sync);sync();
 }
 initLanguageButton();
 
