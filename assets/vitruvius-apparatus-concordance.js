@@ -170,6 +170,47 @@ function lazyList(root,items,renderer){
   button.hidden=count>=items.length;if(!button.hidden)button.textContent="Mostrar más ("+count+" de "+items.length+")";};
  button.addEventListener("click",more);root.append(body,button);more();
 }
+/* Búsqueda exhaustiva opcional sobre todas las páginas de las tres ediciones.
+   Las páginas no equivalen a loci; distinguir el texto impreso del aparato. */
+function entirePdfConcordance(root,query,selected){
+ const section=element("section","critical-integrated-section");
+ const title=element("h3","","Concordancia en los PDF completos de las ediciones");
+ const description=element("p","critical-integrated-meta","Búsqueda literal independiente sobre TODAS las páginas con texto extraíble, incluidas introducciones, comentarios extensos y apéndices. El resultado se refiere a páginas editoriales, no a pasajes de los códices.");
+ const button=element("button","button outline","Buscar también en cada página completa de los libros");
+ button.type="button";
+ const status=element("p","critical-integrated-meta");
+ const destination=element("div","critical-integrated-list");
+ section.append(title,description,button,status,destination);root.append(section);
+ button.addEventListener("click",async()=>{
+  button.disabled=true;status.textContent="Leyendo todas las páginas de las ediciones seleccionadas…";
+  const checked=await Promise.allSettled(selected.map(ed=>source("data/"+ed.id+"-pages.json").then(pages=>({ed,pages}))));
+  const rows=[];let total=0,examined=0,failed=[];
+  for(let i=0;i<checked.length;i++){
+   const attempt=checked[i];
+   if(attempt.status!=="fulfilled"){failed.push(selected[i].label);continue}
+   for(const page of attempt.value.pages||[]){
+    if(typeof page.text!=="string")continue;
+    examined++;const hits=occurrences(page.text,query).length;
+    if(!hits)continue;total+=hits;rows.push({ed:attempt.value.ed,page,pageNo:Number(page.page),hits});
+   }
+  }
+  status.textContent=total.toLocaleString("es")+" apariciones literales distribuidas en "+rows.length+
+   " páginas de "+examined+" páginas digitales examinadas."+
+   (failed.length?" Consulta parcial: no se cargó "+failed.join(", ")+".":"")+
+   " Las reiteraciones entre las tres ediciones no se deduplican.";
+  if(!rows.length){destination.append(element("p","critical-integrated-meta","Sin coincidencias documentadas en las páginas disponibles."));return}
+  rows.sort((a,b)=>ED.indexOf(a.ed)-ED.indexOf(b.ed)||a.pageNo-b.pageNo);
+  lazyList(destination,rows,(parent,row)=>{
+   const details=element("details","critical-integrated-lexical");
+   details.append(element("summary","",row.ed.label+" · página "+row.pageNo+" · "+row.hits+" coincidencia"+(row.hits===1?"":"s")));
+   const p=element("p","critical-integrated-prose");p.lang=row.ed.language;
+   excerpt(p,row.page.text,[],{max:800});details.append(p);
+   const a=anchor("Ver la página completa en el PDF ↗",row.ed.pdf+"#page="+row.pageNo);
+   a.target="_blank";a.rel="noopener noreferrer";details.append(a);parent.append(details);
+  });
+ });
+}
+
 function runMessage(msg){status.textContent=msg}
 async function search(){
  const query=input.value.trim();if(!query)return;
@@ -238,7 +279,9 @@ async function search(){
  comments.append(element("h3","","Explicaciones y notas que contienen la palabra o frase ("+lexical.length+")"));
  if(lexical.length)lazyList(comments,lexical,(node,item,i)=>renderLexicalComment(node,item,i));
  else comments.append(element("p","critical-integrated-meta",locusQuery?"Consulta por locus: el aparato se muestra dentro de cada pasaje.":"Sin coincidencias literales en el índice de comentarios disponible."));
- sections.append(comments);results.append(sections);
+ sections.append(comments);
+ entirePdfConcordance(sections,query,eds);
+ results.append(sections);
 }
 form.addEventListener("submit",e=>{e.preventDefault();void search()});
 document.querySelectorAll("[data-example]").forEach(button=>button.addEventListener("click",()=>{queueMicrotask(()=>void search())}));
