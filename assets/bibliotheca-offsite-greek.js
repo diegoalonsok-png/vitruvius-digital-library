@@ -81,7 +81,8 @@ function load(e){
       Array.isArray(j.passages)&&j.passages.length>=2&&j.passages.every(p=>
        typeof p.text==="string"&&typeof p.locus==="string")?j:null)
   .catch(()=>null));
- return cache.get(e.path);
+ // Cache by source path, but authorize each request against its own SHA.
+ return cache.get(e.path).then(j=>j&&j.sourceSha256===e.sourceSha256?j:null);
 }
 window.ClassicsOffsiteGreek={entries,load,mightContain,root:ROOT,allowedWorkIds:[...ALLOWED]};
 })();
