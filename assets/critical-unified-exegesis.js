@@ -142,6 +142,24 @@ function renderNext(){
    }
    full.append(section);
   }
+  if(r.source==='passage'&&r.apparatus?.length){
+   const section=el('details','critical-unified-notes');
+   section.append(el('summary','','Análisis y aparato PDF relacionado con este locus ('+r.apparatus.length+')'));
+   for(const {entry:e,relation} of r.apparatus){
+    const ed=edById.get(e.edition),title=el('p','critical-unified-meta',
+     (ed?.version||e.version)+' · '+(e.label||'Aparato editorial')+
+     (e.page?' · PDF p. '+e.page:'')+' · '+
+     (relation==='explicit-heading'?'Locus citado explícitamente en encabezado':'Contexto de la misma página impresa; vínculo orientativo'));
+    const excerpt=el('p','critical-unified-text',e.text||'');
+    section.append(title,excerpt);
+    if(e.page&&ed){
+     const link=el('a','','Abrir esta página PDF ↗');
+     link.href=pdfLink(ed,e.page);link.target='_blank';link.rel='noopener noreferrer';section.append(link);
+     fullPageControl(section,{source:'apparatus',edition:ed,page:e.page});
+    }
+   }
+   full.append(section);
+  }
   fullPageControl(full,r);
   details.append(full);card.append(head,h,counts,details,actions);target.append(card);
  }
@@ -218,6 +236,17 @@ async function run(){
  const failures=tasks.filter((p,i)=>settled[i].status!=='fulfilled');
  const notes=data.get('data/critical-notes.json')?.entries||[];
  const nearby=data.get('data/apparatus-nearby.json')?.entries||[];
+ const apparatusByLocus=new Map();
+ for(const entry of data.get('data/apparatus-index.json')?.entries||[]){
+  if(entry.source!=='bloque'||!edById.has(entry.edition))continue;
+  const direct=entry.locusInHeading?entry.locusMention:null;
+  const refs=new Set([direct,...(entry.loci||[])].filter(Boolean));
+  for(const locus of refs){
+   const key=entry.edition+'|'+locusKey(locus),list=apparatusByLocus.get(key)||[];
+   list.push({entry,relation:direct===locus?'explicit-heading':'page-context'});
+   apparatusByLocus.set(key,list);
+  }
+ }
  const notesByLocus=new Map();
  for(const n of notes){
   if(!n.locus||n.mapping_status!=='explicit_in_anchor')continue;
@@ -242,7 +271,8 @@ async function run(){
     if(field.value!=='all'&&field.value!=='passages'&&field.value!==fieldName)continue;
     if(field.value==='passages'||field.value==='all'||field.value===fieldName){
      const rec=record('passage',e,text,{field:fieldName,other,locus:p.locus,
-      notes:notesByLocus.get(e.id+'|'+locusKey(p.locus))||[]});
+      notes:notesByLocus.get(e.id+'|'+locusKey(p.locus))||[],
+      apparatus:apparatusByLocus.get(e.id+'|'+locusKey(p.locus))||[]});
      if(rec)visible.push(rec);
     }
    }
