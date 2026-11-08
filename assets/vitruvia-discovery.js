@@ -85,8 +85,12 @@
    queries=unique(["Jewish Christianity","Jewish Christians","Judaeo-Christianity",
     "Jewish Christian archaeology","Jewish Christian early Christianity",...queries]);
   }
-  const visualStyle=colorRequested||genericColor?"color":brutalism?"prefer-color":"any";
-  return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,family:family?.id||null,
+  // Only mathematical/engineering subjects or identified specialists can
+ // introduce formula drawings; generic history and religion cannot.
+ const mathVisuals=/\b(matematic\w*|mathemat\w*|geometr\w*|trigonometr\w*|algebra\w*|ingenier\w*|engineer\w*|teorema\w*|theorem\w*|formula\w*|equation\w*|ecuacion\w*|calculo|calculus)\b/.test(qRaw)||
+  person&&/\b(matematic\w*|mathemat\w*|ingenier\w*|engineer\w*)\b/.test(description);
+ const visualStyle=colorRequested||genericColor?"color":brutalism?"prefer-color":"any";
+  return {kind,intent,subject,aliases,queries:unique(queries).slice(0,5),visualStyle,mathVisuals,family:family?.id||null,
    contextTitles:family?.topics||null,ancient:typeof identity.birthYear==="number"&&identity.birthYear<0,
    historical:kind==="person"&&((typeof identity.birthYear==="number"&&identity.birthYear<1850)||/\b(ancient|antiguo|antigua|greek philosopher|filosofo griego|roman philosopher|roman statesman|siglo|bce|a c)\b/.test(description)),
    authorityName:identity.originalCanonical||identity.commonsSearchName||identity.canonical||"",
@@ -108,6 +112,12 @@
  const portrait=/\b(portrait|portraits|retrato|retratos|painting|paintings|pintura|pinturas|fresco|frescos|engraving|engravings|grabado|grabados|woodcut|lithograph|drawing|dibujo|photograph|photography|foto|photo|raffae?l+o?|sanzio)\b/;
  const book=/\b(book|books|libro|libros|manuscript|manuscripts|manuscrit|codex|codices|incunabul\w*|frontispiece|frontispicio|title page|treatise|scan|scanned|djvu|bibliotheca|de vita)\b/;
  const technical=/\b(theorem|teorema|diagram|diagrams|diagrama|triang\w*|geometry|geometria|geometric|formula|demonstration|patent|patente|schematic|section drawing)\b/;
+ const formulaWords=/\b(equation|equations|formula|formulae|formulas|formule|formules|ecuacion|ecuaciones|identidad matematica|mathematical identity|integral equation|quadratic equation|differential equation|latex equation)\b/;
+ function formulaImageAllowed(page,topic){
+  const meta=page?.imageinfo?.[0]?.extmetadata||{};
+  const label=fold((page?.title||"")+" "+plain(meta.ImageDescription?.value||"").slice(0,900));
+  return !formulaWords.test(label)||!!topic?.mathVisuals;
+ }
  function imageGroup(page,topic){
   if(topic.kind==="music-group"){
    const filename=fold(page.title||"");
@@ -157,7 +167,7 @@
    const complete=words.length>1&&near(name);
    if(inName||inDescription||complete){matched=true;score=Math.max(score,(inName?120:0)+(complete?70:0)+(inDescription?25:0))}
   }
-  if(!historicalVisualGuard(page,topic,description))return {accepted:false,score:-9999,group:"context"};
+  if(!historicalVisualGuard(page,topic,description)||!formulaImageAllowed(page,topic))return {accepted:false,score:-9999,group:"context"};
   // Only entity images and subject-specific collections may bypass a title match.
   if(page.fromEntityImage){matched=true;score+=160}
   const institution=plain(meta.Institution?.value||meta.Credit?.value||"");
@@ -253,5 +263,5 @@
   }
   flush();return blocks;
  }
- window.VitruviaDiscovery={plan,imageRank,sortImages,previewImages,groupOrder,groups,parseExtract,plain,historicalVisualGuard};
+ window.VitruviaDiscovery={plan,imageRank,sortImages,previewImages,groupOrder,groups,parseExtract,plain,historicalVisualGuard,formulaImageAllowed};
 })();
