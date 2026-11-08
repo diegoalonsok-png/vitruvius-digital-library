@@ -402,6 +402,21 @@ def run():
             "created": created, "errors": errors[:40],
             "unavailableSourceMappings": unavailable_tei,
         })
+    if not args.dry_run:
+        # Este diagnóstico queda disponible aun cuando NO haya nuevas obras.
+        # No reemplaza mass-index-status.json (resumen del último lote exitoso).
+        # Permite auditar por qué siguen pendientes originales del catálogo.
+        save(ROOT / "data/classics-corpus/source-readiness-latest.json", {
+            "updated": date.today().isoformat(),
+            "scope": "Inspección de fuentes TEI originales; no confundir candidatos bibliográficos con textos indexados",
+            "eligibleMappedWorksScanned": len(eligible),
+            "newWorksInThisScan": len(created),
+            "indexedDistinctWorksNow": len({e["workId"] for e in reg["entries"]}) + (
+                len({x["workId"] for x in created}) if args.dry_run else 0),
+            "sourceMissingOrIncompatible": unavailable_tei,
+            "extractionAndCapacityErrors": errors,
+            "policy": "No publicar TEI incompleto, traducciones inventadas, OCR sin validar ni colaciones inferidas.",
+        })
     print(json.dumps({
         "eligibleSingleSourceWorks": len(eligible), "indexedInThisRun": len(created),
         "bytes": total_bytes, "siteBytesBefore": site_bytes, "availableBytes": capacity,
