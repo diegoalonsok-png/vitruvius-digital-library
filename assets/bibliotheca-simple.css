@@ -12,9 +12,9 @@ button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{ou
 .brand{font:400 19px/1.2 "Gentium Book Plus","Cardo",Georgia,serif;letter-spacing:.04em}
 .toplinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:12px}
 .toplinks a{text-decoration:none;color:#aaa}.toplinks a:hover{color:#fff}
-.languages{display:flex;gap:5px;align-items:center}
-.languages button{background:#19191a;color:#bdbdbd;border:1px solid #414143;border-radius:7px;min-width:40px;padding:6px 9px;font-size:11px;letter-spacing:.06em}
-.languages button[aria-pressed=true]{background:#303032;color:#fff;border-color:#777}
+.language-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:38px;min-width:100px;padding:8px 14px;border:1px solid #414143;border-radius:8px;background:#1a1a1b;color:#d7d7d7;font:500 12px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.02em;cursor:pointer}
+.language-toggle:hover{background:#303032;color:#fff;border-color:#777}
+.language-toggle:focus-visible{outline:2px solid #c8c8ca;outline-offset:3px}
 header.hero{padding:66px 0 26px;border-bottom:1px solid #303030}
 .eyebrow{display:block;color:#989899;text-transform:uppercase;font:400 10px/1.5 Arial,sans-serif;letter-spacing:.19em}
 h1{font:400 clamp(42px,6vw,78px)/1.09 "Gentium Book Plus","Cardo",Georgia,serif;letter-spacing:-.025em;color:#f0f0ee;margin:11px 0 14px}
