@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 86,
-    "translatedWorksLocal": 35,
-    "worksWithoutHostedTranslation": 187,
+    "translatedWorksLocal": 40,
+    "worksWithoutHostedTranslation": 182,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 34,
+      "en": 39,
       "fr": 2
     },
     "originalTextIndexed": 86,
@@ -2037,14 +2037,17 @@
       "title": "Ἀντιγόνη",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Richard Jebb (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2069,14 +2072,17 @@
       "title": "Ἠλέκτρα",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Richard Jebb (1894), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2101,14 +2107,17 @@
       "title": "Οἰδίπους ἐπὶ Κολωνῷ",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Richard Jebb (1889), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2133,14 +2142,17 @@
       "title": "Βάκχαι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: T. A. Buckley (1850), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2149,14 +2161,17 @@
       "title": "Ἱππόλυτος",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

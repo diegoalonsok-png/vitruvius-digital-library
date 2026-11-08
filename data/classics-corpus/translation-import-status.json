@@ -1,15 +1,19 @@
 {
   "updated": "2026-11-08",
   "sources": "PerseusDL TEI con SHA fijado",
-  "newTranslations": 3,
+  "newTranslations": 5,
   "titles": [
-    "aeschylus-persae",
-    "aeschylus-seven-thebes",
-    "aeschylus-prometheus"
+    "sophocles-antigone",
+    "sophocles-oedipus-colonus",
+    "sophocles-electra",
+    "euripides-bacchae",
+    "euripides-hippolytus"
   ],
   "indexedWorks": 86,
-  "indexedVersions": 127,
-  "translatedWorks": 35,
-  "failures": [],
+  "indexedVersions": 132,
+  "translatedWorks": 40,
+  "failures": [
+    "sophocles-philoctetes: Traductor TEI distinto del acreditado: []"
+  ],
   "policy": "Nada de traducciones automáticas presentadas como históricas. Mantener obras originales y versiones sin alineación forzada."
 }

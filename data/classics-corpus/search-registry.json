@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 127,
+  "count": 132,
   "works": 86,
   "entries": [
     {
@@ -1278,6 +1278,56 @@
       "path": "data/classics-corpus/aeschylus-prometheus-en.json",
       "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=en",
       "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-antigone-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-antigone&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-oedipus-colonus-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1889); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/sophocles-electra-en.json",
+      "reader": "classics-text-reader.html?work=sophocles-electra&lang=en",
+      "sourceDescription": "Traducción histórica de Richard Jebb (1894); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-bacchae-en.json",
+      "reader": "classics-text-reader.html?work=euripides-bacchae&lang=en",
+      "sourceDescription": "Traducción histórica de T. A. Buckley (1850); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hippolytus-en.json",
+      "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

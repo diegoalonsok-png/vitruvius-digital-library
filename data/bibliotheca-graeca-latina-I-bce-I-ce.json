@@ -5527,8 +5527,18 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "grc": "data/classics-corpus/sophocles-antigone-grc.json"
-      }
+        "grc": "data/classics-corpus/sophocles-antigone-grc.json",
+        "en": "data/classics-corpus/sophocles-antigone-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Richard Jebb (1891)",
+          "path": "classics-text-reader.html?work=sophocles-antigone&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Sófocles. Ἀντιγόνη. Translated by Richard Jebb. Cambridge University Press, 1891. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "sophocles-ajax",
@@ -5611,8 +5621,18 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "grc": "data/classics-corpus/sophocles-electra-grc.json"
-      }
+        "grc": "data/classics-corpus/sophocles-electra-grc.json",
+        "en": "data/classics-corpus/sophocles-electra-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Richard Jebb (1894)",
+          "path": "classics-text-reader.html?work=sophocles-electra&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Sófocles. Ἠλέκτρα. Translated by Richard Jebb. Cambridge University Press, 1894. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "sophocles-philoctetes",
@@ -5695,8 +5715,18 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "grc": "data/classics-corpus/sophocles-oedipus-colonus-grc.json"
-      }
+        "grc": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+        "en": "data/classics-corpus/sophocles-oedipus-colonus-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Richard Jebb (1889)",
+          "path": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Sófocles. Οἰδίπους ἐπὶ Κολωνῷ. Translated by Richard Jebb. Cambridge University Press, 1889. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "sophocles-trachiniae",
@@ -5788,8 +5818,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-bacchae-grc.json"
-      }
+        "grc": "data/classics-corpus/euripides-bacchae-grc.json",
+        "en": "data/classics-corpus/euripides-bacchae-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · T. A. Buckley (1850)",
+          "path": "classics-text-reader.html?work=euripides-bacchae&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Βάκχαι. Translated by T. A. Buckley. Henry G. Bohn, London, 1850. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "euripides-hippolytus",
@@ -5839,8 +5879,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-hippolytus-grc.json"
-      }
+        "grc": "data/classics-corpus/euripides-hippolytus-grc.json",
+        "en": "data/classics-corpus/euripides-hippolytus-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Edward P. Coleridge (1906)",
+          "path": "classics-text-reader.html?work=euripides-hippolytus&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Ἱππόλυτος. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "euripides-alcestis",
