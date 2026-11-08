@@ -4,6 +4,12 @@ on:
   pull_request:
     paths:
       - 'scripts/audit-scholarly-integrity.mjs'
+      - 'scripts/audit-scholarly-citations.mjs'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-documents/manifest.json'
       - 'data/structured/recensio-es.json'
       - 'data/structured/recensio-fr.json'
       - 'data/structured/theory-en.json'
@@ -15,6 +21,12 @@ on:
     branches: [main]
     paths:
       - 'scripts/audit-scholarly-integrity.mjs'
+      - 'scripts/audit-scholarly-citations.mjs'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-documents/manifest.json'
       - 'data/structured/recensio-es.json'
       - 'data/structured/recensio-fr.json'
       - 'data/structured/theory-en.json'
@@ -32,13 +44,19 @@ jobs:
         with:
           node-version: '22'
       - name: Validar sintaxis del control académico
-        run: node --check scripts/audit-scholarly-integrity.mjs
+        run: |
+          node --check scripts/audit-scholarly-integrity.mjs
+          node --check scripts/audit-scholarly-citations.mjs
       - name: Verificar loci, fuentes y estados de evidencia
         run: node scripts/audit-scholarly-integrity.mjs
-      - name: Conservar informe reproducible
+      - name: Verificar atribución bibliográfica y procedencia documental
+        run: node scripts/audit-scholarly-citations.mjs
+      - name: Conservar informes reproducibles
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: scholarly-integrity
-          path: reports/scholarly-integrity.json
+          path: |
+            reports/scholarly-integrity.json
+            reports/scholarly-citation-coverage.json
           if-no-files-found: warn
