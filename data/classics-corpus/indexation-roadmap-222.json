@@ -6,13 +6,13 @@
   "counts": {
     "originalsIndexed": 139,
     "originalsMissing": 83,
-    "worksWithHostedTranslation": 52,
-    "worksMissingTranslation": 170,
-    "textVersions": 197,
+    "worksWithHostedTranslation": 55,
+    "worksMissingTranslation": 167,
+    "textVersions": 200,
     "states": {
       "original_pendiente": 83,
-      "original_sin_traduccion_local": 87,
-      "original_y_traduccion_local": 52
+      "original_sin_traduccion_local": 84,
+      "original_y_traduccion_local": 55
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 8,
@@ -2808,11 +2808,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0059.tlg031"
@@ -2845,11 +2846,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0059.tlg012"
@@ -2900,11 +2902,12 @@
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
       "indexedLanguages": [
+        "en",
         "grc"
       ],
       "originalIndexed": true,
-      "translationHosted": false,
-      "state": "original_sin_traduccion_local",
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0086.tlg010"

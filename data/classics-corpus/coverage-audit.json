@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 197,
+    "indexedTextVersions": 200,
     "indexedDistinctWorks": 139,
     "manuscriptWitnesses": 23
   },
@@ -3269,9 +3269,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-timaeus-en.json",
         "data/classics-corpus/plato-timaeus-grc.json"
       ],
       "localPDF": null,
@@ -3320,9 +3322,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-phaedrus-en.json",
         "data/classics-corpus/plato-phaedrus-grc.json"
       ],
       "localPDF": null,
@@ -3393,9 +3397,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
         "data/classics-corpus/aristotle-nicomachean-ethics-grc.json"
       ],
       "localPDF": null,

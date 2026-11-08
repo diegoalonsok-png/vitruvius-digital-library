@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 197,
+  "count": 200,
   "works": 139,
   "entries": [
     {
@@ -1978,6 +1978,36 @@
       "path": "data/classics-corpus/plato-gorgias-en.json",
       "reader": "classics-text-reader.html?work=plato-gorgias&lang=en",
       "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-timaeus-en.json",
+      "reader": "classics-text-reader.html?work=plato-timaeus&lang=en",
+      "sourceDescription": "Traducción histórica de Robert Gregg Bury (1929); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedrus-en.json",
+      "reader": "classics-text-reader.html?work=plato-phaedrus&lang=en",
+      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
+      "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en",
+      "sourceDescription": "Traducción histórica de Harris Rackham (1926); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

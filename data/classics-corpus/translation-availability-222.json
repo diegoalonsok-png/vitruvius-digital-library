@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 139,
-    "translatedWorksLocal": 52,
-    "worksWithoutHostedTranslation": 170,
+    "translatedWorksLocal": 55,
+    "worksWithoutHostedTranslation": 167,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 51,
+      "en": 54,
       "fr": 2
     },
     "originalTextIndexed": 139,
@@ -2438,16 +2438,19 @@
       "title": "Τίμαιος",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [
         "en"
       ],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "R. G. Bury (inglés; Perseus/Scaife). Enlace en «Edición y traducción». Sin alineación local con los folios.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Robert Gregg Bury (1929), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2475,14 +2478,17 @@
       "title": "Φαῖδρος",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2528,14 +2534,17 @@
       "title": "Ἠθικὰ Νικομάχεια",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Harris Rackham (1926), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

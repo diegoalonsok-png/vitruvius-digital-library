@@ -6782,8 +6782,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-timaeus-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-timaeus-grc.json",
+        "en": "data/classics-corpus/plato-timaeus-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Robert Gregg Bury (1929)",
+          "path": "classics-text-reader.html?work=plato-timaeus&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Τίμαιος. Translated by Robert Gregg Bury. Harvard University Press / William Heinemann Ltd., 1929. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "plato-meno",
@@ -6898,8 +6908,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-phaedrus-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-phaedrus-grc.json",
+        "en": "data/classics-corpus/plato-phaedrus-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Harold North Fowler (1914)",
+          "path": "classics-text-reader.html?work=plato-phaedrus&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Φαῖδρος. Translated by Harold North Fowler. Harvard University Press / William Heinemann Ltd., 1914. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "plato-laws",
@@ -7072,8 +7092,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json"
-      }
+        "grc": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+        "en": "data/classics-corpus/aristotle-nicomachean-ethics-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Harris Rackham (1926)",
+          "path": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Aristóteles. Ἠθικὰ Νικομάχεια. Translated by Harris Rackham. William Heinemann Ltd. / G. P. Putnam's Sons, 1926. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "aristotle-metaphysics",
