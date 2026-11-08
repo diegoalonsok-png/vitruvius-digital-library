@@ -162,7 +162,7 @@ def fetch(candidate):
         raw = response.read(MAX_SOURCE + 1)
     if not raw or len(raw) > MAX_SOURCE:
         raise ValueError("Fuente ausente o demasiado grande")
-    blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+    blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + bytes([0]) + raw).hexdigest()
     if blob != candidate["blob"]:
         raise ValueError("El SHA del TEI remoto cambió: requiere nueva revisión")
     return url, raw
