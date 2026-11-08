@@ -134,7 +134,8 @@ try{
     books:document.querySelectorAll('#classic-work option').length,
     colors:document.querySelectorAll('input[type="color"]').length,
     iframes:document.querySelectorAll('iframe').length,
-    languages:[...document.querySelectorAll('[data-lang]')].map(x=>x.dataset.lang),
+    languageButtons:document.querySelectorAll('#language-toggle').length,
+    languageLabel:document.querySelector('#language-toggle')?.textContent,
     body:getComputedStyle(document.body).backgroundColor,
     button:getComputedStyle(document.querySelector('#search-submit')).borderColor,
     coverage:document.querySelector('#catalogue-status').textContent,
@@ -146,16 +147,20 @@ try{
    assert(state.books>=223,'Catalogue must include all 222 works plus All books');
    assert.equal(state.colors,0,'No ineffective color controls');
    assert.equal(state.iframes,0,'No embedded reader or facsimile viewer');
-   assert.deepEqual(state.languages,['es','en','fr']);
+   assert.equal(state.languageButtons,1,'There must be exactly one functional language button');
+   assert.equal(state.languageLabel,'Idioma · ES','Default language button should show Spanish');
    assert.equal(state.body,'rgb(13, 13, 14)','Use Lexicon black');
    assert.equal(state.button,'rgb(73, 73, 76)','Gray border; no gold');
    assert.match(state.coverage,/222|obras catalogadas/);
-   await p.locator('[data-lang="en"]').click();
+   await p.locator('#language-toggle').click();
    assert.equal(await p.locator('#search-submit').innerText(),'Search');
-   await p.locator('[data-lang="fr"]').click();
+   assert.equal(await p.locator('#language-toggle').innerText(),'Language · EN');
+   await p.locator('#language-toggle').click();
    assert.equal(await p.locator('#search-submit').innerText(),'Chercher');
-   await p.locator('[data-lang="es"]').click();
+   assert.equal(await p.locator('#language-toggle').innerText(),'Langue · FR');
+   await p.locator('#language-toggle').click();
    assert.equal(await p.locator('#search-submit').innerText(),'Buscar');
+   assert.equal(await p.locator('#language-toggle').innerText(),'Idioma · ES');
    assert.equal(await p.locator('#classic-work option').count(),state.books);
   }finally{await p.close()}
  });
