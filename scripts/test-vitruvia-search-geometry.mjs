@@ -50,6 +50,7 @@ try{
         articleBody:rect("#article-body"),
         resultList:rect("#result-list"),
         sidebar:rect(".results-grid > .sidebar"),
+        culturalRail:rect("#vitruvia-context"),
         philologyPresent:!!document.querySelector("#multilingual-academic-search")
       };
     });
@@ -59,14 +60,26 @@ try{
     assert.ok(report.article.width>=report.results.width*0.94,"Encyclopedia article is too narrow");
     assert.ok(report.articleBody.width>=report.article.width*0.92,"Encyclopedia body is restricted to a side column");
     assert.ok(Math.abs(report.articleBody.x-report.article.x)<28,"Encyclopedia body has a blank left rail");
-    assert.ok(report.resultList.width>=report.results.width*0.90,"Documentary results occupy a narrow left column");
+    // On wide desktop, the requested cultural catalogue occupies a real right rail.
+    // On tablet/mobile, both reading and results remain full-width in a stacked layout.
+    if(width>=1100){
+      assert.ok(report.resultList.width>=report.results.width*0.62,
+        "Documentary column must retain at least 62% alongside the cultural rail");
+      assert.ok(report.culturalRail.width>=report.results.width*0.20,
+        "The cultural rail must remain large enough for book and album covers");
+      assert.ok(report.culturalRail.x>=report.resultList.x+report.resultList.width-3,
+        "The cultural rail must sit to the right, not over the results");
+    }else{
+      assert.ok(report.resultList.width>=report.results.width*0.90,
+        "Documentary results must fill the available width on tablet and mobile");
+    }
     assert.ok(report.sidebar.width>=report.results.width*0.90,"Reference sidebar still reserves a right-hand column");
     assert.ok(report.sidebar.y>=report.resultList.y,"Reference sidebar should be below documentary results");
     await page.locator("#vitruvia-article").scrollIntoViewIfNeeded();
     await page.screenshot({path:"test-results/vitruvia-"+width+".png"});
     await page.close();
   }
-  console.log("PASS: Vitruvia article and search results fill the reading area on desktop, tablet and mobile.");
+  console.log("PASS: Vitruvia article fills the reading area; cultural right rail on desktop, stacked results on mobile.");
 }finally{
   await browser.close();
 }
