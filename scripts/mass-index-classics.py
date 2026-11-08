@@ -40,6 +40,11 @@ COMPOSITE_WORKS = {
     "aeschylus-oresteia": ("tlg0085.tlg005", "tlg0085.tlg006", "tlg0085.tlg007"),
     "demosthenes-philippicae": ("tlg0014.tlg004", "tlg0014.tlg006", "tlg0014.tlg009", "tlg0014.tlg010"),
     "pseudo-apollodorus-bibliotheca": ("tlg0548.tlg001", "tlg0548.tlg002"),
+    "nepos": ("phi0588.abo001", "phi0588.abo002", "phi0588.abo003", "phi0588.abo004", "phi0588.abo005", "phi0588.abo006", "phi0588.abo007", "phi0588.abo008", "phi0588.abo009", "phi0588.abo010", "phi0588.abo011", "phi0588.abo012", "phi0588.abo013", "phi0588.abo014", "phi0588.abo015", "phi0588.abo016", "phi0588.abo017", "phi0588.abo018", "phi0588.abo019", "phi0588.abo020", "phi0588.abo021", "phi0588.abo022", "phi0588.abo023", "phi0588.abo024", "phi0588.abo025"),
+    "seneca-tragoediae": ("phi1017.phi001", "phi1017.phi002", "phi1017.phi003", "phi1017.phi004", "phi1017.phi005", "phi1017.phi006", "phi1017.phi007", "phi1017.phi008", "phi1017.phi009", "phi1017.phi010"),
+    "suetonius-caesares": ("phi1348.abo011", "phi1348.abo012", "phi1348.abo013", "phi1348.abo014", "phi1348.abo015", "phi1348.abo016", "phi1348.abo017", "phi1348.abo018", "phi1348.abo019", "phi1348.abo020", "phi1348.abo021", "phi1348.abo022"),
+    "appian-romaika": ("tlg0551.tlg002", "tlg0551.tlg003", "tlg0551.tlg004", "tlg0551.tlg005", "tlg0551.tlg006", "tlg0551.tlg007", "tlg0551.tlg008", "tlg0551.tlg009", "tlg0551.tlg010", "tlg0551.tlg011", "tlg0551.tlg012", "tlg0551.tlg013", "tlg0551.tlg014", "tlg0551.tlg017"),
+    "homeric-hymns": ("tlg0013.tlg001", "tlg0013.tlg002", "tlg0013.tlg003", "tlg0013.tlg004", "tlg0013.tlg005", "tlg0013.tlg006", "tlg0013.tlg007", "tlg0013.tlg008", "tlg0013.tlg009", "tlg0013.tlg010", "tlg0013.tlg011", "tlg0013.tlg012", "tlg0013.tlg013", "tlg0013.tlg014", "tlg0013.tlg015", "tlg0013.tlg016", "tlg0013.tlg017", "tlg0013.tlg018", "tlg0013.tlg019", "tlg0013.tlg020", "tlg0013.tlg021", "tlg0013.tlg022", "tlg0013.tlg023", "tlg0013.tlg024", "tlg0013.tlg025", "tlg0013.tlg026", "tlg0013.tlg027", "tlg0013.tlg028", "tlg0013.tlg029", "tlg0013.tlg030", "tlg0013.tlg031", "tlg0013.tlg032", "tlg0013.tlg033"),
     # Secuencias documentadas en data/bibliotheca-perseus.json; si una pieza
     # falta, NO se publica una ficha supuestamente completa.
     "nepos": tuple(f"phi0588.abo{n:03d}" for n in range(1, 26)),
