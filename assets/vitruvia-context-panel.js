@@ -209,6 +209,7 @@ function redraw(keepPosition=true){
  frame(lastQuery);
  // The subject's own creations lead the right-hand panel in every discipline.
  window.VitruviaWebDossier?.render(panel,lastQuery,currentRows,()=>token===requestId);
+ window.VitruviaEarliest?.render(panel,lastQuery,currentRows,()=>token===requestId);
  origin(lastQuery);
  const lexical=lexicalNeedles(lastQuery);
  if(lexical.length)void loci(lastQuery,token);
