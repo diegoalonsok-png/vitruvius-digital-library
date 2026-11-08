@@ -78,7 +78,39 @@ def verify():
         assert path in audit_by_id[work_id]["indexedTextFiles"]
         assert "en" not in back_by_id[work_id]["missing"]
         assert "en" in back_by_id[work_id]["indexed"]
-    print("PASS historical translations: 3 previously untranslated classics, 74 editorial notes, original preserved, provenance and Chicago 18, all three search registries coherent.")
+    # Auditar TODAS las traducciones nuevas de Perseus; no sólo los tres
+    # ejemplos iniciales. Esto detecta archivos parciales y fichas infladas.
+    automated = 0
+    for edition in registry["entries"]:
+        if edition.get("language") != "en" or edition.get("format") != "json-passages":
+            continue
+        document = read(edition["path"])
+        if document.get("sourceType") != "historical-english-perseus-tei":
+            continue
+        work_id = edition["workId"]
+        assert document["workId"] == work_id and document["language"] == "en"
+        assert document["originalLanguage"] in {"grc", "la"}
+        assert document.get("translator") and document.get("editionYear")
+        assert document["source"].startswith("https://raw.githubusercontent.com/PerseusDL/")
+        assert len(document["sourceGitBlobSha"]) == 40
+        assert len(document["sourceSha256"]) == 64
+        assert document["license"].startswith("CC BY-SA 4.0")
+        assert document["alignmentStatus"] == "unaligned"
+        assert document.get("passages"), "No indexed text for " + work_id
+        assert len(document["passages"]) == document["coverage"]["passages"]
+        assert sum(len(p["text"]) for p in document["passages"]) == document["coverage"]["chars"]
+        assert len({p["locus"] for p in document["passages"]}) == len(document["passages"])
+        assert all(p["text"].strip() and p["locus"] for p in document["passages"])
+        assert any(e["workId"] == work_id and e["language"] == document["originalLanguage"]
+                   for e in registry["entries"]), "Missing original: " + work_id
+        assert by_id[work_id]["corpusFiles"]["en"] == edition["path"]
+        assert "en" in translation_by_id[work_id]["translationLanguages"]
+        assert "en" in audit_by_id[work_id]["indexedTextLanguages"]
+        assert edition["path"] in audit_by_id[work_id]["indexedTextFiles"]
+        automated += 1
+    print("PASS historical translations: 3 pioneering texts with editorial notes; "
+          f"{automated} verified Perseus historical versions, originals preserved, "
+          "reproducible loci and provenance, registries coherent.")
 
 
 if __name__ == "__main__":
