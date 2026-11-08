@@ -1146,7 +1146,7 @@ function refreshTopicSources(rows,query){
   details.append(make("summary",phrase("Fuentes antiguas, universidades, códices y bibliografía especializada",
    "Ancient sources, universities, manuscripts and scholarly bibliography",
    "Sources anciennes, universités, manuscrits et bibliographie scientifique")));
-  const before=body.querySelector(".article-related");
+  const before=body.querySelector(".article-wikipedia-optional");
   if(before)before.before(details);else body.append(details);
  }
  const contents=make("div",undefined,"article-academic-expansion-inner"),previous=articleBodyTarget;
@@ -1165,6 +1165,78 @@ function refreshArticleSources(rows,query,person){
  const sources=rows.filter(x=>x.link&&relevance({...x,title:[x.title,x.author||""].join(" ")},query)>=35&&["wikipedia","article","wikidata","openlibrary","googlebook","museum","book","edition","manuscript"].includes(x.type));
  refreshTopicSources(rows,person?.name||query);aside(sources);references(rows);
  window.VitruviaAuthorReading?.render(rows,person?.name||query,person);
+}
+
+
+/* Editorial priority: show retrievable sources before secondary encyclopedia prose.
+   A catalogue match is never presented as proof that the publication was read. */
+function appendDocumentedLegacy(rows,query){
+ const accepted=new Set(["manuscript","edition","article","book","googlebook","openlibrary","museum","passage","fragment","scholar"]);
+ const ranked=(rows||[]).filter(r=>r?.link&&r.title&&accepted.has(r.type))
+ .filter(r=>(!window.VitruviaDocumentaryRelevance||window.VitruviaDocumentaryRelevance.accepts(r,query))
+   &&(relevance(r,query)>=45||r.exactTextMatch||r.curatedAcademic||r.primaryWitness))
+ .sort((a,b)=>{
+  const priority=x=>x.type==="passage"||x.type==="manuscript"||x.type==="edition"||x.type==="fragment"?0:
+   x.type==="article"&&(x.doi||x.journal||x.curatedAcademic)?1:
+   x.type==="book"||x.type==="museum"||x.type==="scholar"?2:3;
+  return priority(a)-priority(b)||Number(a.year||9999)-Number(b.year||9999)||String(a.title).localeCompare(String(b.title));
+ });
+ const unique=[],seen=new Set();
+ for(const row of ranked){
+  const key=normalized(row.title)+"|"+normalized(row.author||"");
+  if(seen.has(key))continue;
+  seen.add(key);unique.push(row);
+ }
+ heading(phrase("Documentación y bibliografía destacada","Featured documentation and bibliography","Documentation et bibliographie sélectionnées"));
+ paragraph(phrase("Se priorizan textos originales, ediciones, publicaciones y registros identificables. Las fichas enlazadas no implican lectura completa ni revisión por pares.",
+  "Original texts, editions, publications and identified records take precedence. Linked catalogue records do not imply full-text review or peer review.",
+  "Priorité aux textes originaux, éditions et notices identifiables. Les notices ne garantissent pas la lecture intégrale."),"article-note");
+ const best=unique.slice(0,6);
+ if(best.length){
+  const list=make("ol",undefined,"article-editorial-sources");
+  for(const row of best){
+   const li=make("li");
+   const a=href(row.link,row.title);if(a)li.append(a);
+   const context=[row.author,row.year,row.publisher||row.journal,row.codexRepository].filter(Boolean).join(" · ");
+   if(context)li.append(make("small"," · "+cut(context,170),"article-license"));
+   list.append(li);
+  }
+  $("article-body").append(list);
+ }else{
+  paragraph(phrase("No se recuperaron referencias bibliográficas específicas verificables para esta consulta. Puedes ampliar la búsqueda en los catálogos enlazados.",
+   "No identifiable bibliographic records were retrieved for this query; use the linked research catalogues to investigate.",
+   "Aucune référence bibliographique identifiable n’a été retrouvée; poursuivre dans les catalogues liés."),"article-note");
+ }
+ heading(phrase("Obras, legado y recepción","Works, legacy and reception","Œuvres, héritage et réception"));
+ const works=unique.filter(r=>["book","edition","museum","openlibrary","googlebook"].includes(r.type)).slice(0,6);
+ const studies=unique.filter(r=>r.type==="article"&&(r.journal||r.doi||r.curatedAcademic)).slice(0,4);
+ if(works.length||studies.length){
+  paragraph(phrase("Selección de obras y estudios relacionados, con su procedencia. No se atribuye influencia histórica ni autoría sin respaldo documental.",
+   "Related works and studies with source links. Historical influence or authorship is not asserted without documentary evidence.",
+   "Œuvres et études connexes avec leur provenance; aucune influence ou attribution n’est affirmée sans preuve."),"article-note");
+  const list=make("ul",undefined,"article-editorial-legacy");
+  for(const row of [...works,...studies].slice(0,9)){
+   const li=make("li"),a=href(row.link,row.title);if(a)li.append(a);
+   const context=[row.author,row.year,row.publisher||row.journal].filter(Boolean).join(" · ");
+   if(context)li.append(make("small"," · "+cut(context,170),"article-license"));
+   list.append(li);
+  }
+  $("article-body").append(list);
+ }else{
+  paragraph(phrase("El catálogo todavía no permite documentar un legado o repertorio de obras específico. No se generan relaciones históricas de manera automática.",
+   "The indexed catalogue does not yet document a specific legacy or body of works; historical connections are not generated automatically.",
+   "Le catalogue ne documente pas encore de corpus ni de réception spécifique; aucune relation n’est inventée."),"article-note");
+ }
+ const comparison=make("p",undefined,"article-note");
+ comparison.append(document.createTextNode(phrase("Contrastar versiones enciclopédicas (fuentes secundarias, no bibliografía universitaria): ",
+  "Compare encyclopedic accounts (secondary sources, not scholarly bibliography): ",
+  "Comparer les encyclopédies (sources secondaires, non universitaires) : ")));
+ const q=String(query||"").trim();
+ for(const [title,site] of [["Grokipedia","grokipedia.com"],["Britannica","britannica.com"]]){
+  const url="https://www.google.com/search?"+new URLSearchParams({q:"site:"+site+" "+q});
+  const a=href(url,title+" ↗");if(a){comparison.append(a,document.createTextNode("   "))}
+ }
+ $("article-body").append(comparison);
 }
 
 async function renderTopic(top,rows,query,token,person=null){
@@ -1205,16 +1277,26 @@ async function renderTopic(top,rows,query,token,person=null){
  }
  const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
  if(token!==active)return;
+ appendDocumentedLegacy(rows,documentaryQuery);
  if(data?.extract){
-  heading(phrase("Desarrollo enciclopédico ampliado","Extended encyclopedia article","Développement encyclopédique approfondi"));
-  paragraph("Material enciclopédico de Wikipedia: atribución CC BY-SA. La síntesis original y los textos externos se presentan diferenciados.","article-note");
-  if(wiki&&wiki.wikiLang!==wanted)paragraph(
-   phrase("La fuente enciclopédica está disponible aquí en "+wiki.wikiLang.toUpperCase()+"; no se simula una traducción.",
-    "The source text is available here in "+wiki.wikiLang.toUpperCase()+"; it has not been automatically translated.",
-    "La source est disponible ici en "+wiki.wikiLang.toUpperCase()+" ; aucune traduction automatique n’est simulée."),"article-note");
-  appendBiographyExtract(data.extract,data.fullurl||wiki?.link);
-  const link=href(data.fullurl||wiki?.link,"Consultar fuente original, notas e historial");
-  if(link)$("article-body").append(link);
+  const reading=make("details",undefined,"article-wikipedia-optional");
+  reading.append(make("summary",phrase("Wikipedia · leer el artículo enciclopédico ampliado (fuente secundaria)",
+   "Wikipedia · expand full encyclopedia text (secondary source)",
+   "Wikipédia · lire l'article complet (source secondaire)")));
+  const full=make("div",undefined,"article-wikipedia-content");
+  reading.append(full);$("article-body").append(reading);
+  const previous=articleBodyTarget;
+  try{
+   articleBodyTarget=full;
+   paragraph("Material de Wikipedia atribuido bajo CC BY-SA. Se diferencia de los textos documentales y de la bibliografía académica.","article-note");
+   if(wiki&&wiki.wikiLang!==wanted)paragraph(
+    phrase("Esta versión se recuperó en "+wiki.wikiLang.toUpperCase()+"; no se simula traducción.",
+     "This source is in "+wiki.wikiLang.toUpperCase()+"; no automatic translation is implied.",
+     "Source en "+wiki.wikiLang.toUpperCase()+" ; aucune traduction implicite."),"article-note");
+   appendBiographyExtract(data.extract,data.fullurl||wiki?.link);
+   const link=href(data.fullurl||wiki?.link,"Wikipedia · consultar fuente original, notas e historial");
+   if(link)full.append(link);
+  }finally{articleBodyTarget=previous}
  }else if(!profile&&!identified&&!ark&&!deity&&person?.id!=="cicero"){
   heading("Documentación disponible");
   paragraph("No se logró recuperar una síntesis enciclopédica extensa en esta consulta. Se muestran únicamente las fuentes comprobables, sin elaborar datos no respaldados.","article-note");
@@ -1408,7 +1490,7 @@ function buildContents(){
  const box=$("article-aside");if(!box)return;
  const body=$("article-body");
  box.querySelector(".article-contents")?.remove();body.querySelector(".article-inline-contents")?.remove();
- const sections=[...body.querySelectorAll("h3,h4")];
+ const sections=[...body.querySelectorAll("h3,h4")].filter(h=>!h.closest(".article-wikipedia-optional"));
  if(!sections.length)return;
  const nav=document.createElement("nav");nav.className="article-contents";nav.setAttribute("aria-label",phrase("Índice de contenidos","Table of contents","Sommaire"));
  nav.append(make("h3",phrase("Contenido","Contents","Sommaire")));
