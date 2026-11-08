@@ -104,7 +104,7 @@ function catalogOrder(section,cards,compare,stack){
  const select=el('select');select.setAttribute('aria-label',L('Orden del catálogo','Catalogue order','Ordre du catalogue'));
  for(const [value,text] of [['year',L('Más antiguos primero','Oldest first','Plus anciens d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  select.addEventListener('change',()=>{for(const entry of [...cards].sort((a,b)=>compare(a.record,b.record,select.value)))stack.append(entry.item)});
- control.append(select);section.insertBefore(control,stack);
+ control.append(select);section.insertBefore(control,stack);return select;
 }
 function libraryAuthor(name){
  const url='https://openlibrary.org/search.json?'+new URLSearchParams({
@@ -196,19 +196,44 @@ async function books(root,topic,valid){
       ' · ordered by first catalogued publication.',
       ' · classées par nombre d’éditions. Le tri chronologique est disponible.'));section.append(note);
    const stack=el('div','web-dossier-stack');section.append(stack);
-   const bookCards=[];
-   for(const book of books.slice(0,50)){
-    const url='https://openlibrary.org'+book.key;
-    const isbn=(Array.isArray(book.isbn)?book.isbn:[]).find(x=>/^(?:97[89])?[0-9Xx]{10,13}$/.test(String(x).replace(/[- ]/g,'')));
-    const cover=Number(book.cover_i)>0?'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg?default=false':
-     isbn?'https://covers.openlibrary.org/b/isbn/'+encodeURIComponent(isbn)+'-M.jpg?default=false':'';
-    const metadata=[book.first_publish_year?L('Primera publicación catalogada: ','First catalogued publication: ','Première publication cataloguée : ')+book.first_publish_year:'',
-      (book.author_name||[])[0],'Open Library'].filter(Boolean).join(' · ');
-    const recordCard=card(stack,book.title,url,bookDescription(book),cover,metadata);
-    recordCard.classList.add('cultural-book');bookCards.push({item:recordCard,record:book});
-    if(books.indexOf(book)<10)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
+   // Keep right-hand book lists responsive. Show 12 covers first and reveal
+   // further documented editions on demand, without issuing new API calls.
+   const maxCards=Math.min(50,books.length),bookCards=[];
+   let shown=0;
+   function appendBatch(){
+    const target=Math.min(maxCards,shown+12);
+    for(;shown<target;shown++){
+     const book=books[shown],url='https://openlibrary.org'+book.key;
+     const isbn=(Array.isArray(book.isbn)?book.isbn:[]).find(x=>/^(?:97[89])?[0-9Xx]{10,13}$/.test(String(x).replace(/[- ]/g,'')));
+     const cover=Number(book.cover_i)>0?'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg?default=false':
+      isbn?'https://covers.openlibrary.org/b/isbn/'+encodeURIComponent(isbn)+'-M.jpg?default=false':'';
+     const metadata=[book.first_publish_year?L('Primera publicación catalogada: ','First catalogued publication: ','Première publication cataloguée : ')+book.first_publish_year:'',
+       (book.author_name||[])[0],'Open Library'].filter(Boolean).join(' · ');
+     const recordCard=card(stack,book.title,url,bookDescription(book),cover,metadata);
+     recordCard.classList.add('cultural-book');
+     // Retailer search is not a claim of an in-stock book or a verified edition.
+     const buyTerm=[isbn||book.title,(book.author_name||[])[0]].filter(Boolean).join(' ');
+     const buyLink='https://www.google.com/search?'+new URLSearchParams({q:'site:buscalibre.com.ar '+buyTerm});
+     const purchase=link(L('Buscar para comprar en librería · verificar edición y stock','Search bookstore availability · verify edition and stock','Chercher en librairie · vérifier édition et stock'),buyLink);
+     purchase.className='web-dossier-purchase-link';
+     recordCard.querySelector('.web-dossier-card-body')?.append(purchase);
+     bookCards.push({item:recordCard,record:book});
+     if(shown<3)void enrichWorkSynopsis(recordCard,book,valid).catch(()=>{});
+    }
    }
-   catalogOrder(section,bookCards,(a,b,order)=>order==='year'?(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999):(Number(b.edition_count)||0)-(Number(a.edition_count)||0),stack);
+   appendBatch();
+   const compare=(a,b,order)=>order==='year'?(Number(a.first_publish_year)||9999)-(Number(b.first_publish_year)||9999):(Number(b.edition_count)||0)-(Number(a.edition_count)||0);
+   const sortControl=catalogOrder(section,bookCards,compare,stack);
+   if(maxCards>shown){
+    const more=el('button','web-dossier-more',L('Mostrar más portadas','Show more book covers','Afficher plus de couvertures'));
+    more.type='button';
+    more.addEventListener('click',()=>{
+     appendBatch();
+     for(const entry of [...bookCards].sort((a,b)=>compare(a.record,b.record,sortControl.value)))stack.append(entry.item);
+     if(shown>=maxCards)more.remove();
+    });
+    section.append(more);
+   }
    if(books.length>50)info(section,L('Se presentan 50 registros; consulta el catálogo para continuar.','Showing 50 records; continue in the catalogue.','50 notices affichées ; poursuivre dans le catalogue.'));
   }
   section.append(link(L('Buscar más obras del autor en Open Library ↗','Search more works in Open Library ↗','Chercher d’autres œuvres dans Open Library ↗'),
