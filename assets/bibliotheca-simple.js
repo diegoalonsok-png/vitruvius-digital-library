@@ -165,7 +165,9 @@ function refresh(){
   const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing);
   work.append(new Option(name,w.id));
  }
- if(byId.has(selected))work.value=selected;
+ for(const document of window.ClassicsUploadedDocuments?.uncataloguedDocs||[])
+  work.append(new Option(document.label,"docx:"+document.id));
+ if(byId.has(selected)||String(selected).startsWith("docx:"))work.value=selected;
  coverage.textContent=t.ready(works.length,entries.length,works.length-indexed.size);
  drawRemote();
 }
@@ -184,6 +186,7 @@ function switchLanguage(k){
  if(works.length)refresh();else coverage.textContent=t.wait;
  drawRemote();
  if(current)render(previous,current,diag);
+ window.ClassicsUploadedDocuments?.refresh();
  updateLexicon();
  try{localStorage.setItem("vitruvius-ui-lang",locale)}catch{}
 }
@@ -399,6 +402,7 @@ function render(rows,q,details){
 }
 async function search(){
  const id=++serial,q=input.value.trim();updateLexicon();root.hidden=true;list.replaceChildren();
+ window.ClassicsUploadedDocuments?.clear();
  if(q.length>180||fold(q).replace(/[^\p{L}\p{N}]/gu,"").length<2){status.textContent=dict[locale].short;return}
  status.textContent=dict[locale].loading;$("search-submit").disabled=true;
  try{
@@ -406,7 +410,19 @@ async function search(){
   const selectedWork=work.value;
   const alias=editionAliases[selectedWork];
   const workId=alias?.workId||selectedWork;
+  const added=window.ClassicsUploadedDocuments;
+  if(selectedWork.startsWith("docx:")){
+   if(!added?.documentIds?.has(selectedWork.slice(5))){status.textContent=dict[locale].wrong;return}
+   root.hidden=false;
+   status.textContent=locale==="en"?"Search in an uploaded DOCX document (not an accredited manuscript locus).":
+    locale==="fr"?"Recherche dans un document DOCX déposé (sans locus manuscrit vérifié).":
+    "Búsqueda en documento DOCX subido (sin locus manuscrito cotejado).";
+   void added.search(q,selectedWork,()=>id===serial);
+   const docUrl=new URL(location.href);docUrl.searchParams.set("q",q);docUrl.searchParams.set("work",selectedWork);
+   history.replaceState(null,"",docUrl);return;
+  }
   if(selectedWork&&!indexed.has(selectedWork)){status.textContent=dict[locale].wrong;return}
+  if(added)void added.search(q,selectedWork,()=>id===serial);
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
   const transliterations=await attestedGreekForms(/^gr:/i.test(q)?q.slice(3).trim():q);
   if(id!==serial)return;
