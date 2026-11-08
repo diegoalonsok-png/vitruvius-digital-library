@@ -393,6 +393,28 @@ if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consu
  if(hits.length>(S.page+1)*PAGE_SIZE){list.append(el("button",{type:"button",class:"lx-more",onclick:e=>{e.target.remove();S.page++;const more=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);for(const h of more)list.append(hitCard(D,h));if(hits.length>(S.page+1)*PAGE_SIZE)list.append(e.target)}},`Mostrar ${PAGE_SIZE} más`))}
  renderExports(D,hits);
 }
+/* La fecha de composición, la datación del testimonio y la edición moderna
+   corresponden a entidades bibliográficas diferentes. Nunca datar V514 como antigua. */
+const VITRUVIUS_ORIGINAL_DATE="siglo I a. C. · c. 27–22 a. C.";
+const VITRUVIUS_OLDEST_WITNESS={
+ label:"Harley MS 2767 · testimonio manuscrito conservado más antiguo conocido",
+ dating:"primer cuarto del siglo IX (800–824)",
+ repository:"British Library, Londres",
+ url:"https://searcharchives.bl.uk/catalog/040-002048598",
+ viewer:"codex-h-folios-local.html"
+};
+function vitruviusWitnessLine(){
+ const section=el("div",{class:"lx-vitruvius-witness"});
+ section.append(el("p",{class:"lx-small"},
+  "Vitruvio, De architectura · diez libros · composición: "+VITRUVIUS_ORIGINAL_DATE+"."),
+  el("p",{class:"lx-small"},
+   "Testimonio conservado más antiguo conocido: ",el("a",{href:VITRUVIUS_OLDEST_WITNESS.url,target:"_blank",rel:"noopener noreferrer"},
+    VITRUVIUS_OLDEST_WITNESS.label)," · "+VITRUVIUS_OLDEST_WITNESS.dating+" · "+VITRUVIUS_OLDEST_WITNESS.repository+". ",
+   el("a",{href:VITRUVIUS_OLDEST_WITNESS.viewer},"Consultar folios digitalizados")),
+  el("p",{class:"lx-small"},
+   "Texto digital y traducciones: ediciones modernas de Diego A. Kurilo (V514 · castellano; V554 · francés; V297 · inglés). Las fechas de estas ediciones no corresponden a la composición de la obra antigua."));
+ return section;
+}
 function hitCard(D,h){
  const p=D.corpus.passages[h.i],w=work(D,p[0]);const text=p[2];const cite=citeOf(D,p,h.spans[0][0]);
  const k=kwic(text,h.spans);
@@ -407,6 +429,7 @@ function hitCard(D,h){
  {const amb=ambiguity(D,text,h.spans,p);if(amb)card.append(amb)}
  const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.append(trBox);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
  const also=alsoIn(D,p);if(also)card.append(also);
+ if(p[0]==="vitruvius"){card.append(vitruviusWitnessLine())}
  if(p[0]==="vitruvius"&&D.l==="la"){const par=paralleliBox(D,p);if(par)card.append(par)}
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
@@ -444,6 +467,7 @@ function renderDistribution(D,hits){
  const ids=Object.keys(by).sort((a,b)=>(CHRONO[a]??0)-(CHRONO[b]??0));if(!ids.length)return;
  const max=Math.max(...ids.map(id=>by[id].length));
  const sec=el("section",{class:"lx-side-block"},el("h3",{},"Distribución diacrónica"),el("p",{class:"lx-small"},"Coincidencias por obra en orden cronológico aproximado: valor absoluto, frecuencia por 10 000 palabras con su intervalo de confianza del 95 % (Wilson), dispersión a lo largo de la obra y DP de Gries por libro (0 = repartida de modo uniforme; 1 = concentrada)."));
+ if(ids.includes("vitruvius"))sec.append(vitruviusWitnessLine());
  for(const id of ids){const w=work(D,id);const tot=D.workTokens[id]||1;const k=by[id].length;const [lo,hi]=wilson(k,tot);
   const st=workStats(D,id);const strip=el("span",{class:"lx-disp",title:"Posición de cada coincidencia en la obra"});
   for(const h of by[id].slice(0,400)){const x=(st.offset[h.i]??0)/st.total;strip.append(el("i",{style:`left:${(x*100).toFixed(2)}%`}))}
