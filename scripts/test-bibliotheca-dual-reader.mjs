@@ -47,7 +47,13 @@ assert.match(reader,/searchLocus/);
 assert.match(reader,/getSearchTerms:/);
 assert.match(reader,/Aquitani/i);
 assert.match(reader,/celtae/i);
-assert.match(html,/assets\/classics-study-tools\.js\?v=/);
-assert.match(html,/assets\/bibliotheca-graeca-latina\.js\?v=/);
+// The simplified concordance page no longer embeds readers or their toolbars.
+assert.match(html,/assets\/bibliotheca-simple\.js\?v=/);
+assert.match(html,/id="classic-query"/);
+assert.match(html,/id="classic-work"/);
+assert.doesNotMatch(html,/assets\/classics-study-tools\.js\?v=/);
+assert.doesNotMatch(html,/<iframe\b|type="color"/);
+assert.match(read("assets/bibliotheca-simple.js"),/searchPassages\(\[q\]/);
+assert.match(read("assets/bibliotheca-simple.js"),/vitruvia-lexicon\.html/);
 assert.match(old,/location\.replace\(dest\.href\)/);
 console.log("PASS · Caesar: 404 Latin and English loci; bilingual queries; study controls; integrated reader; black defaults.");
