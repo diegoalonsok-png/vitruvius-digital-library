@@ -39,7 +39,9 @@ function block(root,title,records,note){
  if(!records.length)return;
  const sec=el('section','vhg-block');sec.append(el('h4','',title));
  if(note)sec.append(el('p','vhg-caption',note));
- const rows=el('div','vhg-cards');records.slice(0,10).forEach(r=>card(rows,r));sec.append(rows);root.append(sec);
+ const rows=el('div','vhg-cards');records.forEach(r=>card(rows,r));sec.append(rows);
+ const info=el('p','vhg-caption',L('Registros documentados: ','Documented records: ','Notices documentées : ')+records.length);
+ sec.append(info);root.append(sec);
 }
 const leonardo=[
  {title:'Codex Atlanticus',location:'Biblioteca Ambrosiana · Milán',date:'Siglos XV–XVI',url:'https://www.ambrosiana.it/en/discover/masterpieces/codex-atlanticus/',kind:'codex'},
@@ -65,15 +67,98 @@ async function awards(qid){
  return ids.map(id=>{const x=data?.entities?.[id],name=x?.labels?.es?.value||x?.labels?.en?.value;const pic=x?.claims?.P18?.find(a=>a.mainsnak?.datavalue?.value)?.mainsnak?.datavalue?.value;return name?{title:name,kind:'award',url:'https://www.wikidata.org/wiki/'+id,
  image:typeof pic==='string'?'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(pic):'',location:'Wikidata · distinción registrada'}:null}).filter(Boolean);
 }
-async function albums(name){
- const raw=await json('https://itunes.apple.com/search?'+new URLSearchParams({term:name,entity:'album',limit:'90',country:'US',media:'music'}));
- const key=norm(name).replace(/^(the|los|las|el|la) /,'');
- const seen=new Set();
- return (raw?.results||[]).filter(r=>r.wrapperType==='collection'&&r.collectionViewUrl&&r.collectionName&&norm(r.artistName).replace(/^(the|los|las|el|la) /,'')===key)
- .sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')))
- .filter(r=>{const title=norm(r.collectionName).replace(/\b(deluxe|edition|remastered|anniversary)\b/g,'');if(seen.has(title))return false;seen.add(title);return true})
- .slice(0,10).map(r=>({title:r.collectionName,date:r.releaseDate?.slice(0,4),kind:'music',
+/* Artista identificado por catálogo de autoridad MusicBrainz; recorrer todas
+   las páginas de release-groups, no limitar la discografía a diez resultados
+   de la búsqueda comercial de iTunes. */
+const musicKey=n=>norm(n).replace(/^(the|los|las|el|la) /,'');
+const musicType=rg=>{
+ const primary=String(rg['primary-type']||'Other').toLowerCase();
+ const secondary=(rg['secondary-types']||[]).map(x=>String(x).toLowerCase());
+ if(secondary.includes('compilation'))return 'compilation';
+ if(secondary.includes('live'))return 'live';
+ if(secondary.includes('soundtrack'))return 'soundtrack';
+ if(secondary.includes('remix'))return 'remix';
+ return primary==='album'?'album':primary==='ep'?'ep':primary==='single'?'single':'other';
+};
+const sortChrono=(a,b)=>String(a.sortDate||'9999').localeCompare(String(b.sortDate||'9999'))||a.title.localeCompare(b.title);
+async function appleAlbums(name){
+ const raw=await json('https://itunes.apple.com/search?'+new URLSearchParams({term:name,entity:'album',limit:'200',country:'US',media:'music'}));
+ return (raw?.results||[]).filter(r=>r.wrapperType==='collection'&&r.collectionViewUrl&&r.collectionName&&musicKey(r.artistName)===musicKey(name))
+ .map(r=>({title:r.collectionName,sortDate:r.releaseDate||'',date:r.releaseDate?.slice(0,4),kind:'music',category:'album',
  image:r.artworkUrl100?.replace('100x100bb','300x300bb'),location:'Apple Music / iTunes · edición registrada',url:r.collectionViewUrl}));
+}
+async function musicBrainzAlbums(name){
+ const found=await json('https://musicbrainz.org/ws/2/artist/?'+new URLSearchParams({query:'artist:"'+name.replace(/"/g,'')+'"',fmt:'json',limit:'10'}));
+ const candidates=found?.artists||[];
+ const selected=candidates.find(a=>musicKey(a.name)===musicKey(name)&&Number(a.score)>=80);
+ if(!selected?.id)return {items:[],complete:false,total:0,source:''};
+ const pages=[],PAGE=100,MAX=2000;let total=Infinity,offset=0;
+ while(offset<total&&offset<MAX){
+  const data=await json('https://musicbrainz.org/ws/2/release-group/?'+new URLSearchParams({artist:selected.id,fmt:'json',limit:String(PAGE),offset:String(offset)}));
+  if(!data?.['release-groups'])break;
+  total=Number(data['release-group-count'])||data['release-groups'].length;
+  const batch=data['release-groups'];if(!batch.length)break;
+  pages.push(...batch);offset+=batch.length;
+  // MusicBrainz public API is rate limited to approximately 1 request/second.
+  if(offset<total)await new Promise(resolve=>setTimeout(resolve,1100));
+ }
+ const unique=new Map();
+ for(const rg of pages){
+  if(!rg.id||!rg.title)continue;
+  // MusicBrainz groups releases, so remasters of the same album don't each
+  // become a new original work; explicit reissue groups stay separately sourced.
+  unique.set(rg.id,{title:rg.title,sortDate:rg['first-release-date']||'',date:rg['first-release-date']?.slice(0,4)||'',
+   kind:'music',category:musicType(rg),image:'https://coverartarchive.org/release-group/'+rg.id+'/front-250',
+   location:'MusicBrainz · grupo de publicaciones',url:'https://musicbrainz.org/release-group/'+rg.id});
+ }
+ return {items:[...unique.values()].sort(sortChrono),complete:offset>=total,total,source:'https://musicbrainz.org/artist/'+selected.id};
+}
+async function albums(name){
+ const [authority,store]=await Promise.all([musicBrainzAlbums(name),appleAlbums(name)]);
+ if(authority.items.length){
+  const art=new Map(store.map(r=>[musicKey(r.title),r]));
+  for(const item of authority.items){
+   const match=art.get(musicKey(item.title));
+   if(match){item.image=match.image||item.image;item.purchaseUrl=match.url;}
+  }
+  return {items:authority.items,complete:authority.complete,source:authority.source,total:authority.total,provider:'MusicBrainz'};
+ }
+ const seen=new Map();for(const r of store)if(!seen.has(musicKey(r.title)))seen.set(musicKey(r.title),r);
+ return {items:[...seen.values()].sort(sortChrono),complete:false,total:0,source:'https://musicbrainz.org/search?'+new URLSearchParams({query:name,type:'artist',method:'indexed'}),provider:'Apple Music / iTunes'};
+}
+const musicTitles={
+ album:['Álbumes de estudio y otros álbumes','Studio and other albums','Albums studio et autres albums'],
+ soundtrack:['Bandas sonoras','Soundtracks','Bandes originales'],
+ live:['Álbumes en vivo','Live albums','Albums live'],
+ compilation:['Recopilatorios','Compilations','Compilations'],
+ ep:['EP','EPs','EP'],
+ single:['Sencillos','Singles','Singles'],
+ remix:['Remixes','Remixes','Remixes'],
+ other:['Otras publicaciones','Other releases','Autres publications']
+};
+async function authoredBooks(name){
+ // Direct author identifier + paginated works. Avoid truncated text searches
+ // falsely presented as a complete oeuvre.
+ const found=await json('https://openlibrary.org/search/authors.json?'+new URLSearchParams({q:name,limit:'20'}));
+ const author=(found?.docs||[]).find(a=>norm(a.name)===norm(name)&&/^OL\\d+A$/.test(a.key||''));
+ if(!author)return {items:[],complete:false,source:'https://openlibrary.org/search/authors?'+new URLSearchParams({q:name})};
+ const items=[],PAGE=100,MAX=3000;let offset=0,total=Infinity;
+ while(offset<total&&offset<MAX){
+  const data=await json('https://openlibrary.org/authors/'+author.key+'/works.json?'+new URLSearchParams({limit:String(PAGE),offset:String(offset)}));
+  if(!Array.isArray(data?.entries))break;
+  total=Number(data.size)||data.entries.length;
+  const batch=data.entries;if(!batch.length)break;
+  for(const w of batch){
+   if(!/^\/works\/OL\\d+W$/.test(w.key||'')||!w.title)continue;
+   const cover=(w.covers||[]).find(x=>Number.isInteger(x)&&x>0);
+   const year=String(w.first_publish_date||'').match(/(?:1[0-9]{3}|20[0-9]{2})/);
+   items.push({title:w.title,kind:'book',sortDate:year?.[0]||'',date:year?.[0]||'',image:cover?'https://covers.openlibrary.org/b/id/'+cover+'-M.jpg?default=false':'',
+    location:'Open Library · obra atribuida',url:'https://openlibrary.org'+w.key});
+  }
+  offset+=batch.length;
+ }
+ const seen=new Map();for(const w of items)if(!seen.has(w.url))seen.set(w.url,w);
+ return {items:[...seen.values()].sort(sortChrono),complete:offset>=total,source:'https://openlibrary.org/authors/'+author.key+'/works'};
 }
 async function works(qid,kind){
  if(!window.VitruviaCulturalWorks?.catalogue)return [];
