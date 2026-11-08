@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 64,
-    "translatedWorksLocal": 22,
-    "worksWithoutHostedTranslation": 200,
+    "translatedWorksLocal": 25,
+    "worksWithoutHostedTranslation": 197,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 20,
+      "en": 23,
       "fr": 2
     },
     "originalTextIndexed": 64,
@@ -526,13 +526,16 @@
       "title": "Agricola",
       "originalLanguage": "la",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "la"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
+      "translationSourceDescription": "Inglés: Alfred John Church y William Jackson Brodribb (1877), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
       "indexed": true
     },
@@ -1646,14 +1649,17 @@
       "title": "Θεογονία",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés: Hugh G. Evelyn-White (1914), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -1662,14 +1668,17 @@
       "title": "Ἔργα καὶ Ἡμέραι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés: Hugh G. Evelyn-White (1914), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
