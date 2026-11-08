@@ -33,7 +33,30 @@ def main():
               + '</div></body></text></TEI>').encode()
     _, _, _, verse_passages = module.extract_complete_tei(poetry, "Carmina")
     assert verse_passages and any("Ars longa" in p["original"] for p in verse_passages)
-    print("PASS: prosa mixta íntegra, versos preservados, XML sin modificación")
+    # Perseus P4, Catón: external DTD and HTML named entities need temporary
+    # normalization; source bytes must stay unchanged for sourceSha256.
+    legacy = ('<!DOCTYPE TEI.2 PUBLIC "-//TEI P4//EN" "http://example.invalid/tei.dtd" ['
+              '<!ENTITY % TEI.XML "INCLUDE">%TEI.XML;]>'
+              '<TEI.2><teiHeader><fileDesc><titleStmt><title>De agri cultura</title>'
+              '<author>Cato</author></titleStmt></fileDesc></teiHeader>'
+              '<text xml:lang="lat"><body><div1 type="chapter" n="1"><p>'
+              + ('Agricola terram colit &dagger; vinum ex &ouml;le conficit. ' * 50)
+              + '</p></div1></body></text></TEI.2>').encode("utf-8")
+    old_sha = hashlib.sha256(legacy).hexdigest()
+    normalized = module.normalize_legacy_perseus_tei(legacy)
+    assert b'<!DOCTYPE' not in normalized and b'<TEI xmlns=' in normalized
+    title, author, lang, passages = module.extract_complete_tei(legacy, 'De agri cultura')
+    assert title == 'De agri cultura' and author == 'Cato' and lang == 'lat'
+    assert any('†' in p['original'] and 'ö' in p['original'] for p in passages)
+    assert all(p['locus'].startswith('1.') for p in passages)
+    assert hashlib.sha256(legacy).hexdigest() == old_sha, 'TEI original alterada'
+    try:
+        module.normalize_legacy_perseus_tei(legacy.replace(b'&dagger;', b'&entidadInventada;'))
+        raise AssertionError('Entidad no reconocida aceptada')
+    except ValueError as ex:
+        assert 'desconocida' in str(ex)
+
+    print("PASS: prosa mixta íntegra, versos preservados, XML P4 y P5 sin modificación")
 
 if __name__ == "__main__":
     main()
