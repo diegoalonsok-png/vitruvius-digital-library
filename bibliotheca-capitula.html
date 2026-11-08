@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0d0d0e">
+<title>Capitula · Lectura sincronizada · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Comparación sencilla por capítulos de originales griegos y latinos con sus traducciones indexadas; sin inventar alineaciones entre textos.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/bibliotheca-capitula.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Gentium+Book+Plus:wght@400;700&family=Noto+Serif+Hebrew:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/bibliotheca-capitula.css?v=20261108-v1">
+<script defer src="assets/bibliotheca-capitula.js?v=20261108-v1"></script>
+</head>
+<body>
+<main class="shell">
+<nav class="top" aria-label="Navegación"><a class="brand" href="bibliotheca-graeca-latina.html">VITRVVIVS <span>/ Bibliotheca</span></a><div class="links"><a href="bibliotheca-graeca-latina.html">Concordancias</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="index.html">Inicio</a></div></nav>
+<header class="hero"><small>BIBLIOTHECA GRAECA ET LATINA · CAPITULA</small><h1>Lectura por capítulos</h1><p>Original y traducción, lado a lado. Si las ediciones comparten una referencia de capítulo comprobable, se navegan juntas; si no, se leen independientemente y se indica la falta de alineación.</p></header>
+<section class="toolbar" aria-label="Seleccionar texto y versiones">
+<label for="work">Obra <select id="work" disabled><option>Cargando catálogo…</option></select></label>
+<div class="versionrow"><label for="left-version">Texto original <select id="left-version" disabled></select></label><label for="right-version">Traducción <select id="right-version" disabled></select></label></div>
+<div class="chapterbar" id="chapterbar" hidden><button type="button" id="prev">‹ Capítulo anterior</button><label for="chapter">Capítulo / unidad <select id="chapter"></select></label><button type="button" id="next">Capítulo siguiente ›</button></div>
+<p id="status" role="status" aria-live="polite">Consultando las ediciones locales…</p>
+</section>
+<div class="panes">
+<section class="pane" aria-label="Texto original"><div class="panehead"><strong id="left-title">Original</strong><label for="left-chapter">Capítulo <select id="left-chapter" disabled></select></label></div><div class="provenance" id="left-source"></div><article class="passages" id="left-text" aria-live="polite"></article></section>
+<section class="pane" aria-label="Traducción"><div class="panehead"><strong id="right-title">Traducción</strong><label for="right-chapter">Capítulo <select id="right-chapter" disabled></select></label></div><div class="provenance" id="right-source"></div><article class="passages" id="right-text" aria-live="polite"></article></section>
+</div>
+<p class="method" id="method">Se muestran únicamente pasajes almacenados en la biblioteca. Una coincidencia de numeración no prueba equivalencia palabra a palabra, identidad de recensio ni cotejo manuscrito. No se ocultan capítulos aunque una traducción carezca de correspondencia.</p>
+<footer>Fuentes y traducciones conservan su identificación editorial. <a href="bibliotheca-graeca-latina.html">Volver a las concordancias</a> · <a href="vitruvia-lexicon.html">Estudiar palabras en Lexicon</a></footer>
+</main>
+</body></html>
