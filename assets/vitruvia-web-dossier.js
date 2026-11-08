@@ -324,12 +324,22 @@ function manuscriptWitnesses(root,topic,rows){
  if(!topic.person||!['author','literature'].includes(topic.kind))return;
  const author=normalized(topic.name),workIds=new Set(rows.filter(r=>r.type==='book'&&r.workId&&normalized(r.author||'')===author).map(r=>r.workId));
  const seen=new Set();
+ const oldest=bookRows.map(b=>({book:b,witness:window.VitruviaOldestSource?.forWork?.(b.workId)})).filter(x=>x.witness?.url);
  const manuscripts=rows.filter(r=>r.type==='manuscript'&&Array.isArray(r.workIds)&&r.workIds.some(id=>workIds.has(id))&&(r.codexViewer||r.viewerUrl||r.link))
  .filter(r=>{const url=r.codexViewer||r.viewerUrl||r.link;if(seen.has(url))return false;seen.add(url);return true})
  .sort((a,b)=>(Number(a.codexDate)||99999)-(Number(b.codexDate)||99999));
- if(!manuscripts.length)return;
+ if(!manuscripts.length&&!oldest.length)return;
  header(root,L('Manuscritos más antiguos identificados','Earliest identified manuscripts','Manuscrits les plus anciens identifiés'));
  const box=el('div','web-dossier-list cultural-manuscripts');root.append(box);
+ const visited=new Set();
+ for(const {book,witness} of oldest){
+  if(!witness?.url||visited.has(witness.url))continue;visited.add(witness.url);
+  const card=el('article','web-dossier-card cultural-witness'),body=el('div','web-dossier-card-body');
+  body.append(el('p','web-dossier-meta',book.title||'Obra clásica'));
+  body.append(link(witness.label||'Testimonio antiguo',witness.url));
+  body.append(el('p','context-note',L('Testimonio más antiguo identificado en la ficha de esta obra; verificar datación y procedencia.','Earliest identified witness for this work; verify dating and provenance.','Plus ancien témoin identifié pour cette œuvre ; vérifier la datation et la provenance.')));
+  card.append(body);box.append(card);
+ }
  for(const r of manuscripts.slice(0,12)){
   const url=r.codexViewer||r.viewerUrl||r.link,card=el('article','web-dossier-card cultural-witness'),body=el('div','web-dossier-card-body');
   body.append(link(r.title||r.codexRepository||'Manuscrito',url));
