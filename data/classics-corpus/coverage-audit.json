@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 90,
+    "indexedTextVersions": 91,
     "indexedDistinctWorks": 64,
     "manuscriptWitnesses": 23
   },
@@ -2162,9 +2162,11 @@
       "dating": "siglo II d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/marcus-aurelius-meditations-en.json",
         "data/classics-corpus/marcus-aurelius-meditations-grc.json"
       ],
       "localPDF": null,
@@ -2178,7 +2180,7 @@
         }
       ],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Griego Perseus TEI y traducción inglesa histórica George Long (1862)/Standard Ebooks, indexados con visores independientes. Las unidades editoriales no equivalen a cotejo crítico ni alineación por loci."
     },
     {
       "id": "homer-iliad",
