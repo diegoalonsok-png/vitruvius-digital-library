@@ -1,0 +1,100 @@
+:root{color-scheme:dark;--lx:#0d0d0e;--paper:#fff;--muted:#a3a3a4;--stroke:#353536}
+*{box-sizing:border-box}
+html{background:var(--lx);color:var(--paper)}
+body{margin:0;background:var(--lx);color:var(--paper);font:15px/1.7 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#d1d1d0;text-decoration-color:#777;text-underline-offset:4px}
+a:hover{color:#fff}
+button,select,input{font:inherit}
+/* Bibliotheca controls are strictly rectangular: charcoal fill and neutral grey strokes. */
+/* Controles rectangulares con esquinas suavemente redondeadas, como Lexicon. */
+.searchform{border-radius:9px!important}
+.searchform button,.language-toggle,.workrow select,.more{border-radius:7px!important}
+.searchform{border-color:#373737!important}
+.searchform button{border-color:#3e3e3f!important}
+.language-toggle{border-color:#414141!important}
+.workrow select{border-color:#414141!important}
+.more{border-color:#444!important}
+button{cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #a8a8aa;outline-offset:3px}
+.library{width:min(1140px,calc(100% - 44px));margin:0 auto;padding:0 0 80px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:23px 0;border-bottom:1px solid var(--stroke);flex-wrap:wrap}
+.brand{font:400 19px/1.2 "Gentium Book Plus","Cardo",Georgia,serif;letter-spacing:.04em}
+.toplinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:12px}
+.toplinks a{text-decoration:none;color:#aaa}.toplinks a:hover{color:#fff}
+.language-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:38px;min-width:100px;padding:7px 11px;border:1px solid #414141;border-radius:7px;background:#1a1a1b;color:#d7d7d7;font:500 12px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.02em;cursor:pointer}
+.language-toggle:hover{background:#303032;color:#fff;border-color:#777}
+.language-toggle:focus-visible{outline:2px solid #c8c8ca;outline-offset:3px}
+header.hero{padding:66px 0 26px;border-bottom:1px solid #303030}
+.eyebrow{display:block;color:#989899;text-transform:uppercase;font:400 10px/1.5 Arial,sans-serif;letter-spacing:.19em}
+h1{font:400 clamp(42px,6vw,78px)/1.09 "Gentium Book Plus","Cardo",Georgia,serif;letter-spacing:-.025em;color:#f0f0ee;margin:11px 0 14px}
+.intro{color:#aaa;font-size:14px;max-width:790px;margin:0}
+.searcharea{padding:26px 0 23px}
+.searchform{display:flex;align-items:center;gap:8px;border:1px solid #373737;border-radius:9px;padding:6px 6px 6px 22px;min-height:61px;background:#181818}
+.searchform input{flex:1;width:100%;min-width:0;outline:0;border:0;background:transparent;color:#f1f1ef;font:400 17px/1.5 "Gentium Book Plus","Cardo",Georgia,serif}
+.searchform input::placeholder{color:#909092}
+.searchform button{border:1px solid #3e3e3f;background:#2d2d2f;color:#eaeaea;border-radius:7px;min-height:45px;padding:7px 18px;font:500 12px/1.4 Arial,sans-serif}
+.searchform button:hover{background:#424244}
+.workrow{display:flex;align-items:center;gap:14px;padding:16px 3px 0;flex-wrap:wrap}
+.workrow label{color:#a5a5a6;font-size:12px}
+.workrow select{flex:1;min-width:min(100%,250px);max-width:100%;border:1px solid #414141;border-radius:7px;background:#1a1a1b;color:#d7d7d7;padding:11px;font:13px/1.5 Arial,sans-serif}
+.coverage,.search-status{font:400 12px/1.7 Arial,sans-serif;color:#a7a7a9;margin:13px 3px}
+.search-status{font-size:14px;color:#c4c4c5;min-height:0}
+.result{border-top:1px solid #303031;padding-top:8px}
+.result[hidden]{display:none}
+.results-heading{font:400 23px/1.4 "Gentium Book Plus","Cardo",Georgia,serif;margin:17px 0;color:#ebebea}
+.group{border-top:1px solid #373738;padding:23px 0 7px;break-inside:avoid-page}
+.group:first-child{border-top:0}
+.group h3{margin:0;font:400 clamp(24px,3vw,34px)/1.22 "Gentium Book Plus","Cardo",Georgia,serif;color:#eeeeec}
+.group .meta{margin:5px 0 12px;font:400 12px/1.6 Arial,sans-serif;color:#a3a3a4}
+.group .bibliography{margin:8px 0 16px;font:400 12px/1.7 Georgia,serif;color:#bdbdbd;overflow-wrap:anywhere}
+.group .hits{list-style:none;margin:0;padding:0}
+.hit{padding:14px 0;border-top:1px solid #29292b;break-inside:avoid-page}
+.hit .locus{font:500 11px/1.5 Arial,sans-serif;letter-spacing:.025em;color:#9b9b9c}
+.hit p{font:400 clamp(17px,1.9vw,20px)/1.83 "Gentium Book Plus","Cardo",Georgia,serif;color:#e2e2e0;margin:6px 0;overflow-wrap:anywhere;white-space:normal}
+.hit mark{background:#57575a;color:#fff;border-radius:0;padding:0 1px}
+.hit .label{font:400 11px/1.6 Arial,sans-serif;color:#aaa}
+.footnote{border-top:1px solid #343436;color:#aaa;padding:20px 0;margin-top:22px;font:400 12px/1.75 Arial,sans-serif}
+.footnote[hidden],.more[hidden]{display:none}
+.more{background:#202021;border:1px solid #444;color:#ccc;width:100%;padding:12px 16px;border-radius:7px;margin:18px 0}
+.more:hover{background:#292929;color:#fff}
+footer{margin:45px 0 0;padding-top:15px;border-top:1px solid #303030;color:#929293;font-size:11px}
+/* Retroalimentación perceptible sin cambiar la estética de Lexicon.
+   Un clic aclara levemente la superficie, deja un halo gris de foco
+   y al presionar desplaza 1 px; nunca se usa dorado. */
+.language-toggle,.searchform button,.workrow select,.more{
+ transition:background-color .13s ease,border-color .13s ease,box-shadow .13s ease,transform .08s ease;
+}
+.language-toggle:hover,.searchform button:hover,.workrow select:hover,.more:hover{
+ border-color:#676769!important;
+}
+.language-toggle:focus,.searchform button:focus,.workrow select:focus,.more:focus{
+ border-color:#929295!important;
+ box-shadow:0 0 0 2px rgba(145,145,149,.17);
+}
+.searchform:focus-within{
+ border-color:#666!important;
+ box-shadow:0 0 0 1px rgba(145,145,149,.12);
+}
+.language-toggle:active,.searchform button:active,.more:active{
+ background:#414143!important;
+ transform:translateY(1px);
+}
+.workrow select:active{background:#2f2f31!important}
+@media(prefers-reduced-motion:reduce){
+ .language-toggle,.searchform button,.workrow select,.more{transition:none;transform:none!important}
+}
+@media(max-width:600px){.library{width:calc(100% - 28px)}header.hero{padding:38px 0 23px}.top{padding:14px 0}.searchform{padding-left:13px;min-height:53px}.searchform input{font-size:15px}.searchform button{padding:8px 12px;min-height:40px}.workrow{align-items:stretch}.workrow label{width:100%}.workrow select{width:100%}}
+@media print{html,body{background:#fff!important;color:#111!important;color-scheme:light}.library{width:100%;padding:0}.top,.searcharea,.coverage,.more,footer{display:none!important}header.hero{padding:12px 0;border-color:#999}.intro,.eyebrow,.search-status,.group h3,.group .meta,.group .bibliography,.hit .locus,.hit .label,.hit p,.results-heading{color:#111!important}.hit mark{background:#ddd!important;color:#111!important}.group,.hit{border-color:#aaa!important}}
+
+/* Bibliotheca: blanco sobre negro; referencias accesibles sin paneles adicionales. */
+html,body,.library{background:#0d0d0e!important;color:#fff!important}
+h1,.group h3,.hit p{color:#fff!important}
+.group .version-counts{color:#ededed;font:400 12px/1.6 Arial,Helvetica,sans-serif;margin:0 0 8px}
+.references{border:0;margin:5px 0 15px;color:#d8d8d8;font-size:12px}
+.references summary{cursor:pointer;color:#e9e9e9;display:list-item}
+.reference-list{padding-left:18px;margin:8px 0 0;line-height:1.65}
+.reference-list li{overflow-wrap:anywhere;margin-bottom:6px}
+.lexicon-bar[hidden]{display:none}
+.lexicon-bar{margin:4px 0 20px}
+.lexicon-bar a{display:inline-block;padding:7px 0;color:#fff;text-decoration:underline;text-decoration-color:#777;font-size:13px;overflow-wrap:anywhere}
+.lexicon-bar a:hover,.lexicon-bar a:focus-visible{color:#fff;text-decoration-color:#fff}
