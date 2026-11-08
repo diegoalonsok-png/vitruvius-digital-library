@@ -25,6 +25,7 @@ const requests=[];
 const fetch=async url=>{
  requests.push(url);
  const data=url==="data/classics-corpus/search-registry.json"?registry:
+  url==="data/lexicon/conceptus.json"?{concepts:[{id:"mechanics",modern:{es:["mecánica"]},la:[],grc:["μηχανικῆς"]}]}:
   url===root+"manifest.json"?fixture.manifest:url===path?fixture.book:null;
  return {ok:!!data,status:data?200:404,json:async()=>data};
 };
@@ -43,6 +44,11 @@ assert.ok(hits[0].excerpt.includes("λόγος"));
 assert.ok(hits[0].link.includes("classics-remote-text-reader.html"));
 assert.ok(hits[0].link.includes("locus=0.1"));
 assert.ok(requests.includes(path));
+const semantic=await window.ClassicsCorpusSearch.semanticSearch("mecánica",{limit:10});
+assert.equal(semantic.length,1,"Vitruvia/Lexicon conceptual search must find the remote Greek original");
+assert.equal(semantic[0].workId,"ps-aristotle-mechanica");
+assert.ok(semantic[0].link.includes("locus=0.1"),"Conceptus must open the attested Greek locus");
+assert.ok(semantic[0].link.includes("classics-remote-text-reader.html"));
 for(const file of ["vitruvia.html","vitruvia-lexicon.html"]){
  const html=fs.readFileSync(file,"utf8");
  const offsite=html.indexOf("assets/bibliotheca-offsite-greek.js");
