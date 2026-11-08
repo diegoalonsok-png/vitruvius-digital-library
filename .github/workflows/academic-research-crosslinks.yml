@@ -1,0 +1,37 @@
+name: Control de investigación interconectada
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'investigacion-conectada.html'
+      - 'assets/academia-conexiones.js'
+      - 'scripts/test-academic-research-bridge.mjs'
+      - 'docs/protocolo-investigacion-interconectada.md'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/critical-notes.json'
+      - '.github/workflows/academic-research-crosslinks.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'investigacion-conectada.html'
+      - 'assets/academia-conexiones.js'
+      - 'scripts/test-academic-research-bridge.mjs'
+      - 'docs/protocolo-investigacion-interconectada.md'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Validar sintaxis de la interconexión
+        run: |
+          node --check assets/academia-conexiones.js
+          node --check scripts/test-academic-research-bridge.mjs
+      - name: Validar fuentes, relaciones y grados de evidencia
+        run: node scripts/test-academic-research-bridge.mjs
