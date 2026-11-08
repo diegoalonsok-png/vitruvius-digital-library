@@ -619,11 +619,20 @@ function renderLogosGrammar(){
    lengua consultada, independientemente de la búsqueda literal de Bibliotheca.
    No contar OCR o traducciones como testimonios manuscritos. */
 function morphologyFrequency(D,term,lemmas){
- const root=fold(term.v||"").replace(/^@/,"");
- const unique=[...new Set(lemmas.map(x=>lemmaDisplay(x)))];
- const per=unique.map(w=>({w,forms:lemmaFormsFor(D,w)}));
- if(!per.length)per.push({w:term.v,forms:new Set(D.workFreq.has(root)?[root]:[])});
+ const searched=fold(term.v||"").replace(/^@/,"").replace(/[^\p{L}']/gu,"");
+ // Keep numbered homograph IDs (locus1, locus2), not just their display
+ // spelling. Dropping the ID can silently erase all of their inflections.
+ const ids=[...new Set(lemmas)];
+ const per=ids.map(id=>({w:lemmaDisplay(id),forms:lemmaFormsFor(D,id)}));
+ // For an unanalysed form, report the actual attested corpus token, not zero
+ // merely because CLTK/AGDT has no morphological mapping for it.
+ const literalFound=D.workFreq.has(searched);
+ if(!per.length)per.push({w:term.v,forms:new Set(literalFound?[searched]:[])});
+ if(term.type!=="lemma"&&literalFound){
+  if(!per.some(p=>p.forms.has(searched)))per.push({w:term.v+" · forma literal",forms:new Set([searched])});
+ }
  const distinctForms=new Set(per.flatMap(p=>[...p.forms]));
+ if(!distinctForms.size&&literalFound)distinctForms.add(searched);
  const rows=[];
  for(const id of Object.keys(D.corpus.works)){
   const counts=per.map(x=>[...x.forms].reduce((sum,f)=>sum+(D.workFreq.get(f)?.[id]||0),0));
@@ -633,8 +642,13 @@ function morphologyFrequency(D,term,lemmas){
  }
  rows.sort((a,b)=>(CHRONO[a.id]??0)-(CHRONO[b.id]??0));
  const section=frequencyTable(null,{rows,trN:0});
+ const exact=D.freq.get(searched)||0,total=rows.reduce((sum,r)=>sum+r.total,0);
  section.insertBefore(el("p",{class:"article-note"},
-  "Frecuencia morfológica en la lengua consultada: se suman las formas documentadas de cada lema en el índice. Si hay lemas ambiguos, una misma forma puede pertenecer a más de uno; el total por obra deduplica las formas. La búsqueda literal en Bibliotheca se presenta por separado."),section.querySelector("table")||section.lastChild);
+  "Forma exacta «"+term.v+"»: "+exact.toLocaleString("es")+" apariciones en el corpus "+(D.l==="grc"?"griego":"latino")+
+  ". Formas del lema: "+total.toLocaleString("es")+" apariciones en "+rows.length+" obras indexadas. "+
+  "Son recuentos de las ediciones digitales, no de los códices manuscritos. "+
+  (ids.length?"Lemas analizados: "+ids.map(lemmaDisplay).join(" / ")+". ":"Si la forma no tiene análisis morfológico, se cuenta únicamente su grafía documentada.")),
+  section.querySelector("table")||section.lastChild);
  return section;
 }
 async function renderEntry(D,term,res){
@@ -656,6 +670,8 @@ async function renderEntry(D,term,res){
   lemmas.forEach(lem=>{const info=lemmaInfo(D,lem);a.append(el("button",{type:"button",lang:D.l,onclick:()=>{$("#lx-q").value="@"+lem;S.mode="lema";renderTabs();run()}},`${lemmaDisplay(lem)}${info.h?" · "+info.h:""}${info.g?" — "+info.g.split(/;\s*/)[0]:""}`))});ch.append(a);body.append(ch)}
  /* Sugerencia interlingüística desde el Etymologicum. */
  {const eq=findCurated(lemmas.concat([term.v]));if(eq&&((eq.gr||[]).length||(eq.he||[]).length)){const sg=el("p",{class:"lx-person-banner"},"Equivalentes registrados: ");(eq.l==="la"?(eq.gr||[]):(eq.la||[])).slice(0,3).forEach(x=>sg.append(el("span",{lang:eq.l==="la"?"grc":"la"},x.w)," · "));(eq.he||[]).slice(0,2).forEach(x=>sg.append(el("span",{lang:"he"},x.w)," · "));sg.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value="="+eq.lemma;run()}},`Incluir griego, latín y hebreo (=${eq.lemma})`));body.append(sg)}}
+ /* Tabla de frecuencias siempre visible antes de las fichas y variantes. */
+ body.append(morphologyFrequency(D,term,lemmas));
  /* Lema y morfología */
  for(const lem of lemmas.slice(0,4)){
   const info=lemmaInfo(D,lem);const forms=[...(D.lemmaForms.get(lem)||[])].filter(f=>D.freq.has(f)).sort((a,b)=>D.freq.get(b)-D.freq.get(a));
@@ -676,9 +692,7 @@ async function renderEntry(D,term,res){
  if(!lemmas.length&&res.sets?.[0]?.size>1){body.append(el("p",{},"Formas que satisfacen la consulta: ",[...res.sets[0]].slice(0,80).join(" · ")))}
  /* Etimología editorial */
  if(curated)body.append(etymCard(curated));
- /* Frecuencia propia de cualquier lema griego o latino, con o sin Conceptus.
-    Si aparece además Conceptus, su frecuencia semántica es una sección distinta. */
- body.append(morphologyFrequency(D,term,lemmas));
+
  /* Etimología en línea */
  renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
  /* Aside: frecuencia, colocaciones, exportación */
