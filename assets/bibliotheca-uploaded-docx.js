@@ -134,6 +134,8 @@ function show(){
   section.append(newEl("h3","",record.title||record.id.replace(/-/g," ")));
   const nav=newEl("p","meta");
   nav.append(document.createTextNode("DOCX · "+record.paragraphs+" "+label("párrafos en la fuente","source paragraphs","paragraphes dans la source")+" · "));
+  const reader=newEl("a","",label("Leer texto completo","Read full text","Lire le texte complet"));
+  reader.href="bibliotheca-documento.html?doc="+encodeURIComponent(record.id)+"&q="+encodeURIComponent(query);nav.append(reader,document.createTextNode(" · "));
   const source=newEl("a","",label("Abrir documento","Open document","Ouvrir le document"));source.href=record.source;nav.append(source);
   if(record.pdf&&PDF_PATH.test(record.pdf)){
    nav.append(document.createTextNode(" · "));
