@@ -52,9 +52,13 @@ COMPOSITE_WORKS = {
     "seneca-tragoediae": tuple(f"phi1017.phi{n:03d}" for n in range(1, 11)),
     "appian-romaika": tuple([f"tlg0551.tlg{n:03d}" for n in range(2, 15)] + ["tlg0551.tlg017"]),
 }
-MAX_XML = 2_200_000
-MAX_JSON = 4_000_000
-MAX_BATCH_BYTES = 12_000_000
+# Las obras extensas (Heródoto, Tucídides, Estrabón...) superan 2,2 MB TEI.
+# Se acepta un original de hasta 8 MB, con JSON hasta 8 MB, siempre que
+# pase el cotejo de caracteres y quede dentro del techo total de GitHub Pages.
+# Ediciones mayores se mantienen pendientes para lectura segmentada, no truncadas.
+MAX_XML = 8_000_000
+MAX_JSON = 8_000_000
+MAX_BATCH_BYTES = 24_000_000
 AGENT = "VitruviusAcademicIndexer/1.0 (https://github.com/diegoalonsok-png/vitruvius-digital-library)"
 
 
