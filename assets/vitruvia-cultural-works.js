@@ -90,14 +90,14 @@ async function preview(item,work,valid){
  const img=el('img','web-dossier-cover');img.src=source;img.alt=work.title;img.loading='lazy';img.decoding='async';img.addEventListener('error',()=>a.remove());a.append(img);item.prepend(a);
 }
 function showWorks(root,works,valid){
- const controls=el('label','cultural-order',L('Ordenar por','Sort by','Trier par'));
+ const controls=el('label','cultural-order',L('Orden cronológico','Chronological order','Ordre chronologique'));
  const select=el('select');select.setAttribute('aria-label',L('Orden de las obras culturales','Cultural works order','Ordre des œuvres culturelles'));
  for(const [value,text] of [['year',L('Más antiguas primero','Oldest first','Plus anciennes d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  controls.append(select);root.append(controls);
  root.append(el('p','web-dossier-count',L('Obras ordenadas por aparición: primera a última; las obras sin fecha van al final.','Works ordered from earliest to latest; undated records follow.','Œuvres classées de la plus ancienne à la plus récente ; œuvres non datées à la fin.')));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
- const cards=new Map();let expanded=false;
- const limit=8;
+ const cards=new Map();let expanded=true;
+ const limit=works.length;
  for(const work of works){
   let item;
   if(work.building){
