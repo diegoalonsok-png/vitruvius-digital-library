@@ -27,7 +27,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: classics-mass-index-${{ github.ref }}
+  group: classics-corpus-publication-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
