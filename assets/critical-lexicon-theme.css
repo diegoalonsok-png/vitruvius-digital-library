@@ -36,3 +36,82 @@ body.critical-lexicon-theme .examples{display:flex;flex-wrap:wrap;align-items:ce
 body.critical-lexicon-theme .examples span{color:#aeb0b6;font:12px Arial,sans-serif}
 @media(max-width:780px){body.critical-lexicon-theme .critical-wrap{width:calc(100% - 26px)}body.critical-lexicon-theme .critical-parallel{grid-template-columns:1fr}body.critical-lexicon-theme .critical-form{padding:15px}body.critical-lexicon-theme .critical-controls{align-items:stretch}body.critical-lexicon-theme .critical-controls label{flex-wrap:wrap}}
 @media print{body.critical-lexicon-theme{background:white!important;color:#111!important}body.critical-lexicon-theme .critical-wrap :is(p,h1,h2,h3){color:#111!important}body.critical-lexicon-theme :is(.critical-form,.critical-controls,.critical-unified-form,.examples,.critical-pdf-tools){display:none!important}body.critical-lexicon-theme :is(.critical-unified,.critical-result,.critical-unified-card){background:white!important;color:#111!important}body.critical-lexicon-theme mark{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+
+/* 2026-11-08: superficie negra continua, controles Lexicon uniformes */
+html:has(body.critical-lexicon-theme),body.critical-lexicon-theme,
+body.critical-lexicon-theme main,body.critical-lexicon-theme .critical-wrap,
+body.critical-lexicon-theme .institution-bar,body.critical-lexicon-theme .site-header,
+body.critical-lexicon-theme .site-header .wrap,body.critical-lexicon-theme footer,
+body.critical-lexicon-theme .footer-main{background:#08090b!important;color:#e8e8e9!important}
+body.critical-lexicon-theme :is(.critical-form,.critical-caution,.critical-unified,#apparatus-catalog,.critical-parallel-edition){
+ background:#111214!important;border:1px solid #33363b!important;border-radius:4px!important;box-shadow:none!important}
+body.critical-lexicon-theme :is(.critical-form,.critical-unified-form){max-width:100%}
+body.critical-lexicon-theme :is(.critical-controls,.critical-unified-options){
+ display:flex!important;gap:10px!important;align-items:flex-end!important;flex-wrap:wrap!important}
+body.critical-lexicon-theme :is(.critical-controls label,.critical-unified-options label){
+ display:flex;flex-direction:column;align-items:stretch;gap:7px;margin:0;min-width:160px;flex:1 1 175px;
+ font:500 12px/1.35 Arial,Helvetica,sans-serif!important}
+body.critical-lexicon-theme .critical-unified-options label.critical-unified-phrase{flex:1 1 220px;flex-direction:row;align-items:center;align-self:center;min-width:0}
+body.critical-lexicon-theme :is(.critical-controls select,.critical-unified-options select,
+ .critical-form input[type="search"],#critical-unified-query,#apparatus-catalog-query){
+ width:100%;max-width:none;background:#191b1f!important;color:#f0f0f0!important;
+ border:1px solid #454850!important;border-radius:4px!important;min-height:42px;
+ padding:10px 12px!important;font:14px/1.4 Arial,Helvetica,sans-serif!important}
+body.critical-lexicon-theme :is(.critical-controls button,.critical-unified-options button,.examples button,
+ #apparatus-catalog-load,#critical-unified-more,#critical-more,#apparatus-catalog-more){
+ display:inline-flex;align-items:center;justify-content:center;white-space:normal;
+ min-height:42px!important;padding:10px 15px!important;background:#202227!important;
+ color:#f2f2f3!important;border:1px solid #474a52!important;border-radius:4px!important;
+ font:500 13px/1.35 Arial,Helvetica,sans-serif!important;letter-spacing:0!important}
+body.critical-lexicon-theme :is(.critical-controls button,.critical-unified-options button,.examples button):hover{
+ background:#30333a!important;border-color:#848992!important}
+body.critical-lexicon-theme .critical-form{margin:20px 0;padding:18px}
+body.critical-lexicon-theme .critical-unified{margin:24px 0;padding:20px}
+body.critical-lexicon-theme .critical-caution{margin:18px 0;padding:18px!important}
+body.critical-lexicon-theme .examples{margin:12px 0 18px}
+body.critical-lexicon-theme .critical-result,.critical-unified-card{background:transparent!important}
+body.critical-lexicon-theme mark{background:#ffe34f!important;color:#111!important}
+body.critical-lexicon-theme input[type="checkbox"]{accent-color:#b8bdc5;width:16px;height:16px}
+@media(max-width:640px){
+ body.critical-lexicon-theme :is(.critical-controls,.critical-unified-options){align-items:stretch!important}
+ body.critical-lexicon-theme :is(.critical-controls label,.critical-unified-options label){flex:1 1 100%}
+ body.critical-lexicon-theme :is(.critical-controls button,.critical-unified-options button){width:100%}
+}
+
+
+/* Compact header specific to critical apparatus. Avoid the orphaned Aa row. */
+body.critical-lexicon-theme .site-header .header-inner{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;
+ column-gap:22px!important;row-gap:12px!important;min-height:0!important;
+ padding:20px 0!important;
+}
+body.critical-lexicon-theme .site-header .wordmark{flex:0 0 auto!important}
+body.critical-lexicon-theme .site-header .wordmark-name{font-size:clamp(27px,2.3vw,35px)!important}
+body.critical-lexicon-theme .site-header .header-inner nav{
+ display:flex!important;flex:1 1 480px!important;flex-wrap:wrap!important;
+ gap:5px 19px!important;min-width:0!important;align-items:center!important}
+body.critical-lexicon-theme .site-header .header-inner nav a{white-space:normal!important;line-height:1.3!important}
+body.critical-lexicon-theme .site-header .site-typeface-tool{
+ position:static!important;display:inline-flex!important;flex:0 0 auto!important;
+ align-self:center!important;margin:0!important;order:5!important}
+body.critical-lexicon-theme .site-header .theme-switch{
+ position:static!important;display:inline-flex!important;flex:0 0 auto!important;
+ min-width:0!important;margin:0!important;order:4!important;
+ background:#202227!important;color:#e8e9eb!important;border:1px solid #474a52!important;
+ min-height:42px!important;border-radius:4px!important}
+body.critical-lexicon-theme .site-header .site-typeface-button{
+ min-width:42px!important;min-height:42px!important;margin:0!important;
+ background:#202227!important;border:1px solid #474a52!important;border-radius:4px!important;
+ box-shadow:none!important}
+body.critical-lexicon-theme .site-header .header-languages{display:none!important}
+@media(max-width:950px){
+ body.critical-lexicon-theme .site-header .header-inner nav{flex-basis:100%!important;order:8!important}
+ body.critical-lexicon-theme .site-header .theme-switch{margin-left:auto!important}
+}
+@media(max-width:550px){
+ body.critical-lexicon-theme .site-header .header-inner{padding:13px 0!important;column-gap:10px!important}
+ body.critical-lexicon-theme .site-header .wordmark-name{font-size:25px!important}
+ body.critical-lexicon-theme .site-header .header-inner nav{gap:3px 11px!important}
+ body.critical-lexicon-theme .site-header .header-inner nav a{font-size:11px!important}
+}
