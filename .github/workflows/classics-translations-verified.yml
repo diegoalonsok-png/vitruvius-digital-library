@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/classics-translations-verified.yml'
       - 'scripts/import-classics-verified-translations.py'
+      - 'scripts/audit-classics-222-roadmap.py'
   schedule:
     - cron: '41 1,7,13,19 * * *'
 
@@ -53,6 +54,7 @@ jobs:
             python scripts/test-classics-historical-translations.py
             node scripts/test-classics-integration.mjs
             node scripts/audit-classical-translation-coverage.mjs
+            python scripts/audit-classics-222-roadmap.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
             git add data/classics-corpus
             if git diff --cached --quiet; then
