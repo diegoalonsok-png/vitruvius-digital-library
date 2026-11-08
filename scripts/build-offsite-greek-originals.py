@@ -8,6 +8,8 @@ job publishes it to a non-Pages branch. No translations are produced or hosted.
 from __future__ import annotations
 
 import argparse
+import base64
+import unicodedata
 from collections import defaultdict
 import hashlib
 import json
@@ -38,7 +40,7 @@ SOURCES = (
     ("apollonius-conica", "OpenGreekAndLatin/First1KGreek", "data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml"),
     ("pappus-synagoge", "OpenGreekAndLatin/First1KGreek", "data/tlg2032/tlg001/tlg2032.tlg001.1st1K-grc1.xml"),
 )
-EXCLUDED = {"note", "del", "fw", "figure", "graphic", "apparatus", "castList"}
+EXCLUDED = {"note", "del", "fw", "figure", "graphic", "apparatus", "castList", "gap"}
 TEXT_BLOCKS = {"p", "l", "ab"}
 CLEAN = re.compile(r"\s+", re.UNICODE)
 GREEK = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
@@ -53,15 +55,47 @@ def normalized(value):
 
 
 def surface(node):
-    """Preserve the edited Greek surface; never mix editorial footnotes into text."""
-    if local(node) in EXCLUDED:
+    """Extract ONE edited Greek surface; never combine lemma with variant readings."""
+    tag = local(node)
+    if tag in EXCLUDED:
         return ""
+    if tag in {"choice", "app"}:
+        priority = ("corr", "reg", "expan", "orig", "sic") if tag == "choice" else ("lem", "rdg")
+        selected = next((child for name in priority for child in node if local(child) == name), None)
+        return surface(selected) if selected is not None else surface(node[0]) if len(node) else ""
     value = [node.text or ""]
     for child in node:
         if local(child) not in EXCLUDED:
             value.append(surface(child))
         value.append(child.tail or "")
     return "".join(value)
+
+
+def normalize_greek_token(text):
+    decomposed = unicodedata.normalize("NFD", text).lower()
+    return "".join(c for c in decomposed if not unicodedata.category(c).startswith("M")).replace("ς", "σ")
+
+
+def bloom_filter(passages):
+    """Lossless prefilter for longest Greek search token: false positives OK, never intentional negatives."""
+    bits = 1 << 18
+    data = bytearray(bits // 8)
+    words = set()
+    for p in passages:
+        words.update(re.findall(r"[\u0370-\u03ff\u1f00-\u1fff]+", normalize_greek_token(p["text"])))
+    def fnv(word, seed):
+        value = seed
+        for c in word:
+            value = ((value ^ ord(c)) * 16777619) & 0xFFFFFFFF
+        return value
+    for word in words:
+        h1 = fnv(word, 2166136261)
+        h2 = fnv(word, 2166136261 ^ 0x9E3779B9) | 1
+        for i in range(4):
+            pos = (h1 + i * h2 + i * i) % bits
+            data[pos >> 3] |= 1 << (pos & 7)
+    return {"bits": bits, "hash": "fnv1a-codepoint-double-v1",
+            "data": base64.b64encode(data).decode("ascii"), "tokens": len(words)}
 
 
 def fetch_source(url):
@@ -200,10 +234,12 @@ def run(args):
             data = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n"
             dest.write_bytes(data)
             total += len(data)
-            result.append({"workId": work, "path": DEST + "/" + dest.name,
+            result.append({"workId": work, "author": by_id[work]["author"], "title": by_id[work]["title"],
+                           "language": "grc", "path": DEST + "/" + dest.name,
                            "bytes": len(data), "passages": len(obj["passages"]),
                            "sourceSha256": obj["sourceSha256"], "source": url,
-                           "editionUrn": obj["sourceUrn"]})
+                           "editionUrn": obj["sourceUrn"], "attribution": obj["attribution"],
+                           "bloom": bloom_filter(obj["passages"])})
             print("VERIFIED", work, len(obj["passages"]), "passages", len(data), "bytes", flush=True)
         except Exception as exc:
             failed.append({"workId": work, "reason": str(exc)})
