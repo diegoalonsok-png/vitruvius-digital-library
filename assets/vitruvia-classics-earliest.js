@@ -3,9 +3,9 @@
  * from facsimiles and from later translations. No manuscript or edition is inferred.
  */
 (()=>{"use strict";
-const catalogURL="data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261107";
-const witnessesURL="data/bibliotheca-testimonia-verified.json?v=20261107";
-const registryURL="data/classics-corpus/search-registry.json?v=20261107";
+const catalogURL="data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1";
+const witnessesURL="data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1";
+const registryURL="data/classics-corpus/search-registry.json";
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
 const L=(es,en,fr)=>document.documentElement.lang==="en"?en:document.documentElement.lang==="fr"?fr:es;
 const mk=(tag,cls,value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el};
