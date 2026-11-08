@@ -213,7 +213,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
    data=resolved;index=openingPageIndex(data.pages,data.ed.format);locus.replaceChildren();
    data.pages.forEach((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;locus.append(o)});
    show();
-  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar el texto de "+editions[edition.value].name+": "+err.message;body.textContent="El índice textual no está disponible. Podés abrir el PDF histórico mediante el enlace inferior.";pdf.href=new URL(editions[edition.value].pdf,location.href).href;pdf.textContent="Abrir PDF histórico ↗";setView("text");}
+  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar el texto de "+editions[edition.value].name+": "+err.message;body.textContent="El índice textual no está disponible. Puede abrir el PDF histórico mediante el enlace inferior.";pdf.href=new URL(editions[edition.value].pdf,location.href).href;pdf.textContent="Abrir PDF histórico ↗";setView("text");}
  }
  edition.addEventListener("change",load);
  prev.addEventListener("click",()=>{index=Math.max(0,index-1);show();synchronize(state)});
