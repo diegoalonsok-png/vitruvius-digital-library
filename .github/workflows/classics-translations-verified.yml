@@ -1,0 +1,71 @@
+name: Completar traducciones clásicas verificadas e índice semántico
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/classics-translations-verified.yml'
+      - 'scripts/import-classics-verified-translations.py'
+  schedule:
+    - cron: '41 6 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: classics-translations-verified
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis e integridad previa
+        run: |
+          python -m py_compile scripts/import-classics-verified-translations.py scripts/build_classics_semantic_index.py
+          python scripts/test-classics-historical-translations.py
+      - name: Importar traducciones históricas con SHA, probar índices y publicar
+        shell: bash
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/import-classics-verified-translations.py --max-new 3
+            python scripts/build_classics_semantic_index.py
+            node scripts/audit-classical-corpus.mjs
+            python scripts/audit-classics-coverage.py --strict
+            python scripts/test-classics-historical-translations.py
+            node scripts/test-classics-integration.mjs
+            node scripts/audit-classical-translation-coverage.mjs
+            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
+            git add data/classics-corpus
+            if git diff --cached --quiet; then
+              echo 'Sin nuevas traducciones que cumplan los requisitos de trazabilidad.'
+              exit 0
+            fi
+            git commit -m 'Incorporar traducciones históricas TEI verificadas y reconstruir índice semántico'
+            if git push origin HEAD:main; then
+              echo 'Corpus, traducciones y índice semántico publicados tras pasar auditoría.'
+              exit 0
+            fi
+            echo "La rama main cambió; reconstruyendo índice desde el estado más reciente ($attempt/3)"
+            sleep "$((attempt * 2))"
+          done
+          echo 'No se pudo publicar sin conflicto. No se fuerza el push.'
+          exit 1
