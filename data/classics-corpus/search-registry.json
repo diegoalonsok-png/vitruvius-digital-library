@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 190,
-  "works": 138,
+  "count": 191,
+  "works": 139,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -1907,6 +1907,16 @@
       "format": "json-passages",
       "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
       "reader": "classics-text-reader.html?work=pseudo-apollodorus-bibliotheca&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedo-grc.json",
+      "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]

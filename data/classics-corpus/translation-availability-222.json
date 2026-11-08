@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 138,
+    "locallyIndexedWorks": 139,
     "translatedWorksLocal": 46,
     "worksWithoutHostedTranslation": 176,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 45,
       "fr": 2
     },
-    "originalTextIndexed": 138,
-    "originalTextNotIndexed": 84
+    "originalTextIndexed": 139,
+    "originalTextNotIndexed": 83
   },
   "works": [
     {
@@ -2393,14 +2393,16 @@
       "author": "Platón",
       "title": "Φαίδων",
       "originalLanguage": "grc",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "plato-gorgias",

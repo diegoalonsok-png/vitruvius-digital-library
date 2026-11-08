@@ -13,8 +13,8 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 190,
-    "indexedDistinctWorks": 138,
+    "indexedTextVersions": 191,
+    "indexedDistinctWorks": 139,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -3216,11 +3216,15 @@
       "genre": "Filosofía",
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/plato-phaedo-grc.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,

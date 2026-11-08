@@ -4,21 +4,21 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 138,
-    "originalsMissing": 84,
+    "originalsIndexed": 139,
+    "originalsMissing": 83,
     "worksWithHostedTranslation": 46,
     "worksMissingTranslation": 176,
-    "textVersions": 190,
+    "textVersions": 191,
     "states": {
-      "original_pendiente": 84,
-      "original_sin_traduccion_local": 92,
+      "original_pendiente": 83,
+      "original_sin_traduccion_local": 93,
       "original_y_traduccion_local": 46
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 8,
       "requiere_fuente_no_canonica_o_edicion_especifica": 16,
       "sin_fuente_en_mapa_perseus": 16,
-      "tei_perseus_candidato_por_verificar": 44
+      "tei_perseus_candidato_por_verificar": 43
     }
   },
   "items": [
@@ -2767,11 +2767,13 @@
       "title": "Φαίδων",
       "originalLanguage": "grc",
       "dating": "siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "tlg0059.tlg004"
       ],

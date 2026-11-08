@@ -1,53 +1,23 @@
 {
   "updated": "2026-11-08",
-  "newWorks": 3,
-  "newTextVersions": 3,
-  "indexedDistinctWorks": 138,
-  "registeredTextVersions": 190,
-  "missingOriginals": 84,
+  "newWorks": 1,
+  "newTextVersions": 1,
+  "indexedDistinctWorks": 139,
+  "registeredTextVersions": 191,
+  "missingOriginals": 83,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "demosthenes-philippicae",
+      "workId": "plato-phaedo",
       "lang": "grc",
-      "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
-      "passages": 240,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0014/tlg004/tlg0014.tlg004.perseus-grc2.xml",
-      "sha256": "b863100ddf872445d94ea7a5d4491ffb8954974bac5199a11ef674c32f273246",
+      "path": "data/classics-corpus/plato-phaedo-grc.json",
+      "passages": 105,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg004/tlg0059.tlg004.perseus-grc2.xml",
+      "sha256": "baf65d8cb72f857e80ea4e2326a6808c1cf3cbc8df7b4340f14e79d142227d98",
       "componentUrns": [
-        "tlg0014.tlg004",
-        "tlg0014.tlg006",
-        "tlg0014.tlg009",
-        "tlg0014.tlg010"
-      ]
-    },
-    {
-      "workId": "aeschylus-oresteia",
-      "lang": "grc",
-      "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
-      "passages": 482,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg005/tlg0085.tlg005.perseus-grc2.xml",
-      "sha256": "6b14c6a4114eace72e103074d16b2c5d5a920fa8b74ebf4fc72035eb0b8a2cc1",
-      "componentUrns": [
-        "tlg0085.tlg005",
-        "tlg0085.tlg006",
-        "tlg0085.tlg007"
-      ]
-    },
-    {
-      "workId": "pseudo-apollodorus-bibliotheca",
-      "lang": "grc",
-      "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
-      "passages": 393,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0548/tlg001/tlg0548.tlg001.perseus-grc2.xml",
-      "sha256": "f848299edc62430698ce209f8f1b7154999c15ee5103ad189d91d5384878ed5e",
-      "componentUrns": [
-        "tlg0548.tlg001",
-        "tlg0548.tlg002"
+        "tlg0059.tlg004"
       ]
     }
   ],
-  "errors": [
-    "plato-phaedo: TEI incompleta: sólo 144025/218575 caracteres del texto principal"
-  ]
+  "errors": []
 }
