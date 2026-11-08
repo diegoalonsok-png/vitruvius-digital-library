@@ -5,16 +5,16 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 176,
-    "translatedWorksLocal": 58,
-    "worksWithoutHostedTranslation": 164,
+    "locallyIndexedWorks": 177,
+    "translatedWorksLocal": 59,
+    "worksWithoutHostedTranslation": 163,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 57,
+      "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 176,
-    "originalTextNotIndexed": 46
+    "originalTextIndexed": 177,
+    "originalTextNotIndexed": 45
   },
   "works": [
     {
@@ -1351,14 +1351,19 @@
       "author": "Fedro",
       "title": "Fabulae",
       "originalLanguage": "la",
-      "originalIndexed": false,
-      "translationLanguages": [],
-      "localEditionLanguages": [],
+      "originalIndexed": true,
+      "translationLanguages": [
+        "en"
+      ],
+      "localEditionLanguages": [
+        "en",
+        "la"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "readingStatus": "lectura-local-completa",
+      "translationSourceDescription": "Inglés: Christopher Smart (1913), TEI Perseus, 91 pasajes; 10 marcados no traducidos. Latín: Müller (1876). Sin alineación.",
+      "translationRegisteredButNotHosted": false,
+      "indexed": true
     },
     {
       "id": "statius-thebais",
