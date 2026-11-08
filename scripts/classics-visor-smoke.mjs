@@ -111,7 +111,7 @@ try{
    assert.equal(state.visibleFilters.length,2,'Only search and sort controls should be visible');
    assert.equal(state.sort,'composition','Oldest works must be listed first');
    assert.equal(state.body,'rgb(11, 11, 12)','Bibliotheca must use monochrome black');
-   assert.equal(state.list,'rgb(20, 20, 21)','Catalogue uses Lexicon charcoal');
+   assert.equal(state.list,'rgb(21, 21, 22)','Catalogue uses the existing Lexicon charcoal #151516');
    assert(/obras no indexadas/.test(state.summary),'Missing originals must be identified as unsearched');
    assert(!state.iframe,'No codex or reader must load before explicit selection');
    await p.locator('#classic-sort').selectOption('author');
@@ -139,7 +139,9 @@ try{
    assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),0,'No auto-viewer after a text search');
    await p.locator('.bibliotheca-passage-actions button').first().click();
    assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer[open]').count(),1,'Viewer opens only on explicit click');
-   assert.match(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').getAttribute('src'),/classics-text-reader\.html\?/);
+   assert.match(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').getAttribute('src'),
+    /(?:classics-text-reader\.html\?|corpus\/catullus-carmina-la\.html\?q=Viuamus)/,
+    'The viewer must open a real linked reader (indexed text OR existing Catullus source HTML)');
    await p.locator('dialog.bibliotheca-on-demand-viewer button:has-text("Cerrar")').click();
    assert.equal(await p.locator('dialog.bibliotheca-on-demand-viewer iframe').count(),0,'Close unloads reader');
    for(const label of ['PDF / imprimir','Correo','WhatsApp','Lexicon · selección','Pronunciar selección'])
