@@ -154,8 +154,15 @@ def extract(raw, candidate):
     header = root.find(".//" + NS + "titleStmt")
     if header is None:
         raise ValueError("TEI sin titleStmt")
+    # Algunas ediciones Perseus documentan al traductor en sourceDesc pero no
+    # etiquetan su función en titleStmt. Exigir la atribución explícita del TEI,
+    # sin inferir que todo editor o modernizador sea traductor.
+    source_desc = root.find(".//" + NS + "sourceDesc")
     editors = [text_without_notes(x) for x in header.findall(NS + "editor")
                if x.get("role") == "translator"]
+    if source_desc is not None:
+        editors += [text_without_notes(x) for x in source_desc.iter(NS + "editor")
+                    if x.get("role") == "translator"]
     if candidate["translator"] not in editors:
         raise ValueError("Traductor TEI distinto del acreditado: " + repr(editors))
     if not any(str(candidate["year"]) in "".join(x.itertext())
