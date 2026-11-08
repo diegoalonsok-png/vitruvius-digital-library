@@ -244,16 +244,30 @@ try{
     'Every semantic result must refer to an actual source locus or text fragment');
   }finally{await p.close()}
  });
- await check('Apuleius Spanish reader labels anthology scope without deleting text',async()=>{
-  const p=await open('classics-text-reader.html?work=apuleius-metamorphoses&lang=es');
+ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly partial',async()=>{
+  for(const [work,unit,term] of [
+   ['varro-rustica',97,'1.1'],
+   ['frontinus',130,'1'],
+   ['pliny',745,'33.1']
+  ]){
+   const page=await open('classics-text-reader.html?work='+work+'&lang=la&locus='+term);
+   try{
+    await page.waitForFunction(expected=>document.querySelector('#source-title')?.textContent?.includes(expected+' unidades textuales'),unit,{timeout:25000});
+    assert((await page.locator('#passages').innerText()).trim().length>40,'No Latin passage for '+work);
+    if(work==='pliny')assert.match(await page.locator('#method-note').innerText(),/PARCIAL|parcial|XXXIII.*XXXVI|33.*36/,'Pliny must visibly declare partial coverage');
+   }finally{await page.close()}
+  }
+  // Preserve the historical Spanish translation without offering it as a
+  // general-library edition; Spanish and French remain for Vitruvius only.
+  const archived=JSON.parse(fs.readFileSync('data/classics-corpus/apuleius-metamorphoses-es.json','utf8'));
+  assert.equal(archived.language,'es');
+  assert.equal(archived.passages.length,312,'Do not delete archived Apuleius passages');
+  const page=await open('classics-text-reader.html?work=apuleius-metamorphoses&lang=es');
   try{
-   await p.waitForFunction(()=>document.querySelector('#method-note')?.textContent?.includes('antología'),null,{timeout:25000});
-   const text=await p.locator('#method-note').innerText();
-   assert.match(text,/t22.?t245|narración de Metamorfosis/,'Apuleius anthology must identify editorial core');
-   assert.match(text,/conserva|conservan/i,'Unrelated source sections must not be suppressed');
-   assert.match(text,/no hay alineación|No hay alineación|no existe correspondencia|No existe correspondencia/);
-   assert.match(await p.locator('#source-title').innerText(),/312 unidades textuales/);
-  }finally{await p.close()}
+   await page.waitForFunction(()=>document.querySelector('#source-title')?.textContent?.includes('unidades textuales'),null,{timeout:25000});
+   assert.equal(await page.locator('#language option[value="es"]').count(),0,'Spanish must not appear for non-Vitruvius classics');
+   assert.notEqual(await page.locator('#language').inputValue(),'es');
+  }finally{await page.close()}
  });
  await check('Full-text registry searches Catullus poetry, Lucretius and English translations',async()=>{
   const p=await open('bibliotheca-graeca-latina.html');
