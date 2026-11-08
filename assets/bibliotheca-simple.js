@@ -136,9 +136,9 @@ function drawRemote(){
  remoteBox.hidden=!rows.length;
  if(!rows.length)return;
  const labels={
-  es:{head:"Traducciones consultables sin ocupar espacio",open:"Consultar traducción",note:"El texto permanece en la biblioteca externa: no se incluye en el recuento de concordancias ni está alineado automáticamente."},
-  en:{head:"Translations available without local storage",open:"Read translation",note:"The text remains on the external library: it is not counted in local concordances or automatically aligned."},
-  fr:{head:"Traductions sans stockage local",open:"Consulter la traduction",note:"Le texte reste hébergé par la bibliothèque externe : il n'est pas compté ni aligné automatiquement."}
+  es:{head:"Traducciones externas con lectura identificada",open:"Consultar traducción",note:"El enlace lleva a un índice de lectura externo comprobado. No implica búsqueda dentro de Bibliotheca ni cotejo de loci, no se incluye en el recuento de concordancias y no constituye un inventario exhaustivo de traducciones existentes."},
+  en:{head:"External translations with identified reading access",open:"Read translation",note:"This links to a checked external reading index; it is neither indexed by Bibliotheca nor collated by locus, and the list is not exhaustive."},
+  fr:{head:"Traductions externes avec accès identifié",open:"Consulter la traduction",note:"Accès à un index externe vérifié, sans recherche locale ni collation par locus. La liste n'est pas exhaustive."}
  }[locale]||{head:"Traducciones externas",open:"Consultar",note:""};
  remoteBox.append(el("p","remote-title",labels.head));
  for(const e of rows){
@@ -148,7 +148,7 @@ function drawRemote(){
   const line=el("p","remote-row");
   const a=el("a","remote-link",labels.open+" · "+(languages[e.language]||e.language));
   a.href=target.href;a.target="_blank";a.rel="noopener noreferrer";
-  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host));
+  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host+(e.verifiedIndexOn?" · "+(locale==="es"?"índice consultado":locale==="fr"?"index consulté":"index checked")+" "+e.verifiedIndexOn:"")));
   remoteBox.append(line);
  }
  remoteBox.append(el("p","remote-note",labels.note));
@@ -162,10 +162,13 @@ function refresh(){
  const t=dict[locale],selected=work.value||new URLSearchParams(location.search).get("work")||"";
  work.replaceChildren(new Option(t.all,""));
  for(const w of works.slice().sort((a,b)=>dating(a)-dating(b)||String(a.title).localeCompare(String(b.title),"es"))){
-  const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing);
+  const docxAvailable=window.ClassicsUploadedDocuments?.workIds?.has(w.id);
+  const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing)+(docxAvailable?" · DOCX":"");
   work.append(new Option(name,w.id));
  }
- if(byId.has(selected))work.value=selected;
+ for(const document of window.ClassicsUploadedDocuments?.uncataloguedDocs||[])
+  work.append(new Option(document.label,"docx:"+document.id));
+ if(byId.has(selected)||String(selected).startsWith("docx:"))work.value=selected;
  coverage.textContent=t.ready(works.length,entries.length,works.length-indexed.size);
  drawRemote();
 }
@@ -184,6 +187,7 @@ function switchLanguage(k){
  if(works.length)refresh();else coverage.textContent=t.wait;
  drawRemote();
  if(current)render(previous,current,diag);
+ window.ClassicsUploadedDocuments?.refresh();
  updateLexicon();
  try{localStorage.setItem("vitruvius-ui-lang",locale)}catch{}
 }
@@ -399,6 +403,7 @@ function render(rows,q,details){
 }
 async function search(){
  const id=++serial,q=input.value.trim();updateLexicon();root.hidden=true;list.replaceChildren();
+ window.ClassicsUploadedDocuments?.clear();
  if(q.length>180||fold(q).replace(/[^\p{L}\p{N}]/gu,"").length<2){status.textContent=dict[locale].short;return}
  status.textContent=dict[locale].loading;$("search-submit").disabled=true;
  try{
@@ -406,7 +411,29 @@ async function search(){
   const selectedWork=work.value;
   const alias=editionAliases[selectedWork];
   const workId=alias?.workId||selectedWork;
-  if(selectedWork&&!indexed.has(selectedWork)){status.textContent=dict[locale].wrong;return}
+  const added=window.ClassicsUploadedDocuments;
+  if(selectedWork.startsWith("docx:")){
+   if(!added?.documentIds?.has(selectedWork.slice(5))){status.textContent=dict[locale].wrong;return}
+   root.hidden=false;
+   status.textContent=locale==="en"?"Search in an uploaded DOCX document (not an accredited manuscript locus).":
+    locale==="fr"?"Recherche dans un document DOCX déposé (sans locus manuscrit vérifié).":
+    "Búsqueda en documento DOCX subido (sin locus manuscrito cotejado).";
+   void added.search(q,selectedWork,()=>id===serial);
+   const docUrl=new URL(location.href);docUrl.searchParams.set("q",q);docUrl.searchParams.set("work",selectedWork);
+   history.replaceState(null,"",docUrl);return;
+  }
+  if(selectedWork&&!indexed.has(selectedWork)){
+   if(added?.workIds?.has(workId)){
+    root.hidden=false;
+    status.textContent=locale==="en"?"Original edition not yet indexed. Searching the already uploaded DOCX separately.":
+     locale==="fr"?"Édition originale non encore indexée. Recherche séparée dans le DOCX disponible.":
+     "Edición original aún no indexada. Buscando por separado en el DOCX ya alojado.";
+    void added.search(q,workId,()=>id===serial);
+    return;
+   }
+   status.textContent=dict[locale].wrong;return;
+  }
+  if(added)void added.search(q,workId,()=>id===serial);
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
   const transliterations=await attestedGreekForms(/^gr:/i.test(q)?q.slice(3).trim():q);
   if(id!==serial)return;

@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-remote-translations-v1",
   "updated": "2026-11-08",
-  "method": "Sólo registros de orientación a traducciones efectivamente publicadas en el alojamiento externo. Enlaces verificados a páginas de índice; sin copia local, búsqueda integrada, alineación ni certificación de equivalencias por locus. No suma a los contadores de versiones indexadas.",
+  "method": "Enlaces directos a índices de lectura externos cuya presencia de texto original y traducción inglesa se comprobó en la página de origen el 2026-11-08. Verificación del índice, no de cada locus ni de disponibilidad permanente. No se copia ni aloja texto externo; no se infiere licencia de reproducción ni alineación local; no se suma al índice de concordancias.",
   "entries": [
     {
       "workId": "vitruvius",
@@ -10,7 +10,13 @@
       "edition": "The Ten Books on Architecture, traducción de Gwilt",
       "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/home.html",
       "host": "LacusCurtius",
-      "status": "external-only"
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-08",
+      "indexedLocally": false,
+      "alignedLocally": false,
+      "scopeVerified": "index-with-original-and-english-translation",
+      "note": "Lectura en el sitio externo: no consta indexación ni cotejo por locus dentro de Bibliotheca."
     },
     {
       "workId": "varro-rustica",
@@ -19,7 +25,13 @@
       "edition": "Loeb Classical Library (1934)",
       "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Varro/de_Re_Rustica/home.html",
       "host": "LacusCurtius",
-      "status": "external-only"
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-08",
+      "indexedLocally": false,
+      "alignedLocally": false,
+      "scopeVerified": "index-with-original-and-english-translation",
+      "note": "Lectura en el sitio externo: no consta indexación ni cotejo por locus dentro de Bibliotheca."
     },
     {
       "workId": "frontinus",
@@ -28,7 +40,13 @@
       "edition": "Loeb Classical Library (1925)",
       "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/home.html",
       "host": "LacusCurtius",
-      "status": "external-only"
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-08",
+      "indexedLocally": false,
+      "alignedLocally": false,
+      "scopeVerified": "index-with-original-and-english-translation",
+      "note": "Lectura en el sitio externo: no consta indexación ni cotejo por locus dentro de Bibliotheca."
     },
     {
       "workId": "frontinus-strategemata",
@@ -37,7 +55,13 @@
       "edition": "Loeb Classical Library (1925)",
       "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/Strategemata/home.html",
       "host": "LacusCurtius",
-      "status": "external-only"
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-08",
+      "indexedLocally": false,
+      "alignedLocally": false,
+      "scopeVerified": "index-with-original-and-english-translation",
+      "note": "Lectura en el sitio externo: no consta indexación ni cotejo por locus dentro de Bibliotheca."
     },
     {
       "workId": "cato-agri-cultura",
@@ -46,7 +70,13 @@
       "edition": "Loeb Classical Library (1934)",
       "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html",
       "host": "LacusCurtius",
-      "status": "external-only"
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-08",
+      "indexedLocally": false,
+      "alignedLocally": false,
+      "scopeVerified": "index-with-original-and-english-translation",
+      "note": "Lectura en el sitio externo: no consta indexación ni cotejo por locus dentro de Bibliotheca."
     },
     {
       "workId": "velleius-historia",
@@ -55,7 +85,14 @@
       "edition": "Loeb Classical Library (1924)",
       "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
       "host": "LacusCurtius",
-      "status": "external-only"
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-08",
+      "indexedLocally": false,
+      "alignedLocally": false,
+      "scopeVerified": "index-with-original-and-english-translation",
+      "note": "Lectura en el sitio externo: no consta indexación ni cotejo por locus dentro de Bibliotheca."
     }
-  ]
+  ],
+  "checkedOn": "2026-11-08"
 }
