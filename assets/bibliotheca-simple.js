@@ -136,7 +136,7 @@ function drawRemote(){
  remoteBox.hidden=!rows.length;
  if(!rows.length)return;
  const labels={
-  es:{head:"Traducciones externas con lectura identificada",open:"Consultar traducción",note:"El enlace lleva a un índice de lectura externo comprobado. No implica búsqueda dentro de Bibliotheca, cotejo de loci ni un inventario exhaustivo de traducciones existentes."},
+  es:{head:"Traducciones externas con lectura identificada",open:"Consultar traducción",note:"El enlace lleva a un índice de lectura externo comprobado. No implica búsqueda dentro de Bibliotheca ni cotejo de loci, no se incluye en el recuento de concordancias y no constituye un inventario exhaustivo de traducciones existentes."},
   en:{head:"External translations with identified reading access",open:"Read translation",note:"This links to a checked external reading index; it is neither indexed by Bibliotheca nor collated by locus, and the list is not exhaustive."},
   fr:{head:"Traductions externes avec accès identifié",open:"Consulter la traduction",note:"Accès à un index externe vérifié, sans recherche locale ni collation par locus. La liste n'est pas exhaustive."}
  }[locale]||{head:"Traducciones externas",open:"Consultar",note:""};
