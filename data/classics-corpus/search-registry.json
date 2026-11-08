@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 94,
+  "count": 95,
   "works": 64,
   "entries": [
     {
@@ -948,6 +948,16 @@
       "path": "data/structured/recensio-es.json",
       "reader": "lector-bilingue.html?edition=recensio-es",
       "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones."
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/seneca-de-brevitate-en.json",
+      "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=en",
+      "sourceDescription": "Aubrey Stewart, 1889 (Bohn's Classical Library); edición digital Standard Ebooks, CC0; XX capítulos, sin cotejo ni equivalencia automática entre traducciones."
     }
   ]
 }
