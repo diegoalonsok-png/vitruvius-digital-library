@@ -10,7 +10,9 @@ const doc=get('vitruvia-article'),preview=get('article-image-preview');
 if(!doc||!preview)return;
 const gallery=el('section','vitruvia-heritage-gallery');gallery.id='vitruvia-heritage-gallery';gallery.hidden=true;
 gallery.setAttribute('aria-label','Obras, códices, álbumes y distinciones documentadas');
-preview.after(gallery);
+/* Place source-backed works alongside the encyclopedia on wide screens. */
+const articleGrid=doc.querySelector('.article-grid');
+if(articleGrid)articleGrid.append(gallery);else preview.after(gallery);
 let sequence=0,query='',resultRows=[];
 const cached=new Map();
 async function json(url){
@@ -39,7 +41,7 @@ function block(root,title,records,note){
  if(!records.length)return;
  const sec=el('section','vhg-block');sec.append(el('h4','',title));
  if(note)sec.append(el('p','vhg-caption',note));
- const rows=el('div','vhg-cards');records.slice(0,10).forEach(r=>card(rows,r));sec.append(rows);root.append(sec);
+ const rows=el('div','vhg-cards');records.slice(0,16).forEach(r=>card(rows,r));sec.append(rows);root.append(sec);
 }
 const leonardo=[
  {title:'Codex Atlanticus',location:'Biblioteca Ambrosiana · Milán',date:'Siglos XV–XVI',url:'https://www.ambrosiana.it/en/discover/masterpieces/codex-atlanticus/',kind:'codex'},
