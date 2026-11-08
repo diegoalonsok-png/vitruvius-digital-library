@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 144,
-  "works": 98,
+  "count": 160,
+  "works": 114,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -1447,6 +1447,166 @@
       "format": "json-passages",
       "path": "data/classics-corpus/plato-symposium-grc.json",
       "reader": "classics-text-reader.html?work=plato-symposium&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-gorgias-grc.json",
+      "reader": "classics-text-reader.html?work=plato-gorgias&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-timaeus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-meno-grc.json",
+      "reader": "classics-text-reader.html?work=plato-meno&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedrus-grc.json",
+      "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-laws-grc.json",
+      "reader": "classics-text-reader.html?work=plato-laws&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-crito-grc.json",
+      "reader": "classics-text-reader.html?work=plato-crito&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
+      "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/xenophon-hellenica-grc.json",
+      "reader": "classics-text-reader.html?work=xenophon-hellenica&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
+      "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-olympian-grc.json",
+      "reader": "classics-text-reader.html?work=pindar-olympian&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/pindar-pythian-grc.json",
+      "reader": "classics-text-reader.html?work=pindar-pythian&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
+      "reader": "classics-text-reader.html?work=diogenes-laertius-vitae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/cicero-pro-archia-la.json",
+      "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
