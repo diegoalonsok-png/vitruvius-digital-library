@@ -31,7 +31,7 @@ const LEGACY=[
  path:html||"data/classics-corpus/"+workId+"-"+language+".json",
  reader:html||"classics-text-reader.html?work="+workId+"&lang="+language
 }));
-let registered=null,registryTask=null,lastDiagnostics={mode:"not-searched",targeted:0,loaded:0,failed:0};
+let registered=null,registeredAll=[],registryTask=null,lastDiagnostics={mode:"not-searched",targeted:0,loaded:0,failed:0};
 const cache=new Map();
 function valid(e){
  return e&&/^[a-z0-9-]+$/.test(e.workId||"")&&["grc","la","en","es","fr","it","de","pt"].includes(e.language)
@@ -47,6 +47,8 @@ async function registry(){
  if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async j=>{
   if(j.schema!=="vitruvia-classics-search-registry-v1"||!Array.isArray(j.entries)||j.entries.length<14)throw Error("Registro de búsqueda incompleto");
   registered=j.entries.filter(valid);if(registered.length!==j.entries.length)throw Error("Registro con rutas o metadatos inválidos");
+  // Keep the full registry separate from the Bibliotheca language filter.
+  registeredAll=registered;
   registered=registered.filter(bibliothecaLanguagePolicy);
   // A validated offsite branch does not count as local hosting.
   if(window.ClassicsOffsiteGreek)registered=registered.concat(await window.ClassicsOffsiteGreek.entries());
@@ -192,9 +194,21 @@ async function semanticSearch(q,{limit=6}={}){
  // Optional static inverted index: skip JSON editions with no attested hit,
  // but search original HTML sources live. If the index is absent or stale,
  // keep the existing live search fully operational.
- const indexValid=staticIndex?.registryEditionCount===entries.length&&
-   staticIndex?.indexedEditions===staticIndex?.eligibleEditions&&
-   !staticIndex?.errors?.length;
+ // Conceptus postings count all registry languages, even those excluded from
+ // Bibliotheca's public view. HTML without locus anchors stays live-searchable.
+ const eligible=new Set(["json-passages","structured-bilingual","html-text"]);
+ const indexKey=e=>[e.workId,e.language,e.source||e.path,e.edition||""].join("|");
+ const posted=new Set((staticIndex?.versions||[]).map(indexKey));
+ const unanchored=new Set((staticIndex?.notIndexedFormats||[])
+   .filter(x=>x.format==="html-text"&&/no stable passage anchor/i.test(x.reason||""))
+   .map(x=>x.path));
+ const indexValid=Boolean(staticIndex&&registeredAll.length&&
+   staticIndex.registryEditionCount===registeredAll.length&&
+   staticIndex.indexedEditions===staticIndex.versions.length&&
+   staticIndex.indexedEditions+unanchored.size===staticIndex.eligibleEditions&&
+   !staticIndex.errors?.length&&
+   registeredAll.filter(e=>eligible.has(e.format))
+     .every(e=>posted.has(indexKey(e))||(e.format==="html-text"&&unanchored.has(e.path))));
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
   [v.workId,v.language,v.source,v.edition||""].join("|"),v
  ]):[]);
