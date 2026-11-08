@@ -177,3 +177,36 @@ h1,.group h3,.hit p{color:#fff!important}
  }
 }
 @media print {.passage-actions{display:none!important}}
+
+/* Auditoría 2026-11-08: el borde enfocado prevalece sobre el estilo base. */
+html body .toplinks #language-toggle:focus,
+html body .toplinks #language-toggle:focus-visible {
+  border-color:#929295!important;
+  box-shadow:0 0 0 2px rgba(145,145,149,.17);
+}
+
+/* Resaltado amarillo Lexicon: sin subrayado y con interacción accesible. */
+html body .result .group .hits .hit mark.lexical-hit,
+html body .result .group .hits .hit > p mark.lexical-hit{
+ background:#ffe34f!important;background-color:#ffe34f!important;
+ color:#111!important;text-decoration:none!important;border-radius:2px;
+ padding:0 2px;cursor:pointer;box-decoration-break:clone;
+}
+html body mark.lexical-hit:focus-visible{outline:2px solid #fff!important;outline-offset:2px}
+.bibliotheca-dictionary[hidden]{display:none!important}
+.bibliotheca-dictionary{
+ position:fixed;right:clamp(12px,3vw,40px);bottom:clamp(12px,3vw,35px);
+ z-index:5000;width:min(470px,calc(100vw - 24px));max-height:min(75vh,740px);
+ overflow:auto;border:1px solid #626265;border-radius:9px;background:#111113!important;color:#f1f1f1!important;
+ box-shadow:0 16px 65px #000b;padding:20px 22px;font:14px/1.65 Arial,sans-serif;
+}
+.dictionary-heading{display:flex;justify-content:space-between;gap:16px;align-items:start}
+.dictionary-heading h3{font:normal 28px/1.25 "Gentium Book Plus",Georgia,serif;margin:0;color:#fff}
+.dictionary-close{border:1px solid #59595a;border-radius:5px;background:#222;color:#eee;font:22px Arial,sans-serif;min-width:34px;min-height:34px;cursor:pointer}
+.dictionary-definition{color:#ededed;white-space:normal;overflow-wrap:anywhere}
+.dictionary-definition p{margin:10px 0}
+.dictionary-meta,.dictionary-status{color:#bcbcc0;font-size:12px}
+.dictionary-actions,.bibliotheca-export-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px}
+.dictionary-actions .passage-action,.bibliotheca-export-actions .passage-action{font:12px/1.4 Arial,sans-serif;border:1px solid #555;border-radius:5px;background:#1b1b1d;color:#eee!important;padding:8px 11px;text-decoration:none;cursor:pointer}
+.dictionary-actions .passage-action:hover,.bibliotheca-export-actions .passage-action:hover{background:#303033;border-color:#888}
+@media print{.bibliotheca-dictionary,.bibliotheca-export-actions{display:none!important}.hit mark.lexical-hit{background:#ffe34f!important;color:#111!important;text-decoration:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}}

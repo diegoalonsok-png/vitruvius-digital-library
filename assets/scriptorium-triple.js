@@ -25,6 +25,21 @@ async function loadEdition(id){
  }
  return cache.get(id);
 }
+/* Los OCR históricos incluyen guardas en blanco y ruido del escáner.
+   Para la primera apertura se prefiere una página realmente legible;
+   todas las páginas se conservan en el selector, sin descartar testimonio. */
+function openingPageIndex(pages,format){
+ if(format!=="ocr")return 0;
+ const score=p=>{
+  const value=String(p.text||"");
+  const latinWords=value.match(/[A-Za-zÀ-ÿ]{4,}/g)||[];
+  const letters=(value.match(/[A-Za-zÀ-ÿ]/g)||[]).length;
+  const visible=value.replace(/\s/g,"").length;
+  return latinWords.length>=35&&letters>=220&&letters/Math.max(visible,1)>.72;
+ };
+ const first=pages.findIndex(score);
+ return first>=0?first:Math.max(0,pages.findIndex(p=>String(p.text||"").trim().length>150));
+}
 const states=[];
 let candidatePromise=null;
 function candidateIndex(){
@@ -130,16 +145,39 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const search=document.createElement("input");search.type="search";search.placeholder="Buscar término o frase · Enter";search.setAttribute("aria-label","Buscar en este libro");panel.append(search);
  const tally=document.createElement("p");tally.className="script-triple-count";tally.setAttribute("role","status");panel.append(tally);
  const message=document.createElement("p");message.className="script-triple-status";message.setAttribute("role","status");panel.append(message);
+ const viewBar=document.createElement("div");viewBar.className="script-triple-view-options";
+ const showText=document.createElement("button");showText.type="button";showText.textContent="Texto OCR / edición";showText.setAttribute("aria-pressed","true");
+ const showFacsimile=document.createElement("button");showFacsimile.type="button";showFacsimile.textContent="Ver PDF original";showFacsimile.setAttribute("aria-pressed","false");
+ viewBar.append(showText,showFacsimile);panel.append(viewBar);
  const body=document.createElement("div");body.className="script-triple-text";panel.append(body);
+ const facsimile=document.createElement("iframe");facsimile.className="script-triple-pdf";facsimile.title="Facsímil PDF de la edición seleccionada";facsimile.loading="lazy";facsimile.hidden=true;panel.append(facsimile);
  const foot=document.createElement("div");foot.className="script-triple-footer";
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF histórico ↗";
  foot.append(translation,pdf);panel.append(foot);
- let data=null,index=0,token=0,translated=false,size=18;
+ let data=null,index=0,token=0,translated=false,size=18,view="text";
+ function setView(next){
+  view=next;body.hidden=next==="pdf";facsimile.hidden=next!=="pdf";
+  showText.setAttribute("aria-pressed",String(next==="text"));
+  showFacsimile.setAttribute("aria-pressed",String(next==="pdf"));
+  if(next==="pdf")updatePdf();
+ }
+ function updatePdf(){
+  if(!data||view!=="pdf")return;
+  const item=data.pages[index];
+  const page=Number(item.page)||1;
+  const source=new URL(data.ed.pdf,location.href).href;
+  const url=source+"#page="+page+"&zoom=page-width";
+  if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;}
+ }
+ showText.addEventListener("click",()=>setView("text"));
+ showFacsimile.addEventListener("click",()=>setView("pdf"));
  const state={
   get data(){return data},
   get index(){return index},
   editionId(){return edition.value},
+  selectEdition(id){if(!editions[id])return;edition.value=id;load()},
+  focusReader(){panel.scrollIntoView({behavior:"smooth",block:"start"})},
   seek(i){index=i;show()},
   seekLocus(locus){if(!data||data.ed.format!=="structured")return false;const i=data.pages.findIndex(p=>p.locus===locus);if(i<0)return false;index=i;show();return true}
  };
@@ -164,17 +202,18 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   translation.hidden=data.ed.format!=="structured";
   translation.textContent=translated?"Mostrar latín":"Mostrar traducción";
   body.scrollTop=0;
+  updatePdf();
   recount();
  }
  async function load(){
-  const current=++token;data=null;index=0;translated=false;
-  message.textContent="Cargando texto indexado…";body.textContent="";
+  const current=++token;data=null;index=0;translated=false;facsimile.removeAttribute("src");delete facsimile.dataset.currentPdf;
+  message.textContent="Cargando texto indexado de "+editions[edition.value].name+"…";body.textContent="";pdf.href=new URL(editions[edition.value].pdf,location.href).href;
   try{
    const resolved=await loadEdition(edition.value);if(current!==token||!panel.isConnected)return;
-   data=resolved;locus.replaceChildren();
+   data=resolved;index=openingPageIndex(data.pages,data.ed.format);locus.replaceChildren();
    data.pages.forEach((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;locus.append(o)});
    show();
-  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar esta edición: "+err.message;body.textContent="Prueba otra edición en el selector."}
+  }catch(err){if(current!==token)return;message.textContent="No se pudo cargar el texto de "+editions[edition.value].name+": "+err.message;body.textContent="El índice textual no está disponible. Puede abrir el PDF histórico mediante el enlace inferior.";pdf.href=new URL(editions[edition.value].pdf,location.href).href;pdf.textContent="Abrir PDF histórico ↗";setView("text");}
  }
  edition.addEventListener("change",load);
  prev.addEventListener("click",()=>{index=Math.max(0,index-1);show();synchronize(state)});
@@ -209,6 +248,15 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  });
  states.push(state);load();
 }
+/* Vincula selección superior de PDF con los visores OCR por página. */
+const mainSource=document.getElementById("source");
+if(mainSource)mainSource.addEventListener("change",()=>{
+ const key={"pdf:krohn":"krohn","pdf:rose-1899":"rose"}[mainSource.value];
+ if(!key)return;
+ const slot=key==="krohn"?0:2;
+ states[slot]?.selectEdition(key);
+ states[slot]?.focusReader();
+});
 window.ScriptTripleCompare={
  jumpToLocus(locus){
   const matches=states.filter(st=>st.data?.ed.format==="structured");

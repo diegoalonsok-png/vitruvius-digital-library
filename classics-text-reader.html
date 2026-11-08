@@ -59,6 +59,8 @@ html body #toc li button[aria-current=true]{
 html body mark{background:#b3b3b7!important;color:#111!important}
 /* Solo coincidencias de búsqueda: amarillo legible sobre el visor negro. */
 html body .passages mark.cl-hit{background:#ffe34f!important;color:#14120e!important}
+/* El marcado de coincidencias domina cualquier estilo genérico de mark. */
+html body #passages mark.cl-hit{background-color:#ffe34f!important;background-image:none!important;color:#14120e!important}
 html body .passages{color:#e2e2e3}
 html body .reader{background:#000!important}
 html body :is(button,a,select,input):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
