@@ -48,8 +48,18 @@ for(const ed of witnesses.editions){
  if(!ids.has(ed.workId))failure('orphan-edition','Historical edition points to non-catalogued work: '+ed.workId);
  if(!filled(ed.title)||!filled(String(ed.year||''))||!filled(ed.editor))
   warn('edition-metadata','Historical edition lacks bibliographic details: '+ed.workId+' / '+ed.title);
- if(filled(ed.url)){try{const u=new URL(ed.url);if(!['http:','https:'].includes(u.protocol))throw Error('unsupported protocol');editionLinks.push(u.href)}
-  catch{failure('edition-url','Invalid URL on historical edition: '+ed.workId)}}
+ if(filled(ed.url)){
+  const uri=ed.url.trim();
+  // Scholarly catalogue may link to an institutional URL or to a local PDF/reader.
+  if(/^https?:\/\//i.test(uri)){
+   try{const u=new URL(uri);if(!['http:','https:'].includes(u.protocol))throw Error('protocol');editionLinks.push(u.href)}
+   catch{failure('edition-url','Malformed external edition URL: '+ed.workId)}}
+  else if(/^[a-z0-9][a-z0-9/_-]*\.(?:html|pdf)(?:[?#].*)?$/i.test(uri)){
+   const path=uri.split(/[?#]/,1)[0];
+   if(!existsSync(local(path)))failure('edition-local-file','Local historical edition target missing: '+ed.workId+' / '+path);
+   else editionLinks.push(uri);
+  } else failure('edition-url','Unrecognized edition URL form: '+ed.workId+' / '+uri);
+ }
 }
 for(const witness of witnesses.records){
  if(!filled(witness.library)||!filled(witness.shelfmark)||!filled(witness.date)||!(witness.record||witness.viewer||witness.manifest))
