@@ -68,6 +68,8 @@ footer{margin:45px 0 0;padding-top:15px;border-top:1px solid #303030;color:#9292
  border-color:#676769!important;
 }
 .language-toggle:focus,.searchform button:focus,.workrow select:focus,.more:focus{
+ /* Feedback inmediato de foco: el borde no debe animarse. */
+ transition-property:background-color,transform;
  border-color:#929295!important;
  box-shadow:0 0 0 2px rgba(145,145,149,.17);
 }
