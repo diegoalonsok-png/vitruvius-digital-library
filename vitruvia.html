@@ -1183,6 +1183,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
   <div class="scholar-article-header"><div class="article-toolbar"><button type="button" class="article-print" data-i18n="print" onclick="window.print()" aria-label="Imprimir o guardar como PDF">Imprimir / PDF</button><button type="button" class="article-share" data-channel="whatsapp" aria-label="Compartir por WhatsApp">WhatsApp</button><button type="button" class="article-share" data-i18n="email" data-channel="email" aria-label="Compartir por correo electrónico">Correo</button><button type="button" class="article-share" data-i18n="copy" data-channel="copy" aria-label="Copiar enlace">Copiar enlace</button></div><div class="article-kicker" id="article-kicker">VITRUVIA · DOSSIER DOCUMENTAL</div>
   <h2 id="article-title"></h2><div class="article-byline" id="article-byline"></div></div>
   <div id="article-image-preview" class="article-image-preview" hidden></div>
+  <nav id="vitruvia-academic-links" class="vitruvia-academic-links" aria-label="Enlaces para investigación académica" hidden></nav>
   <div class="article-grid"><div class="article-body" id="article-body"></div><aside class="article-aside" id="article-aside"></aside><aside class="vitruvia-context" id="vitruvia-context" aria-label="Obras, productos culturales, imágenes y bibliografía" aria-live="polite" hidden></aside></div>
   <div class="article-sources" id="article-sources"></div><div class="article-evidence" id="article-evidence"></div>
 </section>
@@ -1741,6 +1742,81 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     queue();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+<style id="vitruvia-academic-links-style">
+#vitruvia-article .vitruvia-academic-links{margin:18px 0 28px;padding:15px 0;border-top:1px solid #353535;border-bottom:1px solid #353535;color:#c9c9c9;font:13px/1.6 Arial,Helvetica,sans-serif}
+#vitruvia-article .vitruvia-academic-links[hidden]{display:none!important}
+.vitruvia-academic-links .academic-links-heading{display:block;color:#ececec;font-size:14px;font-weight:600;margin-bottom:4px}
+.vitruvia-academic-links .academic-links-note{display:block;color:#a9a9a9;font-size:12px;margin-bottom:12px}
+.vitruvia-academic-links .academic-links-list{display:flex;flex-wrap:wrap;gap:8px}
+.vitruvia-academic-links .academic-links-list a{display:inline-block;color:#dcdcdc;text-decoration:none;border:1px solid #4a4a4a;border-radius:5px;background:#181818;padding:7px 10px;line-height:1.4}
+.vitruvia-academic-links .academic-links-list a:hover,.vitruvia-academic-links .academic-links-list a:focus-visible{border-color:#aaa;text-decoration:underline}
+html[data-theme=light] #vitruvia-article .vitruvia-academic-links{color:#333;border-color:#ccc}
+html[data-theme=light] .vitruvia-academic-links .academic-links-heading{color:#222}
+html[data-theme=light] .vitruvia-academic-links .academic-links-note{color:#555}
+html[data-theme=light] .vitruvia-academic-links .academic-links-list a{color:#222;background:#fafafa;border-color:#bbb}
+@media print{#vitruvia-article .vitruvia-academic-links .academic-links-list a{color:#111;background:none}}
+</style>
+<script id="vitruvia-academic-links-script">
+(function(){
+ const portals=[
+  ['Google Scholar','https://scholar.google.com/scholar?q='],
+  ['Crossref','https://search.crossref.org/?q='],
+  ['JSTOR','https://www.jstor.org/action/doBasicSearch?Query='],
+  ['DOAJ','https://doaj.org/search/articles/']
+ ];
+ function query(){
+  const field=document.querySelector('#search-input, #query, input[type="search"]');
+  const q=new URLSearchParams(location.search).get('q') || field?.value || '';
+  return String(q).trim().slice(0,180);
+ }
+ function render(){
+  const root=document.getElementById('vitruvia-academic-links');
+  const article=document.getElementById('vitruvia-article');
+  if(!root||!article)return;
+  const q=query();
+  if(!q||article.hidden){root.hidden=true;return}
+  const key=q.toLowerCase();
+  if(root.dataset.query===key&&!root.hidden)return;
+  root.dataset.query=key;
+  root.replaceChildren();
+  const title=document.createElement('strong');title.className='academic-links-heading';title.textContent='Investigación académica sobre «'+q+'»';
+  const note=document.createElement('span');note.className='academic-links-note';note.textContent='Accesos a búsquedas externas de publicaciones y catálogos. No son citas verificadas ni avales institucionales.';
+  const list=document.createElement('div');list.className='academic-links-list';
+  const sources=document.getElementById('article-sources');
+  const trusted=/([.]edu$|[.]ac[.]uk$|[.]edu[.]ar$|[.]unibo[.]it$|[.]bnf[.]fr$|[.]bl[.]uk$|[.]ac[.]jp$|[.]edu[.]au$|[.]org$)/i;
+  const excluded=/wikipedia[.]org|wikimedia[.]org|google[.]com|pinterest[.]com/i;
+  let count=0;
+  if(sources){
+   for(const a of sources.querySelectorAll('a[href]')){
+    let url;try{url=new URL(a.href,location.href)}catch(_){continue}
+    if(url.protocol!=='https:'||excluded.test(url.hostname)||!trusted.test(url.hostname))continue;
+    const name=(a.textContent||url.hostname).trim().replace(/\s+/g,' ').slice(0,65);
+    if(!name||list.querySelectorAll('[data-verified-link]').length>=3)break;
+    if([...list.querySelectorAll('a')].some(x=>x.href===url.href))continue;
+    const link=document.createElement('a');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Fuente enlazada: '+name;link.dataset.verifiedLink='1';list.append(link);count++;
+   }
+  }
+  for(const [name,base] of portals){
+   const link=document.createElement('a');link.href=base+encodeURIComponent(q);link.target='_blank';link.rel='noopener noreferrer';link.textContent='Buscar en '+name;list.append(link);
+  }
+  root.append(title,note,list);root.hidden=false;
+ }
+ function init(){
+  const article=document.getElementById('vitruvia-article');
+  const sources=document.getElementById('article-sources');
+  if(!article)return;
+  let pending=false;
+  const schedule=()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;render()})};
+  new MutationObserver(schedule).observe(article,{attributes:true,attributeFilter:['hidden']});
+  if(sources)new MutationObserver(()=>{const root=document.getElementById('vitruvia-academic-links');if(root)root.dataset.query='';schedule()}).observe(sources,{childList:true,subtree:true});
+  window.addEventListener('popstate',schedule);
+  document.addEventListener('click',e=>{if(e.target.closest('#search-button,.tab,[data-q]')){const root=document.getElementById('vitruvia-academic-links');if(root)root.dataset.query='';schedule()}});
+  render();
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
 </body></html>
