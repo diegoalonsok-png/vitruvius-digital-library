@@ -94,12 +94,49 @@ async function compareLocus(locus){
   async function paint(){
    const v=VERSIONS.find(x=>x.id===sel.value);body.replaceChildren();
    if(v.ocr){
-    const st=document.createElement('p');st.className='source-note';st.textContent='Localizando el locus en el OCR…';body.append(st);
-    const hit=await ocrPassage(v.ocr);if(sel.value!==v.id)return;
-    if(!hit){st.textContent='No se localizó este locus en el OCR con suficiente coincidencia. Consulta el facsímil.';return}
-    st.textContent='OCR sin revisar · página '+hit.page+' del PDF · '+hit.share+' % de las palabras del locus. Coteja con la imagen antes de citar.';
-    const para=document.createElement('p');para.lang='la';para.textContent=hit.text;body.append(para);
-    const a=document.createElement('a');a.href=v.pdf+Math.max(0,hit.page-1)+'/mode/1up';a.target='_blank';a.rel='noopener noreferrer';a.textContent='Abrir la página '+hit.page+' del facsímil ↗';body.append(a);
+    const sourceId=v.ocr==='krohn-1912'?'vitruviidearchit00vitr':'vitruviidearchit00vitr_0';
+    const pdfPath=v.ocr==='krohn-1912'?'documents/krohn-1912.pdf':'https://archive.org/download/'+sourceId+'/'+sourceId+'.pdf';
+    const pdfBase=new URL(pdfPath,location.href).href;
+    const original='https://archive.org/details/'+sourceId;
+    const status=document.createElement('p');status.className='source-note';
+    status.textContent='Facsímil histórico disponible. Buscando página candidata en el OCR…';body.append(status);
+    const nav=document.createElement('div');nav.className='critical-pdf-tools';
+    const prev=document.createElement('button');prev.type='button';prev.textContent='←';
+    const label=document.createElement('label');label.textContent='Página digital ';
+    const number=document.createElement('input');number.type='number';number.min='1';number.step='1';number.value='1';number.setAttribute('aria-label','Página del PDF histórico');
+    label.append(number);
+    const next=document.createElement('button');next.type='button';next.textContent='→';
+    const go=document.createElement('button');go.type='button';go.textContent='Ir a página';
+    nav.append(prev,label,next,go);body.append(nav);
+    const frame=document.createElement('iframe');frame.className='critical-pdf-frame';frame.title=v.label+' · facsímil PDF';
+    frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';body.append(frame);
+    const links=document.createElement('p');links.className='critical-pdf-links';
+    const full=document.createElement('a');full.target='_blank';full.rel='noopener noreferrer';
+    full.textContent='Abrir PDF completo ↗';
+    const archive=document.createElement('a');archive.href=original;archive.target='_blank';archive.rel='noopener noreferrer';archive.textContent='Registro y visor de Internet Archive ↗';
+    links.append(full,document.createTextNode(' · '),archive);body.append(links);
+    function navigate(page){
+     const value=Math.max(1,Math.min(10000,Math.round(Number(page)||1)));
+     number.value=String(value);
+     const target=pdfBase+'#page='+value+'&zoom=page-width';
+     frame.src=target;full.href=target;
+    }
+    prev.addEventListener('click',()=>navigate(Number(number.value)-1));
+    next.addEventListener('click',()=>navigate(Number(number.value)+1));
+    go.addEventListener('click',()=>navigate(number.value));
+    number.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();navigate(number.value)}});
+    // No inventar equivalencia locus-página: si el OCR no da un candidato
+    // inequívoco, comenzar en la página 1 y dejar navegación manual.
+    navigate(1);
+    const hit=await ocrPassage(v.ocr);if(sel.value!==v.id||!body.isConnected)return;
+    if(!hit){
+     status.textContent='No se identificó una página fiable para '+locus+'. El PDF está disponible desde el comienzo; selecciona manualmente el folio. No se presume alineación entre OCR y locus.';
+     return;
+    }
+    status.textContent='Página candidata '+hit.page+' del PDF · '+hit.share+' % de coincidencia OCR. Ubicación orientativa, no cotejo filológico verificado.';
+    navigate(hit.page);
+    const excerpt=document.createElement('details');const title=document.createElement('summary');title.textContent='Ver fragmento OCR no revisado';excerpt.append(title);
+    const para=document.createElement('p');para.lang='la';para.textContent=hit.text;excerpt.append(para);body.append(excerpt);
     return;
    }
    const p=passages[v.ed];
