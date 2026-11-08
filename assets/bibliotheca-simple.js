@@ -14,7 +14,7 @@ const dict={
  short:"Escribe al menos dos letras o cifras.",loading:"Buscando en las versiones indexadas…",
  unavailable:"No fue posible verificar el índice: búsqueda no disponible.",failed:"Búsqueda parcial: algunas versiones fallaron.",
  none:"No se hallaron coincidencias en los textos examinados.",
- stats:(n,p,w)=>n+" coincidencias · "+p+" párrafos · "+w+" obras",
+ stats:(n,p,w)=>n+" apariciones en versiones indexadas · "+p+" pasajes · "+w+" obras",groupCount:n=>n+" apariciones",
  outside:n=>n+" obras catalogadas sin texto indexado; no examinadas.",
  wrong:"Esta obra no tiene texto indexado; no se buscó.",citation:"Edición y procedencia",loc:"Locus",noDate:"Datación no determinada"},
  en:{home:"Home",search:"Search",placeholder:"One word or phrase, for example: domus",
@@ -26,7 +26,7 @@ const dict={
  short:"Enter at least two letters or digits.",loading:"Searching indexed editions…",
  unavailable:"Could not verify the index; search unavailable.",failed:"Partial results: some text versions failed.",
  none:"No matches in the texts examined.",
- stats:(n,p,w)=>n+" occurrences · "+p+" paragraphs · "+w+" works",
+ stats:(n,p,w)=>n+" occurrences in indexed versions · "+p+" passages · "+w+" works",groupCount:n=>n+" occurrences",
  outside:n=>n+" catalogued works without indexed text, not searched.",
  wrong:"This work has no indexed text; it was not searched.",citation:"Edition and provenance",loc:"Locus",noDate:"Undated"},
  fr:{home:"Accueil",search:"Chercher",placeholder:"Un mot ou une expression, par exemple : domus",
@@ -38,7 +38,7 @@ const dict={
  short:"Saisissez deux lettres ou chiffres au minimum.",loading:"Recherche dans les éditions indexées…",
  unavailable:"Index non vérifiable ; recherche indisponible.",failed:"Résultats partiels : certaines éditions n'ont pu être chargées.",
  none:"Aucune correspondance dans les textes consultés.",
- stats:(n,p,w)=>n+" occurrences · "+p+" paragraphes · "+w+" œuvres",
+ stats:(n,p,w)=>n+" occurrences dans les versions indexées · "+p+" passages · "+w+" œuvres",groupCount:n=>n+" occurrences",
  outside:n=>n+" œuvres cataloguées sans texte indexé, non examinées.",
  wrong:"Cette œuvre n'a pas de texte indexé ; aucune recherche.",citation:"Édition et provenance",loc:"Locus",noDate:"Datation inconnue"}
 };
@@ -131,11 +131,13 @@ function render(rows,q,details){
  const t=dict[locale],sorted=rows.slice().sort((a,b)=>{
   const wa=byId.get(a.workId)||{},wb=byId.get(b.workId)||{};
   return dating(wa)-dating(wb)||String(wa.title||a.title).localeCompare(String(wb.title||b.title),"es")||
-   a.workId.localeCompare(b.workId)||String(a.language).localeCompare(String(b.language))||
-   String(a.locus).localeCompare(String(b.locus),undefined,{numeric:true});
+   a.workId.localeCompare(b.workId)||String(a.locus).localeCompare(String(b.locus),undefined,{numeric:true})||
+   String(a.language).localeCompare(String(b.language));
  });
  root.hidden=false;list.replaceChildren();
- const total=sorted.reduce((sum,r)=>sum+(r.hitsInPassage||1),0);
+ const groupCounts=new Map();
+ for(const r of sorted)groupCounts.set(r.workId,(groupCounts.get(r.workId)||0)+(r.hitsInPassage||1));
+ const total=[...groupCounts.values()].reduce((sum,n)=>sum+n,0);
  status.textContent=t.stats(total,sorted.length,new Set(sorted.map(r=>r.workId)).size)+
   (details?.failed?" · "+t.failed:"");
  if(!sorted.length)list.append(el("p","",t.none));
@@ -144,7 +146,7 @@ function render(rows,q,details){
   if(last!==r.workId){
    last=r.workId;const w=byId.get(last)||{};section=el("section","group");
    section.append(el("h3","",w.title||r.title));
-   section.append(el("p","meta",[w.author||r.author,w.dating||t.noDate].filter(Boolean).join(" · ")));
+   section.append(el("p","meta",[w.author||r.author,w.dating||t.noDate,t.groupCount(groupCounts.get(last)||0)].filter(Boolean).join(" · ")));
    const cite=provenance(w,r);if(cite)section.append(el("p","bibliography",t.citation+" · "+cite));
    passages=el("ol","hits");section.append(passages);frag.append(section);
   }
