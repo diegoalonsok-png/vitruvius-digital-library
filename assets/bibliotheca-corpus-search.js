@@ -127,8 +127,8 @@ async function search(q,{limit=8}={}){
  const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc"));
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
- for(let offset=0;offset<targets.length;offset+=4){
-  await Promise.all(targets.slice(offset,offset+4).map(async e=>{
+ for(let offset=0;offset<targets.length;offset+=8){
+  await Promise.all(targets.slice(offset,offset+8).map(async e=>{
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
    if(!d?.passages?.length){failed++;return}loaded++;
    let total=0,units=0,first=null;
@@ -351,7 +351,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",edition="",
   }));
   // Reveal attested passages as editions finish; do not wait for the entire corpus.
   if(typeof onProgress==="function"){
-   try{onProgress(rows.slice(),{targeted:targets.length,examined:Math.min(offset+4,targets.length),loaded,failed,complete:offset+4>=targets.length})}catch(error){console.warn("Bibliotheca progress callback",error)}
+   try{onProgress(rows.slice(),{targeted:targets.length,examined:Math.min(offset+8,targets.length),loaded,failed,complete:offset+8>=targets.length})}catch(error){console.warn("Bibliotheca progress callback",error)}
   }
  }
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
