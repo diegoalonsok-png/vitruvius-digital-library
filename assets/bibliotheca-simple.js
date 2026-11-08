@@ -65,7 +65,8 @@ const roman=x=>{let n=0,last=0;for(const c of [...String(x).toUpperCase()].rever
    Los rangos usan el extremo más antiguo; siglos debatidos se ordenan solo
    aproximadamente, mostrando siempre la datación original sin falsear precisión. */
 function dating(w){
- const s=fold(w?.dating).replace(/[–—−]/g,"-").replace(/\s+/g," ");
+ // Las grafías cronológicas no comparten normalización u/v con el buscador.
+ const s=String(w?.dating||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[–—−]/g,"-").replace(/\s+/g," ");
  if(/edicion editorial|edicion critica impresa|composicion y atribuciones debatidas/.test(s))return Infinity;
  if(/tradicion arcaica|epoca arcaica/.test(s))return /homer|odyssey|iliad/.test(w.id||"")?-780:-720;
  const numeric=s.match(/(\d{1,4})(?:\s*-\s*\d{1,4})?\s*(a\.\s*c\.|d\.\s*c\.)/);
