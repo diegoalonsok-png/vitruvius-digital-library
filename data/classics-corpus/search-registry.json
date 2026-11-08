@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-07",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 90,
+  "count": 91,
   "works": 64,
   "entries": [
     {
@@ -908,6 +908,16 @@
       "path": "data/classics-corpus/hesiod-works-days-grc.json",
       "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/marcus-aurelius-meditations-en.json",
+      "reader": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=en",
+      "sourceDescription": "Traducción histórica de George Long (1862); edición digital Standard Ebooks CC0; no edición crítica ni alineación certificada con el griego."
     }
   ]
 }
