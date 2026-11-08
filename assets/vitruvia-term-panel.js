@@ -83,19 +83,26 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
  /* ---------- Reconocimiento ---------- */
  async function latinLemma(q){
   const toks=q.trim().split(/\s+/);if(toks.length>3)return null;
-  const [lex,vl]=await Promise.all([json('data/latin-lexicon.json').catch(()=>({entries:[]})),json('data/classics-lexicon/vitruvius-la.json').catch(()=>null)]);
-  const out=[];
+  const [lex,vl,etym]=await Promise.all([json('data/latin-lexicon.json').catch(()=>({entries:[]})),json('data/classics-lexicon/vitruvius-la.json').catch(()=>null),json('data/lexicon/etymologicum.json').catch(()=>({entries:[]}))]);
+  const out=[],key=s=>latinKey(s).replace(/\d+$/,'');
   for(const tok of toks){
-   const k=latinKey(tok);if(k.length<3)continue;
-   const local=lex.entries.find(e=>[e.lemma,...(e.forms||[])].some(f=>latinKey(f)===k));
-   let lemmas=[];if(vl){for(const [form,ls] of Object.entries(vl.forms))if(latinKey(form)===k){lemmas=ls;break}}
-   if(!local&&!lemmas.length)return null;
-   const lemma=local?.lemma||lemmas[0];const info=vl?.lemmas?.[lemma]||vl?.lemmas?.[lemmas[0]]||null;
-   const forms=vl?Object.entries(vl.forms).filter(([,ls])=>ls.includes(lemma)).map(([f])=>f):(local?.forms||[tok]);
-   out.push({token:tok,lemma,headword:local?.headword||info?.h||lemma,es:local?.es||'',senses:local?.senses||[],en:info?.g||local?.en||'',pos:local?.pos||'',forms:[...new Set([tok,...forms,...(local?.forms||[])])]});
+   const k=key(tok);if(k.length<3)continue;
+   const local=(lex.entries||[]).find(e=>[e.lemma,...(e.forms||[])].some(f=>key(f)===k));
+   let candidates=[];
+   if(vl?.forms)for(const [form,lemmas] of Object.entries(vl.forms))if(key(form)===k){candidates=Array.isArray(lemmas)?lemmas:[];break}
+   const lemma=local?.lemma||candidates[0]||tok;
+   const info=vl?.lemmas?.[lemma]||null;
+   const editorial=(etym.entries||[]).find(e=>e.l==='la'&&key(e.lemma)===key(lemma));
+   if(!local&&!candidates.length&&!editorial)return null;
+   const forms=vl?.forms?Object.entries(vl.forms).filter(([,ls])=>Array.isArray(ls)&&ls.includes(lemma)).map(([f])=>f):[];
+   out.push({token:tok,lemma,headword:local?.headword||editorial?.head||info?.h||lemma,
+    es:local?.es||editorial?.sens?.[0]||'',senses:local?.senses?.length?local.senses:editorial?.sens||[],
+    en:info?.g||local?.en||'',pos:local?.pos||[editorial?.pos,editorial?.morph].filter(Boolean).join(' · '),
+    forms:[...new Set([tok,lemma,...forms,...(local?.forms||[])])],etymology:editorial?.etym||'',references:editorial?.refs||[]});
   }
   return out.length?out:null;
  }
+
  function greekToLatin(g){
   let t=String(g).normalize('NFD');const rough=/^[\u0370-\u03ff\u1f00-\u1fff]\p{M}*\u0314/u.test(t)||/^\p{L}\p{M}*\u0314/u.test(t);
   t=t.replace(/\p{M}/gu,'').toLowerCase();
@@ -364,6 +371,8 @@ html[data-theme=light] #vitruvia-term-panel{background:#fbf9f4;border-color:#ddd
    else if(l.en){tr.innerHTML='<b>Traducción:</b> <span class="vtp-es-auto">…</span>';spanish(l.en).then(t=>{if(token!==seq)return;tr.querySelector('.vtp-es-auto').textContent=t||l.en;if(t){const n=document.createElement('p');n.className='vtp-note';n.textContent='Glosa del Lewis & Short («'+l.en+'»), traducida automáticamente en tu navegador.';tr.after(n)}else{const n=document.createElement('p');n.className='vtp-note';n.textContent='Glosa inglesa del Lewis & Short (sin traductor automático disponible en este navegador).';tr.after(n)}})}
    else tr.innerHTML='<b>Traducción:</b> sin glosa en el léxico local; consulta los diccionarios enlazados abajo.';
    panel.append(tr);
+   if(l.etymology){const e=document.createElement('p');e.className='vtp-note';e.textContent='Etimología: '+l.etymology;panel.append(e)}
+   if(l.references?.length){const e=document.createElement('p');e.className='vtp-note';e.textContent='Referencias: '+l.references.join('; ');panel.append(e)}
    if(l.forms.length>1){const f=document.createElement('p');f.className='vtp-note';f.textContent='Formas en Vitruvio: '+l.forms.slice(0,14).join(', ')+(l.forms.length>14?'…':'');panel.append(f)}
   }
   /* Puente al Lexicon: etimología, morfología y pasajes en todo el corpus griego y latino. */
