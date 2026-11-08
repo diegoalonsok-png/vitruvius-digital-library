@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 135,
-    "translatedWorksLocal": 41,
-    "worksWithoutHostedTranslation": 181,
+    "translatedWorksLocal": 46,
+    "worksWithoutHostedTranslation": 176,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 40,
+      "en": 45,
       "fr": 2
     },
     "originalTextIndexed": 135,
@@ -2183,14 +2183,17 @@
       "title": "Ἄλκηστις",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2199,14 +2202,17 @@
       "title": "Ἠλέκτρα",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2215,14 +2221,17 @@
       "title": "Τρῳάδες",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2231,14 +2240,17 @@
       "title": "Ἑκάβη",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -2247,14 +2259,17 @@
       "title": "Ἰφιγένεια ἐν Αὐλίδι",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 182,
+  "count": 187,
   "works": 135,
   "entries": [
     {
@@ -1828,6 +1828,56 @@
       "path": "data/classics-corpus/euclid-elementa-grc.json",
       "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-alcestis-en.json",
+      "reader": "classics-text-reader.html?work=euripides-alcestis&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-electra-en.json",
+      "reader": "classics-text-reader.html?work=euripides-electra&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-troades-en.json",
+      "reader": "classics-text-reader.html?work=euripides-troades&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hecuba-en.json",
+      "reader": "classics-text-reader.html?work=euripides-hecuba&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json",
+      "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }
