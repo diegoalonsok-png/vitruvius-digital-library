@@ -204,8 +204,12 @@ try{
    const visual=await p.locator('#classic-results .hit mark').first().evaluate(el=>{
     const css=getComputedStyle(el);return {decoration:css.textDecorationLine,background:css.backgroundColor};
    });
-   assert.match(visual.decoration,/underline/,'Searched word must be underlined');
-   assert.equal(visual.background,'rgba(0, 0, 0, 0)','Searched word must have no colored block');
+   assert.equal(visual.decoration,'none','Searched word must not be underlined');
+   assert.equal(visual.background,'rgb(255, 227, 79)','Searched word must have yellow highlight');
+   await p.locator('#classic-results .hit mark.lexical-hit').first().click();
+   await p.locator('.bibliotheca-dictionary:not([hidden])').waitFor({state:'visible',timeout:10000});
+   assert.equal(await p.locator('.dictionary-actions .passage-action').count(),4,
+    'Dictionary must offer Lexicon, PDF, Mail and WhatsApp');
    assert.match(await p.locator('.hit .passage-link').first().getAttribute('href'),
     /classics-text-reader\.html\?work=aristotle-poetics/,'Concordance must open its real cited reader');
   }finally{await p.close()}
