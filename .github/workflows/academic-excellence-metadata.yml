@@ -1,0 +1,55 @@
+name: Excelencia académica · cobertura y procedencia
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-academic-excellence.mjs'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/lexicon/etymologicum.json'
+      - 'data/classics-alignment/manifest.json'
+      - 'data/classics-documents/manifest.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - '.github/workflows/academic-excellence-metadata.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit-academic-excellence.mjs'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'data/lexicon/etymologicum.json'
+      - 'data/classics-alignment/manifest.json'
+      - 'data/classics-documents/manifest.json'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - '.github/workflows/academic-excellence-metadata.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Sintaxis del informe de calidad
+        run: node --check scripts/audit-academic-excellence.mjs
+      - name: Auditar originales, notas, DOI, visores y bibliografía
+        run: node scripts/audit-academic-excellence.mjs
+      - name: Guardar informe reproducible, incluso con advertencias editoriales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: academic-excellence-evidence
+          path: reports/academic-excellence.json
+          if-no-files-found: warn
