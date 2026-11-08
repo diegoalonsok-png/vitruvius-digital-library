@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 108,
+  "count": 110,
   "works": 74,
   "entries": [
     {
@@ -1088,6 +1088,26 @@
       "path": "data/classics-corpus/sophocles-oedipus-en.json",
       "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=en",
       "sourceDescription": "Traducción histórica de Richard Jebb (1887); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/lucian-verae-historiae-en.json",
+      "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=en",
+      "sourceDescription": "Traducción histórica de Austin Morris Harmon (1913); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-medea-en.json",
+      "reader": "classics-text-reader.html?work=euripides-medea&lang=en",
+      "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

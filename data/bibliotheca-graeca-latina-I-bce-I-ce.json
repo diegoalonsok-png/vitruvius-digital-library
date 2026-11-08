@@ -3928,8 +3928,18 @@
         "True History"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/lucian-verae-historiae-grc.json"
-      }
+        "grc": "data/classics-corpus/lucian-verae-historiae-grc.json",
+        "en": "data/classics-corpus/lucian-verae-historiae-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Austin Morris Harmon (1913)",
+          "path": "classics-text-reader.html?work=lucian-verae-historiae&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Luciano de Samósata. Ἀληθῆ διηγήματα. Translated by Austin Morris Harmon. William Heinemann / Harvard University Press, 1913. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "pausanias-periegesis",
@@ -4574,8 +4584,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/euripides-medea-grc.json"
-      }
+        "grc": "data/classics-corpus/euripides-medea-grc.json",
+        "en": "data/classics-corpus/euripides-medea-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Edward P. Coleridge (1906)",
+          "path": "classics-text-reader.html?work=euripides-medea&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Eurípides. Μήδεια. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "aristophanes-clouds",

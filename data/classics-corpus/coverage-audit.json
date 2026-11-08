@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 108,
+    "indexedTextVersions": 110,
     "indexedDistinctWorks": 74,
     "manuscriptWitnesses": 23
   },
@@ -2040,9 +2040,11 @@
       "dating": "siglo II d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/lucian-verae-historiae-en.json",
         "data/classics-corpus/lucian-verae-historiae-grc.json"
       ],
       "localPDF": null,
@@ -2342,9 +2344,11 @@
       "dating": "431 a. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/euripides-medea-en.json",
         "data/classics-corpus/euripides-medea-grc.json"
       ],
       "localPDF": null,
