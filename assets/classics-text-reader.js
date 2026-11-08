@@ -219,7 +219,8 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   // The bibliographic catalogue may lag behind, notably with partial translations.
   const registry=await fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial no disponible");return r.json()});
   const shared={"varro-rustica":["varro-rustica","data/lexicon/fontes/varro-rustica-la.json"],"frontinus":["frontinus-aquaeductu","data/lexicon/fontes/frontinus-aquaeductu-la.json"],"pliny":["pliny-naturalis","data/lexicon/fontes/pliny-naturalis-la.json"]};
-   const hosted=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="json-passages"&&(
+   const hosted=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="json-passages"&&
+     (e.workId==="vitruvius"||["la","grc","en"].includes(e.language))&&(
      e.path==="data/classics-corpus/"+work+"-"+e.language+".json"||
      (e.language==="la"&&shared[work]?.[0]===e.sourceWorkId&&shared[work]?.[1]===e.path)));
   if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
