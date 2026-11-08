@@ -4,7 +4,7 @@
   "snapshot": "2026-11-08",
   "scope": "Faltantes detectados por registro local, no obras disponibles para descarga",
   "totalWorks": 222,
-  "missingOriginals": 42,
+  "missingOriginals": 41,
   "policy": "No duplicar ni inferir derechos, OCR, versiones o alineacion. Conservar originales. Priorizar textos livianos.",
   "entries": [
     {
@@ -924,12 +924,13 @@
     {
       "id": "varro-de-lingua-latina",
       "original": "la",
-      "indexed": [],
+      "indexed": [
+        "la"
+      ],
       "missing": [
         "en",
         "es",
-        "fr",
-        "la"
+        "fr"
       ]
     },
     {
