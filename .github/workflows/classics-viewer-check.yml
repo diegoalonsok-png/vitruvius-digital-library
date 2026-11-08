@@ -5,6 +5,12 @@ on:
     paths:
       - '.github/workflows/classics-viewer-check.yml'
       - 'scripts/classics-visor-smoke.mjs'
+      - 'bibliotheca-graeca-latina.html'
+      - 'classics-text-reader.html'
+      - 'assets/bibliotheca-simple.css'
+      - 'assets/bibliotheca-simple.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-viewers-lexicon.css'
       - 'assets/classics-text-reader.js'
       - 'data/classics-corpus/source-scope.json'
       - 'data/classics-corpus/coverage-audit.json'
