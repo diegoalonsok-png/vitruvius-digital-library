@@ -7750,7 +7750,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducciones española histórica y francesa de Joseph Baillard (1914) alojadas; división castellana distinta (21 unidades). Alineación filológica entre capítulos no certificada."
+        "status": "Traducciones históricas castellana (21 unidades), francesa (Joseph Baillard, 20 capítulos) e inglesa (Aubrey Stewart, 1889, 20 capítulos) indexadas localmente. Diferencias estructurales documentadas; no alineación filológica automática."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -7768,14 +7768,16 @@
         "original": "data/classics-corpus/seneca-de-brevitate-la.json",
         "translations": [
           "data/classics-corpus/seneca-de-brevitate-es.json",
-          "data/classics-corpus/seneca-de-brevitate-fr.json"
+          "data/classics-corpus/seneca-de-brevitate-fr.json",
+          "data/classics-corpus/seneca-de-brevitate-en.json"
         ],
         "verified": true
       },
       "corpusFiles": {
         "la": "data/classics-corpus/seneca-de-brevitate-la.json",
         "es": "data/classics-corpus/seneca-de-brevitate-es.json",
-        "fr": "data/classics-corpus/seneca-de-brevitate-fr.json"
+        "fr": "data/classics-corpus/seneca-de-brevitate-fr.json",
+        "en": "data/classics-corpus/seneca-de-brevitate-en.json"
       },
       "localVersions": [
         {
@@ -7795,6 +7797,14 @@
           "label": "Français · Joseph Baillard (1914) · 20 chapitres",
           "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=fr",
           "kind": "historical-translation"
+        },
+        {
+          "language": "en",
+          "label": "English · Aubrey Stewart 1889 · On the Shortness of Life",
+          "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=en",
+          "kind": "historical-translation",
+          "translator": "Aubrey Stewart",
+          "edition": "Bohn's Classical Library (1889)"
         }
       ],
       "bibliography": {
@@ -7805,7 +7815,19 @@
           "https://es.wikisource.org/wiki/De_la_brevedad_de_la_vida",
           "https://fr.wikisource.org/wiki/De_la_brièveté_de_la_vie/Traduction_Baillard"
         ],
-        "note": "Wikisource, textos históricos en dominio público con atribución CC BY-SA. El cotejo exhaustivo de fuentes y traducción española queda pendiente."
+        "note": "Wikisource, textos históricos en dominio público con atribución CC BY-SA. El cotejo exhaustivo de fuentes y traducción española queda pendiente.",
+        "citationStyle": "The Chicago Manual of Style, 18th ed. (2024)",
+        "editionCitation": "Seneca, Lucius Annaeus. De brevitate vitae (On the Shortness of Life). In L. Annaeus Seneca: Minor Dialogues, Together with the Dialogue On Clemency. Translated by Aubrey Stewart. London: George Bell and Sons, 1889. Digital edition, Standard Ebooks. https://standardebooks.org/ebooks/seneca/dialogues/aubrey-stewart.",
+        "englishEditionMetadata": {
+          "title": "On the Shortness of Life",
+          "translator": "Aubrey Stewart",
+          "publisher": "George Bell and Sons",
+          "series": "Bohn's Classical Library",
+          "year": 1889,
+          "isbn": null,
+          "authority": "https://catalog.perseus.tufts.edu/catalog/urn:cts:latinLit:phi1017.phi012.opp-eng18"
+        },
+        "method": "Los tres textos están disponibles independientemente. El ISBN no se atribuye a una edición de 1889 ni a un manuscrito, aunque reediciones modernas puedan tenerlo."
       }
     },
     {
