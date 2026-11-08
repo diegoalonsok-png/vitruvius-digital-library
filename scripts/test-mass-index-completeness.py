@@ -103,6 +103,24 @@ def main():
     except ValueError:
         pass
 
+    # Un himno genuino puede ser breve: nunca rechazar un texto íntegro porque
+    # el umbral genérico de prosa larga era 350 caracteres.
+    short_text = "Ἑρμῆς καὶ Ἀπόλλων θεοὶ ἀθάνατοι. " * 3
+    hymn = ('<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt>'
+            '<title>Himno</title><author>Anon.</author></titleStmt></fileDesc></teiHeader>'
+            '<text xml:lang="grc"><body><div n="1"><p>' + short_text +
+            '</p></div></body></text></TEI>').encode("utf-8")
+    hymn_work = {"id": "homeric-hymns", "title": "Himno breve"}
+    try:
+        module.edition_document(hymn_work, "grc", "https://example.org/hymn.xml", hymn, "tlg0013.tlg033")
+        raise AssertionError("El umbral estándar de 350 caracteres dejó de aplicarse a obras individuales")
+    except ValueError as error:
+        assert "suficiente texto original" in str(error)
+    valid_hymn = module.edition_document(hymn_work, "grc", "https://example.org/hymn.xml",
+                                         hymn, "tlg0013.tlg033", min_original_chars=12)
+    assert valid_hymn["passages"] and "Ἑρμῆς" in valid_hymn["passages"][0]["text"]
+    assert valid_hymn["sourceSha256"] == hashlib.sha256(hymn).hexdigest()
+
     # Ninguna ficha compuesta debe contabilizarse completa si falta una unidad
     # TEI o si el archivo final sólo contiene una fracción de las URN esperadas.
     import json
