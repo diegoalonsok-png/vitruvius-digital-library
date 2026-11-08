@@ -49,7 +49,7 @@ function render(){
  for(const row of rows.slice(shown,shown+15)){
   const card=el('article','critical-unified-card');
   card.append(el('h3','','Vitr., De architectura · '+row.locus));
-  const first=row.versions.find(x=>x.p.latin)||row.versions[0];
+  const first=row.versions.find(x=>x.e.id===filter.value&&x.p.latin)||row.versions.find(x=>x.p.latin)||row.versions[0];
   card.append(el('p','critical-unified-meta','Texto latino · '+first.e.name));
   const lat=annotated(first.p.latin,byLocus?'':term);lat.lang='la';card.append(lat);
   const translations=el('div','critical-unified-counterpart');translations.append(el('h4','','Traducciones del pasaje'));
@@ -77,7 +77,7 @@ async function run(){
  term=q.value.trim();if(!term)return;
  byLocus=locusInput(term);const id=++rev;rows=[];shown=0;out.replaceChildren();more.hidden=true;
  status.textContent='Localizando pasajes latinos y cotejando referencias documentales…';
- const chosen=editions.filter(e=>!filter.value||e.id===filter.value);
+ const chosen=editions; // Mostrar siempre las tres traducciones disponibles; el selector solo prioriza la edición.
  const paths=[...chosen.map(e=>'data/structured/'+e.id+'.json'),'data/critical-notes.json','data/apparatus-index.json'];
  const responses=await Promise.allSettled(paths.map(load));if(id!==rev)return;
  const data=new Map(paths.map((p,i)=>[p,responses[i].status==='fulfilled'?responses[i].value:null]));
@@ -99,7 +99,7 @@ async function run(){
   row.notes=notes.filter(n=>editionsForRow.has(n.edition)&&n.mapping_status==='explicit_in_anchor'&&n.locus&&locusKey(n.locus)===key).map(n=>({...n,editionName:editions.find(e=>e.id===n.edition)?.name||n.edition}));
   row.pdfNotes=apparatus.filter(n=>editionsForRow.has(n.edition)&&n.locusInHeading===true&&locusKey(n.locusMention||(n.loci||[])[0])===key).map(n=>({...n,editionName:editions.find(e=>e.id===n.edition)?.name||n.edition}));
  }
- rows=[...grouped.values()].sort((a,b)=>a.versions[0].p.book-b.versions[0].p.book||Number(a.versions[0].p.chapter)||0-(Number(b.versions[0].p.chapter)||0)||a.versions[0].p.section-b.versions[0].p.section);
+ rows=[...grouped.values()].sort((a,b)=>{const x=a.versions[0].p,y=b.versions[0].p;return x.book-y.book||String(x.chapter).localeCompare(String(y.chapter),undefined,{numeric:true})||x.section-y.section});
  const analyzed=rows.filter(r=>r.notes.length||r.pdfNotes.length).length;
  status.textContent=rows.length+' pasajes latinos encontrados · '+analyzed+' con comentarios vinculados documentalmente · '+(rows.length-analyzed)+' sin aparato registrado.'+(missing.length?' Advertencia: fuentes no disponibles: '+missing.join(', ')+'. Resultados parciales.':'');
  if(!rows.length)out.append(el('p','critical-unified-empty','No se encontró el locus o la frase latina en los textos disponibles.'));
