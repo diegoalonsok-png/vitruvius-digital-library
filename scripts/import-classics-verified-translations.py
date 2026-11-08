@@ -48,6 +48,18 @@ CANDIDATES = [
          blob="bdfb8852df1f0c5341aed2153447d2dd5c146b23",
          translator="Richard Jebb", year=1887, publisher="Cambridge University Press",
          mode="verse-lines", min_units=600, min_chars=20000),
+    dict(id="lucian-verae-historiae", original="grc", repo="canonical-greekLit",
+         path="data/tlg0062/tlg012/tlg0062.tlg012.perseus-eng2.xml",
+         blob="f4af940f2e29362dfb1cd1b899be54680032c0da",
+         translator="Austin Morris Harmon", year=1913,
+         publisher="William Heinemann / Harvard University Press",
+         mode="book-sections", min_units=85, min_chars=18000),
+    dict(id="euripides-medea", original="grc", repo="canonical-greekLit",
+         path="data/tlg0006/tlg003/tlg0006.tlg003.perseus-eng2.xml",
+         blob="7585638769674650b167e6bdcf8296a1dc38dc7d",
+         translator="Edward P. Coleridge", year=1906,
+         publisher="George Bell and Sons, London",
+         mode="verse-lines", min_units=400, min_chars=15000),
 ]
 
 
@@ -125,6 +137,27 @@ def extract(raw, candidate):
         if len({p["locus"] for p in passages}) != len(passages):
             raise ValueError("Secciones duplicadas")
         unit_count = len(passages)
+    elif candidate["mode"] == "book-sections":
+        passages = []
+        for div in body.iter(NS + "div"):
+            if div.get("subtype") != "section":
+                continue
+            book = next((a for a in ancestors(div)
+                         if a.tag == NS + "div" and a.get("subtype") == "book"), None)
+            if book is None or not book.get("n") or not div.get("n"):
+                continue
+            # Filtrar las notas/paratextos; el locus pertenece a la traducción TEI.
+            paragraphs = [p for p in div.iter(NS + "p")]
+            value = " ".join(text_without_notes(p) for p in paragraphs).strip()
+            if len(value) >= 25:
+                passages.append(dict(
+                    locus=book.get("n") + "." + div.get("n"), text=value,
+                    locusKind="libro y sección CTS de traducción inglesa; sin colación automática"))
+        unit_count = len(passages)
+        if unit_count < candidate["min_units"]:
+            raise ValueError("Cobertura insuficiente de secciones: " + str(unit_count))
+        if len({p["locus"] for p in passages}) != unit_count:
+            raise ValueError("Loci de secciones duplicados")
     else:
         verses = []
         for line in body.iter(NS + "l"):
