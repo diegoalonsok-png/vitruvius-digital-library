@@ -285,7 +285,7 @@ function cached(kind,fn){
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
 async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false}={}){
- const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
+ const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>/\p{L}/u.test(q)&&fold(q).length>=1))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language));
  const rows=[];let loaded=0,failed=0,failures=[];
