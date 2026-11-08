@@ -199,7 +199,7 @@ def run():
     p.add_argument("--max-new", type=int, default=5)
     p.add_argument("--dry-run", action="store_true")
     args = p.parse_args()
-    limit = max(1, min(args.max_new, 12))
+    limit = max(1, min(args.max_new, 16))
     catalog, mapping, reg = load(CAT), load(MAP)["links"], load(REG)
     audit, backlog = load(AUDIT), load(BACKLOG)
     translations = load(TRANSLATIONS)
