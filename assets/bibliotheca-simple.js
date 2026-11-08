@@ -112,7 +112,7 @@ function decorate(parent,text,query){
    const start=index[at],last=index[stop-1];
    if(start!==undefined&&last!==undefined){
     const end=last+(text.codePointAt(last)>65535?2:1);
-    if(start>=cursor){out.append(document.createTextNode(text.slice(cursor,start)));out.append(el("mark","",text.slice(start,end)));cursor=end;count++}
+    if(start>=cursor){out.append(document.createTextNode(text.slice(cursor,start)));const highlighted=el("mark","lexical-hit",text.slice(start,end));highlighted.tabIndex=0;highlighted.setAttribute("role","button");highlighted.setAttribute("aria-label","Consultar significado de "+highlighted.textContent);out.append(highlighted);cursor=end;count++}
    }
   }
   at=f.indexOf(key,at+Math.max(1,key.length));
@@ -244,8 +244,73 @@ function passageActions(record,workInfo,passageNode){
  const origin=typeof record.link==="string"?new URL(record.link,location.href).href:location.href;
  const message=[title,[workInfo.author||record.author,record.locus,languages[record.language]||record.language].filter(Boolean).join(" · "),passageNode.textContent,provenance(workInfo,record).citation,origin].filter(Boolean).join("\n\n");
  mail.href="mailto:?subject="+encodeURIComponent(title+" · "+(record.locus||"pasaje"))+"&body="+encodeURIComponent(message);
- actions.append(pdf,mail);return actions;
+ const whats=el("a","passage-action","WhatsApp");whats.href="https://wa.me/?text="+encodeURIComponent(message);whats.target="_blank";whats.rel="noopener noreferrer";whats.title="Compartir pasaje por WhatsApp";actions.append(pdf,mail,whats);return actions;
 }
+/* Diccionario contextual: emplea únicamente fichas editoriales verificables del Lexicon. */
+let etymTask=null;
+function etymEntries(){
+ if(!etymTask)etymTask=fetch("data/lexicon/etymologicum.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>Array.isArray(d.entries)?d.entries:[]).catch(e=>{etymTask=null;throw e});
+ return etymTask;
+}
+const dictionaryPanel=el("aside","bibliotheca-dictionary");
+dictionaryPanel.hidden=true;
+dictionaryPanel.setAttribute("role","dialog");
+dictionaryPanel.setAttribute("aria-modal","false");
+dictionaryPanel.setAttribute("aria-label","Diccionario contextual");
+dictionaryPanel.tabIndex=-1;
+document.body.append(dictionaryPanel);
+const dictLink=(term)=>{const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",term);u.searchParams.set("mode","palabra");return u.href};
+async function openDictionary(term,language){
+ dictionaryPanel.replaceChildren();
+ const head=el("div","dictionary-heading");
+ const name=el("h3","",term);
+ const close=el("button","dictionary-close","×");close.type="button";close.setAttribute("aria-label","Cerrar diccionario");
+ close.addEventListener("click",()=>{dictionaryPanel.hidden=true});
+ head.append(name,close);dictionaryPanel.append(head);
+ dictionaryPanel.append(el("p","dictionary-status","Consultando fichas del Lexicon…"));
+ dictionaryPanel.hidden=false;dictionaryPanel.focus();
+ const actions=el("div","dictionary-actions");
+ const link=el("a","passage-action","Estudiar en Lexicon");link.href=dictLink(term);
+ actions.append(link);
+ const text=()=>dictionaryPanel.querySelector(".dictionary-definition")?.innerText||("Consulta léxica: "+term);
+ const makePrint=()=>{const popup=window.open("","_blank");if(!popup){window.alert("Permití ventanas emergentes para guardar como PDF.");return}
+  popup.document.write('<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Diccionario · '+escapeHtml(term)+'</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.6 Georgia,serif}main{white-space:pre-wrap}</style></head><body><h1>'+escapeHtml(term)+'</h1><main>'+escapeHtml(text())+'</main><p>Vitruvius Digital Library · Lexicon</p></body></html>');
+  popup.document.close();popup.focus();popup.print()};
+ const p=el("button","passage-action","PDF");p.type="button";p.addEventListener("click",makePrint);
+ const mail=el("a","passage-action","Mail");const whats=el("a","passage-action","WhatsApp");
+ function refreshShare(){
+  const content=term+"\n"+text()+"\n"+dictLink(term);
+  mail.href="mailto:?subject="+encodeURIComponent("Lexicon · "+term)+"&body="+encodeURIComponent(content);
+  whats.href="https://wa.me/?text="+encodeURIComponent(content);
+ }
+ mail.addEventListener("click",refreshShare);whats.addEventListener("click",refreshShare);
+ whats.target="_blank";whats.rel="noopener noreferrer";
+ actions.append(p,mail,whats);dictionaryPanel.append(actions);
+ const definition=el("div","dictionary-definition");dictionaryPanel.insertBefore(definition,actions);
+ try{
+  const entries=await etymEntries();
+  if(dictionaryPanel.querySelector("h3")?.textContent!==term)return;
+  const key=fold(term).replace(/j/g,"i").replace(/v/g,"u");
+  const hits=entries.filter(e=>(!language||e.l===language||language==="el"&&e.l==="grc")&&[e.lemma,e.id,e.head].some(v=>fold(v||"").replace(/j/g,"i").replace(/v/g,"u")===key));
+  const entry=hits[0];
+  if(entry){
+   definition.append(el("p","dictionary-meta",[entry.l==="grc"?"Griego":"Latín",entry.pos,entry.morph].filter(Boolean).join(" · ")));
+   for(const sense of entry.sens||[])definition.append(el("p","",sense));
+   if(entry.etym)definition.append(el("p","", "Etimología: "+entry.etym));
+   if(entry.refs?.length)definition.append(el("p","dictionary-meta","Fuentes: "+entry.refs.join("; ")));
+  }else definition.append(el("p","","No hay una ficha lexicográfica verificada para esta forma exacta en el repertorio local. Consultá Lexicon para analizar variantes, lemas y diccionarios adicionales."));
+ }catch(err){definition.append(el("p","","No se pudo cargar el diccionario: "+err.message+". Podés abrir Lexicon mediante el enlace."))}
+ dictionaryPanel.querySelector(".dictionary-status")?.remove();
+}
+list.addEventListener("click",event=>{
+ const mark=event.target.closest("mark.lexical-hit");if(!mark)return;
+ openDictionary(mark.textContent,mark.closest("[lang]")?.getAttribute("lang")||"");
+});
+list.addEventListener("keydown",event=>{
+ if((event.key==="Enter"||event.key===" ")&&event.target.matches("mark.lexical-hit")){event.preventDefault();openDictionary(event.target.textContent,event.target.closest("[lang]")?.getAttribute("lang")||"")}
+});
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!dictionaryPanel.hidden)dictionaryPanel.hidden=true});
+
 function render(rows,q,details){
  previous=rows;current=q;diag=details||{};
  const t=dict[locale],sorted=rows.slice().sort((a,b)=>{
