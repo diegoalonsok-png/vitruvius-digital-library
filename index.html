@@ -425,7 +425,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         </div>
         <div class="research-nav-controls">
           <a class="research-lab-button" href="laboratorio-h.html" title="Folio original, transcripción latina legible y traducción sincronizada">Laboratorio H</a>
-          <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir o guardar como PDF el texto seleccionado" title="Seleccioná un texto antes de generar su PDF"><span aria-hidden="true">⎙</span><span class="sr-only">Imprimir</span></button>
+          <button type="button" id="print-home" class="research-print-button" aria-label="Imprimir o guardar como PDF el texto seleccionado" title="Selecciona un texto antes de generar su PDF"><span aria-hidden="true">⎙</span><span class="sr-only">Imprimir</span></button>
           <span class="vitruvia-top-stack"><a class="vitruvia-top-link" href="vitruvia.html" aria-labelledby="vitruvia-entry-name vitruvia-entry-description"><svg class="vitruvia-wing-v" viewBox="0 0 78 79" aria-hidden="true" focusable="false"><path d="M11 12 C17 28 24 49 35 66 C46 47 59 22 69 2" fill="none" stroke="currentColor" stroke-width="4.3" stroke-linecap="square" stroke-linejoin="round"/><path d="M7 12 L19 12 M63 2 L73 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg><span class="vitruvia-top-copy"><strong id="vitruvia-entry-name">Vitruvia</strong><small id="vitruvia-entry-description">Buscador académico en la web</small></span></a><a class="vitruvia-top-link lexicon-top-link" href="vitruvia-lexicon.html" aria-labelledby="lexicon-entry-name lexicon-entry-description"><span class="lexicon-glyph" aria-hidden="true">Λ</span><span class="vitruvia-top-copy"><strong id="lexicon-entry-name">Lexicon</strong><small id="lexicon-entry-description">Griego y latín · etimología y frases</small></span></a></span>
           <span class="header-languages" aria-label="Seleccionar idioma de interfaz" title="Seleccionar idioma / Select language"></span>
         </div>
@@ -630,10 +630,10 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
  }
  button.addEventListener('click',()=>{
   const selection=window.getSelection()?.toString().trim()||'';
-  if(!selection){inform('Seleccioná primero un fragmento de texto para imprimirlo o guardarlo como PDF.');return}
+  if(!selection){inform('Selecciona primero un fragmento de texto para imprimirlo o guardarlo como PDF.');return}
   const escapeText=value=>String(value).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   const printWindow=window.open('','_blank');
-  if(!printWindow){inform('Permití las ventanas emergentes para abrir la vista imprimible.');return}
+  if(!printWindow){inform('Permite las ventanas emergentes para abrir la vista imprimible.');return}
   const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer></body></html>';
   printWindow.document.open();printWindow.document.write(doc);printWindow.document.close();
   printWindow.focus();printWindow.print();
