@@ -49,6 +49,11 @@ function editionConnections(row,editions){
  const workUrl=new URL("bibliotheca-graeca-latina.html",location.href);
  workUrl.searchParams.set("work",row.workId);workUrl.searchParams.set("q",input.value.trim());
  const bibliotheca=document.createElement("a");bibliotheca.href=workUrl.href;bibliotheca.textContent="Buscar esta palabra en todas las ediciones de la obra";actions.append(bibliotheca);
+ const vitruviaUrl=new URL("vitruvia.html",location.href);
+ vitruviaUrl.searchParams.set("q",input.value.trim());
+ vitruviaUrl.searchParams.set("mode","all");
+ const vitruvia=document.createElement("a");vitruvia.href=vitruviaUrl.href;
+ vitruvia.textContent="Consultar el término en Vitruvia";actions.append(vitruvia);
  if(row.workId==="vitruvius"&&/^\d+\.\d+(?:\.\d+)?$/.test(row.locus)){
   const apparatus=new URL("aparato-critico.html",location.href);apparatus.searchParams.set("locus",row.locus);
   const a=document.createElement("a");a.href=apparatus.href;a.textContent="Aparato crítico · Vitr. "+row.locus;actions.append(a);
@@ -94,7 +99,17 @@ function addSummaryResult(row){
  const a=document.createElement("a");a.className="lx-library-result-link";a.href=safeUrl(row.link)||"bibliotheca-graeca-latina.html";a.textContent=row.title||"Texto clásico";
  const desc=document.createElement("p");desc.className="lx-library-meta";desc.textContent=[row.language?.toUpperCase(),row.meta].filter(Boolean).join(" · ");
  const excerpt=document.createElement("p");excerpt.className="lx-library-excerpt";excerpt.textContent=row.excerpt||"";
- card.append(a,desc,excerpt);list.append(card);
+ const actions=document.createElement("p");actions.className="lx-library-edition-actions";
+ if(row.workId){
+  const b=new URL("bibliotheca-graeca-latina.html",location.href);
+  b.searchParams.set("work",row.workId);
+  b.searchParams.set("q",row.matchedTerm||input.value.trim());
+  const link=document.createElement("a");link.href=b.href;link.textContent="Consultar obra en Bibliotheca";actions.append(link);
+ }
+ const v=new URL("vitruvia.html",location.href);
+ v.searchParams.set("q",row.matchedTerm||input.value.trim());v.searchParams.set("mode","all");
+ const link=document.createElement("a");link.href=v.href;link.textContent="Consultar en Vitruvia";actions.append(link);
+ card.append(a,desc,excerpt,actions);list.append(card);
 }
 async function execute(mode="literal"){
  const q=input.value.trim(),token=++serial;list.replaceChildren();

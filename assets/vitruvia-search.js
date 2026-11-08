@@ -754,6 +754,23 @@ function renderCard(d){
  }
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
+ // Los resultados de fuentes clásicas enlazan las tres vías de consulta.
+ // Se conserva el locus en el vínculo original al lector, sin inventar alineación.
+ if(d.kind==="classic-text"&&/^[a-z0-9-]+$/.test(String(d.workId||""))){
+  let term=typeof d.matchedTerm==="string"?d.matchedTerm:"";
+  if(!term){try{term=new URL(d.link,location.href).searchParams.get("q")||""}catch{}}
+  term=term.trim();
+  const bibliography="bibliotheca-graeca-latina.html?"+new URLSearchParams({
+   work:d.workId,...(term?{q:term}:{})
+  });
+  const b=makeLink(S.lang==="en"?"Search in Bibliotheca":S.lang==="fr"?"Chercher dans Bibliotheca":"Buscar en Bibliotheca",bibliography);
+  if(b)acts.append(b);
+  if(term){
+   const lexicon="vitruvia-lexicon.html?"+new URLSearchParams({q:term,mode:"palabra"});
+   const l=makeLink(S.lang==="en"?"Study in Lexicon":S.lang==="fr"?"Étudier dans Lexicon":"Estudiar en Lexicon",lexicon);
+   if(l)acts.append(l);
+  }
+ }
  if(d.type==="book"&&d.workId){
   const work=S.works.find(w=>w.id===d.workId);
   const corpus=work?.corpusFiles?.[work.language];

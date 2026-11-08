@@ -5,6 +5,13 @@ on:
       - 'assets/bibliotheca-offsite-greek.js'
       - 'assets/bibliotheca-corpus-search.js'
       - 'assets/bibliotheca-simple.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/lexicon-classics-bridge.js'
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-connected-greek-originals.mjs'
+      - 'scripts/test-three-way-classics-navigation.mjs'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
       - 'bibliotheca-graeca-latina.html'
       - 'classics-remote-text-reader.html'
       - 'scripts/test-bibliotheca-offsite-greek.mjs'
@@ -15,6 +22,13 @@ on:
       - 'assets/bibliotheca-offsite-greek.js'
       - 'assets/bibliotheca-corpus-search.js'
       - 'assets/bibliotheca-simple.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/lexicon-classics-bridge.js'
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-connected-greek-originals.mjs'
+      - 'scripts/test-three-way-classics-navigation.mjs'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
       - 'bibliotheca-graeca-latina.html'
       - 'classics-remote-text-reader.html'
       - 'scripts/test-bibliotheca-offsite-greek.mjs'
@@ -35,4 +49,10 @@ jobs:
           node --check assets/bibliotheca-offsite-greek.js
           node --check assets/bibliotheca-corpus-search.js
           node --check assets/bibliotheca-simple.js
-      - run: node scripts/test-bibliotheca-offsite-greek.mjs
+          node --check assets/classics-corpus-search.js
+          node --check assets/lexicon-classics-bridge.js
+          node --check assets/vitruvia-search.js
+      - run: |
+          node scripts/test-bibliotheca-offsite-greek.mjs
+          node scripts/test-connected-greek-originals.mjs
+          node scripts/test-three-way-classics-navigation.mjs

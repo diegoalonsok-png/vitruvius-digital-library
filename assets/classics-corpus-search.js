@@ -148,7 +148,7 @@ async function search(q,{limit=8}={}){
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",
     author:(languageName[e.language]||e.language)+" · "+(d.attribution||e.sourceDescription||"Texto alojado").slice(0,180),
     excerpt:(e.format==="historical-ocr-pages"?"Página OCR "+first.passage.page+": ":"Locus "+first.passage.locus+": ")+snippet(first.passage.text,first.at),
-    meta:e.format==="historical-ocr-pages"?"OCR HISTÓRICO · PÁGINA DE PDF · NO TEXTO CRÍTICO NI LOCUS":"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
+    meta:e.format==="historical-ocr-pages"?"OCR HISTÓRICO · PÁGINA DE PDF · NO TEXTO CRÍTICO NI LOCUS":e.format==="remote-json-passages"?"ORIGINAL GRIEGO INDEXADO · ALOJAMIENTO EXTERNO · BÚSQUEDA LITERAL":"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
     rating:e.format==="historical-ocr-pages"?22+Math.min(10,total):58+Math.min(30,total),link,source:"Bibliotheca Graeca et Latina · "+e.path,
     count:total,units});
   }));
@@ -187,7 +187,10 @@ async function semanticSearch(q,{limit=6}={}){
  // Optional static inverted index: skip JSON editions with no attested hit,
  // but search original HTML sources live. If the index is absent or stale,
  // keep the existing live search fully operational.
- const indexValid=staticIndex?.registryEditionCount===entries.length&&
+ // The Conceptus postings cover hosted files only; the remote Greek branch is
+ // validated separately and must not invalidate the hosted inverted index.
+ const hostedEditionCount=entries.filter(e=>e.format!=="remote-json-passages").length;
+ const indexValid=staticIndex?.registryEditionCount===hostedEditionCount&&
    staticIndex?.indexedEditions===staticIndex?.eligibleEditions&&
    !staticIndex?.errors?.length;
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
@@ -236,7 +239,7 @@ async function semanticSearch(q,{limit=6}={}){
       "classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    let link=linkBase+(linkBase.includes("?")?"&":"?")+"q="+encodeURIComponent(first.term);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(e.format==="json-passages"||e.format==="structured-bilingual")link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    else {
     // HTML text without an editorial anchor: point to a real matching

@@ -376,6 +376,22 @@ function render(rows,q,details){
     const lang=key.split("|")[0];return (languages[lang]||lang)+": "+n;
    }).join(" · ");
    section.append(el("p","version-counts",versionInfo));
+   // Navegación cruzada: conservar el identificador real de obra y la grafía
+   // efectivamente hallada; no afirmar concordancias alineadas entre ediciones.
+   const term=relevant.find(z=>z.language===w.language)?.term||relevant[0]?.term||q;
+   const cross=el("p","version-counts");
+   const toVitruvia=new URL("vitruvia.html",location.href);
+   toVitruvia.searchParams.set("q",term);
+   toVitruvia.searchParams.set("mode","all");
+   const vitruvia=el("a","passage-link",locale==="en"?"Find term in Vitruvia":locale==="fr"?"Chercher dans Vitruvia":"Consultar término en Vitruvia");
+   vitruvia.href=toVitruvia.href;
+   const toLexicon=new URL("vitruvia-lexicon.html",location.href);
+   toLexicon.searchParams.set("q",term);
+   toLexicon.searchParams.set("mode","palabra");
+   const lexicon=el("a","passage-link",locale==="en"?"Study term in Lexicon":locale==="fr"?"Étudier dans Lexicon":"Estudiar término en Lexicon");
+   lexicon.href=toLexicon.href;
+   cross.append(vitruvia,document.createTextNode(" · "),lexicon);
+   section.append(cross);
    const referenceDetails=el("details","references");
    referenceDetails.append(el("summary","",locale==="es"?"Referencias bibliográficas · Chicago 18":locale==="fr"?"Références bibliographiques · Chicago 18":"Bibliographic references · Chicago 18"));
    const referenceList=el("ul","reference-list");
