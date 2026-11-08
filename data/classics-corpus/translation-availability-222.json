@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 179,
+    "locallyIndexedWorks": 180,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 163,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 179,
-    "originalTextNotIndexed": 43
+    "originalTextIndexed": 180,
+    "originalTextNotIndexed": 42
   },
   "works": [
     {
@@ -873,14 +873,16 @@
       "author": "Frontino",
       "title": "Strategemata",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "plutarch-lives",
