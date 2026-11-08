@@ -22,6 +22,40 @@ const grid=results.closest(".results-grid");
 if(grid)grid.parentNode.insertBefore(parent,grid);else results.parentNode.insertBefore(parent,results);
 let serial=0;
 const safeUrl=value=>{try{const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:null}catch{return null}};
+let editionRegistryTask=null;
+const safeLocalUrl=value=>{try{const u=new URL(String(value||""),location.href);return u.origin===location.origin&&/^https?:$/.test(u.protocol)?u.href:null}catch{return null}};
+function registeredEditions(){
+ if(!editionRegistryTask)editionRegistryTask=window.ClassicsCorpusSearch?.registry?.()
+  .then(items=>Array.isArray(items)?items:[]).catch(()=>[]);
+ return editionRegistryTask||Promise.resolve([]);
+}
+function editionConnections(row,editions){
+ const related=editions.filter(e=>e.workId===row.workId&&e.path!==row.source&&
+   ["la","grc","en","es","fr"].includes(e.language));
+ const panel=document.createElement("details");panel.className="lx-library-editions";
+ const summary=document.createElement("summary");summary.textContent="Otras ediciones de esta obra ("+related.length+") · consultar y comparar";panel.append(summary);
+ const caveat=document.createElement("p");caveat.className="lx-library-meta";
+ caveat.textContent="Enlaces al inicio de cada edición. Compartir obra no confirma que los loci, capítulos o versos estén alineados ni que una traducción sea literal.";panel.append(caveat);
+ const ul=document.createElement("ul");ul.className="lx-library-editions-list";
+ for(const e of related){
+  const href=safeLocalUrl(e.reader||("classics-text-reader.html?work="+encodeURIComponent(e.workId)+"&lang="+encodeURIComponent(e.language)));
+  if(!href)continue;
+  const li=document.createElement("li"),a=document.createElement("a");a.href=href;
+  a.textContent=[e.language==="grc"?"Griego":e.language==="la"?"Latín":e.language==="es"?"Castellano":e.language==="fr"?"Francés":"Inglés",e.edition,e.sourceDescription].filter(Boolean).join(" · ");
+  a.setAttribute("aria-label","Abrir edición independiente: "+a.textContent);li.append(a);ul.append(li);
+ }
+ if(ul.childElementCount)panel.append(ul);
+ const actions=document.createElement("p");actions.className="lx-library-edition-actions";
+ const workUrl=new URL("bibliotheca-graeca-latina.html",location.href);
+ workUrl.searchParams.set("work",row.workId);workUrl.searchParams.set("q",input.value.trim());
+ const bibliotheca=document.createElement("a");bibliotheca.href=workUrl.href;bibliotheca.textContent="Buscar esta palabra en todas las ediciones de la obra";actions.append(bibliotheca);
+ if(row.workId==="vitruvius"&&/^\\d+\\.\\d+(?:\\.\\d+)?$/.test(row.locus)){
+  const apparatus=new URL("aparato-critico.html",location.href);apparatus.searchParams.set("locus",row.locus);
+  const a=document.createElement("a");a.href=apparatus.href;a.textContent="Aparato crítico · Vitr. "+row.locus;actions.append(a);
+ }
+ panel.append(actions);
+ return panel;
+}
 function markedExcerpt(node,excerpt){
  // «...» are generated from source text by the literal search engine.
  // Put markup only around the actual attested fragment, never treat it as HTML.
@@ -32,7 +66,7 @@ function markedExcerpt(node,excerpt){
   }else node.append(document.createTextNode(part));
  }
 }
-function addResult(row){
+function addResult(row,editions){
  const card=document.createElement("article");card.className="lx-library-result";
  const top=document.createElement("p");top.className="lx-library-meta";
  top.textContent=[row.language?.toUpperCase(),row.edition,row.ocr?"OCR histórico, no cotejado":""].filter(Boolean).join(" · ");
@@ -43,7 +77,9 @@ function addResult(row){
  count.textContent=" · "+row.hitsInPassage+" coincidencia"+(row.hitsInPassage===1?"":"s")+" en este pasaje";
  const excerpt=document.createElement("p");excerpt.className="lx-library-excerpt";excerpt.lang=row.language==="grc"?"grc":row.language==="la"?"la":row.language||"";
  markedExcerpt(excerpt,row.excerpt);
- card.append(passage,count,top,excerpt);list.append(card);
+ const source=document.createElement("p");source.className="lx-library-meta";
+ source.textContent="Fuente digital: "+(row.attribution||row.source||"Registro sin atribución detallada");
+ card.append(passage,count,top,excerpt,source,editionConnections(row,editions));list.append(card);
 }
 function addSummaryResult(row){
  const card=document.createElement("article");card.className="lx-library-result";
@@ -71,7 +107,9 @@ async function execute(mode="literal"){
    const counts=new Map();
    for(const row of rows){const key=[row.workId,row.language,row.edition,row.source].join("|");counts.set(key,(counts.get(key)||0)+1)}
    const editionCount=counts.size;
-   rows.forEach(addResult);
+   const editions=await registeredEditions();
+   if(token!==serial)return;
+   rows.forEach(row=>addResult(row,editions));
    const diagnostic=window.ClassicsCorpusSearch.diagnostics?.()||{};
    status.textContent=rows.length?
     rows.length+" pasajes mostrados de "+editionCount+" ediciones indexadas, con referencia y término resaltado. La lista tiene un límite de visualización; el recuento por lema de Lexicon se calcula por separado.":
