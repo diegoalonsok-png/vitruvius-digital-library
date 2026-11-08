@@ -51,9 +51,9 @@ assert(html.indexOf('assets/bibliotheca-uploaded-docx.js')<html.indexOf('assets/
 assert(engine.includes('ClassicsUploadedDocuments'),'Existing Bibliotheca search must consult the uploaded documents');
 assert(docxBridge.includes('DOCX')&&docxBridge.includes('unverified'),
  'Uploaded-document results must disclose unverified language or alignment');
-const correspondence=docxBridge.match(/const CORRESPONDENCE=(\\{[\\s\\S]*?\\});/);
+const correspondence=docxBridge.split('const CORRESPONDENCE=')[1]?.split(';')[0];
 assert(correspondence,'Document-to-catalogue correspondence missing');
-const documentMap=JSON.parse(correspondence[1]);
+const documentMap=JSON.parse(correspondence);
 let uploadedParagraphs=0;
 for(const rec of docxManifest.records){
  assert(Object.hasOwn(documentMap,rec.id),'Unmapped existing DOCX: '+rec.id);
