@@ -34,8 +34,10 @@ assert(corpus.includes('completeMatches(p.text,q)'),
  'Complete documentary concordances must not be limited to 80 hits per passage');
 assert(engine.includes('dateRank(')||engine.includes('dating('),
  'Every result must sort by the ancient work dating');
-assert(html.match(/data-lang="(?:es|en|fr)"/g)?.length===3,
- 'Interface must provide exactly Spanish, English and French');
+assert(html.includes('id="language-toggle"')&&!html.includes('data-lang='),
+ 'Bibliotheca must expose one language switch, not three separate selectors');
+assert(engine.includes('es:"en",en:"fr",fr:"es"'),
+ 'The single language switch must cycle only ES EN FR');
 const separateReader=read('assets/bibliotheca-graeca-latina.js');
 assert(separateReader.includes('function witnessYear(w)'),
  'Documented manuscript witness date logic should remain preserved in its archival module');
