@@ -246,6 +246,7 @@ def run():
     eligible.sort(key=lambda entry: -len(entry[2]))
     trees = {}
     errors, created = [], []
+    unavailable_tei = []
     total_bytes = 0
     for w, lang, urns in eligible:
         if len(created) >= limit:
@@ -258,6 +259,14 @@ def run():
             for urn in urns:
                 path = choose_file(trees[repo], urn, suffix)
                 if not path:
+                    # El vínculo bibliográfico existe, pero el repositorio remoto
+                    # no ofrece aquí un TEI compatible con idioma y tamaño.
+                    # Registrar el bloqueo; no atribuir una edición inexistente.
+                    unavailable_tei.append({
+                        "workId": w["id"], "urn": urn, "language": lang,
+                        "repository": repo,
+                        "reason": "No se encontró TEI original compatible en el árbol remoto o excede límites",
+                    })
                     component_files = []
                     break
                 url = f"https://raw.githubusercontent.com/{repo}/master/{quote(path, safe='/')}"
@@ -369,11 +378,14 @@ def run():
             "missingOriginals": backlog["missingOriginals"],
             "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
             "created": created, "errors": errors[:40],
+            "unavailableSourceMappings": unavailable_tei,
         })
     print(json.dumps({
         "eligibleSingleSourceWorks": len(eligible), "indexedInThisRun": len(created),
         "bytes": total_bytes, "siteBytesBefore": site_bytes, "availableBytes": capacity,
         "newTitles": [e["workId"] for e in created],
+        "unavailableSourceCount": len(unavailable_tei),
+        "unavailableSourceExamples": unavailable_tei[:10],
         "errors": errors[:20], "dryRun": args.dry_run,
     }, ensure_ascii=False))
     if not created and errors:
