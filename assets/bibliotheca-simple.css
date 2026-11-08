@@ -141,3 +141,39 @@ h1,.group h3,.hit p{color:#fff!important}
   text-decoration-skip-ink:none!important;
  }
 }
+
+/* Apariencia Lexicon · pasajes a dos márgenes y acciones discretas. */
+@media screen {
+ .result .group .hits .hit > p {
+  text-align:justify!important;
+  text-align-last:left!important;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  width:100%!important;
+  max-width:none!important;
+  margin-inline:0!important;
+  tab-size:4;
+ }
+ .result .group .hits .hit > p mark {
+  background:transparent!important;
+  color:inherit!important;
+  text-decoration:underline solid #f4dd5f 3px!important;
+  text-underline-offset:.19em!important;
+  -webkit-text-decoration-color:#f4dd5f!important;
+ }
+ .passage-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:11px 0 5px}
+ .passage-action{
+  display:inline-flex;justify-content:center;align-items:center;
+  min-height:31px;padding:5px 11px;
+  border:1px solid #48484a;border-radius:5px;
+  background:#171719;color:#c5c5c7!important;
+  font:500 11px/1.35 Arial,Helvetica,sans-serif;
+  text-decoration:none!important;letter-spacing:.015em;
+  box-shadow:none;cursor:pointer;
+ }
+ .passage-action:hover,.passage-action:focus-visible{
+  border-color:#858587;background:#29292c;color:#fff!important;
+ }
+}
+@media print {.passage-actions{display:none!important}}
