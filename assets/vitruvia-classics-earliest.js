@@ -31,7 +31,7 @@ function matchingWorks(works,query){
 function oldest(works,witnesses){
  const ids=new Set(works.map(w=>w.id));
  return witnesses.filter(w=>(w.workIds||[]).some(id=>ids.has(id))&&w.record)
-  .sort((a,b)=>(Number.isFinite(Number(a.dateStart))?Number(a.dateStart):999999)-(Number.isFinite(Number(b.dateStart))?Number(b.dateStart):999999));
+  .sort((a,b)=>(a.dateStart!=null&&Number.isFinite(Number(a.dateStart))?Number(a.dateStart):999999)-(b.dateStart!=null&&Number.isFinite(Number(b.dateStart))?Number(b.dateStart):999999));
 }
 function original(entry,work){
  return entry.workId===work.id&&entry.language===work.language&&
@@ -57,7 +57,12 @@ function readerLink(parent,label,href,title){
 }
 function render(panel,query,rows,isCurrent){
  if(!panel||!query)return;
+ // Avoid downloading the entire classical catalogue for unrelated searches.
+ // Search results already contain workId when a classical work is identified.
+ const candidates=Array.isArray(rows)?rows:[];
+ if(!candidates.some(row=>row?.workId&&["book","passage","manuscript"].includes(row.type)))return;
  const section=mk("section","article-author-reading vitruvia-earliest-reference");
+ section.hidden=true;
  section.setAttribute("aria-label",L("Testimonio clásico más antiguo catalogado","Earliest catalogued classical witness","Plus ancien témoin classique catalogué"));
  const title=panel.querySelector(".context-term");
  if(title)title.after(section);else panel.prepend(section);
@@ -67,6 +72,7 @@ function render(panel,query,rows,isCurrent){
   // Exact work/author identifiers avoid cross-linking different ancient people.
   const matching=matchingWorks(works,query);
   if(!matching.length){section.remove();return}
+  section.hidden=false;
   section.append(mk("h4","context-section-title",L("Clásicos · testimonios y lectura","Classics · witnesses and reading","Classiques · témoins et lecture")));
   section.append(mk("p","context-note",L(
    "El más antiguo es el primero fechado entre los testimonios registrados en esta biblioteca; no se presume que sea el más antiguo del mundo. Los fragmentos se identifican como tales.",
