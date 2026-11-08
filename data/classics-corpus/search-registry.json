@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 242,
-  "works": 177,
+  "count": 244,
+  "works": 179,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -364,6 +364,26 @@
       "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
       "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/augustine-civitate-dei-la.json",
+      "reader": "classics-text-reader.html?work=augustine-civitate-dei&lang=la",
+      "sourceDescription": "Edición CSEL: Emmanuel Hoffmann (CSEL 40, 1899–1900), TEI University of Leipzig/Open Greek and Latin, CC BY-SA 4.0. 664 loci en 22 libros. 2375 notas editoriales excluidas del texto buscable; sin cotejo propio."
+    },
+    {
+      "workId": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/augustine-confessiones-la.json",
+      "reader": "classics-text-reader.html?work=augustine-confessiones&lang=la",
+      "sourceDescription": "Edición CSEL: Pius Knöll (CSEL 33, 1896), TEI University of Leipzig/Open Greek and Latin, CC BY-SA 4.0. 453 loci en 13 libros. 756 notas editoriales excluidas del texto buscable; sin cotejo propio."
     },
     {
       "workId": "augustus-res-gestae",
