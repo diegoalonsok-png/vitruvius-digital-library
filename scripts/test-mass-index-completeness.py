@@ -88,6 +88,21 @@ def main():
             assert module.choose_file([{"path": expected, "size": 9000}], urn, suffix) == expected
             assert module.choose_file([], urn, suffix) is None
 
+    # Selección TEI exacta: no confundir edición Perseus y First1K, ni aceptar
+    # un ID parecido o un archivo sin límites de tamaño y procedencia.
+    first1k = {"path": "data/tlg0018/tlg001/tlg0018.tlg001.1st1K-grc1.xml",
+               "size": 300_000, "type": "blob"}
+    assert module.choose_file([first1k], "tlg0018.tlg001", "grc", corpus="1st1K") == first1k["path"]
+    assert module.choose_file([first1k], "tlg0018.tlg001", "grc") is None
+    assert module.choose_file([first1k], "tlg0018.tlg002", "grc", corpus="1st1K") is None
+    assert module.choose_file([{**first1k, "size": module.MAX_XML + 1}],
+                              "tlg0018.tlg001", "grc", corpus="1st1K") is None
+    try:
+        module.choose_file([first1k], "tlg0018.tlg001", "grc", corpus="inventado")
+        raise AssertionError("Se admitió una edición sin repositorio aprobado")
+    except ValueError:
+        pass
+
     # Ninguna ficha compuesta debe contabilizarse completa si falta una unidad
     # TEI o si el archivo final sólo contiene una fracción de las URN esperadas.
     import json
