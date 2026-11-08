@@ -6,6 +6,7 @@ on:
       - '.github/workflows/classics-viewer-check.yml'
       - 'scripts/classics-visor-smoke.mjs'
       - 'scripts/test-bibliotheca-chronology.mjs'
+      - 'scripts/test-bibliotheca-language-policy.mjs'
       - 'scripts/test-remote-translation-registry.mjs'
       - 'data/classics-corpus/remote-translations.json'
       - 'bibliotheca-graeca-latina.html'

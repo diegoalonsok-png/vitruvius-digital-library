@@ -3,10 +3,13 @@
 (()=>{"use strict";
 const CATALOG="data/bibliotheca-graeca-latina-I-bce-I-ce.json";
 const REGISTRY="data/classics-corpus/search-registry.json";
+/* No borrar fuentes: Bibliotheca expone originales y traducciones inglesas.
+   Vitruvio conserva sus ediciones castellana y francesa. */
+const bibliothecaLanguagePolicy=e=>e.workId==="vitruvius"||["la","grc","en"].includes(e.language);
 const $=id=>document.getElementById(id);
 const dict={
  es:{home:"Inicio",search:"Buscar",placeholder:"Una palabra o frase, por ejemplo: domus",
- intro:"Busca una palabra o frase en todos los textos clásicos indexados, o elige una obra. Los párrafos aparecen de las obras más antiguas a las más recientes, con su locus y sin inventar equivalencias entre traducciones.",
+ intro:"Busca palabras y frases en los originales griegos y latinos y en sus traducciones inglesas. El castellano y el francés se reservan para las ediciones de Vitruvio. Pasajes ordenados por antigüedad, sin alineaciones inventadas.",
  work:"Obra",all:"Todos los libros indexados",wait:"Cargando el catálogo de obras…",
  ready:(c,v,n)=>c+" obras catalogadas · "+v+" versiones indexadas · "+n+" obras sin texto indexado.",
  missing:"(no indexada)",label:"Párrafos encontrados",lexicon:"Estudiar etimología en Lexicon",
@@ -18,7 +21,7 @@ const dict={
  outside:n=>n+" obras catalogadas sin texto indexado; no examinadas.",
  wrong:"Esta obra no tiene texto indexado; no se buscó.",citation:"Edición y procedencia",loc:"Locus",noDate:"Datación no determinada",translit:forms=>"Transliteración griega documentada: "+forms.join(", ")},
  en:{home:"Home",search:"Search",placeholder:"One word or phrase, for example: domus",
- intro:"Search a word or phrase across all indexed classical texts or one work. Paragraphs appear in classical chronological order, with source loci and no invented translation alignments.",
+ intro:"Search original Greek/Latin texts and English translations. Spanish and French remain available for Vitruvius editions only. Passages appear in chronological order without assumed alignment.",
  work:"Work",all:"All indexed books",wait:"Loading the work catalogue…",
  ready:(c,v,n)=>c+" catalogued works · "+v+" indexed versions · "+n+" works with no indexed text.",
  missing:"(not indexed)",label:"Matching paragraphs",lexicon:"Study etymology in Lexicon",
@@ -30,7 +33,7 @@ const dict={
  outside:n=>n+" catalogued works without indexed text, not searched.",
  wrong:"This work has no indexed text; it was not searched.",citation:"Edition and provenance",loc:"Locus",noDate:"Undated",translit:forms=>"Documented Greek transliteration: "+forms.join(", ")},
  fr:{home:"Accueil",search:"Chercher",placeholder:"Un mot ou une expression, par exemple : domus",
- intro:"Cherchez un mot ou une expression dans tous les textes classiques indexés, ou dans une seule œuvre. Les paragraphes apparaissent par ancienneté avec leur locus, sans alignements inventés.",
+ intro:"Recherchez les textes originaux grecs et latins et leurs traductions anglaises. Les éditions de Vitruve conservent le français et l’espagnol. Résultats ordonnés par ancienneté.",
  work:"Œuvre",all:"Tous les livres indexés",wait:"Chargement du catalogue…",
  ready:(c,v,n)=>c+" œuvres cataloguées · "+v+" versions indexées · "+n+" œuvres sans texte indexé.",
  missing:"(non indexée)",label:"Paragraphes trouvés",lexicon:"Étudier l’étymologie dans Lexicon",
@@ -187,7 +190,7 @@ const metadata=Promise.all([
 ]).then(([catalog,registry])=>{
  if(!Array.isArray(catalog.works)||registry.schema!=="vitruvia-classics-search-registry-v1"||
  !Array.isArray(registry.entries)||registry.entries.length!==registry.count)throw Error("inconsistent registry");
- works=catalog.works;entries=registry.entries;byId=new Map(works.map(w=>[w.id,w]));
+ works=catalog.works;entries=registry.entries.filter(bibliothecaLanguagePolicy);byId=new Map(works.map(w=>[w.id,w]));
  indexed=new Set(entries.filter(e=>e.format!=="historical-ocr-pages"&&byId.has(e.workId)).map(e=>e.workId));
  refresh();
 }).catch(error=>{coverage.textContent=dict[locale].unavailable;throw error});

@@ -6,6 +6,9 @@
 "use strict";
 if(window.ClassicsCorpusSearch)return;
 const REGISTRY="data/classics-corpus/search-registry.json";
+/* Biblioteca pública: originales y traducciones inglesas; castellano/francés sólo en Vitruvio.
+   El registro compartido conserva intactos los testimonios históricos. */
+const bibliothecaLanguagePolicy=e=>e.workId==="vitruvius"||["la","grc","en"].includes(e.language);
 const LEGACY=[
  ["theophrastus-characters","grc","Teofrasto","Caracteres"],
  ["plato-apology","grc","Platón","Apología de Sócrates"],
@@ -41,6 +44,7 @@ async function registry(){
  if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
   if(j.schema!=="vitruvia-classics-search-registry-v1"||!Array.isArray(j.entries)||j.entries.length<14)throw Error("Registro de búsqueda incompleto");
   registered=j.entries.filter(valid);if(registered.length!==j.entries.length)throw Error("Registro con rutas o metadatos inválidos");
+  registered=registered.filter(bibliothecaLanguagePolicy);
   return registered;
  }).catch(()=>{registered=LEGACY;return LEGACY});
  return registryTask;
@@ -117,7 +121,7 @@ async function search(q,{limit=8}={}){
  const grec=/[Ͱ-Ͽἀ-῿]/.test(q),semitic=/[\u0590-\u05ff]/u.test(q),all=await registry();
  // The hosted corpus presently has no Hebrew or Aramaic passage editions.
  // Do not fetch Latin/English texts and misreport absence in an unindexed language.
- const targets=all.filter(e=>semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc");
+ const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc"));
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
@@ -309,7 +313,7 @@ function completeMatches(text,term){
 async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
- const all=await registry(),targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language)&&(includeOCR||e.format!=="historical-ocr-pages"));
+ const all=await registry(),targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(includeOCR||e.format!=="historical-ocr-pages"));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
