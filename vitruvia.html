@@ -1703,7 +1703,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 <script id="vitruvia-editorial-illustrations-20261108">
 (function(){
   /* Only reuse documentary images already returned for the SAME query; never invent assets. */
-  let queued=false;
+  let queued=false, lastSignature='';
   function update(){
     queued=false;
     const body=document.getElementById('article-body');
@@ -1713,6 +1713,9 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     const paragraphs=[...body.querySelectorAll(':scope > p')].filter(p=>p.textContent.trim().length>100);
     if(paragraphs.length<5)return;
     const figures=[...gallery.querySelectorAll('img')].filter(img=>img.getAttribute('src')&&img.getAttribute('alt')&&img.closest('a[href]')).slice(0,3);
+    const signature=paragraphs.map(p=>p.textContent.slice(0,80)).join('|')+'::'+figures.map(i=>i.src).join('|');
+    if(signature===lastSignature)return;
+    lastSignature=signature;
     body.querySelectorAll(':scope > figure.editorial-figure').forEach(el=>el.remove());
     figures.forEach((img,i)=>{
       const anchor=img.closest('a[href]');
