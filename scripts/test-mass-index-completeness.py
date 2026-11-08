@@ -56,6 +56,20 @@ def main():
     except ValueError as ex:
         assert 'desconocida' in str(ex)
 
+    # XML con sangrías enormes: no confundir espacios de la TEI con texto omitido.
+    # Patrón observado en Platón, Fedón (prosa con versos citados).
+    spaced = ('<TEI xmlns="http://www.tei-c.org/ns/1.0">'
+              '<teiHeader><fileDesc><titleStmt><title>Phaedo</title>'
+              '<author>Plato</author></titleStmt></fileDesc></teiHeader>'
+              '<text xml:lang="grc"><body><div n="57"><p>'
+              + ('      \\n             ' * 450)
+              + '<said>Ο λόγος περὶ ψυχῆς καὶ ἀληθείας λέγεται. ' * 35
+              + '<l n="1">λόγος ἀρχαῖος</l></said></p></div></body></text></TEI>').encode("utf-8")
+    title, author, lang, passages = module.extract_complete_tei(spaced, "Phaedo")
+    assert title == "Phaedo" and author == "Plato" and lang == "grc"
+    assert sum(len(p["original"]) for p in passages) > 500
+    assert any("λόγος" in p["original"] for p in passages)
+
     print("PASS: prosa mixta íntegra, versos preservados, XML P4 y P5 sin modificación")
 
 if __name__ == "__main__":
