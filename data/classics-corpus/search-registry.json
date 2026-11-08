@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 235,
+  "count": 237,
   "works": 173,
   "entries": [
     {
@@ -2358,6 +2358,26 @@
       "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
       "reader": "classics-text-reader.html?work=aristoxenus-harmonica&lang=grc",
       "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-legum-allegoriae-en.json",
+      "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/philo-de-vita-mosis-en.json",
+      "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=en",
+      "sourceDescription": "Traducción histórica de Charles Duke Yonge (1855); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático"
     }
   ]
 }

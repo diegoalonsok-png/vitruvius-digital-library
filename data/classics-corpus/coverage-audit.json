@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 235,
+    "indexedTextVersions": 237,
     "indexedDistinctWorks": 173,
     "manuscriptWitnesses": 23
   },
@@ -2054,9 +2054,11 @@
       "dating": "siglo I d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/philo-legum-allegoriae-en.json",
         "data/classics-corpus/philo-legum-allegoriae-grc.json"
       ],
       "localPDF": null,
@@ -2076,9 +2078,11 @@
       "dating": "siglo I d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/philo-de-vita-mosis-en.json",
         "data/classics-corpus/philo-de-vita-mosis-grc.json"
       ],
       "localPDF": null,

@@ -3857,8 +3857,18 @@
         "Legum allegoriae"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/philo-legum-allegoriae-grc.json"
-      }
+        "grc": "data/classics-corpus/philo-legum-allegoriae-grc.json",
+        "en": "data/classics-corpus/philo-legum-allegoriae-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Charles Duke Yonge (1854)",
+          "path": "classics-text-reader.html?work=philo-legum-allegoriae&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Filón de Alejandría. Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae). Translated by Charles Duke Yonge. Henry G. Bohn, London, 1854. OpenGreekAndLatin First1KGreek, TEI."
+        }
+      ]
     },
     {
       "id": "philo-de-vita-mosis",
@@ -3896,8 +3906,18 @@
         "Life of Moses"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/philo-de-vita-mosis-grc.json"
-      }
+        "grc": "data/classics-corpus/philo-de-vita-mosis-grc.json",
+        "en": "data/classics-corpus/philo-de-vita-mosis-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Charles Duke Yonge (1855)",
+          "path": "classics-text-reader.html?work=philo-de-vita-mosis&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Filón de Alejandría. Περὶ τοῦ βίου Μωυσέως (De vita Mosis). Translated by Charles Duke Yonge. Henry G. Bohn, London, 1855. OpenGreekAndLatin First1KGreek, TEI."
+        }
+      ]
     },
     {
       "id": "plutarch-moralia",

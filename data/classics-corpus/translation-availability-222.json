@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 173,
-    "translatedWorksLocal": 56,
-    "worksWithoutHostedTranslation": 166,
+    "translatedWorksLocal": 58,
+    "worksWithoutHostedTranslation": 164,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 55,
+      "en": 57,
       "fr": 2
     },
     "originalTextIndexed": 173,
@@ -1486,14 +1486,17 @@
       "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1854), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
@@ -1502,14 +1505,17 @@
       "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1855), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {
