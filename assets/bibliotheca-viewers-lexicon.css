@@ -135,3 +135,48 @@ html body .classic-main .bibliotheca-color{
  }
  html body .classic-main :is(.classic-read-columns article p,.classic-detail p){color:#111!important}
 }
+
+/* Lexicon's quiet interactive states: immediate feedback on mouse/touch,
+   persistent selection for active tabs; keyboard focus stays visible. */
+html body .classic-main button,
+html body .classic-menu button,
+html body .bibliotheca-unified-results button,
+html body .bibliotheca-on-demand-viewer button{
+  border:1px solid #393939!important;
+  border-radius:4px!important;
+  background:#202021!important;
+  color:#dadada!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  transition:background-color 120ms ease,border-color 120ms ease,transform 100ms ease!important;
+}
+html body .classic-main button:hover:not(:disabled),
+html body .classic-menu button:hover:not(:disabled),
+html body .bibliotheca-unified-results button:hover:not(:disabled),
+html body .bibliotheca-on-demand-viewer button:hover:not(:disabled){
+  background:#303032!important;border-color:#555!important;color:#eee!important;
+}
+html body .classic-main button:active:not(:disabled),
+html body .classic-menu button:active:not(:disabled),
+html body .bibliotheca-unified-results button:active:not(:disabled),
+html body .bibliotheca-on-demand-viewer button:active:not(:disabled){
+  background:#424246!important;border-color:#818185!important;
+  transform:translateY(1px);
+}
+html body .classic-main :is(button[aria-pressed=true],button[aria-current=true],
+  .classic-tabstrip button[aria-pressed=true],.triple-thumbs button[aria-current=true]),
+html body .classic-menu .bibliotheca-language-menu button[aria-pressed=true]{
+  background:#363638!important;border-color:#8b8b8e!important;
+  color:#f3f3f4!important;
+}
+html body .classic-main :is(button,a,select):focus-visible,
+html body .classic-menu button:focus-visible,
+html body .bibliotheca-unified-results button:focus-visible{
+  outline:2px solid #999!important;outline-offset:2px!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html body .classic-main button,html body .classic-menu button,
+ html body .bibliotheca-unified-results button,html body .bibliotheca-on-demand-viewer button{
+  transition:none!important;transform:none!important;
+ }
+}
