@@ -187,7 +187,10 @@ async function semanticSearch(q,{limit=6}={}){
  // Optional static inverted index: skip JSON editions with no attested hit,
  // but search original HTML sources live. If the index is absent or stale,
  // keep the existing live search fully operational.
- const indexValid=staticIndex?.registryEditionCount===entries.length&&
+ // The Conceptus postings cover hosted files only; the remote Greek branch is
+ // validated separately and must not invalidate the hosted inverted index.
+ const hostedEditionCount=entries.filter(e=>e.format!=="remote-json-passages").length;
+ const indexValid=staticIndex?.registryEditionCount===hostedEditionCount&&
    staticIndex?.indexedEditions===staticIndex?.eligibleEditions&&
    !staticIndex?.errors?.length;
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
