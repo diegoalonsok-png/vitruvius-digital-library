@@ -48,6 +48,11 @@ async function getJson(path){
 const q=by('critical-unified-query'),edition=by('critical-unified-edition'),field=by('critical-unified-field'),
  phrase=by('critical-unified-phrase'),status=by('critical-unified-status'),more=by('critical-unified-more');
 let visible=[],shown=0,revision=0,currentQuery='';
+const pdfArea=by('critical-unified-pdf'),pdfButton=by('critical-unified-pdf-search'),
+ pdfStatus=by('critical-unified-pdf-status'),pdfTarget=by('critical-unified-pdf-results'),
+ pdfMore=by('critical-unified-pdf-more');
+let pdfRows=[],pdfShown=0,pdfQuery='';
+
 const locusKey=v=>String(v||'').toLowerCase().replace(/^0+/,'').replace(/\s+/g,'');
 function pdfLink(e,page){
  const n=Number(page);return e.pdf+(Number.isFinite(n)&&n>0?'#page='+Math.floor(n):'');
@@ -143,9 +148,66 @@ function renderNext(){
  shown+=batch.length;more.hidden=shown>=visible.length;
  more.textContent='Mostrar más ('+shown+' de '+visible.length+' unidades)';
 }
+/* Página completa y aparato PDF por consulta literal, no solo los
+   1400 caracteres guardados por entrada en el índice editorial. */
+function pdfNext(){
+ const batch=pdfRows.slice(pdfShown,pdfShown+20);
+ for(const row of batch){
+  const article=el('article','critical-unified-card');
+  article.append(el('h3','',row.ed.version+' · '+row.ed.label+' · página '+row.page.page));
+  const det=el('details','critical-unified-detail');det.append(el('summary','',row.hits+' coincidencia(s) · leer fragmento'));
+  const text=String(row.page.text||'');
+  const spans=positions(text,pdfQuery,phrase.checked);
+  const first=spans[0],start=first?Math.max(0,first[0]-170):0,end=Math.min(text.length,first?first[1]+600:800);
+  const p=el('p','critical-unified-text');p.lang=row.ed.lang;
+  if(start)p.append('… ');
+  const excerpt=text.slice(start,end);
+  highlight(p,excerpt,positions(excerpt,pdfQuery,phrase.checked));
+  if(end<text.length)p.append(' …');
+  det.append(p);
+  const a=el('a','','Ver página íntegra en el PDF ↗');
+  a.href=row.ed.pdf+'#page='+Number(row.page.page);a.target='_blank';a.rel='noopener noreferrer';
+  det.append(a);article.append(det);pdfTarget.append(article);
+ }
+ pdfShown+=batch.length;pdfMore.hidden=pdfShown>=pdfRows.length;
+ if(!pdfMore.hidden)pdfMore.textContent='Mostrar más páginas ('+pdfShown+' de '+pdfRows.length+')';
+}
+async function searchEntirePdfs(){
+ const query=q.value.trim();if(!query||!pdfButton)return;
+ const at=revision;pdfQuery=query;pdfButton.disabled=true;pdfStatus.textContent='Buscando en las páginas completas de las ediciones…';
+ pdfRows=[];pdfShown=0;pdfTarget.replaceChildren();pdfMore.hidden=true;
+ const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
+ const all=await Promise.allSettled(chosen.map(ed=>getJson('data/'+ed.id+'-pages.json').then(pages=>({ed,pages}))));
+ if(at!==revision){pdfButton.disabled=false;return}
+ let occurrenceCount=0,pagesExamined=0;const failures=[];
+ for(let i=0;i<all.length;i++){
+  if(all[i].status!=='fulfilled'){failures.push(chosen[i].version);continue}
+  const {ed,pages}=all[i].value;
+  for(const page of pages){
+   if(typeof page.text!=='string')continue;
+   pagesExamined++;
+   const hits=positions(page.text,query,phrase.checked).length;
+   if(hits){occurrenceCount+=hits;pdfRows.push({ed,page,hits})}
+  }
+ }
+ pdfRows.sort((a,b)=>EDITIONS.indexOf(a.ed)-EDITIONS.indexOf(b.ed)||Number(a.page.page)-Number(b.page.page));
+ pdfStatus.textContent=occurrenceCount+' apariciones literales en '+pdfRows.length+' páginas de '+pagesExamined+
+  ' páginas con texto extraíble examinadas. Incluye material fuera de los pasajes: introducciones y aparato. Las tres ediciones se cuentan por separado.'+
+  (failures.length?' Búsqueda parcial: no se cargó '+failures.join(', ')+'.':'');
+ if(pdfRows.length)pdfNext();
+ else pdfTarget.append(el('p','critical-unified-empty','Sin apariciones en las páginas extraídas de las ediciones seleccionadas.'));
+ pdfButton.disabled=false;
+}
+if(pdfButton&&pdfMore){
+ pdfButton.addEventListener('click',()=>{void searchEntirePdfs()});
+ pdfMore.addEventListener('click',pdfNext);
+}
+
 async function run(){
  const query=q.value.trim();if(!query)return;
  const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;
+ if(pdfArea){pdfArea.hidden=false;pdfTarget.replaceChildren();pdfStatus.textContent='Para incluir introducciones, notas y apéndices completos, consultá los PDF originales.';pdfMore.hidden=true;pdfButton.disabled=false;}
+
  status.textContent='Leyendo textos, notas y comentarios de las ediciones seleccionadas…';
  const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
  const paths=chosen.map(e=>'data/structured/'+e.id+'.json');
