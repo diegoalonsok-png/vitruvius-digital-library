@@ -2,10 +2,10 @@ name: Verificar Vitruvia Lexicon
 on:
   push:
     branches: [main]
-    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/annotate-latin-context.py", "sw.js"]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/test-lexicon-integrated-dictionaries.mjs", "assets/lexicon-dictionaries-integrated.js", "assets/lexicon-dictionaries-integrated.css", "scripts/annotate-latin-context.py", "sw.js"]
   pull_request:
     branches: [main]
-    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/annotate-latin-context.py", "sw.js"]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/test-lexicon-integrated-dictionaries.mjs", "assets/lexicon-dictionaries-integrated.js", "assets/lexicon-dictionaries-integrated.css", "scripts/annotate-latin-context.py", "sw.js"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,6 +25,7 @@ jobs:
           node --check assets/lectura-lexica.js
           node --check assets/lector-clasico.js
           node --check sw.js
+          node --check assets/lexicon-dictionaries-integrated.js
       - name: Datos JSON válidos
         run: |
           python - <<'PY'
@@ -36,6 +37,8 @@ jobs:
           assert not bad, "\n".join(bad)
           print("JSON del Lexicon válidos")
           PY
+      - name: Comprobar panel único y diccionarios latín griego hebreo
+        run: node scripts/test-lexicon-integrated-dictionaries.mjs
       - name: Citas de las fichas y sentencias verificadas en el corpus
         run: python scripts/test-vitruvia-lexicon.py
       - name: Pruebas en navegador (consultas de referencia, citas, grupos, sin errores de JavaScript)
