@@ -48,6 +48,11 @@ async function getJson(path){
 const q=by('critical-unified-query'),edition=by('critical-unified-edition'),field=by('critical-unified-field'),
  phrase=by('critical-unified-phrase'),status=by('critical-unified-status'),more=by('critical-unified-more');
 let visible=[],shown=0,revision=0,currentQuery='';
+const pdfArea=by('critical-unified-pdf'),pdfButton=by('critical-unified-pdf-search'),
+ pdfStatus=by('critical-unified-pdf-status'),pdfTarget=by('critical-unified-pdf-results'),
+ pdfMore=by('critical-unified-pdf-more');
+let pdfRows=[],pdfShown=0,pdfQuery='';
+
 const locusKey=v=>String(v||'').toLowerCase().replace(/^0+/,'').replace(/\s+/g,'');
 function pdfLink(e,page){
  const n=Number(page);return e.pdf+(Number.isFinite(n)&&n>0?'#page='+Math.floor(n):'');
@@ -63,6 +68,30 @@ function countAndList(){
  status.textContent=visible.length+' unidades textuales y '+freq+' apariciones documentadas de «'+currentQuery+'». '+
  EDITIONS.map(e=>{const es=[...counts].filter(([key])=>key.startsWith(e.id+'|'));return e.version+': '+es.reduce((n,[,v])=>n+v.count,0)+' coincidencias'}).join(' · ')+
  '. Cifras de las fuentes digitalizadas, no de manuscritos ni de variantes cotejadas.';
+}
+/* Consultar el texto extraído de la página íntegra, no solo el
+   extracto recortado del índice de comentarios. Siempre bajo demanda. */
+function fullPageControl(full,r){
+ if(r.source!=='apparatus'||!Number.isFinite(Number(r.page)))return;
+ const originalQuery=currentQuery;
+ const d=el('details','critical-unified-page');
+ d.append(el('summary','','Ver el texto íntegro de la página editorial '+r.page));
+ const body=el('div','critical-unified-full');
+ body.append(el('p','critical-unified-meta','Extracción de la página completa del PDF. Puede incluir otros pasajes o comentarios y no certifica una variante manuscrita.'));
+ d.append(body);let started=false;
+ d.addEventListener('toggle',async()=>{
+  if(!d.open||started)return;started=true;
+  const waiting=el('p','critical-unified-meta','Abriendo texto completo de la página…');body.append(waiting);
+  try{
+   const pages=await getJson('data/'+r.edition.id+'-pages.json');
+   const pg=pages.find(x=>Number(x.page)===Number(r.page));
+   waiting.remove();
+   if(!pg?.text){body.append(el('p','critical-unified-meta','No se dispone del texto íntegro de esta página. Consulte el PDF.'));return}
+   const para=el('p','critical-unified-text');para.lang=r.edition.lang;
+   highlight(para,pg.text,positions(pg.text,originalQuery,phrase.checked));body.append(para);
+  }catch(error){waiting.textContent='No se pudo abrir la página: '+error.message}
+ });
+ full.append(d);
 }
 function renderNext(){
  const batch=visible.slice(shown,shown+20);
@@ -103,33 +132,136 @@ function renderNext(){
    actions.append(link);
   }
   if(r.source==='passage'&&r.notes?.length){
-   const section=el('details','critical-unified-notes'),sum=el('summary','','Notas con locus explícito en esta edición ('+r.notes.length+')');section.append(sum);
+   const section=el('details','critical-unified-notes'),sum=el('summary','','Notas del autor vinculadas o próximas al pasaje ('+r.notes.length+')');section.append(sum);
    for(const n of r.notes){
-    const para=el('p','critical-unified-text','Nota '+(n.footnote_id||'')+': '+n.text);section.append(para);
+    const source=el('p','critical-unified-meta',n.proximity!==null&&n.proximity!==undefined?
+      'Vínculo propuesto por proximidad del párrafo DOCX ('+n.proximity+' de distancia). NO verificado por cotejo.':
+      'Locus explícito en la nota original; no equivale a una variante manuscrita cotejada.');
+    const para=el('p','critical-unified-text','Nota '+(n.footnote_id||'')+': '+n.text);
+    section.append(source,para);
    }
    full.append(section);
   }
+  if(r.source==='passage'&&r.apparatus?.length){
+   const section=el('details','critical-unified-notes');
+   section.append(el('summary','','Análisis y aparato PDF relacionado con este locus ('+r.apparatus.length+')'));
+   for(const {entry:e,relation} of r.apparatus){
+    const ed=edById.get(e.edition),title=el('p','critical-unified-meta',
+     (ed?.version||e.version)+' · '+(e.label||'Aparato editorial')+
+     (e.page?' · PDF p. '+e.page:'')+' · '+
+     (relation==='explicit-heading'?'Locus citado explícitamente en encabezado':'Contexto de la misma página impresa; vínculo orientativo'));
+    const excerpt=el('p','critical-unified-text',e.text||'');
+    section.append(title,excerpt);
+    if(e.page&&ed){
+     const link=el('a','','Abrir esta página PDF ↗');
+     link.href=pdfLink(ed,e.page);link.target='_blank';link.rel='noopener noreferrer';section.append(link);
+     fullPageControl(section,{source:'apparatus',edition:ed,page:e.page});
+    }
+   }
+   full.append(section);
+  }
+  fullPageControl(full,r);
   details.append(full);card.append(head,h,counts,details,actions);target.append(card);
  }
  shown+=batch.length;more.hidden=shown>=visible.length;
  more.textContent='Mostrar más ('+shown+' de '+visible.length+' unidades)';
 }
+/* Página completa y aparato PDF por consulta literal, no solo los
+   1400 caracteres guardados por entrada en el índice editorial. */
+function pdfNext(){
+ const batch=pdfRows.slice(pdfShown,pdfShown+20);
+ for(const row of batch){
+  const article=el('article','critical-unified-card');
+  article.append(el('h3','',row.ed.version+' · '+row.ed.label+' · página '+row.page.page));
+  const det=el('details','critical-unified-detail');det.append(el('summary','',row.hits+' coincidencia(s) · leer fragmento'));
+  const text=String(row.page.text||'');
+  const spans=positions(text,pdfQuery,phrase.checked);
+  const first=spans[0],start=first?Math.max(0,first[0]-170):0,end=Math.min(text.length,first?first[1]+600:800);
+  const p=el('p','critical-unified-text');p.lang=row.ed.lang;
+  if(start)p.append('… ');
+  const excerpt=text.slice(start,end);
+  highlight(p,excerpt,positions(excerpt,pdfQuery,phrase.checked));
+  if(end<text.length)p.append(' …');
+  det.append(p);
+  const a=el('a','','Ver página íntegra en el PDF ↗');
+  a.href=row.ed.pdf+'#page='+Number(row.page.page);a.target='_blank';a.rel='noopener noreferrer';
+  det.append(a);article.append(det);pdfTarget.append(article);
+ }
+ pdfShown+=batch.length;pdfMore.hidden=pdfShown>=pdfRows.length;
+ if(!pdfMore.hidden)pdfMore.textContent='Mostrar más páginas ('+pdfShown+' de '+pdfRows.length+')';
+}
+async function searchEntirePdfs(){
+ const query=q.value.trim();if(!query||!pdfButton)return;
+ const at=revision;pdfQuery=query;pdfButton.disabled=true;pdfStatus.textContent='Buscando en las páginas completas de las ediciones…';
+ pdfRows=[];pdfShown=0;pdfTarget.replaceChildren();pdfMore.hidden=true;
+ const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
+ const all=await Promise.allSettled(chosen.map(ed=>getJson('data/'+ed.id+'-pages.json').then(pages=>({ed,pages}))));
+ if(at!==revision){pdfButton.disabled=false;return}
+ let occurrenceCount=0,pagesExamined=0;const failures=[];
+ for(let i=0;i<all.length;i++){
+  if(all[i].status!=='fulfilled'){failures.push(chosen[i].version);continue}
+  const {ed,pages}=all[i].value;
+  for(const page of pages){
+   if(typeof page.text!=='string')continue;
+   pagesExamined++;
+   const hits=positions(page.text,query,phrase.checked).length;
+   if(hits){occurrenceCount+=hits;pdfRows.push({ed,page,hits})}
+  }
+ }
+ pdfRows.sort((a,b)=>EDITIONS.indexOf(a.ed)-EDITIONS.indexOf(b.ed)||Number(a.page.page)-Number(b.page.page));
+ pdfStatus.textContent=occurrenceCount+' apariciones literales en '+pdfRows.length+' páginas de '+pagesExamined+
+  ' páginas con texto extraíble examinadas. Incluye material fuera de los pasajes: introducciones y aparato. Las tres ediciones se cuentan por separado.'+
+  (failures.length?' Búsqueda parcial: no se cargó '+failures.join(', ')+'.':'');
+ if(pdfRows.length)pdfNext();
+ else pdfTarget.append(el('p','critical-unified-empty','Sin apariciones en las páginas extraídas de las ediciones seleccionadas.'));
+ pdfButton.disabled=false;
+}
+if(pdfButton&&pdfMore){
+ pdfButton.addEventListener('click',()=>{void searchEntirePdfs()});
+ pdfMore.addEventListener('click',pdfNext);
+}
+
 async function run(){
  const query=q.value.trim();if(!query)return;
  const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;
+ if(pdfArea){pdfArea.hidden=false;pdfTarget.replaceChildren();pdfStatus.textContent='Para incluir introducciones, notas y apéndices completos, consulte los PDF originales.';pdfMore.hidden=true;pdfButton.disabled=false;}
+
  status.textContent='Leyendo textos, notas y comentarios de las ediciones seleccionadas…';
  const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
  const paths=chosen.map(e=>'data/structured/'+e.id+'.json');
- const tasks=[...paths,'data/critical-notes.json','data/apparatus-index.json'];
+ const tasks=[...paths,'data/critical-notes.json','data/apparatus-index.json','data/apparatus-nearby.json'];
  const settled=await Promise.allSettled(tasks.map(getJson));
  if(id!==revision)return;
  const data=new Map(tasks.map((p,i)=>[p,settled[i].status==='fulfilled'?settled[i].value:null]));
  const failures=tasks.filter((p,i)=>settled[i].status!=='fulfilled');
  const notes=data.get('data/critical-notes.json')?.entries||[];
+ const nearby=data.get('data/apparatus-nearby.json')?.entries||[];
+ const apparatusByLocus=new Map();
+ for(const entry of data.get('data/apparatus-index.json')?.entries||[]){
+  if(entry.source!=='bloque'||!edById.has(entry.edition))continue;
+  const direct=entry.locusInHeading?entry.locusMention:null;
+  const refs=new Set([direct,...(entry.loci||[])].filter(Boolean));
+  for(const locus of refs){
+   const key=entry.edition+'|'+locusKey(locus),list=apparatusByLocus.get(key)||[];
+   list.push({entry,relation:direct===locus?'explicit-heading':'page-context'});
+   apparatusByLocus.set(key,list);
+  }
+ }
  const notesByLocus=new Map();
  for(const n of notes){
   if(!n.locus||n.mapping_status!=='explicit_in_anchor')continue;
-  const k=n.edition+'|'+locusKey(n.locus);const list=notesByLocus.get(k)||[];list.push(n);notesByLocus.set(k,list);
+  const k=n.edition+'|'+locusKey(n.locus);const list=notesByLocus.get(k)||[];
+  list.push({...n,proximity:null});notesByLocus.set(k,list);
+ }
+ // Secondary layer: unique nearest source paragraph, strictly descriptive.
+ // Not a verified relation, not a collatio, not a manuscript reading.
+ const byFootnote=new Map(notes.map(n=>[n.edition+'|'+String(n.footnote_id),n]));
+ for(const link of nearby){
+  if(![0,1].includes(link.distance))continue;
+  const n=byFootnote.get(link.edition+'|'+String(link.footnote_id));
+  if(!n||n.locus||n.candidate_locus)continue;
+  const k=link.edition+'|'+locusKey(link.locus),list=notesByLocus.get(k)||[];
+  list.push({...n,proximity:link.distance});notesByLocus.set(k,list);
  }
  for(const e of chosen){
   const corpus=data.get('data/structured/'+e.id+'.json');
@@ -139,7 +271,8 @@ async function run(){
     if(field.value!=='all'&&field.value!=='passages'&&field.value!==fieldName)continue;
     if(field.value==='passages'||field.value==='all'||field.value===fieldName){
      const rec=record('passage',e,text,{field:fieldName,other,locus:p.locus,
-      notes:notesByLocus.get(e.id+'|'+locusKey(p.locus))||[]});
+      notes:notesByLocus.get(e.id+'|'+locusKey(p.locus))||[],
+      apparatus:apparatusByLocus.get(e.id+'|'+locusKey(p.locus))||[]});
      if(rec)visible.push(rec);
     }
    }

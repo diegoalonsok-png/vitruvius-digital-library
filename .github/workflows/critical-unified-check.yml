@@ -1,0 +1,36 @@
+name: Integridad del aparato crítico de Vitruvio
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'aparato-critico.html'
+      - 'assets/critical-unified-exegesis.js'
+      - 'assets/critical-lexicon-theme.css'
+      - 'data/critical-notes.json'
+      - 'data/apparatus-index.json'
+      - 'data/apparatus-nearby.json'
+      - 'scripts/test-critical-unified-academic.mjs'
+      - '.github/workflows/critical-unified-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'aparato-critico.html'
+      - 'assets/critical-unified-exegesis.js'
+      - 'assets/critical-lexicon-theme.css'
+      - 'data/apparatus-nearby.json'
+      - 'scripts/test-critical-unified-academic.mjs'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sintaxis de la concordancia
+        run: node --check assets/critical-unified-exegesis.js
+      - name: Integridad de fuentes, notas, PDF y controles
+        run: node scripts/test-critical-unified-academic.mjs
