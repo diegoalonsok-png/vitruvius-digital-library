@@ -105,8 +105,15 @@
   const sources=elem("td","");
   const rows=getRemote(w);
   if(rows.length)rows.forEach(x=>sources.append(externalSource(x)));
-  else sources.append(elem("span","status","Traducción externa aún no identificada con procedencia verificable"),
-   elem("small","","Localizar libro o documento de editorial universitaria, catálogo Perseus o biblioteca digital; confirmar derechos, traductor y cobertura antes de vincular."));
+  else {
+   sources.append(elem("span","status","Traducción externa aún no identificada con procedencia verificable"),
+    elem("small","","Buscar ediciones académicas o PDF bibliotecarios; confirmar derechos, traductor y cobertura antes de vincular."));
+   // Discovery destinations are NOT work-specific attestations and do not count as translations.
+   const discovery=elem("nav","");
+   discovery.append(a("Catálogo Perseus · buscar edición","https://catalog.perseus.tufts.edu/",true),
+    a("Scaife (Tufts) · explorar textos","https://scaife-reader.perseus.tufts.edu/",true));
+   sources.append(discovery);
+  }
   const links=elem("td","");
   const nav=elem("nav","");
   if(w.originalIndexed){
