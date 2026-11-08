@@ -60,15 +60,29 @@ async function attestedGreekForms(query){
  }
  return [...found].slice(0,8);
 }
-const roman=x=>{let n=0,last=0;for(const c of [...String(x).toUpperCase()].reverse()){const z={I:1,V:5,X:10,L:50,C:100}[c]||0;n+=z<last?-z:z;last=z}return n};
+const roman=x=>{let n=0,last=0;for(const c of [...String(x).toUpperCase()].reverse()){const z={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}[c]||0;n+=z<last?-z:z;last=z}return n};
+/* Prioridad: fecha de composición, NUNCA año de publicación de la traducción.
+   Los rangos usan el extremo más antiguo; siglos debatidos se ordenan solo
+   aproximadamente, mostrando siempre la datación original sin falsear precisión. */
 function dating(w){
- const s=fold(w?.dating);
- if(/tradicion arcaica|epoca arcaica/.test(s))return /homer|odyssey|iliad/.test(w.id||"")?-780:-720;
+ const s=fold(w?.dating).replace(/[–—−]/g,"-").replace(/\s+/g," ");
  if(/edicion editorial|edicion critica impresa|composicion y atribuciones debatidas/.test(s))return Infinity;
- const century=s.match(/(?:siglo|siglos|s\.)\s+([ivx]+)/);
- if(century){const c=roman(century[1]);if(c)return /a\.\s*c\./.test(s)?-c*100:(c-1)*100+1}
- const years=[...s.matchAll(/(\d{1,4})\s*(a\.\s*c\.|d\.\s*c\.)/g)];
- return years.length?Number(years[0][1])*(years[0][2].startsWith("a")?-1:1):Infinity;
+ if(/tradicion arcaica|epoca arcaica/.test(s))return /homer|odyssey|iliad/.test(w.id||"")?-780:-720;
+ const numeric=s.match(/(\d{1,4})(?:\s*-\s*\d{1,4})?\s*(a\.\s*c\.|d\.\s*c\.)/);
+ if(numeric)return Number(numeric[1])*(numeric[2].startsWith("a")?-1:1);
+ const century=s.match(/(?:siglos?|s\.)\s+([ivxlcdm]+)/);
+ if(century){
+  const c=roman(century[1]);if(!c)return Infinity;
+  // La primera era explícita prevalece en períodos que cruzan a.C./d.C.
+  const era=(s.match(/a\.\s*c\.|d\.\s*c\./)||[])[0]||"d. c.";
+  const start=era.startsWith("a")?-100*c:100*(c-1)+1;
+  const beforeCentury=s.slice(0,century.index);
+  const offset=/finales|final|ultim/.test(beforeCentury)?75:
+   /mediados|mitad/.test(beforeCentury)?50:
+   /primera mitad|principios|comienzos/.test(beforeCentury)?25:0;
+  return start+offset;
+ }
+ return Infinity;
 }
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
 const foldedMap=text=>{
@@ -111,6 +125,7 @@ function switchLanguage(k){
  locale=Object.hasOwn(dict,k)?k:"es";
  const t=dict[locale];document.documentElement.lang=locale;
  $("home").textContent=t.home;$("search-submit").textContent=t.search;
+ const chapters=$("capitula-nav");if(chapters)chapters.textContent=({es:"Lectura por capítulos",en:"Chapter reading",fr:"Lecture par chapitres"})[locale];
  input.placeholder=t.placeholder;$("intro").textContent=t.intro;$("work-label").textContent=t.work;
  $("results-heading").textContent=t.label;$("method-note").textContent=t.method;lex.textContent=t.lexicon;
  const button=$("language-toggle");if(button){
@@ -193,7 +208,17 @@ function render(rows,q,details){
   }
   const li=el("li","hit");li.lang=r.language==="grc"?"el":r.language||"es";
   li.append(el("span","locus",t.loc+" "+(r.locus||"—")+" · "+(languages[r.language]||r.language)+" · "+(r.hitsInPassage||1)));
-  const p=el("p","");decorate(p,r.passageText||r.excerpt||"",r.term||q);li.append(p);passages.append(li);
+  const p=el("p","");decorate(p,r.passageText||r.excerpt||"",r.term||q);li.append(p);
+  // Enlace auténtico al pasaje citado; no crear nuevos loci ni duplicar visores.
+  if(typeof r.link==="string"){
+   try{const target=new URL(r.link,location.href);
+    if(target.origin===location.origin&&/^https?:$/.test(target.protocol)){
+     const label=({es:"Abrir pasaje",en:"Open passage",fr:"Ouvrir le passage"})[locale];
+     const a=el("a","passage-link",label);a.href=target.href;li.append(a);
+    }
+   }catch{}
+  }
+  passages.append(li);
  }
  list.append(frag);
  $("unindexed").textContent=t.outside(works.length-indexed.size)+(details?.failed?" "+t.failed:"");
