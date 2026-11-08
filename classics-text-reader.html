@@ -56,7 +56,9 @@ html body :is(.tools button,.reader-toolbar button,#toc li button,.hit-nav butto
 html body #toc li button[aria-current=true]{
  background:#343436!important;color:#f1f1f2!important;border-left:2px solid #929296!important;
 }
-html body mark,html body mark.cl-hit{background:#b3b3b7!important;color:#111!important}
+html body mark{background:#b3b3b7!important;color:#111!important}
+/* Solo coincidencias de búsqueda: amarillo legible sobre el visor negro. */
+html body .passages mark.cl-hit{background:#ffe34f!important;color:#14120e!important}
 html body .passages{color:#e2e2e3}
 html body .reader{background:#000!important}
 html body :is(button,a,select,input):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
