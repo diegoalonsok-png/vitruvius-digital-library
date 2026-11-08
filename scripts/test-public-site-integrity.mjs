@@ -23,15 +23,30 @@ const workIds=catalogue.works.map(w=>w.id);
 assert.equal(new Set(workIds).size,workIds.length,"Duplicate work identifiers");
 const listed=new Set(workIds),indexed=new Set();
 const languages=new Set(["la","grc","es","en","fr","de","it","pt"]);
+// Three originals reuse immutable, already-hosted Lexicon sources. This strict
+// allowlist rejects arbitrary alternate paths, languages and source aliases.
+const sharedLatinSources=new Map([
+ ["varro-rustica",{path:"data/lexicon/fontes/varro-rustica-la.json",sourceWorkId:"varro-rustica"}],
+ ["frontinus",{path:"data/lexicon/fontes/frontinus-aquaeductu-la.json",sourceWorkId:"frontinus-aquaeductu"}],
+ ["pliny",{path:"data/lexicon/fontes/pliny-naturalis-la.json",sourceWorkId:"pliny-naturalis"}]
+]);
+const isSharedLatin=(id,language,path,sourceWorkId)=>{
+ const allowed=sharedLatinSources.get(id);
+ return language==="la"&&Boolean(allowed)&&path===allowed.path&&sourceWorkId===allowed.sourceWorkId;
+};
+
 for(const entry of registry.entries){
  assert(listed.has(entry.workId),"Index references unknown work "+entry.workId);
  assert(languages.has(entry.language),"Unrecognized language "+entry.language);
  assert(typeof entry.path==="string"&&!entry.path.startsWith("/")&&!entry.path.includes(".."),"Unsafe corpus path");
  assert(existsSync(resolve(root,entry.path)),"Missing indexed text "+entry.path);
  if(entry.format==="json-passages"){
-  assert(/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(entry.path),"Unexpected corpus pathname");
+  const canonical=/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(entry.path);
+  const shared=isSharedLatin(entry.workId,entry.language,entry.path,entry.sourceWorkId);
+  assert(canonical||shared,"Unexpected corpus pathname or unverified shared source: "+entry.path);
+  assert(!entry.sourceWorkId||shared,"Unverified source alias: "+entry.workId);
   const source=json(entry.path);
-  assert.equal(source.workId,entry.workId,"Work ID differs: "+entry.path);
+  assert.equal(source.workId,shared?entry.sourceWorkId:entry.workId,"Work ID differs: "+entry.path);
   assert.equal(source.language,entry.language,"Wrong translation language: "+entry.path);
   assert(Array.isArray(source.passages)&&source.passages.length>0,"Empty indexed corpus: "+entry.path);
  }
@@ -40,7 +55,10 @@ for(const entry of registry.entries){
 for(const work of catalogue.works){
  for(const [language,path] of Object.entries(work.corpusFiles||{})){
   assert(languages.has(language),"Unsupported language for "+work.id);
-  assert(new RegExp("^data/classics-corpus/[a-z0-9-]+-"+language+"\\.json$").test(path),"Unexpected work text path "+path);
+  const canonical=new RegExp("^data/classics-corpus/[a-z0-9-]+-"+language+"\\.json$").test(path);
+  const entry=registry.entries.find(e=>e.workId===work.id&&e.language===language&&e.path===path);
+  const shared=entry&&isSharedLatin(work.id,language,path,entry.sourceWorkId);
+  assert(canonical||shared,"Unexpected work text path "+path);
   assert(registry.entries.some(e=>e.workId===work.id&&e.language===language&&e.path===path),
    "Unregistered reader text "+path);
  }
