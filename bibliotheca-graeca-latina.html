@@ -413,7 +413,8 @@ html[data-theme=dark] .classic-main .classic-fast-text-pane :is(h3,p,small){colo
 .classic-main .classic-fast-text-pane ::selection{background:#ffcf57;color:#111}
 </style>
 <link rel="stylesheet" href="assets/bibliotheca-monochrome.css?v=20261106-unified-index-v2">
-<link rel="stylesheet" href="assets/bibliotheca-unified.css?v=20261107-1">
+<link rel="stylesheet" href="assets/bibliotheca-unified.css?v=20261108-work-scope-v2">
+<link rel="stylesheet" href="assets/bibliotheca-viewers-lexicon.css?v=20261108-charcoal-v1">
 <style media="screen">
 /* This must follow monochrome.css: its high-specificity theme rules otherwise restore grey. */
 html body .classic-main .classic-read-columns article,
@@ -448,48 +449,7 @@ html body .classic-main .classic-fast-text-pane .classic-study-query-hit{
 <div class="classic-layout"><aside><div id="classic-list" class="classic-list" aria-label="Catálogo de autores y obras"></div></aside>
 <section class="classic-detail" id="classic-detail"><p>Selecciona una obra del índice para consultar su ficha y las fuentes digitales disponibles.</p></section></div>
 <footer class="classic-ref"><p><strong>Fuentes y metodología:</strong> <a href="https://www.perseus.tufts.edu/hopper/home">Perseus Digital Library, Tufts</a> · <a href="https://scaife.perseus.org/">Open Greek and Latin / Scaife Viewer</a> · <a href="https://gallica.bnf.fr/">Gallica, BnF</a> · <a href="https://archive.org/">Internet Archive</a>. Catálogo temático independiente: no existe afiliación con estas instituciones. El código de lectura y los derechos de las digitalizaciones pertenecen a sus respectivos titulares.</p></footer>
-</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261107-shared-multilingual-loci-v8"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261107-locus-search-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-black-migration-v5"></script>
-<script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-single-search-v1"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261107-unlimited-loci-v1" defer></script><script src="assets/bibliotheca-unified-search.js?v=20261107-1" defer></script>
-<script>
-/* Local reader preferences.  No cross-origin PDF or IIIF content is modified. */
-(()=>{'use strict';
- const root=document.querySelector('.classic-main'),head=root?.querySelector('.classic-head');
- if(!root||!head)return;
- const wrapper=document.createElement('section');wrapper.className='classic-view-colorbar';
- wrapper.setAttribute('aria-label','Colores de los visores de lectura');
- wrapper.innerHTML='<strong>Colores del visor</strong>'+
-  '<label>Combinación <select id="classic-view-preset" aria-label="Combinación de colores">'+
-  '<option value="original">Original</option><option value="black">Negro · blanco</option>'+
-  '<option value="ivory">Marfil · negro</option><option value="sepia">Sepia</option>'+
-  '<option value="custom">Personalizado</option></select></label>'+
-  '<label>Fondo <input id="classic-view-bg" type="color" value="#000000" aria-label="Color de fondo del visor"></label>'+
-  '<label>Texto <input id="classic-view-fg" type="color" value="#ffffff" aria-label="Color del texto del visor"></label>'+
-  '<button type="button" id="classic-view-reset">Restablecer</button>'+
-  '<p class="classic-view-note">Se aplica a los textos editables y al fondo del visor. En PDF o facsímiles escaneados usa «Invertir» para la página; los visores externos conservan sus propios colores.</p>';
- head.after(wrapper);
- const preset=wrapper.querySelector('#classic-view-preset'),bg=wrapper.querySelector('#classic-view-bg'),fg=wrapper.querySelector('#classic-view-fg');
- const palettes={original:['#fbf8f0','#253b49'],black:['#000000','#ffffff'],ivory:['#fffff0','#171717'],sepia:['#e8dcc6','#382b21']};
- const key='vitruvius.classics.reader.palette.v1';
- function valid(x){return /^#[0-9a-f]{6}$/i.test(x)}
- function contrast(x,y){const lum=h=>{const rgb=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4));return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722};const a=lum(x),b=lum(y);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)}
- function apply(mode,background,foreground){
-  if(!valid(background)||!valid(foreground))return;
-  preset.value=mode in palettes?mode:'custom';
-  bg.value=background;fg.value=foreground;
-  root.classList.toggle('classic-user-colored',preset.value!=='original');
-  root.style.setProperty('--classic-user-view-bg',background);
-  root.style.setProperty('--classic-user-view-ink',foreground);
-  const note=wrapper.querySelector('.classic-view-note');
-  if(contrast(background,foreground)<4.5)note.textContent='Aviso: estos colores tienen poco contraste. Para leer mejor, elige tonos más diferentes.';
-  else note.textContent='Textos y fondos de visores propios. Los PDF y manuscritos escaneados pueden invertirse con su botón de lectura; los visores externos no permiten recolorear sus páginas.';
-  try{localStorage.setItem(key,JSON.stringify({mode:preset.value,bg:background,fg:foreground}))}catch{}
- }
- preset.addEventListener('change',()=>{const p=palettes[preset.value];if(p)apply(preset.value,...p)});
- for(const el of [bg,fg])el.addEventListener('input',()=>apply('custom',bg.value,fg.value));
- wrapper.querySelector('#classic-view-reset').addEventListener('click',()=>{try{localStorage.removeItem(key)}catch{};apply('black',...palettes.black)});
- let stored=null;try{stored=JSON.parse(localStorage.getItem(key)||'null')}catch{}
- if(stored&&valid(stored.bg)&&valid(stored.fg)&&stored.mode!=='original')apply(stored.mode,stored.bg,stored.fg);
- else apply('black',...palettes.black);
-})();
-</script>
+</main><script defer src="assets/theme.js?v=20261105-merge-v1"></script><script defer src="assets/bibliotheca-text-reader.js?v=20261108-charcoal-v2"></script><script defer src="assets/bibliotheca-triple-reader-folios.js?v=20261103-gallery1"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script><script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script><script defer src="assets/classical-facsimile-viewer.js?v=20261105-lex-v2"></script><script defer src="assets/bibliotheca-inline-reader.js?v=20261108-charcoal-v2"></script><script defer src="assets/classics-study-tools.js?v=20261107-black-migration-v5"></script>
+<script defer src="assets/bibliotheca-graeca-latina.js?v=20261107-single-search-v1"></script><script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script src="assets/classics-corpus-search.js?v=20261108-occurrences-v2" defer></script><script src="assets/bibliotheca-unified-search.js?v=20261108-work-scope-v2" defer></script>
+
 </body></html>
