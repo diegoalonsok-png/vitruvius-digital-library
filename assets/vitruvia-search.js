@@ -111,6 +111,28 @@ const libraryURL=(id,view,ms)=>"bibliotheca-graeca-latina.html?"+new URLSearchPa
 const workString=w=>[w.title,w.author,w.genre,w.dating,w.language,...(w.aliases||[])].join(" ");
 const witnessesFor=id=>S.witnesses.filter(ms=>(ms.workIds||[]).includes(id));
 const editionsFor=id=>S.editions.filter(ed=>ed.workId===id);
+// Earliest *catalogued* material witness, not an assertion about every
+// surviving manuscript. Fall back to a dated printed edition only when no
+// dated manuscript with a verifiable reader is present.
+function earliestSourceFor(workId){
+ const witnesses=witnessesFor(workId).filter(ms=>(ms.localViewer||ms.viewer||ms.record)&&
+  (Number(ms.dateStart)||codexDateStart(ms.date))<9999)
+  .sort((a,b)=>(Number(a.dateStart)||codexDateStart(a.date))-(Number(b.dateStart)||codexDateStart(b.date)));
+ if(witnesses.length){
+  const ms=witnesses[0];return {kind:"manuscript",label:"Testimonio manuscrito más antiguo catalogado · "+
+   (ms.shelfmark||ms.title)+" · "+(ms.date||"fecha aproximada"),
+   url:ms.localViewer||ms.viewer||ms.record};
+ }
+ const printed=editionsFor(workId).filter(ed=>ed.url&&Number.parseInt(ed.year,10)>1400)
+  .sort((a,b)=>Number.parseInt(a.year,10)-Number.parseInt(b.year,10))[0];
+ if(printed)return {kind:"edition",label:"Edición impresa más antigua catalogada · "+printed.year,
+  url:printed.url};
+ const work=S.works.find(w=>w.id===workId);
+ if(work?.reading?.url&&/^https:\/\//.test(work.reading.url))
+  return {kind:"reading",label:"Consultar texto identificado · edición y fecha en la fuente",url:work.reading.url};
+ return null;
+}
+window.VitruviaOldestSource={forWork:earliestSourceFor};
 /* Chronological manuscript ordering: known dates before undated witnesses.
    Century estimates remain estimates; no manuscript is labeled an autograph. */
 function codexDateStart(date){
@@ -355,6 +377,12 @@ function liveBooks(q,concept){return S.works.map(w=>{
   addOriginal(libraryURL(w.id,"pdf"),"pdf","Edición histórica · facsímil PDF");
  }
  if(!originalReadings.length&&w.localReader?.verified)addOriginal(libraryURL(w.id,"text"),"reader","Texto original · lector del sitio");
+ // An indexed TEI/JSON edition is already readable even when the older
+ // catalogue status still says that independent editorial collation is pending.
+ const indexedOriginal=w.corpusFiles?.[w.language];
+ if(!originalReadings.length&&indexedOriginal&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/i.test(indexedOriginal))
+  originalReadings.push({url:"classics-text-reader.html?"+new URLSearchParams({work:w.id,lang:w.language}),
+   kind:"reader",label:"Texto original indexado por pasajes · cotejo editorial no certificado",language:w.language});
  if(!originalReadings.length&&w.reading?.url)addOriginal(w.reading.url,"external","Edición original · fuente identificada");
  return {type:"book",workId:w.id,originalReadings,originalLanguage:w.language,originalEditionStatus:w.publicStatus,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
@@ -724,6 +752,17 @@ function renderCard(d){
  }
  if(d.link){const a=makeLink(d.type==="book"&&!d.readable?(S.lang==="en"?"Open bibliographic record":S.lang==="fr"?"Consulter la notice bibliographique":"Consultar ficha bibliográfica"):d.type==="passage"||d.type==="book"||d.type==="manuscript"||d.type==="edition"?T().read:d.type==="section"?T().document:T().source,d.link);if(a)acts.append(a)}
  if(Array.isArray(d.links)){for(const extra of d.links.slice(0,3)){const a=makeLink(extra.label,extra.url);if(a)acts.append(a)}}
+ if(d.type==="book"&&d.workId){
+  const work=S.works.find(w=>w.id===d.workId);
+  const corpus=work?.corpusFiles?.[work.language];
+  if(corpus&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/i.test(corpus)){
+   const reader="classics-text-reader.html?"+new URLSearchParams({work:work.id,lang:work.language});
+   const label=work.language==="grc"?"Leer texto griego indexado":work.language==="la"?"Leer texto latino indexado":"Leer texto original indexado";
+   const a=makeLink(label,reader);if(a)acts.append(a);
+  }
+  const oldest=earliestSourceFor(d.workId);
+  if(oldest){const a=makeLink(oldest.label,oldest.url);if(a)acts.append(a)}
+ }
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
  if(d.pdf){const a=makeLink(T().pdf,d.pdf);if(a)acts.append(a)}
  if(d.citationText&&navigator.clipboard?.writeText){
