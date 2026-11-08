@@ -1,0 +1,22 @@
+/* Trilingual lexica: same monochrome Lexicon grammar; no gold or blue panes. */
+#lexicon-dictionaries{background:#0d0d0e!important;color:#e5e5e5!important;border-color:#383838!important}
+#lexicon-dictionaries h2{color:#efefef}
+#lexicon-dictionaries .lx-dict-controls{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin:19px 0}
+#lexicon-dictionaries .lx-dict-controls label{display:flex;flex-direction:column;gap:6px;flex:1 1 170px;min-width:0;color:#b9b9b9;font:12px/1.4 Arial,Helvetica,sans-serif}
+#lexicon-dictionaries :is(select,input,button){background:#1e1e1f!important;color:#eee!important;border:1px solid #49494a!important;border-radius:4px!important;padding:10px 12px;min-height:41px;font:13px/1.45 Arial,Helvetica,sans-serif;box-shadow:none!important;max-width:100%}
+#lexicon-dictionaries input,#lexicon-dictionaries select{width:100%}
+#lexicon-dictionaries button{cursor:pointer}
+#lexicon-dictionaries :is(button,select):hover{border-color:#888!important;background:#29292b!important}
+#lexicon-dictionaries :is(button,input,select):focus-visible{outline:2px solid #999;outline-offset:2px}
+#lexicon-dictionaries #lx-dict-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:12px}
+#lexicon-dictionaries .lx-dict-card{border:1px solid #39393a;background:#111112;padding:15px 17px;min-width:0;overflow-wrap:anywhere}
+#lexicon-dictionaries .lx-dict-card h3{color:#fff;font:400 clamp(21px,2vw,27px)/1.3 "Gentium Book Plus","Cardo",Georgia,serif;margin:0 0 6px}
+#lexicon-dictionaries .lx-dict-card h3[lang=he]{font-family:"Noto Serif Hebrew","Gentium Book Plus",serif;text-align:right;direction:rtl}
+#lexicon-dictionaries .lx-dict-card p{margin:7px 0;color:#ddd;font:13px/1.65 Arial,Helvetica,sans-serif}
+#lexicon-dictionaries .lx-dict-card .lx-dict-meta{font:11px/1.5 Arial,sans-serif;color:#999}
+#lexicon-dictionaries .lx-dict-card .lx-dict-ref{border-top:1px solid #333;padding-top:8px;color:#aaa;font-size:11px}
+#lexicon-dictionaries .lx-dict-card a{color:#fff!important;text-decoration:underline;text-decoration-color:#777;text-underline-offset:4px;font-size:12px}
+#lexicon-dictionaries .lx-dict-note{margin-top:15px;padding-top:12px;border-top:1px solid #333}
+#lexicon-dictionaries .lx-dict-empty{color:#b9b9b9;margin:8px 0}
+#lexicon-dictionaries .lx-dict-count{color:#b1b1b2;letter-spacing:.02em}
+@media(max-width:700px){#lexicon-dictionaries .lx-dict-controls label{flex-basis:100%}#lexicon-dictionaries #lx-dict-results{grid-template-columns:1fr}}
