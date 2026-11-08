@@ -1,0 +1,74 @@
+name: Indexar originales griegos fuera de Pages
+on:
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-greek-originals.py'
+      - 'scripts/test-offsite-greek-originals.py'
+      - '.github/workflows/offsite-greek-originals.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-greek-originals.py'
+      - 'scripts/test-offsite-greek-originals.py'
+      - '.github/workflows/offsite-greek-originals.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: offsite-classical-originals-publication
+  cancel-in-progress: false
+jobs:
+  extractor-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m py_compile scripts/build-offsite-greek-originals.py
+      - run: python scripts/test-offsite-greek-originals.py
+  publish-remote-originals:
+    if: github.event_name != 'pull_request'
+    needs: extractor-integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Extract verified editions to a temporary folder, never Pages
+        env:
+          OUTDIR: \${{ runner.temp }}/greek-originals
+        run: |
+          mkdir -p "$OUTDIR"
+          python scripts/build-offsite-greek-originals.py --output "$OUTDIR"
+      - name: Publish independently, preserving main and all Codex folios
+        env:
+          BRANCH: corpus-originales-griegos-20261108
+          OUTDIR: \${{ runner.temp }}/greek-originals
+          WORKTREE: \${{ runner.temp }}/vitruvius-offsite-worktree
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH" || true
+          if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+            git worktree add --detach "$WORKTREE" "origin/$BRANCH"
+          else
+            git worktree add --detach "$WORKTREE" origin/main
+          fi
+          mkdir -p "$WORKTREE/data/offsite-originals"
+          cp "$OUTDIR"/*.json "$WORKTREE/data/offsite-originals/"
+          git -C "$WORKTREE" add data/offsite-originals
+          if git -C "$WORKTREE" diff --cached --quiet; then
+            echo "All independently hosted Greek originals are already current."
+            exit 0
+          fi
+          git -C "$WORKTREE" commit -m "Index verified original Greek TEI sources outside GitHub Pages"
+          git -C "$WORKTREE" push origin "HEAD:refs/heads/$BRANCH"
+          echo "Published to independent branch only. Existing site, manuscripts and translations unchanged."
