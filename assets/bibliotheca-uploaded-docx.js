@@ -163,6 +163,7 @@ async function search(query,workId,isCurrent){
   const docs=(await manifest()).filter(rec=>explicitDocument?rec.id===explicitDocument:!workId||CORRESPONDENCE[rec.id]===workId);
   if(id!==serial||isCurrent&& !isCurrent())return;
   if(!docs.length){panel.hidden=true;return}
+  root.hidden=false; // Mantener visibles los documentos existentes incluso si falla el índice principal.
   let errors=0,examined=0,occurrences=0;
   const matches=[];
   for(let offset=0;offset<docs.length;offset+=4){
