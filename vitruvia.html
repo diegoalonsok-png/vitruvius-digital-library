@@ -1653,13 +1653,93 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 (function(){
  function place(){
   const panel=document.getElementById('vitruvia-context');
-  const grid=document.querySelector('#results .results-grid');
+  const grid=document.querySelector('#vitruvia-article .article-grid');
   if(!panel||!grid)return;
   if(panel.parentElement!==grid)grid.appendChild(panel);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',place);
  else place();
 })();
-</script></body></html>
+</script>
+<style id="vitruvia-editorial-reading-20261108">
+/* Two-column editorial dossier. The second column is reserved for sourced cultural works. */
+@media screen and (min-width:1100px){
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)){
+  display:grid!important;grid-template-columns:minmax(0,3fr) minmax(260px,1fr)!important;
+  gap:clamp(22px,2.4vw,42px)!important;align-items:start!important;columns:auto!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid > #article-body{
+  grid-column:1!important;grid-row:1!important;min-width:0!important;max-width:none!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid > #vitruvia-context:not([hidden]){
+  grid-column:2!important;grid-row:1 / span 2!important;display:block!important;
+  width:100%!important;min-width:0!important;max-width:none!important;
+  margin:0!important;padding:0 0 0 20px!important;
+  border-left:1px solid #393939!important;border-top:0!important;clear:none!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid > #article-aside:not([hidden]){
+  grid-column:1!important;grid-row:2!important;
+  width:100%!important;max-width:none!important;margin:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #article-body > p{
+  max-width:78ch!important;width:auto!important;text-align:left!important;line-height:1.78!important;
+ }
+}
+@media screen and (max-width:1099px){
+ body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}
+ body.vitruvia-reading #vitruvia-article #vitruvia-context:not([hidden]){
+  display:block!important;width:100%!important;margin-top:22px!important;
+  padding:20px 0 0!important;border-top:1px solid #393939!important;border-left:0!important;
+ }
+}
+#vitruvia-article .editorial-figure{margin:26px 0 30px;max-width:660px;padding:0 0 16px;border-bottom:1px solid #343434}
+#vitruvia-article .editorial-figure img{display:block;width:auto;height:auto;max-width:100%;max-height:340px;object-fit:contain}
+#vitruvia-article .editorial-figure figcaption{font:12px/1.55 Arial,sans-serif;color:#aaa;margin-top:8px}
+#vitruvia-article .editorial-figure a{color:inherit}
+#vitruvia-article .article-sources{font-size:13px;line-height:1.8}
+#vitruvia-article .article-sources a{overflow-wrap:anywhere}
+@media print{#vitruvia-article .editorial-figure{break-inside:avoid}}
+</style>
+<script id="vitruvia-editorial-illustrations-20261108">
+(function(){
+  /* Only reuse documentary images already returned for the SAME query; never invent assets. */
+  let queued=false;
+  function update(){
+    queued=false;
+    const body=document.getElementById('article-body');
+    const gallery=document.getElementById('vitruvia-image-grid');
+    const article=document.getElementById('vitruvia-article');
+    if(!body||!gallery||!article||article.hidden)return;
+    const paragraphs=[...body.querySelectorAll(':scope > p')].filter(p=>p.textContent.trim().length>100);
+    if(paragraphs.length<5)return;
+    const figures=[...gallery.querySelectorAll('img')].filter(img=>img.getAttribute('src')&&img.getAttribute('alt')&&img.closest('a[href]')).slice(0,3);
+    body.querySelectorAll(':scope > figure.editorial-figure').forEach(el=>el.remove());
+    figures.forEach((img,i)=>{
+      const anchor=img.closest('a[href]');
+      const href=anchor?.href;
+      if(!href||!/^https?:/.test(href))return;
+      const fig=document.createElement('figure');fig.className='editorial-figure';
+      const link=document.createElement('a');link.href=href;link.target='_blank';link.rel='noopener noreferrer';
+      const copy=document.createElement('img');copy.src=img.currentSrc||img.src;copy.alt=img.alt;copy.loading='lazy';
+      link.append(copy);fig.append(link);
+      const cap=document.createElement('figcaption');cap.textContent=img.alt+' · Imagen documental; consultar fuente original';
+      fig.append(cap);
+      const after=paragraphs[Math.min(paragraphs.length-1,2+i*4)];
+      after.after(fig);
+    });
+  }
+  function queue(){if(!queued){queued=true;requestAnimationFrame(update)}}
+  function init(){
+    const gallery=document.getElementById('vitruvia-image-grid');
+    const body=document.getElementById('article-body');
+    if(!gallery||!body)return;
+    new MutationObserver(queue).observe(gallery,{childList:true,subtree:true});
+    new MutationObserver(queue).observe(body,{childList:true});
+    queue();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body></html>
 
 
