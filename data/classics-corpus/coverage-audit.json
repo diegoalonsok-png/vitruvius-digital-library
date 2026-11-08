@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 90,
+    "indexedTextVersions": 95,
     "indexedDistinctWorks": 64,
     "manuscriptWitnesses": 23
   },
@@ -732,9 +732,11 @@
       "dating": "98 d. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/tacitus-agricola-en.json",
         "data/classics-corpus/tacitus-agricola-la.json"
       ],
       "localPDF": null,
@@ -743,7 +745,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Traducción histórica inglesa Alfred John Church y William Jackson Brodribb (1877), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
     {
       "id": "tacitus-germania",
@@ -2162,9 +2164,11 @@
       "dating": "siglo II d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/marcus-aurelius-meditations-en.json",
         "data/classics-corpus/marcus-aurelius-meditations-grc.json"
       ],
       "localPDF": null,
@@ -2178,7 +2182,7 @@
         }
       ],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Griego Perseus TEI y traducción inglesa histórica George Long (1862)/Standard Ebooks, indexados con visores independientes. Las unidades editoriales no equivalen a cotejo crítico ni alineación por loci."
     },
     {
       "id": "homer-iliad",
@@ -2242,9 +2246,11 @@
       "dating": "época arcaica",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/hesiod-theogony-en.json",
         "data/classics-corpus/hesiod-theogony-grc.json"
       ],
       "localPDF": null,
@@ -2253,7 +2259,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Traducción histórica inglesa Hugh G. Evelyn-White (1914), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
     {
       "id": "hesiod-works-days",
@@ -2264,9 +2270,11 @@
       "dating": "época arcaica",
       "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/hesiod-works-days-en.json",
         "data/classics-corpus/hesiod-works-days-grc.json"
       ],
       "localPDF": null,
@@ -2275,7 +2283,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Traducción histórica inglesa Hugh G. Evelyn-White (1914), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
     {
       "id": "aeschylus-oresteia",
@@ -3597,11 +3605,13 @@
       "dating": "siglo I d. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
+        "en",
         "es",
         "fr",
         "la"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/seneca-de-brevitate-en.json",
         "data/classics-corpus/seneca-de-brevitate-es.json",
         "data/classics-corpus/seneca-de-brevitate-fr.json",
         "data/classics-corpus/seneca-de-brevitate-la.json"
@@ -3612,7 +3622,7 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": true,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "20 capítulos en inglés (Aubrey Stewart, 1889) añadidos a los 20 latinos, 20 franceses y 21 castellanos. Sin presumir cotejo ni equivalencia textual de pasajes."
     },
     {
       "id": "seneca-de-ira",

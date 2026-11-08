@@ -6,6 +6,8 @@ on:
     paths:
       - 'scripts/mass-index-classics.py'
       - 'scripts/test-mass-index-completeness.py'
+      - 'scripts/test-classics-historical-translations.py'
+      - 'data/classics-corpus/*-en.json'
       - 'scripts/repair-classics-mixed-tei.py'
       - '.github/workflows/classics-mass-index.yml'
   push:
@@ -14,6 +16,7 @@ on:
       - '.github/workflows/classics-mass-index.yml'
       - 'scripts/mass-index-classics.py'
       - 'scripts/repair-classics-mixed-tei.py'
+      - 'scripts/test-classics-historical-translations.py'
   schedule:
     - cron: '26 5 * * *'
 
@@ -34,8 +37,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m py_compile scripts/ingest_texts.py scripts/mass-index-classics.py scripts/test-mass-index-completeness.py scripts/repair-classics-mixed-tei.py
+      - run: python -m py_compile scripts/ingest_texts.py scripts/mass-index-classics.py scripts/test-mass-index-completeness.py scripts/test-classics-historical-translations.py scripts/repair-classics-mixed-tei.py
       - run: python scripts/test-mass-index-completeness.py
+      - run: python scripts/test-classics-historical-translations.py
   index-and-validate:
     if: github.event_name != 'pull_request'
     needs: integrity-test
@@ -72,6 +76,7 @@ jobs:
             node scripts/audit-classical-corpus.mjs
             python scripts/audit-classics-coverage.py --strict
             node scripts/test-classics-integration.mjs
+            python scripts/test-classics-historical-translations.py
             python scripts/build_classics_semantic_index.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
             git add data/classics-corpus

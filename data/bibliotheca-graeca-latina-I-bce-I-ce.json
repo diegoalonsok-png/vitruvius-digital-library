@@ -1521,7 +1521,7 @@
       "dating": "98 d. C.",
       "reading": {
         "url": "https://thelatinlibrary.com/tac.html",
-        "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
+        "status": "Original TEI indexado y lector de traducción histórica inglesa disponibles localmente por pasajes; cotejo de traducción/original pendiente. No es facsímil manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -1532,7 +1532,7 @@
         "status": "Pendiente de acreditar un PDF de una edición histórica específica"
       },
       "translation": {
-        "status": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente"
+        "status": "Inglés: Alfred John Church y William Jackson Brodribb (1877), traducción histórica completa de la TEI publicada e indexada localmente. Castellano y francés pendientes; cotejo de equivalencias con el original no realizado."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -1543,7 +1543,25 @@
       "publicStatus": "repertoriado-busqueda-externa",
       "localReader": null,
       "corpusFiles": {
-        "la": "data/classics-corpus/tacitus-agricola-la.json"
+        "la": "data/classics-corpus/tacitus-agricola-la.json",
+        "en": "data/classics-corpus/tacitus-agricola-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Alfred John Church y William Jackson Brodribb (1877)",
+          "path": "classics-text-reader.html?work=tacitus-agricola&lang=en",
+          "kind": "translation",
+          "edition": "Traducción histórica 1877 · Perseus TEI",
+          "citationChicago18": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877."
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "Chicago Manual of Style, 18th ed. (2024)",
+        "translationCitation": "Tacitus, Cornelius. The Life of Cnaeus Julius Agricola. In The Agricola and Germania of Tacitus. Translated by Alfred John Church and William Jackson Brodribb. London: Macmillan, 1877.",
+        "translationSource": "data/classics-corpus/tacitus-agricola-en.json",
+        "isbn": null,
+        "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
       }
     },
     {
@@ -4107,7 +4125,7 @@
       "publicStatus": "pendiente-de-incorporar",
       "reading": {
         "url": "https://el.wikisource.org/wiki/%CE%A4%CE%B1_%CE%B5%CE%B9%CF%82_%CE%B5%CE%B1%CF%85%CF%84%CF%8C%CE%BD",
-        "status": "Texto griego de los doce libros disponible en Wikisource en griego (ed. A. S. L. Farquharson, 1944). Enlace externo identificado; edición completa aún no alojada ni cotejada dentro de Vitruvia."
+        "status": "Griego original indexado por pasajes de Perseus TEI y accesible en lector local; Wikisource como testimonio editorial externo. La indexación no certifica cotejo filológico ni facsímil manuscrito."
       },
       "manuscript": {
         "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.1950.pt.2/manifest.json",
@@ -4122,7 +4140,8 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Griego e inglés: C. R. Haines (Loeb, 1916), edición y traducción documentadas en catálogo Folger; acceso al texto íntegro según la institución."
+        "status": "Inglés: George Long (1862), traducción histórica de renombre, texto íntegro indexado y disponible en lector local (12 libros). C. R. Haines (Loeb, 1916) permanece como referencia académica externa, no alojada. Castellano y francés: textos completos reutilizables pendientes de verificar.",
+        "cautions": "No implica correspondencia automática con los loci de la edición griega."
       },
       "links": {
         "scaife": null,
@@ -4138,7 +4157,35 @@
         "Pensamientos"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/marcus-aurelius-meditations-grc.json"
+        "grc": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+        "en": "data/classics-corpus/marcus-aurelius-meditations-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · George Long, 1862 · edición digital Standard Ebooks",
+          "path": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=en",
+          "kind": "translation",
+          "edition": "George Long (1862)",
+          "source": "Standard Ebooks",
+          "rights": "Dominio público (traducción); CC0 en contribuciones de Standard Ebooks",
+          "alignment": "Loci editoriales no alineados con el griego"
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "The Chicago Manual of Style, 18th ed. (2024), sistema de notas y bibliografía",
+        "uniformTitle": "Meditations (Τὰ εἰς ἑαυτόν)",
+        "originalAuthor": "Marcus Aurelius",
+        "workDate": "siglo II d. C.",
+        "originalLanguage": "griego",
+        "editionCitation": "Marcus Aurelius. The Thoughts of the Emperor M. Aurelius Antoninus. Translated by George Long. London: Bell and Daldy, 1862. Transcripción digital editada por Standard Ebooks. https://standardebooks.org/ebooks/marcus-aurelius/meditations/george-long.",
+        "manuscriptCitation": "Biblioteca Apostolica Vaticana, Vat. gr. 1950, parte 2, ff. 341r–392v, siglo XIV. Digitalización: DigiVatLib, https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2.",
+        "otherScholarlyEditions": [
+          "C. R. Haines, ed. y trad., Marcus Aurelius, Loeb Classical Library, 1916 (ficha bibliográfica; texto no alojado).",
+          "A. S. L. Farquharson, The Meditations of the Emperor Marcus Antoninus, Oxford, 1944 (referencia académica; texto no alojado)."
+        ],
+        "isbn": null,
+        "method": "Los manuscritos no tienen ISBN; la traducción de 1862 precede al sistema ISBN. No se asigna un ISBN de una reedición moderna a la edición histórica."
       }
     },
     {
@@ -4273,7 +4320,7 @@
       "publicStatus": "pendiente-de-incorporar",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Original TEI indexado y lector de traducción histórica inglesa disponibles localmente por pasajes; cotejo de traducción/original pendiente. No es facsímil manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -4284,7 +4331,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: Hugh G. Evelyn-White (1914), traducción histórica completa de la TEI publicada e indexada localmente. Castellano y francés pendientes; cotejo de equivalencias con el original no realizado."
       },
       "links": {
         "scaife": null,
@@ -4299,7 +4346,25 @@
         "Theogony"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/hesiod-theogony-grc.json"
+        "grc": "data/classics-corpus/hesiod-theogony-grc.json",
+        "en": "data/classics-corpus/hesiod-theogony-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Hugh G. Evelyn-White (1914)",
+          "path": "classics-text-reader.html?work=hesiod-theogony&lang=en",
+          "kind": "translation",
+          "edition": "Traducción histórica 1914 · Perseus TEI",
+          "citationChicago18": "Hesiod. Theogony. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914."
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "Chicago Manual of Style, 18th ed. (2024)",
+        "translationCitation": "Hesiod. Theogony. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914.",
+        "translationSource": "data/classics-corpus/hesiod-theogony-en.json",
+        "isbn": null,
+        "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
       }
     },
     {
@@ -4312,7 +4377,7 @@
       "publicStatus": "pendiente-de-incorporar",
       "reading": {
         "url": null,
-        "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
+        "status": "Original TEI indexado y lector de traducción histórica inglesa disponibles localmente por pasajes; cotejo de traducción/original pendiente. No es facsímil manuscrito."
       },
       "manuscript": {
         "manifest": null,
@@ -4323,7 +4388,7 @@
         "status": "PDF no acreditado ni publicado en la biblioteca."
       },
       "translation": {
-        "status": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos."
+        "status": "Inglés: Hugh G. Evelyn-White (1914), traducción histórica completa de la TEI publicada e indexada localmente. Castellano y francés pendientes; cotejo de equivalencias con el original no realizado."
       },
       "links": {
         "scaife": null,
@@ -4338,7 +4403,25 @@
         "Works and Days"
       ],
       "corpusFiles": {
-        "grc": "data/classics-corpus/hesiod-works-days-grc.json"
+        "grc": "data/classics-corpus/hesiod-works-days-grc.json",
+        "en": "data/classics-corpus/hesiod-works-days-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Hugh G. Evelyn-White (1914)",
+          "path": "classics-text-reader.html?work=hesiod-works-days&lang=en",
+          "kind": "translation",
+          "edition": "Traducción histórica 1914 · Perseus TEI",
+          "citationChicago18": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914."
+        }
+      ],
+      "bibliography": {
+        "citationStyle": "Chicago Manual of Style, 18th ed. (2024)",
+        "translationCitation": "Hesiod. Works and Days. In Hesiod, the Homeric Hymns and Homerica. Translated by Hugh G. Evelyn-White. Loeb Classical Library. London: William Heinemann; New York: Macmillan, 1914.",
+        "translationSource": "data/classics-corpus/hesiod-works-days-en.json",
+        "isbn": null,
+        "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
       }
     },
     {
@@ -7667,7 +7750,7 @@
         "status": "No consta una digitalización PDF específica verificada en esta ficha."
       },
       "translation": {
-        "status": "Traducciones española histórica y francesa de Joseph Baillard (1914) alojadas; división castellana distinta (21 unidades). Alineación filológica entre capítulos no certificada."
+        "status": "Traducciones históricas castellana (21 unidades), francesa (Joseph Baillard, 20 capítulos) e inglesa (Aubrey Stewart, 1889, 20 capítulos) indexadas localmente. Diferencias estructurales documentadas; no alineación filológica automática."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -7685,14 +7768,16 @@
         "original": "data/classics-corpus/seneca-de-brevitate-la.json",
         "translations": [
           "data/classics-corpus/seneca-de-brevitate-es.json",
-          "data/classics-corpus/seneca-de-brevitate-fr.json"
+          "data/classics-corpus/seneca-de-brevitate-fr.json",
+          "data/classics-corpus/seneca-de-brevitate-en.json"
         ],
         "verified": true
       },
       "corpusFiles": {
         "la": "data/classics-corpus/seneca-de-brevitate-la.json",
         "es": "data/classics-corpus/seneca-de-brevitate-es.json",
-        "fr": "data/classics-corpus/seneca-de-brevitate-fr.json"
+        "fr": "data/classics-corpus/seneca-de-brevitate-fr.json",
+        "en": "data/classics-corpus/seneca-de-brevitate-en.json"
       },
       "localVersions": [
         {
@@ -7712,6 +7797,14 @@
           "label": "Français · Joseph Baillard (1914) · 20 chapitres",
           "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=fr",
           "kind": "historical-translation"
+        },
+        {
+          "language": "en",
+          "label": "English · Aubrey Stewart 1889 · On the Shortness of Life",
+          "path": "classics-text-reader.html?work=seneca-de-brevitate&lang=en",
+          "kind": "historical-translation",
+          "translator": "Aubrey Stewart",
+          "edition": "Bohn's Classical Library (1889)"
         }
       ],
       "bibliography": {
@@ -7722,7 +7815,19 @@
           "https://es.wikisource.org/wiki/De_la_brevedad_de_la_vida",
           "https://fr.wikisource.org/wiki/De_la_brièveté_de_la_vie/Traduction_Baillard"
         ],
-        "note": "Wikisource, textos históricos en dominio público con atribución CC BY-SA. El cotejo exhaustivo de fuentes y traducción española queda pendiente."
+        "note": "Wikisource, textos históricos en dominio público con atribución CC BY-SA. El cotejo exhaustivo de fuentes y traducción española queda pendiente.",
+        "citationStyle": "The Chicago Manual of Style, 18th ed. (2024)",
+        "editionCitation": "Seneca, Lucius Annaeus. De brevitate vitae (On the Shortness of Life). In L. Annaeus Seneca: Minor Dialogues, Together with the Dialogue On Clemency. Translated by Aubrey Stewart. London: George Bell and Sons, 1889. Digital edition, Standard Ebooks. https://standardebooks.org/ebooks/seneca/dialogues/aubrey-stewart.",
+        "englishEditionMetadata": {
+          "title": "On the Shortness of Life",
+          "translator": "Aubrey Stewart",
+          "publisher": "George Bell and Sons",
+          "series": "Bohn's Classical Library",
+          "year": 1889,
+          "isbn": null,
+          "authority": "https://catalog.perseus.tufts.edu/catalog/urn:cts:latinLit:phi1017.phi012.opp-eng18"
+        },
+        "method": "Los tres textos están disponibles independientemente. El ISBN no se atribuye a una edición de 1889 ni a un manuscrito, aunque reediciones modernas puedan tenerlo."
       }
     },
     {
