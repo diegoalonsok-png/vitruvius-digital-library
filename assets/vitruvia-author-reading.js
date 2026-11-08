@@ -69,6 +69,13 @@ function render(rows,query,person){
   }else linkTitle=text('Consultar ficha y códices →','View record and manuscripts →','Consulter notice et manuscrits →');
   const primary=link(controls,linkTitle,reading?.url||b.link);
   if(primary)primary.className='article-original-reading-cta';
+  // Distinguish hosted indexed transcription from separately identified
+  // historical editions; both remain accessible only on explicit click.
+  const external=(b.originalReadings||[]).find(r=>r.kind==='external'&&r.url!==reading?.url);
+  if(external){
+   const a=link(controls,text('Consultar edición original externa','Consult external original edition','Consulter édition originale externe'),external.url);
+   if(a)a.className='article-original-reading-record';
+  }
   const oldest=window.VitruviaOldestSource?.forWork(b.workId);
   if(oldest){
    const a=link(controls,oldest.label,oldest.url);
