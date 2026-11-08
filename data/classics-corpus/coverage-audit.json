@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 191,
+    "indexedTextVersions": 192,
     "indexedDistinctWorks": 139,
     "manuscriptWitnesses": 23
   },
@@ -2709,9 +2709,11 @@
       "dating": "siglo V a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/aeschylus-suppliants-en.json",
         "data/classics-corpus/aeschylus-suppliants-grc.json"
       ],
       "localPDF": null,

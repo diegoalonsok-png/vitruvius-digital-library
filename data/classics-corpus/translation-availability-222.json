@@ -6,11 +6,11 @@
   "totals": {
     "cataloguedWorks": 222,
     "locallyIndexedWorks": 139,
-    "translatedWorksLocal": 46,
-    "worksWithoutHostedTranslation": 176,
+    "translatedWorksLocal": 47,
+    "worksWithoutHostedTranslation": 175,
     "localTranslationLanguages": {
       "es": 5,
-      "en": 45,
+      "en": 46,
       "fr": 2
     },
     "originalTextIndexed": 139,
@@ -2006,14 +2006,17 @@
       "title": "Ἱκέτιδες",
       "originalLanguage": "grc",
       "originalIndexed": true,
-      "translationLanguages": [],
+      "translationLanguages": [
+        "en"
+      ],
       "localEditionLanguages": [
+        "en",
         "grc"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "repertoriado-busqueda-externa",
-      "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
-      "translationRegisteredButNotHosted": true,
+      "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
+      "translationRegisteredButNotHosted": false,
       "indexed": true
     },
     {

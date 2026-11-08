@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 191,
+  "count": 192,
   "works": 139,
   "entries": [
     {
@@ -1918,6 +1918,16 @@
       "path": "data/classics-corpus/plato-phaedo-grc.json",
       "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aeschylus-suppliants-en.json",
+      "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=en",
+      "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }

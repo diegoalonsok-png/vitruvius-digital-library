@@ -5439,8 +5439,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/aeschylus-suppliants-grc.json"
-      }
+        "grc": "data/classics-corpus/aeschylus-suppliants-grc.json",
+        "en": "data/classics-corpus/aeschylus-suppliants-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Herbert Weir Smyth (1922)",
+          "path": "classics-text-reader.html?work=aeschylus-suppliants&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Esquilo. Ἱκέτιδες. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "aeschylus-prometheus",
