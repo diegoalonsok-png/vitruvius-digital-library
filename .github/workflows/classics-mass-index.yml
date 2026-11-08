@@ -5,7 +5,9 @@ on:
   pull_request:
     paths:
       - 'scripts/mass-index-classics.py'
+      - 'scripts/audit-classics-222-roadmap.py'
       - 'scripts/test-mass-index-completeness.py'
+      - 'scripts/audit-classics-222-roadmap.py'
       - 'scripts/test-classics-historical-translations.py'
       - 'data/classics-corpus/*-en.json'
       - 'scripts/repair-classics-mixed-tei.py'
@@ -15,6 +17,7 @@ on:
     paths:
       - '.github/workflows/classics-mass-index.yml'
       - 'scripts/mass-index-classics.py'
+      - 'scripts/audit-classics-222-roadmap.py'
       - 'scripts/repair-classics-mixed-tei.py'
       - 'scripts/test-classics-historical-translations.py'
   schedule:
@@ -89,6 +92,7 @@ jobs:
             node scripts/test-classics-integration.mjs
             python scripts/test-classics-historical-translations.py
             python scripts/build_classics_semantic_index.py
+            python scripts/audit-classics-222-roadmap.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
             git add data/classics-corpus
             if git diff --cached --quiet; then
