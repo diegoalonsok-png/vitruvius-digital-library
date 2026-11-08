@@ -6,15 +6,15 @@
   "counts": {
     "cataloguedWorks": 222,
     "catalogueStatuses": {
-      "lectura-local-completa": 28,
-      "repertoriado-busqueda-externa": 128,
+      "lectura-local-completa": 30,
+      "repertoriado-busqueda-externa": 126,
       "pendiente-de-incorporar": 44,
       "fuente-externa-identificada": 21,
       "lectura-local-parcial": 1
     },
-    "locallyReadableClaims": 29,
-    "indexedTextVersions": 242,
-    "indexedDistinctWorks": 177,
+    "locallyReadableClaims": 31,
+    "indexedTextVersions": 244,
+    "indexedDistinctWorks": 179,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -4361,16 +4361,20 @@
       "originalLanguage": "la",
       "genre": "Cristianismo primitivo",
       "dating": "c. 397–400 d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-completa",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/augustine-confessiones-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Original latino TEI CSEL (Pius Knöll (CSEL 33, 1896)), 453 loci; notas/aparato crítico separados y excluidos de la búsqueda. No certifica revisión filológica autóptica ni OCR definitivo."
     },
     {
       "id": "augustine-civitate-dei",
@@ -4379,16 +4383,20 @@
       "originalLanguage": "la",
       "genre": "Filosofía religiosa",
       "dating": "413–426 d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-completa",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/augustine-civitate-dei-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
       "manuscriptRecords": [],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Original latino TEI CSEL (Emmanuel Hoffmann (CSEL 40, 1899–1900)), 664 loci; notas/aparato crítico separados y excluidos de la búsqueda. No certifica revisión filológica autóptica ni OCR definitivo."
     },
     {
       "id": "boethius-consolatio",

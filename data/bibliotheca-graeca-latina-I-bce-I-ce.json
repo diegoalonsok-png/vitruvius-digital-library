@@ -9000,8 +9000,9 @@
         "Confesiones"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "classics-text-reader.html?work=augustine-confessiones&lang=la",
+        "status": "Lectura local del original latino en TEI de Pius Knöll (CSEL 33, 1896): 13 libros, 453 loci indexados. Aparato crítico excluido de la búsqueda; no se certifica cotejo manuscrito ni OCR definitivo.",
+        "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/stoa0040/stoa001/stoa0040.stoa001.opp-lat1.xml"
       },
       "manuscript": {
         "manifest": null,
@@ -9025,8 +9026,8 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Agust%C3%ADn%20de%20Hipona%20Confesiones&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "publicStatus": "lectura-local-completa",
+      "localReader": "classics-text-reader.html?work=augustine-confessiones&lang=la"
     },
     {
       "id": "augustine-civitate-dei",
@@ -9039,8 +9040,9 @@
         "La ciudad de Dios"
       ],
       "reading": {
-        "url": null,
-        "status": "Obra repertoriada; todavía no se ha incorporado ni cotejado su texto original en esta biblioteca."
+        "url": "classics-text-reader.html?work=augustine-civitate-dei&lang=la",
+        "status": "Lectura local del original latino en TEI de Emmanuel Hoffmann (CSEL 40, 1899–1900): 22 libros, 664 loci indexados. Aparato crítico excluido de la búsqueda; no se certifica cotejo manuscrito ni OCR definitivo.",
+        "sourceUrl": "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/stoa0040/stoa003/stoa0040.stoa003.opp-lat3.xml"
       },
       "manuscript": {
         "manifest": null,
@@ -9064,8 +9066,8 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Agust%C3%ADn%20de%20Hipona%20La%20ciudad%20de%20Dios&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
-      "localReader": null
+      "publicStatus": "lectura-local-completa",
+      "localReader": "classics-text-reader.html?work=augustine-civitate-dei&lang=la"
     },
     {
       "id": "boethius-consolatio",

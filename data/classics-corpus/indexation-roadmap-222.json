@@ -4,19 +4,19 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 177,
-    "originalsMissing": 45,
+    "originalsIndexed": 179,
+    "originalsMissing": 43,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
-    "textVersions": 242,
+    "textVersions": 244,
     "states": {
-      "original_pendiente": 45,
-      "original_sin_traduccion_local": 118,
+      "original_pendiente": 43,
+      "original_sin_traduccion_local": 120,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
-      "requiere_fuente_no_canonica_o_edicion_especifica": 13,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 11,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 13
     }
@@ -3685,11 +3685,13 @@
       "title": "Confessiones",
       "originalLanguage": "la",
       "dating": "c. 397–400 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.augustine-confessiones"
       ],
@@ -3701,11 +3703,13 @@
       "title": "De civitate Dei",
       "originalLanguage": "la",
       "dating": "413–426 d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [
         "ll.augustine-civitate-dei"
       ],
