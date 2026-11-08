@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Traducciones pendientes · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Inventario reproducible de obras clásicas sin traducción alojada, con fuentes y lecturas académicas externas verificadas, citas Chicago 18 y enlaces a textos y códices documentados.">
+<meta name="citation_title" content="Traducciones pendientes y lecturas externas · Bibliotheca Graeca et Latina">
+<meta name="citation_author" content="Kurilo, Diego">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_publisher" content="Sophia Lux Ediciones Académicas">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/bibliotheca-traducciones-pendientes.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/bibliotheca-simple.css">
+<style>
+.library{width:min(1330px,calc(100% - 36px))}
+h1{font-size:clamp(36px,5vw,62px)}
+.hero{padding:36px 0 26px!important}
+.ledger-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:25px 0}
+.ledger-controls input,.ledger-controls select{color:#eee;background:#1a1a1b;border:1px solid #474747;border-radius:6px;padding:11px 12px;min-height:43px}
+.ledger-controls input{flex:2 1 230px}
+.ledger-controls select{flex:1 1 150px}
+.ledger-controls button{background:#2b2b2c;color:#f3f3f3;border:1px solid #555;border-radius:6px;padding:12px;cursor:pointer;min-height:44px}
+.ledger-counts{display:flex;gap:26px;flex-wrap:wrap;margin:20px 0 28px}
+.ledger-counts div{min-width:125px;padding:6px 0}
+.ledger-counts strong{display:block;font:normal 33px/1.2 Georgia,serif}
+.ledger-counts span{font-size:12px;color:#aaa}
+.ledger-note{max-width:1070px;color:#bfbfc1;font-size:13px;margin:10px 0;line-height:1.7}
+.ledger-wrap{width:100%;overflow:auto;border-top:1px solid #444}
+.ledger{width:100%;border-collapse:collapse;min-width:860px;font-size:13px;line-height:1.5}
+.ledger th{text-align:left;font-weight:600;padding:13px 10px;color:#bdbdbf;white-space:nowrap;border-bottom:1px solid #505050}
+.ledger td{vertical-align:top;padding:15px 10px;border-bottom:1px solid #303033;max-width:470px}
+.ledger td:first-child{width:25%}
+.ledger th:nth-child(2){min-width:80px}
+.ledger th:nth-child(3){min-width:160px}
+.ledger th:nth-child(4){min-width:250px}
+.ledger .title{font:normal 19px/1.27 "Gentium Book Plus",Georgia,serif;color:#efefef}
+.ledger small{display:block;color:#a9a9ac;font-size:11px;margin-top:5px}
+.ledger a{color:#e4e4e5;text-decoration:underline;text-decoration-color:#626264;text-underline-offset:3px}
+.ledger a:hover{color:#fff;text-decoration-color:#fff}
+.ledger details{margin:6px 0 3px}
+.ledger summary{cursor:pointer;font-size:12px;color:#d0d0d1}
+.ledger details p{color:#b5b5b7;margin:7px 0;font-size:12px}
+.ledger .source-kind{font-size:11px;color:#b4b4b5}
+.ledger .status{font-size:12px;color:#d0d0d1}
+.ledger .warn{color:#c2b8a8}
+.ledger nav{display:flex;flex-wrap:wrap;gap:10px}
+footer{padding:26px 0;color:#999;font-size:12px}
+@media(max-width:650px){.ledger-counts{gap:16px}.ledger-counts strong{font-size:28px}}
+@media print{.ledger-controls,.ledger nav{display:none!important}.ledger{font-size:11px}.ledger-wrap{overflow:visible}}
+</style>
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<script defer src="assets/bibliotheca-translations-ledger.js?v=20261108-1"></script>
+</head>
+<body>
+<main class="library">
+<nav class="top" aria-label="Navegación de Bibliotheca">
+ <a class="brand" href="index.html">VITRVVIVS <span style="color:#aaa">/ Bibliotheca</span></a>
+ <div class="toplinks">
+  <a href="bibliotheca-graeca-latina.html">Bibliotheca</a>
+  <a href="vitruvia-lexicon.html">Lexicon</a>
+  <a href="vitruvia.html">Vitruvia</a>
+  <a href="index-codicum.html">Códices</a>
+ </div>
+</nav>
+<header class="hero">
+ <span class="eyebrow">REPERTORIUM TRANSLATIONUM · TESTES · EDITIONES · LOCI</span>
+ <h1>Traducciones pendientes</h1>
+ <p class="intro">Inventario de obras griegas y latinas que todavía no tienen una traducción alojada en Bibliotheca. Cada fuente externa se diferencia de una traducción indexada y cotejada dentro del sitio. Los testimonios manuscritos se ofrecen únicamente cuando ya cuentan con registro documental.</p>
+</header>
+<section aria-label="Resumen de cobertura">
+ <div class="ledger-counts">
+  <div><strong id="stat-total">—</strong><span>Obras catalogadas</span></div>
+  <div><strong id="stat-missing">—</strong><span>Sin traducción local</span></div>
+  <div><strong id="stat-original">—</strong><span>Con original indexado</span></div>
+  <div><strong id="stat-linked">—</strong><span>Con referencia externa documentada</span></div>
+ </div>
+ <p class="ledger-note">Orden de preferencia: edición crítica o traducción editorial identificada, registro institucional y lectura digital con indicación de alcance. Una edición en HTML puede ser más útil que un PDF no atribuible. Los enlaces externos no aumentan el recuento de obras indexadas, ni acreditan alineación textual, lematización o colación autóptica. No se descargan textos ni se duplican documentos.</p>
+ <p class="ledger-note">El vocabulario ecdótico distingue <em>lectura atestiguada</em>, <em>variante documentada</em> y <em>conjetura editorial</em>. Las citas Chicago 18 se muestran solo con los datos disponibles; cualquier dato bibliográfico sin confirmar se señala como incompleto. Un manuscrito digitalizado no es automáticamente el más antiguo conocido.</p>
+</section>
+<section class="ledger-controls" aria-label="Filtrar el repertorio">
+ <input id="filter-text" type="search" placeholder="Autor, obra, traductor o tema" aria-label="Filtrar por autor, obra o fuente">
+ <select id="filter-language" aria-label="Lengua original"><option value="">Griego y latín</option><option value="la">Latín</option><option value="grc">Griego</option></select>
+ <select id="filter-status" aria-label="Tipo de pendiente">
+  <option value="">Todas las traducciones pendientes</option>
+  <option value="original-indexed">Original ya indexado</option>
+  <option value="original-missing">Original aún no indexado</option>
+  <option value="external-readable">Lectura externa identificada</option>
+  <option value="external-partial">Lectura parcial o referencia bibliográfica</option>
+  <option value="external-missing">Sin referencia externa verificada</option>
+ </select>
+ <button type="button" id="export-csv">Exportar CSV</button>
+</section>
+<p id="ledger-status" role="status" aria-live="polite">Leyendo registros de procedencia…</p>
+<div class="ledger-wrap">
+ <table class="ledger" aria-label="Obras sin traducción alojada">
+ <thead><tr><th>Autor y obra</th><th>Original</th><th>Estado del corpus</th><th>Traducciones y bibliografía externa</th><th>Interconexiones</th></tr></thead>
+ <tbody id="ledger-rows"></tbody>
+ </table>
+</div>
+<footer>Bibliotheca Graeca et Latina · Inventario documental actualizable por los registros públicos del repositorio. Los derechos de las ediciones externas permanecen con sus titulares.</footer>
+</main>
+</body></html>

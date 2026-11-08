@@ -144,11 +144,22 @@ function drawRemote(){
  for(const e of rows){
   let target;
   try{target=new URL(e.url)}catch{continue}
-  if(target.protocol!=="https:"||target.hostname!=="penelope.uchicago.edu")continue;
+  if(target.protocol!=="https:"||!["penelope.uchicago.edu","www.attalus.org"].includes(target.hostname))continue;
   const line=el("p","remote-row");
-  const a=el("a","remote-link",labels.open+" · "+(languages[e.language]||e.language));
+  const bibliographyOnly=e.access==="bibliographic-discovery-only";
+  const externalLabel=bibliographyOnly?"Ficha académica (sin lectura completa)":e.coverage==="partial"?"Leer traducción parcial":labels.open;
+  const a=el("a","remote-link",externalLabel+" · "+(languages[e.language]||e.language));
   a.href=target.href;a.target="_blank";a.rel="noopener noreferrer";
-  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host+(e.verifiedIndexOn?" · "+(locale==="es"?"índice consultado":locale==="fr"?"index consulté":"index checked")+" "+e.verifiedIndexOn:"")));
+  const caution=e.coverage==="partial"?" · traducción parcial":
+    e.coverage==="coverage-to-check"?" · cobertura no cotejada":
+    bibliographyOnly?" · referencia bibliográfica, no lectura":"";
+  line.append(a,document.createTextNode(" · "+e.translator+" · "+e.edition+" · "+e.host+caution+
+   (e.verifiedIndexOn?" · "+(locale==="es"?"índice consultado":locale==="fr"?"index consulté":"index checked")+" "+e.verifiedIndexOn:"")));
+  if(e.citationChicago18){
+   const details=el("details",""),summary=el("summary","","Referencia editorial · Chicago 18");
+   details.append(summary,el("p","",e.citationChicago18));
+   line.append(details);
+  }
   remoteBox.append(line);
  }
  remoteBox.append(el("p","remote-note",labels.note));
