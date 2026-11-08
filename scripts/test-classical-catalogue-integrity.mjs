@@ -15,22 +15,25 @@ for(const ms of witnesses.records){
 }
 for(const edition of witnesses.editions)assert(ids.has(edition.workId),'Orphan edition: '+edition.workId);
 const html=read('bibliotheca-graeca-latina.html');
-const app=read('assets/bibliotheca-graeca-latina.js');
+const minimal=read('assets/bibliotheca-simple.js');
+const engine=read('assets/classics-corpus-search.js');
 const index=read('index-codicum.html');
-assert(html.includes('id="classic-sort"'),'Missing academic ordering control');
-assert(app.includes('function matchingWitness(w,q)'),'Missing shelfmark matching');
-assert(app.includes('function render(){const data=filters(),t=terms(),q="";'),
- 'Bibliographic listing must remain complete, independently of the textual word/phrase search');
-assert(!app.includes('const hit=q?matchingWitness(w,q):null;')||app.indexOf('function render(){const data=filters(),t=terms(),q=')<app.indexOf('const hit=q?matchingWitness(w,q):null;'),
- 'Manuscript match must not reference an uninitialized query');
-assert(html.includes('assets/bibliotheca-unified-search.js'),'Single textual search must be mounted');
-assert(html.includes('assets/bibliotheca-unified.css'),'Lexicon dark theme must be mounted');
-const indexEngine=read('assets/bibliotheca-unified-search.js');
-assert(indexEngine.includes('searchPassages([q],{allMatches:true})'),
- 'Full-text search must examine the index without a fixed results cap');
-assert(indexEngine.includes('catalog.length-indexed().size'),
- 'Search must disclose precisely how many catalogue works were not indexed');
-assert(app.includes('function witnessYear(w)'),'Missing documented witness ordering');
+assert.equal((html.match(/type="search"/g)||[]).length,1,'Bibliotheca must have exactly one visible textual search');
+assert(html.includes('id="classic-work"')&&html.includes('option value=""'),'The work selector must offer all works');
+assert(html.includes('id="classic-lexicon"'),'The actual query must open Lexicon directly');
+assert(html.includes('assets/bibliotheca-simple.js'),'Minimal reader must be mounted');
+assert(html.includes('assets/bibliotheca-simple.css'),'Lexicon black/ivory theme must load');
+assert(!/<iframe|<dialog|id="classic-sort"|id="classic-detail"/.test(html),'No old viewer, panels or duplicate sorting');
+assert((html.match(/<option value="(?:es|en|fr)">/g)||[]).length===3,'Interface language must match ES EN FR');
+assert(!html.includes('<option value="it">'),'Unsupported interface language must not reappear');
+assert(minimal.includes('allMatches:true,includeFullText:true'),'Every matching paragraph must be preserved, with no 600-result cutoff');
+assert(minimal.includes('workId:works.value||""'),'Single selected work must scope the search');
+assert(minimal.includes('compareWork('),'Results must be sorted by approximate work composition age');
+assert(minimal.includes('vitruvia-lexicon.html')&&minimal.includes('searchParams.set("q",q)'),
+ 'Lexicon deep link must carry the actual query');
+assert(minimal.includes('catalog.length-indexed.size'),'Non-indexed books must be disclosed');
+assert(engine.includes('includeFullText=false')&&engine.includes('fullText:p.text'),
+ 'Literal engine must allow complete paragraph output rather than snippets');
 assert(index.includes('id="codex-query"'),'Missing dedicated codex index search');
 assert(index.includes('metadata_status'),'Missing provisional/documented status');
 assert(index.includes('bibliotheca-graeca-latina.html?'),'Missing manuscript-to-work discovery link');
