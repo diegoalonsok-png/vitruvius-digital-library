@@ -2,8 +2,8 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 132,
-  "works": 86,
+  "count": 144,
+  "works": 98,
   "entries": [
     {
       "workId": "apuleius-metamorphoses",
@@ -1328,6 +1328,126 @@
       "path": "data/classics-corpus/euripides-hippolytus-en.json",
       "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=en",
       "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-alcestis-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-alcestis&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-electra-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-electra&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-troades-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-troades&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-hecuba-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+      "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-aves-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-aves&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-lysistrata&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-pax-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-pax&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+      "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-symposium-grc.json",
+      "reader": "classics-text-reader.html?work=plato-symposium&lang=grc",
+      "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
     }
   ]
 }

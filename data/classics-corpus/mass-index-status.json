@@ -2,106 +2,106 @@
   "updated": "2026-11-08",
   "newWorks": 12,
   "newTextVersions": 12,
-  "indexedDistinctWorks": 86,
-  "registeredTextVersions": 123,
-  "missingOriginals": 136,
+  "indexedDistinctWorks": 98,
+  "registeredTextVersions": 144,
+  "missingOriginals": 124,
   "method": "Perseus TEI original checked; explicit original-language match; no generated translations",
   "created": [
     {
-      "workId": "aeschylus-persae",
+      "workId": "euripides-alcestis",
       "lang": "grc",
-      "path": "data/classics-corpus/aeschylus-persae-grc.json",
-      "passages": 141,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg002/tlg0085.tlg002.perseus-grc2.xml",
-      "sha256": "723f31d90ebb227c764836b572143b7fff8afe70c5d3c80a3456f308c2c549fc"
+      "path": "data/classics-corpus/euripides-alcestis-grc.json",
+      "passages": 151,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg002/tlg0006.tlg002.perseus-grc2.xml",
+      "sha256": "cbb1a955bca8fdccde9f5bc9c02f8862fb88f8f5dc8164fd135b704d7c6d3d6a"
     },
     {
-      "workId": "aeschylus-seven-thebes",
+      "workId": "euripides-electra",
       "lang": "grc",
-      "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
-      "passages": 139,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg004/tlg0085.tlg004.perseus-grc2.xml",
-      "sha256": "90fd0aa326a9aa207afeae3c54cbf901cb9d385b7b0534bf105c929fe22230f3"
+      "path": "data/classics-corpus/euripides-electra-grc.json",
+      "passages": 177,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg012/tlg0006.tlg012.perseus-grc2.xml",
+      "sha256": "5ae7746553578c1ba86d3127c289ba8b6e65cbd422400f46241561fad1a60551"
     },
     {
-      "workId": "aeschylus-suppliants",
+      "workId": "euripides-troades",
       "lang": "grc",
-      "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
-      "passages": 138,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg001/tlg0085.tlg001.perseus-grc2.xml",
-      "sha256": "4d7345e94159933aa99a1197a1487125e6c65706e76b174bd69c1e718bf46032"
+      "path": "data/classics-corpus/euripides-troades-grc.json",
+      "passages": 169,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg011/tlg0006.tlg011.perseus-grc2.xml",
+      "sha256": "f75442359701487a6164db99223248ea62dacb7b75de3b122b1280cb76ec2503"
     },
     {
-      "workId": "aeschylus-prometheus",
+      "workId": "euripides-hecuba",
       "lang": "grc",
-      "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
-      "passages": 140,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0085/tlg003/tlg0085.tlg003.perseus-grc2.xml",
-      "sha256": "619cbdf01f4092bbc3ed1cd690a926fc1ab4a52f894d2d6b3e68b513d27545de"
+      "path": "data/classics-corpus/euripides-hecuba-grc.json",
+      "passages": 160,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg007/tlg0006.tlg007.perseus-grc2.xml",
+      "sha256": "a594a727029d960921129d5f4ecf2d0be9e1cd653b3785a5ae4333ec0149953e"
     },
     {
-      "workId": "sophocles-antigone",
+      "workId": "euripides-iphigenia-aulid",
       "lang": "grc",
-      "path": "data/classics-corpus/sophocles-antigone-grc.json",
-      "passages": 163,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg002/tlg0011.tlg002.perseus-grc2.xml",
-      "sha256": "3cc42b2e9101a309dc80410cdb8cfdbc6d1708dfacf8e86be8caed2b2dfdaffe"
+      "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+      "passages": 210,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg018/tlg0006.tlg018.perseus-grc2.xml",
+      "sha256": "590c19dd2b9ca0b575cce8f42e8cd6b3d3c9a9dd5938b347e849c0d76a92adf9"
     },
     {
-      "workId": "sophocles-ajax",
+      "workId": "aristophanes-aves",
       "lang": "grc",
-      "path": "data/classics-corpus/sophocles-ajax-grc.json",
-      "passages": 178,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg003/tlg0011.tlg003.perseus-grc2.xml",
-      "sha256": "15dfe7e0eac5626d078680a510fc85e2e3579e20caf18ee65dc2f4163fdcaa89"
+      "path": "data/classics-corpus/aristophanes-aves-grc.json",
+      "passages": 248,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg006/tlg0019.tlg006.perseus-grc2.xml",
+      "sha256": "1463873b6d2756e88fe2b761a03a24b42cf028a99455045e3d26f4bedcaafcad"
     },
     {
-      "workId": "sophocles-electra",
+      "workId": "aristophanes-ranae",
       "lang": "grc",
-      "path": "data/classics-corpus/sophocles-electra-grc.json",
-      "passages": 190,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg005/tlg0011.tlg005.perseus-grc2.xml",
-      "sha256": "0149daefb7f48be3d8ee025dd5d72069561446cc6d04948d9eefa8d0cc8a38de"
+      "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+      "passages": 225,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg009/tlg0019.tlg009.perseus-grc2.xml",
+      "sha256": "cf41b806da1d9043854114440146116b792ac1994bedddc9a64fdd37dc94bde8"
     },
     {
-      "workId": "sophocles-philoctetes",
+      "workId": "aristophanes-lysistrata",
       "lang": "grc",
-      "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
-      "passages": 185,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg006/tlg0011.tlg006.perseus-grc2.xml",
-      "sha256": "7b333ba0c056c8ba87817aa582377d3e90a50061405b4ebeb5f15395148a4df5"
+      "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+      "passages": 184,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg007/tlg0019.tlg007.perseus-grc2.xml",
+      "sha256": "b4555082ec10faaf4d0e0c1a3d10011029c231a1e58c69045912c3dea4361e2e"
     },
     {
-      "workId": "sophocles-oedipus-colonus",
+      "workId": "aristophanes-vespae",
       "lang": "grc",
-      "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
-      "passages": 232,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg007/tlg0011.tlg007.perseus-grc2.xml",
-      "sha256": "accca512812f6a4073cf62d1d6b32c54f73126e8fd50f137898bd2ed7a68974c"
+      "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+      "passages": 213,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg004/tlg0019.tlg004.perseus-grc2.xml",
+      "sha256": "834291d6f7f0d30c6ffaf4612b010544d6bd91ce8db827e362f3a14cd575adca"
     },
     {
-      "workId": "sophocles-trachiniae",
+      "workId": "aristophanes-pax",
       "lang": "grc",
-      "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
-      "passages": 161,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0011/tlg001/tlg0011.tlg001.perseus-grc2.xml",
-      "sha256": "e91eb404cd72c7fc584d917058f19dcb88f889b3befbe0d35af2464ad537c306"
+      "path": "data/classics-corpus/aristophanes-pax-grc.json",
+      "passages": 188,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg005/tlg0019.tlg005.perseus-grc2.xml",
+      "sha256": "9e1fa3d32894af772b6e7d199b4d0a72b037ac98ec5b6fae18dff3473ca7c25e"
     },
     {
-      "workId": "euripides-bacchae",
+      "workId": "aristophanes-acharnenses",
       "lang": "grc",
-      "path": "data/classics-corpus/euripides-bacchae-grc.json",
-      "passages": 180,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg017/tlg0006.tlg017.perseus-grc2.xml",
-      "sha256": "6cedd67f582029d13679c808bfde7ea117e0ba1ef72783a0a9f1342c709b9dbe"
+      "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+      "passages": 171,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0019/tlg001/tlg0019.tlg001.perseus-grc2.xml",
+      "sha256": "f2a2398221f20d805c45888803fe0745a8e0433a7906546e01e22dcd19b61cac"
     },
     {
-      "workId": "euripides-hippolytus",
+      "workId": "plato-symposium",
       "lang": "grc",
-      "path": "data/classics-corpus/euripides-hippolytus-grc.json",
-      "passages": 187,
-      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0006/tlg005/tlg0006.tlg005.perseus-grc2.xml",
-      "sha256": "98d20bee345591cf0007be16cac5aba6e572c051b47f68c3d9c0fcd12650928f"
+      "path": "data/classics-corpus/plato-symposium-grc.json",
+      "passages": 63,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg011/tlg0059.tlg011.perseus-grc2.xml",
+      "sha256": "f4437b96a3271a63dc04410cae3ec149851cb0f650bef0d47b24273a4c49ce5b"
     }
   ],
   "errors": []
