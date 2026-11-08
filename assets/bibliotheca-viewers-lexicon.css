@@ -180,3 +180,25 @@ html body .bibliotheca-unified-results button:focus-visible{
   transition:none!important;transform:none!important;
  }
 }
+
+/* The explicit Lexicon language button has ID-level legacy overrides;
+   neutralize these so idle, press and open states are perceptibly distinct. */
+html body .classic-main .classic-menu #bibliotheca-language-toggle{
+ background:#202021!important;color:#dadada!important;border:1px solid #393939!important;
+ border-radius:4px!important;
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle:hover{
+ background:#303032!important;border-color:#555!important;color:#eee!important;
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle:active{
+ background:#424246!important;border-color:#818185!important;transform:translateY(1px);
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle[aria-expanded=true]{
+ background:#363638!important;border-color:#8b8b8e!important;color:#f3f3f4!important;
+}
+html body .classic-main .classic-menu #bibliotheca-language-toggle[aria-expanded=true]:active{
+ background:#424246!important;
+}
+body:has(.classic-main) .site-bar a[aria-current=page]{
+ border-bottom-color:#777!important;border-top-color:#777!important;
+}
