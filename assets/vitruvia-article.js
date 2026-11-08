@@ -1146,8 +1146,11 @@ function refreshTopicSources(rows,query){
   details.append(make("summary",phrase("Fuentes antiguas, universidades, códices y bibliografía especializada",
    "Ancient sources, universities, manuscripts and scholarly bibliography",
    "Sources anciennes, universités, manuscrits et bibliographie scientifique")));
+  const reading=body.querySelector(".article-author-reading");
   const before=body.querySelector(".article-wikipedia-optional");
-  if(before)before.before(details);else body.append(details);
+  if(reading)reading.after(details);
+  else if(before)before.before(details);
+  else body.append(details);
  }
  const contents=make("div",undefined,"article-academic-expansion-inner"),previous=articleBodyTarget;
  try{
