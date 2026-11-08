@@ -426,6 +426,14 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  </div>
 </section>
 
+<section class="tool" id="lexicon-dictionaries" aria-labelledby="dict-h">
+ <h2 id="dict-h">Diccionarios integrados · Latinum / Graecum / Hebraicum</h2>
+ <p class="lx-small">Consulta por lema y grafía original. Latín y griego: fichas editoriales del Etymologicum, vocabulario Conceptus y enlaces al motor morfológico LSJ / Lewis &amp; Short del propio Lexicon. Hebreo bíblico: raíces documentadas y equivalencias con notas; el corpus hebreo y los diccionarios BDB / HALOT no están reproducidos íntegramente.</p>
+ <div class="lx-dict-controls"><label for="lx-dict-lang">Lengua <select id="lx-dict-lang" aria-label="Diccionario por lengua"><option value="la">Latín</option><option value="grc">Griego antiguo</option><option value="he">Hebreo bíblico</option></select></label><label for="lx-dict-q">Término <input id="lx-dict-q" type="search" placeholder="domus · λόγος · בַּיִת" autocomplete="off" aria-label="Término del diccionario"></label><button type="button" id="lx-dict-search">Consultar</button></div>
+ <p class="lx-small" id="lx-dict-status" role="status" aria-live="polite">Preparando índices lexicográficos…</p>
+ <div id="lx-dict-results"></div>
+ <p class="lx-small lx-dict-note">Cada ficha conserva la procedencia y sus límites. Las equivalencias entre lenguas son orientativas y no implican parentesco etimológico, ni traducción contextual de cualquier pasaje. <a href="bibliotheca-capitula.html">Comparar textos por capítulos en Bibliotheca</a>.</p>
+</section>
 <section class="tool" id="etymologicum" aria-labelledby="etym-h">
  <div class="kicker">I · ETYMOLOGICUM</div>
  <h2 id="etym-h" data-i18n>Índice de voces con ficha etimológica</h2>
@@ -729,4 +737,5 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
 <script defer src="assets/lexicon-orthography-research.js?v=20261107-quiet-v1"></script>
 <script defer src="assets/lexicon-toponymicon.js?v=20261107-quiet-v1"></script>
 <script defer src="assets/critical-note-bridge.js?v=20261107-v1"></script>
+<link rel="stylesheet" href="assets/lexicon-dictionaries.css?v=20261108-v1"><script defer src="assets/lexicon-dictionaries.js?v=20261108-v1"></script>
 <script defer src="assets/research-crosslinks.js?v=20261107-quiet-v1"></script></body></html>
