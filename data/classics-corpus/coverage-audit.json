@@ -13,7 +13,7 @@
       "lectura-local-parcial": 1
     },
     "locallyReadableClaims": 28,
-    "indexedTextVersions": 192,
+    "indexedTextVersions": 194,
     "indexedDistinctWorks": 139,
     "manuscriptWitnesses": 23
   },
@@ -3219,9 +3219,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-phaedo-en.json",
         "data/classics-corpus/plato-phaedo-grc.json"
       ],
       "localPDF": null,
@@ -3361,9 +3363,11 @@
       "dating": "siglo IV a. C.",
       "catalogueStatus": "repertoriado-busqueda-externa",
       "indexedTextLanguages": [
+        "en",
         "grc"
       ],
       "indexedTextFiles": [
+        "data/classics-corpus/plato-crito-en.json",
         "data/classics-corpus/plato-crito-grc.json"
       ],
       "localPDF": null,

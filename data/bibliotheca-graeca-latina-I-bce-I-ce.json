@@ -6638,8 +6638,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-phaedo-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-phaedo-grc.json",
+        "en": "data/classics-corpus/plato-phaedo-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Harold North Fowler (1914)",
+          "path": "classics-text-reader.html?work=plato-phaedo&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Φαίδων. Translated by Harold North Fowler. Harvard University Press / William Heinemann, 1914. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "plato-gorgias",
@@ -6972,8 +6982,18 @@
         "note": "Pasajes de De architectura en los que Vitruvio nombra a este autor (latín de la edición V514); la mención no implica cita literal de esta obra concreta."
       },
       "corpusFiles": {
-        "grc": "data/classics-corpus/plato-crito-grc.json"
-      }
+        "grc": "data/classics-corpus/plato-crito-grc.json",
+        "en": "data/classics-corpus/plato-crito-en.json"
+      },
+      "localVersions": [
+        {
+          "language": "en",
+          "label": "English · Harold North Fowler (1914)",
+          "path": "classics-text-reader.html?work=plato-crito&lang=en",
+          "kind": "historical-translation",
+          "citationChicago18": "Platón. Κρίτων. Translated by Harold North Fowler. Harvard University Press / William Heinemann, 1914. Perseus Digital Library, TEI."
+        }
+      ]
     },
     {
       "id": "aristotle-nicomachean-ethics",

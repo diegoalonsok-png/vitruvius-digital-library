@@ -2,7 +2,7 @@
   "schema": "vitruvia-classics-search-registry-v1",
   "updated": "2026-11-08",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
-  "count": 192,
+  "count": 194,
   "works": 139,
   "entries": [
     {
@@ -1928,6 +1928,26 @@
       "path": "data/classics-corpus/aeschylus-suppliants-en.json",
       "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=en",
       "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-crito-en.json",
+      "reader": "classics-text-reader.html?work=plato-crito&lang=en",
+      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
+    },
+    {
+      "workId": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "language": "en",
+      "format": "json-passages",
+      "path": "data/classics-corpus/plato-phaedo-en.json",
+      "reader": "classics-text-reader.html?work=plato-phaedo&lang=en",
+      "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático"
     }
   ]
 }
