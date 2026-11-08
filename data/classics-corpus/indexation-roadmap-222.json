@@ -1,0 +1,4101 @@
+{
+  "schema": "vitruvius-classics-indexation-roadmap-v1",
+  "updated": "2026-11-08",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
+  "targetWorks": 222,
+  "counts": {
+    "originalsIndexed": 135,
+    "originalsMissing": 87,
+    "worksWithHostedTranslation": 46,
+    "worksMissingTranslation": 176,
+    "textVersions": 187,
+    "states": {
+      "original_pendiente": 87,
+      "original_sin_traduccion_local": 89,
+      "original_y_traduccion_local": 46
+    },
+    "sourceReadinessForMissingOriginals": {
+      "correspondencia_bibliografica_ambigua": 11,
+      "requiere_fuente_no_canonica_o_edicion_especifica": 16,
+      "sin_fuente_en_mapa_perseus": 16,
+      "tei_perseus_candidato_por_verificar": 44
+    }
+  },
+  "items": [
+    {
+      "id": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem",
+      "originalLanguage": "la",
+      "dating": "c. 30–20 a. C.",
+      "indexedLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "originalLanguage": "la",
+      "dating": "44 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi055"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cicero-oratore",
+      "author": "Cicerón",
+      "title": "De oratore",
+      "originalLanguage": "la",
+      "dating": "55 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi037"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-republica",
+      "author": "Cicerón",
+      "title": "De re publica",
+      "originalLanguage": "la",
+      "dating": "c. 54–51 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi043"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "originalLanguage": "la",
+      "dating": "c. 58–50 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0448.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "originalLanguage": "la",
+      "dating": "c. 49–48 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0448.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae",
+      "originalLanguage": "la",
+      "dating": "c. 43–40 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0631.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "originalLanguage": "la",
+      "dating": "c. 41–40 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0631.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "originalLanguage": "la",
+      "dating": "37 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.varro-rustica"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "originalLanguage": "la",
+      "dating": "c. 60–50 a. C.",
+      "indexedLanguages": [
+        "en",
+        "es",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0550.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
+      "originalLanguage": "la",
+      "dating": "29–19 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0690.phi003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "originalLanguage": "la",
+      "dating": "c. 37–29 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0690.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "horace-odes",
+      "author": "Horacio",
+      "title": "Carmina",
+      "originalLanguage": "la",
+      "dating": "23–13 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0893.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "originalLanguage": "la",
+      "dating": "desde c. 27 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "phi0914.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "ovid",
+      "author": "Ovidio",
+      "title": "Metamorphoses",
+      "originalLanguage": "la",
+      "dating": "c. 8 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi006"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "ovid-fasti",
+      "author": "Ovidio",
+      "title": "Fasti",
+      "originalLanguage": "la",
+      "dating": "c. 2–8 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi007"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "phi0588.abo001",
+        "phi0588.abo002",
+        "phi0588.abo003",
+        "phi0588.abo004",
+        "phi0588.abo005",
+        "phi0588.abo006",
+        "phi0588.abo007",
+        "phi0588.abo008",
+        "phi0588.abo009",
+        "phi0588.abo010",
+        "phi0588.abo011",
+        "phi0588.abo012",
+        "phi0588.abo013",
+        "phi0588.abo014",
+        "phi0588.abo015",
+        "phi0588.abo016",
+        "phi0588.abo017",
+        "phi0588.abo018",
+        "phi0588.abo019",
+        "phi0588.abo020",
+        "phi0588.abo021",
+        "phi0588.abo022",
+        "phi0588.abo023",
+        "phi0588.abo024",
+        "phi0588.abo025"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "originalLanguage": "grc",
+      "dating": "c. 60–30 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0060.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "originalLanguage": "grc",
+      "dating": "c. 7 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0081.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "originalLanguage": "grc",
+      "dating": "c. 20 a. C.–23 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0099.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "originalLanguage": "grc",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0018.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "seneca-epistulae",
+      "author": "Séneca",
+      "title": "Epistulae morales ad Lucilium",
+      "originalLanguage": "la",
+      "dating": "c. 62–65 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1017.phi015"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "originalLanguage": "la",
+      "dating": "c. 62–65 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.seneca-naturales"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "lucan",
+      "author": "Lucano",
+      "title": "Bellum civile",
+      "originalLanguage": "la",
+      "dating": "c. 60–65 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0917.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "pliny",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "originalLanguage": "la",
+      "dating": "77 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "phi0978.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "originalLanguage": "grc",
+      "dating": "c. 50–70 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0656.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "originalLanguage": "grc",
+      "dating": "c. 75–79 d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0526.tlg004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "originalLanguage": "grc",
+      "dating": "93–94 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0526.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "originalLanguage": "la",
+      "dating": "c. 95 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "phi1002.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "martial",
+      "author": "Marcial",
+      "title": "Epigrammata",
+      "originalLanguage": "la",
+      "dating": "c. 86–101 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1294.phi002"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "tacitus-agricola",
+      "author": "Tácito",
+      "title": "Agricola",
+      "originalLanguage": "la",
+      "dating": "98 d. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1351.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "tacitus-germania",
+      "author": "Tácito",
+      "title": "Germania",
+      "originalLanguage": "la",
+      "dating": "98 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1351.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "frontinus",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "originalLanguage": "la",
+      "dating": "c. 97–100 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.frontinus"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "originalLanguage": "grc",
+      "dating": "c. 65–75 d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0031.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "originalLanguage": "grc",
+      "dating": "c. 95–100 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1271.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχή · Didaché",
+      "originalLanguage": "grc",
+      "dating": "Finales del siglo I – comienzos del II (datación debatida)",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg1311.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "originalLanguage": "grc",
+      "dating": "Siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1419.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "originalLanguage": "la",
+      "dating": "Finales del siglo III – comienzos del IV d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "originalLanguage": "grc",
+      "dating": "Finales del siglo I – primera mitad del II d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg1216.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "originalLanguage": "grc",
+      "dating": "Siglo II d. C. (cronología debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1443.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "originalLanguage": "grc",
+      "dating": "Primera mitad del siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1622.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "originalLanguage": "grc",
+      "dating": "Siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1271.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "originalLanguage": "grc",
+      "dating": "Siglo II–III d. C. (discutido)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0646.tlg004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "originalLanguage": "grc",
+      "dating": "Mediados del siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0645.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "originalLanguage": "grc",
+      "dating": "Finales del siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1447.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "tertullian",
+      "author": "Tertuliano",
+      "title": "Apologeticum",
+      "originalLanguage": "la",
+      "dating": "197 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "stoa0275.stoa009"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "originalLanguage": "grc",
+      "dating": "Primera mitad del siglo III d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "originalLanguage": "grc",
+      "dating": "Principios del siglo IV d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg2018.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "columella",
+      "author": "Columela",
+      "title": "De re rustica",
+      "originalLanguage": "la",
+      "dating": "Siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0845.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "celsus",
+      "author": "Aulo Cornelio Celso",
+      "title": "De medicina",
+      "originalLanguage": "la",
+      "dating": "Siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0836.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "originalLanguage": "la",
+      "dating": "Finales del siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.frontinus-strategemata"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "originalLanguage": "grc",
+      "dating": "Finales del siglo I – comienzos del II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0007.tlg001",
+        "tlg0007.tlg002",
+        "tlg0007.tlg003",
+        "tlg0007.tlg004",
+        "tlg0007.tlg005",
+        "tlg0007.tlg006",
+        "tlg0007.tlg007",
+        "tlg0007.tlg008",
+        "tlg0007.tlg009",
+        "tlg0007.tlg010",
+        "tlg0007.tlg011",
+        "tlg0007.tlg012",
+        "tlg0007.tlg013",
+        "tlg0007.tlg014",
+        "tlg0007.tlg015",
+        "tlg0007.tlg016",
+        "tlg0007.tlg017",
+        "tlg0007.tlg018",
+        "tlg0007.tlg019",
+        "tlg0007.tlg020",
+        "tlg0007.tlg021",
+        "tlg0007.tlg022",
+        "tlg0007.tlg023",
+        "tlg0007.tlg024",
+        "tlg0007.tlg025",
+        "tlg0007.tlg026",
+        "tlg0007.tlg027",
+        "tlg0007.tlg028",
+        "tlg0007.tlg029",
+        "tlg0007.tlg030",
+        "tlg0007.tlg031",
+        "tlg0007.tlg032",
+        "tlg0007.tlg033",
+        "tlg0007.tlg034",
+        "tlg0007.tlg035",
+        "tlg0007.tlg036",
+        "tlg0007.tlg037",
+        "tlg0007.tlg038",
+        "tlg0007.tlg039",
+        "tlg0007.tlg040",
+        "tlg0007.tlg041",
+        "tlg0007.tlg042",
+        "tlg0007.tlg043",
+        "tlg0007.tlg044",
+        "tlg0007.tlg045",
+        "tlg0007.tlg046",
+        "tlg0007.tlg047",
+        "tlg0007.tlg048",
+        "tlg0007.tlg049",
+        "tlg0007.tlg050",
+        "tlg0007.tlg051",
+        "tlg0007.tlg052",
+        "tlg0007.tlg053",
+        "tlg0007.tlg054",
+        "tlg0007.tlg055",
+        "tlg0007.tlg056",
+        "tlg0007.tlg057",
+        "tlg0007.tlg058",
+        "tlg0007.tlg059",
+        "tlg0007.tlg060",
+        "tlg0007.tlg061",
+        "tlg0007.tlg062",
+        "tlg0007.tlg063",
+        "tlg0007.tlg064",
+        "tlg0007.tlg065",
+        "tlg0007.tlg066"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "originalLanguage": "grc",
+      "dating": "Siglo II d. C. (atribución y datación a precisar)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "originalLanguage": "grc",
+      "dating": "Siglo I d. C. (datación del autor debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0559.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "originalLanguage": "grc",
+      "dating": "Siglo I d. C. (datación debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0559.tlg002"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "originalLanguage": "grc",
+      "dating": "Siglo I a. C. (datación discutida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "originalLanguage": "la",
+      "dating": "Edición editorial, 2026",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "originalLanguage": "la",
+      "dating": "Edición editorial, 2026",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "originalLanguage": "la",
+      "dating": "Edición editorial, 2026",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "originalLanguage": "la",
+      "dating": "Edición crítica impresa, 1912",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "plautus-amphitruo",
+      "author": "Plauto",
+      "title": "Amphitruo",
+      "originalLanguage": "la",
+      "dating": "siglo II a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0119.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plautus-aulularia",
+      "author": "Plauto",
+      "title": "Aulularia",
+      "originalLanguage": "la",
+      "dating": "siglo II a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0119.phi003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "terentius-andria",
+      "author": "Terencio",
+      "title": "Andria",
+      "originalLanguage": "la",
+      "dating": "166 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0134.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "terentius-heautontimorumenos",
+      "author": "Terencio",
+      "title": "Heautontimorumenos",
+      "originalLanguage": "la",
+      "dating": "163 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0134.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cato-agri-cultura",
+      "author": "Catón el Viejo",
+      "title": "De agri cultura",
+      "originalLanguage": "la",
+      "dating": "siglo II a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "stoa0079.stoa001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "originalLanguage": "la",
+      "dating": "63 a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi013"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "catullus-carmina",
+      "author": "Catulo",
+      "title": "Carmina",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0472.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "horace-sermones",
+      "author": "Horacio",
+      "title": "Sermones (Satirae)",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0893.phi004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "horace-ars-poetica",
+      "author": "Horacio",
+      "title": "Ars poetica",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0893.phi006"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "ovid-ars-amatoria",
+      "author": "Ovidio",
+      "title": "Ars amatoria",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.–siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "seneca-tragoediae",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "title": "Tragoediae (colección)",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "phi1017.phi001",
+        "phi1017.phi002",
+        "phi1017.phi003",
+        "phi1017.phi004",
+        "phi1017.phi005",
+        "phi1017.phi006",
+        "phi1017.phi007",
+        "phi1017.phi008",
+        "phi1017.phi009",
+        "phi1017.phi010"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "petronius-satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "title": "Satyrica",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C. (atribución debatida)",
+      "indexedLanguages": [
+        "en",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "ll.petronius-satyrica"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "tacitus-annales",
+      "author": "Tácito",
+      "title": "Annales",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1351.phi005"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "tacitus-historiae",
+      "author": "Tácito",
+      "title": "Historiae",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1351.phi004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "suetonius-caesares",
+      "author": "Suetonio",
+      "title": "De vita Caesarum",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "phi1348.abo011",
+        "phi1348.abo012",
+        "phi1348.abo013",
+        "phi1348.abo014",
+        "phi1348.abo015",
+        "phi1348.abo016",
+        "phi1348.abo017",
+        "phi1348.abo018",
+        "phi1348.abo019",
+        "phi1348.abo020",
+        "phi1348.abo021",
+        "phi1348.abo022"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "juvenal-saturae",
+      "author": "Juvenal",
+      "title": "Saturae",
+      "originalLanguage": "la",
+      "dating": "siglos I–II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1276.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "en",
+        "es",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1212.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "varro-de-lingua-latina",
+      "author": "Varrón",
+      "title": "De lingua Latina",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.varro-de-lingua-latina"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "tibullus-elegiae",
+      "author": "Tibulo",
+      "title": "Elegiae",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0660.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "propertius-elegiae",
+      "author": "Propercio",
+      "title": "Elegiae",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0620.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.phraedrus-fabulae"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "statius-thebais",
+      "author": "Estacio",
+      "title": "Thebais",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1020.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "pliny-younger-epistulae",
+      "author": "Plinio el Joven",
+      "title": "Epistulae",
+      "originalLanguage": "la",
+      "dating": "siglos I–II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1318.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aulus-gellius-noctes",
+      "author": "Aulo Gelio",
+      "title": "Noctes Atticae",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1254.phi001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "valerius-maximus-facta",
+      "author": "Valerio Máximo",
+      "title": "Facta et dicta memorabilia",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1038.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.velleius-historia"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "silius-punica",
+      "author": "Silio Itálico",
+      "title": "Punica",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1345.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "originalLanguage": "grc",
+      "dating": "siglo II a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0543.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "originalLanguage": "grc",
+      "dating": "datación discutida, posiblemente siglos I–II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0548.tlg001",
+        "tlg0548.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "originalLanguage": "grc",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0018.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "originalLanguage": "grc",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0018.tlg022"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "originalLanguage": "grc",
+      "dating": "siglos I–II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0007.tlg067",
+        "tlg0007.tlg068",
+        "tlg0007.tlg069",
+        "tlg0007.tlg070",
+        "tlg0007.tlg071",
+        "tlg0007.tlg072",
+        "tlg0007.tlg073",
+        "tlg0007.tlg074",
+        "tlg0007.tlg075",
+        "tlg0007.tlg076",
+        "tlg0007.tlg077",
+        "tlg0007.tlg078",
+        "tlg0007.tlg079",
+        "tlg0007.tlg080",
+        "tlg0007.tlg081",
+        "tlg0007.tlg082",
+        "tlg0007.tlg082a",
+        "tlg0007.tlg082b",
+        "tlg0007.tlg083",
+        "tlg0007.tlg084a",
+        "tlg0007.tlg084b",
+        "tlg0007.tlg085",
+        "tlg0007.tlg086",
+        "tlg0007.tlg087",
+        "tlg0007.tlg088",
+        "tlg0007.tlg089",
+        "tlg0007.tlg090",
+        "tlg0007.tlg091",
+        "tlg0007.tlg092",
+        "tlg0007.tlg093",
+        "tlg0007.tlg094",
+        "tlg0007.tlg095",
+        "tlg0007.tlg096",
+        "tlg0007.tlg097",
+        "tlg0007.tlg098",
+        "tlg0007.tlg099",
+        "tlg0007.tlg100",
+        "tlg0007.tlg101",
+        "tlg0007.tlg102",
+        "tlg0007.tlg103",
+        "tlg0007.tlg104",
+        "tlg0007.tlg105",
+        "tlg0007.tlg106",
+        "tlg0007.tlg107",
+        "tlg0007.tlg108",
+        "tlg0007.tlg109",
+        "tlg0007.tlg110",
+        "tlg0007.tlg111",
+        "tlg0007.tlg112",
+        "tlg0007.tlg113",
+        "tlg0007.tlg114",
+        "tlg0007.tlg115",
+        "tlg0007.tlg116",
+        "tlg0007.tlg117",
+        "tlg0007.tlg118",
+        "tlg0007.tlg119",
+        "tlg0007.tlg120",
+        "tlg0007.tlg121",
+        "tlg0007.tlg122",
+        "tlg0007.tlg123",
+        "tlg0007.tlg125",
+        "tlg0007.tlg126",
+        "tlg0007.tlg127",
+        "tlg0007.tlg128",
+        "tlg0007.tlg129",
+        "tlg0007.tlg130",
+        "tlg0007.tlg131",
+        "tlg0007.tlg132",
+        "tlg0007.tlg133",
+        "tlg0007.tlg134",
+        "tlg0007.tlg135",
+        "tlg0007.tlg136",
+        "tlg0007.tlg137",
+        "tlg0007.tlg138",
+        "tlg0007.tlg139",
+        "tlg0007.tlg140",
+        "tlg0007.tlg141",
+        "tlg0007.tlg146",
+        "tlg0007.tlg147"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0062.tlg066"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0062.tlg012"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0525.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0057.tlg007"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0057.tlg017"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0363.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0551.tlg002",
+        "tlg0551.tlg003",
+        "tlg0551.tlg004",
+        "tlg0551.tlg005",
+        "tlg0551.tlg006",
+        "tlg0551.tlg007",
+        "tlg0551.tlg008",
+        "tlg0551.tlg009",
+        "tlg0551.tlg010",
+        "tlg0551.tlg011",
+        "tlg0551.tlg012",
+        "tlg0551.tlg013",
+        "tlg0551.tlg014",
+        "tlg0551.tlg017"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0562.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "originalLanguage": "grc",
+      "dating": "tradición arcaica; fijación y datación debatidas",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0012.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "homer-odyssey",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ὀδύσσεια",
+      "originalLanguage": "grc",
+      "dating": "tradición arcaica; fijación y datación debatidas",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0012.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Θεογονία",
+      "originalLanguage": "grc",
+      "dating": "época arcaica",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0020.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "originalLanguage": "grc",
+      "dating": "época arcaica",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0020.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "originalLanguage": "grc",
+      "dating": "458 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0085.tlg005",
+        "tlg0085.tlg006",
+        "tlg0085.tlg007"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "originalLanguage": "grc",
+      "dating": "431 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0016.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0003.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0032.tlg006"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg030"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg034"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg035"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "originalLanguage": "grc",
+      "dating": "composición y atribuciones debatidas",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0627.tlg012"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0557.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0074.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "originalLanguage": "grc",
+      "dating": "siglos II–III d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0385.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "originalLanguage": "grc",
+      "dating": "siglos II–III d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0008.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "originalLanguage": "grc",
+      "dating": "472 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0085.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "originalLanguage": "grc",
+      "dating": "467 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0085.tlg004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0085.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0085.tlg003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "originalLanguage": "grc",
+      "dating": "c. 441 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg005"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "originalLanguage": "grc",
+      "dating": "409 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg006"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "originalLanguage": "grc",
+      "dating": "401 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg007"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0011.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "originalLanguage": "grc",
+      "dating": "405 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg017"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "originalLanguage": "grc",
+      "dating": "428 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg005"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "originalLanguage": "grc",
+      "dating": "438 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg012"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "originalLanguage": "grc",
+      "dating": "415 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg011"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg007"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "originalLanguage": "grc",
+      "dating": "405 a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0006.tlg018"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "originalLanguage": "grc",
+      "dating": "414 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg006"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "originalLanguage": "grc",
+      "dating": "405 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg009"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "originalLanguage": "grc",
+      "dating": "411 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg007"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "originalLanguage": "grc",
+      "dating": "422 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg004"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "originalLanguage": "grc",
+      "dating": "421 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg005"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "originalLanguage": "grc",
+      "dating": "425 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0019.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg011"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg004"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg023"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg031"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg024"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg012"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg034"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0059.tlg003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg010"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg025"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg031"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg038"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg002"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0032.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0032.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "originalLanguage": "grc",
+      "dating": "330 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0014.tlg018"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0014.tlg004",
+        "tlg0014.tlg006",
+        "tlg0014.tlg009",
+        "tlg0014.tlg010"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0033.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "originalLanguage": "grc",
+      "dating": "siglo V a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0033.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "originalLanguage": "grc",
+      "dating": "época arcaica y helenística",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg0013.tlg001",
+        "tlg0013.tlg002",
+        "tlg0013.tlg003",
+        "tlg0013.tlg004",
+        "tlg0013.tlg005",
+        "tlg0013.tlg006",
+        "tlg0013.tlg007",
+        "tlg0013.tlg008",
+        "tlg0013.tlg009",
+        "tlg0013.tlg010",
+        "tlg0013.tlg011",
+        "tlg0013.tlg012",
+        "tlg0013.tlg013",
+        "tlg0013.tlg014",
+        "tlg0013.tlg015",
+        "tlg0013.tlg016",
+        "tlg0013.tlg017",
+        "tlg0013.tlg018",
+        "tlg0013.tlg019",
+        "tlg0013.tlg020",
+        "tlg0013.tlg021",
+        "tlg0013.tlg022",
+        "tlg0013.tlg023",
+        "tlg0013.tlg024",
+        "tlg0013.tlg025",
+        "tlg0013.tlg026",
+        "tlg0013.tlg027",
+        "tlg0013.tlg028",
+        "tlg0013.tlg029",
+        "tlg0013.tlg030",
+        "tlg0013.tlg031",
+        "tlg0013.tlg032",
+        "tlg0013.tlg033"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "originalLanguage": "grc",
+      "dating": "siglo IV–III a. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0093.tlg009"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "originalLanguage": "grc",
+      "dating": "siglo IV–III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0093.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "originalLanguage": "grc",
+      "dating": "siglo III d. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0004.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "originalLanguage": "la",
+      "dating": "62 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi016"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "originalLanguage": "la",
+      "dating": "45 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi048"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "originalLanguage": "la",
+      "dating": "45 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi049"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "originalLanguage": "la",
+      "dating": "45 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi050"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "originalLanguage": "la",
+      "dating": "44 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi052"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "originalLanguage": "la",
+      "dating": "44 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi051"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "originalLanguage": "la",
+      "dating": "44 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi053"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "originalLanguage": "la",
+      "dating": "46 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi039"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "originalLanguage": "la",
+      "dating": "44–43 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0474.phi035"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "ll.seneca-de-brevitate"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.seneca-de-ira"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1017.phi014"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.seneca-de-tranquillitate"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "originalLanguage": "la",
+      "dating": "c. 30 a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0893.phi003"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0893.phi005"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi008"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "originalLanguage": "la",
+      "dating": "siglo I a. C.–I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi005"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "originalLanguage": "la",
+      "dating": "siglo I d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi0959.phi009"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "originalLanguage": "la",
+      "dating": "siglo I–II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1351.phi003"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "phi1212.phi001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "originalLanguage": "la",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.apuleius-de-deo-socratis"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "originalLanguage": "la",
+      "dating": "siglo IV–V d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.vegetius-epitoma"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "originalLanguage": "la",
+      "dating": "c. 397–400 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.augustine-confessiones"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "originalLanguage": "la",
+      "dating": "413–426 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.augustine-civitate-dei"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "originalLanguage": "la",
+      "dating": "c. 524 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "stoa0058.stoa001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "originalLanguage": "la",
+      "dating": "siglo V d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "originalLanguage": "grc",
+      "dating": "siglo II d. C.",
+      "indexedLanguages": [
+        "en",
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0557.tlg002"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "originalLanguage": "grc",
+      "dating": "siglo I–II d. C. (datación debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1247.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0088.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "originalLanguage": "grc",
+      "dating": "siglo III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0552.tlg008"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "originalLanguage": "grc",
+      "dating": "siglo III a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0653.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "originalLanguage": "la",
+      "dating": "siglo II a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "originalLanguage": "la",
+      "dating": "siglos II–I a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "originalLanguage": "grc",
+      "dating": "siglos IV–III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0086.tlg023"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "originalLanguage": "grc",
+      "dating": "siglo IV a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg0058.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "originalLanguage": "grc",
+      "dating": "siglo VI d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "originalLanguage": "la",
+      "dating": "siglo VII d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.isidore-etymologiae"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "originalLanguage": "la",
+      "dating": "238 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.censorinus-die-natali"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "augustus-res-gestae",
+      "author": "Augusto",
+      "title": "Res gestae divi Augusti",
+      "originalLanguage": "la",
+      "dating": "14 d. C.",
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "ll.augustus-res-gestae"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "originalLanguage": "grc",
+      "dating": "c. 300 a. C.",
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
+      "translationHosted": false,
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [
+        "tlg1799.tlg001"
+      ],
+      "translationSourceClaim": true
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "originalLanguage": "grc",
+      "dating": "c. 300 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1799.tlg009"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "originalLanguage": "grc",
+      "dating": "c. 300 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "bibliographyCandidateUrns": [
+        "tlg1799.tlg012",
+        "tlg1799.tlg015"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "originalLanguage": "grc",
+      "dating": "s. II d. C. (datación debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0361.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "originalLanguage": "grc",
+      "dating": "s. I d. C. (datación del autor debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0559.tlg012"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "originalLanguage": "grc",
+      "dating": "finales del s. III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "originalLanguage": "grc",
+      "dating": "s. III–II a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "originalLanguage": "grc",
+      "dating": "s. I a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1383.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "originalLanguage": "grc",
+      "dating": "s. III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg1181.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "originalLanguage": "grc",
+      "dating": "finales del s. III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg0550.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "originalLanguage": "grc",
+      "dating": "c. 320 d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "bibliographyCandidateUrns": [
+        "tlg2032.tlg001"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "originalLanguage": "la",
+      "dating": "s. I–II d. C. (datación debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "originalLanguage": "la",
+      "dating": "finales del s. I d. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "bibliographyCandidateUrns": [
+        "ll.frontinus-gromatica"
+      ],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "originalLanguage": "la",
+      "dating": "s. I–II d. C. (datación debatida)",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    },
+    {
+      "id": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "originalLanguage": "la",
+      "dating": "Finales del siglo I a. C.",
+      "indexedLanguages": [
+        "es",
+        "la"
+      ],
+      "originalIndexed": true,
+      "translationHosted": true,
+      "state": "original_y_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false
+    }
+  ]
+}
