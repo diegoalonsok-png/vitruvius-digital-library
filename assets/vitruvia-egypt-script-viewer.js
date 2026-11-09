@@ -96,7 +96,7 @@ function createPanel(query,classification){
  box.setAttribute("aria-label","Visor de escrituras egipcias");
  box.append(node("h3",null,classification.ancient?"Escritura egipcia · jeroglíficos":"Egipto actual · escritura árabe"));
  const explanation=node("p","v-script-note",classification.ancient?
-  "Transcripciones Unicode, transliteración y fuentes. No son fotografías ni reconstrucciones certificadas de inscripciones.":
+  "Transcripciones Unicode, transliteración y fuentes. El navegador puede no componer correctamente todos los controles jeroglíficos; contrastar con el facsímil.":
   "Grafía árabe contemporánea, leída de derecha a izquierda. No es escritura jeroglífica.");
  box.append(explanation);
  box.dataset.query=fold(query);
@@ -138,7 +138,7 @@ function entry(parent,{title,glyphs,trans,gloss,source,evidence,arabic,latin,kin
  const item=node("div","v-script-entry");
  item.append(node("h4",null,title));
  if(glyphs){
-  const wrap=node("div",kind==="sign"?"v-script-symbol":"v-script-cartouche");
+  const wrap=node("div",kind==="sign"||kind==="sequence"?"v-script-symbol":"v-script-cartouche");
   wrap.title="Cartucho tipográfico orientativo, no reproducción paleográfica";
   wrap.append(glyphText(glyphs));item.append(wrap);
  }else if(arabic)item.append(arabicText(arabic));
@@ -225,7 +225,7 @@ async function render(){
    if(token!==generation||!box.isConnected||!record)return;
    for(const signs of record.glyphs){
     if(ORIGINALS.some(x=>x.match.test(query)&&x.glyphs===signs))continue;
-    entry(content,{title:"Secuencia publicada en «"+record.title+"»",glyphs:signs,
+    entry(content,{title:"Secuencia publicada en «"+record.title+"»",glyphs:signs,kind:"sequence",
      evidence:"Extracción Unicode de un artículo enciclopédico; lectura y atribución epigráfica sin verificar.",
      source:record.url});populated++;
    }
