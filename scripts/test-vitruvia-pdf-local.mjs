@@ -9,7 +9,7 @@ const html=read('vitruvia.html');
 const window={};
 vm.runInNewContext(js,{window,console,URL},{timeout:1000});
 const pdf=window.VitruviaPDFLocal;
-assert.equal(pdf.version,'1.0');
+assert.match(pdf.version,/^1\.2-ancient-scripts-textlayer$/);
 assert.equal(pdf.MAX_FILE_SIZE,15*1024*1024);
 assert.equal(pdf.MAX_PAGES,150);
 assert.equal(pdf.fold('Filosofía griega'), 'filosofia griega');
