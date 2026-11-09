@@ -227,7 +227,7 @@ function render(){
  renderPager('#index-pages-top',valid.length);renderPager('#index-pages-bottom',valid.length);
  persistNavigation();
 }
-function syncGrouping(){const g=$('#index-grouping');if(g)g.closest('label').hidden=mode!=='latin'}
+function syncGrouping(){const g=$('#index-grouping');if(g)g.closest('label').hidden=mode!=='latin';const policy=$('#index-greek-policy');if(policy)policy.hidden=mode!=='greek'}
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.tab;page=1;selectedLetter='';document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));syncGrouping();build();render()}));
 $('#index-query').addEventListener('input',()=>{page=1;selectedLetter='';render()});
 $('#index-book').addEventListener('change',()=>{page=1;render()});
