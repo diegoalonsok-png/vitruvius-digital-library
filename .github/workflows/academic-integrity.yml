@@ -3,6 +3,13 @@ on:
   push:
     paths:
       - 'scripts/audit-academic-readiness.mjs'
+      - 'scripts/audit-scholarly-evidence.mjs'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-corpus/semantic-conceptus-postings.json'
+      - 'data/ecdotic-decisions.json'
+      - 'assets/scholarly-evidence-panel.js'
       - 'data/classics-corpus/coverage-audit.json'
       - 'data/classics-alignment/**'
       - 'data/structured/latin-collation-audit.json'
@@ -12,6 +19,13 @@ on:
   pull_request:
     paths:
       - 'scripts/audit-academic-readiness.mjs'
+      - 'scripts/audit-scholarly-evidence.mjs'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-corpus/semantic-conceptus-postings.json'
+      - 'data/ecdotic-decisions.json'
+      - 'assets/scholarly-evidence-panel.js'
       - 'data/classics-corpus/coverage-audit.json'
       - 'data/classics-alignment/**'
       - 'data/structured/latin-collation-audit.json'
@@ -32,10 +46,14 @@ jobs:
           node-version: '22'
       - name: Validate scholarly metadata and generate the backlog
         run: node scripts/audit-academic-readiness.mjs
+      - name: Cross-check current corpus, semantic evidence and editorial decisions
+        run: node scripts/audit-scholarly-evidence.mjs
       - name: Publish reproducible audit artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: academic-readiness-report
-          path: reports/academic-readiness.json
+          path: |
+            reports/academic-readiness.json
+            reports/scholarly-evidence.json
           if-no-files-found: warn
