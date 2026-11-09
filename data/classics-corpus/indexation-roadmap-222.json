@@ -9,6 +9,10 @@
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
     "textVersions": 246,
+    "offsiteOriginalsIndexed": 23,
+    "effectiveOriginalsIndexed": 204,
+    "effectiveOriginalsMissing": 18,
+    "offsiteTextVersionsOutsidePages": 23,
     "states": {
       "original_pendiente": 41,
       "original_sin_traduccion_local": 122,
@@ -19,12 +23,9 @@
       "requiere_fuente_no_canonica_o_edicion_especifica": 7,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 15
-    },
-    "offsiteOriginalsIndexed": 23,
-    "effectiveOriginalsIndexed": 204,
-    "effectiveOriginalsMissing": 18,
-    "offsiteTextVersionsOutsidePages": 23
+    }
   },
+  "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json",
   "items": [
     {
       "id": "vitruvius",
@@ -4765,6 +4766,5 @@
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     }
-  ],
-  "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json"
+  ]
 }
