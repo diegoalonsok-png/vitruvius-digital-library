@@ -139,8 +139,8 @@ function entry(parent,{title,glyphs,trans,gloss,source,evidence,arabic,latin}){
   const button=node("button",null,"Copiar escritura");button.type="button";
   button.addEventListener("click",()=>{
    const val=glyphs||arabic;
-   if(navigator.clipboard?.writeText)navigator.clipboard.writeText(val).then(()=>{button.textContent="Copiado"}).catch(()=>{button.textContent="Seleccioná el texto"});
-   else button.textContent="Seleccioná el texto";
+   if(navigator.clipboard?.writeText)navigator.clipboard.writeText(val).then(()=>{button.textContent="Copiado"}).catch(()=>{button.textContent="Selecciona el texto"});
+   else button.textContent="Selecciona el texto";
   });
   item.append(button);
  }
