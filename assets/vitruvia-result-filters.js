@@ -44,6 +44,10 @@
  /* ---------- Exportación ---------- */
  const texEsc=s=>String(s??'').replace(/([{}%&$#_])/g,'\\$1');
  const records=()=>cards().filter(c=>!c.hidden&&getComputedStyle(c).display!=='none').map(c=>c._vitruviaRecord).filter(d=>d&&(d.doi||d.year||d.journal||d.publisher)&&/article|book|openlibrary|edition|study/i.test(d.type||''));
+ const indexedRecords=()=>cards().filter(c=>!c.hidden&&getComputedStyle(c).display!=='none')
+  .map(c=>c._vitruviaRecord).filter(d=>d?.title&&(
+   d.workId||d.locus||d.doi||['article','book','manuscript','edition','passage','fragment'].includes(d.type)));
+
  function bib(rs){return rs.map((d,i)=>{const typ=/book|openlibrary|edition/.test(d.type)?'book':'article';const first=String(d.author||'').split(/\s*,\s*/)[0].trim().split(/\s+/).pop()||String(d.title||'ref').split(/\s+/)[0];const key=(first.normalize('NFD').replace(/[^A-Za-z]/g,'')||'ref')+(d.year||'')+'_'+(i+1);
   const f=[['author',String(d.author||'').replace(/,\s*/g,' and ')],['title',d.title],[typ==='book'?'publisher':'journal',typ==='book'?d.publisher:d.journal],['year',d.year],['volume',d.volume],['number',d.issue],['pages',d.pages],['doi',d.doi],['url',d.link]].filter(x=>x[1]);
   return `@${typ}{${key},\n`+f.map(([k,v])=>`  ${k} = {${texEsc(v)}}`).join(',\n')+'\n}'}).join('\n\n')+'\n'}
@@ -64,6 +68,23 @@
   const n=records().length;
   if(n){const lab=document.createElement('span');lab.textContent=t('exp')+' '+n;tools.append(lab);
    for(const [fmt,ext,type,fn] of [['BibTeX','bib','application/x-bibtex',bib],['RIS','ris','application/x-research-info-systems',ris]]){const b=document.createElement('button');b.type='button';b.textContent=fmt;b.onclick=()=>save('vitruvia-resultados.'+ext,fn(records()),type);tools.append(b)}}
+  // Reutiliza las mismas clases y estilos de los filtros originales.
+  const scholarly=window.VitruviaScholarlyExport;
+  if(scholarly){
+   if(records().some(r=>scholarly.canCite(r))){
+    const btn=document.createElement('button');btn.type='button';btn.textContent='Chicago 18';
+    btn.title='Citas basadas en metadatos disponibles; verificar edición antes de publicarlas';
+    btn.onclick=()=>save('vitruvia-chicago18.txt',scholarly.bibliography(records()),'text/plain;charset=utf-8');
+    tools.append(btn);
+   }
+   if(indexedRecords().length){
+    const btn=document.createElement('button');btn.type='button';btn.textContent='Índice CSV';
+    btn.title='Exportar solo registros y loci identificados; no equivale a indexar textos íntegros';
+    btn.onclick=()=>save('vitruvia-resultados-loci.csv',scholarly.csv(indexedRecords()),'text/csv;charset=utf-8');
+    tools.append(btn);
+   }
+  }
+
  }
  let tm=0;const observer=new MutationObserver(()=>{clearTimeout(tm);tm=setTimeout(()=>{paint();apply();if(order!=='rel')sort()},150)});
  const observe=()=>observer.observe(list,{childList:true,subtree:true});observe();
