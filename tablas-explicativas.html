@@ -10,7 +10,7 @@
 <meta name="citation_author" content="Kurilo, Diego">
 <meta name="citation_title" content="The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity">
 <meta name="citation_publication_date" content="2026">
-<meta name="citation_doi" content="10.5281/zenodo.23885110">
+<meta name="citation_doi" content="10.5281/zenodo.23885404">
 <meta name="citation_publisher" content="Sophia Lux Publishing House">
 <link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/tablas-explicativas.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -76,7 +76,7 @@ small{color:#aaa}
 <p class="eyebrow">Investigación arquitectónica · edición inglesa V297</p>
 <h1>Tablas explicativas</h1>
 <p class="lead">Selección representativa de tablas originales del libro <i>The Architect of Theory</i>, acompañadas de comentarios editoriales en español, loci vitruvianos y criterios de interpretación. El cuadro transcrito conserva las voces y datos de la edición inglesa. No constituye una nueva colación de manuscritos.</p>
-<p class="citation">Kurilo, Diego. <i>The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity</i>. Primera edición inglesa, revisión V297. Buenos Aires: Sophia Lux Publishing House, 2026. <a href="https://doi.org/10.5281/zenodo.23885110" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.23885110</a>.</p>
+<p class="citation">Kurilo, Diego. <i>The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity</i>. Primera edición inglesa, revisión V297. Buenos Aires: Sophia Lux Publishing House, 2026. <a href="https://doi.org/10.5281/zenodo.23885404" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.23885404</a>.</p>
 <div class="metadata"><span id="meta-count">Preparando selección documental…</span><a href="documents/kurilo-theory-en.pdf">Consultar edición inglesa en PDF</a><a href="como-citar.html">Normas de cita</a></div>
 </div></section>
 <div class="wrap">
@@ -85,7 +85,7 @@ small{color:#aaa}
 <p class="note"><strong>Nota ecdótica.</strong> Los números de tabla indican su posición ordinal entre las 26 tablas estructuradas detectadas en el DOCX V297, no una paginación estable. Las tablas muestran una selección representativa de filas de la obra, no necesariamente cada fila del cuadro original. Los loci reproducen las referencias de la edición cuando están presentes; las referencias temáticas añadidas se identifican como tales. Las relaciones arqueológicas y las interpretaciones lexicales no se presentan como hechos cotejados automáticamente con los códices. El manuscrito Harley MS 2767 y sus folios no han sido modificados.</p>
 </div>
 </main>
-<footer><div class="wrap">Vitruvius Digital Library · <i>The Architect of Theory</i> V297 · DOI: <a href="https://doi.org/10.5281/zenodo.23885110">10.5281/zenodo.23885110</a> · Citas bibliográficas según <i>The Chicago Manual of Style</i>, 18.ª edición. Consulta documental no sustitutiva de la edición íntegra.</div></footer>
+<footer><div class="wrap">Vitruvius Digital Library · <i>The Architect of Theory</i> V297 · DOI: <a href="https://doi.org/10.5281/zenodo.23885404">10.5281/zenodo.23885404</a> · Citas bibliográficas según <i>The Chicago Manual of Style</i>, 18.ª edición. Consulta documental no sustitutiva de la edición íntegra.</div></footer>
 <script>
 (()=>{"use strict";
 const $=id=>document.getElementById(id),root=$("tables"),query=$("filter"),counter=$("filter-result");
@@ -118,7 +118,7 @@ function render(){
  if(!n)root.append(text("p","No hay tablas coincidentes con el filtro."));
 }
 fetch("data/tablas-explicativas-v297.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
- if(data?.schema!=="vitruvius-explanatory-tables-v297-v1"||data.source?.doi!=="10.5281/zenodo.23885110"||
+ if(data?.schema!=="vitruvius-explanatory-tables-v297-v1"||data.source?.doi!=="10.5281/zenodo.23885404"||
   !Array.isArray(data.selectedTables)||data.selectedTables.length<5)throw Error("Inventario de tablas incompatible");
  const observed=new Set();
  for(const t of data.selectedTables){

@@ -3,7 +3,7 @@ import fs from "node:fs";
 const path="data/tablas-explicativas-v297.json";
 const d=JSON.parse(fs.readFileSync(path,"utf8"));
 assert.equal(d.schema,"vitruvius-explanatory-tables-v297-v1");
-assert.equal(d.source.doi,"10.5281/zenodo.23885110");
+assert.equal(d.source.doi,"10.5281/zenodo.23885404");
 assert.equal(d.source.sourceSha256,"5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99");
 assert.equal(d.source.detectedWordTables,26);
 assert.equal(d.selectedTables.length,9);
@@ -18,7 +18,7 @@ for(const t of d.selectedTables){
 assert(d.selectedTables.some(t=>t.rows.flat().join(" ").includes("συμμετρία")));
 assert(d.selectedTables.some(t=>t.n===10&&t.manuscriptLink==="codex-h-folios-local.html"));
 const page=fs.readFileSync("tablas-explicativas.html","utf8");
-assert(page.includes("https://doi.org/10.5281/zenodo.23885110"));
+assert(page.includes("https://doi.org/10.5281/zenodo.23885404"));
 assert(page.includes("data/tablas-explicativas-v297.json"));
 assert(page.includes("No constituye una nueva colación"));
 assert(page.includes("index.html#buscar"));
