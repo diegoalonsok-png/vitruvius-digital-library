@@ -44,7 +44,7 @@ function valid(e){
       e.path==="data/text/krohn-1912.json");
 }
 async function registry(){
- if(!registryTask)registryTask=fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async j=>{
+ if(!registryTask)registryTask=(window.VitruviaIndexCache?.json(REGISTRY)||fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})).then(async j=>{
   if(j.schema!=="vitruvia-classics-search-registry-v1"||!Array.isArray(j.entries)||j.entries.length<14)throw Error("Registro de búsqueda incompleto");
   registered=j.entries.filter(valid);if(registered.length!==j.entries.length)throw Error("Registro con rutas o metadatos inválidos");
   // Keep the full registry separate from the Bibliotheca language filter.
