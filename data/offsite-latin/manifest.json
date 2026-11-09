@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-offsite-latin-originals-manifest-v1",
   "branch": "corpus-originales-latinos-20261108",
-  "count": 5,
-  "totalBytes": 620633,
+  "count": 6,
+  "totalBytes": 1073818,
   "method": "Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text",
   "entries": [
     {
@@ -99,7 +99,86 @@
       "sourceSha256": "ceea4130523fc8b8fd570876e15901d702451a705802d7f5bb241728ecb761b5",
       "attribution": "Vegecio, Epitoma rei militaris, transcripción de The Latin Library (edición de base y manuscritos no especificados), archivo digital CLTK, https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt.",
       "editorialStatus": "Transcripción, no edición crítica; sin manuscrito cotejado"
+    },
+    {
+      "workId": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "path": "data/offsite-latin/seneca-naturales-la.json",
+      "passages": 898,
+      "bytes": 453185,
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt",
+      "sourceParts": [
+        {
+          "book": 1,
+          "file": "sen/sen.qn1.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER PRIMUS PRAEFATIO",
+          "sections": 132,
+          "sourceSha256": "99ec901bfea6cb7505cf00bdbde05b5baadec907470a44a52eaecdf848024166",
+          "bytes": 54301,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt"
+        },
+        {
+          "book": 2,
+          "file": "sen/sen.qn2.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER SECUNDUS",
+          "sections": 180,
+          "sourceSha256": "ff2b143faa9f35a62009015b023630e52b3a18e6fe7fa4c35906b5d613f74c05",
+          "bytes": 60343,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn2.txt"
+        },
+        {
+          "book": 3,
+          "file": "sen/sen.qn3.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER III DE AQUIS <TERRESTRIBUS> Praefatio",
+          "sections": 154,
+          "sourceSha256": "0c72540b1b386adc76878c3516270c98faced0ffd4f64b2ac627cca729b56ba2",
+          "bytes": 55210,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn3.txt"
+        },
+        {
+          "book": 4,
+          "file": "sen/sen.qn4.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER IV DE NILI INCREMENTO",
+          "sections": 93,
+          "sourceSha256": "f458dd853779f6c9217480df1745a45ad4e848b9438a954dfe496d16c95e3708",
+          "bytes": 36603,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn4.txt"
+        },
+        {
+          "book": 5,
+          "file": "sen/sen.qn5.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER V DE VENTIS",
+          "sections": 75,
+          "sourceSha256": "dd247c05804d076d21e3cb2d1149bc9e7c388f34f512f4099fa16b0729eb64c8",
+          "bytes": 28018,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn5.txt"
+        },
+        {
+          "book": 6,
+          "file": "sen/sen.qn6.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER VI DE TERRAE MOTU",
+          "sections": 145,
+          "sourceSha256": "0e079d2a04bef408af8961ddad6c9c37edeb85448ee722709655886d409101b7",
+          "bytes": 56226,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn6.txt"
+        },
+        {
+          "book": 7,
+          "file": "sen/sen.qn7.txt",
+          "headingTranscribed": "L. ANNAEI SENECAE QUAESTIONES NATURALES LIBER VII DE COMETIS",
+          "sections": 119,
+          "sourceSha256": "5c5ec5748884a6500419dad62ba897ff51c226498025d47567f4d4228c289e5f",
+          "bytes": 44210,
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn7.txt"
+        }
+      ],
+      "sourceSha256": "d47117f38e5e317dd06dd3d993699d8ea349ac5f61881970c153485443b9380b",
+      "attribution": "Lucius Annaeus Seneca, Naturales quaestiones, seven Latin transcriptions digitized by The Latin Library and mirrored in CLTK/lat_text_latin_library; underlying printed edition and manuscript witnesses not identified; not a collated critical edition. https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt",
+      "editorialStatus": "Public-domain Latin digital transcription, with documented source files; OCR and editorial variants are not certified"
     }
   ],
-  "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita"
+  "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita",
+  "naturalesMethod": "Seven CLTK/The Latin Library transcriptions; technical loci, no manuscript collation or invented translation"
 }
