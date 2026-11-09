@@ -626,6 +626,6 @@ switchLanguage(params.get("ui")||stored);updateLexicon();
 metadata.then(()=>{
  if(initialEra&&[...era.options].some(x=>x.value===initialEra))era.value=initialEra;
  if(initialGenre&&[...genre.options].some(x=>x.value===initialGenre))genre.value=initialGenre;
- refresh();if(initial)void search();
+ refresh();window.dispatchEvent(new Event("bibliotheca:filters-ready"));if(initial)void search();
 }).catch(()=>{});
 })();
