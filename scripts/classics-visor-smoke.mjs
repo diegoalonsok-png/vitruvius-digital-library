@@ -248,7 +248,26 @@ try{
     'Every semantic result must refer to an actual source locus or text fragment');
   }finally{await p.close()}
  });
- await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly partial',async()=>{
+  await check('Vitruvia and Lexicon retrieve real Greek/Latin Conceptus loci using the indexed corpus',async()=>{
+  for(const target of ['vitruvia.html','vitruvia-lexicon.html']){
+   const p=await open(target);
+   try{
+    await p.waitForFunction(()=>typeof window.ClassicsCorpusSearch?.semanticSearch==='function',{timeout:25000});
+    const found=await p.evaluate(async()=>{
+     const api=window.ClassicsCorpusSearch;
+     const rows=await api.semanticSearch('casa',{limit:20});
+     return {rows,diagnostics:api.diagnostics()};
+    });
+    assert(found.rows.some(r=>r.language==='la'&&r.link),'Latin source locus missing in '+target);
+    assert(found.rows.some(r=>r.language==='grc'&&r.link),'Greek source locus missing in '+target);
+    assert(found.rows.every(r=>r.kind==='classic-text'&&r.link&&/locus=|#:~:text=|#/.test(r.link)),
+     'Semantic results must link to actual attested sources in '+target);
+    assert.equal(found.diagnostics.failed,0,'Failed classical source load in '+target);
+    assert.equal(found.diagnostics.staticIndexUsed,true,'Conceptus index must accelerate '+target);
+   }finally{await p.close()}
+  }
+ });
+await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly partial',async()=>{
   for(const [work,unit,term] of [
    ['varro-rustica',97,'1.1'],
    ['frontinus',130,'1'],
@@ -299,7 +318,8 @@ try{
    const publicEditions=expected.entries.filter(e=>e.workId==='vitruvius'||['la','grc','en'].includes(e.language));
    assert.equal(check.total,publicEditions.length+check.offsite.length,
     'The public edition count must include separately verified remote Greek originals');
-   assert.equal(check.offsite.length,13,'Expected 13 verified Greek TEI originals outside Pages');
+   assert.ok(check.offsite.length>=14,'At least 14 verified Greek TEI originals must be accessible outside Pages');
+   assert.ok(check.offsite.includes('euclid-phaenomena'),'Euclid Phaenomena must be accessible as a verified Greek TEI edition');
    assert.equal(expected.count,expected.entries.length,'Registry declared count must match entries');
    assert.match(check.catullus,/corpus\/catullus-carmina-la\.html\?q=/,'Catullus verses are not indexed');
    assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
