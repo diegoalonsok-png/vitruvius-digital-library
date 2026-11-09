@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edición latina TEI · Bibliotheca Graeca et Latina</title>
+<meta name="description" content="Lectura filológica de originales latinos TEI alojados en una rama independiente, con loci, edición, procedencia y enlaces a Bibliotheca y Lexicon.">
+<meta name="citation_title" content="Bibliotheca Graeca et Latina · Textos latinos TEI externos">
+<meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026">
+<meta name="citation_publisher" content="Vitruvius Digital Library">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/bibliotheca-simple.css?v=20261108-dictionary-yellow-v1">
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<script defer src="assets/bibliotheca-offsite-latin.js?v=20261108-seneca-v1"></script>
+<style>
+:root{color-scheme:dark}
+body{background:#0d0d0e;color:#eee}
+.reader{width:min(1070px,calc(100% - 40px));margin:0 auto;padding-bottom:64px}
+.reader h1{font-size:clamp(30px,5vw,50px)}
+.reader .top{padding:20px 0;display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.reader .top nav{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.reader .provenance{color:#b3b3b5;font-size:13px;line-height:1.65;padding:16px 0 20px;border-bottom:1px solid #3d3d40}
+.reader .provenance a{overflow-wrap:anywhere}
+.reader .note{color:#bbb;font:13px/1.6 Arial,sans-serif}
+.reader .controls{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}
+.reader button{background:#1d1d20;color:#eee;border:1px solid #505054;border-radius:5px;padding:10px 15px;min-height:42px}
+.reader button:disabled{opacity:.4}
+.reader .unit{padding:20px 0;border-top:1px solid #363639}
+.reader .unit h2{font:400 15px/1.5 Arial,sans-serif;color:#aaa;margin:0 0 10px}
+.reader .unit p{font:clamp(18px,2.1vw,22px)/1.8 "Gentium Book Plus","Cardo",Georgia,serif;letter-spacing:.004em;overflow-wrap:break-word;white-space:normal;color:#ededed}
+.reader .unit[lang="la"]{font-variant-ligatures:common-ligatures}
+.reader mark{background:#ffe650;color:#181818;padding:0 1px}
+.reader .availability{margin:10px 0;font:13px/1.5 Arial,sans-serif;color:#aaa}
+.reader .warning{color:#beb4a3}
+@media print{.top nav,.controls{display:none!important}.unit{break-inside:avoid}body{background:white;color:black}.unit p{color:black!important}}
+</style>
+</head><body><main class="reader">
+<header class="top"><a class="brand" href="bibliotheca-graeca-latina.html">VITRVVIVS / Bibliotheca</a>
+<nav aria-label="Navegación académica"><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="index-locorum.html">Index locorum</a></nav></header>
+<h1 id="work-title">Edición latina TEI</h1>
+<p class="note" id="work-meta">Cargando fuente latina y procedencia…</p>
+<section class="provenance" id="provenance"></section>
+<p class="note warning">Esta es una edición textual digital derivada de TEI, no un códice, ni un facsímil, ni una transcripción paleográfica cotejada. El sufijo «~segmento» indica un párrafo técnico creado para navegación y búsqueda, no una división manuscrita. Para variantes ecdóticas debe consultarse la edición original.</p>
+<div class="controls"><button id="previous" type="button" disabled>← Anterior</button><span id="page-status" class="availability"></span><button id="next" type="button" disabled>Siguiente →</button></div>
+<div id="passages" aria-live="polite"></div>
+<div class="controls"><button id="previous-bottom" type="button" disabled>← Anterior</button><span class="note">80 pasajes por página · sin omitir texto de la fuente</span><button id="next-bottom" type="button" disabled>Siguiente →</button></div>
+</main>
+<script>
+(()=>{
+"use strict";
+const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
+const work=params.get("work")||"",targetLocus=params.get("locus")||"",query=(params.get("q")||"").slice(0,120);
+const root=$("passages"),perPage=80;
+const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");
+let book=null,page=0;
+function link(label,url){
+ const a=document.createElement("a");a.textContent=label;a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a;
+}
+function paragraph(text){
+ const p=document.createElement("p");if(!query||!query.trim()){p.textContent=text;return p}
+ const map=[];let n="";
+ for(let i=0;i<text.length;){
+  const cp=String.fromCodePoint(text.codePointAt(i)),part=fold(cp);
+  for(const c of part){n+=c;map.push(i)}
+  i+=cp.length;
+ }
+ const term=fold(query);let cursor=0,index=n.indexOf(term),count=0;
+ const isWord=c=>!!c&&/[\p{L}\p{N}]/u.test(c);
+ while(index>=0&&count<500){
+  const stop=index+term.length;
+  if(!isWord(n[index-1])&&!isWord(n[stop])&&map[index]!==undefined&&map[stop-1]!==undefined){
+   const a=map[index],z=map[stop-1],b=z+(text.codePointAt(z)>65535?2:1);
+   if(a>=cursor){p.append(document.createTextNode(text.slice(cursor,a)));const mark=document.createElement("mark");
+    mark.textContent=text.slice(a,b);p.append(mark);cursor=b;count++}
+  }
+  index=n.indexOf(term,index+Math.max(1,term.length));
+ }
+ p.append(document.createTextNode(text.slice(cursor)));return p;
+}
+function render(){
+ if(!book)return;
+ const total=Math.ceil(book.passages.length/perPage);
+ page=Math.max(0,Math.min(page,total-1));
+ root.replaceChildren();
+ const frag=document.createDocumentFragment(),start=page*perPage,end=Math.min(book.passages.length,start+perPage);
+ for(let i=start;i<end;i++){
+  const p=book.passages[i],unit=document.createElement("section");unit.className="unit";unit.lang="la";
+  const h=document.createElement("h2");h.textContent="Locus "+p.locus+(p.editorialLocus&&p.locus!==p.editorialLocus?" · edición: "+p.editorialLocus:"");
+  unit.append(h,paragraph(p.text));frag.append(unit);
+ }
+ root.append(frag);
+ $("page-status").textContent="Pasajes "+(start+1)+"–"+end+" de "+book.passages.length+" · página "+(page+1)+"/"+total;
+ for(const id of ["previous","previous-bottom"])$(id).disabled=page===0;
+ for(const id of ["next","next-bottom"])$(id).disabled=page>=total-1;
+}
+for(const id of ["previous","previous-bottom"])$(id).onclick=()=>{page--;render();scrollTo(0,0)};
+for(const id of ["next","next-bottom"])$(id).onclick=()=>{page++;render();scrollTo(0,0)};
+(async()=>{
+ try{
+  const e=(await window.ClassicsOffsiteLatin.entries()).find(v=>v.workId===work);
+  if(!e)throw Error("La edición solicitada todavía no cuenta con una fuente latina remota verificada.");
+  book=await window.ClassicsOffsiteLatin.load(e);
+  if(!book)throw Error("La edición remota no pudo descargarse o falló su control de procedencia.");
+  $("work-title").textContent=e.title;
+  $("work-meta").textContent=e.author+" · "+book.passages.length+" unidades textuales en latín.";
+  const box=$("provenance");
+  const citation=document.createElement("p");citation.textContent=book.attribution+" · Edición TEI de Perseus Digital Library, licencia CC BY-SA 4.0. Referencia bibliográfica parcial: confirmar datos de volumen y páginas en la fuente.";
+  box.append(citation,link("Edición TEI de origen",e.source));
+  box.append(document.createTextNode(" · "));
+  box.append(link("Archivo JSON separado de GitHub Pages",e.path));
+  const sha=document.createElement("p");sha.textContent="SHA-256 del TEI de origen: "+e.sourceSha256;box.append(sha);
+  if(targetLocus){
+   const i=book.passages.findIndex(x=>x.locus===targetLocus||x.editorialLocus===targetLocus);
+   if(i>=0)page=Math.floor(i/perPage);
+  }
+  render();
+ }catch(error){$("work-meta").textContent=error.message;root.textContent="No se muestra una obra sin texto verificado. Consultá la edición TEI de origen."}
+})();
+})();
+</script>
+</body></html>
