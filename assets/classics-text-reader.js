@@ -242,14 +242,11 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   // The search registry is the canonical list of hosted, searchable JSON editions.
   // The bibliographic catalogue may lag behind, notably with partial translations.
   const registry=await fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial no disponible");return r.json()});
-  const shared={"varro-rustica":["varro-rustica","data/lexicon/fontes/varro-rustica-la.json"],"frontinus":["frontinus-aquaeductu","data/lexicon/fontes/frontinus-aquaeductu-la.json"],"pliny":["pliny-naturalis","data/lexicon/fontes/pliny-naturalis-la.json"]};
-   const hosted=(registry.entries||[]).filter(e=>e.workId===work&&
-     ["json-passages","structured-bilingual"].includes(e.format)&&
-     ["grc","la","es","en","fr"].includes(e.language)&&
-     (e.format==="structured-bilingual"||
-      e.path==="data/classics-corpus/"+work+"-"+e.language+".json"||
-      (e.language==="la"&&shared[work]?.[0]===e.sourceWorkId&&shared[work]?.[1]===e.path)));
-
+  // El registro editorial, no una lista fija de obras, decide qué ediciones se pueden enfrentar.
+  const hosted=(registry.entries||[]).filter(e=>e.workId===work&&
+   ["json-passages","structured-bilingual"].includes(e.format)&&
+   ["grc","la","es","en","fr","it","de","pt"].includes(e.language)&&
+   /^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||""));
   if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
    hostedEditions=hosted;
   if(!allowed[work])setTitle((record?.author||hosted[0].author)+" · "+(record?.title||hosted[0].title));
