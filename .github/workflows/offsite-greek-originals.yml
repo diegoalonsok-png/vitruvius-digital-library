@@ -43,15 +43,15 @@ jobs:
           python-version: '3.12'
       - name: Extract verified editions to a temporary folder, never Pages
         env:
-          OUTDIR: \${{ runner.temp }}/greek-originals
+          OUTDIR: ${{ runner.temp }}/greek-originals
         run: |
           mkdir -p "$OUTDIR"
           python scripts/build-offsite-greek-originals.py --output "$OUTDIR"
       - name: Publish independently, preserving main and all Codex folios
         env:
           BRANCH: corpus-originales-griegos-20261108
-          OUTDIR: \${{ runner.temp }}/greek-originals
-          WORKTREE: \${{ runner.temp }}/vitruvius-offsite-worktree
+          OUTDIR: ${{ runner.temp }}/greek-originals
+          WORKTREE: ${{ runner.temp }}/vitruvius-offsite-worktree
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
