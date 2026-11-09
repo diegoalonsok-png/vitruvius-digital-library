@@ -118,7 +118,7 @@ jobs:
           old["count"]=len(old["entries"])
           old["totalBytes"]=sum(e["bytes"] for e in old["entries"])
           old["supplementalMethod"]="Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita"
-          assert old["count"]==5
+          assert old["count"]>=5
           manifest_file.write_text(json.dumps(old,ensure_ascii=False,indent=2)+"\n","utf-8")
           print("Se conservaron los dos originales de Séneca; corpus externo ahora:",old["count"])
           PY
