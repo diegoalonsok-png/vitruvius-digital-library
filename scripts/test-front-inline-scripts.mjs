@@ -17,6 +17,6 @@ for(const [i,tag] of tags.entries()){
   checked++;
 }
 assert(checked>0,"No se verificó ningún inline JS");
-assert.equal((html.match(/src="assets\/classics-audited-coverage\.js\?v=20261109-1"/g)||[]).length,1,
+assert.equal((html.match(/src="assets\\/classics-audited-coverage\\.js\\?v=[^"]+"/g)||[]).length,1,
   "La auditoría debe cargarse exactamente una vez, fuera de la plantilla de impresión");
 console.log("PASS portada: "+checked+" scripts inline y etiqueta de contadores no anidada");
