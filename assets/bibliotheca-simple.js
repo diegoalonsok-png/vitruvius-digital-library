@@ -95,6 +95,72 @@ function dating(w){
  }
  return Infinity;
 }
+/* Taxonomía editorial descriptiva; no atribuye una forma literaria a un manuscrito.
+ * Se basa exclusivamente en el campo genre del catálogo, nunca en palabras buscadas.
+ * Las fechas son de composición según la ficha, no de copia manuscrita. */
+const eras=[
+ ["archaic",{es:"Hasta 500 a. C. · época arcaica",en:"Before 500 BCE · archaic",fr:"Avant 500 av. n. è. · archaïque"}],
+ ["classical",{es:"500–323 a. C. · época clásica",en:"500–323 BCE · classical",fr:"500–323 av. n. è. · classique"}],
+ ["hellenistic",{es:"322–31 a. C. · helenística/republicana",en:"322–31 BCE · Hellenistic/republican",fr:"322–31 av. n. è. · hellénistique/républicaine"}],
+ ["imperial",{es:"30 a. C.–284 d. C. · época imperial",en:"30 BCE–284 CE · imperial",fr:"30 av.–284 de n. è. · impériale"}],
+ ["late",{es:"285–700 d. C. · Antigüedad tardía",en:"285–700 CE · Late Antiquity",fr:"285–700 de n. è. · Antiquité tardive"}],
+ ["later",{es:"Posterior a 700 d. C.",en:"After 700 CE",fr:"Après 700 de n. è."}],
+ ["uncertain",{es:"Datación no determinada o debatida",en:"Undetermined or disputed date",fr:"Datation indéterminée ou discutée"}]
+];
+const genres=[
+ ["architecture",{es:"Arquitectura, ingeniería y agrimensura",en:"Architecture, engineering and surveying",fr:"Architecture, ingénierie et arpentage"}],
+ ["wisdom",{es:"Filosofía, ética y textos sapienciales",en:"Philosophy, ethics and wisdom texts",fr:"Philosophie, éthique et textes sapientiaux"}],
+ ["religion",{es:"Religión, cristianismo y exégesis",en:"Religion, Christianity and exegesis",fr:"Religion, christianisme et exégèse"}],
+ ["history",{es:"Historia, historiografía y biografía",en:"History, historiography and biography",fr:"Histoire, historiographie et biographie"}],
+ ["literature",{es:"Poesía, épica y teatro",en:"Poetry, epic and drama",fr:"Poésie, épopée et théâtre"}],
+ ["rhetoric",{es:"Retórica, oratoria y educación",en:"Rhetoric, oratory and education",fr:"Rhétorique, art oratoire et éducation"}],
+ ["science",{es:"Matemática, astronomía y ciencias naturales",en:"Mathematics, astronomy and natural sciences",fr:"Mathématiques, astronomie et sciences naturelles"}],
+ ["medicine",{es:"Medicina y farmacología",en:"Medicine and pharmacology",fr:"Médecine et pharmacologie"}],
+ ["agriculture",{es:"Agricultura, agronomía y botánica",en:"Agriculture, agronomy and botany",fr:"Agriculture, agronomie et botanique"}],
+ ["geography",{es:"Geografía, cartografía y etnografía",en:"Geography, cartography and ethnography",fr:"Géographie, cartographie et ethnographie"}],
+ ["linguistics",{es:"Lengua, gramática y erudición",en:"Language, grammar and erudition",fr:"Langue, grammaire et érudition"}],
+ ["music",{es:"Música y teoría armónica",en:"Music and harmonic theory",fr:"Musique et théorie harmonique"}],
+ ["other",{es:"Otros géneros documentados",en:"Other catalogued genres",fr:"Autres genres documentés"}]
+];
+function periodOf(w){
+ const d=dating(w);if(!Number.isFinite(d))return "uncertain";
+ if(d < -500)return "archaic";if(d < -322)return "classical";
+ if(d < -30)return "hellenistic";if(d <= 284)return "imperial";
+ if(d <= 700)return "late";return "later";
+}
+function genreOf(w){
+ const s=String(w?.genre||"").normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase();
+ if(/arquitectura|ingenieria|agrimensura|mecanica|hidraulica/.test(s))return "architecture";
+ if(/cristian|religion|exegesis|mitologia|mitografia/.test(s))return "religion";
+ if(/filosofia|estoic|sapiencial|moral/.test(s))return "wisdom";
+ if(/medicina|farmacologia/.test(s))return "medicine";
+ if(/agricultur|agronomia|botanica/.test(s))return "agriculture";
+ if(/geografia|cartografia|etnografia/.test(s))return "geography";
+ if(/retorica|oratoria|educacion/.test(s))return "rhetoric";
+ if(/astronomia|matematica|historia natural|filosofia natural/.test(s))return "science";
+ if(/musica|armonica|teoria musical/.test(s))return "music";
+ if(/historia|historiografia|biografia|militar|calendario/.test(s))return "history";
+ if(/epica|poesia|tragedia|comedia|satira|elegia|fabula|novela|narrativa|poetica|epistolografia|ficcion/.test(s))return "literature";
+ if(/linguistica|erudita|erudicion/.test(s))return "linguistics";
+ return "other";
+}
+const era=$("classic-era"),genre=$("classic-genre");
+function chosenWorks(){return works.filter(w=>(!era.value||periodOf(w)===era.value)&&(!genre.value||genreOf(w)===genre.value))}
+function refreshFacets(){
+ const labels=locale==="fr"?{period:"Époque",genre:"Matière / genre",allPeriod:"Toutes les époques",allGenre:"Toutes les matières"}:locale==="en"?
+  {period:"Period",genre:"Subject / genre",allPeriod:"All periods",allGenre:"All subjects"}:
+  {period:"Época",genre:"Materia / género",allPeriod:"Todas las épocas",allGenre:"Todas las materias"};
+ $("era-label").textContent=labels.period;$("genre-label").textContent=labels.genre;
+ const oldEra=era.value,oldGenre=genre.value;
+ era.replaceChildren(new Option(labels.allPeriod,""));
+ for(const [key,names] of eras)if(works.some(w=>periodOf(w)===key))era.append(new Option(names[locale],key));
+ genre.replaceChildren(new Option(labels.allGenre,""));
+ for(const [key,names] of genres)if(works.some(w=>genreOf(w)===key))genre.append(new Option(names[locale],key));
+ era.value=oldEra;genre.value=oldGenre;
+ $("filter-method").textContent=locale==="en"?"Editorial categories from catalogue genres; approximate composition date (not manuscript or edition date). Disputed datings remain identified.":
+  locale==="fr"?"Catégories tirées du catalogue ; date approximative de composition, non de copie ou d'édition. Datations discutées signalées.":
+  "Categorías según el género catalogado y la fecha aproximada de composición, no la copia manuscrita ni la edición. Dataciones discutidas identificadas.";
+}
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
 const foldedMap=text=>{
  let f="",index=[];
@@ -159,16 +225,17 @@ fetch("data/classics-corpus/remote-translations.json")
  .catch(()=>{remoteEntries=[];remoteBox.hidden=true});
 
 function refresh(){
+ refreshFacets();
  const t=dict[locale],selected=work.value||new URLSearchParams(location.search).get("work")||"";
  work.replaceChildren(new Option(t.all,""));
- for(const w of works.slice().sort((a,b)=>dating(a)-dating(b)||String(a.title).localeCompare(String(b.title),"es"))){
+ for(const w of chosenWorks().slice().sort((a,b)=>dating(a)-dating(b)||String(a.title).localeCompare(String(b.title),"es"))){
   const docxAvailable=window.ClassicsUploadedDocuments?.workIds?.has(w.id);
   const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing)+(docxAvailable?" · DOCX":"");
   work.append(new Option(name,w.id));
  }
  for(const document of window.ClassicsUploadedDocuments?.uncataloguedDocs||[])
   work.append(new Option(document.label,"docx:"+document.id));
- if(byId.has(selected)||String(selected).startsWith("docx:"))work.value=selected;
+ if([...work.options].some(option=>option.value===selected))work.value=selected;
  coverage.textContent=t.ready(works.length,entries.length,works.length-indexed.size);
  drawRemote();
 }
@@ -466,6 +533,7 @@ async function search(){
   const selectedWork=work.value;
   const alias=editionAliases[selectedWork];
   const workId=alias?.workId||selectedWork;
+  const allowedWorkIds=chosenWorks().map(w=>w.id);
   const added=window.ClassicsUploadedDocuments;
   if(selectedWork.startsWith("docx:")){
    if(!added?.documentIds?.has(selectedWork.slice(5))){status.textContent=dict[locale].wrong;return}
@@ -503,17 +571,20 @@ async function search(){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
   if(selectedWork)url.searchParams.set("work",selectedWork);else url.searchParams.delete("work");
+  if(era.value)url.searchParams.set("era",era.value);else url.searchParams.delete("era");
+  if(genre.value)url.searchParams.set("genre",genre.value);else url.searchParams.delete("genre");
   history.replaceState(null,"",url);
  }catch{if(id===serial)status.textContent=dict[locale].unavailable}
  finally{if(id===serial)$("search-submit").disabled=false}
 }
 $("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search()});
 work.addEventListener("change",()=>{drawRemote();if(input.value.trim())void search()});
+for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();if(input.value.trim())void search()});
 input.addEventListener("input",updateLexicon);
 $("language-toggle").addEventListener("click",()=>{
  const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";
@@ -521,7 +592,12 @@ $("language-toggle").addEventListener("click",()=>{
 });
 const params=new URLSearchParams(location.search),initial=(params.get("q")||params.get("term")||"").trim();
 if(initial)input.value=initial;
+const initialEra=params.get("era")||"",initialGenre=params.get("genre")||"";
 let stored="es";try{stored=localStorage.getItem("vitruvius-ui-lang")||"es"}catch{}
 switchLanguage(params.get("ui")||stored);updateLexicon();
-metadata.then(()=>{if(initial)void search()}).catch(()=>{});
+metadata.then(()=>{
+ if(initialEra&&[...era.options].some(x=>x.value===initialEra))era.value=initialEra;
+ if(initialGenre&&[...genre.options].some(x=>x.value===initialGenre))genre.value=initialGenre;
+ refresh();if(initial)void search();
+}).catch(()=>{});
 })();
