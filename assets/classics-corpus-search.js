@@ -307,7 +307,7 @@ function cached(kind,fn){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>/\p{L}/u.test(q)&&fold(q).length>=1))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
@@ -344,6 +344,9 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
     if(++editionUnits>=maxPerEdition&&!allMatches)break;
    }
   }));
+  if(typeof onProgress==="function"){
+   try{onProgress({checked:Math.min(offset+4,targets.length),total:targets.length,loaded,failed,matched:rows.length,rows:rows.slice()})}catch{}
+  }
  }
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
   targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
