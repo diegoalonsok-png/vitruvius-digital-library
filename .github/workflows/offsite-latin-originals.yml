@@ -1,0 +1,79 @@
+name: Originales latinos TEI fuera de GitHub Pages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-latin-originals.py'
+      - 'scripts/test-offsite-latin-originals.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'classics-remote-latin-reader.html'
+      - '.github/workflows/offsite-latin-originals.yml'
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-latin-originals.py'
+      - 'scripts/test-offsite-latin-originals.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'classics-remote-latin-reader.html'
+      - '.github/workflows/offsite-latin-originals.yml'
+permissions:
+  contents: write
+concurrency:
+  group: offsite-latin-originals-publication
+  cancel-in-progress: false
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar extractor y concordancias interconectadas
+        run: |
+          python -m py_compile scripts/build-offsite-latin-originals.py
+          node --check assets/bibliotheca-offsite-latin.js
+          node --check assets/classics-corpus-search.js
+          node --check assets/bibliotheca-corpus-search.js
+          node --check assets/bibliotheca-simple.js
+          node scripts/test-offsite-latin-originals.mjs
+      - name: Verificar descarga y extracción íntegra de los TEI en un directorio temporal
+        run: python scripts/build-offsite-latin-originals.py --output "$RUNNER_TEMP/latin-originals"
+      - name: Publicar SOLO JSON derivados en rama externa no Pages
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          BRANCH='corpus-originales-latinos-20261108'
+          TARGET="$RUNNER_TEMP/latin-offsite"
+          git fetch origin "$BRANCH" || true
+          if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+            git worktree add --detach "$TARGET" "origin/$BRANCH"
+          else
+            git worktree add --detach "$TARGET" origin/main
+          fi
+          mkdir -p "$TARGET/data/offsite-latin"
+          cp "$RUNNER_TEMP/latin-originals/"*.json "$TARGET/data/offsite-latin/"
+          git -C "$TARGET" add data/offsite-latin
+          if git -C "$TARGET" diff --cached --quiet; then
+            echo 'Originales latinos sin cambios.'
+            exit 0
+          fi
+          git -C "$TARGET" commit -m 'Publicar índices latinos TEI sin alterar los archivos madre'
+          git -C "$TARGET" push origin "HEAD:refs/heads/$BRANCH"
+          echo 'Publicado fuera de Pages: no se modificó ni eliminó ningún folio, Codex, PDF o edición madre.'
