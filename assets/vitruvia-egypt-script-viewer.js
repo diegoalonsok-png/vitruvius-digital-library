@@ -37,7 +37,7 @@ const node=(tag,cls,t)=>{const el=document.createElement(tag);if(cls)el.classNam
 const ref=(txt,url)=>{const a=node("a",null,txt);a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a};
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().trim();
 const qText=()=>new URLSearchParams(location.search).get("q")||document.getElementById("query")?.value||"";
-let currentQuery=qText(),rows=[],generation=0;
+let currentQuery=qText(),rows=[],generation=0,knownRulers=[];
 function attachStyles(){
  if(!document.getElementById("v-egypt-font-import")){
   const font=document.createElement("link");font.id="v-egypt-font-import";font.rel="stylesheet";
@@ -68,20 +68,86 @@ function attachStyles(){
  ".v-egypt-script-panel .v-script-review{margin:11px 0 0}",
  "html[data-theme=light] .v-egypt-script-panel textarea{background:#fff;color:#222}",
  "@media(max-width:600px){.v-egypt-script-panel .v-script-glyphs{font-size:29px}.v-egypt-script-panel .v-script-arabic{font-size:28px}}",
+ ".v-egypt-script-panel .v-titulary-list{margin:8px 0 0;padding:0}",
+ ".v-egypt-script-panel .v-titulary-list dt{font:600 12px/1.5 Arial,sans-serif;margin:12px 0 4px;padding-top:8px;border-top:1px solid #4447;display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}",
+ ".v-egypt-script-panel .v-titulary-intro{font-weight:400;opacity:.8;font-size:11px;display:inline-flex;align-items:center;gap:5px}",
+ ".v-egypt-script-panel .v-titulary-intro .hg{--hg-size:18px}",
+ ".v-egypt-script-panel .v-titulary-list dd{margin:0 0 6px}",
+ ".v-egypt-script-panel .v-titulary-list .v-script-cartouche{margin:4px 0;padding:6px 12px;display:inline-flex;max-width:100%}",
+ ".v-egypt-script-panel .v-titulary-list .v-script-symbol{padding:4px 0;text-align:left}",
+ ".v-egypt-script-panel .v-titulary-list .hg{--hg-size:30px}",
  "@media print{.v-egypt-script-panel .v-script-controls,.v-egypt-script-panel .v-script-form{display:none}}"
  ].join("\n");
  document.head.append(style);
 }
 function glyphText(str){
+ if(window.HieroRender){
+  const el=window.HieroRender.render(str,{size:"var(--egypt-script-size,35px)"});el.classList.add("v-script-glyphs","v-script-quadrats");
+  el.title="Jeroglíficos Unicode agrupados en cuadrados por el visor; no facsímil";return el;
+ }
  const el=node("span","v-script-glyphs",str);el.lang="egy";el.dir="ltr";
  el.title="Jeroglíficos Unicode; no facsímil";return el;
+}
+/* Titulaturas reales (data/vitruvia/titulaturae.json): cinco nombres con jeroglífico, MdC, transliteración y sentido. */
+let titulaturae=null;
+function loadTitulaturae(){
+ if(titulaturae)return titulaturae;
+ titulaturae=fetch("data/vitruvia/titulaturae.json?v=20261109-v1").then(r=>r.ok?r.json():null).catch(()=>null);
+ return titulaturae;
+}
+const TITLE_ORDER=["horus","nebty","golden","prenomen","nomen"];
+function rulerMatches(ruler,q){
+ const f=fold(q).replace(/[^\p{L}\p{N} ]+/gu," ").replace(/\s+/g," ").trim();
+ if(!f)return false;
+ return ruler.aliases.some(a=>{const fa=fold(a);return f===fa||f.includes(fa)&&fa.length>=5||fa.includes(f)&&f.length>=6});
+}
+function titularyEntry(parent,data,ruler){
+ const item=node("div","v-script-entry v-script-titulary");
+ item.append(node("h4",null,"Titulatura real · "+ruler.name+" · "+ruler.dynasty+(ruler.dates?" · "+ruler.dates:"")));
+ const list=node("dl","v-titulary-list");
+ for(const key of TITLE_ORDER){
+  const n=ruler.names[key];if(!n)continue;
+  const t=data.titles[key]||{label:key};
+  const dt=node("dt");dt.append(node("span",null,t.label));
+  if(t.glyphs){const intro=node("span","v-titulary-intro");const g=glyphText(t.glyphs);g.classList.remove("v-script-glyphs");g.style.fontSize="18px";intro.append(g);intro.append(document.createTextNode(" "+t.trans));dt.append(intro)}
+  list.append(dt);
+  const dd=node("dd");
+  if(n.glyphs){
+   const wrap=node("div",key==="prenomen"||key==="nomen"?"v-script-cartouche":"v-script-symbol");
+   wrap.title=key==="prenomen"||key==="nomen"?"Cartucho tipográfico orientativo, no reproducción paleográfica":"Grafía Unicode; el serej no se dibuja";
+   wrap.append(glyphText(n.glyphs));dd.append(wrap);
+  }else dd.append(node("p","v-script-note","Grafía no editada: solo transliteración."));
+  const meta=node("p","v-script-meta");
+  const tl=node("i",null,n.trans||"");tl.lang="egy-Latn";meta.append(tl);
+  if(n.gloss)meta.append(document.createTextNode(" · "+n.gloss));
+  dd.append(meta);
+  if(n.mdc){const m=node("p","v-script-note");m.append(document.createTextNode("Gardiner: "));const code=node("code",null,n.mdc);code.style.font="11px/1.5 ui-monospace,Menlo,Consolas,monospace";m.append(code);dd.append(m)}
+  if(n.witness)dd.append(node("p","v-script-note","Testimonio: "+n.witness));
+  list.append(dd);
+ }
+ item.append(list);
+ const note=node("p","v-script-note","Grafías normalizadas según von Beckerath, Handbuch der ägyptischen Königsnamen (1999) y Leprohon, The Great Name (2013); códigos de la lista de Gardiner. Son transcripciones editoriales: cotejar con el testimonio indicado antes de citarlas como dato epigráfico. El cartucho y la agrupación en cuadrados son tipográficos.");
+ item.append(note);
+ const links=node("p","v-script-note");
+ links.append(ref("Buscar en el Thesaurus Linguae Aegyptiae","https://thesaurus-linguae-aegyptiae.de/search?q="+encodeURIComponent(ruler.name)));
+ links.append(document.createTextNode(" · "));
+ links.append(ref("Tabla de signos Unicode 13000","https://www.unicode.org/charts/PDF/U13000.pdf"));
+ item.append(links);
+ const copy=node("button",null,"Copiar titulatura (texto)");copy.type="button";
+ copy.addEventListener("click",()=>{
+  const lines=[ruler.name+" · "+ruler.dynasty];
+  for(const key of TITLE_ORDER){const n=ruler.names[key];if(!n)continue;lines.push((data.titles[key]?.label||key)+": "+(n.glyphs?window.HieroRender?.strip(n.glyphs)||n.glyphs:"—")+" · "+(n.trans||"")+" · "+(n.gloss||""))}
+  navigator.clipboard?.writeText(lines.join("\n")).then(()=>copy.textContent="Copiado").catch(()=>copy.textContent="Selecciona el texto");
+ });
+ item.append(copy);
+ parent.append(item);
 }
 function arabicText(str){
  const el=node("span","v-script-arabic",str);el.lang="ar";el.dir="rtl";return el;
 }
 function matchRows(q){
  const description=rows.slice(0,6).map(r=>[r?.title,r?.entityDescription,r?.entityCanonical,r?.excerpt].filter(Boolean).join(" ")).join(" ");
- const qAncient=OLD_EGYPT.test(q)||EGYPT_NAME.test(q)||SYMBOLS.some(x=>x.match.test(q)),qModern=MODERN_EGYPT.test(q);
+ const qAncient=OLD_EGYPT.test(q)||EGYPT_NAME.test(q)||SYMBOLS.some(x=>x.match.test(q))||knownRulers.some(r=>rulerMatches(r,q)),qModern=MODERN_EGYPT.test(q);
  const authority=rows.some(r=>Boolean(r?.preferredWiki||r?.wikidataId)&&
    SOURCE_EGYPT.test([r.entityDescription,r.entityCanonical,r.meta].filter(Boolean).join(" "))&&
    (fold(r.entityCanonical||r.title||"")===fold(q)||fold(q).length>=4&&
@@ -203,8 +269,14 @@ async function render(){
  box.dataset.rows=rowSignature;
  host.prepend(box);host.hidden=false;const token=++generation;
  let populated=0;
+ let titularyShown=false;
  if(classification.ancient){
-  for(const rec of [...ORIGINALS,...SYMBOLS].filter(r=>r.match.test(query))){
+  const data=await loadTitulaturae();if(token!==generation||!box.isConnected)return;
+  if(data?.rulers){
+   knownRulers=data.rulers;
+   for(const ruler of data.rulers.filter(r=>rulerMatches(r,query))){titularyEntry(content,data,ruler);populated++;titularyShown=true}
+  }
+  for(const rec of [...(titularyShown?[]:ORIGINALS),...SYMBOLS].filter(r=>r.match.test(query))){
    entry(content,rec);populated++;
   }
  }
@@ -250,6 +322,7 @@ function schedule(){
 }
 function init(){
  const host=document.getElementById("vitruvia-context");if(!host)return;
+ loadTitulaturae().then(d=>{if(d?.rulers){knownRulers=d.rulers;schedule()}});
  new MutationObserver(()=>{
   if(!host.querySelector("#v-egypt-script-panel")&&currentQuery)schedule();
  }).observe(host,{childList:true});

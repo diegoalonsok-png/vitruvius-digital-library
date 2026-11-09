@@ -88,20 +88,79 @@ function fillVersions(){
 }
 function keyOf(e){return [e.workId,e.language,e.path,e.edition||""].join("|")}
 function editionFor(value){return editions.find(e=>keyOf(e)===value)}
+const slug=v=>String(v||"").replace(/[^\p{L}\p{N}.:_-]+/gu,"_");
+const GREEK_RUN=/[Ͱ-Ͽἀ-῿][Ͱ-Ͽἀ-῿̀-ͯ··’\s,;.·]*[Ͱ-Ͽἀ-῿]|[Ͱ-Ͽἀ-῿]/g;
+function workMeta(){return titleById()||{}}
+/* Chicago 18 style passage citation built only from recorded data: author, title, locus, version label,
+   source attribution as stored, permanent URL and consultation date. Nothing is invented. */
+function citeFor(source,p){
+ const w=workMeta();const e=source.edition;
+ const parts=[[w.author||e.author,w.title||e.title].filter(Boolean).join(". ")];
+ if(p.locus)parts.push(p.locus);
+ const attribution=(source.data.attribution||e.sourceDescription||"").trim();
+ if(attribution)parts.push(attribution);
+ const u=new URL("bibliotheca-capitula.html",location.href);u.searchParams.set("work",work);if(p.locus)u.searchParams.set("locus",p.locus);u.searchParams.set("side",source.side);
+ parts.push(u.href);
+ parts.push((({es:"Consultado el ",en:"Accessed ",fr:"Consulté le "})[document.documentElement.lang]||"Consultado el ")+new Date().toISOString().slice(0,10));
+ return parts.join(". ").replace(/\.\./g,".");
+}
+function wrapGreek(node,text){
+ let at=0,m;GREEK_RUN.lastIndex=0;
+ while((m=GREEK_RUN.exec(text))){
+  if(m.index>at)node.append(text.slice(at,m.index));
+  const g=document.createElement("span");g.lang="grc";g.textContent=m[0];node.append(g);at=m.index+m[0].length;
+ }
+ if(at<text.length)node.append(text.slice(at));
+}
 function readable(id,source,groups,selected){
  const target=$(id+"-text");target.replaceChildren();
  const title=$(id+"-title"),meta=$(id+"-source");
  title.textContent=LANG[source.edition.language]||source.edition.language;
  meta.textContent=source.data.attribution||source.edition.sourceDescription||source.edition.path;
+ source.side=id;
  const items=groups.get(selected)||[];
  if(!items.length){target.textContent="Esta versión no tiene pasajes identificados en la unidad elegida.";return}
  const fragment=document.createDocumentFragment();
  for(const p of items){const wrapper=document.createElement("p");
-  wrapper.lang=source.edition.language==="grc"?"grc":source.edition.language;
-  const loc=document.createElement("span");loc.className="locus";loc.textContent=p.locus||"Unidad editorial sin referencia";
-  wrapper.append(loc,document.createTextNode(p.text));fragment.append(wrapper);
+  const lang=source.edition.language==="grc"?"grc":source.edition.language;wrapper.lang=lang;
+  if(p.locus){wrapper.id=id+"-"+slug(p.locus);wrapper.dataset.locus=p.locus}
+  const loc=document.createElement("span");loc.className="locus";
+  const anchor=document.createElement("a");anchor.className="locus-anchor";anchor.textContent=p.locus||"Unidad editorial sin referencia";
+  anchor.title=({es:"Enlace permanente a este pasaje",en:"Permanent link to this passage",fr:"Lien permanent vers ce passage"})[document.documentElement.lang]||"Enlace permanente a este pasaje";
+  const u=new URL(location.href);u.searchParams.set("work",work);if(p.locus)u.searchParams.set("locus",p.locus);u.searchParams.set("side",id);anchor.href=u.href;
+  const cite=document.createElement("button");cite.type="button";cite.className="locus-cite";cite.textContent=({es:"Citar",en:"Cite",fr:"Citer"})[document.documentElement.lang]||"Citar";
+  cite.addEventListener("click",()=>{const c=citeFor(source,p);navigator.clipboard?.writeText(c).then(()=>{cite.textContent="✓";setTimeout(()=>cite.textContent=({es:"Citar",en:"Cite",fr:"Citer"})[document.documentElement.lang]||"Citar",1400)}).catch(()=>window.prompt("Cita",c))});
+  loc.append(anchor," ",cite);
+  wrapper.append(loc);
+  if(lang==="la"||lang==="grc")wrapGreek(wrapper,p.text);else wrapper.append(document.createTextNode(p.text));
+  fragment.append(wrapper);
  }
  target.append(fragment);target.scrollTop=0;
+ pairHighlights();
+}
+/* Hover pairing: paragraphs with the same recorded locus on both sides light up together.
+   Only exact locus identity is paired; nothing is aligned by position. */
+function pairHighlights(){
+ const panes=document.querySelector(".panes");if(!panes||panes.dataset.paired)return;panes.dataset.paired="1";
+ const find=(side,locus)=>document.querySelector("#"+side+"-text p[data-locus=\""+CSS.escape(locus)+"\"]");
+ panes.addEventListener("mouseover",e=>{const p=e.target.closest("p[data-locus]");if(!p)return;const other=p.closest("#left-text")?"right":"left";const twin=find(other,p.dataset.locus);
+  document.querySelectorAll(".passages p.paired").forEach(x=>x.classList.remove("paired"));if(twin){p.classList.add("paired");twin.classList.add("paired")}});
+ panes.addEventListener("mouseleave",()=>document.querySelectorAll(".passages p.paired").forEach(x=>x.classList.remove("paired")),true);
+ panes.addEventListener("dblclick",e=>{
+  const p=e.target.closest("p[lang]");if(!p||!["la","grc"].includes(p.lang))return;
+  const word=String(window.getSelection?.()||"").trim().split(/\s+/)[0]?.replace(/^[^\p{L}]+|[^\p{L}]+$/gu,"");
+  if(!word)return;const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",word);u.searchParams.set("mode","palabra");window.open(u.href,"_blank","noopener");
+ });
+}
+function revealLocus(){
+ const params=new URLSearchParams(location.search),locus=params.get("locus");if(!locus||!current)return false;
+ const side=params.get("side")==="right"?"right":"left";
+ const key=sectionOf(locus);
+ if(current.shared?.includes(key))render(key);else if(current[side].groups.has(key))sideChapter(side,key);
+ const target=document.getElementById(side+"-"+slug(locus))||document.querySelector("#"+side+"-text p[data-locus=\""+CSS.escape(locus)+"\"]");
+ if(!target)return false;
+ target.classList.add("target-locus");target.scrollIntoView({block:"center"});
+ return true;
 }
 function sideChapter(side,selected){
  if(!current)return;
@@ -177,6 +236,7 @@ for(const side of ["left","right"])$(side+"-chapter").addEventListener("change",
   $("work").disabled=works.length<2;
   if(!works.length){messages.textContent="No hay parejas de versiones indexadas.";return}
   await chooseWork();
+  if(new URLSearchParams(location.search).get("locus")&&!revealLocus())messages.textContent+=" · El locus solicitado no está entre los pasajes indexados de esta versión.";
  }catch(e){messages.textContent="No se pudo verificar el índice de Bibliotheca: "+e.message}
 })();
 })();

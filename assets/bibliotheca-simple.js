@@ -544,6 +544,13 @@ function render(rows,q,details){
     }
    }catch{}
   }
+  // Lectura en contexto: abre el pasaje en el lector por capítulos (original y traducción) cuando hay locus.
+  // Solo loci canónicos numerados (1.2.3, 2.praef.1, 4.12): los segmentos HTML sin numeración común no se enlazan.
+  if(r.workId&&r.locus&&/^\d+(?:\.(?:praef|\d+))*(?:\.\d+)?$/.test(String(r.locus).trim())){
+   const ctx=new URL("bibliotheca-capitula.html",location.href);ctx.searchParams.set("work",r.workId);ctx.searchParams.set("locus",String(r.locus));
+   ctx.searchParams.set("side",["la","grc"].includes(r.language)?"left":"right");
+   const a=el("a","passage-link",({es:"Leer en contexto (original · traducción)",en:"Read in context (original · translation)",fr:"Lire en contexte (original · traduction)"})[locale]);a.href=ctx.href;li.append(a);
+  }
   li.append(passageActions(r,byId.get(r.workId)||{},p));
   passages.append(li);
  }

@@ -1,0 +1,138 @@
+{
+  "schema": "vitruvia-titulaturae-v1",
+  "generated": "2026-11-09",
+  "description": "Titulaturas reales egipcias para el visor de escrituras de Vitruvia. Cada nombre lleva la grafía jeroglífica en Unicode (bloque 13000–1345F, con controles de formato de Unicode 12 cuando procede), los códigos Gardiner (MdC), la transliteración egiptológica y el sentido. Las grafías son transcripciones editoriales normalizadas a partir de los repertorios de referencia; no reproducen un testimonio epigráfico concreto y cada una debe cotejarse con el monumento citado antes de usarse como dato primario. Cuando un nombre no se ha editado en jeroglíficos se da solo la transliteración.",
+  "sources": [
+    {"id": "beckerath-1999", "citation": "Jürgen von Beckerath, Handbuch der ägyptischen Königsnamen, 2.ª ed., Münchner Ägyptologische Studien 49 (Mainz: Philipp von Zabern, 1999)."},
+    {"id": "leprohon-2013", "citation": "Ronald J. Leprohon, The Great Name: Ancient Egyptian Royal Titulary, Writings from the Ancient World 33 (Atlanta: Society of Biblical Literature, 2013)."},
+    {"id": "gardiner-1957", "citation": "Alan H. Gardiner, Egyptian Grammar, 3.ª ed. (Oxford: Griffith Institute, 1957), lista de signos."},
+    {"id": "unicode-13000", "citation": "The Unicode Standard, bloque Egyptian Hieroglyphs (U+13000–U+1342F) y Egyptian Hieroglyph Format Controls (U+13430–U+1345F).", "url": "https://www.unicode.org/charts/PDF/U13000.pdf"},
+    {"id": "tla", "citation": "Thesaurus Linguae Aegyptiae (Berlin-Brandenburgische Akademie der Wissenschaften).", "url": "https://thesaurus-linguae-aegyptiae.de/"}
+  ],
+  "titles": {
+    "horus": {"label": "Nombre de Horus", "glyphs": "𓅃", "trans": "ḥr", "note": "Se escribe dentro del serej (fachada de palacio), no en cartucho."},
+    "nebty": {"label": "Nombre de las Dos Señoras", "glyphs": "𓅒", "trans": "nbtj", "note": "Nejbet y Uadyet, diosas del Alto y del Bajo Egipto."},
+    "golden": {"label": "Horus de oro", "glyphs": "𓅉", "trans": "ḥr-nbw", "note": "Halcón sobre el signo del oro."},
+    "prenomen": {"label": "Prenomen (nombre de trono)", "glyphs": "𓇓𓏏𓆤𓏏", "trans": "nswt-bjtj", "note": "«El del junco y la abeja», rey del Alto y del Bajo Egipto. Va en cartucho."},
+    "nomen": {"label": "Nomen (nombre de nacimiento)", "glyphs": "𓅭𓇳", "trans": "sꜣ-rꜥ", "note": "«Hijo de Ra». Va en cartucho."}
+  },
+  "rulers": [
+    {
+      "id": "narmer", "name": "Narmer", "aliases": ["narmer", "menes"], "dynasty": "Dinastía 0 / I", "dates": "c. 3100 a. C.",
+      "names": {
+        "horus": {"glyphs": "𓆛𓍋", "mdc": "K1-U23", "trans": "nꜥr-mr", "gloss": "Lectura convencional «Narmer» (siluro y cincel)", "witness": "Paleta de Narmer (Museo Egipcio de El Cairo, CG 14716), serej"}
+      }
+    },
+    {
+      "id": "djoser", "name": "Dyeser (Netjerijet)", "aliases": ["djoser", "dyeser", "zoser", "netjerikhet", "netjerijet"], "dynasty": "III", "dates": "c. 2670 a. C.",
+      "names": {
+        "horus": {"glyphs": "𓊹𓄡", "mdc": "R8-F32", "trans": "nṯr-ẖt", "gloss": "Divino de cuerpo", "witness": "Complejo funerario de Saqqara; es el único nombre contemporáneo del rey"},
+        "nomen": {"glyphs": "𓂦𓂋", "mdc": "D45-D21", "trans": "ḏsr", "gloss": "Sagrado, espléndido", "witness": "Nombre transmitido por listas reales posteriores (Abidos, Turín) y la Estela del Hambre; no contemporáneo"}
+      }
+    },
+    {
+      "id": "khufu", "name": "Jufu (Keops)", "aliases": ["khufu", "jufu", "keops", "cheops", "khéops"], "dynasty": "IV", "dates": "c. 2589–2566 a. C.",
+      "names": {
+        "nomen": {"glyphs": "𓐍𓅱𓆑𓅱", "mdc": "Aa1-G43-I9-G43", "trans": "ḫwfw", "gloss": "Abreviatura de ẖnmw-ḫwj.f-wj, «Jnum me protege»", "witness": "Marcas de canteros de la Gran Pirámide; sello cilíndrico; grafito de Uadi Maghara"}
+      }
+    },
+    {
+      "id": "khafre", "name": "Jafra (Kefrén)", "aliases": ["khafre", "jafra", "kefren", "kefrén", "chephren", "khafra"], "dynasty": "IV", "dates": "c. 2558–2532 a. C.",
+      "names": {
+        "nomen": {"glyphs": "𓇳𓈍𓆑", "mdc": "N5-N28-I9", "trans": "ḫꜥ.f-rꜥ", "gloss": "Ra aparece en gloria (con el nombre del dios antepuesto por respeto)", "witness": "Estatuas del templo del valle de Guiza (Museo Egipcio, CG 14)"}
+      }
+    },
+    {
+      "id": "menkaure", "name": "Menkaura (Micerino)", "aliases": ["menkaure", "menkaura", "micerino", "mykerinos", "mycerinus"], "dynasty": "IV", "dates": "c. 2532–2503 a. C.",
+      "names": {
+        "nomen": {"glyphs": "𓇳𓏠𓂓𓂓𓂓", "mdc": "N5-Y5-D28-D28-D28", "trans": "mn-kꜣw-rꜥ", "gloss": "Estables son los kas de Ra", "witness": "Tríadas de Menkaura (Museo de Bellas Artes de Boston; Museo Egipcio de El Cairo)"}
+      }
+    },
+    {
+      "id": "amenemhat-i", "name": "Amenemhat I", "aliases": ["amenemhat i", "amenemhet i", "amenemhat 1", "ammenemes i"], "dynasty": "XII", "dates": "c. 1985–1956 a. C.",
+      "names": {
+        "prenomen": {"glyphs": "𓇳𓋴𓊵𓏏𓊪𓄣", "mdc": "N5-S29-R4-X1-Q3-F34", "trans": "sḥtp-jb-rꜥ", "gloss": "El que satisface el corazón de Ra", "witness": "Pirámide de Lisht; Instrucción de Amenemhat (tradición literaria)"},
+        "nomen": {"glyphs": "𓇋𓏠𓈖𓅓𓄂𓏏", "mdc": "M17-Y5-N35-G17-F4-X1", "trans": "jmn-m-ḥꜣt", "gloss": "Amón está al frente", "witness": "Lisht; Lista real de Karnak"}
+      }
+    },
+    {
+      "id": "senusret-i", "name": "Senusret I (Sesostris I)", "aliases": ["senusret i", "senwosret i", "sesostris i", "senusret 1", "sesostris 1"], "dynasty": "XII", "dates": "c. 1956–1911 a. C.",
+      "names": {
+        "prenomen": {"glyphs": "𓇳𓆣𓂓", "mdc": "N5-L1-D28", "trans": "ḫpr-kꜣ-rꜥ", "gloss": "El ka de Ra ha venido a la existencia", "witness": "Capilla Blanca de Karnak; obelisco de Heliópolis"},
+        "nomen": {"glyphs": "𓊃𓈖𓄊𓋴𓂋𓏏", "mdc": "O34-N35-F12-S29-D21-X1", "trans": "s-n-wsrt", "gloss": "Hombre de la Poderosa (la diosa Useret)", "witness": "Capilla Blanca de Karnak"}
+      }
+    },
+    {
+      "id": "hatshepsut", "name": "Hatshepsut", "aliases": ["hatshepsut", "hatchepsut", "hatshepsout"], "dynasty": "XVIII", "dates": "c. 1473–1458 a. C.",
+      "names": {
+        "horus": {"glyphs": null, "trans": "wsrt-kꜣw", "gloss": "Poderosa de kas", "witness": "Deir el-Bahari"},
+        "prenomen": {"glyphs": "𓇳𓁦𓂓", "mdc": "N5-C10-D28", "trans": "mꜣꜥt-kꜣ-rꜥ", "gloss": "Maat es el ka de Ra", "witness": "Templo de Deir el-Bahari; obeliscos de Karnak"},
+        "nomen": {"glyphs": null, "trans": "ḥꜣt-špswt ẖnmt-jmn", "gloss": "La primera de las damas nobles, unida a Amón", "witness": "Deir el-Bahari. Grafía no editada aquí por la variedad de sus disposiciones; véase Beckerath 1999"}
+      }
+    },
+    {
+      "id": "thutmose-iii", "name": "Tutmosis III", "aliases": ["thutmose iii", "tutmosis iii", "thoutmosis iii", "thutmosis iii", "tutmosis 3", "thutmose 3"], "dynasty": "XVIII", "dates": "c. 1479–1425 a. C.",
+      "names": {
+        "horus": {"glyphs": null, "trans": "kꜣ-nḫt ḫꜥ-m-wꜣst", "gloss": "Toro poderoso que aparece en Tebas", "witness": "Anales de Karnak"},
+        "prenomen": {"glyphs": "𓇳𓏠𓆣", "mdc": "N5-Y5-L1", "trans": "mn-ḫpr-rꜥ", "gloss": "Estable es la manifestación de Ra", "witness": "Anales de Karnak; escarabeos (el prenomen más frecuente en amuletos)"},
+        "nomen": {"glyphs": "𓅝𓄠𓋴", "mdc": "G26-F31-S29", "trans": "ḏḥwtj-ms", "gloss": "Tot ha nacido", "witness": "Anales de Karnak; obelisco de Letrán"}
+      }
+    },
+    {
+      "id": "amenhotep-iii", "name": "Amenhotep III", "aliases": ["amenhotep iii", "amenofis iii", "amenophis iii", "amenhotep 3", "amenofis 3"], "dynasty": "XVIII", "dates": "c. 1390–1352 a. C.",
+      "names": {
+        "prenomen": {"glyphs": "𓇳𓎟𓁦", "mdc": "N5-V30-C10", "trans": "nb-mꜣꜥt-rꜥ", "gloss": "Ra es el señor de Maat", "witness": "Templo de Luxor; colosos de Memnón; escarabeos conmemorativos"},
+        "nomen": {"glyphs": "𓇋𓏠𓈖𓊵𓏏𓊪𓋾𓌀𓏏𓊖", "mdc": "M17-Y5-N35-R4-X1-Q3-S38-R19-X1-O49", "trans": "jmn-ḥtp ḥqꜣ-wꜣst", "gloss": "Amón está satisfecho, gobernante de Tebas", "witness": "Templo de Luxor; escarabeos conmemorativos"}
+      }
+    },
+    {
+      "id": "akhenaten", "name": "Ajenatón (Amenhotep IV)", "aliases": ["akhenaten", "akhenaton", "akenaton", "akenatón", "ajenaton", "ajenatón", "akhnaton", "amenhotep iv", "amenofis iv", "amenophis iv", "echnaton"], "dynasty": "XVIII", "dates": "c. 1352–1336 a. C.",
+      "names": {
+        "horus": {"glyphs": null, "trans": "kꜣ-nḫt qꜣj-šwtj", "gloss": "Toro poderoso, alto de plumas (forma de los primeros años; después mrj-jtn, «amado de Atón»)", "witness": "Talatat de Karnak; estelas fronterizas de Amarna"},
+        "prenomen": {"glyphs": "𓇳𓄤𓆣𓏥𓇳𓌡𓈖", "mdc": "N5-F35-L1-Z2-N5-T21-N35", "trans": "nfr-ḫprw-rꜥ wꜥ-n-rꜥ", "gloss": "Perfectas son las manifestaciones de Ra, el único de Ra", "witness": "Estelas fronterizas de Amarna; tumbas de los nobles de Amarna"},
+        "nomen": {"glyphs": "𓇋𓏏𓐰𓈖𓐰𓇳𓅜𓐍𓐰𓈖", "mdc": "M17-X1:N35:N5-G25-Aa1:N35", "trans": "ꜣḫ-n-jtn", "gloss": "Beneficioso para Atón (nombre adoptado hacia el año 5)", "witness": "Estelas fronterizas de Amarna. Nombre anterior: jmn-ḥtp nṯr-ḥqꜣ-wꜣst, «Amenhotep, dios y gobernante de Tebas»"}
+      }
+    },
+    {
+      "id": "tutankhamun", "name": "Tutankamón", "aliases": ["tutankhamun", "tutankhamon", "tutankamon", "tutankamón", "tutanjamon", "tutanjamón", "toutânkhamon", "tutankhaten"], "dynasty": "XVIII", "dates": "c. 1336–1327 a. C.",
+      "names": {
+        "horus": {"glyphs": null, "trans": "kꜣ-nḫt twt-mswt", "gloss": "Toro poderoso, perfecto de nacimiento", "witness": "Estela de la Restauración (Karnak)"},
+        "prenomen": {"glyphs": "𓇳𓎟𓆣𓏥", "mdc": "N5-V30-L1-Z2", "trans": "nb-ḫprw-rꜥ", "gloss": "Señor de las manifestaciones de Ra", "witness": "Ajuar de la tumba KV62; Estela de la Restauración"},
+        "nomen": {"glyphs": "𓇋𓏠𓈖𓏏𓅱𓏏𓋹𓋾𓉺𓇓", "mdc": "M17-Y5-N35-X1-G43-X1-S34-S38-O28-M26", "trans": "twt-ꜥnḫ-jmn ḥqꜣ-jwnw-šmꜥ", "gloss": "Imagen viviente de Amón, gobernante de la Heliópolis del Sur (Tebas). Forma anterior: twt-ꜥnḫ-jtn", "witness": "Ajuar de KV62 (trono, cofres, capillas)"}
+      }
+    },
+    {
+      "id": "seti-i", "name": "Seti I", "aliases": ["seti i", "sethos i", "sethi i", "seti 1"], "dynasty": "XIX", "dates": "c. 1294–1279 a. C.",
+      "names": {
+        "prenomen": {"glyphs": "𓇳𓏠𓁦", "mdc": "N5-Y5-C10", "trans": "mn-mꜣꜥt-rꜥ", "gloss": "Estable es la Maat de Ra", "witness": "Templo de Abidos; Lista real de Abidos; sala hipóstila de Karnak"},
+        "nomen": {"glyphs": null, "trans": "stẖj mrj-n-ptḥ", "gloss": "El de Seth, amado de Ptah (en Abidos el signo de Seth se sustituye por Osiris o por el nudo tit)", "witness": "Templo de Abidos; KV17"}
+      }
+    },
+    {
+      "id": "ramesses-ii", "name": "Ramsés II", "aliases": ["ramses ii", "ramsés ii", "rameses ii", "ramesses ii", "ramses 2", "ramsés 2", "ramsès ii", "ozymandias"], "dynasty": "XIX", "dates": "c. 1279–1213 a. C.",
+      "names": {
+        "horus": {"glyphs": null, "trans": "kꜣ-nḫt mrj-mꜣꜥt", "gloss": "Toro poderoso, amado de Maat", "witness": "Abu Simbel; Ramesseum"},
+        "prenomen": {"glyphs": "𓇳𓄊𓁧𓇳𓍉𓈖", "mdc": "N5-F12-C10A-N5-U21-N35", "trans": "wsr-mꜣꜥt-rꜥ stp-n-rꜥ", "gloss": "Poderosa es la Maat de Ra, elegido de Ra (de aquí el «Ozymandias» de Diodoro y Shelley)", "witness": "Abu Simbel; Ramesseum; Luxor"},
+        "nomen": {"glyphs": "𓇋𓏠𓈖𓌸𓇳𓄟𓋴𓋴", "mdc": "M17-Y5-N35-U7-N5-F31-S29-S29", "trans": "rꜥ-ms-sw mrj-jmn", "gloss": "Ra lo ha engendrado, amado de Amón", "witness": "Abu Simbel; Ramesseum; Tanis"}
+      }
+    },
+    {
+      "id": "alexander", "name": "Alejandro Magno", "aliases": ["alejandro magno", "alexander the great", "alexandre le grand", "alejandro iii de macedonia", "alexander iii"], "dynasty": "Macedonia (Argéada)", "dates": "332–323 a. C. en Egipto",
+      "names": {
+        "nomen": {"glyphs": "𓄿𓃭𓎡𓋴𓇋𓈖𓂧𓂋𓋴", "mdc": "G1-E23-V31-S29-M17-N35-D46-D21-S29", "trans": "ꜣlksjndrs", "gloss": "Transcripción fonética de Ἀλέξανδρος", "witness": "Santuario de la barca del templo de Luxor; capilla de Karnak (Alejandro IV)"}
+      }
+    },
+    {
+      "id": "ptolemy", "name": "Ptolomeo (nombre dinástico)", "aliases": ["ptolomeo", "ptolemy", "ptolémée", "ptolemaios", "ptolomeo v", "ptolemy v", "ptolomeo i", "ptolemy i"], "dynasty": "Lágida", "dates": "305–30 a. C.",
+      "names": {
+        "nomen": {"glyphs": "𓊪𓏏𓍯𓃭𓐝𓇌𓋴", "mdc": "Q3-X1-V4-E23-Aa15-M17-M17-S29", "trans": "ptwlmjs", "gloss": "Transcripción fonética de Πτολεμαῖος; cartucho con el que Champollion fijó los valores p, t, l en 1822", "witness": "Piedra de Rosetta (British Library · British Museum EA 24); obelisco de Philae (Kingston Lacy)"}
+      }
+    },
+    {
+      "id": "cleopatra", "name": "Cleopatra VII", "aliases": ["cleopatra", "cleopatra vii", "cléopâtre", "kleopatra"], "dynasty": "Lágida", "dates": "51–30 a. C.",
+      "names": {
+        "nomen": {"glyphs": "𓈎𓃭𓇋𓍯𓊪𓄿𓂧𓂋𓄿𓏏𓆇", "mdc": "N29-E23-M17-V4-Q3-G1-D46-D21-G1-X1-H8", "trans": "qljwpꜣdrꜣt", "gloss": "Transcripción fonética de Κλεοπάτρα; con el huevo y la t como determinativos femeninos", "witness": "Templo de Dendera (muro sur, con Cesarión); obelisco de Philae (Bankes)"}
+      }
+    }
+  ]
+}

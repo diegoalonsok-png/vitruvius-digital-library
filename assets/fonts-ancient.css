@@ -1,0 +1,4 @@
+/* Fuentes para escrituras antiguas alojadas en el propio sitio (sin depender de Google Fonts).
+   Noto Sans Egyptian Hieroglyphs · SIL Open Font License 1.1 · véase assets/fonts/LICENSE-noto-sans-egyptian-hieroglyphs.txt */
+@font-face{font-family:'Noto Sans Egyptian Hieroglyphs';font-style:normal;font-weight:400;font-display:swap;src:local('Noto Sans Egyptian Hieroglyphs'),url('fonts/noto-sans-egyptian-hieroglyphs-400.woff2') format('woff2');unicode-range:U+13000-1345F}
+[lang="egy"],.lx-hiero,.v-script-glyphs,.hg{font-family:'Noto Sans Egyptian Hieroglyphs','Egyptian Text','Segoe UI Historic',sans-serif}
