@@ -1,0 +1,130 @@
+name: Bibliotheca · Isidoro Etymologiae veinte libros
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-isidore-etymologiae.py'
+      - 'scripts/test-isidore-offsite-integration.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - '.github/workflows/offsite-latin-isidore.yml'
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-isidore-etymologiae.py'
+      - 'scripts/test-isidore-offsite-integration.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - '.github/workflows/offsite-latin-isidore.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: offsite-latin-originals-publication
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar el extractor y las integraciones de todos los originales previos
+        run: |
+          python -m py_compile scripts/build-offsite-isidore-etymologiae.py
+          node --check assets/bibliotheca-offsite-latin.js
+          node scripts/test-isidore-offsite-integration.mjs
+          node scripts/test-offsite-latin-originals.mjs
+          node scripts/test-classics-latin-supplement.mjs
+          node scripts/test-seneca-naturales-offsite.mjs
+          node scripts/test-offsite-latin-two-works.mjs
+          node scripts/test-shared-semantic-index-usage.mjs
+          node scripts/test-bibliotheca-semantic-index-usage.mjs
+      - name: Extraer y cotejar integridad de veinte transcripciones en directorio temporal
+        run: python scripts/build-offsite-isidore-etymologiae.py --output "$RUNNER_TEMP/isidore-new"
+      - name: Añadir solo el índice derivado de Isidoro al corpus externo protegido
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          BRANCH: corpus-originales-latinos-20261108
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          TARGET="$RUNNER_TEMP/isidore-latin-worktree"
+          git worktree add --detach "$TARGET" "origin/$BRANCH"
+          python - "$TARGET" "$RUNNER_TEMP/isidore-new" <<'PY'
+          import hashlib
+          import json
+          import shutil
+          import sys
+          from pathlib import Path
+
+          folder=Path(sys.argv[1])/"data/offsite-latin"
+          staging=Path(sys.argv[2])
+          manifest_file=folder/"manifest.json"
+          old=json.loads(manifest_file.read_text("utf-8"))
+          new=json.loads((staging/"isidore-manifest.json").read_text("utf-8"))
+          assert old["schema"]=="vitruvius-offsite-latin-originals-manifest-v1"
+          assert old["branch"]=="corpus-originales-latinos-20261108"
+          assert new["schema"]=="vitruvius-offsite-latin-isidore-supplement-v1"
+          assert len(new["entries"])==new["count"]==1
+          existing={e["workId"]:e for e in old["entries"]}
+          assert len(existing)==old["count"]==len(old["entries"])
+          protected={
+              "seneca-de-ira","seneca-de-tranquillitate",
+              "apuleius-de-deo-socratis","censorinus-die-natali",
+              "vegetius-epitoma","seneca-naturales",
+              "velleius-historia","frontinus-gromatica",
+          }
+          assert protected.issubset(existing),"Missing earlier Latin source"
+          prior={}
+          for id,item in existing.items():
+              file=folder/(id+"-la.json")
+              data=file.read_bytes()
+              parsed=json.loads(data)
+              assert parsed["workId"]==id and parsed["sourceSha256"]==item["sourceSha256"]
+              prior[id]=hashlib.sha256(data).hexdigest()
+          item=new["entries"][0]
+          assert item["workId"]=="isidore-etymologiae"
+          assert item["language"]=="la" and item["books"]==20
+          assert item["path"]=="data/offsite-latin/isidore-etymologiae-la.json"
+          incoming=(staging/"isidore-etymologiae-la.json").read_bytes()
+          text=json.loads(incoming)
+          assert text["schema"]=="vitruvius-offsite-latin-original-v1"
+          assert text["workId"]==item["workId"] and text["language"]=="la"
+          assert text["sourceSha256"]==item["sourceSha256"]
+          assert len(text["sourceParts"])==20
+          assert [p["book"] for p in text["sourceParts"]]==list(range(1,21))
+          assert len(text["passages"])==item["passages"]>=1300
+          assert len(incoming)==item["bytes"]<2500000
+          path=folder/"isidore-etymologiae-la.json"
+          if item["workId"] in existing:
+              assert path.read_bytes()==incoming,"Different source: refuse overwrite"
+              assert existing[item["workId"]]["sourceSha256"]==item["sourceSha256"]
+          else:
+              assert not path.exists(),"Unregistered source present; stop"
+              shutil.copyfile(staging/"isidore-etymologiae-la.json",path)
+              old["entries"].append(item)
+          for id,digest in prior.items():
+              assert hashlib.sha256((folder/(id+"-la.json")).read_bytes()).hexdigest()==digest, "Protected previous source modified"
+          old["count"]=len(old["entries"])
+          old["totalBytes"]=sum(int(e["bytes"]) for e in old["entries"])
+          old["isidoreMethod"]="20 public-domain digital transcripts with technical search segments only; no manuscript collation"
+          manifest_file.write_text(json.dumps(old,ensure_ascii=False,indent=2)+"\n","utf-8")
+          print("Verified and appended Isidore; external Latin count:",old["count"])
+          PY
+          git -C "$TARGET" add data/offsite-latin/manifest.json data/offsite-latin/isidore-etymologiae-la.json
+          if git -C "$TARGET" diff --cached --quiet; then
+            echo 'The immutable source is already indexed; previous materials untouched.'
+            exit 0
+          fi
+          git -C "$TARGET" commit -m "Append Isidore twenty-book Etymologiae search index outside Pages"
+          git -C "$TARGET" push origin "HEAD:refs/heads/$BRANCH"
+          echo 'Vitruvian Codex, folios, manuscript scans, original editions, PDFs and DOCXs unchanged.'
