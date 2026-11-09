@@ -78,3 +78,21 @@ const app=readFileSync("assets/app.js","utf8");
 assert(app.includes("Citar / DOI")&&app.includes("criticalPassageCitation"),
  "Cada pasaje debe poder copiarse con su DOI editorial");
 console.log("PASS academia: cuatro DOI, citación, TEI, corpus léxico y estado de evidencia");
+
+const wholeBook=readFileSync("data/tei/v514-book-I-bilingual.xml","utf8");
+const commentary=JSON.parse(readFileSync("data/annotations/v514-I-praef-1-exegetical.json","utf8"));
+const sourceV514=JSON.parse(readFileSync("data/structured/recensio-es.json","utf8"));
+const bookOne=sourceV514.passages.filter(p=>p.book===1||String(p.locus||"").startsWith("1."));
+assert.equal(bookOne.length,67,"La fuente debe contener 67 unidades editoriales de libro I");
+const latinIds=[...wholeBook.matchAll(/xml:id="(vitr-1-[^"]+)"(?=\s+n=)/g)];
+const translationLinks=[...wholeBook.matchAll(/corresp="#vitr-1-[^"]+"/g)];
+assert.equal(latinIds.length,67,"TEI: faltan unidades latinas del libro I");
+assert.equal(translationLinks.length,67,"TEI: faltan unidades españolas vinculadas por locus");
+assert(!/<app\b|<rdg\b/.test(wholeBook),"TEI: no se deben atribuir variantes sin testimonios");
+assert.equal(commentary.notes.length,6,"Comentario: verificar sus seis capas");
+const pref=sourceV514.passages.find(p=>p.locus==="1.praef.1");
+assert(pref&&commentary.notes.every(n=>n.locus===pref.locus&&pref.latin.includes(n.anchor)&&n.reviewStatus==="provisional_unreviewed"&&n.witnessCollation===null),
+ "Comentario: cada anclaje debe existir en el pasaje y conservar el estado provisional");
+const commentaryPage=readFileSync("comentario-vitruvio-prefacio.html","utf8");
+assert(commentaryPage.includes(pref.latin),"La página estática debe reproducir el latín de V514");
+console.log("PASS TEI: 67 loci, 67 correspondencias, seis notas comprobables y sin variantes inventadas");
