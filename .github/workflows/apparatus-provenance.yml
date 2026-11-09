@@ -1,0 +1,37 @@
+name: Apparatus criticus provenance audit
+on:
+  push:
+    paths:
+      - 'scripts/audit-apparatus-provenance.mjs'
+      - 'data/apparatus-index.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+      - '.github/workflows/apparatus-provenance.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit-apparatus-provenance.mjs'
+      - 'data/apparatus-index.json'
+      - 'data/critical-notes.json'
+      - 'data/ecdotic-decisions.json'
+      - '.github/workflows/apparatus-provenance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate origins of notes and loci
+        run: node scripts/audit-apparatus-provenance.mjs
+      - name: Preserve audit for editorial review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apparatus-provenance
+          path: reports/apparatus-provenance.json
+          if-no-files-found: warn

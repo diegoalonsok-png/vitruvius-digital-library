@@ -1,0 +1,30 @@
+name: Centro de control académico · integridad
+on:
+  pull_request:
+    paths:
+      - 'centro-control-academico.html'
+      - 'assets/centro-control-academico.*'
+      - 'scripts/test-academic-console.mjs'
+      - '.github/workflows/academic-control-console.yml'
+  push:
+    paths:
+      - 'centro-control-academico.html'
+      - 'assets/centro-control-academico.*'
+      - 'scripts/test-academic-console.mjs'
+      - '.github/workflows/academic-control-console.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis
+        run: node --check assets/centro-control-academico.js
+      - name: Validar referencias y conservación
+        run: node scripts/test-academic-console.mjs
