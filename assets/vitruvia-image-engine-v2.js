@@ -198,7 +198,17 @@ function collectedImages(pages,topic){
  }
  return window.VitruviaDiscovery?.sortImages(items,topic)||items.sort((a,b)=>b.score-a.score);
 }
+function exactPersonGalleryImage(item,topic){
+ if(topic.kind!=="person"||!topic.requireFullIdentity)return true;
+ const full=fold(topic.requireFullIdentity);
+ const text=fold([item.name,item.caption].filter(Boolean).join(" "));
+ const exact=(" "+text+" ").includes(" "+full+" ");
+ // Entity-backed lead images are verified against the resolved person's record.
+ return exact||item.verifiedIdentity===true;
+}
 function displayGroups(items,topic){
+ items=items.filter(item=>exactPersonGalleryImage(item,topic));
+ if(!items.length){grid.replaceChildren();quick.replaceChildren();quick.hidden=true;section.hidden=true;return}
  // Childhood photos are historical documents, but never lead a person's gallery
  // when adult photographs are available. If all imagery is childhood, retain it.
  if(topic.kind==="person"&&items.some(item=>!isChildhoodPhoto(item)))
