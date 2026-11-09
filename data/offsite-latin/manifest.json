@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-offsite-latin-originals-manifest-v1",
   "branch": "corpus-originales-latinos-20261108",
-  "count": 8,
-  "totalBytes": 1305703,
+  "count": 9,
+  "totalBytes": 2824528,
   "method": "Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text",
   "entries": [
     {
@@ -242,9 +242,226 @@
       "passages": 16,
       "bytes": 17937,
       "editorialStatus": "Documented digital transcription, not a verified critical edition; source variants and manuscript attribution require scholarly review"
+    },
+    {
+      "workId": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "language": "la",
+      "path": "data/offsite-latin/isidore-etymologiae-la.json",
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/1.txt",
+      "sourceParts": [
+        {
+          "book": 1,
+          "file": "isidore/1.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/1.txt",
+          "sourceSha256": "f8319d0c57b3c0d84ba41e4376a8311a34ce9498d0d81139c047c9bcc3d51c2b",
+          "bytes": 94692,
+          "segments": 130,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER I",
+          "normalizedTextSha256": "9f99271900725a751dc0888e90c20ce87a810c453f26d7cfa464411d35af4067"
+        },
+        {
+          "book": 2,
+          "file": "isidore/2.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/2.txt",
+          "sourceSha256": "47fc7ac3078e826579814c280eee901ea925f18646405af8103a2d8b3a8dfa47",
+          "bytes": 69819,
+          "segments": 97,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER II",
+          "normalizedTextSha256": "e11426afb18b0e609e6b9e22033649afafb6ccc2d1c73b2da9b4937d6e287c1a"
+        },
+        {
+          "book": 3,
+          "file": "isidore/3.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/3.txt",
+          "sourceSha256": "8c901c09ef046d977359b4570753bec5250b7251d39e02d9192533506c6fe417",
+          "bytes": 60287,
+          "segments": 83,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER III",
+          "normalizedTextSha256": "e6dc0f049e8f5368d254035b54ef5c6584ffdff1e0ac142661dacf7f284f759e"
+        },
+        {
+          "book": 4,
+          "file": "isidore/4.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/4.txt",
+          "sourceSha256": "c63655353dc9f8695e3790273fe5875286aa19d4411f7be6ce919cd62ba764b8",
+          "bytes": 24944,
+          "segments": 35,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER IV",
+          "normalizedTextSha256": "edc104afadba88c7ae1b70f269294c0103a05cfbd4cf49b16e652d6a60ea851c"
+        },
+        {
+          "book": 5,
+          "file": "isidore/5.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/5.txt",
+          "sourceSha256": "4bbe2814784880342a43b8fb8455c4f52dfee6708acd504358de661a24e3bad3",
+          "bytes": 55528,
+          "segments": 77,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER V",
+          "normalizedTextSha256": "a5ef97c3f42d31910579451cdc8e92c0ab0c4637a0f14ee88e266e80995497d5"
+        },
+        {
+          "book": 6,
+          "file": "isidore/6.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/6.txt",
+          "sourceSha256": "5ceda7334a6e93ec9043756e44f10ad6e2479af6f0b51a339e5e640a7ca96689",
+          "bytes": 64790,
+          "segments": 89,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER VI",
+          "normalizedTextSha256": "c676020fc793c7a31effc6c393c80709c8ddfac4275252d1dd5601847ee201d6"
+        },
+        {
+          "book": 7,
+          "file": "isidore/7.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/7.txt",
+          "sourceSha256": "c1c22be7f31a8a4bd77245c7bc9702dee54c7d10f4da28f97da94165ea0f1563",
+          "bytes": 79829,
+          "segments": 111,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER VII",
+          "normalizedTextSha256": "41bc23e41fab3bfdde66ebc340939712414ad4f574286baa420263c8b907d4a8"
+        },
+        {
+          "book": 8,
+          "file": "isidore/8.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/8.txt",
+          "sourceSha256": "f98195a297b8979ecaa387df2e965ac37f4dbfeab2181d88042ca4d85a0d3723",
+          "bytes": 64647,
+          "segments": 90,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER VIII",
+          "normalizedTextSha256": "1c4d1d72f8d9bc235248dc4f30b3c3a46e134f3c26d796f9c0a20593bdfc732c"
+        },
+        {
+          "book": 9,
+          "file": "isidore/9.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/9.txt",
+          "sourceSha256": "b08030a13541eab1bfe33db3154fdf0a3a0121a5b91e5d15b7a78b0f1df2e946",
+          "bytes": 72249,
+          "segments": 100,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER IX",
+          "normalizedTextSha256": "eba5d69eeb7bd30031c3e4fa30078e4de50fbd7cb09c513f6ad43e71ff3e72f3"
+        },
+        {
+          "book": 10,
+          "file": "isidore/10.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/10.txt",
+          "sourceSha256": "9c6d959ea9ae61503b915549ffa3d299b6ecbe5c4d31ae0dca2cf47aa3ed266c",
+          "bytes": 54657,
+          "segments": 75,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER X",
+          "normalizedTextSha256": "639443f1a11b451cadce9fc54bc8bfaae4a8a29a085f7ebb1141b1de406a1ba5"
+        },
+        {
+          "book": 11,
+          "file": "isidore/11.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/11.txt",
+          "sourceSha256": "b0ff1b4eee194d2082ab164c7838d3b4400bc956fb9d3bec6e3851b64bf7a74b",
+          "bytes": 53074,
+          "segments": 74,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XI",
+          "normalizedTextSha256": "32d4301464a214dbdb6bb63a4d1eb7a8208fa54c2490fe1471be9b80b6d3cd01"
+        },
+        {
+          "book": 12,
+          "file": "isidore/12.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/12.txt",
+          "sourceSha256": "5d280067b02096cd7a9871b1858a63547e7227b9ac9dfd715b4406a8369c32e8",
+          "bytes": 81687,
+          "segments": 113,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XII",
+          "normalizedTextSha256": "5653d01492d3ed0511fcedfb34bd7eeff90daaf073b5324dcad7f4b756995a61"
+        },
+        {
+          "book": 13,
+          "file": "isidore/13.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/13.txt",
+          "sourceSha256": "6c293c2ccbee2082725608899c78c2d54c016576ec56950aa648141f90aa3c4a",
+          "bytes": 43890,
+          "segments": 61,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XIII",
+          "normalizedTextSha256": "eb3aa95a8eb756b3d797dbb27219987d6daea8fdbaf38120da76281183426dd3"
+        },
+        {
+          "book": 14,
+          "file": "isidore/14.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/14.txt",
+          "sourceSha256": "171ada7f26d1a46e04a2d02e8007676c18fb37b5394cd26d5762287a1450a3cd",
+          "bytes": 60044,
+          "segments": 83,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XIV",
+          "normalizedTextSha256": "d01b00b289bbbad0be80f4298d65dd64dd89deae1410963af4ae28c56d7624e8"
+        },
+        {
+          "book": 15,
+          "file": "isidore/15.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/15.txt",
+          "sourceSha256": "d12c68a429942331ce7e6f28bab11b99a84fd229a8a9481cf1a7af306327c867",
+          "bytes": 56357,
+          "segments": 78,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XV",
+          "normalizedTextSha256": "788e9678c0094208474feceb113732f09bb917d1f07a89a4697c196e9115c64e"
+        },
+        {
+          "book": 16,
+          "file": "isidore/16.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/16.txt",
+          "sourceSha256": "d4724e841a6d3b254b0ed15afeaeb5769230941d436f23035df3dfb32f3d97e6",
+          "bytes": 69496,
+          "segments": 97,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XVI",
+          "normalizedTextSha256": "2feeae3f9f89f82991706ef33449e2864e8bf445bccb954e688dcb7f9451b5f5"
+        },
+        {
+          "book": 17,
+          "file": "isidore/17.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/17.txt",
+          "sourceSha256": "73a70056a7237737bd1be8704deec325c5074b5eac88444679f6722eb28ba48a",
+          "bytes": 71125,
+          "segments": 99,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XVII",
+          "normalizedTextSha256": "50ae9a293e0fa84615470858b79621b631a4a6a8ebdffe9f15a793c4527cd74c"
+        },
+        {
+          "book": 18,
+          "file": "isidore/18.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/18.txt",
+          "sourceSha256": "2724e48e2ae9505a44113b2186eb5302520d629461298e610721585d4577dbe6",
+          "bytes": 42131,
+          "segments": 58,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XVIII",
+          "normalizedTextSha256": "82bf8976e56956a2907468e548098943f0dbdbef19ceb6d6e06f2600d72ee12c"
+        },
+        {
+          "book": 19,
+          "file": "isidore/19.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/19.txt",
+          "sourceSha256": "fa49a242d7357530fee87ee0d655b6afd54ca025d89eca448a628d948ecaab8e",
+          "bytes": 66988,
+          "segments": 93,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XIX",
+          "normalizedTextSha256": "e59a01c2ef2bb0d5842caa77e05680c73350aaf64cded6dad290b6343a56dbcc"
+        },
+        {
+          "book": 20,
+          "file": "isidore/20.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/20.txt",
+          "sourceSha256": "b1a50923cb1ef5421e3f4eec0ee39c3579f470787fa14c411d50fa619674df8c",
+          "bytes": 35550,
+          "segments": 49,
+          "titleTranscribed": "ISIDORI HISPALENSIS EPISCOPI ETYMOLOGIARUM SIVE ORIGINUM LIBER XX",
+          "normalizedTextSha256": "aa626dfa3b28c69be6a55e25fe2afda1777307fdbcc400ad463e53d9bf74312b"
+        }
+      ],
+      "sourceSha256": "1185d5c24551196f9195708560decc1c4aea0c9a69f2716aadd90f4499e925e4",
+      "attribution": "Isidorus Hispalensis, Etymologiae (Origines), twenty Latin books; digital transcriptions at The Latin Library, mirrored by CLTK, https://github.com/cltk/lat_text_latin_library/tree/master/isidore. Underlying print edition and manuscript witnesses not specified; not a critical edition, autoptic collation, or aligned translation.",
+      "passages": 1692,
+      "books": 20,
+      "bytes": 1518825,
+      "editorialStatus": "Public-domain Latin digital transcription, without verified edition or manuscript apparatus; whitespace normalized only for search"
     }
   ],
   "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita",
   "naturalesMethod": "Seven CLTK/The Latin Library transcriptions; technical loci, no manuscript collation or invented translation",
-  "twoWorksMethod": "Velleius and Frontinus source transcriptions; chapter labels/technical segments; no claim of critical collation"
+  "twoWorksMethod": "Velleius and Frontinus source transcriptions; chapter labels/technical segments; no claim of critical collation",
+  "isidoreMethod": "20 public-domain digital transcripts with technical search segments only; no manuscript collation"
 }
