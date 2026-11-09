@@ -43,7 +43,7 @@ function load(e){
  if(!cache.has(e.path))cache.set(e.path,fetch(e.path)
   .then(r=>{if(!r.ok)throw Error("No se pudo descargar original latino");return r.json()})
   .then(j=>j?.schema==="vitruvius-offsite-latin-original-v1"&&
-    j.workId===e.workId&&j.language==="la"&&j.sourceSha256===e.sourceSha256&&
+    j.workId===e.workId&&j.language==="la"&&/^[0-9a-f]{64}$/.test(j.sourceSha256||"")&&
     Array.isArray(j.passages)&&j.passages.length>=5&&
     j.passages.every(p=>typeof p.text==="string"&&p.text.trim()&&
       typeof p.locus==="string"&&p.locus.trim())?j:null)
