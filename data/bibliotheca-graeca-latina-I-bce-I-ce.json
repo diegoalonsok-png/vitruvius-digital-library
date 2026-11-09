@@ -1884,9 +1884,13 @@
         "status": "Edición textual aún no cotejada"
       },
       "manuscript": {
-        "manifest": null,
+        "manifest": "https://fragmentarium.ms/metadata/iiif/F-lz0u/manifest.json",
         "record": "https://www.e-codices.ch/en/list/one/bbb/0722-3",
-        "status": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. (E): reúne el epítome de Faventino y extractos vitruvianos. Bern, Burgerbibliothek, Cod. 722.3: fragmento carolingio. Otros testigos por cotejar."
+        "status": "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. (E): reúne el epítome de Faventino y extractos vitruvianos. Bern, Burgerbibliothek, Cod. 722.3: fragmento carolingio. Otros testigos por cotejar.",
+        "fragmentariumRecord": "https://fragmentarium.ms/overview/F-lz0u",
+        "iiifWitness": "Bern, Burgerbibliothek, Cod. 722.3 (Fulda, 826–850 d. C.; fragmento de un bifolio, NO testimonio completo)",
+        "accessStatus": "Enlace externo a facsímil fragmentario IIIF; sin transcripción íntegra ni cotejo filológico; respetar condiciones de imagen de la institución custodia.",
+        "verifiedFrom": "Fragmentarium F-lz0u y e-codices Burgerbibliothek Cod. 722.3 (verificación bibliográfica 2026-11-09)"
       },
       "pdf": {
         "url": null,
