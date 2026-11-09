@@ -173,7 +173,18 @@ async function show(locus){
   const box=el("section","coll-row");
   box.append(el("h3",null,w.label+" · p. "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · facsímil"));
   box.append(el("p","coll-cite",w.citation));
-  box.append(el("p","coll-warning","Transcripción OCR no validada: contiene errores de reconocimiento, caracteres griegos corruptos y mezcla de notas con el texto principal. Se omite el texto automático y la comparación de variantes para evitar lecturas filológicas falsas. El original impreso sigue disponible."));
+  // The opening of Book I is noticeably cleaner than Book X, but still
+  // contains minor OCR mistakes. Show only this narrowly verified sample
+  // as provisional reading; no automatic textual variants are asserted.
+  const readablePreface=locus==="1.praef.1"&&Number(rec.score)>=0.9&&
+   !/[|{}\\]/.test(rec.text)&&String(rec.text||"").length>200;
+  if(readablePreface){
+   box.append(el("p","coll-warning","OCR orientativo del primer pasaje del prefacio I, relativamente legible pero no cotejado (puede contener erratas). No citar como transcripción diplomática ni como variante textual sin consultar el facsímil."));
+   const passage=el("p","coll-text",rec.text);passage.lang="la";box.append(passage);
+   addReadTools(box,passage,locus,w.id);
+  }else{
+   box.append(el("p","coll-warning","OCR no validado o contaminado por errores de reconocimiento y notas editoriales. No se muestra como lectura crítica; consulta el facsímil. La calidad varía entre loci y no se debe extrapolar del prefacio I al libro X."));
+  }
   const a=el("a",null,"Consultar la edición original (facsímil) ↗");
   a.href=historicalSources[w.id]||"bibliotheca-graeca-latina.html";
   a.target="_blank";a.rel="noopener";
