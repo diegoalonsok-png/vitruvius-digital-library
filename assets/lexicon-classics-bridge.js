@@ -17,10 +17,104 @@ const semantic=document.createElement("button");semantic.type="button";semantic.
 const status=document.createElement("p");status.setAttribute("role","status");status.className="lx-library-status";
 const list=document.createElement("div");list.className="lx-library-list";
 const controls=document.createElement("div");controls.className="lx-library-actions";controls.append(button,semantic);
+const translationLabel=document.createElement("label");translationLabel.className="lx-library-translation-label";
+translationLabel.textContent="Traducción del pasaje · ";
+const translationSelect=document.createElement("select");
+translationSelect.id="lx-library-translation-lang";
+translationSelect.setAttribute("aria-label","Idioma para traducir los pasajes de la obra seleccionada");
+for(const [code,name] of [["es","Español"],["en","English"],["fr","Français"]]){
+ const option=document.createElement("option");option.value=code;option.textContent=name;translationSelect.append(option);
+}
+translationSelect.value=["es","en","fr"].includes(document.getElementById("lx-ui")?.value)?
+ document.getElementById("lx-ui").value:"es";
+translationLabel.append(translationSelect);controls.append(translationLabel);
+const styles=document.createElement("style");
+styles.textContent=".lx-library-translation-label{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;font:12px system-ui;color:inherit}.lx-library-translation-label select{border:1px solid #555;background:#19191b;color:#eee;border-radius:4px;padding:7px}.lx-library-parallel{border-left:2px solid #ab8648;padding:6px 12px;margin:8px 0 16px;background:rgba(80,70,50,.10)}.lx-library-parallel .lx-library-translation-text{white-space:pre-wrap;line-height:1.65;margin:6px 0;color:inherit}.lx-library-parallel .lx-library-translation-title{font:600 12px system-ui;color:#d9ae67;margin:2px 0}.lx-library-parallel .lx-library-translation-note{font:11px/1.5 system-ui;color:#aaa}.lx-library-parallel a{font-size:12px;text-decoration:underline;text-underline-offset:3px}";
+parent.append(styles);
 parent.append(title,note,controls,status,list);
 const grid=results.closest(".results-grid");
 if(grid)grid.parentNode.insertBefore(parent,grid);else results.parentNode.insertBefore(parent,results);
 let serial=0;
+let translationContext=null,selectedLiteralRows=[];
+const translationNames={es:"castellano",en:"inglés",fr:"francés"};
+const translationDataCache=new Map();
+function translationUrl(e,locus){
+ let raw=e.reader||("classics-text-reader.html?work="+encodeURIComponent(e.workId)+"&lang="+encodeURIComponent(e.language));
+ const href=safeLocalUrl(raw);if(!href)return null;
+ const u=new URL(href);
+ if(locus&&["json-passages","structured-bilingual"].includes(e.format))u.searchParams.set("locus",locus);
+ return u.href;
+}
+async function translationEdition(workId,language,editions){
+ const candidates=editions.filter(e=>e.workId===workId&&e.language===language&&
+  ["json-passages","structured-bilingual"].includes(e.format)&&
+  /^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||""));
+ for(const edition of candidates){
+  const key=edition.path+"|"+language;
+  if(!translationDataCache.has(key)){
+   translationDataCache.set(key,fetch(edition.path)
+    .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+    .then(raw=>{
+     let passages;
+     if(edition.format==="structured-bilingual"){
+      if(raw.edition!==edition.edition||raw.language!==language||!Array.isArray(raw.passages))return null;
+      passages=raw.passages.map(p=>({locus:String(p.locus||""),text:p.translation}));
+     }else{
+      if(raw.workId!==(edition.sourceWorkId||workId)||raw.language!==language||!Array.isArray(raw.passages))return null;
+      passages=raw.passages;
+     }
+     const map=new Map(),duplicate=new Set();
+     for(const p of passages){
+      const locus=String(p.locus||"").trim(),txt=p.text;
+      if(!locus||typeof txt!=="string"||!txt.trim())continue;
+      if(map.has(locus)){duplicate.add(locus);map.delete(locus);}
+      else if(!duplicate.has(locus))map.set(locus,txt.trim());
+     }
+     return map.size?{edition,map,duplicate:duplicate.size}:null;
+    }).catch(()=>null));
+  }
+  const ready=await translationDataCache.get(key);
+  if(ready)return ready;
+ }
+ return null;
+}
+async function prepareTranslation(workId,editions){
+ const language=translationSelect.value;
+ const data=await translationEdition(workId,language,editions);
+ return {workId,language,...(data||{edition:null,map:new Map(),duplicate:0})};
+}
+function appendTranslation(card,row){
+ if(!translationContext||translationContext.workId!==row.workId||!["la","grc"].includes(row.language))return;
+ const info=translationContext,block=document.createElement("section");
+ block.className="lx-library-parallel";block.lang=info.language;
+ const title=document.createElement("p");title.className="lx-library-translation-title";
+ title.textContent="Traducción al "+(translationNames[info.language]||info.language)+" · locus "+(row.locus||"no identificado");
+ block.append(title);
+ const translated=info.map.get(String(row.locus||"").trim());
+ if(translated){
+  const passage=document.createElement("p");passage.className="lx-library-translation-text";passage.textContent=translated;
+  block.append(passage);
+  const note=document.createElement("p");note.className="lx-library-translation-note";
+  note.textContent="Coincidencia por identificador editorial; no certifica equivalencia léxica ni cotejo de manuscritos. "+(info.edition?.sourceDescription||"");
+  block.append(note);
+  const url=translationUrl(info.edition,String(row.locus||""));
+  if(url){const a=document.createElement("a");a.href=url;a.textContent="Leer traducción en su edición";block.append(a);}
+ }else{
+  const note=document.createElement("p");note.className="lx-library-translation-note";
+  note.textContent=info.edition?
+   "No existe correspondencia única de locus con la traducción seleccionada. Se conserva el pasaje original; no se inventa una equivalencia.":
+   "No hay traducción textual consultable en este idioma dentro del registro de esta obra.";
+  block.append(note);
+  if(info.edition){const url=translationUrl(info.edition,"");if(url){const a=document.createElement("a");a.href=url;a.textContent="Consultar edición sin alineación";block.append(a);}}
+ }
+ const comparison=new URL("classics-parallel-reader.html",location.href);
+ comparison.searchParams.set("work",row.workId);comparison.searchParams.set("left",row.language);
+ comparison.searchParams.set("right",info.language);
+ if(row.locus)comparison.searchParams.set("locus",row.locus);
+ const compare=document.createElement("a");compare.href=comparison.href;compare.textContent=" · Lectura enfrentada";block.append(compare);
+ card.append(block);
+}
+
 const safeUrl=value=>{try{const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:null}catch{return null}};
 let editionRegistryTask=null;
 const safeLocalUrl=value=>{try{const u=new URL(String(value||""),location.href);return u.origin===location.origin&&/^https?:$/.test(u.protocol)?u.href:null}catch{return null}};
@@ -92,7 +186,7 @@ function addResult(row,editions){
   try{if(!navigator.clipboard?.writeText)throw Error("Clipboard unavailable");await navigator.clipboard.writeText(text);copy.textContent="Referencia copiada";}
   catch{window.prompt("Copiar referencia y pasaje:",text)}
  });
- card.append(passage,count,top,excerpt,source,copy,editionConnections(row,editions));list.append(card);
+ card.append(passage,count,top,excerpt);appendTranslation(card,row);card.append(source,copy,editionConnections(row,editions));list.append(card);
 }
 function addSummaryResult(row){
  const card=document.createElement("article");card.className="lx-library-result";
@@ -148,6 +242,14 @@ function showLiteralRows(rows,editions){
   stats.textContent=occ+" coincidencia"+(occ===1?"":"s")+" · "+ordered.length+" pasaje"+(ordered.length===1?"":"s")+
    (selectedWorkId===workId?" · ordenados por locus":" · vista global limitada por edición");
   header.append(name,stats);
+  if(selectedWorkId===workId&&translationContext?.workId===workId){
+   const tr=document.createElement("p");tr.className="lx-library-meta";
+   const n=ordered.filter(r=>["la","grc"].includes(r.language)).length;
+   const matched=ordered.filter(r=>["la","grc"].includes(r.language)&&translationContext.map.has(String(r.locus||"").trim())).length;
+   tr.textContent="Traducción: "+(translationNames[translationContext.language]||translationContext.language)+
+    " · "+matched+" de "+n+" pasajes originales con locus compartido (solo correspondencia editorial; requiere cotejo).";
+   header.append(tr);
+  }
   if(selectedWorkId!==workId){
    const show=document.createElement("button");show.type="button";
    show.className="lx-library-button";
@@ -179,6 +281,9 @@ async function selectLibraryWork(workId){
   if(token!==serial)return;
   const remaining=currentLiteralRows.filter(row=>row.workId!==workId);
   const selected=specific.filter(row=>row.workId===workId);
+  selectedLiteralRows=selected;
+  translationContext=await prepareTranslation(workId,currentEditions);
+  if(token!==serial)return;
   showLiteralRows([...selected,...remaining],currentEditions);
   const count=selected.reduce((n,r)=>n+(Number(r.hitsInPassage)||0),0);
   status.textContent=[selected[0]?.author,selected[0]?.title].filter(Boolean).join(" · ")+
@@ -191,7 +296,7 @@ async function selectLibraryWork(workId){
  }finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
 }
 async function execute(mode="literal"){
- const q=input.value.trim(),token=++serial;list.replaceChildren();selectedWorkId="";currentLiteralRows=[];currentQuery=q;
+ const q=input.value.trim(),token=++serial;list.replaceChildren();selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery=q;
  if(!/[\p{L}]/u.test(q)){status.textContent="Escriba una palabra griega o latina para consultar los textos indexados.";return}
  if(!window.ClassicsCorpusSearch){status.textContent="El motor de textos clásicos no está disponible.";return}
  button.disabled=true;semantic.disabled=true;status.textContent="Buscando pasajes en las ediciones indexadas…";
@@ -221,6 +326,22 @@ async function execute(mode="literal"){
  }catch(error){if(token===serial)status.textContent="No se pudo completar la búsqueda: "+String(error.message||error)}
  finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
 }
+translationSelect.addEventListener("change",async()=>{
+ const workId=selectedWorkId;if(!workId||!selectedLiteralRows.length)return;
+ const token=++serial;
+ status.textContent="Consultando traducción al "+(translationNames[translationSelect.value]||translationSelect.value)+"…";
+ translationContext=await prepareTranslation(workId,currentEditions);
+ if(token!==serial)return;
+ showLiteralRows([...selectedLiteralRows,...currentLiteralRows.filter(row=>row.workId!==workId)],currentEditions);
+ status.textContent="Se muestra el pasaje original y la traducción al "+translationNames[translationSelect.value]+
+  " cuando ambos comparten un locus editorial único. Si falta, se indica expresamente.";
+});
+document.getElementById("lx-ui")?.addEventListener("change",()=>{
+ const lang=document.getElementById("lx-ui")?.value;
+ if(["es","en","fr"].includes(lang)&&translationSelect.value!==lang){
+  translationSelect.value=lang;translationSelect.dispatchEvent(new Event("change"));
+ }
+});
 button.addEventListener("click",()=>execute("literal"));
 semantic.addEventListener("click",()=>execute("semantic"));
 window.addEventListener("vitruvia:lexicon-search",event=>{
@@ -229,7 +350,7 @@ window.addEventListener("vitruvia:lexicon-search",event=>{
 });
 // A Lexicon search must also retrieve literal attestations; a missing dictionary headword is not absence from the corpus.
 document.getElementById("lx-form")?.addEventListener("submit",()=>{if(/[\p{L}]/u.test(input.value.trim()))execute("literal")});
-input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
+input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
