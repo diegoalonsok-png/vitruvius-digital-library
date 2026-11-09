@@ -73,6 +73,7 @@ def build_one(workid, author, title, urn, path, edition):
         raise ValueError("Insufficient TEI paragraphs: " + urn)
     counters = defaultdict(int)
     passages = []
+    empty_structural_paragraphs = 0
     for p in paragraphs:
         path = []
         ancestor = parents.get(p)
@@ -81,10 +82,14 @@ def build_one(workid, author, title, urn, path, edition):
                 path.append(ancestor.get("n"))
             ancestor = parents.get(ancestor)
         editorial = ".".join(reversed(path)) or "text"
-        counters[editorial] += 1
         text = SPACES.sub(" ", surface(p)).strip()
         if not text:
-            raise ValueError("Empty TEI paragraph needs review: " + urn)
+            # Truly empty TEI paragraphs are structure, not missing text.
+            if SPACES.sub(" ", "".join(p.itertext())).strip():
+                raise ValueError("TEI paragraph with excluded textual content needs review: " + urn)
+            empty_structural_paragraphs += 1
+            continue
+        counters[editorial] += 1
         passages.append({
             "locus": editorial + "~p" + str(counters[editorial]),
             "editorialLocus": editorial,
@@ -92,7 +97,7 @@ def build_one(workid, author, title, urn, path, edition):
             "text": text,
         })
     chars = sum(len(p["text"]) for p in passages)
-    if chars < 2500 or len(passages) != len(paragraphs):
+    if chars < 2500 or len(passages) + empty_structural_paragraphs != len(paragraphs):
         raise ValueError("Incomplete TEI extraction: " + urn)
     source_hash = hashlib.sha256(raw).hexdigest()
     citation = author + ", " + title + ". Ed. " + edition + " TEI: Perseus Digital Library."
