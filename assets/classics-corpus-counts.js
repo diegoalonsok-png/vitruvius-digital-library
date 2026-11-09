@@ -23,7 +23,9 @@ function style(){
  ".classics-tally a{color:inherit;text-underline-offset:3px}",
  "body:has(.bibliotheca-suite) .classics-tally{background:#121214;color:#e9e9ea}",
  "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a;background:#19191b}",
- "@media(hover:hover){.classics-tally dl>div:hover{border-color:#8b8b90;background:rgba(255,255,255,.04)}}",\n "@media(max-width:800px){.classics-tally dl{grid-template-columns:repeat(2,minmax(0,1fr))}}",\n "@media(max-width:480px){.classics-tally dl{gap:9px}.classics-tally dl>div{padding:15px 13px}.classics-tally dd{font-size:35px}}",
+ "@media(hover:hover){.classics-tally dl>div:hover{border-color:#8b8b90;background:rgba(255,255,255,.04)}}",
+ "@media(max-width:800px){.classics-tally dl{grid-template-columns:repeat(2,minmax(0,1fr))}}",
+ "@media(max-width:480px){.classics-tally dl{gap:9px}.classics-tally dl>div{padding:15px 13px}.classics-tally dd{font-size:35px}}",
  "@media print{.classics-tally{break-inside:avoid}}"
  ].join("\n");document.head.append(el);
 }
