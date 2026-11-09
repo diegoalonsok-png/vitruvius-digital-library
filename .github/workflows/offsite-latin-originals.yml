@@ -5,10 +5,22 @@ on:
     branches: [main]
     paths:
       - 'scripts/build-offsite-latin-originals.py'
+      - 'scripts/test-offsite-latin-originals.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'classics-remote-latin-reader.html'
       - '.github/workflows/offsite-latin-originals.yml'
   pull_request:
     paths:
       - 'scripts/build-offsite-latin-originals.py'
+      - 'scripts/test-offsite-latin-originals.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'classics-remote-latin-reader.html'
       - '.github/workflows/offsite-latin-originals.yml'
 permissions:
   contents: write
@@ -27,8 +39,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validar extractor
-        run: python -m py_compile scripts/build-offsite-latin-originals.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar extractor y concordancias interconectadas
+        run: |
+          python -m py_compile scripts/build-offsite-latin-originals.py
+          node --check assets/bibliotheca-offsite-latin.js
+          node --check assets/classics-corpus-search.js
+          node --check assets/bibliotheca-corpus-search.js
+          node --check assets/bibliotheca-simple.js
+          node scripts/test-offsite-latin-originals.mjs
       - name: Extraer originales TEI en directorio temporal
         if: github.event_name != 'pull_request'
         run: python scripts/build-offsite-latin-originals.py --output "$RUNNER_TEMP/latin-originals"
