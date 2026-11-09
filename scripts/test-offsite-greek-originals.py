@@ -43,4 +43,47 @@ try:
  raise AssertionError("An unknown licence must reject ingestion")
 except ValueError as e:
  assert "licence" in str(e).lower() or "cc by-sa" in str(e).lower()
-print("PASS: Greek TEI edition, editorial loci, note isolation, licensing, and 14 candidates.")
+assert len(module.MARKDOWN_SOURCES) == 3
+normalized_source = (
+ "---\n"
+ "title: Constructions of War Machines and Catapults\n"
+ "title_greek: Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν\n"
+ "author: Biton Mechanicus\n"
+ "eul_wid: lsg-aa\n"
+ "lang: grc\n"
+ 'canonical: "https://eulogikon.org/works/biton-war-machines-catapults-lsg-aa"\n'
+ 'license: "https://creativecommons.org/publicdomain/mark/1.0/"\n'
+ "---\n\n# Biton\n\n## Text\n"
+ "## ΒΙΤΩΝΟΣ ΚΑΤΑΣΚΕΥΑΙ\n"
+ + (sample * 3)
+ + "\n### 1\n" + sample * 3
+ + "\n*[crux: disputed editorial reading]*\n"
+ + "\n### 2\n" + sample * 3
+ + "\n### 3\n" + sample * 3
+ + "\n## License and provenance\n"
+ + "Eulogikon publishes public-domain Greek texts in cleaned, structured, readable form.\n"
+).encode("utf-8")
+md_url = module.MARKDOWN_BASE + "biton-war-machines-catapults-lsg-aa.grc.md"
+md = module.convert_markdown(
+ "biton-kataskeuai", normalized_source, md_url,
+ {"author":"Bitón", "title":"Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+  "reading":{"url":"https://archive.org/details/poliorktikakaip00petegoog"}},
+ "lsg-aa"
+)
+assert md["sourceType"]=="normalized-greek-reading"
+assert md["sourceUrn"]==""
+assert md["editorialStatus"].find("NO edición crítica")>=0
+assert md["readingFacsimile"].startswith("https://archive.org/")
+assert [p["locus"] for p in md["passages"]]==["proemium.source","1","2","3"]
+assert md["sourceEditorialNotesExcluded"]==1
+assert all("disputed editorial reading" not in p["text"] for p in md["passages"])
+assert len(md["passages"])==4
+try:
+ module.convert_markdown("biton-kataskeuai",
+  normalized_source.replace(b"publicdomain/mark/1.0/",b"licenses/by-sa/4.0/"),
+  md_url, {"author":"Bitón", "title":"Κατασκευαὶ..."}, "lsg-aa")
+ raise AssertionError("Non-matching license must reject ingestion")
+except ValueError:
+ pass
+print("PASS: 14 critically identified Greek TEI plus 3 separately marked normalized public-domain readings; no fabricated codex loci.")
+
