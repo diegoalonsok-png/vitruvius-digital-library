@@ -382,7 +382,9 @@ function renderHits(D,res){
  const n=res.hits.length;
  const works=new Set(res.hits.map(h=>D.corpus.passages[h.i][0]));
  setState(n?`${n.toLocaleString("es")}${res.capped?"+":""} coincidencia${n===1?"":"s"} en ${works.size} obra${works.size===1?"":"s"}${res.capped?" (límite de "+MAX_HITS+" alcanzado: filtre por obra o precise la consulta)":""} · corpus ${D.l==="grc"?"griego":"latino"} (${D.tokens.toLocaleString("es")} palabras).`:`Sin coincidencias en el corpus ${D.l==="grc"?"griego":"latino"} local.${res.sets?.some(s=>!s.size)?" Algún término no está atestiguado: pruebe ~aproximación, comodines (*) o la otra lengua.":""}`);
- $("#lx-head-title").textContent=S.mode==="frase"?"Concordancia de la frase":S.mode==="sintaxis"?"Construcciones halladas":"Concordancia";
+ const selectedWork=S.work&&D.corpus.works[S.work];
+ $("#lx-head-title").textContent=(S.mode==="frase"?"Concordancia de la frase":S.mode==="sintaxis"?"Construcciones halladas":"Concordancia")+
+ (selectedWork?" · "+selectedWork.author+", "+selectedWork.title:"");
 if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consulta. El corpus local comprende ",String(Object.keys(D.corpus.works).length)," obras; las ausencias no significan que la palabra no exista en la lengua."));return}
  const ord=$("#lx-order").value;
  let hits=res.hits.slice();
@@ -465,6 +467,22 @@ async function showApparatus(locus,box,btn){
  }catch(err){box.append(el("p",{class:"lx-small"},"No se pudo cargar el aparato: "+err.message))}
  btn.disabled=false;btn.textContent=old;
 }
+/* A book chosen from concordance lists is a passage navigation action.
+ * Complete the asynchronous re-filter before scrolling: otherwise the browser
+ * keeps the old viewport (or jumps to the header while results are rebuilt). */
+async function showPassagesOfWork(id){
+ if(!id)return;
+ S.work=id;
+ const selector=$("#lx-work");
+ if(selector)selector.value=id;
+ try{
+  await run();
+  const results=$("#lx-results"),first=results?.querySelector(".lx-hit");
+  const target=first||results||$("#results");
+  if(!target)return;
+  target.scrollIntoView({behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches?"auto":"smooth",block:"start"});
+ }catch(error){console.error("No se pudieron mostrar los pasajes de la obra:",error)}
+}
 function renderDistribution(D,hits){
  const box=$("#lx-side-extra");const by={};for(const h of hits){const id=D.corpus.passages[h.i][0];(by[id]=by[id]||[]).push(h)}
  const ids=Object.keys(by).sort((a,b)=>(CHRONO[a]??0)-(CHRONO[b]??0));if(!ids.length)return;
@@ -475,7 +493,7 @@ function renderDistribution(D,hits){
   const st=workStats(D,id);const strip=el("span",{class:"lx-disp",title:"Posición de cada coincidencia en la obra"});
   for(const h of by[id].slice(0,400)){const x=(st.offset[h.i]??0)/st.total;strip.append(el("i",{style:`left:${(x*100).toFixed(2)}%`}))}
   const dp=griesDP(D,st,by[id]);
-  sec.append(el("button",{type:"button",class:"lx-bar",title:`Filtrar: ${w.author}, ${w.title}`,onclick:()=>{S.work=id;$("#lx-work").value=id;run()}},el("span",{class:"lx-bar-label"},`${w.author} · ${w.title}`,el("small",{}," ",DATING[id]||"")),el("span",{class:"lx-bar-track"},el("span",{class:"lx-bar-fill",style:`width:${Math.max(3,k/max*100)}%`})),el("span",{class:"lx-bar-n"},String(k),el("small",{}," · ",(k/tot*10000).toFixed(1)," por 10 000 (IC 95 %: ",(lo*10000).toFixed(1),"–",(hi*10000).toFixed(1),")",dp!=null?` · DP ${dp.toFixed(2)}`:"")),strip))}
+  sec.append(el("button",{type:"button",class:"lx-bar",title:`Filtrar: ${w.author}, ${w.title}`,onclick:()=>{void showPassagesOfWork(id)}},el("span",{class:"lx-bar-label"},`${w.author} · ${w.title}`,el("small",{}," ",DATING[id]||"")),el("span",{class:"lx-bar-track"},el("span",{class:"lx-bar-fill",style:`width:${Math.max(3,k/max*100)}%`})),el("span",{class:"lx-bar-n"},String(k),el("small",{}," · ",(k/tot*10000).toFixed(1)," por 10 000 (IC 95 %: ",(lo*10000).toFixed(1),"–",(hi*10000).toFixed(1),")",dp!=null?` · DP ${dp.toFixed(2)}`:"")),strip))}
  box.prepend(sec);
 }
 /* ---------- Estadística léxica ---------- */
@@ -1475,7 +1493,7 @@ function alsoIn(D,p){
  const det=el("details",{class:"lx-also"},el("summary",{},`${T("También en")} ${ids.length} ${ids.length===1?T("obra"):T("obras")} · ${n} ${n===1?T("pasaje"):T("pasajes")}`));
  det.addEventListener("toggle",()=>{if(!det.open||det.querySelector("ul"))return;const ul=el("ul",{});
   for(const id of ids){const w=work(D,id);const hs=by.get(id);
-   const li=el("li",{},el("button",{type:"button",class:"lx-btn",title:T("Filtrar por esta obra"),onclick:()=>{S.work=id;$("#lx-work").value=id;run()}},`${w.author} · `,el("i",{},w.title),` (${hs.length})`)," ");
+   const li=el("li",{},el("button",{type:"button",class:"lx-btn",title:T("Filtrar por esta obra"),onclick:()=>{void showPassagesOfWork(id)}},`${w.author} · `,el("i",{},w.title),` (${hs.length})`)," ");
    hs.slice(0,4).forEach(h=>{const q=D.corpus.passages[h.i];li.append(el("button",{type:"button",class:"lx-locus-btn",title:T("Leer con traducción"),onclick:()=>openViewer(D,q,h.spans,S.q)},citeOf(D,q,h.spans[0][0]).replace(w.cite+" ","")))});
    if(hs.length>4)li.append(el("span",{class:"lx-small"}," …"));ul.append(li)}
   det.append(ul)});
