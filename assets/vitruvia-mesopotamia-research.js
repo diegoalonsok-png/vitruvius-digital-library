@@ -49,17 +49,14 @@ function dynastyTree(section,groups,labels,subjectId,subjectName){
  for(const id of children)leaf(branch,'Hijo/a · ',id,display(id));
  if(branch.childNodes.length)center.append(branch);
  if(parents.length){
-  for(const [i,id] of parents.entries()){
-   const li=node('li');li.className='lx-tree-node';
-   const h=node('span');h.className='lx-tree-head';h.append(node('small',i===0?'Progenitor/a · ':'Progenitor/a · '),link('https://www.wikidata.org/wiki/'+id,display(id)));li.append(h);
-   const chain=node('ul');chain.className='lx-tree-list';
-   // El sujeto se anida una sola vez: dos padres no implican dos árboles
-   // duplicados ni una filiación exclusiva.
-   if(i===0)chain.append(center);
-   if(chain.childNodes.length)li.append(chain);
-   roots.append(li);
-  }
- }else roots.append(center);
+  const group=node('li');group.className='lx-tree-node';
+  group.append(node('strong','Progenitores documentados'));
+  const parentList=node('ul');parentList.className='lx-tree-list';
+  for(const id of parents)leaf(parentList,'Padre / madre · ',id,display(id));
+  group.append(parentList);
+  roots.append(group);
+ }
+ roots.append(center);
  tree.append(roots);
  const styleId='vitruvia-dynasty-tree-style';
  if(!document.getElementById(styleId)){
