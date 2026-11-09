@@ -324,6 +324,11 @@ function manuscriptWitnesses(root,topic,rows){
  if(!topic.person||!['author','literature'].includes(topic.kind))return;
  const author=normalized(topic.name),workIds=new Set(rows.filter(r=>r.type==='book'&&r.workId&&normalized(r.author||'')===author).map(r=>r.workId));
  const seen=new Set();
+ const bookRows=rows.filter(r=>r.type==='book'&&r.workId&&(
+  normalized(r.author||'')===author||
+  normalized(r.author||'').includes(author)||
+  author.includes(normalized(r.author||'')||'\u0000')
+ ));
  const oldest=bookRows.map(b=>({book:b,witness:window.VitruviaOldestSource?.forWork?.(b.workId)})).filter(x=>x.witness?.url);
  const manuscripts=rows.filter(r=>r.type==='manuscript'&&Array.isArray(r.workIds)&&r.workIds.some(id=>workIds.has(id))&&(r.codexViewer||r.viewerUrl||r.link))
  .filter(r=>{const url=r.codexViewer||r.viewerUrl||r.link;if(seen.has(url))return false;seen.add(url);return true})
