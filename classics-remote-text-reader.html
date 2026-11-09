@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/bibliotheca-simple.css?v=20261108-dictionary-yellow-v1">
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
-<script defer src="assets/bibliotheca-offsite-greek.js?v=20261108-13-originals"></script>
+<script defer src="assets/bibliotheca-offsite-greek.js?v=20261109-17-originals"></script>
 <style>
 :root{color-scheme:dark}
 body{background:#0d0d0e;color:#eee}
@@ -103,11 +103,26 @@ for(const id of ["next","next-bottom"])$(id).onclick=()=>{page++;render();scroll
   $("work-title").textContent=e.title;
   $("work-meta").textContent=e.author+" · "+book.passages.length+" unidades textuales en griego antiguo.";
   const box=$("provenance");
-  const citation=document.createElement("p");citation.textContent=book.attribution+" · Edición TEI de Open Greek and Latin / Perseus, licencia CC BY-SA 4.0. Referencia bibliográfica parcial: confirmar datos de volumen y páginas en la fuente.";
-  box.append(citation,link("Edición TEI de origen",e.source));
+  const normalizedReading=book.sourceType==="normalized-greek-reading";
+  const citation=document.createElement("p");
+  citation.textContent=(book.attribution||e.sourceDescription||"Fuente griega documentada")+" · "+
+   (book.editorialStatus||(normalizedReading?"Lectura normalizada, no crítica":"Edición TEI documentada"))+
+   " · "+(book.license||"Licencia según fuente de origen")+".";
+  box.append(citation,link(normalizedReading?"Leer transcripción normalizada original":"Edición TEI de origen",e.source));
   box.append(document.createTextNode(" · "));
   box.append(link("Archivo JSON separado de GitHub Pages",e.path));
-  const sha=document.createElement("p");sha.textContent="SHA-256 del TEI de origen: "+e.sourceSha256;box.append(sha);
+  if(normalizedReading&&book.readingFacsimile){
+   box.append(document.createTextNode(" · "));
+   box.append(link("Consultar facsímil histórico externo (no cotejado)",book.readingFacsimile));
+  }
+  if(normalizedReading){
+   const caution=document.createElement("p");
+   caution.textContent="Advertencia ecdótica: esta lectura digital no acredita una edición crítica ni el testimonio manuscrito más antiguo. Los encabezados y numeraciones son propios de la fuente digital; no equivalen automáticamente a loci manuscritos.";
+   box.append(caution);
+  }
+  const sha=document.createElement("p");
+  sha.textContent="SHA-256 del archivo de texto digital de origen: "+e.sourceSha256;
+  box.append(sha);
   if(targetLocus){
    const i=book.passages.findIndex(x=>x.locus===targetLocus||x.editorialLocus===targetLocus);
    if(i>=0)page=Math.floor(i/perPage);
