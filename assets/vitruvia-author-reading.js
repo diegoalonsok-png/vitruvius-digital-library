@@ -7,13 +7,16 @@ function select(rows,query,person){
  const names=[query,person?.name,resolved?.entityCanonical].map(fold).filter(Boolean);
  const books=rows.filter(r=>r.type==='book'&&r.workId&&names.some(n=>fold(r.author)===n));
  const ids=new Set(books.map(r=>r.workId));
+ // Uncertain/undated copies must never receive an invented earliest rank.
+ const datedYear=r=>{const y=Number(r?.codexDate);return Number.isFinite(y)&&y>=1&&y<=new Date().getFullYear()?y:null};
  const witnesses=rows.filter(r=>r.type==='manuscript'&&(r.workIds||[]).some(id=>ids.has(id)))
-  .sort((a,b)=>(a.codexDate??9999)-(b.codexDate??9999));
+  .sort((a,b)=>(datedYear(a)??Infinity)-(datedYear(b)??Infinity));
+ const earliestVerified=witnesses.find(r=>datedYear(r)!==null)||null;
  const seen=new Set();
  const translations=books.flatMap(b=>(b.catalogueReadings||[]).map(r=>({...r,workTitle:b.title}))).filter(r=>{
   if(!r.url||seen.has(r.url))return false;seen.add(r.url);return true;
  });
- return {books,witnesses,translations};
+ return {books,witnesses,translations,earliestVerified};
 }
 function render(rows,query,person){
  const data=select(rows,query,person);if(!data.books.length)return false;
@@ -115,7 +118,7 @@ function render(rows,query,person){
   add(section,'p',text('Ordenados por la fecha de la copia documentada. Un testimonio parcial no equivale a un libro completo; la antigüedad se compara entre los registros identificados.','Ordered by the documented date of the copy. A partial witness is not a complete book; chronology applies to identified records.','Classés selon la date documentée de la copie. Un témoin partiel ne correspond pas à un livre complet ; la chronologie concerne les notices identifiées.'),'article-note');
   const ol=add(section,'ol');
   for(const [i,r] of data.witnesses.entries()){
-   const li=add(ol,'li',null,i===0?'principal-reference-work':null);
+   const li=add(ol,'li',null,r===data.earliestVerified?'principal-reference-work':null);
    link(li,r.title,r.codexViewer||r.viewerUrl||r.link);
    add(li,'p',[r.codexRepository,r.meta,r.excerpt].filter(Boolean).join(' · '),'article-note');
    link(li,text('Abrir visor','Open viewer','Ouvrir la visionneuse'),r.codexViewer||r.viewerUrl||r.link);
