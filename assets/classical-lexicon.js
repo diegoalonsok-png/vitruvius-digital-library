@@ -39,7 +39,7 @@ function find(text,query,{prefix=true}={}){
  while(true){
   const at=norm.indexOf(q,from);if(at<0)break;
   const before=norm[at-1],after=norm[at+q.length];
-  if(!isL(before)&&(prefix||!isL(after)))out.push([map[at],map[at+q.length]]);
+  if(!isL(before)&&(prefix||!isL(after)))out.push([map[at],map[at+q.length]??String(text).length]);
   from=at+Math.max(1,q.length);
  }
  return out;
