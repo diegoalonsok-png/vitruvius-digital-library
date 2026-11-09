@@ -38,7 +38,19 @@ h1{font:400 clamp(30px,5vw,52px)/1.12 "Gentium Book Plus",Georgia,serif;margin:1
 .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:22px 0}
 input{flex:1 1 260px;max-width:580px;padding:12px 14px;background:#161617;border:1px solid #555;border-radius:5px;color:#fff;font:14px Arial}
 .stat{color:#bbb;font-size:13px}
-.table-entry{padding:29px 0 32px;border-top:1px solid #373739;scroll-margin-top:20px}
+.table-entry{padding:29px 0 32px;border-top:1px solid #373739;scroll-margin-top:20px;--reading-size:14px}
+.table-entry .explanation{font-size:calc(var(--reading-size) + 1px)}
+.table-entry table{font-size:var(--reading-size)}
+.table-entry.reading-loupe{--reading-size:20px}
+.table-tools,.global-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:15px 0;padding:10px 0;border-block:1px solid #38383b}
+.table-tools button,.global-tools button,.global-tools a{border:1px solid #454548;border-radius:18px;padding:7px 12px;background:#202023;color:#e8e8e8;font:12px Arial,sans-serif;text-decoration:none;cursor:pointer}
+.table-tools button:hover,.global-tools button:hover,.global-tools a:hover{background:#343437;border-color:#777;color:#fff}
+.table-tools button[aria-pressed="true"]{border-color:#ffe36a}
+.table-tools button:focus-visible,.global-tools button:focus-visible{outline:2px solid #ffe36a}
+.table-tools .table-tool-note{font:11px/1.5 Arial,sans-serif;color:#aaa}
+.table-underline{background:rgba(255,227,106,.19);text-decoration:underline 2px #ffe36a;text-underline-offset:3px}
+.table-entry[data-highlighted="true"]{border-left:2px solid #777;padding-left:12px}
+@media print{.table-tools,.global-tools{display:none!important}body.print-single .table-entry{display:none!important}body.print-single .table-entry.print-target{display:block!important}body.print-single .hero,body.print-single .controls,body.print-single .note,body.print-single footer{display:none!important}body.print-single .table-entry.print-target{break-inside:auto}body.print-single .table-entry.print-target .scroller{overflow:visible}body.print-single .table-entry.print-target table{min-width:0;width:100%}.table-underline{background:transparent;text-decoration:underline 2px #222}}
 .heading-line{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
 h2{font:400 clamp(22px,3vw,32px)/1.22 "Gentium Book Plus",Georgia,serif;margin:7px 0}
 .category{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:#aaa}
@@ -80,6 +92,7 @@ small{color:#aaa}
 <div class="metadata"><span id="meta-count">Preparando selección documental…</span><a href="documents/kurilo-theory-en.pdf">Consultar edición inglesa en PDF</a><a href="como-citar.html">Normas de cita</a></div>
 </div></section>
 <div class="wrap">
+<div class="global-tools" aria-label="Exportar tablas explicativas"><button type="button" id="print-all">Imprimir / Guardar PDF</button><button type="button" id="mail-all">Mail</button><button type="button" id="whatsapp-all">WhatsApp</button><button type="button" id="copy-all">Copiar enlace</button></div>
 <div class="controls"><label for="filter">Filtrar por tema o locus</label><input id="filter" type="search" placeholder="symmetria · 3.3 · Codex H · hidráulica" autocomplete="off"><span id="filter-result" class="stat" role="status" aria-live="polite"></span></div>
 <div id="tables" aria-live="off"><p>Consultando el registro de tablas derivadas de V297…</p></div>
 <p class="note"><strong>Nota ecdótica.</strong> Los números de tabla indican su posición ordinal entre las 26 tablas estructuradas detectadas en el DOCX V297, no una paginación estable. Las tablas muestran una selección representativa de filas de la obra, no necesariamente cada fila del cuadro original. Los loci reproducen las referencias de la edición cuando están presentes; las referencias temáticas añadidas se identifican como tales. Las relaciones arqueológicas y las interpretaciones lexicales no se presentan como hechos cotejados automáticamente con los códices. El manuscrito Harley MS 2767 y sus folios no han sido modificados.</p>
@@ -91,6 +104,61 @@ small{color:#aaa}
 const $=id=>document.getElementById(id),root=$("tables"),query=$("filter"),counter=$("filter-result");
 const text=(tag,value,cl)=>{const e=document.createElement(tag);e.textContent=String(value??"");if(cl)e.className=cl;return e};
 let entries=[];
+const pageTitle="Tablas explicativas · The Architect of Theory V297";
+function shareText(record){return [record?record.title:pageTitle,record?"Loci: "+record.locus:"Selección de tablas explicativas",record?record.summary:"Edición inglesa de Diego Kurilo", "DOI: https://doi.org/10.5281/zenodo.23885404"].join("\\n")}
+function shareURL(record){const url=new URL(location.href);url.hash=record?"tabla-"+record.n:"";return url.href}
+function shareRecord(kind,record){
+ const body=shareText(record)+"\\n"+shareURL(record),subject=record?record.title:pageTitle;
+ if(kind==="mail"){location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);return}
+ if(kind==="whatsapp"){window.open("https://wa.me/?text="+encodeURIComponent(body),"_blank","noopener,noreferrer");return}
+ if(kind==="copy"){
+  if(navigator.clipboard?.writeText)navigator.clipboard.writeText(shareURL(record)).catch(()=>window.prompt("Copiar enlace",shareURL(record)));
+  else window.prompt("Copiar enlace",shareURL(record));
+ }
+}
+let printReset=null;
+function printRecord(section){
+ document.body.classList.toggle("print-single",!!section);
+ document.querySelectorAll(".table-entry.print-target").forEach(e=>e.classList.remove("print-target"));
+ if(section)section.classList.add("print-target");
+ if(printReset)clearTimeout(printReset);
+ window.print();
+ printReset=setTimeout(()=>{document.body.classList.remove("print-single");section?.classList.remove("print-target")},1200);
+}
+window.addEventListener("afterprint",()=>{document.body.classList.remove("print-single");document.querySelectorAll(".print-target").forEach(x=>x.classList.remove("print-target"))});
+function underlineSelection(section){
+ const selection=window.getSelection();
+ if(!selection||selection.isCollapsed||!selection.rangeCount)return;
+ const range=selection.getRangeAt(0);
+ if(!section.contains(range.commonAncestorContainer))return;
+ const area=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement;
+ if(area?.closest(".table-tools"))return;
+ const wrapper=document.createElement("span");wrapper.className="table-underline";
+ try{wrapper.append(range.extractContents());range.insertNode(wrapper);selection.removeAllRanges();section.dataset.highlighted="true"}catch{}
+}
+function removeUnderlines(section){
+ for(const node of section.querySelectorAll(".table-underline"))node.replaceWith(...node.childNodes);
+ section.normalize();delete section.dataset.highlighted;
+}
+function addTools(section,record){
+ const bar=text("div","","table-tools");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label","Herramientas para tabla "+record.n);
+ const button=(label,handler)=>{const b=text("button",label);b.type="button";b.addEventListener("click",handler);bar.append(b);return b};
+ button("Mail",()=>shareRecord("mail",record));
+ button("WhatsApp",()=>shareRecord("whatsapp",record));
+ button("PDF / Imprimir",()=>printRecord(section));
+ button("Copiar enlace",()=>shareRecord("copy",record));
+ let size=14;
+ button("A−",()=>{size=Math.max(11,size-1);section.style.setProperty("--reading-size",size+"px")});
+ button("A+",()=>{size=Math.min(25,size+1);section.style.setProperty("--reading-size",size+"px")});
+ const loupe=button("🔍 Lupa",()=>{const active=section.classList.toggle("reading-loupe");loupe.setAttribute("aria-pressed",String(active));if(!active)section.style.setProperty("--reading-size",size+"px")});
+ loupe.setAttribute("aria-pressed","false");
+ const mark=button("Subrayar",()=>underlineSelection(section));mark.addEventListener("mousedown",e=>e.preventDefault());
+ button("Borrar subrayados",()=>removeUnderlines(section));
+ bar.append(text("span","Seleccioná una frase y pulsá Subrayar","table-tool-note"));
+ section.querySelector(".heading-line").after(bar);
+}
+document.getElementById("print-all").addEventListener("click",()=>printRecord(null));
+for(const kind of ["mail","whatsapp","copy"])document.getElementById(kind+"-all").addEventListener("click",()=>shareRecord(kind,null));
 function render(){
  const q=query.value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
  root.replaceChildren();let n=0;
@@ -109,6 +177,7 @@ function render(){
   table.append(tbody);scroller.append(table);section.append(scroller);
   const source=text("p","Fuente: V297, tabla "+record.n+". Filas seleccionadas; para la tabla completa, consultar la edición original.","table-source");
   section.append(source);
+  addTools(section,record);
   if(record.manuscriptLink){const p=text("p","","aside");const a=text("a","Abrir el visor original de folios del Codex H");a.href=record.manuscriptLink;p.append(a);section.append(p)}
   const index=text("p","","table-source");
   const a=text("a","Buscar estos loci en los textos de Vitruvio");a.href="index.html#buscar";index.append(a);section.append(index);
