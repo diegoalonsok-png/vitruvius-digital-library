@@ -1656,16 +1656,68 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 </style>
 <script id="vitruvia-cultural-rail-placement">
 (function(){
+ 'use strict';
+ // One authoritative panel, placed next to the visible content. The article
+ // and search result views never duplicate a sourced cultural catalogue.
  function place(){
   const panel=document.getElementById('vitruvia-context');
-  const grid=document.querySelector('#vitruvia-article .article-grid');
-  if(!panel||!grid)return;
-  if(panel.parentElement!==grid)grid.appendChild(panel);
+  const article=document.getElementById('vitruvia-article');
+  const articleGrid=article?.querySelector('.article-grid');
+  const resultGrid=document.querySelector('#results .results-grid');
+  if(!panel||!articleGrid||!resultGrid)return;
+  const articleVisible=!article.hidden&&getComputedStyle(article).display!=='none';
+  const destination=articleVisible?articleGrid:resultGrid;
+  if(panel.parentElement!==destination){
+   if(destination===resultGrid){
+    const originalSidebar=resultGrid.querySelector(':scope > .sidebar');
+    resultGrid.insertBefore(panel,originalSidebar||null);
+   }else articleGrid.appendChild(panel);
+  }
+  resultGrid.classList.toggle('has-context-rail',!articleVisible);
  }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',place);
- else place();
+ function start(){
+  place();
+  const article=document.getElementById('vitruvia-article');
+  if(article)new MutationObserver(place).observe(article,{attributes:true,attributeFilter:['hidden','class','style']});
+  for(const name of ['vitruvia:search','vitruvia:results','vitruvia:entity','vitruvia:clear'])
+   window.addEventListener(name,place);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);
+ else start();
 })();
 </script>
+<style id="vitruvia-rail-search-results-20261109">
+/* Search-results view: source-linked book and codex timeline occupies the
+ * existing right-hand column; the rest of the page keeps the current design. */
+@media screen and (min-width:1100px){
+ #results .results-grid.has-context-rail:has(> #vitruvia-context:not([hidden])){
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(285px,29%)!important;
+  column-gap:clamp(22px,2.5vw,44px)!important;
+  align-items:start!important;
+ }
+ #results .results-grid.has-context-rail > #result-list{
+  grid-column:1!important;grid-row:1!important;min-width:0!important;max-width:none!important;
+ }
+ #results .results-grid.has-context-rail > #vitruvia-context:not([hidden]){
+  display:block!important;grid-column:2!important;grid-row:1!important;
+  align-self:start!important;min-width:0!important;max-width:none!important;
+  width:100%!important;margin:0!important;padding:0 0 0 18px!important;
+  border-left:1px solid #3b4146!important;border-top:0!important;
+  position:static!important;float:none!important;overflow:visible!important;
+ }
+ #results .results-grid.has-context-rail > .sidebar{
+  grid-column:1 / -1!important;grid-row:2!important;
+ }
+}
+@media screen and (max-width:1099px){
+ #results .results-grid.has-context-rail{display:block!important}
+ #results .results-grid.has-context-rail > #vitruvia-context:not([hidden]){
+  display:block!important;width:100%!important;max-width:none!important;
+  margin:22px 0 0!important;padding:18px 0!important;border-top:1px solid #454b51!important;border-left:0!important;
+ }
+}
+</style>
 <style id="vitruvia-editorial-reading-20261108">
 /* Two-column editorial dossier. The second column is reserved for sourced cultural works. */
 @media screen and (min-width:1100px){
