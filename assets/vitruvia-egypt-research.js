@@ -128,7 +128,10 @@ function addPrimaryTexts(section,record){
  section.append(box);
 }
 function sideTitulary(query,identity){
- const host=document.querySelector('#featured .featured-copy')||document.getElementById('featured');
+ // The complete dossier belongs in the documentary right rail, never in the
+ // hero/featured card: long manuscript material used to enlarge the hero and
+ // push the visible page content far down into an apparent empty black region.
+ const host=document.getElementById('vitruvia-context');
  if(!host)return null;
  host.querySelector('#v-egypt-side')?.remove();
  const record=titularyFor(query)||titularyFor(identity?.title||'');
@@ -153,11 +156,13 @@ function sideTitulary(query,identity){
  }else{
   section.append(node('p','Titulatura pendiente de cotejo: no se generan cartuchos sin edición comprobada.'));
  }
- host.append(section);
+ // Put the royal protocol before the more general bibliography and cultural list.
+ host.prepend(section);
+ host.hidden=false;
  if(!document.getElementById('v-egypt-side-css')){
   const css=node('style');css.id='v-egypt-side-css';
-  css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font-size:14px;line-height:1.55}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}#featured .v-egypt-primary{margin-top:16px;border-top:1px solid #454545;padding-top:12px}#featured .v-egypt-primary h4{margin:0 0 8px;font:normal 17px Georgia,serif}#featured .v-egypt-primary-item{border-bottom:1px solid #333;padding:7px 0}#featured .v-egypt-primary-item summary{cursor:pointer;font-weight:600}#featured .v-egypt-primary-item small{opacity:.65}#featured .v-egypt-primary-item p{font-size:13px;line-height:1.6;margin:7px 0}';
-  css.textContent+='#featured .v-egypt-media{margin:16px 0;padding-top:12px;border-top:1px solid #3a3a3a}#featured .v-egypt-media h4{font:normal 17px Georgia,serif;margin:0 0 12px}#featured .v-egypt-media-figure{margin:0 0 18px;padding:10px;border:1px solid #383838;border-radius:8px;background:transparent}#featured .v-egypt-media img{display:block;max-width:100%;max-height:290px;width:auto;height:auto;margin:0 auto 9px;object-fit:contain}#featured .v-egypt-media figcaption{font-size:12px;line-height:1.5;opacity:.82;margin-bottom:7px}#featured .v-egypt-media a{font-size:12px;text-decoration:underline;text-underline-offset:3px}';
+  css.textContent='#vitruvia-context .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font-size:14px;line-height:1.55}#vitruvia-context .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#vitruvia-context .v-egypt-titles{list-style:none;margin:0;padding:0}#vitruvia-context .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#vitruvia-context .v-egypt-titles small{min-width:92px;opacity:.7}#vitruvia-context .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#vitruvia-context .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#vitruvia-context .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}#vitruvia-context .v-egypt-primary{margin-top:16px;border-top:1px solid #454545;padding-top:12px}#vitruvia-context .v-egypt-primary h4{margin:0 0 8px;font:normal 17px Georgia,serif}#vitruvia-context .v-egypt-primary-item{border-bottom:1px solid #333;padding:7px 0}#vitruvia-context .v-egypt-primary-item summary{cursor:pointer;font-weight:600}#vitruvia-context .v-egypt-primary-item small{opacity:.65}#vitruvia-context .v-egypt-primary-item p{font-size:13px;line-height:1.6;margin:7px 0}';
+  css.textContent+='#vitruvia-context .v-egypt-media{margin:16px 0;padding-top:12px;border-top:1px solid #3a3a3a}#vitruvia-context .v-egypt-media h4{font:normal 17px Georgia,serif;margin:0 0 12px}#vitruvia-context .v-egypt-media-figure{margin:0 0 18px;padding:10px;border:1px solid #383838;border-radius:8px;background:transparent}#vitruvia-context .v-egypt-media img{display:block;max-width:100%;max-height:290px;width:auto;height:auto;margin:0 auto 9px;object-fit:contain}#vitruvia-context .v-egypt-media figcaption{font-size:12px;line-height:1.5;opacity:.82;margin-bottom:7px}#vitruvia-context .v-egypt-media a{font-size:12px;text-decoration:underline;text-underline-offset:3px}';
   document.head.append(css);
  }
  return section;
@@ -297,6 +302,19 @@ function ensureRoyalPanel(){
  if(!document.getElementById('v-egypt-side'))sideTitulary(q);
  const body=document.getElementById('article-body');if(body&&!body.querySelector('#vitruvia-royal-titulary'))renderTitulary(body,q);
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ensureRoyalPanel,{once:true});else ensureRoyalPanel();
+// The contextual bibliography is independently refreshed after search events.
+// Reinsert the royal panel only if it was actually removed; avoid observer loops.
+function observeRoyalRail(){
+ const panel=document.getElementById('vitruvia-context');if(!panel)return;
+ let queued=false;
+ const restore=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;ensureRoyalPanel()})};
+ new MutationObserver(mutations=>{
+  if(mutations.some(m=>m.type==='childList'&&!panel.querySelector('#v-egypt-side')))restore();
+ }).observe(panel,{childList:true});
+ window.addEventListener('vitruvia:results',restore);
+ window.addEventListener('popstate',restore);
+ restore();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',observeRoyalRail,{once:true});else observeRoyalRail();
 window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties,titularyFor,renderTitulary,sideTitulary};
 })();
