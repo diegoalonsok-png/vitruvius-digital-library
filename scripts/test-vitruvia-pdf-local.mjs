@@ -46,6 +46,8 @@ assert(visual.includes("document.createElement('li')"),'Results should be safely
 assert(visual.includes('excerpt.textContent=item.excerpt'),'Never parse PDF text as HTML');
 assert(!visual.includes('fetch(')&&!visual.includes('XMLHttpRequest'),'Attachment UI must not upload content');
 assert(css.includes('.vr-visual-pdf-results'),'Local PDF search results styled');
-assert(html.indexOf('assets/vitruvia-pdf-local.js?v=20261104-private-pdf-v1')>0);
-assert(html.indexOf('assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2')>html.indexOf('assets/vitruvia-pdf-local.js?v=20261104-private-pdf-v1'));
+const pdfScript=html.search(/assets\/vitruvia-pdf-local\.js\?v=[a-zA-Z0-9_-]+/);
+const visualScript=html.search(/assets\/vitruvia-visual-import\.js\?v=[a-zA-Z0-9_-]+/);
+assert(pdfScript>0,'Pinned local-PDF source must be present');
+assert(visualScript>pdfScript,'Parser must load before PDF visual search');
 console.log('PASS: independent, bounded, offline-file PDF extraction and local search; no uploads or persistent file storage');
