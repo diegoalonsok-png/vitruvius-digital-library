@@ -114,6 +114,8 @@ def main():
             "offsiteOriginalsIndexed": remote_only,
             "effectiveOriginalsIndexed": effective_indexed,
             "effectiveOriginalsMissing": 222 - effective_indexed,
+            "unindexedEditionRecordsOfExistingVitruviusWork": sum(1 for w in entries if not w["effectiveOriginalIndexed"] and w["id"] in remote_doc["editorialEditionRecordsNotNewAncientWorks"]),
+            "distinctAncientWorksStillMissingOriginalIndex": sum(1 for w in entries if not w["effectiveOriginalIndexed"] and w["id"] not in remote_doc["editorialEditionRecordsNotNewAncientWorks"]),
             "offsiteTextVersionsOutsidePages": len(remote_rows),
             "states": dict(sorted(counts.items())),
             "sourceReadinessForMissingOriginals": dict(sorted(readiness.items())),
