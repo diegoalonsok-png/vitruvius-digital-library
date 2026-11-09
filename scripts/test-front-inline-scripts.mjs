@@ -147,3 +147,24 @@ const scholSitemap=readFileSync("sitemap.xml","utf8");
 assert(scholSitemap.includes("guia-investigacion-universitaria.html")&&
  scholSitemap.trimEnd().endsWith("</urlset>"),"University guide missing from valid sitemap");
 console.log("PASS universidad: enlaces y citas en cinco buscadores, alternativa estática y DOI");
+
+/* SEO university access: static scholarly term cards must retain exact
+ * documented counts. A lemma family must never be conflated with one form. */
+const vitruviusSource=JSON.parse(readFileSync("data/structured/recensio-es.json","utf8"));
+const staticTerms=["aedes","symmetria","locus","architectura"];
+const institutionGuide=readFileSync("guia-investigacion-universitaria.html","utf8");
+for(const term of staticTerms){
+ const file=term+"-en-vitruvio.html";
+ const page=readFileSync(file,"utf8");
+ const exact=new RegExp("(^|[^\\p{L}\\p{M}])"+term+"(?=$|[^\\p{L}\\p{M}])","iu");
+ const n=vitruviusSource.passages.filter(p=>exact.test(p.latin||"")).length;
+ assert(page.includes("registra <strong>"+n+" unidades editoriales</strong>"),
+   "Static "+term+" concordance count diverges from V514");
+ assert(page.includes("10.5281/zenodo.23884757")&&page.includes('lang="la"')&&page.includes('lang="es"'),
+   "Static "+term+" must show Latin, aligned Spanish and edition DOI");
+ assert(page.includes("No constituyen el total de apariciones de todas las flexiones"),
+   "Static "+term+" must disclose exact-form limitations");
+ assert(institutionGuide.includes(file)&&scholSitemap.includes(file),
+   "Static "+term+" needs university guide link and sitemap indexing");
+}
+console.log("PASS SEO académico: cuatro concordancias estáticas comparadas con V514");
