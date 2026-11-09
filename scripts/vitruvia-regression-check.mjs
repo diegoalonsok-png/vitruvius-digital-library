@@ -78,7 +78,7 @@ assert.ok(works.length>=190,"Unexpected classical catalogue shrinkage");
 const classical=sourceFile("assets/bibliotheca-simple.js");
 const corpus=sourceFile("assets/bibliotheca-corpus-search.js");
 new Script(classical,{filename:"assets/bibliotheca-simple.js"});
-assert.ok(classical.includes("searchPassages([q,...transliterations]")&&
+assert.ok(classical.includes("searchPassages([q,...transliterations,")&&
  classical.includes("allMatches:true,includeFullText:true,includeOCR:false"),
  "Bibliotheca must display all matching paragraphs including documented Greek transliterations without truncation");
 assert.ok(classical.includes("vitruvia-lexicon.html"),
