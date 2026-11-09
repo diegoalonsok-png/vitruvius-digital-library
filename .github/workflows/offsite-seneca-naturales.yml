@@ -41,6 +41,8 @@ jobs:
           node scripts/test-seneca-naturales-offsite.mjs
           node scripts/test-offsite-latin-originals.mjs
           node scripts/test-classics-latin-supplement.mjs
+          node scripts/test-shared-semantic-index-usage.mjs
+          node scripts/test-bibliotheca-semantic-index-usage.mjs
       - name: Indexar siete libros en directorio temporal, sin OCR inventado
         run: python scripts/build-offsite-seneca-naturales.py --output "$RUNNER_TEMP/seneca-new"
       - name: Publicar exclusivamente índice derivado adicional fuera de Pages
