@@ -12,6 +12,8 @@
     "offsiteOriginalsIndexed": 23,
     "effectiveOriginalsIndexed": 204,
     "effectiveOriginalsMissing": 18,
+    "unindexedEditionRecordsOfExistingVitruviusWork": 3,
+    "distinctAncientWorksStillMissingOriginalIndex": 15,
     "offsiteTextVersionsOutsidePages": 23,
     "states": {
       "original_pendiente": 41,
@@ -23,9 +25,7 @@
       "requiere_fuente_no_canonica_o_edicion_especifica": 7,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 15
-    },
-    "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 15
+    }
   },
   "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json",
   "items": [
