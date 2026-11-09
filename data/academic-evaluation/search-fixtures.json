@@ -1,0 +1,141 @@
+{
+  "schema": "vitruvius-search-quality-fixtures-v1",
+  "scope": "Corpus-alojado: presencia documental de pasajes seleccionados, no precisión del buscador en vivo ni evaluación de otros motores",
+  "created": "2026-11-09",
+  "method": "19 consultas editoriales predefinidas; verificar texto, lengua, obra, locus y fuente; mantener sinónimos y equivalencias fuera del test literal",
+  "cases": [
+    {
+      "workId": "caesar-gallico",
+      "language": "la",
+      "locus": "1.1",
+      "query": "Gallia est omnis divisa",
+      "phenomenon": "opening"
+    },
+    {
+      "workId": "caesar-gallico",
+      "language": "en",
+      "locus": "1.1",
+      "query": "All Gaul is divided",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "caesar-gallico",
+      "language": "en",
+      "locus": "1.2",
+      "query": "Orgetorix",
+      "phenomenon": "named-entity"
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "la",
+      "locus": "1.1",
+      "query": "Arma virumque cano",
+      "phenomenon": "opening"
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "en",
+      "locus": "1.1",
+      "query": "Arms and the man I sing",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "la",
+      "locus": "1.8",
+      "query": "Musa, mihi causas",
+      "phenomenon": "poetry"
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "en",
+      "locus": "1.8",
+      "query": "O Muse, the causes tell",
+      "phenomenon": "poetry-translation"
+    },
+    {
+      "workId": "plato-apology",
+      "language": "grc",
+      "locus": "17",
+      "query": "ὦ ἄνδρες Ἀθηναῖοι",
+      "phenomenon": "polytonic"
+    },
+    {
+      "workId": "plato-apology",
+      "language": "grc",
+      "locus": "17",
+      "query": "ω ανδρες αθηναιοι",
+      "phenomenon": "diacritic-fold"
+    },
+    {
+      "workId": "plato-apology",
+      "language": "en",
+      "locus": "17",
+      "query": "men of Athens",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "language": "la",
+      "locus": "1",
+      "query": "Maior pars mortalium",
+      "phenomenon": "prose"
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "language": "es",
+      "locus": "1",
+      "query": "La mayor parte de los hombres",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "language": "fr",
+      "locus": "1",
+      "query": "La plupart des mortels",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "theophrastus-characters",
+      "language": "grc",
+      "locus": "prooem.",
+      "query": "ὦ Πολύκλεις",
+      "phenomenon": "polytonic"
+    },
+    {
+      "workId": "theophrastus-characters",
+      "language": "grc",
+      "locus": "1",
+      "query": "ἡ μὲν οὖν εἰρωνεία",
+      "phenomenon": "morphology"
+    },
+    {
+      "workId": "theophrastus-characters",
+      "language": "en",
+      "locus": "1",
+      "query": "The Dissembler",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "vitruvius",
+      "language": "la",
+      "locus": "1.praef.1",
+      "query": "Cum divina tua mens",
+      "phenomenon": "critical-edition"
+    },
+    {
+      "workId": "vitruvius",
+      "language": "es",
+      "locus": "1.praef.1",
+      "query": "Cuando tu mente divina",
+      "phenomenon": "translation"
+    },
+    {
+      "workId": "vitruvius",
+      "language": "en",
+      "locus": "1.praef.1",
+      "query": "While your divine mind",
+      "phenomenon": "translation"
+    }
+  ]
+}
