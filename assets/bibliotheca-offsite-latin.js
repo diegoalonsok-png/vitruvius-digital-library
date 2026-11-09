@@ -9,7 +9,8 @@ const SOURCE_PATHS={
  "seneca-de-tranquillitate":"https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa013/stoa0255.stoa013.perseus-lat2.xml",
  "apuleius-de-deo-socratis":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
  "censorinus-die-natali":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt",
- "vegetius-epitoma":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt"
+ "vegetius-epitoma":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt",
+ "seneca-naturales":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt"
 };
 const ALLOWED=new Set(Object.keys(SOURCE_PATHS));
 let manifestTask=null;
