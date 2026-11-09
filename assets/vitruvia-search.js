@@ -1379,9 +1379,9 @@ async function search(){
  }
  if(internal&&window.ClassicsCorpusSearch){
   pending.push(later(async()=>{
-   const rows=await window.ClassicsCorpusSearch.search(generalQuery,{limit:6});
-   if(rows.length)return rows;
-   return window.ClassicsCorpusSearch.semanticSearch(generalQuery,{limit:6});
+   // Return literal attestations AND documented Conceptus equivalents.
+   // A literal Latin hit must not suppress Greek parallels in indexed sources.
+   return window.ClassicsCorpusSearch.combinedSearch(generalQuery,{limit:6});
   }).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
  }
  if(internal&&window.KuriloApparatus){
