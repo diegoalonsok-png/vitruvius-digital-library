@@ -70,15 +70,18 @@ try{
         "Encyclopedia body must stack and use nearly full width on smaller screens");
     }
     assert.ok(Math.abs(report.articleBody.x-report.article.x)<28,"Encyclopedia body has a blank left rail");
-    // On wide desktop, the requested cultural catalogue occupies a real right rail.
-    // On tablet/mobile, both reading and results remain full-width in a stacked layout.
+    // In article mode the cultural panel is intentionally moved next to the
+    // article body, and the subsequent results list uses the whole width.
+    // Do not compare a right rail beside the article to a list below the article.
     if(width>=1100){
-      assert.ok(report.resultList.width>=report.results.width*0.62,
-        "Documentary column must retain at least 62% alongside the cultural rail");
-      assert.ok(report.culturalRail.width>=report.results.width*0.20,
-        "The cultural rail must remain large enough for book and album covers");
-      assert.ok(report.culturalRail.x>=report.resultList.x+report.resultList.width-3,
-        "The cultural rail must sit to the right, not over the results");
+      assert.ok(report.culturalRail.x>=report.articleBody.x+report.articleBody.width-3,
+        "Academic cultural rail must be beside the encyclopaedia article");
+      assert.ok(Math.abs(report.culturalRail.y-report.articleBody.y)<28,
+        "Right rail must start at article top, never below a large empty gap");
+      assert.ok(report.culturalRail.width>=report.article.width*0.20,
+        "Right rail needs useful width for cartouches, books and references");
+      assert.ok(report.resultList.width>=report.results.width*0.90,
+        "When the cultural rail belongs to the article, results must not reserve an empty track");
     }else{
       assert.ok(report.resultList.width>=report.results.width*0.90,
         "Documentary results must fill the available width on tablet and mobile");
@@ -89,6 +92,45 @@ try{
     await page.screenshot({path:"test-results/vitruvia-"+width+".png"});
     await page.close();
   }
+  // Egyptian writing, in both historical and contemporary contexts, must be
+  // rendered in the right rail without expanding the hero.
+  const egypt=await browser.newPage({viewport:{width:1440,height:900}});
+  await egypt.route("**/*",route=>{
+    const url=new URL(route.request().url());
+    if(url.hostname==="127.0.0.1"||url.hostname==="localhost")return route.continue();
+    return route.abort();
+  });
+  await egypt.goto("http://127.0.0.1:8766/vitruvia.html",{waitUntil:"domcontentloaded"});
+  await egypt.evaluate(()=>{
+    document.body.classList.add("vitruvia-reading");
+    window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"Akhenaten"}}));
+  });
+  await egypt.waitForSelector("#v-egypt-script-panel .v-script-glyphs",{timeout:6000});
+  const ancient=await egypt.evaluate(()=>({
+    glyphs:document.querySelector("#v-egypt-script-panel .v-script-glyphs")?.textContent||"",
+    parent:document.querySelector("#v-egypt-script-panel")?.closest("#vitruvia-context")?.id||"",
+    featuredHeight:document.getElementById("featured")?.getBoundingClientRect().height||0,
+    heroHasRoyal:!!document.querySelector("#featured #v-egypt-side")
+  }));
+  assert.match(ancient.glyphs,/𓇋/u,"Akhenaten must have a real Unicode sign sequence");
+  assert.equal(ancient.parent,"vitruvia-context","Egyptian script must occupy the right-hand scholarly rail");
+  assert.equal(ancient.heroHasRoyal,false,"The full royal dossier must never extend the hero");
+  assert.ok(ancient.featuredHeight<900,"Egyptian dossier must not create an enormous black hero area");
+  await egypt.evaluate(()=>{
+    window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"El Cairo"}}));
+  });
+  await egypt.waitForFunction(()=>{
+    const p=document.querySelector("#v-egypt-script-panel");
+    return p?.dataset.query==="el cairo"&&!!p.querySelector('.v-script-arabic');
+  },{timeout:6000});
+  const modern=await egypt.evaluate(()=>({
+    text:document.querySelector("#v-egypt-script-panel .v-script-arabic")?.textContent,
+    direction:document.querySelector("#v-egypt-script-panel .v-script-arabic")?.dir
+  }));
+  assert.equal(modern.text,"القاهرة","Cairo must use the documented modern Arabic name");
+  assert.equal(modern.direction,"rtl","Arabic reading direction must be right-to-left");
+  await egypt.close();
+  console.log("PASS: Akhenaten Unicode and modern Cairo Arabic appear in the cultural rail without hero displacement.");
   console.log("PASS: Vitruvia article fills the reading area; cultural right rail on desktop, stacked results on mobile.");
 }finally{
   await browser.close();
