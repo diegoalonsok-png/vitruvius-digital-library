@@ -1,0 +1,128 @@
+name: Bibliotheca · Veleyo y Frontino sin alterar folios
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-latin-agrimensura-historia.py'
+      - 'scripts/test-offsite-latin-two-works.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - '.github/workflows/offsite-latin-two-works.yml'
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-latin-agrimensura-historia.py'
+      - 'scripts/test-offsite-latin-two-works.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - '.github/workflows/offsite-latin-two-works.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: offsite-latin-originals-publication
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar fuentes, integraciones y protección del corpus
+        run: |
+          python -m py_compile scripts/build-offsite-latin-agrimensura-historia.py
+          node --check assets/bibliotheca-offsite-latin.js
+          node scripts/test-offsite-latin-two-works.mjs
+          node scripts/test-seneca-naturales-offsite.mjs
+          node scripts/test-classics-latin-supplement.mjs
+          node scripts/test-shared-semantic-index-usage.mjs
+          node scripts/test-bibliotheca-semantic-index-usage.mjs
+      - name: Extraer los dos originales como derivados temporales
+        run: python scripts/build-offsite-latin-agrimensura-historia.py --output "$RUNNER_TEMP/latin-new"
+      - name: Añadir solo los nuevos derivados al corpus externo
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          BRANCH: corpus-originales-latinos-20261108
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          TARGET="$RUNNER_TEMP/latin-two-worktree"
+          git worktree add --detach "$TARGET" "origin/$BRANCH"
+          python - "$TARGET" "$RUNNER_TEMP/latin-new" <<'PY'
+          import hashlib
+          import json
+          import shutil
+          import sys
+          from pathlib import Path
+
+          folder=Path(sys.argv[1])/"data/offsite-latin"
+          staging=Path(sys.argv[2])
+          source=folder/"manifest.json"
+          manifest=json.loads(source.read_text("utf-8"))
+          addition=json.loads((staging/"two-works-manifest.json").read_text("utf-8"))
+          assert manifest["schema"]=="vitruvius-offsite-latin-originals-manifest-v1"
+          assert manifest["branch"]=="corpus-originales-latinos-20261108"
+          assert addition["schema"]=="vitruvius-offsite-latin-two-works-supplement-v1"
+          assert len(addition["entries"])==addition["count"]==2
+          existing={e["workId"]:e for e in manifest["entries"]}
+          assert len(existing)==len(manifest["entries"])==manifest["count"]
+          protected={
+              "seneca-de-ira","seneca-de-tranquillitate",
+              "apuleius-de-deo-socratis","censorinus-die-natali",
+              "vegetius-epitoma","seneca-naturales",
+          }
+          assert protected.issubset(existing),"Previously published Latin texts are missing"
+          digests={}
+          for id,meta in existing.items():
+              path=folder/(id+"-la.json")
+              content=path.read_bytes()
+              old=json.loads(content)
+              assert old["workId"]==id and old["sourceSha256"]==meta["sourceSha256"]
+              digests[id]=hashlib.sha256(content).hexdigest()
+          expected={"velleius-historia","frontinus-gromatica"}
+          assert {x["workId"] for x in addition["entries"]}==expected
+          for item in addition["entries"]:
+              id=item["workId"]
+              assert item["language"]=="la"
+              assert item["path"]=="data/offsite-latin/"+id+"-la.json"
+              incoming=(staging/(id+"-la.json")).read_bytes()
+              doc=json.loads(incoming)
+              assert doc["workId"]==id and doc["language"]=="la"
+              assert doc["sourceSha256"]==item["sourceSha256"]
+              assert len(doc["passages"])==item["passages"]>=5
+              assert len(incoming)==item["bytes"]
+              dest=folder/(id+"-la.json")
+              if id in existing:
+                  assert dest.read_bytes()==incoming,"Source changed: do not overwrite"
+                  assert existing[id]["sourceSha256"]==item["sourceSha256"]
+              else:
+                  assert not dest.exists(),"Do not replace pre-existing unregistered text"
+                  shutil.copyfile(staging/(id+"-la.json"),dest)
+                  manifest["entries"].append(item)
+          for id,digest in digests.items():
+              assert hashlib.sha256((folder/(id+"-la.json")).read_bytes()).hexdigest()==digest, "Previous original changed"
+          manifest["count"]=len(manifest["entries"])
+          manifest["totalBytes"]=sum(int(e["bytes"]) for e in manifest["entries"])
+          manifest["twoWorksMethod"]="Velleius and Frontinus source transcriptions; chapter labels/technical segments; no claim of critical collation"
+          source.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n","utf-8")
+          print("Safe Latin corpus count:",manifest["count"])
+          PY
+          git -C "$TARGET" add data/offsite-latin/manifest.json \
+            data/offsite-latin/velleius-historia-la.json \
+            data/offsite-latin/frontinus-gromatica-la.json
+          if git -C "$TARGET" diff --cached --quiet; then
+            echo 'Derived indexes already published; originals unchanged.'
+            exit 0
+          fi
+          git -C "$TARGET" commit -m "Add Velleius and Frontinus attributed Latin indexes outside Pages"
+          git -C "$TARGET" push origin "HEAD:refs/heads/$BRANCH"
+          echo 'No Vitruvian Codex, manuscript, folio, PDF, edition master or page layout changed.'
