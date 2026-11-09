@@ -350,8 +350,33 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
  rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||a.locus.localeCompare(b.locus,undefined,{numeric:true}));
  return allMatches?rows:rows.slice(0,Math.max(1,Math.min(600,limit)));
 }
+const literalSearch=cached("literal",search),conceptSearch=cached("semantic",semanticSearch);
+/* The main Vitruvia search must not hide attested Greek/Latin Conceptus
+   correspondences merely because a literal hit exists. Keep both provenance
+   labels and deduplicate only the same physical indexed passage. */
+async function combinedSearch(q,{limit=6}={}){
+ const n=Math.max(1,Math.min(20,Number(limit)||6));
+ const [literal,semantic]=await Promise.allSettled([
+  literalSearch(q,{limit:n}),conceptSearch(q,{limit:n})
+ ]);
+ if(literal.status==="rejected"&&semantic.status==="rejected")
+  throw new Error("Búsqueda literal y conceptual no disponibles");
+ const seen=new Set(),out=[];
+ for(const result of [literal,semantic]){
+  if(result.status!=="fulfilled")continue;
+  for(const row of result.value){
+   let locator=String(row.link||"");
+   try{const url=new URL(locator,"https://vitruvia.invalid/");url.searchParams.delete("q");locator=url.pathname+url.search+url.hash}catch{}
+   const source=String(row.source||"").split(" · ").pop();
+   const key=[row.workId||"",row.language||"",source,locator].join("|");
+   if(seen.has(key))continue;
+   seen.add(key);out.push(row);
+  }
+ }
+ return out.slice(0,2*n);
+}
 window.ClassicsCorpusSearch={
- search:cached("literal",search),semanticSearch:cached("semantic",semanticSearch),searchPassages,
+ search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
  registry,diagnostics:()=>({...lastDiagnostics})
 };

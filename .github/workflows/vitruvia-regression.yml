@@ -19,6 +19,7 @@ jobs:
       - run: node tests/locus-aliases.mjs
       - run: node scripts/test-vitruvia-resilience.mjs
       - run: node scripts/test-vitruvia-performance.mjs
+      - run: node scripts/test-shared-semantic-index-usage.mjs
       - run: node scripts/academic-integrity.mjs
       - run: node scripts/test-navigation.mjs
       - run: node scripts/test-pwa.mjs

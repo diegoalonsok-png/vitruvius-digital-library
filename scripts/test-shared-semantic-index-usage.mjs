@@ -90,4 +90,25 @@ function run(index){
  await engine.semanticSearch("casa",{limit:10});
  assert.equal(engine.diagnostics().staticIndexUsed,false,"Missing postings must disable filter");
 }
-console.log("PASS: Vitruvia and Lexicon reuse indexed Conceptus sources, exclude unanchored HTML correctly and fall back safely.");
+// The general search must include all documentary search routes even when
+// an attested literal hit exists (domus in Latin AND οἶκος in Greek).
+{
+ data["data/classics-corpus/people-grc.json"].passages=[{locus:"1",text:"Ὁ οἶκος ἐστίν."}];
+ const withGreek={
+  ...postings,
+  versions:postings.versions.map(v=>v.workId==="people"
+   ?{...v,concepts:[{concept:"home",count:1,loci:[["1","οἶκος",1]]}]}:v)
+ };
+ const {engine}=run(withGreek);
+ const literal=await engine.search("domus",{limit:6});
+ const semantic=await engine.semanticSearch("domus",{limit:6});
+ assert.equal(literal.some(r=>r.language==="la"),true);
+ assert.equal(literal.some(r=>r.language==="grc"),false);
+ assert.equal(semantic.some(r=>r.language==="grc"),true);
+ const both=await engine.combinedSearch("domus",{limit:6});
+ assert.deepEqual([...new Set(both.map(r=>r.language))].sort(),["grc","la"]);
+ assert.equal(both.length,2,"Identical Latin locus may not appear twice");
+ assert(both.some(r=>r.language==="grc"&&r.meta.includes("SEMÁNTICA EDITORIAL")));
+ assert(both.every(r=>r.link&&r.source&&r.count>0),"Only attested source-linked passages");
+}
+console.log("PASS: Vitruvia combines attested literal and Conceptus results, preserves Greek/Latin provenance, excludes unanchored HTML and falls back safely.");
