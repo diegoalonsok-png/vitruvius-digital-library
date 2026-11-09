@@ -1,0 +1,28 @@
+name: Verificar tablas explicativas V297
+on:
+  pull_request:
+    paths:
+      - 'tablas-explicativas.html'
+      - 'data/tablas-explicativas-v297.json'
+      - 'scripts/test-tablas-explicativas.mjs'
+      - 'index.html'
+      - 'bibliotheca-graeca-latina.html'
+      - '.github/workflows/test-tablas-explicativas.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tablas-explicativas.html'
+      - 'data/tablas-explicativas-v297.json'
+      - 'scripts/test-tablas-explicativas.mjs'
+      - 'index.html'
+      - 'bibliotheca-graeca-latina.html'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar DOI, tabla y enlaces sin tocar fuentes madre
+        run: node scripts/test-tablas-explicativas.mjs
