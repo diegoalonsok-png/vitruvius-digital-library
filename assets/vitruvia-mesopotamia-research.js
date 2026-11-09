@@ -20,6 +20,55 @@ const properties=[['P22','Padre'],['P25','Madre'],['P26','Cónyuge'],['P40','Des
 const getClaims=(j,p)=>((j?.claims||{})[p]||[]).filter(c=>c.rank!=='deprecated').map(c=>c.mainsnak?.datavalue?.value?.id).filter(id=>/^Q\d+$/.test(id)).slice(0,12);
 const node=(tag,value)=>{const n=document.createElement(tag);if(value)n.textContent=value;return n};
 const link=(href,label)=>{const a=node('a',label);a.href=href;a.target='_blank';a.rel='noopener noreferrer';return a};
+
+/* El árbol replica las ramas tipográficas de Lexicon solo dentro del dossier.
+ * Relaciones sin declaración no se dibujan. La sucesión política NO equivale
+ * automáticamente a filiación, por lo que no se infiere de una lista de reyes. */
+function dynastyTree(section,groups,labels,subjectId,subjectName){
+ const byProp=Object.fromEntries(groups.map(g=>[g.label,g.ids]));
+ const display=id=>labels[id]?.labels?.es?.value||labels[id]?.labels?.en?.value||id;
+ const tree=node('div');tree.className='vitruvia-dynasty-tree';
+ const roots=node('ul');roots.className='lx-tree-list';
+ function leaf(ul,label,id,name,children){
+  const li=node('li');li.className='lx-tree-node';
+  const head=node('span');head.className='lx-tree-head';
+  head.append(node('small',label));head.append(link('https://www.wikidata.org/wiki/'+id,name));
+  li.append(head);if(children?.length){const nested=node('ul');nested.className='lx-tree-list';children.forEach(c=>nested.append(c));li.append(nested)}
+  ul.append(li);return li;
+ }
+ const parents=[...(byProp['Padre']||[]),...(byProp['Madre']||[])];
+ const siblings=byProp['Hermanos/as']||[];
+ const spouses=byProp['Cónyuge']||[];
+ const children=byProp['Descendencia']||[];
+ const center=node('li');center.className='lx-tree-node';
+ const centerHead=node('span');centerHead.className='lx-tree-head';
+ centerHead.append(node('strong',subjectName||subjectId));center.append(centerHead);
+ const branch=node('ul');branch.className='lx-tree-list';
+ for(const id of spouses)leaf(branch,'Cónyuge · ',id,display(id));
+ for(const id of siblings)leaf(branch,'Hermano/a · ',id,display(id));
+ for(const id of children)leaf(branch,'Hijo/a · ',id,display(id));
+ if(branch.childNodes.length)center.append(branch);
+ if(parents.length){
+  for(const [i,id] of parents.entries()){
+   const li=node('li');li.className='lx-tree-node';
+   const h=node('span');h.className='lx-tree-head';h.append(node('small',i===0?'Progenitor/a · ':'Progenitor/a · '),link('https://www.wikidata.org/wiki/'+id,display(id)));li.append(h);
+   const chain=node('ul');chain.className='lx-tree-list';
+   // El sujeto se anida una sola vez: dos padres no implican dos árboles
+   // duplicados ni una filiación exclusiva.
+   if(i===0)chain.append(center);
+   if(chain.childNodes.length)li.append(chain);
+   roots.append(li);
+  }
+ }else roots.append(center);
+ tree.append(roots);
+ const styleId='vitruvia-dynasty-tree-style';
+ if(!document.getElementById(styleId)){
+  const style=node('style');style.id=styleId;
+  style.textContent='.vitruvia-dynasty-tree .lx-tree-list{list-style:none;margin:10px 0 14px;padding:0 0 0 18px;border-left:2px solid #4a4a4a}.vitruvia-dynasty-tree .lx-tree-node{position:relative;margin:0 0 4px;padding:8px 0 4px 14px}.vitruvia-dynasty-tree .lx-tree-node:before{content:"";position:absolute;left:-19px;top:20px;width:24px;border-top:2px solid #4a4a4a}.vitruvia-dynasty-tree .lx-tree-head{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:baseline;padding:7px 12px;border:1px solid #383838;border-radius:8px}.vitruvia-dynasty-tree .lx-tree-head small{font:11px Arial,sans-serif;opacity:.75}.vitruvia-dynasty-tree a{color:inherit;text-decoration:underline;text-underline-offset:3px}';
+  document.head.append(style);
+ }
+ section.append(tree);return tree;
+}
 let serial=0;
 async function fetchEntity(qid){
  const url='https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:qid,props:'claims|labels|descriptions',languages:'es|en|fr',format:'json',origin:'*'});
@@ -54,14 +103,9 @@ async function paint(query,rows){
   try{const r=await fetch(url,{signal:ctl.signal});if(r.ok)labels=(await r.json()).entities||{}}finally{clearTimeout(timer)}
  }catch{}
  if(current!==serial||!block.isConnected)return;
- const section=node('div');section.append(node('h4','Parentescos consignados en registros de autoridad'));
- const ul=node('ul');
- for(const group of groups){
-  const li=node('li');li.append(node('strong',group.label+': '));
-  group.ids.forEach((id,i)=>{if(i)li.append(document.createTextNode(', '));li.append(link('https://www.wikidata.org/wiki/'+id,labels[id]?.labels?.es?.value||labels[id]?.labels?.en?.value||id))});
-  ul.append(li);
- }
- section.append(ul,link('https://www.wikidata.org/wiki/'+identified.wikidataId,'Consultar fichas, referencias y declaraciones originales'));
+ const section=node('div');section.append(node('h4','Árbol de parentescos documentados'));
+ dynastyTree(section,groups,labels,identified.wikidataId,identified.entityCanonical||identified.title||query);
+ section.append(link('https://www.wikidata.org/wiki/'+identified.wikidataId,'Consultar las declaraciones y referencias del registro de autoridad'));
  block.insertBefore(section,root);
 }
 window.addEventListener('vitruvia:search',()=>{serial++;document.getElementById('vitruvia-mesopotamia-research')?.remove()});
