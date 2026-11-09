@@ -186,11 +186,31 @@ function decorate(parent,text,query){
  out.append(document.createTextNode(text.slice(cursor)));parent.append(out);
 }
 let works=[],entries=[],byId=new Map(),indexed=new Set(),locale="es",previous=[],current="",diag={},serial=0;
+/* Expansión morfológica controlada y optativa. Paradigmas explícitos,
+   sin suponer que las coincidencias son una lematización exhaustiva. */
+const attestedParadigms=[
+ {lang:"la",lemma:"architectura",forms:["architectura","architecturae","architecturam","architecturarum","architecturis","architecturas"]},
+ {lang:"la",lemma:"domus",forms:["domus","domum","domui","domo","domorum","domibus","domos"]},
+ {lang:"la",lemma:"aedifico",forms:["aedifico","aedificas","aedificat","aedificamus","aedificant","aedificare","aedificandi","aedificando","aedificatum","aedificavit"]},
+ {lang:"grc",lemma:"λόγος",forms:["λόγος","λόγου","λόγῳ","λόγον","λόγε","λόγοι","λόγων","λόγοις","λόγους"]}
+];
+function morphologicalForms(q){
+ if(!/^[\p{L}\p{M}]+$/u.test(q))return [];
+ const key=fold(q);
+ const record=attestedParadigms.find(p=>p.forms.some(form=>fold(form)===key));
+ return record?record.forms.filter(form=>fold(form)!==key):[];
+}
 const input=$("classic-query"),work=$("classic-work"),coverage=$("catalogue-status"),status=$("search-status"),
  root=$("result"),list=$("classic-results"),lex=$("lexicon-link"),bar=$("lexicon-bar");
 
 /* Traducciones remotas: sólo vínculos y metadatos de ediciones verificadas.
    Jamás contar como corpus local ni intentar descargar indiscriminadamente textos. */
+const morphControl=document.createElement("label");
+morphControl.style.cssText="display:inline-flex;align-items:center;gap:8px;margin:9px 0;color:#bfc0c2;font:12px/1.5 Arial,sans-serif;cursor:pointer";
+const morphCheckbox=document.createElement("input");
+morphCheckbox.type="checkbox";morphCheckbox.id="morphology-opt-in";
+morphControl.append(morphCheckbox,document.createTextNode(" Incluir formas flexionadas documentadas (cobertura parcial)"));
+document.querySelector(".searcharea")?.append(morphControl);
 const remoteBox=el("aside","remote-translations");
 remoteBox.hidden=true;
 document.querySelector(".searcharea")?.append(remoteBox);
@@ -571,7 +591,7 @@ async function search(){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
@@ -586,6 +606,7 @@ $("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search(
 work.addEventListener("change",()=>{drawRemote();if(input.value.trim())void search()});
 for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();if(input.value.trim())void search()});
 input.addEventListener("input",updateLexicon);
+morphCheckbox.addEventListener("change",()=>{if(input.value.trim())void search()});
 $("language-toggle").addEventListener("click",()=>{
  const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";
  switchLanguage(next);
