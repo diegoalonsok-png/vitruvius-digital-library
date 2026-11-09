@@ -13,6 +13,7 @@ on:
       - 'scripts/test-historical.mjs'
       - '.github/workflows/site-audit.yml'
       - 'scripts/browser-smoke-audit.mjs'
+      - 'scripts/test-front-inline-scripts.mjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -38,6 +39,7 @@ jobs:
           node --check assets/bibliography.js
           node --check assets/studies.js
           node --check scripts/browser-smoke-audit.mjs
+          node scripts/test-front-inline-scripts.mjs
       - name: Auditoría de enlaces internos y controles HTML
         run: node scripts/audit-site-links.mjs
       - name: Integridad de buscador Vitruvio
