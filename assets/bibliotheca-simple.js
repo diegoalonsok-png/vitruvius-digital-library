@@ -3,9 +3,9 @@
 (()=>{"use strict";
 const CATALOG="data/bibliotheca-graeca-latina-I-bce-I-ce.json";
 const REGISTRY="data/classics-corpus/search-registry.json";
-/* No borrar fuentes: Bibliotheca expone originales y traducciones inglesas.
-   Vitruvio conserva sus ediciones castellana y francesa. */
-const bibliothecaLanguagePolicy=e=>e.workId==="vitruvius"||["la","grc","en"].includes(e.language);
+/* Exponer solo versiones realmente inscritas en el registro: originales griegos/latinos
+   y traducciones existentes en inglés, castellano o francés, sin subir más obras. */
+const bibliothecaLanguagePolicy=e=>["la","grc","en","es","fr"].includes(e.language);
 /* Fichas de ediciones existentes: el índice ya utiliza el identificador común vitruvius.
    Conservar ficha individual, pero consultar sólo la edición realmente disponible. */
 const editionAliases={
@@ -16,7 +16,7 @@ const editionAliases={
 const $=id=>document.getElementById(id);
 const dict={
  es:{home:"Inicio",search:"Buscar",placeholder:"Una palabra o frase, por ejemplo: domus",
- intro:"Busca palabras y frases en los originales griegos y latinos y en sus traducciones inglesas. El castellano y el francés se reservan para las ediciones de Vitruvio. Pasajes ordenados por antigüedad, sin alineaciones inventadas.",
+ intro:"Busca palabras y frases en originales griegos y latinos y en traducciones existentes en castellano, inglés o francés. Se muestran solo ediciones documentadas; los pasajes se ordenan por antigüedad sin inventar alineaciones.",
  work:"Obra",all:"Todos los libros indexados",wait:"Cargando el catálogo de obras…",
  ready:(c,v,n)=>c+" obras catalogadas · "+v+" versiones indexadas · "+n+" obras sin texto indexado.",
  missing:"(no indexada)",label:"Párrafos encontrados",lexicon:"Estudiar etimología en Lexicon",
@@ -28,7 +28,7 @@ const dict={
  outside:n=>n+" obras catalogadas sin texto indexado; no examinadas.",
  wrong:"Esta obra no tiene texto indexado; no se buscó.",citation:"Edición y procedencia",loc:"Locus",noDate:"Datación no determinada",translit:forms=>"Transliteración griega documentada: "+forms.join(", ")},
  en:{home:"Home",search:"Search",placeholder:"One word or phrase, for example: domus",
- intro:"Search original Greek/Latin texts and English translations. Spanish and French remain available for Vitruvius editions only. Passages appear in chronological order without assumed alignment.",
+ intro:"Search Greek and Latin originals and documented translations available in English, Spanish or French. Only registered editions appear; passages are chronological without assumed alignment.",
  work:"Work",all:"All indexed books",wait:"Loading the work catalogue…",
  ready:(c,v,n)=>c+" catalogued works · "+v+" indexed versions · "+n+" works with no indexed text.",
  missing:"(not indexed)",label:"Matching paragraphs",lexicon:"Study etymology in Lexicon",
@@ -40,7 +40,7 @@ const dict={
  outside:n=>n+" catalogued works without indexed text, not searched.",
  wrong:"This work has no indexed text; it was not searched.",citation:"Edition and provenance",loc:"Locus",noDate:"Undated",translit:forms=>"Documented Greek transliteration: "+forms.join(", ")},
  fr:{home:"Accueil",search:"Chercher",placeholder:"Un mot ou une expression, par exemple : domus",
- intro:"Recherchez les textes originaux grecs et latins et leurs traductions anglaises. Les éditions de Vitruve conservent le français et l’espagnol. Résultats ordonnés par ancienneté.",
+ intro:"Recherchez les originaux grecs et latins et les traductions disponibles en français, anglais ou espagnol. Seules les éditions attestées sont proposées, sans alignement présumé.",
  work:"Œuvre",all:"Tous les livres indexés",wait:"Chargement du catalogue…",
  ready:(c,v,n)=>c+" œuvres cataloguées · "+v+" versions indexées · "+n+" œuvres sans texte indexé.",
  missing:"(non indexée)",label:"Paragraphes trouvés",lexicon:"Étudier l’étymologie dans Lexicon",
