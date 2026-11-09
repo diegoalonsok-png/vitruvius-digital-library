@@ -1,0 +1,40 @@
+name: Integridad académica transversal
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'classics-text-reader.html'
+      - 'classics-parallel-reader.html'
+      - 'auditoria-academica.html'
+      - 'metodologia-filologica.html'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-alignment/manifest.json'
+      - 'scripts/test-academic-cross-site.mjs'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'classics-text-reader.html'
+      - 'classics-parallel-reader.html'
+      - 'auditoria-academica.html'
+      - 'metodologia-filologica.html'
+      - 'scripts/test-academic-cross-site.mjs'
+      - '.github/workflows/academic-cross-site.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-academic-cross-site.mjs
