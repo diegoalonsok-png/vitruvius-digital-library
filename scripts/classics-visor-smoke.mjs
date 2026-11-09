@@ -280,16 +280,17 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
     if(work==='pliny')assert.match(await page.locator('#method-note').innerText(),/PARCIAL|parcial|XXXIII.*XXXVI|33.*36/,'Pliny must visibly declare partial coverage');
    }finally{await page.close()}
   }
-  // Preserve the historical Spanish translation without offering it as a
-  // general-library edition; Spanish and French remain for Vitruvius only.
+  // The historical Spanish Apuleius translation is a documented available
+  // edition. Offer it for study without inventing alignment with Latin.
   const archived=JSON.parse(fs.readFileSync('data/classics-corpus/apuleius-metamorphoses-es.json','utf8'));
   assert.equal(archived.language,'es');
   assert.equal(archived.passages.length,312,'Do not delete archived Apuleius passages');
   const page=await open('classics-text-reader.html?work=apuleius-metamorphoses&lang=es');
   try{
    await page.waitForFunction(()=>document.querySelector('#source-title')?.textContent?.includes('unidades textuales'),null,{timeout:25000});
-   assert.equal(await page.locator('#language option[value="es"]').count(),0,'Spanish must not appear for non-Vitruvius classics');
-   assert.notEqual(await page.locator('#language').inputValue(),'es');
+   assert.equal(await page.locator('#language option[value="es"]').count(),1,'Available Spanish historical editions must remain selectable');
+   assert.equal(await page.locator('#language').inputValue(),'es','Requested Spanish edition must actually be readable');
+   assert.match(await page.locator('#method-note').innerText(),/no hay alineación|sin recortar|alineación/i,'Translation must disclose limits of parallel loci');
   }finally{await page.close()}
  });
  await check('Full-text registry searches Catullus poetry, Lucretius and English translations',async()=>{
@@ -376,9 +377,19 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await p.waitForFunction(()=>/virt[uū]s/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
   }finally{await p.close()}
  });
- await check('Collation by locus: V514 against Rose 1899 shows the omission of «cum fuerit» at I.3.2',async()=>{
+ await check('Collation by locus: V514 with Rose and Krohn facsimiles, never OCR presented as a critical variant',async()=>{
   const p=await open('colacion.html?locus=1.3.2');
-  try{await p.waitForFunction(()=>/fuerit\s*\]\s*om\./.test(document.querySelector('#coll-body')?.textContent||''),{timeout:20000})}finally{await p.close()}
+  try{
+   await p.waitForFunction(()=>document.querySelector('#coll-body .coll-base')?.textContent?.includes('V514')&&
+    document.querySelector('#coll-body .coll-witnesses')?.textContent?.includes('Rose 1899'),{timeout:20000});
+   const record=await p.locator('#coll-body').innerText();
+   assert.match(record,/I\.3\.2/,'Source locus must remain explicitly identified');
+   assert.match(record,/Rose 1899/,'Historical Rose edition must be attributed');
+   assert.match(record,/Krohn 1912/,'Historical Krohn edition must be attributed');
+   assert.match(record,/OCR no validado/,'Uncollated OCR must not be described as a verified reading');
+   const facsimiles=await p.locator('#coll-body .coll-witnesses a').count();
+   assert.ok(facsimiles>=2,'Both external historical facsimiles should remain accessible');
+  }finally{await p.close()}
  });
  await check('Indices locorum group Latin forms by lemma (symmetria)',async()=>{
   const p=await open('indices-locorum.html?q=symmetri');
