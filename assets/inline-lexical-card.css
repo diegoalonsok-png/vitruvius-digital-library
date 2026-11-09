@@ -12,3 +12,22 @@
 #vitruvius-lexical-card figcaption{font:10px/1.45 system-ui,sans-serif;color:#5b626b}
 #vitruvius-lexical-card .vlc-links{display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid #c9cdd0;margin-top:10px;padding-top:10px}
 #vitruvius-lexical-card a{color:#263f55;text-underline-offset:3px}
+
+/* Main-index lexical highlights: clickable without changing original text. */
+#search-results .parallel-passage mark.search-hit,
+#search-results .parallel-translation-text mark.search-hit,
+#search-results .result-snippet mark.search-hit{
+ cursor:pointer!important;text-underline-offset:2px;
+}
+#search-results mark.search-hit:hover{outline:2px solid #faf7ec;outline-offset:1px}
+#vitruvius-lexical-card{
+ background:#191a1d;color:#ededf0;border:1px solid #676970;
+ border-radius:12px;box-shadow:0 18px 55px #000b;
+}
+#vitruvius-lexical-card .vlc-heading{border-color:#44464c}
+#vitruvius-lexical-card .vlc-heading h3,#vitruvius-lexical-card .vlc-content strong{color:#f2f2f3}
+#vitruvius-lexical-card .vlc-heading small,#vitruvius-lexical-card figcaption{color:#b7b7bd}
+#vitruvius-lexical-card .vlc-close{color:#f0f0f1;border:1px solid #6f7077;border-radius:7px;background:#27282b}
+#vitruvius-lexical-card .vlc-links{border-color:#55565c}
+#vitruvius-lexical-card a{color:#dbe1e8}
+#vitruvius-lexical-card a:hover{text-decoration-thickness:2px}
