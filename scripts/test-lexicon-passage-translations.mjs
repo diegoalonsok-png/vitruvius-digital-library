@@ -6,7 +6,7 @@ import vm from "node:vm";
 const read=path=>readFileSync(path,"utf8");
 const bridge=read("assets/lexicon-classics-bridge.js");
 new vm.Script(bridge,{filename:"assets/lexicon-classics-bridge.js"});
-assert.match(bridge,/id="lx-library-translation-lang"/);
+assert.match(bridge,/translationSelect\.id="lx-library-translation-lang"/);
 assert.match(bridge,/async function prepareTranslation/);
 assert.match(bridge,/translationContext=await prepareTranslation\(workId,currentEditions\)/);
 assert.match(bridge,/translationContext\.map\.has/);
