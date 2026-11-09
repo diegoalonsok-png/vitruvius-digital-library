@@ -343,19 +343,34 @@ printAll?.addEventListener("click",()=>{
 mailAll?.addEventListener("click",bibliographyShare);
 whatsappAll?.addEventListener("click",bibliographyShare);
 
+function originalRank(language){return ({la:0,grc:0,es:1,fr:2,en:3})[language]??4}
+function attestedLexeme(row,q){
+ const passage=String(row.passageText||row.excerpt||"");
+ const target=fold(row.term||q).replace(/j/g,"i").replace(/v/g,"u");
+ const tokens=passage.match(/[\\p{L}\\p{M}]+/gu)||[];
+ const match=tokens.find(w=>fold(w).replace(/j/g,"i").replace(/v/g,"u")===target);
+ if(match)return match.normalize("NFC");
+ if(row.language==="grc"){
+  const roman=fold(romanizeGreek(row.term||q));
+  const greek=tokens.find(w=>/[\\p{Script=Greek}]/u.test(w)&&fold(romanizeGreek(w))===roman);
+  if(greek)return greek.normalize("NFC");
+ }
+ return row.term||q;
+}
 function render(rows,q,details){
  previous=rows;current=q;diag=details||{};
  const t=dict[locale],sorted=rows.slice().sort((a,b)=>{
   const wa=byId.get(a.workId)||{},wb=byId.get(b.workId)||{};
   return dating(wa)-dating(wb)||String(wa.title||a.title).localeCompare(String(wb.title||b.title),"es")||
    a.workId.localeCompare(b.workId)||String(a.locus).localeCompare(String(b.locus),undefined,{numeric:true})||
-   String(a.language).localeCompare(String(b.language));
+   (originalRank(a.language)-originalRank(b.language));
  });
  root.hidden=false;list.replaceChildren();
  const groupCounts=new Map();
  for(const r of sorted)groupCounts.set(r.workId,(groupCounts.get(r.workId)||0)+(r.hitsInPassage||1));
  const total=[...groupCounts.values()].reduce((sum,n)=>sum+n,0);
- status.textContent=t.stats(total,sorted.length,new Set(sorted.map(r=>r.workId)).size)+
+  const originalTotal=sorted.filter(r=>["la","grc"].includes(r.language)).reduce((n,r)=>n+(r.hitsInPassage||1),0);
+ status.textContent=(locale==="fr"?"Original grec/latin : ":locale==="en"?"Original Greek/Latin: ":"Original griego/latino: ")+originalTotal+" · "+t.stats(total,sorted.length,new Set(sorted.map(r=>r.workId)).size)+
   (details?.transliterations?.length?" · "+t.translit(details.transliterations):"")+
   (details?.failed?" · "+t.failed:"");
  if(!sorted.length)list.append(el("p","",t.none));
@@ -377,9 +392,12 @@ function render(rows,q,details){
     const lang=key.split("|")[0];return (languages[lang]||lang)+": "+n;
    }).join(" · ");
    section.append(el("p","version-counts",versionInfo));
+    const originalCount=relevant.filter(z=>["la","grc"].includes(z.language)).reduce((n,z)=>n+(z.hitsInPassage||1),0);
+    section.append(el("p","version-counts",(locale==="en"?"Original occurrences: ":locale==="fr"?"Occurrences dans l’original : ":"Apariciones en el original: ")+originalCount+" · "+(locale==="es"?"Traducciones contadas por separado":locale==="fr"?"Traductions comptées séparément":"Translations counted separately")));
    // Navegación cruzada: conservar el identificador real de obra y la grafía
    // efectivamente hallada; no afirmar concordancias alineadas entre ediciones.
-   const term=relevant.find(z=>z.language===w.language)?.term||relevant[0]?.term||q;
+   const sourceRow=relevant.find(z=>["grc","la"].includes(z.language))||relevant[0];
+    const term=attestedLexeme(sourceRow,q);
    const cross=el("p","version-counts");
    const toVitruvia=new URL("vitruvia.html",location.href);
    toVitruvia.searchParams.set("q",term);
@@ -405,7 +423,24 @@ function render(rows,q,details){
   }
   const li=el("li","hit");li.lang=r.language==="grc"?"el":r.language||"es";
   li.append(el("span","locus",t.loc+" "+(r.locus||"—")+" · "+(languages[r.language]||r.language)+" · "+(r.hitsInPassage||1)));
-  const p=el("p","");decorate(p,r.passageText||r.excerpt||"",r.term||q);li.append(p);
+  if(["la","grc"].includes(r.language)){
+    const lexeme=el("p","lexeme-attested",attestedLexeme(r,q));
+    lexeme.lang=r.language==="grc"?"grc":"la";
+    lexeme.title="Grafía documentada en el pasaje; no reconstrucción editorial";
+    li.append(lexeme);
+   }
+   const p=el("p","");decorate(p,r.passageText||r.excerpt||"",r.term||q);li.append(p);
+   if(r.parallelTranslations?.length){
+    const panel=el("div","parallel-attested");
+    for(const tr of r.parallelTranslations){
+     const box=el("div","parallel-attested-language");
+     box.append(el("strong","",(languages[tr.language]||tr.language)+" · "+tr.edition));
+     if(tr.available){const txt=el("p","",tr.text);txt.lang=tr.language;box.append(txt)}
+     else box.append(el("p","parallel-unavailable",tr.note||"Traducción no alineada"));
+     panel.append(box);
+    }
+    li.append(panel);
+   }
   // Enlace auténtico al pasaje citado; no crear nuevos loci ni duplicar visores.
   if(typeof r.link==="string"){
    try{const target=new URL(r.link,location.href);
