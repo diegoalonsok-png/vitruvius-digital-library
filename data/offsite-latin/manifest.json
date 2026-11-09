@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-offsite-latin-originals-manifest-v1",
   "branch": "corpus-originales-latinos-20261108",
-  "count": 9,
-  "totalBytes": 2824528,
+  "count": 10,
+  "totalBytes": 2854309,
   "method": "Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text",
   "entries": [
     {
@@ -458,10 +458,24 @@
       "books": 20,
       "bytes": 1518825,
       "editorialStatus": "Public-domain Latin digital transcription, without verified edition or manuscript apparatus; whitespace normalized only for search"
+    },
+    {
+      "workId": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "language": "la",
+      "path": "data/offsite-latin/siculus-flaccus-la.json",
+      "passages": 31,
+      "source": "https://la.wikisource.org/wiki/De_condicionibus_agrorum",
+      "sourceSha256": "47467398bd7b44b32ea84360ef23b231e2cf6f321daf6b2d0988f1beeca14e91",
+      "attribution": "Siculus Flaccus, De condicionibus agrorum, transcripción de Wikisource en latín (de origen IntraText; edición de base no identificada), consultada el 9-XI-2026. Wikisource CC BY-SA 4.0. No cotejada ni edición crítica.",
+      "editorialStatus": "Transcripción digital atribuida, con 31 párrafos numerados; su edición de base no está identificada; no implica cotejo filológico",
+      "bytes": 29781
     }
   ],
   "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita",
   "naturalesMethod": "Seven CLTK/The Latin Library transcriptions; technical loci, no manuscript collation or invented translation",
   "twoWorksMethod": "Velleius and Frontinus source transcriptions; chapter labels/technical segments; no claim of critical collation",
-  "isidoreMethod": "20 public-domain digital transcripts with technical search segments only; no manuscript collation"
+  "isidoreMethod": "20 public-domain digital transcripts with technical search segments only; no manuscript collation",
+  "siculusFlaccusMethod": "Latin Wikisource paragraph transcription, CC BY-SA 4.0; source edition not identified; explicitly non-critical"
 }
