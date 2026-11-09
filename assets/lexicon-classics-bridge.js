@@ -111,8 +111,87 @@ function addSummaryResult(row){
  const link=document.createElement("a");link.href=v.href;link.textContent="Consultar en Vitruvia";actions.append(link);
  card.append(a,desc,excerpt,actions);list.append(card);
 }
+
+/* Keep source identity and actual locus order; do not conflate distinct editions. */
+let currentLiteralRows=[],currentEditions=[],currentQuery="",selectedWorkId="";
+function compareLoci(a,b){
+ return String(a.locus||"").localeCompare(String(b.locus||""),undefined,{numeric:true,sensitivity:"base"})||
+  String(a.language||"").localeCompare(String(b.language||""))||
+  String(a.edition||"").localeCompare(String(b.edition||""));
+}
+function groupByWork(rows){
+ const groups=new Map();
+ for(const row of rows){
+  if(!groups.has(row.workId))groups.set(row.workId,[]);
+  groups.get(row.workId).push(row);
+ }
+ return [...groups].sort(([a],[b])=>
+  (a===selectedWorkId?-1:0)-(b===selectedWorkId?-1:0)||
+  String(groups.get(a)[0]?.author||"").localeCompare(String(groups.get(b)[0]?.author||""),"es")||
+  String(groups.get(a)[0]?.title||"").localeCompare(String(groups.get(b)[0]?.title||""),"es"));
+}
+function showLiteralRows(rows,editions){
+ list.replaceChildren();
+ const fragment=document.createDocumentFragment();
+ for(const [workId,records] of groupByWork(rows)){
+  const ordered=records.slice().sort(compareLoci);
+  const first=ordered[0];
+  const heading=document.createElement("section");
+  heading.className="lx-library-work-group";
+  heading.dataset.workId=workId;
+  const header=document.createElement("div");header.className="lx-library-work-header";
+  const name=document.createElement("h4");
+  name.textContent=(selectedWorkId===workId?"Obra seleccionada · ":"")+
+   [first.author,first.title].filter(Boolean).join(" · ");
+  const occ=ordered.reduce((n,row)=>n+(Number(row.hitsInPassage)||0),0);
+  const stats=document.createElement("p");stats.className="lx-library-meta";
+  stats.textContent=occ+" coincidencia"+(occ===1?"":"s")+" · "+ordered.length+" pasaje"+(ordered.length===1?"":"s")+
+   (selectedWorkId===workId?" · ordenados por locus":" · vista global limitada por edición");
+  header.append(name,stats);
+  if(selectedWorkId!==workId){
+   const show=document.createElement("button");show.type="button";
+   show.className="lx-library-button";
+   show.textContent="Ver todos los pasajes de esta obra";
+   show.setAttribute("aria-label","Mostrar primero todos los pasajes de "+[first.author,first.title].filter(Boolean).join(", "));
+   show.addEventListener("click",()=>{void selectLibraryWork(workId)});
+   header.append(show);
+  }
+  heading.append(header);
+  for(const row of ordered){
+   // addResult uses the shared bridge list. Move the card into its original-work group.
+   addResult(row,editions);
+   heading.append(list.lastElementChild);
+  }
+  fragment.append(heading);
+ }
+ list.append(fragment);
+}
+async function selectLibraryWork(workId){
+ const term=input.value.trim();
+ if(!workId||!term||term!==currentQuery||typeof window.ClassicsCorpusSearch?.searchPassages!=="function")return;
+ const token=++serial;
+ selectedWorkId=workId;
+ button.disabled=true;semantic.disabled=true;
+ status.textContent="Recuperando todos los pasajes de la obra seleccionada…";
+ try{
+  // Do not use the global 12-passages-per-edition preview for this work.
+  const specific=await window.ClassicsCorpusSearch.searchPassages(term,{workId,allMatches:true,includeOCR:false,maxPerEdition:100000});
+  if(token!==serial)return;
+  const remaining=currentLiteralRows.filter(row=>row.workId!==workId);
+  const selected=specific.filter(row=>row.workId===workId);
+  showLiteralRows([...selected,...remaining],currentEditions);
+  const count=selected.reduce((n,r)=>n+(Number(r.hitsInPassage)||0),0);
+  status.textContent=[selected[0]?.author,selected[0]?.title].filter(Boolean).join(" · ")+
+   ": "+count+" coincidencias en "+selected.length+" pasajes; se muestran primero, ordenados por locus. "+
+   "Debajo permanecen las demás obras del resultado global (vista limitada).";
+  const section=[...list.querySelectorAll(".lx-library-work-group")].find(e=>e.dataset.workId===workId);
+  section?.scrollIntoView({behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches?"auto":"smooth",block:"start"});
+ }catch(error){
+  if(token===serial)status.textContent="No se pudieron recuperar todos los pasajes de esta obra: "+String(error.message||error);
+ }finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
+}
 async function execute(mode="literal"){
- const q=input.value.trim(),token=++serial;list.replaceChildren();
+ const q=input.value.trim(),token=++serial;list.replaceChildren();selectedWorkId="";currentLiteralRows=[];currentQuery=q;
  if(!/[\p{L}]/u.test(q)){status.textContent="Escriba una palabra griega o latina para consultar los textos indexados.";return}
  if(!window.ClassicsCorpusSearch){status.textContent="El motor de textos clásicos no está disponible.";return}
  button.disabled=true;semantic.disabled=true;status.textContent="Buscando pasajes en las ediciones indexadas…";
@@ -132,7 +211,7 @@ async function execute(mode="literal"){
    const editionCount=counts.size;
    const editions=await registeredEditions();
    if(token!==serial)return;
-   rows.forEach(row=>addResult(row,editions));
+   currentLiteralRows=rows;currentEditions=editions;showLiteralRows(rows,editions);
    const diagnostic=window.ClassicsCorpusSearch.diagnostics?.()||{};
    status.textContent=rows.length?
     rows.length+" pasajes mostrados de "+editionCount+" ediciones indexadas, con referencia y término resaltado. La lista tiene un límite de visualización; el recuento por lema de Lexicon se calcula por separado.":
@@ -150,7 +229,7 @@ window.addEventListener("vitruvia:lexicon-search",event=>{
 });
 // A Lexicon search must also retrieve literal attestations; a missing dictionary headword is not absence from the corpus.
 document.getElementById("lx-form")?.addEventListener("submit",()=>{if(/[\p{L}]/u.test(input.value.trim()))execute("literal")});
-input.addEventListener("input",()=>{serial++;button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
+input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
