@@ -15,20 +15,29 @@
  /* Unicode hieroglyphs in a PDF text layer are searchable. Image OCR is separate. */
  const HIEROGLYPHS=/[𓀀-𓑟]/u;
  const HIEROGLYPH_ALL=/[𓀀-𓑟]/gu;
+ const CUNEIFORM=/[𒀀-𒏿𒐀-𒑿]/u;
+ const CUNEIFORM_ALL=/[𒀀-𒏿𒐀-𒑿]/gu;
  function identifyScripts(pages){
-  let hieroglyphPages=0,hieroglyphs=0;const examples=[];
+  let hieroglyphPages=0,hieroglyphs=0,cuneiformPages=0,cuneiformCharacters=0;const examples=[],cuneiformExamples=[];
   for(const entry of pages||[]){
    const text=String(entry?.text||'');
-   if(!HIEROGLYPHS.test(text))continue;
-   hieroglyphPages++;
-   const marks=[...text.matchAll(HIEROGLYPH_ALL)];
-   hieroglyphs+=marks.length;
-   if(examples.length<3)examples.push({page:entry.page,sample:marks.slice(0,8).map(x=>x[0]).join('')});
+   if(HIEROGLYPHS.test(text)){
+    hieroglyphPages++;
+    const marks=[...text.matchAll(HIEROGLYPH_ALL)];
+    hieroglyphs+=marks.length;
+    if(examples.length<3)examples.push({page:entry.page,sample:marks.slice(0,8).map(x=>x[0]).join('')});
+   }
+   if(CUNEIFORM.test(text)){
+    cuneiformPages++;
+    const marks=[...text.matchAll(CUNEIFORM_ALL)];
+    cuneiformCharacters+=marks.length;
+    if(cuneiformExamples.length<3)cuneiformExamples.push({page:entry.page,sample:marks.slice(0,8).map(x=>x[0]).join('')});
+   }
   }
-  return {hieroglyphPages,hieroglyphCharacters:hieroglyphs,examples,
+  return {hieroglyphPages,hieroglyphCharacters:hieroglyphs,examples,cuneiformPages,cuneiformCharacters,cuneiformExamples,
    detection:'Unicode Egyptian Hieroglyphs in extracted text layer',
    imageRecognitionPerformed:false,
-   note:'Detecta jeroglíficos Unicode extraíbles; no reconoce signos en imágenes escaneadas.'};
+   note:'Detecta jeroglíficos y signos cuneiformes Unicode extraíbles; no reconoce signos en imágenes escaneadas.'};
  }
  function search(pages,needle,{limit=30}={}){
   const query=fold(needle),qwords=[...new Set(words(needle))];
@@ -113,5 +122,5 @@
    try{if(binary.byteLength)binary.fill(0)}catch{}
   }
  }
- window.VitruviaPDFLocal={search,extract,fold,identifyScripts,MAX_PAGES,MAX_FILE_SIZE,version:'1.1-hieroglyph-textlayer'};
+ window.VitruviaPDFLocal={search,extract,fold,identifyScripts,MAX_PAGES,MAX_FILE_SIZE,version:'1.2-ancient-scripts-textlayer'};
 })();
