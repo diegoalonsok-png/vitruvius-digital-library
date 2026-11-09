@@ -1,7 +1,7 @@
 /* Controles superiores de Indices locorum, sin alterar la lógica de los índices. */
 (()=>{
  "use strict";
- const area=document.querySelector(".indices-topbar");
+ const area=document.querySelector(".indices-lexicon-nav");
  if(!area)return;
  const status=document.getElementById("indices-toolbar-status");
  const pageUrl=()=>location.href;
