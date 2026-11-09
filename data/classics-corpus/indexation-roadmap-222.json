@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-09",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment.",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
   "targetWorks": 222,
   "counts": {
     "originalsIndexed": 181,
@@ -19,7 +19,11 @@
       "requiere_fuente_no_canonica_o_edicion_especifica": 7,
       "sin_fuente_en_mapa_perseus": 16,
       "tei_perseus_candidato_por_verificar": 15
-    }
+    },
+    "offsiteOriginalsIndexed": 23,
+    "effectiveOriginalsIndexed": 204,
+    "effectiveOriginalsMissing": 18,
+    "offsiteTextVersionsOutsidePages": 23
   },
   "items": [
     {
@@ -39,7 +43,9 @@
       "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-officiis",
@@ -58,7 +64,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi055"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-oratore",
@@ -76,7 +84,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi037"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-republica",
@@ -94,7 +104,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi043"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "caesar-gallico",
@@ -113,7 +125,9 @@
       "bibliographyCandidateUrns": [
         "phi0448.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "caesar-civili",
@@ -132,7 +146,9 @@
       "bibliographyCandidateUrns": [
         "phi0448.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sallust-catiline",
@@ -151,7 +167,9 @@
       "bibliographyCandidateUrns": [
         "phi0631.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sallust-iugurtha",
@@ -170,7 +188,9 @@
       "bibliographyCandidateUrns": [
         "phi0631.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "varro-rustica",
@@ -188,7 +208,9 @@
       "bibliographyCandidateUrns": [
         "ll.varro-rustica"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "lucretius",
@@ -208,7 +230,9 @@
       "bibliographyCandidateUrns": [
         "phi0550.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "virgil-aeneid",
@@ -227,7 +251,9 @@
       "bibliographyCandidateUrns": [
         "phi0690.phi003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "virgil-georgica",
@@ -246,7 +272,9 @@
       "bibliographyCandidateUrns": [
         "phi0690.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "horace-odes",
@@ -264,7 +292,9 @@
       "bibliographyCandidateUrns": [
         "phi0893.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "livy",
@@ -282,7 +312,9 @@
       "bibliographyCandidateUrns": [
         "phi0914.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid",
@@ -300,7 +332,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi006"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid-fasti",
@@ -318,7 +352,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi007"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "nepos",
@@ -360,7 +396,9 @@
         "phi0588.abo024",
         "phi0588.abo025"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "diodorus",
@@ -378,7 +416,9 @@
       "bibliographyCandidateUrns": [
         "tlg0060.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "dionysius",
@@ -396,7 +436,9 @@
       "bibliographyCandidateUrns": [
         "tlg0081.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "strabo",
@@ -414,7 +456,9 @@
       "bibliographyCandidateUrns": [
         "tlg0099.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "philo",
@@ -433,7 +477,9 @@
       "bibliographyCandidateUrns": [
         "tlg0018.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "seneca-epistulae",
@@ -451,7 +497,9 @@
       "bibliographyCandidateUrns": [
         "phi1017.phi015"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "seneca-naturales",
@@ -467,7 +515,14 @@
       "bibliographyCandidateUrns": [
         "ll.seneca-naturales"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "d47117f38e5e317dd06dd3d993699d8ea349ac5f61881970c153485443b9380b"
+      }
     },
     {
       "id": "lucan",
@@ -485,7 +540,9 @@
       "bibliographyCandidateUrns": [
         "phi0917.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pliny",
@@ -503,7 +560,9 @@
       "bibliographyCandidateUrns": [
         "phi0978.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "dioscorides",
@@ -521,7 +580,9 @@
       "bibliographyCandidateUrns": [
         "tlg0656.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "josephus-war",
@@ -539,7 +600,9 @@
       "bibliographyCandidateUrns": [
         "tlg0526.tlg004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "josephus-antiquities",
@@ -557,7 +620,9 @@
       "bibliographyCandidateUrns": [
         "tlg0526.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "quintilian",
@@ -575,7 +640,9 @@
       "bibliographyCandidateUrns": [
         "phi1002.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "martial",
@@ -593,7 +660,9 @@
       "bibliographyCandidateUrns": [
         "phi1294.phi002"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tacitus-agricola",
@@ -612,7 +681,9 @@
       "bibliographyCandidateUrns": [
         "phi1351.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tacitus-germania",
@@ -630,7 +701,9 @@
       "bibliographyCandidateUrns": [
         "phi1351.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "frontinus",
@@ -648,7 +721,9 @@
       "bibliographyCandidateUrns": [
         "ll.frontinus"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "mark",
@@ -666,7 +741,9 @@
       "bibliographyCandidateUrns": [
         "tlg0031.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "clement",
@@ -684,7 +761,9 @@
       "bibliographyCandidateUrns": [
         "tlg1271.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "didache",
@@ -703,7 +782,9 @@
       "bibliographyCandidateUrns": [
         "tlg1311.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pastor-hermas",
@@ -721,7 +802,9 @@
       "bibliographyCandidateUrns": [
         "tlg1419.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "faventinus",
@@ -735,7 +818,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "barnabas",
@@ -753,7 +838,9 @@
       "bibliographyCandidateUrns": [
         "tlg1216.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ignatius",
@@ -771,7 +858,9 @@
       "bibliographyCandidateUrns": [
         "tlg1443.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "polycarp",
@@ -789,7 +878,9 @@
       "bibliographyCandidateUrns": [
         "tlg1622.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "clement-2",
@@ -807,7 +898,9 @@
       "bibliographyCandidateUrns": [
         "tlg1271.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "diognetus",
@@ -825,7 +918,9 @@
       "bibliographyCandidateUrns": [
         "tlg0646.tlg004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "justin",
@@ -843,7 +938,9 @@
       "bibliographyCandidateUrns": [
         "tlg0645.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "irenaeus",
@@ -861,7 +958,9 @@
       "bibliographyCandidateUrns": [
         "tlg1447.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tertullian",
@@ -879,7 +978,9 @@
       "bibliographyCandidateUrns": [
         "stoa0275.stoa009"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "origenes",
@@ -893,7 +994,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "eusebio",
@@ -911,7 +1014,9 @@
       "bibliographyCandidateUrns": [
         "tlg2018.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "columella",
@@ -929,7 +1034,9 @@
       "bibliographyCandidateUrns": [
         "phi0845.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "celsus",
@@ -947,7 +1054,9 @@
       "bibliographyCandidateUrns": [
         "phi0836.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "frontinus-strategemata",
@@ -965,7 +1074,9 @@
       "bibliographyCandidateUrns": [
         "ll.frontinus-strategemata"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plutarch-lives",
@@ -1046,7 +1157,9 @@
         "tlg0007.tlg065",
         "tlg0007.tlg066"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "apollodorus-poliorcetics",
@@ -1060,7 +1173,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "hero-pneumatica",
@@ -1078,7 +1193,9 @@
       "bibliographyCandidateUrns": [
         "tlg0559.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "hero-automata",
@@ -1096,7 +1213,9 @@
       "bibliographyCandidateUrns": [
         "tlg0559.tlg002"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "athenaeus-mechanicus",
@@ -1110,7 +1229,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "vitruvio-v514-pdf",
@@ -1124,7 +1245,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "vitruvio-v554-pdf",
@@ -1138,7 +1261,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "theory-v297-pdf",
@@ -1152,7 +1277,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "krohn-1912-pdf",
@@ -1168,7 +1295,9 @@
       "state": "original_sin_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plautus-amphitruo",
@@ -1186,7 +1315,9 @@
       "bibliographyCandidateUrns": [
         "phi0119.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plautus-aulularia",
@@ -1204,7 +1335,9 @@
       "bibliographyCandidateUrns": [
         "phi0119.phi003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "terentius-andria",
@@ -1222,7 +1355,9 @@
       "bibliographyCandidateUrns": [
         "phi0134.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "terentius-heautontimorumenos",
@@ -1240,7 +1375,9 @@
       "bibliographyCandidateUrns": [
         "phi0134.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cato-agri-cultura",
@@ -1258,7 +1395,9 @@
       "bibliographyCandidateUrns": [
         "stoa0079.stoa001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-catilinariae",
@@ -1277,7 +1416,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi013"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "catullus-carmina",
@@ -1296,7 +1437,9 @@
       "bibliographyCandidateUrns": [
         "phi0472.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "horace-sermones",
@@ -1314,7 +1457,9 @@
       "bibliographyCandidateUrns": [
         "phi0893.phi004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "horace-ars-poetica",
@@ -1332,7 +1477,9 @@
       "bibliographyCandidateUrns": [
         "phi0893.phi006"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid-ars-amatoria",
@@ -1350,7 +1497,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "seneca-tragoediae",
@@ -1377,7 +1526,9 @@
         "phi1017.phi009",
         "phi1017.phi010"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "petronius-satyrica",
@@ -1396,7 +1547,9 @@
       "bibliographyCandidateUrns": [
         "ll.petronius-satyrica"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tacitus-annales",
@@ -1414,7 +1567,9 @@
       "bibliographyCandidateUrns": [
         "phi1351.phi005"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tacitus-historiae",
@@ -1432,7 +1587,9 @@
       "bibliographyCandidateUrns": [
         "phi1351.phi004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "suetonius-caesares",
@@ -1461,7 +1618,9 @@
         "phi1348.abo021",
         "phi1348.abo022"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "juvenal-saturae",
@@ -1479,7 +1638,9 @@
       "bibliographyCandidateUrns": [
         "phi1276.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "apuleius-metamorphoses",
@@ -1499,7 +1660,9 @@
       "bibliographyCandidateUrns": [
         "phi1212.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "varro-de-lingua-latina",
@@ -1517,7 +1680,9 @@
       "bibliographyCandidateUrns": [
         "ll.varro-de-lingua-latina"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tibullus-elegiae",
@@ -1535,7 +1700,9 @@
       "bibliographyCandidateUrns": [
         "phi0660.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "propertius-elegiae",
@@ -1553,7 +1720,9 @@
       "bibliographyCandidateUrns": [
         "phi0620.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "phraedrus-fabulae",
@@ -1572,7 +1741,9 @@
       "bibliographyCandidateUrns": [
         "ll.phraedrus-fabulae"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "statius-thebais",
@@ -1590,7 +1761,9 @@
       "bibliographyCandidateUrns": [
         "phi1020.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pliny-younger-epistulae",
@@ -1608,7 +1781,9 @@
       "bibliographyCandidateUrns": [
         "phi1318.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aulus-gellius-noctes",
@@ -1626,7 +1801,9 @@
       "bibliographyCandidateUrns": [
         "phi1254.phi001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "valerius-maximus-facta",
@@ -1644,7 +1821,9 @@
       "bibliographyCandidateUrns": [
         "phi1038.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "velleius-historia",
@@ -1660,7 +1839,14 @@
       "bibliographyCandidateUrns": [
         "ll.velleius-historia"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "7246264ce0932f636a2a54de5589c9b8756abfb2f8eb75fb02cbc8b2316766d2"
+      }
     },
     {
       "id": "silius-punica",
@@ -1678,7 +1864,9 @@
       "bibliographyCandidateUrns": [
         "phi1345.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "polybius-historiae",
@@ -1696,7 +1884,9 @@
       "bibliographyCandidateUrns": [
         "tlg0543.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pseudo-apollodorus-bibliotheca",
@@ -1715,7 +1905,9 @@
         "tlg0548.tlg001",
         "tlg0548.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "philo-legum-allegoriae",
@@ -1734,7 +1926,9 @@
       "bibliographyCandidateUrns": [
         "tlg0018.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "philo-de-vita-mosis",
@@ -1753,7 +1947,9 @@
       "bibliographyCandidateUrns": [
         "tlg0018.tlg022"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plutarch-moralia",
@@ -1847,7 +2043,9 @@
         "tlg0007.tlg146",
         "tlg0007.tlg147"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "lucian-dialogi-mortuorum",
@@ -1865,7 +2063,9 @@
       "bibliographyCandidateUrns": [
         "tlg0062.tlg066"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "lucian-verae-historiae",
@@ -1884,7 +2084,9 @@
       "bibliographyCandidateUrns": [
         "tlg0062.tlg012"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pausanias-periegesis",
@@ -1902,7 +2104,9 @@
       "bibliographyCandidateUrns": [
         "tlg0525.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "galen-ars-medica",
@@ -1920,7 +2124,9 @@
       "bibliographyCandidateUrns": [
         "tlg0057.tlg007"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "galen-de-usu-partium",
@@ -1938,7 +2144,9 @@
       "bibliographyCandidateUrns": [
         "tlg0057.tlg017"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ptolemy-almagest",
@@ -1956,7 +2164,9 @@
       "bibliographyCandidateUrns": [
         "tlg0363.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ptolemy-geographia",
@@ -1970,7 +2180,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "appian-romaika",
@@ -2001,7 +2213,9 @@
         "tlg0551.tlg014",
         "tlg0551.tlg017"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "marcus-aurelius-meditations",
@@ -2020,7 +2234,9 @@
       "bibliographyCandidateUrns": [
         "tlg0562.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "homer-iliad",
@@ -2039,7 +2255,9 @@
       "bibliographyCandidateUrns": [
         "tlg0012.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "homer-odyssey",
@@ -2058,7 +2276,9 @@
       "bibliographyCandidateUrns": [
         "tlg0012.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "hesiod-theogony",
@@ -2077,7 +2297,9 @@
       "bibliographyCandidateUrns": [
         "tlg0020.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "hesiod-works-days",
@@ -2096,7 +2318,9 @@
       "bibliographyCandidateUrns": [
         "tlg0020.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aeschylus-oresteia",
@@ -2116,7 +2340,9 @@
         "tlg0085.tlg006",
         "tlg0085.tlg007"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-oedipus",
@@ -2135,7 +2361,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-medea",
@@ -2154,7 +2382,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-clouds",
@@ -2173,7 +2403,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "herodotus-historiae",
@@ -2191,7 +2423,9 @@
       "bibliographyCandidateUrns": [
         "tlg0016.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "thucydides-war",
@@ -2207,7 +2441,14 @@
       "bibliographyCandidateUrns": [
         "tlg0003.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "c418cbbc18d730ea4e0ba80d15425d89e21624c5eca1060f1430e11e1c478ac6"
+      }
     },
     {
       "id": "xenophon-anabasis",
@@ -2225,7 +2466,9 @@
       "bibliographyCandidateUrns": [
         "tlg0032.tlg006"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-republic",
@@ -2243,7 +2486,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg030"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-apology",
@@ -2262,7 +2507,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-poetics",
@@ -2281,7 +2528,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg034"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-politics",
@@ -2300,7 +2549,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg035"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "hippocrates-aphorisms",
@@ -2319,7 +2570,9 @@
       "bibliographyCandidateUrns": [
         "tlg0627.tlg012"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "epictetus-discourses",
@@ -2337,7 +2590,9 @@
       "bibliographyCandidateUrns": [
         "tlg0557.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "arrian-anabasis-alexandri",
@@ -2355,7 +2610,9 @@
       "bibliographyCandidateUrns": [
         "tlg0074.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cassius-dio-historia",
@@ -2371,7 +2628,14 @@
       "bibliographyCandidateUrns": [
         "tlg0385.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "3d2aa5d45ebb87ba8ba6d6ccf1d42a5bdc97f74ac2b365d97d8ead7c63f4d951"
+      }
     },
     {
       "id": "athenaeus-deipnosophistae",
@@ -2387,7 +2651,14 @@
       "bibliographyCandidateUrns": [
         "tlg0008.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "f6d964a08422ae83a618b3d3747eebf684a1c11757252d9e6996c986ddd758a1"
+      }
     },
     {
       "id": "aeschylus-persae",
@@ -2406,7 +2677,9 @@
       "bibliographyCandidateUrns": [
         "tlg0085.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aeschylus-seven-thebes",
@@ -2425,7 +2698,9 @@
       "bibliographyCandidateUrns": [
         "tlg0085.tlg004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aeschylus-suppliants",
@@ -2444,7 +2719,9 @@
       "bibliographyCandidateUrns": [
         "tlg0085.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aeschylus-prometheus",
@@ -2463,7 +2740,9 @@
       "bibliographyCandidateUrns": [
         "tlg0085.tlg003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-antigone",
@@ -2482,7 +2761,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-ajax",
@@ -2500,7 +2781,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-electra",
@@ -2519,7 +2802,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg005"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-philoctetes",
@@ -2538,7 +2823,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg006"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-oedipus-colonus",
@@ -2557,7 +2844,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg007"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "sophocles-trachiniae",
@@ -2575,7 +2864,9 @@
       "bibliographyCandidateUrns": [
         "tlg0011.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-bacchae",
@@ -2594,7 +2885,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg017"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-hippolytus",
@@ -2613,7 +2906,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg005"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-alcestis",
@@ -2632,7 +2927,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-electra",
@@ -2651,7 +2948,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg012"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-troades",
@@ -2670,7 +2969,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg011"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-hecuba",
@@ -2689,7 +2990,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg007"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euripides-iphigenia-aulid",
@@ -2708,7 +3011,9 @@
       "bibliographyCandidateUrns": [
         "tlg0006.tlg018"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-aves",
@@ -2726,7 +3031,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg006"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-ranae",
@@ -2744,7 +3051,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg009"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-lysistrata",
@@ -2762,7 +3071,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg007"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-vespae",
@@ -2780,7 +3091,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg004"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-pax",
@@ -2798,7 +3111,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg005"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristophanes-acharnenses",
@@ -2816,7 +3131,9 @@
       "bibliographyCandidateUrns": [
         "tlg0019.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-symposium",
@@ -2835,7 +3152,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg011"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-phaedo",
@@ -2854,7 +3173,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg004"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-gorgias",
@@ -2873,7 +3194,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg023"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-timaeus",
@@ -2892,7 +3215,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg031"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-meno",
@@ -2911,7 +3236,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg024"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-phaedrus",
@@ -2930,7 +3257,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg012"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-laws",
@@ -2948,7 +3277,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg034"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plato-crito",
@@ -2967,7 +3298,9 @@
       "bibliographyCandidateUrns": [
         "tlg0059.tlg003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-nicomachean-ethics",
@@ -2986,7 +3319,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg010"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-metaphysics",
@@ -3004,7 +3339,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg025"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-physics",
@@ -3022,7 +3359,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg031"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-rhetoric",
@@ -3040,7 +3379,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg038"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristotle-de-anima",
@@ -3058,7 +3399,9 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg002"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "xenophon-memorabilia",
@@ -3076,7 +3419,9 @@
       "bibliographyCandidateUrns": [
         "tlg0032.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "xenophon-hellenica",
@@ -3094,7 +3439,9 @@
       "bibliographyCandidateUrns": [
         "tlg0032.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "demosthenes-de-corona",
@@ -3112,7 +3459,9 @@
       "bibliographyCandidateUrns": [
         "tlg0014.tlg018"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "demosthenes-philippicae",
@@ -3133,7 +3482,9 @@
         "tlg0014.tlg009",
         "tlg0014.tlg010"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pindar-olympian",
@@ -3151,7 +3502,9 @@
       "bibliographyCandidateUrns": [
         "tlg0033.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "pindar-pythian",
@@ -3169,7 +3522,9 @@
       "bibliographyCandidateUrns": [
         "tlg0033.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "homeric-hymns",
@@ -3219,7 +3574,9 @@
         "tlg0013.tlg032",
         "tlg0013.tlg033"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "theophrastus-characters",
@@ -3238,7 +3595,9 @@
       "bibliographyCandidateUrns": [
         "tlg0093.tlg009"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "theophrastus-historia-plantarum",
@@ -3254,7 +3613,14 @@
       "bibliographyCandidateUrns": [
         "tlg0093.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "d8957cc1148a02f24f0b56c741ee03a6d3da16c596015e8217e8a039c21f9cd7"
+      }
     },
     {
       "id": "diogenes-laertius-vitae",
@@ -3272,7 +3638,9 @@
       "bibliographyCandidateUrns": [
         "tlg0004.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-pro-archia",
@@ -3290,7 +3658,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi016"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-de-finibus",
@@ -3308,7 +3678,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi048"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-tusculanae",
@@ -3326,7 +3698,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi049"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-de-natura-deorum",
@@ -3344,7 +3718,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi050"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-de-amicitia",
@@ -3362,7 +3738,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi052"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-de-senectute",
@@ -3380,7 +3758,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi051"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-de-divinatione",
@@ -3398,7 +3778,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi053"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-brutus",
@@ -3416,7 +3798,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi039"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cicero-philippicae",
@@ -3434,7 +3818,9 @@
       "bibliographyCandidateUrns": [
         "phi0474.phi035"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "seneca-de-brevitate",
@@ -3455,7 +3841,9 @@
       "bibliographyCandidateUrns": [
         "ll.seneca-de-brevitate"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "seneca-de-ira",
@@ -3471,7 +3859,14 @@
       "bibliographyCandidateUrns": [
         "stoa0255.stoa010"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "56c5ae9446780f91f8f5cce78499c9e8c96f9253089ac6ebf5d131d369b15fe0"
+      }
     },
     {
       "id": "seneca-de-clementia",
@@ -3489,7 +3884,9 @@
       "bibliographyCandidateUrns": [
         "phi1017.phi014"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "seneca-de-tranquillitate",
@@ -3505,7 +3902,14 @@
       "bibliographyCandidateUrns": [
         "stoa0255.stoa013"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "d3485fc0651115f48fc541b459743bc7875406f3766e96861b07b416509667e0"
+      }
     },
     {
       "id": "horace-epodi",
@@ -3523,7 +3927,9 @@
       "bibliographyCandidateUrns": [
         "phi0893.phi003"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "horace-epistulae",
@@ -3541,7 +3947,9 @@
       "bibliographyCandidateUrns": [
         "phi0893.phi005"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid-tristia",
@@ -3559,7 +3967,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi008"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid-heroides",
@@ -3577,7 +3987,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid-remedia-amoris",
@@ -3595,7 +4007,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi005"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ovid-ex-ponto",
@@ -3613,7 +4027,9 @@
       "bibliographyCandidateUrns": [
         "phi0959.phi009"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "tacitus-dialogus",
@@ -3631,7 +4047,9 @@
       "bibliographyCandidateUrns": [
         "phi1351.phi003"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "apuleius-apologia",
@@ -3649,7 +4067,9 @@
       "bibliographyCandidateUrns": [
         "phi1212.phi001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "apuleius-de-deo-socratis",
@@ -3665,7 +4085,14 @@
       "bibliographyCandidateUrns": [
         "ll.apuleius-de-deo-socratis"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "0978ac37a5a1f93036ebe7fa8e223df8b4dd513ba515d97a8036c5cedce9ce99"
+      }
     },
     {
       "id": "vegetius-epitoma",
@@ -3681,7 +4108,14 @@
       "bibliographyCandidateUrns": [
         "ll.vegetius-epitoma"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "ceea4130523fc8b8fd570876e15901d702451a705802d7f5bb241728ecb761b5"
+      }
     },
     {
       "id": "augustine-confessiones",
@@ -3699,7 +4133,9 @@
       "bibliographyCandidateUrns": [
         "ll.augustine-confessiones"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "augustine-civitate-dei",
@@ -3717,7 +4153,9 @@
       "bibliographyCandidateUrns": [
         "ll.augustine-civitate-dei"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "boethius-consolatio",
@@ -3735,7 +4173,9 @@
       "bibliographyCandidateUrns": [
         "stoa0058.stoa001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "macrobius-saturnalia",
@@ -3749,7 +4189,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "epictetus-enchiridion",
@@ -3768,7 +4210,9 @@
       "bibliographyCandidateUrns": [
         "tlg0557.tlg002"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "cebes-tabula",
@@ -3786,7 +4230,9 @@
       "bibliographyCandidateUrns": [
         "tlg1247.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristoxenus-harmonica",
@@ -3804,7 +4250,9 @@
       "bibliographyCandidateUrns": [
         "tlg0088.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "archimedes-fluitantibus",
@@ -3820,7 +4268,14 @@
       "bibliographyCandidateUrns": [
         "tlg0552.tlg008"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "216d8ebd4fc26efa1c002c21066de80ee1af8db713a3dc4788a30cca05ec90a7"
+      }
     },
     {
       "id": "aratus-phaenomena",
@@ -3838,7 +4293,9 @@
       "bibliographyCandidateUrns": [
         "tlg0653.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ennius-annales",
@@ -3852,7 +4309,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "accius-fragmenta",
@@ -3866,7 +4325,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "ps-aristotle-mechanica",
@@ -3882,7 +4343,14 @@
       "bibliographyCandidateUrns": [
         "tlg0086.tlg023"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "6e091698defd9b7d27546f4b3e578321ede2f51db1eabe39062b56aac3c18439"
+      }
     },
     {
       "id": "aeneas-tacticus-poliorketika",
@@ -3900,7 +4368,9 @@
       "bibliographyCandidateUrns": [
         "tlg0058.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "procopius-aedificiis",
@@ -3914,7 +4384,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "isidore-etymologiae",
@@ -3930,7 +4402,14 @@
       "bibliographyCandidateUrns": [
         "ll.isidore-etymologiae"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "1185d5c24551196f9195708560decc1c4aea0c9a69f2716aadd90f4499e925e4"
+      }
     },
     {
       "id": "censorinus-die-natali",
@@ -3946,7 +4425,14 @@
       "bibliographyCandidateUrns": [
         "ll.censorinus-die-natali"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "12609a8a223bc5201f48e9e510993bb1066b85b0bce2a70a7b8ef8b8f4247e96"
+      }
     },
     {
       "id": "augustus-res-gestae",
@@ -3964,7 +4450,9 @@
       "bibliographyCandidateUrns": [
         "ll.augustus-res-gestae"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euclid-elementa",
@@ -3982,7 +4470,9 @@
       "bibliographyCandidateUrns": [
         "tlg1799.tlg001"
       ],
-      "translationSourceClaim": true
+      "translationSourceClaim": true,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "euclid-optica",
@@ -3998,7 +4488,14 @@
       "bibliographyCandidateUrns": [
         "tlg1799.tlg009"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "42f952d9b5416db0d77ea70519137c01e1ae0449ae54769a3158c56c374d5f68"
+      }
     },
     {
       "id": "euclid-phaenomena",
@@ -4015,7 +4512,14 @@
         "tlg1799.tlg012",
         "tlg1799.tlg015"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "c4402963efeb10ac0ad93dfb749d8f2a38b0d6cfcc8a7ed850320d828b74ec58"
+      }
     },
     {
       "id": "cleonides-harmonica",
@@ -4031,7 +4535,14 @@
       "bibliographyCandidateUrns": [
         "tlg0361.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "28728f3cde1654a435d55e500906fe76eb1433393610520e9be5eec5282f6057"
+      }
     },
     {
       "id": "hero-belopoeica",
@@ -4047,7 +4558,14 @@
       "bibliographyCandidateUrns": [
         "tlg0559.tlg012"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "d73ba803b681fe16224b54d654acb39bd94af0d0e882baa8d84e94b8fd4a7d9d"
+      }
     },
     {
       "id": "philo-belopoeica",
@@ -4061,7 +4579,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "biton-kataskeuai",
@@ -4075,7 +4595,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "geminus-isagoge",
@@ -4091,7 +4613,14 @@
       "bibliographyCandidateUrns": [
         "tlg1383.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "4f515fbe2960e7fcd4102a6c5deb9c7e538f615909693863afc33eadc4e933dd"
+      }
     },
     {
       "id": "aristarchus-magnitudines",
@@ -4107,7 +4636,14 @@
       "bibliographyCandidateUrns": [
         "tlg1181.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "b313dce98868284a9265faac43c7ae326f7951a4b1e556dedd0f6731a1735eb8"
+      }
     },
     {
       "id": "apollonius-conica",
@@ -4123,7 +4659,14 @@
       "bibliographyCandidateUrns": [
         "tlg0550.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "6d6d5bb17dea43ec238e777fb413af56137e49dcd76e8e02dbc515ae0a5db0eb"
+      }
     },
     {
       "id": "pappus-synagoge",
@@ -4139,7 +4682,14 @@
       "bibliographyCandidateUrns": [
         "tlg2032.tlg001"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "97c19de67ffa6f15ca01bb0f47eae655354d4e1e3bfb7d9fb8837f572d40fe78"
+      }
     },
     {
       "id": "hyginus-gromaticus",
@@ -4153,7 +4703,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "frontinus-gromatica",
@@ -4169,7 +4721,14 @@
       "bibliographyCandidateUrns": [
         "ll.frontinus-gromatica"
       ],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "12365c822ecd1230de53d0c2cbb7c1d9142ff7b9cf01803417056a44253c8ee2"
+      }
     },
     {
       "id": "siculus-flaccus",
@@ -4183,7 +4742,9 @@
       "state": "original_pendiente",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "sulpicia-elegiae",
@@ -4200,7 +4761,10 @@
       "state": "original_y_traduccion_local",
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
-      "translationSourceClaim": false
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": true
     }
-  ]
+  ],
+  "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json"
 }
