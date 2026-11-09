@@ -159,3 +159,37 @@ html[data-theme="dark"] #search-results .result-parallel .parallel-columns .para
 @media(max-width:750px){
  #search-results .result-parallel .parallel-columns{gap:12px}
 }
+
+
+/* Homepage reference editions: preserve bibliography width; exactly two reading links. */
+.hero-academic .principal-editions{min-width:0;width:100%;max-width:100%;overflow:visible}
+.hero-academic .principal-edition{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ gap:12px!important;
+ align-items:start!important;
+ justify-content:stretch!important;
+ min-width:0!important;
+}
+.hero-academic .principal-edition>div:first-child{
+ min-width:0!important;max-width:100%!important;width:100%!important;
+ overflow-wrap:normal!important;word-break:normal!important;
+}
+.hero-academic .principal-edition .principal-actions{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+ justify-content:flex-start!important;gap:8px!important;
+ width:100%!important;min-width:0!important;flex-shrink:1!important;
+}
+.hero-academic .principal-edition .principal-actions a{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 0 auto!important;width:auto!important;min-width:0!important;
+ min-height:34px!important;padding:7px 14px!important;
+ border:1px solid #777d84!important;border-radius:15px!important;
+ background:#2a2c31!important;color:#f0f0f0!important;
+ font:500 12px/1.3 Arial,Helvetica,sans-serif!important;
+ text-decoration:none!important;white-space:nowrap!important;box-shadow:none!important;
+}
+.hero-academic .principal-edition .principal-actions a:hover,
+.hero-academic .principal-edition .principal-actions a:focus-visible{
+ background:#3b3e44!important;border-color:#a1a5ab!important;
+}
