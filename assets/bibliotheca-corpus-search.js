@@ -332,6 +332,33 @@ function completeMatches(text,term){
  }
  return hits;
 }
+/* Worker opcional: transfiere sólo texto de una edición cada vez.
+   La concordancia permanece documental; sin worker se conserva el algoritmo anterior. */
+let matcherWorker=null,workerSeq=0;
+const workerPending=new Map();
+function batchMatches(passages,queries,allMatches){
+ if(!('Worker' in window))return Promise.resolve(null);
+ try{
+  if(!matcherWorker){
+   matcherWorker=new Worker('assets/classics-search-worker.js?v=20261109-1');
+   matcherWorker.onmessage=e=>{
+    const {id,results,error}=e.data||{},pending=workerPending.get(id);
+    if(!pending)return;workerPending.delete(id);
+    if(error)pending.resolve(null);else pending.resolve(results);
+   };
+   matcherWorker.onerror=()=>{
+    matcherWorker?.terminate();matcherWorker=null;
+    for(const pending of workerPending.values())pending.resolve(null);
+    workerPending.clear();
+   };
+  }
+  const id=++workerSeq;
+  return new Promise(resolve=>{
+   workerPending.set(id,{resolve});
+   matcherWorker.postMessage({id,passages:passages.map(p=>p?.text||''),terms:queries,allMatches});
+  });
+ }catch{return Promise.resolve(null)}
+}
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
 async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,language="",edition="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null}={}){
@@ -351,12 +378,18 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
    if(!d?.passages?.length){failed++;failures.push({workId:e.workId,language:e.language,path:e.path});return}
    loaded++;
    let editionUnits=0,editionMatches=0;
-   for(const p of d.passages){
+   const workerHits=await batchMatches(d.passages,queries,allMatches);
+   for(let passageIndex=0;passageIndex<d.passages.length;passageIndex++){
+    const p=d.passages[passageIndex];
     if(typeof p?.text!=="string")continue;
     let hit=null,term=null,hitsInPassage=0;
-    for(const q of queries){
-     const m=allMatches?completeMatches(p.text,q):matches(p.text,q);hitsInPassage+=m.length;
-     if(m.length&&(!hit||m[0][0]<hit[0])){hit=m[0];term=q}
+    const computed=Array.isArray(workerHits)?workerHits[passageIndex]:null;
+    if(computed){hit=computed.first;term=computed.term;hitsInPassage=computed.count}
+    else if(!Array.isArray(workerHits)){
+     for(const q of queries){
+      const m=allMatches?completeMatches(p.text,q):matches(p.text,q);hitsInPassage+=m.length;
+      if(m.length&&(!hit||m[0][0]<hit[0])){hit=m[0];term=q}
+     }
     }
     if(!hit)continue;
     const base=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
