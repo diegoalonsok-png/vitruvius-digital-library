@@ -136,31 +136,48 @@ async function show(locus){
  const grid=el("section","coll-translation-grid");grid.setAttribute("aria-label","Traducciones disponibles del pasaje");
  for(const spec of translations){
   const passage=spec.byLocus.get(locus);
-  if(!passage?.translation)continue;
+  // V297 10.1.1 is indexed as an apparatus note, not a translated passage.
+  // Do not present philological commentary as the English translation.
+  const translation=String(passage?.translation||"").trim();
+  const isApparatus=/^\s*(?:apparatus\s+criticus|critical\s+apparatus)\s*\(/i.test(translation);
+  if(!translation||isApparatus){
+   const card=el("article","coll-translation");
+   card.lang=spec.lang;
+   card.append(el("h3",null,spec.label));
+   const warning=spec.id==="theory-en"
+    ?"La edición V297 no tiene una traducción inglesa del pasaje identificada y alineada en este locus. El índice contiene una nota de aparato crítico, que no debe confundirse con una traducción. Puede consultarse el libro original para verificar si la traducción figura en otra sección."
+    :"No consta una traducción alineada y verificable en el índice de esta edición para este locus.";
+   card.append(el("p","coll-warning",warning));
+   const a=el("a",null,"Consultar la edición en el lector →");
+   a.href="lector-bilingue.html?edition="+encodeURIComponent(spec.id)+"&locus="+encodeURIComponent(locus);
+   card.append(a);grid.append(card);continue;
+  }
   const card=el("article","coll-translation");
   card.lang=spec.lang;
-  const passageText=el("p",null,passage.translation);card.append(el("h3",null,spec.label),passageText);addReadTools(card,passageText,locus,spec.id);
+  const passageText=el("p",null,translation);card.append(el("h3",null,spec.label),passageText);addReadTools(card,passageText,locus,spec.id);
   const a=el("a",null,"Abrir en el lector existente →");
   a.href="lector-bilingue.html?edition="+encodeURIComponent(spec.id)+"&locus="+encodeURIComponent(locus);
   card.append(a);grid.append(card);
  }
  if(grid.childElementCount)root.append(grid);
- const witnesses=el("section","coll-witnesses");witnesses.setAttribute("aria-label","Ediciones históricas");
- for(const {w,rec,wt,ops,flagW} of rows){
+ // Historical OCR has unverified Greek lettering, footnotes and pagination mixed
+ // into the text. Preserve historical source access, but do not publish it as
+ // diplomatic transcription or generate spurious LCS variant readings.
+ const witnesses=el("section","coll-witnesses");
+ witnesses.setAttribute("aria-label","Fuentes históricas en facsímil");
+ const historicalSources={
+  "rose-1899":"https://archive.org/details/vitruviidearchi00pollgoog",
+  "krohn-1912":"documents/krohn-1912.pdf"
+ };
+ for(const {w,rec} of rows){
   const box=el("section","coll-row");
-  const h=el("h3",null,w.label+" · p. "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · semejanza "+Math.round(rec.score*100)+" %");box.append(h);
+  box.append(el("h3",null,w.label+" · p. "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · facsímil"));
   box.append(el("p","coll-cite",w.citation));
-  const witnessText=marked(rec.text,wt,flagW);box.append(witnessText);addReadTools(box,witnessText,locus,w.id);
-  const rd=readings(base,wt,ops);
-  if(rd.length){
-   const det=el("details","coll-readings");det.open=rd.length<=14;
-   det.append(el("summary",null,"Lecturas divergentes respecto de V514 · "+rd.length));
-   const ol=el("ol");
-   for(const r of rd.slice(0,80)){const li=el("li");li.append(el("span","coll-lem",r.base.join(" ")||"om."),el("span","coll-sep"," ] "),el("span","coll-var",r.wit.join(" ")||"om."),el("span","coll-sig"," "+w.label));ol.append(li)}
-   det.append(ol);box.append(det);
-  }else box.append(el("p","coll-meta","Sin diferencias de palabras respecto de V514."));
-  if(w.id==="krohn-1912"){const a=el("a",null,"Abrir la página en el PDF de Krohn ↗");a.href="documents/krohn-1912.pdf#page="+rec.page;a.target="_blank";a.rel="noopener";box.append(a)}
-  witnesses.append(box);
+  box.append(el("p","coll-warning","Transcripción OCR no validada: contiene errores de reconocimiento, caracteres griegos corruptos y mezcla de notas con el texto principal. Se omite el texto automático y la comparación de variantes para evitar lecturas filológicas falsas. El original impreso sigue disponible."));
+  const a=el("a",null,"Consultar la edición original (facsímil) ↗");
+  a.href=historicalSources[w.id]||"bibliotheca-graeca-latina.html";
+  a.target="_blank";a.rel="noopener";
+  box.append(a);witnesses.append(box);
  }
  if(witnesses.childElementCount)root.append(witnesses);
  // Codex Harleianus
@@ -180,7 +197,7 @@ async function show(locus){
    if(e.pdf){const a=el("a",null,"Abrir la página de la edición ↗");a.href=e.pdf;a.target="_blank";a.rel="noopener";d.append(a)}apBox.append(d)}
  }catch{apBox.append(el("p","coll-meta","Aparato no disponible."))}
  root.append(apBox);
- root.append(el("p","coll-method",coll.method+" Las diferencias señaladas pueden deberse a erratas de reconocimiento óptico: verifícalas en la página impresa antes de citarlas."));
+ root.append(el("p","coll-method","Criterio editorial: los textos de Diego Kurilo se presentan desde índices estructurados por locus; las ediciones históricas de Rose y Krohn se ofrecen como facsímiles, sin colación textual automática, hasta disponer de transcripciones cotejadas. Las semejanzas OCR no constituyen pruebas de variantes."));
 }
 function parse(v){
  const q=String(v||"").trim();if(!q)return null;
