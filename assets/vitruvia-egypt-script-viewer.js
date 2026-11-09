@@ -3,6 +3,8 @@
  */
 (()=>{"use strict";
 const OLD_EGYPT=/(?:ancient egypt|egipto antiguo|antiguo egipto|egyptolog|egiptolog|fara[oó]n|pharaoh|akhenat|akenat|ajenat|akhnat|amenhotep|amenofis|amenophis|tutankh|tutankam|tutanj|rams[eé]s|ramess|rameses|nefertiti|hatshepsut|tutmosis|thutmose|cleopatra|ptolema|hieroglyph|jerogl[ií]fic|atem?ismo|at[oó]n|akh?etat[oó]n|dinast[ií]a egipcia|pir[aá]mide de egipto|saqqara|sakkara|abidos|abydo|karnak|luxor.*templo|templo.*luxor|osiris|isis.*egip|horus|ra.*dios|anubis|papiro.*egip|estela.*egip|libro de los muertos|book of the dead|reino antiguo|imperio nuevo.*egip)/i;
+const EGYPT_NAME=/(?:ankh|esfinge|sphinx|maat|ma.at|thoth|toth|dyehuty|sobek|sekhmet|hathor|hator|bastet|neftis|nephthys|am[oó]n|amun|ptah|khonsu|jnum|khnum|isis|osiris|horus|anubis|serapis|imhotep|hieratic|hier[aá]tico|dem[oó]tico egipcio|amarna|memfis|menfis|tebas|giza|guiza|fil[eé]|philae|as[uú]an|aswan|elefantina|tanis|abu simbel|edfu|dendera|kom ombo|merneptah|seti [ivx]|jufu|khufu|keops|kefr[eé]n|khafre|micerino|menkaure|rosetta stone|piedra de roseta|narmer|horemheb|amenemhat|seneferu|pep[iy] [ivx]|psam[eé]tico|psamtik|necao|necho)/i;
+const SOURCE_EGYPT=/(?:ancient egypt|antiguo egipto|egipto antiguo|egyptian pharaoh|fara[oó]n|egiptolog|egyptolog|egyptian god|dios egipcio|diosa egipcia|ancient egyptian|mitolog[ií]a egipcia|egyptian mythology|temple in egypt|templo egipcio|jerogl[ií]fico|hieroglyph)/i;
 const MODERN_EGYPT=/(?:egipto moderno|modern egypt|egipto\b|egypt\b|el cairo|cairo|al[- ]qahira|alejandr[ií]a|alexandria|árabe egipcio|arabe egipcio|egyptian arabic|egipcio contempor|misr|miṣr|القاهرة|مصر|الإسكندرية)/i;
 const GLYPH=/[\u{13000}-\u{1345F}]/u;
 const RUN=/[\u{13000}-\u{1345F}](?:[\u{13000}-\u{1345F}]|[ \n](?=[\u{13000}-\u{1345F}])){0,90}/gu;
@@ -68,13 +70,15 @@ function arabicText(str){
 }
 function matchRows(q){
  const description=rows.slice(0,6).map(r=>[r?.title,r?.entityDescription,r?.entityCanonical,r?.excerpt].filter(Boolean).join(" ")).join(" ");
- const qAncient=OLD_EGYPT.test(q),qModern=MODERN_EGYPT.test(q);
- const historical=OLD_EGYPT.test(description);
- const modern=qModern||(/egypt|egipto|cairo|القاهرة|مصر/i.test(description)&&!/fara[oó]n|pharaoh/i.test(q));
- // A search for an unrelated topic with an incidental Wikipedia mention
- // must not acquire an Egyptian identity solely from an excerpt.
- const isEgyptQuery=qAncient||qModern||/[\u{13000}-\u{1345F}]/u.test(q);
- return {ancient:isEgyptQuery&&(qAncient||historical||GLYPH.test(q)),modern:isEgyptQuery&&modern};
+ const qAncient=OLD_EGYPT.test(q)||EGYPT_NAME.test(q),qModern=MODERN_EGYPT.test(q);
+ const authority=rows.some(r=>Boolean(r?.preferredWiki||r?.wikidataId)&&
+   SOURCE_EGYPT.test([r.entityDescription,r.entityCanonical,r.meta].filter(Boolean).join(" "))&&
+   (fold(r.entityCanonical||r.title||"")===fold(q)||fold(q).length>=4&&
+    fold(r.entityCanonical||r.title||"").includes(fold(q))));
+ const historical=qAncient||authority||SOURCE_EGYPT.test(description)&&!qModern;
+ const modern=qModern||/[؀-ۿ]/u.test(q)&&/مصر|القاهرة|الإسكندرية/u.test(q);
+ const isEgyptQuery=qAncient||qModern||authority||GLYPH.test(q);
+ return {ancient:isEgyptQuery&&historical,modern:isEgyptQuery&&modern};
 }
 function createPanel(query,classification){
  const box=node("section","v-egypt-script-panel");box.id="v-egypt-script-panel";
@@ -144,13 +148,13 @@ function entry(parent,{title,glyphs,trans,gloss,source,evidence,arabic,latin}){
 }
 function extractGlyphs(text){
  if(!text)return [];
- const found=(String(text).match(RUN)||[]).map(s=>s.trim()).filter(s=>[...s].filter(c=>GLYPH.test(c)).length>=2);
+ const found=(String(text).match(RUN)||[]).map(s=>s.trim()).filter(s=>[...s].some(c=>GLYPH.test(c)));
  return [...new Set(found)].slice(0,4);
 }
 async function getWikiTranscription(query,results,token){
  const top=results.find(r=>r?.preferredWiki&&r?.pageid&&r?.wikiLang)||results.find(r=>r?.pageid&&r?.wikiLang);
  const lang=["es","en","fr"].includes(top?.wikiLang)?top.wikiLang:"es";
- const params=new URLSearchParams({action:"query",prop:"extracts",explaintext:"1",format:"json",origin:"*"});
+ const params=new URLSearchParams({action:"query",prop:"extracts",explaintext:"1",redirects:"1",format:"json",origin:"*"});
  if(top?.pageid)params.set("pageids",String(top.pageid));
  else params.set("titles",query);
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),6500);
