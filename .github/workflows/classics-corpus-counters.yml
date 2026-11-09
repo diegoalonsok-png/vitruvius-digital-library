@@ -1,0 +1,35 @@
+name: Bibliotheca · verificar contadores y fichas ecdóticas
+on:
+  pull_request:
+    paths:
+      - index.html
+      - bibliotheca-graeca-latina.html
+      - assets/classics-corpus-counts.js
+      - assets/bibliotheca-academic-provenance.js
+      - scripts/test-classics-corpus-counters.mjs
+      - .github/workflows/classics-corpus-counters.yml
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - bibliotheca-graeca-latina.html
+      - assets/classics-corpus-counts.js
+      - assets/bibliotheca-academic-provenance.js
+      - scripts/test-classics-corpus-counters.mjs
+      - .github/workflows/classics-corpus-counters.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar índices, HTML y preservación de códices
+        run: |
+          node --check assets/classics-corpus-counts.js
+          node --check assets/bibliotheca-academic-provenance.js
+          node scripts/test-classics-corpus-counters.mjs
