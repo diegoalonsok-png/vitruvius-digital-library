@@ -28,7 +28,15 @@ async function remote(spec,known,local){
      e.language!==spec.language||e.path!==spec.prefix+e.workId+spec.suffix||
      !/^[0-9a-f]{64}$/.test(e.sourceSha256||"")||
      typeof e.source!=="string"||
-     !/^https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin)\//.test(e.source)||
+     !(/^(https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin)\/)/.test(e.source)||
+        e.sourceType==="normalized-greek-reading"&&e.editorialStatus?.includes("NO edición crítica")&&
+        ({ "biton-kataskeuai":"biton-war-machines-catapults-lsg-aa.grc.md",
+           "apollodorus-poliorcetics":"apollodorus-damascus-siegecraft-owo-aa.grc.md",
+           "procopius-aedificiis":"procopius-caesarea-buildings-unc-ac.grc.md" })[e.workId]&&
+        e.source==="https://raw.githubusercontent.com/eulogikon/ancient-greek-texts/main/grc/"+
+           ({ "biton-kataskeuai":"biton-war-machines-catapults-lsg-aa.grc.md",
+              "apollodorus-poliorcetics":"apollodorus-damascus-siegecraft-owo-aa.grc.md",
+              "procopius-aedificiis":"procopius-caesarea-buildings-unc-ac.grc.md" })[e.workId])||
      !Number.isInteger(e.passages)||e.passages<1)
    throw Error("Original remoto incompatible con el catálogo");
   seen.add(e.workId);
@@ -75,7 +83,7 @@ async function remote(spec,known,local){
   set("remote",fmt(external.size));
   set("searchable",fmt(local.size+external.size));
   set("pending",fmt(j.targetWorks-local.size-external.size));
-  set("method","Originales indexados significa que existe texto original buscable, en ocasiones parcial; no implica obra completa, alineación con traducciones ni colación manuscrita. Los registros externos residen fuera de GitHub Pages.");
+  set("method","Originales indexados significa que existe texto original buscable, en ocasiones parcial. Parte de las fuentes externas son transcripciones normalizadas sin base crítica acreditada; no implica obra completa, alineación con traducciones ni colación manuscrita. Los registros externos residen fuera de GitHub Pages.");
   host.dataset.state="verified";
  }catch(error){
   host.dataset.state="unavailable";
