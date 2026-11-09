@@ -68,6 +68,24 @@ def main():
     assert len(ids) == len(catalog) == 222, "Catalog must contain exactly 222 unique works"
     assert set(langs_by_id) <= ids, "Search registry has an unlisted work"
     entries = [classify(w, mapping, langs_by_id.get(w["id"], set())) for w in catalog]
+    # Reconciliar los índices externos ya publicados sin contarlos como alojamiento
+    # local ni sobrescribir las transcripciones existentes.
+    remote_doc = read("data/classics-corpus/external-index-reconciliation.json")
+    assert remote_doc["schema"] == "vitruvius-classics-external-index-reconciliation-v1"
+    remote_rows = remote_doc["remoteEntries"]
+    remote_by_id = {x["workId"]: x for x in remote_rows}
+    assert len(remote_by_id) == len(remote_rows), "Duplicated remote original"
+    assert all(x["language"] in {"grc", "la"} and
+               x["language"] == next(w["originalLanguage"] for w in entries if w["id"] == x["workId"])
+               for x in remote_rows), "Remote original does not match catalogue"
+    for w in entries:
+        record = remote_by_id.get(w["id"])
+        w["offsiteOriginalIndexed"] = bool(record)
+        w["effectiveOriginalIndexed"] = bool(w["originalIndexed"] or record)
+        if record:
+            w["offsiteIndex"] = {"branch": record["branch"],
+                                  "manifestPath": record["manifestPath"],
+                                  "sourceSha256": record["sourceSha256"]}
     counts = Counter(w["state"] for w in entries)
     readiness = Counter(w["sourceReadiness"] for w in entries if not w["originalIndexed"])
     indexed = sum(w["originalIndexed"] for w in entries)
@@ -76,12 +94,16 @@ def main():
     assert indexed == public["originalTextIndexed"], (indexed, public["originalTextIndexed"])
     assert translated == public["translatedWorksLocal"], (translated, public["translatedWorksLocal"])
     assert indexed == len(langs_by_id), "Registry claims inconsistent original-language coverage"
+    remote_only = sum(w["offsiteOriginalIndexed"] and not w["originalIndexed"] for w in entries)
+    effective_indexed = sum(w["effectiveOriginalIndexed"] for w in entries)
+    assert effective_indexed + sum(not w["effectiveOriginalIndexed"] for w in entries) == 222
     doc = {
         "schema": "vitruvius-classics-indexation-roadmap-v1",
         "updated": date.today().isoformat(),
         "method": ("Counts from hosted edition paths only. A catalogue entry or external Perseus "
                    "mapping never counts as indexed text or a hosted translation. "
-                   "No AI-supplied passages, unverified OCR, or assumed cross-language alignment."),
+                   "No AI-supplied passages, unverified OCR, or assumed cross-language alignment. "
+                 "Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot."),
         "targetWorks": 222,
         "counts": {
             "originalsIndexed": indexed,
@@ -89,9 +111,14 @@ def main():
             "worksWithHostedTranslation": translated,
             "worksMissingTranslation": len(entries)-translated,
             "textVersions": len(registry),
+            "offsiteOriginalsIndexed": remote_only,
+            "effectiveOriginalsIndexed": effective_indexed,
+            "effectiveOriginalsMissing": 222 - effective_indexed,
+            "offsiteTextVersionsOutsidePages": len(remote_rows),
             "states": dict(sorted(counts.items())),
             "sourceReadinessForMissingOriginals": dict(sorted(readiness.items())),
         },
+        "externalIndexProvenance": "data/classics-corpus/external-index-reconciliation.json",
         "items": entries,
     }
     TARGET.write_text(json.dumps(doc, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
