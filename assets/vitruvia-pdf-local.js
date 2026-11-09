@@ -12,6 +12,24 @@
  const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'')
   .toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim().replace(/\s+/g,' ');
  const words=s=>fold(s).split(' ').filter(x=>x.length>1);
+ /* Unicode hieroglyphs in a PDF text layer are searchable. Image OCR is separate. */
+ const HIEROGLYPHS=/[𓀀-𓑟]/u;
+ const HIEROGLYPH_ALL=/[𓀀-𓑟]/gu;
+ function identifyScripts(pages){
+  let hieroglyphPages=0,hieroglyphs=0;const examples=[];
+  for(const entry of pages||[]){
+   const text=String(entry?.text||'');
+   if(!HIEROGLYPHS.test(text))continue;
+   hieroglyphPages++;
+   const marks=[...text.matchAll(HIEROGLYPH_ALL)];
+   hieroglyphs+=marks.length;
+   if(examples.length<3)examples.push({page:entry.page,sample:marks.slice(0,8).map(x=>x[0]).join('')});
+  }
+  return {hieroglyphPages,hieroglyphCharacters:hieroglyphs,examples,
+   detection:'Unicode Egyptian Hieroglyphs in extracted text layer',
+   imageRecognitionPerformed:false,
+   note:'Detecta jeroglíficos Unicode extraíbles; no reconoce signos en imágenes escaneadas.'};
+ }
  function search(pages,needle,{limit=30}={}){
   const query=fold(needle),qwords=[...new Set(words(needle))];
   if(!query||!qwords.length)return [];
@@ -82,6 +100,7 @@
    }
    return {
     pages,total,scanned,characters,truncated:scanned<total,
+    scripts:identifyScripts(pages),
     pagesWithText:pages.length,pagesWithoutText,
     extractionMethod:'embedded-text-layer',ocrPerformed:false,
     coverage:scanned<total?'partial':pages.length===0?'no-extractable-text':pagesWithoutText?'mixed-text-and-image':'embedded-text',
@@ -94,5 +113,5 @@
    try{if(binary.byteLength)binary.fill(0)}catch{}
   }
  }
- window.VitruviaPDFLocal={search,extract,fold,MAX_PAGES,MAX_FILE_SIZE,version:'1.0'};
+ window.VitruviaPDFLocal={search,extract,fold,identifyScripts,MAX_PAGES,MAX_FILE_SIZE,version:'1.1-hieroglyph-textlayer'};
 })();
