@@ -379,7 +379,40 @@ async function searchPassages(terms,{limit=600,workId="",language="",edition="",
  }
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
   targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
- rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||a.locus.localeCompare(b.locus,undefined,{numeric:true}));
+ // Add real parallel translations only for Vitruvius' indexed, attested loci.
+ // Do not require the Latin query to occur literally in the translation.
+ const latinLoci=new Set(rows.filter(r=>r.workId==="vitruvius"&&r.language==="la").map(r=>r.locus));
+ if(latinLoci.size){
+  const specs=[["es","recensio-es"],["fr","recensio-fr"],["en","theory-en"]];
+  const sources=await Promise.all(specs.map(async ([lang,id])=>{
+   const key="data/structured/"+id+".json";
+   try{
+    if(!cache.has(key))cache.set(key,(window.VitruviaData?.json?window.VitruviaData.json(key):fetch(key).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})).catch(()=>null));
+    const d=await cache.get(key);
+    return {lang,id,passages:d?.edition===id&&Array.isArray(d.passages)?d.passages:[]};
+   }catch{return {lang,id,passages:[]}}
+  }));
+  const maps=sources.map(x=>({...x,byLocus:new Map(x.passages.map(p=>[p.locus,p]))}));
+  for(const row of rows){
+   if(row.workId!=="vitruvius"||row.language!=="la")continue;
+   row.parallelTranslations=maps.map(src=>{
+    let p=src.byLocus.get(row.locus);
+    // English V297 occasionally groups several sections under one verified range.
+    if(!p&&src.lang==="en"){
+     const [book,chapter,section]=row.locus.split(".");
+     p=src.passages.find(x=>Number(x.book)===Number(book)&&String(x.chapter)===chapter&&
+      Number(x.section)<=Number(section)&&Number(x.section_end)>=Number(section));
+    }
+    const value=String(p?.translation||"").trim();
+    const apparatus=/^(?:apparatus\\s+criticus|critical\\s+apparatus)\\s*\\(/i.test(value);
+    return {language:src.lang,edition:src.id,text:apparatus?"":value,available:!!value&&!apparatus,
+     note:apparatus?"Aparato crítico, no traducción":!value?"Traducción alineada no disponible":""};
+   });
+  }
+ }
+ rows.sort((a,b)=>a.ocr-b.ocr||a.author.localeCompare(b.author)||a.title.localeCompare(b.title)||
+  a.locus.localeCompare(b.locus,undefined,{numeric:true})||
+  (["la","grc","es","fr","en"].indexOf(a.language)-["la","grc","es","fr","en"].indexOf(b.language)));
  return allMatches?rows:rows.slice(0,Math.max(1,Math.min(600,limit)));
 }
 window.ClassicsCorpusSearch={
