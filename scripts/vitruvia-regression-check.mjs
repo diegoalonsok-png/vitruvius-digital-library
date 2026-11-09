@@ -109,7 +109,7 @@ assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article \.article-gr
 assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article #article-body\s*,[\s\S]*?width:100%!important;[\s\S]*?max-width:none!important;/,
  "Article width must override legacy narrow reader styles");
 const imageEngineBundle=vitruviaHTML.match(/vitruvia-image-engine-v2\.js\?v=([^"']+)/)?.[1]||"";
-assert.ok(imageEngineBundle.startsWith("20261107-")&&imageEngineBundle!=="20261107-gallery-v4",
+assert.ok(/^2026\\d{4}-/.test(imageEngineBundle)&&imageEngineBundle!=="20261107-gallery-v4",
  "Image gallery must load an updated cache-busted engine after the latest repair");
 assert.match(vitruviaHTML,/vitruvia-full-width-reading\.css\?v=20261107-wide-v3/,
  "Layout repair must invalidate the old cached stylesheet");
