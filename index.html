@@ -413,6 +413,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 <script defer src="assets/bibliotheca-offsite-greek.js?v=20261108-14-originals"></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261108-seneca-v1"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261109-documented-v1"></script>
+<script defer src="assets/classics-audited-coverage.js?v=20261109-1"></script>
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -669,7 +670,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
   const escapeText=value=>String(value).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   const printWindow=window.open('','_blank');
   if(!printWindow){inform('Permite las ventanas emergentes para abrir la vista imprimible.');return}
-  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer><script defer src="assets/classics-audited-coverage.js?v=20261109-1"></script></body></html>';
+  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer></body></html>';
   printWindow.document.open();printWindow.document.write(doc);printWindow.document.close();
   printWindow.focus();printWindow.print();
  });
