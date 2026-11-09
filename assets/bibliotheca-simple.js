@@ -338,7 +338,7 @@ function passageActions(record,workInfo,passageNode){
  const title=workInfo.title||record.title||"Bibliotheca";
  const origin=typeof record.link==="string"?new URL(record.link,location.href).href:location.href;
  const sourceText=String(passageNode.textContent||"").trim();
- const shortText=sourceText.length>1400?sourceText.slice(0,1400).replace(/\\s+\\S*$/,"")+"…":sourceText;
+ const shortText=sourceText.length>1400?sourceText.slice(0,1400).replace(/\s+\S*$/,"")+"…":sourceText;
  const citation=provenance(workInfo,record).citation;
  const header=[title,[workInfo.author||record.author,record.locus,languages[record.language]||record.language].filter(Boolean).join(" · ")].filter(Boolean).join("\n");
  const message=[header,shortText,citation,origin].filter(Boolean).join("\n\n");
