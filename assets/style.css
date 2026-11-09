@@ -193,3 +193,11 @@ html[data-theme="dark"] #search-results .result-parallel .parallel-columns .para
 .hero-academic .principal-edition .principal-actions a:focus-visible{
  background:#3b3e44!important;border-color:#a1a5ab!important;
 }
+
+/* Home hero alignment: both columns start on the same baseline.
+   Preserve the entire De architectura / scriptoria block as one unit. */
+@media (min-width:851px){
+ .hero.hero-academic{align-items:start!important}
+ .hero.hero-academic>.hero-copy{align-self:start!important;padding-top:7px}
+ .hero.hero-academic>.principal-editions{align-self:start!important}
+}
