@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import vm from "node:vm";
 const js=readFileSync(new URL("../assets/bibliotheca-simple.js",import.meta.url),"utf8");
-const start=js.indexOf("const roman="),end=js.indexOf("const el=",start);
+const start=js.indexOf("const roman="),end=js.indexOf("const era=",start);
 assert(start>=0&&end>start,"Chronology parser must be available");
 const date=vm.runInNewContext(js.slice(start,end)+"\n;dating",Object.create(null));
 const cases=[
