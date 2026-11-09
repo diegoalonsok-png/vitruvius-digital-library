@@ -75,7 +75,8 @@ function ensureTypography(){
  const palette=document.getElementById('home-palette-toggle')||document.getElementById('front-background-toggle');
  const theme=document.querySelector('.research-nav-controls .theme-switch, .nav .theme-switch, .theme-switch');
  const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
- if(location.pathname.split('/').pop()==='vitruvia-lexicon.html'&&document.querySelector('.site-shell>.nav .navtools'))document.querySelector('.site-shell>.nav .navtools').append(tool);
+ if(location.pathname.split('/').pop()==='indices-locorum.html'&&document.getElementById('indices-typeface-slot'))document.getElementById('indices-typeface-slot').append(tool);
+ else if(location.pathname.split('/').pop()==='vitruvia-lexicon.html'&&document.querySelector('.site-shell>.nav .navtools'))document.querySelector('.site-shell>.nav .navtools').append(tool);
  else if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
  else if(anchor?.parentElement)anchor.after(tool);
  else(document.querySelector('.research-nav-controls')||document.querySelector('.site-header .header-inner')||document.querySelector('header')||document.body).append(tool);
@@ -88,7 +89,17 @@ function ensureTypography(){
   select.value=saved.font;italic.checked=saved.italic;
   try{localStorage.setItem(key,JSON.stringify(saved))}catch{}
  }
- button.addEventListener('click',()=>{panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden){const b=button.getBoundingClientRect(),w=Math.min(260,innerWidth-30);panel.style.top=Math.max(12,Math.min(innerHeight-210,b.bottom+7))+'px';panel.style.left=Math.max(12,Math.min(innerWidth-w-12,b.right-w))+'px';panel.style.right='auto';}});
+ button.addEventListener('click',()=>{panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden){
+  const rect=button.getBoundingClientRect();
+  const w=Math.max(180,Math.min(260,innerWidth-24));
+  const available=Math.max(100,innerHeight-24);
+  const h=Math.min(panel.scrollHeight||210,available);
+  let y=rect.bottom+8;
+  if(y+h>innerHeight-12)y=rect.top-h-8;
+  panel.style.top=Math.max(12,Math.min(y,innerHeight-h-12))+'px';
+  panel.style.left=Math.max(12,Math.min(rect.left,innerWidth-w-12))+'px';
+  panel.style.right='auto';
+ }});
  select.addEventListener('change',()=>{saved.font=families[select.value]!==undefined?select.value:'original';apply()});
  italic.addEventListener('change',()=>{saved.italic=italic.checked;apply()});
  tool.querySelector('#site-typeface-reset').addEventListener('click',()=>{saved={font:'original',italic:false};apply()});
