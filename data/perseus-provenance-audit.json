@@ -1,0 +1,5344 @@
+{
+  "schema": "vitruvius-perseus-provenance-audit-v1",
+  "generated": "2026-11-09",
+  "scope": "local catalogue and search registry only",
+  "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented.",
+  "counts": {
+    "works": 222,
+    "worksWithCandidateWorkCodes": 179,
+    "versions": 246,
+    "worksWithPerseusSourceDescription": 142,
+    "verifiedEditionUrns": 0
+  },
+  "links": {
+    "scaife": "https://scaife.perseus.org/",
+    "greekSource": "https://github.com/PerseusDL/canonical-greekLit",
+    "latinSource": "https://github.com/PerseusDL/canonical-latinLit",
+    "stableUriGuidance": "https://sites.tufts.edu/perseusupdates/beta-features/perseus-stable-uris/"
+  },
+  "records": [
+    {
+      "workId": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/structured/theory-en.json",
+          "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones.",
+          "reader": "lector-bilingue.html?edition=theory-en"
+        },
+        {
+          "language": "es",
+          "path": "data/structured/recensio-es.json",
+          "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones.",
+          "reader": "lector-bilingue.html?edition=recensio-es"
+        },
+        {
+          "language": "fr",
+          "path": "data/structured/recensio-fr.json",
+          "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones.",
+          "reader": "lector-bilingue.html?edition=recensio-fr"
+        },
+        {
+          "language": "la",
+          "path": "data/structured/recensio-es.json",
+          "sourceDescription": "Texto estructurado con loci declarados; las versiones editoriales V514/V554/V297 conservan DOCX y huella de procedencia. Comparación no equivale a identidad literal entre recensiones.",
+          "reader": "lector-bilingue.html?edition=recensio-es"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0474.phi055"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "corpus/cicero-de-officiis-en.html",
+          "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil.",
+          "reader": "corpus/cicero-de-officiis-en.html"
+        },
+        {
+          "language": "la",
+          "path": "corpus/cicero-de-officiis-la.html",
+          "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil.",
+          "reader": "corpus/cicero-de-officiis-la.html"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-oratore",
+      "author": "Cicerón",
+      "title": "De oratore",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi037"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-oratore-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-oratore&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-republica",
+      "author": "Cicerón",
+      "title": "De re publica",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi043"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-republica-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-republica&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0448.phi001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/caesar-gallico-en.json",
+          "sourceDescription": "McDevitte y Bohn, 1870–72, TEI Perseus CC BY-SA 4.0; libro VIII de Hircio. Loci libro.capítulo.",
+          "reader": "classics-text-reader.html?work=caesar-gallico&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/caesar-gallico-la.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=caesar-gallico&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0448.phi002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/caesar-civili-en.json",
+          "sourceDescription": "PerseusDL TEI CC BY-SA 4.0, tres libros, 243 capítulos; cotejo por locus editorial, no alineación automática.",
+          "reader": "classics-text-reader.html?work=caesar-civili&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/caesar-civili-la.json",
+          "sourceDescription": "PerseusDL TEI CC BY-SA 4.0, tres libros, 243 capítulos; cotejo por locus editorial, no alineación automática.",
+          "reader": "classics-text-reader.html?work=caesar-civili&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0631.phi001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sallust-catiline-en.json",
+          "sourceDescription": "John Selby Watson, 1899; PerseusDL TEI CC BY-SA 4.0. Partial: 59/61 chapters, missing 35 and 57; alignment only by matching chapter number.",
+          "reader": "classics-text-reader.html?work=sallust-catiline&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/sallust-catiline-la.json",
+          "sourceDescription": "PerseusDL, edición TEI bajo CC BY-SA 4.0; división por capítulos, no OCR ni alineación frase a frase.",
+          "reader": "classics-text-reader.html?work=sallust-catiline&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0631.phi002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sallust-iugurtha-en.json",
+          "sourceDescription": "PerseusDL, edición TEI bajo CC BY-SA 4.0; división por capítulos, no OCR ni alineación frase a frase.",
+          "reader": "classics-text-reader.html?work=sallust-iugurtha&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/sallust-iugurtha-la.json",
+          "sourceDescription": "PerseusDL, edición TEI bajo CC BY-SA 4.0; división por capítulos, no OCR ni alineación frase a frase.",
+          "reader": "classics-text-reader.html?work=sallust-iugurtha&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/lexicon/fontes/varro-rustica-la.json",
+          "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente.",
+          "reader": "classics-text-reader.html?work=varro-rustica&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0550.phi001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "corpus/lucretius-de-rerum-natura-en.html",
+          "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil.",
+          "reader": "corpus/lucretius-de-rerum-natura-en.html"
+        },
+        {
+          "language": "es",
+          "path": "corpus/lucretius-de-rerum-natura-es.html",
+          "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil.",
+          "reader": "corpus/lucretius-de-rerum-natura-es.html"
+        },
+        {
+          "language": "la",
+          "path": "corpus/lucretius-de-rerum-natura-la.html",
+          "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil.",
+          "reader": "corpus/lucretius-de-rerum-natura-la.html"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0690.phi003"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/virgil-aeneid-en.json",
+          "sourceDescription": "Theodore C. Williams 1910, TEI Perseus, estrofas por sección original de traducción; alineación por locus inicial parcial.",
+          "reader": "classics-text-reader.html?work=virgil-aeneid&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/virgil-aeneid-la.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=virgil-aeneid&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0690.phi002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/virgil-georgica-en.json",
+          "sourceDescription": "James Rhoades 1921, TEI Perseus, estrofas por sección original de traducción; alineación por locus inicial parcial.",
+          "reader": "classics-text-reader.html?work=virgil-georgica&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/virgil-georgica-la.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=virgil-georgica&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "horace-odes",
+      "author": "Horacio",
+      "title": "Carmina",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0893.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-odes-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=horace-odes&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0914.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/livy-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=livy&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid",
+      "author": "Ovidio",
+      "title": "Metamorphoses",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi006"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-la.json",
+          "sourceDescription": "Texto latino íntegro de los 15 libros, ed. Hugo Magnus (1892–1919), TEI Perseus (Tufts), CC BY-SA 4.0. Agrupado en rangos de 40 versos; traducciones externas aún no alojadas.",
+          "reader": "classics-text-reader.html?work=ovid&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid-fasti",
+      "author": "Ovidio",
+      "title": "Fasti",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi007"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-fasti-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=ovid-fasti&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/nepos-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=nepos&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0060.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/diodorus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=diodorus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0081.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/dionysius-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=dionysius&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0099.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/strabo-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=strabo&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0018.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/philo-en.json",
+          "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=philo&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/philo-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente",
+          "reader": "classics-text-reader.html?work=philo&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-epistulae",
+      "author": "Séneca",
+      "title": "Epistulae morales ad Lucilium",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1017.phi015"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-epistulae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=seneca-epistulae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "lucan",
+      "author": "Lucano",
+      "title": "Bellum civile",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0917.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/lucan-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=lucan&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pliny",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0978.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/lexicon/fontes/pliny-naturalis-la.json",
+          "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra.",
+          "reader": "classics-text-reader.html?work=pliny&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0656.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/dioscorides-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente",
+          "reader": "classics-text-reader.html?work=dioscorides&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0526.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/josephus-war-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=josephus-war&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0526.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/josephus-antiquities-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=josephus-antiquities&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1002.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/quintilian-la.json",
+          "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=quintilian&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "martial",
+      "author": "Marcial",
+      "title": "Epigrammata",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1294.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/martial-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=martial&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tacitus-agricola",
+      "author": "Tácito",
+      "title": "Agricola",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi1351.phi001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/tacitus-agricola-en.json",
+          "sourceDescription": "Traducción inglesa histórica acreditada (Alfred John Church y William Jackson Brodribb, 1877); TEI Perseus bajo CC BY-SA 4.0; sin alineación certificada con el original.",
+          "reader": "classics-text-reader.html?work=tacitus-agricola&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-agricola-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tacitus-agricola&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tacitus-germania",
+      "author": "Tácito",
+      "title": "Germania",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1351.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-germania-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tacitus-germania&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "frontinus",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json",
+          "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio.",
+          "reader": "classics-text-reader.html?work=frontinus&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0031.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/mark-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=mark&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1271.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/clement-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=clement&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχή · Didaché",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg1311.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/didache-en.json",
+          "sourceDescription": "Joseph Barber Lightfoot, 1891; traducción inglesa histórica, transcrita desde Wikisource, capítulos 1–16.",
+          "reader": "classics-text-reader.html?work=didache&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/didache-grc.json",
+          "sourceDescription": "Dieciséis capítulos griegos según Wikisource; transcripción no cotejada con manuscrito; CC BY-SA, traducciones pendientes.",
+          "reader": "classics-text-reader.html?work=didache&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1419.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pastor-hermas-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=pastor-hermas&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1216.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/barnabas-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=barnabas&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1443.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/ignatius-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente",
+          "reader": "classics-text-reader.html?work=ignatius&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1622.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/polycarp-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek · edición TEI de procedencia identificada; posible transcripción/OCR corregido, sin colación independiente",
+          "reader": "classics-text-reader.html?work=polycarp&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1271.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/clement-2-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=clement-2&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0646.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/diognetus-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=diognetus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0645.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/justin-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=justin&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1447.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/irenaeus-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=irenaeus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tertullian",
+      "author": "Tertuliano",
+      "title": "Apologeticum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tertullian-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tertullian&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2018.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/eusebio-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=eusebio&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "columella",
+      "author": "Columela",
+      "title": "De re rustica",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0845.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/columella-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=columella&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "celsus",
+      "author": "Aulo Cornelio Celso",
+      "title": "De medicina",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0836.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/celsus-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=celsus&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/frontinus-strategemata-la.json",
+          "sourceDescription": "Frontinus, Strategemata, texto latino Loeb (1925), basado en Gundermann (1887). Transcripción TEI Corpus Corporum / Universidad de Zúrich (2013), 4 libros, 50 capítulos, 595 unidades. Libro IV de atribución disputada; identificadores TEI corregidos/documentados sin pretensión de aparato crítico.",
+          "reader": "classics-text-reader.html?work=frontinus-strategemata&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "originalLanguage": "grc",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0007.tlg001",
+        "tlg0007.tlg002",
+        "tlg0007.tlg003",
+        "tlg0007.tlg004",
+        "tlg0007.tlg005",
+        "tlg0007.tlg006",
+        "tlg0007.tlg007",
+        "tlg0007.tlg008",
+        "tlg0007.tlg009",
+        "tlg0007.tlg010",
+        "tlg0007.tlg011",
+        "tlg0007.tlg012",
+        "tlg0007.tlg013",
+        "tlg0007.tlg014",
+        "tlg0007.tlg015",
+        "tlg0007.tlg016",
+        "tlg0007.tlg017",
+        "tlg0007.tlg018",
+        "tlg0007.tlg019",
+        "tlg0007.tlg020",
+        "tlg0007.tlg021",
+        "tlg0007.tlg022",
+        "tlg0007.tlg023",
+        "tlg0007.tlg024",
+        "tlg0007.tlg025",
+        "tlg0007.tlg026",
+        "tlg0007.tlg027",
+        "tlg0007.tlg028",
+        "tlg0007.tlg029",
+        "tlg0007.tlg030",
+        "tlg0007.tlg031",
+        "tlg0007.tlg032",
+        "tlg0007.tlg033",
+        "tlg0007.tlg034",
+        "tlg0007.tlg035",
+        "tlg0007.tlg036",
+        "tlg0007.tlg037",
+        "tlg0007.tlg038",
+        "tlg0007.tlg039",
+        "tlg0007.tlg040",
+        "tlg0007.tlg041",
+        "tlg0007.tlg042",
+        "tlg0007.tlg043",
+        "tlg0007.tlg044",
+        "tlg0007.tlg045",
+        "tlg0007.tlg046",
+        "tlg0007.tlg047",
+        "tlg0007.tlg048",
+        "tlg0007.tlg049",
+        "tlg0007.tlg050",
+        "tlg0007.tlg051",
+        "tlg0007.tlg052",
+        "tlg0007.tlg053",
+        "tlg0007.tlg054",
+        "tlg0007.tlg055",
+        "tlg0007.tlg056",
+        "tlg0007.tlg057",
+        "tlg0007.tlg058",
+        "tlg0007.tlg059",
+        "tlg0007.tlg060",
+        "tlg0007.tlg061",
+        "tlg0007.tlg062",
+        "tlg0007.tlg063",
+        "tlg0007.tlg064",
+        "tlg0007.tlg065",
+        "tlg0007.tlg066"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0559.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hero-pneumatica-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=hero-pneumatica&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0559.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hero-automata-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=hero-automata&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/text/krohn-1912.json",
+          "sourceDescription": "OCR automatizado del facsímil PDF Krohn 1912. Cada referencia es una página del ejemplar escaneado, no un locus crítico; cotejar la imagen antes de citar.",
+          "reader": "concordancia-historica.html?ed=krohn-1912"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plautus-amphitruo",
+      "author": "Plauto",
+      "title": "Amphitruo",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0119.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/plautus-amphitruo-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plautus-amphitruo&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plautus-aulularia",
+      "author": "Plauto",
+      "title": "Aulularia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0119.phi003"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/plautus-aulularia-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plautus-aulularia&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "terentius-andria",
+      "author": "Terencio",
+      "title": "Andria",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0134.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/terentius-andria-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=terentius-andria&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "terentius-heautontimorumenos",
+      "author": "Terencio",
+      "title": "Heautontimorumenos",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0134.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/terentius-heautontimorumenos-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=terentius-heautontimorumenos&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "author": "Catón el Viejo",
+      "title": "De agri cultura",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cato-agri-cultura-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cato-agri-cultura&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0474.phi013"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/cicero-catilinariae-en.json",
+          "sourceDescription": "Traducción histórica de Charles Duke Yonge (1856); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-catilinariae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-catilinariae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "catullus-carmina",
+      "author": "Catulo",
+      "title": "Carmina",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi0472.phi001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/catullus-carmina-en.json",
+          "sourceDescription": "Smithers (1894), Perseus DL CC BY-SA 4.0, 112 poemas sustantivos; faltan 18–20 y 67; cotejo a nivel de poema, no verso.",
+          "reader": "classics-text-reader.html?work=catullus-carmina&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "corpus/catullus-carmina-la.html",
+          "sourceDescription": "Procedencia bibliográfica indicada en la página de lectura; no equivale a un facsímil.",
+          "reader": "corpus/catullus-carmina-la.html"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "horace-sermones",
+      "author": "Horacio",
+      "title": "Sermones (Satirae)",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0893.phi004"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-sermones-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=horace-sermones&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "horace-ars-poetica",
+      "author": "Horacio",
+      "title": "Ars poetica",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0893.phi006"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-ars-poetica-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=horace-ars-poetica&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid-ars-amatoria",
+      "author": "Ovidio",
+      "title": "Ars amatoria",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi004"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-ars-amatoria-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=ovid-ars-amatoria&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-tragoediae",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "title": "Tragoediae (colección)",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1017.phi001",
+        "phi1017.phi002",
+        "phi1017.phi003",
+        "phi1017.phi004",
+        "phi1017.phi005",
+        "phi1017.phi006",
+        "phi1017.phi007",
+        "phi1017.phi008",
+        "phi1017.phi009",
+        "phi1017.phi010"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-tragoediae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=seneca-tragoediae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "petronius-satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "title": "Satyrica",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/petronius-satyrica-en.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=petronius-satyrica&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/petronius-satyrica-la.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=petronius-satyrica&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tacitus-annales",
+      "author": "Tácito",
+      "title": "Annales",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1351.phi005"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-annales-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tacitus-annales&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tacitus-historiae",
+      "author": "Tácito",
+      "title": "Historiae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1351.phi004"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-historiae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tacitus-historiae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "suetonius-caesares",
+      "author": "Suetonio",
+      "title": "De vita Caesarum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/suetonius-caesares-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=suetonius-caesares&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "juvenal-saturae",
+      "author": "Juvenal",
+      "title": "Saturae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1276.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/juvenal-saturae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=juvenal-saturae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "phi1212.phi002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/apuleius-metamorphoses-en.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=en"
+        },
+        {
+          "language": "es",
+          "path": "data/classics-corpus/apuleius-metamorphoses-es.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=es"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-metamorphoses-la.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=apuleius-metamorphoses&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "varro-de-lingua-latina",
+      "author": "Varrón",
+      "title": "De lingua Latina",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/varro-de-lingua-latina-la.json",
+          "sourceDescription": "Varrón, De lingua Latina V–X, ed. Karl Otfried Müller (Teubner 1833), Corpus Corporum/Universidad de Zúrich TEI Philipp Roelli (2013). 666 unidades numeradas, 11 duplicaciones TEI documentadas; aparato de variantes no codificado en fuente, sin cotejo manuscrito ni alineación.",
+          "reader": "classics-text-reader.html?work=varro-de-lingua-latina&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tibullus-elegiae",
+      "author": "Tibulo",
+      "title": "Elegiae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0660.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tibullus-elegiae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tibullus-elegiae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "propertius-elegiae",
+      "author": "Propercio",
+      "title": "Elegiae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0620.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/propertius-elegiae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=propertius-elegiae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/phraedrus-fabulae-en.json",
+          "sourceDescription": "Perseus TEI: traducción inglesa de Christopher Smart (1913), 91 loci efectivos y 10 declarados no traducidos; sin alineación automática.",
+          "reader": "classics-text-reader.html?work=phraedrus-fabulae&lang=en"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/phraedrus-fabulae-la.json",
+          "sourceDescription": "Perseus TEI: edición de L. Müller (1876), 132 loci incluyendo Appendix; sin colación propia.",
+          "reader": "classics-text-reader.html?work=phraedrus-fabulae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "statius-thebais",
+      "author": "Estacio",
+      "title": "Thebais",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1020.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/statius-thebais-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=statius-thebais&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pliny-younger-epistulae",
+      "author": "Plinio el Joven",
+      "title": "Epistulae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1318.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/pliny-younger-epistulae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=pliny-younger-epistulae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aulus-gellius-noctes",
+      "author": "Aulo Gelio",
+      "title": "Noctes Atticae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1254.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/aulus-gellius-noctes-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aulus-gellius-noctes&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "valerius-maximus-facta",
+      "author": "Valerio Máximo",
+      "title": "Facta et dicta memorabilia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1038.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/valerius-maximus-facta-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=valerius-maximus-facta&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "silius-punica",
+      "author": "Silio Itálico",
+      "title": "Punica",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1345.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/silius-punica-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=silius-punica&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0543.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/polybius-historiae-grc.json",
+          "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=polybius-historiae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0548.tlg001",
+        "tlg0548.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=pseudo-apollodorus-bibliotheca&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0018.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/philo-legum-allegoriae-en.json",
+          "sourceDescription": "Traducción histórica de Charles Duke Yonge (1854); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/philo-legum-allegoriae-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=philo-legum-allegoriae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0018.tlg022"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/philo-de-vita-mosis-en.json",
+          "sourceDescription": "Traducción histórica de Charles Duke Yonge (1855); TEI OpenGreekAndLatin First1KGreek verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/philo-de-vita-mosis-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=philo-de-vita-mosis&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0007.tlg067",
+        "tlg0007.tlg068",
+        "tlg0007.tlg069",
+        "tlg0007.tlg070",
+        "tlg0007.tlg071",
+        "tlg0007.tlg072",
+        "tlg0007.tlg073",
+        "tlg0007.tlg074",
+        "tlg0007.tlg075",
+        "tlg0007.tlg076",
+        "tlg0007.tlg077",
+        "tlg0007.tlg078",
+        "tlg0007.tlg079",
+        "tlg0007.tlg080",
+        "tlg0007.tlg081",
+        "tlg0007.tlg082",
+        "tlg0007.tlg083",
+        "tlg0007.tlg085",
+        "tlg0007.tlg086",
+        "tlg0007.tlg087",
+        "tlg0007.tlg088",
+        "tlg0007.tlg089",
+        "tlg0007.tlg090",
+        "tlg0007.tlg091",
+        "tlg0007.tlg092",
+        "tlg0007.tlg093",
+        "tlg0007.tlg094",
+        "tlg0007.tlg095",
+        "tlg0007.tlg096",
+        "tlg0007.tlg097",
+        "tlg0007.tlg098",
+        "tlg0007.tlg099",
+        "tlg0007.tlg100",
+        "tlg0007.tlg101",
+        "tlg0007.tlg102",
+        "tlg0007.tlg103",
+        "tlg0007.tlg104",
+        "tlg0007.tlg105",
+        "tlg0007.tlg106",
+        "tlg0007.tlg107",
+        "tlg0007.tlg108",
+        "tlg0007.tlg109",
+        "tlg0007.tlg110",
+        "tlg0007.tlg111",
+        "tlg0007.tlg112",
+        "tlg0007.tlg113",
+        "tlg0007.tlg114",
+        "tlg0007.tlg115",
+        "tlg0007.tlg116",
+        "tlg0007.tlg117",
+        "tlg0007.tlg118",
+        "tlg0007.tlg119",
+        "tlg0007.tlg120",
+        "tlg0007.tlg121",
+        "tlg0007.tlg122",
+        "tlg0007.tlg123",
+        "tlg0007.tlg125",
+        "tlg0007.tlg126",
+        "tlg0007.tlg127",
+        "tlg0007.tlg128",
+        "tlg0007.tlg129",
+        "tlg0007.tlg130",
+        "tlg0007.tlg131",
+        "tlg0007.tlg132",
+        "tlg0007.tlg133",
+        "tlg0007.tlg134",
+        "tlg0007.tlg135",
+        "tlg0007.tlg136",
+        "tlg0007.tlg137",
+        "tlg0007.tlg138",
+        "tlg0007.tlg139",
+        "tlg0007.tlg140",
+        "tlg0007.tlg141",
+        "tlg0007.tlg146",
+        "tlg0007.tlg147"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0062.tlg066"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=lucian-dialogi-mortuorum&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0062.tlg012"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/lucian-verae-historiae-en.json",
+          "sourceDescription": "Traducción histórica de Austin Morris Harmon (1913); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-verae-historiae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=lucian-verae-historiae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0525.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pausanias-periegesis-grc.json",
+          "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=pausanias-periegesis&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0057.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-ars-medica-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=galen-ars-medica&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0057.tlg017"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-de-usu-partium-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0363.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/ptolemy-almagest-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=ptolemy-almagest&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0551.tlg002",
+        "tlg0551.tlg003",
+        "tlg0551.tlg004",
+        "tlg0551.tlg005",
+        "tlg0551.tlg006",
+        "tlg0551.tlg007",
+        "tlg0551.tlg008",
+        "tlg0551.tlg009",
+        "tlg0551.tlg010",
+        "tlg0551.tlg011",
+        "tlg0551.tlg012",
+        "tlg0551.tlg013",
+        "tlg0551.tlg014",
+        "tlg0551.tlg017"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/appian-romaika-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=appian-romaika&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0562.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/marcus-aurelius-meditations-en.json",
+          "sourceDescription": "Traducción histórica de George Long (1862); edición digital Standard Ebooks CC0; no edición crítica ni alineación certificada con el griego.",
+          "reader": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=marcus-aurelius-meditations&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0012.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/homer-iliad-en.json",
+          "sourceDescription": "Samuel Butler 1898, revisión Perseus; 24 cantos y 190 tarjetas. Cotejo solo por canto; subdivisiones de verso no equivalen automáticamente al original.",
+          "reader": "classics-text-reader.html?work=homer-iliad&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/homer-iliad-grc.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=homer-iliad&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "homer-odyssey",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ὀδύσσεια",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0012.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/homer-odyssey-en.json",
+          "sourceDescription": "Samuel Butler 1900, revised by Timothy Power and Gregory Nagy, Perseus TEI, 267 passage units, 24 books; segment-level references, not word-aligned.",
+          "reader": "classics-text-reader.html?work=homer-odyssey&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/homer-odyssey-grc.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=homer-odyssey&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Θεογονία",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0020.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/hesiod-theogony-en.json",
+          "sourceDescription": "Traducción inglesa histórica acreditada (Hugh G. Evelyn-White, 1914); TEI Perseus bajo CC BY-SA 4.0; sin alineación certificada con el original.",
+          "reader": "classics-text-reader.html?work=hesiod-theogony&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hesiod-theogony-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=hesiod-theogony&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0020.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/hesiod-works-days-en.json",
+          "sourceDescription": "Traducción inglesa histórica acreditada (Hugh G. Evelyn-White, 1914); TEI Perseus bajo CC BY-SA 4.0; sin alineación certificada con el original.",
+          "reader": "classics-text-reader.html?work=hesiod-works-days&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hesiod-works-days-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=hesiod-works-days&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0085.tlg005",
+        "tlg0085.tlg006",
+        "tlg0085.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-oresteia-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aeschylus-oresteia&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0011.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-oedipus-en.json",
+          "sourceDescription": "Traducción histórica de Richard Jebb (1887); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-oedipus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-oedipus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-medea-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-medea&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-medea-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-medea&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0019.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristophanes-clouds-en.json",
+          "sourceDescription": "Traducción histórica de William James Hickie (1853); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-clouds-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-clouds&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0016.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/herodotus-historiae-grc.json",
+          "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=herodotus-historiae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0003.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0032.tlg006"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-anabasis-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=xenophon-anabasis&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0059.tlg030"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-republic-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-republic&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-apology-en.json",
+          "sourceDescription": "Inglés: Harold North Fowler (1914), TEI Perseus; unidades Stephanus principales 17–42; cotejo por sección general, no frase por frase.",
+          "reader": "classics-text-reader.html?work=plato-apology&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-apology-grc.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=plato-apology&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0086.tlg034"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-poetics-en.json",
+          "sourceDescription": "W. Hamilton Fyfe (1939), TEI Perseus CC BY-SA 4.0. 26 capítulos cotejables con griego, no línea por línea.",
+          "reader": "classics-text-reader.html?work=aristotle-poetics&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-poetics-grc.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=aristotle-poetics&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0086.tlg035"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-politics-en.json",
+          "sourceDescription": "Traducción histórica de Harris Rackham (1944); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aristotle-politics&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-politics-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristotle-politics&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0627.tlg012"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/hippocrates-aphorisms-en.json",
+          "sourceDescription": "Traducción histórica de Francis Adams (1886); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hippocrates-aphorisms-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=hippocrates-aphorisms&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0557.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/epictetus-discourses-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=epictetus-discourses&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0074.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=arrian-anabasis-alexandri&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0385.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0008.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0085.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-persae-en.json",
+          "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aeschylus-persae&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-persae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aeschylus-persae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0085.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-seven-thebes-en.json",
+          "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aeschylus-seven-thebes&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0085.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-suppliants-en.json",
+          "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-suppliants-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aeschylus-suppliants&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0085.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-prometheus-en.json",
+          "sourceDescription": "Traducción histórica de Herbert Weir Smyth (1922); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-prometheus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aeschylus-prometheus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0011.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-antigone-en.json",
+          "sourceDescription": "Traducción histórica de Richard Jebb (1891); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=sophocles-antigone&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-antigone-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-antigone&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0011.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-ajax-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-ajax&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0011.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-electra-en.json",
+          "sourceDescription": "Traducción histórica de Richard Jebb (1894); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=sophocles-electra&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-electra-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-electra&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0011.tlg006"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-philoctetes-en.json",
+          "sourceDescription": "Traducción histórica de Richard Jebb (1898); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-philoctetes-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-philoctetes&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0011.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-oedipus-colonus-en.json",
+          "sourceDescription": "Traducción histórica de Richard Jebb (1889); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-oedipus-colonus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0011.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-trachiniae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=sophocles-trachiniae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg017"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-bacchae-en.json",
+          "sourceDescription": "Traducción histórica de T. A. Buckley (1850); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-bacchae&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-bacchae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-bacchae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-hippolytus-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-hippolytus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-alcestis-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-alcestis&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-alcestis-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-alcestis&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg012"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-electra-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-electra&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-electra-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-electra&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg011"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-troades-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1906); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-troades&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-troades-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-troades&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-hecuba-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-hecuba&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-hecuba-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-hecuba&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0006.tlg018"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json",
+          "sourceDescription": "Traducción histórica de Edward P. Coleridge (1891); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euripides-iphigenia-aulid&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0019.tlg006"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-aves-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-aves&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0019.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-ranae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0019.tlg007"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-lysistrata-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-lysistrata&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0019.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-vespae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-vespae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0019.tlg005"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-pax-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-pax&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0019.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-acharnenses-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristophanes-acharnenses&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg011"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-symposium-en.json",
+          "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-symposium&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-symposium-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-symposium&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg004"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-phaedo-en.json",
+          "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-phaedo&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-phaedo-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-phaedo&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg023"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-gorgias-en.json",
+          "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1925); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-gorgias&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-gorgias-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-gorgias&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg031"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-timaeus-en.json",
+          "sourceDescription": "Traducción histórica de Robert Gregg Bury (1929); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-timaeus&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-timaeus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-timaeus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg024"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-meno-en.json",
+          "sourceDescription": "Traducción histórica de Walter Rangeley Maitland Lamb (1924); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-meno&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-meno-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-meno&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg012"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-phaedrus-en.json",
+          "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-phaedrus&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-phaedrus-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-phaedrus&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0059.tlg034"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-laws-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-laws&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0059.tlg003"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-crito-en.json",
+          "sourceDescription": "Traducción histórica de Harold North Fowler (1914); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=plato-crito&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-crito-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=plato-crito&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0086.tlg010"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json",
+          "sourceDescription": "Traducción histórica de Harris Rackham (1926); TEI Perseus verificado por SHA; sin cotejo automático",
+          "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristotle-nicomachean-ethics&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg025"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-metaphysics-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristotle-metaphysics&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg031"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-physics-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=aristotle-physics&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg038"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-rhetoric-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aristotle-rhetoric&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-de-anima-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=aristotle-de-anima&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0032.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0032.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-hellenica-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=xenophon-hellenica&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg018"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/demosthenes-de-corona-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=demosthenes-de-corona&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0014.tlg004",
+        "tlg0014.tlg006",
+        "tlg0014.tlg009",
+        "tlg0014.tlg010"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/demosthenes-philippicae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=demosthenes-philippicae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0033.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pindar-olympian-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=pindar-olympian&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0033.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pindar-pythian-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=pindar-pythian&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0013.tlg001",
+        "tlg0013.tlg002",
+        "tlg0013.tlg003",
+        "tlg0013.tlg004",
+        "tlg0013.tlg005",
+        "tlg0013.tlg006",
+        "tlg0013.tlg007",
+        "tlg0013.tlg008",
+        "tlg0013.tlg009",
+        "tlg0013.tlg010",
+        "tlg0013.tlg011",
+        "tlg0013.tlg012",
+        "tlg0013.tlg013",
+        "tlg0013.tlg014",
+        "tlg0013.tlg015",
+        "tlg0013.tlg016",
+        "tlg0013.tlg017",
+        "tlg0013.tlg018",
+        "tlg0013.tlg019",
+        "tlg0013.tlg020",
+        "tlg0013.tlg021",
+        "tlg0013.tlg022",
+        "tlg0013.tlg023",
+        "tlg0013.tlg024",
+        "tlg0013.tlg025",
+        "tlg0013.tlg026",
+        "tlg0013.tlg027",
+        "tlg0013.tlg028",
+        "tlg0013.tlg029",
+        "tlg0013.tlg030",
+        "tlg0013.tlg031",
+        "tlg0013.tlg032",
+        "tlg0013.tlg033"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/homeric-hymns-grc.json",
+          "sourceDescription": "Perseus TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=homeric-hymns&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0093.tlg009"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/theophrastus-characters-en.json",
+          "sourceDescription": "Bennett y Hammond (1902); 30 capítulos, correspondencia general por capítulo con Diels 1909, no por párrafo.",
+          "reader": "classics-text-reader.html?work=theophrastus-characters&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/theophrastus-characters-grc.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=theophrastus-characters&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0093.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0004.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=diogenes-laertius-vitae&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi016"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-pro-archia-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-pro-archia&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi048"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-finibus-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-de-finibus&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi049"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-tusculanae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-tusculanae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi050"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-natura-deorum-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-de-natura-deorum&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi052"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-amicitia-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-de-amicitia&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi051"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-senectute-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-de-senectute&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi053"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-divinatione-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-de-divinatione&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi039"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-brutus-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-brutus&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0474.phi035"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-philippicae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=cicero-philippicae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/seneca-de-brevitate-en.json",
+          "sourceDescription": "Aubrey Stewart, 1889 (Bohn's Classical Library); edición digital Standard Ebooks, CC0; XX capítulos, sin cotejo ni equivalencia automática entre traducciones.",
+          "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=en"
+        },
+        {
+          "language": "es",
+          "path": "data/classics-corpus/seneca-de-brevitate-es.json",
+          "sourceDescription": "Texto histórico de lectura (21 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa.",
+          "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=es"
+        },
+        {
+          "language": "fr",
+          "path": "data/classics-corpus/seneca-de-brevitate-fr.json",
+          "sourceDescription": "Texto histórico de lectura (20 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa.",
+          "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=fr"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-brevitate-la.json",
+          "sourceDescription": "Texto histórico de lectura (20 capítulos); fuente y procedencia declaradas en el archivo. La alineación entre traducciones es orientativa.",
+          "reader": "classics-text-reader.html?work=seneca-de-brevitate&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "originalLanguage": "la",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1017.phi014"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-clementia-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=seneca-de-clementia&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "originalLanguage": "la",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0893.phi003"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-epodi-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=horace-epodi&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0893.phi005"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-epistulae-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=horace-epistulae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi008"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-tristia-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=ovid-tristia&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi002"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-heroides-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=ovid-heroides&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi005"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-remedia-amoris-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=ovid-remedia-amoris&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi0959.phi009"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-ex-ponto-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=ovid-ex-ponto&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1351.phi003"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-dialogus-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=tacitus-dialogus&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "phi1212.phi001"
+      ],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-apologia-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=apuleius-apologia&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/augustine-confessiones-la.json",
+          "sourceDescription": "Edición CSEL: Pius Knöll (CSEL 33, 1896), TEI University of Leipzig/Open Greek and Latin, CC BY-SA 4.0. 453 loci en 13 libros. 756 notas editoriales excluidas del texto buscable; sin cotejo propio.",
+          "reader": "classics-text-reader.html?work=augustine-confessiones&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/augustine-civitate-dei-la.json",
+          "sourceDescription": "Edición CSEL: Emmanuel Hoffmann (CSEL 40, 1899–1900), TEI University of Leipzig/Open Greek and Latin, CC BY-SA 4.0. 664 loci en 22 libros. 2375 notas editoriales excluidas del texto buscable; sin cotejo propio.",
+          "reader": "classics-text-reader.html?work=augustine-civitate-dei&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/boethius-consolatio-la.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=boethius-consolatio&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [
+        "tlg0557.tlg002"
+      ],
+      "versions": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/epictetus-enchiridion-en.json",
+          "sourceDescription": "Traducción histórica Thomas Wentworth Higginson (1890), TEI Perseus; 53 capítulos cotejables por locus con griego, sin alineación frase a frase.",
+          "reader": "classics-text-reader.html?work=epictetus-enchiridion&lang=en"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/epictetus-enchiridion-grc.json",
+          "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci.",
+          "reader": "classics-text-reader.html?work=epictetus-enchiridion&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1247.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/cebes-tabula-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=cebes-tabula&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0088.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristoxenus-harmonica-grc.json",
+          "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática",
+          "reader": "classics-text-reader.html?work=aristoxenus-harmonica&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0552.tlg008"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0653.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aratus-phaenomena-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aratus-phaenomena&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0086.tlg023"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0058.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=aeneas-tacticus-poliorketika&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "augustus-res-gestae",
+      "author": "Augusto",
+      "title": "Res gestae divi Augusti",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/augustus-res-gestae-la.json",
+          "sourceDescription": "Texto latino en 35 secciones y cuatro apéndices, Wikisource CC BY-SA; sin revisión epigráfica de lagunas; traducciones pendientes.",
+          "reader": "classics-text-reader.html?work=augustus-res-gestae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "originalLanguage": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg001"
+      ],
+      "versions": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euclid-elementa-grc.json",
+          "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática",
+          "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg009"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "originalLanguage": "grc",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1799.tlg012",
+        "tlg1799.tlg015"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0361.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0559.tlg012"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1383.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg1181.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg0550.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [
+        "tlg2032.tlg001"
+      ],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "originalLanguage": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    },
+    {
+      "workId": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "originalLanguage": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "translationHosted": true,
+      "candidateWorkCodes": [],
+      "versions": [
+        {
+          "language": "es",
+          "path": "data/classics-corpus/sulpicia-elegiae-es.json",
+          "sourceDescription": "Joaquín Demetrio Casasús (1904–1905); transcripción modernizada por AcademiaLatin.com bajo CC BY, seis poemas.",
+          "reader": "classics-text-reader.html?work=sulpicia-elegiae&lang=es"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/sulpicia-elegiae-la.json",
+          "sourceDescription": "Seis elegías latinas antiguas de dominio público; textos normalizados y loci 3.13–3.18; traducciones pendientes.",
+          "reader": "classics-text-reader.html?work=sulpicia-elegiae&lang=la"
+        }
+      ],
+      "ctsEditionUrn": null,
+      "ctsStatus": "not_verified",
+      "perseusAffiliation": false
+    }
+  ]
+}
