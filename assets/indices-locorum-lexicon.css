@@ -1,0 +1,208 @@
+/* Indices locorum — sistema visual monocromo de Lexicon.
+   Solo se aplica a indices-locorum.html. No afecta códices ni transcripciones. */
+html:has(body.indices-lexicon){color-scheme:dark}
+html body.indices-lexicon{
+  --paper:#0d0d0e;--white:#171719;--ink:#ececed;--muted:#a8a8ab;
+  --line:#38383c;--navy:#d4d4d4;--navy2:#f6f6f6;--gold:#d5a64b;
+  background:#0d0d0e!important;color:#e7e7e9!important;
+  font:400 15px/1.72 Arial,Helvetica,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+html body.indices-lexicon *{box-sizing:border-box}
+html body.indices-lexicon :is(a,button,input,select,summary):focus-visible{outline:2px solid #efc66a!important;outline-offset:3px}
+html body.indices-lexicon a{color:#d4d5d7}
+html body.indices-lexicon a:hover{color:#fff}
+html body.indices-lexicon :is(.institution-bar,.site-header){
+  background:#101012!important;color:#e5e5e6!important;border-color:#353538!important;
+}
+html body.indices-lexicon .institution-bar{border-bottom:1px solid #2a2a2d}
+html body.indices-lexicon .institution-bar .wrap{color:#aaaeb3;letter-spacing:.07em}
+html body.indices-lexicon .site-header{border-bottom:1px solid #39393d}
+html body.indices-lexicon .site-header .wrap{max-width:1470px}
+html body.indices-lexicon .site-header .wordmark-name{color:#f1f1f3!important}
+html body.indices-lexicon .site-header .wordmark-sub{color:#a0a1a4!important}
+html body.indices-lexicon .site-header nav a{
+  color:#c9cacc!important;border:1px solid transparent;border-radius:7px;
+  padding:7px 11px;text-decoration:none;font:500 12px/1.4 system-ui,sans-serif;
+}
+html body.indices-lexicon .site-header nav a:hover{border-color:#444448;background:#202023;color:white!important}
+html body.indices-lexicon .theme-switch{display:none!important}
+html body.indices-lexicon .site-bar{
+  background:#111113!important;color:#c9c9cb!important;border-color:#39393d!important;
+}
+html body.indices-lexicon .site-bar a[aria-current=page]{border-color:#b5b5b8!important}
+html body.indices-lexicon main.indices{
+  max-width:1460px;width:min(1460px,calc(100% - 56px));
+  padding:22px 26px 100px;min-width:0;color:#e6e6e7;
+}
+html body.indices-lexicon .indices-topbar{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:12px 20px;padding:13px 0 16px;margin:0 0 30px;
+  border-bottom:1px solid #3c3c40;
+}
+html body.indices-lexicon .indices-topnav,
+html body.indices-lexicon .indices-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+html body.indices-lexicon :is(.indices-topnav a,.indices-tools>button,.indices-tools>.indices-typeface-slot .site-typeface-button){
+  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  min-height:37px;padding:8px 12px;border:1px solid #444449;border-radius:8px;
+  background:#1a1a1d!important;color:#e0e1e2!important;
+  font:500 12px/1.25 system-ui,-apple-system,sans-serif;
+  text-decoration:none;box-shadow:none;letter-spacing:0;cursor:pointer;
+}
+html body.indices-lexicon .indices-topnav a[aria-current=page]{
+  color:#fff!important;border-color:#939398;background:#29292d!important;
+}
+html body.indices-lexicon :is(.indices-topnav a:hover,.indices-tools>button:hover,
+  .indices-tools>.indices-typeface-slot .site-typeface-button:hover){
+  color:#fff!important;background:#29292d!important;border-color:#8f8f94;
+}
+html body.indices-lexicon .indices-typeface-slot{
+  display:inline-flex;align-items:center;min-width:0;
+}
+html body.indices-lexicon .indices-typeface-slot .site-typeface-tool{display:inline-flex;margin:0}
+html body.indices-lexicon .indices-typeface-slot .site-typeface-button{
+  font:italic 600 18px/1 Georgia,serif!important;min-width:43px!important;min-height:37px!important;
+}
+html body.indices-lexicon .site-typeface-panel{
+  position:fixed!important;z-index:99999!important;
+  color:#f2f2f3!important;background:#202024!important;border:1px solid #6e6e75!important;
+  border-radius:9px!important;box-shadow:0 12px 42px rgba(0,0,0,.7)!important;
+  max-height:min(70dvh,440px);overflow:auto;
+}
+html body.indices-lexicon .site-typeface-panel :is(select,button){
+  color:#f2f2f3;background:#29292c;border:1px solid #68686d;border-radius:6px;
+}
+html body.indices-lexicon .indices-toolbar-status{min-height:1em;font:12px/1.3 system-ui;color:#c9c9cb}
+html body.indices-lexicon .eyebrow{
+  color:#aeb0b3!important;letter-spacing:.16em;font:600 11px/1.5 system-ui,sans-serif;margin:0 0 14px;
+}
+html body.indices-lexicon .indices h1{
+  color:#f1f1f2!important;font:normal clamp(39px,5.1vw,66px)/1.13 "Cardo","Gentium Book Plus",Georgia,serif!important;
+  letter-spacing:-.025em;margin:0 0 15px;
+}
+html body.indices-lexicon .indices>p:not(.eyebrow):not(#index-status){
+  max-width:980px;color:#b8b9bd!important;font:15px/1.8 system-ui,sans-serif;margin:0 0 23px;
+}
+html body.indices-lexicon .indices h2{
+  color:#ededf0!important;font:normal clamp(25px,3vw,34px)/1.3 "Cardo",Georgia,serif!important;margin:0 0 13px;
+}
+html body.indices-lexicon .index-tabs{
+  display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:28px 0 17px;
+  padding:0;border:0;background:transparent;
+}
+html body.indices-lexicon .index-tabs button{
+  border:1px solid #48484c!important;border-radius:8px;background:#18181b!important;
+  color:#c2c2c5!important;padding:11px 16px!important;
+  font:500 13px/1.35 system-ui,sans-serif;min-height:43px;
+}
+html body.indices-lexicon .index-tabs button[aria-pressed="true"]{
+  border:1px solid #b2b3b6!important;color:#fff!important;background:#2d2d31!important;
+  box-shadow:inset 0 -2px 0 #bfc0c4;font-weight:650;
+}
+html body.indices-lexicon .index-tabs button:hover{border-color:#929297!important;color:#fff!important}
+html body.indices-lexicon .index-filters{
+  display:grid;grid-template-columns:minmax(230px,2fr) repeat(2,minmax(180px,1fr));
+  gap:16px;align-items:end;padding:19px;margin:0 0 15px;
+  background:#151518!important;border:1px solid #343438;border-radius:10px;
+}
+html body.indices-lexicon .index-filters label{
+  display:grid;gap:8px;min-width:0;color:#cacace;font:600 12px/1.45 system-ui,sans-serif;
+}
+html body.indices-lexicon .index-filters label[hidden]{display:none!important}
+html body.indices-lexicon .index-filters :is(input,select){
+  width:100%;min-width:0;min-height:44px;border:1px solid #505056!important;
+  border-radius:7px;background:#202023!important;color:#f6f6f8!important;
+  padding:11px 13px!important;font:14px/1.4 system-ui,sans-serif;
+}
+html body.indices-lexicon .index-filters input::placeholder{color:#92939b!important;opacity:1}
+html body.indices-lexicon #index-status{
+  margin:17px 0 21px;padding:10px 13px;border-left:2px solid #77797e;
+  background:#171719;color:#c6c7cc!important;font:12px/1.45 system-ui,sans-serif;
+}
+html body.indices-lexicon #index-entries{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,410px),1fr));
+  gap:15px;align-items:start;min-width:0;
+}
+html body.indices-lexicon .index-row{
+  min-width:0;margin:0;padding:19px 21px 20px;
+  background:#161618!important;border:1px solid #39393d!important;
+  border-radius:10px;box-shadow:none;color:#dedee1;
+  overflow-wrap:anywhere;
+}
+html body.indices-lexicon .index-row h3{
+  color:#f6f5f2!important;font:normal clamp(23px,2.1vw,29px)/1.3 "Gentium Book Plus","Cardo",Georgia,serif!important;
+  letter-spacing:.005em;margin:0 0 8px!important;
+}
+html body.indices-lexicon .index-row :is(p,li){color:#c9cacc}
+html body.indices-lexicon .index-row .index-meta{
+  font:12px/1.6 system-ui,sans-serif!important;color:#a5a6ac!important;
+}
+html body.indices-lexicon .index-gloss{color:#d5d5d6!important;font:14px/1.65 "Gentium Book Plus",Georgia,serif}
+html body.indices-lexicon .index-loci{gap:7px;margin:14px 0}
+html body.indices-lexicon .index-loci a{
+  border:1px solid #4c4c51!important;background:#232327!important;color:#e7e7e8!important;
+  border-radius:5px;padding:5px 9px;font:600 12px/1.3 system-ui,sans-serif;
+  text-decoration:none;
+}
+html body.indices-lexicon .index-loci a:hover{background:#323236!important;border-color:#a3a3a7!important}
+html body.indices-lexicon .index-dictionary{
+  border:1px solid #44444a!important;border-left:2px solid #85868b!important;
+  background:#1c1c1f!important;border-radius:7px;padding:12px 15px;margin:16px 0 0;
+}
+html body.indices-lexicon .index-dictionary summary{color:#ebebed!important;cursor:pointer;font:600 13px/1.5 system-ui}
+html body.indices-lexicon .index-dictionary[open] summary{margin-bottom:13px}
+html body.indices-lexicon .index-dictionary p{color:#d0d0d3!important;font:14px/1.75 "Gentium Book Plus",Georgia,serif}
+html body.indices-lexicon .index-dictionary a{color:#dadadd;text-decoration:underline;text-underline-offset:3px}
+html body.indices-lexicon .index-kwic{border-top:1px solid #44444a;padding-top:13px}
+html body.indices-lexicon .index-kwic ol{color:#ebebec;font:15px/1.8 "Gentium Book Plus",Georgia,serif}
+html body.indices-lexicon .index-kwic li{overflow-wrap:anywhere;padding:5px 0}
+html body.indices-lexicon .index-kwic li>a{color:#d7d9dc}
+html body.indices-lexicon .index-kwic mark{
+  background:#e3ab3d!important;color:#1a1406!important;border-radius:2px;padding:1px 3px;
+  box-shadow:inset 0 -1px 0 #f4cc77;
+}
+html body.indices-lexicon .index-kwic button,
+html body.indices-lexicon #index-more{
+  min-height:37px;border:1px solid #55555a!important;border-radius:7px;
+  padding:8px 13px;background:#29292c!important;color:#ededf0!important;
+  font:500 12px/1.3 system-ui,sans-serif;
+}
+html body.indices-lexicon .index-kwic button:hover,
+html body.indices-lexicon #index-more:hover{border-color:#a6a6ac!important;background:#343438!important}
+html body.indices-lexicon #index-more{margin:24px 0}
+html body.indices-lexicon .indices>section{
+  margin-top:43px;padding:26px 28px;background:#141416;border:1px solid #38383c;
+  border-radius:10px;
+}
+html body.indices-lexicon .indices>section p{color:#bdbfc3!important;line-height:1.8;max-width:1100px}
+html body.indices-lexicon .indices>section strong{color:#e7e8ea}
+@media(max-width:950px){
+ html body.indices-lexicon main.indices{width:min(100%,calc(100% - 32px));padding:18px 12px 90px}
+ html body.indices-lexicon .index-filters{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ html body.indices-lexicon .index-filters label:first-child{grid-column:1/-1}
+ html body.indices-lexicon .indices-topbar{align-items:stretch}
+ html body.indices-lexicon .indices-tools{justify-content:flex-start}
+}
+@media(max-width:620px){
+ html body.indices-lexicon main.indices{width:100%;padding:16px 16px 90px}
+ html body.indices-lexicon .indices-topbar{padding-bottom:16px;gap:14px}
+ html body.indices-lexicon .indices-topnav,.indices-lexicon .indices-tools{gap:6px}
+ html body.indices-lexicon :is(.indices-topnav a,.indices-tools>button){
+   min-height:39px;padding:8px 10px;font-size:11.5px
+ }
+ html body.indices-lexicon .index-filters{grid-template-columns:minmax(0,1fr);padding:14px;gap:12px}
+ html body.indices-lexicon .index-filters label:first-child{grid-column:auto}
+ html body.indices-lexicon #index-entries{grid-template-columns:minmax(0,1fr)}
+ html body.indices-lexicon .index-row{padding:17px 16px}
+ html body.indices-lexicon .indices>section{padding:20px 16px}
+}
+@media print{
+ html body.indices-lexicon{background:white!important;color:#111!important}
+ html body.indices-lexicon :is(.site-bar,.indices-topbar,.site-header,.institution-bar,.index-tabs,.index-filters,#index-more){display:none!important}
+ html body.indices-lexicon main.indices{width:100%;max-width:none;padding:0;margin:0}
+ html body.indices-lexicon #index-entries{display:block}
+ html body.indices-lexicon .index-row{break-inside:avoid;border:1px solid #aaa!important;background:white!important;margin:0 0 12px}
+ html body.indices-lexicon .index-row :is(h3,p,li){color:#111!important}
+ html body.indices-lexicon .indices>section{background:white!important;color:#111!important}
+ html body.indices-lexicon .index-kwic mark{background:#ffe08d!important}
+}
