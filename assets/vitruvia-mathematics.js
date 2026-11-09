@@ -8,7 +8,27 @@ const entries=[
  {names:["pitagoras","pythagoras","pythagoras of samos"],formula:"a² + b² = c²",es:"Teorema de Pitágoras · triángulos rectángulos",en:"Pythagorean theorem · right triangles",fr:"Théorème de Pythagore · triangles rectangles",noteEs:"Teorema asociado a la tradición pitagórica; su conocimiento es anterior a Pitágoras.",noteEn:"Traditionally associated with Pythagoras; known before his lifetime.",noteFr:"Traditionnellement associé à Pythagore ; connu avant son époque.",source:"https://en.wikipedia.org/wiki/Pythagorean_theorem"},
  {names:["euclides","euclid","euclid of alexandria"],formula:"a² + b² = c²",es:"Elementos, I.47 · proposición geométrica",en:"Elements, I.47 · geometric proposition",fr:"Éléments, I.47 · proposition géométrique",source:"https://mathcs.clarku.edu/~djoyce/elements/bookI/propI47.html"},
  {names:["leonhard euler","euler"],formula:"eⁱπ + 1 = 0",es:"Identidad de Euler",en:"Euler's identity",fr:"Identité d’Euler",source:"https://en.wikipedia.org/wiki/Euler%27s_identity"},
- {names:["isaac newton","newton"],formula:"F = ma",es:"Segunda ley de Newton · formulación moderna",en:"Newton's second law · modern form",fr:"Deuxième loi de Newton · forme moderne",source:"https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion"}
+ {names:["isaac newton","newton"],formula:"F = ma",es:"Segunda ley de Newton · formulación moderna",en:"Newton's second law · modern form",fr:"Deuxième loi de Newton · forme moderne",source:"https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion"},
+ /* Engineering topics: exact, documented associations, never guess a
+    formula from a loosely related author or substitute it for a design code. */
+ {names:["ley de ohm","ohms law","ohm's law","electrical resistance","resistencia electrica","resistencia eléctrica"],formula:"V = I · R",
+  es:"Ley de Ohm · circuitos eléctricos",en:"Ohm's law · electrical circuits",fr:"Loi d’Ohm · circuits électriques",
+  noteEs:"V: tensión (V); I: corriente (A); R: resistencia (Ω). V = IR para un componente óhmico bajo condiciones apropiadas.",
+  noteEn:"V: voltage (V); I: current (A); R: resistance (Ω). Applies to ohmic components under appropriate conditions.",
+  noteFr:"V : tension (V) ; I : courant (A) ; R : résistance (Ω). Pour un composant ohmique dans les conditions appropriées.",
+  source:"https://openstax.org/books/university-physics-volume-2/pages/9-4-ohms-law"},
+ {names:["ecuacion de bernoulli","ecuación de bernoulli","bernoulli equation","bernoulli's equation","mecanica de fluidos","mecánica de fluidos","fluid mechanics","hydrodynamics","hidrodinamica","hidrodinámica"],formula:"p + ½ρv² = constante",
+  es:"Bernoulli · mecánica de fluidos",en:"Bernoulli · fluid mechanics",fr:"Bernoulli · mécanique des fluides",
+  noteEs:"Forma simplificada para flujo estacionario, incompresible y no viscoso, a altura aproximadamente constante, a lo largo de una línea de corriente.",
+  noteEn:"Simplified form: steady, incompressible, inviscid flow at negligible height change, along one streamline.",
+  noteFr:"Forme simplifiée : écoulement stationnaire, incompressible et non visqueux, à hauteur quasi constante, le long d’une ligne de courant.",
+  source:"https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/bernoullis-equation/"},
+ {names:["potencia electrica","potencia eléctrica","electric power"],formula:"P = V · I",
+  es:"Potencia eléctrica",en:"Electric power",fr:"Puissance électrique",
+  noteEs:"P: potencia (W); V: tensión (V); I: corriente (A). Forma para corriente continua; en alterna hay que considerar fase y el tipo de potencia.",
+  noteEn:"P: power (W); V: voltage (V); I: current (A). DC form; AC requires phase and power-type distinctions.",
+  noteFr:"P : puissance (W) ; V : tension (V) ; I : courant (A). Forme en courant continu ; en alternatif, tenir compte de la phase.",
+  source:"https://openstax.org/books/physics/pages/19-key-equations"}
 ];
 function find(name){const key=fold(name);return entries.find(e=>e.names.some(n=>fold(n)===key))||null}
 function render(parent,name){
