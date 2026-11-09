@@ -48,7 +48,7 @@
    await navigator.clipboard.writeText(value);
    status.textContent="Copiado al portapapeles";b.setAttribute("aria-describedby",status.id);
   }catch{
-   status.textContent="Copiá el texto del cuadro";
+   status.textContent="Copia el texto del cuadro";
    window.prompt("Copiar:",value);
   }
  }
