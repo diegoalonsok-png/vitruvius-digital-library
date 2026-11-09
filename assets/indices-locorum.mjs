@@ -5,12 +5,15 @@ import {roman,normalize} from './search-core.mjs';
    Index mathematicus: localizador temático.
    Cada entrada: glosa breve, formas, loci, concordancia en contexto con resaltado y exportación CSV. */
 const $=q=>document.querySelector(q);
-let corpus=[],mode='latin',grouping='lemma',limit=60,lexicon=[],latGloss=null,grcGloss=null;
-const groups=new Map(),formsOf=new Map();
+let corpus=[],mode='latin',grouping='lemma',page=1,perPage=48,selectedLetter='',lexicon=[],latGloss=null,grcGloss=null;
+const groups=new Map(),formsOf=new Map(),greekWitnesses=new Map();
 const norm=v=>String(v||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').replace(/ς/g,'σ');
 const headword=h=>String(h||'').split(/[\s,]/)[0].replace(/-/g,'');
 const GREEK_TOKEN=/[\p{Script=Greek}][\p{Script=Greek}\p{M}]*(?:[’ʼ'](?=[\s,.;:]|$))?/gu;
 const LATIN_TOKEN=/[\p{L}]{2,}/gu;
+const LATIN_ALPHABET=Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+const GREEK_ALPHABET=Array.from('ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ');
+const firstLetter=key=>String(key||'').normalize('NFD').replace(/\p{M}/gu,'').trim().charAt(0).toLocaleUpperCase();
 
 const subjects={
  'Proporción y simetría':['symmetri','proporti','analogi','commensur','rata parte','modul','pro rata'],
@@ -23,9 +26,13 @@ const subjects={
  'Hidráulica y pendientes':['aqua','inclination','libram','chorobat','duct','canal']
 };
 const tokens=(source,re)=>[...String(source||'').matchAll(re)].map(m=>m[0]);
-function push(key,p,form){
+function push(key,p,form,origin=''){
  if(!groups.has(key))groups.set(key,new Map());groups.get(key).set(p.locus,p);
  if(form){if(!formsOf.has(key))formsOf.set(key,new Map());const f=formsOf.get(key);f.set(form,(f.get(form)||0)+1)}
+ if(mode==='greek'&&origin){
+  if(!greekWitnesses.has(key))greekWitnesses.set(key,{direct:new Set(),latinLinked:new Set()});
+  greekWitnesses.get(key)[origin].add(p.locus);
+ }
 }
 function latinKey(form){
  if(grouping!=='lemma'||!latGloss)return normalize(form);
@@ -34,16 +41,16 @@ function latinKey(form){
  const L=latGloss.lemmas[lem[0]];return norm(headword(L?.h||lem[0]).replace(/\d+$/,''))||normalize(form);
 }
 function build(){
- groups.clear();formsOf.clear();
+ groups.clear();formsOf.clear();greekWitnesses.clear();
  for(const p of corpus){
   if(mode==='latin'){
    for(const form of tokens(p.latin,LATIN_TOKEN)){if(/[\p{Script=Greek}]/u.test(form)||form.length<3&&grouping!=='lemma')continue;push(latinKey(form),p,form.toLowerCase())}
   }else if(mode==='greek'){
-   for(const t of tokens(p.latin,GREEK_TOKEN)){if(norm(t).replace(/[^\p{L}]/gu,'').length<2)continue;push(t.normalize('NFC'),p,t.normalize('NFC'))}
+   for(const t of tokens(p.latin,GREEK_TOKEN)){if(norm(t).replace(/[^\p{L}]/gu,'').length<2)continue;push(t.normalize('NFC'),p,t.normalize('NFC'),'direct')}
    const latinTokens=new Set(tokens(p.latin,/[\p{L}\p{M}]{2,}/gu).map(norm));
-   for(const entry of lexicon){if(!entry.greek||!entry.lemma)continue;if([entry.lemma,...(entry.forms||[])].map(norm).some(l=>latinTokens.has(l)))push(entry.greek,p,null)}
+   for(const entry of lexicon){if(!entry.greek||!entry.lemma)continue;if([entry.lemma,...(entry.forms||[])].map(norm).some(l=>latinTokens.has(l)))push(entry.greek,p,null,'latinLinked')}
    const related={'ἀρχιτεκτονική':['architectura','architectus','architecti'],'ἀρχιτέκτων':['architectus','architecti'],'συμμετρία':['symmetria','symmetriae'],'εὐρυθμία':['eurythmia','eurythmiae']};
-   for(const [greek,latin] of Object.entries(related))if(latin.some(w=>latinTokens.has(norm(w))))push(greek,p,null);
+   for(const [greek,latin] of Object.entries(related))if(latin.some(w=>latinTokens.has(norm(w))))push(greek,p,null,'latinLinked');
   }else{
    const lat=normalize(p.latin||'');for(const [category,stems] of Object.entries(subjects))if(stems.some(t=>lat.includes(normalize(t))))push(category,p,null);
   }
@@ -57,8 +64,12 @@ function glossFor(key){
   const L=lemmaId&&latGloss.lemmas[lemmaId];if(L)return{head:L.h,gloss:L.g,src:'Lewis & Short'};
  }
  if(mode==='greek'&&grcGloss){
-  const an=grcGloss.forms[String(key).toLowerCase()];const lem=an?.[0]?.[0]||key;const L=grcGloss.lemmas[lem];
-  if(L&&L.g)return{head:L.probable||lem,gloss:L.g,src:'LSJ'+(L.probable?' · lema probable':'')};
+  // El lema politónico procede del léxico, nunca se restaura por conjetura.
+  const formKey=Object.keys(grcGloss.forms||{}).find(k=>norm(k)===norm(key));
+  const analysis=formKey&&grcGloss.forms[formKey];
+  const lemma=analysis?.[0]?.[0]||key;
+  const lexeme=grcGloss.lemmas[lemma];
+  if(lexeme&&lexeme.g)return{head:lexeme.probable||lemma,gloss:lexeme.g,src:'LSJ'+(lexeme.probable?' · lema probable':'')};
  }
  return null;
 }
@@ -110,14 +121,61 @@ function dictionary(card,entry){
  add('Perseus ↗','https://www.perseus.tufts.edu/hopper/morph?l='+encodeURIComponent(entry.key)+'&la='+(mode==='greek'?'greek':'la'));
  details.append(links);card.append(details);
 }
+function renderAlphabet(items){
+ const root=$('#index-alphabet');if(!root)return;
+ const alphabet=mode==='greek'?GREEK_ALPHABET:mode==='latin'?LATIN_ALPHABET:[];
+ root.replaceChildren();
+ if(mode==='math'){root.hidden=true;selectedLetter='';return}
+ root.hidden=false;
+ const counts=new Map();
+ for(const x of items){const first=firstLetter(x.key);counts.set(first,(counts.get(first)||0)+1)}
+ const all=document.createElement('button');
+ all.type='button';all.textContent='Todas';all.setAttribute('aria-pressed',String(!selectedLetter));
+ all.title='Mostrar todas las letras sin limitar el diccionario';all.addEventListener('click',()=>{selectedLetter='';page=1;render()});root.append(all);
+ for(const l of alphabet){
+  const b=document.createElement('button');b.type='button';b.textContent=l;
+  const n=counts.get(l)||0;b.disabled=!n;b.title=l+': '+n+' entradas';
+  b.setAttribute('aria-label',l+': '+n+' entradas');b.setAttribute('aria-pressed',String(selectedLetter===l));
+  b.addEventListener('click',()=>{selectedLetter=l;page=1;render()});root.append(b);
+ }
+}
+function renderPager(where,total){
+ const root=$(where);if(!root)return;
+ root.replaceChildren();
+ const pages=Math.ceil(total/perPage);
+ if(pages<=1)return;
+ page=Math.min(Math.max(page,1),pages);
+ const make=(label,p,disabled=false,current=false)=>{
+  const b=document.createElement('button');b.type='button';b.textContent=String(label);
+  b.disabled=disabled;b.setAttribute('aria-label',typeof label==='number'?'Página '+label:label);
+  if(current)b.setAttribute('aria-current','page');
+  b.addEventListener('click',()=>{page=p;render();$('#index-alphabet')?.scrollIntoView({block:'start',behavior:'instant'})});
+  root.append(b);
+ };
+ make('← Anterior',page-1,page===1);
+ const sequence=new Set([1,pages]);
+ for(let p=Math.max(1,page-2);p<=Math.min(pages,page+2);p++)sequence.add(p);
+ let last=0;for(const p of [...sequence].sort((a,b)=>a-b)){
+  if(last&&p>last+1){const space=document.createElement('span');space.textContent='…';space.setAttribute('aria-hidden','true');root.append(space)}
+  make(p,p,false,p===page);last=p;
+ }
+ make('Siguiente →',page+1,page===pages);
+ const totalLabel=document.createElement('span');totalLabel.className='index-pages-total';
+ totalLabel.textContent='Página '+page+' de '+pages;root.append(totalLabel);
+}
 function render(){
  const raw=$('#index-query').value.trim(),q=normalize(raw),qn=norm(raw),book=Number($('#index-book').value)||null;
- const keys=[...groups.keys()].sort((a,b)=>a.localeCompare(b,'la'));
- const valid=keys.map(k=>({key:k,loci:[...groups.get(k).values()].filter(p=>!book||p.book===book)})).filter(x=>x.loci.length&&(!q||normalize(x.key).includes(q)||norm(x.key).includes(qn)||
-  [...(formsOf.get(x.key)?.keys()||[])].some(f=>norm(f).includes(qn))||(mode==='math'&&x.loci.some(p=>normalize(p.latin).includes(q)))));
- if(q)valid.sort((a,b)=>Number(norm(b.key).startsWith(qn))-Number(norm(a.key).startsWith(qn))||b.loci.length-a.loci.length);
+ const keys=[...groups.keys()].sort((a,b)=>a.localeCompare(b,mode==='greek'?'el':'la'));
+ const all=keys.map(k=>({key:k,loci:[...groups.get(k).values()].filter(p=>!book||p.book===book)}))
+  .filter(x=>x.loci.length&&(!q||normalize(x.key).includes(q)||norm(x.key).includes(qn)||
+   [...(formsOf.get(x.key)?.keys()||[])].some(f=>norm(f).includes(qn))||
+   (mode==='math'&&x.loci.some(p=>normalize(p.latin).includes(q)))));
+ if(q)all.sort((a,b)=>Number(norm(b.key).startsWith(qn))-Number(norm(a.key).startsWith(qn))||b.loci.length-a.loci.length);
+ renderAlphabet(all);
+ const valid=selectedLetter&&mode!=='math'?all.filter(x=>firstLetter(x.key)===selectedLetter):all;
+ const totalPages=Math.max(1,Math.ceil(valid.length/perPage));page=Math.min(Math.max(page,1),totalPages);
  const root=$('#index-entries');root.replaceChildren();
- for(const entry of valid.slice(0,limit)){
+ for(const entry of valid.slice((page-1)*perPage,page*perPage)){
   const card=document.createElement('article');card.className='index-row';
   const h=document.createElement('h3');h.textContent=entry.key;if(mode==='greek')h.lang='grc';else if(mode==='latin')h.lang='la';card.append(h);
   const g=mode!=='math'&&glossFor(entry.key);
@@ -126,25 +184,32 @@ function render(){
   const count=document.createElement('p');count.className='index-meta';
   count.textContent=entry.loci.length+' loci documentados'+(mode==='latin'&&grouping==='lemma'&&forms&&forms.size>1?' · formas: '+[...forms.entries()].sort((a,b)=>b[1]-a[1]).map(([f,n])=>f+' ('+n+')').join(', '):'');
   card.append(count);
+  if(mode==='greek'){
+   const witnesses=greekWitnesses.get(entry.key);
+   const note=document.createElement('p');note.className='index-meta';
+   const direct=witnesses?.direct.size||0,related=witnesses?.latinLinked.size||0;
+   note.textContent=direct+' loci con grafía griega en la transcripción · '+related+' loci vinculados a términos latinos mediante correspondencia editorial. Los diacríticos del lema solo son lexicográficos; verificar la forma transmitida en el pasaje.';
+   card.append(note);
+  }
   const locs=document.createElement('div');locs.className='index-loci';
   for(const p of entry.loci.slice(0,45)){const a=document.createElement('a');const firstForm=forms?[...forms.keys()][0]:entry.key;
    a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(mode==='math'?raw:firstForm);
    a.textContent=roman(p.book)+'.'+p.chapter+'.'+p.section;a.title='Abrir pasaje '+p.locus;locs.append(a)}
   card.append(locs);
   if(mode!=='math')dictionary(card,entry);
-  if(mode==='greek'){const note=document.createElement('p');note.className='index-meta';note.textContent='La entrada puede reunir grafías griegas literales y equivalencias latinas documentadas. Verifica cada pasaje antes de citarla como testimonio griego.';card.append(note)}
   if(entry.loci.length>45){const d=document.createElement('p');d.className='index-meta';d.textContent='Se muestran 45 loci; filtra por libro para acotar. La concordancia en contexto los incluye todos.';card.append(d)}
   root.append(card);
  }
- $('#index-status').textContent=valid.length+' entradas · '+valid.reduce((n,x)=>n+x.loci.length,0)+' referencias de locus'+(mode==='latin'?(grouping==='lemma'?' · agrupado por lema':' · agrupado por forma gráfica'):'');
- $('#index-more').hidden=valid.length<=limit;
+ const from=valid.length?(page-1)*perPage+1:0,to=Math.min(page*perPage,valid.length);
+ $('#index-status').textContent=all.length+' entradas disponibles'+(selectedLetter?' · letra '+selectedLetter+': '+valid.length:'')+' · mostrando '+from+'–'+to+' de '+valid.length+' · '+valid.reduce((n,x)=>n+x.loci.length,0)+' referencias de locus'+(mode==='latin'?(grouping==='lemma'?' · agrupado por lema':' · agrupado por forma gráfica'):'');
+ renderPager('#index-pages-top',valid.length);renderPager('#index-pages-bottom',valid.length);
 }
 function syncGrouping(){const g=$('#index-grouping');if(g)g.closest('label').hidden=mode!=='latin'}
-document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.tab;limit=60;document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));syncGrouping();build();render()}));
-$('#index-query').addEventListener('input',()=>{limit=60;render()});
-$('#index-book').addEventListener('change',()=>{limit=60;render()});
-$('#index-grouping')?.addEventListener('change',e=>{grouping=e.target.value;limit=60;build();render()});
-$('#index-more').addEventListener('click',()=>{limit+=60;render()});
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.tab;page=1;selectedLetter='';document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));syncGrouping();build();render()}));
+$('#index-query').addEventListener('input',()=>{page=1;selectedLetter='';render()});
+$('#index-book').addEventListener('change',()=>{page=1;render()});
+$('#index-grouping')?.addEventListener('change',e=>{grouping=e.target.value;page=1;selectedLetter='';build();render()});
+
 const j=u=>fetch(u).then(r=>r.ok?r.json():null).catch(()=>null);
 Promise.all([fetch('data/structured/recensio-es.json').then(r=>{if(!r.ok)throw Error('Índice no disponible');return r.json()}),j('data/latin-lexicon.json'),j('data/classics-lexicon/vitruvius-la.json'),j('data/classics-lexicon/vitruvius-grc.json')])
  .then(([d,lex,lat,grc])=>{lexicon=lex?.entries||[];latGloss=lat;grcGloss=grc;if(!latGloss){grouping='form';const s=$('#index-grouping');if(s)s.value='form'}corpus=d.passages||[];
