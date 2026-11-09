@@ -52,6 +52,7 @@ async function registry(){
   registered=registered.filter(bibliothecaLanguagePolicy);
   // A validated offsite branch does not count as local hosting.
   if(window.ClassicsOffsiteGreek)registered=registered.concat(await window.ClassicsOffsiteGreek.entries());
+  if(window.ClassicsOffsiteLatin)registered=registered.concat(await window.ClassicsOffsiteLatin.entries());
   return registered;
  }).catch(()=>{registered=LEGACY;return LEGACY});
  return registryTask;
@@ -69,7 +70,7 @@ function snippet(text,[a,b]){
 }
 function loadJson(e){
  if(e.format==="remote-json-passages")
-  return window.ClassicsOffsiteGreek?.load(e)||Promise.resolve(null);
+  return (e.language==="grc"?window.ClassicsOffsiteGreek?.load(e):e.language==="la"?window.ClassicsOffsiteLatin?.load(e):null)||Promise.resolve(null);
  if(!cache.has(e.path))cache.set(e.path,
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
    .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
@@ -131,7 +132,7 @@ async function search(q,{limit=8}={}){
  // The hosted corpus presently has no Hebrew or Aramaic passage editions.
  // Do not fetch Latin/English texts and misreport absence in an unindexed language.
  const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc")&&
-   (e.format!=="remote-json-passages"||grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q])));
+   (e.format!=="remote-json-passages"||(e.language==="grc"?grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q]):e.language==="la"?!grec&&window.ClassicsOffsiteLatin?.mightContain(e,[q]):false)));
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=8){
@@ -230,7 +231,7 @@ async function semanticSearch(q,{limit=6}={}){
   await Promise.all(entries.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
    if(!terms.length||e.format==="historical-ocr-pages"||
-    e.format==="remote-json-passages"&&!window.ClassicsOffsiteGreek?.mightContain(e,terms))return;
+    e.format==="remote-json-passages"&&!(e.language==="grc"?window.ClassicsOffsiteGreek?.mightContain(e,terms):e.language==="la"?window.ClassicsOffsiteLatin?.mightContain(e,terms):false))return;
    if(indexValid&&["json-passages","structured-bilingual"].includes(e.format)){
     const version=indexed.get([e.workId,e.language,e.path,e.edition||""].join("|"));
     if(version&&!version.concepts.some(c=>c.concept===concept.id)){skippedNoHit++;return}
@@ -338,7 +339,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",edition="",
  if(!queries.length)return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
  const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(!edition||e.edition===edition)&&(includeOCR||e.format!=="historical-ocr-pages")&&
-  (e.format!=="remote-json-passages"||(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries)))
+  (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)))
   .sort((a,b)=>(a.workId==="vitruvius"?0:a.language==="la"?1:a.language==="grc"?2:3)-(b.workId==="vitruvius"?0:b.language==="la"?1:b.language==="grc"?2:3));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
