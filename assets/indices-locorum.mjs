@@ -6,7 +6,7 @@ import {roman,normalize} from './search-core.mjs';
    Cada entrada: glosa breve, formas, loci, concordancia en contexto con resaltado y exportación CSV. */
 const $=q=>document.querySelector(q);
 let corpus=[],mode='latin',grouping='lemma',page=1,perPage=48,selectedLetter='',lexicon=[],latGloss=null,grcGloss=null;
-const groups=new Map(),formsOf=new Map(),greekWitnesses=new Map();
+const groups=new Map(),formsOf=new Map(),greekWitnesses=new Map(),passageForms=new Map();
 const norm=v=>String(v||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').replace(/ς/g,'σ');
 const headword=h=>String(h||'').split(/[\s,]/)[0].replace(/-/g,'');
 const GREEK_TOKEN=/[\p{Script=Greek}][\p{Script=Greek}\p{M}]*(?:[’ʼ'](?=[\s,.;:]|$))?/gu;
@@ -26,9 +26,17 @@ const subjects={
  'Hidráulica y pendientes':['aqua','inclination','libram','chorobat','duct','canal']
 };
 const tokens=(source,re)=>[...String(source||'').matchAll(re)].map(m=>m[0]);
-function push(key,p,form,origin='',linkedLatin=''){
+function push(key,p,form,origin='',linkedLatin='',surface=''){
  if(!groups.has(key))groups.set(key,new Map());groups.get(key).set(p.locus,p);
- if(form){if(!formsOf.has(key))formsOf.set(key,new Map());const f=formsOf.get(key);f.set(form,(f.get(form)||0)+1)}
+ if(form){
+  if(!formsOf.has(key))formsOf.set(key,new Map());
+  const f=formsOf.get(key);f.set(form,(f.get(form)||0)+1);
+  // Conservar por separado la forma realmente atestiguada en CADA locus.
+  // Un lema puede tener decenas de variantes: usar la primera de toda la
+  // obra para todos los enlaces enviaba al lector un resaltado inexistente.
+  if(!passageForms.has(key))passageForms.set(key,new Map());
+  if(!passageForms.get(key).has(p.locus))passageForms.get(key).set(p.locus,surface||form);
+ }
  if(mode==='greek'&&origin){
   if(!greekWitnesses.has(key))greekWitnesses.set(key,{direct:new Set(),latinLinked:new Set(),latinForms:new Map()});
   greekWitnesses.get(key)[origin].add(p.locus);
@@ -42,10 +50,10 @@ function latinKey(form){
  const L=latGloss.lemmas[lem[0]];return norm(headword(L?.h||lem[0]).replace(/\d+$/,''))||normalize(form);
 }
 function build(){
- groups.clear();formsOf.clear();greekWitnesses.clear();
+ groups.clear();formsOf.clear();greekWitnesses.clear();passageForms.clear();
  for(const p of corpus){
   if(mode==='latin'){
-   for(const form of tokens(p.latin,LATIN_TOKEN)){if(/[\p{Script=Greek}]/u.test(form)||form.length<3&&grouping!=='lemma')continue;push(latinKey(form),p,form.toLowerCase())}
+   for(const form of tokens(p.latin,LATIN_TOKEN)){if(/[\p{Script=Greek}]/u.test(form)||form.length<3&&grouping!=='lemma')continue;push(latinKey(form),p,form.toLowerCase(),'','',form)}
   }else if(mode==='greek'){
    for(const t of tokens(p.latin,GREEK_TOKEN)){if(norm(t).replace(/[^\p{L}]/gu,'').length<2)continue;push(t.normalize('NFC'),p,t.normalize('NFC'),'direct')}
    const latinTokens=new Set(tokens(p.latin,/[\p{L}\p{M}]{2,}/gu).map(norm));
@@ -213,8 +221,12 @@ function render(){
    card.append(note);
   }
   const locs=document.createElement('div');locs.className='index-loci';
-  for(const p of entry.loci.slice(0,45)){const a=document.createElement('a');const firstForm=forms?[...forms.keys()][0]:entry.key;
-   const evidence=mode==='greek'&&!greekWitnesses.get(entry.key)?.direct.has(p.locus)?(greekWitnesses.get(entry.key)?.latinForms.get(p.locus)||firstForm):firstForm;
+  for(const p of entry.loci.slice(0,45)){const a=document.createElement('a');
+   const witnessed=passageForms.get(entry.key)?.get(p.locus);
+   const linked=mode==='greek'?greekWitnesses.get(entry.key)?.latinForms.get(p.locus):null;
+   const linkedSurface=linked&&[...String(p.latin||'').matchAll(/[\\p{L}\\p{M}]+/gu)]
+    .map(m=>m[0]).find(t=>norm(t)===norm(linked));
+   const evidence=witnessed||linkedSurface||linked||entry.key;
    a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(mode==='math'?raw:evidence);
    a.textContent=roman(p.book)+'.'+p.chapter+'.'+p.section;a.title='Abrir pasaje '+p.locus;locs.append(a)}
   card.append(locs);
