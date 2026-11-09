@@ -50,8 +50,7 @@ jobs:
           node --check assets/bibliotheca-corpus-search.js
           node --check assets/bibliotheca-simple.js
           node scripts/test-offsite-latin-originals.mjs
-      - name: Extraer originales TEI en directorio temporal
-        if: github.event_name != 'pull_request'
+      - name: Verificar descarga y extracción íntegra de los TEI en un directorio temporal
         run: python scripts/build-offsite-latin-originals.py --output "$RUNNER_TEMP/latin-originals"
       - name: Publicar SOLO JSON derivados en rama externa no Pages
         if: github.event_name != 'pull_request'
