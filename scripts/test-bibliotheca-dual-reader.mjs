@@ -53,7 +53,8 @@ assert.match(html,/id="classic-query"/);
 assert.match(html,/id="classic-work"/);
 assert.doesNotMatch(html,/assets\/classics-study-tools\.js\?v=/);
 assert.doesNotMatch(html,/<iframe\b|type="color"/);
-assert.match(read("assets/bibliotheca-simple.js"),/searchPassages\(\[q,\.\.\.transliterations\]/);
+// Extra morphological forms are optional; retain at least the literal query and attested transliterations.
+assert.match(read("assets/bibliotheca-simple.js"),/searchPassages\(\[q,\.\.\.transliterations/);
 assert.match(read("assets/bibliotheca-simple.js"),/allMatches:true,includeFullText:true,includeOCR:false/);
 assert.match(read("assets/bibliotheca-simple.js"),/vitruvia-lexicon\.html/);
 assert.match(old,/location\.replace\(dest\.href\)/);
