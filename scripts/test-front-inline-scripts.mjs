@@ -20,3 +20,17 @@ assert(checked>0,"No se verificó ningún inline JS");
 assert.equal(html.split('src="assets/classics-audited-coverage.js?v=').length-1,1,
   "La auditoría debe cargarse exactamente una vez, fuera de la plantilla de impresión");
 console.log("PASS portada: "+checked+" scripts inline y etiqueta de contadores no anidada");
+
+const lexical=readFileSync("assets/inline-lexical-card.js","utf8");
+new vm.Script(lexical,{filename:"assets/inline-lexical-card.js"});
+assert(html.includes("assets/inline-lexical-card.js"),"La portada debe cargar la ficha contextual");
+assert(lexical.includes('event.target.closest?.("#search-results mark.search-hit")'),
+ "Las palabras resaltadas deben abrir una ficha por clic");
+const match=lexical.match(/if\(!((?:\/\^\[[^\n]+?\$\/u))\.test\(term\)\)return;/);
+assert(match,"Falta validación Unicode de vocablos clicables");
+const accept=new Function("term","return "+match[1]+".test(term)");
+for(const word of ["domus","loci","campus","λόγος","οἶκος","τέχνη"]){
+ assert(accept(word),"La ficha debe aceptar el vocablo "+word);
+}
+assert(!accept("1234"),"La ficha no debe tratar números como lemas");
+console.log("PASS fichas: clic en resaltado y vocablos latinos/griegos válidos");
