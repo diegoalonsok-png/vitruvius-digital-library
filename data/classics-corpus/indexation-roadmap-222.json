@@ -9,12 +9,12 @@
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
     "textVersions": 246,
-    "offsiteOriginalsIndexed": 23,
-    "effectiveOriginalsIndexed": 204,
-    "effectiveOriginalsMissing": 18,
+    "offsiteOriginalsIndexed": 24,
+    "effectiveOriginalsIndexed": 205,
+    "effectiveOriginalsMissing": 17,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 15,
-    "offsiteTextVersionsOutsidePages": 23,
+    "distinctAncientWorksStillMissingOriginalIndex": 14,
+    "offsiteTextVersionsOutsidePages": 24,
     "states": {
       "original_pendiente": 41,
       "original_sin_traduccion_local": 122,
@@ -4746,8 +4746,13 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
-      "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "47467398bd7b44b32ea84360ef23b231e2cf6f321daf6b2d0988f1beeca14e91"
+      }
     },
     {
       "id": "sulpicia-elegiae",
