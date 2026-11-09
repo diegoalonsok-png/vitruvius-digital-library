@@ -112,7 +112,9 @@ try{
     featuredHeight:document.getElementById("featured")?.getBoundingClientRect().height||0,
     heroHasRoyal:!!document.querySelector("#featured #v-egypt-side")
   }));
-  assert.match(ancient.glyphs,/𓇋/u,"Akhenaten must have a real Unicode sign sequence");
+  const egyptianSigns=[...ancient.glyphs].filter(sign=>/[\u{13000}-\u{1342F}]/u.test(sign));
+  assert.ok(egyptianSigns.length>=4,"Akhenaten must display actual Unicode Egyptian hieroglyphs, without assuming a single orthographic variant");
+  assert.ok(!ancient.glyphs.includes("�"),"Egyptian signs must not contain replacement characters");
   assert.equal(ancient.parent,"vitruvia-context","Egyptian script must occupy the right-hand scholarly rail");
   assert.equal(ancient.heroHasRoyal,false,"The full royal dossier must never extend the hero");
   assert.ok(ancient.featuredHeight<900,"Egyptian dossier must not create an enormous black hero area");
