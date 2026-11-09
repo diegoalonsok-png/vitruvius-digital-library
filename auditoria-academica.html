@@ -23,10 +23,15 @@ main{max-width:1250px;margin:auto;padding:30px clamp(16px,3vw,44px) 90px}h1{font
 <div id="load-state" class="small" role="status">Leyendo informes de auditoría del repositorio…</div>
 <section class="stats" id="stats" aria-label="Indicadores de cobertura"></section>
 <section class="panel"><h2>Cobertura de obras textuales</h2><p id="coverage-label" aria-live="polite">Pendiente de carga.</p><div class="bar" role="progressbar" aria-label="Porcentaje de obras del catálogo con texto indexado" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="coverage-bar"><div id="coverage-fill" style="width:0"></div></div><p class="small">Una ficha bibliográfica, un PDF o un enlace externo no representan por sí solos un texto indexado y consultable. La cobertura se refiere al catálogo local, no al universo de obras clásicas.</p></section>
+<section class="panel" id="external-coverage" aria-label="Índices fuera de GitHub Pages"><h2>Índices originales externos y faltantes</h2>
+<p id="external-coverage-status" class="small" role="status">Contrastando registros locales y manifiestos externos…</p>
+<p class="small">El inventario local y el índice remoto se cuentan por obra, no por cantidad de archivos ni de idiomas. Un registro de manifiesto remoto <strong>no acredita por sí solo</strong> la disponibilidad instantánea de cada lector, la autenticidad de un testimonio o una colación manuscrita. No se alojan aquí copias nuevas de obras.</p>
+<p class="small">Consultar <a href="data/classics-corpus/indexation-roadmap-222.json">inventario de las 222 obras</a>, <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/tree/corpus-originales-griegos-20261108/data/offsite-originals">índices griegos externos</a> y <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/tree/corpus-originales-latinos-20261108/data/offsite-latin">índices latinos externos</a>.</p>
+</section>
 <section class="panel"><h2>Alertas que necesitan revisión humana</h2><div id="alerts">Los informes todavía no se han cargado.</div></section>
 <section class="panel"><h2>Correspondencia entre originales y traducciones</h2><p>Una coincidencia de identificador de locus <strong>no certifica identidad textual ni equivalencia semántica</strong>. Las versiones originales y traducidas se conservan accesibles incluso cuando no comparten referencias.</p><div style="overflow-x:auto"><table><thead><tr><th>Obra</th><th>Par de lenguas</th><th>Loci compartidos</th><th>Estado crítico</th></tr></thead><tbody id="pairs"><tr><td colspan="4">Cargando…</td></tr></tbody></table></div></section>
 <section class="panel"><h2>Cómo interpretar el estado de un dato</h2><ul><li><strong>Atestiguado:</strong> forma literal documentada en una fuente con testimonio o edición identificable.</li><li><strong>Lectura editorial:</strong> lección elegida por un editor; no implica que sea idéntica al autógrafo perdido.</li><li><strong>Reconstrucción:</strong> hipótesis lingüística que requiere correspondencias fonéticas y bibliografía.</li><li><strong>Alineación por locus:</strong> coincidencia de referencias editoriales, todavía no colación semántica.</li><li><strong>Alerta algorítmica:</strong> diferencia que requiere revisión; no equivale a error textual confirmado.</li></ul></section>
-<section class="panel"><h2>Fuentes y reproducibilidad</h2><p class="small">Informes en vivo: <a href="data/classics-corpus/coverage-audit.json">cobertura del corpus</a> · <a href="data/classics-alignment/manifest.json">manifiesto de alineaciones</a> · <a href="data/structured/latin-collation-audit.json">colación latina</a> · <a href="data/lexicon/etymologicum.json">Etymologicum</a>. Código de validación: <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/scripts/audit-academic-readiness.mjs">scripts/audit-academic-readiness.mjs</a>. Cada ejecución genera un informe descargable desde <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/academic-integrity.yml">GitHub Actions</a>.</p><p class="small">Control adicional de citabilidad y procedencia: <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/scripts/audit-scholarly-citations.mjs">auditoría de citas de ediciones y documentos</a> y <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/docs/programa-calidad-academica-2026-11-08.md">programa de mejora académica verificable</a>. Los informes registran vacíos de metadatos sin inventar traducciones, variantes de códices ni fuentes bibliográficas.</p><p class="small">La publicación de indicadores no garantiza precisión OCR, concordancia manuscrita ni revisión independiente de las 115 fichas; esas tareas permanecen abiertas hasta verificarse individualmente.</p></section>
+<section class="panel"><h2>Fuentes y reproducibilidad</h2><p class="small">Informes en vivo: <a href="data/classics-corpus/coverage-audit.json">cobertura del corpus</a> · <a href="data/classics-alignment/manifest.json">manifiesto de alineaciones</a> · <a href="data/structured/latin-collation-audit.json">colación latina</a> · <a href="data/lexicon/etymologicum.json">Etymologicum</a>. Código de validación: <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/scripts/audit-academic-readiness.mjs">scripts/audit-academic-readiness.mjs</a>. Cada ejecución genera un informe descargable desde <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/academic-integrity.yml">GitHub Actions</a>.</p><p class="small">Control adicional de citabilidad y procedencia: <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/scripts/audit-scholarly-citations.mjs">auditoría de citas de ediciones y documentos</a> y <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/docs/programa-calidad-academica-2026-11-08.md">programa de mejora académica verificable</a>. Los informes registran vacíos de metadatos sin inventar traducciones, variantes de códices ni fuentes bibliográficas.</p><p class="small">La publicación de indicadores no garantiza precisión OCR, concordancia manuscrita ni revisión independiente de todas las fichas; esas tareas permanecen abiertas hasta verificarse individualmente.</p></section>
 </main>
 <script>
 (()=>{"use strict";
@@ -39,15 +44,57 @@ async function run(){try{
 const[c,a,l,e]=await Promise.all([load("data/classics-corpus/coverage-audit.json"),load("data/classics-alignment/manifest.json"),load("data/structured/latin-collation-audit.json"),load("data/lexicon/etymologicum.json")]);
 if(!c.counts||!Array.isArray(a.pairs)||!l.summary||!Array.isArray(e.entries))throw Error("Estructura de informes inesperada");
 const n=c.counts,missing=a.pairs.filter(p=>p.sharedLoci===0),noLoci=e.entries.filter(x=>!(x.loci||[]).length);
-metric(n.cataloguedWorks,"Obras catalogadas");metric(n.indexedDistinctWorks,"Obras con texto indexado");metric(n.indexedTextVersions,"Versiones textuales indexadas");metric(n.manuscriptWitnesses,"Testimonios manuscritos registrados");metric(e.entries.length,"Fichas etimológicas");metric(l.summary.alert,"Alertas heurísticas de colación latina");
+metric(n.cataloguedWorks,"Obras catalogadas");metric(n.indexedDistinctWorks,"Originales con índice local");metric(n.indexedTextVersions,"Versiones textuales indexadas");metric(n.manuscriptWitnesses,"Testimonios manuscritos registrados");metric(e.entries.length,"Fichas etimológicas");metric(l.summary.alert,"Alertas heurísticas de colación latina");
 const pct=n.cataloguedWorks?100*n.indexedDistinctWorks/n.cataloguedWorks:0;
-$("#coverage-label").textContent=n.indexedDistinctWorks+" de "+n.cataloguedWorks+" obras tienen texto indexado ("+pct.toFixed(1).replace(".",",")+" %).";
+$("#coverage-label").textContent=n.indexedDistinctWorks+" de "+n.cataloguedWorks+" obras tienen original indexado local ("+pct.toFixed(1).replace(".",",")+" %). Los índices externos se verifican aparte.";
 $("#coverage-fill").style.width=Math.max(0,Math.min(100,pct))+"%";$("#coverage-bar").setAttribute("aria-valuenow",pct.toFixed(1));
 $("#alerts").replaceChildren();
 alertLine(l.summary.alert+" discrepancias latinas clasificadas como alertas por el método automático; requieren cotejo por locus.");
 alertLine(missing.length+" pares de versiones sin identificadores compartidos de locus. Se mantiene acceso independiente a los textos.");
 alertLine(noLoci.length+" fichas etimológicas sin loci locales explícitos en el campo de ejemplos. No significa que las voces carezcan de atestiguación externa.");
 const body=$("#pairs");body.replaceChildren();for(const p of a.pairs){const tr=node("tr");for(const s of [p.workId,p.original+" / "+p.translation,String(p.sharedLoci),"Alineación editorial, no validación semántica"]){tr.append(node("td",{},s))}body.append(tr)}
+/* Los índices remotos no son originales alojados ni autorizan sumar registros duplicados.
+ * Si un manifiesto no está accesible o no concuerda con el inventario,
+ * se informa el estado desconocido en lugar de inventar cobertura.
+ */
+try{
+ const base="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/";
+ const [road,g,ltr]=await Promise.all([
+  load("data/classics-corpus/indexation-roadmap-222.json"),
+  load(base+"corpus-originales-griegos-20261108/data/offsite-originals/manifest.json"),
+  load(base+"corpus-originales-latinos-20261108/data/offsite-latin/manifest.json")
+ ]);
+ const okManifest=(m,schema,branch,language)=>
+  m?.schema===schema&&m.branch===branch&&Array.isArray(m.entries)&&
+  m.count===m.entries.length&&m.entries.every(e=>e?.language===language&&
+   typeof e.workId==="string"&&e.workId.length>2&&
+   typeof e.source==="string"&&e.source.startsWith("https://")&&
+   /^[a-f0-9]{64}$/.test(e.sourceSha256||""));
+ if(!Array.isArray(road.items)||road.items.length!==n.cataloguedWorks||
+  !okManifest(g,"vitruvius-offsite-greek-originals-manifest-v1","corpus-originales-griegos-20261108","grc")||
+  !okManifest(ltr,"vitruvius-offsite-latin-originals-manifest-v1","corpus-originales-latinos-20261108","la"))
+  throw Error("esquema, catálogo o procedencia remota inconsistentes");
+ const allIds=new Set(road.items.map(w=>w.id));
+ const localIds=new Set(road.items.filter(w=>w.originalIndexed).map(w=>w.id));
+ if(localIds.size!==n.indexedDistinctWorks)throw Error("recuento local distinto del inventario");
+ const entries=[...g.entries,...ltr.entries],remote=new Set(entries.map(e=>e.workId));
+ if(remote.size!==entries.length||[...remote].some(id=>!allIds.has(id)||localIds.has(id)))
+  throw Error("IDs externos duplicados, desconocidos o ya contados localmente");
+ const total=localIds.size+remote.size,pending=n.cataloguedWorks-total;
+ metric(remote.size,"Originales con índice externo documentado");
+ metric(total,"Obras con índice original local o externo");
+ metric(pending,"Obras pendientes de índice original");
+ $("#external-coverage-status").textContent=localIds.size+" originales locales + "+
+  g.entries.length+" índices griegos externos + "+ltr.entries.length+
+  " índices latinos externos = "+total+" obras distintas con índice registrado. "+
+  pending+" obras sin índice original identificado en estos tres inventarios. "+
+  "Cobertura conjunta de inventarios: "+(100*total/n.cataloguedWorks).toFixed(1).replace(".",",")+" %. "+
+  "Este control revisa manifiestos, no prueba cada lectura externa en vivo.";
+}catch(error){
+ $("#external-coverage-status").textContent="Estado externo no verificable en esta consulta ("+
+  error.message+"). Se mantienen únicamente "+n.indexedDistinctWorks+
+  " originales locales acreditados; no se presume que el resto sea accesible.";
+}
 $("#load-state").textContent="Indicadores cargados desde los archivos públicos del repositorio. Información de auditoría; no certificación externa.";
 }catch(err){$("#load-state").textContent="No se pudieron cargar todos los informes: "+err.message+". Consulte los archivos fuente enlazados abajo.";$("#alerts").textContent="Sin datos actualizados: no se publican cifras de reemplazo no verificadas.";}
 }run()
