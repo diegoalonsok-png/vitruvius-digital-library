@@ -32,7 +32,7 @@
      const ok=document.execCommand("copy");field.remove();if(!ok)throw Error("clipboard");
     }
     announce("Enlace copiado");
-   }catch{announce("Seleccioná la URL de la barra del navegador para copiarla.");}
+   }catch{announce("Seleccione la URL de la barra del navegador para copiarla.");}
   }
  });
 })();
