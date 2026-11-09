@@ -34,6 +34,38 @@ const RAMESSIDE_PRIMARY=[
   provenance:'Petrie Museum · UCL Digital Egypt; Kitchen, Ramesside Inscriptions II.',
   href:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/ramsesii.html',label:'Objetos, imágenes y testimonios · Petrie Museum'}
 ];
+/* Imágenes documentales de cartuchos: Wikimedia Commons conserva autoría, licencia
+ * y descripción de objeto. Nunca se confunde la fotografía con una reconstrucción. */
+const ROYAL_CARTOUCHE_MEDIA={
+ 'ramesses-ii':[
+  {file:'Rameses II Nomen and Prenomen.jpg',caption:'Nomen y prenomen · Lista real de Abydos, fotografía de objeto (British Museum)',kind:'Fotografía de inscripción',source:'Wikimedia Commons · Gary Todd · CC0'}
+ ],
+ 'akhenaten':[
+  {file:'Cartouche of Akhenaten MET 21.9.543.jpg',caption:'Cartucho de Akenatón · objeto 21.9.543 del Metropolitan Museum',kind:'Fotografía de objeto',source:'Wikimedia Commons · Metropolitan Museum'}
+ ],
+ 'tutankhamun':[
+  {file:'Tutankhamun cartouches.svg',caption:'Nomen y prenomen de Tutankamón · dibujo basado en catálogo de exposición de 1976',kind:'Reconstrucción gráfica documentada, no facsímil',source:'Wikimedia Commons · ficha y licencia del archivo'}
+ ]
+};
+function addRoyalCartoucheMedia(section,record){
+ const files=ROYAL_CARTOUCHE_MEDIA[record?.key]||[];
+ if(!files.length)return;
+ const block=node('div');block.className='v-egypt-media';
+ block.append(node('h4','Grafías jeroglíficas · testimonios documentados'));
+ for(const entry of files){
+  const figure=node('figure');figure.className='v-egypt-media-figure';
+  const wiki='https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(entry.file).replace(/%20/g,'_');
+  const thumb='https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(entry.file)+'?width=420';
+  const a=link(wiki,'Abrir original, autor y licencia en Wikimedia Commons');
+  const img=node('img');img.src=thumb;img.alt=entry.caption;img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+  img.addEventListener('error',()=>{img.hidden=true;figure.querySelector('.v-egypt-media-unavailable').hidden=false},{once:true});
+  const fallback=node('p','Vista previa no disponible; consultar la imagen original.');fallback.className='v-egypt-media-unavailable';fallback.hidden=true;
+  const caption=node('figcaption',entry.caption+' · '+entry.kind+'. '+entry.source+'.');
+  figure.append(img,fallback,caption,a);block.append(figure);
+ }
+ block.append(node('p','Las grafías se muestran como imágenes de testimonios o dibujos identificados; la lectura transliterada se conserva debajo. Los cinco nombres no necesariamente están presentes en cada imagen.'));
+ section.append(block);
+}
 const TITULARIES=[
  {key:'ramesses-ii',aliases:['ramses ii','ramesses ii','rameses ii','ramses 2','ramesses 2','rameses 2','ramses the great','ramesses the great','ramses el grande','ramses ii el grande'],
   names:['Kanakht Merymaat','Mekkemetwafkhasut','Userrenput-aanehktu','Usermaatre-setepenre','Ramesses (meryamun)'],
@@ -113,6 +145,7 @@ function sideTitulary(query,identity){
    names.append(li);
   }
   section.append(names);
+  addRoyalCartoucheMedia(section,record);
   const foot=node('p','Cartuchos esquemáticos · transliteraciones, no facsímiles. Ver signos originales en el museo.');
   foot.className='article-note';section.append(foot);
   section.append(link(record.artifact,record.artifactLabel),document.createTextNode(' · '),link(record.source,'Cinco nombres · UCL'));
@@ -124,6 +157,7 @@ function sideTitulary(query,identity){
  if(!document.getElementById('v-egypt-side-css')){
   const css=node('style');css.id='v-egypt-side-css';
   css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font-size:14px;line-height:1.55}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}#featured .v-egypt-primary{margin-top:16px;border-top:1px solid #454545;padding-top:12px}#featured .v-egypt-primary h4{margin:0 0 8px;font:normal 17px Georgia,serif}#featured .v-egypt-primary-item{border-bottom:1px solid #333;padding:7px 0}#featured .v-egypt-primary-item summary{cursor:pointer;font-weight:600}#featured .v-egypt-primary-item small{opacity:.65}#featured .v-egypt-primary-item p{font-size:13px;line-height:1.6;margin:7px 0}';
+  css.textContent+='#featured .v-egypt-media{margin:16px 0;padding-top:12px;border-top:1px solid #3a3a3a}#featured .v-egypt-media h4{font:normal 17px Georgia,serif;margin:0 0 12px}#featured .v-egypt-media-figure{margin:0 0 18px;padding:10px;border:1px solid #383838;border-radius:8px;background:transparent}#featured .v-egypt-media img{display:block;max-width:100%;max-height:290px;width:auto;height:auto;margin:0 auto 9px;object-fit:contain}#featured .v-egypt-media figcaption{font-size:12px;line-height:1.5;opacity:.82;margin-bottom:7px}#featured .v-egypt-media a{font-size:12px;text-decoration:underline;text-underline-offset:3px}';
   document.head.append(css);
  }
  return section;
