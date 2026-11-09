@@ -129,7 +129,7 @@ function periodOf(w){
  if(d <= 700)return "late";return "later";
 }
 function genreOf(w){
- const s=String(w?.genre||"").normalize("NFD").replace(/\\p{M}/gu,"").toLowerCase();
+ const s=String(w?.genre||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
  if(/arquitectura|ingenieria|agrimensura|mecanica|hidraulica/.test(s))return "architecture";
  if(/cristian|religion|exegesis|mitologia|mitografia/.test(s))return "religion";
  if(/filosofia|estoic|sapiencial|moral/.test(s))return "wisdom";
