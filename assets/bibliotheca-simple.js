@@ -264,7 +264,7 @@ function updateLexicon(){
 }
 const metadata=Promise.all([
  fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalogue");return r.json()}),
- fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()}),
+ (window.VitruviaIndexCache?.json(REGISTRY)||fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()})),
  window.ClassicsOffsiteGreek?.entries()||Promise.resolve([]),
  window.ClassicsOffsiteLatin?.entries()||Promise.resolve([])
 ]).then(([catalog,registry,offsite,latinOffsite])=>{
