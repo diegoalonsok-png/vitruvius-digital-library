@@ -5,6 +5,8 @@ on:
       - 'vitruvia.html'
       - 'assets/vitruvia-*.css'
       - 'assets/vitruvia-image-engine-v2.js'
+      - 'assets/vitruvia-egypt-research.js'
+      - 'assets/vitruvia-egypt-script-viewer.js'
       - 'scripts/test-vitruvia-search-geometry.mjs'
       - '.github/workflows/vitruvia-search-geometry.yml'
   pull_request:
@@ -12,6 +14,8 @@ on:
       - 'vitruvia.html'
       - 'assets/vitruvia-*.css'
       - 'assets/vitruvia-image-engine-v2.js'
+      - 'assets/vitruvia-egypt-research.js'
+      - 'assets/vitruvia-egypt-script-viewer.js'
       - 'scripts/test-vitruvia-search-geometry.mjs'
       - '.github/workflows/vitruvia-search-geometry.yml'
   workflow_dispatch:
