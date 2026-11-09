@@ -1,1 +1,105 @@
-{"schema":"vitruvius-offsite-latin-originals-manifest-v1","branch":"corpus-originales-latinos-20261108","count":2,"totalBytes":300970,"method":"Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text","entries":[{"workId":"seneca-de-ira","author":"Séneca","title":"De ira","language":"la","path":"data/offsite-latin/seneca-de-ira-la.json","passages":485,"bytes":227275,"source":"https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa010/stoa0255.stoa010.perseus-lat2.xml","sourceUrn":"stoa0255.stoa010","sourceSha256":"56c5ae9446780f91f8f5cce78499c9e8c96f9253089ac6ebf5d131d369b15fe0","attribution":"Séneca, De ira. Ed. J. W. Basore, Moral Essays I, Londres y Nueva York, 1928. TEI: Perseus Digital Library."},{"workId":"seneca-de-tranquillitate","author":"Séneca","title":"De tranquillitate animi","language":"la","path":"data/offsite-latin/seneca-de-tranquillitate-la.json","passages":139,"bytes":73695,"source":"https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa013/stoa0255.stoa013.perseus-lat2.xml","sourceUrn":"stoa0255.stoa013","sourceSha256":"d3485fc0651115f48fc541b459743bc7875406f3766e96861b07b416509667e0","attribution":"Séneca, De tranquillitate animi. Ed. J. W. Basore, Moral Essays II, Londres y Nueva York, 1932. TEI: Perseus Digital Library."}]}
+{
+  "schema": "vitruvius-offsite-latin-originals-manifest-v1",
+  "branch": "corpus-originales-latinos-20261108",
+  "count": 5,
+  "totalBytes": 620633,
+  "method": "Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text",
+  "entries": [
+    {
+      "workId": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "language": "la",
+      "path": "data/offsite-latin/seneca-de-ira-la.json",
+      "passages": 485,
+      "bytes": 227275,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa010/stoa0255.stoa010.perseus-lat2.xml",
+      "sourceUrn": "stoa0255.stoa010",
+      "sourceSha256": "56c5ae9446780f91f8f5cce78499c9e8c96f9253089ac6ebf5d131d369b15fe0",
+      "attribution": "Séneca, De ira. Ed. J. W. Basore, Moral Essays I, Londres y Nueva York, 1928. TEI: Perseus Digital Library."
+    },
+    {
+      "workId": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "language": "la",
+      "path": "data/offsite-latin/seneca-de-tranquillitate-la.json",
+      "passages": 139,
+      "bytes": 73695,
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa013/stoa0255.stoa013.perseus-lat2.xml",
+      "sourceUrn": "stoa0255.stoa013",
+      "sourceSha256": "d3485fc0651115f48fc541b459743bc7875406f3766e96861b07b416509667e0",
+      "attribution": "Séneca, De tranquillitate animi. Ed. J. W. Basore, Moral Essays II, Londres y Nueva York, 1932. TEI: Perseus Digital Library."
+    },
+    {
+      "workId": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "path": "data/offsite-latin/apuleius-de-deo-socratis-la.json",
+      "passages": 23,
+      "bytes": 37884,
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
+      "sourceFiles": [
+        {
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
+          "sha256": "0978ac37a5a1f93036ebe7fa8e223df8b4dd513ba515d97a8036c5cedce9ce99"
+        }
+      ],
+      "sourceSha256": "0978ac37a5a1f93036ebe7fa8e223df8b4dd513ba515d97a8036c5cedce9ce99",
+      "attribution": "Apuleyo, De deo Socratis, transcripción de The Latin Library (edición de base y manuscritos no especificados), archivo digital CLTK, https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt.",
+      "editorialStatus": "Transcripción, no edición crítica; sin manuscrito cotejado"
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "path": "data/offsite-latin/censorinus-die-natali-la.json",
+      "passages": 26,
+      "bytes": 76773,
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt",
+      "sourceFiles": [
+        {
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt",
+          "sha256": "12609a8a223bc5201f48e9e510993bb1066b85b0bce2a70a7b8ef8b8f4247e96"
+        }
+      ],
+      "sourceSha256": "12609a8a223bc5201f48e9e510993bb1066b85b0bce2a70a7b8ef8b8f4247e96",
+      "attribution": "Censorino, De die natali, transcripción de The Latin Library (edición de base y manuscritos no especificados), archivo digital CLTK, https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt.",
+      "editorialStatus": "Transcripción, no edición crítica; sin manuscrito cotejado"
+    },
+    {
+      "workId": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "language": "la",
+      "path": "data/offsite-latin/vegetius-epitoma-la.json",
+      "passages": 137,
+      "bytes": 205006,
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt",
+      "sourceFiles": [
+        {
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt",
+          "sha256": "ae39be19c46c773feb659699fd923388201798dd427583a6da85ef8cd7088397"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius2.txt",
+          "sha256": "2452d213ea6d2f181952ceeb1d512124e704ae092eb16b79e605607823aeb9ff"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius3.txt",
+          "sha256": "fe685aee021b8731671625d4a944205a8276ce5ea597b2350bdcaab774fadb3f"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius4.txt",
+          "sha256": "2aaa94f9307822d3bdce58026860abc7ff06631f32448a18b00b635a9104d112"
+        }
+      ],
+      "sourceSha256": "ceea4130523fc8b8fd570876e15901d702451a705802d7f5bb241728ecb761b5",
+      "attribution": "Vegecio, Epitoma rei militaris, transcripción de The Latin Library (edición de base y manuscritos no especificados), archivo digital CLTK, https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt.",
+      "editorialStatus": "Transcripción, no edición crítica; sin manuscrito cotejado"
+    }
+  ],
+  "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita"
+}
