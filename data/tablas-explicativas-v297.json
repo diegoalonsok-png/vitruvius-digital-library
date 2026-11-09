@@ -1,0 +1,479 @@
+{
+  "schema": "vitruvius-explanatory-tables-v297-v1",
+  "source": {
+    "author": "Diego Kurilo",
+    "book": "The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",
+    "edition": "V297 · First English edition",
+    "publisher": "Sophia Lux Publishing House",
+    "place": "Buenos Aires",
+    "year": 2026,
+    "doi": "10.5281/zenodo.23885110",
+    "originalFilename": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+    "sourceSha256": "5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99",
+    "detectedWordTables": 26
+  },
+  "selectedTables": [
+    {
+      "n": 2,
+      "title": "Seis principios de la arquitectura",
+      "area": "Conceptos fundamentales",
+      "locus": "1.2.1–9",
+      "summary": "Ordinatio y dispositio no designan operaciones idénticas: la primera articula la medida modular, mientras que la segunda organiza el proyecto y sus representaciones. Eurythmia y symmetria tampoco deben reducirse a la simetría bilateral moderna. Las voces griegas proceden de la tabla inglesa y se conservan con sus signos diacríticos.",
+      "columns": [
+        "Principle",
+        "Greek term",
+        "Core meaning",
+        "Domain"
+      ],
+      "rows": [
+        [
+          "Ordinatio",
+          "τάξις (taxis)",
+          "Modular ordering according to a common unit",
+          "Quantitative and Modular"
+        ],
+        [
+          "Dispositio",
+          "διάθεσις (diathesis)",
+          "Arrangement; the conception and graphic representation of the design",
+          "Intellectual / Project-based"
+        ],
+        [
+          "Eurythmia",
+          "εὐρυθμία (eurythmia)",
+          "Visual harmony and graceful proportion as perceived by the eye",
+          "Aesthetic"
+        ],
+        [
+          "Symmetria",
+          "συμμετρία (symmetria)",
+          "Commensurability: the proportional relationship of the parts to the whole and to a common module",
+          "Mathematical"
+        ],
+        [
+          "Decor",
+          "τὸ πρέπον (to prepon)",
+          "Propriety, appropriateness and contextual fitness",
+          ""
+        ],
+        [
+          "Distributio",
+          "οἰκονομία (oikonomia)",
+          "Economic and functional distribution of resources",
+          "Practical / Ethical"
+        ]
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Metrología romana: medidas comparadas",
+      "area": "Metrología",
+      "locus": "3.1; 8.5–6; 10 (referencias temáticas, no alineación por fila)",
+      "summary": "Las conversiones métricas son aproximaciones modernas de la tabla V297. No deben confundirse con una única medida romana universal: la equivalencia depende del patrón adoptado y del contexto arqueológico. Los loci son lugares de consulta temática; la tabla de medidas es una síntesis editorial moderna.",
+      "columns": [
+        "Latin unit",
+        "English",
+        "Relationship",
+        "Metric equivalence"
+      ],
+      "rows": [
+        [
+          "digitus",
+          "finger",
+          "1/16 of a foot",
+          "≈ 1.85 cm"
+        ],
+        [
+          "palmus",
+          "palm",
+          "4 fingers = ¼ foot",
+          "≈ 7.4 cm"
+        ],
+        [
+          "pes",
+          "foot",
+          "16 fingers / 4 palms",
+          "≈ 29.6 cm"
+        ],
+        [
+          "cubitus",
+          "cubit",
+          "1½ feet / 6 palms",
+          "≈ 44.4 cm"
+        ],
+        [
+          "passus",
+          "pace",
+          "5 feet",
+          "≈ 1.48 m"
+        ],
+        [
+          "decempeda",
+          "pole",
+          "10 feet",
+          "≈ 2.96 m"
+        ],
+        [
+          "actus",
+          "actus",
+          "120 feet",
+          "≈ 35.5 m"
+        ],
+        [
+          "stadium",
+          "stade",
+          "625 feet",
+          "≈ 185 m"
+        ]
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Léxico griego, etimología y equivalencias latinas",
+      "area": "Filología",
+      "locus": "1.2.2–9; 3.1.1–9; 3.3.13; 9.7",
+      "summary": "Se transcriben entradas seleccionadas de la tabla lexicográfica inglesa con sus loci declarados. La etimología y la equivalencia son análisis editoriales, no variantes ecdóticas. Para emplearlas como lecturas críticas se requiere verificar el latín del pasaje y la tradición textual de cada término.",
+      "columns": [
+        "Greek term",
+        "Transliteration",
+        "Literal meaning",
+        "Vitruvian equivalent",
+        "Loci in De architectura"
+      ],
+      "rows": [
+        [
+          "τάξις",
+          "taxis",
+          "order, arrangement",
+          "Ordinatio",
+          "1.2.2; 1.2.4"
+        ],
+        [
+          "διάθεσις",
+          "diathesis",
+          "disposition, arrangement",
+          "Dispositio",
+          "1.2.2; 1.2.3"
+        ],
+        [
+          "εὐρυθμία",
+          "eurythmia",
+          "good proportion, harmonious rhythm",
+          "Eurythmia",
+          "1.2.3; 3.1.1; 6.2.1"
+        ],
+        [
+          "συμμετρία",
+          "symmetria",
+          "commensurability",
+          "Symmetria",
+          "1.2.4; 3.1.1–3.1.9; 5.6.7"
+        ],
+        [
+          "οἰκονομία",
+          "oikonomia",
+          "household management",
+          "Distributio",
+          "1.2.9; 5.1.1; 6.8.1"
+        ],
+        [
+          "τὸ πρέπον",
+          "to prepon",
+          "what is fitting",
+          "Decor",
+          "1.2.5–1.2.7; 4.1.6–4.1.12"
+        ],
+        [
+          "ἀναλογία",
+          "analogia",
+          "proportional relation",
+          "Proportio",
+          "3.1.1–3.1.9; 4.3.3"
+        ],
+        [
+          "ἔντασις",
+          "entasis",
+          "tension, swelling",
+          "Entasis",
+          "3.3.13"
+        ],
+        [
+          "ἀνάλημμα",
+          "analemma",
+          "projection diagram",
+          "Analemma",
+          "9.1.1; 9.7.1–9.7.7"
+        ]
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Conspectus codicum: testimonios de De architectura",
+      "area": "Ecdótica",
+      "locus": "Tradición manuscrita; la tabla no corresponde a un locus único",
+      "summary": "La sigla identifica un testimonio, no una lectura automáticamente acreditada. Se distinguen las signaturas y fechas documentadas por V297. El Codex H dispone de su propia consulta en folios; esta tabla no altera el original ni afirma haber realizado colación autóptica.",
+      "columns": [
+        "Siglum",
+        "Witness and repository",
+        "Date"
+      ],
+      "rows": [
+        [
+          "H",
+          "London, British Library, Harley MS 2767",
+          "800–824"
+        ],
+        [
+          "S",
+          "Sélestat, Bibliothèque Humaniste, MS 17 (formerly 1153 bis)",
+          "Late 10th c."
+        ],
+        [
+          "E",
+          "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat.",
+          "10th c."
+        ],
+        [
+          "G",
+          "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat.",
+          "11th c."
+        ],
+        [
+          "P",
+          "Paris, Bibliothèque nationale de France, Latin 10277",
+          "Early 10th c."
+        ],
+        [
+          "p",
+          "Paris, Bibliothèque nationale de France, Latin 7227",
+          "11th–12th c."
+        ],
+        [
+          "c",
+          "London, British Library, Cotton MS Cleopatra D I, ff. 1–82",
+          "1000–1049"
+        ]
+      ],
+      "manuscriptLink": "codex-h-folios-local.html"
+    },
+    {
+      "n": 15,
+      "title": "Intercolumnios según su separación proporcional",
+      "area": "Proporción arquitectónica",
+      "locus": "3.3.1–6",
+      "summary": "La magnitud expresa intervalos relativos al diámetro de columna, no metros. El eústilo ocupa un lugar destacado en el argumento vitruviano. Las valoraciones de la última columna pertenecen a la interpretación editorial de la obra inglesa.",
+      "columns": [
+        "Type",
+        "Span (diam.)",
+        "Character and use",
+        "Vitruvius's assessment"
+      ],
+      "rows": [
+        [
+          "Pycnostyle",
+          "1½",
+          "Columns very close; closed aspect",
+          "Little recommended"
+        ],
+        [
+          "Systyle",
+          "2",
+          "Columns close together",
+          "Criticized for obstructed access (3.3.3)"
+        ],
+        [
+          "Eustyle",
+          "2¼",
+          "The best balanced",
+          "The preferred type (3.3.6)"
+        ],
+        [
+          "Diastyle",
+          "3",
+          "Wider spacing; monumental",
+          "Risk of long architraves"
+        ],
+        [
+          "Araeostyle",
+          "more than 3",
+          "Widely spaced; wooden architraves",
+          "Proper to the Tuscan order"
+        ]
+      ]
+    },
+    {
+      "n": 16,
+      "title": "Tipologías de templos y disposición de columnas",
+      "area": "Arquitectura religiosa",
+      "locus": "3.2.2–8",
+      "summary": "Vitruvio clasifica los templos por la relación entre cella, pórticos y columnatas. Los nombres griegos y latinizados no son siempre grafías griegas originales; conviene separar transliteración de texto en alfabeto griego.",
+      "columns": [
+        "Type",
+        "Greek term / transliteration",
+        "Arrangement of the columns",
+        "Remarks"
+      ],
+      "rows": [
+        [
+          "In antis",
+          "ναὸς ἐν παραστάσιν",
+          "Two columns between the antae of the pronaos",
+          "The simplest (3.2.2)"
+        ],
+        [
+          "Prostyle",
+          "prostylos",
+          "Portico of columns at the front only",
+          "3.2.3"
+        ],
+        [
+          "Amphiprostyle",
+          "amphiprostylos",
+          "Porticoes at front and rear",
+          "3.2.4"
+        ],
+        [
+          "Peripteral",
+          "peripteros",
+          "Colonnade around the whole perimeter",
+          "The balanced model (3.2.5)"
+        ],
+        [
+          "Pseudodipteral",
+          "pseudodipteros",
+          "One perimeter row; clearance = two intercolumniations plus one lower diameter",
+          "Ascribed to Hermogenes (3.2.6)"
+        ],
+        [
+          "Dipteral",
+          "dipteros",
+          "Double perimeter row of columns",
+          "Great monumentality (3.2.7)"
+        ],
+        [
+          "Hypaethral",
+          "hypaethros",
+          "Decastyle; center unroofed; interior columns in two tiers",
+          "Rare; special cults (3.2.8)"
+        ]
+      ]
+    },
+    {
+      "n": 23,
+      "title": "Proporción y arqueología: grados de correspondencia",
+      "area": "Arqueología",
+      "locus": "3.1; 3.3.6, 13; 3.4.5; 4.1",
+      "summary": "Se conservan los juicios de correspondencia de V297 como hipótesis interpretativas del libro, no como un índice independiente de verificación arqueológica. El propio cuadro señala el carácter debatido de los scamilli impares; no corresponde resolverlo mediante una simple identificación con estilóbatos curvos.",
+      "columns": [
+        "Passage",
+        "Doctrine",
+        "Material evidence",
+        "Correspondence"
+      ],
+      "rows": [
+        [
+          "3.1",
+          "Proportions of the body (homo bene figuratus)",
+          "Augustan temples (Mars Ultor, Maison Carrée)",
+          "High (ideal canon)"
+        ],
+        [
+          "3.3.6",
+          "Eustyle, the ideal intercolumniation (2¼ diam.)",
+          "Temple of Mars Ultor; Maison Carrée",
+          "Very high"
+        ],
+        [
+          "3.3.13",
+          "Entasis (optical correction of the shaft)",
+          "Columns of the Pantheon and Pompeian temples",
+          "Excellent"
+        ],
+        [
+          "3.4.5",
+          "Scamilli impares (disputed stylobate adjustment)",
+          "Curved stylobates in ancient temple construction; no single surviving feature securely identifies the scamilli",
+          "Interpretation disputed"
+        ],
+        [
+          "4.1",
+          "Origin and proportions of the Corinthian capital",
+          "Numerous examples in Rome and the provinces",
+          "Excellent"
+        ]
+      ]
+    },
+    {
+      "n": 24,
+      "title": "Edificios públicos, basílica de Fano y acústica",
+      "area": "Arqueología",
+      "locus": "5.1.6–10; 5.3–8; 5.5",
+      "summary": "El vínculo entre un hallazgo arqueológico y la descripción de Vitruvio debe mantenerse provisional mientras subsista investigación de campo. La tabla inglesa V297 ya distingue la identificación anunciada en Fano de una comparación arquitectónica definitiva.",
+      "columns": [
+        "Passage",
+        "Doctrine",
+        "Material evidence",
+        "Correspondence"
+      ],
+      "rows": [
+        [
+          "5.1.6–10",
+          "Vitruvius’s account of the basilica, including a central covered space of 120 × 60 Roman feet",
+          "Piazza Andrea Costa, Fano: official identification announced on 19 January 2026",
+          "Excavation and detailed architectural comparison remain under investigation"
+        ],
+        [
+          "5.3–5.8",
+          "Roman theater (cavea, orchestra, scaena)",
+          "Theaters of Pompeii, Orange, Leptis Magna, Sabratha",
+          "Excellent"
+        ],
+        [
+          "5.5",
+          "Acoustic vessels (echeia; ἠχεῖα)",
+          "Niches and jars in some theaters (disputed evidence)",
+          "Partial"
+        ]
+      ]
+    },
+    {
+      "n": 26,
+      "title": "Hidráulica, nivelación y máquinas",
+      "area": "Tecnología",
+      "locus": "8.5–6; 10.6; 10.10–16",
+      "summary": "Agrupa la comparación entre doctrina escrita y huella material para instrumentos hidráulicos y máquinas. Los términos «High», «Excellent» y «Confirmed» son valoraciones de la tabla inglesa y no certificaciones independientes de esta página.",
+      "columns": [
+        "Passage",
+        "Doctrine",
+        "Material evidence",
+        "Correspondence"
+      ],
+      "rows": [
+        [
+          "8.5",
+          "Leveling instruments (chorobates, dioptra)",
+          "Gradients measured in aqueducts; instrument finds",
+          "High"
+        ],
+        [
+          "8.6",
+          "Aqueducts, castella, pipework",
+          "Pont du Gard, Segovia aqueduct, Aqua Claudia",
+          "Excellent"
+        ],
+        [
+          "10.6",
+          "Archimedes screw (cochlea)",
+          "Reliefs and finds in Roman mines",
+          "Confirmed"
+        ],
+        [
+          "10.10–16",
+          "Ballista, catapult, siege testudo",
+          "Trajan's Column; reliefs and material remains",
+          "High"
+        ]
+      ]
+    }
+  ]
+}
