@@ -8,7 +8,10 @@
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ').replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 const ignored=new Set('de del la el los las un una unos unas y en por para sobre the of and for in on a an with from le les des du et sur dans'.split(' '));
 const words=s=>fold(s).split(/\s+/).filter(w=>w.length>2&&!ignored.has(w));
-const pluralVariant=w=>w.length>5&&!/(?:us|os|is|as|ss)$/u.test(w)?w.slice(0,-1):null;
+// Spanish historical subjects may appear in singular in a title (acueductos / acueducto).
+// Do not stem shorter Greek/Latin technical terms such as logos or domus.
+const pluralVariant=w=>w.length>=8&&/[oa]s$/u.test(w)?w.slice(0,-1):
+  w.length>5&&!/(?:us|os|is|as|ss)$/u.test(w)?w.slice(0,-1):null;
 const includesTerm=(subject,w)=>subject.includes(w)||(w.endsWith('s')&&pluralVariant(w)&&subject.includes(pluralVariant(w)));
 const aliases={lucrecio:['lucretius','titus lucretius carus','tito lucrecio caro'],vitruvio:['vitruvius','marco vitruvio polion','marcus vitruvius pollio']};
 function accepts(row,query){

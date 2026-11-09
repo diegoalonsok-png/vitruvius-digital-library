@@ -1,0 +1,39 @@
+name: Transparencia académica de los cuatro sitios
+on:
+  pull_request:
+    paths:
+      - 'auditoria-academica.html'
+      - 'vitruvia.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'index.html'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-cross-site-academic-transparency.mjs'
+      - '.github/workflows/cross-site-academic-transparency.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'auditoria-academica.html'
+      - 'vitruvia.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'index.html'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-cross-site-academic-transparency.mjs'
+      - '.github/workflows/cross-site-academic-transparency.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar métricas y citas académicas, sin red ni archivos pesados
+        run: node scripts/test-cross-site-academic-transparency.mjs
+      - name: Regresiones de relevancia y cronología
+        run: |
+          node --test scripts/test-query-discovery.mjs
+          node scripts/test-bibliotheca-chronology.mjs
+          node scripts/test-vitruvia-pdf-local.mjs
