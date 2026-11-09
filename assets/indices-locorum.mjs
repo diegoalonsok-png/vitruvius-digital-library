@@ -149,7 +149,7 @@ function renderPager(where,total){
   const b=document.createElement('button');b.type='button';b.textContent=String(label);
   b.disabled=disabled;b.setAttribute('aria-label',typeof label==='number'?'Página '+label:label);
   if(current)b.setAttribute('aria-current','page');
-  b.addEventListener('click',()=>{page=p;render();$('#index-alphabet')?.scrollIntoView({block:'start',behavior:'instant'})});
+  b.addEventListener('click',()=>{page=p;render();$('#index-alphabet')?.scrollIntoView({block:'start',behavior:'auto'})});
   root.append(b);
  };
  make('← Anterior',page-1,page===1);
@@ -162,6 +162,22 @@ function renderPager(where,total){
  make('Siguiente →',page+1,page===pages);
  const totalLabel=document.createElement('span');totalLabel.className='index-pages-total';
  totalLabel.textContent='Página '+page+' de '+pages;root.append(totalLabel);
+}
+function persistNavigation(){
+ try{
+  const url=new URL(location.href);
+  const params=url.searchParams;
+  const query=$('#index-query')?.value.trim()||'';
+  if(query)params.set('q',query);else params.delete('q');
+  if(mode!=='latin')params.set('index',mode);else params.delete('index');
+  if(selectedLetter)params.set('letra',selectedLetter);else params.delete('letra');
+  if(page>1)params.set('pagina',String(page));else params.delete('pagina');
+  const book=$('#index-book')?.value||'';
+  if(book)params.set('libro',book);else params.delete('libro');
+  if(mode==='latin'&&grouping==='form')params.set('agrupar','forma');
+  else params.delete('agrupar');
+  history.replaceState(null,'',url.pathname+url.search+url.hash);
+ }catch{/* La navegación permanece operativa incluso en visores sin History API. */}
 }
 function render(){
  const raw=$('#index-query').value.trim(),q=normalize(raw),qn=norm(raw),book=Number($('#index-book').value)||null;
@@ -203,6 +219,7 @@ function render(){
  const from=valid.length?(page-1)*perPage+1:0,to=Math.min(page*perPage,valid.length);
  $('#index-status').textContent=all.length+' entradas disponibles'+(selectedLetter?' · letra '+selectedLetter+': '+valid.length:'')+' · mostrando '+from+'–'+to+' de '+valid.length+' · '+valid.reduce((n,x)=>n+x.loci.length,0)+' referencias de locus'+(mode==='latin'?(grouping==='lemma'?' · agrupado por lema':' · agrupado por forma gráfica'):'');
  renderPager('#index-pages-top',valid.length);renderPager('#index-pages-bottom',valid.length);
+ persistNavigation();
 }
 function syncGrouping(){const g=$('#index-grouping');if(g)g.closest('label').hidden=mode!=='latin'}
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.tab;page=1;selectedLetter='';document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));syncGrouping();build();render()}));
@@ -212,7 +229,21 @@ $('#index-grouping')?.addEventListener('change',e=>{grouping=e.target.value;page
 
 const j=u=>fetch(u).then(r=>r.ok?r.json():null).catch(()=>null);
 Promise.all([fetch('data/structured/recensio-es.json').then(r=>{if(!r.ok)throw Error('Índice no disponible');return r.json()}),j('data/latin-lexicon.json'),j('data/classics-lexicon/vitruvius-la.json'),j('data/classics-lexicon/vitruvius-grc.json')])
- .then(([d,lex,lat,grc])=>{lexicon=lex?.entries||[];latGloss=lat;grcGloss=grc;if(!latGloss){grouping='form';const s=$('#index-grouping');if(s)s.value='form'}corpus=d.passages||[];
-  const u=new URLSearchParams(location.search);if(u.get('index')&&['latin','greek','math'].includes(u.get('index')))document.querySelector('[data-tab="'+u.get('index')+'"]')?.click();
-  if(u.get('q'))$('#index-query').value=u.get('q');syncGrouping();build();render()})
+ .then(([d,lex,lat,grc])=>{
+  lexicon=lex?.entries||[];latGloss=lat;grcGloss=grc;
+  const u=new URLSearchParams(location.search);
+  const requestedMode=u.get('index');
+  if(['latin','greek','math'].includes(requestedMode))mode=requestedMode;
+  document.querySelectorAll('[data-tab]').forEach(b=>
+   b.setAttribute('aria-pressed',String(b.dataset.tab===mode)));
+  const group=u.get('agrupar');
+  if(!latGloss||group==='forma'){grouping='form';const select=$('#index-grouping');if(select)select.value='form'}
+  if(u.get('q'))$('#index-query').value=u.get('q');
+  if(/^(?:10|[1-9])$/.test(u.get('libro')||''))$('#index-book').value=u.get('libro');
+  const candidate=u.get('letra')?.toLocaleUpperCase()||'';
+  if((mode==='greek'?GREEK_ALPHABET:LATIN_ALPHABET).includes(candidate))selectedLetter=candidate;
+  const number=Number(u.get('pagina'));page=Number.isSafeInteger(number)&&number>0?number:1;
+  corpus=d.passages||[];
+  syncGrouping();build();render();
+ })
  .catch(err=>{$('#index-status').textContent=err.message});
