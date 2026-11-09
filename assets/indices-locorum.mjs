@@ -26,12 +26,13 @@ const subjects={
  'Hidráulica y pendientes':['aqua','inclination','libram','chorobat','duct','canal']
 };
 const tokens=(source,re)=>[...String(source||'').matchAll(re)].map(m=>m[0]);
-function push(key,p,form,origin=''){
+function push(key,p,form,origin='',linkedLatin=''){
  if(!groups.has(key))groups.set(key,new Map());groups.get(key).set(p.locus,p);
  if(form){if(!formsOf.has(key))formsOf.set(key,new Map());const f=formsOf.get(key);f.set(form,(f.get(form)||0)+1)}
  if(mode==='greek'&&origin){
-  if(!greekWitnesses.has(key))greekWitnesses.set(key,{direct:new Set(),latinLinked:new Set()});
+  if(!greekWitnesses.has(key))greekWitnesses.set(key,{direct:new Set(),latinLinked:new Set(),latinForms:new Map()});
   greekWitnesses.get(key)[origin].add(p.locus);
+  if(origin==='latinLinked'&&linkedLatin)greekWitnesses.get(key).latinForms.set(p.locus,linkedLatin);
  }
 }
 function latinKey(form){
@@ -48,9 +49,9 @@ function build(){
   }else if(mode==='greek'){
    for(const t of tokens(p.latin,GREEK_TOKEN)){if(norm(t).replace(/[^\p{L}]/gu,'').length<2)continue;push(t.normalize('NFC'),p,t.normalize('NFC'),'direct')}
    const latinTokens=new Set(tokens(p.latin,/[\p{L}\p{M}]{2,}/gu).map(norm));
-   for(const entry of lexicon){if(!entry.greek||!entry.lemma)continue;if([entry.lemma,...(entry.forms||[])].map(norm).some(l=>latinTokens.has(l)))push(entry.greek,p,null,'latinLinked')}
+   for(const entry of lexicon){if(!entry.greek||!entry.lemma)continue;const match=[entry.lemma,...(entry.forms||[])].find(l=>latinTokens.has(norm(l)));if(match)push(entry.greek,p,null,'latinLinked',match)}
    const related={'ἀρχιτεκτονική':['architectura','architectus','architecti'],'ἀρχιτέκτων':['architectus','architecti'],'συμμετρία':['symmetria','symmetriae'],'εὐρυθμία':['eurythmia','eurythmiae']};
-   for(const [greek,latin] of Object.entries(related))if(latin.some(w=>latinTokens.has(norm(w))))push(greek,p,null,'latinLinked');
+   for(const [greek,latin] of Object.entries(related)){const match=latin.find(w=>latinTokens.has(norm(w)));if(match)push(greek,p,null,'latinLinked',match);}
   }else{
    const lat=normalize(p.latin||'');for(const [category,stems] of Object.entries(subjects))if(stems.some(t=>lat.includes(normalize(t))))push(category,p,null);
   }
@@ -77,13 +78,17 @@ const es=key=>lexicon.find(e=>[e.lemma,...(e.forms||[]),...(e.aliases||[]),e.gre
 function line(box,label,value){if(!value)return;const p=document.createElement('p'),s=document.createElement('strong');s.textContent=label+' ';p.append(s,document.createTextNode(value));box.append(p)}
 /* Concordancia en contexto (KWIC) de la entrada, con resaltado amarillo. */
 function occurrences(entry){
- const forms=formsOf.get(entry.key);const out=[];
+ const forms=formsOf.get(entry.key),out=[];
  const keys=forms?[...forms.keys()]:[entry.key];
+ const witnesses=mode==='greek'?greekWitnesses.get(entry.key):null;
  for(const p of entry.loci){
   const text=String(p.latin||'');
-  for(const m of text.matchAll(mode==='greek'?GREEK_TOKEN:/[\p{L}\p{M}]+/gu)){
+  const linked=witnesses?.latinForms.get(p.locus)||'';
+  for(const m of text.matchAll(/[\p{L}\p{M}]+/gu)){
    const w=m[0].normalize('NFC');
-   if(keys.some(k=>norm(k)===norm(w)))out.push({p,at:m.index,len:m[0].length,text});
+   const directlyAttested=keys.some(k=>norm(k)===norm(w));
+   const linkedLatin=!!linked&&norm(linked)===norm(w);
+   if(directlyAttested||linkedLatin)out.push({p,at:m.index,len:m[0].length,text,linkedLatin:linkedLatin&&!directlyAttested});
   }
  }
  return out;
@@ -209,7 +214,8 @@ function render(){
   }
   const locs=document.createElement('div');locs.className='index-loci';
   for(const p of entry.loci.slice(0,45)){const a=document.createElement('a');const firstForm=forms?[...forms.keys()][0]:entry.key;
-   a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(mode==='math'?raw:firstForm);
+   const evidence=mode==='greek'&&!greekWitnesses.get(entry.key)?.direct.has(p.locus)?(greekWitnesses.get(entry.key)?.latinForms.get(p.locus)||firstForm):firstForm;
+   a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(mode==='math'?raw:evidence);
    a.textContent=roman(p.book)+'.'+p.chapter+'.'+p.section;a.title='Abrir pasaje '+p.locus;locs.append(a)}
   card.append(locs);
   if(mode!=='math')dictionary(card,entry);
