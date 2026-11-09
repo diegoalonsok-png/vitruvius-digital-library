@@ -62,6 +62,7 @@ html body :is(.syncbar button,.appearance button)[aria-pressed=true]{
 html body .appearance :is(label,.zoom-level){color:#c9c9cb!important}
 html body .appearance input[type=color]{background:#1a1a1b;border-color:#55555a!important;border-radius:4px!important}
 html body :is(button,a,input,select):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
+.parallel-search{display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:10px 0 14px}.parallel-search label{display:flex;flex:1 1 190px;gap:5px;flex-direction:column;font-size:12px;color:#ddd}.parallel-search input{width:100%;min-width:0;border:1px solid #555;background:#171718;color:#f4f4f4;padding:10px;font:14px system-ui;border-radius:4px}.parallel-search button{border:1px solid #505053;background:#242426;color:#eee;padding:10px;border-radius:4px;cursor:pointer;min-height:40px}.parallel-search button:hover{background:#333336}.parallel-search input:focus-visible{outline:2px solid #d49a43!important}
 @media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
 
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
@@ -70,8 +71,9 @@ html body :is(button,a,input,select):focus-visible{outline:2px solid #999!import
 <body>
 <header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a><a href="classics-document-parallel.html">PDF enfrentados</a></nav></header>
 <main>
-<p class="note">Lectura de estudio: texto original griego o latino a la izquierda; traducción disponible a la derecha. No se exige PDF antiguo para estudiar la obra. Los facsímiles tienen su propio acceso. Las coincidencias por locus son editoriales y la alineación semántica aún no está certificada.</p>
-<div class="controls"><label>Visor 1 · texto original (griego o latín) <select id="left" aria-label="Lengua original del primer visor"></select></label><label>Visor 2 · traducción <select id="right" aria-label="Idioma de la traducción del segundo visor"></select></label></div>
+<p class="note">Lectura secuencial enfrentada de dos versiones disponibles de una misma obra, en cualquier combinación de griego, latín, castellano, francés o inglés. Cada columna permite una búsqueda literal independiente. La posición ordinal y un locus común no acreditan equivalencia de traducción ni colación filológica.</p>
+<div class="controls"><label>Visor 1 · elegir versión <select id="left" aria-label="Versión para el primer visor"></select></label><label>Visor 2 · elegir versión <select id="right" aria-label="Versión para el segundo visor"></select></label></div>
+<div class="parallel-search" role="search" aria-label="Búsqueda literal independiente por versión"><label>Buscar en visor 1 <input id="left-query" type="search" placeholder="domus / λόγος / casa" maxlength="120"></label><label>Buscar en visor 2 <input id="right-query" type="search" placeholder="casa / maison / house" maxlength="120"></label><button type="button" id="parallel-find">Buscar y subrayar en ámbar</button><button type="button" id="parallel-clear">Limpiar búsqueda</button></div>
 <div class="syncbar" aria-label="Navegación conjunta">
 <button type="button" id="sync-start">⟲ Inicio de ambas</button><button type="button" id="sync-prev">← Ambas anteriores</button><button type="button" id="sync-next">Ambas siguientes →</button>
 <label><input type="checkbox" id="same-locus" checked> Coincidir por capítulo cuando sea posible</label>
@@ -112,7 +114,7 @@ const params=new URLSearchParams(location.search),work=params.get("work")||"dida
 const $=id=>document.getElementById(id),status=$("status"),left=$("left"),right=$("right");
 const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português"};
 if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
-let files={},versions={},position=0,ready={left:false,right:false},generation={left:0,right:0};
+let files={},editions={},versions={},position=0,ready={left:false,right:false},generation={left:0,right:0},previous={left:"",right:""};
 
 const defaults={background:"#fffdf7",foreground:"#202b35",font:"serif",size:20};
 const palettes={left:{...defaults},right:{...defaults}};
@@ -224,66 +226,132 @@ function goto(){const [a,b]=pair();if(!a||!b)return;const target=destination();
  $("sync-position").textContent=(position+1)+" / "+count()+" · "+labels[target.quality];
  store();
 }
-function frame(side,lang){if(side==="left"&&!["grc","la"].includes(lang)||side==="right"&&["grc","la"].includes(lang))return;const u=new URL("classics-text-reader.html",location.href);
+function frame(side,lang){
+ if(!files[lang])return;
+ const u=new URL("classics-text-reader.html",location.href);
  u.searchParams.set("work",work);u.searchParams.set("lang",lang);
+ u.searchParams.set("parallel","1");u.searchParams.set("literal","1");
+ const q=$(side+"-query").value.trim();if(q)u.searchParams.set("q",q);
  ready[side]=false;$("pane-"+side).src=u.href;
  params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());buttons();
 }
 function versionsFor(languages){return Promise.all(languages.map(async lang=>{
- const path=files[lang];if(!/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path))return;
- try{const response=await fetch(path);if(!response.ok)return;const data=await response.json();
- if(data.workId===work&&data.language===lang&&Array.isArray(data.passages)&&data.passages.length)versions[lang]=data;}catch{}
+ if(versions[lang]||!files[lang])return;
+ const path=files[lang],meta=editions[lang];
+ if(!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9-/]+\.json$/.test(path))return;
+ try{
+  const response=await fetch(path);if(!response.ok)return;const raw=await response.json();
+  if(!Array.isArray(raw.passages)||!raw.passages.length)return;
+  if(meta.format==="structured-bilingual"){
+   const passages=raw.passages.map(p=>({locus:String(p.locus||""),text:lang==="la"?p.latin:p.translation}))
+    .filter(p=>p.locus&&typeof p.text==="string"&&p.text.trim());
+   if(passages.length)versions[lang]={workId:work,language:lang,passages};
+  }else if(raw.workId===(meta.sourceWorkId||work)&&raw.language===lang){
+   versions[lang]=raw;
+  }
+ }catch{}
 }));}
 async function changed(side,lang){
- if(side==="left"&&!["grc","la"].includes(lang)||side==="right"&&["grc","la"].includes(lang))return;
+ if(!files[lang])return;
+ const other=side==="left"?"right":"left";
+ const oldOther=$(other).value;
+ if(lang===oldOther){
+  const replacement=previous[side]&&previous[side]!==lang?previous[side]:
+   Object.keys(files).find(l=>l!==lang);
+  if(!replacement){status.textContent="Se necesitan dos versiones distintas para comparar.";return}
+  $(other).value=replacement;$(other+"-pane-language").value=replacement;
+ }
  const current=++generation[side];
- const panel=$(side+"-pane-language");
- if(panel)panel.value=lang;
+ $(side+"-pane-language").value=lang;
  status.textContent="Cargando "+(LANG[lang]||lang)+" en el visor "+(side==="left"?"izquierdo":"derecho")+"…";
- await versionsFor([lang]);
+ await versionsFor([lang,$(other).value]);
  if(current!==generation[side]||$(side).value!==lang)return;
  if(!versions[lang]){
-  status.textContent="Esta versión no tiene texto completo legible. Se conserva la versión anterior.";
+  status.textContent="Esta versión no tiene texto legible verificado; la anterior sigue disponible.";
   return;
  }
+ if(oldOther!==$(other).value)frame(other,$(other).value);
+ previous[side]=lang;previous[other]=$(other).value;
  position=Math.min(position,Math.max(0,count()-1));
  frame(side,lang);buttons();store();
- status.textContent="Versión "+(LANG[lang]||lang)+" seleccionada. El texto se carga de forma independiente.";
+ status.textContent="Versiones: "+(LANG[left.value]||left.value)+" / "+(LANG[right.value]||right.value)+". Navegación sincronizada orientativa; búsquedas independientes.";
+}
+function sendQuery(side){
+ if(!ready[side])return;
+ $("pane-"+side).contentWindow?.postMessage({
+  type:"vitruvia-parallel-find",work,lang:$(side).value,query:$(side+"-query").value.trim()
+ },location.origin);
 }
 window.addEventListener("message",event=>{
- if(event.origin!==location.origin||![ $("pane-left").contentWindow,$("pane-right").contentWindow ].includes(event.source))return;
- const msg=event.data;if(!msg||msg.type!=="vitruvia-parallel-ready"||msg.work!==work)return;
+ if(event.origin!==location.origin||![$("pane-left").contentWindow,$("pane-right").contentWindow].includes(event.source))return;
+ const msg=event.data;if(!msg||msg.work!==work)return;
  const side=event.source===$("pane-left").contentWindow?"left":"right";
- if(msg.lang!==$(side).value)return;ready[side]=true;buttons();
- sendAppearance(side);
+ if(msg.lang!==$(side).value)return;
+ if(msg.type==="vitruvia-parallel-search-result"){
+  const found=Number.isInteger(msg.sections)?msg.sections:0;
+  $(side+"-query").title=found+" secciones coincidentes";
+  status.textContent="Búsqueda literal en "+(LANG[msg.lang]||msg.lang)+": "+found+" pasajes. El ámbar solo destaca coincidencias presentes; no supone equivalencias léxicas entre idiomas.";
+  return;
+ }
+ if(msg.type!=="vitruvia-parallel-ready")return;
+ ready[side]=true;buttons();sendAppearance(side);
  if(ready.left&&ready.right)goto();
 });
+$("parallel-find").addEventListener("click",()=>{
+ for(const side of ["left","right"]){params.set("q"+(side==="left"?"Left":"Right"),$(side+"-query").value.trim());sendQuery(side);}
+ history.replaceState(null,"",location.pathname+"?"+params.toString());
+});
+$("parallel-clear").addEventListener("click",()=>{
+ for(const side of ["left","right"]){$(side+"-query").value="";params.delete("q"+(side==="left"?"Left":"Right"));sendQuery(side);}
+ history.replaceState(null,"",location.pathname+"?"+params.toString());
+});
+for(const side of ["left","right"])$(side+"-query").addEventListener("keydown",e=>{if(e.key==="Enter")$("parallel-find").click()});
 $("sync-start").addEventListener("click",()=>{position=0;goto();});
 $("sync-prev").addEventListener("click",()=>{position=Math.max(0,position-1);goto();});
 $("sync-next").addEventListener("click",()=>{position=Math.min(Math.max(0,count()-1),position+1);goto();});
 $("same-locus").addEventListener("change",goto);
-fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("No se pudo consultar el catálogo");return r.json();}).then(async c=>{
+Promise.all([
+ fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>{if(!r.ok)throw Error("Catálogo inaccesible");return r.json()}),
+ fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro de textos inaccesible");return r.json()})
+]).then(async ([c,registry])=>{
  const rec=(c.works||[]).find(w=>w.id===work);
- if(!rec?.corpusFiles)throw Error("Esta obra todavía no tiene textos locales registrados.");
- files=rec.corpusFiles;const langs=Object.keys(files).filter(l=>Object.hasOwn(LANG,l));
- const originalLanguages=["grc","la"].filter(l=>langs.includes(l));
- const translationLanguages=["es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
- if(!originalLanguages.length)throw Error("No hay texto griego o latino registrado para esta obra.");
- if(!translationLanguages.length)throw Error("Aún falta incorporar una traducción completa. No se duplicará el texto original en el segundo visor.");
- fill(left,originalLanguages);fill(right,translationLanguages);
- fill($("left-pane-language"),originalLanguages);fill($("right-pane-language"),translationLanguages);
- left.value=originalLanguages.includes(params.get("left"))?params.get("left"):originalLanguages[0];
- right.value=translationLanguages.includes(params.get("right"))?params.get("right"):translationLanguages[0];
+ const rows=(registry.entries||[]).filter(e=>e.workId===work&&
+  ["json-passages","structured-bilingual"].includes(e.format)&&Object.hasOwn(LANG,e.language));
+ for(const e of rows){
+  if(editions[e.language]&&editions[e.language].format==="json-passages")continue;
+  editions[e.language]=e;files[e.language]=e.path;
+ }
+ const langs=Object.keys(files);
+ if(langs.length<2)throw Error("Esta obra aún no tiene dos versiones textuales verificables para enfrentar.");
+ const ordered=["la","grc","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
+ fill(left,ordered);fill(right,ordered);
+ fill($("left-pane-language"),ordered);fill($("right-pane-language"),ordered);
+ const first=ordered.find(x=>["la","grc"].includes(x))||ordered[0];
+ left.value=langs.includes(params.get("left"))?params.get("left"):first;
+ right.value=langs.includes(params.get("right"))&&params.get("right")!==left.value?
+  params.get("right"):(ordered.find(x=>x!==left.value&& !["grc","la"].includes(x))||ordered.find(x=>x!==left.value));
+ if(left.value===right.value)right.value=ordered.find(x=>x!==left.value);
+ previous={left:left.value,right:right.value};
  $("left-pane-language").value=left.value;$("right-pane-language").value=right.value;
- await versionsFor([left.value,right.value]);position=Math.min(position,Math.max(0,count()-1));
+ const query=params.get("q")||"";
+ $("left-query").value=(params.get("qLeft")||(["grc","la"].includes(left.value)?query:"")).slice(0,120);
+ $("right-query").value=(params.get("qRight")||(!["grc","la"].includes(right.value)?query:"")).slice(0,120);
+ await versionsFor([left.value,right.value]);
+ const locus=params.get("locus");
+ if(locus){
+  const found=versions[left.value]?.passages?.findIndex(p=>String(p.locus)===locus);
+  const secondary=versions[right.value]?.passages?.findIndex(p=>String(p.locus)===locus);
+  if(found>=0)position=found;else if(secondary>=0)position=secondary;
+ }
+ position=Math.min(position,Math.max(0,count()-1));
  $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
- status.textContent=rec.author+" · "+rec.title+". "+(count()?"Navegación conjunta orientativa. Si las versiones tienen distinta cantidad de unidades, cada una conserva el último capítulo alcanzado y nunca se recorta su contenido.":"Alguna versión no admite todavía sincronización; ambos lectores siguen independientes.");
+ status.textContent=(rec?.author||rows[0]?.author||"")+" · "+(rec?.title||rows[0]?.title||work)+
+  ". Comparación entre versiones documentadas; vínculos por locus cuando existen, sin prometer equivalencia semántica.";
  frame("left",left.value);frame("right",right.value);
  for(const side of ["left","right"]){
   $(side).addEventListener("change",()=>changed(side,$(side).value));
   $(side+"-pane-language").addEventListener("change",()=>{
-   $(side).value=$(side+"-pane-language").value;
-   changed(side,$(side).value);
+   $(side).value=$(side+"-pane-language").value;changed(side,$(side).value);
   });
  }
 }).catch(err=>{status.textContent=err.message;buttons();});

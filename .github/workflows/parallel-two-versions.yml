@@ -1,0 +1,29 @@
+name: Verificar lectura paralela multilingüe
+on:
+  push:
+    paths:
+      - 'classics-parallel-reader.html'
+      - 'classics-text-reader.html'
+      - 'assets/classics-text-reader.js'
+      - 'scripts/test-parallel-two-versions.mjs'
+      - '.github/workflows/parallel-two-versions.yml'
+  pull_request:
+    paths:
+      - 'classics-parallel-reader.html'
+      - 'classics-text-reader.html'
+      - 'assets/classics-text-reader.js'
+      - 'scripts/test-parallel-two-versions.mjs'
+      - '.github/workflows/parallel-two-versions.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/classics-text-reader.js
+      - run: node scripts/test-parallel-two-versions.mjs

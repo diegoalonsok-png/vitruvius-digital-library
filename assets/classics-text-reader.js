@@ -70,7 +70,7 @@ function match(text,q,semantic=false){
 }
 function markText(target,text,q){
  // Marca visual de todas las coincidencias; el texto editado no se altera.
- if(LEX)return LEX.highlightInto(target,text,q);
+ if(LEX){const found=LEX.highlightInto(target,text,q)||[];if(p.get("parallel")==="1")for(const mark of found)mark.classList.add("cl-parallel-hit");return found;}
  target.replaceChildren();target.textContent=text;return[];
 }
 let hitMarks=[],hitAt=-1;
@@ -144,6 +144,21 @@ async function load(language){
   const path=indexed?.path||base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
  let corpus=await response.json();
+ if(indexed?.format==="structured-bilingual"){
+  if(!Array.isArray(corpus.passages)||!corpus.passages.length||!["la","es","en","fr"].includes(language))throw Error("Edición estructurada no disponible");
+  const editorial=corpus;
+  corpus={
+   workId:work,language,sourceType:"structured-bilingual",
+   source:editorial.source?.filename||indexed.path,
+   attribution:"Vitruvio · "+(editorial.edition||indexed.edition||"edición")+" · "+(editorial.version||"")+" · Diego A. Kurilo",
+   license:"Edición académica con derechos y procedencia según el fichero de origen",
+   alignment:"Paralelo por loci editoriales; las recensiones difieren y su igualdad textual no se presume.",
+   editorialStatus:"Texto de edición estructurada, no OCR ni colación autóptica",
+   passages:editorial.passages.map(item=>({
+    locus:String(item.locus||""),text:language==="la"?item.latin:item.translation
+   })).filter(item=>item.locus&&typeof item.text==="string"&&item.text.trim())
+  };
+ }
  if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<350)throw Error("El documento no pasó validación de integridad");
  if(work==="apuleius-metamorphoses"&&language==="es"){
   // Never block access to any of the 312 original anthology units on optional metadata.
@@ -186,6 +201,15 @@ async function swap(lang){try{await load(lang)}catch(err){console.error("Classic
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
 $("language").addEventListener("change",e=>swap(e.target.value));
 $("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);renderSearch();if(results.length)select(results[0].i)});
+/* Same-origin parallel study: independent literal queries and amber highlights. */
+window.addEventListener("message",event=>{
+ if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
+ const cmd=event.data;
+ if(!cmd||cmd.type!=="vitruvia-parallel-find"||cmd.work!==work||cmd.lang!==data?.language||typeof cmd.query!=="string")return;
+ setQuery(cmd.query.slice(0,120));renderSearch();
+ if(results.length)select(results[0].i);else select(active);
+ window.parent.postMessage({type:"vitruvia-parallel-search-result",work,lang:data.language,sections:results.length},location.origin);
+});
 input.addEventListener("keydown",e=>{if(e.key==="Enter"){$("find").click()}});
 $("hit-prev")?.addEventListener("click",()=>focusHit(-1));$("hit-next")?.addEventListener("click",()=>focusHit(1));
 $("clear").addEventListener("click",()=>{setQuery("");renderSearch();if(data)select(active)});
@@ -218,11 +242,11 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   // The search registry is the canonical list of hosted, searchable JSON editions.
   // The bibliographic catalogue may lag behind, notably with partial translations.
   const registry=await fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro editorial no disponible");return r.json()});
-  const shared={"varro-rustica":["varro-rustica","data/lexicon/fontes/varro-rustica-la.json"],"frontinus":["frontinus-aquaeductu","data/lexicon/fontes/frontinus-aquaeductu-la.json"],"pliny":["pliny-naturalis","data/lexicon/fontes/pliny-naturalis-la.json"]};
-   const hosted=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="json-passages"&&
-     (e.workId==="vitruvius"||["la","grc","en"].includes(e.language))&&(
-     e.path==="data/classics-corpus/"+work+"-"+e.language+".json"||
-     (e.language==="la"&&shared[work]?.[0]===e.sourceWorkId&&shared[work]?.[1]===e.path)));
+  // El registro editorial, no una lista fija de obras, decide qué ediciones se pueden enfrentar.
+  const hosted=(registry.entries||[]).filter(e=>e.workId===work&&
+   ["json-passages","structured-bilingual"].includes(e.format)&&
+   ["grc","la","es","en","fr","it","de","pt"].includes(e.language)&&
+   /^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||""));
   if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
    hostedEditions=hosted;
   if(!allowed[work])setTitle((record?.author||hosted[0].author)+" · "+(record?.title||hosted[0].title));
