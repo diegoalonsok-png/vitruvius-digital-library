@@ -88,7 +88,7 @@ function addResult(row,editions){
  copy.textContent="Copiar referencia y pasaje";
  copy.addEventListener("click",async()=>{
   const citation=[row.author,row.title,row.locus,row.language,row.edition].filter(Boolean).join(" · ");
-  const text=[citation,row.excerpt,"Fuente digital: "+(row.source||"sin ruta"),safeUrl(row.link)].filter(Boolean).join("\n");
+  const text=[citation,row.excerpt,"Fuente digital: "+(row.source||"sin ruta"),safeUrl(row.link),"Portal consultado: Vitruvius Digital Library · DOI del proyecto: https://doi.org/10.5281/zenodo.23868911 (no identifica ni certifica la edición clásica citada)"].filter(Boolean).join("\n");
   try{if(!navigator.clipboard?.writeText)throw Error("Clipboard unavailable");await navigator.clipboard.writeText(text);copy.textContent="Referencia copiada";}
   catch{window.prompt("Copiar referencia y pasaje:",text)}
  });
