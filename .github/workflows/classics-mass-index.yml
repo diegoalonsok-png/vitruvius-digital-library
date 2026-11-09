@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'data/bibliotheca-perseus.json'
       - 'scripts/mass-index-classics.py'
       - 'scripts/audit-classics-222-roadmap.py'
       - 'scripts/test-mass-index-completeness.py'
@@ -16,6 +17,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/classics-mass-index.yml'
+      - 'data/bibliotheca-perseus.json'
       - 'scripts/mass-index-classics.py'
       - 'scripts/audit-classics-222-roadmap.py'
       - 'scripts/repair-classics-mixed-tei.py'
