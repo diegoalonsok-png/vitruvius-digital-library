@@ -51,7 +51,24 @@ async function show(term,rect){
  line("Etimología:",extra?.etymology||(e?.greek?"Forma griega relacionada: "+e.greek+". No implica por sí sola derivación etimológica.":""));
  line("Uso en Vitruvio:",e?.vitruvian||extra?.use);
  if(e?.source)line("Fuente:",e.source);
- if(!e&&!extra)line("Cobertura:","Sin entrada individual en el léxico local; consultar fuentes externas antes de asignar una acepción.");
+ if(!e&&!extra){
+  const cl=window.ClassicalLexicon;
+  if(cl?.lookup){
+   line("Estado:","Consultando diccionario filológico…");
+   const hint=content.lastElementChild;
+   const info=await cl.lookup(term,{lang:/[Ͱ-Ͽἀ-῿]/u.test(term)?"grc":"la",online:true}).catch(()=>null);
+   if(id!==serial)return;
+   hint?.remove();
+   if(info?.entries?.length){
+    const best=info.entries[0];
+    if(best.lemma&&best.lemma!==lemma)line("Lema documentado:",best.lemma);
+    if(best.morph)line("Morfología (repertorio):",best.morph);
+    if(best.es)line("Castellano:",best.es);
+    if(best.gloss)line("Definición del repertorio:",best.gloss);
+    if(info.sources?.length)line("Procedencia:",info.sources.map(s=>s.label).join(" · "));
+   }else line("Cobertura:","Sin entrada comprobada para esta forma. Consulte los diccionarios enlazados.");
+  }else line("Cobertura:","Sin entrada individual en el léxico local; consultar fuentes externas antes de asignar una acepción.");
+ }
  if(image[normalize(lemma)]){
   const im=image[normalize(lemma)],fig=document.createElement("figure"),pic=document.createElement("img");
   pic.src=im.src;pic.alt="Atrio e impluvio de una casa romana de Pompeya";pic.loading="lazy";pic.addEventListener("error",()=>pic.remove(),{once:true});
@@ -59,6 +76,21 @@ async function show(term,rect){
  }
  links(term);
 }
+// Single click on an attested search highlight (Latin, polytonic Greek,
+// or an explicitly labelled translation equivalent). All unhighlighted words
+// keep their previous selection and double-click behaviour.
+document.addEventListener("click",event=>{
+ const mark=event.target.closest?.("#search-results mark.search-hit");
+ if(!mark||!mark.closest(".parallel-passage,.parallel-translation-text,.result-snippet"))return;
+ if(!event.isTrusted||event.button!==0)return;
+ const isTranslation=!!mark.closest(".parallel-translation-text");
+ const query=document.querySelector("#query")?.value?.trim()||"";
+ const term=isTranslation&&mark.classList.contains("search-hit-equivalent")&&
+   /^[\\p{L}\\p{M}]+$/u.test(query)?query:mark.textContent.trim();
+ if(!/^[\\p{L}\\p{M}'ʼ’-]{2,70}$/u.test(term))return;
+ event.preventDefault();
+ show(term,mark.getBoundingClientRect());
+});
 document.addEventListener("dblclick",e=>{
  if(e.button!==0||!e.target.closest(selector)||e.target.closest("a,button,input,textarea,select,[contenteditable],#vitruvius-lexical-card"))return;
  const sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
