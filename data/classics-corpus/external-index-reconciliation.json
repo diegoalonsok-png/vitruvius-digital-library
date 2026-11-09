@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-external-index-reconciliation-v1",
   "updated": "2026-11-09",
-  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes.",
+  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes. El índice añadido de Sículo Flaco deriva de 31 párrafos de Wikisource (edición de base no identificada): se documenta como transcripción accesible, no como edición crítica cotejada.",
   "sourceManifests": [
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-griegos-20261108/data/offsite-originals/manifest.json",
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
@@ -9,15 +9,15 @@
   "counts": {
     "worksCatalogued": 222,
     "hostedOriginalsIndexed": 181,
-    "remoteOriginalsIndexed": 23,
-    "combinedOriginalsIndexed": 204,
-    "originalsStillWithoutIndex": 18,
+    "remoteOriginalsIndexed": 24,
+    "combinedOriginalsIndexed": 205,
+    "originalsStillWithoutIndex": 17,
     "remoteGreek": 14,
-    "remoteLatin": 9,
+    "remoteLatin": 10,
     "hostedTranslations": 59,
     "hostedTextVersions": 246,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 15
+    "distinctAncientWorksStillMissingOriginalIndex": 14
   },
   "remoteEntries": [
     {
@@ -228,6 +228,18 @@
       "sourceSha256": "d47117f38e5e317dd06dd3d993699d8ea349ac5f61881970c153485443b9380b",
       "passages": 898,
       "editorialAttribution": "Lucius Annaeus Seneca, Naturales quaestiones, seven Latin transcriptions digitized by The Latin Library and mirrored in CLTK/lat_text_latin_library; underlying printed edition and manuscript witnesses not identified; not a collated critical edition. https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt"
+    },
+    {
+      "workId": "siculus-flaccus",
+      "language": "la",
+      "branch": "corpus-originales-latinos-20261108",
+      "manifestPath": "data/offsite-latin/manifest.json",
+      "textPath": "data/offsite-latin/siculus-flaccus-la.json",
+      "sourceUrl": "https://la.wikisource.org/wiki/De_condicionibus_agrorum",
+      "sourceSha256": "47467398bd7b44b32ea84360ef23b231e2cf6f321daf6b2d0988f1beeca14e91",
+      "passages": 31,
+      "editorialAttribution": "Siculus Flaccus, De condicionibus agrorum, transcripción de Wikisource en latín (de origen IntraText; edición de base no identificada), consultada el 9-XI-2026. Wikisource CC BY-SA 4.0. No cotejada ni edición crítica.",
+      "editorialStatus": "Transcripción digital atribuida, con 31 párrafos numerados; su edición de base no está identificada; no implica cotejo filológico"
     },
     {
       "workId": "theophrastus-historia-plantarum",
@@ -536,13 +548,6 @@
     },
     {
       "workId": "hyginus-gromaticus",
-      "originalLanguage": "la",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": [],
-      "recordKind": "independent-work"
-    },
-    {
-      "workId": "siculus-flaccus",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
