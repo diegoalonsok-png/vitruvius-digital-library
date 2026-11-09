@@ -198,12 +198,13 @@ function updateLexicon(){
 const metadata=Promise.all([
  fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalogue");return r.json()}),
  fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()}),
- window.ClassicsOffsiteGreek?.entries()||Promise.resolve([])
-]).then(([catalog,registry,offsite])=>{
+ window.ClassicsOffsiteGreek?.entries()||Promise.resolve([]),
+ window.ClassicsOffsiteLatin?.entries()||Promise.resolve([])
+]).then(([catalog,registry,offsite,latinOffsite])=>{
  if(!Array.isArray(catalog.works)||registry.schema!=="vitruvia-classics-search-registry-v1"||
  !Array.isArray(registry.entries)||registry.entries.length!==registry.count)throw Error("inconsistent registry");
  works=catalog.works;
-  entries=registry.entries.filter(bibliothecaLanguagePolicy).concat(offsite);
+  entries=registry.entries.filter(bibliothecaLanguagePolicy).concat(offsite,latinOffsite);
   byId=new Map(works.map(w=>[w.id,w]));
  indexed=new Set(entries.filter(e=>e.format!=="historical-ocr-pages"&&byId.has(e.workId)).map(e=>e.workId));
   for(const [alias,target] of Object.entries(editionAliases))
