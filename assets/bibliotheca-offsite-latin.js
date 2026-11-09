@@ -12,7 +12,8 @@ const SOURCE_PATHS={
  "vegetius-epitoma":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt",
  "seneca-naturales":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt",
  "velleius-historia":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell1.txt",
- "frontinus-gromatica":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt"
+ "frontinus-gromatica":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+ "isidore-etymologiae":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/1.txt"
 };
 const ALLOWED=new Set(Object.keys(SOURCE_PATHS));
 let manifestTask=null;
