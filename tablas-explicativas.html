@@ -154,7 +154,7 @@ function addTools(section,record){
  loupe.setAttribute("aria-pressed","false");
  const mark=button("Subrayar",()=>underlineSelection(section));mark.addEventListener("mousedown",e=>e.preventDefault());
  button("Borrar subrayados",()=>removeUnderlines(section));
- bar.append(text("span","Seleccioná una frase y pulsá Subrayar","table-tool-note"));
+ bar.append(text("span","Seleccione una frase y pulse Subrayar","table-tool-note"));
  section.querySelector(".heading-line").after(bar);
 }
 document.getElementById("print-all").addEventListener("click",()=>printRecord(null));
