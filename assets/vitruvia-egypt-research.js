@@ -67,7 +67,7 @@ function sideTitulary(query,identity){
  host.append(section);
  if(!document.getElementById('v-egypt-side-css')){
   const css=node('style');css.id='v-egypt-side-css';
-  css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font:14px/1.55 inherit}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}';
+  css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font-size:14px;line-height:1.55}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}';
   document.head.append(css);
  }
  return section;
@@ -76,13 +76,13 @@ async function sideDynasty(query,row,serialAtStart){
  const section=sideTitulary(query,row);
  if(!section||!row?.wikidataId||!/^Q\\d+$/.test(row.wikidataId))return;
  let entity;try{entity=await fetchEntity(row.wikidataId)}catch{return}
- if(serialAtStart!==serial||!section.isConnected||!entity)return;
+ if(serialAtStart!==sideSerial||!section.isConnected||!entity)return;
  const groups=properties.map(([property,label])=>({label,ids:[...new Set(getClaims(entity,property))]})).filter(x=>x.ids.length);
  if(!groups.length)return;
  const ids=[...new Set(groups.flatMap(g=>g.ids))].slice(0,40);
  const url='https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:ids.join('|'),props:'labels',languages:'es|en',format:'json',origin:'*'});
  let entities={};try{const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),6500);try{const res=await fetch(url,{signal:ctl.signal});if(res.ok)entities=(await res.json()).entities||{}}finally{clearTimeout(t)}}catch{}
- if(serialAtStart!==serial||!section.isConnected)return;
+ if(serialAtStart!==sideSerial||!section.isConnected)return;
  section.append(node('h4','Árbol familiar · relaciones registradas'));
  dynastyTree(section,groups,entities,row.wikidataId,row.entityCanonical||row.title||query);
  section.append(link('https://www.wikidata.org/wiki/'+row.wikidataId,'Fuentes de las relaciones familiares'));
@@ -151,7 +151,7 @@ function dynastyTree(section,groups,labels,subjectId,subjectName){
  }
  section.append(tree);return tree;
 }
-let serial=0;
+let serial=0,sideSerial=0;
 async function fetchEntity(qid){
  const url='https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:qid,props:'claims|labels|descriptions',languages:'es|en|fr',format:'json',origin:'*'});
  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),7000);
@@ -191,11 +191,11 @@ async function paint(query,rows){
  section.append(link('https://www.wikidata.org/wiki/'+identified.wikidataId,'Consultar las declaraciones y referencias del registro de autoridad'));
  block.insertBefore(section,root);
 }
-window.addEventListener('vitruvia:search',event=>{serial++;document.getElementById('vitruvia-egypt-research')?.remove();const body=document.getElementById('article-body');if(body)renderTitulary(body,event.detail?.query||'');document.getElementById('v-egypt-side')?.remove();if(titularyFor(event.detail?.query||''))sideTitulary(event.detail.query)});
+window.addEventListener('vitruvia:search',event=>{serial++;sideSerial++;document.getElementById('vitruvia-egypt-research')?.remove();const body=document.getElementById('article-body');if(body)renderTitulary(body,event.detail?.query||'');document.getElementById('v-egypt-side')?.remove();if(titularyFor(event.detail?.query||''))sideTitulary(event.detail.query)});
 window.addEventListener('vitruvia:featured-result',event=>{
  const d=event.detail||{},q=d.query||'',row=d.row||{};
  if(!isEgyptian(row,q)&&!titularyFor(q))return;
- const n=++serial;void sideDynasty(q,row,n);
+ const n=++sideSerial;void sideDynasty(q,row,n);
 });
 window.addEventListener('vitruvia:results',event=>{const d=event.detail||{};void paint(d.query||'',d.rows||[])});
 window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties,titularyFor,renderTitulary,sideTitulary};
