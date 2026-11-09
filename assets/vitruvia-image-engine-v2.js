@@ -167,6 +167,20 @@ function collectedImages(pages,topic){
   const info=page.imageinfo?.[0];
   if(!info?.thumburl||!safeLink(info.thumburl)||!safeLink(info.descriptionurl))continue;
   if(!/^image\/(?:jpeg|png|webp|gif|svg\+xml)$/i.test(info.mime||""))continue;
+  // Identity gate: a given name followed by a title (e.g. "Stephen, King
+  // of Hungary") is NOT the complete name of a contemporary writer. Accept
+  // a person's file only when the full contiguous name is attested in the
+  // filename or description, or Commons provenance is tied to that entity.
+  if(topic.kind==="person"&&topic.requireFullIdentity){
+   const label=fold(topic.requireFullIdentity);
+   const name=fold(page.title||"");
+   const description=fold((window.VitruviaDiscovery?.plain||String)(info.extmetadata?.ImageDescription?.value||""));
+   const exact=(" "+name+" ").includes(" "+label+" ")||(" "+description+" ").includes(" "+label+" ");
+   const vetted=page.fromEntityImage||
+    (page.fromTrustedCategory&&topic.commonsIdentityCategory&&
+      fold(page.sourceCategory||"").includes(fold(topic.commonsIdentityCategory)));
+   if(!exact&&!vetted)continue;
+  }
   const rank=window.VitruviaDiscovery?.imageRank(page,topic)||{accepted:matchingScore(page,topic.aliases,topic.subject)>=50,score:matchingScore(page,topic.aliases,topic.subject),group:"context"};
   if(!rank.accepted)continue;
   const clean=window.VitruviaDiscovery?.plain||String;
@@ -553,6 +567,15 @@ async function searchImages(query){
   }
  }
 
+ // Modern named people demand a complete identity, not near-word matching.
+ // The Commons search for Stephen King must never accept Stephen, King of Hungary.
+ const namedPerson=String(identity?.commonsSearchName||identity?.originalCanonical||identity?.canonical||q).trim();
+ if(topic.kind==="person"&&creatorRole&&tokens(namedPerson).length>=2){
+  topic.requireFullIdentity=namedPerson;
+  topic.commonsIdentityCategory=identity?.commonsCategory||"";
+  topic.queries=distinct([namedPerson+" "+(/writer|author|novelist|escritor/.test(occupation)?"writer author":"portrait photograph"),
+   namedPerson+" photograph",...topic.queries]).slice(0,5);
+ }
  const role=fold(identity?.authorityDescription||identity?.description||"");
  const isArchitect=Boolean(identity?.wikidataId&&(identity.kind==="person"||identity.instanceOf?.includes("Q5"))&&
   /\b(arquitect\w*|architect\w*|ingenier\w*|engineer\w*|architet\w*)\b/.test(role));
