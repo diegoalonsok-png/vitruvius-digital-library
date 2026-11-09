@@ -341,3 +341,12 @@ html body.indices-lexicon [lang="grc"]{
  html body.indices-lexicon .index-alphabet,
  html body.indices-lexicon .index-pages{display:none!important}
 }
+
+/* Nota ecdótica del griego vitruviano: visible únicamente en Index Graecus. */
+html body.indices-lexicon .index-greek-policy{margin:13px 0 17px;padding:15px 20px;background:#18181b;border:1px solid #414147;border-radius:9px;color:#d5d5d8}
+html body.indices-lexicon .index-greek-policy[hidden]{display:none!important}
+html body.indices-lexicon .index-greek-policy summary{cursor:pointer;font:600 13px/1.6 system-ui,sans-serif;color:#efeff1}
+html body.indices-lexicon .index-greek-policy p{font:14px/1.75 "Gentium Book Plus",Georgia,serif;color:#c9cace;margin:13px 0 4px}
+html body.indices-lexicon .index-greek-policy [lang="grc"]{font-family:"Gentium Book Plus","Cardo",Georgia,serif;color:#f0f0f2}
+html body.indices-lexicon .index-greek-policy .index-greek-sources{font:12px/1.65 system-ui,sans-serif;color:#a9aaae}
+html body.indices-lexicon .index-greek-policy a{color:#dadce0;text-decoration:underline;text-underline-offset:3px}
