@@ -92,6 +92,45 @@ try{
     await page.screenshot({path:"test-results/vitruvia-"+width+".png"});
     await page.close();
   }
+  // Egyptian writing, in both historical and contemporary contexts, must be
+  // rendered in the right rail without expanding the hero.
+  const egypt=await browser.newPage({viewport:{width:1440,height:900}});
+  await egypt.route("**/*",route=>{
+    const url=new URL(route.request().url());
+    if(url.hostname==="127.0.0.1"||url.hostname==="localhost")return route.continue();
+    return route.abort();
+  });
+  await egypt.goto("http://127.0.0.1:8766/vitruvia.html",{waitUntil:"domcontentloaded"});
+  await egypt.evaluate(()=>{
+    document.body.classList.add("vitruvia-reading");
+    window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"Akhenaten"}}));
+  });
+  await egypt.waitForSelector("#v-egypt-script-panel .v-script-glyphs",{timeout:6000});
+  const ancient=await egypt.evaluate(()=>({
+    glyphs:document.querySelector("#v-egypt-script-panel .v-script-glyphs")?.textContent||"",
+    parent:document.querySelector("#v-egypt-script-panel")?.closest("#vitruvia-context")?.id||"",
+    featuredHeight:document.getElementById("featured")?.getBoundingClientRect().height||0,
+    heroHasRoyal:!!document.querySelector("#featured #v-egypt-side")
+  }));
+  assert.match(ancient.glyphs,/𓇋/u,"Akhenaten must have a real Unicode sign sequence");
+  assert.equal(ancient.parent,"vitruvia-context","Egyptian script must occupy the right-hand scholarly rail");
+  assert.equal(ancient.heroHasRoyal,false,"The full royal dossier must never extend the hero");
+  assert.ok(ancient.featuredHeight<900,"Egyptian dossier must not create an enormous black hero area");
+  await egypt.evaluate(()=>{
+    window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"El Cairo"}}));
+  });
+  await egypt.waitForFunction(()=>{
+    const p=document.querySelector("#v-egypt-script-panel");
+    return p?.dataset.query==="el cairo"&&!!p.querySelector('.v-script-arabic');
+  },{timeout:6000});
+  const modern=await egypt.evaluate(()=>({
+    text:document.querySelector("#v-egypt-script-panel .v-script-arabic")?.textContent,
+    direction:document.querySelector("#v-egypt-script-panel .v-script-arabic")?.dir
+  }));
+  assert.equal(modern.text,"القاهرة","Cairo must use the documented modern Arabic name");
+  assert.equal(modern.direction,"rtl","Arabic reading direction must be right-to-left");
+  await egypt.close();
+  console.log("PASS: Akhenaten Unicode and modern Cairo Arabic appear in the cultural rail without hero displacement.");
   console.log("PASS: Vitruvia article fills the reading area; cultural right rail on desktop, stacked results on mobile.");
 }finally{
   await browser.close();
