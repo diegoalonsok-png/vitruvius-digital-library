@@ -210,3 +210,14 @@ html body mark.lexical-hit:focus-visible{outline:2px solid #fff!important;outlin
 .dictionary-actions .passage-action,.bibliotheca-export-actions .passage-action{font:12px/1.4 Arial,sans-serif;border:1px solid #555;border-radius:5px;background:#1b1b1d;color:#eee!important;padding:8px 11px;text-decoration:none;cursor:pointer}
 .dictionary-actions .passage-action:hover,.bibliotheca-export-actions .passage-action:hover{background:#303033;border-color:#888}
 @media print{.bibliotheca-dictionary,.bibliotheca-export-actions{display:none!important}.hit mark.lexical-hit{background:#ffe34f!important;color:#111!important;text-decoration:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+/* Faceted philological controls: same black/grey Lexicon language. */
+.bibliotheca-filters{display:grid;grid-template-columns:minmax(0,1.45fr) repeat(2,minmax(0,1fr));gap:13px;align-items:end;padding-top:17px}
+.bibliotheca-filters .filter-field{display:flex;flex-direction:column;min-width:0;gap:7px}
+.bibliotheca-filters .filter-field label{font:500 12px/1.45 Arial,Helvetica,sans-serif;color:#bbb}
+.bibliotheca-filters .filter-field select{width:100%;min-width:0;min-height:45px;flex:none;background:#1b1b1d;border:1px solid #49494d;color:#e7e7e7;border-radius:8px;padding:10px 13px;font:400 13px/1.4 Arial,Helvetica,sans-serif}
+.bibliotheca-filters .filter-field select:hover{border-color:#85858a;background:#222225}
+.bibliotheca-filters .filter-field select:focus-visible{outline:2px solid #b0b0b4;outline-offset:3px}
+.filter-method{font:400 11px/1.55 Arial,Helvetica,sans-serif;color:#97979c;margin:10px 3px 0}
+@media(max-width:750px){.bibliotheca-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.bibliotheca-filters .filter-field:first-child{grid-column:1/-1}}
+@media(max-width:480px){.bibliotheca-filters{grid-template-columns:minmax(0,1fr)}.bibliotheca-filters .filter-field:first-child{grid-column:auto}}
