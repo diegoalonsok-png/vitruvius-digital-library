@@ -473,12 +473,40 @@ function refreshRightTranslations(){
   if(group)renderRightTranslation(article,group);
  }
 }
+/* Exact editorial identifier, never substitute the portal DOI for edition DOI. */
+const VITRUVIUS_DOI={es:"10.5281/zenodo.23884757",fr:"10.5281/zenodo.23885110",en:"10.5281/zenodo.23885404"};
+const VITRUVIUS_BOOK_TITLE={
+ es:"Vitruvio. De architectura. Nueva recensio académica bilingüe (V514)",
+ fr:"Vitruve. De architectura. Nouvelle recensio académique bilingue (V554)",
+ en:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity (V297)"
+};
+function criticalPassageCitation(article,group){
+ const lang=article.querySelector(".parallel-language")?.value||selectedTranslationLanguage||"es";
+ const doi=VITRUVIUS_DOI[lang];
+ const locus=String(group?.locus||article.querySelector(".result-locus")?.textContent||"").trim();
+ const latin=article.querySelector(".parallel-latin .parallel-passage")?.innerText?.trim()||"";
+ const translation=article.querySelector(".parallel-translation-text")?.innerText?.trim()||"";
+ const editionTitle=VITRUVIUS_BOOK_TITLE[lang]||"De architectura";
+ return [
+   "Vitruvio, De architectura "+locus+". Diego A. Kurilo, ed., "+editionTitle+" (2026).",
+   "DOI de la edición: https://doi.org/"+doi,
+   "Consulta digital: "+location.href,
+   "DOI del portal (no sustituye la edición): https://doi.org/10.5281/zenodo.23868911",
+   "Texto latino (fuente editorial indicada en el resultado): "+latin,
+   "Traducción consultada: "+translation
+ ].join("\n");
+}
 /* Acciones por pasaje: PDF, correo, WhatsApp y lupa, sin servicios externos. */
 function passageTools(article,group){
  const actions=article.querySelector('.result-actions');if(!actions)return;
  const bar=document.createElement('div');bar.className='parallel-reading-tools';
  const text=()=>[article.querySelector('h3')?.textContent||'Vitruvio',article.querySelector('.parallel-latin .parallel-passage')?.innerText||'',article.querySelector('.parallel-translation-text')?.innerText||'','Vitruvius Digital Library · '+location.href].join('\n\n');
  const make=(label,title,fn)=>{const button=document.createElement('button');button.type='button';button.className='parallel-tool';button.textContent=label;button.title=title;button.setAttribute('aria-label',title);button.addEventListener('click',fn);bar.append(button);return button};
+ make('Citar / DOI','Copiar cita académica con locus, edición y DOI correspondiente',async()=>{
+  const content=criticalPassageCitation(article,group);
+  try{await navigator.clipboard.writeText(content);}
+  catch{window.prompt('Copiar referencia académica:',content);}
+ });
  make('PDF','Imprimir este pasaje o guardarlo como PDF',()=>{
   const popup=window.open('','_blank');if(!popup){window.alert('Permite las ventanas emergentes para generar el PDF.');return}
   const escape=s=>String(s||'').replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
