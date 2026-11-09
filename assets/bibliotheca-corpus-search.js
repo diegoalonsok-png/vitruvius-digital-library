@@ -52,6 +52,7 @@ async function registry(){
   registered=registered.filter(bibliothecaLanguagePolicy);
   // A validated offsite branch does not count as local hosting.
   if(window.ClassicsOffsiteGreek)registered=registered.concat(await window.ClassicsOffsiteGreek.entries());
+   if(window.ClassicsOffsiteLatin)registered=registered.concat(await window.ClassicsOffsiteLatin.entries());
   return registered;
  }).catch(()=>{registered=LEGACY;return LEGACY});
  return registryTask;
@@ -70,6 +71,8 @@ function snippet(text,[a,b]){
 function loadJson(e){
  if(e.format==="remote-json-passages")
   return window.ClassicsOffsiteGreek?.load(e)||Promise.resolve(null);
+ if(e.format==="remote-latin-passages")
+  return window.ClassicsOffsiteLatin?.load(e)||Promise.resolve(null);
  if(!cache.has(e.path))cache.set(e.path,
   (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
    .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
@@ -149,13 +152,13 @@ async function search(q,{limit=8}={}){
    let link=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    link+=(link.includes("?")?"&":"?")+"q="+encodeURIComponent(q);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages","remote-latin-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    rows.push({type:"section",kind:"classic-text",workId:e.workId,language:e.language,
     title:e.author+" · "+e.title+" · "+(languageName[e.language]||e.language)+" · "+total+" coincidencias",
     author:(languageName[e.language]||e.language)+" · "+(d.attribution||e.sourceDescription||"Texto alojado").slice(0,180),
     excerpt:(e.format==="historical-ocr-pages"?"Página OCR "+first.passage.page+": ":"Locus "+first.passage.locus+": ")+snippet(first.passage.text,first.at),
-    meta:e.format==="historical-ocr-pages"?"OCR HISTÓRICO · PÁGINA DE PDF · NO TEXTO CRÍTICO NI LOCUS":e.format==="remote-json-passages"?"ORIGINAL GRIEGO INDEXADO · ALOJAMIENTO EXTERNO · BÚSQUEDA LITERAL":"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
+    meta:e.format==="historical-ocr-pages"?"OCR HISTÓRICO · PÁGINA DE PDF · NO TEXTO CRÍTICO NI LOCUS":e.format==="remote-json-passages"?"ORIGINAL GRIEGO INDEXADO · ALOJAMIENTO EXTERNO · BÚSQUEDA LITERAL":e.format==="remote-latin-passages"?"ORIGINAL LATINO INDEXADO · ALOJAMIENTO EXTERNO · BÚSQUEDA LITERAL":"TEXTO INDEXADO LOCALMENTE · BÚSQUEDA LITERAL · NO OCR MANUSCRITO",
     rating:e.format==="historical-ocr-pages"?22+Math.min(10,total):58+Math.min(30,total),link,source:"Bibliotheca Graeca et Latina · "+e.path,
     count:total,units});
   }));
@@ -255,7 +258,7 @@ async function semanticSearch(q,{limit=6}={}){
       "classics-text-reader.html?work="+e.workId+"&lang="+e.language);
    let link=linkBase+(linkBase.includes("?")?"&":"?")+"q="+encodeURIComponent(first.term);
    if(e.format==="historical-ocr-pages")link+="&page="+encodeURIComponent(first.passage.page);
-   else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
+   else if(["json-passages","structured-bilingual","remote-json-passages","remote-latin-passages"].includes(e.format))link+="&locus="+encodeURIComponent(first.passage.locus);
    else if(first.passage.anchor)link+="#"+encodeURIComponent(first.passage.anchor);
    else {
     // HTML text without an editorial anchor: point to a real matching
@@ -360,7 +363,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",edition="",
     const base=e.reader||(e.format==="html-text"?e.path:"classics-text-reader.html?work="+e.workId+"&lang="+e.language);
     let href=base+(base.includes("?")?"&":"?")+"q="+encodeURIComponent(term);
     if(e.format==="historical-ocr-pages")href+="&page="+encodeURIComponent(p.page);
-    else if(["json-passages","structured-bilingual","remote-json-passages"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
+    else if(["json-passages","structured-bilingual","remote-json-passages","remote-latin-passages"].includes(e.format))href+="&locus="+encodeURIComponent(p.locus);
     else if(p.anchor)href+="#"+encodeURIComponent(p.anchor);
     else {const quote=p.text.slice(Math.max(0,hit[0]-24),Math.min(p.text.length,hit[1]+36)).trim();
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
