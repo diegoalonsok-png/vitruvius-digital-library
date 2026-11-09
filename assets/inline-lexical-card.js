@@ -87,7 +87,7 @@ document.addEventListener("click",event=>{
  const query=document.querySelector("#query")?.value?.trim()||"";
  const term=isTranslation&&mark.classList.contains("search-hit-equivalent")&&
    /^[\p{L}\p{M}]+$/u.test(query)?query:mark.textContent.trim();
- if(!/^[\\p{L}\\p{M}'ʼ’-]{2,70}$/u.test(term))return;
+ if(!/^[\p{L}\p{M}'ʼ’-]{2,70}$/u.test(term))return;
  event.preventDefault();
  show(term,mark.getBoundingClientRect());
 });
