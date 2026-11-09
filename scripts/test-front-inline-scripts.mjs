@@ -112,3 +112,38 @@ assert(perseusPage.includes("https://scaife.perseus.org/")&&
 assert(siteMap.includes("perseus-procedencia-textual.html")&&siteMap.trimEnd().endsWith("</urlset>"),
  "Sitemap académico debe estar íntegro y cerrar XML");
 console.log("PASS procedencia Perseus: 222 obras, códigos candidatos y sin URN inventadas");
+
+/* University readiness: the five search frontends must offer source-aware
+ * citation, stable query links and an accessible non-JavaScript alternative. */
+const universityPages=[
+ ["index.html","query","search-form"],
+ ["vitruvia.html","query","search-form"],
+ ["vitruvia-lexicon.html","lx-q",null],
+ ["bibliotheca-graeca-latina.html","classic-query","search-form"],
+ ["index-locorum.html","query","form"]
+];
+const academicTools=readFileSync("assets/scholarly-query-tools.js","utf8");
+new vm.Script(academicTools,{filename:"assets/scholarly-query-tools.js"});
+const researchGuide=readFileSync("guia-investigacion-universitaria.html","utf8");
+for(const [page,input,form] of universityPages){
+ const markup=readFileSync(page,"utf8");
+ assert(markup.includes('id="'+input+'"'),page+" has no query input");
+ if(form)assert(markup.includes('id="'+form+'"'),page+" has no search form");
+ assert(markup.includes("assets/scholarly-query-tools.js"),
+   page+" must load shared academic citation controls");
+ if(page!=="index.html")
+  assert(markup.includes("<noscript>")&&markup.includes("guia-investigacion-universitaria.html"),
+   page+" must offer an alternative for JavaScript-disabled readers");
+}
+for(const required of ["10.5281/zenodo.23868911","10.5281/zenodo.23884757",
+ "10.5281/zenodo.23885110","10.5281/zenodo.23885404"]){
+ assert(researchGuide.includes(required),"University guide DOI missing: "+required);
+}
+assert(academicTools.includes("URLSearchParams")===false||academicTools.includes("searchParams.set"),
+ "Shared tool must retain query in a reproducible URL");
+assert(academicTools.includes("DOI del portal")&&academicTools.includes("las citas de pasajes requieren"),
+ "The search citation must not claim the project DOI identifies a classical edition");
+const scholSitemap=readFileSync("sitemap.xml","utf8");
+assert(scholSitemap.includes("guia-investigacion-universitaria.html")&&
+ scholSitemap.trimEnd().endsWith("</urlset>"),"University guide missing from valid sitemap");
+console.log("PASS universidad: enlaces y citas en cinco buscadores, alternativa estática y DOI");
