@@ -82,3 +82,4 @@ async function remote(spec,known,local){
   set("method","No fue posible verificar el inventario: "+error.message+". Consultar el informe de cobertura antes de citar cifras.");
  }
 })();
+})();
