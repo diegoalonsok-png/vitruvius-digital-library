@@ -12,18 +12,18 @@ function style(){
  if(document.getElementById("classics-corpus-counts-style"))return;
  const el=document.createElement("style");el.id="classics-corpus-counts-style";
  el.textContent=[
- ".classics-tally{padding:22px 0;border-top:1px solid #555;border-bottom:1px solid #555;color:inherit}",
+ ".classics-tally{padding:28px 0;border-top:1px solid #5555;border-bottom:1px solid #5555;color:inherit}",
  ".classics-tally-inner{width:min(1160px,calc(100% - 36px));margin:auto}",
- ".classics-tally h2{font:400 clamp(21px,2.7vw,30px)/1.25 Georgia,serif;margin:0 0 8px}",
+ ".classics-tally h2{font:400 clamp(24px,2.7vw,34px)/1.25 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.025em;margin:0 0 9px}",
  ".classics-tally p{font:12px/1.7 Arial,sans-serif;margin:6px 0;opacity:.9}",
- ".classics-tally dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:17px 0}",
- ".classics-tally dl>div{padding:12px 10px;border:1px solid #777;border-radius:5px;min-width:0}",
- ".classics-tally dd{margin:0 0 6px;font:600 clamp(23px,3vw,32px)/1.1 Georgia,serif}",
- ".classics-tally dt{font:11px/1.5 Arial,sans-serif}",
+ ".classics-tally dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:22px 0}",
+ ".classics-tally dl>div{padding:19px 17px 16px;border:1px solid #62636a;border-radius:12px;min-width:0;background:rgba(255,255,255,.018);transition:border-color .2s ease,background .2s ease}",
+ ".classics-tally dd{margin:0 0 8px;font:400 clamp(31px,3.4vw,47px)/1.05 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums}",
+ ".classics-tally dt{font:400 clamp(12px,1.05vw,14px)/1.45 system-ui,Arial,sans-serif;letter-spacing:.005em;opacity:.85}",
  ".classics-tally a{color:inherit;text-underline-offset:3px}",
  "body:has(.bibliotheca-suite) .classics-tally{background:#121214;color:#e9e9ea}",
- "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a}",
- "@media(max-width:800px){.classics-tally dl{grid-template-columns:repeat(2,minmax(0,1fr))}}",
+ "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a;background:#19191b}",
+ "@media(hover:hover){.classics-tally dl>div:hover{border-color:#8b8b90;background:rgba(255,255,255,.04)}}",\n "@media(max-width:800px){.classics-tally dl{grid-template-columns:repeat(2,minmax(0,1fr))}}",\n "@media(max-width:480px){.classics-tally dl{gap:9px}.classics-tally dl>div{padding:15px 13px}.classics-tally dd{font-size:35px}}",
  "@media print{.classics-tally{break-inside:avoid}}"
  ].join("\n");document.head.append(el);
 }
