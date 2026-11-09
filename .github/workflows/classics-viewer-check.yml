@@ -1,6 +1,15 @@
 name: Verificar visores PDF y códices clásicos
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/classics-viewer-check.yml'
+      - 'scripts/classics-visor-smoke.mjs'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/lexicon-classics-bridge.js'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
   push:
     paths:
       - '.github/workflows/classics-viewer-check.yml'
