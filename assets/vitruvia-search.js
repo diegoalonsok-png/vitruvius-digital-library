@@ -792,6 +792,21 @@ function renderCard(d){
    }).catch(()=>{copy.textContent=S.lang==="en"?"Unable to copy":S.lang==="fr"?"Copie impossible":"No se pudo copiar"});
   });acts.append(copy);
  }
+ // Nueva acción en el MISMO grupo visual de enlaces: no modifica CSS ni disposición.
+ const scholar=window.VitruviaScholarlyExport;
+ if(!d.citationText&&scholar?.canCite(d)){
+  const b=node("button","citation-copy",S.lang==="en"?"Cite · Chicago 18":S.lang==="fr"?"Citer · Chicago 18":"Citar · Chicago 18");
+  b.type="button";b.title="Cita construida con los metadatos disponibles; no acredita colación manuscrita";
+  b.addEventListener("click",()=>{
+   const value=scholar.citation(d);if(!value)return;
+   const original=b.textContent;
+   if(navigator.clipboard?.writeText)navigator.clipboard.writeText(value).then(()=>{
+    b.textContent=S.lang==="en"?"Citation copied":S.lang==="fr"?"Référence copiée":"Cita copiada";
+    setTimeout(()=>b.textContent=original,1500);
+   }).catch(()=>window.prompt("Copiar referencia bibliográfica:",value));
+   else window.prompt("Copiar referencia bibliográfica:",value);
+  });acts.append(b);
+ }
  card.append(acts);return card
 }
 function synthesize(rows){const box=$("answer");box.replaceChildren();

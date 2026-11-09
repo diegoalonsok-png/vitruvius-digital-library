@@ -1,0 +1,34 @@
+name: Vitruvia · citar e índice académico sin rediseño
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-scholarly-export.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-result-filters.js'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-scholarly-export.mjs'
+      - '.github/workflows/test-vitruvia-scholarly-export.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/vitruvia-scholarly-export.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-result-filters.js'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-scholarly-export.mjs'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Comprobar sintaxis y exportación académica
+        run: |
+          node --check assets/vitruvia-scholarly-export.js
+          node --check assets/vitruvia-search.js
+          node --check assets/vitruvia-result-filters.js
+          node scripts/test-vitruvia-scholarly-export.mjs
