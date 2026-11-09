@@ -33,13 +33,49 @@ const TITULARIES=[
   artifactLabel:'Cartucho original de Nebkheperure · Metropolitan Museum of Art'}
 ];
 const titularyFor=query=>{
- const clean=norm(query).replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
+ const clean=norm(query).replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
  return TITULARIES.find(t=>t.aliases.includes(clean))||null;
 };
 
 /* Panel documental derecho: usa el espacio actual de la ficha destacada;
  * los cartuchos esquemáticos llevan transliteración, no jeroglíficos inventados.
  * Los enlaces museísticos permiten consultar el objeto auténtico. */
+/* El Himno está atestiguado en la tumba de Ay (Amarna 25); el texto
+ * de estelas se compara con la inscripción de la estela S, según UCL.
+ * Traducciones de trabajo breves, NO citas literales de versiones modernas. */
+const AMARNA_PRIMARY=[
+ {title:'Gran Himno a Atón · tumba de Ay (TA 25)',
+  kind:'Síntesis de pasaje original',passage:'Al amanecer, Atón ilumina las tierras y vivifica lo creado; al ponerse, el mundo queda sumido en la oscuridad.',
+  provenance:'Inscripción de la tumba de Ay en Ajetatón, muro occidental. Atribución tradicional a Akenatón discutida.',
+  href:'https://en.wikisource.org/wiki/Great_Hymn_to_Aten',
+  label:'Leer traducción histórica (Budge, 1923)'},
+ {title:'Estelas limítrofes de Ajetatón · proclamación del año 6',
+  kind:'Extracto breve de transliteración · UCL',passage:'rnpt-sp 6 Abd 4 prt sw 13',
+  translation:'Año 6 del reinado, cuarto mes de la estación peret, día 13 (traducción de trabajo).',
+  provenance:'Texto basado principalmente en la estela S; los monumentos delimitaban la nueva capital y fueron objeto de renovación del juramento en el año 8.',
+  href:'https://www.ucl.ac.uk/museums-static/digitalegypt/amarna/boundary.html',
+  label:'Transliteración y traducción académica · UCL'},
+ {title:'Estelas de frontera · documentación arqueológica',
+  kind:'Testimonios y localización',passage:'Las estelas grabadas en los acantilados fijaban los límites ceremoniales y territoriales de Ajetatón.',
+  provenance:'Proyecto Amarna · documentación y dibujos de las estelas K, M, X y las restantes del conjunto.',
+  href:'https://www.amarnaproject.com/amarna-the-place/boundary-stelae/',
+  label:'Consultar estelas y dibujos · Amarna Project'}
+];
+function addPrimaryTexts(section,record){
+ if(record?.key!=='akhenaten')return;
+ const box=node('div');box.className='v-egypt-primary';
+ box.append(node('h4','Textos primarios · Amarna'));
+ for(const entry of AMARNA_PRIMARY){
+  const details=node('details');details.className='v-egypt-primary-item';
+  const summary=node('summary',entry.title);details.append(summary);
+  const cat=node('small',entry.kind);details.append(cat);
+  const p=node('p',entry.passage);details.append(p);
+  if(entry.translation)details.append(node('p',entry.translation));
+  const source=node('p',entry.provenance);source.className='article-note';details.append(source);
+  details.append(link(entry.href,entry.label));box.append(details);
+ }
+ section.append(box);
+}
 function sideTitulary(query,identity){
  const host=document.querySelector('#featured .featured-copy')||document.getElementById('featured');
  if(!host)return null;
@@ -61,20 +97,21 @@ function sideTitulary(query,identity){
   const foot=node('p','Cartuchos esquemáticos · transliteraciones, no facsímiles. Ver signos originales en el museo.');
   foot.className='article-note';section.append(foot);
   section.append(link(record.artifact,record.artifactLabel),document.createTextNode(' · '),link(record.source,'Cinco nombres · UCL'));
+  addPrimaryTexts(section,record);
  }else{
   section.append(node('p','Titulatura pendiente de cotejo: no se generan cartuchos sin edición comprobada.'));
  }
  host.append(section);
  if(!document.getElementById('v-egypt-side-css')){
   const css=node('style');css.id='v-egypt-side-css';
-  css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font-size:14px;line-height:1.55}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}';
+  css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font-size:14px;line-height:1.55}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}#featured .v-egypt-primary{margin-top:16px;border-top:1px solid #454545;padding-top:12px}#featured .v-egypt-primary h4{margin:0 0 8px;font:normal 17px Georgia,serif}#featured .v-egypt-primary-item{border-bottom:1px solid #333;padding:7px 0}#featured .v-egypt-primary-item summary{cursor:pointer;font-weight:600}#featured .v-egypt-primary-item small{opacity:.65}#featured .v-egypt-primary-item p{font-size:13px;line-height:1.6;margin:7px 0}';
   document.head.append(css);
  }
  return section;
 }
 async function sideDynasty(query,row,serialAtStart){
  const section=sideTitulary(query,row);
- if(!section||!row?.wikidataId||!/^Q\\d+$/.test(row.wikidataId))return;
+ if(!section||!row?.wikidataId||!/^Q\d+$/.test(row.wikidataId))return;
  let entity;try{entity=await fetchEntity(row.wikidataId)}catch{return}
  if(serialAtStart!==sideSerial||!section.isConnected||!entity)return;
  const groups=properties.map(([property,label])=>({label,ids:[...new Set(getClaims(entity,property))]})).filter(x=>x.ids.length);
