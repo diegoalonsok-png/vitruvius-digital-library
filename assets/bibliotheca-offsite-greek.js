@@ -10,7 +10,8 @@ const ROOT="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital
 const ALLOWED=new Set(["thucydides-war","cassius-dio-historia","athenaeus-deipnosophistae",
  "theophrastus-historia-plantarum","archimedes-fluitantibus","ps-aristotle-mechanica",
  "euclid-optica","euclid-phaenomena","cleonides-harmonica","hero-belopoeica","geminus-isagoge",
- "aristarchus-magnitudines","apollonius-conica","pappus-synagoge"]);
+ "aristarchus-magnitudines","apollonius-conica","pappus-synagoge",
+ "biton-kataskeuai","apollodorus-poliorcetics","procopius-aedificiis"]);
 const BITS=262144;
 let manifestTask=null;
 const cache=new Map();
@@ -39,6 +40,21 @@ function mightContain(e,queries){
  const words=queries.map(q=>fold(q).match(/[\u0370-\u03ff\u1f00-\u1fff]+/gu)||[]);
  return words.some(tokens=>tokens.length===0||tokens.every(mayHave));
 }
+const NORMALIZED_SOURCES={
+ "biton-kataskeuai":"biton-war-machines-catapults-lsg-aa.grc.md",
+ "apollodorus-poliorcetics":"apollodorus-damascus-siegecraft-owo-aa.grc.md",
+ "procopius-aedificiis":"procopius-caesarea-buildings-unc-ac.grc.md"
+};
+function approvedOrigin(x){
+ const base="https://raw.githubusercontent.com/eulogikon/ancient-greek-texts/main/grc/";
+ const name=NORMALIZED_SOURCES[x.workId];
+ if(name){
+  return x.source===base+name&&x.sourceType==="normalized-greek-reading"&&
+   typeof x.editorialStatus==="string"&&x.editorialStatus.includes("NO edición crítica");
+ }
+ return /^https:\/\/raw\.githubusercontent\.com\/(?:OpenGreekAndLatin\/First1KGreek|PerseusDL\/canonical-greekLit)\/master\//.test(x.source)&&
+   (!x.sourceType||x.sourceType==="edited-greek-tei");
+}
 function valid(x,seen){
  if(!x||!ALLOWED.has(x.workId)||seen.has(x.workId)||x.language!=="grc"||
   x.path!=="data/offsite-originals/"+x.workId+"-grc.json"||
@@ -46,7 +62,7 @@ function valid(x,seen){
   !Number.isInteger(x.passages)||x.passages<2||
   typeof x.author!=="string"||!x.author.trim()||typeof x.title!=="string"||!x.title.trim()||
   typeof x.source!=="string"||
-  !/^https:\/\/raw\.githubusercontent\.com\/(?:OpenGreekAndLatin\/First1KGreek|PerseusDL\/canonical-greekLit)\/master\//.test(x.source))return false;
+  !approvedOrigin(x))return false;
  seen.add(x.workId);return true;
 }
 function entries(){
@@ -62,7 +78,10 @@ function entries(){
     rows.push({
      workId:x.workId,language:"grc",format:"remote-json-passages",author:x.author,title:x.title,
      path:ROOT+x.workId+"-grc.json",reader:"classics-remote-text-reader.html?work="+x.workId,
-     sourceDescription:x.attribution||"Original griego TEI con edición documentada",
+     sourceDescription:x.attribution||"Texto griego con fuente digital identificada",
+     sourceType:x.sourceType||"edited-greek-tei",
+     editorialStatus:x.editorialStatus||(x.sourceType==="normalized-greek-reading"?"Lectura normalizada: sin cotejo de manuscritos":"Edición TEI identificada"),
+     readingFacsimile:x.readingFacsimile||"",
      source:x.source,sourceSha256:x.sourceSha256,sourceUrn:x.editionUrn||"",
      bloom:x.bloom||null
     });
@@ -78,6 +97,8 @@ function load(e){
   .then(r=>{if(!r.ok)throw Error("Remote original unavailable");return r.json()})
   .then(j=>j?.schema==="vitruvius-offsite-greek-original-v1"&&
       j.workId===e.workId&&j.language==="grc"&&j.sourceSha256===e.sourceSha256&&
+      (e.sourceType!=="normalized-greek-reading"||
+        j.sourceType==="normalized-greek-reading"&&j.editorialStatus?.includes("NO edición crítica"))&&
       Array.isArray(j.passages)&&j.passages.length>=2&&j.passages.every(p=>
        typeof p.text==="string"&&typeof p.locus==="string")?j:null)
   .catch(()=>null));
