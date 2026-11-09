@@ -1245,7 +1245,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script defer src="assets/vitruvia-science.js?v=20261105-v2"></script>
 <script src="assets/vitruvia-mathematics.js?v=20261105-1" defer></script>
 <script src="assets/vitruvia-colors.js?v=20261105-1" defer></script>
-<script src="assets/vitruvia-image-engine-v2.js?v=20261107-formula-perf-v7" defer></script>
+<script src="assets/vitruvia-image-engine-v2.js?v=20261109-person-identity-v3" defer></script>
 <script src="assets/vitruvia-featured-documentary.js?v=20261107-humanidades-v5" defer></script>
 <script src="assets/vitruvia-reading.js?v=20261106-theme-wins-v1" defer></script>
 <script src="assets/vitruvia-photo-background.js?v=20261104-photo-bg-v1" defer></script>
@@ -1875,6 +1875,35 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editoria
 html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editorial-legacy li small{color:#555}
 @media print{body.vitruvia-reading #vitruvia-article .article-wikipedia-optional:not([open]){display:none!important}}
 </style>
+<style id="vitruvia-book-cover-rail-v3">
+/* Right-hand bibliographic thumbnails: retain individual work metadata and links. */
+@media screen and (min-width:1100px){
+ body.vitruvia-reading #vitruvia-context .web-dossier-stack > .web-dossier-card.cultural-book{
+  display:grid!important;grid-template-columns:78px minmax(0,1fr)!important;
+  align-items:start!important;gap:12px!important;min-height:110px;
+  padding:13px 0!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card.cultural-book > .web-dossier-cover-link{
+  grid-column:1!important;display:block!important;width:78px!important;max-width:78px!important;margin:0!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card.cultural-book .web-dossier-cover{
+  width:78px!important;height:auto!important;max-height:116px!important;object-fit:contain!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card.cultural-book > .web-dossier-card-body{
+  grid-column:2!important;min-width:0!important;display:block!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card.cultural-book:not(:has(> .web-dossier-cover-link)){
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card.cultural-book:not(:has(> .web-dossier-cover-link)) > .web-dossier-card-body{
+  grid-column:1!important;
+ }
+ body.vitruvia-reading #vitruvia-context .web-dossier-card.cultural-book .web-dossier-description{
+  font-size:11px;line-height:1.5;max-height:4.5em;overflow:hidden;
+ }
+}
+</style>
+<script src="assets/vitruvia-classics-frequency-dedupe.js?v=20261109-v1" defer></script>
 </body></html>
 
 
