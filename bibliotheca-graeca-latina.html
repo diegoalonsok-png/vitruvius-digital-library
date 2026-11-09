@@ -14,16 +14,16 @@
 <link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/bibliotheca-graeca-latina.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Gentium+Book+Plus:wght@400;700&display=swap">
-<link rel="stylesheet" href="assets/bibliotheca-simple.css?v=20261108-dictionary-yellow-v1">
+<link rel="stylesheet" href="assets/bibliotheca-simple.css?v=20261109-period-genre-v1">
 <link rel="stylesheet" href="assets/vitruvia-selection-speech.css?v=20261108-bibliotheca-v1">
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-fetch-cache.js?v=20261105-v2"></script>
 <script defer src="assets/bibliotheca-offsite-greek.js?v=20261108-14-originals"></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261109-isidore-20books-v4"></script>
-<script defer src="assets/bibliotheca-corpus-search.js?v=20261109-original-first-v2"></script>
+<script defer src="assets/bibliotheca-corpus-search.js?v=20261109-period-genre-v1"></script>
 <script defer src="assets/bibliotheca-uploaded-docx.js?v=20261108-integration-v1"></script>
-<script defer src="assets/bibliotheca-simple.js?v=20261109-original-first-v2"></script>
+<script defer src="assets/bibliotheca-simple.js?v=20261109-period-genre-v1"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261109-refined-v2"></script>
 <script defer src="assets/bibliotheca-academic-provenance.js?v=20261109-documented-v1"></script>
 <script defer src="assets/vitruvia-selection-speech.js?v=20261108-bibliotheca-v1"></script>
@@ -97,12 +97,15 @@
 <input id="classic-query" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Una palabra o frase, por ejemplo: domus" aria-label="Palabra o frase">
 <button id="search-submit" type="submit">Buscar</button>
 </form>
-<div class="workrow">
-<label for="classic-work" id="work-label">Obra</label>
-<select id="classic-work" aria-label="Buscar en todos los libros o una obra">
-<option value="">Todos los libros indexados</option>
-</select>
+<div class="workrow bibliotheca-filters" role="group" aria-label="Filtros filológicos del corpus">
+<div class="filter-field"><label for="classic-work" id="work-label">Obra</label>
+<select id="classic-work" aria-label="Buscar en todos los libros o una obra"><option value="">Todos los libros indexados</option></select></div>
+<div class="filter-field"><label for="classic-era" id="era-label">Época</label>
+<select id="classic-era" aria-label="Filtrar por época de composición"><option value="">Todas las épocas</option></select></div>
+<div class="filter-field"><label for="classic-genre" id="genre-label">Materia / género</label>
+<select id="classic-genre" aria-label="Filtrar por materia y género literario"><option value="">Todas las materias</option></select></div>
 </div>
+<p class="filter-method" id="filter-method">Clasificación por fecha aproximada de composición y género registrado; no por datación del manuscrito ni de la edición. Las atribuciones debatidas no se convierten en fechas ciertas.</p>
 <p class="coverage" id="catalogue-status" role="status" aria-live="polite">Cargando el registro de obras indexadas…</p>
 </section>
 <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
