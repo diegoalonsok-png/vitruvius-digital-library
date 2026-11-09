@@ -20,7 +20,26 @@ const SOURCES=[
  * Los nombres se imprimen en transliteracion editorial, NO como signos inventados.
  * El cartucho autentico se consulta mediante el objeto museistico enlazado.
  */
+const RAMESSIDE_PRIMARY=[
+ {title:'Poema y Boletín de Qadesh · año 5',kind:'Relato regio y documento histórico · no libro autógrafo',
+  passage:'Dos tradiciones textuales distintas, conservadas en inscripciones monumentales y testimonios en papiro. La versión regia no equivale a una crónica neutral de la batalla.',
+  provenance:'KRI II, 2–101; Gardiner, The Kadesh Inscriptions of Ramesses II (1960).',
+  href:'https://news.thessea.org/images/SSEA_assets/journals/JSSEA_38.pdf',label:'Estudio epigráfico y bibliografía · JSSEA'},
+ {title:'Tratado de paz con Hattusili III · año 21',kind:'Documento diplomático con tradiciones egipcia e hitita',
+  passage:'Acuerdo entre las cortes de Ramsés II y Hattusili III, atestiguado en versiones egipcias e hititas. No debe catalogarse como obra literaria firmada por el faraón.',
+  provenance:'UCL Digital Egypt, ficha Ramsés II; J. H. Breasted, Ancient Records of Egypt III, §§367–391.',
+  href:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/ramsesii.html',label:'Ficha y referencias originales · UCL'},
+ {title:'Relieves y cartuchos del reinado',kind:'Testimonios arqueológicos y epigráficos',
+  passage:'Karnak, Luxor, Ramesseum, Abu Simbel y Abydos conservan numerosos testimonios del protocolo regio. La grafía del nomen varía a lo largo del reinado.',
+  provenance:'Petrie Museum · UCL Digital Egypt; Kitchen, Ramesside Inscriptions II.',
+  href:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/ramsesii.html',label:'Objetos, imágenes y testimonios · Petrie Museum'}
+];
 const TITULARIES=[
+ {key:'ramesses-ii',aliases:['ramses ii','ramesses ii','rameses ii','ramses 2','ramesses 2','rameses 2','ramses the great','ramesses the great','ramses el grande','ramses ii el grande'],
+  names:['Kanakht Merymaat','Mekkemetwafkhasut','Userrenput-aanehktu','Usermaatre-setepenre','Ramesses (meryamun)'],
+  source:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/ramsesii.html',
+  artifact:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/ramsesii.html',
+  artifactLabel:'Cartuchos y testimonios auténticos · Petrie Museum / UCL',primary:RAMESSIDE_PRIMARY},
  {key:'akhenaten',aliases:['akhenaten','akhenaton','akenaton','akhnaton','ajenaton','amenhotep iv','amenofis iv','amenophis iv'],
   names:['Meryaten (Kanakht Qaishuty)','Wernesytemakhetaten (Wernesytemipetsut)','Wetjesrenenaten (Wetjeskahuemiunushema)','Neferkheperre-waenre','Akhenaten (antes Amenhotep)'],
   source:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/akhnaton.html',
@@ -62,10 +81,10 @@ const AMARNA_PRIMARY=[
   label:'Consultar estelas y dibujos · Amarna Project'}
 ];
 function addPrimaryTexts(section,record){
- if(record?.key!=='akhenaten')return;
+ if(!record||!['akhenaten','ramesses-ii'].includes(record.key))return;
  const box=node('div');box.className='v-egypt-primary';
- box.append(node('h4','Textos primarios · Amarna'));
- for(const entry of AMARNA_PRIMARY){
+ box.append(node('h4',record.key==='ramesses-ii'?'Inscripciones y textos del reinado · Ramsés II':'Textos primarios · Amarna'));
+ for(const entry of (record.primary||AMARNA_PRIMARY)){
   const details=node('details');details.className='v-egypt-primary-item';
   const summary=node('summary',entry.title);details.append(summary);
   const cat=node('small',entry.kind);details.append(cat);
@@ -235,5 +254,15 @@ window.addEventListener('vitruvia:featured-result',event=>{
  const n=++sideSerial;void sideDynasty(q,row,n);
 });
 window.addEventListener('vitruvia:results',event=>{const d=event.detail||{};void paint(d.query||'',d.rows||[])});
+
+/* El dossier no depende del disparo asincrónico de la ficha principal: se mantiene
+ * en el resultado de la búsqueda y se vuelve a anclar si la ficha se re-renderiza. */
+function ensureRoyalPanel(){
+ const q=new URLSearchParams(location.search).get('q')||'';
+ const record=titularyFor(q);if(!record)return;
+ if(!document.getElementById('v-egypt-side'))sideTitulary(q);
+ const body=document.getElementById('article-body');if(body&&!body.querySelector('#vitruvia-royal-titulary'))renderTitulary(body,q);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ensureRoyalPanel,{once:true});else ensureRoyalPanel();
 window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties,titularyFor,renderTitulary,sideTitulary};
 })();
