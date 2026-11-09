@@ -55,7 +55,7 @@
   if(signal?.aborted)throw Error('Operación cancelada');
   const binary=new Uint8Array(await file.arrayBuffer());
   if(signal?.aborted){binary.fill(0);throw Error('Operación cancelada')}
-  let task=null,total=0,scanned=0,characters=0;
+  let task=null,total=0,scanned=0,characters=0,pagesWithoutText=0;
   const pages=[];
   try{
    // Supplying data bytes (not a URL) is what guarantees local-only parsing.
@@ -74,13 +74,19 @@
      const content=await page.getTextContent({includeMarkedContent:false});
      const raw=(content.items||[]).map(x=>typeof x.str==='string'?x.str:'').filter(Boolean).join(' ');
      const text=raw.slice(0,cap-characters);
-     if(text.trim())pages.push({page:i,text});
+     if(text.trim())pages.push({page:i,text});else pagesWithoutText++;
      characters+=text.length;scanned=i;
     }finally{try{page.cleanup()}catch{}}
     if(signal?.aborted)throw Error('Operación cancelada');
     if(i===1||i%5===0||i===bound)onProgress?.({page:i,total,characters});
    }
-   return {pages,total,scanned,characters,truncated:scanned<total};
+   return {
+    pages,total,scanned,characters,truncated:scanned<total,
+    pagesWithText:pages.length,pagesWithoutText,
+    extractionMethod:'embedded-text-layer',ocrPerformed:false,
+    coverage:scanned<total?'partial':pages.length===0?'no-extractable-text':pagesWithoutText?'mixed-text-and-image':'embedded-text',
+    note:'PDF.js extrae texto incrustado; no realiza OCR ni cotejo paleográfico. Las páginas sin texto requieren OCR separado y verificación manual.'
+   };
   }finally{
    try{await task?.destroy()}catch{}
    // If PDF.js transferred the underlying ArrayBuffer, it is detached and
