@@ -305,6 +305,7 @@ function startSearch(){
  const query=$('#query').value.trim(),kind=$('#search-kind').value;
  if(!query&&kind!=='locus'){$('#search-status').textContent='Escribe una palabra o frase.';$('#query').focus();return;}
  if(kind==='internet'){searchInternet(query,$('#internet-provider-main').value,true);$('#search-status').textContent='Consulta abierta en el buscador externo en otra pestaña.';return;}
+ syncTranslationWithSearchSelection();
  lastQuery=query||(roman(Number($('#filter-book').value))+( $('#filter-chapter').value?'.'+$('#filter-chapter').value:''));searchKind=kind;results=[];alignedGroups=[];translationRevision++;countSummary=null;renderCountSummary(null);shown=0;requestId++;
  $('#export-tools').hidden=true;$('#more-results').hidden=true;$('#search-results').replaceChildren();$('#search-status').textContent='Consultando el índice de los DOCX…';$('#search-button').disabled=true;$('#search-button').textContent='Buscando…';
  const parsedReference=parseLocus(query);
@@ -359,6 +360,20 @@ const translationEditionIds={es:'recensio-es',fr:'recensio-fr',en:'theory-en'};
 const translationNames={es:'Castellano · V514',fr:'Français · V554',en:'English · V297'};
 const parallelIndexCache=new Map();
 let alignedGroups=[],selectedTranslationLanguage='es',translationRevision=0;
+// Respect the selected Kurilo edition when showing bilingual search results.
+function translationLanguageForSelection(){
+ const scope=document.querySelector('#scope')?.value;
+ const textLanguage=document.querySelector('#text-language')?.value;
+ const byEdition={'recensio-es':'es','recensio-fr':'fr','theory-en':'en'};
+ return byEdition[scope]||(['es','fr','en'].includes(textLanguage)?textLanguage:null);
+}
+function syncTranslationWithSearchSelection(){
+ const lang=translationLanguageForSelection();
+ if(lang&&lang!==selectedTranslationLanguage){
+  selectedTranslationLanguage=lang;
+  refreshRightTranslations();
+ }
+}
 function groupMatchesByLocus(hits){
  const groups=new Map();
  for(const hit of hits){
@@ -370,7 +385,8 @@ function groupMatchesByLocus(hits){
  return [...groups.values()];
 }
 function preferredLatinHit(group){
- const order={'recensio-es':0,'recensio-fr':1,'theory-en':2};
+ const chosenEdition=translationEditionIds[selectedTranslationLanguage];
+ const order={[chosenEdition]:0,...Object.fromEntries(['recensio-es','recensio-fr','theory-en'].filter(id=>id!==chosenEdition).map((id,i)=>[id,i+1]))};
  return [...group.hits].filter(hit=>hit.latin).sort((a,b)=>
   (a.language==='la'?0:1)-(b.language==='la'?0:1)||
   (order[a.edition]??9)-(order[b.edition]??9))[0]||group.hits[0];
@@ -661,7 +677,9 @@ async function initialize(){
   const supplements=loads[2].status==='fulfilled'?loads[2].value:[];
   $('#supplement-list').innerHTML=supplements.map(e=>`<article class="supplement"><time datetime="${e.date}">${escapeHTML(e.dateLabel)}</time><div><h3>${escapeHTML(e.title)}</h3><p>${escapeHTML(e.description)}</p></div><a class="text-link" href="${e.file}" download>Descargar ${escapeHTML(e.format)} ↓</a></article>`).join('');
   if(!supplements.length)$('#investigacion').hidden=true;
-  $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
+  $('#scope').addEventListener('change',syncTranslationWithSearchSelection);
+   $('#text-language').addEventListener('change',syncTranslationWithSearchSelection);
+   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
   $$('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);$('#search-status').textContent='Se abrió la consulta en el buscador externo.';}));
   $$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;$('#search-kind').value='words';$('#search-kind').dispatchEvent(new Event('change'));$('#search-mode').value='words';const target=b.dataset.scope;if(target&&[...$('#scope').options].some(o=>o.value===target&&!o.disabled))$('#scope').value=target;else $('#scope').value='all';startSearch();document.getElementById('search-status').scrollIntoView({block:'nearest',behavior:'smooth'});}));
   $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$('#catalog-filter').value='';$$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
@@ -686,6 +704,7 @@ async function initialize(){
     if(restored.count)$('#count-mode').value=restored.count;
     if(restored.book){$('#filter-book').value=restored.book;$('#filter-book').dispatchEvent(new Event('change'));}
     if(restored.chapter)$('#filter-chapter').value=restored.chapter;
+    syncTranslationWithSearchSelection();
     startSearch();
   }
 }
