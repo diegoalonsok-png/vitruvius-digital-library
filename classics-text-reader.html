@@ -61,6 +61,8 @@ html body mark{background:#b3b3b7!important;color:#111!important}
 html body .passages mark.cl-hit{background:#ffe34f!important;color:#14120e!important}
 /* El marcado de coincidencias domina cualquier estilo genérico de mark. */
 html body #passages mark.cl-hit{background-color:#ffe34f!important;background-image:none!important;color:#14120e!important}
+/* Comparación de versiones: una coincidencia literal en cada idioma se marca en ámbar, sin afirmar equivalencia. */
+html body #passages mark.cl-parallel-hit{background-color:#e6a438!important;background-image:none!important;color:#181109!important}
 html body .passages{color:#e2e2e3}
 html body .reader{background:#000!important}
 html body :is(button,a,select,input):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
@@ -78,7 +80,7 @@ html body :is(button,a,select,input):focus-visible{outline:2px solid #999!import
 <p class="sub" id="source-title">Cargando texto y procedencia…</p>
 <p class="notice" id="method-note">Las formas y la sintaxis indicadas son estimaciones heurísticas. El texto latino editado procede de TEI; no constituye OCR ni transcripción diplomática del manuscrito.</p>
 <div class="tools">
-<label for="language">Idioma</label><select id="language"><option value="grc">Griego original</option><option value="la">Latín original</option><option value="es">Castellano histórico</option><option value="en">English historical</option><option value="fr">Français · traduction historique</option></select>
+<label for="language">Idioma</label><select id="language"><option value="grc">Griego original</option><option value="la">Latín original</option><option value="es">Castellano histórico</option><option value="en">English historical</option><option value="fr">Français · traduction historique</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select>
 <label for="query" style="position:absolute;left:-10000px">Buscar palabra o frase</label><input id="query" type="search" placeholder="Buscar palabra: amor, asinus, εἰρωνεία, κολακεία…">
 <button id="find" type="button">Buscar en esta edición</button>
 <button id="clear" type="button">Borrar</button>
@@ -100,6 +102,23 @@ html body :is(button,a,select,input):focus-visible{outline:2px solid #999!import
 <footer id="attribution"></footer>
 </main>
 <script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
-<script defer src="assets/classics-text-reader.js?v=20261107-valid-tei-v5"></script>
-<script>document.getElementById("index-locorum-link").href="index-locorum.html?work="+encodeURIComponent(new URLSearchParams(location.search).get("work")||"");document.getElementById("parallel-link").href="classics-parallel-reader.html?work="+encodeURIComponent(new URLSearchParams(location.search).get("work")||"didache");</script></body>
+<script defer src="assets/classics-text-reader.js?v=20261109-parallel-pairs-v1"></script>
+<script>
+(()=>{"use strict";
+ const now=new URLSearchParams(location.search);
+ document.getElementById("index-locorum-link").href="index-locorum.html?work="+encodeURIComponent(now.get("work")||"");
+ const link=document.getElementById("parallel-link");
+ function updateParallel(){
+  const q=new URLSearchParams(location.search),to=new URL("classics-parallel-reader.html",location.href);
+  to.searchParams.set("work",q.get("work")||"didache");
+  const lang=document.getElementById("language")?.value||q.get("lang")||"la";
+  if(["la","grc"].includes(lang))to.searchParams.set("left",lang);
+  else to.searchParams.set("right",lang);
+  if(q.get("locus"))to.searchParams.set("locus",q.get("locus"));
+  if(q.get("q"))to.searchParams.set("q",q.get("q"));
+  link.href=to.pathname+to.search;
+ }
+ updateParallel();link.addEventListener("click",updateParallel);
+})();
+</script></body>
 </html>
