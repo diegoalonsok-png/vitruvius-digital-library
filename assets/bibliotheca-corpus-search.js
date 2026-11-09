@@ -334,11 +334,12 @@ function completeMatches(text,term){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",edition="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null}={}){
+async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,language="",edition="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
- const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&(!edition||e.edition===edition)&&(includeOCR||e.format!=="historical-ocr-pages")&&
+ const approved=allowedWorkIds==null?null:new Set(allowedWorkIds);
+ const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!approved||approved.has(e.workId))&&(!language||e.language===language)&&(!edition||e.edition===edition)&&(includeOCR||e.format!=="historical-ocr-pages")&&
   (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)))
   .sort((a,b)=>(a.workId==="vitruvius"?0:a.language==="la"?1:a.language==="grc"?2:3)-(b.workId==="vitruvius"?0:b.language==="la"?1:b.language==="grc"?2:3));
  const rows=[];let loaded=0,failed=0,failures=[];
