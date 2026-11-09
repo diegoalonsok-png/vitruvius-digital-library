@@ -18,6 +18,16 @@ const ORIGINALS=[
   gloss:"Amón está satisfecho",source:"https://es.wikipedia.org/wiki/Akenat%C3%B3n",
   evidence:"Secuencia Unicode del artículo sobre Akenatón; no es un facsímil"}
 ];
+const SYMBOLS=[
+ {match:/^(?:ankh|anj|cruz ansada|cruz de la vida)$/i,
+ title:"Anj · jeroglífico S034",glyphs:"𓋹",trans:"ꜥnḫ",gloss:"vida",kind:"sign",
+ source:"https://www.unicode.org/Public/18.0.0/charts/nameslist/13000/",
+ evidence:"Signo individual de Unicode S034; no es un cartucho real"},
+ {match:/^(?:ojo de horus|eye of horus|wedjat|udyat|udjat)$/i,
+ title:"Ojo de Horus · jeroglífico D010",glyphs:"𓂀",kind:"sign",
+ source:"https://www.unicode.org/Public/18.0.0/charts/nameslist/13000/",
+ evidence:"Signo individual Unicode D010; no es un cartucho ni una transcripción de manuscrito"}
+];
 const ARABIC=[
  {match:/^(?:egipto|egypt|miṣr|misr|مصر|egipto moderno|modern egypt)$/i,arabic:"مصر",latin:"Miṣr",title:"Egipto"},
  {match:/(?:el cairo|cairo|al[- ]qahira|القاهرة)/i,arabic:"القاهرة",latin:"al-Qāhira",title:"El Cairo"},
@@ -45,6 +55,7 @@ function attachStyles(){
  ".v-egypt-script-panel .v-script-cartouche{border:2px solid currentColor;border-radius:43% / 40%;max-width:100%;padding:9px 15px;margin:9px 0;min-width:0;text-align:center;overflow-wrap:anywhere}",
  ".v-egypt-script-panel .v-script-glyphs{font-family:'Egyptian Text','Noto Sans Egyptian Hieroglyphs',serif!important;font-weight:400!important;font-size:var(--egypt-script-size,35px);line-height:1.6;letter-spacing:normal!important;word-spacing:normal;direction:ltr;unicode-bidi:isolate;display:block;text-align:center}",
  ".v-egypt-script-panel .v-script-arabic{font-family:'Noto Naskh Arabic','Amiri',serif!important;font-weight:400!important;font-size:var(--egypt-script-size,32px);line-height:1.9;letter-spacing:normal;direction:rtl;unicode-bidi:isolate;display:block;text-align:right}",
+ ".v-egypt-script-panel .v-script-symbol{padding:6px 0;max-width:100%;text-align:center}",
  ".v-egypt-script-panel .v-script-meta{font-size:12px;line-height:1.6;margin:5px 0}",
  ".v-egypt-script-panel .v-script-meta strong{font-weight:600}",
  ".v-egypt-script-panel .v-script-entry{padding:9px 0 13px;border-top:1px solid #4447}",
@@ -70,7 +81,7 @@ function arabicText(str){
 }
 function matchRows(q){
  const description=rows.slice(0,6).map(r=>[r?.title,r?.entityDescription,r?.entityCanonical,r?.excerpt].filter(Boolean).join(" ")).join(" ");
- const qAncient=OLD_EGYPT.test(q)||EGYPT_NAME.test(q),qModern=MODERN_EGYPT.test(q);
+ const qAncient=OLD_EGYPT.test(q)||EGYPT_NAME.test(q)||SYMBOLS.some(x=>x.match.test(q)),qModern=MODERN_EGYPT.test(q);
  const authority=rows.some(r=>Boolean(r?.preferredWiki||r?.wikidataId)&&
    SOURCE_EGYPT.test([r.entityDescription,r.entityCanonical,r.meta].filter(Boolean).join(" "))&&
    (fold(r.entityCanonical||r.title||"")===fold(q)||fold(q).length>=4&&
@@ -123,11 +134,11 @@ function createPanel(query,classification){
  }
  return {box,content};
 }
-function entry(parent,{title,glyphs,trans,gloss,source,evidence,arabic,latin}){
+function entry(parent,{title,glyphs,trans,gloss,source,evidence,arabic,latin,kind}){
  const item=node("div","v-script-entry");
  item.append(node("h4",null,title));
  if(glyphs){
-  const wrap=node("div","v-script-cartouche");
+  const wrap=node("div",kind==="sign"?"v-script-symbol":"v-script-cartouche");
   wrap.title="Cartucho tipográfico orientativo, no reproducción paleográfica";
   wrap.append(glyphText(glyphs));item.append(wrap);
  }else if(arabic)item.append(arabicText(arabic));
@@ -185,13 +196,15 @@ async function render(){
  const query=String(currentQuery||qText()).trim().slice(0,180),classification=matchRows(query);
  const previous=host.querySelector("#v-egypt-script-panel");
  if(!query||(!classification.ancient&&!classification.modern)){previous?.remove();return}
- if(previous?.dataset.query===fold(query))return;
+ const rowSignature=rows.slice(0,5).map(r=>String(r?.wikidataId||r?.pageid||r?.title||"")).join("|");
+ if(previous?.dataset.query===fold(query)&&previous.dataset.rows===rowSignature)return;
  previous?.remove();attachStyles();
  const {box,content}=createPanel(query,classification);
+ box.dataset.rows=rowSignature;
  host.prepend(box);host.hidden=false;const token=++generation;
  let populated=0;
  if(classification.ancient){
-  for(const rec of ORIGINALS.filter(r=>r.match.test(query))){
+  for(const rec of [...ORIGINALS,...SYMBOLS].filter(r=>r.match.test(query))){
    entry(content,rec);populated++;
   }
  }
