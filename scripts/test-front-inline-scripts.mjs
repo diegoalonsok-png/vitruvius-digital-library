@@ -96,3 +96,19 @@ assert(pref&&commentary.notes.every(n=>n.locus===pref.locus&&pref.latin.includes
 const commentaryPage=readFileSync("comentario-vitruvio-prefacio.html","utf8");
 assert(commentaryPage.includes(pref.latin),"La página estática debe reproducir el latín de V514");
 console.log("PASS TEI: 67 loci, 67 correspondencias, seis notas comprobables y sin variantes inventadas");
+
+const perseusAudit=JSON.parse(readFileSync("data/perseus-provenance-audit.json","utf8"));
+const perseusPage=readFileSync("perseus-procedencia-textual.html","utf8");
+const siteMap=readFileSync("sitemap.xml","utf8");
+assert.equal(perseusAudit.records.length,222,"Cobertura de procedencia debe incluir 222 obras");
+assert.equal(perseusAudit.counts.versions,246,"El inventario debe conservar 246 versiones");
+assert.equal(perseusAudit.counts.verifiedEditionUrns,0,
+ "Una URN candidata no equivale a una edición CTS validada");
+assert(perseusAudit.records.every(x=>x.ctsStatus==="not_verified"&&x.ctsEditionUrn===null),
+ "No inventar citas CTS de edición");
+assert(perseusPage.includes("https://scaife.perseus.org/")&&
+ perseusPage.includes("data/perseus-provenance-audit.json"),
+ "Auditoría Perseus debe enlazar fuentes y datos");
+assert(siteMap.includes("perseus-procedencia-textual.html")&&siteMap.trimEnd().endsWith("</urlset>"),
+ "Sitemap académico debe estar íntegro y cerrar XML");
+console.log("PASS procedencia Perseus: 222 obras, códigos candidatos y sin URN inventadas");
