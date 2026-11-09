@@ -1,6 +1,6 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
-import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261107-geometry-v3';
+import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261109-campus-bilingual-v4';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261104-query-1';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
@@ -443,7 +443,7 @@ async function renderRightTranslation(article,group){
   const latinAnchor=p.latin||preferredLatinHit(group)?.latin||'';
   const excerpt=parallelExcerpt(p.translation,{query:lastQuery,lang,latin:latinAnchor,max:1700});
   const paired=parallelHighlight(excerpt,{query:lastQuery,lang,latin:latinAnchor});
-  holder.innerHTML=paired?.equivalent?paired.html:resultSnippet({snippet:excerpt,form:'',context_start:null,context_length:null});
+  holder.innerHTML=(paired?.equivalent||paired?.direct)?paired.html:resultSnippet({snippet:excerpt,form:'',context_start:null,context_length:null});
   const note=$('.parallel-match-note',article),toggle=$('.parallel-equivalent-toggle',article);
   if(note){
    note.hidden=!paired?.equivalent;
@@ -515,7 +515,7 @@ function renderMore(){
    '<div class="parallel-columns">'+
      '<section class="parallel-latin" lang="la" aria-label="Texto latino original">'+
        '<div class="parallel-heading"><span>LATÍN · EDICIÓN '+escapeHTML(e.version)+'</span><strong>'+escapeHTML(e.version)+' · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · PDF: página no identificada')+'</strong></div>'+
-       '<p class="parallel-passage">'+(parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
+       '<p class="parallel-passage">'+((parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.equivalent||parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin})?.direct)?parallelHighlight(latinParagraph,{query:lastQuery,lang:'la',latin:r.latin}).html:resultSnippet({snippet:latinParagraph,form:'',context_start:null,context_length:null}))+'</p>'+
        '<div class="parallel-latin-source" aria-label="Procedencia bibliográfica de la edición latina"><span class="parallel-source-label">Fuente del latín: '+escapeHTML(e.version)+' · Diego Kurilo · Latín'+(pdfpage?' · PDF p. '+escapeHTML(pdfpage):' · página PDF no registrada')+'</span><p class="parallel-biblio">'+bibliographyHTML(e)+'</p></div>'+
        '<p class="parallel-small">Este texto latino procede de la edición indicada arriba. Consultar variantes en el aparato crítico.</p>'+
      '</section>'+
