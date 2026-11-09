@@ -3,6 +3,15 @@ on:
   pull_request:
     paths:
       - 'scripts/build-offsite-latin-originals.py'
+      - 'scripts/test-bibliotheca-offsite-latin.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'bibliotheca-graeca-latina.html'
+      - 'vitruvia.html'
+      - 'vitruvia-lexicon.html'
+      - 'classics-remote-latin-reader.html'
       - '.github/workflows/offsite-latin-originals.yml'
   push:
     branches: [main]
@@ -24,6 +33,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar los tres buscadores y el lector latino
+        run: |
+          node --check assets/bibliotheca-offsite-latin.js
+          node --check assets/bibliotheca-corpus-search.js
+          node --check assets/classics-corpus-search.js
+          node --check assets/bibliotheca-simple.js
+          node scripts/test-bibliotheca-offsite-latin.mjs
       - name: Extraer originales verificables sin tocar el sitio
         run: |
           python -m py_compile scripts/build-offsite-latin-originals.py
