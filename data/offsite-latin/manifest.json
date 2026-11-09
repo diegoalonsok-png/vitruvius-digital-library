@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-offsite-latin-originals-manifest-v1",
   "branch": "corpus-originales-latinos-20261108",
-  "count": 6,
-  "totalBytes": 1073818,
+  "count": 8,
+  "totalBytes": 1305703,
   "method": "Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text",
   "entries": [
     {
@@ -177,8 +177,74 @@
       "sourceSha256": "d47117f38e5e317dd06dd3d993699d8ea349ac5f61881970c153485443b9380b",
       "attribution": "Lucius Annaeus Seneca, Naturales quaestiones, seven Latin transcriptions digitized by The Latin Library and mirrored in CLTK/lat_text_latin_library; underlying printed edition and manuscript witnesses not identified; not a collated critical edition. https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt",
       "editorialStatus": "Public-domain Latin digital transcription, with documented source files; OCR and editorial variants are not certified"
+    },
+    {
+      "workId": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "language": "la",
+      "path": "data/offsite-latin/velleius-historia-la.json",
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell1.txt",
+      "sourceParts": [
+        {
+          "file": "vell1.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell1.txt",
+          "bytes": 26727,
+          "sourceSha256": "7a0996813bca9ba2361a4c13fd86d96062ac16ad5ec6ff80fe71f494ae8002a9",
+          "segments": 18
+        },
+        {
+          "file": "vell2.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell2.txt",
+          "bytes": 168691,
+          "sourceSha256": "e7b290028494c29f2e9c79b43effabd43fb0681ce66a807d7be6b5ccccc35ba6",
+          "segments": 131
+        }
+      ],
+      "sourceSha256": "7246264ce0932f636a2a54de5589c9b8756abfb2f8eb75fb02cbc8b2316766d2",
+      "attribution": "Veleyo Patérculo, Historia Romana. Latin transcription at The Latin Library, mirrored by CLTK/lat_text_latin_library. The underlying print edition and manuscript witnesses are not identified; texts are not a critically collated recension. https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell1.txt",
+      "passages": 149,
+      "bytes": 213948,
+      "editorialStatus": "Documented digital transcription, not a verified critical edition; source variants and manuscript attribution require scholarly review"
+    },
+    {
+      "workId": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "language": "la",
+      "path": "data/offsite-latin/frontinus-gromatica-la.json",
+      "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+      "sourceParts": [
+        {
+          "file": "frontinus/qualitate.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+          "bytes": 2786,
+          "sourceSha256": "16685b6c4da721c32cb87cb0b265e80fd8c311a407794563ec5c082af64ff12d",
+          "segments": 3
+        },
+        {
+          "file": "frontinus/contro.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/contro.txt",
+          "bytes": 7085,
+          "sourceSha256": "4d8fdebed88f77dfe4cfd5c0a686ccfdbc4477417f71d1135c2bf40675eefc43",
+          "segments": 8
+        },
+        {
+          "file": "frontinus/lim.txt",
+          "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/lim.txt",
+          "bytes": 4255,
+          "sourceSha256": "4b7203bcf19cef3acb167a9ac675adc78fa2ecb02da15d2882572fbcb2f230f4",
+          "segments": 5
+        }
+      ],
+      "sourceSha256": "12365c822ecd1230de53d0c2cbb7c1d9142ff7b9cf01803417056a44253c8ee2",
+      "attribution": "Frontino, Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus). Latin transcription at The Latin Library, mirrored by CLTK/lat_text_latin_library. The underlying print edition and manuscript witnesses are not identified; texts are not a critically collated recension. https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
+      "passages": 16,
+      "bytes": 17937,
+      "editorialStatus": "Documented digital transcription, not a verified critical edition; source variants and manuscript attribution require scholarly review"
     }
   ],
   "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita",
-  "naturalesMethod": "Seven CLTK/The Latin Library transcriptions; technical loci, no manuscript collation or invented translation"
+  "naturalesMethod": "Seven CLTK/The Latin Library transcriptions; technical loci, no manuscript collation or invented translation",
+  "twoWorksMethod": "Velleius and Frontinus source transcriptions; chapter labels/technical segments; no claim of critical collation"
 }
