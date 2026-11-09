@@ -37,6 +37,26 @@ for(const w of originals){
  assert(registry.entries.some(e=>e.workId===w.id&&e.language===w.originalLanguage),
   "original marked indexed but absent from searchable registry: "+w.id);
 }
+const quality=read("data/classics-corpus/quality-triage-222.json");
+assert.equal(quality.schema,"vitruvius-classics-quality-triage-v1");
+assert.equal(quality.works.length,road.targetWorks,"every catalogued work needs a quality record");
+const qualityById=new Map(quality.works.map(w=>[w.id,w]));
+assert.equal(qualityById.size,road.targetWorks,"duplicate quality records");
+for(const w of road.items){
+ const item=qualityById.get(w.id);
+ assert(item,"quality record missing for "+w.id);
+ assert.equal(item.originalIndexed,w.originalIndexed,"indexing status changed for "+w.id);
+ assert.equal(item.hasLocalTranslation,w.translationHosted,"translation status changed for "+w.id);
+ const versions=registry.entries.filter(e=>e.workId===w.id);
+ assert.equal(item.localVersionCount,versions.length,"version count changed for "+w.id);
+ assert.equal(item.issues.includes("original_not_indexed"),!w.originalIndexed,"incorrect original alert for "+w.id);
+ assert.equal(item.issues.includes("no_local_translation"),!w.translationHosted,"incorrect translation alert for "+w.id);
+ assert.equal(item.issues.includes("perseus_source_claim_needs_edition_verification"),versions.some(e=>/perseus/i.test(e.sourceDescription||"")),"provenance alert inconsistent for "+w.id);
+ assert(item.reviewStatus==="not_externally_verified","no unproven expert review claim for "+w.id);
+}
+assert.equal(quality.counts.works,road.targetWorks);
+assert.equal(quality.counts.missingOriginals,road.counts.originalsMissing);
+assert.equal(quality.counts.noLocalTranslation,road.counts.worksMissingTranslation);
 console.log(JSON.stringify({
  status:"OK",scope:"local-manifests-only",
  catalogued:known.size,originalsLocal:originals.length,
