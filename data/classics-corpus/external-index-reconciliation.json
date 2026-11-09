@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-external-index-reconciliation-v1",
   "updated": "2026-11-09",
-  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador.",
+  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes.",
   "sourceManifests": [
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-griegos-20261108/data/offsite-originals/manifest.json",
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
@@ -15,7 +15,9 @@
     "remoteGreek": 14,
     "remoteLatin": 9,
     "hostedTranslations": 59,
-    "hostedTextVersions": 246
+    "hostedTextVersions": 246,
+    "unindexedEditionRecordsOfExistingVitruviusWork": 3,
+    "distinctAncientWorksStillMissingOriginalIndex": 15
   },
   "remoteEntries": [
     {
@@ -277,13 +279,15 @@
       "workId": "faventinus",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "origenes",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "plutarch-lives",
@@ -356,37 +360,43 @@
         "tlg0007.tlg064",
         "tlg0007.tlg065",
         "tlg0007.tlg066"
-      ]
+      ],
+      "recordKind": "independent-work"
     },
     {
       "workId": "apollodorus-poliorcetics",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "athenaeus-mechanicus",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "vitruvio-v514-pdf",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "derivative-edition-existing-ancient-work"
     },
     {
       "workId": "vitruvio-v554-pdf",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "derivative-edition-existing-ancient-work"
     },
     {
       "workId": "theory-v297-pdf",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "derivative-edition-existing-ancient-work"
     },
     {
       "workId": "plutarch-moralia",
@@ -472,61 +482,76 @@
         "tlg0007.tlg141",
         "tlg0007.tlg146",
         "tlg0007.tlg147"
-      ]
+      ],
+      "recordKind": "independent-work"
     },
     {
       "workId": "ptolemy-geographia",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "macrobius-saturnalia",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "ennius-annales",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "accius-fragmenta",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "procopius-aedificiis",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "philo-belopoeica",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "biton-kataskeuai",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "hyginus-gromaticus",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     },
     {
       "workId": "siculus-flaccus",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": []
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
     }
+  ],
+  "editorialEditionRecordsNotNewAncientWorks": [
+    "vitruvio-v514-pdf",
+    "vitruvio-v554-pdf",
+    "theory-v297-pdf"
   ]
 }
