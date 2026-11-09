@@ -677,17 +677,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
   const escapeText=value=>String(value).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   const printWindow=window.open('','_blank');
   if(!printWindow){inform('Permite las ventanas emergentes para abrir la vista imprimible.');return}
-  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer><script>
-(()=>{"use strict";
-const button=document.getElementById("copy-portal-citation");
-if(!button)return;
-button.addEventListener("click",async()=>{
- const cite="Kurilo, Diego A., ed. Vitruvius Digital Library: De architectura (2026). DOI: https://doi.org/10.5281/zenodo.23868911. https://diegoalonsok-png.github.io/vitruvius-digital-library/ (consulta: "+new Date().toLocaleDateString("es-AR")+").";
- try{await navigator.clipboard.writeText(cite);button.textContent="Cita copiada";}
- catch{window.prompt("Copiar cita de biblioteca:",cite);}
-});
-})();
-</script></body></html>';
+  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer></body></html>';
   printWindow.document.open();printWindow.document.write(doc);printWindow.document.close();
   printWindow.focus();printWindow.print();
  });
@@ -733,7 +723,17 @@ button.addEventListener("click",async()=>{
 <script src="assets/vitruvian-world.js?v=20261105-v1" defer></script>
 <script defer src="assets/academic-entry.js?v=20261106-v1"></script>
 
-<script defer src="assets/classical-lexicon.js?v=20261109-correct-offset-v2"></script><script defer src="assets/inline-lexical-card.js?v=20261109-unicode-click-v3"></script></body>
+<script defer src="assets/classical-lexicon.js?v=20261109-correct-offset-v2"></script><script defer src="assets/inline-lexical-card.js?v=20261109-unicode-click-v3"></script><script>
+(()=>{"use strict";
+const button=document.getElementById("copy-portal-citation");
+if(!button)return;
+button.addEventListener("click",async()=>{
+ const cite="Kurilo, Diego A., ed. Vitruvius Digital Library: De architectura (2026). DOI: https://doi.org/10.5281/zenodo.23868911. https://diegoalonsok-png.github.io/vitruvius-digital-library/ (consulta: "+new Date().toLocaleDateString("es-AR")+").";
+ try{await navigator.clipboard.writeText(cite);button.textContent="Cita copiada";}
+ catch{window.prompt("Copiar cita de biblioteca:",cite);}
+});
+})();
+</script></body>
 </html>
 
 
