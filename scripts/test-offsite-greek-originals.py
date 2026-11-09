@@ -36,10 +36,11 @@ assert module.surface(apparatus)=="λόγος"
 bloom = module.bloom_filter(x["passages"])
 assert bloom["bits"]==262144 and bloom["tokens"]>=3
 assert len(module.base64.b64decode(bloom["data"]))==32768
-assert len(module.SOURCES)==13
+assert len(module.SOURCES)==14
+assert any(work=="euclid-phaenomena" and path.endswith("tlg1799.tlg012.1st1K-grc1.xml") for work,repo,path in module.SOURCES)
 try:
  module.convert("ps-aristotle-mechanica",xml.replace(b"creativecommons.org/licenses/by-sa/4.0/",b"invalid.example/"),"x",source)
  raise AssertionError("An unknown licence must reject ingestion")
 except ValueError as e:
  assert "licence" in str(e).lower() or "cc by-sa" in str(e).lower()
-print("PASS: Greek TEI edition, editorial loci, note isolation, licensing, and 13 candidates.")
+print("PASS: Greek TEI edition, editorial loci, note isolation, licensing, and 14 candidates.")
