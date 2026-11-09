@@ -45,6 +45,7 @@ jobs:
           node scripts/test-offsite-latin-two-works.mjs
           node scripts/test-shared-semantic-index-usage.mjs
           node scripts/test-bibliotheca-semantic-index-usage.mjs
+          node scripts/test-classics-corpus-counters.mjs
       - name: Extraer y cotejar integridad de veinte transcripciones en directorio temporal
         run: python scripts/build-offsite-isidore-etymologiae.py --output "$RUNNER_TEMP/isidore-new"
       - name: Añadir solo el índice derivado de Isidoro al corpus externo protegido
