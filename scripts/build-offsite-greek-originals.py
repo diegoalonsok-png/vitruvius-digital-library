@@ -33,6 +33,7 @@ SOURCES = (
     ("archimedes-fluitantibus", "OpenGreekAndLatin/First1KGreek", "data/tlg0552/tlg008/tlg0552.tlg008.1st1K-grc1.xml"),
     ("ps-aristotle-mechanica", "OpenGreekAndLatin/First1KGreek", "data/tlg0086/tlg023/tlg0086.tlg023.1st1K-grc1.xml"),
     ("euclid-optica", "OpenGreekAndLatin/First1KGreek", "data/tlg1799/tlg009/tlg1799.tlg009.1st1K-grc1.xml"),
+    ("euclid-phaenomena", "OpenGreekAndLatin/First1KGreek", "data/tlg1799/tlg012/tlg1799.tlg012.1st1K-grc1.xml"),
     ("cleonides-harmonica", "OpenGreekAndLatin/First1KGreek", "data/tlg0361/tlg001/tlg0361.tlg001.1st1K-grc1.xml"),
     ("hero-belopoeica", "OpenGreekAndLatin/First1KGreek", "data/tlg0559/tlg012/tlg0559.tlg012.1st1K-grc1.xml"),
     ("geminus-isagoge", "OpenGreekAndLatin/First1KGreek", "data/tlg1383/tlg001/tlg1383.tlg001.1st1K-grc1.xml"),
@@ -238,7 +239,7 @@ def run(args):
                            "language": "grc", "path": DEST + "/" + dest.name,
                            "bytes": len(data), "passages": len(obj["passages"]),
                            "sourceSha256": obj["sourceSha256"], "source": url,
-                           "editionUrn": obj["sourceUrn"], "attribution": obj["attribution"],
+                           "editionUrn": obj["sourceUrn"], "attribution": obj["attribution"] + (" Solo Phaenomena (Menge, 1916); los escritos musicales atribuidos a Euclides no están incluidos." if work == "euclid-phaenomena" else ""),
                            "bloom": bloom_filter(obj["passages"])})
             print("VERIFIED", work, len(obj["passages"]), "passages", len(data), "bytes", flush=True)
         except Exception as exc:
@@ -257,6 +258,8 @@ def run(args):
     print(json.dumps({"newOriginals": len(result), "bytes": total, "failed": failed}, ensure_ascii=False), flush=True)
     if len(result) < 7:
         raise SystemExit("Too few verified editions. Do not publish this incomplete batch automatically.")
+    if "euclid-phaenomena" not in {entry["workId"] for entry in result}:
+        raise SystemExit("Euclid Phaenomena was not verified; do not publish a misleading incomplete batch.")
 
 
 if __name__ == "__main__":
