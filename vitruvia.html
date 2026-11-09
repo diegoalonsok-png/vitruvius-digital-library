@@ -1959,6 +1959,51 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editoria
 }
 </style>
 <script src="assets/vitruvia-classics-frequency-dedupe.js?v=20261109-v1" defer></script>
-<script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script></body></html>
+<script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><style id="vitruvia-right-rail-top-alignment-20261109">
+/* The right rail must start with its related text, not occupy an empty
+   grid track or sit below an oversized featured card. */
+@media screen and (min-width:1100px){
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)){
+  display:grid!important;
+  grid-template-columns:minmax(0,3fr) minmax(260px,1fr)!important;
+  align-items:start!important;
+  gap:clamp(20px,2.4vw,40px)!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)) > #article-body{
+  grid-column:1!important;grid-row:1!important;min-width:0!important;align-self:start!important
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)) > #vitruvia-context{
+  grid-column:2!important;grid-row:1!important;align-self:start!important;
+  position:relative!important;inset:auto!important;transform:none!important;
+  width:100%!important;max-width:none!important;min-width:0!important;
+  margin:0!important;padding:0 0 0 18px!important;border-top:0!important;
+  border-left:1px solid #3b4146!important;overflow:visible!important
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-context:not([hidden]):not(:empty)) > #article-aside{
+  grid-column:1!important;grid-row:2!important;min-width:0!important;
+  position:static!important;inset:auto!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid:not(:has(> #vitruvia-context:not([hidden]):not(:empty))){
+  display:block!important;grid-template-columns:none!important
+ }
+ body.vitruvia-reading #results .results-grid:not(:has(> #vitruvia-context:not([hidden]):not(:empty))){
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important
+ }
+ body.vitruvia-reading #results .results-grid:not(:has(> #vitruvia-context:not([hidden]):not(:empty))) > #result-list,
+ body.vitruvia-reading #results .results-grid:not(:has(> #vitruvia-context:not([hidden]):not(:empty))) > .sidebar{
+  grid-column:1!important;min-width:0!important;width:100%!important
+ }
+ body.vitruvia-reading #results .results-grid:not(:has(> #vitruvia-context:not([hidden]):not(:empty))) > .sidebar{
+  grid-row:2!important
+ }
+}
+body.vitruvia-reading #vitruvia-context #v-egypt-side{margin-top:0!important;padding-top:0!important;border-top:0!important}
+body.vitruvia-reading .hero .featured{align-self:start!important}
+@media screen and (max-width:1099px){
+ body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}
+ body.vitruvia-reading #results .results-grid{display:block!important}
+}
+</style>
+</body></html>
 
 
