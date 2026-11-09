@@ -16,6 +16,40 @@ const SOURCES=[
  ['UCLA · Encyclopedia of Egyptology','https://www.uee.ucla.edu/','Artículos científicos revisados'],
  ['Chicago · ISAC Research Projects','https://isac.uchicago.edu/research-projects/search','Investigaciones y epigrafía egipcia']
 ];
+/* Titulaturas verificadas contra fichas de UCL Digital Egypt.
+ * Los nombres se imprimen en transliteracion editorial, NO como signos inventados.
+ * El cartucho autentico se consulta mediante el objeto museistico enlazado.
+ */
+const TITULARIES=[
+ {key:'akhenaten',aliases:['akhenaten','akhenaton','akhnaton','ajenaton','ajenaton','amenhotep iv','amenofis iv','amenophis iv'],
+  names:['Meryaten (Kanakht Qaishuty)','Wernesytemakhetaten (Wernesytemipetsut)','Wetjesrenenaten (Wetjeskahuemiunushema)','Neferkheperre-waenre','Akhenaten (antes Amenhotep)'],
+  source:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/akhnaton.html',
+  artifact:'https://collections.carlos.emory.edu/objects/38621/relief-with-cartouches-of-akhenaten',
+  artifactLabel:'Cartuchos originales · relieve, Emory University'},
+ {key:'tutankhamun',aliases:['tutankhamun','tutankamon','tutankamon','tutankhamon','tutankhaten','tutanjamon','tutankhaton'],
+  names:['Kanakht Tutmesut','Neferhepusegerehtawy','Wetjeskhausehetepnetjeru','Nebkheperure','Tutankhamun'],
+  source:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/tutankhamun.html',
+  artifact:'https://www.metmuseum.org/art/collection/search/567747',
+  artifactLabel:'Cartucho original de Nebkheperure · Metropolitan Museum of Art'}
+];
+const titularyFor=query=>{
+ const clean=norm(query).replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
+ return TITULARIES.find(t=>t.aliases.includes(clean))||null;
+};
+function renderTitulary(body,query){
+ body.querySelector('#vitruvia-royal-titulary')?.remove();
+ const record=titularyFor(query);if(!record)return false;
+ const section=node('section');section.id='vitruvia-royal-titulary';section.className='article-author-reading';
+ section.append(node('h3','Titulatura real egipcia · orden canónico'));
+ const names=node('ol');
+ const labels=['Nombre de Horus','Nombre de las Dos Señoras (Nebty)','Nombre de Horus de Oro','Nombre de trono (prenomen)','Nombre personal (nomen)'];
+ record.names.forEach((name,i)=>{const li=node('li');li.append(node('strong',labels[i]+': '),document.createTextNode(name));names.append(li)});
+ section.append(names);
+ const note=node('p','Prenomen y nomen se escribían habitualmente dentro de cartuchos. Aquí se ofrece la lectura documentada; no se dibujan jeroglíficos reconstruidos sin cotejo. La forma original puede consultarse en el objeto museístico.');
+ note.className='article-note';section.append(note);
+ const refs=node('p');refs.append(link(record.source,'Fuente de las cinco titulaturas · UCL Digital Egypt'),document.createTextNode(' · '),link(record.artifact,record.artifactLabel));section.append(refs);
+ body.prepend(section);return true;
+}
 const properties=[['P22','Padre'],['P25','Madre'],['P26','Cónyuge'],['P40','Descendencia'],['P3373','Hermanos/as']];
 const getClaims=(j,p)=>((j?.claims||{})[p]||[]).filter(c=>c.rank!=='deprecated').map(c=>c.mainsnak?.datavalue?.value?.id).filter(id=>/^Q\d+$/.test(id)).slice(0,12);
 const node=(tag,value)=>{const n=document.createElement(tag);if(value)n.textContent=value;return n};
@@ -30,6 +64,7 @@ async function fetchEntity(qid){
 async function paint(query,rows){
  const current=++serial;
  const body=document.getElementById('article-body');if(!body)return;
+ renderTitulary(body,query);
  body.querySelector('#vitruvia-egypt-research')?.remove();
  const identified=(rows||[]).find(r=>r?.wikidataId&&r?.preferredWiki&&isEgyptian(r,query));
  if(!identified)return;
@@ -64,7 +99,7 @@ async function paint(query,rows){
  section.append(ul,link('https://www.wikidata.org/wiki/'+identified.wikidataId,'Consultar fichas, referencias y declaraciones originales'));
  block.insertBefore(section,root);
 }
-window.addEventListener('vitruvia:search',()=>{serial++;document.getElementById('vitruvia-egypt-research')?.remove()});
+window.addEventListener('vitruvia:search',event=>{serial++;document.getElementById('vitruvia-egypt-research')?.remove();const body=document.getElementById('article-body');if(body)renderTitulary(body,event.detail?.query||'')});
 window.addEventListener('vitruvia:results',event=>{const d=event.detail||{};void paint(d.query||'',d.rows||[])});
-window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties};
+window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties,titularyFor,renderTitulary};
 })();
