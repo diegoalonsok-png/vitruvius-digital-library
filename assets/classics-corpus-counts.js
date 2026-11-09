@@ -12,20 +12,20 @@ function style(){
  if(document.getElementById("classics-corpus-counts-style"))return;
  const el=document.createElement("style");el.id="classics-corpus-counts-style";
  el.textContent=[
- ".classics-tally{padding:28px 0;border-top:1px solid #5555;border-bottom:1px solid #5555;color:inherit}",
+ ".classics-tally{padding:14px 0;border-top:1px solid #5555;border-bottom:1px solid #5555;color:inherit}",
  ".classics-tally-inner{width:min(1160px,calc(100% - 36px));margin:auto}",
- ".classics-tally h2{font:400 clamp(24px,2.7vw,34px)/1.25 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.025em;margin:0 0 9px}",
- ".classics-tally p{font:12px/1.7 Arial,sans-serif;margin:6px 0;opacity:.9}",
- ".classics-tally dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:22px 0}",
- ".classics-tally dl>div{padding:19px 17px 16px;border:1px solid #62636a;border-radius:12px;min-width:0;background:rgba(255,255,255,.018);transition:border-color .2s ease,background .2s ease}",
- ".classics-tally dd{margin:0 0 8px;font:400 clamp(31px,3.4vw,47px)/1.05 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums}",
- ".classics-tally dt{font:400 clamp(12px,1.05vw,14px)/1.45 system-ui,Arial,sans-serif;letter-spacing:.005em;opacity:.85}",
+ ".classics-tally h2{font:400 clamp(20px,2.1vw,27px)/1.2 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.025em;margin:0 0 5px}",
+ ".classics-tally p{font:11px/1.55 Arial,sans-serif;margin:4px 0;opacity:.9}",
+ ".classics-tally dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:12px 0}",
+ ".classics-tally dl>div{padding:11px 12px 10px;border:1px solid #62636a;border-radius:9px;min-width:0;background:rgba(255,255,255,.018);transition:border-color .2s ease,background .2s ease}",
+ ".classics-tally dd{margin:0 0 4px;font:400 clamp(25px,2.8vw,35px)/1.07 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums}",
+ ".classics-tally dt{font:400 clamp(10px,.86vw,12px)/1.35 Arial,Helvetica,sans-serif;letter-spacing:.005em;opacity:.85}",
  ".classics-tally a{color:inherit;text-underline-offset:3px}",
  "body:has(.bibliotheca-suite) .classics-tally{background:#121214;color:#e9e9ea}",
  "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a;background:#19191b}",
  "@media(hover:hover){.classics-tally dl>div:hover{border-color:#8b8b90;background:rgba(255,255,255,.04)}}",
  "@media(max-width:800px){.classics-tally dl{grid-template-columns:repeat(2,minmax(0,1fr))}}",
- "@media(max-width:480px){.classics-tally dl{gap:9px}.classics-tally dl>div{padding:15px 13px}.classics-tally dd{font-size:35px}}",
+ "@media(max-width:480px){.classics-tally dl{gap:9px}.classics-tally dl>div{padding:10px 9px}.classics-tally dd{font-size:29px}}",
  "@media print{.classics-tally{break-inside:avoid}}"
  ].join("\n");document.head.append(el);
 }
