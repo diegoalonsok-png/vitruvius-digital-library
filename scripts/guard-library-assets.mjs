@@ -15,6 +15,9 @@ const immutableText = new Set([
 ]);
 const heavyDocument = /\.(pdf|doc|docx|odt)$/i;
 const lockedDirectory = /^(images|documents)\//i;
+// Códices, folios e inventarios manuscritos existentes: nunca sobrescribir ni renombrar.
+// Nuevos índices derivados en otras rutas continúan permitidos.
+const immutableCodexData = /^(?:data\/(?:codex-h|iiif|manuscripts)\/|escritorio-h\/)/i;
 
 export function violation(status, input) {
   const path = String(input||"").replaceAll("\\","/");
@@ -24,6 +27,7 @@ export function violation(status, input) {
   if (code === "D") return "No se eliminan archivos existentes del sitio.";
   if (code !== "A" && code !== "M") return "Renombrado, cambio de tipo o conflicto: requiere revisión manual antes de publicar.";
   if (lockedDirectory.test(path)) return "Los folios, imágenes y documentos existentes son inmutables; se prohíben también altas en esas carpetas.";
+  if (code === "M" && immutableCodexData.test(path)) return "Los códices, folios e inventarios de manuscritos ya existentes no se sobrescriben.";
   if (heavyDocument.test(path)) return "Se suspenden nuevas cargas y modificaciones de PDF, DOC, DOCX y ODT por capacidad.";
   if (immutableText.has(path)) return "Las tres ediciones madre y su manifiesto no se modifican en una incorporación de corpus.";
   return null;
