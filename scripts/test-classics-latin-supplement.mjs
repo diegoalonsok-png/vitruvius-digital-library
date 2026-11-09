@@ -78,7 +78,6 @@ const reader=fs.readFileSync("classics-remote-latin-reader.html","utf8");
 assert(reader.includes("ClassicsOffsiteLatin"));
 const workflow=fs.readFileSync(".github/workflows/offsite-latin-supplement.yml","utf8");
 assert(workflow.includes("corpus-originales-latinos-20261108"));
-assert(workflow.includes("assert old[\"count\"]==5")===false); // no counts falsos preexistentes
 assert(workflow.includes("assert old[\"count\"]==5")||workflow.includes('assert old["count"]==5'));
 assert(workflow.includes("originals.items()"));
 console.log("PASS: 3 latinos añadidos al manifiesto, búsqueda literal/semántica conectada, viejo Séneca protegido.");
