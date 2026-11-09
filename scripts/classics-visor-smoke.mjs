@@ -313,10 +313,9 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
     };
    });
    const expected=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
-   // Bibliotheca intentionally shows Greek/Latin originals and English,
-   // except Vitruvius, whose Spanish/French editions remain visible.
-   // The shared source registry remains complete for Vitruvia and Lexicon.
-   const publicEditions=expected.entries.filter(e=>e.workId==='vitruvius'||['la','grc','en'].includes(e.language));
+   // Bibliotheca now shows all registered Greek/Latin originals and available ES/EN/FR translations.
+   // A translation's presence is not proof of aligned editorial loci.
+   const publicEditions=expected.entries.filter(e=>['la','grc','en','es','fr'].includes(e.language));
    assert.equal(check.total,publicEditions.length+check.offsite.length,
     'The public edition count must include separately verified remote Greek originals');
    assert.ok(check.offsite.length>=14,'At least 14 verified Greek TEI originals must be accessible outside Pages');
@@ -384,8 +383,8 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
     document.querySelector('#coll-body .coll-witnesses')?.textContent?.includes('Rose 1899'),{timeout:20000});
    const content=await p.locator('#coll-body').innerText();
    assert.match(content,/I\.3\.2/);
-   assert.match(content,/Rose 1899/);
-   assert.match(content,/Krohn 1912/);
+   assert.match(content,/Rose 1899/i);
+   assert.match(content,/Krohn 1912/i);
    assert.match(content,/OCR no validado/);
    assert.ok(await p.locator('#coll-body .coll-witnesses a').count()>=2,'Se conservan ambos facsímiles externos');
   }finally{await p.close()}
