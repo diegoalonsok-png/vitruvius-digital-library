@@ -86,6 +86,7 @@ function render(){
  }
  list.append(frag);
 }
+window.addEventListener("bibliotheca:filters-ready",render);
 for(const id of ["classic-genre","classic-era"])$(id)?.addEventListener("change",render);
 $("language-toggle")?.addEventListener("click",()=>queueMicrotask(render));
 Promise.all([fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalog");return r.json()}),fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()})])
