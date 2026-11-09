@@ -66,6 +66,7 @@
   ].join("\n");
   copy(cite,this);
  });
+ makeLink("Guía universitaria","guia-investigacion-universitaria.html");
  makeLink("Cómo citar","como-citar.html");
  makeLink("Procedencia y cobertura","control-calidad-corpus.html");
  wrap.appendChild(status);
