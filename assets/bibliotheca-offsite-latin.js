@@ -10,7 +10,9 @@ const SOURCE_PATHS={
  "apuleius-de-deo-socratis":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
  "censorinus-die-natali":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt",
  "vegetius-epitoma":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt",
- "seneca-naturales":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt"
+ "seneca-naturales":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/sen/sen.qn1.txt",
+ "velleius-historia":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vell1.txt",
+ "frontinus-gromatica":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt"
 };
 const ALLOWED=new Set(Object.keys(SOURCE_PATHS));
 let manifestTask=null;
