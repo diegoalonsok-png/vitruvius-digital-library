@@ -105,10 +105,10 @@ const $=id=>document.getElementById(id),root=$("tables"),query=$("filter"),count
 const text=(tag,value,cl)=>{const e=document.createElement(tag);e.textContent=String(value??"");if(cl)e.className=cl;return e};
 let entries=[];
 const pageTitle="Tablas explicativas · The Architect of Theory V297";
-function shareText(record){return [record?record.title:pageTitle,record?"Loci: "+record.locus:"Selección de tablas explicativas",record?record.summary:"Edición inglesa de Diego Kurilo", "DOI: https://doi.org/10.5281/zenodo.23885404"].join("\\n")}
+function shareText(record){return [record?record.title:pageTitle,record?"Loci: "+record.locus:"Selección de tablas explicativas",record?record.summary:"Edición inglesa de Diego Kurilo", "DOI: https://doi.org/10.5281/zenodo.23885404"].join("\n")}
 function shareURL(record){const url=new URL(location.href);url.hash=record?"tabla-"+record.n:"";return url.href}
 function shareRecord(kind,record){
- const body=shareText(record)+"\\n"+shareURL(record),subject=record?record.title:pageTitle;
+ const body=shareText(record)+"\n"+shareURL(record),subject=record?record.title:pageTitle;
  if(kind==="mail"){location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);return}
  if(kind==="whatsapp"){window.open("https://wa.me/?text="+encodeURIComponent(body),"_blank","noopener,noreferrer");return}
  if(kind==="copy"){
