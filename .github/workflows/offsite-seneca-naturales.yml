@@ -1,0 +1,121 @@
+name: Bibliotheca · Séneca Naturales quaestiones sin alterar códices
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-seneca-naturales.py'
+      - 'scripts/test-seneca-naturales-offsite.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - '.github/workflows/offsite-seneca-naturales.yml'
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-seneca-naturales.py'
+      - 'scripts/test-seneca-naturales-offsite.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - '.github/workflows/offsite-seneca-naturales.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: offsite-latin-originals-publication
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar lectura documental y búsquedas en Vitruvia / Lexicon
+        run: |
+          python -m py_compile scripts/build-offsite-seneca-naturales.py
+          node --check assets/bibliotheca-offsite-latin.js
+          node scripts/test-seneca-naturales-offsite.mjs
+          node scripts/test-offsite-latin-originals.mjs
+          node scripts/test-classics-latin-supplement.mjs
+      - name: Indexar siete libros en directorio temporal, sin OCR inventado
+        run: python scripts/build-offsite-seneca-naturales.py --output "$RUNNER_TEMP/seneca-new"
+      - name: Publicar exclusivamente índice derivado adicional fuera de Pages
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          BRANCH: corpus-originales-latinos-20261108
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          TARGET="$RUNNER_TEMP/seneca-latin-worktree"
+          git worktree add --detach "$TARGET" "origin/$BRANCH"
+          python - "$TARGET" "$RUNNER_TEMP/seneca-new" <<'PY'
+          import hashlib
+          import json
+          import shutil
+          import sys
+          from pathlib import Path
+
+          target=Path(sys.argv[1])/"data/offsite-latin"
+          staging=Path(sys.argv[2])
+          manifest_file=target/"manifest.json"
+          manifest=json.loads(manifest_file.read_text("utf-8"))
+          supplement=json.loads((staging/"naturales-manifest.json").read_text("utf-8"))
+          assert manifest["schema"]=="vitruvius-offsite-latin-originals-manifest-v1"
+          assert manifest["branch"]=="corpus-originales-latinos-20261108"
+          assert supplement["schema"]=="vitruvius-offsite-latin-naturales-supplement-v1"
+          assert len(supplement["entries"])==supplement["count"]==1
+          assert len(manifest["entries"])==manifest["count"]>=5
+          ids=[e["workId"] for e in manifest["entries"]]
+          assert len(ids)==len(set(ids)), "Previous catalogue has duplicates"
+          protected={"seneca-de-ira","seneca-de-tranquillitate",
+                     "apuleius-de-deo-socratis","censorinus-die-natali",
+                     "vegetius-epitoma"}
+          assert protected.issubset(ids), "Previously published Latin originals are missing"
+          originals={}
+          for entry in manifest["entries"]:
+              file=target/(entry["workId"]+"-la.json")
+              assert file.is_file(), "Missing protected original: "+str(file)
+              content=file.read_bytes()
+              old_doc=json.loads(content)
+              assert old_doc["sourceSha256"]==entry["sourceSha256"]
+              originals[entry["workId"]]=hashlib.sha256(content).hexdigest()
+          added=supplement["entries"][0]
+          assert added["workId"]=="seneca-naturales" and added["language"]=="la"
+          incoming=(staging/"seneca-naturales-la.json").read_bytes()
+          incoming_doc=json.loads(incoming)
+          assert incoming_doc["workId"]==added["workId"]
+          assert incoming_doc["sourceSha256"]==added["sourceSha256"]
+          assert len(incoming_doc["sourceParts"])==7
+          assert len(incoming_doc["passages"])==added["passages"]>=850
+          assert added["bytes"]==len(incoming)
+          dest=target/"seneca-naturales-la.json"
+          if added["workId"] in ids:
+              assert dest.read_bytes()==incoming, "Source changed: no overwrite without review"
+              assert next(e for e in manifest["entries"] if e["workId"]==added["workId"])["sourceSha256"]==added["sourceSha256"]
+          else:
+              assert not dest.exists(), "Refuse to overwrite unknown previous text"
+              shutil.copyfile(staging/"seneca-naturales-la.json",dest)
+              manifest["entries"].append(added)
+          for work_id,digest in originals.items():
+              assert hashlib.sha256((target/(work_id+"-la.json")).read_bytes()).hexdigest()==digest, "Original modified"
+          manifest["count"]=len(manifest["entries"])
+          manifest["totalBytes"]=sum(int(e["bytes"]) for e in manifest["entries"])
+          manifest["naturalesMethod"]="Seven CLTK/The Latin Library transcriptions; technical loci, no manuscript collation or invented translation"
+          manifest_file.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n","utf-8")
+          print("Appended and verified; Latin corpus count:",manifest["count"])
+          PY
+          git -C "$TARGET" add data/offsite-latin/manifest.json data/offsite-latin/seneca-naturales-la.json
+          if git -C "$TARGET" diff --cached --quiet; then
+            echo 'Derived Seneca index already present and verified; nothing overwritten.'
+            exit 0
+          fi
+          git -C "$TARGET" commit -m "Index seven books of Seneca Naturales quaestiones in external Latin corpus"
+          git -C "$TARGET" push origin "HEAD:refs/heads/$BRANCH"
+          echo 'No Vitruvian codices, folios, PDFs, master editions or page layout modified.'
