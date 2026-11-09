@@ -288,8 +288,9 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
   const page=await open('classics-text-reader.html?work=apuleius-metamorphoses&lang=es');
   try{
    await page.waitForFunction(()=>document.querySelector('#source-title')?.textContent?.includes('unidades textuales'),null,{timeout:25000});
-   assert.equal(await page.locator('#language option[value="es"]').count(),0,'Spanish must not appear for non-Vitruvius classics');
-   assert.notEqual(await page.locator('#language').inputValue(),'es');
+   assert.equal(await page.locator('#language option[value="es"]').count(),1,'La traducción histórica acreditada debe estar disponible');
+   assert.equal(await page.locator('#language').inputValue(),'es','La edición castellana solicitada debe poder leerse');
+   assert.match(await page.locator('#method-note').innerText(),/no hay alineación|sin recortar|alineación/i,'El lector debe declarar la limitación de correspondencias');
   }finally{await page.close()}
  });
  await check('Full-text registry searches Catullus poetry, Lucretius and English translations',async()=>{
@@ -376,9 +377,18 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await p.waitForFunction(()=>/virt[uū]s/.test(document.querySelector('#lexicon')?.textContent||''),{timeout:20000});
   }finally{await p.close()}
  });
- await check('Collation by locus: V514 against Rose 1899 shows the omission of «cum fuerit» at I.3.2',async()=>{
+ await check('Collation by locus: Rose y Krohn con OCR declarado como no cotejado',async()=>{
   const p=await open('colacion.html?locus=1.3.2');
-  try{await p.waitForFunction(()=>/fuerit\s*\]\s*om\./.test(document.querySelector('#coll-body')?.textContent||''),{timeout:20000})}finally{await p.close()}
+  try{
+   await p.waitForFunction(()=>document.querySelector('#coll-body .coll-base')?.textContent?.includes('V514')&&
+    document.querySelector('#coll-body .coll-witnesses')?.textContent?.includes('Rose 1899'),{timeout:20000});
+   const content=await p.locator('#coll-body').innerText();
+   assert.match(content,/I\.3\.2/);
+   assert.match(content,/Rose 1899/);
+   assert.match(content,/Krohn 1912/);
+   assert.match(content,/OCR no validado/);
+   assert.ok(await p.locator('#coll-body .coll-witnesses a').count()>=2,'Se conservan ambos facsímiles externos');
+  }finally{await p.close()}
  });
  await check('Indices locorum group Latin forms by lemma (symmetria)',async()=>{
   const p=await open('indices-locorum.html?q=symmetri');
