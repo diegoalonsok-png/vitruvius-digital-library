@@ -221,3 +221,19 @@ html body mark.lexical-hit:focus-visible{outline:2px solid #fff!important;outlin
 .filter-method{font:400 11px/1.55 Arial,Helvetica,sans-serif;color:#97979c;margin:10px 3px 0}
 @media(max-width:750px){.bibliotheca-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.bibliotheca-filters .filter-field:first-child{grid-column:1/-1}}
 @media(max-width:480px){.bibliotheca-filters{grid-template-columns:minmax(0,1fr)}.bibliotheca-filters .filter-field:first-child{grid-column:auto}}
+
+/* Genre-filtered academic reading catalogue; black Lexicon palette. */
+.genre-work-list{margin:18px 0 12px;border:1px solid #39393b;border-radius:9px;background:#111113;padding:16px 17px}
+.genre-work-list[hidden]{display:none!important}
+.genre-work-list h2{margin:0 0 12px;font:400 20px/1.35 "Gentium Book Plus",Georgia,serif;color:#eee}
+.genre-work-items{list-style:none;margin:0;padding:0;max-height:390px;overflow:auto;scrollbar-color:#515156 #171719}
+.genre-work-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 3px;border-top:1px solid #303033}
+.genre-work-info{min-width:0;display:flex;flex-direction:column;gap:3px}
+.genre-work-title{font:400 17px/1.4 "Gentium Book Plus",Georgia,serif;color:#f3f3f2;overflow-wrap:anywhere}
+.genre-work-meta{font:12px/1.4 Arial,sans-serif;color:#a9a9ac}
+.genre-work-open{display:inline-flex;align-items:center;justify-content:center;flex:none;min-height:36px;padding:7px 12px;border:1px solid #515155;border-radius:6px;background:#232326;color:#eee;text-decoration:none;font:12px/1.4 Arial,sans-serif}
+.genre-work-open:hover,.genre-work-open:focus-visible{background:#353539;border-color:#9b9b9e;color:white}
+.genre-work-unavailable{color:#8f8f94;font:11px/1.4 Arial,sans-serif;flex:none}
+.genre-work-note,.genre-work-empty{font:11px/1.55 Arial,sans-serif;color:#99999d;margin:12px 0 0}
+@media(max-width:600px){.genre-work-item{align-items:flex-start;flex-direction:column}.genre-work-open{width:100%}.genre-work-list{padding:13px}}
+@media print{.genre-work-list{display:none!important}}
