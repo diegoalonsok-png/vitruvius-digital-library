@@ -41,6 +41,14 @@ SOURCES = (
     ("apollonius-conica", "OpenGreekAndLatin/First1KGreek", "data/tlg0550/tlg001/tlg0550.tlg001.1st1K-grc1.xml"),
     ("pappus-synagoge", "OpenGreekAndLatin/First1KGreek", "data/tlg2032/tlg001/tlg2032.tlg001.1st1K-grc1.xml"),
 )
+# Normalized public-domain readings are tagged separately from critical TEI editions.
+# Eulogikon does not establish the precise base edition or oldest manuscript.
+MARKDOWN_SOURCES = (
+    ("apollodorus-poliorcetics", "apollodorus-damascus-siegecraft-owo-aa.grc.md", "owo-aa"),
+    ("biton-kataskeuai", "biton-war-machines-catapults-lsg-aa.grc.md", "lsg-aa"),
+    ("procopius-aedificiis", "procopius-caesarea-buildings-unc-ac.grc.md", "unc-ac"),
+)
+MARKDOWN_BASE = "https://raw.githubusercontent.com/eulogikon/ancient-greek-texts/main/grc/"
 EXCLUDED = {"note", "del", "fw", "figure", "graphic", "apparatus", "castList", "gap"}
 TEXT_BLOCKS = {"p", "l", "ab"}
 CLEAN = re.compile(r"\s+", re.UNICODE)
@@ -210,6 +218,106 @@ def convert(work, xml_bytes, source_url, catalogue):
     }
 
 
+
+def convert_markdown(work, source_bytes, source_url, catalogue, expected_wid):
+    """Index normalized Greek reading, NEVER certify it as an academic collation.
+
+    Retain actual source headings and full text, excluding Markdown navigation
+    and duplicated editorial crux annotations. Source headings are expressly
+    distinguished from ancient manuscript or critical-edition loci.
+    """
+    raw = source_bytes.decode("utf-8")
+    front = re.match(r"\A---\r?\n(.*?)\r?\n---\r?\n", raw, flags=re.S)
+    if not front:
+        raise ValueError("Missing original source metadata and licence")
+    fields = {}
+    for line in front.group(1).splitlines():
+        m = re.match(r"^([a-z_]+):\s*(.*?)\s*$", line)
+        if m:
+            fields[m.group(1)] = m.group(2).strip().strip('"')
+    if fields.get("eul_wid") != expected_wid or fields.get("lang") != "grc":
+        raise ValueError("Eulogikon author/work ID or language mismatch: " + work)
+    if fields.get("license") != "https://creativecommons.org/publicdomain/mark/1.0/":
+        raise ValueError("Public-domain statement missing: " + work)
+    if not fields.get("title_greek") or not GREEK.search(fields["title_greek"]):
+        raise ValueError("Greek title not identified: " + work)
+    if fields.get("canonical") != "https://eulogikon.org/works/" + source_url.rsplit("/", 1)[-1].removesuffix(".grc.md"):
+        raise ValueError("Canonical work link mismatch: " + work)
+    text = raw[front.end():]
+    segments = re.split(r"(?m)^## Text\s*$", text, maxsplit=1)
+    if len(segments) != 2:
+        raise ValueError("Explicit Greek text section missing: " + work)
+    section = re.split(r"(?m)^## License and provenance\s*$", segments[1], maxsplit=1)
+    if len(section) != 2 or "public-domain Greek texts" not in section[1]:
+        raise ValueError("Source licence/provenance statement missing: " + work)
+    heading = "praef.source"
+    buffers = []
+    grouped = []
+    skipped_crux = 0
+    def flush():
+        value = normalized(" ".join(buffers))
+        if len(value) >= 16 and GREEK.search(value):
+            grouped.append((heading, value))
+        elif value:
+            raise ValueError("Non-Greek or nearly empty text section: " + work + " / " + heading)
+        buffers.clear()
+    for line in section[0].splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("*[crux:") and stripped.endswith("]*"):
+            skipped_crux += 1
+            continue
+        if stripped.startswith("### "):
+            flush()
+            heading = stripped[4:].strip()
+            if not heading or len(heading) > 120:
+                raise ValueError("Invalid source heading in " + work)
+            continue
+        if stripped.startswith("## "):
+            flush()
+            # The first heading in two technical treatises embeds Greek prose;
+            # keep its content rather than silently omitting the proem.
+            heading = "proemium.source"
+            stripped = stripped[3:].strip()
+        buffers.append(stripped)
+    flush()
+    counts = defaultdict(int)
+    passages = []
+    for key, value in grouped:
+        counts[key] += 1
+        locus = key if counts[key] == 1 else key + "~p" + str(counts[key])
+        passages.append({
+            "locus": locus, "editorialLocus": None,
+            "locusKind": "Encabezado digital Eulogikon; no locus de códice ni cotejo académico",
+            "sourceHeading": key, "text": value
+        })
+    if len(passages) < 4 or sum(len(p["text"]) for p in passages) < 2400:
+        raise ValueError("Insufficient original Greek to index: " + work)
+    if len({p["locus"] for p in passages}) != len(passages):
+        raise ValueError("Duplicate technical loci: " + work)
+    return {
+        "schema": "vitruvius-offsite-greek-original-v1",
+        "workId": work, "language": "grc",
+        "title": catalogue["title"], "author": catalogue["author"],
+        "sourceTitle": fields["title_greek"], "sourceType": "normalized-greek-reading",
+        "editorialStatus": "Lectura griega normalizada de repositorio público. Edición base no identificada: NO edición crítica, NO colación ecdótica, NO transcripción diplomática.",
+        "source": source_url, "sourceUrn": "",
+        "sourceSha256": hashlib.sha256(source_bytes).hexdigest(),
+        "license": "Public Domain Mark 1.0 (declaración de Eulogikon); no certifica edición crítica",
+        "editor": "", "sourceWorkId": expected_wid,
+        "attribution": catalogue["author"] + ", " + fields["title_greek"]
+            + ". Eulogikon, transcripción griega normalizada, eul_wid: " + expected_wid
+            + ". Consulta externa: " + fields["canonical"]
+            + ". Edición base y testimonio manuscrito más antiguo no verificados.",
+        "alignment": "Encabezados de la transcripción en línea; no se infieren loci manuscritos ni correspondencias con traducciones.",
+        "sourceCanonical": fields["canonical"],
+        "sourceEditorialNotesExcluded": skipped_crux,
+        "earliestWitnessStatus": "No identificado con seguridad; consultar testimonios externos para cotejo.",
+        "readingFacsimile": catalogue.get("reading", {}).get("url", ""),
+        "passages": passages,
+    }
+
 def source_desc_text(desc):
     return normalized(surface(desc))[:500]
 
@@ -245,6 +353,37 @@ def run(args):
         except Exception as exc:
             failed.append({"workId": work, "reason": str(exc)})
             print("SKIPPED", work, str(exc), file=sys.stderr, flush=True)
+    # A distinct source-quality tier: the three Eulogikon normalized readings
+    # are searchable but are NOT certified critical editions or codex witnesses.
+    for work, name, wid in MARKDOWN_SOURCES:
+        if work not in by_id or by_id[work].get("language") != "grc" or work not in missing:
+            raise ValueError("No pending Greek catalogue ID for normalized text: " + work)
+        url = MARKDOWN_BASE + name
+        try:
+            raw = fetch_source(url)
+            obj = convert_markdown(work, raw, url, by_id[work], wid)
+            dest = outdir / (work + "-grc.json")
+            data = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n"
+            if len(data) > 3_500_000:
+                raise ValueError("Normalized Greek JSON exceeds offsite size policy: " + work)
+            dest.write_bytes(data)
+            total += len(data)
+            result.append({
+                "workId": work, "author": by_id[work]["author"], "title": by_id[work]["title"],
+                "language": "grc", "path": DEST + "/" + dest.name,
+                "bytes": len(data), "passages": len(obj["passages"]),
+                "sourceSha256": obj["sourceSha256"], "source": url,
+                "editionUrn": "", "attribution": obj["attribution"],
+                "sourceType": obj["sourceType"],
+                "editorialStatus": obj["editorialStatus"],
+                "readingFacsimile": obj["readingFacsimile"],
+                "bloom": bloom_filter(obj["passages"]),
+            })
+            print("NORMALIZED NOT CRITICAL", work, len(obj["passages"]),
+                  "passages", len(data), "bytes", flush=True)
+        except Exception as exc:
+            failed.append({"workId": work, "reason": str(exc)})
+            print("SKIPPED NORMALIZED", work, str(exc), file=sys.stderr, flush=True)
     summary = {
         "schema": "vitruvius-offsite-greek-originals-manifest-v1",
         "branch": BRANCH,
@@ -256,6 +395,8 @@ def run(args):
     }
     (outdir / "manifest.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", "utf-8")
     print(json.dumps({"newOriginals": len(result), "bytes": total, "failed": failed}, ensure_ascii=False), flush=True)
+    if len(result) < 17:
+        raise SystemExit("Three normalized Greek sources must verify; do not publish partial or misleading inventory.")
     if len(result) < 7:
         raise SystemExit("Too few verified editions. Do not publish this incomplete batch automatically.")
     if "euclid-phaenomena" not in {entry["workId"] for entry in result}:
