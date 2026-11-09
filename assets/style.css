@@ -201,3 +201,7 @@ html[data-theme="dark"] #search-results .result-parallel .parallel-columns .para
  .hero.hero-academic>.hero-copy{align-self:start!important;padding-top:7px}
  .hero.hero-academic>.principal-editions{align-self:start!important}
 }
+
+/* 2026-11-09: compact editions after removal of separate Read buttons. */
+.hero.hero-academic .principal-edition{padding-top:12px!important;padding-bottom:12px!important;row-gap:0!important}
+.hero.hero-academic .principal-edition .principal-actions{display:none!important}
