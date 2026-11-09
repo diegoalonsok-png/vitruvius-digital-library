@@ -337,7 +337,11 @@ function passageActions(record,workInfo,passageNode){
  mail.setAttribute("aria-label",mail.title);
  const title=workInfo.title||record.title||"Bibliotheca";
  const origin=typeof record.link==="string"?new URL(record.link,location.href).href:location.href;
- const message=[title,[workInfo.author||record.author,record.locus,languages[record.language]||record.language].filter(Boolean).join(" · "),passageNode.textContent,provenance(workInfo,record).citation,origin].filter(Boolean).join("\n\n");
+ const sourceText=String(passageNode.textContent||"").trim();
+ const shortText=sourceText.length>1400?sourceText.slice(0,1400).replace(/\\s+\\S*$/,"")+"…":sourceText;
+ const citation=provenance(workInfo,record).citation;
+ const header=[title,[workInfo.author||record.author,record.locus,languages[record.language]||record.language].filter(Boolean).join(" · ")].filter(Boolean).join("\n");
+ const message=[header,shortText,citation,origin].filter(Boolean).join("\n\n");
  mail.href="mailto:?subject="+encodeURIComponent(title+" · "+(record.locus||"pasaje"))+"&body="+encodeURIComponent(message);
  const whats=el("a","passage-action","WhatsApp");whats.href="https://wa.me/?text="+encodeURIComponent(message);whats.target="_blank";whats.rel="noopener noreferrer";whats.title="Compartir pasaje por WhatsApp";actions.append(pdf,mail,whats);return actions;
 }
@@ -414,10 +418,13 @@ function bibliographyExport(){
  return text||"No hay resultados para exportar.";
 }
 function bibliographyShare(){
- const q=input.value.trim(),text=bibliographyExport().slice(0,12000);
- const payload="Bibliotheca Graeca et Latina · "+q+"\n"+text+"\n"+location.href;
- mailAll.href="mailto:?subject="+encodeURIComponent("Bibliotheca · "+q)+"&body="+encodeURIComponent(payload);
- whatsappAll.href="https://wa.me/?text="+encodeURIComponent(payload);
+ const q=input.value.trim(),exported=bibliographyExport();
+ const permalink=new URL(location.href);if(q)permalink.searchParams.set("q",q);
+ const provenance="Bibliotheca Graeca et Latina · "+q+"\n";
+ const mailPayload=provenance+exported.slice(0,4500)+(exported.length>4500?"… [extracto]":"")+"\n"+permalink.href;
+ const whatsappPayload=provenance+exported.slice(0,1400)+(exported.length>1400?"… [extracto]":"")+"\n"+permalink.href;
+ mailAll.href="mailto:?subject="+encodeURIComponent("Bibliotheca · "+q)+"&body="+encodeURIComponent(mailPayload);
+ whatsappAll.href="https://wa.me/?text="+encodeURIComponent(whatsappPayload);
 }
 printAll?.addEventListener("click",()=>{
  const text=bibliographyExport();
