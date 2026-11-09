@@ -1,0 +1,72 @@
+name: Indexar originales latinos de Séneca fuera de Pages
+on:
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-latin-originals.py'
+      - '.github/workflows/offsite-latin-originals.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-latin-originals.py'
+      - '.github/workflows/offsite-latin-originals.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: offsite-classical-originals-publication
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Extraer originales verificables sin tocar el sitio
+        run: |
+          python -m py_compile scripts/build-offsite-latin-originals.py
+          python scripts/build-offsite-latin-originals.py --output "$RUNNER_TEMP/seneca-latin"
+  publish:
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar únicamente índices textuales externos
+        run: |
+          mkdir -p "$RUNNER_TEMP/seneca-latin"
+          python scripts/build-offsite-latin-originals.py --output "$RUNNER_TEMP/seneca-latin"
+      - name: Publicar sin modificar GitHub Pages ni fuentes griegas existentes
+        env:
+          BRANCH: corpus-originales-griegos-20261108
+        run: |
+          set -euo pipefail
+          OUTDIR="$RUNNER_TEMP/seneca-latin"
+          WORKTREE="$RUNNER_TEMP/vitruvius-offsite-latin"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          git worktree add --detach "$WORKTREE" "origin/$BRANCH"
+          mkdir -p "$WORKTREE/data/offsite-originals"
+          for f in latin-manifest.json seneca-de-ira-la.json seneca-de-tranquillitate-la.json; do
+            if test -e "$WORKTREE/data/offsite-originals/$f"; then
+              echo "::error::La ruta $f existe; requiere revisión antes de cualquier reemplazo."
+              exit 1
+            fi
+          done
+          cp "$OUTDIR"/latin-manifest.json "$OUTDIR"/seneca-de-ira-la.json \
+            "$OUTDIR"/seneca-de-tranquillitate-la.json "$WORKTREE/data/offsite-originals/"
+          git -C "$WORKTREE" add data/offsite-originals/latin-manifest.json \
+            data/offsite-originals/seneca-de-ira-la.json \
+            data/offsite-originals/seneca-de-tranquillitate-la.json
+          git -C "$WORKTREE" commit -m "Añadir originales latinos de Séneca fuera de Pages"
+          git -C "$WORKTREE" push origin "HEAD:refs/heads/$BRANCH"
