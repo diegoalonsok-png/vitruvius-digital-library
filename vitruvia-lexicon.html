@@ -422,7 +422,22 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   </nav>
  </aside>
 </section>
-<!--METRICS--><div class="metrics" id="lx-metrics"><span><b>22</b>obras</span><span><b>7.322</b>pasajes</span><span><b>1.120.648</b>palabras indexadas</span><span><b>121.435</b>formas lematizadas</span><span><b>29.828</b>lemas con glosa LSJ / Lewis &amp; Short</span><span><b data-m="etym">115</b>fichas etimológicas</span><span><b data-m="sent">60</b>sententiae</span></div><!--/METRICS-->
+<!--METRICS--><div class="metrics" id="lx-metrics"><span><b id="lx-catalogue-works">222</b>obras catalogadas</span><span><b id="lx-indexed-works">181</b>obras con texto indexado</span><span><b>22</b>obras en corpus léxico</span><span><b>7.322</b>pasajes</span><span><b>1.120.648</b>palabras indexadas</span><span><b>121.435</b>formas lematizadas</span><span><b>29.828</b>lemas con glosa LSJ / Lewis &amp; Short</span><span><b data-m="etym">115</b>fichas etimológicas</span><span><b data-m="sent">60</b>sententiae</span></div><!--/METRICS-->
+<!-- La cobertura general proviene de la auditoría del catálogo; no debe confundirse con el corpus léxico local. -->
+<script>
+(function(){
+  var catalogue=document.getElementById('lx-catalogue-works');
+  var indexed=document.getElementById('lx-indexed-works');
+  fetch('data/classics-corpus/coverage-audit.json',{cache:'no-cache'})
+    .then(function(response){if(!response.ok)throw new Error('Coverage unavailable');return response.json()})
+    .then(function(data){
+      var counts=data&&data.counts||{};
+      if(Number.isInteger(counts.cataloguedWorks)&&counts.cataloguedWorks>=0)catalogue.textContent=counts.cataloguedWorks.toLocaleString('es');
+      if(Number.isInteger(counts.indexedDistinctWorks)&&counts.indexedDistinctWorks>=0)indexed.textContent=counts.indexedDistinctWorks.toLocaleString('es');
+    }).catch(function(){/* Mantener las cifras de respaldo correspondientes a la auditoría del 2026-11-08. */});
+})();
+</script>
+
 
 <section class="results" id="results" aria-live="polite">
  <div class="section-head"><h2 id="lx-head-title" data-i18n>Resultados</h2>
