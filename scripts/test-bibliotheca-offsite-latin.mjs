@@ -8,15 +8,15 @@ const root="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital
 const upstream="https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/";
 const latin=[
  {id:"seneca-de-ira",urn:"stoa010",source:"stoa0255.stoa010.perseus-lat2.xml",title:"De ira",
-  passages:[{locus:"1.1",text:"Ira est cupiditas puniendi et causa animi."},{locus:"1.2",text:"Ratio atque virtus naturam regunt."}]},
+  passages:[{locus:"1.1",text:"Ira est cupiditas puniendi et causa animi."},{locus:"1.2",text:"Ratio atque virtus naturam regunt."},{locus:"1.3",text:"Sapientia rerum providentia est."},{locus:"1.4",text:"Filosophia bonum vitae quaerit."},{locus:"1.5",text:"Mens humana consilium tenet."}]},
  {id:"seneca-de-tranquillitate",urn:"stoa013",source:"stoa0255.stoa013.perseus-lat2.xml",title:"De tranquillitate animi",
-  passages:[{locus:"2.1",text:"Tranquillitas animi summa cura est."},{locus:"2.2",text:"Ratio non semper quieta manet."}]}
+  passages:[{locus:"2.1",text:"Tranquillitas animi summa cura est."},{locus:"2.2",text:"Ratio non semper quieta manet."},{locus:"2.3",text:"Anima saepe consilium petit."},{locus:"2.4",text:"Fides et patientia bona sunt."},{locus:"2.5",text:"Sapientia curam moderatur."}]}
 ];
 const fixture={
  schema:"vitruvius-offsite-latin-originals-manifest-v1",
  branch:"corpus-originales-griegos-20261108",count:2,
  entries:latin.map(e=>({workId:e.id,author:"Séneca",title:e.title,language:"la",
-  path:"data/offsite-originals/"+e.id+"-la.json",passages:2,
+  path:"data/offsite-originals/"+e.id+"-la.json",passages:5,
   source:upstream+e.urn+"/"+e.source,sourceSha256:"a".repeat(64)}))
 };
 const contents=new Map(latin.map(e=>[root+e.id+"-la.json",{
