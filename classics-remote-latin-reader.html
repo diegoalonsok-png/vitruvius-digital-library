@@ -36,10 +36,10 @@ body{background:#0d0d0e;color:#eee}
 </head><body><main class="reader">
 <header class="top"><a class="brand" href="bibliotheca-graeca-latina.html">VITRVVIVS / Bibliotheca</a>
 <nav aria-label="Navegación académica"><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="index-locorum.html">Index locorum</a></nav></header>
-<h1 id="work-title">Edición latina TEI</h1>
+<h1 id="work-title">Fuente latina digital</h1>
 <p class="note" id="work-meta">Cargando fuente latina y procedencia…</p>
 <section class="provenance" id="provenance"></section>
-<p class="note warning">Esta es una edición textual digital derivada de TEI, no un códice, ni un facsímil, ni una transcripción paleográfica cotejada. El sufijo «~p» indica un párrafo técnico creado para navegación y búsqueda, no una división manuscrita. Para variantes ecdóticas debe consultarse la edición original.</p>
+<p class="note warning">Esta es una transcripción digital con procedencia documentada: no es un códice, facsímil ni edición crítica cotejada. Las divisiones pueden seguir la fuente digital o ser técnicas; para variantes ecdóticas debe consultarse la edición y sus testimonios.</p>
 <div class="controls"><button id="previous" type="button" disabled>← Anterior</button><span id="page-status" class="availability"></span><button id="next" type="button" disabled>Siguiente →</button></div>
 <div id="passages" aria-live="polite"></div>
 <div class="controls"><button id="previous-bottom" type="button" disabled>← Anterior</button><span class="note">80 pasajes por página · sin omitir texto de la fuente</span><button id="next-bottom" type="button" disabled>Siguiente →</button></div>
@@ -103,11 +103,11 @@ for(const id of ["next","next-bottom"])$(id).onclick=()=>{page++;render();scroll
   $("work-title").textContent=e.title;
   $("work-meta").textContent=e.author+" · "+book.passages.length+" unidades textuales en latín.";
   const box=$("provenance");
-  const citation=document.createElement("p");citation.textContent=book.attribution+" · Edición TEI de Perseus Digital Library. Referencia bibliográfica abreviada: comprobar volumen, paginación y condiciones de reutilización en la edición de origen.";
-  box.append(citation,link("Edición TEI de origen",e.source));
+  const citation=document.createElement("p");citation.textContent=[book.attribution||"Transcripción digital",book.editorialStatus||"",book.sourceLicense||""].filter(Boolean).join(" · ");
+  box.append(citation,link("Fuente textual de origen",e.source));
   box.append(document.createTextNode(" · "));
   box.append(link("Archivo JSON separado de GitHub Pages",e.path));
-  const sha=document.createElement("p");sha.textContent="SHA-256 del TEI de origen: "+e.sourceSha256;box.append(sha);
+  const sha=document.createElement("p");sha.textContent="SHA-256 documentado del origen o extracción: "+e.sourceSha256;box.append(sha);if(book.sourceDigestBasis){const basis=document.createElement("p");basis.textContent=book.sourceDigestBasis;box.append(basis);}
   if(targetLocus){
    const i=book.passages.findIndex(x=>x.locus===targetLocus||x.editorialLocus===targetLocus);
    if(i>=0)page=Math.floor(i/perPage);
