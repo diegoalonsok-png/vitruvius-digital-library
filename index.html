@@ -412,7 +412,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 </style>
 <script defer src="assets/bibliotheca-offsite-greek.js?v=20261108-14-originals"></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261109-isidore-20books-v4"></script>
-<script defer src="assets/classics-corpus-counts.js?v=20261109-compact-v3"></script>
+<script defer src="assets/classics-corpus-counts.js?v=20261109-academic-disclosures-v1"></script>
 <script defer src="assets/classics-audited-coverage.js?v=20261109-fix2"></script>
 <style id="reference-editions-inline-doi-pdf">
 .hero-academic .principal-edition h3 .edition-inline-links{display:inline-flex;vertical-align:middle;align-items:center;gap:6px;margin-left:10px;white-space:nowrap;font-family:Arial,Helvetica,sans-serif;letter-spacing:normal}
@@ -423,6 +423,16 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 .hero-academic .principal-edition .principal-edition-doi{display:block;margin:5px 0 0;font:400 11px/1.5 Arial,Helvetica,sans-serif;color:inherit;overflow-wrap:anywhere}
 .hero-academic .principal-edition .principal-edition-doi a{color:inherit;text-decoration:underline;text-decoration-color:#858b91;text-underline-offset:3px}
 .hero-academic .principal-edition .principal-edition-doi a:hover{text-decoration-color:currentColor}
+</style><style id="stats-academic-breakdown-style">
+.stats-academic-breakdown{border-top:1px solid #85858555;margin:7px 0 12px;padding-top:8px}
+.stats-academic-breakdown>summary{cursor:pointer;font:600 12px/1.5 Arial,Helvetica,sans-serif}
+.stats-academic-breakdown-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:13px 0}
+.stats-academic-breakdown-grid section{min-width:0}
+.stats-academic-breakdown-grid strong{font-size:12px}
+.stats-academic-breakdown-grid p,.stats-academic-breakdown-grid li{font:11px/1.6 Arial,Helvetica,sans-serif}
+.stats-academic-breakdown-grid ol{padding-left:18px;margin:7px 0}
+@media(max-width:750px){.stats-academic-breakdown-grid{grid-template-columns:1fr;gap:12px}}
+@media print{.stats-academic-breakdown{display:none}}
 </style></head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -557,6 +567,13 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
     <section class="stats-band" aria-label="La colección en cifras"><div class="wrap stats-inner"><p><strong id="stat-records">175</strong><span>fichas en tres repertorios documentales</span></p><p><strong id="stat-indexed-editions">3</strong><span>ediciones de Diego Kurilo con índice textual</span></p><p><strong id="stat-pages">3.379</strong><span>páginas declaradas en esas tres ediciones</span></p><p><strong id="stat-languages">4</strong><span>idiomas en las ediciones catalogadas</span></p></div>
 <div class="wrap stat-audit-detail">
 <p><strong>Desglose verificable:</strong> <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>. <strong id="stat-passages">2.190</strong> pasajes textuales indexados por locus.</p>
+<details class="stats-academic-breakdown">
+<summary>Desplegar repertorios y referencias académicas</summary>
+<div class="stats-academic-breakdown-grid">
+<section><strong>175 fichas documentales</strong><p>Se distribuyen en tres repertorios que pueden contener referencias repetidas.</p><ol><li><a href="#coleccion">28 fichas del catálogo principal</a></li><li><a href="index-codicum.html">78 referencias del inventario de códices y ediciones</a></li><li><a href="estudios.html">69 estudios académicos</a></li></ol></section>
+<section><strong>3 ediciones indexadas · 3.379 páginas declaradas</strong><ol><li><a href="lector-bilingue.html?edition=recensio-es"><i>Vitruvio. De architectura</i> · V514</a> — 1.157 páginas</li><li><a href="lector-bilingue.html?edition=recensio-fr"><i>Vitruve. De architectura</i> · V554</a> — 1.166 páginas</li><li><a href="lector-bilingue.html?edition=theory-en"><i>The Architect of Theory</i> · V297</a> — 1.056 páginas</li></ol></section>
+<section><strong>4 idiomas representados</strong><ol><li>Latín (LA)</li><li>Castellano (ES)</li><li>Francés (FR)</li><li>Inglés (EN)</li></ol><p>El número de idiomas no equivale a cuatro traducciones completas por cada obra.</p></section>
+</div></details>
 <p class="stat-audit-caveat">Cifras auditadas el <span id="stat-audit-date">2 de noviembre de 2026</span>. Las fichas pueden repetirse entre repertorios: 175 no significa 175 obras únicas. Las 3.379 páginas son la suma de extensiones editoriales declaradas, no páginas indexadas individualmente.</p></div></section>
     <div class="wrap"><section id="classics-audit-coverage" aria-label="Cobertura verificable de la Bibliotheca Graeca et Latina" style="padding:20px 0;border-top:1px solid #6664;border-bottom:1px solid #6664;margin:14px 0">
  <h2 style="font:400 clamp(19px,2.1vw,26px)/1.3 Georgia,serif;margin:0 0 12px">Bibliotheca · cobertura de textos clásicos</h2>
