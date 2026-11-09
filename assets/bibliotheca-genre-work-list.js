@@ -74,6 +74,9 @@ function render(){
   const info=document.createElement("div");info.className="genre-work-info";info.append(title,meta);
   const target=reader(w);
   if(target){
+   const titleLink=document.createElement("a");titleLink.className="genre-work-title genre-work-title-link";titleLink.textContent=w.title;titleLink.href=target.url;
+   if(target.external){titleLink.target="_blank";titleLink.rel="noopener noreferrer"}
+   title.replaceWith(titleLink);
    const a=document.createElement("a");a.className="genre-work-open";a.href=target.url;
    a.textContent=target.external?t.external:t.read;
    if(target.external){a.target="_blank";a.rel="noopener noreferrer"}
