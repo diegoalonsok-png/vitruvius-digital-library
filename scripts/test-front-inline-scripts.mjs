@@ -168,3 +168,25 @@ for(const term of staticTerms){
    "Static "+term+" needs university guide link and sitemap indexing");
 }
 console.log("PASS SEO académico: cuatro concordancias estáticas comparadas con V514");
+
+/* Right-hand cultural dossier: keep a single contextual panel and verify
+ * chronology sources stay usable for university researchers. */
+const vitruviaRailHtml=readFileSync("vitruvia.html","utf8");
+const railSrc=readFileSync("assets/vitruvia-web-dossier.js","utf8");
+assert.equal((vitruviaRailHtml.match(/id="vitruvia-context"/g)||[]).length,1,
+ "Vitruvia should have one contextual cultural rail, not duplicates");
+assert(vitruviaRailHtml.includes("resultGrid.insertBefore(panel")&&
+ vitruviaRailHtml.includes("articleGrid.appendChild(panel"),
+ "Move contextual rail into search results or scholarly article according to visible view");
+assert(vitruviaRailHtml.includes("has-context-rail")&&
+ vitruviaRailHtml.includes("grid-template-columns:minmax(0,1fr) minmax(285px,29%)"),
+ "Results view must reserve a visible desktop rail");
+assert(railSrc.includes("const bookRows=rows.filter")&&
+ railSrc.includes("const oldest=bookRows.map("),
+ "Ancient-author manuscript witness timeline must have defined book rows");
+assert(railSrc.includes("books.sort((a,b)")&&
+ railSrc.includes("first_publish_year"),
+ "Author book cards must use documented publication chronology");
+assert(railSrc.includes("manuscripts.slice(0,12)")&&railSrc.includes("codexDate"),
+ "Códice display must use documented manuscript dates");
+console.log("PASS cultural rail: visible search/reading layout, books and codices sorted from documented dates");
