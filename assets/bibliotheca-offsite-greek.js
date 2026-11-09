@@ -9,7 +9,7 @@ const BRANCH="corpus-originales-griegos-20261108";
 const ROOT="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/"+BRANCH+"/data/offsite-originals/";
 const ALLOWED=new Set(["thucydides-war","cassius-dio-historia","athenaeus-deipnosophistae",
  "theophrastus-historia-plantarum","archimedes-fluitantibus","ps-aristotle-mechanica",
- "euclid-optica","cleonides-harmonica","hero-belopoeica","geminus-isagoge",
+ "euclid-optica","euclid-phaenomena","cleonides-harmonica","hero-belopoeica","geminus-isagoge",
  "aristarchus-magnitudines","apollonius-conica","pappus-synagoge"]);
 const BITS=262144;
 let manifestTask=null;
