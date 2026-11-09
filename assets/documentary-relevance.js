@@ -23,7 +23,7 @@ function accepts(row,query){
   if(names.has(author))return true;
   const title=' '+fold(row.title)+' ';
   const variantMatch=wanted.length===1&&(aliases[queryName]||[]).some(name=>title.includes(' '+name+' '));
-  const overlap=wanted.filter(w=>includesTerm(subject,w)).length;
+  const overlap=wanted.filter(w=>includesTerm(subject,w)||(wanted.length>1&&/^(?:romanos|romanas)$/u.test(w)&&subject.includes(w.slice(0,-1)))).length;
   if(wanted.length===1)return overlap===1||variantMatch;
   return overlap>=Math.ceil(wanted.length*(wanted.length>5?.65:1));
 }
