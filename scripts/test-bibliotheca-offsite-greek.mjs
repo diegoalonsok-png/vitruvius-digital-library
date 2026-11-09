@@ -42,7 +42,7 @@ const remote=await window.ClassicsOffsiteGreek.entries();
 assert.equal(remote.length,1);
 assert.equal(remote[0].path,path);
 assert.equal((await window.ClassicsCorpusSearch.registry()).length,
- registry.entries.filter(x=>x.workId==="vitruvius"||["la","grc","en"].includes(x.language)).length+1);
+ registry.entries.filter(x=>["la","grc","en","es","fr"].includes(x.language)).length+1);
 const matches=await window.ClassicsCorpusSearch.searchPassages(["λόγος"],{
  workId:entry.workId,language:"grc",includeFullText:true,allMatches:true
 });

@@ -19,12 +19,17 @@ main{max-width:1250px;margin:auto;padding:30px clamp(16px,3vw,44px) 90px}h1{font
 @media(prefers-color-scheme:dark){.stat,.panel{background:#1d2329;color:#f4f1e8;border-color:#4c535b}.warn{background:#41351e;color:#faf0d0}.ok{background:#23413c;color:#edfff8}.bar{background:#4e4d49}}
 </style></head><body><main>
 <p class="small"><a href="index.html">← Inicio de la biblioteca</a> · <a href="vitruvia-lexicon.html">Lexicon</a> · <a href="cobertura-traducciones-clasicas.html">Cobertura de traducciones</a> · <a href="protocolo-academico-lexicon.html">Protocolo filológico</a></p>
-<header><h1>Auditoría académica y transparencia editorial</h1><p class="intro">Estado reproducible del corpus, del aparato de comparación y del léxico. Esta página <strong>no otorga una acreditación universitaria</strong> ni considera las coincidencias automáticas como lecturas filológicamente verificadas. Los indicadores se obtienen de informes JSON publicados en el propio repositorio, no de estimaciones ni de resultados inventados.</p></header>
+<header><h1>Auditoría académica y transparencia editorial</h1><p class="small"><a href="metodologia-filologica.html">Metodología y ecdótica</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca</a> · <a href="vitruvia.html">Vitruvia</a> · <a href="vitruvia-lexicon.html">Lexicon</a></p><p class="intro">Estado reproducible del corpus, del aparato de comparación y del léxico. Esta página <strong>no otorga una acreditación universitaria</strong> ni considera las coincidencias automáticas como lecturas filológicamente verificadas. Los indicadores se obtienen de informes JSON publicados en el propio repositorio, no de estimaciones ni de resultados inventados.</p></header>
 <div id="load-state" class="small" role="status">Leyendo informes de auditoría del repositorio…</div>
 <section class="stats" id="stats" aria-label="Indicadores de cobertura"></section>
 <section class="panel"><h2>Cobertura de obras textuales</h2><p id="coverage-label" aria-live="polite">Pendiente de carga.</p><div class="bar" role="progressbar" aria-label="Porcentaje de obras del catálogo con texto indexado" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="coverage-bar"><div id="coverage-fill" style="width:0"></div></div><p class="small">Una ficha bibliográfica, un PDF o un enlace externo no representan por sí solos un texto indexado y consultable. La cobertura se refiere al catálogo local, no al universo de obras clásicas.</p></section>
 <section class="panel" id="external-coverage" aria-label="Índices fuera de GitHub Pages"><h2>Índices originales externos y faltantes</h2>
 <p id="external-coverage-status" class="small" role="status">Contrastando registros locales y manifiestos externos…</p>
+<details id="missing-works-details" hidden>
+ <summary>Obras y ediciones con índice original pendiente (inventario documentado)</summary>
+ <p class="small" id="missing-works-note">Listado desde el catálogo; la presencia de una ficha o un enlace no demuestra que exista texto consultable.</p>
+ <div style="overflow-x:auto"><table aria-label="Fichas pendientes de indexación original"><thead><tr><th>Autor</th><th>Obra / edición</th><th>Estado de la fuente</th><th>Catálogo</th></tr></thead><tbody id="missing-works-body"></tbody></table></div>
+</details>
 <p class="small">El inventario local y el índice remoto se cuentan por obra, no por cantidad de archivos ni de idiomas. Un registro de manifiesto remoto <strong>no acredita por sí solo</strong> la disponibilidad instantánea de cada lector, la autenticidad de un testimonio o una colación manuscrita. No se alojan aquí copias nuevas de obras.</p>
 <p class="small">Consultar <a href="data/classics-corpus/indexation-roadmap-222.json">inventario de las 222 obras</a>, <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/tree/corpus-originales-griegos-20261108/data/offsite-originals">índices griegos externos</a> y <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/tree/corpus-originales-latinos-20261108/data/offsite-latin">índices latinos externos</a>.</p>
 </section>
@@ -86,6 +91,25 @@ try{
  if(remote.size!==entries.length||[...remote].some(id=>!allIds.has(id)||localIds.has(id)))
   throw Error("IDs externos duplicados, desconocidos o ya contados localmente");
  const total=localIds.size+remote.size,pending=n.cataloguedWorks-total;
+ const pendingWorks=road.items.filter(w=>!localIds.has(w.id)&&!remote.has(w.id));
+ if(pendingWorks.length!==pending)throw Error("Fichas pendientes inconsistentes con los manifiestos");
+ const pendingTable=$("#missing-works-body"),pendingPanel=$("#missing-works-details");
+ pendingTable.replaceChildren();
+ const sourceLabel={
+  tei_perseus_candidato_por_verificar:"Candidato TEI pendiente de verificar",
+  correspondencia_bibliografica_ambigua:"Autoría o edición por identificar",
+  requiere_fuente_no_canonica_o_edicion_especifica:"Requiere fuente o edición específica",
+  sin_fuente_en_mapa_perseus:"Sin fuente verificada en el inventario Perseus"
+ };
+ for(const w of pendingWorks.sort((a,b)=>String(a.author||"").localeCompare(String(b.author||""),"es"))){
+  const tr=node("tr");
+  tr.append(node("td",{},w.author||"Autoría no determinada"),node("td",{},w.title||w.id));
+  tr.append(node("td",{},sourceLabel[w.sourceReadiness]||"Fuentes por verificar"));
+  const cell=node("td"),link=node("a",{href:"bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id)},"Consultar ficha");
+  cell.append(link);tr.append(cell);pendingTable.append(tr);
+ }
+ pendingPanel.hidden=false;
+ $("#missing-works-note").textContent=pending+" registros sin índice original localizado; se distinguen obras antiguas y recensiones de obras ya presentes. La lista no supone disponibilidad de traducción ni manuscrito.";
  metric(remote.size,"Originales con índice externo documentado");
  metric(total,"Obras con índice original local o externo");
  metric(pending,"Obras pendientes de índice original");
@@ -96,6 +120,7 @@ try{
   "Cobertura conjunta de inventarios: "+(100*total/n.cataloguedWorks).toFixed(1).replace(".",",")+" %. "+
   "Este control revisa manifiestos, no prueba cada lectura externa en vivo.";
 }catch(error){
+ $("#missing-works-details").hidden=true;
  $("#external-coverage-status").textContent="Estado externo no verificable en esta consulta ("+
   error.message+"). Se mantienen únicamente "+n.indexedDistinctWorks+
   " originales locales acreditados; no se presume que el resto sea accesible.";

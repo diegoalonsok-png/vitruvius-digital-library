@@ -10,7 +10,7 @@ const REGISTRY="data/classics-corpus/search-registry.json";
 const SHARED_LATIN_SOURCES={"varro-rustica":"data/lexicon/fontes/varro-rustica-la.json","frontinus":"data/lexicon/fontes/frontinus-aquaeductu-la.json","pliny":"data/lexicon/fontes/pliny-naturalis-la.json"};
 /* Biblioteca pública: originales y traducciones inglesas; castellano/francés sólo en Vitruvio.
    El registro compartido conserva intactos los testimonios históricos. */
-const bibliothecaLanguagePolicy=e=>e.workId==="vitruvius"||["la","grc","en"].includes(e.language);
+const bibliothecaLanguagePolicy=e=>["la","grc","en","es","fr"].includes(e.language);
 const LEGACY=[
  ["theophrastus-characters","grc","Teofrasto","Caracteres"],
  ["plato-apology","grc","Platón","Apología de Sócrates"],
