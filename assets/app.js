@@ -500,7 +500,7 @@ function criticalPassageCitation(article,group){
 function passageTools(article,group){
  const actions=article.querySelector('.result-actions');if(!actions)return;
  const bar=document.createElement('div');bar.className='parallel-reading-tools';
- const text=()=>[article.querySelector('h3')?.textContent||'Vitruvio',article.querySelector('.parallel-latin .parallel-passage')?.innerText||'',article.querySelector('.parallel-translation-text')?.innerText||'','Vitruvius Digital Library · '+location.href].join('\n\n');
+ const text=()=>criticalPassageCitation(article,group);
  const make=(label,title,fn)=>{const button=document.createElement('button');button.type='button';button.className='parallel-tool';button.textContent=label;button.title=title;button.setAttribute('aria-label',title);button.addEventListener('click',fn);bar.append(button);return button};
  make('Citar / DOI','Copiar cita académica con locus, edición y DOI correspondiente',async()=>{
   const content=criticalPassageCitation(article,group);
