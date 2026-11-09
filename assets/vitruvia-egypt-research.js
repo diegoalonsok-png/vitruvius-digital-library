@@ -21,7 +21,7 @@ const SOURCES=[
  * El cartucho autentico se consulta mediante el objeto museistico enlazado.
  */
 const TITULARIES=[
- {key:'akhenaten',aliases:['akhenaten','akhenaton','akhnaton','ajenaton','ajenaton','amenhotep iv','amenofis iv','amenophis iv'],
+ {key:'akhenaten',aliases:['akhenaten','akhenaton','akenaton','akhnaton','ajenaton','amenhotep iv','amenofis iv','amenophis iv'],
   names:['Meryaten (Kanakht Qaishuty)','Wernesytemakhetaten (Wernesytemipetsut)','Wetjesrenenaten (Wetjeskahuemiunushema)','Neferkheperre-waenre','Akhenaten (antes Amenhotep)'],
   source:'https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/akhnaton.html',
   artifact:'https://collections.carlos.emory.edu/objects/38621/relief-with-cartouches-of-akhenaten',
@@ -36,6 +36,57 @@ const titularyFor=query=>{
  const clean=norm(query).replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim();
  return TITULARIES.find(t=>t.aliases.includes(clean))||null;
 };
+
+/* Panel documental derecho: usa el espacio actual de la ficha destacada;
+ * los cartuchos esquemáticos llevan transliteración, no jeroglíficos inventados.
+ * Los enlaces museísticos permiten consultar el objeto auténtico. */
+function sideTitulary(query,identity){
+ const host=document.querySelector('#featured .featured-copy')||document.getElementById('featured');
+ if(!host)return null;
+ host.querySelector('#v-egypt-side')?.remove();
+ const record=titularyFor(query)||titularyFor(identity?.title||'');
+ if(!record&&!identity)return null;
+ const section=node('section');section.id='v-egypt-side';section.className='v-egypt-side';
+ section.append(node('h3','Titulatura real y árbol dinástico'));
+ if(record){
+  const names=node('ol');names.className='v-egypt-titles';
+  const labels=['Horus','Dos Señoras (Nebty)','Horus de Oro','Prenomen','Nomen'];
+  for(let i=0;i<record.names.length;i++){
+   const li=node('li');li.append(node('small',labels[i]));
+   if(i>=3){const glyph=node('div',record.names[i]);glyph.className='v-egypt-cartouche';glyph.title='Cartucho esquemático con transliteración, no reproducción jeroglífica';li.append(glyph)}
+   else li.append(node('span',record.names[i]));
+   names.append(li);
+  }
+  section.append(names);
+  const foot=node('p','Cartuchos esquemáticos · transliteraciones, no facsímiles. Ver signos originales en el museo.');
+  foot.className='article-note';section.append(foot);
+  section.append(link(record.artifact,record.artifactLabel),document.createTextNode(' · '),link(record.source,'Cinco nombres · UCL'));
+ }else{
+  section.append(node('p','Titulatura pendiente de cotejo: no se generan cartuchos sin edición comprobada.'));
+ }
+ host.append(section);
+ if(!document.getElementById('v-egypt-side-css')){
+  const css=node('style');css.id='v-egypt-side-css';
+  css.textContent='#featured .v-egypt-side{margin-top:20px;padding-top:15px;border-top:1px solid #555;font:14px/1.55 inherit}#featured .v-egypt-side h3{font:normal 20px/1.3 Georgia,serif;margin:0 0 12px}#featured .v-egypt-titles{list-style:none;margin:0;padding:0}#featured .v-egypt-titles li{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}#featured .v-egypt-titles small{min-width:92px;opacity:.7}#featured .v-egypt-cartouche{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;padding:8px 14px;border:2px solid currentColor;border-radius:45% / 36%;font:15px Georgia,serif;letter-spacing:.02em}#featured .v-egypt-side .vitruvia-dynasty-tree{max-height:320px;overflow:auto}#featured .v-egypt-side .lx-tree-head{max-width:100%;overflow-wrap:anywhere}';
+  document.head.append(css);
+ }
+ return section;
+}
+async function sideDynasty(query,row,serialAtStart){
+ const section=sideTitulary(query,row);
+ if(!section||!row?.wikidataId||!/^Q\\d+$/.test(row.wikidataId))return;
+ let entity;try{entity=await fetchEntity(row.wikidataId)}catch{return}
+ if(serialAtStart!==serial||!section.isConnected||!entity)return;
+ const groups=properties.map(([property,label])=>({label,ids:[...new Set(getClaims(entity,property))]})).filter(x=>x.ids.length);
+ if(!groups.length)return;
+ const ids=[...new Set(groups.flatMap(g=>g.ids))].slice(0,40);
+ const url='https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:ids.join('|'),props:'labels',languages:'es|en',format:'json',origin:'*'});
+ let entities={};try{const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),6500);try{const res=await fetch(url,{signal:ctl.signal});if(res.ok)entities=(await res.json()).entities||{}}finally{clearTimeout(t)}}catch{}
+ if(serialAtStart!==serial||!section.isConnected)return;
+ section.append(node('h4','Árbol familiar · relaciones registradas'));
+ dynastyTree(section,groups,entities,row.wikidataId,row.entityCanonical||row.title||query);
+ section.append(link('https://www.wikidata.org/wiki/'+row.wikidataId,'Fuentes de las relaciones familiares'));
+}
 function renderTitulary(body,query){
  body.querySelector('#vitruvia-royal-titulary')?.remove();
  const record=titularyFor(query);if(!record)return false;
@@ -140,7 +191,12 @@ async function paint(query,rows){
  section.append(link('https://www.wikidata.org/wiki/'+identified.wikidataId,'Consultar las declaraciones y referencias del registro de autoridad'));
  block.insertBefore(section,root);
 }
-window.addEventListener('vitruvia:search',event=>{serial++;document.getElementById('vitruvia-egypt-research')?.remove();const body=document.getElementById('article-body');if(body)renderTitulary(body,event.detail?.query||'')});
+window.addEventListener('vitruvia:search',event=>{serial++;document.getElementById('vitruvia-egypt-research')?.remove();const body=document.getElementById('article-body');if(body)renderTitulary(body,event.detail?.query||'');document.getElementById('v-egypt-side')?.remove();if(titularyFor(event.detail?.query||''))sideTitulary(event.detail.query)});
+window.addEventListener('vitruvia:featured-result',event=>{
+ const d=event.detail||{},q=d.query||'',row=d.row||{};
+ if(!isEgyptian(row,q)&&!titularyFor(q))return;
+ const n=++serial;void sideDynasty(q,row,n);
+});
 window.addEventListener('vitruvia:results',event=>{const d=event.detail||{};void paint(d.query||'',d.rows||[])});
-window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties,titularyFor,renderTitulary};
+window.VitruviaEgyptResearch={isEgyptian,SOURCES,properties,titularyFor,renderTitulary,sideTitulary};
 })();
