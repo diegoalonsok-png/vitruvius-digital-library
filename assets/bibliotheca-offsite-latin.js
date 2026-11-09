@@ -4,7 +4,14 @@
 if(window.ClassicsOffsiteLatin)return;
 const BRANCH="corpus-originales-latinos-20261108";
 const ROOT="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/"+BRANCH+"/data/offsite-latin/";
-const ALLOWED=new Set(["seneca-de-ira","seneca-de-tranquillitate"]);
+const SOURCE_PATHS={
+ "seneca-de-ira":"https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa010/stoa0255.stoa010.perseus-lat2.xml",
+ "seneca-de-tranquillitate":"https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0255/stoa013/stoa0255.stoa013.perseus-lat2.xml",
+ "apuleius-de-deo-socratis":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/apuleius/apuleius.deosocratis.txt",
+ "censorinus-die-natali":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/censorinus.txt",
+ "vegetius-epitoma":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/vegetius1.txt"
+};
+const ALLOWED=new Set(Object.keys(SOURCE_PATHS));
 let manifestTask=null;
 const cache=new Map();
 function valid(x,seen){
@@ -14,8 +21,7 @@ function valid(x,seen){
    !Number.isInteger(x.passages)||x.passages<5||
    typeof x.title!=="string"||!x.title.trim()||
    typeof x.author!=="string"||!x.author.trim()||
-   typeof x.source!=="string"||
-   !/^https:\/\/raw\.githubusercontent\.com\/PerseusDL\/canonical-latinLit\/master\/data\/stoa0255\/stoa0(?:10|13)\/stoa0255\.stoa0(?:10|13)\.perseus-lat2\.xml$/.test(x.source))return false;
+   typeof x.source!=="string"||x.source!==SOURCE_PATHS[x.workId])return false;
  seen.add(x.workId);return true;
 }
 function entries(){
@@ -31,7 +37,7 @@ function entries(){
     return {workId:x.workId,language:"la",author:x.author,title:x.title,
       format:"remote-json-passages",path:ROOT+x.workId+"-la.json",
       reader:"classics-remote-latin-reader.html?work="+x.workId,
-      sourceDescription:x.attribution||"Texto latino TEI de Perseus",
+      sourceDescription:x.attribution||"Texto latino digital; edición y testigos según procedencia",
       source:x.source,sourceSha256:x.sourceSha256,sourceUrn:x.sourceUrn||""};
    });
   }).catch(error=>{console.warn("Originales latinos remotos no disponibles:",error.message);return []});

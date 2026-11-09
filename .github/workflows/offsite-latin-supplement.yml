@@ -1,0 +1,135 @@
+name: Bibliotheca · incorporar tres clásicos latinos fuera de Pages
+on:
+  pull_request:
+    paths:
+      - 'scripts/build-offsite-latin-supplement.py'
+      - 'scripts/test-classics-latin-supplement.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - '.github/workflows/offsite-latin-supplement.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-offsite-latin-supplement.py'
+      - 'scripts/test-classics-latin-supplement.mjs'
+      - 'assets/bibliotheca-offsite-latin.js'
+      - 'assets/classics-corpus-search.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - '.github/workflows/offsite-latin-supplement.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: offsite-latin-originals-publication
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar lector, índice, política documental y scripts
+        run: |
+          python -m py_compile scripts/build-offsite-latin-supplement.py
+          node --check assets/bibliotheca-offsite-latin.js
+          node --check assets/classics-corpus-search.js
+          node --check assets/bibliotheca-corpus-search.js
+          node scripts/test-offsite-latin-originals.mjs
+          node scripts/test-classics-latin-supplement.mjs
+      - name: Extraer transcripciones de CLTK y validar procedencia
+        run: python scripts/build-offsite-latin-supplement.py --output "$RUNNER_TEMP/latin-new"
+      - name: Publicar solamente derivados nuevos y ampliar manifiesto externo
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          BRANCH: corpus-originales-latinos-20261108
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          TARGET="$RUNNER_TEMP/latin-supplement-worktree"
+          git worktree add --detach "$TARGET" "origin/$BRANCH"
+          python - "$TARGET" "$RUNNER_TEMP/latin-new" <<'PY'
+          import hashlib
+          import json
+          import shutil
+          import sys
+          from pathlib import Path
+
+          tree=Path(sys.argv[1])
+          fresh=Path(sys.argv[2])
+          folder=tree/"data/offsite-latin"
+          manifest_file=folder/"manifest.json"
+          old=json.loads(manifest_file.read_text("utf-8"))
+          new=json.loads((fresh/"supplement-manifest.json").read_text("utf-8"))
+          assert old["schema"]=="vitruvius-offsite-latin-originals-manifest-v1"
+          assert old["branch"]=="corpus-originales-latinos-20261108"
+          assert new["schema"]=="vitruvius-offsite-latin-supplement-v1"
+          assert new["count"]==3 and len(new["entries"])==3
+          current={e["workId"]:e for e in old["entries"]}
+          protected={"seneca-de-ira","seneca-de-tranquillitate"}
+          assert protected.issubset(current),"Los originales previos no se encuentran completos"
+          assert len(current)==old["count"]==len(old["entries"])
+          originals={}
+          for id in protected:
+              path=folder/(id+"-la.json")
+              content=path.read_bytes()
+              book=json.loads(content)
+              assert book["workId"]==id
+              assert book["sourceSha256"]==current[id]["sourceSha256"]
+              originals[id]=hashlib.sha256(content).hexdigest()
+          expected={"apuleius-de-deo-socratis","censorinus-die-natali","vegetius-epitoma"}
+          assert {e["workId"] for e in new["entries"]}==expected
+          for entry in new["entries"]:
+              id=entry["workId"]
+              name=id+"-la.json"
+              assert entry["path"]=="data/offsite-latin/"+name
+              input_file=fresh/name
+              value=input_file.read_bytes()
+              doc=json.loads(value)
+              assert doc["workId"]==id and doc["language"]=="la"
+              assert doc["sourceSha256"]==entry["sourceSha256"]
+              assert len(doc["passages"])==entry["passages"]
+              assert entry["bytes"]==len(value)
+              dest=folder/name
+              if id in current:
+                  assert dest.is_file(),"No se reemplaza ni recupera un índice ya creado"
+                  assert dest.read_bytes()==value,"Cambio de origen: detener y revisar, no sobrescribir"
+                  assert current[id]["sourceSha256"]==entry["sourceSha256"]
+              else:
+                  assert not dest.exists(),"No sobrescribir derivados ajenos"
+                  shutil.copyfile(input_file,dest)
+                  old["entries"].append(entry)
+                  current[id]=entry
+          for id,digest in originals.items():
+              path=folder/(id+"-la.json")
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==digest
+          old["count"]=len(old["entries"])
+          old["totalBytes"]=sum(e["bytes"] for e in old["entries"])
+          old["supplementalMethod"]="Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita"
+          assert old["count"]==5
+          manifest_file.write_text(json.dumps(old,ensure_ascii=False,indent=2)+"\n","utf-8")
+          print("Se conservaron los dos originales de Séneca; corpus externo ahora:",old["count"])
+          PY
+          git -C "$TARGET" add data/offsite-latin/manifest.json \
+            data/offsite-latin/apuleius-de-deo-socratis-la.json \
+            data/offsite-latin/censorinus-die-natali-la.json \
+            data/offsite-latin/vegetius-epitoma-la.json
+          if git -C "$TARGET" diff --cached --quiet; then
+            echo 'Índices complementarios ya publicados sin modificaciones.'
+            exit 0
+          fi
+          git -C "$TARGET" commit -m "Agregar Apuleyo, Censorino y Vegecio como índices externos"
+          git -C "$TARGET" push origin "HEAD:refs/heads/$BRANCH"
+          echo 'Publicación aditiva: Codex H, manuscritos y folios fuera de la rama modificada.'

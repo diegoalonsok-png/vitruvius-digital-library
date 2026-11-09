@@ -67,6 +67,21 @@ jobs:
           else
             git worktree add --detach "$TARGET" origin/main
           fi
+          # El corpus externo es acumulativo; NO volver a escribir datos latinos existentes.
+          if test -e "$TARGET/data/offsite-latin/manifest.json"; then
+            python - "$TARGET/data/offsite-latin/manifest.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+          p=Path(sys.argv[1]); manifest=json.loads(p.read_text("utf-8"))
+          assert manifest["schema"]=="vitruvius-offsite-latin-originals-manifest-v1"
+          ids={e["workId"] for e in manifest["entries"]}
+          assert {"seneca-de-ira","seneca-de-tranquillitate"}.issubset(ids)
+          for e in manifest["entries"]:
+              assert (p.parent/(e["workId"]+"-la.json")).is_file(), e["workId"]
+          PY
+            echo 'Corpus latino ya alojado: se conserva sin sobrescribir.'
+            exit 0
+          fi
           mkdir -p "$TARGET/data/offsite-latin"
           cp "$RUNNER_TEMP/latin-originals/"*.json "$TARGET/data/offsite-latin/"
           git -C "$TARGET" add data/offsite-latin
