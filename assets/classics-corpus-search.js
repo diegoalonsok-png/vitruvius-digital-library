@@ -189,10 +189,23 @@ async function semanticSearch(q,{limit=6}={}){
  // keep the existing live search fully operational.
  // The Conceptus postings cover hosted files only; the remote Greek branch is
  // validated separately and must not invalidate the hosted inverted index.
- const hostedEditionCount=entries.filter(e=>e.format!=="remote-json-passages").length;
- const indexValid=staticIndex?.registryEditionCount===hostedEditionCount&&
-   staticIndex?.indexedEditions===staticIndex?.eligibleEditions&&
-   !staticIndex?.errors?.length;
+ const hosted=entries.filter(e=>e.format!=="remote-json-passages");
+ // Unanchored HTML translations have documented exclusions in the postings.
+ // Validate all eligible hosted records instead of disabling the index for
+ // the entire corpus because these two sources lack stable editorial loci.
+ const eligible=new Set(["json-passages","structured-bilingual","html-text"]);
+ const indexKey=e=>[e.workId,e.language,e.source||e.path,e.edition||""].join("|");
+ const posted=new Set((staticIndex?.versions||[]).map(indexKey));
+ const unanchored=new Set((staticIndex?.notIndexedFormats||[])
+   .filter(x=>x.format==="html-text"&&/no stable passage anchor/i.test(x.reason||""))
+   .map(x=>x.path));
+ const indexValid=Boolean(staticIndex&&hosted.length&&
+   staticIndex.registryEditionCount===hosted.length&&
+   staticIndex.indexedEditions===staticIndex.versions.length&&
+   staticIndex.indexedEditions+unanchored.size===staticIndex.eligibleEditions&&
+   !staticIndex.errors?.length&&
+   hosted.filter(e=>eligible.has(e.format)).every(e=>
+     posted.has(indexKey(e))||(e.format==="html-text"&&unanchored.has(e.path))));
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
   [v.workId,v.language,v.source,v.edition||""].join("|"),v
  ]):[]);

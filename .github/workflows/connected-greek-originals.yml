@@ -6,6 +6,8 @@ on:
       - 'vitruvia.html'
       - 'vitruvia-lexicon.html'
       - 'scripts/test-connected-greek-originals.mjs'
+      - 'scripts/test-shared-semantic-index-usage.mjs'
+      - 'scripts/classics-visor-smoke.mjs'
       - '.github/workflows/connected-greek-originals.yml'
   push:
     branches: [main]
@@ -14,6 +16,8 @@ on:
       - 'vitruvia.html'
       - 'vitruvia-lexicon.html'
       - 'scripts/test-connected-greek-originals.mjs'
+      - 'scripts/test-shared-semantic-index-usage.mjs'
+      - 'scripts/classics-visor-smoke.mjs'
       - '.github/workflows/connected-greek-originals.yml'
   workflow_dispatch:
 permissions:
@@ -30,4 +34,6 @@ jobs:
       - name: Syntax
         run: node --check assets/classics-corpus-search.js
       - name: Verify documentary connections
-        run: node scripts/test-connected-greek-originals.mjs
+        run: |
+          node scripts/test-connected-greek-originals.mjs
+          node scripts/test-shared-semantic-index-usage.mjs
