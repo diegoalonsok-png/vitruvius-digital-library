@@ -84,7 +84,7 @@ const commentary=JSON.parse(readFileSync("data/annotations/v514-I-praef-1-exeget
 const sourceV514=JSON.parse(readFileSync("data/structured/recensio-es.json","utf8"));
 const bookOne=sourceV514.passages.filter(p=>p.book===1||String(p.locus||"").startsWith("1."));
 assert.equal(bookOne.length,67,"La fuente debe contener 67 unidades editoriales de libro I");
-const latinIds=[...wholeBook.matchAll(/xml:id="(vitr-1-[^"]+)"(?=\s+n=)/g)];
+const latinIds=[...wholeBook.matchAll(/xml:id="(vitr-1-[^"]+)"(?=\s+n=)/g)].filter(m=>!m[1].endsWith("-es"));
 const translationLinks=[...wholeBook.matchAll(/corresp="#vitr-1-[^"]+"/g)];
 assert.equal(latinIds.length,67,"TEI: faltan unidades latinas del libro I");
 assert.equal(translationLinks.length,67,"TEI: faltan unidades españolas vinculadas por locus");
