@@ -548,6 +548,19 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 <div class="wrap stat-audit-detail">
 <p><strong>Desglose verificable:</strong> <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>. <strong id="stat-passages">2.190</strong> pasajes textuales indexados por locus.</p>
 <p class="stat-audit-caveat">Cifras auditadas el <span id="stat-audit-date">2 de noviembre de 2026</span>. Las fichas pueden repetirse entre repertorios: 175 no significa 175 obras únicas. Las 3.379 páginas son la suma de extensiones editoriales declaradas, no páginas indexadas individualmente.</p></div></section>
+    <div class="wrap"><section id="classics-audit-coverage" aria-label="Cobertura verificable de la Bibliotheca Graeca et Latina" style="padding:20px 0;border-top:1px solid #6664;border-bottom:1px solid #6664;margin:14px 0">
+ <h2 style="font:400 clamp(19px,2.1vw,26px)/1.3 Georgia,serif;margin:0 0 12px">Bibliotheca · cobertura de textos clásicos</h2>
+ <div style="display:flex;gap:12px 25px;flex-wrap:wrap;font:13px/1.6 system-ui,sans-serif">
+  <span><strong data-classics="catalog">—</strong> obras catalogadas</span>
+  <span><strong data-classics="local">—</strong> originales locales</span>
+  <span><strong data-classics="remote">—</strong> originales externos verificados</span>
+  <span><strong data-classics="searchable">—</strong> originales con texto buscable</span>
+  <span><strong data-classics="pending">—</strong> pendientes</span>
+  <span><strong data-classics="translations">—</strong> obras con traducción alojada</span>
+  <span><strong data-classics="versions">—</strong> versiones textuales locales</span>
+ </div>
+ <p style="font:12px/1.6 system-ui,sans-serif;margin:9px 0 0;opacity:.76"><span data-classics="method">Verificando registros académicos…</span> <a href="auditoria-textos-clasicos.html">Método y auditoría</a> · Inventario <time data-classics="updated">—</time>.</p>
+</section></div>
     <section class="search-section wrap" id="buscar" aria-labelledby="search-title">
       <div class="section-heading"><div><p class="eyebrow">LECTURA E INVESTIGACIÓN</p><h2 id="search-title">Buscar en los textos</h2></div><p>Busca una palabra, frase o locus.<br>Lee el latín y su traducción.</p></div>
       <form id="search-form" class="search-box">
@@ -656,7 +669,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
   const escapeText=value=>String(value).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   const printWindow=window.open('','_blank');
   if(!printWindow){inform('Permite las ventanas emergentes para abrir la vista imprimible.');return}
-  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer></body></html>';
+  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer><script defer src="assets/classics-audited-coverage.js?v=20261109-1"></script></body></html>';
   printWindow.document.open();printWindow.document.write(doc);printWindow.document.close();
   printWindow.focus();printWindow.print();
  });

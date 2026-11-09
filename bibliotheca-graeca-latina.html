@@ -70,6 +70,19 @@
 <h1>Bibliotheca</h1>
 <p id="intro" class="intro">Busca una palabra o frase en todos los libros indexados, o selecciona una obra. Consulta cuántas veces aparece en cada libro y dónde se encuentra.</p>
 </header>
+<section id="classics-audit-coverage" aria-label="Cobertura verificable de la Bibliotheca Graeca et Latina" style="padding:20px 0;border-top:1px solid #6664;border-bottom:1px solid #6664;margin:14px 0">
+ <h2 style="font:400 clamp(19px,2.1vw,26px)/1.3 Georgia,serif;margin:0 0 12px">Bibliotheca · cobertura de textos clásicos</h2>
+ <div style="display:flex;gap:12px 25px;flex-wrap:wrap;font:13px/1.6 system-ui,sans-serif">
+  <span><strong data-classics="catalog">—</strong> obras catalogadas</span>
+  <span><strong data-classics="local">—</strong> originales locales</span>
+  <span><strong data-classics="remote">—</strong> originales externos verificados</span>
+  <span><strong data-classics="searchable">—</strong> originales con texto buscable</span>
+  <span><strong data-classics="pending">—</strong> pendientes</span>
+  <span><strong data-classics="translations">—</strong> obras con traducción alojada</span>
+  <span><strong data-classics="versions">—</strong> versiones textuales locales</span>
+ </div>
+ <p style="font:12px/1.6 system-ui,sans-serif;margin:9px 0 0;opacity:.76"><span data-classics="method">Verificando registros académicos…</span> <a href="auditoria-textos-clasicos.html">Método y auditoría</a> · Inventario <time data-classics="updated">—</time>.</p>
+</section>
 <section class="searcharea" aria-label="Buscar palabras y frases en libros clásicos">
 <form id="search-form" class="searchform" role="search">
 <input id="classic-query" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Una palabra o frase, por ejemplo: domus" aria-label="Palabra o frase">
@@ -95,5 +108,5 @@
 </section>
 <footer><span id="method-note">Concordancias documentadas. Las traducciones cuentan como versiones separadas. Citas Chicago 18 cuando los datos editoriales están verificados; se indican las referencias incompletas.</span></footer>
 </main>
-</body>
+<script defer src="assets/classics-audited-coverage.js?v=20261109-1"></script></body>
 </html>

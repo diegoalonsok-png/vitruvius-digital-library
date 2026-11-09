@@ -1,0 +1,26 @@
+name: Cobertura académica de clásicos desde manifiestos
+on:
+  pull_request:
+    paths:
+      - 'assets/classics-audited-coverage.js'
+      - 'scripts/test-classics-audited-coverage.mjs'
+      - 'index.html'
+      - 'bibliotheca-graeca-latina.html'
+      - '.github/workflows/classics-audited-coverage.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/classics-audited-coverage.js'
+      - 'scripts/test-classics-audited-coverage.mjs'
+      - 'index.html'
+      - 'bibliotheca-graeca-latina.html'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/classics-audited-coverage.js
+      - run: node scripts/test-classics-audited-coverage.mjs
